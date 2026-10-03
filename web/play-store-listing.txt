@@ -1,0 +1,30 @@
+Kumkaj — Play Console listing draft
+====================================
+Application id: com.kumkaj.app
+Website: https://kumkaj.com
+Default language: English (add Hindi / regional as needed)
+
+Short description (≤80 chars)
+-----------------------------
+Offline business OS — sell, credit, stock. Free forever on your device.
+
+Full description
+----------------
+Kumkaj is Gotigin’s local-first business operating system for tea stalls, clothes counters, restaurants, and other shops.
+
+• Sell with Cash, UPI, Card, or Credit
+• Actual / Applied / Rounded totals for honest bill rounding
+• Owner & Staff PINs with immutable sale authorship
+• Optional tables and kitchen tickets, sales amend history, backup & restore
+• Works offline — your data stays on the device
+
+Website: https://kumkaj.com
+Default Owner PIN on first launch: 0000 (change under More → Team).
+
+Category: Business / Productivity
+Content rating: Everyone
+Privacy: no accounts required for local use; data stored on device SQLite.
+
+Build artifacts: ./scripts/package-android.sh → dist/android/kumkaj.apk
+Play AAB: cargo-makepad android … build-aab -p kumkaj --release (with upload keystore)
+iOS / macOS: deferred until Mac signing host.

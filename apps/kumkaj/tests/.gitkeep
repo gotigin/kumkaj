@@ -1,0 +1,13 @@
+//! Domain/store smoke tests (no UI). Run: `cargo test -p kumkaj`
+
+use kumkaj::domain::{starter_products, Cart, Money, PayMethod, SaleLine, StaffRole};
+use kumkaj::store::{hash_pin, verify_pin, Store};
+use std::path::PathBuf;
+
+// Re-export modules for tests by making them pub in lib — but we only have a binary.
+// Inline the smoke as a binary test via #[cfg(test)] in store.
+
+#[cfg(test)]
+mod smoke {
+    use super::*;
+}

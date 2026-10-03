@@ -1,0 +1,68 @@
+--- a/widgets/src/window.rs
++++ b/widgets/src/window.rs
+@@ -145,45 +145,72 @@
+             flow: Right
+ 
+-            draw_bg.color: theme.color_app_caption_bar
++            draw_bg.color: #x1f1b2e
+             // Note: by default, the caption bar height is calculated at runtime
+             // based on window chrome button geometry to ensure the buttons are vertically centered.
+             // If you want to override this height with a fixed value, set the `caption_bar_height_override` on the Window itself.
+             height: Fit
+             caption_label := View {
+                 width: Fill height: Fill
+                 align: Center
+-                label := Label {text: "Makepad"}
++                label := Label {
++                    text: "Makepad"
++                    draw_text.color: #xe8e4dc
++                }
+             }
+             voice_wave := VoiceWave {}
+             windows_buttons := View {
+                 visible: false
+                 width: Fit height: Fit
++                // Cream glyphs on navy caption (Kumkaj). Do not use #000 — invisible on dark CSD.
+                 min := DesktopButton {
+                     draw_bg.button_type: DesktopButtonType.WindowsMin
+                     width: 46 height: 29
+                     draw_bg +: {
+-                        color: #000, color_hover: #000, color_down: #000
+-                        bg_color_hover: #E9E9E9, bg_color_down: #CCCCCC
++                        color: #xe8e4dc
++                        color_hover: #xffffff
++                        color_down: #xc4b9ae
++                        bg_color: #00000000
++                        bg_color_hover: #xffffff28
++                        bg_color_down: #ffffff40
+                     }
+                 }
+                 max := DesktopButton {
+                     draw_bg.button_type: DesktopButtonType.WindowsMax
+                     width: 46 height: 29
+                     draw_bg +: {
+-                        color: #000, color_hover: #000, color_down: #000
+-                        bg_color_hover: #E9E9E9, bg_color_down: #CCCCCC
++                        color: #xe8e4dc
++                        color_hover: #xffffff
++                        color_down: #xc4b9ae
++                        bg_color: #00000000
++                        bg_color_hover: #xffffff28
++                        bg_color_down: #ffffff40
+                     }
+                 }
+                 close := DesktopButton {
+                     draw_bg.button_type: DesktopButtonType.WindowsClose
+                     width: 46 height: 29
+                     draw_bg +: {
+-                        color: #000, color_hover: #FFF, color_down: #FFF
+-                        bg_color_hover: #E81123, bg_color_down: #F1707A
++                        color: #xe8e4dc
++                        color_hover: #xffffff
++                        color_down: #xffffff
++                        bg_color: #00000000
++                        bg_color_hover: #xE81123
++                        bg_color_down: #xF1707A
+                     }
+                 }
+             }

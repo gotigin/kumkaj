@@ -1,0 +1,42 @@
+# Rust / Cargo
+/target/
+**/target/
+**/*.rs.bk
+*.pdb
+
+# Packaged builds
+/dist/
+
+# Makepad: fetched via scripts/setup-makepad.sh (do not commit the tree)
+/vendor/makepad/
+/vendor/makepad-full/
+**/.makepad/
+
+# Local runtime / screenshots (not source)
+/local/
+
+# App / SQLite data (never commit live DBs or backups)
+**/*.sqlite3
+**/*.sqlite3-wal
+**/*.sqlite3-shm
+**/backups/
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+*.iml
+
+# Optional: keep .vscode/tasks.json in git; ignore personal overrides
+.vscode/*.code-workspace
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json

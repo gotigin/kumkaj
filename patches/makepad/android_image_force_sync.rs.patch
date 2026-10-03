@@ -1,0 +1,17 @@
+--- a/draw/src/image_cache.rs
++++ b/draw/src/image_cache.rs
+@@ -1903,9 +1903,12 @@
+     // On wasm, decode synchronously on the UI thread since thread pools
+     // are not reliably available. Also decode synchronously for headless
+     // single-frame runs so textured output is available in the first emitted PNG.
+-    #[cfg(target_arch = "wasm32")]
++    // Android: async decode completions often never bind to Image widgets in
++    // time (or at all across GL/thread boundaries), so crate_resource logos
++    // and thumbs stay blank. Sync decode matches iOS reliability here.
++    #[cfg(any(target_arch = "wasm32", target_os = "android"))]
+     let force_sync = true;
+-    #[cfg(not(target_arch = "wasm32"))]
++    #[cfg(not(any(target_arch = "wasm32", target_os = "android")))]
+     let force_sync = headless_mode_enabled();
+ 
+     if force_sync {

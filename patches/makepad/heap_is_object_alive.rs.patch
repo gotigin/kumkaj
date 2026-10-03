@@ -1,0 +1,16 @@
+--- a/platform/script/src/heap.rs	2026-09-21 13:48:18.038313613 +0530
++++ b/platform/script/src/heap.rs	2026-09-21 13:48:18.038403262 +0530
+@@ -298,6 +298,13 @@
+         false
+     }
+ 
++    /// True when `ptr` still refers to a live slot (generation matches).
++    /// Use before indexing animator apply objects that may have been freed.
++    #[inline]
++    pub fn is_object_alive(&self, ptr: ScriptObject) -> bool {
++        self.objects.is_valid(ptr)
++    }
++
+     /// Returns the TypeId for an object if it has a registered type.
+     pub fn object_type_id(&self, ptr: ScriptObject) -> Option<ScriptTypeId> {
+         let obj = &self.objects[ptr];

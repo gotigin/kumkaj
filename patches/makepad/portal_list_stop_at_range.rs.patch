@@ -1,0 +1,72 @@
+--- a/widgets/src/portal_list.rs
++++ b/widgets/src/portal_list.rs
+@@ -1209,15 +1209,25 @@
+                             return None;
+                         }
+                     }
++                    let next = index + 1;
++                    // Past the caller's range there is no item. Asking again
++                    // and getting a zero-height skip never fills the viewport,
++                    // so the list spins. Stop. A content-sized host may be
++                    // taller than the items; the leftover is empty, not a
++                    // reason to keep walking.
++                    if self.range_end > 0 && next >= self.range_end {
++                        self.draw_state.set(ListDrawState::End { viewport });
++                        return None;
++                    }
+                     if is_down_again {
+                         self.draw_state.set(ListDrawState::DownAgain {
+-                            index: index + 1,
++                            index: next,
+                             pos: pos + rect.size.index(vi),
+                             viewport,
+                         });
+                     } else {
+                         self.draw_state.set(ListDrawState::Down {
+-                            index: index + 1,
++                            index: next,
+                             pos: pos + rect.size.index(vi),
+                             viewport,
+                         });
+@@ -1278,8 +1288,13 @@
+                             {
+                                 let total_height: f64 =
+                                     self.draw_align_list.iter().map(|v| v.size.index(vi)).sum();
++                                let next = last_index + 1;
++                                if self.range_end > 0 && next >= self.range_end {
++                                    self.draw_state.set(ListDrawState::End { viewport });
++                                    return None;
++                                }
+                                 self.draw_state.set(ListDrawState::DownAgain {
+-                                    index: last_index + 1,
++                                    index: next,
+                                     pos: total_height,
+                                     viewport,
+                                 });
+@@ -1317,7 +1332,7 @@
+                                         layout,
+                                     ),
+                                 }
+-                                return Some(last_index + 1);
++                                return Some(next);
+                             }
+                         }
+                         self.draw_state.set(ListDrawState::End { viewport });
+@@ -1779,6 +1794,17 @@
+         self.range_end
+     }
+ 
++    /// Height of the items drawn for the current range, in the list's flow
++    /// direction. Valid after `next_visible_item` returns `None`.
++    pub fn drawn_range_extent(&self) -> f64 {
++        let vi = self.vec_index;
++        self.draw_align_list
++            .iter()
++            .filter(|item| item.index >= self.range_start && item.index < self.range_end)
++            .map(|item| item.size.index(vi))
++            .sum()
++    }
++
+     /// The current scroll offset of `first_id`'s top relative to the
+     /// viewport start (paired with [`Self::set_first_id_and_scroll`] for
+     /// programmatic nudges; the draw pass renormalizes and clamps).

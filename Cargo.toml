@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "apps/kumkaj",
+    "tools/kumkaj-android-dev",
+]
+exclude = [
+    "vendor/makepad",
+]
+resolver = "2"

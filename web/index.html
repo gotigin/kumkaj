@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kumkaj — Local-first business OS</title>
+  <meta name="description" content="Kumkaj by Gotigin: offline-first business OS for tea stalls, shops, and restaurants. Free forever on your device." />
+  <link rel="canonical" href="https://kumkaj.com/" />
+  <meta property="og:url" content="https://kumkaj.com/" />
+  <meta property="og:title" content="Kumkaj — Local-first business OS" />
+  <meta property="og:description" content="Offline business operating system. Free forever on your device." />
+  <meta property="og:site_name" content="Kumkaj" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1c1e;
+      --navy: #041534;
+      --navy-mid: #1b2a4a;
+      --terra: #a23e18;
+      --surface: #f9f9fc;
+      --muted: #64748b;
+      --line: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #dbe4f5 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #f3d9c8 0%, transparent 45%),
+        var(--surface);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 48px 24px 80px; }
+    .brand {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      line-height: 1.05;
+      color: var(--navy);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terra);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .lede {
+      font-size: 1.2rem;
+      max-width: 36rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+      line-height: 1.45;
+    }
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    a.btn-primary {
+      background: var(--navy);
+      color: #fff;
+    }
+    a.btn-primary:hover { background: var(--navy-mid); }
+    a.btn-ghost {
+      background: #fff;
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.45rem;
+      color: var(--navy);
+      margin: 0 0 12px;
+    }
+    p, li { line-height: 1.5; color: var(--ink); }
+    ul { padding-left: 1.2rem; }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="tag">kumkaj.com · Offline local-first</p>
+    <h1 class="brand">Kumkaj</h1>
+    <p class="lede">
+      Business OS that keeps billing when the internet dies.
+      Free forever on your device — tea stall, clothes shop, restaurant.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#download">Download</a>
+      <a class="btn btn-ghost" href="https://kumkaj.com/#download">kumkaj.com</a>
+    </div>
+
+    <section>
+      <h2>Built for the counter</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Sell fast</h3>
+          <p>Tap items, edit Applied / Rounded totals, pay Cash · UPI · Card · Credit.</p>
+        </div>
+        <div class="card">
+          <h3>Owner &amp; Staff</h3>
+          <p>Owner hosts the business. Staff unlock with their own PIN and role title.</p>
+        </div>
+        <div class="card">
+          <h3>Stays local</h3>
+          <p>SQLite on device. Restart-safe sales, amend history, backup &amp; restore.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <h2>Download</h2>
+      <p>Get builds from <a href="https://kumkaj.com">kumkaj.com</a>. Packaging scripts land artifacts in <code>dist/</code>. iOS / macOS App Store builds are deferred until a Mac signing host is available.</p>
+      <ul>
+        <li><strong>Android</strong> — Play Store / sideload APK via <code>./scripts/package-android.sh</code> (id <code>com.kumkaj.app</code>)</li>
+        <li><strong>Linux</strong> — <code>./scripts/package-linux.sh</code> → <code>dist/linux/kumkaj</code></li>
+        <li><strong>Windows</strong> — <code>./scripts/package-windows.sh</code> → <code>dist/windows/</code></li>
+        <li><strong>Website</strong> — deploy <code>web/</code> (or <code>dist/web/</code>) to <strong>https://kumkaj.com</strong></li>
+      </ul>
+      <p>Default Owner PIN on first launch: <strong>0000</strong> — change it under More → Team.</p>
+    </section>
+
+    <footer>
+      © Gotigin · <a href="https://kumkaj.com">kumkaj.com</a> · Free Forever · Zero Cloud required for local POS
+    </footer>
+  </main>
+</body>
+</html>

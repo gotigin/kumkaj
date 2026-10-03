@@ -1,0 +1,24 @@
+--- a/widgets/src/animator.rs	2026-09-21 13:48:18.043544963 +0530
++++ b/widgets/src/animator.rs	2026-09-21 13:48:18.043645742 +0530
+@@ -824,6 +824,21 @@
+             // The state_object structure is populated on first frame and reused thereafter.
+             let vm_id = self.vm_id;
+ 
++            // Drop tracks whose script objects were freed (e.g. after a
++            // set_type_default rebuild). Indexing them panics and freezes Android.
++            cx.with_script_vm_id(vm_id, |vm| {
++                self.tracks.retain(|track| {
++                    vm.bx.heap.is_object_alive(track.target_apply)
++                        && vm
++                            .bx
++                            .heap
++                            .is_object_alive(track.from_snapshot.as_object())
++                });
++            });
++            if self.tracks.is_empty() {
++                return None;
++            }
++
+             let result = cx.with_script_vm_id(vm_id, |vm| {
+                 // Get or create the shared state object (created once, reused forever)
+                 let state_obj = if let Some(ref obj_ref) = self.state_object {

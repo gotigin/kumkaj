@@ -1,0 +1,95 @@
+--- a/platform/src/cx_api.rs
++++ b/platform/src/cx_api.rs
+@@ -1074,6 +1074,12 @@
+         self.platform_ops.push_back(CxOsOp::HideTextIME);
+     }
+ 
++    /// Allow the next focused `TextInput` draw to show the soft keyboard again
++    /// after the user (or system) dismissed it.
++    pub fn reset_text_ime_dismissed(&mut self) {
++        self.keyboard.reset_text_ime_dismissed();
++    }
++
+     /// Set or clear a window's `dpi_override` at runtime.
+     ///
+     /// This rewrites the stored `WindowGeom` from the previous effective DPI to
+--- a/platform/src/event/keyboard.rs
++++ b/platform/src/event/keyboard.rs
+@@ -33,7 +33,12 @@
+     }
+ 
+     pub fn set_key_focus(&mut self, focus_area: Area) {
+-        self.text_ime_dismissed = false;
++        // Same-area calls (caret repair, a focus restore) must not re-arm
++        // the soft keyboard after the user dismissed it. A real move to a
++        // different field still clears the latch.
++        if self.next_key_focus != focus_area {
++            self.text_ime_dismissed = false;
++        }
+         self.next_key_focus = focus_area;
+     }
+ 
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -2461,6 +2461,10 @@
+                 self.animator_play(cx, ids!(hover.off));
+             }
+             Hit::KeyFocus(_) => {
++                // User explicitly focused the field — clear the "IME dismissed"
++                // latch so Android will show the soft keyboard again (otherwise
++                // a prior system dismiss blocks ShowTextIME until focus is lost).
++                cx.reset_text_ime_dismissed();
+                 self.animator_play(cx, ids!(focus.on));
+                 self.reset_blink_timer(cx);
+                 // Sync text state to platform IME before keyboard shows
+@@ -2501,6 +2505,10 @@
+                 device,
+                 ..
+             }) if device.is_primary_hit() && !scrollbar_captured => {
++                // A tap on a field that already has focus does not emit
++                // KeyFocus. Clear the dismiss latch here so that tap is
++                // what brings the soft keyboard back.
++                cx.reset_text_ime_dismissed();
+                 self.reset_blink_timer(cx);
+                 self.set_key_focus(cx);
+                 let rel = abs - self.text_area.rect(cx).pos;
+@@ -2684,6 +2692,10 @@
+                 key_code: KeyCode::Escape,
+                 ..
+             }) => {
++                // Escape dismisses the soft keyboard / clears focus — same as IME Done.
++                // Emitting Escaped alone left the field focused so the keyboard came back.
++                cx.text_ime_was_dismissed();
++                cx.set_key_focus(Area::Empty);
+                 cx.widget_action(uid, TextInputAction::Escaped);
+             }
+             Hit::KeyDown(KeyEvent {
+--- a/widgets/src/window.rs
++++ b/widgets/src/window.rs
+@@ -1648,16 +1648,23 @@
+             Event::WindowGotFocus(window_id) => {
+                 if *window_id == self.window.window_id() {
+                     self.has_focus = true;
+-                    cx.set_key_focus(self.last_known_area);
++                    // Android reports a focus loss and gain when the IME
++                    // window opens or closes. Dropping and restoring key
++                    // focus hides the keyboard, then shows it again.
++                    if !matches!(cx.os_type(), OsType::Android(_)) {
++                        cx.set_key_focus(self.last_known_area);
++                    }
+                 }
+ 
+                 *window_id != self.window.window_id()
+             }
+             Event::WindowLostFocus(window_id) => {
+                 if *window_id == self.window.window_id() {
+                     self.has_focus = false;
+-                    self.last_known_area = cx.key_focus();
+-                    cx.set_key_focus(Area::Empty);
++                    if !matches!(cx.os_type(), OsType::Android(_)) {
++                        self.last_known_area = cx.key_focus();
++                        cx.set_key_focus(Area::Empty);
++                    }
+                 }
+ 
+                 *window_id != self.window.window_id()
