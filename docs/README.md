@@ -1,10 +1,10 @@
 # Kumkaj
 
-Gotigin's business operating system — local-first selling and books on Makepad 2.
+Gotigin's business operating system for any entity — local-first selling and books on Makepad 2. Generic in the core; concrete in effect through what that entity enables and names (see vision §1–2).
 
 Offline use is free forever, from a single counter through extra tills, kitchens, and multi-branch groups coordinated on your own devices. Local billing is production-ready on the shop device; extra tills are optional LAN joins. Cloud usage (WAN sync, hosted dashboards, automatic offsite backup), raw ESC/POS, and statutory e-invoicing are optional / later — not required to bill.
 
-**Who it is for:** anyone who sells or keeps a book — a clothes seller, a tea stall, a shop with staff, or several outlets. Same Sell · Items · More shell.
+**Who it is for:** any entity that sells or keeps a book — business or personal; tea stall, kirana, service counter, agency, shop with staff, or several outlets. Same Sell · Items · More shell.
 
 **UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`.
 

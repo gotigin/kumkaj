@@ -1,0 +1,26 @@
+---
+description: Kumkaj is one BOS for any entity — generic implementation, concrete feel
+alwaysApply: true
+---
+
+# Generic core, concrete feel
+
+Kumkaj is one **business operating system** for **any entity** (shop, service, agency, personal/household books, multi-branch org). Implement **generic primitives**; let labels, config, and progressive enablement make the product feel concrete to that user.
+
+Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–32.
+
+## Do
+
+- Prefer shared primitives: party, item/line, unit, charge, ledger, day book, report view, document template.
+- When a client asks for a vertical (“courier parties”, “kg credit”), extract the shared capability and implement that.
+- Hide unused capability; do not rename the whole product into one trade.
+
+## Do not
+
+- Hard-code verticals or entity-type product forks (`CourierShipment`, `BarberChair`, “Personal Finance mode”).
+- Add trade-specific schemas that duplicate the core.
+
+```text
+❌ CourierOutstandingTable / PersonalBudgetAppMode
+✅ Party ledger + qty units + day/party reports (owner names parties/units)
+```

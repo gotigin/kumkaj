@@ -17,45 +17,59 @@
 ## 1. What Kumkaj Is
 
 Kumkaj is intended to be much more than a billing screen. It is a
-**business operating system**, designed so that the same fundamental
-product can serve any field whose owners want to run the business from
-an app:
+**business operating system** for **any entity** that sells or keeps
+books — a business, a personal or household set of books, a service
+trade, an agency, or a multi-branch organization. The same fundamental
+product serves them all. Examples of *users of one OS* (not product
+SKUs or vertical forks):
 
 -   a roadside **chai wala / tea seller** who may only need extremely
     fast item selection, payment and a simple daily total;
--   a **clothes seller** or other retail counter with a catalogue,
-    sizes, and stock;
+-   a **clothes seller**, **kirana / grocery**, or other retail counter
+    with a catalogue, sizes, and stock;
+-   a **service** counter (barber, repair, salon) with appointments or
+    walk-in sales and party credit;
+-   a **courier / logistics agency** or similar intermediary with named
+    parties, quantity units (e.g. kg), day books and outstanding;
 -   a small takeaway, snack shop, bakery or café;
 -   a single restaurant with tables, waiters, kitchen tickets, stock and
     expenses;
 -   a busy large restaurant with multiple counters, kitchen stations,
     managers and many employees;
+-   **personal / household** books where the entity is a person or
+    family rather than a shop front;
 -   an owner operating **multiple shops or branches**, who needs
     centralized visibility, controls, reporting, synchronization and
     administration.
 
+The app must **not encode the user's trade**. Implementation stays
+generic (parties, lines, units, charges, ledgers, day books, documents).
+Naming, configuration, and which capabilities the entity enables make
+Kumkaj *feel* concrete to that user.
+
 The central idea is therefore:
 
 > **One Kumkaj, progressively adapting to the complexity of the
-> business instead of forcing every business to use enterprise-level
-> complexity.**
+> entity instead of forcing every user into enterprise-level
+> complexity — generic in the core, concrete in effect.**
 
 A tea seller or clothes counter should not have to understand kitchen
 routing just to sell. At the other end, a large restaurant group must
 not outgrow Kumkaj simply because it started with a simple till.
 Food-only tools (tables, KOT, kitchen stations) stay available as
-**Tables & kitchen**. They are not the whole product. Extra tills are
-the same shop device with LAN on — not a different product type for
-cloud.
+**Tables & kitchen** — an optional capability pack, not the identity of
+Kumkaj. Extra tills are the same shop device with LAN on — not a
+different product type for cloud.
 
 ------------------------------------------------------------------------
 
 ## 2. Product Philosophy: Simple at the Bottom, Powerful at the Top
 
 Kumkaj should scale by **capability**, not by turning the
-small-business interface into a miniature enterprise ERP.
+smallest interface into a miniature enterprise ERP, and not by
+shipping a separate product per trade.
 
-The smallest business may effectively see:
+The smallest entity may effectively see:
 
 **Items → Sell → Payment → Receipt / Done**
 
@@ -69,12 +83,20 @@ A multi-branch owner may additionally enable:
 **Organization → Branches → Users/Devices → Central Dashboard →
 Cross-Branch Reports → Sync/Backup → Remote Monitoring**
 
-Features that are irrelevant to a particular business should remain out
+Features that are irrelevant to a particular entity should remain out
 of the way.
 
 This is a key product principle: **progressive complexity**. Kumkaj
-should feel small when the business is small and become powerful as the
-business grows.
+should feel small when the entity is small and become powerful as the
+entity grows.
+
+**Client signal → shared capability:** when a client describes something
+in vertical language (courier parties, kg credit, salon chairs, household
+expense buckets), treat that as a signal for a **shared primitive**
+(party, unit on a line, ledger, day book, charge, document). Implement
+the primitive; let the entity's labels and defaults provide the concrete
+feel. Do not fork a trade-specific schema or “mode” that duplicates the
+core.
 
 ------------------------------------------------------------------------
 
@@ -1159,9 +1181,12 @@ products.
 Kumkaj should not become:
 
 -   a cloud-only POS that stops when the internet stops;
--   an enterprise ERP forced onto a tiny shop;
+-   an enterprise ERP forced onto a tiny shop or personal books;
 -   a simple cash register that large restaurants immediately outgrow;
 -   a collection of unrelated modules with inconsistent workflows;
+-   a stack of **vertical forks** or trade-specific schemas that
+    duplicate the core (a separate “courier product”, “barber mode”,
+    “personal finance app”, and so on);
 -   a system where cloud billing failure or unpaid cloud usage threatens
     local data or local POS;
 -   a crippled “free” product that withholds core local capabilities to
@@ -1178,16 +1203,20 @@ Kumkaj should not become:
 
 A useful way to judge Kumkaj is:
 
-> **Can someone selling tea begin using it quickly, while a restaurant
-> owner can keep using the same platform as that business grows into
+> **Can the smallest entity — a tea seller, a kirana counter, or someone
+> keeping personal books — begin using it quickly, while the most
+> complex entity can keep using the same platform as it grows into
 > multiple busy branches?**
+
+(Tea stall and restaurant group remain useful examples of those poles;
+they are not the only poles.)
 
 If the answer remains yes, the architecture and UX are moving in the
 intended direction.
 
-The smallest user should receive simplicity, speed and reliability.
+The smallest entity should receive simplicity, speed and reliability.
 
-The largest user should receive scale, control, visibility and
+The largest entity should receive scale, control, visibility and
 integration.
 
 Neither should have to sacrifice ownership of their data or the ability
@@ -1235,8 +1264,11 @@ local multi-branch coordination.
 
 At every stage, keep both extremes in view:
 
-**Would this still feel effortless to the chai wala?**\
-**Would the underlying model still work for the multi-branch restaurant
-owner?**
+**Would this still feel effortless to the smallest entity (e.g. chai
+wala or personal books)?**\
+**Would the underlying model still work for the most complex entity
+(e.g. multi-branch restaurant or agency group)?**\
+**Is the implementation still generic, with concrete feel from
+labels/config rather than a vertical fork?**
 
 That is the central design discipline for Kumkaj.
