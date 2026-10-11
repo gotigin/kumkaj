@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "apps/kumkaj",
+    "tools/kumkaj-dev",
     "tools/kumkaj-android-dev",
 ]
 exclude = [

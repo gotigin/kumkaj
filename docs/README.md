@@ -1,6 +1,6 @@
 # Kumkaj
 
-Gotigin's business operating system for any entity — local-first selling and books on Makepad 2. Generic in the core; concrete in effect through what that entity enables and names (see vision §1–2).
+Kumkaj (kumkaj.com) — business operating system for any entity. Local-first selling and books on Makepad 2. Generic in the core; concrete in effect through start templates (None, Counter, Courier, Food, Personal) and what that entity enables and names (see vision §1–2).
 
 Offline use is free forever, from a single counter through extra tills, kitchens, and multi-branch groups coordinated on your own devices. Local billing is production-ready on the shop device; extra tills are optional LAN joins. Cloud usage (WAN sync, hosted dashboards, automatic offsite backup), raw ESC/POS, and statutory e-invoicing are optional / later — not required to bill.
 
@@ -8,7 +8,9 @@ Offline use is free forever, from a single counter through extra tills, kitchens
 
 **UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`.
 
-**Auth:** Owner hosts the shop; Staff unlock with their own PIN (or optional login) and owner-defined role title. Sale authorship is immutable. Extra tills pair on the outlet Wi‑Fi when the shop allows them — see [`USER_EXPERIENCE.md`](USER_EXPERIENCE.md) and [`DEV.md`](DEV.md).
+**Auth:** Owner hosts the shop; Staff unlock with their own PIN (or optional login) and owner-defined role title. Sale authorship is immutable. Extra tills pair on the outlet Wi‑Fi when the shop allows them — see [`DEV.md`](DEV.md).
+
+**Package ids:** production `com.kumkaj.app` · development `com.kumkaj.app.debug` (labels Kumkaj / Kumkaj Dev). Same reverse-DNS id on Android, desktop data dirs, and (when signed) Apple bundles. Details and per-OS paths: [`DEV.md`](DEV.md) § Development vs production env.
 
 **Scale**
 

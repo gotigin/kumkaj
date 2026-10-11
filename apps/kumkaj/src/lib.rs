@@ -8,6 +8,7 @@
 pub use makepad_widgets;
 
 pub mod domain;
+pub mod entity_template;
 pub mod fiscal;
 pub mod locale;
 pub mod menu_images;

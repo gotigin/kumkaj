@@ -5,8 +5,14 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+# shellcheck source=load-kumkaj-env.sh
+source "$ROOT/scripts/load-kumkaj-env.sh"
 # shellcheck source=android-env.sh
 source "$ROOT/scripts/android-env.sh"
+
+export KUMKAJ_ROOT="$ROOT"
+# Dev install uses --release for speed, but still the development app id / badge.
+load_kumkaj_env development
 
 resolve_makepad_root
 export ANDROID_HOME="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
@@ -23,7 +29,7 @@ android_pkg_opts "$ANDROID_HOME"
 
 echo "Makepad: $MAKEPAD_ROOT"
 echo "ANDROID_HOME: $ANDROID_HOME"
-echo "Building + installing + launching (release)…"
+echo "Building + installing + launching (Cargo --release, KUMKAJ_ENV=development)…"
 echo "Note: Android has no Splash --hot; each run rebuilds and relaunches."
 echo "If adb says unauthorized: unlock the phone and accept the RSA prompt."
 

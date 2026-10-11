@@ -1,9 +1,13 @@
-//! Built-in menu artwork + name → image matching.
+//! Built-in item artwork + name → image matching.
+//!
+//! Food keys remain available for food entities; the fallback
+//! [`PLACEHOLDER_KEY`] is the generic Kumkaj mark (not a dish photo).
 
 use makepad_widgets::Cx;
 use std::path::{Path, PathBuf};
 
-/// Dish keys shipped under `resources/menu/{key}.webp`.
+/// Optional built-in art keys under `resources/menu/{key}.webp`.
+/// Food-named keys are for food entities only; unknown items use [`PLACEHOLDER_KEY`].
 pub const MENU_IMAGE_KEYS: &[&str] = &[
     "bakery",
     "biryani",
@@ -40,9 +44,10 @@ pub const MENU_IMAGE_KEYS: &[&str] = &[
     "upma",
 ];
 
+/// Generic fallback art: Kumkaj mark (business OS), never a vertical-specific photo.
 pub const PLACEHOLDER_KEY: &str = "placeholder";
 
-/// Extra phrase → key pairs (common menu aliases).
+/// Extra phrase → key pairs (common food aliases for food entities).
 const ALIASES: &[(&str, &str)] = &[
     ("masala chai", "chai"),
     ("filter coffee", "coffee"),
@@ -269,12 +274,13 @@ pub fn resolve_image_path(
 pub fn describe_image(image_key: Option<&str>, name: &str) -> String {
     match image_key.map(str::trim).filter(|s| !s.is_empty()) {
         Some(key) if key.starts_with("custom:") => "Custom photo".into(),
+        Some(key) if key == PLACEHOLDER_KEY => "Image: Kumkaj".into(),
         Some(key) if is_builtin_key(key) => format!("Image: {key}"),
         Some(_) => "Custom path".into(),
         None => {
             let detected = detect_image_key(name);
             if detected == PLACEHOLDER_KEY {
-                "Image: auto (placeholder)".into()
+                "Image: auto (Kumkaj)".into()
             } else {
                 format!("Image: auto → {detected}")
             }

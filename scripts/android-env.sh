@@ -74,10 +74,14 @@ ensure_android_toolchain() {
 
 android_pkg_opts() {
   local sdk="$1"
+  # Prefer already-loaded KUMKAJ_APP_* from load_kumkaj_env; fall back to production ids.
+  local pkg="${KUMKAJ_APP_ID:-com.kumkaj.app}"
+  local label="${KUMKAJ_APP_LABEL:-Kumkaj}"
   ANDROID_PKG_OPTS=(
-    --package-name=com.kumkaj.app
-    --app-label=Kumkaj
+    --package-name="$pkg"
+    --app-label="$label"
     --abi=aarch64
     --sdk-path="$sdk"
   )
+  echo "Android package: $pkg ($label)"
 }

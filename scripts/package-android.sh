@@ -2,8 +2,13 @@
 # Android packaging via cargo-makepad (requires Android SDK/NDK toolchain).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=load-kumkaj-env.sh
+source "$ROOT/scripts/load-kumkaj-env.sh"
 # shellcheck source=android-env.sh
 source "$ROOT/scripts/android-env.sh"
+
+export KUMKAJ_ROOT="$ROOT"
+load_kumkaj_env production
 
 OUT="$ROOT/dist/android"
 mkdir -p "$OUT"
@@ -17,19 +22,20 @@ android_pkg_opts "$ANDROID_HOME"
 cat > "$OUT/README.txt" <<EOF
 Kumkaj Android packaging
 ========================
-Application id: com.kumkaj.app
-Label: Kumkaj
+Application id: ${KUMKAJ_APP_ID}
+Label: ${KUMKAJ_APP_LABEL}
 Website: https://kumkaj.com
+Env file: env/production.env
 
 Build APK:
   MAKEPAD_ROOT=$MAKEPAD_ROOT ./scripts/package-android.sh
 
-Live install/run on device:
+Live install/run on device (development id com.kumkaj.app.debug):
   cargo kumkaj-android-dev
 
 Release AAB for Play Store (after creating a keystore):
   cargo run --manifest-path "\$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \\
-    android --package-name=com.kumkaj.app --app-label=Kumkaj --abi=aarch64 --sdk-path="\$ANDROID_HOME" \\
+    android --package-name=${KUMKAJ_APP_ID} --app-label=${KUMKAJ_APP_LABEL} --abi=aarch64 --sdk-path="\$ANDROID_HOME" \\
     --keystore=play.keystore --keystore-pass="\$MAKEPAD_KEYSTORE_PASS" \\
     build-aab -p kumkaj --release
 

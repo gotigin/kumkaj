@@ -2,9 +2,11 @@
 name = "kumkaj"
 version = "0.1.0"
 edition = "2024"
-description = "Gotigin Kumkaj — local-first business operating system"
+description = "Kumkaj — local-first business operating system (kumkaj.com)"
 license = "MIT OR Apache-2.0"
 
+# Packager metadata is the production id. Dev installs use env/development.env
+# (com.kumkaj.app.debug) via scripts — see docs/DEV.md.
 [package.metadata.packager]
 identifier = "com.kumkaj.app"
 product_name = "Kumkaj"

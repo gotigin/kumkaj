@@ -4,7 +4,7 @@
 //! Client uses `ureq` to pair, pull catalog/ledger/sales, and push sales/settlements.
 
 use crate::domain::{
-    rounding_needs_approval, Category, CreditLedgerEntry, Customer, DayTotals, DiningTable,
+    Category, CreditLedgerEntry, Customer, DayTotals, DiningTable,
     KitchenStation, KotTicket, PayMethod, Product, Sale, SaleDraft, StaffMember, TaxRate,
 };
 use crate::fiscal::FiscalSettings;
@@ -86,10 +86,6 @@ pub struct RemoteSaleRequest {
     /// Split tenders. Empty means a single tender in `pay`.
     #[serde(default)]
     pub payments: Vec<RemoteTender>,
-    /// Owner/Manager PIN when a cashier's round-off is large enough to be a
-    /// discount. The Server checks it and writes the audit on its own book.
-    #[serde(default)]
-    pub approval_pin: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -289,16 +285,7 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
             .into_iter()
             .find(|s| s.id == req.actor_id)
             .ok_or_else(|| "actor not found".to_string())?;
-        let needs_approval = !actor.role.can_void_refund()
-            && rounding_needs_approval(req.draft.lines_total_paise, req.draft.rounding_paise);
         let mut store = store;
-        // Checked before the bill is written, so a wrong PIN never leaves a sale
-        // behind. The approver is the person whose PIN was typed, not the cashier.
-        let approver = if needs_approval {
-            Some(store.verify_approval_pin(req.approval_pin.as_deref().unwrap_or(""))?)
-        } else {
-            None
-        };
         let table_id = resolve_table_id(&store, req.table_name.as_deref(), req.table_id.as_deref())?;
         let sale = if req.payments.is_empty() {
             let customer_id = if pay.is_credit() {
@@ -321,24 +308,39 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
                 customer_id.as_deref(),
                 &actor,
             )?
-        } else if !pay.is_split() {
-            return Err("Split tenders require pay method split".into());
         } else {
+            // Mixed Cash/UPI/Card/Credit (and legacy split) — amounts in `payments`.
+            if !pay.is_split() && req.payments.len() > 1 {
+                return Err("Multi-tender sale must use pay method split".into());
+            }
             let mut parts = Vec::with_capacity(req.payments.len());
             for tender in &req.payments {
                 let tender_method = PayMethod::parse(&tender.pay)
                     .ok_or_else(|| format!("bad pay method {}", tender.pay))?;
                 parts.push((tender_method, tender.amount_paise));
             }
-            store.finalize_sale_split(&req.draft, &parts, table_id.as_deref(), &actor)?
+            let needs_credit = parts.iter().any(|(m, _)| m.is_credit());
+            let customer_id = if needs_credit {
+                if let Some(id) = req.customer_id.clone() {
+                    Some(id)
+                } else if let Some(name) =
+                    req.customer_name.as_deref().map(str::trim).filter(|s| !s.is_empty())
+                {
+                    Some(store.find_or_create_customer(name)?.id)
+                } else {
+                    return Err("Credit part needs a customer".into());
+                }
+            } else {
+                None
+            };
+            store.finalize_sale_tenders(
+                &req.draft,
+                &parts,
+                table_id.as_deref(),
+                customer_id.as_deref(),
+                &actor,
+            )?
         };
-        if let Some(approver) = approver {
-            let detail = format!(
-                "{}: round {} on lines {} · rung by {}",
-                sale.id, sale.rounding_paise, sale.lines_total_paise, actor.name
-            );
-            store.audit(&approver, "sale.discount_approved", &detail)?;
-        }
         let body = serde_json::to_string(&sale).map_err(|e| e.to_string())?;
         return write_http(&mut stream, 200, &body);
     }

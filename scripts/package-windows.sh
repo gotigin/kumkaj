@@ -3,6 +3,10 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+# shellcheck source=load-kumkaj-env.sh
+source "$ROOT/scripts/load-kumkaj-env.sh"
+export KUMKAJ_ROOT="$ROOT"
+load_kumkaj_env production
 OUT="$ROOT/dist/windows"
 mkdir -p "$OUT"
 
@@ -33,6 +37,6 @@ Preferred: build on a Windows machine with Rust + MSVC:
   copy target\release\kumkaj.exe
 
 Cross-compile from Linux when a Windows target + linker is configured.
-Data directory on Windows: %APPDATA%\Gotigin\Kumkaj\
+Data directory on Windows: %APPDATA%\com.kumkaj.app\
 EOF
 echo "Windows package folder: $OUT"

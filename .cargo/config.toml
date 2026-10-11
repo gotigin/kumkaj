@@ -1,8 +1,8 @@
 [alias]
-# Live Cursor workflow: Splash/script_mod hot-reload + remote tweaker (F12).
+# Live Cursor workflow: loads env/development.env, then --hot --remote (F12).
 # Usage: cargo kumkaj-dev
-kumkaj-dev = ["run", "-p", "kumkaj", "--", "--hot", "--remote"]
-# Android: build + install + launch on connected device/emulator.
+kumkaj-dev = ["run", "-p", "kumkaj-dev", "--"]
+# Android: build + install + launch (env/development.env → com.kumkaj.app.debug).
 # Usage: cargo kumkaj-android-dev
 # (No Splash --hot on Android — each run rebuilds and relaunches.)
 kumkaj-android-dev = ["run", "-p", "kumkaj-android-dev", "--"]

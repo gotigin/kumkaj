@@ -1,7 +1,8 @@
 # Kumkaj --- Product Vision & Requirements
 
 > **Product name:** Kumkaj (*business*)\
-> **Brand / company:** Gotigin\
+> **Brand / domain:** Kumkaj · kumkaj.com\
+> **Platform ids:** production `com.kumkaj.app` · development `com.kumkaj.app.debug` (reverse-DNS under kumkaj.com; see [`DEV.md`](DEV.md))\
 > **Document purpose:** Consolidate the important product ideas,
 > requirements, principles, scope, and scaling model for Kumkaj so
 > future development stays focused on the actual product rather than
@@ -97,6 +98,16 @@ expense buckets), treat that as a signal for a **shared primitive**
 the primitive; let the entity's labels and defaults provide the concrete
 feel. Do not fork a trade-specific schema or “mode” that duplicates the
 core.
+
+**Start templates** (including **None** — bare minimal) are how that concrete feel is
+applied at first run: labels, feature defaults, and bill-type wording
+(**Tax invoice / Account booking** vs **Cash memo / Cash booking** — one sales
+table with a tag, not two ledgers; courier software uses the same account vs
+cash booking idea). Templates never create a separate product and **never
+pre-load sample items or parties** — the owner adds their own catalogue. None
+starts bare-minimal on the same core so features can be added later.
+**None is the default selection** on first run and is applied automatically if the
+owner never picks another template (store id remains `custom`).
 
 ------------------------------------------------------------------------
 
@@ -679,7 +690,7 @@ part of paid cloud usage, never a requirement for local operation.
 
 Cloud capabilities are optional enhancements for businesses that need
 remote visibility, automatic offsite backup, multi-location
-coordination over WAN, or other Gotigin-hosted infrastructure.
+coordination over WAN, or other Kumkaj-hosted infrastructure.
 
 Potential cloud responsibilities include:
 
@@ -694,7 +705,7 @@ Potential cloud responsibilities include:
 -   usage metering and billing for the resources above.
 
 Local multi-device coordination over a restaurant's own LAN does **not**
-require Gotigin Cloud and must remain available as part of free local
+require Kumkaj Cloud and must remain available as part of free local
 operation.
 
 Synchronization must be designed for unreliable networks:
@@ -719,7 +730,7 @@ Earlier planning used **Community / Professional Evaluation
 The finalized commercial identity for Kumkaj is:
 
 > **Kumkaj is free to run locally, forever. Use the local product fully.
-> If you want Gotigin Cloud, pay only for the cloud resources you
+> If you want Kumkaj Cloud, pay only for the cloud resources you
 > actually consume. Same rates for everyone.**
 
 Core principle:
@@ -727,7 +738,7 @@ Core principle:
 > **Software capability is not the thing being sold. Infrastructure
 > consumption is.**
 
-Gotigin does not decide who is “small” or “enterprise” for pricing.
+Kumkaj does not decide who is “small” or “enterprise” for pricing.
 A chai seller and a large restaurant group see the **same price sheet**.
 The large group simply consumes more cloud resources and therefore pays
 a larger total bill.
@@ -757,19 +768,19 @@ Free local capabilities include (as implemented over time):
 -   KOT / KDS;
 -   local backup / restore;
 -   multi-device operation over the restaurant's own LAN;
--   other local-only capabilities that do not consume Gotigin
+-   other local-only capabilities that do not consume Kumkaj
     infrastructure.
 
-Do **not** charge for things that cost Gotigin essentially nothing to
+Do **not** charge for things that cost Kumkaj essentially nothing to
 host, such as number of employees, menu items, tables, local orders,
 local devices on a LAN, inventory features, KOT, or local reports.
 
-A restaurant may run locally for years, never pay Gotigin, and still
+A restaurant may run locally for years, never pay Kumkaj, and still
 have a functioning system. Local data remains owned by the restaurant.
 
 ### Kumkaj Cloud --- Paid by Usage, Same Rates for All
 
-Cloud is optional. Customers pay when they use Gotigin-hosted
+Cloud is optional. Customers pay when they use Kumkaj-hosted
 infrastructure, for example:
 
 -   remote access / owner dashboard;
@@ -788,7 +799,7 @@ Initial metering should stay simple and customer-facing, for example:
 -   **Compute-heavy services** only when those services exist and truly
     cost money.
 
-Internally Gotigin may meter many resources. Externally the message
+Internally Kumkaj may meter many resources. Externally the message
 stays simple: **free local product; pay for cloud resources used; same
 rates for everyone.** Exact unit prices are commercial configuration,
 not a product claim in this document.
@@ -1221,7 +1232,7 @@ integration.
 
 Neither should have to sacrifice ownership of their data or the ability
 to operate locally. Neither should have to pay for software capability
-they can run on their own machines; payment applies to Gotigin Cloud
+they can run on their own machines; payment applies to Kumkaj Cloud
 resources they actually consume.
 
 ------------------------------------------------------------------------

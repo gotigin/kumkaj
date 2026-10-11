@@ -1,0 +1,9 @@
+[package]
+name = "kumkaj-dev"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "kumkaj-dev"
+path = "main.rs"

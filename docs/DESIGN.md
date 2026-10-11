@@ -15,9 +15,14 @@ Tables, Kitchen, Sales, Day close, Reports, Inventory, Branches, Credit, Team, B
 
 | Screen | When |
 |---|---|
-| **DeviceSetup** | First run only — shop or extra till |
+| **DeviceSetup** | Every launch — Server Mode or Client Mode |
 | **Lock** | Owner/Staff PIN (extra till prefers Staff when team exists) |
-| **Onboard** | After first Owner PIN on the shop — Fresh vs Book |
+| **Onboard** | After first Owner PIN — start template chips (**None** default / Counter / Courier / Food / Personal), then Fresh vs Book. None applies if nothing else is tapped. |
+| **Settings** | Switch start template anytime (labels/defaults only — no sample catalogue). None is the bare-minimal default. |
+| **Choice chips** | Selected face = `ChipBtnActive` visible; idle = `ChipBtn`. Horizontal `ChipStrip` scrolls with wheel/scrollbar only (not drag), so taps register. |
+| **Min width** | Layout floor **320 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`). |
+| **Button ink** | Shared faces use `padding` + `label_walk.margin` so labels never sit flush on the face edge. Long dual CTAs use `ActionStack`, not half-width `ActionRow`. |
+| **Reports** | Today / month books, party aging, expenses, bank cashbook posts — generic books, not a vertical report suite. |
 | **ClientPair** | Extra till until paired (IP + pairing code) |
 | **DayClose** | More → Day close (totals + copy) |
 | **Reports** | More → Reports & expenses (top items + expense log + tax inside sales) |
@@ -52,12 +57,12 @@ The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel par
 ## Contrast checklist (Makepad)
 
 - Theme label ink = `#1a1c1e` (never white/cream as default).
-- Placeholders = `#75777f` (hover `#45464e`).
+- Placeholders = `#75777f` (hover `#45464e`) — muted dark on light wells (`FieldInput` / `CartField`); never white-on-gray. Re-bind `draw_text.color_empty*` on stock inputs after theme (same bake issue as the caret).
 - Pay / tab buttons on navy: white text in every state.
 
 ## Product cues that must stay obvious
 
-- Empty catalog: clear CTA to Items / example items.
+- Empty catalog: clear CTA to Items (no sample items are pre-loaded).
 - Sold out / stock: Items → Sold out / Restock; Inventory for tracked qty; Sell grid blocks unavailable.
 - Tables & kitchen: Settings toggle; More rows hidden until on.
 - Order type: Counter / Dine-in / Takeaway chips on Sell only when Tables & kitchen is on.

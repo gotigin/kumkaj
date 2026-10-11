@@ -474,7 +474,7 @@ fn en(key: &str) -> String {
         "unit_at" => "Unit @",
         "actual" => "Actual",
         "applied" => "Applied",
-        "note_ph" => "Note for kitchen (optional)",
+        "note_ph" => "Note (optional)",
         "rounded" => "ROUNDED",
         "split" => "Split",
         "send_kot" => "Send KOT",
@@ -494,6 +494,9 @@ fn en(key: &str) -> String {
         "branches" => "Branches",
         "branches_org" => "Branches & org",
         "credit_customers" => "Credit customers",
+        "customer_name_ph" => "Customer name",
+        "new_customer_ph" => "New customer name",
+        "start_template" => "Start template",
         "team" => "Team",
         "team_pins" => "Team & PINs",
         "backup_settings" => "Backup & settings",
@@ -508,12 +511,12 @@ fn en(key: &str) -> String {
         "prev" => "Prev",
         "next" => "Next",
         "ok" => "OK",
-        "this_shop" => "This device is the shop",
-        "extra_till" => "This is an extra till",
+        "this_shop" => "Server Mode",
+        "extra_till" => "Client Mode",
         "off" => "Off",
         "tables_kitchen" => "Tables & kitchen",
-        "server" => "Shop",
-        "client" => "Till",
+        "server" => "Server",
+        "client" => "Client",
         "language_currency" => "Language & currency",
         "language" => "Language",
         "currency" => "Currency",
@@ -526,6 +529,14 @@ fn en(key: &str) -> String {
 
 fn lookup(table: &[(&'static str, &'static str)], key: &str) -> Option<&'static str> {
     table.iter().find(|(k, _)| *k == key).map(|(_, v)| *v)
+}
+
+/// Locale string with optional template overlays (concrete feel without forks).
+pub fn t_overlay(lang: &str, key: &str, overlays: &[(&str, &str)]) -> String {
+    if let Some((_, value)) = overlays.iter().find(|(k, _)| *k == key) {
+        return (*value).into();
+    }
+    t(lang, key)
 }
 
 /// Minimal UI string table — expand per language over time.

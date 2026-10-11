@@ -8,7 +8,7 @@ Commands and paths below are from the **workspace root** (parent of `docs/`).
 cargo kumkaj-dev
 ```
 
-Equivalent: `cargo run -p kumkaj -- --hot --remote`
+Loads [`env/development.env`](../env/development.env) then `cargo run -p kumkaj -- --hot --remote`.
 
 - `--hot` — Splash/`script_mod!` hot reload on save
 - `--remote` — Tweaker via **F12**
@@ -18,7 +18,57 @@ Equivalent: `cargo run -p kumkaj -- --hot --remote`
   - Path-dep from `apps/kumkaj`; applies Wayland scroll-sign + dark caption button patches
   - Nested Settings lists claim wheel events so the page does not scroll with the list
 - Multi-script UI fonts in `apps/kumkaj/resources/fonts/` (Noto Sans for Indian + world scripts; Font Awesome for ✕/⌫/✓; CJK/emoji from Makepad widgets). Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
-- **Mobile-first** window (`390×844`) even on desktop — the seller-sized frame
+- **Mobile-first** default window (`390×844`) on desktop — seller-sized frame
+- **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
+- **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
+- **Button label inset** — every shared face sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
+- **Reusable layout widgets** (Makepad 2 gaps): `ChipStrip` + `ChipStripRow` + `ChipBtn` / `ChipBtnActive` (wheel/scrollbar scroll — not drag, so taps work; selected = active face via visibility swap), `ActionRow` (short labels only) + `RowPrimaryBtn` / `RowSecondaryBtn`, `ActionStack` (full-width stacked actions — prefer at 320px for multi-word CTAs)
+
+## Development vs production env
+
+All platform package / bundle ids are **reverse-DNS under kumkaj.com**. There is no Gotigin (or other vendor) segment in ids or data paths.
+
+| | Development | Production |
+|---|---|---|
+| Env file | [`env/development.env`](../env/development.env) | [`env/production.env`](../env/production.env) |
+| How | `cargo kumkaj-dev`, `cargo kumkaj-android-dev` | `./scripts/package-*.sh` |
+| `KUMKAJ_APP_ID` | `com.kumkaj.app.debug` | `com.kumkaj.app` |
+| `KUMKAJ_APP_LABEL` | Kumkaj Dev | Kumkaj |
+| Size badge (`KUMKAJ_SHOW_SIZE_BADGE`) | on (`1`) — `W×H` in caption | off (`0`) |
+
+`apps/kumkaj/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
+
+### Platform naming (dev vs prod)
+
+Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surfaces them:
+
+| Platform | Development | Production |
+|---|---|---|
+| **Android** package name / application id | `com.kumkaj.app.debug` | `com.kumkaj.app` |
+| **Android** launcher label | Kumkaj Dev | Kumkaj |
+| **iOS / macOS** bundle id (when signed) | `com.kumkaj.app.debug` | `com.kumkaj.app` |
+| **Linux / Windows / macOS** binary name | `kumkaj` (dev run via cargo) | `kumkaj` / `kumkaj.exe` under `dist/` |
+| **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.kumkaj.app"`, `product_name = "Kumkaj"` |
+| **Web** | local `cargo kumkaj-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./scripts/package-web.sh`) — not an OS package id |
+| **Play Store** listing | side-load / internal only | application id `com.kumkaj.app` (`web/play-store-listing.txt`) |
+
+### Data directories (keyed by `KUMKAJ_APP_ID`)
+
+Dev and prod can sit side-by-side on one machine because paths differ by id. No extra vendor folder under the id.
+
+| Platform | Development | Production |
+|---|---|---|
+| Linux | `~/.local/share/com.kumkaj.app.debug/` | `~/.local/share/com.kumkaj.app/` |
+| Windows | `%APPDATA%\com.kumkaj.app.debug\` | `%APPDATA%\com.kumkaj.app\` |
+| macOS | `~/Library/Application Support/com.kumkaj.app.debug/` | `~/Library/Application Support/com.kumkaj.app/` |
+| Android | `/data/user/0/com.kumkaj.app.debug/files/` | `/data/user/0/com.kumkaj.app/files/` |
+| DB file | `kumkaj.sqlite3` in that dir | same |
+| Backups | `…/<APP_ID>/backups/` | same |
+| Override | `KUMKAJ_DATA_DIR` | same |
+
+### Start template default (onboarding)
+
+Chip strip: **None** / Counter / Courier / Food / Personal. Stable store id for None is `custom`. **None is selected by default** (active chip + meta). If the owner proceeds with Fresh / Bring my book / Done without tapping another template, None is applied automatically.
 - Pay methods: Cash · instant rail (UPI / Pix / PayNow / … per country pack) · Card · **Credit** · **Split Cash+rail** (Server and paired Client)
 - **UI theme:** Stitch Tactile Countertop ([`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`)
   - Cool surface `#f9f9fc`, navy `#041534` / `#1b2a4a`, terracotta `#a23e18`
@@ -33,7 +83,7 @@ cargo kumkaj-android-dev
 
 Equivalent: `./scripts/kumkaj-android-dev.sh`
 
-Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches `com.kumkaj.app`.
+Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.app.debug`** (from `env/development.env`).
 
 **Launcher icon:** PNGs under `apps/kumkaj/resources/android/res/mipmap-*/ic_launcher.png` (required by cargo-makepad). Regenerate from `apps/kumkaj/resources/kumkaj-mark.png` with `./scripts/generate-app-icons.sh`, then reinstall.
 
@@ -84,9 +134,7 @@ Bottom tabs: **Sell** · **Items** · **More** (tables/kitchen/sales/day close/r
 
 ## Data location
 
-- Linux: `~/.local/share/Gotigin/Kumkaj/kumkaj.sqlite3`
-- Backups: `~/.local/share/Gotigin/Kumkaj/backups/`
-- Override: `KUMKAJ_DATA_DIR`
+See **Platform naming** / **Data directories** above. Short form: DB and backups live under the baked `KUMKAJ_APP_ID` on each OS; override with `KUMKAJ_DATA_DIR`.
 
 ### Backup format — unencrypted
 
@@ -111,7 +159,7 @@ implemented — it is a Kumkaj Cloud concern, not a local-POS one.
 ### Restore (clean install)
 
 1. Quit Kumkaj.
-2. Copy a backup file to `…/Gotigin/Kumkaj/backups/restore.sqlite3`.
+2. Copy a backup file to `…/<KUMKAJ_APP_ID>/backups/restore.sqlite3`.
 3. Launch → More → Backup & settings → **Restore backup**.
 4. Unlock and confirm today’s sales still appear.
 
@@ -206,12 +254,12 @@ cargo test -p kumkaj
 6. `./scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
 7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh`
 
-Android application id: `com.kumkaj.app` (domain: kumkaj.com).
+Platform ids: see **Platform naming** above (`com.kumkaj.app` / `com.kumkaj.app.debug`, domain kumkaj.com).
 
 ## Manual UI smoke (shipping)
 
 1. Unlock with `0000` (or set Owner PIN on first Server run)
-2. Finish onboarding (Fresh starter menu or Book)
+2. Finish onboarding — **None** is pre-selected; Fresh or Book, then Done (other templates optional)
 3. Add Tea ×4; optionally edit `@`, line **Applied**, and **Note**; set order type Counter / Dine-in / Takeaway
 4. Confirm bill shows three totals:
    - **Actual Total** = sum of `@ × qty`
@@ -227,11 +275,12 @@ Android application id: `com.kumkaj.app` (domain: kumkaj.com).
 
 ## Schema
 
-Current meta `schema_version` **13**.
+Current meta `schema_version` **15** (entity templates, unit labels, milli qty, bill-type tag / Account vs Cash booking, cashbook / bank movements).
 
 - v11 — org/branches, categories, kitchen stations, stock movements, purchases, sync outbox, product tax/station/category/modifiers/stock, sale order_type/tax/branch
 - v12 — worldwide fiscal packs: `tax_rates` table (per branch), `products.tax_rate_id`, `sales.tax_pricing` / `tax_label` / `net_paise` / `service_paise`, and `meta` keys `country_code`, `tax_pricing`, `tax_label`, `business_tax_id`, `business_id_label`, `digital_pay_label`, `credit_label`, `date_order`, `decimal_sep`, `thousands_sep`, `service_charge_bps`. Upgrading seeds the India pack (no behaviour change for existing shops) and backfills `net_paise = total − tax` for old inclusive sales.
 - v13 — `sales.invoice_no` plus `meta` keys `next_invoice_seq` and `pin_reset_required`. Rows written earlier keep an empty `invoice_no` and print the short id instead (`Sale::bill_no`).
+- v15 — `money_movements` cashbook (till↔bank / bank in/out); Reports: period books, party aging, bank posts; richer receipts (party, qty units, Account/Cash booking bill type).
 
 ### Invoice numbers
 

@@ -9,6 +9,9 @@ mkdir -p "$OUT"
 cat > "$OUT/README.txt" <<'EOF'
 Kumkaj Apple platform scaffold
 ===============================
+Bundle / application id (kumkaj.com reverse-DNS):
+  production: com.kumkaj.app   (env/production.env)
+  development: com.kumkaj.app.debug   (env/development.env)
 Policy: do everything that does not require a physical Mac; skip only
 real-Mac device verification and signed App Store submission.
 

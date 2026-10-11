@@ -6,9 +6,10 @@ pub use makepad_widgets;
 use crate as kumkaj;
 
 use kumkaj::domain::{
-    new_id, Cart, Customer, DiningTable, KotTicket, Money, OrderType, PayMethod, Product, Sale,
-    SaleRevision, StaffFeatures, StaffMember, StaffRole, VenueMode,
+    new_id, Cart, Customer, DiningTable, KotTicket, Money, MoneyLane, MoneyMoveKind, OrderType,
+    PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole, VenueMode,
 };
+use kumkaj::entity_template;
 use kumkaj::{domain, fiscal, locale};
 use kumkaj::fiscal::{FiscalSettings, TaxPricing};
 use kumkaj::locale::{LocaleSettings, CURRENCIES, LANGUAGES};
@@ -29,13 +30,40 @@ fn app_state() -> &'static Mutex<AppState> {
     STATE.get_or_init(|| Mutex::new(AppState::boot()))
 }
 
-/// Start of a finger that landed on the left edge, so a rightward swipe can go back.
-fn swipe_origin() -> &'static Mutex<Option<(u64, DVec2)>> {
-    static ORIGIN: OnceLock<Mutex<Option<(u64, DVec2)>>> = OnceLock::new();
+/// Edge-swipe tracking: left edge → back, right edge → forward.
+#[derive(Clone, Copy)]
+enum SwipeNav {
+    Back,
+    Forward,
+}
+
+fn swipe_origin() -> &'static Mutex<Option<(u64, DVec2, SwipeNav)>> {
+    static ORIGIN: OnceLock<Mutex<Option<(u64, DVec2, SwipeNav)>>> = OnceLock::new();
     ORIGIN.get_or_init(|| Mutex::new(None))
 }
 
-/// Void, refund and a big round-off are Owner/Manager work. A cashier alone at
+/// Desktop mouse/trackpad edge swipe (Makepad has no Event::FingerUp at app level).
+fn mouse_swipe_origin() -> &'static Mutex<Option<(DVec2, SwipeNav)>> {
+    static ORIGIN: OnceLock<Mutex<Option<(DVec2, SwipeNav)>>> = OnceLock::new();
+    ORIGIN.get_or_init(|| Mutex::new(None))
+}
+
+/// Linux often emits both MouseButton::BACK and XF86Back for one click.
+fn nav_gesture_ok() -> bool {
+    static LAST: OnceLock<Mutex<Option<std::time::Instant>>> = OnceLock::new();
+    let last = LAST.get_or_init(|| Mutex::new(None));
+    let mut guard = last.lock().unwrap();
+    let now = std::time::Instant::now();
+    if let Some(prev) = *guard
+        && now.duration_since(prev) < Duration::from_millis(140)
+    {
+        return false;
+    }
+    *guard = Some(now);
+    true
+}
+
+/// Void and refund are Owner/Manager work. A cashier alone at
 /// the counter should not have to hand the device over or log the manager in
 /// mid-queue, so an Owner/Manager PIN typed on the spot stands in: the approver
 /// becomes the recorded actor, and the note says who asked for it.
@@ -115,6 +143,10 @@ struct AppState {
     client_paired: bool,
     /// Book-import wizard step: 0=choose, 1=items hint, 2=credit opening.
     onboard_step: u8,
+    /// Active start template id (`custom`, `courier_agency`, …).
+    entity_template_id: String,
+    /// Bill type for the open cart (Account booking / Tax invoice vs Cash booking / Cash memo).
+    money_lane: MoneyLane,
     day_close_text: String,
     /// Inventory screen body (low stock + recent movements).
     ops_panel_text: String,
@@ -158,6 +190,9 @@ struct AppState {
     unlock_blocked_until: Option<std::time::Instant>,
     /// Owner must choose a new PIN before the till opens (post-migration reset).
     pin_reset_required: bool,
+    /// Browser-style screen history for Back / Forward (mouse, swipe, keys).
+    nav_back: Vec<Screen>,
+    nav_forward: Vec<Screen>,
 }
 
 /// Wrong PINs tolerated before [`UNLOCK_BLOCK`] kicks in.
@@ -214,6 +249,13 @@ enum Screen {
     Branches,
 }
 
+fn screen_keeps_history(screen: Screen) -> bool {
+    !matches!(
+        screen,
+        Screen::DeviceSetup | Screen::Lock | Screen::Onboard | Screen::ClientPair
+    )
+}
+
 impl AppState {
     fn boot() -> Self {
         let mut state = Self {
@@ -244,6 +286,8 @@ impl AppState {
             client_paired: false,
             extra_tills_allowed: false,
             onboard_step: 0,
+            entity_template_id: "custom".into(),
+            money_lane: MoneyLane::Declared,
             day_close_text: String::new(),
             ops_panel_text: String::new(),
             branches_text: String::new(),
@@ -268,6 +312,8 @@ impl AppState {
             failed_unlocks: 0,
             unlock_blocked_until: None,
             pin_reset_required: false,
+            nav_back: Vec::new(),
+            nav_forward: Vec::new(),
         };
         match Store::open_default() {
             Ok(store) => {
@@ -316,6 +362,9 @@ impl AppState {
         self.venue_mode = store.venue_mode().unwrap_or(VenueMode::Counter);
         self.client_paired = store.client_paired().unwrap_or(false);
         self.pin_reset_required = store.pin_reset_required().unwrap_or(false);
+        self.entity_template_id = store
+            .entity_template_id()
+            .unwrap_or_else(|_| "custom".into());
         Ok(())
     }
 
@@ -323,38 +372,22 @@ impl AppState {
         self.device_role == DeviceRole::Server && self.extra_tills_allowed
     }
 
-    /// Skip the first-run screen when a role is already saved. LAN only when extra tills are on.
+    /// Every process start asks Server vs Client again. Last choice is only a
+    /// default in storage — never a lock that skips the chooser after restart.
     fn route_after_stored_role(&mut self) {
-        match self.device_role {
-            DeviceRole::Unset => {
-                self.must_confirm_device_role = true;
-                self.screen = Screen::DeviceSetup;
-                self.status = "How will this device be used?".into();
-            }
+        self.must_confirm_device_role = true;
+        self.screen = Screen::DeviceSetup;
+        self.status = match self.device_role {
             DeviceRole::Server => {
-                self.must_confirm_device_role = false;
-                self.screen = Screen::Lock;
-                if self.extra_tills_allowed {
-                    if let Some(store) = self.store.as_ref() {
-                        let code = store.pairing_code().unwrap_or_default();
-                        let path = store.db_path().to_path_buf();
-                        let _ = net::ensure_server(path, code);
-                    }
-                    self.status = "Shop device — extra tills can join".into();
-                } else {
-                    self.status = "This device holds the books".into();
-                }
+                "Last time: Server Mode — tap again to continue, or switch".into()
             }
             DeviceRole::Client => {
-                self.must_confirm_device_role = false;
-                self.screen = if self.client_paired {
-                    Screen::Lock
-                } else {
-                    Screen::ClientPair
-                };
-                self.status = "Extra till".into();
+                "Last time: Client Mode — tap again to continue, or switch".into()
             }
-        }
+            DeviceRole::Unset => "How will this device be used?".into(),
+        };
+        // Warm LAN only after they confirm Server + extra tills on Lock path.
+        // Do not start the server while the chooser is open.
     }
 
     /// Guard for anything the shop device alone may write. An extra till's catalogue,
@@ -607,6 +640,16 @@ impl AppState {
                 self.money(Money(report.day.credit_paise))
             ),
             format!(
+                "{} {}",
+                self.lane_declared_label(),
+                self.money(Money(report.day.declared_paise))
+            ),
+            format!(
+                "{} {}",
+                self.lane_owner_label(),
+                self.money(Money(report.day.owner_lane_paise))
+            ),
+            format!(
                 "Still owed {}",
                 self.money(Money(report.outstanding_credit_paise))
             ),
@@ -615,13 +658,17 @@ impl AppState {
                 self.money(Money(report.expenses_paise)),
                 report.expense_count
             ),
+            format!(
+                "Bank net today {}",
+                self.money(Money(report.bank_net_paise))
+            ),
             format!("{tax_caption} {}", self.money(Money(report.day.tax_paise))),
             "Top items:".into(),
         ];
         for (name, qty, rev) in &report.top_items {
             lines.push(format!("  {name} ×{qty} · {}", self.money(Money(*rev))));
         }
-        lines.push("See Branches for multi-outlet roll-up".into());
+        lines.push("Use Month / Aging / Bank below for full books".into());
         lines.join("\n")
     }
 
@@ -648,7 +695,20 @@ impl AppState {
     }
 
     fn t(&self, key: &str) -> String {
-        locale::t(&self.locale.language, key)
+        let tmpl = entity_template::resolve(&self.entity_template_id);
+        locale::t_overlay(&self.locale.language, key, tmpl.label_overrides)
+    }
+
+    fn lane_declared_label(&self) -> String {
+        entity_template::resolve(&self.entity_template_id)
+            .lane_declared_label
+            .into()
+    }
+
+    fn lane_owner_label(&self) -> String {
+        entity_template::resolve(&self.entity_template_id)
+            .lane_owner_label
+            .into()
     }
 
     fn today_label(&self) -> String {
@@ -665,6 +725,15 @@ impl AppState {
                     t.sale_count,
                     self.money(t.revenue())
                 )];
+                if t.declared_paise != 0 || t.owner_lane_paise != 0 {
+                    lines.push(format!(
+                        "{} {} · {} {}",
+                        self.lane_declared_label(),
+                        self.money(Money(t.declared_paise)),
+                        self.lane_owner_label(),
+                        self.money(Money(t.owner_lane_paise))
+                    ));
+                }
                 lines.push(format!(
                     "{} {} · {} {} · {} {}",
                     self.t("cash"),
@@ -807,20 +876,38 @@ script_mod! {
     mod.theme.color_cursor_empty = #x041534
     mod.theme.color_cursor_border = #x041534
 
-    // Stock TextInput caret color is baked from theme at widget-def time (often
-    // still white). Re-bind after our theme so EVERY TextInput — not just one
-    // hand-styled field — shows a visible blinking caret when focused.
+    // Stock TextInput caret + placeholder colors are baked from theme at
+    // widget-def time (often white on gray wells). Re-bind after our theme so
+    // EVERY TextInput shows a visible caret and readable placeholders.
     // Do NOT use set_type_default() here (Android Animator UAF).
     mod.widgets.TextInputFlat = mod.widgets.TextInputFlat{
         blink_speed: 0.5
         draw_cursor +: {
             color: #x041534
         }
+        draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_focus: #x1a1c1e
+            color_down: #x1a1c1e
+            color_empty: #x75777f
+            color_empty_hover: #x45464e
+            color_empty_focus: #x45464e
+        }
     }
     mod.widgets.TextInput = mod.widgets.TextInput{
         blink_speed: 0.5
         draw_cursor +: {
             color: #x041534
+        }
+        draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_focus: #x1a1c1e
+            color_down: #x1a1c1e
+            color_empty: #x75777f
+            color_empty_hover: #x45464e
+            color_empty_focus: #x45464e
         }
     }
     mod.theme.color_icon = #x1a1c1e
@@ -847,12 +934,13 @@ script_mod! {
     mod.theme.color_outset_2_hover = #xf3f3f6
     mod.theme.color_outset_2_down = #xe8e8ea
     mod.theme.color_outset_2_focus = #xffffff
-    // Selection band on light fields: mid-dark, not pale wash
-    mod.theme.color_selection = #xd9dadc
-    mod.theme.color_selection_hover = #xc5c6cf
-    mod.theme.color_selection_down = #xc5c6cf
-    mod.theme.color_selection_focus = #xb7c6ee
-    mod.theme.color_selection_empty = #xd9dadc
+    // Selection band: opaque mid-blue on light page (plan: visible, not pale wash).
+    // Dark ink (#x1a1c1e) stays readable on this band.
+    mod.theme.color_selection = #x3d6fd9FF
+    mod.theme.color_selection_hover = #x3d6fd9FF
+    mod.theme.color_selection_down = #x2f5bb8FF
+    mod.theme.color_selection_focus = #x3d6fd9FF
+    mod.theme.color_selection_empty = #x3d6fd9FF
     mod.theme.color_selection_disabled = #xe8e8ea
 
     // Default Label ink. Keep stock flow — forcing Down drops glyphs on Android GLES.
@@ -865,7 +953,17 @@ script_mod! {
 
     // Default Button: light face + dark ink (identical in every pointer state).
     // Set color_2* = color* so the bevel gradient never washes to a second light.
+    // Label inset: Makepad 2 Fill + Ellipsis can pin ink to the face edge when only
+    // layout padding is set — keep padding *and* label_walk.margin on every face.
     mod.widgets.Button = set_type_default() do mod.widgets.Button{
+        align: Center
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xffffff
             color_hover: #xf3f3f6
@@ -898,11 +996,22 @@ script_mod! {
     // freezing the whole UI (PIN keypad included). Style fields via theme +
     // per-instance blink_speed/padding only (see FieldInput).
 
-    // Makepad 2 ScrollYView: keep stock wheel/trackpad sign (do not invert).
+    // Makepad 2 ScrollYView: wheel/trackpad scroll only. Drag-scroll steals
+    // text selection gestures; selectable WrapLabels need the drag.
     mod.widgets.ScrollYView = mod.widgets.ViewBase {
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: false show_scroll_y: true
-            scroll_bar_y.drag_scrolling: true
+            scroll_bar_y.drag_scrolling: false
+        }
+    }
+
+    // Horizontal chip/tab strip. Wheel/scrollbar scroll only — drag-scroll
+    // co-captures and steals Button taps after a 2px move (Makepad 2).
+    mod.widgets.ScrollXView = mod.widgets.ViewBase {
+        scroll_bars: mod.widgets.ScrollBars {
+            show_scroll_x: true show_scroll_y: false
+            scroll_bar_x.drag_scrolling: false
+            scroll_bar_x.bar_size: 4.
         }
     }
 
@@ -964,6 +1073,15 @@ script_mod! {
 
     let NavBtn = Button{
         width: Fill height: 52
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x1b2a4a
             color_hover: #x24365e
@@ -988,6 +1106,9 @@ script_mod! {
             color_down: #xffffff
             color_focus: #xffffff
             color_disabled: #xe8e8ea
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 15.}
         }
     }
@@ -995,8 +1116,14 @@ script_mod! {
     // Compact back control for More child screens (+ header).
     let BackBtn = Button{
         width: 128 height: 40
-        align: Align{x: 0.5 y: 0.5}
-        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+        align: Center
+        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 14. right: 14.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x1b2a4a
             color_hover: #x24365e
@@ -1021,8 +1148,15 @@ script_mod! {
 
     let TabBtn = Button{
         width: Fill height: 56
-        align: Align{x: 0.5 y: 0.5}
+        align: Center
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
+        padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 8. right: 8.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x00000000
             color_hover: #x1b2a4a
@@ -1050,7 +1184,16 @@ script_mod! {
 
     // Secondary pay — navy + white (never white face on white cart).
     let PayBtn = Button{
-        width: Fill height: 48
+        width: Fill height: 52
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x1b2a4a
             color_hover: #x24365e
@@ -1075,12 +1218,23 @@ script_mod! {
             color_down: #xffffff
             color_focus: #xffffff
             color_disabled: #xe8e8ea
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 14.}
         }
     }
 
     let PinKey = Button{
         width: Fill height: 56
+        align: Center
+        padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 8. right: 8.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xffffff
             color_hover: #xf3f3f6
@@ -1106,8 +1260,18 @@ script_mod! {
         }
     }
 
+    // PIN pad OK — same narrow cell as digit keys; tight insets so "OK" never becomes "...".
     let PinOkKey = Button{
         width: Fill height: 56
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 8. right: 8.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x1b2a4a
             color_hover: #x24365e
@@ -1126,12 +1290,62 @@ script_mod! {
             color_hover: #xffffff
             color_down: #xffffff
             color_focus: #xffffff
+            ink_centered: true
+            max_lines: 1
             text_style +: {font_size: 18.}
         }
     }
 
-    let RoleChip = Button{
-        width: Fill height: 36
+    // Side-by-side row actions — same height/margins so mixed primary/secondary
+    // never sit on different baselines (Makepad Fill+theme margin misaligns).
+    // Defined as full Button (not PinOkKey alias) so padding always applies.
+    // Prefer ActionStack when labels are longer than ~10 chars at 320px width.
+    let RowPrimaryBtn = Button{
+        width: Fill height: 52
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x1b2a4a
+            color_hover: #x24365e
+            color_down: #x041534
+            color_focus: #x1b2a4a
+            color_2: #x1b2a4a
+            color_2_hover: #x24365e
+            color_2_down: #x041534
+            color_2_focus: #x1b2a4a
+            border_color: #x1b2a4a
+            border_radius: 14.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 15.}
+        }
+    }
+    let RowSecondaryBtn = Button{
+        width: Fill height: 52
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xe2e2e5
             color_hover: #xd9dadc
@@ -1142,7 +1356,7 @@ script_mod! {
             color_2_down: #xc5c6cf
             color_2_focus: #xe2e2e5
             border_color: #xc5c6cf
-            border_radius: 8.
+            border_radius: 14.
             border_size: 1.
         }
         draw_text +: {
@@ -1150,12 +1364,73 @@ script_mod! {
             color_hover: #x1a1c1e
             color_down: #x1a1c1e
             color_focus: #x1a1c1e
-            text_style +: {font_size: 11.}
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 15.}
         }
     }
+    // Prefer ActionStack for CTAs. ActionRow only for 2 ultra-short labels
+    // (≤4 chars) — Fill NavBtn/PayBtn in a Right row becomes "..." at ~320px.
+    let ActionRow = View{
+        width: Fill height: Fit
+        flow: Right spacing: 8
+        align: Align{y: 0.5}
+    }
+    // Full-width stacked actions — required when labels are longer than ~4 chars.
+    let ActionStack = View{
+        width: Fill height: Fit
+        flow: Down spacing: 8
+    }
 
-    let RoleChipActive = Button{
-        width: Fill height: 36
+    // Chip for horizontal strips: Fit width (scroll, don't crush). Cap width so
+    // long labels ellipsis instead of stealing the whole strip.
+    let ChipBtn = Button{
+        width: Fit{max: 160.} height: 40
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 14. right: 14.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xe2e2e5
+            color_hover: #xd9dadc
+            color_down: #xc5c6cf
+            color_focus: #xe2e2e5
+            color_2: #xe2e2e5
+            color_2_hover: #xd9dadc
+            color_2_down: #xc5c6cf
+            color_2_focus: #xe2e2e5
+            border_color: #xc5c6cf
+            border_radius: 10.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_down: #x1a1c1e
+            color_focus: #x1a1c1e
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 13.}
+        }
+    }
+    let ChipBtnActive = Button{
+        width: Fit{max: 160.} height: 40
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 14. right: 14.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x041534
             color_hover: #x1b2a4a
@@ -1166,7 +1441,7 @@ script_mod! {
             color_2_down: #x041534
             color_2_focus: #x041534
             border_color: #x041534
-            border_radius: 8.
+            border_radius: 10.
             border_size: 0.
         }
         draw_text +: {
@@ -1174,14 +1449,101 @@ script_mod! {
             color_hover: #xffffff
             color_down: #xffffff
             color_focus: #xffffff
-            text_style +: {font_size: 11.}
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 13.}
+        }
+    }
+    // Inner row for ChipStrip — Fit-wide so the strip can scroll horizontally.
+    let ChipStripRow = View{
+        width: Fit height: Fill
+        flow: Right spacing: 8
+        align: Align{y: 0.5}
+        padding: Inset{left: 0. right: 12. top: 4. bottom: 4.}
+    }
+    // Horizontally scrollable chip/tab strip. Children: ChipStripRow { ChipBtn… }.
+    let ChipStrip = ScrollXView{
+        width: Fill height: 52
+    }
+
+    let RoleChip = Button{
+        width: Fill height: 40
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 14. right: 14.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xe2e2e5
+            color_hover: #xd9dadc
+            color_down: #xc5c6cf
+            color_focus: #xe2e2e5
+            color_2: #xe2e2e5
+            color_2_hover: #xd9dadc
+            color_2_down: #xc5c6cf
+            color_2_focus: #xe2e2e5
+            border_color: #xc5c6cf
+            border_radius: 10.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_down: #x1a1c1e
+            color_focus: #x1a1c1e
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 13.}
+        }
+    }
+
+    let RoleChipActive = Button{
+        width: Fill height: 40
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 14. right: 14.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x041534
+            color_hover: #x1b2a4a
+            color_down: #x041534
+            color_focus: #x041534
+            color_2: #x041534
+            color_2_hover: #x1b2a4a
+            color_2_down: #x041534
+            color_2_focus: #x041534
+            border_color: #x041534
+            border_radius: 10.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+            ink_centered: true
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 13.}
         }
     }
 
 
-    // Styled field — padding/blink/caret for ALL app inputs. Do not touch
-    // draw_bg color tracks (Animator owns those; mutating them on Android
-    // risks use-after-free). Every FieldInput inherits a visible caret.
+    // Styled field — padding/blink/caret/placeholder for ALL app inputs. Do not
+    // touch draw_bg color tracks (Animator owns those; mutating them on Android
+    // risks use-after-free). Every FieldInput inherits a visible caret and dark
+    // placeholder on the gray well.
     let FieldInput = TextInput{
         width: Fill
         height: Fit
@@ -1190,7 +1552,28 @@ script_mod! {
         draw_cursor +: {
             color: #x041534
         }
+        // Flat opaque selection — color_2 must match (no light gradient wash).
+        draw_selection +: {
+            gradient_fill_horizontal: 0.0
+            color: #x3d6fd9FF
+            color_hover: #x3d6fd9FF
+            color_focus: #x3d6fd9FF
+            color_down: #x2f5bb8FF
+            color_empty: #x3d6fd9FF
+            color_2: #x3d6fd9FF
+            color_2_hover: #x3d6fd9FF
+            color_2_focus: #x3d6fd9FF
+            color_2_down: #x2f5bb8FF
+            color_2_empty: #x3d6fd9FF
+        }
         draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_focus: #x1a1c1e
+            color_down: #x1a1c1e
+            color_empty: #x75777f
+            color_empty_hover: #x45464e
+            color_empty_focus: #x45464e
             text_style +: {font_size: 16.}
         }
     }
@@ -1222,14 +1605,28 @@ script_mod! {
         }
     }
 
-    // Full-width copy that must wrap — never Fit-width in a squeezed Right row
-    // (that clips/truncates on the right). Use for brand lines, hints, status,
-    // chips, and any text that can grow longer than the phone width.
-    let WrapLabel = Label{
+    // Full-width selectable copy (Markdown TextFlow) with real `visible`
+    // support — stock Markdown/TextFlow ignore set_visible. Use `body:`.
+    // Leave Button / product-card Labels as Label so taps stay clean.
+    mod.widgets.WrapLabelBase = #(WrapLabel::register_widget(vm))
+    mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
         height: Fit
         padding: 0.
+        selectable: true
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        font_size: 14.
+        font_color: #x1a1c1e
+        draw_text +: {
+            color: #x1a1c1e
+        }
+        draw_block +: {
+            // Opaque mid-blue (RRGGBBAA) — readable dark ink on top, clear on white page.
+            selection_color: #x3d6fd9FF
+        }
     }
+    let WrapLabel = mod.widgets.WrapLabel{}
 
     // Sell token: Fit height — list row estimate must stay >= natural size.
     let ProductCard = RoundedView{
@@ -1271,6 +1668,14 @@ script_mod! {
         add := Button{
             text: "ADD"
             width: Fill height: 48
+            align: Center
+            padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+            label_walk: Walk{
+                width: Fit
+                height: Fit
+                margin: Inset{left: 16. right: 16.}
+            }
+            icon_walk: Walk{width: 0. height: 0.}
             draw_bg +: {
                 color: #xa23e18
                 color_hover: #x822801
@@ -1428,9 +1833,9 @@ script_mod! {
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
         label := WrapLabel{
-            text: "Item"
-            draw_text.color: #x041534
-            draw_text.text_style.font_size: 16.
+            body: "Item"
+            font_color: #x041534
+            font_size: 16.
         }
         // Stitch qty dial: Volume − [N] +  (screen 03 / layout spec qty_stepper)
         RoundedView{
@@ -1528,9 +1933,9 @@ script_mod! {
             width: Fill height: Fit
             flow: Right spacing: 8
             line_actual_label := WrapLabel{
-                text: "Actual 0"
-                draw_text.color: #x1a1c1e
-                draw_text.text_style.font_size: 13.
+                body: "Actual 0"
+                font_color: #x1a1c1e
+                font_size: 13.
             }
             View{
                 width: Fill height: Fit
@@ -1559,7 +1964,7 @@ script_mod! {
         note := CartField{
             height: 48
             padding: Inset{left: 10. right: 10. top: 10. bottom: 10.}
-            empty_text: "Note for kitchen (optional)"
+            empty_text: "Note (optional)"
             text: ""
             draw_text +: {
                 text_style +: {font_size: 14.}
@@ -1607,9 +2012,9 @@ script_mod! {
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
         label := WrapLabel{
-            text: "sale"
-            draw_text.color: #x1a1c1e
-            draw_text.text_style.font_size: 13.
+            body: "sale"
+            font_color: #x1a1c1e
+            font_size: 13.
         }
         pick := CardActionBtn{text: "Select" height: 40}
     }
@@ -1624,9 +2029,9 @@ script_mod! {
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
         label := WrapLabel{
-            text: "customer"
-            draw_text.color: #x1a1c1e
-            draw_text.text_style.font_size: 14.
+            body: "customer"
+            font_color: #x1a1c1e
+            font_size: 14.
         }
         pick := Button{
             text: "Pick"
@@ -1663,9 +2068,9 @@ script_mod! {
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
         label := WrapLabel{
-            text: "locale"
-            draw_text.color: #x1a1c1e
-            draw_text.text_style.font_size: 14.
+            body: "locale"
+            font_color: #x1a1c1e
+            font_size: 14.
         }
         pick := Button{
             text: "Use"
@@ -1700,8 +2105,8 @@ script_mod! {
         draw_bg.border_radius: 16.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
-        name := WrapLabel{text: "T1" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
-        status := WrapLabel{text: "available" draw_text.color: #x45464e}
+        name := WrapLabel{body: "T1" font_color: #x1a1c1e font_size: 20.}
+        status := WrapLabel{body: "available" font_color: #x45464e}
         action := CardActionBtn{text: "Use"}
     }
 
@@ -1713,7 +2118,7 @@ script_mod! {
         draw_bg.border_radius: 16.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
-        label := WrapLabel{text: "kot" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+        label := WrapLabel{body: "kot" font_color: #x1a1c1e font_size: 15.}
         advance := CardActionBtn{text: "Advance"}
     }
 
@@ -1930,13 +2335,30 @@ script_mod! {
         ui: Root{
             main_window := Window{
                 window.title: "Kumkaj"
-                // Mobile-first frame, including on desktop.
+                // Default seller frame. Layout content never goes below 320 css px
+                // (see app_shell Fill{min: 320.} + horizontal scroll).
                 window.inner_size: vec2(390, 844)
                 pass.clear_color: #xd5d7dc
                 caption_bar +: {
                     draw_bg.color: #x1b2a4a
-                    caption_label +: {
-                        label +: {
+                    // Left cluster in the title bar: size · Kumkaj (not over content).
+                    caption_label: View{
+                        width: Fill height: Fill
+                        flow: Right
+                        align: Align{x: 0.0 y: 0.5}
+                        padding: Inset{left: 10. right: 10.}
+                        spacing: 8
+                        dev_size_badge := View{
+                            width: Fit height: Fit
+                            align: Align{y: 0.5}
+                            dev_size_label := Label{
+                                width: Fit height: Fit
+                                text: "390×844"
+                                draw_text.color: #xfe8357
+                                draw_text.text_style.font_size: 11.
+                            }
+                        }
+                        label := Label{
                             text: "Kumkaj"
                             draw_text.color: #xffffff
                         }
@@ -1945,6 +2367,13 @@ script_mod! {
                 body +: {
                     width: Fill height: Fill
                     flow: Down spacing: 0
+                    // Min layout width 320 css px. Narrower viewports scroll horizontally
+                    // instead of crushing faces below that floor.
+                    app_hscroll := ScrollXView{
+                        width: Fill height: Fill
+                        app_shell := View{
+                            width: Fill{min: 320.} height: Fill
+                            flow: Down spacing: 0
 
                     header := SolidView{
                         width: Fill height: Fit
@@ -1971,14 +2400,14 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
                                 brand_title := WrapLabel{
-                                    text: "Your shop"
-                                    draw_text.color: #xffffff
-                                    draw_text.text_style.font_size: 18.
+                                    body: "Your shop"
+                                    font_color: #xffffff
+                                    font_size: 18.
                                 }
                                 session_label := WrapLabel{
-                                    text: "Sell"
-                                    draw_text.color: #x8392b7
-                                    draw_text.text_style.font_size: 11.
+                                    body: "Sell"
+                                    font_color: #x8392b7
+                                    font_size: 11.
                                 }
                             }
                             shop_badge := Label{
@@ -1996,9 +2425,9 @@ script_mod! {
                         draw_bg.color: #xe8e8ea
                         today_label := WrapLabel{
                             width: Fill
-                            text: "Today: —"
-                            draw_text.color: #x1a1c1e
-                            draw_text.text_style.font_size: 12.
+                            body: "Today: —"
+                            font_color: #x1a1c1e
+                            font_size: 12.
                         }
                     }
 
@@ -2026,9 +2455,9 @@ script_mod! {
                                     View{
                                         width: Fill height: Fit
                                         WrapLabel{
-                                            text: "FIRST RUN · THIS DEVICE"
-                                            draw_text.color: #xffffff
-                                            draw_text.text_style.font_size: 10.
+                                            body: "FIRST RUN · THIS DEVICE"
+                                            font_color: #xffffff
+                                            font_size: 10.
                                         }
                                     }
                                     Label{
@@ -2066,38 +2495,40 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
                                                 setup_brand_title := WrapLabel{
-                                                    text: "Your shop"
-                                                    draw_text.color: #x041534
-                                                    draw_text.text_style.font_size: 18.
+                                                    body: "Your shop"
+                                                    font_color: #x041534
+                                                    font_size: 18.
                                                 }
                                                 WrapLabel{
-                                                    text: "How will this device be used?"
-                                                    draw_text.color: #x45464e
-                                                    draw_text.text_style.font_size: 12.
+                                                    body: "How will this device be used?"
+                                                    font_color: #x45464e
+                                                    font_size: 12.
                                                 }
                                             }
                                         }
                                     }
 
                                     WrapLabel{
-                                        text: "THIS DEVICE"
-                                        draw_text.color: #x1a1c1e
-                                        draw_text.text_style.font_size: 11.
+                                        body: "THIS DEVICE"
+                                        font_color: #x1a1c1e
+                                        font_size: 11.
                                     }
 
-                                    device_role_server := PinOkKey{text: "This device is the shop"}
-                                    device_role_client := RoleChip{text: "This is an extra till"}
+                                    ActionStack{
+                                        device_role_server := RowPrimaryBtn{text: "Server Mode"}
+                                        device_role_client := RowSecondaryBtn{text: "Client Mode"}
+                                    }
 
                                     WrapLabel{
-                                        text: "Shop: this phone or computer holds the books. Extra tills stay off until you allow them in Backup & settings. Extra till: pair to the shop device."
-                                        draw_text.color: #x45464e
-                                        draw_text.text_style.font_size: 12.
+                                        body: "Server Mode (standalone): this device holds the books. Client Mode: pair to a Server. Asked every launch — pick again or switch. Extra tills stay off until you allow them in Backup & settings."
+                                        font_color: #x45464e
+                                        font_size: 12.
                                     }
 
                                     device_setup_status := WrapLabel{
-                                        text: " "
-                                        draw_text.color: #xa23e18
-                                        draw_text.text_style.font_size: 12.
+                                        body: " "
+                                        font_color: #xa23e18
+                                        font_size: 12.
                                     }
                                 }
                             }
@@ -2123,9 +2554,9 @@ script_mod! {
                                     View{
                                         width: Fill height: Fit
                                         WrapLabel{
-                                            text: "MAKEPAD 2 · OFFLINE"
-                                            draw_text.color: #xffffff
-                                            draw_text.text_style.font_size: 10.
+                                            body: "MAKEPAD 2 · OFFLINE"
+                                            font_color: #xffffff
+                                            font_size: 10.
                                         }
                                     }
                                     Label{
@@ -2164,14 +2595,14 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
                                                 lock_brand_title := WrapLabel{
-                                                    text: "Your shop"
-                                                    draw_text.color: #x041534
-                                                    draw_text.text_style.font_size: 18.
+                                                    body: "Your shop"
+                                                    font_color: #x041534
+                                                    font_size: 18.
                                                 }
                                                 WrapLabel{
-                                                    text: "Counter 01 · Locked"
-                                                    draw_text.color: #x45464e
-                                                    draw_text.text_style.font_size: 12.
+                                                    body: "Counter 01 · Locked"
+                                                    font_color: #x45464e
+                                                    font_size: 12.
                                                 }
                                             }
                                             Label{
@@ -2182,19 +2613,17 @@ script_mod! {
                                         }
                                     }
 
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 8
-                                        role_owner := RoleChipActive{
-                                            text: "Owner"
-                                            width: Fit
-                                            padding: Inset{left: 18. right: 18.}
-                                        }
-                                        role_staff := RoleChip{
-                                            text: "Staff"
-                                            visible: false
-                                            width: Fit
-                                            padding: Inset{left: 18. right: 18.}
+                                    ChipStrip{
+                                        ChipStripRow{
+                                            role_owner := ChipBtnActive{
+                                                text: "Owner"
+                                                padding: Inset{left: 18. right: 18.}
+                                            }
+                                            role_staff := ChipBtn{
+                                                text: "Staff"
+                                                visible: false
+                                                padding: Inset{left: 18. right: 18.}
+                                            }
                                         }
                                     }
 
@@ -2203,20 +2632,18 @@ script_mod! {
                                         flow: Down spacing: 8
                                         visible: false
                                         WrapLabel{
-                                            text: "Who is unlocking?"
-                                            draw_text.color: #x1a1c1e
-                                            draw_text.text_style.font_size: 11.
+                                            body: "Who is unlocking?"
+                                            font_color: #x1a1c1e
+                                            font_size: 11.
                                         }
                                         lock_staff_label := WrapLabel{
-                                            text: "No staff yet — unlock as Owner, then Team"
-                                            draw_text.color: #x1a1c1e
-                                            draw_text.text_style.font_size: 14.
+                                            body: "No staff yet — unlock as Owner, then Team"
+                                            font_color: #x1a1c1e
+                                            font_size: 14.
                                         }
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 8
-                                            lock_staff_prev := NavBtn{text: "Prev"}
-                                            lock_staff_next := NavBtn{text: "Next"}
+                                        ActionStack{
+                                            lock_staff_prev := NavBtn{text: "Previous staff"}
+                                            lock_staff_next := NavBtn{text: "Next staff"}
                                         }
                                     }
 
@@ -2230,9 +2657,9 @@ script_mod! {
                                         draw_bg.border_size: 1.
                                         draw_bg.border_color: #xe2e2e5
                                         pin_prompt := WrapLabel{
-                                            text: "ENTER OWNER PASSCODE"
-                                            draw_text.color: #x1a1c1e
-                                            draw_text.text_style.font_size: 11.
+                                            body: "ENTER OWNER PASSCODE"
+                                            font_color: #x1a1c1e
+                                            font_size: 11.
                                         }
                                         pin_label := Label{
                                             text: "○  ○  ○  ○"
@@ -2240,14 +2667,14 @@ script_mod! {
                                             draw_text.text_style.font_size: 28.
                                         }
                                         pin_hint := WrapLabel{
-                                            text: "Owner sets up this shop with a PIN"
-                                            draw_text.color: #x45464e
-                                            draw_text.text_style.font_size: 12.
+                                            body: "Owner sets up this shop with a PIN"
+                                            font_color: #x45464e
+                                            font_size: 12.
                                         }
                                         pin_status := WrapLabel{
-                                            text: " "
-                                            draw_text.color: #xa23e18
-                                            draw_text.text_style.font_size: 12.
+                                            body: " "
+                                            font_color: #xa23e18
+                                            font_size: 12.
                                         }
                                     }
 
@@ -2281,14 +2708,14 @@ script_mod! {
                                     }
 
                                     WrapLabel{
-                                        text: "Local SQLite · Free Forever · Zero Cloud"
-                                        draw_text.color: #x1a1c1e
-                                        draw_text.text_style.font_size: 11.
+                                        body: "Local SQLite · Free Forever · Zero Cloud"
+                                        font_color: #x1a1c1e
+                                        font_size: 11.
                                     }
                                     WrapLabel{
-                                        text: "Or unlock with login id + password"
-                                        draw_text.color: #x45464e
-                                        draw_text.text_style.font_size: 11.
+                                        body: "Or unlock with login id + password"
+                                        font_color: #x45464e
+                                        font_size: 11.
                                     }
                                     lock_login_id := FieldInput{empty_text: "Login id"}
                                     lock_login_password := FieldInput{empty_text: "Password"}
@@ -2305,48 +2732,85 @@ script_mod! {
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
                                 WrapLabel{
-                                    text: "Set up your shop"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 22.
+                                    body: "Set up your shop"
+                                    font_color: #x1a1c1e
+                                    font_size: 22.
                                 }
                                 onboard_status := WrapLabel{
-                                    text: "Name this place if you want, then Start fresh or Bring my book."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Name this place if you want, then Start fresh or Bring my book."
+                                    font_color: #x45464e
+                                    font_size: 13.
                                 }
                                 onboard_venue_input := FieldInput{empty_text: "Name of this place (optional)"}
                                 onboard_org_input := FieldInput{empty_text: "Organization (optional)"}
                                 onboard_save_venue := NavBtn{text: "Save names"}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    onboard_fresh := PinOkKey{text: "Start fresh"}
-                                    onboard_book := RoleChip{text: "Bring my book"}
+                                WrapLabel{
+                                    body: "Start template — how this place should feel (None = bare minimal)"
+                                    font_color: #x1a1c1e
+                                    font_size: 15.
+                                }
+                                ChipStrip{
+                                    ChipStripRow{
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            onboard_tmpl_custom := ChipBtn{text: "None" visible: false}
+                                            onboard_tmpl_custom_on := ChipBtnActive{text: "None"}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            onboard_tmpl_counter := ChipBtn{text: "Counter"}
+                                            onboard_tmpl_counter_on := ChipBtnActive{text: "Counter" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            onboard_tmpl_courier := ChipBtn{text: "Courier"}
+                                            onboard_tmpl_courier_on := ChipBtnActive{text: "Courier" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            onboard_tmpl_food := ChipBtn{text: "Food"}
+                                            onboard_tmpl_food_on := ChipBtnActive{text: "Food" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            onboard_tmpl_personal := ChipBtn{text: "Personal"}
+                                            onboard_tmpl_personal_on := ChipBtnActive{text: "Personal" visible: false}
+                                        }
+                                    }
+                                }
+                                onboard_tmpl_hint := WrapLabel{
+                                    body: "None is bare minimal. Other templates only label and seed the same books — not separate apps."
+                                    font_color: #x45464e
+                                    font_size: 12.
+                                }
+                                ActionStack{
+                                    onboard_fresh := RowPrimaryBtn{text: "Start fresh"}
+                                    onboard_book := RowSecondaryBtn{text: "Bring my book"}
                                 }
                                 WrapLabel{
-                                    text: "Fresh starts empty. You can add example items, or type your own in Items. Book lets you enter opening items and credit balances."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Fresh starts empty — add your own rates or items under Items. Book lets you enter opening items and credit balances."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    onboard_seed := NavBtn{text: "Add example items"}
-                                    onboard_empty := NavBtn{text: "Empty menu"}
-                                }
-                                Label{text: "Book — add product" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+                                onboard_empty := RowPrimaryBtn{text: "Continue empty"}
+                                WrapLabel{body: "Book — add product" font_color: #x1a1c1e font_size: 15.}
                                 onboard_item_name := FieldInput{empty_text: "Item name"}
                                 onboard_item_price := FieldInput{empty_text: "Price"}
-                                onboard_add_item := NavBtn{text: "Add item to menu"}
-                                Label{text: "Book — opening credit" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+                                onboard_add_item := NavBtn{text: "Add item"}
+                                WrapLabel{body: "Book — opening credit" font_color: #x1a1c1e font_size: 15.}
                                 onboard_cust_name := FieldInput{empty_text: "Customer name"}
                                 onboard_cust_bal := FieldInput{empty_text: "Amount owed"}
                                 onboard_add_credit := NavBtn{text: "Add opening balance"}
                                 onboard_done := PinOkKey{text: "Done — start selling"}
                                 WrapLabel{
-                                    text: "Later: Settings → apply your country pack for tax and pay labels."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Later: Settings → apply your country pack for tax and pay labels."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
                             }
                         }
@@ -2358,17 +2822,23 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
-                                WrapLabel{
-                                    text: "Connect to the shop device"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 22.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{y: 0.5}
+                                    client_pair_back := BackBtn{text: "Back"}
+                                    WrapLabel{
+                                        body: "Connect to the Server"
+                                        font_color: #x1a1c1e
+                                        font_size: 22.
+                                    }
                                 }
                                 client_pair_status := WrapLabel{
-                                    text: "Enter the shop device IP and 6-digit pairing code. Selling is blocked until paired."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Enter the Server IP and 6-digit pairing code. Or tap Back to choose Server Mode instead."
+                                    font_color: #x45464e
+                                    font_size: 13.
                                 }
-                                client_host_input := FieldInput{empty_text: "Shop device IP (e.g. 192.168.1.10)"}
+                                client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
                                 client_code_input := FieldInput{empty_text: "Pairing code"}
                                 client_pair_btn := PinOkKey{text: "Pair now"}
                                 client_sync_btn := NavBtn{text: "Refresh from shop"}
@@ -2398,14 +2868,14 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down spacing: 2
                                         session_chip := WrapLabel{
-                                            text: "Counter"
-                                            draw_text.color: #x1a1c1e
-                                            draw_text.text_style.font_size: 12.
+                                            body: "Counter"
+                                            font_color: #x1a1c1e
+                                            font_size: 12.
                                         }
                                         table_chip := WrapLabel{
-                                            text: "Counter sale · Takeaway"
-                                            draw_text.color: #x1a1c1e
-                                            draw_text.text_style.font_size: 11.
+                                            body: "Ready to sell"
+                                            font_color: #x1a1c1e
+                                            font_size: 11.
                                         }
                                     }
                                     Label{
@@ -2416,9 +2886,9 @@ script_mod! {
                                 }
 
                                 empty_catalog := WrapLabel{
-                                    text: "No items yet. Open Items to add your first product."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 14.
+                                    body: "No items yet. Open Items to add your first product."
+                                    font_color: #x1a1c1e
+                                    font_size: 14.
                                 }
                                 product_list := mod.widgets.ProductList{}
 
@@ -2427,18 +2897,18 @@ script_mod! {
                                     flow: Right spacing: 12
                                     align: Align{y: 0.5}
                                     padding: Inset{top: 4. bottom: 4.}
-                                    Label{
+                                    WrapLabel{
                                         width: Fit
-                                        text: "Active ledger"
-                                        draw_text.color: #x45464e
-                                        draw_text.text_style.font_size: 13.
+                                        body: "Active ledger"
+                                        font_color: #x45464e
+                                        font_size: 13.
                                     }
                                     View{width: Fill height: 1}
-                                    receipt_label := Label{
+                                    receipt_label := WrapLabel{
                                         width: Fit
-                                        text: "Ready"
-                                        draw_text.color: #x45464e
-                                        draw_text.text_style.font_size: 13.
+                                        body: "Ready"
+                                        font_color: #x45464e
+                                        font_size: 13.
                                     }
                                     clear_cart := Button{
                                         text: "Clear"
@@ -2472,9 +2942,9 @@ script_mod! {
                                     draw_bg.border_color: #x5c6570
                                     cart_list := mod.widgets.CartList{}
                                     cart_empty_hint := WrapLabel{
-                                        text: "Cart empty — tap + ADD on an item, then set QTY with − / +"
-                                        draw_text.color: #x45464e
-                                        draw_text.text_style.font_size: 12.
+                                        body: "Cart empty — tap + ADD on an item, then set QTY with − / +"
+                                        font_color: #x45464e
+                                        font_size: 12.
                                     }
 
                                     // Triple totals strip (Actual | Applied | Rounded)
@@ -2489,14 +2959,14 @@ script_mod! {
                                             flow: Down spacing: 2
                                             align: Align{x: 0.5}
                                             WrapLabel{
-                                                text: "ACTUAL TOTAL"
-                                                draw_text.color: #x45464e
-                                                draw_text.text_style.font_size: 10.
+                                                body: "ACTUAL TOTAL"
+                                                font_color: #x45464e
+                                                font_size: 10.
                                             }
                                             cart_natural_label := WrapLabel{
-                                                text: "0"
-                                                draw_text.color: #x1a1c1e
-                                                draw_text.text_style.font_size: 14.
+                                                body: "0"
+                                                font_color: #x1a1c1e
+                                                font_size: 14.
                                             }
                                         }
                                         View{
@@ -2504,14 +2974,14 @@ script_mod! {
                                             flow: Down spacing: 2
                                             align: Align{x: 0.5}
                                             WrapLabel{
-                                                text: "APPLIED TOTAL"
-                                                draw_text.color: #x45464e
-                                                draw_text.text_style.font_size: 10.
+                                                body: "APPLIED TOTAL"
+                                                font_color: #x45464e
+                                                font_size: 10.
                                             }
                                             cart_applied_label := WrapLabel{
-                                                text: "0"
-                                                draw_text.color: #x1a1c1e
-                                                draw_text.text_style.font_size: 14.
+                                                body: "0"
+                                                font_color: #x1a1c1e
+                                                font_size: 14.
                                             }
                                         }
                                         View{
@@ -2519,9 +2989,9 @@ script_mod! {
                                             flow: Down spacing: 2
                                             align: Align{x: 0.5}
                                             cart_charge_caption := WrapLabel{
-                                                text: "ROUNDED"
-                                                draw_text.color: #xa23e18
-                                                draw_text.text_style.font_size: 10.
+                                                body: "ROUNDED"
+                                                font_color: #xa23e18
+                                                font_size: 10.
                                             }
                                             cart_total_input := CartField{
                                                 empty_text: "0"
@@ -2550,66 +3020,88 @@ script_mod! {
                                     // Exclusive-tax shops quote net prices, so the strip above is
                                     // not what the customer pays — this line is.
                                     tax_estimate_label := WrapLabel{
-                                        text: " "
-                                        draw_text.color: #xa23e18
-                                        draw_text.text_style.font_size: 13.
+                                        body: " "
+                                        font_color: #xa23e18
+                                        font_size: 13.
                                     }
 
-                                    // Two by two. Four Fill buttons in one row on a phone
-                                    // squeeze Credit until the word clips and the tap misses.
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Down spacing: 8
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 8
-                                            pay_cash := PayBtn{text: "Cash"}
-                                            pay_upi := PayBtn{text: "UPI"}
-                                        }
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 8
-                                            pay_card := PayBtn{text: "Card"}
-                                            pay_credit := PayBtn{text: "Credit"}
+                                    // Amounts only — full bill in one field, or mix that adds up.
+                                    WrapLabel{
+                                        body: "Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above."
+                                        font_color: #x45464e
+                                        font_size: 11.
+                                    }
+                                    money_lane_label := WrapLabel{
+                                        body: "Bill: Tax invoice"
+                                        font_color: #x45464e
+                                        font_size: 12.
+                                    }
+                                    ChipStrip{
+                                        ChipStripRow{
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                lane_declared := ChipBtn{text: "Tax invoice"}
+                                                lane_declared_on := ChipBtnActive{text: "Tax invoice" visible: false}
+                                            }
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                lane_owner := ChipBtn{text: "Cash memo"}
+                                                lane_owner_on := ChipBtnActive{text: "Cash memo" visible: false}
+                                            }
                                         }
                                     }
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 8
-                                        pay_split := NavBtn{text: "Split"}
-                                        send_kot := NavBtn{text: "Send KOT" visible: false}
+                                    mix_cash_input := FieldInput{empty_text: "Cash amount"}
+                                    mix_upi_input := FieldInput{empty_text: "UPI amount"}
+                                    mix_card_input := FieldInput{empty_text: "Card amount"}
+                                    mix_credit_input := FieldInput{empty_text: "Credit / khata amount"}
+                                    ActionStack{
+                                        pay_mix := PayBtn{text: "Take payment"}
+                                        send_kot := RowPrimaryBtn{text: "Send KOT" visible: false}
                                     }
 
                                     // How this bill is served (hidden unless Tables & kitchen is on).
-                                    order_type_row := View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 8
+                                    order_type_row := ChipStrip{
                                         visible: false
-                                        order_counter := NavBtn{text: "Counter"}
-                                        order_dine := NavBtn{text: "Dine-in"}
-                                        order_takeaway := NavBtn{text: "Takeaway"}
+                                        ChipStripRow{
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                order_counter := ChipBtn{text: "Counter"}
+                                                order_counter_on := ChipBtnActive{text: "Counter" visible: false}
+                                            }
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                order_dine := ChipBtn{text: "Dine-in"}
+                                                order_dine_on := ChipBtnActive{text: "Dine-in" visible: false}
+                                            }
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                order_takeaway := ChipBtn{text: "Takeaway"}
+                                                order_takeaway_on := ChipBtnActive{text: "Takeaway" visible: false}
+                                            }
+                                        }
                                     }
                                     order_type_label := WrapLabel{
-                                        text: "Order: Counter"
+                                        body: "Order: Counter"
                                         visible: false
-                                        draw_text.color: #x45464e
-                                        draw_text.text_style.font_size: 12.
+                                        font_color: #x45464e
+                                        font_size: 12.
                                     }
                                 }
 
                                 cart_round_hint := WrapLabel{
-                                    text: "Rounded starts equal to Applied. Edit only to round the bill."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
-                                }
-                                discount_pin_input := FieldInput{
-                                    visible: false
-                                    empty_text: "Manager PIN — round-off over 10% needs approval"
+                                    body: "Rounded starts equal to Applied. Edit only to round the bill."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 credit_chip := WrapLabel{
-                                    text: "No customer yet — type a name, then tap Credit"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "No customer yet — type a name, then tap Credit"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 customer_name_input := FieldInput{
                                     empty_text: "Customer name"
@@ -2617,9 +3109,9 @@ script_mod! {
                                 customer_use := NavBtn{text: "Add / use this name"}
                                 customer_clear := NavBtn{text: "Clear customer"}
                                 customers_empty_hint := WrapLabel{
-                                    text: "Saved customers show up here for quick pick."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Saved customers show up here for quick pick."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 customer_list_sell := mod.widgets.CustomerList{}
                             }
@@ -2632,9 +3124,9 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                items_heading := WrapLabel{text: "Your items" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
-                                items_help_label := WrapLabel{text: "Tap an item to edit it. New item clears the form so you can add a different one. Sales already recorded keep the name they were charged with." draw_text.color: #x1a1c1e}
-                                menu_mode_label := WrapLabel{text: "Adding a new item" draw_text.color: #x041534 draw_text.text_style.font_size: 14.}
+                                items_heading := WrapLabel{body: "Your items" font_color: #x1a1c1e font_size: 20.}
+                                items_help_label := WrapLabel{body: "Tap an item to edit it. New item clears the form so you can add a different one. Sales already recorded keep the name they were charged with." font_color: #x1a1c1e}
+                                menu_mode_label := WrapLabel{body: "Adding a new item" font_color: #x041534 font_size: 14.}
                                 menu_name_input := FieldInput{
                                     empty_text: "Item name — type it in your language"
                                 }
@@ -2645,6 +3137,7 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
                                     menu_price_input := FieldInput{empty_text: "0"}
+                                    menu_unit_input := FieldInput{empty_text: "Unit (kg or blank)"}
                                     menu_new := Button{
                                         text: "New item"
                                         width: Fit height: 52
@@ -2682,11 +3175,11 @@ script_mod! {
                                     visible: false
                                     menu_station_input := FieldInput{empty_text: "Kitchen station (optional, created if new)"}
                                 }
-                                menu_modifiers_input := FieldInput{empty_text: "Modifiers — Extra cheese=20, Less sugar=0"}
+                                menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Large=20, Gift wrap=10"}
                                 image_hint := WrapLabel{
-                                    text: "Image: auto (from name)"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Image: auto (from name)"
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 draft_preview := Image{
                                     width: 96 height: 96
@@ -2694,18 +3187,16 @@ script_mod! {
                                     min_width: 96
                                     min_height: 96
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    image_auto := NavBtn{text: "Auto"}
-                                    image_prev := NavBtn{text: "◀"}
-                                    image_next := NavBtn{text: "▶"}
-                                    image_pick := NavBtn{text: "Photo"}
+                                ActionStack{
+                                    image_auto := NavBtn{text: "Auto from name"}
+                                    image_prev := NavBtn{text: "Previous image"}
+                                    image_next := NavBtn{text: "Next image"}
+                                    image_pick := NavBtn{text: "Pick photo"}
                                 }
                                 menu_empty := WrapLabel{
-                                    text: "No items yet — add one above."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 14.
+                                    body: "No items yet — add one above."
+                                    font_color: #x1a1c1e
+                                    font_size: 14.
                                 }
                                 product_list_menu := mod.widgets.MenuList{}
                             }
@@ -2718,10 +3209,10 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                more_heading := WrapLabel{text: "More" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 22.}
+                                more_heading := WrapLabel{body: "More" font_color: #x1a1c1e font_size: 22.}
                                     WrapLabel{
-                                        text: "Sales, credit, team, backup — inventory, extra tills, or tables when this shop needs them."
-                                        draw_text.color: #x45464e
+                                        body: "Sales, credit, team, backup — plus stock and extra tills when this shop needs them."
+                                        font_color: #x45464e
                                     }
                                 more_tables := MoreRow{text: "Tables"}
                                 more_kitchen := MoreRow{text: "Kitchen"}
@@ -2735,9 +3226,9 @@ script_mod! {
                                 more_settings := MoreRow{text: "Backup & settings"}
                                 more_lock := MoreRow{text: "Lock app"}
                                 more_mode_hint := WrapLabel{
-                                    text: " "
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: " "
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
                             }
                         }
@@ -2753,13 +3244,13 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     floor_back := BackBtn{text: "Back"}
-                                    floor_title := WrapLabel{text: "Tables" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    floor_title := WrapLabel{body: "Tables" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 clear_table := NavBtn{text: "Counter / takeaway"}
                                 floor_mode_hint := WrapLabel{
-                                    text: " "
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: " "
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
                                 floor_table_name := FieldInput{empty_text: "New table name"}
                                 floor_add_table := NavBtn{text: "Add table"}
@@ -2780,23 +3271,21 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     kitchen_back := BackBtn{text: "Back"}
-                                    kitchen_title := WrapLabel{text: "Kitchen" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    kitchen_title := WrapLabel{body: "Kitchen" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 kitchen_mode_hint := WrapLabel{
-                                    text: " "
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: " "
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                ActionStack{
                                     kitchen_station_all := NavBtn{text: "All stations"}
                                     kitchen_station_cycle := NavBtn{text: "Next station"}
                                 }
                                 kitchen_station_label := WrapLabel{
-                                    text: "Station: all"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Station: all"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 kot_list := mod.widgets.KotList{}
                             }
@@ -2813,41 +3302,41 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     sales_back := BackBtn{text: "Back"}
-                                    sales_title := WrapLabel{text: "Sales" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    sales_title := WrapLabel{body: "Sales" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 WrapLabel{
                                     width: Fill
-                                    text: "Select a sale to amend, void, or refund. Amendments keep full history."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Select a sale to amend, void, or refund. Amendments keep full history."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 sale_selected_label := WrapLabel{
-                                    text: "No sale selected"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "No sale selected"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 receipt_share_btn := NavBtn{text: "Copy receipt"}
                                 receipt_print_btn := NavBtn{text: "Print / open"}
                                 day_close_from_sales := NavBtn{text: "Day close summary"}
                                 amend_cart_list := mod.widgets.CartList{}
                                 amend_natural_label := WrapLabel{
-                                    text: "Actual Total 0"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Actual Total 0"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 amend_applied_label := WrapLabel{
-                                    text: "Applied Total 0"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Applied Total 0"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 8
                                         align: Align{y: 0.5}
                                         WrapLabel{
-                                            text: "Rounded Total"
-                                            draw_text.color: #xa23e18
-                                            draw_text.text_style.font_size: 14.
+                                            body: "Rounded Total"
+                                            font_color: #xa23e18
+                                            font_size: 14.
                                         }
                                         amend_total_input := CartField{
                                         padding: Inset{left: 14. right: 14. top: 14. bottom: 14.}
@@ -2873,13 +3362,11 @@ script_mod! {
                                     }
                                 }
                                 amend_round_hint := WrapLabel{
-                                    text: "Rounded Total starts equal to Applied Total. Edit only to round the bill."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Rounded Total starts equal to Applied Total. Edit only to round the bill."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                ActionStack{
                                     amend_pay_cash := PayBtn{text: "Cash"}
                                     amend_pay_upi := PayBtn{text: "UPI"}
                                     amend_pay_card := PayBtn{text: "Card"}
@@ -2891,21 +3378,19 @@ script_mod! {
                                     empty_text: "Manager PIN to approve (only if you cannot void)"
                                 }
                                 approval_hint := WrapLabel{
-                                    text: " "
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: " "
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                ActionStack{
                                     amend_btn := NavBtn{text: "Amend"}
                                     void_btn := NavBtn{text: "Void"}
                                     refund_btn := NavBtn{text: "Refund"}
                                 }
                                 sale_history_label := WrapLabel{
-                                    text: "History: —"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "History: —"
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 sale_list := mod.widgets.SaleList{}
                             }
@@ -2922,30 +3407,28 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     credit_back := BackBtn{text: "Back"}
-                                    credit_title := WrapLabel{text: "Credit" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    credit_title := WrapLabel{body: "Credit" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 WrapLabel{
                                     width: Fill
-                                    text: "Who owes what. Settle when they pay later."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Who owes what. Take payment to settle debt — or more than they owe to keep as advance for later."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 credit_summary_label := WrapLabel{
-                                    text: ""
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 credit_add_name := FieldInput{empty_text: "New customer name"}
                                 credit_add_btn := NavBtn{text: "Add customer"}
                                 customer_list_credit := mod.widgets.CustomerList{}
-                                WrapLabel{text: "Settle selected" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
-                                settle_amount_input := FieldInput{empty_text: "0"}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    settle_cash := NavBtn{text: "Settle cash"}
-                                    settle_upi := NavBtn{text: "Settle UPI"}
-                                    settle_card := NavBtn{text: "Settle card"}
+                                WrapLabel{body: "Pay selected (settle debt / take advance)" font_color: #x1a1c1e font_size: 15.}
+                                settle_amount_input := FieldInput{empty_text: "Amount received"}
+                                ActionStack{
+                                    settle_cash := NavBtn{text: "Pay cash"}
+                                    settle_upi := NavBtn{text: "Pay UPI"}
+                                    settle_card := NavBtn{text: "Pay card"}
                                 }
                             }
                         }
@@ -2961,79 +3444,93 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     team_back := BackBtn{text: "Back"}
-                                    team_title := WrapLabel{text: "Team" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    team_title := WrapLabel{body: "Team" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 WrapLabel{
                                     width: Fill
-                                    text: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
-                                staff_label := WrapLabel{text: "" draw_text.color: #x1a1c1e}
+                                staff_label := WrapLabel{body: "" font_color: #x1a1c1e}
                                 staff_name_input := FieldInput{empty_text: "Staff name / id"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Barista)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
                                 WrapLabel{
-                                    text: "Permission preset (what they can access)"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Permission preset (what they can access)"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 WrapLabel{
                                     width: Fill
-                                    text: "Cashier: sell. Manager: sell + items + void/amend."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Cashier: sell. Manager: sell + items + void/amend."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    staff_role_cashier := RoleChipActive{text: "Cashier"}
-                                    staff_role_manager := RoleChip{text: "Manager"}
-                                    staff_role_waiter := RoleChip{text: "Waiter" visible: false}
-                                    staff_role_kitchen := RoleChip{text: "Kitchen" visible: false}
+                                ChipStrip{
+                                    ChipStripRow{
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            staff_role_cashier := ChipBtn{text: "Cashier"}
+                                            staff_role_cashier_on := ChipBtnActive{text: "Cashier" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            staff_role_manager := ChipBtn{text: "Manager"}
+                                            staff_role_manager_on := ChipBtnActive{text: "Manager" visible: false}
+                                        }
+                                        staff_role_waiter_slot := View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            visible: false
+                                            staff_role_waiter := ChipBtn{text: "Waiter"}
+                                            staff_role_waiter_on := ChipBtnActive{text: "Waiter" visible: false}
+                                        }
+                                        staff_role_kitchen_slot := View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            visible: false
+                                            staff_role_kitchen := ChipBtn{text: "Kitchen"}
+                                            staff_role_kitchen_on := ChipBtnActive{text: "Kitchen" visible: false}
+                                        }
+                                    }
                                 }
                                 staff_add_cashier := NavBtn{text: "Add staff"}
                                 staff_set_login := NavBtn{text: "Set login on selected"}
                                 staff_deactivate := NavBtn{text: "Remove selected"}
                                 WrapLabel{
-                                    text: "Optional login (id + password). Owner sets once; only the user can change password later."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Optional login (id + password). Owner sets once; only the user can change password later."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
                                 staff_login_input := FieldInput{empty_text: "Login id (optional)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
                                 WrapLabel{
-                                    text: "Feature access for selected staff (tap after adding)"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: "Feature access for selected staff (tap after adding)"
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    feat_sell := NavBtn{text: "Sell"}
-                                    feat_items := NavBtn{text: "Items"}
-                                    feat_sales := NavBtn{text: "Sales"}
-                                    feat_credit := NavBtn{text: "Credit"}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    feat_floor := NavBtn{text: "Floor" visible: false}
-                                    feat_kitchen := NavBtn{text: "Kitchen" visible: false}
-                                    feat_team := NavBtn{text: "Team"}
-                                    feat_backup := NavBtn{text: "Backup"}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    feat_inventory := NavBtn{text: "Inventory"}
-                                    feat_branches := NavBtn{text: "Branches"}
+                                ChipStrip{
+                                    ChipStripRow{
+                                        feat_sell := ChipBtn{text: "Sell"}
+                                        feat_items := ChipBtn{text: "Items"}
+                                        feat_sales := ChipBtn{text: "Sales"}
+                                        feat_credit := ChipBtn{text: "Credit"}
+                                        feat_floor := ChipBtn{text: "Floor" visible: false}
+                                        feat_kitchen := ChipBtn{text: "Kitchen" visible: false}
+                                        feat_team := ChipBtn{text: "Team"}
+                                        feat_backup := ChipBtn{text: "Backup"}
+                                        feat_inventory := ChipBtn{text: "Inventory"}
+                                        feat_branches := ChipBtn{text: "Branches"}
+                                    }
                                 }
                                 feat_save := NavBtn{text: "Save features for selected staff"}
                                 WrapLabel{
-                                    text: "Change my PIN (only yours)"
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 15.
+                                    body: "Change my PIN (only yours)"
+                                    font_color: #x1a1c1e
+                                    font_size: 15.
                                 }
                                 my_pin_input := FieldInput{empty_text: "New PIN (4–12 digits)"}
                                 change_my_pin := NavBtn{text: "Update my PIN"}
@@ -3053,35 +3550,31 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     settings_back := BackBtn{text: "Back"}
-                                    settings_title := WrapLabel{text: "Language & currency" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    settings_title := WrapLabel{body: "Language & currency" font_color: #x1a1c1e font_size: 20.}
                                 }
-                                locale_label := WrapLabel{text: "" draw_text.color: #x1a1c1e}
-                                Label{text: "Country & tax" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                locale_label := WrapLabel{body: "" font_color: #x1a1c1e}
+                                WrapLabel{body: "Country & tax" font_color: #x1a1c1e font_size: 20.}
                                 WrapLabel{
                                     width: Fill
-                                    text: "A country pack sets the tax name and maths, the instant-pay rail, and the business id printed on bills. Kumkaj does not file taxes or issue government e-invoices anywhere."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "A country pack sets the tax name and maths, the instant-pay rail, and the business id printed on bills. Kumkaj does not file taxes or issue government e-invoices anywhere."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
-                                fiscal_label := WrapLabel{text: "" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 13.}
+                                fiscal_label := WrapLabel{body: "" font_color: #x1a1c1e font_size: 13.}
                                 country_code_input := FieldInput{
                                     empty_text: "Country code e.g. IN, GB, US, AE, BR"
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    country_prev := NavBtn{text: "‹ Browse"}
-                                    country_next := NavBtn{text: "Browse ›"}
+                                ActionStack{
+                                    country_prev := NavBtn{text: "Previous country"}
+                                    country_next := NavBtn{text: "Next country"}
                                 }
                                 country_apply := NavBtn{text: "Apply country pack"}
                                 country_hint := WrapLabel{
-                                    text: " "
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: " "
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                ActionStack{
                                     tax_inclusive_btn := NavBtn{text: "Tax inside price"}
                                     tax_exclusive_btn := NavBtn{text: "Tax added at till"}
                                 }
@@ -3090,72 +3583,116 @@ script_mod! {
                                     empty_text: "Service % optional 0/10/12"
                                 }
                                 fiscal_save := NavBtn{text: "Save business id & service %"}
-                                Label{text: "Language" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+                                WrapLabel{body: "Language" font_color: #x1a1c1e font_size: 15.}
                                 WrapLabel{
                                     width: Fill
-                                    text: "Scroll and tap Use. Languages worldwide are listed."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Scroll and tap Use. Languages worldwide are listed."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 language_list := mod.widgets.LanguageList{}
-                                Label{text: "Currency" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+                                WrapLabel{body: "Currency" font_color: #x1a1c1e font_size: 15.}
                                 WrapLabel{
                                     width: Fill
-                                    text: "Scroll and tap Use for any supported currency."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Scroll and tap Use for any supported currency."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 currency_list := mod.widgets.CurrencyList{}
-                                Label{text: "Tables & kitchen" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                WrapLabel{body: "Tables & kitchen" font_color: #x1a1c1e font_size: 20.}
                                 venue_mode_label := WrapLabel{
-                                    text: "Off — no tables or kitchen tickets"
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Off — no tables or kitchen tickets"
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    mode_counter := NavBtn{text: "Off"}
-                                    mode_restaurant := NavBtn{text: "Tables & kitchen"}
+                                ActionStack{
+                                    mode_counter := RowPrimaryBtn{text: "Off"}
+                                    mode_restaurant := RowSecondaryBtn{text: "Tables & kitchen"}
                                 }
-                                Label{text: "Extra tills" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                WrapLabel{body: "Extra tills" font_color: #x1a1c1e font_size: 20.}
                                 server_pair_label := WrapLabel{
-                                    text: " "
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: " "
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
-                                allow_extra_tills := NavBtn{text: "Allow extra tills"}
-                                stop_extra_tills := NavBtn{text: "Stop extra tills"}
+                                ActionStack{
+                                    allow_extra_tills := RowPrimaryBtn{text: "Allow extra tills"}
+                                    stop_extra_tills := RowSecondaryBtn{text: "Stop extra tills"}
+                                }
                                 settings_open_branches := NavBtn{text: "Branches & org"}
-                                Label{text: "Your brand (in-app)" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                WrapLabel{body: "Start template" font_color: #x1a1c1e font_size: 20.}
+                                settings_tmpl_label := WrapLabel{
+                                    body: "Current: None"
+                                    font_color: #x45464e
+                                    font_size: 13.
+                                }
                                 WrapLabel{
                                     width: Fill
-                                    text: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Switch labels and defaults without wiping sales. Catalogue and parties stay yours — nothing is auto-seeded."
+                                    font_color: #x45464e
+                                    font_size: 12.
+                                }
+                                ChipStrip{
+                                    ChipStripRow{
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_tmpl_custom := ChipBtn{text: "None" visible: false}
+                                            settings_tmpl_custom_on := ChipBtnActive{text: "None"}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_tmpl_counter := ChipBtn{text: "Counter"}
+                                            settings_tmpl_counter_on := ChipBtnActive{text: "Counter" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_tmpl_courier := ChipBtn{text: "Courier"}
+                                            settings_tmpl_courier_on := ChipBtnActive{text: "Courier" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_tmpl_food := ChipBtn{text: "Food"}
+                                            settings_tmpl_food_on := ChipBtnActive{text: "Food" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_tmpl_personal := ChipBtn{text: "Personal"}
+                                            settings_tmpl_personal_on := ChipBtnActive{text: "Personal" visible: false}
+                                        }
+                                    }
+                                }
+                                WrapLabel{body: "Your brand (in-app)" font_color: #x1a1c1e font_size: 20.}
+                                WrapLabel{
+                                    width: Fill
+                                    body: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
+                                    font_color: #x1a1c1e
+                                    font_size: 12.
                                 }
                                 venue_title_input := FieldInput{empty_text: "Name of this place"}
                                 venue_brand_hint := WrapLabel{
-                                    text: "Icon: none — choose one"
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Icon: none — choose one"
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    venue_icon_pick := NavBtn{text: "Choose icon"}
-                                    venue_icon_clear := NavBtn{text: "Clear icon"}
+                                ActionStack{
+                                    venue_icon_pick := RowPrimaryBtn{text: "Choose icon"}
+                                    venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := NavBtn{text: "Save brand"}
-                                Label{text: "Backup" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
-                                db_path_label := WrapLabel{text: "" draw_text.color: #x1a1c1e}
-                                audit_label := WrapLabel{text: "" draw_text.color: #x1a1c1e}
+                                WrapLabel{body: "Backup" font_color: #x1a1c1e font_size: 20.}
+                                db_path_label := WrapLabel{body: "" font_color: #x1a1c1e}
+                                audit_label := WrapLabel{body: "" font_color: #x1a1c1e}
                                 backup_btn := NavBtn{text: "Create backup"}
-                                backup_path_label := WrapLabel{text: "" draw_text.color: #x1a1c1e}
+                                backup_path_label := WrapLabel{body: "" font_color: #x1a1c1e}
                                 WrapLabel{
                                     width: Fill
-                                    text: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
-                                    draw_text.color: #x1a1c1e
+                                    body: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
+                                    font_color: #x1a1c1e
                                 }
                                 restore_btn := NavBtn{text: "Restore backup"}
                             }
@@ -3172,20 +3709,20 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     day_close_back := BackBtn{text: "Back"}
-                                    day_close_title := WrapLabel{text: "Day close" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    day_close_title := WrapLabel{body: "Day close" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 day_close_label := WrapLabel{
-                                    text: ""
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 14.
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 14.
                                 }
                                 day_close_copy := NavBtn{text: "Copy day close"}
                                 day_close_commit := NavBtn{text: "Record day close"}
                                 WrapLabel{
                                     width: Fill
-                                    text: "Recording a day close saves this summary and the time to the audit log. It does not stop you selling — one more late chai still rings up."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Recording a day close saves this summary and the time to the audit log. It does not stop you selling — a late customer still rings up."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
                             }
                         }
@@ -3201,17 +3738,38 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     reports_back := BackBtn{text: "Back"}
-                                    reports_title := WrapLabel{text: "Reports" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    reports_title := WrapLabel{body: "Reports" font_color: #x1a1c1e font_size: 20.}
+                                }
+                                WrapLabel{
+                                    width: Fill
+                                    body: "Day books, party aging, bank posts, and period P&L — same books for every entity."
+                                    font_color: #x45464e
+                                    font_size: 12.
+                                }
+                                ActionStack{
+                                    reports_today := RowPrimaryBtn{text: "Today books"}
+                                    reports_month := RowSecondaryBtn{text: "This month"}
+                                    reports_aging := RowSecondaryBtn{text: "Party aging"}
                                 }
                                 reports_label := WrapLabel{
-                                    text: ""
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
-                                Label{text: "Log expense" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+                                WrapLabel{body: "Log expense" font_color: #x1a1c1e font_size: 15.}
                                 expense_amount_input := FieldInput{empty_text: "Amount"}
-                                expense_note_input := FieldInput{empty_text: "Note (milk, gas, …)"}
+                                expense_note_input := FieldInput{empty_text: "Note (fuel, office, …)"}
                                 expense_add := NavBtn{text: "Add expense"}
+                                WrapLabel{body: "Bank / cashbook" font_color: #x1a1c1e font_size: 15.}
+                                bank_amount_input := FieldInput{empty_text: "Amount"}
+                                bank_note_input := FieldInput{empty_text: "Note (deposit, withdrawal, …)"}
+                                ActionStack{
+                                    bank_till_to_bank := RowPrimaryBtn{text: "Till → bank"}
+                                    bank_bank_to_till := RowSecondaryBtn{text: "Bank → till"}
+                                    bank_in := RowSecondaryBtn{text: "Bank in"}
+                                    bank_out := RowSecondaryBtn{text: "Bank out"}
+                                }
+                                reports_copy := NavBtn{text: "Copy report"}
                                 reports_refresh := NavBtn{text: "Refresh report"}
                             }
                         }
@@ -3227,35 +3785,31 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     inventory_back := BackBtn{text: "Back"}
-                                    inventory_title := WrapLabel{text: "Inventory" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    inventory_title := WrapLabel{body: "Inventory" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 inventory_label := WrapLabel{
-                                    text: ""
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 WrapLabel{
                                     width: Fill
-                                    text: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
                                 inv_item_input := FieldInput{empty_text: "Item name"}
                                 inv_qty_input := FieldInput{empty_text: "Quantity"}
                                 inv_note_input := FieldInput{empty_text: "Reason / note (wastage, count, …)"}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                ActionStack{
                                     inv_adjust_minus := NavBtn{text: "− Stock"}
                                     inv_adjust_plus := NavBtn{text: "+ Stock"}
                                     inv_track := NavBtn{text: "Start tracking"}
                                 }
-                                Label{text: "Goods received" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 15.}
+                                WrapLabel{body: "Goods received" font_color: #x1a1c1e font_size: 15.}
                                 inv_cost_input := FieldInput{empty_text: "Unit cost"}
                                 inv_supplier_input := FieldInput{empty_text: "Supplier"}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                ActionStack{
                                     inv_purchase := NavBtn{text: "Record purchase"}
                                     inv_refresh := NavBtn{text: "Refresh"}
                                 }
@@ -3273,14 +3827,14 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     branches_back := BackBtn{text: "Back"}
-                                    branches_title := WrapLabel{text: "Branches" draw_text.color: #x1a1c1e draw_text.text_style.font_size: 20.}
+                                    branches_title := WrapLabel{body: "Branches" font_color: #x1a1c1e font_size: 20.}
                                 }
                                 org_name_input := FieldInput{empty_text: "Business name"}
                                 org_save := NavBtn{text: "Save business name"}
                                 branches_label := WrapLabel{
-                                    text: ""
-                                    draw_text.color: #x1a1c1e
-                                    draw_text.text_style.font_size: 13.
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 branch_name_input := FieldInput{empty_text: "New branch name"}
                                 branch_code_input := FieldInput{empty_text: "Short code (MG02)"}
@@ -3289,19 +3843,18 @@ script_mod! {
                                 branch_switch := NavBtn{text: "Switch this device"}
                                 WrapLabel{
                                     width: Fill
-                                    text: "Export writes branch_snapshot_CODE_DATE.json into the backups folder and copies it to the clipboard. To import another outlet's day, save its file as import_branch_snapshot.json in the same folder, then tap Import."
-                                    draw_text.color: #x45464e
-                                    draw_text.text_style.font_size: 12.
+                                    body: "Export writes branch_snapshot_CODE_DATE.json into the backups folder and copies it to the clipboard. To import another outlet's day, save its file as import_branch_snapshot.json in the same folder, then tap Import."
+                                    font_color: #x45464e
+                                    font_size: 12.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    branch_export := NavBtn{text: "Export day"}
-                                    branch_import := NavBtn{text: "Import day"}
-                                    branch_consolidated := NavBtn{text: "Roll-up"}
+                                ActionStack{
+                                    branch_export := RowPrimaryBtn{text: "Export day"}
+                                    branch_import := RowPrimaryBtn{text: "Import day"}
+                                    branch_consolidated := RowSecondaryBtn{text: "Roll-up"}
                                 }
                             }
                         }
+
                     }
 
                     // Post-charge undo snackbar (above tabs; auto-hides after 10s).
@@ -3316,9 +3869,9 @@ script_mod! {
                         draw_bg.border_radius: 12.
                         undo_snack_label := WrapLabel{
                             width: Fill
-                            text: "Sale recorded"
-                            draw_text.color: #xffffff
-                            draw_text.text_style.font_size: 13.
+                            body: "Sale recorded"
+                            font_color: #xffffff
+                            font_size: 13.
                         }
                         undo_snack_btn := Button{
                             text: "Undo"
@@ -3379,6 +3932,8 @@ script_mod! {
                         nav_menu := TabBtn{text: "Items"}
                         nav_more := TabBtn{text: "More"}
                     }
+                    } // app_shell
+                    } // app_hscroll
                 }
             }
         }
@@ -3773,19 +4328,38 @@ impl Widget for CartList {
                     let item = list.item(cx, item_id, id!(Item));
                     let actual = line.actual_total();
                     let applied = line.applied_total();
-                    item.label(cx, ids!(label)).set_text(cx, &line.name);
+                    let qty_milli = if line.qty_milli > 0 {
+                        line.qty_milli
+                    } else {
+                        line.qty.saturating_mul(1000)
+                    };
+                    let qty_show = {
+                        let whole = qty_milli / 1000;
+                        let frac = qty_milli % 1000;
+                        let num = if frac == 0 {
+                            format!("{whole}")
+                        } else {
+                            format!("{whole}.{frac:03}")
+                                .trim_end_matches('0')
+                                .trim_end_matches('.')
+                                .to_string()
+                        };
+                        let unit = line.unit_label.trim();
+                        if unit.is_empty() {
+                            num
+                        } else {
+                            format!("{num} {unit}")
+                        }
+                    };
+                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&line.name));
                     item.label(cx, ids!(qty_label))
-                        .set_text(cx, &format!("{}", line.qty));
+                        .set_text(cx, &qty_show);
                     // Actual = @ × qty — always show the real money, never leave ₹0.
-                    item.label(cx, ids!(line_actual_label)).set_text(
-                        cx,
-                        &format!(
-                            "Actual {}  ({} × {})",
+                    item.widget(cx, ids!(line_actual_label)).set_text(cx, &plain_display_text(&format!(
+                            "Actual {}  ({qty_show} × {})",
                             actual.format_localized(&currency, &fiscal),
-                            line.qty,
                             line.unit_price.format_localized(&currency, &fiscal)
-                        ),
-                    );
+                        ),));
                     let price_input = item.text_input(cx, ids!(unit_price));
                     if !cx.has_key_focus(price_input.area()) {
                         let price_text =
@@ -3932,7 +4506,7 @@ impl Widget for SaleList {
                             }
                         )
                     };
-                    item.label(cx, ids!(label)).set_text(cx, &text);
+                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&text));
                     item.draw_all_unscoped(cx);
                 }
             }
@@ -3978,10 +4552,16 @@ impl Widget for CustomerList {
                             c.name,
                             Money(c.balance_paise).format_localized(&currency, &fiscal)
                         )
+                    } else if c.balance_paise < 0 {
+                        format!(
+                            "{} · advance {}",
+                            c.name,
+                            Money(-c.balance_paise).format_localized(&currency, &fiscal)
+                        )
                     } else {
                         format!("{} · clear", c.name)
                     };
-                    item.label(cx, ids!(label)).set_text(cx, &text);
+                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&text));
                     item.button(cx, ids!(pick)).set_text(cx, "Pick");
                     item.draw_all_unscoped(cx);
                 }
@@ -4025,13 +4605,10 @@ impl Widget for LanguageList {
                     };
                     let item = list.item(cx, item_id, id!(Item));
                     let mark = if lang.code == selected { "✓ " } else { "" };
-                    item.label(cx, ids!(label)).set_text(
-                        cx,
-                        &format!(
+                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&format!(
                             "{mark}{} · {} · {}",
                             lang.native_name, lang.name_en, lang.region
-                        ),
-                    );
+                        ),));
                     item.button(cx, ids!(pick)).set_text(cx, &use_label);
                     item.draw_all_unscoped(cx);
                 }
@@ -4074,10 +4651,7 @@ impl Widget for CurrencyList {
                     };
                     let item = list.item(cx, item_id, id!(Item));
                     let mark = if cur.code == selected { "✓ " } else { "" };
-                    item.label(cx, ids!(label)).set_text(
-                        cx,
-                        &format!("{mark}{} {} — {}", cur.symbol, cur.code, cur.name_en),
-                    );
+                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&format!("{mark}{} {} — {}", cur.symbol, cur.code, cur.name_en),));
                     item.button(cx, ids!(pick)).set_text(cx, &use_label);
                     item.draw_all_unscoped(cx);
                 }
@@ -4114,9 +4688,10 @@ impl Widget for TableList {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
-                    item.label(cx, ids!(name)).set_text(cx, &table.name);
-                    item.label(cx, ids!(status))
-                        .set_text(cx, table.status.as_str());
+                    item.widget(cx, ids!(name))
+                        .set_text(cx, &plain_display_text(&table.name));
+                    item.widget(cx, ids!(status))
+                        .set_text(cx, &plain_display_text(table.status.as_str()));
                     let action = if table.status == domain::TableStatus::Available {
                         "Seat / use"
                     } else {
@@ -4160,7 +4735,7 @@ impl Widget for KotList {
                     };
                     let item = list.item(cx, item_id, id!(Item));
                     let text = format!("[{}] {}", kot.status.as_str(), kot.summary);
-                    item.label(cx, ids!(label)).set_text(cx, &text);
+                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&text));
                     item.button(cx, ids!(advance)).set_text(cx, "Advance");
                     item.draw_all_unscoped(cx);
                 }
@@ -4177,21 +4752,95 @@ impl Widget for KotList {
     }
 }
 
+/// Selectable display text (Markdown) with Label-like `visible` support.
+/// Stock Markdown/TextFlow ignore `set_visible`, which left empty-state copy
+/// on screen after products/cart lines appeared.
+#[derive(Script, ScriptHook, Widget)]
+struct WrapLabel {
+    #[source]
+    source: ScriptObjectRef,
+    #[deref]
+    markdown: Markdown,
+    #[live(true)]
+    #[visible]
+    visible: bool,
+}
+
+impl Widget for WrapLabel {
+    fn is_interactive(&self) -> bool {
+        self.visible && self.markdown.text_flow.selectable
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if !self.visible && event.requires_visibility() {
+            return;
+        }
+        self.markdown.handle_event(cx, event, scope);
+    }
+
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        if !self.visible {
+            return DrawStep::done();
+        }
+        // Keep scroll blocked across redraws while a drag-select is live.
+        if self.markdown.text_flow.is_drag_selecting() {
+            cx.block_scrolling_except_within(Area::Empty);
+        }
+        self.markdown.draw_walk(cx, scope, walk)
+    }
+
+    fn text(&self) -> String {
+        self.markdown.text()
+    }
+
+    fn set_text(&mut self, cx: &mut Cx, v: &str) {
+        self.markdown.set_text(cx, v);
+    }
+}
+
 #[derive(Script, ScriptHook)]
 pub struct App {
     #[live]
     ui: WidgetRef,
 }
 
+/// Escape Markdown markers so product/customer strings never italicize or become headings.
+fn plain_display_text(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    for c in s.chars() {
+        match c {
+            '*' | '_' | '`' | '#' => {
+                out.push('\\');
+                out.push(c);
+            }
+            _ => out.push(c),
+        }
+    }
+    out
+}
+
 impl App {
     fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
         let msg = msg.into();
-        app_state().lock().unwrap().status = msg.clone();
-        // No footer status strip — surface on lock / device-setup labels.
-        self.ui.label(cx, ids!(pin_status)).set_text(cx, &msg);
+        {
+            let mut st = app_state().lock().unwrap();
+            st.status = msg.clone();
+            // Sell has no footer strip — put pay/cart errors on the receipt line
+            // so Split/Credit failures are visible on the counter screen.
+            if matches!(
+                st.screen,
+                Screen::Pos | Screen::Credit | Screen::Sales | Screen::Menu
+            ) {
+                st.last_receipt = msg.clone();
+            }
+        }
+        // Also surface on lock / device-setup labels.
+        self.ui.widget(cx, ids!(pin_status)).set_text(cx, &plain_display_text(&msg));
         self.ui
-            .label(cx, ids!(device_setup_status))
-            .set_text(cx, &msg);
+            .widget(cx, ids!(device_setup_status)).set_text(cx, &plain_display_text(&msg));
+        self.ui
+            .widget(cx, ids!(receipt_label))
+            .set_text(cx, &plain_display_text(&msg));
     }
 
     /// Open SQLite using Makepad's platform data dir (Android getFilesDir).
@@ -4268,7 +4917,6 @@ impl App {
             natural_label,
             applied_label,
             charge_caption,
-            cash_btn,
             session_chip,
             lock_prompt,
             pin_hint,
@@ -4341,7 +4989,7 @@ impl App {
                 CURRENCIES.len()
             );
             let empty_msg = if st.products.is_empty() {
-                "No items yet. Open Items to add products, or add example items during setup.".to_string()
+                "No items yet. Open Items to add your rates or products.".to_string()
             } else {
                 st.t("empty_catalog")
             };
@@ -4373,7 +5021,6 @@ impl App {
             } else {
                 "ROUNDED".to_string()
             };
-            let cash_btn = st.t("cash");
             let pin_dots = {
                 let n = st.pin_buffer.len().min(4);
                 let mut s = String::new();
@@ -4490,7 +5137,6 @@ impl App {
                 natural_label,
                 applied_label,
                 charge_caption,
-                cash_btn,
                 session_chip,
                 lock_prompt,
                 pin_hint,
@@ -4503,18 +5149,15 @@ impl App {
             )
         };
 
-        self.ui.label(cx, ids!(today_label)).set_text(cx, &today);
+        self.ui.widget(cx, ids!(today_label)).set_text(cx, &plain_display_text(&today));
         self.ui
-            .label(cx, ids!(session_label))
-            .set_text(cx, &session);
+            .widget(cx, ids!(session_label)).set_text(cx, &plain_display_text(&session));
         self.ui
-            .label(cx, ids!(receipt_label))
-            .set_text(cx, &receipt);
+            .widget(cx, ids!(receipt_label)).set_text(cx, &plain_display_text(&receipt));
         self.ui.label(cx, ids!(pin_label)).set_text(cx, &pin);
         self.ui
-            .label(cx, ids!(pin_prompt))
-            .set_text(cx, &lock_prompt);
-        self.ui.label(cx, ids!(pin_hint)).set_text(cx, &pin_hint);
+            .widget(cx, ids!(pin_prompt)).set_text(cx, &plain_display_text(&lock_prompt));
+        self.ui.widget(cx, ids!(pin_hint)).set_text(cx, &plain_display_text(&pin_hint));
         self.ui
             .button(cx, ids!(role_staff))
             .set_visible(cx, show_staff_role);
@@ -4538,45 +5181,29 @@ impl App {
             " ".to_string()
         };
         self.ui
-            .label(cx, ids!(pin_status))
-            .set_text(cx, &pin_status_text);
+            .widget(cx, ids!(pin_status)).set_text(cx, &plain_display_text(&pin_status_text));
         self.ui
-            .label(cx, ids!(device_setup_status))
-            .set_text(cx, &setup_status_text);
+            .widget(cx, ids!(device_setup_status)).set_text(cx, &plain_display_text(&setup_status_text));
         self.ui
-            .label(cx, ids!(lock_staff_label))
-            .set_text(cx, &lock_staff_label);
+            .widget(cx, ids!(lock_staff_label)).set_text(cx, &plain_display_text(&lock_staff_label));
         self.ui
             .view(cx, ids!(lock_staff_row))
             .set_visible(cx, !lock_as_owner);
-        self.ui.label(cx, ids!(db_path_label)).set_text(cx, &db);
-        self.ui.label(cx, ids!(audit_label)).set_text(cx, &audit);
+        self.ui.widget(cx, ids!(db_path_label)).set_text(cx, &plain_display_text(&db));
+        self.ui.widget(cx, ids!(audit_label)).set_text(cx, &plain_display_text(&audit));
         self.ui
-            .label(cx, ids!(table_chip))
-            .set_text(cx, &table_chip);
+            .widget(cx, ids!(table_chip)).set_text(cx, &plain_display_text(&table_chip));
         self.ui
-            .label(cx, ids!(session_chip))
-            .set_text(cx, &session_chip);
+            .widget(cx, ids!(session_chip)).set_text(cx, &plain_display_text(&session_chip));
         self.ui
-            .label(cx, ids!(staff_label))
-            .set_text(cx, &staff_text);
+            .widget(cx, ids!(staff_label)).set_text(cx, &plain_display_text(&staff_text));
         self.ui
-            .label(cx, ids!(locale_label))
-            .set_text(cx, &locale_line);
+            .widget(cx, ids!(locale_label)).set_text(cx, &plain_display_text(&locale_line));
 
         // Country pack: the summary, the pay-rail wording on the Sell buttons,
         // and the exclusive-tax estimate under the totals strip.
         {
-            let (
-                fiscal_line,
-                country_hint,
-                tax_line,
-                digital,
-                credit,
-                split,
-                business_id,
-                service_pct,
-            ) = {
+            let (fiscal_line, country_hint, tax_line, digital, business_id, service_pct) = {
                 let st = app_state().lock().unwrap();
                 (
                     st.fiscal.summary(),
@@ -4594,8 +5221,6 @@ impl App {
                     },
                     st.cart_tax_estimate_line(),
                     st.fiscal.digital_pay_label().to_string(),
-                    PayMethod::Credit.label_for(&st.fiscal),
-                    PayMethod::Split.label_for(&st.fiscal),
                     st.fiscal.business_tax_id.clone(),
                     locale::format_percent_bps(
                         st.fiscal.service_charge_bps,
@@ -4603,19 +5228,18 @@ impl App {
                     ),
                 )
             };
-            self.ui.label(cx, ids!(fiscal_label)).set_text(cx, &fiscal_line);
+            self.ui.widget(cx, ids!(fiscal_label)).set_text(cx, &plain_display_text(&fiscal_line));
             self.ui
-                .label(cx, ids!(country_hint))
-                .set_text(cx, &country_hint);
+                .widget(cx, ids!(country_hint)).set_text(cx, &plain_display_text(&country_hint));
             self.ui
-                .label(cx, ids!(tax_estimate_label))
-                .set_text(cx, &tax_line);
-            for id in [ids!(pay_upi), ids!(amend_pay_upi)] {
-                self.ui.button(cx, id).set_text(cx, &digital);
-            }
-            self.ui.button(cx, ids!(settle_upi)).set_text(cx, &format!("Settle {digital}"));
-            self.ui.button(cx, ids!(pay_credit)).set_text(cx, &credit);
-            self.ui.button(cx, ids!(pay_split)).set_text(cx, &split);
+                .widget(cx, ids!(tax_estimate_label)).set_text(cx, &plain_display_text(&tax_line));
+            self.ui
+                .widget(cx, ids!(tax_estimate_label))
+                .set_visible(cx, tax_line.trim() != "");
+            self.ui.button(cx, ids!(amend_pay_upi)).set_text(cx, &digital);
+            self.ui
+                .button(cx, ids!(settle_upi))
+                .set_text(cx, &format!("Pay {digital}"));
             for (path, value) in [
                 (ids!(business_tax_id_input), business_id),
                 (ids!(service_bps_input), service_pct),
@@ -4627,11 +5251,9 @@ impl App {
             }
         }
         self.ui
-            .label(cx, ids!(empty_catalog))
-            .set_text(cx, &empty_msg);
+            .widget(cx, ids!(empty_catalog)).set_text(cx, &plain_display_text(&empty_msg));
         self.ui
-            .label(cx, ids!(menu_empty))
-            .set_text(cx, &empty_msg);
+            .widget(cx, ids!(menu_empty)).set_text(cx, &plain_display_text(&empty_msg));
         self.ui
             .widget(cx, ids!(empty_catalog))
             .set_visible(cx, product_count == 0);
@@ -4651,37 +5273,13 @@ impl App {
             .widget(cx, ids!(cart_list))
             .set_visible(cx, cart_count > 0);
         self.ui
-            .label(cx, ids!(cart_natural_label))
-            .set_text(cx, &natural_label);
+            .widget(cx, ids!(cart_natural_label)).set_text(cx, &plain_display_text(&natural_label));
         self.ui
-            .label(cx, ids!(cart_applied_label))
-            .set_text(cx, &applied_label);
+            .widget(cx, ids!(cart_applied_label)).set_text(cx, &plain_display_text(&applied_label));
         self.ui
-            .label(cx, ids!(cart_charge_caption))
-            .set_text(cx, &charge_caption);
+            .widget(cx, ids!(cart_charge_caption)).set_text(cx, &plain_display_text(&charge_caption));
         self.ui
-            .label(cx, ids!(cart_round_hint))
-            .set_text(cx, &round_hint);
-        {
-            // The PIN field only appears when it is actually needed, so an
-            // ordinary ₹52 → ₹50 round-off never asks anyone for anything.
-            let needs_pin = {
-                let st = app_state().lock().unwrap();
-                let may_discount = st
-                    .session
-                    .as_ref()
-                    .map(|s| s.role.can_void_refund())
-                    .unwrap_or(false);
-                !may_discount
-                    && domain::rounding_needs_approval(
-                        st.cart.applied_total().paise(),
-                        st.cart.rounding().paise(),
-                    )
-            };
-            self.ui
-                .text_input(cx, ids!(discount_pin_input))
-                .set_visible(cx, needs_pin);
-        }
+            .widget(cx, ids!(cart_round_hint)).set_text(cx, &plain_display_text(&round_hint));
         {
             let total_field = self.ui.text_input(cx, ids!(cart_total_input));
             let shown = total_field.text();
@@ -4702,13 +5300,11 @@ impl App {
                 }
             }
         }
-        self.ui.button(cx, ids!(pay_cash)).set_text(cx, &cash_btn);
         self.ui
             .view(cx, ids!(undo_snackbar))
             .set_visible(cx, undo_visible);
         self.ui
-            .label(cx, ids!(undo_snack_label))
-            .set_text(cx, &undo_snack_text);
+            .widget(cx, ids!(undo_snack_label)).set_text(cx, &plain_display_text(&undo_snack_text));
 
         let (credit_chip, credit_summary, empty_hint) = {
             let st = app_state().lock().unwrap();
@@ -4720,8 +5316,14 @@ impl App {
                     .map(|c| {
                         if c.balance_paise > 0 {
                             format!("{} · owes {}", c.name, st.money(c.balance()))
+                        } else if c.balance_paise < 0 {
+                            format!(
+                                "{} · advance {}",
+                                c.name,
+                                st.money(Money(-c.balance_paise))
+                            )
                         } else {
-                            format!("{} · ready for Credit", c.name)
+                            format!("{} · clear — Credit or take advance", c.name)
                         }
                     })
                     .unwrap_or_else(|| "Selected customer missing — pick again".into()),
@@ -4739,10 +5341,16 @@ impl App {
                 }
             };
             let open: i64 = st.customers.iter().map(|c| c.balance_paise.max(0)).sum();
+            let prepaid: i64 = st
+                .customers
+                .iter()
+                .map(|c| (-c.balance_paise).max(0))
+                .sum();
             let mut credit_summary = format!(
-                "{} customers · open credit {}",
+                "{} customers · open credit {} · advances held {}",
                 st.customers.len(),
-                st.money(Money(open))
+                st.money(Money(open)),
+                st.money(Money(prepaid))
             );
             if let Some(id) = &st.selected_customer_id
                 && let Some(store) = st.store.as_ref()
@@ -4766,14 +5374,11 @@ impl App {
             (credit_chip, credit_summary, empty_hint)
         };
         self.ui
-            .label(cx, ids!(credit_chip))
-            .set_text(cx, &credit_chip);
+            .widget(cx, ids!(credit_chip)).set_text(cx, &plain_display_text(&credit_chip));
         self.ui
-            .label(cx, ids!(credit_summary_label))
-            .set_text(cx, &credit_summary);
+            .widget(cx, ids!(credit_summary_label)).set_text(cx, &plain_display_text(&credit_summary));
         self.ui
-            .label(cx, ids!(customers_empty_hint))
-            .set_text(cx, empty_hint);
+            .widget(cx, ids!(customers_empty_hint)).set_text(cx, &plain_display_text(empty_hint));
 
         let (sale_selected, sale_history, amend_total_text, amend_natural, amend_applied, amend_round) = {
             let st = app_state().lock().unwrap();
@@ -4872,30 +5477,26 @@ impl App {
             self.ui
                 .text_input(cx, ids!(approval_pin_input))
                 .set_visible(cx, !may_void);
-            self.ui.label(cx, ids!(approval_hint)).set_text(
+            self.ui.widget(cx, ids!(approval_hint)).set_text(
                 cx,
-                if may_void {
-                    " "
-                } else {
-                    "Void and refund need an Owner or Manager. Type their PIN above and the approval is recorded with your name."
-                },
+                &plain_display_text(
+                    "Void and refund need an Owner or Manager. Type their PIN above and the approval is recorded with your name.",
+                ),
             );
+            self.ui
+                .widget(cx, ids!(approval_hint))
+                .set_visible(cx, !may_void);
         }
         self.ui
-            .label(cx, ids!(sale_selected_label))
-            .set_text(cx, &sale_selected);
+            .widget(cx, ids!(sale_selected_label)).set_text(cx, &plain_display_text(&sale_selected));
         self.ui
-            .label(cx, ids!(sale_history_label))
-            .set_text(cx, &sale_history);
+            .widget(cx, ids!(sale_history_label)).set_text(cx, &plain_display_text(&sale_history));
         self.ui
-            .label(cx, ids!(amend_natural_label))
-            .set_text(cx, &amend_natural);
+            .widget(cx, ids!(amend_natural_label)).set_text(cx, &plain_display_text(&amend_natural));
         self.ui
-            .label(cx, ids!(amend_applied_label))
-            .set_text(cx, &amend_applied);
+            .widget(cx, ids!(amend_applied_label)).set_text(cx, &plain_display_text(&amend_applied));
         self.ui
-            .label(cx, ids!(amend_round_hint))
-            .set_text(cx, &amend_round);
+            .widget(cx, ids!(amend_round_hint)).set_text(cx, &plain_display_text(&amend_round));
         {
             let field = self.ui.text_input(cx, ids!(amend_total_input));
             if !cx.has_key_focus(field.area()) {
@@ -4912,8 +5513,7 @@ impl App {
             menu_images::describe_image(st.draft_image_key.as_deref(), &name)
         };
         self.ui
-            .label(cx, ids!(image_hint))
-            .set_text(cx, &image_hint);
+            .widget(cx, ids!(image_hint)).set_text(cx, &plain_display_text(&image_hint));
         {
             let (draft_key, name) = {
                 let st = app_state().lock().unwrap();
@@ -4938,9 +5538,7 @@ impl App {
         {
             let st = app_state().lock().unwrap();
             let mode_hint = match st.venue_mode {
-                VenueMode::Counter => {
-                    "Tables and kitchen stay off. Turn them on in Backup & settings if you need them."
-                }
+                VenueMode::Counter => "",
                 VenueMode::Restaurant => {
                     "Tables and kitchen are on. Sales can create kitchen tickets."
                 }
@@ -5013,49 +5611,75 @@ impl App {
                 .as_ref()
                 .and_then(|s| s.org_name().ok())
                 .unwrap_or_default();
+            let tmpl = entity_template::resolve(&st.entity_template_id);
+            let tmpl_line = format!("Current: {} — {}", tmpl.title, tmpl.blurb);
             let onboard_status = if st.onboarding_complete {
                 "Setup complete".to_string()
             } else {
                 match st.onboard_step {
-                    1 => "Fresh start — add example items or keep empty, then Done.".to_string(),
-                    2 => "Book import — add items and opening credit, then Done.".to_string(),
-                    _ => "Name this place if you want, then Start fresh or Bring my book.".to_string(),
+                    1 => format!(
+                        "Fresh · {} — catalogue starts empty; add items in Items, then Done.",
+                        tmpl.title
+                    ),
+                    2 => format!(
+                        "Book · {} — add items and opening credit, then Done.",
+                        tmpl.title
+                    ),
+                    _ => format!(
+                        "Template: {} — {}. Name the place if you want, then Start fresh or Bring my book.",
+                        tmpl.title, tmpl.blurb
+                    ),
                 }
             };
+            let cust_ph = st.t("customer_name_ph");
+            let new_cust_ph = st.t("new_customer_ph");
             drop(st);
             self.ui
-                .label(cx, ids!(more_mode_hint))
-                .set_text(cx, mode_hint);
+                .widget(cx, ids!(more_mode_hint)).set_text(cx, &plain_display_text(mode_hint));
             self.ui
-                .label(cx, ids!(floor_mode_hint))
-                .set_text(cx, floor_hint);
+                .widget(cx, ids!(more_mode_hint))
+                .set_visible(cx, !mode_hint.is_empty());
             self.ui
-                .label(cx, ids!(kitchen_mode_hint))
-                .set_text(cx, kitchen_hint);
+                .widget(cx, ids!(floor_mode_hint)).set_text(cx, &plain_display_text(floor_hint));
             self.ui
-                .label(cx, ids!(server_pair_label))
-                .set_text(cx, &pair_label);
+                .widget(cx, ids!(kitchen_mode_hint)).set_text(cx, &plain_display_text(kitchen_hint));
             self.ui
-                .label(cx, ids!(venue_mode_label))
-                .set_text(cx, mode_label);
+                .widget(cx, ids!(server_pair_label)).set_text(cx, &plain_display_text(&pair_label));
             self.ui
-                .label(cx, ids!(day_close_label))
-                .set_text(cx, &day_close);
+                .widget(cx, ids!(venue_mode_label)).set_text(cx, &plain_display_text(mode_label));
             self.ui
-                .label(cx, ids!(reports_label))
-                .set_text(cx, &day_close);
+                .widget(cx, ids!(settings_tmpl_label))
+                .set_text(cx, &plain_display_text(&tmpl_line));
             self.ui
-                .label(cx, ids!(inventory_label))
-                .set_text(cx, &inventory_text);
+                .widget(cx, ids!(onboard_tmpl_hint))
+                .set_text(
+                    cx,
+                    &plain_display_text(&format!(
+                        "Selected: {} — {}. Same books for every template — swipe chips if they don't all fit.",
+                        tmpl.title, tmpl.blurb
+                    )),
+                );
             self.ui
-                .label(cx, ids!(branches_label))
-                .set_text(cx, &branches_body);
+                .text_input(cx, ids!(customer_name_input))
+                .set_empty_text(cx, cust_ph.clone());
             self.ui
-                .label(cx, ids!(order_type_label))
-                .set_text(cx, &order_type_line);
+                .text_input(cx, ids!(onboard_cust_name))
+                .set_empty_text(cx, cust_ph);
             self.ui
-                .label(cx, ids!(kitchen_station_label))
-                .set_text(cx, &station_line);
+                .text_input(cx, ids!(credit_add_name))
+                .set_empty_text(cx, new_cust_ph);
+            self.ui
+                .widget(cx, ids!(day_close_label)).set_text(cx, &plain_display_text(&day_close));
+            self.ui
+                .widget(cx, ids!(reports_label)).set_text(cx, &plain_display_text(&day_close));
+            self.ui
+                .widget(cx, ids!(inventory_label)).set_text(cx, &plain_display_text(&inventory_text));
+            self.ui
+                .widget(cx, ids!(branches_label)).set_text(cx, &plain_display_text(&branches_body));
+            self.ui
+                .widget(cx, ids!(order_type_label)).set_text(cx, &plain_display_text(&order_type_line));
+            self.ui
+                .widget(cx, ids!(kitchen_station_label)).set_text(cx, &plain_display_text(&station_line));
             {
                 let field = self.ui.text_input(cx, ids!(org_name_input));
                 if !cx.has_key_focus(field.area()) && field.text() != org_name {
@@ -5063,18 +5687,13 @@ impl App {
                 }
             }
             self.ui
-                .label(cx, ids!(onboard_status))
-                .set_text(cx, &onboard_status);
+                .widget(cx, ids!(onboard_status)).set_text(cx, &plain_display_text(&onboard_status));
             self.ui
-                .label(cx, ids!(client_pair_status))
-                .set_text(
-                    cx,
-                    if app_state().lock().unwrap().client_paired {
+                .widget(cx, ids!(client_pair_status)).set_text(cx, &plain_display_text(if app_state().lock().unwrap().client_paired {
                         "Paired. Unlock to sell, or Refresh to pull the catalogue."
                     } else {
                         "Enter the shop device IP and 6-digit pairing code. Selling is blocked until paired."
-                    },
-                );
+                    },));
         }
         
         // Role-aware More rows / tabs
@@ -5140,16 +5759,16 @@ impl App {
             self.ui.button(cx, ids!(send_kot)).set_visible(cx, restaurant);
             self.ui.view(cx, ids!(order_type_row)).set_visible(cx, restaurant);
             self.ui
-                .label(cx, ids!(order_type_label))
+                .widget(cx, ids!(order_type_label))
                 .set_visible(cx, restaurant);
             self.ui
                 .view(cx, ids!(menu_station_row))
                 .set_visible(cx, restaurant);
             self.ui
-                .button(cx, ids!(staff_role_waiter))
+                .view(cx, ids!(staff_role_waiter_slot))
                 .set_visible(cx, restaurant);
             self.ui
-                .button(cx, ids!(staff_role_kitchen))
+                .view(cx, ids!(staff_role_kitchen_slot))
                 .set_visible(cx, restaurant);
             self.ui.button(cx, ids!(feat_floor)).set_visible(cx, restaurant);
             self.ui
@@ -5213,10 +5832,10 @@ impl App {
             ids!(menu_name_input),
             ids!(menu_aliases_input),
             ids!(menu_price_input),
+            ids!(menu_unit_input),
             ids!(amend_total_input),
             ids!(reason_input),
             ids!(approval_pin_input),
-            ids!(discount_pin_input),
             ids!(credit_add_name),
             ids!(settle_amount_input),
             ids!(staff_name_input),
@@ -5243,7 +5862,10 @@ impl App {
             ids!(service_bps_input),
             ids!(onboard_venue_input),
             ids!(onboard_org_input),
-            ids!(split_cash_input),
+            ids!(mix_cash_input),
+            ids!(mix_upi_input),
+            ids!(mix_card_input),
+            ids!(mix_credit_input),
         ];
         for path in top_level {
             let field = self.ui.text_input(cx, path);
@@ -5275,6 +5897,189 @@ impl App {
             }
         }
         self.paint_chrome(cx);
+        self.paint_choice_state(cx);
+        self.sync_dev_size(cx);
+    }
+
+    /// Selected choice = ChipBtnActive visible; idle = ChipBtn visible.
+    /// (Button face colors are private — visibility swap is the safe highlight.)
+    fn paint_choice_pair(
+        &mut self,
+        cx: &mut Cx,
+        idle: &[LiveId],
+        active: &[LiveId],
+        selected: bool,
+    ) {
+        self.ui.button(cx, idle).set_visible(cx, !selected);
+        self.ui.button(cx, active).set_visible(cx, selected);
+    }
+
+    fn choice_chip_clicked(
+        &self,
+        cx: &Cx,
+        actions: &Actions,
+        idle: &[LiveId],
+        active: &[LiveId],
+    ) -> bool {
+        self.ui.button(cx, idle).clicked(actions) || self.ui.button(cx, active).clicked(actions)
+    }
+
+    /// Bare-minimal **None** (`custom`) when the shop never picked a template.
+    fn ensure_default_template(st: &mut AppState) -> Result<(), String> {
+        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let stored = store.entity_template_id().unwrap_or_default();
+        let mem = st.entity_template_id.trim();
+        let stored = stored.trim();
+        let selected = if !mem.is_empty() && mem != "custom" {
+            mem
+        } else if !stored.is_empty() && stored != "custom" {
+            stored
+        } else {
+            "custom"
+        };
+        if selected != "custom" {
+            if mem != selected {
+                st.entity_template_id = selected.to_string();
+            }
+            return Ok(());
+        }
+        let tmpl = store.apply_entity_template("custom")?;
+        st.entity_template_id = tmpl.id.to_string();
+        st.venue_mode = tmpl.venue_mode;
+        Ok(())
+    }
+
+    fn paint_choice_state(&mut self, cx: &mut Cx) {
+        let (tmpl_id, money_lane, draft_role, order_type) = {
+            let st = app_state().lock().unwrap();
+            let id = st.entity_template_id.trim();
+            (
+                if id.is_empty() {
+                    "custom".to_string()
+                } else {
+                    st.entity_template_id.clone()
+                },
+                st.money_lane,
+                st.draft_staff_role,
+                st.cart.order_type,
+            )
+        };
+        let tmpl_pairs = [
+            (
+                ids!(onboard_tmpl_custom),
+                ids!(onboard_tmpl_custom_on),
+                "custom",
+            ),
+            (
+                ids!(onboard_tmpl_counter),
+                ids!(onboard_tmpl_counter_on),
+                "counter_shop",
+            ),
+            (
+                ids!(onboard_tmpl_courier),
+                ids!(onboard_tmpl_courier_on),
+                "courier_agency",
+            ),
+            (ids!(onboard_tmpl_food), ids!(onboard_tmpl_food_on), "food_service"),
+            (
+                ids!(onboard_tmpl_personal),
+                ids!(onboard_tmpl_personal_on),
+                "personal_books",
+            ),
+            (
+                ids!(settings_tmpl_custom),
+                ids!(settings_tmpl_custom_on),
+                "custom",
+            ),
+            (
+                ids!(settings_tmpl_counter),
+                ids!(settings_tmpl_counter_on),
+                "counter_shop",
+            ),
+            (
+                ids!(settings_tmpl_courier),
+                ids!(settings_tmpl_courier_on),
+                "courier_agency",
+            ),
+            (
+                ids!(settings_tmpl_food),
+                ids!(settings_tmpl_food_on),
+                "food_service",
+            ),
+            (
+                ids!(settings_tmpl_personal),
+                ids!(settings_tmpl_personal_on),
+                "personal_books",
+            ),
+        ];
+        for (idle, active, id) in tmpl_pairs {
+            self.paint_choice_pair(cx, idle, active, tmpl_id == id);
+        }
+        self.paint_choice_pair(
+            cx,
+            ids!(lane_declared),
+            ids!(lane_declared_on),
+            matches!(money_lane, MoneyLane::Declared),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(lane_owner),
+            ids!(lane_owner_on),
+            matches!(money_lane, MoneyLane::Owner),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(staff_role_cashier),
+            ids!(staff_role_cashier_on),
+            draft_role == StaffRole::Cashier,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(staff_role_manager),
+            ids!(staff_role_manager_on),
+            draft_role == StaffRole::Manager,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(staff_role_waiter),
+            ids!(staff_role_waiter_on),
+            draft_role == StaffRole::Waiter,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(staff_role_kitchen),
+            ids!(staff_role_kitchen_on),
+            draft_role == StaffRole::Kitchen,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(order_counter),
+            ids!(order_counter_on),
+            order_type == OrderType::Counter,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(order_dine),
+            ids!(order_dine_on),
+            order_type == OrderType::DineIn,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(order_takeaway),
+            ids!(order_takeaway_on),
+            order_type == OrderType::Takeaway,
+        );
+        // Keep lane labels current on both faces.
+        let (declared, owner) = {
+            let st = app_state().lock().unwrap();
+            (st.lane_declared_label(), st.lane_owner_label())
+        };
+        for path in [ids!(lane_declared), ids!(lane_declared_on)] {
+            self.ui.button(cx, path).set_text(cx, &declared);
+        }
+        for path in [ids!(lane_owner), ids!(lane_owner_on)] {
+            self.ui.button(cx, path).set_text(cx, &owner);
+        }
     }
 
     /// Every static label and button. List rows set their own text while drawing.
@@ -5307,17 +6112,40 @@ impl App {
             ids!(reports_back),
             ids!(inventory_back),
             ids!(branches_back),
+            ids!(client_pair_back),
         ] {
             self.ui.button(cx, path).set_text(cx, &s("back"));
         }
         self.ui.button(cx, ids!(clear_cart)).set_text(cx, &s("clear"));
-        self.ui.button(cx, ids!(pay_cash)).set_text(cx, &s("cash"));
-        self.ui.button(cx, ids!(pay_card)).set_text(cx, &s("card"));
-        self.ui.button(cx, ids!(pay_split)).set_text(cx, &s("split"));
+        self.ui.button(cx, ids!(pay_mix)).set_text(cx, "Take payment");
+        {
+            let st = app_state().lock().unwrap();
+            let declared = st.lane_declared_label();
+            let owner = st.lane_owner_label();
+            let lane_body = match st.money_lane {
+                MoneyLane::Declared => format!("Bill: {declared}"),
+                MoneyLane::Owner => format!("Bill: {owner}"),
+            };
+            self.ui
+                .widget(cx, ids!(money_lane_label))
+                .set_text(cx, &plain_display_text(&lane_body));
+            for path in [ids!(lane_declared), ids!(lane_declared_on)] {
+                self.ui.button(cx, path).set_text(cx, &declared);
+            }
+            for path in [ids!(lane_owner), ids!(lane_owner_on)] {
+                self.ui.button(cx, path).set_text(cx, &owner);
+            }
+        }
         self.ui.button(cx, ids!(send_kot)).set_text(cx, &s("send_kot"));
-        self.ui.button(cx, ids!(order_counter)).set_text(cx, &s("counter"));
-        self.ui.button(cx, ids!(order_dine)).set_text(cx, &s("dine_in"));
-        self.ui.button(cx, ids!(order_takeaway)).set_text(cx, &s("takeaway"));
+        for path in [ids!(order_counter), ids!(order_counter_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("counter"));
+        }
+        for path in [ids!(order_dine), ids!(order_dine_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("dine_in"));
+        }
+        for path in [ids!(order_takeaway), ids!(order_takeaway_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("takeaway"));
+        }
         let (editing, editing_name) = {
             let st = app_state().lock().unwrap();
             let editing = st.editing_product_id.is_some();
@@ -5335,13 +6163,10 @@ impl App {
             cx,
             &s(if editing { "save" } else { "add_item" }),
         );
-        self.ui.label(cx, ids!(menu_mode_label)).set_text(
-            cx,
-            &match editing_name {
+        self.ui.widget(cx, ids!(menu_mode_label)).set_text(cx, &plain_display_text(&match editing_name {
                 Some(name) => format!("{}: {name}", s("editing_item")),
                 None => s("adding_item"),
-            },
-        );
+            },));
         self.ui.button(cx, ids!(image_auto)).set_text(cx, &s("auto"));
         self.ui.button(cx, ids!(image_pick)).set_text(cx, &s("photo"));
         self.ui.button(cx, ids!(role_owner)).set_text(cx, &s("owner"));
@@ -5365,19 +6190,19 @@ impl App {
         self.ui.button(cx, ids!(settle_card)).set_text(cx, &s("settle_card"));
         self.ui.button(cx, ids!(amend_pay_cash)).set_text(cx, &s("cash"));
         self.ui.button(cx, ids!(amend_pay_card)).set_text(cx, &s("card"));
-        self.ui.label(cx, ids!(items_heading)).set_text(cx, &s("your_items"));
-        self.ui.label(cx, ids!(items_help_label)).set_text(cx, &s("items_help"));
-        self.ui.label(cx, ids!(more_heading)).set_text(cx, &s("more"));
-        self.ui.label(cx, ids!(floor_title)).set_text(cx, &s("tables"));
-        self.ui.label(cx, ids!(kitchen_title)).set_text(cx, &s("kitchen"));
-        self.ui.label(cx, ids!(sales_title)).set_text(cx, &s("sales"));
-        self.ui.label(cx, ids!(credit_title)).set_text(cx, &s("credit"));
-        self.ui.label(cx, ids!(team_title)).set_text(cx, &s("team"));
-        self.ui.label(cx, ids!(settings_title)).set_text(cx, &s("language_currency"));
-        self.ui.label(cx, ids!(day_close_title)).set_text(cx, &s("day_close"));
-        self.ui.label(cx, ids!(reports_title)).set_text(cx, &s("reports"));
-        self.ui.label(cx, ids!(inventory_title)).set_text(cx, &s("inventory"));
-        self.ui.label(cx, ids!(branches_title)).set_text(cx, &s("branches"));
+        self.ui.widget(cx, ids!(items_heading)).set_text(cx, &plain_display_text(&s("your_items")));
+        self.ui.widget(cx, ids!(items_help_label)).set_text(cx, &plain_display_text(&s("items_help")));
+        self.ui.widget(cx, ids!(more_heading)).set_text(cx, &plain_display_text(&s("more")));
+        self.ui.widget(cx, ids!(floor_title)).set_text(cx, &plain_display_text(&s("tables")));
+        self.ui.widget(cx, ids!(kitchen_title)).set_text(cx, &plain_display_text(&s("kitchen")));
+        self.ui.widget(cx, ids!(sales_title)).set_text(cx, &plain_display_text(&s("sales")));
+        self.ui.widget(cx, ids!(credit_title)).set_text(cx, &plain_display_text(&s("credit")));
+        self.ui.widget(cx, ids!(team_title)).set_text(cx, &plain_display_text(&s("team")));
+        self.ui.widget(cx, ids!(settings_title)).set_text(cx, &plain_display_text(&s("language_currency")));
+        self.ui.widget(cx, ids!(day_close_title)).set_text(cx, &plain_display_text(&s("day_close")));
+        self.ui.widget(cx, ids!(reports_title)).set_text(cx, &plain_display_text(&s("reports")));
+        self.ui.widget(cx, ids!(inventory_title)).set_text(cx, &plain_display_text(&s("inventory")));
+        self.ui.widget(cx, ids!(branches_title)).set_text(cx, &plain_display_text(&s("branches")));
     }
 
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
@@ -5450,10 +6275,9 @@ impl App {
             (title, header_title, icon_path, icon_hint, st.venue_title.clone())
         };
         self.ui
-            .label(cx, ids!(brand_title))
-            .set_text(cx, &header_title);
+            .widget(cx, ids!(brand_title)).set_text(cx, &plain_display_text(&header_title));
         for id in [ids!(setup_brand_title), ids!(lock_brand_title)] {
-            self.ui.label(cx, id).set_text(cx, &title);
+            self.ui.widget(cx, id).set_text(cx, &plain_display_text(&title));
         }
         for id in [ids!(brand_mark), ids!(setup_brand_mark), ids!(lock_brand_mark)] {
             let img = self.ui.image(cx, id);
@@ -5465,8 +6289,7 @@ impl App {
             }
         }
         self.ui
-            .label(cx, ids!(venue_brand_hint))
-            .set_text(cx, &icon_hint);
+            .widget(cx, ids!(venue_brand_hint)).set_text(cx, &plain_display_text(&icon_hint));
         let field = self.ui.text_input(cx, ids!(venue_title_input));
         if !cx.has_key_focus(field.area()) {
             let shown = field.text();
@@ -5570,12 +6393,33 @@ impl App {
         self.set_status(cx, "Opening icon picker…");
     }
 
+    /// Push history when moving between app screens; clear it for lock/setup.
+    fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
+        if st.screen == next {
+            return;
+        }
+        if record_history
+            && screen_keeps_history(st.screen)
+            && screen_keeps_history(next)
+        {
+            st.nav_back.push(st.screen);
+            if st.nav_back.len() > 32 {
+                st.nav_back.remove(0);
+            }
+            st.nav_forward.clear();
+        } else if !screen_keeps_history(next) {
+            st.nav_back.clear();
+            st.nav_forward.clear();
+        }
+        st.screen = next;
+    }
+
     fn go(&mut self, cx: &mut Cx, screen: Screen) {
         {
             let mut st = app_state().lock().unwrap();
             if st.must_confirm_device_role && screen != Screen::DeviceSetup {
                 st.status = "Choose how this device is used first".into();
-                st.screen = Screen::DeviceSetup;
+                self.set_screen(&mut st, Screen::DeviceSetup, false);
             } else if st.device_role == DeviceRole::Client
                 && !st.client_paired
                 && !matches!(
@@ -5584,7 +6428,7 @@ impl App {
                 )
             {
                 st.status = "Pair this extra till to the shop device first".into();
-                st.screen = Screen::ClientPair;
+                self.set_screen(&mut st, Screen::ClientPair, false);
             } else if st.session.is_none()
                 && !matches!(
                     screen,
@@ -5595,7 +6439,7 @@ impl App {
                 )
             {
                 st.status = "Unlock first".into();
-                st.screen = Screen::Lock;
+                self.set_screen(&mut st, Screen::Lock, false);
             } else if st.session.is_some()
                 && st.owner_setup_complete
                 && !st.onboarding_complete
@@ -5605,9 +6449,9 @@ impl App {
                     Screen::Onboard | Screen::DeviceSetup | Screen::Lock
                 )
             {
-                st.screen = Screen::Onboard;
+                self.set_screen(&mut st, Screen::Onboard, false);
             } else {
-                st.screen = screen;
+                self.set_screen(&mut st, screen, true);
                 if st.device_role == DeviceRole::Client
                     && matches!(
                         screen,
@@ -5697,10 +6541,10 @@ impl App {
             ids!(menu_name_input),
             ids!(menu_aliases_input),
             ids!(menu_price_input),
+            ids!(menu_unit_input),
             ids!(amend_total_input),
             ids!(reason_input),
             ids!(approval_pin_input),
-            ids!(discount_pin_input),
             ids!(credit_add_name),
             ids!(settle_amount_input),
             ids!(staff_name_input),
@@ -5728,7 +6572,10 @@ impl App {
             ids!(service_bps_input),
             ids!(onboard_venue_input),
             ids!(onboard_org_input),
-            ids!(split_cash_input),
+            ids!(mix_cash_input),
+            ids!(mix_upi_input),
+            ids!(mix_card_input),
+            ids!(mix_credit_input),
         ];
         for path in top_level {
             let field = self.ui.text_input(cx, path);
@@ -5761,8 +6608,8 @@ impl App {
         false
     }
 
-    /// Natural back: dismiss soft-keyboard only when a text field is focused,
-    /// then More-child → More, More/Items → Sell. One gesture = one step.
+    /// Natural back: dismiss soft-keyboard when a text field is focused,
+    /// else pop screen history (same as mouse Back / left-edge swipe).
     fn navigate_back(&mut self, cx: &mut Cx) -> bool {
         // Do NOT treat generic key focus (buttons after tap) as a back step —
         // that forced a useless double swipe on Android.
@@ -5774,52 +6621,179 @@ impl App {
             }
             return true;
         }
-        let screen = app_state().lock().unwrap().screen;
-        match screen {
-            Screen::Floor
-            | Screen::Kitchen
-            | Screen::Sales
-            | Screen::Credit
-            | Screen::Team
-            | Screen::Settings
-            | Screen::DayClose
-            | Screen::Reports
-            | Screen::Inventory
-            | Screen::Branches => {
-                self.go(cx, Screen::More);
-                true
+        let dest = {
+            let mut st = app_state().lock().unwrap();
+            if let Some(prev) = st.nav_back.pop() {
+                let current = st.screen;
+                st.nav_forward.push(current);
+                if st.nav_forward.len() > 32 {
+                    st.nav_forward.remove(0);
+                }
+                Some(prev)
+            } else {
+                // First entry / empty stack: parent hierarchy, no forward entry.
+                let fallback = match st.screen {
+                    Screen::ClientPair => Some(Screen::DeviceSetup),
+                    Screen::Floor
+                    | Screen::Kitchen
+                    | Screen::Sales
+                    | Screen::Credit
+                    | Screen::Team
+                    | Screen::Settings
+                    | Screen::DayClose
+                    | Screen::Reports
+                    | Screen::Inventory
+                    | Screen::Branches => Some(Screen::More),
+                    Screen::More | Screen::Menu => Some(Screen::Pos),
+                    _ => None,
+                };
+                if let Some(prev) = fallback {
+                    st.nav_forward.clear();
+                    if prev == Screen::DeviceSetup {
+                        st.must_confirm_device_role = true;
+                        st.status =
+                            "Pick Server Mode or Client Mode — Back left Client pairing".into();
+                    }
+                    Some(prev)
+                } else {
+                    None
+                }
             }
-            Screen::More | Screen::Menu => {
-                self.go(cx, Screen::Pos);
-                true
+        };
+        if let Some(prev) = dest {
+            {
+                let mut st = app_state().lock().unwrap();
+                if prev == Screen::DeviceSetup {
+                    st.must_confirm_device_role = true;
+                }
+                self.set_screen(&mut st, prev, false);
             }
-            Screen::Onboard | Screen::ClientPair => false,
-            // Sell / lock / setup — let the OS handle (minimize / exit).
-            Screen::Pos | Screen::Lock | Screen::DeviceSetup => false,
+            self.sync_chrome(cx);
+            true
+        } else {
+            false
         }
     }
 
-    /// Mouse back button, and a swipe that starts at the left edge and moves right.
-    fn pointer_navigates_back(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        match event {
-            Event::MouseDown(e) if e.button.is_back() => self.navigate_back(cx),
+    /// Mouse Forward / right-edge swipe / Alt+Right — redo a screen we backed out of.
+    fn navigate_forward(&mut self, cx: &mut Cx) -> bool {
+        let dest = {
+            let mut st = app_state().lock().unwrap();
+            st.nav_forward.pop().map(|next| {
+                let current = st.screen;
+                st.nav_back.push(current);
+                if st.nav_back.len() > 32 {
+                    st.nav_back.remove(0);
+                }
+                next
+            })
+        };
+        if let Some(next) = dest {
+            {
+                let mut st = app_state().lock().unwrap();
+                self.set_screen(&mut st, next, false);
+            }
+            self.sync_chrome(cx);
+            true
+        } else {
+            false
+        }
+    }
+
+    fn window_inner_size(&self, cx: &Cx) -> DVec2 {
+        let size = self.ui.window(cx, ids!(main_window)).get_inner_size(cx);
+        dvec2(
+            if size.x > 1.0 { size.x } else { 390.0 },
+            if size.y > 1.0 { size.y } else { 844.0 },
+        )
+    }
+
+    fn window_inner_width(&self, cx: &Cx) -> f64 {
+        self.window_inner_size(cx).x
+    }
+
+    /// Caption-bar WxH (left of the Kumkaj title). Controlled by
+    /// `KUMKAJ_SHOW_SIZE_BADGE` in `env/development.env` (not Cargo profile —
+    /// Android dev builds use `--release` but still load development.env).
+    fn sync_dev_size(&mut self, cx: &mut Cx) {
+        let show = store::SHOW_SIZE_BADGE;
+        self.ui.view(cx, ids!(dev_size_badge)).set_visible(cx, show);
+        if !show {
+            return;
+        }
+        let size = self.window_inner_size(cx);
+        // Compact: fits the caption row next to the title without clipping.
+        let text = format!("{:.0}×{:.0}", size.x, size.y);
+        self.ui.label(cx, ids!(dev_size_label)).set_text(cx, &text);
+    }
+
+    fn edge_swipe_nav(
+        &mut self,
+        cx: &mut Cx,
+        start: DVec2,
+        end: DVec2,
+        edge: SwipeNav,
+    ) -> bool {
+        let dx = end.x - start.x;
+        let dy = (end.y - start.y).abs();
+        match edge {
+            SwipeNav::Back if dx > 72.0 && dx > dy * 1.5 => self.navigate_back(cx),
+            SwipeNav::Forward if dx < -72.0 && (-dx) > dy * 1.5 => self.navigate_forward(cx),
+            _ => false,
+        }
+    }
+
+    /// Mouse Back/Forward, left-edge swipe → back, right-edge swipe → forward.
+    /// TouchUpdate on phones; primary MouseDown/Up edge drag on desktop.
+    fn pointer_navigates(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        let navigated = match event {
+            Event::MouseDown(e) if e.button.is_back() => {
+                *mouse_swipe_origin().lock().unwrap() = None;
+                self.navigate_back(cx)
+            }
+            Event::MouseDown(e) if e.button.is_forward() => {
+                *mouse_swipe_origin().lock().unwrap() = None;
+                self.navigate_forward(cx)
+            }
+            Event::MouseDown(e) if e.button.is_primary() => {
+                let width = self.window_inner_width(cx);
+                let mut origin = mouse_swipe_origin().lock().unwrap();
+                if e.abs.x < 48.0 {
+                    *origin = Some((e.abs, SwipeNav::Back));
+                } else if e.abs.x > width - 48.0 {
+                    *origin = Some((e.abs, SwipeNav::Forward));
+                } else {
+                    *origin = None;
+                }
+                false
+            }
+            Event::MouseUp(e) if e.button.is_primary() => {
+                let start_edge = mouse_swipe_origin().lock().unwrap().take();
+                match start_edge {
+                    Some((start, edge)) => self.edge_swipe_nav(cx, start, e.abs, edge),
+                    None => false,
+                }
+            }
             Event::TouchUpdate(e) => {
+                let width = self.window_inner_width(cx);
                 let mut origin = swipe_origin().lock().unwrap();
-                let mut go = false;
+                let mut nav: Option<SwipeNav> = None;
+                let mut start_end: Option<(DVec2, DVec2)> = None;
                 for touch in &e.touches {
                     match touch.state {
-                        TouchState::Start if touch.abs.x < 48.0 => {
-                            *origin = Some((touch.uid, touch.abs));
+                        TouchState::Start => {
+                            if touch.abs.x < 48.0 {
+                                *origin = Some((touch.uid, touch.abs, SwipeNav::Back));
+                            } else if touch.abs.x > width - 48.0 {
+                                *origin = Some((touch.uid, touch.abs, SwipeNav::Forward));
+                            }
                         }
                         TouchState::Stop => {
-                            if let Some((uid, start)) = *origin
+                            if let Some((uid, start, edge)) = *origin
                                 && uid == touch.uid
                             {
-                                let dx = touch.abs.x - start.x;
-                                let dy = (touch.abs.y - start.y).abs();
-                                if start.x < 48.0 && dx > 72.0 && dx > dy * 1.5 {
-                                    go = true;
-                                }
+                                start_end = Some((start, touch.abs));
+                                nav = Some(edge);
                                 *origin = None;
                             }
                         }
@@ -5827,13 +6801,21 @@ impl App {
                     }
                 }
                 drop(origin);
-                if go {
-                    self.navigate_back(cx)
-                } else {
-                    false
+                match (nav, start_end) {
+                    (Some(edge), Some((start, end))) => {
+                        self.edge_swipe_nav(cx, start, end, edge)
+                    }
+                    _ => false,
                 }
             }
             _ => false,
+        };
+        if navigated {
+            // Claim the gesture slot so a paired XF86Back key doesn't step twice.
+            let _ = nav_gesture_ok();
+            true
+        } else {
+            false
         }
     }
 
@@ -5854,21 +6836,37 @@ impl App {
             {
                 Some(e)
             } else {
+                let previous = st.device_role;
                 st.device_role = role;
                 st.must_confirm_device_role = false;
                 st.lock_as_owner = true;
                 st.pin_buffer.clear();
+                st.nav_back.clear();
+                st.nav_forward.clear();
                 match role {
                     DeviceRole::Server => {
-                        let store = st.store.as_ref().unwrap();
-                        let _ = store.set_extra_tills_allowed(false);
-                        st.extra_tills_allowed = false;
-                        net::stop_server();
+                        let switching_in = previous != DeviceRole::Server;
+                        if switching_in {
+                            // New Server: start standalone (extra tills off).
+                            let store = st.store.as_ref().unwrap();
+                            let _ = store.set_extra_tills_allowed(false);
+                            st.extra_tills_allowed = false;
+                            net::stop_server();
+                        } else if st.extra_tills_allowed {
+                            // Same mode again after restart — keep tills + LAN.
+                            if let Some(store) = st.store.as_ref() {
+                                let code = store.pairing_code().unwrap_or_default();
+                                let path = store.db_path().to_path_buf();
+                                let _ = net::ensure_server(path, code);
+                            }
+                        }
                         st.screen = Screen::Lock;
-                        st.status = if st.owner_setup_complete {
-                            "Shop device — extra tills off. Unlock as Owner".into()
+                        st.status = if !st.owner_setup_complete {
+                            "Server Mode — set Owner PIN".into()
+                        } else if st.extra_tills_allowed {
+                            "Server Mode — extra tills can join. Unlock".into()
                         } else {
-                            "Shop device — set Owner PIN".into()
+                            "Server Mode — unlock as Owner".into()
                         };
                     }
                     DeviceRole::Client => {
@@ -5890,11 +6888,11 @@ impl App {
                         }
                         if st.client_paired {
                             st.screen = Screen::Lock;
-                            st.status = "Extra till paired — unlock to sell".into();
+                            st.status = "Client Mode — unlock to sell".into();
                         } else {
                             st.screen = Screen::ClientPair;
                             st.status =
-                                "Extra till — pair to the shop device before selling".into();
+                                "Client Mode — pair to the Server before selling".into();
                         }
                     }
                     DeviceRole::Unset => {}
@@ -6309,6 +7307,9 @@ impl App {
         self.sync_chrome(cx);
     }
 
+    /// Single-tender charge (full bill one method). Sell UI uses amount fields +
+    /// Take payment; kept for amend/automation paths that still need one tender.
+    #[allow(dead_code)]
     fn pay(&mut self, cx: &mut Cx, method: PayMethod) {
         // A remote charge holds no lock while it waits on the LAN, so a second
         // tap would otherwise start a second bill for the same cart.
@@ -6318,7 +7319,6 @@ impl App {
         // Apply typed total even if seller didn't press Enter.
         let typed_total = self.ui.text_input(cx, ids!(cart_total_input)).text();
         let typed_customer = self.ui.text_input(cx, ids!(customer_name_input)).text();
-        let discount_pin = self.ui.text_input(cx, ids!(discount_pin_input)).text();
         let result = (|| -> Result<(String, String), String> {
             enum Pending {
                 LocalDone { sale: Sale, snack: String },
@@ -6333,9 +7333,6 @@ impl App {
                     code: String,
                 },
             }
-            // Outlives the lock so the approval can be logged once the bill lands,
-            // whether it was recorded here or on the Server.
-            let mut discount_approver: Option<StaffMember> = None;
             let pending = {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
@@ -6351,21 +7348,8 @@ impl App {
                         && minor > 0 {
                             let _ = st.cart.set_charge_total(Money(minor));
                         }
-                let draft = st.cart.to_sale_draft()?;
-                // Rounded Total is Kumkaj's only discount mechanism, so a deep
-                // round-off is a discount by another name. Past a tenth of the
-                // bill it needs Owner/Manager sign-off, same as a void.
-                if !actor.role.can_void_refund()
-                    && domain::rounding_needs_approval(
-                        draft.lines_total_paise,
-                        draft.rounding_paise,
-                    )
-                {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    discount_approver = Some(store.verify_approval_pin(&discount_pin).map_err(
-                        |e| format!("{e}. Round-off is over a tenth of this bill."),
-                    )?);
-                }
+                let mut draft = st.cart.to_sale_draft()?;
+                draft.money_lane = st.money_lane;
                 let table_id = st.selected_table_id.clone();
                 let is_client = st.device_role == DeviceRole::Client;
                 let customer_id = if method.is_credit() {
@@ -6426,15 +7410,6 @@ impl App {
                             &actor,
                         )?
                     };
-                    if let Some(approver) = &discount_approver {
-                        let detail = format!(
-                            "{}: round {} on lines {} · rung by {}",
-                            sale.id, sale.rounding_paise, sale.lines_total_paise, actor.name
-                        );
-                        if let Some(store) = st.store.as_ref() {
-                            store.audit(approver, "sale.discount_approved", &detail)?;
-                        }
-                    }
                     let amount = st.money(Money(sale.total_paise));
                     let tender = method.label_for(&st.fiscal);
                     let receipt = if sale.rounding_paise != 0 {
@@ -6494,9 +7469,6 @@ impl App {
                         table_id,
                         actor_id: actor.id.clone(),
                         payments: Vec::new(),
-                        approval_pin: discount_approver
-                            .as_ref()
-                            .map(|_| discount_pin.clone()),
                     };
                     let sale = net::client_push_sale(&url, &code, &req)?;
                     let mut st = app_state().lock().unwrap();
@@ -6794,6 +7766,7 @@ impl App {
             ids!(menu_name_input),
             ids!(menu_aliases_input),
             ids!(menu_price_input),
+            ids!(menu_unit_input),
             ids!(menu_tax_input),
             ids!(menu_category_input),
             ids!(menu_station_input),
@@ -6869,6 +7842,9 @@ impl App {
             .text_input(cx, ids!(menu_price_input))
             .set_text(cx, &price);
         self.ui
+            .text_input(cx, ids!(menu_unit_input))
+            .set_text(cx, &product.unit_label);
+        self.ui
             .text_input(cx, ids!(menu_tax_input))
             .set_text(cx, &tax);
         self.ui
@@ -6895,6 +7871,7 @@ impl App {
         let name = self.ui.text_input(cx, ids!(menu_name_input)).text();
         let aliases_text = self.ui.text_input(cx, ids!(menu_aliases_input)).text();
         let price_text = self.ui.text_input(cx, ids!(menu_price_input)).text();
+        let unit_text = self.ui.text_input(cx, ids!(menu_unit_input)).text();
         let tax_text = self.ui.text_input(cx, ids!(menu_tax_input)).text();
         let category_text = self.ui.text_input(cx, ids!(menu_category_input)).text();
         let station_text = self.ui.text_input(cx, ids!(menu_station_input)).text();
@@ -6905,7 +7882,7 @@ impl App {
             st.require_server_role(if updating { "Change items" } else { "Add items" })?;
             let actor = st.actor()?;
             if !actor.role.can_manage_menu() {
-                return Err("Not allowed to manage menu".into());
+                return Err("Not allowed to manage items".into());
             }
             let name = name.trim();
             if name.is_empty() {
@@ -6959,13 +7936,14 @@ impl App {
                 kumkaj::domain::ModifierOption::parse_human_list(&modifiers_text, &currency)?;
             let mut product = if let Some(id) = editing_id {
                 store.get_product(&id)?.ok_or_else(|| {
-                    "That item is no longer on the menu".to_string()
+                    "That item is no longer in Items".to_string()
                 })?
             } else {
                 Product::new_basic(product_id, name, Money(price_minor))
             };
             product.name = name.to_string();
             product.price = Money(price_minor);
+            product.unit_label = unit_text.trim().to_string();
             product.image_key = image_key;
             product.set_aliases(&typed_aliases(&aliases_text));
             if let Some(rate) = &tax_rate {
@@ -7010,7 +7988,7 @@ impl App {
             st.require_server_role("Remove items")?;
             let actor = st.actor()?;
             if !actor.role.can_manage_menu() {
-                return Err("Not allowed to manage menu".into());
+                return Err("Not allowed to manage items".into());
             }
             let product = st
                 .products
@@ -7184,7 +8162,13 @@ impl MatchEvent for App {
             || e.key_code == KeyCode::Back
             || (e.key_code == KeyCode::ArrowLeft && e.modifiers.alt)
         {
-            let _ = self.navigate_back(cx);
+            if nav_gesture_ok() {
+                let _ = self.navigate_back(cx);
+            }
+        } else if e.key_code == KeyCode::ArrowRight && e.modifiers.alt {
+            if nav_gesture_ok() {
+                let _ = self.navigate_forward(cx);
+            }
         }
     }
 
@@ -7287,12 +8271,12 @@ impl MatchEvent for App {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed".into());
                 }
-                let report = st
+                let text = st
                     .store
                     .as_ref()
                     .ok_or_else(|| "No store".to_string())?
-                    .ops_report_today()?;
-                st.day_close_text = st.ops_report_text(&report);
+                    .books_report_text("today")?;
+                st.day_close_text = text;
                 st.screen = Screen::Reports;
                 Ok(())
             })();
@@ -7348,6 +8332,7 @@ impl MatchEvent for App {
             ids!(reports_back),
             ids!(inventory_back),
             ids!(branches_back),
+            ids!(client_pair_back),
         ] {
             if self.ui.button(cx, back_id).clicked(actions) {
                 let _ = self.navigate_back(cx);
@@ -7383,6 +8368,37 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(stop_extra_tills)).clicked(actions) {
             self.set_extra_tills(cx, false);
+        }
+        for (idle, active, tmpl_id) in [
+            (ids!(settings_tmpl_custom), ids!(settings_tmpl_custom_on), "custom"),
+            (ids!(settings_tmpl_counter), ids!(settings_tmpl_counter_on), "counter_shop"),
+            (ids!(settings_tmpl_courier), ids!(settings_tmpl_courier_on), "courier_agency"),
+            (ids!(settings_tmpl_food), ids!(settings_tmpl_food_on), "food_service"),
+            (ids!(settings_tmpl_personal), ids!(settings_tmpl_personal_on), "personal_books"),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Change start template")?;
+                    let tmpl = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .apply_entity_template(tmpl_id)?;
+                    st.entity_template_id = tmpl.id.to_string();
+                    st.venue_mode = tmpl.venue_mode;
+                    st.reload_all()?;
+                    st.status = format!(
+                        "Template: {} — labels updated (no sample items added)",
+                        tmpl.title
+                    );
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
         }
         if self.ui.button(cx, ids!(settings_open_branches)).clicked(actions) {
             self.go_if_allowed(cx, Screen::Branches, |s| s.can_access_branches() || s.is_owner());
@@ -7482,20 +8498,38 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
 
-        if self.ui.button(cx, ids!(pay_split)).clicked(actions) && self.begin_pay(cx) {
+        if self.choice_chip_clicked(cx, actions, ids!(lane_declared), ids!(lane_declared_on)) {
+            app_state().lock().unwrap().money_lane = MoneyLane::Declared;
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(lane_owner), ids!(lane_owner_on)) {
+            app_state().lock().unwrap().money_lane = MoneyLane::Owner;
+            self.sync_chrome(cx);
+        }
+
+        if self.ui.button(cx, ids!(pay_mix)).clicked(actions) && self.begin_pay(cx) {
             let typed_total = self.ui.text_input(cx, ids!(cart_total_input)).text();
-            let cash_text = self.ui.text_input(cx, ids!(split_cash_input)).text();
-            let discount_pin = self.ui.text_input(cx, ids!(discount_pin_input)).text();
+            let cash_text = self.ui.text_input(cx, ids!(mix_cash_input)).text();
+            let upi_text = self.ui.text_input(cx, ids!(mix_upi_input)).text();
+            let card_text = self.ui.text_input(cx, ids!(mix_card_input)).text();
+            let credit_text = self.ui.text_input(cx, ids!(mix_credit_input)).text();
+            let typed_customer = self.ui.text_input(cx, ids!(customer_name_input)).text();
             enum Pending {
                 Local { sale_id: String, snack: String },
                 Remote {
                     req: Box<net::RemoteSaleRequest>,
                     url: String,
                     code: String,
-                    cash: i64,
-                    upi: i64,
+                    summary: String,
                 },
             }
+            let parse_part = |text: &str, currency: &str| -> Result<i64, String> {
+                let t = text.trim();
+                if t.is_empty() {
+                    return Ok(0);
+                }
+                locale::parse_major_input(t, currency)
+            };
             let pending = (|| -> Result<Pending, String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
@@ -7512,33 +8546,102 @@ impl MatchEvent for App {
                 {
                     let _ = st.cart.set_charge_total(Money(minor));
                 }
-                let draft = st.cart.to_sale_draft()?;
-                let mut discount_approver = None;
-                if !actor.role.can_void_refund()
-                    && domain::rounding_needs_approval(
-                        draft.lines_total_paise,
-                        draft.rounding_paise,
-                    )
-                {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    discount_approver = Some(store.verify_approval_pin(&discount_pin).map_err(
-                        |e| format!("{e}. Round-off is over a tenth of this bill."),
-                    )?);
-                }
-                // Under exclusive pricing the bill is higher than the cart
-                // quoted, so the second tender has to cover the tax too.
+                let mut draft = st.cart.to_sale_draft()?;
+                draft.money_lane = st.money_lane;
                 let charged = {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     store.preview_sale_total(&draft)?
                 };
-                let cash = locale::parse_major_input(&cash_text, &currency)?;
-                if cash <= 0 || cash >= charged {
-                    return Err("Cash amount must be between 0 and bill total".into());
+                let cash = parse_part(&cash_text, &currency)?;
+                let upi = parse_part(&upi_text, &currency)?;
+                let card = parse_part(&card_text, &currency)?;
+                let credit = parse_part(&credit_text, &currency)?;
+                if cash < 0 || upi < 0 || card < 0 || credit < 0 {
+                    return Err("Payment amounts cannot be negative".into());
                 }
-                let upi = charged - cash;
+                let mut parts: Vec<(PayMethod, i64)> = Vec::new();
+                if cash > 0 {
+                    parts.push((PayMethod::Cash, cash));
+                }
+                if upi > 0 {
+                    parts.push((PayMethod::Upi, upi));
+                }
+                if card > 0 {
+                    parts.push((PayMethod::Card, card));
+                }
+                if credit > 0 {
+                    parts.push((PayMethod::Credit, credit));
+                }
+                if parts.is_empty() {
+                    return Err(
+                        "Type amounts in Cash / UPI / Card / Credit, then Take payment".into(),
+                    );
+                }
+                let sum: i64 = parts.iter().map(|(_, a)| *a).sum();
+                if sum != charged {
+                    return Err(format!(
+                        "Parts add to {} but bill is {} — adjust the amounts",
+                        st.money(Money(sum)),
+                        st.money(Money(charged))
+                    ));
+                }
+                let is_client = st.device_role == DeviceRole::Client;
+                let customer_id = if credit > 0 {
+                    if let Some(id) = st.selected_customer_id.clone() {
+                        Some(id)
+                    } else if typed_customer.trim().is_empty() {
+                        return Err(
+                            "Credit part needs a customer — type a name or Pick one".into(),
+                        );
+                    } else if is_client {
+                        None
+                    } else {
+                        let name = typed_customer.trim();
+                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                        let customer = store.find_or_create_customer(name)?;
+                        st.selected_customer_id = Some(customer.id.clone());
+                        Some(customer.id)
+                    }
+                } else {
+                    None
+                };
+                let customer_name = if credit > 0 {
+                    let typed = typed_customer.trim();
+                    if !typed.is_empty() {
+                        Some(typed.to_string())
+                    } else {
+                        st.selected_customer_id.as_ref().and_then(|id| {
+                            st.customers
+                                .iter()
+                                .find(|c| &c.id == id)
+                                .map(|c| c.name.clone())
+                        })
+                    }
+                } else {
+                    None
+                };
+                let rail = st.fiscal.digital_pay_label().to_string();
+                let summary = parts
+                    .iter()
+                    .map(|(m, a)| {
+                        let label = match m {
+                            PayMethod::Upi => rail.as_str(),
+                            PayMethod::Cash => "Cash",
+                            PayMethod::Card => "Card",
+                            PayMethod::Credit => "Credit",
+                            _ => m.label(),
+                        };
+                        format!("{} {}", label, st.money(Money(*a)))
+                    })
+                    .collect::<Vec<_>>()
+                    .join(" + ");
                 let table_id = st.selected_table_id.clone();
-                let parts = [(PayMethod::Cash, cash), (PayMethod::Upi, upi)];
-                if st.device_role == DeviceRole::Client {
+                let pay_label = if parts.len() == 1 {
+                    parts[0].0.as_str().to_string()
+                } else {
+                    PayMethod::Split.as_str().to_string()
+                };
+                if is_client {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     if !store.client_paired()? {
                         return Err("Client is not paired to a Server — connect first".into());
@@ -7552,9 +8655,9 @@ impl MatchEvent for App {
                     });
                     let req = Box::new(net::RemoteSaleRequest {
                         draft,
-                        pay: PayMethod::Split.as_str().into(),
-                        customer_id: None,
-                        customer_name: None,
+                        pay: pay_label,
+                        customer_id,
+                        customer_name,
                         table_name,
                         table_id,
                         actor_id: actor.id.clone(),
@@ -7565,45 +8668,35 @@ impl MatchEvent for App {
                                 amount_paise: *amount,
                             })
                             .collect(),
-                        approval_pin: discount_approver.as_ref().map(|_| discount_pin.clone()),
                     });
                     return Ok(Pending::Remote {
                         req,
                         url,
                         code,
-                        cash,
-                        upi,
+                        summary,
                     });
                 }
                 let sale = {
                     let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                    store.finalize_sale_split(&draft, &parts, table_id.as_deref(), &actor)?
+                    store.finalize_sale_tenders(
+                        &draft,
+                        &parts,
+                        table_id.as_deref(),
+                        customer_id.as_deref(),
+                        &actor,
+                    )?
                 };
-                if let Some(approver) = &discount_approver {
-                    let detail = format!(
-                        "{}: round {} on lines {} · rung by {}",
-                        sale.id, sale.rounding_paise, sale.lines_total_paise, actor.name
-                    );
-                    if let Some(store) = st.store.as_ref() {
-                        store.audit(approver, "sale.discount_approved", &detail)?;
-                    }
-                }
                 let amount = st.money(Money(sale.total_paise));
                 let full = st
                     .store
                     .as_ref()
                     .and_then(|s| s.format_receipt_text(&sale.id).ok())
-                    .unwrap_or_else(|| format!("Split sale {}", amount));
+                    .unwrap_or_else(|| format!("Sale {}", amount));
                 st.cart.clear();
                 st.selected_table_id = None;
                 st.last_receipt = full;
-                st.status = format!(
-                    "Split · cash {} + {} {}",
-                    st.money(Money(cash)),
-                    st.fiscal.digital_pay_label(),
-                    st.money(Money(upi))
-                );
-                let snack = format!("{} · split recorded", amount);
+                st.status = format!("Paid · {summary}");
+                let snack = format!("{amount} · {summary}");
                 st.reload_all()?;
                 Ok(Pending::Local {
                     sale_id: sale.id,
@@ -7617,8 +8710,7 @@ impl MatchEvent for App {
                     req,
                     url,
                     code,
-                    cash,
-                    upi,
+                    summary,
                 }) => (|| -> Result<(String, String), String> {
                     let sale = net::client_push_sale(&url, &code, &req)?;
                     let mut st = app_state().lock().unwrap();
@@ -7632,24 +8724,29 @@ impl MatchEvent for App {
                         .store
                         .as_ref()
                         .and_then(|s| s.format_receipt_text(&sale.id).ok())
-                        .unwrap_or_else(|| format!("Split sale {}", amount));
+                        .unwrap_or_else(|| format!("Sale {}", amount));
                     st.cart.clear();
                     st.selected_table_id = None;
                     st.last_receipt = full;
-                    st.status = format!(
-                        "Split · cash {} + {} {}",
-                        st.money(Money(cash)),
-                        st.fiscal.digital_pay_label(),
-                        st.money(Money(upi))
-                    );
+                    st.status = format!("Paid · {summary}");
                     st.reload_all()?;
-                    Ok((sale.id, format!("{} · split recorded", amount)))
+                    Ok((sale.id, format!("{amount} · {summary}")))
                 })()
             };
             self.end_pay();
             match result {
                 Err(e) => self.set_status(cx, e),
-                Ok((sale_id, snack)) => self.show_undo_snackbar(cx, sale_id, snack),
+                Ok((sale_id, snack)) => {
+                    for id in [
+                        ids!(mix_cash_input),
+                        ids!(mix_upi_input),
+                        ids!(mix_card_input),
+                        ids!(mix_credit_input),
+                    ] {
+                        self.ui.text_input(cx, id).set_text(cx, "");
+                    }
+                    self.show_undo_snackbar(cx, sale_id, snack);
+                }
             }
             self.sync_chrome(cx);
         }
@@ -7660,7 +8757,8 @@ impl MatchEvent for App {
                 if st.cart.is_empty() {
                     return Err("Cart is empty".into());
                 }
-                let draft = st.cart.to_sale_draft()?;
+                let mut draft = st.cart.to_sale_draft()?;
+                draft.money_lane = st.money_lane;
                 let table_id = st.selected_table_id.clone();
                 // The kitchen watches the Server's ticket list, so a terminal
                 // posts the cart there instead of writing its own cache.
@@ -7704,18 +8802,6 @@ impl MatchEvent for App {
                 self.set_status(cx, e);
             }
             self.sync_chrome(cx);
-        }
-if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
-            self.pay(cx, PayMethod::Cash);
-        }
-        if self.ui.button(cx, ids!(pay_upi)).clicked(actions) {
-            self.pay(cx, PayMethod::Upi);
-        }
-        if self.ui.button(cx, ids!(pay_card)).clicked(actions) {
-            self.pay(cx, PayMethod::Card);
-        }
-        if self.ui.button(cx, ids!(pay_credit)).clicked(actions) {
-            self.pay(cx, PayMethod::Credit);
         }
         if self.ui.button(cx, ids!(undo_snack_btn)).clicked(actions) {
             self.undo_last_sale(cx);
@@ -7846,10 +8932,45 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
                         );
                         return Ok(());
                     }
+                    let bal_before = st
+                        .customers
+                        .iter()
+                        .find(|c| c.id == customer_id)
+                        .map(|c| c.balance_paise)
+                        .unwrap_or(0);
                     let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
                     store.settle_credit(&customer_id, minor, method, &actor, "")?;
                     st.reload_all()?;
-                    st.status = format!("Settled {} via {}", st.money(Money(minor)), method.label());
+                    let bal_after = st
+                        .customers
+                        .iter()
+                        .find(|c| c.id == customer_id)
+                        .map(|c| c.balance_paise)
+                        .unwrap_or(0);
+                    st.status = if bal_before <= 0 {
+                        format!(
+                            "Advance {} via {} · held {}",
+                            st.money(Money(minor)),
+                            method.label(),
+                            st.money(Money((-bal_after).max(0)))
+                        )
+                    } else if bal_after < 0 {
+                        format!(
+                            "Paid {} via {} · debt cleared · advance {}",
+                            st.money(Money(minor)),
+                            method.label(),
+                            st.money(Money(-bal_after))
+                        )
+                    } else if bal_after == 0 {
+                        format!("Settled {} via {}", st.money(Money(minor)), method.label())
+                    } else {
+                        format!(
+                            "Paid {} via {} · still owes {}",
+                            st.money(Money(minor)),
+                            method.label(),
+                            st.money(Money(bal_after))
+                        )
+                    };
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -7858,6 +8979,9 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
                     self.ui
                         .text_input(cx, ids!(settle_amount_input))
                         .set_text(cx, "");
+                    // Surface settle/advance result on Sell receipt line too.
+                    let msg = app_state().lock().unwrap().status.clone();
+                    self.set_status(cx, msg);
                 }
                 self.sync_chrome(cx);
             }
@@ -8502,37 +9626,41 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
             self.sync_chrome(cx);
         }
 
-        if self.ui.button(cx, ids!(staff_role_cashier)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(staff_role_cashier), ids!(staff_role_cashier_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 st.draft_staff_role = StaffRole::Cashier;
                 st.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
             }
             self.set_status(cx, "Preset: Cashier");
+            self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(staff_role_waiter)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(staff_role_waiter), ids!(staff_role_waiter_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 st.draft_staff_role = StaffRole::Waiter;
                 st.draft_features = StaffFeatures::for_role(StaffRole::Waiter);
             }
             self.set_status(cx, "Preset: Waiter");
+            self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(staff_role_manager)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(staff_role_manager), ids!(staff_role_manager_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 st.draft_staff_role = StaffRole::Manager;
                 st.draft_features = StaffFeatures::for_role(StaffRole::Manager);
             }
             self.set_status(cx, "Preset: Manager");
+            self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(staff_role_kitchen)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(staff_role_kitchen), ids!(staff_role_kitchen_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 st.draft_staff_role = StaffRole::Kitchen;
                 st.draft_features = StaffFeatures::for_role(StaffRole::Kitchen);
             }
             self.set_status(cx, "Preset: Kitchen");
+            self.sync_chrome(cx);
         }
 
         if self.ui.button(cx, ids!(staff_add_cashier)).clicked(actions) {
@@ -8883,29 +10011,63 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
             if let Err(e) = result { self.set_status(cx, e); }
             self.sync_chrome(cx);
         }
+        for (idle, active, tmpl_id) in [
+            (ids!(onboard_tmpl_custom), ids!(onboard_tmpl_custom_on), "custom"),
+            (ids!(onboard_tmpl_counter), ids!(onboard_tmpl_counter_on), "counter_shop"),
+            (ids!(onboard_tmpl_courier), ids!(onboard_tmpl_courier_on), "courier_agency"),
+            (ids!(onboard_tmpl_food), ids!(onboard_tmpl_food_on), "food_service"),
+            (ids!(onboard_tmpl_personal), ids!(onboard_tmpl_personal_on), "personal_books"),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let tmpl = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .apply_entity_template(tmpl_id)?;
+                    st.entity_template_id = tmpl.id.to_string();
+                    st.reload_all()?;
+                    st.status = format!(
+                        "Template: {} — {}",
+                        tmpl.title, tmpl.blurb
+                    );
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
         if self.ui.button(cx, ids!(onboard_fresh)).clicked(actions) {
-            app_state().lock().unwrap().onboard_step = 1;
-            self.set_status(cx, "Fresh — add example items or keep empty, then Done");
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                Self::ensure_default_template(&mut st)?;
+                st.onboard_step = 1;
+                st.status = "Fresh — catalogue empty; add your items in Items, then Done".into();
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(onboard_book)).clicked(actions) {
-            app_state().lock().unwrap().onboard_step = 2;
-            self.set_status(cx, "Book — add items and opening credit, then Done");
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(onboard_seed)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                let n = st.store.as_ref().ok_or_else(|| "No store".to_string())?.seed_starter_products()?;
-                st.reload_all()?;
-                st.status = if n == 0 { "Catalogue already has items".into() } else { format!("Added {n} example items") };
+                Self::ensure_default_template(&mut st)?;
+                st.onboard_step = 2;
+                st.status = "Book — add items and opening credit, then Done".into();
                 Ok(())
             })();
-            if let Err(e) = result { self.set_status(cx, e); }
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(onboard_empty)).clicked(actions) {
-            self.set_status(cx, "Keeping an empty catalogue — add items in Items later");
+            self.set_status(cx, "Catalogue stays empty — add your rates or items under Items");
         }
         if self.ui.button(cx, ids!(onboard_add_item)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(onboard_item_name)).text();
@@ -8963,6 +10125,7 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
         if self.ui.button(cx, ids!(onboard_done)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
+                Self::ensure_default_template(&mut st)?;
                 st.store.as_ref().ok_or_else(|| "No store".to_string())?.complete_onboarding()?;
                 st.onboarding_complete = true;
                 st.screen = Screen::Pos;
@@ -9126,44 +10289,116 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
                 self.copy_text_to_clipboard(cx, &text);
             }
         }
-        if self.ui.button(cx, ids!(expense_add)).clicked(actions)
+        if self.ui.button(cx, ids!(reports_today)).clicked(actions)
+            || self.ui.button(cx, ids!(reports_month)).clicked(actions)
+            || self.ui.button(cx, ids!(reports_aging)).clicked(actions)
             || self.ui.button(cx, ids!(reports_refresh)).clicked(actions)
         {
-            let adding = self.ui.button(cx, ids!(expense_add)).clicked(actions);
+            let month = self.ui.button(cx, ids!(reports_month)).clicked(actions);
+            let aging_only = self.ui.button(cx, ids!(reports_aging)).clicked(actions);
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                st.day_close_text = if aging_only {
+                    store.party_aging_text()?
+                } else if month {
+                    store.books_report_text("month")?
+                } else {
+                    store.books_report_text("today")?
+                };
+                st.screen = Screen::Reports;
+                st.status = if aging_only {
+                    "Party aging".into()
+                } else if month {
+                    "This month books".into()
+                } else {
+                    "Today books".into()
+                };
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(reports_copy)).clicked(actions) {
+            let text = app_state().lock().unwrap().day_close_text.clone();
+            if text.trim().is_empty() {
+                self.set_status(cx, "Open a report first");
+            } else {
+                self.copy_text_to_clipboard(cx, &text);
+            }
+        }
+        if self.ui.button(cx, ids!(expense_add)).clicked(actions) {
             let amount_text = self.ui.text_input(cx, ids!(expense_amount_input)).text();
             let note = self.ui.text_input(cx, ids!(expense_note_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                if adding {
-                    if st.device_role == DeviceRole::Client {
-                        return Err("Log expenses on the shop device — this is an extra till".into());
-                    }
-                    let currency = st.locale.currency.clone();
-                    let minor = locale::parse_major_input(&amount_text, &currency)?;
-                    store.add_expense(minor, "misc", &note, &actor)?;
+                if st.device_role == DeviceRole::Client {
+                    return Err("Log expenses on the shop device — this is an extra till".into());
                 }
-                let report = store.ops_report_today()?;
-                st.day_close_text = st.ops_report_text(&report);
+                let currency = st.locale.currency.clone();
+                let minor = locale::parse_major_input(&amount_text, &currency)?;
+                store.add_expense(minor, "misc", &note, &actor)?;
+                st.day_close_text = store.books_report_text("today")?;
                 st.screen = Screen::Reports;
-                st.status = if adding { "Expense logged".into() } else { "Report refreshed".into() };
+                st.status = "Expense logged".into();
                 Ok(())
             })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            else if adding {
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            } else {
                 self.ui.text_input(cx, ids!(expense_amount_input)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(expense_note_input)).set_text(cx, "");
             }
             self.sync_chrome(cx);
         }
-
-        for (id, order_type) in [
-            (ids!(order_counter), OrderType::Counter),
-            (ids!(order_dine), OrderType::DineIn),
-            (ids!(order_takeaway), OrderType::Takeaway),
+        for (id, kind) in [
+            (ids!(bank_till_to_bank), MoneyMoveKind::TillToBank),
+            (ids!(bank_bank_to_till), MoneyMoveKind::BankToTill),
+            (ids!(bank_in), MoneyMoveKind::BankIn),
+            (ids!(bank_out), MoneyMoveKind::BankOut),
         ] {
             if self.ui.button(cx, id).clicked(actions) {
+                let amount_text = self.ui.text_input(cx, ids!(bank_amount_input)).text();
+                let note = self.ui.text_input(cx, ids!(bank_note_input)).text();
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Post bank / cashbook")?;
+                    let actor = st.actor()?;
+                    let currency = st.locale.currency.clone();
+                    let minor = locale::parse_major_input(&amount_text, &currency)?;
+                    st.store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .post_money_movement(kind, minor, &note, &actor)?;
+                    st.day_close_text = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .books_report_text("today")?;
+                    st.screen = Screen::Reports;
+                    st.status = format!("{} posted", kind.label());
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.ui.text_input(cx, ids!(bank_amount_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(bank_note_input)).set_text(cx, "");
+                }
+                self.sync_chrome(cx);
+            }
+        }
+
+        for (idle, active, order_type) in [
+            (ids!(order_counter), ids!(order_counter_on), OrderType::Counter),
+            (ids!(order_dine), ids!(order_dine_on), OrderType::DineIn),
+            (ids!(order_takeaway), ids!(order_takeaway_on), OrderType::Takeaway),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
                 {
                     let mut st = app_state().lock().unwrap();
                     st.cart.set_order_type(order_type);
@@ -9628,8 +10863,7 @@ if self.ui.button(cx, ids!(pay_cash)).clicked(actions) {
             match result {
                 Ok(path) => {
                     self.ui
-                        .label(cx, ids!(backup_path_label))
-                        .set_text(cx, &format!("Backup: {}", path.display()));
+                        .widget(cx, ids!(backup_path_label)).set_text(cx, &plain_display_text(&format!("Backup: {}", path.display())));
                     self.set_status(cx, "Backup created");
                 }
                 Err(e) => self.set_status(cx, e),
@@ -9674,8 +10908,11 @@ impl AppMain for App {
         if matches!(event, Event::Startup) {
             self.ensure_store(cx);
         }
+        if matches!(event, Event::WindowGeomChange(_)) {
+            self.sync_dev_size(cx);
+        }
         self.match_event(cx, event);
-        if self.pointer_navigates_back(cx, event) {
+        if self.pointer_navigates(cx, event) {
             return;
         }
         self.ui.handle_event(cx, event, &mut Scope::empty());

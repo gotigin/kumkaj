@@ -1,15 +1,17 @@
 //! Local SQLite persistence for Kumkaj (WAL, restart-safe sales).
 
 use crate::domain::{
-    new_id, AuditEvent, Branch, BranchSnapshot, Category, CreditLedgerEntry, Customer, DayTotals,
-    DiningTable, KitchenStation, KotStatus, KotTicket, Money, OpsReport, OrderType,
-    OrgConsolidatedReport, PayMethod, Product, Purchase, PurchaseLine, Sale, SaleDraft, SaleLine,
+    format_qty_display, new_id, AuditEvent, Branch, BranchSnapshot, Category, CreditLedgerEntry,
+    Customer, DayTotals, DiningTable, KitchenStation, KotStatus, KotTicket, Money, MoneyLane,
+    MoneyMoveKind, MoneyMovement, OpsReport, OrderType, OrgConsolidatedReport, PartyAgingRow,
+    PayMethod, PeriodBooks, Product, Purchase, PurchaseLine, Sale, SaleDraft, SaleLine,
     SaleRevision, StaffFeatures, StaffMember, StaffRole, StockMovement, TableStatus, TaxRate,
     VenueMode, STOCK_UNTRACKED,
 };
+use crate::entity_template::{self, EntityTemplate};
 use crate::fiscal::{self, CountryProfile, FiscalSettings, TaxPricing};
 use crate::locale::LocaleSettings;
-use chrono::Local;
+use chrono::{Local, NaiveDate};
 use rusqlite::{params, Connection, OptionalExtension};
 use sha2::{Digest, Sha256};
 use std::fs;
@@ -662,26 +664,6 @@ impl Store {
                     .map_err(|e| e.to_string())?;
             }
         }
-        let category_count: i64 = self
-            .conn
-            .query_row(
-                "SELECT COUNT(*) FROM categories WHERE branch_id = ?1",
-                params![branch_id],
-                |r| r.get(0),
-            )
-            .map_err(|e| e.to_string())?;
-        if category_count == 0 {
-            for (i, name) in ["Drinks", "Food"].iter().enumerate() {
-                self.conn
-                    .execute(
-                        "INSERT INTO categories(id, branch_id, name, sort_order)
-                         VALUES(?1, ?2, ?3, ?4)",
-                        params![new_id(), branch_id, name, i as i64],
-                    )
-                    .map_err(|e| e.to_string())?;
-            }
-        }
-
         let ver = self.meta_get("schema_version")?.unwrap_or_else(|| "1".into());
         if ver.parse::<i64>().unwrap_or(1) < 11 {
             self.meta_set("schema_version", "11")?;
@@ -797,6 +779,52 @@ impl Store {
         let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
         if ver.parse::<i64>().unwrap_or(1) < 13 {
             self.meta_set("schema_version", "13")?;
+        }
+
+        // v14: entity start templates — unit labels, party kind, milli qty,
+        // dual money lanes (declared / owner). Same generic tables.
+        self.ensure_column("products", "unit_label", "TEXT NOT NULL DEFAULT ''")?;
+        self.ensure_column("customers", "kind_label", "TEXT NOT NULL DEFAULT ''")?;
+        self.ensure_column("sale_lines", "qty_milli", "INTEGER NOT NULL DEFAULT 0")?;
+        self.ensure_column("sale_lines", "unit_label", "TEXT NOT NULL DEFAULT ''")?;
+        self.ensure_column("sales", "money_lane", "TEXT NOT NULL DEFAULT 'declared'")?;
+        self.conn
+            .execute(
+                "INSERT OR IGNORE INTO meta(key, value) VALUES('entity_template', 'custom')",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "UPDATE sale_lines SET qty_milli = qty * 1000 WHERE COALESCE(qty_milli, 0) = 0",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
+        if ver.parse::<i64>().unwrap_or(1) < 14 {
+            self.meta_set("schema_version", "14")?;
+        }
+
+        // v15: cashbook / bank money movements + richer books reports.
+        self.conn
+            .execute_batch(
+                "CREATE TABLE IF NOT EXISTS money_movements (
+                    id TEXT PRIMARY KEY,
+                    created_at TEXT NOT NULL,
+                    kind TEXT NOT NULL,
+                    amount_paise INTEGER NOT NULL,
+                    note TEXT NOT NULL DEFAULT '',
+                    actor_id TEXT NOT NULL,
+                    actor_name TEXT NOT NULL,
+                    branch_id TEXT NOT NULL DEFAULT ''
+                );
+                CREATE INDEX IF NOT EXISTS idx_money_movements_day
+                    ON money_movements(created_at);",
+            )
+            .map_err(|e| e.to_string())?;
+        let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
+        if ver.parse::<i64>().unwrap_or(1) < 15 {
+            self.meta_set("schema_version", "15")?;
         }
         Ok(())
     }
@@ -1038,9 +1066,34 @@ impl Store {
         self.meta_set("venue_mode", mode.as_str())
     }
 
-    /// Seed a tiny example catalogue if the product list is empty.
-    pub fn seed_starter_products(&self) -> Result<usize, String> {
-        self.assert_server_writer("Seed example items")?;
+    pub fn entity_template_id(&self) -> Result<String, String> {
+        Ok(self
+            .meta_get("entity_template")?
+            .unwrap_or_else(|| "custom".into()))
+    }
+
+    pub fn entity_template(&self) -> Result<&'static EntityTemplate, String> {
+        Ok(entity_template::resolve(&self.entity_template_id()?))
+    }
+
+    /// Apply a start template: labels/features always; seeds only when empty.
+    pub fn apply_entity_template(&self, template_id: &str) -> Result<&'static EntityTemplate, String> {
+        self.assert_server_writer("Apply start template")?;
+        let tmpl = entity_template::resolve(template_id);
+        self.meta_set("entity_template", tmpl.id)?;
+        self.meta_set("qty_unit_hint", tmpl.qty_unit_hint)?;
+        self.meta_set("lane_declared_label", tmpl.lane_declared_label)?;
+        self.meta_set("lane_owner_label", tmpl.lane_owner_label)?;
+        self.set_venue_mode(tmpl.venue_mode)?;
+        let _ = self.seed_template_products(tmpl)?;
+        let _ = self.seed_template_parties(tmpl)?;
+        Ok(tmpl)
+    }
+
+    fn seed_template_products(&self, tmpl: &EntityTemplate) -> Result<usize, String> {
+        if tmpl.seed_products.is_empty() {
+            return Ok(0);
+        }
         let count: i64 = self
             .conn
             .query_row(
@@ -1052,15 +1105,44 @@ impl Store {
         if count > 0 {
             return Ok(0);
         }
-        let starters = [("Sample item", 10i64)];
-        for (name, rupees) in starters {
-            self.upsert_product(&Product::new_basic(
+        for seed in tmpl.seed_products {
+            let mut product = Product::new_basic(
                 new_id(),
-                name,
-                Money::from_rupees(rupees),
-            ))?;
+                seed.name,
+                entity_template::seed_product_price(seed),
+            );
+            product.unit_label = seed.unit_label.into();
+            self.upsert_product(&product)?;
         }
-        Ok(starters.len())
+        Ok(tmpl.seed_products.len())
+    }
+
+    fn seed_template_parties(&self, tmpl: &EntityTemplate) -> Result<usize, String> {
+        if tmpl.seed_parties.is_empty() {
+            return Ok(0);
+        }
+        let count: i64 = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*) FROM customers WHERE active = 1",
+                [],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        if count > 0 {
+            return Ok(0);
+        }
+        for party in tmpl.seed_parties {
+            self.add_customer_kind(party.name, "", party.kind_label)?;
+        }
+        Ok(tmpl.seed_parties.len())
+    }
+
+    /// No sample catalogue — owners add their own rates/items.
+    /// Kept as a no-op so older UI/call sites stay harmless.
+    pub fn seed_starter_products(&self) -> Result<usize, String> {
+        self.assert_server_writer("Seed example items")?;
+        Ok(0)
     }
 
     pub fn client_paired(&self) -> Result<bool, String> {
@@ -1221,6 +1303,7 @@ impl Store {
         let currency = self.locale_settings()?.currency;
         let fiscal_settings = self.fiscal_settings()?;
         let pay = PayMethod::parse(&sale.pay_method);
+        let tmpl = self.entity_template()?;
         let mut out = String::new();
         out.push_str(venue);
         out.push('\n');
@@ -1237,14 +1320,37 @@ impl Store {
             out.push_str(clock);
         }
         out.push('\n');
+        if let Some(cid) = sale.customer_id.as_deref().filter(|s| !s.is_empty()) {
+            if let Some(party) = self.get_customer(cid)? {
+                out.push_str("Party: ");
+                out.push_str(&party.name);
+                if !party.kind_label.trim().is_empty() {
+                    out.push_str(" (");
+                    out.push_str(party.kind_label.trim());
+                    out.push(')');
+                }
+                out.push('\n');
+                if !party.phone.trim().is_empty() {
+                    out.push_str("Phone: ");
+                    out.push_str(party.phone.trim());
+                    out.push('\n');
+                }
+            }
+        }
+        let lane = MoneyLane::parse(&sale.money_lane);
+        let lane_label = match lane {
+            MoneyLane::Declared => tmpl.lane_declared_label,
+            MoneyLane::Owner => tmpl.lane_owner_label,
+        };
+        out.push_str("Bill type: ");
+        out.push_str(lane_label);
+        out.push('\n');
         out.push_str("--------------------\n");
         for line in &lines {
             let unit = Money(line.unit_price_paise).format_localized(&currency, &fiscal_settings);
             let total = Money(line.line_total_paise).format_localized(&currency, &fiscal_settings);
-            out.push_str(&format!(
-                "{} x{} @ {} = {}\n",
-                line.name, line.qty, unit, total
-            ));
+            let qty = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
+            out.push_str(&format!("{} {} @ {} = {}\n", line.name, qty, unit, total));
             if !line.note.is_empty() {
                 out.push_str(&format!("  ({})\n", line.note));
             }
@@ -1332,6 +1438,41 @@ impl Store {
         Ok(out)
     }
 
+    pub fn get_customer(&self, id: &str) -> Result<Option<Customer>, String> {
+        let row = self
+            .conn
+            .query_row(
+                "SELECT id, name, phone, note, active, COALESCE(kind_label, '')
+                 FROM customers WHERE id = ?1",
+                params![id],
+                |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, String>(2)?,
+                        row.get::<_, String>(3)?,
+                        row.get::<_, i64>(4)?,
+                        row.get::<_, String>(5)?,
+                    ))
+                },
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        let Some((id, name, phone, note, active, kind_label)) = row else {
+            return Ok(None);
+        };
+        let balance_paise = self.customer_balance(&id)?;
+        Ok(Some(Customer {
+            id,
+            name,
+            phone,
+            note,
+            active: active != 0,
+            balance_paise,
+            kind_label,
+        }))
+    }
+
     pub fn day_close_summary(&self) -> Result<String, String> {
         let t = self.today_totals()?;
         let currency = self.locale_settings()?.currency;
@@ -1343,6 +1484,9 @@ impl Store {
         } else {
             venue.trim()
         };
+        let tmpl = self.entity_template()?;
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let bank_net = self.money_movements_net_for_prefix(&format!("{today}%"))?;
         Ok(format!(
             "{venue} — day close\n\
              Sales: {}\n\
@@ -1353,6 +1497,10 @@ impl Store {
              {} sales today: {}\n\
              {} still owed: {}\n\
              {}: {}\n\
+             {}: {}\n\
+             {}: {}\n\
+             Bank net today: {}\n\
+             Bank balance: {}\n\
              Rounding: {}\n",
             t.sale_count,
             t.lines_total().format_localized(&currency, &fiscal_settings),
@@ -1364,8 +1512,14 @@ impl Store {
             Money(t.credit_paise).format_localized(&currency, &fiscal_settings),
             fiscal_settings.credit_label(),
             Money(outstanding).format_localized(&currency, &fiscal_settings),
+            tmpl.lane_declared_label,
+            Money(t.declared_paise).format_localized(&currency, &fiscal_settings),
+            tmpl.lane_owner_label,
+            Money(t.owner_lane_paise).format_localized(&currency, &fiscal_settings),
             self.tax_total_caption(&fiscal_settings),
             t.tax().format_localized(&currency, &fiscal_settings),
+            Money(bank_net).format_localized(&currency, &fiscal_settings),
+            Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal_settings),
             Money(t.rounding_paise).format_localized(&currency, &fiscal_settings),
         ))
     }
@@ -1526,13 +1680,14 @@ impl Store {
         for c in customers {
             self.conn
                 .execute(
-                    "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7)
+                    "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)
                      ON CONFLICT(id) DO UPDATE SET
                        name=excluded.name,
                        phone=excluded.phone,
                        note=excluded.note,
-                       active=excluded.active",
+                       active=excluded.active,
+                       kind_label=excluded.kind_label",
                     params![
                         c.id,
                         c.name,
@@ -1540,7 +1695,8 @@ impl Store {
                         c.note,
                         c.active as i64,
                         Local::now().to_rfc3339(),
-                        self.active_branch_id()?
+                        self.active_branch_id()?,
+                        c.kind_label
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -1700,8 +1856,8 @@ impl Store {
                         id, created_at, total_paise, lines_total_paise, rounding_paise,
                         pay_method, status, table_id, customer_id, created_by_id, created_by_name,
                         branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
-                        service_paise, invoice_no
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)",
+                        service_paise, invoice_no, money_lane
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20)",
                     params![
                         s.id,
                         s.created_at,
@@ -1721,15 +1877,16 @@ impl Store {
                         s.tax_label(),
                         s.net().paise(),
                         s.service_paise,
-                        s.invoice_no
+                        s.invoice_no,
+                        if s.money_lane.trim().is_empty() { "declared".into() } else { s.money_lane.clone() }
                     ],
                 )
                 .map_err(|e| e.to_string())?;
             for line in &s.lines {
                 self.conn
                     .execute(
-                        "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note)
-                         VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+                        "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
+                         VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
                         params![
                             s.id,
                             line.product_id,
@@ -1737,7 +1894,9 @@ impl Store {
                             line.unit_price_paise,
                             line.qty,
                             line.line_total_paise,
-                            line.note
+                            line.note,
+                            if line.qty_milli > 0 { line.qty_milli } else { line.qty.saturating_mul(1000) },
+                            line.unit_label
                         ],
                     )
                     .map_err(|e| e.to_string())?;
@@ -1852,6 +2011,65 @@ impl Store {
         Ok(kot_id)
     }
 
+    /// Charge a bill with any mix of Cash / UPI(rail) / Card / Credit.
+    /// Parts must be positive and sum exactly to the charged (taxed) total.
+    /// Credit portion needs `customer_id` (rest can be paid now; remainder on khata).
+    pub fn finalize_sale_tenders(
+        &mut self,
+        draft: &SaleDraft,
+        parts: &[(PayMethod, i64)],
+        table_id: Option<&str>,
+        customer_id: Option<&str>,
+        actor: &StaffMember,
+    ) -> Result<Sale, String> {
+        if parts.is_empty() {
+            return Err("Enter at least one payment amount".into());
+        }
+        if parts.iter().any(|(m, _)| m.is_split()) {
+            return Err("Do not nest mixed pay".into());
+        }
+        let mut seen = [false; 4];
+        for (m, _) in parts {
+            let i = match m {
+                PayMethod::Cash => 0,
+                PayMethod::Upi => 1,
+                PayMethod::Card => 2,
+                PayMethod::Credit => 3,
+                _ => return Err("Use Cash, UPI, Card, and/or Credit".into()),
+            };
+            if seen[i] {
+                return Err("Each tender can appear only once".into());
+            }
+            seen[i] = true;
+        }
+        let credit_part = parts
+            .iter()
+            .find(|(m, _)| m.is_credit())
+            .map(|(_, a)| *a)
+            .unwrap_or(0);
+        if credit_part > 0 && customer_id.is_none() {
+            return Err("Pick a customer for the Credit part".into());
+        }
+        let charged = self.preview_sale_total(draft)?;
+        let sum: i64 = parts.iter().map(|(_, a)| *a).sum();
+        if sum != charged {
+            return Err(format!(
+                "Payment parts ({sum}) must equal bill ({charged})"
+            ));
+        }
+        if parts.iter().any(|(_, a)| *a <= 0) {
+            return Err("Each payment amount must be > 0".into());
+        }
+        let pay = if parts.len() == 1 {
+            parts[0].0
+        } else {
+            // Legacy row label; receipt lists each tender from sale_payments.
+            PayMethod::Split
+        };
+        self.write_sale(draft, pay, table_id, customer_id, actor, parts)
+    }
+
+    /// Old name — prefer `finalize_sale_tenders`.
     pub fn finalize_sale_split(
         &mut self,
         draft: &SaleDraft,
@@ -1859,27 +2077,7 @@ impl Store {
         table_id: Option<&str>,
         actor: &StaffMember,
     ) -> Result<Sale, String> {
-        if parts.len() < 2 {
-            return Err("Split needs at least two tenders".into());
-        }
-        if parts.iter().any(|(m, _)| m.is_credit() || m.is_split()) {
-            return Err("Split cannot include Credit — use Credit for full bill".into());
-        }
-        // Under exclusive pricing the bill the customer pays is higher than the
-        // total the cart quoted, so tenders have to add up to the taxed figure.
-        let charged = self.preview_sale_total(draft)?;
-        let sum: i64 = parts.iter().map(|(_, a)| *a).sum();
-        if sum != charged {
-            return Err(format!("Split parts ({sum}) must equal bill ({charged})"));
-        }
-        if parts.iter().any(|(_, a)| *a <= 0) {
-            return Err("Each split amount must be > 0".into());
-        }
-        // Both tenders are inserted in the same transaction as the sale.
-        // Writing the bill first and replacing its payment row afterwards
-        // could leave a split sale with a single tender if the process died
-        // between the two writes.
-        self.write_sale(draft, PayMethod::Split, table_id, None, actor, parts)
+        self.finalize_sale_tenders(draft, parts, table_id, None, actor)
     }
 
     pub fn add_expense(
@@ -2002,13 +2200,436 @@ impl Store {
             .map_err(|e| e.to_string())?
             .collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())?;
+        let bank_net_paise = self.money_movements_net_for_prefix(&prefix)?;
         Ok(OpsReport {
             day,
             outstanding_credit_paise: self.outstanding_credit_total()?,
             expenses_paise,
             expense_count,
             top_items,
+            bank_net_paise,
         })
+    }
+
+    /// Post a cashbook / bank movement (generic till↔bank or bank in/out).
+    pub fn post_money_movement(
+        &self,
+        kind: MoneyMoveKind,
+        amount_paise: i64,
+        note: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Post bank / cashbook movement")?;
+        if amount_paise <= 0 {
+            return Err("Amount must be > 0".into());
+        }
+        if !actor.is_owner() && !actor.role.can_void_refund() {
+            return Err("Not allowed to post bank movements".into());
+        }
+        self.conn
+            .execute(
+                "INSERT INTO money_movements(
+                    id, created_at, kind, amount_paise, note, actor_id, actor_name, branch_id
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                params![
+                    new_id(),
+                    Local::now().to_rfc3339(),
+                    kind.as_str(),
+                    amount_paise,
+                    note.trim(),
+                    actor.id,
+                    actor.name,
+                    self.active_branch_id()?
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(
+            actor,
+            "money.move",
+            &format!("{} {amount_paise} {}", kind.as_str(), note.trim()),
+        )?;
+        Ok(())
+    }
+
+    pub fn list_money_movements(&self, limit: i64) -> Result<Vec<MoneyMovement>, String> {
+        let branch = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, created_at, kind, amount_paise, note, actor_name
+                 FROM money_movements
+                 WHERE branch_id = ?1 OR branch_id = ''
+                 ORDER BY created_at DESC LIMIT ?2",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![branch, limit], |row| {
+                Ok(MoneyMovement {
+                    id: row.get(0)?,
+                    created_at: row.get(1)?,
+                    kind: row.get(2)?,
+                    amount_paise: row.get(3)?,
+                    note: row.get(4)?,
+                    actor_name: row.get(5)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    /// Bank book balance: in + till→bank − out − bank→till.
+    pub fn bank_balance_paise(&self) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT kind, amount_paise FROM money_movements
+                 WHERE branch_id = ?1 OR branch_id = ''",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![branch], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut bal = 0i64;
+        for row in rows {
+            let (kind, amount) = row.map_err(|e| e.to_string())?;
+            match MoneyMoveKind::parse(&kind) {
+                Some(MoneyMoveKind::TillToBank) | Some(MoneyMoveKind::BankIn) => bal += amount,
+                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => bal -= amount,
+                None => {}
+            }
+        }
+        Ok(bal)
+    }
+
+    fn money_movements_net_for_prefix(&self, day_prefix: &str) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT kind, amount_paise FROM money_movements
+                 WHERE created_at LIKE ?1 AND (branch_id = ?2 OR branch_id = '')",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![day_prefix, branch], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut net = 0i64;
+        for row in rows {
+            let (kind, amount) = row.map_err(|e| e.to_string())?;
+            match MoneyMoveKind::parse(&kind) {
+                Some(MoneyMoveKind::TillToBank) | Some(MoneyMoveKind::BankIn) => net += amount,
+                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => net -= amount,
+                None => {}
+            }
+        }
+        Ok(net)
+    }
+
+    /// Party-wise outstanding with aging buckets (0–7 / 8–30 / 31+ days).
+    pub fn party_aging_report(&self) -> Result<Vec<PartyAgingRow>, String> {
+        let parties = self.list_customers()?;
+        let now = Local::now().date_naive();
+        let mut rows = Vec::new();
+        for party in parties {
+            if party.balance_paise == 0 {
+                continue;
+            }
+            if party.balance_paise < 0 {
+                rows.push(PartyAgingRow {
+                    customer_id: party.id,
+                    name: party.name,
+                    kind_label: party.kind_label,
+                    balance_paise: party.balance_paise,
+                    days: 0,
+                    bucket: "advance".into(),
+                });
+                continue;
+            }
+            let oldest: Option<String> = self
+                .conn
+                .query_row(
+                    "SELECT MIN(created_at) FROM credit_ledger
+                     WHERE customer_id = ?1 AND amount_paise > 0",
+                    params![party.id],
+                    |r| r.get::<_, Option<String>>(0),
+                )
+                .map_err(|e| e.to_string())?;
+            let days = oldest
+                .as_deref()
+                .and_then(|ts| NaiveDate::parse_from_str(&ts[..ts.len().min(10)], "%Y-%m-%d").ok())
+                .map(|d| (now - d).num_days().max(0))
+                .unwrap_or(0);
+            let bucket = if days <= 7 {
+                "current"
+            } else if days <= 30 {
+                "due"
+            } else {
+                "overdue"
+            };
+            rows.push(PartyAgingRow {
+                customer_id: party.id,
+                name: party.name,
+                kind_label: party.kind_label,
+                balance_paise: party.balance_paise,
+                days,
+                bucket: bucket.into(),
+            });
+        }
+        rows.sort_by(|a, b| {
+            b.days
+                .cmp(&a.days)
+                .then_with(|| b.balance_paise.cmp(&a.balance_paise))
+        });
+        Ok(rows)
+    }
+
+    pub fn party_aging_text(&self) -> Result<String, String> {
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let rows = self.party_aging_report()?;
+        let mut out = String::from("Party outstanding (aging)\n");
+        if rows.is_empty() {
+            out.push_str("No balances.\n");
+            return Ok(out);
+        }
+        let mut current = 0i64;
+        let mut due = 0i64;
+        let mut overdue = 0i64;
+        let mut advance = 0i64;
+        for row in &rows {
+            match row.bucket.as_str() {
+                "current" => current += row.balance_paise,
+                "due" => due += row.balance_paise,
+                "overdue" => overdue += row.balance_paise,
+                "advance" => advance += row.balance_paise.abs(),
+                _ => {}
+            }
+            let kind = if row.kind_label.trim().is_empty() {
+                String::new()
+            } else {
+                format!(" · {}", row.kind_label.trim())
+            };
+            let age = if row.bucket == "advance" {
+                "advance".into()
+            } else {
+                format!("{}d · {}", row.days, row.bucket)
+            };
+            out.push_str(&format!(
+                "{}{} · {} · {}\n",
+                row.name,
+                kind,
+                Money(row.balance_paise).format_localized(&currency, &fiscal),
+                age
+            ));
+        }
+        out.push_str(&format!(
+            "—\n0–7d {} · 8–30d {} · 31+d {}\nAdvances held {}\n",
+            Money(current).format_localized(&currency, &fiscal),
+            Money(due).format_localized(&currency, &fiscal),
+            Money(overdue).format_localized(&currency, &fiscal),
+            Money(advance).format_localized(&currency, &fiscal),
+        ));
+        Ok(out)
+    }
+
+    /// Books for an inclusive date range (`YYYY-MM-DD` … `YYYY-MM-DD`).
+    pub fn period_books(&self, from_day: &str, to_day: &str) -> Result<PeriodBooks, String> {
+        let branch = self.active_branch_id()?;
+        let from = format!("{from_day}T00:00:00");
+        let to = format!("{to_day}T23:59:59.999999999");
+        let mut day = DayTotals::default();
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT total_paise, COALESCE(tax_paise, 0), COALESCE(money_lane, 'declared')
+                 FROM sales
+                 WHERE status = 'completed'
+                   AND created_at >= ?1 AND created_at <= ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+            )
+            .map_err(|e| e.to_string())?;
+        let sales = stmt
+            .query_map(params![from, to, branch], |row| {
+                Ok((
+                    row.get::<_, i64>(0)?,
+                    row.get::<_, i64>(1)?,
+                    row.get::<_, String>(2)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        for row in sales {
+            let (total, tax, lane) = row.map_err(|e| e.to_string())?;
+            day.sale_count += 1;
+            day.revenue_paise += total;
+            day.tax_paise += tax;
+            match MoneyLane::parse(&lane) {
+                MoneyLane::Declared => day.declared_paise += total,
+                MoneyLane::Owner => day.owner_lane_paise += total,
+            }
+        }
+        let mut pay_stmt = self
+            .conn
+            .prepare(
+                "SELECT p.pay_method, p.amount_paise
+                 FROM sale_payments p
+                 JOIN sales s ON s.id = p.sale_id
+                 WHERE s.status = 'completed'
+                   AND s.created_at >= ?1 AND s.created_at <= ?2
+                   AND (s.branch_id = ?3 OR s.branch_id = '')",
+            )
+            .map_err(|e| e.to_string())?;
+        let pays = pay_stmt
+            .query_map(params![from, to, branch], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        for row in pays {
+            let (m, a) = row.map_err(|e| e.to_string())?;
+            match PayMethod::parse(&m) {
+                Some(PayMethod::Cash) => day.cash_paise += a,
+                Some(PayMethod::Upi) => day.upi_paise += a,
+                Some(PayMethod::Card) => day.card_paise += a,
+                Some(PayMethod::Credit) => day.credit_paise += a,
+                _ => {}
+            }
+        }
+        let (expense_count, expenses_paise): (i64, i64) = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*), COALESCE(SUM(amount_paise), 0) FROM expenses
+                 WHERE created_at >= ?1 AND created_at <= ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+                params![from, to, branch],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .map_err(|e| e.to_string())?;
+        let mut bank_in = 0i64;
+        let mut bank_out = 0i64;
+        let mut mv = self
+            .conn
+            .prepare(
+                "SELECT kind, amount_paise FROM money_movements
+                 WHERE created_at >= ?1 AND created_at <= ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+            )
+            .map_err(|e| e.to_string())?;
+        let mvs = mv
+            .query_map(params![from, to, branch], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        for row in mvs {
+            let (kind, amount) = row.map_err(|e| e.to_string())?;
+            match MoneyMoveKind::parse(&kind) {
+                Some(MoneyMoveKind::TillToBank) | Some(MoneyMoveKind::BankIn) => bank_in += amount,
+                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => bank_out += amount,
+                None => {}
+            }
+        }
+        Ok(PeriodBooks {
+            from_day: from_day.into(),
+            to_day: to_day.into(),
+            sale_count: day.sale_count,
+            revenue_paise: day.revenue_paise,
+            declared_paise: day.declared_paise,
+            owner_lane_paise: day.owner_lane_paise,
+            cash_paise: day.cash_paise,
+            upi_paise: day.upi_paise,
+            card_paise: day.card_paise,
+            credit_paise: day.credit_paise,
+            tax_paise: day.tax_paise,
+            expenses_paise,
+            expense_count,
+            bank_in_paise: bank_in,
+            bank_out_paise: bank_out,
+            outstanding_credit_paise: self.outstanding_credit_total()?,
+        })
+    }
+
+    pub fn period_books_text(&self, from_day: &str, to_day: &str) -> Result<String, String> {
+        let books = self.period_books(from_day, to_day)?;
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let tmpl = self.entity_template()?;
+        let net = books.revenue_paise - books.expenses_paise;
+        Ok(format!(
+            "Period books {from_day} → {to_day}\n\
+             Sales: {}\n\
+             Revenue {}\n\
+             {} {}\n\
+             {} {}\n\
+             Cash {} · {} {} · Card {}\n\
+             {} sales {}\n\
+             Expenses {} ({})\n\
+             Net (rev − expenses) {}\n\
+             Bank in {} · Bank out {}\n\
+             Bank balance now {}\n\
+             Still owed {}\n\
+             {}\n",
+            books.sale_count,
+            Money(books.revenue_paise).format_localized(&currency, &fiscal),
+            tmpl.lane_declared_label,
+            Money(books.declared_paise).format_localized(&currency, &fiscal),
+            tmpl.lane_owner_label,
+            Money(books.owner_lane_paise).format_localized(&currency, &fiscal),
+            Money(books.cash_paise).format_localized(&currency, &fiscal),
+            fiscal.digital_pay_label(),
+            Money(books.upi_paise).format_localized(&currency, &fiscal),
+            Money(books.card_paise).format_localized(&currency, &fiscal),
+            fiscal.credit_label(),
+            Money(books.credit_paise).format_localized(&currency, &fiscal),
+            Money(books.expenses_paise).format_localized(&currency, &fiscal),
+            books.expense_count,
+            Money(net).format_localized(&currency, &fiscal),
+            Money(books.bank_in_paise).format_localized(&currency, &fiscal),
+            Money(books.bank_out_paise).format_localized(&currency, &fiscal),
+            Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal),
+            Money(books.outstanding_credit_paise).format_localized(&currency, &fiscal),
+            self.tax_total_caption(&fiscal),
+        ))
+    }
+
+    /// Full books pack for Reports: ops + aging + recent bank posts.
+    pub fn books_report_text(&self, period: &str) -> Result<String, String> {
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let (from, to, title) = match period {
+            "month" => {
+                let from = Local::now().format("%Y-%m-01").to_string();
+                (from, today.clone(), "This month")
+            }
+            _ => (today.clone(), today.clone(), "Today"),
+        };
+        let mut out = format!("=== {title} ===\n");
+        out.push_str(&self.period_books_text(&from, &to)?);
+        out.push('\n');
+        out.push_str(&self.party_aging_text()?);
+        out.push('\n');
+        out.push_str("Recent bank / cashbook\n");
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let moves = self.list_money_movements(8)?;
+        if moves.is_empty() {
+            out.push_str("No bank posts yet.\n");
+        } else {
+            for m in moves {
+                let label = MoneyMoveKind::parse(&m.kind)
+                    .map(|k| k.label())
+                    .unwrap_or(m.kind.as_str());
+                let day = m.created_at.get(..10).unwrap_or(&m.created_at);
+                out.push_str(&format!(
+                    "{day} {label} {} {}\n",
+                    Money(m.amount_paise).format_localized(&currency, &fiscal),
+                    m.note
+                ));
+            }
+        }
+        Ok(out)
     }
 
     pub fn replace_kots_from_sync(&self, kots: &[KotTicket]) -> Result<(), String> {
@@ -2724,7 +3345,7 @@ impl Store {
     }
 
     pub fn add_category(&self, name: &str) -> Result<Category, String> {
-        self.assert_server_writer("Add menu groups")?;
+        self.assert_server_writer("Add categories")?;
         let name = name.trim();
         if name.is_empty() {
             return Err("Category name required".into());
@@ -3305,7 +3926,7 @@ impl Store {
     }
 
     pub fn upsert_product(&self, product: &Product) -> Result<(), String> {
-        self.assert_server_writer("Change the menu")?;
+        self.assert_server_writer("Change items")?;
         self.write_product_row(product)
     }
 
@@ -3327,9 +3948,9 @@ impl Store {
                 "INSERT INTO products(
                     id, name, price_paise, available, archived, image_key,
                     category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
-                    tax_rate_id, aliases_json
+                    tax_rate_id, aliases_json, unit_label
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -3343,7 +3964,8 @@ impl Store {
                    modifiers_json=excluded.modifiers_json,
                    branch_id=excluded.branch_id,
                    tax_rate_id=excluded.tax_rate_id,
-                   aliases_json=excluded.aliases_json",
+                   aliases_json=excluded.aliases_json,
+                   unit_label=excluded.unit_label",
                 params![
                     product.id,
                     product.name,
@@ -3362,7 +3984,8 @@ impl Store {
                         "[]".to_string()
                     } else {
                         product.aliases_json.clone()
-                    }
+                    },
+                    product.unit_label
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -3419,10 +4042,15 @@ impl Store {
             return Err("Not allowed to sell".into());
         }
         draft.assert_balanced()?;
-        if pay.is_credit() && customer_id.is_none() {
+        let credit_part = parts
+            .iter()
+            .find(|(m, _)| m.is_credit())
+            .map(|(_, a)| *a);
+        let needs_customer = pay.is_credit() || credit_part.is_some();
+        if needs_customer && customer_id.is_none() {
             return Err("Pick a customer for Credit".into());
         }
-        let customer_id = if pay.is_credit() { customer_id } else { None };
+        let customer_id = if needs_customer { customer_id } else { None };
         if let Some(cid) = customer_id {
             let exists: i64 = self
                 .conn
@@ -3507,9 +4135,9 @@ impl Store {
                 id, created_at, total_paise, lines_total_paise, rounding_paise,
                 pay_method, status, table_id, customer_id, created_by_id, created_by_name,
                 branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
-                service_paise, invoice_no
+                service_paise, invoice_no, money_lane
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)",
             params![
                 sale_id,
                 created_at,
@@ -3528,7 +4156,8 @@ impl Store {
                 tax_label,
                 net_paise,
                 service_paise,
-                invoice_no
+                invoice_no,
+                draft.money_lane.as_str()
             ],
         )
         .map_err(|e| e.to_string())?;
@@ -3558,8 +4187,8 @@ impl Store {
 
         for line in &draft.lines {
             tx.execute(
-                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note)
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
                 params![
                     sale_id,
                     line.product_id,
@@ -3567,7 +4196,9 @@ impl Store {
                     line.unit_price_paise,
                     line.qty,
                     line.line_total_paise,
-                    line.note
+                    line.note,
+                    if line.qty_milli > 0 { line.qty_milli } else { line.qty.saturating_mul(1000) },
+                    line.unit_label
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -3678,25 +4309,65 @@ impl Store {
             .map_err(|e| e.to_string())?;
         }
 
-        if pay.is_credit()
+        // Full Credit bill, or Credit portion of a mixed bill.
+        let credit_amount = credit_part.unwrap_or_else(|| {
+            if pay.is_credit() {
+                total_paise
+            } else {
+                0
+            }
+        });
+        if credit_amount > 0
             && let Some(cid) = customer_id {
-                tx.execute(
-                    "INSERT INTO credit_ledger(
-                        id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_id, actor_name, detail
-                     ) VALUES(?1, ?2, ?3, 'sale', ?4, ?5, NULL, ?6, ?7, ?8)",
-                    params![
-                        new_id(),
-                        cid,
-                        created_at,
-                        total_paise,
-                        sale_id,
-                        actor.id,
-                        actor.name,
-                        format!("Credit sale {sale_id}")
-                    ],
-                )
-                .map_err(|e| e.to_string())?;
+                // Prepaid covers the credit portion first; remainder is new udhaar.
+                let bal: i64 = tx
+                    .query_row(
+                        "SELECT COALESCE(SUM(amount_paise), 0) FROM credit_ledger WHERE customer_id = ?1",
+                        params![cid],
+                        |r| r.get(0),
+                    )
+                    .map_err(|e| e.to_string())?;
+                let prepaid = (-bal).max(0);
+                let applied = credit_amount.min(prepaid);
+                let on_credit = credit_amount - applied;
+                if applied > 0 {
+                    tx.execute(
+                        "INSERT INTO credit_ledger(
+                            id, customer_id, created_at, kind, amount_paise,
+                            sale_id, pay_method, actor_id, actor_name, detail
+                         ) VALUES(?1, ?2, ?3, 'apply', ?4, ?5, NULL, ?6, ?7, ?8)",
+                        params![
+                            new_id(),
+                            cid,
+                            created_at,
+                            applied,
+                            sale_id,
+                            actor.id,
+                            actor.name,
+                            format!("Applied advance on sale {sale_id}")
+                        ],
+                    )
+                    .map_err(|e| e.to_string())?;
+                }
+                if on_credit > 0 {
+                    tx.execute(
+                        "INSERT INTO credit_ledger(
+                            id, customer_id, created_at, kind, amount_paise,
+                            sale_id, pay_method, actor_id, actor_name, detail
+                         ) VALUES(?1, ?2, ?3, 'sale', ?4, ?5, NULL, ?6, ?7, ?8)",
+                        params![
+                            new_id(),
+                            cid,
+                            created_at,
+                            on_credit,
+                            sale_id,
+                            actor.id,
+                            actor.name,
+                            format!("Credit on sale {sale_id}")
+                        ],
+                    )
+                    .map_err(|e| e.to_string())?;
+                }
             }
 
         let audit_detail = if draft.rounding_paise != 0 {
@@ -3747,6 +4418,7 @@ impl Store {
             tax_label,
             net_paise,
             service_paise,
+            money_lane: draft.money_lane.as_str().into(),
             lines: draft.lines.clone(),
         };
 
@@ -3885,8 +4557,8 @@ impl Store {
             .map_err(|e| e.to_string())?;
         for line in &draft.lines {
             tx.execute(
-                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note)
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
                 params![
                     sale_id,
                     line.product_id,
@@ -3894,7 +4566,9 @@ impl Store {
                     line.unit_price_paise,
                     line.qty,
                     line.line_total_paise,
-                    line.note
+                    line.note,
+                    if line.qty_milli > 0 { line.qty_milli } else { line.qty.saturating_mul(1000) },
+                    line.unit_label
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -3958,6 +4632,7 @@ impl Store {
             tax_label,
             net_paise,
             service_paise,
+            money_lane: draft.money_lane.as_str().into(),
             lines: draft.lines.clone(),
         })
     }
@@ -4029,26 +4704,46 @@ impl Store {
             return Err("Sale not found or already voided".into());
         }
         let now = Local::now().to_rfc3339();
-        // Reverse credit if this was a credit sale.
-        tx.execute(
-            "INSERT INTO credit_ledger(
-                id, customer_id, created_at, kind, amount_paise,
-                sale_id, pay_method, actor_id, actor_name, detail
-             )
-             SELECT ?1, customer_id, ?2, 'void', -amount_paise, sale_id, NULL, ?3, ?4, ?5
-             FROM credit_ledger
-             WHERE sale_id = ?6 AND kind = 'sale'
-             LIMIT 1",
-            params![
-                new_id(),
-                now,
-                actor.id,
-                actor.name,
-                format!("Void {sale_id}: {reason}"),
-                sale_id
-            ],
-        )
-        .map_err(|e| e.to_string())?;
+        // Reverse credit sale debt and any prepaid that was applied.
+        {
+            let mut stmt = tx
+                .prepare(
+                    "SELECT customer_id, kind, amount_paise FROM credit_ledger
+                     WHERE sale_id = ?1 AND kind IN ('sale', 'apply')",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![sale_id], |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, i64>(2)?,
+                    ))
+                })
+                .map_err(|e| e.to_string())?
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| e.to_string())?;
+            drop(stmt);
+            for (cid, kind, amount) in rows {
+                tx.execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail
+                     ) VALUES(?1, ?2, ?3, 'void', ?4, ?5, NULL, ?6, ?7, ?8)",
+                    params![
+                        new_id(),
+                        cid,
+                        now,
+                        -amount,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        format!("Void {kind} {sale_id}: {reason}")
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            }
+        }
         restore_stock_for_sale(&tx, sale_id, "void", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -4099,25 +4794,45 @@ impl Store {
             return Err("Sale not found or already voided".into());
         }
         let now = Local::now().to_rfc3339();
-        tx.execute(
-            "INSERT INTO credit_ledger(
-                id, customer_id, created_at, kind, amount_paise,
-                sale_id, pay_method, actor_id, actor_name, detail
-             )
-             SELECT ?1, customer_id, ?2, 'void', -amount_paise, sale_id, NULL, ?3, ?4, ?5
-             FROM credit_ledger
-             WHERE sale_id = ?6 AND kind = 'sale'
-             LIMIT 1",
-            params![
-                new_id(),
-                now,
-                actor.id,
-                actor.name,
-                format!("Quick undo {sale_id}"),
-                sale_id
-            ],
-        )
-        .map_err(|e| e.to_string())?;
+        {
+            let mut stmt = tx
+                .prepare(
+                    "SELECT customer_id, kind, amount_paise FROM credit_ledger
+                     WHERE sale_id = ?1 AND kind IN ('sale', 'apply')",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![sale_id], |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, i64>(2)?,
+                    ))
+                })
+                .map_err(|e| e.to_string())?
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| e.to_string())?;
+            drop(stmt);
+            for (cid, kind, amount) in rows {
+                tx.execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail
+                     ) VALUES(?1, ?2, ?3, 'void', ?4, ?5, NULL, ?6, ?7, ?8)",
+                    params![
+                        new_id(),
+                        cid,
+                        now,
+                        -amount,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        format!("Quick undo {kind} {sale_id}")
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            }
+        }
         // Drop open kitchen tickets for this mistaken charge.
         tx.execute(
             "UPDATE kot_tickets SET status = 'cancelled'
@@ -4194,7 +4909,8 @@ impl Store {
                 "SELECT pay_method, total_paise,
                         COALESCE(lines_total_paise, total_paise),
                         COALESCE(rounding_paise, 0),
-                        COALESCE(tax_paise, 0)
+                        COALESCE(tax_paise, 0),
+                        COALESCE(money_lane, 'declared')
                  FROM sales
                  WHERE status = 'completed' AND created_at LIKE ?1
                    AND (branch_id = ?2 OR branch_id = '')",
@@ -4208,22 +4924,85 @@ impl Store {
                     row.get::<_, i64>(2)?,
                     row.get::<_, i64>(3)?,
                     row.get::<_, i64>(4)?,
+                    row.get::<_, String>(5)?,
                 ))
             })
             .map_err(|e| e.to_string())?;
         for row in rows {
-            let (method, charged, lines_total, rounding, tax) = row.map_err(|e| e.to_string())?;
+            let (method, charged, lines_total, rounding, tax, lane) =
+                row.map_err(|e| e.to_string())?;
             totals.sale_count += 1;
             totals.revenue_paise += charged;
             totals.lines_total_paise += lines_total;
             totals.rounding_paise += rounding;
             totals.tax_paise += tax;
+            match MoneyLane::parse(&lane) {
+                MoneyLane::Owner => totals.owner_lane_paise += charged,
+                MoneyLane::Declared => totals.declared_paise += charged,
+            }
             match PayMethod::parse(&method) {
                 Some(PayMethod::Cash) => totals.cash_paise += charged,
                 Some(PayMethod::Upi) => totals.upi_paise += charged,
                 Some(PayMethod::Card) => totals.card_paise += charged,
                 Some(PayMethod::Credit) => totals.credit_paise += charged,
                 Some(PayMethod::Split) | None => {}
+            }
+        }
+        // Split tenders live in sale_payments (sales.pay_method is just "split").
+        {
+            let mut stmt = self
+                .conn
+                .prepare(
+                    "SELECT p.pay_method, p.amount_paise
+                     FROM sale_payments p
+                     JOIN sales s ON s.id = p.sale_id
+                     WHERE s.status = 'completed' AND s.created_at LIKE ?1
+                       AND (s.branch_id = ?2 OR s.branch_id = '')
+                       AND s.pay_method = 'split'",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![prefix, branch], |row| {
+                    Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+                })
+                .map_err(|e| e.to_string())?;
+            for row in rows {
+                let (method, amount) = row.map_err(|e| e.to_string())?;
+                match PayMethod::parse(&method) {
+                    Some(PayMethod::Cash) => totals.cash_paise += amount,
+                    Some(PayMethod::Upi) => totals.upi_paise += amount,
+                    Some(PayMethod::Card) => totals.card_paise += amount,
+                    Some(PayMethod::Credit) => totals.credit_paise += amount,
+                    _ => {}
+                }
+            }
+        }
+        // Settlements and advances are money in today, not sales revenue.
+        {
+            let mut stmt = self
+                .conn
+                .prepare(
+                    "SELECT pay_method, ABS(amount_paise)
+                     FROM credit_ledger
+                     WHERE kind IN ('settle', 'advance')
+                       AND created_at LIKE ?1
+                       AND amount_paise < 0
+                       AND pay_method IS NOT NULL",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![prefix], |row| {
+                    Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+                })
+                .map_err(|e| e.to_string())?;
+            for row in rows {
+                let (method, amount) = row.map_err(|e| e.to_string())?;
+                match PayMethod::parse(&method) {
+                    Some(PayMethod::Cash) => totals.cash_paise += amount,
+                    Some(PayMethod::Upi) => totals.upi_paise += amount,
+                    Some(PayMethod::Card) => totals.card_paise += amount,
+                    _ => {}
+                }
             }
         }
         Ok(totals)
@@ -4252,19 +5031,26 @@ impl Store {
             .conn
             .prepare(
                 "SELECT product_id, name, unit_price_paise, qty, line_total_paise,
-                        COALESCE(note, '')
+                        COALESCE(note, ''), COALESCE(qty_milli, 0), COALESCE(unit_label, '')
                  FROM sale_lines WHERE sale_id = ?1",
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
             .query_map(params![sale_id], |row| {
+                let qty: i64 = row.get(3)?;
+                let mut qty_milli: i64 = row.get(6)?;
+                if qty_milli <= 0 {
+                    qty_milli = qty.saturating_mul(1000);
+                }
                 Ok(SaleLine {
                     product_id: row.get(0)?,
                     name: row.get(1)?,
                     unit_price_paise: row.get(2)?,
-                    qty: row.get(3)?,
+                    qty,
                     line_total_paise: row.get(4)?,
                     note: row.get(5)?,
+                    qty_milli,
+                    unit_label: row.get(7)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -4735,6 +5521,15 @@ impl Store {
     }
 
     pub fn add_customer(&self, name: &str, phone: &str) -> Result<Customer, String> {
+        self.add_customer_kind(name, phone, "")
+    }
+
+    pub fn add_customer_kind(
+        &self,
+        name: &str,
+        phone: &str,
+        kind_label: &str,
+    ) -> Result<Customer, String> {
         let name = name.trim();
         if name.is_empty() {
             return Err("Customer name required".into());
@@ -4742,11 +5537,19 @@ impl Store {
         let id = new_id();
         let created_at = Local::now().to_rfc3339();
         let phone = phone.trim().to_string();
+        let kind_label = kind_label.trim().to_string();
         self.conn
             .execute(
-                "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id)
-                 VALUES(?1, ?2, ?3, '', 1, ?4, ?5)",
-                params![id, name, phone, created_at, self.active_branch_id()?],
+                "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label)
+                 VALUES(?1, ?2, ?3, '', 1, ?4, ?5, ?6)",
+                params![
+                    id,
+                    name,
+                    phone,
+                    created_at,
+                    self.active_branch_id()?,
+                    kind_label
+                ],
             )
             .map_err(|e| e.to_string())?;
         Ok(Customer {
@@ -4756,6 +5559,7 @@ impl Store {
             note: String::new(),
             active: true,
             balance_paise: 0,
+            kind_label,
         })
     }
 
@@ -4800,7 +5604,8 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT id, name, phone, note, active FROM customers
+                "SELECT id, name, phone, note, active, COALESCE(kind_label, '')
+                 FROM customers
                  WHERE active = 1 AND (branch_id = ?1 OR branch_id = '')
                  ORDER BY name",
             )
@@ -4813,12 +5618,13 @@ impl Store {
                     row.get::<_, String>(2)?,
                     row.get::<_, String>(3)?,
                     row.get::<_, i64>(4)?,
+                    row.get::<_, String>(5)?,
                 ))
             })
             .map_err(|e| e.to_string())?;
         let mut out = Vec::new();
         for row in rows {
-            let (id, name, phone, note, active) = row.map_err(|e| e.to_string())?;
+            let (id, name, phone, note, active, kind_label) = row.map_err(|e| e.to_string())?;
             let balance_paise = self.customer_balance(&id)?;
             out.push(Customer {
                 id,
@@ -4827,6 +5633,7 @@ impl Store {
                 note,
                 active: active != 0,
                 balance_paise,
+                kind_label,
             });
         }
         // Owe first, then name
@@ -4838,7 +5645,12 @@ impl Store {
         Ok(out)
     }
 
-    /// Record a settlement that reduces outstanding credit.
+    /// Record money received from a customer against credit.
+    ///
+    /// - Outstanding debt first (kind `settle`).
+    /// - Any excess becomes prepaid advance (kind `advance`, balance goes
+    ///   negative = shop holds the customer's money).
+    /// - With no debt, the full amount is an advance.
     pub fn settle_credit(
         &mut self,
         customer_id: &str,
@@ -4847,46 +5659,75 @@ impl Store {
         actor: &StaffMember,
         detail: &str,
     ) -> Result<(), String> {
+        self.assert_server_writer("Record credit settle / advance")?;
         if !actor.role.can_sell() {
             return Err("Not allowed".into());
         }
         if amount_paise <= 0 {
-            return Err("Settlement must be > 0".into());
+            return Err("Amount must be > 0".into());
         }
-        if pay.is_credit() {
-            return Err("Settlement cannot be Credit".into());
+        if pay.is_credit() || pay.is_split() {
+            return Err("Use Cash, UPI/rail, or Card".into());
         }
         let bal = self.customer_balance(customer_id)?;
-        if amount_paise > bal {
-            return Err("Settlement exceeds outstanding".into());
-        }
         let now = Local::now().to_rfc3339();
         let detail = if detail.trim().is_empty() {
-            format!("Settlement {}", pay.as_str())
+            format!("{}", pay.as_str())
         } else {
             detail.trim().to_string()
         };
-        self.conn
-            .execute(
-                "INSERT INTO credit_ledger(
-                    id, customer_id, created_at, kind, amount_paise,
-                    sale_id, pay_method, actor_id, actor_name, detail
-                 ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8)",
-                params![
-                    new_id(),
-                    customer_id,
-                    now,
-                    -amount_paise,
-                    pay.as_str(),
-                    actor.id,
-                    actor.name,
-                    detail
-                ],
-            )
-            .map_err(|e| e.to_string())?;
+        let outstanding = bal.max(0);
+        let settle_part = amount_paise.min(outstanding);
+        let advance_part = amount_paise - settle_part;
+        if settle_part > 0 {
+            self.conn
+                .execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail
+                     ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8)",
+                    params![
+                        new_id(),
+                        customer_id,
+                        now,
+                        -settle_part,
+                        pay.as_str(),
+                        actor.id,
+                        actor.name,
+                        format!("Settlement {detail}")
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+        }
+        if advance_part > 0 {
+            self.conn
+                .execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail
+                     ) VALUES(?1, ?2, ?3, 'advance', ?4, NULL, ?5, ?6, ?7, ?8)",
+                    params![
+                        new_id(),
+                        customer_id,
+                        now,
+                        -advance_part,
+                        pay.as_str(),
+                        actor.id,
+                        actor.name,
+                        format!("Advance {detail}")
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+        }
         self.audit(
             actor,
-            "credit.settle",
+            if advance_part > 0 && settle_part == 0 {
+                "credit.advance"
+            } else if advance_part > 0 {
+                "credit.settle_advance"
+            } else {
+                "credit.settle"
+            },
             &format!("{customer_id} {} {}", amount_paise, pay.as_str()),
         )?;
         Ok(())
@@ -5007,12 +5848,38 @@ impl Store {
     }
 
     /// Open the DB under Makepad's app data directory (`Cx::get_data_dir`,
-    /// Android Activity.getFilesDir).
+    /// Android Activity.getFilesDir). That path is already app-scoped
+    /// (`KUMKAJ_APP_ID`); do not nest a second vendor folder.
     pub fn open_in_data_dir(base: &Path) -> Result<Self, String> {
-        let dir = base.join("Gotigin").join("Kumkaj");
-        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-        Self::open_path(&dir.join("kumkaj.sqlite3"))
+        fs::create_dir_all(base).map_err(|e| e.to_string())?;
+        Self::open_path(&base.join("kumkaj.sqlite3"))
     }
+}
+
+/// Reverse-DNS app id from `env/development.env` or `env/production.env`
+/// (baked by `build.rs`). Dev: `com.kumkaj.app.debug`. Prod: `com.kumkaj.app`.
+pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
+/// Launcher / window label from the same env file.
+pub const APP_LABEL: &str = env!("KUMKAJ_APP_LABEL");
+/// `development` or `production`.
+pub const APP_ENV: &str = env!("KUMKAJ_ENV");
+/// Show the live W×H badge (development.env sets this to 1).
+pub const SHOW_SIZE_BADGE: bool = const_str_eq(env!("KUMKAJ_SHOW_SIZE_BADGE"), "1");
+
+const fn const_str_eq(a: &str, b: &str) -> bool {
+    let a = a.as_bytes();
+    let b = b.as_bytes();
+    if a.len() != b.len() {
+        return false;
+    }
+    let mut i = 0;
+    while i < a.len() {
+        if a[i] != b[i] {
+            return false;
+        }
+        i += 1;
+    }
+    true
 }
 
 /// Every column [`row_to_product`] expects, in order. COALESCE keeps rows
@@ -5020,7 +5887,7 @@ impl Store {
 const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image_key,
      COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
-     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]')";
+     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, '')";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
@@ -5030,7 +5897,8 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(created_by_id, ''), COALESCE(created_by_name, ''),
      COALESCE(branch_id, ''), COALESCE(order_type, 'counter'), COALESCE(tax_paise, 0),
      COALESCE(tax_pricing, 'inclusive'), COALESCE(tax_label, 'Tax'), COALESCE(net_paise, 0),
-     COALESCE(service_paise, 0), COALESCE(invoice_no, '')";
+     COALESCE(service_paise, 0), COALESCE(invoice_no, ''),
+     COALESCE(money_lane, 'declared')";
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -5230,6 +6098,7 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         net_paise: row.get(16)?,
         service_paise: row.get(17)?,
         invoice_no: row.get(18)?,
+        money_lane: row.get(19)?,
         lines: Vec::new(),
     })
 }
@@ -5259,6 +6128,7 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         branch_id: row.get(11)?,
         tax_rate_id: row.get(12)?,
         aliases_json: row.get(13)?,
+        unit_label: row.get(14)?,
     })
 }
 
@@ -5267,16 +6137,14 @@ pub fn data_dir() -> Result<PathBuf, String> {
         return Ok(PathBuf::from(override_dir));
     }
     if let Some(base) = dirs::data_dir() {
-        return Ok(base.join("Gotigin").join("Kumkaj"));
+        return Ok(base.join(APP_ID));
     }
     // Android: `dirs` needs $HOME, which Makepad apps usually lack. Prefer
     // `Cx::get_data_dir()` (Activity.getFilesDir) via `Store::open_in_data_dir`.
     // This package-id fallback keeps early boot working before Cx exists.
     #[cfg(target_os = "android")]
     {
-        return Ok(PathBuf::from(
-            "/data/user/0/com.kumkaj.app/files/Gotigin/Kumkaj",
-        ));
+        return Ok(PathBuf::from(format!("/data/user/0/{APP_ID}/files")));
     }
     #[cfg(not(target_os = "android"))]
     {
@@ -5324,7 +6192,8 @@ fn getrandom_salt(out: &mut [u8]) -> Result<(), String> {
 mod tests {
     use super::*;
     use crate::domain::{
-        Cart, ModifierOption, OrderType, PayMethod, Product, StaffRole, VenueMode,
+        Cart, ModifierOption, MoneyLane, MoneyMoveKind, OrderType, PayMethod, Product, StaffRole,
+        VenueMode,
     };
     use crate::fiscal::TaxPricing;
     use std::time::{SystemTime, UNIX_EPOCH};
@@ -5683,19 +6552,154 @@ mod tests {
     }
 
     #[test]
-    fn starter_products_and_opening_credit() {
+    fn starter_products_noop_and_opening_credit() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        assert_eq!(store.seed_starter_products().unwrap(), 1);
         assert_eq!(store.seed_starter_products().unwrap(), 0);
-        assert_eq!(store.list_products(false).unwrap().len(), 1);
+        assert!(store.list_products(false).unwrap().is_empty());
         let customer = store.add_customer("Raju", "").unwrap();
         store
             .seed_opening_credit(&customer.id, 5000, &owner)
             .unwrap();
         assert_eq!(store.customer_balance(&customer.id).unwrap(), 5000);
         assert_eq!(store.outstanding_credit_total().unwrap(), 5000);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn courier_template_labels_without_seeds_and_kg_lines() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let tmpl = store.apply_entity_template("courier_agency").unwrap();
+        assert_eq!(tmpl.id, "courier_agency");
+        assert_eq!(store.entity_template_id().unwrap(), "courier_agency");
+        assert_eq!(tmpl.qty_unit_hint, "kg");
+        assert_eq!(tmpl.lane_declared_label, "Account booking");
+        assert_eq!(tmpl.lane_owner_label, "Cash booking");
+        // No sample rates or parties — owner adds their own.
+        assert!(store.list_products(false).unwrap().is_empty());
+        assert!(store.list_customers().unwrap().is_empty());
+        store.apply_entity_template("courier_agency").unwrap();
+        assert!(store.list_products(false).unwrap().is_empty());
+        // Weight × rate: owner-added kg line uses 0.1 kg step on first tap.
+        let mut freight = Product::new_basic(new_id(), "Surface freight", Money::from_rupees(40));
+        freight.unit_label = "kg".into();
+        store.upsert_product(&freight).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&freight);
+        assert_eq!(cart.lines[0].qty_milli, 100);
+        assert_eq!(
+            cart.lines[0].actual_total().paise(),
+            freight.price.paise() / 10
+        );
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.money_lane = MoneyLane::Owner;
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
+        let day = store.today_totals().unwrap();
+        assert!(day.owner_lane_paise > 0);
+        assert_eq!(day.declared_paise, 0);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn custom_template_leaves_empty_seeds() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.apply_entity_template("custom").unwrap();
+        assert!(store.list_products(false).unwrap().is_empty());
+        assert!(store.list_customers().unwrap().is_empty());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn bank_posting_aging_period_and_rich_receipt() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        store.apply_entity_template("courier_agency").unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store
+            .post_money_movement(MoneyMoveKind::TillToBank, 10_000, "evening deposit", &owner)
+            .unwrap();
+        assert_eq!(store.bank_balance_paise().unwrap(), 10_000);
+        store
+            .post_money_movement(MoneyMoveKind::BankOut, 2_000, "office", &owner)
+            .unwrap();
+        assert_eq!(store.bank_balance_paise().unwrap(), 8_000);
+
+        let mut freight = Product::new_basic(new_id(), "Surface freight", Money::from_rupees(40));
+        freight.unit_label = "kg".into();
+        store.upsert_product(&freight).unwrap();
+        let party = store.add_customer_kind("Sumit Int'l", "", "Consignor").unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&freight);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.money_lane = MoneyLane::Declared;
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .unwrap();
+        let receipt = store.format_receipt_text(&sale.id).unwrap();
+        assert!(receipt.contains("Party: Sumit"));
+        assert!(receipt.contains("kg") || receipt.contains("0.1"));
+        assert!(
+            receipt.contains("Account booking")
+                || receipt.contains("Bill type:")
+                || receipt.contains("Tax invoice")
+        );
+
+        let aging = store.party_aging_report().unwrap();
+        assert!(aging.iter().any(|r| r.name.contains("Sumit") && r.balance_paise > 0));
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let books = store.period_books(&today, &today).unwrap();
+        assert_eq!(books.sale_count, 1);
+        assert!(books.credit_paise > 0);
+        let pack = store.books_report_text("today").unwrap();
+        assert!(pack.contains("Period books") || pack.contains("Party outstanding"));
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn customer_advance_then_credit_sale_applies_prepaid() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store.upsert_product(&test_product("Tea", 120)).unwrap();
+        let customer = store.add_customer("Asha", "").unwrap();
+        // ₹500 advance, no prior debt.
+        store
+            .settle_credit(&customer.id, 50_000, PayMethod::Upi, &owner, "")
+            .unwrap();
+        assert_eq!(store.customer_balance(&customer.id).unwrap(), -50_000);
+        let day = store.today_totals().unwrap();
+        assert_eq!(day.upi_paise, 50_000);
+        assert_eq!(day.revenue_paise, 0);
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        store
+            .finalize_sale(
+                &draft,
+                PayMethod::Credit,
+                None,
+                Some(&customer.id),
+                &owner,
+            )
+            .unwrap();
+        // ₹120 sale consumed from advance → ₹380 held.
+        assert_eq!(store.customer_balance(&customer.id).unwrap(), -38_000);
+        // Overpay settle on someone who owes: seed debt then pay more.
+        let owing = store.add_customer("Ravi", "").unwrap();
+        store
+            .seed_opening_credit(&owing.id, 20_000, &owner)
+            .unwrap();
+        store
+            .settle_credit(&owing.id, 30_000, PayMethod::Cash, &owner, "")
+            .unwrap();
+        assert_eq!(store.customer_balance(&owing.id).unwrap(), -10_000);
         let _ = std::fs::remove_file(path);
     }
 
@@ -5764,19 +6768,24 @@ mod tests {
     }
 
     #[test]
-    fn split_pay_and_expense_report() {
+    fn mix_pay_cash_upi_card_and_expense_report() {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.upsert_product(&test_product("Tea", 20)).unwrap();
+        store.upsert_product(&test_product("Tea", 30)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale_split(
+            .finalize_sale_tenders(
                 &draft,
-                &[(PayMethod::Cash, 1000), (PayMethod::Upi, 1000)],
+                &[
+                    (PayMethod::Cash, 1000),
+                    (PayMethod::Upi, 1000),
+                    (PayMethod::Card, 1000),
+                ],
+                None,
                 None,
                 &owner,
             )
@@ -5788,24 +6797,44 @@ mod tests {
         let report = store.ops_report_today().unwrap();
         assert_eq!(report.day.cash_paise, 1000);
         assert_eq!(report.day.upi_paise, 1000);
+        assert_eq!(report.day.card_paise, 1000);
         assert_eq!(report.expenses_paise, 500);
         let receipt = store.format_receipt_text(&sale.id).unwrap();
         assert!(receipt.contains("Cash ₹10.00"), "{receipt}");
         assert!(receipt.contains("UPI ₹10.00"), "{receipt}");
+        assert!(receipt.contains("Card ₹10.00"), "{receipt}");
         assert!(!receipt.contains("\nSplit\n"), "{receipt}");
 
-        // A short split must not leave a half-written bill. The tenders are
-        // checked inside the sale transaction, so a mismatch rolls the row back.
         let err = store
-            .finalize_sale_split(
+            .finalize_sale_tenders(
                 &draft,
                 &[(PayMethod::Cash, 500), (PayMethod::Upi, 500)],
+                None,
                 None,
                 &owner,
             )
             .unwrap_err();
         assert!(err.contains("must equal bill"), "{err}");
         assert_eq!(store.recent_sales(10).unwrap().len(), 1);
+
+        // Part cash, rest on credit (khata).
+        let customer = store.add_customer("Geeta", "").unwrap();
+        let mut cart2 = Cart::default();
+        cart2.add_or_bump(&p);
+        let draft2 = cart2.to_sale_draft().unwrap();
+        let sale2 = store
+            .finalize_sale_tenders(
+                &draft2,
+                &[(PayMethod::Cash, 1000), (PayMethod::Credit, 2000)],
+                None,
+                Some(&customer.id),
+                &owner,
+            )
+            .unwrap();
+        assert_eq!(sale2.pay_method, "split");
+        assert_eq!(store.customer_balance(&customer.id).unwrap(), 2000);
+        let day = store.today_totals().unwrap();
+        assert_eq!(day.credit_paise, 2000);
         let _ = std::fs::remove_file(path);
     }
 
@@ -5902,7 +6931,7 @@ mod tests {
         }
 
         let store = Store::open_path(&path).unwrap();
-        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "13");
+        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "15");
         // The India pack is the v12 default, so an upgraded shop keeps selling
         // exactly as it did before country packs existed.
         assert_eq!(store.fiscal_settings().unwrap().country_code, "IN");
@@ -5929,19 +6958,15 @@ mod tests {
     fn category_station_on_product() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
-        // Migration seeds Drinks/Food and Hot/Cold for the Main branch.
-        let cats = store.list_categories().unwrap();
-        assert_eq!(
-            cats.iter().map(|c| c.name.as_str()).collect::<Vec<_>>(),
-            vec!["Drinks", "Food"]
-        );
+        // No categories are seeded: a general shop names its own.
+        assert!(store.list_categories().unwrap().is_empty());
         let stations = store.list_stations().unwrap();
         assert_eq!(
             stations.iter().map(|s| s.name.as_str()).collect::<Vec<_>>(),
             vec!["Hot", "Cold"]
         );
         let starters = store.add_category("Starters").unwrap();
-        assert_eq!(starters.sort_order, 2);
+        assert_eq!(starters.sort_order, 0);
         let tandoor = store.add_station("Tandoor").unwrap();
         assert!(store.add_category("  ").is_err());
         assert!(store.add_station("").is_err());
@@ -6458,7 +7483,7 @@ mod tests {
             store.meta_set("schema_version", "11").unwrap();
         }
         let store = Store::open_path(&path).unwrap();
-        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "13");
+        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "15");
         let sale = store.recent_sales(1).unwrap().remove(0);
         assert_eq!(sale.total_paise, 10_500);
         assert_eq!(sale.tax_paise, 500);

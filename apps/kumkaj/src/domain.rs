@@ -33,6 +33,11 @@ impl Money {
         Self(self.0.saturating_mul(qty.max(0)))
     }
 
+    /// `unit × qty_milli / 1000` — 1000 milli = one unit (piece or kg).
+    pub fn saturating_mul_milli(self, qty_milli: i64) -> Self {
+        Self(self.0.saturating_mul(qty_milli.max(0)) / 1000)
+    }
+
     pub fn format_with(self, currency_code: &str) -> String {
         crate::locale::format_money(self.0, currency_code)
     }
@@ -360,6 +365,160 @@ impl VenueMode {
     }
 }
 
+/// Bill-type tag on a sale (not separate ledgers).
+///
+/// Industry wording: **Tax invoice / Account booking** (shareable, GST path) vs
+/// **Cash memo / Cash booking** (spot / management). Same sales table; reports
+/// can total either tag or both. Labels come from the start template.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MoneyLane {
+    #[default]
+    Declared,
+    Owner,
+}
+
+impl MoneyLane {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Declared => "declared",
+            Self::Owner => "owner",
+        }
+    }
+
+    pub fn parse(s: &str) -> Self {
+        let key = s.trim().to_ascii_lowercase();
+        match key.as_str() {
+            "owner" | "cash" | "cash_booking" | "cash_memo" | "internal" | "black" => Self::Owner,
+            _ => Self::Declared,
+        }
+    }
+}
+
+/// Milli-units helper: whole pieces use multiples of 1000.
+pub const QTY_MILLI_UNIT: i64 = 1000;
+
+pub fn qty_to_milli(qty: i64) -> i64 {
+    qty.saturating_mul(QTY_MILLI_UNIT)
+}
+
+pub fn milli_to_whole_qty(qty_milli: i64) -> i64 {
+    if qty_milli <= 0 {
+        0
+    } else {
+        (qty_milli + QTY_MILLI_UNIT - 1) / QTY_MILLI_UNIT
+    }
+}
+
+/// Display qty for receipts/reports: `x2` (piece) or `1.25 kg` (unit label).
+pub fn format_qty_display(qty_milli: i64, qty_whole: i64, unit_label: &str) -> String {
+    let milli = if qty_milli > 0 {
+        qty_milli
+    } else {
+        qty_whole.saturating_mul(QTY_MILLI_UNIT)
+    };
+    let unit = unit_label.trim();
+    if unit.is_empty() {
+        return format!("x{}", milli_to_whole_qty(milli).max(1));
+    }
+    let whole = milli / QTY_MILLI_UNIT;
+    let frac = (milli % QTY_MILLI_UNIT).unsigned_abs();
+    if frac == 0 {
+        format!("{whole} {unit}")
+    } else {
+        let mut frac_s = format!("{frac:03}");
+        while frac_s.ends_with('0') {
+            frac_s.pop();
+        }
+        format!("{whole}.{frac_s} {unit}")
+    }
+}
+
+/// Cashbook / bank movement kinds (generic — not a trade fork).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum MoneyMoveKind {
+    /// Cash from till into bank.
+    TillToBank,
+    /// Cash from bank back to till.
+    BankToTill,
+    /// Other money into bank (transfer in, deposit).
+    BankIn,
+    /// Other money out of bank (withdrawal, payment).
+    BankOut,
+}
+
+impl MoneyMoveKind {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::TillToBank => "till_to_bank",
+            Self::BankToTill => "bank_to_till",
+            Self::BankIn => "bank_in",
+            Self::BankOut => "bank_out",
+        }
+    }
+
+    pub fn parse(s: &str) -> Option<Self> {
+        match s.trim() {
+            "till_to_bank" => Some(Self::TillToBank),
+            "bank_to_till" => Some(Self::BankToTill),
+            "bank_in" => Some(Self::BankIn),
+            "bank_out" => Some(Self::BankOut),
+            _ => None,
+        }
+    }
+
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::TillToBank => "Till → bank",
+            Self::BankToTill => "Bank → till",
+            Self::BankIn => "Bank in",
+            Self::BankOut => "Bank out",
+        }
+    }
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct MoneyMovement {
+    pub id: String,
+    pub created_at: String,
+    pub kind: String,
+    pub amount_paise: i64,
+    pub note: String,
+    pub actor_name: String,
+}
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+pub struct PartyAgingRow {
+    pub customer_id: String,
+    pub name: String,
+    pub kind_label: String,
+    /// Positive = they owe; negative = advance held.
+    pub balance_paise: i64,
+    /// Days since oldest open charge (0 if unknown / advance).
+    pub days: i64,
+    /// `current` (0–7) | `due` (8–30) | `overdue` (31+) | `advance`
+    pub bucket: String,
+}
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+pub struct PeriodBooks {
+    pub from_day: String,
+    pub to_day: String,
+    pub sale_count: i64,
+    pub revenue_paise: i64,
+    pub declared_paise: i64,
+    pub owner_lane_paise: i64,
+    pub cash_paise: i64,
+    pub upi_paise: i64,
+    pub card_paise: i64,
+    pub credit_paise: i64,
+    pub tax_paise: i64,
+    pub expenses_paise: i64,
+    pub expense_count: i64,
+    pub bank_in_paise: i64,
+    pub bank_out_paise: i64,
+    pub outstanding_credit_paise: i64,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct StaffMember {
     pub id: String,
@@ -626,6 +785,9 @@ pub struct Product {
     /// Owning branch; empty rows are treated as the active branch (legacy).
     #[serde(default)]
     pub branch_id: String,
+    /// Quantity unit label (`kg`, empty = piece). Rate × weight uses this.
+    #[serde(default)]
+    pub unit_label: String,
 }
 
 fn stock_untracked() -> i64 {
@@ -662,7 +824,13 @@ impl Product {
             modifiers_json: "[]".into(),
             aliases_json: "[]".into(),
             branch_id: String::new(),
+            unit_label: String::new(),
         }
+    }
+
+    pub fn is_weight_unit(&self) -> bool {
+        let u = self.unit_label.trim().to_lowercase();
+        u == "kg" || u == "g" || u == "lb" || u == "oz"
     }
 
     /// Extra names, in the order the seller typed them.
@@ -713,28 +881,17 @@ impl Product {
     }
 }
 
-/// Round-off above this share of the line total is a discount, not a round-off.
-pub const DISCOUNT_APPROVAL_BPS: i64 = 1_000;
-
-/// True when a bill's round-off is large enough to be a discount. Kumkaj has
-/// no separate discount field — Rounded Total *is* the discount mechanism — so
-/// this is the line that decides when a cashier needs an Owner/Manager PIN.
-pub fn rounding_needs_approval(lines_total_paise: i64, rounding_paise: i64) -> bool {
-    if lines_total_paise <= 0 {
-        return false;
-    }
-    rounding_paise
-        .saturating_abs()
-        .saturating_mul(10_000)
-        > lines_total_paise.saturating_mul(DISCOUNT_APPROVAL_BPS)
-}
-
 #[derive(Clone, Debug, Default)]
 pub struct CartLine {
     pub product_id: String,
     pub name: String,
     pub unit_price: Money,
+    /// Whole-unit mirror of [`Self::qty_milli`] / 1000 (ceil) for stock checks.
     pub qty: i64,
+    /// Milli-units (1000 = 1 piece or 1 kg). Source of truth for line math.
+    pub qty_milli: i64,
+    /// Copied from the product at add time (`kg`, empty = piece).
+    pub unit_label: String,
     /// Optional seller note for this line (e.g. "less sugar"). Empty = none.
     /// Modifier names are kept separately and joined onto the kitchen note.
     pub note: String,
@@ -753,9 +910,30 @@ pub struct CartLine {
 pub const MODIFIER_PAGE: usize = 3;
 
 impl CartLine {
-    /// Actual line total: `unit_price × qty` (true item math).
+    fn sync_qty_from_milli(&mut self) {
+        self.qty = milli_to_whole_qty(self.qty_milli);
+    }
+
+    /// Step when +/- is tapped: 1.0 unit, or 0.1 for weight units.
+    pub fn bump_step_milli(&self) -> i64 {
+        let u = self.unit_label.trim().to_lowercase();
+        if u == "kg" || u == "lb" {
+            100
+        } else if u == "g" || u == "oz" {
+            10
+        } else {
+            QTY_MILLI_UNIT
+        }
+    }
+
+    /// Actual line total: `unit_price × qty_milli / 1000`.
     pub fn actual_total(&self) -> Money {
-        self.unit_price.saturating_mul_qty(self.qty)
+        let milli = if self.qty_milli > 0 {
+            self.qty_milli
+        } else {
+            qty_to_milli(self.qty)
+        };
+        self.unit_price.saturating_mul_milli(milli)
     }
 
     /// Applied line total: override if set, otherwise Actual.
@@ -833,19 +1011,26 @@ impl Cart {
             .find(|l| l.product_id == product.id)
         {
             line.line_total_override = None;
-            line.qty = line.qty.saturating_add(1);
+            let step = line.bump_step_milli();
+            line.qty_milli = line.qty_milli.saturating_add(step);
+            line.sync_qty_from_milli();
         } else {
-            self.lines.push(CartLine {
+            let step = if product.is_weight_unit() { 100 } else { QTY_MILLI_UNIT };
+            let mut line = CartLine {
                 product_id: product.id.clone(),
                 name: product.name.clone(),
                 unit_price: product.price,
-                qty: 1,
+                qty: 0,
+                qty_milli: step,
+                unit_label: product.unit_label.clone(),
                 note: String::new(),
                 base_unit_paise: product.price.paise(),
                 applied_modifiers: Vec::new(),
                 modifier_page: 0,
                 line_total_override: None,
-            });
+            };
+            line.sync_qty_from_milli();
+            self.lines.push(line);
         }
     }
 
@@ -885,8 +1070,23 @@ impl Cart {
         if let Some(line) = self.lines.get_mut(index) {
             self.charge_total = None;
             line.line_total_override = None;
-            line.qty = (line.qty + delta).max(0);
-            if line.qty == 0 {
+            let step = line.bump_step_milli().saturating_mul(delta);
+            line.qty_milli = (line.qty_milli + step).max(0);
+            line.sync_qty_from_milli();
+            if line.qty_milli == 0 {
+                self.lines.remove(index);
+            }
+        }
+    }
+
+    /// Set absolute milli-qty for a line (e.g. typed weight).
+    pub fn set_qty_milli(&mut self, index: usize, qty_milli: i64) {
+        if let Some(line) = self.lines.get_mut(index) {
+            self.charge_total = None;
+            line.line_total_override = None;
+            line.qty_milli = qty_milli.max(0);
+            line.sync_qty_from_milli();
+            if line.qty_milli == 0 {
                 self.lines.remove(index);
             }
         }
@@ -1056,23 +1256,32 @@ impl Cart {
                 .lines
                 .iter()
                 .map(|l| {
-                    let computed = Money(l.unit_price_paise).saturating_mul_qty(l.qty);
+                    let milli = if l.qty_milli > 0 {
+                        l.qty_milli
+                    } else {
+                        qty_to_milli(l.qty)
+                    };
+                    let computed = Money(l.unit_price_paise).saturating_mul_milli(milli);
                     let override_total = if l.line_total_paise != computed.paise() {
                         Some(Money(l.line_total_paise))
                     } else {
                         None
                     };
-                    CartLine {
+                    let mut line = CartLine {
                         product_id: l.product_id.clone(),
                         name: l.name.clone(),
                         unit_price: Money(l.unit_price_paise),
                         qty: l.qty,
+                        qty_milli: milli,
+                        unit_label: l.unit_label.clone(),
                         note: l.note.clone(),
                         base_unit_paise: l.unit_price_paise,
                         applied_modifiers: Vec::new(),
                         modifier_page: 0,
                         line_total_override: override_total,
-                    }
+                    };
+                    line.sync_qty_from_milli();
+                    line
                 })
                 .collect(),
             charge_total: None,
@@ -1104,13 +1313,22 @@ impl Cart {
         let lines: Vec<SaleLine> = self
             .lines
             .iter()
-            .map(|l| SaleLine {
-                product_id: l.product_id.clone(),
-                name: l.name.clone(),
-                unit_price_paise: l.unit_price.paise(),
-                qty: l.qty,
-                line_total_paise: l.applied_total().paise(),
-                note: l.kitchen_note(),
+            .map(|l| {
+                let milli = if l.qty_milli > 0 {
+                    l.qty_milli
+                } else {
+                    qty_to_milli(l.qty)
+                };
+                SaleLine {
+                    product_id: l.product_id.clone(),
+                    name: l.name.clone(),
+                    unit_price_paise: l.unit_price.paise(),
+                    qty: l.qty,
+                    line_total_paise: l.applied_total().paise(),
+                    note: l.kitchen_note(),
+                    qty_milli: milli,
+                    unit_label: l.unit_label.clone(),
+                }
             })
             .collect();
         // Applied line totals must sum to lines_total; unit prices stay true.
@@ -1129,6 +1347,7 @@ impl Cart {
             // total. Doing it here would let a stale pack price a bill.
             tax_paise: 0,
             order_type: self.order_type,
+            money_lane: MoneyLane::Declared,
         })
     }
 }
@@ -1143,6 +1362,12 @@ pub struct SaleLine {
     /// Optional note captured at sale time (empty if none).
     #[serde(default)]
     pub note: String,
+    /// Milli-units (1000 = 1). 0 on legacy rows means `qty × 1000`.
+    #[serde(default)]
+    pub qty_milli: i64,
+    /// Unit label frozen at sale time (`kg`, empty = piece).
+    #[serde(default)]
+    pub unit_label: String,
 }
 
 /// Snapshot ready to persist. Prior snapshots stay in revision history;
@@ -1167,6 +1392,9 @@ pub struct SaleDraft {
     pub tax_paise: i64,
     #[serde(default)]
     pub order_type: OrderType,
+    /// Which money lane this bill posts to.
+    #[serde(default)]
+    pub money_lane: MoneyLane,
 }
 
 impl SaleDraft {
@@ -1241,6 +1469,9 @@ pub struct Sale {
     /// on rows written before schema v13.
     #[serde(default)]
     pub invoice_no: String,
+    /// Bill-type tag (`declared` = account/tax path; `owner` = cash booking/memo).
+    #[serde(default)]
+    pub money_lane: String,
     pub lines: Vec<SaleLine>,
 }
 
@@ -1288,7 +1519,7 @@ impl Sale {
     }
 }
 
-/// Lightweight credit customer.
+/// Lightweight credit party / customer (same primitive; templates rename).
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Customer {
     pub id: String,
@@ -1298,6 +1529,9 @@ pub struct Customer {
     pub active: bool,
     /// Outstanding balance in paise (positive = customer owes).
     pub balance_paise: i64,
+    /// Freeform kind label (`Carrier`, `Retail`, …) — not a product fork.
+    #[serde(default)]
+    pub kind_label: String,
 }
 
 impl Customer {
@@ -1349,6 +1583,12 @@ pub struct DayTotals {
     /// Tax already contained in `lines_total_paise` (tax-inclusive pricing).
     #[serde(default)]
     pub tax_paise: i64,
+    /// Revenue tagged Account booking / Tax invoice.
+    #[serde(default)]
+    pub declared_paise: i64,
+    /// Revenue tagged Cash booking / Cash memo.
+    #[serde(default)]
+    pub owner_lane_paise: i64,
 }
 
 impl DayTotals {
@@ -1363,6 +1603,8 @@ impl DayTotals {
         self.card_paise += other.card_paise;
         self.credit_paise += other.credit_paise;
         self.tax_paise += other.tax_paise;
+        self.declared_paise += other.declared_paise;
+        self.owner_lane_paise += other.owner_lane_paise;
     }
 
     pub fn tax(&self) -> Money {
@@ -1499,6 +1741,9 @@ pub struct OpsReport {
     pub expenses_paise: i64,
     pub expense_count: i64,
     pub top_items: Vec<(String, i64, i64)>, // name, qty, revenue_paise
+    /// Till→bank and other bank posts for the same day (when available).
+    #[serde(default)]
+    pub bank_net_paise: i64,
 }
 
 /// One append-only change to on-hand stock (sale, purchase, wastage, count).
