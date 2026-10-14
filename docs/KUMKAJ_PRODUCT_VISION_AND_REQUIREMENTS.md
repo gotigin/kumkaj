@@ -24,8 +24,8 @@ trade, an agency, or a multi-branch organization. The same fundamental
 product serves them all. Examples of *users of one OS* (not product
 SKUs or vertical forks):
 
--   a roadside **chai wala / tea seller** who may only need extremely
-    fast item selection, payment and a simple daily total;
+-   a **tea / snack counter** who may only need extremely fast item
+    selection, payment and a simple daily total;
 -   a **clothes seller**, **kirana / grocery**, or other retail counter
     with a catalogue, sizes, and stock;
 -   a **service** counter (barber, repair, salon) with appointments or
@@ -54,9 +54,9 @@ The central idea is therefore:
 > entity instead of forcing every user into enterprise-level
 > complexity — generic in the core, concrete in effect.**
 
-A tea seller or clothes counter should not have to understand kitchen
-routing just to sell. At the other end, a large restaurant group must
-not outgrow Kumkaj simply because it started with a simple till.
+A small counter should not have to understand kitchen routing just to
+sell. At the other end, a large multi-outlet group must not outgrow
+Kumkaj simply because it started with a simple till.
 Food-only tools (tables, KOT, kitchen stations) stay available as
 **Tables & kitchen** — an optional capability pack, not the identity of
 Kumkaj. Extra tills are the same shop device with LAN on — not a
@@ -66,13 +66,28 @@ different product type for cloud.
 
 ## 2. Product Philosophy: Simple at the Bottom, Powerful at the Top
 
+**Standing rule — users first:**
+
+> **Software should adapt to users — not the other way around.**
+
+Software is for the users; users are not for the software. Kumkaj always
+bends toward how people already run their entity (labels, habits, which
+capabilities they enable) — people should not have to bend their work or
+learn a foreign trade just to fit the app.
+
 Kumkaj should scale by **capability**, not by turning the
 smallest interface into a miniature enterprise ERP, and not by
 shipping a separate product per trade.
 
-The smallest entity may effectively see:
+The smallest entity may effectively see a light path:
 
 **Items → Sell → Payment → Receipt / Done**
+
+But Kumkaj is a **business operating system**, not a till with extras. For
+most entities the shell must make **money in, money out, parties, cash, and
+day/period books** feel like peers — shipping IA **Books · Sell · Buy · More**
+(see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md), [`DESIGN.md`](DESIGN.md)). Do not
+treat Sell as the product identity.
 
 A food business may additionally enable:
 
@@ -111,25 +126,15 @@ owner never picks another template (store id remains `custom`).
 
 ------------------------------------------------------------------------
 
-## 3. The Chai Wala Test
+## 3. Minimal sell and credit path
 
-Every major product decision should be checked against a very small
-seller.
+The smallest useful path must stay fast and understandable without
+training. Many entities do not need tables, kitchen screens, staff
+roles, or cloud dashboards on day one. They do often need party memory:
+who bought on **credit**, how much is outstanding, and when that party
+paid later.
 
-Imagine a tea seller with a handful of products:
-
--   Tea
--   Special tea
--   Coffee
--   Water
--   Snacks
-
-The seller may not need tables, inventory recipes, employees, kitchen
-screens or cloud dashboards. They **do** often need a very small form of
-customer memory: who bought on **credit**, how much is
-outstanding, and when that person paid later.
-
-The useful cash workflow is simply:
+Core counter workflow:
 
 1.  Tap an item.
 2.  Change quantity if needed.
@@ -138,7 +143,7 @@ The useful cash workflow is simply:
 4.  Optionally adjust a line's `@` unit price, that line's **Applied**
     amount, or the bill **Rounded Total** before paying (catalogue price
     stays the default; `@` is never rewritten by a line Applied edit).
-5.  Record cash/UPI/other payment **or** put the sale on a customer's
+5.  Record cash/UPI/other payment **or** put the sale on a party's
     credit.
 6.  Finish the sale — the **recorded history** of that moment is kept
     forever; the owner may later amend the live order with a tracked
@@ -146,25 +151,22 @@ The useful cash workflow is simply:
 7.  Optionally print a receipt.
 8.  At the end of the day, see sales, payment totals, and **who still
     owes money**.
-9.  When a credit customer pays later, record the settlement against
-    that balance without inventing a fake new sale.
+9.  When a credit party pays later, record the settlement against that
+    balance without inventing a fake new sale.
 
-This mode must remain **fast and understandable without training**.
 Credit must not force a full CRM setup: a name (and maybe a phone note)
-should be enough to start a credit account.
-
-The system should not require an internet connection for an ordinary
-sale. It should not make a tiny seller configure enterprise concepts
-before the first bill.
+should be enough to start a credit account. Ordinary sales must not
+require an internet connection or enterprise setup before the first
+bill.
 
 ------------------------------------------------------------------------
 
-## 4. The Large Restaurant Test
+## 4. Optional depth (tables, kitchen, ops)
 
-The same underlying product must support a substantially more complex
-operation.
+The same product must support fuller operations when the entity enables
+them — without forcing that depth on everyone.
 
-A large restaurant may need:
+That may include:
 
 -   dine-in and takeaway orders;
 -   table management;
@@ -186,22 +188,20 @@ A large restaurant may need:
 -   backup and recovery.
 
 The interface should expose these capabilities when they are needed
-without damaging the speed of the POS workflow.
+without damaging the speed of the sell workflow.
 
 ------------------------------------------------------------------------
 
-## 5. The Multi-Restaurant / Multi-Branch Test
+## 5. Multi-branch and organization
 
 Kumkaj must have an architecture that can grow beyond one physical
-location.
-
-A restaurant owner with several branches should eventually be able to
-manage an **organization** containing multiple branches/outlets.
+location. An owner with several outlets should eventually be able to
+manage an **organization** containing multiple branches.
 
 Important capabilities include:
 
 -   branch selector;
--   branch-specific menu/pricing where required;
+-   branch-specific catalogue/pricing where required;
 -   users and devices associated with appropriate branches;
 -   centralized owner dashboard;
 -   branch-level sales;
@@ -217,8 +217,8 @@ Important capabilities include:
 
 WAN coordination, remote dashboards, and automatic offsite backup are
 **Kumkaj Cloud** capabilities and are billed by cloud usage. Each
-branch must still be able to run its full local POS without the cloud.
-A cloud outage must **not stop a restaurant from billing locally**. Each
+branch must still be able to run its full local books without the cloud.
+A cloud outage must **not stop an outlet from billing locally**. Each
 operational location should remain capable of continuing service and
 synchronizing safely later.
 
@@ -395,7 +395,7 @@ Conceptually:
 -   settlement;
 -   table becomes available again.
 
-Table functionality should be optional. A chai seller or takeaway shop
+Table functionality should be optional. Entities that do not use tables
 should never have to interact with it.
 
 ------------------------------------------------------------------------
@@ -519,33 +519,30 @@ include a PX40 wireless 1D/2D scanner and 4×6 label-printer options.
 
 ## 14. Customers, Credit and CRM
 
-For many of India's smallest food sellers, **customer credit is not a
-nice-to-have CRM feature** --- it is everyday business. A tea seller
-often has regulars who take tea/snacks on credit and settle later
-(daily, weekly, or when they can). Kumkaj must support this as a
-**core local POS capability**, not only as a later restaurant CRM
-module.
+**Party credit is core local capability**, not a later CRM module. Many
+entities sell on account and settle later (daily, weekly, or when they
+can). Kumkaj must support that on the same device as ordinary sales.
 
-### Minimum credit capability (chai-wala scale)
+### Minimum credit capability
 
-Even without a rich customer module, the seller should be able to:
+Even without a rich party module, the owner should be able to:
 
--   keep a short list of credit customers (name is enough; phone/notes
+-   keep a short list of credit parties (name is enough; phone/notes
     optional);
--   finish a sale as **credit** against a chosen customer;
--   see that customer's **outstanding balance**;
+-   finish a sale as **credit** against a chosen party;
+-   see that party's **outstanding balance**;
 -   see a simple list of **who owes how much** (today / all open);
 -   record a later **settlement** (cash/UPI/card) that reduces the
     balance;
 -   keep an attributable history of credit sales and settlements so
     totals remain trustworthy.
 
-This must stay inside the **Chai Wala Test**: few taps, no training, no
-mandatory cloud, no enterprise customer-master setup.
+Few taps, no training, no mandatory cloud, no enterprise party-master
+setup.
 
 Credit sales still count as real sales for operational visibility, but
 **cash/UPI/card day totals and credit outstanding must not be confused**.
-The seller needs both: what came in today, and what is still owed.
+The owner needs both: what came in today, and what is still owed.
 
 ### Broader customer / CRM (later / larger businesses)
 
@@ -568,17 +565,22 @@ customer identity --- keep that identity as light as possible.
 ## 15. Inventory, Purchases and Expenses
 
 A business operating system should eventually connect sales to the
-broader operation.
+broader operation. The **universal books spine** (what almost every entity
+must track) is catalogued in [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) —
+party, item/unit, sell, buy, expense, AR/AP, cash/bank, stock, tax,
+day/period books — as generic primitives only.
 
 Core operational areas include:
 
 -   inventory items;
 -   stock movements;
--   purchases;
--   suppliers/workflows as the product grows;
+-   purchases (goods for resale / use — cost feeds **COGS** in period books
+    as that loop closes; see `BUSINESS_BOOKS.md` backlog);
+-   suppliers as the same **party** primitive (kind label), growing into
+    payable balances — not a separate vertical schema;
 -   low-stock visibility;
 -   stock adjustments;
--   expenses;
+-   expenses (operating costs, distinct from purchases of goods);
 -   wastage;
 -   recipe/ingredient-based deduction as a deeper restaurant capability.
 
@@ -591,28 +593,33 @@ inventory model is trustworthy.
 ## 16. Reports and Owner Visibility
 
 Useful reporting should answer operational questions rather than merely
-display charts.
+display charts. See also [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
 Local reports can include:
 
--   daily sales;
+-   daily sales and **day close** (tenders, credit taken, expenses, bank moves);
 -   payment-method totals (cash / UPI / card / credit);
 -   **lines Actual / Applied vs Rounded totals vs rounding adjustments**
     (so line overrides and bill round-offs remain reconcilable);
--   open credit outstanding (by customer and total);
+-   bill-type splits (**Tax invoice / Account booking** vs **Cash memo /
+    Cash booking**) when the entity uses both tags;
+-   open credit outstanding (by party and total) with **aging**;
 -   credit settlements collected today;
 -   tax totals;
 -   item/product sales;
 -   order counts;
 -   average bill;
 -   expenses;
+-   **period books** (today / month) and operational **P&L** (revenue −
+    COGS − expenses once COGS is wired; today: revenue − expenses);
+-   bank / cashbook posts (till↔bank, bank in/out) and running bank balance;
 -   stock/adjustments;
--   cash-session/day-close information.
+-   cash-session / counted-vs-expected drawer check as that capability lands.
 
 For multi-branch businesses, the owner should additionally be able to
 view branch-specific and consolidated information.
 
-The dashboard should adapt to the scale of the user. A chai seller may
+The dashboard should adapt to the scale of the user. A small counter may
 only care about today's sales, cash/UPI totals, and **who still owes on
 credit**; a restaurant-group owner may need branch comparisons,
 device/sync health and consolidated operational data.
@@ -739,7 +746,7 @@ Core principle:
 > consumption is.**
 
 Kumkaj does not decide who is “small” or “enterprise” for pricing.
-A chai seller and a large restaurant group see the **same price sheet**.
+A single-outlet entity and a multi-branch group see the **same price sheet**.
 The large group simply consumes more cloud resources and therefore pays
 a larger total bill.
 
@@ -899,20 +906,13 @@ such as:
 This should be treated as a **capability map**, not a requirement that
 every user sees every module all the time.
 
-For a chai seller, the best home screen may essentially be the POS
-itself.
+Home and chrome should follow what the entity enabled and who is signed
+in: sell/credit for a counter; tables/orders when food floor is on; KDS
+for kitchen staff; books/reports for owners; organization and branch
+controls when multi-branch is in use.
 
-For a restaurant cashier, POS/orders/tables may dominate.
-
-For a kitchen operator, KDS may dominate.
-
-For an owner, Dashboard/Reports may dominate.
-
-For a multi-branch owner, organization and branch controls become
-important.
-
-The interface should therefore become **role-aware and
-business-scale-aware**.
+The interface should therefore be **role-aware and
+capability-aware**.
 
 ------------------------------------------------------------------------
 
@@ -1019,7 +1019,10 @@ should clearly distinguish concepts such as:
 -   purchase;
 -   expense;
 -   audit event;
--   synchronization/outbox event.
+-   synchronization/outbox event;
+-   **triple timestamps** on books entries — user/business time
+    (`user_at`), device write time (`device_at`), and cloud accept time
+    (`server_at`, empty until synced).
 
 Even the smallest deployment can use a subset of this model. Designing
 branch and organization boundaries properly early prevents multi-branch
@@ -1102,88 +1105,25 @@ These are **roadmap directions**, not claims that they already exist.
 
 ------------------------------------------------------------------------
 
-## 30. A Practical Scaling Example
+## 30. Progressive enablement
 
-### Seller A --- roadside chai stall
+Complexity is additive capability on one product — not separate SKUs.
 
-Enabled:
+Typical progression (any trade; food tools only when enabled):
 
--   POS
--   tiny menu
--   cash/UPI recording
--   **simple customer credit** (names + balances +
-    settlements)
--   simple receipt if wanted
--   today's totals (including cash in vs credit outstanding)
-
-Hidden/not required:
-
--   tables
--   KDS
--   inventory recipes
--   full CRM / loyalty
--   employees
--   branches
--   cloud dashboard
--   paid cloud services
-
-### Seller B --- small café
-
-Adds:
-
--   more structured menu
--   takeaway/dine-in
--   customers
--   thermal printing
--   simple stock
--   expenses
--   reports
-
-### Business C --- established restaurant
-
-Adds:
-
--   tables
--   waiter/cashier roles
--   KOT/KDS
--   modifiers
--   inventory/purchases
--   manager approvals
--   detailed reports
--   backup/recovery
-
-### Business D --- large restaurant
-
-Adds:
-
--   multiple POS devices
--   multiple kitchen workflows/stations
--   larger staff/permission structure
--   operational monitoring
--   deeper inventory
--   stronger audit/control workflows
-
-### Business E --- restaurant group
-
-Adds optional **Kumkaj Cloud** usage (same rates as any other
-customer; higher total bill only because consumption is higher):
-
--   organization
--   multiple branches coordinated over WAN
--   centralized owner account / dashboard
--   branch switching
--   cloud synchronization
--   automatic cloud backups
--   consolidated reports
--   remote health/visibility
--   device/user administration
--   APIs/integrations
-
-Each branch still runs free local Kumkaj. Cloud is additive, never
-required for counter service.
-
-**All five are Kumkaj.** They should not require five unrelated
-products.
+1.  **Sell + credit + day totals** — catalogue, pay/credit, receipt,
+    who still owes; tables/KDS/team/branches/cloud off.
+2.  **Structured ops** — categories, stock, expenses, reports, printing
+    as needed.
+3.  **Tables & kitchen** — when the entity turns that pack on (floor,
+    KOT/KDS, stations, waiter/kitchen roles).
+4.  **Team and control** — staff, permissions, approvals, audit, backup.
+5.  **Extra tills and multi-branch** — LAN clients; org + branch switch +
+    local consolidated views.
+6.  **Optional Kumkaj Cloud** — WAN sync, remote visibility, hosted
+    backup, usage metering. Same rates for all; higher bill only from
+    higher consumption. Each branch still runs free local Kumkaj. Cloud
+    is additive, never required for counter service.
 
 ------------------------------------------------------------------------
 
@@ -1214,13 +1154,8 @@ Kumkaj should not become:
 
 A useful way to judge Kumkaj is:
 
-> **Can the smallest entity — a tea seller, a kirana counter, or someone
-> keeping personal books — begin using it quickly, while the most
-> complex entity can keep using the same platform as it grows into
-> multiple busy branches?**
-
-(Tea stall and restaurant group remain useful examples of those poles;
-they are not the only poles.)
+> **Can a small entity begin using it quickly, while a complex
+> multi-branch entity can keep using the same platform as it grows?**
 
 If the answer remains yes, the architecture and UX are moving in the
 intended direction.
@@ -1260,26 +1195,39 @@ A sensible implementation sequence is:
     usage metering) onto the reliable free local system.
 
 **Local implementation status (shipping code):** steps 1–9 are in the
-Makepad app (**schema v13**): POS with three totals, credit, stock
-enforcement, invoice numbers, country fiscal packs; receipts
-(print/share on desktop; clipboard share on Android); tables +
-multi-station KOT; inventory/purchases/expenses/reports; staff roles
-(Owner/Manager/Cashier; Waiter/Kitchen when Tables & kitchen is on) with feature flags; shop-only
-write authority with optional LAN extra-till sell (including split tenders)/amend/KOT/void/refund/settle;
-pay debounce; PIN reset after migrate + unlock backoff; verified
-`restore_from` path; organization + branch switch + snapshot
-export/import + consolidated roll-up + write-only sync outbox scaffold.
-Step 10 (hosted WAN cloud, metering, remote dashboard), raw ESC/POS,
-and statutory e-invoicing remain optional / roadmap — not required for
-local multi-branch coordination.
+Makepad app (**schema v1**): shell **Books · Sell · Buy · More** (Books
+home after unlock; Buy peers Sell for money out); **DeviceSetup every
+launch** with platform-default language (immediate apply; follow OS or
+fixed pick) plus Server/Client; **multi-server on one device** (unique id
+per local books DB — create if none, else create-new or open-existing;
+legacy root DB migrates into the registry); POS with three totals,
+credit, stock enforcement, invoice numbers, country fiscal packs; entity
+start templates (None default) with bill-type tags (Account booking / Tax
+invoice vs Cash booking / Cash memo); unit registry + conversions + item
+`unit_label` / milli qty; receipts (print/share on desktop; clipboard share
+on Android); tables + multi-station KOT; inventory/purchases/expenses;
+day close (optional drawer count) + period books with COGS/gross/net +
+party aging + bank cashbook (`money_movements`); AR write-off; purchase
+on-account → AP settle/write-off; staff roles (Owner/Manager/Cashier;
+Waiter/Kitchen when Tables & kitchen is on) with feature flags; shop-only
+write authority with optional LAN extra-till sell (including split
+tenders)/amend/KOT/void/refund/settle; pay debounce; PIN reset after
+migrate + unlock backoff; verified `restore_from` path; organization +
+branch switch + snapshot export/import + consolidated roll-up +
+write-only sync outbox scaffold. Universal books checklist:
+[`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md); launch/IA:
+[`DESIGN.md`](DESIGN.md). Step 10 (hosted WAN cloud, metering, remote
+dashboard), raw ESC/POS, and statutory e-invoicing remain optional /
+roadmap — not required for local multi-branch coordination.
 
-At every stage, keep both extremes in view:
+At every stage, keep these in view:
 
-**Would this still feel effortless to the smallest entity (e.g. chai
-wala or personal books)?**\
-**Would the underlying model still work for the most complex entity
-(e.g. multi-branch restaurant or agency group)?**\
+**Would this still feel effortless to a small entity?**\
+**Would the underlying model still work for a complex multi-branch
+entity?**\
 **Is the implementation still generic, with concrete feel from
-labels/config rather than a vertical fork?**
+labels/config rather than a vertical fork?**\
+**Does the software adapt to the user — or is the user forced to adapt
+to the software?** (§2)
 
 That is the central design discipline for Kumkaj.

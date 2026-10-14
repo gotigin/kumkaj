@@ -1,3 +1,10 @@
+// Production Windows: GUI subsystem (no console). Dev keeps a console for logs.
+// `kumkaj_hide_console` is set by build.rs when KUMKAJ_ENV=production.
+#![cfg_attr(
+    all(target_os = "windows", kumkaj_hide_console),
+    windows_subsystem = "windows"
+)]
+
 pub use makepad_widgets;
 
 // Android compiles this file into the library. The binary refers to that
@@ -10,9 +17,10 @@ use kumkaj::domain::{
     PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole, VenueMode,
 };
 use kumkaj::entity_template;
-use kumkaj::{domain, fiscal, locale};
+use kumkaj::{domain, fiscal, locale, local_servers};
 use kumkaj::fiscal::{FiscalSettings, TaxPricing};
-use kumkaj::locale::{LocaleSettings, CURRENCIES, LANGUAGES};
+use kumkaj::locale::{LanguageSource, LocaleSettings, CURRENCIES, LANGUAGES};
+use kumkaj::local_servers::LocalServerInfo;
 use kumkaj::menu_images;
 use kumkaj::net;
 use kumkaj::print_share;
@@ -28,6 +36,14 @@ app_main!(App);
 fn app_state() -> &'static Mutex<AppState> {
     static STATE: OnceLock<Mutex<AppState>> = OnceLock::new();
     STATE.get_or_init(|| Mutex::new(AppState::boot()))
+}
+
+/// Pending desktop window restore. Applied at Startup via `configure_window`,
+/// then re-checked on the first `WindowGeomChange` (Windows sometimes creates
+/// with the DSL default and ignores create_inner_size until a post-create resize).
+fn pending_window_geom() -> &'static Mutex<Option<store::WindowGeomPrefs>> {
+    static PENDING: OnceLock<Mutex<Option<store::WindowGeomPrefs>>> = OnceLock::new();
+    PENDING.get_or_init(|| Mutex::new(None))
 }
 
 /// Edge-swipe tracking: left edge → back, right edge → forward.
@@ -133,6 +149,14 @@ struct AppState {
     device_role: DeviceRole,
     /// True only until the owner picks shop or extra till once.
     must_confirm_device_role: bool,
+    /// DeviceSetup / Settings: follow OS language vs a fixed catalogue pick.
+    language_follow_platform: bool,
+    /// True while Server Mode is waiting for create / pick among local servers.
+    picking_server: bool,
+    /// Local servers registered on this device (multi-business).
+    local_servers: Vec<LocalServerInfo>,
+    /// App data root (desktop `data_dir` or Android files dir).
+    data_base: Option<PathBuf>,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).
@@ -147,6 +171,8 @@ struct AppState {
     entity_template_id: String,
     /// Bill type for the open cart (Account booking / Tax invoice vs Cash booking / Cash memo).
     money_lane: MoneyLane,
+    /// Buy tab: purchase posts to AP when true.
+    buy_on_account: bool,
     day_close_text: String,
     /// Inventory screen body (low stock + recent movements).
     ops_panel_text: String,
@@ -162,6 +188,8 @@ struct AppState {
     undo_snack_text: String,
     undo_timer: Timer,
     pin_buffer: String,
+    /// When true, lock screen shows digits instead of bullets.
+    pin_visible: bool,
     selected_sale_id: Option<String>,
     locale: LocaleSettings,
     /// Country pack in force: tax wording and maths, pay-rail name, id label.
@@ -184,7 +212,7 @@ struct AppState {
     pay_in_flight: bool,
     /// Consecutive wrong PINs on this process. Reset by any success.
     failed_unlocks: u32,
-    /// While set, unlock is refused — brute-forcing a 4-digit PIN should not be
+    /// While set, unlock is refused — brute-forcing a short PIN should not be
     /// a matter of seconds. In memory only: the till is local, and a restart
     /// costing an attacker the shop's own downtime is fine.
     unlock_blocked_until: Option<std::time::Instant>,
@@ -234,7 +262,11 @@ enum Screen {
     Lock,
     Onboard,
     ClientPair,
+    /// Books home — today's position (money in/out, owed, cash vs bank).
+    Books,
     Pos,
+    /// Money out — purchase + expense.
+    Buy,
     Menu,
     More,
     Floor,
@@ -247,6 +279,11 @@ enum Screen {
     Reports,
     Inventory,
     Branches,
+}
+
+/// Post-unlock home from cross-category commons ([`docs/DESIGN.md`]).
+fn unlocked_home() -> Screen {
+    Screen::Books
 }
 
 fn screen_keeps_history(screen: Screen) -> bool {
@@ -280,6 +317,10 @@ impl AppState {
             team_staff_id: None,
             device_role: DeviceRole::Unset,
             must_confirm_device_role: true,
+            language_follow_platform: true,
+            picking_server: false,
+            local_servers: Vec::new(),
+            data_base: None,
             owner_setup_complete: false,
             onboarding_complete: false,
             venue_mode: VenueMode::Counter,
@@ -288,6 +329,7 @@ impl AppState {
             onboard_step: 0,
             entity_template_id: "custom".into(),
             money_lane: MoneyLane::Declared,
+            buy_on_account: false,
             day_close_text: String::new(),
             ops_panel_text: String::new(),
             branches_text: String::new(),
@@ -299,6 +341,7 @@ impl AppState {
             undo_snack_text: String::new(),
             undo_timer: Timer::empty(),
             pin_buffer: String::new(),
+            pin_visible: false,
             selected_sale_id: None,
             locale: LocaleSettings::default(),
             fiscal: FiscalSettings::default(),
@@ -315,6 +358,10 @@ impl AppState {
             nav_back: Vec::new(),
             nav_forward: Vec::new(),
         };
+        if let Ok(dir) = store::data_dir() {
+            state.data_base = Some(dir.clone());
+            let _ = state.refresh_local_servers();
+        }
         match Store::open_default() {
             Ok(store) => {
                 state.status = format!("Local DB: {}", store.db_path().display());
@@ -330,14 +377,31 @@ impl AppState {
                 state.route_after_stored_role();
             }
             Err(e) => {
-                state.status = format!("Storage error: {e}");
+                // No local server yet is normal — DeviceSetup will create/pick.
+                state.status = if e.contains("No local server") {
+                    String::new()
+                } else {
+                    format!("Storage: {e}")
+                };
                 state.session = None;
                 state.must_confirm_device_role = true;
+                state.apply_platform_language_preview();
                 state.screen = Screen::DeviceSetup;
                 state.pin_buffer.clear();
             }
         }
         state
+    }
+
+    fn refresh_local_servers(&mut self) -> Result<(), String> {
+        let base = self
+            .data_base
+            .clone()
+            .or_else(|| store::data_dir().ok())
+            .ok_or_else(|| "No data directory".to_string())?;
+        self.data_base = Some(base.clone());
+        self.local_servers = local_servers::list_local_servers(&base)?;
+        Ok(())
     }
 
     fn reload_all(&mut self) -> Result<(), String> {
@@ -354,6 +418,8 @@ impl AppState {
         self.locale = store.locale_settings()?;
         self.fiscal = store.fiscal_settings()?;
         self.device_role = DeviceRole::from_meta(store.device_role()?.as_deref());
+        self.language_follow_platform =
+            store.language_source().unwrap_or(LanguageSource::User) == LanguageSource::Platform;
         self.extra_tills_allowed = store.extra_tills_allowed().unwrap_or(false);
         self.venue_title = store.venue_title()?;
         self.venue_icon_key = store.venue_icon_key()?;
@@ -372,22 +438,29 @@ impl AppState {
         self.device_role == DeviceRole::Server && self.extra_tills_allowed
     }
 
-    /// Every process start asks Server vs Client again. Last choice is only a
-    /// default in storage — never a lock that skips the chooser after restart.
+    /// Every process start: language + Server/Client on one screen.
+    /// UI opens in the platform language so non-English users can read it;
+    /// changing language updates this screen immediately.
     fn route_after_stored_role(&mut self) {
         self.must_confirm_device_role = true;
+        self.picking_server = false;
+        let _ = self.refresh_local_servers();
+        self.apply_platform_language_preview();
         self.screen = Screen::DeviceSetup;
         self.status = match self.device_role {
-            DeviceRole::Server => {
-                "Last time: Server Mode — tap again to continue, or switch".into()
-            }
-            DeviceRole::Client => {
-                "Last time: Client Mode — tap again to continue, or switch".into()
-            }
-            DeviceRole::Unset => "How will this device be used?".into(),
+            DeviceRole::Server => self.t("last_server_mode"),
+            DeviceRole::Client => self.t("last_client_mode"),
+            DeviceRole::Unset => self.t("device_use_q"),
         };
         // Warm LAN only after they confirm Server + extra tills on Lock path.
         // Do not start the server while the chooser is open.
+    }
+
+    /// DeviceSetup always previews in the OS language until the user picks otherwise.
+    fn apply_platform_language_preview(&mut self) {
+        self.language_follow_platform = true;
+        let platform = locale::detect_platform_language();
+        self.locale.language = platform;
     }
 
     /// Guard for anything the shop device alone may write. An extra till's catalogue,
@@ -530,6 +603,13 @@ impl AppState {
             None => text.push_str("\nNo day close recorded yet.\n"),
         }
         self.day_close_text = text;
+        Ok(())
+    }
+
+    /// Books home: money in/out, AR/AP, cash vs bank (not sales-only day close).
+    fn refresh_books_overview(&mut self) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or("No store")?;
+        self.day_close_text = store.books_overview_text()?;
         Ok(())
     }
 
@@ -1385,8 +1465,10 @@ script_mod! {
 
     // Chip for horizontal strips: Fit width (scroll, don't crush). Cap width so
     // long labels ellipsis instead of stealing the whole strip.
+    // Fit.max is Option<FitBound>; bare numbers / bare Abs() are not in scope —
+    // use FitBound.Abs (same pattern as Flow.Right).
     let ChipBtn = Button{
-        width: Fit{max: 160.} height: 40
+        width: Fit{max: FitBound.Abs(160.)} height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
         align: Center
@@ -1421,7 +1503,7 @@ script_mod! {
         }
     }
     let ChipBtnActive = Button{
-        width: Fit{max: 160.} height: 40
+        width: Fit{max: FitBound.Abs(160.)} height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
         align: Center
@@ -2058,9 +2140,50 @@ script_mod! {
         }
     }
 
+    // Whole-row language pick (no separate Use button). Same inset law as
+    // every other face: padding *and* label_walk.margin. Long labels wrap
+    // onto the next line inside that inset (no ellipsis / crop).
+    let LanguageRow = Button{
+        width: Fill height: Fit
+        align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        enable_long_press: true
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xf3f3f6
+            color_down: #xe8e8ea
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xf3f3f6
+            color_2_down: #xe8e8ea
+            color_2_focus: #xffffff
+            border_color: #x5c6570
+            border_color_hover: #x45464e
+            border_color_down: #x45464e
+            border_color_focus: #x5c6570
+            border_radius: 14.
+            border_size: 2.
+        }
+        draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_down: #x1a1c1e
+            color_focus: #x1a1c1e
+            ink_centered: false
+            text_style +: {font_size: 14.}
+        }
+    }
+
     let LocaleRow = RoundedView{
         width: Fill height: Fit
-        padding: Inset{left: 12. right: 8. top: 8. bottom: 8.}
+        padding: Inset{left: 16. right: 8. top: 8. bottom: 8.}
         flow: Right spacing: 8
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
@@ -2126,6 +2249,12 @@ script_mod! {
         width: Fill height: 58
         align: Align{x: 0.0 y: 0.5}
         padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
         // So a touch-drag that scrolls the page is not also treated as a click.
         enable_long_press: true
         draw_bg +: {
@@ -2149,6 +2278,8 @@ script_mod! {
             color_hover: #x1a1c1e
             color_down: #x1a1c1e
             color_focus: #x1a1c1e
+            max_lines: 1
+            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 16.}
         }
     }
@@ -2270,6 +2401,22 @@ script_mod! {
                 width: Fill height: Fit
                 padding: Inset{bottom: 10.}
                 texture_caching: false
+                pick := LanguageRow{text: "language"}
+            }
+        }
+    }
+
+    mod.widgets.ServerListBase = #(ServerList::register_widget(vm))
+    mod.widgets.ServerList = set_type_default() do mod.widgets.ServerListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 6
+            scroll_bar: ScrollBar{}
+            Item := View{
+                width: Fill height: Fit
+                padding: Inset{bottom: 10.}
+                texture_caching: false
                 LocaleRow{}
             }
         }
@@ -2335,9 +2482,10 @@ script_mod! {
         ui: Root{
             main_window := Window{
                 window.title: "Kumkaj"
-                // Default seller frame. Layout content never goes below 320 css px
-                // (see app_shell Fill{min: 320.} + horizontal scroll).
-                window.inner_size: vec2(390, 844)
+                // First-run desktop default (not a phone frame). Later launches
+                // restore last size/position from window_geom.json in App code.
+                // Layout content still never goes below 320 css px (app_shell).
+                window.inner_size: vec2(1024, 768)
                 pass.clear_color: #xd5d7dc
                 caption_bar +: {
                     draw_bg.color: #x1b2a4a
@@ -2353,7 +2501,7 @@ script_mod! {
                             align: Align{y: 0.5}
                             dev_size_label := Label{
                                 width: Fit height: Fit
-                                text: "390×844"
+                                text: "—"
                                 draw_text.color: #xfe8357
                                 draw_text.text_style.font_size: 11.
                             }
@@ -2454,8 +2602,8 @@ script_mod! {
                                     draw_bg.border_radius: 10.
                                     View{
                                         width: Fill height: Fit
-                                        WrapLabel{
-                                            body: "FIRST RUN · THIS DEVICE"
+                                        device_setup_banner := WrapLabel{
+                                            body: "THIS DEVICE"
                                             font_color: #xffffff
                                             font_size: 10.
                                         }
@@ -2499,7 +2647,7 @@ script_mod! {
                                                     font_color: #x041534
                                                     font_size: 18.
                                                 }
-                                                WrapLabel{
+                                                device_use_question := WrapLabel{
                                                     body: "How will this device be used?"
                                                     font_color: #x45464e
                                                     font_size: 12.
@@ -2508,7 +2656,41 @@ script_mod! {
                                         }
                                     }
 
-                                    WrapLabel{
+                                    setup_lang_title := WrapLabel{
+                                        body: "Language"
+                                        font_color: #x1a1c1e
+                                        font_size: 15.
+                                    }
+                                    setup_lang_hint := WrapLabel{
+                                        width: Fill
+                                        body: "Follow this device’s language, or pick one yourself."
+                                        font_color: #x45464e
+                                        font_size: 12.
+                                    }
+                                    ChipStrip{
+                                        ChipStripRow{
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                lang_setup_platform := ChipBtn{text: "Use platform native language"}
+                                                lang_setup_platform_on := ChipBtnActive{text: "Use platform native language" visible: false}
+                                            }
+                                            View{
+                                                width: Fit height: 40
+                                                flow: Overlay
+                                                lang_setup_user := ChipBtn{text: "Use user selected language"}
+                                                lang_setup_user_on := ChipBtnActive{text: "Use user selected language" visible: false}
+                                            }
+                                        }
+                                    }
+                                    setup_lang_selected := WrapLabel{
+                                        body: ""
+                                        font_color: #x1a1c1e
+                                        font_size: 13.
+                                    }
+                                    setup_lang_list := mod.widgets.LanguageList{}
+
+                                    device_section_label := WrapLabel{
                                         body: "THIS DEVICE"
                                         font_color: #x1a1c1e
                                         font_size: 11.
@@ -2519,10 +2701,32 @@ script_mod! {
                                         device_role_client := RowSecondaryBtn{text: "Client Mode"}
                                     }
 
-                                    WrapLabel{
+                                    device_setup_help := WrapLabel{
+                                        width: Fill
                                         body: "Server Mode (standalone): this device holds the books. Client Mode: pair to a Server. Asked every launch — pick again or switch. Extra tills stay off until you allow them in Backup & settings."
                                         font_color: #x45464e
                                         font_size: 12.
+                                    }
+
+                                    server_pick_section := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        server_pick_title := WrapLabel{
+                                            body: "Choose a server"
+                                            font_color: #x1a1c1e
+                                            font_size: 15.
+                                        }
+                                        server_pick_hint := WrapLabel{
+                                            width: Fill
+                                            body: "This device already has servers. Open one, or create a new server for another business."
+                                            font_color: #x45464e
+                                            font_size: 12.
+                                        }
+                                        server_name_input := FieldInput{empty_text: "New server name (optional)"}
+                                        server_create_new := NavBtn{text: "Create new server"}
+                                        setup_server_list := mod.widgets.ServerList{}
+                                        server_pick_cancel := BackBtn{text: "Back"}
                                     }
 
                                     device_setup_status := WrapLabel{
@@ -2662,12 +2866,21 @@ script_mod! {
                                             font_size: 11.
                                         }
                                         pin_label := Label{
-                                            text: "○  ○  ○  ○"
+                                            text: "—"
                                             draw_text.color: #x041534
-                                            draw_text.text_style.font_size: 28.
+                                            draw_text.text_style.font_size: 26.
+                                        }
+                                        pin_count := WrapLabel{
+                                            body: "0 / 12 digits · at least 4, then OK"
+                                            font_color: #x45464e
+                                            font_size: 12.
+                                        }
+                                        pin_reveal := ChipBtn{
+                                            text: "Show PIN"
+                                            padding: Inset{left: 14. right: 14.}
                                         }
                                         pin_hint := WrapLabel{
-                                            body: "Owner sets up this shop with a PIN"
+                                            body: "4–12 digits · keyboard or pad · Enter = OK · tap Show PIN to check"
                                             font_color: #x45464e
                                             font_size: 12.
                                         }
@@ -2788,25 +3001,52 @@ script_mod! {
                                     font_color: #x45464e
                                     font_size: 12.
                                 }
-                                ActionStack{
-                                    onboard_fresh := RowPrimaryBtn{text: "Start fresh"}
+                                WrapLabel{
+                                    body: "How do you want to start? (tap one — it stays highlighted)"
+                                    font_color: #x1a1c1e
+                                    font_size: 15.
+                                }
+                                View{
+                                    width: Fill height: 52
+                                    flow: Overlay
+                                    onboard_fresh := RowSecondaryBtn{text: "Start fresh"}
+                                    onboard_fresh_on := RowPrimaryBtn{text: "Start fresh" visible: false}
+                                }
+                                View{
+                                    width: Fill height: 52
+                                    flow: Overlay
                                     onboard_book := RowSecondaryBtn{text: "Bring my book"}
+                                    onboard_book_on := RowPrimaryBtn{text: "Bring my book" visible: false}
                                 }
                                 WrapLabel{
-                                    body: "Fresh starts empty — add your own rates or items under Items. Book lets you enter opening items and credit balances."
+                                    body: "Fresh = empty catalogue (add rates later in Items). Book = type opening rates and who owes you below."
                                     font_color: #x45464e
                                     font_size: 12.
                                 }
-                                onboard_empty := RowPrimaryBtn{text: "Continue empty"}
-                                WrapLabel{body: "Book — add product" font_color: #x1a1c1e font_size: 15.}
-                                onboard_item_name := FieldInput{empty_text: "Item name"}
-                                onboard_item_price := FieldInput{empty_text: "Price"}
-                                onboard_add_item := NavBtn{text: "Add item"}
-                                WrapLabel{body: "Book — opening credit" font_color: #x1a1c1e font_size: 15.}
-                                onboard_cust_name := FieldInput{empty_text: "Customer name"}
-                                onboard_cust_bal := FieldInput{empty_text: "Amount owed"}
-                                onboard_add_credit := NavBtn{text: "Add opening balance"}
-                                onboard_done := PinOkKey{text: "Done — start selling"}
+                                onboard_fresh_panel := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    WrapLabel{
+                                        body: "Fresh selected — catalogue stays empty. Tap Done when ready."
+                                        font_color: #x45464e
+                                        font_size: 12.
+                                    }
+                                }
+                                onboard_book_panel := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    WrapLabel{body: "Book — add product / rate" font_color: #x1a1c1e font_size: 15.}
+                                    onboard_item_name := FieldInput{empty_text: "Item name"}
+                                    onboard_item_price := FieldInput{empty_text: "Price"}
+                                    onboard_add_item := NavBtn{text: "Add item"}
+                                    WrapLabel{body: "Book — opening credit" font_color: #x1a1c1e font_size: 15.}
+                                    onboard_cust_name := FieldInput{empty_text: "Customer name"}
+                                    onboard_cust_bal := FieldInput{empty_text: "Amount owed"}
+                                    onboard_add_credit := NavBtn{text: "Add opening balance"}
+                                }
+                                onboard_done := PinOkKey{text: "Done — open books"}
                                 WrapLabel{
                                     body: "Later: Settings → apply your country pack for tax and pay labels."
                                     font_color: #x45464e
@@ -2847,7 +3087,42 @@ script_mod! {
                             }
                         }
 
-                        // Seller home: tap items → pay. Whole page scrolls.
+                        // Books home — today's position (commons: not Sell-first).
+                        books_screen := ScrollYView{
+                            width: Fill height: Fill
+                            visible: false
+                            View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                books_heading := WrapLabel{
+                                    body: "Books"
+                                    font_color: #x1a1c1e
+                                    font_size: 22.
+                                }
+                                books_help := WrapLabel{
+                                    width: Fill
+                                    body: "Today: money in, purchases/expenses out, they owe us / we owe them, cash vs bank, gross and net."
+                                    font_color: #x45464e
+                                    font_size: 13.
+                                }
+                                books_label := WrapLabel{
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
+                                }
+                                ActionStack{
+                                    books_to_sell := RowPrimaryBtn{text: "Sell (money in)"}
+                                    books_to_buy := RowPrimaryBtn{text: "Buy (money out)"}
+                                    books_day_close := RowSecondaryBtn{text: "Day close"}
+                                    books_reports := RowSecondaryBtn{text: "Reports & bank"}
+                                    books_credit := RowSecondaryBtn{text: "Parties / credit"}
+                                    books_refresh := RowSecondaryBtn{text: "Refresh"}
+                                }
+                            }
+                        }
+
+                        // Seller: tap items → pay. Whole page scrolls.
                         pos_screen := ScrollYView{
                             width: Fill height: Fill
                             visible: false
@@ -3202,6 +3477,57 @@ script_mod! {
                             }
                         }
 
+                        // Money out — purchase + expense (peer of Sell).
+                        buy_screen := ScrollYView{
+                            width: Fill height: Fill
+                            visible: false
+                            View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                buy_heading := WrapLabel{
+                                    body: "Buy"
+                                    font_color: #x1a1c1e
+                                    font_size: 22.
+                                }
+                                buy_help := WrapLabel{
+                                    width: Fill
+                                    body: "Money out: goods received (purchase) or running costs (expense). Same books as Sell."
+                                    font_color: #x45464e
+                                    font_size: 13.
+                                }
+                                WrapLabel{body: "Goods received" font_color: #x1a1c1e font_size: 15.}
+                                buy_item_input := FieldInput{empty_text: "Item name"}
+                                buy_qty_input := FieldInput{empty_text: "Qty (e.g. 1.5 for kg)"}
+                                buy_cost_input := FieldInput{empty_text: "Unit cost"}
+                                buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
+                                buy_party_kind := FieldInput{empty_text: "New party kind (Supplier / Carrier)"}
+                                buy_note_input := FieldInput{empty_text: "Note (optional)"}
+                                ChipStrip{
+                                    ChipStripRow{
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            buy_paid := ChipBtn{text: "Paid now"}
+                                            buy_paid_on := ChipBtnActive{text: "Paid now" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            buy_on_account := ChipBtn{text: "On account (AP)"}
+                                            buy_on_account_on := ChipBtnActive{text: "On account (AP)" visible: false}
+                                        }
+                                    }
+                                }
+                                buy_purchase := NavBtn{text: "Record purchase"}
+                                WrapLabel{body: "Expense" font_color: #x1a1c1e font_size: 15.}
+                                buy_expense_amount := FieldInput{empty_text: "Amount"}
+                                buy_expense_note := FieldInput{empty_text: "Note (fuel, rent, …)"}
+                                buy_expense_add := NavBtn{text: "Add expense"}
+                                buy_to_inventory := NavBtn{text: "Inventory & stock adjust"}
+                            }
+                        }
+
                         more_screen := ScrollYView{
                             width: Fill height: Fill
                             visible: false
@@ -3211,14 +3537,15 @@ script_mod! {
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 more_heading := WrapLabel{body: "More" font_color: #x1a1c1e font_size: 22.}
                                     WrapLabel{
-                                        body: "Sales, credit, team, backup — plus stock and extra tills when this shop needs them."
+                                        body: "Catalogue, sales, credit, team, backup — plus stock and extra tills when needed."
                                         font_color: #x45464e
                                     }
+                                more_items := MoreRow{text: "Items"}
                                 more_tables := MoreRow{text: "Tables"}
                                 more_kitchen := MoreRow{text: "Kitchen"}
                                 more_sales := MoreRow{text: "Sales & refunds"}
                                 more_day_close := MoreRow{text: "Day close"}
-                                more_reports := MoreRow{text: "Reports & expenses"}
+                                more_reports := MoreRow{text: "Reports & bank"}
                                 more_inventory := MoreRow{text: "Inventory & stock"}
                                 more_branches := MoreRow{text: "Branches & org"}
                                 more_credit := MoreRow{text: "Credit customers"}
@@ -3411,7 +3738,7 @@ script_mod! {
                                 }
                                 WrapLabel{
                                     width: Fill
-                                    body: "Who owes what. Take payment to settle debt — or more than they owe to keep as advance for later."
+                                    body: "Parties who owe you (AR). Settle with cash, write off to nil, or take advance. Kind = Carrier / Consignor / Supplier / …"
                                     font_color: #x1a1c1e
                                     font_size: 12.
                                 }
@@ -3420,8 +3747,9 @@ script_mod! {
                                     font_color: #x1a1c1e
                                     font_size: 13.
                                 }
-                                credit_add_name := FieldInput{empty_text: "New customer name"}
-                                credit_add_btn := NavBtn{text: "Add customer"}
+                                credit_add_name := FieldInput{empty_text: "Party name"}
+                                credit_add_kind := FieldInput{empty_text: "Kind (Consignor, Carrier, Supplier, …)"}
+                                credit_add_btn := NavBtn{text: "Add party"}
                                 customer_list_credit := mod.widgets.CustomerList{}
                                 WrapLabel{body: "Pay selected (settle debt / take advance)" font_color: #x1a1c1e font_size: 15.}
                                 settle_amount_input := FieldInput{empty_text: "Amount received"}
@@ -3430,6 +3758,18 @@ script_mod! {
                                     settle_upi := NavBtn{text: "Pay UPI"}
                                     settle_card := NavBtn{text: "Pay card"}
                                 }
+                                WrapLabel{body: "Write off (clear without payment)" font_color: #x1a1c1e font_size: 15.}
+                                writeoff_amount_input := FieldInput{empty_text: "Amount (blank = full balance)"}
+                                writeoff_reason_input := FieldInput{empty_text: "Reason (required)"}
+                                credit_writeoff := NavBtn{text: "Write off / nil balance"}
+                                WrapLabel{body: "Pay what we owe them (AP)" font_color: #x1a1c1e font_size: 15.}
+                                payable_amount_input := FieldInput{empty_text: "Amount we pay"}
+                                ActionStack{
+                                    payable_cash := NavBtn{text: "Pay AP cash"}
+                                    payable_upi := NavBtn{text: "Pay AP UPI"}
+                                    payable_card := NavBtn{text: "Pay AP card"}
+                                }
+                                payable_writeoff := NavBtn{text: "Write off AP"}
                             }
                         }
 
@@ -3586,9 +3926,30 @@ script_mod! {
                                 WrapLabel{body: "Language" font_color: #x1a1c1e font_size: 15.}
                                 WrapLabel{
                                     width: Fill
-                                    body: "Scroll and tap Use. Languages worldwide are listed."
+                                    body: "Follow this device’s language, or pick one yourself."
                                     font_color: #x1a1c1e
                                     font_size: 12.
+                                }
+                                ChipStrip{
+                                    ChipStripRow{
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_lang_platform := ChipBtn{text: "Use platform native language"}
+                                            settings_lang_platform_on := ChipBtnActive{text: "Use platform native language" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            settings_lang_user := ChipBtn{text: "Use user selected language"}
+                                            settings_lang_user_on := ChipBtnActive{text: "Use user selected language" visible: false}
+                                        }
+                                    }
+                                }
+                                settings_lang_selected := WrapLabel{
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
                                 }
                                 language_list := mod.widgets.LanguageList{}
                                 WrapLabel{body: "Currency" font_color: #x1a1c1e font_size: 15.}
@@ -3684,6 +4045,25 @@ script_mod! {
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := NavBtn{text: "Save brand"}
+                                WrapLabel{body: "Units" font_color: #x1a1c1e font_size: 20.}
+                                WrapLabel{
+                                    width: Fill
+                                    body: "Codes for item labels (kg, piece, bag). Conversions: 1 from = factor to (e.g. 1 bag = 25 kg)."
+                                    font_color: #x45464e
+                                    font_size: 12.
+                                }
+                                units_label := WrapLabel{
+                                    body: ""
+                                    font_color: #x1a1c1e
+                                    font_size: 13.
+                                }
+                                unit_code_input := FieldInput{empty_text: "Code (bag)"}
+                                unit_name_input := FieldInput{empty_text: "Name (Bag)"}
+                                unit_add := NavBtn{text: "Add unit"}
+                                conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
+                                conv_add := NavBtn{text: "Add conversion"}
                                 WrapLabel{body: "Backup" font_color: #x1a1c1e font_size: 20.}
                                 db_path_label := WrapLabel{body: "" font_color: #x1a1c1e}
                                 audit_label := WrapLabel{body: "" font_color: #x1a1c1e}
@@ -3716,11 +4096,13 @@ script_mod! {
                                     font_color: #x1a1c1e
                                     font_size: 14.
                                 }
+                                WrapLabel{body: "Drawer count (optional)" font_color: #x1a1c1e font_size: 15.}
+                                day_close_counted_input := FieldInput{empty_text: "Counted cash in drawer"}
                                 day_close_copy := NavBtn{text: "Copy day close"}
                                 day_close_commit := NavBtn{text: "Record day close"}
                                 WrapLabel{
                                     width: Fill
-                                    body: "Recording a day close saves this summary and the time to the audit log. It does not stop you selling — a late customer still rings up."
+                                    body: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
                                     font_color: #x45464e
                                     font_size: 12.
                                 }
@@ -3922,14 +4304,15 @@ script_mod! {
                         }
                     }
 
-                    // docs/DEV.md MVP shell: Sell · Items · More (Floor/Kitchen/Credit under More)
+                    // docs/DESIGN.md · BUSINESS_BOOKS.md: Books · Sell · Buy · More
                     bottom_nav := SolidView{
                         width: Fill height: Fit
                         padding: Inset{left: 4. right: 4. top: 4. bottom: 8.}
                         flow: Right spacing: 0
                         draw_bg.color: #x041534
+                        nav_books := TabBtn{text: "Books"}
                         nav_sell := TabBtn{text: "Sell"}
-                        nav_menu := TabBtn{text: "Items"}
+                        nav_buy := TabBtn{text: "Buy"}
                         nav_more := TabBtn{text: "More"}
                     }
                     } // app_shell
@@ -3950,6 +4333,31 @@ fn typed_aliases(text: &str) -> Vec<String> {
         .filter(|part| !part.is_empty())
         .map(str::to_string)
         .collect()
+}
+
+/// Parse `1`, `1.5`, `1,5` into qty milli (1000 = 1 whole).
+fn parse_qty_to_milli(text: &str) -> Result<i64, String> {
+    let t = text.trim().replace(',', ".");
+    if t.is_empty() {
+        return Err("Quantity required".into());
+    }
+    if t.contains('.') {
+        let v: f64 = t
+            .parse()
+            .map_err(|_| "Quantity must be a number".to_string())?;
+        if v <= 0.0 {
+            return Err("Quantity must be > 0".into());
+        }
+        Ok((v * 1000.0).round() as i64)
+    } else {
+        let whole: i64 = t
+            .parse()
+            .map_err(|_| "Quantity must be a number".to_string())?;
+        if whole <= 0 {
+            return Err("Quantity must be > 0".into());
+        }
+        Ok(domain::qty_to_milli(whole))
+    }
 }
 
 fn modifiers_as_typed(mods: &[domain::ModifierOption], currency: &str) -> String {
@@ -4587,10 +4995,6 @@ struct LanguageList {
 impl Widget for LanguageList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         let selected = app_state().lock().unwrap().locale.language.clone();
-        let use_label = {
-            let st = app_state().lock().unwrap();
-            st.t("use")
-        };
         // Cap visible height so Settings still scrolls the page; list scrolls inside.
         let walk = Walk {
             height: Size::Fixed(320.0),
@@ -4605,11 +5009,13 @@ impl Widget for LanguageList {
                     };
                     let item = list.item(cx, item_id, id!(Item));
                     let mark = if lang.code == selected { "✓ " } else { "" };
-                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&format!(
+                    item.button(cx, ids!(pick)).set_text(
+                        cx,
+                        &format!(
                             "{mark}{} · {} · {}",
                             lang.native_name, lang.name_en, lang.region
-                        ),));
-                    item.button(cx, ids!(pick)).set_text(cx, &use_label);
+                        ),
+                    );
                     item.draw_all_unscoped(cx);
                 }
             }
@@ -4619,6 +5025,50 @@ impl Widget for LanguageList {
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
         // Pointer over this capped list = inner owns the wheel; page must not move.
+        claim_list_nested_scroll(cx, &self.view, event);
+        self.view.handle_event(cx, event, scope);
+        claim_list_nested_scroll(cx, &self.view, event);
+    }
+}
+
+#[derive(Script, ScriptHook, Widget)]
+struct ServerList {
+    #[deref]
+    view: View,
+}
+
+impl Widget for ServerList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (servers, open_label) = {
+            let st = app_state().lock().unwrap();
+            (st.local_servers.clone(), st.t("open_server"))
+        };
+        let walk = Walk {
+            height: Size::Fixed(list_content_height(servers.len().max(1), 56.0, 0.0).min(280.0)),
+            ..walk
+        };
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                list.set_item_range(cx, 0, servers.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(server) = servers.get(item_id) else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    let short = server.id.chars().take(8).collect::<String>();
+                    item.widget(cx, ids!(label)).set_text(
+                        cx,
+                        &plain_display_text(&format!("{} · {short}", server.name)),
+                    );
+                    item.button(cx, ids!(pick)).set_text(cx, &open_label);
+                    item.draw_all_unscoped(cx);
+                }
+            }
+        }
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
         claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
         claim_list_nested_scroll(cx, &self.view, event);
@@ -4853,12 +5303,16 @@ impl App {
                 return;
             }
         }
+        self.resolve_data_base(cx);
         let opened = if let Some(dir) = cx.get_data_dir() {
-            Store::open_in_data_dir(&PathBuf::from(dir))
+            let base = PathBuf::from(dir);
+            app_state().lock().unwrap().data_base = Some(base.clone());
+            local_servers::open_active_server(&base)
         } else {
             Store::open_default()
         };
         let mut st = app_state().lock().unwrap();
+        let _ = st.refresh_local_servers();
         match opened {
             Ok(store) => {
                 st.status = format!("Local DB: {}", store.db_path().display());
@@ -4879,8 +5333,15 @@ impl App {
                 );
             }
             Err(e) => {
-                st.status = format!("Storage error: {e}");
-                log!("Kumkaj store open failed: {e}");
+                if e.contains("No local server") {
+                    st.must_confirm_device_role = true;
+                    st.apply_platform_language_preview();
+                    st.screen = Screen::DeviceSetup;
+                    log!("Kumkaj: no local server yet — DeviceSetup");
+                } else {
+                    st.status = format!("Storage error: {e}");
+                    log!("Kumkaj store open failed: {e}");
+                }
             }
         }
     }
@@ -4890,11 +5351,21 @@ impl App {
         // still active, never leave the UI stuck on the lock screen.
         {
             let mut st = app_state().lock().unwrap();
-            // First-run only when no device use has been saved yet.
             if st.must_confirm_device_role {
                 st.screen = Screen::DeviceSetup;
             } else if st.session.is_some() && st.screen == Screen::Lock {
-                st.screen = Screen::Pos;
+                st.screen = unlocked_home();
+            }
+            // Follow-OS mode: keep UI language in sync with the device.
+            if st.language_follow_platform {
+                st.locale.language = locale::detect_platform_language();
+            }
+        }
+        // Keep Books overview fresh when that tab is showing.
+        {
+            let mut st = app_state().lock().unwrap();
+            if st.screen == Screen::Books && st.session.is_some() {
+                let _ = st.refresh_books_overview();
             }
         }
         let (
@@ -4920,6 +5391,8 @@ impl App {
             session_chip,
             lock_prompt,
             pin_hint,
+            pin_count,
+            pin_reveal_label,
             lock_staff_label,
             lock_as_owner,
             show_staff_role,
@@ -5021,16 +5494,37 @@ impl App {
             } else {
                 "ROUNDED".to_string()
             };
-            let pin_dots = {
-                let n = st.pin_buffer.len().min(4);
-                let mut s = String::new();
-                for i in 0..4 {
-                    if i > 0 {
-                        s.push_str("  ");
-                    }
-                    s.push(if i < n { '●' } else { '○' });
-                }
-                s
+            // Variable 4–12 length: show only entered digits (masked or plain) + a count.
+            let pin_n = st.pin_buffer.len().min(12);
+            let pin_display = if pin_n == 0 {
+                "—".to_string()
+            } else if st.pin_visible {
+                st.pin_buffer
+                    .chars()
+                    .take(12)
+                    .map(|c| c.to_string())
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            } else {
+                std::iter::repeat('●')
+                    .take(pin_n)
+                    .map(|c| c.to_string())
+                    .collect::<Vec<_>>()
+                    .join(if pin_n > 6 { " " } else { "  " })
+            };
+            let pin_count = if pin_n == 0 {
+                "0 / 12 digits · at least 4, then OK".to_string()
+            } else if pin_n < 4 {
+                format!("{pin_n} / 12 digits · need {} more", 4 - pin_n)
+            } else if pin_n >= 12 {
+                "12 / 12 digits · press OK".to_string()
+            } else {
+                format!("{pin_n} / 12 digits · press OK when ready")
+            };
+            let pin_reveal_label = if st.pin_visible {
+                "Hide PIN"
+            } else {
+                "Show PIN"
             };
             let session_chip = match &st.session {
                 Some(s) => s.lock_label(),
@@ -5047,9 +5541,9 @@ impl App {
                 "ENTER STAFF PASSCODE".to_string()
             };
             let pin_hint = if !owner_setup_complete {
-                "Choose a 4–12 digit Owner PIN to open this shop".to_string()
+                "Choose 4–12 digits (keyboard or pad) · Enter/OK to save".to_string()
             } else if pin_reset_required {
-                "This upgrade reset every PIN — choose a new Owner PIN to reopen".to_string()
+                "New 4–12 digit Owner PIN (keyboard or pad) · Enter/OK".to_string()
             } else if st.device_role == DeviceRole::Server {
                 if st.extra_tills_allowed {
                     let code = st
@@ -5100,7 +5594,9 @@ impl App {
             let undo_visible = st.undo_sale_id.is_some()
                 && matches!(
                     st.screen,
-                    Screen::Pos
+                    Screen::Books
+                        | Screen::Pos
+                        | Screen::Buy
                         | Screen::Menu
                         | Screen::More
                         | Screen::Floor
@@ -5119,7 +5615,7 @@ impl App {
                 session,
                 st.status.clone(),
                 st.last_receipt.clone(),
-                pin_dots,
+                pin_display,
                 st.store
                     .as_ref()
                     .map(|s| s.db_path().display().to_string())
@@ -5140,6 +5636,8 @@ impl App {
                 session_chip,
                 lock_prompt,
                 pin_hint,
+                pin_count,
+                pin_reveal_label,
                 lock_staff_label,
                 lock_as_owner,
                 show_staff_role,
@@ -5157,6 +5655,12 @@ impl App {
         self.ui.label(cx, ids!(pin_label)).set_text(cx, &pin);
         self.ui
             .widget(cx, ids!(pin_prompt)).set_text(cx, &plain_display_text(&lock_prompt));
+        self.ui
+            .widget(cx, ids!(pin_count))
+            .set_text(cx, &plain_display_text(&pin_count));
+        self.ui
+            .button(cx, ids!(pin_reveal))
+            .set_text(cx, pin_reveal_label);
         self.ui.widget(cx, ids!(pin_hint)).set_text(cx, &plain_display_text(&pin_hint));
         self.ui
             .button(cx, ids!(role_staff))
@@ -5650,12 +6154,46 @@ impl App {
             self.ui
                 .widget(cx, ids!(settings_tmpl_label))
                 .set_text(cx, &plain_display_text(&tmpl_line));
+            let units_body = {
+                let st = app_state().lock().unwrap();
+                match st.store.as_ref() {
+                    Some(store) => {
+                        let units = store.list_units().unwrap_or_default();
+                        let convs = store.list_unit_conversions().unwrap_or_default();
+                        let mut lines = Vec::new();
+                        lines.push("Units:".into());
+                        for u in &units {
+                            lines.push(format!(
+                                "  {} — {}{}",
+                                u.code,
+                                u.name,
+                                if u.builtin { " (built-in)" } else { "" }
+                            ));
+                        }
+                        if !convs.is_empty() {
+                            lines.push("Conversions (1 from = factor to):".into());
+                            for c in &convs {
+                                let factor = c.factor_milli as f64 / 1000.0;
+                                lines.push(format!(
+                                    "  1 {} = {} {}",
+                                    c.from_code, factor, c.to_code
+                                ));
+                            }
+                        }
+                        lines.join("\n")
+                    }
+                    None => String::new(),
+                }
+            };
+            self.ui
+                .widget(cx, ids!(units_label))
+                .set_text(cx, &plain_display_text(&units_body));
             self.ui
                 .widget(cx, ids!(onboard_tmpl_hint))
                 .set_text(
                     cx,
                     &plain_display_text(&format!(
-                        "Selected: {} — {}. Same books for every template — swipe chips if they don't all fit.",
+                        "Selected: {} — {}",
                         tmpl.title, tmpl.blurb
                     )),
                 );
@@ -5670,6 +6208,8 @@ impl App {
                 .set_empty_text(cx, new_cust_ph);
             self.ui
                 .widget(cx, ids!(day_close_label)).set_text(cx, &plain_display_text(&day_close));
+            self.ui
+                .widget(cx, ids!(books_label)).set_text(cx, &plain_display_text(&day_close));
             self.ui
                 .widget(cx, ids!(reports_label)).set_text(cx, &plain_display_text(&day_close));
             self.ui
@@ -5749,7 +6289,9 @@ impl App {
                     branch_count,
                 )
             };
-            self.ui.button(cx, ids!(nav_menu)).set_enabled(cx, items);
+            self.ui.button(cx, ids!(nav_books)).set_enabled(cx, sales || is_owner || items);
+            self.ui.button(cx, ids!(nav_buy)).set_enabled(cx, inventory || sales || is_owner);
+            self.ui.button(cx, ids!(more_items)).set_visible(cx, items);
             self.ui
                 .button(cx, ids!(more_tables))
                 .set_visible(cx, floor && restaurant);
@@ -5950,7 +6492,7 @@ impl App {
     }
 
     fn paint_choice_state(&mut self, cx: &mut Cx) {
-        let (tmpl_id, money_lane, draft_role, order_type) = {
+        let (tmpl_id, money_lane, draft_role, order_type, buy_on_account, follow_platform, onboard_step) = {
             let st = app_state().lock().unwrap();
             let id = st.entity_template_id.trim();
             (
@@ -5962,6 +6504,9 @@ impl App {
                 st.money_lane,
                 st.draft_staff_role,
                 st.cart.order_type,
+                st.buy_on_account,
+                st.language_follow_platform,
+                st.onboard_step,
             )
         };
         let tmpl_pairs = [
@@ -6017,6 +6562,24 @@ impl App {
         }
         self.paint_choice_pair(
             cx,
+            ids!(onboard_fresh),
+            ids!(onboard_fresh_on),
+            onboard_step == 1,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(onboard_book),
+            ids!(onboard_book_on),
+            onboard_step == 2,
+        );
+        self.ui
+            .view(cx, ids!(onboard_fresh_panel))
+            .set_visible(cx, onboard_step == 1);
+        self.ui
+            .view(cx, ids!(onboard_book_panel))
+            .set_visible(cx, onboard_step == 2);
+        self.paint_choice_pair(
+            cx,
             ids!(lane_declared),
             ids!(lane_declared_on),
             matches!(money_lane, MoneyLane::Declared),
@@ -6026,6 +6589,44 @@ impl App {
             ids!(lane_owner),
             ids!(lane_owner_on),
             matches!(money_lane, MoneyLane::Owner),
+        );
+        self.paint_choice_pair(cx, ids!(buy_paid), ids!(buy_paid_on), !buy_on_account);
+        self.paint_choice_pair(
+            cx,
+            ids!(lang_setup_platform),
+            ids!(lang_setup_platform_on),
+            follow_platform,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(lang_setup_user),
+            ids!(lang_setup_user_on),
+            !follow_platform,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(settings_lang_platform),
+            ids!(settings_lang_platform_on),
+            follow_platform,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(settings_lang_user),
+            ids!(settings_lang_user_on),
+            !follow_platform,
+        );
+        // Language catalogue only when the user picks a fixed language.
+        self.ui
+            .widget(cx, ids!(setup_lang_list))
+            .set_visible(cx, !follow_platform);
+        self.ui
+            .widget(cx, ids!(language_list))
+            .set_visible(cx, !follow_platform);
+        self.paint_choice_pair(
+            cx,
+            ids!(buy_on_account),
+            ids!(buy_on_account_on),
+            buy_on_account,
         );
         self.paint_choice_pair(
             cx,
@@ -6086,9 +6687,24 @@ impl App {
     fn paint_chrome(&mut self, cx: &mut Cx) {
         let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |key: &str| locale::t(&lang, key);
+        self.ui.button(cx, ids!(nav_books)).set_text(cx, &s("books"));
         self.ui.button(cx, ids!(nav_sell)).set_text(cx, &s("sell"));
-        self.ui.button(cx, ids!(nav_menu)).set_text(cx, &s("items"));
+        self.ui.button(cx, ids!(nav_buy)).set_text(cx, &s("buy"));
         self.ui.button(cx, ids!(nav_more)).set_text(cx, &s("more"));
+        self.ui.button(cx, ids!(more_items)).set_text(cx, &s("items"));
+        self.ui.button(cx, ids!(books_to_sell)).set_text(cx, &s("sell_money_in"));
+        self.ui.button(cx, ids!(books_to_buy)).set_text(cx, &s("buy_money_out"));
+        self.ui.button(cx, ids!(books_day_close)).set_text(cx, &s("day_close"));
+        self.ui.button(cx, ids!(books_reports)).set_text(cx, &s("reports_expenses"));
+        self.ui.button(cx, ids!(books_credit)).set_text(cx, &s("credit_customers"));
+        self.ui.button(cx, ids!(books_refresh)).set_text(cx, &s("refresh"));
+        self.ui.button(cx, ids!(buy_purchase)).set_text(cx, &s("record_purchase"));
+        self.ui.button(cx, ids!(buy_expense_add)).set_text(cx, &s("add_expense"));
+        self.ui.button(cx, ids!(buy_to_inventory)).set_text(cx, &s("inventory_stock"));
+        self.ui.widget(cx, ids!(books_heading)).set_text(cx, &plain_display_text(&s("books")));
+        self.ui.widget(cx, ids!(books_help)).set_text(cx, &plain_display_text(&s("books_help")));
+        self.ui.widget(cx, ids!(buy_heading)).set_text(cx, &plain_display_text(&s("buy")));
+        self.ui.widget(cx, ids!(buy_help)).set_text(cx, &plain_display_text(&s("buy_help")));
         self.ui.button(cx, ids!(more_tables)).set_text(cx, &s("tables"));
         self.ui.button(cx, ids!(more_kitchen)).set_text(cx, &s("kitchen"));
         self.ui.button(cx, ids!(more_sales)).set_text(cx, &s("sales_refunds"));
@@ -6203,6 +6819,95 @@ impl App {
         self.ui.widget(cx, ids!(reports_title)).set_text(cx, &plain_display_text(&s("reports")));
         self.ui.widget(cx, ids!(inventory_title)).set_text(cx, &plain_display_text(&s("inventory")));
         self.ui.widget(cx, ids!(branches_title)).set_text(cx, &plain_display_text(&s("branches")));
+        self.ui
+            .widget(cx, ids!(setup_lang_title))
+            .set_text(cx, &plain_display_text(&s("language")));
+        self.ui
+            .widget(cx, ids!(setup_lang_hint))
+            .set_text(cx, &plain_display_text(&s("language_setup_hint")));
+        self.ui
+            .widget(cx, ids!(device_setup_banner))
+            .set_text(cx, &plain_display_text(&s("this_device")));
+        self.ui
+            .widget(cx, ids!(device_use_question))
+            .set_text(cx, &plain_display_text(&s("device_use_q")));
+        self.ui
+            .widget(cx, ids!(device_section_label))
+            .set_text(cx, &plain_display_text(&s("this_device")));
+        self.ui
+            .widget(cx, ids!(device_setup_help))
+            .set_text(cx, &plain_display_text(&s("device_setup_help")));
+        self.ui
+            .widget(cx, ids!(server_pick_title))
+            .set_text(cx, &plain_display_text(&s("choose_server")));
+        self.ui
+            .widget(cx, ids!(server_pick_hint))
+            .set_text(cx, &plain_display_text(&s("choose_server_hint")));
+        self.ui
+            .button(cx, ids!(server_create_new))
+            .set_text(cx, &s("create_new_server"));
+        self.ui
+            .button(cx, ids!(server_pick_cancel))
+            .set_text(cx, &s("back"));
+        self.ui
+            .text_input(cx, ids!(server_name_input))
+            .set_empty_text(cx, s("new_server_name_ph"));
+        let picking_server = app_state().lock().unwrap().picking_server;
+        self.ui
+            .view(cx, ids!(server_pick_section))
+            .set_visible(cx, picking_server);
+        self.ui
+            .button(cx, ids!(device_role_server))
+            .set_visible(cx, !picking_server);
+        self.ui
+            .button(cx, ids!(device_role_client))
+            .set_visible(cx, !picking_server);
+        self.ui
+            .button(cx, ids!(lang_setup_platform))
+            .set_text(cx, &s("lang_follow_platform"));
+        self.ui
+            .button(cx, ids!(lang_setup_platform_on))
+            .set_text(cx, &s("lang_follow_platform"));
+        self.ui
+            .button(cx, ids!(lang_setup_user))
+            .set_text(cx, &s("lang_pick_user"));
+        self.ui
+            .button(cx, ids!(lang_setup_user_on))
+            .set_text(cx, &s("lang_pick_user"));
+        self.ui
+            .button(cx, ids!(settings_lang_platform))
+            .set_text(cx, &s("lang_follow_platform"));
+        self.ui
+            .button(cx, ids!(settings_lang_platform_on))
+            .set_text(cx, &s("lang_follow_platform"));
+        self.ui
+            .button(cx, ids!(settings_lang_user))
+            .set_text(cx, &s("lang_pick_user"));
+        self.ui
+            .button(cx, ids!(settings_lang_user_on))
+            .set_text(cx, &s("lang_pick_user"));
+        let selected_lang_line = {
+            let st = app_state().lock().unwrap();
+            let code = if st.language_follow_platform {
+                locale::detect_platform_language()
+            } else {
+                st.locale.language.clone()
+            };
+            let name = locale::language_by_code(&code)
+                .map(|l| format!("{} · {}", l.native_name, l.name_en))
+                .unwrap_or_else(|| code.clone());
+            if st.language_follow_platform {
+                format!("{}: {name}", st.t("lang_platform_now"))
+            } else {
+                format!("{}: {name}", st.t("selected_language"))
+            }
+        };
+        self.ui
+            .widget(cx, ids!(setup_lang_selected))
+            .set_text(cx, &plain_display_text(&selected_lang_line));
+        self.ui
+            .widget(cx, ids!(settings_lang_selected))
+            .set_text(cx, &plain_display_text(&selected_lang_line));
     }
 
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
@@ -6211,7 +6916,9 @@ impl App {
             (ids!(lock_screen), screen == Screen::Lock),
             (ids!(onboard_screen), screen == Screen::Onboard),
             (ids!(client_pair_screen), screen == Screen::ClientPair),
+            (ids!(books_screen), screen == Screen::Books),
             (ids!(pos_screen), screen == Screen::Pos),
+            (ids!(buy_screen), screen == Screen::Buy),
             (ids!(menu_screen), screen == Screen::Menu),
             (ids!(more_screen), screen == Screen::More),
             (ids!(floor_screen), screen == Screen::Floor),
@@ -6418,7 +7125,7 @@ impl App {
         {
             let mut st = app_state().lock().unwrap();
             if st.must_confirm_device_role && screen != Screen::DeviceSetup {
-                st.status = "Choose how this device is used first".into();
+                st.status = st.t("device_use_q");
                 self.set_screen(&mut st, Screen::DeviceSetup, false);
             } else if st.device_role == DeviceRole::Client
                 && !st.client_paired
@@ -6644,7 +7351,8 @@ impl App {
                     | Screen::Reports
                     | Screen::Inventory
                     | Screen::Branches => Some(Screen::More),
-                    Screen::More | Screen::Menu => Some(Screen::Pos),
+                    Screen::More | Screen::Menu | Screen::Buy => Some(unlocked_home()),
+                    Screen::Books => None,
                     _ => None,
                 };
                 if let Some(prev) = fallback {
@@ -6703,9 +7411,94 @@ impl App {
     fn window_inner_size(&self, cx: &Cx) -> DVec2 {
         let size = self.ui.window(cx, ids!(main_window)).get_inner_size(cx);
         dvec2(
-            if size.x > 1.0 { size.x } else { 390.0 },
-            if size.y > 1.0 { size.y } else { 844.0 },
+            if size.x > 1.0 { size.x } else { 1024.0 },
+            if size.y > 1.0 { size.y } else { 768.0 },
         )
+    }
+
+    /// Desktop only: stash last size/position and apply it before CreateWindow.
+    fn restore_window_geom(&self, cx: &mut Cx) {
+        if cfg!(target_os = "android") {
+            return;
+        }
+        let Some(prefs) = store::load_window_geom() else {
+            *pending_window_geom().lock().unwrap() = None;
+            return;
+        };
+        let min = store::MIN_DESKTOP_WINDOW_CSS;
+        let prefs = store::WindowGeomPrefs {
+            width: prefs.width.max(min),
+            height: prefs.height.max(min),
+            x: prefs.x,
+            y: prefs.y,
+        };
+        *pending_window_geom().lock().unwrap() = Some(prefs);
+        self.ui.window(cx, ids!(main_window)).configure_window(
+            cx,
+            dvec2(prefs.width, prefs.height),
+            dvec2(prefs.x, prefs.y),
+            false,
+            store::APP_LABEL.to_string(),
+        );
+    }
+
+    /// After the OS window exists, force the saved size if create used the DSL default.
+    /// Returns true when a restore resize was requested (skip persisting that frame).
+    fn apply_pending_window_geom_after_create(&self, cx: &mut Cx) -> bool {
+        if cfg!(target_os = "android") {
+            return false;
+        }
+        let Some(prefs) = pending_window_geom().lock().unwrap().take() else {
+            return false;
+        };
+        let win = self.ui.window(cx, ids!(main_window));
+        let size = win.get_inner_size(cx);
+        let pos = win.get_position(cx);
+        let size_mismatch =
+            (size.x - prefs.width).abs() > 1.0 || (size.y - prefs.height).abs() > 1.0;
+        let pos_mismatch = (pos.x - prefs.x).abs() > 1.0 || (pos.y - prefs.y).abs() > 1.0;
+        if size_mismatch {
+            win.resize(cx, dvec2(prefs.width, prefs.height));
+        }
+        if pos_mismatch {
+            win.reposition(cx, dvec2(prefs.x, prefs.y));
+        }
+        size_mismatch || pos_mismatch
+    }
+
+    /// Desktop (Windows / Linux / macOS): never allow inner size below 320 css px.
+    fn enforce_min_desktop_window_size(&self, cx: &mut Cx) {
+        if cfg!(target_os = "android") {
+            return;
+        }
+        let win = self.ui.window(cx, ids!(main_window));
+        let size = win.get_inner_size(cx);
+        let min = store::MIN_DESKTOP_WINDOW_CSS;
+        let w = size.x.max(min);
+        let h = size.y.max(min);
+        if (w - size.x).abs() > 0.5 || (h - size.y).abs() > 0.5 {
+            win.resize(cx, dvec2(w, h));
+        }
+    }
+
+    fn persist_window_geom(&self, cx: &Cx) {
+        if cfg!(target_os = "android") {
+            return;
+        }
+        // Don't clobber a good saved size with the pre-restore create size.
+        if pending_window_geom().lock().unwrap().is_some() {
+            return;
+        }
+        let win = self.ui.window(cx, ids!(main_window));
+        let size = win.get_inner_size(cx);
+        let pos = win.get_position(cx);
+        let min = store::MIN_DESKTOP_WINDOW_CSS;
+        store::save_window_geom(store::WindowGeomPrefs {
+            width: size.x.max(min),
+            height: size.y.max(min),
+            x: pos.x,
+            y: pos.y,
+        });
     }
 
     fn window_inner_width(&self, cx: &Cx) -> f64 {
@@ -6819,88 +7612,179 @@ impl App {
         }
     }
 
-    fn choose_device_role(&mut self, cx: &mut Cx, role: DeviceRole) {
-        self.ensure_store(cx);
-        if matches!(role, DeviceRole::Unset) {
-            return;
-        }
-        let err = {
-            let mut st = app_state().lock().unwrap();
-            if st.store.is_none() {
-                Some("Storage not ready — cannot save device role".to_string())
-            } else if let Err(e) = st
-                .store
-                .as_ref()
-                .unwrap()
-                .set_device_role(role.as_str())
-            {
-                Some(e)
-            } else {
-                let previous = st.device_role;
-                st.device_role = role;
-                st.must_confirm_device_role = false;
-                st.lock_as_owner = true;
-                st.pin_buffer.clear();
-                st.nav_back.clear();
-                st.nav_forward.clear();
-                match role {
-                    DeviceRole::Server => {
-                        let switching_in = previous != DeviceRole::Server;
-                        if switching_in {
-                            // New Server: start standalone (extra tills off).
-                            let store = st.store.as_ref().unwrap();
-                            let _ = store.set_extra_tills_allowed(false);
-                            st.extra_tills_allowed = false;
-                            net::stop_server();
-                        } else if st.extra_tills_allowed {
-                            // Same mode again after restart — keep tills + LAN.
-                            if let Some(store) = st.store.as_ref() {
-                                let code = store.pairing_code().unwrap_or_default();
-                                let path = store.db_path().to_path_buf();
-                                let _ = net::ensure_server(path, code);
-                            }
-                        }
-                        st.screen = Screen::Lock;
-                        st.status = if !st.owner_setup_complete {
-                            "Server Mode — set Owner PIN".into()
-                        } else if st.extra_tills_allowed {
-                            "Server Mode — extra tills can join. Unlock".into()
-                        } else {
-                            "Server Mode — unlock as Owner".into()
-                        };
-                    }
-                    DeviceRole::Client => {
-                        let store = st.store.as_ref().unwrap();
-                        let _ = store.prepare_as_client_terminal();
-                        st.owner_setup_complete = true;
-                        st.onboarding_complete = true;
-                        st.extra_tills_allowed = false;
-                        st.client_paired = store_client_paired(st.store.as_ref());
-                        if st.staff.iter().any(|s| !s.is_owner()) {
-                            st.lock_as_owner = false;
-                            if st.lock_staff_id.is_none() {
-                                st.lock_staff_id = st
-                                    .staff
-                                    .iter()
-                                    .find(|s| !s.is_owner())
-                                    .map(|s| s.id.clone());
-                            }
-                        }
-                        if st.client_paired {
-                            st.screen = Screen::Lock;
-                            st.status = "Client Mode — unlock to sell".into();
-                        } else {
-                            st.screen = Screen::ClientPair;
-                            st.status =
-                                "Client Mode — pair to the Server before selling".into();
-                        }
-                    }
-                    DeviceRole::Unset => {}
-                }
-                None
+    fn resolve_data_base(&mut self, cx: &mut Cx) {
+        let mut st = app_state().lock().unwrap();
+        if st.data_base.is_none() {
+            if let Some(dir) = cx.get_data_dir() {
+                st.data_base = Some(PathBuf::from(dir));
+            } else if let Ok(dir) = store::data_dir() {
+                st.data_base = Some(dir);
             }
+        }
+    }
+
+    fn persist_setup_language(st: &mut AppState) {
+        let follow = st.language_follow_platform;
+        let code = st.locale.language.clone();
+        if let Some(store) = st.store.as_ref() {
+            let persisted = if follow {
+                store.set_platform_language()
+            } else {
+                store.set_user_language(&code)
+            };
+            if let Ok(loc) = persisted {
+                st.locale = loc;
+            }
+        }
+    }
+
+    /// Server Mode: create the first local server, or show create/pick when several exist.
+    fn begin_server_mode(&mut self, cx: &mut Cx) {
+        self.resolve_data_base(cx);
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            st.refresh_local_servers()?;
+            if st.local_servers.is_empty() {
+                drop(st);
+                self.activate_new_server(cx, "")?;
+            } else {
+                st.picking_server = true;
+                st.status = st.t("choose_server");
+            }
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+        self.sync_chrome(cx);
+    }
+
+    fn activate_new_server(&mut self, cx: &mut Cx, name: &str) -> Result<(), String> {
+        self.resolve_data_base(cx);
+        let base = {
+            let st = app_state().lock().unwrap();
+            st.data_base
+                .clone()
+                .ok_or_else(|| "No data directory".to_string())?
         };
-        if let Some(e) = err {
+        net::stop_server();
+        let (_info, store) = local_servers::create_local_server(&base, name)?;
+        {
+            let mut st = app_state().lock().unwrap();
+            st.store = Some(store);
+            st.picking_server = false;
+            let _ = st.refresh_local_servers();
+            let _ = st.reload_all();
+            Self::persist_setup_language(&mut st);
+            self.finish_as_server(&mut st, true);
+        }
+        self.sync_chrome(cx);
+        Ok(())
+    }
+
+    fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(), String> {
+        self.resolve_data_base(cx);
+        let base = {
+            let st = app_state().lock().unwrap();
+            st.data_base
+                .clone()
+                .ok_or_else(|| "No data directory".to_string())?
+        };
+        net::stop_server();
+        let store = local_servers::open_server(&base, server_id)?;
+        {
+            let mut st = app_state().lock().unwrap();
+            let previous = st.device_role;
+            st.store = Some(store);
+            st.picking_server = false;
+            let _ = st.refresh_local_servers();
+            let _ = st.reload_all();
+            Self::persist_setup_language(&mut st);
+            self.finish_as_server(&mut st, previous != DeviceRole::Server);
+        }
+        self.sync_chrome(cx);
+        Ok(())
+    }
+
+    fn finish_as_server(&mut self, st: &mut AppState, switching_in: bool) {
+        st.device_role = DeviceRole::Server;
+        st.must_confirm_device_role = false;
+        st.picking_server = false;
+        st.lock_as_owner = true;
+        st.pin_buffer.clear();
+        st.nav_back.clear();
+        st.nav_forward.clear();
+        if let Some(store) = st.store.as_ref() {
+            let _ = store.set_device_role("server");
+            if switching_in {
+                let _ = store.set_extra_tills_allowed(false);
+                st.extra_tills_allowed = false;
+                net::stop_server();
+            } else if st.extra_tills_allowed {
+                let code = store.pairing_code().unwrap_or_default();
+                let path = store.db_path().to_path_buf();
+                let _ = net::ensure_server(path, code);
+            }
+        }
+        st.screen = Screen::Lock;
+        st.status = if !st.owner_setup_complete {
+            "Server Mode — set Owner PIN".into()
+        } else if st.extra_tills_allowed {
+            "Server Mode — extra tills can join. Unlock".into()
+        } else {
+            "Server Mode — unlock as Owner".into()
+        };
+    }
+
+    fn begin_client_mode(&mut self, cx: &mut Cx) {
+        self.resolve_data_base(cx);
+        let result = (|| -> Result<(), String> {
+            let base = {
+                let st = app_state().lock().unwrap();
+                st.data_base
+                    .clone()
+                    .ok_or_else(|| "No data directory".to_string())?
+            };
+            net::stop_server();
+            let store = local_servers::open_client_store(&base)?;
+            let mut st = app_state().lock().unwrap();
+            st.store = Some(store);
+            st.picking_server = false;
+            let _ = st.reload_all();
+            Self::persist_setup_language(&mut st);
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            store.prepare_as_client_terminal()?;
+            st.device_role = DeviceRole::Client;
+            st.must_confirm_device_role = false;
+            st.owner_setup_complete = true;
+            st.onboarding_complete = true;
+            st.extra_tills_allowed = false;
+            st.lock_as_owner = true;
+            st.pin_buffer.clear();
+            st.nav_back.clear();
+            st.nav_forward.clear();
+            let _ = st.reload_all();
+            st.client_paired = store_client_paired(st.store.as_ref());
+            if st.staff.iter().any(|s| !s.is_owner()) {
+                st.lock_as_owner = false;
+                if st.lock_staff_id.is_none() {
+                    st.lock_staff_id = st
+                        .staff
+                        .iter()
+                        .find(|s| !s.is_owner())
+                        .map(|s| s.id.clone());
+                }
+            }
+            if st.client_paired {
+                st.screen = Screen::Lock;
+                st.status = "Client Mode — unlock to sell".into();
+            } else {
+                st.screen = Screen::ClientPair;
+                st.status = "Client Mode — pair to the Server before selling".into();
+            }
+            Ok(())
+        })();
+        if let Err(e) = result {
             self.set_status(cx, e);
         }
         self.sync_chrome(cx);
@@ -6963,6 +7847,42 @@ impl App {
         self.sync_chrome(cx);
     }
 
+    fn pin_backspace(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.pin_buffer.pop();
+            if st.status.starts_with("Wrong")
+                || st.status.starts_with("Enter at least")
+                || st.status.starts_with("Storage")
+                || st.status.starts_with("Add staff")
+            {
+                st.status.clear();
+            }
+        }
+        self.sync_chrome(cx);
+    }
+
+    /// Map physical / numpad keys to a PIN digit. Only plain digit keys — no
+    /// Shift/Ctrl/Alt chords.
+    fn pin_key_digit(e: &KeyEvent) -> Option<char> {
+        if e.modifiers.control || e.modifiers.alt || e.modifiers.logo || e.modifiers.shift {
+            return None;
+        }
+        Some(match e.key_code {
+            KeyCode::Key0 | KeyCode::Numpad0 => '0',
+            KeyCode::Key1 | KeyCode::Numpad1 => '1',
+            KeyCode::Key2 | KeyCode::Numpad2 => '2',
+            KeyCode::Key3 | KeyCode::Numpad3 => '3',
+            KeyCode::Key4 | KeyCode::Numpad4 => '4',
+            KeyCode::Key5 | KeyCode::Numpad5 => '5',
+            KeyCode::Key6 | KeyCode::Numpad6 => '6',
+            KeyCode::Key7 | KeyCode::Numpad7 => '7',
+            KeyCode::Key8 | KeyCode::Numpad8 => '8',
+            KeyCode::Key9 | KeyCode::Numpad9 => '9',
+            _ => return None,
+        })
+    }
+
     /// Seconds left on the wrong-PIN block, or None when unlock may proceed.
     fn unlock_block_remaining(&self) -> Option<u64> {
         let mut st = app_state().lock().unwrap();
@@ -6982,7 +7902,6 @@ impl App {
             let st = app_state().lock().unwrap();
             if st.must_confirm_device_role || st.device_role == DeviceRole::Unset {
                 drop(st);
-                self.set_status(cx, "Choose how this device is used first");
                 self.go(cx, Screen::DeviceSetup);
                 return;
             }
@@ -7027,6 +7946,7 @@ impl App {
                 st.onboard_step = 0;
                 st.session = Some(member);
                 st.pin_buffer.clear();
+                st.pin_visible = false;
                 st.lock_as_owner = true;
                 st.screen = Screen::Onboard;
                 st.status = "Owner ready — set up your shop".into();
@@ -7037,7 +7957,10 @@ impl App {
                 Ok(()) => log!("Kumkaj owner setup ok"),
                 Err(ref e) => {
                     log!("Kumkaj owner setup failed: {e}");
-                    app_state().lock().unwrap().pin_buffer.clear();
+                    let mut st = app_state().lock().unwrap();
+                    st.pin_buffer.clear();
+                    st.pin_visible = false;
+                    drop(st);
                     self.set_status(cx, e.clone());
                 }
             }
@@ -7056,10 +7979,12 @@ impl App {
                 let _ = store.set_active_session_staff_id(Some(&member.id));
                 st.session = Some(member.clone());
                 st.pin_buffer.clear();
+                st.pin_visible = false;
                 st.lock_as_owner = true;
                 st.failed_unlocks = 0;
-                st.screen = Screen::Pos;
+                st.screen = unlocked_home();
                 st.status = format!("New Owner PIN set — welcome back, {}", member.lock_label());
+                let _ = st.refresh_books_overview();
                 let _ = st.reload_all();
                 Ok(())
             })();
@@ -7067,7 +7992,10 @@ impl App {
                 Ok(()) => log!("Kumkaj owner PIN reset ok"),
                 Err(ref e) => {
                     log!("Kumkaj owner PIN reset failed: {e}");
-                    app_state().lock().unwrap().pin_buffer.clear();
+                    let mut st = app_state().lock().unwrap();
+                    st.pin_buffer.clear();
+                    st.pin_visible = false;
+                    drop(st);
                     self.set_status(cx, e.clone());
                 }
             }
@@ -7111,6 +8039,7 @@ impl App {
                     }
                     st.session = Some(member.clone());
                     st.pin_buffer.clear();
+                    st.pin_visible = false;
                     st.failed_unlocks = 0;
                     st.unlock_blocked_until = None;
                     if st.device_role == DeviceRole::Client && !st.client_paired {
@@ -7120,8 +8049,9 @@ impl App {
                         st.screen = Screen::Onboard;
                         st.status = format!("Welcome, {} — finish shop setup", member.lock_label());
                     } else {
-                        st.screen = Screen::Pos;
+                        st.screen = unlocked_home();
                         st.status = format!("Welcome, {}", member.lock_label());
+                        let _ = st.refresh_books_overview();
                     }
                     if st.uses_lan()
                         && let Some(store) = st.store.as_ref() {
@@ -7133,6 +8063,7 @@ impl App {
                 }
                 Ok(None) => {
                     st.pin_buffer.clear();
+                    st.pin_visible = false;
                     st.failed_unlocks = st.failed_unlocks.saturating_add(1);
                     if st.failed_unlocks >= UNLOCK_ATTEMPT_LIMIT {
                         st.failed_unlocks = 0;
@@ -8018,11 +8949,16 @@ impl App {
     fn set_language(&mut self, cx: &mut Cx, code: &str) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
+            st.language_follow_platform = false;
             st.locale.language = code.into();
-            if let Some(store) = st.store.as_ref() {
-                store.set_locale_settings(&st.locale)?;
+            // On DeviceSetup, preview immediately; persist when Server/Client is chosen.
+            // After unlock (Settings), persist as the fixed user language.
+            if !st.must_confirm_device_role {
+                if let Some(store) = st.store.as_ref() {
+                    st.locale = store.set_user_language(code)?;
+                }
             }
-            st.status = format!("Language: {code}");
+            st.status = format!("{}: {code}", st.t("language"));
             Ok(())
         })();
         if let Err(e) = result {
@@ -8165,9 +9101,36 @@ impl MatchEvent for App {
             if nav_gesture_ok() {
                 let _ = self.navigate_back(cx);
             }
-        } else if e.key_code == KeyCode::ArrowRight && e.modifiers.alt {
+            return;
+        }
+        if e.key_code == KeyCode::ArrowRight && e.modifiers.alt {
             if nav_gesture_ok() {
                 let _ = self.navigate_forward(cx);
+            }
+            return;
+        }
+
+        // Lock screen: digits (row + numpad), Enter = OK, Backspace = ⌫.
+        let on_lock = app_state().lock().unwrap().screen == Screen::Lock;
+        if on_lock && !e.is_repeat {
+            if let Some(digit) = Self::pin_key_digit(e) {
+                self.pin_digit(cx, digit);
+                return;
+            }
+            if matches!(e.key_code, KeyCode::ReturnKey | KeyCode::NumpadEnter)
+                && !e.modifiers.control
+                && !e.modifiers.alt
+                && !e.modifiers.logo
+            {
+                self.try_unlock(cx);
+                return;
+            }
+            if e.key_code == KeyCode::Backspace
+                && !e.modifiers.control
+                && !e.modifiers.alt
+                && !e.modifiers.logo
+            {
+                self.pin_backspace(cx);
             }
         }
     }
@@ -8207,14 +9170,196 @@ impl MatchEvent for App {
                 }
             }
         }
+        if self.ui.button(cx, ids!(nav_books)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.refresh_books_overview()?;
+                st.screen = Screen::Books;
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(nav_sell)).clicked(actions) {
             self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
         }
-        if self.ui.button(cx, ids!(nav_menu)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+        if self.ui.button(cx, ids!(nav_buy)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::Buy, |s| {
+                s.can_access_inventory() || s.can_access_sales() || s.is_owner()
+            });
         }
         if self.ui.button(cx, ids!(nav_more)).clicked(actions) {
             self.go(cx, Screen::More);
+        }
+        if self.ui.button(cx, ids!(more_items)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+        }
+        if self.ui.button(cx, ids!(books_to_sell)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+        }
+        if self.ui.button(cx, ids!(books_to_buy)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::Buy, |s| {
+                s.can_access_inventory() || s.can_access_sales() || s.is_owner()
+            });
+        }
+        if self.ui.button(cx, ids!(books_refresh)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.refresh_books_overview()?;
+                st.status = "Books refreshed".into();
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(books_day_close)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.refresh_day_close_text()?;
+                st.screen = Screen::DayClose;
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(books_reports)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed".into());
+                }
+                let text = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?
+                    .books_report_text("today")?;
+                st.day_close_text = text;
+                st.screen = Screen::Reports;
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(books_credit)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
+        }
+        if self.ui.button(cx, ids!(buy_to_inventory)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                if !actor.can_access_inventory() && !actor.is_owner() {
+                    return Err("Not allowed for your role".into());
+                }
+                st.refresh_inventory_text()?;
+                st.screen = Screen::Inventory;
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(buy_paid), ids!(buy_paid_on)) {
+            app_state().lock().unwrap().buy_on_account = false;
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(buy_on_account), ids!(buy_on_account_on)) {
+            app_state().lock().unwrap().buy_on_account = true;
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(buy_purchase)).clicked(actions) {
+            let name = self.ui.text_input(cx, ids!(buy_item_input)).text();
+            let qty_text = self.ui.text_input(cx, ids!(buy_qty_input)).text();
+            let cost_text = self.ui.text_input(cx, ids!(buy_cost_input)).text();
+            let supplier = self.ui.text_input(cx, ids!(buy_supplier_input)).text();
+            let party_kind = self.ui.text_input(cx, ids!(buy_party_kind)).text();
+            let note = self.ui.text_input(cx, ids!(buy_note_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Record purchases")?;
+                let actor = st.actor()?;
+                let on_account = st.buy_on_account;
+                let qty_milli = parse_qty_to_milli(&qty_text)?;
+                let product = st.find_product_by_name(&name)?;
+                let currency = st.locale.currency.clone();
+                let unit_cost = match cost_text.trim() {
+                    "" => 0,
+                    other => locale::parse_major_input(other, &currency)?,
+                };
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let mut party_id = String::new();
+                if on_account || !supplier.trim().is_empty() {
+                    if on_account {
+                        let kind = if party_kind.trim().is_empty() {
+                            "Supplier"
+                        } else {
+                            party_kind.trim()
+                        };
+                        let party = store.add_customer_kind(supplier.trim(), "", kind)?;
+                        party_id = party.id;
+                    }
+                }
+                let purchase = store.record_purchase_ex(
+                    supplier.trim(),
+                    &party_id,
+                    on_account,
+                    &[(product.id.clone(), qty_milli, unit_cost)],
+                    note.trim(),
+                    &actor,
+                )?;
+                st.reload_all()?;
+                let _ = st.refresh_books_overview();
+                let qty_show = domain::format_qty_display(qty_milli, 0, &product.unit_label);
+                Ok(format!(
+                    "Received {qty_show} {} · {}{}",
+                    product.name,
+                    st.money(Money(purchase.total_paise)),
+                    if on_account { " · on account" } else { "" }
+                ))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(buy_qty_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(buy_cost_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(buy_expense_add)).clicked(actions) {
+            let amount_text = self.ui.text_input(cx, ids!(buy_expense_amount)).text();
+            let note = self.ui.text_input(cx, ids!(buy_expense_note)).text();
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                if st.device_role == DeviceRole::Client {
+                    return Err("Log expenses on the shop device — this is an extra till".into());
+                }
+                let currency = st.locale.currency.clone();
+                let minor = locale::parse_major_input(&amount_text, &currency)?;
+                store.add_expense(minor, "misc", &note, &actor)?;
+                let _ = st.refresh_books_overview();
+                st.status = "Expense logged".into();
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            } else {
+                self.ui.text_input(cx, ids!(buy_expense_amount)).set_text(cx, "");
+                self.ui.text_input(cx, ids!(buy_expense_note)).set_text(cx, "");
+            }
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(more_tables)).clicked(actions) {
             self.go_if_allowed(cx, Screen::Floor, |s| s.can_access_floor());
@@ -8240,6 +9385,7 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(day_close_commit)).clicked(actions) {
+            let counted_text = self.ui.text_input(cx, ids!(day_close_counted_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Record the day close")?;
@@ -8247,11 +9393,16 @@ impl MatchEvent for App {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to close the day".into());
                 }
+                let currency = st.locale.currency.clone();
+                let counted = match counted_text.trim() {
+                    "" => None,
+                    other => Some(locale::parse_major_input(other, &currency)?),
+                };
                 let at = st
                     .store
                     .as_ref()
                     .ok_or_else(|| "No store".to_string())?
-                    .commit_day_close(&actor)?;
+                    .commit_day_close_with_count(&actor, counted)?;
                 st.refresh_day_close_text()?;
                 Ok(at)
             })();
@@ -8357,11 +9508,108 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
 
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(lang_setup_platform),
+            ids!(lang_setup_platform_on),
+        ) {
+            let mut st = app_state().lock().unwrap();
+            st.language_follow_platform = true;
+            st.locale.language = locale::detect_platform_language();
+            st.status = st.t("lang_follow_platform");
+            drop(st);
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(lang_setup_user), ids!(lang_setup_user_on)) {
+            let mut st = app_state().lock().unwrap();
+            st.language_follow_platform = false;
+            // Default the fixed pick to the current platform language.
+            st.locale.language = locale::detect_platform_language();
+            st.status = st.t("lang_pick_user");
+            drop(st);
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(settings_lang_platform),
+            ids!(settings_lang_platform_on),
+        ) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Change language")?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                st.locale = store.set_platform_language()?;
+                st.language_follow_platform = true;
+                st.status = st.t("lang_follow_platform");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(settings_lang_user),
+            ids!(settings_lang_user_on),
+        ) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Change language")?;
+                let platform = locale::detect_platform_language();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                // Enter user mode with platform language as the starting pick.
+                st.locale = store.set_user_language(&platform)?;
+                st.language_follow_platform = false;
+                st.status = st.t("lang_pick_user");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(device_role_server)).clicked(actions) {
-            self.choose_device_role(cx, DeviceRole::Server);
+            self.begin_server_mode(cx);
         }
         if self.ui.button(cx, ids!(device_role_client)).clicked(actions) {
-            self.choose_device_role(cx, DeviceRole::Client);
+            self.begin_client_mode(cx);
+        }
+        if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
+            let name = self.ui.text_input(cx, ids!(server_name_input)).text();
+            if let Err(e) = self.activate_new_server(cx, &name) {
+                self.set_status(cx, e);
+            } else {
+                self.ui
+                    .text_input(cx, ids!(server_name_input))
+                    .set_text(cx, "");
+            }
+        }
+        if self.ui.button(cx, ids!(server_pick_cancel)).clicked(actions) {
+            app_state().lock().unwrap().picking_server = false;
+            self.sync_chrome(cx);
+        }
+        {
+            let widget = self.ui.widget(cx, ids!(setup_server_list));
+            let list = widget.portal_list(cx, ids!(list));
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item.button(cx, ids!(pick)).clicked(actions) {
+                    let id = app_state()
+                        .lock()
+                        .unwrap()
+                        .local_servers
+                        .get(item_id)
+                        .map(|s| s.id.clone());
+                    if let Some(id) = id {
+                        if let Err(e) = self.activate_existing_server(cx, &id) {
+                            self.set_status(cx, e);
+                        }
+                    }
+                }
+            }
         }
         if self.ui.button(cx, ids!(allow_extra_tills)).clicked(actions) {
             self.set_extra_tills(cx, true);
@@ -8389,8 +9637,8 @@ impl MatchEvent for App {
                     st.venue_mode = tmpl.venue_mode;
                     st.reload_all()?;
                     st.status = format!(
-                        "Template: {} — labels updated (no sample items added)",
-                        tmpl.title
+                        "Template: {} — {}",
+                        tmpl.title, tmpl.blurb
                     );
                     Ok(())
                 })();
@@ -8398,6 +9646,7 @@ impl MatchEvent for App {
                     self.set_status(cx, e);
                 }
                 self.sync_chrome(cx);
+                break;
             }
         }
         if self.ui.button(cx, ids!(settings_open_branches)).clicked(actions) {
@@ -8431,6 +9680,13 @@ impl MatchEvent for App {
                 {
                     st.status.clear();
                 }
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(pin_reveal)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                st.pin_visible = !st.pin_visible;
             }
             self.sync_chrome(cx);
         }
@@ -8499,11 +9755,19 @@ impl MatchEvent for App {
         }
 
         if self.choice_chip_clicked(cx, actions, ids!(lane_declared), ids!(lane_declared_on)) {
-            app_state().lock().unwrap().money_lane = MoneyLane::Declared;
+            {
+                let mut st = app_state().lock().unwrap();
+                st.money_lane = MoneyLane::Declared;
+                st.cart.money_lane = MoneyLane::Declared;
+            }
             self.sync_chrome(cx);
         }
         if self.choice_chip_clicked(cx, actions, ids!(lane_owner), ids!(lane_owner_on)) {
-            app_state().lock().unwrap().money_lane = MoneyLane::Owner;
+            {
+                let mut st = app_state().lock().unwrap();
+                st.money_lane = MoneyLane::Owner;
+                st.cart.money_lane = MoneyLane::Owner;
+            }
             self.sync_chrome(cx);
         }
 
@@ -8848,11 +10112,12 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(credit_add_btn)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
+            let kind = self.ui.text_input(cx, ids!(credit_add_kind)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Add customers")?;
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let customer = store.add_customer(&name, "")?;
+                let customer = store.add_customer_kind(&name, "", kind.trim())?;
                 st.selected_customer_id = Some(customer.id);
                 st.reload_all()?;
                 st.status = format!("Added {}", name);
@@ -8864,6 +10129,112 @@ impl MatchEvent for App {
                 self.ui
                     .text_input(cx, ids!(credit_add_name))
                     .set_text(cx, "");
+                self.ui
+                    .text_input(cx, ids!(credit_add_kind))
+                    .set_text(cx, "");
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(credit_writeoff)).clicked(actions) {
+            let amount_text = self.ui.text_input(cx, ids!(writeoff_amount_input)).text();
+            let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Write off credit")?;
+                let actor = st.actor()?;
+                let customer_id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                let currency = st.locale.currency.clone();
+                let amount = match amount_text.trim() {
+                    "" => 0,
+                    other => locale::parse_major_input(other, &currency)?,
+                };
+                let written = st
+                    .store
+                    .as_mut()
+                    .ok_or_else(|| "No store".to_string())?
+                    .write_off_credit(&customer_id, amount, &reason, &actor)?;
+                st.reload_all()?;
+                let _ = st.refresh_books_overview();
+                Ok(format!("Wrote off {}", st.money(Money(written))))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(writeoff_amount_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(writeoff_reason_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        for (btn, method) in [
+            (ids!(payable_cash), PayMethod::Cash),
+            (ids!(payable_upi), PayMethod::Upi),
+            (ids!(payable_card), PayMethod::Card),
+        ] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                let amount_text = self.ui.text_input(cx, ids!(payable_amount_input)).text();
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Settle payable")?;
+                    let actor = st.actor()?;
+                    let party_id = st
+                        .selected_customer_id
+                        .clone()
+                        .ok_or_else(|| "Pick a party first".to_string())?;
+                    let currency = st.locale.currency.clone();
+                    let amount = locale::parse_major_input(&amount_text, &currency)?;
+                    st.store
+                        .as_mut()
+                        .ok_or_else(|| "No store".to_string())?
+                        .settle_payable(&party_id, amount, method, &actor, "")?;
+                    st.reload_all()?;
+                    let _ = st.refresh_books_overview();
+                    Ok(format!("AP paid {}", st.money(Money(amount))))
+                })();
+                match result {
+                    Ok(msg) => {
+                        self.ui
+                            .text_input(cx, ids!(payable_amount_input))
+                            .set_text(cx, "");
+                        self.set_status(cx, msg);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(payable_writeoff)).clicked(actions) {
+            let amount_text = self.ui.text_input(cx, ids!(writeoff_amount_input)).text();
+            let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Write off payable")?;
+                let actor = st.actor()?;
+                let party_id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                let currency = st.locale.currency.clone();
+                let amount = match amount_text.trim() {
+                    "" => 0,
+                    other => locale::parse_major_input(other, &currency)?,
+                };
+                let written = st
+                    .store
+                    .as_mut()
+                    .ok_or_else(|| "No store".to_string())?
+                    .write_off_payable(&party_id, amount, &reason, &actor)?;
+                st.reload_all()?;
+                let _ = st.refresh_books_overview();
+                Ok(format!("AP wrote off {}", st.money(Money(written))))
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }
@@ -9097,7 +10468,7 @@ impl MatchEvent for App {
             }
         }
 
-        for list_id in [ids!(language_list)] {
+        for list_id in [ids!(language_list), ids!(setup_lang_list)] {
             let widget = self.ui.widget(cx, list_id);
             let list = widget.portal_list(cx, ids!(list));
             for (item_id, item) in list.items_with_actions(actions) {
@@ -10027,25 +11398,29 @@ impl MatchEvent for App {
                         .ok_or_else(|| "No store".to_string())?
                         .apply_entity_template(tmpl_id)?;
                     st.entity_template_id = tmpl.id.to_string();
+                    st.venue_mode = tmpl.venue_mode;
                     st.reload_all()?;
-                    st.status = format!(
-                        "Template: {} — {}",
-                        tmpl.title, tmpl.blurb
-                    );
+                    st.status = format!("Template: {} — {}", tmpl.title, tmpl.blurb);
                     Ok(())
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
                 }
                 self.sync_chrome(cx);
+                break; // one chip per event — never leave the wrong template selected
             }
         }
-        if self.ui.button(cx, ids!(onboard_fresh)).clicked(actions) {
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(onboard_fresh),
+            ids!(onboard_fresh_on),
+        ) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 Self::ensure_default_template(&mut st)?;
                 st.onboard_step = 1;
-                st.status = "Fresh — catalogue empty; add your items in Items, then Done".into();
+                st.status = "Fresh selected — empty catalogue; tap Done — open books when ready".into();
                 Ok(())
             })();
             if let Err(e) = result {
@@ -10053,21 +11428,19 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(onboard_book)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(onboard_book), ids!(onboard_book_on)) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 Self::ensure_default_template(&mut st)?;
                 st.onboard_step = 2;
-                st.status = "Book — add items and opening credit, then Done".into();
+                st.status =
+                    "Book selected — add opening rates / credit below, then Done — open books".into();
                 Ok(())
             })();
             if let Err(e) = result {
                 self.set_status(cx, e);
             }
             self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(onboard_empty)).clicked(actions) {
-            self.set_status(cx, "Catalogue stays empty — add your rates or items under Items");
         }
         if self.ui.button(cx, ids!(onboard_add_item)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(onboard_item_name)).text();
@@ -10128,9 +11501,10 @@ impl MatchEvent for App {
                 Self::ensure_default_template(&mut st)?;
                 st.store.as_ref().ok_or_else(|| "No store".to_string())?.complete_onboarding()?;
                 st.onboarding_complete = true;
-                st.screen = Screen::Pos;
-                st.status = "Shop ready — start selling".into();
+                st.screen = unlocked_home();
+                st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();
+                let _ = st.refresh_books_overview();
                 Ok(())
             })();
             if let Err(e) = result { self.set_status(cx, e); }
@@ -10552,10 +11926,7 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Record purchases")?;
                 let actor = st.actor()?;
-                let qty: i64 = qty_text
-                    .trim()
-                    .parse()
-                    .map_err(|_| "Quantity must be a whole number".to_string())?;
+                let qty_milli = parse_qty_to_milli(&qty_text)?;
                 let product = st.find_product_by_name(&name)?;
                 let currency = st.locale.currency.clone();
                 let unit_cost = match cost_text.trim() {
@@ -10568,14 +11939,15 @@ impl MatchEvent for App {
                     .ok_or_else(|| "No store".to_string())?
                     .record_purchase(
                         supplier.trim(),
-                        &[(product.id.clone(), qty, unit_cost)],
+                        &[(product.id.clone(), qty_milli, unit_cost)],
                         note.trim(),
                         &actor,
                     )?;
                 st.reload_all()?;
                 st.refresh_inventory_text()?;
+                let qty_show = domain::format_qty_display(qty_milli, 0, &product.unit_label);
                 Ok(format!(
-                    "Received {qty} × {} · {}",
+                    "Received {qty_show} {} · {}",
                     product.name,
                     st.money(Money(purchase.total_paise))
                 ))
@@ -10830,10 +12202,13 @@ impl MatchEvent for App {
                 st.screen = if st.device_role.is_host() && !st.onboarding_complete {
                     Screen::Onboard
                 } else {
-                    Screen::Pos
+                    unlocked_home()
                 };
                 st.status = format!("Welcome, {}", member.lock_label());
                 let _ = st.reload_all();
+                if st.screen == Screen::Books {
+                    let _ = st.refresh_books_overview();
+                }
                 Ok(())
             })();
             if let Err(e) = result { self.set_status(cx, e); }
@@ -10842,6 +12217,50 @@ impl MatchEvent for App {
 
 
 
+        if self.ui.button(cx, ids!(unit_add)).clicked(actions) {
+            let code = self.ui.text_input(cx, ids!(unit_code_input)).text();
+            let name = self.ui.text_input(cx, ids!(unit_name_input)).text();
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Add units")?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.add_unit(&code, &name)?;
+                st.status = format!("Unit {code} added");
+                Ok(())
+            })();
+            match result {
+                Ok(()) => {
+                    self.ui.text_input(cx, ids!(unit_code_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(unit_name_input)).set_text(cx, "");
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(conv_add)).clicked(actions) {
+            let from = self.ui.text_input(cx, ids!(conv_from_input)).text();
+            let to = self.ui.text_input(cx, ids!(conv_to_input)).text();
+            let factor_text = self.ui.text_input(cx, ids!(conv_factor_input)).text();
+            let result = (|| -> Result<(), String> {
+                let factor_milli = parse_qty_to_milli(&factor_text)
+                    .map_err(|_| "Factor must be a number > 0".to_string())?;
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Add unit conversion")?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.add_unit_conversion(&from, &to, factor_milli)?;
+                st.status = format!("1 {from} → {to} conversion added");
+                Ok(())
+            })();
+            match result {
+                Ok(()) => {
+                    self.ui.text_input(cx, ids!(conv_from_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(conv_to_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(conv_factor_input)).set_text(cx, "");
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(venue_brand_save)).clicked(actions) {
             self.save_venue_brand(cx);
         }
@@ -10906,10 +12325,17 @@ impl AppMain for App {
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
         if matches!(event, Event::Startup) {
+            // Before CreateWindow: override the DSL default with the last session.
+            self.restore_window_geom(cx);
             self.ensure_store(cx);
         }
         if matches!(event, Event::WindowGeomChange(_)) {
+            let restoring = self.apply_pending_window_geom_after_create(cx);
+            self.enforce_min_desktop_window_size(cx);
             self.sync_dev_size(cx);
+            if !restoring {
+                self.persist_window_geom(cx);
+            }
         }
         self.match_event(cx, event);
         if self.pointer_navigates(cx, event) {

@@ -1,16 +1,17 @@
 //! Local SQLite persistence for Kumkaj (WAL, restart-safe sales).
 
 use crate::domain::{
-    format_qty_display, new_id, AuditEvent, Branch, BranchSnapshot, Category, CreditLedgerEntry,
-    Customer, DayTotals, DiningTable, KitchenStation, KotStatus, KotTicket, Money, MoneyLane,
-    MoneyMoveKind, MoneyMovement, OpsReport, OrderType, OrgConsolidatedReport, PartyAgingRow,
-    PayMethod, PeriodBooks, Product, Purchase, PurchaseLine, Sale, SaleDraft, SaleLine,
-    SaleRevision, StaffFeatures, StaffMember, StaffRole, StockMovement, TableStatus, TaxRate,
+    format_qty_display, milli_to_whole_qty, new_id, AuditEvent, Branch,
+    BranchSnapshot, Category, CreditLedgerEntry, Customer, DayTotals, DiningTable, EventTimes,
+    KitchenStation, KotStatus, KotTicket, Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpsReport,
+    OrderType, OrgConsolidatedReport, PartyAgingRow, PayMethod, PeriodBooks, Product, Purchase,
+    PurchaseLine, QTY_MILLI_UNIT, Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures,
+    StaffMember, StaffRole, StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef,
     VenueMode, STOCK_UNTRACKED,
 };
 use crate::entity_template::{self, EntityTemplate};
 use crate::fiscal::{self, CountryProfile, FiscalSettings, TaxPricing};
-use crate::locale::LocaleSettings;
+use crate::locale::{self, LanguageSource, LocaleSettings};
 use chrono::{Local, NaiveDate};
 use rusqlite::{params, Connection, OptionalExtension};
 use sha2::{Digest, Sha256};
@@ -35,11 +36,10 @@ pub struct StaffHire<'a> {
 }
 
 impl Store {
+    /// Open the active local server DB (or migrate a legacy root DB into one).
+    /// Prefer [`crate::local_servers`] when creating / switching servers.
     pub fn open_default() -> Result<Self, String> {
-        let dir = data_dir()?;
-        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-        let path = dir.join("kumkaj.sqlite3");
-        Self::open_path(&path)
+        crate::local_servers::open_default_server()
     }
 
     pub fn open_path(path: &Path) -> Result<Self, String> {
@@ -64,6 +64,10 @@ impl Store {
         &self.path
     }
 
+    /// Create the current books schema (version **1**).
+    ///
+    /// Pre-release: there is no upgrade ladder from older numbered schemas.
+    /// Delete local DBs from earlier builds if open fails after a schema change.
     fn migrate(&mut self) -> Result<(), String> {
         self.conn
             .execute_batch(
@@ -78,113 +82,60 @@ impl Store {
                     price_paise INTEGER NOT NULL CHECK(price_paise >= 0),
                     available INTEGER NOT NULL DEFAULT 1,
                     archived INTEGER NOT NULL DEFAULT 0,
-                    image_key TEXT
+                    image_key TEXT,
+                    stock_qty INTEGER NOT NULL DEFAULT -1,
+                    category_id TEXT NOT NULL DEFAULT '',
+                    station_id TEXT NOT NULL DEFAULT '',
+                    tax_bps INTEGER NOT NULL DEFAULT 0,
+                    modifiers_json TEXT NOT NULL DEFAULT '[]',
+                    aliases_json TEXT NOT NULL DEFAULT '[]',
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    tax_rate_id TEXT NOT NULL DEFAULT '',
+                    unit_label TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS sales (
                     id TEXT PRIMARY KEY,
                     created_at TEXT NOT NULL,
                     total_paise INTEGER NOT NULL,
-                    lines_total_paise INTEGER,
-                    rounding_paise INTEGER NOT NULL DEFAULT 0,
                     pay_method TEXT NOT NULL,
                     status TEXT NOT NULL,
                     table_id TEXT,
-                    customer_id TEXT
+                    lines_total_paise INTEGER,
+                    rounding_paise INTEGER NOT NULL DEFAULT 0,
+                    customer_id TEXT,
+                    created_by_id TEXT NOT NULL DEFAULT '',
+                    created_by_name TEXT NOT NULL DEFAULT '',
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    order_type TEXT NOT NULL DEFAULT 'counter',
+                    tax_paise INTEGER NOT NULL DEFAULT 0,
+                    tax_pricing TEXT NOT NULL DEFAULT 'inclusive',
+                    tax_label TEXT NOT NULL DEFAULT 'Tax',
+                    net_paise INTEGER NOT NULL DEFAULT 0,
+                    service_paise INTEGER NOT NULL DEFAULT 0,
+                    invoice_no TEXT NOT NULL DEFAULT '',
+                    money_lane TEXT NOT NULL DEFAULT 'declared',
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS sale_lines (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    sale_id TEXT NOT NULL REFERENCES sales(id),
+                    sale_id TEXT NOT NULL,
                     product_id TEXT NOT NULL,
                     name TEXT NOT NULL,
                     unit_price_paise INTEGER NOT NULL,
                     qty INTEGER NOT NULL,
                     line_total_paise INTEGER NOT NULL,
-                    note TEXT NOT NULL DEFAULT ''
+                    note TEXT NOT NULL DEFAULT '',
+                    qty_milli INTEGER NOT NULL DEFAULT 0,
+                    unit_label TEXT NOT NULL DEFAULT ''
                 );
-                CREATE TABLE IF NOT EXISTS staff (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    role TEXT NOT NULL,
-                    pin_hash TEXT NOT NULL,
-                    active INTEGER NOT NULL DEFAULT 1
-                );
-                CREATE TABLE IF NOT EXISTS tables_dining (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    active_sale_id TEXT
-                );
-                CREATE TABLE IF NOT EXISTS kot_tickets (
+                CREATE TABLE IF NOT EXISTS sale_payments (
                     id TEXT PRIMARY KEY,
                     sale_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    summary TEXT NOT NULL
+                    pay_method TEXT NOT NULL,
+                    amount_paise INTEGER NOT NULL
                 );
-                CREATE TABLE IF NOT EXISTS audit_events (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    action TEXT NOT NULL,
-                    detail TEXT NOT NULL
-                );
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('schema_version', '1')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        // v2: optional product image key (built-in menu asset or custom:file)
-        let has_image: bool = self
-            .conn
-            .prepare("PRAGMA table_info(products)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "image_key"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_image {
-            self.conn
-                .execute("ALTER TABLE products ADD COLUMN image_key TEXT", [])
-                .map_err(|e| e.to_string())?;
-            self.meta_set("schema_version", "2")?;
-        }
-
-        // v3: explicit rounding for perfect accounting
-        // lines_total + rounding = charged total (sales.total_paise)
-        let has_rounding: bool = self
-            .conn
-            .prepare("PRAGMA table_info(sales)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "rounding_paise"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_rounding {
-            self.conn
-                .execute_batch(
-                    r#"
-                    ALTER TABLE sales ADD COLUMN lines_total_paise INTEGER;
-                    ALTER TABLE sales ADD COLUMN rounding_paise INTEGER NOT NULL DEFAULT 0;
-                    UPDATE sales SET lines_total_paise = total_paise WHERE lines_total_paise IS NULL;
-                    "#,
-                )
-                .map_err(|e| e.to_string())?;
-            self.meta_set("schema_version", "3")?;
-        }
-
-        // v4: append-only sale revision history (owner/manager amend)
-        self.conn
-            .execute_batch(
-                r#"
                 CREATE TABLE IF NOT EXISTS sale_revisions (
                     id TEXT PRIMARY KEY,
                     sale_id TEXT NOT NULL,
@@ -194,46 +145,50 @@ impl Store {
                     reason TEXT NOT NULL,
                     previous_json TEXT NOT NULL
                 );
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        let ver = self.meta_get("schema_version")?.unwrap_or_else(|| "1".into());
-        if ver.parse::<i64>().unwrap_or(1) < 4 {
-            self.meta_set("schema_version", "4")?;
-        }
-
-        // v5: optional per-line note on sales
-        let has_line_note: bool = self
-            .conn
-            .prepare("PRAGMA table_info(sale_lines)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "note"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_line_note {
-            self.conn
-                .execute(
-                    "ALTER TABLE sale_lines ADD COLUMN note TEXT NOT NULL DEFAULT ''",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-            self.meta_set("schema_version", "5")?;
-        }
-
-        // v6: customers + credit ledger
-        self.conn
-            .execute_batch(
-                r#"
+                CREATE TABLE IF NOT EXISTS staff (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    role TEXT NOT NULL,
+                    pin_hash TEXT NOT NULL,
+                    active INTEGER NOT NULL DEFAULT 1,
+                    role_title TEXT NOT NULL DEFAULT '',
+                    features_json TEXT NOT NULL DEFAULT '',
+                    login_id TEXT NOT NULL DEFAULT '',
+                    password_hash TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS tables_dining (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    active_sale_id TEXT,
+                    branch_id TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS kot_tickets (
+                    id TEXT PRIMARY KEY,
+                    sale_id TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    summary TEXT NOT NULL,
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    station_id TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS audit_events (
+                    id TEXT PRIMARY KEY,
+                    created_at TEXT NOT NULL,
+                    actor_id TEXT NOT NULL,
+                    actor_name TEXT NOT NULL,
+                    action TEXT NOT NULL,
+                    detail TEXT NOT NULL
+                );
                 CREATE TABLE IF NOT EXISTS customers (
                     id TEXT PRIMARY KEY,
                     name TEXT NOT NULL,
                     phone TEXT NOT NULL DEFAULT '',
                     note TEXT NOT NULL DEFAULT '',
                     active INTEGER NOT NULL DEFAULT 1,
-                    created_at TEXT NOT NULL
+                    created_at TEXT NOT NULL,
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    kind_label TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS credit_ledger (
                     id TEXT PRIMARY KEY,
@@ -245,193 +200,10 @@ impl Store {
                     pay_method TEXT,
                     actor_id TEXT NOT NULL,
                     actor_name TEXT NOT NULL,
-                    detail TEXT NOT NULL DEFAULT ''
-                );
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        let has_customer_id: bool = self
-            .conn
-            .prepare("PRAGMA table_info(sales)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "customer_id"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_customer_id {
-            self.conn
-                .execute("ALTER TABLE sales ADD COLUMN customer_id TEXT", [])
-                .map_err(|e| e.to_string())?;
-            self.meta_set("schema_version", "6")?;
-        }
-
-        // v7: Owner vs Staff — role_title + immutable sale authorship
-        let has_role_title: bool = self
-            .conn
-            .prepare("PRAGMA table_info(staff)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "role_title"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_role_title {
-            self.conn
-                .execute(
-                    "ALTER TABLE staff ADD COLUMN role_title TEXT NOT NULL DEFAULT ''",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-            // Backfill titles from role preset
-            for (role, title) in [
-                ("owner", "Owner"),
-                ("manager", "Manager"),
-                ("cashier", "Cashier"),
-                ("kitchen", "Kitchen"),
-            ] {
-                self.conn
-                    .execute(
-                        "UPDATE staff SET role_title = ?1 WHERE role = ?2 AND (role_title = '' OR role_title IS NULL)",
-                        params![title, role],
-                    )
-                    .map_err(|e| e.to_string())?;
-            }
-        }
-        let has_created_by: bool = self
-            .conn
-            .prepare("PRAGMA table_info(sales)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "created_by_id"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_created_by {
-            self.conn
-                .execute(
-                    "ALTER TABLE sales ADD COLUMN created_by_id TEXT NOT NULL DEFAULT ''",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-            self.conn
-                .execute(
-                    "ALTER TABLE sales ADD COLUMN created_by_name TEXT NOT NULL DEFAULT ''",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-            self.meta_set("schema_version", "7")?;
-        }
-
-        // v8: replace Argon2 PIN hashes (blocked UI for seconds on unlock) with
-        // fast salted SHA-256. Existing PINs are reset to 0000 — change under Team.
-        let ver = self.meta_get("schema_version")?.unwrap_or_else(|| "1".into());
-        if ver.parse::<i64>().unwrap_or(1) < 8 {
-            let owner_hash = hash_pin("0000")?;
-            // A shop that was already trading had a PIN only its Owner knew.
-            // Handing it back as 0000 is an open till, so flag the reset and
-            // make the next unlock force a fresh Owner PIN.
-            let was_trading = self
-                .meta_get("owner_setup_complete")?
-                .map(|v| v.trim() == "1")
-                .unwrap_or(false);
-            // Reset every account to 0000 with the fast hasher.
-            self.conn
-                .execute("UPDATE staff SET pin_hash = ?1", params![owner_hash])
-                .map_err(|e| e.to_string())?;
-            if was_trading {
-                self.meta_set("pin_reset_required", "1")?;
-            }
-            self.meta_set("schema_version", "8")?;
-        }
-
-        // v9: staff features / login, venue mode, onboarding, client pairing.
-        let has_features: bool = self
-            .conn
-            .prepare("PRAGMA table_info(staff)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "features_json"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_features {
-            self.conn
-                .execute_batch(
-                    r#"
-                    ALTER TABLE staff ADD COLUMN features_json TEXT NOT NULL DEFAULT '';
-                    ALTER TABLE staff ADD COLUMN login_id TEXT NOT NULL DEFAULT '';
-                    ALTER TABLE staff ADD COLUMN password_hash TEXT NOT NULL DEFAULT '';
-                    "#,
-                )
-                .map_err(|e| e.to_string())?;
-            // Backfill role defaults.
-            let staff_rows: Vec<(String, String)> = {
-                let mut stmt = self
-                    .conn
-                    .prepare("SELECT id, role FROM staff")
-                    .map_err(|e| e.to_string())?;
-                let rows = stmt
-                    .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
-                    .map_err(|e| e.to_string())?;
-                rows.collect::<Result<Vec<_>, _>>()
-                    .map_err(|e| e.to_string())?
-            };
-            for (id, role_s) in staff_rows {
-                let role = StaffRole::parse(&role_s).unwrap_or(StaffRole::Cashier);
-                let feats = StaffFeatures::for_role(role);
-                self.conn
-                    .execute(
-                        "UPDATE staff SET features_json = ?1 WHERE id = ?2",
-                        params![feats.to_json(), id],
-                    )
-                    .map_err(|e| e.to_string())?;
-            }
-        }
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('venue_mode', 'counter')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('onboarding_complete', '0')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('client_paired', '0')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        let ver = self.meta_get("schema_version")?.unwrap_or_else(|| "1".into());
-        if ver.parse::<i64>().unwrap_or(1) < 9 {
-            // Existing shops (Owner PIN already set): skip onboarding wizard.
-            if self
-                .meta_get("owner_setup_complete")?
-                .map(|v| v.trim() == "1")
-                .unwrap_or(false)
-            {
-                let _ = self.meta_set("onboarding_complete", "1");
-            }
-            self.meta_set("schema_version", "9")?;
-        }
-
-        // v10: split payments, expenses, optional stock.
-        self.conn
-            .execute_batch(
-                r#"
-                CREATE TABLE IF NOT EXISTS sale_payments (
-                    id TEXT PRIMARY KEY,
-                    sale_id TEXT NOT NULL,
-                    pay_method TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL
+                    detail TEXT NOT NULL DEFAULT '',
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS expenses (
                     id TEXT PRIMARY KEY,
@@ -440,41 +212,12 @@ impl Store {
                     category TEXT NOT NULL DEFAULT 'misc',
                     note TEXT NOT NULL DEFAULT '',
                     actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL
+                    actor_name TEXT NOT NULL,
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
                 );
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        let has_stock: bool = self
-            .conn
-            .prepare("PRAGMA table_info(products)")
-            .and_then(|mut stmt| {
-                let names = stmt
-                    .query_map([], |row| row.get::<_, String>(1))?
-                    .collect::<Result<Vec<_>, _>>()?;
-                Ok(names.iter().any(|n| n == "stock_qty"))
-            })
-            .map_err(|e| e.to_string())?;
-        if !has_stock {
-            self.conn
-                .execute(
-                    "ALTER TABLE products ADD COLUMN stock_qty INTEGER NOT NULL DEFAULT -1",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        let ver = self.meta_get("schema_version")?.unwrap_or_else(|| "1".into());
-        if ver.parse::<i64>().unwrap_or(1) < 10 {
-            self.meta_set("schema_version", "10")?;
-        }
-
-        // v11: one org, many branches — the same app now covers a chai stall and
-        // a multi-outlet restaurant. Everything stays local: branches roll up by
-        // exporting/importing snapshots, and `sync_outbox` is the durable queue
-        // a future cloud can drain without changing any of this.
-        self.conn
-            .execute_batch(
-                r#"
                 CREATE TABLE IF NOT EXISTS branches (
                     id TEXT PRIMARY KEY,
                     org_id TEXT NOT NULL,
@@ -507,7 +250,10 @@ impl Store {
                     note TEXT NOT NULL DEFAULT '',
                     actor_id TEXT NOT NULL DEFAULT '',
                     actor_name TEXT NOT NULL DEFAULT '',
-                    ref_id TEXT NOT NULL DEFAULT ''
+                    ref_id TEXT NOT NULL DEFAULT '',
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS purchases (
                     id TEXT PRIMARY KEY,
@@ -517,7 +263,12 @@ impl Store {
                     total_paise INTEGER NOT NULL DEFAULT 0,
                     note TEXT NOT NULL DEFAULT '',
                     actor_id TEXT NOT NULL DEFAULT '',
-                    actor_name TEXT NOT NULL DEFAULT ''
+                    actor_name TEXT NOT NULL DEFAULT '',
+                    party_id TEXT NOT NULL DEFAULT '',
+                    on_account INTEGER NOT NULL DEFAULT 0,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS purchase_lines (
                     id TEXT PRIMARY KEY,
@@ -525,7 +276,9 @@ impl Store {
                     product_id TEXT NOT NULL,
                     name TEXT NOT NULL,
                     qty INTEGER NOT NULL,
-                    unit_cost_paise INTEGER NOT NULL DEFAULT 0
+                    unit_cost_paise INTEGER NOT NULL DEFAULT 0,
+                    qty_milli INTEGER NOT NULL DEFAULT 0,
+                    unit_label TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS sync_outbox (
                     id TEXT PRIMARY KEY,
@@ -535,13 +288,91 @@ impl Store {
                     payload_json TEXT NOT NULL DEFAULT '',
                     synced_at TEXT NOT NULL DEFAULT ''
                 );
+                CREATE TABLE IF NOT EXISTS tax_rates (
+                    id TEXT PRIMARY KEY,
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    name TEXT NOT NULL,
+                    code TEXT NOT NULL DEFAULT '',
+                    bps INTEGER NOT NULL DEFAULT 0,
+                    active INTEGER NOT NULL DEFAULT 1
+                );
+                CREATE TABLE IF NOT EXISTS money_movements (
+                    id TEXT PRIMARY KEY,
+                    created_at TEXT NOT NULL,
+                    kind TEXT NOT NULL,
+                    amount_paise INTEGER NOT NULL,
+                    note TEXT NOT NULL DEFAULT '',
+                    actor_id TEXT NOT NULL,
+                    actor_name TEXT NOT NULL,
+                    branch_id TEXT NOT NULL DEFAULT '',
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS payable_ledger (
+                    id TEXT PRIMARY KEY,
+                    party_id TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    kind TEXT NOT NULL,
+                    amount_paise INTEGER NOT NULL,
+                    purchase_id TEXT,
+                    pay_method TEXT,
+                    actor_id TEXT NOT NULL,
+                    actor_name TEXT NOT NULL,
+                    detail TEXT NOT NULL DEFAULT '',
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    server_at TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS units (
+                    id TEXT PRIMARY KEY,
+                    code TEXT NOT NULL UNIQUE,
+                    name TEXT NOT NULL,
+                    builtin INTEGER NOT NULL DEFAULT 0
+                );
+                CREATE TABLE IF NOT EXISTS unit_conversions (
+                    id TEXT PRIMARY KEY,
+                    from_code TEXT NOT NULL,
+                    to_code TEXT NOT NULL,
+                    factor_milli INTEGER NOT NULL,
+                    UNIQUE(from_code, to_code)
+                );
                 CREATE INDEX IF NOT EXISTS idx_stock_movements_created
                     ON stock_movements(created_at);
                 CREATE INDEX IF NOT EXISTS idx_sync_outbox_pending
                     ON sync_outbox(synced_at);
+                CREATE INDEX IF NOT EXISTS idx_tax_rates_branch ON tax_rates(branch_id);
+                CREATE INDEX IF NOT EXISTS idx_money_movements_day
+                    ON money_movements(created_at);
+                CREATE INDEX IF NOT EXISTS idx_payable_party ON payable_ledger(party_id);
                 "#,
             )
             .map_err(|e| e.to_string())?;
+
+        self.conn
+            .execute(
+                "INSERT OR IGNORE INTO meta(key, value) VALUES('schema_version', '1')",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        // Always pin to current pre-release schema (drop any leftover 2–17 markers).
+        self.meta_set("schema_version", "1")?;
+
+        for (key, value) in [
+            ("venue_mode", "counter"),
+            ("onboarding_complete", "0"),
+            ("client_paired", "0"),
+            ("next_invoice_seq", "1"),
+            ("pin_reset_required", "0"),
+            ("entity_template", "custom"),
+        ] {
+            self.conn
+                .execute(
+                    "INSERT OR IGNORE INTO meta(key, value) VALUES(?1, ?2)",
+                    params![key, value],
+                )
+                .map_err(|e| e.to_string())?;
+        }
 
         let org_id = match self.meta_get("org_id")?.filter(|s| !s.trim().is_empty()) {
             Some(id) => id,
@@ -565,25 +396,6 @@ impl Store {
             self.meta_set("org_name", &name)?;
         }
 
-        for (table, column, decl) in [
-            ("products", "category_id", "TEXT NOT NULL DEFAULT ''"),
-            ("products", "station_id", "TEXT NOT NULL DEFAULT ''"),
-            ("products", "tax_bps", "INTEGER NOT NULL DEFAULT 0"),
-            ("products", "modifiers_json", "TEXT NOT NULL DEFAULT '[]'"),
-            ("products", "aliases_json", "TEXT NOT NULL DEFAULT '[]'"),
-            ("products", "branch_id", "TEXT NOT NULL DEFAULT ''"),
-            ("sales", "branch_id", "TEXT NOT NULL DEFAULT ''"),
-            ("sales", "order_type", "TEXT NOT NULL DEFAULT 'counter'"),
-            ("sales", "tax_paise", "INTEGER NOT NULL DEFAULT 0"),
-            ("tables_dining", "branch_id", "TEXT NOT NULL DEFAULT ''"),
-            ("kot_tickets", "branch_id", "TEXT NOT NULL DEFAULT ''"),
-            ("kot_tickets", "station_id", "TEXT NOT NULL DEFAULT ''"),
-            ("expenses", "branch_id", "TEXT NOT NULL DEFAULT ''"),
-            ("customers", "branch_id", "TEXT NOT NULL DEFAULT ''"),
-        ] {
-            self.ensure_column(table, column, decl)?;
-        }
-
         let branch_count: i64 = self
             .conn
             .query_row("SELECT COUNT(*) FROM branches", [], |r| r.get(0))
@@ -599,7 +411,6 @@ impl Store {
                 )
                 .map_err(|e| e.to_string())?;
         }
-        // Keep `active_branch_id` pointing at a branch that really exists.
         let active = self.meta_get("active_branch_id")?.unwrap_or_default();
         let active_ok: i64 = self
             .conn
@@ -625,7 +436,6 @@ impl Store {
         }
         let branch_id = self.meta_get("active_branch_id")?.unwrap_or_default();
 
-        // Legacy single-shop rows all belong to this device's branch.
         for table in [
             "products",
             "sales",
@@ -664,57 +474,7 @@ impl Store {
                     .map_err(|e| e.to_string())?;
             }
         }
-        let ver = self.meta_get("schema_version")?.unwrap_or_else(|| "1".into());
-        if ver.parse::<i64>().unwrap_or(1) < 11 {
-            self.meta_set("schema_version", "11")?;
-        }
 
-        // v12: worldwide fiscal packs. Tax stops being India-shaped — a named
-        // rate table per branch, inclusive *or* exclusive pricing frozen onto
-        // each sale, and country wording for the tax, pay rail and business id.
-        self.conn
-            .execute_batch(
-                r#"
-                CREATE TABLE IF NOT EXISTS tax_rates (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    name TEXT NOT NULL,
-                    code TEXT NOT NULL DEFAULT '',
-                    bps INTEGER NOT NULL DEFAULT 0,
-                    active INTEGER NOT NULL DEFAULT 1
-                );
-                CREATE INDEX IF NOT EXISTS idx_tax_rates_branch ON tax_rates(branch_id);
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        for (table, column, decl) in [
-            ("products", "tax_rate_id", "TEXT NOT NULL DEFAULT ''"),
-            ("sales", "tax_pricing", "TEXT NOT NULL DEFAULT 'inclusive'"),
-            ("sales", "tax_label", "TEXT NOT NULL DEFAULT 'Tax'"),
-            ("sales", "net_paise", "INTEGER NOT NULL DEFAULT 0"),
-            ("sales", "service_paise", "INTEGER NOT NULL DEFAULT 0"),
-        ] {
-            self.ensure_column(table, column, decl)?;
-        }
-
-        let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
-        let upgrading_to_12 = ver.parse::<i64>().unwrap_or(1) < 12;
-
-        // Every shop that predates country packs was selling tax-inclusive, so
-        // their taxable base is simply what they charged minus the tax inside.
-        if upgrading_to_12 {
-            self.conn
-                .execute(
-                    "UPDATE sales
-                     SET net_paise = MAX(total_paise - COALESCE(tax_paise, 0), 0)
-                     WHERE COALESCE(net_paise, 0) = 0",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-
-        // Country meta defaults to India so existing shops see no change at
-        // all; applying another pack from Settings reseeds rates and wording.
         let country = match self.meta_get("country_code")?.filter(|c| !c.trim().is_empty()) {
             Some(c) => c,
             None => {
@@ -755,76 +515,77 @@ impl Store {
             self.seed_tax_rates(&branch_id, profile)?;
         }
 
-        if upgrading_to_12 {
-            self.meta_set("schema_version", "12")?;
+        self.seed_builtin_units()?;
+
+        for table in [
+            "sales",
+            "credit_ledger",
+            "payable_ledger",
+            "purchases",
+            "expenses",
+            "money_movements",
+            "stock_movements",
+        ] {
+            self.install_event_times_trigger(table)?;
         }
+        Ok(())
+    }
 
-        // v13: human invoice numbers. A truncated UUID is not something a
-        // customer can quote back, so every sale now also carries
-        // `INV-{branch}-{seq}` drawn from a per-shop counter.
-        self.ensure_column("sales", "invoice_no", "TEXT NOT NULL DEFAULT ''")?;
+    /// Fill blank `user_at` / `device_at` from `created_at` on insert (safety net).
+    fn install_event_times_trigger(&self, table: &str) -> Result<(), String> {
         self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('next_invoice_seq', '1')",
-                [],
-            )
+            .execute_batch(&format!(
+                "CREATE TRIGGER IF NOT EXISTS trg_{table}_event_times
+                 AFTER INSERT ON {table}
+                 FOR EACH ROW WHEN NEW.user_at = ''
+                 BEGIN
+                   UPDATE {table} SET
+                     user_at = NEW.created_at,
+                     device_at = CASE WHEN NEW.device_at = '' THEN NEW.created_at ELSE NEW.device_at END
+                   WHERE rowid = NEW.rowid;
+                 END;"
+            ))
             .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('pin_reset_required', '0')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
 
-        let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
-        if ver.parse::<i64>().unwrap_or(1) < 13 {
-            self.meta_set("schema_version", "13")?;
+    fn seed_builtin_units(&self) -> Result<(), String> {
+        let builtins: &[(&str, &str)] = &[
+            ("pc", "Piece"),
+            ("kg", "Kilogram"),
+            ("g", "Gram"),
+            ("l", "Litre"),
+            ("ml", "Millilitre"),
+            ("m", "Metre"),
+            ("cm", "Centimetre"),
+            ("dozen", "Dozen"),
+        ];
+        for (code, name) in builtins {
+            self.conn
+                .execute(
+                    "INSERT OR IGNORE INTO units(id, code, name, builtin) VALUES(?1, ?2, ?3, 1)",
+                    params![new_id(), code, name],
+                )
+                .map_err(|e| e.to_string())?;
         }
-
-        // v14: entity start templates — unit labels, party kind, milli qty,
-        // dual money lanes (declared / owner). Same generic tables.
-        self.ensure_column("products", "unit_label", "TEXT NOT NULL DEFAULT ''")?;
-        self.ensure_column("customers", "kind_label", "TEXT NOT NULL DEFAULT ''")?;
-        self.ensure_column("sale_lines", "qty_milli", "INTEGER NOT NULL DEFAULT 0")?;
-        self.ensure_column("sale_lines", "unit_label", "TEXT NOT NULL DEFAULT ''")?;
-        self.ensure_column("sales", "money_lane", "TEXT NOT NULL DEFAULT 'declared'")?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('entity_template', 'custom')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "UPDATE sale_lines SET qty_milli = qty * 1000 WHERE COALESCE(qty_milli, 0) = 0",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
-        if ver.parse::<i64>().unwrap_or(1) < 14 {
-            self.meta_set("schema_version", "14")?;
-        }
-
-        // v15: cashbook / bank money movements + richer books reports.
-        self.conn
-            .execute_batch(
-                "CREATE TABLE IF NOT EXISTS money_movements (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    kind TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL,
-                    note TEXT NOT NULL DEFAULT '',
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    branch_id TEXT NOT NULL DEFAULT ''
-                );
-                CREATE INDEX IF NOT EXISTS idx_money_movements_day
-                    ON money_movements(created_at);",
-            )
-            .map_err(|e| e.to_string())?;
-        let ver = self.meta_get("schema_version")?.unwrap_or(String::from("1"));
-        if ver.parse::<i64>().unwrap_or(1) < 15 {
-            self.meta_set("schema_version", "15")?;
+        // to_qty_milli = from_qty_milli * factor_milli / 1000
+        let convs: &[(&str, &str, i64)] = &[
+            ("kg", "g", 1_000_000),    // 1 kg = 1000 g
+            ("g", "kg", 1),            // 1000 g → 1 kg (factor 0.001 → milli 1)
+            ("l", "ml", 1_000_000),
+            ("ml", "l", 1),
+            ("m", "cm", 100_000),
+            ("cm", "m", 10),
+            ("dozen", "pc", 12_000),
+        ];
+        for (from, to, factor) in convs {
+            self.conn
+                .execute(
+                    "INSERT OR IGNORE INTO unit_conversions(id, from_code, to_code, factor_milli)
+                     VALUES(?1, ?2, ?3, ?4)",
+                    params![new_id(), from, to, factor],
+                )
+                .map_err(|e| e.to_string())?;
         }
         Ok(())
     }
@@ -866,50 +627,20 @@ impl Store {
         Ok(())
     }
 
-    fn table_has_column(&self, table: &str, column: &str) -> Result<bool, String> {
-        let mut stmt = self
-            .conn
-            .prepare(&format!("PRAGMA table_info({table})"))
-            .map_err(|e| e.to_string())?;
-        let names = stmt
-            .query_map([], |row| row.get::<_, String>(1))
-            .map_err(|e| e.to_string())?
-            .collect::<Result<Vec<_>, _>>()
-            .map_err(|e| e.to_string())?;
-        Ok(names.iter().any(|n| n == column))
-    }
-
-    fn ensure_column(&self, table: &str, column: &str, decl: &str) -> Result<(), String> {
-        if self.table_has_column(table, column)? {
-            return Ok(());
-        }
-        self.conn
-            .execute(
-                &format!("ALTER TABLE {table} ADD COLUMN {column} {decl}"),
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
-    }
-
     fn ensure_seed_data(&mut self) -> Result<(), String> {
         // Remove placeholder catalogue from earlier prototypes (Item A–E).
         self.conn
             .execute("DELETE FROM products WHERE id LIKE 'seed-item-%'", [])
             .map_err(|e| e.to_string())?;
 
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('language', 'en')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('currency', 'INR')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
+        // Fresh DB: default UI language from the OS; user confirms on first launch.
+        if self.meta_get("language")?.is_none() {
+            let code = locale::detect_platform_language();
+            self.meta_set("language", &code)?;
+        }
+        if self.meta_get("currency")?.is_none() {
+            self.meta_set("currency", "INR")?;
+        }
 
         let staff_count: i64 = self
             .conn
@@ -1001,8 +732,8 @@ impl Store {
             .ok_or_else(|| "Owner account missing after setup".to_string())
     }
 
-    /// True while an upgrade-time PIN reset is still unanswered. The till must
-    /// not open on the fallback 0000 that the v8 migration wrote.
+    /// True while a forced PIN reset is still unanswered. The till must not
+    /// open on a known fallback PIN while this flag is set.
     pub fn pin_reset_required(&self) -> Result<bool, String> {
         Ok(self
             .meta_get("pin_reset_required")?
@@ -1246,21 +977,25 @@ impl Store {
         if amount_paise <= 0 {
             return Err("Opening balance must be > 0".into());
         }
-        let now = Local::now().to_rfc3339();
+        let times = EventTimes::capture(None);
         self.conn
             .execute(
                 "INSERT INTO credit_ledger(
                     id, customer_id, created_at, kind, amount_paise,
-                    sale_id, pay_method, actor_id, actor_name, detail
-                 ) VALUES(?1, ?2, ?3, 'opening', ?4, NULL, NULL, ?5, ?6, ?7)",
+                    sale_id, pay_method, actor_id, actor_name, detail,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, 'opening', ?4, NULL, NULL, ?5, ?6, ?7, ?8, ?9, ?10)",
                 params![
                     new_id(),
                     customer_id,
-                    now,
+                    times.user_at,
                     amount_paise,
                     actor.id,
                     actor.name,
-                    "Opening balance from book"
+                    "Opening balance from book",
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -1531,11 +1266,33 @@ impl Store {
     /// buys is a timestamp plus a `day.close` audit line carrying the summary
     /// the owner actually signed off on. Returns the recorded time.
     pub fn commit_day_close(&self, actor: &StaffMember) -> Result<String, String> {
+        self.commit_day_close_with_count(actor, None)
+    }
+
+    /// `counted_cash_paise`: optional drawer count. Compared to today's cash tender total.
+    pub fn commit_day_close_with_count(
+        &self,
+        actor: &StaffMember,
+        counted_cash_paise: Option<i64>,
+    ) -> Result<String, String> {
         self.assert_server_writer("Record the day close")?;
-        let summary = self.day_close_summary()?;
+        let mut summary = self.day_close_summary()?;
+        let expected_cash = self.today_totals()?.cash_paise;
+        if let Some(counted) = counted_cash_paise {
+            let variance = counted - expected_cash;
+            let currency = self.locale_settings()?.currency;
+            let fiscal = self.fiscal_settings()?;
+            summary.push_str(&format!(
+                "Drawer counted: {}\nExpected cash (tenders): {}\nVariance: {}\n",
+                Money(counted).format_localized(&currency, &fiscal),
+                Money(expected_cash).format_localized(&currency, &fiscal),
+                Money(variance).format_localized(&currency, &fiscal),
+            ));
+            self.meta_set("last_day_close_counted_cash", &counted.to_string())?;
+            self.meta_set("last_day_close_cash_variance", &variance.to_string())?;
+        }
         let now = Local::now().to_rfc3339();
         self.meta_set("last_day_close_at", &now)?;
-        // Audit detail is one line so the log stays readable.
         let detail = summary
             .lines()
             .map(str::trim)
@@ -1757,7 +1514,10 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_name, detail
+                        sale_id, pay_method, actor_name, detail,
+                        COALESCE(NULLIF(user_at, ''), created_at),
+                        COALESCE(NULLIF(device_at, ''), created_at),
+                        COALESCE(server_at, '')
                  FROM credit_ledger ORDER BY created_at DESC LIMIT ?1",
             )
             .map_err(|e| e.to_string())?;
@@ -1773,6 +1533,9 @@ impl Store {
                     pay_method: row.get(6)?,
                     actor_name: row.get(7)?,
                     detail: row.get(8)?,
+                    user_at: row.get(9)?,
+                    device_at: row.get(10)?,
+                    server_at: row.get(11)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -1788,22 +1551,27 @@ impl Store {
             .execute("DELETE FROM credit_ledger", [])
             .map_err(|e| e.to_string())?;
         for e in entries {
+            let times = e.event_times();
             self.conn
                 .execute(
                     "INSERT INTO credit_ledger(
                         id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_id, actor_name, detail
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, '', ?8, ?9)",
+                        sale_id, pay_method, actor_id, actor_name, detail,
+                        user_at, device_at, server_at
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, '', ?8, ?9, ?10, ?11, ?12)",
                     params![
                         e.id,
                         e.customer_id,
-                        e.created_at,
+                        times.user_at,
                         e.kind,
                         e.amount_paise,
                         e.sale_id,
                         e.pay_method,
                         e.actor_name,
-                        e.detail
+                        e.detail,
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -2102,20 +1870,25 @@ impl Store {
                 c
             }
         };
+        let times = EventTimes::capture(None);
         self.conn
             .execute(
                 "INSERT INTO expenses(
-                    id, created_at, amount_paise, category, note, actor_id, actor_name, branch_id
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                    id, created_at, amount_paise, category, note, actor_id, actor_name, branch_id,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
                 params![
                     new_id(),
-                    Local::now().to_rfc3339(),
+                    times.user_at,
                     amount_paise,
                     cat,
                     note.trim(),
                     actor.id,
                     actor.name,
-                    self.active_branch_id()?
+                    self.active_branch_id()?,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -2226,20 +1999,25 @@ impl Store {
         if !actor.is_owner() && !actor.role.can_void_refund() {
             return Err("Not allowed to post bank movements".into());
         }
+        let times = EventTimes::capture(None);
         self.conn
             .execute(
                 "INSERT INTO money_movements(
-                    id, created_at, kind, amount_paise, note, actor_id, actor_name, branch_id
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                    id, created_at, kind, amount_paise, note, actor_id, actor_name, branch_id,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
                 params![
                     new_id(),
-                    Local::now().to_rfc3339(),
+                    times.user_at,
                     kind.as_str(),
                     amount_paise,
                     note.trim(),
                     actor.id,
                     actor.name,
-                    self.active_branch_id()?
+                    self.active_branch_id()?,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -2256,7 +2034,10 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT id, created_at, kind, amount_paise, note, actor_name
+                "SELECT id, created_at, kind, amount_paise, note, actor_name,
+                        COALESCE(NULLIF(user_at, ''), created_at),
+                        COALESCE(NULLIF(device_at, ''), created_at),
+                        COALESCE(server_at, '')
                  FROM money_movements
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY created_at DESC LIMIT ?2",
@@ -2271,6 +2052,9 @@ impl Store {
                     amount_paise: row.get(3)?,
                     note: row.get(4)?,
                     actor_name: row.get(5)?,
+                    user_at: row.get(6)?,
+                    device_at: row.get(7)?,
+                    server_at: row.get(8)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -2532,6 +2316,16 @@ impl Store {
                 None => {}
             }
         }
+        let cogs_paise: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(total_paise), 0) FROM purchases
+                 WHERE created_at >= ?1 AND created_at <= ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+                params![from, to, branch],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
         Ok(PeriodBooks {
             from_day: from_day.into(),
             to_day: to_day.into(),
@@ -2544,11 +2338,13 @@ impl Store {
             card_paise: day.card_paise,
             credit_paise: day.credit_paise,
             tax_paise: day.tax_paise,
+            cogs_paise,
             expenses_paise,
             expense_count,
             bank_in_paise: bank_in,
             bank_out_paise: bank_out,
             outstanding_credit_paise: self.outstanding_credit_total()?,
+            outstanding_payable_paise: self.outstanding_payable_total()?,
         })
     }
 
@@ -2557,23 +2353,27 @@ impl Store {
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let tmpl = self.entity_template()?;
-        let net = books.revenue_paise - books.expenses_paise;
         Ok(format!(
             "Period books {from_day} → {to_day}\n\
              Sales: {}\n\
              Revenue {}\n\
+             COGS {}\n\
+             Gross (rev − COGS) {}\n\
              {} {}\n\
              {} {}\n\
              Cash {} · {} {} · Card {}\n\
              {} sales {}\n\
              Expenses {} ({})\n\
-             Net (rev − expenses) {}\n\
+             Net (gross − expenses) {}\n\
              Bank in {} · Bank out {}\n\
              Bank balance now {}\n\
-             Still owed {}\n\
+             They owe us {}\n\
+             We owe them {}\n\
              {}\n",
             books.sale_count,
             Money(books.revenue_paise).format_localized(&currency, &fiscal),
+            Money(books.cogs_paise).format_localized(&currency, &fiscal),
+            Money(books.gross_paise()).format_localized(&currency, &fiscal),
             tmpl.lane_declared_label,
             Money(books.declared_paise).format_localized(&currency, &fiscal),
             tmpl.lane_owner_label,
@@ -2586,11 +2386,12 @@ impl Store {
             Money(books.credit_paise).format_localized(&currency, &fiscal),
             Money(books.expenses_paise).format_localized(&currency, &fiscal),
             books.expense_count,
-            Money(net).format_localized(&currency, &fiscal),
+            Money(books.net_paise()).format_localized(&currency, &fiscal),
             Money(books.bank_in_paise).format_localized(&currency, &fiscal),
             Money(books.bank_out_paise).format_localized(&currency, &fiscal),
             Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal),
             Money(books.outstanding_credit_paise).format_localized(&currency, &fiscal),
+            Money(books.outstanding_payable_paise).format_localized(&currency, &fiscal),
             self.tax_total_caption(&fiscal),
         ))
     }
@@ -2609,6 +2410,8 @@ impl Store {
         out.push_str(&self.period_books_text(&from, &to)?);
         out.push('\n');
         out.push_str(&self.party_aging_text()?);
+        out.push('\n');
+        out.push_str(&self.payable_aging_text()?);
         out.push('\n');
         out.push_str("Recent bank / cashbook\n");
         let currency = self.locale_settings()?.currency;
@@ -2712,9 +2515,27 @@ impl Store {
         Ok(())
     }
 
+    pub fn language_source(&self) -> Result<LanguageSource, String> {
+        Ok(match self.meta_get("language_source")?.as_deref() {
+            Some(raw) => LanguageSource::parse(raw),
+            // Existing installs kept a fixed language before this flag existed.
+            None => LanguageSource::User,
+        })
+    }
+
+    pub fn set_language_source(&self, source: LanguageSource) -> Result<(), String> {
+        self.meta_set("language_source", source.as_str())
+    }
+
     pub fn locale_settings(&self) -> Result<LocaleSettings, String> {
+        let language = match self.language_source()? {
+            LanguageSource::Platform => locale::detect_platform_language(),
+            LanguageSource::User => self
+                .meta_get("language")?
+                .unwrap_or_else(|| "en".into()),
+        };
         Ok(LocaleSettings {
-            language: self.meta_get("language")?.unwrap_or_else(|| "en".into()),
+            language,
             currency: self.meta_get("currency")?.unwrap_or_else(|| "INR".into()),
         })
     }
@@ -2723,6 +2544,103 @@ impl Store {
         self.meta_set("language", &settings.language)?;
         self.meta_set("currency", &settings.currency)?;
         Ok(())
+    }
+
+    /// True once the first-run language screen has been confirmed (or the
+    /// install already had a role / Owner PIN before that screen existed).
+    pub fn language_setup_complete(&self) -> Result<bool, String> {
+        if self.meta_get("language_setup_complete")?.as_deref() == Some("1") {
+            return Ok(true);
+        }
+        // Existing installs: do not interrupt shops that already started.
+        if self.device_role()?.is_some() || self.owner_setup_complete()? {
+            self.meta_set("language_setup_complete", "1")?;
+            if self.meta_get("language_source")?.is_none() {
+                self.meta_set("language_source", LanguageSource::User.as_str())?;
+            }
+            return Ok(true);
+        }
+        Ok(false)
+    }
+
+    /// Ensure a catalogue language is stored before the first-run picker.
+    /// Fresh DBs already get the OS default in `ensure_seed_data`; this is a
+    /// safety net if meta was wiped mid-setup.
+    pub fn seed_platform_language_if_needed(&self) -> Result<String, String> {
+        if self.language_setup_complete()? {
+            return Ok(self.locale_settings()?.language);
+        }
+        let platform = locale::detect_platform_language();
+        if self.meta_get("language")?.is_none() {
+            let settings = LocaleSettings {
+                language: platform.clone(),
+                currency: self
+                    .meta_get("currency")?
+                    .unwrap_or_else(|| "INR".into()),
+            };
+            self.set_locale_settings(&settings)?;
+            return Ok(settings.language);
+        }
+        // While setup is open, keep the provisional pick in sync with OS when
+        // the user has not switched to a fixed language yet.
+        Ok(self
+            .meta_get("language")?
+            .unwrap_or(platform))
+    }
+
+    /// Finish first-run language: follow the OS, or lock a catalogue language.
+    pub fn complete_language_setup(
+        &self,
+        source: LanguageSource,
+        user_language: Option<&str>,
+    ) -> Result<LocaleSettings, String> {
+        match source {
+            LanguageSource::Platform => {
+                let code = locale::detect_platform_language();
+                let mut settings = self.locale_settings()?;
+                // Cache the current OS language; reads still re-detect while
+                // source stays Platform.
+                settings.language = code;
+                self.set_locale_settings(&settings)?;
+                self.set_language_source(LanguageSource::Platform)?;
+            }
+            LanguageSource::User => {
+                let code = user_language
+                    .map(str::trim)
+                    .filter(|c| locale::language_by_code(c).is_some())
+                    .unwrap_or("en");
+                let mut settings = self.locale_settings()?;
+                settings.language = code.into();
+                self.set_locale_settings(&settings)?;
+                self.set_language_source(LanguageSource::User)?;
+            }
+        }
+        self.meta_set("language_setup_complete", "1")?;
+        self.locale_settings()
+    }
+
+    /// Switch to a fixed catalogue language (Settings / first-run list).
+    pub fn set_user_language(&self, code: &str) -> Result<LocaleSettings, String> {
+        let code = if locale::language_by_code(code).is_some() {
+            code.trim()
+        } else {
+            return Err("Unknown language".into());
+        };
+        let mut settings = self.locale_settings()?;
+        settings.language = code.into();
+        self.set_locale_settings(&settings)?;
+        self.set_language_source(LanguageSource::User)?;
+        self.locale_settings()
+    }
+
+    /// Follow the device language from now on.
+    pub fn set_platform_language(&self) -> Result<LocaleSettings, String> {
+        let code = locale::detect_platform_language();
+        let mut settings = self.locale_settings()?;
+        settings.language = code;
+        self.set_locale_settings(&settings)?;
+        self.set_language_source(LanguageSource::Platform)?;
+        self.locale_settings()
     }
 
     // ------------------------------------------------------------- fiscal
@@ -3509,23 +3427,28 @@ impl Store {
         actor: &StaffMember,
         ref_id: &str,
     ) -> Result<(), String> {
+        let times = EventTimes::capture(None);
         self.conn
             .execute(
                 "INSERT INTO stock_movements(
                     id, branch_id, product_id, created_at, delta_qty,
-                    reason, note, actor_id, actor_name, ref_id
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
+                    reason, note, actor_id, actor_name, ref_id,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)",
                 params![
                     new_id(),
                     self.active_branch_id()?,
                     product_id,
-                    Local::now().to_rfc3339(),
+                    times.user_at,
                     delta_qty,
                     reason,
                     note,
                     actor.id,
                     actor.name,
-                    ref_id
+                    ref_id,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -3534,9 +3457,24 @@ impl Store {
 
     /// Goods received: records the bill, raises stock on tracked items and
     /// leaves one `purchase` movement per line.
+    ///
+    /// `lines` are `(product_id, qty_milli, unit_cost_paise)`.
+    /// When `party_id` is set and `on_account`, the total posts to AP (we owe them).
     pub fn record_purchase(
         &self,
         supplier: &str,
+        lines: &[(String, i64, i64)],
+        note: &str,
+        actor: &StaffMember,
+    ) -> Result<Purchase, String> {
+        self.record_purchase_ex(supplier, "", false, lines, note, actor)
+    }
+
+    pub fn record_purchase_ex(
+        &self,
+        supplier: &str,
+        party_id: &str,
+        on_account: bool,
         lines: &[(String, i64, i64)],
         note: &str,
         actor: &StaffMember,
@@ -3548,28 +3486,43 @@ impl Store {
         if !actor.can_access_inventory() {
             return Err("Not allowed to record purchases".into());
         }
+        let party_id = party_id.trim();
+        if on_account && party_id.is_empty() {
+            return Err("On-account purchase needs a supplier party".into());
+        }
+        if !party_id.is_empty() {
+            let _ = self
+                .get_customer(party_id)?
+                .ok_or_else(|| "Supplier party not found".to_string())?;
+        }
         let branch_id = self.active_branch_id()?;
-        let created_at = Local::now().to_rfc3339();
+        let times = EventTimes::capture(None);
+        let created_at = times.user_at.clone();
         let purchase_id = new_id();
         let mut built = Vec::with_capacity(lines.len());
-        for (product_id, qty, unit_cost_paise) in lines {
-            if *qty <= 0 {
+        for (product_id, qty_milli, unit_cost_paise) in lines {
+            let qty_milli = if *qty_milli > 0 {
+                *qty_milli
+            } else {
                 return Err("Purchase quantity must be > 0".into());
-            }
+            };
             if *unit_cost_paise < 0 {
                 return Err("Unit cost cannot be negative".into());
             }
             let product = self
                 .get_product(product_id)?
                 .ok_or_else(|| format!("Product not found: {product_id}"))?;
+            let qty_whole = milli_to_whole_qty(qty_milli).max(1);
             built.push((
                 PurchaseLine {
                     id: new_id(),
                     purchase_id: purchase_id.clone(),
                     product_id: product.id.clone(),
                     name: product.name.clone(),
-                    qty: *qty,
+                    qty: qty_whole,
                     unit_cost_paise: *unit_cost_paise,
+                    qty_milli,
+                    unit_label: product.unit_label.clone(),
                 },
                 product.tracks_stock(),
             ));
@@ -3578,20 +3531,33 @@ impl Store {
             .iter()
             .map(|(l, _)| l.line_cost_paise())
             .fold(0i64, |a, b| a.saturating_add(b));
+        let supplier_name = if !party_id.is_empty() {
+            self.get_customer(party_id)?
+                .map(|c| c.name)
+                .unwrap_or_else(|| supplier.trim().to_string())
+        } else {
+            supplier.trim().to_string()
+        };
         self.conn
             .execute(
                 "INSERT INTO purchases(
-                    id, branch_id, created_at, supplier, total_paise, note, actor_id, actor_name
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                    id, branch_id, created_at, supplier, total_paise, note, actor_id, actor_name,
+                    party_id, on_account, user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)",
                 params![
                     purchase_id,
                     branch_id,
                     created_at,
-                    supplier.trim(),
+                    supplier_name,
                     total_paise,
                     note.trim(),
                     actor.id,
-                    actor.name
+                    actor.name,
+                    party_id,
+                    if on_account { 1 } else { 0 },
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -3599,15 +3565,17 @@ impl Store {
             self.conn
                 .execute(
                     "INSERT INTO purchase_lines(
-                        id, purchase_id, product_id, name, qty, unit_cost_paise
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6)",
+                        id, purchase_id, product_id, name, qty, unit_cost_paise, qty_milli, unit_label
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
                     params![
                         line.id,
                         line.purchase_id,
                         line.product_id,
                         line.name,
                         line.qty,
-                        line.unit_cost_paise
+                        line.unit_cost_paise,
+                        line.qty_milli,
+                        line.unit_label
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -3624,21 +3592,50 @@ impl Store {
                 &line.product_id,
                 line.qty,
                 "purchase",
-                supplier.trim(),
+                &supplier_name,
                 actor,
                 &purchase_id,
             )?;
         }
+        if on_account && !party_id.is_empty() && total_paise > 0 {
+            self.conn
+                .execute(
+                    "INSERT INTO payable_ledger(
+                        id, party_id, created_at, kind, amount_paise, purchase_id,
+                        pay_method, actor_id, actor_name, detail,
+                        user_at, device_at, server_at
+                     ) VALUES(?1, ?2, ?3, 'purchase', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
+                    params![
+                        new_id(),
+                        party_id,
+                        created_at,
+                        total_paise,
+                        purchase_id,
+                        actor.id,
+                        actor.name,
+                        format!("Purchase {supplier_name}"),
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+        }
         self.audit(
             actor,
             "purchase.add",
-            &format!("{purchase_id} {} {total_paise}", supplier.trim()),
+            &format!("{purchase_id} {supplier_name} {total_paise}"),
         )?;
         Ok(Purchase {
             id: purchase_id,
             branch_id,
             created_at,
-            supplier: supplier.trim().to_string(),
+            user_at: times.user_at,
+            device_at: times.device_at,
+            server_at: times.server_at,
+            supplier: supplier_name,
+            party_id: party_id.to_string(),
+            on_account,
             total_paise,
             note: note.trim().to_string(),
             actor_id: actor.id.clone(),
@@ -3663,7 +3660,10 @@ impl Store {
             .prepare(
                 "SELECT m.id, COALESCE(m.branch_id, ''), m.product_id,
                         COALESCE(p.name, ''), m.created_at, m.delta_qty,
-                        m.reason, m.note, m.actor_id, m.actor_name, m.ref_id
+                        m.reason, m.note, m.actor_id, m.actor_name, m.ref_id,
+                        COALESCE(NULLIF(m.user_at, ''), m.created_at),
+                        COALESCE(NULLIF(m.device_at, ''), m.created_at),
+                        COALESCE(m.server_at, '')
                  FROM stock_movements m
                  LEFT JOIN products p ON p.id = m.product_id
                  WHERE m.branch_id = ?1 OR m.branch_id = ''
@@ -3685,6 +3685,9 @@ impl Store {
                     actor_id: row.get(8)?,
                     actor_name: row.get(9)?,
                     ref_id: row.get(10)?,
+                    user_at: row.get(11)?,
+                    device_at: row.get(12)?,
+                    server_at: row.get(13)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -3698,7 +3701,11 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, COALESCE(branch_id, ''), created_at, supplier,
-                        total_paise, note, actor_id, actor_name
+                        total_paise, note, actor_id, actor_name,
+                        COALESCE(party_id, ''), COALESCE(on_account, 0),
+                        COALESCE(NULLIF(user_at, ''), created_at),
+                        COALESCE(NULLIF(device_at, ''), created_at),
+                        COALESCE(server_at, '')
                  FROM purchases
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY created_at DESC
@@ -3716,6 +3723,11 @@ impl Store {
                     note: row.get(5)?,
                     actor_id: row.get(6)?,
                     actor_name: row.get(7)?,
+                    party_id: row.get(8)?,
+                    on_account: row.get::<_, i64>(9)? != 0,
+                    user_at: row.get(10)?,
+                    device_at: row.get(11)?,
+                    server_at: row.get(12)?,
                     lines: Vec::new(),
                 })
             })
@@ -3732,7 +3744,8 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT id, purchase_id, product_id, name, qty, unit_cost_paise
+                "SELECT id, purchase_id, product_id, name, qty, unit_cost_paise,
+                        COALESCE(qty_milli, 0), COALESCE(unit_label, '')
                  FROM purchase_lines WHERE purchase_id = ?1",
             )
             .map_err(|e| e.to_string())?;
@@ -3745,6 +3758,8 @@ impl Store {
                     name: row.get(3)?,
                     qty: row.get(4)?,
                     unit_cost_paise: row.get(5)?,
+                    qty_milli: row.get(6)?,
+                    unit_label: row.get(7)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -3793,13 +3808,46 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
+    /// Mark an outbox row synced and stamp `server_at` on the related books row
+    /// (sale id from `sale.finalize` payload) when still empty.
     pub fn mark_outbox_synced(&self, id: &str) -> Result<(), String> {
+        let server_at = Local::now().to_rfc3339();
+        let row: Option<(String, String)> = self
+            .conn
+            .query_row(
+                "SELECT event_type, payload_json FROM sync_outbox WHERE id = ?1",
+                params![id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
         self.conn
             .execute(
                 "UPDATE sync_outbox SET synced_at = ?1 WHERE id = ?2",
-                params![Local::now().to_rfc3339(), id],
+                params![server_at, id],
             )
             .map_err(|e| e.to_string())?;
+        if let Some((event_type, payload)) = row {
+            if event_type == "sale.finalize" {
+                let sale_id = serde_json::from_str::<Sale>(&payload)
+                    .ok()
+                    .map(|s| s.id)
+                    .or_else(|| {
+                        serde_json::from_str::<serde_json::Value>(&payload)
+                            .ok()
+                            .and_then(|v| v.get("id")?.as_str().map(str::to_string))
+                    });
+                if let Some(sale_id) = sale_id {
+                    self.conn
+                        .execute(
+                            "UPDATE sales SET server_at = ?1
+                             WHERE id = ?2 AND IFNULL(server_at, '') = ''",
+                            params![server_at, sale_id],
+                        )
+                        .map_err(|e| e.to_string())?;
+                }
+            }
+        }
         Ok(())
     }
 
@@ -4123,7 +4171,8 @@ impl Store {
 
         let sale_id = new_id();
         let branch_code = self.active_branch()?.code;
-        let created_at = Local::now().to_rfc3339();
+        let times = EventTimes::capture(draft.user_at.as_deref());
+        let created_at = times.user_at.clone(); // books day = user time
         let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
 
         // Reserved inside the sale's transaction so a crash can never hand the
@@ -4135,9 +4184,9 @@ impl Store {
                 id, created_at, total_paise, lines_total_paise, rounding_paise,
                 pay_method, status, table_id, customer_id, created_by_id, created_by_name,
                 branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
-                service_paise, invoice_no, money_lane
+                service_paise, invoice_no, money_lane, user_at, device_at, server_at
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22)",
             params![
                 sale_id,
                 created_at,
@@ -4157,7 +4206,10 @@ impl Store {
                 net_paise,
                 service_paise,
                 invoice_no,
-                draft.money_lane.as_str()
+                draft.money_lane.as_str(),
+                times.user_at,
+                times.device_at,
+                times.server_at
             ],
         )
         .map_err(|e| e.to_string())?;
@@ -4235,8 +4287,9 @@ impl Store {
             tx.execute(
                 "INSERT INTO stock_movements(
                     id, branch_id, product_id, created_at, delta_qty,
-                    reason, note, actor_id, actor_name, ref_id
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, 'sale', '', ?6, ?7, ?8)",
+                    reason, note, actor_id, actor_name, ref_id,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, 'sale', '', ?6, ?7, ?8, ?9, ?10, ?11)",
                 params![
                     new_id(),
                     branch_id,
@@ -4245,7 +4298,10 @@ impl Store {
                     -qty,
                     actor.id,
                     actor.name,
-                    sale_id
+                    sale_id,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -4334,8 +4390,9 @@ impl Store {
                     tx.execute(
                         "INSERT INTO credit_ledger(
                             id, customer_id, created_at, kind, amount_paise,
-                            sale_id, pay_method, actor_id, actor_name, detail
-                         ) VALUES(?1, ?2, ?3, 'apply', ?4, ?5, NULL, ?6, ?7, ?8)",
+                            sale_id, pay_method, actor_id, actor_name, detail,
+                            user_at, device_at, server_at
+                         ) VALUES(?1, ?2, ?3, 'apply', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
                         params![
                             new_id(),
                             cid,
@@ -4344,7 +4401,10 @@ impl Store {
                             sale_id,
                             actor.id,
                             actor.name,
-                            format!("Applied advance on sale {sale_id}")
+                            format!("Applied advance on sale {sale_id}"),
+                            times.user_at,
+                            times.device_at,
+                            times.server_at
                         ],
                     )
                     .map_err(|e| e.to_string())?;
@@ -4353,8 +4413,9 @@ impl Store {
                     tx.execute(
                         "INSERT INTO credit_ledger(
                             id, customer_id, created_at, kind, amount_paise,
-                            sale_id, pay_method, actor_id, actor_name, detail
-                         ) VALUES(?1, ?2, ?3, 'sale', ?4, ?5, NULL, ?6, ?7, ?8)",
+                            sale_id, pay_method, actor_id, actor_name, detail,
+                            user_at, device_at, server_at
+                         ) VALUES(?1, ?2, ?3, 'sale', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
                         params![
                             new_id(),
                             cid,
@@ -4363,7 +4424,10 @@ impl Store {
                             sale_id,
                             actor.id,
                             actor.name,
-                            format!("Credit on sale {sale_id}")
+                            format!("Credit on sale {sale_id}"),
+                            times.user_at,
+                            times.device_at,
+                            times.server_at
                         ],
                     )
                     .map_err(|e| e.to_string())?;
@@ -4402,6 +4466,9 @@ impl Store {
             id: sale_id.clone(),
             invoice_no,
             created_at: created_at.clone(),
+            user_at: times.user_at.clone(),
+            device_at: times.device_at.clone(),
+            server_at: times.server_at.clone(),
             lines_total_paise: draft.lines_total_paise,
             rounding_paise: draft.rounding_paise,
             total_paise,
@@ -4615,6 +4682,9 @@ impl Store {
             // Amending corrects a bill, it does not issue a new one.
             invoice_no: previous.invoice_no,
             created_at: previous.created_at,
+            user_at: previous.user_at,
+            device_at: previous.device_at,
+            server_at: previous.server_at,
             lines_total_paise: draft.lines_total_paise,
             rounding_paise: draft.rounding_paise,
             total_paise,
@@ -5670,7 +5740,7 @@ impl Store {
             return Err("Use Cash, UPI/rail, or Card".into());
         }
         let bal = self.customer_balance(customer_id)?;
-        let now = Local::now().to_rfc3339();
+        let times = EventTimes::capture(None);
         let detail = if detail.trim().is_empty() {
             format!("{}", pay.as_str())
         } else {
@@ -5684,17 +5754,21 @@ impl Store {
                 .execute(
                     "INSERT INTO credit_ledger(
                         id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_id, actor_name, detail
-                     ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8)",
+                        sale_id, pay_method, actor_id, actor_name, detail,
+                        user_at, device_at, server_at
+                     ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
                     params![
                         new_id(),
                         customer_id,
-                        now,
+                        times.user_at,
                         -settle_part,
                         pay.as_str(),
                         actor.id,
                         actor.name,
-                        format!("Settlement {detail}")
+                        format!("Settlement {detail}"),
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -5704,17 +5778,21 @@ impl Store {
                 .execute(
                     "INSERT INTO credit_ledger(
                         id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_id, actor_name, detail
-                     ) VALUES(?1, ?2, ?3, 'advance', ?4, NULL, ?5, ?6, ?7, ?8)",
+                        sale_id, pay_method, actor_id, actor_name, detail,
+                        user_at, device_at, server_at
+                     ) VALUES(?1, ?2, ?3, 'advance', ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
                     params![
                         new_id(),
                         customer_id,
-                        now,
+                        times.user_at,
                         -advance_part,
                         pay.as_str(),
                         actor.id,
                         actor.name,
-                        format!("Advance {detail}")
+                        format!("Advance {detail}"),
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -5733,6 +5811,403 @@ impl Store {
         Ok(())
     }
 
+    /// Clear AR without collecting cash (write-off / nil balance).
+    /// `amount_paise == 0` means write off the full outstanding.
+    pub fn write_off_credit(
+        &mut self,
+        customer_id: &str,
+        amount_paise: i64,
+        reason: &str,
+        actor: &StaffMember,
+    ) -> Result<i64, String> {
+        self.assert_server_writer("Write off credit")?;
+        if !actor.is_owner() && !actor.role.can_void_refund() {
+            return Err("Only Owner/Manager can write off credit".into());
+        }
+        let bal = self.customer_balance(customer_id)?;
+        let outstanding = bal.max(0);
+        if outstanding <= 0 {
+            return Err("Nothing to write off — balance is already clear".into());
+        }
+        let write = if amount_paise <= 0 {
+            outstanding
+        } else {
+            amount_paise.min(outstanding)
+        };
+        let reason = reason.trim();
+        if reason.is_empty() {
+            return Err("Write-off needs a reason".into());
+        }
+        let times = EventTimes::capture(None);
+        self.conn
+            .execute(
+                "INSERT INTO credit_ledger(
+                    id, customer_id, created_at, kind, amount_paise,
+                    sale_id, pay_method, actor_id, actor_name, detail,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, 'write_off', ?4, NULL, NULL, ?5, ?6, ?7, ?8, ?9, ?10)",
+                params![
+                    new_id(),
+                    customer_id,
+                    times.user_at,
+                    -write,
+                    actor.id,
+                    actor.name,
+                    reason,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(
+            actor,
+            "credit.write_off",
+            &format!("{customer_id} {write} {reason}"),
+        )?;
+        Ok(write)
+    }
+
+    pub fn party_payable_balance(&self, party_id: &str) -> Result<i64, String> {
+        self.conn
+            .query_row(
+                "SELECT COALESCE(SUM(amount_paise), 0) FROM payable_ledger WHERE party_id = ?1",
+                params![party_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn outstanding_payable_total(&self) -> Result<i64, String> {
+        let parties = self.list_customers()?;
+        let mut total = 0i64;
+        for p in parties {
+            let bal = self.party_payable_balance(&p.id)?;
+            if bal > 0 {
+                total += bal;
+            }
+        }
+        Ok(total)
+    }
+
+    /// Pay down AP (we owed them). Excess is not tracked as receivable here.
+    pub fn settle_payable(
+        &mut self,
+        party_id: &str,
+        amount_paise: i64,
+        pay: PayMethod,
+        actor: &StaffMember,
+        detail: &str,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Settle payable")?;
+        if amount_paise <= 0 {
+            return Err("Amount must be > 0".into());
+        }
+        if pay.is_credit() || pay.is_split() {
+            return Err("Use Cash, UPI/rail, or Card".into());
+        }
+        let owed = self.party_payable_balance(party_id)?.max(0);
+        if owed <= 0 {
+            return Err("Nothing payable for this party".into());
+        }
+        let settle = amount_paise.min(owed);
+        let times = EventTimes::capture(None);
+        let detail = if detail.trim().is_empty() {
+            pay.as_str().to_string()
+        } else {
+            detail.trim().to_string()
+        };
+        self.conn
+            .execute(
+                "INSERT INTO payable_ledger(
+                    id, party_id, created_at, kind, amount_paise, purchase_id,
+                    pay_method, actor_id, actor_name, detail,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                params![
+                    new_id(),
+                    party_id,
+                    times.user_at,
+                    -settle,
+                    pay.as_str(),
+                    actor.id,
+                    actor.name,
+                    format!("Payable settle {detail}"),
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(
+            actor,
+            "payable.settle",
+            &format!("{party_id} {settle} {}", pay.as_str()),
+        )?;
+        Ok(())
+    }
+
+    pub fn write_off_payable(
+        &mut self,
+        party_id: &str,
+        amount_paise: i64,
+        reason: &str,
+        actor: &StaffMember,
+    ) -> Result<i64, String> {
+        self.assert_server_writer("Write off payable")?;
+        if !actor.is_owner() && !actor.role.can_void_refund() {
+            return Err("Only Owner/Manager can write off payables".into());
+        }
+        let owed = self.party_payable_balance(party_id)?.max(0);
+        if owed <= 0 {
+            return Err("Nothing to write off".into());
+        }
+        let write = if amount_paise <= 0 {
+            owed
+        } else {
+            amount_paise.min(owed)
+        };
+        let reason = reason.trim();
+        if reason.is_empty() {
+            return Err("Write-off needs a reason".into());
+        }
+        let times = EventTimes::capture(None);
+        self.conn
+            .execute(
+                "INSERT INTO payable_ledger(
+                    id, party_id, created_at, kind, amount_paise, purchase_id,
+                    pay_method, actor_id, actor_name, detail,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, 'write_off', ?4, NULL, NULL, ?5, ?6, ?7, ?8, ?9, ?10)",
+                params![
+                    new_id(),
+                    party_id,
+                    times.user_at,
+                    -write,
+                    actor.id,
+                    actor.name,
+                    reason,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(
+            actor,
+            "payable.write_off",
+            &format!("{party_id} {write} {reason}"),
+        )?;
+        Ok(write)
+    }
+
+    pub fn payable_aging_text(&self) -> Result<String, String> {
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let mut out = String::from("Whom we owe (AP)\n");
+        let mut any = false;
+        for party in self.list_customers()? {
+            let bal = self.party_payable_balance(&party.id)?;
+            if bal <= 0 {
+                continue;
+            }
+            any = true;
+            let kind = if party.kind_label.trim().is_empty() {
+                String::new()
+            } else {
+                format!(" · {}", party.kind_label.trim())
+            };
+            out.push_str(&format!(
+                "{}{} — {}\n",
+                party.name,
+                kind,
+                Money(bal).format_localized(&currency, &fiscal)
+            ));
+        }
+        if !any {
+            out.push_str("No open payables.\n");
+        } else {
+            out.push_str(&format!(
+                "Total we owe {}\n",
+                Money(self.outstanding_payable_total()?).format_localized(&currency, &fiscal)
+            ));
+        }
+        Ok(out)
+    }
+
+    pub fn list_units(&self) -> Result<Vec<UnitDef>, String> {
+        let mut stmt = self
+            .conn
+            .prepare("SELECT id, code, name, builtin FROM units ORDER BY builtin DESC, code")
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |row| {
+                Ok(UnitDef {
+                    id: row.get(0)?,
+                    code: row.get(1)?,
+                    name: row.get(2)?,
+                    builtin: row.get::<_, i64>(3)? != 0,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn add_unit(&self, code: &str, name: &str) -> Result<UnitDef, String> {
+        self.assert_server_writer("Add unit")?;
+        let code = code.trim().to_ascii_lowercase();
+        let name = name.trim();
+        if code.is_empty() || name.is_empty() {
+            return Err("Unit code and name required".into());
+        }
+        let id = new_id();
+        self.conn
+            .execute(
+                "INSERT INTO units(id, code, name, builtin) VALUES(?1, ?2, ?3, 0)",
+                params![id, code, name],
+            )
+            .map_err(|e| {
+                if e.to_string().contains("UNIQUE") {
+                    "Unit code already exists".into()
+                } else {
+                    e.to_string()
+                }
+            })?;
+        Ok(UnitDef {
+            id,
+            code,
+            name: name.into(),
+            builtin: false,
+        })
+    }
+
+    pub fn list_unit_conversions(&self) -> Result<Vec<UnitConversion>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, from_code, to_code, factor_milli FROM unit_conversions
+                 ORDER BY from_code, to_code",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |row| {
+                Ok(UnitConversion {
+                    id: row.get(0)?,
+                    from_code: row.get(1)?,
+                    to_code: row.get(2)?,
+                    factor_milli: row.get(3)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    /// `1 from = (factor_milli/1000) to` in milli-qty space.
+    pub fn add_unit_conversion(
+        &self,
+        from_code: &str,
+        to_code: &str,
+        factor_milli: i64,
+    ) -> Result<UnitConversion, String> {
+        self.assert_server_writer("Add unit conversion")?;
+        let from_code = from_code.trim().to_ascii_lowercase();
+        let to_code = to_code.trim().to_ascii_lowercase();
+        if from_code.is_empty() || to_code.is_empty() || from_code == to_code {
+            return Err("Need two different unit codes".into());
+        }
+        if factor_milli <= 0 {
+            return Err("Conversion factor must be > 0".into());
+        }
+        let id = new_id();
+        self.conn
+            .execute(
+                "INSERT INTO unit_conversions(id, from_code, to_code, factor_milli)
+                 VALUES(?1, ?2, ?3, ?4)",
+                params![id, from_code, to_code, factor_milli],
+            )
+            .map_err(|e| {
+                if e.to_string().contains("UNIQUE") {
+                    "Conversion already exists".into()
+                } else {
+                    e.to_string()
+                }
+            })?;
+        Ok(UnitConversion {
+            id,
+            from_code,
+            to_code,
+            factor_milli,
+        })
+    }
+
+    /// Convert qty_milli from `from_code` into `to_code` using a direct conversion row.
+    pub fn convert_qty_milli(
+        &self,
+        qty_milli: i64,
+        from_code: &str,
+        to_code: &str,
+    ) -> Result<i64, String> {
+        let from_code = from_code.trim().to_ascii_lowercase();
+        let to_code = to_code.trim().to_ascii_lowercase();
+        if from_code == to_code {
+            return Ok(qty_milli);
+        }
+        let factor: i64 = self
+            .conn
+            .query_row(
+                "SELECT factor_milli FROM unit_conversions
+                 WHERE from_code = ?1 AND to_code = ?2",
+                params![from_code, to_code],
+                |r| r.get(0),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?
+            .ok_or_else(|| format!("No conversion {from_code} → {to_code}"))?;
+        Ok((qty_milli.saturating_mul(factor)) / QTY_MILLI_UNIT)
+    }
+
+    /// Honest Books home: money in/out, AR/AP, cash vs bank, period profit shape.
+    pub fn books_overview_text(&self) -> Result<String, String> {
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let books = self.period_books(&today, &today)?;
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let tmpl = self.entity_template()?;
+        let expenses_today = books.expenses_paise;
+        Ok(format!(
+            "Today — books at a glance\n\
+             Money in (sales) {}\n\
+             Money out — purchases (COGS) {} · expenses {}\n\
+             Gross {} · Net {}\n\
+             {} {} · {} {}\n\
+             Cash {} · {} {} · Card {}\n\
+             They owe us {}\n\
+             We owe them {}\n\
+             Bank balance {}\n\
+             Bank net today {}\n",
+            Money(books.revenue_paise).format_localized(&currency, &fiscal),
+            Money(books.cogs_paise).format_localized(&currency, &fiscal),
+            Money(expenses_today).format_localized(&currency, &fiscal),
+            Money(books.gross_paise()).format_localized(&currency, &fiscal),
+            Money(books.net_paise()).format_localized(&currency, &fiscal),
+            tmpl.lane_declared_label,
+            Money(books.declared_paise).format_localized(&currency, &fiscal),
+            tmpl.lane_owner_label,
+            Money(books.owner_lane_paise).format_localized(&currency, &fiscal),
+            Money(books.cash_paise).format_localized(&currency, &fiscal),
+            fiscal.digital_pay_label(),
+            Money(books.upi_paise).format_localized(&currency, &fiscal),
+            Money(books.card_paise).format_localized(&currency, &fiscal),
+            Money(books.outstanding_credit_paise).format_localized(&currency, &fiscal),
+            Money(books.outstanding_payable_paise).format_localized(&currency, &fiscal),
+            Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal),
+            Money(books.bank_in_paise.saturating_sub(books.bank_out_paise))
+                .format_localized(&currency, &fiscal),
+        ))
+    }
+
     pub fn list_credit_ledger(
         &self,
         customer_id: &str,
@@ -5742,7 +6217,10 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_name, detail
+                        sale_id, pay_method, actor_name, detail,
+                        COALESCE(NULLIF(user_at, ''), created_at),
+                        COALESCE(NULLIF(device_at, ''), created_at),
+                        COALESCE(server_at, '')
                  FROM credit_ledger WHERE customer_id = ?1
                  ORDER BY created_at DESC LIMIT ?2",
             )
@@ -5759,6 +6237,9 @@ impl Store {
                     pay_method: row.get(6)?,
                     actor_name: row.get(7)?,
                     detail: row.get(8)?,
+                    user_at: row.get(9)?,
+                    device_at: row.get(10)?,
+                    server_at: row.get(11)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -5852,7 +6333,7 @@ impl Store {
     /// (`KUMKAJ_APP_ID`); do not nest a second vendor folder.
     pub fn open_in_data_dir(base: &Path) -> Result<Self, String> {
         fs::create_dir_all(base).map_err(|e| e.to_string())?;
-        Self::open_path(&base.join("kumkaj.sqlite3"))
+        crate::local_servers::open_active_server(base)
     }
 }
 
@@ -5882,8 +6363,7 @@ const fn const_str_eq(a: &str, b: &str) -> bool {
     true
 }
 
-/// Every column [`row_to_product`] expects, in order. COALESCE keeps rows
-/// written before schema v11 readable.
+/// Every column [`row_to_product`] expects, in order.
 const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image_key,
      COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
@@ -5898,7 +6378,10 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(branch_id, ''), COALESCE(order_type, 'counter'), COALESCE(tax_paise, 0),
      COALESCE(tax_pricing, 'inclusive'), COALESCE(tax_label, 'Tax'), COALESCE(net_paise, 0),
      COALESCE(service_paise, 0), COALESCE(invoice_no, ''),
-     COALESCE(money_lane, 'declared')";
+     COALESCE(money_lane, 'declared'),
+     COALESCE(NULLIF(user_at, ''), created_at),
+     COALESCE(NULLIF(device_at, ''), created_at),
+     COALESCE(server_at, '')";
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -6099,6 +6582,9 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         service_paise: row.get(17)?,
         invoice_no: row.get(18)?,
         money_lane: row.get(19)?,
+        user_at: row.get(20)?,
+        device_at: row.get(21)?,
+        server_at: row.get(22)?,
         lines: Vec::new(),
     })
 }
@@ -6149,6 +6635,61 @@ pub fn data_dir() -> Result<PathBuf, String> {
     #[cfg(not(target_os = "android"))]
     {
         Err("No data directory".to_string())
+    }
+}
+
+/// Hard floor for desktop window width/height (css px) on every desktop OS.
+/// Matches the app_shell layout floor (`Fill{min: 320.}`); Android ignores window sizing.
+pub const MIN_DESKTOP_WINDOW_CSS: f64 = 320.0;
+
+/// Last desktop window size/position (`window_geom.json` under [`data_dir`]).
+/// Mobile ignores this — the OS owns the surface.
+#[derive(Clone, Copy, Debug, serde::Serialize, serde::Deserialize)]
+pub struct WindowGeomPrefs {
+    pub width: f64,
+    pub height: f64,
+    pub x: f64,
+    pub y: f64,
+}
+
+fn window_geom_path() -> Result<PathBuf, String> {
+    Ok(data_dir()?.join("window_geom.json"))
+}
+
+pub fn load_window_geom() -> Option<WindowGeomPrefs> {
+    let path = window_geom_path().ok()?;
+    let raw = fs::read_to_string(path).ok()?;
+    let prefs: WindowGeomPrefs = serde_json::from_str(&raw).ok()?;
+    if !prefs.width.is_finite()
+        || !prefs.height.is_finite()
+        || prefs.width < MIN_DESKTOP_WINDOW_CSS
+        || prefs.height < MIN_DESKTOP_WINDOW_CSS
+        || !prefs.x.is_finite()
+        || !prefs.y.is_finite()
+    {
+        return None;
+    }
+    Some(prefs)
+}
+
+pub fn save_window_geom(prefs: WindowGeomPrefs) {
+    if !prefs.width.is_finite()
+        || !prefs.height.is_finite()
+        || prefs.width < MIN_DESKTOP_WINDOW_CSS
+        || prefs.height < MIN_DESKTOP_WINDOW_CSS
+        || !prefs.x.is_finite()
+        || !prefs.y.is_finite()
+    {
+        return;
+    }
+    let Ok(path) = window_geom_path() else {
+        return;
+    };
+    if let Some(parent) = path.parent() {
+        let _ = fs::create_dir_all(parent);
+    }
+    if let Ok(raw) = serde_json::to_string_pretty(&prefs) {
+        let _ = fs::write(path, raw);
     }
 }
 
@@ -6881,76 +7422,37 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// Upgrading a single-shop DB must keep every existing row visible: the
-    /// v11 backfill adopts them into the seeded Main branch.
+    /// Fresh DB is schema 1 with org/branch, fiscal pack, units, and triple times.
     #[test]
-    fn legacy_rows_adopt_main_branch_on_upgrade() {
+    fn fresh_db_is_schema_one_with_books_spine() {
         let path = temp_db();
-        let sale_id = {
-            let mut store = Store::open_path(&path).unwrap();
-            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-            store.upsert_product(&test_product("Tea", 10)).unwrap();
-            let p = store.list_products(false).unwrap().remove(0);
-            let mut cart = Cart::default();
-            cart.add_or_bump(&p);
-            let draft = cart.to_sale_draft().unwrap();
-            let sale = store
-                .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
-                .unwrap();
-            store.add_expense(500, "milk", "", &owner).unwrap();
-            sale.id
-        };
-        // Rewind this DB to look like schema v10.
-        {
-            let conn = Connection::open(&path).unwrap();
-            conn.execute_batch(
-                "DROP TABLE branches;
-                 DROP TABLE categories;
-                 DROP TABLE kitchen_stations;
-                 DROP TABLE stock_movements;
-                 DROP TABLE purchases;
-                 DROP TABLE purchase_lines;
-                 DROP TABLE sync_outbox;
-                 DROP TABLE tax_rates;
-                 ALTER TABLE products DROP COLUMN branch_id;
-                 ALTER TABLE products DROP COLUMN tax_rate_id;
-                 ALTER TABLE sales DROP COLUMN branch_id;
-                 ALTER TABLE sales DROP COLUMN order_type;
-                 ALTER TABLE sales DROP COLUMN tax_paise;
-                 ALTER TABLE sales DROP COLUMN tax_pricing;
-                 ALTER TABLE sales DROP COLUMN tax_label;
-                 ALTER TABLE sales DROP COLUMN net_paise;
-                 ALTER TABLE sales DROP COLUMN service_paise;
-                 ALTER TABLE tables_dining DROP COLUMN branch_id;
-                 ALTER TABLE expenses DROP COLUMN branch_id;
-                 ALTER TABLE customers DROP COLUMN branch_id;
-                 DELETE FROM meta WHERE key IN ('org_id', 'active_branch_id');
-                 UPDATE meta SET value = '10' WHERE key = 'schema_version';",
-            )
-            .unwrap();
-        }
-
-        let store = Store::open_path(&path).unwrap();
-        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "15");
-        // The India pack is the v12 default, so an upgraded shop keeps selling
-        // exactly as it did before country packs existed.
+        let mut store = Store::open_path(&path).unwrap();
+        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
         assert_eq!(store.fiscal_settings().unwrap().country_code, "IN");
         assert_eq!(store.list_tax_rates().unwrap().len(), 5);
         let branch = store.active_branch().unwrap();
         assert_eq!(branch.name, "Main");
         assert!(branch.is_this_device);
-        let products = store.list_products(false).unwrap();
-        assert_eq!(products.len(), 1);
-        assert_eq!(products[0].branch_id, branch.id);
-        assert_eq!(products[0].stock_qty, STOCK_UNTRACKED);
-        let sale = store.get_sale(&sale_id).unwrap().unwrap();
-        assert_eq!(sale.branch_id, branch.id);
-        assert_eq!(sale.order_type(), OrderType::Counter);
-        assert_eq!(sale.tax_paise, 0);
+        assert_eq!(store.list_stations().unwrap().len(), 2);
+        assert_eq!(store.list_tables().unwrap().len(), 6);
+        assert!(store.list_units().unwrap().iter().any(|u| u.code == "kg"));
+
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store.upsert_product(&test_product("Tea", 10)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        assert_eq!(p.branch_id, branch.id);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
+        assert!(!sale.user_at.is_empty());
+        assert!(!sale.device_at.is_empty());
+        assert!(sale.server_at.is_empty());
+        store.add_expense(500, "milk", "", &owner).unwrap();
         assert_eq!(store.today_totals().unwrap().sale_count, 1);
         assert_eq!(store.today_expenses_total().unwrap(), (1, 500));
-        assert_eq!(store.list_tables().unwrap().len(), 6);
-        assert_eq!(store.list_stations().unwrap().len(), 2);
         let _ = std::fs::remove_file(path);
     }
 
@@ -7034,7 +7536,7 @@ mod tests {
         let purchase = store
             .record_purchase(
                 "Sharma Foods",
-                &[(samosa.id.clone(), 5, 800)],
+                &[(samosa.id.clone(), 5_000, 800)],
                 "morning delivery",
                 &owner,
             )
@@ -7121,8 +7623,16 @@ mod tests {
         let pending = store.list_pending_outbox(10).unwrap();
         assert_eq!(pending.len(), 1);
         assert_eq!(pending[0].1, "sale.finalize");
+        assert!(sale.user_at.trim().len() >= 10, "user_at={}", sale.user_at);
+        assert!(sale.device_at.trim().len() >= 10, "device_at={}", sale.device_at);
+        assert!(sale.server_at.is_empty());
         store.mark_outbox_synced(&pending[0].0).unwrap();
         assert!(store.list_pending_outbox(10).unwrap().is_empty());
+        let synced = store.get_sale(&sale.id).unwrap().unwrap();
+        assert!(
+            !synced.server_at.is_empty(),
+            "cloud drain should stamp server_at"
+        );
         store.enqueue_outbox("day.close", "{}").unwrap();
         assert_eq!(store.list_pending_outbox(10).unwrap().len(), 1);
         let _ = std::fs::remove_file(path);
@@ -7461,33 +7971,24 @@ mod tests {
     }
 
     #[test]
-    fn legacy_inclusive_sales_backfill_net_on_upgrade() {
+    fn inclusive_sale_stores_net_and_tax_pricing() {
         let path = temp_db();
-        {
-            let mut store = Store::open_path(&path).unwrap();
-            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-            let mut tea = test_product("Tea", 105);
-            tea.tax_bps = 500;
-            store.upsert_product(&tea).unwrap();
-            let mut cart = Cart::default();
-            cart.add_or_bump(&tea);
-            let draft = cart.to_sale_draft().unwrap();
-            store
-                .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
-                .unwrap();
-            // Pretend this row predates schema v12.
-            store
-                .conn
-                .execute("UPDATE sales SET net_paise = 0, tax_pricing = ''", [])
-                .unwrap();
-            store.meta_set("schema_version", "11").unwrap();
-        }
-        let store = Store::open_path(&path).unwrap();
-        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "15");
+        let mut store = Store::open_path(&path).unwrap();
+        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let mut tea = test_product("Tea", 105);
+        tea.tax_bps = 500;
+        store.upsert_product(&tea).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&tea);
+        let draft = cart.to_sale_draft().unwrap();
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
         let sale = store.recent_sales(1).unwrap().remove(0);
         assert_eq!(sale.total_paise, 10_500);
         assert_eq!(sale.tax_paise, 500);
-        assert_eq!(sale.net_paise, 10_000, "net backfilled as total - tax");
+        assert_eq!(sale.net_paise, 10_000);
         assert_eq!(sale.tax_pricing(), TaxPricing::Inclusive);
         let _ = std::fs::remove_file(path);
     }
@@ -7751,7 +8252,7 @@ mod tests {
                 .adjust_stock(&tea.id, 3, "count", "", &owner)
                 .unwrap_err(),
             store
-                .record_purchase("Supplier", &[(tea.id.clone(), 2, 500)], "", &owner)
+                .record_purchase("Supplier", &[(tea.id.clone(), 2_000, 500)], "", &owner)
                 .unwrap_err(),
             store.add_branch("MG Road", "MG").unwrap_err(),
             store.add_table("T9").unwrap_err(),
@@ -7889,27 +8390,22 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// The v8 upgrade handed every account back as 0000. A shop that was
-    /// already trading must be forced to choose a new Owner PIN.
+    /// When `pin_reset_required` is set (and PIN is the fallback), the till
+    /// stays gated until Owner chooses a new PIN.
     #[test]
-    fn migration_pin_reset_forces_a_new_owner_pin() {
+    fn pin_reset_required_forces_a_new_owner_pin() {
         let path = temp_db();
-        {
-            let store = Store::open_path(&path).unwrap();
-            // A fresh shop has its own first-run setup, so no reset is pending.
-            assert!(!store.pin_reset_required().unwrap());
-            store.complete_owner_setup("4321").unwrap();
-            // Pretend this DB predates the PIN hasher swap.
-            store.meta_set("schema_version", "7").unwrap();
-        }
-
         let store = Store::open_path(&path).unwrap();
-        assert!(
-            store.pin_reset_required().unwrap(),
-            "a trading shop reset to 0000 must demand a new PIN"
-        );
-        // The fallback PIN does open the account — which is exactly why the
-        // flag has to gate the till.
+        assert!(!store.pin_reset_required().unwrap());
+        store.complete_owner_setup("4321").unwrap();
+        store.meta_set("pin_reset_required", "1").unwrap();
+        let fallback = hash_pin("0000").unwrap();
+        store
+            .conn
+            .execute("UPDATE staff SET pin_hash = ?1", params![fallback])
+            .unwrap();
+
+        assert!(store.pin_reset_required().unwrap());
         assert!(store.authenticate_owner_pin("0000").unwrap().is_some());
         assert!(store.complete_pin_reset("0000").is_err());
         assert!(store.complete_pin_reset("12").is_err());
@@ -7919,6 +8415,97 @@ mod tests {
         assert!(store.authenticate_owner_pin("9182").unwrap().is_some());
         assert!(store.authenticate_owner_pin("0000").unwrap().is_none());
         assert!(store.complete_pin_reset("5555").is_err(), "reset is one-shot");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn platform_and_user_language_sources() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let platform = store.set_platform_language().unwrap();
+        assert_eq!(store.language_source().unwrap(), LanguageSource::Platform);
+        assert_eq!(platform.language, locale::detect_platform_language());
+        assert_eq!(
+            store.locale_settings().unwrap().language,
+            locale::detect_platform_language()
+        );
+
+        let user = store.set_user_language("hi").unwrap();
+        assert_eq!(user.language, "hi");
+        assert_eq!(store.language_source().unwrap(), LanguageSource::User);
+        assert_eq!(store.locale_settings().unwrap().language, "hi");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn write_off_ap_cogs_units_and_books_overview() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("0000").unwrap();
+        assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
+
+        // Units + conversion
+        let units = store.list_units().unwrap();
+        assert!(units.iter().any(|u| u.code == "kg"));
+        store.add_unit("bag", "Bag").unwrap();
+        store
+            .add_unit_conversion("bag", "kg", 25_000)
+            .unwrap(); // 1 bag = 25 kg
+        let kg = store.convert_qty_milli(1_000, "bag", "kg").unwrap();
+        assert_eq!(kg, 25_000);
+
+        // AR write-off to nil
+        let party = store
+            .add_customer_kind("Bangles King", "", "Consignor")
+            .unwrap();
+        store
+            .seed_opening_credit(&party.id, 1_500, &owner)
+            .unwrap();
+        assert_eq!(store.customer_balance(&party.id).unwrap(), 1_500);
+        let written = store
+            .write_off_credit(&party.id, 0, "clear small balance", &owner)
+            .unwrap();
+        assert_eq!(written, 1_500);
+        assert_eq!(store.customer_balance(&party.id).unwrap(), 0);
+
+        // Purchase on account → AP + COGS
+        store.upsert_product(&test_product("Tea", 10)).unwrap();
+        let mut tea = store.list_products(false).unwrap().remove(0);
+        tea.unit_label = "kg".into();
+        store.upsert_product(&tea).unwrap();
+        let carrier = store.add_customer_kind("Delhivery", "", "Carrier").unwrap();
+        let purchase = store
+            .record_purchase_ex(
+                "Delhivery",
+                &carrier.id,
+                true,
+                &[(tea.id.clone(), 2_000, 5_000)], // 2 kg @ 50
+                "",
+                &owner,
+            )
+            .unwrap();
+        assert!(purchase.on_account);
+        assert_eq!(purchase.total_paise, 10_000);
+        assert_eq!(store.party_payable_balance(&carrier.id).unwrap(), 10_000);
+        store
+            .settle_payable(&carrier.id, 10_000, PayMethod::Cash, &owner, "")
+            .unwrap();
+        assert_eq!(store.party_payable_balance(&carrier.id).unwrap(), 0);
+
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let books = store.period_books(&today, &today).unwrap();
+        assert!(books.cogs_paise >= 10_000);
+        assert_eq!(books.gross_paise(), books.revenue_paise - books.cogs_paise);
+        let overview = store.books_overview_text().unwrap();
+        assert!(overview.contains("We owe them") || overview.contains("They owe us"));
+        assert!(overview.contains("COGS") || overview.contains("purchases"));
+
+        // Drawer variance on day close
+        let _ = store
+            .commit_day_close_with_count(&owner, Some(100))
+            .unwrap();
+        assert!(store.meta_get("last_day_close_counted_cash").unwrap().is_some());
+
         let _ = std::fs::remove_file(path);
     }
 }

@@ -59,7 +59,7 @@ pub const TEMPLATES: &[EntityTemplate] = &[
     EntityTemplate {
         id: "counter_shop",
         title: "Counter shop",
-        blurb: "Tea, snacks, retail counter — fast sell and credit.",
+        blurb: "Retail / counter trade — fast sell, credit, simple day books.",
         label_overrides: &[],
         venue_mode: VenueMode::Counter,
         qty_unit_hint: "",
@@ -71,7 +71,7 @@ pub const TEMPLATES: &[EntityTemplate] = &[
     EntityTemplate {
         id: "courier_agency",
         title: "Courier agency",
-        blurb: "Parties, weight×rate lines, day books, account vs cash booking.",
+        blurb: "Parties, kg rates, money in and out, day books, account vs cash booking.",
         label_overrides: &[
             ("credit", "Party credit"),
             ("credit_customers", "Parties"),

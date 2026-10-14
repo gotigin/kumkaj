@@ -18,7 +18,8 @@ Loads [`env/development.env`](../env/development.env) then `cargo run -p kumkaj 
   - Path-dep from `apps/kumkaj`; applies Wayland scroll-sign + dark caption button patches
   - Nested Settings lists claim wheel events so the page does not scroll with the list
 - Multi-script UI fonts in `apps/kumkaj/resources/fonts/` (Noto Sans for Indian + world scripts; Font Awesome for ✕/⌫/✓; CJK/emoji from Makepad widgets). Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
-- **Mobile-first** default window (`390×844`) on desktop — seller-sized frame
+- **Desktop window size** — first launch defaults to `1024×768`; later launches restore last size/position from `window_geom.json` under the app data dir (Startup `configure_window` + post-create resize so Windows doesn’t keep the DSL default). No forced phone frame. Resize floor is **320 css px** (width and height).
+- **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
 - **Button label inset** — every shared face sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
@@ -31,10 +32,11 @@ All platform package / bundle ids are **reverse-DNS under kumkaj.com**. There is
 | | Development | Production |
 |---|---|---|
 | Env file | [`env/development.env`](../env/development.env) | [`env/production.env`](../env/production.env) |
-| How | `cargo kumkaj-dev`, `cargo kumkaj-android-dev` | `./scripts/package-*.sh` |
+| How | `cargo kumkaj-dev`, `cargo kumkaj-android-dev`, `cargo kumkaj-windows-dev` | `./scripts/package-*.sh` |
 | `KUMKAJ_APP_ID` | `com.kumkaj.app.debug` | `com.kumkaj.app` |
 | `KUMKAJ_APP_LABEL` | Kumkaj Dev | Kumkaj |
 | Size badge (`KUMKAJ_SHOW_SIZE_BADGE`) | on (`1`) — `W×H` in caption | off (`0`) |
+| Windows console | yes (logs) | no (GUI subsystem) |
 
 `apps/kumkaj/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
 
@@ -47,7 +49,9 @@ Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surface
 | **Android** package name / application id | `com.kumkaj.app.debug` | `com.kumkaj.app` |
 | **Android** launcher label | Kumkaj Dev | Kumkaj |
 | **iOS / macOS** bundle id (when signed) | `com.kumkaj.app.debug` | `com.kumkaj.app` |
-| **Linux / Windows / macOS** binary name | `kumkaj` (dev run via cargo) | `kumkaj` / `kumkaj.exe` under `dist/` |
+| **Linux** binary | `cargo kumkaj-dev` (host) | `dist/linux/kumkaj` via `package-linux.sh` |
+| **Windows** (Win10 + Win11 x86_64) | `cargo kumkaj-windows-dev` → `dist/windows-dev/` (exe + resources) | `./scripts/package-windows.sh` → `dist/windows/` |
+| **macOS** binary (when built on Mac) | `cargo kumkaj-dev` | package script / packager |
 | **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.kumkaj.app"`, `product_name = "Kumkaj"` |
 | **Web** | local `cargo kumkaj-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./scripts/package-web.sh`) — not an OS package id |
 | **Play Store** listing | side-load / internal only | application id `com.kumkaj.app` (`web/play-store-listing.txt`) |
@@ -62,9 +66,13 @@ Dev and prod can sit side-by-side on one machine because paths differ by id. No 
 | Windows | `%APPDATA%\com.kumkaj.app.debug\` | `%APPDATA%\com.kumkaj.app\` |
 | macOS | `~/Library/Application Support/com.kumkaj.app.debug/` | `~/Library/Application Support/com.kumkaj.app/` |
 | Android | `/data/user/0/com.kumkaj.app.debug/files/` | `/data/user/0/com.kumkaj.app/files/` |
-| DB file | `kumkaj.sqlite3` in that dir | same |
+| Local servers | `servers.json` + `servers/{id}/kumkaj.sqlite3` (one DB per business/server) | same |
+| Client cache | `client/kumkaj.sqlite3` | same |
+| Legacy | Root `kumkaj.sqlite3` (pre-multi-server) migrates into first `servers/{id}/` | same |
 | Backups | `…/<APP_ID>/backups/` | same |
 | Override | `KUMKAJ_DATA_DIR` | same |
+
+**DeviceSetup (every launch):** language (platform default, immediate apply) + Server/Client. Server Mode creates a unique local server if none exist, otherwise create-new or open-existing. See [`DESIGN.md`](DESIGN.md) § Launch / auth.
 
 ### Start template default (onboarding)
 
@@ -90,6 +98,31 @@ Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and M
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo kumkaj-dev`; use `cargo kumkaj-android-dev` to verify on device.
 
 Release APK/AAB packaging: `./scripts/package-android.sh` → `dist/android/`.
+
+## Windows (cross from Arch / native on Windows)
+
+One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.kumkaj.app.debug` vs `com.kumkaj.app`).
+
+| | Development | Production |
+|---|---|---|
+| Command | `cargo kumkaj-windows-dev` | `./scripts/package-windows.sh` |
+| Output | `dist/windows-dev/` (copy whole folder) | `dist/windows/` (copy whole folder) |
+| Env | `env/development.env` | `env/production.env` |
+| Data on Windows | `%APPDATA%\com.kumkaj.app.debug\` | `%APPDATA%\com.kumkaj.app\` |
+
+**Cross-compile from Arch Linux** (this host):
+
+```bash
+sudo pacman -S mingw-w64-gcc
+rustup target add x86_64-pc-windows-gnu
+cargo kumkaj-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
+./scripts/package-windows.sh      # Prod package → copy whole dist/windows/ folder
+# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj/ + makepad_widgets/ resources beside the .exe
+```
+
+Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo kumkaj-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
+
+**On a Windows machine with Rust:** the same scripts pick `x86_64-pc-windows-msvc` when available and build natively.
 
 ### Receipts on Android — known limitation
 
@@ -130,7 +163,7 @@ protection is physical.
 
 Lock screen: **Owner** | **Staff** (pick staff, then PIN), or optional **login id + password**.
 
-Bottom tabs: **Sell** · **Items** · **More** (tables/kitchen/sales/day close/reports/inventory/branches/credit/team/backup live under More). Feature flags hide More rows the signed-in person cannot use.
+Bottom tabs: **Books** · **Sell** · **Buy** · **More** (Items, tables/kitchen/sales/day close/reports/inventory/branches/credit/team/backup live under More). Feature flags hide More rows the signed-in person cannot use. Unlock lands on **Books**.
 
 ## Data location
 
@@ -148,8 +181,9 @@ That means:
 - Anyone who can read the backup file can read the shop's whole trading history.
   Treat it like the cash box: keep it on storage only the owner controls, and
   think twice before syncing the backups folder to a shared drive.
-- PINs are salted SHA-256 hashes, not plaintext, but a 4-digit PIN is brute
-  forceable offline in moments. A leaked backup should be followed by new PINs.
+- PINs are salted SHA-256 hashes, not plaintext (4–12 digits allowed). Short
+  PINs are still brute-forceable offline; a leaked backup should be followed by
+  new PINs.
 - Restoring does not need the original device, so a copied backup is a complete
   clone of the till.
 
@@ -218,7 +252,7 @@ branch/org names and invoice numbers.
 - **Export:** More → Branches → Export → `backups/branch_snapshot_{CODE}_{YYYY-MM-DD}.json` (+ clipboard)
 - **Import:** place file as `backups/import_branch_snapshot.json`, then Import
 - **Consolidated:** live day on this device + imported snapshots (stale/missing called out)
-- Every finalize enqueues `sync_outbox` (`sale.finalize`). The queue is write-only; local billing never waits on it, and no process drains it until Kumkaj Cloud exists
+- Every finalize enqueues `sync_outbox` (`sale.finalize`). The queue is write-only; local billing never waits on it, and no process drains it until Kumkaj Cloud exists. When a drain marks an event synced, `mark_outbox_synced` also stamps `sales.server_at` (triple timestamps).
 
 ## Smoke tests
 
@@ -248,7 +282,7 @@ cargo test -p kumkaj
 
 1. `cargo test -p kumkaj`
 2. `./scripts/package-linux.sh` → smoke `dist/linux/kumkaj`
-3. `./scripts/package-windows.sh` on a Windows host (or cross toolchain)
+3. `./scripts/package-windows.sh` (cross from Arch with mingw, or native on Windows) → `dist/windows/kumkaj.exe` (Win10 + Win11 x86_64); optional `cargo kumkaj-windows-dev` for Dev `.exe`
 4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./scripts/package-android.sh`
 5. Sign Android release; create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
 6. `./scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
@@ -266,8 +300,8 @@ Platform ids: see **Platform naming** above (`com.kumkaj.app` / `com.kumkaj.app.
    - **Applied Total** = sum of line Applied (equals Actual until a line is overridden)
    - **Rounded Total** = editable; defaults to Applied — edit e.g. 52 → 50 for bill round-off
 5. Cash / rail / Card / Credit or Split Cash+rail; undo snackbar; Copy / Print receipt from Sales
-6. More → Credit settle; Day close; Reports & expenses
-7. Items: category, station, tax rate name or %, modifiers text; Inventory track/adjust/purchase
+6. Books home shows today; Buy tab records purchase + expense; More → Credit settle; Day close; Reports
+7. More → Items: category, station, tax rate name or %, modifiers text; Inventory track/adjust (purchase also on Buy)
 7b. Settings → Country & tax: apply `GB` (VAT, inclusive, £), then `US` (sales tax, exclusive, $) and confirm the Sell strip shows the added tax before you charge; save a business id and check it prints
 8. Tables & kitchen: Send KOT, tables park carts, Kitchen station filter + Advance
 9. Branches & org: add branch, switch, export snapshot, import `import_branch_snapshot.json`, consolidated report
@@ -275,12 +309,14 @@ Platform ids: see **Platform naming** above (`com.kumkaj.app` / `com.kumkaj.app.
 
 ## Schema
 
-Current meta `schema_version` **15** (entity templates, unit labels, milli qty, bill-type tag / Account vs Cash booking, cashbook / bank movements).
+Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder).
 
-- v11 — org/branches, categories, kitchen stations, stock movements, purchases, sync outbox, product tax/station/category/modifiers/stock, sale order_type/tax/branch
-- v12 — worldwide fiscal packs: `tax_rates` table (per branch), `products.tax_rate_id`, `sales.tax_pricing` / `tax_label` / `net_paise` / `service_paise`, and `meta` keys `country_code`, `tax_pricing`, `tax_label`, `business_tax_id`, `business_id_label`, `digital_pay_label`, `credit_label`, `date_order`, `decimal_sep`, `thousands_sep`, `service_charge_bps`. Upgrading seeds the India pack (no behaviour change for existing shops) and backfills `net_paise = total − tax` for old inclusive sales.
-- v13 — `sales.invoice_no` plus `meta` keys `next_invoice_seq` and `pin_reset_required`. Rows written earlier keep an empty `invoice_no` and print the short id instead (`Sale::bill_no`).
-- v15 — `money_movements` cashbook (till↔bank / bank in/out); Reports: period books, party aging, bank posts; richer receipts (party, qty units, Account/Cash booking bill type).
+Fresh DBs get the full books shape in a single `CREATE TABLE` pass in `Store::migrate`:
+
+- org / branches, categories, kitchen stations, products (tax, station, category, modifiers, stock, units), sales (invoice, tax, money lane, order type, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, tables / KOT
+- meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, etc.
+
+Pre-release: if a local DB from an older numbered schema (2–17) misbehaves, delete it and reopen. After first public release, introduce `schema_version` 2+ only for real upgrades. Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
 ### Invoice numbers
 

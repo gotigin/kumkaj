@@ -1,8 +1,69 @@
 //! Core Kumkaj domain: integer money, catalog, cart, sales, staff, tables/KDS.
 
 use crate::fiscal::{self, FiscalSettings, TaxPricing};
+use chrono::Local;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
+
+/// Three clocks on every books entry (sale, buy, expense, ledger, stock, bank).
+///
+/// 1. **user_at** — business time the owner entered (or meant); drives day books.
+/// 2. **device_at** — local device clock when the row was written offline.
+/// 3. **server_at** — when the cloud accepted the upload; empty until synced.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct EventTimes {
+    pub user_at: String,
+    pub device_at: String,
+    /// Empty string until a cloud drain stamps it.
+    pub server_at: String,
+}
+
+impl EventTimes {
+    /// Capture now on the device. Optional `user_at` overrides the books time
+    /// (RFC3339 or `YYYY-MM-DD`); blank → same as device time.
+    pub fn capture(user_at: Option<&str>) -> Self {
+        let device_at = Local::now().to_rfc3339();
+        let user_at = match user_at.map(str::trim).filter(|s| !s.is_empty()) {
+            Some(raw) => normalize_user_at(raw, &device_at),
+            None => device_at.clone(),
+        };
+        Self {
+            user_at,
+            device_at,
+            server_at: String::new(),
+        }
+    }
+
+    /// Legacy rows that only had `created_at`.
+    pub fn from_legacy_created(created_at: &str) -> Self {
+        let t = created_at.trim();
+        let t = if t.is_empty() {
+            Local::now().to_rfc3339()
+        } else {
+            t.to_string()
+        };
+        Self {
+            user_at: t.clone(),
+            device_at: t,
+            server_at: String::new(),
+        }
+    }
+
+    pub fn with_server_now(mut self) -> Self {
+        self.server_at = Local::now().to_rfc3339();
+        self
+    }
+}
+
+/// Accept a full RFC3339 stamp or a calendar day (`YYYY-MM-DD` → that day at device clock time).
+fn normalize_user_at(raw: &str, device_at: &str) -> String {
+    if raw.len() == 10 && raw.as_bytes().get(4) == Some(&b'-') && raw.as_bytes().get(7) == Some(&b'-')
+    {
+        let clock = device_at.get(11..).unwrap_or("00:00:00");
+        return format!("{raw}T{clock}");
+    }
+    raw.to_string()
+}
 
 /// Money in minor currency units (not floats): cents, paise, fils — or whole
 /// units for the currencies that have no minor unit at all.
@@ -388,7 +449,8 @@ impl MoneyLane {
     pub fn parse(s: &str) -> Self {
         let key = s.trim().to_ascii_lowercase();
         match key.as_str() {
-            "owner" | "cash" | "cash_booking" | "cash_memo" | "internal" | "black" => Self::Owner,
+            // Prefer Account/Cash booking · Tax invoice/Cash memo — never legacy slang.
+            "owner" | "cash" | "cash_booking" | "cash_memo" | "internal" => Self::Owner,
             _ => Self::Declared,
         }
     }
@@ -479,7 +541,14 @@ impl MoneyMoveKind {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct MoneyMovement {
     pub id: String,
+    /// Books day — same as [`EventTimes::user_at`] (kept for older callers).
     pub created_at: String,
+    #[serde(default)]
+    pub user_at: String,
+    #[serde(default)]
+    pub device_at: String,
+    #[serde(default)]
+    pub server_at: String,
     pub kind: String,
     pub amount_paise: i64,
     pub note: String,
@@ -512,11 +581,44 @@ pub struct PeriodBooks {
     pub card_paise: i64,
     pub credit_paise: i64,
     pub tax_paise: i64,
+    /// Cost of goods from purchases in the period.
+    pub cogs_paise: i64,
     pub expenses_paise: i64,
     pub expense_count: i64,
     pub bank_in_paise: i64,
     pub bank_out_paise: i64,
     pub outstanding_credit_paise: i64,
+    /// Whom we owe (AP).
+    pub outstanding_payable_paise: i64,
+}
+
+impl PeriodBooks {
+    pub fn gross_paise(&self) -> i64 {
+        self.revenue_paise.saturating_sub(self.cogs_paise)
+    }
+
+    pub fn net_paise(&self) -> i64 {
+        self.gross_paise().saturating_sub(self.expenses_paise)
+    }
+}
+
+/// Catalogue unit (builtin or owner-defined).
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+pub struct UnitDef {
+    pub id: String,
+    pub code: String,
+    pub name: String,
+    pub builtin: bool,
+}
+
+/// `1 from_code = (factor_milli / 1000) to_code` when qty is in milli-units:
+/// `to_qty_milli = from_qty_milli * factor_milli / 1000`.
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+pub struct UnitConversion {
+    pub id: String,
+    pub from_code: String,
+    pub to_code: String,
+    pub factor_milli: i64,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -987,6 +1089,8 @@ pub struct Cart {
     pub charge_total: Option<Money>,
     /// How this bill is served. Counter by default so the stall flow is unchanged.
     pub order_type: OrderType,
+    /// Bill-type tag (Account booking / Cash booking). Set from the shell.
+    pub money_lane: MoneyLane,
 }
 
 impl Cart {
@@ -994,6 +1098,7 @@ impl Cart {
         self.lines.clear();
         self.charge_total = None;
         self.order_type = OrderType::Counter;
+        // Keep money_lane — owner choice persists across carts until they flip the chip.
     }
 
     pub fn set_order_type(&mut self, order_type: OrderType) {
@@ -1285,6 +1390,7 @@ impl Cart {
                 })
                 .collect(),
             charge_total: None,
+            money_lane: MoneyLane::parse(&sale.money_lane),
         };
         if sale.rounding_paise != 0 {
             cart.charge_total = Some(Money(sale.total_paise));
@@ -1347,7 +1453,8 @@ impl Cart {
             // total. Doing it here would let a stale pack price a bill.
             tax_paise: 0,
             order_type: self.order_type,
-            money_lane: MoneyLane::Declared,
+            money_lane: self.money_lane,
+            user_at: None,
         })
     }
 }
@@ -1395,6 +1502,9 @@ pub struct SaleDraft {
     /// Which money lane this bill posts to.
     #[serde(default)]
     pub money_lane: MoneyLane,
+    /// Optional books time override (`YYYY-MM-DD` or RFC3339). Empty → device now.
+    #[serde(default)]
+    pub user_at: Option<String>,
 }
 
 impl SaleDraft {
@@ -1426,7 +1536,14 @@ impl SaleDraft {
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct Sale {
     pub id: String,
+    /// Books / user time — prefer [`Self::user_at`]; kept equal on write.
     pub created_at: String,
+    #[serde(default)]
+    pub user_at: String,
+    #[serde(default)]
+    pub device_at: String,
+    #[serde(default)]
+    pub server_at: String,
     pub lines_total_paise: i64,
     pub rounding_paise: i64,
     pub total_paise: i64,
@@ -1476,6 +1593,22 @@ pub struct Sale {
 }
 
 impl Sale {
+    pub fn event_times(&self) -> EventTimes {
+        EventTimes {
+            user_at: if self.user_at.trim().is_empty() {
+                self.created_at.clone()
+            } else {
+                self.user_at.clone()
+            },
+            device_at: if self.device_at.trim().is_empty() {
+                self.created_at.clone()
+            } else {
+                self.device_at.clone()
+            },
+            server_at: self.server_at.clone(),
+        }
+    }
+
     pub fn order_type(&self) -> OrderType {
         OrderType::parse(&self.order_type)
     }
@@ -1545,12 +1678,36 @@ pub struct CreditLedgerEntry {
     pub id: String,
     pub customer_id: String,
     pub created_at: String,
+    #[serde(default)]
+    pub user_at: String,
+    #[serde(default)]
+    pub device_at: String,
+    #[serde(default)]
+    pub server_at: String,
     pub kind: String,
     pub amount_paise: i64,
     pub sale_id: Option<String>,
     pub pay_method: Option<String>,
     pub actor_name: String,
     pub detail: String,
+}
+
+impl CreditLedgerEntry {
+    pub fn event_times(&self) -> EventTimes {
+        EventTimes {
+            user_at: if self.user_at.trim().is_empty() {
+                self.created_at.clone()
+            } else {
+                self.user_at.clone()
+            },
+            device_at: if self.device_at.trim().is_empty() {
+                self.created_at.clone()
+            } else {
+                self.device_at.clone()
+            },
+            server_at: self.server_at.clone(),
+        }
+    }
 }
 
 /// Append-only history entry: previous live state before an amendment.
@@ -1756,6 +1913,12 @@ pub struct StockMovement {
     #[serde(default)]
     pub product_name: String,
     pub created_at: String,
+    #[serde(default)]
+    pub user_at: String,
+    #[serde(default)]
+    pub device_at: String,
+    #[serde(default)]
+    pub server_at: String,
     /// Negative for sales/wastage, positive for purchases/corrections.
     pub delta_qty: i64,
     /// `sale` | `purchase` | `adjust` | `wastage` | free text.
@@ -1775,11 +1938,26 @@ pub struct PurchaseLine {
     pub name: String,
     pub qty: i64,
     pub unit_cost_paise: i64,
+    /// Milli-units (1000 = 1). 0 on legacy rows means `qty × 1000`.
+    #[serde(default)]
+    pub qty_milli: i64,
+    #[serde(default)]
+    pub unit_label: String,
 }
 
 impl PurchaseLine {
+    pub fn effective_qty_milli(&self) -> i64 {
+        if self.qty_milli > 0 {
+            self.qty_milli
+        } else {
+            self.qty.saturating_mul(QTY_MILLI_UNIT)
+        }
+    }
+
+    /// Unit cost is per whole unit (per kg / per piece); scale by milli qty.
     pub fn line_cost_paise(&self) -> i64 {
-        self.unit_cost_paise.saturating_mul(self.qty.max(0))
+        let milli = self.effective_qty_milli().max(0);
+        (self.unit_cost_paise.saturating_mul(milli)) / QTY_MILLI_UNIT
     }
 }
 
@@ -1789,7 +1967,19 @@ pub struct Purchase {
     pub id: String,
     pub branch_id: String,
     pub created_at: String,
+    #[serde(default)]
+    pub user_at: String,
+    #[serde(default)]
+    pub device_at: String,
+    #[serde(default)]
+    pub server_at: String,
     pub supplier: String,
+    /// Party id when supplier is a party (AP path); empty = text-only legacy.
+    #[serde(default)]
+    pub party_id: String,
+    /// When true, total posts to payable ledger (we owe the party).
+    #[serde(default)]
+    pub on_account: bool,
     pub total_paise: i64,
     pub note: String,
     pub actor_id: String,
@@ -2095,6 +2285,23 @@ mod tests {
             ..TaxRate::default()
         };
         assert_eq!(flat.percent_label(), "18%");
+    }
+
+    #[test]
+    fn event_times_three_clocks() {
+        let t = EventTimes::capture(None);
+        assert!(!t.user_at.is_empty());
+        assert_eq!(t.user_at, t.device_at);
+        assert!(t.server_at.is_empty());
+        let backdated = EventTimes::capture(Some("2024-01-15"));
+        assert!(backdated.user_at.starts_with("2024-01-15T"));
+        assert!(!backdated.device_at.starts_with("2024-01-15T") || backdated.device_at.contains('T'));
+        assert_ne!(backdated.user_at, backdated.device_at);
+        let stamped = backdated.with_server_now();
+        assert!(!stamped.server_at.is_empty());
+        let legacy = EventTimes::from_legacy_created("2023-06-01T10:00:00+05:30");
+        assert_eq!(legacy.user_at, legacy.device_at);
+        assert!(legacy.server_at.is_empty());
     }
 }
 

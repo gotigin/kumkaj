@@ -6,3 +6,12 @@ kumkaj-dev = ["run", "-p", "kumkaj-dev", "--"]
 # Usage: cargo kumkaj-android-dev
 # (No Splash --hot on Android — each run rebuilds and relaunches.)
 kumkaj-android-dev = ["run", "-p", "kumkaj-android-dev", "--"]
+# Windows Dev package (cross from Linux with mingw; Win10 + Win11 x86_64).
+# Makepad layout: exe + kumkaj/resources + makepad_widgets/resources.
+# Usage: cargo kumkaj-windows-dev → dist/windows-dev/
+# Production: ./scripts/package-windows.sh → dist/windows/
+kumkaj-windows-dev = ["run", "-p", "kumkaj-windows-dev", "--"]
+
+# Cross-link Windows GNU target from Arch (pacman -S mingw-w64-gcc).
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"

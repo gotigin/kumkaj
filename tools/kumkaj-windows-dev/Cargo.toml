@@ -1,0 +1,9 @@
+[package]
+name = "kumkaj-windows-dev"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "kumkaj-windows-dev"
+path = "main.rs"

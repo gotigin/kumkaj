@@ -17,12 +17,11 @@ fi
 OUT="$ROOT/dist/linux"
 mkdir -p "$OUT"
 cp -f "$BIN" "$OUT/kumkaj"
-mkdir -p "$OUT/menu"
-cp -f "$ROOT/apps/kumkaj/resources/menu/"*.webp "$OUT/menu/"
+rm -rf "$OUT/makepad_widgets"
 cat > "$OUT/README.txt" <<'EOF'
 Kumkaj Linux build
 ==================
-Run: ./kumkaj
+Run from the repo machine (or keep source checkout for fonts): ./kumkaj
 Live-dev (from repo): cargo kumkaj-dev
 
 Data directory: ~/.local/share/com.kumkaj.app/
@@ -30,4 +29,3 @@ Data directory: ~/.local/share/com.kumkaj.app/
 Default Owner PIN: 0000 — change under More → Team after first unlock.
 EOF
 echo "Linux package: $OUT/kumkaj"
-

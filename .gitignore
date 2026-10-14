@@ -4,8 +4,14 @@
 **/*.rs.bk
 *.pdb
 
-# Packaged builds
+# Packaged builds (linux / windows / windows-dev / android / web / …)
 /dist/
+
+# Stray desktop binaries if dropped outside /dist/
+*.exe
+*.dll
+*.apk
+*.aab
 
 # Makepad: fetched via scripts/setup-makepad.sh (do not commit the tree)
 /vendor/makepad/
@@ -21,7 +27,10 @@
 **/*.sqlite3-shm
 **/backups/
 
-# Secrets / local env
+# Desktop window restore prefs (normally under the OS app-data dir)
+**/window_geom.json
+
+# Secrets / local env overrides (tracked templates live in env/*.env)
 .env
 .env.*
 !.env.example

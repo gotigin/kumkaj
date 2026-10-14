@@ -1,42 +1,75 @@
 #!/usr/bin/env bash
-# Cross/native Windows packaging notes + build when target is available.
+# Production Windows x86_64 package (Windows 10 + Windows 11).
+# Makepad layout: kumkaj.exe + <crate>/resources/ beside it (MAKEPAD_PACKAGE_DIR=.).
+# Usage: ./scripts/package-windows.sh
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 # shellcheck source=load-kumkaj-env.sh
 source "$ROOT/scripts/load-kumkaj-env.sh"
+# shellcheck source=windows-env.sh
+source "$ROOT/scripts/windows-env.sh"
+
 export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env production
-OUT="$ROOT/dist/windows"
-mkdir -p "$OUT"
+makepad_enable_package_dir
 
-if rustup target list --installed | grep -q 'x86_64-pc-windows-gnu\|x86_64-pc-windows-msvc'; then
-  TARGET=$(rustup target list --installed | grep 'x86_64-pc-windows' | head -1)
-  echo "Building for $TARGET"
-  cargo build -p kumkaj --release --target "$TARGET"
-  TARGET_DIR="$(cargo metadata --format-version=1 --no-deps | python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
-  if [[ -f "$TARGET_DIR/$TARGET/release/kumkaj.exe" ]]; then
-    cp -f "$TARGET_DIR/$TARGET/release/kumkaj.exe" "$OUT/kumkaj.exe"
-  elif [[ -f "$TARGET_DIR/$TARGET/release/kumkaj" ]]; then
-    cp -f "$TARGET_DIR/$TARGET/release/kumkaj" "$OUT/kumkaj.exe"
-  else
-    echo "Built binary not found under $TARGET_DIR/$TARGET/release/" >&2
-    exit 1
+OUT="$ROOT/dist/windows"
+rm -rf "$OUT"
+mkdir -p "$OUT"
+TARGET="$(windows_default_target)"
+
+if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* || "$(uname -s)" == CYGWIN* || "$(uname -s)" == Windows_NT ]]; then
+  if rustup target list --installed 2>/dev/null | grep -qx 'x86_64-pc-windows-msvc'; then
+    TARGET=x86_64-pc-windows-msvc
   fi
+  echo "Native Windows build ($TARGET)"
+  cargo build -p kumkaj --release --target "$TARGET"
 else
-  echo "Windows target not installed on this machine."
-  echo "Install (example): rustup target add x86_64-pc-windows-gnu"
-  echo "Then re-run this script on a Windows host or with a working cross toolchain."
+  windows_ensure_toolchain
+  cargo build -p kumkaj --release --target "$TARGET"
 fi
 
-cat > "$OUT/README.txt" <<'EOF'
-Kumkaj Windows packaging
-========================
-Preferred: build on a Windows machine with Rust + MSVC:
-  cargo build -p kumkaj --release
-  copy target\release\kumkaj.exe
+TARGET_DIR="$(cargo metadata --format-version=1 --no-deps | python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
+EXE=""
+for cand in \
+  "$TARGET_DIR/$TARGET/release/kumkaj.exe" \
+  "$TARGET_DIR/$TARGET/release/kumkaj" \
+  "$TARGET_DIR/release/kumkaj.exe"
+do
+  if [[ -f "$cand" ]]; then
+    EXE="$cand"
+    break
+  fi
+done
+if [[ -z "$EXE" ]]; then
+  echo "Built binary not found under $TARGET_DIR/$TARGET/release/" >&2
+  exit 1
+fi
 
-Cross-compile from Linux when a Windows target + linker is configured.
-Data directory on Windows: %APPDATA%\com.kumkaj.app\
+cp -f "$EXE" "$OUT/kumkaj.exe"
+makepad_copy_desktop_resources "$OUT"
+
+cat > "$OUT/README.txt" <<EOF
+Kumkaj Windows (production)
+===========================
+Makepad desktop package — copy this WHOLE folder to the PC (keep structure):
+
+  kumkaj.exe
+  kumkaj/resources/
+  makepad_widgets/resources/
+
+Target: $TARGET (x86_64 — Windows 10 and Windows 11)
+App id: ${KUMKAJ_APP_ID}
+Label: ${KUMKAJ_APP_LABEL}
+Env: env/production.env
+
+Run from inside the folder:
+  .\\kumkaj.exe
+
+No console window (GUI subsystem). Data: %APPDATA%\\com.kumkaj.app\\
+
+Default Owner PIN: 0000 — change under More → Team after first unlock.
 EOF
-echo "Windows package folder: $OUT"
+
+echo "Windows package: $OUT/"

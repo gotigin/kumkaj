@@ -147,4 +147,5 @@ if [[ -f "$SCROLL_TOUCH_PATCH" ]]; then
     echo "Scroll touch-over-buttons already present — skip patch."
   fi
 fi
+
 echo "Done. Makepad 2 at vendor/makepad (stock direction, no invert_scroll)."

@@ -3,6 +3,7 @@ members = [
     "apps/kumkaj",
     "tools/kumkaj-dev",
     "tools/kumkaj-android-dev",
+    "tools/kumkaj-windows-dev",
 ]
 exclude = [
     "vendor/makepad",

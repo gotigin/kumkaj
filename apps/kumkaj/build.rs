@@ -27,6 +27,9 @@ fn defaults(profile: &str) -> HashMap<&'static str, &'static str> {
 }
 
 fn main() {
+    // Tell rustc about custom cfgs set below (avoids unexpected_cfgs warnings).
+    println!("cargo:rustc-check-cfg=cfg(kumkaj_hide_console)");
+
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
     let workspace = manifest_dir
         .parent()
@@ -74,7 +77,14 @@ fn main() {
     }
 
     // Ensure ENV key matches the selected profile even if the file omits it.
-    vars.insert("KUMKAJ_ENV".into(), kumkaj_env);
+    vars.insert("KUMKAJ_ENV".into(), kumkaj_env.clone());
+
+    // Production Windows PE: no console window when the user double-clicks the
+    // exe. Dev keeps the console (logs / panic output). Driven by KUMKAJ_ENV
+    // because windows-dev also builds with Cargo `--release`.
+    if kumkaj_env == "production" {
+        println!("cargo:rustc-cfg=kumkaj_hide_console");
+    }
 
     for (key, value) in vars {
         println!("cargo:rustc-env={key}={value}");

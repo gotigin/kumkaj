@@ -1,10 +1,10 @@
 # Kumkaj
 
-Kumkaj (kumkaj.com) — business operating system for any entity. Local-first selling and books on Makepad 2. Generic in the core; concrete in effect through start templates (None, Counter, Courier, Food, Personal) and what that entity enables and names (see vision §1–2).
+Kumkaj (kumkaj.com) — business operating system for any entity. Local-first selling and books on Makepad 2. Generic in the core; concrete in effect through start templates (None, Counter, Courier, Food, Personal) and what that entity enables and names (see vision §1–2). **Software should adapt to users — not the other way around** (vision §2).
 
 Offline use is free forever, from a single counter through extra tills, kitchens, and multi-branch groups coordinated on your own devices. Local billing is production-ready on the shop device; extra tills are optional LAN joins. Cloud usage (WAN sync, hosted dashboards, automatic offsite backup), raw ESC/POS, and statutory e-invoicing are optional / later — not required to bill.
 
-**Who it is for:** any entity that sells or keeps a book — business or personal; tea stall, kirana, service counter, agency, shop with staff, or several outlets. Same Sell · Items · More shell.
+**Who it is for:** **any** entity that sells or keeps a book (business or personal, any trade, one outlet or many). Same **Books · Sell · Buy · More** shell — generic core, concrete feel via templates/labels ([`DESIGN.md`](DESIGN.md); commons in [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
 **UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`.
 
@@ -14,11 +14,14 @@ Offline use is free forever, from a single counter through extra tills, kitchens
 
 **Scale**
 
+- Every launch: language (platform default) + Server/Client on one screen ([`DESIGN.md`](DESIGN.md))
+- One device can hold **multiple local servers** (separate businesses/products); Server Mode creates the first or lets you create/open another
 - Shop device by default (extra tills off). Allow extra tills in Settings when another phone should sell.
 - Tables & kitchen (tables, KOT split by kitchen station) is optional for food businesses
 - Categories, named tax rates, modifiers on Items; Inventory & purchases
 - Organization + branches with snapshot export/import and consolidated reports
 - A write-only sync outbox records each sale for a future Kumkaj Cloud drain; nothing reads that queue yet. Cloud syncs the shop books — extra tills are not a different cloud product.
+- Books rows keep three clocks: user/business time, device write time, and cloud accept time (empty until synced) — see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
 **Country packs**
 
@@ -32,4 +35,4 @@ Apply a country in Settings to set the tax name and maths (VAT · GST · sales t
 
 **Ship:** see [`DEV.md`](DEV.md) packaging + publish checklist. Website: **https://kumkaj.com** (`../web/`). Apple App Store deferred.
 
-See [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md) and [`DEV.md`](DEV.md).
+See [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) (common books order, courier wording, backlog, compliance depth), and [`DEV.md`](DEV.md).

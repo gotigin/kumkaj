@@ -21,6 +21,31 @@ impl Default for LocaleSettings {
     }
 }
 
+/// Where the UI language comes from.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum LanguageSource {
+    /// Always match the OS / device language.
+    Platform,
+    /// Fixed catalogue language chosen by the user.
+    User,
+}
+
+impl LanguageSource {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Platform => "platform",
+            Self::User => "user",
+        }
+    }
+
+    pub fn parse(raw: &str) -> Self {
+        match raw.trim() {
+            "platform" => Self::Platform,
+            _ => Self::User,
+        }
+    }
+}
+
 #[derive(Clone, Copy, Debug)]
 pub struct LanguageInfo {
     pub code: &'static str,
@@ -234,6 +259,60 @@ pub fn currency_by_code(code: &str) -> Option<&'static CurrencyInfo> {
     CURRENCIES.iter().find(|c| c.code == code)
 }
 
+/// Map a BCP-47 / POSIX locale tag (e.g. `hi_IN.UTF-8`, `zh-TW`) onto a
+/// catalogue language code. Unknown tags fall back to `en`.
+pub fn match_language_tag(tag: &str) -> String {
+    let cleaned = tag.trim();
+    if cleaned.is_empty()
+        || cleaned.eq_ignore_ascii_case("C")
+        || cleaned.eq_ignore_ascii_case("POSIX")
+    {
+        return "en".into();
+    }
+    // Strip encoding / modifier: `en_IN.UTF-8` → `en_IN`, `sr@latin` → `sr`.
+    let no_encoding = cleaned.split(['.', '@']).next().unwrap_or(cleaned);
+    let normalized = no_encoding.replace('_', "-");
+    if let Some(info) = language_by_code(&normalized) {
+        return info.code.into();
+    }
+    if let Some(info) = LANGUAGES
+        .iter()
+        .find(|l| l.code.eq_ignore_ascii_case(&normalized))
+    {
+        return info.code.into();
+    }
+    let lower = normalized.to_ascii_lowercase();
+    if lower.starts_with("zh-hant")
+        || lower.starts_with("zh-tw")
+        || lower.starts_with("zh-hk")
+        || lower.starts_with("zh-mo")
+    {
+        return "zh-Hant".into();
+    }
+    if lower.starts_with("zh") {
+        return "zh".into();
+    }
+    let primary = lower.split('-').next().unwrap_or("en");
+    if primary == "tl" {
+        return "fil".into();
+    }
+    if let Some(info) = language_by_code(primary) {
+        return info.code.into();
+    }
+    "en".into()
+}
+
+/// Best-effort language from the OS (Android / desktop locale, else `LANG`).
+pub fn detect_platform_language() -> String {
+    let tag = sys_locale::get_locale()
+        .filter(|s| !s.trim().is_empty())
+        .or_else(|| std::env::var("LC_ALL").ok())
+        .or_else(|| std::env::var("LC_MESSAGES").ok())
+        .or_else(|| std::env::var("LANG").ok())
+        .unwrap_or_else(|| "en".into());
+    match_language_tag(&tag)
+}
+
 /// Money in the shop's own number style: `₹1,234.50`, `1.234,50 €`-style
 /// separators, Swiss `1'234.50`, or no grouping at all.
 pub fn format_money_ex(
@@ -439,6 +518,13 @@ fn en(key: &str) -> String {
         "unlock" => "Unlock",
         "pin_hint" => "Owner PIN starts as 0000",
         "sell" => "Sell",
+        "buy" => "Buy",
+        "books" => "Books",
+        "books_help" => "Today's money in and out, who owes, cash vs bank. Sell and Buy are peers below.",
+        "buy_help" => "Money out: goods received (purchase) or running costs (expense). Same books as Sell.",
+        "sell_money_in" => "Sell (money in)",
+        "buy_money_out" => "Buy (money out)",
+        "add_expense" => "Add expense",
         "items" => "Items",
         "more" => "More",
         "your_items" => "Your items",
@@ -449,7 +535,7 @@ fn en(key: &str) -> String {
         "editing_item" => "Editing",
         "save" => "Save",
         "remove" => "Remove",
-        "empty_catalog" => "No items yet. Open Items to add your first product.",
+        "empty_catalog" => "No items yet. Open More → Items to add your first product.",
         "counter_sale" => "Counter sale",
         "total" => "Total",
         "cash" => "Cash",
@@ -519,6 +605,23 @@ fn en(key: &str) -> String {
         "client" => "Client",
         "language_currency" => "Language & currency",
         "language" => "Language",
+        "choose_language" => "Choose your language",
+        "language_setup_hint" => "Follow this device’s language, or pick one yourself.",
+        "lang_follow_platform" => "Use platform native language",
+        "lang_pick_user" => "Use user selected language",
+        "lang_platform_now" => "Device language now",
+        "selected_language" => "Selected",
+        "continue" => "Continue",
+        "this_device" => "THIS DEVICE",
+        "device_use_q" => "How will this device be used?",
+        "last_server_mode" => "Last time: Server Mode — tap again to continue, or switch",
+        "last_client_mode" => "Last time: Client Mode — tap again to continue, or switch",
+        "choose_server" => "Choose a server",
+        "choose_server_hint" => "This device already has servers. Open one, or create a new server for another business.",
+        "create_new_server" => "Create new server",
+        "open_server" => "Open",
+        "new_server_name_ph" => "New server name (optional)",
+        "device_setup_help" => "Server Mode: hold the books on this device (create or open a local server). Client Mode: pair to a Server. Language and mode are asked every launch. Extra tills stay off until allowed in Settings.",
         "currency" => "Currency",
         "backup" => "Backup",
         "use" => "Use",
@@ -571,6 +674,24 @@ pub fn t(lang: &str, key: &str) -> String {
                 ("language", "भाषा"),
                 ("currency", "मुद्रा"),
                 ("use", "चुनें"),
+                ("language_setup_hint", "इस डिवाइस की भाषा अपनाएँ, या स्वयं चुनें।"),
+                ("lang_follow_platform", "प्लेटफ़ॉर्म की भाषा उपयोग करें"),
+                ("lang_pick_user", "उपयोगकर्ता चुनी भाषा"),
+                ("lang_platform_now", "अभी डिवाइस की भाषा"),
+                ("selected_language", "चयनित"),
+                ("this_device", "यह डिवाइस"),
+                ("device_use_q", "यह डिवाइस कैसे उपयोग होगा?"),
+                ("device_setup_help", "सर्वर मोड: इस डिवाइस पर किताबें (नया सर्वर बनाएँ या मौजूद खोलें)। क्लाइंट मोड: किसी सर्वर से जोड़ें। भाषा और मोड हर लॉन्च पर।"),
+                ("last_server_mode", "पिछली बार: सर्वर मोड — जारी रखने के लिए फिर टैप करें, या बदलें"),
+                ("last_client_mode", "पिछली बार: क्लाइंट मोड — जारी रखने के लिए फिर टैप करें, या बदलें"),
+                ("choose_server", "सर्वर चुनें"),
+                ("choose_server_hint", "इस डिवाइस पर सर्वर पहले से हैं। एक खोलें, या दूसरे कारोबार के लिए नया बनाएँ।"),
+                ("create_new_server", "नया सर्वर बनाएँ"),
+                ("open_server", "खोलें"),
+                ("new_server_name_ph", "नए सर्वर का नाम (वैकल्पिक)"),
+                ("this_shop", "सर्वर मोड"),
+                ("extra_till", "क्लाइंट मोड"),
+                ("continue", "आगे"),
             ],
             key,
         ),
@@ -970,6 +1091,21 @@ fn chrome_extra(lang: &str, key: &str) -> Option<&'static str> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn match_language_tag_maps_common_os_locales() {
+        assert_eq!(match_language_tag("hi_IN.UTF-8"), "hi");
+        assert_eq!(match_language_tag("en-US"), "en");
+        assert_eq!(match_language_tag("ta_IN"), "ta");
+        assert_eq!(match_language_tag("zh-TW"), "zh-Hant");
+        assert_eq!(match_language_tag("zh_CN.UTF-8"), "zh");
+        assert_eq!(match_language_tag("pt_BR"), "pt-BR");
+        assert_eq!(match_language_tag("pt-PT"), "pt");
+        assert_eq!(match_language_tag("tl-PH"), "fil");
+        assert_eq!(match_language_tag("C"), "en");
+        assert_eq!(match_language_tag(""), "en");
+        assert_eq!(match_language_tag("xx-YY"), "en");
+    }
 
     #[test]
     fn shipped_languages_translate_chrome() {
