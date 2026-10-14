@@ -63,7 +63,9 @@ set +e
 STATUS=${PIPESTATUS[0]}
 set -e
 
-TARGET_DIR="$(cd "$ROOT" && cargo metadata --format-version=1 --no-deps | python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
+# shellcheck source=cargo-target-dir.sh
+source "$ROOT/scripts/cargo-target-dir.sh"
+TARGET_DIR="$(cd "$ROOT" && cargo_target_dir)"
 # Prefer the final signed APK; avoid copying the same file onto itself.
 mapfile -t APKS < <(find "$TARGET_DIR" -name 'kumkaj.apk' 2>/dev/null | head -5 || true)
 if [[ ${#APKS[@]} -eq 0 ]]; then

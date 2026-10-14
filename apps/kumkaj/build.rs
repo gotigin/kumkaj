@@ -79,9 +79,9 @@ fn main() {
     // Ensure ENV key matches the selected profile even if the file omits it.
     vars.insert("KUMKAJ_ENV".into(), kumkaj_env.clone());
 
-    // Production Windows PE: no console window when the user double-clicks the
-    // exe. Dev keeps the console (logs / panic output). Driven by KUMKAJ_ENV
-    // because windows-dev also builds with Cargo `--release`.
+    // Production Windows PE: no console when the user double-clicks the exe.
+    // Dev (including `cargo kumkaj-windows-dev` debug profile) keeps the console.
+    // Driven by KUMKAJ_ENV, not Cargo --release / --debug.
     if kumkaj_env == "production" {
         println!("cargo:rustc-cfg=kumkaj_hide_console");
     }

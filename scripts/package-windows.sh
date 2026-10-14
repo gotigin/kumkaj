@@ -30,7 +30,9 @@ else
   cargo build -p kumkaj --release --target "$TARGET"
 fi
 
-TARGET_DIR="$(cargo metadata --format-version=1 --no-deps | python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
+# shellcheck source=cargo-target-dir.sh
+source "$ROOT/scripts/cargo-target-dir.sh"
+TARGET_DIR="$(cargo_target_dir)"
 EXE=""
 for cand in \
   "$TARGET_DIR/$TARGET/release/kumkaj.exe" \
@@ -56,8 +58,7 @@ Kumkaj Windows (production)
 Makepad desktop package — copy this WHOLE folder to the PC (keep structure):
 
   kumkaj.exe
-  kumkaj/resources/
-  makepad_widgets/resources/
+  kumkaj/resources/            (fonts + icons + menu)
 
 Target: $TARGET (x86_64 — Windows 10 and Windows 11)
 App id: ${KUMKAJ_APP_ID}

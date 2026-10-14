@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Insert Kumkaj's shareText / readContentUri into cargo-makepad's activity.
 # The Java that ships in the APK lives in MAKEPAD_ROOT, not in vendor/makepad
-# (setup-makepad.sh does not copy tools/). Idempotent.
+# (setup-makepad.sh does not copy tools/). Idempotent. Bash only (no Python).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 # shellcheck source=android-env.sh
@@ -17,23 +17,41 @@ if grep -q 'public void shareText' "$JAVA" && grep -q 'public byte\[\] readConte
   echo "Android share/content bridge already present."
   exit 0
 fi
-python3 - "$JAVA" "$SNIPPET" <<'PY'
-import pathlib, sys
-java = pathlib.Path(sys.argv[1])
-snippet = pathlib.Path(sys.argv[2]).read_text()
-text = java.read_text()
-needle = "    public void copyToClipboard(String content) {"
-if needle not in text:
-    sys.exit("copyToClipboard anchor missing in MakepadActivity.java")
-# Imports the methods use. Add them once if this activity predates them.
-for line in (
-    "import android.content.Intent;\n",
-    "import android.net.Uri;\n",
-    "import java.io.ByteArrayOutputStream;\n",
-    "import java.io.InputStream;\n",
-):
-    if line not in text:
-        text = text.replace("import android.app.Activity;\n", "import android.app.Activity;\n" + line, 1)
-java.write_text(text.replace(needle, snippet + needle, 1))
-print("Inserted shareText and readContentUri into", java)
-PY
+
+NEEDLE='    public void copyToClipboard(String content) {'
+if ! grep -qF "$NEEDLE" "$JAVA"; then
+  echo "copyToClipboard anchor missing in MakepadActivity.java" >&2
+  exit 1
+fi
+
+tmp="$(mktemp)"
+cp -f "$JAVA" "$tmp"
+
+# Add imports once (after Activity import).
+ensure_import() {
+  local line="$1"
+  if ! grep -qF "$line" "$tmp"; then
+    sed -i "s|import android.app.Activity;|import android.app.Activity;\n${line}|" "$tmp"
+  fi
+}
+ensure_import 'import android.content.Intent;'
+ensure_import 'import android.net.Uri;'
+ensure_import 'import java.io.ByteArrayOutputStream;'
+ensure_import 'import java.io.InputStream;'
+
+# Insert snippet immediately before copyToClipboard.
+{
+  # Everything before the needle
+  awk -v needle="$NEEDLE" '
+    index($0, needle) == 1 { exit }
+    { print }
+  ' "$tmp"
+  cat "$SNIPPET"
+  # Needle and the rest
+  awk -v needle="$NEEDLE" '
+    found || index($0, needle) == 1 { found = 1; print }
+  ' "$tmp"
+} > "${tmp}.out"
+mv -f "${tmp}.out" "$tmp"
+mv -f "$tmp" "$JAVA"
+echo "Inserted shareText and readContentUri into $JAVA"

@@ -32,9 +32,10 @@ makepad_enable_package_dir() {
   export MAKEPAD_PACKAGE_DIR=.
 }
 
-# Copy Makepad desktop resource layout into $1 (next to kumkaj.exe).
-# Matches Builder/cross-windows: skip huge CJK + colour-emoji fallbacks (~48MB);
-# Kumkaj ships its own Noto script fonts under kumkaj/resources/fonts.
+# Stage desktop resources next to kumkaj.exe.
+# One tree only: kumkaj/resources/ (fonts + icons + menu).
+# Do NOT copy vendor/makepad/widgets/resources — that duplicated Noto/FA and
+# shipped unused IBM Plex / studio icons. WorldFonts uses self:resources/fonts/.
 makepad_copy_desktop_resources() {
   local out="$1"
   local root="${KUMKAJ_ROOT:-}"
@@ -44,16 +45,24 @@ makepad_copy_desktop_resources() {
   fi
 
   rm -rf "$out/kumkaj" "$out/makepad_widgets"
-  mkdir -p "$out/kumkaj/resources" "$out/makepad_widgets/resources"
+  mkdir -p "$out/kumkaj/resources/fonts"
 
-  # App resources (fonts, icons, menu images). Skip Android-only assets.
   rsync -a --exclude 'android/' \
     "$root/apps/kumkaj/resources/" "$out/kumkaj/resources/"
 
-  # Widget resources used by Makepad UI defaults.
-  rsync -a \
-    --exclude 'LXGWWenKaiRegular.ttf' \
-    --exclude 'LXGWWenKaiBold.ttf' \
-    --exclude 'NotoColorEmoji.ttf' \
-    "$root/vendor/makepad/widgets/resources/" "$out/makepad_widgets/resources/"
+  # CJK + colour emoji: live in vendor Makepad; WorldFonts expects them under
+  # kumkaj/resources/fonts (same folder as the other script fonts).
+  local widgets_res="$root/vendor/makepad/widgets/resources"
+  local fonts_out="$out/kumkaj/resources/fonts"
+  local f
+  for f in LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
+    if [[ -f "$fonts_out/$f" ]]; then
+      continue
+    fi
+    if [[ -f "$widgets_res/$f" ]]; then
+      cp -f "$widgets_res/$f" "$fonts_out/$f"
+    else
+      echo "warn: missing $f (run ./scripts/setup-makepad.sh + ./scripts/fetch-ui-fonts.sh)" >&2
+    fi
+  done
 }

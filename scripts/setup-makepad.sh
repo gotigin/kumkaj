@@ -29,26 +29,23 @@ fi
 echo "Using Makepad 2 source: $SRC"
 rm -rf "$VENDOR"
 mkdir -p "$ROOT/vendor"
-python3 - <<PY
-import shutil
-from pathlib import Path
-src = Path("$SRC")
-dst = Path("$VENDOR")
-shutil.copytree(
-    src,
-    dst,
-    ignore=shutil.ignore_patterns(
-        "target", ".git", "node_modules", "apps", "examples", "tools",
-        "code_editor", "xr", "docs",
-    ),
-    ignore_dangling_symlinks=True,
-)
-bidi = dst / "libs/unicode/unicode-bidi/Cargo.toml"
-if bidi.exists():
-    text = bidi.read_text()
-    bidi.write_text(text.replace('path = "../smallvec"', 'path = "../../smallvec"'))
-print("vendor ready:", dst)
-PY
+# Copy Makepad tree without build/docs/examples noise (bash + rsync, no Python).
+rsync -a \
+  --exclude '.git/' \
+  --exclude 'target/' \
+  --exclude 'node_modules/' \
+  --exclude 'apps/' \
+  --exclude 'examples/' \
+  --exclude 'tools/' \
+  --exclude 'code_editor/' \
+  --exclude 'xr/' \
+  --exclude 'docs/' \
+  "$SRC/" "$VENDOR/"
+BIDI="$VENDOR/libs/unicode/unicode-bidi/Cargo.toml"
+if [[ -f "$BIDI" ]]; then
+  sed -i 's|path = "../smallvec"|path = "../../smallvec"|g' "$BIDI"
+fi
+echo "vendor ready: $VENDOR"
 
 PATCH="$ROOT/patches/makepad/wayland_scroll_sign.rs.patch"
 if [[ -f "$PATCH" ]]; then
@@ -147,5 +144,19 @@ if [[ -f "$SCROLL_TOUCH_PATCH" ]]; then
     echo "Scroll touch-over-buttons already present — skip patch."
   fi
 fi
+
+VIEW_SCROLL_GETTERS="$ROOT/patches/makepad/view_scroll_pos_getters.rs.patch"
+if [[ -f "$VIEW_SCROLL_GETTERS" ]]; then
+  if ! grep -q "pub fn get_scroll_pos(&self) -> Vec2d" \
+      "$VENDOR/widgets/src/view.rs"; then
+    patch -p1 -d "$VENDOR" < "$VIEW_SCROLL_GETTERS"
+    echo "Applied ViewRef scroll position getters (keyboard scroll)."
+  else
+    echo "ViewRef scroll getters already present — skip patch."
+  fi
+fi
+
+# Real API migrations for newer rustc (associated MAX/MIN, Atomic::try_update).
+bash "$ROOT/scripts/fix-makepad-rust-deprecations.sh"
 
 echo "Done. Makepad 2 at vendor/makepad (stock direction, no invert_scroll)."

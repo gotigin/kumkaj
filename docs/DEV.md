@@ -17,7 +17,8 @@ Loads [`env/development.env`](../env/development.env) then `cargo run -p kumkaj 
   - First time / after clean: `./scripts/setup-makepad.sh`
   - Path-dep from `apps/kumkaj`; applies Wayland scroll-sign + dark caption button patches
   - Nested Settings lists claim wheel events so the page does not scroll with the list
-- Multi-script UI fonts in `apps/kumkaj/resources/fonts/` (Noto Sans for Indian + world scripts; Font Awesome for ✕/⌫/✓; CJK/emoji from Makepad widgets). Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
+  - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
+- Multi-script UI fonts live in **one** place: `apps/kumkaj/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji). Desktop packages copy only `kumkaj/resources/` — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
 - **Desktop window size** — first launch defaults to `1024×768`; later launches restore last size/position from `window_geom.json` under the app data dir (Startup `configure_window` + post-create resize so Windows doesn’t keep the DSL default). No forced phone frame. Resize floor is **320 css px** (width and height).
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
@@ -114,7 +115,7 @@ All platform package / bundle ids are **reverse-DNS under kumkaj.com**. There is
 | Size badge (`KUMKAJ_SHOW_SIZE_BADGE`) | on (`1`) — `W×H` in caption | off (`0`) |
 | Windows console | yes (logs) | no (GUI subsystem) |
 
-`apps/kumkaj/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
+`apps/kumkaj/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo kumkaj-windows-dev` builds the **debug** profile with `development.env` (Dev app id / console). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
 
 ### Platform naming (dev vs prod)
 
@@ -169,7 +170,7 @@ Equivalent: `./scripts/kumkaj-android-dev.sh`
 
 Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.app.debug`** (from `env/development.env`).
 
-**Launcher icon:** PNGs under `apps/kumkaj/resources/android/res/mipmap-*/ic_launcher.png` (required by cargo-makepad). Regenerate from `apps/kumkaj/resources/kumkaj-mark.png` with `./scripts/generate-app-icons.sh`, then reinstall.
+**Launcher / logo:** Master art is `assets/kumkaj-app-icon.png`. Run `./scripts/generate-app-icons.sh` to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo kumkaj-dev`; use `cargo kumkaj-android-dev` to verify on device.
 
@@ -183,6 +184,7 @@ One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use 
 |---|---|---|
 | Command | `cargo kumkaj-windows-dev` | `./scripts/package-windows.sh` |
 | Output | `dist/windows-dev/` (copy whole folder) | `dist/windows/` (copy whole folder) |
+| Cargo profile | **debug** (`dev`) | **release** |
 | Env | `env/development.env` | `env/production.env` |
 | Data on Windows | `%APPDATA%\com.kumkaj.app.debug\` | `%APPDATA%\com.kumkaj.app\` |
 
@@ -193,7 +195,7 @@ sudo pacman -S mingw-w64-gcc
 rustup target add x86_64-pc-windows-gnu
 cargo kumkaj-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
 ./scripts/package-windows.sh      # Prod package → copy whole dist/windows/ folder
-# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj/ + makepad_widgets/ resources beside the .exe
+# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj/resources/ beside the .exe
 # Item thumbs: kumkaj/resources/menu/*.webp (copy the whole folder — not exe alone)
 ```
 

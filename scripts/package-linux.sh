@@ -8,7 +8,9 @@ source "$ROOT/scripts/load-kumkaj-env.sh"
 export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env production
 cargo build -p kumkaj --release
-TARGET_DIR="$(cargo metadata --format-version=1 --no-deps | python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
+# shellcheck source=cargo-target-dir.sh
+source "$ROOT/scripts/cargo-target-dir.sh"
+TARGET_DIR="$(cargo_target_dir)"
 BIN="$TARGET_DIR/release/kumkaj"
 if [[ ! -f "$BIN" ]]; then
   echo "Missing binary: $BIN" >&2

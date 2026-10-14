@@ -1,0 +1,36 @@
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -475,6 +475,38 @@ impl ViewRef {
+             inner.set_scroll_pos(cx, v)
+         }
+     }
++
++    pub fn get_scroll_pos(&self) -> Vec2d {
++        if let Some(inner) = self.borrow() {
++            if let Some(scroll_bars) = inner.scroll_bars_obj.as_ref() {
++                return scroll_bars.get_scroll_pos();
++            }
++            return inner.layout.scroll;
++        }
++        dvec2(0.0, 0.0)
++    }
++
++    pub fn get_scroll_view_total(&self) -> Vec2d {
++        if let Some(mut inner) = self.borrow_mut() {
++            if let Some(scroll_bars) = inner.scroll_bars_obj.as_mut() {
++                return scroll_bars.get_scroll_view_total();
++            }
++        }
++        dvec2(0.0, 0.0)
++    }
++
++    pub fn get_scroll_view_visible(&self) -> Vec2d {
++        if let Some(mut inner) = self.borrow_mut() {
++            if let Some(scroll_bars) = inner.scroll_bars_obj.as_mut() {
++                return scroll_bars.get_scroll_view_visible();
++            }
++        }
++        dvec2(0.0, 0.0)
++    }
+ 
+     pub fn area(&self) -> Area {

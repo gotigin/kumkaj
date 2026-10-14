@@ -18,6 +18,10 @@
 /vendor/makepad-full/
 **/.makepad/
 
+# Large CJK / emoji fonts — copied from vendor by fetch-ui-fonts / package scripts
+/apps/kumkaj/resources/fonts/LXGWWenKai*.ttf
+/apps/kumkaj/resources/fonts/NotoColorEmoji.ttf
+
 # Local runtime / screenshots (not source)
 /local/
 

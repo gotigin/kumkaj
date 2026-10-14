@@ -11,8 +11,9 @@ Kumkaj website
 ===============
 Static site for product landing + download pointers.
 
-Serve locally:
-  python3 -m http.server 8080 --directory dist/web
+Serve locally (any static server), e.g.:
+  miniserve dist/web -p 8080
+  # or:  busybox httpd -f -p 8080 -h dist/web
 
 Deploy: upload dist/web/ to https://kumkaj.com (Cloudflare Pages, Netlify, S3, nginx).
 EOF

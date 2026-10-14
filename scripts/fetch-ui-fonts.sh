@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 # Fetch OFL Noto script fonts + Font Awesome into apps/kumkaj/resources/fonts/
 # for WorldFonts fallback (language names + UI symbols). Safe to re-run.
+# Uses curl + jq (no Python).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/apps/kumkaj/resources/fonts"
 mkdir -p "$OUT"
+
+if ! command -v curl >/dev/null 2>&1; then
+  echo "curl is required" >&2
+  exit 1
+fi
+if ! command -v jq >/dev/null 2>&1; then
+  echo "jq is required (Arch: pacman -S jq)" >&2
+  exit 1
+fi
 
 download_family() {
   local folder="$1" outfile="$2"
@@ -12,37 +22,54 @@ download_family() {
     echo "have $(basename "$outfile")"
     return 0
   fi
-  python3 - "$folder" "$outfile" <<'PY'
-import json, sys, urllib.request
-folder, outfile = sys.argv[1], sys.argv[2]
-req = urllib.request.Request(
-    f"https://api.github.com/repos/google/fonts/contents/ofl/{folder}",
-    headers={"User-Agent": "kumkaj-font-fetch"},
-)
-with urllib.request.urlopen(req, timeout=60) as r:
-    entries = json.load(r)
-cands = [
-    (x["name"], x["download_url"])
-    for x in entries
-    if x.get("download_url") and (x["name"].endswith(".ttf") or x["name"].endswith(".otf"))
-]
-pick = next((c for c in cands if "Regular" in c[0] and "[" not in c[0]), None)
-if pick is None:
-    pick = next((c for c in cands if c[0].endswith(".ttf")), None)
-if pick is None and cands:
-    pick = cands[0]
-if pick is None:
-    raise SystemExit(f"no font in ofl/{folder}")
-print(f"get {pick[0]} -> {outfile}")
-data = urllib.request.urlopen(
-    urllib.request.Request(pick[1], headers={"User-Agent": "kumkaj-font-fetch"}),
-    timeout=180,
-).read()
-if data[:4] not in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf"):
-    raise SystemExit(f"not a font: {folder}")
-open(outfile, "wb").write(data)
-print(f"ok {len(data)} bytes")
-PY
+  local api="https://api.github.com/repos/google/fonts/contents/ofl/${folder}"
+  local json
+  json="$(curl -fsSL -A 'kumkaj-font-fetch' "$api")"
+  local url name
+  # Prefer a Regular .ttf without bracketed variable-font names.
+  url="$(echo "$json" | jq -r '
+    [.[] | select(.download_url != null)
+         | select(.name | test("\\.(ttf|otf)$"))
+         | select(.name | test("Regular"))
+         | select(.name | contains("[") | not)]
+    | .[0].download_url // empty
+  ')"
+  name="$(echo "$json" | jq -r '
+    [.[] | select(.download_url != null)
+         | select(.name | test("\\.(ttf|otf)$"))
+         | select(.name | test("Regular"))
+         | select(.name | contains("[") | not)]
+    | .[0].name // empty
+  ')"
+  if [[ -z "$url" ]]; then
+    url="$(echo "$json" | jq -r '
+      [.[] | select(.download_url != null) | select(.name | endswith(".ttf"))]
+      | .[0].download_url // empty
+    ')"
+    name="$(echo "$json" | jq -r '
+      [.[] | select(.download_url != null) | select(.name | endswith(".ttf"))]
+      | .[0].name // empty
+    ')"
+  fi
+  if [[ -z "$url" ]]; then
+    url="$(echo "$json" | jq -r '[.[] | select(.download_url != null)] | .[0].download_url // empty')"
+    name="$(echo "$json" | jq -r '[.[] | select(.download_url != null)] | .[0].name // empty')"
+  fi
+  if [[ -z "$url" ]]; then
+    echo "no font in ofl/${folder}" >&2
+    return 1
+  fi
+  echo "get ${name} -> ${outfile}"
+  curl -fsSL -A 'kumkaj-font-fetch' -o "$outfile" "$url"
+  # TrueType (\0\1\0\0) / OpenType (OTTO) / collection (ttcf)
+  local sig
+  sig="$(head -c 4 "$outfile")"
+  if [[ "$sig" != $'\x00\x01\x00\x00' && "$sig" != "OTTO" && "$sig" != "ttcf" ]]; then
+    rm -f "$outfile"
+    echo "not a font: ${folder}" >&2
+    return 1
+  fi
+  echo "ok $(wc -c < "$outfile") bytes"
 }
 
 # Core script coverage beyond the fonts already vendored with the app.
@@ -57,13 +84,21 @@ download_family notosansthaana "$OUT/NotoSansThaana-Regular.ttf"
 download_family notosansgeorgian "$OUT/NotoSansGeorgian-Regular.ttf"
 download_family notosansarmenian "$OUT/NotoSansArmenian-Regular.ttf"
 
-FA_SRC="$ROOT/vendor/makepad/widgets/resources/fa-solid-900.ttf"
-if [[ -f "$FA_SRC" ]]; then
-  cp -f "$FA_SRC" "$OUT/fa-solid-900.ttf"
-  echo "have fa-solid-900.ttf (from vendor/makepad)"
-else
-  echo "warn: run ./scripts/setup-makepad.sh first for fa-solid-900.ttf" >&2
-fi
+WIDGETS="$ROOT/vendor/makepad/widgets/resources"
+# Single font tree under apps/kumkaj/resources/fonts — never duplicate into
+# a second package folder (makepad_widgets/resources).
+for f in fa-solid-900.ttf LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
+  if [[ -s "$OUT/$f" ]]; then
+    echo "have $f"
+    continue
+  fi
+  if [[ -f "$WIDGETS/$f" ]]; then
+    cp -f "$WIDGETS/$f" "$OUT/$f"
+    echo "have $f (from vendor/makepad)"
+  else
+    echo "warn: run ./scripts/setup-makepad.sh first for $f" >&2
+  fi
+done
 
 echo "fonts ready in $OUT"
 ls -lh "$OUT"

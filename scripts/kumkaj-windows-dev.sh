@@ -27,13 +27,17 @@ else
   windows_ensure_toolchain
 fi
 
-cargo build -p kumkaj --release --target "$TARGET"
+# Dev profile (unoptimized + debuginfo) — matches Linux `cargo kumkaj-dev`.
+# Production shipping stays `./scripts/package-windows.sh` (--release).
+cargo build -p kumkaj --target "$TARGET"
 
-TARGET_DIR="$(cargo metadata --format-version=1 --no-deps | python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
+# shellcheck source=cargo-target-dir.sh
+source "$ROOT/scripts/cargo-target-dir.sh"
+TARGET_DIR="$(cargo_target_dir)"
 EXE=""
 for cand in \
-  "$TARGET_DIR/$TARGET/release/kumkaj.exe" \
-  "$TARGET_DIR/$TARGET/release/kumkaj"
+  "$TARGET_DIR/$TARGET/debug/kumkaj.exe" \
+  "$TARGET_DIR/$TARGET/debug/kumkaj"
 do
   if [[ -f "$cand" ]]; then
     EXE="$cand"
@@ -41,7 +45,7 @@ do
   fi
 done
 if [[ -z "$EXE" ]]; then
-  echo "Built binary not found under $TARGET_DIR/$TARGET/release/" >&2
+  echo "Built binary not found under $TARGET_DIR/$TARGET/debug/" >&2
   exit 1
 fi
 
@@ -54,9 +58,9 @@ Kumkaj Windows (development)
 Makepad desktop package — copy this WHOLE folder to the PC (keep structure):
 
   kumkaj.exe
-  kumkaj/resources/            (app fonts + icons)
-  makepad_widgets/resources/   (UI fonts)
+  kumkaj/resources/            (fonts + icons + menu)
 
+Profile: debug (dev) — not --release
 Target: $TARGET (x86_64 — Windows 10 and Windows 11)
 App id: ${KUMKAJ_APP_ID}
 Label: ${KUMKAJ_APP_LABEL}
@@ -67,7 +71,7 @@ Run from inside the folder:
 
 Data: %APPDATA%\\com.kumkaj.app.debug\\
 
-Production: ./scripts/package-windows.sh → dist/windows/
+Production (release): ./scripts/package-windows.sh → dist/windows/
 EOF
 
 echo "Windows Dev package: $OUT/"

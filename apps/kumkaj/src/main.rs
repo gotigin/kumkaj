@@ -913,9 +913,9 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        chinese := FontMember{res: crate_resource("makepad_widgets:resources/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
+        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
         icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
+        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     let WorldFontsBold = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/NotoSans-Regular.ttf") asc: -0.1 desc: 0.0}
@@ -942,9 +942,9 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        chinese := FontMember{res: crate_resource("makepad_widgets:resources/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
+        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
         icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
+        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     mod.theme.font_regular.font_family = WorldFonts
     mod.theme.font_label.font_family = WorldFonts
@@ -1109,8 +1109,8 @@ script_mod! {
     // freezing the whole UI (PIN keypad included). Style fields via theme +
     // per-instance blink_speed/padding only (see FieldInput).
 
-    // Makepad 2 ScrollYView: wheel/trackpad scroll only. Drag-scroll steals
-    // text selection gestures; selectable WrapLabels need the drag.
+    // Makepad 2 ScrollYView: wheel/trackpad + app keyboard (↑/↓, PgUp/PgDn).
+    // Drag-scroll steals text selection; selectable WrapLabels need the drag.
     mod.widgets.ScrollYView = mod.widgets.ViewBase {
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: false show_scroll_y: true
@@ -2691,7 +2691,7 @@ script_mod! {
                             brand_mark := Image{
                                 width: 36 height: 36
                                 fit: ImageFit.Stretch
-                                visible: false
+                                source: crate_resource("self:resources/kumkaj-mark.webp")
                             }
                             View{
                                 width: Fill height: Fit
@@ -2792,7 +2792,7 @@ script_mod! {
                                             setup_brand_mark := Image{
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
-                                                visible: false
+                                                source: crate_resource("self:resources/kumkaj-mark.webp")
                                             }
                                             View{
                                                 width: Fill height: Fit
@@ -2946,7 +2946,7 @@ script_mod! {
                                             lock_brand_mark := Image{
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
-                                                visible: false
+                                                source: crate_resource("self:resources/kumkaj-mark.webp")
                                             }
                                             View{
                                                 width: Fill height: Fit
@@ -4184,7 +4184,7 @@ script_mod! {
                                 }
                                 venue_title_input := FieldInput{empty_text: "Name of this place"}
                                 venue_brand_hint := WrapLabel{
-                                    body: "Icon: none — choose one"
+                                    body: "Icon: Kumkaj mark (default) — choose a custom one"
                                     font_color: #x45464e
                                     font_size: 12.
                                 }
@@ -7116,6 +7116,71 @@ impl App {
             .set_text(cx, &plain_display_text(&selected_lang_line));
     }
 
+    /// LiveId path of the page `ScrollYView` for `screen`.
+    fn screen_scroll_view(screen: Screen) -> &'static [LiveId] {
+        match screen {
+            Screen::DeviceSetup => ids!(device_setup_screen),
+            Screen::Lock => ids!(lock_screen),
+            Screen::Onboard => ids!(onboard_screen),
+            Screen::ClientPair => ids!(client_pair_screen),
+            Screen::Books => ids!(books_screen),
+            Screen::Pos => ids!(pos_screen),
+            Screen::Buy => ids!(buy_screen),
+            Screen::Menu => ids!(menu_screen),
+            Screen::More => ids!(more_screen),
+            Screen::Floor => ids!(floor_screen),
+            Screen::Kitchen => ids!(kitchen_screen),
+            Screen::Sales => ids!(sales_screen),
+            Screen::Credit => ids!(credit_screen),
+            Screen::Team => ids!(team_screen),
+            Screen::Settings => ids!(settings_screen),
+            Screen::DayClose => ids!(day_close_screen),
+            Screen::Reports => ids!(reports_screen),
+            Screen::Inventory => ids!(inventory_screen),
+            Screen::Branches => ids!(branches_screen),
+        }
+    }
+
+    /// Keyboard scroll for the active page ScrollYView.
+    /// ↑/↓ move by a line step; PgUp jumps to top; PgDn jumps to bottom.
+    /// Returns true when the key was consumed (including no-op at limits).
+    fn handle_scroll_key(&mut self, cx: &mut Cx, e: &KeyEvent) -> bool {
+        if !matches!(
+            e.key_code,
+            KeyCode::ArrowUp | KeyCode::ArrowDown | KeyCode::PageUp | KeyCode::PageDown
+        ) {
+            return false;
+        }
+        if e.modifiers.control || e.modifiers.alt || e.modifiers.logo {
+            return false;
+        }
+        // Text fields own arrows / page keys for caret movement.
+        if !cx.key_focus().is_empty() {
+            return false;
+        }
+        let screen = app_state().lock().unwrap().screen;
+        let view = self.ui.view(cx, Self::screen_scroll_view(screen));
+        let pos = view.get_scroll_pos();
+        let total = view.get_scroll_view_total();
+        let visible = view.get_scroll_view_visible();
+        let max_y = (total.y - visible.y).max(0.0);
+        // One comfortable line; hold-to-repeat uses is_repeat from the OS.
+        const ARROW_STEP: f64 = 48.0;
+        let new_y = match e.key_code {
+            KeyCode::ArrowUp => (pos.y - ARROW_STEP).max(0.0),
+            KeyCode::ArrowDown => (pos.y + ARROW_STEP).min(max_y),
+            KeyCode::PageUp => 0.0,
+            KeyCode::PageDown => max_y,
+            _ => return false,
+        };
+        if (new_y - pos.y).abs() < 0.5 {
+            return true;
+        }
+        view.set_scroll_pos(cx, dvec2(pos.x, new_y));
+        view.redraw(cx);
+        true
+    }
+
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
         let pairs = [
             (ids!(device_setup_screen), screen == Screen::DeviceSetup),
@@ -7216,7 +7281,7 @@ impl App {
             } else if icon_path.is_some() {
                 "Icon: custom venue mark".to_string()
             } else {
-                "Icon: none — choose one".to_string()
+                "Icon: Kumkaj mark (default) — choose a custom one".to_string()
             };
             (title, header_title, icon_path, icon_hint, st.venue_title.clone())
         };
@@ -7227,11 +7292,12 @@ impl App {
         }
         for id in [ids!(brand_mark), ids!(setup_brand_mark), ids!(lock_brand_mark)] {
             let img = self.ui.image(cx, id);
+            img.set_visible(cx, true);
             if let Some(ref path) = icon_path {
-                img.set_visible(cx, true);
                 load_thumb_at(cx, &img, path);
             } else {
-                img.set_visible(cx, false);
+                // Default app mark (WebP bundled beside the crate).
+                let _ = img.load_image_dep_by_path(cx, "kumkaj/resources/kumkaj-mark.webp");
             }
         }
         self.ui
@@ -7954,7 +8020,7 @@ impl App {
         st.nav_back.clear();
         st.nav_forward.clear();
         if let Some(store) = st.store.as_ref() {
-            let _ = store.set_device_role("server");
+            let _ = store.set_device_role(DeviceRole::Server.as_str());
             if switching_in {
                 let _ = store.set_extra_tills_allowed(false);
                 st.extra_tills_allowed = false;
@@ -9346,6 +9412,12 @@ impl MatchEvent for App {
             if nav_gesture_ok() {
                 let _ = self.navigate_forward(cx);
             }
+            return;
+        }
+
+        // Page ScrollYView: ↑/↓ step, PgUp → top, PgDn → bottom.
+        // Skip when a TextInput (or other widget) holds key focus.
+        if self.handle_scroll_key(cx, e) {
             return;
         }
 
@@ -11916,13 +11988,23 @@ impl MatchEvent for App {
             let aging_only = self.ui.button(cx, ids!(reports_aging)).clicked(actions);
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 st.day_close_text = if aging_only {
-                    store.party_aging_text()?
+                    st.store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .party_aging_text()?
                 } else if month {
-                    store.books_report_text("month")?
+                    st.store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .books_report_text("month")?
                 } else {
-                    store.books_report_text("today")?
+                    let report = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .ops_report_today()?;
+                    st.ops_report_text(&report)
                 };
                 st.screen = Screen::Reports;
                 st.status = if aging_only {
