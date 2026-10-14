@@ -107,18 +107,29 @@ const ALIASES: &[(&str, &str)] = &[
     ("roll", "spring_rolls"),
 ];
 
+/// Candidate menu-art dirs beside a packaged desktop binary (first hit wins).
+///
+/// `MAKEPAD_PACKAGE_DIR=.` layout puts files at `kumkaj/resources/menu/` next to
+/// the exe — not a bare `menu/` folder. Looking only for `menu/` / `resources/menu`
+/// after that packaging change left Windows builds with blank item thumbs.
+pub fn menu_dir_candidates(exe_dir: &Path) -> [PathBuf; 3] {
+    [
+        exe_dir.join("kumkaj").join("resources").join("menu"),
+        exe_dir.join("menu"),
+        exe_dir.join("resources").join("menu"),
+    ]
+}
+
 pub fn bundled_menu_dir() -> PathBuf {
     if let Ok(exe) = std::env::current_exe()
-        && let Some(parent) = exe.parent() {
-            let beside = parent.join("menu");
-            if beside.is_dir() {
-                return beside;
-            }
-            let resources = parent.join("resources").join("menu");
-            if resources.is_dir() {
-                return resources;
+        && let Some(parent) = exe.parent()
+    {
+        for candidate in menu_dir_candidates(parent) {
+            if candidate.is_dir() {
+                return candidate;
             }
         }
+    }
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources/menu")
 }
 
@@ -138,6 +149,16 @@ pub fn read_image_bytes(cx: &Cx, path: &Path) -> Option<Vec<u8>> {
     if let Ok(bytes) = std::fs::read(path) {
         return Some(bytes);
     }
+    // Cross-compiled Windows resolves CARGO_MANIFEST_DIR to a Linux path that
+    // does not exist on the PC — retry the real dir beside the .exe.
+    if let Some(name) = path.file_name() {
+        let beside = bundled_menu_dir().join(name);
+        if beside.as_path() != path
+            && let Ok(bytes) = std::fs::read(&beside)
+        {
+            return Some(bytes);
+        }
+    }
     let path_str = path.to_string_lossy();
     // .../resources/menu/chai.webp → kumkaj/resources/menu/chai.webp
     if let Some(idx) = path_str.find("resources/menu/") {
@@ -149,14 +170,20 @@ pub fn read_image_bytes(cx: &Cx, path: &Path) -> Option<Vec<u8>> {
     }
     // Filename-only fallback (bundled_image_path that doesn't exist as a file)
     if let Some(name) = path.file_name().and_then(|n| n.to_str())
-        && name.ends_with(".webp") {
-            let key = name.trim_end_matches(".webp");
-            if is_builtin_key(key)
-                && let Ok(data) = cx.get_dependency(&bundled_dependency_path(key)) {
-                    return Some((*data).clone());
-                }
+        && name.ends_with(".webp")
+    {
+        let key = name.trim_end_matches(".webp");
+        if is_builtin_key(key)
+            && let Ok(data) = cx.get_dependency(&bundled_dependency_path(key))
+        {
+            return Some((*data).clone());
         }
-    // Last resort: placeholder from assets
+    }
+    // Last resort: placeholder from disk, then APK/assets dependency table.
+    let placeholder_disk = bundled_image_path(PLACEHOLDER_KEY);
+    if let Ok(bytes) = std::fs::read(&placeholder_disk) {
+        return Some(bytes);
+    }
     cx.get_dependency(&bundled_dependency_path(PLACEHOLDER_KEY))
         .ok()
         .map(|d| (*d).clone())
@@ -323,5 +350,14 @@ mod tests {
         assert_eq!(detect_image_key("Masala chai"), "chai");
         assert_eq!(detect_image_key("Garlic naan"), "naan");
         assert_eq!(detect_image_key("Random widget"), PLACEHOLDER_KEY);
+    }
+
+    #[test]
+    fn packaged_layout_prefers_kumkaj_resources_menu() {
+        let exe_dir = Path::new("/opt/kumkaj-dist");
+        let [makepad, legacy, alt] = menu_dir_candidates(exe_dir);
+        assert_eq!(makepad, PathBuf::from("/opt/kumkaj-dist/kumkaj/resources/menu"));
+        assert_eq!(legacy, PathBuf::from("/opt/kumkaj-dist/menu"));
+        assert_eq!(alt, PathBuf::from("/opt/kumkaj-dist/resources/menu"));
     }
 }

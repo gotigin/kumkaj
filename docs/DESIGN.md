@@ -48,7 +48,10 @@ Same device may hold **several local servers** (different products or businesses
 Legacy single-file `kumkaj.sqlite3` at the data-dir root is **migrated once** into the first registered server.
 | **Onboard** | After first Owner PIN — start template chips (**None** default / Counter / Courier / Food / Personal), then Fresh vs Book. None applies if nothing else is tapped. |
 | **Settings** | Switch start template anytime (labels/defaults only — no sample catalogue). None is the bare-minimal default. |
-| **Choice chips** | Selected face = `ChipBtnActive` visible; idle = `ChipBtn`. Horizontal `ChipStrip` scrolls with wheel/scrollbar only (not drag), so taps register. |
+| **Choice chips** | Short labels only (`ChipBtn` / `ChipBtnActive` in `ChipStrip`). Multi-word choices are **not** chips. |
+| **Stacked CTAs** | Multi-word / long labels → `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn` (full width, wrap, no ellipsis). Same faces as Server/Client Mode. Never `ChipBtn` / `ActionRow` for those. |
+| **Bottom nav** | Makepad 2 Button has no selected bit. Active peer = only `TabBtnActive` visible (`paint_nav_tabs`); idle `TabBtn` stays transparent on hover/focus so previous tabs cannot stay lit. More children keep **More** highlighted. |
+| **CTA labels** | Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`) wrap — never `Ellipsis`. `ChipBtn` ellipsis only for short strip chips. |
 | **Min width** | Layout floor **320 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`). |
 | **Button ink** | Shared faces use `padding` + `label_walk.margin` so labels never sit flush on the face edge. Long dual CTAs use `ActionStack`, not half-width `ActionRow`. |
 | **Reports** | Today / month books, party aging, expenses, bank cashbook posts — generic books, not a vertical report suite. |
@@ -64,6 +67,14 @@ Legacy single-file `kumkaj.sqlite3` at the data-dir root is **migrated once** in
 Owner order after unlock: **Books** (today’s position) → **Sell** or **Buy** as peers → optional Floor / KDS when Tables & kitchen is on.
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
+
+## Makepad 2 faces (agents — selection & truncation)
+
+Full cause / approach / code map: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide). Cursor rule: `.cursor/rules/makepad-layout-faces.mdc`.
+
+**Selection:** Makepad 2 `Button` has **no selected bit** — only hover/down/focus/disabled animators. Shipping pattern is Overlay **idle + active** faces; Rust paints visibility from app state (`paint_nav_tabs` / `paint_choice_pair`) and **cuts those animators** so a previous face cannot stay lit. Idle bottom-nav (`TabBtn`) stays **transparent** on hover/focus; only `TabBtnActive` uses the navy “selected” fill. More children keep the **More** peer highlighted.
+
+**Labels:** Never `max_lines: 1` + `Ellipsis` on full-width / multi-word / translated CTAs (`NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`). Those faces **wrap** (`height: Fit`, `flow: Right{wrap: true}`). `ChipBtn` ellipsis is allowed **only** for short strip chips (Fit max 160). Always set both `padding` and `label_walk.margin`.
 
 ## Color tokens (live)
 

@@ -1,0 +1,52 @@
+---
+description: Makepad 2 selection + CTA truncation — cause, approach, do/don't
+globs: apps/kumkaj/**/*.{rs,md}
+alwaysApply: false
+---
+
+# Makepad 2 faces (selection + truncation)
+
+Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces.
+
+Same UI ships to Linux / Windows / Android — change shared faces in `apps/kumkaj`, not per OS.
+
+## Cause (regressions we already paid for)
+
+Makepad 2 `Button` has **no selected bit** — only `hover` / `down` / `focus` / `disabled` animators.
+
+| Failure | Cause |
+|---|---|
+| Several bottom tabs look active | Idle `TabBtn` used the **same navy fill** on hover/focus as `TabBtnActive`; focus also stuck after click |
+| Sell lit while Buy/More shows | Selection inferred from focus/hover instead of `Screen` via `paint_nav_tabs` |
+| Label clipped on the right | Full-width CTA with `max_lines: 1` + `Ellipsis`, or multi-word text in `ChipBtn` (Fit max 160) |
+| Button shows `record_purchase` | Missing English `locale::en` entry; `t()` returned the key |
+
+## Approach (required)
+
+### Selection
+
+1. Overlay **idle + active** faces (not one Button whose hover means selected).
+2. Idle face must **not** reuse the active fill on hover/down/focus (nav idle = transparent).
+3. Paint from app state: `paint_nav_tabs` / `paint_choice_pair` (+ `clear_button_animators` every time).
+4. Bottom nav: exactly one peer from `nav_tab_for(screen)`; More children → **More**.
+5. Nav tabs: `grab_key_focus: false`, `reset_hover_on_click: true`.
+
+### Labels
+
+| Labels | Face |
+|---|---|
+| Short strip chip | `ChipBtn` / `ChipBtnActive` (ellipsis OK) |
+| Ultra-short side-by-side | `ActionRow` + `Row*` |
+| Multi-word / translated | `ActionStack` + `Stack*`, or `NavBtn` / `PayBtn` / `MoreRow` (wrap, **no** ellipsis) |
+
+Always `padding` **and** `label_walk.margin`. Never invent `LangSourceBtn`-style one-offs.
+
+```text
+❌ Idle TabBtn color_hover = #1b2a4a
+❌ Focus/hover as the selected look
+❌ Ellipsis on NavBtn/MoreRow; ChipBtn for “Tax invoice” / language source
+❌ Fix one call site only — edit the shared face
+
+✅ Overlay + paint_nav_tabs / paint_choice_pair + animator clear
+✅ Wrap on full-width CTAs; ChipBtn only for short chips
+```

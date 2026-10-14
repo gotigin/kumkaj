@@ -6,7 +6,7 @@ Offline use is free forever, from a single counter through extra tills, kitchens
 
 **Who it is for:** **any** entity that sells or keeps a book (business or personal, any trade, one outlet or many). Same **Books · Sell · Buy · More** shell — generic core, concrete feel via templates/labels ([`DESIGN.md`](DESIGN.md); commons in [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
-**UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`.
+**UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`. Makepad 2 button selection + label rules for agents: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide).
 
 **Auth:** Owner hosts the shop; Staff unlock with their own PIN (or optional login) and owner-defined role title. Sale authorship is immutable. Extra tills pair on the outlet Wi‑Fi when the shop allows them — see [`DEV.md`](DEV.md).
 

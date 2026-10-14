@@ -286,6 +286,36 @@ fn unlocked_home() -> Screen {
     Screen::Books
 }
 
+/// Which bottom-nav peer owns this screen (More children keep More highlighted).
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum NavTab {
+    Books,
+    Sell,
+    Buy,
+    More,
+}
+
+fn nav_tab_for(screen: Screen) -> Option<NavTab> {
+    match screen {
+        Screen::Books => Some(NavTab::Books),
+        Screen::Pos => Some(NavTab::Sell),
+        Screen::Buy => Some(NavTab::Buy),
+        Screen::More
+        | Screen::Menu
+        | Screen::Floor
+        | Screen::Kitchen
+        | Screen::Sales
+        | Screen::Credit
+        | Screen::Team
+        | Screen::Settings
+        | Screen::DayClose
+        | Screen::Reports
+        | Screen::Inventory
+        | Screen::Branches => Some(NavTab::More),
+        Screen::DeviceSetup | Screen::Lock | Screen::Onboard | Screen::ClientPair => None,
+    }
+}
+
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(
         screen,
@@ -840,7 +870,10 @@ impl AppState {
                         self.money(t.rounding())
                     ));
                 }
-                lines.join("\n")
+                // Markdown treats a single \\n as a soft break (often one
+                // clipped line). Paragraph breaks so WrapLabel wraps each row
+                // inside the bar instead of truncating at the right edge.
+                lines.join("\n\n")
             }
             None => format!("{}: —", self.t("today_prefix")),
         }
@@ -1151,13 +1184,16 @@ script_mod! {
         }
     }
 
+    // Full-width CTA — wrap, never ellipsis. Makepad Fill+Ellipsis clips the
+    // right of any multi-word / translated label on every platform.
     let NavBtn = Button{
-        width: Fill height: 52
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
-        align: Center
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fit
+            width: Fill
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -1187,8 +1223,6 @@ script_mod! {
             color_focus: #xffffff
             color_disabled: #xe8e8ea
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 15.}
         }
     }
@@ -1226,9 +1260,15 @@ script_mod! {
         }
     }
 
+    // Bottom-nav faces. Makepad 2 Button has NO selected state — only
+    // hover/down/focus animators. Selection = TabBtnActive visible via Overlay
+    // swap. Idle TabBtn must NEVER use the selected navy fill on hover/focus
+    // (that made previous + current tabs look active at once).
     let TabBtn = Button{
         width: Fill height: 56
         align: Center
+        grab_key_focus: false
+        reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
         label_walk: Walk{
@@ -1239,21 +1279,57 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x00000000
-            color_hover: #x1b2a4a
-            color_down: #x0f172a
+            color_hover: #x00000000
+            color_down: #x00000000
             color_focus: #x00000000
             color_disabled: #x00000000
             color_2: #x00000000
-            color_2_hover: #x1b2a4a
-            color_2_down: #x0f172a
+            color_2_hover: #x00000000
+            color_2_down: #x00000000
             color_2_focus: #x00000000
             border_color: #x00000000
             border_radius: 12.
             border_size: 0.
         }
-        // Always light ink — sits on navy bottom_nav only (never on a light face).
         draw_text +: {
             color: #xb7c6ee
+            color_hover: #xdce4f8
+            color_down: #xdce4f8
+            color_focus: #xb7c6ee
+            color_disabled: #x75777f
+            text_style +: {font_size: 13.}
+        }
+    }
+    let TabBtnActive = Button{
+        width: Fill height: 56
+        align: Center
+        grab_key_focus: false
+        reset_hover_on_click: true
+        margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
+        padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 8. right: 8.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x1b2a4a
+            color_hover: #x1b2a4a
+            color_down: #x1b2a4a
+            color_focus: #x1b2a4a
+            color_disabled: #x1b2a4a
+            color_2: #x1b2a4a
+            color_2_hover: #x1b2a4a
+            color_2_down: #x1b2a4a
+            color_2_focus: #x1b2a4a
+            color_2_disabled: #x1b2a4a
+            border_color: #x1b2a4a
+            border_radius: 12.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xffffff
             color_hover: #xffffff
             color_down: #xffffff
             color_focus: #xffffff
@@ -1264,12 +1340,13 @@ script_mod! {
 
     // Secondary pay — navy + white (never white face on white cart).
     let PayBtn = Button{
-        width: Fill height: 52
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
-        align: Center
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fit
+            width: Fill
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -1299,8 +1376,6 @@ script_mod! {
             color_focus: #xffffff
             color_disabled: #xe8e8ea
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 14.}
         }
     }
@@ -1379,14 +1454,16 @@ script_mod! {
     // Side-by-side row actions — same height/margins so mixed primary/secondary
     // never sit on different baselines (Makepad Fill+theme margin misaligns).
     // Defined as full Button (not PinOkKey alias) so padding always applies.
-    // Prefer ActionStack when labels are longer than ~10 chars at 320px width.
+    // Prefer ActionStack when labels are longer than ~4 chars at 320px width.
+    // Row faces wrap (no ellipsis) so half-width ActionRow still shows full text.
     let RowPrimaryBtn = Button{
-        width: Fill height: 52
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
-        align: Center
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fit
+            width: Fill
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -1410,18 +1487,17 @@ script_mod! {
             color_down: #xffffff
             color_focus: #xffffff
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 15.}
         }
     }
     let RowSecondaryBtn = Button{
-        width: Fill height: 52
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
-        align: Center
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fit
+            width: Fill
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -1445,8 +1521,6 @@ script_mod! {
             color_down: #x1a1c1e
             color_focus: #x1a1c1e
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 15.}
         }
     }
@@ -1462,11 +1536,82 @@ script_mod! {
         width: Fill height: Fit
         flow: Down spacing: 8
     }
+    // ActionStack faces — same navy/gray as RowPrimary/Secondary, but height Fit
+    // + wrap (no ellipsis). Use for any multi-word stacked CTA (language source,
+    // Server/Client Mode, etc.). Never put those labels in ChipBtn.
+    let StackPrimaryBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x1b2a4a
+            color_hover: #x24365e
+            color_down: #x041534
+            color_focus: #x1b2a4a
+            color_2: #x1b2a4a
+            color_2_hover: #x24365e
+            color_2_down: #x041534
+            color_2_focus: #x1b2a4a
+            border_color: #x1b2a4a
+            border_radius: 14.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+            ink_centered: true
+            text_style +: {font_size: 15.}
+        }
+    }
+    let StackSecondaryBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xe2e2e5
+            color_hover: #xd9dadc
+            color_down: #xc5c6cf
+            color_focus: #xe2e2e5
+            color_2: #xe2e2e5
+            color_2_hover: #xd9dadc
+            color_2_down: #xc5c6cf
+            color_2_focus: #xe2e2e5
+            border_color: #xc5c6cf
+            border_radius: 14.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x1a1c1e
+            color_hover: #x1a1c1e
+            color_down: #x1a1c1e
+            color_focus: #x1a1c1e
+            ink_centered: true
+            text_style +: {font_size: 15.}
+        }
+    }
 
-    // Chip for horizontal strips: Fit width (scroll, don't crush). Cap width so
-    // long labels ellipsis instead of stealing the whole strip.
-    // Fit.max is Option<FitBound>; bare numbers / bare Abs() are not in scope —
-    // use FitBound.Abs (same pattern as Flow.Right).
+    // Chip for horizontal strips ONLY: Fit width (scroll, don't crush). Cap so
+    // short labels ellipsis instead of stealing the whole strip.
+    // Fit.max is Option<FitBound> — use FitBound.Abs (same pattern as Flow.Right).
+    // NEVER use ChipBtn for multi-word CTAs — ActionStack + StackPrimary/Secondary.
     let ChipBtn = Button{
         width: Fit{max: FitBound.Abs(160.)} height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
@@ -2183,21 +2328,22 @@ script_mod! {
 
     let LocaleRow = RoundedView{
         width: Fill height: Fit
-        padding: Inset{left: 16. right: 8. top: 8. bottom: 8.}
-        flow: Right spacing: 8
+        padding: Inset{left: 16. right: 10. top: 10. bottom: 10.}
+        flow: Right spacing: 10
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5c6570
         label := WrapLabel{
+            width: Fill
             body: "locale"
             font_color: #x1a1c1e
             font_size: 14.
         }
         pick := Button{
             text: "Use"
-            width: 72 height: 44
+            width: 80 height: 48
             draw_bg +: {
                 color: #x041534
                 color_hover: #x1b2a4a
@@ -2246,9 +2392,10 @@ script_mod! {
     }
 
     let MoreRow = Button{
-        width: Fill height: 58
+        width: Fill height: Fit
         align: Align{x: 0.0 y: 0.5}
-        padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
+        flow: Right{wrap: true}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         label_walk: Walk{
             width: Fill
             height: Fit
@@ -2278,8 +2425,7 @@ script_mod! {
             color_hover: #x1a1c1e
             color_down: #x1a1c1e
             color_focus: #x1a1c1e
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
+            ink_centered: false
             text_style +: {font_size: 16.}
         }
     }
@@ -2406,16 +2552,19 @@ script_mod! {
         }
     }
 
+    // Server pick rows use LocaleRow (~60px) + item pad — PortalList height
+    // must be ≥ one full Open row or the pick button is clipped top/bottom.
     mod.widgets.ServerListBase = #(ServerList::register_widget(vm))
     mod.widgets.ServerList = set_type_default() do mod.widgets.ServerListBase{
         width: Fill height: Fit
+        margin: Inset{top: 4. bottom: 4.}
         list := PortalList{
             width: Fill height: Fill
-            spacing: 6
+            spacing: 10
             scroll_bar: ScrollBar{}
             Item := View{
                 width: Fill height: Fit
-                padding: Inset{bottom: 10.}
+                padding: Inset{top: 2. bottom: 8.}
                 texture_caching: false
                 LocaleRow{}
             }
@@ -2548,18 +2697,24 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
                                 brand_title := WrapLabel{
+                                    width: Fill
                                     body: "Your shop"
                                     font_color: #xffffff
                                     font_size: 18.
                                 }
                                 session_label := WrapLabel{
+                                    width: Fill
                                     body: "Sell"
                                     font_color: #x8392b7
                                     font_size: 11.
                                 }
                             }
+                            // Fit + no ellipsis — never pin/crop against the
+                            // window edge (header already has right padding).
                             shop_badge := Label{
+                                width: Fit height: Fit
                                 text: "Shop"
+                                margin: Inset{left: 4. right: 0. top: 0. bottom: 0.}
                                 draw_text.color: #xfe8357
                                 draw_text.text_style.font_size: 11.
                             }
@@ -2667,20 +2822,18 @@ script_mod! {
                                         font_color: #x45464e
                                         font_size: 12.
                                     }
-                                    ChipStrip{
-                                        ChipStripRow{
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                lang_setup_platform := ChipBtn{text: "Use platform native language"}
-                                                lang_setup_platform_on := ChipBtnActive{text: "Use platform native language" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                lang_setup_user := ChipBtn{text: "Use user selected language"}
-                                                lang_setup_user_on := ChipBtnActive{text: "Use user selected language" visible: false}
-                                            }
+                                    ActionStack{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            lang_setup_platform := StackSecondaryBtn{text: "Use platform native language"}
+                                            lang_setup_platform_on := StackPrimaryBtn{text: "Use platform native language" visible: false}
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            lang_setup_user := StackSecondaryBtn{text: "Use user selected language"}
+                                            lang_setup_user_on := StackPrimaryBtn{text: "Use user selected language" visible: false}
                                         }
                                     }
                                     setup_lang_selected := WrapLabel{
@@ -2697,8 +2850,8 @@ script_mod! {
                                     }
 
                                     ActionStack{
-                                        device_role_server := RowPrimaryBtn{text: "Server Mode"}
-                                        device_role_client := RowSecondaryBtn{text: "Client Mode"}
+                                        device_role_server := StackPrimaryBtn{text: "Server Mode"}
+                                        device_role_client := StackSecondaryBtn{text: "Client Mode"}
                                     }
 
                                     device_setup_help := WrapLabel{
@@ -2710,7 +2863,7 @@ script_mod! {
 
                                     server_pick_section := View{
                                         width: Fill height: Fit
-                                        flow: Down spacing: 8
+                                        flow: Down spacing: 12
                                         visible: false
                                         server_pick_title := WrapLabel{
                                             body: "Choose a server"
@@ -3311,20 +3464,18 @@ script_mod! {
                                         font_color: #x45464e
                                         font_size: 12.
                                     }
-                                    ChipStrip{
-                                        ChipStripRow{
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                lane_declared := ChipBtn{text: "Tax invoice"}
-                                                lane_declared_on := ChipBtnActive{text: "Tax invoice" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                lane_owner := ChipBtn{text: "Cash memo"}
-                                                lane_owner_on := ChipBtnActive{text: "Cash memo" visible: false}
-                                            }
+                                    ActionStack{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            lane_declared := StackSecondaryBtn{text: "Tax invoice"}
+                                            lane_declared_on := StackPrimaryBtn{text: "Tax invoice" visible: false}
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            lane_owner := StackSecondaryBtn{text: "Cash memo"}
+                                            lane_owner_on := StackPrimaryBtn{text: "Cash memo" visible: false}
                                         }
                                     }
                                     mix_cash_input := FieldInput{empty_text: "Cash amount"}
@@ -3503,20 +3654,19 @@ script_mod! {
                                 buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
                                 buy_party_kind := FieldInput{empty_text: "New party kind (Supplier / Carrier)"}
                                 buy_note_input := FieldInput{empty_text: "Note (optional)"}
-                                ChipStrip{
-                                    ChipStripRow{
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            buy_paid := ChipBtn{text: "Paid now"}
-                                            buy_paid_on := ChipBtnActive{text: "Paid now" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            buy_on_account := ChipBtn{text: "On account (AP)"}
-                                            buy_on_account_on := ChipBtnActive{text: "On account (AP)" visible: false}
-                                        }
+                                // Multi-word — ActionStack, not ChipStrip (160px truncates).
+                                ActionStack{
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        buy_paid := StackSecondaryBtn{text: "Paid now"}
+                                        buy_paid_on := StackPrimaryBtn{text: "Paid now" visible: false}
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        buy_on_account := StackSecondaryBtn{text: "On account (AP)"}
+                                        buy_on_account_on := StackPrimaryBtn{text: "On account (AP)" visible: false}
                                     }
                                 }
                                 buy_purchase := NavBtn{text: "Record purchase"}
@@ -3930,20 +4080,18 @@ script_mod! {
                                     font_color: #x1a1c1e
                                     font_size: 12.
                                 }
-                                ChipStrip{
-                                    ChipStripRow{
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_lang_platform := ChipBtn{text: "Use platform native language"}
-                                            settings_lang_platform_on := ChipBtnActive{text: "Use platform native language" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_lang_user := ChipBtn{text: "Use user selected language"}
-                                            settings_lang_user_on := ChipBtnActive{text: "Use user selected language" visible: false}
-                                        }
+                                ActionStack{
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        settings_lang_platform := StackSecondaryBtn{text: "Use platform native language"}
+                                        settings_lang_platform_on := StackPrimaryBtn{text: "Use platform native language" visible: false}
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        settings_lang_user := StackSecondaryBtn{text: "Use user selected language"}
+                                        settings_lang_user_on := StackPrimaryBtn{text: "Use user selected language" visible: false}
                                     }
                                 }
                                 settings_lang_selected := WrapLabel{
@@ -4305,15 +4453,36 @@ script_mod! {
                     }
 
                     // docs/DESIGN.md · BUSINESS_BOOKS.md: Books · Sell · Buy · More
+                    // Selected tab = TabBtnActive visible (paint_nav_tabs), not focus.
                     bottom_nav := SolidView{
                         width: Fill height: Fit
                         padding: Inset{left: 4. right: 4. top: 4. bottom: 8.}
                         flow: Right spacing: 0
                         draw_bg.color: #x041534
-                        nav_books := TabBtn{text: "Books"}
-                        nav_sell := TabBtn{text: "Sell"}
-                        nav_buy := TabBtn{text: "Buy"}
-                        nav_more := TabBtn{text: "More"}
+                        View{
+                            width: Fill height: Fit
+                            flow: Overlay
+                            nav_books := TabBtn{text: "Books"}
+                            nav_books_on := TabBtnActive{text: "Books" visible: false}
+                        }
+                        View{
+                            width: Fill height: Fit
+                            flow: Overlay
+                            nav_sell := TabBtn{text: "Sell"}
+                            nav_sell_on := TabBtnActive{text: "Sell" visible: false}
+                        }
+                        View{
+                            width: Fill height: Fit
+                            flow: Overlay
+                            nav_buy := TabBtn{text: "Buy"}
+                            nav_buy_on := TabBtnActive{text: "Buy" visible: false}
+                        }
+                        View{
+                            width: Fill height: Fit
+                            flow: Overlay
+                            nav_more := TabBtn{text: "More"}
+                            nav_more_on := TabBtnActive{text: "More" visible: false}
+                        }
                     }
                     } // app_shell
                     } // app_hscroll
@@ -5043,8 +5212,15 @@ impl Widget for ServerList {
             let st = app_state().lock().unwrap();
             (st.local_servers.clone(), st.t("open_server"))
         };
+        // LocaleRow ≈ 60px (8+44+8) + item pad/spacing. Old 56px viewport
+        // clipped the Open button so no full row was visible.
+        const ROW: f64 = 72.0;
+        const GAP: f64 = 10.0;
+        let n = servers.len().max(1);
+        // Always room for at least one full row; prefer two when possible.
+        let want = list_content_height(n.min(3).max(1), ROW, GAP).max(ROW + 16.0);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(servers.len().max(1), 56.0, 0.0).min(280.0)),
+            height: Size::Fixed(want.min(280.0)),
             ..walk
         };
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
@@ -6289,8 +6465,12 @@ impl App {
                     branch_count,
                 )
             };
-            self.ui.button(cx, ids!(nav_books)).set_enabled(cx, sales || is_owner || items);
-            self.ui.button(cx, ids!(nav_buy)).set_enabled(cx, inventory || sales || is_owner);
+            let books_ok = sales || is_owner || items;
+            let buy_ok = inventory || sales || is_owner;
+            self.ui.button(cx, ids!(nav_books)).set_enabled(cx, books_ok);
+            self.ui.button(cx, ids!(nav_books_on)).set_enabled(cx, books_ok);
+            self.ui.button(cx, ids!(nav_buy)).set_enabled(cx, buy_ok);
+            self.ui.button(cx, ids!(nav_buy_on)).set_enabled(cx, buy_ok);
             self.ui.button(cx, ids!(more_items)).set_visible(cx, items);
             self.ui
                 .button(cx, ids!(more_tables))
@@ -6440,11 +6620,27 @@ impl App {
         }
         self.paint_chrome(cx);
         self.paint_choice_state(cx);
+        // Re-apply after chrome labels — hot-reload / focus must not leave the
+        // wrong bottom-nav peer lit (e.g. Sell while Buy is showing).
+        let screen = app_state().lock().unwrap().screen;
+        self.paint_nav_tabs(cx, screen);
         self.sync_dev_size(cx);
     }
 
-    /// Selected choice = ChipBtnActive visible; idle = ChipBtn visible.
-    /// (Button face colors are private — visibility swap is the safe highlight.)
+    /// Cut Makepad 2 hover/focus animators so a hidden or deselected face cannot
+    /// keep looking "pressed/selected" after navigation.
+    fn clear_button_animators(&self, cx: &mut Cx, path: &[LiveId]) {
+        let btn = self.ui.button(cx, path);
+        btn.reset_hover(cx);
+        if let Some(mut inner) = btn.borrow_mut() {
+            inner.animator_cut(cx, ids!(hover.off));
+            inner.animator_cut(cx, ids!(focus.off));
+        }
+    }
+
+    /// Selected choice = active face visible; idle face visible otherwise.
+    /// Makepad 2 Button has no selected bit — visibility swap is the highlight,
+    /// and animators are cleared so previous faces never stay lit.
     fn paint_choice_pair(
         &mut self,
         cx: &mut Cx,
@@ -6452,6 +6648,8 @@ impl App {
         active: &[LiveId],
         selected: bool,
     ) {
+        self.clear_button_animators(cx, idle);
+        self.clear_button_animators(cx, active);
         self.ui.button(cx, idle).set_visible(cx, !selected);
         self.ui.button(cx, active).set_visible(cx, selected);
     }
@@ -6687,10 +6885,18 @@ impl App {
     fn paint_chrome(&mut self, cx: &mut Cx) {
         let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |key: &str| locale::t(&lang, key);
-        self.ui.button(cx, ids!(nav_books)).set_text(cx, &s("books"));
-        self.ui.button(cx, ids!(nav_sell)).set_text(cx, &s("sell"));
-        self.ui.button(cx, ids!(nav_buy)).set_text(cx, &s("buy"));
-        self.ui.button(cx, ids!(nav_more)).set_text(cx, &s("more"));
+        let books = s("books");
+        let sell = s("sell");
+        let buy = s("buy");
+        let more = s("more");
+        self.ui.button(cx, ids!(nav_books)).set_text(cx, &books);
+        self.ui.button(cx, ids!(nav_books_on)).set_text(cx, &books);
+        self.ui.button(cx, ids!(nav_sell)).set_text(cx, &sell);
+        self.ui.button(cx, ids!(nav_sell_on)).set_text(cx, &sell);
+        self.ui.button(cx, ids!(nav_buy)).set_text(cx, &buy);
+        self.ui.button(cx, ids!(nav_buy_on)).set_text(cx, &buy);
+        self.ui.button(cx, ids!(nav_more)).set_text(cx, &more);
+        self.ui.button(cx, ids!(nav_more_on)).set_text(cx, &more);
         self.ui.button(cx, ids!(more_items)).set_text(cx, &s("items"));
         self.ui.button(cx, ids!(books_to_sell)).set_text(cx, &s("sell_money_in"));
         self.ui.button(cx, ids!(books_to_buy)).set_text(cx, &s("buy_money_out"));
@@ -6942,8 +7148,41 @@ impl App {
         self.ui.view(cx, ids!(header)).set_visible(cx, unlocked);
         self.ui.view(cx, ids!(today_bar)).set_visible(cx, unlocked);
         self.ui.view(cx, ids!(bottom_nav)).set_visible(cx, unlocked);
+        self.paint_nav_tabs(cx, screen);
         // Child screens carry their own Back control above the title.
         self.ui.button(cx, ids!(screen_back)).set_visible(cx, false);
+    }
+
+    /// Exactly one bottom-nav peer highlighted for `screen` (or none when locked).
+    fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
+        let active = nav_tab_for(screen);
+        // Always clear every peer first so a stale TabBtnActive cannot linger.
+        for (idle, on) in [
+            (ids!(nav_books), ids!(nav_books_on)),
+            (ids!(nav_sell), ids!(nav_sell_on)),
+            (ids!(nav_buy), ids!(nav_buy_on)),
+            (ids!(nav_more), ids!(nav_more_on)),
+        ] {
+            self.clear_button_animators(cx, idle);
+            self.clear_button_animators(cx, on);
+            self.ui.button(cx, idle).set_visible(cx, false);
+            self.ui.button(cx, on).set_visible(cx, false);
+        }
+        let pairs = [
+            (NavTab::Books, ids!(nav_books), ids!(nav_books_on)),
+            (NavTab::Sell, ids!(nav_sell), ids!(nav_sell_on)),
+            (NavTab::Buy, ids!(nav_buy), ids!(nav_buy_on)),
+            (NavTab::More, ids!(nav_more), ids!(nav_more_on)),
+        ];
+        for (tab, idle, on) in pairs {
+            let selected = active == Some(tab);
+            self.ui.button(cx, idle).set_visible(cx, !selected && active.is_some());
+            self.ui.button(cx, on).set_visible(cx, selected);
+        }
+        // When chrome is hidden (lock/setup), leave all faces invisible.
+        if active.is_none() {
+            return;
+        }
     }
 
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
@@ -9170,7 +9409,7 @@ impl MatchEvent for App {
                 }
             }
         }
-        if self.ui.button(cx, ids!(nav_books)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(nav_books), ids!(nav_books_on)) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 st.refresh_books_overview()?;
@@ -9180,17 +9419,22 @@ impl MatchEvent for App {
             if let Err(e) = result {
                 self.set_status(cx, e);
             }
+            // Drop leftover focus so the old Sell face cannot look selected.
+            cx.set_key_focus(Area::Empty);
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(nav_sell)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(nav_sell), ids!(nav_sell_on)) {
+            cx.set_key_focus(Area::Empty);
             self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
         }
-        if self.ui.button(cx, ids!(nav_buy)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(nav_buy), ids!(nav_buy_on)) {
+            cx.set_key_focus(Area::Empty);
             self.go_if_allowed(cx, Screen::Buy, |s| {
                 s.can_access_inventory() || s.can_access_sales() || s.is_owner()
             });
         }
-        if self.ui.button(cx, ids!(nav_more)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(nav_more), ids!(nav_more_on)) {
+            cx.set_key_focus(Area::Empty);
             self.go(cx, Screen::More);
         }
         if self.ui.button(cx, ids!(more_items)).clicked(actions) {

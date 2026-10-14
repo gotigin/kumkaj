@@ -23,7 +23,83 @@ Loads [`env/development.env`](../env/development.env) then `cargo run -p kumkaj 
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
 - **Button label inset** — every shared face sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
-- **Reusable layout widgets** (Makepad 2 gaps): `ChipStrip` + `ChipStripRow` + `ChipBtn` / `ChipBtnActive` (wheel/scrollbar scroll — not drag, so taps work; selected = active face via visibility swap), `ActionRow` (short labels only) + `RowPrimaryBtn` / `RowSecondaryBtn`, `ActionStack` (full-width stacked actions — prefer at 320px for multi-word CTAs)
+- **Reusable layout widgets** — see § Makepad 2 UI faces (agent guide) below (selection + truncation). Product summary: [`DESIGN.md`](DESIGN.md) § Makepad 2 faces.
+
+## Makepad 2 UI faces (agent guide)
+
+Use this when changing bottom nav, choice toggles, chips, or any button label. Same UI code ships to **Linux / Windows / Android** — fix faces once in `apps/kumkaj`, not per platform.
+
+Cursor rule (always apply when editing kumkaj UI): `.cursor/rules/makepad-layout-faces.mdc`.
+
+### What Makepad 2 actually does
+
+`makepad_widgets::Button` has **no `selected` / pressed-sticky API**. Face and label colors are mixed by animators only:
+
+| Animator | Meaning |
+|---|---|
+| `hover` | Pointer over |
+| `down` | Finger/mouse held |
+| `focus` | Key focus (sticks after click if `grab_key_focus` is true) |
+| `disabled` | Disabled |
+
+So “this tab is active” **cannot** be expressed by leaving a Button focused or hovered. If the idle face uses the same navy fill on `color_hover` / `color_focus` as the selected face, **every previously touched tab keeps looking selected**.
+
+### Bugs we hit (do not reintroduce)
+
+1. **Multiple bottom-nav peers lit** — Idle `TabBtn` used `#1b2a4a` on hover/focus (same as `TabBtnActive`). After Sell → Buy → More, Sell (and others) still looked active. Focus also stuck on the last clicked tab.
+2. **Wrong peer lit while another screen showed** — Treating focus/hover as selection instead of painting from `Screen` / `nav_tab_for`.
+3. **Right-truncated CTA labels** — Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Row*`) used `max_lines: 1` + `TextOverflow.Ellipsis`. Makepad centers a Fill label in a Fill button; long / translated strings become `record_pu…` / clipped ink. Multi-word choices in `ChipBtn` (Fit max 160) truncated the same way (`Use platform na…`, `Tax invoice`, `On account (AP)`).
+4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
+5. **Menu images “gone” on Windows** — Package layout is `exe/kumkaj/resources/menu/`; loader must prefer that path (`menu_images::menu_dir_candidates`), not a bare `menu/` folder or `get_dependency` alone on desktop.
+
+### Required approach (shipping)
+
+**Selection (bottom nav + dual choices)**
+
+1. DSL: Overlay of **idle** + **active** faces (`TabBtn` / `TabBtnActive`, or `StackSecondaryBtn` / `StackPrimaryBtn`, or `ChipBtn` / `ChipBtnActive` for short chips only).
+2. Idle face: **must not** reuse the active fill on hover/down/focus (nav idle = transparent fill; muted text only).
+3. Active face: solid selected look; nav tabs use `grab_key_focus: false` and `reset_hover_on_click: true`.
+4. Rust: paint from app state only:
+   - Bottom nav → `paint_nav_tabs` (exactly one peer from `nav_tab_for(screen)`; More children keep **More**).
+   - Dual choices → `paint_choice_pair` / `paint_choice_state`.
+5. On every paint: `clear_button_animators` (`reset_hover` + `animator_cut` `hover.off` / `focus.off`) on **both** faces before setting visibility, so a hidden/deselected face cannot stay lit.
+6. Clicks: `choice_chip_clicked` (idle **or** active); clear key focus when changing bottom-nav peer.
+
+**Labels (no right truncation)**
+
+| Kind of label | Face |
+|---|---|
+| Short chip in a horizontal strip | `ChipStrip` + `ChipBtn` / `ChipBtnActive` (Fit max 160, ellipsis OK) |
+| Ultra-short side-by-side (≤ ~4 chars) | `ActionRow` + `RowPrimaryBtn` / `RowSecondaryBtn` |
+| Multi-word / translated CTA | `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn`, or `NavBtn` / `PayBtn` / `MoreRow` |
+
+Full-width CTA faces: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, label `width: Fill`, **no** `max_lines: 1`, **no** `Ellipsis`. Always `padding` **and** `label_walk.margin`.
+
+Never invent a one-off button type (`LangSourceBtn`, etc.) when Stack/Nav already cover it. Never put multi-word phrases in `ChipBtn` / `ActionRow`.
+
+### Code map (`apps/kumkaj/src/main.rs`)
+
+| Piece | Role |
+|---|---|
+| `TabBtn` / `TabBtnActive` | Bottom-nav idle / selected faces |
+| `NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*` | Full-width CTAs (wrap, no ellipsis) |
+| `ChipBtn` / `ChipBtnActive` | Short strip chips only |
+| `nav_tab_for` | `Screen` → which bottom peer is active |
+| `paint_nav_tabs` | Exactly one footer peer visible-as-selected |
+| `paint_choice_pair` / `clear_button_animators` | Dual-choice visibility + animator clear |
+| `paint_choice_state` | All dual choices after chrome sync |
+| `locale::en` + `english_chrome_never_returns_raw_keys` | Human labels, never snake_case keys |
+
+```text
+❌ Idle TabBtn color_hover = selected navy
+❌ Rely on focus/hover as “selected”
+❌ NavBtn / MoreRow with Ellipsis; ChipBtn for “Tax invoice” / language source
+❌ Patch one screen only — faces are shared across Linux / Windows / Android
+
+✅ Overlay idle+active + paint from Screen + clear animators
+✅ Wrap on full-width CTAs; ChipBtn only for short chips
+✅ Fix shared face definitions once (all platforms)
+```
 
 ## Development vs production env
 
@@ -118,6 +194,7 @@ rustup target add x86_64-pc-windows-gnu
 cargo kumkaj-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
 ./scripts/package-windows.sh      # Prod package → copy whole dist/windows/ folder
 # Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj/ + makepad_widgets/ resources beside the .exe
+# Item thumbs: kumkaj/resources/menu/*.webp (copy the whole folder — not exe alone)
 ```
 
 Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo kumkaj-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).

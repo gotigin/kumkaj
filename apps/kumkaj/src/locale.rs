@@ -524,7 +524,15 @@ fn en(key: &str) -> String {
         "buy_help" => "Money out: goods received (purchase) or running costs (expense). Same books as Sell.",
         "sell_money_in" => "Sell (money in)",
         "buy_money_out" => "Buy (money out)",
+        "record_purchase" => "Record purchase",
         "add_expense" => "Add expense",
+        "refresh" => "Refresh",
+        "undo" => "Undo",
+        "start_tracking" => "Start tracking",
+        "stock_minus" => "− Stock",
+        "stock_plus" => "+ Stock",
+        "settle_cash" => "Settle cash",
+        "settle_card" => "Settle card",
         "items" => "Items",
         "more" => "More",
         "your_items" => "Your items",
@@ -1128,6 +1136,33 @@ mod tests {
         assert_eq!(t("gu", "cash"), "રોકડ");
         assert_eq!(t("gu", "owed"), "બાકી");
         assert_eq!(t("hi", "sold_out"), "बिक गया");
+    }
+
+    /// Buttons must never show snake_case keys to end users.
+    #[test]
+    fn english_chrome_never_returns_raw_keys() {
+        const KEYS: &[&str] = &[
+            "record_purchase",
+            "add_expense",
+            "refresh",
+            "undo",
+            "start_tracking",
+            "stock_minus",
+            "stock_plus",
+            "settle_cash",
+            "settle_card",
+            "buy_money_out",
+            "sell_money_in",
+            "inventory_stock",
+            "backup_settings",
+            "lock_app",
+            "language_currency",
+        ];
+        for key in KEYS {
+            let value = t("en", key);
+            assert_ne!(value, *key, "English left {key} untranslated (button would show the key)");
+            assert!(!value.contains('_'), "English {key} still looks like a code id: {value}");
+        }
     }
 
     #[test]
