@@ -38,17 +38,18 @@ resize_png 1024 "$RES/icon_1024.png"
 cp -f "$RES/icon_512.png" "$RES/kumkaj-mark.png"
 cp -f "$RES/icon_128.png" "$RES/kumkaj-mark-128.png"
 
-# In-app embedding: WebP (Makepad decodes webp; smaller than PNG).
+# In-app embedding: lossless WebP + alpha. Lossy VP8 drops alpha and can
+# composite onto black; Makepad then shows a solid black square.
 webp_from() {
-  local size="$1" dest="$2" quality="${3:-88}"
+  local size="$1" dest="$2"
   magick "$SRC" -resize "${size}x${size}" -background none -gravity center \
-    -extent "${size}x${size}" -quality "$quality" "$dest"
-  echo "wrote $dest (${size}x${size} webp q${quality})"
+    -extent "${size}x${size}" -define webp:lossless=true "$dest"
+  echo "wrote $dest (${size}x${size} webp lossless)"
 }
 
-webp_from 128 "$RES/kumkaj-mark-128.webp" 85
-webp_from 256 "$RES/kumkaj-mark.webp" 88
-webp_from 512 "$RES/kumkaj-mark-512.webp" 88
+webp_from 128 "$RES/kumkaj-mark-128.webp"
+webp_from 256 "$RES/kumkaj-mark.webp"
+webp_from 512 "$RES/kumkaj-mark-512.webp"
 
 # Optional AVIF companions when ImageMagick builds with AVIF.
 if magick -list format 2>/dev/null | grep -qi '^ *AVIF'; then

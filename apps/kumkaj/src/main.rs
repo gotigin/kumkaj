@@ -2691,7 +2691,7 @@ script_mod! {
                             brand_mark := Image{
                                 width: 36 height: 36
                                 fit: ImageFit.Stretch
-                                source: crate_resource("self:resources/kumkaj-mark.webp")
+                                src: crate_resource("self:resources/kumkaj-mark.webp")
                             }
                             View{
                                 width: Fill height: Fit
@@ -2792,7 +2792,7 @@ script_mod! {
                                             setup_brand_mark := Image{
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
-                                                source: crate_resource("self:resources/kumkaj-mark.webp")
+                                                src: crate_resource("self:resources/kumkaj-mark.webp")
                                             }
                                             View{
                                                 width: Fill height: Fit
@@ -2946,7 +2946,7 @@ script_mod! {
                                             lock_brand_mark := Image{
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
-                                                source: crate_resource("self:resources/kumkaj-mark.webp")
+                                                src: crate_resource("self:resources/kumkaj-mark.webp")
                                             }
                                             View{
                                                 width: Fill height: Fit
@@ -4578,6 +4578,22 @@ fn item_images_dir() -> std::path::PathBuf {
 /// Returns true only when a new decode was queued. PortalList rebinds every
 /// draw; calling the loader again while a decode is in flight calls
 /// `begin_async_load`, which redraws, which calls the loader again.
+fn default_brand_mark_path() -> std::path::PathBuf {
+    if let Ok(exe) = std::env::current_exe()
+        && let Some(parent) = exe.parent()
+    {
+        for candidate in [
+            parent.join("kumkaj/resources/kumkaj-mark.webp"),
+            parent.join("resources/kumkaj-mark.webp"),
+        ] {
+            if candidate.is_file() {
+                return candidate;
+            }
+        }
+    }
+    std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources/kumkaj-mark.webp")
+}
+
 fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool {
     static REQUESTED: OnceLock<Mutex<std::collections::HashMap<u64, std::path::PathBuf>>> =
         OnceLock::new();
@@ -7290,14 +7306,16 @@ impl App {
         for id in [ids!(setup_brand_title), ids!(lock_brand_title)] {
             self.ui.widget(cx, id).set_text(cx, &plain_display_text(&title));
         }
+        let default_mark = default_brand_mark_path();
         for id in [ids!(brand_mark), ids!(setup_brand_mark), ids!(lock_brand_mark)] {
             let img = self.ui.image(cx, id);
             img.set_visible(cx, true);
             if let Some(ref path) = icon_path {
                 load_thumb_at(cx, &img, path);
             } else {
-                // Default app mark (WebP bundled beside the crate).
-                let _ = img.load_image_dep_by_path(cx, "kumkaj/resources/kumkaj-mark.webp");
+                // Prefer filesystem / package bytes — `load_image_dep_by_path` is for
+                // live deps and misses crate_resource-bundled marks.
+                load_thumb_at(cx, &img, &default_mark);
             }
         }
         self.ui
