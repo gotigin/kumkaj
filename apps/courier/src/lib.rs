@@ -21,6 +21,7 @@ pub mod manifest;
 pub mod menu_images;
 pub mod net;
 pub mod notify;
+pub mod precise;
 pub mod print_share;
 pub mod rates;
 pub mod store;

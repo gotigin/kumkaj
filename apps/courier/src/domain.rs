@@ -67,19 +67,29 @@ fn normalize_user_at(raw: &str, device_at: &str) -> String {
 
 /// Money in minor currency units (not floats): cents, paise, fils — or whole
 /// units for the currencies that have no minor unit at all.
+///
+/// Intermediate major-unit and × milli maths go through [`crate::precise`]
+/// (exact decimal). Overflow becomes an error on checked helpers; the
+/// saturating helpers remain for non-critical UI display paths.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Money(pub i64);
 
 impl Money {
     pub fn from_rupees(rupees: i64) -> Self {
-        Self(rupees.saturating_mul(100))
+        Self::from_major_units(rupees, "INR").unwrap_or(Self(0))
     }
 
-    pub fn from_major_units(major: i64, currency_code: &str) -> Self {
+    pub fn from_major_units(major: i64, currency_code: &str) -> Result<Self, String> {
         let decimals = crate::locale::currency_by_code(currency_code)
             .map(|c| c.decimals)
             .unwrap_or(2);
-        Self(major.saturating_mul(10i64.pow(decimals as u32)))
+        let factor = 10i64
+            .checked_pow(decimals as u32)
+            .ok_or_else(|| "Currency scale overflow".to_string())?;
+        let minor = major
+            .checked_mul(factor)
+            .ok_or_else(|| "Amount overflow".to_string())?;
+        Ok(Self(minor))
     }
 
     pub fn paise(self) -> i64 {
@@ -90,13 +100,29 @@ impl Money {
         Self(self.0.saturating_add(other.0))
     }
 
+    pub fn checked_add(self, other: Self) -> Result<Self, String> {
+        self.0
+            .checked_add(other.0)
+            .map(Self)
+            .ok_or_else(|| "Money overflow".to_string())
+    }
+
     pub fn saturating_mul_qty(self, qty: i64) -> Self {
         Self(self.0.saturating_mul(qty.max(0)))
     }
 
     /// `unit × qty_milli / 1000` — 1000 milli = one unit (piece or kg).
+    /// Exact decimal intermediate; saturates only if the result does not fit i64.
     pub fn saturating_mul_milli(self, qty_milli: i64) -> Self {
-        Self(self.0.saturating_mul(qty_milli.max(0)) / 1000)
+        self.checked_mul_milli(qty_milli).unwrap_or(Self(i64::MAX))
+    }
+
+    /// `unit × qty_milli / 1000` with overflow error (no silent wrap).
+    pub fn checked_mul_milli(self, qty_milli: i64) -> Result<Self, String> {
+        use rust_decimal::Decimal;
+        let qty = qty_milli.max(0);
+        let product = Decimal::from(self.0) * Decimal::from(qty) / Decimal::from(1000);
+        Ok(Self(crate::precise::to_i64(product)?))
     }
 
     pub fn format_with(self, currency_code: &str) -> String {
@@ -858,12 +884,12 @@ pub struct Product {
     pub price: Money,
     pub available: bool,
     pub archived: bool,
-    /// Built-in key (`biryani`), `custom:file.ext`, or `None` = auto-detect from name.
+    /// Custom photo (`custom:…` / `pending_custom:…`), or `None` for name-initials avatar.
     pub image_key: Option<String>,
-    /// Menu category id; empty = uncategorised.
+    /// Catalogue grouping id; empty = uncategorised.
     #[serde(default)]
     pub category_id: String,
-    /// Kitchen station id; empty = unassigned (single ticket).
+    /// Optional prep-station id (food products); unused on courier rates.
     #[serde(default)]
     pub station_id: String,
     /// Tax rate in basis points (500 = 5%). Whether this sits *inside* the
@@ -895,7 +921,7 @@ pub struct Product {
     pub zone_id: String,
     /// First-kg slab weight; 0 = flat ₹/kg via `price`.
     #[serde(default)]
-    pub first_kg: f64,
+    pub first_kg: rust_decimal::Decimal,
     /// Paise for the first slab.
     #[serde(default)]
     pub first_paise: i64,
@@ -940,7 +966,7 @@ impl Product {
             branch_id: String::new(),
             unit_label: String::new(),
             zone_id: String::new(),
-            first_kg: 0.0,
+            first_kg: rust_decimal::Decimal::ZERO,
             first_paise: 0,
             extra_per_kg_paise: 0,
         }
@@ -1483,9 +1509,9 @@ impl Cart {
             awb_no: String::new(),
             destination: String::new(),
             consignee_name: String::new(),
-            actual_weight_kg: 0.0,
-            volumetric_weight_kg: 0.0,
-            chargeable_weight_kg: 0.0,
+            actual_weight_kg: rust_decimal::Decimal::ZERO,
+            volumetric_weight_kg: rust_decimal::Decimal::ZERO,
+            chargeable_weight_kg: rust_decimal::Decimal::ZERO,
             zone_id: String::new(),
             cod_paise: 0,
             carrier_cost_paise: 0,
@@ -1551,11 +1577,11 @@ pub struct SaleDraft {
     #[serde(default)]
     pub consignee_name: String,
     #[serde(default)]
-    pub actual_weight_kg: f64,
+    pub actual_weight_kg: rust_decimal::Decimal,
     #[serde(default)]
-    pub volumetric_weight_kg: f64,
+    pub volumetric_weight_kg: rust_decimal::Decimal,
     #[serde(default)]
-    pub chargeable_weight_kg: f64,
+    pub chargeable_weight_kg: rust_decimal::Decimal,
     #[serde(default)]
     pub zone_id: String,
     /// Cash-on-delivery amount to collect from consignee (paise).
@@ -1662,11 +1688,11 @@ pub struct Sale {
     #[serde(default)]
     pub consignee_name: String,
     #[serde(default)]
-    pub actual_weight_kg: f64,
+    pub actual_weight_kg: rust_decimal::Decimal,
     #[serde(default)]
-    pub volumetric_weight_kg: f64,
+    pub volumetric_weight_kg: rust_decimal::Decimal,
     #[serde(default)]
-    pub chargeable_weight_kg: f64,
+    pub chargeable_weight_kg: rust_decimal::Decimal,
     /// Ops status on this AWB (`booked`, `out_for_delivery`, …).
     #[serde(default)]
     pub tracking_status: String,

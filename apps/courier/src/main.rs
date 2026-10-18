@@ -12,16 +12,16 @@ pub use makepad_widgets;
 #[cfg(target_os = "android")]
 use crate::{
     booking, courier_ops_view, domain, entity_template, fiscal, locale, local_servers, menu_images,
-    net, notify, print_share, rates, store,
+    net, notify, precise, print_share, rates, store,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_courier::{
     booking, courier_ops_view, domain, entity_template, fiscal, locale, local_servers, menu_images,
-    net, notify, print_share, rates, store,
+    net, notify, precise, print_share, rates, store,
 };
 
 use domain::{
-    new_id, Cart, Customer, DiningTable, KotTicket, Money, MoneyLane, MoneyMoveKind, OrderType,
+    new_id, Cart, Customer, DiningTable, Money, MoneyLane, MoneyMoveKind,
     PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole, VenueMode,
 };
 use fiscal::{FiscalSettings, TaxPricing};
@@ -148,7 +148,6 @@ struct AppState {
     selected_customer_id: Option<String>,
     customers: Vec<Customer>,
     tables: Vec<DiningTable>,
-    kots: Vec<KotTicket>,
     recent_sales: Vec<Sale>,
     staff: Vec<StaffMember>,
     session: Option<StaffMember>,
@@ -194,8 +193,6 @@ struct AppState {
     ops_panel_text: String,
     /// Branches screen body (org, branch list, roll-up).
     branches_text: String,
-    /// Kitchen station filter; None = every station.
-    selected_station_id: Option<String>,
     screen: Screen,
     status: String,
     last_receipt: String,
@@ -305,8 +302,6 @@ enum Screen {
     Buy,
     Menu,
     More,
-    Floor,
-    Kitchen,
     Sales,
     Credit,
     Team,
@@ -332,8 +327,6 @@ enum NavTab {
     Ops,
     Cod,
     Riders,
-    Floor,
-    Kitchen,
     Sales,
     DayClose,
     Reports,
@@ -361,8 +354,6 @@ fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
         Screen::Pos => Some(NavTab::Sell),
         Screen::Buy => Some(NavTab::Buy),
         Screen::Menu | Screen::More => Some(NavTab::Rates),
-        Screen::Floor => Some(NavTab::Floor),
-        Screen::Kitchen => Some(NavTab::Kitchen),
         Screen::Sales => Some(NavTab::Sales),
         Screen::DayClose => Some(NavTab::DayClose),
         Screen::Reports => Some(match reports_nav {
@@ -400,7 +391,6 @@ impl AppState {
             selected_customer_id: None,
             customers: Vec::new(),
             tables: Vec::new(),
-            kots: Vec::new(),
             recent_sales: Vec::new(),
             staff: Vec::new(),
             session: None,
@@ -427,7 +417,6 @@ impl AppState {
             day_close_text: String::new(),
             ops_panel_text: String::new(),
             branches_text: String::new(),
-            selected_station_id: None,
             screen: Screen::DeviceSetup,
             status: String::new(),
             last_receipt: "No sale yet".into(),
@@ -517,10 +506,6 @@ impl AppState {
         let store = self.store.as_ref().ok_or("No store")?;
         self.products = store.list_products(false)?;
         self.tables = store.list_tables()?;
-        self.kots = match self.selected_station_id.as_deref() {
-            Some(station_id) => store.list_open_kots_for_station(station_id)?,
-            None => store.list_open_kots()?,
-        };
         self.recent_sales = store.recent_sales(30)?;
         self.staff = store.list_staff()?;
         self.customers = store.list_customers().unwrap_or_default();
@@ -534,7 +519,11 @@ impl AppState {
         self.venue_icon_key = store.venue_icon_key()?;
         self.owner_setup_complete = store.owner_setup_complete().unwrap_or(true);
         self.onboarding_complete = store.onboarding_complete().unwrap_or(true);
-        self.venue_mode = store.venue_mode().unwrap_or(VenueMode::Counter);
+        // Courier product: always counter desk (no restaurant tables/KOT face).
+        if store.venue_mode().unwrap_or(VenueMode::Counter) != VenueMode::Counter {
+            let _ = store.set_venue_mode(VenueMode::Counter);
+        }
+        self.venue_mode = VenueMode::Counter;
         self.client_paired = store.client_paired().unwrap_or(false);
         self.pin_reset_required = store.pin_reset_required().unwrap_or(false);
         self.entity_template_id = store
@@ -902,11 +891,12 @@ impl AppState {
     }
 
     /// Actual / volumetric / chargeable kg from the booking desk fields.
-    fn booking_weights(&self) -> (f64, f64, f64) {
-        let actual = booking::parse_positive(&self.booking_actual_kg).unwrap_or(0.0);
-        let l = booking::parse_positive(&self.booking_length_cm).unwrap_or(0.0);
-        let b = booking::parse_positive(&self.booking_breadth_cm).unwrap_or(0.0);
-        let h = booking::parse_positive(&self.booking_height_cm).unwrap_or(0.0);
+    fn booking_weights(&self) -> (rust_decimal::Decimal, rust_decimal::Decimal, rust_decimal::Decimal) {
+        let zero = precise::ZERO;
+        let actual = booking::parse_positive(&self.booking_actual_kg).unwrap_or(zero);
+        let l = booking::parse_positive(&self.booking_length_cm).unwrap_or(zero);
+        let b = booking::parse_positive(&self.booking_breadth_cm).unwrap_or(zero);
+        let h = booking::parse_positive(&self.booking_height_cm).unwrap_or(zero);
         let vol = booking::volumetric_kg(l, b, h);
         let chargeable = booking::chargeable_kg(actual, l, b, h);
         (actual, vol, chargeable)
@@ -935,15 +925,19 @@ impl AppState {
                 .map(|z| z.id)
                 .unwrap_or_default()
         };
-        draft.cod_paise = booking::parse_extra_amount(&self.booking_cod).unwrap_or(0);
+        let currency = self.locale.currency.clone();
+        draft.cod_paise = booking::parse_extra_amount(&self.booking_cod, &currency).unwrap_or(0);
         draft.carrier_cost_paise =
-            booking::parse_extra_amount(&self.booking_carrier_cost).unwrap_or(0);
+            booking::parse_extra_amount(&self.booking_carrier_cost, &currency).unwrap_or(0);
         draft.notify_phone = self.booking_notify_phone.trim().to_string();
         let mut extras = Vec::new();
-        if let Some(p) = booking::parse_extra_amount(&self.booking_fuel).filter(|p| *p > 0) {
+        if let Some(p) = booking::parse_extra_amount(&self.booking_fuel, &currency).filter(|p| *p > 0)
+        {
             extras.push(booking::booking_extra(rates::ExtraChargeKind::Fuel, p));
         }
-        if let Some(p) = booking::parse_extra_amount(&self.booking_docket).filter(|p| *p > 0) {
+        if let Some(p) =
+            booking::parse_extra_amount(&self.booking_docket, &currency).filter(|p| *p > 0)
+        {
             extras.push(booking::booking_extra(rates::ExtraChargeKind::Docket, p));
         }
         draft.extras_json = serde_json::to_string(&extras).unwrap_or_else(|_| "[]".into());
@@ -2640,31 +2634,6 @@ script_mod! {
         }
     }
 
-    let TableCard = RoundedView{
-        width: Fill height: Fit
-        padding: 14
-        flow: Down spacing: 8
-        draw_bg.color: #xffffff
-        draw_bg.border_radius: 16.
-        draw_bg.border_size: 2.
-        draw_bg.border_color: #x4A5568
-        name := WrapLabel{body: "T1" font_color: #x0B1220 font_size: 20.}
-        status := WrapLabel{body: "available" font_color: #x3A4554}
-        action := CardActionBtn{text: "Use"}
-    }
-
-    let KotRow = RoundedView{
-        width: Fill height: Fit
-        padding: 14
-        flow: Down spacing: 8
-        draw_bg.color: #xffffff
-        draw_bg.border_radius: 16.
-        draw_bg.border_size: 2.
-        draw_bg.border_color: #x4A5568
-        label := WrapLabel{body: "kot" font_color: #x0B1220 font_size: 15.}
-        advance := CardActionBtn{text: "Advance"}
-    }
-
     let MoreRow = Button{
         width: Fill height: Fit
         align: Align{x: 0.0 y: 0.5}
@@ -2861,46 +2830,6 @@ script_mod! {
         }
     }
 
-    mod.widgets.TableListBase = #(TableList::register_widget(vm))
-    mod.widgets.TableList = set_type_default() do mod.widgets.TableListBase{
-        width: Fill height: Fit
-        list := PortalList{
-            width: Fill height: Fill
-            spacing: 10
-            drag_scrolling: false
-            bounce_at_start: false
-            bounce_at_end: false
-            capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
-            Item := View{
-                width: Fill height: Fit
-                padding: Inset{bottom: 8.}
-                texture_caching: false
-                TableCard{}
-            }
-        }
-    }
-
-    mod.widgets.KotListBase = #(KotList::register_widget(vm))
-    mod.widgets.KotList = set_type_default() do mod.widgets.KotListBase{
-        width: Fill height: Fit
-        list := PortalList{
-            width: Fill height: Fill
-            spacing: 10
-            drag_scrolling: false
-            bounce_at_start: false
-            bounce_at_end: false
-            capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
-            Item := View{
-                width: Fill height: Fit
-                padding: Inset{bottom: 8.}
-                texture_caching: false
-                KotRow{}
-            }
-        }
-    }
-
     startup() do #(App::script_component(vm)){
         ui: Root{
             main_window := Window{
@@ -2999,18 +2928,6 @@ script_mod! {
                                     flow: Overlay
                                     rail_riders := TabBtn{text: "Riders"}
                                     rail_riders_on := TabBtnActive{text: "Riders" visible: false}
-                                }
-                                rail_tables_slot := View{
-                                    width: Fill height: Fit
-                                    flow: Overlay
-                                    rail_tables := TabBtn{text: "Tables"}
-                                    rail_tables_on := TabBtnActive{text: "Tables" visible: false}
-                                }
-                                rail_kitchen_slot := View{
-                                    width: Fill height: Fit
-                                    flow: Overlay
-                                    rail_kitchen := TabBtn{text: "Kitchen"}
-                                    rail_kitchen_on := TabBtnActive{text: "Kitchen" visible: false}
                                 }
                                 rail_sales_slot := View{
                                     width: Fill height: Fit
@@ -3517,43 +3434,6 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 15.
                                 }
-                                // Template chips kept as invisible stubs so existing
-                                // paint/handlers that reference ids still compile.
-                                ChipStrip{
-                                    visible: false
-                                    ChipStripRow{
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            onboard_tmpl_custom := ChipBtn{text: "None" visible: false}
-                                            onboard_tmpl_custom_on := ChipBtnActive{text: "None" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            onboard_tmpl_counter := ChipBtn{text: "Counter" visible: false}
-                                            onboard_tmpl_counter_on := ChipBtnActive{text: "Counter" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            onboard_tmpl_courier := ChipBtn{text: "Courier" visible: false}
-                                            onboard_tmpl_courier_on := ChipBtnActive{text: "Courier" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            onboard_tmpl_food := ChipBtn{text: "Food" visible: false}
-                                            onboard_tmpl_food_on := ChipBtnActive{text: "Food" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            onboard_tmpl_personal := ChipBtn{text: "Personal" visible: false}
-                                            onboard_tmpl_personal_on := ChipBtnActive{text: "Personal" visible: false}
-                                        }
-                                    }
-                                }
                                 onboard_tmpl_hint := WrapLabel{
                                     body: "Booking = walk-ins. Day book = today. Pay out = carrier bills. More → Rates & Parties."
                                     font_color: #x3A4554
@@ -3756,12 +3636,12 @@ script_mod! {
                                     }
                                 }
                                 FormFieldRow{
-                                    booking_cod_input := FieldInput{empty_text: "COD ₹"}
-                                    booking_carrier_cost_input := FieldInput{empty_text: "Carrier cost ₹"}
+                                    booking_cod_input := FieldInput{empty_text: "COD amount"}
+                                    booking_carrier_cost_input := FieldInput{empty_text: "Carrier cost"}
                                 }
                                 FormFieldRow{
-                                    booking_fuel_input := FieldInput{empty_text: "Fuel ₹"}
-                                    booking_docket_input := FieldInput{empty_text: "Docket ₹"}
+                                    booking_fuel_input := FieldInput{empty_text: "Fuel"}
+                                    booking_docket_input := FieldInput{empty_text: "Docket charge"}
                                 }
                                 booking_notify_input := FieldInput{empty_text: "Notify phone (WhatsApp/SMS hook)"}
                                 booking_bulk_input := FieldInput{
@@ -3954,39 +3834,8 @@ script_mod! {
                                     mix_credit_input := FieldInput{empty_text: "Credit / khata amount"}
                                     ActionStack{
                                         pay_mix := PayBtn{text: "Take payment"}
-                                        send_kot := RowPrimaryBtn{text: "Send KOT" visible: false}
                                     }
 
-                                    // How this bill is served (hidden unless Tables & kitchen is on).
-                                    order_type_row := ChipStrip{
-                                        visible: false
-                                        ChipStripRow{
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                order_counter := ChipBtn{text: "Counter"}
-                                                order_counter_on := ChipBtnActive{text: "Counter" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                order_dine := ChipBtn{text: "Dine-in"}
-                                                order_dine_on := ChipBtnActive{text: "Dine-in" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                order_takeaway := ChipBtn{text: "Takeaway"}
-                                                order_takeaway_on := ChipBtnActive{text: "Takeaway" visible: false}
-                                            }
-                                        }
-                                    }
-                                    order_type_label := WrapLabel{
-                                        body: "Order: Counter"
-                                        visible: false
-                                        font_color: #x3A4554
-                                        font_size: 12.
-                                    }
                                 }
 
                                 cart_round_hint := WrapLabel{
@@ -4037,10 +3886,10 @@ script_mod! {
                                 }
                                 FormFieldRow{
                                     menu_first_kg_input := FieldInput{empty_text: "First kg (slab)"}
-                                    menu_first_amt_input := FieldInput{empty_text: "First ₹"}
+                                    menu_first_amt_input := FieldInput{empty_text: "First amount"}
                                 }
                                 FormFieldRow{
-                                    menu_extra_kg_input := FieldInput{empty_text: "Extra ₹/kg"}
+                                    menu_extra_kg_input := FieldInput{empty_text: "Extra / kg"}
                                     menu_zone_input := FieldInput{empty_text: "Zone name"}
                                 }
                                 ActionStack{
@@ -4054,11 +3903,6 @@ script_mod! {
                                     empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
                                 }
                                 menu_category_input := FieldInput{empty_text: "Category (optional, created if new)"}
-                                menu_station_row := View{
-                                    width: Fill height: Fit
-                                    visible: false
-                                    menu_station_input := FieldInput{empty_text: "Kitchen station (optional, created if new)"}
-                                }
                                 menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Large=20, Gift wrap=10"}
                                 image_hint := WrapLabel{
                                     body: "Image: auto (from name)"
@@ -4070,10 +3914,8 @@ script_mod! {
                                     margin: Inset{top: 0. bottom: 0. left: 0. right: 0.}
                                 }
                                 ActionStack{
-                                    image_auto := NavBtn{text: "Auto from name"}
-                                    image_prev := NavBtn{text: "Previous image"}
-                                    image_next := NavBtn{text: "Next image"}
-                                    image_pick := NavBtn{text: "Pick photo"}
+                                    image_clear := RowSecondaryBtn{text: "Clear photo"}
+                                    image_pick := RowPrimaryBtn{text: "Pick photo"}
                                 }
                                 menu_empty := WrapLabel{
                                     body: "No items yet — add one above."
@@ -4150,8 +3992,6 @@ script_mod! {
                                 more_ops := MoreRow{text: "Consignments & dispatch"}
                                 more_cod := MoreRow{text: "COD register"}
                                 more_riders := MoreRow{text: "Riders (own fleet)"}
-                                more_tables := MoreRow{text: "Tables"}
-                                more_kitchen := MoreRow{text: "Kitchen"}
                                 more_sales := MoreRow{text: "Sales & refunds"}
                                 more_day_close := MoreRow{text: "Day close"}
                                 more_reports := MoreRow{text: "Reports & bank"}
@@ -4166,62 +4006,6 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
-                            }
-                        }
-
-                        floor_screen := ScrollYView{
-                            width: Fill height: Fill
-                            visible: false
-                            View{
-                                width: Fill height: Fit
-                                flow: Down spacing: 10
-                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    floor_title := WrapLabel{body: "Tables" font_color: #x0B1220 font_size: 20.}
-                                }
-                                clear_table := NavBtn{text: "Counter / takeaway"}
-                                floor_mode_hint := WrapLabel{
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                floor_table_name := FieldInput{empty_text: "New table name"}
-                                floor_add_table := NavBtn{text: "Add table"}
-                                floor_rename_table := NavBtn{text: "Rename selected"}
-                                floor_delete_table := NavBtn{text: "Delete selected table"}
-                                table_list := mod.widgets.TableList{}
-                            }
-                        }
-
-                        kitchen_screen := ScrollYView{
-                            width: Fill height: Fill
-                            visible: false
-                            View{
-                                width: Fill height: Fit
-                                flow: Down spacing: 10
-                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    kitchen_title := WrapLabel{body: "Kitchen" font_color: #x0B1220 font_size: 20.}
-                                }
-                                kitchen_mode_hint := WrapLabel{
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    kitchen_station_all := NavBtn{text: "All stations"}
-                                    kitchen_station_cycle := NavBtn{text: "Next station"}
-                                }
-                                kitchen_station_label := WrapLabel{
-                                    body: "Station: all"
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
-                                kot_list := mod.widgets.KotList{}
                             }
                         }
 
@@ -4370,7 +4154,7 @@ script_mod! {
                                 customer_list_credit := mod.widgets.CustomerList{}
                                 WrapLabel{body: "Credit limit (selected / named party)" font_color: #x0B1220 font_size: 15.}
                                 FormFieldRow{
-                                    credit_limit_input := FieldInput{empty_text: "Limit ₹ (0 = none)"}
+                                    credit_limit_input := FieldInput{empty_text: "Credit limit (0 = none)"}
                                     credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
                                 }
                                 ActionStack{
@@ -4446,20 +4230,6 @@ script_mod! {
                                             staff_role_manager := ChipBtn{text: "Manager"}
                                             staff_role_manager_on := ChipBtnActive{text: "Manager" visible: false}
                                         }
-                                        staff_role_waiter_slot := View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            visible: false
-                                            staff_role_waiter := ChipBtn{text: "Waiter"}
-                                            staff_role_waiter_on := ChipBtnActive{text: "Waiter" visible: false}
-                                        }
-                                        staff_role_kitchen_slot := View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            visible: false
-                                            staff_role_kitchen := ChipBtn{text: "Kitchen"}
-                                            staff_role_kitchen_on := ChipBtnActive{text: "Kitchen" visible: false}
-                                        }
                                     }
                                 }
                                 staff_add_cashier := NavBtn{text: "Add staff"}
@@ -4483,8 +4253,6 @@ script_mod! {
                                         feat_items := ChipBtn{text: "Items"}
                                         feat_sales := ChipBtn{text: "Sales"}
                                         feat_credit := ChipBtn{text: "Credit"}
-                                        feat_floor := ChipBtn{text: "Floor" visible: false}
-                                        feat_kitchen := ChipBtn{text: "Kitchen" visible: false}
                                         feat_team := ChipBtn{text: "Team"}
                                         feat_backup := ChipBtn{text: "Backup"}
                                         feat_inventory := ChipBtn{text: "Inventory"}
@@ -4582,16 +4350,6 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 currency_list := mod.widgets.CurrencyList{}
-                                WrapLabel{body: "Tables & kitchen" font_color: #x0B1220 font_size: 20.}
-                                venue_mode_label := WrapLabel{
-                                    body: "Off — no tables or kitchen tickets"
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    mode_counter := RowPrimaryBtn{text: "Off"}
-                                    mode_restaurant := RowSecondaryBtn{text: "Tables & kitchen"}
-                                }
                                 WrapLabel{body: "Extra tills" font_color: #x0B1220 font_size: 20.}
                                 server_pair_label := WrapLabel{
                                     body: " "
@@ -4614,41 +4372,6 @@ script_mod! {
                                     body: "This app is Kumkaj Courier only — books + booking desk. Other trade faces ship as separate products later."
                                     font_color: #x3A4554
                                     font_size: 12.
-                                }
-                                ChipStrip{
-                                    visible: false
-                                    ChipStripRow{
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_tmpl_custom := ChipBtn{text: "None" visible: false}
-                                            settings_tmpl_custom_on := ChipBtnActive{text: "None"}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_tmpl_counter := ChipBtn{text: "Counter"}
-                                            settings_tmpl_counter_on := ChipBtnActive{text: "Counter" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_tmpl_courier := ChipBtn{text: "Courier"}
-                                            settings_tmpl_courier_on := ChipBtnActive{text: "Courier" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_tmpl_food := ChipBtn{text: "Food"}
-                                            settings_tmpl_food_on := ChipBtnActive{text: "Food" visible: false}
-                                        }
-                                        View{
-                                            width: Fit height: 40
-                                            flow: Overlay
-                                            settings_tmpl_personal := ChipBtn{text: "Personal"}
-                                            settings_tmpl_personal_on := ChipBtnActive{text: "Personal" visible: false}
-                                        }
-                                    }
                                 }
                                 WrapLabel{body: "Your brand (in-app)" font_color: #x0B1220 font_size: 20.}
                                 WrapLabel{
@@ -5016,18 +4739,6 @@ script_mod! {
                                     nav_riders := NavChip{text: "Riders"}
                                     nav_riders_on := NavChipActive{text: "Riders" visible: false}
                                 }
-                                nav_tables_slot := View{
-                                    width: Fit{min: FitBound.Abs(72.)} height: Fit
-                                    flow: Overlay
-                                    nav_tables := NavChip{text: "Tables"}
-                                    nav_tables_on := NavChipActive{text: "Tables" visible: false}
-                                }
-                                nav_kitchen_slot := View{
-                                    width: Fit{min: FitBound.Abs(72.)} height: Fit
-                                    flow: Overlay
-                                    nav_kitchen := NavChip{text: "Kitchen"}
-                                    nav_kitchen_on := NavChipActive{text: "Kitchen" visible: false}
-                                }
                                 nav_sales_slot := View{
                                     width: Fit{min: FitBound.Abs(72.)} height: Fit
                                     flow: Overlay
@@ -5237,10 +4948,6 @@ fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool 
         // Android still decodes inline inside Makepad, so the once-per-path
         // guard above is what keeps a redraw from decoding the file again.
         image.load_image_file_by_path_async(cx, path).is_ok()
-    } else if let Some(bytes) = menu_images::read_image_bytes(cx, path) {
-        image
-            .load_image_from_data_async(cx, path, std::sync::Arc::new(bytes))
-            .is_ok()
     } else {
         false
     };
@@ -5964,91 +5671,6 @@ impl Widget for CurrencyList {
     }
 }
 
-#[derive(Script, ScriptHook, Widget)]
-struct TableList {
-    #[deref]
-    view: View,
-}
-
-impl Widget for TableList {
-    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let tables = app_state().lock().unwrap().tables.clone();
-        let walk = Walk {
-            height: Size::Fixed(list_content_height(tables.len(), 162.0, 0.0)),
-            ..walk
-        };
-        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
-            if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, tables.len());
-                while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(table) = tables.get(item_id) else {
-                        continue;
-                    };
-                    let item = list.item(cx, item_id, id!(Item));
-                    item.widget(cx, ids!(name))
-                        .set_text(cx, &plain_display_text(&table.name));
-                    item.widget(cx, ids!(status))
-                        .set_text(cx, &plain_display_text(table.status.as_str()));
-                    let action = if table.status == domain::TableStatus::Available {
-                        "Seat / use"
-                    } else {
-                        "Select occupied"
-                    };
-                    item.button(cx, ids!(action)).set_text(cx, action);
-                    item.draw_all_unscoped(cx);
-                }
-            }
-        }
-        DrawStep::done()
-    }
-
-    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if page_owns_scroll(event) {
-            return;
-        }
-        self.view.handle_event(cx, event, scope);
-    }
-}
-
-#[derive(Script, ScriptHook, Widget)]
-struct KotList {
-    #[deref]
-    view: View,
-}
-
-impl Widget for KotList {
-    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let kots = app_state().lock().unwrap().kots.clone();
-        let walk = Walk {
-            height: Size::Fixed(list_content_height(kots.len(), 172.0, 0.0)),
-            ..walk
-        };
-        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
-            if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, kots.len());
-                while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(kot) = kots.get(item_id) else {
-                        continue;
-                    };
-                    let item = list.item(cx, item_id, id!(Item));
-                    let text = format!("[{}] {}", kot.status.as_str(), kot.summary);
-                    item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&text));
-                    item.button(cx, ids!(advance)).set_text(cx, "Advance");
-                    item.draw_all_unscoped(cx);
-                }
-            }
-        }
-        DrawStep::done()
-    }
-
-    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if page_owns_scroll(event) {
-            return;
-        }
-        self.view.handle_event(cx, event, scope);
-    }
-}
-
 /// Selectable display text (Markdown) with Label-like `visible` support.
 /// Stock Markdown/TextFlow ignore `set_visible`, which left empty-state copy
 /// on screen after products/cart lines appeared.
@@ -6252,22 +5874,7 @@ impl App {
                 Some(s) => s.lock_label(),
                 None => "Locked".into(),
             };
-            let order_type_name = st.cart.order_type.label();
-            let table_chip = match &st.selected_table_id {
-                Some(id) => st
-                    .tables
-                    .iter()
-                    .find(|t| &t.id == id)
-                    .map(|t| format!("Table {} · Dine", t.name))
-                    .unwrap_or_else(|| "Table selected · Dine".into()),
-                None => {
-                    if st.venue_mode == VenueMode::Restaurant {
-                        format!("{} · {order_type_name}", st.t("counter_sale"))
-                    } else {
-                        st.t("ready_to_sell")
-                    }
-                }
-            };
+            let table_chip = st.t("ready_to_sell");
             let staff_text = st
                 .staff
                 .iter()
@@ -6446,8 +6053,6 @@ impl App {
                         | Screen::Buy
                         | Screen::Menu
                         | Screen::More
-                        | Screen::Floor
-                        | Screen::Kitchen
                         | Screen::Sales
                         | Screen::Credit
                         | Screen::Team
@@ -6550,10 +6155,12 @@ impl App {
         {
             let st = app_state().lock().unwrap();
             let (actual, vol, chargeable) = st.booking_weights();
-            let charge_line = if chargeable > 0.0 {
+            let charge_line = if chargeable > precise::ZERO {
                 format!(
-                    "Chargeable {:.2} kg (actual {:.2} · vol {:.2})",
-                    chargeable, actual, vol
+                    "Chargeable {} kg (actual {} · vol {})",
+                    precise::format_kg(chargeable),
+                    precise::format_kg(actual),
+                    precise::format_kg(vol)
                 )
             } else {
                 "Chargeable kg: set weight or L×B×H".into()
@@ -6913,20 +6520,6 @@ impl App {
         self.show_screen(cx, screen);
         {
             let st = app_state().lock().unwrap();
-            let mode_hint = match st.venue_mode {
-                VenueMode::Counter => "",
-                VenueMode::Restaurant => {
-                    "Tables and kitchen are on. Sales can create kitchen tickets."
-                }
-            };
-            let floor_hint = match st.venue_mode {
-                VenueMode::Counter => "Tables are off. Turn on Tables & kitchen in Settings first.",
-                VenueMode::Restaurant => "Tap a table to attach the next sale, or Counter / takeaway.",
-            };
-            let kitchen_hint = match st.venue_mode {
-                VenueMode::Counter => "No kitchen tickets. Turn on Tables & kitchen in Settings.",
-                VenueMode::Restaurant => "Open kitchen tickets from sales.",
-            };
             let pair_label = if st.device_role == DeviceRole::Server {
                 if st.extra_tills_allowed {
                     let code = st
@@ -6961,28 +6554,10 @@ impl App {
             } else {
                 "Choose how this device is used.".into()
             };
-            let mode_label = match st.venue_mode {
-                VenueMode::Counter => "Off — no tables or kitchen tickets",
-                VenueMode::Restaurant => "Tables & kitchen on",
-            };
             let day_close = st.day_close_text.clone();
             let reports_nav = st.reports_nav;
             let inventory_text = st.ops_panel_text.clone();
             let branches_body = st.branches_text.clone();
-            let order_type_line = format!("Order: {}", st.cart.order_type.label());
-            let station_line = match st.selected_station_id.as_deref() {
-                Some(id) => {
-                    let name = st
-                        .store
-                        .as_ref()
-                        .and_then(|s| s.list_stations().ok())
-                        .and_then(|list| list.into_iter().find(|s| s.id == id))
-                        .map(|s| s.name)
-                        .unwrap_or_else(|| "selected".into());
-                    format!("Station: {name}")
-                }
-                None => "Station: all".to_string(),
-            };
             let org_name = st
                 .store
                 .as_ref()
@@ -7012,18 +6587,10 @@ impl App {
             let new_cust_ph = st.t("new_customer_ph");
             drop(st);
             self.ui
-                .widget(cx, ids!(more_mode_hint)).set_text(cx, &plain_display_text(mode_hint));
-            self.ui
                 .widget(cx, ids!(more_mode_hint))
-                .set_visible(cx, !mode_hint.is_empty());
-            self.ui
-                .widget(cx, ids!(floor_mode_hint)).set_text(cx, &plain_display_text(floor_hint));
-            self.ui
-                .widget(cx, ids!(kitchen_mode_hint)).set_text(cx, &plain_display_text(kitchen_hint));
+                .set_visible(cx, false);
             self.ui
                 .widget(cx, ids!(server_pair_label)).set_text(cx, &plain_display_text(&pair_label));
-            self.ui
-                .widget(cx, ids!(venue_mode_label)).set_text(cx, &plain_display_text(mode_label));
             self.ui
                 .widget(cx, ids!(settings_tmpl_label))
                 .set_text(cx, &plain_display_text(&tmpl_line));
@@ -7046,7 +6613,10 @@ impl App {
                         if !convs.is_empty() {
                             lines.push("Conversions (1 from = factor to):".into());
                             for c in &convs {
-                                let factor = c.factor_milli as f64 / 1000.0;
+                                let factor = precise::format_kg(
+                                    rust_decimal::Decimal::from(c.factor_milli)
+                                        / rust_decimal::Decimal::from(1000),
+                                );
                                 lines.push(format!(
                                     "  1 {} = {} {}",
                                     c.from_code, factor, c.to_code
@@ -7118,10 +6688,6 @@ impl App {
                 .widget(cx, ids!(inventory_label)).set_text(cx, &plain_display_text(&inventory_text));
             self.ui
                 .widget(cx, ids!(branches_label)).set_text(cx, &plain_display_text(&branches_body));
-            self.ui
-                .widget(cx, ids!(order_type_label)).set_text(cx, &plain_display_text(&order_type_line));
-            self.ui
-                .widget(cx, ids!(kitchen_station_label)).set_text(cx, &plain_display_text(&station_line));
             {
                 let field = self.ui.text_input(cx, ids!(org_name_input));
                 if !cx.has_key_focus(field.area()) && field.text() != org_name {
@@ -7143,8 +6709,6 @@ impl App {
             let (
                 _sell,
                 items,
-                floor,
-                kitchen,
                 sales,
                 credit,
                 team,
@@ -7158,8 +6722,6 @@ impl App {
                     Some(s) => (
                         s.can_access_sell(),
                         s.can_access_items(),
-                        s.can_access_floor(),
-                        s.can_access_kitchen(),
                         s.can_access_sales(),
                         s.can_access_credit(),
                         s.can_access_team() || s.is_owner(),
@@ -7168,14 +6730,10 @@ impl App {
                         s.can_access_branches() || s.is_owner(),
                         s.is_owner(),
                     ),
-                    None => (
-                        false, false, false, false, false, false, false, false, false, false,
-                        false,
-                    ),
+                    None => (false, false, false, false, false, false, false, false, false),
                 }
             };
-            // A simple shop never opens Tables or Kitchen until Tables & kitchen is on.
-            let (restaurant, is_client, is_shop, extra_tills, branch_count) = {
+            let (is_client, is_shop, extra_tills, branch_count) = {
                 let st = app_state().lock().unwrap();
                 let branch_count = st
                     .store
@@ -7184,13 +6742,13 @@ impl App {
                     .map(|b| b.len())
                     .unwrap_or(1);
                 (
-                    st.venue_mode == VenueMode::Restaurant,
                     st.device_role == DeviceRole::Client,
                     st.device_role == DeviceRole::Server,
                     st.extra_tills_allowed,
                     branch_count,
                 )
             };
+            let _ = is_client;
             let books_ok = sales || is_owner || items;
             let buy_ok = inventory || sales || is_owner;
             self.ui.button(cx, ids!(nav_books)).set_enabled(cx, books_ok);
@@ -7202,8 +6760,6 @@ impl App {
             self.ui.button(cx, ids!(rail_buy)).set_enabled(cx, buy_ok);
             self.ui.button(cx, ids!(rail_buy_on)).set_enabled(cx, buy_ok);
             self.ui.button(cx, ids!(more_items)).set_visible(cx, false);
-            self.ui.button(cx, ids!(more_tables)).set_visible(cx, false);
-            self.ui.button(cx, ids!(more_kitchen)).set_visible(cx, false);
             // More hub removed — former rows are chrome peers (bottom + rail).
             self.ui.view(cx, ids!(more_screen)).set_visible(cx, false);
             self.ui.view(cx, ids!(nav_rates_slot)).set_visible(cx, items);
@@ -7216,36 +6772,6 @@ impl App {
             self.ui.view(cx, ids!(rail_cod_slot)).set_visible(cx, ops_ok);
             self.ui.view(cx, ids!(nav_riders_slot)).set_visible(cx, ops_ok);
             self.ui.view(cx, ids!(rail_riders_slot)).set_visible(cx, ops_ok);
-            self.ui
-                .view(cx, ids!(nav_tables_slot))
-                .set_visible(cx, floor && restaurant);
-            self.ui
-                .view(cx, ids!(rail_tables_slot))
-                .set_visible(cx, floor && restaurant);
-            self.ui
-                .view(cx, ids!(nav_kitchen_slot))
-                .set_visible(cx, kitchen && restaurant);
-            self.ui
-                .view(cx, ids!(rail_kitchen_slot))
-                .set_visible(cx, kitchen && restaurant);
-            self.ui.button(cx, ids!(send_kot)).set_visible(cx, restaurant);
-            self.ui.view(cx, ids!(order_type_row)).set_visible(cx, restaurant);
-            self.ui
-                .widget(cx, ids!(order_type_label))
-                .set_visible(cx, restaurant);
-            self.ui
-                .view(cx, ids!(menu_station_row))
-                .set_visible(cx, restaurant);
-            self.ui
-                .view(cx, ids!(staff_role_waiter_slot))
-                .set_visible(cx, restaurant);
-            self.ui
-                .view(cx, ids!(staff_role_kitchen_slot))
-                .set_visible(cx, restaurant);
-            self.ui.button(cx, ids!(feat_floor)).set_visible(cx, restaurant);
-            self.ui
-                .button(cx, ids!(feat_kitchen))
-                .set_visible(cx, restaurant);
             self.ui
                 .button(cx, ids!(allow_extra_tills))
                 .set_visible(cx, is_shop && is_owner && !extra_tills);
@@ -7352,7 +6878,6 @@ impl App {
             ids!(my_pin_input),
             ids!(menu_tax_input),
             ids!(menu_category_input),
-            ids!(menu_station_input),
             ids!(menu_modifiers_input),
             ids!(inv_item_input),
             ids!(inv_qty_input),
@@ -7504,79 +7029,21 @@ impl App {
         }
         let tmpl = store.apply_entity_template("courier_agency")?;
         st.entity_template_id = tmpl.id.to_string();
-        st.venue_mode = tmpl.venue_mode;
+        st.venue_mode = VenueMode::Counter;
         Ok(())
     }
 
     fn paint_choice_state(&mut self, cx: &mut Cx) {
-        let (tmpl_id, money_lane, draft_role, order_type, buy_on_account, follow_platform, onboard_step) = {
+        let (money_lane, draft_role, buy_on_account, follow_platform, onboard_step) = {
             let st = app_state().lock().unwrap();
-            let id = st.entity_template_id.trim();
             (
-                if id.is_empty() {
-                    "custom".to_string()
-                } else {
-                    st.entity_template_id.clone()
-                },
                 st.money_lane,
                 st.draft_staff_role,
-                st.cart.order_type,
                 st.buy_on_account,
                 st.language_follow_platform,
                 st.onboard_step,
             )
         };
-        let tmpl_pairs = [
-            (
-                ids!(onboard_tmpl_custom),
-                ids!(onboard_tmpl_custom_on),
-                "custom",
-            ),
-            (
-                ids!(onboard_tmpl_counter),
-                ids!(onboard_tmpl_counter_on),
-                "counter_shop",
-            ),
-            (
-                ids!(onboard_tmpl_courier),
-                ids!(onboard_tmpl_courier_on),
-                "courier_agency",
-            ),
-            (ids!(onboard_tmpl_food), ids!(onboard_tmpl_food_on), "food_service"),
-            (
-                ids!(onboard_tmpl_personal),
-                ids!(onboard_tmpl_personal_on),
-                "personal_books",
-            ),
-            (
-                ids!(settings_tmpl_custom),
-                ids!(settings_tmpl_custom_on),
-                "custom",
-            ),
-            (
-                ids!(settings_tmpl_counter),
-                ids!(settings_tmpl_counter_on),
-                "counter_shop",
-            ),
-            (
-                ids!(settings_tmpl_courier),
-                ids!(settings_tmpl_courier_on),
-                "courier_agency",
-            ),
-            (
-                ids!(settings_tmpl_food),
-                ids!(settings_tmpl_food_on),
-                "food_service",
-            ),
-            (
-                ids!(settings_tmpl_personal),
-                ids!(settings_tmpl_personal_on),
-                "personal_books",
-            ),
-        ];
-        for (idle, active, id) in tmpl_pairs {
-            self.paint_choice_pair(cx, idle, active, tmpl_id == id);
-        }
         self.paint_choice_pair(
             cx,
             ids!(onboard_fresh),
@@ -7657,36 +7124,6 @@ impl App {
             ids!(staff_role_manager_on),
             draft_role == StaffRole::Manager,
         );
-        self.paint_choice_pair(
-            cx,
-            ids!(staff_role_waiter),
-            ids!(staff_role_waiter_on),
-            draft_role == StaffRole::Waiter,
-        );
-        self.paint_choice_pair(
-            cx,
-            ids!(staff_role_kitchen),
-            ids!(staff_role_kitchen_on),
-            draft_role == StaffRole::Kitchen,
-        );
-        self.paint_choice_pair(
-            cx,
-            ids!(order_counter),
-            ids!(order_counter_on),
-            order_type == OrderType::Counter,
-        );
-        self.paint_choice_pair(
-            cx,
-            ids!(order_dine),
-            ids!(order_dine_on),
-            order_type == OrderType::DineIn,
-        );
-        self.paint_choice_pair(
-            cx,
-            ids!(order_takeaway),
-            ids!(order_takeaway_on),
-            order_type == OrderType::Takeaway,
-        );
         // Keep lane labels current on both faces.
         let (declared, owner) = {
             let st = app_state().lock().unwrap();
@@ -7710,8 +7147,6 @@ impl App {
         let sell = s("sell");
         let buy = s("buy");
         let rates = s("items");
-        let tables = s("tables");
-        let kitchen = s("kitchen");
         let sales = s("sales");
         let day_close = s("day_close");
         let reports = s("nav_reports");
@@ -7745,10 +7180,6 @@ impl App {
         set_pair(self, cx, ids!(rail_cod), ids!(rail_cod_on), "COD");
         set_pair(self, cx, ids!(nav_riders), ids!(nav_riders_on), "Riders");
         set_pair(self, cx, ids!(rail_riders), ids!(rail_riders_on), "Riders");
-        set_pair(self, cx, ids!(nav_tables), ids!(nav_tables_on), &tables);
-        set_pair(self, cx, ids!(rail_tables), ids!(rail_tables_on), &tables);
-        set_pair(self, cx, ids!(nav_kitchen), ids!(nav_kitchen_on), &kitchen);
-        set_pair(self, cx, ids!(rail_kitchen), ids!(rail_kitchen_on), &kitchen);
         set_pair(self, cx, ids!(nav_sales), ids!(nav_sales_on), &sales);
         set_pair(self, cx, ids!(rail_sales), ids!(rail_sales_on), &sales);
         set_pair(self, cx, ids!(nav_day_close), ids!(nav_day_close_on), &day_close);
@@ -7768,8 +7199,6 @@ impl App {
         set_pair(self, cx, ids!(nav_lock), ids!(nav_lock_on), &lock);
         set_pair(self, cx, ids!(rail_lock), ids!(rail_lock_on), &lock);
         self.ui.button(cx, ids!(more_items)).set_text(cx, &s("items"));
-        self.ui.button(cx, ids!(more_tables)).set_text(cx, &s("tables"));
-        self.ui.button(cx, ids!(more_kitchen)).set_text(cx, &s("kitchen"));
         self.ui.button(cx, ids!(more_sales)).set_text(cx, &s("sales_refunds"));
         self.ui.button(cx, ids!(more_day_close)).set_text(cx, &s("day_close"));
         self.ui.button(cx, ids!(more_reports)).set_text(cx, &s("reports_expenses"));
@@ -7815,16 +7244,6 @@ impl App {
                 self.ui.button(cx, path).set_text(cx, &owner);
             }
         }
-        self.ui.button(cx, ids!(send_kot)).set_text(cx, &s("send_kot"));
-        for path in [ids!(order_counter), ids!(order_counter_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("counter"));
-        }
-        for path in [ids!(order_dine), ids!(order_dine_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("dine_in"));
-        }
-        for path in [ids!(order_takeaway), ids!(order_takeaway_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("takeaway"));
-        }
         let (editing, editing_name) = {
             let st = app_state().lock().unwrap();
             let editing = st.editing_product_id.is_some();
@@ -7846,16 +7265,8 @@ impl App {
                 Some(name) => format!("{}: {name}", s("editing_item")),
                 None => s("adding_item"),
             },));
-        self.ui.button(cx, ids!(image_auto)).set_text(cx, &s("auto"));
+        self.ui.button(cx, ids!(image_clear)).set_text(cx, "Clear photo");
         self.ui.button(cx, ids!(image_pick)).set_text(cx, &s("photo"));
-        // Courier has no dish-art catalogue — hide prev/next so they cannot panic.
-        let has_builtin_art = !menu_images::MENU_IMAGE_KEYS.is_empty();
-        self.ui
-            .button(cx, ids!(image_prev))
-            .set_visible(cx, has_builtin_art);
-        self.ui
-            .button(cx, ids!(image_next))
-            .set_visible(cx, has_builtin_art);
         self.ui.button(cx, ids!(role_owner)).set_text(cx, &s("owner"));
         self.ui.button(cx, ids!(role_staff)).set_text(cx, &s("staff"));
         self.ui.button(cx, ids!(lock_staff_prev)).set_text(cx, &s("prev"));
@@ -7865,8 +7276,6 @@ impl App {
         self.ui.button(cx, ids!(device_role_client)).set_text(cx, &s("extra_till"));
         self.ui.button(cx, ids!(customer_clear)).set_text(cx, &s("clear"));
         self.ui.button(cx, ids!(undo_snack_btn)).set_text(cx, &s("undo"));
-        self.ui.button(cx, ids!(mode_counter)).set_text(cx, &s("off"));
-        self.ui.button(cx, ids!(mode_restaurant)).set_text(cx, &s("tables_kitchen"));
         self.ui.button(cx, ids!(inv_adjust_minus)).set_text(cx, &s("stock_minus"));
         self.ui.button(cx, ids!(inv_adjust_plus)).set_text(cx, &s("stock_plus"));
         self.ui.button(cx, ids!(inv_track)).set_text(cx, &s("start_tracking"));
@@ -7880,8 +7289,6 @@ impl App {
         self.ui.widget(cx, ids!(items_heading)).set_text(cx, &plain_display_text(&s("your_items")));
         self.ui.widget(cx, ids!(items_help_label)).set_text(cx, &plain_display_text(&s("items_help")));
         self.ui.widget(cx, ids!(more_heading)).set_text(cx, &plain_display_text(&s("more")));
-        self.ui.widget(cx, ids!(floor_title)).set_text(cx, &plain_display_text(&s("tables")));
-        self.ui.widget(cx, ids!(kitchen_title)).set_text(cx, &plain_display_text(&s("kitchen")));
         self.ui.widget(cx, ids!(sales_title)).set_text(cx, &plain_display_text(&s("sales")));
         self.ui.widget(cx, ids!(credit_title)).set_text(cx, &plain_display_text(&s("credit")));
         self.ui
@@ -8012,8 +7419,6 @@ impl App {
             Screen::Buy => ids!(buy_screen),
             Screen::Menu => ids!(menu_screen),
             Screen::More => ids!(more_screen),
-            Screen::Floor => ids!(floor_screen),
-            Screen::Kitchen => ids!(kitchen_screen),
             Screen::Sales => ids!(sales_screen),
             Screen::Credit => ids!(credit_screen),
             Screen::Team => ids!(team_screen),
@@ -8076,8 +7481,6 @@ impl App {
             (ids!(buy_screen), screen == Screen::Buy),
             (ids!(menu_screen), screen == Screen::Menu),
             (ids!(more_screen), screen == Screen::More),
-            (ids!(floor_screen), screen == Screen::Floor),
-            (ids!(kitchen_screen), screen == Screen::Kitchen),
             (ids!(sales_screen), screen == Screen::Sales),
             (ids!(credit_screen), screen == Screen::Credit),
             (ids!(team_screen), screen == Screen::Team),
@@ -8204,8 +7607,6 @@ impl App {
             (ids!(nav_ops), ids!(nav_ops_on)),
             (ids!(nav_cod), ids!(nav_cod_on)),
             (ids!(nav_riders), ids!(nav_riders_on)),
-            (ids!(nav_tables), ids!(nav_tables_on)),
-            (ids!(nav_kitchen), ids!(nav_kitchen_on)),
             (ids!(nav_sales), ids!(nav_sales_on)),
             (ids!(nav_day_close), ids!(nav_day_close_on)),
             (ids!(nav_reports), ids!(nav_reports_on)),
@@ -8222,8 +7623,6 @@ impl App {
             (ids!(rail_ops), ids!(rail_ops_on)),
             (ids!(rail_cod), ids!(rail_cod_on)),
             (ids!(rail_riders), ids!(rail_riders_on)),
-            (ids!(rail_tables), ids!(rail_tables_on)),
-            (ids!(rail_kitchen), ids!(rail_kitchen_on)),
             (ids!(rail_sales), ids!(rail_sales_on)),
             (ids!(rail_day_close), ids!(rail_day_close_on)),
             (ids!(rail_reports), ids!(rail_reports_on)),
@@ -8251,8 +7650,6 @@ impl App {
             (NavTab::Ops, ids!(nav_ops), ids!(nav_ops_on)),
             (NavTab::Cod, ids!(nav_cod), ids!(nav_cod_on)),
             (NavTab::Riders, ids!(nav_riders), ids!(nav_riders_on)),
-            (NavTab::Floor, ids!(nav_tables), ids!(nav_tables_on)),
-            (NavTab::Kitchen, ids!(nav_kitchen), ids!(nav_kitchen_on)),
             (NavTab::Sales, ids!(nav_sales), ids!(nav_sales_on)),
             (NavTab::DayClose, ids!(nav_day_close), ids!(nav_day_close_on)),
             (NavTab::Reports, ids!(nav_reports), ids!(nav_reports_on)),
@@ -8269,8 +7666,6 @@ impl App {
             (NavTab::Ops, ids!(rail_ops), ids!(rail_ops_on)),
             (NavTab::Cod, ids!(rail_cod), ids!(rail_cod_on)),
             (NavTab::Riders, ids!(rail_riders), ids!(rail_riders_on)),
-            (NavTab::Floor, ids!(rail_tables), ids!(rail_tables_on)),
-            (NavTab::Kitchen, ids!(rail_kitchen), ids!(rail_kitchen_on)),
             (NavTab::Sales, ids!(rail_sales), ids!(rail_sales_on)),
             (NavTab::DayClose, ids!(rail_day_close), ids!(rail_day_close_on)),
             (NavTab::Reports, ids!(rail_reports), ids!(rail_reports_on)),
@@ -8612,7 +8007,6 @@ impl App {
             ids!(venue_title_input),
             ids!(menu_tax_input),
             ids!(menu_category_input),
-            ids!(menu_station_input),
             ids!(menu_modifiers_input),
             ids!(inv_item_input),
             ids!(inv_qty_input),
@@ -9556,10 +8950,18 @@ impl App {
                     Ok(()) => {
                         let (_, _, chargeable) = st.booking_weights();
                         if let Some(line) = st.cart.lines.last_mut() {
-                            booking::apply_weight_and_slab(line, &product, chargeable);
+                            if let Err(e) =
+                                booking::apply_weight_and_slab(line, &product, chargeable)
+                            {
+                                Some(e)
+                            } else {
+                                st.status = format!("{} on booking", product.name);
+                                None
+                            }
+                        } else {
+                            st.status = format!("{} on booking", product.name);
+                            None
                         }
-                        st.status = format!("{} on booking", product.name);
-                        None
                     }
                 }
             } else {
@@ -9713,13 +9115,17 @@ impl App {
                 if !actor.can_access_sell() {
                     return Err("Not allowed to sell".into());
                 }
-                if let Some(p) = booking::parse_extra_amount(&st.booking_fuel).filter(|p| *p > 0) {
+                let currency = st.locale.currency.clone();
+                if let Some(p) =
+                    booking::parse_extra_amount(&st.booking_fuel, &currency).filter(|p| *p > 0)
+                {
                     let extra = booking::booking_extra(rates::ExtraChargeKind::Fuel, p);
                     if !st.cart.lines.iter().any(|l| l.product_id.starts_with("extra:fuel")) {
                         st.cart.lines.push(booking::extra_as_line(&extra));
                     }
                 }
-                if let Some(p) = booking::parse_extra_amount(&st.booking_docket).filter(|p| *p > 0)
+                if let Some(p) =
+                    booking::parse_extra_amount(&st.booking_docket, &currency).filter(|p| *p > 0)
                 {
                     let extra = booking::booking_extra(rates::ExtraChargeKind::Docket, p);
                     if !st
@@ -9734,7 +9140,6 @@ impl App {
                 if st.cart.is_empty() {
                     return Err("Cart is empty".into());
                 }
-                let currency = st.locale.currency.clone();
                 if st.cart.charge_total.is_some()
                     && let Ok(minor) = locale::parse_major_input(&typed_total, &currency)
                         && minor > 0 {
@@ -10193,7 +9598,6 @@ impl App {
             ids!(menu_unit_input),
             ids!(menu_tax_input),
             ids!(menu_category_input),
-            ids!(menu_station_input),
             ids!(menu_modifiers_input),
             ids!(menu_first_kg_input),
             ids!(menu_first_amt_input),
@@ -10242,22 +9646,13 @@ impl App {
                         )
                     })
                     .unwrap_or_default();
-                let station = store
-                    .and_then(|s| s.list_stations().ok())
-                    .map(|list| {
-                        name_for_id(
-                            list.iter().map(|row| (row.id.as_str(), row.name.as_str())),
-                            &product.station_id,
-                        )
-                    })
-                    .unwrap_or_default();
                 let aliases = product.aliases().join(", ");
                 let modifiers = modifiers_as_typed(&product.modifiers(), &currency);
                 let price = locale::format_major_input(product.price.paise(), &currency);
-                Some((product, tax, category, station, aliases, modifiers, price))
+                Some((product, tax, category, aliases, modifiers, price))
             }
         };
-        let Some((product, tax, category, station, aliases, modifiers, price)) = loaded else {
+        let Some((product, tax, category, aliases, modifiers, price)) = loaded else {
             return;
         };
         self.ui
@@ -10279,17 +9674,14 @@ impl App {
             .text_input(cx, ids!(menu_category_input))
             .set_text(cx, &category);
         self.ui
-            .text_input(cx, ids!(menu_station_input))
-            .set_text(cx, &station);
-        self.ui
             .text_input(cx, ids!(menu_modifiers_input))
             .set_text(cx, &modifiers);
         let currency = {
             let st = app_state().lock().unwrap();
             st.locale.currency.clone()
         };
-        let first_kg = if product.first_kg > 0.0 {
-            format!("{}", product.first_kg)
+        let first_kg = if product.first_kg > precise::ZERO {
+            precise::format_kg(product.first_kg)
         } else {
             String::new()
         };
@@ -10346,7 +9738,6 @@ impl App {
         let unit_text = self.ui.text_input(cx, ids!(menu_unit_input)).text();
         let tax_text = self.ui.text_input(cx, ids!(menu_tax_input)).text();
         let category_text = self.ui.text_input(cx, ids!(menu_category_input)).text();
-        let station_text = self.ui.text_input(cx, ids!(menu_station_input)).text();
         let modifiers_text = self.ui.text_input(cx, ids!(menu_modifiers_input)).text();
         let first_kg_text = self.ui.text_input(cx, ids!(menu_first_kg_input)).text();
         let first_amt_text = self.ui.text_input(cx, ids!(menu_first_amt_input)).text();
@@ -10397,16 +9788,13 @@ impl App {
                     None => store.add_category(wanted)?.id,
                 },
             };
-            let station_id = match station_text.trim() {
-                "" => String::new(),
-                wanted => match store
-                    .list_stations()?
-                    .into_iter()
-                    .find(|s| s.name.eq_ignore_ascii_case(wanted))
-                {
-                    Some(s) => s.id,
-                    None => store.add_station(wanted)?.id,
-                },
+            let station_id = if let Some(ref id) = editing_id {
+                store
+                    .get_product(id)?
+                    .map(|p| p.station_id.clone())
+                    .unwrap_or_default()
+            } else {
+                String::new()
             };
             let modifiers =
                 domain::ModifierOption::parse_human_list(&modifiers_text, &currency)?;
@@ -10432,7 +9820,8 @@ impl App {
             product.category_id = category_id;
             product.station_id = station_id;
             product.set_modifiers(&modifiers);
-            product.first_kg = booking::parse_positive(&first_kg_text).unwrap_or(0.0);
+            product.first_kg =
+                booking::parse_positive(&first_kg_text).unwrap_or(precise::ZERO);
             product.first_paise = locale::parse_major_input(&first_amt_text, &currency).unwrap_or(0);
             product.extra_per_kg_paise =
                 locale::parse_major_input(&extra_kg_text, &currency).unwrap_or(0);
@@ -10547,31 +9936,8 @@ impl App {
         self.sync_chrome(cx);
     }
 
-    fn image_set_auto(&mut self, cx: &mut Cx) {
+    fn image_clear_photo(&mut self, cx: &mut Cx) {
         app_state().lock().unwrap().draft_image_key = None;
-        self.sync_chrome(cx);
-    }
-
-    fn image_cycle(&mut self, cx: &mut Cx, delta: isize) {
-        let keys = menu_images::MENU_IMAGE_KEYS;
-        // Courier ships no built-in art catalogue (`MENU_IMAGE_KEYS` is empty).
-        // rem_euclid(0) panics — guard before cycling.
-        if keys.is_empty() {
-            self.set_status(cx, "No built-in images — use Pick photo");
-            return;
-        }
-        let mut st = app_state().lock().unwrap();
-        let idx = match st.draft_image_key.as_deref() {
-            Some(k) if menu_images::is_builtin_key(k) && k != menu_images::PLACEHOLDER_KEY => keys
-                .iter()
-                .position(|x| *x == k)
-                .unwrap_or(0),
-            _ => 0,
-        };
-        let n = keys.len() as isize;
-        let next = ((idx as isize + delta).rem_euclid(n)) as usize;
-        st.draft_image_key = Some(keys[next].to_string());
-        drop(st);
         self.sync_chrome(cx);
     }
 
@@ -10579,7 +9945,7 @@ impl App {
         // Native picker on every OS (Android SAF included). Do not use rfd —
         // it is desktop-only and left Android with a stub message.
         let dialog = FileDialog::new()
-            .set_title("Choose item photo".into())
+            .set_title("Choose rate photo".into())
             .add_filter(
                 "Images".into(),
                 vec![
@@ -10785,18 +10151,6 @@ impl MatchEvent for App {
         {
             cx.set_key_focus(Area::Empty);
             self.go_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
-        }
-        if peer(self, cx, actions, ids!(nav_tables), ids!(nav_tables_on), ids!(rail_tables), ids!(rail_tables_on))
-            || self.ui.button(cx, ids!(more_tables)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Floor, |s| s.can_access_floor());
-        }
-        if peer(self, cx, actions, ids!(nav_kitchen), ids!(nav_kitchen_on), ids!(rail_kitchen), ids!(rail_kitchen_on))
-            || self.ui.button(cx, ids!(more_kitchen)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Kitchen, |s| s.can_access_kitchen());
         }
         if peer(self, cx, actions, ids!(nav_sales), ids!(nav_sales_on), ids!(rail_sales), ids!(rail_sales_on))
             || self.ui.button(cx, ids!(more_sales)).clicked(actions)
@@ -11282,38 +10636,6 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(stop_extra_tills)).clicked(actions) {
             self.set_extra_tills(cx, false);
         }
-        for (idle, active, tmpl_id) in [
-            (ids!(settings_tmpl_custom), ids!(settings_tmpl_custom_on), "custom"),
-            (ids!(settings_tmpl_counter), ids!(settings_tmpl_counter_on), "counter_shop"),
-            (ids!(settings_tmpl_courier), ids!(settings_tmpl_courier_on), "courier_agency"),
-            (ids!(settings_tmpl_food), ids!(settings_tmpl_food_on), "food_service"),
-            (ids!(settings_tmpl_personal), ids!(settings_tmpl_personal_on), "personal_books"),
-        ] {
-            if self.choice_chip_clicked(cx, actions, idle, active) {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change start template")?;
-                    let tmpl = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .apply_entity_template(tmpl_id)?;
-                    st.entity_template_id = tmpl.id.to_string();
-                    st.venue_mode = tmpl.venue_mode;
-                    st.reload_all()?;
-                    st.status = format!(
-                        "Template: {} — {}",
-                        tmpl.title, tmpl.blurb
-                    );
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                }
-                self.sync_chrome(cx);
-                break;
-            }
-        }
         if self.ui.button(cx, ids!(settings_open_branches)).clicked(actions) {
             self.go_if_allowed(cx, Screen::Branches, |s| s.can_access_branches() || s.is_owner());
         }
@@ -11467,13 +10789,18 @@ impl MatchEvent for App {
                     return Err("Not allowed to sell".into());
                 }
                 // Extras (fuel/docket) as cart lines before draft.
-                if let Some(p) = booking::parse_extra_amount(&st.booking_fuel).filter(|p| *p > 0) {
+                let currency = st.locale.currency.clone();
+                if let Some(p) =
+                    booking::parse_extra_amount(&st.booking_fuel, &currency).filter(|p| *p > 0)
+                {
                     let extra = booking::booking_extra(rates::ExtraChargeKind::Fuel, p);
                     if !st.cart.lines.iter().any(|l| l.product_id.starts_with("extra:fuel")) {
                         st.cart.lines.push(booking::extra_as_line(&extra));
                     }
                 }
-                if let Some(p) = booking::parse_extra_amount(&st.booking_docket).filter(|p| *p > 0) {
+                if let Some(p) =
+                    booking::parse_extra_amount(&st.booking_docket, &currency).filter(|p| *p > 0)
+                {
                     let extra = booking::booking_extra(rates::ExtraChargeKind::Docket, p);
                     if !st
                         .cart
@@ -11725,59 +11052,6 @@ impl MatchEvent for App {
                     }
                     self.show_undo_snackbar(cx, sale_id, snack);
                 }
-            }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(send_kot)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if st.cart.is_empty() {
-                    return Err("Cart is empty".into());
-                }
-                let mut draft = st.cart.to_sale_draft()?;
-                draft.money_lane = st.money_lane;
-                let table_id = st.selected_table_id.clone();
-                // The kitchen watches the Server's ticket list, so a terminal
-                // posts the cart there instead of writing its own cache.
-                if st.device_role == DeviceRole::Client {
-                    let (url, code) = st.server_link()?;
-                    let table_name = table_id.as_ref().and_then(|tid| {
-                        st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
-                    });
-                    let req = net::RemoteKotRequest {
-                        draft,
-                        table_name,
-                        table_id: table_id.clone(),
-                        actor_id: actor.id.clone(),
-                    };
-                    drop(st);
-                    net::client_push_kot(&url, &code, &req)?;
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(store) = st.store.as_ref()
-                        && let Ok(snap) = net::client_sync(&url, &code) {
-                            let _ = net::apply_snapshot(store, &snap);
-                        }
-                    st.cart.clear();
-                    st.reload_all()?;
-                    st.status = "Kitchen ticket sent to Server".into();
-                    st.screen = Screen::Kitchen;
-                    return Ok(());
-                }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let kot_id = store.send_kot_from_cart(&draft, table_id.as_deref(), &actor)?;
-                // Park cart on table after sending to kitchen.
-                if let Some(tid) = table_id.as_ref()
-                    && let Ok(json) = serde_json::to_string(&draft) {
-                        let _ = store.save_table_draft(tid, &json);
-                    }
-                st.reload_all()?;
-                st.status = format!("Kitchen ticket {} sent", &kot_id[..8.min(kot_id.len())]);
-                st.screen = Screen::Kitchen;
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
             }
             self.sync_chrome(cx);
         }
@@ -12185,13 +11459,13 @@ impl MatchEvent for App {
                         let mut st = app_state().lock().unwrap();
                         st.booking_destination = first.destination.clone();
                         st.booking_consignee = first.consignee.clone();
-                        st.booking_actual_kg = if first.actual_kg > 0.0 {
-                            format!("{}", first.actual_kg)
+                        st.booking_actual_kg = if first.actual_kg > precise::ZERO {
+                            precise::format_kg(first.actual_kg)
                         } else {
                             String::new()
                         };
                         st.booking_cod = if first.cod_paise > 0 {
-                            format!("{:.2}", first.cod_paise as f64 / 100.0)
+                            locale::format_major_input(first.cod_paise, &st.locale.currency)
                         } else {
                             String::new()
                         };
@@ -12205,22 +11479,27 @@ impl MatchEvent for App {
                     self.ui
                         .text_input(cx, ids!(booking_consignee_input))
                         .set_text(cx, &first.consignee);
-                    self.ui.text_input(cx, ids!(booking_actual_kg_input)).set_text(
-                        cx,
-                        &if first.actual_kg > 0.0 {
-                            format!("{}", first.actual_kg)
-                        } else {
-                            String::new()
-                        },
-                    );
-                    self.ui.text_input(cx, ids!(booking_cod_input)).set_text(
-                        cx,
-                        &if first.cod_paise > 0 {
-                            format!("{:.2}", first.cod_paise as f64 / 100.0)
-                        } else {
-                            String::new()
-                        },
-                    );
+                    let (kg_text, cod_text) = {
+                        let st = app_state().lock().unwrap();
+                        (
+                            if first.actual_kg > precise::ZERO {
+                                precise::format_kg(first.actual_kg)
+                            } else {
+                                String::new()
+                            },
+                            if first.cod_paise > 0 {
+                                locale::format_major_input(first.cod_paise, &st.locale.currency)
+                            } else {
+                                String::new()
+                            },
+                        )
+                    };
+                    self.ui
+                        .text_input(cx, ids!(booking_actual_kg_input))
+                        .set_text(cx, &kg_text);
+                    self.ui
+                        .text_input(cx, ids!(booking_cod_input))
+                        .set_text(cx, &cod_text);
                     // Drop the loaded row so the next tap advances through the paste.
                     let rest: Vec<String> = rows
                         .iter()
@@ -12283,38 +11562,12 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(menu_add)).clicked(actions) {
             self.add_menu_item(cx);
         }
-        if self.ui.button(cx, ids!(image_auto)).clicked(actions) {
-            self.image_set_auto(cx);
-        }
-        if self.ui.button(cx, ids!(image_prev)).clicked(actions) {
-            self.image_cycle(cx, -1);
-        }
-        if self.ui.button(cx, ids!(image_next)).clicked(actions) {
-            self.image_cycle(cx, 1);
+        if self.ui.button(cx, ids!(image_clear)).clicked(actions) {
+            self.image_clear_photo(cx);
         }
         if self.ui.button(cx, ids!(image_pick)).clicked(actions) {
             self.image_pick_file(cx);
         }
-        if self.ui.button(cx, ids!(clear_table)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                if let Some(id) = st.selected_table_id.clone()
-                    && st.device_role != DeviceRole::Client {
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.clear_table_draft(&id)?;
-                    }
-                st.selected_table_id = None;
-                st.cart.clear();
-                st.reload_all()?;
-                st.status = "Counter — no table".into();
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
-        }
-
         // Sell list: 3-col token grid — each PortalList row holds c0/c1/c2.
         {
             let widget = self.ui.widget(cx, ids!(product_list));
@@ -12427,134 +11680,6 @@ impl MatchEvent for App {
                 self.apply_cart_note(cx, item_id, &text);
             }
             self.handle_modifier_chips(cx, actions, &item, item_id, false);
-        }
-
-        let table_widget = self.ui.widget(cx, ids!(table_list));
-        let table_list = table_widget.portal_list(cx, ids!(list));
-        for (item_id, item) in table_list.items_with_actions(actions) {
-            if item.button(cx, ids!(action)).clicked(actions) {
-                let msg: Option<String> = {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(table) = st.tables.get(item_id).cloned() {
-                        let prev = st.selected_table_id.clone();
-                        let park_json = if prev.as_ref().map(|p| p != &table.id).unwrap_or(false)
-                            && !st.cart.is_empty()
-                        {
-                            st.cart
-                                .to_sale_draft()
-                                .ok()
-                                .and_then(|d| serde_json::to_string(&d).ok())
-                        } else {
-                            None
-                        };
-                        let draft_json = st
-                            .store
-                            .as_ref()
-                            .and_then(|s| s.load_table_draft(&table.id).ok())
-                            .flatten();
-                        if let (Some(store), Some(prev), Some(json)) =
-                            (st.store.as_ref(), prev.as_ref(), park_json.as_ref())
-                        {
-                            let _ = store.save_table_draft(prev, json);
-                        }
-                        if let Some(json) = draft_json.as_ref() {
-                            if !json.trim().is_empty() && json.trim() != "{}" {
-                                if let Ok(draft) =
-                                    serde_json::from_str::<domain::SaleDraft>(json)
-                                {
-                                    let sale = Sale {
-                                        id: String::new(),
-                                        created_at: String::new(),
-                                        lines_total_paise: draft.lines_total_paise,
-                                        rounding_paise: draft.rounding_paise,
-                                        total_paise: draft.total_paise,
-                                        pay_method: String::new(),
-                                        status: String::new(),
-                                        table_id: Some(table.id.clone()),
-                                        customer_id: None,
-                                        created_by_id: String::new(),
-                                        created_by_name: String::new(),
-                                        lines: draft.lines.clone(),
-                                        ..Sale::default()
-                                    };
-                                    st.cart = Cart::from_sale(&sale);
-                                    if draft.rounding_paise != 0 {
-                                        let _ = st
-                                            .cart
-                                            .set_charge_total(Money(draft.total_paise));
-                                    }
-                                }
-                            } else if st.selected_table_id.as_deref() != Some(table.id.as_str())
-                            {
-                                st.cart.clear();
-                            }
-                        } else if st.selected_table_id.as_deref() != Some(table.id.as_str()) {
-                            st.cart.clear();
-                        }
-                        if let Some(store) = st.store.as_ref() {
-                            let _ = store.occupy_table(&table.id);
-                        }
-                        st.selected_table_id = Some(table.id.clone());
-                        st.screen = Screen::Pos;
-                        st.status = format!("Using table {}", table.name);
-                        let _ = st.reload_all();
-                        None
-                    } else {
-                        Some("Missing table".into())
-                    }
-                };
-                if let Some(e) = msg {
-                    self.set_status(cx, e);
-                }
-                self.sync_chrome(cx);
-            }
-        }
-
-        let kot_widget = self.ui.widget(cx, ids!(kot_list));
-        let kot_list = kot_widget.portal_list(cx, ids!(list));
-        for (item_id, item) in kot_list.items_with_actions(actions) {
-            if item.button(cx, ids!(advance)).clicked(actions) {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    let kot_id = st
-                        .kots
-                        .get(item_id)
-                        .map(|k| k.id.clone())
-                        .ok_or_else(|| "Missing ticket".to_string())?;
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    if st.device_role == DeviceRole::Client {
-                        let url = store.server_url()?.ok_or_else(|| "Not paired".to_string())?;
-                        let code = store.pairing_code()?;
-                        let actor_id = actor.id.clone();
-                        drop(st);
-                        net::client_push_kot_advance(
-                            &url,
-                            &code,
-                            &net::RemoteKotAdvance {
-                                kot_id: kot_id.clone(),
-                                actor_id,
-                            },
-                        )?;
-                        let mut st = app_state().lock().unwrap();
-                        if let Some(store) = st.store.as_ref()
-                            && let Ok(snap) = net::client_sync(&url, &code) {
-                                let _ = net::apply_snapshot(store, &snap);
-                            }
-                        st.reload_all()?;
-                        st.status = "Kitchen ticket updated on Server".into();
-                        return Ok(());
-                    }
-                    store.advance_kot(&kot_id, &actor)?;
-                    st.reload_all()?;
-                    st.status = "Kitchen ticket updated".into();
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                }
-                self.sync_chrome(cx);
-            }
         }
 
         let sale_widget = self.ui.widget(cx, ids!(sale_list));
@@ -12913,15 +12038,6 @@ impl MatchEvent for App {
             self.set_status(cx, "Preset: Cashier");
             self.sync_chrome(cx);
         }
-        if self.choice_chip_clicked(cx, actions, ids!(staff_role_waiter), ids!(staff_role_waiter_on)) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.draft_staff_role = StaffRole::Waiter;
-                st.draft_features = StaffFeatures::for_role(StaffRole::Waiter);
-            }
-            self.set_status(cx, "Preset: Waiter");
-            self.sync_chrome(cx);
-        }
         if self.choice_chip_clicked(cx, actions, ids!(staff_role_manager), ids!(staff_role_manager_on)) {
             {
                 let mut st = app_state().lock().unwrap();
@@ -12931,16 +12047,6 @@ impl MatchEvent for App {
             self.set_status(cx, "Preset: Manager");
             self.sync_chrome(cx);
         }
-        if self.choice_chip_clicked(cx, actions, ids!(staff_role_kitchen), ids!(staff_role_kitchen_on)) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.draft_staff_role = StaffRole::Kitchen;
-                st.draft_features = StaffFeatures::for_role(StaffRole::Kitchen);
-            }
-            self.set_status(cx, "Preset: Kitchen");
-            self.sync_chrome(cx);
-        }
-
         if self.ui.button(cx, ids!(staff_add_cashier)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(staff_name_input)).text();
             let title = self.ui.text_input(cx, ids!(staff_title_input)).text();
@@ -13072,8 +12178,6 @@ impl MatchEvent for App {
             (ids!(feat_items), "items"),
             (ids!(feat_sales), "sales"),
             (ids!(feat_credit), "credit"),
-            (ids!(feat_floor), "floor"),
-            (ids!(feat_kitchen), "kitchen"),
             (ids!(feat_team), "team"),
             (ids!(feat_backup), "backup"),
             (ids!(feat_inventory), "inventory"),
@@ -13086,8 +12190,6 @@ impl MatchEvent for App {
                     "items" => st.draft_features.items = !st.draft_features.items,
                     "sales" => st.draft_features.sales = !st.draft_features.sales,
                     "credit" => st.draft_features.credit = !st.draft_features.credit,
-                    "floor" => st.draft_features.floor = !st.draft_features.floor,
-                    "kitchen" => st.draft_features.kitchen = !st.draft_features.kitchen,
                     "team" => st.draft_features.team = !st.draft_features.team,
                     "backup" => st.draft_features.backup = !st.draft_features.backup,
                     "inventory" => st.draft_features.inventory = !st.draft_features.inventory,
@@ -13119,31 +12221,6 @@ impl MatchEvent for App {
             if let Err(e) = result {
                 self.set_status(cx, e);
             }
-            self.sync_chrome(cx);
-        }
-
-        if self.ui.button(cx, ids!(mode_counter)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_venue_mode(VenueMode::Counter)?;
-                st.venue_mode = VenueMode::Counter;
-                st.status = "Tables & kitchen off".into();
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(mode_restaurant)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_venue_mode(VenueMode::Restaurant)?;
-                st.venue_mode = VenueMode::Restaurant;
-                st.status = "Tables & kitchen on".into();
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
             self.sync_chrome(cx);
         }
 
@@ -13288,34 +12365,6 @@ impl MatchEvent for App {
             })();
             if let Err(e) = result { self.set_status(cx, e); }
             self.sync_chrome(cx);
-        }
-        for (idle, active, tmpl_id) in [
-            (ids!(onboard_tmpl_custom), ids!(onboard_tmpl_custom_on), "custom"),
-            (ids!(onboard_tmpl_counter), ids!(onboard_tmpl_counter_on), "counter_shop"),
-            (ids!(onboard_tmpl_courier), ids!(onboard_tmpl_courier_on), "courier_agency"),
-            (ids!(onboard_tmpl_food), ids!(onboard_tmpl_food_on), "food_service"),
-            (ids!(onboard_tmpl_personal), ids!(onboard_tmpl_personal_on), "personal_books"),
-        ] {
-            if self.choice_chip_clicked(cx, actions, idle, active) {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let tmpl = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .apply_entity_template(tmpl_id)?;
-                    st.entity_template_id = tmpl.id.to_string();
-                    st.venue_mode = tmpl.venue_mode;
-                    st.reload_all()?;
-                    st.status = format!("Template: {} — {}", tmpl.title, tmpl.blurb);
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                }
-                self.sync_chrome(cx);
-                break; // one chip per event — never leave the wrong template selected
-            }
         }
         if self.choice_chip_clicked(
             cx,
@@ -13473,59 +12522,6 @@ impl MatchEvent for App {
             } else {
                 self.set_status(cx, "Pair first");
             }
-        }
-
-        if self.ui.button(cx, ids!(floor_add_table)).clicked(actions) {
-            let name = self.ui.text_input(cx, ids!(floor_table_name)).text();
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add tables")?;
-                st.store.as_ref().ok_or_else(|| "No store".to_string())?.add_table(&name)?;
-                st.reload_all()?;
-                st.status = format!("Added table {}", name.trim());
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            else { self.ui.text_input(cx, ids!(floor_table_name)).set_text(cx, ""); }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(floor_rename_table)).clicked(actions) {
-            let name = self.ui.text_input(cx, ids!(floor_table_name)).text();
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.require_server_role("Rename tables")?;
-                let id = st
-                    .selected_table_id
-                    .clone()
-                    .ok_or_else(|| "Select a table first".to_string())?;
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .rename_table(&id, &name)?;
-                st.reload_all()?;
-                st.status = format!("Table renamed to {}", name.trim());
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            } else {
-                self.ui.text_input(cx, ids!(floor_table_name)).set_text(cx, "");
-            }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(floor_delete_table)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.require_server_role("Delete tables")?;
-                let id = st.selected_table_id.clone().ok_or_else(|| "Select a table first".to_string())?;
-                st.store.as_ref().ok_or_else(|| "No store".to_string())?.delete_table(&id)?;
-                st.selected_table_id = None;
-                st.reload_all()?;
-                st.status = "Table deleted".into();
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            self.sync_chrome(cx);
         }
 
         if self.ui.button(cx, ids!(receipt_print_btn)).clicked(actions) {
@@ -13819,67 +12815,6 @@ impl MatchEvent for App {
                 }
                 self.sync_chrome(cx);
             }
-        }
-
-        for (idle, active, order_type) in [
-            (ids!(order_counter), ids!(order_counter_on), OrderType::Counter),
-            (ids!(order_dine), ids!(order_dine_on), OrderType::DineIn),
-            (ids!(order_takeaway), ids!(order_takeaway_on), OrderType::Takeaway),
-        ] {
-            if self.choice_chip_clicked(cx, actions, idle, active) {
-                {
-                    let mut st = app_state().lock().unwrap();
-                    st.cart.set_order_type(order_type);
-                    st.status = format!("Order type: {}", order_type.label());
-                }
-                self.sync_chrome(cx);
-            }
-        }
-
-        if self.ui.button(cx, ids!(kitchen_station_all)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.selected_station_id = None;
-                st.reload_all()?;
-                st.status = "Showing every station".into();
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(kitchen_station_cycle)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let stations = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .list_stations()?;
-                if stations.is_empty() {
-                    return Err("No kitchen stations yet — add one on an item".into());
-                }
-                // None → first station → … → last station → None.
-                let next = match st.selected_station_id.as_deref() {
-                    None => Some(stations[0].id.clone()),
-                    Some(current) => match stations.iter().position(|s| s.id == current) {
-                        Some(i) if i + 1 < stations.len() => Some(stations[i + 1].id.clone()),
-                        _ => None,
-                    },
-                };
-                st.selected_station_id = next;
-                st.reload_all()?;
-                st.status = match st.selected_station_id.as_deref() {
-                    Some(id) => stations
-                        .iter()
-                        .find(|s| s.id == id)
-                        .map(|s| format!("Station: {}", s.name))
-                        .unwrap_or_else(|| "Station selected".into()),
-                    None => "Showing every station".into(),
-                };
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            self.sync_chrome(cx);
         }
 
         let inv_minus = self.ui.button(cx, ids!(inv_adjust_minus)).clicked(actions);

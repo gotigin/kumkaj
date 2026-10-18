@@ -407,46 +407,36 @@ pub fn format_major_input_ex(
 /// *last* one is the decimal; a lone mark is the decimal unless it sits
 /// exactly three digits from the end, which is grouping the world over.
 pub fn parse_major_input(text: &str, currency_code: &str) -> Result<i64, String> {
+    use rust_decimal::Decimal;
+    use std::str::FromStr;
+
     let decimals = currency_by_code(currency_code)
         .map(|c| c.decimals)
-        .unwrap_or(2) as usize;
-    let text = normalize_major_input(text.trim(), decimals);
+        .unwrap_or(2) as u32;
+    let text = normalize_major_input(text.trim(), decimals as usize);
     if text.is_empty() {
         return Err("Amount required".into());
     }
     let negative = text.starts_with('-');
     let text = text.trim_start_matches('+').trim_start_matches('-');
-    let (major_s, frac_s) = match text.split_once('.') {
-        Some((a, b)) => (a, b),
-        None => (text, ""),
-    };
-    if major_s.is_empty() || !major_s.chars().all(|c| c.is_ascii_digit()) {
+    if text.is_empty() || !text.chars().all(|c| c.is_ascii_digit() || c == '.') {
         return Err("Invalid amount".into());
     }
-    if !frac_s.chars().all(|c| c.is_ascii_digit()) {
+    if text.matches('.').count() > 1 {
         return Err("Invalid amount".into());
     }
-    if frac_s.len() > decimals {
-        return Err("Too many decimal places".into());
+    let major = Decimal::from_str(text).map_err(|_| "Invalid amount".to_string())?;
+    if major.fract() != Decimal::ZERO {
+        let scale = major.normalize().scale();
+        if scale > decimals {
+            return Err("Too many decimal places".into());
+        }
     }
-    let major: i64 = major_s
-        .parse()
-        .map_err(|_| "Invalid amount".to_string())?;
-    let mut frac = frac_s.to_string();
-    while frac.len() < decimals {
-        frac.push('0');
-    }
-    let frac_val: i64 = if decimals == 0 {
-        0
-    } else {
-        frac.parse().map_err(|_| "Invalid amount".to_string())?
-    };
-    let factor = 10i64.pow(decimals as u32);
-    let mut minor = major
-        .saturating_mul(factor)
-        .saturating_add(frac_val);
+    let mut minor = crate::precise::major_to_minor(major.abs(), decimals)?;
     if negative {
-        minor = -minor;
+        minor = minor
+            .checked_neg()
+            .ok_or_else(|| "Amount overflow".to_string())?;
     }
     Ok(minor)
 }
@@ -551,7 +541,7 @@ fn en(key: &str) -> String {
         "editing_item" => "Editing",
         "save" => "Save",
         "remove" => "Remove",
-        "empty_catalog" => "No rates yet. Open More → Rates & services, add one (name + ₹, unit kg), then Booking.",
+        "empty_catalog" => "No rates yet. Open Rates & services, add one (name + price, unit kg), then Booking.",
         "counter_sale" => "Counter booking",
         "total" => "Total",
         "cash" => "Cash",
@@ -601,7 +591,7 @@ fn en(key: &str) -> String {
         "customer_name_ph" => "Party name",
         "new_customer_ph" => "New party name",
         "item_name_ph" => "Rate name (e.g. Surface Zone A)",
-        "item_price_ph" => "₹ per kg / first slab",
+        "item_price_ph" => "Per kg / first slab",
         "start_template" => "Product",
         "next_booking" => "Next booking",
         "destination_ph" => "Destination city / zone",

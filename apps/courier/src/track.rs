@@ -10,7 +10,7 @@ pub struct PublicTrackView {
     pub status_label: String,
     pub destination: String,
     pub consignee_name: String,
-    pub chargeable_weight_kg: f64,
+    pub chargeable_weight_kg: rust_decimal::Decimal,
     pub booked_at: String,
     pub events: Vec<PublicTrackEvent>,
 }

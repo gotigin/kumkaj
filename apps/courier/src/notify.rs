@@ -81,10 +81,10 @@ pub fn parse_bulk_booking_csv(raw: &str) -> Result<Vec<BulkBookingRow>, String> 
         if cols.len() < 2 {
             return Err(format!("Line {}: need at least destination,consignee", i + 1));
         }
-        let actual_kg: f64 = cols
+        let actual_kg = cols
             .get(2)
-            .and_then(|s| s.replace(',', ".").parse().ok())
-            .unwrap_or(0.0);
+            .and_then(|s| crate::precise::parse_non_negative(s))
+            .unwrap_or(crate::precise::ZERO);
         let cod_paise: i64 = cols.get(3).and_then(|s| s.parse().ok()).unwrap_or(0);
         out.push(BulkBookingRow {
             destination: cols[0].into(),
@@ -101,7 +101,7 @@ pub fn parse_bulk_booking_csv(raw: &str) -> Result<Vec<BulkBookingRow>, String> 
 pub struct BulkBookingRow {
     pub destination: String,
     pub consignee: String,
-    pub actual_kg: f64,
+    pub actual_kg: rust_decimal::Decimal,
     pub cod_paise: i64,
     pub note: String,
 }
@@ -116,7 +116,7 @@ mod tests {
         let rows = parse_bulk_booking_csv(csv).unwrap();
         assert_eq!(rows.len(), 1);
         assert_eq!(rows[0].destination, "Pune");
-        assert!((rows[0].actual_kg - 2.5).abs() < 0.01);
+        assert_eq!(rows[0].actual_kg, "2.5".parse().unwrap());
     }
 
     #[test]

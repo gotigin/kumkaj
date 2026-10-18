@@ -17,8 +17,8 @@ Offline use is free forever on the device. Extra tills are optional LAN joins. C
 - Every launch: language (platform default) + Server/Client on one screen ([`DESIGN.md`](DESIGN.md))
 - One device can hold **multiple local servers** (separate businesses/products); Server Mode creates the first or lets you create/open another
 - Shop device by default (extra tills off). Allow extra tills in Settings when another phone should sell.
-- Tables & kitchen (tables, KOT split by kitchen station) is optional for food businesses
-- Categories, named tax rates, modifiers on Items; Inventory & purchases
+- Tables & kitchen (tables, KOT) belongs to a future food-counter product — not shipped in Kumkaj Courier
+- Categories, named tax rates, modifiers on rates/items; Inventory & purchases when needed
 - Organization + branches with snapshot export/import and consolidated reports
 - A write-only sync outbox records each sale for a future Kumkaj Cloud drain; nothing reads that queue yet. Cloud syncs the shop books — extra tills are not a different cloud product.
 - Books rows keep three clocks: user/business time, device write time, and cloud accept time (empty until synced) — see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).

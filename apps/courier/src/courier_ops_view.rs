@@ -3,7 +3,7 @@
 
 use crate::cod;
 use crate::consignments::{self, ConsignmentFilter};
-use crate::domain::{Money, Sale, StaffMember};
+use crate::domain::{Sale, StaffMember};
 use crate::manifest::{self, HandoverKind};
 use crate::store::Store;
 
@@ -20,7 +20,7 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
             text.push_str("Type an AWB below, then Advance / Dispatch / Label.\n\n");
             let filter = ConsignmentFilter::default();
             for s in store.search_consignments(&filter, 50)? {
-                text.push_str(&format_consignment_line(&s));
+                text.push_str(&format_consignment_line(store, &s));
             }
             text.push_str("\n— Manifests —\n");
             for m in store.list_manifests(20)? {
@@ -43,7 +43,7 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
                     "{} · {} · {} · {}{}\n",
                     e.awb_no,
                     e.status,
-                    Money(e.cod_paise).format_with("INR"),
+                    store.money_display(e.cod_paise),
                     e.party_name,
                     if e.note.is_empty() {
                         String::new()
@@ -71,7 +71,7 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
     Ok(text)
 }
 
-fn format_consignment_line(s: &Sale) -> String {
+fn format_consignment_line(store: &Store, s: &Sale) -> String {
     format!(
         "{} · {} · {} · {} · {}{}\n",
         s.awb_no,
@@ -82,9 +82,9 @@ fn format_consignment_line(s: &Sale) -> String {
         } else {
             "billed"
         },
-        Money(s.total_paise).format_with("INR"),
+        store.money_display(s.total_paise),
         if s.cod_paise > 0 {
-            format!(" · COD {}", Money(s.cod_paise).format_with("INR"))
+            format!(" · COD {}", store.money_display(s.cod_paise))
         } else {
             String::new()
         }
@@ -209,7 +209,7 @@ pub fn collect_cod_for_awb(store: &Store, awb: &str) -> Result<String, String> {
     store.mark_cod_collected(&entry.id)?;
     Ok(format!(
         "Collected COD {} on {}",
-        Money(entry.cod_paise).format_with("INR"),
+        store.money_display(entry.cod_paise),
         entry.awb_no
     ))
 }
@@ -236,7 +236,7 @@ pub fn remit_collected_for_party(store: &mut Store, party_name: &str) -> Result<
     let rem = store.remit_cod(&party.id, &ids, "cash", "desk remittance")?;
     Ok(format!(
         "Remitted {} to {} ({} dockets)",
-        Money(rem.total_paise).format_with("INR"),
+        store.money_display(rem.total_paise),
         rem.party_name,
         ids.len()
     ))
@@ -275,7 +275,7 @@ pub fn period_bill_party(
         "Period bill {} · {} · {}",
         bill.invoice_no,
         bill.party_name,
-        Money(bill.total_paise).format_with("INR")
+        store.money_display(bill.total_paise)
     ))
 }
 
@@ -293,7 +293,7 @@ pub fn set_credit_limit(
     Ok(format!(
         "Credit limit for {} set to {}",
         party.name,
-        Money(limit_paise).format_with("INR")
+        store.money_display(limit_paise)
     ))
 }
 

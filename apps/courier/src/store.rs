@@ -119,9 +119,9 @@ impl Store {
                     awb_no TEXT NOT NULL DEFAULT '',
                     destination TEXT NOT NULL DEFAULT '',
                     consignee_name TEXT NOT NULL DEFAULT '',
-                    actual_weight_kg REAL NOT NULL DEFAULT 0,
-                    volumetric_weight_kg REAL NOT NULL DEFAULT 0,
-                    chargeable_weight_kg REAL NOT NULL DEFAULT 0,
+                    actual_weight_kg TEXT NOT NULL DEFAULT '0',
+                    volumetric_weight_kg TEXT NOT NULL DEFAULT '0',
+                    chargeable_weight_kg TEXT NOT NULL DEFAULT '0',
                     tracking_status TEXT NOT NULL DEFAULT 'booked'
                 );
                 CREATE TABLE IF NOT EXISTS sale_lines (
@@ -368,9 +368,9 @@ impl Store {
             "ALTER TABLE sales ADD COLUMN awb_no TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN destination TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN consignee_name TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE sales ADD COLUMN actual_weight_kg REAL NOT NULL DEFAULT 0",
-            "ALTER TABLE sales ADD COLUMN volumetric_weight_kg REAL NOT NULL DEFAULT 0",
-            "ALTER TABLE sales ADD COLUMN chargeable_weight_kg REAL NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN actual_weight_kg TEXT NOT NULL DEFAULT '0'",
+            "ALTER TABLE sales ADD COLUMN volumetric_weight_kg TEXT NOT NULL DEFAULT '0'",
+            "ALTER TABLE sales ADD COLUMN chargeable_weight_kg TEXT NOT NULL DEFAULT '0'",
             "ALTER TABLE sales ADD COLUMN tracking_status TEXT NOT NULL DEFAULT 'booked'",
             "ALTER TABLE sales ADD COLUMN zone_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN cod_paise INTEGER NOT NULL DEFAULT 0",
@@ -382,7 +382,7 @@ impl Store {
             "ALTER TABLE sales ADD COLUMN pod_note TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN extras_json TEXT NOT NULL DEFAULT '[]'",
             "ALTER TABLE products ADD COLUMN zone_id TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE products ADD COLUMN first_kg REAL NOT NULL DEFAULT 0",
+            "ALTER TABLE products ADD COLUMN first_kg TEXT NOT NULL DEFAULT '0'",
             "ALTER TABLE products ADD COLUMN first_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE products ADD COLUMN extra_per_kg_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
@@ -1271,10 +1271,12 @@ impl Store {
             out.push_str(sale.consignee_name.trim());
             out.push('\n');
         }
-        if sale.chargeable_weight_kg > 0.0 {
+        if sale.chargeable_weight_kg > crate::precise::ZERO {
             out.push_str(&format!(
-                "Weight: actual {:.2} kg · vol {:.2} kg · chargeable {:.2} kg\n",
-                sale.actual_weight_kg, sale.volumetric_weight_kg, sale.chargeable_weight_kg
+                "Weight: actual {} kg · vol {} kg · chargeable {} kg\n",
+                crate::precise::format_kg(sale.actual_weight_kg),
+                crate::precise::format_kg(sale.volumetric_weight_kg),
+                crate::precise::format_kg(sale.chargeable_weight_kg)
             ));
         }
         if !sale.tracking_status.trim().is_empty() {
@@ -2747,6 +2749,15 @@ impl Store {
         })
     }
 
+    /// Format minor units with the shop currency (defaults to INR — India first).
+    pub fn money_display(&self, paise: i64) -> String {
+        let code = self
+            .locale_settings()
+            .map(|l| l.currency)
+            .unwrap_or_else(|_| "INR".into());
+        Money(paise).format_with(&code)
+    }
+
     pub fn set_locale_settings(&self, settings: &LocaleSettings) -> Result<(), String> {
         self.meta_set("language", &settings.language)?;
         self.meta_set("currency", &settings.currency)?;
@@ -3126,13 +3137,11 @@ impl Store {
             return Ok(Some(hit.clone()));
         }
         let typed = bare;
-        let percent: f64 = typed
-            .parse()
+        let bps = crate::locale::parse_percent_bps(typed)
             .map_err(|_| format!("No tax rate named \"{typed}\" — type a name or a percent"))?;
-        if !(0.0..=100.0).contains(&percent) {
+        if !(0..=10_000).contains(&bps) {
             return Err("Tax % must be between 0 and 100".into());
         }
-        let bps = (percent * 100.0).round() as i64;
         if let Some(hit) = rates.into_iter().find(|r| r.bps == bps) {
             return Ok(Some(hit));
         }
@@ -4227,7 +4236,7 @@ impl Store {
                     },
                     product.unit_label,
                     product.zone_id,
-                    product.first_kg,
+                    crate::precise::dec_to_sql(product.first_kg),
                     product.first_paise,
                     product.extra_per_kg_paise
                 ],
@@ -4459,9 +4468,9 @@ impl Store {
                 awb_no,
                 destination,
                 consignee_name,
-                actual_weight_kg,
-                volumetric_weight_kg,
-                chargeable_weight_kg,
+                crate::precise::dec_to_sql(actual_weight_kg),
+                crate::precise::dec_to_sql(volumetric_weight_kg),
+                crate::precise::dec_to_sql(chargeable_weight_kg),
                 zone_id,
                 cod_paise,
                 carrier_cost_paise,
@@ -7406,6 +7415,10 @@ impl Store {
             .first()
             .map(|l| l.name.clone())
             .unwrap_or_default();
+        let currency_code = self
+            .locale_settings()
+            .map(|l| l.currency)
+            .unwrap_or_else(|_| "INR".into());
         let label = crate::labels::AwbLabel {
             awb_no: sale.awb_no.clone(),
             from_name: from,
@@ -7420,6 +7433,7 @@ impl Store {
             } else {
                 agency
             },
+            currency_code,
         };
         let dir = self
             .path
@@ -7507,7 +7521,7 @@ impl Store {
         Ok(format!(
             "Ops: {booked} booked · {out_delivery} out for delivery · {riders} riders · {zones} zones\n\
              COD pending: {}",
-            Money(pending_cod).format_with("INR")
+            self.money_display(pending_cod)
         ))
     }
 }
@@ -7792,9 +7806,9 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         awb_no: row.get(23)?,
         destination: row.get(24)?,
         consignee_name: row.get(25)?,
-        actual_weight_kg: row.get(26)?,
-        volumetric_weight_kg: row.get(27)?,
-        chargeable_weight_kg: row.get(28)?,
+        actual_weight_kg: crate::precise::dec_from_sql(row, 26)?,
+        volumetric_weight_kg: crate::precise::dec_from_sql(row, 27)?,
+        chargeable_weight_kg: crate::precise::dec_from_sql(row, 28)?,
         tracking_status: row.get(29)?,
         zone_id: row.get(30)?,
         cod_paise: row.get(31)?,
@@ -7836,7 +7850,7 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         aliases_json: row.get(13)?,
         unit_label: row.get(14)?,
         zone_id: row.get(15)?,
-        first_kg: row.get(16)?,
+        first_kg: crate::precise::dec_from_sql(row, 16)?,
         first_paise: row.get(17)?,
         extra_per_kg_paise: row.get(18)?,
     })
@@ -8403,9 +8417,9 @@ mod tests {
         let mut draft = cart.to_sale_draft().unwrap();
         draft.destination = "Bengaluru".into();
         draft.consignee_name = "Sunita".into();
-        draft.actual_weight_kg = 5.0;
-        draft.volumetric_weight_kg = 4.8;
-        draft.chargeable_weight_kg = 5.0;
+        draft.actual_weight_kg = "5".parse().unwrap();
+        draft.volumetric_weight_kg = "4.8".parse().unwrap();
+        draft.chargeable_weight_kg = "5".parse().unwrap();
         draft.money_lane = MoneyLane::Owner;
         let sale = store
             .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
@@ -8429,11 +8443,16 @@ mod tests {
         let mut rate = Product::new_basic(new_id(), "Surface West", Money::from_rupees(40));
         rate.unit_label = "kg".into();
         rate.zone_id = zone.id.clone();
-        rate.first_kg = 1.0;
+        rate.first_kg = "1".parse().unwrap();
         rate.first_paise = 50_00;
         rate.extra_per_kg_paise = 20_00;
         store.upsert_product(&rate).unwrap();
-        assert_eq!(rate.rate_slab().freight_paise(2.5), 80_00);
+        assert_eq!(
+            rate.rate_slab()
+                .freight_paise("2.5".parse().unwrap())
+                .unwrap(),
+            80_00
+        );
 
         let party = store.add_customer_kind("Acme Consignor", "", "Consignor").unwrap();
         store.set_customer_credit_limit(&party.id, 500_00).unwrap();
@@ -8444,7 +8463,7 @@ mod tests {
         let mut draft = cart.to_sale_draft().unwrap();
         draft.destination = "Pune".into();
         draft.consignee_name = "Neha".into();
-        draft.chargeable_weight_kg = 2.5;
+        draft.chargeable_weight_kg = "2.5".parse().unwrap();
         draft.cod_paise = 100_00;
         draft.carrier_cost_paise = 60_00;
         draft.zone_id = zone.id;

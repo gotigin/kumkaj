@@ -1,26 +1,11 @@
-//! Item artwork helpers for Kumkaj Courier.
+//! Rate / party thumb helpers for Kumkaj Courier.
 //!
-//! There is no built-in dish-art catalogue. When a name is set and no photo is
-//! chosen, UI shows **name initials** instead of an empty black thumb:
-//! - one word → first two letters (`Chicken` → `CH`)
-//! - two+ words → first letter of the first two (`Chicken Biryani` → `CB`)
+//! No built-in art catalogue (that belonged to food-counter products). When a
+//! name is set and no photo is chosen, UI shows **name initials**:
+//! - one word → first two letters (`Express` → `EX`)
+//! - two+ words → first letter of the first two (`Surface Zone` → `SZ`)
 
-use makepad_widgets::Cx;
 use std::path::{Path, PathBuf};
-
-/// No built-in dish art in the courier product.
-pub const MENU_IMAGE_KEYS: &[&str] = &[];
-
-/// Generic fallback key (unused when keys are empty).
-pub const PLACEHOLDER_KEY: &str = "placeholder";
-
-pub fn is_builtin_key(_key: &str) -> bool {
-    false
-}
-
-pub fn detect_image_key(_name: &str) -> &'static str {
-    PLACEHOLDER_KEY
-}
 
 /// Initials for a missing photo when `name` is non-empty.
 ///
@@ -48,9 +33,7 @@ fn char_upper(c: char) -> String {
 }
 
 pub fn describe_image(key: Option<&str>, name: &str) -> String {
-    if key.map(|k| !k.is_empty() && k != PLACEHOLDER_KEY)
-        .unwrap_or(false)
-    {
+    if has_photo_key(key) {
         return "Custom photo".into();
     }
     let initials = name_initials(name);
@@ -61,55 +44,24 @@ pub fn describe_image(key: Option<&str>, name: &str) -> String {
     }
 }
 
-pub fn next_image_key(_current: Option<&str>) -> Option<&'static str> {
-    None
-}
-
-pub fn menu_dir_candidates(exe_dir: &Path) -> [PathBuf; 3] {
-    [
-        exe_dir.join("kumkaj-courier").join("resources").join("menu"),
-        exe_dir.join("menu"),
-        exe_dir.join("resources").join("menu"),
-    ]
-}
-
-pub fn bundled_menu_dir() -> PathBuf {
-    if let Ok(exe) = std::env::current_exe()
-        && let Some(parent) = exe.parent()
-    {
-        for candidate in menu_dir_candidates(parent) {
-            if candidate.is_dir() {
-                return candidate;
-            }
-        }
-    }
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources/menu")
-}
-
-pub fn bundled_image_path(key: &str) -> PathBuf {
-    bundled_menu_dir().join(format!("{key}.webp"))
-}
-
-pub fn bundled_dependency_path(key: &str) -> String {
-    format!("kumkaj-courier/resources/menu/{key}.webp")
-}
-
-pub fn resolve_image_path(_key: Option<&str>, _name: &str, _dir: &Path) -> PathBuf {
-    PathBuf::new()
-}
-
-pub fn read_image_bytes(_cx: &Cx, _path: &Path) -> Option<Vec<u8>> {
-    None
-}
-
-/// True when `key` points at a real photo (file or pending pick), not auto/placeholder.
+/// True when `key` points at a real photo (file or pending pick).
 pub fn has_photo_key(key: Option<&str>) -> bool {
     match key {
         None | Some("") => false,
-        Some(PLACEHOLDER_KEY) => false,
         Some(k) if k.starts_with("pending_custom:") => true,
         Some(k) if k.starts_with("custom:") => true,
-        Some(_) => false, // no built-in catalogue
+        Some(_) => false,
+    }
+}
+
+/// Resolve a custom photo path; catalogue keys are not supported.
+pub fn resolve_image_path(key: Option<&str>, _name: &str, _dir: &Path) -> PathBuf {
+    match key {
+        Some(k) if k.starts_with("custom:") => PathBuf::from(k.trim_start_matches("custom:")),
+        Some(k) if k.starts_with("pending_custom:") => {
+            PathBuf::from(k.trim_start_matches("pending_custom:"))
+        }
+        _ => PathBuf::new(),
     }
 }
 
@@ -118,21 +70,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn courier_has_no_menu_art_catalogue() {
-        assert!(MENU_IMAGE_KEYS.is_empty());
-        assert_eq!(detect_image_key("Chicken Biryani"), PLACEHOLDER_KEY);
-    }
-
-    #[test]
     fn initials_one_word_uses_two_letters() {
-        assert_eq!(name_initials("Chicken"), "CH");
+        assert_eq!(name_initials("Express"), "EX");
         assert_eq!(name_initials("a"), "A");
         assert_eq!(name_initials("  tea  "), "TE");
     }
 
     #[test]
     fn initials_two_words_use_first_letters() {
-        assert_eq!(name_initials("Chicken Biryani"), "CB");
+        assert_eq!(name_initials("Surface Zone"), "SZ");
         assert_eq!(name_initials("express  parcel"), "EP");
     }
 
@@ -140,5 +86,12 @@ mod tests {
     fn initials_empty_name() {
         assert_eq!(name_initials(""), "");
         assert_eq!(name_initials("   "), "");
+    }
+
+    #[test]
+    fn only_custom_keys_count_as_photos() {
+        assert!(!has_photo_key(None));
+        assert!(!has_photo_key(Some("chicken")));
+        assert!(has_photo_key(Some("custom:/tmp/x.webp")));
     }
 }

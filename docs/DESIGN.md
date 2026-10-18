@@ -16,7 +16,7 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 | **Day book** | Home after unlock — today’s money in/out, AR/AP, cash vs bank; shortcuts to day close, bank/P&L, parties |
 | **Booking** | Money in — book parcels (rates × kg), three-total ledger, tender / party credit; Account vs Cash booking |
 | **Pay out** | Money out — carrier bills / purchases and expense vouchers |
-| **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** (and restaurant Tables/Kitchen when enabled) | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
+| **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
 
 Progressive depth for Courier: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
 

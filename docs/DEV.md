@@ -108,7 +108,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 2. **Wrong peer lit while another screen showed** — Treating focus/hover as selection instead of painting from `Screen` / `nav_tab_for`.
 3. **Right-truncated CTA labels** — Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Row*`) used `max_lines: 1` + `TextOverflow.Ellipsis`. Makepad centers a Fill label in a Fill button; long / translated strings become `record_pu…` / clipped ink. Multi-word choices in `ChipBtn` (Fit max 160) truncated the same way (`Use platform na…`, `Tax invoice`, `On account (AP)`).
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
-5. **Menu images “gone” on Windows** — Package layout is `exe/kumkaj-courier/resources/menu/`; loader must prefer that path (`menu_images::menu_dir_candidates`), not a bare `menu/` folder or `get_dependency` alone on desktop.
+5. **Item / rate photos** — Courier has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 
 ### Required approach (shipping)
 
@@ -473,19 +473,14 @@ Platform ids: see **Platform naming** above (`com.kumkaj.courier` / `com.kumkaj.
 ## Manual UI smoke (shipping)
 
 1. Unlock with `0000` (or set Owner PIN on first Server run)
-2. Finish onboarding — **None** is pre-selected; Fresh or Book, then Done (other templates optional)
-3. Add Tea ×4; optionally edit `@`, line **Applied**, and **Note**; set order type Counter / Dine-in / Takeaway
-4. Confirm bill shows three totals:
-   - **Actual Total** = sum of `@ × qty`
-   - **Applied Total** = sum of line Applied (equals Actual until a line is overridden)
-   - **Rounded Total** = editable; defaults to Applied — edit e.g. 52 → 50 for bill round-off
-5. Cash / rail / Card / Credit or Split Cash+rail; undo snackbar; Copy / Print receipt from Sales
-6. Books home shows today; Buy tab records purchase + expense; More → Credit settle; Day close; Reports
-7. More → Items: category, station, tax rate name or %, modifiers text; Inventory track/adjust (purchase also on Buy)
-7b. Settings → Country & tax: apply `GB` (VAT, inclusive, £), then `US` (sales tax, exclusive, $) and confirm the Sell strip shows the added tax before you charge; save a business id and check it prints
-8. Tables & kitchen: Send KOT, tables park carts, Kitchen station filter + Advance
-9. Branches & org: add branch, switch, export snapshot, import `import_branch_snapshot.json`, consolidated report
-10. Extra till: pair IP + code after the shop allows extra tills → sell against the shop
+2. Finish onboarding — Kumkaj Courier is locked; Fresh or Book, then Done
+3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
+4. Day book shows today; Pay out records carrier bills & expenses; More → Parties settle; Day close; Reports
+5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
+5b. Settings → Country & tax: apply `GB` (VAT, inclusive, £), then `US` (sales tax, exclusive, $); save a business id and check it prints
+6. Ops / COD / Riders when fleet features are used
+7. Branches & org: add branch, switch, export snapshot, import `import_branch_snapshot.json`, consolidated report
+8. Extra till: pair IP + code after the shop allows extra tills → book against the shop
 
 ## Schema
 
@@ -493,7 +488,7 @@ Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder)
 
 Fresh DBs get the full books shape in a single `CREATE TABLE` pass in `Store::migrate`:
 
-- org / branches, categories, kitchen stations, products (tax, station, category, modifiers, stock, units), sales (invoice, tax, money lane, order type, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, tables / KOT
+- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, order type, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features; kitchen stations / tables / KOT tables remain in the shared schema for a future food product but are not exposed in Courier UI
 - meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, etc.
 
 Pre-release: if a local DB from an older numbered schema (2–17) misbehaves, delete it and reopen. After first public release, introduce `schema_version` 2+ only for real upgrades. Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).

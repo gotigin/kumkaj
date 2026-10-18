@@ -33,7 +33,7 @@ makepad_enable_package_dir() {
 }
 
 # Stage desktop resources next to kumkaj-courier.exe.
-# One tree only: kumkaj-courier/resources/ (fonts + icons + menu).
+# One tree only: kumkaj-courier/resources/ (fonts + icons).
 # Do NOT copy vendor/makepad/widgets/resources — that duplicated Noto/FA and
 # shipped unused IBM Plex / studio icons. WorldFonts uses self:resources/fonts/.
 makepad_copy_desktop_resources() {

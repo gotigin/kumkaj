@@ -2,11 +2,17 @@
 //!
 //! `price_paise` on a product remains the flat ₹/kg (or piece) fallback when
 //! slab fields are zero. When `first_kg` > 0, chargeable weight uses the slab.
+//! Weight maths use [`rust_decimal::Decimal`] — no native floats.
+
+use rust_decimal::Decimal;
 
 use crate::domain::Money;
+use crate::precise::{self, ZERO};
 
 /// Default first-weight slab used when the rate has no explicit first kg.
-pub const DEFAULT_FIRST_KG: f64 = 1.0;
+pub fn default_first_kg() -> Decimal {
+    Decimal::from(1)
+}
 
 /// Zone master row — destination bucket on rates and bookings.
 #[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
@@ -88,7 +94,7 @@ pub struct ExtraChargeType {
 #[derive(Clone, Debug, Default, Copy)]
 pub struct RateSlab {
     /// First weight included in `first_paise` (kg). 0 = use flat ₹/kg only.
-    pub first_kg: f64,
+    pub first_kg: Decimal,
     /// Amount for the first slab (paise).
     pub first_paise: i64,
     /// Amount per additional kg beyond `first_kg` (paise).
@@ -99,33 +105,40 @@ pub struct RateSlab {
 
 impl RateSlab {
     pub fn uses_slab(self) -> bool {
-        self.first_kg > 0.0 && (self.first_paise > 0 || self.extra_per_kg_paise > 0)
+        self.first_kg > ZERO && (self.first_paise > 0 || self.extra_per_kg_paise > 0)
     }
 
     /// Freight for `chargeable_kg` under this slab (or flat ₹/kg).
-    pub fn freight_paise(self, chargeable_kg: f64) -> i64 {
-        let kg = chargeable_kg.max(0.0);
-        if kg <= 0.0 {
-            return 0;
+    pub fn freight_paise(self, chargeable_kg: Decimal) -> Result<i64, String> {
+        let kg = if chargeable_kg > ZERO {
+            chargeable_kg
+        } else {
+            ZERO
+        };
+        if kg <= ZERO {
+            return Ok(0);
         }
         if self.uses_slab() {
-            let first = if self.first_kg > 0.0 {
+            let first = if self.first_kg > ZERO {
                 self.first_kg
             } else {
-                DEFAULT_FIRST_KG
+                default_first_kg()
             };
             if kg <= first {
-                return self.first_paise.max(0);
+                return Ok(self.first_paise.max(0));
             }
             let extra_kg = kg - first;
-            let extra = (extra_kg * self.extra_per_kg_paise as f64).round() as i64;
-            return self.first_paise.saturating_add(extra.max(0));
+            let extra = precise::mul_to_i64(extra_kg, Decimal::from(self.extra_per_kg_paise.max(0)))?;
+            return self
+                .first_paise
+                .checked_add(extra.max(0))
+                .ok_or_else(|| "Freight amount overflow".to_string());
         }
-        (kg * self.flat_per_kg_paise as f64).round() as i64
+        precise::mul_to_i64(kg, Decimal::from(self.flat_per_kg_paise.max(0)))
     }
 
-    pub fn freight_money(self, chargeable_kg: f64) -> Money {
-        Money(self.freight_paise(chargeable_kg))
+    pub fn freight_money(self, chargeable_kg: Decimal) -> Result<Money, String> {
+        Ok(Money(self.freight_paise(chargeable_kg)?))
     }
 }
 
@@ -150,28 +163,45 @@ impl BookingExtra {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::str::FromStr;
+
+    fn d(s: &str) -> Decimal {
+        Decimal::from_str(s).unwrap()
+    }
 
     #[test]
     fn slab_first_then_extra() {
         let slab = RateSlab {
-            first_kg: 1.0,
+            first_kg: d("1"),
             first_paise: 50_00,
             extra_per_kg_paise: 20_00,
             flat_per_kg_paise: 0,
         };
-        assert_eq!(slab.freight_paise(0.5), 50_00);
-        assert_eq!(slab.freight_paise(1.0), 50_00);
-        assert_eq!(slab.freight_paise(2.5), 50_00 + 30_00);
+        assert_eq!(slab.freight_paise(d("0.5")).unwrap(), 50_00);
+        assert_eq!(slab.freight_paise(d("1")).unwrap(), 50_00);
+        assert_eq!(slab.freight_paise(d("2.5")).unwrap(), 50_00 + 30_00);
     }
 
     #[test]
     fn flat_per_kg_when_no_slab() {
         let slab = RateSlab {
-            first_kg: 0.0,
+            first_kg: ZERO,
             first_paise: 0,
             extra_per_kg_paise: 0,
             flat_per_kg_paise: 40_00,
         };
-        assert_eq!(slab.freight_paise(2.0), 80_00);
+        assert_eq!(slab.freight_paise(d("2")).unwrap(), 80_00);
+    }
+
+    #[test]
+    fn odd_weight_extra_is_exact() {
+        let slab = RateSlab {
+            first_kg: d("1"),
+            first_paise: 50_00,
+            extra_per_kg_paise: 20_00,
+            flat_per_kg_paise: 0,
+        };
+        // 1.5 kg → 0.5 extra × 2000 = 1000
+        assert_eq!(slab.freight_paise(d("1.5")).unwrap(), 60_00);
     }
 }

@@ -3,6 +3,8 @@
 //! Produces a self-contained SVG the desk can print or share. Real hardware
 //! printers can rasterise the SVG; the barcode payload is the AWB string.
 
+use crate::domain::Money;
+
 /// Label fields frozen at print time.
 #[derive(Clone, Debug, Default)]
 pub struct AwbLabel {
@@ -10,11 +12,13 @@ pub struct AwbLabel {
     pub from_name: String,
     pub to_name: String,
     pub destination: String,
-    pub weight_kg: f64,
+    pub weight_kg: rust_decimal::Decimal,
     pub pieces: i64,
     pub service: String,
     pub cod_paise: i64,
     pub agency_name: String,
+    /// Shop currency code (INR default — India first; set from store locale).
+    pub currency_code: String,
 }
 
 impl AwbLabel {
@@ -26,10 +30,15 @@ impl AwbLabel {
         let to = xml_escape(&self.to_name);
         let dest = xml_escape(&self.destination);
         let service = xml_escape(&self.service);
-        let weight = format!("{:.1} kg", self.weight_kg);
+        let weight = format!("{} kg", crate::precise::format_kg(self.weight_kg));
         let pieces = if self.pieces > 0 { self.pieces } else { 1 };
+        let currency = if self.currency_code.trim().is_empty() {
+            "INR"
+        } else {
+            self.currency_code.trim()
+        };
         let cod = if self.cod_paise > 0 {
-            format!("COD ₹{:.2}", self.cod_paise as f64 / 100.0)
+            format!("COD {}", Money(self.cod_paise).format_with(currency))
         } else {
             String::new()
         };
@@ -118,14 +127,16 @@ mod tests {
             from_name: "Acme".into(),
             to_name: "Bob".into(),
             destination: "Pune".into(),
-            weight_kg: 2.5,
+            weight_kg: "2.5".parse().unwrap(),
             pieces: 1,
             service: "Surface".into(),
             cod_paise: 500_00,
             agency_name: "Kumkaj Courier".into(),
+            currency_code: "INR".into(),
         };
         let svg = label.to_svg();
         assert!(svg.contains("AWB-260417-000001"));
         assert!(svg.contains("COD"));
+        assert!(svg.contains('₹'));
     }
 }

@@ -29,6 +29,8 @@ serde_json = "1"
 uuid = { version = "1", features = ["v4", "serde"] }
 ureq = { version = "2", features = ["json"] }
 sys-locale = "0.3"
+# Exact decimal maths (no native f32/f64) for money, weight, slabs, tax %.
+rust_decimal = { version = "1.37", default-features = false, features = ["std", "serde", "serde-str", "maths"] }
 
 # Desktop-only: neither crate builds for Android. There the clipboard goes
 # through `Cx::copy_to_clipboard` and files through Makepad's own picker.
