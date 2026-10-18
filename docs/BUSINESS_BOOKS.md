@@ -1,33 +1,24 @@
-# Kumkaj — universal business books spine
+# Kumkaj — shared business books spine
 
-Canonical checklist of what **most entities** must track, mapped to **generic
-primitives** only. Concrete feel comes from start templates and labels — never
-vertical product forks.
+Canonical checklist of books most concrete Kumkaj products need, mapped to
+**shared primitives** (party, line, unit, charge, ledger, day/period). Used
+when extracting common code after a concrete product ships.
+
+**Current product focus:** [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
 
 Companions: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
-§1–2, §7, §14–16, §23; [`DESIGN.md`](DESIGN.md); [`.cursor/rules/generic-concrete.mdc`](../.cursor/rules/generic-concrete.mdc);
-schema in [`DEV.md`](DEV.md) (**v16**).
+§1–2; [`DESIGN.md`](DESIGN.md); [`.cursor/rules/generic-concrete.mdc`](../.cursor/rules/generic-concrete.mdc);
+schema in [`DEV.md`](DEV.md).
 
-**Product center:** a **business operating system** UX for what **most**
-entities need on their books — not a till that happens to have reports, and
-not a forced chart-of-accounts ERP.
+**Not:** a till with reports bolted on, or a forced chart-of-accounts ERP.
 
 ------------------------------------------------------------------------
 
 ## Cross-category research → commons
 
-Kumkaj is for **any entity** that sells or keeps books — worldwide, any
-trade, size, or ownership shape. It is **not** limited to the rows below.
-
-The table is only a **non-exhaustive sample** used to compare the same
-fields and find the **intersection**. Pharmacy, hardware, tuition,
-workshop, clinic, wholesale, farm stall, NGO books, multi-branch groups,
-and every other entity still map to the same primitives (party, item,
-money in/out, ledger, day/period). Concrete feel comes from labels and
-capability packs — never from adding that trade to an allowlist.
-
-Goal of the sample pass: what **most** entities share vs what is a
-**capability pack**.
+The table below is a **sample** used to find the intersection of books
+fields across trades. Kumkaj ships **concrete products**; this spine is
+what we promote into shared code when two products need the same thing.
 
 ### Sample snapshot (comparable fields — not a product catalog)
 
@@ -58,10 +49,9 @@ Goal of the sample pass: what **most** entities share vs what is a
 
 **Few / capability packs (hide until enabled):** tables & KOT/KDS, kg-heavy units + account/cash booking labels, appointments, multi-station kitchen.
 
-**Conclusion for shell:** do **not** open on Sell alone. Shipping IA is
-**Books · Sell · Buy · More** — overview home; money in and money out as
-peers; catalogue, credit, inventory detail, floor/kitchen, team, backup under
-More (and Sell/Buy as needed). See [`DESIGN.md`](DESIGN.md).
+**Conclusion for shell:** do **not** open on Booking/Sell alone. Peers:
+**Day book / Books · Booking/Sell · Pay out/Buy · More**. Courier names:
+[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md). See [`DESIGN.md`](DESIGN.md).
 
 ------------------------------------------------------------------------
 
@@ -79,9 +69,8 @@ equal peers in one mental model. The UX must make that model obvious.
 2. **Equal peers, not a funnel** — Sell and Buy are bottom-nav peers with
    Books. Parties, items, reports, inventory depth live under More (or one tap
    from Books) — not afterthoughts that redefine the product as a till.
-3. **Their language** — Start template labels (Parties, Account booking,
-   kg, …) so a courier or kirana recognizes their world without a vertical
-   product fork.
+3. **Their language** — Concrete product labels (Parties, Account booking,
+   kg, …) so the owner recognizes their world without a vague generic UI.
 4. **Empty states that teach the model** — Empty Sell / Buy / Items / Parties /
    Reports explain *what this book is for* in one short line (e.g. rates,
    who you deal with, money in and out) — not “add something so we can sell.”
@@ -114,7 +103,7 @@ equal peers in one mental model. The UX must make that model obvious.
 |---|-------------------|-------------------|---------------------|
 | 1 | Who we deal with | **Party** + freeform `kind_label` | Shipped — Sell credit, Buy supplier/carrier, Credit kinds |
 | 2 | Catalogue + units | **Item** + unit + `units` / `unit_conversions` | Shipped; Settings → Units; item `unit_label` |
-| 3 | Sell (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped; **Books · Sell · Buy · More** shell |
+| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Courier desk UX next — [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) |
 | 4 | Buy (goods/services in) | Purchases → stock + line cost; party + on-account AP | Shipped — Buy tab; paid or on account |
 | 5 | Running costs | **Expenses** | Shipped (Buy tab + Reports) |
 | 6 | Who owes us (AR) | Credit ledger + aging + write-off | Shipped |
@@ -149,28 +138,23 @@ One sales table + a tag:
 
 ------------------------------------------------------------------------
 
-## What to tell a courier agency (BOS in their language)
+## Courier agency — product is Kumkaj Courier
 
-Courier owners are **not** a special product. Describe the **whole book**, not
-a sequence:
+Full product brief, competitor matrix, walk-in/barcode/tracking:
+[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
 
-> “This is your business books. Same place for carriers and consignors, your
-> ₹/kg rates, money you charge and money you pay out, who still owes whom,
-> bank, and the day/month picture — Account booking or Cash booking on each
-> bill. It is not a courier-only app and not only a sell screen.”
+> “This is your courier business system: carriers and consignors, ₹/kg rates,
+> booking (Account or Cash), who owes whom, bank, day/month P&L — and the
+> booking desk (walk-ins, AWB/barcode, tracking) as we ship those ops.”
 
-| Their world | In Kumkaj |
-|-------------|-----------|
-| Carriers (Delhivery, DTDC, …) | Party kind `Carrier` — money out / cost |
-| Consignors (Sumit, Bangles King, …) | Party kind `Consignor` — money in / AR |
-| Rates ₹/kg | Items with unit `kg` |
-| Charge a consignor | Sell · Account booking or Cash booking · bill |
-| Pay a carrier / office cost | Buy (purchase on account / expense) · Credit → Pay AP |
-| Day / outstanding / bank / month | Books · Day close · Reports · aging · bank posts |
-
-Spine shipped (v16): COGS in period books, supplier/carrier as party + AP
-settle/write-off, AR write-off, drawer count on day close, units + conversions.
-Shell peers (Books / Sell / Buy) match the category research above.
+| Their world | In Kumkaj Courier |
+|-------------|-------------------|
+| Carriers | Party kind `Carrier` — money out / AP |
+| Consignors | Party kind `Consignor` — money in / AR |
+| Rates ₹/kg | Rates & services (unit `kg`) |
+| Charge a consignor | Booking · Account or Cash booking |
+| Pay a carrier / office cost | Pay out · Parties → Pay AP |
+| Day / outstanding / bank / month | Day book · Bank book & P&L |
 
 ------------------------------------------------------------------------
 

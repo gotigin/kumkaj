@@ -1,90 +1,99 @@
 # Use Cases
-This document is intended to ease the process of implementation
-It's intention is to target entities from different categories and 
-for each entity we will go through the entire process of operating
-throuugh our app.
 
-# Courier Entity
-This should cover the entire courier business management system.
-We will first do a research on how other top 10 apps of the world
-implement such features for it's clients and we also include our 
-client requirement as discussed in the WhatsApp chat.
+Implementation guide per **concrete Kumkaj product**. Current focus:
+**[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md)** (Kumkaj Courier).
 
-## Cursor Research
+------------------------------------------------------------------------
 
-Yes — understood. Many entities (especially in India) need **two bill paths on one book**: what is **shareable / declared** (for government or authorized agencies) vs what is the **internal / owner** operational picture (real rates, privacy, theory-vs-practice price gaps). Kumkaj must **never** call this “black/white money.” Preferred wording (already product language):
+# Courier Entity → Kumkaj Courier
 
-| Path | Courier labels | General labels | Meaning |
-|------|----------------|----------------|---------|
-| Shareable / account | **Account booking** | **Tax invoice** | What may be shown externally / on account |
-| Internal / spot | **Cash booking** | **Cash memo** | Owner’s internal / cash-path record |
+This product is the full **courier business operating system** for an
+agency / franchise counter: books **and** desk ops an app can own.
 
-One sales table + a **bill-type tag** (`money_lane`) — not two product forks, not two separate apps. Owner chooses per bill; reports can split or combine. Internal original state stays attributable; shareable view is what they elect to present.
+Research inputs:
 
-Sources for this section: industry courier-agency products (Bellboy, GoInvoicing, ESE, CourierDesk, Saap, BillMyCourier, aggregators, etc.) + WhatsApp export `Global prg drj.zip` (text only; voice messages omitted).
+- Industry agency products: Bellboy, GoInvoicing, ESE, CourierDesk, Saap,
+  BillMyCourier, aggregators (Shiprocket-class), etc.
+- Client WhatsApp export `Global prg drj.zip` (text only; voice omitted)
+- Ops/tax depth: [`grokbot/COURIER_BUSINESS_TUTORIAL.md`](grokbot/COURIER_BUSINESS_TUTORIAL.md)
 
-### Client requirements (WhatsApp — Global prg drj)
+Feature matrix, build order, and walk-in / barcode / tracking split:
+**[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md)**.
 
-**Parties**
-- Carriers / partners named: Delhivery, DTDC, Mahaveer, ST, Professional  
-- Consignors / customers named: Sumit International, Bangles King, Love India, Balaji Enterprise, Alisha Creation  
+## Account vs cash path (required language)
 
-**Reports / books asked**
-- Per day report  
-- Kgs + credit / debit account  
-- Debit / credit report  
-- Party-wise outstanding  
-- Bank posting  
-- Monthly report  
-- Profit & loss / balance sheet  
-- Invoice format  
+| Path | Courier labels | Meaning |
+|------|----------------|---------|
+| Shareable / account | **Account booking** | Shown externally / on party ledger |
+| Internal / spot | **Cash booking** | Pay now (cash/UPI/card) |
 
-### Industry — most common / important features
+One sales/booking table + bill-type tag — not two money apps. Never call
+this “black/white money.”
+
+## Client requirements (WhatsApp — Global prg drj)
+
+**Parties (examples they named — owner enters their own)**  
+Carriers: Delhivery, DTDC, Mahaveer, ST, Professional.  
+Consignors: Sumit International, Bangles King, Love India, Balaji
+Enterprise, Alisha Creation.
+
+**Reports / books**  
+Per day · kg + credit/debit · debit/credit · party outstanding · bank
+posting · monthly · P&L / balance sheet · invoice format.
+
+## Industry — most common / important features
 
 **Core (almost every agency product)**
-1. Consignment / docket booking (party, destination, weight, service) + print note/receipt  
-2. **Cash booking vs Account booking** (pay now vs party account)  
+
+1. Consignment / docket booking (party, destination, weight, service) + print  
+2. Cash booking vs Account booking  
 3. Party master (opening balance, contact, credit)  
-4. Party-wise rate master (zone × product/service × weight slab; extra per kg/500g)  
+4. Party-wise rate master (zone × service × weight slab)  
 5. City / zone / pincode master  
-6. Weight charging (actual; often volumetric / chargeable weight)  
+6. Weight charging (actual; volumetric / chargeable)  
 7. Service types (Docs, Parcel, Priority, Air, …)  
-8. Party ledger (bookings, bills, receipts → running balance)  
+8. Party ledger (bookings, bills, receipts → balance)  
 9. Outstanding / collection / aging  
-10. Receipts / settlements (cash/UPI/bank; optional discount)  
-11. Period / monthly party billing (unbilled account dockets → one tax invoice + surcharges)  
+10. Receipts / settlements  
+11. Period party billing (unbilled dockets → one tax invoice)  
 12. Day book / cash book  
-13. Multi-carrier / multi-company books  
+13. Multi-carrier books  
 14. Extra charges (fuel, labour, packing, ODA, misc)  
-15. Reports (day value, party sales, billed vs unbilled, outstanding, tax)  
+15. Reports (day, party, billed/unbilled, tax)  
 16. Staff rights  
 
 **Very common**
-17. Carrier cost / payable (margin = charge consignor − pay carrier)  
-18. AWB / CN number + label/barcode  
+
+17. Carrier cost / payable (margin)  
+18. AWB / CN + **label/barcode**  
 19. Credit limit on account booking  
 20. Opening balances + Excel import  
 21. COD / FOD  
 22. Bulk booking  
-23. Consignment book filters (date, party, city, billed/unbilled)  
+23. Consignment filters (date, party, city, billed/unbilled)  
 
-**Ops add-ons (later capability packs)**
-24. Tracking statuses · 25. POD · 26. Pickup/dispatch/riders · 27. Rate compare/aggregator · 28. Carrier invoice reconcile · 29. WhatsApp reminders · 30. Customer portal/wallet  
+**Ops add-ons**
 
-### Generic mapping (no courier product fork)
+24. Tracking · 25. POD · 26. Pickup/dispatch/riders · 27. Aggregator compare ·
+28. Carrier invoice reconcile · 29. WhatsApp reminders · 30. Customer portal  
 
-| Need | Primitive |
-|------|-----------|
+## Shared primitives (when extracting later)
+
+| Need | Shared shape |
+|------|----------------|
 | Carrier vs consignor | Party + `kind_label` |
-| Kg on lines | Item/line + unit + conversions (incl. owner-defined units) |
-| Account vs cash path | Bill-type tag: Account booking / Cash booking |
-| Charge consignor | Sell (money in) |
-| Pay carrier / costs | Buy / expense (+ AP later) |
-| Outstanding | AR (and AP for carriers) |
-| Bank posting | Cashbook / money movements |
-| Day / month / P&L | Day close, period books (COGS/BS as backlog) |
-| Invoice format | Document / receipt templates |
+| Kg on lines | Item/line + unit |
+| Account vs cash | Bill-type tag |
+| Charge consignor | Money-in booking |
+| Pay carrier / costs | Money-out / expense + AP |
+| Outstanding | AR / AP |
+| Bank | Money movements |
+| Day / month / P&L | Day/period books |
+| AWB / barcode | Document / line reference + print/scan |
+| Invoice | Document template |
 
-### BOS spine for this entity (what “good” means)
+## Other products
 
-Same place for carriers and consignors, ₹/kg rates, money in and out, who still owes whom, bank, day/month picture — **Account booking** or **Cash booking** on each bill. Not a courier-only app and not only a sell screen. Shell peers: Books · Sell · Buy · More.
+Further concrete products (counter, food, personal, …) get their own
+sections when that product becomes the active focus. Until then, do not
+dilute courier delivery with parallel SKU work.

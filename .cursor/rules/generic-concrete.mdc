@@ -1,26 +1,28 @@
 ---
-description: Kumkaj is one BOS for any entity — generic implementation, concrete feel
+description: Kumkaj brand = concrete BOS apps; shared reusable internals
 alwaysApply: true
 ---
 
-# Generic core, concrete feel
+# Concrete products, shared internals
 
-Kumkaj is one **business operating system** for **any entity** (shop, service, agency, personal/household books, multi-branch org). Implement **generic primitives**; let labels, config, and progressive enablement make the product feel concrete to that user.
+**Kumkaj** is the **brand** for a family of **concrete business operating system apps**. **Current focus: Kumkaj Courier** (`docs/KUMKAJ_COURIER.md`) — full courier-agency BOS. Other concrete products come later. Internally we share reusable code and extract more when a second product needs the same thing.
 
-Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–32.
+Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–33; courier brief: `docs/KUMKAJ_COURIER.md`.
 
 ## Do
 
-- Prefer shared primitives: party, item/line, unit, charge, ledger, day book, report view, document template.
-- When a client asks for a vertical (“courier parties”, “kg credit”), extract the shared capability and implement that.
-- Hide unused capability; do not rename the whole product into one trade.
+- Ship concrete product UX first (labels, flows, packaging, defaults).
+- Prefer shapes that can become shared: party, item/line, unit, charge, ledger, day book, report view, document template.
+- When a second product needs the same logic, move it into shared code.
+- Hide unused capability inside each product; progressive depth per product.
 
 ## Do not
 
-- Hard-code verticals or entity-type product forks (`CourierShipment`, `BarberChair`, “Personal Finance mode”).
-- Add trade-specific schemas that duplicate the core.
+- Maintain forever-divergent engines / duplicated ledgers per trade.
+- Add throwaway vertical schemas that cannot be extracted (`CourierShipment` as a second books stack).
+- Force one vague “works for anyone” UI that the owner must reinterpret.
 
 ```text
-❌ CourierOutstandingTable / PersonalBudgetAppMode
-✅ Party ledger + qty units + day/party reports (owner names parties/units)
+❌ Five forked apps with five day books
+✅ Concrete “Courier” / “Counter” / “Personal” products + shared books primitives
 ```

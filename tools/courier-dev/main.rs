@@ -1,5 +1,5 @@
-//! Thin cargo entrypoint for `cargo kumkaj-dev`.
-//! Delegates to `scripts/kumkaj-dev.sh` (loads env/development.env).
+//! Thin cargo entrypoint for `cargo courier-dev`.
+//! Delegates to `scripts/courier-dev.sh` (loads apps/courier/env/development.env).
 
 use std::env;
 use std::path::PathBuf;
@@ -10,8 +10,8 @@ fn main() {
     let root = manifest_dir
         .parent()
         .and_then(|p| p.parent())
-        .expect("tools/kumkaj-dev → workspace root");
-    let script = root.join("scripts/kumkaj-dev.sh");
+        .expect("tools/courier-dev → workspace root");
+    let script = root.join("scripts/courier-dev.sh");
     let mut cmd = Command::new("bash");
     cmd.arg(&script);
     cmd.args(env::args().skip(1));

@@ -1,9 +1,9 @@
 [workspace]
 members = [
-    "apps/kumkaj",
-    "tools/kumkaj-dev",
-    "tools/kumkaj-android-dev",
-    "tools/kumkaj-windows-dev",
+    "apps/courier",
+    "tools/courier-dev",
+    "tools/courier-android-dev",
+    "tools/courier-windows-dev",
 ]
 exclude = [
     "vendor/makepad",

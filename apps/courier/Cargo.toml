@@ -1,15 +1,15 @@
 [package]
-name = "kumkaj"
+name = "kumkaj-courier"
 version = "0.1.0"
 edition = "2024"
-description = "Kumkaj — local-first business operating system (kumkaj.com)"
+description = "Kumkaj Courier — local-first courier BOS (books + booking desk)"
 license = "MIT OR Apache-2.0"
 
-# Packager metadata is the production id. Dev installs use env/development.env
-# (com.kumkaj.app.debug) via scripts — see docs/DEV.md.
+# Packager metadata is the production id. Dev installs use this crate's
+# env/development.env (com.kumkaj.courier.debug) via scripts — see docs/DEV.md.
 [package.metadata.packager]
-identifier = "com.kumkaj.app"
-product_name = "Kumkaj"
+identifier = "com.kumkaj.courier"
+product_name = "Kumkaj Courier"
 
 [package.metadata.makepad.android]
 version_code = 1

@@ -1,22 +1,21 @@
-Kumkaj — Play Console listing draft
-====================================
-Application id (production): com.kumkaj.app
-Development / side-load id: com.kumkaj.app.debug (not for Play)
+Kumkaj Courier — Play Console listing draft
+===========================================
+Application id (production): com.kumkaj.courier
+Development / side-load id: com.kumkaj.courier.debug (not for Play)
 Website: https://kumkaj.com
 Default language: English (add Hindi / regional as needed)
 
 Short description (≤80 chars)
 -----------------------------
-Offline business OS — sell, credit, stock. Free forever on your device.
+Courier books + booking desk — offline-first on your device.
 
 Full description
 ----------------
-Kumkaj (kumkaj.com) is a local-first business operating system for tea stalls, clothes counters, restaurants, and other shops.
+Kumkaj Courier (kumkaj.com) is a local-first courier business operating system:
+party ledgers, day book, and a booking desk for walk-ins, AWB/barcode, and tracking.
 
-• Sell with Cash, UPI, Card, or Credit
-• Actual / Applied / Rounded totals for honest bill rounding
-• Owner & Staff PINs with immutable sale authorship
-• Optional tables and kitchen tickets, sales amend history, backup & restore
+• Books: parties, charges, day book, payouts
+• Booking desk for counter walk-ins
 • Works offline — your data stays on the device
 
 Website: https://kumkaj.com
@@ -26,6 +25,6 @@ Category: Business / Productivity
 Content rating: Everyone
 Privacy: no accounts required for local use; data stored on device SQLite.
 
-Build artifacts: ./scripts/package-android.sh → dist/android/kumkaj.apk
-Play AAB: cargo-makepad android … build-aab -p kumkaj --release (with upload keystore)
+Build artifacts: ./scripts/package-android.sh → dist/android/kumkaj-courier.apk
+Play AAB: cargo-makepad android … build-aab -p kumkaj-courier --release (with upload keystore)
 iOS / macOS: deferred until Mac signing host.

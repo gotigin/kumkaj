@@ -10,8 +10,8 @@ cat > "$OUT/README.txt" <<'EOF'
 Kumkaj Apple platform scaffold
 ===============================
 Bundle / application id (kumkaj.com reverse-DNS):
-  production: com.kumkaj.app   (env/production.env)
-  development: com.kumkaj.app.debug   (env/development.env)
+  production: com.kumkaj.courier   (apps/courier/env/production.env)
+  development: com.kumkaj.courier.debug   (apps/courier/env/development.env)
 Policy: do everything that does not require a physical Mac; skip only
 real-Mac device verification and signed App Store submission.
 
@@ -21,7 +21,7 @@ Doable without a Mac
 - Document iOS toolchain install commands for when a Mac is available:
     cargo makepad apple ios install-toolchain
 - Document macOS desktop run (on a Mac):
-    cargo run -p kumkaj --release
+    cargo run -p kumkaj-courier --release
 
 Blocked until a Mac / device is available
 -----------------------------------------

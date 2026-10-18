@@ -1,4 +1,4 @@
-//! Bake `env/development.env` or `env/production.env` into the binary.
+//! Bake `env/development.env` or `env/production.env` (under this crate) into the binary.
 //!
 //! Selection:
 //! - `KUMKAJ_ENV=development|production` if set (scripts export this)
@@ -13,14 +13,14 @@ fn defaults(profile: &str) -> HashMap<&'static str, &'static str> {
     match profile {
         "production" => HashMap::from([
             ("KUMKAJ_ENV", "production"),
-            ("KUMKAJ_APP_ID", "com.kumkaj.app"),
-            ("KUMKAJ_APP_LABEL", "Kumkaj"),
+            ("KUMKAJ_APP_ID", "com.kumkaj.courier"),
+            ("KUMKAJ_APP_LABEL", "Kumkaj Courier"),
             ("KUMKAJ_SHOW_SIZE_BADGE", "0"),
         ]),
         _ => HashMap::from([
             ("KUMKAJ_ENV", "development"),
-            ("KUMKAJ_APP_ID", "com.kumkaj.app.debug"),
-            ("KUMKAJ_APP_LABEL", "Kumkaj Dev"),
+            ("KUMKAJ_APP_ID", "com.kumkaj.courier.debug"),
+            ("KUMKAJ_APP_LABEL", "Kumkaj Courier Dev"),
             ("KUMKAJ_SHOW_SIZE_BADGE", "1"),
         ]),
     }
@@ -31,11 +31,6 @@ fn main() {
     println!("cargo:rustc-check-cfg=cfg(kumkaj_hide_console)");
 
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
-    let workspace = manifest_dir
-        .parent()
-        .and_then(|p| p.parent())
-        .expect("apps/kumkaj → workspace root")
-        .to_path_buf();
 
     let kumkaj_env = env::var("KUMKAJ_ENV").unwrap_or_else(|_| {
         match env::var("PROFILE").as_deref() {
@@ -44,7 +39,7 @@ fn main() {
         }
     });
 
-    let env_path = workspace.join("env").join(format!("{kumkaj_env}.env"));
+    let env_path = manifest_dir.join("env").join(format!("{kumkaj_env}.env"));
     println!("cargo:rerun-if-changed={}", env_path.display());
     println!("cargo:rerun-if-env-changed=KUMKAJ_ENV");
     println!("cargo:rerun-if-env-changed=PROFILE");
@@ -71,7 +66,7 @@ fn main() {
         }
     } else {
         println!(
-            "cargo:warning=Kumkaj env file missing at {} — using built-in {kumkaj_env} defaults",
+            "cargo:warning=Kumkaj Courier env file missing at {} — using built-in {kumkaj_env} defaults",
             env_path.display()
         );
     }
@@ -80,7 +75,7 @@ fn main() {
     vars.insert("KUMKAJ_ENV".into(), kumkaj_env.clone());
 
     // Production Windows PE: no console when the user double-clicks the exe.
-    // Dev (including `cargo kumkaj-windows-dev` debug profile) keeps the console.
+    // Dev (including `cargo courier-windows-dev` debug profile) keeps the console.
     // Driven by KUMKAJ_ENV, not Cargo --release / --debug.
     if kumkaj_env == "production" {
         println!("cargo:rustc-cfg=kumkaj_hide_console");

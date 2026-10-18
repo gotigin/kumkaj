@@ -7,15 +7,24 @@
 #[cfg(target_os = "android")]
 pub use makepad_widgets;
 
+pub mod booking;
+pub mod cod;
+pub mod consignments;
+pub mod courier_ops_view;
 pub mod domain;
 pub mod entity_template;
 pub mod fiscal;
+pub mod labels;
 pub mod locale;
 pub mod local_servers;
+pub mod manifest;
 pub mod menu_images;
 pub mod net;
+pub mod notify;
 pub mod print_share;
+pub mod rates;
 pub mod store;
+pub mod track;
 
 // Android packaging compiles this library as the cdylib. The desktop
 // binary's `app_main!` is not in that library, so Activity.onCreate

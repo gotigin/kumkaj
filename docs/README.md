@@ -1,16 +1,16 @@
 # Kumkaj
 
-Kumkaj (kumkaj.com) — business operating system for any entity. Local-first selling and books on Makepad 2. Generic in the core; concrete in effect through start templates (None, Counter, Courier, Food, Personal) and what that entity enables and names (see vision §1–2). **Software should adapt to users — not the other way around** (vision §2).
+Kumkaj (kumkaj.com) — brand for a **family of concrete business operating system apps**. Local-first on Makepad 2. **Current focus: [Kumkaj Courier](KUMKAJ_COURIER.md)** — full courier-agency BOS (books + booking desk, AWB/barcode, tracking as the app can own them). Other concrete products come later; shared code is extracted when a second product needs it (vision §1–2). **Software should adapt to users — not the other way around.**
 
-Offline use is free forever, from a single counter through extra tills, kitchens, and multi-branch groups coordinated on your own devices. Local billing is production-ready on the shop device; extra tills are optional LAN joins. Cloud usage (WAN sync, hosted dashboards, automatic offsite backup), raw ESC/POS, and statutory e-invoicing are optional / later — not required to bill.
+Offline use is free forever on the device. Extra tills are optional LAN joins. Cloud / ESC/POS / statutory e-invoicing are optional later.
 
-**Who it is for:** **any** entity that sells or keeps a book (business or personal, any trade, one outlet or many). Same **Books · Sell · Buy · More** shell — generic core, concrete feel via templates/labels ([`DESIGN.md`](DESIGN.md); commons in [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
+**Courier shell:** Day book · Booking · Pay out · More ([`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md), [`DESIGN.md`](DESIGN.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
 **UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`. Makepad 2 button selection + label rules for agents: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide).
 
 **Auth:** Owner hosts the shop; Staff unlock with their own PIN (or optional login) and owner-defined role title. Sale authorship is immutable. Extra tills pair on the outlet Wi‑Fi when the shop allows them — see [`DEV.md`](DEV.md).
 
-**Package ids:** production `com.kumkaj.app` · development `com.kumkaj.app.debug` (labels Kumkaj / Kumkaj Dev). Same reverse-DNS id on Android, desktop data dirs, and (when signed) Apple bundles. Details and per-OS paths: [`DEV.md`](DEV.md) § Development vs production env.
+**Package ids:** production `com.kumkaj.courier` · development `com.kumkaj.courier.debug` (labels Kumkaj Courier / Kumkaj Courier Dev). Same reverse-DNS id on Android, desktop data dirs, and (when signed) Apple bundles. Details and per-OS paths: [`DEV.md`](DEV.md) § Development vs production env.
 
 **Scale**
 
@@ -25,7 +25,7 @@ Offline use is free forever, from a single counter through extra tills, kitchens
 
 **Country packs**
 
-Apply a country in Settings to set the tax name and maths (VAT · GST · sales tax · IVA · BTW · SST · consumption tax), its usual rates, the instant-pay rail (UPI · Pix · PayNow · FPS · Interac · …), and the business-id label (GSTIN · VAT number · ABN · EIN · TRN · …). Prices can include tax or have it added at the till. Kumkaj does the arithmetic and wording only — **no statutory e-invoicing, fiscal printers, or tax filing** anywhere. See [`fiscal.rs`](../apps/kumkaj/src/fiscal.rs).
+Apply a country in Settings to set the tax name and maths (VAT · GST · sales tax · IVA · BTW · SST · consumption tax), its usual rates, the instant-pay rail (UPI · Pix · PayNow · FPS · Interac · …), and the business-id label (GSTIN · VAT number · ABN · EIN · TRN · …). Prices can include tax or have it added at the till. Kumkaj does the arithmetic and wording only — **no statutory e-invoicing, fiscal printers, or tax filing** anywhere. See [`fiscal.rs`](../apps/courier/src/fiscal.rs).
 
 **Sell cart totals**
 
@@ -35,4 +35,4 @@ Apply a country in Settings to set the tax name and maths (VAT · GST · sales t
 
 **Ship:** see [`DEV.md`](DEV.md) packaging + publish checklist. Website: **https://kumkaj.com** (`../web/`). Apple App Store deferred.
 
-See [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) (common books order, courier wording, backlog, compliance depth), and [`DEV.md`](DEV.md).
+See [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) (current product), [`USE_CASES.md`](USE_CASES.md), [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md), and [`DEV.md`](DEV.md).

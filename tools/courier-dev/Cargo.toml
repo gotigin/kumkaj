@@ -1,9 +1,9 @@
 [package]
-name = "kumkaj-dev"
+name = "courier-dev"
 version = "0.1.0"
 edition = "2021"
 publish = false
 
 [[bin]]
-name = "kumkaj-dev"
+name = "courier-dev"
 path = "main.rs"

@@ -890,6 +890,18 @@ pub struct Product {
     /// Quantity unit label (`kg`, empty = piece). Rate × weight uses this.
     #[serde(default)]
     pub unit_label: String,
+    /// Destination zone id from the zone master (empty = unzoned).
+    #[serde(default)]
+    pub zone_id: String,
+    /// First-kg slab weight; 0 = flat ₹/kg via `price`.
+    #[serde(default)]
+    pub first_kg: f64,
+    /// Paise for the first slab.
+    #[serde(default)]
+    pub first_paise: i64,
+    /// Paise per kg beyond `first_kg`.
+    #[serde(default)]
+    pub extra_per_kg_paise: i64,
 }
 
 fn stock_untracked() -> i64 {
@@ -927,6 +939,19 @@ impl Product {
             aliases_json: "[]".into(),
             branch_id: String::new(),
             unit_label: String::new(),
+            zone_id: String::new(),
+            first_kg: 0.0,
+            first_paise: 0,
+            extra_per_kg_paise: 0,
+        }
+    }
+
+    pub fn rate_slab(&self) -> crate::rates::RateSlab {
+        crate::rates::RateSlab {
+            first_kg: self.first_kg,
+            first_paise: self.first_paise,
+            extra_per_kg_paise: self.extra_per_kg_paise,
+            flat_per_kg_paise: self.price.paise(),
         }
     }
 
@@ -1455,6 +1480,17 @@ impl Cart {
             order_type: self.order_type,
             money_lane: self.money_lane,
             user_at: None,
+            awb_no: String::new(),
+            destination: String::new(),
+            consignee_name: String::new(),
+            actual_weight_kg: 0.0,
+            volumetric_weight_kg: 0.0,
+            chargeable_weight_kg: 0.0,
+            zone_id: String::new(),
+            cod_paise: 0,
+            carrier_cost_paise: 0,
+            extras_json: "[]".into(),
+            notify_phone: String::new(),
         })
     }
 }
@@ -1505,6 +1541,35 @@ pub struct SaleDraft {
     /// Optional books time override (`YYYY-MM-DD` or RFC3339). Empty → device now.
     #[serde(default)]
     pub user_at: Option<String>,
+    /// AWB / CN — filled by the store at finalize when empty.
+    #[serde(default)]
+    pub awb_no: String,
+    /// Destination city / zone text from the booking desk.
+    #[serde(default)]
+    pub destination: String,
+    /// Consignee (receiver) name — usually not the paying party.
+    #[serde(default)]
+    pub consignee_name: String,
+    #[serde(default)]
+    pub actual_weight_kg: f64,
+    #[serde(default)]
+    pub volumetric_weight_kg: f64,
+    #[serde(default)]
+    pub chargeable_weight_kg: f64,
+    #[serde(default)]
+    pub zone_id: String,
+    /// Cash-on-delivery amount to collect from consignee (paise).
+    #[serde(default)]
+    pub cod_paise: i64,
+    /// Expected carrier / rider payout cost (paise) for margin.
+    #[serde(default)]
+    pub carrier_cost_paise: i64,
+    /// JSON array of `{kind,name,amount_paise}` extras already in lines or noted.
+    #[serde(default = "empty_json_array")]
+    pub extras_json: String,
+    /// Optional phone for booking alert outbox.
+    #[serde(default)]
+    pub notify_phone: String,
 }
 
 impl SaleDraft {
@@ -1589,10 +1654,54 @@ pub struct Sale {
     /// Bill-type tag (`declared` = account/tax path; `owner` = cash booking/memo).
     #[serde(default)]
     pub money_lane: String,
+    /// Air waybill / docket / CN number.
+    #[serde(default)]
+    pub awb_no: String,
+    #[serde(default)]
+    pub destination: String,
+    #[serde(default)]
+    pub consignee_name: String,
+    #[serde(default)]
+    pub actual_weight_kg: f64,
+    #[serde(default)]
+    pub volumetric_weight_kg: f64,
+    #[serde(default)]
+    pub chargeable_weight_kg: f64,
+    /// Ops status on this AWB (`booked`, `out_for_delivery`, …).
+    #[serde(default)]
+    pub tracking_status: String,
+    #[serde(default)]
+    pub zone_id: String,
+    #[serde(default)]
+    pub cod_paise: i64,
+    #[serde(default)]
+    pub carrier_cost_paise: i64,
+    /// Period bill id when this account docket was invoiced; empty = unbilled.
+    #[serde(default)]
+    pub period_bill_id: String,
+    /// `carrier` | `own_fleet` when assigned; empty = unassigned.
+    #[serde(default)]
+    pub handover_kind: String,
+    #[serde(default)]
+    pub carrier_party_id: String,
+    #[serde(default)]
+    pub rider_id: String,
+    #[serde(default)]
+    pub pod_note: String,
+    #[serde(default)]
+    pub extras_json: String,
     pub lines: Vec<SaleLine>,
 }
 
 impl Sale {
+    pub fn margin_paise(&self) -> i64 {
+        crate::cod::margin_paise(self.total_paise, self.carrier_cost_paise)
+    }
+
+    pub fn is_unbilled_account(&self) -> bool {
+        self.pay_method == "credit" && self.period_bill_id.trim().is_empty()
+    }
+
     pub fn event_times(&self) -> EventTimes {
         EventTimes {
             user_at: if self.user_at.trim().is_empty() {
@@ -1665,11 +1774,18 @@ pub struct Customer {
     /// Freeform kind label (`Carrier`, `Retail`, …) — not a product fork.
     #[serde(default)]
     pub kind_label: String,
+    /// Max outstanding for account booking (paise). 0 = no limit.
+    #[serde(default)]
+    pub credit_limit_paise: i64,
 }
 
 impl Customer {
     pub fn balance(&self) -> Money {
         Money(self.balance_paise)
+    }
+
+    pub fn credit_limit(&self) -> Money {
+        Money(self.credit_limit_paise)
     }
 }
 

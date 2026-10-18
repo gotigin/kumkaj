@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Desktop live-dev: loads env/development.env then runs with --hot --remote.
-# Usage: ./scripts/kumkaj-dev.sh   or: cargo kumkaj-dev
+# Desktop live-dev: loads apps/courier/env/development.env then runs with --hot --remote.
+# Usage: ./scripts/courier-dev.sh   or: cargo courier-dev
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -8,4 +8,4 @@ cd "$ROOT"
 source "$ROOT/scripts/load-kumkaj-env.sh"
 export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env development
-exec cargo run -p kumkaj -- "$@" --hot --remote
+exec cargo run -p kumkaj-courier -- "$@" --hot --remote

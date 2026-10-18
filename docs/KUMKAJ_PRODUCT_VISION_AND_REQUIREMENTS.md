@@ -1,66 +1,70 @@
 # Kumkaj --- Product Vision & Requirements
 
-> **Product name:** Kumkaj (*business*)\
 > **Brand / domain:** Kumkaj · kumkaj.com\
-> **Platform ids:** production `com.kumkaj.app` · development `com.kumkaj.app.debug` (reverse-DNS under kumkaj.com; see [`DEV.md`](DEV.md))\
-> **Document purpose:** Consolidate the important product ideas,
-> requirements, principles, scope, and scaling model for Kumkaj so
-> future development stays focused on the actual product rather than
-> development tooling.\
+> **What ships:** a **family of concrete business operating system apps**
+> under the Kumkaj brand (courier desk, counter shop, food floor,
+> personal books, …) — each product feels purpose-built for that user.\
+> **Platform ids (current flagship):** production `com.kumkaj.courier` ·
+> development `com.kumkaj.courier.debug` (reverse-DNS under kumkaj.com; see
+> [`DEV.md`](DEV.md)). Further concrete products may use their own
+> package ids under the same brand.\
+> **Document purpose:** Consolidate product ideas, requirements,
+> principles, scope, and scaling so development stays focused on
+> shipping concrete apps users understand — not tooling theatre.\
 > **Decision rule:** When earlier edition or pricing plans conflict with
 > later finalized decisions in this document, **the later decision
 > wins**. In particular, Community / Professional trial / annual
 > entitlement pricing is superseded by free-forever local use and
-> usage-based cloud billing.
+> usage-based cloud billing. When earlier “one generic app for everyone”
+> wording conflicts with **concrete products + shared internals**, the
+> concrete-products model wins.
 
 ------------------------------------------------------------------------
 
 ## 1. What Kumkaj Is
 
-Kumkaj is intended to be much more than a billing screen. It is a
-**business operating system** for **any entity** that sells or keeps
-books — a business, a personal or household set of books, a service
-trade, an agency, or a multi-branch organization. The same fundamental
-product serves them all. Examples of *users of one OS* (not product
-SKUs or vertical forks):
+**Kumkaj is the brand** for a set of **concrete business operating system
+apps**. Real users only adopt software that already feels like *their*
+trade or household. We therefore ship (and market) distinct products —
+for example a courier counter app, a retail/counter app, a food-floor
+app, a personal/household books app — not one vague “works for anyone”
+SKU that forces the owner to invent their own meaning.
 
--   a **tea / snack counter** who may only need extremely fast item
-    selection, payment and a simple daily total;
--   a **clothes seller**, **kirana / grocery**, or other retail counter
-    with a catalogue, sizes, and stock;
--   a **service** counter (barber, repair, salon) with appointments or
-    walk-in sales and party credit;
--   a **courier / logistics agency** or similar intermediary with named
-    parties, quantity units (e.g. kg), day books and outstanding;
--   a small takeaway, snack shop, bakery or café;
--   a single restaurant with tables, waiters, kitchen tickets, stock and
-    expenses;
--   a busy large restaurant with multiple counters, kitchen stations,
-    managers and many employees;
--   **personal / household** books where the entity is a person or
-    family rather than a shop front;
--   an owner operating **multiple shops or branches**, who needs
-    centralized visibility, controls, reporting, synchronization and
-    administration.
+Each concrete product is still a **business operating system** for that
+entity: money in and out, parties, day/period books, receipts/invoices,
+and the ops that trade needs — not a dumb cash register.
 
-The app must **not encode the user's trade**. Implementation stays
-generic (parties, lines, units, charges, ledgers, day books, documents).
-Naming, configuration, and which capabilities the entity enables make
-Kumkaj *feel* concrete to that user.
+Examples of **concrete products under the brand** (illustrative):
+
+-   **Courier / logistics desk** — parties (consignor / carrier), kg
+    rates, account vs cash booking, day book, bank book, expense
+    vouchers, debtors/creditors, P&L; later booking-desk ops (AWB,
+    labels/scan) as that product needs them.
+-   **Counter / retail shop** — fast catalogue sell, credit, stock,
+    day totals.
+-   **Food / café / restaurant** — sell plus optional tables, KOT/KDS,
+    stations.
+-   **Personal / household books** — money in/out and people on account
+    without shop chrome.
+-   **Multi-branch owner** — same concrete product(s) plus org/branch
+    controls when that product enables them.
+
+**How we build (internals):** focus on the concrete product the user
+sees. When an implementation is clearly useful to another product, **move
+it into shared reusable code**. Prefer shapes that *can* be shared later
+(party, line, unit, charge, ledger, day book, document) — do not invent
+throwaway vertical schemas that can never be extracted. Do not maintain
+five divergent business engines.
 
 The central idea is therefore:
 
-> **One Kumkaj, progressively adapting to the complexity of the
-> entity instead of forcing every user into enterprise-level
-> complexity — generic in the core, concrete in effect.**
+> **Concrete apps under the Kumkaj brand for users; shared reusable
+> code underneath for us. Users never have to learn a foreign trade to
+> fit the software.**
 
-A small counter should not have to understand kitchen routing just to
-sell. At the other end, a large multi-outlet group must not outgrow
-Kumkaj simply because it started with a simple till.
-Food-only tools (tables, KOT, kitchen stations) stay available as
-**Tables & kitchen** — an optional capability pack, not the identity of
-Kumkaj. Extra tills are the same shop device with LAN on — not a
-different product type for cloud.
+A courier owner should not have to understand kitchen routing. A small
+counter should not have to understand franchise AWB manifests. Extra
+tills stay “same shop, LAN on” — not a different cloud product type.
 
 ------------------------------------------------------------------------
 
@@ -70,26 +74,24 @@ different product type for cloud.
 
 > **Software should adapt to users — not the other way around.**
 
-Software is for the users; users are not for the software. Kumkaj always
-bends toward how people already run their entity (labels, habits, which
-capabilities they enable) — people should not have to bend their work or
-learn a foreign trade just to fit the app.
+Software is for the users; users are not for the software. Each Kumkaj
+product bends toward how that trade or household already works — people
+should not bend their work to fit a generic UI.
 
-Kumkaj should scale by **capability**, not by turning the
-smallest interface into a miniature enterprise ERP, and not by
-shipping a separate product per trade.
+**Build order:** implement the **concrete product** first (flows, labels,
+packaging, capabilities that trade needs). When the same logic is needed
+by another product, **extract into shared code**. Progressive complexity
+still applies *inside* each product: hide unused capability; grow from
+day book + booking to deeper ops without enterprise on day one.
 
-The smallest entity may effectively see a light path:
+For most products the shell still makes **money in, money out, parties,
+cash, and day/period books** feel like peers — IA along the lines of
+**Books · Sell/Booking · Buy/Pay out · More** with **product-specific
+names** (see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md),
+[`DESIGN.md`](DESIGN.md)). Do not treat a till grid as the whole product
+identity.
 
-**Items → Sell → Payment → Receipt / Done**
-
-But Kumkaj is a **business operating system**, not a till with extras. For
-most entities the shell must make **money in, money out, parties, cash, and
-day/period books** feel like peers — shipping IA **Books · Sell · Buy · More**
-(see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md), [`DESIGN.md`](DESIGN.md)). Do not
-treat Sell as the product identity.
-
-A food business may additionally enable:
+A food product may additionally enable:
 
 **Tables → orders → KOT/KDS → Kitchen → Billing → Inventory →
 Expenses → Reports**
@@ -99,30 +101,20 @@ A multi-branch owner may additionally enable:
 **Organization → Branches → Users/Devices → Central Dashboard →
 Cross-Branch Reports → Sync/Backup → Remote Monitoring**
 
-Features that are irrelevant to a particular entity should remain out
-of the way.
-
-This is a key product principle: **progressive complexity**. Kumkaj
-should feel small when the entity is small and become powerful as the
-entity grows.
+Features that are irrelevant to that product stay out of the way.
 
 **Client signal → shared capability:** when a client describes something
 in vertical language (courier parties, kg credit, salon chairs, household
-expense buckets), treat that as a signal for a **shared primitive**
-(party, unit on a line, ledger, day book, charge, document). Implement
-the primitive; let the entity's labels and defaults provide the concrete
-feel. Do not fork a trade-specific schema or “mode” that duplicates the
-core.
+expense buckets), implement it in the concrete product; when a second
+product needs the same idea, promote a **shared primitive** (party, unit
+on a line, ledger, day book, charge, document). Do not fork a
+trade-specific schema that duplicates ledgers already shared.
 
-**Start templates** (including **None** — bare minimal) are how that concrete feel is
-applied at first run: labels, feature defaults, and bill-type wording
-(**Tax invoice / Account booking** vs **Cash memo / Cash booking** — one sales
-table with a tag, not two ledgers; courier software uses the same account vs
-cash booking idea). Templates never create a separate product and **never
-pre-load sample items or parties** — the owner adds their own catalogue. None
-starts bare-minimal on the same core so features can be added later.
-**None is the default selection** on first run and is applied automatically if the
-owner never picks another template (store id remains `custom`).
+**Start templates / product defaults:** each concrete product may bake
+its own default labels and feature defaults (e.g. Account booking vs Cash
+booking). Templates and defaults **never pre-load sample catalogue or
+parties** — the owner adds their own. A generic / unset face may still
+offer **None** (bare minimal) as default (`custom`) for experimentation.
 
 ------------------------------------------------------------------------
 
@@ -866,7 +858,7 @@ However, currency and fiscal configuration should remain
 per-business/configurable so the domain model is not unnecessarily
 India-only.
 
-This is now implemented as **country packs** (`apps/kumkaj/src/fiscal.rs`).
+This is now implemented as **country packs** (`apps/courier/src/fiscal.rs`).
 A pack carries the tax system and its name (VAT, GST, sales tax, IVA,
 BTW, SST, consumption tax), whether prices include tax or have it added
 at the till, the usual rates, any receipt split such as India's
@@ -958,13 +950,13 @@ Important discipline:
 Primary coding stays in **Cursor**. For source ↔ UI live iteration, run:
 
 ```bash
-cargo kumkaj-dev
+cargo courier-dev
 ```
 
 which is an alias for:
 
 ```bash
-cargo run -p kumkaj -- --hot --remote
+cargo run -p kumkaj-courier -- --hot --remote
 ```
 
 Meaning of the flags:
@@ -982,7 +974,7 @@ Notes:
     omitted.
 -   **Makepad Studio** remains useful for Studio-centric or agent/remote
     bridge workflows, but it is a second editor. For day-to-day Kumkaj
-    coding in Cursor, `cargo kumkaj-dev` is the more convenient path.
+    coding in Cursor, `cargo courier-dev` is the more convenient path.
 -   There is also a Cursor/VS Code task: **Kumkaj: live (--hot --remote)**.
 
 Makepad Studio is tooling; **Kumkaj is the product**.
@@ -1107,9 +1099,12 @@ These are **roadmap directions**, not claims that they already exist.
 
 ## 30. Progressive enablement
 
-Complexity is additive capability on one product — not separate SKUs.
+Complexity is additive capability **within** each concrete Kumkaj
+product. Separate store listings / package ids under the brand are fine;
+separate duplicated engines are not.
 
-Typical progression (any trade; food tools only when enabled):
+Typical progression (within a product; food tools only when that
+product enables them):
 
 1.  **Sell + credit + day totals** — catalogue, pay/credit, receipt,
     who still owes; tables/KDS/team/branches/cloud off.
@@ -1135,9 +1130,12 @@ Kumkaj should not become:
 -   an enterprise ERP forced onto a tiny shop or personal books;
 -   a simple cash register that large restaurants immediately outgrow;
 -   a collection of unrelated modules with inconsistent workflows;
--   a stack of **vertical forks** or trade-specific schemas that
-    duplicate the core (a separate “courier product”, “barber mode”,
-    “personal finance app”, and so on);
+-   **duplicated engines** or trade-specific schemas that copy the same
+    ledgers five times (shipping “courier” and “personal” as forever-
+    divergent codebases instead of concrete products on shared
+    internals);
+-   a single vague “works for everyone” SKU that forces owners to invent
+    meaning before they can work;
 -   a system where cloud billing failure or unpaid cloud usage threatens
     local data or local POS;
 -   a crippled “free” product that withholds core local capabilities to
@@ -1154,16 +1152,18 @@ Kumkaj should not become:
 
 A useful way to judge Kumkaj is:
 
-> **Can a small entity begin using it quickly, while a complex
-> multi-branch entity can keep using the same platform as it grows?**
+> **Does each concrete product feel purpose-built on first open — and
+> can shared internals still carry that owner as the entity grows
+> (ops depth, branches, optional cloud)?**
 
-If the answer remains yes, the architecture and UX are moving in the
+If the answer remains yes, the brand and architecture are moving in the
 intended direction.
 
-The smallest entity should receive simplicity, speed and reliability.
+The smallest entity should receive simplicity, speed and reliability in
+*their* product.
 
 The largest entity should receive scale, control, visibility and
-integration.
+integration without abandoning the same brand family or local ownership.
 
 Neither should have to sacrifice ownership of their data or the ability
 to operate locally. Neither should have to pay for software capability
@@ -1174,59 +1174,28 @@ resources they actually consume.
 
 ## 33. Immediate Development Focus
 
-Now that the Makepad development environment can run Kumkaj in Studio,
-development should return to the product itself.
+**Current ship focus: Kumkaj Courier** — see
+[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) and [`USE_CASES.md`](USE_CASES.md).
 
-A sensible implementation sequence is:
+Build the concrete courier BOS (books already largely present; next the
+**booking desk**, AWB/barcode, rates/slabs, then tracking/manifest/COD).
+Extract shared crates only when another brand product needs the same
+logic. Food tables/KOT and other concrete products wait until courier
+desk quality is credible.
 
-1.  Establish the real Kumkaj application shell and design language.
-2.  Build the smallest excellent POS/order flow.
-3.  Persist menu/orders/payments locally and make restart recovery
-    trustworthy.
-4.  Add **customer credit** (lightweight customers,
-    credit sales, outstanding balances, settlements) --- this belongs
-    with the core POS, not after restaurant CRM.
-5.  Add receipts/printing.
-6.  Add optional restaurant capabilities: tables and KOT/KDS.
-7.  Add operational modules: inventory, purchases, expenses and reports.
-8.  Add users/roles/audit controls.
-9.  Prove backup/restore.
-10. Only then layer optional Kumkaj Cloud (sync, remote visibility,
-    usage metering) onto the reliable free local system.
-
-**Local implementation status (shipping code):** steps 1–9 are in the
-Makepad app (**schema v1**): shell **Books · Sell · Buy · More** (Books
-home after unlock; Buy peers Sell for money out); **DeviceSetup every
-launch** with platform-default language (immediate apply; follow OS or
-fixed pick) plus Server/Client; **multi-server on one device** (unique id
-per local books DB — create if none, else create-new or open-existing;
-legacy root DB migrates into the registry); POS with three totals,
-credit, stock enforcement, invoice numbers, country fiscal packs; entity
-start templates (None default) with bill-type tags (Account booking / Tax
-invoice vs Cash booking / Cash memo); unit registry + conversions + item
-`unit_label` / milli qty; receipts (print/share on desktop; clipboard share
-on Android); tables + multi-station KOT; inventory/purchases/expenses;
-day close (optional drawer count) + period books with COGS/gross/net +
-party aging + bank cashbook (`money_movements`); AR write-off; purchase
-on-account → AP settle/write-off; staff roles (Owner/Manager/Cashier;
-Waiter/Kitchen when Tables & kitchen is on) with feature flags; shop-only
-write authority with optional LAN extra-till sell (including split
-tenders)/amend/KOT/void/refund/settle; pay debounce; PIN reset after
-migrate + unlock backoff; verified `restore_from` path; organization +
-branch switch + snapshot export/import + consolidated roll-up +
-write-only sync outbox scaffold. Universal books checklist:
-[`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md); launch/IA:
-[`DESIGN.md`](DESIGN.md). Step 10 (hosted WAN cloud, metering, remote
-dashboard), raw ESC/POS, and statutory e-invoicing remain optional /
-roadmap — not required for local multi-branch coordination.
+**Existing Makepad codebase** is the starting engine (day book, booking
+shell, parties, bank, expenses, P&L, Account/Cash booking tags, units).
+Treat courier-named UX and desk ops as the product work — not a second
+generic “any entity” SKU. Books checklist:
+[`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md); IA: [`DESIGN.md`](DESIGN.md).
+Cloud / ESC/POS / statutory e-invoicing remain optional later.
 
 At every stage, keep these in view:
 
-**Would this still feel effortless to a small entity?**\
-**Would the underlying model still work for a complex multi-branch
-entity?**\
-**Is the implementation still generic, with concrete feel from
-labels/config rather than a vertical fork?**\
+**Would this concrete product feel purpose-built on first open?**\
+**Would shared internals still carry a complex multi-branch entity?**\
+**Are we extracting shared code when a second product needs it — not
+forking engines?**\
 **Does the software adapt to the user — or is the user forced to adapt
 to the software?** (§2)
 

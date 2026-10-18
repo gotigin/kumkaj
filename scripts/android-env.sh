@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shared Android env for package-android.sh / kumkaj-android-dev.sh.
+# Shared Android env for package-android.sh / courier-android-dev.sh.
 # shellcheck disable=SC2034
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -75,8 +75,8 @@ ensure_android_toolchain() {
 android_pkg_opts() {
   local sdk="$1"
   # Prefer already-loaded KUMKAJ_APP_* from load_kumkaj_env; fall back to production ids.
-  local pkg="${KUMKAJ_APP_ID:-com.kumkaj.app}"
-  local label="${KUMKAJ_APP_LABEL:-Kumkaj}"
+  local pkg="${KUMKAJ_APP_ID:-com.kumkaj.courier}"
+  local label="${KUMKAJ_APP_LABEL:-Kumkaj Courier}"
   ANDROID_PKG_OPTS=(
     --package-name="$pkg"
     --app-label="$label"

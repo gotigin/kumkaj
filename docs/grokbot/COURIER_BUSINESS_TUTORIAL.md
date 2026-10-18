@@ -1609,11 +1609,12 @@ A **KPI** (key performance indicator) is a number that tells you quickly how the
 
 ---
 
-# Part 10: Developer notes: how this maps to Kumkaj
+# Part 10: Developer notes: how this maps to Kumkaj Courier
 
-*This part is for the Kumkaj developer. Shop owners can skip it.*
+*This part is for the Kumkaj developer. Shop owners can skip it.*  
+*Product brief + competitor feature matrix: [`../KUMKAJ_COURIER.md`](../KUMKAJ_COURIER.md).*
 
-## 10.1 Kumkaj concepts used in this guide
+## 10.1 Kumkaj Courier concepts used in this guide
 
 | Kumkaj concept | Courier meaning |
 |---|---|

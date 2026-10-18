@@ -11,6 +11,9 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::{Path, PathBuf};
 
+/// Books file name under `servers/{id}/` and `client/`.
+pub const DB_FILENAME: &str = "courier.sqlite3";
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct LocalServerInfo {
     pub id: String,
@@ -35,11 +38,11 @@ fn servers_root(base: &Path) -> PathBuf {
 }
 
 pub fn server_db_path(base: &Path, server_id: &str) -> PathBuf {
-    servers_root(base).join(server_id).join("kumkaj.sqlite3")
+    servers_root(base).join(server_id).join(DB_FILENAME)
 }
 
 pub fn client_db_path(base: &Path) -> PathBuf {
-    base.join("client").join("kumkaj.sqlite3")
+    base.join("client").join(DB_FILENAME)
 }
 
 fn load_registry(base: &Path) -> Result<RegistryFile, String> {
@@ -58,49 +61,11 @@ fn save_registry(base: &Path, reg: &RegistryFile) -> Result<(), String> {
     fs::write(&path, raw).map_err(|e| e.to_string())
 }
 
-/// Move a pre-multi-server `kumkaj.sqlite3` into `servers/{id}/`.
-pub fn migrate_legacy_root_db(base: &Path) -> Result<(), String> {
-    let legacy = base.join("kumkaj.sqlite3");
-    if !legacy.exists() {
-        return Ok(());
-    }
-    let mut reg = load_registry(base)?;
-    if !reg.servers.is_empty() {
-        return Ok(());
-    }
-    let id = new_id();
-    let dest_dir = servers_root(base).join(&id);
-    fs::create_dir_all(&dest_dir).map_err(|e| e.to_string())?;
-    let dest = dest_dir.join("kumkaj.sqlite3");
-    fs::rename(&legacy, &dest).map_err(|e| e.to_string())?;
-    for suffix in ["-wal", "-shm"] {
-        let side = base.join(format!("kumkaj.sqlite3{suffix}"));
-        if side.exists() {
-            let _ = fs::rename(&side, dest_dir.join(format!("kumkaj.sqlite3{suffix}")));
-        }
-    }
-    let name = Store::open_path(&dest)
-        .ok()
-        .and_then(|s| s.venue_title().ok())
-        .filter(|t| !t.trim().is_empty())
-        .unwrap_or_else(|| "Books".into());
-    reg.servers.push(LocalServerInfo {
-        id: id.clone(),
-        name,
-        created_at: Local::now().to_rfc3339(),
-    });
-    reg.active_id = Some(id);
-    save_registry(base, &reg)?;
-    Ok(())
-}
-
 pub fn list_local_servers(base: &Path) -> Result<Vec<LocalServerInfo>, String> {
-    migrate_legacy_root_db(base)?;
     Ok(load_registry(base)?.servers)
 }
 
 pub fn active_server_id(base: &Path) -> Result<Option<String>, String> {
-    migrate_legacy_root_db(base)?;
     Ok(load_registry(base)?.active_id)
 }
 
@@ -115,7 +80,6 @@ pub fn set_active_server_id(base: &Path, id: &str) -> Result<(), String> {
 
 /// Create a new local server directory + empty DB, register it, set active.
 pub fn create_local_server(base: &Path, name: &str) -> Result<(LocalServerInfo, Store), String> {
-    migrate_legacy_root_db(base)?;
     let id = new_id();
     let db = server_db_path(base, &id);
     if let Some(parent) = db.parent() {
@@ -148,7 +112,6 @@ pub fn create_local_server(base: &Path, name: &str) -> Result<(LocalServerInfo, 
 }
 
 pub fn open_server(base: &Path, server_id: &str) -> Result<Store, String> {
-    migrate_legacy_root_db(base)?;
     let reg = load_registry(base)?;
     if !reg.servers.iter().any(|s| s.id == server_id) {
         return Err("Server not found".into());
@@ -174,7 +137,6 @@ pub fn open_client_store(base: &Path) -> Result<Store, String> {
 /// Open the active server DB if one exists; otherwise `Err` so the shell can
 /// wait for Server Mode create/pick (or Client Mode).
 pub fn open_active_server(base: &Path) -> Result<Store, String> {
-    migrate_legacy_root_db(base)?;
     let reg = load_registry(base)?;
     let Some(id) = reg.active_id.as_deref() else {
         return Err("No local server yet — choose Server Mode".into());
@@ -217,24 +179,8 @@ mod tests {
         assert!(list.iter().any(|s| s.id == b.id && s.name == "Courier desk"));
         assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(b.id.as_str()));
         let opened = open_server(&base, &a.id).unwrap();
-        assert!(opened.db_path().ends_with("kumkaj.sqlite3"));
+        assert!(opened.db_path().ends_with(DB_FILENAME));
         assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(a.id.as_str()));
-        let _ = fs::remove_dir_all(base);
-    }
-
-    #[test]
-    fn legacy_root_db_becomes_first_server() {
-        let base = temp_base();
-        let legacy = base.join("kumkaj.sqlite3");
-        let store = Store::open_path(&legacy).unwrap();
-        store.set_venue_title("Legacy shop").unwrap();
-        drop(store);
-        migrate_legacy_root_db(&base).unwrap();
-        assert!(!legacy.exists());
-        let list = list_local_servers(&base).unwrap();
-        assert_eq!(list.len(), 1);
-        assert_eq!(list[0].name, "Legacy shop");
-        assert!(server_db_path(&base, &list[0].id).exists());
         let _ = fs::remove_dir_all(base);
     }
 }

@@ -2,33 +2,90 @@
 
 Commands and paths below are from the **workspace root** (parent of `docs/`).
 
+**Product focus:** [Kumkaj Courier](KUMKAJ_COURIER.md) — courier BOS (books +
+booking desk). Package id: production `com.kumkaj.courier` · development
+`com.kumkaj.courier.debug`.
+
 ## Live development (Cursor)
 
 ```bash
-cargo kumkaj-dev
+cargo courier-dev
 ```
 
-Loads [`env/development.env`](../env/development.env) then `cargo run -p kumkaj -- --hot --remote`.
+Loads [`apps/courier/env/development.env`](../apps/courier/env/development.env) then `cargo run -p kumkaj-courier -- --hot --remote`.
 
 - `--hot` — Splash/`script_mod!` hot reload on save
 - `--remote` — Tweaker via **F12**
 - Makepad **2 / `main` only** — never Makepad 1 docs/examples/APIs
 - Local Makepad 2 tree: `vendor/makepad`
   - First time / after clean: `./scripts/setup-makepad.sh`
-  - Path-dep from `apps/kumkaj`; applies Wayland scroll-sign + dark caption button patches
+  - Path-dep from `apps/courier`; applies Wayland scroll-sign + dark caption button patches
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
-- Multi-script UI fonts live in **one** place: `apps/kumkaj/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji). Desktop packages copy only `kumkaj/resources/` — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
-- **Desktop window size** — first launch defaults to `1024×768`; later launches restore last size/position from `window_geom.json` under the app data dir (Startup `configure_window` + post-create resize so Windows doesn’t keep the DSL default). No forced phone frame. Resize floor is **320 css px** (width and height).
+- Multi-script UI fonts live in **one** place: `apps/courier/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji). Desktop packages copy only `kumkaj-courier/resources/` — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
+- **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
 - **Button label inset** — every shared face sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
 - **Reusable layout widgets** — see § Makepad 2 UI faces (agent guide) below (selection + truncation). Product summary: [`DESIGN.md`](DESIGN.md) § Makepad 2 faces.
 
+## Desktop window size & maximize
+
+Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Kumkaj Courier client-side chrome:
+
+| Action | Expected result |
+|---|---|
+| First launch | Floating window **1024×768** (DSL + store defaults) |
+| Later launch | Last **floating** size/position from `window_geom.json` under the app data dir |
+| Max button (single click) | Toggle maximize ↔ restore |
+| Caption bar double-click | **Same** toggle as the max button (not a second code path) |
+| Restore with no saved float size | **1024×768** (never a monitor-fill size) |
+| Resize floor | **320 css px** width and height |
+
+`window_geom.json` must **never** store maximized/fullscreen geometry. Persisting ~monitor size (e.g. `2560×1048` on an ultrawide) made the next launch look maximized while floating; the next `set_maximized` then fought Mutter on multi-monitor layouts.
+
+### Wayland / Mutter (do not regress)
+
+Vendor patches live under `vendor/makepad` (path-dep). Toggle logic is owned by `Window::toggle_chrome_maximize` in `vendor/makepad/widgets/src/window.rs`. Platform ops: `MaximizeWindow` / `RestoreWindow` in `linux_wayland.rs`.
+
+**Bugs we hit (do not reintroduce)**
+
+1. **`display_context.screen_size` is the window size** — never use it as “fills the screen ⇒ maximized”; that made every max click take the restore path.
+2. **Stale maximized configure after restore** — re-latched `chrome_maximized` so later clicks only restored. Suppress compositor “adopt maximized” briefly after a chrome restore/maximize.
+3. **Second `set_maximized` while Mutter still has maximized** — on a 2×2 ultrawide layout this jumped toward another output and then left maximize dead. Track `compositor_maximized` from configure `states` only; skip `set_maximized` when it is already true.
+4. **Mutter post-restore float configure** — after restore agrees at `1024×768`, Mutter often sends another **floating** configure at the old max extent (`2560×1048`, `maximized=false`). Without a float guard the window balloons again (works / not / works). Keep `float_guard_size` ~2s and ignore monitor-fill floating configures.
+5. **Caption double-click must not call `xdg_toplevel.move` on the first press** — that ate double-click and used a divergent compositor-only toggle. Defer move until pointer travels &gt;5px; on double-click emit `Event::WindowChromeMaximizeToggle` so the **same** widget toggle runs as the max button.
+6. **Do not remember near-monitor sizes as restore targets** — treat `width ≥ 1920` and `height ≥ 900` as monitor-fill; fall back to `1024×768`.
+
+**Code map**
+
+| Piece | Role |
+|---|---|
+| `Window::toggle_chrome_maximize` | Single-click max + caption double-click |
+| `Event::WindowChromeMaximizeToggle` | Wayland caption → widget toggle |
+| `WaylandWindow::compositor_maximized` | Last configure maximized/fullscreen bit |
+| `pending_restore_size` / `float_guard_*` | Force float size; reject Mutter re-expand |
+| `apps/courier` `persist_window_geom` | Skip fullscreen / monitor-fill sizes |
+| Dev logs | `MaximizeWindow` / `RestoreWindow` / `xdg_toplevel configure` / `caption double-click` |
+
+```text
+❌ Persist maximized size into window_geom.json
+❌ set_maximized again while compositor_maximized
+❌ Accept floating 2560×1048 right after restore to 1024×768
+❌ Caption double-click toggles in wayland_state instead of the widget
+❌ Start xdg_toplevel.move on the first caption press of a double-click
+
+✅ One toggle path (widget) for max button and caption
+✅ Restore → 1024×768 (or last real float size) + float guard
+✅ Skip set_maximized when already maximized per configure states
+```
+
+Manual check (GNOME Wayland, multi-monitor OK): max → restore → max → restore several times; caption double-click the same; window stays on the current output; terminal may show `ignoring post-restore monitor-fill`.
+
 ## Makepad 2 UI faces (agent guide)
 
-Use this when changing bottom nav, choice toggles, chips, or any button label. Same UI code ships to **Linux / Windows / Android** — fix faces once in `apps/kumkaj`, not per platform.
+Use this when changing bottom nav, choice toggles, chips, or any button label. Same UI code ships to **Linux / Windows / Android** — fix faces once in `apps/courier`, not per platform.
 
 Cursor rule (always apply when editing kumkaj UI): `.cursor/rules/makepad-layout-faces.mdc`.
 
@@ -47,11 +104,11 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 
 ### Bugs we hit (do not reintroduce)
 
-1. **Multiple bottom-nav peers lit** — Idle `TabBtn` used `#1b2a4a` on hover/focus (same as `TabBtnActive`). After Sell → Buy → More, Sell (and others) still looked active. Focus also stuck on the last clicked tab.
+1. **Multiple bottom-nav peers lit** — Idle `TabBtn` used primary navy on hover/focus (same as `TabBtnActive`). After Sell → Buy → More, Sell (and others) still looked active. Focus also stuck on the last clicked tab.
 2. **Wrong peer lit while another screen showed** — Treating focus/hover as selection instead of painting from `Screen` / `nav_tab_for`.
 3. **Right-truncated CTA labels** — Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Row*`) used `max_lines: 1` + `TextOverflow.Ellipsis`. Makepad centers a Fill label in a Fill button; long / translated strings become `record_pu…` / clipped ink. Multi-word choices in `ChipBtn` (Fit max 160) truncated the same way (`Use platform na…`, `Tax invoice`, `On account (AP)`).
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
-5. **Menu images “gone” on Windows** — Package layout is `exe/kumkaj/resources/menu/`; loader must prefer that path (`menu_images::menu_dir_candidates`), not a bare `menu/` folder or `get_dependency` alone on desktop.
+5. **Menu images “gone” on Windows** — Package layout is `exe/kumkaj-courier/resources/menu/`; loader must prefer that path (`menu_images::menu_dir_candidates`), not a bare `menu/` folder or `get_dependency` alone on desktop.
 
 ### Required approach (shipping)
 
@@ -73,17 +130,26 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 | Short chip in a horizontal strip | `ChipStrip` + `ChipBtn` / `ChipBtnActive` (Fit max 160, ellipsis OK) |
 | Ultra-short side-by-side (≤ ~4 chars) | `ActionRow` + `RowPrimaryBtn` / `RowSecondaryBtn` |
 | Multi-word / translated CTA | `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn`, or `NavBtn` / `PayBtn` / `MoreRow` |
+| Side-by-side fields (no CTAs) | `FormFieldRow` + `FieldInput` (equal `Fill`) |
 
 Full-width CTA faces: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, label `width: Fill`, **no** `max_lines: 1`, **no** `Ellipsis`. Always `padding` **and** `label_walk.margin`.
 
 Never invent a one-off button type (`LangSourceBtn`, etc.) when Stack/Nav already cover it. Never put multi-word phrases in `ChipBtn` / `ActionRow`.
 
-### Code map (`apps/kumkaj/src/main.rs`)
+**FormFieldRow (no flex-shrink):** Makepad will crush a Fit CTA beside Fill inputs until wrap stacks each letter. Example regression: **Add rate** as a vertical navy pill overlapping Unit. Always:
+
+```text
+FormFieldRow{ price FieldInput; unit FieldInput }
+ActionStack{ New item StackSecondaryBtn; Add rate StackPrimaryBtn }
+```
+
+### Code map (`apps/courier/src/main.rs`)
 
 | Piece | Role |
 |---|---|
 | `TabBtn` / `TabBtnActive` | Bottom-nav idle / selected faces |
 | `NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*` | Full-width CTAs (wrap, no ellipsis) |
+| `FormFieldRow` | Side-by-side fields only — never CTAs |
 | `ChipBtn` / `ChipBtnActive` | Short strip chips only |
 | `nav_tab_for` | `Screen` → which bottom peer is active |
 | `paint_nav_tabs` | Exactly one footer peer visible-as-selected |
@@ -95,27 +161,29 @@ Never invent a one-off button type (`LangSourceBtn`, etc.) when Stack/Nav alread
 ❌ Idle TabBtn color_hover = selected navy
 ❌ Rely on focus/hover as “selected”
 ❌ NavBtn / MoreRow with Ellipsis; ChipBtn for “Tax invoice” / language source
+❌ FieldInput + FieldInput + NavBtn{width: Fit} in one Right row
 ❌ Patch one screen only — faces are shared across Linux / Windows / Android
 
 ✅ Overlay idle+active + paint from Screen + clear animators
 ✅ Wrap on full-width CTAs; ChipBtn only for short chips
+✅ FormFieldRow for fields; ActionStack for multi-word CTAs under them
 ✅ Fix shared face definitions once (all platforms)
 ```
 
 ## Development vs production env
 
-All platform package / bundle ids are **reverse-DNS under kumkaj.com**. There is no Gotigin (or other vendor) segment in ids or data paths.
+All platform package / bundle ids are **reverse-DNS under kumkaj.com**. Concrete products under the brand may use further ids (e.g. a courier face) still under that domain — see vision §1.
 
 | | Development | Production |
 |---|---|---|
-| Env file | [`env/development.env`](../env/development.env) | [`env/production.env`](../env/production.env) |
-| How | `cargo kumkaj-dev`, `cargo kumkaj-android-dev`, `cargo kumkaj-windows-dev` | `./scripts/package-*.sh` |
-| `KUMKAJ_APP_ID` | `com.kumkaj.app.debug` | `com.kumkaj.app` |
-| `KUMKAJ_APP_LABEL` | Kumkaj Dev | Kumkaj |
+| Env file | [`apps/courier/env/development.env`](../apps/courier/env/development.env) | [`apps/courier/env/production.env`](../apps/courier/env/production.env) |
+| How | `cargo courier-dev`, `cargo courier-android-dev`, `cargo courier-windows-dev` | `./scripts/package-*.sh` |
+| `KUMKAJ_APP_ID` | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
+| `KUMKAJ_APP_LABEL` | Kumkaj Courier Dev | Kumkaj Courier |
 | Size badge (`KUMKAJ_SHOW_SIZE_BADGE`) | on (`1`) — `W×H` in caption | off (`0`) |
 | Windows console | yes (logs) | no (GUI subsystem) |
 
-`apps/kumkaj/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo kumkaj-windows-dev` builds the **debug** profile with `development.env` (Dev app id / console). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
+`apps/courier/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo courier-windows-dev` builds the **debug** profile with `development.env` (Dev app id / console). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
 
 ### Platform naming (dev vs prod)
 
@@ -123,15 +191,15 @@ Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surface
 
 | Platform | Development | Production |
 |---|---|---|
-| **Android** package name / application id | `com.kumkaj.app.debug` | `com.kumkaj.app` |
-| **Android** launcher label | Kumkaj Dev | Kumkaj |
-| **iOS / macOS** bundle id (when signed) | `com.kumkaj.app.debug` | `com.kumkaj.app` |
-| **Linux** binary | `cargo kumkaj-dev` (host) | `dist/linux/kumkaj` via `package-linux.sh` |
-| **Windows** (Win10 + Win11 x86_64) | `cargo kumkaj-windows-dev` → `dist/windows-dev/` (exe + resources) | `./scripts/package-windows.sh` → `dist/windows/` |
-| **macOS** binary (when built on Mac) | `cargo kumkaj-dev` | package script / packager |
-| **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.kumkaj.app"`, `product_name = "Kumkaj"` |
-| **Web** | local `cargo kumkaj-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./scripts/package-web.sh`) — not an OS package id |
-| **Play Store** listing | side-load / internal only | application id `com.kumkaj.app` (`web/play-store-listing.txt`) |
+| **Android** package name / application id | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
+| **Android** launcher label | Kumkaj Courier Dev | Kumkaj Courier |
+| **iOS / macOS** bundle id (when signed) | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
+| **Linux** binary | `cargo courier-dev` (host) · `package-linux-dev.sh` | `dist/linux/` + `install.sh` via `package-linux.sh` |
+| **Windows** (Win10 + Win11 x86_64) | `cargo courier-windows-dev` → `dist/windows-dev/` (exe + resources) | `./scripts/package-windows.sh` → `dist/windows/` |
+| **macOS** binary (when built on Mac) | `cargo courier-dev` | package script / packager |
+| **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.kumkaj.courier"`, `product_name = "Kumkaj Courier"` |
+| **Web** | local `cargo courier-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./scripts/package-web.sh`) — not an OS package id |
+| **Play Store** listing | side-load / internal only | application id `com.kumkaj.courier` (`web/play-store-listing.txt`) |
 
 ### Data directories (keyed by `KUMKAJ_APP_ID`)
 
@@ -139,67 +207,96 @@ Dev and prod can sit side-by-side on one machine because paths differ by id. No 
 
 | Platform | Development | Production |
 |---|---|---|
-| Linux | `~/.local/share/com.kumkaj.app.debug/` | `~/.local/share/com.kumkaj.app/` |
-| Windows | `%APPDATA%\com.kumkaj.app.debug\` | `%APPDATA%\com.kumkaj.app\` |
-| macOS | `~/Library/Application Support/com.kumkaj.app.debug/` | `~/Library/Application Support/com.kumkaj.app/` |
-| Android | `/data/user/0/com.kumkaj.app.debug/files/` | `/data/user/0/com.kumkaj.app/files/` |
-| Local servers | `servers.json` + `servers/{id}/kumkaj.sqlite3` (one DB per business/server) | same |
-| Client cache | `client/kumkaj.sqlite3` | same |
-| Legacy | Root `kumkaj.sqlite3` (pre-multi-server) migrates into first `servers/{id}/` | same |
+| Linux | `~/.local/share/com.kumkaj.courier.debug/` | `~/.local/share/com.kumkaj.courier/` |
+| Windows | `%APPDATA%\com.kumkaj.courier.debug\` | `%APPDATA%\com.kumkaj.courier\` |
+| macOS | `~/Library/Application Support/com.kumkaj.courier.debug/` | `~/Library/Application Support/com.kumkaj.courier/` |
+| Android | `/data/user/0/com.kumkaj.courier.debug/files/` | `/data/user/0/com.kumkaj.courier/files/` |
+| Local servers | `servers.json` + `servers/{id}/courier.sqlite3` (one DB per business/server) | same |
+| Client cache | `client/courier.sqlite3` | same |
 | Backups | `…/<APP_ID>/backups/` | same |
 | Override | `KUMKAJ_DATA_DIR` | same |
 
 **DeviceSetup (every launch):** language (platform default, immediate apply) + Server/Client. Server Mode creates a unique local server if none exist, otherwise create-new or open-existing. See [`DESIGN.md`](DESIGN.md) § Launch / auth.
 
-### Start template default (onboarding)
+### Product / template default (onboarding)
 
-Chip strip: **None** / Counter / Courier / Food / Personal. Stable store id for None is `custom`. **None is selected by default** (active chip + meta). If the owner proceeds with Fresh / Bring my book / Done without tapping another template, None is applied automatically.
+**Kumkaj Courier** should open with courier defaults (Account/Cash booking, kg
+rates language). The workspace may still contain other template chips for
+later brand products; do not make “None” the story for courier demos.
 - Pay methods: Cash · instant rail (UPI / Pix / PayNow / … per country pack) · Card · **Credit** · **Split Cash+rail** (Server and paired Client)
 - **UI theme:** Stitch Tactile Countertop ([`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`)
-  - Cool surface `#f9f9fc`, navy `#041534` / `#1b2a4a`, terracotta `#a23e18`
-  - Cream glyphs only on navy window caption — never cream-on-white body text
-  - PIN, Sell, and the three-total ledger share tokens with floor, kitchen, and credit
+  - Logo palette: surface `#D6E0EC`, navy `#02030B` / `#072058`, orange `#C44E10`, yellow `#F7B043` (see [`DESIGN.md`](DESIGN.md))
+  - White glyphs only on navy chrome — never light ink on light wells / placeholders
+  - PIN, Booking, and the three-total ledger share the same tokens
 
 ## Android (device / emulator)
 
 ```bash
-cargo kumkaj-android-dev
+cargo courier-android-dev
 ```
 
-Equivalent: `./scripts/kumkaj-android-dev.sh`
+Equivalent: `./scripts/courier-android-dev.sh`
 
-Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.app.debug`** (from `env/development.env`).
+Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.courier.debug`** (from `apps/courier/env/development.env`).
 
-**Launcher / logo:** Master art is `assets/kumkaj-app-icon.png`. Run `./scripts/generate-app-icons.sh` to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
+**Launcher / logo:** Master art is `assets/courier-app-icon.png`. Run `./scripts/generate-app-icons.sh` to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
 
-Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo kumkaj-dev`; use `cargo kumkaj-android-dev` to verify on device.
+Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo courier-dev`; use `cargo courier-android-dev` to verify on device.
 
 Release APK/AAB packaging: `./scripts/package-android.sh` → `dist/android/`.
 
-## Windows (cross from Arch / native on Windows)
+## Desktop install / uninstall (Linux + Windows)
 
-One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.kumkaj.app.debug` vs `com.kumkaj.app`).
+Packages ship **Install** and **Uninstall** so owners never hunt data paths.
+Dev and prod stay separate (debug suffix on id + install folder).
 
 | | Development | Production |
 |---|---|---|
-| Command | `cargo kumkaj-windows-dev` | `./scripts/package-windows.sh` |
+| Env | `apps/courier/env/development.env` | `apps/courier/env/production.env` |
+| App id | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
+| Label | Kumkaj Courier Dev | Kumkaj Courier |
+| Linux package | `./scripts/package-linux-dev.sh` → `dist/linux-dev/` | `./scripts/package-linux.sh` → `dist/linux/` |
+| Windows package | `cargo courier-windows-dev` → `dist/windows-dev/` | `./scripts/package-windows.sh` → `dist/windows/` |
+| Linux install dir | `~/.local/lib/kumkaj-courier-debug/` | `~/.local/lib/kumkaj-courier/` |
+| Linux command | `kumkaj-courier-dev` | `kumkaj-courier` |
+| Windows install dir | `%LOCALAPPDATA%\Programs\Kumkaj Courier Dev\` | `%LOCALAPPDATA%\Programs\Kumkaj Courier\` |
+| Data dir | `…/com.kumkaj.courier.debug/` | `…/com.kumkaj.courier/` |
+
+**Install:** run `install.sh` (Linux) or `install.ps1` (Windows) from the package folder. Adds Start Menu / app menu entries, including **Uninstall …**.
+
+**Uninstall:** from the menu, Settings → Apps (Windows), or re-run `uninstall.sh` / `uninstall.ps1`. Always prompts:
+
+- **Keep data** (default) — books stay; run uninstall again later to delete them  
+- **Remove data** — deletes the app-id data directory  
+
+If app files are already gone but data remains, re-running uninstall still offers to remove leftover data.
+
+Shared helpers: `scripts/desktop-ids.sh`, `scripts/stage-desktop-package.sh`.
+
+## Windows (cross from Arch / native on Windows)
+
+One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.kumkaj.courier.debug` vs `com.kumkaj.courier`).
+
+| | Development | Production |
+|---|---|---|
+| Command | `cargo courier-windows-dev` | `./scripts/package-windows.sh` |
 | Output | `dist/windows-dev/` (copy whole folder) | `dist/windows/` (copy whole folder) |
 | Cargo profile | **debug** (`dev`) | **release** |
-| Env | `env/development.env` | `env/production.env` |
-| Data on Windows | `%APPDATA%\com.kumkaj.app.debug\` | `%APPDATA%\com.kumkaj.app\` |
+| Env | `apps/courier/env/development.env` | `apps/courier/env/production.env` |
+| Data on Windows | `%APPDATA%\com.kumkaj.courier.debug\` | `%APPDATA%\com.kumkaj.courier\` |
 
 **Cross-compile from Arch Linux** (this host):
 
 ```bash
 sudo pacman -S mingw-w64-gcc
 rustup target add x86_64-pc-windows-gnu
-cargo kumkaj-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
+cargo courier-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
 ./scripts/package-windows.sh      # Prod package → copy whole dist/windows/ folder
-# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj/resources/ beside the .exe
-# Item thumbs: kumkaj/resources/menu/*.webp (copy the whole folder — not exe alone)
+# Then on Windows: powershell -ExecutionPolicy Bypass -File .\install.ps1
+# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj-courier/resources/ beside the .exe
 ```
 
-Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo kumkaj-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
+Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo courier-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
 
 **On a Windows machine with Rust:** the same scripts pick `x86_64-pc-windows-msvc` when available and build natively.
 
@@ -285,7 +382,7 @@ a Client (it would overwrite the pairing with the Server's books).
 Unit coverage: `backup_and_restore`, `backup_restore_preserves_sale_on_reopen`,
 `restore_from_path_preserves_sale`.
 
-## LAN Client / Server (`apps/kumkaj/src/net.rs`)
+## LAN Client / Server (`apps/courier/src/net.rs`)
 
 Server listens on **TCP port 7847** when role = Server (pairing code in Settings / Lock hint).
 
@@ -336,18 +433,22 @@ branch/org names and invoice numbers.
 ## Smoke tests
 
 ```bash
-cargo test -p kumkaj
+cargo test -p kumkaj-courier
 ```
 
 ## Packaging
 
 ```bash
-./scripts/package-linux.sh
-./scripts/package-windows.sh
+./scripts/package-linux.sh            # prod → dist/linux/ (+ install.sh / uninstall.sh)
+./scripts/package-linux-dev.sh        # debug → dist/linux-dev/
+./scripts/package-windows.sh          # prod → dist/windows/ (+ install.ps1)
+cargo courier-windows-dev              # debug → dist/windows-dev/
 ./scripts/package-android.sh
 ./scripts/package-web.sh
 ./scripts/package-apple-scaffold.sh   # iOS/macOS deferred until Mac host
 ```
+
+Desktop install/uninstall: see **Desktop install / uninstall** above.
 
 ## Unlock model
 
@@ -359,15 +460,15 @@ cargo test -p kumkaj
 
 ## Publish checklist (Play / web / desktop)
 
-1. `cargo test -p kumkaj`
-2. `./scripts/package-linux.sh` → smoke `dist/linux/kumkaj`
-3. `./scripts/package-windows.sh` (cross from Arch with mingw, or native on Windows) → `dist/windows/kumkaj.exe` (Win10 + Win11 x86_64); optional `cargo kumkaj-windows-dev` for Dev `.exe`
+1. `cargo test -p kumkaj-courier`
+2. `./scripts/package-linux.sh` → smoke `dist/linux/run.sh` / `./install.sh`
+3. `./scripts/package-windows.sh` → `dist/windows/` (+ `install.ps1`); optional `cargo courier-windows-dev` for Dev
 4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./scripts/package-android.sh`
 5. Sign Android release; create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
 6. `./scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
 7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh`
 
-Platform ids: see **Platform naming** above (`com.kumkaj.app` / `com.kumkaj.app.debug`, domain kumkaj.com).
+Platform ids: see **Platform naming** above (`com.kumkaj.courier` / `com.kumkaj.courier.debug`, domain kumkaj.com).
 
 ## Manual UI smoke (shipping)
 
@@ -417,7 +518,7 @@ the seller finds out before the customer does. Void, quick undo and refund put
 the units back and record a `void`/`undo`/`refund` stock movement — otherwise a
 reversed charge would strand stock that strict enforcement then made unsellable.
 
-## Fiscal country packs (`apps/kumkaj/src/fiscal.rs`)
+## Fiscal country packs (`apps/courier/src/fiscal.rs`)
 
 `COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, inclusive/exclusive pricing, seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone.
 

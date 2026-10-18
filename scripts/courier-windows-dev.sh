@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Development Windows x86_64 package (Windows 10 + Windows 11).
-# Makepad layout: kumkaj.exe + <crate>/resources/ beside it (MAKEPAD_PACKAGE_DIR=.).
-# Usage: ./scripts/kumkaj-windows-dev.sh   or: cargo kumkaj-windows-dev
+# Development Windows x86_64 package (debug app id).
+# Makepad layout: kumkaj-courier.exe + kumkaj-courier/resources/
+# Includes install.ps1 / uninstall.ps1 for Dev (com.kumkaj.courier.debug).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -9,6 +9,10 @@ cd "$ROOT"
 source "$ROOT/scripts/load-kumkaj-env.sh"
 # shellcheck source=windows-env.sh
 source "$ROOT/scripts/windows-env.sh"
+# shellcheck source=desktop-ids.sh
+source "$ROOT/scripts/desktop-ids.sh"
+# shellcheck source=stage-desktop-package.sh
+source "$ROOT/scripts/stage-desktop-package.sh"
 
 export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env development
@@ -27,17 +31,15 @@ else
   windows_ensure_toolchain
 fi
 
-# Dev profile (unoptimized + debuginfo) — matches Linux `cargo kumkaj-dev`.
-# Production shipping stays `./scripts/package-windows.sh` (--release).
-cargo build -p kumkaj --target "$TARGET"
+cargo build -p kumkaj-courier --target "$TARGET"
 
 # shellcheck source=cargo-target-dir.sh
 source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cargo_target_dir)"
 EXE=""
 for cand in \
-  "$TARGET_DIR/$TARGET/debug/kumkaj.exe" \
-  "$TARGET_DIR/$TARGET/debug/kumkaj"
+  "$TARGET_DIR/$TARGET/debug/kumkaj-courier.exe" \
+  "$TARGET_DIR/$TARGET/debug/kumkaj-courier"
 do
   if [[ -f "$cand" ]]; then
     EXE="$cand"
@@ -49,30 +51,29 @@ if [[ -z "$EXE" ]]; then
   exit 1
 fi
 
-cp -f "$EXE" "$OUT/kumkaj.exe"
+cp -f "$EXE" "$OUT/kumkaj-courier.exe"
 makepad_copy_desktop_resources "$OUT"
+stage_desktop_package "$OUT" windows
 
-cat > "$OUT/README.txt" <<EOF
-Kumkaj Windows (development)
-============================
-Makepad desktop package — copy this WHOLE folder to the PC (keep structure):
-
-  kumkaj.exe
-  kumkaj/resources/            (fonts + icons + menu)
-
-Profile: debug (dev) — not --release
-Target: $TARGET (x86_64 — Windows 10 and Windows 11)
+cat >"$OUT/README.txt" <<EOF
+Kumkaj Courier Windows (development / debug)
+============================================
 App id: ${KUMKAJ_APP_ID}
 Label: ${KUMKAJ_APP_LABEL}
-Env: env/development.env
+Profile: debug (dev) — not --release
+Target: $TARGET
 
-Run from inside the folder:
-  .\\kumkaj.exe
+Install:
+  powershell -ExecutionPolicy Bypass -File .\\install.ps1
+→ %LOCALAPPDATA%\\Programs\\Kumkaj Courier Dev\\
+→ data: %APPDATA%\\${KUMKAJ_APP_ID}\\
 
-Data: %APPDATA%\\com.kumkaj.app.debug\\
+Uninstall:
+  Start Menu → Uninstall Kumkaj Courier Dev
+  or: powershell -ExecutionPolicy Bypass -File .\\uninstall.ps1 -Dev
 
-Production (release): ./scripts/package-windows.sh → dist/windows/
+Prod: ./scripts/package-windows.sh → dist/windows/
 EOF
 
 echo "Windows Dev package: $OUT/"
-echo "Copy the whole folder to Windows (exe + resources)."
+echo "Copy the whole folder to Windows (exe + resources + install.ps1)."

@@ -1,6 +1,6 @@
 ---
 description: Makepad 2 selection + CTA truncation — cause, approach, do/don't
-globs: apps/kumkaj/**/*.{rs,md}
+globs: apps/courier/**/*.{rs,md}
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces.
 
-Same UI ships to Linux / Windows / Android — change shared faces in `apps/kumkaj`, not per OS.
+Same UI ships to Linux / Windows / Android — change shared faces in `apps/courier`, not per OS.
 
 ## Cause (regressions we already paid for)
 
@@ -38,15 +38,29 @@ Makepad 2 `Button` has **no selected bit** — only `hover` / `down` / `focus` /
 | Short strip chip | `ChipBtn` / `ChipBtnActive` (ellipsis OK) |
 | Ultra-short side-by-side | `ActionRow` + `Row*` |
 | Multi-word / translated | `ActionStack` + `Stack*`, or `NavBtn` / `PayBtn` / `MoreRow` (wrap, **no** ellipsis) |
+| Side-by-side fields only | `FormFieldRow` (equal `Fill` inputs — **no** CTAs) |
 
 Always `padding` **and** `label_walk.margin`. Never invent `LangSourceBtn`-style one-offs.
 
+### Form rows (Makepad has no flex-shrink)
+
+`NavBtn` / `Stack*` use `flow: Right{wrap: true}`. A **Fit** CTA beside **Fill** `FieldInput`s in one `Right` row is given a tiny width → wrap stacks letters vertically (`A d d r a t e`) and overlaps the field. That is not a theme bug.
+
 ```text
-❌ Idle TabBtn color_hover = #1b2a4a
+❌ FormFieldRow / Right row: FieldInput + FieldInput + NavBtn{width: Fit}
+❌ “Just this screen” one-off Fit primary beside fills
+
+✅ FormFieldRow{ FieldInput; FieldInput }
+✅ ActionStack{ StackSecondaryBtn; StackPrimaryBtn } under the fields
+```
+
+```text
+❌ Idle TabBtn color_hover = #072058 (same as TabBtnActive)
 ❌ Focus/hover as the selected look
 ❌ Ellipsis on NavBtn/MoreRow; ChipBtn for “Tax invoice” / language source
 ❌ Fix one call site only — edit the shared face
 
 ✅ Overlay + paint_nav_tabs / paint_choice_pair + animator clear
 ✅ Wrap on full-width CTAs; ChipBtn only for short chips
+✅ Fields in FormFieldRow; multi-word CTAs in ActionStack below
 ```

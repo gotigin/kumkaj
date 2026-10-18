@@ -36,7 +36,7 @@ pub struct StaffHire<'a> {
 }
 
 impl Store {
-    /// Open the active local server DB (or migrate a legacy root DB into one).
+    /// Open the active local server DB.
     /// Prefer [`crate::local_servers`] when creating / switching servers.
     pub fn open_default() -> Result<Self, String> {
         crate::local_servers::open_default_server()
@@ -56,7 +56,6 @@ impl Store {
         };
         store.migrate()?;
         store.ensure_seed_data()?;
-        store.rewrite_legacy_standalone()?;
         Ok(store)
     }
 
@@ -116,7 +115,14 @@ impl Store {
                     money_lane TEXT NOT NULL DEFAULT 'declared',
                     user_at TEXT NOT NULL DEFAULT '',
                     device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
+                    server_at TEXT NOT NULL DEFAULT '',
+                    awb_no TEXT NOT NULL DEFAULT '',
+                    destination TEXT NOT NULL DEFAULT '',
+                    consignee_name TEXT NOT NULL DEFAULT '',
+                    actual_weight_kg REAL NOT NULL DEFAULT 0,
+                    volumetric_weight_kg REAL NOT NULL DEFAULT 0,
+                    chargeable_weight_kg REAL NOT NULL DEFAULT 0,
+                    tracking_status TEXT NOT NULL DEFAULT 'booked'
                 );
                 CREATE TABLE IF NOT EXISTS sale_lines (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -357,6 +363,173 @@ impl Store {
             .map_err(|e| e.to_string())?;
         // Always pin to current pre-release schema (drop any leftover 2–17 markers).
         self.meta_set("schema_version", "1")?;
+        // Pre-release column adds (no-op when CREATE already has them).
+        for stmt in [
+            "ALTER TABLE sales ADD COLUMN awb_no TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN destination TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN consignee_name TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN actual_weight_kg REAL NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN volumetric_weight_kg REAL NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN chargeable_weight_kg REAL NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN tracking_status TEXT NOT NULL DEFAULT 'booked'",
+            "ALTER TABLE sales ADD COLUMN zone_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN cod_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN carrier_cost_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN period_bill_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN handover_kind TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN carrier_party_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN rider_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN pod_note TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN extras_json TEXT NOT NULL DEFAULT '[]'",
+            "ALTER TABLE products ADD COLUMN zone_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE products ADD COLUMN first_kg REAL NOT NULL DEFAULT 0",
+            "ALTER TABLE products ADD COLUMN first_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE products ADD COLUMN extra_per_kg_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
+        ] {
+            let _ = self.conn.execute(stmt, []);
+        }
+
+        self.conn
+            .execute_batch(
+                r#"
+                CREATE TABLE IF NOT EXISTS zones (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    note TEXT NOT NULL DEFAULT '',
+                    active INTEGER NOT NULL DEFAULT 1
+                );
+                CREATE TABLE IF NOT EXISTS extra_charge_types (
+                    id TEXT PRIMARY KEY,
+                    kind TEXT NOT NULL DEFAULT 'other',
+                    name TEXT NOT NULL,
+                    default_paise INTEGER NOT NULL DEFAULT 0,
+                    active INTEGER NOT NULL DEFAULT 1
+                );
+                CREATE TABLE IF NOT EXISTS riders (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    phone TEXT NOT NULL DEFAULT '',
+                    vehicle_label TEXT NOT NULL DEFAULT '',
+                    active INTEGER NOT NULL DEFAULT 1,
+                    note TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS manifests (
+                    id TEXT PRIMARY KEY,
+                    created_at TEXT NOT NULL,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    kind TEXT NOT NULL DEFAULT 'carrier',
+                    carrier_party_id TEXT NOT NULL DEFAULT '',
+                    carrier_name TEXT NOT NULL DEFAULT '',
+                    rider_id TEXT NOT NULL DEFAULT '',
+                    rider_name TEXT NOT NULL DEFAULT '',
+                    note TEXT NOT NULL DEFAULT '',
+                    status TEXT NOT NULL DEFAULT 'open'
+                );
+                CREATE TABLE IF NOT EXISTS manifest_lines (
+                    id TEXT PRIMARY KEY,
+                    manifest_id TEXT NOT NULL,
+                    sale_id TEXT NOT NULL,
+                    awb_no TEXT NOT NULL DEFAULT '',
+                    destination TEXT NOT NULL DEFAULT '',
+                    consignee_name TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS tracking_events (
+                    id TEXT PRIMARY KEY,
+                    sale_id TEXT NOT NULL,
+                    awb_no TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    status TEXT NOT NULL,
+                    note TEXT NOT NULL DEFAULT '',
+                    pod_ref TEXT NOT NULL DEFAULT '',
+                    actor_name TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS period_bills (
+                    id TEXT PRIMARY KEY,
+                    party_id TEXT NOT NULL,
+                    party_name TEXT NOT NULL DEFAULT '',
+                    invoice_no TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    from_date TEXT NOT NULL DEFAULT '',
+                    to_date TEXT NOT NULL DEFAULT '',
+                    total_paise INTEGER NOT NULL DEFAULT 0,
+                    sale_ids_json TEXT NOT NULL DEFAULT '[]',
+                    note TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS cod_entries (
+                    id TEXT PRIMARY KEY,
+                    sale_id TEXT NOT NULL,
+                    awb_no TEXT NOT NULL DEFAULT '',
+                    party_id TEXT NOT NULL DEFAULT '',
+                    party_name TEXT NOT NULL DEFAULT '',
+                    cod_paise INTEGER NOT NULL DEFAULT 0,
+                    status TEXT NOT NULL DEFAULT 'pending',
+                    created_at TEXT NOT NULL,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    collected_at TEXT NOT NULL DEFAULT '',
+                    remittance_id TEXT NOT NULL DEFAULT '',
+                    note TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS cod_remittances (
+                    id TEXT PRIMARY KEY,
+                    party_id TEXT NOT NULL,
+                    party_name TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    total_paise INTEGER NOT NULL DEFAULT 0,
+                    pay_method TEXT NOT NULL DEFAULT 'cash',
+                    note TEXT NOT NULL DEFAULT '',
+                    entry_ids_json TEXT NOT NULL DEFAULT '[]'
+                );
+                CREATE TABLE IF NOT EXISTS notify_outbox (
+                    id TEXT PRIMARY KEY,
+                    created_at TEXT NOT NULL,
+                    channel TEXT NOT NULL DEFAULT '',
+                    to_addr TEXT NOT NULL DEFAULT '',
+                    template_key TEXT NOT NULL DEFAULT '',
+                    payload_json TEXT NOT NULL DEFAULT '{}',
+                    status TEXT NOT NULL DEFAULT 'queued',
+                    last_error TEXT NOT NULL DEFAULT ''
+                );
+                CREATE INDEX IF NOT EXISTS idx_sales_awb ON sales(awb_no);
+                CREATE INDEX IF NOT EXISTS idx_tracking_sale ON tracking_events(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_cod_party ON cod_entries(party_id);
+                CREATE INDEX IF NOT EXISTS idx_manifest_lines ON manifest_lines(manifest_id);
+                "#,
+            )
+            .map_err(|e| e.to_string())?;
+
+        // Seed common extras once (idempotent by kind).
+        for (kind, name, paise) in [
+            ("fuel", "Fuel surcharge", 0i64),
+            ("docket", "Docket fee", 0),
+            ("oda", "ODA", 0),
+            ("packing", "Packing", 0),
+            ("cod_fee", "COD fee", 0),
+        ] {
+            let exists: i64 = self
+                .conn
+                .query_row(
+                    "SELECT COUNT(*) FROM extra_charge_types WHERE kind = ?1",
+                    params![kind],
+                    |r| r.get(0),
+                )
+                .unwrap_or(0);
+            if exists == 0 {
+                let _ = self.conn.execute(
+                    "INSERT INTO extra_charge_types(id, kind, name, default_paise, active)
+                     VALUES(?1, ?2, ?3, ?4, 1)",
+                    params![new_id(), kind, name, paise],
+                );
+            }
+        }
 
         for (key, value) in [
             ("venue_mode", "counter"),
@@ -364,7 +537,8 @@ impl Store {
             ("client_paired", "0"),
             ("next_invoice_seq", "1"),
             ("pin_reset_required", "0"),
-            ("entity_template", "custom"),
+            ("entity_template", "courier_agency"),
+            ("next_awb_seq", "1"),
         ] {
             self.conn
                 .execute(
@@ -798,19 +972,17 @@ impl Store {
     }
 
     pub fn entity_template_id(&self) -> Result<String, String> {
-        Ok(self
-            .meta_get("entity_template")?
-            .unwrap_or_else(|| "custom".into()))
+        Ok(entity_template::COURIER.id.into())
     }
 
     pub fn entity_template(&self) -> Result<&'static EntityTemplate, String> {
-        Ok(entity_template::resolve(&self.entity_template_id()?))
+        Ok(&entity_template::COURIER)
     }
 
-    /// Apply a start template: labels/features always; seeds only when empty.
-    pub fn apply_entity_template(&self, template_id: &str) -> Result<&'static EntityTemplate, String> {
+    /// Lock this binary to Kumkaj Courier (ignores other template ids).
+    pub fn apply_entity_template(&self, _template_id: &str) -> Result<&'static EntityTemplate, String> {
         self.assert_server_writer("Apply start template")?;
-        let tmpl = entity_template::resolve(template_id);
+        let tmpl = &entity_template::COURIER;
         self.meta_set("entity_template", tmpl.id)?;
         self.meta_set("qty_unit_hint", tmpl.qty_unit_hint)?;
         self.meta_set("lane_declared_label", tmpl.lane_declared_label)?;
@@ -1080,6 +1252,36 @@ impl Store {
         out.push_str("Bill type: ");
         out.push_str(lane_label);
         out.push('\n');
+        if !sale.awb_no.trim().is_empty() {
+            out.push_str("AWB: ");
+            out.push_str(sale.awb_no.trim());
+            out.push('\n');
+            // Plain-text barcode payload — label printers / scanners read the AWB.
+            out.push_str("*");
+            out.push_str(sale.awb_no.trim());
+            out.push_str("*\n");
+        }
+        if !sale.destination.trim().is_empty() {
+            out.push_str("To: ");
+            out.push_str(sale.destination.trim());
+            out.push('\n');
+        }
+        if !sale.consignee_name.trim().is_empty() {
+            out.push_str("Consignee: ");
+            out.push_str(sale.consignee_name.trim());
+            out.push('\n');
+        }
+        if sale.chargeable_weight_kg > 0.0 {
+            out.push_str(&format!(
+                "Weight: actual {:.2} kg · vol {:.2} kg · chargeable {:.2} kg\n",
+                sale.actual_weight_kg, sale.volumetric_weight_kg, sale.chargeable_weight_kg
+            ));
+        }
+        if !sale.tracking_status.trim().is_empty() {
+            out.push_str("Status: ");
+            out.push_str(sale.tracking_status.trim());
+            out.push('\n');
+        }
         out.push_str("--------------------\n");
         for line in &lines {
             let unit = Money(line.unit_price_paise).format_localized(&currency, &fiscal_settings);
@@ -1177,7 +1379,8 @@ impl Store {
         let row = self
             .conn
             .query_row(
-                "SELECT id, name, phone, note, active, COALESCE(kind_label, '')
+                "SELECT id, name, phone, note, active, COALESCE(kind_label, ''),
+                        COALESCE(credit_limit_paise, 0)
                  FROM customers WHERE id = ?1",
                 params![id],
                 |row| {
@@ -1188,12 +1391,13 @@ impl Store {
                         row.get::<_, String>(3)?,
                         row.get::<_, i64>(4)?,
                         row.get::<_, String>(5)?,
+                        row.get::<_, i64>(6)?,
                     ))
                 },
             )
             .optional()
             .map_err(|e| e.to_string())?;
-        let Some((id, name, phone, note, active, kind_label)) = row else {
+        let Some((id, name, phone, note, active, kind_label, credit_limit_paise)) = row else {
             return Ok(None);
         };
         let balance_paise = self.customer_balance(&id)?;
@@ -1205,6 +1409,7 @@ impl Store {
             active: active != 0,
             balance_paise,
             kind_label,
+            credit_limit_paise,
         }))
     }
 
@@ -1437,14 +1642,15 @@ impl Store {
         for c in customers {
             self.conn
                 .execute(
-                    "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)
+                    "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label, credit_limit_paise)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
                      ON CONFLICT(id) DO UPDATE SET
                        name=excluded.name,
                        phone=excluded.phone,
                        note=excluded.note,
                        active=excluded.active,
-                       kind_label=excluded.kind_label",
+                       kind_label=excluded.kind_label,
+                       credit_limit_paise=excluded.credit_limit_paise",
                     params![
                         c.id,
                         c.name,
@@ -1453,7 +1659,8 @@ impl Store {
                         c.active as i64,
                         Local::now().to_rfc3339(),
                         self.active_branch_id()?,
-                        c.kind_label
+                        c.kind_label,
+                        c.credit_limit_paise
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -2994,10 +3201,8 @@ impl Store {
         Ok(())
     }
 
-    /// `server` (this device is the shop) | `client` (extra till).
-    /// A leftover `standalone` value is rewritten to `server` with extra tills off.
+    /// `server` (this device holds the books) | `client` (extra till).
     pub fn device_role(&self) -> Result<Option<String>, String> {
-        self.rewrite_legacy_standalone()?;
         self.meta_get("device_role")
     }
 
@@ -3008,34 +3213,16 @@ impl Store {
         }
     }
 
-    /// Rewrite an old Standalone row to shop (`server`) with extra tills off.
-    /// Cloud only ever syncs shop books vs extra-till cache — there is no third role.
-    fn rewrite_legacy_standalone(&self) -> Result<(), String> {
-        if self.meta_get("device_role")?.as_deref() != Some("standalone") {
-            return Ok(());
-        }
-        self.meta_set("device_role", "server")?;
-        if self.meta_get("extra_tills_allowed")?.is_none() {
-            self.meta_set("extra_tills_allowed", "0")?;
-        }
-        Ok(())
-    }
-
-    /// Extra tills may pair on LAN. A new shop leaves this off. An existing
-    /// `server` row with no flag keeps LAN on (shops that already had tills).
+    /// Extra tills may pair on LAN. Default off until the owner allows them.
     pub fn extra_tills_allowed(&self) -> Result<bool, String> {
         if self.is_client_device()? {
             return Ok(false);
         }
-        match self
+        Ok(self
             .meta_get("extra_tills_allowed")?
             .as_deref()
             .map(str::trim)
-        {
-            Some("1") => Ok(true),
-            Some("0") => Ok(false),
-            _ => Ok(self.meta_get("device_role")?.as_deref() == Some("server")),
-        }
+            == Some("1"))
     }
 
     pub fn set_extra_tills_allowed(&self, allowed: bool) -> Result<(), String> {
@@ -3996,9 +4183,10 @@ impl Store {
                 "INSERT INTO products(
                     id, name, price_paise, available, archived, image_key,
                     category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
-                    tax_rate_id, aliases_json, unit_label
+                    tax_rate_id, aliases_json, unit_label,
+                    zone_id, first_kg, first_paise, extra_per_kg_paise
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -4013,7 +4201,11 @@ impl Store {
                    branch_id=excluded.branch_id,
                    tax_rate_id=excluded.tax_rate_id,
                    aliases_json=excluded.aliases_json,
-                   unit_label=excluded.unit_label",
+                   unit_label=excluded.unit_label,
+                   zone_id=excluded.zone_id,
+                   first_kg=excluded.first_kg,
+                   first_paise=excluded.first_paise,
+                   extra_per_kg_paise=excluded.extra_per_kg_paise",
                 params![
                     product.id,
                     product.name,
@@ -4033,7 +4225,11 @@ impl Store {
                     } else {
                         product.aliases_json.clone()
                     },
-                    product.unit_label
+                    product.unit_label,
+                    product.zone_id,
+                    product.first_kg,
+                    product.first_paise,
+                    product.extra_per_kg_paise
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -4111,6 +4307,35 @@ impl Store {
             if exists == 0 {
                 return Err("Customer not found".into());
             }
+            // Credit limit gate for account bookings.
+            let credit_amount_estimate = credit_part.unwrap_or_else(|| {
+                if pay.is_credit() {
+                    draft.total_paise
+                } else {
+                    0
+                }
+            });
+            if credit_amount_estimate > 0 {
+                let cust = self
+                    .get_customer(cid)?
+                    .ok_or_else(|| "Customer not found".to_string())?;
+                let gate = crate::consignments::CreditGate::check(
+                    cust.balance_paise,
+                    cust.credit_limit_paise,
+                    credit_amount_estimate,
+                );
+                if let crate::consignments::CreditGate::OverLimit {
+                    balance_paise,
+                    limit_paise,
+                    ..
+                } = gate
+                {
+                    return Err(format!(
+                        "Credit limit exceeded: outstanding {} / limit {} (paise)",
+                        balance_paise, limit_paise
+                    ));
+                }
+            }
         }
 
         let branch_id = self.active_branch_id()?;
@@ -4178,15 +4403,36 @@ impl Store {
         // Reserved inside the sale's transaction so a crash can never hand the
         // same number to two bills.
         let invoice_no = reserve_invoice_no(&tx, &branch_code)?;
+        let awb_no = if draft.awb_no.trim().is_empty() {
+            reserve_awb_no(&tx)?
+        } else {
+            draft.awb_no.trim().to_string()
+        };
+        let destination = draft.destination.trim().to_string();
+        let consignee_name = draft.consignee_name.trim().to_string();
+        let actual_weight_kg = draft.actual_weight_kg;
+        let volumetric_weight_kg = draft.volumetric_weight_kg;
+        let chargeable_weight_kg = draft.chargeable_weight_kg;
+        let zone_id = draft.zone_id.trim().to_string();
+        let cod_paise = draft.cod_paise.max(0);
+        let carrier_cost_paise = draft.carrier_cost_paise.max(0);
+        let extras_json = if draft.extras_json.trim().is_empty() {
+            "[]".into()
+        } else {
+            draft.extras_json.clone()
+        };
         let created_by_name = actor.lock_label();
         tx.execute(
             "INSERT INTO sales(
                 id, created_at, total_paise, lines_total_paise, rounding_paise,
                 pay_method, status, table_id, customer_id, created_by_id, created_by_name,
                 branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
-                service_paise, invoice_no, money_lane, user_at, device_at, server_at
+                service_paise, invoice_no, money_lane, user_at, device_at, server_at,
+                awb_no, destination, consignee_name,
+                actual_weight_kg, volumetric_weight_kg, chargeable_weight_kg, tracking_status,
+                zone_id, cod_paise, carrier_cost_paise, extras_json
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, ?27, ?28, 'booked', ?29, ?30, ?31, ?32)",
             params![
                 sale_id,
                 created_at,
@@ -4209,10 +4455,98 @@ impl Store {
                 draft.money_lane.as_str(),
                 times.user_at,
                 times.device_at,
-                times.server_at
+                times.server_at,
+                awb_no,
+                destination,
+                consignee_name,
+                actual_weight_kg,
+                volumetric_weight_kg,
+                chargeable_weight_kg,
+                zone_id,
+                cod_paise,
+                carrier_cost_paise,
+                extras_json
             ],
         )
         .map_err(|e| e.to_string())?;
+
+        // Initial tracking event.
+        tx.execute(
+            "INSERT INTO tracking_events(
+                id, sale_id, awb_no, created_at, user_at, device_at,
+                status, note, pod_ref, actor_name
+             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'booked', '', '', ?7)",
+            params![
+                new_id(),
+                sale_id,
+                awb_no,
+                created_at,
+                times.user_at,
+                times.device_at,
+                created_by_name
+            ],
+        )
+        .map_err(|e| e.to_string())?;
+
+        if cod_paise > 0 {
+            let (party_id, party_name) = if let Some(cid) = customer_id {
+                let name: String = tx
+                    .query_row(
+                        "SELECT name FROM customers WHERE id = ?1",
+                        params![cid],
+                        |r| r.get(0),
+                    )
+                    .optional()
+                    .map_err(|e| e.to_string())?
+                    .unwrap_or_default();
+                (cid.to_string(), name)
+            } else {
+                (String::new(), String::new())
+            };
+            tx.execute(
+                "INSERT INTO cod_entries(
+                    id, sale_id, awb_no, party_id, party_name, cod_paise, status,
+                    created_at, user_at, device_at, collected_at, remittance_id, note
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'pending', ?7, ?8, ?9, '', '', '')",
+                params![
+                    new_id(),
+                    sale_id,
+                    awb_no,
+                    party_id,
+                    party_name,
+                    cod_paise,
+                    created_at,
+                    times.user_at,
+                    times.device_at
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        }
+
+        if !draft.notify_phone.trim().is_empty() {
+            let track = crate::notify::public_track_path(&awb_no);
+            let row = crate::notify::draft_booking_alert(
+                draft.notify_phone.trim(),
+                &awb_no,
+                &destination,
+                &track,
+            );
+            tx.execute(
+                "INSERT INTO notify_outbox(
+                    id, created_at, channel, to_addr, template_key, payload_json, status, last_error
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, '')",
+                params![
+                    row.id,
+                    row.created_at,
+                    row.channel,
+                    row.to_addr,
+                    row.template_key,
+                    row.payload_json,
+                    row.status
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        }
 
         let tenders: Vec<(&str, i64)> = if parts.is_empty() {
             vec![(pay.as_str(), total_paise)]
@@ -4486,6 +4820,22 @@ impl Store {
             net_paise,
             service_paise,
             money_lane: draft.money_lane.as_str().into(),
+            awb_no,
+            destination,
+            consignee_name,
+            actual_weight_kg,
+            volumetric_weight_kg,
+            chargeable_weight_kg,
+            tracking_status: "booked".into(),
+            zone_id,
+            cod_paise,
+            carrier_cost_paise,
+            period_bill_id: String::new(),
+            handover_kind: String::new(),
+            carrier_party_id: String::new(),
+            rider_id: String::new(),
+            pod_note: String::new(),
+            extras_json,
             lines: draft.lines.clone(),
         };
 
@@ -4703,6 +5053,22 @@ impl Store {
             net_paise,
             service_paise,
             money_lane: draft.money_lane.as_str().into(),
+            awb_no: previous.awb_no,
+            destination: previous.destination,
+            consignee_name: previous.consignee_name,
+            actual_weight_kg: previous.actual_weight_kg,
+            volumetric_weight_kg: previous.volumetric_weight_kg,
+            chargeable_weight_kg: previous.chargeable_weight_kg,
+            tracking_status: previous.tracking_status,
+            zone_id: previous.zone_id,
+            cod_paise: previous.cod_paise,
+            carrier_cost_paise: previous.carrier_cost_paise,
+            period_bill_id: previous.period_bill_id,
+            handover_kind: previous.handover_kind,
+            carrier_party_id: previous.carrier_party_id,
+            rider_id: previous.rider_id,
+            pod_note: previous.pod_note,
+            extras_json: previous.extras_json,
             lines: draft.lines.clone(),
         })
     }
@@ -5630,7 +5996,27 @@ impl Store {
             active: true,
             balance_paise: 0,
             kind_label,
+            credit_limit_paise: 0,
         })
+    }
+
+    pub fn set_customer_credit_limit(
+        &self,
+        customer_id: &str,
+        credit_limit_paise: i64,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Set credit limit")?;
+        let n = self
+            .conn
+            .execute(
+                "UPDATE customers SET credit_limit_paise = ?1 WHERE id = ?2",
+                params![credit_limit_paise.max(0), customer_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Customer not found".into());
+        }
+        Ok(())
     }
 
     pub fn find_or_create_customer(&self, name: &str) -> Result<Customer, String> {
@@ -5674,7 +6060,8 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT id, name, phone, note, active, COALESCE(kind_label, '')
+                "SELECT id, name, phone, note, active, COALESCE(kind_label, ''),
+                        COALESCE(credit_limit_paise, 0)
                  FROM customers
                  WHERE active = 1 AND (branch_id = ?1 OR branch_id = '')
                  ORDER BY name",
@@ -5689,12 +6076,14 @@ impl Store {
                     row.get::<_, String>(3)?,
                     row.get::<_, i64>(4)?,
                     row.get::<_, String>(5)?,
+                    row.get::<_, i64>(6)?,
                 ))
             })
             .map_err(|e| e.to_string())?;
         let mut out = Vec::new();
         for row in rows {
-            let (id, name, phone, note, active, kind_label) = row.map_err(|e| e.to_string())?;
+            let (id, name, phone, note, active, kind_label, credit_limit_paise) =
+                row.map_err(|e| e.to_string())?;
             let balance_paise = self.customer_balance(&id)?;
             out.push(Customer {
                 id,
@@ -5704,6 +6093,7 @@ impl Store {
                 active: active != 0,
                 balance_paise,
                 kind_label,
+                credit_limit_paise,
             });
         }
         // Owe first, then name
@@ -6299,8 +6689,12 @@ impl Store {
         Ok(())
     }
 
+    /// Restore into the active local server DB (Server Mode).
     pub fn restore_from(backup: &Path) -> Result<Self, String> {
-        Self::restore_from_to_path(backup, &data_dir()?.join("kumkaj.sqlite3"))
+        let dir = data_dir()?;
+        let id = crate::local_servers::active_server_id(&dir)?
+            .ok_or_else(|| "No local server to restore into".to_string())?;
+        Self::restore_from_to_path(backup, &crate::local_servers::server_db_path(&dir, &id))
     }
 
     /// Replace the DB at `dest` with `backup` and reopen it. The caller must
@@ -6335,10 +6729,791 @@ impl Store {
         fs::create_dir_all(base).map_err(|e| e.to_string())?;
         crate::local_servers::open_active_server(base)
     }
+
+    // —— Courier BOS: zones, consignments, fleet/carrier ops, COD, labels ——
+
+    pub fn list_zones(&self) -> Result<Vec<crate::rates::Zone>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, name, note, active FROM zones WHERE active = 1 ORDER BY name",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(crate::rates::Zone {
+                    id: r.get(0)?,
+                    name: r.get(1)?,
+                    note: r.get(2)?,
+                    active: r.get::<_, i64>(3)? != 0,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn upsert_zone(&self, zone: &crate::rates::Zone) -> Result<(), String> {
+        self.assert_server_writer("Zones")?;
+        self.conn
+            .execute(
+                "INSERT INTO zones(id, name, note, active) VALUES(?1, ?2, ?3, ?4)
+                 ON CONFLICT(id) DO UPDATE SET
+                   name=excluded.name, note=excluded.note, active=excluded.active",
+                params![zone.id, zone.name, zone.note, zone.active as i64],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn add_zone(&self, name: &str) -> Result<crate::rates::Zone, String> {
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("Zone name required".into());
+        }
+        let zone = crate::rates::Zone {
+            id: new_id(),
+            name: name.into(),
+            note: String::new(),
+            active: true,
+        };
+        self.upsert_zone(&zone)?;
+        Ok(zone)
+    }
+
+    pub fn list_extra_charge_types(&self) -> Result<Vec<crate::rates::ExtraChargeType>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, kind, name, default_paise, active FROM extra_charge_types
+                 WHERE active = 1 ORDER BY name",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(crate::rates::ExtraChargeType {
+                    id: r.get(0)?,
+                    kind: r.get(1)?,
+                    name: r.get(2)?,
+                    default_paise: r.get(3)?,
+                    active: r.get::<_, i64>(4)? != 0,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn list_riders(&self) -> Result<Vec<crate::manifest::Rider>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, name, phone, vehicle_label, active, note FROM riders
+                 WHERE active = 1 ORDER BY name",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(crate::manifest::Rider {
+                    id: r.get(0)?,
+                    name: r.get(1)?,
+                    phone: r.get(2)?,
+                    vehicle_label: r.get(3)?,
+                    active: r.get::<_, i64>(4)? != 0,
+                    note: r.get(5)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn upsert_rider(&self, rider: &crate::manifest::Rider) -> Result<(), String> {
+        self.assert_server_writer("Riders")?;
+        self.conn
+            .execute(
+                "INSERT INTO riders(id, name, phone, vehicle_label, active, note)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6)
+                 ON CONFLICT(id) DO UPDATE SET
+                   name=excluded.name, phone=excluded.phone,
+                   vehicle_label=excluded.vehicle_label, active=excluded.active,
+                   note=excluded.note",
+                params![
+                    rider.id,
+                    rider.name,
+                    rider.phone,
+                    rider.vehicle_label,
+                    rider.active as i64,
+                    rider.note
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn add_rider(&self, name: &str, phone: &str, vehicle: &str) -> Result<crate::manifest::Rider, String> {
+        let mut r = crate::manifest::Rider::new(name);
+        r.phone = phone.trim().into();
+        r.vehicle_label = vehicle.trim().into();
+        if r.name.trim().is_empty() {
+            return Err("Rider name required".into());
+        }
+        self.upsert_rider(&r)?;
+        Ok(r)
+    }
+
+    pub fn search_consignments(
+        &self,
+        filter: &crate::consignments::ConsignmentFilter,
+        limit: i64,
+    ) -> Result<Vec<Sale>, String> {
+        let mut sales = self.recent_sales(limit.max(50))?;
+        sales.retain(|s| !s.awb_no.trim().is_empty() && filter.matches(s));
+        Ok(sales)
+    }
+
+    pub fn find_sale_by_awb(&self, awb: &str) -> Result<Option<Sale>, String> {
+        let awb = awb.trim();
+        if awb.is_empty() {
+            return Ok(None);
+        }
+        let mut sale = self
+            .conn
+            .query_row(
+                &format!("SELECT {SALE_COLUMNS} FROM sales WHERE awb_no = ?1 LIMIT 1"),
+                params![awb],
+                row_to_sale,
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        if let Some(ref mut s) = sale {
+            s.lines = self.sale_lines(&s.id)?;
+        }
+        Ok(sale)
+    }
+
+    pub fn set_sale_carrier_cost(&self, sale_id: &str, carrier_cost_paise: i64) -> Result<(), String> {
+        self.assert_server_writer("Carrier cost")?;
+        self.conn
+            .execute(
+                "UPDATE sales SET carrier_cost_paise = ?1 WHERE id = ?2",
+                params![carrier_cost_paise.max(0), sale_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn advance_tracking(
+        &mut self,
+        sale_id: &str,
+        status: crate::manifest::TrackingStatus,
+        note: &str,
+        pod_ref: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Tracking")?;
+        let sale = self
+            .get_sale(sale_id)?
+            .ok_or_else(|| "Sale not found".to_string())?;
+        let times = EventTimes::capture(None);
+        self.conn
+            .execute(
+                "UPDATE sales SET tracking_status = ?1, pod_note = CASE
+                     WHEN ?2 = '' THEN pod_note ELSE ?2 END
+                 WHERE id = ?3",
+                params![status.as_str(), note.trim(), sale_id],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "INSERT INTO tracking_events(
+                    id, sale_id, awb_no, created_at, user_at, device_at,
+                    status, note, pod_ref, actor_name
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
+                params![
+                    new_id(),
+                    sale_id,
+                    sale.awb_no,
+                    times.user_at,
+                    times.user_at,
+                    times.device_at,
+                    status.as_str(),
+                    note.trim(),
+                    pod_ref.trim(),
+                    actor.lock_label()
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn list_tracking_events(&self, sale_id: &str) -> Result<Vec<crate::manifest::TrackingEvent>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, sale_id, awb_no, created_at, user_at, device_at,
+                        status, note, pod_ref, actor_name
+                 FROM tracking_events WHERE sale_id = ?1 ORDER BY created_at",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![sale_id], |r| {
+                Ok(crate::manifest::TrackingEvent {
+                    id: r.get(0)?,
+                    sale_id: r.get(1)?,
+                    awb_no: r.get(2)?,
+                    created_at: r.get(3)?,
+                    user_at: r.get(4)?,
+                    device_at: r.get(5)?,
+                    status: r.get(6)?,
+                    note: r.get(7)?,
+                    pod_ref: r.get(8)?,
+                    actor_name: r.get(9)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn public_track(&self, awb: &str) -> Result<Option<crate::track::PublicTrackView>, String> {
+        let Some(sale) = self.find_sale_by_awb(awb)? else {
+            return Ok(None);
+        };
+        let events = self.list_tracking_events(&sale.id)?;
+        Ok(Some(crate::track::view_from_sale(&sale, &events)))
+    }
+
+    /// Create a carrier bag or own-fleet run sheet and mark dockets handed over / out.
+    pub fn create_manifest(
+        &mut self,
+        kind: crate::manifest::HandoverKind,
+        carrier_party_id: &str,
+        rider_id: &str,
+        sale_ids: &[String],
+        note: &str,
+        actor: &StaffMember,
+    ) -> Result<crate::manifest::Manifest, String> {
+        self.assert_server_writer("Manifest")?;
+        if sale_ids.is_empty() {
+            return Err("Pick at least one AWB".into());
+        }
+        let times = EventTimes::capture(None);
+        let id = new_id();
+        let (carrier_name, rider_name) = match kind {
+            crate::manifest::HandoverKind::Carrier => {
+                let c = self
+                    .get_customer(carrier_party_id)?
+                    .ok_or_else(|| "Carrier party required".to_string())?;
+                (c.name, String::new())
+            }
+            crate::manifest::HandoverKind::OwnFleet => {
+                let riders = self.list_riders()?;
+                let r = riders
+                    .into_iter()
+                    .find(|x| x.id == rider_id)
+                    .ok_or_else(|| "Rider required for own-fleet dispatch".to_string())?;
+                (String::new(), r.name)
+            }
+        };
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        tx.execute(
+            "INSERT INTO manifests(
+                id, created_at, user_at, device_at, kind,
+                carrier_party_id, carrier_name, rider_id, rider_name, note, status
+             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, 'open')",
+            params![
+                id,
+                times.user_at,
+                times.user_at,
+                times.device_at,
+                kind.as_str(),
+                carrier_party_id,
+                carrier_name,
+                rider_id,
+                rider_name,
+                note.trim()
+            ],
+        )
+        .map_err(|e| e.to_string())?;
+
+        let next_status = match kind {
+            crate::manifest::HandoverKind::Carrier => {
+                crate::manifest::TrackingStatus::HandedOver
+            }
+            crate::manifest::HandoverKind::OwnFleet => {
+                crate::manifest::TrackingStatus::OutForDelivery
+            }
+        };
+        let mut line_count = 0i64;
+        for sid in sale_ids {
+            let sale: Option<(String, String, String)> = tx
+                .query_row(
+                    "SELECT awb_no, destination, consignee_name FROM sales WHERE id = ?1",
+                    params![sid],
+                    |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+                )
+                .optional()
+                .map_err(|e| e.to_string())?;
+            let Some((awb, dest, consignee)) = sale else {
+                continue;
+            };
+            tx.execute(
+                "INSERT INTO manifest_lines(
+                    id, manifest_id, sale_id, awb_no, destination, consignee_name
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6)",
+                params![new_id(), id, sid, awb, dest, consignee],
+            )
+            .map_err(|e| e.to_string())?;
+            tx.execute(
+                "UPDATE sales SET tracking_status = ?1, handover_kind = ?2,
+                     carrier_party_id = ?3, rider_id = ?4
+                 WHERE id = ?5",
+                params![
+                    next_status.as_str(),
+                    kind.as_str(),
+                    carrier_party_id,
+                    rider_id,
+                    sid
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+            tx.execute(
+                "INSERT INTO tracking_events(
+                    id, sale_id, awb_no, created_at, user_at, device_at,
+                    status, note, pod_ref, actor_name
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, '', ?9)",
+                params![
+                    new_id(),
+                    sid,
+                    awb,
+                    times.user_at,
+                    times.user_at,
+                    times.device_at,
+                    next_status.as_str(),
+                    note.trim(),
+                    actor.lock_label()
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+            line_count += 1;
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(crate::manifest::Manifest {
+            id,
+            created_at: times.user_at.clone(),
+            user_at: times.user_at,
+            device_at: times.device_at,
+            kind: kind.as_str().into(),
+            carrier_party_id: carrier_party_id.into(),
+            carrier_name,
+            rider_id: rider_id.into(),
+            rider_name,
+            note: note.trim().into(),
+            status: "open".into(),
+            line_count,
+        })
+    }
+
+    pub fn list_manifests(&self, limit: i64) -> Result<Vec<crate::manifest::Manifest>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT m.id, m.created_at, m.user_at, m.device_at, m.kind,
+                        m.carrier_party_id, m.carrier_name, m.rider_id, m.rider_name,
+                        m.note, m.status,
+                        (SELECT COUNT(*) FROM manifest_lines l WHERE l.manifest_id = m.id)
+                 FROM manifests m ORDER BY m.created_at DESC LIMIT ?1",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![limit.max(1)], |r| {
+                Ok(crate::manifest::Manifest {
+                    id: r.get(0)?,
+                    created_at: r.get(1)?,
+                    user_at: r.get(2)?,
+                    device_at: r.get(3)?,
+                    kind: r.get(4)?,
+                    carrier_party_id: r.get(5)?,
+                    carrier_name: r.get(6)?,
+                    rider_id: r.get(7)?,
+                    rider_name: r.get(8)?,
+                    note: r.get(9)?,
+                    status: r.get(10)?,
+                    line_count: r.get(11)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn create_period_bill(
+        &mut self,
+        party_id: &str,
+        from_date: &str,
+        to_date: &str,
+        note: &str,
+        actor: &StaffMember,
+    ) -> Result<crate::consignments::PeriodBill, String> {
+        self.assert_server_writer("Period bill")?;
+        let party = self
+            .get_customer(party_id)?
+            .ok_or_else(|| "Party not found".to_string())?;
+        let filter = crate::consignments::ConsignmentFilter {
+            party_id: party_id.into(),
+            from_date: from_date.trim().into(),
+            to_date: to_date.trim().into(),
+            billed: "unbilled".into(),
+            ..Default::default()
+        };
+        let sales = self.search_consignments(&filter, 2000)?;
+        let unbilled: Vec<_> = sales
+            .into_iter()
+            .filter(|s| s.is_unbilled_account())
+            .collect();
+        if unbilled.is_empty() {
+            return Err("No unbilled account dockets in range".into());
+        }
+        let total: i64 = unbilled.iter().map(|s| s.total_paise).sum();
+        let sale_ids: Vec<String> = unbilled.iter().map(|s| s.id.clone()).collect();
+        let times = EventTimes::capture(None);
+        let id = new_id();
+        let branch_code = self.active_branch()?.code;
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let invoice_no = reserve_invoice_no(&tx, &branch_code)?;
+        let sale_ids_json = serde_json::to_string(&sale_ids).map_err(|e| e.to_string())?;
+        tx.execute(
+            "INSERT INTO period_bills(
+                id, party_id, party_name, invoice_no, created_at, user_at, device_at,
+                from_date, to_date, total_paise, sale_ids_json, note
+             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
+            params![
+                id,
+                party_id,
+                party.name,
+                invoice_no,
+                times.user_at,
+                times.user_at,
+                times.device_at,
+                from_date.trim(),
+                to_date.trim(),
+                total,
+                sale_ids_json,
+                note.trim()
+            ],
+        )
+        .map_err(|e| e.to_string())?;
+        for sid in &sale_ids {
+            tx.execute(
+                "UPDATE sales SET period_bill_id = ?1 WHERE id = ?2",
+                params![id, sid],
+            )
+            .map_err(|e| e.to_string())?;
+        }
+        let _ = actor;
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(crate::consignments::PeriodBill {
+            id,
+            party_id: party_id.into(),
+            party_name: party.name,
+            invoice_no,
+            created_at: times.user_at.clone(),
+            user_at: times.user_at,
+            device_at: times.device_at,
+            from_date: from_date.trim().into(),
+            to_date: to_date.trim().into(),
+            total_paise: total,
+            sale_ids_json: serde_json::to_string(&sale_ids).unwrap_or_else(|_| "[]".into()),
+            note: note.trim().into(),
+        })
+    }
+
+    pub fn list_period_bills(&self, limit: i64) -> Result<Vec<crate::consignments::PeriodBill>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, party_id, party_name, invoice_no, created_at, user_at, device_at,
+                        from_date, to_date, total_paise, sale_ids_json, note
+                 FROM period_bills ORDER BY created_at DESC LIMIT ?1",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![limit.max(1)], |r| {
+                Ok(crate::consignments::PeriodBill {
+                    id: r.get(0)?,
+                    party_id: r.get(1)?,
+                    party_name: r.get(2)?,
+                    invoice_no: r.get(3)?,
+                    created_at: r.get(4)?,
+                    user_at: r.get(5)?,
+                    device_at: r.get(6)?,
+                    from_date: r.get(7)?,
+                    to_date: r.get(8)?,
+                    total_paise: r.get(9)?,
+                    sale_ids_json: r.get(10)?,
+                    note: r.get(11)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn list_cod_entries(&self, status: &str) -> Result<Vec<crate::cod::CodEntry>, String> {
+        let status = status.trim();
+        if !(status.is_empty()
+            || status == "any"
+            || status == "pending"
+            || status == "collected"
+            || status == "remitted")
+        {
+            return Err("Unknown COD status".into());
+        }
+        let sql = "SELECT id, sale_id, awb_no, party_id, party_name, cod_paise, status,
+                    created_at, user_at, device_at, collected_at, remittance_id, note
+             FROM cod_entries
+             WHERE (?1 = '' OR ?1 = 'any' OR status = ?1)
+             ORDER BY created_at DESC LIMIT 500";
+        let mut stmt = self.conn.prepare(sql).map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![status], |r| {
+                Ok(crate::cod::CodEntry {
+                    id: r.get(0)?,
+                    sale_id: r.get(1)?,
+                    awb_no: r.get(2)?,
+                    party_id: r.get(3)?,
+                    party_name: r.get(4)?,
+                    cod_paise: r.get(5)?,
+                    status: r.get(6)?,
+                    created_at: r.get(7)?,
+                    user_at: r.get(8)?,
+                    device_at: r.get(9)?,
+                    collected_at: r.get(10)?,
+                    remittance_id: r.get(11)?,
+                    note: r.get(12)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn mark_cod_collected(&self, entry_id: &str) -> Result<(), String> {
+        self.assert_server_writer("COD collect")?;
+        let times = EventTimes::capture(None);
+        self.conn
+            .execute(
+                "UPDATE cod_entries SET status = 'collected', collected_at = ?1 WHERE id = ?2 AND status = 'pending'",
+                params![times.user_at, entry_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn remit_cod(
+        &mut self,
+        party_id: &str,
+        entry_ids: &[String],
+        pay_method: &str,
+        note: &str,
+    ) -> Result<crate::cod::CodRemittance, String> {
+        self.assert_server_writer("COD remit")?;
+        if entry_ids.is_empty() {
+            return Err("No COD entries selected".into());
+        }
+        let party = self
+            .get_customer(party_id)?
+            .ok_or_else(|| "Party not found".to_string())?;
+        let times = EventTimes::capture(None);
+        let id = new_id();
+        let mut total = 0i64;
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        for eid in entry_ids {
+            let row: Option<(i64, String)> = tx
+                .query_row(
+                    "SELECT cod_paise, party_id FROM cod_entries
+                     WHERE id = ?1 AND status = 'collected'",
+                    params![eid],
+                    |r| Ok((r.get(0)?, r.get(1)?)),
+                )
+                .optional()
+                .map_err(|e| e.to_string())?;
+            let Some((paise, pid)) = row else {
+                return Err(format!("COD entry {eid} not collected"));
+            };
+            if pid != party_id {
+                return Err("COD entry belongs to another party".into());
+            }
+            total = total.saturating_add(paise);
+            tx.execute(
+                "UPDATE cod_entries SET status = 'remitted', remittance_id = ?1 WHERE id = ?2",
+                params![id, eid],
+            )
+            .map_err(|e| e.to_string())?;
+        }
+        let entry_ids_json = serde_json::to_string(entry_ids).map_err(|e| e.to_string())?;
+        tx.execute(
+            "INSERT INTO cod_remittances(
+                id, party_id, party_name, created_at, user_at, device_at,
+                total_paise, pay_method, note, entry_ids_json
+             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
+            params![
+                id,
+                party_id,
+                party.name,
+                times.user_at,
+                times.user_at,
+                times.device_at,
+                total,
+                pay_method.trim(),
+                note.trim(),
+                entry_ids_json
+            ],
+        )
+        .map_err(|e| e.to_string())?;
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(crate::cod::CodRemittance {
+            id,
+            party_id: party_id.into(),
+            party_name: party.name,
+            created_at: times.user_at.clone(),
+            user_at: times.user_at,
+            device_at: times.device_at,
+            total_paise: total,
+            pay_method: pay_method.trim().into(),
+            note: note.trim().into(),
+            entry_ids_json: serde_json::to_string(entry_ids).unwrap_or_else(|_| "[]".into()),
+        })
+    }
+
+    pub fn write_awb_label(&self, sale_id: &str) -> Result<PathBuf, String> {
+        let sale = self
+            .get_sale(sale_id)?
+            .ok_or_else(|| "Sale not found".to_string())?;
+        if sale.awb_no.trim().is_empty() {
+            return Err("Sale has no AWB".into());
+        }
+        let agency = self.venue_title().unwrap_or_default();
+        let from = sale
+            .customer_id
+            .as_ref()
+            .and_then(|id| self.get_customer(id).ok().flatten())
+            .map(|c| c.name)
+            .unwrap_or_else(|| "Walk-in".into());
+        let service = sale
+            .lines
+            .first()
+            .map(|l| l.name.clone())
+            .unwrap_or_default();
+        let label = crate::labels::AwbLabel {
+            awb_no: sale.awb_no.clone(),
+            from_name: from,
+            to_name: sale.consignee_name.clone(),
+            destination: sale.destination.clone(),
+            weight_kg: sale.chargeable_weight_kg,
+            pieces: 1,
+            service,
+            cod_paise: sale.cod_paise,
+            agency_name: if agency.trim().is_empty() {
+                "Kumkaj Courier".into()
+            } else {
+                agency
+            },
+        };
+        let dir = self
+            .path
+            .parent()
+            .unwrap_or(Path::new("."))
+            .join("labels");
+        label.write_svg_file(&dir)
+    }
+
+    pub fn queue_notify(&self, row: &crate::notify::NotifyOutboxRow) -> Result<(), String> {
+        self.conn
+            .execute(
+                "INSERT INTO notify_outbox(
+                    id, created_at, channel, to_addr, template_key, payload_json, status, last_error
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                params![
+                    row.id,
+                    row.created_at,
+                    row.channel,
+                    row.to_addr,
+                    row.template_key,
+                    row.payload_json,
+                    row.status,
+                    row.last_error
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn list_notify_outbox(&self, limit: i64) -> Result<Vec<crate::notify::NotifyOutboxRow>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, created_at, channel, to_addr, template_key, payload_json, status, last_error
+                 FROM notify_outbox ORDER BY created_at DESC LIMIT ?1",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![limit.max(1)], |r| {
+                Ok(crate::notify::NotifyOutboxRow {
+                    id: r.get(0)?,
+                    created_at: r.get(1)?,
+                    channel: r.get(2)?,
+                    to_addr: r.get(3)?,
+                    template_key: r.get(4)?,
+                    payload_json: r.get(5)?,
+                    status: r.get(6)?,
+                    last_error: r.get(7)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    /// Ops summary text for Reports / More — keeps UI modules thin.
+    pub fn courier_ops_summary(&self) -> Result<String, String> {
+        let booked: i64 = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*) FROM sales WHERE tracking_status = 'booked' AND awb_no != ''",
+                [],
+                |r| r.get(0),
+            )
+            .unwrap_or(0);
+        let out_delivery: i64 = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*) FROM sales WHERE tracking_status = 'out_for_delivery'",
+                [],
+                |r| r.get(0),
+            )
+            .unwrap_or(0);
+        let pending_cod: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(cod_paise),0) FROM cod_entries WHERE status = 'pending'",
+                [],
+                |r| r.get(0),
+            )
+            .unwrap_or(0);
+        let riders = self.list_riders()?.len();
+        let zones = self.list_zones()?.len();
+        Ok(format!(
+            "Ops: {booked} booked · {out_delivery} out for delivery · {riders} riders · {zones} zones\n\
+             COD pending: {}",
+            Money(pending_cod).format_with("INR")
+        ))
+    }
 }
 
-/// Reverse-DNS app id from `env/development.env` or `env/production.env`
-/// (baked by `build.rs`). Dev: `com.kumkaj.app.debug`. Prod: `com.kumkaj.app`.
+/// Reverse-DNS app id from this crate's `env/development.env` or `env/production.env`
+/// (baked by `build.rs`). Dev: `com.kumkaj.courier.debug`. Prod: `com.kumkaj.courier`.
 pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
 /// Launcher / window label from the same env file.
 pub const APP_LABEL: &str = env!("KUMKAJ_APP_LABEL");
@@ -6367,7 +7542,9 @@ const fn const_str_eq(a: &str, b: &str) -> bool {
 const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image_key,
      COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
-     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, '')";
+     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, ''),
+     COALESCE(zone_id, ''), COALESCE(first_kg, 0), COALESCE(first_paise, 0),
+     COALESCE(extra_per_kg_paise, 0)";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
@@ -6381,7 +7558,14 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(money_lane, 'declared'),
      COALESCE(NULLIF(user_at, ''), created_at),
      COALESCE(NULLIF(device_at, ''), created_at),
-     COALESCE(server_at, '')";
+     COALESCE(server_at, ''),
+     COALESCE(awb_no, ''), COALESCE(destination, ''), COALESCE(consignee_name, ''),
+     COALESCE(actual_weight_kg, 0), COALESCE(volumetric_weight_kg, 0),
+     COALESCE(chargeable_weight_kg, 0), COALESCE(tracking_status, 'booked'),
+     COALESCE(zone_id, ''), COALESCE(cod_paise, 0), COALESCE(carrier_cost_paise, 0),
+     COALESCE(period_bill_id, ''), COALESCE(handover_kind, ''),
+     COALESCE(carrier_party_id, ''), COALESCE(rider_id, ''),
+     COALESCE(pod_note, ''), COALESCE(extras_json, '[]')";
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -6560,6 +7744,26 @@ fn reserve_invoice_no(tx: &Connection, branch_code: &str) -> Result<String, Stri
     Ok(format!("INV-{code}-{seq:06}"))
 }
 
+fn reserve_awb_no(tx: &Connection) -> Result<String, String> {
+    let seq: i64 = tx
+        .query_row(
+            "SELECT CAST(value AS INTEGER) FROM meta WHERE key = 'next_awb_seq'",
+            [],
+            |r| r.get(0),
+        )
+        .optional()
+        .map_err(|e| e.to_string())?
+        .unwrap_or(1)
+        .max(1);
+    tx.execute(
+        "INSERT INTO meta(key, value) VALUES('next_awb_seq', ?1)
+         ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        params![(seq + 1).to_string()],
+    )
+    .map_err(|e| e.to_string())?;
+    Ok(crate::booking::format_awb(seq as u64))
+}
+
 fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
     Ok(Sale {
         id: row.get(0)?,
@@ -6585,6 +7789,22 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         user_at: row.get(20)?,
         device_at: row.get(21)?,
         server_at: row.get(22)?,
+        awb_no: row.get(23)?,
+        destination: row.get(24)?,
+        consignee_name: row.get(25)?,
+        actual_weight_kg: row.get(26)?,
+        volumetric_weight_kg: row.get(27)?,
+        chargeable_weight_kg: row.get(28)?,
+        tracking_status: row.get(29)?,
+        zone_id: row.get(30)?,
+        cod_paise: row.get(31)?,
+        carrier_cost_paise: row.get(32)?,
+        period_bill_id: row.get(33)?,
+        handover_kind: row.get(34)?,
+        carrier_party_id: row.get(35)?,
+        rider_id: row.get(36)?,
+        pod_note: row.get(37)?,
+        extras_json: row.get(38)?,
         lines: Vec::new(),
     })
 }
@@ -6615,6 +7835,10 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         tax_rate_id: row.get(12)?,
         aliases_json: row.get(13)?,
         unit_label: row.get(14)?,
+        zone_id: row.get(15)?,
+        first_kg: row.get(16)?,
+        first_paise: row.get(17)?,
+        extra_per_kg_paise: row.get(18)?,
     })
 }
 
@@ -6642,6 +7866,15 @@ pub fn data_dir() -> Result<PathBuf, String> {
 /// Matches the app_shell layout floor (`Fill{min: 320.}`); Android ignores window sizing.
 pub const MIN_DESKTOP_WINDOW_CSS: f64 = 320.0;
 
+/// Below this width the shell uses phone chrome (bottom tabs). Saved geoms narrower
+/// than this are ignored on restore so a squeezed session cannot lock desktop
+/// into a permanent phone frame.
+pub const TABLET_SHELL_BREAKPOINT_CSS: f64 = 720.0;
+
+/// First-launch / invalid-restore desktop default (not a phone frame).
+pub const DEFAULT_DESKTOP_WINDOW_W: f64 = 1024.0;
+pub const DEFAULT_DESKTOP_WINDOW_H: f64 = 768.0;
+
 /// Last desktop window size/position (`window_geom.json` under [`data_dir`]).
 /// Mobile ignores this — the OS owns the surface.
 #[derive(Clone, Copy, Debug, serde::Serialize, serde::Deserialize)]
@@ -6662,7 +7895,7 @@ pub fn load_window_geom() -> Option<WindowGeomPrefs> {
     let prefs: WindowGeomPrefs = serde_json::from_str(&raw).ok()?;
     if !prefs.width.is_finite()
         || !prefs.height.is_finite()
-        || prefs.width < MIN_DESKTOP_WINDOW_CSS
+        || prefs.width < TABLET_SHELL_BREAKPOINT_CSS
         || prefs.height < MIN_DESKTOP_WINDOW_CSS
         || !prefs.x.is_finite()
         || !prefs.y.is_finite()
@@ -7147,12 +8380,128 @@ mod tests {
     }
 
     #[test]
-    fn custom_template_leaves_empty_seeds() {
+    fn courier_product_has_no_seed_catalogue() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
-        store.apply_entity_template("custom").unwrap();
+        store.apply_entity_template("anything").unwrap();
+        assert_eq!(store.entity_template_id().unwrap(), "courier_agency");
         assert!(store.list_products(false).unwrap().is_empty());
         assert!(store.list_customers().unwrap().is_empty());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn booking_assigns_awb_and_destination() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let mut freight = Product::new_basic(new_id(), "Surface Zone A", Money::from_rupees(40));
+        freight.unit_label = "kg".into();
+        store.upsert_product(&freight).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&freight);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = "Bengaluru".into();
+        draft.consignee_name = "Sunita".into();
+        draft.actual_weight_kg = 5.0;
+        draft.volumetric_weight_kg = 4.8;
+        draft.chargeable_weight_kg = 5.0;
+        draft.money_lane = MoneyLane::Owner;
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
+        assert!(sale.awb_no.starts_with("AWB-"));
+        assert_eq!(sale.destination, "Bengaluru");
+        assert_eq!(sale.consignee_name, "Sunita");
+        assert_eq!(sale.tracking_status, "booked");
+        let receipt = store.format_receipt_text(&sale.id).unwrap();
+        assert!(receipt.contains(&sale.awb_no));
+        assert!(receipt.contains("Bengaluru"));
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn courier_bos_zones_slabs_cod_fleet_track_and_bill() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let zone = store.add_zone("West").unwrap();
+        let mut rate = Product::new_basic(new_id(), "Surface West", Money::from_rupees(40));
+        rate.unit_label = "kg".into();
+        rate.zone_id = zone.id.clone();
+        rate.first_kg = 1.0;
+        rate.first_paise = 50_00;
+        rate.extra_per_kg_paise = 20_00;
+        store.upsert_product(&rate).unwrap();
+        assert_eq!(rate.rate_slab().freight_paise(2.5), 80_00);
+
+        let party = store.add_customer_kind("Acme Consignor", "", "Consignor").unwrap();
+        store.set_customer_credit_limit(&party.id, 500_00).unwrap();
+        let rider = store.add_rider("Ravi", "999", "Bike 12").unwrap();
+
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = "Pune".into();
+        draft.consignee_name = "Neha".into();
+        draft.chargeable_weight_kg = 2.5;
+        draft.cod_paise = 100_00;
+        draft.carrier_cost_paise = 60_00;
+        draft.zone_id = zone.id;
+        draft.money_lane = MoneyLane::Declared;
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .unwrap();
+        assert!(!sale.awb_no.is_empty());
+        assert_eq!(sale.cod_paise, 100_00);
+        assert_eq!(sale.margin_paise(), sale.total_paise - 60_00);
+
+        let label = store.write_awb_label(&sale.id).unwrap();
+        assert!(label.exists());
+
+        let track = store.public_track(&sale.awb_no).unwrap().unwrap();
+        assert_eq!(track.status, "booked");
+
+        let manifest = store
+            .create_manifest(
+                crate::manifest::HandoverKind::OwnFleet,
+                "",
+                &rider.id,
+                &[sale.id.clone()],
+                "evening run",
+                &owner,
+            )
+            .unwrap();
+        assert_eq!(manifest.line_count, 1);
+        let sale2 = store.get_sale(&sale.id).unwrap().unwrap();
+        assert_eq!(sale2.tracking_status, "out_for_delivery");
+        assert_eq!(sale2.handover_kind, "own_fleet");
+
+        store
+            .advance_tracking(
+                &sale.id,
+                crate::manifest::TrackingStatus::Delivered,
+                "signed",
+                "",
+                &owner,
+            )
+            .unwrap();
+        let cods = store.list_cod_entries("pending").unwrap();
+        assert_eq!(cods.len(), 1);
+        store.mark_cod_collected(&cods[0].id).unwrap();
+        let rem = store
+            .remit_cod(&party.id, &[cods[0].id.clone()], "cash", "weekly")
+            .unwrap();
+        assert_eq!(rem.total_paise, 100_00);
+
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let bill = store
+            .create_period_bill(&party.id, &today, &today, "March", &owner)
+            .unwrap();
+        assert!(bill.total_paise > 0);
+        let billed = store.get_sale(&sale.id).unwrap().unwrap();
+        assert_eq!(billed.period_bill_id, bill.id);
+
         let _ = std::fs::remove_file(path);
     }
 
@@ -7249,11 +8598,11 @@ mod tests {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         store.set_device_role("server").unwrap();
-        assert!(store.extra_tills_allowed().unwrap());
-        store.set_extra_tills_allowed(false).unwrap();
         assert!(!store.extra_tills_allowed().unwrap());
         store.set_extra_tills_allowed(true).unwrap();
         assert!(store.extra_tills_allowed().unwrap());
+        store.set_extra_tills_allowed(false).unwrap();
+        assert!(!store.extra_tills_allowed().unwrap());
         let _ = std::fs::remove_file(path);
     }
 

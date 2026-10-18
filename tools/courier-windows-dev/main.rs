@@ -1,5 +1,5 @@
-//! Thin cargo entrypoint for `cargo kumkaj-windows-dev`.
-//! Delegates to `scripts/kumkaj-windows-dev.sh` (cross-build Windows Dev .exe).
+//! Thin cargo entrypoint for `cargo courier-windows-dev`.
+//! Delegates to `scripts/courier-windows-dev.sh` (cross-build Windows Dev .exe).
 
 use std::env;
 use std::path::PathBuf;
@@ -10,8 +10,8 @@ fn main() {
     let root = manifest_dir
         .parent()
         .and_then(|p| p.parent())
-        .expect("tools/kumkaj-windows-dev → workspace root");
-    let script = root.join("scripts/kumkaj-windows-dev.sh");
+        .expect("tools/courier-windows-dev → workspace root");
+    let script = root.join("scripts/courier-windows-dev.sh");
     let mut cmd = Command::new("bash");
     cmd.arg(&script);
     cmd.args(env::args().skip(1));

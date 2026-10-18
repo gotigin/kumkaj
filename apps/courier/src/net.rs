@@ -251,7 +251,8 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
     let raw = String::from_utf8_lossy(&buf[..n]);
     let (method, path, body) = parse_http(&raw)?;
     let code = query_param(&path, "code").unwrap_or_default();
-    let needs_code = !path.starts_with("/health");
+    // Public track-by-AWB is intentionally open on the LAN (no pairing code).
+    let needs_code = !(path.starts_with("/health") || path.starts_with("/track"));
     if needs_code && code != expected_code {
         return write_http(&mut stream, 403, r#"{"ok":false,"error":"bad pairing code"}"#);
     }
@@ -260,6 +261,27 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
 
     if path.starts_with("/health") {
         return write_http(&mut stream, 200, r#"{"ok":true}"#);
+    }
+    if path.starts_with("/track/") || path.starts_with("/track?") {
+        let awb_raw = if let Some(rest) = path.strip_prefix("/track/") {
+            rest.split('?').next().unwrap_or("").trim().to_string()
+        } else {
+            query_param(&path, "awb").unwrap_or_default()
+        };
+        let awb = urlencoding_decode(&awb_raw);
+        match store.public_track(&awb)? {
+            Some(view) => {
+                let body = crate::track::to_json(&view)?;
+                return write_http(&mut stream, 200, &body);
+            }
+            None => {
+                return write_http(
+                    &mut stream,
+                    404,
+                    r#"{"ok":false,"error":"AWB not found"}"#,
+                );
+            }
+        }
     }
     if path.starts_with("/pair") {
         let venue = store.venue_title().unwrap_or_default();
@@ -483,10 +505,39 @@ fn query_param(path: &str, key: &str) -> Option<String> {
         let k = kv.next()?;
         let v = kv.next().unwrap_or("");
         if k == key {
-            return Some(v.to_string());
+            return Some(urlencoding_decode(v));
         }
     }
     None
+}
+
+fn urlencoding_decode(raw: &str) -> String {
+    let bytes = raw.as_bytes();
+    let mut out = Vec::with_capacity(bytes.len());
+    let mut i = 0;
+    while i < bytes.len() {
+        match bytes[i] {
+            b'+' => {
+                out.push(b' ');
+                i += 1;
+            }
+            b'%' if i + 2 < bytes.len() => {
+                let hex = &raw[i + 1..i + 3];
+                if let Ok(v) = u8::from_str_radix(hex, 16) {
+                    out.push(v);
+                    i += 3;
+                } else {
+                    out.push(bytes[i]);
+                    i += 1;
+                }
+            }
+            b => {
+                out.push(b);
+                i += 1;
+            }
+        }
+    }
+    String::from_utf8_lossy(&out).into_owned()
 }
 
 fn write_http(stream: &mut TcpStream, status: u16, body: &str) -> Result<(), String> {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build, install, and launch Kumkaj on a connected Android device/emulator.
-# Usage: ./scripts/kumkaj-android-dev.sh
-#    or: cargo kumkaj-android-dev
+# Usage: ./scripts/courier-android-dev.sh
+#    or: cargo courier-android-dev
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -34,4 +34,4 @@ echo "Note: Android has no Splash --hot; each run rebuilds and relaunches."
 echo "If adb says unauthorized: unlock the phone and accept the RSA prompt."
 
 exec cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \
-  android "${ANDROID_PKG_OPTS[@]}" run -p kumkaj --release "$@"
+  android "${ANDROID_PKG_OPTS[@]}" run -p kumkaj-courier --release "$@"

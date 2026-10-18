@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Production Windows x86_64 package (Windows 10 + Windows 11).
-# Makepad layout: kumkaj.exe + <crate>/resources/ beside it (MAKEPAD_PACKAGE_DIR=.).
-# Usage: ./scripts/package-windows.sh
+# Makepad layout: kumkaj-courier.exe + kumkaj-courier/resources/
+# Includes install.ps1 / uninstall.ps1 (Add/Remove Programs + keep/remove data).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -9,6 +9,10 @@ cd "$ROOT"
 source "$ROOT/scripts/load-kumkaj-env.sh"
 # shellcheck source=windows-env.sh
 source "$ROOT/scripts/windows-env.sh"
+# shellcheck source=desktop-ids.sh
+source "$ROOT/scripts/desktop-ids.sh"
+# shellcheck source=stage-desktop-package.sh
+source "$ROOT/scripts/stage-desktop-package.sh"
 
 export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env production
@@ -24,10 +28,10 @@ if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* || "$(uname -s)" == CYGW
     TARGET=x86_64-pc-windows-msvc
   fi
   echo "Native Windows build ($TARGET)"
-  cargo build -p kumkaj --release --target "$TARGET"
+  cargo build -p kumkaj-courier --release --target "$TARGET"
 else
   windows_ensure_toolchain
-  cargo build -p kumkaj --release --target "$TARGET"
+  cargo build -p kumkaj-courier --release --target "$TARGET"
 fi
 
 # shellcheck source=cargo-target-dir.sh
@@ -35,9 +39,9 @@ source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cargo_target_dir)"
 EXE=""
 for cand in \
-  "$TARGET_DIR/$TARGET/release/kumkaj.exe" \
-  "$TARGET_DIR/$TARGET/release/kumkaj" \
-  "$TARGET_DIR/release/kumkaj.exe"
+  "$TARGET_DIR/$TARGET/release/kumkaj-courier.exe" \
+  "$TARGET_DIR/$TARGET/release/kumkaj-courier" \
+  "$TARGET_DIR/release/kumkaj-courier.exe"
 do
   if [[ -f "$cand" ]]; then
     EXE="$cand"
@@ -49,26 +53,36 @@ if [[ -z "$EXE" ]]; then
   exit 1
 fi
 
-cp -f "$EXE" "$OUT/kumkaj.exe"
+cp -f "$EXE" "$OUT/kumkaj-courier.exe"
 makepad_copy_desktop_resources "$OUT"
+stage_desktop_package "$OUT" windows
 
-cat > "$OUT/README.txt" <<EOF
-Kumkaj Windows (production)
-===========================
-Makepad desktop package — copy this WHOLE folder to the PC (keep structure):
-
-  kumkaj.exe
-  kumkaj/resources/            (fonts + icons + menu)
-
-Target: $TARGET (x86_64 — Windows 10 and Windows 11)
+cat >"$OUT/README.txt" <<EOF
+Kumkaj Courier Windows (production)
+===================================
 App id: ${KUMKAJ_APP_ID}
 Label: ${KUMKAJ_APP_LABEL}
-Env: env/production.env
+Target: $TARGET (x86_64 — Windows 10 and Windows 11)
 
-Run from inside the folder:
-  .\\kumkaj.exe
+Install (recommended):
+  Right-click install.ps1 → Run with PowerShell
+  or: powershell -ExecutionPolicy Bypass -File .\\install.ps1
 
-No console window (GUI subsystem). Data: %APPDATA%\\com.kumkaj.app\\
+  Installs to: %LOCALAPPDATA%\\Programs\\Kumkaj Courier\\
+  Start Menu + Settings → Apps uninstall entry
+
+Portable run (no install):
+  .\\kumkaj-courier.exe
+  (keep this whole folder — exe + kumkaj-courier\\resources\\)
+
+Uninstall:
+  Start Menu → Uninstall Kumkaj Courier
+  or Settings → Apps → Kumkaj Courier
+  or: powershell -ExecutionPolicy Bypass -File .\\uninstall.ps1
+
+Uninstall asks whether to keep or remove books data:
+  %APPDATA%\\${KUMKAJ_APP_ID}\\
+Re-run uninstall later to delete leftover data if you chose Keep.
 
 Default Owner PIN: 0000 — change under More → Team after first unlock.
 EOF

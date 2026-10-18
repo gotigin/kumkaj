@@ -25,19 +25,19 @@ Kumkaj Android packaging
 Application id: ${KUMKAJ_APP_ID}
 Label: ${KUMKAJ_APP_LABEL}
 Website: https://kumkaj.com
-Env file: env/production.env
+Env file: apps/courier/env/production.env
 
 Build APK:
   MAKEPAD_ROOT=$MAKEPAD_ROOT ./scripts/package-android.sh
 
-Live install/run on device (development id com.kumkaj.app.debug):
-  cargo kumkaj-android-dev
+Live install/run on device (development id com.kumkaj.courier.debug):
+  cargo courier-android-dev
 
 Release AAB for Play Store (after creating a keystore):
   cargo run --manifest-path "\$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \\
     android --package-name=${KUMKAJ_APP_ID} --app-label=${KUMKAJ_APP_LABEL} --abi=aarch64 --sdk-path="\$ANDROID_HOME" \\
     --keystore=play.keystore --keystore-pass="\$MAKEPAD_KEYSTORE_PASS" \\
-    build-aab -p kumkaj --release
+    build-aab -p kumkaj-courier --release
 
 Default Owner PIN after install: 0000 — change under More → Team.
 iOS / macOS App Store: deferred (see package-apple-scaffold.sh).
@@ -59,7 +59,7 @@ CARGO_MP=(cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.tom
 
 LOG="$OUT/build.log"
 set +e
-"${CARGO_MP[@]}" android "${ANDROID_PKG_OPTS[@]}" build -p kumkaj --release 2>&1 | tee "$LOG"
+"${CARGO_MP[@]}" android "${ANDROID_PKG_OPTS[@]}" build -p kumkaj-courier --release 2>&1 | tee "$LOG"
 STATUS=${PIPESTATUS[0]}
 set -e
 
@@ -67,7 +67,7 @@ set -e
 source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cd "$ROOT" && cargo_target_dir)"
 # Prefer the final signed APK; avoid copying the same file onto itself.
-mapfile -t APKS < <(find "$TARGET_DIR" -name 'kumkaj.apk' 2>/dev/null | head -5 || true)
+mapfile -t APKS < <(find "$TARGET_DIR" -name 'kumkaj-courier.apk' 2>/dev/null | head -5 || true)
 if [[ ${#APKS[@]} -eq 0 ]]; then
   mapfile -t APKS < <(find "$TARGET_DIR" -name '*.apk' 2>/dev/null | head -10 || true)
 fi
@@ -87,7 +87,7 @@ for art in "${APKS[@]:-}"; do
 done
 
 set +e
-"${CARGO_MP[@]}" android "${ANDROID_PKG_OPTS[@]}" build-aab -p kumkaj --release 2>&1 | tee -a "$LOG"
+"${CARGO_MP[@]}" android "${ANDROID_PKG_OPTS[@]}" build-aab -p kumkaj-courier --release 2>&1 | tee -a "$LOG"
 set -e
 mapfile -t AABS < <(find "$TARGET_DIR" -name '*.aab' 2>/dev/null | head -10 || true)
 for art in "${AABS[@]:-}"; do
