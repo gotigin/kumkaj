@@ -19,6 +19,7 @@ Offline use is free forever on the device. Extra tills are optional LAN joins. C
 - Shop device by default (extra tills off). Allow extra tills in Settings when another phone should sell.
 - Tables & kitchen (tables, KOT) belongs to a future food-counter product — not shipped in Kumkaj Courier
 - Categories, named tax rates, modifiers on rates/items; Inventory & purchases when needed
+- Parties: identity is UUID (names may repeat); roles (Consignor / Carrier / …) may combine on one id; AR and AP stay separate with a net “who owes whom” view — [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)
 - Organization + branches with snapshot export/import and consolidated reports
 - A write-only sync outbox records each sale for a future Kumkaj Cloud drain; nothing reads that queue yet. Cloud syncs the shop books — extra tills are not a different cloud product.
 - Books rows keep three clocks: user/business time, device write time, and cloud accept time (empty until synced) — see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
@@ -35,4 +36,4 @@ Apply a country in Settings to set the tax name and maths (VAT · GST · sales t
 
 **Ship:** see [`DEV.md`](DEV.md) packaging + publish checklist. Website: **https://kumkaj.com** (`../web/`). Apple App Store deferred.
 
-See [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) (current product), [`USE_CASES.md`](USE_CASES.md), [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md), and [`DEV.md`](DEV.md).
+See [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) (current product), [`COURIER_CLIENTS_REQUIREMENTS.md`](COURIER_CLIENTS_REQUIREMENTS.md) (sanitized client checklist), [`USE_CASES.md`](USE_CASES.md), [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md), and [`DEV.md`](DEV.md).

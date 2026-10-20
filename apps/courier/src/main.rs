@@ -21,7 +21,7 @@ use kumkaj_courier::{
 };
 
 use domain::{
-    new_id, Cart, Customer, DiningTable, Money, MoneyLane, MoneyMoveKind,
+    new_id, AttachmentEntity, Cart, Customer, DiningTable, Money, MoneyLane, MoneyMoveKind,
     PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole, VenueMode,
 };
 use fiscal::{FiscalSettings, TaxPricing};
@@ -204,6 +204,12 @@ struct AppState {
     /// When true, lock screen shows digits instead of bullets.
     pin_visible: bool,
     selected_sale_id: Option<String>,
+    /// Last logged expense (for attaching bill photo/PDF).
+    selected_expense_id: Option<String>,
+    /// Pending file-dialog target for entry attachments.
+    attach_pick: Option<AttachPickTarget>,
+    /// Ops desk: POD photo waiting for Out-for-delivery / Delivered.
+    pending_ops_pod: Option<PathBuf>,
     locale: LocaleSettings,
     /// Country pack in force: tax wording and maths, pay-rail name, id label.
     fiscal: FiscalSettings,
@@ -254,11 +260,21 @@ struct AppState {
     rail_width: f64,
     /// Which Reports facet is showing (bank / consignments / COD / riders).
     reports_nav: ReportsNav,
+    /// Which bank-books report chip is selected (must match `day_close_text` body).
+    books_report_kind: BooksReportKind,
 }
 
 /// Wrong PINs tolerated before [`UNLOCK_BLOCK`] kicks in.
 const UNLOCK_ATTEMPT_LIMIT: u32 = 5;
 const UNLOCK_BLOCK: Duration = Duration::from_secs(30);
+
+/// File-dialog target after the user picks a photo or PDF for an entry.
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum AttachPickTarget {
+    Image(AttachmentEntity),
+    File(AttachmentEntity),
+    OpsPod,
+}
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum DeviceRole {
@@ -348,6 +364,16 @@ enum ReportsNav {
     Riders,
 }
 
+/// Bank-books sub-selection on the Reports screen (highlight must match body text).
+#[derive(Clone, Copy, PartialEq, Eq, Default)]
+enum BooksReportKind {
+    #[default]
+    Today,
+    Month,
+    Aging,
+    BalanceSheet,
+}
+
 fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
     match screen {
         Screen::Books => Some(NavTab::Books),
@@ -426,6 +452,9 @@ impl AppState {
             pin_buffer: String::new(),
             pin_visible: false,
             selected_sale_id: None,
+            selected_expense_id: None,
+            attach_pick: None,
+            pending_ops_pod: None,
             locale: LocaleSettings::default(),
             fiscal: FiscalSettings::default(),
             country_browse: String::new(),
@@ -455,6 +484,7 @@ impl AppState {
             nav_forward: Vec::new(),
             rail_width: RAIL_WIDTH_DEFAULT,
             reports_nav: ReportsNav::Bank,
+            books_report_kind: BooksReportKind::Today,
         };
         if let Ok(dir) = store::data_dir() {
             state.data_base = Some(dir.clone());
@@ -711,17 +741,34 @@ impl AppState {
         Ok(())
     }
 
+    /// Load the bank-books body for [`Self::books_report_kind`] into `day_close_text`.
+    fn load_books_report(&mut self) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        self.day_close_text = match self.books_report_kind {
+            BooksReportKind::Today => store.books_report_text("today")?,
+            BooksReportKind::Month => store.books_report_text("month")?,
+            BooksReportKind::Aging => store.outstanding_pack_text()?,
+            BooksReportKind::BalanceSheet => store.balance_sheet_text()?,
+        };
+        Ok(())
+    }
+
     /// Reports screen body for the active facet (bank books / ops / COD / riders).
     fn refresh_reports_facet(&mut self) -> Result<(), String> {
-        let store = self.store.as_ref().ok_or("No store")?;
-        let facet = match self.reports_nav {
-            ReportsNav::Bank => courier_ops_view::OpsFacet::Bank,
-            ReportsNav::Ops => courier_ops_view::OpsFacet::Ops,
-            ReportsNav::Cod => courier_ops_view::OpsFacet::Cod,
-            ReportsNav::Riders => courier_ops_view::OpsFacet::Riders,
-        };
-        self.day_close_text = courier_ops_view::facet_text(store, facet)?;
-        Ok(())
+        match self.reports_nav {
+            ReportsNav::Bank => self.load_books_report(),
+            other => {
+                let store = self.store.as_ref().ok_or("No store")?;
+                let facet = match other {
+                    ReportsNav::Bank => unreachable!(),
+                    ReportsNav::Ops => courier_ops_view::OpsFacet::Ops,
+                    ReportsNav::Cod => courier_ops_view::OpsFacet::Cod,
+                    ReportsNav::Riders => courier_ops_view::OpsFacet::Riders,
+                };
+                self.day_close_text = courier_ops_view::facet_text(store, facet)?;
+                Ok(())
+            }
+        }
     }
 
     fn refresh_branches_text(&mut self) -> Result<(), String> {
@@ -810,6 +857,7 @@ impl AppState {
     }
 
     /// Today's ops report, worded for the shop's country pack.
+    #[allow(dead_code)] // Kept for a short till snapshot; Reports Today uses full books_report_text.
     fn ops_report_text(&self, report: &domain::OpsReport) -> String {
         let tax_caption = if self.fiscal.tax_pricing.is_inclusive() {
             format!("{} inside today's sales", self.fiscal.tax_label())
@@ -3169,8 +3217,10 @@ script_mod! {
                                     }
 
                                     ActionStack{
-                                        device_role_server := StackPrimaryBtn{text: "Server Mode"}
+                                        device_role_server := StackSecondaryBtn{text: "Server Mode"}
+                                        device_role_server_on := StackPrimaryBtn{text: "Server Mode" visible: false}
                                         device_role_client := StackSecondaryBtn{text: "Client Mode"}
+                                        device_role_client_on := StackPrimaryBtn{text: "Client Mode" visible: false}
                                     }
 
                                     device_setup_help := WrapLabel{
@@ -4109,6 +4159,18 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 12.
                                 }
+                                WrapLabel{body: "Notes & attachments (selected sale)" font_color: #x0B1220 font_size: 15.}
+                                sale_attach_note := FieldInput{empty_text: "Extra note on this AWB / sale"}
+                                ActionStack{
+                                    sale_attach_add_note := RowPrimaryBtn{text: "Add note"}
+                                    sale_attach_photo := RowSecondaryBtn{text: "Attach photo"}
+                                    sale_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
+                                }
+                                sale_attach_list := WrapLabel{
+                                    body: "(select a sale)"
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
                                 sale_list := mod.widgets.SaleList{}
                             }
                         }
@@ -4127,7 +4189,7 @@ script_mod! {
                                 }
                                 credit_help := WrapLabel{
                                     width: Fill
-                                    body: "Parties who owe you (AR). Settle with cash, write off to nil, or take advance. Kind = Carrier / Consignor / Supplier / …"
+                                    body: "Each party has a unique id (names may repeat). Tap Consignor, Carrier, Supplier, or Both on one party. AR and AP stay separate; net who-owes-whom is in Reports."
                                     font_color: #x0B1220
                                     font_size: 12.
                                 }
@@ -4146,10 +4208,11 @@ script_mod! {
                                     ChipStripRow{
                                         credit_kind_consignor := ChipBtn{text: "Consignor"}
                                         credit_kind_carrier := ChipBtn{text: "Carrier"}
+                                        credit_kind_both := ChipBtn{text: "Both"}
                                         credit_kind_supplier := ChipBtn{text: "Supplier"}
                                     }
                                 }
-                                credit_add_kind := FieldInput{empty_text: "Kind (Consignor, Carrier, Supplier, …)"}
+                                credit_add_kind := FieldInput{empty_text: "Roles (Consignor, Carrier, Both…)"}
                                 credit_add_btn := NavBtn{text: "Add party"}
                                 customer_list_credit := mod.widgets.CustomerList{}
                                 WrapLabel{body: "Credit limit (selected / named party)" font_color: #x0B1220 font_size: 15.}
@@ -4180,6 +4243,18 @@ script_mod! {
                                     payable_card := NavBtn{text: "Pay AP card"}
                                 }
                                 payable_writeoff := NavBtn{text: "Write off AP"}
+                                WrapLabel{body: "Notes & attachments (selected party)" font_color: #x0B1220 font_size: 15.}
+                                party_attach_note := FieldInput{empty_text: "Note / GSTIN / agreement reminder"}
+                                ActionStack{
+                                    party_attach_add_note := RowPrimaryBtn{text: "Add note"}
+                                    party_attach_photo := RowSecondaryBtn{text: "Attach photo"}
+                                    party_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
+                                }
+                                party_attach_list := WrapLabel{
+                                    body: "(select a party)"
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
                             }
                         }
 
@@ -4473,9 +4548,14 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 reports_books_btns := ActionStack{
-                                    reports_today := RowPrimaryBtn{text: "Today books"}
+                                    reports_today := RowSecondaryBtn{text: "Today books"}
+                                    reports_today_on := RowPrimaryBtn{text: "Today books" visible: false}
                                     reports_month := RowSecondaryBtn{text: "This month"}
-                                    reports_aging := RowSecondaryBtn{text: "Party aging"}
+                                    reports_month_on := RowPrimaryBtn{text: "This month" visible: false}
+                                    reports_aging := RowSecondaryBtn{text: "Outstanding / Dr-Cr"}
+                                    reports_aging_on := RowPrimaryBtn{text: "Outstanding / Dr-Cr" visible: false}
+                                    reports_balance_sheet := RowSecondaryBtn{text: "Balance sheet"}
+                                    reports_balance_sheet_on := RowPrimaryBtn{text: "Balance sheet" visible: false}
                                 }
                                 reports_label := WrapLabel{
                                     body: ""
@@ -4489,12 +4569,28 @@ script_mod! {
                                     visible: false
                                     ops_desk_help := WrapLabel{
                                         width: Fill
-                                        body: "AWB actions, dispatch, COD, riders — local-first desk ops."
+                                        body: "Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128."
                                         font_color: #x3A4554
                                         font_size: 12.
                                     }
-                                    ops_awb_input := FieldInput{empty_text: "AWB number"}
+                                    ops_awb_input := FieldInput{empty_text: "AWB / scan barcode"}
+                                    ActionStack{
+                                        ops_find_awb := RowPrimaryBtn{text: "Find / Scan AWB"}
+                                        ops_label := RowSecondaryBtn{text: "Print AWB label"}
+                                    }
+                                    ops_awb_card := WrapLabel{
+                                        width: Fill
+                                        body: "(scan or type an AWB, then Find — scanner Enter also works)"
+                                        font_color: #x0B1220
+                                        font_size: 12.
+                                    }
                                     ops_note_input := FieldInput{empty_text: "Note / POD (optional)"}
+                                    ops_pod_pick := RowSecondaryBtn{text: "Pick POD photo"}
+                                    ops_pod_status := WrapLabel{
+                                        body: "No POD photo selected"
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
                                     FormFieldRow{
                                         ops_rider_input := FieldInput{empty_text: "Rider name"}
                                         ops_carrier_input := FieldInput{empty_text: "Carrier party"}
@@ -4503,7 +4599,6 @@ script_mod! {
                                     ActionStack{
                                         ops_advance_ofd := RowPrimaryBtn{text: "Out for delivery"}
                                         ops_advance_delivered := RowSecondaryBtn{text: "Mark delivered"}
-                                        ops_label := RowSecondaryBtn{text: "Print AWB label"}
                                     }
                                     ActionStack{
                                         ops_dispatch_fleet := RowPrimaryBtn{text: "Dispatch booked → rider"}
@@ -4526,6 +4621,18 @@ script_mod! {
                                 expense_amount_input := FieldInput{empty_text: "Amount"}
                                 expense_note_input := FieldInput{empty_text: "Note (fuel, office, …)"}
                                 expense_add := NavBtn{text: "Add expense"}
+                                WrapLabel{body: "Attachments (last expense)" font_color: #x0B1220 font_size: 15.}
+                                expense_attach_note := FieldInput{empty_text: "Extra note on last expense"}
+                                ActionStack{
+                                    expense_attach_add_note := RowPrimaryBtn{text: "Add note"}
+                                    expense_attach_photo := RowSecondaryBtn{text: "Attach bill photo"}
+                                    expense_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
+                                }
+                                expense_attach_list := WrapLabel{
+                                    body: "(log an expense first)"
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
                                 reports_bank_heading := WrapLabel{body: "Bank / cashbook" font_color: #x0B1220 font_size: 15.}
                                 bank_amount_input := FieldInput{empty_text: "Amount"}
                                 bank_note_input := FieldInput{empty_text: "Note (deposit, withdrawal, …)"}
@@ -4918,6 +5025,7 @@ fn default_brand_mark_path() -> std::path::PathBuf {
         && let Some(parent) = exe.parent()
     {
         for candidate in [
+            parent.join("kumkaj_courier/resources/kumkaj-mark.webp"),
             parent.join("kumkaj-courier/resources/kumkaj-mark.webp"),
             parent.join("resources/kumkaj-mark.webp"),
         ] {
@@ -6476,6 +6584,81 @@ impl App {
         }
         self.ui
             .widget(cx, ids!(sale_selected_label)).set_text(cx, &plain_display_text(&sale_selected));
+        {
+            let attach_txt = {
+                let st = app_state().lock().unwrap();
+                match (&st.selected_sale_id, st.store.as_ref()) {
+                    (Some(id), Some(store)) => store
+                        .attachments_summary_text(AttachmentEntity::Sale, id)
+                        .unwrap_or_default()
+                        .trim()
+                        .to_string(),
+                    _ => String::new(),
+                }
+            };
+            let body = if attach_txt.is_empty() {
+                "(no attachments yet — select a sale)".into()
+            } else {
+                attach_txt
+            };
+            self.ui
+                .widget(cx, ids!(sale_attach_list))
+                .set_text(cx, &plain_display_text(&body));
+        }
+        {
+            let attach_txt = {
+                let st = app_state().lock().unwrap();
+                match (&st.selected_customer_id, st.store.as_ref()) {
+                    (Some(id), Some(store)) => store
+                        .attachments_summary_text(AttachmentEntity::Party, id)
+                        .unwrap_or_default()
+                        .trim()
+                        .to_string(),
+                    _ => String::new(),
+                }
+            };
+            let body = if attach_txt.is_empty() {
+                "(no attachments yet — select a party)".into()
+            } else {
+                attach_txt
+            };
+            self.ui
+                .widget(cx, ids!(party_attach_list))
+                .set_text(cx, &plain_display_text(&body));
+        }
+        {
+            let attach_txt = {
+                let st = app_state().lock().unwrap();
+                match (&st.selected_expense_id, st.store.as_ref()) {
+                    (Some(id), Some(store)) => store
+                        .attachments_summary_text(AttachmentEntity::Expense, id)
+                        .unwrap_or_default()
+                        .trim()
+                        .to_string(),
+                    _ => String::new(),
+                }
+            };
+            let body = if attach_txt.is_empty() {
+                "(no attachments yet — log an expense)".into()
+            } else {
+                attach_txt
+            };
+            self.ui
+                .widget(cx, ids!(expense_attach_list))
+                .set_text(cx, &plain_display_text(&body));
+        }
+        {
+            let pod = app_state()
+                .lock()
+                .unwrap()
+                .pending_ops_pod
+                .as_ref()
+                .map(|p| format!("POD ready: {}", p.display()))
+                .unwrap_or_else(|| "No POD photo selected".into());
+            self.ui
+                .widget(cx, ids!(ops_pod_status))
+                .set_text(cx, &plain_display_text(&pod));
+        }
         self.ui
             .widget(cx, ids!(sale_history_label)).set_text(cx, &plain_display_text(&sale_history));
         self.ui
@@ -6945,7 +7128,7 @@ impl App {
                     ),
                     ReportsNav::Ops => (
                         "Consignments & dispatch",
-                        "Advance AWB, print label, hand to carrier or own rider.",
+                        "Scan or type AWB → Find, then advance / print label / COD. Dispatch to rider or carrier.",
                     ),
                     ReportsNav::Cod => (
                         "COD register",
@@ -7034,7 +7217,16 @@ impl App {
     }
 
     fn paint_choice_state(&mut self, cx: &mut Cx) {
-        let (money_lane, draft_role, buy_on_account, follow_platform, onboard_step) = {
+        let (
+            money_lane,
+            draft_role,
+            buy_on_account,
+            follow_platform,
+            onboard_step,
+            books_report_kind,
+            device_role,
+            picking_server,
+        ) = {
             let st = app_state().lock().unwrap();
             (
                 st.money_lane,
@@ -7042,8 +7234,58 @@ impl App {
                 st.buy_on_account,
                 st.language_follow_platform,
                 st.onboard_step,
+                st.books_report_kind,
+                st.device_role,
+                st.picking_server,
             )
         };
+        self.paint_choice_pair(
+            cx,
+            ids!(reports_today),
+            ids!(reports_today_on),
+            books_report_kind == BooksReportKind::Today,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(reports_month),
+            ids!(reports_month_on),
+            books_report_kind == BooksReportKind::Month,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(reports_aging),
+            ids!(reports_aging_on),
+            books_report_kind == BooksReportKind::Aging,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(reports_balance_sheet),
+            ids!(reports_balance_sheet_on),
+            books_report_kind == BooksReportKind::BalanceSheet,
+        );
+        if picking_server {
+            for path in [
+                ids!(device_role_server),
+                ids!(device_role_server_on),
+                ids!(device_role_client),
+                ids!(device_role_client_on),
+            ] {
+                self.ui.button(cx, path).set_visible(cx, false);
+            }
+        } else {
+            self.paint_choice_pair(
+                cx,
+                ids!(device_role_server),
+                ids!(device_role_server_on),
+                device_role == DeviceRole::Server,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(device_role_client),
+                ids!(device_role_client_on),
+                device_role == DeviceRole::Client,
+            );
+        }
         self.paint_choice_pair(
             cx,
             ids!(onboard_fresh),
@@ -7272,8 +7514,12 @@ impl App {
         self.ui.button(cx, ids!(lock_staff_prev)).set_text(cx, &s("prev"));
         self.ui.button(cx, ids!(lock_staff_next)).set_text(cx, &s("next"));
         self.ui.button(cx, ids!(pin_ok)).set_text(cx, &s("ok"));
-        self.ui.button(cx, ids!(device_role_server)).set_text(cx, &s("this_shop"));
-        self.ui.button(cx, ids!(device_role_client)).set_text(cx, &s("extra_till"));
+        for path in [ids!(device_role_server), ids!(device_role_server_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("this_shop"));
+        }
+        for path in [ids!(device_role_client), ids!(device_role_client_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("extra_till"));
+        }
         self.ui.button(cx, ids!(customer_clear)).set_text(cx, &s("clear"));
         self.ui.button(cx, ids!(undo_snack_btn)).set_text(cx, &s("undo"));
         self.ui.button(cx, ids!(inv_adjust_minus)).set_text(cx, &s("stock_minus"));
@@ -7304,9 +7550,20 @@ impl App {
         self.ui
             .widget(cx, ids!(reports_help))
             .set_text(cx, &plain_display_text(&s("reports_help")));
-        self.ui.button(cx, ids!(reports_today)).set_text(cx, &s("reports_today"));
-        self.ui.button(cx, ids!(reports_month)).set_text(cx, &s("reports_month"));
-        self.ui.button(cx, ids!(reports_aging)).set_text(cx, &s("reports_aging"));
+        for path in [ids!(reports_today), ids!(reports_today_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("reports_today"));
+        }
+        for path in [ids!(reports_month), ids!(reports_month_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("reports_month"));
+        }
+        for path in [ids!(reports_aging), ids!(reports_aging_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("reports_aging"));
+        }
+        for path in [ids!(reports_balance_sheet), ids!(reports_balance_sheet_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("reports_balance_sheet"));
+        }
         self.ui.button(cx, ids!(expense_add)).set_text(cx, &s("add_expense"));
         self.ui
             .widget(cx, ids!(reports_expense_heading))
@@ -7353,12 +7610,7 @@ impl App {
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, picking_server);
-        self.ui
-            .button(cx, ids!(device_role_server))
-            .set_visible(cx, !picking_server);
-        self.ui
-            .button(cx, ids!(device_role_client))
-            .set_visible(cx, !picking_server);
+        // Device-role chip visibility (idle/active pair) is owned by paint_choice_state.
         self.ui
             .button(cx, ids!(lang_setup_platform))
             .set_text(cx, &s("lang_follow_platform"));
@@ -9953,13 +10205,159 @@ impl App {
                     "png".into(),
                     "jpg".into(),
                     "jpeg".into(),
-                    "gif".into(),
-                    "bmp".into(),
                 ],
             )
             .set_id(live_id!(item_photo_pick));
         cx.open_select_file_dialog(dialog);
         self.set_status(cx, "Opening photo picker…");
+    }
+
+    fn attach_pick_image(&mut self, cx: &mut Cx, entity: AttachmentEntity) {
+        app_state().lock().unwrap().attach_pick = Some(AttachPickTarget::Image(entity));
+        let dialog = FileDialog::new()
+            .set_title("Attach photo".into())
+            .add_filter(
+                "Images".into(),
+                vec![
+                    "webp".into(),
+                    "png".into(),
+                    "jpg".into(),
+                    "jpeg".into(),
+                ],
+            )
+            .set_id(live_id!(entry_attach_pick));
+        cx.open_select_file_dialog(dialog);
+        self.set_status(cx, "Opening photo picker…");
+    }
+
+    fn attach_pick_pdf(&mut self, cx: &mut Cx, entity: AttachmentEntity) {
+        app_state().lock().unwrap().attach_pick = Some(AttachPickTarget::File(entity));
+        let dialog = FileDialog::new()
+            .set_title("Attach PDF".into())
+            .add_filter("Documents".into(), vec!["pdf".into(), "txt".into()])
+            .set_id(live_id!(entry_attach_pick));
+        cx.open_select_file_dialog(dialog);
+        self.set_status(cx, "Opening file picker…");
+    }
+
+    /// Resolve typed/scanned AWB into the ops desk card (+ reports pane for copy).
+    fn resolve_ops_awb_card(&mut self, cx: &mut Cx, awb: &str) -> Result<String, String> {
+        let card = {
+            let st = app_state().lock().unwrap();
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            courier_ops_view::awb_desk_card(store, awb)?
+        };
+        self.ui
+            .widget(cx, ids!(ops_awb_card))
+            .set_text(cx, &plain_display_text(&card));
+        app_state().lock().unwrap().day_close_text = card.clone();
+        Ok(card)
+    }
+
+    fn attach_pick_ops_pod(&mut self, cx: &mut Cx) {
+        app_state().lock().unwrap().attach_pick = Some(AttachPickTarget::OpsPod);
+        let dialog = FileDialog::new()
+            .set_title("POD photo".into())
+            .add_filter(
+                "Images".into(),
+                vec![
+                    "webp".into(),
+                    "png".into(),
+                    "jpg".into(),
+                    "jpeg".into(),
+                ],
+            )
+            .set_id(live_id!(entry_attach_pick));
+        cx.open_select_file_dialog(dialog);
+        self.set_status(cx, "Opening POD picker…");
+    }
+
+    fn entity_id_for_attach(&self, entity: AttachmentEntity) -> Result<String, String> {
+        let st = app_state().lock().unwrap();
+        let id = match entity {
+            AttachmentEntity::Sale => st.selected_sale_id.clone(),
+            AttachmentEntity::Party => st.selected_customer_id.clone(),
+            AttachmentEntity::Expense => st.selected_expense_id.clone(),
+            AttachmentEntity::Purchase | AttachmentEntity::TrackingEvent => None,
+        };
+        id.filter(|s| !s.trim().is_empty())
+            .ok_or_else(|| "Select an entry first".into())
+    }
+
+    fn on_entry_attach_picked(&mut self, cx: &mut Cx, path: PathBuf) {
+        let target = app_state().lock().unwrap().attach_pick.take();
+        let Some(target) = target else {
+            self.set_status(cx, "Nothing to attach");
+            return;
+        };
+        match self.materialize_picked_file(cx, &path) {
+            Ok(file) => match target {
+                AttachPickTarget::OpsPod => {
+                    app_state().lock().unwrap().pending_ops_pod = Some(file);
+                    self.set_status(cx, "POD photo ready — advance tracking to save");
+                    self.sync_chrome(cx);
+                }
+                AttachPickTarget::Image(entity) => {
+                    let result = (|| -> Result<(), String> {
+                        let entity_id = self.entity_id_for_attach(entity)?;
+                        let mut st = app_state().lock().unwrap();
+                        let actor = st.actor()?;
+                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                        store.add_attachment_image(entity, &entity_id, &file, "", &actor)?;
+                        st.status = "Photo attached (stored as WebP)".into();
+                        Ok(())
+                    })();
+                    match result {
+                        Ok(()) => self.set_status(cx, "Photo attached (stored as WebP)"),
+                        Err(e) => self.set_status(cx, e),
+                    }
+                    self.sync_chrome(cx);
+                }
+                AttachPickTarget::File(entity) => {
+                    let result = (|| -> Result<(), String> {
+                        let entity_id = self.entity_id_for_attach(entity)?;
+                        let mut st = app_state().lock().unwrap();
+                        let actor = st.actor()?;
+                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                        store.add_attachment_file(entity, &entity_id, &file, "", &actor)?;
+                        st.status = "File attached".into();
+                        Ok(())
+                    })();
+                    match result {
+                        Ok(()) => self.set_status(cx, "File attached"),
+                        Err(e) => self.set_status(cx, e),
+                    }
+                    self.sync_chrome(cx);
+                }
+            },
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
+    fn add_entry_note(
+        &mut self,
+        cx: &mut Cx,
+        entity: AttachmentEntity,
+        note_id: &[LiveId],
+    ) {
+        let body = self.ui.text_input(cx, note_id).text();
+        let result = (|| -> Result<(), String> {
+            let entity_id = self.entity_id_for_attach(entity)?;
+            let mut st = app_state().lock().unwrap();
+            let actor = st.actor()?;
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            store.add_attachment_note(entity, &entity_id, "", &body, &actor)?;
+            st.status = "Note added".into();
+            Ok(())
+        })();
+        match result {
+            Ok(()) => {
+                self.ui.text_input(cx, note_id).set_text(cx, "");
+                self.set_status(cx, "Note added");
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
     }
 
     /// Copy a Storage Access Framework URI into app storage. Real file paths
@@ -10102,10 +10500,19 @@ impl MatchEvent for App {
                             }
                         }
                     }
+                    FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(entry_attach_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            self.on_entry_attach_picked(cx, path.clone());
+                        }
+                    }
                     FileDialogAction::FileCancelled { id }
                         if *id == live_id!(item_photo_pick)
-                            || *id == live_id!(venue_icon_pick) =>
+                            || *id == live_id!(venue_icon_pick)
+                            || *id == live_id!(entry_attach_pick) =>
                     {
+                        app_state().lock().unwrap().attach_pick = None;
                         self.set_status(cx, "Picker cancelled");
                     }
                     _ => {}
@@ -10318,13 +10725,16 @@ impl MatchEvent for App {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if st.device_role == DeviceRole::Client {
                     return Err("Log expenses on the shop device — this is an extra till".into());
                 }
                 let currency = st.locale.currency.clone();
                 let minor = locale::parse_major_input(&amount_text, &currency)?;
-                store.add_expense(minor, "misc", &note, &actor)?;
+                let expense_id = {
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.add_expense(minor, "misc", &note, &actor)?
+                };
+                st.selected_expense_id = Some(expense_id);
                 let _ = st.refresh_books_overview();
                 st.status = "Expense logged".into();
                 Ok(())
@@ -10591,10 +11001,20 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(device_role_server)).clicked(actions) {
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(device_role_server),
+            ids!(device_role_server_on),
+        ) {
             self.begin_server_mode(cx);
         }
-        if self.ui.button(cx, ids!(device_role_client)).clicked(actions) {
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(device_role_client),
+            ids!(device_role_client_on),
+        ) {
             self.begin_client_mode(cx);
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
@@ -11101,6 +11521,7 @@ impl MatchEvent for App {
         for (chip, kind) in [
             (ids!(credit_kind_consignor), "Consignor"),
             (ids!(credit_kind_carrier), "Carrier"),
+            (ids!(credit_kind_both), "Both"),
             (ids!(credit_kind_supplier), "Supplier"),
         ] {
             if self.ui.button(cx, chip).clicked(actions) {
@@ -11110,9 +11531,10 @@ impl MatchEvent for App {
                 self.set_status(
                     cx,
                     match kind {
-                        "Consignor" => "Kind: Consignor — our party account (debtor)",
-                        "Carrier" => "Kind: Carrier — courier company account (creditor)",
-                        _ => "Kind: Supplier",
+                        "Consignor" => "Role: Consignor — AR (they owe us). Same firm can also be Carrier.",
+                        "Carrier" => "Role: Carrier — AP (we owe them). Same firm can also be Consignor.",
+                        "Both" => "Roles: Consignor + Carrier — one party, AR and AP ledgers, net in Reports.",
+                        _ => "Role: Supplier — AP for purchases.",
                     },
                 );
             }
@@ -12566,68 +12988,100 @@ impl MatchEvent for App {
                 self.copy_text_to_clipboard(cx, &text);
             }
         }
-        if self.ui.button(cx, ids!(reports_today)).clicked(actions)
-            || self.ui.button(cx, ids!(reports_month)).clicked(actions)
-            || self.ui.button(cx, ids!(reports_aging)).clicked(actions)
-            || self.ui.button(cx, ids!(reports_refresh)).clicked(actions)
         {
-            let month = self.ui.button(cx, ids!(reports_month)).clicked(actions);
-            let aging_only = self.ui.button(cx, ids!(reports_aging)).clicked(actions);
-            let refresh_only = self.ui.button(cx, ids!(reports_refresh)).clicked(actions)
-                && !month
-                && !aging_only
-                && !self.ui.button(cx, ids!(reports_today)).clicked(actions);
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                if refresh_only && !matches!(st.reports_nav, ReportsNav::Bank) {
-                    st.refresh_reports_facet()?;
+            let today = self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(reports_today),
+                ids!(reports_today_on),
+            );
+            let month = self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(reports_month),
+                ids!(reports_month_on),
+            );
+            let aging = self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(reports_aging),
+                ids!(reports_aging_on),
+            );
+            let bs = self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(reports_balance_sheet),
+                ids!(reports_balance_sheet_on),
+            );
+            let refresh = self.ui.button(cx, ids!(reports_refresh)).clicked(actions);
+            if today || month || aging || bs || refresh {
+                let kind = if aging {
+                    Some(BooksReportKind::Aging)
+                } else if bs {
+                    Some(BooksReportKind::BalanceSheet)
+                } else if month {
+                    Some(BooksReportKind::Month)
+                } else if today {
+                    Some(BooksReportKind::Today)
+                } else {
+                    None // refresh: keep current kind
+                };
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    if refresh && kind.is_none() && !matches!(st.reports_nav, ReportsNav::Bank) {
+                        st.refresh_reports_facet()?;
+                        st.screen = Screen::Reports;
+                        st.status = "Ops desk refreshed".into();
+                        return Ok(());
+                    }
+                    st.reports_nav = ReportsNav::Bank;
+                    if let Some(k) = kind {
+                        st.books_report_kind = k;
+                    }
+                    st.load_books_report()?;
                     st.screen = Screen::Reports;
-                    st.status = "Ops desk refreshed".into();
-                    return Ok(());
+                    st.status = match st.books_report_kind {
+                        BooksReportKind::Aging => "Outstanding / debit-credit".into(),
+                        BooksReportKind::BalanceSheet => "Balance sheet".into(),
+                        BooksReportKind::Month => "This month books".into(),
+                        BooksReportKind::Today => "Today books".into(),
+                    };
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
                 }
-                st.reports_nav = ReportsNav::Bank;
-                st.day_close_text = if aging_only {
-                    st.store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .party_aging_text()?
-                } else if month {
-                    st.store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .books_report_text("month")?
-                } else if refresh_only {
-                    courier_ops_view::facet_text(
-                        st.store.as_ref().ok_or_else(|| "No store".to_string())?,
-                        courier_ops_view::OpsFacet::Bank,
-                    )?
-                } else {
-                    let report = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .ops_report_today()?;
-                    st.ops_report_text(&report)
-                };
-                st.screen = Screen::Reports;
-                st.status = if aging_only {
-                    "Party aging".into()
-                } else if month {
-                    "This month books".into()
-                } else {
-                    "Today books".into()
-                };
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
 
         // Courier ops desk actions (Ops / COD / Riders facets on Reports).
         {
-            let awb = self.ui.text_input(cx, ids!(ops_awb_input)).text();
+            let awb_raw = self.ui.text_input(cx, ids!(ops_awb_input)).text();
+            let awb = courier_ops_view::normalize_awb_input(&awb_raw);
+            // Wedge scanners usually send Enter after the code.
+            let awb_enter = self
+                .ui
+                .text_input(cx, ids!(ops_awb_input))
+                .returned(actions)
+                .is_some();
+            let find_clicked = self.ui.button(cx, ids!(ops_find_awb)).clicked(actions);
+            if (find_clicked || awb_enter) && !awb.is_empty() {
+                if awb != awb_raw.trim() {
+                    self.ui
+                        .text_input(cx, ids!(ops_awb_input))
+                        .set_text(cx, &awb);
+                }
+                match self.resolve_ops_awb_card(cx, &awb) {
+                    Ok(card) => {
+                        self.set_status(cx, format!("Found {awb}"));
+                        let _ = card;
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+
             let note = self.ui.text_input(cx, ids!(ops_note_input)).text();
             let rider = self.ui.text_input(cx, ids!(ops_rider_input)).text();
             let carrier = self.ui.text_input(cx, ids!(ops_carrier_input)).text();
@@ -12636,17 +13090,22 @@ impl MatchEvent for App {
             let rider_vehicle = self.ui.text_input(cx, ids!(ops_rider_vehicle)).text();
 
             let mut ops_msg: Option<Result<String, String>> = None;
+            if self.ui.button(cx, ids!(ops_pod_pick)).clicked(actions) {
+                self.attach_pick_ops_pod(cx);
+            }
             if self.ui.button(cx, ids!(ops_advance_ofd)).clicked(actions) {
                 ops_msg = Some((|| {
                     let mut st = app_state().lock().unwrap();
                     st.require_server_role("Advance tracking")?;
                     let actor = st.actor()?;
+                    let pod = st.pending_ops_pod.take();
                     let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                    let msg = courier_ops_view::advance_awb(
+                    let msg = courier_ops_view::advance_awb_with_pod(
                         store,
                         &awb,
                         courier_ops_view::TrackingStatus::OutForDelivery,
                         &note,
+                        pod.as_deref(),
                         &actor,
                     )?;
                     st.refresh_reports_facet()?;
@@ -12657,12 +13116,14 @@ impl MatchEvent for App {
                     let mut st = app_state().lock().unwrap();
                     st.require_server_role("Mark delivered")?;
                     let actor = st.actor()?;
+                    let pod = st.pending_ops_pod.take();
                     let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                    let msg = courier_ops_view::advance_awb(
+                    let msg = courier_ops_view::advance_awb_with_pod(
                         store,
                         &awb,
                         courier_ops_view::TrackingStatus::Delivered,
                         &note,
+                        pod.as_deref(),
                         &actor,
                     )?;
                     st.refresh_reports_facet()?;
@@ -12739,7 +13200,12 @@ impl MatchEvent for App {
             }
             if let Some(result) = ops_msg {
                 match result {
-                    Ok(msg) => self.set_status(cx, msg),
+                    Ok(msg) => {
+                        self.set_status(cx, msg);
+                        if !awb.is_empty() {
+                            let _ = self.resolve_ops_awb_card(cx, &awb);
+                        }
+                    }
                     Err(e) => self.set_status(cx, e),
                 }
                 self.sync_chrome(cx);
@@ -12759,14 +13225,21 @@ impl MatchEvent for App {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if st.device_role == DeviceRole::Client {
                     return Err("Log expenses on the shop device — this is an extra till".into());
                 }
                 let currency = st.locale.currency.clone();
                 let minor = locale::parse_major_input(&amount_text, &currency)?;
-                store.add_expense(minor, "misc", &note, &actor)?;
-                st.day_close_text = store.books_report_text("today")?;
+                let expense_id = {
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.add_expense(minor, "misc", &note, &actor)?
+                };
+                st.selected_expense_id = Some(expense_id);
+                st.day_close_text = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?
+                    .books_report_text("today")?;
                 st.screen = Screen::Reports;
                 st.status = "Expense logged".into();
                 Ok(())
@@ -12778,6 +13251,33 @@ impl MatchEvent for App {
                 self.ui.text_input(cx, ids!(expense_note_input)).set_text(cx, "");
             }
             self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(sale_attach_add_note)).clicked(actions) {
+            self.add_entry_note(cx, AttachmentEntity::Sale, ids!(sale_attach_note));
+        }
+        if self.ui.button(cx, ids!(sale_attach_photo)).clicked(actions) {
+            self.attach_pick_image(cx, AttachmentEntity::Sale);
+        }
+        if self.ui.button(cx, ids!(sale_attach_pdf)).clicked(actions) {
+            self.attach_pick_pdf(cx, AttachmentEntity::Sale);
+        }
+        if self.ui.button(cx, ids!(party_attach_add_note)).clicked(actions) {
+            self.add_entry_note(cx, AttachmentEntity::Party, ids!(party_attach_note));
+        }
+        if self.ui.button(cx, ids!(party_attach_photo)).clicked(actions) {
+            self.attach_pick_image(cx, AttachmentEntity::Party);
+        }
+        if self.ui.button(cx, ids!(party_attach_pdf)).clicked(actions) {
+            self.attach_pick_pdf(cx, AttachmentEntity::Party);
+        }
+        if self.ui.button(cx, ids!(expense_attach_add_note)).clicked(actions) {
+            self.add_entry_note(cx, AttachmentEntity::Expense, ids!(expense_attach_note));
+        }
+        if self.ui.button(cx, ids!(expense_attach_photo)).clicked(actions) {
+            self.attach_pick_image(cx, AttachmentEntity::Expense);
+        }
+        if self.ui.button(cx, ids!(expense_attach_pdf)).clicked(actions) {
+            self.attach_pick_pdf(cx, AttachmentEntity::Expense);
         }
         for (id, kind) in [
             (ids!(bank_till_to_bank), MoneyMoveKind::TillToBank),

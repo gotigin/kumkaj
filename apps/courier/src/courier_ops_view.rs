@@ -1,11 +1,116 @@
 //! Text + action helpers for Ops / COD / Riders / Reports facets.
 //! Keeps [`crate`] shell thin while the desk can run dispatch from the UI.
+//!
+//! Barcode desk loop: print Code 128 on the AWB label; USB/Bluetooth wedge
+//! scanners type into the AWB field; Enter / Find resolves the parcel for
+//! advance, label, and COD actions.
 
 use crate::cod;
 use crate::consignments::{self, ConsignmentFilter};
 use crate::domain::{Sale, StaffMember};
 use crate::manifest::{self, HandoverKind};
 use crate::store::Store;
+
+/// Strip wedge-scanner noise (`*AWB*`, CR/LF) so barcode input matches `awb_no`.
+pub fn normalize_awb_input(raw: &str) -> String {
+    let mut s = raw.trim().trim_matches(|c: char| c == '\r' || c == '\n' || c == '\0');
+    // Code-128 human-readable often printed as *PAYLOAD*
+    if s.len() >= 2 && s.starts_with('*') && s.ends_with('*') {
+        s = s[1..s.len() - 1].trim();
+    }
+    s.trim().to_string()
+}
+
+/// Resolve a typed or scanned AWB to a sale (exact, then case-insensitive).
+pub fn find_sale_for_scan(store: &Store, raw_awb: &str) -> Result<Sale, String> {
+    let awb = normalize_awb_input(raw_awb);
+    if awb.is_empty() {
+        return Err("Scan or type an AWB".into());
+    }
+    if let Some(sale) = store.find_sale_by_awb(&awb)? {
+        return Ok(sale);
+    }
+    // Case-insensitive fallback (some scanners change case).
+    let filter = ConsignmentFilter {
+        awb_contains: awb.clone(),
+        ..Default::default()
+    };
+    let hits = store.search_consignments(&filter, 5)?;
+    let exact: Vec<_> = hits
+        .into_iter()
+        .filter(|s| s.awb_no.eq_ignore_ascii_case(&awb))
+        .collect();
+    match exact.len() {
+        0 => Err(format!("AWB not found: {awb}")),
+        1 => Ok(exact.into_iter().next().unwrap()),
+        _ => Err(format!("Several AWBs match {awb} — type the full number")),
+    }
+}
+
+/// Desk card after scan/find: status, party, COD, suggested next actions.
+pub fn awb_desk_card(store: &Store, raw_awb: &str) -> Result<String, String> {
+    let sale = find_sale_for_scan(store, raw_awb)?;
+    let status = TrackingStatus::parse(&sale.tracking_status);
+    let party = sale
+        .customer_id
+        .as_deref()
+        .filter(|id| !id.is_empty())
+        .and_then(|id| store.get_customer(id).ok().flatten());
+    let party_line = party
+        .as_ref()
+        .map(|p| {
+            let kind = if p.kind_label.trim().is_empty() {
+                String::new()
+            } else {
+                format!(" ({})", p.kind_label.trim())
+            };
+            format!("{}{kind}", p.name)
+        })
+        .unwrap_or_else(|| "(walk-in / no party)".into());
+    let events = store.list_tracking_events(&sale.id)?;
+    let last_note = events
+        .last()
+        .map(|e| e.note.trim())
+        .filter(|n| !n.is_empty())
+        .unwrap_or("");
+    let next = match status {
+        TrackingStatus::Booked => "Next: Dispatch to rider / Hand to carrier · or Out for delivery",
+        TrackingStatus::OutForDelivery => "Next: Mark delivered (+ POD photo optional)",
+        TrackingStatus::Delivered => "Done — Collect COD if pending · Print label if reprint",
+        _ => "Next: Advance status or Print label",
+    };
+    let mut out = format!(
+        "=== Scanned AWB ===\n\
+         AWB {}\n\
+         Status: {}\n\
+         Party: {}\n\
+         To: {} · {}\n\
+         Weight: {} kg\n\
+         Charge: {}\n",
+        sale.awb_no,
+        status.label(),
+        party_line,
+        sale.destination,
+        sale.consignee_name,
+        crate::precise::format_kg(sale.chargeable_weight_kg),
+        store.money_display(sale.total_paise),
+    );
+    if sale.cod_paise > 0 {
+        out.push_str(&format!(
+            "COD: {}\n",
+            store.money_display(sale.cod_paise)
+        ));
+    }
+    if !last_note.is_empty() {
+        out.push_str(&format!("Last note: {last_note}\n"));
+    }
+    out.push_str(next);
+    out.push('\n');
+    out.push_str(
+        "Scan again or tap Out for delivery / Delivered / Print label / Collect COD.\n",
+    );
+    Ok(out)
+}
 
 /// Build the body shown on the Reports screen for a courier ops facet.
 pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
@@ -16,8 +121,13 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
             text.push_str(&store.books_report_text("today")?);
         }
         OpsFacet::Ops => {
-            text.push_str("\n— Consignments (recent AWBs) —\n");
-            text.push_str("Type an AWB below, then Advance / Dispatch / Label.\n\n");
+            text.push_str("\n— Barcode desk —\n");
+            text.push_str(
+                "Scan AWB into the field (USB scanner) or type it → Find / Enter.\n\
+                 Then Out for delivery, Delivered, Print label, or Collect COD.\n\
+                 Labels print Code 128 for the same AWB.\n\n",
+            );
+            text.push_str("— Consignments (recent AWBs) —\n");
             let filter = ConsignmentFilter::default();
             for s in store.search_consignments(&filter, 50)? {
                 text.push_str(&format_consignment_line(store, &s));
@@ -106,17 +216,41 @@ pub fn advance_awb(
     note: &str,
     actor: &StaffMember,
 ) -> Result<String, String> {
-    let sale = store
-        .find_sale_by_awb(awb)?
-        .ok_or_else(|| format!("AWB not found: {awb}"))?;
-    store.advance_tracking(&sale.id, status, note, "", actor)?;
+    advance_awb_with_pod(store, awb, status, note, None, actor)
+}
+
+/// Advance tracking; optional POD photo → WebP attachment on the sale; id in `pod_ref`.
+pub fn advance_awb_with_pod(
+    store: &mut Store,
+    awb: &str,
+    status: TrackingStatus,
+    note: &str,
+    pod_image: Option<&std::path::Path>,
+    actor: &StaffMember,
+) -> Result<String, String> {
+    use crate::domain::AttachmentEntity;
+    let sale = find_sale_for_scan(store, awb)?;
+    let mut pod_ref = String::new();
+    if let Some(path) = pod_image {
+        let att =
+            store.add_attachment_image(AttachmentEntity::Sale, &sale.id, path, "POD", actor)?;
+        pod_ref = att.id;
+    }
+    if !note.trim().is_empty() {
+        let _ = store.add_attachment_note(
+            AttachmentEntity::Sale,
+            &sale.id,
+            "Tracking note",
+            note,
+            actor,
+        )?;
+    }
+    let _ = store.advance_tracking(&sale.id, status, note, &pod_ref, actor)?;
     Ok(format!("{} → {}", sale.awb_no, status.label()))
 }
 
 pub fn print_label(store: &Store, awb: &str) -> Result<String, String> {
-    let sale = store
-        .find_sale_by_awb(awb)?
-        .ok_or_else(|| format!("AWB not found: {awb}"))?;
+    let sale = find_sale_for_scan(store, awb)?;
     let path = store.write_awb_label(&sale.id)?;
     Ok(format!("Label saved: {}", path.display()))
 }
@@ -200,11 +334,11 @@ pub fn handover_booked_to_carrier(
 }
 
 pub fn collect_cod_for_awb(store: &Store, awb: &str) -> Result<String, String> {
-    let awb = awb.trim();
+    let awb = normalize_awb_input(awb);
     let entry = store
         .list_cod_entries("pending")?
         .into_iter()
-        .find(|e| e.awb_no.eq_ignore_ascii_case(awb))
+        .find(|e| e.awb_no.eq_ignore_ascii_case(&awb))
         .ok_or_else(|| format!("No pending COD for {awb}"))?;
     store.mark_cod_collected(&entry.id)?;
     Ok(format!(
@@ -300,3 +434,15 @@ pub fn set_credit_limit(
 pub use cod::margin_paise;
 pub use consignments::CreditGate;
 pub use manifest::TrackingStatus;
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn normalize_strips_stars_and_whitespace() {
+        assert_eq!(normalize_awb_input("  *AWB-1* \r\n"), "AWB-1");
+        assert_eq!(normalize_awb_input("AWB-1"), "AWB-1");
+        assert_eq!(normalize_awb_input(""), "");
+    }
+}

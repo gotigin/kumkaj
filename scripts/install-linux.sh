@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Install Kumkaj Courier for the current user (Linux).
 # Run from a package folder (dist/linux or dist/linux-dev) that contains:
-#   kumkaj-courier                 (binary)
-#   kumkaj-courier/resources/      (fonts + icons)
+#   kumkaj-courier                 (binary under bin/)
+#   kumkaj_courier/resources/      (fonts + icons; underscores = Makepad crate name)
 #   install-manifest.env
 #   uninstall.sh
 #   desktop-ids.sh
@@ -49,9 +49,20 @@ if [[ -z "$BIN_SRC" ]]; then
   echo "Missing binary: $PKG/bin/kumkaj-courier" >&2
   exit 1
 fi
-if [[ ! -d "$PKG/kumkaj-courier/resources" ]]; then
-  echo "Missing resources: $PKG/kumkaj-courier/resources" >&2
+RES_DIR="kumkaj_courier"
+if [[ ! -d "$PKG/$RES_DIR/resources" ]]; then
+  if [[ -d "$PKG/kumkaj-courier/resources" ]]; then
+    echo "Found legacy hyphenated resources at $PKG/kumkaj-courier/resources" >&2
+    echo "Makepad needs kumkaj_courier/resources (underscores). Re-run the package script." >&2
+    exit 1
+  fi
+  echo "Missing resources: $PKG/$RES_DIR/resources" >&2
   echo "Re-run the package script so fonts/icons ship beside the binary." >&2
+  exit 1
+fi
+if [[ ! -f "$PKG/$RES_DIR/resources/fonts/NotoSans-Regular.ttf" ]]; then
+  echo "Missing UI font: $PKG/$RES_DIR/resources/fonts/NotoSans-Regular.ttf" >&2
+  echo "Run ./scripts/fetch-ui-fonts.sh then re-package." >&2
   exit 1
 fi
 
@@ -75,9 +86,11 @@ mkdir -p "$INSTALL_DIR/bin" "$BIN_DIR" "$APP_DIR"
 
 cp -f "$BIN_SRC" "$INSTALL_DIR/bin/kumkaj-courier"
 chmod +x "$INSTALL_DIR/bin/kumkaj-courier"
-# Makepad layout: resources at <install>/kumkaj-courier/resources next to run cwd.
-mkdir -p "$INSTALL_DIR/kumkaj-courier"
-rsync -a --delete "$PKG/kumkaj-courier/resources/" "$INSTALL_DIR/kumkaj-courier/resources/"
+# Makepad layout: resources at <install>/kumkaj_courier/resources next to run cwd.
+mkdir -p "$INSTALL_DIR/$RES_DIR"
+rsync -a --delete "$PKG/$RES_DIR/resources/" "$INSTALL_DIR/$RES_DIR/resources/"
+# Drop any leftover hyphenated tree from older installs.
+rm -rf "$INSTALL_DIR/kumkaj-courier"
 
 cat >"$INSTALL_DIR/run.sh" <<EOF
 #!/usr/bin/env bash
@@ -105,8 +118,8 @@ desktop_write_manifest "$INSTALL_DIR/install-manifest.env"
 mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/kumkaj"
 desktop_write_manifest "${XDG_CONFIG_HOME:-$HOME/.config}/kumkaj/${SLUG}.env"
 
-ICON="$INSTALL_DIR/kumkaj-courier/resources/icon_256.png"
-[[ -f "$ICON" ]] || ICON="$INSTALL_DIR/kumkaj-courier/resources/icon_128.png"
+ICON="$INSTALL_DIR/$RES_DIR/resources/icon_256.png"
+[[ -f "$ICON" ]] || ICON="$INSTALL_DIR/$RES_DIR/resources/icon_128.png"
 
 cat >"$APP_DIR/${ENTRY_ID}.desktop" <<EOF
 [Desktop Entry]

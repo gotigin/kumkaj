@@ -1,14 +1,15 @@
 //! Local SQLite persistence for Kumkaj (WAL, restart-safe sales).
 
 use crate::domain::{
-    format_qty_display, milli_to_whole_qty, new_id, AuditEvent, Branch,
-    BranchSnapshot, Category, CreditLedgerEntry, Customer, DayTotals, DiningTable, EventTimes,
-    KitchenStation, KotStatus, KotTicket, Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpsReport,
-    OrderType, OrgConsolidatedReport, PartyAgingRow, PayMethod, PeriodBooks, Product, Purchase,
-    PurchaseLine, QTY_MILLI_UNIT, Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures,
-    StaffMember, StaffRole, StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef,
-    VenueMode, STOCK_UNTRACKED,
+    format_qty_display, milli_to_whole_qty, new_id, normalize_party_roles, AttachmentEntity,
+    AttachmentKind, AuditEvent, Branch, BranchSnapshot, Category, CreditLedgerEntry, Customer,
+    DayTotals, DiningTable, EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket,
+    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpsReport, OrderType, OrgConsolidatedReport,
+    PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
+    QTY_MILLI_UNIT, Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
+    StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef, VenueMode, STOCK_UNTRACKED,
 };
+use crate::media;
 use crate::entity_template::{self, EntityTemplate};
 use crate::fiscal::{self, CountryProfile, FiscalSettings, TaxPricing};
 use crate::locale::{self, LanguageSource, LocaleSettings};
@@ -498,6 +499,24 @@ impl Store {
                     status TEXT NOT NULL DEFAULT 'queued',
                     last_error TEXT NOT NULL DEFAULT ''
                 );
+                CREATE TABLE IF NOT EXISTS entry_attachments (
+                    id TEXT PRIMARY KEY,
+                    entity_kind TEXT NOT NULL,
+                    entity_id TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    user_at TEXT NOT NULL DEFAULT '',
+                    device_at TEXT NOT NULL DEFAULT '',
+                    kind TEXT NOT NULL,
+                    label TEXT NOT NULL DEFAULT '',
+                    body TEXT NOT NULL DEFAULT '',
+                    stored_name TEXT NOT NULL DEFAULT '',
+                    mime TEXT NOT NULL DEFAULT '',
+                    bytes INTEGER NOT NULL DEFAULT 0,
+                    actor_id TEXT NOT NULL DEFAULT '',
+                    actor_name TEXT NOT NULL DEFAULT ''
+                );
+                CREATE INDEX IF NOT EXISTS idx_attach_entity
+                    ON entry_attachments(entity_kind, entity_id);
                 CREATE INDEX IF NOT EXISTS idx_sales_awb ON sales(awb_no);
                 CREATE INDEX IF NOT EXISTS idx_tracking_sale ON tracking_events(sale_id);
                 CREATE INDEX IF NOT EXISTS idx_cod_party ON cod_entries(party_id);
@@ -1196,6 +1215,11 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
+    /// Tax / account invoice text (same spine as receipt; clearer invoice header).
+    pub fn format_invoice_text(&self, sale_id: &str) -> Result<String, String> {
+        self.format_receipt_text(sale_id)
+    }
+
     pub fn format_receipt_text(&self, sale_id: &str) -> Result<String, String> {
         let sale = self
             .get_sale(sale_id)?
@@ -1211,9 +1235,16 @@ impl Store {
         let fiscal_settings = self.fiscal_settings()?;
         let pay = PayMethod::parse(&sale.pay_method);
         let tmpl = self.entity_template()?;
+        let lane = MoneyLane::parse(&sale.money_lane);
+        let is_invoice = matches!(lane, MoneyLane::Declared);
         let mut out = String::new();
         out.push_str(venue);
         out.push('\n');
+        if is_invoice {
+            out.push_str("TAX INVOICE / ACCOUNT BOOKING\n");
+        } else {
+            out.push_str("CASH MEMO / BOOKING RECEIPT\n");
+        }
         let business_id = fiscal_settings.business_tax_id.trim();
         if !business_id.is_empty() {
             out.push_str(&format!(
@@ -1221,6 +1252,14 @@ impl Store {
                 fiscal_settings.business_id_label
             ));
         }
+        if !sale.invoice_no.trim().is_empty() {
+            out.push_str("Invoice no: ");
+            out.push_str(sale.invoice_no.trim());
+            out.push('\n');
+        }
+        out.push_str("Bill: ");
+        out.push_str(&sale.bill_no());
+        out.push('\n');
         out.push_str(&fiscal_settings.format_date(&sale.created_at));
         if let Some(clock) = sale.created_at.get(11..19) {
             out.push(' ');
@@ -1229,7 +1268,7 @@ impl Store {
         out.push('\n');
         if let Some(cid) = sale.customer_id.as_deref().filter(|s| !s.is_empty()) {
             if let Some(party) = self.get_customer(cid)? {
-                out.push_str("Party: ");
+                out.push_str("Bill to: ");
                 out.push_str(&party.name);
                 if !party.kind_label.trim().is_empty() {
                     out.push_str(" (");
@@ -1244,7 +1283,6 @@ impl Store {
                 }
             }
         }
-        let lane = MoneyLane::parse(&sale.money_lane);
         let lane_label = match lane {
             MoneyLane::Declared => tmpl.lane_declared_label,
             MoneyLane::Owner => tmpl.lane_owner_label,
@@ -1253,7 +1291,7 @@ impl Store {
         out.push_str(lane_label);
         out.push('\n');
         if !sale.awb_no.trim().is_empty() {
-            out.push_str("AWB: ");
+            out.push_str("AWB / CN: ");
             out.push_str(sale.awb_no.trim());
             out.push('\n');
             // Plain-text barcode payload — label printers / scanners read the AWB.
@@ -1373,7 +1411,13 @@ impl Store {
         if !sale.created_by_name.is_empty() {
             out.push_str(&format!("By {}\n", sale.created_by_name));
         }
-        out.push_str(&format!("Bill {}\n", sale.bill_no()));
+        if is_invoice {
+            out.push_str("— End of invoice —\n");
+        }
+        let attach = self.attachments_summary_text(AttachmentEntity::Sale, sale_id)?;
+        if !attach.is_empty() {
+            out.push_str(&attach);
+        }
         Ok(out)
     }
 
@@ -2063,7 +2107,7 @@ impl Store {
         category: &str,
         note: &str,
         actor: &StaffMember,
-    ) -> Result<(), String> {
+    ) -> Result<String, String> {
         self.assert_server_writer("Log expenses")?;
         if amount_paise <= 0 {
             return Err("Expense must be > 0".into());
@@ -2080,6 +2124,7 @@ impl Store {
             }
         };
         let times = EventTimes::capture(None);
+        let id = new_id();
         self.conn
             .execute(
                 "INSERT INTO expenses(
@@ -2087,7 +2132,7 @@ impl Store {
                     user_at, device_at, server_at
                  ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
                 params![
-                    new_id(),
+                    id,
                     times.user_at,
                     amount_paise,
                     cat,
@@ -2102,7 +2147,7 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         self.audit(actor, "expense.add", &format!("{cat} {amount_paise}"))?;
-        Ok(())
+        Ok(id)
     }
 
     pub fn today_expenses_total(&self) -> Result<(i64, i64), String> {
@@ -2431,6 +2476,191 @@ impl Store {
         Ok(out)
     }
 
+    /// Per-party AR + AP + net (one identity; dual-role peers included once).
+    ///
+    /// `net_paise = ar − ap`: positive → they owe us overall; negative → we owe them.
+    pub fn party_position_report(&self) -> Result<Vec<PartyPositionRow>, String> {
+        let parties = self.list_customers()?;
+        let mut rows = Vec::new();
+        for party in parties {
+            let ar = party.balance_paise;
+            let ap = self.party_payable_balance(&party.id)?;
+            if ar == 0 && ap == 0 {
+                continue;
+            }
+            rows.push(PartyPositionRow {
+                customer_id: party.id,
+                name: party.name,
+                kind_label: party.kind_label,
+                ar_paise: ar,
+                ap_paise: ap,
+                net_paise: ar.saturating_sub(ap),
+            });
+        }
+        rows.sort_by(|a, b| {
+            b.net_paise
+                .abs()
+                .cmp(&a.net_paise.abs())
+                .then_with(|| a.name.cmp(&b.name))
+        });
+        Ok(rows)
+    }
+
+    pub fn party_position_text(&self) -> Result<String, String> {
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let rows = self.party_position_report()?;
+        let mut out = String::from(
+            "Party net position (one firm · AR and AP separate · net = who owes whom)\n",
+        );
+        if rows.is_empty() {
+            out.push_str("No AR/AP balances.\n");
+            return Ok(out);
+        }
+        for row in &rows {
+            let kind = if row.kind_label.trim().is_empty() {
+                String::new()
+            } else {
+                format!(" · {}", row.kind_label.trim())
+            };
+            let who = if row.net_paise > 0 {
+                "they owe us"
+            } else if row.net_paise < 0 {
+                "we owe them"
+            } else {
+                "squared"
+            };
+            out.push_str(&format!(
+                "{}{} · AR {} · AP {} · net {} ({})\n",
+                row.name,
+                kind,
+                Money(row.ar_paise).format_localized(&currency, &fiscal),
+                Money(row.ap_paise).format_localized(&currency, &fiscal),
+                Money(row.net_paise.abs()).format_localized(&currency, &fiscal),
+                who
+            ));
+        }
+        Ok(out)
+    }
+
+    /// Chargeable kg for completed sales in an inclusive day range.
+    pub fn period_chargeable_kg(
+        &self,
+        from_day: &str,
+        to_day: &str,
+    ) -> Result<crate::precise::Dec, String> {
+        let branch = self.active_branch_id()?;
+        let from = format!("{from_day}T00:00:00");
+        let to = format!("{to_day}T23:59:59.999999999");
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT COALESCE(chargeable_weight_kg, '0') FROM sales
+                 WHERE status = 'completed'
+                   AND created_at >= ?1 AND created_at <= ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![from, to, branch], |row| {
+                crate::precise::dec_from_sql(row, 0)
+            })
+            .map_err(|e| e.to_string())?;
+        let mut total = crate::precise::ZERO;
+        for row in rows {
+            total += row.map_err(|e| e.to_string())?;
+        }
+        Ok(total)
+    }
+
+    /// Debit / credit style pack: AR (debit to parties) vs AP (credit to parties).
+    pub fn debit_credit_report_text(&self) -> Result<String, String> {
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let rows = self.party_position_report()?;
+        let mut out = String::from("Debit / credit (party books)\n");
+        out.push_str("Debit = they owe us (AR) · Credit = we owe them (AP)\n");
+        if rows.is_empty() {
+            out.push_str("No open balances.\n");
+            return Ok(out);
+        }
+        let mut debit_total = 0i64;
+        let mut credit_total = 0i64;
+        for row in &rows {
+            let kind = if row.kind_label.trim().is_empty() {
+                String::new()
+            } else {
+                format!(" · {}", row.kind_label.trim())
+            };
+            if row.ar_paise != 0 {
+                out.push_str(&format!(
+                    "Dr {}{} · {}\n",
+                    row.name,
+                    kind,
+                    Money(row.ar_paise).format_localized(&currency, &fiscal)
+                ));
+                debit_total += row.ar_paise;
+            }
+            if row.ap_paise != 0 {
+                out.push_str(&format!(
+                    "Cr {}{} · {}\n",
+                    row.name,
+                    kind,
+                    Money(row.ap_paise).format_localized(&currency, &fiscal)
+                ));
+                credit_total += row.ap_paise;
+            }
+        }
+        out.push_str(&format!(
+            "—\nTotal debit (AR) {} · Total credit (AP) {}\nNet {}\n",
+            Money(debit_total).format_localized(&currency, &fiscal),
+            Money(credit_total).format_localized(&currency, &fiscal),
+            Money(debit_total.saturating_sub(credit_total)).format_localized(&currency, &fiscal),
+        ));
+        Ok(out)
+    }
+
+    /// Operating balance sheet snapshot (not statutory Schedule III).
+    ///
+    /// Assets: bank + debtors (AR). Liabilities: creditors (AP).
+    /// Balancing figure is the residual net position.
+    pub fn balance_sheet_text(&self) -> Result<String, String> {
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let bank = self.bank_balance_paise()?;
+        let ar = self.outstanding_credit_total()?;
+        let ap = self.outstanding_payable_total()?;
+        let assets = bank.saturating_add(ar);
+        let liabilities = ap;
+        let net = assets.saturating_sub(liabilities);
+        let venue = self.venue_title()?;
+        let venue = if venue.trim().is_empty() {
+            "Your shop"
+        } else {
+            venue.trim()
+        };
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        Ok(format!(
+            "{venue} — balance sheet (operating)\n\
+             As of {today}\n\
+             Assets\n\
+               Bank {}\n\
+               Debtors (they owe us) {}\n\
+               Total assets {}\n\
+             Liabilities\n\
+               Creditors (we owe them) {}\n\
+               Total liabilities {}\n\
+             Net position (assets − liabilities) {}\n\
+             (Cash-in-till perpetual ledger and statutory BS are later.)\n",
+            Money(bank).format_localized(&currency, &fiscal),
+            Money(ar).format_localized(&currency, &fiscal),
+            Money(assets).format_localized(&currency, &fiscal),
+            Money(ap).format_localized(&currency, &fiscal),
+            Money(liabilities).format_localized(&currency, &fiscal),
+            Money(net).format_localized(&currency, &fiscal),
+        ))
+    }
+
     /// Books for an inclusive date range (`YYYY-MM-DD` … `YYYY-MM-DD`).
     pub fn period_books(&self, from_day: &str, to_day: &str) -> Result<PeriodBooks, String> {
         let branch = self.active_branch_id()?;
@@ -2562,24 +2792,27 @@ impl Store {
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let tmpl = self.entity_template()?;
+        let kg = self.period_chargeable_kg(from_day, to_day)?;
         Ok(format!(
             "Period books {from_day} → {to_day}\n\
              Sales: {}\n\
+             Chargeable kg {}\n\
              Revenue {}\n\
              COGS {}\n\
              Gross (rev − COGS) {}\n\
              {} {}\n\
              {} {}\n\
              Cash {} · {} {} · Card {}\n\
-             {} sales {}\n\
+             {} (credit / debit to party) {}\n\
              Expenses {} ({})\n\
              Net (gross − expenses) {}\n\
              Bank in {} · Bank out {}\n\
              Bank balance now {}\n\
-             They owe us {}\n\
-             We owe them {}\n\
+             They owe us (debit / AR) {}\n\
+             We owe them (credit / AP) {}\n\
              {}\n",
             books.sale_count,
+            crate::precise::format_kg(kg),
             Money(books.revenue_paise).format_localized(&currency, &fiscal),
             Money(books.cogs_paise).format_localized(&currency, &fiscal),
             Money(books.gross_paise()).format_localized(&currency, &fiscal),
@@ -2618,9 +2851,15 @@ impl Store {
         let mut out = format!("=== {title} ===\n");
         out.push_str(&self.period_books_text(&from, &to)?);
         out.push('\n');
+        out.push_str(&self.debit_credit_report_text()?);
+        out.push('\n');
         out.push_str(&self.party_aging_text()?);
         out.push('\n');
         out.push_str(&self.payable_aging_text()?);
+        out.push('\n');
+        out.push_str(&self.party_position_text()?);
+        out.push('\n');
+        out.push_str(&self.balance_sheet_text()?);
         out.push('\n');
         out.push_str("Recent bank / cashbook\n");
         let currency = self.locale_settings()?.currency;
@@ -2641,6 +2880,19 @@ impl Store {
                 ));
             }
         }
+        Ok(out)
+    }
+
+    /// Party outstanding pack: debit/credit + AR aging + AP aging + net.
+    pub fn outstanding_pack_text(&self) -> Result<String, String> {
+        let mut out = String::from("=== Outstanding / debit–credit ===\n");
+        out.push_str(&self.debit_credit_report_text()?);
+        out.push('\n');
+        out.push_str(&self.party_aging_text()?);
+        out.push('\n');
+        out.push_str(&self.payable_aging_text()?);
+        out.push('\n');
+        out.push_str(&self.party_position_text()?);
         Ok(out)
     }
 
@@ -3278,15 +3530,14 @@ impl Store {
         let ext = source
             .extension()
             .and_then(|e| e.to_str())
-            .unwrap_or("png")
+            .unwrap_or("")
             .to_ascii_lowercase();
-        let allowed = ["webp", "png", "jpg", "jpeg", "gif", "bmp"];
-        if !allowed.contains(&ext.as_str()) {
-            return Err("Use webp, png, jpg, gif, or bmp".into());
+        if !media::is_image_ext(&ext) {
+            return Err("Use jpg, jpeg, png, or webp (stored as WebP)".into());
         }
-        let file_name = format!("venue_icon.{ext}");
+        let file_name = "venue_icon.webp".to_string();
         let dest = dir.join(&file_name);
-        fs::copy(source, &dest).map_err(|e| e.to_string())?;
+        media::write_image_as_webp(source, &dest)?;
         let key = format!("custom:{file_name}");
         self.set_venue_icon_key(Some(&key))?;
         Ok(key)
@@ -4251,21 +4502,337 @@ impl Store {
         Ok(dir)
     }
 
+    /// Root for entry attachments (notes are DB-only; files land under this tree).
+    pub fn attachments_dir(&self) -> Result<PathBuf, String> {
+        let dir = self
+            .path
+            .parent()
+            .unwrap_or(Path::new("."))
+            .join("attachments");
+        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        Ok(dir)
+    }
+
+    fn attachment_entity_dir(
+        &self,
+        entity: AttachmentEntity,
+        entity_id: &str,
+    ) -> Result<PathBuf, String> {
+        let dir = self
+            .attachments_dir()?
+            .join(entity.as_str())
+            .join(entity_id.trim());
+        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        Ok(dir)
+    }
+
+    /// Import catalogue photo: JPG/PNG/WebP in → always stored as `.webp`.
     pub fn import_item_image(&self, product_id: &str, source: &Path) -> Result<String, String> {
         let dir = self.item_images_dir()?;
         let ext = source
             .extension()
             .and_then(|e| e.to_str())
-            .unwrap_or("webp")
+            .unwrap_or("")
             .to_ascii_lowercase();
-        let allowed = ["webp", "png", "jpg", "jpeg", "gif", "bmp"];
-        if !allowed.contains(&ext.as_str()) {
-            return Err("Use webp, png, jpg, gif, or bmp".into());
+        if !media::is_image_ext(&ext) {
+            return Err("Use jpg, jpeg, png, or webp (stored as WebP)".into());
         }
-        let file_name = format!("{product_id}.{ext}");
+        let file_name = format!("{product_id}.webp");
         let dest = dir.join(&file_name);
-        fs::copy(source, &dest).map_err(|e| e.to_string())?;
+        media::write_image_as_webp(source, &dest)?;
         Ok(format!("custom:{file_name}"))
+    }
+
+    pub fn add_attachment_note(
+        &self,
+        entity: AttachmentEntity,
+        entity_id: &str,
+        label: &str,
+        body: &str,
+        actor: &StaffMember,
+    ) -> Result<EntryAttachment, String> {
+        self.assert_server_writer("Add note")?;
+        let entity_id = entity_id.trim();
+        if entity_id.is_empty() {
+            return Err("Select an entry first".into());
+        }
+        let body = body.trim();
+        if body.is_empty() {
+            return Err("Note text required".into());
+        }
+        let times = EventTimes::capture(None);
+        let id = new_id();
+        let label = if label.trim().is_empty() {
+            "Note".into()
+        } else {
+            label.trim().to_string()
+        };
+        self.conn
+            .execute(
+                "INSERT INTO entry_attachments(
+                    id, entity_kind, entity_id, created_at, user_at, device_at,
+                    kind, label, body, stored_name, mime, bytes, actor_id, actor_name
+                 ) VALUES(?1,?2,?3,?4,?5,?6,'note',?7,?8,'','text/plain',0,?9,?10)",
+                params![
+                    id,
+                    entity.as_str(),
+                    entity_id,
+                    times.user_at,
+                    times.user_at,
+                    times.device_at,
+                    label,
+                    body,
+                    actor.id,
+                    actor.name
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        self.get_attachment(&id)?
+            .ok_or_else(|| "Note missing after insert".into())
+    }
+
+    /// Photo → always WebP on disk.
+    pub fn add_attachment_image(
+        &self,
+        entity: AttachmentEntity,
+        entity_id: &str,
+        source: &Path,
+        label: &str,
+        actor: &StaffMember,
+    ) -> Result<EntryAttachment, String> {
+        self.assert_server_writer("Attach photo")?;
+        let entity_id = entity_id.trim();
+        if entity_id.is_empty() {
+            return Err("Select an entry first".into());
+        }
+        let ext = source
+            .extension()
+            .and_then(|e| e.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if !media::is_image_ext(&ext) {
+            return Err("Use jpg, jpeg, png, or webp".into());
+        }
+        let id = new_id();
+        let stored_name = format!("{id}.webp");
+        let dest = self.attachment_entity_dir(entity, entity_id)?.join(&stored_name);
+        let bytes = media::write_image_as_webp(source, &dest)? as i64;
+        let times = EventTimes::capture(None);
+        let label = if label.trim().is_empty() {
+            source
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .unwrap_or("Photo")
+                .to_string()
+        } else {
+            label.trim().to_string()
+        };
+        self.insert_attachment_row(
+            &id,
+            entity,
+            entity_id,
+            &times,
+            AttachmentKind::Image,
+            &label,
+            "",
+            &stored_name,
+            "image/webp",
+            bytes,
+            actor,
+        )?;
+        self.get_attachment(&id)?
+            .ok_or_else(|| "Photo missing after insert".into())
+    }
+
+    /// PDF / txt copied as-is.
+    pub fn add_attachment_file(
+        &self,
+        entity: AttachmentEntity,
+        entity_id: &str,
+        source: &Path,
+        label: &str,
+        actor: &StaffMember,
+    ) -> Result<EntryAttachment, String> {
+        self.assert_server_writer("Attach file")?;
+        let entity_id = entity_id.trim();
+        if entity_id.is_empty() {
+            return Err("Select an entry first".into());
+        }
+        let ext = source
+            .extension()
+            .and_then(|e| e.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if !media::is_doc_ext(&ext) {
+            return Err("Use pdf or txt".into());
+        }
+        let id = new_id();
+        let stored_name = format!("{id}.{ext}");
+        let dest = self.attachment_entity_dir(entity, entity_id)?.join(&stored_name);
+        fs::copy(source, &dest).map_err(|e| e.to_string())?;
+        let bytes = fs::metadata(&dest).map(|m| m.len() as i64).unwrap_or(0);
+        let mime = if ext == "pdf" {
+            "application/pdf"
+        } else {
+            "text/plain"
+        };
+        let times = EventTimes::capture(None);
+        let label = if label.trim().is_empty() {
+            source
+                .file_name()
+                .and_then(|s| s.to_str())
+                .unwrap_or("Document")
+                .to_string()
+        } else {
+            label.trim().to_string()
+        };
+        self.insert_attachment_row(
+            &id,
+            entity,
+            entity_id,
+            &times,
+            AttachmentKind::File,
+            &label,
+            "",
+            &stored_name,
+            mime,
+            bytes,
+            actor,
+        )?;
+        self.get_attachment(&id)?
+            .ok_or_else(|| "File missing after insert".into())
+    }
+
+    fn insert_attachment_row(
+        &self,
+        id: &str,
+        entity: AttachmentEntity,
+        entity_id: &str,
+        times: &EventTimes,
+        kind: AttachmentKind,
+        label: &str,
+        body: &str,
+        stored_name: &str,
+        mime: &str,
+        bytes: i64,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.conn
+            .execute(
+                "INSERT INTO entry_attachments(
+                    id, entity_kind, entity_id, created_at, user_at, device_at,
+                    kind, label, body, stored_name, mime, bytes, actor_id, actor_name
+                 ) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14)",
+                params![
+                    id,
+                    entity.as_str(),
+                    entity_id,
+                    times.user_at,
+                    times.user_at,
+                    times.device_at,
+                    kind.as_str(),
+                    label,
+                    body,
+                    stored_name,
+                    mime,
+                    bytes,
+                    actor.id,
+                    actor.name
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn get_attachment(&self, id: &str) -> Result<Option<EntryAttachment>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, entity_kind, entity_id, created_at, user_at, device_at,
+                        kind, label, body, stored_name, mime, bytes, actor_id, actor_name
+                 FROM entry_attachments WHERE id = ?1",
+            )
+            .map_err(|e| e.to_string())?;
+        let row = stmt
+            .query_row(params![id], row_to_attachment)
+            .optional()
+            .map_err(|e| e.to_string())?;
+        Ok(row)
+    }
+
+    pub fn list_attachments(
+        &self,
+        entity: AttachmentEntity,
+        entity_id: &str,
+    ) -> Result<Vec<EntryAttachment>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, entity_kind, entity_id, created_at, user_at, device_at,
+                        kind, label, body, stored_name, mime, bytes, actor_id, actor_name
+                 FROM entry_attachments
+                 WHERE entity_kind = ?1 AND entity_id = ?2
+                 ORDER BY created_at DESC",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![entity.as_str(), entity_id.trim()], row_to_attachment)
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn delete_attachment(&self, id: &str) -> Result<(), String> {
+        self.assert_server_writer("Delete attachment")?;
+        if let Some(att) = self.get_attachment(id)? {
+            if !att.stored_name.is_empty() {
+                if let Some(entity) = AttachmentEntity::parse(&att.entity_kind) {
+                    let path = self
+                        .attachment_entity_dir(entity, &att.entity_id)?
+                        .join(&att.stored_name);
+                    let _ = fs::remove_file(path);
+                }
+            }
+        }
+        self.conn
+            .execute("DELETE FROM entry_attachments WHERE id = ?1", params![id])
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn attachment_abs_path(&self, att: &EntryAttachment) -> Result<PathBuf, String> {
+        let entity = AttachmentEntity::parse(&att.entity_kind)
+            .ok_or_else(|| "Unknown attachment entity".to_string())?;
+        if att.stored_name.trim().is_empty() {
+            return Err("No file on this attachment".into());
+        }
+        Ok(self
+            .attachment_entity_dir(entity, &att.entity_id)?
+            .join(&att.stored_name))
+    }
+
+    /// Short lines for receipts / reports.
+    pub fn attachments_summary_text(
+        &self,
+        entity: AttachmentEntity,
+        entity_id: &str,
+    ) -> Result<String, String> {
+        let list = self.list_attachments(entity, entity_id)?;
+        if list.is_empty() {
+            return Ok(String::new());
+        }
+        let mut out = String::from("Attachments:\n");
+        for a in list {
+            match a.kind.as_str() {
+                "note" => {
+                    let preview: String = a.body.chars().take(80).collect();
+                    out.push_str(&format!("  note: {preview}\n"));
+                }
+                "image" => out.push_str(&format!("  image: {} ({})\n", a.label, a.stored_name)),
+                _ => out.push_str(&format!("  file: {} ({})\n", a.label, a.stored_name)),
+            }
+        }
+        Ok(out)
     }
 
     pub fn finalize_sale(
@@ -5979,10 +6546,13 @@ impl Store {
         if name.is_empty() {
             return Err("Customer name required".into());
         }
+        // Identity is the UUID (`id`). Names are not unique — duplicate display
+        // names are allowed. Dual-role = set both roles on that same id
+        // (`set_customer_kind_label` / Both chip), not a merge-by-name.
         let id = new_id();
         let created_at = Local::now().to_rfc3339();
         let phone = phone.trim().to_string();
-        let kind_label = kind_label.trim().to_string();
+        let kind_label = normalize_party_roles(kind_label);
         self.conn
             .execute(
                 "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label)
@@ -6007,6 +6577,27 @@ impl Store {
             kind_label,
             credit_limit_paise: 0,
         })
+    }
+
+    /// Set role tags on an existing party by id (dual-role: Consignor + Carrier on one UUID).
+    pub fn set_customer_kind_label(
+        &self,
+        customer_id: &str,
+        kind_label: &str,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Update party roles")?;
+        let kind_label = normalize_party_roles(kind_label);
+        let n = self
+            .conn
+            .execute(
+                "UPDATE customers SET kind_label = ?1 WHERE id = ?2",
+                params![kind_label, customer_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Party not found".into());
+        }
+        Ok(())
     }
 
     pub fn set_customer_credit_limit(
@@ -6919,7 +7510,7 @@ impl Store {
         note: &str,
         pod_ref: &str,
         actor: &StaffMember,
-    ) -> Result<(), String> {
+    ) -> Result<String, String> {
         self.assert_server_writer("Tracking")?;
         let sale = self
             .get_sale(sale_id)?
@@ -6933,6 +7524,7 @@ impl Store {
                 params![status.as_str(), note.trim(), sale_id],
             )
             .map_err(|e| e.to_string())?;
+        let event_id = new_id();
         self.conn
             .execute(
                 "INSERT INTO tracking_events(
@@ -6940,7 +7532,7 @@ impl Store {
                     status, note, pod_ref, actor_name
                  ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
                 params![
-                    new_id(),
+                    event_id,
                     sale_id,
                     sale.awb_no,
                     times.user_at,
@@ -6953,7 +7545,7 @@ impl Store {
                 ],
             )
             .map_err(|e| e.to_string())?;
-        Ok(())
+        Ok(event_id)
     }
 
     pub fn list_tracking_events(&self, sale_id: &str) -> Result<Vec<crate::manifest::TrackingEvent>, String> {
@@ -7832,6 +8424,25 @@ fn kot_line_label(line: &SaleLine) -> String {
     }
 }
 
+fn row_to_attachment(row: &rusqlite::Row<'_>) -> rusqlite::Result<EntryAttachment> {
+    Ok(EntryAttachment {
+        id: row.get(0)?,
+        entity_kind: row.get(1)?,
+        entity_id: row.get(2)?,
+        created_at: row.get(3)?,
+        user_at: row.get(4)?,
+        device_at: row.get(5)?,
+        kind: row.get(6)?,
+        label: row.get(7)?,
+        body: row.get(8)?,
+        stored_name: row.get(9)?,
+        mime: row.get(10)?,
+        bytes: row.get(11)?,
+        actor_id: row.get(12)?,
+        actor_name: row.get(13)?,
+    })
+}
+
 fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
     Ok(Product {
         id: row.get(0)?,
@@ -7980,11 +8591,21 @@ fn getrandom_salt(out: &mut [u8]) -> Result<(), String> {
 mod tests {
     use super::*;
     use crate::domain::{
-        Cart, ModifierOption, MoneyLane, MoneyMoveKind, OrderType, PayMethod, Product, StaffRole,
-        VenueMode,
+        AttachmentEntity, Cart, ModifierOption, MoneyLane, MoneyMoveKind, OrderType, PayMethod,
+        Product, StaffRole, VenueMode,
     };
     use crate::fiscal::TaxPricing;
     use std::time::{SystemTime, UNIX_EPOCH};
+
+    fn tiny_png_bytes() -> Vec<u8> {
+        vec![
+            0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d, 0x49, 0x48,
+            0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x08, 0x02, 0x00, 0x00,
+            0x00, 0x90, 0x77, 0x53, 0xde, 0x00, 0x00, 0x00, 0x0c, 0x49, 0x44, 0x41, 0x54, 0x78,
+            0x9c, 0x63, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0xf6, 0x17, 0x38,
+            0x55, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
+        ]
+    }
 
     fn temp_db() -> PathBuf {
         let n = SystemTime::now()
@@ -7996,6 +8617,117 @@ mod tests {
 
     fn test_product(name: &str, rupees: i64) -> Product {
         Product::new_basic(new_id(), name, Money::from_rupees(rupees))
+    }
+
+    #[test]
+    fn client_books_kg_debit_credit_and_balance_sheet() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store.upsert_product(&test_product("Parcel", 100)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let party = store
+            .add_customer_kind("Shipper Co", "", "Consignor")
+            .unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.chargeable_weight_kg = "12.5".parse().unwrap();
+        draft.actual_weight_kg = "12.5".parse().unwrap();
+        draft.money_lane = MoneyLane::Declared;
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .unwrap();
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let kg = store.period_chargeable_kg(&today, &today).unwrap();
+        assert_eq!(crate::precise::format_kg(kg), "12.5");
+        let books = store.books_report_text("today").unwrap();
+        assert!(books.contains("Chargeable kg"), "{books}");
+        assert!(books.contains("Debit / credit"), "{books}");
+        assert!(books.contains("balance sheet"), "{books}");
+        let invoice = store.format_invoice_text(&sale.id).unwrap();
+        assert!(
+            invoice.contains("TAX INVOICE") || invoice.contains("CASH MEMO"),
+            "{invoice}"
+        );
+        let bs = store.balance_sheet_text().unwrap();
+        assert!(bs.contains("Debtors"), "{bs}");
+        assert!(bs.contains("Creditors"), "{bs}");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn entry_attachments_note_image_pdf_on_sale() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store.upsert_product(&test_product("Parcel", 100)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let sale = store
+            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, None, &owner)
+            .unwrap();
+
+        store
+            .add_attachment_note(AttachmentEntity::Sale, &sale.id, "Desk", "fragile", &owner)
+            .unwrap();
+
+        let png_path = std::env::temp_dir().join(format!("attach-png-{}.png", sale.id));
+        std::fs::write(&png_path, tiny_png_bytes()).unwrap();
+        let img = store
+            .add_attachment_image(AttachmentEntity::Sale, &sale.id, &png_path, "docket", &owner)
+            .unwrap();
+        assert_eq!(img.mime, "image/webp");
+        assert!(img.stored_name.ends_with(".webp"));
+        let abs = store.attachment_abs_path(&img).unwrap();
+        assert!(abs.exists());
+        let webp = std::fs::read(&abs).unwrap();
+        assert_eq!(&webp[0..4], b"RIFF");
+        assert_eq!(&webp[8..12], b"WEBP");
+
+        let pdf_path = std::env::temp_dir().join(format!("attach-pdf-{}.pdf", sale.id));
+        std::fs::write(&pdf_path, b"%PDF-1.4 test").unwrap();
+        store
+            .add_attachment_file(AttachmentEntity::Sale, &sale.id, &pdf_path, "invoice", &owner)
+            .unwrap();
+
+        let list = store.list_attachments(AttachmentEntity::Sale, &sale.id).unwrap();
+        assert_eq!(list.len(), 3);
+        let summary = store
+            .attachments_summary_text(AttachmentEntity::Sale, &sale.id)
+            .unwrap();
+        assert!(summary.contains("note:"));
+        assert!(summary.contains("image:"));
+        assert!(summary.contains("file:"));
+
+        let exe = std::env::temp_dir().join(format!("attach-bad-{}.exe", sale.id));
+        std::fs::write(&exe, b"MZ").unwrap();
+        assert!(store
+            .add_attachment_image(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
+            .is_err());
+        assert!(store
+            .add_attachment_file(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
+            .is_err());
+
+        let _ = std::fs::remove_file(png_path);
+        let _ = std::fs::remove_file(pdf_path);
+        let _ = std::fs::remove_file(exe);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn import_item_image_stores_webp() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let png_path = std::env::temp_dir().join("item-img-test.png");
+        std::fs::write(&png_path, tiny_png_bytes()).unwrap();
+        let key = store.import_item_image("prod1", &png_path).unwrap();
+        assert!(key.ends_with(".webp"));
+        let dest = store.item_images_dir().unwrap().join("prod1.webp");
+        assert!(dest.exists());
+        let _ = std::fs::remove_file(png_path);
+        let _ = std::fs::remove_file(path);
     }
 
     #[test]
@@ -9734,7 +10466,11 @@ mod tests {
             assert_eq!(b.invoice_no, "INV-MAIN-000002");
             // The receipt shows the invoice, not a truncated uuid.
             let receipt = store.format_receipt_text(&a.id).unwrap();
-            assert!(receipt.contains("Bill INV-MAIN-000001"), "got {receipt}");
+            assert!(
+                receipt.contains("Bill: INV-MAIN-000001")
+                    || receipt.contains("Invoice no: INV-MAIN-000001"),
+                "got {receipt}"
+            );
             assert!(!receipt.contains(&a.id[..8]));
             a.id
         };
@@ -9873,6 +10609,64 @@ mod tests {
             .commit_day_close_with_count(&owner, Some(100))
             .unwrap();
         assert!(store.meta_get("last_day_close_counted_cash").unwrap().is_some());
+
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn dual_role_party_roles_on_uuid_and_nets_ar_ap() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        // Names are not unique — two rows with the same display name stay distinct by UUID.
+        let a = store
+            .add_customer_kind("Peer Express", "", "Consignor")
+            .unwrap();
+        let other = store
+            .add_customer_kind("Peer Express", "", "Carrier")
+            .unwrap();
+        assert_ne!(a.id, other.id);
+
+        // Dual role = set both roles on one id (not merge-by-name).
+        store
+            .set_customer_kind_label(&a.id, "Carrier, Consignor")
+            .unwrap();
+        let peer = store.get_customer(&a.id).unwrap().unwrap();
+        assert_eq!(peer.kind_label, "Carrier, Consignor");
+
+        let rate = test_product("Zone", 100);
+        store.upsert_product(&rate).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.money_lane = MoneyLane::Declared;
+        store
+            .finalize_sale(&draft, PayMethod::Credit, None, Some(&a.id), &owner)
+            .unwrap();
+        let ar = store.customer_balance(&a.id).unwrap();
+        assert!(ar > 0);
+
+        store
+            .record_purchase_ex(
+                "Carrier bill",
+                &a.id,
+                true,
+                &[(rate.id.clone(), 1, 5_000)],
+                "",
+                &owner,
+            )
+            .unwrap();
+        let ap = store.party_payable_balance(&a.id).unwrap();
+        assert!(ap > 0);
+
+        let positions = store.party_position_report().unwrap();
+        let row = positions
+            .iter()
+            .find(|r| r.customer_id == a.id)
+            .expect("peer in net report");
+        assert_eq!(row.ar_paise, ar);
+        assert_eq!(row.ap_paise, ap);
+        assert_eq!(row.net_paise, ar - ap);
 
         let _ = std::fs::remove_file(path);
     }

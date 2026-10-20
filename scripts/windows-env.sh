@@ -4,7 +4,14 @@
 #
 # Makepad desktop packaging (same model as Makepad Builder / packaging guide):
 #   MAKEPAD_PACKAGE_DIR=.
-#   resources live beside the .exe as <crate>/resources/...
+#   resources live beside the .exe as <rust_crate_name>/resources/...
+#   Cargo package `kumkaj-courier` → rustc module `kumkaj_courier` (underscores).
+#   Packaged dep paths are therefore `kumkaj_courier/resources/...` — NOT hyphens.
+
+# Folder name Makepad opens at runtime for `self:resources/...`.
+makepad_crate_resources_dirname() {
+  echo "kumkaj_courier"
+}
 
 windows_default_target() {
   echo "x86_64-pc-windows-gnu"
@@ -27,15 +34,14 @@ windows_ensure_toolchain() {
   echo "Windows cross: target=$target linker=$CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER"
 }
 
-# Compile-time package root: load resources relative to the .exe directory.
+# Compile-time package root: load resources relative to the .exe / cwd.
 makepad_enable_package_dir() {
   export MAKEPAD_PACKAGE_DIR=.
 }
 
-# Stage desktop resources next to kumkaj-courier.exe.
-# One tree only: kumkaj-courier/resources/ (fonts + icons).
-# Do NOT copy vendor/makepad/widgets/resources — that duplicated Noto/FA and
-# shipped unused IBM Plex / studio icons. WorldFonts uses self:resources/fonts/.
+# Stage desktop resources next to kumkaj-courier.exe / linux package root.
+# One tree only: kumkaj_courier/resources/ (fonts + icons). Underscores required.
+# Do NOT copy vendor/makepad/widgets/resources as a second tree.
 makepad_copy_desktop_resources() {
   local out="$1"
   local root="${KUMKAJ_ROOT:-}"
@@ -44,16 +50,19 @@ makepad_copy_desktop_resources() {
     return 1
   fi
 
-  rm -rf "$out/kumkaj-courier" "$out/kumkaj" "$out/makepad_widgets"
-  mkdir -p "$out/kumkaj-courier/resources/fonts"
+  local crate_dir
+  crate_dir="$(makepad_crate_resources_dirname)"
+  # Remove both old hyphenated and current underscore trees.
+  rm -rf "$out/kumkaj-courier" "$out/kumkaj_courier" "$out/kumkaj" "$out/makepad_widgets"
+  mkdir -p "$out/$crate_dir/resources/fonts"
 
   rsync -a --exclude 'android/' \
-    "$root/apps/courier/resources/" "$out/kumkaj-courier/resources/"
+    "$root/apps/courier/resources/" "$out/$crate_dir/resources/"
 
   # CJK + colour emoji: live in vendor Makepad; WorldFonts expects them under
-  # kumkaj-courier/resources/fonts (same folder as the other script fonts).
+  # kumkaj_courier/resources/fonts (same folder as the other script fonts).
   local widgets_res="$root/vendor/makepad/widgets/resources"
-  local fonts_out="$out/kumkaj-courier/resources/fonts"
+  local fonts_out="$out/$crate_dir/resources/fonts"
   local f
   for f in LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
     if [[ -f "$fonts_out/$f" ]]; then
@@ -65,4 +74,10 @@ makepad_copy_desktop_resources() {
       echo "warn: missing $f (run ./scripts/setup-makepad.sh + ./scripts/fetch-ui-fonts.sh)" >&2
     fi
   done
+
+  if [[ ! -f "$fonts_out/NotoSans-Regular.ttf" ]]; then
+    echo "error: missing NotoSans-Regular.ttf under $fonts_out" >&2
+    echo "Run ./scripts/fetch-ui-fonts.sh before packaging." >&2
+    return 1
+  fi
 }

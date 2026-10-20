@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Production Windows x86_64 package (Windows 10 + Windows 11).
-# Makepad layout: kumkaj-courier.exe + kumkaj-courier/resources/
-# Includes install.ps1 / uninstall.ps1 (Add/Remove Programs + keep/remove data).
+# Makepad layout: kumkaj-courier.exe + kumkaj_courier/resources/ (underscores).
+# Includes Setup.bat / install.ps1 / uninstall (Add/Remove Programs + keep/remove data).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -65,20 +65,23 @@ Label: ${KUMKAJ_APP_LABEL}
 Target: $TARGET (x86_64 — Windows 10 and Windows 11)
 
 Install (recommended):
-  Right-click install.ps1 → Run with PowerShell
-  or: powershell -ExecutionPolicy Bypass -File .\\install.ps1
+  Double-click Setup.bat
+  (Do not open install.ps1 in Notepad — use Setup.bat.)
 
   Installs to: %LOCALAPPDATA%\\Programs\\Kumkaj Courier\\
   Start Menu + Settings → Apps uninstall entry
 
+This folder is the installer package (exe + fonts + Setup.bat), not a lone
+Setup.exe. After Setup, use the Start Menu shortcut — that is the installed app.
+
 Portable run (no install):
   .\\kumkaj-courier.exe
-  (keep this whole folder — exe + kumkaj-courier\\resources\\)
+  (keep this whole folder — exe + kumkaj_courier\\resources\\)
 
 Uninstall:
   Start Menu → Uninstall Kumkaj Courier
   or Settings → Apps → Kumkaj Courier
-  or: powershell -ExecutionPolicy Bypass -File .\\uninstall.ps1
+  or double-click Uninstall.bat
 
 Uninstall asks whether to keep or remove books data:
   %APPDATA%\\${KUMKAJ_APP_ID}\\

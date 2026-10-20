@@ -1795,9 +1795,10 @@ pub struct Customer {
     pub phone: String,
     pub note: String,
     pub active: bool,
-    /// Outstanding balance in paise (positive = customer owes).
+    /// Outstanding **AR** in paise (positive = they owe us). AP is on payable_ledger.
     pub balance_paise: i64,
-    /// Freeform kind label (`Carrier`, `Retail`, …) — not a product fork.
+    /// Role tag(s): `Consignor`, `Carrier`, `Supplier`, or combined
+    /// (`Carrier, Consignor`). One party identity — not two masters.
     #[serde(default)]
     pub kind_label: String,
     /// Max outstanding for account booking (paise). 0 = no limit.
@@ -1813,6 +1814,177 @@ impl Customer {
     pub fn credit_limit(&self) -> Money {
         Money(self.credit_limit_paise)
     }
+
+    pub fn is_consignor(&self) -> bool {
+        party_has_role(&self.kind_label, PARTY_ROLE_CONSIGNOR)
+    }
+
+    pub fn is_carrier(&self) -> bool {
+        party_has_role(&self.kind_label, PARTY_ROLE_CARRIER)
+    }
+}
+
+/// Canonical role tokens stored in [`Customer::kind_label`] (comma-separated).
+pub const PARTY_ROLE_CONSIGNOR: &str = "Consignor";
+pub const PARTY_ROLE_CARRIER: &str = "Carrier";
+pub const PARTY_ROLE_SUPPLIER: &str = "Supplier";
+
+/// True if `kind_label` lists this role (case-insensitive; comma / `+` / `/` separators).
+pub fn party_has_role(kind_label: &str, role: &str) -> bool {
+    let want = role.trim().to_ascii_lowercase();
+    if want.is_empty() {
+        return false;
+    }
+    party_role_tokens(kind_label)
+        .iter()
+        .any(|t| t.eq_ignore_ascii_case(&want))
+}
+
+fn party_role_tokens(kind_label: &str) -> Vec<String> {
+    kind_label
+        .split(|c: char| c == ',' || c == '+' || c == '/' || c == ';' || c == '|')
+        .map(|s| s.trim())
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_string())
+        .collect()
+}
+
+/// Normalize role text: unique tokens, title-ish known roles, sorted for stable storage.
+///
+/// `"carrier + consignor"` → `"Carrier, Consignor"`.
+pub fn normalize_party_roles(kind_label: &str) -> String {
+    let mut out: Vec<String> = Vec::new();
+    for raw in party_role_tokens(kind_label) {
+        let canon = match raw.to_ascii_lowercase().as_str() {
+            "consignor" | "sender" | "debtor" | "customer" => PARTY_ROLE_CONSIGNOR.to_string(),
+            "carrier" | "courier" | "creditor" => PARTY_ROLE_CARRIER.to_string(),
+            "supplier" | "vendor" => PARTY_ROLE_SUPPLIER.to_string(),
+            "both" | "dual" => {
+                // Expand to both courier roles.
+                for r in [PARTY_ROLE_CARRIER, PARTY_ROLE_CONSIGNOR] {
+                    if !out.iter().any(|x| x == r) {
+                        out.push(r.to_string());
+                    }
+                }
+                continue;
+            }
+            _ => {
+                // Preserve custom labels with first letter uppercased when ASCII.
+                let mut c = raw.chars();
+                match c.next() {
+                    Some(f) => format!("{}{}", f.to_uppercase(), c.as_str()),
+                    None => continue,
+                }
+            }
+        };
+        if !out.iter().any(|x| x.eq_ignore_ascii_case(&canon)) {
+            out.push(canon);
+        }
+    }
+    out.sort();
+    out.join(", ")
+}
+
+/// Merge two kind labels (e.g. existing Consignor + new Carrier → both).
+pub fn merge_party_roles(existing: &str, added: &str) -> String {
+    normalize_party_roles(&format!("{existing}, {added}"))
+}
+
+/// Parent of an [`EntryAttachment`] (books / ops row).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub enum AttachmentEntity {
+    Sale,
+    Party,
+    Expense,
+    Purchase,
+    TrackingEvent,
+}
+
+impl AttachmentEntity {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Sale => "sale",
+            Self::Party => "party",
+            Self::Expense => "expense",
+            Self::Purchase => "purchase",
+            Self::TrackingEvent => "tracking_event",
+        }
+    }
+
+    pub fn parse(raw: &str) -> Option<Self> {
+        match raw.trim() {
+            "sale" => Some(Self::Sale),
+            "party" | "customer" => Some(Self::Party),
+            "expense" => Some(Self::Expense),
+            "purchase" => Some(Self::Purchase),
+            "tracking_event" | "tracking" => Some(Self::TrackingEvent),
+            _ => None,
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub enum AttachmentKind {
+    Note,
+    Image,
+    File,
+}
+
+impl AttachmentKind {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Note => "note",
+            Self::Image => "image",
+            Self::File => "file",
+        }
+    }
+
+    pub fn parse(raw: &str) -> Option<Self> {
+        match raw.trim() {
+            "note" => Some(Self::Note),
+            "image" | "photo" => Some(Self::Image),
+            "file" | "doc" | "pdf" => Some(Self::File),
+            _ => None,
+        }
+    }
+}
+
+/// Note, WebP photo, or PDF/doc on a sale / party / expense / …
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+pub struct EntryAttachment {
+    pub id: String,
+    pub entity_kind: String,
+    pub entity_id: String,
+    pub created_at: String,
+    #[serde(default)]
+    pub user_at: String,
+    #[serde(default)]
+    pub device_at: String,
+    /// `note` | `image` | `file`
+    pub kind: String,
+    pub label: String,
+    /// Note body, or empty for files.
+    pub body: String,
+    /// Filename under attachments/ (empty for notes).
+    pub stored_name: String,
+    pub mime: String,
+    pub bytes: i64,
+    pub actor_id: String,
+    pub actor_name: String,
+}
+
+/// Combined AR/AP position for one party (overall who-owes-whom).
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+pub struct PartyPositionRow {
+    pub customer_id: String,
+    pub name: String,
+    pub kind_label: String,
+    /// They owe us (AR). Positive = receivable.
+    pub ar_paise: i64,
+    /// We owe them (AP). Positive = payable.
+    pub ap_paise: i64,
+    /// `ar_paise - ap_paise`. Positive → they owe us net; negative → we owe them net.
+    pub net_paise: i64,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -2444,6 +2616,28 @@ mod tests {
         let legacy = EventTimes::from_legacy_created("2023-06-01T10:00:00+05:30");
         assert_eq!(legacy.user_at, legacy.device_at);
         assert!(legacy.server_at.is_empty());
+    }
+
+    #[test]
+    fn party_roles_normalize_merge_and_both() {
+        assert_eq!(normalize_party_roles("both"), "Carrier, Consignor");
+        assert_eq!(
+            merge_party_roles("Consignor", "Carrier"),
+            "Carrier, Consignor"
+        );
+        assert!(party_has_role("Carrier, Consignor", PARTY_ROLE_CONSIGNOR));
+        assert!(party_has_role("Carrier, Consignor", PARTY_ROLE_CARRIER));
+        let c = Customer {
+            id: "1".into(),
+            name: "Peer".into(),
+            phone: String::new(),
+            note: String::new(),
+            active: true,
+            balance_paise: 0,
+            kind_label: "Carrier, Consignor".into(),
+            credit_limit_paise: 0,
+        };
+        assert!(c.is_consignor() && c.is_carrier());
     }
 }
 

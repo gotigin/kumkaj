@@ -101,7 +101,7 @@ equal peers in one mental model. The UX must make that model obvious.
 
 | # | What owners track | Generic primitive | Status (schema v1) |
 |---|-------------------|-------------------|---------------------|
-| 1 | Who we deal with | **Party** + freeform `kind_label` | Shipped — Sell credit, Buy supplier/carrier, Credit kinds |
+| 1 | Who we deal with | **Party** + multi-role `kind_label` (one identity; AR+AP; net report) | Shipped — dual-role OK; see Dual-role parties |
 | 2 | Catalogue + units | **Item** + unit + `units` / `unit_conversions` | Shipped; Settings → Units; item `unit_label` |
 | 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Courier desk UX next — [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) |
 | 4 | Buy (goods/services in) | Purchases → stock + line cost; party + on-account AP | Shipped — Buy tab; paid or on account |
@@ -149,12 +149,37 @@ Full product brief, competitor matrix, walk-in/barcode/tracking:
 
 | Their world | In Kumkaj Courier |
 |-------------|-------------------|
-| Carriers | Party kind `Carrier` — money out / AP |
-| Consignors | Party kind `Consignor` — money in / AR |
+| Carriers / consignors | **One party master** with role tag(s) — see dual-role rule below |
 | Rates ₹/kg | Rates & services (unit `kg`) |
-| Charge a consignor | Booking · Account or Cash booking |
-| Pay a carrier / office cost | Pay out · Parties → Pay AP |
-| Day / outstanding / bank / month | Day book · Bank book & P&L |
+| Charge a consignor | Booking · Account or Cash booking → **AR** (`credit_ledger`) |
+| Pay a carrier / office cost | Pay out · Parties → Pay AP → **AP** (`payable_ledger`) |
+| Day / outstanding / bank / month | Day book · Bank book & P&L · party **net** position |
+
+### Dual-role parties (decision)
+
+A peer courier (or any firm) may be **both** someone you bill **and** someone who bills you.
+
+| Layer | Practice |
+|-------|----------|
+| **Identity** | Uniqueness is the party **UUID** (`id`). Display names are **not** unique — two different firms may share a name. Prefer **one UUID** for one real firm with dual roles, not two rows that only differ by kind |
+| **Roles** | Tags on that party (`Consignor`, `Carrier`, `Supplier`, …). Multiple roles allowed (e.g. `Carrier, Consignor`) on the **same** id |
+| **Ledgers** | Keep **two** books faces: AR (`credit_ledger`) and AP (`payable_ledger`). Do **not** merge into one running balance |
+| **Overall status** | Report **AR, AP, and net** (`AR − AP`): net > 0 → they owe you; net < 0 → you owe them |
+| **Settlement** | Settle each side on its ledger; optional cash netting later still posts both sides |
+
+`kind_label` is the freeform / multi-role field (roles, not product forks). All books and ops key off **party id**, never uniqueness-by-name.
+
+### Entry notes + attachments
+
+Sales, parties, expenses (and tracking/POD) may carry **notes**, **photos**, and **PDFs** via `entry_attachments`:
+
+| Kind | Input | Stored |
+|------|--------|--------|
+| Note | Free text | DB row only (`kind = note`) |
+| Image | JPG / JPEG / PNG / WebP | Always **WebP** under `attachments/{entity}/{id}/` |
+| File | PDF / txt | Copied as-is |
+
+Catalogue / brand photos reuse the same WebP encode helper. Reject unknown types (e.g. `.exe`).
 
 ------------------------------------------------------------------------
 
@@ -163,8 +188,11 @@ Full product brief, competitor matrix, walk-in/barcode/tracking:
 Still generic-only. Spine above is shipped; remaining is depth.
 
 ### Later
-Stock valuation · bank reconcile (BRS) · open-item bill allocation · balance sheet ·
+Stock valuation · bank reconcile (BRS) · open-item bill allocation ·
 accountant export · statutory GST/e-invoice (vision §23).
+
+**Operating balance sheet** (bank + AR vs AP + net) shipped for courier client books —
+not a statutory Schedule III statement.
 
 ------------------------------------------------------------------------
 

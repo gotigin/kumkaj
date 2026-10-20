@@ -7,7 +7,7 @@ courier-dev = ["run", "-p", "courier-dev", "--"]
 # (No Splash --hot on Android — each run rebuilds and relaunches.)
 courier-android-dev = ["run", "-p", "courier-android-dev", "--"]
 # Windows Dev package (cross from Linux with mingw; Win10 + Win11 x86_64).
-# Makepad layout: exe + kumkaj-courier/resources beside it.
+# Makepad layout: exe + kumkaj_courier/resources beside it (underscores).
 # Usage: cargo courier-windows-dev → dist/windows-dev/
 # Production: ./scripts/package-windows.sh → dist/windows/
 courier-windows-dev = ["run", "-p", "courier-windows-dev", "--"]

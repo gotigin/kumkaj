@@ -1,0 +1,17 @@
+---
+description: Windows install/uninstall and Store packaging order for Kumkaj Courier
+alwaysApply: true
+---
+
+# Windows packaging (install / Store)
+
+**Goal:** Microsoft Store distribution for the Windows app (real goal, not optional).
+
+**Order of work:**
+
+1. **Now:** Per-user **MSI** (`scripts/build-msi.sh` → `dist/KumkajCourier-*.msi`) — single file, Start Menu, Settings → Apps uninstall, no admin, MajorUpgrade replaces old versions, books data kept. Package folder (`kumkaj-courier.exe` + `kumkaj_courier/resources/` underscores + `Setup.bat`) is the fallback. Do not tell people to open `.ps1` in Explorer (Notepad).
+2. **Later:** Package as **MSIX** and publish through the Microsoft Store.
+
+Do not treat “website zip only / portable forever” as the long-term Windows product shape. Do not jump to MSIX before install/uninstall is solid unless the owner asks.
+
+Canonical notes: `docs/DEV.md` § Desktop install / uninstall and Windows.

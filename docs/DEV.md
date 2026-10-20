@@ -22,7 +22,7 @@ Loads [`apps/courier/env/development.env`](../apps/courier/env/development.env) 
   - Path-dep from `apps/courier`; applies Wayland scroll-sign + dark caption button patches
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
-- Multi-script UI fonts live in **one** place: `apps/courier/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji). Desktop packages copy only `kumkaj-courier/resources/` — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
+- Multi-script UI fonts live in **one** place: `apps/courier/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji). Desktop packages copy only `kumkaj_courier/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
 - **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
@@ -262,26 +262,44 @@ Dev and prod stay separate (debug suffix on id + install folder).
 | Windows install dir | `%LOCALAPPDATA%\Programs\Kumkaj Courier Dev\` | `%LOCALAPPDATA%\Programs\Kumkaj Courier\` |
 | Data dir | `…/com.kumkaj.courier.debug/` | `…/com.kumkaj.courier/` |
 
-**Install:** run `install.sh` (Linux) or `install.ps1` (Windows) from the package folder. Adds Start Menu / app menu entries, including **Uninstall …**.
+**Install:** run `install.sh` (Linux) or double-click **`Setup.bat`** (Windows) from the package folder. Adds Start Menu / app menu entries, including **Uninstall …**. On Windows, do not open `install.ps1` in Explorer (that often opens Notepad) — use `Setup.bat`.
 
-**Uninstall:** from the menu, Settings → Apps (Windows), or re-run `uninstall.sh` / `uninstall.ps1`. Always prompts:
+**Uninstall:** from the menu, Settings → Apps (Windows), double-click `Uninstall.bat`, or re-run `uninstall.sh` / `uninstall.ps1`. Always prompts:
 
 - **Keep data** (default) — books stay; run uninstall again later to delete them  
 - **Remove data** — deletes the app-id data directory  
 
 If app files are already gone but data remains, re-running uninstall still offers to remove leftover data.
 
+**Explicit env wrappers** (no flag to remember — use these from the repo):
+
+| | Development | Production |
+|---|---|---|
+| Linux | `./scripts/uninstall-linux-dev.sh` | `./scripts/uninstall-linux-prod.sh` |
+| Windows | `uninstall-windows-dev.ps1` | `uninstall-windows-prod.ps1` |
+| Android | `./scripts/uninstall-android-dev.sh` | `./scripts/uninstall-android-prod.sh` |
+
+(Linux/Windows wrappers call the shared uninstaller with `--dev` / `-Dev` or `--prod` / `-Prod`. Android uses `adb uninstall` of that package id.)
+
 Shared helpers: `scripts/desktop-ids.sh`, `scripts/stage-desktop-package.sh`.
 
 ## Windows (cross from Arch / native on Windows)
 
+**Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
+**Now:** per-user **MSI** (`./scripts/build-msi.sh` → `dist/KumkajCourier-<ver>.msi`, dev: `./scripts/build-msi-dev.sh`) — single file, double-click install, Start Menu shortcut, uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Kumkaj Courier\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps books data (`%APPDATA%\com.kumkaj.courier\`); Start Menu **Delete books data** removes it on demand. (In-MSI script prompts broke real installs — do not re-add.) Folder + `Setup.bat` package remains the fallback.  
+**Later:** wrap as **MSIX** for Store publish.
+
 One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.kumkaj.courier.debug` vs `com.kumkaj.courier`).
+
+Makepad loads fonts from **`kumkaj_courier/resources/`** next to the `.exe` (crate name uses underscores). Hyphenated `kumkaj-courier/resources/` will not load UI fonts.
 
 | | Development | Production |
 |---|---|---|
 | Command | `cargo courier-windows-dev` | `./scripts/package-windows.sh` |
 | Output | `dist/windows-dev/` (copy whole folder) | `dist/windows/` (copy whole folder) |
-| Cargo profile | **debug** (`dev`) | **release** |
+| Install on Windows | Double-click `Setup.bat` | Double-click `Setup.bat` |
+| Cargo profile | **release** (both — Windows debug PE was ~400MB) | **release** |
+| What “Dev” means | `com.kumkaj.courier.debug` + separate install/data + console | prod id, GUI subsystem |
 | Env | `apps/courier/env/development.env` | `apps/courier/env/production.env` |
 | Data on Windows | `%APPDATA%\com.kumkaj.courier.debug\` | `%APPDATA%\com.kumkaj.courier\` |
 
@@ -292,8 +310,9 @@ sudo pacman -S mingw-w64-gcc
 rustup target add x86_64-pc-windows-gnu
 cargo courier-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
 ./scripts/package-windows.sh      # Prod package → copy whole dist/windows/ folder
-# Then on Windows: powershell -ExecutionPolicy Bypass -File .\install.ps1
-# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj-courier/resources/ beside the .exe
+./scripts/build-msi.sh             # Prod MSI → dist/KumkajCourier-*.msi (./scripts/build-msi.sh dev for Dev)
+# Then on Windows: double-click the MSI (or Setup.bat in the folder package)
+# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj_courier/resources/ beside the .exe
 ```
 
 Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo courier-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
@@ -441,7 +460,7 @@ cargo test -p kumkaj-courier
 ```bash
 ./scripts/package-linux.sh            # prod → dist/linux/ (+ install.sh / uninstall.sh)
 ./scripts/package-linux-dev.sh        # debug → dist/linux-dev/
-./scripts/package-windows.sh          # prod → dist/windows/ (+ install.ps1)
+./scripts/package-windows.sh          # prod → dist/windows/ (+ Setup.bat)
 cargo courier-windows-dev              # debug → dist/windows-dev/
 ./scripts/package-android.sh
 ./scripts/package-web.sh
@@ -462,7 +481,7 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 
 1. `cargo test -p kumkaj-courier`
 2. `./scripts/package-linux.sh` → smoke `dist/linux/run.sh` / `./install.sh`
-3. `./scripts/package-windows.sh` → `dist/windows/` (+ `install.ps1`); optional `cargo courier-windows-dev` for Dev
+3. `./scripts/package-windows.sh` → `dist/windows/` (+ `Setup.bat`); optional `cargo courier-windows-dev` for Dev
 4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./scripts/package-android.sh`
 5. Sign Android release; create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
 6. `./scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
@@ -488,7 +507,7 @@ Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder)
 
 Fresh DBs get the full books shape in a single `CREATE TABLE` pass in `Store::migrate`:
 
-- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, order type, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features; kitchen stations / tables / KOT tables remain in the shared schema for a future food product but are not exposed in Courier UI
+- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, order type, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking); kitchen stations / tables / KOT tables remain in the shared schema for a future food product but are not exposed in Courier UI
 - meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, etc.
 
 Pre-release: if a local DB from an older numbered schema (2–17) misbehaves, delete it and reopen. After first public release, introduce `schema_version` 2+ only for real upgrades. Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).

@@ -41,5 +41,8 @@ EOF
   else
     cp -f "$scripts/install-windows.ps1" "$out/install.ps1"
     cp -f "$scripts/uninstall-windows.ps1" "$out/uninstall.ps1"
+    # Double-click entry points (opening .ps1 in Explorer often launches Notepad).
+    cp -f "$scripts/Setup.bat" "$out/Setup.bat"
+    cp -f "$scripts/Uninstall.bat" "$out/Uninstall.bat"
   fi
 }

@@ -31,6 +31,8 @@ ureq = { version = "2", features = ["json"] }
 sys-locale = "0.3"
 # Exact decimal maths (no native f32/f64) for money, weight, slabs, tax %.
 rust_decimal = { version = "1.37", default-features = false, features = ["std", "serde", "serde-str", "maths"] }
+# Decode JPG/PNG/WebP; always re-encode attachments as lossless WebP.
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
 
 # Desktop-only: neither crate builds for Android. There the clipboard goes
 # through `Cx::copy_to_clipboard` and files through Makepad's own picker.

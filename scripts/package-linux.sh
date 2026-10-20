@@ -33,8 +33,8 @@ mkdir -p "$OUT/bin"
 
 cp -f "$BIN" "$OUT/bin/kumkaj-courier"
 chmod +x "$OUT/bin/kumkaj-courier"
-# Makepad: resources at <package>/kumkaj-courier/resources/ (cwd = package root via run.sh).
-# Binary lives under bin/ so it does not collide with the resources directory name.
+# Makepad: resources at <package>/kumkaj_courier/resources/ (underscores; cwd = package root).
+# Binary lives under bin/ (hyphenated name) so it never collides with the resources dir.
 makepad_copy_desktop_resources "$OUT"
 
 stage_desktop_package "$OUT" linux

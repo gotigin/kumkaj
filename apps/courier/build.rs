@@ -75,8 +75,8 @@ fn main() {
     vars.insert("KUMKAJ_ENV".into(), kumkaj_env.clone());
 
     // Production Windows PE: no console when the user double-clicks the exe.
-    // Dev (including `cargo courier-windows-dev` debug profile) keeps the console.
-    // Driven by KUMKAJ_ENV, not Cargo --release / --debug.
+    // Dev packages keep the console. Driven by KUMKAJ_ENV, not Cargo profile
+    // (Windows Dev packages also use --release — Cargo debug PE is huge).
     if kumkaj_env == "production" {
         println!("cargo:rustc-cfg=kumkaj_hide_console");
     }

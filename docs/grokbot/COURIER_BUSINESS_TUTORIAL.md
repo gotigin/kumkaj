@@ -374,7 +374,7 @@ In Kumkaj terms: **Paid = Cash booking**, **TBB = Account booking**. To-Pay and 
 | **Day book** (journal; *rojmel*) | Every transaction (money event), in date and time order | A diary of the shop | Every booking, carrier bill, expense, receipt |
 | **Cash book** (*rokad bahi*) | Only physical cash in and out; its balance must match the cash in the drawer | Your wallet's diary | Walk-in cash bookings; tea, auto fare paid in cash; cash deposited in bank |
 | **Bank book** | Only bank money in and out, including UPI and card settlements; match it with the bank statement | Your passbook, kept by you | UPI receipts, NEFT from account customers, wallet top-ups, COD remittances |
-| **Party ledgers** (*khata*) | One page per party showing what they owe you or you owe them | A *udhaar* notebook page per person | Each consignor (they owe you) and each carrier (you owe them) |
+| **Party ledgers** (*khata*) | One page per **party id**, with **AR** and **AP** kept separate; a **net** line shows who owes whom overall | A *udhaar* notebook — one firm can be both customer and supplier on the **same** account | Same peer may be consignor **and** carrier on one UUID (names need not be unique). Kumkaj: UUID identity, multi-role tags, two ledgers, net report ([`BUSINESS_BOOKS.md`](../BUSINESS_BOOKS.md)) |
 | **Sales register** | Every invoice (bill) you issue | Carbon copies of all bills, in a list | Needed for the GST return GSTR-1 |
 | **Purchase / expense register** | Every bill you receive | A file of all bills you got | Carrier invoices (for input tax credit), rent, electricity |
 | **Account booking (TBB) register** | Each credit booking, to be billed at month end | A list of *udhaar* parcels | Patil Electricals' parcels |

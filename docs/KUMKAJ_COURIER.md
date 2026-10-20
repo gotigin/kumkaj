@@ -49,11 +49,12 @@ Sources: Bellboy, GoInvoicing, ESE, CourierDesk, Saap, BillMyCourier, aggregator
 
 | Feature | Notes | Kumkaj Courier target |
 |---------|--------|------------------------|
-| Consignor + carrier accounts | Party kinds | **Ship** — Parties (Consignor / Carrier) |
-| Debtors & creditors / aging | AR + AP | **Ship** — Parties + Reports |
+| Consignor + carrier accounts | One party; roles Consignor and/or Carrier (same firm may be both) | **Ship** — Parties multi-role; AR+AP ledgers; net position in reports |
+| Debtors & creditors / aging | AR + AP (separate); net who-owes-whom | **Ship** — Parties + Reports |
 | Day book | Today money in/out | **Ship** — Day book tab / Reports |
 | Bank book | Till ↔ bank | **Ship** — Bank book & P&L |
-| Expense voucher | Running costs | **Ship** — Pay out / Reports |
+| Expense voucher | Running costs + bill photo/PDF | **Ship** — Pay out / Reports + attachments |
+| Entry notes / attachments | Docket photos, party docs, expense bills | **Ship** — notes + WebP images + PDF on sale / party / expense |
 | Invoice | Account booking path | **Ship** — Booking + Account booking |
 | Cash booking vs Account booking | Pay now vs party ledger | **Ship** — bill-type tag |
 | Party ledger + outstanding | Running balance | **Ship** / deepen |
@@ -69,7 +70,7 @@ Sources: Bellboy, GoInvoicing, ESE, CourierDesk, Saap, BillMyCourier, aggregator
 | Rate master (zone × service × slab) | ₹/kg, first/extra slab | **Ship** — zone master + first/extra kg on Rates |
 | Chargeable weight | Actual / volumetric / slab | **Ship** — L×B×H / 5000, round up 0.5 kg |
 | Extra charges | Fuel, docket, ODA, packing, COD fee | **Ship** — fuel/docket on desk; catalog seeded |
-| AWB / CN + **label / barcode** | Unique id; print; scan | **Ship** — AWB + SVG label (`labels/`) + text `*AWB*` |
+| AWB / CN + **label / barcode** | Unique id; print; scan | **Ship** — Code 128 SVG label + Ops Find/Scan (wedge) → desk card → advance/COD |
 | City / zone / pincode | Destination masters | **Ship** — zone master + booking zone field |
 | Bulk booking | Many dockets | **Ship** — CSV parse (`notify::parse_bulk_booking_csv`) |
 | Credit limit on account | Block over-limit | **Ship** — `credit_limit_paise` + gate on finalize |
@@ -79,7 +80,8 @@ Sources: Bellboy, GoInvoicing, ESE, CourierDesk, Saap, BillMyCourier, aggregator
 | Feature | Target |
 |---------|--------|
 | Tracking statuses on AWB | **Ship** — timeline events + status advance |
-| POD note / photo stub | **Ship** — `pod_note` / `pod_ref` on tracking events |
+| Barcode scan-to-find / act | **Ship** — Ops AWB field + Find (scanner Enter); card + OFD / Delivered / label / COD |
+| POD note / photo | **Ship** — note + WebP POD on sale (`pod_ref` = attachment id); ops desk picker |
 | Manifest / handover list | **Ship** — carrier bag **or** own-fleet rider run |
 | Riders / vans | **Ship** — riders master + assign on manifest |
 | Pickup / dispatch lists | **Ship** — same manifest + status filters |
@@ -130,12 +132,15 @@ Prioritize in this order for Kumkaj Courier:
 | `notify.rs` | Alert outbox + bulk CSV |
 | `track.rs` | Public track JSON view |
 | `courier_ops_view.rs` | Reports-facet text + desk actions (advance / dispatch / COD / riders / period bill) |
+| `media.rs` | JPG/PNG/WebP → always store WebP; used by attachments + catalogue/brand photos |
 
-**Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. Consignment advance, label print, carrier/own-fleet dispatch, COD collect/remit, rider add, and period bill run from the ops desk controls; credit limit + period bill also sit on Parties.
+**Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. **Barcode loop:** scan/type AWB → Find → desk card → Out for delivery / Delivered / Print label / Collect COD. Carrier/own-fleet dispatch, COD remit, rider add, and period bill run from the same desk; credit limit + period bill also sit on Parties.
 
 ------------------------------------------------------------------------
 
 ## Client WhatsApp checklist (must remain covered)
+
+Canonical sanitized tracker: [`COURIER_CLIENTS_REQUIREMENTS.md`](COURIER_CLIENTS_REQUIREMENTS.md).
 
 - Per day report · kg + credit/debit · party outstanding · bank posting · monthly · P&L / BS · invoice format  
 - Named carriers & consignors as **parties** (owner enters their own names)

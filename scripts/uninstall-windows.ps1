@@ -1,4 +1,4 @@
-# Uninstall Kumkaj Courier (Windows). Re-runnable: if app files are gone but
+﻿# Uninstall Kumkaj Courier (Windows). Re-runnable: if app files are gone but
 # books data remains, still offers to delete the data directory.
 #
 # Usage:
@@ -6,11 +6,21 @@
 #   powershell -ExecutionPolicy Bypass -File .\uninstall.ps1 -Dev
 param(
     [switch]$Dev,
-    [switch]$Prod
+    [switch]$Prod,
+    [switch]$NoPause
 )
 
 $ErrorActionPreference = "Stop"
 $ScriptDir = $PSScriptRoot
+
+function Pause-IfInteractive {
+    if ($NoPause) { return }
+    if ([Environment]::UserInteractive -and -not [Console]::IsInputRedirected) {
+        Write-Host ""
+        Write-Host "Press Enter to close this window..."
+        try { [void][Console]::ReadLine() } catch { Read-Host "Press Enter to close" | Out-Null }
+    }
+}
 
 function Read-Manifest([string]$path) {
     $map = @{}
@@ -87,7 +97,7 @@ Write-Host "  Data:      $DataDir"
 $appPresent = Test-Path (Join-Path $InstallDir "kumkaj-courier.exe")
 if ($appPresent) {
     Write-Host ""
-    Write-Host "Removing app files…"
+    Write-Host "Removing app files..."
     # Remove Start Menu + ARP first.
     if (Test-Path $StartMenu) {
         Remove-Item -Recurse -Force $StartMenu
@@ -112,7 +122,7 @@ if ($appPresent) {
 }
 
 Write-Host ""
-Write-Host "$Label — local books data:"
+Write-Host "$Label - local books data:"
 Write-Host "  $DataDir"
 $removeData = $false
 if (Test-Path $DataDir) {
@@ -123,11 +133,11 @@ if (Test-Path $DataDir) {
     $ans = Read-Host "Remove data? [y/N]"
     if ($ans -match '^(y|yes)$') { $removeData = $true }
 } else {
-    Write-Host "  (no data directory found — nothing to remove)"
+    Write-Host "  (no data directory found - nothing to remove)"
 }
 
 if ($removeData) {
-    Write-Host "Removing data…"
+    Write-Host "Removing data..."
     Remove-Item -Recurse -Force $DataDir
     Write-Host "  Data removed: $DataDir"
 } elseif (Test-Path $DataDir) {
@@ -149,3 +159,5 @@ if ($cleanup) {
         "Start-Sleep -Seconds 1; Remove-Item -LiteralPath '$cleanup' -Recurse -Force -ErrorAction SilentlyContinue"
     )
 }
+
+Pause-IfInteractive
