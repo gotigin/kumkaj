@@ -673,6 +673,52 @@ Important principles:
 This is particularly important as Kumkaj moves from a one-person shop
 to a business with cashiers, managers and multiple branches.
 
+### Ground truth: record money as it actually moved
+
+In real trade, one obligation is often settled in a **mix**: part
+through banked channels (bank transfer, cheque, UPI, card), part in
+**cash in hand**; part may carry a bill, receipt, or bank trail, and
+part may be settled in cash without any paper document. This is
+ordinary ground reality across trades and countries — not an
+exception, and not the app's business to judge.
+
+Kumkaj's books are therefore the owner's **ground truth**:
+
+- Record the **full amount that actually moved**, split by how it
+  moved (multiple tenders on one entry). Cash that left the till is a
+  payment in full — recording only the banked part makes the till
+  unreconcilable, expenses understated, and profit a fiction.
+- A bill, invoice, receipt, cheque, or bank reference is **evidence**
+  attached to an entry (a note or a file) — never a **gate**. The app
+  must not refuse, shrink, or hide an entry because no document exists
+  for part of it or because a bank statement does not show it.
+- Owner-facing views always show the **true position**: cash in hand,
+  bank, who owes whom, expenses, and profit — computed from actual
+  totals across all tenders, filterable by tender/channel, never
+  silently excluding the cash-settled part. Book cash must be able to
+  tally with physical cash.
+- There is **one truth**; what leaves the shop is the owner's choice.
+  Documents the app prints, shares, or exports are drawn from the
+  record, the owner chooses what to issue, and a document makes clear
+  the scope it covers. The app never fabricates a document for money
+  that did not move, and never rewrites an amount or a payment method
+  on paper.
+- This truth stays **private**: on the owner's device, behind the
+  owner's lock. Entries are described in neutral words — tender /
+  channel, with or without a supporting document — never in slang or
+  moral categories.
+- Statutory or filing outputs, when they arrive, are **derived
+  presentations with an explicit scope**, layered on the ground truth.
+  They neither rewrite the owner's books nor borrow their authority:
+  the management books do not masquerade as a filing, and a filing
+  view does not shrink what the owner knows.
+
+**Agent rule:** every money feature must accept multi-tender
+settlement (one entry, several money movements), must not require a
+bill/document reference to save, and must include cash-settled parts
+in day book, P&L, aging, and till math by default. If a design only
+works when every rupee is banked and billed, the design is wrong.
+
 ------------------------------------------------------------------------
 
 ## 19. Backup, Restore and Recovery

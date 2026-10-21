@@ -108,7 +108,7 @@ equal peers in one mental model. The UX must make that model obvious.
 | 5 | Running costs | **Expenses** | Shipped (Buy tab + Reports) |
 | 6 | Who owes us (AR) | Credit ledger + aging + write-off | Shipped |
 | 7 | Whom we owe (AP) | Payable ledger + settle + write-off + aging | Shipped |
-| 8 | Cash and bank | `money_movements` + day-close drawer count | Shipped; BRS = later |
+| 8 | Cash and bank | `money_movements` + day-close drawer count | Shipped — perpetual till (`till_balance_paise`), day-close in−out, BRS tick-off (`cleared_at`; book vs cleared balance) |
 | 9 | Stock | Qty + movements | Shipped; valuation = later |
 | 10 | Tax on bills | Rates + wording | Shipped; filing/e-invoice = deferred |
 | 11 | Day / period / P&L | Day close, `PeriodBooks` (rev, COGS, gross, expenses, net) | Shipped |
@@ -135,6 +135,28 @@ One sales table + a tag:
 |----------|--------------------------|------------------|
 | Courier agency | Account booking | Cash booking |
 | Others | Tax invoice | Cash memo |
+
+------------------------------------------------------------------------
+
+### Ground-truth settlement (how money actually moves)
+
+Doctrine: vision §18, *“Ground truth: record money as it actually
+moved.”* Mechanics for whoever builds a money feature:
+
+| Reality | Primitive |
+|---------|-----------|
+| One obligation settled part bank / part cash (or any mix) | **One** books entry (sale / purchase / expense / settlement) + **N** `money_movements`, one per tender, summing to the entry total |
+| Part of a settlement has a bill / receipt / bank trail, part does not | Supporting document is an **optional** attachment / note on the entry. Validation never requires a bill no, cheque no, or bank reference to save |
+| Cash-settled part | A first-class movement with tender `cash`, same weight as bank — day book, P&L, aging, and party balances all include it by default |
+| Till must tally | Expected cash = Σ actual cash movements. Day-close counted-vs-expected only works if every cash movement was recorded, so entry flows must make cash as easy to record as bank |
+| Owner shares a document | Invoice / receipt / statement is generated from the record for the scope the owner picks, and states that scope. Nothing is fabricated for money that did not move |
+| Filing / statutory view (later) | A derived, explicitly-scoped presentation over the same rows — never a second, divergent ledger, and never allowed to shrink the owner's own totals |
+
+Wording: tender / channel (`cash`, `bank`, `upi`, `card`, `credit`),
+“with / without a supporting document” when that distinction is
+needed. Never slang or moral labels for a settlement, and never
+gatekeeping copy (“bill required”, “bank proof required”) on a money
+form.
 
 ------------------------------------------------------------------------
 
@@ -188,10 +210,15 @@ Catalogue / brand photos reuse the same WebP encode helper. Reject unknown types
 Still generic-only. Spine above is shipped; remaining is depth.
 
 ### Later
-Stock valuation · bank reconcile (BRS) · open-item bill allocation ·
-accountant export · statutory GST/e-invoice (vision §23).
+Stock valuation · statutory GST/e-invoice (vision §23).
 
-**Operating balance sheet** (bank + AR vs AP + net) shipped for courier client books —
+Shipped since: bank reconcile (BRS tick-off against the statement) ·
+open-item bill allocation (linked settle, FIFO for the rest) ·
+spreadsheet CSV export (day book / outstanding / parties / items /
+party ledger) + CSV import (parties, items) · expense tenders
+(`expense_payments` — one expense, several tenders; ground truth §18).
+
+**Operating balance sheet** (bank + till + AR vs AP + net) shipped for courier client books —
 not a statutory Schedule III statement.
 
 ------------------------------------------------------------------------

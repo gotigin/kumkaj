@@ -57,6 +57,7 @@ Sources: Bellboy, GoInvoicing, ESE, CourierDesk, Saap, BillMyCourier, aggregator
 | Entry notes / attachments | Docket photos, party docs, expense bills | **Ship** — notes + WebP images + PDF on sale / party / expense |
 | Invoice | Account booking path | **Ship** — Booking + Account booking |
 | Cash booking vs Account booking | Pay now vs party ledger | **Ship** — bill-type tag |
+| Mixed settlement, cash-settled parts | One bill / expense settled part bank, part cash; a supporting bill may cover only part of it | **Rule** — books record the **actual total**, split by tender; document optional, never a gate (vision §18 “Ground truth”; `BUSINESS_BOOKS.md` mechanics) |
 | Party ledger + outstanding | Running balance | **Ship** / deepen |
 | P&L / monthly | Period books | **Ship** — Reports month |
 | Staff rights | PINs / roles | **Ship** (Team) |

@@ -75,7 +75,13 @@ Do **not** ship sample party lists in the app.
 4. **Balance sheet** — operating snapshot: bank + debtors vs creditors + balancing net.  
 5. **Barcode desk loop** — print Code 128 · scan/find AWB · advance / label / COD.
 
-Still **later** (not promised from this chat alone): statutory e-invoice / GSTR filing, bank reconcile (BRS), open-item bill allocation, Schedule III formal BS, cash-till perpetual ledger, Excel/CSV import-export (manual bring-your-book instead).
+6. **Mixed settlement on expenses** — one expense, several tenders (part bank / part cash), paid-by chips + optional second way; no bill required to save (ground truth, vision §18).
+7. **Cash-till perpetual ledger** — cash in hand from every recorded cash movement, on Day book + balance sheet; day-close compares counted vs in−out.
+8. **Open-item bill allocation** — Parties shows each open bill; settle against a chosen bill # (rest washes FIFO), AR and AP.
+9. **Bank reconcile (BRS)** — tick bank movements off against the statement; book balance vs cleared balance, uncleared listed.
+10. **Spreadsheet CSV** — copy day book / outstanding / parties / items / party ledger as CSV; import parties and items/rates from a CSV file.
+
+Still **later** (statutory, needs country filing integration — not promised from this chat alone): statutory e-invoice / GSTR filing, Schedule III formal BS.
 
 ------------------------------------------------------------------------
 
@@ -90,7 +96,10 @@ Still **later** (not promised from this chat alone): statutory e-invoice / GSTR 
 | Invoice | Booking (Account) → copy / print; Sales → receipt/invoice |
 | Monthly / P&L / BS | Reports → This month (includes P&L + balance sheet) |
 | Outstanding / debit–credit | Reports → Outstanding / Dr-Cr |
-| Balance sheet | Reports → Balance sheet |
+| Settle against one bill | Parties → pick party → Open bills → bill # → Pay |
+| Bank reconcile | Reports → Bank reconciliation → tick Uncleared # |
+| Cash in hand | Day book (BANK card) · balance sheet |
+| Spreadsheet in / out | Reports → Spreadsheet (CSV) |
 | Barcode print / scan | Ops → Print AWB label · AWB / scan field → Find |
 
 ------------------------------------------------------------------------

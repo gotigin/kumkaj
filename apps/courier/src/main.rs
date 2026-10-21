@@ -294,6 +294,10 @@ struct AppState {
     measure_dim_factor: rust_decimal::Decimal,
     /// Resolved factor: 1 `measure_weight_unit` = this many kg.
     measure_weight_factor: rust_decimal::Decimal,
+    /// Expense forms: how the expense was paid — first tender (gets the
+    /// remainder) and the optional second tender for a split payment.
+    expense_tender: PayMethod,
+    expense_tender2: PayMethod,
     /// Last AWB after a successful book — shown until Next booking.
     last_awb: String,
     /// Catalogue id loaded into the Items form. None means the form will add.
@@ -606,6 +610,8 @@ impl AppState {
             measure_slab_kg: rust_decimal::Decimal::new(5, 1),
             measure_dim_factor: rust_decimal::Decimal::ONE,
             measure_weight_factor: rust_decimal::Decimal::ONE,
+            expense_tender: PayMethod::Cash,
+            expense_tender2: PayMethod::Bank,
             last_awb: String::new(),
             editing_product_id: None,
             pay_in_flight: false,
@@ -3866,6 +3872,10 @@ script_mod! {
                                         books_bank_balance_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                     }
                                     View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Cash in hand (till)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_till_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         Label{width: Fill height: Fit text: "Bank net today" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                         books_bank_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                     }
@@ -4339,6 +4349,51 @@ script_mod! {
                                 WrapLabel{body: "Expense" font_color: #x0B1220 font_size: 15.}
                                 buy_expense_amount := FieldInput{empty_text: "Amount"}
                                 buy_expense_note := FieldInput{empty_text: "Note (fuel, rent, …)"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t1_cash := ChipBtn{text: "Cash"}
+                                        buy_exp_t1_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t1_bank := ChipBtn{text: "Bank"}
+                                        buy_exp_t1_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t1_upi := ChipBtn{text: "UPI"}
+                                        buy_exp_t1_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t1_card := ChipBtn{text: "Card"}
+                                        buy_exp_t1_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    }
+                                }
+                                buy_exp_part2 := FieldInput{empty_text: "Part by a second way (optional)"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t2_cash := ChipBtn{text: "Cash"}
+                                        buy_exp_t2_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t2_bank := ChipBtn{text: "Bank"}
+                                        buy_exp_t2_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t2_upi := ChipBtn{text: "UPI"}
+                                        buy_exp_t2_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        buy_exp_t2_card := ChipBtn{text: "Card"}
+                                        buy_exp_t2_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    }
+                                }
                                 buy_expense_add := NavBtn{text: "Add expense"}
                                 buy_to_inventory := NavBtn{text: "Inventory & stock adjust"}
                             }
@@ -4581,6 +4636,12 @@ script_mod! {
                                     settle_upi := NavBtn{text: "Pay UPI"}
                                     settle_card := NavBtn{text: "Pay card"}
                                 }
+                                settle_open_bills := WrapLabel{
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                settle_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                 WrapLabel{body: "Write off (clear without payment)" font_color: #x0B1220 font_size: 15.}
                                 writeoff_amount_input := FieldInput{empty_text: "Amount (blank = full balance)"}
                                 writeoff_reason_input := FieldInput{empty_text: "Reason (required)"}
@@ -4592,6 +4653,12 @@ script_mod! {
                                     payable_upi := NavBtn{text: "Pay AP UPI"}
                                     payable_card := NavBtn{text: "Pay AP card"}
                                 }
+                                payable_open_bills := WrapLabel{
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                payable_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                 payable_writeoff := NavBtn{text: "Write off AP"}
                                 WrapLabel{body: "Notes & attachments (selected party)" font_color: #x0B1220 font_size: 15.}
                                 party_attach_note := FieldInput{empty_text: "Note / GSTIN / agreement reminder"}
@@ -4987,6 +5054,51 @@ script_mod! {
                                 reports_expense_heading := WrapLabel{body: "Log expense" font_color: #x0B1220 font_size: 15.}
                                 expense_amount_input := FieldInput{empty_text: "Amount"}
                                 expense_note_input := FieldInput{empty_text: "Note (fuel, office, …)"}
+                                exp_t1_row := View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t1_cash := ChipBtn{text: "Cash"}
+                                        exp_t1_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t1_bank := ChipBtn{text: "Bank"}
+                                        exp_t1_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t1_upi := ChipBtn{text: "UPI"}
+                                        exp_t1_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t1_card := ChipBtn{text: "Card"}
+                                        exp_t1_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    }
+                                }
+                                exp_part2 := FieldInput{empty_text: "Part by a second way (optional)"}
+                                exp_t2_row := View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t2_cash := ChipBtn{text: "Cash"}
+                                        exp_t2_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t2_bank := ChipBtn{text: "Bank"}
+                                        exp_t2_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t2_upi := ChipBtn{text: "UPI"}
+                                        exp_t2_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        exp_t2_card := ChipBtn{text: "Card"}
+                                        exp_t2_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    }
+                                }
                                 expense_add := NavBtn{text: "Add expense"}
                                 WrapLabel{body: "Attachments (last expense)" font_color: #x0B1220 font_size: 15.}
                                 expense_attach_note := FieldInput{empty_text: "Extra note on last expense"}
@@ -5010,6 +5122,36 @@ script_mod! {
                                     bank_out := RowSecondaryBtn{text: "Bank out"}
                                 }
                                 reports_copy := NavBtn{text: "Copy report"}
+                                WrapLabel{body: "Bank reconciliation (tick off against your bank statement)" font_color: #x0B1220 font_size: 15.}
+                                bank_recon_label := WrapLabel{
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                bank_uncleared_label := WrapLabel{
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                bank_clear_input := FieldInput{empty_text: "Uncleared # above"}
+                                ActionStack{
+                                    bank_mark_cleared := RowPrimaryBtn{text: "Mark cleared"}
+                                    bank_mark_uncleared := RowSecondaryBtn{text: "Unmark"}
+                                }
+                                WrapLabel{body: "Spreadsheet (CSV)" font_color: #x0B1220 font_size: 15.}
+                                ActionStack{
+                                    csv_copy_day := RowPrimaryBtn{text: "Copy day book CSV"}
+                                    csv_copy_outstanding := RowSecondaryBtn{text: "Copy outstanding CSV"}
+                                }
+                                ActionStack{
+                                    csv_copy_parties := RowPrimaryBtn{text: "Copy parties CSV"}
+                                    csv_copy_items := RowSecondaryBtn{text: "Copy items CSV"}
+                                }
+                                ActionStack{
+                                    csv_copy_ledger := RowPrimaryBtn{text: "Copy party ledger CSV"}
+                                    csv_import_parties := RowSecondaryBtn{text: "Import parties CSV…"}
+                                }
+                                csv_import_items := NavBtn{text: "Import items / rates CSV…"}
                             }
                         }
 
@@ -6787,6 +6929,32 @@ impl App {
             ] {
                 self.paint_choice_pair(cx, idle, on, dim_unit == code);
             }
+            // Expense tender chips (both forms share the choice).
+            let (exp_t1, exp_t2) = (st.expense_tender, st.expense_tender2);
+            for (idle, on, m) in [
+                (ids!(exp_t1_cash), ids!(exp_t1_cash_on), PayMethod::Cash),
+                (ids!(exp_t1_bank), ids!(exp_t1_bank_on), PayMethod::Bank),
+                (ids!(exp_t1_upi), ids!(exp_t1_upi_on), PayMethod::Upi),
+                (ids!(exp_t1_card), ids!(exp_t1_card_on), PayMethod::Card),
+                (ids!(buy_exp_t1_cash), ids!(buy_exp_t1_cash_on), PayMethod::Cash),
+                (ids!(buy_exp_t1_bank), ids!(buy_exp_t1_bank_on), PayMethod::Bank),
+                (ids!(buy_exp_t1_upi), ids!(buy_exp_t1_upi_on), PayMethod::Upi),
+                (ids!(buy_exp_t1_card), ids!(buy_exp_t1_card_on), PayMethod::Card),
+            ] {
+                self.paint_choice_pair(cx, idle, on, exp_t1 == m);
+            }
+            for (idle, on, m) in [
+                (ids!(exp_t2_cash), ids!(exp_t2_cash_on), PayMethod::Cash),
+                (ids!(exp_t2_bank), ids!(exp_t2_bank_on), PayMethod::Bank),
+                (ids!(exp_t2_upi), ids!(exp_t2_upi_on), PayMethod::Upi),
+                (ids!(exp_t2_card), ids!(exp_t2_card_on), PayMethod::Card),
+                (ids!(buy_exp_t2_cash), ids!(buy_exp_t2_cash_on), PayMethod::Cash),
+                (ids!(buy_exp_t2_bank), ids!(buy_exp_t2_bank_on), PayMethod::Bank),
+                (ids!(buy_exp_t2_upi), ids!(buy_exp_t2_upi_on), PayMethod::Upi),
+                (ids!(buy_exp_t2_card), ids!(buy_exp_t2_card_on), PayMethod::Card),
+            ] {
+                self.paint_choice_pair(cx, idle, on, exp_t2 == m);
+            }
             let awb_line = if st.last_awb.is_empty() {
                 String::new()
             } else {
@@ -7177,6 +7345,98 @@ impl App {
                 .set_text(cx, &plain_display_text(&body));
         }
         {
+            // Bill-wise lists for the selected party (numbers match the
+            // "Against bill #" inputs).
+            let (ar_txt, ap_txt) = {
+                let st = app_state().lock().unwrap();
+                let fmt = |bills: Vec<domain::OpenBill>, st: &AppState| -> String {
+                    if bills.is_empty() {
+                        return String::new();
+                    }
+                    let parts: Vec<String> = bills
+                        .iter()
+                        .enumerate()
+                        .map(|(i, b)| {
+                            format!(
+                                "{}) {} · {} open (of {})",
+                                i + 1,
+                                &b.created_at[..b.created_at.len().min(10)],
+                                st.money(Money(b.open_paise)),
+                                st.money(Money(b.billed_paise)),
+                            )
+                        })
+                        .collect();
+                    format!("Open bills: {}", parts.join(" · "))
+                };
+                match (&st.selected_customer_id, st.store.as_ref()) {
+                    (Some(id), Some(store)) => (
+                        fmt(store.open_credit_bills(id).unwrap_or_default(), &st),
+                        fmt(store.open_payable_bills(id).unwrap_or_default(), &st),
+                    ),
+                    _ => (String::new(), String::new()),
+                }
+            };
+            self.ui
+                .widget(cx, ids!(settle_open_bills))
+                .set_text(cx, &plain_display_text(&ar_txt));
+            self.ui
+                .widget(cx, ids!(payable_open_bills))
+                .set_text(cx, &plain_display_text(&ap_txt));
+        }
+        {
+            // Bank reconciliation: book vs statement-cleared, plus the
+            // uncleared movements numbered for the tick-off input.
+            let (recon_txt, uncleared_txt) = {
+                let st = app_state().lock().unwrap();
+                match st.store.as_ref() {
+                    Some(store) => {
+                        let recon = match store.bank_reconciliation() {
+                            Ok((book, cleared, n, _net)) => format!(
+                                "Book balance {} · cleared (bank) {} · {} uncleared",
+                                st.money(Money(book)),
+                                st.money(Money(cleared)),
+                                n,
+                            ),
+                            Err(_) => String::new(),
+                        };
+                        let uncleared = store
+                            .list_money_movements(50)
+                            .unwrap_or_default()
+                            .into_iter()
+                            .filter(|m| !m.cleared)
+                            .take(8)
+                            .enumerate()
+                            .map(|(i, m)| {
+                                let kind = MoneyMoveKind::parse(&m.kind)
+                                    .map(|k| k.label())
+                                    .unwrap_or("Movement");
+                                format!(
+                                    "{}) {} {} {}",
+                                    i + 1,
+                                    &m.created_at[..m.created_at.len().min(10)],
+                                    kind,
+                                    st.money(Money(m.amount_paise)),
+                                )
+                            })
+                            .collect::<Vec<_>>();
+                        let uncleared = if uncleared.is_empty() {
+                            String::new()
+                        } else {
+                            format!("Uncleared: {}", uncleared.join(" · "))
+                        };
+                        (recon, uncleared)
+                    }
+                    None => (String::new(), String::new()),
+                }
+            };
+            self.ui
+                .widget(cx, ids!(bank_recon_label))
+                .set_text(cx, &plain_display_text(&recon_txt));
+            self.ui
+                .widget(cx, ids!(bank_uncleared_label))
+                .set_text(cx, &plain_display_text(&uncleared_txt));
+        }
+        {
             let attach_txt = {
                 let st = app_state().lock().unwrap();
                 match (&st.selected_expense_id, st.store.as_ref()) {
@@ -7446,6 +7706,19 @@ impl App {
                     set(ids!(books_bank_balance_value), &o.bank_balance);
                     set(ids!(books_bank_net_value), &o.bank_net_today);
                 }
+                // Perpetual till: every recorded cash movement, all time.
+                let till = {
+                    let st = app_state().lock().unwrap();
+                    st.store
+                        .as_ref()
+                        .and_then(|s| s.till_balance_paise().ok())
+                        .map(|v| st.money(Money(v)))
+                };
+                if let Some(till) = till {
+                    self.ui
+                        .widget(cx, ids!(books_till_value))
+                        .set_text(cx, &plain_display_text(&till));
+                }
             }
             self.ui
                 .widget(cx, ids!(reports_label)).set_text(cx, &plain_display_text(&day_close));
@@ -7476,6 +7749,35 @@ impl App {
                 ids!(bank_bank_to_till),
                 ids!(bank_in),
                 ids!(bank_out),
+            ] {
+                self.ui.button(cx, id).set_visible(cx, !ops_facet);
+            }
+            // Reconciliation + CSV widgets live in the same facet.
+            for id in [
+                ids!(bank_recon_label),
+                ids!(bank_uncleared_label),
+            ] {
+                self.ui.widget(cx, id).set_visible(cx, !ops_facet);
+            }
+            for id in [ids!(exp_t1_row), ids!(exp_t2_row)] {
+                self.ui.view(cx, id).set_visible(cx, !ops_facet);
+            }
+            self.ui
+                .text_input(cx, ids!(exp_part2))
+                .set_visible(cx, !ops_facet);
+            self.ui
+                .text_input(cx, ids!(bank_clear_input))
+                .set_visible(cx, !ops_facet);
+            for id in [
+                ids!(bank_mark_cleared),
+                ids!(bank_mark_uncleared),
+                ids!(csv_copy_day),
+                ids!(csv_copy_outstanding),
+                ids!(csv_copy_parties),
+                ids!(csv_copy_items),
+                ids!(csv_copy_ledger),
+                ids!(csv_import_parties),
+                ids!(csv_import_items),
             ] {
                 self.ui.button(cx, id).set_visible(cx, !ops_facet);
             }
@@ -7772,6 +8074,30 @@ impl App {
         self.clear_button_animators(cx, active);
         self.ui.button(cx, idle).set_visible(cx, !selected);
         self.ui.button(cx, active).set_visible(cx, selected);
+    }
+
+    /// Expense tender parts from the form: the whole amount by the
+    /// first tender, or split when a "second way" part is typed (the
+    /// first tender takes the remainder).
+    fn expense_parts(
+        total: i64,
+        split_text: &str,
+        currency: &str,
+        tender: PayMethod,
+        tender2: PayMethod,
+    ) -> Result<Vec<(PayMethod, i64)>, String> {
+        let split_text = split_text.trim();
+        if split_text.is_empty() {
+            return Ok(vec![(tender, total)]);
+        }
+        let part2 = locale::parse_major_input(split_text, currency)?;
+        if part2 <= 0 || part2 >= total {
+            return Err("The second-way part must be less than the total".into());
+        }
+        if tender2 == tender {
+            return Ok(vec![(tender, total)]);
+        }
+        Ok(vec![(tender, total - part2), (tender2, part2)])
     }
 
     fn choice_chip_clicked(
@@ -11717,10 +12043,46 @@ impl MatchEvent for App {
                             self.on_entry_attach_picked(cx, path.clone());
                         }
                     }
+                    FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(csv_parties_pick)
+                            || *id == live_id!(csv_items_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            let parties = *id == live_id!(csv_parties_pick);
+                            let outcome = (|| -> Result<String, String> {
+                                let text = std::fs::read_to_string(path)
+                                    .map_err(|e| format!("Could not read the file: {e}"))?;
+                                let mut st = app_state().lock().unwrap();
+                                st.require_server_role("Import from CSV")?;
+                                let store =
+                                    st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                                let (added, skipped, problems) = if parties {
+                                    store.import_parties_csv(&text)?
+                                } else {
+                                    store.import_items_csv(&text)?
+                                };
+                                st.reload_all()?;
+                                let mut msg = format!(
+                                    "Imported {added} new, skipped {skipped} (already there or unusable)"
+                                );
+                                if let Some(p) = problems.first() {
+                                    msg.push_str(&format!(" · first problem: {p}"));
+                                }
+                                Ok(msg)
+                            })();
+                            match outcome {
+                                Ok(msg) => self.set_status(cx, msg),
+                                Err(e) => self.set_status(cx, e),
+                            }
+                            self.sync_chrome(cx);
+                        }
+                    }
                     FileDialogAction::FileCancelled { id }
                         if *id == live_id!(item_photo_pick)
                             || *id == live_id!(venue_icon_pick)
                             || *id == live_id!(onboard_icon_pick)
+                            || *id == live_id!(csv_parties_pick)
+                            || *id == live_id!(csv_items_pick)
                             || *id == live_id!(entry_attach_pick) =>
                     {
                         app_state().lock().unwrap().attach_pick = None;
@@ -12038,6 +12400,7 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(buy_expense_add)).clicked(actions) {
             let amount_text = self.ui.text_input(cx, ids!(buy_expense_amount)).text();
             let note = self.ui.text_input(cx, ids!(buy_expense_note)).text();
+            let part2_text = self.ui.text_input(cx, ids!(buy_exp_part2)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
@@ -12046,9 +12409,10 @@ impl MatchEvent for App {
                 }
                 let currency = st.locale.currency.clone();
                 let minor = locale::parse_major_input(&amount_text, &currency)?;
+                let parts = Self::expense_parts(minor, &part2_text, &currency, st.expense_tender, st.expense_tender2)?;
                 let expense_id = {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_expense(minor, "misc", &note, &actor)?
+                    store.add_expense_tenders(minor, "misc", &note, &actor, &parts)?
                 };
                 st.selected_expense_id = Some(expense_id);
                 let _ = st.refresh_books_overview();
@@ -12060,6 +12424,7 @@ impl MatchEvent for App {
             } else {
                 self.ui.text_input(cx, ids!(buy_expense_amount)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(buy_expense_note)).set_text(cx, "");
+                self.ui.text_input(cx, ids!(buy_exp_part2)).set_text(cx, "");
             }
             self.sync_chrome(cx);
         }
@@ -12893,6 +13258,7 @@ impl MatchEvent for App {
         ] {
             if self.ui.button(cx, btn).clicked(actions) {
                 let amount_text = self.ui.text_input(cx, ids!(payable_amount_input)).text();
+                let bill_text = self.ui.text_input(cx, ids!(payable_bill_input)).text();
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
                     st.require_server_role("Settle payable")?;
@@ -12903,10 +13269,34 @@ impl MatchEvent for App {
                         .ok_or_else(|| "Pick a party first".to_string())?;
                     let currency = st.locale.currency.clone();
                     let amount = locale::parse_major_input(&amount_text, &currency)?;
+                    // Optional bill-wise allocation (bill # from the list).
+                    let against = match bill_text.trim() {
+                        "" => None,
+                        other => {
+                            let n: usize = other
+                                .parse()
+                                .map_err(|_| "Bill # must be a number from the list".to_string())?;
+                            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                            let bills = store.open_payable_bills(&party_id)?;
+                            Some(
+                                bills
+                                    .get(n.wrapping_sub(1))
+                                    .map(|b| b.bill_id.clone())
+                                    .ok_or_else(|| "No such open bill".to_string())?,
+                            )
+                        }
+                    };
                     st.store
                         .as_mut()
                         .ok_or_else(|| "No store".to_string())?
-                        .settle_payable(&party_id, amount, method, &actor, "")?;
+                        .settle_payable_against(
+                            &party_id,
+                            amount,
+                            method,
+                            &actor,
+                            "",
+                            against.as_deref(),
+                        )?;
                     st.reload_all()?;
                     let _ = st.refresh_books_overview();
                     Ok(format!("AP paid {}", st.money(Money(amount))))
@@ -12915,6 +13305,9 @@ impl MatchEvent for App {
                     Ok(msg) => {
                         self.ui
                             .text_input(cx, ids!(payable_amount_input))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(payable_bill_input))
                             .set_text(cx, "");
                         self.set_status(cx, msg);
                     }
@@ -12992,6 +13385,7 @@ impl MatchEvent for App {
         ] {
             if self.ui.button(cx, btn).clicked(actions) {
                 let amount_text = self.ui.text_input(cx, ids!(settle_amount_input)).text();
+                let bill_text = self.ui.text_input(cx, ids!(settle_bill_input)).text();
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let actor = st.actor()?;
@@ -13039,8 +13433,33 @@ impl MatchEvent for App {
                         .find(|c| c.id == customer_id)
                         .map(|c| c.balance_paise)
                         .unwrap_or(0);
+                    // Optional bill-wise allocation: a bill # from the
+                    // open-bills list under the party.
+                    let against = match bill_text.trim() {
+                        "" => None,
+                        other => {
+                            let n: usize = other
+                                .parse()
+                                .map_err(|_| "Bill # must be a number from the list".to_string())?;
+                            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                            let bills = store.open_credit_bills(&customer_id)?;
+                            Some(
+                                bills
+                                    .get(n.wrapping_sub(1))
+                                    .map(|b| b.bill_id.clone())
+                                    .ok_or_else(|| "No such open bill".to_string())?,
+                            )
+                        }
+                    };
                     let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                    store.settle_credit(&customer_id, minor, method, &actor, "")?;
+                    store.settle_credit_against(
+                        &customer_id,
+                        minor,
+                        method,
+                        &actor,
+                        "",
+                        against.as_deref(),
+                    )?;
                     st.reload_all()?;
                     let bal_after = st
                         .customers
@@ -13080,6 +13499,9 @@ impl MatchEvent for App {
                     self.ui
                         .text_input(cx, ids!(settle_amount_input))
                         .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(settle_bill_input))
+                        .set_text(cx, "");
                     // Surface settle/advance result on Sell receipt line too.
                     let msg = app_state().lock().unwrap().status.clone();
                     self.set_status(cx, msg);
@@ -13108,6 +13530,37 @@ impl MatchEvent for App {
         ] {
             if self.choice_chip_clicked(cx, actions, chip, chip_on) {
                 self.apply_measure_units(cx, Some(code.to_string()), None);
+            }
+        }
+        // Expense tender chips: first tender and the optional second way.
+        for ((chip, chip_on), m) in [
+            ((ids!(exp_t1_cash), ids!(exp_t1_cash_on)), PayMethod::Cash),
+            ((ids!(exp_t1_bank), ids!(exp_t1_bank_on)), PayMethod::Bank),
+            ((ids!(exp_t1_upi), ids!(exp_t1_upi_on)), PayMethod::Upi),
+            ((ids!(exp_t1_card), ids!(exp_t1_card_on)), PayMethod::Card),
+            ((ids!(buy_exp_t1_cash), ids!(buy_exp_t1_cash_on)), PayMethod::Cash),
+            ((ids!(buy_exp_t1_bank), ids!(buy_exp_t1_bank_on)), PayMethod::Bank),
+            ((ids!(buy_exp_t1_upi), ids!(buy_exp_t1_upi_on)), PayMethod::Upi),
+            ((ids!(buy_exp_t1_card), ids!(buy_exp_t1_card_on)), PayMethod::Card),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                app_state().lock().unwrap().expense_tender = m;
+                self.sync_chrome(cx);
+            }
+        }
+        for ((chip, chip_on), m) in [
+            ((ids!(exp_t2_cash), ids!(exp_t2_cash_on)), PayMethod::Cash),
+            ((ids!(exp_t2_bank), ids!(exp_t2_bank_on)), PayMethod::Bank),
+            ((ids!(exp_t2_upi), ids!(exp_t2_upi_on)), PayMethod::Upi),
+            ((ids!(exp_t2_card), ids!(exp_t2_card_on)), PayMethod::Card),
+            ((ids!(buy_exp_t2_cash), ids!(buy_exp_t2_cash_on)), PayMethod::Cash),
+            ((ids!(buy_exp_t2_bank), ids!(buy_exp_t2_bank_on)), PayMethod::Bank),
+            ((ids!(buy_exp_t2_upi), ids!(buy_exp_t2_upi_on)), PayMethod::Upi),
+            ((ids!(buy_exp_t2_card), ids!(buy_exp_t2_card_on)), PayMethod::Card),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                app_state().lock().unwrap().expense_tender2 = m;
+                self.sync_chrome(cx);
             }
         }
         if self.ui.button(cx, ids!(clear_cart)).clicked(actions)
@@ -14467,6 +14920,7 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(expense_add)).clicked(actions) {
             let amount_text = self.ui.text_input(cx, ids!(expense_amount_input)).text();
             let note = self.ui.text_input(cx, ids!(expense_note_input)).text();
+            let part2_text = self.ui.text_input(cx, ids!(exp_part2)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
@@ -14475,9 +14929,10 @@ impl MatchEvent for App {
                 }
                 let currency = st.locale.currency.clone();
                 let minor = locale::parse_major_input(&amount_text, &currency)?;
+                let parts = Self::expense_parts(minor, &part2_text, &currency, st.expense_tender, st.expense_tender2)?;
                 let expense_id = {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_expense(minor, "misc", &note, &actor)?
+                    store.add_expense_tenders(minor, "misc", &note, &actor, &parts)?
                 };
                 st.selected_expense_id = Some(expense_id);
                 st.day_close_text = st
@@ -14494,6 +14949,7 @@ impl MatchEvent for App {
             } else {
                 self.ui.text_input(cx, ids!(expense_amount_input)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(expense_note_input)).set_text(cx, "");
+                self.ui.text_input(cx, ids!(exp_part2)).set_text(cx, "");
             }
             self.sync_chrome(cx);
         }
@@ -14560,6 +15016,103 @@ impl MatchEvent for App {
                 }
                 self.sync_chrome(cx);
             }
+        }
+
+        // Bank reconciliation tick-off: # refers to the numbered
+        // uncleared list under Bank / cashbook.
+        for (btn, cleared) in [
+            (ids!(bank_mark_cleared), true),
+            (ids!(bank_mark_uncleared), false),
+        ] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                let num_text = self.ui.text_input(cx, ids!(bank_clear_input)).text();
+                let result = (|| -> Result<String, String> {
+                    let st = app_state().lock().unwrap();
+                    st.require_server_role("Reconcile bank movements")?;
+                    let actor = st.actor()?;
+                    let n: usize = num_text
+                        .trim()
+                        .parse()
+                        .map_err(|_| "Type the uncleared # from the list".to_string())?;
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let uncleared: Vec<String> = store
+                        .list_money_movements(50)?
+                        .into_iter()
+                        .filter(|m| !m.cleared)
+                        .map(|m| m.id)
+                        .collect();
+                    let id = uncleared
+                        .get(n.wrapping_sub(1))
+                        .cloned()
+                        .ok_or_else(|| "No such uncleared movement".to_string())?;
+                    store.set_money_movement_cleared(&id, cleared, &actor)?;
+                    Ok(if cleared {
+                        "Marked cleared — seen on the statement".into()
+                    } else {
+                        "Unmarked".into()
+                    })
+                })();
+                match result {
+                    Ok(msg) => {
+                        self.ui.text_input(cx, ids!(bank_clear_input)).set_text(cx, "");
+                        self.set_status(cx, msg);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+
+        // Spreadsheet (CSV): copy out, or bring parties / items in.
+        for (btn, which) in [
+            (ids!(csv_copy_day), "day"),
+            (ids!(csv_copy_outstanding), "outstanding"),
+            (ids!(csv_copy_parties), "parties"),
+            (ids!(csv_copy_items), "items"),
+            (ids!(csv_copy_ledger), "ledger"),
+        ] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                let text = (|| -> Result<String, String> {
+                    let st = app_state().lock().unwrap();
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    match which {
+                        "day" => store.day_book_csv(),
+                        "outstanding" => store.outstanding_csv(),
+                        "parties" => store.parties_csv(),
+                        "items" => store.items_csv(),
+                        _ => {
+                            let id = st
+                                .selected_customer_id
+                                .clone()
+                                .ok_or_else(|| "Pick a party first (Parties tab)".to_string())?;
+                            store.party_ledger_csv(&id)
+                        }
+                    }
+                })();
+                match text {
+                    Ok(text) => {
+                        self.copy_text_to_clipboard(cx, &text);
+                        self.set_status(cx, "CSV copied — paste into your spreadsheet");
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(csv_import_parties)).clicked(actions) {
+            let dialog = FileDialog::new()
+                .set_title("Choose parties CSV".into())
+                .add_filter("CSV".into(), vec!["csv".into(), "txt".into()])
+                .set_id(live_id!(csv_parties_pick));
+            cx.open_select_file_dialog(dialog);
+            self.set_status(cx, "Opening CSV picker…");
+        }
+        if self.ui.button(cx, ids!(csv_import_items)).clicked(actions) {
+            let dialog = FileDialog::new()
+                .set_title("Choose items / rates CSV".into())
+                .add_filter("CSV".into(), vec!["csv".into(), "txt".into()])
+                .set_id(live_id!(csv_items_pick));
+            cx.open_select_file_dialog(dialog);
+            self.set_status(cx, "Opening CSV picker…");
         }
 
         let inv_minus = self.ui.button(cx, ids!(inv_adjust_minus)).clicked(actions);

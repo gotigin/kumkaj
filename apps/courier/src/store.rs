@@ -6,7 +6,8 @@ use crate::domain::{
     Category,
     CreditLedgerEntry, Customer,
     DayTotals, DiningTable, EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket,
-    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpsReport, OrderType, OrgConsolidatedReport,
+    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrderType,
+    OrgConsolidatedReport,
     PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
     Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
     StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef, VenueMode, STOCK_UNTRACKED,
@@ -142,6 +143,12 @@ impl Store {
                 CREATE TABLE IF NOT EXISTS sale_payments (
                     id TEXT PRIMARY KEY,
                     sale_id TEXT NOT NULL,
+                    pay_method TEXT NOT NULL,
+                    amount_paise INTEGER NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS expense_payments (
+                    id TEXT PRIMARY KEY,
+                    expense_id TEXT NOT NULL,
                     pay_method TEXT NOT NULL,
                     amount_paise INTEGER NOT NULL
                 );
@@ -389,6 +396,7 @@ impl Store {
             "ALTER TABLE products ADD COLUMN first_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE products ADD COLUMN extra_per_kg_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE money_movements ADD COLUMN cleared_at TEXT NOT NULL DEFAULT ''",
         ] {
             let _ = self.conn.execute(stmt, []);
         }
@@ -1511,6 +1519,7 @@ impl Store {
              {}: {}\n\
              Bank net today: {}\n\
              Bank balance: {}\n\
+             Cash in hand (till, all recorded): {}\n\
              Rounding: {}\n",
             t.sale_count,
             t.lines_total().format_localized(&currency, &fiscal_settings),
@@ -1530,6 +1539,7 @@ impl Store {
             t.tax().format_localized(&currency, &fiscal_settings),
             Money(bank_net).format_localized(&currency, &fiscal_settings),
             Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal_settings),
+            Money(self.till_balance_paise()?).format_localized(&currency, &fiscal_settings),
             Money(t.rounding_paise).format_localized(&currency, &fiscal_settings),
         ))
     }
@@ -1552,13 +1562,17 @@ impl Store {
     ) -> Result<String, String> {
         self.assert_server_writer("Record the day close")?;
         let mut summary = self.day_close_summary()?;
-        let expected_cash = self.today_totals()?.cash_paise;
+        // Expected drawer movement today: cash tenders in, minus cash
+        // that left (cash expenses, cash payable settlements, till→bank).
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let expected_cash =
+            self.today_totals()?.cash_paise - self.cash_out_paise(Some(&today))?;
         if let Some(counted) = counted_cash_paise {
             let variance = counted - expected_cash;
             let currency = self.locale_settings()?.currency;
             let fiscal = self.fiscal_settings()?;
             summary.push_str(&format!(
-                "Drawer counted: {}\nExpected cash (tenders): {}\nVariance: {}\n",
+                "Drawer counted: {}\nExpected cash (in − out today): {}\nVariance: {}\n",
                 Money(counted).format_localized(&currency, &fiscal),
                 Money(expected_cash).format_localized(&currency, &fiscal),
                 Money(variance).format_localized(&currency, &fiscal),
@@ -2132,12 +2146,46 @@ impl Store {
         note: &str,
         actor: &StaffMember,
     ) -> Result<String, String> {
+        // Single-tender convenience (all cash — the counter default).
+        self.add_expense_tenders(
+            amount_paise,
+            category,
+            note,
+            actor,
+            &[(PayMethod::Cash, amount_paise)],
+        )
+    }
+
+    /// Log an expense the way it was actually paid (ground truth,
+    /// vision §18): one expense, one or more tender parts summing to
+    /// the total — e.g. part bank, part cash. A supporting bill may
+    /// cover only part of it; no document is required to save.
+    pub fn add_expense_tenders(
+        &self,
+        amount_paise: i64,
+        category: &str,
+        note: &str,
+        actor: &StaffMember,
+        parts: &[(PayMethod, i64)],
+    ) -> Result<String, String> {
         self.assert_server_writer("Log expenses")?;
         if amount_paise <= 0 {
             return Err("Expense must be > 0".into());
         }
         if !actor.is_owner() && !actor.role.can_void_refund() {
             return Err("Not allowed to log expenses".into());
+        }
+        if parts.is_empty() {
+            return Err("Say how the expense was paid".into());
+        }
+        let sum: i64 = parts.iter().map(|(_, a)| *a).sum();
+        if sum != amount_paise {
+            return Err(format!(
+                "Payment parts ({sum}) must equal the expense ({amount_paise})"
+            ));
+        }
+        if parts.iter().any(|(m, a)| *a <= 0 || m.is_credit() || m.is_split()) {
+            return Err("Each part must be > 0, paid by cash, bank, UPI/rail, or card".into());
         }
         let cat = {
             let c = category.trim();
@@ -2170,8 +2218,45 @@ impl Store {
                 ],
             )
             .map_err(|e| e.to_string())?;
+        for (method, amt) in parts {
+            self.conn
+                .execute(
+                    "INSERT INTO expense_payments(id, expense_id, pay_method, amount_paise)
+                     VALUES(?1, ?2, ?3, ?4)",
+                    params![new_id(), id, method.as_str(), amt],
+                )
+                .map_err(|e| e.to_string())?;
+        }
         self.audit(actor, "expense.add", &format!("{cat} {amount_paise}"))?;
         Ok(id)
+    }
+
+    /// How an expense was paid, part by part. Empty for expenses logged
+    /// before tenders were recorded.
+    pub fn expense_payments_for(
+        &self,
+        expense_id: &str,
+    ) -> Result<Vec<(PayMethod, i64)>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT pay_method, amount_paise FROM expense_payments
+                 WHERE expense_id = ?1 ORDER BY rowid",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![expense_id], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut out = Vec::new();
+        for row in rows {
+            let (m, a) = row.map_err(|e| e.to_string())?;
+            if let Some(m) = PayMethod::parse(&m) {
+                out.push((m, a));
+            }
+        }
+        Ok(out)
     }
 
     pub fn today_expenses_total(&self) -> Result<(i64, i64), String> {
@@ -2315,7 +2400,7 @@ impl Store {
                 "SELECT id, created_at, kind, amount_paise, note, actor_name,
                         COALESCE(NULLIF(user_at, ''), created_at),
                         COALESCE(NULLIF(device_at, ''), created_at),
-                        COALESCE(server_at, '')
+                        COALESCE(server_at, ''), COALESCE(cleared_at, '')
                  FROM money_movements
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY created_at DESC LIMIT ?2",
@@ -2333,6 +2418,7 @@ impl Store {
                     user_at: row.get(6)?,
                     device_at: row.get(7)?,
                     server_at: row.get(8)?,
+                    cleared: !row.get::<_, String>(9)?.is_empty(),
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -2365,6 +2451,361 @@ impl Store {
             }
         }
         Ok(bal)
+    }
+
+    /// Tick (or untick) one bank movement against the bank statement
+    /// (bank reconciliation). Cleared movements are what the bank has
+    /// actually seen; the rest explain book-vs-bank difference.
+    pub fn set_money_movement_cleared(
+        &self,
+        movement_id: &str,
+        cleared: bool,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Reconcile bank movements")?;
+        let stamp = if cleared {
+            Local::now().to_rfc3339()
+        } else {
+            String::new()
+        };
+        let n = self
+            .conn
+            .execute(
+                "UPDATE money_movements SET cleared_at = ?1 WHERE id = ?2",
+                params![stamp, movement_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Bank movement not found".into());
+        }
+        self.audit(
+            actor,
+            if cleared { "bank.clear" } else { "bank.unclear" },
+            movement_id,
+        )?;
+        Ok(())
+    }
+
+    /// Balance counting only statement-cleared movements — what the
+    /// bank balance should match.
+    pub fn bank_cleared_balance_paise(&self) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT kind, amount_paise FROM money_movements
+                 WHERE (branch_id = ?1 OR branch_id = '')
+                   AND COALESCE(cleared_at, '') <> ''",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![branch], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut bal = 0i64;
+        for row in rows {
+            let (kind, amount) = row.map_err(|e| e.to_string())?;
+            match MoneyMoveKind::parse(&kind) {
+                Some(MoneyMoveKind::TillToBank) | Some(MoneyMoveKind::BankIn) => bal += amount,
+                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => bal -= amount,
+                None => {}
+            }
+        }
+        Ok(bal)
+    }
+
+    /// (book balance, cleared balance, uncleared count, uncleared net)
+    /// — the whole reconciliation story in one line for Reports.
+    pub fn bank_reconciliation(&self) -> Result<(i64, i64, i64, i64), String> {
+        let book = self.bank_balance_paise()?;
+        let cleared = self.bank_cleared_balance_paise()?;
+        let branch = self.active_branch_id()?;
+        let (count, net): (i64, i64) = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*), COALESCE(SUM(CASE kind
+                    WHEN 'till_to_bank' THEN amount_paise
+                    WHEN 'bank_in' THEN amount_paise
+                    WHEN 'bank_to_till' THEN -amount_paise
+                    WHEN 'bank_out' THEN -amount_paise ELSE 0 END), 0)
+                 FROM money_movements
+                 WHERE (branch_id = ?1 OR branch_id = '')
+                   AND COALESCE(cleared_at, '') = ''",
+                params![branch],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .map_err(|e| e.to_string())?;
+        Ok((book, cleared, count, net))
+    }
+
+    // -----------------------------------------------------------------
+    // CSV export / import (spreadsheet round-trip; bring-your-book
+    // without retyping). Amounts are major units with 2 decimals.
+    // -----------------------------------------------------------------
+
+    /// Parties with their receivable / payable position.
+    pub fn parties_csv(&self) -> Result<String, String> {
+        let mut out = String::from("name,phone,kind,credit_limit,they_owe_us,we_owe_them,net\n");
+        for p in self.list_customers()? {
+            let ar = p.balance_paise.max(0);
+            let ap = self.party_payable_balance(&p.id)?.max(0);
+            out.push_str(&format!(
+                "{},{},{},{},{},{},{}\n",
+                csv_cell(&p.name),
+                csv_cell(&p.phone),
+                csv_cell(&p.kind_label),
+                csv_money(p.credit_limit_paise),
+                csv_money(ar),
+                csv_money(ap),
+                csv_money(ar - ap),
+            ));
+        }
+        Ok(out)
+    }
+
+    /// Who owes whom, one row per party with anything open.
+    pub fn outstanding_csv(&self) -> Result<String, String> {
+        let mut out = String::from("party,kind,they_owe_us,we_owe_them,net,oldest_days\n");
+        let days: std::collections::HashMap<String, i64> = self
+            .party_aging_report()?
+            .into_iter()
+            .map(|r| (r.customer_id, r.days))
+            .collect();
+        for p in self.list_customers()? {
+            let ar = p.balance_paise.max(0);
+            let ap = self.party_payable_balance(&p.id)?.max(0);
+            if ar == 0 && ap == 0 && p.balance_paise >= 0 {
+                continue;
+            }
+            out.push_str(&format!(
+                "{},{},{},{},{},{}\n",
+                csv_cell(&p.name),
+                csv_cell(&p.kind_label),
+                csv_money(ar),
+                csv_money(ap),
+                csv_money(ar - ap),
+                days.get(&p.id).copied().unwrap_or(0),
+            ));
+        }
+        Ok(out)
+    }
+
+    /// Catalogue / rate items.
+    pub fn items_csv(&self) -> Result<String, String> {
+        let mut out = String::from("name,price,unit,available\n");
+        for p in self.list_products(false)? {
+            out.push_str(&format!(
+                "{},{},{},{}\n",
+                csv_cell(&p.name),
+                csv_money(p.price.0),
+                csv_cell(&p.unit_label),
+                if p.available { "yes" } else { "no" },
+            ));
+        }
+        Ok(out)
+    }
+
+    /// Today's books as metric,amount rows (day book in a spreadsheet).
+    pub fn day_book_csv(&self) -> Result<String, String> {
+        let t = self.today_totals()?;
+        let (ec, exp) = self.today_expenses_total()?;
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let m = |v: i64| csv_money(v);
+        Ok(format!(
+            "metric,amount\nsales_count,{}\nrevenue,{}\ncash,{}\ndigital,{}\ncard,{}\ncredit_sales,{}\nexpenses_count,{}\nexpenses,{}\ncash_out_today,{}\nbank_balance,{}\ntill_cash_in_hand,{}\noutstanding_receivable,{}\n",
+            t.sale_count,
+            m(t.revenue_paise),
+            m(t.cash_paise),
+            m(t.upi_paise),
+            m(t.card_paise),
+            m(t.credit_paise),
+            ec,
+            m(exp),
+            m(self.cash_out_paise(Some(&today))?),
+            m(self.bank_balance_paise()?),
+            m(self.till_balance_paise()?),
+            m(self.outstanding_credit_total()?),
+        ))
+    }
+
+    /// One party's receivable ledger, oldest first, running balance.
+    pub fn party_ledger_csv(&self, customer_id: &str) -> Result<String, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT created_at, kind, detail, COALESCE(pay_method, ''), amount_paise
+                 FROM credit_ledger WHERE customer_id = ?1 ORDER BY created_at, rowid",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![customer_id], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                    row.get::<_, String>(3)?,
+                    row.get::<_, i64>(4)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut out = String::from("date,kind,detail,paid_by,amount,balance\n");
+        let mut bal = 0i64;
+        for row in rows {
+            let (at, kind, detail, pay, amount) = row.map_err(|e| e.to_string())?;
+            bal += amount;
+            out.push_str(&format!(
+                "{},{},{},{},{},{}\n",
+                csv_cell(&at[..at.len().min(10)]),
+                csv_cell(&kind),
+                csv_cell(&detail),
+                csv_cell(&pay),
+                csv_money(amount),
+                csv_money(bal),
+            ));
+        }
+        Ok(out)
+    }
+
+    /// Bring parties in from a spreadsheet export. Header row (with a
+    /// `name` column) is honoured in any column order; without a header
+    /// the order is name,phone,kind,note. Existing parties are not
+    /// duplicated (same name + phone is skipped). Returns
+    /// (added, skipped, first few problems).
+    pub fn import_parties_csv(
+        &self,
+        text: &str,
+    ) -> Result<(usize, usize, Vec<String>), String> {
+        let rows = parse_csv(text);
+        let mut added = 0usize;
+        let mut skipped = 0usize;
+        let mut problems: Vec<String> = Vec::new();
+        let col = |names: &[&str], header: &Vec<String>| -> Option<usize> {
+            header.iter().position(|h| {
+                let h = h.trim().to_ascii_lowercase();
+                names.iter().any(|n| *n == h)
+            })
+        };
+        let mut existing: Vec<(String, String)> = self
+            .list_customers()?
+            .into_iter()
+            .map(|p| (p.name.to_ascii_lowercase(), p.phone))
+            .collect();
+        let mut start = 0usize;
+        let mut idx = (0usize, 1usize, 2usize, 3usize);
+        if let Some(first) = rows.first() {
+            let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
+            if lower.iter().any(|c| c.trim() == "name") {
+                idx = (
+                    col(&["name", "party", "customer"], &lower).unwrap_or(0),
+                    col(&["phone", "mobile", "contact"], &lower).unwrap_or(usize::MAX),
+                    col(&["kind", "role", "kind_label", "type"], &lower)
+                        .unwrap_or(usize::MAX),
+                    col(&["note", "notes", "remark"], &lower).unwrap_or(usize::MAX),
+                );
+                start = 1;
+            }
+        }
+        let get = |row: &Vec<String>, i: usize| -> String {
+            if i == usize::MAX {
+                String::new()
+            } else {
+                row.get(i).cloned().unwrap_or_default().trim().to_string()
+            }
+        };
+        for (n, row) in rows.iter().skip(start).enumerate() {
+            let name = get(row, idx.0);
+            if name.is_empty() {
+                continue;
+            }
+            let phone = get(row, idx.1);
+            if existing
+                .iter()
+                .any(|(en, ep)| *en == name.to_ascii_lowercase() && *ep == phone)
+            {
+                skipped += 1;
+                continue;
+            }
+            match self.add_customer_kind(&name, &phone, &get(row, idx.2)) {
+                Ok(_) => {
+                    added += 1;
+                    existing.push((name.to_ascii_lowercase(), phone));
+                }
+                Err(e) => {
+                    skipped += 1;
+                    if problems.len() < 5 {
+                        problems.push(format!("row {}: {e}", n + start + 1));
+                    }
+                }
+            }
+        }
+        Ok((added, skipped, problems))
+    }
+
+    /// Bring catalogue / rate items in from a spreadsheet export.
+    /// Columns: name, price (major units, e.g. 250.50), unit. Items
+    /// whose name already exists are skipped, never overwritten.
+    pub fn import_items_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
+        let rows = parse_csv(text);
+        let mut added = 0usize;
+        let mut skipped = 0usize;
+        let mut problems: Vec<String> = Vec::new();
+        let mut existing: Vec<String> = self
+            .list_products(true)?
+            .into_iter()
+            .map(|p| p.name.to_ascii_lowercase())
+            .collect();
+        let mut start = 0usize;
+        let (mut i_name, mut i_price, mut i_unit) = (0usize, 1usize, 2usize);
+        if let Some(first) = rows.first() {
+            let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
+            if lower.iter().any(|c| c.trim() == "name") {
+                let find = |names: &[&str]| {
+                    lower.iter().position(|h| names.iter().any(|n| *n == h.trim()))
+                };
+                i_name = find(&["name", "item", "product"]).unwrap_or(0);
+                i_price = find(&["price", "rate", "amount"]).unwrap_or(usize::MAX);
+                i_unit = find(&["unit", "unit_label"]).unwrap_or(usize::MAX);
+                start = 1;
+            }
+        }
+        let get = |row: &Vec<String>, i: usize| -> String {
+            if i == usize::MAX {
+                String::new()
+            } else {
+                row.get(i).cloned().unwrap_or_default().trim().to_string()
+            }
+        };
+        for (n, row) in rows.iter().skip(start).enumerate() {
+            let name = get(row, i_name);
+            if name.is_empty() {
+                continue;
+            }
+            if existing.iter().any(|e| *e == name.to_ascii_lowercase()) {
+                skipped += 1;
+                continue;
+            }
+            let price_major: f64 = get(row, i_price).parse().unwrap_or(0.0);
+            let mut product =
+                Product::new_basic(new_id(), &name, Money((price_major * 100.0).round() as i64));
+            let unit = get(row, i_unit);
+            if !unit.is_empty() {
+                product.unit_label = unit;
+            }
+            match self.upsert_product(&product) {
+                Ok(()) => {
+                    added += 1;
+                    existing.push(name.to_ascii_lowercase());
+                }
+                Err(e) => {
+                    skipped += 1;
+                    if problems.len() < 5 {
+                        problems.push(format!("row {}: {e}", n + start + 1));
+                    }
+                }
+            }
+        }
+        Ok((added, skipped, problems))
     }
 
     fn money_movements_net_for_prefix(&self, day_prefix: &str) -> Result<i64, String> {
@@ -2646,15 +3087,16 @@ impl Store {
 
     /// Operating balance sheet snapshot (not statutory Schedule III).
     ///
-    /// Assets: bank + debtors (AR). Liabilities: creditors (AP).
-    /// Balancing figure is the residual net position.
+    /// Assets: bank + cash in till + debtors (AR). Liabilities:
+    /// creditors (AP). Balancing figure is the residual net position.
     pub fn balance_sheet_text(&self) -> Result<String, String> {
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let bank = self.bank_balance_paise()?;
+        let till = self.till_balance_paise()?;
         let ar = self.outstanding_credit_total()?;
         let ap = self.outstanding_payable_total()?;
-        let assets = bank.saturating_add(ar);
+        let assets = bank.saturating_add(till).saturating_add(ar);
         let liabilities = ap;
         let net = assets.saturating_sub(liabilities);
         let venue = self.venue_title()?;
@@ -2669,14 +3111,16 @@ impl Store {
              As of {today}\n\
              Assets\n\
                Bank {}\n\
+               Cash in hand (till) {}\n\
                Debtors (they owe us) {}\n\
                Total assets {}\n\
              Liabilities\n\
                Creditors (we owe them) {}\n\
                Total liabilities {}\n\
              Net position (assets − liabilities) {}\n\
-             (Cash-in-till perpetual ledger and statutory BS are later.)\n",
+             (Operating snapshot — statutory balance-sheet formats are a separate, later filing view.)\n",
             Money(bank).format_localized(&currency, &fiscal),
+            Money(till).format_localized(&currency, &fiscal),
             Money(ar).format_localized(&currency, &fiscal),
             Money(assets).format_localized(&currency, &fiscal),
             Money(ap).format_localized(&currency, &fiscal),
@@ -5991,6 +6435,9 @@ impl Store {
                 Some(PayMethod::Cash) => totals.cash_paise += charged,
                 Some(PayMethod::Upi) => totals.upi_paise += charged,
                 Some(PayMethod::Card) => totals.card_paise += charged,
+                // Bank-tender sales are bank money, like card — counted
+                // with card totals in the day view (no separate field).
+                Some(PayMethod::Bank) => totals.card_paise += charged,
                 Some(PayMethod::Credit) => totals.credit_paise += charged,
                 Some(PayMethod::Split) | None => {}
             }
@@ -6053,6 +6500,89 @@ impl Store {
             }
         }
         Ok(totals)
+    }
+
+    /// Cash that physically left the till in a period (`None` = all
+    /// time): cash parts of expenses, cash payable settlements, and
+    /// till → bank moves. Sales-side cash in is in [`Self::today_totals`]
+    /// / the till balance below.
+    fn cash_out_paise(&self, day_prefix: Option<&str>) -> Result<i64, String> {
+        let like = match day_prefix {
+            Some(d) => format!("{d}%"),
+            None => "%".to_string(),
+        };
+        let branch = self.active_branch_id()?;
+        let one = |sql: &str| -> Result<i64, String> {
+            self.conn
+                .query_row(sql, params![like, branch], |r| r.get::<_, i64>(0))
+                .map_err(|e| e.to_string())
+        };
+        let expenses = one(
+            "SELECT COALESCE(SUM(p.amount_paise), 0) FROM expense_payments p
+             JOIN expenses e ON e.id = p.expense_id
+             WHERE p.pay_method = 'cash' AND e.created_at LIKE ?1
+               AND (e.branch_id = ?2 OR e.branch_id = '')",
+        )?;
+        // payable_ledger carries no branch column (party-level books).
+        let payable: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM payable_ledger
+                 WHERE kind = 'settle' AND pay_method = 'cash' AND amount_paise < 0
+                   AND created_at LIKE ?1",
+                params![like],
+                |r| r.get::<_, i64>(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let to_bank = one(
+            "SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
+             WHERE kind = 'till_to_bank' AND created_at LIKE ?1
+               AND (branch_id = ?2 OR branch_id = '')",
+        )?;
+        Ok(expenses + payable + to_bank)
+    }
+
+    /// Cash physically in the till right now, from every recorded cash
+    /// movement since the books began (perpetual till — vision §18):
+    /// cash sales + split cash parts + cash settlements in, minus cash
+    /// expenses, cash payable settlements, and till → bank moves, plus
+    /// bank → till moves. Only as true as the entries: that is the
+    /// point — cash that moved must be recorded to be counted.
+    pub fn till_balance_paise(&self) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let one = |sql: &str| -> Result<i64, String> {
+            self.conn
+                .query_row(sql, params![branch], |r| r.get::<_, i64>(0))
+                .map_err(|e| e.to_string())
+        };
+        let cash_sales = one(
+            "SELECT COALESCE(SUM(total_paise), 0) FROM sales
+             WHERE status = 'completed' AND pay_method = 'cash'
+               AND (branch_id = ?1 OR branch_id = '')",
+        )?;
+        let split_cash = one(
+            "SELECT COALESCE(SUM(p.amount_paise), 0) FROM sale_payments p
+             JOIN sales s ON s.id = p.sale_id
+             WHERE s.status = 'completed' AND s.pay_method = 'split'
+               AND p.pay_method = 'cash' AND (s.branch_id = ?1 OR s.branch_id = '')",
+        )?;
+        // credit_ledger carries no branch column (party-level books).
+        let settles_in: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM credit_ledger
+                 WHERE kind IN ('settle', 'advance') AND amount_paise < 0
+                   AND pay_method = 'cash'",
+                [],
+                |r| r.get::<_, i64>(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let from_bank = one(
+            "SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
+             WHERE kind = 'bank_to_till' AND (branch_id = ?1 OR branch_id = '')",
+        )?;
+        let out = self.cash_out_paise(None)?;
+        Ok(cash_sales + split_cash + settles_in + from_bank - out)
     }
 
     pub fn recent_sales(&self, limit: i64) -> Result<Vec<Sale>, String> {
@@ -6825,6 +7355,80 @@ impl Store {
         Ok(out)
     }
 
+    /// Open bills (bill-wise / open-item view) for one debtor: every
+    /// credit sale that still has money open, oldest first. Paid =
+    /// settlements linked to the bill plus the FIFO share of unlinked
+    /// settlements and write-offs.
+    pub fn open_credit_bills(&self, customer_id: &str) -> Result<Vec<OpenBill>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT sale_id, MIN(created_at), SUM(amount_paise) FROM credit_ledger
+                 WHERE customer_id = ?1 AND kind IN ('sale', 'apply') AND sale_id IS NOT NULL
+                 GROUP BY sale_id ORDER BY MIN(created_at), sale_id",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![customer_id], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, i64>(2)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut bills: Vec<OpenBill> = Vec::new();
+        for row in rows {
+            let (bill_id, created_at, billed) = row.map_err(|e| e.to_string())?;
+            if billed > 0 {
+                bills.push(OpenBill {
+                    bill_id,
+                    created_at,
+                    billed_paise: billed,
+                    paid_paise: 0,
+                    open_paise: billed,
+                });
+            }
+        }
+        // Explicitly linked settlements first.
+        for bill in bills.iter_mut() {
+            let linked: i64 = self
+                .conn
+                .query_row(
+                    "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM credit_ledger
+                     WHERE customer_id = ?1 AND kind IN ('settle', 'write_off')
+                       AND sale_id = ?2",
+                    params![customer_id, bill.bill_id],
+                    |r| r.get(0),
+                )
+                .map_err(|e| e.to_string())?;
+            bill.paid_paise = linked.min(bill.billed_paise);
+            bill.open_paise = bill.billed_paise - bill.paid_paise;
+        }
+        // Unlinked settlements wash over the oldest open bills (FIFO).
+        let mut pool: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM credit_ledger
+                 WHERE customer_id = ?1 AND kind IN ('settle', 'write_off')
+                   AND sale_id IS NULL",
+                params![customer_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        for bill in bills.iter_mut() {
+            if pool <= 0 {
+                break;
+            }
+            let take = pool.min(bill.open_paise);
+            bill.paid_paise += take;
+            bill.open_paise -= take;
+            pool -= take;
+        }
+        bills.retain(|b| b.open_paise > 0);
+        Ok(bills)
+    }
+
     /// Record money received from a customer against credit.
     ///
     /// - Outstanding debt first (kind `settle`).
@@ -6838,6 +7442,23 @@ impl Store {
         pay: PayMethod,
         actor: &StaffMember,
         detail: &str,
+    ) -> Result<(), String> {
+        self.settle_credit_against(customer_id, amount_paise, pay, actor, detail, None)
+    }
+
+    /// Like [`Self::settle_credit`], but the settlement is allocated to
+    /// one chosen open bill (bill-wise): the settle row carries the
+    /// bill's sale id, capped at that bill's open amount; any remainder
+    /// stays unlinked (FIFO) exactly as a plain settlement would.
+    #[allow(clippy::too_many_arguments)]
+    pub fn settle_credit_against(
+        &mut self,
+        customer_id: &str,
+        amount_paise: i64,
+        pay: PayMethod,
+        actor: &StaffMember,
+        detail: &str,
+        against_sale_id: Option<&str>,
     ) -> Result<(), String> {
         self.assert_server_writer("Record credit settle / advance")?;
         if !actor.role.can_sell() {
@@ -6860,28 +7481,52 @@ impl Store {
         let settle_part = amount_paise.min(outstanding);
         let advance_part = amount_paise - settle_part;
         if settle_part > 0 {
-            self.conn
-                .execute(
-                    "INSERT INTO credit_ledger(
-                        id, customer_id, created_at, kind, amount_paise,
-                        sale_id, pay_method, actor_id, actor_name, detail,
-                        user_at, device_at, server_at
-                     ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
-                    params![
-                        new_id(),
-                        customer_id,
-                        times.user_at,
-                        -settle_part,
-                        pay.as_str(),
-                        actor.id,
-                        actor.name,
-                        format!("Settlement {detail}"),
-                        times.user_at,
-                        times.device_at,
-                        times.server_at
-                    ],
-                )
-                .map_err(|e| e.to_string())?;
+            // Bill-wise split: the part that fits the chosen bill is
+            // linked to it; the rest stays unlinked (FIFO), as before.
+            let mut linked: Vec<(Option<String>, i64)> = Vec::new();
+            match against_sale_id {
+                Some(sale_id) => {
+                    let open = self
+                        .open_credit_bills(customer_id)?
+                        .into_iter()
+                        .find(|b| b.bill_id == sale_id)
+                        .map(|b| b.open_paise)
+                        .unwrap_or(0);
+                    let linked_part = settle_part.min(open);
+                    if linked_part > 0 {
+                        linked.push((Some(sale_id.to_string()), linked_part));
+                    }
+                    if settle_part > linked_part {
+                        linked.push((None, settle_part - linked_part));
+                    }
+                }
+                None => linked.push((None, settle_part)),
+            }
+            for (sale_link, part) in linked {
+                self.conn
+                    .execute(
+                        "INSERT INTO credit_ledger(
+                            id, customer_id, created_at, kind, amount_paise,
+                            sale_id, pay_method, actor_id, actor_name, detail,
+                            user_at, device_at, server_at
+                         ) VALUES(?1, ?2, ?3, 'settle', ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
+                        params![
+                            new_id(),
+                            customer_id,
+                            times.user_at,
+                            -part,
+                            sale_link,
+                            pay.as_str(),
+                            actor.id,
+                            actor.name,
+                            format!("Settlement {detail}"),
+                            times.user_at,
+                            times.device_at,
+                            times.server_at
+                        ],
+                    )
+                    .map_err(|e| e.to_string())?;
+            }
         }
         if advance_part > 0 {
             self.conn
@@ -7000,6 +7645,77 @@ impl Store {
         Ok(total)
     }
 
+    /// Open bills for one creditor (bill-wise AP): every on-account
+    /// purchase still open, oldest first. Same allocation rule as AR:
+    /// linked settlements first, unlinked wash FIFO.
+    pub fn open_payable_bills(&self, party_id: &str) -> Result<Vec<OpenBill>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT purchase_id, MIN(created_at), SUM(amount_paise) FROM payable_ledger
+                 WHERE party_id = ?1 AND kind = 'purchase' AND purchase_id IS NOT NULL
+                 GROUP BY purchase_id ORDER BY MIN(created_at), purchase_id",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![party_id], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, i64>(2)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut bills: Vec<OpenBill> = Vec::new();
+        for row in rows {
+            let (bill_id, created_at, billed) = row.map_err(|e| e.to_string())?;
+            if billed > 0 {
+                bills.push(OpenBill {
+                    bill_id,
+                    created_at,
+                    billed_paise: billed,
+                    paid_paise: 0,
+                    open_paise: billed,
+                });
+            }
+        }
+        for bill in bills.iter_mut() {
+            let linked: i64 = self
+                .conn
+                .query_row(
+                    "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM payable_ledger
+                     WHERE party_id = ?1 AND kind IN ('settle', 'write_off')
+                       AND purchase_id = ?2",
+                    params![party_id, bill.bill_id],
+                    |r| r.get(0),
+                )
+                .map_err(|e| e.to_string())?;
+            bill.paid_paise = linked.min(bill.billed_paise);
+            bill.open_paise = bill.billed_paise - bill.paid_paise;
+        }
+        let mut pool: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM payable_ledger
+                 WHERE party_id = ?1 AND kind IN ('settle', 'write_off')
+                   AND purchase_id IS NULL",
+                params![party_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        for bill in bills.iter_mut() {
+            if pool <= 0 {
+                break;
+            }
+            let take = pool.min(bill.open_paise);
+            bill.paid_paise += take;
+            bill.open_paise -= take;
+            pool -= take;
+        }
+        bills.retain(|b| b.open_paise > 0);
+        Ok(bills)
+    }
+
     /// Pay down AP (we owed them). Excess is not tracked as receivable here.
     pub fn settle_payable(
         &mut self,
@@ -7008,6 +7724,21 @@ impl Store {
         pay: PayMethod,
         actor: &StaffMember,
         detail: &str,
+    ) -> Result<(), String> {
+        self.settle_payable_against(party_id, amount_paise, pay, actor, detail, None)
+    }
+
+    /// Like [`Self::settle_payable`], allocated to one chosen open
+    /// purchase bill (capped at its open amount; remainder unlinked).
+    #[allow(clippy::too_many_arguments)]
+    pub fn settle_payable_against(
+        &mut self,
+        party_id: &str,
+        amount_paise: i64,
+        pay: PayMethod,
+        actor: &StaffMember,
+        detail: &str,
+        against_purchase_id: Option<&str>,
     ) -> Result<(), String> {
         self.assert_server_writer("Settle payable")?;
         if amount_paise <= 0 {
@@ -7027,28 +7758,51 @@ impl Store {
         } else {
             detail.trim().to_string()
         };
-        self.conn
-            .execute(
-                "INSERT INTO payable_ledger(
-                    id, party_id, created_at, kind, amount_paise, purchase_id,
-                    pay_method, actor_id, actor_name, detail,
-                    user_at, device_at, server_at
-                 ) VALUES(?1, ?2, ?3, 'settle', ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
-                params![
-                    new_id(),
-                    party_id,
-                    times.user_at,
-                    -settle,
-                    pay.as_str(),
-                    actor.id,
-                    actor.name,
-                    format!("Payable settle {detail}"),
-                    times.user_at,
-                    times.device_at,
-                    times.server_at
-                ],
-            )
-            .map_err(|e| e.to_string())?;
+        // Bill-wise split, mirroring settle_credit_against.
+        let mut linked: Vec<(Option<String>, i64)> = Vec::new();
+        match against_purchase_id {
+            Some(purchase_id) => {
+                let open = self
+                    .open_payable_bills(party_id)?
+                    .into_iter()
+                    .find(|b| b.bill_id == purchase_id)
+                    .map(|b| b.open_paise)
+                    .unwrap_or(0);
+                let linked_part = settle.min(open);
+                if linked_part > 0 {
+                    linked.push((Some(purchase_id.to_string()), linked_part));
+                }
+                if settle > linked_part {
+                    linked.push((None, settle - linked_part));
+                }
+            }
+            None => linked.push((None, settle)),
+        }
+        for (purchase_link, part) in linked {
+            self.conn
+                .execute(
+                    "INSERT INTO payable_ledger(
+                        id, party_id, created_at, kind, amount_paise, purchase_id,
+                        pay_method, actor_id, actor_name, detail,
+                        user_at, device_at, server_at
+                     ) VALUES(?1, ?2, ?3, 'settle', ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
+                    params![
+                        new_id(),
+                        party_id,
+                        times.user_at,
+                        -part,
+                        purchase_link,
+                        pay.as_str(),
+                        actor.id,
+                        actor.name,
+                        format!("Payable settle {detail}"),
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+        }
         self.audit(
             actor,
             "payable.settle",
@@ -8739,6 +9493,66 @@ fn reserve_awb_no(tx: &Connection) -> Result<String, String> {
     Ok(crate::booking::format_awb(seq as u64))
 }
 
+/// One CSV cell, quoted when it holds a comma, quote, or newline.
+fn csv_cell(s: &str) -> String {
+    if s.contains(',') || s.contains('"') || s.contains('\n') {
+        format!("\"{}\"", s.replace('"', "\"\""))
+    } else {
+        s.to_string()
+    }
+}
+
+/// Paise → major units with 2 decimals, for spreadsheet amounts.
+fn csv_money(paise: i64) -> String {
+    let sign = if paise < 0 { "-" } else { "" };
+    let a = paise.abs();
+    format!("{sign}{}.{:02}", a / 100, a % 100)
+}
+
+/// Minimal CSV reader: quoted cells, `""` escapes, CRLF tolerant.
+fn parse_csv(text: &str) -> Vec<Vec<String>> {
+    let mut rows: Vec<Vec<String>> = Vec::new();
+    let mut row: Vec<String> = Vec::new();
+    let mut cell = String::new();
+    let mut quoted = false;
+    let mut chars = text.chars().peekable();
+    let mut any = false;
+    while let Some(c) = chars.next() {
+        any = true;
+        if quoted {
+            if c == '"' {
+                if chars.peek() == Some(&'"') {
+                    chars.next();
+                    cell.push('"');
+                } else {
+                    quoted = false;
+                }
+            } else {
+                cell.push(c);
+            }
+        } else {
+            match c {
+                '"' if cell.is_empty() => quoted = true,
+                ',' => {
+                    row.push(std::mem::take(&mut cell));
+                }
+                '\n' => {
+                    row.push(std::mem::take(&mut cell));
+                    rows.push(std::mem::take(&mut row));
+                }
+                '\r' => {}
+                _ => cell.push(c),
+            }
+        }
+    }
+    if any && (!cell.is_empty() || !row.is_empty()) {
+        row.push(cell);
+        rows.push(row);
+    }
+    rows.retain(|r| r.iter().any(|c| !c.trim().is_empty()));
+    rows
+}
+
 fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
     Ok(Sale {
         id: row.get(0)?,
@@ -9022,6 +9836,118 @@ mod tests {
         let bs = store.balance_sheet_text().unwrap();
         assert!(bs.contains("Debtors"), "{bs}");
         assert!(bs.contains("Creditors"), "{bs}");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn ground_truth_tenders_till_bills_brs_and_csv() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+
+        // One expense, settled part bank + part cash (ground truth §18).
+        let exp = store
+            .add_expense_tenders(
+                150_00,
+                "rent",
+                "office rent",
+                &owner,
+                &[(PayMethod::Bank, 75_00), (PayMethod::Cash, 75_00)],
+            )
+            .unwrap();
+        let parts = store.expense_payments_for(&exp).unwrap();
+        assert_eq!(parts.len(), 2);
+        assert!(store
+            .add_expense_tenders(100_00, "rent", "", &owner, &[(PayMethod::Cash, 90_00)])
+            .is_err());
+
+        // Till: cash sale in, cash expense part out, till→bank out.
+        store.upsert_product(&test_product("Parcel", 100)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
+        assert_eq!(store.till_balance_paise().unwrap(), 25_00);
+        store
+            .post_money_movement(MoneyMoveKind::TillToBank, 10_00, "", &owner)
+            .unwrap();
+        assert_eq!(store.till_balance_paise().unwrap(), 15_00);
+
+        // Bill-wise: two credit bills; unlinked settle washes FIFO,
+        // linked settle closes against the chosen bill only.
+        let party = store
+            .add_customer_kind("Shipper Co", "", "Consignor")
+            .unwrap();
+        let mut bill_ids = Vec::new();
+        for _ in 0..2 {
+            let mut cart = Cart::default();
+            cart.add_or_bump(&p);
+            let draft = cart.to_sale_draft().unwrap();
+            let sale = store
+                .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+                .unwrap();
+            bill_ids.push(sale.id);
+        }
+        let open = store.open_credit_bills(&party.id).unwrap();
+        assert_eq!(open.len(), 2);
+        assert!(open.iter().all(|b| b.open_paise == 100_00));
+        store
+            .settle_credit(&party.id, 100_00, PayMethod::Cash, &owner, "")
+            .unwrap();
+        let open = store.open_credit_bills(&party.id).unwrap();
+        assert_eq!(open.len(), 1);
+        assert_eq!(open[0].bill_id, bill_ids[1]);
+        store
+            .settle_credit_against(
+                &party.id,
+                40_00,
+                PayMethod::Bank,
+                &owner,
+                "",
+                Some(&bill_ids[1]),
+            )
+            .unwrap();
+        let open = store.open_credit_bills(&party.id).unwrap();
+        assert_eq!(open.len(), 1);
+        assert_eq!(open[0].open_paise, 60_00);
+        assert_eq!(open[0].paid_paise, 40_00);
+
+        // BRS: tick the bank-in against the statement; the till→bank
+        // move stays uncleared, explaining book vs bank.
+        store
+            .post_money_movement(MoneyMoveKind::BankIn, 500_00, "deposit", &owner)
+            .unwrap();
+        let moves = store.list_money_movements(10).unwrap();
+        let bank_in = moves.iter().find(|m| m.kind == "bank_in").unwrap();
+        assert!(!bank_in.cleared);
+        store
+            .set_money_movement_cleared(&bank_in.id, true, &owner)
+            .unwrap();
+        let (book, cleared, uncleared_n, uncleared_net) = store.bank_reconciliation().unwrap();
+        assert_eq!(book, 510_00);
+        assert_eq!(cleared, 500_00);
+        assert_eq!(uncleared_n, 1);
+        assert_eq!(uncleared_net, 10_00);
+
+        // CSV: spreadsheet in, spreadsheet out; duplicates skipped.
+        let (added, skipped, _) = store
+            .import_parties_csv("name,phone,kind\nAsha,999,Consignor\nBala,,Carrier\nAsha,999,Consignor\n")
+            .unwrap();
+        assert_eq!((added, skipped), (2, 1));
+        assert!(store.parties_csv().unwrap().contains("Asha"));
+        let (added, skipped, _) = store
+            .import_items_csv("name,price,unit\nBox,25.50,pc\nBox,25.50,pc\n")
+            .unwrap();
+        assert_eq!((added, skipped), (1, 1));
+        assert!(store.items_csv().unwrap().contains("Box,25.50,pc"));
+        assert!(store.day_book_csv().unwrap().contains("till_cash_in_hand"));
+        assert!(store
+            .party_ledger_csv(&party.id)
+            .unwrap()
+            .contains("balance"));
         let _ = std::fs::remove_file(path);
     }
 

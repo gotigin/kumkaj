@@ -146,6 +146,9 @@ pub enum PayMethod {
     Cash,
     Upi,
     Card,
+    /// Bank transfer / cheque — money that moves through the bank
+    /// account rather than the till or a card terminal.
+    Bank,
     /// Customer credit (on account).
     Credit,
     /// Multiple tenders on one bill (see sale_payments).
@@ -158,6 +161,7 @@ impl PayMethod {
             Self::Cash => "cash",
             Self::Upi => "upi",
             Self::Card => "card",
+            Self::Bank => "bank",
             Self::Credit => "credit",
             Self::Split => "split",
         }
@@ -168,6 +172,7 @@ impl PayMethod {
             "cash" => Some(Self::Cash),
             "upi" => Some(Self::Upi),
             "card" => Some(Self::Card),
+            "bank" | "cheque" | "check" | "transfer" => Some(Self::Bank),
             "credit" | "udhaar" => Some(Self::Credit),
             "split" => Some(Self::Split),
             _ => None,
@@ -179,6 +184,7 @@ impl PayMethod {
             Self::Cash => "Cash",
             Self::Upi => "UPI",
             Self::Card => "Card",
+            Self::Bank => "Bank",
             Self::Credit => "Credit",
             Self::Split => "Split",
         }
@@ -521,6 +527,21 @@ pub fn format_qty_display(qty_milli: i64, qty_whole: i64, unit_label: &str) -> S
     }
 }
 
+/// One open bill for bill-wise (open-item) allocation: a credit sale
+/// (AR) or an on-account purchase (AP) and how much of it is still
+/// open after settlements linked to it plus the FIFO share of
+/// unlinked settlements.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct OpenBill {
+    /// Sale id (AR) or purchase id (AP).
+    pub bill_id: String,
+    pub created_at: String,
+    /// Net amount billed on credit for this bill.
+    pub billed_paise: i64,
+    pub paid_paise: i64,
+    pub open_paise: i64,
+}
+
 /// Cashbook / bank movement kinds (generic — not a trade fork).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum MoneyMoveKind {
@@ -579,6 +600,11 @@ pub struct MoneyMovement {
     pub amount_paise: i64,
     pub note: String,
     pub actor_name: String,
+    /// Bank reconciliation: the owner has seen this movement on the
+    /// bank statement and ticked it off (BRS). Uncleared movements are
+    /// the difference between the book balance and the bank's balance.
+    #[serde(default)]
+    pub cleared: bool,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
