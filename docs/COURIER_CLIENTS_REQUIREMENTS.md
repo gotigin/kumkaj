@@ -13,7 +13,7 @@ Voice messages in the source chat were **ignored**; only typed requirements are 
 
 - Local **courier agency / franchise counter** (books + desk).
 - Deals with **named carriers** (e.g. national networks) and **their own consignors / shippers**.
-- Expects a Tally-like feel: parties, day book, bank, expenses, invoices, P&L, outstanding.
+- Expects proper business books: parties, day book, bank, expenses, invoices, P&L, outstanding.
 
 ------------------------------------------------------------------------
 

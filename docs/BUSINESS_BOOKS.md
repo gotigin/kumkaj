@@ -198,16 +198,16 @@ not a statutory Schedule III statement.
 
 ## Depth extracted from external research (safe after deleting that file)
 
-Condensed from India SMB / Tally / Zoho-style research and cross-category
-bookkeeping patterns (retail vs service). **Not** our build order.
+Condensed from India SMB bookkeeping research and cross-category
+patterns (retail vs service). **Not** our build order.
 Use when implementing a row above or a deferred compliance feature.
 
 ### Design ideas worth keeping
 - **Document vs money effect:** keep the source bill (lines, party, tax) and
   derive books totals from it; do not maintain a second handwritten total.
 - **Immutable history:** correct by amend / void / credit note — not silent edit.
-- **Bill-wise AR/AP:** match receipts/payments to specific bills (Tally
-  “bill-wise”); we have party balance today, open-item allocation is later.
+- **Bill-wise AR/AP:** match receipts/payments to specific bills
+  (bill-wise allocation); we have party balance today, open-item allocation is later.
 - **FY and number series:** configurable FY start; gap-free invoice series per
   period (we have `INV-BRANCH-seq`; FY-scoped series is later).
 - **Stock valuation:** FIFO or weighted average when we value stock (LIFO not
@@ -241,7 +241,7 @@ not the common-books center.
 ## Agent rule
 
 1. Optimize for **BOS UX** (books model clear in the shell) — not literal
-   step order, not POS-only, not full Tally on day one.
+   step order, not POS-only, not a full GL accounting package on day one.
 2. Vertical language → shared primitive; never a courier/food fork.
 3. This file is the spine.
 4. Do not edit USER_CASES / USE_CASES workbooks — those are owner-only.
