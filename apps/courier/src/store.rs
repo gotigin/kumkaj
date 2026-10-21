@@ -2,11 +2,13 @@
 
 use crate::domain::{
     format_qty_display, milli_to_whole_qty, new_id, normalize_party_roles, AttachmentEntity,
-    AttachmentKind, AuditEvent, Branch, BranchSnapshot, Category, CreditLedgerEntry, Customer,
+    AttachmentKind, AuditEvent, BookingMeasureSettings, BooksOverview, Branch, BranchSnapshot,
+    Category,
+    CreditLedgerEntry, Customer,
     DayTotals, DiningTable, EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket,
     Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpsReport, OrderType, OrgConsolidatedReport,
     PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
-    QTY_MILLI_UNIT, Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
+    Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
     StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef, VenueMode, STOCK_UNTRACKED,
 };
 use crate::media;
@@ -747,10 +749,16 @@ impl Store {
             ("pc", "Piece"),
             ("kg", "Kilogram"),
             ("g", "Gram"),
+            ("t", "Tonne"),
+            ("lb", "Pound"),
+            ("oz", "Ounce"),
             ("l", "Litre"),
             ("ml", "Millilitre"),
             ("m", "Metre"),
             ("cm", "Centimetre"),
+            ("mm", "Millimetre"),
+            ("in", "Inch"),
+            ("ft", "Foot"),
             ("dozen", "Dozen"),
         ];
         for (code, name) in builtins {
@@ -769,6 +777,22 @@ impl Store {
             ("ml", "l", 1),
             ("m", "cm", 100_000),
             ("cm", "m", 10),
+            ("mm", "cm", 100),
+            ("cm", "mm", 10_000),
+            ("in", "cm", 2_540),
+            ("cm", "in", 394),
+            ("ft", "cm", 30_480),
+            ("cm", "ft", 33),
+            ("ft", "in", 12_000),
+            ("in", "ft", 83),
+            ("t", "kg", 1_000_000),
+            ("kg", "t", 1),
+            ("lb", "kg", 454),
+            ("kg", "lb", 2_205),
+            ("oz", "kg", 28),
+            ("kg", "oz", 35_274),
+            ("lb", "oz", 16_000),
+            ("oz", "lb", 63),
             ("dozen", "pc", 12_000),
         ];
         for (from, to, factor) in convs {
@@ -3513,6 +3537,17 @@ impl Store {
             Some(k) => self.meta_set("venue_icon_key", k),
             None => self.meta_set("venue_icon_key", ""),
         }
+    }
+
+    /// User-arranged sidebar / bottom-bar order (CSV of nav tab keys).
+    /// Stored in the books so the arrangement survives reinstall and
+    /// follows the shop's data, not one binary install.
+    pub fn nav_order_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_nav_order")
+    }
+
+    pub fn set_nav_order_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_nav_order", csv)
     }
 
     pub fn brand_images_dir(&self) -> Result<PathBuf, String> {
@@ -6579,6 +6614,91 @@ impl Store {
         })
     }
 
+    /// Rename / re-phone an existing party by id. Identity is the UUID, so
+    /// ledgers, bookings and balances are unaffected — display text only.
+    pub fn update_customer(
+        &self,
+        customer_id: &str,
+        name: &str,
+        phone: &str,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Update party")?;
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("Party name required".into());
+        }
+        let n = self
+            .conn
+            .execute(
+                "UPDATE customers SET name = ?1, phone = ?2 WHERE id = ?3",
+                params![name, phone.trim(), customer_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Party not found".into());
+        }
+        Ok(())
+    }
+
+    /// Delete a party by id.
+    ///
+    /// - Zero balance and no history anywhere: hard-delete the row.
+    /// - Zero balance but bookings/ledger history exists: deactivate
+    ///   (`active = 0`, hidden from lists) so the books stay intact.
+    /// - Any AR/AP balance: refused — settle or write off first.
+    pub fn delete_customer(&self, customer_id: &str) -> Result<String, String> {
+        self.assert_server_writer("Delete party")?;
+        let name: String = self
+            .conn
+            .query_row(
+                "SELECT name FROM customers WHERE id = ?1",
+                params![customer_id],
+                |r| r.get(0),
+            )
+            .map_err(|_| "Party not found".to_string())?;
+        if self.customer_balance(customer_id)? != 0 {
+            return Err(format!(
+                "{name} has a debtor/advance balance — settle or write it off before deleting"
+            ));
+        }
+        if self.party_payable_balance(customer_id)? != 0 {
+            return Err(format!(
+                "{name} has a creditor (AP) balance — pay or write it off before deleting"
+            ));
+        }
+        let history: i64 = self
+            .conn
+            .query_row(
+                "SELECT
+                   (SELECT COUNT(*) FROM sales WHERE customer_id = ?1) +
+                   (SELECT COUNT(*) FROM credit_ledger WHERE customer_id = ?1) +
+                   (SELECT COUNT(*) FROM payable_ledger WHERE party_id = ?1) +
+                   (SELECT COUNT(*) FROM purchases WHERE party_id = ?1) +
+                   (SELECT COUNT(*) FROM entry_attachments WHERE entity_kind = 'party' AND entity_id = ?1)",
+                params![customer_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        if history > 0 {
+            self.conn
+                .execute(
+                    "UPDATE customers SET active = 0 WHERE id = ?1",
+                    params![customer_id],
+                )
+                .map_err(|e| e.to_string())?;
+            return Ok(format!(
+                "{name} has book history — hidden from party lists (books preserved, not deleted)"
+            ));
+        }
+        self.conn
+            .execute(
+                "DELETE FROM customers WHERE id = ?1",
+                params![customer_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(format!("Deleted party {name}"))
+    }
+
     /// Set role tags on an existing party by id (dual-role: Consignor + Carrier on one UUID).
     pub fn set_customer_kind_label(
         &self,
@@ -7051,6 +7171,14 @@ impl Store {
         if code.is_empty() || name.is_empty() {
             return Err("Unit code and name required".into());
         }
+        // Currencies are not units: an exchange rate is a price at a
+        // moment in time, not a fixed conversion, so money never enters
+        // the unit tables.
+        if crate::locale::currency_by_code(&code.to_ascii_uppercase()).is_some() {
+            return Err(format!(
+                "'{code}' is a currency, not a unit of measure — money is never converted like weight or length"
+            ));
+        }
         let id = new_id();
         self.conn
             .execute(
@@ -7110,6 +7238,43 @@ impl Store {
         if factor_milli <= 0 {
             return Err("Conversion factor must be > 0".into());
         }
+        // A conversion links two known units of the same kind of
+        // measure, and the link must keep every chain ending at a
+        // standard unit — no dangling cross-family links, no loops.
+        for code in [&from_code, &to_code] {
+            let known: bool = self
+                .conn
+                .query_row("SELECT 1 FROM units WHERE code = ?1", params![code], |_| {
+                    Ok(true)
+                })
+                .optional()
+                .map_err(|e| e.to_string())?
+                .unwrap_or(false);
+            if !known {
+                return Err(format!(
+                    "Unit '{code}' does not exist — add the unit first"
+                ));
+            }
+        }
+        if crate::domain::standard_unit_family(&from_code).is_some() {
+            return Err(format!(
+                "'{from_code}' is a standard unit — its conversions are fixed and automatic. Define the other unit instead (e.g. 1 bag = 25 kg)"
+            ));
+        }
+        let from_family = self.resolve_unit(&from_code).map(|(family, _)| family);
+        let to_family = self.resolve_unit(&to_code).map(|(family, _)| family);
+        if let (Some(a), Some(b)) = (&from_family, &to_family) {
+            if a != b {
+                return Err(format!(
+                    "Cannot link {from_code} ({a}) to {to_code} ({b}) — different kinds of measure"
+                ));
+            }
+        }
+        if self.unit_reaches(&to_code, &from_code) {
+            return Err(format!(
+                "That would make a loop — '{to_code}' already leads back to '{from_code}'"
+            ));
+        }
         let id = new_id();
         self.conn
             .execute(
@@ -7132,40 +7297,245 @@ impl Store {
         })
     }
 
-    /// Convert qty_milli from `from_code` into `to_code` using a direct conversion row.
+    /// Convert between two units of the same family by way of the
+    /// family anchor (`qty × factor(from) ÷ factor(to)`), so chains and
+    /// reverse directions work without hand-entered reverse rows and
+    /// never drift on rounded factors.
     pub fn convert_qty_milli(
         &self,
         qty_milli: i64,
         from_code: &str,
         to_code: &str,
     ) -> Result<i64, String> {
+        use rust_decimal::prelude::ToPrimitive;
         let from_code = from_code.trim().to_ascii_lowercase();
         let to_code = to_code.trim().to_ascii_lowercase();
         if from_code == to_code {
             return Ok(qty_milli);
         }
-        let factor: i64 = self
+        let (from_family, from_factor) = self.resolve_unit(&from_code).ok_or_else(|| {
+            format!("Unit '{from_code}' is not linked to a standard unit yet")
+        })?;
+        let (to_family, to_factor) = self.resolve_unit(&to_code).ok_or_else(|| {
+            format!("Unit '{to_code}' is not linked to a standard unit yet")
+        })?;
+        if from_family != to_family {
+            return Err(format!(
+                "Cannot convert {from_code} ({from_family}) to {to_code} ({to_family}) — different kinds of measure"
+            ));
+        }
+        let out = (rust_decimal::Decimal::from(qty_milli) * from_factor / to_factor).round();
+        out.to_i64()
+            .ok_or_else(|| "Converted quantity is too large".to_string())
+    }
+
+    /// Resolve a unit to `(family, factor converting 1 unit into the
+    /// family anchor)` by walking its chain of conversions until a
+    /// standard unit is reached — a custom unit may be based on another
+    /// custom unit, as long as the chain ultimately lands on a standard.
+    /// `None` when the chain dangles (never reaches a standard) or loops.
+    pub fn resolve_unit(
+        &self,
+        code: &str,
+    ) -> Option<(String, rust_decimal::Decimal)> {
+        let code = code.trim().to_ascii_lowercase();
+        self.resolve_unit_walk(&code, &mut std::collections::HashSet::new())
+    }
+
+    fn resolve_unit_walk(
+        &self,
+        code: &str,
+        seen: &mut std::collections::HashSet<String>,
+    ) -> Option<(String, rust_decimal::Decimal)> {
+        if let Some((family, factor)) = crate::domain::standard_unit_family(code) {
+            return Some((family.to_string(), factor));
+        }
+        if !seen.insert(code.to_string()) {
+            return None; // loop in the chain — can never reach a standard
+        }
+        let mut stmt = self
             .conn
-            .query_row(
-                "SELECT factor_milli FROM unit_conversions
-                 WHERE from_code = ?1 AND to_code = ?2",
-                params![from_code, to_code],
-                |r| r.get(0),
+            .prepare(
+                "SELECT to_code, factor_milli FROM unit_conversions
+                 WHERE from_code = ?1 ORDER BY to_code",
             )
-            .optional()
-            .map_err(|e| e.to_string())?
-            .ok_or_else(|| format!("No conversion {from_code} → {to_code}"))?;
-        Ok((qty_milli.saturating_mul(factor)) / QTY_MILLI_UNIT)
+            .ok()?;
+        let rows = stmt
+            .query_map(params![code], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .ok()?;
+        let rows: Vec<(String, i64)> = rows.collect::<Result<_, _>>().ok()?;
+        for (to_code, factor_milli) in rows {
+            let step =
+                rust_decimal::Decimal::from(factor_milli) / rust_decimal::Decimal::from(1000);
+            let mut branch = seen.clone();
+            if let Some((family, rest)) = self.resolve_unit_walk(&to_code, &mut branch) {
+                return Some((family, step * rest));
+            }
+        }
+        None
+    }
+
+    /// Can `from` already reach `to` by following conversion rows?
+    /// Used to refuse a new row that would close a loop.
+    fn unit_reaches(&self, from: &str, target: &str) -> bool {
+        let mut seen = std::collections::HashSet::new();
+        let mut stack = vec![from.to_string()];
+        while let Some(code) = stack.pop() {
+            if code == target {
+                return true;
+            }
+            if !seen.insert(code.clone()) {
+                continue;
+            }
+            if let Ok(mut stmt) = self.conn.prepare(
+                "SELECT to_code FROM unit_conversions WHERE from_code = ?1",
+            ) {
+                if let Ok(rows) = stmt.query_map(params![code], |row| row.get::<_, String>(0)) {
+                    for to in rows.flatten() {
+                        stack.push(to);
+                    }
+                }
+            }
+        }
+        false
+    }
+
+    /// Factor converting 1 `code` into centimetres, following the
+    /// unit's chain to the length anchor. `None` when the unit is not
+    /// a length or its chain never reaches a standard unit.
+    pub fn factor_to_cm(&self, code: &str) -> Option<rust_decimal::Decimal> {
+        self.resolve_unit(code)
+            .filter(|(family, _)| family == "length")
+            .map(|(_, factor)| factor)
+    }
+
+    /// Factor converting 1 `code` into kilograms; see [`Self::factor_to_cm`].
+    pub fn factor_to_kg(&self, code: &str) -> Option<rust_decimal::Decimal> {
+        self.resolve_unit(code)
+            .filter(|(family, _)| family == "weight")
+            .map(|(_, factor)| factor)
+    }
+
+    /// Booking-desk measurement settings (meta; defaults are the Indian
+    /// domestic convention — a seed, not a restriction).
+    pub fn booking_measure_settings(&self) -> BookingMeasureSettings {
+        let mut out = BookingMeasureSettings::default();
+        if let Ok(Some(v)) = self.meta_get("booking_dim_unit") {
+            if !v.trim().is_empty() {
+                out.dim_unit = v.trim().to_ascii_lowercase();
+            }
+        }
+        if let Ok(Some(v)) = self.meta_get("booking_weight_unit") {
+            if !v.trim().is_empty() {
+                out.weight_unit = v.trim().to_ascii_lowercase();
+            }
+        }
+        if let Ok(Some(v)) = self.meta_get("booking_volumetric_divisor") {
+            if let Ok(d) = v.trim().parse::<rust_decimal::Decimal>() {
+                if d > rust_decimal::Decimal::ZERO {
+                    out.volumetric_divisor = d;
+                }
+            }
+        }
+        if let Ok(Some(v)) = self.meta_get("booking_slab_kg") {
+            if let Ok(d) = v.trim().parse::<rust_decimal::Decimal>() {
+                if d > rust_decimal::Decimal::ZERO {
+                    out.slab_kg = d;
+                }
+            }
+        }
+        out
+    }
+
+    /// Save booking-desk measurement settings. The chosen units must
+    /// resolve to the length / weight anchors (standard units, or
+    /// custom units whose chain of conversions ends at cm / kg).
+    pub fn set_booking_measure_settings(
+        &self,
+        settings: &BookingMeasureSettings,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Booking measures")?;
+        match self.resolve_unit(&settings.dim_unit) {
+            Some((family, _)) if family == "length" => {}
+            Some((family, _)) => {
+                return Err(format!(
+                    "Dimension unit '{}' measures {family}, not length",
+                    settings.dim_unit
+                ));
+            }
+            None => {
+                return Err(format!(
+                    "Dimension unit '{}' is not linked to cm — link it under Units first (directly or through other units)",
+                    settings.dim_unit
+                ));
+            }
+        }
+        match self.resolve_unit(&settings.weight_unit) {
+            Some((family, _)) if family == "weight" => {}
+            Some((family, _)) => {
+                return Err(format!(
+                    "Weight unit '{}' measures {family}, not weight",
+                    settings.weight_unit
+                ));
+            }
+            None => {
+                return Err(format!(
+                    "Weight unit '{}' is not linked to kg — link it under Units first (directly or through other units)",
+                    settings.weight_unit
+                ));
+            }
+        }
+        if settings.volumetric_divisor <= rust_decimal::Decimal::ZERO {
+            return Err("Volumetric divisor must be > 0".into());
+        }
+        if settings.slab_kg <= rust_decimal::Decimal::ZERO {
+            return Err("Weight slab must be > 0".into());
+        }
+        self.meta_set("booking_dim_unit", &settings.dim_unit)?;
+        self.meta_set("booking_weight_unit", &settings.weight_unit)?;
+        self.meta_set(
+            "booking_volumetric_divisor",
+            &settings.volumetric_divisor.to_string(),
+        )?;
+        self.meta_set("booking_slab_kg", &settings.slab_kg.to_string())?;
+        Ok(())
     }
 
     /// Honest Books home: money in/out, AR/AP, cash vs bank, period profit shape.
-    pub fn books_overview_text(&self) -> Result<String, String> {
+    /// Today's books figures as separate values, so the Books home can lay
+    /// them out as stat cards instead of one paragraph of text.
+    pub fn books_overview(&self) -> Result<BooksOverview, String> {
         let today = Local::now().format("%Y-%m-%d").to_string();
         let books = self.period_books(&today, &today)?;
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let tmpl = self.entity_template()?;
-        let expenses_today = books.expenses_paise;
+        let fmt = |paise: i64| Money(paise).format_localized(&currency, &fiscal);
+        Ok(BooksOverview {
+            money_in: fmt(books.revenue_paise),
+            purchases: fmt(books.cogs_paise),
+            expenses: fmt(books.expenses_paise),
+            gross: fmt(books.gross_paise()),
+            net: fmt(books.net_paise()),
+            lane_declared_label: tmpl.lane_declared_label.to_string(),
+            lane_declared: fmt(books.declared_paise),
+            lane_owner_label: tmpl.lane_owner_label.to_string(),
+            lane_owner: fmt(books.owner_lane_paise),
+            cash: fmt(books.cash_paise),
+            digital_label: fiscal.digital_pay_label().to_string(),
+            digital: fmt(books.upi_paise),
+            card: fmt(books.card_paise),
+            they_owe: fmt(books.outstanding_credit_paise),
+            we_owe: fmt(books.outstanding_payable_paise),
+            bank_balance: fmt(self.bank_balance_paise()?),
+            bank_net_today: fmt(books.bank_in_paise.saturating_sub(books.bank_out_paise)),
+        })
+    }
+
+    pub fn books_overview_text(&self) -> Result<String, String> {
+        let o = self.books_overview()?;
         Ok(format!(
             "Today — books at a glance\n\
              Money in (sales) {}\n\
@@ -7177,24 +7547,23 @@ impl Store {
              We owe them {}\n\
              Bank balance {}\n\
              Bank net today {}\n",
-            Money(books.revenue_paise).format_localized(&currency, &fiscal),
-            Money(books.cogs_paise).format_localized(&currency, &fiscal),
-            Money(expenses_today).format_localized(&currency, &fiscal),
-            Money(books.gross_paise()).format_localized(&currency, &fiscal),
-            Money(books.net_paise()).format_localized(&currency, &fiscal),
-            tmpl.lane_declared_label,
-            Money(books.declared_paise).format_localized(&currency, &fiscal),
-            tmpl.lane_owner_label,
-            Money(books.owner_lane_paise).format_localized(&currency, &fiscal),
-            Money(books.cash_paise).format_localized(&currency, &fiscal),
-            fiscal.digital_pay_label(),
-            Money(books.upi_paise).format_localized(&currency, &fiscal),
-            Money(books.card_paise).format_localized(&currency, &fiscal),
-            Money(books.outstanding_credit_paise).format_localized(&currency, &fiscal),
-            Money(books.outstanding_payable_paise).format_localized(&currency, &fiscal),
-            Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal),
-            Money(books.bank_in_paise.saturating_sub(books.bank_out_paise))
-                .format_localized(&currency, &fiscal),
+            o.money_in,
+            o.purchases,
+            o.expenses,
+            o.gross,
+            o.net,
+            o.lane_declared_label,
+            o.lane_declared,
+            o.lane_owner_label,
+            o.lane_owner,
+            o.cash,
+            o.digital_label,
+            o.digital,
+            o.card,
+            o.they_owe,
+            o.we_owe,
+            o.bank_balance,
+            o.bank_net_today,
         ))
     }
 
@@ -9088,6 +9457,66 @@ mod tests {
     }
 
     #[test]
+    fn update_customer_renames_without_touching_balance() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let customer = store.add_customer("Wrong Name", "").unwrap();
+        store
+            .seed_opening_credit(&customer.id, 5000, &owner)
+            .unwrap();
+        store
+            .update_customer(&customer.id, "Right Name", "98200")
+            .unwrap();
+        let renamed = store
+            .list_customers()
+            .unwrap()
+            .into_iter()
+            .find(|c| c.id == customer.id)
+            .unwrap();
+        assert_eq!(renamed.name, "Right Name");
+        assert_eq!(renamed.phone, "98200");
+        assert_eq!(store.customer_balance(&customer.id).unwrap(), 5000);
+        assert!(store.update_customer(&customer.id, "  ", "").is_err());
+        assert!(store.update_customer("missing", "X", "").is_err());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn delete_customer_guards_balance_and_history() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+
+        // Unused party: hard delete.
+        let unused = store.add_customer("Unused", "").unwrap();
+        let msg = store.delete_customer(&unused.id).unwrap();
+        assert!(msg.contains("Deleted party"), "got {msg}");
+        assert!(store
+            .list_customers()
+            .unwrap()
+            .iter()
+            .all(|c| c.id != unused.id));
+
+        // Balance blocks deletion; after write-off the history hides it.
+        let owing = store.add_customer("Owing", "").unwrap();
+        store.seed_opening_credit(&owing.id, 5000, &owner).unwrap();
+        assert!(store.delete_customer(&owing.id).is_err());
+        store
+            .write_off_credit(&owing.id, 0, "clear small balance", &owner)
+            .unwrap();
+        assert_eq!(store.customer_balance(&owing.id).unwrap(), 0);
+        let msg = store.delete_customer(&owing.id).unwrap();
+        assert!(msg.contains("hidden"), "got {msg}");
+        assert!(store
+            .list_customers()
+            .unwrap()
+            .iter()
+            .all(|c| c.id != owing.id));
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
     fn courier_template_labels_without_seeds_and_kg_lines() {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
@@ -10542,6 +10971,58 @@ mod tests {
     }
 
     #[test]
+    fn unit_chains_anchor_cycles_families_and_currency() {
+        use rust_decimal::Decimal;
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.complete_owner_setup("0000").unwrap();
+
+        // A custom unit based on another custom unit resolves through
+        // the chain to the standard anchor: 1 crate = 2 box, 1 box = 20 cm.
+        store.add_unit("box", "Box").unwrap();
+        store.add_unit("crate", "Crate").unwrap();
+        // Dangling until linked: unusable, but the link may come later.
+        assert_eq!(store.resolve_unit("crate"), None);
+        store.add_unit_conversion("crate", "box", 2_000).unwrap();
+        assert_eq!(store.resolve_unit("crate"), None);
+        store.add_unit_conversion("box", "cm", 20_000).unwrap();
+        assert_eq!(
+            store.resolve_unit("crate"),
+            Some(("length".to_string(), Decimal::from(40)))
+        );
+        assert_eq!(store.factor_to_cm("crate"), Some(Decimal::from(40)));
+        // Conversions ride the chain in both directions via the anchor:
+        // 1 crate = 40 cm, so 2 crate = 80 cm and 80 cm = 4 box.
+        assert_eq!(store.convert_qty_milli(2_000, "crate", "cm").unwrap(), 80_000);
+        assert_eq!(store.convert_qty_milli(80_000, "cm", "box").unwrap(), 4_000);
+
+        // Loops are refused: box already leads (through crate's chain
+        // in reverse reachability) — closing box → crate would cycle.
+        assert!(store.add_unit_conversion("box", "crate", 500).is_err());
+
+        // Cross-family links are refused once both sides are anchored:
+        // bag is weight, cm is length.
+        store.add_unit("bag", "Bag").unwrap();
+        store.add_unit_conversion("bag", "kg", 25_000).unwrap();
+        assert!(store.add_unit_conversion("bag", "cm", 10_000).is_err());
+        assert!(store.convert_qty_milli(1_000, "bag", "cm").is_err());
+        // A weight unit cannot pose as a dimension unit at the desk.
+        assert_eq!(store.factor_to_cm("bag"), None);
+        assert_eq!(store.factor_to_kg("bag"), Some(Decimal::from(25)));
+
+        // Standard units are fixed: nobody redefines them, and no
+        // conversion may be authored *from* one.
+        assert!(store.add_unit_conversion("kg", "bag", 40).is_err());
+
+        // Unknown codes must be added as units first.
+        assert!(store.add_unit_conversion("sack", "kg", 10_000).is_err());
+
+        // Currencies are never units.
+        assert!(store.add_unit("usd", "Dollar").is_err());
+        assert!(store.add_unit("inr", "Rupee").is_err());
+    }
+
+    #[test]
     fn write_off_ap_cogs_units_and_books_overview() {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
@@ -10557,6 +11038,43 @@ mod tests {
             .unwrap(); // 1 bag = 25 kg
         let kg = store.convert_qty_milli(1_000, "bag", "kg").unwrap();
         assert_eq!(kg, 25_000);
+
+        // Booking measures: defaults are the Indian domestic convention;
+        // the shop can switch to standard imperial or custom units.
+        let defaults = store.booking_measure_settings();
+        assert_eq!(defaults.dim_unit, "cm");
+        assert_eq!(defaults.weight_unit, "kg");
+        let mut imperial = defaults.clone();
+        imperial.dim_unit = "in".into();
+        imperial.weight_unit = "lb".into();
+        imperial.volumetric_divisor = rust_decimal::Decimal::from(6000);
+        imperial.slab_kg = rust_decimal::Decimal::ONE;
+        store.set_booking_measure_settings(&imperial).unwrap();
+        let saved = store.booking_measure_settings();
+        assert_eq!(saved.dim_unit, "in");
+        assert_eq!(saved.weight_unit, "lb");
+        assert_eq!(saved.volumetric_divisor, rust_decimal::Decimal::from(6000));
+        assert_eq!(
+            store.factor_to_cm("in"),
+            Some(rust_decimal::Decimal::new(254, 2))
+        );
+        assert_eq!(
+            store.factor_to_kg("lb"),
+            Some(rust_decimal::Decimal::new(45_359_237, 8))
+        );
+
+        // A custom unit is refused until it has a conversion to the base,
+        // then it is a first-class entry unit.
+        store.add_unit("crate", "Crate").unwrap();
+        let mut custom = saved.clone();
+        custom.dim_unit = "crate".into();
+        assert!(store.set_booking_measure_settings(&custom).is_err());
+        store.add_unit_conversion("crate", "cm", 40_000).unwrap();
+        store.set_booking_measure_settings(&custom).unwrap();
+        assert_eq!(
+            store.factor_to_cm("crate"),
+            Some(rust_decimal::Decimal::from(40))
+        );
 
         // AR write-off to nil
         let party = store

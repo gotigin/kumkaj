@@ -68,7 +68,8 @@ Sources: Bellboy, GoInvoicing, ESE, CourierDesk, Saap, BillMyCourier, aggregator
 | Consignment / docket booking | Party, destination, weight, service + receipt | **Ship** — Booking desk |
 | Walk-in flood | Clear cart / “new booking” every customer | **Ship** — Next booking |
 | Rate master (zone × service × slab) | ₹/kg, first/extra slab | **Ship** — zone master + first/extra kg on Rates |
-| Chargeable weight | Actual / volumetric / slab | **Ship** — L×B×H / 5000, round up 0.5 kg |
+| Chargeable weight | Actual / volumetric / slab | **Ship** — defaults L×B×H ÷ 5000, round up 0.5 kg; divisor + slab are shop settings |
+| Measurement units | User-chosen entry units, standard + custom conversions | **Ship** — Settings → Booking measures: dimensions/weight in cm, m, in, ft · kg, g, lb, oz, or a custom unit linked to cm/kg directly or through other custom units (Settings → Units; loops and weight↔length links refused). Books always record kg |
 | Extra charges | Fuel, docket, ODA, packing, COD fee | **Ship** — fuel/docket on desk; catalog seeded |
 | AWB / CN + **label / barcode** | Unique id; print; scan | **Ship** — Code 128 SVG label + Ops Find/Scan (wedge) → desk card → advance/COD |
 | City / zone / pincode | Destination masters | **Ship** — zone master + booking zone field |
@@ -116,6 +117,8 @@ Prioritize in this order for Kumkaj Courier:
 | Booking | Money in — book parcels |
 | Pay out | Money out — carrier bills & expenses |
 | Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock | Former More destinations — first-class bottom/rail peers (scrollable) |
+
+**Rearrangeable tabs.** The tab order is the shop's, not ours: press a tab and drag it onto another to swap them (bottom bar and rail alike). The arrangement is saved in the books (`ui_nav_order`), so it survives reinstall and follows the shop, not the device. Scrolling stays one gesture away: the bars keep whitespace lanes around the tabs — swipe the lane to scroll, grab a tab to drag. Holding a dragged tab against the left/right edge of the bar (top/bottom of the rail) auto-scrolls it, so tabs that start off-screen can still be reached and swapped with. Implementation rules that keep this working are in `docs/DEV.md` (“Nav drag-to-swap”).
 
 ------------------------------------------------------------------------
 

@@ -78,6 +78,16 @@ Software is for the users; users are not for the software. Each Kumkaj
 product bends toward how that trade or household already works — people
 should not bend their work to fit a generic UI.
 
+**Granular control is part of that rule.** Where a person can today
+cancel, cut, correct or re-total something by hand in a paper book, the
+app must offer the same freedom: sensible defaults everywhere, but the
+user can override units, conversions, divisors, slabs, rates, labels
+and totals at the point of work. A default the user cannot change is a
+restriction; restrictions need a statutory or integrity reason (e.g.
+not silently rewriting posted history), never "the first market does
+it this way". Design settings as *seeds the shop edits*, not as
+constants the shop obeys.
+
 **Build order:** implement the **concrete product** first (flows, labels,
 packaging, capabilities that trade needs). When the same logic is needed
 by another product, **extract into shared code**. Progressive complexity
@@ -848,6 +858,14 @@ expire. Cloud billing affects cloud infrastructure only.
 
 ## 23. India-First, Without Locking the Architecture to India
 
+**India-first is not India-only.** India is the first market, the source
+of the default seeds, and where the first users are — the audience is
+the world. Every default below is a starting point a shop can change,
+never a restriction baked into the domain model. Any agent or developer
+working on Kumkaj must treat a hard-coded Indian convention as a bug
+unless it is genuinely India-statutory (and §23's country-pack paragraph
+below limits even those claims).
+
 The initial market is India and the product can be seeded with:
 
 -   INR;
@@ -857,6 +875,50 @@ The initial market is India and the product can be seeded with:
 However, currency and fiscal configuration should remain
 per-business/configurable so the domain model is not unnecessarily
 India-only.
+
+The same rule applies to **measurement**. Shops measure parcels and
+goods in the units their trade and country already use. Products must
+therefore:
+
+-   let the user **choose entry/display units** (length, weight,
+    quantity) instead of forcing one market's units;
+-   ship **standard conversions** for the common units (cm, mm, m, in,
+    ft · kg, g, t, lb, oz) with exact factors;
+-   let the user define **custom units and custom conversions**
+    (e.g. `1 bag = 25 kg`, `1 crate = 40 cm`) and use them anywhere a
+    standard unit can be used;
+-   keep **one canonical base inside the books** (kg / cm / milli-qty)
+    so ledgers, rates and reports stay comparable — conversion happens
+    at entry and display, never by rewriting recorded history;
+-   treat trade constants (volumetric divisor, weight slab rounding,
+    tax rates, pay-rail labels) as **shop settings with sensible local
+    defaults**, not constants in code.
+
+Units form **families** (weight, length, volume, count), each with one
+canonical anchor (kg · cm · ml · pc). A custom unit is defined relative
+to any unit of the same family — a standard one, or another custom
+one — and its chain of conversions must ultimately land on the anchor
+(`crate → box → cm` means 1 crate = 40 cm). Loops and cross-family
+links are refused; a unit whose chain never reaches the anchor is
+shown as "not linked" and cannot be used until it is. Because every
+quantity can be normalised to the anchor, books store anchor units
+only and reports/P&L aggregate one unit, displaying in whatever unit
+the reader picks. Physical conversion factors are fixed constants of
+nature, so applying them to old entries is always safe.
+
+**Currency is not a unit.** An exchange rate is a price at a moment in
+time, not a fixed conversion, so currencies never enter the unit
+tables. Books are kept in the shop's currency; when foreign-currency
+money is recorded, the entry must carry the amount, the currency, the
+rate on that date, and the resulting shop-currency amount — history is
+never re-converted at a later rate (only an explicit "value today"
+view may do that).
+
+Example (Courier, shipped): the booking desk defaults to cm + kg,
+volumetric ÷ 5000, round up to 0.5 kg — the Indian domestic
+convention. Settings → Booking measures lets a shop switch entry to
+inches/pounds (or a custom unit), change the divisor (e.g. ÷ 6000) and
+the slab; the books still record kg.
 
 This is now implemented as **country packs** (`apps/courier/src/fiscal.rs`).
 A pack carries the tax system and its name (VAT, GST, sales tax, IVA,

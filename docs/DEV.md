@@ -143,6 +143,20 @@ FormFieldRow{ price FieldInput; unit FieldInput }
 ActionStack{ New item StackSecondaryBtn; Add rate StackPrimaryBtn }
 ```
 
+### Nav drag-to-swap (do not regress)
+
+Implemented in `pointer_nav_drag` / `nav_drop_slot` / `nav_drag_autoscroll` (`main.rs`). Behaviour contract: tap = navigate; press on a tab + move = drag (ghost chip follows, drop target wears the active face, release swaps and persists); press on whitespace = scroll; hold a dragged tab at a bar edge = auto-scroll. This works flawlessly today — do not “simplify” the pieces below; each one is load-bearing.
+
+1. **Slots are positions.** `paint_nav_tabs` paints slot N with `nav_order[N]`; the order lives in books meta `ui_nav_order` (`Store::nav_order_csv` / `set_nav_order_csv`). A swap exchanges two slots and re-saves. Never hard-code tab→slot.
+2. **Spatial gesture split only.** The bars keep whitespace lanes around the tabs (padding inside the scroll view: bottom bar 12px top/bottom/ends + 6px gaps; rail 12px sides). The pickup hit test (`nav_slot_at`, pad 0) must stay exact — any padding eats the lane and lane swipes start drags instead (observed: a 5px pad turned an above-chip swipe into a swap). Drop targeting may pad (2×5px). Do not reintroduce direction- or timing-based gesture decisions (“sideways = scroll”, hold-to-pick-up timers): the natural sideways drag then never picks up, which reads as “drag is disabled”, and timing misfires on laggy remote input.
+3. **Once picked up, the drag owns the gesture.** `handle_event` calls `pointer_nav_drag` before `ui.handle_event`; past the 10px pickup threshold it consumes moves/ups so the bar's own scroll view cannot scroll the drop target away mid-drag. The release is consumed too, so no click follows; `nav_suppress_click` is cleared on every MouseDown.
+4. **Frozen content rects for hit tests during a drag.** At pickup, capture every slot's rect + the bar's scroll offset into `NavDrag.rects` (content coordinates). The drop target comes from `nav_drop_slot`: the frozen rect containing `pointer + live scroll`. Never hit-test live `area().rect()` mid-drag — during edge auto-scroll the areas lag the scrolling content (observed: drop target frozen on the pre-scroll tab across 107 frames / 971px of scrolling, and the drop swapped the wrong pair). The ghost origin likewise comes from the pickup-time rect.
+5. **The ghost lives in a Modal** (`nav_drag_modal`, transparent backdrop, overlay content). As a plain sibling it paints under the page scroll views — visible over the rail, clipped/invisible over the page and in bottom-bar mode.
+6. **Edge auto-scroll** runs on a NextFrame loop armed at pickup (`nav_autoscroll_frame`, renewed in `nav_drag_autoscroll` while the drag is active; it dies with the drag). 56px edge zones; step ≈2–12px/frame proportional to depth into the zone; clamped to `[0, total − visible]`; drop target recomputed every frame. **End clamp:** held past the first/last tab (within a 28px cross-axis band) the target is that end tab — without it, holding at the far edge targets the trailing end padding and the drop silently does nothing.
+7. **Faces:** the drop target wears the active face via `paint_nav_tabs` (its `drop` comes from `nav_drag()`), reusing the idle/active overlay — one more place where “paint from state, clear animators” above is load-bearing.
+
+Manual regression check (no automated GUI test exists): narrow window (bottom bar) and wide (rail) — tap navigates; a lane swipe scrolls without reordering; a sideways drag from a tab swaps; holding at each edge auto-scrolls and drops onto a tab that was off-screen (confirm in sqlite: `SELECT value FROM meta WHERE key='ui_nav_order'`); pickup stays accurate while the bar is mid-scroll.
+
 ### Code map (`apps/courier/src/main.rs`)
 
 | Piece | Role |
@@ -153,6 +167,7 @@ ActionStack{ New item StackSecondaryBtn; Add rate StackPrimaryBtn }
 | `ChipBtn` / `ChipBtnActive` | Short strip chips only |
 | `nav_tab_for` | `Screen` → which bottom peer is active |
 | `paint_nav_tabs` | Exactly one footer peer visible-as-selected |
+| `pointer_nav_drag` / `nav_drop_slot` / `nav_drag_autoscroll` | Tab drag-to-swap, drop targeting, edge auto-scroll (see “Nav drag-to-swap”) |
 | `paint_choice_pair` / `clear_button_animators` | Dual-choice visibility + animator clear |
 | `paint_choice_state` | All dual choices after chrome sync |
 | `locale::en` + `english_chrome_never_returns_raw_keys` | Human labels, never snake_case keys |

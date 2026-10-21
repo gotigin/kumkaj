@@ -618,6 +618,28 @@ pub struct PeriodBooks {
     pub outstanding_payable_paise: i64,
 }
 
+/// Today's books figures, pre-formatted for the Books home stat cards.
+#[derive(Clone, Debug, Default)]
+pub struct BooksOverview {
+    pub money_in: String,
+    pub purchases: String,
+    pub expenses: String,
+    pub gross: String,
+    pub net: String,
+    pub lane_declared_label: String,
+    pub lane_declared: String,
+    pub lane_owner_label: String,
+    pub lane_owner: String,
+    pub cash: String,
+    pub digital_label: String,
+    pub digital: String,
+    pub card: String,
+    pub they_owe: String,
+    pub we_owe: String,
+    pub bank_balance: String,
+    pub bank_net_today: String,
+}
+
 impl PeriodBooks {
     pub fn gross_paise(&self) -> i64 {
         self.revenue_paise.saturating_sub(self.cogs_paise)
@@ -645,6 +667,101 @@ pub struct UnitConversion {
     pub from_code: String,
     pub to_code: String,
     pub factor_milli: i64,
+}
+
+/// How the booking desk measures parcels. The books always record kg and
+/// cm (canonical); these settings only choose what the user *types and
+/// sees*. Defaults are the Indian domestic convention — a starting point
+/// any shop can change, never a restriction.
+#[derive(Clone, Debug)]
+pub struct BookingMeasureSettings {
+    /// Length unit code for L×B×H entry (any unit resolvable to cm).
+    pub dim_unit: String,
+    /// Weight unit code for actual-weight entry (any unit resolvable to kg).
+    pub weight_unit: String,
+    /// Volumetric divisor: L×B×H in cm³ ÷ this = volumetric kg.
+    pub volumetric_divisor: rust_decimal::Decimal,
+    /// Chargeable weight rounds up to this slab, in kg.
+    pub slab_kg: rust_decimal::Decimal,
+}
+
+impl Default for BookingMeasureSettings {
+    fn default() -> Self {
+        Self {
+            dim_unit: "cm".into(),
+            weight_unit: "kg".into(),
+            volumetric_divisor: rust_decimal::Decimal::from(5000),
+            slab_kg: rust_decimal::Decimal::new(5, 1),
+        }
+    }
+}
+
+/// Exact standard conversion factors into the canonical bases (cm, kg).
+/// These win for the standard codes; a shop defines entirely custom
+/// units (e.g. `crate`) with its own conversion to cm or kg. Returns
+/// `None` for unknown codes.
+pub fn standard_factor_to_cm(code: &str) -> Option<rust_decimal::Decimal> {
+    use rust_decimal::Decimal;
+    Some(match code.trim().to_ascii_lowercase().as_str() {
+        "cm" => Decimal::ONE,
+        "mm" => Decimal::new(1, 1),
+        "m" => Decimal::from(100),
+        "in" => Decimal::new(254, 2),
+        "ft" => Decimal::new(3_048, 2),
+        _ => return None,
+    })
+}
+
+/// Unit families (dimensions) and their one canonical anchor unit.
+/// Every unit — built-in or custom — only means something because it
+/// resolves to its family anchor through a chain of conversions; that
+/// is what keeps quantities comparable in books, reports and P&L.
+/// Returns `(family, factor converting 1 code into the anchor)`.
+/// Physical factors are fixed constants of nature — unlike currency
+/// rates, which are prices at a moment in time and are never units.
+pub fn standard_unit_family(
+    code: &str,
+) -> Option<(&'static str, rust_decimal::Decimal)> {
+    use rust_decimal::Decimal;
+    let code = code.trim().to_ascii_lowercase();
+    if let Some(f) = standard_factor_to_kg(&code) {
+        return Some(("weight", f));
+    }
+    if let Some(f) = standard_factor_to_cm(&code) {
+        return Some(("length", f));
+    }
+    Some(match code.as_str() {
+        "ml" => ("volume", Decimal::ONE),
+        "l" => ("volume", Decimal::from(1000)),
+        "pc" => ("count", Decimal::ONE),
+        "dozen" => ("count", Decimal::from(12)),
+        _ => return None,
+    })
+}
+
+/// The canonical anchor unit a family's quantities are stored and
+/// compared in (weight → kg, length → cm, volume → ml, count → pc).
+pub fn unit_family_anchor(family: &str) -> Option<&'static str> {
+    Some(match family {
+        "weight" => "kg",
+        "length" => "cm",
+        "volume" => "ml",
+        "count" => "pc",
+        _ => return None,
+    })
+}
+
+/// See [`standard_factor_to_cm`].
+pub fn standard_factor_to_kg(code: &str) -> Option<rust_decimal::Decimal> {
+    use rust_decimal::Decimal;
+    Some(match code.trim().to_ascii_lowercase().as_str() {
+        "kg" => Decimal::ONE,
+        "g" => Decimal::new(1, 3),
+        "t" => Decimal::from(1000),
+        "lb" => Decimal::new(45_359_237, 8),
+        "oz" => Decimal::new(28_349_523_125, 12),
+        _ => return None,
+    })
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]

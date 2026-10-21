@@ -8,7 +8,8 @@
 #
 # The MSI installs to %LOCALAPPDATA%\Programs\<Label>\ (no admin), adds a
 # Start Menu shortcut, and appears in Settings -> Apps for uninstall.
-# Books data (%APPDATA%\<app id>\) is kept on uninstall; a Start Menu
+# A full uninstall asks whether to also delete the books data
+# (%APPDATA%\<app id>\); upgrades never ask and always keep it. A Start Menu
 # "Delete books data" shortcut deletes it on demand (with confirmation).
 # Uses wixl (msitools). If missing, a pinned copy is downloaded to the user
 # cache (Arch package mirrors). Override with WIXL=/path/to/wixl.
@@ -52,6 +53,8 @@ APP_ID="$(manifest_get KUMKAJ_APP_ID)"
 [[ -n "$APP_ID" ]] || { echo "install-manifest.env missing KUMKAJ_APP_ID" >&2; exit 1; }
 # Per-flavor delete-data helper (app id substituted in).
 sed "s/__APP_ID__/$APP_ID/g" "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
+# Uninstall prompt script (same substitution; JScript is all wixl supports).
+sed "s/__APP_ID__/$APP_ID/g" "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
 VER="$(sed -n '/^\[package\]/,/^\[/p' "$ROOT/apps/courier/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
 [[ -n "$VER" ]] || VER="0.1.0"
 
@@ -121,9 +124,15 @@ emit_tree() {
   # Installer wizard (Welcome/License -> progress -> Finish). Without this the
   # MSI installs silently and the window just vanishes on completion.
   printf '    <UIRef Id="WixUI_Minimal"/>\n'
-  # NOTE: no script custom actions in the MSI. A JScript prompt action ran
-  # during "Preparing installation" and killed the install on real Windows.
-  # Data choice lives in the Start Menu "Delete books data" shortcut instead.
+  # Uninstall-only data prompt. Conditioned on a full uninstall that is not
+  # an upgrade, Execute=immediate + Return=ignore and a fully guarded script:
+  # it cannot run during install and cannot fail the uninstall. (An earlier
+  # attempt placed a prompt in the install path; that is what broke installs.)
+  printf '    <Binary Id="UninstallDataJs" SourceFile="%s"/>\n' "$PKG/msi-uninstall-data.js"
+  printf '    <CustomAction Id="PromptDeleteBooksData" BinaryKey="UninstallDataJs" JScriptCall="PromptDeleteBooksData" Execute="immediate" Return="ignore"/>\n'
+  printf '    <InstallExecuteSequence>\n'
+  printf '      <Custom Action="PromptDeleteBooksData" Before="RemoveFiles">REMOVE="ALL" AND NOT UPGRADINGPRODUCTCODE</Custom>\n'
+  printf '    </InstallExecuteSequence>\n'
   if [[ -f "$PKG/kumkaj_courier/resources/icon.ico" ]]; then
     printf '    <Icon Id="AppIcon.ico" SourceFile="%s"/>\n' "$PKG/kumkaj_courier/resources/icon.ico"
     printf '    <Property Id="ARPPRODUCTICON" Value="AppIcon.ico"/>\n'

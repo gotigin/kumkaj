@@ -73,6 +73,50 @@ fn rail_resize_drag() -> &'static Mutex<Option<f64>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
+/// In-progress sidebar / bottom-bar drag-to-swap (peeked at App level,
+/// same style as the rail resize drag). `rail` picks the surface, `slot`
+/// is the position the drag started from, `hover` the position under the
+/// pointer right now (drop target).
+#[derive(Clone)]
+struct NavDrag {
+    rail: bool,
+    slot: usize,
+    start: DVec2,
+    /// Latest pointer pos while dragging; edge auto-scroll reads it
+    /// on frames where the pointer itself is standing still.
+    last: DVec2,
+    /// Window pos of the grabbed item's face when the drag began; the
+    /// floating ghost chip tracks `origin + (pointer - start)`.
+    origin: DVec2,
+    /// Every slot's face rect in the bar's *content* coordinates,
+    /// captured at pickup. Widget areas are only trustworthy while
+    /// the layout is settled — during edge auto-scroll they lag the
+    /// scrolling content — so drag-time hit tests use these frozen
+    /// rects plus the live scroll offset instead.
+    rects: Vec<Rect>,
+    active: bool,
+    hover: Option<usize>,
+}
+
+fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
+    static DRAG: OnceLock<Mutex<Option<NavDrag>>> = OnceLock::new();
+    DRAG.get_or_init(|| Mutex::new(None))
+}
+
+/// Pending frame callback that keeps edge auto-scroll alive while a
+/// nav drag is held against the bar's edge (see `nav_drag_autoscroll`).
+fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
+    static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    FRAME.get_or_init(|| Mutex::new(None))
+}
+
+/// Set when a drag (not a click) ends on a nav item, so the Button's
+/// resulting `clicked` action is ignored once instead of navigating.
+fn nav_suppress_click() -> &'static Mutex<bool> {
+    static SUPPRESS: OnceLock<Mutex<bool>> = OnceLock::new();
+    SUPPRESS.get_or_init(|| Mutex::new(false))
+}
+
 /// Side rail width floor while the user drags the divider.
 const RAIL_WIDTH_MIN: f64 = 148.0;
 /// Default rail width (fits short chrome labels without ellipsis).
@@ -220,6 +264,8 @@ struct AppState {
     venue_title: String,
     /// `custom:…` under brand_images/, or None when no in-app mark is set.
     venue_icon_key: Option<String>,
+    /// Sidebar / bottom-bar arrangement (drag to swap; saved in the books).
+    nav_order: Vec<NavTab>,
     /// Pending custom icon path from picker (before Save brand).
     draft_venue_icon_path: Option<PathBuf>,
     /// None = auto-detect from name; Some(key) = built-in or custom:…
@@ -237,6 +283,17 @@ struct AppState {
     booking_fuel: String,
     booking_docket: String,
     booking_zone: String,
+    /// Booking-desk measurement choices: the units the user types in, the
+    /// volumetric divisor and the weight slab. Books always record kg/cm;
+    /// these only adapt entry and display (see BookingMeasureSettings).
+    measure_dim_unit: String,
+    measure_weight_unit: String,
+    measure_divisor: rust_decimal::Decimal,
+    measure_slab_kg: rust_decimal::Decimal,
+    /// Resolved factor: 1 `measure_dim_unit` = this many cm.
+    measure_dim_factor: rust_decimal::Decimal,
+    /// Resolved factor: 1 `measure_weight_unit` = this many kg.
+    measure_weight_factor: rust_decimal::Decimal,
     /// Last AWB after a successful book — shown until Next booking.
     last_awb: String,
     /// Catalogue id loaded into the Items form. None means the form will add.
@@ -334,7 +391,7 @@ fn unlocked_home() -> Screen {
 }
 
 /// Which chrome peer is selected. Former More hub items are first-class peers.
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum NavTab {
     Books,
     Sell,
@@ -372,6 +429,74 @@ enum BooksReportKind {
     Month,
     Aging,
     BalanceSheet,
+}
+
+/// Default sidebar / bottom-bar arrangement (matches the DSL slot order).
+const NAV_TABS: [NavTab; 16] = [
+    NavTab::Books,
+    NavTab::Sell,
+    NavTab::Buy,
+    NavTab::Rates,
+    NavTab::Ops,
+    NavTab::Cod,
+    NavTab::Riders,
+    NavTab::Sales,
+    NavTab::DayClose,
+    NavTab::Reports,
+    NavTab::Inventory,
+    NavTab::Branches,
+    NavTab::Credit,
+    NavTab::Team,
+    NavTab::Settings,
+    NavTab::Lock,
+];
+
+fn nav_tab_key(tab: NavTab) -> &'static str {
+    match tab {
+        NavTab::Books => "books",
+        NavTab::Sell => "sell",
+        NavTab::Buy => "buy",
+        NavTab::Rates => "rates",
+        NavTab::Ops => "ops",
+        NavTab::Cod => "cod",
+        NavTab::Riders => "riders",
+        NavTab::Sales => "sales",
+        NavTab::DayClose => "day_close",
+        NavTab::Reports => "reports",
+        NavTab::Inventory => "inventory",
+        NavTab::Branches => "branches",
+        NavTab::Credit => "credit",
+        NavTab::Team => "team",
+        NavTab::Settings => "settings",
+        NavTab::Lock => "lock",
+    }
+}
+
+/// Saved order wins; unknown keys are dropped and any tab missing from the
+/// saved list is appended in default order, so an older saved order can
+/// never hide a newer tab.
+fn parse_nav_order(csv: Option<&str>) -> Vec<NavTab> {
+    let mut order: Vec<NavTab> = Vec::with_capacity(NAV_TABS.len());
+    if let Some(csv) = csv {
+        for key in csv.split(',') {
+            let key = key.trim();
+            if let Some(tab) = NAV_TABS.iter().find(|t| nav_tab_key(**t) == key)
+                && !order.contains(tab)
+            {
+                order.push(*tab);
+            }
+        }
+    }
+    for tab in NAV_TABS {
+        if !order.contains(&tab) {
+            order.push(tab);
+        }
+    }
+    order
+}
+
+fn nav_order_csv(order: &[NavTab]) -> String {
+    order.iter().map(|t| nav_tab_key(*t)).collect::<Vec<_>>().join(",")
 }
 
 fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
@@ -436,7 +561,7 @@ impl AppState {
             venue_mode: VenueMode::Counter,
             client_paired: false,
             extra_tills_allowed: false,
-            onboard_step: 0,
+            onboard_step: 1,
             entity_template_id: "courier_agency".into(),
             money_lane: MoneyLane::Declared,
             buy_on_account: false,
@@ -460,6 +585,7 @@ impl AppState {
             country_browse: String::new(),
             venue_title: String::new(),
             venue_icon_key: None,
+            nav_order: NAV_TABS.to_vec(),
             draft_venue_icon_path: None,
             draft_image_key: None,
             booking_destination: String::new(),
@@ -474,6 +600,12 @@ impl AppState {
             booking_fuel: String::new(),
             booking_docket: String::new(),
             booking_zone: String::new(),
+            measure_dim_unit: "cm".into(),
+            measure_weight_unit: "kg".into(),
+            measure_divisor: rust_decimal::Decimal::from(5000),
+            measure_slab_kg: rust_decimal::Decimal::new(5, 1),
+            measure_dim_factor: rust_decimal::Decimal::ONE,
+            measure_weight_factor: rust_decimal::Decimal::ONE,
             last_awb: String::new(),
             editing_product_id: None,
             pay_in_flight: false,
@@ -547,6 +679,16 @@ impl AppState {
         self.extra_tills_allowed = store.extra_tills_allowed().unwrap_or(false);
         self.venue_title = store.venue_title()?;
         self.venue_icon_key = store.venue_icon_key()?;
+        self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
+        let measure = store.booking_measure_settings();
+        self.measure_dim_factor =
+            store.factor_to_cm(&measure.dim_unit).unwrap_or(rust_decimal::Decimal::ONE);
+        self.measure_weight_factor =
+            store.factor_to_kg(&measure.weight_unit).unwrap_or(rust_decimal::Decimal::ONE);
+        self.measure_dim_unit = measure.dim_unit;
+        self.measure_weight_unit = measure.weight_unit;
+        self.measure_divisor = measure.volumetric_divisor;
+        self.measure_slab_kg = measure.slab_kg;
         self.owner_setup_complete = store.owner_setup_complete().unwrap_or(true);
         self.onboarding_complete = store.onboarding_complete().unwrap_or(true);
         // Courier product: always counter desk (no restaurant tables/KOT face).
@@ -939,14 +1081,18 @@ impl AppState {
     }
 
     /// Actual / volumetric / chargeable kg from the booking desk fields.
+    /// The user types in their chosen units; everything returned here is
+    /// canonical kg (dims converted to cm first) — what the books record.
     fn booking_weights(&self) -> (rust_decimal::Decimal, rust_decimal::Decimal, rust_decimal::Decimal) {
         let zero = precise::ZERO;
-        let actual = booking::parse_positive(&self.booking_actual_kg).unwrap_or(zero);
-        let l = booking::parse_positive(&self.booking_length_cm).unwrap_or(zero);
-        let b = booking::parse_positive(&self.booking_breadth_cm).unwrap_or(zero);
-        let h = booking::parse_positive(&self.booking_height_cm).unwrap_or(zero);
-        let vol = booking::volumetric_kg(l, b, h);
-        let chargeable = booking::chargeable_kg(actual, l, b, h);
+        let typed = |raw: &str| booking::parse_positive(raw).unwrap_or(zero);
+        let actual = booking::to_base(typed(&self.booking_actual_kg), self.measure_weight_factor);
+        let l = booking::to_base(typed(&self.booking_length_cm), self.measure_dim_factor);
+        let b = booking::to_base(typed(&self.booking_breadth_cm), self.measure_dim_factor);
+        let h = booking::to_base(typed(&self.booking_height_cm), self.measure_dim_factor);
+        let vol = booking::volumetric_kg(l, b, h, self.measure_divisor);
+        let chargeable =
+            booking::chargeable_kg(actual, l, b, h, self.measure_divisor, self.measure_slab_kg);
         (actual, vol, chargeable)
     }
 
@@ -1281,26 +1427,26 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xffffff
-            color_hover: #xEEF3F8
-            color_down: #xE0E8F0
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xffffff
             color_disabled: #xE0E8F0
             color_2: #xffffff
-            color_2_hover: #xEEF3F8
-            color_2_down: #xE0E8F0
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xffffff
             color_2_disabled: #xE0E8F0
             border_color: #xA8B4C4
-            border_color_hover: #xA8B4C4
-            border_color_down: #xA8B4C4
+            border_color_hover: #x072058
+            border_color_down: #x02030B
             border_color_focus: #xA8B4C4
             border_radius: 12.
             border_size: 1.
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             color_disabled: #x56575D
         }
@@ -1483,13 +1629,13 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x00000000
-            color_hover: #x00000000
-            color_down: #x00000000
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #x00000000
             color_disabled: #x00000000
             color_2: #x00000000
-            color_2_hover: #x00000000
-            color_2_down: #x00000000
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #x00000000
             border_color: #x00000000
             border_radius: 12.
@@ -1497,8 +1643,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x8BB8E8
-            color_hover: #xC5DDF5
-            color_down: #xC5DDF5
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x8BB8E8
             color_disabled: #x56575D
             text_style +: {font_size: 13.}
@@ -1521,13 +1667,13 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x00000000
-            color_hover: #x00000000
-            color_down: #x00000000
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #x00000000
             color_disabled: #x00000000
             color_2: #x00000000
-            color_2_hover: #x00000000
-            color_2_down: #x00000000
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #x00000000
             border_color: #x00000000
             border_radius: 12.
@@ -1535,8 +1681,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x8BB8E8
-            color_hover: #xC5DDF5
-            color_down: #xC5DDF5
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x8BB8E8
             color_disabled: #x56575D
             text_style +: {font_size: 12.}
@@ -1671,24 +1817,24 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xffffff
-            color_hover: #xEEF3F8
-            color_down: #xE0E8F0
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xffffff
             color_2: #xffffff
-            color_2_hover: #xEEF3F8
-            color_2_down: #xE0E8F0
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xffffff
             border_color: #xA8B4C4
-            border_color_hover: #x56575D
-            border_color_down: #x56575D
+            border_color_hover: #x072058
+            border_color_down: #x02030B
             border_color_focus: #xA8B4C4
             border_radius: 8.
             border_size: 1.
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             text_style +: {font_size: 22.}
         }
@@ -1783,12 +1929,12 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xE0E8F0
-            color_hover: #xD0DAE6
-            color_down: #xA8B4C4
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xE0E8F0
             color_2: #xE0E8F0
-            color_2_hover: #xD0DAE6
-            color_2_down: #xA8B4C4
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xE0E8F0
             border_color: #xA8B4C4
             border_radius: 14.
@@ -1796,8 +1942,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
             text_style +: {font_size: 15.}
@@ -1874,12 +2020,12 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xE0E8F0
-            color_hover: #xD0DAE6
-            color_down: #xA8B4C4
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xE0E8F0
             color_2: #xE0E8F0
-            color_2_hover: #xD0DAE6
-            color_2_down: #xA8B4C4
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xE0E8F0
             border_color: #xA8B4C4
             border_radius: 14.
@@ -1887,8 +2033,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
             text_style +: {font_size: 15.}
@@ -1912,12 +2058,12 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xE0E8F0
-            color_hover: #xD0DAE6
-            color_down: #xA8B4C4
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xE0E8F0
             color_2: #xE0E8F0
-            color_2_hover: #xD0DAE6
-            color_2_down: #xA8B4C4
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xE0E8F0
             border_color: #xA8B4C4
             border_radius: 10.
@@ -1925,8 +2071,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
             max_lines: 1
@@ -1946,15 +2092,15 @@ script_mod! {
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
-            color: #x02030B
-            color_hover: #x072058
+            color: #x072058
+            color_hover: #x0A3A8C
             color_down: #x02030B
-            color_focus: #x02030B
-            color_2: #x02030B
-            color_2_hover: #x072058
+            color_focus: #x072058
+            color_2: #x072058
+            color_2_hover: #x0A3A8C
             color_2_down: #x02030B
-            color_2_focus: #x02030B
-            border_color: #x02030B
+            color_2_focus: #x072058
+            border_color: #x072058
             border_radius: 10.
             border_size: 0.
         }
@@ -1994,12 +2140,12 @@ script_mod! {
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xE0E8F0
-            color_hover: #xD0DAE6
-            color_down: #xA8B4C4
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xE0E8F0
             color_2: #xE0E8F0
-            color_2_hover: #xD0DAE6
-            color_2_down: #xA8B4C4
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xE0E8F0
             border_color: #xA8B4C4
             border_radius: 10.
@@ -2007,8 +2153,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
             max_lines: 1
@@ -2029,15 +2175,15 @@ script_mod! {
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
-            color: #x02030B
-            color_hover: #x072058
+            color: #x072058
+            color_hover: #x0A3A8C
             color_down: #x02030B
-            color_focus: #x02030B
-            color_2: #x02030B
-            color_2_hover: #x072058
+            color_focus: #x072058
+            color_2: #x072058
+            color_2_hover: #x0A3A8C
             color_2_down: #x02030B
-            color_2_focus: #x02030B
-            border_color: #x02030B
+            color_2_focus: #x072058
+            border_color: #x072058
             border_radius: 10.
             border_size: 0.
         }
@@ -2402,15 +2548,15 @@ script_mod! {
                 width: 44 height: 44
                 draw_bg +: {
                     color: #xffffff
-                    color_hover: #xEEF3F8
-                    color_down: #xE0E8F0
+                    color_hover: #x072058
+                    color_down: #x02030B
                     color_focus: #xffffff
                     color_2: #xffffff
-                    color_2_hover: #xEEF3F8
-                    color_2_down: #xE0E8F0
+                    color_2_hover: #x072058
+                    color_2_down: #x02030B
                     color_2_focus: #xffffff
                     border_color: #x4A5568
-                    border_color_hover: #x3A4554
+                    border_color_hover: #x072058
                     border_color_down: #x3A4554
                     border_color_focus: #x4A5568
                     border_radius: 12.
@@ -2418,8 +2564,8 @@ script_mod! {
                 }
                 draw_text +: {
                     color: #x02030B
-                    color_hover: #x02030B
-                    color_down: #x02030B
+                    color_hover: #xffffff
+                    color_down: #xffffff
                     color_focus: #x02030B
                     text_style +: {font_size: 22.}
                 }
@@ -2434,18 +2580,18 @@ script_mod! {
                 text: "+"
                 width: 44 height: 44
                 draw_bg +: {
-                    color: #x02030B
-                    color_hover: #x072058
-                    color_down: #x0a1a3a
-                    color_focus: #x02030B
-                    color_2: #x02030B
-                    color_2_hover: #x072058
-                    color_2_down: #x0a1a3a
-                    color_2_focus: #x02030B
-                    border_color: #x02030B
-                    border_color_hover: #x072058
-                    border_color_down: #x0a1a3a
-                    border_color_focus: #x02030B
+                    color: #x072058
+                    color_hover: #x0A3A8C
+                    color_down: #x02030B
+                    color_focus: #x072058
+                    color_2: #x072058
+                    color_2_hover: #x0A3A8C
+                    color_2_down: #x02030B
+                    color_2_focus: #x072058
+                    border_color: #x072058
+                    border_color_hover: #x0A3A8C
+                    border_color_down: #x02030B
+                    border_color_focus: #x072058
                     border_radius: 12.
                     border_size: 0.
                 }
@@ -2519,20 +2665,20 @@ script_mod! {
     let CardActionBtn = Button{
         width: Fill height: 48
         draw_bg +: {
-            color: #x02030B
-            color_hover: #x072058
-            color_down: #x0a1a3a
-            color_focus: #x02030B
+            color: #x072058
+            color_hover: #x0A3A8C
+            color_down: #x02030B
+            color_focus: #x072058
             color_disabled: #x6B7F9A
-            color_2: #x02030B
-            color_2_hover: #x072058
-            color_2_down: #x0a1a3a
-            color_2_focus: #x02030B
+            color_2: #x072058
+            color_2_hover: #x0A3A8C
+            color_2_down: #x02030B
+            color_2_focus: #x072058
             color_2_disabled: #x6B7F9A
-            border_color: #x02030B
-            border_color_hover: #x072058
-            border_color_down: #x0a1a3a
-            border_color_focus: #x02030B
+            border_color: #x072058
+            border_color_hover: #x0A3A8C
+            border_color_down: #x02030B
+            border_color_focus: #x072058
             border_radius: 12.
             border_size: 0.
         }
@@ -2564,31 +2710,40 @@ script_mod! {
 
     let CustomerRow = RoundedView{
         width: Fill height: Fit
-        padding: Inset{left: 12. right: 8. top: 8. bottom: 8.}
-        flow: Right spacing: 8
+        padding: Inset{left: 16. right: 12. top: 12. bottom: 12.}
+        flow: Right spacing: 12
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x4A5568
-        label := WrapLabel{
-            body: "customer"
-            font_color: #x0B1220
-            font_size: 14.
+        View{
+            width: Fill height: Fit
+            flow: Down spacing: 2
+            label := WrapLabel{
+                body: "customer"
+                font_color: #x0B1220
+                font_size: 14.
+            }
+            sublabel := WrapLabel{
+                body: "id"
+                font_color: #x3A4554
+                font_size: 11.
+            }
         }
         pick := Button{
             text: "Pick"
             width: 72 height: 44
             draw_bg +: {
-                color: #x02030B
-                color_hover: #x072058
-                color_down: #x0a1a3a
-                color_focus: #x02030B
-                color_2: #x02030B
-                color_2_hover: #x072058
-                color_2_down: #x0a1a3a
-                color_2_focus: #x02030B
-                border_color: #x02030B
+                color: #x072058
+                color_hover: #x0A3A8C
+                color_down: #x02030B
+                color_focus: #x072058
+                color_2: #x072058
+                color_2_hover: #x0A3A8C
+                color_2_down: #x02030B
+                color_2_focus: #x072058
+                border_color: #x072058
                 border_radius: 12.
                 border_size: 0.
             }
@@ -2618,15 +2773,15 @@ script_mod! {
         enable_long_press: true
         draw_bg +: {
             color: #xffffff
-            color_hover: #xEEF3F8
-            color_down: #xE0E8F0
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xffffff
             color_2: #xffffff
-            color_2_hover: #xEEF3F8
-            color_2_down: #xE0E8F0
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xffffff
             border_color: #x4A5568
-            border_color_hover: #x3A4554
+            border_color_hover: #x072058
             border_color_down: #x3A4554
             border_color_focus: #x4A5568
             border_radius: 14.
@@ -2634,8 +2789,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: false
             text_style +: {font_size: 14.}
@@ -2661,15 +2816,15 @@ script_mod! {
             text: "Use"
             width: 80 height: 48
             draw_bg +: {
-                color: #x02030B
-                color_hover: #x072058
-                color_down: #x0a1a3a
-                color_focus: #x02030B
-                color_2: #x02030B
-                color_2_hover: #x072058
-                color_2_down: #x0a1a3a
-                color_2_focus: #x02030B
-                border_color: #x02030B
+                color: #x072058
+                color_hover: #x0A3A8C
+                color_down: #x02030B
+                color_focus: #x072058
+                color_2: #x072058
+                color_2_hover: #x0A3A8C
+                color_2_down: #x02030B
+                color_2_focus: #x072058
+                border_color: #x072058
                 border_radius: 12.
                 border_size: 0.
             }
@@ -2697,15 +2852,15 @@ script_mod! {
         enable_long_press: true
         draw_bg +: {
             color: #xffffff
-            color_hover: #xEEF3F8
-            color_down: #xE0E8F0
+            color_hover: #x072058
+            color_down: #x02030B
             color_focus: #xffffff
             color_2: #xffffff
-            color_2_hover: #xEEF3F8
-            color_2_down: #xE0E8F0
+            color_2_hover: #x072058
+            color_2_down: #x02030B
             color_2_focus: #xffffff
             border_color: #x4A5568
-            border_color_hover: #x3A4554
+            border_color_hover: #x072058
             border_color_down: #x3A4554
             border_color_focus: #x4A5568
             border_radius: 16.
@@ -2713,8 +2868,8 @@ script_mod! {
         }
         draw_text +: {
             color: #x0B1220
-            color_hover: #x0B1220
-            color_down: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: false
             text_style +: {font_size: 16.}
@@ -2810,14 +2965,14 @@ script_mod! {
     mod.widgets.CustomerListBase = #(CustomerList::register_widget(vm))
     mod.widgets.CustomerList = set_type_default() do mod.widgets.CustomerListBase{
         width: Fill height: Fit
+        margin: Inset{top: 4. bottom: 4.}
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            drag_scrolling: false
             bounce_at_start: false
             bounce_at_end: false
             capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
+            scroll_bar: ScrollBar{}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 8.}
@@ -2933,21 +3088,21 @@ script_mod! {
                             width: Fill height: Fill
                             View{
                                 width: Fill height: Fit
-                                padding: Inset{left: 8. right: 8. top: 12. bottom: 12.}
+                                padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
                                 flow: Down spacing: 6
-                                View{
+                                rail_books_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_books := TabBtn{text: "Books"}
                                     rail_books_on := TabBtnActive{text: "Books" visible: false}
                                 }
-                                View{
+                                rail_sell_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_sell := TabBtn{text: "Sell"}
                                     rail_sell_on := TabBtnActive{text: "Sell" visible: false}
                                 }
-                                View{
+                                rail_buy_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_buy := TabBtn{text: "Buy"}
@@ -3058,14 +3213,13 @@ script_mod! {
                             brand_mark := Image{
                                 width: 36 height: 36
                                 fit: ImageFit.Stretch
-                                src: crate_resource("self:resources/kumkaj-mark.webp")
                             }
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
                                 brand_title := WrapLabel{
                                     width: Fill
-                                    body: "Your shop"
+                                    body: "Kumkaj Courier"
                                     font_color: #xffffff
                                     font_size: 18.
                                 }
@@ -3159,8 +3313,7 @@ script_mod! {
                                             setup_brand_mark := Image{
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/kumkaj-mark.webp")
-                                            }
+                                                            }
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
@@ -3315,8 +3468,7 @@ script_mod! {
                                             lock_brand_mark := Image{
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/kumkaj-mark.webp")
-                                            }
+                                                            }
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
@@ -3479,6 +3631,30 @@ script_mod! {
                                 onboard_venue_input := FieldInput{empty_text: "Counter / agency name (optional)"}
                                 onboard_org_input := FieldInput{empty_text: "Organization (optional)"}
                                 onboard_save_venue := NavBtn{text: "Save names"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 12
+                                    align: Align{y: 0.5}
+                                    onboard_brand_mark := Image{
+                                        width: 48 height: 48
+                                        fit: ImageFit.Stretch
+                                            }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 4
+                                        WrapLabel{
+                                            body: "Shop logo (optional)"
+                                            font_color: #x0B1220
+                                            font_size: 15.
+                                        }
+                                        onboard_icon_hint := WrapLabel{
+                                            body: "Logo: Kumkaj mark (default) — choose your own if you have one"
+                                            font_color: #x3A4554
+                                            font_size: 12.
+                                        }
+                                    }
+                                }
+                                onboard_icon_pick := NavBtn{text: "Choose logo"}
                                 WrapLabel{
                                     body: "Product: Kumkaj Courier — books + booking desk (locked for this app)."
                                     font_color: #x0B1220
@@ -3594,18 +3770,112 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 13.
                                 }
-                                books_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
+                                // Today's figures as stat cards (label/value
+                                // rows) — set from Store::books_overview in
+                                // sync_chrome. Replaces the old one-paragraph
+                                // text wall.
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    Label{text: "TODAY" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Money in (sales)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_in_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Purchases (COGS)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_purchases_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Expenses" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_expenses_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Gross" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_gross_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Net" draw_text.color: #x072058 draw_text.text_style.font_size: 13.}
+                                        books_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x072058 draw_text.text_style.font_size: 15.}
+                                    }
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    Label{text: "BOOKINGS" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        books_declared_name := Label{width: Fill height: Fit text: "Account booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_declared_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        books_owner_name := Label{width: Fill height: Fit text: "Cash booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_owner_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    Label{text: "PAYMENTS TODAY" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Cash" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_cash_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        books_digital_name := Label{width: Fill height: Fit text: "UPI" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_digital_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Card" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_card_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    Label{text: "OUTSTANDING" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "They owe us" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_they_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x137333 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "We owe them" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_we_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #xB3261E draw_text.text_style.font_size: 13.}
+                                    }
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    Label{text: "BANK" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Bank balance" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_bank_balance_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                        Label{width: Fill height: Fit text: "Bank net today" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                        books_bank_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    }
                                 }
                                 ActionStack{
-                                    books_to_sell := RowPrimaryBtn{text: "Sell (money in)"}
-                                    books_to_buy := RowPrimaryBtn{text: "Buy (money out)"}
+                                    books_to_sell := RowSecondaryBtn{text: "Sell (money in)"}
+                                    books_to_buy := RowSecondaryBtn{text: "Buy (money out)"}
                                     books_day_close := RowSecondaryBtn{text: "Day close"}
                                     books_reports := RowSecondaryBtn{text: "Reports & bank"}
                                     books_credit := RowSecondaryBtn{text: "Parties / credit"}
-                                    books_refresh := RowSecondaryBtn{text: "Refresh"}
                                 }
                             }
                         }
@@ -3643,7 +3913,7 @@ script_mod! {
                                     }
                                     Label{
                                         text: "LOCAL"
-                                        draw_text.color: #xF7B043
+                                        draw_text.color: #x9A6206
                                         draw_text.text_style.font_size: 10.
                                     }
                                 }
@@ -3666,6 +3936,32 @@ script_mod! {
                                 booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
                                 booking_consignee_input := FieldInput{empty_text: "Consignee (receiver)"}
                                 booking_actual_kg_input := FieldInput{empty_text: "Actual kg"}
+                                // Unit choices live on the desk (tap to switch) —
+                                // nobody should have to hunt Settings to weigh
+                                // a parcel in pounds. Custom units, divisor
+                                // and slab stay in Settings → Booking measures.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    Label{text: "Weight in" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    View{width: Fit height: 40 flow: Overlay
+                                        wunit_kg := ChipBtn{text: "kg"}
+                                        wunit_kg_on := ChipBtnActive{text: "kg" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        wunit_lb := ChipBtn{text: "lb"}
+                                        wunit_lb_on := ChipBtnActive{text: "lb" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        wunit_g := ChipBtn{text: "g"}
+                                        wunit_g_on := ChipBtnActive{text: "g" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        wunit_oz := ChipBtn{text: "oz"}
+                                        wunit_oz_on := ChipBtnActive{text: "oz" visible: false}
+                                    }
+                                }
                                 // L×B×H on their own row — equal Fill, wide enough that
                                 // "L cm" never crushes into a vertical letter stack.
                                 View{
@@ -3683,6 +3979,28 @@ script_mod! {
                                     booking_height_cm_input := FieldInput{
                                         width: Fill{min: 88.}
                                         empty_text: "H cm"
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    Label{text: "Size in" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    View{width: Fit height: 40 flow: Overlay
+                                        dunit_cm := ChipBtn{text: "cm"}
+                                        dunit_cm_on := ChipBtnActive{text: "cm" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        dunit_in := ChipBtn{text: "in"}
+                                        dunit_in_on := ChipBtnActive{text: "in" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        dunit_ft := ChipBtn{text: "ft"}
+                                        dunit_ft_on := ChipBtnActive{text: "ft" visible: false}
+                                    }
+                                    View{width: Fit height: 40 flow: Overlay
+                                        dunit_m := ChipBtn{text: "m"}
+                                        dunit_m_on := ChipBtnActive{text: "m" visible: false}
                                     }
                                 }
                                 FormFieldRow{
@@ -3744,16 +4062,16 @@ script_mod! {
                                         padding: Inset{left: 14. right: 14. top: 4. bottom: 4.}
                                         draw_bg +: {
                                             color: #xE0E8F0
-                                            color_hover: #xD0DAE6
-                                            color_down: #xA8B4C4
+                                            color_hover: #x072058
+                                            color_down: #x02030B
                                             color_focus: #xE0E8F0
                                             border_color: #xA8B4C4
                                             border_radius: 8.
                                         }
                                         draw_text +: {
                                             color: #x93000a
-                                            color_hover: #x93000a
-                                            color_down: #x93000a
+                                            color_hover: #xffffff
+                                            color_down: #xffffff
                                             color_focus: #x93000a
                                             text_style +: {font_size: 13.}
                                         }
@@ -4198,7 +4516,15 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
-                                credit_add_name := FieldInput{empty_text: "Party name"}
+                                party_selected_label := WrapLabel{
+                                    body: "New party — fill the form and tap Add party, or Pick a party from the list to edit it."
+                                    font_color: #x072058
+                                    font_size: 13.
+                                }
+                                FormFieldRow{
+                                    credit_add_name := FieldInput{empty_text: "Party name"}
+                                    credit_add_phone := FieldInput{empty_text: "Phone"}
+                                }
                                 WrapLabel{
                                     body: "Account kind (tap one)"
                                     font_color: #x3A4554
@@ -4206,14 +4532,38 @@ script_mod! {
                                 }
                                 ChipStrip{
                                     ChipStripRow{
-                                        credit_kind_consignor := ChipBtn{text: "Consignor"}
-                                        credit_kind_carrier := ChipBtn{text: "Carrier"}
-                                        credit_kind_both := ChipBtn{text: "Both"}
-                                        credit_kind_supplier := ChipBtn{text: "Supplier"}
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            credit_kind_consignor := ChipBtn{text: "Consignor"}
+                                            credit_kind_consignor_on := ChipBtnActive{text: "Consignor" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            credit_kind_carrier := ChipBtn{text: "Carrier"}
+                                            credit_kind_carrier_on := ChipBtnActive{text: "Carrier" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            credit_kind_both := ChipBtn{text: "Both"}
+                                            credit_kind_both_on := ChipBtnActive{text: "Both" visible: false}
+                                        }
+                                        View{
+                                            width: Fit height: 40
+                                            flow: Overlay
+                                            credit_kind_supplier := ChipBtn{text: "Supplier"}
+                                            credit_kind_supplier_on := ChipBtnActive{text: "Supplier" visible: false}
+                                        }
                                     }
                                 }
                                 credit_add_kind := FieldInput{empty_text: "Roles (Consignor, Carrier, Both…)"}
                                 credit_add_btn := NavBtn{text: "Add party"}
+                                ActionStack{
+                                    party_form_clear := RowSecondaryBtn{text: "New party (clear form)"}
+                                    party_delete := RowSecondaryBtn{text: "Delete selected party"}
+                                }
                                 customer_list_credit := mod.widgets.CustomerList{}
                                 WrapLabel{body: "Credit limit (selected / named party)" font_color: #x0B1220 font_size: 15.}
                                 FormFieldRow{
@@ -4469,7 +4819,7 @@ script_mod! {
                                 WrapLabel{body: "Units" font_color: #x0B1220 font_size: 20.}
                                 WrapLabel{
                                     width: Fill
-                                    body: "Codes for item labels (kg, piece, bag). Conversions: 1 from = factor to (e.g. 1 bag = 25 kg)."
+                                    body: "Codes for item labels (kg, piece, bag). Every unit must link — directly or through other units — to a standard (kg · cm · ml · pc), e.g. 1 crate = 2 box and 1 box = 20 cm. Conversions: 1 from = factor to. Currencies are never units."
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
@@ -4485,6 +4835,23 @@ script_mod! {
                                 conv_to_input := FieldInput{empty_text: "To code (kg)"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
                                 conv_add := NavBtn{text: "Add conversion"}
+                                WrapLabel{body: "Booking measures" font_color: #x0B1220 font_size: 20.}
+                                WrapLabel{
+                                    width: Fill
+                                    body: "How parcels are measured at the booking desk. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg above (directly or through other units). Books always record kg. Leave a field empty to keep it."
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                measure_label := WrapLabel{
+                                    body: ""
+                                    font_color: #x0B1220
+                                    font_size: 13.
+                                }
+                                measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
+                                measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
+                                measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000)"}
+                                measure_slab_input := FieldInput{empty_text: "Chargeable slab in kg (0.5)"}
+                                measure_save := NavBtn{text: "Save booking measures"}
                                 WrapLabel{body: "Backup" font_color: #x0B1220 font_size: 20.}
                                 db_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                 audit_label := WrapLabel{body: "" font_color: #x0B1220}
@@ -4643,7 +5010,6 @@ script_mod! {
                                     bank_out := RowSecondaryBtn{text: "Bank out"}
                                 }
                                 reports_copy := NavBtn{text: "Copy report"}
-                                reports_refresh := NavBtn{text: "Refresh report"}
                             }
                         }
 
@@ -4681,10 +5047,7 @@ script_mod! {
                                 WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 inv_cost_input := FieldInput{empty_text: "Unit cost"}
                                 inv_supplier_input := FieldInput{empty_text: "Supplier"}
-                                ActionStack{
-                                    inv_purchase := NavBtn{text: "Record purchase"}
-                                    inv_refresh := NavBtn{text: "Refresh"}
-                                }
+                                inv_purchase := NavBtn{text: "Record purchase"}
                             }
                         }
 
@@ -4750,12 +5113,12 @@ script_mod! {
                             padding: Inset{left: 14. right: 14.}
                             draw_bg +: {
                                 color: #xF7B043
-                                color_hover: #xd4ae3f
-                                color_down: #xa88420
+                                color_hover: #xffffff
+                                color_down: #xE0E8F0
                                 color_focus: #xF7B043
                                 color_2: #xF7B043
-                                color_2_hover: #xd4ae3f
-                                color_2_down: #xa88420
+                                color_2_hover: #xffffff
+                                color_2_down: #xE0E8F0
                                 color_2_focus: #xF7B043
                                 border_radius: 10.
                                 border_size: 0.
@@ -4797,26 +5160,31 @@ script_mod! {
                     // Selected peer = *Active face visible (paint_nav_tabs), not focus.
                     bottom_nav := SolidView{
                         width: Fill height: Fit
-                        padding: Inset{left: 4. right: 4. top: 4. bottom: 8.}
+                        padding: Inset{left: 4. right: 4. top: 2. bottom: 6.}
                         draw_bg.color: #x02030B
                         bottom_nav_scroll := ScrollXView{
                             width: Fill height: Fit
+                            // Whitespace lanes around the chips (top,
+                            // bottom, ends, gaps): a press there belongs
+                            // to the scroll view, a press on a chip is a
+                            // tap or a drag — see pointer_nav_drag.
                             View{
                                 width: Fit height: Fit
-                                flow: Right spacing: 2
-                                View{
+                                padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+                                flow: Right spacing: 6
+                                nav_books_slot := View{
                                     width: Fit{min: FitBound.Abs(72.)} height: Fit
                                     flow: Overlay
                                     nav_books := NavChip{text: "Books"}
                                     nav_books_on := NavChipActive{text: "Books" visible: false}
                                 }
-                                View{
+                                nav_sell_slot := View{
                                     width: Fit{min: FitBound.Abs(72.)} height: Fit
                                     flow: Overlay
                                     nav_sell := NavChip{text: "Booking"}
                                     nav_sell_on := NavChipActive{text: "Booking" visible: false}
                                 }
-                                View{
+                                nav_buy_slot := View{
                                     width: Fit{min: FitBound.Abs(72.)} height: Fit
                                     flow: Overlay
                                     nav_buy := NavChip{text: "Pay out"}
@@ -4906,6 +5274,42 @@ script_mod! {
                     } // main_column
                     } // app_shell
                     } // app_hscroll
+
+                    // Floating chip that follows the pointer while a nav item
+                    // is dragged to another slot (see pointer_nav_drag). It
+                    // lives in a Modal because a Modal paints on the overlay
+                    // draw list — above every scroll view. A plain sibling
+                    // was covered by the page scroll view's own pass (the
+                    // ghost showed over the rail but not over the page, and
+                    // not in bottom-bar mode at all). The modal's dim
+                    // backdrop is overridden transparent and its content
+                    // fills the window, so the ghost's abs_pos is in window
+                    // coordinates and nothing else is visible.
+                    nav_drag_modal := Modal{
+                        can_dismiss: false
+                        bg_view +: {
+                            draw_bg +: {color: #x00000000}
+                        }
+                        content +: {
+                            width: Fill height: Fill
+                            flow: Overlay
+                            nav_drag_ghost := RoundedView{
+                                visible: false
+                                width: Fit height: Fit
+                                padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+                                draw_bg.color: #x072058E6
+                                draw_bg.border_radius: 12.
+                                draw_bg.border_color: #x8BB8E8
+                                draw_bg.border_size: 1.
+                                nav_drag_ghost_label := Label{
+                                    width: Fit height: Fit
+                                    text: ""
+                                    draw_text.color: #xffffff
+                                    draw_text.text_style.font_size: 13.
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -5063,6 +5467,20 @@ fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool 
         requested.lock().unwrap().remove(&uid);
     }
     queued
+}
+
+/// Brand marks load inline on every sync. Two traps used to pin the
+/// placeholder forever: the widgets' DSL `src` queued an async load of the
+/// bundled mark on first draw whose completion overwrote the shop logo,
+/// and the sync loader never marks the widget dirty, so a swapped texture
+/// was not repainted until an unrelated full redraw. The brand widgets
+/// therefore carry no DSL `src`, and every load here ends with a redraw.
+fn load_brand_mark_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool {
+    let loaded = path.is_file() && image.load_image_file_by_path(cx, path).is_ok();
+    if loaded {
+        image.redraw(cx);
+    }
+    loaded
 }
 
 fn list_content_height(count: usize, row: f64, gap: f64) -> f64 {
@@ -5593,12 +6011,24 @@ struct CustomerList {
 
 impl Widget for CustomerList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (customers, currency, fiscal) = {
+        let (customers, currency, fiscal, selected_id) = {
             let st = app_state().lock().unwrap();
-            (st.customers.clone(), st.locale.currency.clone(), st.fiscal.clone())
+            (
+                st.customers.clone(),
+                st.locale.currency.clone(),
+                st.fiscal.clone(),
+                st.selected_customer_id.clone(),
+            )
         };
+        // Same capped-list shape as ServerList / LanguageList / CurrencyList:
+        // room for up to 3 full rows, list scrolls inside (nested-scroll claim
+        // in handle_event). CustomerRow ≈ 68px (12+44+12) + 8px item pad.
+        const ROW: f64 = 76.0;
+        const GAP: f64 = 6.0;
+        let n = customers.len().max(1);
+        let want = list_content_height(n.min(3), ROW, GAP).max(ROW + 16.0);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(customers.len(), 92.0, 0.0).max(48.0)),
+            height: Size::Fixed(want.min(240.0)),
             ..walk
         };
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
@@ -5609,23 +6039,35 @@ impl Widget for CustomerList {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
+                    let is_selected = selected_id.as_deref() == Some(c.id.as_str());
+                    let mark = if is_selected { "✓ " } else { "" };
                     let text = if c.balance_paise > 0 {
                         format!(
-                            "{} · owes {}",
+                            "{}{} · owes {}",
+                            mark,
                             c.name,
                             Money(c.balance_paise).format_localized(&currency, &fiscal)
                         )
                     } else if c.balance_paise < 0 {
                         format!(
-                            "{} · advance {}",
+                            "{}{} · advance {}",
+                            mark,
                             c.name,
                             Money(-c.balance_paise).format_localized(&currency, &fiscal)
                         )
                     } else {
-                        format!("{} · clear", c.name)
+                        format!("{}{}", mark, c.name)
                     };
                     item.widget(cx, ids!(label)).set_text(cx, &plain_display_text(&text));
-                    item.button(cx, ids!(pick)).set_text(cx, "Pick");
+                    let sub = if c.kind_label.trim().is_empty() {
+                        format!("ID: {}", c.id)
+                    } else {
+                        format!("ID: {} · {}", c.id, c.kind_label.trim())
+                    };
+                    item.widget(cx, ids!(sublabel))
+                        .set_text(cx, &plain_display_text(&sub));
+                    item.button(cx, ids!(pick))
+                        .set_text(cx, if is_selected { "Selected" } else { "Pick" });
                     item.draw_all_unscoped(cx);
                 }
             }
@@ -5634,10 +6076,11 @@ impl Widget for CustomerList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if page_owns_scroll(event) {
-            return;
-        }
+        // Capped list (3 rows): pointer over it = the list owns the wheel/drag
+        // and scrolls internally; the page must not steal the gesture.
+        claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
+        claim_list_nested_scroll(cx, &self.view, event);
     }
 }
 
@@ -5938,16 +6381,28 @@ impl App {
                 st.locale.language = locale::detect_platform_language();
             }
         }
-        // Keep Books overview fresh when that tab is showing.
+        // Keep the showing tab's figures fresh — data is always live, so
+        // these screens need no Refresh button.
         {
             let mut st = app_state().lock().unwrap();
-            if st.screen == Screen::Books && st.session.is_some() {
-                let _ = st.refresh_books_overview();
+            if st.session.is_some() {
+                match st.screen {
+                    Screen::Books => {
+                        let _ = st.refresh_books_overview();
+                    }
+                    Screen::Inventory => {
+                        let _ = st.refresh_inventory_text();
+                    }
+                    Screen::Reports => {
+                        let _ = st.refresh_reports_facet();
+                    }
+                    _ => {}
+                }
             }
         }
         let (
             today,
-            session,
+            session_line,
             status,
             receipt,
             pin,
@@ -5981,6 +6436,18 @@ impl App {
             let session = match &st.session {
                 Some(s) => s.lock_label(),
                 None => "Locked".into(),
+            };
+            // Header second line: organisation (when the shop set one),
+            // then who is signed in — "Org · Owner (Owner)".
+            let org_line = st
+                .store
+                .as_ref()
+                .and_then(|s| s.org_name().ok())
+                .unwrap_or_default();
+            let session_line = if org_line.trim().is_empty() {
+                session.clone()
+            } else {
+                format!("{} · {}", org_line.trim(), session)
             };
             let table_chip = st.t("ready_to_sell");
             let staff_text = st
@@ -6172,7 +6639,7 @@ impl App {
             let bill_round_active = st.cart.charge_total.is_some();
             (
                 st.today_label(),
-                session,
+                session_line,
                 st.status.clone(),
                 st.last_receipt.clone(),
                 pin_display,
@@ -6209,7 +6676,7 @@ impl App {
 
         self.ui.widget(cx, ids!(today_label)).set_text(cx, &plain_display_text(&today));
         self.ui
-            .widget(cx, ids!(session_label)).set_text(cx, &plain_display_text(&session));
+            .widget(cx, ids!(session_label)).set_text(cx, &plain_display_text(&session_line));
         self.ui
             .widget(cx, ids!(receipt_label)).set_text(cx, &plain_display_text(&receipt));
         self.ui.label(cx, ids!(pin_label)).set_text(cx, &pin);
@@ -6263,16 +6730,63 @@ impl App {
         {
             let st = app_state().lock().unwrap();
             let (actual, vol, chargeable) = st.booking_weights();
+            let weight_unit = st.measure_weight_unit.clone();
+            let dim_unit = st.measure_dim_unit.clone();
+            let weight_factor = st.measure_weight_factor;
             let charge_line = if chargeable > precise::ZERO {
-                format!(
-                    "Chargeable {} kg (actual {} · vol {})",
-                    precise::format_kg(chargeable),
-                    precise::format_kg(actual),
-                    precise::format_kg(vol)
-                )
+                if weight_factor == rust_decimal::Decimal::ONE {
+                    format!(
+                        "Chargeable {} kg (actual {} · vol {})",
+                        precise::format_kg(chargeable),
+                        precise::format_kg(actual),
+                        precise::format_kg(vol)
+                    )
+                } else {
+                    // Typed unit first (what the user thinks in), kg after
+                    // (what rates and books use).
+                    format!(
+                        "Chargeable {} {} ({} kg) · actual {} · vol {}",
+                        precise::format_kg(booking::from_base(chargeable, weight_factor)),
+                        weight_unit,
+                        precise::format_kg(chargeable),
+                        precise::format_kg(booking::from_base(actual, weight_factor)),
+                        precise::format_kg(booking::from_base(vol, weight_factor))
+                    )
+                }
             } else {
-                "Chargeable kg: set weight or L×B×H".into()
+                "Chargeable: set weight or L×B×H".into()
             };
+            // Booking-desk field hints wear the shop's chosen units.
+            self.ui
+                .text_input(cx, ids!(booking_actual_kg_input))
+                .set_empty_text(cx, format!("Actual {weight_unit}"));
+            self.ui
+                .text_input(cx, ids!(booking_length_cm_input))
+                .set_empty_text(cx, format!("L {dim_unit}"));
+            self.ui
+                .text_input(cx, ids!(booking_breadth_cm_input))
+                .set_empty_text(cx, format!("B {dim_unit}"));
+            self.ui
+                .text_input(cx, ids!(booking_height_cm_input))
+                .set_empty_text(cx, format!("H {dim_unit}"));
+            // Desk unit chips: the shop's current units wear the active
+            // face (a custom unit selects no chip — it shows in the hints).
+            for (idle, on, code) in [
+                (ids!(wunit_kg), ids!(wunit_kg_on), "kg"),
+                (ids!(wunit_lb), ids!(wunit_lb_on), "lb"),
+                (ids!(wunit_g), ids!(wunit_g_on), "g"),
+                (ids!(wunit_oz), ids!(wunit_oz_on), "oz"),
+            ] {
+                self.paint_choice_pair(cx, idle, on, weight_unit == code);
+            }
+            for (idle, on, code) in [
+                (ids!(dunit_cm), ids!(dunit_cm_on), "cm"),
+                (ids!(dunit_in), ids!(dunit_in_on), "in"),
+                (ids!(dunit_ft), ids!(dunit_ft_on), "ft"),
+                (ids!(dunit_m), ids!(dunit_m_on), "m"),
+            ] {
+                self.paint_choice_pair(cx, idle, on, dim_unit == code);
+            }
             let awb_line = if st.last_awb.is_empty() {
                 String::new()
             } else {
@@ -6468,6 +6982,42 @@ impl App {
             };
             (credit_chip, credit_summary, empty_hint)
         };
+        {
+            let (selected_label, form_btn_label) = {
+                let st = app_state().lock().unwrap();
+                match st
+                    .selected_customer_id
+                    .as_ref()
+                    .and_then(|id| st.customers.iter().find(|c| &c.id == id))
+                {
+                    Some(c) => {
+                        let kind = if c.kind_label.trim().is_empty() {
+                            String::new()
+                        } else {
+                            format!(" ({})", c.kind_label.trim())
+                        };
+                        (
+                            format!(
+                                "Editing: {}{} — change the form, tap Save changes. Credit limit, settle, pay and notes below also use this party.",
+                                c.name, kind
+                            ),
+                            "Save changes",
+                        )
+                    }
+                    None => (
+                        "New party — fill the form and tap Add party, or Pick a party from the list to edit it."
+                            .to_string(),
+                        "Add party",
+                    ),
+                }
+            };
+            self.ui
+                .widget(cx, ids!(party_selected_label))
+                .set_text(cx, &plain_display_text(&selected_label));
+            self.ui
+                .button(cx, ids!(credit_add_btn))
+                .set_text(cx, form_btn_label);
+        }
         self.ui
             .widget(cx, ids!(credit_chip)).set_text(cx, &plain_display_text(&credit_chip));
         self.ui
@@ -6786,11 +7336,28 @@ impl App {
                         let mut lines = Vec::new();
                         lines.push("Units:".into());
                         for u in &units {
+                            let link = match store.resolve_unit(&u.code) {
+                                Some((family, factor)) => {
+                                    let anchor =
+                                        domain::unit_family_anchor(&family).unwrap_or("");
+                                    format!(
+                                        " · 1 {} = {} {} ({})",
+                                        u.code,
+                                        precise::format_kg(factor),
+                                        anchor,
+                                        family
+                                    )
+                                }
+                                None => {
+                                    " · not linked to a standard unit yet".to_string()
+                                }
+                            };
                             lines.push(format!(
-                                "  {} — {}{}",
+                                "  {} — {}{}{}",
                                 u.code,
                                 u.name,
-                                if u.builtin { " (built-in)" } else { "" }
+                                if u.builtin { " (built-in)" } else { "" },
+                                link
                             ));
                         }
                         if !convs.is_empty() {
@@ -6814,6 +7381,21 @@ impl App {
             self.ui
                 .widget(cx, ids!(units_label))
                 .set_text(cx, &plain_display_text(&units_body));
+            {
+                let measure_body = {
+                    let st = app_state().lock().unwrap();
+                    format!(
+                        "Now: dimensions in {} · weight in {} · volumetric ÷ {} · slab {} kg",
+                        st.measure_dim_unit,
+                        st.measure_weight_unit,
+                        precise::format_kg(st.measure_divisor),
+                        precise::format_kg(st.measure_slab_kg)
+                    )
+                };
+                self.ui
+                    .widget(cx, ids!(measure_label))
+                    .set_text(cx, &plain_display_text(&measure_body));
+            }
             let tmpl_hint = if tmpl.how_to.is_empty() {
                 format!("Selected: {} — {}", tmpl.title, tmpl.blurb)
             } else {
@@ -6833,8 +7415,38 @@ impl App {
                 .set_empty_text(cx, new_cust_ph);
             self.ui
                 .widget(cx, ids!(day_close_label)).set_text(cx, &plain_display_text(&day_close));
-            self.ui
-                .widget(cx, ids!(books_label)).set_text(cx, &plain_display_text(&day_close));
+            // Books home stat cards: each figure is its own label/value
+            // pair (Store::books_overview) instead of one text paragraph.
+            {
+                let overview = {
+                    let st = app_state().lock().unwrap();
+                    st.store.as_ref().and_then(|s| s.books_overview().ok())
+                };
+                if let Some(o) = overview {
+                    let mut set = |id: &[LiveId], text: &str| {
+                        self.ui
+                            .widget(cx, id)
+                            .set_text(cx, &plain_display_text(text));
+                    };
+                    set(ids!(books_in_value), &o.money_in);
+                    set(ids!(books_purchases_value), &o.purchases);
+                    set(ids!(books_expenses_value), &o.expenses);
+                    set(ids!(books_gross_value), &o.gross);
+                    set(ids!(books_net_value), &o.net);
+                    set(ids!(books_declared_name), &o.lane_declared_label);
+                    set(ids!(books_declared_value), &o.lane_declared);
+                    set(ids!(books_owner_name), &o.lane_owner_label);
+                    set(ids!(books_owner_value), &o.lane_owner);
+                    set(ids!(books_cash_value), &o.cash);
+                    set(ids!(books_digital_name), &o.digital_label);
+                    set(ids!(books_digital_value), &o.digital);
+                    set(ids!(books_card_value), &o.card);
+                    set(ids!(books_they_owe_value), &o.they_owe);
+                    set(ids!(books_we_owe_value), &o.we_owe);
+                    set(ids!(books_bank_balance_value), &o.bank_balance);
+                    set(ids!(books_bank_net_value), &o.bank_net_today);
+                }
+            }
             self.ui
                 .widget(cx, ids!(reports_label)).set_text(cx, &plain_display_text(&day_close));
             let ops_facet = !matches!(reports_nav, ReportsNav::Bank);
@@ -6934,27 +7546,11 @@ impl App {
             let _ = is_client;
             let books_ok = sales || is_owner || items;
             let buy_ok = inventory || sales || is_owner;
-            self.ui.button(cx, ids!(nav_books)).set_enabled(cx, books_ok);
-            self.ui.button(cx, ids!(nav_books_on)).set_enabled(cx, books_ok);
-            self.ui.button(cx, ids!(rail_books)).set_enabled(cx, books_ok);
-            self.ui.button(cx, ids!(rail_books_on)).set_enabled(cx, books_ok);
-            self.ui.button(cx, ids!(nav_buy)).set_enabled(cx, buy_ok);
-            self.ui.button(cx, ids!(nav_buy_on)).set_enabled(cx, buy_ok);
-            self.ui.button(cx, ids!(rail_buy)).set_enabled(cx, buy_ok);
-            self.ui.button(cx, ids!(rail_buy_on)).set_enabled(cx, buy_ok);
             self.ui.button(cx, ids!(more_items)).set_visible(cx, false);
             // More hub removed — former rows are chrome peers (bottom + rail).
             self.ui.view(cx, ids!(more_screen)).set_visible(cx, false);
-            self.ui.view(cx, ids!(nav_rates_slot)).set_visible(cx, items);
-            self.ui.view(cx, ids!(rail_rates_slot)).set_visible(cx, items);
             // Ops / COD / riders: same gate as Reports (desk ops).
             let ops_ok = sales || is_owner;
-            self.ui.view(cx, ids!(nav_ops_slot)).set_visible(cx, ops_ok);
-            self.ui.view(cx, ids!(rail_ops_slot)).set_visible(cx, ops_ok);
-            self.ui.view(cx, ids!(nav_cod_slot)).set_visible(cx, ops_ok);
-            self.ui.view(cx, ids!(rail_cod_slot)).set_visible(cx, ops_ok);
-            self.ui.view(cx, ids!(nav_riders_slot)).set_visible(cx, ops_ok);
-            self.ui.view(cx, ids!(rail_riders_slot)).set_visible(cx, ops_ok);
             self.ui
                 .button(cx, ids!(allow_extra_tills))
                 .set_visible(cx, is_shop && is_owner && !extra_tills);
@@ -6973,44 +7569,41 @@ impl App {
             self.ui.button(cx, ids!(more_cod)).set_visible(cx, false);
             self.ui.button(cx, ids!(more_riders)).set_visible(cx, false);
             self.ui.button(cx, ids!(more_lock)).set_visible(cx, false);
-            self.ui.view(cx, ids!(nav_sales_slot)).set_visible(cx, sales);
-            self.ui.view(cx, ids!(rail_sales_slot)).set_visible(cx, sales);
-            self.ui
-                .view(cx, ids!(nav_day_close_slot))
-                .set_visible(cx, sales || is_owner);
-            self.ui
-                .view(cx, ids!(rail_day_close_slot))
-                .set_visible(cx, sales || is_owner);
-            self.ui
-                .view(cx, ids!(nav_reports_slot))
-                .set_visible(cx, sales || is_owner);
-            self.ui
-                .view(cx, ids!(rail_reports_slot))
-                .set_visible(cx, sales || is_owner);
-            // Stock and branches are the Server's books. A Client's copy is a
-            // sync cache, so every write there would be lost — do not offer it.
-            self.ui
-                .view(cx, ids!(nav_inventory_slot))
-                .set_visible(cx, inventory && !is_client);
-            self.ui
-                .view(cx, ids!(rail_inventory_slot))
-                .set_visible(cx, inventory && !is_client);
-            self.ui.view(cx, ids!(nav_branches_slot)).set_visible(
-                cx,
-                branches && !is_client && branch_count > 1,
-            );
-            self.ui.view(cx, ids!(rail_branches_slot)).set_visible(
-                cx,
-                branches && !is_client && branch_count > 1,
-            );
-            self.ui.view(cx, ids!(nav_credit_slot)).set_visible(cx, credit);
-            self.ui.view(cx, ids!(rail_credit_slot)).set_visible(cx, credit);
-            self.ui.view(cx, ids!(nav_team_slot)).set_visible(cx, team);
-            self.ui.view(cx, ids!(rail_team_slot)).set_visible(cx, team);
-            self.ui.view(cx, ids!(nav_settings_slot)).set_visible(cx, backup);
-            self.ui.view(cx, ids!(rail_settings_slot)).set_visible(cx, backup);
-            self.ui.view(cx, ids!(nav_lock_slot)).set_visible(cx, true);
-            self.ui.view(cx, ids!(rail_lock_slot)).set_visible(cx, true);
+            // Slots are positions: visibility and enabled state follow the
+            // tab the user's arrangement puts in each slot, on both surfaces.
+            // (Stock/branches stay Server-only: a Client's copy is a sync
+            // cache, so every write there would be lost.)
+            let order = app_state().lock().unwrap().nav_order.clone();
+            for rail in [false, true] {
+                let wrappers = self.nav_slot_wrappers(rail);
+                let pairs = if rail {
+                    self.rail_nav_pairs()
+                } else {
+                    self.bottom_nav_pairs()
+                };
+                for (slot, tab) in order.iter().enumerate() {
+                    let visible = match tab {
+                        NavTab::Books | NavTab::Sell | NavTab::Buy | NavTab::Lock => true,
+                        NavTab::Rates => items,
+                        NavTab::Ops | NavTab::Cod | NavTab::Riders => ops_ok,
+                        NavTab::Sales => sales,
+                        NavTab::DayClose | NavTab::Reports => sales || is_owner,
+                        NavTab::Inventory => inventory && !is_client,
+                        NavTab::Branches => branches && !is_client && branch_count > 1,
+                        NavTab::Credit => credit,
+                        NavTab::Team => team,
+                        NavTab::Settings => backup,
+                    };
+                    self.ui.view(cx, wrappers[slot]).set_visible(cx, visible);
+                    let enabled = match tab {
+                        NavTab::Books => books_ok,
+                        NavTab::Buy => buy_ok,
+                        _ => true,
+                    };
+                    self.ui.button(cx, pairs[slot].0).set_enabled(cx, enabled);
+                    self.ui.button(cx, pairs[slot].1).set_enabled(cx, enabled);
+                }
+            }
         }
 
         self.lift_footer_above_system_bar(cx);
@@ -7191,6 +7784,27 @@ impl App {
         self.ui.button(cx, idle).clicked(actions) || self.ui.button(cx, active).clicked(actions)
     }
 
+    /// Which nav tab a click belongs to, honouring the user's arrangement:
+    /// slots are positions, so a click on slot N means `order[N]` — on
+    /// either surface (bottom bar or rail).
+    fn nav_tab_clicked(&mut self, cx: &mut Cx, actions: &Actions) -> Option<NavTab> {
+        if *nav_suppress_click().lock().unwrap() {
+            *nav_suppress_click().lock().unwrap() = false;
+            return None;
+        }
+        let order = app_state().lock().unwrap().nav_order.clone();
+        let bottom = self.bottom_nav_pairs();
+        let rail = self.rail_nav_pairs();
+        for slot in 0..NAV_TABS.len() {
+            if self.choice_chip_clicked(cx, actions, bottom[slot].0, bottom[slot].1)
+                || self.choice_chip_clicked(cx, actions, rail[slot].0, rail[slot].1)
+            {
+                return Some(order[slot]);
+            }
+        }
+        None
+    }
+
     /// Bare-minimal **None** (`custom`) when the shop never picked a template.
     fn ensure_default_template(st: &mut AppState) -> Result<(), String> {
         let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
@@ -7366,6 +7980,35 @@ impl App {
             ids!(staff_role_manager_on),
             draft_role == StaffRole::Manager,
         );
+        // Party-form kind chips: highlight whatever the kind field currently
+        // holds (a picked party's saved kind, or the chip last tapped).
+        let kind_norm = domain::normalize_party_roles(
+            &self.ui.text_input(cx, ids!(credit_add_kind)).text(),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(credit_kind_consignor),
+            ids!(credit_kind_consignor_on),
+            kind_norm == "Consignor",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(credit_kind_carrier),
+            ids!(credit_kind_carrier_on),
+            kind_norm == "Carrier",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(credit_kind_both),
+            ids!(credit_kind_both_on),
+            kind_norm == "Carrier, Consignor",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(credit_kind_supplier),
+            ids!(credit_kind_supplier_on),
+            kind_norm == "Supplier",
+        );
         // Keep lane labels current on both faces.
         let (declared, owner) = {
             let st = app_state().lock().unwrap();
@@ -7398,48 +8041,36 @@ impl App {
         let team = s("team");
         let settings = s("nav_settings");
         let lock = s("nav_lock");
-        self.ui.button(cx, ids!(nav_books)).set_text(cx, &books);
-        self.ui.button(cx, ids!(nav_books_on)).set_text(cx, &books);
-        self.ui.button(cx, ids!(rail_books)).set_text(cx, &books);
-        self.ui.button(cx, ids!(rail_books_on)).set_text(cx, &books);
-        self.ui.button(cx, ids!(nav_sell)).set_text(cx, &sell);
-        self.ui.button(cx, ids!(nav_sell_on)).set_text(cx, &sell);
-        self.ui.button(cx, ids!(rail_sell)).set_text(cx, &sell);
-        self.ui.button(cx, ids!(rail_sell_on)).set_text(cx, &sell);
-        self.ui.button(cx, ids!(nav_buy)).set_text(cx, &buy);
-        self.ui.button(cx, ids!(nav_buy_on)).set_text(cx, &buy);
-        self.ui.button(cx, ids!(rail_buy)).set_text(cx, &buy);
-        self.ui.button(cx, ids!(rail_buy_on)).set_text(cx, &buy);
-        let set_pair = |app: &mut App, cx: &mut Cx, idle: &[LiveId], on: &[LiveId], label: &str| {
-            app.ui.button(cx, idle).set_text(cx, label);
-            app.ui.button(cx, on).set_text(cx, label);
+        // Slots are positions; the tab (and so the label) each slot wears
+        // comes from the user's saved arrangement.
+        let order = app_state().lock().unwrap().nav_order.clone();
+        let label_for = |tab: NavTab| -> &str {
+            match tab {
+                NavTab::Books => &books,
+                NavTab::Sell => &sell,
+                NavTab::Buy => &buy,
+                NavTab::Rates => &rates,
+                NavTab::Ops => "Ops",
+                NavTab::Cod => "COD",
+                NavTab::Riders => "Riders",
+                NavTab::Sales => &sales,
+                NavTab::DayClose => &day_close,
+                NavTab::Reports => &reports,
+                NavTab::Inventory => &inventory,
+                NavTab::Branches => &branches,
+                NavTab::Credit => &credit,
+                NavTab::Team => &team,
+                NavTab::Settings => &settings,
+                NavTab::Lock => &lock,
+            }
         };
-        set_pair(self, cx, ids!(nav_rates), ids!(nav_rates_on), &rates);
-        set_pair(self, cx, ids!(rail_rates), ids!(rail_rates_on), &rates);
-        set_pair(self, cx, ids!(nav_ops), ids!(nav_ops_on), "Ops");
-        set_pair(self, cx, ids!(rail_ops), ids!(rail_ops_on), "Ops");
-        set_pair(self, cx, ids!(nav_cod), ids!(nav_cod_on), "COD");
-        set_pair(self, cx, ids!(rail_cod), ids!(rail_cod_on), "COD");
-        set_pair(self, cx, ids!(nav_riders), ids!(nav_riders_on), "Riders");
-        set_pair(self, cx, ids!(rail_riders), ids!(rail_riders_on), "Riders");
-        set_pair(self, cx, ids!(nav_sales), ids!(nav_sales_on), &sales);
-        set_pair(self, cx, ids!(rail_sales), ids!(rail_sales_on), &sales);
-        set_pair(self, cx, ids!(nav_day_close), ids!(nav_day_close_on), &day_close);
-        set_pair(self, cx, ids!(rail_day_close), ids!(rail_day_close_on), &day_close);
-        set_pair(self, cx, ids!(nav_reports), ids!(nav_reports_on), &reports);
-        set_pair(self, cx, ids!(rail_reports), ids!(rail_reports_on), &reports);
-        set_pair(self, cx, ids!(nav_inventory), ids!(nav_inventory_on), &inventory);
-        set_pair(self, cx, ids!(rail_inventory), ids!(rail_inventory_on), &inventory);
-        set_pair(self, cx, ids!(nav_branches), ids!(nav_branches_on), &branches);
-        set_pair(self, cx, ids!(rail_branches), ids!(rail_branches_on), &branches);
-        set_pair(self, cx, ids!(nav_credit), ids!(nav_credit_on), &credit);
-        set_pair(self, cx, ids!(rail_credit), ids!(rail_credit_on), &credit);
-        set_pair(self, cx, ids!(nav_team), ids!(nav_team_on), &team);
-        set_pair(self, cx, ids!(rail_team), ids!(rail_team_on), &team);
-        set_pair(self, cx, ids!(nav_settings), ids!(nav_settings_on), &settings);
-        set_pair(self, cx, ids!(rail_settings), ids!(rail_settings_on), &settings);
-        set_pair(self, cx, ids!(nav_lock), ids!(nav_lock_on), &lock);
-        set_pair(self, cx, ids!(rail_lock), ids!(rail_lock_on), &lock);
+        for pairs in [self.bottom_nav_pairs(), self.rail_nav_pairs()] {
+            for (slot, (idle, on)) in pairs.iter().enumerate() {
+                let label = label_for(order[slot]);
+                self.ui.button(cx, idle).set_text(cx, label);
+                self.ui.button(cx, on).set_text(cx, label);
+            }
+        }
         self.ui.button(cx, ids!(more_items)).set_text(cx, &s("items"));
         self.ui.button(cx, ids!(more_sales)).set_text(cx, &s("sales_refunds"));
         self.ui.button(cx, ids!(more_day_close)).set_text(cx, &s("day_close"));
@@ -7455,7 +8086,6 @@ impl App {
         self.ui.button(cx, ids!(books_day_close)).set_text(cx, &s("day_close"));
         self.ui.button(cx, ids!(books_reports)).set_text(cx, &s("reports_expenses"));
         self.ui.button(cx, ids!(books_credit)).set_text(cx, &s("credit_customers"));
-        self.ui.button(cx, ids!(books_refresh)).set_text(cx, &s("refresh"));
         self.ui.button(cx, ids!(buy_purchase)).set_text(cx, &s("record_purchase"));
         self.ui.button(cx, ids!(buy_expense_add)).set_text(cx, &s("add_expense"));
         self.ui.button(cx, ids!(buy_to_inventory)).set_text(cx, &s("inventory_stock"));
@@ -7526,8 +8156,6 @@ impl App {
         self.ui.button(cx, ids!(inv_adjust_plus)).set_text(cx, &s("stock_plus"));
         self.ui.button(cx, ids!(inv_track)).set_text(cx, &s("start_tracking"));
         self.ui.button(cx, ids!(inv_purchase)).set_text(cx, &s("record_purchase"));
-        self.ui.button(cx, ids!(inv_refresh)).set_text(cx, &s("refresh"));
-        self.ui.button(cx, ids!(reports_refresh)).set_text(cx, &s("refresh"));
         self.ui.button(cx, ids!(settle_cash)).set_text(cx, &s("settle_cash"));
         self.ui.button(cx, ids!(settle_card)).set_text(cx, &s("settle_card"));
         self.ui.button(cx, ids!(amend_pay_cash)).set_text(cx, &s("cash"));
@@ -7846,12 +8474,10 @@ impl App {
         );
     }
 
-    /// Exactly one nav peer highlighted for `screen` (bottom and/or rail).
-    fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
-        let reports_nav = app_state().lock().unwrap().reports_nav;
-        let active = nav_tab_for(screen, reports_nav);
-        // Always clear every peer first so a stale *Active face cannot linger.
-        let all_faces = [
+    /// Nav slot hardware in DSL order. Slots are positions; which tab a
+    /// slot shows comes from `AppState.nav_order` (drag to swap).
+    fn bottom_nav_pairs(&self) -> [(&[LiveId], &[LiveId]); NAV_TABS.len()] {
+        [
             (ids!(nav_books), ids!(nav_books_on)),
             (ids!(nav_sell), ids!(nav_sell_on)),
             (ids!(nav_buy), ids!(nav_buy_on)),
@@ -7868,6 +8494,11 @@ impl App {
             (ids!(nav_team), ids!(nav_team_on)),
             (ids!(nav_settings), ids!(nav_settings_on)),
             (ids!(nav_lock), ids!(nav_lock_on)),
+        ]
+    }
+
+    fn rail_nav_pairs(&self) -> [(&[LiveId], &[LiveId]); NAV_TABS.len()] {
+        [
             (ids!(rail_books), ids!(rail_books_on)),
             (ids!(rail_sell), ids!(rail_sell_on)),
             (ids!(rail_buy), ids!(rail_buy_on)),
@@ -7884,61 +8515,87 @@ impl App {
             (ids!(rail_team), ids!(rail_team_on)),
             (ids!(rail_settings), ids!(rail_settings_on)),
             (ids!(rail_lock), ids!(rail_lock_on)),
-        ];
-        for (idle, on) in all_faces {
-            self.clear_button_animators(cx, idle);
-            self.clear_button_animators(cx, on);
-            self.ui.button(cx, idle).set_visible(cx, false);
-            self.ui.button(cx, on).set_visible(cx, false);
+        ]
+    }
+
+    fn nav_slot_wrappers(&self, rail: bool) -> [&[LiveId]; NAV_TABS.len()] {
+        if rail {
+            [
+                ids!(rail_books_slot),
+                ids!(rail_sell_slot),
+                ids!(rail_buy_slot),
+                ids!(rail_rates_slot),
+                ids!(rail_ops_slot),
+                ids!(rail_cod_slot),
+                ids!(rail_riders_slot),
+                ids!(rail_sales_slot),
+                ids!(rail_day_close_slot),
+                ids!(rail_reports_slot),
+                ids!(rail_inventory_slot),
+                ids!(rail_branches_slot),
+                ids!(rail_credit_slot),
+                ids!(rail_team_slot),
+                ids!(rail_settings_slot),
+                ids!(rail_lock_slot),
+            ]
+        } else {
+            [
+                ids!(nav_books_slot),
+                ids!(nav_sell_slot),
+                ids!(nav_buy_slot),
+                ids!(nav_rates_slot),
+                ids!(nav_ops_slot),
+                ids!(nav_cod_slot),
+                ids!(nav_riders_slot),
+                ids!(nav_sales_slot),
+                ids!(nav_day_close_slot),
+                ids!(nav_reports_slot),
+                ids!(nav_inventory_slot),
+                ids!(nav_branches_slot),
+                ids!(nav_credit_slot),
+                ids!(nav_team_slot),
+                ids!(nav_settings_slot),
+                ids!(nav_lock_slot),
+            ]
         }
-        if active.is_none() {
-            return;
-        }
-        let pairs = [
-            (NavTab::Books, ids!(nav_books), ids!(nav_books_on)),
-            (NavTab::Sell, ids!(nav_sell), ids!(nav_sell_on)),
-            (NavTab::Buy, ids!(nav_buy), ids!(nav_buy_on)),
-            (NavTab::Rates, ids!(nav_rates), ids!(nav_rates_on)),
-            (NavTab::Ops, ids!(nav_ops), ids!(nav_ops_on)),
-            (NavTab::Cod, ids!(nav_cod), ids!(nav_cod_on)),
-            (NavTab::Riders, ids!(nav_riders), ids!(nav_riders_on)),
-            (NavTab::Sales, ids!(nav_sales), ids!(nav_sales_on)),
-            (NavTab::DayClose, ids!(nav_day_close), ids!(nav_day_close_on)),
-            (NavTab::Reports, ids!(nav_reports), ids!(nav_reports_on)),
-            (NavTab::Inventory, ids!(nav_inventory), ids!(nav_inventory_on)),
-            (NavTab::Branches, ids!(nav_branches), ids!(nav_branches_on)),
-            (NavTab::Credit, ids!(nav_credit), ids!(nav_credit_on)),
-            (NavTab::Team, ids!(nav_team), ids!(nav_team_on)),
-            (NavTab::Settings, ids!(nav_settings), ids!(nav_settings_on)),
-            (NavTab::Lock, ids!(nav_lock), ids!(nav_lock_on)),
-            (NavTab::Books, ids!(rail_books), ids!(rail_books_on)),
-            (NavTab::Sell, ids!(rail_sell), ids!(rail_sell_on)),
-            (NavTab::Buy, ids!(rail_buy), ids!(rail_buy_on)),
-            (NavTab::Rates, ids!(rail_rates), ids!(rail_rates_on)),
-            (NavTab::Ops, ids!(rail_ops), ids!(rail_ops_on)),
-            (NavTab::Cod, ids!(rail_cod), ids!(rail_cod_on)),
-            (NavTab::Riders, ids!(rail_riders), ids!(rail_riders_on)),
-            (NavTab::Sales, ids!(rail_sales), ids!(rail_sales_on)),
-            (NavTab::DayClose, ids!(rail_day_close), ids!(rail_day_close_on)),
-            (NavTab::Reports, ids!(rail_reports), ids!(rail_reports_on)),
-            (NavTab::Inventory, ids!(rail_inventory), ids!(rail_inventory_on)),
-            (NavTab::Branches, ids!(rail_branches), ids!(rail_branches_on)),
-            (NavTab::Credit, ids!(rail_credit), ids!(rail_credit_on)),
-            (NavTab::Team, ids!(rail_team), ids!(rail_team_on)),
-            (NavTab::Settings, ids!(rail_settings), ids!(rail_settings_on)),
-            (NavTab::Lock, ids!(rail_lock), ids!(rail_lock_on)),
-        ];
-        for (tab, idle, on) in pairs {
-            let selected = active == Some(tab);
-            self.ui.button(cx, idle).set_visible(cx, !selected);
-            self.ui.button(cx, on).set_visible(cx, selected);
+    }
+
+    /// Exactly one nav peer highlighted for `screen` (bottom and/or rail).
+    fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
+        let (reports_nav, order) = {
+            let st = app_state().lock().unwrap();
+            (st.reports_nav, st.nav_order.clone())
+        };
+        let active = nav_tab_for(screen, reports_nav);
+        // While dragging, the slot under the pointer wears the active face
+        // so the drop target is unmistakable.
+        let drop = nav_drag()
+            .lock()
+            .unwrap()
+            .as_ref()
+            .filter(|d| d.active)
+            .and_then(|d| d.hover.map(|slot| (d.rail, slot)));
+        for (rail, pairs) in [(false, self.bottom_nav_pairs()), (true, self.rail_nav_pairs())] {
+            for (slot, (idle, on)) in pairs.iter().enumerate() {
+                self.clear_button_animators(cx, idle);
+                self.clear_button_animators(cx, on);
+                let selected = active == Some(order[slot]) || drop == Some((rail, slot));
+                self.ui.button(cx, idle).set_visible(cx, !selected);
+                self.ui.button(cx, on).set_visible(cx, selected);
+            }
         }
     }
 
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
         let (title, header_title, icon_path, icon_hint, saved_title) = {
             let st = app_state().lock().unwrap();
-            let title = st.display_venue_title();
+            // A shop that has not set its name yet still shows the app name
+            // next to the logo — never a blank header.
+            let title = if st.venue_title.trim().is_empty() {
+                "Kumkaj Courier".to_string()
+            } else {
+                st.display_venue_title()
+            };
             // Multi-outlet owners need to see which shop this device is selling
             // for; a single Main-only setup keeps the plain venue name.
             let header_title = {
@@ -7976,19 +8633,32 @@ impl App {
             self.ui.widget(cx, id).set_text(cx, &plain_display_text(&title));
         }
         let default_mark = default_brand_mark_path();
-        for id in [ids!(brand_mark), ids!(setup_brand_mark), ids!(lock_brand_mark)] {
+        for id in [
+            ids!(brand_mark),
+            ids!(setup_brand_mark),
+            ids!(lock_brand_mark),
+            ids!(onboard_brand_mark),
+        ] {
             let img = self.ui.image(cx, id);
             img.set_visible(cx, true);
             if let Some(ref path) = icon_path {
-                load_thumb_at(cx, &img, path);
+                load_brand_mark_at(cx, &img, path);
             } else {
                 // Prefer filesystem / package bytes — `load_image_dep_by_path` is for
                 // live deps and misses crate_resource-bundled marks.
-                load_thumb_at(cx, &img, &default_mark);
+                load_brand_mark_at(cx, &img, &default_mark);
             }
         }
         self.ui
             .widget(cx, ids!(venue_brand_hint)).set_text(cx, &plain_display_text(&icon_hint));
+        let onboard_icon_hint = if icon_path.is_some() {
+            "Logo: your shop logo — shown on screens and receipts"
+        } else {
+            "Logo: Kumkaj mark (default) — choose your own if you have one"
+        };
+        self.ui
+            .widget(cx, ids!(onboard_icon_hint))
+            .set_text(cx, &plain_display_text(onboard_icon_hint));
         let field = self.ui.text_input(cx, ids!(venue_title_input));
         if !cx.has_key_focus(field.area()) {
             let shown = field.text();
@@ -8090,6 +8760,27 @@ impl App {
             .set_id(live_id!(venue_icon_pick));
         cx.open_select_file_dialog(dialog);
         self.set_status(cx, "Opening icon picker…");
+    }
+
+    /// Onboarding logo pick: same image dialog, but the chosen file is
+    /// imported immediately (no draft/Save-brand step during setup).
+    fn pick_onboard_icon(&mut self, cx: &mut Cx) {
+        let dialog = FileDialog::new()
+            .set_title("Choose shop logo".into())
+            .add_filter(
+                "Images".into(),
+                vec![
+                    "webp".into(),
+                    "png".into(),
+                    "jpg".into(),
+                    "jpeg".into(),
+                    "gif".into(),
+                    "bmp".into(),
+                ],
+            )
+            .set_id(live_id!(onboard_icon_pick));
+        cx.open_select_file_dialog(dialog);
+        self.set_status(cx, "Opening logo picker…");
     }
 
     /// Push history when moving between app screens; clear it for lock/setup.
@@ -8576,6 +9267,440 @@ impl App {
         }
     }
 
+    /// Which nav slot (position) of a surface is under `pos`, if any.
+    /// Which slot (if any) is under `pos`. `pad` grows the drawn face a
+    /// few px — used for drop targeting, where landing in the hairline
+    /// gap between two items should still count. Drag *pickup* passes
+    /// 0: the bars keep whitespace lanes around the items for
+    /// scrolling, and a padded pickup area would eat the lane.
+    fn nav_slot_at(
+        &mut self,
+        cx: &mut Cx,
+        rail: bool,
+        pos: DVec2,
+        pad_x: f64,
+        pad_y: f64,
+    ) -> Option<usize> {
+        let pairs = if rail {
+            self.rail_nav_pairs()
+        } else {
+            self.bottom_nav_pairs()
+        };
+        for (slot, (idle, on)) in pairs.iter().enumerate() {
+            for face in [idle, on] {
+                let rect = self.ui.button(cx, face).area().rect(cx);
+                let hit = rect.size.x > 0.0
+                    && rect.size.y > 0.0
+                    && pos.x >= rect.pos.x - pad_x
+                    && pos.x <= rect.pos.x + rect.size.x + pad_x
+                    && pos.y >= rect.pos.y - pad_y
+                    && pos.y <= rect.pos.y + rect.size.y + pad_y;
+                if hit {
+                    return Some(slot);
+                }
+            }
+        }
+        None
+    }
+
+    /// Drop target during a drag: which slot is under the window
+    /// pointer, computed from the drag's frozen content rects and the
+    /// bar's live scroll offset (widget areas lag during auto-scroll,
+    /// so they cannot be trusted here). Held past the first/last item
+    /// — e.g. against the bar's edge while it auto-scrolls — the
+    /// nearest end item is the target.
+    fn nav_drop_slot(&mut self, cx: &mut Cx, drag: &NavDrag, pos: DVec2) -> Option<usize> {
+        let scroll = if drag.rail {
+            self.ui.view(cx, ids!(rail_scroll)).get_scroll_pos()
+        } else {
+            self.ui.view(cx, ids!(bottom_nav_scroll)).get_scroll_pos()
+        };
+        let pos = DVec2 {
+            x: pos.x + scroll.x,
+            y: pos.y + scroll.y,
+        };
+        let mut first_rect: Option<Rect> = None;
+        let mut last_rect: Option<Rect> = None;
+        for (slot, rect) in drag.rects.iter().enumerate() {
+            if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
+                continue;
+            }
+            if first_rect.is_none() {
+                first_rect = Some(*rect);
+            }
+            last_rect = Some(*rect);
+            let hit = pos.x >= rect.pos.x - 2.0
+                && pos.x <= rect.pos.x + rect.size.x + 2.0
+                && pos.y >= rect.pos.y - 5.0
+                && pos.y <= rect.pos.y + rect.size.y + 5.0;
+            if hit {
+                return Some(slot);
+            }
+        }
+        if let (Some(first), Some(last)) = (first_rect, last_rect) {
+            let last_slot = drag.rects.len() - 1;
+            if drag.rail {
+                let in_band = pos.x >= first.pos.x - 28.0
+                    && pos.x <= first.pos.x + first.size.x + 28.0;
+                if in_band && pos.y >= last.pos.y + last.size.y {
+                    return Some(last_slot);
+                }
+                if in_band && pos.y <= first.pos.y {
+                    return Some(0);
+                }
+            } else {
+                let in_band = pos.y >= first.pos.y - 28.0
+                    && pos.y <= first.pos.y + first.size.y + 28.0;
+                if in_band && pos.x >= last.pos.x + last.size.x {
+                    return Some(last_slot);
+                }
+                if in_band && pos.x <= first.pos.x {
+                    return Some(0);
+                }
+            }
+        }
+        None
+    }
+
+    fn repaint_nav_tabs(&mut self, cx: &mut Cx) {
+        let screen = app_state().lock().unwrap().screen;
+        self.paint_nav_tabs(cx, screen);
+    }
+
+    /// Display label a nav slot wears for `tab` (same strings as the
+    /// chrome paint in paint_chrome).
+    fn nav_tab_label(&self, tab: NavTab) -> String {
+        let lang = app_state().lock().unwrap().locale.language.clone();
+        let s = |key: &str| locale::t(&lang, key);
+        match tab {
+            NavTab::Books => s("books"),
+            NavTab::Sell => s("sell"),
+            NavTab::Buy => s("buy"),
+            NavTab::Rates => s("items"),
+            NavTab::Ops => "Ops".to_string(),
+            NavTab::Cod => "COD".to_string(),
+            NavTab::Riders => "Riders".to_string(),
+            NavTab::Sales => s("sales"),
+            NavTab::DayClose => s("day_close"),
+            NavTab::Reports => s("nav_reports"),
+            NavTab::Inventory => s("inventory"),
+            NavTab::Branches => s("branches"),
+            NavTab::Credit => s("credit"),
+            NavTab::Team => s("team"),
+            NavTab::Settings => s("nav_settings"),
+            NavTab::Lock => s("nav_lock"),
+        }
+    }
+
+    /// Rect of the face currently drawn for `slot` (idle or active).
+    fn nav_slot_rect(&mut self, cx: &mut Cx, rail: bool, slot: usize) -> Option<Rect> {
+        let pairs = if rail {
+            self.rail_nav_pairs()
+        } else {
+            self.bottom_nav_pairs()
+        };
+        let (idle, on) = pairs[slot];
+        for face in [idle, on] {
+            let rect = self.ui.button(cx, face).area().rect(cx);
+            if rect.size.x > 0.0 && rect.size.y > 0.0 {
+                return Some(Rect {
+                    pos: DVec2 {
+                        x: rect.pos.x,
+                        y: rect.pos.y,
+                    },
+                    size: rect.size,
+                });
+            }
+        }
+        None
+    }
+
+    fn place_nav_ghost(&mut self, cx: &mut Cx, pos: DVec2) {
+        let ghost = self.ui.widget(cx, ids!(nav_drag_ghost));
+        if let Some(mut view) = ghost.borrow_mut::<View>() {
+            view.walk.abs_pos = Some(pos);
+        }
+        ghost.redraw(cx);
+    }
+
+    fn show_nav_ghost(&mut self, cx: &mut Cx, tab: NavTab, pos: DVec2) {
+        let label = self.nav_tab_label(tab);
+        self.ui
+            .widget(cx, ids!(nav_drag_ghost_label))
+            .set_text(cx, &label);
+        self.place_nav_ghost(cx, pos);
+        self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, true);
+        // The ghost lives in a Modal so it paints on the overlay draw
+        // list, above every scroll view (rail, page, bottom bar alike).
+        self.ui.modal(cx, ids!(nav_drag_modal)).open(cx);
+        cx.redraw_all();
+    }
+
+    fn hide_nav_ghost(&mut self, cx: &mut Cx) {
+        self.ui.modal(cx, ids!(nav_drag_modal)).close(cx);
+        self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, false);
+    }
+
+    /// Drag a sidebar / bottom-bar item onto another one to swap them.
+    /// Scroll and drag are separated spatially, not by timing: the bars
+    /// keep whitespace lanes around the items (padding and gaps inside
+    /// the scroll view), so a press on whitespace belongs to the scroll
+    /// view and never reaches this peek — it starts only when the press
+    /// lands on an item. From an item, a plain click navigates and any
+    /// real movement picks the item up; from then on the drag owns the
+    /// gesture so the scroll view cannot scroll the drop target away
+    /// mid-drag. The new arrangement is saved into the books, so it
+    /// survives reinstall.
+    /// Returns true when the event was consumed by the drag.
+    fn pointer_nav_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        match event {
+            Event::MouseDown(e) if e.button.is_primary() => {
+                *nav_drag().lock().unwrap() = None;
+                // A fresh press starts a fresh gesture — never let a
+                // leftover scroll-suppression eat this tap.
+                *nav_suppress_click().lock().unwrap() = false;
+                self.hide_nav_ghost(cx);
+                let unlocked = {
+                    let st = app_state().lock().unwrap();
+                    !matches!(
+                        st.screen,
+                        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+                    )
+                };
+                if !unlocked {
+                    return false;
+                }
+                // Only the visible surface can be dragged (mirrors
+                // apply_shell_layout's rail-vs-bottom choice).
+                let rail = self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
+                // The rail divider owns its own drag (resize) — stay out of it.
+                if rail {
+                    let rail_w = app_state().lock().unwrap().rail_width;
+                    if e.abs.x >= rail_w - 2.0 && e.abs.x <= rail_w + 14.0 {
+                        return false;
+                    }
+                }
+                if let Some(slot) = self.nav_slot_at(cx, rail, e.abs, 0.0, 0.0) {
+                    let origin = self
+                        .nav_slot_rect(cx, rail, slot)
+                        .map(|rect| rect.pos)
+                        .unwrap_or(e.abs);
+                    // Freeze every slot's rect in content coordinates
+                    // (drawn rect + scroll right now, while settled);
+                    // drag-time hit tests use these, not live areas.
+                    let scroll = if rail {
+                        self.ui.view(cx, ids!(rail_scroll)).get_scroll_pos()
+                    } else {
+                        self.ui.view(cx, ids!(bottom_nav_scroll)).get_scroll_pos()
+                    };
+                    let pairs = if rail {
+                        self.rail_nav_pairs()
+                    } else {
+                        self.bottom_nav_pairs()
+                    };
+                    let mut rects = Vec::with_capacity(pairs.len());
+                    for (idle, on) in &pairs {
+                        let mut found = Rect::default();
+                        for face in [idle, on] {
+                            let rect = self.ui.button(cx, face).area().rect(cx);
+                            if rect.size.x > 0.0 && rect.size.y > 0.0 {
+                                found = Rect {
+                                    pos: DVec2 {
+                                        x: rect.pos.x + scroll.x,
+                                        y: rect.pos.y + scroll.y,
+                                    },
+                                    size: rect.size,
+                                };
+                                break;
+                            }
+                        }
+                        rects.push(found);
+                    }
+                    *nav_drag().lock().unwrap() = Some(NavDrag {
+                        rail,
+                        slot,
+                        start: e.abs,
+                        last: e.abs,
+                        origin,
+                        rects,
+                        active: false,
+                        hover: Some(slot),
+                    });
+                }
+                false
+            }
+            Event::MouseMove(e) => {
+                let mut repaint = false;
+                let mut active = false;
+                let mut ghost: Option<(bool, NavTab, DVec2)> = None;
+                {
+                    let mut guard = nav_drag().lock().unwrap();
+                    if let Some(d) = guard.as_mut() {
+                        let was_active = d.active;
+                        if !d.active && (e.abs - d.start).length() > 10.0 {
+                            d.active = true;
+                        }
+                        if d.active {
+                            active = true;
+                            d.last = e.abs;
+                            if !was_active {
+                                // Start the per-frame edge auto-scroll
+                                // loop for this drag.
+                                *nav_autoscroll_frame().lock().unwrap() =
+                                    Some(cx.new_next_frame());
+                            }
+                            let hover = self.nav_drop_slot(cx, d, e.abs);
+                            if hover != d.hover {
+                                d.hover = hover;
+                                repaint = true;
+                            }
+                            let tab = app_state().lock().unwrap().nav_order[d.slot];
+                            ghost = Some((
+                                !was_active,
+                                tab,
+                                d.origin + (e.abs - d.start),
+                            ));
+                        }
+                    }
+                }
+                if active {
+                    // Drag icon for the whole drag — the button's Hand
+                    // hover cursor would otherwise stay on screen.
+                    cx.set_cursor(MouseCursor::Grabbing);
+                }
+                if let Some((first, tab, pos)) = ghost {
+                    if first {
+                        self.show_nav_ghost(cx, tab, pos);
+                    } else {
+                        self.place_nav_ghost(cx, pos);
+                    }
+                }
+                if repaint {
+                    self.repaint_nav_tabs(cx);
+                }
+                active
+            }
+            Event::MouseUp(e) if e.button.is_primary() => {
+                // Take in its own scope: an `if let` scrutinee guard would
+                // stay locked across the block and deadlock the repaint
+                // below (paint_nav_tabs reads the same mutex).
+                let taken = { nav_drag().lock().unwrap().take() };
+                if let Some(d) = taken {
+                    self.hide_nav_ghost(cx);
+                    if d.active {
+                        // Drag over: back to the nav button's pointer when
+                        // still over a slot, plain arrow anywhere else.
+                        cx.set_cursor(if d.hover.is_some() {
+                            MouseCursor::Hand
+                        } else {
+                            MouseCursor::Default
+                        });
+                        let swapped = match d.hover {
+                            Some(target) if target != d.slot => {
+                                let mut st = app_state().lock().unwrap();
+                                st.nav_order.swap(d.slot, target);
+                                if let Some(store) = st.store.as_ref() {
+                                    let _ =
+                                        store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
+                                }
+                                true
+                            }
+                            _ => false,
+                        };
+                        if swapped {
+                            self.set_status(cx, "Menu order saved");
+                        }
+                        // The release is consumed, so no Button click is
+                        // generated — nothing to suppress afterwards.
+                        *nav_suppress_click().lock().unwrap() = false;
+                        self.sync_chrome(cx);
+                        return true;
+                    }
+                }
+                false
+            }
+            _ => false,
+        }
+    }
+
+    /// Edge auto-scroll, one call per frame while a nav drag is live:
+    /// holding the dragged item against the bar's edge scrolls the bar
+    /// underneath the stationary pointer — gently at the edge zone's
+    /// border, faster the deeper the pointer sits in it — so an item
+    /// that was off-screen when the drag began can still be reached
+    /// and swapped with. The drop target is recomputed after every
+    /// step, because the items just slid under the pointer.
+    fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
+        let (rail, last) = {
+            let guard = nav_drag().lock().unwrap();
+            match guard.as_ref() {
+                Some(d) if d.active => (d.rail, d.last),
+                _ => return, // drag over: let the frame loop die
+            }
+        };
+        // Keep the loop alive for the whole drag.
+        *nav_autoscroll_frame().lock().unwrap() = Some(cx.new_next_frame());
+        let view = if rail {
+            self.ui.view(cx, ids!(rail_scroll))
+        } else {
+            self.ui.view(cx, ids!(bottom_nav_scroll))
+        };
+        let rect = view.area().rect(cx);
+        if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
+            return;
+        }
+        const ZONE: f64 = 56.0;
+        let (near_start, near_end) = if rail {
+            (
+                (ZONE - (last.y - rect.pos.y)).clamp(0.0, ZONE),
+                (ZONE - (rect.pos.y + rect.size.y - last.y)).clamp(0.0, ZONE),
+            )
+        } else {
+            (
+                (ZONE - (last.x - rect.pos.x)).clamp(0.0, ZONE),
+                (ZONE - (rect.pos.x + rect.size.x - last.x)).clamp(0.0, ZONE),
+            )
+        };
+        let step = |depth: f64| {
+            if depth > 0.0 {
+                2.0 + depth / ZONE * 10.0
+            } else {
+                0.0
+            }
+        };
+        let delta = step(near_end) - step(near_start);
+        if delta == 0.0 {
+            return;
+        }
+        let cur = view.get_scroll_pos();
+        let total = view.get_scroll_view_total();
+        let visible = view.get_scroll_view_visible();
+        let mut next = cur;
+        if rail {
+            next.y = (cur.y + delta).clamp(0.0, (total.y - visible.y).max(0.0));
+        } else {
+            next.x = (cur.x + delta).clamp(0.0, (total.x - visible.x).max(0.0));
+        }
+        if next.x == cur.x && next.y == cur.y {
+            return; // already at the scroll end
+        }
+        view.set_scroll_pos(cx, next);
+        let mut repaint = false;
+        {
+            let mut guard = nav_drag().lock().unwrap();
+            if let Some(d) = guard.as_mut() {
+                let hover = self.nav_drop_slot(cx, d, d.last);
+                if hover != d.hover {
+                    d.hover = hover;
+                    repaint = true;
+                }
+            }
+        }
+        if repaint {
+            self.repaint_nav_tabs(cx);
+        }
+    }
+
     /// Mouse Back/Forward, left-edge swipe → back, right-edge swipe → forward.
     /// TouchUpdate on phones; primary MouseDown/Up edge drag on desktop.
     /// Top-level peers do not keep history, so Back/swipe is a no-op there
@@ -9000,7 +10125,7 @@ impl App {
                 let _ = store.set_active_session_staff_id(Some(&member.id));
                 st.owner_setup_complete = true;
                 st.onboarding_complete = false;
-                st.onboard_step = 0;
+                st.onboard_step = 1;
                 st.session = Some(member);
                 st.pin_buffer.clear();
                 st.pin_visible = false;
@@ -9169,6 +10294,65 @@ impl App {
         st.booking_fuel = self.ui.text_input(cx, ids!(booking_fuel_input)).text();
         st.booking_docket = self.ui.text_input(cx, ids!(booking_docket_input)).text();
         st.booking_notify_phone = self.ui.text_input(cx, ids!(booking_notify_input)).text();
+    }
+
+    /// Persist + live-apply booking measure settings. The desk unit chips
+    /// and the Settings → Booking measures form both land here, so the
+    /// desk reflects a change immediately.
+    fn apply_measure_settings(
+        &mut self,
+        cx: &mut Cx,
+        settings: domain::BookingMeasureSettings,
+    ) {
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            store.set_booking_measure_settings(&settings)?;
+            let refreshed = {
+                let measure = store.booking_measure_settings();
+                (
+                    store.factor_to_cm(&measure.dim_unit),
+                    store.factor_to_kg(&measure.weight_unit),
+                    measure,
+                )
+            };
+            let (dim_factor, weight_factor, measure) = refreshed;
+            st.measure_dim_factor = dim_factor.unwrap_or(rust_decimal::Decimal::ONE);
+            st.measure_weight_factor = weight_factor.unwrap_or(rust_decimal::Decimal::ONE);
+            st.measure_dim_unit = measure.dim_unit;
+            st.measure_weight_unit = measure.weight_unit;
+            st.measure_divisor = measure.volumetric_divisor;
+            st.measure_slab_kg = measure.slab_kg;
+            st.status = "Booking measures saved".into();
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+        self.sync_chrome(cx);
+    }
+
+    /// Desk chip shortcut: change only the dimension and/or weight unit.
+    fn apply_measure_units(
+        &mut self,
+        cx: &mut Cx,
+        dim: Option<String>,
+        weight: Option<String>,
+    ) {
+        let current = {
+            let st = app_state().lock().unwrap();
+            st.store.as_ref().map(|s| s.booking_measure_settings())
+        };
+        let Some(mut settings) = current else {
+            return;
+        };
+        if let Some(dim) = dim {
+            settings.dim_unit = dim;
+        }
+        if let Some(weight) = weight {
+            settings.weight_unit = weight;
+        }
+        self.apply_measure_settings(cx, settings);
     }
 
     fn clear_booking_desk_ui(&mut self, cx: &mut Cx) {
@@ -10501,6 +11685,32 @@ impl MatchEvent for App {
                         }
                     }
                     FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(onboard_icon_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            match self.materialize_picked_file(cx, path) {
+                                Ok(file) => {
+                                    let outcome = (|| -> Result<String, String> {
+                                        let mut st = app_state().lock().unwrap();
+                                        let store = st
+                                            .store
+                                            .as_ref()
+                                            .ok_or_else(|| "Storage not ready".to_string())?;
+                                        let key = store.import_venue_icon(&file)?;
+                                        st.venue_icon_key = Some(key);
+                                        Ok("Shop logo saved".to_string())
+                                    })();
+                                    match outcome {
+                                        Ok(msg) => self.set_status(cx, msg),
+                                        Err(e) => self.set_status(cx, e),
+                                    }
+                                    self.sync_chrome(cx);
+                                }
+                                Err(e) => self.set_status(cx, e),
+                            }
+                        }
+                    }
+                    FileDialogAction::FileSelected { id, paths }
                         if *id == live_id!(entry_attach_pick) =>
                     {
                         if let Some(path) = paths.first() {
@@ -10510,6 +11720,7 @@ impl MatchEvent for App {
                     FileDialogAction::FileCancelled { id }
                         if *id == live_id!(item_photo_pick)
                             || *id == live_id!(venue_icon_pick)
+                            || *id == live_id!(onboard_icon_pick)
                             || *id == live_id!(entry_attach_pick) =>
                     {
                         app_state().lock().unwrap().attach_pick = None;
@@ -10519,69 +11730,186 @@ impl MatchEvent for App {
                 }
             }
         }
-        let books_nav = self.choice_chip_clicked(cx, actions, ids!(nav_books), ids!(nav_books_on))
-            || self.choice_chip_clicked(cx, actions, ids!(rail_books), ids!(rail_books_on));
-        if books_nav {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.refresh_books_overview()?;
-                st.screen = Screen::Books;
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
+        // Nav clicks honour the user's slot arrangement; the legacy More
+        // rows (hidden, kept for action wiring) still map to their tabs.
+        let mut nav_click = self.nav_tab_clicked(cx, actions);
+        if self.ui.button(cx, ids!(more_items)).clicked(actions) {
+            nav_click = Some(NavTab::Rates);
+        }
+        if self.ui.button(cx, ids!(more_sales)).clicked(actions) {
+            nav_click = Some(NavTab::Sales);
+        }
+        if self.ui.button(cx, ids!(more_day_close)).clicked(actions)
+            || self.ui.button(cx, ids!(day_close_from_sales)).clicked(actions)
+        {
+            nav_click = Some(NavTab::DayClose);
+        }
+        if self.ui.button(cx, ids!(more_reports)).clicked(actions) {
+            nav_click = Some(NavTab::Reports);
+        }
+        if self.ui.button(cx, ids!(more_ops)).clicked(actions) {
+            nav_click = Some(NavTab::Ops);
+        }
+        if self.ui.button(cx, ids!(more_cod)).clicked(actions) {
+            nav_click = Some(NavTab::Cod);
+        }
+        if self.ui.button(cx, ids!(more_riders)).clicked(actions) {
+            nav_click = Some(NavTab::Riders);
+        }
+        if self.ui.button(cx, ids!(more_inventory)).clicked(actions) {
+            nav_click = Some(NavTab::Inventory);
+        }
+        if self.ui.button(cx, ids!(more_branches)).clicked(actions) {
+            nav_click = Some(NavTab::Branches);
+        }
+        if self.ui.button(cx, ids!(more_credit)).clicked(actions) {
+            nav_click = Some(NavTab::Credit);
+        }
+        if self.ui.button(cx, ids!(more_team)).clicked(actions) {
+            nav_click = Some(NavTab::Team);
+        }
+        if self.ui.button(cx, ids!(more_settings)).clicked(actions) {
+            nav_click = Some(NavTab::Settings);
+        }
+        if self.ui.button(cx, ids!(more_lock)).clicked(actions) {
+            nav_click = Some(NavTab::Lock);
+        }
+        match nav_click {
+            Some(NavTab::Books) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.refresh_books_overview()?;
+                    st.screen = Screen::Books;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                // Drop leftover focus so the old Sell face cannot look selected.
+                cx.set_key_focus(Area::Empty);
+                self.sync_chrome(cx);
             }
-            // Drop leftover focus so the old Sell face cannot look selected.
-            cx.set_key_focus(Area::Empty);
-            self.sync_chrome(cx);
-        }
-        let sell_nav = self.choice_chip_clicked(cx, actions, ids!(nav_sell), ids!(nav_sell_on))
-            || self.choice_chip_clicked(cx, actions, ids!(rail_sell), ids!(rail_sell_on));
-        if sell_nav {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
-        }
-        let buy_nav = self.choice_chip_clicked(cx, actions, ids!(nav_buy), ids!(nav_buy_on))
-            || self.choice_chip_clicked(cx, actions, ids!(rail_buy), ids!(rail_buy_on));
-        if buy_nav {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Buy, |s| {
-                s.can_access_inventory() || s.can_access_sales() || s.is_owner()
-            });
-        }
-        let peer = |app: &mut App, cx: &mut Cx, actions: &Actions, a: &[LiveId], b: &[LiveId], ra: &[LiveId], rb: &[LiveId]| {
-            app.choice_chip_clicked(cx, actions, a, b)
-                || app.choice_chip_clicked(cx, actions, ra, rb)
-        };
-        if peer(self, cx, actions, ids!(nav_rates), ids!(nav_rates_on), ids!(rail_rates), ids!(rail_rates_on))
-            || self.ui.button(cx, ids!(more_items)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
-        }
-        if peer(self, cx, actions, ids!(nav_sales), ids!(nav_sales_on), ids!(rail_sales), ids!(rail_sales_on))
-            || self.ui.button(cx, ids!(more_sales)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
-        }
-        if peer(self, cx, actions, ids!(nav_credit), ids!(nav_credit_on), ids!(rail_credit), ids!(rail_credit_on))
-            || self.ui.button(cx, ids!(more_credit)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
-        }
-        if peer(self, cx, actions, ids!(nav_team), ids!(nav_team_on), ids!(rail_team), ids!(rail_team_on))
-            || self.ui.button(cx, ids!(more_team)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Team, |s| s.can_access_team() || s.is_owner());
-        }
-        if peer(self, cx, actions, ids!(nav_settings), ids!(nav_settings_on), ids!(rail_settings), ids!(rail_settings_on))
-            || self.ui.button(cx, ids!(more_settings)).clicked(actions)
-        {
-            cx.set_key_focus(Area::Empty);
-            self.go_if_allowed(cx, Screen::Settings, |s| s.can_access_backup() || s.is_owner());
+            Some(NavTab::Sell) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+            }
+            Some(NavTab::Buy) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Buy, |s| {
+                    s.can_access_inventory() || s.can_access_sales() || s.is_owner()
+                });
+            }
+            Some(NavTab::Rates) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+            }
+            Some(NavTab::Sales) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
+            }
+            Some(NavTab::Credit) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
+            }
+            Some(NavTab::Team) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Team, |s| s.can_access_team() || s.is_owner());
+            }
+            Some(NavTab::Settings) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_if_allowed(cx, Screen::Settings, |s| {
+                    s.can_access_backup() || s.is_owner()
+                });
+            }
+            Some(NavTab::DayClose) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.refresh_day_close_text()?;
+                    st.screen = Screen::DayClose;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+            Some(NavTab::Ops)
+            | Some(NavTab::Cod)
+            | Some(NavTab::Riders)
+            | Some(NavTab::Reports) => {
+                let focus = match nav_click {
+                    Some(NavTab::Ops) => ReportsNav::Ops,
+                    Some(NavTab::Cod) => ReportsNav::Cod,
+                    Some(NavTab::Riders) => ReportsNav::Riders,
+                    _ => ReportsNav::Bank,
+                };
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() && !actor.can_access_sales() {
+                        return Err("Not allowed".into());
+                    }
+                    st.reports_nav = focus;
+                    st.refresh_reports_facet()?;
+                    st.screen = Screen::Reports;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+            Some(NavTab::Inventory) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.can_access_inventory() && !actor.is_owner() {
+                        return Err("Not allowed for your role".into());
+                    }
+                    st.refresh_inventory_text()?;
+                    st.screen = Screen::Inventory;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+            Some(NavTab::Branches) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.can_access_branches() && !actor.is_owner() {
+                        return Err("Not allowed for your role".into());
+                    }
+                    st.refresh_branches_text()?;
+                    st.screen = Screen::Branches;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+            Some(NavTab::Lock) => {
+                self.clear_undo_snackbar(cx);
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_active_session_staff_id(None);
+                    }
+                    st.session = None;
+                    st.screen = if st.must_confirm_device_role {
+                        Screen::DeviceSetup
+                    } else {
+                        Screen::Lock
+                    };
+                    st.pin_buffer.clear();
+                    st.status = "Locked".into();
+                }
+                self.sync_chrome(cx);
+            }
+            None => {}
         }
         if self.ui.button(cx, ids!(books_to_sell)).clicked(actions) {
             self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
@@ -10590,18 +11918,6 @@ impl MatchEvent for App {
             self.go_if_allowed(cx, Screen::Buy, |s| {
                 s.can_access_inventory() || s.can_access_sales() || s.is_owner()
             });
-        }
-        if self.ui.button(cx, ids!(books_refresh)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.refresh_books_overview()?;
-                st.status = "Books refreshed".into();
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(books_day_close)).clicked(actions) {
             let result = (|| -> Result<(), String> {
@@ -10747,29 +12063,6 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(more_day_close)).clicked(actions)
-            || self.ui.button(cx, ids!(day_close_from_sales)).clicked(actions)
-            || peer(
-                self,
-                cx,
-                actions,
-                ids!(nav_day_close),
-                ids!(nav_day_close_on),
-                ids!(rail_day_close),
-                ids!(rail_day_close_on),
-            )
-        {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.refresh_day_close_text()?;
-                st.screen = Screen::DayClose;
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
-        }
         if self.ui.button(cx, ids!(day_close_commit)).clicked(actions) {
             let counted_text = self.ui.text_input(cx, ids!(day_close_counted_input)).text();
             let result = (|| -> Result<String, String> {
@@ -10801,142 +12094,9 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        let more_ops = self.ui.button(cx, ids!(more_ops)).clicked(actions)
-            || peer(self, cx, actions, ids!(nav_ops), ids!(nav_ops_on), ids!(rail_ops), ids!(rail_ops_on));
-        let more_cod = self.ui.button(cx, ids!(more_cod)).clicked(actions)
-            || peer(self, cx, actions, ids!(nav_cod), ids!(nav_cod_on), ids!(rail_cod), ids!(rail_cod_on));
-        let more_riders = self.ui.button(cx, ids!(more_riders)).clicked(actions)
-            || peer(
-                self,
-                cx,
-                actions,
-                ids!(nav_riders),
-                ids!(nav_riders_on),
-                ids!(rail_riders),
-                ids!(rail_riders_on),
-            );
-        let more_reports = self.ui.button(cx, ids!(more_reports)).clicked(actions)
-            || peer(
-                self,
-                cx,
-                actions,
-                ids!(nav_reports),
-                ids!(nav_reports_on),
-                ids!(rail_reports),
-                ids!(rail_reports_on),
-            );
-        if more_reports || more_ops || more_cod || more_riders {
-            let ops_focus = more_ops;
-            let cod_focus = more_cod;
-            let riders_focus = more_riders;
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if !actor.is_owner() && !actor.can_access_sales() {
-                    return Err("Not allowed".into());
-                }
-                st.reports_nav = if ops_focus {
-                    ReportsNav::Ops
-                } else if cod_focus {
-                    ReportsNav::Cod
-                } else if riders_focus {
-                    ReportsNav::Riders
-                } else {
-                    ReportsNav::Bank
-                };
-                st.refresh_reports_facet()?;
-                st.screen = Screen::Reports;
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(more_inventory)).clicked(actions)
-            || peer(
-                self,
-                cx,
-                actions,
-                ids!(nav_inventory),
-                ids!(nav_inventory_on),
-                ids!(rail_inventory),
-                ids!(rail_inventory_on),
-            )
-        {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if !actor.can_access_inventory() && !actor.is_owner() {
-                    return Err("Not allowed for your role".into());
-                }
-                st.refresh_inventory_text()?;
-                st.screen = Screen::Inventory;
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(more_branches)).clicked(actions)
-            || peer(
-                self,
-                cx,
-                actions,
-                ids!(nav_branches),
-                ids!(nav_branches_on),
-                ids!(rail_branches),
-                ids!(rail_branches_on),
-            )
-        {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if !actor.can_access_branches() && !actor.is_owner() {
-                    return Err("Not allowed for your role".into());
-                }
-                st.refresh_branches_text()?;
-                st.screen = Screen::Branches;
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
-        }
         if self.ui.button(cx, ids!(client_pair_back)).clicked(actions) {
             let _ = self.navigate_back(cx);
         }
-        if self.ui.button(cx, ids!(more_lock)).clicked(actions)
-            || peer(
-                self,
-                cx,
-                actions,
-                ids!(nav_lock),
-                ids!(nav_lock_on),
-                ids!(rail_lock),
-                ids!(rail_lock_on),
-            )
-        {
-            self.clear_undo_snackbar(cx);
-            {
-                let mut st = app_state().lock().unwrap();
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.set_active_session_staff_id(None);
-                }
-                st.session = None;
-                st.screen = if st.must_confirm_device_role {
-                    Screen::DeviceSetup
-                } else {
-                    Screen::Lock
-                };
-                st.pin_buffer.clear();
-                st.status = "Locked".into();
-            }
-            self.sync_chrome(cx);
-        }
-
         if self.choice_chip_clicked(
             cx,
             actions,
@@ -11518,13 +12678,25 @@ impl MatchEvent for App {
             app_state().lock().unwrap().selected_customer_id = None;
             self.sync_chrome(cx);
         }
-        for (chip, kind) in [
-            (ids!(credit_kind_consignor), "Consignor"),
-            (ids!(credit_kind_carrier), "Carrier"),
-            (ids!(credit_kind_both), "Both"),
-            (ids!(credit_kind_supplier), "Supplier"),
+        for ((chip, chip_on), kind) in [
+            (
+                (ids!(credit_kind_consignor), ids!(credit_kind_consignor_on)),
+                "Consignor",
+            ),
+            (
+                (ids!(credit_kind_carrier), ids!(credit_kind_carrier_on)),
+                "Carrier",
+            ),
+            (
+                (ids!(credit_kind_both), ids!(credit_kind_both_on)),
+                "Both",
+            ),
+            (
+                (ids!(credit_kind_supplier), ids!(credit_kind_supplier_on)),
+                "Supplier",
+            ),
         ] {
-            if self.ui.button(cx, chip).clicked(actions) {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
                 self.ui
                     .text_input(cx, ids!(credit_add_kind))
                     .set_text(cx, kind);
@@ -11541,26 +12713,70 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(credit_add_btn)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
+            let phone = self.ui.text_input(cx, ids!(credit_add_phone)).text();
             let kind = self.ui.text_input(cx, ids!(credit_add_kind)).text();
-            let result = (|| -> Result<(), String> {
+            let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add customers")?;
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let customer = store.add_customer_kind(&name, "", kind.trim())?;
-                st.selected_customer_id = Some(customer.id);
-                st.reload_all()?;
-                st.status = format!("Added {}", name);
-                Ok(())
+                if let Some(id) = st.selected_customer_id.clone() {
+                    st.require_server_role("Edit party")?;
+                    store.update_customer(&id, &name, &phone)?;
+                    store.set_customer_kind_label(&id, kind.trim())?;
+                    st.reload_all()?;
+                    Ok(format!("Party updated: {}", name.trim()))
+                } else {
+                    st.require_server_role("Add customers")?;
+                    let customer = store.add_customer_kind(&name, &phone, kind.trim())?;
+                    st.selected_customer_id = Some(customer.id);
+                    st.reload_all()?;
+                    Ok(format!(
+                        "Added {} — now editing it; tap New party to add another",
+                        name.trim()
+                    ))
+                }
             })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            } else {
-                self.ui
-                    .text_input(cx, ids!(credit_add_name))
-                    .set_text(cx, "");
-                self.ui
-                    .text_input(cx, ids!(credit_add_kind))
-                    .set_text(cx, "");
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(party_form_clear)).clicked(actions) {
+            app_state().lock().unwrap().selected_customer_id = None;
+            self.ui
+                .text_input(cx, ids!(credit_add_name))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(credit_add_phone))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(credit_add_kind))
+                .set_text(cx, "");
+            self.set_status(cx, "New party — form cleared");
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(party_delete)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Delete party")?;
+                let id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let msg = store.delete_customer(&id)?;
+                st.selected_customer_id = None;
+                st.reload_all()?;
+                Ok(msg)
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(credit_add_name)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(credit_add_phone)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(credit_add_kind)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }
@@ -11744,12 +12960,26 @@ impl MatchEvent for App {
             let list = widget.portal_list(cx, ids!(list));
             for (item_id, item) in list.items_with_actions(actions) {
                 if item.button(cx, ids!(pick)).clicked(actions) {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(c) = st.customers.get(item_id).cloned() {
-                        st.selected_customer_id = Some(c.id);
-                        st.status = format!("Credit customer: {}", c.name);
+                    let picked = {
+                        let mut st = app_state().lock().unwrap();
+                        let picked = st.customers.get(item_id).cloned();
+                        if let Some(c) = &picked {
+                            st.selected_customer_id = Some(c.id.clone());
+                            st.status = format!("Credit customer: {}", c.name);
+                        }
+                        picked
+                    };
+                    if let Some(c) = picked {
+                        self.ui
+                            .text_input(cx, ids!(credit_add_name))
+                            .set_text(cx, &c.name);
+                        self.ui
+                            .text_input(cx, ids!(credit_add_phone))
+                            .set_text(cx, &c.phone);
+                        self.ui
+                            .text_input(cx, ids!(credit_add_kind))
+                            .set_text(cx, &c.kind_label);
                     }
-                    drop(st);
                     self.sync_chrome(cx);
                 }
             }
@@ -11858,6 +13088,28 @@ impl MatchEvent for App {
             }
         }
 
+        // Desk unit chips: switch the shop's entry units without leaving
+        // the desk (saved via the same settings path as Booking measures).
+        for ((chip, chip_on), code) in [
+            ((ids!(wunit_kg), ids!(wunit_kg_on)), "kg"),
+            ((ids!(wunit_lb), ids!(wunit_lb_on)), "lb"),
+            ((ids!(wunit_g), ids!(wunit_g_on)), "g"),
+            ((ids!(wunit_oz), ids!(wunit_oz_on)), "oz"),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                self.apply_measure_units(cx, None, Some(code.to_string()));
+            }
+        }
+        for ((chip, chip_on), code) in [
+            ((ids!(dunit_cm), ids!(dunit_cm_on)), "cm"),
+            ((ids!(dunit_in), ids!(dunit_in_on)), "in"),
+            ((ids!(dunit_ft), ids!(dunit_ft_on)), "ft"),
+            ((ids!(dunit_m), ids!(dunit_m_on)), "m"),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                self.apply_measure_units(cx, Some(code.to_string()), None);
+            }
+        }
         if self.ui.button(cx, ids!(clear_cart)).clicked(actions)
             || self.ui.button(cx, ids!(next_booking_btn)).clicked(actions)
         {
@@ -13013,8 +14265,7 @@ impl MatchEvent for App {
                 ids!(reports_balance_sheet),
                 ids!(reports_balance_sheet_on),
             );
-            let refresh = self.ui.button(cx, ids!(reports_refresh)).clicked(actions);
-            if today || month || aging || bs || refresh {
+            if today || month || aging || bs {
                 let kind = if aging {
                     Some(BooksReportKind::Aging)
                 } else if bs {
@@ -13024,16 +14275,10 @@ impl MatchEvent for App {
                 } else if today {
                     Some(BooksReportKind::Today)
                 } else {
-                    None // refresh: keep current kind
+                    None
                 };
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
-                    if refresh && kind.is_none() && !matches!(st.reports_nav, ReportsNav::Bank) {
-                        st.refresh_reports_facet()?;
-                        st.screen = Screen::Reports;
-                        st.status = "Ops desk refreshed".into();
-                        return Ok(());
-                    }
                     st.reports_nav = ReportsNav::Bank;
                     if let Some(k) = kind {
                         st.books_report_kind = k;
@@ -13451,18 +14696,6 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(inv_refresh)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                st.reload_all()?;
-                st.refresh_inventory_text()?;
-                st.status = "Stock refreshed".into();
-                Ok(())
-            })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            self.sync_chrome(cx);
-        }
-
         if self.ui.button(cx, ids!(org_save)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(org_name_input)).text();
             let result = (|| -> Result<String, String> {
@@ -13737,7 +14970,18 @@ impl MatchEvent for App {
                 st.require_server_role("Add unit conversion")?;
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.add_unit_conversion(&from, &to, factor_milli)?;
-                st.status = format!("1 {from} → {to} conversion added");
+                st.status = match store.resolve_unit(&from) {
+                    Some((family, factor)) => {
+                        let anchor = domain::unit_family_anchor(&family).unwrap_or("");
+                        format!(
+                            "Added — now 1 {from} = {} {anchor} ({family})",
+                            precise::format_kg(factor)
+                        )
+                    }
+                    None => format!(
+                        "1 {from} → {to} added — '{from}' is not linked to a standard unit yet"
+                    ),
+                };
                 Ok(())
             })();
             match result {
@@ -13745,6 +14989,45 @@ impl MatchEvent for App {
                     self.ui.text_input(cx, ids!(conv_from_input)).set_text(cx, "");
                     self.ui.text_input(cx, ids!(conv_to_input)).set_text(cx, "");
                     self.ui.text_input(cx, ids!(conv_factor_input)).set_text(cx, "");
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(measure_save)).clicked(actions) {
+            let dim = self.ui.text_input(cx, ids!(measure_dim_input)).text();
+            let weight = self.ui.text_input(cx, ids!(measure_weight_input)).text();
+            let divisor_text = self.ui.text_input(cx, ids!(measure_divisor_input)).text();
+            let slab_text = self.ui.text_input(cx, ids!(measure_slab_input)).text();
+            let parsed = (|| -> Result<domain::BookingMeasureSettings, String> {
+                let st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let mut settings = store.booking_measure_settings();
+                if !dim.trim().is_empty() {
+                    settings.dim_unit = dim.trim().to_ascii_lowercase();
+                }
+                if !weight.trim().is_empty() {
+                    settings.weight_unit = weight.trim().to_ascii_lowercase();
+                }
+                if !divisor_text.trim().is_empty() {
+                    settings.volumetric_divisor = booking::parse_positive(&divisor_text)
+                        .filter(|d| *d > precise::ZERO)
+                        .ok_or_else(|| "Volumetric divisor must be a number > 0".to_string())?;
+                }
+                if !slab_text.trim().is_empty() {
+                    settings.slab_kg = booking::parse_positive(&slab_text)
+                        .filter(|d| *d > precise::ZERO)
+                        .ok_or_else(|| "Slab must be a number > 0 (in kg)".to_string())?;
+                }
+                Ok(settings)
+            })();
+            match parsed {
+                Ok(settings) => {
+                    self.apply_measure_settings(cx, settings);
+                    self.ui.text_input(cx, ids!(measure_dim_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(measure_weight_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(measure_divisor_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(measure_slab_input)).set_text(cx, "");
                 }
                 Err(e) => self.set_status(cx, e),
             }
@@ -13758,6 +15041,9 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(venue_icon_clear)).clicked(actions) {
             self.clear_venue_icon(cx);
+        }
+        if self.ui.button(cx, ids!(onboard_icon_pick)).clicked(actions) {
+            self.pick_onboard_icon(cx);
         }
 
         if self.ui.button(cx, ids!(backup_btn)).clicked(actions) {
@@ -13835,6 +15121,19 @@ impl AppMain for App {
             }
         }
         self.match_event(cx, event);
+        if let Event::NextFrame(e) = event {
+            let ours = nav_autoscroll_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if ours {
+                self.nav_drag_autoscroll(cx);
+            }
+        }
+        if self.pointer_nav_drag(cx, event) {
+            return;
+        }
         if self.pointer_navigates(cx, event) {
             return;
         }
@@ -13843,5 +15142,30 @@ impl AppMain for App {
         if matches!(event, Event::LiveEdit | Event::ScriptReapply | Event::Startup) {
             self.sync_chrome(cx);
         }
+    }
+}
+
+#[cfg(test)]
+mod nav_order_tests {
+    use super::*;
+
+    #[test]
+    fn saved_order_wins_and_missing_tabs_append() {
+        let order = parse_nav_order(Some("credit,books,bogus,credit"));
+        assert_eq!(order.len(), NAV_TABS.len());
+        assert_eq!(order[0], NavTab::Credit);
+        assert_eq!(order[1], NavTab::Books);
+        // Every tab appears exactly once.
+        for tab in NAV_TABS {
+            assert_eq!(order.iter().filter(|t| **t == tab).count(), 1);
+        }
+        // Round-trip through CSV is stable.
+        assert_eq!(parse_nav_order(Some(&nav_order_csv(&order))), order);
+    }
+
+    #[test]
+    fn no_saved_order_is_default() {
+        assert_eq!(parse_nav_order(None), NAV_TABS.to_vec());
+        assert_eq!(parse_nav_order(Some("")), NAV_TABS.to_vec());
     }
 }
