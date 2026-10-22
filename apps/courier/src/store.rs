@@ -5,12 +5,12 @@ use crate::domain::{
     AttachmentKind, AuditEvent, BookingMeasureSettings, BooksOverview, Branch, BranchSnapshot,
     Category,
     CreditLedgerEntry, Customer,
-    DayTotals, DiningTable, EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket,
-    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrderType,
+    DayTotals, EntryAttachment, EventTimes,
+    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport,
     OrgConsolidatedReport,
     PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
     Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
-    StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef, VenueMode, STOCK_UNTRACKED,
+    StockMovement, TaxRate, UnitConversion, UnitDef, STOCK_UNTRACKED,
 };
 use crate::media;
 use crate::entity_template::{self, EntityTemplate};
@@ -88,7 +88,6 @@ impl Store {
                     image_key TEXT,
                     stock_qty INTEGER NOT NULL DEFAULT -1,
                     category_id TEXT NOT NULL DEFAULT '',
-                    station_id TEXT NOT NULL DEFAULT '',
                     tax_bps INTEGER NOT NULL DEFAULT 0,
                     modifiers_json TEXT NOT NULL DEFAULT '[]',
                     aliases_json TEXT NOT NULL DEFAULT '[]',
@@ -102,14 +101,12 @@ impl Store {
                     total_paise INTEGER NOT NULL,
                     pay_method TEXT NOT NULL,
                     status TEXT NOT NULL,
-                    table_id TEXT,
                     lines_total_paise INTEGER,
                     rounding_paise INTEGER NOT NULL DEFAULT 0,
                     customer_id TEXT,
                     created_by_id TEXT NOT NULL DEFAULT '',
                     created_by_name TEXT NOT NULL DEFAULT '',
                     branch_id TEXT NOT NULL DEFAULT '',
-                    order_type TEXT NOT NULL DEFAULT 'counter',
                     tax_paise INTEGER NOT NULL DEFAULT 0,
                     tax_pricing TEXT NOT NULL DEFAULT 'inclusive',
                     tax_label TEXT NOT NULL DEFAULT 'Tax',
@@ -172,22 +169,6 @@ impl Store {
                     login_id TEXT NOT NULL DEFAULT '',
                     password_hash TEXT NOT NULL DEFAULT ''
                 );
-                CREATE TABLE IF NOT EXISTS tables_dining (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    active_sale_id TEXT,
-                    branch_id TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS kot_tickets (
-                    id TEXT PRIMARY KEY,
-                    sale_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    summary TEXT NOT NULL,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    station_id TEXT NOT NULL DEFAULT ''
-                );
                 CREATE TABLE IF NOT EXISTS audit_events (
                     id TEXT PRIMARY KEY,
                     created_at TEXT NOT NULL,
@@ -245,12 +226,6 @@ impl Store {
                     last_sync_at TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS categories (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    name TEXT NOT NULL,
-                    sort_order INTEGER NOT NULL DEFAULT 0
-                );
-                CREATE TABLE IF NOT EXISTS kitchen_stations (
                     id TEXT PRIMARY KEY,
                     branch_id TEXT NOT NULL DEFAULT '',
                     name TEXT NOT NULL,
@@ -561,7 +536,6 @@ impl Store {
         }
 
         for (key, value) in [
-            ("venue_mode", "counter"),
             ("onboarding_complete", "0"),
             ("client_paired", "0"),
             ("next_invoice_seq", "1"),
@@ -642,8 +616,6 @@ impl Store {
         for table in [
             "products",
             "sales",
-            "tables_dining",
-            "kot_tickets",
             "expenses",
             "customers",
         ] {
@@ -656,26 +628,6 @@ impl Store {
                     params![branch_id],
                 )
                 .map_err(|e| e.to_string())?;
-        }
-
-        let station_count: i64 = self
-            .conn
-            .query_row(
-                "SELECT COUNT(*) FROM kitchen_stations WHERE branch_id = ?1",
-                params![branch_id],
-                |r| r.get(0),
-            )
-            .map_err(|e| e.to_string())?;
-        if station_count == 0 {
-            for (i, name) in ["Hot", "Cold"].iter().enumerate() {
-                self.conn
-                    .execute(
-                        "INSERT INTO kitchen_stations(id, branch_id, name, sort_order)
-                         VALUES(?1, ?2, ?3, ?4)",
-                        params![new_id(), branch_id, name, i as i64],
-                    )
-                    .map_err(|e| e.to_string())?;
-            }
         }
 
         let country = match self.meta_get("country_code")?.filter(|c| !c.trim().is_empty()) {
@@ -893,27 +845,6 @@ impl Store {
             self.meta_set("owner_setup_complete", "1")?;
         }
 
-        let table_count: i64 = self
-            .conn
-            .query_row("SELECT COUNT(*) FROM tables_dining", [], |r| r.get(0))
-            .map_err(|e| e.to_string())?;
-        if table_count == 0 {
-            let branch_id = self.active_branch_id()?;
-            for n in 1..=6 {
-                self.conn
-                    .execute(
-                        "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id)
-                         VALUES(?1, ?2, ?3, NULL, ?4)",
-                        params![
-                            new_id(),
-                            format!("T{n}"),
-                            TableStatus::Available.as_str(),
-                            branch_id
-                        ],
-                    )
-                    .map_err(|e| e.to_string())?;
-            }
-        }
         Ok(())
     }
 
@@ -1010,18 +941,6 @@ impl Store {
         self.meta_set("onboarding_complete", "1")
     }
 
-    pub fn venue_mode(&self) -> Result<VenueMode, String> {
-        Ok(VenueMode::parse(
-            &self
-                .meta_get("venue_mode")?
-                .unwrap_or_else(|| "counter".into()),
-        ))
-    }
-
-    pub fn set_venue_mode(&self, mode: VenueMode) -> Result<(), String> {
-        self.meta_set("venue_mode", mode.as_str())
-    }
-
     pub fn entity_template_id(&self) -> Result<String, String> {
         Ok(entity_template::COURIER.id.into())
     }
@@ -1038,7 +957,6 @@ impl Store {
         self.meta_set("qty_unit_hint", tmpl.qty_unit_hint)?;
         self.meta_set("lane_declared_label", tmpl.lane_declared_label)?;
         self.meta_set("lane_owner_label", tmpl.lane_owner_label)?;
-        self.set_venue_mode(tmpl.venue_mode)?;
         let _ = self.seed_template_products(tmpl)?;
         let _ = self.seed_template_parties(tmpl)?;
         Ok(tmpl)
@@ -1437,9 +1355,6 @@ impl Store {
         if sale.tax_paise > 0 && sale.tax_pricing().is_inclusive() {
             out.push_str(&format!("(Incl. {tax_label})\n"));
         }
-        if sale.order_type() != OrderType::Counter {
-            out.push_str(&format!("{}\n", sale.order_type().label()));
-        }
         if !sale.created_by_name.is_empty() {
             out.push_str(&format!("By {}\n", sale.created_by_name));
         }
@@ -1609,66 +1524,6 @@ impl Store {
         }
     }
 
-    pub fn add_table(&self, name: &str) -> Result<DiningTable, String> {
-        self.assert_server_writer("Add tables")?;
-        let name = name.trim();
-        if name.is_empty() {
-            return Err("Table name required".into());
-        }
-        let id = new_id();
-        self.conn
-            .execute(
-                "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id)
-                 VALUES(?1, ?2, ?3, NULL, ?4)",
-                params![
-                    id,
-                    name,
-                    TableStatus::Available.as_str(),
-                    self.active_branch_id()?
-                ],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(DiningTable {
-            id,
-            name: name.into(),
-            status: TableStatus::Available,
-            active_sale_id: None,
-        })
-    }
-
-    pub fn rename_table(&self, table_id: &str, name: &str) -> Result<(), String> {
-        self.assert_server_writer("Rename tables")?;
-        let name = name.trim();
-        if name.is_empty() {
-            return Err("Table name required".into());
-        }
-        let n = self
-            .conn
-            .execute(
-                "UPDATE tables_dining SET name = ?1 WHERE id = ?2",
-                params![name, table_id],
-            )
-            .map_err(|e| e.to_string())?;
-        if n == 0 {
-            return Err("Table not found".into());
-        }
-        Ok(())
-    }
-
-    pub fn delete_table(&self, table_id: &str) -> Result<(), String> {
-        self.assert_server_writer("Delete tables")?;
-        let n = self
-            .conn
-            .execute("DELETE FROM tables_dining WHERE id = ?1", params![table_id])
-            .map_err(|e| e.to_string())?;
-        if n == 0 {
-            return Err("Table not found".into());
-        }
-        Ok(())
-    }
-
-    /// Apply a remote catalog snapshot (Client cache). Server branch ids mean
-    /// nothing here, so cached items are re-tagged to this device's branch.
     pub fn replace_catalog_from_sync(&self, products: &[Product]) -> Result<(), String> {
         self.conn
             .execute("DELETE FROM products", [])
@@ -1681,24 +1536,17 @@ impl Store {
         Ok(())
     }
 
-    /// Cache the Server's menu groupings / stations so a Client can route KOTs.
-    pub fn replace_menu_meta_from_sync(
+    /// Cache the Server's item groupings on a Client.
+    pub fn replace_categories_from_sync(
         &self,
         categories: &[Category],
-        stations: &[KitchenStation],
     ) -> Result<(), String> {
-        if categories.is_empty() && stations.is_empty() {
+        if categories.is_empty() {
             return Ok(());
         }
         let branch_id = self.active_branch_id()?;
         self.conn
             .execute("DELETE FROM categories WHERE branch_id = ?1", params![branch_id])
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "DELETE FROM kitchen_stations WHERE branch_id = ?1",
-                params![branch_id],
-            )
             .map_err(|e| e.to_string())?;
         for c in categories {
             self.conn
@@ -1706,15 +1554,6 @@ impl Store {
                     "INSERT OR REPLACE INTO categories(id, branch_id, name, sort_order)
                      VALUES(?1, ?2, ?3, ?4)",
                     params![c.id, branch_id, c.name, c.sort_order],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        for s in stations {
-            self.conn
-                .execute(
-                    "INSERT OR REPLACE INTO kitchen_stations(id, branch_id, name, sort_order)
-                     VALUES(?1, ?2, ?3, ?4)",
-                    params![s.id, branch_id, s.name, s.sort_order],
                 )
                 .map_err(|e| e.to_string())?;
         }
@@ -1870,31 +1709,6 @@ impl Store {
         Ok(())
     }
 
-    pub fn replace_tables_from_sync(&self, tables: &[DiningTable]) -> Result<(), String> {
-        if tables.is_empty() {
-            return Ok(());
-        }
-        self.conn
-            .execute("DELETE FROM tables_dining", [])
-            .map_err(|e| e.to_string())?;
-        for t in tables {
-            self.conn
-                .execute(
-                    "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id)
-                     VALUES(?1, ?2, ?3, ?4, ?5)",
-                    params![
-                        t.id,
-                        t.name,
-                        t.status.as_str(),
-                        t.active_sale_id,
-                        self.active_branch_id()?
-                    ],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        Ok(())
-    }
-
     /// Cache recent sales (without lines) so Client Sales/today views work after sync.
     pub fn replace_sales_cache_from_sync(&self, sales: &[Sale]) -> Result<(), String> {
         // Keep local structure simple: wipe cached completed sales then insert headers.
@@ -1913,10 +1727,10 @@ impl Store {
                 .execute(
                     "INSERT INTO sales(
                         id, created_at, total_paise, lines_total_paise, rounding_paise,
-                        pay_method, status, table_id, customer_id, created_by_id, created_by_name,
-                        branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
+                        pay_method, status, customer_id, created_by_id, created_by_name,
+                        branch_id, tax_paise, tax_pricing, tax_label, net_paise,
                         service_paise, invoice_no, money_lane
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20)",
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)",
                     params![
                         s.id,
                         s.created_at,
@@ -1925,12 +1739,10 @@ impl Store {
                         s.rounding_paise,
                         s.pay_method,
                         s.status,
-                        s.table_id,
                         s.customer_id,
                         s.created_by_id,
                         s.created_by_name,
                         self.active_branch_id()?,
-                        s.order_type().as_str(),
                         s.tax_paise,
                         s.tax_pricing().as_str(),
                         s.tax_label(),
@@ -1990,86 +1802,6 @@ impl Store {
         Ok(())
     }
 
-    pub fn save_table_draft(&self, table_id: &str, draft_json: &str) -> Result<(), String> {
-        self.meta_set(&format!("table_draft_{table_id}"), draft_json)?;
-        self.conn
-            .execute(
-                "UPDATE tables_dining SET status = ?1, active_sale_id = ?2 WHERE id = ?3",
-                params![TableStatus::Occupied.as_str(), format!("draft:{table_id}"), table_id],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
-    }
-
-    pub fn load_table_draft(&self, table_id: &str) -> Result<Option<String>, String> {
-        self.meta_get(&format!("table_draft_{table_id}"))
-    }
-
-    pub fn clear_table_draft(&self, table_id: &str) -> Result<(), String> {
-        self.assert_server_writer("Clear a table")?;
-        self.meta_set(&format!("table_draft_{table_id}"), "")?;
-        self.free_table(table_id)?;
-        Ok(())
-    }
-
-    /// Create a kitchen ticket from the current cart without charging (Tables & kitchen on).
-    pub fn send_kot_from_cart(
-        &self,
-        draft: &SaleDraft,
-        table_id: Option<&str>,
-        actor: &StaffMember,
-    ) -> Result<String, String> {
-        if !self.venue_mode()?.creates_kot() {
-            return Err("Turn on Tables & kitchen in Settings to send kitchen tickets".into());
-        }
-        if draft.lines.is_empty() {
-            return Err("Cart is empty".into());
-        }
-        let summary = draft
-            .lines
-            .iter()
-            .map(kot_line_label)
-            .collect::<Vec<_>>()
-            .join(", ");
-        let table_label = if let Some(tid) = table_id {
-            self.list_tables()?
-                .into_iter()
-                .find(|t| t.id == tid)
-                .map(|t| format!("{} · ", t.name))
-                .unwrap_or_default()
-        } else {
-            String::new()
-        };
-        let kot_id = new_id();
-        let created_at = Local::now().to_rfc3339();
-        self.conn
-            .execute(
-                "INSERT INTO kot_tickets(
-                    id, sale_id, created_at, status, summary, branch_id, station_id
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, '')",
-                params![
-                    kot_id,
-                    format!("prepay:{}", actor.id),
-                    created_at,
-                    KotStatus::New.as_str(),
-                    format!("{table_label}{summary}"),
-                    self.active_branch_id()?
-                ],
-            )
-            .map_err(|e| e.to_string())?;
-        if let Some(tid) = table_id {
-            let _ = self.save_table_draft(tid, "{}");
-            self.conn
-                .execute(
-                    "UPDATE tables_dining SET status = ?1 WHERE id = ?2",
-                    params![TableStatus::Occupied.as_str(), tid],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        self.audit(actor, "kot.send", &kot_id)?;
-        Ok(kot_id)
-    }
-
     /// Charge a bill with any mix of Cash / UPI(rail) / Card / Credit.
     /// Parts must be positive and sum exactly to the charged (taxed) total.
     /// Credit portion needs `customer_id` (rest can be paid now; remainder on khata).
@@ -2077,7 +1809,6 @@ impl Store {
         &mut self,
         draft: &SaleDraft,
         parts: &[(PayMethod, i64)],
-        table_id: Option<&str>,
         customer_id: Option<&str>,
         actor: &StaffMember,
     ) -> Result<Sale, String> {
@@ -2125,7 +1856,7 @@ impl Store {
             // Legacy row label; receipt lists each tender from sale_payments.
             PayMethod::Split
         };
-        self.write_sale(draft, pay, table_id, customer_id, actor, parts)
+        self.write_sale(draft, pay, customer_id, actor, parts)
     }
 
     /// Old name — prefer `finalize_sale_tenders`.
@@ -2133,10 +1864,9 @@ impl Store {
         &mut self,
         draft: &SaleDraft,
         parts: &[(PayMethod, i64)],
-        table_id: Option<&str>,
         actor: &StaffMember,
     ) -> Result<Sale, String> {
-        self.finalize_sale_tenders(draft, parts, table_id, None, actor)
+        self.finalize_sale_tenders(draft, parts, None, actor)
     }
 
     pub fn add_expense(
@@ -3364,32 +3094,7 @@ impl Store {
         Ok(out)
     }
 
-    pub fn replace_kots_from_sync(&self, kots: &[KotTicket]) -> Result<(), String> {
-        self.conn
-            .execute("DELETE FROM kot_tickets", [])
-            .map_err(|e| e.to_string())?;
-        for k in kots {
-            self.conn
-                .execute(
-                    "INSERT INTO kot_tickets(
-                        id, sale_id, created_at, status, summary, branch_id, station_id
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7)",
-                    params![
-                        k.id,
-                        k.sale_id,
-                        k.created_at,
-                        k.status.as_str(),
-                        k.summary,
-                        self.active_branch_id()?,
-                        k.station_id
-                    ],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        Ok(())
-    }
-
-    pub fn list_products(&self, include_archived: bool) -> Result<Vec<Product>, String> {
+        pub fn list_products(&self, include_archived: bool) -> Result<Vec<Product>, String> {
         let branch = self.active_branch_id()?;
         let sql = format!(
             "SELECT {PRODUCT_COLUMNS} FROM products
@@ -4162,7 +3867,7 @@ impl Store {
         Ok(())
     }
 
-    // ------------------------------------------------------- categories / stations
+    // ------------------------------------------------------------- categories
 
     pub fn list_categories(&self) -> Result<Vec<Category>, String> {
         let branch = self.active_branch_id()?;
@@ -4216,61 +3921,6 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         Ok(cat)
-    }
-
-    pub fn list_stations(&self) -> Result<Vec<KitchenStation>, String> {
-        let branch = self.active_branch_id()?;
-        let mut stmt = self
-            .conn
-            .prepare(
-                "SELECT id, COALESCE(branch_id, ''), name, sort_order FROM kitchen_stations
-                 WHERE branch_id = ?1 OR branch_id = ''
-                 ORDER BY sort_order, name",
-            )
-            .map_err(|e| e.to_string())?;
-        let rows = stmt
-            .query_map(params![branch], |row| {
-                Ok(KitchenStation {
-                    id: row.get(0)?,
-                    branch_id: row.get(1)?,
-                    name: row.get(2)?,
-                    sort_order: row.get(3)?,
-                })
-            })
-            .map_err(|e| e.to_string())?;
-        rows.collect::<Result<Vec<_>, _>>()
-            .map_err(|e| e.to_string())
-    }
-
-    pub fn add_station(&self, name: &str) -> Result<KitchenStation, String> {
-        self.assert_server_writer("Add kitchen stations")?;
-        let name = name.trim();
-        if name.is_empty() {
-            return Err("Station name required".into());
-        }
-        let branch_id = self.active_branch_id()?;
-        let next: i64 = self
-            .conn
-            .query_row(
-                "SELECT COALESCE(MAX(sort_order), -1) + 1 FROM kitchen_stations WHERE branch_id = ?1",
-                params![branch_id],
-                |r| r.get(0),
-            )
-            .map_err(|e| e.to_string())?;
-        let station = KitchenStation {
-            id: new_id(),
-            branch_id,
-            name: name.to_string(),
-            sort_order: next,
-        };
-        self.conn
-            .execute(
-                "INSERT INTO kitchen_stations(id, branch_id, name, sort_order)
-                 VALUES(?1, ?2, ?3, ?4)",
-                params![station.id, station.branch_id, station.name, station.sort_order],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(station)
     }
 
     // ------------------------------------------------------------------- inventory
@@ -4921,11 +4571,11 @@ impl Store {
             .execute(
                 "INSERT INTO products(
                     id, name, price_paise, available, archived, image_key,
-                    category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
+                    category_id, tax_bps, stock_qty, modifiers_json, branch_id,
                     tax_rate_id, aliases_json, unit_label,
                     zone_id, first_kg, first_paise, extra_per_kg_paise
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -4933,7 +4583,6 @@ impl Store {
                    archived=excluded.archived,
                    image_key=excluded.image_key,
                    category_id=excluded.category_id,
-                   station_id=excluded.station_id,
                    tax_bps=excluded.tax_bps,
                    stock_qty=excluded.stock_qty,
                    modifiers_json=excluded.modifiers_json,
@@ -4953,7 +4602,6 @@ impl Store {
                     product.archived as i64,
                     product.image_key,
                     product.category_id,
-                    product.station_id,
                     product.tax_bps,
                     product.stock_qty,
                     modifiers_json,
@@ -5318,18 +4966,16 @@ impl Store {
         &mut self,
         draft: &SaleDraft,
         pay: PayMethod,
-        table_id: Option<&str>,
         customer_id: Option<&str>,
         actor: &StaffMember,
     ) -> Result<Sale, String> {
-        self.write_sale(draft, pay, table_id, customer_id, actor, &[])
+        self.write_sale(draft, pay, customer_id, actor, &[])
     }
 
     fn write_sale(
         &mut self,
         draft: &SaleDraft,
         pay: PayMethod,
-        table_id: Option<&str>,
         customer_id: Option<&str>,
         actor: &StaffMember,
         parts: &[(PayMethod, i64)],
@@ -5394,28 +5040,21 @@ impl Store {
         }
 
         let branch_id = self.active_branch_id()?;
-        let stations = self.list_stations()?;
         // The country pack decides whether tax is *extracted* from what the
-        // seller quoted or *added* on top of it. Stock and kitchen routing come
-        // from the same pass over the catalogue.
+        // seller quoted or *added* on top of it. Stock tracking comes from
+        // the same pass over the catalogue.
         let fiscal_settings = self.fiscal_settings()?;
         let pricing = fiscal_settings.tax_pricing;
         let mut tax_paise = 0i64;
-        let mut by_station: Vec<(String, Vec<String>)> = Vec::new();
         let mut stock_hits: Vec<(String, i64)> = Vec::new();
         for line in &draft.lines {
             let product = self.get_product(&line.product_id)?;
-            let (tax_bps, station_id, tracked) = product
+            let (tax_bps, tracked) = product
                 .as_ref()
-                .map(|p| (p.tax_bps, p.station_id.clone(), p.tracks_stock()))
-                .unwrap_or((0, String::new(), false));
+                .map(|p| (p.tax_bps, p.tracks_stock()))
+                .unwrap_or((0, false));
             tax_paise = tax_paise
                 .saturating_add(fiscal::tax_on_amount(line.line_total_paise, tax_bps, pricing));
-            let label = kot_line_label(line);
-            match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
-                Some((_, items)) => items.push(label),
-                None => by_station.push((station_id, vec![label])),
-            }
             if tracked && line.qty > 0 {
                 // Aggregate per item: two lines of the same product still have
                 // to fit inside one on-hand count.
@@ -5480,14 +5119,14 @@ impl Store {
         tx.execute(
             "INSERT INTO sales(
                 id, created_at, total_paise, lines_total_paise, rounding_paise,
-                pay_method, status, table_id, customer_id, created_by_id, created_by_name,
-                branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
+                pay_method, status, customer_id, created_by_id, created_by_name,
+                branch_id, tax_paise, tax_pricing, tax_label, net_paise,
                 service_paise, invoice_no, money_lane, user_at, device_at, server_at,
                 awb_no, destination, consignee_name,
                 actual_weight_kg, volumetric_weight_kg, chargeable_weight_kg, tracking_status,
                 zone_id, cod_paise, carrier_cost_paise, extras_json
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, ?27, ?28, 'booked', ?29, ?30, ?31, ?32)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30)",
             params![
                 sale_id,
                 created_at,
@@ -5495,12 +5134,10 @@ impl Store {
                 draft.lines_total_paise,
                 draft.rounding_paise,
                 pay.as_str(),
-                table_id,
                 customer_id,
                 actor.id,
                 created_by_name,
                 branch_id,
-                draft.order_type.as_str(),
                 tax_paise,
                 pricing.as_str(),
                 tax_label,
@@ -5645,20 +5282,6 @@ impl Store {
             .map_err(|e| e.to_string())?;
         }
 
-        let table_prefix = match table_id {
-            Some(tid) => tx
-                .query_row(
-                    "SELECT name FROM tables_dining WHERE id = ?1",
-                    params![tid],
-                    |r| r.get::<_, String>(0),
-                )
-                .optional()
-                .map_err(|e| e.to_string())?
-                .map(|n| format!("{n} · "))
-                .unwrap_or_default(),
-            None => String::new(),
-        };
-
         // Tracked items only: untracked (−1) stock stays untracked. The
         // `stock_qty >= ?1` guard makes the check above race-proof — a second
         // till that took the last unit first leaves 0 rows updated here.
@@ -5692,64 +5315,6 @@ impl Store {
                     times.device_at,
                     times.server_at
                 ],
-            )
-            .map_err(|e| e.to_string())?;
-        }
-
-        // Counter mode: skip kitchen tickets so takeaway cash flow stays quiet.
-        let venue_mode = VenueMode::parse(
-            &tx.query_row(
-                "SELECT value FROM meta WHERE key = 'venue_mode'",
-                [],
-                |r| r.get::<_, String>(0),
-            )
-            .optional()
-            .map_err(|e| e.to_string())?
-            .unwrap_or_else(|| "counter".into()),
-        );
-        if venue_mode.creates_kot() {
-            // One ticket per station on the bill so a big kitchen does not have
-            // to read the whole order at every counter. Items with no station
-            // land on a single unassigned ticket.
-            for (station_id, items) in &by_station {
-                let station_name = stations
-                    .iter()
-                    .find(|s| s.id == *station_id)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_default();
-                let head = if station_name.is_empty() {
-                    String::new()
-                } else {
-                    format!("[{station_name}] ")
-                };
-                tx.execute(
-                    "INSERT INTO kot_tickets(
-                        id, sale_id, created_at, status, summary, branch_id, station_id
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7)",
-                    params![
-                        new_id(),
-                        sale_id,
-                        created_at,
-                        KotStatus::New.as_str(),
-                        format!("{table_prefix}{head}{}", items.join(", ")),
-                        branch_id,
-                        station_id
-                    ],
-                )
-                .map_err(|e| e.to_string())?;
-            }
-        }
-
-        if let Some(tid) = table_id {
-            tx.execute(
-                "UPDATE tables_dining SET status = ?1, active_sale_id = NULL WHERE id = ?2",
-                params![TableStatus::Available.as_str(), tid],
-            )
-            .map_err(|e| e.to_string())?;
-            tx.execute(
-                "INSERT INTO meta(key, value) VALUES(?1, '')
-                 ON CONFLICT(key) DO UPDATE SET value=excluded.value",
-                params![format!("table_draft_{tid}")],
             )
             .map_err(|e| e.to_string())?;
         }
@@ -5863,12 +5428,10 @@ impl Store {
             total_paise,
             pay_method: pay.as_str().into(),
             status: "completed".into(),
-            table_id: table_id.map(|s| s.to_string()),
             customer_id: customer_id.map(|s| s.to_string()),
             created_by_id: actor.id.clone(),
             created_by_name,
             branch_id: branch_id.clone(),
-            order_type: draft.order_type.as_str().into(),
             tax_paise,
             tax_pricing: pricing.as_str().into(),
             tax_label,
@@ -6095,13 +5658,11 @@ impl Store {
             total_paise,
             pay_method: pay.as_str().into(),
             status: "completed".into(),
-            table_id: previous.table_id,
             customer_id: previous.customer_id,
             // Authorship is immutable — amend never rewrites who created the sale.
             created_by_id: previous.created_by_id,
             created_by_name: previous.created_by_name,
             branch_id: previous.branch_id,
-            order_type: previous.order_type,
             tax_paise,
             tax_pricing: pricing.as_str().into(),
             tax_label,
@@ -6324,13 +5885,6 @@ impl Store {
                 .map_err(|e| e.to_string())?;
             }
         }
-        // Drop open kitchen tickets for this mistaken charge.
-        tx.execute(
-            "UPDATE kot_tickets SET status = 'cancelled'
-             WHERE sale_id = ?1 AND status IN ('new', 'preparing', 'ready')",
-            params![sale_id],
-        )
-        .map_err(|e| e.to_string())?;
         restore_stock_for_sale(&tx, sale_id, "undo", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -6981,123 +6535,7 @@ impl Store {
         Ok(())
     }
 
-    pub fn list_tables(&self) -> Result<Vec<DiningTable>, String> {
-        let branch = self.active_branch_id()?;
-        let mut stmt = self
-            .conn
-            .prepare(
-                "SELECT id, name, status, active_sale_id FROM tables_dining
-                 WHERE branch_id = ?1 OR branch_id = ''
-                 ORDER BY name",
-            )
-            .map_err(|e| e.to_string())?;
-        let rows = stmt
-            .query_map(params![branch], |row| {
-                let status: String = row.get(2)?;
-                Ok(DiningTable {
-                    id: row.get(0)?,
-                    name: row.get(1)?,
-                    status: TableStatus::parse(&status),
-                    active_sale_id: row.get(3)?,
-                })
-            })
-            .map_err(|e| e.to_string())?;
-        rows.collect::<Result<Vec<_>, _>>()
-            .map_err(|e| e.to_string())
-    }
-
-    pub fn occupy_table(&self, table_id: &str) -> Result<(), String> {
-        self.conn
-            .execute(
-                "UPDATE tables_dining SET status = ?1 WHERE id = ?2",
-                params![TableStatus::Occupied.as_str(), table_id],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
-    }
-
-    pub fn free_table(&self, table_id: &str) -> Result<(), String> {
-        self.conn
-            .execute(
-                "UPDATE tables_dining SET status = ?1, active_sale_id = NULL WHERE id = ?2",
-                params![TableStatus::Available.as_str(), table_id],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
-    }
-
-    pub fn list_open_kots(&self) -> Result<Vec<KotTicket>, String> {
-        let branch = self.active_branch_id()?;
-        let mut stmt = self
-            .conn
-            .prepare(
-                "SELECT k.id, k.sale_id, k.created_at, k.status, k.summary,
-                        COALESCE(k.station_id, ''), COALESCE(s.name, '')
-                 FROM kot_tickets k
-                 LEFT JOIN kitchen_stations s ON s.id = k.station_id
-                 WHERE k.status NOT IN ('completed', 'cancelled')
-                   AND (k.branch_id = ?1 OR k.branch_id = '')
-                 ORDER BY k.created_at ASC",
-            )
-            .map_err(|e| e.to_string())?;
-        let rows = stmt
-            .query_map(params![branch], |row| {
-                let status: String = row.get(3)?;
-                Ok(KotTicket {
-                    id: row.get(0)?,
-                    sale_id: row.get(1)?,
-                    created_at: row.get(2)?,
-                    status: KotStatus::parse(&status),
-                    summary: row.get(4)?,
-                    station_id: row.get(5)?,
-                    station_name: row.get(6)?,
-                })
-            })
-            .map_err(|e| e.to_string())?;
-        rows.collect::<Result<Vec<_>, _>>()
-            .map_err(|e| e.to_string())
-    }
-
-    /// Open tickets for one station (empty id = the unassigned ticket lane).
-    pub fn list_open_kots_for_station(&self, station_id: &str) -> Result<Vec<KotTicket>, String> {
-        Ok(self
-            .list_open_kots()?
-            .into_iter()
-            .filter(|k| k.station_id == station_id)
-            .collect())
-    }
-
-    pub fn advance_kot(&self, kot_id: &str, actor: &StaffMember) -> Result<(), String> {
-        if !actor.role.can_kitchen() {
-            return Err("Not allowed for kitchen".into());
-        }
-        let status_s: String = self
-            .conn
-            .query_row(
-                "SELECT status FROM kot_tickets WHERE id = ?1",
-                params![kot_id],
-                |r| r.get(0),
-            )
-            .map_err(|e| e.to_string())?;
-        let status = KotStatus::parse(&status_s);
-        let Some(next) = status.next() else {
-            return Err("Ticket already finished".into());
-        };
-        self.conn
-            .execute(
-                "UPDATE kot_tickets SET status = ?1 WHERE id = ?2",
-                params![next.as_str(), kot_id],
-            )
-            .map_err(|e| e.to_string())?;
-        self.audit(
-            actor,
-            "kot.advance",
-            &format!("{kot_id} -> {}", next.as_str()),
-        )?;
-        Ok(())
-    }
-
-    pub fn add_customer(&self, name: &str, phone: &str) -> Result<Customer, String> {
+        pub fn add_customer(&self, name: &str, phone: &str) -> Result<Customer, String> {
         self.add_customer_kind(name, phone, "")
     }
 
@@ -9269,7 +8707,7 @@ const fn const_str_eq(a: &str, b: &str) -> bool {
 
 /// Every column [`row_to_product`] expects, in order.
 const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image_key,
-     COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
+     COALESCE(category_id, ''), COALESCE(tax_bps, 0),
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
      COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, ''),
      COALESCE(zone_id, ''), COALESCE(first_kg, 0), COALESCE(first_paise, 0),
@@ -9279,9 +8717,9 @@ const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(lines_total_paise, total_paise),
      COALESCE(rounding_paise, 0),
-     pay_method, status, table_id, customer_id,
+     pay_method, status, customer_id,
      COALESCE(created_by_id, ''), COALESCE(created_by_name, ''),
-     COALESCE(branch_id, ''), COALESCE(order_type, 'counter'), COALESCE(tax_paise, 0),
+     COALESCE(branch_id, ''), COALESCE(tax_paise, 0),
      COALESCE(tax_pricing, 'inclusive'), COALESCE(tax_label, 'Tax'), COALESCE(net_paise, 0),
      COALESCE(service_paise, 0), COALESCE(invoice_no, ''),
      COALESCE(money_lane, 'declared'),
@@ -9562,49 +9000,38 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         rounding_paise: row.get(4)?,
         pay_method: row.get(5)?,
         status: row.get(6)?,
-        table_id: row.get(7)?,
-        customer_id: row.get(8)?,
-        created_by_id: row.get(9)?,
-        created_by_name: row.get(10)?,
-        branch_id: row.get(11)?,
-        order_type: row.get(12)?,
-        tax_paise: row.get(13)?,
-        tax_pricing: row.get(14)?,
-        tax_label: row.get(15)?,
-        net_paise: row.get(16)?,
-        service_paise: row.get(17)?,
-        invoice_no: row.get(18)?,
-        money_lane: row.get(19)?,
-        user_at: row.get(20)?,
-        device_at: row.get(21)?,
-        server_at: row.get(22)?,
-        awb_no: row.get(23)?,
-        destination: row.get(24)?,
-        consignee_name: row.get(25)?,
-        actual_weight_kg: crate::precise::dec_from_sql(row, 26)?,
-        volumetric_weight_kg: crate::precise::dec_from_sql(row, 27)?,
-        chargeable_weight_kg: crate::precise::dec_from_sql(row, 28)?,
-        tracking_status: row.get(29)?,
-        zone_id: row.get(30)?,
-        cod_paise: row.get(31)?,
-        carrier_cost_paise: row.get(32)?,
-        period_bill_id: row.get(33)?,
-        handover_kind: row.get(34)?,
-        carrier_party_id: row.get(35)?,
-        rider_id: row.get(36)?,
-        pod_note: row.get(37)?,
-        extras_json: row.get(38)?,
+        customer_id: row.get(7)?,
+        created_by_id: row.get(8)?,
+        created_by_name: row.get(9)?,
+        branch_id: row.get(10)?,
+        tax_paise: row.get(11)?,
+        tax_pricing: row.get(12)?,
+        tax_label: row.get(13)?,
+        net_paise: row.get(14)?,
+        service_paise: row.get(15)?,
+        invoice_no: row.get(16)?,
+        money_lane: row.get(17)?,
+        user_at: row.get(18)?,
+        device_at: row.get(19)?,
+        server_at: row.get(20)?,
+        awb_no: row.get(21)?,
+        destination: row.get(22)?,
+        consignee_name: row.get(23)?,
+        actual_weight_kg: crate::precise::dec_from_sql(row, 24)?,
+        volumetric_weight_kg: crate::precise::dec_from_sql(row, 25)?,
+        chargeable_weight_kg: crate::precise::dec_from_sql(row, 26)?,
+        tracking_status: row.get(27)?,
+        zone_id: row.get(28)?,
+        cod_paise: row.get(29)?,
+        carrier_cost_paise: row.get(30)?,
+        period_bill_id: row.get(31)?,
+        handover_kind: row.get(32)?,
+        carrier_party_id: row.get(33)?,
+        rider_id: row.get(34)?,
+        pod_note: row.get(35)?,
+        extras_json: row.get(36)?,
         lines: Vec::new(),
     })
-}
-
-/// KOT/receipt label for one line: `2×Tea (less sugar)`.
-fn kot_line_label(line: &SaleLine) -> String {
-    if line.note.is_empty() {
-        format!("{}×{}", line.qty, line.name)
-    } else {
-        format!("{}×{} ({})", line.qty, line.name, line.note)
-    }
 }
 
 fn row_to_attachment(row: &rusqlite::Row<'_>) -> rusqlite::Result<EntryAttachment> {
@@ -9635,18 +9062,17 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         archived: row.get::<_, i64>(4)? != 0,
         image_key: row.get(5)?,
         category_id: row.get(6)?,
-        station_id: row.get(7)?,
-        tax_bps: row.get(8)?,
-        stock_qty: row.get(9)?,
-        modifiers_json: row.get(10)?,
-        branch_id: row.get(11)?,
-        tax_rate_id: row.get(12)?,
-        aliases_json: row.get(13)?,
-        unit_label: row.get(14)?,
-        zone_id: row.get(15)?,
-        first_kg: crate::precise::dec_from_sql(row, 16)?,
-        first_paise: row.get(17)?,
-        extra_per_kg_paise: row.get(18)?,
+        tax_bps: row.get(7)?,
+        stock_qty: row.get(8)?,
+        modifiers_json: row.get(9)?,
+        branch_id: row.get(10)?,
+        tax_rate_id: row.get(11)?,
+        aliases_json: row.get(12)?,
+        unit_label: row.get(13)?,
+        zone_id: row.get(14)?,
+        first_kg: crate::precise::dec_from_sql(row, 15)?,
+        first_paise: row.get(16)?,
+        extra_per_kg_paise: row.get(17)?,
     })
 }
 
@@ -9774,8 +9200,8 @@ fn getrandom_salt(out: &mut [u8]) -> Result<(), String> {
 mod tests {
     use super::*;
     use crate::domain::{
-        AttachmentEntity, Cart, ModifierOption, MoneyLane, MoneyMoveKind, OrderType, PayMethod,
-        Product, StaffRole, VenueMode,
+        AttachmentEntity, Cart, ModifierOption, MoneyLane, MoneyMoveKind, PayMethod,
+        Product, StaffRole,
     };
     use crate::fiscal::TaxPricing;
     use std::time::{SystemTime, UNIX_EPOCH};
@@ -9819,7 +9245,7 @@ mod tests {
         draft.actual_weight_kg = "12.5".parse().unwrap();
         draft.money_lane = MoneyLane::Declared;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
             .unwrap();
         let today = chrono::Local::now().format("%Y-%m-%d").to_string();
         let kg = store.period_chargeable_kg(&today, &today).unwrap();
@@ -9868,7 +9294,7 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(store.till_balance_paise().unwrap(), 25_00);
         store
@@ -9887,7 +9313,7 @@ mod tests {
             cart.add_or_bump(&p);
             let draft = cart.to_sale_draft().unwrap();
             let sale = store
-                .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+                .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
                 .unwrap();
             bill_ids.push(sale.id);
         }
@@ -9961,7 +9387,7 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
         let sale = store
-            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner)
             .unwrap();
 
         store
@@ -10039,7 +9465,7 @@ mod tests {
         cart.add_or_bump(p);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Upi, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Upi, None, &owner)
             .unwrap();
         assert!(sale.total_paise > 0);
         assert_eq!(sale.rounding_paise, 0);
@@ -10076,7 +9502,7 @@ mod tests {
         assert_eq!(draft.lines[0].line_total_paise, 5200);
 
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(sale.total_paise, 5000);
         assert_eq!(sale.lines_total_paise, 5200);
@@ -10116,7 +9542,7 @@ mod tests {
         cart.add_or_bump(p);
         let draft = cart.to_sale_draft().unwrap();
         store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         let backup = std::env::temp_dir().join(format!(
             "kumkaj-backup-{}.sqlite3",
@@ -10154,7 +9580,7 @@ mod tests {
         cart.add_or_bump(p);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Card, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Card, None, &owner)
             .unwrap();
         assert!(store.void_sale(&sale.id, "", &owner).is_err());
         assert!(store.void_sale(&sale.id, "mistake", &cashier).is_err());
@@ -10176,7 +9602,7 @@ mod tests {
         cart.set_charge_total(Money::from_rupees(50)).unwrap();
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
 
         // Amend: change charge to 48 and bump unit price path via new draft
@@ -10271,7 +9697,7 @@ mod tests {
             .unwrap()
             .unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Upi, None, None, &cashier)
+            .finalize_sale(&draft, PayMethod::Upi, None, &cashier)
             .unwrap();
         assert_eq!(sale.created_by_id, cashier.id);
         assert!(sale.created_by_name.contains("Riya"));
@@ -10328,7 +9754,7 @@ mod tests {
         cart.set_note(0, "less sugar").unwrap();
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         let lines = store.sale_lines(&sale.id).unwrap();
         assert_eq!(lines[0].note, "less sugar");
@@ -10336,33 +9762,6 @@ mod tests {
         assert_eq!(loaded.lines[0].note, "less sugar");
         let again = Cart::from_sale(&loaded);
         assert_eq!(again.lines[0].note, "less sugar");
-        let _ = std::fs::remove_file(path);
-    }
-
-    #[test]
-    fn counter_mode_skips_kot_restaurant_creates() {
-        let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
-        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.set_venue_mode(VenueMode::Counter).unwrap();
-        store.upsert_product(&test_product("Tea", 10)).unwrap();
-        let p = store.list_products(false).unwrap().remove(0);
-        let mut cart = Cart::default();
-        cart.add_or_bump(&p);
-        let draft = cart.to_sale_draft().unwrap();
-        store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
-            .unwrap();
-        assert!(store.list_open_kots().unwrap().is_empty());
-
-        store.set_venue_mode(VenueMode::Restaurant).unwrap();
-        let mut cart = Cart::default();
-        cart.add_or_bump(&p);
-        let draft = cart.to_sale_draft().unwrap();
-        store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
-            .unwrap();
-        assert_eq!(store.list_open_kots().unwrap().len(), 1);
         let _ = std::fs::remove_file(path);
     }
 
@@ -10472,7 +9871,7 @@ mod tests {
         draft.money_lane = MoneyLane::Owner;
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         let day = store.today_totals().unwrap();
         assert!(day.owner_lane_paise > 0);
@@ -10509,7 +9908,7 @@ mod tests {
         draft.chargeable_weight_kg = "5".parse().unwrap();
         draft.money_lane = MoneyLane::Owner;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert!(sale.awb_no.starts_with("AWB-"));
         assert_eq!(sale.destination, "Bengaluru");
@@ -10556,7 +9955,7 @@ mod tests {
         draft.zone_id = zone.id;
         draft.money_lane = MoneyLane::Declared;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
             .unwrap();
         assert!(!sale.awb_no.is_empty());
         assert_eq!(sale.cod_paise, 100_00);
@@ -10635,7 +10034,7 @@ mod tests {
         let mut draft = cart.to_sale_draft().unwrap();
         draft.money_lane = MoneyLane::Declared;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
             .unwrap();
         let receipt = store.format_receipt_text(&sale.id).unwrap();
         assert!(receipt.contains("Party: Sumit"));
@@ -10680,7 +10079,7 @@ mod tests {
             .finalize_sale(
                 &draft,
                 PayMethod::Credit,
-                None,
+                
                 Some(&customer.id),
                 &owner,
             )
@@ -10726,13 +10125,13 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         assert!(store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .is_err());
         store
             .set_client_pairing("http://127.0.0.1:7847", "123456")
             .unwrap();
         assert!(store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .is_ok());
         let _ = std::fs::remove_file(path);
     }
@@ -10749,7 +10148,7 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         store.backup_to(&backup).unwrap();
         drop(store);
@@ -10782,7 +10181,6 @@ mod tests {
                     (PayMethod::Card, 1000),
                 ],
                 None,
-                None,
                 &owner,
             )
             .unwrap();
@@ -10806,7 +10204,6 @@ mod tests {
                 &draft,
                 &[(PayMethod::Cash, 500), (PayMethod::Upi, 500)],
                 None,
-                None,
                 &owner,
             )
             .unwrap_err();
@@ -10822,7 +10219,7 @@ mod tests {
             .finalize_sale_tenders(
                 &draft2,
                 &[(PayMethod::Cash, 1000), (PayMethod::Credit, 2000)],
-                None,
+                
                 Some(&customer.id),
                 &owner,
             )
@@ -10888,8 +10285,6 @@ mod tests {
         let branch = store.active_branch().unwrap();
         assert_eq!(branch.name, "Main");
         assert!(branch.is_this_device);
-        assert_eq!(store.list_stations().unwrap().len(), 2);
-        assert_eq!(store.list_tables().unwrap().len(), 6);
         assert!(store.list_units().unwrap().iter().any(|u| u.code == "kg"));
 
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
@@ -10900,7 +10295,7 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert!(!sale.user_at.is_empty());
         assert!(!sale.device_at.is_empty());
@@ -10912,25 +10307,17 @@ mod tests {
     }
 
     #[test]
-    fn category_station_on_product() {
+    fn category_on_product() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         // No categories are seeded: a general shop names its own.
         assert!(store.list_categories().unwrap().is_empty());
-        let stations = store.list_stations().unwrap();
-        assert_eq!(
-            stations.iter().map(|s| s.name.as_str()).collect::<Vec<_>>(),
-            vec!["Hot", "Cold"]
-        );
         let starters = store.add_category("Starters").unwrap();
         assert_eq!(starters.sort_order, 0);
-        let tandoor = store.add_station("Tandoor").unwrap();
         assert!(store.add_category("  ").is_err());
-        assert!(store.add_station("").is_err());
 
         let mut p = test_product("Paneer tikka", 220);
         p.category_id = starters.id.clone();
-        p.station_id = tandoor.id.clone();
         p.tax_bps = 500;
         p.stock_qty = 12;
         p.set_modifiers(&[ModifierOption {
@@ -10941,7 +10328,6 @@ mod tests {
 
         let loaded = store.get_product(&p.id).unwrap().unwrap();
         assert_eq!(loaded.category_id, starters.id);
-        assert_eq!(loaded.station_id, tandoor.id);
         assert_eq!(loaded.tax_bps, 500);
         assert_eq!(loaded.stock_qty, 12);
         assert!(loaded.tracks_stock());
@@ -11010,7 +10396,7 @@ mod tests {
         cart.add_or_bump(&untracked);
         let draft = cart.to_sale_draft().unwrap();
         store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(store.get_product(&samosa.id).unwrap().unwrap().stock_qty, 10);
         assert_eq!(
@@ -11051,20 +10437,17 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&thali);
         cart.add_or_bump(&chutney);
-        cart.set_order_type(OrderType::Takeaway);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Upi, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Upi, None, &owner)
             .unwrap();
         assert_eq!(sale.total_paise, 12_500, "tax never inflates the bill");
         assert_eq!(sale.lines_total_paise, 12_500);
         assert_eq!(sale.tax_paise, 500);
-        assert_eq!(sale.order_type(), OrderType::Takeaway);
         assert_eq!(sale.branch_id, store.active_branch_id().unwrap());
 
         let loaded = store.get_sale(&sale.id).unwrap().unwrap();
         assert_eq!(loaded.tax_paise, 500);
-        assert_eq!(loaded.order_type, "takeaway");
         let totals = store.today_totals().unwrap();
         assert_eq!(totals.revenue_paise, 12_500);
         assert_eq!(totals.tax_paise, 500);
@@ -11123,7 +10506,7 @@ mod tests {
         let draft = cart.to_sale_draft().unwrap();
         assert_eq!(store.preview_sale_total(&draft).unwrap(), 11_800);
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(sale.total_paise, 11_800, "inclusive tax never moves a bill");
         assert_eq!(sale.tax_paise, 1_800);
@@ -11199,7 +10582,7 @@ mod tests {
         assert_eq!(store.preview_sale_total(&draft).unwrap(), 12_500);
 
         let sale = store
-            .finalize_sale(&draft, PayMethod::Card, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Card, None, &owner)
             .unwrap();
         assert_eq!(sale.tax_paise, 500);
         assert_eq!(sale.total_paise, 12_500, "exclusive tax is added on top");
@@ -11244,7 +10627,7 @@ mod tests {
             .finalize_sale(
                 &draft,
                 PayMethod::Credit,
-                None,
+                
                 Some(&customer.id),
                 &owner,
             )
@@ -11272,7 +10655,7 @@ mod tests {
         // to carry the service charge too.
         assert_eq!(store.preview_sale_total(&draft).unwrap(), 11_000);
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(sale.service_paise, 1_000);
         assert_eq!(sale.total_paise, 11_000);
@@ -11286,7 +10669,7 @@ mod tests {
         assert_eq!(store.apply_country_pack("US").unwrap().service_charge_bps, 1_000);
         store.set_service_charge_bps(0).unwrap();
         let plain = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(plain.service_paise, 0);
         assert_eq!(plain.total_paise, 10_000);
@@ -11316,7 +10699,7 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         let receipt = store.format_receipt_text(&sale.id).unwrap();
         assert!(receipt.contains("€1.234,00"), "{receipt}");
@@ -11343,7 +10726,7 @@ mod tests {
         let draft = cart.to_sale_draft().unwrap();
         // Same `upi` tender in storage, printed as the local rail.
         let sale = store
-            .finalize_sale(&draft, PayMethod::Upi, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Upi, None, &owner)
             .unwrap();
         assert_eq!(sale.pay_method, "upi");
         let receipt = store.format_receipt_text(&sale.id).unwrap();
@@ -11367,7 +10750,7 @@ mod tests {
         cart.add_or_bump(&biryani);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Upi, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Upi, None, &owner)
             .unwrap();
         assert_eq!(sale.tax_paise, 1_800);
         let receipt = store.format_receipt_text(&sale.id).unwrap();
@@ -11438,7 +10821,7 @@ mod tests {
         cart.add_or_bump(&tea);
         let draft = cart.to_sale_draft().unwrap();
         store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         let sale = store.recent_sales(1).unwrap().remove(0);
         assert_eq!(sale.total_paise, 10_500);
@@ -11465,7 +10848,7 @@ mod tests {
         rcart.add_or_bump(&rp);
         let rdraft = rcart.to_sale_draft().unwrap();
         remote
-            .finalize_sale(&rdraft, PayMethod::Cash, None, None, &remote_owner)
+            .finalize_sale(&rdraft, PayMethod::Cash, None, &remote_owner)
             .unwrap();
         let snapshot_json = remote.export_branch_snapshot_json().unwrap();
         let snapshot = BranchSnapshot::from_json(&snapshot_json).unwrap();
@@ -11480,7 +10863,7 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
-        main.finalize_sale(&draft, PayMethod::Upi, None, None, &owner)
+        main.finalize_sale(&draft, PayMethod::Upi, None, &owner)
             .unwrap();
 
         assert!(main.import_branch_snapshot("not json").is_err());
@@ -11522,70 +10905,6 @@ mod tests {
         let _ = std::fs::remove_file(remote_path);
     }
 
-    #[test]
-    fn multi_station_kot_split() {
-        let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
-        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.set_venue_mode(VenueMode::Restaurant).unwrap();
-        let stations = store.list_stations().unwrap();
-        let hot = stations.iter().find(|s| s.name == "Hot").unwrap().clone();
-        let cold = stations.iter().find(|s| s.name == "Cold").unwrap().clone();
-
-        let mut biryani = test_product("Biryani", 180);
-        biryani.station_id = hot.id.clone();
-        store.upsert_product(&biryani).unwrap();
-        let mut lassi = test_product("Lassi", 60);
-        lassi.station_id = cold.id.clone();
-        store.upsert_product(&lassi).unwrap();
-
-        let mut cart = Cart::default();
-        cart.add_or_bump(&biryani);
-        cart.add_or_bump(&lassi);
-        cart.set_note(1, "less sugar").unwrap();
-        cart.set_order_type(OrderType::DineIn);
-        let draft = cart.to_sale_draft().unwrap();
-        store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
-            .unwrap();
-
-        let kots = store.list_open_kots().unwrap();
-        assert_eq!(kots.len(), 2, "one ticket per station on the bill");
-        let hot_ticket = kots.iter().find(|k| k.station_id == hot.id).unwrap();
-        let cold_ticket = kots.iter().find(|k| k.station_id == cold.id).unwrap();
-        assert_eq!(hot_ticket.station_name, "Hot");
-        assert!(hot_ticket.summary.contains("Biryani"));
-        assert!(!hot_ticket.summary.contains("Lassi"));
-        assert!(cold_ticket.summary.contains("Lassi (less sugar)"));
-        assert!(!cold_ticket.summary.contains("Biryani"));
-        assert_eq!(store.list_open_kots_for_station(&hot.id).unwrap().len(), 1);
-
-        // Items with no station keep the old single-ticket behaviour.
-        store.upsert_product(&test_product("Water", 20)).unwrap();
-        let water = store
-            .list_products(false)
-            .unwrap()
-            .into_iter()
-            .find(|p| p.name == "Water")
-            .unwrap();
-        let mut cart = Cart::default();
-        cart.add_or_bump(&water);
-        cart.add_or_bump(&biryani);
-        let draft = cart.to_sale_draft().unwrap();
-        let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
-            .unwrap();
-        let fresh: Vec<KotTicket> = store
-            .list_open_kots()
-            .unwrap()
-            .into_iter()
-            .filter(|k| k.sale_id == sale.id)
-            .collect();
-        assert_eq!(fresh.len(), 2);
-        assert!(fresh.iter().any(|k| k.station_id.is_empty()));
-        let _ = std::fs::remove_file(path);
-    }
-
     /// Selling two of a one-on-hand item must fail outright. The old code
     /// clamped the decrement at zero, so the bill went through and the stock
     /// count quietly lied.
@@ -11604,7 +10923,7 @@ mod tests {
         cart.add_or_bump(&tracked);
         let draft = cart.to_sale_draft().unwrap();
         let err = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap_err();
         assert!(err.contains("Not enough stock"), "got {err}");
         assert_eq!(
@@ -11619,7 +10938,7 @@ mod tests {
         cart.add_or_bump(&tracked);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(store.get_product(&ladoo.id).unwrap().unwrap().stock_qty, 0);
 
@@ -11694,7 +11013,7 @@ mod tests {
         cart.add_or_bump(&tea);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         store.set_device_role("client").unwrap();
 
@@ -11710,7 +11029,6 @@ mod tests {
                 .record_purchase("Supplier", &[(tea.id.clone(), 2_000, 500)], "", &owner)
                 .unwrap_err(),
             store.add_branch("MG Road", "MG").unwrap_err(),
-            store.add_table("T9").unwrap_err(),
             store.add_category("Snacks").unwrap_err(),
             store.apply_country_pack("GB").unwrap_err(),
             store.set_business_tax_id("X").unwrap_err(),
@@ -11737,7 +11055,7 @@ mod tests {
             .set_client_pairing("http://127.0.0.1:7847", "123456")
             .unwrap();
         assert!(store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .is_ok());
 
         // Sync is the Server's own data arriving, so it must still land.
@@ -11764,7 +11082,7 @@ mod tests {
             cart.add_or_bump(&p);
             let draft = cart.to_sale_draft().unwrap();
             let sale = store
-                .finalize_sale(&draft, PayMethod::Upi, None, None, &owner)
+                .finalize_sale(&draft, PayMethod::Upi, None, &owner)
                 .unwrap();
             store.backup_to(&backup).unwrap();
             (sale.id, sale.invoice_no, sale.total_paise)
@@ -11812,10 +11130,10 @@ mod tests {
             cart.add_or_bump(&p);
             let draft = cart.to_sale_draft().unwrap();
             let a = store
-                .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+                .finalize_sale(&draft, PayMethod::Cash, None, &owner)
                 .unwrap();
             let b = store
-                .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+                .finalize_sale(&draft, PayMethod::Cash, None, &owner)
                 .unwrap();
             assert_eq!(a.invoice_no, "INV-MAIN-000001");
             assert_eq!(b.invoice_no, "INV-MAIN-000002");
@@ -11838,7 +11156,7 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         let third = store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(third.invoice_no, "INV-MAIN-000003");
         // Amending corrects a bill; it does not issue a new number.
@@ -12085,7 +11403,7 @@ mod tests {
         let mut draft = cart.to_sale_draft().unwrap();
         draft.money_lane = MoneyLane::Declared;
         store
-            .finalize_sale(&draft, PayMethod::Credit, None, Some(&a.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit,  Some(&a.id), &owner)
             .unwrap();
         let ar = store.customer_balance(&a.id).unwrap();
         assert!(ar > 0);

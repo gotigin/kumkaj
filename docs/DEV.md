@@ -2,11 +2,47 @@
 
 Commands and paths below are from the **workspace root** (parent of `docs/`).
 
-**Product focus:** [Kumkaj Courier](KUMKAJ_COURIER.md) — courier BOS (books +
+**Product focus:** [Kumkaj Courier](../apps/courier/docs/KUMKAJ_COURIER.md) — courier BOS (books +
 booking desk). Package id: production `com.kumkaj.courier` · development
 `com.kumkaj.courier.debug`.
 
+## Common workspace — no Kumkaj core
+
+The only shared thing between Kumkaj apps is this **common workspace**:
+every app (`apps/courier`, `apps/khaynjo`, …) is built on the same
+**Makepad 2** (`vendor/makepad`) with similar libraries, because BOS
+apps have similar requirements (money in/out, parties, day/period
+books, receipts, reports). Similar requirements justify one workspace
+and one Makepad platform — **not** shared product code.
+
+- **There is no Kumkaj core** — no shared crate, shared books engine, or
+  product/business code that more than one app depends on. Do not create one.
+- Each app owns all of its code (`src/domain.rs`, `store.rs`, `fiscal.rs`,
+  `locale*.rs`, `net.rs`, `main.rs`, …), even when copied from a sibling.
+  Reuse is **copy-then-diverge**; duplication is preferable to coupling.
+- A change for one app must not impact another app. If serving an app
+  would require changing shared core code in a way that affects others,
+  duplicate the code into that app instead. A future app never needs a
+  change to shared core code — it copies what it needs and owns it.
+- Workspace-level sharing is only: Cargo workspace membership, vendored
+  Makepad 2 + patches, similar dependency versions / `Cargo.lock`, and
+  root build/packaging tooling parameterised per app (`scripts/`,
+  `tools/*-dev`). Changing Makepad/dependencies is a deliberate platform
+  change affecting all apps — do not use it to sneak product logic into
+  multiple apps, and fork a root tool/script per app rather than let one
+  app's tooling change break another.
+
+Canonical doctrine: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md) §1–2; concepts checklist: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
+
 ## Live development (Cursor)
+
+**Khaynjo** (restaurant OS, [`apps/khaynjo`](../apps/khaynjo/)) mirrors
+Courier's tooling one-for-one: `cargo khaynjo-dev`,
+`cargo khaynjo-android-dev`, `cargo khaynjo-windows-dev`. Identity
+differs by domain: Courier is tied to kumkaj.com
+(`com.kumkaj.courier`), Khaynjo has its own domain, so it is
+`com.khaynjo` · `com.khaynjo.debug`. Root `package-*.sh` / `build-msi.sh`
+still target Courier; Khaynjo uses its per-app scripts for now.
 
 ```bash
 cargo courier-dev
@@ -19,15 +55,15 @@ Loads [`apps/courier/env/development.env`](../apps/courier/env/development.env) 
 - Makepad **2 / `main` only** — never Makepad 1 docs/examples/APIs
 - Local Makepad 2 tree: `vendor/makepad`
   - First time / after clean: `./scripts/setup-makepad.sh`
-  - Path-dep from `apps/courier`; applies Wayland scroll-sign + dark caption button patches
+  - Path-dep from each app (`apps/courier`, `apps/khaynjo`); applies Wayland scroll-sign + dark caption button patches
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
-- Multi-script UI fonts live in **one** place: `apps/courier/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji). Desktop packages copy only `kumkaj_courier/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
+- Multi-script UI fonts live **per app**: `apps/courier/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Desktop packages copy only that app's `<crate_name>/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
 - **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
-- **Button label inset** — every shared face sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
+- **Button label inset** — every face within an app sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
 - **Reusable layout widgets** — see § Makepad 2 UI faces (agent guide) below (selection + truncation). Product summary: [`DESIGN.md`](DESIGN.md) § Makepad 2 faces.
 
 ## Desktop window size & maximize
@@ -85,9 +121,21 @@ Manual check (GNOME Wayland, multi-monitor OK): max → restore → max → rest
 
 ## Makepad 2 UI faces (agent guide)
 
-Use this when changing bottom nav, choice toggles, chips, or any button label. Same UI code ships to **Linux / Windows / Android** — fix faces once in `apps/courier`, not per platform.
+Use this when changing bottom nav, choice toggles, chips, or any button label. The same app's UI code ships to **Linux / Windows / Android** — fix faces once *in that app* (examples below are Courier's `apps/courier`), not per platform and not in another app.
 
 Cursor rule (always apply when editing kumkaj UI): `.cursor/rules/makepad-layout-faces.mdc`.
+
+**State-guard rule (all apps, each app's own code):** never call
+`sync_chrome` / `set_status` / `go` (or anything that locks app state)
+while holding a live `app_state()` guard — the mutex is non-reentrant
+and the UI thread deadlocks on itself. Drop guards in an inner scope
+first. Each app enforces this in its own tree (e.g. Khaynjo's
+`apps/khaynjo/scripts/check-lock-guards.sh`); a future app copies the
+check, it does not share it.
+
+**Agent verification rule (all apps):** no GUI automation on the
+owner's machine for verification — code, tests and store-level checks
+only, unless the owner asks.
 
 ### What Makepad 2 actually does
 
@@ -182,7 +230,7 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 ✅ Overlay idle+active + paint from Screen + clear animators
 ✅ Wrap on full-width CTAs; ChipBtn only for short chips
 ✅ FormFieldRow for fields; ActionStack for multi-word CTAs under them
-✅ Fix shared face definitions once (all platforms)
+✅ Fix that app's face definitions once (all platforms for that app)
 ```
 
 ## Development vs production env
@@ -250,11 +298,11 @@ later brand products; do not make “None” the story for courier demos.
 cargo courier-android-dev
 ```
 
-Equivalent: `./scripts/courier-android-dev.sh`
+Equivalent: `./apps/courier/scripts/android-dev.sh`
 
 Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.courier.debug`** (from `apps/courier/env/development.env`).
 
-**Launcher / logo:** Master art is `assets/courier-app-icon.png`. Run `./scripts/generate-app-icons.sh` to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
+**Launcher / logo:** Master art is `apps/courier/assets/courier-app-icon.png`. Run `./scripts/generate-app-icons.sh` to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo courier-dev`; use `cargo courier-android-dev` to verify on device.
 
@@ -373,7 +421,7 @@ protection is physical.
 
 Lock screen: **Owner** | **Staff** (pick staff, then PIN), or optional **login id + password**.
 
-Bottom tabs: **Books** · **Sell** · **Buy** · **More** (Items, tables/kitchen/sales/day close/reports/inventory/branches/credit/team/backup live under More). Feature flags hide More rows the signed-in person cannot use. Unlock lands on **Books**.
+Bottom tabs: **Books** · **Sell** · **Buy** · **More** (Items, sales/day close/reports/inventory/branches/credit/team/backup live under More). Feature flags hide More rows the signed-in person cannot use. Unlock lands on **Books**.
 
 ## Data location
 
@@ -424,23 +472,21 @@ Server listens on **TCP port 7847** when role = Server (pairing code in Settings
 |---|---|---|
 | GET | `/health` | Liveness |
 | GET | `/pair?code=` | Confirm code + venue |
-| GET | `/sync?code=` | Snapshot: products, customers, ledger, tables, sales, KOTs, staff, day totals |
-| POST | `/sale?code=` | Finalize sale (customer_name / table_name OK) |
+| GET | `/sync?code=` | Snapshot: products, customers, ledger, sales, staff, day totals |
+| POST | `/sale?code=` | Finalize sale (customer_name OK) |
 | POST | `/settle?code=` | Credit settlement |
 | POST | `/undo?code=` | Quick undo |
 | POST | `/void?code=` | Void |
 | POST | `/refund?code=` | Refund |
-| POST | `/kot_advance?code=` | Advance kitchen ticket |
 | POST | `/amend?code=` | Amend a sale (draft + reason + actor) |
-| POST | `/kot?code=` | Send a kitchen ticket from a terminal's cart |
 
 **Server is the sole writer.** A Client's tables are a sync cache that the next
 snapshot overwrites, so writing them locally silently loses the edit. Every till
-op a terminal can do goes over LAN — sell, settle, undo, void, refund, amend,
-send KOT — and everything else is refused.
+op a terminal can do goes over LAN — sell, settle, undo, void, refund, amend —
+and everything else is refused.
 
 `Store::assert_server_writer` is the backstop: catalogue, stock, purchases,
-staff, branches, tables, customers, expenses, fiscal settings and `amend_sale`
+staff, branches, customers, expenses, fiscal settings and `amend_sale`
 all return `"<action> on the Server — this device is a Client"` when
 `device_role = client`, so no UI path can bypass it. The `*_from_sync` writers
 skip the check — that is the Server's own data arriving. Screens that only
@@ -451,14 +497,14 @@ Credit on a Client sends `customer_name`, never a locally minted id, so the
 Server resolves the customer in its own book; inventing an id here billed credit
 against a customer the Server had never heard of.
 
-Same Wi‑Fi trust model (no TLS). Sync payload includes categories, stations,
+Same Wi‑Fi trust model (no TLS). Sync payload includes categories,
 branch/org names and invoice numbers.
 
 ## Organization / branches (local)
 
 - Meta: `org_id`, `org_name`, `active_branch_id`
-- Tables: `branches`, `categories`, `kitchen_stations`, `stock_movements`, `purchases`, `purchase_lines`, `sync_outbox`
-- Operational rows (products, sales, tables, KOTs, customers, expenses) carry `branch_id`
+- Tables: `branches`, `categories`, `stock_movements`, `purchases`, `purchase_lines`, `sync_outbox`
+- Operational rows (products, sales, customers, expenses) carry `branch_id`
 - **Export:** More → Branches → Export → `backups/branch_snapshot_{CODE}_{YYYY-MM-DD}.json` (+ clipboard)
 - **Import:** place file as `backups/import_branch_snapshot.json`, then Import
 - **Consolidated:** live day on this device + imported snapshots (stale/missing called out)
@@ -522,7 +568,7 @@ Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder)
 
 Fresh DBs get the full books shape in a single `CREATE TABLE` pass in `Store::migrate`:
 
-- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, order type, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking); kitchen stations / tables / KOT tables remain in the shared schema for a future food product but are not exposed in Courier UI
+- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking). Courier carries courier scope only — no dining tables, kitchen stations or KOT schema; a future food product brings its own
 - meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, etc.
 
 Pre-release: if a local DB from an older numbered schema (2–17) misbehaves, delete it and reopen. After first public release, introduce `schema_version` 2+ only for real upgrades. Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).

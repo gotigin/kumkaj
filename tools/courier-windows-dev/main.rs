@@ -1,5 +1,5 @@
 //! Thin cargo entrypoint for `cargo courier-windows-dev`.
-//! Delegates to `scripts/courier-windows-dev.sh` (cross-build Windows Dev .exe).
+//! Delegates to `apps/courier/scripts/windows-dev.sh` (cross-build Windows Dev .exe).
 
 use std::env;
 use std::path::PathBuf;
@@ -11,7 +11,7 @@ fn main() {
         .parent()
         .and_then(|p| p.parent())
         .expect("tools/courier-windows-dev → workspace root");
-    let script = root.join("scripts/courier-windows-dev.sh");
+    let script = root.join("apps/courier/scripts/windows-dev.sh");
     let mut cmd = Command::new("bash");
     cmd.arg(&script);
     cmd.args(env::args().skip(1));

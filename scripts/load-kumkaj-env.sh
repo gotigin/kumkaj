@@ -1,14 +1,15 @@
 # Source from other scripts:  source "$ROOT/scripts/load-kumkaj-env.sh" development
-# Exports keys from apps/courier/env/<name>.env and sets KUMKAJ_ENV.
+# Exports keys from the app's env file and sets KUMKAJ_ENV.
 #
-# Product env files live with the courier crate (not the workspace root) so each
-# future Kumkaj product can own its own ids/labels.
+# Product env files live with each app crate (apps/<app>/env/, not the
+# workspace root) so every Kumkaj product owns its own ids/labels.
+# Which app: KUMKAJ_ENV_DIR wins, else KUMKAJ_APP_DIR, else courier.
 load_kumkaj_env() {
   local name="${1:?usage: load_kumkaj_env development|production}"
   local root="${KUMKAJ_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-  local file="${KUMKAJ_ENV_DIR:-$root/apps/courier/env}/${name}.env"
+  local file="${KUMKAJ_ENV_DIR:-${KUMKAJ_APP_DIR:-$root/apps/courier}/env}/${name}.env"
   if [[ ! -f "$file" ]]; then
-    echo "Missing Kumkaj Courier env file: $file" >&2
+    echo "Missing Kumkaj env file: $file" >&2
     return 1
   fi
   # Parse KEY=VALUE (don't `source` — unquoted spaces break bash, e.g. Kumkaj Dev).
@@ -28,5 +29,5 @@ load_kumkaj_env() {
     export "$key=$value"
   done <"$file"
   export KUMKAJ_ENV="$name"
-  echo "Kumkaj Courier env: $name (APP_ID=${KUMKAJ_APP_ID:-?} LABEL=${KUMKAJ_APP_LABEL:-?})"
+  echo "Kumkaj env: $name (APP_ID=${KUMKAJ_APP_ID:-?} LABEL=${KUMKAJ_APP_LABEL:-?})"
 }

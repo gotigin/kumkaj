@@ -10,8 +10,8 @@ cat > "$OUT/README.txt" <<'EOF'
 Kumkaj Apple platform scaffold
 ===============================
 Bundle / application id (kumkaj.com reverse-DNS):
-  production: com.kumkaj.courier   (apps/courier/env/production.env)
-  development: com.kumkaj.courier.debug   (apps/courier/env/development.env)
+  production: <app id>        (apps/<app>/env/production.env)
+  development: <app id>.debug   (apps/<app>/env/development.env)
 Policy: do everything that does not require a physical Mac; skip only
 real-Mac device verification and signed App Store submission.
 

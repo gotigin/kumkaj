@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# Regenerate Kumkaj Courier app icons / logo from the product master in assets/.
+# Regenerate an app's icons / logo from its product master
+# (apps/<app>/assets/). App: KUMKAJ_APP_DIR (default apps/courier).
 # - PNG + .ico for OS launchers / window chrome (Android + desktop)
 # - WebP for in-app embedding (Makepad Image / crate_resource)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-SRC="$ROOT/assets/courier-app-icon.png"
-RES="$ROOT/apps/courier/resources"
+APP_DIR="${KUMKAJ_APP_DIR:-$ROOT/apps/courier}"
+SRC="${KUMKAJ_ICON_SRC:-$APP_DIR/assets/courier-app-icon.png}"
+RES="$APP_DIR/resources"
 ANDROID_RES="$RES/android/res"
 
 if [[ ! -f "$SRC" ]]; then
@@ -79,7 +81,7 @@ magick "$SRC" -define icon:auto-resize=256,128,64,48,32,16 "$RES/icon.ico"
 echo "wrote $RES/icon.ico"
 
 # Makepad window icons: set via .cargo/config.toml [env] MAKEPAD_APP_ICON_*
-# pointing at apps/courier/resources/icon_*.png (no second resources/ tree).
+# pointing at the app resources/icon_*.png (no second resources/ tree).
 
 echo "Android launcher icons ready under $ANDROID_RES/mipmap-*/ic_launcher.png"
 echo "In-app logo: $RES/kumkaj-mark.webp (use crate_resource / load_image_dep)"

@@ -1,5 +1,5 @@
 //! Thin cargo entrypoint for `cargo courier-dev`.
-//! Delegates to `scripts/courier-dev.sh` (loads apps/courier/env/development.env).
+//! Delegates to `apps/courier/scripts/dev.sh` (loads apps/courier/env/development.env).
 
 use std::env;
 use std::path::PathBuf;
@@ -11,7 +11,7 @@ fn main() {
         .parent()
         .and_then(|p| p.parent())
         .expect("tools/courier-dev → workspace root");
-    let script = root.join("scripts/courier-dev.sh");
+    let script = root.join("apps/courier/scripts/dev.sh");
     let mut cmd = Command::new("bash");
     cmd.arg(&script);
     cmd.args(env::args().skip(1));

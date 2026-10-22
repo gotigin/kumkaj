@@ -25,7 +25,7 @@ Kumkaj Android packaging
 Application id: ${KUMKAJ_APP_ID}
 Label: ${KUMKAJ_APP_LABEL}
 Website: https://kumkaj.com
-Env file: apps/courier/env/production.env
+Env file: this app's env/production.env (apps/<app>/env/)
 
 Build APK:
   MAKEPAD_ROOT=$MAKEPAD_ROOT ./scripts/package-android.sh

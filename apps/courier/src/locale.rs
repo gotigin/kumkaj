@@ -570,13 +570,8 @@ fn en(key: &str) -> String {
         "note_ph" => "Note (optional)",
         "rounded" => "ROUNDED",
         "split" => "Split",
-        "send_kot" => "Send KOT",
         "counter" => "Counter",
-        "dine_in" => "Dine-in",
-        "takeaway" => "Takeaway",
         "order" => "Order",
-        "tables" => "Tables",
-        "kitchen" => "Kitchen",
         "sales" => "Bookings",
         "sales_refunds" => "Bookings & refunds",
         "day_close" => "Day close",
@@ -623,7 +618,6 @@ fn en(key: &str) -> String {
         "this_shop" => "Server Mode",
         "extra_till" => "Client Mode",
         "off" => "Off",
-        "tables_kitchen" => "Tables & kitchen",
         "server" => "Server",
         "client" => "Client",
         "language_currency" => "Language & currency",
@@ -1138,7 +1132,7 @@ mod tests {
         ];
         const KEYS: &[&str] = &[
             "back", "sold_out", "restock", "not_tracked", "in_stock", "today_prefix", "owed",
-            "cash", "sell", "items", "more", "tables", "kitchen", "clear", "add_upper",
+            "cash", "sell", "items", "more", "clear", "add_upper",
         ];
         for lang in LANGS {
             for key in KEYS {

@@ -21,8 +21,8 @@ use kumkaj_courier::{
 };
 
 use domain::{
-    new_id, AttachmentEntity, Cart, Customer, DiningTable, Money, MoneyLane, MoneyMoveKind,
-    PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole, VenueMode,
+    new_id, AttachmentEntity, Cart, Customer, Money, MoneyLane, MoneyMoveKind,
+    PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole,
 };
 use fiscal::{FiscalSettings, TaxPricing};
 use locale::{LanguageSource, LocaleSettings, CURRENCIES, LANGUAGES};
@@ -188,10 +188,8 @@ struct AppState {
     amend_cart: Cart,
     amend_pay: PayMethod,
     sale_revisions: Vec<SaleRevision>,
-    selected_table_id: Option<String>,
     selected_customer_id: Option<String>,
     customers: Vec<Customer>,
-    tables: Vec<DiningTable>,
     recent_sales: Vec<Sale>,
     staff: Vec<StaffMember>,
     session: Option<StaffMember>,
@@ -222,7 +220,6 @@ struct AppState {
     owner_setup_complete: bool,
     /// False until Fresh/Book onboarding finishes.
     onboarding_complete: bool,
-    venue_mode: VenueMode,
     client_paired: bool,
     /// Book-import wizard step: 0=choose, 1=items hint, 2=credit opening.
     onboard_step: u8,
@@ -542,10 +539,8 @@ impl AppState {
             amend_cart: Cart::default(),
             amend_pay: PayMethod::Cash,
             sale_revisions: Vec::new(),
-            selected_table_id: None,
             selected_customer_id: None,
             customers: Vec::new(),
-            tables: Vec::new(),
             recent_sales: Vec::new(),
             staff: Vec::new(),
             session: None,
@@ -562,7 +557,6 @@ impl AppState {
             data_base: None,
             owner_setup_complete: false,
             onboarding_complete: false,
-            venue_mode: VenueMode::Counter,
             client_paired: false,
             extra_tills_allowed: false,
             onboard_step: 1,
@@ -673,7 +667,6 @@ impl AppState {
     fn reload_all(&mut self) -> Result<(), String> {
         let store = self.store.as_ref().ok_or("No store")?;
         self.products = store.list_products(false)?;
-        self.tables = store.list_tables()?;
         self.recent_sales = store.recent_sales(30)?;
         self.staff = store.list_staff()?;
         self.customers = store.list_customers().unwrap_or_default();
@@ -697,11 +690,6 @@ impl AppState {
         self.measure_slab_kg = measure.slab_kg;
         self.owner_setup_complete = store.owner_setup_complete().unwrap_or(true);
         self.onboarding_complete = store.onboarding_complete().unwrap_or(true);
-        // Courier product: always counter desk (no restaurant tables/KOT face).
-        if store.venue_mode().unwrap_or(VenueMode::Counter) != VenueMode::Counter {
-            let _ = store.set_venue_mode(VenueMode::Counter);
-        }
-        self.venue_mode = VenueMode::Counter;
         self.client_paired = store.client_paired().unwrap_or(false);
         self.pin_reset_required = store.pin_reset_required().unwrap_or(false);
         self.entity_template_id = store
@@ -1313,7 +1301,7 @@ script_mod! {
     mod.widgets.TextInput.draw_text.text_style.font_family = WorldFonts
     mod.widgets.TextInputFlat.draw_text.text_style.font_family = WorldFonts
     // Contrast law: never pair two lights or two darks — theme OR local styles.
-    // Palette from assets/courier-app-icon.png (navy C, sky blue, orange, yellow).
+    // Palette from apps/courier/assets/courier-app-icon.png (navy C, sky blue, orange, yellow).
     // Light face → dark ink (#0B1220 / #3A4554 / #56575D) in EVERY state.
     // Navy face (#072058) → white ink in EVERY state.
     // Makepad mixes color→color_hover→color_down; mismatched lightness = wash.
@@ -8152,7 +8140,6 @@ impl App {
         }
         let tmpl = store.apply_entity_template("courier_agency")?;
         st.entity_template_id = tmpl.id.to_string();
-        st.venue_mode = VenueMode::Counter;
         Ok(())
     }
 
@@ -10862,8 +10849,6 @@ impl App {
                 LocalDone { sale: Sale, snack: String },
                 Remote {
                     draft: domain::SaleDraft,
-                    table_id: Option<String>,
-                    table_name: Option<String>,
                     customer_id: Option<String>,
                     customer_name: Option<String>,
                     actor: StaffMember,
@@ -10910,7 +10895,6 @@ impl App {
                 let mut draft = st.cart.to_sale_draft()?;
                 draft.money_lane = st.money_lane;
                 st.apply_booking_fields(&mut draft);
-                let table_id = st.selected_table_id.clone();
                 let is_client = st.device_role == DeviceRole::Client;
                 let customer_id = if method.is_credit() {
                     if let Some(id) = st.selected_customer_id.clone() {
@@ -10942,9 +10926,6 @@ impl App {
                         .server_url()?
                         .ok_or_else(|| "Missing server URL".to_string())?;
                     let code = store.pairing_code()?;
-                    let table_name = table_id.as_ref().and_then(|tid| {
-                        st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
-                    });
                     let customer_name = if method.is_credit() {
                         Some(typed_customer.trim().to_string()).filter(|s| !s.is_empty())
                     } else {
@@ -10952,8 +10933,6 @@ impl App {
                     };
                     Pending::Remote {
                         draft,
-                        table_id,
-                        table_name,
                         customer_id,
                         customer_name,
                         actor,
@@ -10966,7 +10945,6 @@ impl App {
                         store.finalize_sale(
                             &draft,
                             method,
-                            table_id.as_deref(),
                             customer_id.as_deref(),
                             &actor,
                         )?
@@ -10998,7 +10976,6 @@ impl App {
                         .and_then(|s| s.format_receipt_text(&sale.id).ok())
                         .unwrap_or(receipt);
                     st.cart.clear();
-                    st.selected_table_id = None;
                     if method.is_credit() {
                         st.selected_customer_id = None;
                     }
@@ -11027,8 +11004,6 @@ impl App {
                 Pending::LocalDone { sale, snack } => Ok((sale.id, snack)),
                 Pending::Remote {
                     draft,
-                    table_id,
-                    table_name,
                     customer_id,
                     customer_name,
                     actor,
@@ -11040,8 +11015,6 @@ impl App {
                         pay: method.as_str().into(),
                         customer_id,
                         customer_name,
-                        table_name,
-                        table_id,
                         actor_id: actor.id.clone(),
                         payments: Vec::new(),
                     };
@@ -11066,7 +11039,6 @@ impl App {
                             )
                         });
                     st.cart.clear();
-                    st.selected_table_id = None;
                     if method.is_credit() {
                         st.selected_customer_id = None;
                     }
@@ -11202,7 +11174,6 @@ impl App {
             let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
             let sale = store.quick_undo_sale(&sale_id, &actor)?;
             st.cart = Cart::from_sale(&sale);
-            st.selected_table_id = sale.table_id.clone();
             st.selected_customer_id = sale.customer_id.clone();
             st.last_receipt = format!("Undone {}", &sale.id[..8.min(sale.id.len())]);
             st.status = "Sale undone — cart restored".into();
@@ -11510,7 +11481,7 @@ impl App {
             let updating = st.editing_product_id.is_some();
             st.require_server_role(if updating { "Change items" } else { "Add items" })?;
             let actor = st.actor()?;
-            if !actor.role.can_manage_menu() {
+            if !actor.role.can_manage_items() {
                 return Err("Not allowed to manage items".into());
             }
             let name = name.trim();
@@ -11550,14 +11521,6 @@ impl App {
                     None => store.add_category(wanted)?.id,
                 },
             };
-            let station_id = if let Some(ref id) = editing_id {
-                store
-                    .get_product(id)?
-                    .map(|p| p.station_id.clone())
-                    .unwrap_or_default()
-            } else {
-                String::new()
-            };
             let modifiers =
                 domain::ModifierOption::parse_human_list(&modifiers_text, &currency)?;
             let mut product = if let Some(id) = editing_id {
@@ -11580,7 +11543,6 @@ impl App {
                 product.tax_bps = 0;
             }
             product.category_id = category_id;
-            product.station_id = station_id;
             product.set_modifiers(&modifiers);
             product.first_kg =
                 booking::parse_positive(&first_kg_text).unwrap_or(precise::ZERO);
@@ -11633,7 +11595,7 @@ impl App {
             let mut st = app_state().lock().unwrap();
             st.require_server_role("Remove items")?;
             let actor = st.actor()?;
-            if !actor.role.can_manage_menu() {
+            if !actor.role.can_manage_items() {
                 return Err("Not allowed to manage items".into());
             }
             let product = st
@@ -12856,7 +12818,6 @@ impl MatchEvent for App {
                     })
                     .collect::<Vec<_>>()
                     .join(" + ");
-                let table_id = st.selected_table_id.clone();
                 let pay_label = if parts.len() == 1 {
                     parts[0].0.as_str().to_string()
                 } else {
@@ -12871,16 +12832,11 @@ impl MatchEvent for App {
                         .server_url()?
                         .ok_or_else(|| "Missing server URL".to_string())?;
                     let code = store.pairing_code()?;
-                    let table_name = table_id.as_ref().and_then(|tid| {
-                        st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
-                    });
                     let req = Box::new(net::RemoteSaleRequest {
                         draft,
                         pay: pay_label,
                         customer_id,
                         customer_name,
-                        table_name,
-                        table_id,
                         actor_id: actor.id.clone(),
                         payments: parts
                             .iter()
@@ -12902,7 +12858,6 @@ impl MatchEvent for App {
                     store.finalize_sale_tenders(
                         &draft,
                         &parts,
-                        table_id.as_deref(),
                         customer_id.as_deref(),
                         &actor,
                     )?
@@ -12914,7 +12869,6 @@ impl MatchEvent for App {
                     .and_then(|s| s.format_receipt_text(&sale.id).ok())
                     .unwrap_or_else(|| format!("Sale {}", amount));
                 st.cart.clear();
-                st.selected_table_id = None;
                 st.last_awb = sale.awb_no.clone();
                 if let Some(store) = st.store.as_ref()
                     && !sale.awb_no.is_empty()
@@ -12961,7 +12915,6 @@ impl MatchEvent for App {
                         .and_then(|s| s.format_receipt_text(&sale.id).ok())
                         .unwrap_or_else(|| format!("Sale {}", amount));
                     st.cart.clear();
-                    st.selected_table_id = None;
                     st.last_awb = sale.awb_no.clone();
                     if let Some(store) = st.store.as_ref()
                         && !sale.awb_no.is_empty()
@@ -15323,9 +15276,8 @@ impl MatchEvent for App {
                     })
                     .ok_or_else(|| format!("No branch matches \"{}\"", wanted.trim()))?;
                 store.set_active_branch_id(&branch.id)?;
-                // Catalogue, tables and tickets are all branch scoped.
+                // Catalogue is branch scoped.
                 st.cart.clear();
-                st.selected_table_id = None;
                 st.reload_all()?;
                 st.refresh_branches_text()?;
                 Ok(format!("Now selling for {}", branch.label()))

@@ -8,7 +8,7 @@ alwaysApply: false
 
 Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces.
 
-Same UI ships to Linux / Windows / Android — change shared faces in `apps/courier`, not per OS.
+The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy (examples here are Courier's `apps/courier`), not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
 
 ## Cause (regressions we already paid for)
 
@@ -58,7 +58,7 @@ Always `padding` **and** `label_walk.margin`. Never invent `LangSourceBtn`-style
 ❌ Idle TabBtn color_hover = #072058 (same as TabBtnActive)
 ❌ Focus/hover as the selected look
 ❌ Ellipsis on NavBtn/MoreRow; ChipBtn for “Tax invoice” / language source
-❌ Fix one call site only — edit the shared face
+❌ Fix one call site only — edit that app's face definition
 
 ✅ Overlay + paint_nav_tabs / paint_choice_pair + animator clear
 ✅ Wrap on full-width CTAs; ChipBtn only for short chips

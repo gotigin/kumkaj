@@ -1,0 +1,41 @@
+[package]
+name = "kumkaj-khaynjo"
+version = "0.1.0"
+edition = "2024"
+description = "Khaynjo — local-first restaurant operating system (tables, KOT, billing, books)"
+license = "MIT OR Apache-2.0"
+
+# Packager metadata is the production id. Dev installs use this crate's
+# env/development.env (com.khaynjo.debug) via scripts — see docs/DEV.md.
+[package.metadata.packager]
+identifier = "com.khaynjo"
+product_name = "Khaynjo"
+
+[package.metadata.makepad.android]
+version_code = 1
+version_name = "0.1.0"
+min_sdk_version = 26
+
+[dependencies]
+makepad-widgets = { path = "../../vendor/makepad/widgets" }
+rusqlite = { version = "0.37", features = ["bundled"] }
+dirs = "6"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+sha2 = "0.10"
+hex = "0.4"
+rand = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+ureq = { version = "2", features = ["json"] }
+sys-locale = "0.3"
+# Exact decimal maths (no native f32/f64) for money, weight, slabs, tax %.
+rust_decimal = { version = "1.37", default-features = false, features = ["std", "serde", "serde-str", "maths"] }
+# Decode JPG/PNG/WebP; always re-encode attachments as lossless WebP.
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+
+# Desktop-only: neither crate builds for Android. There the clipboard goes
+# through `Cx::copy_to_clipboard` and files through Makepad's own picker.
+[target.'cfg(any(target_os = "linux", target_os = "windows", target_os = "macos"))'.dependencies]
+rfd = "0.15"
+arboard = "3"

@@ -1,13 +1,19 @@
-# Kumkaj — shared business books spine
+# Kumkaj — business books: common concepts checklist
 
 Canonical checklist of books most concrete Kumkaj products need, mapped to
-**shared primitives** (party, line, unit, charge, ledger, day/period). Used
-when extracting common code after a concrete product ships.
+common **concepts** (party, line, unit, charge, ledger, day/period). These
+are shared *requirements and vocabulary* only — **not shared code**. There
+is no Kumkaj core / shared books engine (vision §1): each app implements
+these concepts in its own code (copying a sibling app as a starting point,
+then diverging), so a change in one app never impacts another.
 
-**Current product focus:** [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
+**Current product focus:** [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
 
 Companions: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
-§1–2; [`DESIGN.md`](DESIGN.md); [`.cursor/rules/generic-concrete.mdc`](../.cursor/rules/generic-concrete.mdc);
+§1–2; [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md) (UUID identity —
+every concept below is keyed by `id`, never by name);
+[`UNITS_AND_CONVERSIONS.md`](UNITS_AND_CONVERSIONS.md);
+[`DESIGN.md`](DESIGN.md); [`.cursor/rules/generic-concrete.mdc`](../.cursor/rules/generic-concrete.mdc);
 schema in [`DEV.md`](DEV.md).
 
 **Not:** a till with reports bolted on, or a forced chart-of-accounts ERP.
@@ -17,8 +23,11 @@ schema in [`DEV.md`](DEV.md).
 ## Cross-category research → commons
 
 The table below is a **sample** used to find the intersection of books
-fields across trades. Kumkaj ships **concrete products**; this spine is
-what we promote into shared code when two products need the same thing.
+fields across trades. Kumkaj ships **concrete products**; this checklist
+is the common BOS requirement pattern that explains why the apps share a
+workspace and a Makepad 2 platform. When two products need the same
+thing, each implements it in its own code — nothing here is promoted
+into shared code.
 
 ### Sample snapshot (comparable fields — not a product catalog)
 
@@ -45,13 +54,13 @@ what we promote into shared code when two products need the same thing.
 5. **Catalogue** — items/rates/services + optional units
 6. **Day / period picture** — tenders, outstanding, profit shape
 
-**Many (same primitives, progressive):** stock tracking, supplier dues (AP), bank posts, team/roles, multi-branch.
+**Many (same concepts, progressive — implemented per app):** stock tracking, supplier dues (AP), bank posts, team/roles, multi-branch.
 
 **Few / capability packs (hide until enabled):** tables & KOT/KDS, kg-heavy units + account/cash booking labels, appointments, multi-station kitchen.
 
 **Conclusion for shell:** do **not** open on Booking/Sell alone. Peers:
 **Day book / Books · Booking/Sell · Pay out/Buy · More**. Courier names:
-[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md). See [`DESIGN.md`](DESIGN.md).
+[`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md). See [`DESIGN.md`](DESIGN.md).
 
 ------------------------------------------------------------------------
 
@@ -97,13 +106,13 @@ equal peers in one mental model. The UX must make that model obvious.
 
 ------------------------------------------------------------------------
 
-## Universal checklist → primitive → status
+## Universal checklist → concept → status
 
-| # | What owners track | Generic primitive | Status (schema v1) |
+| # | What owners track | Common concept (each app implements its own) | Status (schema v1) |
 |---|-------------------|-------------------|---------------------|
 | 1 | Who we deal with | **Party** + multi-role `kind_label` (one identity; AR+AP; net report) | Shipped — dual-role OK; see Dual-role parties |
 | 2 | Catalogue + units | **Item** + unit + `units` / `unit_conversions` | Shipped; Settings → Units; item `unit_label` |
-| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Courier desk UX next — [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) |
+| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Courier desk UX next — [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) |
 | 4 | Buy (goods/services in) | Purchases → stock + line cost; party + on-account AP | Shipped — Buy tab; paid or on account |
 | 5 | Running costs | **Expenses** | Shipped (Buy tab + Reports) |
 | 6 | Who owes us (AR) | Credit ledger + aging + write-off | Shipped |
@@ -143,7 +152,7 @@ One sales table + a tag:
 Doctrine: vision §18, *“Ground truth: record money as it actually
 moved.”* Mechanics for whoever builds a money feature:
 
-| Reality | Primitive |
+| Reality | Books pattern (per app) |
 |---------|-----------|
 | One obligation settled part bank / part cash (or any mix) | **One** books entry (sale / purchase / expense / settlement) + **N** `money_movements`, one per tender, summing to the entry total |
 | Part of a settlement has a bill / receipt / bank trail, part does not | Supporting document is an **optional** attachment / note on the entry. Validation never requires a bill no, cheque no, or bank reference to save |
@@ -163,7 +172,7 @@ form.
 ## Courier agency — product is Kumkaj Courier
 
 Full product brief, competitor matrix, walk-in/barcode/tracking:
-[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
+[`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
 
 > “This is your courier business system: carriers and consignors, ₹/kg rates,
 > booking (Account or Cash), who owes whom, bank, day/month P&L — and the
@@ -183,13 +192,13 @@ A peer courier (or any firm) may be **both** someone you bill **and** someone wh
 
 | Layer | Practice |
 |-------|----------|
-| **Identity** | Uniqueness is the party **UUID** (`id`). Display names are **not** unique — two different firms may share a name. Prefer **one UUID** for one real firm with dual roles, not two rows that only differ by kind |
+| **Identity** | Uniqueness is the party **UUID** (`id`); names are aliases only — display names are **not** unique and may be renamed (canonical: [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md)). Prefer **one UUID** for one real firm with dual roles, not two rows that only differ by kind |
 | **Roles** | Tags on that party (`Consignor`, `Carrier`, `Supplier`, …). Multiple roles allowed (e.g. `Carrier, Consignor`) on the **same** id |
 | **Ledgers** | Keep **two** books faces: AR (`credit_ledger`) and AP (`payable_ledger`). Do **not** merge into one running balance |
 | **Overall status** | Report **AR, AP, and net** (`AR − AP`): net > 0 → they owe you; net < 0 → you owe them |
 | **Settlement** | Settle each side on its ledger; optional cash netting later still posts both sides |
 
-`kind_label` is the freeform / multi-role field (roles, not product forks). All books and ops key off **party id**, never uniqueness-by-name.
+`kind_label` is the freeform / multi-role field (roles, not product forks). All books and ops key off **party id**, never uniqueness-by-name — the general Kumkaj identity rule (UUID decides, names are aliases) is canonical in [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md).
 
 ### Entry notes + attachments
 
@@ -201,13 +210,13 @@ Sales, parties, expenses (and tracking/POD) may carry **notes**, **photos**, and
 | Image | JPG / JPEG / PNG / WebP | Always **WebP** under `attachments/{entity}/{id}/` |
 | File | PDF / txt | Copied as-is |
 
-Catalogue / brand photos reuse the same WebP encode helper. Reject unknown types (e.g. `.exe`).
+Catalogue / brand photos reuse that app's own WebP encode helper. Reject unknown types (e.g. `.exe`).
 
 ------------------------------------------------------------------------
 
 ## Next coding backlog (priority)
 
-Still generic-only. Spine above is shipped; remaining is depth.
+Checklist above is shipped in Courier (and copied/diverged in Khaynjo's own code); remaining is depth.
 
 ### Later
 Stock valuation · statutory GST/e-invoice (vision §23).
@@ -244,7 +253,7 @@ Use when implementing a row above or a deferred compliance feature.
 - **Audit trail:** append-only edit log; India company law expects non-disableable
   trails — strengthen as we harden, don’t disable.
 - **Retail vs service emphasis:** retail stresses stock + COGS; services stress
-  AR and costs without inventory — same shell, progressive stock.
+  AR and costs without inventory — same checklist, progressive stock in each app's own shell.
 
 ### India compliance (deferred — config rates, don’t hard-code)
 - GST: place of supply → CGST/SGST vs IGST; HSN/SAC on items; tax invoice fields
@@ -269,6 +278,8 @@ not the common-books center.
 
 1. Optimize for **BOS UX** (books model clear in the shell) — not literal
    step order, not POS-only, not a full GL accounting package on day one.
-2. Vertical language → shared primitive; never a courier/food fork.
-3. This file is the spine.
+2. Vertical language → common concept, implemented in that app's own
+   code; copying a sibling app is welcome, extracting shared code is not.
+3. This file is a concepts checklist, not a shared-code spine — there is
+   no Kumkaj core (vision §1).
 4. Do not edit USER_CASES / USE_CASES workbooks — those are owner-only.

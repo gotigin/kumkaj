@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shared Android env for package-android.sh / courier-android-dev.sh.
+# Shared Android env for package-android.sh and per-app android-dev.sh launchers.
 # shellcheck disable=SC2034
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

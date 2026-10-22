@@ -1116,7 +1116,41 @@ dependencies = [
 ]
 
 [[package]]
+name = "khaynjo-android-dev"
+version = "0.1.0"
+
+[[package]]
+name = "khaynjo-dev"
+version = "0.1.0"
+
+[[package]]
+name = "khaynjo-windows-dev"
+version = "0.1.0"
+
+[[package]]
 name = "kumkaj-courier"
+version = "0.1.0"
+dependencies = [
+ "arboard",
+ "chrono",
+ "dirs",
+ "hex",
+ "image",
+ "makepad-widgets",
+ "rand 0.8.8",
+ "rfd",
+ "rusqlite",
+ "rust_decimal",
+ "serde",
+ "serde_json",
+ "sha2",
+ "sys-locale",
+ "ureq",
+ "uuid",
+]
+
+[[package]]
+name = "kumkaj-khaynjo"
 version = "0.1.0"
 dependencies = [
  "arboard",

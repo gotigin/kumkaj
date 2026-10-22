@@ -1,9 +1,10 @@
 //! Kumkaj Courier is one concrete product — no multi-trade template picker.
 //!
-//! Labels and lane names live here so the shared store stays extractable when
-//! a second Kumkaj product needs the same books primitives.
+//! Labels and lane names live here, in Courier's own code. There is no
+//! Kumkaj core / shared store: if another Kumkaj product needs the same
+//! books concepts, it copies this code and diverges (see vision §1).
 
-use crate::domain::{Money, VenueMode};
+use crate::domain::Money;
 
 /// Reserved for optional future seed rows (currently unused — templates ship empty).
 #[derive(Clone, Copy, Debug)]
@@ -27,7 +28,6 @@ pub struct EntityTemplate {
     pub blurb: &'static str,
     pub how_to: &'static str,
     pub label_overrides: &'static [(&'static str, &'static str)],
-    pub venue_mode: VenueMode,
     pub qty_unit_hint: &'static str,
     pub lane_declared_label: &'static str,
     pub lane_owner_label: &'static str,
@@ -42,7 +42,6 @@ pub const COURIER: EntityTemplate = EntityTemplate {
     blurb: "Courier books + booking desk: consignors, carriers, day book, AWB.",
     how_to: "Booking = walk-in parcels (weigh → rate → cash/account → AWB). Day book = today. Pay out = carrier bills & expenses. More → Rates, Parties, Bank book & P&L, Team.",
     label_overrides: &[],
-    venue_mode: VenueMode::Counter,
     qty_unit_hint: "kg",
     lane_declared_label: "Account booking",
     lane_owner_label: "Cash booking",

@@ -1,28 +1,33 @@
 ---
-description: Kumkaj brand = concrete BOS apps; shared reusable internals
+description: Kumkaj brand = concrete BOS apps in one common workspace; no Kumkaj core / shared product code
 alwaysApply: true
 ---
 
-# Concrete products, shared internals
+# Concrete products, common workspace — no Kumkaj core
 
-**Kumkaj** is the **brand** for a family of **concrete business operating system apps**. **Current focus: Kumkaj Courier** (`docs/KUMKAJ_COURIER.md`) — full courier-agency BOS. Other concrete products come later. Internally we share reusable code and extract more when a second product needs the same thing.
+**Kumkaj** is the **brand** for a family of **concrete business operating system apps** (Courier, Khaynjo, future products). The only shared thing is the **common workspace**: every app is built on the same **Makepad 2** (`vendor/makepad`) with similar libraries, because BOS apps have similar requirements (money in/out, parties, day/period books, receipts, reports). That is platform/workspace sharing — **not** shared product code.
 
-Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–33; courier brief: `docs/KUMKAJ_COURIER.md`.
+Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–33; courier brief: `apps/courier/docs/KUMKAJ_COURIER.md`.
 
 ## Do
 
 - Ship concrete product UX first (labels, flows, packaging, defaults).
-- Prefer shapes that can become shared: party, item/line, unit, charge, ledger, day book, report view, document template.
-- When a second product needs the same logic, move it into shared code.
+- Keep each app self-contained under `apps/<app>/`: it owns all of its product/business code (`domain`, `store`, `fiscal`, `locale`, `net`, UI), even when it started as a copy of a sibling app.
+- Reuse by **copy-then-diverge**: copy a sibling app's proven code as a starting point, then change the copy freely for that trade.
+- Treat party / line / unit / charge / ledger / day book / document as common **concepts and vocabulary** (see `docs/BUSINESS_BOOKS.md`) that each app implements in its own code — not as shared primitives to extract.
 - Hide unused capability inside each product; progressive depth per product.
 
 ## Do not
 
-- Maintain forever-divergent engines / duplicated ledgers per trade.
-- Add throwaway vertical schemas that cannot be extracted (`CourierShipment` as a second books stack).
+- Create a Kumkaj core, shared crate, shared books engine, or any product/business code that more than one app depends on. **There is no Kumkaj core, and none should be created.**
+- Change code for one app in a way that impacts another app. If serving one app would require changing shared core code (and thereby affect other apps), do not build that shared implementation — **duplicate the code into that app instead**. Duplication is preferable to coupling.
+- Require a future app to need a change to shared core code. A future app copies what it needs and owns it.
 - Force one vague “works for anyone” UI that the owner must reinterpret.
 
+Workspace-level sharing is only: Cargo workspace membership, the vendored Makepad 2 tree and its patches, similar dependency versions / `Cargo.lock`, and root build/packaging tooling parameterised per app. Those are deliberate platform choices, not a channel for product logic — if a root tool/script change for one app would break another, fork that tool/script per app instead.
+
 ```text
-❌ Five forked apps with five day books
-✅ Concrete “Courier” / “Counter” / “Personal” products + shared books primitives
+❌ One Kumkaj core / shared books crate that every app must depend on (and must change to serve a new app)
+❌ Extracting a second app's logic into shared code so a fix for one trade ripples into another
+✅ Concrete “Courier” / “Khaynjo” / “Personal” products in one workspace on Makepad 2, each owning duplicated, independently-evolving code
 ```

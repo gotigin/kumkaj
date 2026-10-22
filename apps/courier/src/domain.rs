@@ -215,42 +215,6 @@ impl PayMethod {
     }
 }
 
-/// How the bill was served. Counter keeps the chai-stall flow unchanged;
-/// DineIn/Takeaway matter for restaurants and KOT routing.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-pub enum OrderType {
-    #[default]
-    Counter,
-    DineIn,
-    Takeaway,
-}
-
-impl OrderType {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Counter => "counter",
-            Self::DineIn => "dine_in",
-            Self::Takeaway => "takeaway",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s.trim() {
-            "dine_in" | "dinein" | "dine-in" => Self::DineIn,
-            "takeaway" | "take_away" | "parcel" => Self::Takeaway,
-            _ => Self::Counter,
-        }
-    }
-
-    pub fn label(self) -> &'static str {
-        match self {
-            Self::Counter => "Counter",
-            Self::DineIn => "Dine-in",
-            Self::Takeaway => "Takeaway",
-        }
-    }
-}
-
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub enum StaffRole {
     /// Host of this local business (server). Only one semantic owner account.
@@ -258,9 +222,6 @@ pub enum StaffRole {
     /// Non-owner staff — permission preset; display name is [`StaffMember::role_title`].
     Manager,
     Cashier,
-    /// Takes orders on the floor: sells, runs tables, never touches the books.
-    Waiter,
-    Kitchen,
 }
 
 impl StaffRole {
@@ -269,8 +230,6 @@ impl StaffRole {
             Self::Owner => "owner",
             Self::Manager => "manager",
             Self::Cashier => "cashier",
-            Self::Waiter => "waiter",
-            Self::Kitchen => "kitchen",
         }
     }
 
@@ -279,8 +238,9 @@ impl StaffRole {
             "owner" => Some(Self::Owner),
             "manager" => Some(Self::Manager),
             "cashier" => Some(Self::Cashier),
-            "waiter" => Some(Self::Waiter),
-            "kitchen" => Some(Self::Kitchen),
+            // Roles from other Kumkaj products (waiter/kitchen) collapse to
+            // the closest counter role rather than dropping the staff row.
+            "waiter" | "kitchen" => Some(Self::Cashier),
             _ => None,
         }
     }
@@ -295,16 +255,14 @@ impl StaffRole {
             Self::Owner => "Owner",
             Self::Manager => "Manager",
             Self::Cashier => "Cashier",
-            Self::Waiter => "Waiter",
-            Self::Kitchen => "Kitchen",
         }
     }
 
     pub fn can_sell(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager | Self::Cashier | Self::Waiter)
+        matches!(self, Self::Owner | Self::Manager | Self::Cashier)
     }
 
-    pub fn can_manage_menu(self) -> bool {
+    pub fn can_manage_items(self) -> bool {
         matches!(self, Self::Owner | Self::Manager)
     }
 
@@ -316,10 +274,6 @@ impl StaffRole {
     /// Original sale authorship is never rewritten.
     pub fn can_amend_sale(self) -> bool {
         matches!(self, Self::Owner | Self::Manager)
-    }
-
-    pub fn can_kitchen(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager | Self::Kitchen)
     }
 
     pub fn can_admin(self) -> bool {
@@ -334,8 +288,6 @@ pub struct StaffFeatures {
     pub items: bool,
     pub sales: bool,
     pub credit: bool,
-    pub floor: bool,
-    pub kitchen: bool,
     pub team: bool,
     pub backup: bool,
     /// Stock, purchases and low-stock views.
@@ -359,8 +311,6 @@ impl StaffFeatures {
             items: true,
             sales: true,
             credit: true,
-            floor: true,
-            kitchen: true,
             team: true,
             backup: true,
             inventory: true,
@@ -376,8 +326,6 @@ impl StaffFeatures {
                 items: true,
                 sales: true,
                 credit: true,
-                floor: true,
-                kitchen: true,
                 team: false,
                 backup: false,
                 inventory: true,
@@ -388,33 +336,6 @@ impl StaffFeatures {
                 items: false,
                 sales: false,
                 credit: true,
-                floor: false,
-                kitchen: false,
-                team: false,
-                backup: false,
-                inventory: false,
-                branches: false,
-            },
-            // A waiter is a cashier who also works the floor.
-            StaffRole::Waiter => Self {
-                sell: true,
-                items: false,
-                sales: false,
-                credit: true,
-                floor: true,
-                kitchen: false,
-                team: false,
-                backup: false,
-                inventory: false,
-                branches: false,
-            },
-            StaffRole::Kitchen => Self {
-                sell: false,
-                items: false,
-                sales: false,
-                credit: false,
-                floor: false,
-                kitchen: true,
                 team: false,
                 backup: false,
                 inventory: false,
@@ -429,32 +350,6 @@ impl StaffFeatures {
 
     pub fn from_json(s: &str) -> Self {
         serde_json::from_str(s).unwrap_or_default()
-    }
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub enum VenueMode {
-    Counter,
-    Restaurant,
-}
-
-impl VenueMode {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Counter => "counter",
-            Self::Restaurant => "restaurant",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s.trim() {
-            "restaurant" => Self::Restaurant,
-            _ => Self::Counter,
-        }
-    }
-
-    pub fn creates_kot(self) -> bool {
-        matches!(self, Self::Restaurant)
     }
 }
 
@@ -855,14 +750,6 @@ impl StaffMember {
         self.effective_features().credit
     }
 
-    pub fn can_access_floor(&self) -> bool {
-        self.effective_features().floor
-    }
-
-    pub fn can_access_kitchen(&self) -> bool {
-        self.effective_features().kitchen
-    }
-
     pub fn can_access_team(&self) -> bool {
         self.effective_features().team
     }
@@ -907,7 +794,7 @@ impl Branch {
     }
 }
 
-/// Menu grouping for large catalogues (Drinks / Food / Starters …).
+/// Item grouping for large catalogues.
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct Category {
     pub id: String,
@@ -916,16 +803,7 @@ pub struct Category {
     pub sort_order: i64,
 }
 
-/// Kitchen station a line is routed to (Hot / Cold / Tandoor …).
-#[derive(Clone, Debug, Default, Serialize, Deserialize)]
-pub struct KitchenStation {
-    pub id: String,
-    pub branch_id: String,
-    pub name: String,
-    pub sort_order: i64,
-}
-
-/// One paid add-on for an item (`Extra cheese +₹20`).
+/// One paid add-on for an item (`Gift wrap +₹20`).
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ModifierOption {
     pub name: String,
@@ -1032,9 +910,6 @@ pub struct Product {
     /// Catalogue grouping id; empty = uncategorised.
     #[serde(default)]
     pub category_id: String,
-    /// Optional prep-station id (food products); unused on courier rates.
-    #[serde(default)]
-    pub station_id: String,
     /// Tax rate in basis points (500 = 5%). Whether this sits *inside* the
     /// price or is added at the till is the shop's [`crate::fiscal::TaxPricing`].
     #[serde(default)]
@@ -1100,7 +975,6 @@ impl Product {
             archived: false,
             image_key: None,
             category_id: String::new(),
-            station_id: String::new(),
             tax_bps: 0,
             tax_rate_id: String::new(),
             stock_qty: STOCK_UNTRACKED,
@@ -1189,7 +1063,7 @@ pub struct CartLine {
     /// Copied from the product at add time (`kg`, empty = piece).
     pub unit_label: String,
     /// Optional seller note for this line (e.g. "less sugar"). Empty = none.
-    /// Modifier names are kept separately and joined onto the kitchen note.
+    /// Modifier names are kept separately and joined onto the line note.
     pub note: String,
     /// Catalogue price before modifiers. `unit_price` is this plus the
     /// applied modifier prices.
@@ -1252,9 +1126,9 @@ impl CartLine {
         )
     }
 
-    /// What the kitchen and the receipt should read: chosen modifiers, then
-    /// any free-text note the seller typed.
-    pub fn kitchen_note(&self) -> String {
+    /// What the receipt should read: chosen options, then any free-text
+    /// note the seller typed.
+    pub fn line_note(&self) -> String {
         let mods = self
             .applied_modifiers
             .iter()
@@ -1281,8 +1155,6 @@ pub struct Cart {
     /// Cleared whenever lines/qty/unit prices change so rounding never sticks
     /// to a stale basket. Applied only at finalize via [`Cart::to_sale_lines`].
     pub charge_total: Option<Money>,
-    /// How this bill is served. Counter by default so the stall flow is unchanged.
-    pub order_type: OrderType,
     /// Bill-type tag (Account booking / Cash booking). Set from the shell.
     pub money_lane: MoneyLane,
 }
@@ -1291,12 +1163,7 @@ impl Cart {
     pub fn clear(&mut self) {
         self.lines.clear();
         self.charge_total = None;
-        self.order_type = OrderType::Counter;
         // Keep money_lane — owner choice persists across carts until they flip the chip.
-    }
-
-    pub fn set_order_type(&mut self, order_type: OrderType) {
-        self.order_type = order_type;
     }
 
     pub fn add_or_bump(&mut self, product: &Product) {
@@ -1476,7 +1343,7 @@ impl Cart {
         Ok(())
     }
 
-    /// Optional free-text note for a cart line (kitchen / memory aid).
+    /// Optional free-text note for a cart line (memory aid).
     pub fn set_note(&mut self, index: usize, note: impl Into<String>) -> Result<(), String> {
         let line = self
             .lines
@@ -1550,7 +1417,6 @@ impl Cart {
     /// Load a recorded sale into an editable cart for owner/manager amend.
     pub fn from_sale(sale: &Sale) -> Self {
         let mut cart = Self {
-            order_type: OrderType::parse(&sale.order_type),
             lines: sale
                 .lines
                 .iter()
@@ -1625,7 +1491,7 @@ impl Cart {
                     unit_price_paise: l.unit_price.paise(),
                     qty: l.qty,
                     line_total_paise: l.applied_total().paise(),
-                    note: l.kitchen_note(),
+                    note: l.line_note(),
                     qty_milli: milli,
                     unit_label: l.unit_label.clone(),
                 }
@@ -1646,7 +1512,6 @@ impl Cart {
             // extracts inclusive tax, or adds exclusive tax on top of this
             // total. Doing it here would let a stale pack price a bill.
             tax_paise: 0,
-            order_type: self.order_type,
             money_lane: self.money_lane,
             user_at: None,
             awb_no: String::new(),
@@ -1702,8 +1567,6 @@ pub struct SaleDraft {
     /// [`SaleDraft::assert_balanced`] only ever checks the untaxed equation.
     #[serde(default)]
     pub tax_paise: i64,
-    #[serde(default)]
-    pub order_type: OrderType,
     /// Which money lane this bill posts to.
     #[serde(default)]
     pub money_lane: MoneyLane,
@@ -1783,7 +1646,6 @@ pub struct Sale {
     pub total_paise: i64,
     pub pay_method: String,
     pub status: String,
-    pub table_id: Option<String>,
     #[serde(default)]
     pub customer_id: Option<String>,
     /// Staff who finalized the sale — never rewritten on amend.
@@ -1794,9 +1656,6 @@ pub struct Sale {
     /// Branch that recorded this sale (empty = legacy row on the active branch).
     #[serde(default)]
     pub branch_id: String,
-    /// [`OrderType::as_str`] value; empty/unknown reads as Counter.
-    #[serde(default)]
-    pub order_type: String,
     /// Tax on this bill. Inside `total_paise` when the shop prices inclusive,
     /// added on top of the line total when it prices exclusive.
     #[serde(default)]
@@ -1885,10 +1744,6 @@ impl Sale {
             },
             server_at: self.server_at.clone(),
         }
-    }
-
-    pub fn order_type(&self) -> OrderType {
-        OrderType::parse(&self.order_type)
     }
 
     pub fn tax(&self) -> Money {
@@ -2253,91 +2108,6 @@ impl DayTotals {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub enum TableStatus {
-    Available,
-    Occupied,
-}
-
-impl TableStatus {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Available => "available",
-            Self::Occupied => "occupied",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s {
-            "occupied" => Self::Occupied,
-            _ => Self::Available,
-        }
-    }
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct DiningTable {
-    pub id: String,
-    pub name: String,
-    pub status: TableStatus,
-    pub active_sale_id: Option<String>,
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub enum KotStatus {
-    New,
-    Preparing,
-    Ready,
-    Completed,
-    Cancelled,
-}
-
-impl KotStatus {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::New => "new",
-            Self::Preparing => "preparing",
-            Self::Ready => "ready",
-            Self::Completed => "completed",
-            Self::Cancelled => "cancelled",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s {
-            "preparing" => Self::Preparing,
-            "ready" => Self::Ready,
-            "completed" => Self::Completed,
-            "cancelled" => Self::Cancelled,
-            _ => Self::New,
-        }
-    }
-
-    pub fn next(self) -> Option<Self> {
-        match self {
-            Self::New => Some(Self::Preparing),
-            Self::Preparing => Some(Self::Ready),
-            Self::Ready => Some(Self::Completed),
-            Self::Completed | Self::Cancelled => None,
-        }
-    }
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct KotTicket {
-    pub id: String,
-    pub sale_id: String,
-    pub created_at: String,
-    pub status: KotStatus,
-    pub summary: String,
-    /// Kitchen station this ticket belongs to; empty = whole order / unassigned.
-    #[serde(default)]
-    pub station_id: String,
-    /// Station display name resolved for the KDS (empty when unassigned).
-    #[serde(default)]
-    pub station_name: String,
-}
-
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct AuditEvent {
     pub id: String,
@@ -2620,10 +2390,7 @@ mod tests {
     }
 
     #[test]
-    fn order_type_and_modifiers_roundtrip() {
-        assert_eq!(OrderType::parse("dine_in"), OrderType::DineIn);
-        assert_eq!(OrderType::parse("garbage"), OrderType::Counter);
-        assert_eq!(OrderType::DineIn.as_str(), "dine_in");
+    fn modifiers_roundtrip() {
         let mods = vec![
             ModifierOption {
                 name: "Extra cheese".into(),
@@ -2643,7 +2410,7 @@ mod tests {
     }
 
     #[test]
-    fn modifier_toggle_changes_unit_price_and_kitchen_note() {
+    fn modifier_toggle_changes_unit_price_and_line_note() {
         let mut cart = Cart::default();
         let mut tea = tea();
         let cheese = ModifierOption {
@@ -2673,11 +2440,9 @@ mod tests {
         let mut p = tea();
         p.tax_bps = 500;
         cart.add_or_bump(&p);
-        cart.set_order_type(OrderType::Takeaway);
         let draft = cart.to_sale_draft().unwrap();
         draft.assert_balanced().unwrap();
         assert_eq!(draft.tax_paise, 0, "store fills tax at finalize");
-        assert_eq!(draft.order_type, OrderType::Takeaway);
         assert_eq!(draft.total_paise, 1300);
         assert_eq!(p.tax_for(1300, TaxPricing::Inclusive), 61);
     }

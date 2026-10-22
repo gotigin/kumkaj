@@ -4,8 +4,8 @@
 //! Client uses `ureq` to pair, pull catalog/ledger/sales, and push sales/settlements.
 
 use crate::domain::{
-    Category, CreditLedgerEntry, Customer, DayTotals, DiningTable,
-    KitchenStation, KotTicket, PayMethod, Product, Sale, SaleDraft, StaffMember, TaxRate,
+    Category, CreditLedgerEntry, Customer, DayTotals,
+    PayMethod, Product, Sale, SaleDraft, StaffMember, TaxRate,
 };
 use crate::fiscal::FiscalSettings;
 use crate::store::Store;
@@ -33,8 +33,6 @@ pub struct SyncSnapshot {
     #[serde(default)]
     pub ledger: Vec<CreditLedgerEntry>,
     #[serde(default)]
-    pub tables: Vec<DiningTable>,
-    #[serde(default)]
     pub recent_sales: Vec<Sale>,
     #[serde(default)]
     pub today: DayTotals,
@@ -42,13 +40,9 @@ pub struct SyncSnapshot {
     pub outstanding_credit_paise: i64,
     #[serde(default)]
     pub day_close_text: String,
-    #[serde(default)]
-    pub open_kots: Vec<KotTicket>,
-    /// Menu groupings and kitchen stations of the Server's branch.
+    /// Item groupings of the Server's branch.
     #[serde(default)]
     pub categories: Vec<Category>,
-    #[serde(default)]
-    pub stations: Vec<KitchenStation>,
     /// Server's branch / business identity, shown on the Client header.
     #[serde(default)]
     pub branch_name: String,
@@ -78,10 +72,6 @@ pub struct RemoteSaleRequest {
     /// When set and customer_id is missing, Server creates/finds by name.
     #[serde(default)]
     pub customer_name: Option<String>,
-    /// Prefer Server table by name (Client UUIDs differ).
-    #[serde(default)]
-    pub table_name: Option<String>,
-    pub table_id: Option<String>,
     pub actor_id: String,
     /// Split tenders. Empty means a single tender in `pay`.
     #[serde(default)]
@@ -114,12 +104,6 @@ pub struct RemoteSaleAction {
     pub reason: String,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteKotAdvance {
-    pub kot_id: String,
-    pub actor_id: String,
-}
-
 /// Correct a bill the Server owns. The Client never edits its own sales cache.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteAmendRequest {
@@ -127,18 +111,6 @@ pub struct RemoteAmendRequest {
     pub draft: SaleDraft,
     pub pay: String,
     pub reason: String,
-    pub actor_id: String,
-}
-
-/// Fire a kitchen ticket from a terminal's cart without charging it.
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteKotRequest {
-    pub draft: SaleDraft,
-    /// Prefer Server table by name (Client UUIDs differ).
-    #[serde(default)]
-    pub table_name: Option<String>,
-    #[serde(default)]
-    pub table_id: Option<String>,
     pub actor_id: String,
 }
 
@@ -225,14 +197,11 @@ fn build_snapshot(store: &Store, pairing_code: &str) -> Result<SyncSnapshot, Str
         customers: store.list_customers()?,
         staff: store.list_staff()?,
         ledger: store.list_all_credit_ledger(2000)?,
-        tables: store.list_tables()?,
         recent_sales,
         today: store.today_totals()?,
         outstanding_credit_paise: store.outstanding_credit_total()?,
         day_close_text: store.day_close_summary()?,
-        open_kots: store.list_open_kots()?,
         categories: store.list_categories()?,
-        stations: store.list_stations()?,
         branch_name: store.active_branch().map(|b| b.name).unwrap_or_default(),
         org_name: store.org_name().unwrap_or_default(),
         fiscal: store.fiscal_settings()?,
@@ -308,7 +277,6 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
             .find(|s| s.id == req.actor_id)
             .ok_or_else(|| "actor not found".to_string())?;
         let mut store = store;
-        let table_id = resolve_table_id(&store, req.table_name.as_deref(), req.table_id.as_deref())?;
         let sale = if req.payments.is_empty() {
             let customer_id = if pay.is_credit() {
                 if let Some(id) = req.customer_id.clone() {
@@ -326,7 +294,6 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
             store.finalize_sale(
                 &req.draft,
                 pay,
-                table_id.as_deref(),
                 customer_id.as_deref(),
                 &actor,
             )?
@@ -358,7 +325,6 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
             store.finalize_sale_tenders(
                 &req.draft,
                 &parts,
-                table_id.as_deref(),
                 customer_id.as_deref(),
                 &actor,
             )?
@@ -429,17 +395,6 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
         store.refund_sale(&req.sale_id, &req.reason, &actor)?;
         return write_http(&mut stream, 200, r#"{"ok":true}"#);
     }
-    if method == "POST" && path.starts_with("/kot_advance") {
-        let req: RemoteKotAdvance =
-            serde_json::from_str(&body).map_err(|e| format!("kot json: {e}"))?;
-        let actor = store
-            .list_staff()?
-            .into_iter()
-            .find(|s| s.id == req.actor_id)
-            .ok_or_else(|| "actor not found".to_string())?;
-        store.advance_kot(&req.kot_id, &actor)?;
-        return write_http(&mut stream, 200, r#"{"ok":true}"#);
-    }
     if method == "POST" && path.starts_with("/amend") {
         let req: RemoteAmendRequest =
             serde_json::from_str(&body).map_err(|e| format!("amend json: {e}"))?;
@@ -454,37 +409,7 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, expected_code: &str) -> 
         let body = serde_json::to_string(&sale).map_err(|e| e.to_string())?;
         return write_http(&mut stream, 200, &body);
     }
-    if method == "POST" && path.starts_with("/kot") {
-        let req: RemoteKotRequest =
-            serde_json::from_str(&body).map_err(|e| format!("kot json: {e}"))?;
-        let actor = store
-            .list_staff()?
-            .into_iter()
-            .find(|s| s.id == req.actor_id)
-            .ok_or_else(|| "actor not found".to_string())?;
-        let table_id = resolve_table_id(&store, req.table_name.as_deref(), req.table_id.as_deref())?;
-        let kot_id = store.send_kot_from_cart(&req.draft, table_id.as_deref(), &actor)?;
-        let body = format!(r#"{{"ok":true,"kot_id":"{kot_id}"}}"#);
-        return write_http(&mut stream, 200, &body);
-    }
     write_http(&mut stream, 404, r#"{"ok":false,"error":"not found"}"#)
-}
-
-/// Client table UUIDs come from an older snapshot, so match the Server's own
-/// table by name first and only fall back to the id the terminal sent.
-fn resolve_table_id(
-    store: &Store,
-    table_name: Option<&str>,
-    table_id: Option<&str>,
-) -> Result<Option<String>, String> {
-    if let Some(name) = table_name.map(str::trim).filter(|s| !s.is_empty()) {
-        return Ok(store
-            .list_tables()?
-            .into_iter()
-            .find(|t| t.name.eq_ignore_ascii_case(name))
-            .map(|t| t.id));
-    }
-    Ok(table_id.map(str::to_string))
 }
 
 fn parse_http(raw: &str) -> Result<(String, String, String), String> {
@@ -664,20 +589,6 @@ pub fn client_push_refund(
     Ok(())
 }
 
-pub fn client_push_kot_advance(
-    server_url: &str,
-    code: &str,
-    req: &RemoteKotAdvance,
-) -> Result<(), String> {
-    let base = base_url(server_url);
-    let url = format!("{base}/kot_advance?code={code}");
-    let _ = ureq::post(&url)
-        .timeout(Duration::from_secs(10))
-        .send_json(req)
-        .map_err(|e| format!("remote kot failed: {e}"))?;
-    Ok(())
-}
-
 pub fn client_push_amend(
     server_url: &str,
     code: &str,
@@ -693,29 +604,13 @@ pub fn client_push_amend(
         .map_err(|e| format!("amend json: {e}"))
 }
 
-pub fn client_push_kot(
-    server_url: &str,
-    code: &str,
-    req: &RemoteKotRequest,
-) -> Result<(), String> {
-    let base = base_url(server_url);
-    let url = format!("{base}/kot?code={code}");
-    let _ = ureq::post(&url)
-        .timeout(Duration::from_secs(10))
-        .send_json(req)
-        .map_err(|e| format!("remote kitchen ticket failed: {e}"))?;
-    Ok(())
-}
-
 /// Apply a sync snapshot into the local Client cache DB.
 pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> {
     store.replace_catalog_from_sync(&snap.products)?;
-    store.replace_menu_meta_from_sync(&snap.categories, &snap.stations)?;
+    store.replace_categories_from_sync(&snap.categories)?;
     store.replace_customers_from_sync(&snap.customers)?;
     store.replace_credit_ledger_from_sync(&snap.ledger)?;
-    store.replace_tables_from_sync(&snap.tables)?;
     store.replace_sales_cache_from_sync(&snap.recent_sales)?;
-    store.replace_kots_from_sync(&snap.open_kots)?;
     for s in &snap.staff {
         store.upsert_staff_cache(s)?;
     }

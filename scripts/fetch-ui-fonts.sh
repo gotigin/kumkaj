@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Fetch OFL Noto script fonts + Font Awesome into apps/courier/resources/fonts/
-# for WorldFonts fallback (language names + UI symbols). Safe to re-run.
+# Fetch OFL Noto script fonts + Font Awesome into the app's
+# resources/fonts/ for WorldFonts fallback (language names + UI
+# symbols). App: KUMKAJ_APP_DIR (default apps/courier). Safe to re-run.
 # Uses curl + jq (no Python).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OUT="$ROOT/apps/courier/resources/fonts"
+OUT="${KUMKAJ_APP_DIR:-$ROOT/apps/courier}/resources/fonts"
 mkdir -p "$OUT"
 
 if ! command -v curl >/dev/null 2>&1; then
@@ -85,7 +86,7 @@ download_family notosansgeorgian "$OUT/NotoSansGeorgian-Regular.ttf"
 download_family notosansarmenian "$OUT/NotoSansArmenian-Regular.ttf"
 
 WIDGETS="$ROOT/vendor/makepad/widgets/resources"
-# Single font tree under apps/courier/resources/fonts — never duplicate into
+# Single font tree under the app resources/fonts — never duplicate into
 # a second package folder (makepad_widgets/resources).
 for f in fa-solid-900.ttf LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
   if [[ -s "$OUT/$f" ]]; then

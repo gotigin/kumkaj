@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build development Linux package (debug app id) + install/uninstall helpers.
 # Output: dist/linux-dev/
-# Uses debug Cargo profile + apps/courier/env/development.env → com.kumkaj.courier.debug
+# Uses debug Cargo profile + the app's env/development.env (courier → com.kumkaj.courier.debug)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"

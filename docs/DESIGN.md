@@ -3,7 +3,7 @@
 Source pack (optional): `../../stitch_tactile_countertop_design_system/`.  
 This file is the **canonical** in-repo summary. When Stitch packs disagree, **later shipping decisions win** (see also vision doc + [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
-**Current product focus:** [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) — UI names below use courier wording; other concrete products will override labels the same way.
+**Current product focus:** [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) — UI names below use courier wording; other concrete products will override labels the same way.
 
 ## Navigation (shipping)
 
@@ -18,7 +18,7 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 | **Pay out** | Money out — carrier bills / purchases and expense vouchers |
 | **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
 
-Progressive depth for Courier: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
+Progressive depth for Courier: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
 
 Booking is not the whole product; Day book and Pay out are peers.
 
@@ -71,6 +71,51 @@ Owner order after unlock: **Day book** → **Booking** or **Pay out** as peers.
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
 
+## Work-surface layout & interaction (all Kumkaj apps)
+
+Canonical for every Kumkaj app's screens (each app's doc owns only its
+trade-specific instantiation — e.g. Khaynjo's menu/ticket split,
+Courier's rates/cart split). Learned from shipped regressions; do not
+re-learn per app.
+
+- **The work surface gets the room.** The primary grid/list is the
+  work surface; companion panes (ticket, cart, detail) stay lean.
+  Side-by-side only when the content column is wide enough (≈ ≥ 640
+  css px); below that, stack full-width — never a Fixed companion
+  gutter with empty space.
+- **Context lives on the work pane.** The state the operator needs
+  mid-task (totals, mode chips, primary action) sits on the pane they
+  are working, in short labels — one glance tells them what this
+  record is.
+- **Fixed small option sets are segmented grids, not scroll strips.**
+  A closed set of choices renders all-visible as Fill chips; reserve
+  scrollable `ChipStrip`s for open-ended sets (a half-hidden chip at
+  common widths reads as a bug).
+- **Fill minimums must fit the breakpoint.** Pane `min`s plus spacing
+  stay well under the side-by-side threshold, or controls are pushed
+  off the window edge.
+- **No books jargon on operational work surfaces.** Books words
+  (“Active ledger”, …) belong in Books/Reports, never in front of the
+  operator mid-task; the work-surface header shows task state + Clear.
+- **Empty states carry their next action.** Name the action that fills
+  the pane (“Add …” → its screen), not just an explanation.
+- **Whole-card tap targets.** List cards are the tap target (whole-card
+  `finger_up` + `was_tap()` alongside `Button::clicked`), not just a
+  small pill inside the card.
+- **List rows keep one measured height.** Cap multi-line card content
+  at draw (full text stays on the record) or the measured row
+  oscillates.
+- **Capability-aware chrome** (vision §30): peers for a capability
+  show only when the business runs that capability; a business that
+  never uses it never sees its screens.
+- **Role-aware home**: unlock lands on Day book (the owner's four
+  questions, [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)); the trade's
+  work surfaces are one tap away.
+
+Technical counterparts (state-guard deadlock, PortalList mechanics,
+agent verification): [`DEV.md`](DEV.md) § Makepad 2 UI faces
+(agent guide).
+
 ## Makepad 2 faces (agents — selection & truncation)
 
 Full cause / approach / code map: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide). Cursor rule: `.cursor/rules/makepad-layout-faces.mdc`.
@@ -83,7 +128,7 @@ Full cause / approach / code map: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agen
 
 ## Color tokens (live)
 
-Derived from `assets/courier-app-icon.png` (navy C path, sky blue, orange motion, yellow accents).
+Derived from `apps/courier/assets/courier-app-icon.png` (navy C path, sky blue, orange motion, yellow accents).
 
 | Role | Hex | Use |
 |---|---|---|
@@ -106,6 +151,36 @@ Derived from `assets/courier-app-icon.png` (navy C path, sky blue, orange motion
 - Navy faces: white ink identical in all states.
 - Never flip ink lightness when the face flips (Makepad mixes colors mid-hover).
 
+### Color tokens — Khaynjo (restaurant product)
+
+Derived from `apps/khaynjo/assets/khaynjo-app-icon.png` (chef hat and
+cloche on a red-orange gradient; sampled with ImageMagick). Same
+contrast rules as above, with red chrome in place of navy: white
+glyphs only on deep-red chrome (caption, primary CTAs, active tabs);
+dark ink identical across states on light faces; never flip ink
+lightness mid-hover.
+
+| Role | Hex | Use |
+|---|---|---|
+| Surface | `#F9F4F0` | App canvas (warm cream) |
+| Surface wells | `#ffffff` / `#F6E3D3` / `#EFD2BC` | Input wells, cards, secondary chips (white on canvas) |
+| On-surface | `#260B08` | Body ink on light faces |
+| Muted | `#6B4A3F` / `#8A6A5C` | Hints, placeholders (dark on **white** wells) |
+| Deep red | `#9A0E10` / `#69090C` / `#B43A12` | Chrome, tabs, primary actions (logo reds; darkest → down, darkest-red → hover) |
+| Selection | `#F69D2C` | Text selection band (dark ink stays readable) |
+| Accent | `#B43A12` | Accents, price ink, warning fills (logo red-orange, darkened so white ink on it stays ≥ 5.9:1) |
+| Gold | `#F69D2C` / `#F7B043` | Status marks on deep-red chrome (logo gold) |
+
+**Contrast law (same as Courier — no light-on-light, no dark-on-dark):**
+light faces always carry dark ink (`#260B08`/`#6B4A3F`) in every state;
+deep-red faces always carry white ink in every state; ink lightness
+never flips while a face flips. Verified pairings: white on `#9A0E10`
+8.6:1, white on `#B43A12` 5.9:1, white on `#69090C` 12.8:1, `#260B08`
+on `#F9F4F0` 17.0:1, `#260B08` on gold `#F69D2C` 8.6:1, idle nav ink
+`#F2B183` on deep red 4.7:1. The logo's bright `#D64D21` is **not**
+used under white text (4.3:1) — it survives only as the sampled
+source colour, darkened to `#B43A12` for shipping faces.
+
 ## Contrast checklist (Makepad)
 
 - Theme label ink = `#0B1220` (never white/cream as default).
@@ -119,4 +194,4 @@ Derived from `assets/courier-app-icon.png` (navy C path, sky blue, orange motion
 - Multi-branch: header shows `Shop · CODE` when more than one branch exists.
 - Day book empty/first-day copy teaches money in, money out, parties — not “open Booking to begin.”
 - Day books follow **user / business time** (`user_at`); device write / cloud accept times are separate ([`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) § Triple timestamps).
-- Walk-in desk, AWB/barcode, tracking: product roadmap in [`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md).
+- Walk-in desk, AWB/barcode, tracking: product roadmap in [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).

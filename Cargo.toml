@@ -1,6 +1,18 @@
+# Kumkaj common workspace — the ONLY shared thing between apps.
+# Every app is built on the same vendored Makepad 2 (vendor/makepad)
+# with similar libraries because BOS apps have similar requirements.
+# There is NO Kumkaj core / shared product crate, and none may be added:
+# each app under apps/<app>/ owns all of its product/business code
+# (copy-then-diverge; duplication is preferable to coupling), so a
+# change in one app never impacts another. See
+# docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §1–2 and docs/DEV.md.
 [workspace]
 members = [
     "apps/courier",
+    "apps/khaynjo",
+    "tools/khaynjo-dev",
+    "tools/khaynjo-android-dev",
+    "tools/khaynjo-windows-dev",
     "tools/courier-dev",
     "tools/courier-android-dev",
     "tools/courier-windows-dev",

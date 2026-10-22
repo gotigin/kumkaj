@@ -2,6 +2,16 @@
 # Live Cursor workflow: loads apps/courier/env/development.env, then --hot --remote (F12).
 # Usage: cargo courier-dev
 courier-dev = ["run", "-p", "courier-dev", "--"]
+# Khaynjo desktop live-dev (apps/khaynjo, com.khaynjo.debug).
+# Usage: cargo khaynjo-dev
+khaynjo-dev = ["run", "-p", "khaynjo-dev", "--"]
+# Khaynjo Android: build + install + launch (apps/khaynjo/env/development.env → com.khaynjo.debug).
+# Usage: cargo khaynjo-android-dev
+khaynjo-android-dev = ["run", "-p", "khaynjo-android-dev", "--"]
+# Khaynjo Windows Dev package (cross from Linux with mingw; Win10 + Win11 x86_64).
+# Makepad layout: exe + kumkaj_khaynjo/resources beside it (underscores).
+# Usage: cargo khaynjo-windows-dev → dist/windows-dev/
+khaynjo-windows-dev = ["run", "-p", "khaynjo-windows-dev", "--"]
 # Android: build + install + launch (apps/courier/env/development.env → com.kumkaj.courier.debug).
 # Usage: cargo courier-android-dev
 # (No Splash --hot on Android — each run rebuilds and relaunches.)

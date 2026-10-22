@@ -9,7 +9,23 @@
 #   Packaged dep paths are therefore `kumkaj_courier/resources/...` — NOT hyphens.
 
 # Folder name Makepad opens at runtime for `self:resources/...`.
+# Derived from the app being packaged (KUMKAJ_CRATE_DIR override, else the
+# package name in $KUMKAJ_APP_DIR/Cargo.toml, hyphens → underscores).
+# Default is Courier's so existing Courier packages do not move.
 makepad_crate_resources_dirname() {
+  if [[ -n "${KUMKAJ_CRATE_DIR:-}" ]]; then
+    echo "$KUMKAJ_CRATE_DIR"
+    return
+  fi
+  local app_dir="${KUMKAJ_APP_DIR:-}"
+  if [[ -n "$app_dir" && -f "$app_dir/Cargo.toml" ]]; then
+    local pkg
+    pkg="$(grep -m1 '^name = ' "$app_dir/Cargo.toml" | cut -d'"' -f2 | tr '-' '_')"
+    if [[ -n "$pkg" ]]; then
+      echo "$pkg"
+      return
+    fi
+  fi
   echo "kumkaj_courier"
 }
 
@@ -57,7 +73,7 @@ makepad_copy_desktop_resources() {
   mkdir -p "$out/$crate_dir/resources/fonts"
 
   rsync -a --exclude 'android/' \
-    "$root/apps/courier/resources/" "$out/$crate_dir/resources/"
+    "${KUMKAJ_APP_DIR:-$root/apps/courier}/resources/" "$out/$crate_dir/resources/"
 
   # CJK + colour emoji: live in vendor Makepad; WorldFonts expects them under
   # kumkaj_courier/resources/fonts (same folder as the other script fonts).

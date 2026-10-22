@@ -17,17 +17,22 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# Which app (folder under apps/). Defaults to courier; another app's
+# packaging sets KUMKAJ_APP_DIR + its own MSI name / upgrade codes.
+APP_DIR="${KUMKAJ_APP_DIR:-$ROOT/apps/courier}"
+MSI_NAME="${KUMKAJ_MSI_NAME:-KumkajCourier}"
+
 FLAVOR="${1:-prod}"
 case "$FLAVOR" in
   prod)
     PKG="$ROOT/dist/windows"
-    UPGRADE_CODE="{66C4AE1F-BD8E-4134-9A4F-8C67DCA42EA4}"
-    OUT_NAME="KumkajCourier"
+    UPGRADE_CODE="${KUMKAJ_MSI_UPGRADE_CODE:-{66C4AE1F-BD8E-4134-9A4F-8C67DCA42EA4}}"
+    OUT_NAME="$MSI_NAME"
     ;;
   dev)
     PKG="$ROOT/dist/windows-dev"
-    UPGRADE_CODE="{B9D76BCC-DE80-4043-9B2E-47EA8972E82D}"
-    OUT_NAME="KumkajCourierDev"
+    UPGRADE_CODE="${KUMKAJ_MSI_DEV_UPGRADE_CODE:-{B9D76BCC-DE80-4043-9B2E-47EA8972E82D}}"
+    OUT_NAME="${MSI_NAME}Dev"
     ;;
   *) echo "usage: $0 [prod|dev]" >&2; exit 1;;
 esac
@@ -36,7 +41,7 @@ esac
 # when nothing changed) so the MSI never ships a stale exe or resources.
 case "$FLAVOR" in
   prod) "$ROOT/scripts/package-windows.sh" ;;
-  dev)  "$ROOT/scripts/courier-windows-dev.sh" ;;
+  dev)  "$APP_DIR/scripts/windows-dev.sh" ;;
 esac
 if [[ ! -f "$PKG/kumkaj-courier.exe" || ! -d "$PKG/kumkaj_courier/resources/fonts" ]]; then
   echo "Windows package missing after build: $PKG" >&2
@@ -55,7 +60,7 @@ APP_ID="$(manifest_get KUMKAJ_APP_ID)"
 sed "s/__APP_ID__/$APP_ID/g" "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
 # Uninstall prompt script (same substitution; JScript is all wixl supports).
 sed "s/__APP_ID__/$APP_ID/g" "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
-VER="$(sed -n '/^\[package\]/,/^\[/p' "$ROOT/apps/courier/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
+VER="$(sed -n '/^\[package\]/,/^\[/p' "$APP_DIR/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
 [[ -n "$VER" ]] || VER="0.1.0"
 
 xml_escape() {

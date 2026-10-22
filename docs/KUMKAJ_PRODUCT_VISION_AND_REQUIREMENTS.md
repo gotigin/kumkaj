@@ -16,8 +16,11 @@
 > wins**. In particular, Community / Professional trial / annual
 > entitlement pricing is superseded by free-forever local use and
 > usage-based cloud billing. When earlier “one generic app for everyone”
-> wording conflicts with **concrete products + shared internals**, the
-> concrete-products model wins.
+> wording conflicts with **concrete products in a common workspace**, the
+> concrete-products model wins. When earlier “shared internals / extract
+> into shared code” wording conflicts with **no Kumkaj core — each app
+> owns duplicated, independently-evolving code** (§1), the no-core model
+> wins.
 
 ------------------------------------------------------------------------
 
@@ -50,17 +53,42 @@ Examples of **concrete products under the brand** (illustrative):
     controls when that product enables them.
 
 **How we build (internals):** focus on the concrete product the user
-sees. When an implementation is clearly useful to another product, **move
-it into shared reusable code**. Prefer shapes that *can* be shared later
-(party, line, unit, charge, ledger, day book, document) — do not invent
-throwaway vertical schemas that can never be extracted. Do not maintain
-five divergent business engines.
+sees. **The only shared thing is the common workspace.** Every Kumkaj
+app is implemented on the same **Makepad 2** (`vendor/makepad`) with
+similar libraries, because business operating systems have similar
+requirements (money in/out, parties, day/period books, receipts,
+reports). That similarity is why the apps live in one workspace — it
+is **not** a reason to share product/business code.
+
+**There is no Kumkaj core** — no shared crate, shared books engine, or
+shared product code that more than one app depends on, and none should
+be created. Each app under `apps/<app>/` owns all of its own code
+(domain, store, fiscal, locale, net, UI), even when it started as a
+copy of a sibling app. Party, line, unit, charge, ledger, day book and
+document are common **concepts and vocabulary** that each app
+implements in its own code — not shared primitives to extract.
+
+Reuse happens by **copy-then-diverge**: copy a sibling app's proven
+code as a starting point, then change the copy freely for that trade.
+A change made for one app must not impact another app. If a future
+need would require changing shared core code in a way that affects
+other apps, avoid that implementation — **duplicate the code into the
+app that needs it instead**. Duplication is preferable to coupling,
+and divergent per-app code is expected, not a defect.
+
+Workspace-level sharing is only: Cargo workspace membership, the
+vendored Makepad 2 tree and its patches, similar dependency versions /
+`Cargo.lock`, and root build/packaging tooling parameterised per app.
+Those are deliberate platform choices, not a channel for product
+logic; if a root tool/script change for one app would break another,
+fork that tool/script per app instead.
 
 The central idea is therefore:
 
-> **Concrete apps under the Kumkaj brand for users; shared reusable
-> code underneath for us. Users never have to learn a foreign trade to
-> fit the software.**
+> **Concrete apps under the Kumkaj brand for users, in one common
+> workspace on Makepad 2; no shared Kumkaj core underneath. Users
+> never have to learn a foreign trade to fit the software, and one
+> app's changes never ripple into another app.**
 
 A courier owner should not have to understand kitchen routing. A small
 counter should not have to understand franchise AWB manifests. Extra
@@ -90,7 +118,9 @@ constants the shop obeys.
 
 **Build order:** implement the **concrete product** first (flows, labels,
 packaging, capabilities that trade needs). When the same logic is needed
-by another product, **extract into shared code**. Progressive complexity
+by another product, **copy it into that product and let the copies
+diverge** — never extract it into shared code (see §1: no Kumkaj core).
+Progressive complexity
 still applies *inside* each product: hide unused capability; grow from
 day book + booking to deeper ops without enterprise on day one.
 
@@ -113,12 +143,14 @@ Cross-Branch Reports → Sync/Backup → Remote Monitoring**
 
 Features that are irrelevant to that product stay out of the way.
 
-**Client signal → shared capability:** when a client describes something
+**Client signal → concrete capability:** when a client describes something
 in vertical language (courier parties, kg credit, salon chairs, household
-expense buckets), implement it in the concrete product; when a second
-product needs the same idea, promote a **shared primitive** (party, unit
-on a line, ledger, day book, charge, document). Do not fork a
-trade-specific schema that duplicates ledgers already shared.
+expense buckets), implement it in the concrete product, in that app's
+own code. When a second product needs the same idea, implement the
+common **concept** (party, unit on a line, ledger, day book, charge,
+document) again in that product's own code — copying the first app's
+code as a starting point is welcome. Do not create a shared primitive
+or shared schema that couples the products.
 
 **Start templates / product defaults:** each concrete product may bake
 its own default labels and feature defaults (e.g. Account booking vs Cash
@@ -567,10 +599,11 @@ customer identity --- keep that identity as light as possible.
 ## 15. Inventory, Purchases and Expenses
 
 A business operating system should eventually connect sales to the
-broader operation. The **universal books spine** (what almost every entity
+broader operation. The **universal books checklist** (what almost every entity
 must track) is catalogued in [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) —
 party, item/unit, sell, buy, expense, AR/AP, cash/bank, stock, tax,
-day/period books — as generic primitives only.
+day/period books — as common concepts only, each implemented in that
+app's own code (never as shared primitives).
 
 Core operational areas include:
 
@@ -578,8 +611,8 @@ Core operational areas include:
 -   stock movements;
 -   purchases (goods for resale / use — cost feeds **COGS** in period books
     as that loop closes; see `BUSINESS_BOOKS.md` backlog);
--   suppliers as the same **party** primitive (kind label), growing into
-    payable balances — not a separate vertical schema;
+-   suppliers as the same **party** concept (kind label) in that app's
+    code, growing into payable balances — not a separate vertical schema;
 -   low-stock visibility;
 -   stock adjustments;
 -   expenses (operating costs, distinct from purchases of goods);
@@ -923,48 +956,19 @@ per-business/configurable so the domain model is not unnecessarily
 India-only.
 
 The same rule applies to **measurement**. Shops measure parcels and
-goods in the units their trade and country already use. Products must
-therefore:
-
--   let the user **choose entry/display units** (length, weight,
-    quantity) instead of forcing one market's units;
--   ship **standard conversions** for the common units (cm, mm, m, in,
-    ft · kg, g, t, lb, oz) with exact factors;
--   let the user define **custom units and custom conversions**
-    (e.g. `1 bag = 25 kg`, `1 crate = 40 cm`) and use them anywhere a
-    standard unit can be used;
--   keep **one canonical base inside the books** (kg / cm / milli-qty)
-    so ledgers, rates and reports stay comparable — conversion happens
-    at entry and display, never by rewriting recorded history;
--   treat trade constants (volumetric divisor, weight slab rounding,
-    tax rates, pay-rail labels) as **shop settings with sensible local
-    defaults**, not constants in code.
-
-Units form **families** (weight, length, volume, count), each with one
-canonical anchor (kg · cm · ml · pc). A custom unit is defined relative
-to any unit of the same family — a standard one, or another custom
-one — and its chain of conversions must ultimately land on the anchor
-(`crate → box → cm` means 1 crate = 40 cm). Loops and cross-family
-links are refused; a unit whose chain never reaches the anchor is
-shown as "not linked" and cannot be used until it is. Because every
-quantity can be normalised to the anchor, books store anchor units
-only and reports/P&L aggregate one unit, displaying in whatever unit
-the reader picks. Physical conversion factors are fixed constants of
-nature, so applying them to old entries is always safe.
-
-**Currency is not a unit.** An exchange rate is a price at a moment in
-time, not a fixed conversion, so currencies never enter the unit
-tables. Books are kept in the shop's currency; when foreign-currency
-money is recorded, the entry must carry the amount, the currency, the
-rate on that date, and the resulting shop-currency amount — history is
-never re-converted at a later rate (only an explicit "value today"
-view may do that).
-
-Example (Courier, shipped): the booking desk defaults to cm + kg,
-volumetric ÷ 5000, round up to 0.5 kg — the Indian domestic
-convention. Settings → Booking measures lets a shop switch entry to
-inches/pounds (or a custom unit), change the divisor (e.g. ÷ 6000) and
-the slab; the books still record kg.
+goods in the units their trade and country already use, so every
+Kumkaj product ships **standard units with exact standard
+conversions** and lets the shop define **custom units based on a
+standard unit directly or indirectly** (through other custom units),
+with books recording only each family's canonical anchor. Canonical
+doctrine — families/anchors, chained custom units, loops and
+cross-family refusal, entry/display conversion, and why currency is
+not a unit: [`UNITS_AND_CONVERSIONS.md`](UNITS_AND_CONVERSIONS.md).
+Trade constants around measurement (volumetric divisor, weight-slab
+rounding, tax rates, pay-rail labels) stay **shop settings with
+sensible local defaults**, not constants in code; each app's own doc
+owns its defaults (e.g. Courier's booking desk: cm + kg, ÷ 5000,
+round up to 0.5 kg).
 
 This is now implemented as **country packs** (`apps/courier/src/fiscal.rs`).
 A pack carries the tax system and its name (VAT, GST, sales tax, IVA,
@@ -1021,15 +1025,25 @@ capability-aware**.
 The current Kumkaj implementation is being developed as a **native Rust
 application using Makepad**.
 
-Current project structure includes:
+Current project structure is one **common workspace** holding several
+independent concrete apps (see §1 — the workspace is the only shared
+thing; there is no Kumkaj core crate):
 
 ``` text
 workspace/
-    └── apps/
-        └── kumkaj/
-            └── src/
-                └── main.rs
+    ├── Cargo.toml          (workspace membership only — no shared product code)
+    ├── vendor/makepad/     (Makepad 2, path-dep for every app)
+    ├── apps/
+    │   ├── courier/        (Kumkaj Courier — owns all of its code under src/)
+    │   └── khaynjo/        (Khaynjo — owns all of its code under src/)
+    ├── tools/              (per-app dev launchers)
+    └── scripts/            (build/packaging tooling, parameterised per app)
 ```
+
+Each app declares the same Makepad 2 path-dep and similar libraries in
+its own `Cargo.toml`, because BOS apps have similar requirements. No
+app depends on another app or on any Kumkaj shared crate, so a change
+in one app cannot impact another.
 
 ### Makepad version and source of truth
 
@@ -1128,6 +1142,11 @@ Even the smallest deployment can use a subset of this model. Designing
 branch and organization boundaries properly early prevents multi-branch
 support from becoming a rewrite later.
 
+**Identity (all of the above):** every entity's uniqueness is decided
+by its **UUID (`id`)**, never by name — names are display labels /
+aliases that may repeat and may be renamed without touching history.
+Canonical doctrine: [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md).
+
 ------------------------------------------------------------------------
 
 ## 27. Reliability Rules
@@ -1209,7 +1228,8 @@ These are **roadmap directions**, not claims that they already exist.
 
 Complexity is additive capability **within** each concrete Kumkaj
 product. Separate store listings / package ids under the brand are fine;
-separate duplicated engines are not.
+so is each product having its own duplicated, independently-evolving
+code (see §1 — there is no Kumkaj core to keep in sync).
 
 Typical progression (within a product; food tools only when that
 product enables them):
@@ -1238,10 +1258,11 @@ Kumkaj should not become:
 -   an enterprise ERP forced onto a tiny shop or personal books;
 -   a simple cash register that large restaurants immediately outgrow;
 -   a collection of unrelated modules with inconsistent workflows;
--   **duplicated engines** or trade-specific schemas that copy the same
-    ledgers five times (shipping “courier” and “personal” as forever-
-    divergent codebases instead of concrete products on shared
-    internals);
+-   a **Kumkaj core** — shared product/business code, a shared books
+    engine, or a shared crate that every app depends on, so that serving
+    one app forces changes (and regressions) in the others. Per-app
+    duplicated code is *not* on this list: duplicating and diverging is
+    the preferred way to reuse (see §1);
 -   a single vague “works for everyone” SKU that forces owners to invent
     meaning before they can work;
 -   a system where cloud billing failure or unpaid cloud usage threatens
@@ -1261,8 +1282,9 @@ Kumkaj should not become:
 A useful way to judge Kumkaj is:
 
 > **Does each concrete product feel purpose-built on first open — and
-> can shared internals still carry that owner as the entity grows
-> (ops depth, branches, optional cloud)?**
+> can that product's own code still carry that owner as the entity grows
+> (ops depth, branches, optional cloud), without changes to any other
+> app?**
 
 If the answer remains yes, the brand and architecture are moving in the
 intended direction.
@@ -1283,15 +1305,15 @@ resources they actually consume.
 ## 33. Immediate Development Focus
 
 **Current ship focus: Kumkaj Courier** — see
-[`KUMKAJ_COURIER.md`](KUMKAJ_COURIER.md) and [`USE_CASES.md`](USE_CASES.md).
+[`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) and [`USE_CASES.md`](../apps/courier/docs/USE_CASES.md).
 
 Build the concrete courier BOS (books already largely present; next the
 **booking desk**, AWB/barcode, rates/slabs, then tracking/manifest/COD).
-Extract shared crates only when another brand product needs the same
-logic. Food tables/KOT and other concrete products wait until courier
-desk quality is credible.
+Do not extract shared crates: when another brand product needs the same
+logic, copy Courier's code into that product and let it diverge (Khaynjo
+was built exactly this way). Food tables/KOT live in Khaynjo, not Courier.
 
-**Existing Makepad codebase** is the starting engine (day book, booking
+**Existing Makepad codebase** is Courier's starting point (day book, booking
 shell, parties, bank, expenses, P&L, Account/Cash booking tags, units).
 Treat courier-named UX and desk ops as the product work — not a second
 generic “any entity” SKU. Books checklist:
@@ -1301,9 +1323,10 @@ Cloud / ESC/POS / statutory e-invoicing remain optional later.
 At every stage, keep these in view:
 
 **Would this concrete product feel purpose-built on first open?**\
-**Would shared internals still carry a complex multi-branch entity?**\
-**Are we extracting shared code when a second product needs it — not
-forking engines?**\
+**Would this product's own code still carry a complex multi-branch entity?**\
+**Are we keeping this change inside this one app — copying/duplicating
+code where needed, never creating or changing a Kumkaj core that would
+affect another app?**\
 **Does the software adapt to the user — or is the user forced to adapt
 to the software?** (§2)
 

@@ -1,0 +1,9 @@
+[package]
+name = "khaynjo-windows-dev"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "khaynjo-windows-dev"
+path = "main.rs"
