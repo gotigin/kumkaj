@@ -759,6 +759,16 @@ Makepad visual traps found this way (do not reintroduce):
     overriding `mod.widgets.ScrollYView` later changes nothing unless the
     name is re-bound (`let ScrollYView = mod.widgets.ScrollYView`). The
     old page-scrollbar style silently never applied because of this.
+18. **A single `\n` in a `WrapLabel` is a space** (it is markdown): lines
+    joined with `\n` collapse into one run-on paragraph — Settings → Units
+    read as a wall of text (2026-10-26). A list or a set of figures goes in
+    the app's `ReportText` card (rows built in code with `set_rows`, or
+    printable text through `parse_report`); a blank line (`\n\n`) only
+    splits paragraphs of prose.
+19. **Right-aligned `Label` text overruns its box by a few px** — at a
+    clipped edge (a card's right side in right-to-left languages) the
+    last glyph is cut. Keep a right `margin` on such labels; `padding`
+    would replace the theme's default label padding and shift the text.
 
 
 

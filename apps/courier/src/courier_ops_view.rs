@@ -81,7 +81,7 @@ pub fn awb_desk_card(store: &Store, raw_awb: &str) -> Result<String, String> {
     };
     let mut out = format!(
         "=== Scanned AWB ===\n\
-         AWB {}\n\
+         AWB: {}\n\
          Status: {}\n\
          Party: {}\n\
          To: {} · {}\n\

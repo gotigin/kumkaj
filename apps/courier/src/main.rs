@@ -2972,8 +2972,10 @@ script_mod! {
                     text_style +: {font_size: 22.}
                 }
             }
+            // As wide as "0.25 kg" needs: a fixed width stacked a weighed
+            // quantity into one character per line.
             qty_label := Label{
-                width: 40
+                width: Fit{min: FitBound.Abs(40.)}
                 text: "1"
                 draw_text.color: #x02030B
                 draw_text.text_style.font_size: 26.
@@ -3094,6 +3096,8 @@ script_mod! {
         }
     }
 
+    // One booking: AWB and where it goes, when / how paid / by whom under
+    // it, the amount at the right — not one run-on line.
     let SaleRow = RoundedView{
         width: Fill height: Fit
         padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
@@ -3102,10 +3106,34 @@ script_mod! {
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x4A5568
-        label := WrapLabel{
-            body: "sale"
-            font_color: #x0B1220
-            font_size: 13.
+        View{
+            width: Fill height: Fit
+            flow: Right spacing: 12
+            align: Align{y: 0.5}
+            View{
+                width: Fill height: Fit
+                flow: Down spacing: 2
+                sale_main := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: true}
+                    draw_text.color: #x0B1220
+                    draw_text.text_style.font_size: 14.
+                }
+                label := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: true}
+                    draw_text.color: #x3A4554
+                    draw_text.text_style.font_size: 12.
+                }
+            }
+            sale_amount := Label{
+                width: Fit
+                text: ""
+                draw_text.color: #x072058
+                draw_text.text_style.font_size: 16.
+            }
         }
         pick := CardActionBtn{text: "Select" height: 40}
     }
@@ -3575,6 +3603,112 @@ script_mod! {
                 padding: Inset{bottom: 10.}
                 texture_caching: false
                 LocaleRow{}
+            }
+        }
+    }
+
+    // A report or list on screen (day close, books, ops, units …):
+    // headings, "label  value" rows with the value at the right, and plain
+    // lines — in a white card like the Day book's, never one run-on
+    // paragraph. Fed with the same text that prints, or with rows.
+    mod.widgets.ReportTextBase = #(ReportText::register_widget(vm))
+    mod.widgets.ReportText = set_type_default() do mod.widgets.ReportTextBase{
+        width: Fill height: Fit
+        card := RoundedView{
+            width: Fill height: Fit
+            padding: Inset{left: 14. right: 14. top: 4. bottom: 10.}
+            draw_bg.color: #xffffff
+            draw_bg.border_radius: 14.
+            list := PortalList{
+                width: Fill height: Fill
+                spacing: 0
+                drag_scrolling: false
+                bounce_at_start: false
+                bounce_at_end: false
+                capture_overload: false
+                scroll_bar: ScrollBar{bar_size: 0.}
+                Head := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 12. bottom: 4.}
+                    head := Label{
+                        width: Fill
+                        text: ""
+                        margin: Inset{right: 8.}
+                        flow: Right{wrap: true}
+                        draw_text.color: #x072058
+                        draw_text.text_style.font_size: 13.
+                    }
+                }
+                Kv := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 5. bottom: 5.}
+                    flow: Right spacing: 12
+                    align: Align{y: 0.5}
+                    k := Label{
+                        width: Fill
+                        text: ""
+                        flow: Right{wrap: true}
+                        draw_text.color: #x3A4554
+                        draw_text.text_style.font_size: 13.
+                    }
+                    v := Label{
+                        width: Fit
+                        text: ""
+                        draw_text.color: #x0B1220
+                        draw_text.text_style.font_size: 14.
+                    }
+                }
+                // Right-to-left languages: the label at the right, its
+                // value at the left. Text set right-aligned overruns its box
+                // by a few px, so the labels keep a margin at the right.
+                KvRtl := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 5. bottom: 5.}
+                    flow: Right spacing: 12
+                    align: Align{y: 0.5}
+                    v := Label{
+                        width: Fit
+                        text: ""
+                        draw_text.color: #x0B1220
+                        draw_text.text_style.font_size: 14.
+                    }
+                    k := Label{
+                        width: Fill
+                        text: ""
+                        align: Align{x: 1.0}
+                        margin: Inset{right: 8.}
+                        flow: Right{wrap: true}
+                        draw_text.color: #x3A4554
+                        draw_text.text_style.font_size: 13.
+                    }
+                }
+                Line := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    line := Label{
+                        width: Fill
+                        text: ""
+                        margin: Inset{right: 8.}
+                        flow: Right{wrap: true}
+                        draw_text.color: #x0B1220
+                        draw_text.text_style.font_size: 13.
+                    }
+                }
+                Sub := View{
+                    width: Fill height: Fit
+                    padding: Inset{left: 12. top: 3. bottom: 3.}
+                    line := Label{
+                        width: Fill
+                        text: ""
+                        margin: Inset{right: 8.}
+                        flow: Right{wrap: true}
+                        draw_text.color: #x3A4554
+                        draw_text.text_style.font_size: 12.
+                    }
+                }
+                Gap := View{
+                    width: Fill height: 10
+                }
             }
         }
     }
@@ -4329,6 +4463,7 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 13.
                                 }
+                                client_found_list := mod.widgets.ReportText{}
                                 client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
                                 client_code_input := FieldInput{empty_text: "Pairing code"}
                                 // How the office's server lists this device (Forget picks it by this).
@@ -4343,13 +4478,7 @@ script_mod! {
                                 }
                                 client_pair_btn := PinOkKey{text: "Pair now"}
                                 client_sync_btn := NavBtn{text: "Refresh from shop"}
-                                client_queue_label := WrapLabel{
-                                    width: Fill
-                                    body: " "
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                    visible: false
-                                }
+                                client_queue_label := mod.widgets.ReportText{}
                                 client_clear_refused := NavBtn{text: "Checked — clear this list" visible: false}
                                 client_unpair := NavBtn{text: "Forget this shop"}
                                 client_skip_lock := NavBtn{text: "Unlock (after pairing)"}
@@ -5161,11 +5290,7 @@ script_mod! {
                                     void_btn := NavBtn{text: "Void"}
                                     refund_btn := NavBtn{text: "Refund"}
                                 }
-                                sale_history_label := WrapLabel{
-                                    body: "History: —"
-                                    font_color: #x0B1220
-                                    font_size: 12.
-                                }
+                                sale_history_label := mod.widgets.ReportText{}
                                 h_notes_attach_sale := WrapLabel{body: "Notes & attachments (selected sale)" font_color: #x0B1220 font_size: 15.}
                                 sale_attach_note := FieldInput{empty_text: "Extra note on this AWB / sale"}
                                 ActionStack{
@@ -5173,11 +5298,12 @@ script_mod! {
                                     sale_attach_photo := RowSecondaryBtn{text: "Attach photo"}
                                     sale_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
                                 }
-                                sale_attach_list := WrapLabel{
+                                sale_attach_hint := WrapLabel{
                                     body: "(select a sale)"
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
+                                sale_attach_list := mod.widgets.ReportText{}
                                 sale_list := mod.widgets.SaleList{}
                             }
                         }
@@ -5205,6 +5331,7 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
+                                credit_recent_list := mod.widgets.ReportText{}
                                 party_selected_label := WrapLabel{
                                     body: "New party — fill the form and tap Add party, or Pick a party from the list to edit it."
                                     font_color: #x072058
@@ -5286,11 +5413,7 @@ script_mod! {
                                     settle_upi := NavBtn{text: "Pay UPI"}
                                     settle_card := NavBtn{text: "Pay card"}
                                 }
-                                settle_open_bills := WrapLabel{
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
+                                settle_open_bills := mod.widgets.ReportText{}
                                 settle_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                 h_write_off_heading := WrapLabel{body: "Write off (clear without payment)" font_color: #x0B1220 font_size: 15.}
                                 writeoff_amount_input := FieldInput{empty_text: "Amount (blank = full balance)"}
@@ -5303,11 +5426,7 @@ script_mod! {
                                     payable_upi := NavBtn{text: "Pay AP UPI"}
                                     payable_card := NavBtn{text: "Pay AP card"}
                                 }
-                                payable_open_bills := WrapLabel{
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
+                                payable_open_bills := mod.widgets.ReportText{}
                                 payable_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                 payable_writeoff := NavBtn{text: "Write off AP"}
                                 h_notes_attach_party := WrapLabel{body: "Notes & attachments (selected party)" font_color: #x0B1220 font_size: 15.}
@@ -5317,11 +5436,12 @@ script_mod! {
                                     party_attach_photo := RowSecondaryBtn{text: "Attach photo"}
                                     party_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
                                 }
-                                party_attach_list := WrapLabel{
+                                party_attach_hint := WrapLabel{
                                     body: "(select a party)"
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
+                                party_attach_list := mod.widgets.ReportText{}
                             }
                         }
 
@@ -5343,7 +5463,7 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 12.
                                 }
-                                staff_label := WrapLabel{body: "" font_color: #x0B1220}
+                                staff_label := mod.widgets.ReportText{}
                                 staff_name_input := FieldInput{empty_text: "Staff name / id"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Barista)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
@@ -5498,7 +5618,7 @@ script_mod! {
                                     flow: Down spacing: 8
                                     settings_title := WrapLabel{body: "Language & currency" font_color: #x0B1220 font_size: 20.}
                                 }
-                                locale_label := WrapLabel{body: "" font_color: #x0B1220}
+                                locale_label := mod.widgets.ReportText{}
                                 h_country_tax := WrapLabel{body: "Country & tax" font_color: #x0B1220 font_size: 20.}
                                 h_country_pack_help := WrapLabel{
                                     width: Fill
@@ -5506,7 +5626,7 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 12.
                                 }
-                                fiscal_label := WrapLabel{body: "" font_color: #x0B1220 font_size: 13.}
+                                fiscal_label := mod.widgets.ReportText{}
                                 country_code_input := FieldInput{
                                     empty_text: "Country code e.g. IN, GB, US, AE, BR"
                                 }
@@ -5520,6 +5640,7 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
+                                country_pack_list := mod.widgets.ReportText{}
                                 ActionStack{
                                     tax_inclusive_btn := NavBtn{text: "Tax inside price"}
                                     tax_exclusive_btn := NavBtn{text: "Tax added at till"}
@@ -5629,11 +5750,7 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
-                                units_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
+                                units_label := mod.widgets.ReportText{}
                                 unit_code_input := FieldInput{empty_text: "Code (bag)"}
                                 unit_name_input := FieldInput{empty_text: "Name (Bag)"}
                                 unit_add := NavBtn{text: "Add unit"}
@@ -5648,11 +5765,7 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
-                                measure_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
+                                measure_label := mod.widgets.ReportText{}
                                 measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
                                 measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
                                 measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000)"}
@@ -5673,25 +5786,16 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
+                                printers_found_list := mod.widgets.ReportText{}
                                 find_printers_btn := NavBtn{text: "Find printers"}
                                 h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
-                                printers_pool_label := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
+                                printers_pool_label := mod.widgets.ReportText{}
                                 printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
                                 printer_target_input := FieldInput{empty_text: "Address or system name"}
                                 printer_add := NavBtn{text: "Add printer"}
                                 printer_remove := NavBtn{text: "Remove last"}
                                 h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
-                                printer_routes_label := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
+                                printer_routes_label := mod.widgets.ReportText{}
                                 route_pick_input := FieldInput{empty_text: "receipt or label"}
                                 route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
                                 route_add := NavBtn{text: "Add to route"}
@@ -5710,7 +5814,7 @@ script_mod! {
                                 }
                                 backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
                                 db_path_label := WrapLabel{body: "" font_color: #x0B1220}
-                                audit_label := WrapLabel{body: "" font_color: #x0B1220}
+                                audit_label := mod.widgets.ReportText{}
                                 backup_btn := NavBtn{text: "Create backup"}
                                 backup_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                 h_restore_help := WrapLabel{
@@ -5734,11 +5838,7 @@ script_mod! {
                                     flow: Down spacing: 8
                                     day_close_title := WrapLabel{body: "Day close" font_color: #x0B1220 font_size: 20.}
                                 }
-                                day_close_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 14.
-                                }
+                                day_close_label := mod.widgets.ReportText{}
                                 h_drawer_count := WrapLabel{body: "Drawer count (optional)" font_color: #x0B1220 font_size: 15.}
                                 day_close_counted_input := FieldInput{empty_text: "Counted cash in drawer"}
                                 day_close_copy := NavBtn{text: "Copy day close"}
@@ -5780,11 +5880,7 @@ script_mod! {
                                     reports_balance_sheet := RowSecondaryBtn{text: "Balance sheet"}
                                     reports_balance_sheet_on := RowPrimaryBtn{text: "Balance sheet" visible: false}
                                 }
-                                reports_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
+                                reports_label := mod.widgets.ReportText{}
                                 // Courier ops desk (Ops / COD / Riders peers). Hidden on bank Reports.
                                 ops_desk := View{
                                     width: Fill height: Fit
@@ -5801,12 +5897,13 @@ script_mod! {
                                         ops_find_awb := RowPrimaryBtn{text: "Find / Scan AWB"}
                                         ops_label := RowSecondaryBtn{text: "Print AWB label"}
                                     }
-                                    ops_awb_card := WrapLabel{
+                                    ops_awb_hint := WrapLabel{
                                         width: Fill
                                         body: "(scan or type an AWB, then Find — scanner Enter also works)"
                                         font_color: #x0B1220
                                         font_size: 12.
                                     }
+                                    ops_awb_card := mod.widgets.ReportText{}
                                     ops_note_input := FieldInput{empty_text: "Note / POD (optional)"}
                                     ops_pod_pick := RowSecondaryBtn{text: "Pick POD photo"}
                                     ops_pod_status := WrapLabel{
@@ -5896,11 +5993,12 @@ script_mod! {
                                     expense_attach_photo := RowSecondaryBtn{text: "Attach bill photo"}
                                     expense_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
                                 }
-                                expense_attach_list := WrapLabel{
+                                expense_attach_hint := WrapLabel{
                                     body: "(log an expense first)"
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
+                                expense_attach_list := mod.widgets.ReportText{}
                                 reports_bank_heading := WrapLabel{body: "Bank / cashbook" font_color: #x0B1220 font_size: 15.}
                                 bank_amount_input := FieldInput{empty_text: "Amount"}
                                 bank_note_input := FieldInput{empty_text: "Note (deposit, withdrawal, …)"}
@@ -5912,16 +6010,7 @@ script_mod! {
                                 }
                                 reports_copy := NavBtn{text: "Copy report"}
                                 h_bank_reconciliation := WrapLabel{body: "Bank reconciliation (tick off against your bank statement)" font_color: #x0B1220 font_size: 15.}
-                                bank_recon_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                bank_uncleared_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
+                                bank_recon_label := mod.widgets.ReportText{}
                                 bank_clear_input := FieldInput{empty_text: "Uncleared # above"}
                                 ActionStack{
                                     bank_mark_cleared := RowPrimaryBtn{text: "Mark cleared"}
@@ -5956,11 +6045,7 @@ script_mod! {
                                     flow: Down spacing: 8
                                     inventory_title := WrapLabel{body: "Inventory" font_color: #x0B1220 font_size: 20.}
                                 }
-                                inventory_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
+                                inventory_label := mod.widgets.ReportText{}
                                 h_stock_type_help := WrapLabel{
                                     width: Fill
                                     body: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
@@ -5996,11 +6081,7 @@ script_mod! {
                                 }
                                 org_name_input := FieldInput{empty_text: "Business name"}
                                 org_save := NavBtn{text: "Save business name"}
-                                branches_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
+                                branches_label := mod.widgets.ReportText{}
                                 // A branch is its own business (vision §5): open another
                                 // local server in Server Mode, never switch inside these
                                 // books. Hidden; export/import below compares branches.
@@ -6502,6 +6583,13 @@ fn cart_row_height() -> &'static Mutex<f64> {
     HEIGHT.get_or_init(|| Mutex::new(320.0))
 }
 
+fn sale_row_height() -> &'static Mutex<f64> {
+    static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
+    // Seed clears the AWB line, the when / paid / by line and Select. The
+    // draw replaces it with the measured row.
+    HEIGHT.get_or_init(|| Mutex::new(156.0))
+}
+
 /// Nested PortalList inside a page ScrollYView: claim the wheel/trackpad so the
 /// outer page does not scroll at the same time as the inner list.
 fn claim_nested_scroll(cx: &Cx, area: Area, event: &Event) {
@@ -6935,18 +7023,22 @@ struct SaleList {
 
 impl Widget for SaleList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (sales, currency, fiscal) = {
+        let (sales, currency, fiscal, lang) = {
             let st = app_state().lock().unwrap();
             (
                 st.recent_sales.clone(),
                 st.locale.currency.clone(),
                 st.fiscal.clone(),
+                st.locale.language.clone(),
             )
         };
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let row = *sale_row_height().lock().unwrap();
         let walk = Walk {
-            height: Size::Fixed(list_content_height(sales.len(), 132.0, 0.0)),
+            height: Size::Fixed(list_content_height(sales.len(), row, 0.0)),
             ..walk
         };
+        let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 list.set_item_range(cx, 0, sales.len());
@@ -6955,41 +7047,59 @@ impl Widget for SaleList {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
-                    let text = if sale.rounding_paise != 0 {
-                        format!(
-                            "{} · Rounded {} (Applied {} · round {}) · {} · {} · by {}",
-                            &sale.created_at[..sale.created_at.len().min(19)],
-                            Money(sale.total_paise).format_localized(&currency, &fiscal),
-                            Money(sale.lines_total_paise).format_localized(&currency, &fiscal),
-                            Money(sale.rounding_paise).format_localized(&currency, &fiscal),
-                            sale.pay_method,
-                            sale.status,
-                            if sale.created_by_name.is_empty() {
-                                "—"
-                            } else {
-                                &sale.created_by_name
-                            }
-                        )
-                    } else {
-                        format!(
-                            "{} · Rounded {} · {} · {} · by {}",
-                            &sale.created_at[..sale.created_at.len().min(19)],
-                            Money(sale.total_paise).format_localized(&currency, &fiscal),
-                            sale.pay_method,
-                            sale.status,
-                            if sale.created_by_name.is_empty() {
-                                "—"
-                            } else {
-                                &sale.created_by_name
-                            }
-                        )
+                    let money = |paise: i64| Money(paise).format_localized(&currency, &fiscal);
+                    let method = match sale.pay_method.as_str() {
+                        "cash" => locale::t(&lang, "cash"),
+                        "upi" => fiscal.digital_pay_label().to_string(),
+                        "card" => locale::t(&lang, "card"),
+                        "credit" => locale::t(&lang, "pay_credit"),
+                        "split" => locale::t(&lang, "split"),
+                        other => other.to_string(),
                     };
-                    item.widget(cx, ids!(label))
-                        .set_text(cx, &plain_display_text(&text));
+                    // "AWB-… · Rajkot", or how it was paid when there is no AWB.
+                    let main = match (sale.awb_no.trim(), sale.destination.trim()) {
+                        ("", _) => method.clone(),
+                        (awb, "") => awb.to_string(),
+                        (awb, to) => format!("{awb} · {to}"),
+                    };
+                    // "13:00" today, "2026-10-21 19:05" before; how paid; by
+                    // whom; the status only when it is not an ordinary one.
+                    let at = sale.created_at.replace('T', " ");
+                    let mut sub = if at.get(..10) == Some(today.as_str()) {
+                        at.get(11..16).unwrap_or("").to_string()
+                    } else {
+                        at.get(..16).unwrap_or(&at).to_string()
+                    };
+                    if !sale.awb_no.trim().is_empty() {
+                        sub.push_str(&format!(" · {method}"));
+                    }
+                    if !sale.created_by_name.is_empty() {
+                        sub.push_str(&format!(" · {}", sale.created_by_name));
+                    }
+                    if sale.status != "completed" {
+                        sub.push_str(&format!(" · {}", sale.status));
+                    }
+                    if sale.rounding_paise != 0 {
+                        sub.push_str(&format!(
+                            " · Applied {} · round {}",
+                            money(sale.lines_total_paise),
+                            money(sale.rounding_paise)
+                        ));
+                    }
+                    item.label(cx, ids!(sale_main)).set_text(cx, &main);
+                    item.label(cx, ids!(label)).set_text(cx, &sub);
+                    item.label(cx, ids!(sale_amount)).set_text(cx, &money(sale.total_paise));
                     item.draw_all_unscoped(cx);
+                }
+                if !sales.is_empty() {
+                    let extent = list.drawn_range_extent();
+                    if extent > 1.0 {
+                        measured_row = extent / sales.len() as f64;
+                    }
                 }
             }
         }
+        remember_content_row(cx, &mut self.view, sale_row_height(), row, measured_row);
         DrawStep::done()
     }
 
@@ -7408,6 +7518,293 @@ impl Widget for CurrencyList {
     }
 }
 
+/// One line of a report as it is laid out on screen.
+#[derive(Clone, Debug, PartialEq)]
+enum ReportRow {
+    Head(String),
+    Kv(String, String),
+    Line(String),
+    /// An indented item under a heading ("  Parcel tape · 3 left").
+    Sub(String),
+    Gap,
+}
+
+/// Lay out a printable report: "=== X ===", "— X —", "Title:", a title
+/// followed by indented lines, the first line of a section with more under
+/// it, and a word or two over figures ("Assets") become headings; figures
+/// become label/value rows ([`report_values`]); "----" and blank lines
+/// become a gap.
+fn parse_report(text: &str) -> Vec<ReportRow> {
+    // Undo plain_display_text's Markdown escapes.
+    let text = text.replace("\\*", "*").replace("\\_", "_").replace("\\`", "`").replace("\\#", "#");
+    let lines: Vec<&str> = text.lines().collect();
+    let is_gap = |l: &str| {
+        let l = l.trim();
+        l.is_empty() || l.chars().all(|c| c == '-' || c == '=' || c == '—')
+    };
+    let mut rows: Vec<ReportRow> = Vec::new();
+    for (i, raw) in lines.iter().enumerate() {
+        let indented = raw.starts_with("  ") || raw.starts_with('\t');
+        let l = raw.trim();
+        if is_gap(l) {
+            if !matches!(rows.last(), None | Some(ReportRow::Gap)) {
+                rows.push(ReportRow::Gap);
+            }
+            continue;
+        }
+        if indented {
+            rows.push(ReportRow::Sub(l.to_string()));
+            continue;
+        }
+        if l.starts_with("===") {
+            rows.push(ReportRow::Head(l.trim_matches('=').trim().to_string()));
+            continue;
+        }
+        // "— Barcode desk —": an ops section.
+        if let Some(inner) = l.strip_prefix('—').and_then(|rest| rest.strip_suffix('—'))
+            && !inner.trim().is_empty()
+        {
+            rows.push(ReportRow::Head(inner.trim().to_string()));
+            continue;
+        }
+        if let Some(head) = l.strip_suffix(':') {
+            rows.push(ReportRow::Head(head.trim().to_string()));
+            continue;
+        }
+        let next = lines.get(i + 1).copied().filter(|n| !is_gap(n));
+        if next.is_some_and(|n| n.starts_with("  ") || n.starts_with('\t')) {
+            rows.push(ReportRow::Head(l.to_string()));
+            continue;
+        }
+        if let Some(values) = report_values(l) {
+            rows.extend(values);
+            continue;
+        }
+        // "Party outstanding (aging)" opening its section; "Assets" over
+        // the figures under it.
+        let opens_section = matches!(rows.last(), None | Some(ReportRow::Gap)) && next.is_some();
+        let names_figures = !l.chars().any(|c| c.is_ascii_digit())
+            && l.split_whitespace().count() <= 3
+            && next.is_some_and(|n| report_values(n.trim()).is_some());
+        if opens_section || names_figures {
+            rows.push(ReportRow::Head(l.to_string()));
+        } else {
+            rows.push(ReportRow::Line(l.to_string()));
+        }
+    }
+    while matches!(rows.last(), Some(ReportRow::Gap)) {
+        rows.pop();
+    }
+    if matches!(rows.first(), Some(ReportRow::Gap)) {
+        rows.remove(0);
+    }
+    rows
+}
+
+/// A line of figures as label/value rows: "Bookings: 3", "Revenue ₹120.00",
+/// "Expenses ₹50.00 (2)" (an amount and its count), and one row per part
+/// of "Cash ₹120.00 · UPI ₹0.00". `None` when the line is not figures — a
+/// long value too ("Next: Dispatch … or Out for delivery"): at the right of
+/// a row it would squeeze its label on a phone, so it stays a full line.
+fn report_values(l: &str) -> Option<Vec<ReportRow>> {
+    if let Some((k, v)) = l.split_once(": ")
+        && !k.trim().is_empty()
+        && !v.trim().is_empty()
+        && k.chars().count() <= 48
+        && v.trim().chars().count() <= 32
+    {
+        return Some(vec![ReportRow::Kv(k.trim().to_string(), v.trim().to_string())]);
+    }
+    if let Some((k, v)) = trailing_amount(l) {
+        return Some(vec![ReportRow::Kv(k, v)]);
+    }
+    if let Some((rest, count)) = l.rsplit_once(' ')
+        && count.len() > 2
+        && count.starts_with('(')
+        && count.ends_with(')')
+        && count[1..count.len() - 1].chars().all(|c| c.is_ascii_digit())
+        && let Some((k, v)) = trailing_amount(rest)
+    {
+        return Some(vec![ReportRow::Kv(k, format!("{v} {count}"))]);
+    }
+    if l.contains(" · ") {
+        let parts: Option<Vec<ReportRow>> = l
+            .split(" · ")
+            .map(|part| trailing_amount(part.trim()).map(|(k, v)| ReportRow::Kv(k, v)))
+            .collect();
+        return parts.filter(|parts| parts.len() > 1);
+    }
+    None
+}
+
+/// "Revenue ₹120.00" → ("Revenue", "₹120.00"): a label followed by one
+/// amount or count. Not for lists ("·") or ranges/dates ("→", "2026-10-24").
+fn trailing_amount(line: &str) -> Option<(String, String)> {
+    if line.contains('·') || line.contains('→') {
+        return None;
+    }
+    let (label, last) = line.rsplit_once(' ')?;
+    let digits = last.trim_start_matches(|c: char| !c.is_ascii_digit());
+    let prefix = &last[..last.len() - digits.len()];
+    let amount_like = !digits.is_empty()
+        && prefix.chars().count() <= 3
+        && !prefix.chars().any(|c| c.is_alphabetic())
+        && digits.chars().all(|c| c.is_ascii_digit() || c == ',' || c == '.' || c == '%')
+        && !label.trim().is_empty();
+    amount_like.then(|| (label.trim().to_string(), last.to_string()))
+}
+
+/// A heading row from a sentence that introduces a list ("Recent:"): the
+/// card shows it as a heading, so the colon goes.
+fn report_head(text: &str) -> ReportRow {
+    ReportRow::Head(text.trim_end().trim_end_matches([':', '：']).trim_end().to_string())
+}
+
+/// "2026-10-26T12:21:47+05:30" → "26 Oct 12:21" (as Backup shows times);
+/// anything else as written, minus seconds.
+fn short_when(at: &str) -> String {
+    chrono::DateTime::parse_from_rfc3339(at)
+        .map(|t| t.format("%d %b %H:%M").to_string())
+        .unwrap_or_else(|_| at.get(..16).unwrap_or(at).replace('T', " "))
+}
+
+/// A report row's text, right-aligned in right-to-left languages.
+fn set_report_label(cx: &mut Cx, item: &WidgetRef, id: &[LiveId], text: &str, align_x: f64) {
+    let label = item.label(cx, id);
+    label.set_text(cx, text);
+    if let Some(mut label) = label.borrow_mut() {
+        label.align.x = align_x;
+    }
+}
+
+/// Rows as plain lines (what a [`ReportText`] fed with rows reads back as).
+fn report_rows_text(rows: &[ReportRow]) -> String {
+    rows.iter()
+        .map(|row| match row {
+            ReportRow::Head(t) => format!("{t}:"),
+            ReportRow::Kv(k, v) => format!("{k}: {v}"),
+            ReportRow::Line(t) => t.clone(),
+            ReportRow::Sub(t) => format!("  {t}"),
+            ReportRow::Gap => String::new(),
+        })
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
+/// A report or list on screen, laid out by [`parse_report`] (`set_text`)
+/// or given as rows (`set_rows`).
+#[derive(Script, ScriptHook, Widget)]
+struct ReportText {
+    #[deref]
+    view: View,
+    #[rust]
+    text: String,
+    #[rust]
+    rows: Vec<ReportRow>,
+    /// Content height measured at the last draw (rows wrap).
+    #[rust]
+    measured: f64,
+    #[rust]
+    settle: NextFrame,
+}
+
+impl Widget for ReportText {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        if self.rows.is_empty() {
+            return DrawStep::done();
+        }
+        let estimate = if self.measured > 1.0 { self.measured } else { self.rows.len() as f64 * 30.0 };
+        let mut extent = 0.0;
+        // The list fills the card; the card is as tall as the rows measured
+        // last frame (plus its padding).
+        if let Some(mut card) = self.view.view(cx, ids!(card)).borrow_mut() {
+            card.walk.height = Size::Fixed(estimate + 14.0);
+        }
+        let rows = self.rows.clone();
+        // Right-to-left languages read the card from the right.
+        let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
+        let align_x = if rtl { 1.0 } else { 0.0 };
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                list.set_item_range(cx, 0, rows.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(row) = rows.get(item_id) else {
+                        continue;
+                    };
+                    let item = match row {
+                        ReportRow::Head(t) => {
+                            let item = list.item(cx, item_id, id!(Head));
+                            set_report_label(cx, &item, ids!(head), t, align_x);
+                            item
+                        }
+                        ReportRow::Kv(k, v) => {
+                            let item = list.item(cx, item_id, if rtl { id!(KvRtl) } else { id!(Kv) });
+                            item.label(cx, ids!(k)).set_text(cx, k);
+                            item.label(cx, ids!(v)).set_text(cx, v);
+                            item
+                        }
+                        ReportRow::Line(t) => {
+                            let item = list.item(cx, item_id, id!(Line));
+                            set_report_label(cx, &item, ids!(line), t, align_x);
+                            item
+                        }
+                        ReportRow::Sub(t) => {
+                            let item = list.item(cx, item_id, id!(Sub));
+                            set_report_label(cx, &item, ids!(line), t, align_x);
+                            item
+                        }
+                        ReportRow::Gap => list.item(cx, item_id, id!(Gap)),
+                    };
+                    item.draw_all_unscoped(cx);
+                }
+                extent = list.drawn_range_extent();
+            }
+        }
+        if extent > 1.0 && (extent - self.measured).abs() > 1.0 {
+            self.measured = extent;
+            self.settle = cx.new_next_frame();
+        }
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if self.settle.is_event(event).is_some() {
+            self.view.redraw(cx);
+        }
+        if page_owns_scroll(event) {
+            return;
+        }
+        self.view.handle_event(cx, event, scope);
+    }
+
+    fn text(&self) -> String {
+        self.text.clone()
+    }
+
+    fn set_text(&mut self, cx: &mut Cx, v: &str) {
+        if self.text != v {
+            self.text = v.to_string();
+            self.rows = parse_report(v);
+            self.measured = 0.0;
+            self.view.redraw(cx);
+        }
+    }
+}
+
+impl ReportText {
+    /// Rows built in code, for lists that never print (units, printers,
+    /// audit …): nothing is guessed, so a name the office typed ("Rent:
+    /// March") never turns into a heading or a figure.
+    pub fn set_rows(&mut self, cx: &mut Cx, rows: Vec<ReportRow>) {
+        if self.rows != rows {
+            self.text = report_rows_text(&rows);
+            self.rows = rows;
+            self.measured = 0.0;
+            self.view.redraw(cx);
+        }
+    }
+}
+
 /// Selectable display text (Markdown) with Label-like `visible` support.
 /// Stock Markdown/TextFlow ignore `set_visible`, which left empty-state copy
 /// on screen after products/cart lines appeared.
@@ -7508,9 +7905,90 @@ fn parse_courier_route_key(key: &str) -> print_share::RouteKey {
     }
 }
 
-fn format_courier_printers_pool(draft: &print_share::DevicePrinters) -> String {
+/// Printers the last search found, one per row, under the sentence that
+/// introduces them ("Found on this device:"). No rows while searching or
+/// when nothing was found — the sentence then says so on its own.
+fn printers_found_rows(t: impl Fn(&str) -> String) -> (String, Vec<ReportRow>) {
+    let found = print_share::found_printers();
+    if print_share::is_finding_printers() || !print_share::printers_find_finished() || found.is_empty() {
+        return (printers_found_line(t), Vec::new());
+    }
+    let intro = t("printers_found").replace("{list}", "");
+    (intro.trim_end().to_string(), found.into_iter().map(ReportRow::Line).collect())
+}
+
+/// Settings → Units as rows: each family's units from smallest to largest
+/// with what one of them is in the family's anchor (what books record),
+/// units not linked to a standard yet, then the conversions grouped by the
+/// unit they start from.
+fn units_report_rows(store: &Store) -> Vec<ReportRow> {
+    let units = store.list_units().unwrap_or_default();
+    let convs = store.list_unit_conversions().unwrap_or_default();
+    let name = |u: &domain::UnitDef| {
+        if u.builtin {
+            format!("{} — {}", u.code, u.name)
+        } else {
+            format!("{} — {} (custom)", u.code, u.name)
+        }
+    };
+    let mut rows = Vec::new();
+    for family in ["weight", "length", "volume", "count"] {
+        let anchor = domain::unit_family_anchor(family).unwrap_or("");
+        let mut members: Vec<(rust_decimal::Decimal, ReportRow)> = units
+            .iter()
+            .filter_map(|u| {
+                let (unit_family, factor) = store.resolve_unit(&u.code)?;
+                (unit_family == family).then(|| {
+                    let value = if u.code == anchor {
+                        "base unit".to_string()
+                    } else {
+                        format!("1 {} = {} {anchor}", u.code, precise::format_kg(factor))
+                    };
+                    (factor, ReportRow::Kv(name(u), value))
+                })
+            })
+            .collect();
+        if members.is_empty() {
+            continue;
+        }
+        members.sort_by(|a, b| a.0.cmp(&b.0));
+        let mut title = family.to_string();
+        title[..1].make_ascii_uppercase();
+        rows.push(ReportRow::Head(format!("{title} ({anchor})")));
+        rows.extend(members.into_iter().map(|(_, row)| row));
+    }
+    let unlinked: Vec<ReportRow> = units
+        .iter()
+        .filter(|u| store.resolve_unit(&u.code).is_none())
+        .map(|u| ReportRow::Line(name(u)))
+        .collect();
+    if !unlinked.is_empty() {
+        rows.push(ReportRow::Head("Not linked to a standard unit yet".into()));
+        rows.extend(unlinked);
+    }
+    if !convs.is_empty() {
+        rows.push(ReportRow::Head("Conversions (1 from = factor to)".into()));
+        for group in convs.chunk_by(|a, b| a.from_code == b.from_code) {
+            let targets = group
+                .iter()
+                .map(|c| {
+                    let factor = precise::format_kg(
+                        rust_decimal::Decimal::from(c.factor_milli) / rust_decimal::Decimal::from(1000),
+                    );
+                    format!("{factor} {}", c.to_code)
+                })
+                .collect::<Vec<_>>()
+                .join(" · ");
+            rows.push(ReportRow::Line(format!("1 {} = {targets}", group[0].from_code)));
+        }
+    }
+    rows
+}
+
+/// The printers added on this device, in the order they are tried.
+fn courier_printers_pool_rows(draft: &print_share::DevicePrinters) -> Vec<ReportRow> {
     if draft.printers.is_empty() {
-        return "(none yet — add one below)".into();
+        return vec![ReportRow::Line("(none yet — add one below)".into())];
     }
     draft
         .printers
@@ -7518,30 +7996,30 @@ fn format_courier_printers_pool(draft: &print_share::DevicePrinters) -> String {
         .enumerate()
         .map(|(i, p)| {
             let target = if p.target.is_empty() {
-                "default printer"
+                "default printer".to_string()
             } else {
-                p.target.as_str()
+                p.target.clone()
             };
-            format!("{}. {} → {target}", i + 1, p.label)
+            ReportRow::Kv(format!("{}. {}", i + 1, p.label), target)
         })
-        .collect::<Vec<_>>()
-        .join("\n")
+        .collect()
 }
 
-fn format_courier_printer_routes(
+/// Where receipts and AWB labels print, the printers in the order they are
+/// tried; › marks the route being edited.
+fn courier_printer_route_rows(
     draft: &print_share::DevicePrinters,
     focus: &str,
     t: impl Fn(&str) -> String,
-) -> String {
+) -> Vec<ReportRow> {
     let label_of = |id: &str| -> String {
         draft
             .printer_by_id(id)
             .map(|p| p.label.clone())
             .unwrap_or_else(|| id.to_string())
     };
-    let route_line = |title: &str, key: print_share::RouteKey, focused: bool| -> String {
+    let route_row = |title: &str, key: print_share::RouteKey, focused: bool| -> ReportRow {
         let ids = draft.route_for(key);
-        let mark = if focused { " › " } else { "   " };
         let body = if ids.is_empty() {
             t("route_dont_print")
         } else {
@@ -7550,22 +8028,22 @@ fn format_courier_printer_routes(
                 .collect::<Vec<_>>()
                 .join(" → ")
         };
-        format!("{mark}{title}: {body}")
+        let mark = if focused { "› " } else { "" };
+        ReportRow::Kv(format!("{mark}{title}"), body)
     };
     let focus = focus.trim().to_ascii_lowercase();
-    [
-        route_line(
+    vec![
+        route_row(
             &t("route_receipt"),
             print_share::RouteKey::Receipt,
             focus == "receipt" || focus.is_empty(),
         ),
-        route_line(
+        route_row(
             &t("route_label"),
             print_share::RouteKey::Label,
             focus == "label" || focus == "awb" || focus == "awb label",
         ),
     ]
-    .join("\n")
 }
 
 fn plain_display_text(s: &str) -> String {
@@ -7713,7 +8191,7 @@ impl App {
             db,
             screen,
             table_chip,
-            staff_text,
+            staff_rows,
             audit,
             locale_line,
             empty_msg,
@@ -7795,31 +8273,26 @@ impl App {
             };
 
             let table_chip = st.t("ready_to_sell");
-            let staff_text = st
+            let staff_rows = st
                 .staff
                 .iter()
-                .map(|s| s.lock_label())
-                .collect::<Vec<_>>()
-                .join("\n");
-            let audit = st
-                .store
-                .as_ref()
-                .and_then(|s| s.list_audit(5).ok())
-                .map(|events| {
-                    if events.is_empty() {
-                        "Audit: (empty)".into()
-                    } else {
-                        format!(
-                            "Audit: {}",
-                            events
-                                .iter()
-                                .map(|e| format!("{}: {} {}", e.actor_name, e.action, e.detail))
-                                .collect::<Vec<_>>()
-                                .join(" · ")
+                .map(|s| ReportRow::Line(s.lock_label()))
+                .collect::<Vec<_>>();
+            // Latest audit entries, one row each: who did what, and when.
+            let audit = {
+                let mut rows = vec![ReportRow::Head("Audit".into())];
+                match st.store.as_ref().and_then(|s| s.list_audit(5).ok()) {
+                    Some(events) if !events.is_empty() => rows.extend(events.iter().map(|e| {
+                        ReportRow::Kv(
+                            format!("{} · {} {}", e.actor_name, e.action, e.detail.trim()),
+                            short_when(&e.created_at),
                         )
-                    }
-                })
-                .unwrap_or_else(|| "Audit: —".into());
+                    })),
+                    Some(_) => rows.push(ReportRow::Line("(empty)".into())),
+                    None => rows.push(ReportRow::Line("—".into())),
+                }
+                rows
+            };
             let lang = locale::language_by_code(&st.locale.language)
                 .map(|l| format!("{} ({})", l.native_name, l.name_en))
                 .unwrap_or_else(|| st.locale.language.clone());
@@ -8001,7 +8474,7 @@ impl App {
                     .unwrap_or_else(|| "no db".into()),
                 st.screen,
                 table_chip,
-                staff_text,
+                staff_rows,
                 audit,
                 locale_line,
                 empty_msg,
@@ -8137,9 +8610,7 @@ impl App {
                 .set_visible(cx, host);
         }
 
-        self.ui
-            .widget(cx, ids!(audit_label))
-            .set_text(cx, &plain_display_text(&audit));
+        self.set_report_rows(cx, ids!(audit_label), audit);
         self.ui
             .widget(cx, ids!(table_chip))
             .set_text(cx, &plain_display_text(&table_chip));
@@ -8282,9 +8753,7 @@ impl App {
                 .button(cx, ids!(next_booking_btn))
                 .set_visible(cx, show_next);
         }
-        self.ui
-            .widget(cx, ids!(staff_label))
-            .set_text(cx, &plain_display_text(&staff_text));
+        self.set_report_rows(cx, ids!(staff_label), staff_rows);
         self.ui
             .widget(cx, ids!(locale_label))
             .set_text(cx, &plain_display_text(&locale_line));
@@ -8292,20 +8761,26 @@ impl App {
         // Country pack: the summary, the pay-rail wording on the Sell buttons,
         // and the exclusive-tax estimate under the totals strip.
         {
-            let (fiscal_line, country_hint, tax_line, digital, business_id, service_pct) = {
+            let (fiscal_line, (country_hint, country_pack), tax_line, digital, business_id, service_pct) = {
                 let st = app_state().lock().unwrap();
                 (
                     st.fiscal.summary(),
+                    // The pack being browsed: what applying it would set,
+                    // one row each under the line that says how to apply it.
                     match fiscal::country_by_code(&st.country_browse) {
-                        Some(p) => format!(
-                            "Browsing {} — tap Apply country pack to switch\n{}",
-                            p.code,
-                            p.apply_hint()
+                        Some(p) => (
+                            format!("Browsing {} — tap Apply country pack to switch", p.code),
+                            p.apply_facts()
+                                .into_iter()
+                                .map(|(what, value)| ReportRow::Kv(what.to_string(), value))
+                                .collect::<Vec<_>>(),
                         ),
-                        None => format!(
-                            "{}\n{} country packs · type a code or tap ‹ Browse ›",
-                            st.fiscal.profile().apply_hint(),
-                            fiscal::countries().len()
+                        None => (
+                            format!(
+                                "{} country packs · type a code or tap ‹ Browse ›",
+                                fiscal::countries().len()
+                            ),
+                            Vec::new(),
                         ),
                     },
                     st.cart_tax_estimate_line(),
@@ -8323,6 +8798,7 @@ impl App {
             self.ui
                 .widget(cx, ids!(country_hint))
                 .set_text(cx, &plain_display_text(&country_hint));
+            self.set_report_rows(cx, ids!(country_pack_list), country_pack);
             self.ui
                 .widget(cx, ids!(tax_estimate_label))
                 .set_text(cx, &plain_display_text(&tax_line));
@@ -8419,7 +8895,7 @@ impl App {
             .widget(cx, ids!(undo_snack_label))
             .set_text(cx, &plain_display_text(&undo_snack_text));
 
-        let (credit_chip, credit_summary, empty_hint) = {
+        let (credit_chip, credit_summary, credit_recent, empty_hint) = {
             let st = app_state().lock().unwrap();
             let credit_chip = match &st.selected_customer_id {
                 Some(id) => st
@@ -8462,32 +8938,32 @@ impl App {
             let open: i64 = st.customers.iter().map(|c| c.balance_paise.max(0)).sum();
             let prepaid: i64 = st.customers.iter().map(|c| (-c.balance_paise).max(0)).sum();
             // Per-language sentence with {} slots filled in order.
-            let mut credit_summary = st
+            let credit_summary = st
                 .t("credit_summary_fmt")
                 .replacen("{}", &st.customers.len().to_string(), 1)
                 .replacen("{}", &st.money(Money(open)), 1)
                 .replacen("{}", &st.money(Money(prepaid)), 1);
+            // The picked party's latest ledger entries, one row each.
+            let mut credit_recent = Vec::new();
             if let Some(id) = &st.selected_customer_id
                 && let Some(store) = st.store.as_ref()
                 && let Ok(entries) = store.list_credit_ledger(id, 6)
                 && !entries.is_empty()
             {
-                credit_summary.push_str(&format!("\n{}", st.t("recent_label")));
-                for entry in entries {
-                    credit_summary.push_str(&format!(
-                        "\n  {} {} {}",
-                        &entry.created_at[..entry.created_at.len().min(10)],
-                        entry.kind,
-                        st.money(Money(entry.amount_paise))
-                    ));
-                }
+                credit_recent.push(report_head(&st.t("recent_label")));
+                credit_recent.extend(entries.iter().map(|entry| {
+                    ReportRow::Kv(
+                        format!("{} · {}", &entry.created_at[..entry.created_at.len().min(10)], entry.kind),
+                        st.money(Money(entry.amount_paise)),
+                    )
+                }));
             }
             let empty_hint = if st.customers.is_empty() {
                 "No saved customers yet — type a name above."
             } else {
                 "Tap Pick to use a saved customer."
             };
-            (credit_chip, credit_summary, empty_hint)
+            (credit_chip, credit_summary, credit_recent, empty_hint)
         };
         {
             let (selected_label, form_btn_label) = {
@@ -8531,6 +9007,7 @@ impl App {
         self.ui
             .widget(cx, ids!(credit_summary_label))
             .set_text(cx, &plain_display_text(&credit_summary));
+        self.set_report_rows(cx, ids!(credit_recent_list), credit_recent);
         self.ui
             .widget(cx, ids!(customers_empty_hint))
             .set_text(cx, &plain_display_text(empty_hint));
@@ -8545,60 +9022,43 @@ impl App {
         ) = {
             let st = app_state().lock().unwrap();
             let sale_selected = if let Some(id) = &st.selected_sale_id {
-                let short = &id[..8.min(id.len())];
-                let lines = st
-                    .amend_cart
-                    .lines
+                // The lines and totals are right below; the header only says
+                // which booking this is.
+                let which = st
+                    .recent_sales
                     .iter()
-                    .map(|l| {
-                        if l.note.is_empty() {
-                            format!("{}×{} @{}", l.qty, l.name, st.money(l.unit_price))
-                        } else {
-                            format!(
-                                "{}×{} @{} ({})",
-                                l.qty,
-                                l.name,
-                                st.money(l.unit_price),
-                                l.note
-                            )
-                        }
-                    })
-                    .collect::<Vec<_>>()
-                    .join(", ");
+                    .find(|s| &s.id == id)
+                    .map(|s| s.awb_no.trim().to_string())
+                    .filter(|awb| !awb.is_empty())
+                    .unwrap_or_else(|| id[..8.min(id.len())].to_string());
                 format!(
-                    "Editing {short} · {} · pay {} · Actual {} · Applied {} · Rounded {}",
-                    if lines.is_empty() {
-                        "—".into()
-                    } else {
-                        lines
-                    },
-                    st.amend_pay.label_for(&st.fiscal),
-                    st.money(st.amend_cart.actual_total()),
-                    st.money(st.amend_cart.applied_total()),
-                    st.money(st.amend_cart.rounded_total())
+                    "Editing {which} · {} · {}",
+                    st.money(st.amend_cart.rounded_total()),
+                    st.amend_pay.label_for(&st.fiscal)
                 )
             } else {
                 "No sale selected".into()
             };
-            let sale_history = if st.sale_revisions.is_empty() {
-                "History: (none yet)".into()
-            } else {
-                let parts: Vec<String> = st
-                    .sale_revisions
-                    .iter()
-                    .take(5)
-                    .map(|r| {
-                        format!(
-                            "{} {} · was {} · {}",
-                            &r.revised_at[..r.revised_at.len().min(19)],
-                            r.actor_name,
-                            st.money(Money(r.previous.total_paise)),
-                            r.reason
-                        )
-                    })
-                    .collect();
-                format!("History: {}", parts.join(" | "))
-            };
+            // Each change to the booking on its own row: who, what it was,
+            // why — and when.
+            let mut sale_history = Vec::new();
+            if st.selected_sale_id.is_some() {
+                sale_history.push(ReportRow::Head("History".into()));
+                if st.sale_revisions.is_empty() {
+                    sale_history.push(ReportRow::Line("(none yet)".into()));
+                }
+            }
+            sale_history.extend(st.sale_revisions.iter().take(5).map(|r| {
+                let reason = if r.reason.trim().is_empty() {
+                    String::new()
+                } else {
+                    format!(" · {}", r.reason.trim())
+                };
+                ReportRow::Kv(
+                    format!("{} · was {}{reason}", r.actor_name, st.money(Money(r.previous.total_paise))),
+                    short_when(&r.revised_at),
+                )
+            }));
             let amend_total_text = locale::format_major_input_ex(
                 st.amend_cart.rounded_total().paise(),
                 &st.locale.currency,
@@ -8670,14 +9130,13 @@ impl App {
                     _ => String::new(),
                 }
             };
-            let body = if attach_txt.is_empty() {
-                "(no attachments yet — select a sale)".into()
-            } else {
-                attach_txt
-            };
-            self.ui
-                .widget(cx, ids!(sale_attach_list))
-                .set_text(cx, &plain_display_text(&body));
+            self.show_attachments(
+                cx,
+                ids!(sale_attach_hint),
+                ids!(sale_attach_list),
+                &attach_txt,
+                "(no attachments yet — select a sale)",
+            );
         }
         {
             let attach_txt = {
@@ -8691,69 +9150,61 @@ impl App {
                     _ => String::new(),
                 }
             };
-            let body = if attach_txt.is_empty() {
-                "(no attachments yet — select a party)".into()
-            } else {
-                attach_txt
-            };
-            self.ui
-                .widget(cx, ids!(party_attach_list))
-                .set_text(cx, &plain_display_text(&body));
+            self.show_attachments(
+                cx,
+                ids!(party_attach_hint),
+                ids!(party_attach_list),
+                &attach_txt,
+                "(no attachments yet — select a party)",
+            );
         }
         {
             // Bill-wise lists for the selected party (numbers match the
             // "Against bill #" inputs).
-            let (ar_txt, ap_txt) = {
+            let (ar_rows, ap_rows) = {
                 let st = app_state().lock().unwrap();
-                let fmt = |bills: Vec<domain::OpenBill>, st: &AppState| -> String {
+                let rows = |bills: Vec<domain::OpenBill>, st: &AppState| -> Vec<ReportRow> {
                     if bills.is_empty() {
-                        return String::new();
+                        return Vec::new();
                     }
-                    let parts: Vec<String> = bills
-                        .iter()
-                        .enumerate()
-                        .map(|(i, b)| {
+                    let mut rows = vec![ReportRow::Head("Open bills".into())];
+                    rows.extend(bills.iter().enumerate().map(|(i, b)| {
+                        ReportRow::Kv(
+                            format!("{}) {}", i + 1, &b.created_at[..b.created_at.len().min(10)]),
                             format!(
-                                "{}) {} · {} open (of {})",
-                                i + 1,
-                                &b.created_at[..b.created_at.len().min(10)],
+                                "{} open (of {})",
                                 st.money(Money(b.open_paise)),
-                                st.money(Money(b.billed_paise)),
-                            )
-                        })
-                        .collect();
-                    format!("Open bills: {}", parts.join(" · "))
+                                st.money(Money(b.billed_paise))
+                            ),
+                        )
+                    }));
+                    rows
                 };
                 match (&st.selected_customer_id, st.store.as_ref()) {
                     (Some(id), Some(store)) => (
-                        fmt(store.open_credit_bills(id).unwrap_or_default(), &st),
-                        fmt(store.open_payable_bills(id).unwrap_or_default(), &st),
+                        rows(store.open_credit_bills(id).unwrap_or_default(), &st),
+                        rows(store.open_payable_bills(id).unwrap_or_default(), &st),
                     ),
-                    _ => (String::new(), String::new()),
+                    _ => (Vec::new(), Vec::new()),
                 }
             };
-            self.ui
-                .widget(cx, ids!(settle_open_bills))
-                .set_text(cx, &plain_display_text(&ar_txt));
-            self.ui
-                .widget(cx, ids!(payable_open_bills))
-                .set_text(cx, &plain_display_text(&ap_txt));
+            self.set_report_rows(cx, ids!(settle_open_bills), ar_rows);
+            self.set_report_rows(cx, ids!(payable_open_bills), ap_rows);
         }
         {
             // Bank reconciliation: book vs statement-cleared, plus the
             // uncleared movements numbered for the tick-off input.
-            let (recon_txt, uncleared_txt) = {
+            let recon_rows = {
                 let st = app_state().lock().unwrap();
                 match st.store.as_ref() {
                     Some(store) => {
-                        let recon = match store.bank_reconciliation() {
-                            Ok((book, cleared, n, _net)) => format!(
-                                "Book balance {} · cleared (bank) {} · {} uncleared",
-                                st.money(Money(book)),
-                                st.money(Money(cleared)),
-                                n,
-                            ),
-                            Err(_) => String::new(),
+                        let mut rows = match store.bank_reconciliation() {
+                            Ok((book, cleared, n, _net)) => vec![
+                                ReportRow::Kv("Book balance".into(), st.money(Money(book))),
+                                ReportRow::Kv("Cleared (bank)".into(), st.money(Money(cleared))),
+                                ReportRow::Kv("Uncleared".into(), n.to_string()),
+                            ],
+                            Err(_) => Vec::new(),
                         };
                         let uncleared = store
                             .list_money_movements(50)
@@ -8766,31 +9217,27 @@ impl App {
                                 let kind = MoneyMoveKind::parse(&m.kind)
                                     .map(|k| k.label())
                                     .unwrap_or("Movement");
-                                format!(
-                                    "{}) {} {} {}",
-                                    i + 1,
-                                    &m.created_at[..m.created_at.len().min(10)],
-                                    kind,
+                                ReportRow::Kv(
+                                    format!(
+                                        "{}) {} {}",
+                                        i + 1,
+                                        &m.created_at[..m.created_at.len().min(10)],
+                                        kind
+                                    ),
                                     st.money(Money(m.amount_paise)),
                                 )
                             })
                             .collect::<Vec<_>>();
-                        let uncleared = if uncleared.is_empty() {
-                            String::new()
-                        } else {
-                            format!("Uncleared: {}", uncleared.join(" · "))
-                        };
-                        (recon, uncleared)
+                        if !uncleared.is_empty() {
+                            rows.push(ReportRow::Head("Uncleared".into()));
+                            rows.extend(uncleared);
+                        }
+                        rows
                     }
-                    None => (String::new(), String::new()),
+                    None => Vec::new(),
                 }
             };
-            self.ui
-                .widget(cx, ids!(bank_recon_label))
-                .set_text(cx, &plain_display_text(&recon_txt));
-            self.ui
-                .widget(cx, ids!(bank_uncleared_label))
-                .set_text(cx, &plain_display_text(&uncleared_txt));
+            self.set_report_rows(cx, ids!(bank_recon_label), recon_rows);
         }
         {
             let attach_txt = {
@@ -8804,14 +9251,13 @@ impl App {
                     _ => String::new(),
                 }
             };
-            let body = if attach_txt.is_empty() {
-                "(no attachments yet — log an expense)".into()
-            } else {
-                attach_txt
-            };
-            self.ui
-                .widget(cx, ids!(expense_attach_list))
-                .set_text(cx, &plain_display_text(&body));
+            self.show_attachments(
+                cx,
+                ids!(expense_attach_hint),
+                ids!(expense_attach_list),
+                &attach_txt,
+                "(no attachments yet — log an expense)",
+            );
         }
         {
             let pod = app_state()
@@ -8825,9 +9271,7 @@ impl App {
                 .widget(cx, ids!(ops_pod_status))
                 .set_text(cx, &plain_display_text(&pod));
         }
-        self.ui
-            .widget(cx, ids!(sale_history_label))
-            .set_text(cx, &plain_display_text(&sale_history));
+        self.set_report_rows(cx, ids!(sale_history_label), sale_history);
         self.ui
             .widget(cx, ids!(amend_natural_label))
             .set_text(cx, &plain_display_text(&amend_natural));
@@ -9014,76 +9458,35 @@ impl App {
             self.ui
                 .widget(cx, ids!(settings_tmpl_label))
                 .set_text(cx, &plain_display_text(&tmpl_line));
-            let units_body = {
+            let units_rows = {
                 let st = app_state().lock().unwrap();
-                match st.store.as_ref() {
-                    Some(store) => {
-                        let units = store.list_units().unwrap_or_default();
-                        let convs = store.list_unit_conversions().unwrap_or_default();
-                        let mut lines = Vec::new();
-                        lines.push("Units:".into());
-                        for u in &units {
-                            let link = match store.resolve_unit(&u.code) {
-                                Some((family, factor)) => {
-                                    let anchor = domain::unit_family_anchor(&family).unwrap_or("");
-                                    format!(
-                                        " · 1 {} = {} {} ({})",
-                                        u.code,
-                                        precise::format_kg(factor),
-                                        anchor,
-                                        family
-                                    )
-                                }
-                                None => " · not linked to a standard unit yet".to_string(),
-                            };
-                            lines.push(format!(
-                                "  {} — {}{}{}",
-                                u.code,
-                                u.name,
-                                if u.builtin { " (built-in)" } else { "" },
-                                link
-                            ));
-                        }
-                        if !convs.is_empty() {
-                            lines.push("Conversions (1 from = factor to):".into());
-                            for c in &convs {
-                                let factor = precise::format_kg(
-                                    rust_decimal::Decimal::from(c.factor_milli)
-                                        / rust_decimal::Decimal::from(1000),
-                                );
-                                lines.push(format!(
-                                    "  1 {} = {} {}",
-                                    c.from_code, factor, c.to_code
-                                ));
-                            }
-                        }
-                        lines.join("\n")
-                    }
-                    None => String::new(),
-                }
+                st.store.as_ref().map(units_report_rows).unwrap_or_default()
             };
-            self.ui
-                .widget(cx, ids!(units_label))
-                .set_text(cx, &plain_display_text(&units_body));
-            {
-                let measure_body = {
-                    let st = app_state().lock().unwrap();
-                    format!(
-                        "Now: dimensions in {} · weight in {} · volumetric ÷ {} · slab {} kg",
-                        st.measure_dim_unit,
-                        st.measure_weight_unit,
-                        precise::format_kg(st.measure_divisor),
-                        precise::format_kg(st.measure_slab_kg)
-                    )
-                };
-                self.ui
-                    .widget(cx, ids!(measure_label))
-                    .set_text(cx, &plain_display_text(&measure_body));
-            }
+            self.set_report_rows(cx, ids!(units_label), units_rows);
+            // Booking measures now in force, one per row.
+            let measure_rows = {
+                let st = app_state().lock().unwrap();
+                vec![
+                    ReportRow::Head("Now".into()),
+                    ReportRow::Kv("Dimensions in".into(), st.measure_dim_unit.clone()),
+                    ReportRow::Kv("Weight in".into(), st.measure_weight_unit.clone()),
+                    ReportRow::Kv(
+                        "Volumetric divisor".into(),
+                        format!("÷ {}", precise::format_kg(st.measure_divisor)),
+                    ),
+                    ReportRow::Kv(
+                        "Chargeable slab".into(),
+                        format!("{} kg", precise::format_kg(st.measure_slab_kg)),
+                    ),
+                ]
+            };
+            self.set_report_rows(cx, ids!(measure_label), measure_rows);
+            // A blank line is a line break in a WrapLabel (markdown): the
+            // product name, what it is, and how it works each on their own.
             let tmpl_hint = if tmpl.how_to.is_empty() {
                 tmpl_selected_s
             } else {
-                format!("{}\n{}\n\n{}", tmpl.title, tmpl_blurb_s, tmpl_how_s)
+                format!("{}\n\n{}\n\n{}", tmpl.title, tmpl_blurb_s, tmpl_how_s)
             };
             self.ui
                 .widget(cx, ids!(onboard_tmpl_hint))
@@ -9183,9 +9586,7 @@ impl App {
                 self.ui.button(cx, id).set_visible(cx, !ops_facet);
             }
             // Reconciliation + CSV widgets live in the same facet.
-            for id in [ids!(bank_recon_label), ids!(bank_uncleared_label)] {
-                self.ui.widget(cx, id).set_visible(cx, !ops_facet);
-            }
+            self.ui.widget(cx, ids!(bank_recon_label)).set_visible(cx, !ops_facet);
             for id in [ids!(exp_t1_row), ids!(exp_t2_row)] {
                 self.ui.view(cx, id).set_visible(cx, !ops_facet);
             }
@@ -9248,41 +9649,44 @@ impl App {
                     Some(store) => {
                         let waiting = store.lan_outbox().unwrap_or_default();
                         let refused = store.lan_refused().unwrap_or_default();
-                        let mut text = String::new();
+                        let mut rows = Vec::new();
                         if !waiting.is_empty() {
-                            text.push_str(&st.t("queue_waiting").replace("{n}", &waiting.len().to_string()));
+                            rows.push(report_head(
+                                &st.t("queue_waiting").replace("{n}", &waiting.len().to_string()),
+                            ));
                             for item in &waiting {
-                                // A blank line is a line break in a WrapLabel (markdown).
-                                text.push_str(&format!("\n\n· {}", item.label));
                                 // Why it is still here, in the words the last try got.
-                                if item.attempts > 0 {
+                                let line = if item.attempts > 0 {
                                     let tries = st
                                         .t("queue_tries")
                                         .replace("{n}", &item.attempts.to_string())
                                         .replace("{e}", item.last_error.trim());
-                                    text.push_str(&format!(" — {tries}"));
-                                }
+                                    format!("{} — {tries}", item.label)
+                                } else {
+                                    item.label.clone()
+                                };
+                                rows.push(ReportRow::Line(line));
                             }
                         }
                         if !refused.is_empty() {
-                            if !text.is_empty() {
-                                text.push_str("\n\n");
-                            }
-                            text.push_str(&st.t("queue_refused").replace("{n}", &refused.len().to_string()));
+                            rows.push(report_head(
+                                &st.t("queue_refused").replace("{n}", &refused.len().to_string()),
+                            ));
                             for item in &refused {
-                                let when = chrono::DateTime::parse_from_rfc3339(&item.created_at)
-                                    .map(|t| t.format("%d %b %H:%M").to_string())
-                                    .unwrap_or_default();
-                                text.push_str(&format!("\n\n· {} ({when}) — {}", item.label, item.error));
+                                rows.push(ReportRow::Line(format!(
+                                    "{} ({}) — {}",
+                                    item.label,
+                                    short_when(&item.created_at),
+                                    item.error
+                                )));
                             }
                         }
-                        (text, !refused.is_empty())
+                        (rows, !refused.is_empty())
                     }
-                    None => (String::new(), false),
+                    None => (Vec::new(), false),
                 }
             };
-            self.ui.widget(cx, ids!(client_queue_label)).set_text(cx, &plain_display_text(&queue));
-            self.ui.widget(cx, ids!(client_queue_label)).set_visible(cx, !queue.is_empty());
+            self.set_report_rows(cx, ids!(client_queue_label), queue);
             self.ui.button(cx, ids!(client_clear_refused)).set_visible(cx, refused);
         }
 
@@ -9869,6 +10273,40 @@ impl App {
         self.align_static_inputs(cx, rtl);
     }
 
+    /// Fill a [`ReportText`] card with rows built in code.
+    fn set_report_rows(&mut self, cx: &mut Cx, id: &[LiveId], rows: Vec<ReportRow>) {
+        if let Some(mut report) = self.ui.widget(cx, id).borrow_mut::<ReportText>() {
+            report.set_rows(cx, rows);
+        }
+    }
+
+    /// Notes & attachments of the picked record: one row each in a card,
+    /// or the hint while there are none.
+    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str, empty: &str) {
+        let rows: Vec<ReportRow> = summary
+            .lines()
+            .map(str::trim)
+            .filter(|l| !l.is_empty() && *l != "Attachments:")
+            .map(|l| ReportRow::Line(l.to_string()))
+            .collect();
+        self.ui.widget(cx, hint).set_text(cx, &plain_display_text(empty));
+        self.ui.widget(cx, hint).set_visible(cx, rows.is_empty());
+        self.set_report_rows(cx, list, rows);
+    }
+
+    /// Settings → Printers: what the printer search says, and the printers
+    /// it found as a list under it.
+    fn show_found_printers(&mut self, cx: &mut Cx) {
+        let (line, rows) = {
+            let st = app_state().lock().unwrap();
+            printers_found_rows(|k| st.t(k))
+        };
+        self.ui
+            .widget(cx, ids!(printers_found_label))
+            .set_text(cx, &plain_display_text(&line));
+        self.set_report_rows(cx, ids!(printers_found_list), rows);
+    }
+
     fn align_label(&mut self, cx: &mut Cx, id: &[LiveId], rtl: bool) {
         let w = self.ui.widget(cx, id);
         if let Some(mut label) = w.borrow_mut::<Label>() {
@@ -9953,15 +10391,10 @@ impl App {
         self.align_label(cx, ids!(customers_empty_hint), rtl);
         self.align_label(cx, ids!(approval_hint), rtl);
         self.align_label(cx, ids!(sale_selected_label), rtl);
-        self.align_label(cx, ids!(sale_attach_list), rtl);
-        self.align_label(cx, ids!(party_attach_list), rtl);
-        self.align_label(cx, ids!(settle_open_bills), rtl);
-        self.align_label(cx, ids!(payable_open_bills), rtl);
-        self.align_label(cx, ids!(bank_recon_label), rtl);
-        self.align_label(cx, ids!(bank_uncleared_label), rtl);
-        self.align_label(cx, ids!(expense_attach_list), rtl);
+        self.align_label(cx, ids!(sale_attach_hint), rtl);
+        self.align_label(cx, ids!(party_attach_hint), rtl);
+        self.align_label(cx, ids!(expense_attach_hint), rtl);
         self.align_label(cx, ids!(ops_pod_status), rtl);
-        self.align_label(cx, ids!(sale_history_label), rtl);
         self.align_label(cx, ids!(amend_natural_label), rtl);
         self.align_label(cx, ids!(amend_applied_label), rtl);
         self.align_label(cx, ids!(amend_round_hint), rtl);
@@ -10129,7 +10562,7 @@ impl App {
         self.align_label(cx, ids!(dev_size_label), rtl);
         self.align_label(cx, ids!(nav_drag_ghost), rtl);
         self.align_label(cx, ids!(nav_drag_ghost_label), rtl);
-        self.align_label(cx, ids!(ops_awb_card), rtl);
+        self.align_label(cx, ids!(ops_awb_hint), rtl);
         self.align_label(cx, ids!(setup_server_list), rtl);
         self.align_label(cx, ids!(sale_list), rtl);
         self.align_label(cx, ids!(amend_cart_list), rtl);
@@ -12189,31 +12622,21 @@ impl App {
 
     /// Pool + routes draft, and the system printers found here.
     fn sync_printer_fields(&mut self, cx: &mut Cx) {
-        let (pool_body, routes_body, route_key) = {
+        let (pool_rows, route_rows, route_key) = {
             let st = app_state().lock().unwrap();
             (
-                format_courier_printers_pool(&st.printer_draft),
-                format_courier_printer_routes(&st.printer_draft, &st.printer_route_key, |k| st.t(k)),
+                courier_printers_pool_rows(&st.printer_draft),
+                courier_printer_route_rows(&st.printer_draft, &st.printer_route_key, |k| st.t(k)),
                 st.printer_route_key.clone(),
             )
         };
-        self.ui
-            .widget(cx, ids!(printers_pool_label))
-            .set_text(cx, &plain_display_text(&pool_body));
-        self.ui
-            .widget(cx, ids!(printer_routes_label))
-            .set_text(cx, &plain_display_text(&routes_body));
+        self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        self.set_report_rows(cx, ids!(printer_routes_label), route_rows);
         let route_field = self.ui.text_input(cx, ids!(route_pick_input));
         if !cx.has_key_focus(route_field.area()) && route_field.text() != route_key {
             route_field.set_text(cx, &route_key);
         }
-        let found_line = {
-            let st = app_state().lock().unwrap();
-            printers_found_line(|k| st.t(k))
-        };
-        self.ui
-            .widget(cx, ids!(printers_found_label))
-            .set_text(cx, &plain_display_text(&found_line));
+        self.show_found_printers(cx);
         self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, true);
     }
 
@@ -13762,26 +14185,23 @@ impl App {
     }
 
     fn show_found_servers(&mut self, cx: &mut Cx, found: Vec<net::FoundServer>) {
-        let text = {
+        let (text, rows) = {
             let mut st = app_state().lock().unwrap();
-            let text = if found.is_empty() {
-                st.t("no_server_found")
-            } else {
-                found
-                    .iter()
-                    .map(|f| {
-                        let venue = if f.venue.trim().is_empty() {
-                            "Courier"
-                        } else {
-                            f.venue.trim()
-                        };
-                        format!("{venue} — {}", f.host)
-                    })
-                    .collect::<Vec<_>>()
-                    .join("\n")
-            };
+            let text = if found.is_empty() { st.t("no_server_found") } else { String::new() };
+            // One row per office found: its name, and the address.
+            let rows = found
+                .iter()
+                .map(|f| {
+                    let venue = if f.venue.trim().is_empty() {
+                        "Courier"
+                    } else {
+                        f.venue.trim()
+                    };
+                    ReportRow::Kv(venue.to_string(), f.host.clone())
+                })
+                .collect::<Vec<_>>();
             st.found_servers = found;
-            text
+            (text, rows)
         };
         let first = app_state()
             .lock()
@@ -13797,6 +14217,8 @@ impl App {
         self.ui
             .widget(cx, ids!(client_found_label))
             .set_text(cx, &plain_display_text(&text));
+        self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, !text.is_empty());
+        self.set_report_rows(cx, ids!(client_found_list), rows);
         self.sync_chrome(cx);
     }
 
@@ -15234,6 +15656,7 @@ impl App {
         self.ui
             .widget(cx, ids!(ops_awb_card))
             .set_text(cx, &plain_display_text(&card));
+        self.ui.widget(cx, ids!(ops_awb_hint)).set_visible(cx, false);
         app_state().lock().unwrap().day_close_text = card.clone();
         Ok(card)
     }
@@ -18553,6 +18976,8 @@ impl MatchEvent for App {
             self.ui
                 .widget(cx, ids!(client_found_label))
                 .set_text(cx, &plain_display_text(&looking));
+            self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, true);
+            self.set_report_rows(cx, ids!(client_found_list), Vec::new());
             let _ = std::thread::Builder::new()
                 .name("courier-find-server".into())
                 .spawn(|| {
@@ -19891,5 +20316,95 @@ mod nav_order_tests {
     fn no_saved_order_is_default() {
         assert_eq!(parse_nav_order(None), NAV_TABS.to_vec());
         assert_eq!(parse_nav_order(Some("")), NAV_TABS.to_vec());
+    }
+}
+
+#[cfg(test)]
+mod report_text_tests {
+    use super::*;
+
+    /// Day close, books and ops text read as headings, label/value rows and
+    /// lines in a card — never one run-on paragraph.
+    #[test]
+    fn a_report_reads_as_headings_rows_and_lines() {
+        let rows = parse_report(
+            "Swift Courier — day close\nSales: 3\nCash ₹120.00 · UPI ₹0.00 · Card ₹5.00\nExpenses ₹50.00 (2)\n\nAssets\nBank ₹0.00\nMehta Traders · Consignor · ₹12.00 · 0d · current\n\nNo day close recorded yet.",
+        );
+        assert_eq!(
+            rows,
+            vec![
+                ReportRow::Head("Swift Courier — day close".into()),
+                ReportRow::Kv("Sales".into(), "3".into()),
+                ReportRow::Kv("Cash".into(), "₹120.00".into()),
+                ReportRow::Kv("UPI".into(), "₹0.00".into()),
+                ReportRow::Kv("Card".into(), "₹5.00".into()),
+                ReportRow::Kv("Expenses".into(), "₹50.00 (2)".into()),
+                ReportRow::Gap,
+                ReportRow::Head("Assets".into()),
+                ReportRow::Kv("Bank".into(), "₹0.00".into()),
+                ReportRow::Line("Mehta Traders · Consignor · ₹12.00 · 0d · current".into()),
+                ReportRow::Gap,
+                ReportRow::Line("No day close recorded yet.".into()),
+            ]
+        );
+    }
+
+    /// The ops desk: "Ops:" and "— Barcode desk —" are headings, each count
+    /// its own row, consignments stay whole lines, and a long "Next: …"
+    /// stays a full line instead of squeezing its label.
+    #[test]
+    fn ops_sections_are_headed_and_counts_are_rows() {
+        let rows = parse_report(
+            "Ops:\nBooked: 1\nCOD pending: ₹500.00\n\n— Consignments (recent AWBs) —\nAWB-261026-000002 · Mumbai · out_for_delivery · unbilled · ₹12.00\nNext: Dispatch to rider / Hand to carrier · or Out for delivery",
+        );
+        assert_eq!(
+            rows,
+            vec![
+                ReportRow::Head("Ops".into()),
+                ReportRow::Kv("Booked".into(), "1".into()),
+                ReportRow::Kv("COD pending".into(), "₹500.00".into()),
+                ReportRow::Gap,
+                ReportRow::Head("Consignments (recent AWBs)".into()),
+                ReportRow::Line("AWB-261026-000002 · Mumbai · out_for_delivery · unbilled · ₹12.00".into()),
+                ReportRow::Line("Next: Dispatch to rider / Hand to carrier · or Out for delivery".into()),
+            ]
+        );
+    }
+
+    /// Settings → Units: each family under its own heading from smallest to
+    /// largest (an office's own unit among them), unlinked units apart, and
+    /// one conversions row per unit they start from.
+    #[test]
+    fn units_list_by_family_not_one_paragraph() {
+        let home = std::env::temp_dir().join(format!("courier-units-{}", new_id()));
+        std::fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        store.add_unit("bag", "Bag").unwrap();
+        store.add_unit_conversion("bag", "kg", 25_000).unwrap();
+        store.add_unit("crate", "Crate").unwrap();
+        let rows = units_report_rows(&store);
+        let heads: Vec<&str> = rows
+            .iter()
+            .filter_map(|r| match r {
+                ReportRow::Head(h) => Some(h.as_str()),
+                _ => None,
+            })
+            .collect();
+        assert_eq!(
+            heads,
+            [
+                "Weight (kg)",
+                "Length (cm)",
+                "Volume (ml)",
+                "Count (pc)",
+                "Not linked to a standard unit yet",
+                "Conversions (1 from = factor to)",
+            ]
+        );
+        let kg = rows.iter().position(|r| *r == ReportRow::Kv("kg — Kilogram".into(), "base unit".into())).unwrap();
+        assert_eq!(rows[kg + 1], ReportRow::Kv("bag — Bag (custom)".into(), "1 bag = 25 kg".into()));
+        assert!(rows.contains(&ReportRow::Line("crate — Crate (custom)".into())));
+        assert!(rows.contains(&ReportRow::Line("1 bag = 25 kg".into())));
+        let _ = std::fs::remove_dir_all(home);
     }
 }

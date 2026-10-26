@@ -138,25 +138,27 @@ impl CountryProfile {
         !matches!(self.tax_system, TaxSystemKind::None)
     }
 
-    /// One-line seller summary of what applying this pack will change.
-    pub fn apply_hint(&self) -> String {
+    /// What applying this pack will change, as (what, value) pairs the
+    /// country picker shows one per row.
+    pub fn apply_facts(&self) -> Vec<(&'static str, String)> {
         let tax = if self.has_tax() {
             format!("{} · {}", self.tax_name, self.tax_pricing.label())
         } else {
             "No consumption tax by default".to_string()
         };
-        if self.code == GENERIC_CODE {
-            format!("{}: {tax} · pay rail {}", self.name_en, self.digital_pay_label)
-        } else {
-            format!(
-                "{}: {tax} · {} · pay rail {} · currency {} · language {}",
-                self.name_en,
-                self.business_id_label,
-                self.digital_pay_label,
-                self.default_currency,
-                self.default_language
-            )
+        let mut facts = vec![("Country", format!("{} ({})", self.name_en, self.code)), ("Tax", tax)];
+        if self.code != GENERIC_CODE {
+            facts.push(("Business id", self.business_id_label.to_string()));
         }
+        facts.push(("Pay rail", self.digital_pay_label.to_string()));
+        if self.code != GENERIC_CODE {
+            let language = crate::locale::language_by_code(self.default_language)
+                .map(|l| l.name_en)
+                .unwrap_or(self.default_language);
+            facts.push(("Currency", self.default_currency.to_string()));
+            facts.push(("Language", language.to_string()));
+        }
+        facts
     }
 }
 
@@ -1622,24 +1624,29 @@ impl FiscalSettings {
         lines_total.saturating_mul(self.service_charge_bps) / 10_000
     }
 
-    /// One-line seller summary for the Settings screen.
+    /// Seller summary for the Settings screen, one "what: value" per line
+    /// (the screen lays each out as a row).
     pub fn summary(&self) -> String {
         let profile = self.profile();
         let id = if self.business_tax_id.trim().is_empty() {
-            format!("{} not set", self.business_id_label)
+            "not set".to_string()
         } else {
-            format!("{} {}", self.business_id_label, self.business_tax_id.trim())
+            self.business_tax_id.trim().to_string()
         };
         let service = if self.service_charge_bps > 0 {
             format!(
-                "\nService charge {}%",
+                "\nService charge: {}%",
                 crate::locale::format_percent_bps(self.service_charge_bps, self.decimal_sep())
             )
         } else {
             String::new()
         };
+        let id_label = match self.business_id_label.trim() {
+            "" => "Business id",
+            label => label,
+        };
         format!(
-            "Country: {} ({})\n{} · {}\nPay rail: {} · Credit: {}\nNumbers: 1{}234{}56{service}\n{id}",
+            "Country: {} ({})\nTax: {} · {}\nPay rail: {}\nCredit: {}\nNumbers: 1{}234{}56{service}\n{id_label}: {id}",
             profile.name_en,
             profile.code,
             self.tax_label(),
@@ -1647,7 +1654,7 @@ impl FiscalSettings {
             self.digital_pay_label(),
             self.credit_label(),
             self.thousands_sep(),
-            self.decimal_sep()
+            self.decimal_sep(),
         )
     }
 }

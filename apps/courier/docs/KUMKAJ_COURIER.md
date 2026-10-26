@@ -166,6 +166,8 @@ layout itself is not mirrored.
 
 **Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. **Barcode loop:** scan/type AWB → Find → desk card → Out for delivery / Delivered / Print label / Collect COD. Carrier/own-fleet dispatch, COD remit, rider add, and period bill run from the same desk; credit limit + period bill also sit on Parties.
 
+**Reports on screen (2026-10-26):** day close, books, the Ops / COD / Riders panels, the scanned-AWB card and every settings summary or list (language, country pack, units by family, booking measures, printers, audit, team, inventory, branches) render as a white card — headings, label/value rows with the value at the right, plain lines — like the Day book's cards, never one run-on paragraph (`ReportText` in `main.rs`: `set_text` → `parse_report` for printable text, `set_rows` for lists built in code). A booking's history, open bills, bank reconciliation, notes & attachments and a party's recent ledger are cards too; booking rows read "AWB · destination", then when / how paid / by whom, with the amount at the right. Right-to-left languages mirror the card (label right, value left).
+
 ------------------------------------------------------------------------
 
 ## Client WhatsApp checklist (must remain covered)

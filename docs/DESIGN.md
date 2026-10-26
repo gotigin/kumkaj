@@ -112,6 +112,13 @@ coloured floor, Courier's rates/cart split).
   operator mid-task; the work-surface header shows task state + Clear.
 - **Empty states carry their next action.** Name the action that fills
   the pane (“Add …” → its screen), not just an explanation.
+- **Lists and summaries are cards with rows, never run-on text.** Several
+  items or figures (units, printers, audit, history, open bills, a day's
+  totals) go in a card — a heading, label/value rows with the value at
+  the right, plain lines — or a list widget; only a sentence stays a
+  paragraph. Each app has its own card (`ReportText` in Courier and
+  Khaynjo). A list with nothing in it says so in a short hint — never
+  an empty card.
 - **Whole-card tap targets.** List cards are the tap target (whole-card
   `finger_up` + `was_tap()` alongside `Button::clicked`), not just a
   small pill inside the card.

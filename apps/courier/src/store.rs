@@ -9499,8 +9499,9 @@ impl Store {
             .unwrap_or(0);
         let riders = self.list_riders()?.len();
         let zones = self.list_zones()?.len();
+        // One figure per line: the Reports card shows each as a row.
         Ok(format!(
-            "Ops: {booked} booked · {out_delivery} out for delivery · {riders} riders · {zones} zones\n\
+            "Ops:\nBooked: {booked}\nOut for delivery: {out_delivery}\nRiders: {riders}\nZones: {zones}\n\
              COD pending: {}",
             self.money_display(pending_cod)
         ))
