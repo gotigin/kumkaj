@@ -7,7 +7,7 @@ is no Kumkaj core / shared books engine (vision §1): each app implements
 these concepts in its own code (copying a sibling app as a starting point,
 then diverging), so a change in one app never impacts another.
 
-**Current product focus:** [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
+**Current product focus:** [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
 
 Companions: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
 §1–2; [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md) (UUID identity —
@@ -39,7 +39,7 @@ into shared code.
 | Cloth / perfume / shop | Counter sell | Purchases | Customers; wholesalers | SKUs, sizes/variants | AR; AP to wholesaler | Cash + bank | Sales, stock, dues | — |
 | Salon / service | Service charge | Supplies, rent, pay | Clients | Services as items (often no stock) | AR / packages | Cash + bank | Bookings optional | Appointments later |
 | Restaurant / café | Sell + tables | Purchases, expenses | Diners; suppliers | Menu, modifiers | AR light; AP | Cash + bank + drawer | Day close, food cost | **Tables & kitchen** |
-| Courier / agency | Charge consignors | Pay carriers / costs | Consignor + carrier kinds | Rates × kg | AR + AP both | Cash + bank | Outstanding, day book | Units `kg`; bill-type tags |
+| Moklanjo / agency | Charge consignors | Pay carriers / costs | Consignor + carrier kinds | Rates × kg | AR + AP both | Cash + bank | Outstanding, day book | Units `kg`; bill-type tags |
 | Personal / household | Income entries | Spend / buy | People | Categories as items | On-account | Cash + bank | Month in/out | — |
 | *(any other entity)* | Same fields | Same fields | Party + `kind_label` | Item + optional unit/stock | AR and/or AP as needed | Cash vs bank | Day / period books | Enable only what they need |
 
@@ -59,8 +59,8 @@ into shared code.
 **Few / capability packs (hide until enabled):** tables & KOT/KDS, kg-heavy units + account/cash booking labels, appointments, multi-station kitchen.
 
 **Conclusion for shell:** do **not** open on Booking/Sell alone. Peers:
-**Day book / Books · Booking/Sell · Pay out/Buy · More**. Courier names:
-[`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md). See [`DESIGN.md`](DESIGN.md).
+**Day book / Books · Booking/Sell · Pay out/Buy · More**. Moklanjo names:
+[`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md). See [`DESIGN.md`](DESIGN.md).
 
 ------------------------------------------------------------------------
 
@@ -112,7 +112,7 @@ equal peers in one mental model. The UX must make that model obvious.
 |---|-------------------|-------------------|---------------------|
 | 1 | Who we deal with | **Party** + multi-role `kind_label` (one identity; AR+AP; net report) | Shipped — dual-role OK; see Dual-role parties |
 | 2 | Catalogue + units | **Item** + unit + `units` / `unit_conversions` | Shipped; Settings → Units; item `unit_label` |
-| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Courier desk UX next — [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) |
+| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Moklanjo desk UX next — [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md) |
 | 4 | Buy (goods/services in) | Purchases → stock + line cost; party + on-account AP | Shipped — Buy tab; paid or on account |
 | 5 | Running costs | **Expenses** | Shipped (Buy tab + Reports) |
 | 6 | Who owes us (AR) | Credit ledger + aging + write-off | Shipped |
@@ -142,7 +142,7 @@ One sales table + a tag:
 
 | Template | Shareable / account path | Spot / cash path |
 |----------|--------------------------|------------------|
-| Courier agency | Account booking | Cash booking |
+| Moklanjo (courier agency) | Account booking | Cash booking |
 | Others | Tax invoice | Cash memo |
 
 ------------------------------------------------------------------------
@@ -199,16 +199,16 @@ slip under the closing person's name.
 
 ------------------------------------------------------------------------
 
-## Courier agency — product is Kumkaj Courier
+## Moklanjo agency — product is Moklanjo
 
 Full product brief, competitor matrix, walk-in/barcode/tracking:
-[`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
+[`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
 
 > “This is your courier business system: carriers and consignors, ₹/kg rates,
 > booking (Account or Cash), who owes whom, bank, day/month P&L — and the
 > booking desk (walk-ins, AWB/barcode, tracking) as we ship those ops.”
 
-| Their world | In Kumkaj Courier |
+| Their world | In Moklanjo |
 |-------------|-------------------|
 | Carriers / consignors | **One party master** with role tag(s) — see dual-role rule below |
 | Rates ₹/kg | Rates & services (unit `kg`) |
@@ -246,7 +246,7 @@ Catalogue / brand photos reuse that app's own WebP encode helper. Reject unknown
 
 ## Next coding backlog (priority)
 
-Checklist above is shipped in Courier (and copied/diverged in Khaynjo's own code); remaining is depth.
+Checklist above is shipped in Moklanjo (and copied/diverged in Khaynjo's own code); remaining is depth.
 
 ### Later
 Stock valuation · statutory GST/e-invoice (vision §23).

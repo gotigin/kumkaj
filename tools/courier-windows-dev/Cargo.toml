@@ -1,9 +1,0 @@
-[package]
-name = "courier-windows-dev"
-version = "0.1.0"
-edition = "2021"
-publish = false
-
-[[bin]]
-name = "courier-windows-dev"
-path = "main.rs"

@@ -3,7 +3,7 @@
 > One device holds the books (**Server Mode**). Other devices on the same
 > Wi‑Fi join it (**Client Mode**) and take orders, send KOTs and bill.
 > Everything lives on the Server; no internet, no cloud.
-> Applies to Khaynjo (restaurants, TCP 7847 / UDP 7848) and Kumkaj Courier
+> Applies to Khaynjo (restaurants, TCP 7847 / UDP 7848) and Moklanjo
 > (TCP 7857 / UDP 7858). Labels below are the app's own English wording.
 
 **Any supported device can be the Server or a client:** a Windows 10/11

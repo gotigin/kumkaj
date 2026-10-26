@@ -1,7 +1,7 @@
 # Kumkaj — identity: UUID, not names (all apps)
 
 Canonical Kumkaj-wide doctrine for identity. This applies to **every**
-Kumkaj app (Courier, Khaynjo, future products) and to every persisted
+Kumkaj app (Moklanjo, Khaynjo, future products) and to every persisted
 entity in them. It is a shared *idea*, not shared code: each app
 implements this doc in its own code (vision §1 — no Kumkaj core).
 
@@ -71,7 +71,7 @@ books follow the real entity, not its current spelling.
 
 | App | Where its own implementation lives |
 |-----|-------------------------------------|
-| Kumkaj Courier | `apps/courier/src/store.rs` (`customers.id`, `products.id`, …), `src/domain.rs` (`new_id()`, product `aliases()` / `matches_label()`) |
+| Moklanjo | `apps/moklanjo/src/store.rs` (`customers.id`, `products.id`, …), `src/domain.rs` (`new_id()`, product `aliases()` / `matches_label()`) |
 | Khaynjo | `apps/khaynjo/src/store.rs`, `src/domain.rs` (same concepts, copied then diverged) |
 | Future apps | Their own `apps/<app>/src/` — copy the best-fitting app's code, then diverge; never a shared identity crate |
 

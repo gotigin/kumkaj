@@ -2168,44 +2168,52 @@ mod tests {
     /// waiter's tablet obeys the same rights as the counter.
     #[test]
     fn table_actions_from_a_tablet_obey_the_servers_rights() {
-        let path = std::env::temp_dir().join(format!("khaynjo-net-{}.sqlite3", new_id()));
-        let store = Store::open_path(&path).unwrap();
-        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
-        store.add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner).unwrap();
-        let waiter = store.list_staff().unwrap().into_iter().find(|s| s.name == "Wasim").unwrap();
-        store
-            .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))
-            .unwrap();
-        let thali = store.list_products(false).unwrap().remove(0);
-        let table = store.add_table_in_area("D1", "Dine In").unwrap();
-        let mut cart = Cart::default();
-        cart.add_or_bump(&thali);
-        store.send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &waiter).unwrap();
-        let line = store.running_order(&table.id).unwrap().unwrap().lines[0].id.clone();
+        // Empty KOT routes skip print (and Capture); give the unassigned
+        // kitchen a printer so the cancel slip is recorded.
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
+            vec![kitchen];
+        crate::print_share::with_test_printers(printers, || {
+            let path = std::env::temp_dir().join(format!("khaynjo-net-{}.sqlite3", new_id()));
+            let store = Store::open_path(&path).unwrap();
+            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+            store.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
+            store.add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner).unwrap();
+            let waiter = store.list_staff().unwrap().into_iter().find(|s| s.name == "Wasim").unwrap();
+            store
+                .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))
+                .unwrap();
+            let thali = store.list_products(false).unwrap().remove(0);
+            let table = store.add_table_in_area("D1", "Dine In").unwrap();
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            store.send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &waiter).unwrap();
+            let line = store.running_order(&table.id).unwrap().unwrap().lines[0].id.clone();
 
-        let cancel = RunningAction::Cancel {
-            line_id: line.clone(),
-            qty_milli: None,
-            reason: "Wrong punch".into(),
-            prepared: false,
-        };
-        assert!(apply_running_action(&store, &waiter, None, &cancel).is_err());
-        assert!(crate::print_share::take_captured().is_empty(), "a refused cancel prints nothing");
-        apply_running_action(&store, &waiter, Some("9999"), &cancel).unwrap();
-        // The kitchen's cancel slip printed once (captured, never the OS).
-        let jobs = crate::print_share::take_captured();
-        assert_eq!(jobs.len(), 1);
-        assert!(jobs[0].text.contains("CANCEL") && jobs[0].text.contains("Thali"), "{}", jobs[0].text);
-        // The only item was cancelled, so there is no bill to print.
-        let print = RunningAction::PrintBill { table_id: table.id.clone() };
-        assert!(apply_running_action(&store, &waiter, None, &print).is_err(), "nothing left to bill");
-        // …and the table is free again on every tablet.
-        let snapshot = build_snapshot(&store).unwrap();
-        assert!(snapshot.running_orders.is_empty());
-        let freed = store.list_tables().unwrap().into_iter().find(|t| t.id == table.id).unwrap();
-        assert_eq!(freed.status, crate::domain::TableStatus::Available);
-        let _ = std::fs::remove_file(path);
+            let cancel = RunningAction::Cancel {
+                line_id: line.clone(),
+                qty_milli: None,
+                reason: "Wrong punch".into(),
+                prepared: false,
+            };
+            assert!(apply_running_action(&store, &waiter, None, &cancel).is_err());
+            assert!(crate::print_share::take_captured().is_empty(), "a refused cancel prints nothing");
+            apply_running_action(&store, &waiter, Some("9999"), &cancel).unwrap();
+            // The kitchen's cancel slip printed once (captured, never the OS).
+            let jobs = crate::print_share::take_captured();
+            assert_eq!(jobs.len(), 1);
+            assert!(jobs[0].text.contains("CANCEL") && jobs[0].text.contains("Thali"), "{}", jobs[0].text);
+            // The only item was cancelled, so there is no bill to print.
+            let print = RunningAction::PrintBill { table_id: table.id.clone() };
+            assert!(apply_running_action(&store, &waiter, None, &print).is_err(), "nothing left to bill");
+            // …and the table is free again on every tablet.
+            let snapshot = build_snapshot(&store).unwrap();
+            assert!(snapshot.running_orders.is_empty());
+            let freed = store.list_tables().unwrap().into_iter().find(|t| t.id == table.id).unwrap();
+            assert_eq!(freed.status, crate::domain::TableStatus::Available);
+            let _ = std::fs::remove_file(path);
+        });
     }
 
     /// Auto-print sends one paper per station, without prices; off means
@@ -2230,21 +2238,33 @@ mod tests {
         }
         let ids = store.send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &owner).unwrap();
         assert_eq!(ids.len(), 2, "one KOT per station");
-        let _ = crate::print_share::take_captured();
-        assert_eq!(print_sent_kots(&store, &ids), None);
-        let jobs = crate::print_share::take_captured();
-        assert_eq!(jobs.len(), 2);
-        assert!(jobs.iter().any(|j| j.text.contains("Station: Tandoor") && j.text.contains("Butter Naan")));
-        assert!(jobs.iter().all(|j| j.text.contains("KOT No:") && j.text.contains("D1")));
-        // No money on a kitchen ticket. (Not bare digits: the ticket's
-        // time, e.g. 16:30, may contain them.)
-        assert!(
-            jobs.iter().all(|j| !j.text.contains('₹') && !j.text.contains("45.00") && !j.text.contains("30.00")),
-            "no prices"
-        );
-        store.set_kot_auto_print(false).unwrap();
-        assert_eq!(print_sent_kots(&store, &ids), None);
-        assert!(crate::print_share::take_captured().is_empty());
+
+        // Each station (and the unassigned kitchen) needs its own route —
+        // empty routes skip Capture, matching Settings.
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
+            vec![kitchen.clone()];
+        *printers.route_mut(crate::print_share::RouteKey::Kot {
+            station_id: &tandoor.id,
+        }) = vec![kitchen];
+        crate::print_share::with_test_printers(printers, || {
+            let _ = crate::print_share::take_captured();
+            assert_eq!(print_sent_kots(&store, &ids), None);
+            let jobs = crate::print_share::take_captured();
+            assert_eq!(jobs.len(), 2);
+            assert!(jobs.iter().any(|j| j.text.contains("Station: Tandoor") && j.text.contains("Butter Naan")));
+            assert!(jobs.iter().all(|j| j.text.contains("KOT No:") && j.text.contains("D1")));
+            // No money on a kitchen ticket. (Not bare digits: the ticket's
+            // time, e.g. 16:30, may contain them.)
+            assert!(
+                jobs.iter().all(|j| !j.text.contains('₹') && !j.text.contains("45.00") && !j.text.contains("30.00")),
+                "no prices"
+            );
+            store.set_kot_auto_print(false).unwrap();
+            assert_eq!(print_sent_kots(&store, &ids), None);
+            assert!(crate::print_share::take_captured().is_empty());
+        });
         let _ = std::fs::remove_file(path);
     }
 

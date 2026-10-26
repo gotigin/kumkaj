@@ -4,10 +4,10 @@
 > **What ships:** a **family of concrete business operating system apps**
 > under the Kumkaj brand (courier desk, counter shop, food floor,
 > personal books, …) — each product feels purpose-built for that user.\
-> **Platform ids (current flagship):** production `com.kumkaj.courier` ·
-> development `com.kumkaj.courier.debug` (reverse-DNS under kumkaj.com; see
-> [`DEV.md`](DEV.md)). Further concrete products may use their own
-> package ids under the same brand.\
+> **Platform ids (current flagship):** production `com.moklanjo` ·
+> development `com.moklanjo.debug` (reverse-DNS under moklanjo.com; see
+> [`DEV.md`](DEV.md)). Sibling products use their own domains (e.g.
+> Khaynjo: `com.khaynjo`) under the same Kumkaj brand.\
 > **Document purpose:** Consolidate product ideas, requirements,
 > principles, scope, and scaling so development stays focused on
 > shipping concrete apps users understand — not tooling theatre.\
@@ -39,7 +39,7 @@ and the ops that trade needs — not a dumb cash register.
 
 Examples of **concrete products under the brand** (illustrative):
 
--   **Courier / logistics desk** — parties (consignor / carrier), kg
+-   **Moklanjo / courier-logistics desk** — parties (consignor / carrier), kg
     rates, account vs cash booking, day book, bank book, expense
     vouchers, debtors/creditors, P&L; later booking-desk ops (AWB,
     labels/scan) as that product needs them.
@@ -999,10 +999,10 @@ not a unit: [`UNITS_AND_CONVERSIONS.md`](UNITS_AND_CONVERSIONS.md).
 Trade constants around measurement (volumetric divisor, weight-slab
 rounding, tax rates, pay-rail labels) stay **shop settings with
 sensible local defaults**, not constants in code; each app's own doc
-owns its defaults (e.g. Courier's booking desk: cm + kg, ÷ 5000,
+owns its defaults (e.g. Moklanjo's booking desk: cm + kg, ÷ 5000,
 round up to 0.5 kg).
 
-This is now implemented as **country packs** (`apps/courier/src/fiscal.rs`).
+This is now implemented as **country packs** (`apps/moklanjo/src/fiscal.rs`).
 A pack carries the tax system and its name (VAT, GST, sales tax, IVA,
 BTW, SST, consumption tax), whether prices include tax or have it added
 at the till, the usual rates, any receipt split such as India's
@@ -1113,7 +1113,7 @@ workspace/
     ├── Cargo.toml          (workspace membership only — no shared product code)
     ├── vendor/makepad/     (Makepad 2, path-dep for every app)
     ├── apps/
-    │   ├── courier/        (Kumkaj Courier — owns all of its code under src/,
+    │   ├── moklanjo/       (Moklanjo — owns all of its code under src/,
     │   │                    its packaging and installers under scripts/)
     │   └── khaynjo/        (Khaynjo — the same, its own)
     ├── tools/              (per-app dev launchers)
@@ -1152,13 +1152,13 @@ Important discipline:
 Primary coding stays in **Cursor**. For source ↔ UI live iteration, run:
 
 ```bash
-cargo courier-dev
+cargo moklanjo-dev
 ```
 
 which is an alias for:
 
 ```bash
-cargo run -p kumkaj-courier -- --hot --remote
+cargo run -p kumkaj-moklanjo -- --hot --remote
 ```
 
 Meaning of the flags:
@@ -1176,7 +1176,7 @@ Notes:
     omitted.
 -   **Makepad Studio** remains useful for Studio-centric or agent/remote
     bridge workflows, but it is a second editor. For day-to-day Kumkaj
-    coding in Cursor, `cargo courier-dev` is the more convenient path.
+    coding in Cursor, `cargo moklanjo-dev` is the more convenient path.
 -   There is also a Cursor/VS Code task: **Kumkaj: live (--hot --remote)**.
 
 Makepad Studio is tooling; **Kumkaj is the product**.
@@ -1384,16 +1384,16 @@ resources they actually consume.
 
 ## 33. Immediate Development Focus
 
-**Current ship focus: Kumkaj Courier** — see
-[`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) and [`USE_CASES.md`](../apps/courier/docs/USE_CASES.md).
+**Current ship focus: Moklanjo** — see
+[`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md) and [`USE_CASES.md`](../apps/moklanjo/docs/USE_CASES.md).
 
 Build the concrete courier BOS (books already largely present; next the
 **booking desk**, AWB/barcode, rates/slabs, then tracking/manifest/COD).
 Do not extract shared crates: when another brand product needs the same
-logic, copy Courier's code into that product and let it diverge (Khaynjo
-was built exactly this way). Food tables/KOT live in Khaynjo, not Courier.
+logic, copy Moklanjo's code into that product and let it diverge (Khaynjo
+was built exactly this way). Food tables/KOT live in Khaynjo, not Moklanjo.
 
-**Existing Makepad codebase** is Courier's starting point (day book, booking
+**Existing Makepad codebase** is Moklanjo's starting point (day book, booking
 shell, parties, bank, expenses, P&L, Account/Cash booking tags, units).
 Treat courier-named UX and desk ops as the product work — not a second
 generic “any entity” SKU. Books checklist:

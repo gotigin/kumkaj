@@ -860,53 +860,71 @@ pub fn copy_text(text: &str) -> bool {
     false
 }
 
+/// `configure` / Capture are process-global. Must live at module scope (not
+/// inside a generic fn) so every caller shares one mutex — a `static` inside
+/// a generic is per-monomorphization and would not serialise tests.
+#[cfg(test)]
+static TEST_PRINTERS_LOCK: Mutex<()> = Mutex::new(());
+
+/// Run `f` with these printers configured; restore defaults afterwards.
+#[cfg(test)]
+pub fn with_test_printers<R>(cfg: DevicePrinters, f: impl FnOnce() -> R) -> R {
+    let _g = TEST_PRINTERS_LOCK
+        .lock()
+        .unwrap_or_else(|e| e.into_inner());
+    configure(cfg);
+    let out = std::panic::catch_unwind(std::panic::AssertUnwindSafe(f));
+    configure(DevicePrinters::default());
+    match out {
+        Ok(v) => v,
+        Err(payload) => std::panic::resume_unwind(payload),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    /// `configure` / Capture are process-global — serialise tests that touch them.
-    static CFG_LOCK: Mutex<()> = Mutex::new(());
-
     #[test]
     fn unit_tests_never_reach_the_os_printer() {
-        let _g = CFG_LOCK.lock().unwrap();
-        assert_eq!(sink(), PrintSink::Capture);
-        let dir = std::env::temp_dir().join(format!("khaynjo-print-{}", std::process::id()));
         let mut cfg = DevicePrinters::default();
         let kitchen = cfg.add_printer("Kitchen", "192.168.1.50");
         *cfg.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen];
-        configure(cfg);
-        let _ = take_problems();
-        let _ = take_captured();
-        let share = print_text(PrintKind::Kot, "KOT — test", Some(&dir)).unwrap();
-        assert!(!share.opened, "the OS was not handed the job");
-        let jobs = take_captured();
-        assert_eq!(jobs.len(), 1);
-        assert_eq!(jobs[0].text, "KOT — test");
-        assert_eq!(jobs[0].kind, PrintKind::Kot);
-        assert!(take_captured().is_empty(), "taken once");
-        configure(DevicePrinters::default());
-        let _ = std::fs::remove_dir_all(dir);
+        with_test_printers(cfg, || {
+            assert_eq!(sink(), PrintSink::Capture);
+            let dir = std::env::temp_dir().join(format!("khaynjo-print-{}", std::process::id()));
+            let _ = take_problems();
+            let _ = take_captured();
+            let share = print_text(PrintKind::Kot, "KOT — test", Some(&dir)).unwrap();
+            assert!(!share.opened, "the OS was not handed the job");
+            let jobs = take_captured();
+            assert_eq!(jobs.len(), 1);
+            assert_eq!(jobs[0].text, "KOT — test");
+            assert_eq!(jobs[0].kind, PrintKind::Kot);
+            assert!(take_captured().is_empty(), "taken once");
+            let _ = std::fs::remove_dir_all(dir);
+        });
     }
 
     #[test]
     fn empty_kot_route_skips_capture() {
-        let _g = CFG_LOCK.lock().unwrap();
-        configure(DevicePrinters::default()); // empty routes = don't print
-        let _ = take_problems();
-        let _ = take_captured();
-        let dir = std::env::temp_dir().join(format!("khaynjo-print-skip-{}", uuid::Uuid::new_v4().simple()));
-        let share = print_route(
-            PrintKind::Kot,
-            RouteKey::Kot { station_id: "" },
-            "KOT — skip",
-            Some(&dir),
-        )
-        .unwrap();
-        assert!(!share.opened);
-        assert!(take_captured().is_empty());
-        assert!(!take_problems().is_empty());
-        let _ = fs::remove_dir_all(dir);
+        with_test_printers(DevicePrinters::default(), || {
+            // empty routes = don't print
+            let _ = take_problems();
+            let _ = take_captured();
+            let dir = std::env::temp_dir().join(format!("khaynjo-print-skip-{}", uuid::Uuid::new_v4().simple()));
+            let share = print_route(
+                PrintKind::Kot,
+                RouteKey::Kot { station_id: "" },
+                "KOT — skip",
+                Some(&dir),
+            )
+            .unwrap();
+            assert!(!share.opened);
+            assert!(take_captured().is_empty());
+            assert!(!take_problems().is_empty());
+            let _ = fs::remove_dir_all(dir);
+        });
     }
 
     /// What the owner types picks the kind of printer.
@@ -959,7 +977,6 @@ mod tests {
     /// read back on the next start.
     #[test]
     fn device_printers_are_kept_per_install() {
-        let _g = CFG_LOCK.lock().unwrap();
         let base = std::env::temp_dir().join(format!("khaynjo-printers-{}", uuid::Uuid::new_v4().simple()));
         assert_eq!(load_device_printers(&base), DevicePrinters::default());
         let mut chosen = DevicePrinters::default();
@@ -967,13 +984,16 @@ mod tests {
         let counter = chosen.add_printer("Counter", "Canon_G3010");
         chosen.routes.bill = vec![counter.clone()];
         *chosen.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen.clone()];
-        save_device_printers(&base, &chosen).unwrap();
-        assert_eq!(load_device_printers(&base), chosen);
-        assert_eq!(
-            printers().targets_for(RouteKey::Bill),
-            vec![PrinterTarget::Named("Canon_G3010".into())]
-        );
-        configure(DevicePrinters::default());
+        // save_device_printers also configure()s — hold the test lock for the
+        // whole round-trip so a parallel empty-route test cannot see these.
+        with_test_printers(chosen.clone(), || {
+            save_device_printers(&base, &chosen).unwrap();
+            assert_eq!(load_device_printers(&base), chosen);
+            assert_eq!(
+                printers().targets_for(RouteKey::Bill),
+                vec![PrinterTarget::Named("Canon_G3010".into())]
+            );
+        });
         let _ = fs::remove_dir_all(base);
     }
 

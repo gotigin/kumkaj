@@ -22,7 +22,7 @@ load_kumkaj_env production
 makepad_enable_package_dir
 
 # Window/taskbar icons are this app's (workspace .cargo/config.toml defaults
-# to Courier's). Cargo [env] does not override exported vars.
+# to Moklanjo's). Cargo [env] does not override exported vars.
 for size in 32 64 128 256 512 1024; do
   export "MAKEPAD_APP_ICON_$size=$KUMKAJ_APP_DIR/resources/icon_$size.png"
 done

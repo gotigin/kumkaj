@@ -8,14 +8,14 @@
 # docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §1–2 and docs/DEV.md.
 [workspace]
 members = [
-    "apps/courier",
+    "apps/moklanjo",
     "apps/khaynjo",
     "tools/khaynjo-dev",
     "tools/khaynjo-android-dev",
     "tools/khaynjo-windows-dev",
-    "tools/courier-dev",
-    "tools/courier-android-dev",
-    "tools/courier-windows-dev",
+    "tools/moklanjo-dev",
+    "tools/moklanjo-android-dev",
+    "tools/moklanjo-windows-dev",
 ]
 exclude = [
     "vendor/makepad",
@@ -24,7 +24,7 @@ resolver = "2"
 
 # Image codecs are optimised even in dev builds. Unoptimised, one ~470×1024
 # dish photo took ~250 ms to decode, so photo thumbs crawled in during
-# `cargo khaynjo-dev` / `cargo courier-dev`. Build speed only — no product
+# `cargo khaynjo-dev` / `cargo moklanjo-dev`. Build speed only — no product
 # behaviour changes, and app code stays debuggable.
 [profile.dev.package.image]
 opt-level = 3

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # macOS / iOS scaffold — no real Mac required for these steps.
-#   ./scripts/package-apple-scaffold.sh apps/courier   -> dist/apple-courier/
+#   ./scripts/package-apple-scaffold.sh apps/moklanjo   -> dist/apple-moklanjo/
 #   ./scripts/package-apple-scaffold.sh apps/khaynjo   -> dist/apple-khaynjo/
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"

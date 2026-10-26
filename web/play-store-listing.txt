@@ -1,30 +1,31 @@
-Kumkaj Courier — Play Console listing draft
+Moklanjo — Play Console listing draft
 ===========================================
-Application id (production): com.kumkaj.courier
-Development / side-load id: com.kumkaj.courier.debug (not for Play)
-Website: https://kumkaj.com
+Application id (production): com.moklanjo
+Development / side-load id: com.moklanjo.debug (not for Play)
+Website: https://moklanjo.com
 Default language: English (add Hindi / regional as needed)
 
 Short description (≤80 chars)
 -----------------------------
-Courier books + booking desk — offline-first on your device.
+Courier-agency books + booking desk — offline-first on your device.
 
 Full description
 ----------------
-Kumkaj Courier (kumkaj.com) is a local-first courier business operating system:
-party ledgers, day book, and a booking desk for walk-ins, AWB/barcode, and tracking.
+Moklanjo (moklanjo.com) is a local-first courier-agency business operating system
+under the Kumkaj brand: party ledgers, day book, and a booking desk for walk-ins,
+AWB/barcode, and tracking.
 
 • Books: parties, charges, day book, payouts
 • Booking desk for counter walk-ins
 • Works offline — your data stays on the device
 
-Website: https://kumkaj.com
+Website: https://moklanjo.com
 Default Owner PIN on first launch: 0000 (change under More → Team).
 
 Category: Business / Productivity
 Content rating: Everyone
 Privacy: no accounts required for local use; data stored on device SQLite.
 
-Build artifacts: ./apps/courier/scripts/package-android.sh → dist/android/kumkaj-courier.apk
-Play AAB: cargo-makepad android … build-aab -p kumkaj-courier --release (with upload keystore)
+Build artifacts: ./apps/moklanjo/scripts/package-android.sh → dist/android/kumkaj-moklanjo.apk
+Play AAB: cargo-makepad android … build-aab -p kumkaj-moklanjo --release (with upload keystore)
 iOS / macOS: deferred until Mac signing host.

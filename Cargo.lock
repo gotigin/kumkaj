@@ -443,18 +443,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 
 [[package]]
-name = "courier-android-dev"
-version = "0.1.0"
-
-[[package]]
-name = "courier-dev"
-version = "0.1.0"
-
-[[package]]
-name = "courier-windows-dev"
-version = "0.1.0"
-
-[[package]]
 name = "cpufeatures"
 version = "0.2.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1128,7 +1116,7 @@ name = "khaynjo-windows-dev"
 version = "0.1.0"
 
 [[package]]
-name = "kumkaj-courier"
+name = "kumkaj-khaynjo"
 version = "0.1.0"
 dependencies = [
  "ab_glyph_rasterizer",
@@ -1155,7 +1143,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "kumkaj-khaynjo"
+name = "kumkaj-moklanjo"
 version = "0.1.0"
 dependencies = [
  "ab_glyph_rasterizer",
@@ -1663,6 +1651,18 @@ dependencies = [
  "adler2",
  "simd-adler32 0.3.10",
 ]
+
+[[package]]
+name = "moklanjo-android-dev"
+version = "0.1.0"
+
+[[package]]
+name = "moklanjo-dev"
+version = "0.1.0"
+
+[[package]]
+name = "moklanjo-windows-dev"
+version = "0.1.0"
 
 [[package]]
 name = "moxcms"

@@ -19,8 +19,8 @@
 **/.makepad/
 
 # Large CJK / emoji fonts — copied from vendor by fetch-ui-fonts / package scripts
-/apps/courier/resources/fonts/LXGWWenKai*.ttf
-/apps/courier/resources/fonts/NotoColorEmoji.ttf
+/apps/moklanjo/resources/fonts/LXGWWenKai*.ttf
+/apps/moklanjo/resources/fonts/NotoColorEmoji.ttf
 
 # Local runtime / screenshots (not source)
 /local/

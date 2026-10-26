@@ -5,9 +5,9 @@ alwaysApply: true
 
 # Concrete products, common workspace — no Kumkaj core
 
-**Kumkaj** is the **brand** for a family of **concrete business operating system apps** (Courier, Khaynjo, future products). The only shared thing is the **common workspace**: every app is built on the same **Makepad 2** (`vendor/makepad`) with similar libraries, because BOS apps have similar requirements (money in/out, parties, day/period books, receipts, reports). That is platform/workspace sharing — **not** shared product code.
+**Kumkaj** is the **brand** for a family of **concrete business operating system apps** (Moklanjo, Khaynjo, future products). The only shared thing is the **common workspace**: every app is built on the same **Makepad 2** (`vendor/makepad`) with similar libraries, because BOS apps have similar requirements (money in/out, parties, day/period books, receipts, reports). That is platform/workspace sharing — **not** shared product code.
 
-Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–33; courier brief: `apps/courier/docs/KUMKAJ_COURIER.md`.
+Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2 and §31–33; courier brief: `apps/moklanjo/docs/MOKLANJO.md`.
 
 ## Do
 
@@ -29,5 +29,5 @@ Workspace-level sharing is only: Cargo workspace membership, the vendored Makepa
 ```text
 ❌ One Kumkaj core / shared books crate that every app must depend on (and must change to serve a new app)
 ❌ Extracting a second app's logic into shared code so a fix for one trade ripples into another
-✅ Concrete “Courier” / “Khaynjo” / “Personal” products in one workspace on Makepad 2, each owning duplicated, independently-evolving code
+✅ Concrete “Moklanjo” / “Khaynjo” / “Personal” products in one workspace on Makepad 2, each owning duplicated, independently-evolving code
 ```

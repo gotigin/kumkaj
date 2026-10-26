@@ -6,7 +6,7 @@
 > is fine; great UX for that trade is what matters (vision §24). This file
 > therefore holds two kinds of content: **lessons every app should know**
 > (Makepad behaviour, layout and interaction rules learned from shipped
-> bugs — technical truths, not a house style), and **Courier's** shipping
+> bugs — technical truths, not a house style), and **Moklanjo's** shipping
 > design below. Other apps keep their design in their own docs (e.g.
 > [`KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md) §5b and its own colour
 > tokens). Learning from competitors means doing better than them, not
@@ -15,22 +15,22 @@
 Source pack (optional): `../../stitch_tactile_countertop_design_system/`.  
 This file is the **canonical** in-repo summary. When Stitch packs disagree, **later shipping decisions win** (see also vision doc + [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
-**Current product focus:** [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) — UI names below use courier wording; other concrete products will override labels the same way.
+**Current product focus:** [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md) — UI names below use courier wording; other concrete products will override labels the same way.
 
 ## Navigation (shipping)
 
 | Tabs | Role |
 |---|---|
-| **Day book · Booking · Pay out · Rates · Ops · …** | Kumkaj Courier shell — no **More** hub; former More destinations are first-class peers |
+| **Day book · Booking · Pay out · Rates · Ops · …** | Moklanjo shell — no **More** hub; former More destinations are first-class peers |
 
-| Tab | Purpose (Courier) |
+| Tab | Purpose (Moklanjo) |
 |---|---|
 | **Day book** | Home after unlock — today’s money in/out, AR/AP, cash vs bank; shortcuts to day close, bank/P&L, parties |
 | **Booking** | Money in — book parcels (rates × kg), three-total ledger, tender / party credit; Account vs Cash booking |
 | **Pay out** | Money out — carrier bills / purchases and expense vouchers |
 | **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
 
-Progressive depth for Courier: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
+Progressive depth for Moklanjo: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
 
 Booking is not the whole product; Day book and Pay out are peers.
 
@@ -50,17 +50,17 @@ Booking is not the whole product; Day book and Pay out are peers.
 
 #### DeviceSetup — Server Mode (local multi-server)
 
-Same device may hold **several local servers** (different products or businesses). Each server is a separate books database with a **unique id** (`servers/{id}/courier.sqlite3`, registry in `servers.json`).
+Same device may hold **several local servers** (different products or businesses). Each server is a separate books database with a **unique id** (`servers/{id}/moklanjo.sqlite3`, registry in `servers.json`).
 
 | Situation | Behaviour |
 |---|---|
 | **No local server yet** | Server Mode **creates** a new server (unique id) and continues to Lock / Owner PIN. |
 | **Servers already exist** | Server Mode shows **Create new server** (optional name) or **Open** an existing one from the list, then continues with that server. |
 
-**Client Mode** uses a separate client cache DB (`client/courier.sqlite3`) and pairs over LAN to a Server — it does not pick from the local server registry.
+**Client Mode** uses a separate client cache DB (`client/moklanjo.sqlite3`) and pairs over LAN to a Server — it does not pick from the local server registry.
 
 Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.sqlite3`, etc.) — there is no migration from those layouts.
-| **Onboard** | Kumkaj Courier: courier defaults baked in (Account/Cash booking, kg). Fresh vs Book for opening rates/parties. Other brand products bake their own defaults. |
+| **Onboard** | Moklanjo: courier defaults baked in (Account/Cash booking, kg). Fresh vs Book for opening rates/parties. Other brand products bake their own defaults. |
 | **Settings** | Country pack, venue, units, backup (no sample catalogue). |
 | **Choice chips** | Short labels only (`ChipBtn` / `ChipBtnActive` in `ChipStrip`). Multi-word choices are **not** chips. |
 | **Stacked CTAs** | Multi-word / long labels → `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn` (full width, wrap, no ellipsis). Same faces as Server/Client Mode. Never `ChipBtn` / `ActionRow` for those. |
@@ -89,7 +89,7 @@ Lessons learned from shipped regressions — how Makepad lays out and
 behaves, and what broke. Every app should know them so nobody re-learns
 them; they are not a shared look. Each app decides its own screens, flows
 and visual design for its users (e.g. Khaynjo's menu/ticket split and
-coloured floor, Courier's rates/cart split).
+coloured floor, Moklanjo's rates/cart split).
 
 - **The work surface gets the room.** The primary grid/list is the
   work surface; companion panes (ticket, cart, detail) stay lean.
@@ -116,7 +116,7 @@ coloured floor, Courier's rates/cart split).
   items or figures (units, printers, audit, history, open bills, a day's
   totals) go in a card — a heading, label/value rows with the value at
   the right, plain lines — or a list widget; only a sentence stays a
-  paragraph. Each app has its own card (`ReportText` in Courier and
+  paragraph. Each app has its own card (`ReportText` in Moklanjo and
   Khaynjo). A list with nothing in it says so in a short hint — never
   an empty card.
 - **Whole-card tap targets.** List cards are the tap target (whole-card
@@ -148,7 +148,7 @@ Full cause / approach / code map: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agen
 
 ## Color tokens (live)
 
-Derived from `apps/courier/assets/courier-app-icon.png` (navy C path, sky blue, orange motion, yellow accents).
+Derived from `apps/moklanjo/assets/moklanjo-app-icon.png` (navy C path, sky blue, orange motion, yellow accents).
 
 | Role | Hex | Use |
 |---|---|---|
@@ -191,7 +191,7 @@ lightness mid-hover.
 | Accent | `#B43A12` | Accents, price ink, warning fills (logo red-orange, darkened so white ink on it stays ≥ 5.9:1) |
 | Gold | `#F69D2C` / `#F7B043` | Status marks on deep-red chrome (logo gold) |
 
-**Contrast law (same as Courier — no light-on-light, no dark-on-dark):**
+**Contrast law (same as Moklanjo — no light-on-light, no dark-on-dark):**
 light faces always carry dark ink (`#260B08`/`#6B4A3F`) in every state;
 deep-red faces always carry white ink in every state; ink lightness
 never flips while a face flips. Verified pairings: white on `#9A0E10`
@@ -214,4 +214,4 @@ source colour, darkened to `#B43A12` for shipping faces.
 - Multi-branch: one local server per branch (vision §5); the header shows that restaurant's own name, and Server Mode lists the branches on this device.
 - Day book empty/first-day copy teaches money in, money out, parties — not “open Booking to begin.”
 - Day books follow **user / business time** (`user_at`); device write / cloud accept times are separate ([`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) § Triple timestamps).
-- Walk-in desk, AWB/barcode, tracking: product roadmap in [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).
+- Walk-in desk, AWB/barcode, tracking: product roadmap in [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).

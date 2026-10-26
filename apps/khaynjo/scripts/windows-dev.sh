@@ -22,7 +22,7 @@ source "$ROOT/scripts/load-kumkaj-env.sh"
 # shellcheck source=../../../scripts/windows-env.sh
 source "$ROOT/scripts/windows-env.sh"
 # Khaynjo's own install helpers (Setup.bat / install.ps1 / uninstall name
-# Khaynjo's exe and folders; Courier's used to be staged here).
+# Khaynjo's exe and folders; Moklanjo's used to be staged here).
 # shellcheck source=desktop-ids.sh
 source "$KUMKAJ_APP_DIR/scripts/desktop-ids.sh"
 # shellcheck source=../../../scripts/stage-desktop-package.sh
@@ -51,7 +51,7 @@ fi
 
 # Same as Android: release binary + development.env (console stays — KUMKAJ_ENV).
 # Window/taskbar icons are this app's (workspace .cargo/config.toml defaults
-# to Courier's). Cargo [env] does not override exported vars.
+# to Moklanjo's). Cargo [env] does not override exported vars.
 export MAKEPAD_APP_ICON_32="$KUMKAJ_APP_DIR/resources/icon_32.png"
 export MAKEPAD_APP_ICON_64="$KUMKAJ_APP_DIR/resources/icon_64.png"
 export MAKEPAD_APP_ICON_128="$KUMKAJ_APP_DIR/resources/icon_128.png"

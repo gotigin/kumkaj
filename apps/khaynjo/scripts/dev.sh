@@ -12,7 +12,7 @@ export KUMKAJ_APP_DIR="$ROOT/apps/khaynjo"
 export KUMKAJ_ENV_DIR="$KUMKAJ_APP_DIR/env"
 load_kumkaj_env development
 # Window/taskbar icons are this app's (workspace .cargo/config.toml defaults
-# to Courier's). Cargo [env] does not override exported vars.
+# to Moklanjo's). Cargo [env] does not override exported vars.
 export MAKEPAD_APP_ICON_32="$KUMKAJ_APP_DIR/resources/icon_32.png"
 export MAKEPAD_APP_ICON_64="$KUMKAJ_APP_DIR/resources/icon_64.png"
 export MAKEPAD_APP_ICON_128="$KUMKAJ_APP_DIR/resources/icon_128.png"

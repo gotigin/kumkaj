@@ -5,7 +5,7 @@
       "label": "Kumkaj: live (--hot --remote)",
       "type": "shell",
       "command": "cargo",
-      "args": ["courier-dev"],
+      "args": ["moklanjo-dev"],
       "options": {
         "cwd": "${workspaceFolder}"
       },

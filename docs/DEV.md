@@ -2,14 +2,14 @@
 
 Commands and paths below are from the **workspace root** (parent of `docs/`).
 
-**Product focus:** [Kumkaj Courier](../apps/courier/docs/KUMKAJ_COURIER.md) — courier BOS (books +
-booking desk). Package id: production `com.kumkaj.courier` · development
-`com.kumkaj.courier.debug`.
+**Product focus:** [Moklanjo](../apps/moklanjo/docs/MOKLANJO.md) — courier BOS (books +
+booking desk). Package id: production `com.moklanjo` · development
+`com.moklanjo.debug`.
 
 ## Common workspace — no Kumkaj core
 
 The only shared thing between Kumkaj apps is this **common workspace**:
-every app (`apps/courier`, `apps/khaynjo`, …) is built on the same
+every app (`apps/moklanjo`, `apps/khaynjo`, …) is built on the same
 **Makepad 2** (`vendor/makepad`) with similar libraries, because BOS
 apps have similar requirements (money in/out, parties, day/period
 books, receipts, reports). Similar requirements justify one workspace
@@ -36,7 +36,7 @@ and one Makepad platform — **not** shared product code.
   loading, Windows cross-build and resource staging, the MSI builder,
   icon/font generators, the Apple scaffold. Each one requires the caller
   to say which app (`KUMKAJ_APP_DIR` and friends) and fails without it;
-  none defaults to Courier any more. Anything that names one app — its
+  none defaults to Moklanjo any more. Anything that names one app — its
   package scripts, installers and uninstallers, `Setup.bat`,
   `desktop-ids.sh`, `License.rtf`, MSI upgrade codes (`msi.sh`), Play /
   web packaging — lives in `apps/<app>/scripts/`.
@@ -46,29 +46,29 @@ Canonical doctrine: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT
 ## Live development (Cursor)
 
 **Khaynjo** (restaurant OS, [`apps/khaynjo`](../apps/khaynjo/)) mirrors
-Courier's tooling one-for-one: `cargo khaynjo-dev`,
+Moklanjo's tooling one-for-one: `cargo khaynjo-dev`,
 `cargo khaynjo-android-dev`, `cargo khaynjo-windows-dev`. Identity
-differs by domain: Courier is tied to kumkaj.com
-(`com.kumkaj.courier`), Khaynjo has its own domain, so it is
-`com.khaynjo` · `com.khaynjo.debug`. Each app's packaging lives in its
+differs by domain: Moklanjo uses moklanjo.com
+(`com.moklanjo` · `com.moklanjo.debug`); Khaynjo uses khaynjo.com
+(`com.khaynjo` · `com.khaynjo.debug`). Each app's packaging lives in its
 own `apps/<app>/scripts/` (see § Common workspace → Scripts).
 
 ```bash
-cargo courier-dev
+cargo moklanjo-dev
 ```
 
-Loads [`apps/courier/env/development.env`](../apps/courier/env/development.env) then `cargo run -p kumkaj-courier -- --hot --remote`.
+Loads [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env) then `cargo run -p kumkaj-moklanjo -- --hot --remote`.
 
 - `--hot` — Splash/`script_mod!` hot reload on save
 - `--remote` — Tweaker via **F12**
 - Makepad **2 / `main` only** — never Makepad 1 docs/examples/APIs
 - Local Makepad 2 tree: `vendor/makepad`
   - First time / after clean: `./scripts/setup-makepad.sh`
-  - Path-dep from each app (`apps/courier`, `apps/khaynjo`). The script rebuilds the tree from the pinned upstream commit (`MAKEPAD_REV`) and applies every patch in `patches/makepad/` in the order its `PATCHES` list gives; any patch that fails stops the script
+  - Path-dep from each app (`apps/moklanjo`, `apps/khaynjo`). The script rebuilds the tree from the pinned upstream commit (`MAKEPAD_REV`) and applies every patch in `patches/makepad/` in the order its `PATCHES` list gives; any patch that fails stops the script
   - `vendor/makepad` is gitignored: **an edit there is lost on the next setup unless it is also a patch in `patches/makepad/` listed in `PATCHES`**. After changing a vendor file, regenerate its patch, then rerun the setup in a scratch copy and diff it against `vendor/makepad`
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
-- Multi-script UI fonts live **per app**: `apps/courier/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Desktop packages copy only that app's `<crate_name>/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing.
+- Multi-script UI fonts live **per app**: `apps/moklanjo/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Desktop packages copy only that app's `<crate_name>/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing.
 - **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
@@ -78,7 +78,7 @@ Loads [`apps/courier/env/development.env`](../apps/courier/env/development.env) 
 
 ## Desktop window size & maximize
 
-Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Kumkaj Courier client-side chrome:
+Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Moklanjo client-side chrome:
 
 | Action | Expected result |
 |---|---|
@@ -114,7 +114,7 @@ RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_
 | `Event::WindowChromeMaximizeToggle` | Wayland caption → widget toggle |
 | `WaylandWindow::compositor_maximized` | Last configure maximized/fullscreen bit |
 | `pending_restore_size` / `float_guard_*` | Force float size; reject Mutter re-expand |
-| `apps/courier` `persist_window_geom` | Skip fullscreen / monitor-fill sizes |
+| `apps/moklanjo` `persist_window_geom` | Skip fullscreen / monitor-fill sizes |
 | Dev logs | `MaximizeWindow` / `RestoreWindow` / `xdg_toplevel configure` / `caption double-click` |
 
 ```text
@@ -133,7 +133,7 @@ Manual check (GNOME Wayland, multi-monitor OK): max → restore → max → rest
 
 ## Makepad 2 UI faces (agent guide)
 
-Use this when changing bottom nav, choice toggles, chips, or any button label. The same app's UI code ships to **Linux / Windows / Android** — fix faces once *in that app* (examples below are Courier's `apps/courier`), not per platform and not in another app.
+Use this when changing bottom nav, choice toggles, chips, or any button label. The same app's UI code ships to **Linux / Windows / Android** — fix faces once *in that app* (examples below are Moklanjo's `apps/moklanjo`), not per platform and not in another app.
 
 Cursor rule (always apply when editing kumkaj UI): `.cursor/rules/makepad-layout-faces.mdc`.
 
@@ -168,7 +168,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 2. **Wrong peer lit while another screen showed** — Treating focus/hover as selection instead of painting from `Screen` / `nav_tab_for`.
 3. **Right-truncated CTA labels** — Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Row*`) used `max_lines: 1` + `TextOverflow.Ellipsis`. Makepad centers a Fill label in a Fill button; long / translated strings become `record_pu…` / clipped ink. Multi-word choices in `ChipBtn` (Fit max 160) truncated the same way (`Use platform na…`, `Tax invoice`, `On account (AP)`).
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
-5. **Item / rate photos** — Courier has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
+5. **Item / rate photos** — Moklanjo has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
 
 ### Required approach (shipping)
@@ -218,7 +218,7 @@ Implemented in `pointer_nav_drag` / `nav_drop_slot` / `nav_drag_autoscroll` (`ma
 
 Manual regression check (no automated GUI test exists): narrow window (bottom bar) and wide (rail) — tap navigates; a lane swipe scrolls without reordering; a sideways drag from a tab swaps; holding at each edge auto-scrolls and drops onto a tab that was off-screen (confirm in sqlite: `SELECT value FROM meta WHERE key='ui_nav_order'`); pickup stays accurate while the bar is mid-scroll.
 
-### Code map (`apps/courier/src/main.rs`)
+### Code map (`apps/moklanjo/src/main.rs`)
 
 | Piece | Role |
 |---|---|
@@ -249,18 +249,18 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 
 ## Development vs production env
 
-All platform package / bundle ids are **reverse-DNS under kumkaj.com**. Concrete products under the brand may use further ids (e.g. a courier face) still under that domain — see vision §1.
+Each concrete product uses **reverse-DNS under its own domain** (Moklanjo: `com.moklanjo`; Khaynjo: `com.khaynjo`), not under `com.kumkaj.*` — see vision §1 and each app's brief.
 
 | | Development | Production |
 |---|---|---|
-| Env file | [`apps/courier/env/development.env`](../apps/courier/env/development.env) | [`apps/courier/env/production.env`](../apps/courier/env/production.env) |
-| How | `cargo courier-dev`, `cargo courier-android-dev`, `cargo courier-windows-dev` | `./scripts/package-*.sh` |
-| `KUMKAJ_APP_ID` | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
-| `KUMKAJ_APP_LABEL` | Kumkaj Courier Dev | Kumkaj Courier |
+| Env file | [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env) | [`apps/moklanjo/env/production.env`](../apps/moklanjo/env/production.env) |
+| How | `cargo moklanjo-dev`, `cargo moklanjo-android-dev`, `cargo moklanjo-windows-dev` | `./scripts/package-*.sh` |
+| `KUMKAJ_APP_ID` | `com.moklanjo.debug` | `com.moklanjo` |
+| `KUMKAJ_APP_LABEL` | Moklanjo Dev | Moklanjo |
 | Size badge (`KUMKAJ_SHOW_SIZE_BADGE`) | on (`1`) — `W×H` in caption | off (`0`) |
 | Windows console | yes (logs) | no (GUI subsystem) |
 
-`apps/courier/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo courier-windows-dev` builds the **debug** profile with `development.env` (Dev app id / console). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
+`apps/moklanjo/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo moklanjo-windows-dev` builds the **debug** profile with `development.env` (Dev app id / console). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
 
 ### Platform naming (dev vs prod)
 
@@ -268,15 +268,15 @@ Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surface
 
 | Platform | Development | Production |
 |---|---|---|
-| **Android** package name / application id | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
-| **Android** launcher label | Kumkaj Courier Dev | Kumkaj Courier |
-| **iOS / macOS** bundle id (when signed) | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
-| **Linux** binary | `cargo courier-dev` (host) · `package-linux-dev.sh` | `dist/linux/` + `install.sh` via `package-linux.sh` |
-| **Windows** (Win10 + Win11 x86_64) | `cargo courier-windows-dev` → `dist/windows-dev/` (exe + resources) | `./apps/courier/scripts/package-windows.sh` → `dist/windows/` |
-| **macOS** binary (when built on Mac) | `cargo courier-dev` | package script / packager |
-| **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.kumkaj.courier"`, `product_name = "Kumkaj Courier"` |
-| **Web** | local `cargo courier-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./apps/courier/scripts/package-web.sh`) — not an OS package id |
-| **Play Store** listing | side-load / internal only | application id `com.kumkaj.courier` (`web/play-store-listing.txt`) |
+| **Android** package name / application id | `com.moklanjo.debug` | `com.moklanjo` |
+| **Android** launcher label | Moklanjo Dev | Moklanjo |
+| **iOS / macOS** bundle id (when signed) | `com.moklanjo.debug` | `com.moklanjo` |
+| **Linux** binary | `cargo moklanjo-dev` (host) · `package-linux-dev.sh` | `dist/linux/` + `install.sh` via `package-linux.sh` |
+| **Windows** (Win10 + Win11 x86_64) | `cargo moklanjo-windows-dev` → `dist/moklanjo-windows-dev/` (exe + resources) | `./apps/moklanjo/scripts/package-windows.sh` → `dist/moklanjo-windows/` |
+| **macOS** binary (when built on Mac) | `cargo moklanjo-dev` | package script / packager |
+| **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.moklanjo"`, `product_name = "Moklanjo"` |
+| **Web** | local `cargo moklanjo-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./apps/moklanjo/scripts/package-web.sh`) — not an OS package id |
+| **Play Store** listing | side-load / internal only | application id `com.moklanjo` (`web/play-store-listing.txt`) |
 
 ### Data directories (keyed by `KUMKAJ_APP_ID`)
 
@@ -284,12 +284,12 @@ Dev and prod can sit side-by-side on one machine because paths differ by id. No 
 
 | Platform | Development | Production |
 |---|---|---|
-| Linux | `~/.local/share/com.kumkaj.courier.debug/` | `~/.local/share/com.kumkaj.courier/` |
-| Windows | `%APPDATA%\com.kumkaj.courier.debug\` | `%APPDATA%\com.kumkaj.courier\` |
-| macOS | `~/Library/Application Support/com.kumkaj.courier.debug/` | `~/Library/Application Support/com.kumkaj.courier/` |
-| Android | `/data/user/0/com.kumkaj.courier.debug/files/` | `/data/user/0/com.kumkaj.courier/files/` |
-| Local servers | `servers.json` + `servers/{id}/courier.sqlite3` (one DB per business/server) | same |
-| Client cache | `client/courier.sqlite3` | same |
+| Linux | `~/.local/share/com.moklanjo.debug/` | `~/.local/share/com.moklanjo/` |
+| Windows | `%APPDATA%\com.moklanjo.debug\` | `%APPDATA%\com.moklanjo\` |
+| macOS | `~/Library/Application Support/com.moklanjo.debug/` | `~/Library/Application Support/com.moklanjo/` |
+| Android | `/data/user/0/com.moklanjo.debug/files/` | `/data/user/0/com.moklanjo/files/` |
+| Local servers | `servers.json` + `servers/{id}/moklanjo.sqlite3` (one DB per business/server) | same |
+| Client cache | `client/moklanjo.sqlite3` | same |
 | Backups | `…/<APP_ID>/backups/` | same |
 | Override | `KUMKAJ_DATA_DIR` | same |
 
@@ -297,7 +297,7 @@ Dev and prod can sit side-by-side on one machine because paths differ by id. No 
 
 ### Product / template default (onboarding)
 
-**Kumkaj Courier** should open with courier defaults (Account/Cash booking, kg
+**Moklanjo** should open with courier defaults (Account/Cash booking, kg
 rates language). The workspace may still contain other template chips for
 later brand products; do not make “None” the story for courier demos.
 - Pay methods: Cash · instant rail (UPI / Pix / PayNow / … per country pack) · Card · **Credit** · **Split Cash+rail** (Server and paired Client)
@@ -309,18 +309,18 @@ later brand products; do not make “None” the story for courier demos.
 ## Android (device / emulator)
 
 ```bash
-cargo courier-android-dev
+cargo moklanjo-android-dev
 ```
 
-Equivalent: `./apps/courier/scripts/android-dev.sh`
+Equivalent: `./apps/moklanjo/scripts/android-dev.sh`
 
-Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.courier.debug`** (from `apps/courier/env/development.env`).
+Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.moklanjo.debug`** (from `apps/moklanjo/env/development.env`).
 
-**Launcher / logo:** Master art is `apps/courier/assets/courier-app-icon.png`. Run `./apps/courier/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
+**Launcher / logo:** Master art is `apps/moklanjo/assets/moklanjo-app-icon.png`. Run `./apps/moklanjo/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
 
-Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo courier-dev`; use `cargo courier-android-dev` to verify on device.
+Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo moklanjo-dev`; use `cargo moklanjo-android-dev` to verify on device.
 
-Release APK/AAB packaging: `./apps/courier/scripts/package-android.sh` → `dist/android/kumkaj-courier.apk`.
+Release APK/AAB packaging: `./apps/moklanjo/scripts/package-android.sh` → `dist/android/kumkaj-moklanjo.apk`.
 Khaynjo APK (production id `com.khaynjo`, no device needed): `apps/khaynjo/scripts/package-android.sh` → `dist/khaynjo-android/kumkaj-khaynjo.apk`.
 
 **Release signing (both apps, `scripts/android-env.sh`).** cargo-makepad's
@@ -339,12 +339,12 @@ KUMKAJ_ANDROID_KEYSTORE=~/keys/khaynjo.keystore KUMKAJ_ANDROID_KEYSTORE_PASS=…
 
 With the keystore set, the package script re-signs the APK (`apksigner`,
 password through the environment, never argv) and also builds the Play
-bundle (`khaynjo.aab` / `kumkaj-courier.aab`, `build-aab --keystore`).
+bundle (`khaynjo.aab` / `kumkaj-moklanjo.aab`, `build-aab --keystore`).
 Without it the APK is debug-signed and its `README.txt` says so. Package
 builds pass `--version-code=auto` (YYYYMMDDHH), so every build installs as
 an upgrade and Play accepts it; dev builds keep `version_code = 1`. The
 scripts pick their own APK by the production label (`khaynjo.apk`,
-`kumkajcourier.apk`) — Courier's used to copy every APK and AAB under
+`kumkajcourier.apk`) — Moklanjo's used to copy every APK and AAB under
 `target/`, other apps' and dev builds included.
 
 **Emulator on this host (x86_64):** Google's system images here are
@@ -364,15 +364,15 @@ Dev and prod stay separate (debug suffix on id + install folder).
 
 | | Development | Production |
 |---|---|---|
-| Env | `apps/courier/env/development.env` | `apps/courier/env/production.env` |
-| App id | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
-| Label | Kumkaj Courier Dev | Kumkaj Courier |
-| Linux package | `./apps/courier/scripts/package-linux-dev.sh` → `dist/linux-dev/` | `./apps/courier/scripts/package-linux.sh` → `dist/linux/` |
-| Windows package | `cargo courier-windows-dev` → `dist/windows-dev/` | `./apps/courier/scripts/package-windows.sh` → `dist/windows/` |
-| Linux install dir | `~/.local/lib/kumkaj-courier-debug/` | `~/.local/lib/kumkaj-courier/` |
-| Linux command | `kumkaj-courier-dev` | `kumkaj-courier` |
-| Windows install dir | `%LOCALAPPDATA%\Programs\Kumkaj Courier Dev\` | `%LOCALAPPDATA%\Programs\Kumkaj Courier\` |
-| Data dir | `…/com.kumkaj.courier.debug/` | `…/com.kumkaj.courier/` |
+| Env | `apps/moklanjo/env/development.env` | `apps/moklanjo/env/production.env` |
+| App id | `com.moklanjo.debug` | `com.moklanjo` |
+| Label | Moklanjo Dev | Moklanjo |
+| Linux package | `./apps/moklanjo/scripts/package-linux-dev.sh` → `dist/linux-dev/` | `./apps/moklanjo/scripts/package-linux.sh` → `dist/linux/` |
+| Windows package | `cargo moklanjo-windows-dev` → `dist/moklanjo-windows-dev/` | `./apps/moklanjo/scripts/package-windows.sh` → `dist/moklanjo-windows/` |
+| Linux install dir | `~/.local/lib/kumkaj-moklanjo-debug/` | `~/.local/lib/kumkaj-moklanjo/` |
+| Linux command | `kumkaj-moklanjo-dev` | `kumkaj-moklanjo` |
+| Windows install dir | `%LOCALAPPDATA%\Programs\Moklanjo Dev\` | `%LOCALAPPDATA%\Programs\Moklanjo\` |
+| Data dir | `…/com.moklanjo.debug/` | `…/com.moklanjo/` |
 
 **Install:** run `install.sh` (Linux) or double-click **`Setup.bat`** (Windows) from the package folder. Adds Start Menu / app menu entries, including **Uninstall …**. On Windows, do not open `install.ps1` in Explorer (that often opens Notepad) — use `Setup.bat`.
 
@@ -387,49 +387,49 @@ If app files are already gone but data remains, re-running uninstall still offer
 
 | | Development | Production |
 |---|---|---|
-| Linux | `./apps/courier/scripts/uninstall-linux-dev.sh` | `./apps/courier/scripts/uninstall-linux-prod.sh` |
+| Linux | `./apps/moklanjo/scripts/uninstall-linux-dev.sh` | `./apps/moklanjo/scripts/uninstall-linux-prod.sh` |
 | Windows | `apps\courier\scripts\uninstall-windows-dev.ps1` | `apps\courier\scripts\uninstall-windows-prod.ps1` |
-| Android | `./apps/courier/scripts/uninstall-android-dev.sh` | `./apps/courier/scripts/uninstall-android-prod.sh` |
+| Android | `./apps/moklanjo/scripts/uninstall-android-dev.sh` | `./apps/moklanjo/scripts/uninstall-android-prod.sh` |
 | Android (Khaynjo) | `./apps/khaynjo/scripts/uninstall-android-dev.sh` | `./apps/khaynjo/scripts/uninstall-android-prod.sh` |
 
 (Linux/Windows wrappers call the shared uninstaller with `--dev` / `-Dev` or `--prod` / `-Prod`. Android uses `adb uninstall` of that package id.)
 
-Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, `uninstall-*`, `Setup.bat`, `Uninstall.bat`, `desktop-ids.sh`, `License.rtf`) — they name that app's exe, folders and labels. `scripts/stage-desktop-package.sh` copies the calling app's set into a package. (Khaynjo's Windows folder package used to stage Courier's, which looked for `kumkaj-courier.exe`; its MSI licence page said "Kumkaj Courier" — fixed 2026-10-26.)
+Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, `uninstall-*`, `Setup.bat`, `Uninstall.bat`, `desktop-ids.sh`, `License.rtf`) — they name that app's exe, folders and labels. `scripts/stage-desktop-package.sh` copies the calling app's set into a package. (Khaynjo's Windows folder package used to stage Moklanjo's, which looked for `kumkaj-moklanjo.exe`; its MSI licence page said "Moklanjo" — fixed 2026-10-26.)
 
 ## Windows (cross from Arch / native on Windows)
 
 **Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
-**Now:** per-user **MSI** (`./apps/courier/scripts/msi.sh` → `dist/KumkajCourier-<ver>.msi`, dev: `./apps/courier/scripts/msi.sh dev`; Khaynjo: `./apps/khaynjo/scripts/msi.sh`) — single file, double-click install, Start Menu shortcut, uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Kumkaj Courier\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps books data (`%APPDATA%\com.kumkaj.courier\`); Start Menu **Delete books data** removes it on demand. (In-MSI script prompts broke real installs — do not re-add.) Folder + `Setup.bat` package remains the fallback.  
+**Now:** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo: `./apps/khaynjo/scripts/msi.sh`) — single file, double-click install, Start Menu shortcut, uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Moklanjo\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps books data (`%APPDATA%\com.moklanjo\`); Start Menu **Delete books data** removes it on demand. (In-MSI script prompts broke real installs — do not re-add.) Folder + `Setup.bat` package remains the fallback.  
 **Later:** wrap as **MSIX** for Store publish.
 
-One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.kumkaj.courier.debug` vs `com.kumkaj.courier`).
+One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.moklanjo.debug` vs `com.moklanjo`).
 
-Makepad loads fonts from **`kumkaj_courier/resources/`** next to the `.exe` (crate name uses underscores). Hyphenated `kumkaj-courier/resources/` will not load UI fonts.
+Makepad loads fonts from **`kumkaj_moklanjo/resources/`** next to the `.exe` (crate name uses underscores). Hyphenated `kumkaj-moklanjo/resources/` will not load UI fonts.
 
 | | Development | Production |
 |---|---|---|
-| Command | `cargo courier-windows-dev` | `./apps/courier/scripts/package-windows.sh` |
-| Output | `dist/windows-dev/` (copy whole folder) | `dist/windows/` (copy whole folder) |
+| Command | `cargo moklanjo-windows-dev` | `./apps/moklanjo/scripts/package-windows.sh` |
+| Output | `dist/moklanjo-windows-dev/` (copy whole folder) | `dist/moklanjo-windows/` (copy whole folder) |
 | Install on Windows | Double-click `Setup.bat` | Double-click `Setup.bat` |
 | Cargo profile | **release** (both — Windows debug PE was ~400MB) | **release** |
-| What “Dev” means | `com.kumkaj.courier.debug` + separate install/data + console | prod id, GUI subsystem |
-| Env | `apps/courier/env/development.env` | `apps/courier/env/production.env` |
-| Data on Windows | `%APPDATA%\com.kumkaj.courier.debug\` | `%APPDATA%\com.kumkaj.courier\` |
+| What “Dev” means | `com.moklanjo.debug` + separate install/data + console | prod id, GUI subsystem |
+| Env | `apps/moklanjo/env/development.env` | `apps/moklanjo/env/production.env` |
+| Data on Windows | `%APPDATA%\com.moklanjo.debug\` | `%APPDATA%\com.moklanjo\` |
 
 **Cross-compile from Arch Linux** (this host):
 
 ```bash
 sudo pacman -S mingw-w64-gcc
 rustup target add x86_64-pc-windows-gnu
-cargo courier-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
-./apps/courier/scripts/package-windows.sh  # Prod package → copy whole dist/windows/ folder
-./apps/courier/scripts/msi.sh             # Prod MSI → dist/KumkajCourier-*.msi (msi.sh dev for Dev)
+cargo moklanjo-windows-dev          # Dev package → copy whole dist/moklanjo-windows-dev/ folder
+./apps/moklanjo/scripts/package-windows.sh  # Prod package → copy whole dist/moklanjo-windows/ folder
+./apps/moklanjo/scripts/msi.sh             # Prod MSI → dist/Moklanjo-*.msi (msi.sh dev for Dev)
 apps/khaynjo/scripts/msi.sh        # Khaynjo prod MSI → dist/Khaynjo-*.msi (msi.sh dev → KhaynjoDev; own upgrade codes)
 # Then on Windows: double-click the MSI (or Setup.bat in the folder package)
-# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj_courier/resources/ beside the .exe
+# Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj_moklanjo/resources/ beside the .exe
 ```
 
-Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo courier-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
+Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo moklanjo-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
 
 **On a Windows machine with Rust:** the same scripts pick `x86_64-pc-windows-msvc` when available and build natively.
 
@@ -535,17 +535,16 @@ Unit coverage: `backup_and_restore`, `backup_restore_preserves_sale_on_reopen`,
 One device runs the server inside the app (Server Mode); other devices
 pair to it over the shop's Wi‑Fi (Client Mode). No internet, no cloud.
 **Any supported device can be either** — Windows, Linux or Android, in
-any mix (an Android tablet serving Windows tills is as valid as a PC
-serving tablets). Never write a guide, test plan or default that assumes
-"Windows server, Android client". What differs per platform (firewall,
+any mix. Never write a guide, test plan or default that assumes a specific
+platform as the server or client. What differs per platform (firewall,
 start-up, keep-awake, printing, backup copies) is the table in
 [`LAN_QUICK_START.md`](LAN_QUICK_START.md) §5 — keep it in step with the code.
 
-| | Courier | Khaynjo |
+| | Moklanjo | Khaynjo |
 |---|---|---|
 | TCP (requests) | **7857** | **7847** |
 | UDP (discovery) | **7858** | **7848** |
-| Windows firewall rule | `Kumkaj Courier LAN` | `Kumkaj Khaynjo LAN` |
+| Windows firewall rule | `Moklanjo LAN` | `Kumkaj Khaynjo LAN` |
 
 The two apps use different ports so both can serve from one device.
 
@@ -557,7 +556,7 @@ connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
 | Path | Who | Purpose |
 |---|---|---|
 | `GET /health`, `GET /hello` | anyone | liveness; app + venue name for discovery |
-| `GET /track/{awb}` (Courier) | anyone | public parcel status — no pairing |
+| `GET /track/{awb}` (Moklanjo) | anyone | public parcel status — no pairing |
 | `POST /pair` | anyone (rate-limited) | pairing code → device token |
 | `GET /sync` | paired device | snapshot of the books — **no PIN or password hashes, no pairing code** |
 | `POST /login` | paired device | staff PIN checked **on the server** → session |
@@ -581,7 +580,7 @@ connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
 - **No "database is locked".** Each store sets a busy timeout and IMMEDIATE
   transactions; the server opens a connection per request beside the
   counter's own. Tests: `two_tablets_and_the_counter_writing_at_once_lose_and_double_nothing`
-  (Khaynjo), `two_devices_and_the_office_booking_at_once_lose_and_double_nothing` (Courier).
+  (Khaynjo), `two_devices_and_the_office_booking_at_once_lose_and_double_nothing` (Moklanjo).
 
 **The device side (`phone.rs`).** One worker thread talks to the server;
 the screen never waits on the Wi‑Fi.
@@ -628,7 +627,7 @@ device, not the books: `printers.json` in the data folder holds a
 edits both. A route tries the first printer, then the next on failure
 (fallback, not fan-out); an empty route means that feature does not
 print. Khaynjo routes: **Bill**, plus **KOT per kitchen station**
-(`""` = unassigned items only — stations do not share a printer). Courier routes:
+(`""` = unassigned items only — stations do not share a printer). Moklanjo routes:
 **Receipt** and **AWB label**. Legacy files (`kot`/`bill` or `receipt`
 strings) migrate on load; blank fields stay empty (no invented “Default” printer). Settings → **Find printers** lists system printers
 (`lpstat` / `Get-Printer` on desktop) and hosts on this Wi‑Fi that
@@ -776,7 +775,7 @@ Makepad visual traps found this way (do not reintroduce):
 ## Smoke tests
 
 ```bash
-cargo test -p kumkaj-courier
+cargo test -p kumkaj-moklanjo
 cargo test -p kumkaj-khaynjo
 ```
 
@@ -791,20 +790,20 @@ runs. Paper is never the test oracle — captured text is, which checks
 more (station, no prices, KOT number) than looking at a slip. Guard:
 `apps/khaynjo/scripts/check-tests-never-print.sh` runs the suite with
 fake `lp`/`lpr`/`xdg-open` first on `PATH` and fails if any was called.
-`apps/courier/scripts/check-tests-never-print.sh` is the same guard for
-Courier, which got its print sink (2026-10-24) so store-level printing
+`apps/moklanjo/scripts/check-tests-never-print.sh` is the same guard for
+Moklanjo, which got its print sink (2026-10-24) so store-level printing
 can never reach the OS printer from a test.
 
 ## Packaging
 
 ```bash
-./apps/courier/scripts/package-linux.sh       # prod → dist/linux/ (+ install.sh / uninstall.sh)
-./apps/courier/scripts/package-linux-dev.sh   # debug → dist/linux-dev/
-./apps/courier/scripts/package-windows.sh     # prod → dist/windows/ (+ Setup.bat)
-./apps/courier/scripts/msi.sh [prod|dev]      # MSI → dist/KumkajCourier[Dev]-<ver>.msi
-cargo courier-windows-dev              # debug → dist/windows-dev/
-./apps/courier/scripts/package-android.sh
-./apps/courier/scripts/package-web.sh         # kumkaj.com site → dist/web/
+./apps/moklanjo/scripts/package-linux.sh       # prod → dist/linux/ (+ install.sh / uninstall.sh)
+./apps/moklanjo/scripts/package-linux-dev.sh   # debug → dist/linux-dev/
+./apps/moklanjo/scripts/package-windows.sh     # prod → dist/moklanjo-windows/ (+ Setup.bat)
+./apps/moklanjo/scripts/msi.sh [prod|dev]      # MSI → dist/Moklanjo[Dev]-<ver>.msi
+cargo moklanjo-windows-dev              # debug → dist/moklanjo-windows-dev/
+./apps/moklanjo/scripts/package-android.sh
+./apps/moklanjo/scripts/package-web.sh         # kumkaj.com site → dist/web/
 ./apps/khaynjo/scripts/windows-prod.sh # Khaynjo prod → dist/khaynjo-windows/
 ./apps/khaynjo/scripts/package-linux.sh       # Khaynjo prod → dist/khaynjo-linux/ (+ install.sh / uninstall.sh)
 ./apps/khaynjo/scripts/package-linux-dev.sh   # Khaynjo debug → dist/khaynjo-linux-dev/
@@ -825,20 +824,20 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 
 ## Publish checklist (Play / web / desktop)
 
-1. `cargo test -p kumkaj-courier`
-2. `./apps/courier/scripts/package-linux.sh` → smoke `dist/linux/run.sh` / `./install.sh`
-3. `./apps/courier/scripts/package-windows.sh` (or `msi.sh`) → `dist/windows/` (+ `Setup.bat`); optional `cargo courier-windows-dev` for Dev
-4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./apps/courier/scripts/package-android.sh`
+1. `cargo test -p kumkaj-moklanjo`
+2. `./apps/moklanjo/scripts/package-linux.sh` → smoke `dist/linux/run.sh` / `./install.sh`
+3. `./apps/moklanjo/scripts/package-windows.sh` (or `msi.sh`) → `dist/moklanjo-windows/` (+ `Setup.bat`); optional `cargo moklanjo-windows-dev` for Dev
+4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./apps/moklanjo/scripts/package-android.sh`
 5. Set `KUMKAJ_ANDROID_KEYSTORE` (+ `_PASS`) for step 4 — signed APK + AAB (Android § Release signing); create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
-6. `./apps/courier/scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
-7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh apps/courier`
+6. `./apps/moklanjo/scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
+7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh apps/moklanjo`
 
-Platform ids: see **Platform naming** above (`com.kumkaj.courier` / `com.kumkaj.courier.debug`, domain kumkaj.com).
+Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debug`, domain kumkaj.com).
 
 ## Manual UI smoke (shipping)
 
 1. First Server run: choose the Owner PIN; later runs unlock with it
-2. Finish onboarding — Kumkaj Courier is locked; Fresh or Book, then Done
+2. Finish onboarding — Moklanjo is locked; Fresh or Book, then Done
 3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
 4. Day book shows today; Pay out records carrier bills & expenses; More → Parties settle; Day close; Reports
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
@@ -853,7 +852,7 @@ Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder)
 
 Fresh DBs get the full books shape in a single `CREATE TABLE` pass in `Store::migrate`:
 
-- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking). Courier carries courier scope only — no dining tables, kitchen stations or KOT schema; a future food product brings its own
+- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking). Moklanjo carries courier-agency scope only — no dining tables, kitchen stations or KOT schema; a future food product brings its own
 - meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, etc.
 
 Pre-release: if a local DB from an older numbered schema (2–17) misbehaves, delete it and reopen. After first public release, introduce `schema_version` 2+ only for real upgrades. Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
@@ -878,7 +877,7 @@ the seller finds out before the customer does. Void, quick undo and refund put
 the units back and record a `void`/`undo`/`refund` stock movement — otherwise a
 reversed charge would strand stock that strict enforcement then made unsellable.
 
-## Fiscal country packs (`apps/courier/src/fiscal.rs`)
+## Fiscal country packs (`apps/moklanjo/src/fiscal.rs`)
 
 `COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, inclusive/exclusive pricing, seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone.
 

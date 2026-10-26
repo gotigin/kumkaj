@@ -4,7 +4,7 @@
 //! floor/tables, ordering, KOT/kitchen, billing, and Khaynjo's own books
 //! underneath. Labels and lane names live here, in Khaynjo's own code.
 //! There is no Kumkaj core / shared store: this code was copied from
-//! Courier and now diverges freely (see vision §1).
+//! Moklanjo and now diverges freely (see vision §1).
 //!
 //! Locked-template pattern: one product face per binary, templates ship
 //! empty (the owner adds their own menu/parties).

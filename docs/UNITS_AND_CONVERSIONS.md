@@ -1,7 +1,7 @@
 # Kumkaj — units and conversions (all apps)
 
 Canonical Kumkaj-wide doctrine for measurement units. This applies to
-**every** Kumkaj app (Courier, Khaynjo, future products) because every
+**every** Kumkaj app (Moklanjo, Khaynjo, future products) because every
 business operating system measures something — parcels, dishes,
 ingredients, stock, quantities. It is a shared *idea*, not shared code:
 each app implements this doc in its own code (vision §1 — no Kumkaj
@@ -79,7 +79,7 @@ a later rate (only an explicit “value today” view may do that).
 
 | App | Where its own implementation lives | App-specific defaults (that app's doc owns these) |
 |-----|-------------------------------------|---------------------------------------------------|
-| Kumkaj Courier | `apps/courier/src/domain.rs`, `src/store.rs` (Settings → Units / Booking measures) | Booking desk defaults cm + kg, volumetric ÷ 5000, round up to 0.5 kg — see [`apps/courier/docs/KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md) |
+| Moklanjo | `apps/moklanjo/src/domain.rs`, `src/store.rs` (Settings → Units / Booking measures) | Booking desk defaults cm + kg, volumetric ÷ 5000, round up to 0.5 kg — see [`apps/moklanjo/docs/MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md) |
 | Khaynjo | `apps/khaynjo/src/domain.rs`, `src/store.rs` (Settings → Units) | Restaurant quantities/menu and stock units — see [`apps/khaynjo/docs/KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md) |
 | Future apps | Their own `apps/<app>/src/` | Copy the best-fitting app's code, then diverge; never extract a shared units crate |
 

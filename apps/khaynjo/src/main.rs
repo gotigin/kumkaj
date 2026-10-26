@@ -6138,9 +6138,58 @@ script_mod! {
 
                         // Seller: tap items → pay. One page, one scroll: the menu on
                         // top, the order under it.
-                        pos_screen := ScrollYView{
+                        // Order desk: pinned strip (order type + total) stays on
+                        // screen; the menu and ticket scroll underneath — same
+                        // idea as CSS sticky, done with layout (outer Fit + Fill scroll).
+                        pos_screen := View{
                             width: Fill height: Fill
                             visible: false
+                            flow: Down spacing: 0
+                            pos_sticky := SolidView{
+                                width: Fill height: Fit
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
+                                flow: Down spacing: 8
+                                draw_bg.color: #xEFD2BC
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{y: 0.5}
+                                    // Order type: always visible while browsing dishes.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_dinein := SegBtn{text: "Dine-in"}
+                                            otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_takeaway := SegBtn{text: "Takeaway"}
+                                            otype_takeaway_on := SegBtnOn{text: "Takeaway" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_delivery := SegBtn{text: "Delivery"}
+                                            otype_delivery_on := SegBtnOn{text: "Delivery" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_counter := SegBtn{text: "Counter"}
+                                            otype_counter_on := SegBtnOn{text: "Counter" visible: false}
+                                        }
+                                    }
+                                    sticky_total := Label{
+                                        width: Fit height: Fit
+                                        text: "Total · ₹0.00"
+                                        draw_text.color: #x260B08
+                                        draw_text.text_style.font_size: 15.
+                                    }
+                                }
+                                // Dine-in: which table — pinned with the order type.
+                                table_pick_wrap := View{
+                                    width: Fill height: Fit
+                                    table_pick_btn := TablePickBtn{text: "Choose a table"}
+                                }
+                            }
+                            pos_scroll := ScrollYView{
+                            width: Fill height: Fill
                             pos_page := View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
@@ -6242,33 +6291,6 @@ script_mod! {
                                     ticket_left := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
-                                        // Order type: one segmented row. Dine-in leads straight
-                                        // to a table (the button under it, or the floor).
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 6
-                                            View{width: Fill height: Fit flow: Overlay
-                                                otype_dinein := SegBtn{text: "Dine-in"}
-                                                otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                otype_takeaway := SegBtn{text: "Takeaway"}
-                                                otype_takeaway_on := SegBtnOn{text: "Takeaway" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                otype_delivery := SegBtn{text: "Delivery"}
-                                                otype_delivery_on := SegBtnOn{text: "Delivery" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                otype_counter := SegBtn{text: "Counter"}
-                                                otype_counter_on := SegBtnOn{text: "Counter" visible: false}
-                                            }
-                                        }
-                                        // Dine-in: which table, one tap to choose or change it.
-                                        table_pick_wrap := View{
-                                            width: Fill height: Fit
-                                            table_pick_btn := TablePickBtn{text: "Choose a table"}
-                                        }
                                         // Table actions (Print bill · Move / merge). Shown
                                         // while a table is open on the ticket.
                                         table_actions := ActionStack{
@@ -6374,8 +6396,14 @@ script_mod! {
                                                 font_size: 12.
                                             }
 
-                                            // Right under the lines just punched: the one
-                                            // thing to do next is send them to the kitchen.
+                                            // Right under the lines just punched: which
+                                            // kitchens get a ticket, then send.
+                                            kot_dest_hint := WrapLabel{
+                                                body: " "
+                                                font_color: #x69090C
+                                                font_size: 12.
+                                                visible: false
+                                            }
                                             send_stack := ActionStack{
                                                 send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
@@ -6624,8 +6652,9 @@ script_mod! {
                                 }
                                 } // pos_cart_col
                                 } // pos_split
-                            }
-                        }
+                            } // pos_page
+                            } // pos_scroll
+                        } // pos_screen
 
                         floor_screen := ScrollYView{
                             width: Fill height: Fill
@@ -7432,7 +7461,7 @@ script_mod! {
                                     font_color: #x260B08
                                     font_size: 13.
                                 }
-                                h_preset_help_courier := WrapLabel{
+                                h_preset_help_khaynjo := WrapLabel{
                                     width: Fill
                                     body: "Cashier: sell. Manager: sell + items + void/amend."
                                     font_color: #x6B4A3F
@@ -9858,6 +9887,57 @@ fn parse_printer_route_key(key: &str) -> print_share::RouteKey<'_> {
     }
 }
 
+/// Kitchen destinations for unsent cart lines: `(station display name, line count)`,
+/// in first-seen order. Empty station → `unassigned` label (caller supplies it).
+fn pending_kot_destinations(
+    products: &[domain::Product],
+    stations: &[domain::KitchenStation],
+    lines: &[domain::CartLine],
+    unassigned: &str,
+) -> Vec<(String, usize)> {
+    let mut out: Vec<(String, String, usize)> = Vec::new(); // id, name, count
+    for line in lines.iter().filter(|l| !l.is_sent()) {
+        let sid = products
+            .iter()
+            .find(|p| p.id == line.product_id)
+            .map(|p| p.station_id.as_str())
+            .unwrap_or("");
+        let name = if sid.is_empty() {
+            unassigned.to_string()
+        } else {
+            stations
+                .iter()
+                .find(|s| s.id == sid)
+                .map(|s| s.name.clone())
+                .unwrap_or_else(|| unassigned.to_string())
+        };
+        match out.iter_mut().find(|(id, _, _)| id == sid) {
+            Some((_, _, n)) => *n += 1,
+            None => out.push((sid.to_string(), name, 1)),
+        }
+    }
+    out.into_iter().map(|(_, name, n)| (name, n)).collect()
+}
+
+/// Short line for the Send button / status: `Tandoor · Cold` or `Tandoor (2) · Cold (1)`.
+fn format_kot_destinations(dests: &[(String, usize)]) -> String {
+    if dests.is_empty() {
+        return String::new();
+    }
+    let show_counts = dests.len() > 1 || dests.iter().any(|(_, n)| *n > 1);
+    dests
+        .iter()
+        .map(|(name, n)| {
+            if show_counts {
+                format!("{name} ({n})")
+            } else {
+                name.clone()
+            }
+        })
+        .collect::<Vec<_>>()
+        .join(" · ")
+}
+
 fn printers_found_line(t: impl Fn(&str) -> String) -> String {
     if print_share::is_finding_printers() {
         return t("printers_looking");
@@ -10242,7 +10322,7 @@ struct CartList {
 
 impl Widget for CartList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (lines, products, currency, fiscal, lang, open_line, kot_heads, split_pick) = {
+        let (lines, products, stations, currency, fiscal, lang, open_line, kot_heads, split_pick) = {
             let st = app_state().lock().unwrap();
             let split_pick = if st.split_mode && st.screen == Screen::Pos { st.split_pick.clone() } else { Vec::new() };
             let lines = if st.screen == Screen::Sales {
@@ -10253,6 +10333,7 @@ impl Widget for CartList {
             (
                 lines,
                 st.products.clone(),
+                st.stations.clone(),
                 st.locale.currency.clone(),
                 st.fiscal.clone(),
                 st.locale.language.clone(),
@@ -10360,6 +10441,24 @@ impl Widget for CartList {
                     // Sent or not is the group header's job; NC is the line's.
                     if line.complimentary {
                         meta.push_str(&format!(" · {}", locale::t(&lang, "nc_short")));
+                    }
+                    // Unsent lines: which kitchen gets this dish (from the menu item).
+                    if !line.is_sent() {
+                        let sid = products
+                            .iter()
+                            .find(|p| p.id == line.product_id)
+                            .map(|p| p.station_id.as_str())
+                            .unwrap_or("");
+                        let dest = if sid.is_empty() {
+                            locale::t(&lang, "kot_unassigned")
+                        } else {
+                            stations
+                                .iter()
+                                .find(|s| s.id == sid)
+                                .map(|s| s.name.clone())
+                                .unwrap_or_else(|| locale::t(&lang, "kot_unassigned"))
+                        };
+                        meta.push_str(&format!(" · → {dest}"));
                     }
                     if !line.note.trim().is_empty() {
                         meta.push_str(&format!(" · {}", line.note.trim()));
@@ -11936,6 +12035,44 @@ impl App {
             .widget(cx, ids!(cart_charge_caption)).set_text(cx, &plain_display_text(&charge_caption));
         self.ui
             .widget(cx, ids!(cart_round_hint)).set_text(cx, &plain_display_text(&round_hint));
+        // Pinned Order strip: always show the running total next to order type.
+        {
+            let st = app_state().lock().unwrap();
+            let sticky = format!(
+                "{} · {}",
+                st.t("total"),
+                applied_label
+            );
+            drop(st);
+            self.ui
+                .label(cx, ids!(sticky_total))
+                .set_text(cx, &sticky);
+        }
+        // Send KOT: name the kitchens this order will reach (and their printers).
+        {
+            let st = app_state().lock().unwrap();
+            let unassigned = st.t("kot_unassigned");
+            let dests = pending_kot_destinations(
+                &st.products,
+                &st.stations,
+                &st.cart.lines,
+                &unassigned,
+            );
+            let dest_line = format_kot_destinations(&dests);
+            let (btn, hint, hint_on) = if dests.is_empty() {
+                (st.t("send_kot"), String::new(), false)
+            } else {
+                let btn = st.t("send_kot_to").replace("{kitchens}", &dest_line);
+                let hint = st.t("kot_dest_hint").replace("{kitchens}", &dest_line);
+                (btn, hint, true)
+            };
+            drop(st);
+            self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
+            self.ui
+                .widget(cx, ids!(kot_dest_hint))
+                .set_text(cx, &plain_display_text(&hint));
+            self.ui.widget(cx, ids!(kot_dest_hint)).set_visible(cx, hint_on);
+        }
         {
             let total_field = self.ui.text_input(cx, ids!(cart_total_input));
             let shown = total_field.text();
@@ -13499,6 +13636,8 @@ impl App {
         self.align_label(cx, ids!(cart_list), rtl);
         self.align_label(cx, ids!(cart_natural_label), rtl);
         self.align_label(cx, ids!(cart_applied_label), rtl);
+        self.align_label(cx, ids!(sticky_total), rtl);
+        self.align_label(cx, ids!(kot_dest_hint), rtl);
         self.align_label(cx, ids!(cart_charge_caption), rtl);
         self.align_label(cx, ids!(cart_round_hint), rtl);
         self.align_label(cx, ids!(undo_snack_label), rtl);
@@ -13571,7 +13710,7 @@ impl App {
         self.align_label(cx, ids!(h_account_kind), rtl);
         self.align_label(cx, ids!(h_team_owner_help), rtl);
         self.align_label(cx, ids!(h_permission_preset), rtl);
-        self.align_label(cx, ids!(h_preset_help_courier), rtl);
+        self.align_label(cx, ids!(h_preset_help_khaynjo), rtl);
         self.align_label(cx, ids!(h_optional_login_help), rtl);
         self.align_label(cx, ids!(h_feature_access_help), rtl);
         self.align_label(cx, ids!(h_change_my_pin_heading), rtl);
@@ -13915,7 +14054,7 @@ impl App {
         self.ui.widget(cx, ids!(h_account_kind)).set_text(cx, &plain_display_text(&s("account_kind")));
         self.ui.widget(cx, ids!(h_team_owner_help)).set_text(cx, &plain_display_text(&s("team_owner_help")));
         self.ui.widget(cx, ids!(h_permission_preset)).set_text(cx, &plain_display_text(&s("permission_preset")));
-        self.ui.widget(cx, ids!(h_preset_help_courier)).set_text(cx, &plain_display_text(&s("preset_help_rest")));
+        self.ui.widget(cx, ids!(h_preset_help_khaynjo)).set_text(cx, &plain_display_text(&s("preset_help_rest")));
         for (idle, on, key) in [
             (ids!(staff_role_waiter), ids!(staff_role_waiter_on), "role_waiter"),
             (ids!(staff_role_kitchen), ids!(staff_role_kitchen_on), "role_kitchen"),
@@ -14131,7 +14270,7 @@ impl App {
         self.ui.text_input(cx, ids!(sale_attach_note)).set_empty_text(cx, s("extra_note_bill_ph"));
         self.ui.button(cx, ids!(sale_attach_pdf)).set_text(cx, &s("attach_pdf"));
         self.ui.button(cx, ids!(sale_attach_photo)).set_text(cx, &s("attach_photo"));
-        self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &s("send_kot"));
+        // send_kot_btn text is set in sync_chrome (names the kitchens).
         self.ui.widget(cx, ids!(shop_badge)).set_text(cx, &plain_display_text(&s("shop")));
         self.ui.button(cx, ids!(staff_add_cashier)).set_text(cx, &s("add_staff"));
         self.ui.button(cx, ids!(staff_deactivate)).set_text(cx, &s("remove_selected"));
@@ -14509,7 +14648,7 @@ impl App {
             Screen::Onboard => ids!(onboard_screen),
             Screen::ClientPair => ids!(client_pair_screen),
             Screen::Books => ids!(books_screen),
-            Screen::Pos => ids!(pos_screen),
+            Screen::Pos => ids!(pos_scroll),
             Screen::Buy => ids!(buy_screen),
             Screen::Floor => ids!(floor_screen),
             Screen::Kitchen => ids!(kitchen_screen),
@@ -14661,9 +14800,8 @@ impl App {
         let two_columns = content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
         *content_width().lock().unwrap() = content_w;
 
-        // The order desk is one page that scrolls as a whole from anywhere:
-        // menu (search, categories, tiles) on top, the order under it. Never
-        // two separately scrolling panes.
+        // Order type + total stay pinned above; the desk body (catalog +
+        // ticket) scrolls as one page underneath. Never two side panes.
         set_view_flow(cx, &self.ui.view(cx, ids!(pos_split)), Flow::Down);
         for path in [ids!(pos_split), ids!(pos_catalog), ids!(pos_cart_col)] {
             set_view_walk(
@@ -20793,6 +20931,19 @@ impl MatchEvent for App {
                 let actor = st.actor()?;
                 let draft = st.cart.to_kot_draft()?;
                 let table_id = st.selected_table_id.clone();
+                let unassigned = st.t("kot_unassigned");
+                let dests = pending_kot_destinations(
+                    &st.products,
+                    &st.stations,
+                    &st.cart.lines,
+                    &unassigned,
+                );
+                let dest_line = format_kot_destinations(&dests);
+                let kitchens = if dest_line.is_empty() {
+                    st.t("kitchen")
+                } else {
+                    dest_line.clone()
+                };
                 let msg = if st.device_role == DeviceRole::Client {
                     let table_name = table_id.as_ref().and_then(|tid| {
                         st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
@@ -20803,8 +20954,8 @@ impl MatchEvent for App {
                     let job = st.lan_job(
                         "/kot",
                         &net::RemoteKotRequest { draft, table_name, table_id: table_id.clone() },
-                        format!("KOT for {place}"),
-                        format!("KOT for {place} reached the kitchen"),
+                        format!("KOT for {place} → {kitchens}"),
+                        format!("KOT for {place} reached {kitchens}"),
                         phone::Follow::Refresh,
                         true,
                     )?;
@@ -20817,17 +20968,20 @@ impl MatchEvent for App {
                     } else {
                         st.cart.mark_new_lines_sent("counter");
                     }
-                    return Ok(format!("KOT for {place} saved — sending to the kitchen"));
+                    return Ok(format!(
+                        "KOT for {place} → {kitchens} saved — sending"
+                    ));
                 } else {
                     let kot_ids = {
                         let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                         store.send_kot(&draft, table_id.as_deref(), &actor)?
                     };
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let n = kot_ids.len();
                     match (store.kot_auto_print(), net::print_sent_kots(store, &kot_ids)) {
-                        (true, None) => format!("{} KOT(s) sent to kitchen · printed", kot_ids.len()),
-                        (true, Some(e)) => format!("KOT sent to kitchen · print failed: {e}"),
-                        (false, _) => format!("{} KOT(s) sent to kitchen", kot_ids.len()),
+                        (true, None) => format!("{n} KOT(s) → {kitchens} · printed"),
+                        (true, Some(e)) => format!("KOT → {kitchens} · print failed: {e}"),
+                        (false, _) => format!("{n} KOT(s) → {kitchens}"),
                     }
                 };
                 match table_id {

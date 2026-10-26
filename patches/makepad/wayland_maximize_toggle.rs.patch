@@ -517,7 +517,7 @@
      }
 +
 +    /// Conventional floating size when there is no pre-maximize geometry
-+    /// (matches common desktop defaults / Kumkaj Courier first-run size).
++    /// (matches common desktop defaults / Moklanjo first-run size).
 +    const RESTORE_DEFAULT_SIZE: Vec2d = dvec2(1024.0, 768.0);
 +
 +    /// True when a size looks like a single ultrawide/monitor fill rather than

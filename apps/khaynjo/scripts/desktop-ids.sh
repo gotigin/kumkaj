@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Khaynjo's desktop install / data path helpers (shipped inside its
-# packages; apps/courier/scripts has Courier's own copy).
+# packages; apps/moklanjo/scripts has Moklanjo's own copy).
 # Requires KUMKAJ_APP_ID and KUMKAJ_APP_LABEL (from env/*.env or
 # install-manifest.env). Overrides: KUMKAJ_INSTALL_SLUG, KUMKAJ_BIN_NAME,
 # KUMKAJ_PROGRAMS_NAME. Defaults are Khaynjo's.

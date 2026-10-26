@@ -1,9 +1,0 @@
-[package]
-name = "courier-android-dev"
-version = "0.1.0"
-edition = "2021"
-publish = false
-
-[[bin]]
-name = "courier-android-dev"
-path = "main.rs"

@@ -1,6 +1,6 @@
 ---
 description: Makepad 2 selection + CTA truncation — cause, approach, do/don't
-globs: apps/courier/**/*.{rs,md}
+globs: apps/moklanjo/**/*.{rs,md}
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces.
 
-The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy (examples here are Courier's `apps/courier`), not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
+The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy (examples here are Moklanjo's `apps/moklanjo`), not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
 
 ## Cause (regressions we already paid for)
 

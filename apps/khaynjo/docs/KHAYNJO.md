@@ -3,14 +3,14 @@
 > **Brand / domain:** Khaynjo · khaynjo.com ("Khaynjo" = food in Memoni)
 > **What ships:** the Kumkaj restaurant product — a concrete business
 > operating system for restaurants and like food businesses, under the
-> Kumkaj brand alongside Kumkaj Courier.
+> Kumkaj brand alongside Moklanjo.
 > **Platform ids:** production `com.khaynjo` · development
 > `com.khaynjo.debug`
 > **Naming:** Khaynjo belongs to the Kumkaj brand, but its domain is
-> its own — **khaynjo.com**, not a path under kumkaj.com. Courier's id
-> is `com.kumkaj.courier` (kumkaj.com + product); Khaynjo's id root is
+> its own — **khaynjo.com**, not a path under kumkaj.com. Moklanjo
+> likewise uses **moklanjo.com** / `com.moklanjo`. Khaynjo's id root is
 > simply `com.khaynjo` (its own domain; the product *is* the brand),
-> with `.debug` for dev exactly like Courier's split. Data dirs,
+> with `.debug` for dev exactly like Moklanjo's split. Data dirs,
 > Android application id, iOS/macOS bundle id (when signed), and the
 > desktop packager identifier all use this root. Do not re-tie
 > Khaynjo ids to `com.kumkaj.*`.
@@ -60,10 +60,10 @@ Khaynjo-specific delta on top of those: India-first also means
 **GST, UPI, and veg/non-veg marking** are first-class in the
 restaurant face from day one.
 
-## 3. What was copied from Courier (do not reinvent)
+## 3. What was copied from Moklanjo (do not reinvent)
 
-Khaynjo's crate is a copy of `apps/courier`, renamed. Already working
-and covered by Courier's hard-won fixes + tests:
+Khaynjo's crate is a copy of `apps/moklanjo`, renamed. Already working
+and covered by Moklanjo's hard-won fixes + tests:
 
 | Area | Where |
 |---|---|
@@ -77,7 +77,7 @@ and covered by Courier's hard-won fixes + tests:
 | Tables/KOT already in schema before Khaynjo existed | `tables_dining`, `kot_tickets`, `kitchen_stations` |
 
 This copy is Khaynjo's own code now — change it freely for restaurants
-without touching Courier. When a future product needs the same logic,
+without touching Moklanjo. When a future product needs the same logic,
 it copies from whichever app fits best and diverges the same way:
 never extract into shared code, and never create a Kumkaj core that
 would make one app's change impact another.
@@ -98,8 +98,8 @@ would make one app's change impact another.
   [`IDENTITY_AND_NAMES.md`](../../../docs/IDENTITY_AND_NAMES.md)).
   What remains from
   the copy is Khaynjo's own books/billing code from §3 — store, sync, money,
-  fiscal packs, staff/roles, shell — copied from Courier and now free
-  to diverge; it is not shared with Courier.
+  fiscal packs, staff/roles, shell — copied from Moklanjo and now free
+  to diverge; it is not shared with Moklanjo.
 - Owner logo is in place (`assets/khaynjo-app-icon.png`); the full
   icon set and in-app marks are generated from it, and the shell
   theme is sampled from its colors (deep red `#9A0E10`, maroon
@@ -114,7 +114,7 @@ would make one app's change impact another.
   server made without a name is labelled "Server af76697b" in the server
   list only — that label is never taken as the restaurant's name, and
   books that took it earlier read as unnamed (`is_generated_server_label`).
-- Image upload follows Courier's idea, copied with the crate:
+- Image upload follows Moklanjo's idea, copied with the crate:
   menu-item/party photos are user-picked (or shelf) files re-encoded
   to WebP (`src/media.rs`), item/category photos capped at 768 px
   (`ITEM_PHOTO_EDGE`), with name-initials fallback
@@ -214,7 +214,7 @@ Khaynjo’s static UI — every label, heading, button, placeholder,
 hint, and the setup / lock / onboarding screens — ships fully
 translated in the 29 Kumkaj languages (list and doctrine: vision
 §23). The dictionary is Khaynjo’s own copy (`src/locale.rs`,
-`src/locale_chrome.rs`), diverged from Courier’s; the
+`src/locale_chrome.rs`), diverged from Moklanjo’s; the
 `shipped_languages_translate_chrome` test fails if any key would fall
 back to English in any shipped language, so new labels land with all
 translations. First launch follows the device language; afterwards
@@ -337,8 +337,10 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    system printer by name or a network ESC/POS printer by address, test
    page), print failures shown on screen, device clock checked against
    the Server, Android saves backup copies through the system dialog and
-   restores from Downloads/USB; an Android tablet served a Linux
-   desktop client end to end on the emulator (pair, PIN on the Server,
+   the Server, Android saves backup copies through the system dialog and
+   restores from Downloads/USB; two devices of different supported platforms
+   served a third device end to end on the emulator (pair, PIN on the Server,
+   names synced).
    names synced).
    *Still to do:* the same run on real hardware, on the devices the shop
    actually has — see §6.

@@ -2,7 +2,7 @@
 # Khaynjo MSI (per-user install, no admin): dist/Khaynjo-<ver>.msi, or
 # dist/KhaynjoDev-<ver>.msi for the development app id. Builds the Windows
 # package first. Its own upgrade codes: installs and upgrades never touch
-# Kumkaj Courier's.
+# Moklanjo's.
 #   apps/khaynjo/scripts/msi.sh        # prod
 #   apps/khaynjo/scripts/msi.sh dev    # dev
 set -euo pipefail

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build a per-user MSI from a staged Windows package folder. Shared by the
 # apps; each app's own msi.sh sets who it is and calls this:
-#   apps/courier/scripts/msi.sh [prod|dev]   -> dist/KumkajCourier[Dev]-<ver>.msi
+#   apps/moklanjo/scripts/msi.sh [prod|dev]   -> dist/Moklanjo[Dev]-<ver>.msi
 #   apps/khaynjo/scripts/msi.sh [prod|dev]   -> dist/Khaynjo[Dev]-<ver>.msi
 # Required from the caller (no default app — a missing one must fail, not
 # build another product's installer):

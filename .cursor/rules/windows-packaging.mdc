@@ -1,5 +1,5 @@
 ---
-description: Windows install/uninstall and Store packaging order for Kumkaj apps (Courier, Khaynjo)
+description: Windows install/uninstall and Store packaging order for Kumkaj apps (Moklanjo, Khaynjo)
 alwaysApply: true
 ---
 
@@ -9,7 +9,7 @@ alwaysApply: true
 
 **Order of work:**
 
-1. **Now:** Per-user **MSI** per app (`apps/courier/scripts/msi.sh` → `dist/KumkajCourier-*.msi`, `apps/khaynjo/scripts/msi.sh` → `dist/Khaynjo-*.msi`; both call the shared `scripts/build-msi.sh`) — single file, Start Menu, Settings → Apps uninstall, no admin, MajorUpgrade replaces old versions, books data kept. Never change an app's upgrade codes. Package folder (`<bin>.exe` + `<crate>/resources/` underscores + the app's own `Setup.bat`) is the fallback. Do not tell people to open `.ps1` in Explorer (Notepad).
+1. **Now:** Per-user **MSI** per app (`apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-*.msi`, `apps/khaynjo/scripts/msi.sh` → `dist/Khaynjo-*.msi`; both call the shared `scripts/build-msi.sh`) — single file, Start Menu, Settings → Apps uninstall, no admin, MajorUpgrade replaces old versions, books data kept. Never change an app's upgrade codes. Package folder (`<bin>.exe` + `<crate>/resources/` underscores + the app's own `Setup.bat`) is the fallback. Do not tell people to open `.ps1` in Explorer (Notepad).
 2. **Later:** Package as **MSIX** and publish through the Microsoft Store.
 
 Do not treat “website zip only / portable forever” as the long-term Windows product shape. Do not jump to MSIX before install/uninstall is solid unless the owner asks.
