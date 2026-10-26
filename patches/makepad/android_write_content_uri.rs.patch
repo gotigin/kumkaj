@@ -1,0 +1,58 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1540,6 +1540,31 @@
+     ndk_utils::call_void_method!(env, get_activity(), "keepScreenOn", "(Z)V", on as i32);
+ }
+ 
++/// Writes `data` to a Storage Access Framework `content://` URI (one the
++/// save-file picker returned) through `MakepadActivity.writeContentUri`,
++/// replacing what was there. True when every byte was written.
++pub unsafe fn to_java_write_content_uri(uri: String, data: &[u8]) -> bool {
++    let env = attach_jni_env();
++    let Ok(uri) = CString::new(uri) else {
++        return false;
++    };
++    let uri = ((**env).NewStringUTF.unwrap())(env, uri.as_ptr());
++    let bytes = (**env).NewByteArray.unwrap()(env, data.len() as i32);
++    if bytes.is_null() {
++        return false;
++    }
++    (**env).SetByteArrayRegion.unwrap()(env, bytes, 0, data.len() as i32, data.as_ptr() as *const jni_sys::jbyte);
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "writeContentUri",
++        "(Ljava/lang/String;[B)Z",
++        uri,
++        bytes
++    );
++    ok != 0
++}
++
+ pub unsafe fn to_java_paste_from_clipboard() -> String {
+     let env = attach_jni_env();
+     let result = ndk_utils::call_object_method!(
+--- a/platform/src/cx_api.rs
++++ b/platform/src/cx_api.rs
+@@ -1205,6 +1205,21 @@
+         }
+     }
+ 
++    /// Write `data` to an Android `content://` URI the save-file picker
++    /// returned (`ACTION_CREATE_DOCUMENT`), replacing it. False elsewhere —
++    /// desktop pickers return real paths, written with `std::fs`.
++    pub fn write_content_uri(&mut self, uri: &str, data: &[u8]) -> bool {
++        #[cfg(target_os = "android")]
++        unsafe {
++            return crate::os::linux::android::android_jni::to_java_write_content_uri(uri.to_owned(), data);
++        }
++        #[cfg(not(target_os = "android"))]
++        {
++            let _ = (uri, data);
++            false
++        }
++    }
++
+     /// Sets the primary selection (Linux middle-click paste).
+     /// No-op on non-Linux platforms.
+     pub fn set_primary_selection(&mut self, content: &str) {

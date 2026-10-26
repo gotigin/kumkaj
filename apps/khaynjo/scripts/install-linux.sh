@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Install Kumkaj Courier for the current user (Linux).
+# Install Khaynjo for the current user (Linux).
 # Run from a package folder (dist/linux or dist/linux-dev) that contains:
-#   kumkaj-courier                 (binary under bin/)
-#   kumkaj_courier/resources/      (fonts + icons; underscores = Makepad crate name)
+#   kumkaj-khaynjo                 (binary under bin/)
+#   kumkaj_khaynjo/resources/      (fonts + icons; underscores = Makepad crate name)
 #   install-manifest.env
 #   uninstall.sh
 #   desktop-ids.sh
 #
 # Usage:
 #   ./install.sh
-#   ./scripts/install-linux.sh /path/to/package
+#   ./apps/khaynjo/scripts/install-linux.sh /path/to/package
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -17,8 +17,8 @@ PKG="${1:-}"
 if [[ -z "$PKG" ]]; then
   if [[ -f "$SCRIPT_DIR/install-manifest.env" ]]; then
     PKG="$SCRIPT_DIR"
-  elif [[ -f "$SCRIPT_DIR/../dist/linux/install-manifest.env" ]]; then
-    PKG="$(cd "$SCRIPT_DIR/../dist/linux" && pwd)"
+  elif [[ -f "$SCRIPT_DIR/../../../dist/khaynjo-linux/install-manifest.env" ]]; then
+    PKG="$(cd "$SCRIPT_DIR/../../../dist/khaynjo-linux" && pwd)"
   else
     PKG="$SCRIPT_DIR"
   fi
@@ -33,27 +33,27 @@ source "$IDS"
 MANIFEST="$PKG/install-manifest.env"
 if [[ ! -f "$MANIFEST" ]]; then
   echo "Missing install-manifest.env in $PKG" >&2
-  echo "Build with ./scripts/package-linux.sh (or package-linux-dev.sh)." >&2
+  echo "Build with ./apps/khaynjo/scripts/package-linux.sh (or package-linux-dev.sh)." >&2
   exit 1
 fi
 desktop_load_manifest "$MANIFEST"
 
 BIN_SRC=""
-for cand in "$PKG/bin/kumkaj-courier" "$PKG/kumkaj-courier"; do
+for cand in "$PKG/bin/kumkaj-khaynjo" "$PKG/kumkaj-khaynjo"; do
   if [[ -f "$cand" ]]; then
     BIN_SRC="$cand"
     break
   fi
 done
 if [[ -z "$BIN_SRC" ]]; then
-  echo "Missing binary: $PKG/bin/kumkaj-courier" >&2
+  echo "Missing binary: $PKG/bin/kumkaj-khaynjo" >&2
   exit 1
 fi
-RES_DIR="kumkaj_courier"
+RES_DIR="kumkaj_khaynjo"
 if [[ ! -d "$PKG/$RES_DIR/resources" ]]; then
-  if [[ -d "$PKG/kumkaj-courier/resources" ]]; then
-    echo "Found legacy hyphenated resources at $PKG/kumkaj-courier/resources" >&2
-    echo "Makepad needs kumkaj_courier/resources (underscores). Re-run the package script." >&2
+  if [[ -d "$PKG/kumkaj-khaynjo/resources" ]]; then
+    echo "Found legacy hyphenated resources at $PKG/kumkaj-khaynjo/resources" >&2
+    echo "Makepad needs kumkaj_khaynjo/resources (underscores). Re-run the package script." >&2
     exit 1
   fi
   echo "Missing resources: $PKG/$RES_DIR/resources" >&2
@@ -62,7 +62,7 @@ if [[ ! -d "$PKG/$RES_DIR/resources" ]]; then
 fi
 if [[ ! -f "$PKG/$RES_DIR/resources/fonts/NotoSans-Regular.ttf" ]]; then
   echo "Missing UI font: $PKG/$RES_DIR/resources/fonts/NotoSans-Regular.ttf" >&2
-  echo "Run ./scripts/fetch-ui-fonts.sh then re-package." >&2
+  echo "Run ./scripts/fetch-ui-fonts.sh apps/khaynjo then re-package." >&2
   exit 1
 fi
 
@@ -84,13 +84,13 @@ echo "  App id:       $KUMKAJ_APP_ID"
 rm -rf "$INSTALL_DIR"
 mkdir -p "$INSTALL_DIR/bin" "$BIN_DIR" "$APP_DIR"
 
-cp -f "$BIN_SRC" "$INSTALL_DIR/bin/kumkaj-courier"
-chmod +x "$INSTALL_DIR/bin/kumkaj-courier"
-# Makepad layout: resources at <install>/kumkaj_courier/resources next to run cwd.
+cp -f "$BIN_SRC" "$INSTALL_DIR/bin/kumkaj-khaynjo"
+chmod +x "$INSTALL_DIR/bin/kumkaj-khaynjo"
+# Makepad layout: resources at <install>/kumkaj_khaynjo/resources next to run cwd.
 mkdir -p "$INSTALL_DIR/$RES_DIR"
 rsync -a --delete "$PKG/$RES_DIR/resources/" "$INSTALL_DIR/$RES_DIR/resources/"
 # Drop any leftover hyphenated tree from older installs.
-rm -rf "$INSTALL_DIR/kumkaj-courier"
+rm -rf "$INSTALL_DIR/kumkaj-khaynjo"
 
 cat >"$INSTALL_DIR/run.sh" <<EOF
 #!/usr/bin/env bash
@@ -98,7 +98,7 @@ set -euo pipefail
 ROOT="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
 export MAKEPAD_PACKAGE_DIR=.
 cd "\$ROOT"
-exec "\$ROOT/bin/kumkaj-courier" "\$@"
+exec "\$ROOT/bin/kumkaj-khaynjo" "\$@"
 EOF
 chmod +x "$INSTALL_DIR/run.sh"
 
@@ -126,12 +126,12 @@ cat >"$APP_DIR/${ENTRY_ID}.desktop" <<EOF
 Type=Application
 Version=1.0
 Name=$LABEL
-Comment=Courier books + booking desk
+Comment=Restaurant orders, kitchen and books
 Exec=$INSTALL_DIR/run.sh
 Icon=$ICON
 Terminal=false
 Categories=Office;Finance;
-StartupWMClass=kumkaj-courier
+StartupWMClass=kumkaj-khaynjo
 EOF
 
 cat >"$APP_DIR/${ENTRY_ID}-uninstall.desktop" <<EOF

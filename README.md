@@ -6,7 +6,7 @@ Kumkaj (kumkaj.com) — brand for a **family of concrete business operating syst
 
 **App ids:** Courier production `com.kumkaj.courier` · development `com.kumkaj.courier.debug`; Khaynjo production `com.khaynjo` · development `com.khaynjo.debug` (each app's `env/`, baked by its `build.rs`). Platform matrix and data paths: [`docs/DEV.md`](docs/DEV.md).
 
-Project documentation: **global** doctrine lives in [`docs/`](docs/); each app keeps its own code, docs and launch scripts under `apps/<app>/`. Root `scripts/` are build/packaging tooling only, parameterised per app — never product logic.
+Project documentation: **global** doctrine lives in [`docs/`](docs/); each app keeps its own code, docs and launch scripts under `apps/<app>/`. Root `scripts/` are shared build/packaging tooling only — they name no app and need the caller to say which; anything concrete to one app (its packages, installers, MSI codes) lives in `apps/<app>/scripts/`. Never product logic.
 
 - [`docs/README.md`](docs/README.md) — product overview
 - [`docs/DEV.md`](docs/DEV.md) — developer notes, workspace/platform, env/ids, packaging, publish checklist

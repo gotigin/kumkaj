@@ -1,0 +1,96 @@
+--- a/widgets/src/text_flow.rs
++++ b/widgets/src/text_flow.rs
+@@ -26,7 +26,7 @@
+         code_color: #333
+         quote_bg_color: #222
+         quote_fg_color: #aaa
+-        selection_color: #FF5C3966
++        selection_color: #3d6fd9FF
+         table_header_bg_color: #FFFFFF22
+         table_border_color: #666
+ 
+@@ -69,7 +69,9 @@
+                     return sdf.result
+                 }
+                 FlowBlockType.Selection => {
+-                    return vec4(self.selection_color.rgb * self.selection_color.a, self.selection_color.a)
++                    // Solid band. Premultiply+low alpha washed into the page
++                    // (light-on-light). Always paint opaque RGB.
++                    return vec4(self.selection_color.xyz, 1.0)
+                 }
+                 FlowBlockType.TableCell => {
+                     sdf.rect(0. 0. self.rect_size.x self.rect_size.y)
+@@ -1146,7 +1148,9 @@
+ 
+ impl Widget for TextFlow {
+     fn is_interactive(&self) -> bool {
+-        false
++        // Selectable copy must participate in hit-testing; otherwise the
++        // parent ScrollYView owns every drag and selection never starts.
++        self.selectable
+     }
+ 
+     fn draw_walk(&mut self, cx: &mut Cx2d, _scope: &mut Scope, walk: Walk) -> DrawStep {
+@@ -1240,10 +1244,17 @@
+                     self.selection_anchor = idx;
+                     self.selection_cursor = idx;
+                     self.is_selecting = true;
++                    // Own the gesture: block page drag-scroll and take capture
++                    // so ScrollBar capture_overload cannot promote over us.
++                    cx.block_scrolling_except_within(Area::Empty);
++                    let _ = cx.promote_finger_capture_over(self.area);
+                     self.redraw(cx);
+                 }
+             }
+             Hit::FingerMove(fe) if self.is_selecting => {
++                // Re-assert every move — block is cleared across draw passes.
++                cx.block_scrolling_except_within(Area::Empty);
++                let _ = cx.promote_finger_capture_over(self.area);
+                 if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs) {
+                     if self.selection_cursor != idx {
+                         self.selection_cursor = idx;
+@@ -1254,7 +1265,11 @@
+                 }
+             }
+             Hit::FingerUp(fe) => {
++                let was_selecting = self.is_selecting;
+                 self.is_selecting = false;
++                if was_selecting {
++                    cx.unblock_scrolling();
++                }
+                 if fe.device.is_touch() {
+                     let has_selection = self.has_selection();
+                     if has_selection {
+@@ -1266,6 +1281,9 @@
+                 }
+             }
+             Hit::KeyFocusLost(_) => {
++                if self.is_selecting {
++                    cx.unblock_scrolling();
++                }
+                 self.clear_selection();
+                 cx.hide_clipboard_actions();
+                 self.redraw(cx);
+@@ -1510,6 +1528,11 @@
+         self.selectable && self.selection_anchor != self.selection_cursor
+     }
+ 
++    /// True while the pointer is dragging to extend a selection.
++    pub fn is_drag_selecting(&self) -> bool {
++        self.is_selecting
++    }
++
+     /// Selection anchor rect for clipboard/action popups.
+     fn selection_clipboard_rect(&self, cx: &Cx) -> Rect {
+         let start = self.selection_anchor.min(self.selection_cursor);
+--- a/widgets/src/markdown.rs
++++ b/widgets/src/markdown.rs
+@@ -235,7 +235,7 @@
+ 
+ impl Widget for Markdown {
+     fn is_interactive(&self) -> bool {
+-        false
++        self.text_flow.selectable
+     }
+ 
+     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {

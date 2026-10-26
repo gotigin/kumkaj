@@ -15,12 +15,12 @@ function PromptDeleteBooksData() {
         // 60s timeout returns -1 (treated as No) so a silent uninstall
         // never hangs on this.
         var answer = shell.Popup(
-            "Also delete your Kumkaj Courier books data?\n\n" +
+            "Also delete your __APP_LABEL__ books data?\n\n" +
                 dir +
                 "\n\nYes - delete books, backups and settings forever." +
                 "\nNo - keep them; a reinstall will find them again.",
             60,
-            "Uninstall Kumkaj Courier",
+            "Uninstall __APP_LABEL__",
             4 + 32 + 4096
         );
         if (answer == 6) {

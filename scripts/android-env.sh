@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shared Android env for package-android.sh and per-app android-dev.sh launchers.
+# Shared Android env for each app's package-android.sh / android-dev.sh.
 # shellcheck disable=SC2034
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -74,9 +74,9 @@ ensure_android_toolchain() {
 
 android_pkg_opts() {
   local sdk="$1"
-  # Prefer already-loaded KUMKAJ_APP_* from load_kumkaj_env; fall back to production ids.
-  local pkg="${KUMKAJ_APP_ID:-com.kumkaj.courier}"
-  local label="${KUMKAJ_APP_LABEL:-Kumkaj Courier}"
+  # The app's ids, from load_kumkaj_env (no default: never another app's id).
+  local pkg="${KUMKAJ_APP_ID:?load_kumkaj_env first (KUMKAJ_APP_ID)}"
+  local label="${KUMKAJ_APP_LABEL:?load_kumkaj_env first (KUMKAJ_APP_LABEL)}"
   ANDROID_PKG_OPTS=(
     --package-name="$pkg"
     --app-label="$label"
@@ -84,4 +84,70 @@ android_pkg_opts() {
     --sdk-path="$sdk"
   )
   echo "Android package: $pkg ($label)"
+}
+
+# Release builds: a version code that always goes up (YYYYMMDDHH), so each
+# package installs over the last one and Play accepts it.
+android_release_opts() {
+  ANDROID_PKG_OPTS+=(--version-code=auto)
+}
+
+# Release signing. An Android update installs only over an app signed with
+# the same key, and uninstalling to get past a key change deletes the books
+# on that device — so packages for shops are signed with the app's own
+# release key. cargo-makepad's `build` always signs with Makepad's bundled
+# debug key; android_release_sign re-signs the APK in place.
+#   KUMKAJ_ANDROID_KEYSTORE       keystore file, made once per app with
+#                                 cargo makepad android keystore-create <path>
+#   KUMKAJ_ANDROID_KEYSTORE_PASS  its password
+#   KUMKAJ_ANDROID_KEY_ALIAS      key alias (default: the keystore's
+#                                 <path>.makepad sidecar, else "upload")
+# Keep the keystore and its password outside the repo, backed up: a lost key
+# means no more updates for installed devices.
+android_release_keystore_set() {
+  [[ -n "${KUMKAJ_ANDROID_KEYSTORE:-}" ]]
+}
+
+android_key_alias() {
+  local alias="${KUMKAJ_ANDROID_KEY_ALIAS:-}"
+  if [[ -z "$alias" && -f "$KUMKAJ_ANDROID_KEYSTORE.makepad" ]]; then
+    alias="$(sed -n 's/^[[:space:]]*alias[[:space:]]*=[[:space:]]*"\{0,1\}\([^"]*\)"\{0,1\}[[:space:]]*$/\1/p' "$KUMKAJ_ANDROID_KEYSTORE.makepad" | head -1)"
+  fi
+  echo "${alias:-upload}"
+}
+
+android_release_sign() {
+  local apk="$1" sdk="$2"
+  if ! android_release_keystore_set; then
+    echo "NOTE: $(basename "$apk") is signed with Makepad's debug key — fine to try out," >&2
+    echo "      not for shops: set KUMKAJ_ANDROID_KEYSTORE and KUMKAJ_ANDROID_KEYSTORE_PASS" >&2
+    echo "      so every later update installs over this one." >&2
+    return 0
+  fi
+  if [[ ! -f "$KUMKAJ_ANDROID_KEYSTORE" ]]; then
+    echo "KUMKAJ_ANDROID_KEYSTORE not found: $KUMKAJ_ANDROID_KEYSTORE" >&2
+    return 1
+  fi
+  : "${KUMKAJ_ANDROID_KEYSTORE_PASS:?set KUMKAJ_ANDROID_KEYSTORE_PASS for $KUMKAJ_ANDROID_KEYSTORE}"
+  local java="$sdk/openjdk/bin/java"
+  [[ -x "$java" ]] || java="$sdk/openjdk/jdk-17.0.2/bin/java"
+  local signer="$sdk/build-tools/33.0.1/lib/apksigner.jar"
+  # The password goes through the environment, never the command line.
+  KUMKAJ_KS_PASS="$KUMKAJ_ANDROID_KEYSTORE_PASS" "$java" -jar "$signer" sign \
+    --ks "$KUMKAJ_ANDROID_KEYSTORE" --ks-key-alias "$(android_key_alias)" \
+    --ks-pass env:KUMKAJ_KS_PASS --key-pass env:KUMKAJ_KS_PASS "$apk"
+  "$java" -jar "$signer" verify --print-certs "$apk" | grep -m1 "certificate DN" || true
+  echo "Signed with the release key: $apk"
+}
+
+# Signing options for build-aab: the release key when set (password through
+# MAKEPAD_KEYSTORE_PASS), else nothing — cargo-makepad then uses its debug
+# key, which Play rejects.
+android_aab_sign_opts() {
+  ANDROID_AAB_SIGN_OPTS=()
+  if android_release_keystore_set; then
+    : "${KUMKAJ_ANDROID_KEYSTORE_PASS:?set KUMKAJ_ANDROID_KEYSTORE_PASS for $KUMKAJ_ANDROID_KEYSTORE}"
+    export MAKEPAD_KEYSTORE_PASS="$KUMKAJ_ANDROID_KEYSTORE_PASS"
+    ANDROID_AAB_SIGN_OPTS=(--keystore="$KUMKAJ_ANDROID_KEYSTORE" --keystore-key-alias="$(android_key_alias)")
+  fi
 }

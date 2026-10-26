@@ -3,15 +3,19 @@
 # Output: dist/linux-dev/
 # Uses debug Cargo profile + the app's env/development.env (courier → com.kumkaj.courier.debug)
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"
-# shellcheck source=load-kumkaj-env.sh
+export KUMKAJ_APP_DIR="$ROOT/apps/courier"
+export KUMKAJ_ENV_DIR="$KUMKAJ_APP_DIR/env"
+export KUMKAJ_BIN_NAME=kumkaj-courier
+export KUMKAJ_INSTALL_SLUG=kumkaj-courier
+# shellcheck source=../../../scripts/load-kumkaj-env.sh
 source "$ROOT/scripts/load-kumkaj-env.sh"
-# shellcheck source=windows-env.sh
+# shellcheck source=../../../scripts/windows-env.sh
 source "$ROOT/scripts/windows-env.sh"
 # shellcheck source=desktop-ids.sh
-source "$ROOT/scripts/desktop-ids.sh"
-# shellcheck source=stage-desktop-package.sh
+source "$KUMKAJ_APP_DIR/scripts/desktop-ids.sh"
+# shellcheck source=../../../scripts/stage-desktop-package.sh
 source "$ROOT/scripts/stage-desktop-package.sh"
 
 export KUMKAJ_ROOT="$ROOT"
@@ -19,7 +23,7 @@ load_kumkaj_env development
 makepad_enable_package_dir
 
 cargo build -p kumkaj-courier
-# shellcheck source=cargo-target-dir.sh
+# shellcheck source=../../../scripts/cargo-target-dir.sh
 source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cargo_target_dir)"
 BIN="$TARGET_DIR/debug/kumkaj-courier"
@@ -54,7 +58,7 @@ Uninstall:
   Uninstall Kumkaj Courier Dev (app menu)
   or: ./uninstall.sh --dev
 
-Prod package: ./scripts/package-linux.sh → dist/linux/
+Prod package: ./apps/courier/scripts/package-linux.sh → dist/linux/
 Live from repo: cargo courier-dev
 EOF
 

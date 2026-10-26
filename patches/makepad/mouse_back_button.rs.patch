@@ -1,0 +1,43 @@
+--- a/platform/src/os/linux/wayland/wayland_type.rs
++++ b/platform/src/os/linux/wayland/wayland_type.rs
+@@ -36,13 +36,15 @@
+ }
+ 
+ pub fn from_mouse(button: u32) -> Option<MouseButton> {
+-    // ref: linux/input-event-codes.h
++    // linux/input-event-codes.h. Most mice send the thumb "back" button as
++    // BTN_SIDE (0x113), not BTN_BACK (0x116). Unmapped codes were dropped,
++    // so the click never became a MouseDown.
+     match button {
+         0x110 => Some(MouseButton::PRIMARY),
+         0x111 => Some(MouseButton::SECONDARY),
+         0x112 => Some(MouseButton::MIDDLE),
+-        0x116 => Some(MouseButton::BACK),
+-        0x117 => Some(MouseButton::FORWARD),
++        0x113 | 0x116 | 8 => Some(MouseButton::BACK),
++        0x114 | 0x115 | 0x117 | 9 => Some(MouseButton::FORWARD),
+         _ => None,
+     }
+ }
+--- a/platform/src/os/linux/wayland/xkb_sys.rs
++++ b/platform/src/os/linux/wayland/xkb_sys.rs
+@@ -579,6 +579,8 @@
+         XKB_KEY_Up | XKB_KEY_KP_Up => KeyCode::ArrowUp,
+         XKB_KEY_Insert | XKB_KEY_KP_Insert => KeyCode::Insert,
+         XKB_KEY_apostrophe => KeyCode::Quote,
++        // XF86Back — the keysym many desktops emit for the mouse back button.
++        0x1008FF26 => KeyCode::Back,
+ 
+         _ => KeyCode::Unknown,
+     }
+--- a/platform/src/os/linux/x11/xlib_app.rs
++++ b/platform/src/os/linux/x11/xlib_app.rs
+@@ -1657,6 +1657,8 @@
+             x11_sys::XK_Down | x11_sys::XK_KP_Down => KeyCode::ArrowDown,
+             x11_sys::XK_Up | x11_sys::XK_KP_Up => KeyCode::ArrowUp,
+             x11_sys::XK_Insert | x11_sys::XK_KP_Insert => KeyCode::Insert,
++            // XF86Back — mouse back button when the desktop sends it as a key.
++            0x1008FF26 => KeyCode::Back,
+             _ => KeyCode::Unknown,
+         }
+     }

@@ -25,6 +25,6 @@ Category: Business / Productivity
 Content rating: Everyone
 Privacy: no accounts required for local use; data stored on device SQLite.
 
-Build artifacts: ./scripts/package-android.sh → dist/android/kumkaj-courier.apk
+Build artifacts: ./apps/courier/scripts/package-android.sh → dist/android/kumkaj-courier.apk
 Play AAB: cargo-makepad android … build-aab -p kumkaj-courier --release (with upload keystore)
 iOS / macOS: deferred until Mac signing host.

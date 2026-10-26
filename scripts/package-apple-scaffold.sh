@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 # macOS / iOS scaffold — no real Mac required for these steps.
+#   ./scripts/package-apple-scaffold.sh apps/courier   -> dist/apple-courier/
+#   ./scripts/package-apple-scaffold.sh apps/khaynjo   -> dist/apple-khaynjo/
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+APP="${1:?usage: $0 apps/<app>}"
+[[ "$APP" = /* ]] || APP="$ROOT/$APP"
+PKG="$(grep -m1 '^name = ' "$APP/Cargo.toml" | cut -d'"' -f2)"
 MAKEPAD_ROOT="${MAKEPAD_ROOT:-$ROOT/../makepad}"
-OUT="$ROOT/dist/apple"
+OUT="$ROOT/dist/apple-$(basename "$APP")"
 mkdir -p "$OUT"
 
-cat > "$OUT/README.txt" <<'EOF'
-Kumkaj Apple platform scaffold
+cat > "$OUT/README.txt" <<EOF
+$PKG — Apple platform scaffold
 ===============================
-Bundle / application id (kumkaj.com reverse-DNS):
-  production: <app id>        (apps/<app>/env/production.env)
-  development: <app id>.debug   (apps/<app>/env/development.env)
+Bundle / application id:
+  production: <app id>        (apps/$(basename "$APP")/env/production.env)
+  development: <app id>.debug   (apps/$(basename "$APP")/env/development.env)
 Policy: do everything that does not require a physical Mac; skip only
 real-Mac device verification and signed App Store submission.
 
@@ -21,7 +26,7 @@ Doable without a Mac
 - Document iOS toolchain install commands for when a Mac is available:
     cargo makepad apple ios install-toolchain
 - Document macOS desktop run (on a Mac):
-    cargo run -p kumkaj-courier --release
+    cargo run -p $PKG --release
 
 Blocked until a Mac / device is available
 -----------------------------------------
@@ -30,7 +35,7 @@ Blocked until a Mac / device is available
 - App Store / TestFlight upload
 
 When a Mac appears, run the install-toolchain commands from a Makepad
-`main` checkout, then build/run Kumkaj there. Do not claim release
+main checkout, then build/run the app there. Do not claim release
 validation for macOS/iOS until device evidence exists.
 EOF
 

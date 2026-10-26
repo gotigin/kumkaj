@@ -1,0 +1,37 @@
+--- a/widgets/src/text_flow.rs
++++ b/widgets/src/text_flow.rs
+@@ -633,6 +633,13 @@
+     #[live]
+     pub font_color: Vec4f,
+ 
++    /// Horizontal alignment (0.0 = left, 1.0 = right) applied to plain
++    /// paragraph text within its available width. Open table cells override
++    /// it via `begin_table_cell`. Kumkaj patch: lets apps right-align
++    /// right-to-left prose without touching table behaviour.
++    #[live]
++    pub paragraph_align_x: f64,
++
+     /// Maximum number of lines to display. 0 means unlimited (default).
+     /// Combined with `text_overflow: Ellipsis`, truncated text shows "…".
+     #[live(0usize)]
+@@ -1361,7 +1368,9 @@
+         self.table_row_cell_rects.clear();
+         self.table_row_is_header = false;
+         self.table_is_first_row = false;
+-        self.cell_text_align_x = 0.0;
++        // Kumkaj patch: paragraph alignment is the resting alignment;
++        // `begin_table_cell` overrides it while a cell is open.
++        self.cell_text_align_x = self.paragraph_align_x;
+     }
+ 
+     pub fn push_size_rel_scale(&mut self, scale: f64) {
+@@ -1858,7 +1867,8 @@
+     pub fn end_table_cell(&mut self, cx: &mut Cx2d) {
+         let cell_rect = cx.end_turtle();
+         self.table_row_cell_rects.push(cell_rect);
+-        self.cell_text_align_x = 0.0;
++        // Kumkaj patch: restore paragraph alignment (see `clear_stacks`).
++        self.cell_text_align_x = self.paragraph_align_x;
+     }
+ 
+     pub fn draw_item_counted(&mut self, cx: &mut Cx2d, template: LiveId) -> LiveId {

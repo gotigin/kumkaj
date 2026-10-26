@@ -75,7 +75,7 @@ Makepad needs kumkaj_courier\resources (underscores). Re-run the package script.
     }
     $FontCheck = Join-Path $ResSrc "fonts\NotoSans-Regular.ttf"
     if (-not (Test-Path $FontCheck)) {
-        Write-Error "Missing UI font: $FontCheck - package is incomplete. Re-run fetch-ui-fonts.sh then package-windows.sh"
+        Write-Error "Missing UI font: $FontCheck - package is incomplete. Re-run scripts/fetch-ui-fonts.sh apps/courier then apps/courier/scripts/package-windows.sh"
     }
 
     Write-Host "Installing $Label"

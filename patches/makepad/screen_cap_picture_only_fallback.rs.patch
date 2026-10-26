@@ -1,0 +1,94 @@
+--- a/widgets/src/screen_cap.rs
++++ b/widgets/src/screen_cap.rs
+@@ -27,6 +27,11 @@
+ //! ever touches the encoder. Files land in `local/screencap/`, one per
+ //! recording, named for when it was taken.
+ //!
++//! Platform honesty: the Linux GStreamer encoder arm has no audio track
++//! yet and refuses one outright, so there the recording falls back to
++//! picture-only (logged) instead of failing outright — a silent empty
++//! `local/screencap/` on every Shift+F12 is how that used to read.
++//!
+ //! Video is constant-rate — 60fps by default, `max_fps` or
+ //! `MAKEPAD_SCREENCAP_FPS` for 120 on a 120Hz display — with the frame index
+ //! taken from the wall clock, and the audio position derived from that index —
+@@ -604,7 +609,11 @@
+     let Some(first) = take_frame(&slot, None) else {
+         return Err("stopped before the window presented a frame".to_string());
+     };
+-    let width = (first.width & !1).max(2);
++    // Width to a multiple of 4: NV12 arms are fine with any even width,
++    // but the Linux GStreamer arm refuses non-%4 outright — and a refused
++    // encoder is a recording that silently never happened. Cropping the
++    // last 1-3 columns (blit_into pads/crops) beats an empty folder.
++    let width = (first.width & !3).max(4);
+     let height = (first.height & !1).max(2);
+ 
+     // Let the audio device announce its rate before the AAC track is created.
+@@ -620,23 +629,40 @@
+         std::thread::sleep(Duration::from_millis(10));
+     };
+ 
+-    let options = VideoFileEncoderOptions {
++    let make_options = |audio: Option<PcmAudioTrackOptions>| VideoFileEncoderOptions {
+         codec: VideoFileCodec::H264,
+         width,
+         height,
+         fps_num: fps,
+         fps_den: 1,
+         video_bitrate_bps: bitrate_for(width, height, fps),
+-        audio: Some(PcmAudioTrackOptions {
++        audio,
++        keyframe_only: false,
++    };
++    let path_str = path.to_string_lossy().to_string();
++    let mut has_audio = false;
++    // An encoder arm with no audio track yet (Linux GStreamer) must not
++    // take the picture down with it: retry picture-only and say so in the
++    // log. Before this, Shift+F12 on Linux created the folder and then
++    // failed here on every single recording — no file, no visible error.
++    let mut encoder = match VideoFileEncoder::new(
++        &path_str,
++        make_options(Some(PcmAudioTrackOptions {
+             sample_rate: audio_rate,
+             channels: 2,
+             aac_bitrate_bps: 128_000,
+-        }),
+-        keyframe_only: false,
++        })),
++    ) {
++        Ok(encoder) => {
++            has_audio = true;
++            encoder
++        }
++        Err(err) => {
++            log!("ScreenCap: encoder refused an audio track ({err}); recording picture only");
++            VideoFileEncoder::new(&path_str, make_options(None))
++                .map_err(|err| format!("{path_str}: {err}"))?
++        }
+     };
+-    let path_str = path.to_string_lossy().to_string();
+-    let mut encoder =
+-        VideoFileEncoder::new(&path_str, options).map_err(|err| format!("{path_str}: {err}"))?;
+ 
+     let mut canvas = vec![0u8; width as usize * height as usize * 4];
+     blit_into(&mut canvas, width, height, &first.rgba, first.width, first.height);
+@@ -660,10 +686,14 @@
+             encode_error = Some(format!("video frame {frame_index}: {err}"));
+             break;
+         }
+-        let audio_target = ((frame_index + 1) as u128 * audio_rate as u128 / fps as u128) as u64;
+-        if let Err(err) = push_audio_through(&mut encoder, &audio, audio_target, &mut audio_pushed) {
+-            encode_error = Some(err);
+-            break;
++        if has_audio {
++            let audio_target = ((frame_index + 1) as u128 * audio_rate as u128 / fps as u128) as u64;
++            if let Err(err) =
++                push_audio_through(&mut encoder, &audio, audio_target, &mut audio_pushed)
++            {
++                encode_error = Some(err);
++                break;
++            }
+         }
+ 
+         // Sleep to the next tick, then take whatever the window presented

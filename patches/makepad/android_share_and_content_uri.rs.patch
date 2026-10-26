@@ -1,0 +1,80 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1497,6 +1497,41 @@
+     );
+ }
+ 
++/// Opens the Android share sheet with plain text. `MakepadActivity.shareText`
++/// posts the Intent to the UI thread.
++pub unsafe fn to_java_share_text(content: String) {
++    let env = attach_jni_env();
++    let content = CString::new(content).unwrap_or_else(|_| CString::new("").unwrap());
++    let content = ((**env).NewStringUTF.unwrap())(env, content.as_ptr());
++    ndk_utils::call_void_method!(
++        env,
++        get_activity(),
++        "shareText",
++        "(Ljava/lang/String;)V",
++        content
++    );
++}
++
++/// Reads a Storage Access Framework `content://` URI into bytes via
++/// `MakepadActivity.readContentUri`. `None` when the provider cannot be opened.
++pub unsafe fn to_java_read_content_uri(uri: String) -> Option<Vec<u8>> {
++    let env = attach_jni_env();
++    let uri = CString::new(uri).ok()?;
++    let uri = ((**env).NewStringUTF.unwrap())(env, uri.as_ptr());
++    let result = ndk_utils::call_object_method!(
++        env,
++        get_activity(),
++        "readContentUri",
++        "(Ljava/lang/String;)[B",
++        uri
++    );
++    if result.is_null() {
++        return None;
++    }
++    let bytes = java_byte_array_to_vec(env, result);
++    if bytes.is_empty() { None } else { Some(bytes) }
++}
++
+ pub unsafe fn to_java_paste_from_clipboard() -> String {
+     let env = attach_jni_env();
+     let result = ndk_utils::call_object_method!(
+--- a/platform/src/cx_api.rs
++++ b/platform/src/cx_api.rs
+@@ -1164,6 +1164,33 @@
+             .push_back(CxOsOp::CopyToClipboard(content.to_owned()));
+     }
+ 
++    /// Android share sheet (`ACTION_SEND` text/plain). No-op on other platforms,
++    /// which already hand the file to the OS print/open path.
++    pub fn share_text(&mut self, content: &str) {
++        #[cfg(target_os = "android")]
++        unsafe {
++            crate::os::linux::android::android_jni::to_java_share_text(content.to_owned());
++        }
++        #[cfg(not(target_os = "android"))]
++        {
++            let _ = content;
++        }
++    }
++
++    /// Bytes behind an Android `content://` URI. `None` on other platforms and
++    /// when the provider refuses the read.
++    pub fn read_content_uri(&mut self, uri: &str) -> Option<Vec<u8>> {
++        #[cfg(target_os = "android")]
++        unsafe {
++            return crate::os::linux::android::android_jni::to_java_read_content_uri(uri.to_owned());
++        }
++        #[cfg(not(target_os = "android"))]
++        {
++            let _ = uri;
++            None
++        }
++    }
++
+     /// Sets the primary selection (Linux middle-click paste).
+     /// No-op on non-Linux platforms.
+     pub fn set_primary_selection(&mut self, content: &str) {

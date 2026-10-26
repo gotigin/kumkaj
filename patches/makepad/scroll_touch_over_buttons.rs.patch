@@ -1,6 +1,6 @@
 --- a/widgets/src/scroll_bar.rs
 +++ b/widgets/src/scroll_bar.rs
-@@ -872,16 +872,27 @@ impl ScrollBar {
+@@ -872,7 +872,11 @@
              return;
          }
  
@@ -13,16 +13,7 @@
              Hit::FingerDown(fe) if fe.is_primary_hit() => {
                  let abs = match self.axis {
                      ScrollAxis::Horizontal => fe.abs.x,
-                     ScrollAxis::Vertical => fe.abs.y,
-                 };
-                 self.scroll_state = ScrollState::Drag {
-                     samples: vec![ScrollSample { abs, time: fe.time }],
-                 };
-             }
-             Hit::FingerMove(e) => match &mut self.scroll_state {
-                 ScrollState::Drag { samples } => {
-                     let new_abs = match self.axis {
-                         ScrollAxis::Horizontal => e.abs.x,
+@@ -889,6 +893,10 @@
                          ScrollAxis::Vertical => e.abs.y,
                      };
                      let old_sample = *samples.last().unwrap();
@@ -31,3 +22,5 @@
 +                        let _ = cx.promote_finger_capture_over(scroll_area);
 +                    }
                      push_sample(samples, new_abs, e.time);
+ 
+                     let mut delta = new_abs - old_sample.abs;

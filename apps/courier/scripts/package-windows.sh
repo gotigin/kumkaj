@@ -3,15 +3,19 @@
 # Makepad layout: kumkaj-courier.exe + kumkaj_courier/resources/ (underscores).
 # Includes Setup.bat / install.ps1 / uninstall (Add/Remove Programs + keep/remove data).
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"
-# shellcheck source=load-kumkaj-env.sh
+export KUMKAJ_APP_DIR="$ROOT/apps/courier"
+export KUMKAJ_ENV_DIR="$KUMKAJ_APP_DIR/env"
+export KUMKAJ_BIN_NAME=kumkaj-courier
+export KUMKAJ_INSTALL_SLUG=kumkaj-courier
+# shellcheck source=../../../scripts/load-kumkaj-env.sh
 source "$ROOT/scripts/load-kumkaj-env.sh"
-# shellcheck source=windows-env.sh
+# shellcheck source=../../../scripts/windows-env.sh
 source "$ROOT/scripts/windows-env.sh"
 # shellcheck source=desktop-ids.sh
-source "$ROOT/scripts/desktop-ids.sh"
-# shellcheck source=stage-desktop-package.sh
+source "$KUMKAJ_APP_DIR/scripts/desktop-ids.sh"
+# shellcheck source=../../../scripts/stage-desktop-package.sh
 source "$ROOT/scripts/stage-desktop-package.sh"
 
 export KUMKAJ_ROOT="$ROOT"
@@ -34,7 +38,7 @@ else
   cargo build -p kumkaj-courier --release --target "$TARGET"
 fi
 
-# shellcheck source=cargo-target-dir.sh
+# shellcheck source=../../../scripts/cargo-target-dir.sh
 source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cargo_target_dir)"
 EXE=""
@@ -87,7 +91,7 @@ Uninstall asks whether to keep or remove books data:
   %APPDATA%\\${KUMKAJ_APP_ID}\\
 Re-run uninstall later to delete leftover data if you chose Keep.
 
-Default Owner PIN: 0000 — change under More → Team after first unlock.
+First start asks for the Owner PIN (Server Mode) — there is no default PIN to change.
 EOF
 
 echo "Windows package: $OUT/"

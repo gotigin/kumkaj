@@ -1,0 +1,41 @@
+--- a/widgets/src/portal_list.rs
++++ b/widgets/src/portal_list.rs
+@@ -2789,6 +2789,15 @@
+                     // its stream on a touch gives the native instant stop. Phase-less events
+                     // (`None`: wheels, X11, Windows) apply their delta directly.
+                     let delta = -e.scroll.index(vi);
++                    // Snapshot before applying so we can claim the wheel/trackpad when this
++                    // list actually moves — otherwise an ancestor ScrollYView also scrolls
++                    // (nested list + page both moving at once).
++                    let scroll_before = (
++                        self.first_id,
++                        self.first_scroll,
++                        self.bounce_overshoot,
++                        matches!(self.scroll_state, ScrollState::Pulldown { .. }),
++                    );
+                     match e.phase {
+                         ScrollPhase::Momentum => {
+                             // Only a stream this list is expecting, applying, or riding
+@@ -2951,6 +2960,22 @@
+                             self.area.redraw(cx);
+                         }
+                     }
++                    // Stop ancestor ScrollYView/ScrollBar from also applying this delta
++                    // whenever this list consumed it (moved, overscrolled, or is mid-bounce).
++                    let scroll_after = (
++                        self.first_id,
++                        self.first_scroll,
++                        self.bounce_overshoot,
++                        matches!(self.scroll_state, ScrollState::Pulldown { .. }),
++                    );
++                    if scroll_before != scroll_after || self.momentum.is_live(e.time) {
++                        if let Event::Scroll(se) = event {
++                            match vi {
++                                Vec2Index::Y => se.handled_y.set(true),
++                                Vec2Index::X => se.handled_x.set(true),
++                            }
++                        }
++                    }
+                 }
+                 Hit::KeyDown(ke) => {
+                     // Keyboard navigation instantly stops every kind of scroll

@@ -1,0 +1,40 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1532,6 +1532,14 @@
+     if bytes.is_empty() { None } else { Some(bytes) }
+ }
+ 
++/// Keeps the screen awake while `on` (`FLAG_KEEP_SCREEN_ON`, set on the UI
++/// thread by `MakepadActivity.keepScreenOn`): a device other devices depend
++/// on must not doze off and drop them.
++pub unsafe fn to_java_keep_screen_on(on: bool) {
++    let env = attach_jni_env();
++    ndk_utils::call_void_method!(env, get_activity(), "keepScreenOn", "(Z)V", on as i32);
++}
++
+ pub unsafe fn to_java_paste_from_clipboard() -> String {
+     let env = attach_jni_env();
+     let result = ndk_utils::call_object_method!(
+--- a/platform/src/cx_api.rs
++++ b/platform/src/cx_api.rs
+@@ -1191,6 +1191,20 @@
+         }
+     }
+ 
++    /// Keep the screen on while `on` — Android only (`FLAG_KEEP_SCREEN_ON`),
++    /// for a device that serves others. Elsewhere a no-op: desktops hold the
++    /// system awake by their own means.
++    pub fn keep_screen_on(&mut self, on: bool) {
++        #[cfg(target_os = "android")]
++        unsafe {
++            crate::os::linux::android::android_jni::to_java_keep_screen_on(on);
++        }
++        #[cfg(not(target_os = "android"))]
++        {
++            let _ = on;
++        }
++    }
++
+     /// Sets the primary selection (Linux middle-click paste).
+     /// No-op on non-Linux platforms.
+     pub fn set_primary_selection(&mut self, content: &str) {

@@ -31,6 +31,15 @@ and one Makepad platform — **not** shared product code.
   change affecting all apps — do not use it to sneak product logic into
   multiple apps, and fork a root tool/script per app rather than let one
   app's tooling change break another.
+- **Scripts** (2026-10-26): root `scripts/` holds only tooling that names
+  no app — Makepad setup and patches, the Android activity bridge, env
+  loading, Windows cross-build and resource staging, the MSI builder,
+  icon/font generators, the Apple scaffold. Each one requires the caller
+  to say which app (`KUMKAJ_APP_DIR` and friends) and fails without it;
+  none defaults to Courier any more. Anything that names one app — its
+  package scripts, installers and uninstallers, `Setup.bat`,
+  `desktop-ids.sh`, `License.rtf`, MSI upgrade codes (`msi.sh`), Play /
+  web packaging — lives in `apps/<app>/scripts/`.
 
 Canonical doctrine: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md) §1–2; concepts checklist: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
@@ -41,8 +50,8 @@ Courier's tooling one-for-one: `cargo khaynjo-dev`,
 `cargo khaynjo-android-dev`, `cargo khaynjo-windows-dev`. Identity
 differs by domain: Courier is tied to kumkaj.com
 (`com.kumkaj.courier`), Khaynjo has its own domain, so it is
-`com.khaynjo` · `com.khaynjo.debug`. Root `package-*.sh` / `build-msi.sh`
-still target Courier; Khaynjo uses its per-app scripts for now.
+`com.khaynjo` · `com.khaynjo.debug`. Each app's packaging lives in its
+own `apps/<app>/scripts/` (see § Common workspace → Scripts).
 
 ```bash
 cargo courier-dev
@@ -55,10 +64,11 @@ Loads [`apps/courier/env/development.env`](../apps/courier/env/development.env) 
 - Makepad **2 / `main` only** — never Makepad 1 docs/examples/APIs
 - Local Makepad 2 tree: `vendor/makepad`
   - First time / after clean: `./scripts/setup-makepad.sh`
-  - Path-dep from each app (`apps/courier`, `apps/khaynjo`); applies Wayland scroll-sign + dark caption button patches
+  - Path-dep from each app (`apps/courier`, `apps/khaynjo`). The script rebuilds the tree from the pinned upstream commit (`MAKEPAD_REV`) and applies every patch in `patches/makepad/` in the order its `PATCHES` list gives; any patch that fails stops the script
+  - `vendor/makepad` is gitignored: **an edit there is lost on the next setup unless it is also a patch in `patches/makepad/` listed in `PATCHES`**. After changing a vendor file, regenerate its patch, then rerun the setup in a scratch copy and diff it against `vendor/makepad`
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
-- Multi-script UI fonts live **per app**: `apps/courier/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Desktop packages copy only that app's `<crate_name>/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh` if fonts are missing.
+- Multi-script UI fonts live **per app**: `apps/courier/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Desktop packages copy only that app's `<crate_name>/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing.
 - **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
@@ -84,6 +94,8 @@ Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Kumkaj C
 ### Wayland / Mutter (do not regress)
 
 Vendor patches live under `vendor/makepad` (path-dep). Toggle logic is owned by `Window::toggle_chrome_maximize` in `vendor/makepad/widgets/src/window.rs`. Platform ops: `MaximizeWindow` / `RestoreWindow` in `linux_wayland.rs`.
+
+RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_x` in `vendor/makepad/widgets/src/text_flow.rs` (resting paragraph alignment; open table cells still override it) and `pub TextInput::label_align` in `vendor/makepad/widgets/src/text_input.rs` (patch files `patches/makepad/text_flow_paragraph_align.rs.patch` and `patches/makepad/text_input_label_align_pub.rs.patch`, applied by `scripts/setup-makepad.sh`). Each app sets them from `apply_text_alignment` while `locale::is_rtl` is active; glyph shaping and bidi ordering are Makepad’s own (rustybuzz + unicode-bidi in `draw/src/text/shaper.rs`). The window layout is not mirrored.
 
 **Bugs we hit (do not reintroduce)**
 
@@ -157,6 +169,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 3. **Right-truncated CTA labels** — Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Row*`) used `max_lines: 1` + `TextOverflow.Ellipsis`. Makepad centers a Fill label in a Fill button; long / translated strings become `record_pu…` / clipped ink. Multi-word choices in `ChipBtn` (Fit max 160) truncated the same way (`Use platform na…`, `Tax invoice`, `On account (AP)`).
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
 5. **Item / rate photos** — Courier has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
+6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
 
 ### Required approach (shipping)
 
@@ -219,6 +232,7 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 | `paint_choice_pair` / `clear_button_animators` | Dual-choice visibility + animator clear |
 | `paint_choice_state` | All dual choices after chrome sync |
 | `locale::en` + `english_chrome_never_returns_raw_keys` | Human labels, never snake_case keys |
+| `locale::t` + `shipped_languages_translate_chrome` + `rtl_languages_detected` | Static UI fully translated in 29 languages (no English fallback); RTL detection drives `apply_text_alignment` |
 
 ```text
 ❌ Idle TabBtn color_hover = selected navy
@@ -258,10 +272,10 @@ Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surface
 | **Android** launcher label | Kumkaj Courier Dev | Kumkaj Courier |
 | **iOS / macOS** bundle id (when signed) | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
 | **Linux** binary | `cargo courier-dev` (host) · `package-linux-dev.sh` | `dist/linux/` + `install.sh` via `package-linux.sh` |
-| **Windows** (Win10 + Win11 x86_64) | `cargo courier-windows-dev` → `dist/windows-dev/` (exe + resources) | `./scripts/package-windows.sh` → `dist/windows/` |
+| **Windows** (Win10 + Win11 x86_64) | `cargo courier-windows-dev` → `dist/windows-dev/` (exe + resources) | `./apps/courier/scripts/package-windows.sh` → `dist/windows/` |
 | **macOS** binary (when built on Mac) | `cargo courier-dev` | package script / packager |
 | **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.kumkaj.courier"`, `product_name = "Kumkaj Courier"` |
-| **Web** | local `cargo courier-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./scripts/package-web.sh`) — not an OS package id |
+| **Web** | local `cargo courier-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./apps/courier/scripts/package-web.sh`) — not an OS package id |
 | **Play Store** listing | side-load / internal only | application id `com.kumkaj.courier` (`web/play-store-listing.txt`) |
 
 ### Data directories (keyed by `KUMKAJ_APP_ID`)
@@ -302,11 +316,46 @@ Equivalent: `./apps/courier/scripts/android-dev.sh`
 
 Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.kumkaj.courier.debug`** (from `apps/courier/env/development.env`).
 
-**Launcher / logo:** Master art is `apps/courier/assets/courier-app-icon.png`. Run `./scripts/generate-app-icons.sh` to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
+**Launcher / logo:** Master art is `apps/courier/assets/courier-app-icon.png`. Run `./apps/courier/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo courier-dev`; use `cargo courier-android-dev` to verify on device.
 
-Release APK/AAB packaging: `./scripts/package-android.sh` → `dist/android/`.
+Release APK/AAB packaging: `./apps/courier/scripts/package-android.sh` → `dist/android/kumkaj-courier.apk`.
+Khaynjo APK (production id `com.khaynjo`, no device needed): `apps/khaynjo/scripts/package-android.sh` → `dist/khaynjo-android/kumkaj-khaynjo.apk`.
+
+**Release signing (both apps, `scripts/android-env.sh`).** cargo-makepad's
+`build` always signs with Makepad's bundled debug key. An Android update
+installs only over an app signed with the *same* key, and uninstalling to
+get past a key change deletes that device's books — so anything handed to a
+shop must carry the app's own release key from the first install. Make one
+per app, once, and keep it (and its password) backed up outside the repo:
+
+```bash
+cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \
+  android --sdk-path="$ANDROID_HOME" keystore-create ~/keys/khaynjo.keystore
+KUMKAJ_ANDROID_KEYSTORE=~/keys/khaynjo.keystore KUMKAJ_ANDROID_KEYSTORE_PASS=… \
+  apps/khaynjo/scripts/package-android.sh
+```
+
+With the keystore set, the package script re-signs the APK (`apksigner`,
+password through the environment, never argv) and also builds the Play
+bundle (`khaynjo.aab` / `kumkaj-courier.aab`, `build-aab --keystore`).
+Without it the APK is debug-signed and its `README.txt` says so. Package
+builds pass `--version-code=auto` (YYYYMMDDHH), so every build installs as
+an upgrade and Play accepts it; dev builds keep `version_code = 1`. The
+scripts pick their own APK by the production label (`khaynjo.apk`,
+`kumkajcourier.apk`) — Courier's used to copy every APK and AAB under
+`target/`, other apps' and dev builds included.
+
+**Emulator on this host (x86_64):** Google's system images here are
+x86_64 without ARM translation, so the arm64 APK will not install. Add
+the target once (`rustup target add x86_64-linux-android`) and build with
+cargo-makepad's `--abi=x86_64`. Create the AVD with `ANDROID_USER_HOME`,
+`ANDROID_EMULATOR_HOME` and `ANDROID_AVD_HOME` pointed at a scratch folder:
+`avdmanager` otherwise rewrites the developer's `~/.android/devices.xml`
+(it renamed it to `devices.xml.old` once, 2026-10-26). A LAN test across
+emulator and desktop uses `adb forward tcp:17847 tcp:7847` (the
+emulator's own address is not reachable from the host).
 
 ## Desktop install / uninstall (Linux + Windows)
 
@@ -318,8 +367,8 @@ Dev and prod stay separate (debug suffix on id + install folder).
 | Env | `apps/courier/env/development.env` | `apps/courier/env/production.env` |
 | App id | `com.kumkaj.courier.debug` | `com.kumkaj.courier` |
 | Label | Kumkaj Courier Dev | Kumkaj Courier |
-| Linux package | `./scripts/package-linux-dev.sh` → `dist/linux-dev/` | `./scripts/package-linux.sh` → `dist/linux/` |
-| Windows package | `cargo courier-windows-dev` → `dist/windows-dev/` | `./scripts/package-windows.sh` → `dist/windows/` |
+| Linux package | `./apps/courier/scripts/package-linux-dev.sh` → `dist/linux-dev/` | `./apps/courier/scripts/package-linux.sh` → `dist/linux/` |
+| Windows package | `cargo courier-windows-dev` → `dist/windows-dev/` | `./apps/courier/scripts/package-windows.sh` → `dist/windows/` |
 | Linux install dir | `~/.local/lib/kumkaj-courier-debug/` | `~/.local/lib/kumkaj-courier/` |
 | Linux command | `kumkaj-courier-dev` | `kumkaj-courier` |
 | Windows install dir | `%LOCALAPPDATA%\Programs\Kumkaj Courier Dev\` | `%LOCALAPPDATA%\Programs\Kumkaj Courier\` |
@@ -338,18 +387,19 @@ If app files are already gone but data remains, re-running uninstall still offer
 
 | | Development | Production |
 |---|---|---|
-| Linux | `./scripts/uninstall-linux-dev.sh` | `./scripts/uninstall-linux-prod.sh` |
-| Windows | `uninstall-windows-dev.ps1` | `uninstall-windows-prod.ps1` |
-| Android | `./scripts/uninstall-android-dev.sh` | `./scripts/uninstall-android-prod.sh` |
+| Linux | `./apps/courier/scripts/uninstall-linux-dev.sh` | `./apps/courier/scripts/uninstall-linux-prod.sh` |
+| Windows | `apps\courier\scripts\uninstall-windows-dev.ps1` | `apps\courier\scripts\uninstall-windows-prod.ps1` |
+| Android | `./apps/courier/scripts/uninstall-android-dev.sh` | `./apps/courier/scripts/uninstall-android-prod.sh` |
+| Android (Khaynjo) | `./apps/khaynjo/scripts/uninstall-android-dev.sh` | `./apps/khaynjo/scripts/uninstall-android-prod.sh` |
 
 (Linux/Windows wrappers call the shared uninstaller with `--dev` / `-Dev` or `--prod` / `-Prod`. Android uses `adb uninstall` of that package id.)
 
-Shared helpers: `scripts/desktop-ids.sh`, `scripts/stage-desktop-package.sh`.
+Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, `uninstall-*`, `Setup.bat`, `Uninstall.bat`, `desktop-ids.sh`, `License.rtf`) — they name that app's exe, folders and labels. `scripts/stage-desktop-package.sh` copies the calling app's set into a package. (Khaynjo's Windows folder package used to stage Courier's, which looked for `kumkaj-courier.exe`; its MSI licence page said "Kumkaj Courier" — fixed 2026-10-26.)
 
 ## Windows (cross from Arch / native on Windows)
 
 **Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
-**Now:** per-user **MSI** (`./scripts/build-msi.sh` → `dist/KumkajCourier-<ver>.msi`, dev: `./scripts/build-msi-dev.sh`) — single file, double-click install, Start Menu shortcut, uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Kumkaj Courier\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps books data (`%APPDATA%\com.kumkaj.courier\`); Start Menu **Delete books data** removes it on demand. (In-MSI script prompts broke real installs — do not re-add.) Folder + `Setup.bat` package remains the fallback.  
+**Now:** per-user **MSI** (`./apps/courier/scripts/msi.sh` → `dist/KumkajCourier-<ver>.msi`, dev: `./apps/courier/scripts/msi.sh dev`; Khaynjo: `./apps/khaynjo/scripts/msi.sh`) — single file, double-click install, Start Menu shortcut, uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Kumkaj Courier\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps books data (`%APPDATA%\com.kumkaj.courier\`); Start Menu **Delete books data** removes it on demand. (In-MSI script prompts broke real installs — do not re-add.) Folder + `Setup.bat` package remains the fallback.  
 **Later:** wrap as **MSIX** for Store publish.
 
 One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.kumkaj.courier.debug` vs `com.kumkaj.courier`).
@@ -358,7 +408,7 @@ Makepad loads fonts from **`kumkaj_courier/resources/`** next to the `.exe` (cra
 
 | | Development | Production |
 |---|---|---|
-| Command | `cargo courier-windows-dev` | `./scripts/package-windows.sh` |
+| Command | `cargo courier-windows-dev` | `./apps/courier/scripts/package-windows.sh` |
 | Output | `dist/windows-dev/` (copy whole folder) | `dist/windows/` (copy whole folder) |
 | Install on Windows | Double-click `Setup.bat` | Double-click `Setup.bat` |
 | Cargo profile | **release** (both — Windows debug PE was ~400MB) | **release** |
@@ -372,8 +422,9 @@ Makepad loads fonts from **`kumkaj_courier/resources/`** next to the `.exe` (cra
 sudo pacman -S mingw-w64-gcc
 rustup target add x86_64-pc-windows-gnu
 cargo courier-windows-dev          # Dev package → copy whole dist/windows-dev/ folder
-./scripts/package-windows.sh      # Prod package → copy whole dist/windows/ folder
-./scripts/build-msi.sh             # Prod MSI → dist/KumkajCourier-*.msi (./scripts/build-msi.sh dev for Dev)
+./apps/courier/scripts/package-windows.sh  # Prod package → copy whole dist/windows/ folder
+./apps/courier/scripts/msi.sh             # Prod MSI → dist/KumkajCourier-*.msi (msi.sh dev for Dev)
+apps/khaynjo/scripts/msi.sh        # Khaynjo prod MSI → dist/Khaynjo-*.msi (msi.sh dev → KhaynjoDev; own upgrade codes)
 # Then on Windows: double-click the MSI (or Setup.bat in the folder package)
 # Makepad: MAKEPAD_PACKAGE_DIR=. with kumkaj_courier/resources/ beside the .exe
 ```
@@ -382,21 +433,34 @@ Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-ming
 
 **On a Windows machine with Rust:** the same scripts pick `x86_64-pc-windows-msvc` when available and build natively.
 
-### Receipts on Android — known limitation
+### Receipts, printing and files on Android
 
 Makepad exposes the clipboard (`Cx::copy_to_clipboard` → `ClipboardManager`).
-`open_url` is still unimplemented. Kumkaj adds two activity methods, applied
+`open_url` is still unimplemented. Kumkaj adds activity methods, applied
 by `scripts/apply-android-activity-bridge.sh` before an Android build:
 
 - **Copy receipt** puts the text on the system clipboard.
-- **Print / share** opens an `ACTION_SEND` chooser (`shareText`) and also writes
-  `receipts/receipt-YYYYMMDD-HHMMSS.txt` under the app files dir. Desktop still
-  gets `lp`, then `xdg-open`/`open`/`start`.
-- A gallery `content://` URI is read with `readContentUri` and saved as a real
-  file before it becomes an item photo or venue icon.
+- **Print / share** prints on a network printer when one is set (Settings →
+  Printers on this device); otherwise it opens an `ACTION_SEND` chooser
+  (`shareText`). Either way it writes `receipts/receipt-YYYYMMDD-HHMMSS.txt`
+  under the app files dir. Desktop prints through the system (`lp` /
+  `Out-Printer`) — see LAN § Printing.
+- A gallery or file-picker `content://` URI is read with `readContentUri`
+  and saved as a real file before it becomes an item photo, venue icon or
+  a backup to restore (`backups/picked-<ts>.sqlite3`).
+- **Save a backup copy…** writes through the system save dialog
+  (`ACTION_CREATE_DOCUMENT` → `FileDialogAction::SaveFileSelected`, not
+  `FileSelected`) and `Cx::write_content_uri` (`writeContentUri`, Makepad
+  patch `android_write_content_uri` + `patches/makepad/MakepadActivity-write.java`).
+  Desktop keeps **Also copy backups to a folder…**. Both stamp
+  `backup_copy_at`; after `COPY_DUE_DAYS` (7) with no copy off the device,
+  Settings → Backup says so (`backup_copy_overdue_days`).
 
-Because the file is under `getFilesDir`, another app cannot open it without a
-`FileProvider`; the clipboard is the working share path on Android today.
+Because the receipt file is under `getFilesDir`, another app cannot open it
+without a `FileProvider`; the share sheet and clipboard carry the text.
+
+The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK,
+so Android shows initials for shelf dishes until the owner sets a photo.
 
 `arboard` and `rfd` are desktop-only dependencies — neither compiles for
 Android, and `arboard` being unconditional used to break the Android build
@@ -404,7 +468,9 @@ outright.
 
 ## First-run unlock
 
-Default seeded **Owner** PIN: `0000`
+A new server seeds an **Owner** whose PIN cannot be used: the first start
+in Server Mode asks the Owner to choose a PIN (`complete_owner_setup`,
+which refuses `0000`). Packages and guides must not mention a default PIN.
 
 After updating past schema v8, all staff PINs reset to `0000` (fast local SHA-256 hasher — Argon2 froze the UI on unlock; local-device PIN threat model).
 
@@ -464,75 +530,284 @@ a Client (it would overwrite the pairing with the Server's books).
 Unit coverage: `backup_and_restore`, `backup_restore_preserves_sale_on_reopen`,
 `restore_from_path_preserves_sale`.
 
-## LAN Client / Server (`apps/courier/src/net.rs`)
+## LAN Client / Server (`net.rs`, `phone.rs` — each app its own copy)
 
-Server listens on **TCP port 7847** when role = Server (pairing code in Settings / Lock hint).
+One device runs the server inside the app (Server Mode); other devices
+pair to it over the shop's Wi‑Fi (Client Mode). No internet, no cloud.
+**Any supported device can be either** — Windows, Linux or Android, in
+any mix (an Android tablet serving Windows tills is as valid as a PC
+serving tablets). Never write a guide, test plan or default that assumes
+"Windows server, Android client". What differs per platform (firewall,
+start-up, keep-awake, printing, backup copies) is the table in
+[`LAN_QUICK_START.md`](LAN_QUICK_START.md) §5 — keep it in step with the code.
 
-| Method | Path | Purpose |
+| | Courier | Khaynjo |
 |---|---|---|
-| GET | `/health` | Liveness |
-| GET | `/pair?code=` | Confirm code + venue |
-| GET | `/sync?code=` | Snapshot: products, customers, ledger, sales, staff, day totals |
-| POST | `/sale?code=` | Finalize sale (customer_name OK) |
-| POST | `/settle?code=` | Credit settlement |
-| POST | `/undo?code=` | Quick undo |
-| POST | `/void?code=` | Void |
-| POST | `/refund?code=` | Refund |
-| POST | `/amend?code=` | Amend a sale (draft + reason + actor) |
+| TCP (requests) | **7857** | **7847** |
+| UDP (discovery) | **7858** | **7848** |
+| Windows firewall rule | `Kumkaj Courier LAN` | `Kumkaj Khaynjo LAN` |
 
-**Server is the sole writer.** A Client's tables are a sync cache that the next
-snapshot overwrites, so writing them locally silently loses the edit. Every till
-op a terminal can do goes over LAN — sell, settle, undo, void, refund, amend —
-and everything else is refused.
+The two apps use different ports so both can serve from one device.
 
-`Store::assert_server_writer` is the backstop: catalogue, stock, purchases,
-staff, branches, customers, expenses, fiscal settings and `amend_sale`
-all return `"<action> on the Server — this device is a Client"` when
-`device_role = client`, so no UI path can bypass it. The `*_from_sync` writers
-skip the check — that is the Server's own data arriving. Screens that only
-mutate (Items, Inventory, Branches, Team, Settings) still open on a Client for
-lookups and show a read-only banner.
+**Requests.** Plain HTTP/1.1 + JSON; every outcome is a JSON reply
+(`{"ok":false,"error":…,"code":…}` on refusal), never a dropped
+connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
+`X-Kumkaj-Session` (from `/login`), `X-Kumkaj-Request` (one id per write).
 
-Credit on a Client sends `customer_name`, never a locally minted id, so the
-Server resolves the customer in its own book; inventing an id here billed credit
-against a customer the Server had never heard of.
+| Path | Who | Purpose |
+|---|---|---|
+| `GET /health`, `GET /hello` | anyone | liveness; app + venue name for discovery |
+| `GET /track/{awb}` (Courier) | anyone | public parcel status — no pairing |
+| `POST /pair` | anyone (rate-limited) | pairing code → device token |
+| `GET /sync` | paired device | snapshot of the books — **no PIN or password hashes, no pairing code** |
+| `POST /login` | paired device | staff PIN checked **on the server** → session |
+| `POST /sale` `/settle` `/undo` `/void` `/refund` `/amend` | signed-in device | money writes, done as the signed-in person |
+| `POST /kot` `/running` `/kot_advance` `/table_billing` (Khaynjo) | signed-in device | kitchen and table actions |
 
-Same Wi‑Fi trust model (no TLS). Sync payload includes categories,
-branch/org names and invoice numbers.
+**Rules that keep it safe to run all day**
 
-## Organization / branches (local)
+- **Server is the sole writer.** A device's tables are a sync cache the next
+  snapshot overwrites; `Store::assert_server_writer` refuses local writes on a
+  client, so no UI path can bypass it. The `*_from_sync` writers skip the
+  check — that is the server's own data arriving.
+- **Each write once.** The server stores the reply per `X-Kumkaj-Request`;
+  a retry after a lost reply gets the same answer, never a second sale or KOT.
+- **Rights and PINs are judged on the server.** A manager's approval PIN is
+  sent as typed; `check_right` (per-person rights, Team → Rights) decides.
+  The approver is recorded and the reason names both people.
+- **Brute force waits.** 5 wrong pairing codes or PINs from one address make
+  it wait 5 minutes (`Guard`); the owner can issue a **New pairing code** and
+  **Forget** a device (Settings → paired devices) — it is refused at once.
+- **No "database is locked".** Each store sets a busy timeout and IMMEDIATE
+  transactions; the server opens a connection per request beside the
+  counter's own. Tests: `two_tablets_and_the_counter_writing_at_once_lose_and_double_nothing`
+  (Khaynjo), `two_devices_and_the_office_booking_at_once_lose_and_double_nothing` (Courier).
 
-- Meta: `org_id`, `org_name`, `active_branch_id`
-- Tables: `branches`, `categories`, `stock_movements`, `purchases`, `purchase_lines`, `sync_outbox`
-- Operational rows (products, sales, customers, expenses) carry `branch_id`
-- **Export:** More → Branches → Export → `backups/branch_snapshot_{CODE}_{YYYY-MM-DD}.json` (+ clipboard)
-- **Import:** place file as `backups/import_branch_snapshot.json`, then Import
-- **Consolidated:** live day on this device + imported snapshots (stale/missing called out)
+**The device side (`phone.rs`).** One worker thread talks to the server;
+the screen never waits on the Wi‑Fi.
+
+- *Queued* writes (payments, KOTs, settlements) are saved on the device first
+  (`lan_outbox`) and sent in order — through a Wi‑Fi drop or an app restart.
+  The header shows "Offline · N waiting".
+- *Now* writes (undo, void, refund, amend) act on what the server holds this
+  moment, so they are never kept for later: offline they say so.
+- The worker pulls the server's books every 20 s (Khaynjo's Floor / Kitchen /
+  Order also ask every 8 s), so what another device did shows up by itself.
+
+**Keeping the server up.** While serving, the app holds the device awake
+(`SetThreadExecutionState` on Windows, `systemd-inhibit` on Linux, the
+screen kept on on Android — Makepad patch `android_keep_screen_on`).
+Settings → **Start with this computer** (Windows, Linux; hidden where
+`startup::supported()` is false, i.e. Android) adds a per-user entry — the
+Windows Run key or an XDG autostart file — that launches with `--serve`
+(`startup.rs`), so devices work again without anyone opening the app or
+unlocking its PIN screen. Both run at the user's sign-in, so a shop that
+wants it back after a power cut turns on automatic sign-in. An Android
+Server has no equivalent: the app must be opened again.
+
+**Firewall.** `net::firewall_allows_phones` checks; Settings → **Allow
+other devices to connect** shows only when the firewall is in the way.
+Windows: `netsh` inbound rules (TCP + UDP, `remoteip=localsubnet`) through
+one UAC prompt — the per-user MSI cannot add them without admin. Linux:
+whichever of firewalld (`firewall-cmd --query-port`) or ufw
+(`/etc/ufw/ufw.conf` `ENABLED=yes`, `user.rules`) is on gets both ports
+through one `pkexec` prompt; with neither on, nothing is asked. Android
+has no inbound firewall for apps. Test: `ufw_settings_are_read`.
+
+**Clock.** Every reply carries `X-Kumkaj-Time` (Server's Unix seconds);
+the device keeps the difference (`net::clock_skew_secs`) and, past
+`CLOCK_WARN_SECS` (5 min), the header says "This device's clock is N min
+off the shop's server". Bills are stamped on the Server, but device-side
+times (waiting writes, "last update") would mislead. Test
+`replies_carry_the_server_clock`.
+
+**Printing (`print_share.rs`, per device).** Printers belong to the
+device, not the books: `printers.json` in the data folder holds a
+**pool** of named printers (`id` / `label` / `target`) and **routes**
+(ordered printer ids per feature). Settings → **Printers on this device**
+edits both. A route tries the first printer, then the next on failure
+(fallback, not fan-out); an empty route means that feature does not
+print. Khaynjo routes: **Bill**, plus **KOT per kitchen station**
+(`""` = default kitchen for unassigned items). Courier routes:
+**Receipt** and **AWB label**. Legacy files (`kot`/`bill` or `receipt`
+strings) migrate on load. Settings → **Find printers** lists system printers
+(`lpstat` / `Get-Printer` on desktop) and hosts on this Wi‑Fi that
+accept TCP on port 9100 (ESC/POS) — that scan is what works on Android
+too. A target is blank (system default), a system printer's name, or an
+address — `192.168.1.50` or `host:port`, default 9100 — sent raw as
+ESC/POS (`print_network`). A ticket the printer's own font can show (ASCII, with
+₹ → Rs. and a few symbols spelt out — `printer_has_letters`) goes as
+text; anything else goes as a picture (`receipt_raster.rs`): each line
+shaped with the app's bundled Noto fonts (Makepad's vendored rustybuzz,
+unicode-bidi for Arabic/Urdu, ab_glyph_rasterizer), wrapped to 384 dots
+(58 mm; 80 mm prints it too) and sent as `GS v 0` in 128-row bands. 12
+fonts (~2.3 MB) are compiled in so the print thread needs no Cx; CJK
+(19 MB font) is left out and prints `?`. Look at it:
+`KUMKAJ_RASTER_OUT=t.pbm cargo test -p kumkaj-khaynjo --lib
+draw_a_sample_ticket -- --ignored`. System printing: `lp -d` on Linux
+(CUPS), PowerShell `Out-Printer` on Windows. Jobs go through one queue
+thread; a failure comes back to the screen through `take_problems`
+(deduplicated), never a frozen till. Android has no printer drivers:
+only an address prints; a KOT without a route says so once, and a bill
+opens the Share sheet instead (`prints_here`). KOTs and **Print bill**
+from paired devices print at the Server, on its routes (`/kot`,
+`/running`); only a receipt a device prints for itself (**Print /
+share**) uses that device's bill/receipt route.
+
+**Backups.** The server writes a backup automatically once a day
+(`auto_backup_if_due`; the last 14 are kept in the data folder's `backups/`)
+and Settings → **Also copy backups to a folder…** keeps a second copy, e.g. on a USB drive.
+
+**Discovery.** "Find the shop's server" broadcasts on the UDP port and falls
+back to scanning the /24; replies list the venue name so staff pick the right
+shop. Same Wi‑Fi trust model as before: no TLS.
+
+## Branches = separate local servers (vision §5)
+
+A branch is its own business, so it is its own **local server** (books):
+Server Mode → create/open another. One set of books never holds two
+branches. Apps may still carry a `branch_id` column and a single
+built-in branch row (legacy shape; the books' own code/name used on
+invoice numbers) — new code must not add in-book branch switching.
+
+- Meta: `org_name` (the business name), `active_branch_id` (the books' single branch row)
+- **Export:** day/period snapshot → `backups/branch_snapshot_{CODE}_{YYYY-MM-DD}.json` (+ clipboard)
+- **Import (owner's roll-up):** place a branch's file as `backups/import_branch_snapshot.json`, then Import — read-only, never writes into the importing books' sales
+- **Roll-up:** this restaurant's live day + imported snapshots side by side (stale/missing called out)
 - Every finalize enqueues `sync_outbox` (`sale.finalize`). The queue is write-only; local billing never waits on it, and no process drains it until Kumkaj Cloud exists. When a drain marks an event synced, `mark_outbox_synced` also stamps `sales.server_at` (triple timestamps).
+
+## Look at the screen (UI changes are not done until seen)
+
+Tests and "no `[E]` at startup" do not show what a person sees. A floor
+redesign once shipped uncoloured cards, black emoji dots, a lowercase
+"floor" and off-centre initials because nobody looked (2026-10-23). Any
+change to a screen is checked on the real app before it is called done:
+
+```bash
+Xvfb :99 -screen 0 1280x900x24 &          # a private display, not the desktop
+env -u WAYLAND_DISPLAY DISPLAY=:99 KUMKAJ_DATA_DIR=/tmp/kd KUMKAJ_PRINT_SINK=off \
+    ./target/debug/kumkaj-khaynjo &        # X11 backend on the virtual display
+DISPLAY=:99 xdotool mousemove X Y click 1  # drive it
+DISPLAY=:99 import -window root shot.png   # and look
+```
+
+Seed realistic data first (Khaynjo: `tests/visual_seed.rs`, opt-in) so
+every state is on screen, not just the empty one.
+
+Makepad visual traps found this way (do not reintroduce):
+
+1. **`set_uniform(color)` does not restyle a widget** whose colour comes
+   from its DSL `draw_bg.color` — use stacked pre-coloured backgrounds and
+   show the one for the state (the overlay-faces pattern).
+2. **Colour emoji (🟡 🟢 …) render as black glyphs** — never carry meaning
+   in emoji colour; draw real swatches (`RoundedView` with a colour).
+3. **A `Fill` label keeps its text at the top** — centre text in a `View`
+   with `align: {x: 0.5, y: 0.5}` holding a `Fit` label (avatar initials).
+4. **`TextInput` has no `visible`** — hide inputs through a wrapper `View`.
+5. **Line height is larger than the font size** — budget ~1.6 × font size
+   per label line when giving a fixed-height tile its height.
+6. **A list's own `spacing` adds to its height** — content-sized lists
+   count `spacing × (rows − 1)` or the last row is clipped.
+7. **A key with no English entry shows the raw key** ("floor") — every
+   label key needs `en()`; nav labels are in
+   `english_chrome_never_returns_raw_keys`.
+8. **Several wide buttons in a narrow column squeeze into vertical
+   letters** — short chips in a wrapping row, or stack them.
+9. **A `WrapLabel` (selectable `TextFlow`) takes the press** — a tappable
+   row whose text is a selectable `WrapLabel` never sees the tap; set
+   `selectable: false` on text inside anything you tap.
+10. **A redraw asked for inside a widget's own draw is dropped** — a
+    content-sized list that finds its rows changed height while drawing
+    must schedule `cx.new_next_frame()` and redraw on that frame, or a
+    collapsed row leaves its old height as a gap.
+11. **A filled field loses its placeholder** — forms then become rows of
+    unlabelled numbers. Fields set `float_caption: true` (Makepad patch
+    `text_input_float_caption`): once filled, the placeholder's short form
+    stays as a small label; empty, the placeholder stays centred.
+12. **xdotool cannot type into Makepad fields under X input methods** —
+    launch the app with `XMODIFIERS=@im=none` on the virtual display.
+13. **A screen scrolls as one page** (two separately scrolling halves were
+    rejected 2026-10-24). A big list inside it is a bounded box with its own
+    thin scrollbar and *scroll chaining* — the wheel scrolls the box while it
+    can move that way, then the page (browser behaviour). Lists that grow
+    with the page draw only the rows inside the window (`page_window`).
+    A picker that needs the whole height (Khaynjo's menu: search, category
+    tabs, dish tiles) is a `Modal` window over the screen instead — the
+    page behind it holds still (2026-10-25).
+14. **Sideways-scrolling tab strips get ‹ › chevrons** at the ends, each
+    shown only while there is more that way (`TAB_STRIPS`,
+    `sync_tab_chevrons` in each app). The chevron is *drawn* by the
+    `ChevronBtn` face's shader (`draw_bg.point` 1 = ›, −1 = ‹), never a
+    "‹ ›" glyph: a glyph sits on the text baseline and read low in the strip.
+17. **Count every list a sync carries against months of data.** Khaynjo's
+    open kitchen tickets were never closed by a kitchen that cooks from the
+    paper KOT, so every tablet's sync grew to 3 MB at 9,000 bills (it is
+    417 KB with tickets older than 12 h no longer open). The opt-in
+    `months_of_trading_stay_quick` test in each app's `net.rs` seeds 9,000
+    bills and fails if the snapshot passes 600 KB or a step takes 3 s.
+15. **Native input behaviour, every app:** a visible page scrollbar; ↑/↓ a
+    line, PgUp/PgDn a screenful, Home/End the ends (skipped only while a
+    text field has focus — a focused button must not swallow them);
+    Back/Forward history across screens (mouse back/forward buttons,
+    Alt+←/→, edge swipe, Android back; lock and first-run setup clear it);
+    drag-to-scroll by touch only on vertical pages/lists — a mouse drag
+    never flings them (wheel / scrollbar / keys). Horizontal tab strips
+    (`ScrollXView`) allow mouse press-drag on the whitespace around the
+    chips so nav drag-to-swap on a chip is not stolen (Makepad patch
+    `drag_scroll_touch_only`).
+16. **`ScrollYView{…}` in the DSL binds when the widgets are imported** —
+    overriding `mod.widgets.ScrollYView` later changes nothing unless the
+    name is re-bound (`let ScrollYView = mod.widgets.ScrollYView`). The
+    old page-scrollbar style silently never applied because of this.
+
+
+
 
 ## Smoke tests
 
 ```bash
 cargo test -p kumkaj-courier
+cargo test -p kumkaj-khaynjo
 ```
+
+**Tests never print on paper (all apps).** A test that reached `lp` /
+the print dialog printed on the developer's real printer on every run
+(Khaynjo, 2026-10-23). Every OS hand-off goes through one place per app
+(`print_share::print_text`) and obeys a **print sink**:
+`Os` in the app, `Capture` under unit tests (jobs kept per test thread;
+tests assert the exact text and count via `print_share::take_captured`),
+`Off`/`Capture` via `KUMKAJ_PRINT_SINK` for integration tests and smoke
+runs. Paper is never the test oracle — captured text is, which checks
+more (station, no prices, KOT number) than looking at a slip. Guard:
+`apps/khaynjo/scripts/check-tests-never-print.sh` runs the suite with
+fake `lp`/`lpr`/`xdg-open` first on `PATH` and fails if any was called.
+`apps/courier/scripts/check-tests-never-print.sh` is the same guard for
+Courier, which got its print sink (2026-10-24) so store-level printing
+can never reach the OS printer from a test.
 
 ## Packaging
 
 ```bash
-./scripts/package-linux.sh            # prod → dist/linux/ (+ install.sh / uninstall.sh)
-./scripts/package-linux-dev.sh        # debug → dist/linux-dev/
-./scripts/package-windows.sh          # prod → dist/windows/ (+ Setup.bat)
+./apps/courier/scripts/package-linux.sh       # prod → dist/linux/ (+ install.sh / uninstall.sh)
+./apps/courier/scripts/package-linux-dev.sh   # debug → dist/linux-dev/
+./apps/courier/scripts/package-windows.sh     # prod → dist/windows/ (+ Setup.bat)
+./apps/courier/scripts/msi.sh [prod|dev]      # MSI → dist/KumkajCourier[Dev]-<ver>.msi
 cargo courier-windows-dev              # debug → dist/windows-dev/
-./scripts/package-android.sh
-./scripts/package-web.sh
-./scripts/package-apple-scaffold.sh   # iOS/macOS deferred until Mac host
+./apps/courier/scripts/package-android.sh
+./apps/courier/scripts/package-web.sh         # kumkaj.com site → dist/web/
+./apps/khaynjo/scripts/windows-prod.sh # Khaynjo prod → dist/khaynjo-windows/
+./apps/khaynjo/scripts/package-linux.sh       # Khaynjo prod → dist/khaynjo-linux/ (+ install.sh / uninstall.sh)
+./apps/khaynjo/scripts/package-linux-dev.sh   # Khaynjo debug → dist/khaynjo-linux-dev/
+./apps/khaynjo/scripts/msi.sh [prod|dev]
+./apps/khaynjo/scripts/package-android.sh
+./scripts/package-apple-scaffold.sh apps/<app>   # iOS/macOS deferred until Mac host
 ```
 
 Desktop install/uninstall: see **Desktop install / uninstall** above.
 
 ## Unlock model
 
-- **Owner** — hosts this local business; unlock with Owner PIN (default `0000`)
+- **Owner** — hosts this local business; unlock with the Owner PIN chosen at first start
 - **Staff** — pick a non-owner person, then their PIN
 - Optional login id + password (Team can set once; only the user can change password later)
 - More → **Team**: Owner creates staff (role title + permission preset + PIN + features); anyone can update their own PIN
@@ -541,25 +816,25 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 ## Publish checklist (Play / web / desktop)
 
 1. `cargo test -p kumkaj-courier`
-2. `./scripts/package-linux.sh` → smoke `dist/linux/run.sh` / `./install.sh`
-3. `./scripts/package-windows.sh` → `dist/windows/` (+ `Setup.bat`); optional `cargo courier-windows-dev` for Dev
-4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./scripts/package-android.sh`
-5. Sign Android release; create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
-6. `./scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
-7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh`
+2. `./apps/courier/scripts/package-linux.sh` → smoke `dist/linux/run.sh` / `./install.sh`
+3. `./apps/courier/scripts/package-windows.sh` (or `msi.sh`) → `dist/windows/` (+ `Setup.bat`); optional `cargo courier-windows-dev` for Dev
+4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./apps/courier/scripts/package-android.sh`
+5. Set `KUMKAJ_ANDROID_KEYSTORE` (+ `_PASS`) for step 4 — signed APK + AAB (Android § Release signing); create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
+6. `./apps/courier/scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
+7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh apps/courier`
 
 Platform ids: see **Platform naming** above (`com.kumkaj.courier` / `com.kumkaj.courier.debug`, domain kumkaj.com).
 
 ## Manual UI smoke (shipping)
 
-1. Unlock with `0000` (or set Owner PIN on first Server run)
+1. First Server run: choose the Owner PIN; later runs unlock with it
 2. Finish onboarding — Kumkaj Courier is locked; Fresh or Book, then Done
 3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
 4. Day book shows today; Pay out records carrier bills & expenses; More → Parties settle; Day close; Reports
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
 5b. Settings → Country & tax: apply `GB` (VAT, inclusive, £), then `US` (sales tax, exclusive, $); save a business id and check it prints
 6. Ops / COD / Riders when fleet features are used
-7. Branches & org: add branch, switch, export snapshot, import `import_branch_snapshot.json`, consolidated report
+7. Branches: create a second local server in Server Mode; export a day snapshot from each, import it on the owner's device, open the roll-up
 8. Extra till: pair IP + code after the shop allows extra tills → book against the shop
 
 ## Schema

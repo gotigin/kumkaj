@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
-# Build a per-user MSI from a staged Windows package folder.
-#
-# Usage:
-#   ./scripts/build-msi.sh              # prod MSI  -> dist/KumkajCourier-<ver>.msi
-#   ./scripts/build-msi-dev.sh          # dev MSI   -> dist/KumkajCourierDev-<ver>.msi
+# Build a per-user MSI from a staged Windows package folder. Shared by the
+# apps; each app's own msi.sh sets who it is and calls this:
+#   apps/courier/scripts/msi.sh [prod|dev]   -> dist/KumkajCourier[Dev]-<ver>.msi
+#   apps/khaynjo/scripts/msi.sh [prod|dev]   -> dist/Khaynjo[Dev]-<ver>.msi
+# Required from the caller (no default app — a missing one must fail, not
+# build another product's installer):
+#   KUMKAJ_APP_DIR, KUMKAJ_MSI_NAME, KUMKAJ_BIN_NAME,
+#   KUMKAJ_MSI_UPGRADE_CODE, KUMKAJ_MSI_DEV_UPGRADE_CODE (never change them:
+#   upgrades find the installed app by these),
+#   KUMKAJ_MSI_PKG_PROD, KUMKAJ_MSI_PKG_DEV, KUMKAJ_MSI_PACKAGE_PROD.
+# The licence page is the app's own scripts/License.rtf.
 # The Windows package is always rebuilt first, so the MSI is never stale.
 #
 # The MSI installs to %LOCALAPPDATA%\Programs\<Label>\ (no admin), adds a
@@ -17,21 +23,27 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-# Which app (folder under apps/). Defaults to courier; another app's
-# packaging sets KUMKAJ_APP_DIR + its own MSI name / upgrade codes.
-APP_DIR="${KUMKAJ_APP_DIR:-$ROOT/apps/courier}"
-MSI_NAME="${KUMKAJ_MSI_NAME:-KumkajCourier}"
+need() { [[ -n "${!1:-}" ]] || { echo "build-msi.sh: $1 not set — run the app's scripts/msi.sh" >&2; exit 1; }; }
+for v in KUMKAJ_APP_DIR KUMKAJ_MSI_NAME KUMKAJ_BIN_NAME KUMKAJ_MSI_UPGRADE_CODE \
+  KUMKAJ_MSI_DEV_UPGRADE_CODE KUMKAJ_MSI_PKG_PROD KUMKAJ_MSI_PKG_DEV KUMKAJ_MSI_PACKAGE_PROD; do
+  need "$v"
+done
+APP_DIR="$KUMKAJ_APP_DIR"
+MSI_NAME="$KUMKAJ_MSI_NAME"
+# The app's exe (Makepad keeps its resources in the same name with _).
+BIN="$KUMKAJ_BIN_NAME"
+RES_DIR="${BIN//-/_}"
 
 FLAVOR="${1:-prod}"
 case "$FLAVOR" in
   prod)
-    PKG="$ROOT/dist/windows"
-    UPGRADE_CODE="${KUMKAJ_MSI_UPGRADE_CODE:-{66C4AE1F-BD8E-4134-9A4F-8C67DCA42EA4}}"
+    PKG="$KUMKAJ_MSI_PKG_PROD"
+    UPGRADE_CODE="$KUMKAJ_MSI_UPGRADE_CODE"
     OUT_NAME="$MSI_NAME"
     ;;
   dev)
-    PKG="$ROOT/dist/windows-dev"
-    UPGRADE_CODE="${KUMKAJ_MSI_DEV_UPGRADE_CODE:-{B9D76BCC-DE80-4043-9B2E-47EA8972E82D}}"
+    PKG="$KUMKAJ_MSI_PKG_DEV"
+    UPGRADE_CODE="$KUMKAJ_MSI_DEV_UPGRADE_CODE"
     OUT_NAME="${MSI_NAME}Dev"
     ;;
   *) echo "usage: $0 [prod|dev]" >&2; exit 1;;
@@ -40,10 +52,10 @@ esac
 # Always rebuild the Windows package first (cargo is incremental - cheap
 # when nothing changed) so the MSI never ships a stale exe or resources.
 case "$FLAVOR" in
-  prod) "$ROOT/scripts/package-windows.sh" ;;
+  prod) "$KUMKAJ_MSI_PACKAGE_PROD" ;;
   dev)  "$APP_DIR/scripts/windows-dev.sh" ;;
 esac
-if [[ ! -f "$PKG/kumkaj-courier.exe" || ! -d "$PKG/kumkaj_courier/resources/fonts" ]]; then
+if [[ ! -f "$PKG/$BIN.exe" || ! -d "$PKG/$RES_DIR/resources/fonts" ]]; then
   echo "Windows package missing after build: $PKG" >&2
   exit 1
 fi
@@ -53,13 +65,13 @@ manifest_get() {
   sed -n "s/^$1=//p" "$PKG/install-manifest.env" | head -1 | tr -d '"'
 }
 LABEL="$(manifest_get KUMKAJ_APP_LABEL)"
-[[ -n "$LABEL" ]] || LABEL="Kumkaj Courier"
+[[ -n "$LABEL" ]] || { echo "install-manifest.env missing KUMKAJ_APP_LABEL" >&2; exit 1; }
 APP_ID="$(manifest_get KUMKAJ_APP_ID)"
 [[ -n "$APP_ID" ]] || { echo "install-manifest.env missing KUMKAJ_APP_ID" >&2; exit 1; }
 # Per-flavor delete-data helper (app id substituted in).
-sed "s/__APP_ID__/$APP_ID/g" "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
+sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
 # Uninstall prompt script (same substitution; JScript is all wixl supports).
-sed "s/__APP_ID__/$APP_ID/g" "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
+sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
 VER="$(sed -n '/^\[package\]/,/^\[/p' "$APP_DIR/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
 [[ -n "$VER" ]] || VER="0.1.0"
 
@@ -84,9 +96,13 @@ emit_file() {
     printf '%s<Component Id="%s" Guid="*">\n' "$indent" "$cid"
     printf '%s  <File Id="%s" Source="%s" Name="%s" KeyPath="yes"/>\n' \
       "$indent" "$fid" "$(printf '%s' "$fspath" | xml_escape)" "$(printf '%s' "$name" | xml_escape)"
+    if [[ "$shortcut" == "3" ]]; then
+      printf '%s  <Shortcut Id="QuickStartShortcut" Directory="AppMenuFolder" Name="Quick start" Target="[INSTALLFOLDER]Quick start.txt" WorkingDirectory="INSTALLFOLDER" Description="Set up other devices with %s"/>\n' \
+        "$indent" "$(printf '%s' "$LABEL" | xml_escape)"
+    fi
     if [[ "$shortcut" == "2" ]]; then
-      printf '%s  <Shortcut Id="DeleteDataShortcut" Directory="AppMenuFolder" Name="Delete books data" Target="[SystemFolder]WindowsPowerShell\\v1.0\\powershell.exe" Arguments="-NoProfile -ExecutionPolicy Bypass -File &quot;[INSTALLFOLDER]delete-books-data.ps1&quot;" WorkingDirectory="INSTALLFOLDER" Description="Delete Kumkaj Courier books data"/>\n' \
-        "$indent"
+      printf '%s  <Shortcut Id="DeleteDataShortcut" Directory="AppMenuFolder" Name="Delete books data" Target="[SystemFolder]WindowsPowerShell\\v1.0\\powershell.exe" Arguments="-NoProfile -ExecutionPolicy Bypass -File &quot;[INSTALLFOLDER]delete-books-data.ps1&quot;" WorkingDirectory="INSTALLFOLDER" Description="Delete %s books data"/>\n' \
+        "$indent" "$(printf '%s' "$LABEL" | xml_escape)"
     fi
     if [[ "$shortcut" == "1" ]]; then
       printf '%s  <Shortcut Id="AppShortcut" Directory="AppMenuFolder" Name="%s" Target="[INSTALLFOLDER]%s" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" Description="%s"/>\n' \
@@ -125,7 +141,7 @@ emit_tree() {
   printf '    <Property Id="MSIINSTALLPERUSER" Value="1"/>\n'
   # ARPNOMODIFY is defined by WixUI_Minimal - defining it again breaks wixl.
   printf '    <Property Id="ARPNOREPAIR" Value="1"/>\n'
-  printf '    <MajorUpgrade DowngradeErrorMessage="A newer version of Kumkaj Courier is already installed."/>\n'
+  printf '    <MajorUpgrade DowngradeErrorMessage="A newer version of %s is already installed."/>\n' "$(printf '%s' "$LABEL" | xml_escape)"
   # Installer wizard (Welcome/License -> progress -> Finish). Without this the
   # MSI installs silently and the window just vanishes on completion.
   printf '    <UIRef Id="WixUI_Minimal"/>\n'
@@ -138,8 +154,8 @@ emit_tree() {
   printf '    <InstallExecuteSequence>\n'
   printf '      <Custom Action="PromptDeleteBooksData" Before="RemoveFiles">REMOVE="ALL" AND NOT UPGRADINGPRODUCTCODE</Custom>\n'
   printf '    </InstallExecuteSequence>\n'
-  if [[ -f "$PKG/kumkaj_courier/resources/icon.ico" ]]; then
-    printf '    <Icon Id="AppIcon.ico" SourceFile="%s"/>\n' "$PKG/kumkaj_courier/resources/icon.ico"
+  if [[ -f "$PKG/$RES_DIR/resources/icon.ico" ]]; then
+    printf '    <Icon Id="AppIcon.ico" SourceFile="%s"/>\n' "$PKG/$RES_DIR/resources/icon.ico"
     printf '    <Property Id="ARPPRODUCTICON" Value="AppIcon.ico"/>\n'
   fi
   printf '    <Directory Id="TARGETDIR" Name="SourceDir">\n'
@@ -148,12 +164,15 @@ emit_tree() {
   printf '          <Directory Id="INSTALLFOLDER" Name="%s">\n' "$(printf '%s' "$LABEL" | xml_escape)"
 } >"$WXS.open"
 
-# exe (with shortcuts) + delete-data helper + kumkaj_courier/ resources tree
-emit_file "$WXS.open" "            " "$PKG/kumkaj-courier.exe" 1
+# exe (with shortcuts) + delete-data helper + <app>/ resources tree
+emit_file "$WXS.open" "            " "$PKG/$BIN.exe" 1
 emit_file "$WXS.open" "            " "$PKG/delete-books-data.ps1" 2
+if [[ -f "$PKG/Quick start.txt" ]]; then
+  emit_file "$WXS.open" "            " "$PKG/Quick start.txt" 3
+fi
 DIR_COUNTER=$((DIR_COUNTER + 1))
-printf '            <Directory Id="D%s" Name="kumkaj_courier">\n' "$DIR_COUNTER" >>"$WXS.open"
-emit_tree "              " "$PKG/kumkaj_courier"
+printf '            <Directory Id="D%s" Name="%s">\n' "$DIR_COUNTER" "$RES_DIR" >>"$WXS.open"
+emit_tree "              " "$PKG/$RES_DIR"
 printf '            </Directory>\n' >>"$WXS.open"
 
 {
@@ -213,7 +232,7 @@ for cand in "$WIXL_PREFIX/share/wixl-0.106/ext" "/usr/share/wixl-0.106/ext"; do
   if [[ -d "$cand/ui" ]]; then EXTDIR="$cand"; break; fi
 done
 [[ -n "$EXTDIR" ]] || { echo "wixl UI extension not found (msitools ext/ui)" >&2; exit 1; }
-# WixUI_Minimal resolves License.rtf beside the .wxs / via -I.
-cp -f "$ROOT/scripts/License.rtf" "$PKG/License.rtf"
-"$WIXL_BIN" --ext ui --extdir "$EXTDIR" --wxidir "$WIXL_PREFIX/share/wixl-0.106/include" -I "$PKG" -I "$ROOT/scripts" -o "$OUT" "$WXS"
+# WixUI_Minimal resolves License.rtf beside the .wxs / via -I: the app's own.
+cp -f "$APP_DIR/scripts/License.rtf" "$PKG/License.rtf"
+"$WIXL_BIN" --ext ui --extdir "$EXTDIR" --wxidir "$WIXL_PREFIX/share/wixl-0.106/include" -I "$PKG" -o "$OUT" "$WXS"
 echo "MSI: $OUT ($(du -h "$OUT" | awk '{print $1}'))"

@@ -27,12 +27,25 @@ rand = "0.8"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 uuid = { version = "1", features = ["v4", "serde"] }
-ureq = { version = "2", features = ["json"] }
+ureq = { version = "2", features = ["json", "gzip"] }
+# The LAN server gzips a big sync for devices that ask (already in the
+# tree via png; ureq's gzip feature reads it on the device).
+flate2 = "1"
 sys-locale = "0.3"
 # Exact decimal maths (no native f32/f64) for money, weight, slabs, tax %.
 rust_decimal = { version = "1.37", default-features = false, features = ["std", "serde", "serde-str", "maths"] }
 # Decode JPG/PNG/WebP; always re-encode attachments as lossless WebP.
 image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+
+# Tickets in Gujarati, Hindi, Arabic… go to network receipt printers as a
+# picture (receipt_raster.rs): Makepad's own shaper, bidi and rasterizer.
+rustybuzz = { version = "0.18.0", path = "../../vendor/makepad/libs/rustybuzz" }
+unicode-bidi = { version = "0.3", path = "../../vendor/makepad/libs/unicode/unicode-bidi" }
+ab_glyph_rasterizer = { version = "0.1.8", path = "../../vendor/makepad/libs/ab_glyph_rasterizer" }
+
+# Free disk space for the owner's backup warning (statvfs).
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
 
 # Desktop-only: neither crate builds for Android. There the clipboard goes
 # through `Cx::copy_to_clipboard` and files through Makepad's own picker.

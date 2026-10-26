@@ -1,0 +1,67 @@
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -702,11 +702,8 @@
+             return DrawStep::done();
+         }
+ 
+-        self.draw_bg.begin(cx, walk, self.layout);
+-        self.draw_icon.draw_walk(cx, self.icon_walk);
+-        self.draw_text
+-            .draw_walk(cx, self.label_walk, Align::default(), self.text.as_ref());
+-        self.draw_bg.end(cx);
++        let label = self.text.as_ref().to_string();
++        self.draw_face(cx, walk, &label);
+         cx.add_nav_stop(self.draw_bg.area(), NavRole::TextInput, Inset::default());
+         DrawStep::done()
+     }
+@@ -723,14 +720,46 @@
+ }
+ 
+ impl Button {
+-    pub fn draw_button(&mut self, cx: &mut Cx2d, label: &str) {
+-        self.draw_bg.begin(cx, self.walk, self.layout);
++    /// Draws the face and label.
++    ///
++    /// A button with a known width centers its label inside that width, once.
++    /// A button that sizes to the label keeps a Fit label and lets the turtle
++    /// center that box. Filling a Fit button collapses it and clips the text
++    /// down to the middle of the word.
++    fn draw_face(&mut self, cx: &mut Cx2d, walk: Walk, label: &str) {
++        let want_center = self.layout.align.x >= 0.25;
++        let center_in_box = want_center && !walk.width.is_fit();
++        let layout = Layout {
++            align: Align {
++                x: if center_in_box { 0.0 } else { self.layout.align.x },
++                y: self.layout.align.y,
++            },
++            ..self.layout
++        };
++        let label_walk = if center_in_box {
++            Walk {
++                width: Size::fill(),
++                height: Size::fit(),
++                ..self.label_walk
++            }
++        } else {
++            self.label_walk
++        };
++        let text_align = if center_in_box {
++            Align { x: 0.5, y: 0.5 }
++        } else {
++            Align::default()
++        };
++        self.draw_bg.begin(cx, walk, layout);
+         self.draw_icon.draw_walk(cx, self.icon_walk);
+-        self.draw_text
+-            .draw_walk(cx, self.label_walk, Align::default(), label);
++        self.draw_text.draw_walk(cx, label_walk, text_align, label);
+         self.draw_bg.end(cx);
+     }
+ 
++    pub fn draw_button(&mut self, cx: &mut Cx2d, label: &str) {
++        self.draw_face(cx, self.walk, label);
++    }
++
+     pub fn enabled(&self) -> bool {
+         self.enabled
+     }

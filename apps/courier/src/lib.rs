@@ -22,9 +22,12 @@ pub mod media;
 pub mod menu_images;
 pub mod net;
 pub mod notify;
+pub mod phone;
 pub mod precise;
 pub mod print_share;
+pub mod receipt_raster;
 pub mod rates;
+pub mod startup;
 pub mod store;
 pub mod track;
 

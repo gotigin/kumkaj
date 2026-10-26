@@ -49,8 +49,9 @@ Examples of **concrete products under the brand** (illustrative):
     stations.
 -   **Personal / household books** — money in/out and people on account
     without shop chrome.
--   **Multi-branch owner** — same concrete product(s) plus org/branch
-    controls when that product enables them.
+-   **Multi-branch owner** — the same concrete product, one instance
+    (one set of books) per branch, compared through exported snapshots
+    (§5).
 
 **How we build (internals):** focus on the concrete product the user
 sees. **The only shared thing is the common workspace.** Every Kumkaj
@@ -136,10 +137,11 @@ A food product may additionally enable:
 **Tables → orders → KOT/KDS → Kitchen → Billing → Inventory →
 Expenses → Reports**
 
-A multi-branch owner may additionally enable:
+A multi-branch owner runs one instance per branch (§5) and may
+additionally use:
 
-**Organization → Branches → Users/Devices → Central Dashboard →
-Cross-Branch Reports → Sync/Backup → Remote Monitoring**
+**Branch snapshots → Owner roll-up → (optional Cloud) Remote dashboard →
+Offsite backup**
 
 Features that are irrelevant to that product stay out of the way.
 
@@ -226,35 +228,37 @@ without damaging the speed of the sell workflow.
 
 ------------------------------------------------------------------------
 
-## 5. Multi-branch and organization
+## 5. Multi-branch: every branch is its own business
 
-Kumkaj must have an architecture that can grow beyond one physical
-location. An owner with several outlets should eventually be able to
-manage an **organization** containing multiple branches.
+**Decision (2026-10-23, overrides earlier "organization with branch
+selector" wording):** a branch is a **separate business**, so in Kumkaj
+it is a **separate instance of the product** — its own local server,
+its own books, menu/catalogue, prices, tables, staff, rights, printers,
+invoice series and day close. Prices, products and people really do
+differ from branch to branch (a highway outlet is not the city outlet),
+so nothing about one branch is shared with or inherited by another.
 
-Important capabilities include:
+-   **One branch = one local server (books).** A device can already hold
+    several local servers; an owner with three restaurants runs three.
+    Each one stands alone, works with no internet, and can be backed up,
+    restored, sold or closed without touching the others.
+-   **No in-book branch switching.** One set of books never contains two
+    branches, so data from one branch cannot leak into another (§27
+    rule 9) and one branch's settings can never change another's.
+-   **Starting a new branch** may copy another branch's menu as a
+    starting point (export → import), after which the copies diverge —
+    the same copy-then-diverge rule the apps follow (§1).
+-   **The owner's combined view** without any cloud: each branch exports
+    its day/period snapshot; the owner's device imports them into a
+    read-only roll-up (totals per branch side by side). Snapshots are
+    reports, never a second writer into a branch's books.
+-   **Optional Kumkaj Cloud, later:** WAN snapshot exchange, remote
+    dashboard, offsite backup — billed by usage (§21). Never required;
+    a cloud outage never stops a branch from billing (§6).
 
--   branch selector;
--   branch-specific catalogue/pricing where required;
--   users and devices associated with appropriate branches;
--   centralized owner dashboard;
--   branch-level sales;
--   consolidated sales across branches;
--   cross-branch operational reporting;
--   synchronization status;
--   backup status;
--   remote read-only operational visibility;
--   device management/revocation;
--   role and permission management;
--   branch health/alerts;
--   centralized API access where appropriate.
-
-WAN coordination, remote dashboards, and automatic offsite backup are
-**Kumkaj Cloud** capabilities and are billed by cloud usage. Each
-branch must still be able to run its full local books without the cloud.
-A cloud outage must **not stop an outlet from billing locally**. Each
-operational location should remain capable of continuing service and
-synchronizing safely later.
+What a "multi-branch owner" gets is therefore *the same concrete
+product, N times*, plus a way to compare them — not an organization
+layer inside one set of books.
 
 ------------------------------------------------------------------------
 
@@ -679,6 +683,22 @@ Sensitive actions such as high discounts, refunds, voids or stock
 corrections should be permission-controlled and recorded with a
 reason/audit event where appropriate.
 
+**Rights matrix (all apps):** the owner grants rights **per person**, as
+plain switches the owner reads in their own trade's words. A right has
+three levels:
+
+| Level | Meaning |
+|---|---|
+| **Allowed** | The person may do it. |
+| **With approval** | The person may start it; an Owner/Manager PIN is entered at that moment (the approver is recorded with the action). |
+| **Not allowed** | The control is refused with a plain reason. |
+
+Rights are checked in the books layer (the Server), not only hidden in
+the UI, so a paired terminal or a skipped screen cannot bypass them. Any
+right that reduces money or removes work already done (cancel, void,
+complimentary, discount, edit after print/settle) also **requires a
+reason**. Defaults follow the role preset; the owner edits them.
+
 ------------------------------------------------------------------------
 
 ## 18. Auditability and Business Trust
@@ -701,7 +721,14 @@ Important principles:
 -   manager/owner approval should be meaningful, not merely a cosmetic
     UI flag;
 -   the owner should be able to understand why totals changed and who
-    changed them.
+    changed them;
+-   **work already sent onward is cancelled, never deleted** — a line
+    sent to another station (a kitchen ticket, a dispatch, a pick list)
+    is cancelled with reason, whether it was already worked on (wastage
+    vs no loss), who asked and who approved; the original stays visible;
+-   **zero-charge is explicit** — a complimentary line or bill keeps its
+    real item, quantity and normal value with a reason and approver, so
+    reports can show what was given away instead of hiding it.
 
 This is particularly important as Kumkaj moves from a one-person shop
 to a business with cashiers, managers and multiple branches.
@@ -794,7 +821,12 @@ Potential cloud responsibilities include:
 
 Local multi-device coordination over a restaurant's own LAN does **not**
 require Kumkaj Cloud and must remain available as part of free local
-operation.
+operation. A terminal joins the shop **without the internet**: it finds
+the shop's server by scanning its own Wi‑Fi subnet (or the IP is typed),
+and proves membership with the shop's pairing code shown on the server.
+Some owners never want a cloud at all; for them every app must stay
+complete with no account, no sync code from a website, and no online
+step anywhere in setup or daily use.
 
 Synchronization must be designed for unreliable networks:
 
@@ -987,6 +1019,42 @@ exact workflows have been implemented, tested and appropriately
 reviewed. The rates in a pack are starting points a seller edits, and
 the seller remains responsible for their own filings.
 
+The same “first market, not only market” rule applies to **language**.
+Every Kumkaj app ships its static interface — labels, headings,
+buttons, placeholders, hints, help text, the setup and lock screens —
+fully translated in **29 languages**: English, हिन्दी (Hindi), বাংলা
+(Bengali), తెలుగు (Telugu), मराठी (Marathi), தமிழ் (Tamil), اردو
+(Urdu), ગુજરાતી (Gujarati), ಕನ್ನಡ (Kannada), മലയാളം (Malayalam),
+ଓଡ଼ିଆ (Odia), ਪੰਜਾਬੀ (Punjabi), অসমীয়া (Assamese), Español,
+Français, Português, Deutsch, العربية (Arabic), 中文 (Chinese),
+日本語 (Japanese), 한국어 (Korean), Русский (Russian), Bahasa
+Indonesia, Türkçe, Tiếng Việt, ไทย (Thai), Italiano, Nederlands and
+Kiswahili. On first launch an app follows the device language; after
+that the per-device choice made on the setup screen wins. What an
+owner types — item names, party names, the shop’s own name — is
+always shown exactly as typed, in every language. Text the store
+generates (receipt lines, day-book composition, action results) is
+data output, not interface chrome, and is localised separately if
+ever.
+
+Each app owns its dictionary in its own `src/locale.rs` +
+`src/locale_chrome.rs` (copy-then-diverge, §1–2 — there is no shared
+Kumkaj core to translate once). A test in every app
+(`shipped_languages_translate_chrome`) fails if any static string
+would fall back to English in any of the 29 languages, so a new label
+must land with all of its translations. The language-picker catalogue
+is wider (~110 languages, also used to match device locales); entries
+beyond the 29 currently show the English interface and gain
+translations over time — the 29 above are the supported set.
+
+Right-to-left languages (العربية, اردو today; فارسی, עברית and
+friends as their translations land) get real RTL rendering: Makepad
+shapes the script and runs the Unicode bidirectional algorithm, and
+each app right-aligns its static text and input fields while such a
+language is active, restoring the exact designed alignment when
+switching back to a left-to-right language. The window layout itself
+(navigation column, card order) is deliberately not mirrored.
+
 ------------------------------------------------------------------------
 
 ## 24. UX Direction
@@ -1018,6 +1086,17 @@ controls when multi-branch is in use.
 The interface should therefore be **role-aware and
 capability-aware**.
 
+**Design belongs to each product (2026-10-23).** Kumkaj apps do not
+share a look or a flow. Each concrete product gets the design that gives
+its own users the best experience; looking like a sibling app, or not,
+is never a goal. What every app shares is the principles (this document)
+and the technical lessons in [`DESIGN.md`](DESIGN.md) /
+[`DEV.md`](DEV.md). When studying competitors and client material, the
+aim is to **learn and do better**: cover all or most of the useful
+features the best apps in that trade offer (cloud-only features aside
+until Kumkaj Cloud), and design them for speed and clarity at the point
+of work — not to clone their screens.
+
 ------------------------------------------------------------------------
 
 ## 25. Current Technical Direction
@@ -1034,10 +1113,11 @@ workspace/
     ├── Cargo.toml          (workspace membership only — no shared product code)
     ├── vendor/makepad/     (Makepad 2, path-dep for every app)
     ├── apps/
-    │   ├── courier/        (Kumkaj Courier — owns all of its code under src/)
-    │   └── khaynjo/        (Khaynjo — owns all of its code under src/)
+    │   ├── courier/        (Kumkaj Courier — owns all of its code under src/,
+    │   │                    its packaging and installers under scripts/)
+    │   └── khaynjo/        (Khaynjo — the same, its own)
     ├── tools/              (per-app dev launchers)
-    └── scripts/            (build/packaging tooling, parameterised per app)
+    └── scripts/            (shared build/packaging tooling; names no app)
 ```
 
 Each app declares the same Makepad 2 path-dep and similar libraries in
@@ -1241,8 +1321,8 @@ product enables them):
 3.  **Tables & kitchen** — when the entity turns that pack on (floor,
     KOT/KDS, stations, waiter/kitchen roles).
 4.  **Team and control** — staff, permissions, approvals, audit, backup.
-5.  **Extra tills and multi-branch** — LAN clients; org + branch switch +
-    local consolidated views.
+5.  **Extra tills and multi-branch** — LAN clients on the shop's own
+    Wi‑Fi; one local server per branch (§5) + snapshot roll-up.
 6.  **Optional Kumkaj Cloud** — WAN sync, remote visibility, hosted
     backup, usage metering. Same rates for all; higher bill only from
     higher consumption. Each branch still runs free local Kumkaj. Cloud

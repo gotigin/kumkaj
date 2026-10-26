@@ -1,10 +1,10 @@
-# Delete Kumkaj Courier books data for __APP_ID__.
+# Delete __APP_LABEL__ books data for __APP_ID__.
 # Installed into the app folder by the MSI; Start Menu shortcut runs this.
 # __APP_ID__ is replaced by build-msi.sh. Prompts before deleting anything.
 $ErrorActionPreference = "Stop"
 $DataDir = Join-Path $env:APPDATA "__APP_ID__"
 
-Write-Host "Kumkaj Courier books data:"
+Write-Host "__APP_LABEL__ books data:"
 Write-Host "  $DataDir"
 Write-Host ""
 if (-not (Test-Path $DataDir)) {

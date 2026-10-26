@@ -236,7 +236,7 @@ if [[ -f "$CFG" ]]; then
   before="$(cksum < "$CFG" | awk '{print $1}')"
   sed -i \
     -e 's/\] \$(\$current)\* \$tok);$/] $($current)* $tok)/' \
-    -e 's/^\([[:space:]]*\]\));$/\1]/' \
+    -e 's/^\([[:space:]]*\]\));$/\1)/' \
     "$CFG"
   # Closing `);` immediately after parser_emit block's last `{$($current)+}` line
   sed -i '/{\$(\$current)+}$/{ n; s/^\([[:space:]]*\));$/\1)/; }' "$CFG"

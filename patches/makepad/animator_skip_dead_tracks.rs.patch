@@ -1,9 +1,10 @@
---- a/widgets/src/animator.rs	2026-09-21 13:48:18.043544963 +0530
-+++ b/widgets/src/animator.rs	2026-09-21 13:48:18.043645742 +0530
-@@ -824,6 +824,21 @@
+--- a/widgets/src/animator.rs
++++ b/widgets/src/animator.rs
+@@ -823,6 +823,22 @@
+             // NOTE: After the first frame, no new objects should be allocated here.
              // The state_object structure is populated on first frame and reused thereafter.
              let vm_id = self.vm_id;
- 
++
 +            // Drop tracks whose script objects were freed (e.g. after a
 +            // set_type_default rebuild). Indexing them panics and freezes Android.
 +            cx.with_script_vm_id(vm_id, |vm| {

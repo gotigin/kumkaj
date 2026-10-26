@@ -10,7 +10,7 @@ khaynjo-dev = ["run", "-p", "khaynjo-dev", "--"]
 khaynjo-android-dev = ["run", "-p", "khaynjo-android-dev", "--"]
 # Khaynjo Windows Dev package (cross from Linux with mingw; Win10 + Win11 x86_64).
 # Makepad layout: exe + kumkaj_khaynjo/resources beside it (underscores).
-# Usage: cargo khaynjo-windows-dev → dist/windows-dev/
+# Usage: cargo khaynjo-windows-dev → dist/khaynjo-windows-dev/
 khaynjo-windows-dev = ["run", "-p", "khaynjo-windows-dev", "--"]
 # Android: build + install + launch (apps/courier/env/development.env → com.kumkaj.courier.debug).
 # Usage: cargo courier-android-dev
@@ -19,14 +19,15 @@ courier-android-dev = ["run", "-p", "courier-android-dev", "--"]
 # Windows Dev package (cross from Linux with mingw; Win10 + Win11 x86_64).
 # Makepad layout: exe + kumkaj_courier/resources beside it (underscores).
 # Usage: cargo courier-windows-dev → dist/windows-dev/
-# Production: ./scripts/package-windows.sh → dist/windows/
+# Production: ./apps/courier/scripts/package-windows.sh → dist/windows/
 courier-windows-dev = ["run", "-p", "courier-windows-dev", "--"]
 
 # Cross-link Windows GNU target from Arch (pacman -S mingw-w64-gcc).
 [target.x86_64-pc-windows-gnu]
 linker = "x86_64-w64-mingw32-gcc"
 
-# Window / taskbar icons for Makepad (regen: ./scripts/generate-app-icons.sh).
+# Window / taskbar icons for Makepad (regen: ./apps/courier/scripts/generate-icons.sh).
+# Workspace default = Courier's; Khaynjo's scripts export its own MAKEPAD_APP_ICON_*.
 [env]
 MAKEPAD_APP_ICON_32 = { value = "apps/courier/resources/icon_32.png", relative = true }
 MAKEPAD_APP_ICON_64 = { value = "apps/courier/resources/icon_64.png", relative = true }

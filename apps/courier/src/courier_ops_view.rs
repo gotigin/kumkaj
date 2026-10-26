@@ -251,8 +251,15 @@ pub fn advance_awb_with_pod(
 
 pub fn print_label(store: &Store, awb: &str) -> Result<String, String> {
     let sale = find_sale_for_scan(store, awb)?;
-    let path = store.write_awb_label(&sale.id)?;
-    Ok(format!("Label saved: {}", path.display()))
+    let path = store.print_awb_label(&sale.id)?;
+    if crate::print_share::prints_route(crate::print_share::RouteKey::Label) {
+        Ok(format!("Label printed · also saved: {}", path.display()))
+    } else {
+        Ok(format!(
+            "Label saved: {} — set an AWB label printer in Settings → Printers to print on paper",
+            path.display()
+        ))
+    }
 }
 
 /// Dispatch all currently booked AWBs (limit) to a rider by name.

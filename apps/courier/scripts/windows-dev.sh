@@ -9,13 +9,15 @@ ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"
 export KUMKAJ_APP_DIR="$ROOT/apps/courier"
 export KUMKAJ_ENV_DIR="$KUMKAJ_APP_DIR/env"
-# shellcheck source=load-kumkaj-env.sh
+export KUMKAJ_BIN_NAME=kumkaj-courier
+export KUMKAJ_INSTALL_SLUG=kumkaj-courier
+# shellcheck source=../../../scripts/load-kumkaj-env.sh
 source "$ROOT/scripts/load-kumkaj-env.sh"
-# shellcheck source=windows-env.sh
+# shellcheck source=../../../scripts/windows-env.sh
 source "$ROOT/scripts/windows-env.sh"
 # shellcheck source=desktop-ids.sh
-source "$ROOT/scripts/desktop-ids.sh"
-# shellcheck source=stage-desktop-package.sh
+source "$KUMKAJ_APP_DIR/scripts/desktop-ids.sh"
+# shellcheck source=../../../scripts/stage-desktop-package.sh
 source "$ROOT/scripts/stage-desktop-package.sh"
 
 export KUMKAJ_ROOT="$ROOT"
@@ -81,7 +83,8 @@ Uninstall:
   Start Menu → Uninstall Kumkaj Courier Dev
   or double-click Uninstall.bat
 
-Prod: ./scripts/package-windows.sh → dist/windows/
+Prod: ./apps/courier/scripts/package-windows.sh → dist/windows/
+MSI:  ./apps/courier/scripts/msi.sh [prod|dev] → dist/KumkajCourier[Dev]-<ver>.msi
 EOF
 
 echo "Windows Dev package: $OUT/  (exe ${SIZE})"

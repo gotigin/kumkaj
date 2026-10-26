@@ -27,6 +27,16 @@ pub struct Store {
     path: PathBuf,
 }
 
+#[path = "store_running.rs"]
+mod running;
+#[path = "store_service.rs"]
+mod service;
+#[path = "store_recipes.rs"]
+mod recipes;
+pub use recipes::{milli_as_typed, recipe_as_typed, LowStock, RecipeLine, DEFAULT_REORDER_AT};
+pub use service::{Reservation, ShiftClose};
+use running::natural_key;
+
 /// Everything needed to create one staff member. Kept together so the hire
 /// call stays readable instead of an eight-argument list.
 pub struct StaffHire<'a> {
@@ -47,9 +57,16 @@ impl Store {
     }
 
     pub fn open_path(path: &Path) -> Result<Self, String> {
-        let conn = Connection::open(path).map_err(|e| e.to_string())?;
+        let mut conn = Connection::open(path).map_err(|e| e.to_string())?;
+        // Take the write lock when a transaction begins, so it waits out
+        // another writer (busy_timeout) instead of failing midway in WAL.
+        conn.set_transaction_behavior(rusqlite::TransactionBehavior::Immediate);
         conn.execute_batch(
+            // busy_timeout: the LAN server writes from its own connection
+            // per request; a write that meets another waits instead of
+            // failing with "database is locked".
             "PRAGMA journal_mode=WAL;
+             PRAGMA busy_timeout=5000;
              PRAGMA synchronous=FULL;
              PRAGMA foreign_keys=ON;",
         )
@@ -65,6 +82,16 @@ impl Store {
 
     pub fn db_path(&self) -> &Path {
         &self.path
+    }
+
+    /// Run `f` as one transaction: all of its writes land together or none
+    /// do, other connections never see half of them, and the disk is synced
+    /// once instead of once per row.
+    pub fn in_transaction<T>(&self, f: impl FnOnce() -> Result<T, String>) -> Result<T, String> {
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let out = f()?;
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(out)
     }
 
     /// Create the current books schema (version **1**).
@@ -362,6 +389,64 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
 
+        // LAN: phones paired to this Server (one token each, revocable), the
+        // staff signed in on them, and the answer to every write a phone
+        // sent (so a retry after a lost reply is answered, not done twice).
+        // `lan_outbox` is the phone's side: writes waiting for the Server.
+        self.conn
+            .execute_batch(
+                r#"
+                CREATE TABLE IF NOT EXISTS lan_devices (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL DEFAULT '',
+                    token_hash TEXT NOT NULL UNIQUE,
+                    paired_at TEXT NOT NULL,
+                    last_seen_at TEXT NOT NULL DEFAULT '',
+                    revoked_at TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS lan_sessions (
+                    token_hash TEXT PRIMARY KEY,
+                    device_id TEXT NOT NULL,
+                    staff_id TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    expires_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS lan_replies (
+                    request_id TEXT PRIMARY KEY,
+                    device_id TEXT NOT NULL,
+                    status INTEGER NOT NULL,
+                    body TEXT NOT NULL,
+                    created_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS lan_outbox (
+                    id TEXT PRIMARY KEY,
+                    seq INTEGER NOT NULL,
+                    path TEXT NOT NULL,
+                    body TEXT NOT NULL,
+                    label TEXT NOT NULL DEFAULT '',
+                    table_id TEXT NOT NULL DEFAULT '',
+                    staff_id TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    attempts INTEGER NOT NULL DEFAULT 0,
+                    last_error TEXT NOT NULL DEFAULT ''
+                );
+                -- A waiting write the Server turned down when it finally
+                -- arrived (the table was settled at the counter meanwhile,
+                -- the dish ran out …). Kept, with the Server's words, until
+                -- someone has seen it: money taken offline is never dropped
+                -- silently.
+                CREATE TABLE IF NOT EXISTS lan_refused (
+                    id TEXT PRIMARY KEY,
+                    path TEXT NOT NULL,
+                    body TEXT NOT NULL,
+                    label TEXT NOT NULL DEFAULT '',
+                    error TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    refused_at TEXT NOT NULL
+                );
+                "#,
+            )
+            .map_err(|e| e.to_string())?;
         self.conn
             .execute(
                 "INSERT OR IGNORE INTO meta(key, value) VALUES('schema_version', '1')",
@@ -369,7 +454,11 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         // Always pin to current pre-release schema (drop any leftover 2–17 markers).
-        self.meta_set("schema_version", "1")?;
+        // Written only when it differs: the LAN server opens the books for
+        // every request, and an unconditional write was a disk sync each time.
+        if self.meta_get("schema_version")?.as_deref() != Some("1") {
+            self.meta_set("schema_version", "1")?;
+        }
         // Pre-release column adds (no-op when CREATE already has them).
         for stmt in [
             "ALTER TABLE sales ADD COLUMN extras_json TEXT NOT NULL DEFAULT '[]'",
@@ -379,6 +468,29 @@ impl Store {
             "ALTER TABLE tables_dining ADD COLUMN occupied_at TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE kot_tickets ADD COLUMN table_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE kot_tickets ADD COLUMN total_paise INTEGER NOT NULL DEFAULT 0",
+            // Floor areas (Dine In, Parcel, AC …) and the running order a KOT fed.
+            "ALTER TABLE tables_dining ADD COLUMN area TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE tables_dining ADD COLUMN paid_at TEXT NOT NULL DEFAULT ''",
+            // Dish group label (Half and Full are items of their own) and
+            // per-area prices on an item.
+            "ALTER TABLE products ADD COLUMN group_name TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE products ADD COLUMN area_prices_json TEXT NOT NULL DEFAULT '[]'",
+            // Dish / resold good / raw material (existing items are dishes).
+            "ALTER TABLE products ADD COLUMN kind TEXT NOT NULL DEFAULT 'dish'",
+            "ALTER TABLE kot_tickets ADD COLUMN order_id TEXT NOT NULL DEFAULT ''",
+            // Kitchen calls tickets by number; a cancel slip is its own kind;
+            // the KOT carries who sent it.
+            "ALTER TABLE kot_tickets ADD COLUMN kot_no INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE kot_tickets ADD COLUMN kind TEXT NOT NULL DEFAULT 'kot'",
+            "ALTER TABLE kot_tickets ADD COLUMN created_by TEXT NOT NULL DEFAULT ''",
+            // Settle & Save: what the guest handed over, change returned, tip.
+            "ALTER TABLE sales ADD COLUMN tendered_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN change_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN tip_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN tip_method TEXT NOT NULL DEFAULT ''",
+            // Bill discount taken off the lines, and why (reports, audit).
+            "ALTER TABLE sales ADD COLUMN discount_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN discount_reason TEXT NOT NULL DEFAULT ''",
         ] {
             let _ = self.conn.execute(stmt, []);
         }
@@ -386,6 +498,81 @@ impl Store {
         self.conn
             .execute_batch(
                 r#"
+                -- A table's open order between KOTs and payment
+                -- (BUSINESS_BOOKS.md § Open orders are not books yet).
+                -- Drawer handovers (BUSINESS_BOOKS.md § Shift and day-end cash).
+                CREATE TABLE IF NOT EXISTS shift_closes (
+                    id TEXT PRIMARY KEY,
+                    started_at TEXT NOT NULL,
+                    ended_at TEXT NOT NULL,
+                    closed_by TEXT NOT NULL,
+                    bills INTEGER NOT NULL,
+                    cash_paise INTEGER NOT NULL,
+                    upi_paise INTEGER NOT NULL,
+                    card_paise INTEGER NOT NULL,
+                    cash_tips_paise INTEGER NOT NULL,
+                    cash_out_paise INTEGER NOT NULL,
+                    float_paise INTEGER NOT NULL,
+                    expected_paise INTEGER NOT NULL,
+                    counted_paise INTEGER NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS running_orders (
+                    id TEXT PRIMARY KEY,
+                    table_id TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    opened_at TEXT NOT NULL,
+                    opened_by TEXT NOT NULL DEFAULT '',
+                    printed_at TEXT NOT NULL DEFAULT '',
+                    closed_at TEXT NOT NULL DEFAULT '',
+                    sale_id TEXT NOT NULL DEFAULT '',
+                    merged_into TEXT NOT NULL DEFAULT ''
+                );
+                CREATE INDEX IF NOT EXISTS idx_running_orders_table
+                    ON running_orders(table_id, status);
+                CREATE TABLE IF NOT EXISTS running_lines (
+                    id TEXT PRIMARY KEY,
+                    order_id TEXT NOT NULL,
+                    kot_id TEXT NOT NULL DEFAULT '',
+                    product_id TEXT NOT NULL,
+                    name TEXT NOT NULL,
+                    unit_price_paise INTEGER NOT NULL,
+                    qty_milli INTEGER NOT NULL,
+                    unit_label TEXT NOT NULL DEFAULT '',
+                    note TEXT NOT NULL DEFAULT '',
+                    cancelled INTEGER NOT NULL DEFAULT 0,
+                    complimentary INTEGER NOT NULL DEFAULT 0,
+                    reason TEXT NOT NULL DEFAULT '',
+                    prepared INTEGER NOT NULL DEFAULT 0,
+                    changed_by TEXT NOT NULL DEFAULT '',
+                    approved_by TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    created_by TEXT NOT NULL DEFAULT '',
+                    seq INTEGER NOT NULL DEFAULT 0
+                );
+                CREATE INDEX IF NOT EXISTS idx_running_lines_order
+                    ON running_lines(order_id);
+                -- Table bookings: who, how many, when; booked → seated / cancelled.
+                CREATE TABLE IF NOT EXISTS reservations (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    phone TEXT NOT NULL DEFAULT '',
+                    guests INTEGER NOT NULL DEFAULT 0,
+                    at TEXT NOT NULL,
+                    table_name TEXT NOT NULL DEFAULT '',
+                    status TEXT NOT NULL DEFAULT 'booked',
+                    created_at TEXT NOT NULL,
+                    created_by TEXT NOT NULL DEFAULT ''
+                );
+                -- Who took a delivery order out.
+                CREATE TABLE IF NOT EXISTS sale_delivery (
+                    sale_id TEXT PRIMARY KEY,
+                    delivery_by TEXT NOT NULL
+                );
+                -- Companion tables made by splitting a bill (removed once paid).
+                CREATE TABLE IF NOT EXISTS split_tables (
+                    table_id TEXT PRIMARY KEY,
+                    parent_id TEXT NOT NULL
+                );
                 CREATE TABLE IF NOT EXISTS notify_outbox (
                     id TEXT PRIMARY KEY,
                     created_at TEXT NOT NULL,
@@ -417,6 +604,39 @@ impl Store {
                 "#,
             )
             .map_err(|e| e.to_string())?;
+        self.conn.execute_batch(recipes::SCHEMA).map_err(|e| e.to_string())?;
+        // Lookups every sync and every screen makes. Without them a year of
+        // bills made each device's sync scan every bill line and ledger row
+        // (seconds per sync); `a_busy_years_books_still_sync_quickly` guards
+        // this. Built once on existing books, then free.
+        self.conn
+            .execute_batch(
+                r#"
+                CREATE INDEX IF NOT EXISTS idx_sale_lines_sale ON sale_lines(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_sale_payments_sale ON sale_payments(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_sales_created ON sales(created_at);
+                CREATE INDEX IF NOT EXISTS idx_sale_revisions_sale ON sale_revisions(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_customer ON credit_ledger(customer_id);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_created ON credit_ledger(created_at);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_sale ON credit_ledger(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_kot_tickets_table ON kot_tickets(table_id, created_at);
+                CREATE INDEX IF NOT EXISTS idx_kot_tickets_open ON kot_tickets(created_at)
+                    WHERE status NOT IN ('completed', 'cancelled');
+                CREATE INDEX IF NOT EXISTS idx_kot_tickets_sale ON kot_tickets(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_audit_created ON audit_events(created_at);
+                CREATE INDEX IF NOT EXISTS idx_expense_payments_expense ON expense_payments(expense_id);
+                CREATE INDEX IF NOT EXISTS idx_purchase_lines_purchase ON purchase_lines(purchase_id);
+                CREATE INDEX IF NOT EXISTS idx_running_lines_created ON running_lines(created_at);
+                -- `created_at LIKE '2026-10-25%'` (a day, a month) can only
+                -- use a NOCASE index while LIKE is case-insensitive.
+                CREATE INDEX IF NOT EXISTS idx_sales_day ON sales(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_expenses_day ON expenses(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_money_movements_like ON money_movements(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_day ON credit_ledger(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_payable_ledger_day ON payable_ledger(created_at COLLATE NOCASE);
+                "#,
+            )
+            .map_err(|e| e.to_string())?;
 
         for (key, value) in [
             ("venue_mode", "restaurant"),
@@ -425,6 +645,7 @@ impl Store {
             ("next_invoice_seq", "1"),
             ("pin_reset_required", "0"),
             ("entity_template", "khaynjo_restaurant"),
+            ("app", APP_MARK),
         ] {
             self.conn
                 .execute(
@@ -442,19 +663,9 @@ impl Store {
                 id
             }
         };
-        if self
-            .meta_get("org_name")?
-            .filter(|s| !s.trim().is_empty())
-            .is_none()
-        {
-            let titled = self.meta_get("venue_title")?.unwrap_or_default();
-            let name = if titled.trim().is_empty() {
-                "My business".to_string()
-            } else {
-                titled.trim().to_string()
-            };
-            self.meta_set("org_name", &name)?;
-        }
+        // The business name is only ever what the owner typed: nothing is
+        // written for them (a stored "My business" read as if they had saved
+        // it, and showed in the header as their business).
 
         let branch_count: i64 = self
             .conn
@@ -989,21 +1200,111 @@ impl Store {
         Ok(code)
     }
 
-    pub fn set_client_pairing(&self, server_url: &str, pairing_code: &str) -> Result<(), String> {
+    /// Phone side: paired with a device token of its own (the pairing code
+    /// is used once, at pairing, and is not kept).
+    pub fn set_client_device_pairing(&self, server_url: &str, device_token: &str) -> Result<(), String> {
         let url = server_url.trim().trim_end_matches('/');
         if url.is_empty() {
             return Err("Server address required".into());
         }
         self.meta_set("server_url", url)?;
-        self.meta_set("pairing_code", pairing_code.trim())?;
+        self.meta_set("device_token", device_token.trim())?;
+        self.meta_set("pairing_code", "")?;
         self.meta_set("client_paired", "1")?;
         Ok(())
     }
 
+    pub fn client_device_token(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("device_token")?.filter(|s| !s.trim().is_empty()))
+    }
+
+    /// How often (seconds) the phone worker pulls the Server's books.
+    pub fn sync_interval_secs(&self) -> Result<u64, String> {
+        Ok(self
+            .meta_get("sync_interval_secs")?
+            .and_then(|v| v.parse().ok())
+            .unwrap_or(20))
+    }
+
+    pub fn set_sync_interval_secs(&self, secs: u64) -> Result<(), String> {
+        self.meta_set("sync_interval_secs", &secs.to_string())
+    }
+
+    /// When this device last synced with the Server (RFC3339), kept through a restart.
+    pub fn set_device_last_seen(&self, at: &str) -> Result<(), String> {
+        self.meta_set("device_last_seen", at)
+    }
+
+    pub fn device_last_seen(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("device_last_seen")?.filter(|s| !s.trim().is_empty()))
+    }
+
+    /// Server side: record that a paired device made contact.
+    pub fn touch_device_seen(&self, device_id: &str) -> Result<(), String> {
+        let now = chrono::Local::now().to_rfc3339();
+        self.conn
+            .execute(
+                "UPDATE lan_devices SET last_seen_at = ?1 WHERE id = ?2",
+                rusqlite::params![now, device_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
     pub fn clear_client_pairing(&self) -> Result<(), String> {
+        self.meta_set("device_token", "")?;
         self.meta_set("client_paired", "0")?;
         self.meta_set("server_url", "")?;
+        self.meta_set("paired_server_id", "")?;
         Ok(())
+    }
+
+    /// The shop server this device paired with, by its id — never by its
+    /// name or address. How the device finds it again when the address
+    /// changes (a new address after a power cut, the books on a new computer).
+    pub fn paired_server_id(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("paired_server_id")?.filter(|s| !s.trim().is_empty()))
+    }
+
+    pub fn set_paired_server_id(&self, id: &str) -> Result<(), String> {
+        self.meta_set("paired_server_id", id.trim())
+    }
+
+    /// The paired server answered from another address: the pairing stays,
+    /// only where to reach it changes.
+    pub fn set_server_url(&self, server_url: &str) -> Result<(), String> {
+        let url = server_url.trim().trim_end_matches('/');
+        if url.is_empty() {
+            return Err("Server address required".into());
+        }
+        self.meta_set("server_url", url)
+    }
+
+    /// These books' id on the shop Wi‑Fi, made once and kept in the books:
+    /// a backup restored on a new computer is the same server to every
+    /// paired device, which finds it again by this id.
+    pub fn lan_server_id(&self) -> Result<String, String> {
+        if let Some(id) = self.meta_get("lan_server_id")?.filter(|s| !s.trim().is_empty()) {
+            return Ok(id);
+        }
+        // INSERT OR IGNORE: two first callers at once still agree on one id.
+        self.conn
+            .execute(
+                "INSERT OR IGNORE INTO meta(key, value) VALUES('lan_server_id', ?1)",
+                params![new_id()],
+            )
+            .map_err(|e| e.to_string())?;
+        self.meta_get("lan_server_id")?
+            .filter(|s| !s.trim().is_empty())
+            .ok_or_else(|| "server id missing".into())
+    }
+
+    /// Changes whenever another connection commits to these books (SQLite's
+    /// `data_version`) — the cheap "did anything change?" check.
+    pub fn data_version(&self) -> Result<i64, String> {
+        self.conn
+            .query_row("PRAGMA data_version", [], |r| r.get(0))
+            .map_err(|e| e.to_string())
     }
 
     /// Client terminals are not the shop host — skip local Owner/onboarding wizards.
@@ -1129,6 +1430,11 @@ impl Store {
         let mut out = String::new();
         out.push_str(venue);
         out.push('\n');
+        // Owner's bill format: address/phone lines and the FSSAI licence no.
+        for line in self.bill_header_lines()? {
+            out.push_str(&line);
+            out.push('\n');
+        }
         if is_invoice {
             out.push_str("TAX INVOICE\n");
         } else {
@@ -1291,6 +1597,40 @@ impl Store {
         if !sale.created_by_name.is_empty() {
             out.push_str(&format!("By {}\n", sale.created_by_name));
         }
+        // Settle & Save: cash handed over, change returned, tip.
+        let (tendered, change, tip): (i64, i64, i64) = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(tendered_paise, 0), COALESCE(change_paise, 0),
+                        COALESCE(tip_paise, 0)
+                   FROM sales WHERE id = ?1",
+                params![sale_id],
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+            )
+            .map_err(|e| e.to_string())?;
+        let m = |p: i64| Money(p).format_localized(&currency, &fiscal_settings);
+        let (discount, discount_reason): (i64, String) = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(discount_paise, 0), COALESCE(discount_reason, '') FROM sales WHERE id = ?1",
+                params![sale_id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .map_err(|e| e.to_string())?;
+        if discount > 0 {
+            out.push_str(&format!("Discount −{} ({discount_reason})\n", m(discount)));
+        }
+        if tendered > 0 {
+            out.push_str(&format!("Paid {} · Change {}\n", m(tendered), m(change)));
+        }
+        if tip > 0 {
+            out.push_str(&format!("Tip {} (thank you)\n", m(tip)));
+        }
+        let footer = self.bill_footer()?;
+        if !footer.trim().is_empty() {
+            out.push_str(footer.trim());
+            out.push('\n');
+        }
         if is_invoice {
             out.push_str("— End of invoice —\n");
         }
@@ -1390,6 +1730,30 @@ impl Store {
             Money(self.till_balance_paise()?).format_localized(&currency, &fiscal_settings),
             Money(t.rounding_paise).format_localized(&currency, &fiscal_settings),
         ))
+        .map(|summary| {
+            // Restaurant day close also names what was not a sale: tips
+            // (staff's money) and what left the kitchen unbilled.
+            let tips = self.today_tips_paise().unwrap_or(0);
+            let mut out = summary;
+            if tips > 0 {
+                out.push_str(&format!(
+                    "\nTips (staff's, not sales): {}",
+                    Money(tips).format_localized(&currency, &fiscal_settings)
+                ));
+            }
+            // Only when something was cancelled or given free today.
+            if let Ok(report) = self.cancellations_and_nc_text()
+                && report.lines().any(|l| l.starts_with("- "))
+            {
+                out.push('\n');
+                out.push_str(report.trim_end());
+            }
+            // Who sold, how, when, what — and the discounts given.
+            if let Ok(report) = self.restaurant_day_report_text() {
+                out.push_str(report.trim_end());
+            }
+            out
+        })
     }
 
     /// Record that the shop closed the day, and when.
@@ -1413,14 +1777,18 @@ impl Store {
         // Expected drawer movement today: cash tenders in, minus cash
         // that left (cash expenses, cash payable settlements, till→bank).
         let today = Local::now().format("%Y-%m-%d").to_string();
-        let expected_cash =
-            self.today_totals()?.cash_paise - self.cash_out_paise(Some(&today))?;
+        // The opening float stays in the drawer and cash tips sit there too
+        // (they are the staff's) — both belong in what the drawer should hold.
+        let expected_cash = self.opening_float_paise()?
+            + self.today_totals()?.cash_paise
+            + self.today_cash_tips_paise()?
+            - self.cash_out_paise(Some(&today))?;
         if let Some(counted) = counted_cash_paise {
             let variance = counted - expected_cash;
             let currency = self.locale_settings()?.currency;
             let fiscal = self.fiscal_settings()?;
             summary.push_str(&format!(
-                "Drawer counted: {}\nExpected cash (in − out today): {}\nVariance: {}\n",
+                "Drawer counted: {}\nExpected cash (float + in − out today): {}\nVariance: {}\n",
                 Money(counted).format_localized(&currency, &fiscal),
                 Money(expected_cash).format_localized(&currency, &fiscal),
                 Money(variance).format_localized(&currency, &fiscal),
@@ -1483,6 +1851,9 @@ impl Store {
             active_sale_id: None,
             occupied_at: String::new(),
             running_total_paise: 0,
+            area: String::new(),
+            paid_at: String::new(),
+            floor_state: crate::domain::FloorState::Free,
         })
     }
 
@@ -1637,19 +2008,6 @@ impl Store {
     }
 
     /// Copy Server Owner PIN hash onto the local Owner so unlock matches the shop.
-    pub fn upsert_owner_pin_cache(&self, server_owner: &StaffMember) -> Result<(), String> {
-        if !server_owner.is_owner() {
-            return Ok(());
-        }
-        self.conn
-            .execute(
-                "UPDATE staff SET pin_hash = ?1, name = ?2 WHERE role = 'owner' AND active = 1",
-                params![server_owner.pin_hash, server_owner.name],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
-    }
-
     pub fn list_all_credit_ledger(&self, limit: i64) -> Result<Vec<CreditLedgerEntry>, String> {
         let mut stmt = self
             .conn
@@ -1730,15 +2088,17 @@ impl Store {
         for t in tables {
             self.conn
                 .execute(
-                    "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id, occupied_at)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6)",
+                    "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id, occupied_at, area, paid_at)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
                     params![
                         t.id,
                         t.name,
                         t.status.as_str(),
                         t.active_sale_id,
                         self.active_branch_id()?,
-                        t.occupied_at
+                        t.occupied_at,
+                        t.area,
+                        t.paid_at
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -1863,64 +2223,6 @@ impl Store {
         Ok(())
     }
 
-    /// Create a kitchen ticket from the current cart without charging (Tables & kitchen on).
-    pub fn send_kot_from_cart(
-        &self,
-        draft: &SaleDraft,
-        table_id: Option<&str>,
-        actor: &StaffMember,
-    ) -> Result<String, String> {
-        if !self.venue_mode()?.creates_kot() {
-            return Err("Turn on Tables & kitchen in Settings to send kitchen tickets".into());
-        }
-        if draft.lines.is_empty() {
-            return Err("Cart is empty".into());
-        }
-        let summary = draft
-            .lines
-            .iter()
-            .map(kot_line_label)
-            .collect::<Vec<_>>()
-            .join(", ");
-        let table_label = if let Some(tid) = table_id {
-            self.list_tables()?
-                .into_iter()
-                .find(|t| t.id == tid)
-                .map(|t| format!("{} · ", t.name))
-                .unwrap_or_default()
-        } else {
-            String::new()
-        };
-        // Occupy first: occupied_at opens the seating window that the
-        // floor's running total sums over, so the KOT must land inside it.
-        if let Some(tid) = table_id {
-            let _ = self.save_table_draft(tid, "{}");
-            self.occupy_table(tid)?;
-        }
-        let kot_id = new_id();
-        let created_at = Local::now().to_rfc3339();
-        self.conn
-            .execute(
-                "INSERT INTO kot_tickets(
-                    id, sale_id, created_at, status, summary, branch_id, station_id,
-                    table_id, total_paise
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, '', ?7, ?8)",
-                params![
-                    kot_id,
-                    format!("prepay:{}", actor.id),
-                    created_at,
-                    KotStatus::New.as_str(),
-                    format!("{table_label}{summary}"),
-                    self.active_branch_id()?,
-                    table_id.unwrap_or_default(),
-                    draft.total_paise
-                ],
-            )
-            .map_err(|e| e.to_string())?;
-        self.audit(actor, "kot.send", &kot_id)?;
-        Ok(kot_id)
-    }
-
     /// Whether this device prints a KOT the moment one is sent
     /// (Settings → kitchen printing; on by default — paper is how
     /// most kitchens still run).
@@ -1938,20 +2240,39 @@ impl Store {
 
     /// Printable KOT text: table, time, station, items — never prices.
     pub fn format_kot_text(&self, kot_id: &str) -> Result<String, String> {
-        let (created_at, summary, station_name): (String, String, String) = self
+        let (created_at, summary, station_name, kot_no, kind, created_by): (
+            String,
+            String,
+            String,
+            i64,
+            String,
+            String,
+        ) = self
             .conn
             .query_row(
-                "SELECT k.created_at, k.summary, COALESCE(s.name, '')
+                "SELECT k.created_at, k.summary, COALESCE(s.name, ''),
+                        COALESCE(k.kot_no, 0), COALESCE(k.kind, 'kot'),
+                        COALESCE(k.created_by, '')
                    FROM kot_tickets k
                    LEFT JOIN kitchen_stations s ON s.id = k.station_id
                   WHERE k.id = ?1",
                 params![kot_id],
-                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?, r.get(5)?)),
             )
             .map_err(|e| e.to_string())?;
         let when = created_at.get(..16).unwrap_or(&created_at).replace('T', " ");
-        let mut out = String::from("KOT — KITCHEN ORDER\n");
+        let mut out = String::from(if kind == "cancel" {
+            "*** CANCEL — STOP THIS ITEM ***\n"
+        } else {
+            "KOT — KITCHEN ORDER\n"
+        });
+        if kot_no > 0 {
+            out.push_str(&format!("KOT No: {kot_no}\n"));
+        }
         out.push_str(&format!("Time: {when}\n"));
+        if !created_by.is_empty() {
+            out.push_str(&format!("By: {created_by}\n"));
+        }
         if !station_name.is_empty() {
             out.push_str(&format!("Station: {station_name}\n"));
         }
@@ -1963,13 +2284,25 @@ impl Store {
         Ok(out)
     }
 
-    /// Print a KOT on this device (writes the print file and hands it
-    /// to the OS printer where one exists). Called by the server the
-    /// moment a KOT is sent — from the counter or from a waiter's
-    /// paired device — when auto-print is on.
+    /// Print a KOT on this device (writes the print file and sends it along
+    /// this station's printer route — fallback order from Settings). Called
+    /// by the server the moment a KOT is sent — from the counter or from a
+    /// waiter's paired device — when auto-print is on.
     pub fn print_kot(&self, kot_id: &str) -> Result<std::path::PathBuf, String> {
         let text = self.format_kot_text(kot_id)?;
-        let share = crate::print_share::open_receipt_for_print(
+        let station_id: String = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(station_id, '') FROM kot_tickets WHERE id = ?1",
+                rusqlite::params![kot_id],
+                |r| r.get(0),
+            )
+            .unwrap_or_default();
+        let share = crate::print_share::print_route(
+            crate::print_share::PrintKind::Kot,
+            crate::print_share::RouteKey::Kot {
+                station_id: &station_id,
+            },
             &text,
             self.path.parent(),
         )?;
@@ -3270,8 +3603,8 @@ impl Store {
                 .execute(
                     "INSERT INTO kot_tickets(
                         id, sale_id, created_at, status, summary, branch_id, station_id,
-                        table_id, total_paise
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                        table_id, total_paise, kot_no, kind, created_by
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
                     params![
                         k.id,
                         k.sale_id,
@@ -3281,7 +3614,10 @@ impl Store {
                         self.active_branch_id()?,
                         k.station_id,
                         k.table_id,
-                        k.total_paise
+                        k.total_paise,
+                        k.kot_no,
+                        if k.kind.is_empty() { "kot" } else { k.kind.as_str() },
+                        k.created_by
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -3335,6 +3671,35 @@ impl Store {
             .conn
             .execute(
                 "UPDATE products SET archived = 1 WHERE id = ?1",
+                params![product_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Product not found".into());
+        }
+        Ok(())
+    }
+
+    /// Items taken off the menu (archived). Remove is a reversible archive, so
+    /// the row keeps everything it had — price, photo, category, station — and
+    /// can come back exactly as it was. App-provided dishes (copied from the
+    /// bundled shelf) and the owner's own items are restored the same way; the
+    /// shelf itself is read-only art that is never deleted.
+    pub fn list_removed_products(&self) -> Result<Vec<Product>, String> {
+        Ok(self
+            .list_products(true)?
+            .into_iter()
+            .filter(|p| p.archived)
+            .collect())
+    }
+
+    /// Put a removed item back on the menu, unchanged.
+    pub fn restore_product(&self, product_id: &str) -> Result<(), String> {
+        self.assert_server_writer("Restore items")?;
+        let n = self
+            .conn
+            .execute(
+                "UPDATE products SET archived = 0 WHERE id = ?1",
                 params![product_id],
             )
             .map_err(|e| e.to_string())?;
@@ -3859,10 +4224,25 @@ impl Store {
         self.meta_set("extra_tills_allowed", if allowed { "1" } else { "0" })
     }
 
-    /// In-app venue name (header / lock). Empty → neutral "Your shop" in UI.
-    /// Does not change OS / Play Store app name.
+    /// In-app venue name (lock screen, bills). Empty → neutral "Your shop"
+    /// in UI. Does not change OS / Play Store app name. A local server's
+    /// generated label ("Server af76697b") is not a restaurant's name: older
+    /// books that took it as one read as unnamed.
     pub fn venue_title(&self) -> Result<String, String> {
-        Ok(self.meta_get("venue_title")?.unwrap_or_default())
+        let title = self.meta_get("venue_title")?.unwrap_or_default();
+        Ok(if is_generated_server_label(&title) { String::new() } else { title })
+    }
+
+    /// The name other devices list this restaurant by when they look for
+    /// it: its own name, else the business name it saved ("" = neither; the
+    /// list then shows the app name and the address).
+    pub fn listing_name(&self) -> Result<String, String> {
+        let venue = self.venue_title()?;
+        if venue.trim().is_empty() {
+            self.saved_org_name()
+        } else {
+            Ok(venue)
+        }
     }
 
     pub fn set_venue_title(&self, title: &str) -> Result<(), String> {
@@ -3928,11 +4308,28 @@ impl Store {
         Ok(self.meta_get("org_id")?.unwrap_or_default())
     }
 
+    /// The business name for reports and roll-ups: the one the owner saved,
+    /// else the shop's own name, else [`DEFAULT_ORG_NAME`].
     pub fn org_name(&self) -> Result<String, String> {
-        Ok(self
-            .meta_get("org_name")?
-            .filter(|s| !s.trim().is_empty())
-            .unwrap_or_else(|| "My business".into()))
+        let saved = self.saved_org_name()?;
+        if !saved.is_empty() {
+            return Ok(saved);
+        }
+        let venue = self.venue_title()?;
+        Ok(if venue.trim().is_empty() { DEFAULT_ORG_NAME.into() } else { venue })
+    }
+
+    /// The business name exactly as the owner saved it ("" = never saved).
+    /// Books made before nothing was written for the owner hold
+    /// [`DEFAULT_ORG_NAME`] — that was never theirs, so it reads as unsaved.
+    pub fn saved_org_name(&self) -> Result<String, String> {
+        let name = self.meta_get("org_name")?.unwrap_or_default();
+        let name = name.trim();
+        Ok(if name.is_empty() || name == DEFAULT_ORG_NAME || is_generated_server_label(name) {
+            String::new()
+        } else {
+            name.to_string()
+        })
     }
 
     pub fn set_org_name(&self, name: &str) -> Result<(), String> {
@@ -4090,6 +4487,72 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
+    /// Bring in the whole provided menu template: every catalogue folder as a
+    /// category (with a photo) and every dish as a menu item in it, priced ₹0
+    /// for the owner to set, its photo referenced from the catalogue. What
+    /// the shop already has (same name, ignoring case) is kept, never
+    /// duplicated — importing twice adds nothing.
+    pub fn import_catalogue(&self, dishes: &[crate::menu_images::ShelfDish]) -> Result<CatalogueImport, String> {
+        self.assert_server_writer("Import the menu template")?;
+        let mut summary = CatalogueImport::default();
+        self.conn.execute_batch("BEGIN IMMEDIATE").map_err(|e| e.to_string())?;
+        let result = (|| -> Result<(), String> {
+            let mut categories = self.list_categories()?;
+            let existing: std::collections::HashSet<String> = self
+                .list_products(true)?
+                .into_iter()
+                .map(|p| p.name.trim().to_lowercase())
+                .collect();
+            let mut seen = existing;
+            for dish in dishes {
+                let cat_id = match categories
+                    .iter()
+                    .find(|c| c.name.trim().eq_ignore_ascii_case(dish.folder.trim()))
+                {
+                    Some(c) => {
+                        if c.image_key.is_empty()
+                            && let Some(key) = crate::menu_images::shelf_key(&dish.path)
+                        {
+                            self.set_category_image(&c.id, &key)?;
+                        }
+                        c.id.clone()
+                    }
+                    None => {
+                        let mut c = self.add_category(&dish.folder)?;
+                        if let Some(key) = crate::menu_images::shelf_key(&dish.path) {
+                            self.set_category_image(&c.id, &key)?;
+                            c.image_key = key;
+                        }
+                        summary.categories_added += 1;
+                        let id = c.id.clone();
+                        categories.push(c);
+                        id
+                    }
+                };
+                if !seen.insert(dish.name.trim().to_lowercase()) {
+                    summary.items_kept += 1;
+                    continue;
+                }
+                let mut p = Product::new_basic(new_id(), dish.name.trim(), Money(0));
+                p.category_id = cat_id;
+                p.image_key = crate::menu_images::shelf_key(&dish.path);
+                self.upsert_product(&p)?;
+                summary.items_added += 1;
+            }
+            Ok(())
+        })();
+        match result {
+            Ok(()) => {
+                self.conn.execute_batch("COMMIT").map_err(|e| e.to_string())?;
+                Ok(summary)
+            }
+            Err(e) => {
+                let _ = self.conn.execute_batch("ROLLBACK");
+                Err(e)
+            }
+        }
+    }
+
     pub fn add_category(&self, name: &str) -> Result<Category, String> {
         self.assert_server_writer("Add categories")?;
         let name = name.trim();
@@ -4139,6 +4602,27 @@ impl Store {
     /// Import an owner-picked category photo (stored as WebP next to the
     /// item photos, keyed by the category's UUID — categories are
     /// identified by id everywhere, never by name).
+    /// Give a category a photo only if it has none — how a shelf folder
+    /// picked as the category brings its photo (the owner's own photo is
+    /// never replaced). Returns whether a photo was set.
+    pub fn set_category_photo_if_missing(&self, category_id: &str, source: &Path) -> Result<bool, String> {
+        let has_photo = self
+            .list_categories()?
+            .into_iter()
+            .find(|c| c.id == category_id)
+            .ok_or_else(|| "Category not found".to_string())?
+            .image_key
+            .trim()
+            .len()
+            > 0;
+        if has_photo {
+            return Ok(false);
+        }
+        let key = self.import_category_image(category_id, source)?;
+        self.set_category_image(category_id, &key)?;
+        Ok(true)
+    }
+
     pub fn import_category_image(
         &self,
         category_id: &str,
@@ -4155,7 +4639,7 @@ impl Store {
         }
         let file_name = format!("cat-{category_id}.webp");
         let dest = dir.join(&file_name);
-        media::write_image_as_webp(source, &dest)?;
+        media::write_image_as_webp_fit(source, &dest, ITEM_PHOTO_EDGE)?;
         Ok(format!("custom:{file_name}"))
     }
 
@@ -4840,6 +5324,31 @@ impl Store {
         Ok(out)
     }
 
+    /// Quick entry for variants: save "Paneer Tikka (Half)", "(Full)" …
+    /// as items of their own (fresh UUIDs, own prices) grouped under the
+    /// base's name, each with its own copy of `photo` when one is given.
+    pub fn add_variant_items(
+        &self,
+        base: &Product,
+        variants: &[crate::domain::ModifierOption],
+        photo: Option<&Path>,
+        actor: &StaffMember,
+    ) -> Result<Vec<Product>, String> {
+        self.assert_server_writer("Add items")?;
+        if variants.is_empty() {
+            return Err("Type the variants, e.g. Half=120, Full=200".into());
+        }
+        let mut made = Product::variant_items(base, variants);
+        for item in made.iter_mut() {
+            if let Some(src) = photo {
+                item.image_key = Some(self.import_item_image(&item.id, src)?);
+            }
+            self.upsert_product(item)?;
+            self.audit(actor, "menu.add", &item.name)?;
+        }
+        Ok(made)
+    }
+
     pub fn upsert_product(&self, product: &Product) -> Result<(), String> {
         self.assert_server_writer("Change items")?;
         self.write_product_row(product)
@@ -4863,9 +5372,9 @@ impl Store {
                 "INSERT INTO products(
                     id, name, price_paise, available, archived, image_key,
                     category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
-                    tax_rate_id, aliases_json, unit_label
+                    tax_rate_id, aliases_json, unit_label, group_name, area_prices_json, kind
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -4880,7 +5389,10 @@ impl Store {
                    branch_id=excluded.branch_id,
                    tax_rate_id=excluded.tax_rate_id,
                    aliases_json=excluded.aliases_json,
-                   unit_label=excluded.unit_label",
+                   unit_label=excluded.unit_label,
+                   group_name=excluded.group_name,
+                   area_prices_json=excluded.area_prices_json,
+                   kind=excluded.kind",
                 params![
                     product.id,
                     product.name,
@@ -4900,7 +5412,10 @@ impl Store {
                     } else {
                         product.aliases_json.clone()
                     },
-                    product.unit_label
+                    product.unit_label,
+                    product.group_name.trim(),
+                    if product.area_prices_json.trim().is_empty() { "[]" } else { product.area_prices_json.as_str() },
+                    if product.kind.trim().is_empty() { crate::domain::ITEM_KIND_DISH } else { product.kind.as_str() }
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -4950,7 +5465,7 @@ impl Store {
         }
         let file_name = format!("{product_id}.webp");
         let dest = dir.join(&file_name);
-        media::write_image_as_webp(source, &dest)?;
+        media::write_image_as_webp_fit(source, &dest, ITEM_PHOTO_EDGE)?;
         Ok(format!("custom:{file_name}"))
     }
 
@@ -5272,6 +5787,20 @@ impl Store {
         if !actor.can_access_sell() {
             return Err("Not allowed to sell".into());
         }
+        // Taking money is a counter right; a waiter takes orders and sends
+        // KOTs but does not settle by default (owner can change it).
+        self.check_right(actor, crate::domain::Right::Settle, None)?;
+        // A discount is a right of its own, approved by PIN here on the
+        // Server — never trusted from the device that sent it.
+        let discount_approver = if draft.discount_paise > 0 {
+            if draft.discount_reason.trim().is_empty() {
+                return Err("Say why the bill is discounted".into());
+            }
+            let pin = Some(draft.discount_approval_pin.as_str()).filter(|p| !p.trim().is_empty());
+            self.check_right(actor, crate::domain::Right::Discount, pin)?
+        } else {
+            None
+        };
         draft.assert_balanced()?;
         let credit_part = parts
             .iter()
@@ -5337,10 +5866,14 @@ impl Store {
                 .unwrap_or((0, String::new(), false));
             tax_paise = tax_paise
                 .saturating_add(fiscal::tax_on_amount(line.line_total_paise, tax_bps, pricing));
-            let label = kot_line_label(line);
-            match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
-                Some((_, items)) => items.push(label),
-                None => by_station.push((station_id, vec![label])),
+            // Lines the kitchen already has (sent on the table's running
+            // order, or a counter KOT before payment) are not fired again.
+            if !line.kot_sent {
+                let label = kot_line_label(line);
+                match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
+                    Some((_, items)) => items.push(label),
+                    None => by_station.push((station_id, vec![label])),
+                }
             }
             if tracked && line.qty > 0 {
                 // Aggregate per item: two lines of the same product still have
@@ -5426,6 +5959,17 @@ impl Store {
             ],
         )
         .map_err(|e| e.to_string())?;
+        if draft.discount_paise > 0 {
+            let reason = match &discount_approver {
+                Some(a) => format!("{} (approved by {})", draft.discount_reason.trim(), a.name),
+                None => draft.discount_reason.trim().to_string(),
+            };
+            tx.execute(
+                "UPDATE sales SET discount_paise = ?2, discount_reason = ?3 WHERE id = ?1",
+                params![sale_id, draft.discount_paise, reason],
+            )
+            .map_err(|e| e.to_string())?;
+        }
 
         if !draft.notify_phone.trim().is_empty() {
             let row = crate::notify::draft_order_alert(
@@ -5543,6 +6087,18 @@ impl Store {
             .map_err(|e| e.to_string())?;
         }
 
+        if !draft.delivery_by.trim().is_empty() {
+            tx.execute(
+                "INSERT INTO sale_delivery(sale_id, delivery_by) VALUES(?1, ?2)",
+                params![sale_id, draft.delivery_by.trim()],
+            )
+            .map_err(|e| e.to_string())?;
+        }
+        // What each dish used from the shelf (its recipe).
+        let portions: Vec<(String, i64)> =
+            draft.lines.iter().map(|l| (l.product_id.clone(), l.qty)).collect();
+        recipes::apply_recipe_usage(&tx, &portions, "recipe", &sale_id, &branch_id, actor, &created_at)?;
+
         // Counter mode: skip kitchen tickets so takeaway cash flow stays quiet.
         let venue_mode = VenueMode::parse(
             &tx.query_row(
@@ -5591,13 +6147,16 @@ impl Store {
         }
 
         if let Some(tid) = table_id {
+            // Paid: the floor shows "clear the table" until it is made
+            // ready, new guests are seated, or it clears by itself.
             tx.execute(
                 "UPDATE tables_dining
-                    SET status = ?1, active_sale_id = NULL, occupied_at = ''
+                    SET status = ?1, active_sale_id = NULL, occupied_at = '', paid_at = ?3
                   WHERE id = ?2",
-                params![TableStatus::Available.as_str(), tid],
+                params![TableStatus::Paid.as_str(), tid, Local::now().to_rfc3339()],
             )
             .map_err(|e| e.to_string())?;
+            Store::settle_running_order_tx(&tx, tid, &sale_id)?;
             tx.execute(
                 "INSERT INTO meta(key, value) VALUES(?1, '')
                  ON CONFLICT(key) DO UPDATE SET value=excluded.value",
@@ -6450,6 +7009,7 @@ impl Store {
                     note: row.get(5)?,
                     qty_milli,
                     unit_label: row.get(7)?,
+                    kot_sent: false,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -6507,6 +7067,350 @@ impl Store {
     }
 
     /// Unlock as Owner — PIN must match an active owner account.
+    // ------------------------------------------------------------ LAN: Server
+
+    /// Pair a phone: a fresh token (only its hash is kept here).
+    pub fn pair_lan_device(&self, name: &str) -> Result<(String, String), String> {
+        let id = new_id();
+        let token = random_token()?;
+        let name = name.trim();
+        let name = if name.is_empty() { "Phone" } else { name };
+        self.conn
+            .execute(
+                "INSERT INTO lan_devices(id, name, token_hash, paired_at, last_seen_at)
+                 VALUES(?1, ?2, ?3, ?4, ?4)",
+                params![id, name, lan_token_hash(&token), Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        // Who joined the shop and when, in the books' own history.
+        self.audit_as(&id, name, "lan.pair", "paired with the shop's code")?;
+        Ok((id, token))
+    }
+
+    /// The paired, not forgotten phone holding `token` (and note it was seen).
+    pub fn lan_device_for_token(&self, token: &str) -> Result<Option<LanDevice>, String> {
+        if token.trim().is_empty() {
+            return Ok(None);
+        }
+        let device = self
+            .conn
+            .query_row(
+                "SELECT id, name, paired_at, last_seen_at FROM lan_devices
+                  WHERE token_hash = ?1 AND revoked_at = ''",
+                params![lan_token_hash(token)],
+                LanDevice::from_row,
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        if let Some(d) = &device {
+            // Noted at most every half minute: a device asks every few
+            // seconds, and each note is a disk write.
+            let now = Local::now();
+            let _ = self.conn.execute(
+                "UPDATE lan_devices SET last_seen_at = ?2 WHERE id = ?1 AND last_seen_at < ?3",
+                params![d.id, now.to_rfc3339(), (now - chrono::Duration::seconds(LAN_SEEN_EVERY_SECS)).to_rfc3339()],
+            );
+        }
+        Ok(device)
+    }
+
+    /// Phones paired to this Server, most recently seen first.
+    pub fn list_lan_devices(&self) -> Result<Vec<LanDevice>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, name, paired_at, last_seen_at FROM lan_devices
+                  WHERE revoked_at = '' ORDER BY last_seen_at DESC",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], LanDevice::from_row)
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>().map_err(|e| e.to_string())
+    }
+
+    /// Forget a phone (lost, stolen, staff left): its token and sign-ins
+    /// stop working at once; it must pair again with the current code.
+    pub fn forget_lan_device(&self, device_id: &str, actor: &StaffMember) -> Result<(), String> {
+        let name: String = self
+            .conn
+            .query_row("SELECT name FROM lan_devices WHERE id = ?1", params![device_id], |r| r.get(0))
+            .optional()
+            .map_err(|e| e.to_string())?
+            .unwrap_or_default();
+        self.conn
+            .execute(
+                "UPDATE lan_devices SET revoked_at = ?2 WHERE id = ?1",
+                params![device_id, Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute("DELETE FROM lan_sessions WHERE device_id = ?1", params![device_id])
+            .map_err(|e| e.to_string())?;
+        self.audit(actor, "lan.forget", &name)
+    }
+
+    /// A new pairing code; phones already paired keep working.
+    pub fn new_pairing_code(&self, actor: &StaffMember) -> Result<String, String> {
+        self.meta_set("pairing_code", "")?;
+        let code = self.ensure_server_pairing_code()?;
+        self.audit(actor, "lan.new_code", "")?;
+        Ok(code)
+    }
+
+    /// PIN typed on a phone, checked here: the Owner, or one staff member.
+    pub fn authenticate_lan_pin(
+        &self,
+        staff_id: Option<&str>,
+        pin: &str,
+    ) -> Result<Option<StaffMember>, String> {
+        match staff_id {
+            None => self.authenticate_owner_pin(pin),
+            Some(id) => {
+                let Some(member) = self.list_staff()?.into_iter().find(|s| s.id == id && s.active) else {
+                    return Ok(None);
+                };
+                Ok(verify_pin(pin, &member.pin_hash)?.then_some(member))
+            }
+        }
+    }
+
+    /// Sign `staff_id` in on a phone for a shift; returns the session token.
+    pub fn open_lan_session(&self, device_id: &str, staff_id: &str) -> Result<String, String> {
+        let token = random_token()?;
+        let now = Local::now();
+        self.conn
+            .execute("DELETE FROM lan_sessions WHERE expires_at < ?1", params![now.to_rfc3339()])
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "INSERT INTO lan_sessions(token_hash, device_id, staff_id, created_at, expires_at)
+                 VALUES(?1, ?2, ?3, ?4, ?5)",
+                params![
+                    lan_token_hash(&token),
+                    device_id,
+                    staff_id,
+                    now.to_rfc3339(),
+                    (now + chrono::Duration::hours(LAN_SESSION_HOURS)).to_rfc3339()
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(token)
+    }
+
+    /// Who is signed in with `token` on this phone (None: sign in again).
+    pub fn lan_session_staff(&self, device_id: &str, token: &str) -> Result<Option<StaffMember>, String> {
+        if token.trim().is_empty() {
+            return Ok(None);
+        }
+        let staff_id: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT staff_id FROM lan_sessions
+                  WHERE token_hash = ?1 AND device_id = ?2 AND expires_at > ?3",
+                params![lan_token_hash(token), device_id, Local::now().to_rfc3339()],
+                |r| r.get(0),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        let Some(staff_id) = staff_id else {
+            return Ok(None);
+        };
+        Ok(self.list_staff()?.into_iter().find(|s| s.id == staff_id && s.active))
+    }
+
+    /// The answer already given to this request (a phone retrying after a
+    /// lost reply gets it again; the write is not done twice).
+    pub fn lan_reply(&self, request_id: &str, device_id: &str) -> Result<Option<(u16, String)>, String> {
+        self.conn
+            .query_row(
+                "SELECT status, body FROM lan_replies WHERE request_id = ?1 AND device_id = ?2",
+                params![request_id, device_id],
+                |r| Ok((r.get::<_, i64>(0)? as u16, r.get(1)?)),
+            )
+            .optional()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn save_lan_reply(&self, request_id: &str, device_id: &str, status: u16, body: &str) -> Result<(), String> {
+        let now = Local::now();
+        self.conn
+            .execute(
+                "INSERT OR REPLACE INTO lan_replies(request_id, device_id, status, body, created_at)
+                 VALUES(?1, ?2, ?3, ?4, ?5)",
+                params![request_id, device_id, status as i64, body, now.to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        // A week covers any phone that sat offline over a weekend.
+        self.conn
+            .execute(
+                "DELETE FROM lan_replies WHERE created_at < ?1",
+                params![(now - chrono::Duration::days(7)).to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    // ------------------------------------------------------------- LAN: phone
+
+    /// Keep a write for the Server; it goes in `seq` order.
+    pub fn enqueue_lan(&self, item: &LanQueued) -> Result<(), String> {
+        self.conn
+            .execute(
+                "INSERT INTO lan_outbox(id, seq, path, body, label, table_id, staff_id, created_at)
+                 VALUES(?1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM lan_outbox), ?2, ?3, ?4, ?5, ?6, ?7)",
+                params![item.id, item.path, item.body, item.label, item.table_id, item.staff_id, Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Everything still waiting, oldest first.
+    pub fn lan_outbox(&self) -> Result<Vec<LanQueued>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, path, body, label, table_id, staff_id, attempts, last_error
+                   FROM lan_outbox ORDER BY seq",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(LanQueued {
+                    id: r.get(0)?,
+                    path: r.get(1)?,
+                    body: r.get(2)?,
+                    label: r.get(3)?,
+                    table_id: r.get(4)?,
+                    staff_id: r.get(5)?,
+                    attempts: r.get(6)?,
+                    last_error: r.get(7)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>().map_err(|e| e.to_string())
+    }
+
+    pub fn lan_outbox_done(&self, id: &str) -> Result<(), String> {
+        self.conn
+            .execute("DELETE FROM lan_outbox WHERE id = ?1", params![id])
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn lan_outbox_retry_later(&self, id: &str, error: &str) -> Result<(), String> {
+        self.conn
+            .execute(
+                "UPDATE lan_outbox SET attempts = attempts + 1, last_error = ?2 WHERE id = ?1",
+                params![id, error],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// The Server turned a waiting write down for good: it leaves the queue
+    /// (it would be refused forever) and is kept, with the Server's words,
+    /// on the "not accepted" list until someone has seen it.
+    pub fn lan_outbox_refused(&self, id: &str, error: &str) -> Result<(), String> {
+        self.in_transaction(|| {
+            self.conn
+                .execute(
+                    "INSERT OR REPLACE INTO lan_refused(id, path, body, label, error, created_at, refused_at)
+                     SELECT id, path, body, label, ?2, created_at, ?3 FROM lan_outbox WHERE id = ?1",
+                    params![id, error, Local::now().to_rfc3339()],
+                )
+                .map_err(|e| e.to_string())?;
+            self.lan_outbox_done(id)
+        })
+    }
+
+    /// Writes the Server would not accept, newest first.
+    pub fn lan_refused(&self) -> Result<Vec<LanRefused>, String> {
+        let mut stmt = self
+            .conn
+            .prepare("SELECT id, label, error, created_at, refused_at FROM lan_refused ORDER BY refused_at DESC")
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(LanRefused {
+                    id: r.get(0)?,
+                    label: r.get(1)?,
+                    error: r.get(2)?,
+                    created_at: r.get(3)?,
+                    refused_at: r.get(4)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>().map_err(|e| e.to_string())
+    }
+
+    /// When this device last had the Server's latest books (RFC 3339), kept
+    /// across restarts so an offline screen can still say how old it is.
+    pub fn lan_synced_at(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("lan_synced_at")?.filter(|s| !s.is_empty()))
+    }
+
+    /// Note that the books are current as of `at` — written at most once a
+    /// minute (a quiet Server is asked every few seconds).
+    pub fn note_lan_synced(&self, at: &chrono::DateTime<Local>) -> Result<(), String> {
+        let stamp = at.to_rfc3339();
+        let same_minute = self.lan_synced_at()?.is_some_and(|t| t.get(..16) == stamp.get(..16));
+        if same_minute { Ok(()) } else { self.meta_set("lan_synced_at", &stamp) }
+    }
+
+    /// Someone has seen the "not accepted" list and dealt with it.
+    pub fn clear_lan_refused(&self) -> Result<(), String> {
+        self.conn
+            .execute("DELETE FROM lan_refused", [])
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Remember a staff member's PIN on this phone after the Server accepted
+    /// it, with their session: they (and only they) can unlock here while
+    /// the Wi‑Fi is down.
+    pub fn remember_lan_sign_in(&self, staff: &StaffMember, pin: &str, session: &str) -> Result<(), String> {
+        let key = if staff.is_owner() { "owner".to_string() } else { staff.id.clone() };
+        self.meta_set(&format!("lan_pin:{key}"), &hash_pin(pin)?)?;
+        let member = StaffMember { pin_hash: String::new(), ..staff.clone() };
+        let saved = serde_json::json!({ "session": session, "staff": member });
+        self.meta_set(&format!("lan_session:{key}"), &saved.to_string())?;
+        Ok(())
+    }
+
+    /// The session saved for `key` (a staff id, or "owner").
+    pub fn saved_lan_session(&self, key: &str) -> Result<Option<String>, String> {
+        let Some(saved) = self.meta_get(&format!("lan_session:{key}"))? else {
+            return Ok(None);
+        };
+        let saved: serde_json::Value = serde_json::from_str(&saved).map_err(|e| e.to_string())?;
+        Ok(saved["session"].as_str().map(str::to_string).filter(|s| !s.is_empty()))
+    }
+
+    /// Offline unlock: the session saved when this person last signed in
+    /// on this phone, if the PIN matches. `staff_id` None = the Owner.
+    pub fn offline_lan_sign_in(
+        &self,
+        staff_id: Option<&str>,
+        pin: &str,
+    ) -> Result<Option<(StaffMember, String)>, String> {
+        let key = staff_id.unwrap_or("owner");
+        let Some(hash) = self.meta_get(&format!("lan_pin:{key}"))? else {
+            return Ok(None);
+        };
+        if !verify_pin(pin, &hash)? {
+            return Ok(None);
+        }
+        let Some(saved) = self.meta_get(&format!("lan_session:{key}"))? else {
+            return Ok(None);
+        };
+        let saved: serde_json::Value = serde_json::from_str(&saved).map_err(|e| e.to_string())?;
+        let staff: StaffMember =
+            serde_json::from_value(saved["staff"].clone()).map_err(|e| e.to_string())?;
+        let session = saved["session"].as_str().unwrap_or_default().to_string();
+        Ok(Some((staff, session)))
+    }
+
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
         for member in self.list_staff()? {
             if member.is_owner() && verify_pin(pin, &member.pin_hash)? {
@@ -6805,6 +7709,18 @@ impl Store {
 
     pub fn list_tables(&self) -> Result<Vec<DiningTable>, String> {
         let branch = self.active_branch_id()?;
+        // A paid table reads "clear the table" for a while, then frees itself
+        // so the floor never shows a stale state.
+        let cutoff = (Local::now()
+            - chrono::Duration::minutes(crate::domain::PAID_TABLE_CLEARS_AFTER_MIN))
+        .to_rfc3339();
+        self.conn
+            .execute(
+                "UPDATE tables_dining SET status = 'available'
+                  WHERE status = 'paid' AND (paid_at = '' OR paid_at < ?1)",
+                params![cutoff],
+            )
+            .map_err(|e| e.to_string())?;
         let mut stmt = self
             .conn
             .prepare(
@@ -6814,7 +7730,8 @@ impl Store {
                           WHERE k.table_id = tables_dining.id
                             AND k.status != 'cancelled'
                             AND tables_dining.occupied_at != ''
-                            AND k.created_at >= tables_dining.occupied_at)
+                            AND k.created_at >= tables_dining.occupied_at),
+                        COALESCE(area, ''), COALESCE(paid_at, '')
                  FROM tables_dining
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY name",
@@ -6830,11 +7747,40 @@ impl Store {
                     active_sale_id: row.get(3)?,
                     occupied_at: row.get(4)?,
                     running_total_paise: row.get(5)?,
+                    area: row.get(6)?,
+                    paid_at: row.get(7)?,
+                    floor_state: crate::domain::FloorState::Free,
                 })
             })
             .map_err(|e| e.to_string())?;
-        rows.collect::<Result<Vec<_>, _>>()
-            .map_err(|e| e.to_string())
+        let mut tables = rows
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())?;
+        drop(stmt);
+        // The running order is the bill: its live, charged lines are the
+        // card's amount (cancelled and complimentary lines add nothing).
+        for order in self.list_running_orders()? {
+            if let Some(t) = tables.iter_mut().find(|t| t.id == order.table_id) {
+                t.running_total_paise = order.total_paise();
+            }
+        }
+        // Where each visit stands: the table plus its open food tickets.
+        let kots = self.list_open_kots()?;
+        for t in tables.iter_mut() {
+            let statuses: Vec<KotStatus> = kots
+                .iter()
+                .filter(|k| k.table_id == t.id && !k.is_cancel())
+                .map(|k| k.status)
+                .collect();
+            t.floor_state = crate::domain::FloorState::derive(t.status, &statuses);
+        }
+        // Floor order: area by area, then D1, D2 … D10 (not D1, D10, D2).
+        tables.sort_by(|a, b| {
+            natural_key(&a.area)
+                .cmp(&natural_key(&b.area))
+                .then_with(|| natural_key(&a.name).cmp(&natural_key(&b.name)))
+        });
+        Ok(tables)
     }
 
     pub fn occupy_table(&self, table_id: &str) -> Result<(), String> {
@@ -6868,7 +7814,9 @@ impl Store {
         match table.status {
             TableStatus::Occupied => {}
             TableStatus::PaymentPending => return Ok(()),
-            TableStatus::Available => return Err("Table is not running".into()),
+            TableStatus::Available | TableStatus::Paid => {
+                return Err("Table is not running".into())
+            }
         }
         self.conn
             .execute(
@@ -6884,18 +7832,24 @@ impl Store {
         // Release is gated on the bill: a table with money sent to the
         // kitchen cannot be freed until payment is recorded (finalize
         // frees it) — guests leaving is not the same as guests paying.
-        let open_paise: i64 = self
+        // The running order is the bill. A legacy ticket without one (sent
+        // before running orders existed) still counts by its own total.
+        let order_paise = self
+            .running_order(table_id)?
+            .map(|o| o.total_paise())
+            .unwrap_or(0);
+        let legacy_paise: i64 = self
             .conn
             .query_row(
                 "SELECT COALESCE(SUM(k.total_paise), 0) FROM kot_tickets k
                   JOIN tables_dining t ON t.id = k.table_id
-                  WHERE k.table_id = ?1 AND k.status != 'cancelled'
+                  WHERE k.table_id = ?1 AND k.status != 'cancelled' AND k.order_id = ''
                     AND t.occupied_at != '' AND k.created_at >= t.occupied_at",
                 params![table_id],
                 |r| r.get(0),
             )
             .map_err(|e| e.to_string())?;
-        if open_paise > 0 {
+        if order_paise > 0 || legacy_paise > 0 {
             return Err(
                 "This table has an open bill — record the payment first, then it releases"
                     .into(),
@@ -6909,26 +7863,42 @@ impl Store {
                 params![TableStatus::Available.as_str(), table_id],
             )
             .map_err(|e| e.to_string())?;
+        // Nothing charged (all NC / cancelled): the order closes with no sale.
+        self.conn
+            .execute(
+                "UPDATE running_orders SET status = 'settled', closed_at = ?2
+                  WHERE table_id = ?1 AND status IN ('running', 'printed')",
+                params![table_id, Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
         Ok(())
     }
 
+    /// Kitchen tickets still to cook (not Done, not cancelled) from the last
+    /// [`KOT_OPEN_HOURS`]. A kitchen that cooks from the paper KOT never taps
+    /// Done, and its tickets used to stay "open" for ever — months of them
+    /// in every tablet's sync (2.7 MB at 9,000 bills), on the Kitchen screen
+    /// and behind every floor colour.
     pub fn list_open_kots(&self) -> Result<Vec<KotTicket>, String> {
         let branch = self.active_branch_id()?;
+        let since = (Local::now() - chrono::Duration::hours(KOT_OPEN_HOURS)).to_rfc3339();
         let mut stmt = self
             .conn
             .prepare(
                 "SELECT k.id, k.sale_id, k.created_at, k.status, k.summary,
                         COALESCE(k.station_id, ''), COALESCE(s.name, ''),
-                        COALESCE(k.table_id, ''), COALESCE(k.total_paise, 0)
+                        COALESCE(k.table_id, ''), COALESCE(k.total_paise, 0),
+                        COALESCE(k.kot_no, 0), COALESCE(k.kind, 'kot'), COALESCE(k.created_by, '')
                  FROM kot_tickets k
                  LEFT JOIN kitchen_stations s ON s.id = k.station_id
                  WHERE k.status NOT IN ('completed', 'cancelled')
                    AND (k.branch_id = ?1 OR k.branch_id = '')
+                   AND k.created_at >= ?2
                  ORDER BY k.created_at ASC",
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
-            .query_map(params![branch], |row| {
+            .query_map(params![branch, since], |row| {
                 let status: String = row.get(3)?;
                 Ok(KotTicket {
                     id: row.get(0)?,
@@ -6940,6 +7910,9 @@ impl Store {
                     total_paise: row.get(8)?,
                     station_id: row.get(5)?,
                     station_name: row.get(6)?,
+                    kot_no: row.get(9)?,
+                    kind: row.get(10)?,
+                    created_by: row.get(11)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -8189,6 +9162,12 @@ impl Store {
     }
 
     pub fn audit(&self, actor: &StaffMember, action: &str, detail: &str) -> Result<(), String> {
+        self.audit_as(&actor.id, &actor.name, action, detail)
+    }
+
+    /// An audit line by something that is not a staff member (a device
+    /// pairing itself with the shop's code).
+    fn audit_as(&self, actor_id: &str, actor_name: &str, action: &str, detail: &str) -> Result<(), String> {
         self.conn
             .execute(
                 "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -8196,8 +9175,8 @@ impl Store {
                 params![
                     new_id(),
                     Local::now().to_rfc3339(),
-                    actor.id,
-                    actor.name,
+                    actor_id,
+                    actor_name,
                     action,
                     detail
                 ],
@@ -8206,14 +9185,164 @@ impl Store {
         Ok(())
     }
 
+    /// Tests that seed months of trading: write without waiting on the disk.
+    #[cfg(test)]
+    pub(crate) fn fast_writes_for_test(&self) {
+        self.conn.execute_batch("PRAGMA synchronous = OFF").unwrap();
+    }
+
+    /// Tests: move a kitchen ticket to an earlier time.
+    #[cfg(test)]
+    pub(crate) fn backdate_kot_for_test(&self, kot_id: &str, at: &str) {
+        self.conn
+            .execute("UPDATE kot_tickets SET created_at = ?1 WHERE id = ?2", params![at, kot_id])
+            .unwrap();
+    }
+
+    /// Tests that seed months of trading: move a bill (and its kitchen
+    /// tickets) to an earlier day.
+    #[cfg(test)]
+    pub(crate) fn backdate_sale_for_test(&self, sale_id: &str, at: &str) {
+        self.conn
+            .execute(
+                "UPDATE sales SET created_at = ?1, user_at = ?1, device_at = ?1 WHERE id = ?2",
+                params![at, sale_id],
+            )
+            .unwrap();
+        self.conn
+            .execute("UPDATE kot_tickets SET created_at = ?1 WHERE sale_id = ?2", params![at, sale_id])
+            .unwrap();
+    }
+
+    /// Write a backup to `dest` and read it back: a file that does not pass
+    /// the same check a restore makes (a full disk, a failing USB stick) is
+    /// deleted and reported, never left looking like a backup.
     pub fn backup_to(&self, dest: &Path) -> Result<(), String> {
         if let Some(parent) = dest.parent() {
             fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
-        self.conn
+        let written = self
+            .conn
             .execute("VACUUM INTO ?1", params![dest.to_string_lossy().as_ref()])
-            .map_err(|e| e.to_string())?;
-        Ok(())
+            .map_err(|e| format!("Could not write the backup to {}: {e}", dest.display()))
+            .and_then(|_| check_backup_file(dest));
+        if written.is_err() {
+            let _ = fs::remove_file(dest);
+        }
+        written
+    }
+
+    /// Back up once a day — the first time the books are open 20 hours
+    /// after the last one — into `backups/` beside the books, and into the
+    /// owner's second folder (USB stick, synced folder) when one is set.
+    /// Keeps the last [`AUTO_BACKUP_KEEP`]. Returns the new file, if made.
+    pub fn auto_backup_if_due(&self) -> Result<Option<PathBuf>, String> {
+        let now = Local::now();
+        if let Some(last) = self
+            .meta_get("last_backup_at")?
+            .and_then(|t| chrono::DateTime::parse_from_rfc3339(&t).ok())
+            && now.signed_duration_since(last) < chrono::Duration::hours(20)
+        {
+            return Ok(None);
+        }
+        let dir = self.auto_backup_dir();
+        let file = dir.join(format!("auto-{}.sqlite3", now.format("%Y%m%d-%H%M%S%3f")));
+        if let Err(e) = self.backup_to(&file) {
+            // Said on the owner's screens until a backup works again.
+            self.meta_set("backup_error", &e)?;
+            return Err(e);
+        }
+        self.meta_set("backup_error", "")?;
+        self.meta_set("last_backup_at", &now.to_rfc3339())?;
+        prune_auto_backups(&dir, AUTO_BACKUP_KEEP);
+        if let Some(extra) = self.backup_copy_dir()? {
+            let copied = fs::create_dir_all(&extra)
+                .and_then(|()| fs::copy(&file, extra.join(file.file_name().unwrap_or_default())))
+                .map_err(|e| format!("Could not copy the backup to {}: {e}", extra.display()));
+            match copied {
+                Ok(_) => {
+                    prune_auto_backups(&extra, AUTO_BACKUP_KEEP);
+                    self.meta_set("backup_copy_error", "")?;
+                    self.note_backup_copy_saved()?;
+                }
+                Err(e) => self.meta_set("backup_copy_error", &e)?,
+            }
+        }
+        Ok(Some(file))
+    }
+
+    /// Where the automatic backups of these books go.
+    pub fn auto_backup_dir(&self) -> PathBuf {
+        self.path.parent().unwrap_or(Path::new(".")).join("backups")
+    }
+
+    pub fn last_backup_at(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("last_backup_at")?.filter(|s| !s.is_empty()))
+    }
+
+    /// The owner's second place for backups, if set.
+    pub fn backup_copy_dir(&self) -> Result<Option<PathBuf>, String> {
+        Ok(self.meta_get("backup_copy_dir")?.filter(|s| !s.trim().is_empty()).map(PathBuf::from))
+    }
+
+    pub fn set_backup_copy_dir(&self, dir: Option<&Path>) -> Result<(), String> {
+        self.meta_set("backup_copy_dir", &dir.map(|d| d.to_string_lossy().into_owned()).unwrap_or_default())?;
+        self.meta_set("backup_copy_error", "")
+    }
+
+    /// A copy of the books left this device (the second folder, or one the
+    /// owner saved somewhere with "Save a backup copy").
+    pub fn note_backup_copy_saved(&self) -> Result<(), String> {
+        self.meta_set("backup_copy_at", &Local::now().to_rfc3339())
+    }
+
+    /// Days with no copy off this device, once that is [`COPY_DUE_DAYS`] or
+    /// more: counted from the last copy, or — never copied — from the oldest
+    /// backup still kept (how long the books have been here). A device that
+    /// is lost or breaks takes every backup kept on it along.
+    pub fn backup_copy_overdue_days(&self) -> Result<Option<i64>, String> {
+        let now = Local::now();
+        let since = match self.meta_get("backup_copy_at")?.filter(|s| !s.is_empty()) {
+            Some(at) => chrono::DateTime::parse_from_rfc3339(&at).ok().map(|t| t.with_timezone(&Local)),
+            None => fs::read_dir(self.auto_backup_dir())
+                .ok()
+                .into_iter()
+                .flatten()
+                .filter_map(|e| e.ok())
+                .filter(|e| e.file_name().to_string_lossy().starts_with("auto-"))
+                .filter_map(|e| e.metadata().ok()?.modified().ok())
+                .min()
+                .map(chrono::DateTime::<Local>::from),
+        };
+        Ok(since
+            .map(|t| now.signed_duration_since(t).num_days())
+            .filter(|days| *days >= COPY_DUE_DAYS))
+    }
+
+    /// Why the last copy to the second folder failed ("" = it did not).
+    pub fn backup_copy_error(&self) -> Result<String, String> {
+        Ok(self.meta_get("backup_copy_error")?.unwrap_or_default())
+    }
+
+    /// What the owner must know about keeping these books safe: a failing
+    /// backup, no backup for days, or a disk filling up.
+    pub fn backup_health(&self) -> Result<BackupHealth, String> {
+        let last_at = self.last_backup_at()?;
+        let days_since = last_at
+            .as_deref()
+            .and_then(|t| chrono::DateTime::parse_from_rfc3339(t).ok())
+            .map(|t| Local::now().signed_duration_since(t).num_days());
+        let books_mb = fs::metadata(&self.path).map(|m| m.len() / 1_048_576).unwrap_or(0);
+        let free_mb = self.path.parent().and_then(free_space_bytes).map(|b| b / 1_048_576);
+        Ok(BackupHealth {
+            last_at,
+            days_since,
+            error: self.meta_get("backup_error")?.unwrap_or_default(),
+            copy_error: self.backup_copy_error()?,
+            free_mb,
+            low_space: free_mb.is_some_and(|free| free < LOW_SPACE_MB.max(books_mb * 3)),
+            copy_overdue_days: self.backup_copy_overdue_days()?,
+        })
     }
 
     /// Restore into the active local server DB (Server Mode).
@@ -8230,6 +9359,8 @@ impl Store {
         if !backup.exists() {
             return Err(format!("No backup at {}", backup.display()));
         }
+        // A wrong or damaged file must never replace working books.
+        check_backup_file(backup)?;
         if let Some(parent) = dest.parent() {
             fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
@@ -8314,6 +9445,17 @@ impl Store {
 pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
 /// Launcher / window label from the same env file.
 pub const APP_LABEL: &str = env!("KUMKAJ_APP_LABEL");
+
+/// What reports call a business whose owner never named it.
+pub const DEFAULT_ORG_NAME: &str = "My business";
+
+/// "Server " + 8 hex digits: the label a local server gets when it is made
+/// without a name (`local_servers::create_local_server`).
+pub fn is_generated_server_label(name: &str) -> bool {
+    name.trim()
+        .strip_prefix("Server ")
+        .is_some_and(|id| id.len() == 8 && id.chars().all(|c| c.is_ascii_hexdigit()))
+}
 /// `development` or `production`.
 pub const APP_ENV: &str = env!("KUMKAJ_ENV");
 /// Show the live W×H badge (development.env sets this to 1).
@@ -8335,11 +9477,25 @@ const fn const_str_eq(a: &str, b: &str) -> bool {
     true
 }
 
+/// What [`Store::import_catalogue`] did.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct CatalogueImport {
+    pub categories_added: usize,
+    pub items_added: usize,
+    /// Dishes the shop already had by that name (left as they are).
+    pub items_kept: usize,
+}
+
 /// Every column [`row_to_product`] expects, in order.
+/// Longest edge a menu item / category photo is stored at (it is only ever
+/// shown as a small thumb; the original stays wherever the owner picked it).
+pub const ITEM_PHOTO_EDGE: u32 = 768;
+
 const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image_key,
      COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
-     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, '')";
+     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, ''),
+     COALESCE(group_name, ''), COALESCE(area_prices_json, '[]'), COALESCE(kind, 'dish')";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
@@ -8389,6 +9545,9 @@ fn restore_stock_for_sale(
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())?
     };
+    // What the dishes used from the shelf goes back too.
+    let returned: Vec<(String, i64)> = sold.iter().map(|(id, q)| (id.clone(), -q)).collect();
+    recipes::apply_recipe_usage(tx, &returned, "recipe_return", sale_id, &branch_id, actor, at)?;
     for (product_id, qty) in sold {
         if qty <= 0 {
             continue;
@@ -8458,6 +9617,9 @@ fn apply_amend_stock(
     }
 
     let branch_id = previous.branch_id.clone();
+    // Recipes follow the portions: a removed dish's usage goes back.
+    let portions: Vec<(String, i64)> = deltas.iter().map(|(id, d)| (id.clone(), -d)).collect();
+    recipes::apply_recipe_usage(tx, &portions, "recipe_amend", sale_id, &branch_id, actor, at)?;
     for (product_id, delta) in deltas {
         if delta == 0 {
             continue;
@@ -8669,6 +9831,9 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         tax_rate_id: row.get(12)?,
         aliases_json: row.get(13)?,
         unit_label: row.get(14)?,
+        group_name: row.get(15)?,
+        area_prices_json: row.get(16)?,
+        kind: row.get(17)?,
     })
 }
 
@@ -8756,11 +9921,201 @@ pub fn save_window_geom(prefs: WindowGeomPrefs) {
     }
 }
 
+/// A file is this app's books, whole: SQLite, passes its own check, and
+/// holds the books' tables. Checked before a restore replaces anything.
+pub fn check_backup_file(path: &Path) -> Result<(), String> {
+    let not_books = || format!("{} is not a backup of these books", path.display());
+    let conn = Connection::open_with_flags(path, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)
+        .map_err(|_| not_books())?;
+    let check: String = conn
+        .query_row("PRAGMA quick_check", [], |r| r.get(0))
+        .map_err(|_| not_books())?;
+    if check != "ok" {
+        return Err(format!("{} is damaged ({check}) — pick another backup", path.display()));
+    }
+    for table in ["meta", "sales", "products", "staff"] {
+        let found: i64 = conn
+            .query_row(
+                "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = ?1",
+                params![table],
+                |r| r.get(0),
+            )
+            .map_err(|_| not_books())?;
+        if found == 0 {
+            return Err(not_books());
+        }
+    }
+    // Another Kumkaj app's books have the same tables but are not a
+    // restaurant's: never restore them over these.
+    let meta = |key: &str| -> String {
+        conn.query_row("SELECT value FROM meta WHERE key = ?1", params![key], |r| r.get(0))
+            .unwrap_or_default()
+    };
+    let (app, template) = (meta("app"), meta("entity_template"));
+    if (!app.is_empty() && app != APP_MARK) || (!template.is_empty() && !template.starts_with("khaynjo")) {
+        return Err(format!("{} is another app's backup, not these books", path.display()));
+    }
+    Ok(())
+}
+
+/// Stamped on these books (`meta.app`) so a restore can tell them from
+/// another Kumkaj app's books.
+const APP_MARK: &str = "khaynjo";
+
+/// What the owner must know about keeping the books safe.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct BackupHealth {
+    /// When the last automatic backup was made (RFC 3339), if ever.
+    pub last_at: Option<String>,
+    /// Whole days since then.
+    pub days_since: Option<i64>,
+    /// Why the last automatic backup failed ("" = it did not).
+    pub error: String,
+    /// Why the copy to the second folder failed ("" = it did not).
+    pub copy_error: String,
+    /// Free space where the books live, in MB (None: the system won't say).
+    pub free_mb: Option<u64>,
+    /// No copy has left this device for this many days (see
+    /// `Store::backup_copy_overdue_days`).
+    pub copy_overdue_days: Option<i64>,
+    /// Too little room left for the next backups and bills.
+    pub low_space: bool,
+}
+
+/// Below this much free space (or three times the books' size, if more)
+/// the owner is warned before backups start failing.
+pub const LOW_SPACE_MB: u64 = 500;
+
+/// Free space on the disk holding `path`, in bytes (None where the system
+/// will not say).
+pub fn free_space_bytes(path: &Path) -> Option<u64> {
+    #[cfg(unix)]
+    {
+        use std::os::unix::ffi::OsStrExt;
+        let c_path = std::ffi::CString::new(path.as_os_str().as_bytes()).ok()?;
+        // SAFETY: a valid NUL-terminated path and a zeroed out-struct.
+        let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
+        if unsafe { libc::statvfs(c_path.as_ptr(), &mut stat) } != 0 {
+            return None;
+        }
+        #[allow(clippy::unnecessary_cast)]
+        Some(stat.f_bavail as u64 * stat.f_frsize as u64)
+    }
+    #[cfg(windows)]
+    {
+        use std::os::windows::ffi::OsStrExt;
+        let wide: Vec<u16> = path.as_os_str().encode_wide().chain(Some(0)).collect();
+        let mut free = 0u64;
+        // SAFETY: a valid NUL-terminated wide path; the totals are optional.
+        let ok = unsafe { GetDiskFreeSpaceExW(wide.as_ptr(), &mut free, std::ptr::null_mut(), std::ptr::null_mut()) };
+        (ok != 0).then_some(free)
+    }
+    #[cfg(not(any(unix, windows)))]
+    {
+        let _ = path;
+        None
+    }
+}
+
+#[cfg(windows)]
+#[link(name = "kernel32")]
+unsafe extern "system" {
+    fn GetDiskFreeSpaceExW(dir: *const u16, free_to_caller: *mut u64, total: *mut u64, total_free: *mut u64) -> i32;
+}
+
+/// Daily automatic backups kept (two weeks).
+pub const AUTO_BACKUP_KEEP: usize = 14;
+
+/// A week with every backup on one device is said to the owner.
+pub const COPY_DUE_DAYS: i64 = 7;
+
+/// A kitchen ticket untouched this long is no longer cooking: it leaves the
+/// Kitchen screen, the floor colours and the devices' sync. Longer than any
+/// service (lunch to late dinner), so nothing still on the pass disappears.
+pub const KOT_OPEN_HOURS: i64 = 12;
+
+/// Keep only the newest `keep` automatic backups in `dir` (names sort by time).
+fn prune_auto_backups(dir: &Path, keep: usize) {
+    let Ok(entries) = fs::read_dir(dir) else {
+        return;
+    };
+    let mut autos: Vec<PathBuf> = entries
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| {
+            let name = p.file_name().and_then(|n| n.to_str()).unwrap_or_default();
+            name.starts_with("auto-") && name.ends_with(".sqlite3")
+        })
+        .collect();
+    autos.sort();
+    let extra = autos.len().saturating_sub(keep);
+    for old in autos.into_iter().take(extra) {
+        let _ = fs::remove_file(old);
+    }
+}
+
 pub fn default_backup_path() -> Result<PathBuf, String> {
     Ok(data_dir()?.join("backups").join(format!(
         "kumkaj-backup-{}.sqlite3",
         Local::now().format("%Y%m%d-%H%M%S")
     )))
+}
+
+/// How long a phone sign-in lasts (a long shift plus a margin).
+pub const LAN_SESSION_HOURS: i64 = 16;
+
+/// A paired device's "last seen" is noted at most this often.
+pub const LAN_SEEN_EVERY_SECS: i64 = 30;
+
+/// A phone paired to this Server.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct LanDevice {
+    pub id: String,
+    pub name: String,
+    pub paired_at: String,
+    pub last_seen_at: String,
+}
+
+impl LanDevice {
+    fn from_row(r: &rusqlite::Row<'_>) -> rusqlite::Result<Self> {
+        Ok(Self { id: r.get(0)?, name: r.get(1)?, paired_at: r.get(2)?, last_seen_at: r.get(3)? })
+    }
+}
+
+/// A phone's write waiting for the Server. `id` is also the request id the
+/// Server answers by, so sending it twice does it once.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LanQueued {
+    pub id: String,
+    pub path: String,
+    pub body: String,
+    /// What the person did, in their words ("KOT for T3").
+    pub label: String,
+    pub table_id: String,
+    pub staff_id: String,
+    pub attempts: i64,
+    pub last_error: String,
+}
+
+/// A waiting write the Server turned down, kept until someone has seen it.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LanRefused {
+    pub id: String,
+    /// What the person did ("KOT for T3").
+    pub label: String,
+    /// The Server's words.
+    pub error: String,
+    pub created_at: String,
+    pub refused_at: String,
+}
+
+fn random_token() -> Result<String, String> {
+    let mut bytes = [0u8; 24];
+    getrandom_salt(&mut bytes)?;
+    Ok(hex::encode(bytes))
+}
+
+fn lan_token_hash(token: &str) -> String {
+    hex::encode(Sha256::digest(format!("kumkaj-lan|{}", token.trim()).as_bytes()))
 }
 
 pub fn hash_pin(pin: &str) -> Result<String, String> {
@@ -8793,6 +10148,131 @@ fn getrandom_salt(out: &mut [u8]) -> Result<(), String> {
 }
 
 #[cfg(test)]
+impl Store {
+    /// A busy restaurant's books for the performance tests: `days` of
+    /// trading at `bills_per_day` (three lines each; every tenth bill split
+    /// cash + UPI, every twentieth on a customer's khata and settled later),
+    /// a KOT and an audit row per bill, `customers` parties. Raw inserts in
+    /// one transaction — seconds, not the minutes real bills would take.
+    pub(crate) fn seed_busy_books_for_test(&self, days: i64, bills_per_day: i64, customers: usize) {
+        let branch = self.active_branch_id().unwrap();
+        let start = Local::now() - chrono::Duration::days(days - 1);
+        let tx = self.conn.unchecked_transaction().unwrap();
+        {
+            let mut product = tx.prepare("INSERT INTO products(id, name, price_paise) VALUES(?1, ?2, ?3)").unwrap();
+            let products: Vec<(String, String, i64)> = (0..300)
+                .map(|i| (new_id(), format!("Dish {i}"), 5_000 + i * 10))
+                .collect();
+            for (id, name, price) in &products {
+                product.execute(params![id, name, price]).unwrap();
+            }
+            let tables: Vec<String> = (0..30).map(|_| new_id()).collect();
+            for (i, id) in tables.iter().enumerate() {
+                tx.execute(
+                    "INSERT INTO tables_dining(id, name, status, branch_id, area) VALUES(?1, ?2, 'available', ?3, 'Dine In')",
+                    params![id, format!("S{i}"), branch],
+                )
+                .unwrap();
+            }
+            let parties: Vec<String> = (0..customers).map(|_| new_id()).collect();
+            for (i, id) in parties.iter().enumerate() {
+                tx.execute(
+                    "INSERT INTO customers(id, name, phone, created_at, branch_id, kind_label)
+                     VALUES(?1, ?2, ?3, ?4, ?5, 'Customer')",
+                    params![id, format!("Guest {i}"), format!("98{i:08}"), start.to_rfc3339(), branch],
+                )
+                .unwrap();
+            }
+            let mut sale = tx
+                .prepare(
+                    "INSERT INTO sales(id, created_at, total_paise, pay_method, status, table_id,
+                                       lines_total_paise, customer_id, created_by_name, branch_id,
+                                       order_type, invoice_no, user_at, device_at)
+                     VALUES(?1, ?2, ?3, ?4, 'completed', ?5, ?3, ?6, 'Owner', ?7, 'dine_in', ?8, ?2, ?2)",
+                )
+                .unwrap();
+            let mut line = tx
+                .prepare(
+                    "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, qty_milli)
+                     VALUES(?1, ?2, ?3, ?4, 1, ?4, 1000)",
+                )
+                .unwrap();
+            let mut pay = tx
+                .prepare("INSERT INTO sale_payments(id, sale_id, pay_method, amount_paise) VALUES(?1, ?2, ?3, ?4)")
+                .unwrap();
+            let mut kot = tx
+                .prepare(
+                    "INSERT INTO kot_tickets(id, sale_id, created_at, status, summary, branch_id, table_id, total_paise)
+                     VALUES(?1, ?2, ?3, 'completed', '3 dishes', ?4, ?5, ?6)",
+                )
+                .unwrap();
+            let mut audit = tx
+                .prepare(
+                    "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
+                     VALUES(?1, ?2, '', 'Owner', 'sale.finalize', ?3)",
+                )
+                .unwrap();
+            let mut ledger = tx
+                .prepare(
+                    "INSERT INTO credit_ledger(id, customer_id, created_at, kind, amount_paise, sale_id,
+                                               pay_method, actor_id, actor_name, user_at, device_at)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, '', 'Owner', ?3, ?3)",
+                )
+                .unwrap();
+            let mut n: i64 = 0;
+            for day in 0..days {
+                for b in 0..bills_per_day {
+                    n += 1;
+                    let at = (start
+                        + chrono::Duration::days(day)
+                        + chrono::Duration::minutes(-12 * 60 + b * 600 / bills_per_day.max(1)))
+                    .to_rfc3339();
+                    let sale_id = new_id();
+                    let picks = [(n * 7) % 300, (n * 13) % 300, (n * 31) % 300];
+                    let total: i64 = picks.iter().map(|&i| products[i as usize].2).sum();
+                    let table = &tables[(n % 30) as usize];
+                    let (method, customer) = if n % 20 == 0 {
+                        ("credit", Some(parties[(n as usize / 20) % parties.len()].clone()))
+                    } else if n % 10 == 0 {
+                        ("split", None)
+                    } else {
+                        (["cash", "upi", "card"][(n % 3) as usize], None)
+                    };
+                    sale.execute(params![sale_id, at, total, method, table, customer, branch, format!("INV-MAIN-{n:06}")])
+                        .unwrap();
+                    for &i in &picks {
+                        let (pid, name, price) = &products[i as usize];
+                        line.execute(params![sale_id, pid, name, price]).unwrap();
+                    }
+                    if method == "split" {
+                        pay.execute(params![new_id(), sale_id, "cash", total / 2]).unwrap();
+                        pay.execute(params![new_id(), sale_id, "upi", total - total / 2]).unwrap();
+                    }
+                    if let Some(party) = &customer {
+                        ledger
+                            .execute(params![new_id(), party, at, "sale", total, sale_id, Option::<String>::None])
+                            .unwrap();
+                        ledger
+                            .execute(params![new_id(), party, at, "settle", -total, Option::<String>::None, "cash"])
+                            .unwrap();
+                    }
+                    kot.execute(params![new_id(), sale_id, at, branch, table, total]).unwrap();
+                    audit.execute(params![new_id(), at, sale_id]).unwrap();
+                }
+            }
+        }
+        tx.commit().unwrap();
+    }
+
+    /// How SQLite will run `sql` (EXPLAIN QUERY PLAN, one detail per line).
+    pub(crate) fn query_plan_for_test(&self, sql: &str) -> String {
+        let mut stmt = self.conn.prepare(&format!("EXPLAIN QUERY PLAN {sql}")).unwrap();
+        let rows = stmt.query_map([], |r| r.get::<_, String>(3)).unwrap();
+        rows.map(|r| r.unwrap()).collect::<Vec<_>>().join("\n")
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
     use crate::domain::{
@@ -8810,6 +10290,204 @@ mod tests {
             0x9c, 0x63, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0xf6, 0x17, 0x38,
             0x55, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
         ]
+    }
+
+    /// Every backup on the one device that holds the books is lost with
+    /// it: after a week with no copy off the device, the owner is told —
+    /// until a copy leaves (the second folder, or "Save a backup copy").
+    #[test]
+    fn a_week_without_a_copy_off_the_device_is_said() {
+        let home = std::env::temp_dir().join(format!("kumkaj-copy-due-{}", new_id()));
+        fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        assert_eq!(store.backup_copy_overdue_days().unwrap(), None, "no backups yet");
+        let made = store.auto_backup_if_due().unwrap().unwrap();
+        assert_eq!(store.backup_copy_overdue_days().unwrap(), None, "a new shop is not nagged");
+        let ten_days_ago = std::time::SystemTime::now() - std::time::Duration::from_secs(10 * 86_400);
+        fs::File::options().write(true).open(&made).unwrap().set_modified(ten_days_ago).unwrap();
+        assert!(store.backup_copy_overdue_days().unwrap().is_some_and(|d| d >= 9));
+        assert!(store.backup_health().unwrap().copy_overdue_days.is_some());
+        store.note_backup_copy_saved().unwrap();
+        assert_eq!(store.backup_copy_overdue_days().unwrap(), None);
+        let _ = fs::remove_dir_all(home);
+    }
+
+    /// One automatic backup a day, two weeks kept, and a copy in the
+    /// owner's second folder — a failed copy is said, never silent.
+    #[test]
+    fn automatic_backups_run_daily_keep_two_weeks_and_copy_to_a_second_place() {
+        // Its own folder: the backups land beside the books.
+        let home = std::env::temp_dir().join(format!("kumkaj-books-{}", new_id()));
+        fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        let dir = store.auto_backup_dir();
+        assert!(dir.starts_with(&home));
+        let made = store.auto_backup_if_due().unwrap().expect("first backup");
+        assert!(made.exists());
+        assert!(store.last_backup_at().unwrap().is_some());
+        assert!(store.auto_backup_if_due().unwrap().is_none(), "not twice in a day");
+        // Older backups beyond two weeks go.
+        for day in 1..=20 {
+            fs::write(dir.join(format!("auto-202501{day:02}-000000000.sqlite3")), b"old").unwrap();
+        }
+        let second = std::env::temp_dir().join(format!("kumkaj-second-{}", new_id()));
+        store.set_backup_copy_dir(Some(&second)).unwrap();
+        store.meta_set("last_backup_at", "2020-01-01T00:00:00+00:00").unwrap();
+        let made = store.auto_backup_if_due().unwrap().unwrap();
+        let kept = fs::read_dir(&dir).unwrap().count();
+        assert_eq!(kept, AUTO_BACKUP_KEEP);
+        assert!(made.exists(), "the newest is kept");
+        assert!(second.join(made.file_name().unwrap()).exists(), "copied to the second place");
+        assert_eq!(store.backup_copy_error().unwrap(), "");
+        // The second place is gone (USB pulled): said, and the backup still made.
+        let gone = std::env::temp_dir().join(format!("kumkaj-file-{}", new_id()));
+        fs::write(&gone, b"not a folder").unwrap();
+        store.set_backup_copy_dir(Some(&gone.join("sub"))).unwrap();
+        store.meta_set("last_backup_at", "2020-01-01T00:00:00+00:00").unwrap();
+        assert!(store.auto_backup_if_due().unwrap().is_some());
+        assert!(store.backup_copy_error().unwrap().contains("Could not copy"));
+        let _ = fs::remove_dir_all(&home);
+        let _ = fs::remove_dir_all(&second);
+        let _ = fs::remove_file(gone);
+    }
+
+    /// A wrong file is refused before it can replace the books.
+    #[test]
+    fn restore_refuses_a_file_that_is_not_these_books() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.upsert_product(&test_product("Tea", 20)).unwrap();
+        drop(store);
+        let junk = std::env::temp_dir().join(format!("kumkaj-junk-{}.sqlite3", new_id()));
+        fs::write(&junk, b"not a database at all").unwrap();
+        let refused = Store::restore_from_to_path(&junk, &path).err().unwrap_or_default();
+        assert!(refused.contains("not a backup"), "{refused}");
+        let other = std::env::temp_dir().join(format!("kumkaj-other-{}.sqlite3", new_id()));
+        Connection::open(&other).unwrap().execute_batch("CREATE TABLE notes(x TEXT);").unwrap();
+        assert!(Store::restore_from_to_path(&other, &path).is_err());
+        // The books are untouched.
+        let store = Store::open_path(&path).unwrap();
+        assert!(store.list_products(false).unwrap().iter().any(|p| p.name == "Tea"));
+        let _ = fs::remove_file(junk);
+        let _ = fs::remove_file(other);
+        let _ = fs::remove_file(path);
+    }
+
+    /// Another Kumkaj app's books have the same tables; restoring them over
+    /// a restaurant's would swap one business for another. Refused, and the
+    /// books stay as they were.
+    #[test]
+    fn restore_refuses_another_apps_backup() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.upsert_product(&test_product("Tea", 20)).unwrap();
+        let other = std::env::temp_dir().join(format!("kumkaj-other-app-{}.sqlite3", new_id()));
+        store.backup_to(&other).unwrap();
+        drop(store);
+        Connection::open(&other)
+            .unwrap()
+            .execute_batch("UPDATE meta SET value = 'courier' WHERE key = 'app';")
+            .unwrap();
+        let refused = Store::restore_from_to_path(&other, &path).err().unwrap_or_default();
+        assert!(refused.contains("another app"), "{refused}");
+        // An older backup without the stamp is still ours if its template is.
+        Connection::open(&other)
+            .unwrap()
+            .execute_batch("DELETE FROM meta WHERE key = 'app';")
+            .unwrap();
+        assert!(check_backup_file(&other).is_ok());
+        let store = Store::open_path(&path).unwrap();
+        assert!(store.list_products(false).unwrap().iter().any(|p| p.name == "Tea"));
+        let _ = fs::remove_file(other);
+        let _ = fs::remove_file(path);
+    }
+
+    /// A backup that cannot be written (full disk, a file where the folder
+    /// should be) leaves no file that looks like a backup, and the owner is
+    /// told until a backup works again.
+    #[test]
+    fn a_failing_backup_is_reported_until_one_works() {
+        let dir = std::env::temp_dir().join(format!("kumkaj-backup-health-{}", new_id()));
+        fs::create_dir_all(&dir).unwrap();
+        let store = Store::open_path(&dir.join("khaynjo.sqlite3")).unwrap();
+        // Where the backups folder should be, there is a file.
+        fs::write(dir.join("backups"), b"not a folder").unwrap();
+        assert!(store.auto_backup_if_due().is_err());
+        let health = store.backup_health().unwrap();
+        assert!(!health.error.is_empty(), "the failure is kept for the owner");
+        assert_eq!(health.last_at, None);
+        assert!(health.free_mb.is_some(), "free space is known on this system");
+        fs::remove_file(dir.join("backups")).unwrap();
+        let made = store.auto_backup_if_due().unwrap().expect("a backup is due");
+        check_backup_file(&made).unwrap();
+        let health = store.backup_health().unwrap();
+        assert!(health.error.is_empty(), "a working backup clears the warning");
+        assert_eq!(health.days_since, Some(0));
+        let _ = fs::remove_dir_all(dir);
+    }
+
+    /// The lookups every device sync and every busy screen makes find their
+    /// rows through an index; none reads every bill, line or ledger row the
+    /// shop ever made (that is what made a year-old shop's sync take
+    /// seconds). Deterministic: it reads SQLite's plan, not a stopwatch.
+    #[test]
+    fn hot_lookups_use_an_index_never_a_scan_of_every_row() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let day = "'2026-10-25'";
+        for (what, sql) in [
+            ("a bill's lines", "SELECT name FROM sale_lines WHERE sale_id = 'x'".to_string()),
+            ("a bill's tenders", "SELECT amount_paise FROM sale_payments WHERE sale_id = 'x'".into()),
+            ("a customer's balance", "SELECT SUM(amount_paise) FROM credit_ledger WHERE customer_id = 'x'".into()),
+            ("recent bills", "SELECT id FROM sales ORDER BY created_at DESC LIMIT 40".into()),
+            ("recent khata entries", "SELECT id FROM credit_ledger ORDER BY created_at DESC LIMIT 2000".into()),
+            ("today's bills (LIKE)", "SELECT id FROM sales WHERE status = 'completed' AND created_at LIKE '2026-10-25%'".into()),
+            ("today's report (range)", format!("SELECT id FROM sales WHERE created_at >= {day} AND created_at < {day} || 'Z'")),
+            ("today's money moves", "SELECT kind FROM money_movements WHERE created_at LIKE '2026-10-25%'".into()),
+            ("today's expenses", "SELECT amount_paise FROM expenses WHERE created_at LIKE '2026-10-25%'".into()),
+            ("today's settlements", "SELECT amount_paise FROM credit_ledger WHERE kind = 'settle' AND created_at LIKE '2026-10-25%'".into()),
+            (
+                "a table's running total",
+                "SELECT SUM(total_paise) FROM kot_tickets WHERE table_id = 'x' AND status != 'cancelled' AND created_at >= '2026'".into(),
+            ),
+            (
+                "open kitchen tickets",
+                "SELECT k.id FROM kot_tickets k WHERE k.status NOT IN ('completed', 'cancelled') ORDER BY k.created_at ASC".into(),
+            ),
+            ("latest audit", "SELECT id FROM audit_events ORDER BY created_at DESC LIMIT 5".into()),
+            (
+                "today's cancellations",
+                format!("SELECT id FROM running_lines WHERE cancelled = 1 AND created_at >= {day} AND created_at < {day} || 'Z'"),
+            ),
+        ] {
+            let plan = store.query_plan_for_test(&sql);
+            let scans_all = plan.lines().any(|l| l.starts_with("SCAN") && !l.contains("USING"));
+            assert!(!scans_all, "{what} reads every row:\n{plan}");
+        }
+        let _ = fs::remove_file(path);
+    }
+
+    /// The LAN server and the counter write the same file from separate
+    /// connections: a write that meets another waits, it does not fail
+    /// with "database is locked".
+    #[test]
+    fn a_second_writer_waits_instead_of_failing_locked() {
+        let path = temp_db();
+        let a = Store::open_path(&path).unwrap();
+        let tx = a.conn.unchecked_transaction().unwrap();
+        tx.execute("INSERT INTO meta(key, value) VALUES ('lock_probe_a', '1')", []).unwrap();
+        let p2 = path.clone();
+        let other = std::thread::spawn(move || {
+            let b = Store::open_path(&p2).unwrap();
+            let tx = b.conn.unchecked_transaction()?;
+            tx.execute("INSERT INTO meta(key, value) VALUES ('lock_probe_b', '1')", [])?;
+            tx.commit()
+        });
+        std::thread::sleep(std::time::Duration::from_millis(300));
+        tx.commit().unwrap();
+        other.join().unwrap().unwrap();
+        assert_eq!(a.meta_get("lock_probe_b").unwrap().as_deref(), Some("1"));
+        let _ = std::fs::remove_file(path);
     }
 
     fn temp_db() -> PathBuf {
@@ -9027,6 +10705,66 @@ mod tests {
         let _ = std::fs::remove_file(png_path);
         let _ = std::fs::remove_file(pdf_path);
         let _ = std::fs::remove_file(exe);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn importing_the_menu_template_twice_adds_nothing_the_second_time() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let shelf = crate::menu_images::shelf();
+        assert!(!shelf.is_empty(), "the catalogue ships with the app");
+        let folders = crate::menu_images::shelf_folders(shelf).len();
+        // The shop already sells one of the dishes: it is kept, not doubled.
+        let own = Product::new_basic(new_id(), shelf[0].name.to_uppercase(), Money(9900));
+        store.upsert_product(&own).unwrap();
+        let first = store.import_catalogue(shelf).unwrap();
+        assert_eq!(first.categories_added, folders);
+        assert_eq!(first.items_kept, 1);
+        assert_eq!(first.items_added + first.items_kept, shelf.len());
+        let again = store.import_catalogue(shelf).unwrap();
+        assert_eq!((again.categories_added, again.items_added), (0, 0));
+        let products = store.list_products(false).unwrap();
+        assert_eq!(products.len(), shelf.len());
+        let photo = products.iter().find(|p| p.id != own.id).unwrap().image_key.clone().unwrap();
+        assert!(photo.starts_with("shelf:"), "{photo}");
+        assert!(crate::menu_images::resolve_image_path(Some(&photo), "", std::path::Path::new("")).is_file());
+        assert!(store.list_categories().unwrap().iter().all(|c| c.image_key.starts_with("shelf:")));
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn raw_material_stays_raw_and_off_the_menu_kind() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let rice = Product::new_raw_material("Rice", "kg");
+        store.upsert_product(&rice).unwrap();
+        let dosa = Product::new_basic(new_id(), "Masala Dosa", Money(12000));
+        store.upsert_product(&dosa).unwrap();
+        let all = store.list_products(false).unwrap();
+        let rice_back = all.iter().find(|p| p.id == rice.id).unwrap();
+        assert!(rice_back.is_raw());
+        assert_eq!(rice_back.unit_label, "kg");
+        assert_eq!(rice_back.stock_qty, 0, "raw material is counted from zero");
+        let dosa_back = all.iter().find(|p| p.id == dosa.id).unwrap();
+        assert_eq!(dosa_back.kind, crate::domain::ITEM_KIND_DISH);
+        assert!(!dosa_back.is_bought(), "a kitchen never buys its own dish");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn category_takes_a_shelf_photo_only_when_it_has_none() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let png = std::env::temp_dir().join(format!("cat-photo-{}.png", new_id()));
+        std::fs::write(&png, tiny_png_bytes()).unwrap();
+        let cat = store.add_category("Bakery Cafe").unwrap();
+        assert!(store.set_category_photo_if_missing(&cat.id, &png).unwrap());
+        let key = store.list_categories().unwrap().into_iter().find(|c| c.id == cat.id).unwrap().image_key;
+        assert!(key.starts_with("custom:cat-"), "{key}");
+        // The owner's (or an earlier) photo is never replaced.
+        assert!(!store.set_category_photo_if_missing(&cat.id, &png).unwrap());
+        let _ = std::fs::remove_file(png);
         let _ = std::fs::remove_file(path);
     }
 
@@ -9385,6 +11123,29 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
+    /// A kitchen that cooks from the paper KOT never taps Done. Yesterday's
+    /// tickets must not stay "to cook" for ever: past [`KOT_OPEN_HOURS`] they
+    /// leave the Kitchen screen and the devices' sync; today's stay.
+    #[test]
+    fn kitchen_tickets_nobody_closed_age_out() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let table = store.add_table("Counter 1").unwrap();
+        store.upsert_product(&test_product("Masala Dosa", 120)).unwrap();
+        let dosa = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&dosa);
+        let draft = cart.to_sale_draft().unwrap();
+        let old = store.send_kot(&draft, Some(&table.id), &owner).unwrap().remove(0);
+        let fresh = store.send_kot(&draft, Some(&table.id), &owner).unwrap().remove(0);
+        let yesterday = (Local::now() - chrono::Duration::hours(KOT_OPEN_HOURS + 1)).to_rfc3339();
+        store.backdate_kot_for_test(&old, &yesterday);
+        let open: Vec<_> = store.list_open_kots().unwrap().into_iter().map(|k| k.id).collect();
+        assert_eq!(open, vec![fresh]);
+        let _ = std::fs::remove_file(path);
+    }
+
     /// Khaynjo ships as a restaurant: a fresh shop defaults to the
     /// Restaurant venue (KOT on), and table → KOT → advance works with no
     /// template ceremony beyond the locked Khaynjo face.
@@ -9404,8 +11165,9 @@ mod tests {
         cart.add_or_bump(&dosa);
         let draft = cart.to_sale_draft().unwrap();
         let kot_id = store
-            .send_kot_from_cart(&draft, Some(&table.id), &owner)
-            .unwrap();
+            .send_kot(&draft, Some(&table.id), &owner)
+            .unwrap()
+            .remove(0);
 
         let open = store.list_open_kots().unwrap();
         assert_eq!(open.len(), 1);
@@ -9444,7 +11206,7 @@ mod tests {
         cart.add_or_bump(&thali);
         let draft = cart.to_sale_draft().unwrap();
         store
-            .send_kot_from_cart(&draft, Some(&table.id), &owner)
+            .send_kot(&draft, Some(&table.id), &owner)
             .unwrap();
 
         let ours = |store: &Store| {
@@ -9473,12 +11235,13 @@ mod tests {
             crate::domain::TableStatus::PaymentPending
         );
 
-        // The counter records the payment — now the table releases.
+        // The counter records the payment — the table shows Paid (clear
+        // it); it no longer holds a bill.
         store
             .finalize_sale(&draft, PayMethod::Cash, Some(&table.id), None, &owner)
             .unwrap();
         let t = ours(&store);
-        assert_eq!(t.status, crate::domain::TableStatus::Available);
+        assert_eq!(t.status, crate::domain::TableStatus::Paid);
         assert!(t.occupied_at.is_empty());
         assert_eq!(t.running_total_paise, 0);
         let _ = std::fs::remove_file(path);
@@ -9497,6 +11260,38 @@ mod tests {
             .unwrap();
         assert_eq!(store.customer_balance(&customer.id).unwrap(), 5000);
         assert_eq!(store.outstanding_credit_total().unwrap(), 5000);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Remove is an archive, so the owner can always put an item back — and an
+    /// app-provided dish (copied from the bundled shelf) comes back with the
+    /// price/photo/category the shop had set on it.
+    #[test]
+    fn removed_item_restores_exactly_as_it_was() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let mut product = test_product("Banana Bread", 120);
+        product.category_id = "cat-bakery".into();
+        product.image_key = Some("custom:banana-bread.webp".into());
+        store.upsert_product(&product).unwrap();
+        assert!(store.list_removed_products().unwrap().is_empty());
+
+        store.archive_product(&product.id).unwrap();
+        assert!(store.list_products(false).unwrap().is_empty());
+        let removed = store.list_removed_products().unwrap();
+        assert_eq!(removed.len(), 1);
+        assert_eq!(removed[0].name, "Banana Bread");
+        assert_eq!(removed[0].price, Money::from_rupees(120));
+
+        store.restore_product(&product.id).unwrap();
+        let back = store.list_products(false).unwrap();
+        assert_eq!(back.len(), 1);
+        assert_eq!(back[0].id, product.id);
+        assert_eq!(back[0].price, Money::from_rupees(120));
+        assert_eq!(back[0].category_id, "cat-bakery");
+        assert_eq!(back[0].image_key.as_deref(), Some("custom:banana-bread.webp"));
+        assert!(store.list_removed_products().unwrap().is_empty());
+        assert!(store.restore_product("missing").is_err());
         let _ = std::fs::remove_file(path);
     }
 
@@ -9637,7 +11432,6 @@ mod tests {
     }
 
     #[test]
-    #[test]
     fn bank_posting_aging_period_and_rich_receipt() {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
@@ -9757,7 +11551,7 @@ mod tests {
             .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
             .is_err());
         store
-            .set_client_pairing("http://127.0.0.1:7847", "123456")
+            .set_client_device_pairing("http://127.0.0.1:7847", "device-token")
             .unwrap();
         assert!(store
             .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
@@ -9862,6 +11656,24 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
+    /// Names on screen are only what the owner saved: nothing is written
+    /// for them, and the "My business" placeholder older books hold reads as
+    /// never saved. Reports still have a name to print.
+    #[test]
+    fn only_names_the_owner_saved_show() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        assert_eq!(store.meta_get("org_name").unwrap().unwrap_or_default(), "");
+        assert_eq!(store.saved_org_name().unwrap(), "");
+        store.meta_set("org_name", DEFAULT_ORG_NAME).unwrap();
+        assert_eq!(store.saved_org_name().unwrap(), "");
+        store.set_venue_title("Rajdhani Thali").unwrap();
+        assert_eq!(store.org_name().unwrap(), "Rajdhani Thali", "reports fall back to the shop's name");
+        store.meta_set("venue_title", "Server af76697b").unwrap();
+        assert_eq!(store.venue_title().unwrap(), "");
+        let _ = std::fs::remove_file(path);
+    }
+
     #[test]
     fn branch_seed_and_switch() {
         let path = temp_db();
@@ -9871,9 +11683,11 @@ mod tests {
         assert_eq!(branches[0].name, "Main");
         assert!(branches[0].is_this_device);
         assert_eq!(store.active_branch_id().unwrap(), branches[0].id);
-        assert_eq!(store.org_name().unwrap(), "My business");
+        assert_eq!(store.org_name().unwrap(), DEFAULT_ORG_NAME);
+        assert_eq!(store.saved_org_name().unwrap(), "");
         store.set_org_name("Kumkaj Chai Co").unwrap();
         assert_eq!(store.org_name().unwrap(), "Kumkaj Chai Co");
+        assert_eq!(store.saved_org_name().unwrap(), "Kumkaj Chai Co");
         assert!(!store.org_id().unwrap().is_empty());
 
         let second = store.add_branch("MG Road", "mg02").unwrap();
@@ -10762,7 +12576,7 @@ mod tests {
         assert_eq!(store.list_products(false).unwrap().len(), 1);
         assert!(store.get_product(&tea.id).unwrap().unwrap().available);
         store
-            .set_client_pairing("http://127.0.0.1:7847", "123456")
+            .set_client_device_pairing("http://127.0.0.1:7847", "device-token")
             .unwrap();
         assert!(store
             .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)

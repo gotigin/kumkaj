@@ -57,7 +57,9 @@ impl EventTimes {
 
 /// Accept a full RFC3339 stamp or a calendar day (`YYYY-MM-DD` → that day at device clock time).
 fn normalize_user_at(raw: &str, device_at: &str) -> String {
-    if raw.len() == 10 && raw.as_bytes().get(4) == Some(&b'-') && raw.as_bytes().get(7) == Some(&b'-')
+    if raw.len() == 10
+        && raw.as_bytes().get(4) == Some(&b'-')
+        && raw.as_bytes().get(7) == Some(&b'-')
     {
         let clock = device_at.get(11..).unwrap_or("00:00:00");
         return format!("{raw}T{clock}");
@@ -296,6 +298,10 @@ pub struct StaffFeatures {
     /// Branch switching, snapshots and the consolidated org report.
     #[serde(default)]
     pub branches: bool,
+    /// Per-person override of role-based sensitive-rights (vision §17).
+    /// `None` = the role's preset; some is a specific decision for this person.
+    #[serde(default)]
+    pub rights: Option<Rights>,
 }
 
 impl Default for StaffFeatures {
@@ -315,6 +321,7 @@ impl StaffFeatures {
             backup: true,
             inventory: true,
             branches: true,
+            rights: Some(Rights::all_allowed()),
         }
     }
 
@@ -330,6 +337,7 @@ impl StaffFeatures {
                 backup: false,
                 inventory: true,
                 branches: true,
+                rights: Some(Rights::for_role(StaffRole::Manager)),
             },
             StaffRole::Cashier => Self {
                 sell: true,
@@ -340,6 +348,7 @@ impl StaffFeatures {
                 backup: false,
                 inventory: false,
                 branches: false,
+                rights: Some(Rights::for_role(StaffRole::Cashier)),
             },
         }
     }
@@ -350,6 +359,101 @@ impl StaffFeatures {
 
     pub fn from_json(s: &str) -> Self {
         serde_json::from_str(s).unwrap_or_default()
+    }
+}
+
+/// Owner-controlled right level for a sensitive action. Per staff, enforced on the Server.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum RightLevel {
+    /// Any person with this feature flag may proceed.
+    #[default]
+    Allowed,
+    /// Owner/Manager PIN required (the approver is returned so the action records them).
+    WithApproval,
+    /// Refused outright. No PIN can override.
+    Denied,
+}
+
+impl RightLevel {
+    /// Next level for the Team screen's tap-to-change button.
+    pub fn cycle(self) -> Self {
+        match self {
+            Self::Allowed => Self::WithApproval,
+            Self::WithApproval => Self::Denied,
+            Self::Denied => Self::Allowed,
+        }
+    }
+}
+
+/// Courier-specific rights that require per-person control (vision §17).
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Rights {
+    #[serde(default = "default_void_refund")]
+    pub void_refund: RightLevel,
+    #[serde(default = "default_amend_sale")]
+    pub amend_sale: RightLevel,
+}
+
+fn default_void_refund() -> RightLevel {
+    RightLevel::WithApproval
+}
+
+fn default_amend_sale() -> RightLevel {
+    RightLevel::WithApproval
+}
+
+impl Rights {
+    /// All rights allowed — the Owner preset (always has everything).
+    pub fn all_allowed() -> Self {
+        Self {
+            void_refund: RightLevel::Allowed,
+            amend_sale: RightLevel::Allowed,
+        }
+    }
+
+    /// Per-role defaults (Courier): cashier may void/refund and amend, but only
+    /// with a Manager PIN — vision §17.
+    pub fn for_role(role: StaffRole) -> Self {
+        match role {
+            StaffRole::Owner | StaffRole::Manager => Self::all_allowed(),
+            StaffRole::Cashier => Self {
+                void_refund: RightLevel::WithApproval,
+                amend_sale: RightLevel::WithApproval,
+            },
+        }
+    }
+
+    pub fn level(&self, right: Right) -> RightLevel {
+        match right {
+            Right::VoidRefund => self.void_refund,
+            Right::AmendSale => self.amend_sale,
+        }
+    }
+
+    pub fn set_level(&mut self, right: Right, level: RightLevel) {
+        match right {
+            Right::VoidRefund => self.void_refund = level,
+            Right::AmendSale => self.amend_sale = level,
+        }
+    }
+}
+
+/// Sensitive action requiring a rights check.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Right {
+    /// Void or refund a sale (reverse stock, restore credit). Courier: the core financial gate.
+    VoidRefund,
+    /// Amend a recorded bill after completion — changes live totals and tax. Courier: audit-sensitive.
+    AmendSale,
+}
+
+impl Right {
+    /// Locale key for the right's name on the Team screen.
+    pub fn label_key(self) -> &'static str {
+        match self {
+            Right::VoidRefund => "right_void_refund",
+            Right::AmendSale => "right_amend_sale",
+        }
     }
 }
 
@@ -640,9 +744,7 @@ pub fn standard_factor_to_cm(code: &str) -> Option<rust_decimal::Decimal> {
 /// Returns `(family, factor converting 1 code into the anchor)`.
 /// Physical factors are fixed constants of nature — unlike currency
 /// rates, which are prices at a moment in time and are never units.
-pub fn standard_unit_family(
-    code: &str,
-) -> Option<(&'static str, rust_decimal::Decimal)> {
+pub fn standard_unit_family(code: &str) -> Option<(&'static str, rust_decimal::Decimal)> {
     use rust_decimal::Decimal;
     let code = code.trim().to_ascii_lowercase();
     if let Some(f) = standard_factor_to_kg(&code) {
@@ -731,6 +833,19 @@ impl StaffMember {
             StaffFeatures::all()
         } else {
             self.features.clone()
+        }
+    }
+
+    /// Effective rights for this person: per-person override (if set), else
+    /// the role's preset.
+    pub fn effective_rights(&self) -> Rights {
+        if self.is_owner() {
+            Rights::all_allowed()
+        } else {
+            self.features
+                .rights
+                .clone()
+                .unwrap_or_else(|| Rights::for_role(self.role))
         }
     }
 
@@ -891,7 +1006,8 @@ impl TaxRate {
     /// True when the seller typed this rate's name or code (case-insensitive).
     pub fn matches(&self, typed: &str) -> bool {
         let t = typed.trim();
-        self.name.eq_ignore_ascii_case(t) || (!self.code.is_empty() && self.code.eq_ignore_ascii_case(t))
+        self.name.eq_ignore_ascii_case(t)
+            || (!self.code.is_empty() && self.code.eq_ignore_ascii_case(t))
     }
 }
 
@@ -1171,17 +1287,17 @@ impl Cart {
             return;
         }
         self.charge_total = None;
-        if let Some(line) = self
-            .lines
-            .iter_mut()
-            .find(|l| l.product_id == product.id)
-        {
+        if let Some(line) = self.lines.iter_mut().find(|l| l.product_id == product.id) {
             line.line_total_override = None;
             let step = line.bump_step_milli();
             line.qty_milli = line.qty_milli.saturating_add(step);
             line.sync_qty_from_milli();
         } else {
-            let step = if product.is_weight_unit() { 100 } else { QTY_MILLI_UNIT };
+            let step = if product.is_weight_unit() {
+                100
+            } else {
+                QTY_MILLI_UNIT
+            };
             let mut line = CartLine {
                 product_id: product.id.clone(),
                 name: product.name.clone(),
@@ -1372,16 +1488,16 @@ impl Cart {
 
     /// Actual Total: sum of `@ × qty` on every line.
     pub fn actual_total(&self) -> Money {
-        self.lines
-            .iter()
-            .fold(Money(0), |acc, line| acc.saturating_add(line.actual_total()))
+        self.lines.iter().fold(Money(0), |acc, line| {
+            acc.saturating_add(line.actual_total())
+        })
     }
 
     /// Applied Total: sum of each line's Applied amount.
     pub fn applied_total(&self) -> Money {
-        self.lines
-            .iter()
-            .fold(Money(0), |acc, line| acc.saturating_add(line.applied_total()))
+        self.lines.iter().fold(Money(0), |acc, line| {
+            acc.saturating_add(line.applied_total())
+        })
     }
 
     /// Alias used by older call sites.
@@ -1392,8 +1508,7 @@ impl Cart {
     /// Rounded Total: amount collected / written to the sale.
     /// Defaults to Applied Total until the seller edits it.
     pub fn rounded_total(&self) -> Money {
-        self.charge_total
-            .unwrap_or_else(|| self.applied_total())
+        self.charge_total.unwrap_or_else(|| self.applied_total())
     }
 
     /// Alias for [`Cart::rounded_total`].
@@ -2425,7 +2540,10 @@ mod tests {
         assert_eq!(draft.lines[0].note, "Extra cheese");
         assert_eq!(draft.lines[0].unit_price_paise, 3_300);
         cart.set_note(0, "no onion").unwrap();
-        assert_eq!(cart.to_sale_draft().unwrap().lines[0].note, "Extra cheese, no onion");
+        assert_eq!(
+            cart.to_sale_draft().unwrap().lines[0].note,
+            "Extra cheese, no onion"
+        );
         assert!(!cart.toggle_modifier(0, &cheese).unwrap());
         assert_eq!(cart.lines[0].unit_price.paise(), 1_300);
         assert_eq!(cart.to_sale_draft().unwrap().lines[0].note, "no onion");
@@ -2434,7 +2552,10 @@ mod tests {
     #[test]
     fn inclusive_tax_never_inflates_the_bill() {
         // ₹105 at 5% inclusive → ₹5 tax inside, bill unchanged.
-        assert_eq!(fiscal::tax_on_amount(10_500, 500, TaxPricing::Inclusive), 500);
+        assert_eq!(
+            fiscal::tax_on_amount(10_500, 500, TaxPricing::Inclusive),
+            500
+        );
         assert_eq!(fiscal::tax_on_amount(10_500, 0, TaxPricing::Inclusive), 0);
         let mut cart = Cart::default();
         let mut p = tea();
@@ -2477,15 +2598,15 @@ mod tests {
         let mut f = FiscalSettings::default();
         assert_eq!(PayMethod::Upi.label_for(&f), "UPI");
         assert_eq!(PayMethod::Cash.label_for(&f), "Cash");
-        f = FiscalSettings::from_profile(
-            fiscal::country_by_code("BR").unwrap(),
-            String::new(),
-        );
+        f = FiscalSettings::from_profile(fiscal::country_by_code("BR").unwrap(), String::new());
         assert_eq!(PayMethod::Upi.label_for(&f), "Pix");
         assert_eq!(PayMethod::Split.label_for(&f), "Split Cash+Pix");
         assert_eq!(PayMethod::Credit.label_for(&f), "Fiado");
         // Storage is untouched, so the rail still round-trips as `upi`.
-        assert_eq!(PayMethod::parse(PayMethod::Upi.as_str()), Some(PayMethod::Upi));
+        assert_eq!(
+            PayMethod::parse(PayMethod::Upi.as_str()),
+            Some(PayMethod::Upi)
+        );
     }
 
     #[test]
@@ -2517,7 +2638,9 @@ mod tests {
         assert!(t.server_at.is_empty());
         let backdated = EventTimes::capture(Some("2024-01-15"));
         assert!(backdated.user_at.starts_with("2024-01-15T"));
-        assert!(!backdated.device_at.starts_with("2024-01-15T") || backdated.device_at.contains('T'));
+        assert!(
+            !backdated.device_at.starts_with("2024-01-15T") || backdated.device_at.contains('T')
+        );
         assert_ne!(backdated.user_at, backdated.device_at);
         let stamped = backdated.with_server_now();
         assert!(!stamped.server_at.is_empty());
@@ -2548,5 +2671,3 @@ mod tests {
         assert!(c.is_consignor() && c.is_carrier());
     }
 }
-
-

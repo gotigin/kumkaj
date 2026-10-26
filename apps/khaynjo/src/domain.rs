@@ -348,6 +348,9 @@ pub struct StaffFeatures {
     /// Branch switching, snapshots and the consolidated org report.
     #[serde(default)]
     pub branches: bool,
+    /// Owner-edited rights; `None` = the role's preset ([`StaffRights::for_role`]).
+    #[serde(default)]
+    pub rights: Option<StaffRights>,
 }
 
 impl Default for StaffFeatures {
@@ -369,6 +372,7 @@ impl StaffFeatures {
             backup: true,
             inventory: true,
             branches: true,
+            rights: None,
         }
     }
 
@@ -386,6 +390,7 @@ impl StaffFeatures {
                 backup: false,
                 inventory: true,
                 branches: true,
+                rights: None,
             },
             StaffRole::Cashier => Self {
                 sell: true,
@@ -398,6 +403,7 @@ impl StaffFeatures {
                 backup: false,
                 inventory: false,
                 branches: false,
+                rights: None,
             },
             // A waiter is a cashier who also works the floor.
             StaffRole::Waiter => Self {
@@ -411,6 +417,7 @@ impl StaffFeatures {
                 backup: false,
                 inventory: false,
                 branches: false,
+                rights: None,
             },
             StaffRole::Kitchen => Self {
                 sell: false,
@@ -423,6 +430,7 @@ impl StaffFeatures {
                 backup: false,
                 inventory: false,
                 branches: false,
+                rights: None,
             },
         }
     }
@@ -855,6 +863,184 @@ impl StaffMember {
     pub fn can_access_branches(&self) -> bool {
         self.effective_features().branches
     }
+
+    /// What this person may do with money and sent work. The Owner can do
+    /// everything; others get what the owner set, else their role preset.
+    pub fn rights(&self) -> StaffRights {
+        if self.is_owner() {
+            return StaffRights::all_allowed();
+        }
+        self.features
+            .rights
+            .clone()
+            .unwrap_or_else(|| StaffRights::for_role(self.role))
+    }
+}
+
+/// How far one person may go with one sensitive action (vision §17).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum RightLevel {
+    /// May do it.
+    Allowed,
+    /// May start it; an Owner/Manager PIN is entered at that moment and the
+    /// approver is recorded with the action.
+    WithApproval,
+    /// Refused with a plain reason.
+    #[default]
+    Denied,
+}
+
+impl RightLevel {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Allowed => "allowed",
+            Self::WithApproval => "with_approval",
+            Self::Denied => "denied",
+        }
+    }
+
+    pub fn parse(s: &str) -> Self {
+        match s {
+            "allowed" => Self::Allowed,
+            "with_approval" => Self::WithApproval,
+            _ => Self::Denied,
+        }
+    }
+
+    /// Allowed → With approval → Not allowed → Allowed (a tap cycles it).
+    pub fn cycle(self) -> Self {
+        match self {
+            Self::Allowed => Self::WithApproval,
+            Self::WithApproval => Self::Denied,
+            Self::Denied => Self::Allowed,
+        }
+    }
+}
+
+/// The sensitive restaurant actions the owner grants per person — the
+/// Petpooja-style rights matrix, enforced in [`crate::store::Store`].
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Right {
+    /// Take payment and close a bill (Settle & Save).
+    Settle,
+    /// Cancel a line (or part of it) after its KOT went to the kitchen.
+    CancelSentItem,
+    /// Make a line or a whole bill complimentary (NC, ₹0).
+    Complimentary,
+    /// Move items or a whole table, or merge tables.
+    MoveTable,
+    /// Print the bill again, or a KOT again.
+    Reprint,
+    /// Take money off a bill (percent or amount).
+    Discount,
+}
+
+impl Right {
+    pub const ALL: [Right; 6] = [
+        Right::Settle,
+        Right::CancelSentItem,
+        Right::Complimentary,
+        Right::MoveTable,
+        Right::Reprint,
+        Right::Discount,
+    ];
+
+    /// Locale key of the right's name.
+    pub fn label_key(self) -> &'static str {
+        match self {
+            Right::Settle => "right_settle",
+            Right::CancelSentItem => "right_cancel_sent",
+            Right::Complimentary => "right_complimentary",
+            Right::MoveTable => "right_move_table",
+            Right::Reprint => "right_reprint",
+            Right::Discount => "right_discount",
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct StaffRights {
+    #[serde(default)]
+    pub settle: RightLevel,
+    #[serde(default)]
+    pub cancel_sent_item: RightLevel,
+    #[serde(default)]
+    pub complimentary: RightLevel,
+    #[serde(default)]
+    pub move_table: RightLevel,
+    #[serde(default)]
+    pub reprint: RightLevel,
+    #[serde(default)]
+    pub discount: RightLevel,
+}
+
+impl StaffRights {
+    pub fn all_allowed() -> Self {
+        Self {
+            settle: RightLevel::Allowed,
+            cancel_sent_item: RightLevel::Allowed,
+            complimentary: RightLevel::Allowed,
+            move_table: RightLevel::Allowed,
+            reprint: RightLevel::Allowed,
+            discount: RightLevel::Allowed,
+        }
+    }
+
+    /// Restaurant defaults (Petpooja-like): the counter settles; a waiter
+    /// takes orders and moves guests but never settles money; giving food
+    /// away or cancelling what the kitchen already has needs a manager.
+    pub fn for_role(role: StaffRole) -> Self {
+        use RightLevel::*;
+        match role {
+            StaffRole::Owner | StaffRole::Manager => Self::all_allowed(),
+            StaffRole::Cashier => Self {
+                settle: Allowed,
+                cancel_sent_item: WithApproval,
+                complimentary: WithApproval,
+                move_table: Allowed,
+                reprint: Allowed,
+                discount: WithApproval,
+            },
+            StaffRole::Waiter => Self {
+                settle: Denied,
+                cancel_sent_item: WithApproval,
+                complimentary: Denied,
+                move_table: Allowed,
+                reprint: Denied,
+                discount: Denied,
+            },
+            StaffRole::Kitchen => Self {
+                settle: Denied,
+                cancel_sent_item: Denied,
+                complimentary: Denied,
+                move_table: Denied,
+                reprint: Denied,
+                discount: Denied,
+            },
+        }
+    }
+
+    pub fn level(&self, right: Right) -> RightLevel {
+        match right {
+            Right::Settle => self.settle,
+            Right::CancelSentItem => self.cancel_sent_item,
+            Right::Complimentary => self.complimentary,
+            Right::MoveTable => self.move_table,
+            Right::Reprint => self.reprint,
+            Right::Discount => self.discount,
+        }
+    }
+
+    pub fn set_level(&mut self, right: Right, level: RightLevel) {
+        match right {
+            Right::Settle => self.settle = level,
+            Right::CancelSentItem => self.cancel_sent_item = level,
+            Right::Complimentary => self.complimentary = level,
+            Right::MoveTable => self.move_table = level,
+            Right::Reprint => self.reprint = level,
+            Right::Discount => self.discount = level,
+        }
+    }
 }
 
 /// One business (org). A single device always belongs to exactly one org;
@@ -1039,6 +1225,37 @@ pub struct Product {
     /// Quantity unit label (`kg`, `plate`, empty = piece).
     #[serde(default)]
     pub unit_label: String,
+    /// Optional dish family ("Paneer Tikka" for its Half and Full). Each
+    /// variant is its own item with its own UUID, price, stock and station;
+    /// the group is only a label to find and total them together — never
+    /// identity (IDENTITY_AND_NAMES.md).
+    #[serde(default)]
+    pub group_name: String,
+    /// Price by floor area (AC ₹220 when the menu says ₹200): JSON array of
+    /// [`ModifierOption`] with the area as the name. Areas not listed use the
+    /// item price.
+    #[serde(default = "empty_json_array")]
+    pub area_prices_json: String,
+    /// What this item is to the restaurant: a dish it cooks and sells, a
+    /// good it buys and resells as is, or a raw material it buys and uses
+    /// up ([`ITEM_KIND_DISH`] / [`ITEM_KIND_RESALE`] / [`ITEM_KIND_RAW`]).
+    /// A kitchen never buys its own dishes, and raw material is never on
+    /// the menu.
+    #[serde(default = "dish_kind")]
+    pub kind: String,
+}
+
+/// Cooked here and sold (on the menu; never bought).
+pub const ITEM_KIND_DISH: &str = "dish";
+/// Bought and sold as is — bottled drinks, packaged water (on the menu and
+/// bought; stock counted).
+pub const ITEM_KIND_RESALE: &str = "resale";
+/// Bought and used up in the kitchen — rice, paneer, oil, gas (never on the
+/// menu; stock counted).
+pub const ITEM_KIND_RAW: &str = "raw";
+
+fn dish_kind() -> String {
+    ITEM_KIND_DISH.into()
 }
 
 fn stock_untracked() -> i64 {
@@ -1076,7 +1293,80 @@ impl Product {
             aliases_json: "[]".into(),
             branch_id: String::new(),
             unit_label: String::new(),
+            kind: ITEM_KIND_DISH.into(),
+            group_name: String::new(),
+            area_prices_json: "[]".into(),
         }
+    }
+
+    /// A raw material the kitchen buys and uses up: never on the menu,
+    /// stock counted from zero.
+    pub fn new_raw_material(name: &str, unit_label: &str) -> Self {
+        let mut p = Self::new_basic(new_id(), name.trim(), Money(0));
+        p.kind = ITEM_KIND_RAW.into();
+        p.unit_label = unit_label.trim().to_string();
+        p.stock_qty = 0;
+        p
+    }
+
+    pub fn is_raw(&self) -> bool {
+        self.kind == ITEM_KIND_RAW
+    }
+
+    /// Something the restaurant buys: raw material, a resold good, or an
+    /// item whose stock it already counts.
+    pub fn is_bought(&self) -> bool {
+        self.kind == ITEM_KIND_RAW || self.kind == ITEM_KIND_RESALE || self.tracks_stock()
+    }
+
+    /// Variant items for `base` ("Paneer Tikka" + Half=120, Full=200 →
+    /// "Paneer Tikka (Half)" ₹120 and "Paneer Tikka (Full)" ₹200): each a new
+    /// item with a fresh UUID, the base's shared settings (category, station,
+    /// tax, unit, options), and `base`'s name as their group. Prices that
+    /// belong to one size — area prices — and short codes / aliases are not
+    /// copied: each variant gets its own. Quick entry only — afterwards each
+    /// is edited on its own.
+    pub fn variant_items(base: &Product, variants: &[ModifierOption]) -> Vec<Product> {
+        let group = if base.group_name.trim().is_empty() {
+            base.name.trim().to_string()
+        } else {
+            base.group_name.trim().to_string()
+        };
+        variants
+            .iter()
+            .map(|v| Product {
+                id: new_id(),
+                name: format!("{} ({})", base.name.trim(), v.name.trim()),
+                price: Money(v.price_paise),
+                group_name: group.clone(),
+                image_key: None,
+                area_prices_json: "[]".into(),
+                aliases_json: "[]".into(),
+                ..base.clone()
+            })
+            .collect()
+    }
+
+    pub fn area_prices(&self) -> Vec<ModifierOption> {
+        serde_json::from_str(&self.area_prices_json).unwrap_or_default()
+    }
+
+    pub fn set_area_prices(&mut self, prices: &[ModifierOption]) {
+        self.area_prices_json = serde_json::to_string(prices).unwrap_or_else(|_| "[]".into());
+    }
+
+    /// The price at a table in `area` (case-insensitive); the item price
+    /// where the area has no price of its own.
+    pub fn price_in_area(&self, area: &str) -> Money {
+        let area = area.trim();
+        if area.is_empty() {
+            return self.price;
+        }
+        self.area_prices()
+            .into_iter()
+            .find(|p| p.name.trim().eq_ignore_ascii_case(area))
+            .map(|p| Money(p.price_paise))
+            .unwrap_or(self.price)
     }
 
     pub fn is_weight_unit(&self) -> bool {
@@ -1155,10 +1445,34 @@ pub struct CartLine {
     /// Applied line total when it differs from Actual (`unit_price × qty`).
     /// Unit price is never rewritten when this is set.
     pub line_total_override: Option<Money>,
+    /// Set when this line already went to the kitchen on the table's running
+    /// order ([`RunningLine::id`]). Empty = new, not sent yet. A sent line is
+    /// never bumped or dropped like a new one — it is cancelled with a
+    /// reason ([`crate::store::Store::cancel_running_line`]).
+    pub running_line_id: String,
+    /// Complimentary (NC): kept at its real item and qty, billed ₹0.
+    pub complimentary: bool,
+    /// The KOT this sent line went out on ([`RunningLine::kot_id`]); empty
+    /// for a line not sent yet. The ticket groups lines by it.
+    pub kot_id: String,
 }
 
 /// How many modifier chips fit on one cart row.
 pub const MODIFIER_PAGE: usize = 3;
+
+/// Why a menu item's price cannot be saved, or `None` when it is fine.
+///
+/// ₹0 is a real price: complimentary water, a free chutney, a dish priced at
+/// the counter by its `@`. The menu and the till agree on it — the form saves
+/// it and [`Cart::add_or_bump_in_stock`] bills it. Only a negative price is
+/// refused (a discount is a line/bill edit, not a menu price).
+pub fn menu_price_error(price: Money) -> Option<String> {
+    if price.paise() < 0 {
+        Some("Price cannot be negative".into())
+    } else {
+        None
+    }
+}
 
 impl CartLine {
     fn sync_qty_from_milli(&mut self) {
@@ -1187,10 +1501,19 @@ impl CartLine {
         self.unit_price.saturating_mul_milli(milli)
     }
 
-    /// Applied line total: override if set, otherwise Actual.
+    /// Applied line total: override if set, otherwise Actual. A
+    /// complimentary (NC) line is billed ₹0; its Actual keeps the real value.
     pub fn applied_total(&self) -> Money {
+        if self.complimentary {
+            return Money(0);
+        }
         self.line_total_override
             .unwrap_or_else(|| self.actual_total())
+    }
+
+    /// Already on the table's running order (went to the kitchen).
+    pub fn is_sent(&self) -> bool {
+        !self.running_line_id.is_empty()
     }
 
     /// Alias for [`CartLine::applied_total`] (charged amount for this line).
@@ -1240,12 +1563,58 @@ pub struct Cart {
     pub order_type: OrderType,
     /// Bill-type tag (Account booking / Cash booking). Set from the shell.
     pub money_lane: MoneyLane,
+    /// Bill discount (10 % or ₹50) with its reason; spread over the lines
+    /// at finalize so tax is on what is actually charged.
+    pub discount: Option<BillDiscount>,
+    /// Delivery orders: who takes it out (staff or rider name).
+    pub delivery_by: String,
+}
+
+/// How much off the bill.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DiscountKind {
+    /// Percent in basis points (1000 = 10 %).
+    Percent(i64),
+    /// A fixed amount (paise).
+    Amount(i64),
+}
+
+/// A discount on the whole bill — a right (vision §17): reason always,
+/// a manager's PIN when the person's right says "with approval".
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct BillDiscount {
+    pub kind: DiscountKind,
+    pub reason: String,
+    /// Manager PIN typed on the device; the Server checks it at finalize.
+    pub approval_pin: String,
+}
+
+impl DiscountKind {
+    /// `10%` / `10 %` → 10 percent; `50` / `50.5` → that amount.
+    pub fn parse(text: &str, currency_code: &str) -> Result<Self, String> {
+        let t = text.trim();
+        if let Some(p) = t.strip_suffix('%') {
+            let bps = crate::locale::parse_percent_bps(p.trim())?;
+            if bps <= 0 || bps > 10_000 {
+                return Err("Discount must be between 0 and 100 %".into());
+            }
+            return Ok(Self::Percent(bps));
+        }
+        let paise = crate::locale::parse_major_input(t, currency_code)
+            .map_err(|_| "Type a discount like 10% or 50".to_string())?;
+        if paise <= 0 {
+            return Err("Discount must be more than 0".into());
+        }
+        Ok(Self::Amount(paise))
+    }
 }
 
 impl Cart {
     pub fn clear(&mut self) {
         self.lines.clear();
         self.charge_total = None;
+        self.discount = None;
+        self.delivery_by.clear();
         self.order_type = OrderType::Counter;
         // Keep money_lane — owner choice persists across carts until they flip the chip.
     }
@@ -1255,15 +1624,20 @@ impl Cart {
     }
 
     pub fn add_or_bump(&mut self, product: &Product) {
-        if !product.available || product.archived || product.price.paise() <= 0 {
+        self.add_priced(product, product.price);
+    }
+
+    /// Add one of `product` at `unit_price` (its price in the table's area).
+    fn add_priced(&mut self, product: &Product, unit_price: Money) {
+        if !product.available || product.archived || unit_price.paise() < 0 {
             return;
         }
         self.charge_total = None;
-        if let Some(line) = self
-            .lines
-            .iter_mut()
-            .find(|l| l.product_id == product.id)
-        {
+        // A line already sent to the kitchen is history: another tap starts
+        // (or bumps) a new line that goes on the next KOT.
+        if let Some(line) = self.lines.iter_mut().find(|l| {
+            l.product_id == product.id && !l.is_sent() && !l.complimentary
+        }) {
             line.line_total_override = None;
             let step = line.bump_step_milli();
             line.qty_milli = line.qty_milli.saturating_add(step);
@@ -1273,15 +1647,18 @@ impl Cart {
             let mut line = CartLine {
                 product_id: product.id.clone(),
                 name: product.name.clone(),
-                unit_price: product.price,
+                unit_price,
                 qty: 0,
                 qty_milli: step,
                 unit_label: product.unit_label.clone(),
                 note: String::new(),
-                base_unit_paise: product.price.paise(),
+                base_unit_paise: unit_price.paise(),
                 applied_modifiers: Vec::new(),
                 modifier_page: 0,
                 line_total_override: None,
+                running_line_id: String::new(),
+                complimentary: false,
+                kot_id: String::new(),
             };
             line.sync_qty_from_milli();
             self.lines.push(line);
@@ -1301,11 +1678,27 @@ impl Cart {
     /// silent [`Cart::add_or_bump`] let a seller build a cart that could only
     /// fail at the till.
     pub fn add_or_bump_in_stock(&mut self, product: &Product) -> Result<(), String> {
+        self.add_in_area_in_stock(product, "")
+    }
+
+    /// Add one at the table's area price, refusing what the shop cannot
+    /// serve.
+    pub fn add_in_area_in_stock(&mut self, product: &Product, area: &str) -> Result<(), String> {
+        let unit_price = product.price_in_area(area);
+        self.check_can_add(product, unit_price)?;
+        self.add_priced(product, unit_price);
+        Ok(())
+    }
+
+    fn check_can_add(&self, product: &Product, unit_price: Money) -> Result<(), String> {
         if !product.available || product.archived {
             return Err(format!("{} is marked sold out", product.name));
         }
-        if product.price.paise() <= 0 {
-            return Err(format!("{} has no price yet", product.name));
+        if unit_price.paise() < 0 {
+            return Err(format!(
+                "{} has a negative price — fix it in Menu & items",
+                product.name
+            ));
         }
         if !product.in_stock() {
             return Err(format!("{} is out of stock", product.name));
@@ -1316,12 +1709,12 @@ impl Cart {
                 product.stock_qty, product.name
             ));
         }
-        self.add_or_bump(product);
         Ok(())
     }
 
     pub fn bump_qty(&mut self, index: usize, delta: i64) {
-        if let Some(line) = self.lines.get_mut(index) {
+        // A sent line changes only through a reasoned cancel (store).
+        if let Some(line) = self.lines.get_mut(index).filter(|l| !l.is_sent()) {
             self.charge_total = None;
             line.line_total_override = None;
             let step = line.bump_step_milli().saturating_mul(delta);
@@ -1335,7 +1728,7 @@ impl Cart {
 
     /// Set absolute milli-qty for a line (e.g. typed weight).
     pub fn set_qty_milli(&mut self, index: usize, qty_milli: i64) {
-        if let Some(line) = self.lines.get_mut(index) {
+        if let Some(line) = self.lines.get_mut(index).filter(|l| !l.is_sent()) {
             self.charge_total = None;
             line.line_total_override = None;
             line.qty_milli = qty_milli.max(0);
@@ -1348,8 +1741,8 @@ impl Cart {
 
     /// Edit unit price for this open cart only — does not change the catalogue.
     pub fn set_unit_price(&mut self, index: usize, unit_price: Money) -> Result<(), String> {
-        if unit_price.paise() <= 0 {
-            return Err("Unit price must be > 0".into());
+        if unit_price.paise() < 0 {
+            return Err("Unit price cannot be negative".into());
         }
         let line = self
             .lines
@@ -1392,8 +1785,8 @@ impl Cart {
             line.applied_modifiers.retain(|m| m.name != modifier.name);
         }
         line.reprice_from_modifiers();
-        if line.unit_price.paise() <= 0 {
-            return Err("Unit price must be > 0".into());
+        if line.unit_price.paise() < 0 {
+            return Err("Unit price cannot be negative".into());
         }
         line.line_total_override = None;
         self.charge_total = None;
@@ -1411,8 +1804,8 @@ impl Cart {
     /// Set Applied line total. Does **not** change `@` unit price.
     /// Clears the override when Applied equals Actual (`unit × qty`).
     pub fn set_line_total(&mut self, index: usize, total: Money) -> Result<(), String> {
-        if total.paise() <= 0 {
-            return Err("Line Applied Total must be > 0".into());
+        if total.paise() < 0 {
+            return Err("Line Applied Total cannot be negative".into());
         }
         let line = self
             .lines
@@ -1465,11 +1858,29 @@ impl Cart {
             .fold(Money(0), |acc, line| acc.saturating_add(line.actual_total()))
     }
 
-    /// Applied Total: sum of each line's Applied amount.
+    /// Applied Total: sum of each line's Applied amount, less the bill
+    /// discount.
     pub fn applied_total(&self) -> Money {
+        Money(self.lines_applied_paise() - self.discount_paise())
+    }
+
+    /// Sum of the lines' Applied amounts before any bill discount.
+    pub fn lines_applied_paise(&self) -> i64 {
         self.lines
             .iter()
             .fold(Money(0), |acc, line| acc.saturating_add(line.applied_total()))
+            .paise()
+    }
+
+    /// The bill discount in money (never more than the bill).
+    pub fn discount_paise(&self) -> i64 {
+        let base = self.lines_applied_paise().max(0);
+        match self.discount.as_ref().map(|d| d.kind) {
+            None => 0,
+            // Half-up rounding to the paisa.
+            Some(DiscountKind::Percent(bps)) => ((base as i128 * bps as i128 + 5_000) / 10_000) as i64,
+            Some(DiscountKind::Amount(paise)) => paise.min(base),
+        }
     }
 
     /// Alias used by older call sites.
@@ -1533,6 +1944,9 @@ impl Cart {
                         applied_modifiers: Vec::new(),
                         modifier_page: 0,
                         line_total_override: override_total,
+                        running_line_id: String::new(),
+                        complimentary: false,
+                        kot_id: String::new(),
                     };
                     line.sync_qty_from_milli();
                     line
@@ -1540,6 +1954,9 @@ impl Cart {
                 .collect(),
             charge_total: None,
             money_lane: MoneyLane::parse(&sale.money_lane),
+            discount: None,
+            // Kept on the sale's own delivery record; amending leaves it be.
+            delivery_by: String::new(),
         };
         if sale.rounding_paise != 0 {
             cart.charge_total = Some(Money(sale.total_paise));
@@ -1552,6 +1969,57 @@ impl Cart {
     /// Line unit prices and totals stay as the seller set them on the cart.
     /// Any bill-level round/override becomes an explicit `rounding_paise`
     /// so accounts can reconcile: `lines_total + rounding = total`.
+    /// The lines not yet sent to the kitchen, as a draft for the next KOT.
+    /// Unlike a bill, a KOT may be all ₹0 (complimentary water is still
+    /// cooked/served), so only "nothing new" is refused.
+    pub fn to_kot_draft(&self) -> Result<SaleDraft, String> {
+        let lines: Vec<SaleLine> = self
+            .lines
+            .iter()
+            .filter(|l| !l.is_sent() && l.qty_milli > 0)
+            .map(|l| SaleLine {
+                product_id: l.product_id.clone(),
+                name: l.name.clone(),
+                unit_price_paise: l.unit_price.paise(),
+                qty: l.qty,
+                line_total_paise: l.applied_total().paise(),
+                note: l.kitchen_note(),
+                qty_milli: l.qty_milli,
+                unit_label: l.unit_label.clone(),
+                kot_sent: false,
+            })
+            .collect();
+        if lines.is_empty() {
+            return Err("Nothing new to send — tap items first".into());
+        }
+        let total: i64 = lines.iter().map(|l| l.line_total_paise).sum();
+        Ok(SaleDraft {
+            lines,
+            lines_total_paise: total,
+            rounding_paise: 0,
+            total_paise: total,
+            tax_paise: 0,
+            order_type: self.order_type,
+            money_lane: self.money_lane,
+            user_at: None,
+            extras_json: "[]".into(),
+            delivery_by: self.delivery_by.trim().to_string(),
+            notify_phone: String::new(),
+            discount_paise: 0,
+            discount_reason: String::new(),
+            discount_approval_pin: String::new(),
+        })
+    }
+
+    /// Mark the cart's new lines as sent with no running order behind them
+    /// (a counter KOT before payment): the kitchen has them, so finalize must
+    /// not fire them again.
+    pub fn mark_new_lines_sent(&mut self, marker: &str) {
+        for line in self.lines.iter_mut().filter(|l| !l.is_sent()) {
+            line.running_line_id = marker.to_string();
+        }
+    }
+
     pub fn to_sale_draft(&self) -> Result<SaleDraft, String> {
         if self.lines.is_empty() {
             return Err("Cart is empty".into());
@@ -1583,9 +2051,33 @@ impl Cart {
                     note: l.kitchen_note(),
                     qty_milli: milli,
                     unit_label: l.unit_label.clone(),
+                    kot_sent: l.is_sent(),
                 }
             })
             .collect();
+        // The bill discount comes off each line in proportion, so tax (by
+        // line) is on what is really charged; the last charged line takes
+        // the rounding remainder so the lines still add up exactly.
+        let mut lines = lines;
+        let discount = self.discount_paise();
+        if discount > 0 {
+            let base = self.lines_applied_paise();
+            let mut left = discount;
+            let last = lines.iter().rposition(|l| l.line_total_paise > 0);
+            for (i, line) in lines.iter_mut().enumerate() {
+                if line.line_total_paise <= 0 {
+                    continue;
+                }
+                let share = if Some(i) == last {
+                    left
+                } else {
+                    (discount as i128 * line.line_total_paise as i128 / base as i128) as i64
+                };
+                let share = share.min(line.line_total_paise).min(left);
+                line.line_total_paise -= share;
+                left -= share;
+            }
+        }
         // Applied line totals must sum to lines_total; unit prices stay true.
         debug_assert_eq!(
             lines.iter().map(|l| l.line_total_paise).sum::<i64>(),
@@ -1605,7 +2097,15 @@ impl Cart {
             money_lane: self.money_lane,
             user_at: None,
             extras_json: "[]".into(),
+            delivery_by: self.delivery_by.trim().to_string(),
             notify_phone: String::new(),
+            discount_paise: discount,
+            discount_reason: self.discount.as_ref().map(|d| d.reason.clone()).unwrap_or_default(),
+            discount_approval_pin: self
+                .discount
+                .as_ref()
+                .map(|d| d.approval_pin.clone())
+                .unwrap_or_default(),
         })
     }
 }
@@ -1626,6 +2126,10 @@ pub struct SaleLine {
     /// Unit label frozen at sale time (`kg`, empty = piece).
     #[serde(default)]
     pub unit_label: String,
+    /// Already sent to the kitchen (on the table's running order) — finalize
+    /// must not fire a second KOT for it.
+    #[serde(default)]
+    pub kot_sent: bool,
 }
 
 /// Snapshot ready to persist. Prior snapshots stay in revision history;
@@ -1662,6 +2166,18 @@ pub struct SaleDraft {
     /// Optional phone for order alert outbox.
     #[serde(default)]
     pub notify_phone: String,
+    /// Bill discount already taken off the lines (paise), and why.
+    #[serde(default)]
+    pub discount_paise: i64,
+    #[serde(default)]
+    pub discount_reason: String,
+    /// Manager PIN for a discount needing approval — checked by the Server
+    /// at finalize, never stored.
+    #[serde(default)]
+    pub discount_approval_pin: String,
+    /// Delivery orders: who takes it out.
+    #[serde(default)]
+    pub delivery_by: String,
 }
 
 impl SaleDraft {
@@ -2141,7 +2657,15 @@ pub enum TableStatus {
     /// Guests are done; the counter has been asked for the bill.
     /// The table is released only when payment is recorded.
     PaymentPending,
+    /// Paid; guests leaving, table to be cleared. Never blocks: "Table
+    /// ready" frees it, seating new guests starts fresh, and it clears by
+    /// itself after [`PAID_TABLE_CLEARS_AFTER_MIN`] minutes.
+    Paid,
 }
+
+/// Minutes a paid table shows "Paid — clear the table" before it reads as
+/// free again on its own.
+pub const PAID_TABLE_CLEARS_AFTER_MIN: i64 = 15;
 
 impl TableStatus {
     pub fn as_str(self) -> &'static str {
@@ -2149,6 +2673,7 @@ impl TableStatus {
             Self::Available => "available",
             Self::Occupied => "occupied",
             Self::PaymentPending => "payment_pending",
+            Self::Paid => "paid",
         }
     }
 
@@ -2156,6 +2681,7 @@ impl TableStatus {
         match s {
             "occupied" => Self::Occupied,
             "payment_pending" => Self::PaymentPending,
+            "paid" => Self::Paid,
             _ => Self::Available,
         }
     }
@@ -2166,10 +2692,12 @@ impl TableStatus {
             Self::Available => "Free",
             Self::Occupied => "Running",
             Self::PaymentPending => "Payment pending",
+            Self::Paid => "Paid",
         }
     }
 
-    /// Seated with an open bill (running or waiting to pay).
+    /// Seated with an open bill (running or waiting to pay). A paid table
+    /// is not open: it never blocks seating new guests.
     pub fn is_open(self) -> bool {
         matches!(self, Self::Occupied | Self::PaymentPending)
     }
@@ -2187,6 +2715,84 @@ pub struct DiningTable {
     /// Open-bill amount sent for this seating (paise), for the floor card.
     #[serde(default)]
     pub running_total_paise: i64,
+    /// When the last bill on this table was paid (RFC3339; empty if not).
+    #[serde(default)]
+    pub paid_at: String,
+    /// Where the visit stands, worked out on the Server from the table, its
+    /// order and its kitchen tickets — every device shows the same.
+    #[serde(default)]
+    pub floor_state: FloorState,
+    /// Floor area this table sits in ("Dine In", "Parcel", "AC" …). Empty =
+    /// the floor's unnamed area.
+    #[serde(default)]
+    pub area: String,
+}
+
+/// A table's place in the guests' visit, as the floor shows it (learned from
+/// how the best restaurant systems colour their floor): free → food in the
+/// kitchen → food ready → eating → bill printed → paid → free.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum FloorState {
+    #[default]
+    Free,
+    /// KOTs being prepared.
+    InKitchen,
+    /// Every open KOT is Ready — serve it.
+    FoodReady,
+    /// Food served (no open KOTs); the guests are eating.
+    Eating,
+    /// Bill printed or requested; waiting for payment.
+    BillPrinted,
+    /// Paid; clear the table.
+    Paid,
+}
+
+impl FloorState {
+    /// Work out the visit's state from the table and its open KOTs
+    /// (statuses of food tickets only — cancel slips do not count).
+    pub fn derive(status: TableStatus, open_kot_statuses: &[KotStatus]) -> Self {
+        match status {
+            TableStatus::Available => Self::Free,
+            TableStatus::Paid => Self::Paid,
+            TableStatus::PaymentPending => Self::BillPrinted,
+            TableStatus::Occupied => {
+                let cooking: Vec<_> = open_kot_statuses
+                    .iter()
+                    .filter(|s| !matches!(s, KotStatus::Completed | KotStatus::Cancelled))
+                    .collect();
+                if cooking.is_empty() {
+                    Self::Eating
+                } else if cooking.iter().all(|s| **s == KotStatus::Ready) {
+                    Self::FoodReady
+                } else {
+                    Self::InKitchen
+                }
+            }
+        }
+    }
+
+
+    /// Short words for a floor tile and the colour key (the tile's colour
+    /// carries the rest; colours live in the floor's own design).
+    pub fn tile_key(self) -> &'static str {
+        match self {
+            Self::Free => "tile_free",
+            Self::InKitchen => "floor_in_kitchen",
+            Self::FoodReady => "tile_food_ready",
+            Self::Eating => "floor_eating",
+            Self::BillPrinted => "tile_bill_printed",
+            Self::Paid => "tile_paid",
+        }
+    }
+
+    pub const ALL: [FloorState; 6] = [
+        Self::Free,
+        Self::InKitchen,
+        Self::FoodReady,
+        Self::Eating,
+        Self::BillPrinted,
+        Self::Paid,
+    ];
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -2249,6 +2855,171 @@ pub struct KotTicket {
     /// Station display name resolved for the KDS (empty when unassigned).
     #[serde(default)]
     pub station_name: String,
+    /// Today's ticket number (the kitchen calls tickets by number).
+    #[serde(default)]
+    pub kot_no: i64,
+    /// `kot` (cook this) or `cancel` (stop this — a cancellation slip).
+    #[serde(default)]
+    pub kind: String,
+    /// Who sent it (waiter / cashier name).
+    #[serde(default)]
+    pub created_by: String,
+}
+
+impl KotTicket {
+    pub fn is_cancel(&self) -> bool {
+        self.kind == "cancel"
+    }
+}
+
+/// Where a table's open order stands (vision `BUSINESS_BOOKS.md` § Open
+/// orders are not books yet).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum RunningOrderStatus {
+    /// Items going to the kitchen; more can be added.
+    #[default]
+    Running,
+    /// The bill was printed for the guests; still open until settled.
+    Printed,
+    /// Paid — closed by a sale.
+    Settled,
+    /// Folded into another table's order (merge).
+    Merged,
+}
+
+impl RunningOrderStatus {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Running => "running",
+            Self::Printed => "printed",
+            Self::Settled => "settled",
+            Self::Merged => "merged",
+        }
+    }
+
+    pub fn parse(s: &str) -> Self {
+        match s {
+            "printed" => Self::Printed,
+            "settled" => Self::Settled,
+            "merged" => Self::Merged,
+            _ => Self::Running,
+        }
+    }
+
+    pub fn is_open(self) -> bool {
+        matches!(self, Self::Running | Self::Printed)
+    }
+}
+
+/// One line of a table's open order: what the kitchen was told, kept even
+/// when cancelled or given free (vision §18).
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+pub struct RunningLine {
+    pub id: String,
+    pub order_id: String,
+    /// KOT that carried this line to the kitchen.
+    pub kot_id: String,
+    pub product_id: String,
+    pub name: String,
+    pub unit_price_paise: i64,
+    pub qty_milli: i64,
+    #[serde(default)]
+    pub unit_label: String,
+    #[serde(default)]
+    pub note: String,
+    /// Cancelled after the KOT: not billed, never deleted.
+    #[serde(default)]
+    pub cancelled: bool,
+    /// Complimentary (NC): billed ₹0, real value kept for reports.
+    #[serde(default)]
+    pub complimentary: bool,
+    /// Why it was cancelled / given free.
+    #[serde(default)]
+    pub reason: String,
+    /// Cancelled after the kitchen had cooked it (wastage) vs before.
+    #[serde(default)]
+    pub prepared: bool,
+    /// Who changed it (cancel / NC) and who approved, by name.
+    #[serde(default)]
+    pub changed_by: String,
+    #[serde(default)]
+    pub approved_by: String,
+    pub created_at: String,
+    #[serde(default)]
+    pub created_by: String,
+}
+
+impl RunningLine {
+    /// Value at the menu price — what the line would cost if charged.
+    pub fn value_paise(&self) -> i64 {
+        Money(self.unit_price_paise).saturating_mul_milli(self.qty_milli).paise()
+    }
+
+    /// What this line adds to the bill: ₹0 when cancelled or complimentary.
+    pub fn billed_paise(&self) -> i64 {
+        if self.cancelled || self.complimentary {
+            0
+        } else {
+            self.value_paise()
+        }
+    }
+
+    pub fn is_live(&self) -> bool {
+        !self.cancelled
+    }
+}
+
+/// A table's open order between KOTs and payment. One per seating.
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+pub struct RunningOrder {
+    pub id: String,
+    pub table_id: String,
+    pub status: RunningOrderStatus,
+    pub opened_at: String,
+    #[serde(default)]
+    pub opened_by: String,
+    #[serde(default)]
+    pub printed_at: String,
+    #[serde(default)]
+    pub lines: Vec<RunningLine>,
+}
+
+impl RunningOrder {
+    pub fn live_lines(&self) -> impl Iterator<Item = &RunningLine> {
+        self.lines.iter().filter(|l| l.is_live())
+    }
+
+    /// Running amount for the floor card and the bill.
+    pub fn total_paise(&self) -> i64 {
+        self.lines.iter().map(RunningLine::billed_paise).sum()
+    }
+
+    /// The order as cart lines to bill: every live line, marked sent, NC at
+    /// ₹0. Cancelled lines stay on the order, off the bill.
+    pub fn to_cart_lines(&self) -> Vec<CartLine> {
+        self.live_lines()
+            .map(|l| {
+                let mut line = CartLine {
+                    product_id: l.product_id.clone(),
+                    name: l.name.clone(),
+                    unit_price: Money(l.unit_price_paise),
+                    qty: 0,
+                    qty_milli: l.qty_milli,
+                    unit_label: l.unit_label.clone(),
+                    note: l.note.clone(),
+                    base_unit_paise: l.unit_price_paise,
+                    applied_modifiers: Vec::new(),
+                    modifier_page: 0,
+                    line_total_override: None,
+                    running_line_id: l.id.clone(),
+                    complimentary: l.complimentary,
+                    kot_id: l.kot_id.clone(),
+                };
+                line.sync_qty_from_milli();
+                line
+            })
+            .collect()
+    }
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -2420,6 +3191,32 @@ mod tests {
 
     fn tea() -> Product {
         Product::new_basic("tea", "Tea", Money::from_rupees(13))
+    }
+
+    /// ₹0 is a real menu price (complimentary items, price-at-counter dishes);
+    /// only a negative price is refused. The till agrees with the form.
+    #[test]
+    fn menu_items_may_be_free_but_never_negative() {
+        assert_eq!(menu_price_error(Money::from_rupees(13)), None);
+        assert_eq!(menu_price_error(Money(0)), None);
+        let negative = menu_price_error(Money(-500)).expect("negative is refused");
+        assert!(negative.contains("negative"), "{negative}");
+        // A ₹0 item goes on the bill, and its @ can still be set at the counter.
+        let mut cart = Cart::default();
+        let free = Product::new_basic("free", "Water", Money(0));
+        cart.add_or_bump_in_stock(&free).expect("₹0 item is billable");
+        assert_eq!(cart.lines.len(), 1);
+        assert_eq!(cart.applied_total(), Money(0));
+        cart.set_unit_price(0, Money::from_rupees(20)).unwrap();
+        assert_eq!(cart.applied_total(), Money::from_rupees(20));
+        assert!(cart.set_unit_price(0, Money(-1)).is_err());
+        // Free line next to a paid one: the bill is the paid part.
+        let mut cart = Cart::default();
+        cart.add_or_bump_in_stock(&free).unwrap();
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        let draft = cart.to_sale_draft().expect("bill with a free line");
+        assert_eq!(draft.total_paise, Money::from_rupees(13).paise());
+        assert_eq!(draft.lines[0].line_total_paise, 0);
     }
 
     #[test]

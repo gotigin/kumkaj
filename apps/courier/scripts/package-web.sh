@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Copy website to dist/web for static hosting (Play Store companion / marketing).
+# Copy Kumkaj Courier's website (web/, https://kumkaj.com) to dist/web for
+# static hosting (Play Store companion / marketing).
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 OUT="$ROOT/dist/web"
 mkdir -p "$OUT"
 cp -f "$ROOT/web/index.html" "$OUT/index.html"

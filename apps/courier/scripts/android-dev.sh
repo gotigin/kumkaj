@@ -8,9 +8,9 @@ ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"
 export KUMKAJ_APP_DIR="$ROOT/apps/courier"
 export KUMKAJ_ENV_DIR="$KUMKAJ_APP_DIR/env"
-# shellcheck source=load-kumkaj-env.sh
+# shellcheck source=../../../scripts/load-kumkaj-env.sh
 source "$ROOT/scripts/load-kumkaj-env.sh"
-# shellcheck source=android-env.sh
+# shellcheck source=../../../scripts/android-env.sh
 source "$ROOT/scripts/android-env.sh"
 
 export KUMKAJ_ROOT="$ROOT"

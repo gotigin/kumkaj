@@ -5,13 +5,13 @@
 # Usage:
 #   ./uninstall.sh
 #   ~/.local/lib/kumkaj-courier/uninstall.sh
-#   ./scripts/uninstall-linux.sh [--prod|--dev]
+#   ./apps/courier/scripts/uninstall-linux.sh [--prod|--dev]
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 IDS="$SCRIPT_DIR/desktop-ids.sh"
-[[ -f "$IDS" ]] || IDS="$(cd "$SCRIPT_DIR/.." && pwd)/scripts/desktop-ids.sh"
+# (In the repo, desktop-ids.sh sits beside this script too.)
 # shellcheck source=desktop-ids.sh
 source "$IDS"
 

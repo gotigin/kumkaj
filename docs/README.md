@@ -55,7 +55,7 @@ Offline use is free forever on the device. Extra tills are optional LAN joins. C
 - Tables & kitchen (tables, KOT) belong to Khaynjo (restaurant OS) — not shipped in Kumkaj Courier
 - Categories, named tax rates, modifiers on rates/items; Inventory & purchases when needed
 - Parties: identity is UUID (names are aliases and may repeat) — [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md); roles (Consignor / Carrier / …) may combine on one id; AR and AP stay separate with a net “who owes whom” view — [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)
-- Organization + branches with snapshot export/import and consolidated reports
+- Each branch is its own business: one local server (books) per branch, compared through exported snapshots (vision §5)
 - A write-only sync outbox records each sale for a future Kumkaj Cloud drain; nothing reads that queue yet. Cloud syncs the shop books — extra tills are not a different cloud product.
 - Books rows keep three clocks: user/business time, device write time, and cloud accept time (empty until synced) — see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 

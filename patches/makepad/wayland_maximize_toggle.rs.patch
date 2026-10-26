@@ -1,0 +1,613 @@
+--- a/platform/src/event/event.rs
++++ b/platform/src/event/event.rs
+@@ -160,6 +160,10 @@
+     WindowClosed(WindowClosedEvent),
+     PopupDismissed(PopupDismissedEvent),
+     WindowGeomChange(WindowGeomChangeEvent),
++    /// Caption-bar double-click (CSD): same maximize/restore toggle as the max button.
++    /// Wayland emits this instead of toggling in the compositor path so chrome latch,
++    /// restore size, and Mutter float-guard stay in one place (`Window::toggle_chrome_maximize`).
++    WindowChromeMaximizeToggle(WindowId),
+     VirtualKeyboard(VirtualKeyboardEvent),
+     ClearAtlasses,
+     /// Clear all hover/pressed visual state, e.g. after an overlay that
+@@ -301,6 +305,7 @@
+             15 => "WindowCloseRequested",
+             16 => "WindowClosed",
+             17 => "WindowGeomChange",
++            73 => "WindowChromeMaximizeToggle",
+             18 => "VirtualKeyboard",
+             19 => "ClearAtlasses",
+             72 => "ClearHover",
+@@ -391,6 +396,7 @@
+             Self::WindowCloseRequested(_) => 15,
+             Self::WindowClosed(_) => 16,
+             Self::WindowGeomChange(_) => 17,
++            Self::WindowChromeMaximizeToggle(_) => 73,
+             Self::VirtualKeyboard(_) => 18,
+             Self::ClearAtlasses => 19,
+             Self::ClearHover => 72,
+--- a/platform/src/os/linux/x11/xlib_event.rs
++++ b/platform/src/os/linux/x11/xlib_event.rs
+@@ -22,6 +22,8 @@
+     Scroll(ScrollEvent),
+ 
+     WindowDragQuery(WindowDragQueryEvent),
++    /// Caption double-click → widget maximize toggle (Wayland CSD).
++    ChromeMaximizeToggle(WindowId),
+     WindowCloseRequested(WindowCloseRequestedEvent),
+     TextInput(TextInputEvent),
+     Drag(WindowId, DragEvent),
+--- a/platform/src/os/linux/x11/linux_x11.rs
++++ b/platform/src/os/linux/x11/linux_x11.rs
+@@ -284,6 +284,11 @@
+                 cx.dpi_override_scale(&mut e.abs, e.window_id);
+                 cx.call_event_handler(&Event::WindowDragQuery(e))
+             }
++            XlibEvent::ChromeMaximizeToggle(window_id) => {
++                // Wayland CSD caption double-click; unused on X11 (WM handles HTCAPTION).
++                let mut cx = self.cx.borrow_mut();
++                cx.call_event_handler(&Event::WindowChromeMaximizeToggle(window_id));
++            }
+             XlibEvent::WindowCloseRequested(e) => {
+                 let mut cx = self.cx.borrow_mut();
+                 cx.call_event_handler(&Event::WindowCloseRequested(e))
+--- a/platform/src/os/linux/wayland/linux_wayland.rs
++++ b/platform/src/os/linux/wayland/linux_wayland.rs
+@@ -367,6 +367,10 @@
+                 cx.dpi_override_scale(&mut e.abs, e.window_id);
+                 cx.call_event_handler(&Event::WindowDragQuery(e))
+             }
++            XlibEvent::ChromeMaximizeToggle(window_id) => {
++                let mut cx = self.cx.borrow_mut();
++                cx.call_event_handler(&Event::WindowChromeMaximizeToggle(window_id));
++            }
+             XlibEvent::WindowCloseRequested(e) => {
+                 let window_id = e.window_id;
+                 let accept_close = e.accept_close.clone();
+@@ -750,19 +754,117 @@
+                 CxOsOp::HideWindowButtons(_) => {}
+                 CxOsOp::ShowWindowButtons(_) => {}
+                 CxOsOp::MaximizeWindow(window_id) => {
+-                    if let Some(window) = state.windows.iter().find(|w| w.window_id == window_id) {
+-                        window.toplevel.set_maximized();
++                    // Maximize only. Toggle lives in the Window widget.
++                    // Never call set_maximized while the compositor still has
++                    // maximized/fullscreen in configure states — on GNOME/Mutter
++                    // a second set_maximized often jumps toward another monitor
++                    // and then leaves maximize dead.
++                    if let Some(window) =
++                        state.windows.iter_mut().find(|w| w.window_id == window_id)
++                    {
++                        if window.compositor_maximized {
++                            crate::log!(
++                                "MaximizeWindow skipped: compositor already maximized \
++                                 (size {:?}) — would fight multi-monitor Mutter",
++                                window.window_geom.inner_size
++                            );
++                            window.client_maximized = true;
++                            window.window_geom.is_fullscreen = true;
++                            cx.windows[window_id].window_geom.is_fullscreen = true;
++                        } else {
++                            // Abandon in-flight restore pin — user asked to maximize.
++                            // Deferring left chrome_maximized=true with a floating
++                            // window (works / not / works flicker in the logs).
++                            if window.pending_restore_size.is_some() {
++                                crate::log!(
++                                    "MaximizeWindow: clearing in-flight restore pending={:?}",
++                                    window.pending_restore_size.map(|s| (s.x, s.y))
++                                );
++                            }
++                            window.pending_restore_size = None;
++                            window.float_guard_until = 0.0;
++                            window.float_guard_size = None;
++                            let cur = window.window_geom.inner_size;
++                            if cur.x >= 320.0 && cur.y >= 240.0 {
++                                // Do not remember a near-fullscreen extent as the
++                                // floating restore size (persisted max sizes, failed
++                                // restores). Prefer a conventional desktop size.
++                                let looks_monitor =
++                                    cur.x >= 1920.0 && cur.y >= 900.0;
++                                window.restore_inner_size = Some(if looks_monitor {
++                                    dvec2(1024.0, 768.0)
++                                } else {
++                                    cur
++                                });
++                            }
++                            crate::log!(
++                                "MaximizeWindow set_maximized from {:?} restore_as={:?}",
++                                cur,
++                                window.restore_inner_size.map(|s| (s.x, s.y))
++                            );
++                            window.toplevel.set_maximized();
++                            window.client_maximized = true;
++                            window.window_geom.is_fullscreen = true;
++                            cx.windows[window_id].window_geom.is_fullscreen = true;
++                        }
+                     }
+                 }
+                 CxOsOp::FullscreenWindow(window_id) => {
+-                    if let Some(window) = state.windows.iter().find(|w| w.window_id == window_id) {
++                    if let Some(window) =
++                        state.windows.iter_mut().find(|w| w.window_id == window_id)
++                    {
++                        let cur = window.window_geom.inner_size;
++                        if cur.x >= 320.0 && cur.y >= 240.0 {
++                            window.restore_inner_size = Some(cur);
++                        }
++                        window.pending_restore_size = None;
+                         window.toplevel.set_fullscreen(None);
++                        window.client_maximized = true;
++                        window.window_geom.is_fullscreen = true;
++                        cx.windows[window_id].window_geom.is_fullscreen = true;
+                     }
+                 }
+                 CxOsOp::RestoreWindow(window_id) | CxOsOp::NormalizeWindow(window_id) => {
+-                    if let Some(window) = state.windows.iter().find(|w| w.window_id == window_id) {
++                    let guard_until = state.time_now() + 2.0;
++                    if let Some(window) =
++                        state.windows.iter_mut().find(|w| w.window_id == window_id)
++                    {
+                         window.toplevel.unset_maximized();
+                         window.toplevel.unset_fullscreen();
++                        window.client_maximized = false;
++                        window.window_geom.is_fullscreen = false;
++                        // Wayland floating size = whatever we commit next. Without
++                        // an explicit shrink, the surface stays fullscreen-sized.
++                        // Hold the size across later configures that still report
++                        // the maximized extent after unset_maximized.
++                        const DEFAULT: Vec2d = dvec2(1024.0, 768.0);
++                        let size = window
++                            .restore_inner_size
++                            .take()
++                            .filter(|s| s.x >= 320.0 && s.y >= 240.0)
++                            // Reject near-monitor sizes saved from a previous max.
++                            .filter(|s| !(s.x >= 1920.0 && s.y >= 900.0))
++                            .unwrap_or(DEFAULT);
++                        crate::log!(
++                            "RestoreWindow unset_maximized → {:?} (compositor_maximized was {})",
++                            (size.x, size.y),
++                            window.compositor_maximized
++                        );
++                        window.pending_restore_size = Some(size);
++                        // Mutter follows a correct float configure with another at the
++                        // old max extent (maximized=false). Guard ~2s against that.
++                        window.float_guard_size = Some(size);
++                        window.float_guard_until = guard_until;
++                        window.window_geom.inner_size = size;
++                        window.window_geom.outer_size = size;
++                        let native_geom = window.window_geom.clone();
++                        let cx_window = &mut cx.windows[window_id];
++                        cx_window.os_dpi_factor = Some(native_geom.dpi_factor);
++                        let layout_geom = cx_window.native_window_geom_to_layout(native_geom);
++                        cx_window.window_geom = layout_geom;
++                        if let Some(main_pass_id) = cx_window.main_pass_id {
++                            cx.redraw_pass_and_child_passes(main_pass_id);
++                        }
+                     }
+                 }
+                 CxOsOp::ResizeWindow(window_id, size) => {
+@@ -795,6 +897,11 @@
+                             // requested size is the surface extent as-is.
+                             window.window_geom.inner_size = size;
+                             window.window_geom.outer_size = size;
++                            // Widget restore follows RestoreWindow with ResizeWindow; refresh
++                            // the pin if a restore is in flight (do not pin ordinary resizes).
++                            if window.pending_restore_size.is_some() {
++                                window.pending_restore_size = Some(size);
++                            }
+                             let native_geom = window.window_geom.clone();
+                             let cx_window = &mut cx.windows[window_id];
+                             cx_window.os_dpi_factor = Some(native_geom.dpi_factor);
+--- a/platform/src/os/linux/wayland/opengl_wayland.rs
++++ b/platform/src/os/linux/wayland/opengl_wayland.rs
+@@ -52,6 +52,26 @@
+     pub fractional_scale: Option<wp_fractional_scale_v1::WpFractionalScaleV1>,
+     pub configured: bool,
+     pub window_geom: WindowGeom,
++    /// Client chrome wants maximized (max button / caption double-click).
++    /// Kept even if the compositor omits maximized from configure `states`.
++    pub client_maximized: bool,
++    /// Last configure `states` included maximized or fullscreen. Updated only
++    /// from the compositor — never optimistically. A second `set_maximized`
++    /// while this is true makes Mutter try another output on multi-monitor.
++    pub compositor_maximized: bool,
++    /// Floating size to re-apply after unset_maximized (Wayland will not
++    /// shrink the surface for us if we keep committing a fullscreen extent).
++    pub restore_inner_size: Option<Vec2d>,
++    /// While set, floating configures must keep this size. Compositors often
++    /// ack unset_maximized with the previous fullscreen extent; without this
++    /// the surface never shrinks.
++    pub pending_restore_size: Option<Vec2d>,
++    /// After restore, Mutter often follows a correct 1024×768 configure with a
++    /// second floating configure at the old maximized extent (2560×1048) with
++    /// maximized=false. Keep rejecting those until this time (WaylandState::time_now).
++    pub float_guard_until: f64,
++    /// Size to force while `float_guard_until` is active.
++    pub float_guard_size: Option<Vec2d>,
+     pub cal_size: Vec2d,
+     pub wl_egl_surface: WlEglSurface,
+     pub egl_surface: EGLSurface,
+@@ -162,6 +182,12 @@
+             window_id,
+             cal_size: Vec2d::default(),
+             window_geom: geom,
++            client_maximized: is_fullscreen,
++            compositor_maximized: false,
++            restore_inner_size: None,
++            pending_restore_size: None,
++            float_guard_until: 0.0,
++            float_guard_size: None,
+             wl_egl_surface,
+             egl_surface,
+         }
+--- a/platform/src/os/linux/wayland/wayland_state.rs
++++ b/platform/src/os/linux/wayland/wayland_state.rs
+@@ -100,6 +100,14 @@
+     pub(crate) cursor_shape: Option<wp_cursor_shape_device_v1::WpCursorShapeDeviceV1>,
+     pub(crate) pointer: Option<wl_pointer::WlPointer>,
+     pub(crate) last_mouse_pos: Vec2d,
++    /// Last caption-bar primary press (for double-click maximize, like X11 CSD).
++    /// `(time_now, root/client abs pos, window_id)`.
++    pub(crate) last_caption_click: Option<(f64, Vec2d, WindowId)>,
++    /// Caption press that has not yet become a drag. `_move` needs the button
++    /// serial, but starting move on the first press breaks double-click maximize.
++    /// Start move only after the pointer travels past a small threshold.
++    /// `(serial, window_id, press_pos)`.
++    pub(crate) pending_caption_move: Option<(u32, WindowId, Vec2d)>,
+     pub(crate) pointer_serial: Option<u32>,
+     pub(crate) keyboard_serial: Option<u32>,
+     pub(crate) decoration_manager: Option<zxdg_decoration_manager_v1::ZxdgDecorationManagerV1>,
+@@ -210,6 +218,8 @@
+             primary_selection_source: None,
+             primary_selection_text: String::new(),
+             last_mouse_pos: dvec2(0., 0.),
++            last_caption_click: None,
++            pending_caption_move: None,
+             last_resize_edge: None,
+             timers: SelectTimers::new(),
+             event_callback: Some(event_callback),
+@@ -453,31 +463,104 @@
+                 height,
+                 states,
+             } => {
+-                if let Some(window) = state.windows.iter().find(|win| win.window_id == *window_id) {
+-                    let inner_size = if width > 0 && height > 0 {
+-                        dvec2(width as f64, height as f64)
+-                    } else {
+-                        window.window_geom.inner_size
+-                    };
+-                    let is_maximized =
+-                        WaylandState::xdg_toplevel_has_state(&states, 1 /* maximized */);
+-                    let is_fullscreen =
+-                        WaylandState::xdg_toplevel_has_state(&states, 2 /* fullscreen */);
+-                    state.do_callback(XlibEvent::WindowGeomChange(WindowGeomChangeEvent {
+-                        window_id: *window_id,
+-                        old_geom: window.window_geom.clone(),
+-                        new_geom: WindowGeom {
+-                            dpi_factor: window.window_geom.dpi_factor,
+-                            can_fullscreen: false,
+-                            xr_is_presenting: false,
+-                            is_fullscreen: is_fullscreen || is_maximized,
+-                            is_topmost: false,
+-                            position: dvec2(0., 0.),
+-                            inner_size,
+-                            outer_size: inner_size,
+-                            ..Default::default()
+-                        },
+-                    }));
++                let now = state.time_now();
++                let event = state
++                    .windows
++                    .iter_mut()
++                    .find(|win| win.window_id == *window_id)
++                    .map(|window| {
++                        let is_maximized =
++                            WaylandState::xdg_toplevel_has_state(&states, 1 /* maximized */);
++                        let is_fullscreen =
++                            WaylandState::xdg_toplevel_has_state(&states, 2 /* fullscreen */);
++                        // Track what the compositor actually reported. Clear on
++                        // floating configures so we know when a restore has stuck.
++                        window.compositor_maximized = is_maximized || is_fullscreen;
++                        // Only SET client_maximized from compositor. Never clear here.
++                        // Do not drop pending_restore_size on a maximized configure —
++                        // a stale maximized ack after unset_maximized must not cancel
++                        // the floating size we are waiting to apply.
++                        if is_maximized || is_fullscreen {
++                            window.client_maximized = true;
++                        }
++                        let restoring = window.pending_restore_size.is_some();
++                        let guard_active = now < window.float_guard_until;
++                        crate::log!(
++                            "xdg_toplevel configure {}x{} maximized={} fullscreen={} restoring={} pending={:?} guard={}",
++                            width,
++                            height,
++                            is_maximized,
++                            is_fullscreen,
++                            restoring,
++                            window.pending_restore_size.map(|s| (s.x, s.y)),
++                            guard_active
++                        );
++                        let mut inner_size = if width > 0 && height > 0 {
++                            dvec2(width as f64, height as f64)
++                        } else {
++                            window.window_geom.inner_size
++                        };
++                        let looks_monitor_fill = width >= 1920 && height >= 900;
++                        // While restoring: once the compositor drops maximized/fullscreen
++                        // from states, force the pending floating size (it may still
++                        // configure the old fullscreen extent). While states still say
++                        // maximized we must obey the configured size (xdg protocol).
++                        //
++                        // After pending clears, Mutter still sends a floating configure at
++                        // the old maximized extent (logs: 1024×768 agree, then 2560×1048
++                        // maximized=false). float_guard rejects those so the window stays
++                        // at the restore size instead of alternating works/broken.
++                        let report_fullscreen = if is_maximized || is_fullscreen {
++                            window.float_guard_until = 0.0;
++                            window.float_guard_size = None;
++                            true
++                        } else if let Some(pending) = window.pending_restore_size {
++                            let compositor_agrees = width <= 0
++                                || height <= 0
++                                || ((width as f64 - pending.x).abs() < 2.0
++                                    && (height as f64 - pending.y).abs() < 2.0);
++                            inner_size = pending;
++                            if compositor_agrees {
++                                window.pending_restore_size = None;
++                            }
++                            false
++                        } else if guard_active && looks_monitor_fill {
++                            if let Some(guard) = window.float_guard_size {
++                                crate::log!(
++                                    "xdg_toplevel ignoring post-restore monitor-fill {}x{} → keeping {:?}",
++                                    width,
++                                    height,
++                                    (guard.x, guard.y)
++                                );
++                                inner_size = guard;
++                            }
++                            false
++                        } else {
++                            if !looks_monitor_fill && width > 0 && height > 0 {
++                                // Real floating size from user/compositor — drop the guard.
++                                window.float_guard_until = 0.0;
++                                window.float_guard_size = None;
++                            }
++                            false
++                        };
++                        WindowGeomChangeEvent {
++                            window_id: *window_id,
++                            old_geom: window.window_geom.clone(),
++                            new_geom: WindowGeom {
++                                dpi_factor: window.window_geom.dpi_factor,
++                                can_fullscreen: false,
++                                xr_is_presenting: false,
++                                is_fullscreen: report_fullscreen,
++                                is_topmost: false,
++                                position: dvec2(0., 0.),
++                                inner_size,
++                                outer_size: inner_size,
++                                ..Default::default()
++                            },
++                        }
++                    });
++                if let Some(event) = event {
++                    state.do_callback(XlibEvent::WindowGeomChange(event));
+                 }
+             }
+             xdg_toplevel::Event::Close => {
+@@ -1140,6 +1223,7 @@
+                 state.flush_pending_clipboard_copy(qhandle, serial);
+                 state.pointer_window = None;
+                 state.last_resize_edge = None;
++                state.pending_caption_move = None;
+             }
+             wl_pointer::Event::Motion {
+                 time,
+@@ -1150,6 +1234,23 @@
+                     let pos = dvec2(surface_x as f64, surface_y as f64);
+                     state.last_mouse_pos = pos;
+ 
++                    // Caption press → drag: start interactive move once past threshold
++                    // (keeps the button serial valid without eating double-click).
++                    if let Some((serial, move_wid, start)) = state.pending_caption_move {
++                        if move_wid == window_id
++                            && ((pos.x - start.x).abs() > 5.0 || (pos.y - start.y).abs() > 5.0)
++                        {
++                            if let (Some(seat), Some(window)) = (
++                                state.seat.as_ref(),
++                                state.windows.iter().find(|w| w.window_id == window_id),
++                            ) {
++                                window.toplevel._move(seat, serial);
++                            }
++                            state.pending_caption_move = None;
++                            state.last_caption_click = None;
++                        }
++                    }
++
+                     // Edge-resize detection (matches X11 backend thresholds)
+                     let window_size = state
+                         .windows
+@@ -1291,16 +1392,38 @@
+                                             response.get(),
+                                             WindowDragQueryResponse::Caption
+                                         ) {
+-                                            if let (Some(seat), Some(window)) = (
+-                                                state.seat.as_ref(),
+-                                                state
+-                                                    .windows
+-                                                    .iter()
+-                                                    .find(|win| win.window_id == window_id),
+-                                            ) {
+-                                                window.toplevel._move(seat, serial);
++                                            // Double-click empty caption → same maximize
++                                            // toggle as the max button (widget path).
++                                            // Do not start xdg_toplevel.move on the first
++                                            // press — that ate the double-click and left a
++                                            // divergent compositor-only toggle.
++                                            let now = state.time_now();
++                                            let pos = state.last_mouse_pos;
++                                            let is_double = state
++                                                .last_caption_click
++                                                .map(|(t, p, wid)| {
++                                                    wid == window_id
++                                                        && (now - t) < 0.35
++                                                        && (pos.x - p.x).abs() < 5.0
++                                                        && (pos.y - p.y).abs() < 5.0
++                                                })
++                                                .unwrap_or(false);
++                                            if is_double {
++                                                state.last_caption_click = None;
++                                                state.pending_caption_move = None;
++                                                crate::log!(
++                                                    "caption double-click → ChromeMaximizeToggle"
++                                                );
++                                                state.do_callback(
++                                                    XlibEvent::ChromeMaximizeToggle(window_id),
++                                                );
+                                                 return;
+                                             }
++                                            state.last_caption_click =
++                                                Some((now, pos, window_id));
++                                            state.pending_caption_move =
++                                                Some((serial, window_id, pos));
++                                            return;
+                                         }
+                                     }
+                                 }
+@@ -1314,6 +1437,9 @@
+                                 }))
+                             }
+                             WEnum::Value(ButtonState::Released) => {
++                                // Click without drag: keep last_caption_click for
++                                // double-click; drop the deferred move serial.
++                                state.pending_caption_move = None;
+                                 state.do_callback(XlibEvent::MouseUp(MouseUpEvent {
+                                     abs: state.last_mouse_pos,
+                                     button: btn,
+--- a/widgets/src/window.rs
++++ b/widgets/src/window.rs
+@@ -416,6 +416,22 @@
+     /// lookup and `set_text` when the title is unchanged.
+     #[rust]
+     last_synced_title: Option<String>,
++    /// Client-side maximize latch for the max button (single-click toggle).
++    /// Flipped only by chrome clicks. Compositor geom may set it when it
++    /// reports maximized, but must not set it during the post-restore
++    /// suppress window (stale Wayland configures were re-latching this and
++    /// making every later click take the restore path — "stops after 2–3").
++    #[rust]
++    chrome_maximized: bool,
++    /// Until this app-time, ignore compositor `is_fullscreen=true` for the latch.
++    #[rust]
++    chrome_max_suppress_until: f64,
++    /// Inner size / position to restore after maximize. If missing (started
++    /// maximized, or never saved), fall back to a conventional desktop size.
++    #[rust]
++    pre_maximize_size: Option<Vec2d>,
++    #[rust]
++    pre_maximize_pos: Option<Vec2d>,
+     #[deref]
+     view: View,
+ 
+@@ -1349,6 +1365,58 @@
+     pub fn set_fullscreen(&mut self, cx: &mut Cx) {
+         self.window.handle.fullscreen(cx);
+     }
++
++    /// Conventional floating size when there is no pre-maximize geometry
++    /// (matches common desktop defaults / Kumkaj Courier first-run size).
++    const RESTORE_DEFAULT_SIZE: Vec2d = dvec2(1024.0, 768.0);
++
++    /// True when a size looks like a single ultrawide/monitor fill rather than
++    /// a normal floating window — must not be stored as the restore target.
++    fn size_looks_monitor_fill(size: Vec2d) -> bool {
++        size.x >= 1920.0 && size.y >= 900.0
++    }
++
++    /// Toggle maximize / restore on single-click of the max button.
++    /// Prefer restore when the compositor still reports maximized — calling
++    /// `set_maximized` again is what sent the window toward another monitor
++    /// on GNOME (4×2560×1080 layout) and then killed further toggles.
++    fn toggle_chrome_maximize(&mut self, cx: &mut Cx) {
++        let platform_max = self.window.handle.is_fullscreen(cx);
++        if self.chrome_maximized || platform_max {
++            let size = self
++                .pre_maximize_size
++                .filter(|s| s.x >= 320.0 && s.y >= 240.0)
++                .filter(|s| !Self::size_looks_monitor_fill(*s))
++                .unwrap_or(Self::RESTORE_DEFAULT_SIZE);
++            let pos = self.pre_maximize_pos;
++            self.chrome_maximized = false;
++            // Ignore late maximized configures from the previous state.
++            self.chrome_max_suppress_until = cx.seconds_since_app_start() + 0.75;
++            self.pre_maximize_size = None;
++            self.pre_maximize_pos = None;
++            self.window.handle.restore(cx);
++            self.window.handle.resize(cx, size);
++            if let Some(pos) = pos {
++                if pos.x.is_finite() && pos.y.is_finite() && (pos.x != 0.0 || pos.y != 0.0) {
++                    self.window.handle.reposition(cx, pos);
++                }
++            }
++        } else {
++            let size = self.window.handle.get_inner_size(cx);
++            let pos = self.window.handle.get_position(cx);
++            if size.x >= 320.0 && size.y >= 240.0 && !Self::size_looks_monitor_fill(size) {
++                self.pre_maximize_size = Some(size);
++                self.pre_maximize_pos = Some(pos);
++            } else {
++                self.pre_maximize_size = Some(Self::RESTORE_DEFAULT_SIZE);
++                self.pre_maximize_pos = None;
++            }
++            self.chrome_maximized = true;
++            // Ignore a floating configure that can arrive right after set_maximized.
++            self.chrome_max_suppress_until = cx.seconds_since_app_start() + 0.75;
++            self.window.handle.maximize(cx);
++        }
++    }
+     pub fn configure_window(
+         &mut self,
+         cx: &mut Cx,
+@@ -1559,11 +1627,27 @@
+                 }
+                 true
+             }
++            Event::WindowChromeMaximizeToggle(window_id) => {
++                if *window_id == self.window.window_id() {
++                    self.toggle_chrome_maximize(cx);
++                }
++                true
++            }
+             Event::WindowGeomChange(ev) => {
+                 if ev.window_id == self.window.window_id() {
+                     // The caption / buttons may have been re-laid-out; drop the WindowDragQuery
+                     // geometry cache so it is recomputed on the next hit-test.
+                     self.drag_query_cache = None;
++                    // Adopt compositor maximized only outside the suppress window.
++                    // Do not clear the latch here (compositors often omit maximized
++                    // from states after set_maximized). Clear only on restore click.
++                    // Suppress after restore blocks stale maximized configures that
++                    // previously re-latched and made every later click a no-op restore.
++                    if ev.new_geom.is_fullscreen
++                        && cx.seconds_since_app_start() >= self.chrome_max_suppress_until
++                    {
++                        self.chrome_maximized = true;
++                    }
+                     match cx.os_type() {
+                         OsType::Windows | OsType::Macos => {
+                             if self.hide_caption_on_fullscreen && !cx.in_makepad_studio() {
+@@ -1725,11 +1809,7 @@
+                 .desktop_button(cx, ids!(windows_buttons.max))
+                 .clicked(&actions)
+             {
+-                if self.window.handle.is_fullscreen(cx) {
+-                    self.window.handle.restore(cx);
+-                } else {
+-                    self.window.handle.maximize(cx);
+-                }
++                self.toggle_chrome_maximize(cx);
+             }
+             if self
+                 .desktop_button(cx, ids!(windows_buttons.close))

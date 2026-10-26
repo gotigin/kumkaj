@@ -1,6 +1,6 @@
 --- a/platform/src/os/linux/android/android.rs
 +++ b/platform/src/os/linux/android/android.rs
-@@ -2228,12 +2228,27 @@
+@@ -2229,9 +2229,21 @@
      */
  
      pub fn android_load_dependencies(&mut self) {
@@ -8,6 +8,8 @@
          for (path, dep) in &mut self.dependencies {
 -            if let Some(data) = unsafe { to_java_load_asset(path) } {
 -                dep.data = Some(Ok(Rc::new(data)))
++            // APK assets live under assets/makepad/<crate>/... while dependency
++            // keys are often "<crate>/resources/...". Try both.
 +            let data = unsafe { to_java_load_asset(path) }.or_else(|| {
 +                let root = package_root.as_deref()?;
 +                let prefix = format!("{}/", root);
@@ -22,49 +24,9 @@
              } else {
                  let message = format!("cannot load dependency {}", path);
                  crate::error!("Android asset failed: {}", message);
-                 dep.data = Some(Err(message));
-             }
-         }
-     }
---- a/platform/src/cx_api.rs
-+++ b/platform/src/cx_api.rs
-@@ -720,14 +720,13 @@
- 
-     pub fn take_dependency(&mut self, path: &str) -> Result<Rc<Vec<u8>>, String> {
-         if let Some(data) = self.dependencies.get_mut(path) {
--            if let Some(data) = data.data.take() {
--                return match data {
--                    Ok(data) => Ok(data),
--                    Err(s) => Err(s.clone()),
--                };
-+            if let Some(Ok(data)) = data.data.take() {
-+                return Ok(data);
-             }
-         }
- 
-         #[cfg(target_os = "android")]
-         {
-             if let Some(data) =
-@@ -753,14 +752,12 @@
- 
-     pub fn get_dependency(&self, path: &str) -> Result<Rc<Vec<u8>>, String> {
-         if let Some(data) = self.dependencies.get(path) {
--            if let Some(data) = &data.data {
--                return match data {
--                    Ok(data) => Ok(data.clone()),
--                    Err(s) => Err(s.clone()),
--                };
-+            if let Some(Ok(data)) = &data.data {
-+                return Ok(data.clone());
-             }
-         }
- 
-         #[cfg(target_os = "android")]
-         {
-             if let Some(data) =
 --- a/platform/src/os/linux/android/android_jni.rs
 +++ b/platform/src/os/linux/android/android_jni.rs
-@@ -1467,12 +1467,16 @@
+@@ -1466,12 +1466,16 @@
      }
      let length = ndk_sys::AAsset_getLength64(asset);
  
@@ -83,3 +45,38 @@
 +    ndk_sys::AAsset_close(asset);
      return None;
  }
+ 
+--- a/platform/src/cx_api.rs
++++ b/platform/src/cx_api.rs
+@@ -721,11 +721,10 @@
+ 
+     pub fn take_dependency(&mut self, path: &str) -> Result<Rc<Vec<u8>>, String> {
+         if let Some(data) = self.dependencies.get_mut(path) {
+-            if let Some(data) = data.data.take() {
+-                return match data {
+-                    Ok(data) => Ok(data),
+-                    Err(s) => Err(s.clone()),
+-                };
++            // Cached Err may be from an unprefixed Android asset path — fall
++            // through to JNI + package_root instead of returning it immediately.
++            if let Some(Ok(data)) = data.data.take() {
++                return Ok(data);
+             }
+         }
+ 
+@@ -754,11 +753,10 @@
+ 
+     pub fn get_dependency(&self, path: &str) -> Result<Rc<Vec<u8>>, String> {
+         if let Some(data) = self.dependencies.get(path) {
+-            if let Some(data) = &data.data {
+-                return match data {
+-                    Ok(data) => Ok(data.clone()),
+-                    Err(s) => Err(s.clone()),
+-                };
++            // Cached Err may be from an unprefixed Android asset path — fall
++            // through to JNI + package_root instead of returning it immediately.
++            if let Some(Ok(data)) = &data.data {
++                return Ok(data.clone());
+             }
+         }
+ 

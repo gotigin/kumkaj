@@ -29,9 +29,29 @@ pub fn write_image_as_webp(src: &Path, dest_webp: &Path) -> Result<u64, String> 
     encode_bytes_as_webp(&bytes, dest_webp)
 }
 
+/// Like [`write_image_as_webp`], but shrinks the photo to fit `max_edge`
+/// first (never enlarges). For menu item / category photos, which are only
+/// ever shown small: a 40 KB shelf dish was stored as a 491 KB full-size
+/// lossless copy. Bill photos and other attachments keep full size — they
+/// must stay legible — so they use [`write_image_as_webp`].
+pub fn write_image_as_webp_fit(src: &Path, dest_webp: &Path, max_edge: u32) -> Result<u64, String> {
+    let bytes = fs::read(src).map_err(|e| format!("Read image: {e}"))?;
+    let img = image::load_from_memory(&bytes).map_err(|e| format!("Decode image: {e}"))?;
+    let img = if img.width() > max_edge || img.height() > max_edge {
+        img.resize(max_edge, max_edge, image::imageops::FilterType::Triangle)
+    } else {
+        img
+    };
+    write_webp(&img, dest_webp)
+}
+
 /// Decode image bytes and write WebP to `dest_webp`. Returns file size.
 pub fn encode_bytes_as_webp(bytes: &[u8], dest_webp: &Path) -> Result<u64, String> {
     let img = image::load_from_memory(bytes).map_err(|e| format!("Decode image: {e}"))?;
+    write_webp(&img, dest_webp)
+}
+
+fn write_webp(img: &image::DynamicImage, dest_webp: &Path) -> Result<u64, String> {
     if let Some(parent) = dest_webp.parent() {
         fs::create_dir_all(parent).map_err(|e| e.to_string())?;
     }
@@ -78,6 +98,24 @@ mod tests {
         assert!(webp.len() > 12);
         assert_eq!(&webp[0..4], b"RIFF");
         assert_eq!(&webp[8..12], b"WEBP");
+    }
+
+    #[test]
+    fn fit_shrinks_large_photos_and_leaves_small_ones() {
+        let dir = std::env::temp_dir().join(format!("khaynjo-media-fit-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let big = dir.join("big.png");
+        image::RgbImage::new(1000, 500).save(&big).unwrap();
+        let out = dir.join("big.webp");
+        write_image_as_webp_fit(&big, &out, 768).unwrap();
+        let img = image::open(&out).unwrap();
+        assert_eq!((img.width(), img.height()), (768, 384));
+        let small = dir.join("small.png");
+        image::RgbImage::new(40, 30).save(&small).unwrap();
+        write_image_as_webp_fit(&small, &out, 768).unwrap();
+        let img = image::open(&out).unwrap();
+        assert_eq!((img.width(), img.height()), (40, 30));
+        let _ = std::fs::remove_dir_all(dir);
     }
 
     #[test]

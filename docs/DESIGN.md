@@ -1,5 +1,17 @@
 # Kumkaj UI design (shipping)
 
+> **Each app's design is its own (2026-10-23).** Kumkaj apps do not need
+> to look or flow alike. Every product gets the design that gives *its*
+> users the best experience — similar to a sibling or different, either
+> is fine; great UX for that trade is what matters (vision §24). This file
+> therefore holds two kinds of content: **lessons every app should know**
+> (Makepad behaviour, layout and interaction rules learned from shipped
+> bugs — technical truths, not a house style), and **Courier's** shipping
+> design below. Other apps keep their design in their own docs (e.g.
+> [`KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md) §5b and its own colour
+> tokens). Learning from competitors means doing better than them, not
+> copying their screens.
+
 Source pack (optional): `../../stitch_tactile_countertop_design_system/`.  
 This file is the **canonical** in-repo summary. When Stitch packs disagree, **later shipping decisions win** (see also vision doc + [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
@@ -71,12 +83,13 @@ Owner order after unlock: **Day book** → **Booking** or **Pay out** as peers.
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
 
-## Work-surface layout & interaction (all Kumkaj apps)
+## Work-surface layout & interaction (lessons for every app)
 
-Canonical for every Kumkaj app's screens (each app's doc owns only its
-trade-specific instantiation — e.g. Khaynjo's menu/ticket split,
-Courier's rates/cart split). Learned from shipped regressions; do not
-re-learn per app.
+Lessons learned from shipped regressions — how Makepad lays out and
+behaves, and what broke. Every app should know them so nobody re-learns
+them; they are not a shared look. Each app decides its own screens, flows
+and visual design for its users (e.g. Khaynjo's menu/ticket split and
+coloured floor, Courier's rates/cart split).
 
 - **The work surface gets the room.** The primary grid/list is the
   work surface; companion panes (ticket, cart, detail) stay lean.
@@ -191,7 +204,7 @@ source colour, darkened to `#B43A12` for shipping faces.
 
 - Empty rates: CTA to More → Rates & services (no sample rates pre-loaded).
 - Extra tills: pairing code on Lock / Settings when allowed.
-- Multi-branch: header shows `Shop · CODE` when more than one branch exists.
+- Multi-branch: one local server per branch (vision §5); the header shows that restaurant's own name, and Server Mode lists the branches on this device.
 - Day book empty/first-day copy teaches money in, money out, parties — not “open Booking to begin.”
 - Day books follow **user / business time** (`user_at`); device write / cloud accept times are separate ([`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) § Triple timestamps).
 - Walk-in desk, AWB/barcode, tracking: product roadmap in [`KUMKAJ_COURIER.md`](../apps/courier/docs/KUMKAJ_COURIER.md).

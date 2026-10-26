@@ -1,11 +1,23 @@
 #!/usr/bin/env bash
 # Fetch OFL Noto script fonts + Font Awesome into the app's
 # resources/fonts/ for WorldFonts fallback (language names + UI
-# symbols). App: KUMKAJ_APP_DIR (default apps/courier). Safe to re-run.
+# symbols). Each app carries its own copy. Safe to re-run.
+#   ./scripts/fetch-ui-fonts.sh apps/khaynjo   # one app
+#   ./scripts/fetch-ui-fonts.sh                # every app under apps/
 # Uses curl + jq (no Python).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OUT="${KUMKAJ_APP_DIR:-$ROOT/apps/courier}/resources/fonts"
+APP="${1:-${KUMKAJ_APP_DIR:-}}"
+if [[ -z "$APP" ]]; then
+  for app in "$ROOT"/apps/*/; do
+    [[ -f "$app/Cargo.toml" ]] || continue
+    echo "== ${app%/}"
+    "$0" "${app%/}"
+  done
+  exit 0
+fi
+[[ "$APP" = /* ]] || APP="$ROOT/$APP"
+OUT="$APP/resources/fonts"
 mkdir -p "$OUT"
 
 if ! command -v curl >/dev/null 2>&1; then

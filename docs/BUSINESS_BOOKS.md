@@ -54,7 +54,7 @@ into shared code.
 5. **Catalogue** — items/rates/services + optional units
 6. **Day / period picture** — tenders, outstanding, profit shape
 
-**Many (same concepts, progressive — implemented per app):** stock tracking, supplier dues (AP), bank posts, team/roles, multi-branch.
+**Many (same concepts, progressive — implemented per app):** stock tracking, supplier dues (AP), bank posts, team/roles, multi-branch (one set of books per branch — vision §5).
 
 **Few / capability packs (hide until enabled):** tables & KOT/KDS, kg-heavy units + account/cash booking labels, appointments, multi-station kitchen.
 
@@ -166,6 +166,36 @@ Wording: tender / channel (`cash`, `bank`, `upi`, `card`, `credit`),
 needed. Never slang or moral labels for a settlement, and never
 gatekeeping copy (“bill required”, “bank proof required”) on a money
 form.
+
+### Open orders are not books yet
+
+Many trades hold an order open before it is settled — a restaurant
+table between KOTs, a courier account docket, a repair job. Mechanics
+every app follows:
+
+| Reality | Books pattern (per app) |
+|---------|-----------|
+| Work starts before money | A persisted **open order** (lines, who, when, where) lives on the Server and survives restart and device change; it is *not* a sale and adds nothing to the day book |
+| Work sent onward (kitchen, dispatch) | Each send is a ticket that points at the open order's lines; later sends add lines, never rewrite earlier ones |
+| Line given free | Line kept at its real item and quantity, charged ₹0, marked complimentary with reason + approver (vision §18) |
+| Line cancelled after it was sent | Line kept, marked cancelled with reason, prepared-or-not, approver; not billed (vision §18) |
+| Order moves (another table / desk / person) | Same order id, new location, audit line — no copy-and-delete |
+| Settle | One finalize turns the open order's live lines into one sale; the order closes with that sale's id |
+
+### Shift and day-end cash
+
+| Field | Meaning |
+|-------|---------|
+| Opening float | Cash put in the drawer to give change; it is the business's money, not a sale |
+| Cash in / out | Every non-sale cash movement (withdrawal to the owner, top-up, petty expense) is recorded when it happens |
+| Expected cash | Float + cash takings − cash paid out (a ground-truth sum of movements, above) |
+| Counted cash | What is physically in the drawer, entered by the person closing |
+| Variance | Expected − counted, shown with its sign and **kept with a note**; never silently corrected |
+| Tips | Recorded per bill with their tender; owed to staff, so **not revenue** and kept out of sales totals |
+
+A **shift close** hands one drawer from one person to the next mid-day;
+a **day close** locks the business day across all tenders. Both print a
+slip under the closing person's name.
 
 ------------------------------------------------------------------------
 

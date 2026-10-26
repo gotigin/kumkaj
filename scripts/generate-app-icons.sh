@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Regenerate an app's icons / logo from its product master
-# (apps/<app>/assets/). App: KUMKAJ_APP_DIR (default apps/courier).
+# (apps/<app>/assets/). Run through the app's own scripts/generate-icons.sh,
+# which sets KUMKAJ_APP_DIR and KUMKAJ_ICON_SRC (no default app).
 # - PNG + .ico for OS launchers / window chrome (Android + desktop)
 # - WebP for in-app embedding (Makepad Image / crate_resource)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-APP_DIR="${KUMKAJ_APP_DIR:-$ROOT/apps/courier}"
-SRC="${KUMKAJ_ICON_SRC:-$APP_DIR/assets/courier-app-icon.png}"
+APP_DIR="${KUMKAJ_APP_DIR:?run apps/<app>/scripts/generate-icons.sh}"
+SRC="${KUMKAJ_ICON_SRC:?run apps/<app>/scripts/generate-icons.sh}"
 RES="$APP_DIR/resources"
 ANDROID_RES="$RES/android/res"
 
@@ -85,4 +86,4 @@ echo "wrote $RES/icon.ico"
 
 echo "Android launcher icons ready under $ANDROID_RES/mipmap-*/ic_launcher.png"
 echo "In-app logo: $RES/kumkaj-mark.webp (use crate_resource / load_image_dep)"
-echo "Reinstall Android (cargo courier-android-dev) so the launcher picks up icons."
+echo "Reinstall on Android (the app's android-dev.sh) so the launcher picks up icons."

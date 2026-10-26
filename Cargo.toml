@@ -21,3 +21,28 @@ exclude = [
     "vendor/makepad",
 ]
 resolver = "2"
+
+# Image codecs are optimised even in dev builds. Unoptimised, one ~470×1024
+# dish photo took ~250 ms to decode, so photo thumbs crawled in during
+# `cargo khaynjo-dev` / `cargo courier-dev`. Build speed only — no product
+# behaviour changes, and app code stays debuggable.
+[profile.dev.package.image]
+opt-level = 3
+[profile.dev.package.image-webp]
+opt-level = 3
+[profile.dev.package.zune-jpeg]
+opt-level = 3
+[profile.dev.package.zune-core]
+opt-level = 3
+[profile.dev.package.png]
+opt-level = 3
+[profile.dev.package.fdeflate]
+opt-level = 3
+[profile.dev.package.makepad-webp]
+opt-level = 3
+[profile.dev.package.makepad-zune-jpeg]
+opt-level = 3
+[profile.dev.package.makepad-zune-png]
+opt-level = 3
+[profile.dev.package.makepad-zune-inflate]
+opt-level = 3

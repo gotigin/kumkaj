@@ -131,6 +131,24 @@ Prioritize in this order for Kumkaj Courier:
 
 ------------------------------------------------------------------------
 
+## Languages & RTL
+
+Courier’s static UI — every label, heading, button, placeholder,
+hint, and the setup / lock / onboarding screens — ships fully
+translated in the 29 Kumkaj languages (list and doctrine: vision
+§23). The dictionary is Courier’s own (`src/locale.rs`,
+`src/locale_chrome.rs`), never a shared crate; the
+`shipped_languages_translate_chrome` test fails if any key would fall
+back to English in any shipped language, so new labels land with all
+translations. First launch follows the device language; afterwards
+the saved per-device choice wins
+(`local_servers::{load,save}_app_language`). Owner-typed names are
+never translated. Arabic and Urdu run right-to-left: Makepad shapes
+and bidi-orders the script, and `apply_text_alignment` in `main.rs`
+right-aligns static text and input fields (vendor patch:
+`TextFlow::paragraph_align_x`, `TextInput::label_align`); the window
+layout itself is not mirrored.
+
 ## Modules (keep `main.rs` thin)
 
 | Module | Role |
@@ -158,6 +176,45 @@ Canonical sanitized tracker: [`COURIER_CLIENTS_REQUIREMENTS.md`](COURIER_CLIENTS
 - Named carriers & consignors as **parties** (owner enters their own names)
 
 ------------------------------------------------------------------------
+
+## Doctrine follow-ups (Courier code not yet aligned)
+
+- **Branches (vision §5) — aligned 2026-10-23:** a branch is its own
+  business — one local server per branch (Server Mode → create/open
+  another). In-book *Add branch* / *Switch this device* are hidden and
+  their handlers removed; snapshot export/import/roll-up compare
+  branches. Legacy `branch_id` columns and the store's branch API stay
+  for existing data.
+- **Known failing test — resolved 2026-10-24:**
+  `store::tests::bank_posting_aging_period_and_rich_receipt` asserted a
+  `Party: …` line that `format_receipt_text` never prints. The receipt
+  already names the billed party on account-booking (tax invoice)
+  receipts as `Bill to: <name> (<role>)`, which satisfies the intent;
+  the assertion was aligned to the shipped wording rather than adding a
+  duplicate line.
+- **Rights with approval + reason (vision §17) — aligned 2026-10-24:**
+  Team → pick the person by name → **Void or refund a booking** and
+  **Amend a recorded booking**, each Allowed / With approval (an Owner or
+  Manager PIN typed at that moment) / Not allowed; cashier preset: with
+  approval. `Store::check_right` decides on the main device and on the
+  server for paired devices; the approver is recorded and the reason
+  names both. Undoing your own booking stays free. Void/refund/amend all
+  take a reason (cancel-not-delete, vision §18). Test:
+  `per_person_rights_gate_void_and_keep_own_undo_free`. The feature-access
+  chips on Team show on/off (active face) for the person being edited.
+- **Offline office + devices (2026-10-24):** extra counters pair over
+  the office Wi‑Fi (Find the shop's server, pairing code, PIN checked on
+  the server), keep booking through a Wi‑Fi drop ("Offline · N waiting"),
+  never record a booking twice, refresh by themselves every 20 s; the
+  office's Server stays awake while serving, can start with the computer
+  (Windows/Linux), backs up daily and opens its firewall from Settings.
+  Any supported device can be the Server or a client — Windows, Linux or
+  Android, in any mix (`docs/LAN_QUICK_START.md` §5). Design and rules:
+  `docs/DEV.md` § LAN Client / Server. *2026-10-26:* printer pool + ordered
+  routes per device (Receipt and AWB label; fallback, empty = don't print;
+  system name or network ESC/POS; test page), device
+  clock checked against the Server, Android backup copies through the
+  system save dialog. Not yet run on real hardware.
 
 ## Out of scope (for now)
 

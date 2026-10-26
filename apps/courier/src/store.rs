@@ -1,23 +1,20 @@
 //! Local SQLite persistence for Kumkaj (WAL, restart-safe sales).
 
 use crate::domain::{
-    format_qty_display, milli_to_whole_qty, new_id, normalize_party_roles, AttachmentEntity,
-    AttachmentKind, AuditEvent, BookingMeasureSettings, BooksOverview, Branch, BranchSnapshot,
-    Category,
-    CreditLedgerEntry, Customer,
-    DayTotals, EntryAttachment, EventTimes,
-    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport,
-    OrgConsolidatedReport,
+    AttachmentEntity, AttachmentKind, AuditEvent, BookingMeasureSettings, BooksOverview, Branch,
+    BranchSnapshot, Category, CreditLedgerEntry, Customer, DayTotals, EntryAttachment, EventTimes,
+    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrgConsolidatedReport,
     PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
-    Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
-    StockMovement, TaxRate, UnitConversion, UnitDef, STOCK_UNTRACKED,
+    Right, RightLevel, STOCK_UNTRACKED, Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures,
+    StaffMember, StaffRole, StockMovement, TaxRate, UnitConversion, UnitDef, format_qty_display,
+    milli_to_whole_qty, new_id, normalize_party_roles,
 };
-use crate::media;
 use crate::entity_template::{self, EntityTemplate};
 use crate::fiscal::{self, CountryProfile, FiscalSettings, TaxPricing};
 use crate::locale::{self, LanguageSource, LocaleSettings};
+use crate::media;
 use chrono::{Local, NaiveDate};
-use rusqlite::{params, Connection, OptionalExtension};
+use rusqlite::{Connection, OptionalExtension, params};
 use sha2::{Digest, Sha256};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -47,9 +44,16 @@ impl Store {
     }
 
     pub fn open_path(path: &Path) -> Result<Self, String> {
-        let conn = Connection::open(path).map_err(|e| e.to_string())?;
+        let mut conn = Connection::open(path).map_err(|e| e.to_string())?;
+        // Take the write lock when a transaction begins, so it waits out
+        // another writer (busy_timeout) instead of failing midway in WAL.
+        conn.set_transaction_behavior(rusqlite::TransactionBehavior::Immediate);
         conn.execute_batch(
+            // busy_timeout: the LAN server writes from its own connection
+            // per request; a write that meets another waits instead of
+            // failing with "database is locked".
             "PRAGMA journal_mode=WAL;
+             PRAGMA busy_timeout=5000;
              PRAGMA synchronous=FULL;
              PRAGMA foreign_keys=ON;",
         )
@@ -65,6 +69,16 @@ impl Store {
 
     pub fn db_path(&self) -> &Path {
         &self.path
+    }
+
+    /// Run `f` as one transaction: all of its writes land together or none
+    /// do, other connections never see half of them, and the disk is synced
+    /// once instead of once per row.
+    pub fn in_transaction<T>(&self, f: impl FnOnce() -> Result<T, String>) -> Result<T, String> {
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let out = f()?;
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(out)
     }
 
     /// Create the current books schema (version **1**).
@@ -340,6 +354,64 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
 
+        // LAN: phones paired to this Server (one token each, revocable), the
+        // staff signed in on them, and the answer to every write a phone
+        // sent (so a retry after a lost reply is answered, not done twice).
+        // `lan_outbox` is the phone's side: writes waiting for the Server.
+        self.conn
+            .execute_batch(
+                r#"
+                CREATE TABLE IF NOT EXISTS lan_devices (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL DEFAULT '',
+                    token_hash TEXT NOT NULL UNIQUE,
+                    paired_at TEXT NOT NULL,
+                    last_seen_at TEXT NOT NULL DEFAULT '',
+                    revoked_at TEXT NOT NULL DEFAULT ''
+                );
+                CREATE TABLE IF NOT EXISTS lan_sessions (
+                    token_hash TEXT PRIMARY KEY,
+                    device_id TEXT NOT NULL,
+                    staff_id TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    expires_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS lan_replies (
+                    request_id TEXT PRIMARY KEY,
+                    device_id TEXT NOT NULL,
+                    status INTEGER NOT NULL,
+                    body TEXT NOT NULL,
+                    created_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS lan_outbox (
+                    id TEXT PRIMARY KEY,
+                    seq INTEGER NOT NULL,
+                    path TEXT NOT NULL,
+                    body TEXT NOT NULL,
+                    label TEXT NOT NULL DEFAULT '',
+                    table_id TEXT NOT NULL DEFAULT '',
+                    staff_id TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    attempts INTEGER NOT NULL DEFAULT 0,
+                    last_error TEXT NOT NULL DEFAULT ''
+                );
+                -- A waiting write the Server turned down when it finally
+                -- arrived (the party was settled at the counter meanwhile,
+                -- the rate was removed …). Kept, with the Server's words,
+                -- until someone has seen it: money taken offline is never
+                -- dropped silently.
+                CREATE TABLE IF NOT EXISTS lan_refused (
+                    id TEXT PRIMARY KEY,
+                    path TEXT NOT NULL,
+                    body TEXT NOT NULL,
+                    label TEXT NOT NULL DEFAULT '',
+                    error TEXT NOT NULL DEFAULT '',
+                    created_at TEXT NOT NULL,
+                    refused_at TEXT NOT NULL
+                );
+                "#,
+            )
+            .map_err(|e| e.to_string())?;
         self.conn
             .execute(
                 "INSERT OR IGNORE INTO meta(key, value) VALUES('schema_version', '1')",
@@ -347,7 +419,11 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         // Always pin to current pre-release schema (drop any leftover 2–17 markers).
-        self.meta_set("schema_version", "1")?;
+        // Written only when it differs: the LAN server opens the books for
+        // every request, and an unconditional write was a disk sync each time.
+        if self.meta_get("schema_version")?.as_deref() != Some("1") {
+            self.meta_set("schema_version", "1")?;
+        }
         // Pre-release column adds (no-op when CREATE already has them).
         for stmt in [
             "ALTER TABLE sales ADD COLUMN awb_no TEXT NOT NULL DEFAULT ''",
@@ -509,6 +585,33 @@ impl Store {
                 "#,
             )
             .map_err(|e| e.to_string())?;
+        // Lookups every sync and every screen makes. Without them a year of
+        // bookings made each device's sync scan every booking line and ledger
+        // row (seconds per sync); `a_busy_years_books_still_sync_quickly`
+        // guards this. Built once on existing books, then free.
+        self.conn
+            .execute_batch(
+                r#"
+                CREATE INDEX IF NOT EXISTS idx_sale_lines_sale ON sale_lines(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_sale_payments_sale ON sale_payments(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_sales_created ON sales(created_at);
+                CREATE INDEX IF NOT EXISTS idx_sale_revisions_sale ON sale_revisions(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_customer ON credit_ledger(customer_id);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_created ON credit_ledger(created_at);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_sale ON credit_ledger(sale_id);
+                CREATE INDEX IF NOT EXISTS idx_audit_created ON audit_events(created_at);
+                CREATE INDEX IF NOT EXISTS idx_expense_payments_expense ON expense_payments(expense_id);
+                CREATE INDEX IF NOT EXISTS idx_purchase_lines_purchase ON purchase_lines(purchase_id);
+                -- `created_at LIKE '2026-10-25%'` (a day, a month) can only
+                -- use a NOCASE index while LIKE is case-insensitive.
+                CREATE INDEX IF NOT EXISTS idx_sales_day ON sales(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_expenses_day ON expenses(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_money_movements_like ON money_movements(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_credit_ledger_day ON credit_ledger(created_at COLLATE NOCASE);
+                CREATE INDEX IF NOT EXISTS idx_payable_ledger_day ON payable_ledger(created_at COLLATE NOCASE);
+                "#,
+            )
+            .map_err(|e| e.to_string())?;
 
         // Seed common extras once (idempotent by kind).
         for (kind, name, paise) in [
@@ -541,6 +644,7 @@ impl Store {
             ("next_invoice_seq", "1"),
             ("pin_reset_required", "0"),
             ("entity_template", "courier_agency"),
+            ("app", APP_MARK),
             ("next_awb_seq", "1"),
         ] {
             self.conn
@@ -559,19 +663,9 @@ impl Store {
                 id
             }
         };
-        if self
-            .meta_get("org_name")?
-            .filter(|s| !s.trim().is_empty())
-            .is_none()
-        {
-            let titled = self.meta_get("venue_title")?.unwrap_or_default();
-            let name = if titled.trim().is_empty() {
-                "My business".to_string()
-            } else {
-                titled.trim().to_string()
-            };
-            self.meta_set("org_name", &name)?;
-        }
+        // The business name is only ever what the owner typed: nothing is
+        // written for them (a stored "My business" read as if they had saved
+        // it, and showed in the header as their business).
 
         let branch_count: i64 = self
             .conn
@@ -613,12 +707,7 @@ impl Store {
         }
         let branch_id = self.meta_get("active_branch_id")?.unwrap_or_default();
 
-        for table in [
-            "products",
-            "sales",
-            "expenses",
-            "customers",
-        ] {
+        for table in ["products", "sales", "expenses", "customers"] {
             self.conn
                 .execute(
                     &format!(
@@ -630,7 +719,10 @@ impl Store {
                 .map_err(|e| e.to_string())?;
         }
 
-        let country = match self.meta_get("country_code")?.filter(|c| !c.trim().is_empty()) {
+        let country = match self
+            .meta_get("country_code")?
+            .filter(|c| !c.trim().is_empty())
+        {
             Some(c) => c,
             None => {
                 self.meta_set("country_code", fiscal::DEFAULT_COUNTRY)?;
@@ -731,8 +823,8 @@ impl Store {
         }
         // to_qty_milli = from_qty_milli * factor_milli / 1000
         let convs: &[(&str, &str, i64)] = &[
-            ("kg", "g", 1_000_000),    // 1 kg = 1000 g
-            ("g", "kg", 1),            // 1000 g → 1 kg (factor 0.001 → milli 1)
+            ("kg", "g", 1_000_000), // 1 kg = 1000 g
+            ("g", "kg", 1),         // 1000 g → 1 kg (factor 0.001 → milli 1)
             ("l", "ml", 1_000_000),
             ("ml", "l", 1),
             ("m", "cm", 100_000),
@@ -950,7 +1042,10 @@ impl Store {
     }
 
     /// Lock this binary to Kumkaj Courier (ignores other template ids).
-    pub fn apply_entity_template(&self, _template_id: &str) -> Result<&'static EntityTemplate, String> {
+    pub fn apply_entity_template(
+        &self,
+        _template_id: &str,
+    ) -> Result<&'static EntityTemplate, String> {
         self.assert_server_writer("Apply start template")?;
         let tmpl = &entity_template::COURIER;
         self.meta_set("entity_template", tmpl.id)?;
@@ -995,11 +1090,9 @@ impl Store {
         }
         let count: i64 = self
             .conn
-            .query_row(
-                "SELECT COUNT(*) FROM customers WHERE active = 1",
-                [],
-                |r| r.get(0),
-            )
+            .query_row("SELECT COUNT(*) FROM customers WHERE active = 1", [], |r| {
+                r.get(0)
+            })
             .map_err(|e| e.to_string())?;
         if count > 0 {
             return Ok(0);
@@ -1031,7 +1124,10 @@ impl Store {
     }
 
     pub fn pairing_code(&self) -> Result<String, String> {
-        if let Some(code) = self.meta_get("pairing_code")?.filter(|s| !s.trim().is_empty()) {
+        if let Some(code) = self
+            .meta_get("pairing_code")?
+            .filter(|s| !s.trim().is_empty())
+        {
             return Ok(code);
         }
         self.ensure_server_pairing_code()?;
@@ -1040,31 +1136,133 @@ impl Store {
     }
 
     pub fn ensure_server_pairing_code(&self) -> Result<String, String> {
-        if let Some(code) = self.meta_get("pairing_code")?.filter(|s| !s.trim().is_empty()) {
+        if let Some(code) = self
+            .meta_get("pairing_code")?
+            .filter(|s| !s.trim().is_empty())
+        {
             return Ok(code);
         }
         let mut n = [0u8; 3];
         getrandom_salt(&mut n)?;
-        let code = format!("{:06}", (u32::from(n[0]) << 16 | u32::from(n[1]) << 8 | u32::from(n[2])) % 1_000_000);
+        let code = format!(
+            "{:06}",
+            (u32::from(n[0]) << 16 | u32::from(n[1]) << 8 | u32::from(n[2])) % 1_000_000
+        );
         self.meta_set("pairing_code", &code)?;
         Ok(code)
     }
 
-    pub fn set_client_pairing(&self, server_url: &str, pairing_code: &str) -> Result<(), String> {
+    /// Phone side: paired with a device token of its own (the pairing code
+    /// is used once, at pairing, and is not kept).
+    pub fn set_client_device_pairing(
+        &self,
+        server_url: &str,
+        device_token: &str,
+    ) -> Result<(), String> {
         let url = server_url.trim().trim_end_matches('/');
         if url.is_empty() {
             return Err("Server address required".into());
         }
         self.meta_set("server_url", url)?;
-        self.meta_set("pairing_code", pairing_code.trim())?;
+        self.meta_set("device_token", device_token.trim())?;
+        self.meta_set("pairing_code", "")?;
         self.meta_set("client_paired", "1")?;
         Ok(())
     }
 
+    pub fn client_device_token(&self) -> Result<Option<String>, String> {
+        Ok(self
+            .meta_get("device_token")?
+            .filter(|s| !s.trim().is_empty()))
+    }
+
+    /// How often (seconds) the phone worker pulls the Server's books.
+    pub fn sync_interval_secs(&self) -> Result<u64, String> {
+        Ok(self
+            .meta_get("sync_interval_secs")?
+            .and_then(|v| v.parse().ok())
+            .unwrap_or(20))
+    }
+
+    pub fn set_sync_interval_secs(&self, secs: u64) -> Result<(), String> {
+        self.meta_set("sync_interval_secs", &secs.to_string())
+    }
+
+    /// When this device last synced with the Server (RFC3339), kept through a restart.
+    pub fn set_device_last_seen(&self, at: &str) -> Result<(), String> {
+        self.meta_set("device_last_seen", at)
+    }
+
+    pub fn device_last_seen(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("device_last_seen")?.filter(|s| !s.trim().is_empty()))
+    }
+
+    /// Server side: record that a paired device made contact.
+    pub fn touch_device_seen(&self, device_id: &str) -> Result<(), String> {
+        let now = chrono::Local::now().to_rfc3339();
+        self.conn
+            .execute(
+                "UPDATE lan_devices SET last_seen_at = ?1 WHERE id = ?2",
+                rusqlite::params![now, device_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
     pub fn clear_client_pairing(&self) -> Result<(), String> {
+        self.meta_set("device_token", "")?;
         self.meta_set("client_paired", "0")?;
         self.meta_set("server_url", "")?;
+        self.meta_set("paired_server_id", "")?;
         Ok(())
+    }
+
+    /// The office server this device paired with, by its id — never by its
+    /// name or address. How the device finds it again when the address
+    /// changes (a new address after a power cut, the books on a new computer).
+    pub fn paired_server_id(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("paired_server_id")?.filter(|s| !s.trim().is_empty()))
+    }
+
+    pub fn set_paired_server_id(&self, id: &str) -> Result<(), String> {
+        self.meta_set("paired_server_id", id.trim())
+    }
+
+    /// The paired server answered from another address: the pairing stays,
+    /// only where to reach it changes.
+    pub fn set_server_url(&self, server_url: &str) -> Result<(), String> {
+        let url = server_url.trim().trim_end_matches('/');
+        if url.is_empty() {
+            return Err("Server address required".into());
+        }
+        self.meta_set("server_url", url)
+    }
+
+    /// These books' id on the office Wi‑Fi, made once and kept in the books:
+    /// a backup restored on a new computer is the same server to every
+    /// paired device, which finds it again by this id.
+    pub fn lan_server_id(&self) -> Result<String, String> {
+        if let Some(id) = self.meta_get("lan_server_id")?.filter(|s| !s.trim().is_empty()) {
+            return Ok(id);
+        }
+        // INSERT OR IGNORE: two first callers at once still agree on one id.
+        self.conn
+            .execute(
+                "INSERT OR IGNORE INTO meta(key, value) VALUES('lan_server_id', ?1)",
+                params![new_id()],
+            )
+            .map_err(|e| e.to_string())?;
+        self.meta_get("lan_server_id")?
+            .filter(|s| !s.trim().is_empty())
+            .ok_or_else(|| "server id missing".into())
+    }
+
+    /// Changes whenever another connection commits to these books (SQLite's
+    /// `data_version`) — the cheap "did anything change?" check.
+    pub fn data_version(&self) -> Result<i64, String> {
+        self.conn
+            .query_row("PRAGMA data_version", [], |r| r.get(0))
+            .map_err(|e| e.to_string())
     }
 
     /// Client terminals are not the shop host — skip local Owner/onboarding wizards.
@@ -1101,6 +1299,37 @@ impl Store {
             return Err(format!("{what} on the shop device — this is an extra till"));
         }
         Ok(())
+    }
+
+    /// May `actor` do `right`? Returns:
+    /// - `Ok(None)` if the actor's right level is **Allowed** (proceed directly).
+    /// - `Ok(Some(approver))` if **WithApproval** and `approval_pin` matched an
+    ///   Owner/Manager. The approver can be recorded on the audit event.
+    /// - `Err(…)` if the right is **Denied**, or no PIN was supplied when required.
+    pub fn check_right(
+        &self,
+        actor: &StaffMember,
+        right: Right,
+        approval_pin: Option<&str>,
+    ) -> Result<Option<StaffMember>, String> {
+        match actor.effective_rights().level(right) {
+            RightLevel::Allowed => Ok(None),
+            RightLevel::WithApproval => {
+                let pin = approval_pin.map(str::trim).unwrap_or_default();
+                if pin.is_empty() {
+                    return Err(format!(
+                        "{} needs a manager's approval — enter an Owner or Manager PIN",
+                        right_words(right)
+                    ));
+                }
+                Ok(Some(self.verify_approval_pin(pin)?))
+            }
+            RightLevel::Denied => Err(format!(
+                "{} is not allowed for {} — ask the owner or a manager",
+                right_words(right),
+                actor.name
+            )),
+        }
     }
 
     pub fn outstanding_credit_total(&self) -> Result<i64, String> {
@@ -1314,7 +1543,10 @@ impl Store {
                 // Countries that bill one tax as named halves (India's
                 // CGST/SGST) show each part, then the combined figure.
                 for (name, amount) in &components {
-                    out.push_str(&format!("{name} {}\n", Money(*amount).format_localized(&currency, &fiscal_settings)));
+                    out.push_str(&format!(
+                        "{name} {}\n",
+                        Money(*amount).format_localized(&currency, &fiscal_settings)
+                    ));
                 }
                 out.push_str(&format!(
                     "{tax_label} {}\n",
@@ -1437,7 +1669,8 @@ impl Store {
              Cash in hand (till, all recorded): {}\n\
              Rounding: {}\n",
             t.sale_count,
-            t.lines_total().format_localized(&currency, &fiscal_settings),
+            t.lines_total()
+                .format_localized(&currency, &fiscal_settings),
             Money(t.cash_paise).format_localized(&currency, &fiscal_settings),
             fiscal_settings.digital_pay_label(),
             Money(t.upi_paise).format_localized(&currency, &fiscal_settings),
@@ -1480,8 +1713,7 @@ impl Store {
         // Expected drawer movement today: cash tenders in, minus cash
         // that left (cash expenses, cash payable settlements, till→bank).
         let today = Local::now().format("%Y-%m-%d").to_string();
-        let expected_cash =
-            self.today_totals()?.cash_paise - self.cash_out_paise(Some(&today))?;
+        let expected_cash = self.today_totals()?.cash_paise - self.cash_out_paise(Some(&today))?;
         if let Some(counted) = counted_cash_paise {
             let variance = counted - expected_cash;
             let currency = self.locale_settings()?.currency;
@@ -1537,16 +1769,16 @@ impl Store {
     }
 
     /// Cache the Server's item groupings on a Client.
-    pub fn replace_categories_from_sync(
-        &self,
-        categories: &[Category],
-    ) -> Result<(), String> {
+    pub fn replace_categories_from_sync(&self, categories: &[Category]) -> Result<(), String> {
         if categories.is_empty() {
             return Ok(());
         }
         let branch_id = self.active_branch_id()?;
         self.conn
-            .execute("DELETE FROM categories WHERE branch_id = ?1", params![branch_id])
+            .execute(
+                "DELETE FROM categories WHERE branch_id = ?1",
+                params![branch_id],
+            )
             .map_err(|e| e.to_string())?;
         for c in categories {
             self.conn
@@ -1626,19 +1858,6 @@ impl Store {
     }
 
     /// Copy Server Owner PIN hash onto the local Owner so unlock matches the shop.
-    pub fn upsert_owner_pin_cache(&self, server_owner: &StaffMember) -> Result<(), String> {
-        if !server_owner.is_owner() {
-            return Ok(());
-        }
-        self.conn
-            .execute(
-                "UPDATE staff SET pin_hash = ?1, name = ?2 WHERE role = 'owner' AND active = 1",
-                params![server_owner.pin_hash, server_owner.name],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
-    }
-
     pub fn list_all_credit_ledger(&self, limit: i64) -> Result<Vec<CreditLedgerEntry>, String> {
         let mut stmt = self
             .conn
@@ -1843,9 +2062,7 @@ impl Store {
         let charged = self.preview_sale_total(draft)?;
         let sum: i64 = parts.iter().map(|(_, a)| *a).sum();
         if sum != charged {
-            return Err(format!(
-                "Payment parts ({sum}) must equal bill ({charged})"
-            ));
+            return Err(format!("Payment parts ({sum}) must equal bill ({charged})"));
         }
         if parts.iter().any(|(_, a)| *a <= 0) {
             return Err("Each payment amount must be > 0".into());
@@ -1914,16 +2131,15 @@ impl Store {
                 "Payment parts ({sum}) must equal the expense ({amount_paise})"
             ));
         }
-        if parts.iter().any(|(m, a)| *a <= 0 || m.is_credit() || m.is_split()) {
+        if parts
+            .iter()
+            .any(|(m, a)| *a <= 0 || m.is_credit() || m.is_split())
+        {
             return Err("Each part must be > 0, paid by cash, bank, UPI/rail, or card".into());
         }
         let cat = {
             let c = category.trim();
-            if c.is_empty() {
-                "misc"
-            } else {
-                c
-            }
+            if c.is_empty() { "misc" } else { c }
         };
         let times = EventTimes::capture(None);
         let id = new_id();
@@ -1963,10 +2179,7 @@ impl Store {
 
     /// How an expense was paid, part by part. Empty for expenses logged
     /// before tenders were recorded.
-    pub fn expense_payments_for(
-        &self,
-        expense_id: &str,
-    ) -> Result<Vec<(PayMethod, i64)>, String> {
+    pub fn expense_payments_for(&self, expense_id: &str) -> Result<Vec<(PayMethod, i64)>, String> {
         let mut stmt = self
             .conn
             .prepare(
@@ -2210,7 +2423,11 @@ impl Store {
         }
         self.audit(
             actor,
-            if cleared { "bank.clear" } else { "bank.unclear" },
+            if cleared {
+                "bank.clear"
+            } else {
+                "bank.unclear"
+            },
             movement_id,
         )?;
         Ok(())
@@ -2402,10 +2619,7 @@ impl Store {
     /// the order is name,phone,kind,note. Existing parties are not
     /// duplicated (same name + phone is skipped). Returns
     /// (added, skipped, first few problems).
-    pub fn import_parties_csv(
-        &self,
-        text: &str,
-    ) -> Result<(usize, usize, Vec<String>), String> {
+    pub fn import_parties_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
         let rows = parse_csv(text);
         let mut added = 0usize;
         let mut skipped = 0usize;
@@ -2429,8 +2643,7 @@ impl Store {
                 idx = (
                     col(&["name", "party", "customer"], &lower).unwrap_or(0),
                     col(&["phone", "mobile", "contact"], &lower).unwrap_or(usize::MAX),
-                    col(&["kind", "role", "kind_label", "type"], &lower)
-                        .unwrap_or(usize::MAX),
+                    col(&["kind", "role", "kind_label", "type"], &lower).unwrap_or(usize::MAX),
                     col(&["note", "notes", "remark"], &lower).unwrap_or(usize::MAX),
                 );
                 start = 1;
@@ -2491,7 +2704,9 @@ impl Store {
             let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
             if lower.iter().any(|c| c.trim() == "name") {
                 let find = |names: &[&str]| {
-                    lower.iter().position(|h| names.iter().any(|n| *n == h.trim()))
+                    lower
+                        .iter()
+                        .position(|h| names.iter().any(|n| *n == h.trim()))
                 };
                 i_name = find(&["name", "item", "product"]).unwrap_or(0);
                 i_price = find(&["price", "rate", "amount"]).unwrap_or(usize::MAX);
@@ -2949,7 +3164,9 @@ impl Store {
             let (kind, amount) = row.map_err(|e| e.to_string())?;
             match MoneyMoveKind::parse(&kind) {
                 Some(MoneyMoveKind::TillToBank) | Some(MoneyMoveKind::BankIn) => bank_in += amount,
-                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => bank_out += amount,
+                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => {
+                    bank_out += amount
+                }
                 None => {}
             }
         }
@@ -3094,7 +3311,7 @@ impl Store {
         Ok(out)
     }
 
-        pub fn list_products(&self, include_archived: bool) -> Result<Vec<Product>, String> {
+    pub fn list_products(&self, include_archived: bool) -> Result<Vec<Product>, String> {
         let branch = self.active_branch_id()?;
         let sql = format!(
             "SELECT {PRODUCT_COLUMNS} FROM products
@@ -3164,9 +3381,7 @@ impl Store {
     pub fn locale_settings(&self) -> Result<LocaleSettings, String> {
         let language = match self.language_source()? {
             LanguageSource::Platform => locale::detect_platform_language(),
-            LanguageSource::User => self
-                .meta_get("language")?
-                .unwrap_or_else(|| "en".into()),
+            LanguageSource::User => self.meta_get("language")?.unwrap_or_else(|| "en".into()),
         };
         Ok(LocaleSettings {
             language,
@@ -3217,18 +3432,14 @@ impl Store {
         if self.meta_get("language")?.is_none() {
             let settings = LocaleSettings {
                 language: platform.clone(),
-                currency: self
-                    .meta_get("currency")?
-                    .unwrap_or_else(|| "INR".into()),
+                currency: self.meta_get("currency")?.unwrap_or_else(|| "INR".into()),
             };
             self.set_locale_settings(&settings)?;
             return Ok(settings.language);
         }
         // While setup is open, keep the provisional pick in sync with OS when
         // the user has not switched to a fixed language yet.
-        Ok(self
-            .meta_get("language")?
-            .unwrap_or(platform))
+        Ok(self.meta_get("language")?.unwrap_or(platform))
     }
 
     /// Finish first-run language: follow the OS, or lock a catalogue language.
@@ -3305,10 +3516,7 @@ impl Store {
         };
         Ok(FiscalSettings {
             country_code: profile.code.to_string(),
-            tax_pricing: TaxPricing::parse(&or_pack(
-                "tax_pricing",
-                profile.tax_pricing.as_str(),
-            )?),
+            tax_pricing: TaxPricing::parse(&or_pack("tax_pricing", profile.tax_pricing.as_str())?),
             tax_label: or_pack("tax_label", profile.tax_name)?,
             business_tax_id: self.meta_get("business_tax_id")?.unwrap_or_default(),
             business_id_label: or_pack("business_id_label", profile.business_id_label)?,
@@ -3473,9 +3681,9 @@ impl Store {
                 .list_tax_rates()?
                 .into_iter()
                 .find(|r| r.code.eq_ignore_ascii_case(&code))
-            {
-                return Ok(existing);
-            }
+        {
+            return Ok(existing);
+        }
         let rate = TaxRate {
             id: new_id(),
             name: name.to_string(),
@@ -3506,7 +3714,10 @@ impl Store {
         }
         let branch = self.active_branch_id()?;
         self.conn
-            .execute("DELETE FROM tax_rates WHERE branch_id = ?1", params![branch])
+            .execute(
+                "DELETE FROM tax_rates WHERE branch_id = ?1",
+                params![branch],
+            )
             .map_err(|e| e.to_string())?;
         for r in rates {
             self.conn
@@ -3589,8 +3800,11 @@ impl Store {
                 .get_product(&line.product_id)?
                 .map(|p| p.tax_bps)
                 .unwrap_or(0);
-            tax_paise =
-                tax_paise.saturating_add(fiscal::tax_on_amount(line.line_total_paise, bps, pricing));
+            tax_paise = tax_paise.saturating_add(fiscal::tax_on_amount(
+                line.line_total_paise,
+                bps,
+                pricing,
+            ));
         }
         let total_paise = fiscal::gross_with_tax(draft.total_paise, tax_paise, pricing)
             .saturating_add(fiscal_settings.service_on(draft.lines_total_paise));
@@ -3615,11 +3829,9 @@ impl Store {
 
     fn meta_get(&self, key: &str) -> Result<Option<String>, String> {
         self.conn
-            .query_row(
-                "SELECT value FROM meta WHERE key = ?1",
-                params![key],
-                |r| r.get(0),
-            )
+            .query_row("SELECT value FROM meta WHERE key = ?1", params![key], |r| {
+                r.get(0)
+            })
             .optional()
             .map_err(|e| e.to_string())
     }
@@ -3667,7 +3879,10 @@ impl Store {
     /// In-app venue name (header / lock). Empty → neutral "Your shop" in UI.
     /// Does not change OS / Play Store app name.
     pub fn venue_title(&self) -> Result<String, String> {
-        Ok(self.meta_get("venue_title")?.unwrap_or_default())
+        // A local server's generated label ("Server af76697b") is not the
+        // shop's name: books that took it as one read as unnamed.
+        let title = self.meta_get("venue_title")?.unwrap_or_default();
+        Ok(if is_generated_server_label(&title) { String::new() } else { title })
     }
 
     pub fn set_venue_title(&self, title: &str) -> Result<(), String> {
@@ -3697,6 +3912,25 @@ impl Store {
 
     pub fn set_nav_order_csv(&self, csv: &str) -> Result<(), String> {
         self.meta_set("ui_nav_order", csv)
+    }
+
+    /// Favorite product ids for one user (`owner` or a staff id), in the
+    /// order the user added them. Remembered per user in the books.
+    pub fn favorite_product_ids(&self, user_key: &str) -> Vec<String> {
+        self.meta_get(&format!("favorites:{user_key}"))
+            .ok()
+            .flatten()
+            .map(|v| {
+                v.split(',')
+                    .map(|s| s.trim().to_string())
+                    .filter(|s| !s.is_empty())
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
+    pub fn set_favorite_product_ids(&self, user_key: &str, ids: &[String]) -> Result<(), String> {
+        self.meta_set(&format!("favorites:{user_key}"), &ids.join(","))
     }
 
     pub fn brand_images_dir(&self) -> Result<PathBuf, String> {
@@ -3733,11 +3967,28 @@ impl Store {
         Ok(self.meta_get("org_id")?.unwrap_or_default())
     }
 
+    /// The business name for reports and roll-ups: the one the owner saved,
+    /// else the shop's own name, else [`DEFAULT_ORG_NAME`].
     pub fn org_name(&self) -> Result<String, String> {
-        Ok(self
-            .meta_get("org_name")?
-            .filter(|s| !s.trim().is_empty())
-            .unwrap_or_else(|| "My business".into()))
+        let saved = self.saved_org_name()?;
+        if !saved.is_empty() {
+            return Ok(saved);
+        }
+        let venue = self.venue_title()?;
+        Ok(if venue.trim().is_empty() { DEFAULT_ORG_NAME.into() } else { venue })
+    }
+
+    /// The business name exactly as the owner saved it ("" = never saved).
+    /// Books made before nothing was written for the owner hold
+    /// [`DEFAULT_ORG_NAME`] — that was never theirs, so it reads as unsaved.
+    pub fn saved_org_name(&self) -> Result<String, String> {
+        let name = self.meta_get("org_name")?.unwrap_or_default();
+        let name = name.trim();
+        Ok(if name.is_empty() || name == DEFAULT_ORG_NAME || is_generated_server_label(name) {
+            String::new()
+        } else {
+            name.to_string()
+        })
     }
 
     pub fn set_org_name(&self, name: &str) -> Result<(), String> {
@@ -3979,11 +4230,7 @@ impl Store {
         }
         let reason = {
             let r = reason.trim();
-            if r.is_empty() {
-                "adjust"
-            } else {
-                r
-            }
+            if r.is_empty() { "adjust" } else { r }
         };
         self.record_stock_movement(product_id, delta_qty, reason, note.trim(), actor, "")?;
         self.audit(
@@ -4474,7 +4721,10 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         let name = if snapshot.branch_name.trim().is_empty() {
-            format!("Branch {}", &snapshot.branch_id[..8.min(snapshot.branch_id.len())])
+            format!(
+                "Branch {}",
+                &snapshot.branch_id[..8.min(snapshot.branch_id.len())]
+            )
         } else {
             snapshot.branch_name.trim().to_string()
         };
@@ -4624,7 +4874,11 @@ impl Store {
     }
 
     pub fn item_images_dir(&self) -> Result<PathBuf, String> {
-        let dir = self.path.parent().unwrap_or(Path::new(".")).join("item_images");
+        let dir = self
+            .path
+            .parent()
+            .unwrap_or(Path::new("."))
+            .join("item_images");
         fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         Ok(dir)
     }
@@ -4742,7 +4996,9 @@ impl Store {
         }
         let id = new_id();
         let stored_name = format!("{id}.webp");
-        let dest = self.attachment_entity_dir(entity, entity_id)?.join(&stored_name);
+        let dest = self
+            .attachment_entity_dir(entity, entity_id)?
+            .join(&stored_name);
         let bytes = media::write_image_as_webp(source, &dest)? as i64;
         let times = EventTimes::capture(None);
         let label = if label.trim().is_empty() {
@@ -4795,7 +5051,9 @@ impl Store {
         }
         let id = new_id();
         let stored_name = format!("{id}.{ext}");
-        let dest = self.attachment_entity_dir(entity, entity_id)?.join(&stored_name);
+        let dest = self
+            .attachment_entity_dir(entity, entity_id)?
+            .join(&stored_name);
         fs::copy(source, &dest).map_err(|e| e.to_string())?;
         let bytes = fs::metadata(&dest).map(|m| m.len() as i64).unwrap_or(0);
         let mime = if ext == "pdf" {
@@ -4903,7 +5161,10 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
-            .query_map(params![entity.as_str(), entity_id.trim()], row_to_attachment)
+            .query_map(
+                params![entity.as_str(), entity_id.trim()],
+                row_to_attachment,
+            )
             .map_err(|e| e.to_string())?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())
@@ -4987,10 +5248,7 @@ impl Store {
             return Err("Not allowed to sell".into());
         }
         draft.assert_balanced()?;
-        let credit_part = parts
-            .iter()
-            .find(|(m, _)| m.is_credit())
-            .map(|(_, a)| *a);
+        let credit_part = parts.iter().find(|(m, _)| m.is_credit()).map(|(_, a)| *a);
         let needs_customer = pay.is_credit() || credit_part.is_some();
         if needs_customer && customer_id.is_none() {
             return Err("Pick a customer for Credit".into());
@@ -5053,12 +5311,18 @@ impl Store {
                 .as_ref()
                 .map(|p| (p.tax_bps, p.tracks_stock()))
                 .unwrap_or((0, false));
-            tax_paise = tax_paise
-                .saturating_add(fiscal::tax_on_amount(line.line_total_paise, tax_bps, pricing));
+            tax_paise = tax_paise.saturating_add(fiscal::tax_on_amount(
+                line.line_total_paise,
+                tax_bps,
+                pricing,
+            ));
             if tracked && line.qty > 0 {
                 // Aggregate per item: two lines of the same product still have
                 // to fit inside one on-hand count.
-                match stock_hits.iter_mut().find(|(pid, _)| *pid == line.product_id) {
+                match stock_hits
+                    .iter_mut()
+                    .find(|(pid, _)| *pid == line.product_id)
+                {
                     Some((_, qty)) => *qty = qty.saturating_add(line.qty),
                     None => stock_hits.push((line.product_id.clone(), line.qty)),
                 }
@@ -5092,7 +5356,10 @@ impl Store {
         let branch_code = self.active_branch()?.code;
         let times = EventTimes::capture(draft.user_at.as_deref());
         let created_at = times.user_at.clone(); // books day = user time
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
 
         // Reserved inside the sale's transaction so a crash can never hand the
         // same number to two bills.
@@ -5320,73 +5587,69 @@ impl Store {
         }
 
         // Full Credit bill, or Credit portion of a mixed bill.
-        let credit_amount = credit_part.unwrap_or_else(|| {
-            if pay.is_credit() {
-                total_paise
-            } else {
-                0
-            }
-        });
+        let credit_amount =
+            credit_part.unwrap_or_else(|| if pay.is_credit() { total_paise } else { 0 });
         if credit_amount > 0
-            && let Some(cid) = customer_id {
-                // Prepaid covers the credit portion first; remainder is new udhaar.
-                let bal: i64 = tx
+            && let Some(cid) = customer_id
+        {
+            // Prepaid covers the credit portion first; remainder is new udhaar.
+            let bal: i64 = tx
                     .query_row(
                         "SELECT COALESCE(SUM(amount_paise), 0) FROM credit_ledger WHERE customer_id = ?1",
                         params![cid],
                         |r| r.get(0),
                     )
                     .map_err(|e| e.to_string())?;
-                let prepaid = (-bal).max(0);
-                let applied = credit_amount.min(prepaid);
-                let on_credit = credit_amount - applied;
-                if applied > 0 {
-                    tx.execute(
-                        "INSERT INTO credit_ledger(
+            let prepaid = (-bal).max(0);
+            let applied = credit_amount.min(prepaid);
+            let on_credit = credit_amount - applied;
+            if applied > 0 {
+                tx.execute(
+                    "INSERT INTO credit_ledger(
                             id, customer_id, created_at, kind, amount_paise,
                             sale_id, pay_method, actor_id, actor_name, detail,
                             user_at, device_at, server_at
                          ) VALUES(?1, ?2, ?3, 'apply', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
-                        params![
-                            new_id(),
-                            cid,
-                            created_at,
-                            applied,
-                            sale_id,
-                            actor.id,
-                            actor.name,
-                            format!("Applied advance on sale {sale_id}"),
-                            times.user_at,
-                            times.device_at,
-                            times.server_at
-                        ],
-                    )
-                    .map_err(|e| e.to_string())?;
-                }
-                if on_credit > 0 {
-                    tx.execute(
-                        "INSERT INTO credit_ledger(
+                    params![
+                        new_id(),
+                        cid,
+                        created_at,
+                        applied,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        format!("Applied advance on sale {sale_id}"),
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            }
+            if on_credit > 0 {
+                tx.execute(
+                    "INSERT INTO credit_ledger(
                             id, customer_id, created_at, kind, amount_paise,
                             sale_id, pay_method, actor_id, actor_name, detail,
                             user_at, device_at, server_at
                          ) VALUES(?1, ?2, ?3, 'sale', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
-                        params![
-                            new_id(),
-                            cid,
-                            created_at,
-                            on_credit,
-                            sale_id,
-                            actor.id,
-                            actor.name,
-                            format!("Credit on sale {sale_id}"),
-                            times.user_at,
-                            times.device_at,
-                            times.server_at
-                        ],
-                    )
-                    .map_err(|e| e.to_string())?;
-                }
+                    params![
+                        new_id(),
+                        cid,
+                        created_at,
+                        on_credit,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        format!("Credit on sale {sale_id}"),
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
             }
+        }
 
         let audit_detail = if draft.rounding_paise != 0 {
             format!(
@@ -5406,13 +5669,7 @@ impl Store {
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
              VALUES(?1, ?2, ?3, ?4, 'sale.finalize', ?5)",
-            params![
-                new_id(),
-                created_at,
-                actor.id,
-                actor.name,
-                audit_detail
-            ],
+            params![new_id(), created_at, actor.id, actor.name, audit_detail],
         )
         .map_err(|e| e.to_string())?;
 
@@ -5503,12 +5760,11 @@ impl Store {
         reason: &str,
         actor: &StaffMember,
     ) -> Result<Sale, String> {
-        // A Client's sales table is a sync cache, so amending it locally would
-        // be overwritten by the next snapshot. Terminals go through `/amend`.
         self.assert_server_writer("Amend sales")?;
-        if !actor.role.can_amend_sale() {
-            return Err("Not allowed to amend sales".into());
-        }
+        // `actor` is whoever answers for the change: the person themselves when
+        // their right is Allowed, or the approving Owner/Manager the caller got
+        // from `check_right` with a PIN.
+        self.check_right(actor, Right::AmendSale, None)?;
         let reason = reason.trim();
         if reason.is_empty() {
             return Err("Amend reason required".into());
@@ -5530,12 +5786,14 @@ impl Store {
         let net_paise = fiscal::net_of_tax(draft.total_paise, tax_paise, pricing);
         let tax_label = fiscal_settings.tax_label().to_string();
 
-        let previous_json =
-            serde_json::to_string(&previous).map_err(|e| e.to_string())?;
+        let previous_json = serde_json::to_string(&previous).map_err(|e| e.to_string())?;
         let revised_at = Local::now().to_rfc3339();
         let revision_id = new_id();
 
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         tx.execute(
             "INSERT INTO sale_revisions(
                 id, sale_id, revised_at, actor_id, actor_name, reason, previous_json
@@ -5588,8 +5846,11 @@ impl Store {
         // the correction would book stock the shop does not have.
         apply_amend_stock(&tx, sale_id, &previous, draft, actor, &revised_at)?;
 
-        tx.execute("DELETE FROM sale_lines WHERE sale_id = ?1", params![sale_id])
-            .map_err(|e| e.to_string())?;
+        tx.execute(
+            "DELETE FROM sale_lines WHERE sale_id = ?1",
+            params![sale_id],
+        )
+        .map_err(|e| e.to_string())?;
         for line in &draft.lines {
             tx.execute(
                 "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
@@ -5717,8 +5978,7 @@ impl Store {
         for row in rows {
             let (id, sale_id, revised_at, actor_id, actor_name, reason, previous_json) =
                 row.map_err(|e| e.to_string())?;
-            let previous: Sale =
-                serde_json::from_str(&previous_json).map_err(|e| e.to_string())?;
+            let previous: Sale = serde_json::from_str(&previous_json).map_err(|e| e.to_string())?;
             out.push(SaleRevision {
                 id,
                 sale_id,
@@ -5738,14 +5998,15 @@ impl Store {
         reason: &str,
         actor: &StaffMember,
     ) -> Result<(), String> {
-        if !actor.role.can_void_refund() {
-            return Err("Not allowed to void".into());
-        }
+        self.check_right(actor, Right::VoidRefund, None)?;
         let reason = reason.trim();
         if reason.is_empty() {
             return Err("Void reason required".into());
         }
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         let updated = tx
             .execute(
                 "UPDATE sales SET status = 'voided' WHERE id = ?1 AND status = 'completed'",
@@ -5814,13 +6075,10 @@ impl Store {
     }
 
     /// Post-charge snackbar undo: void a just-recorded sale for the seller
-    /// who charged it (or Owner/Manager). Fixed reason; no manual reason UI.
-    pub fn quick_undo_sale(
-        &mut self,
-        sale_id: &str,
-        actor: &StaffMember,
-    ) -> Result<Sale, String> {
-        if !actor.role.can_sell() {
+    /// who charged it (or Owner/Manager). Uses the Rights matrix when the
+    /// original seller cannot undo — checks whether `actor` may void this sale.
+    pub fn quick_undo_sale(&mut self, sale_id: &str, actor: &StaffMember) -> Result<Sale, String> {
+        if !actor.can_access_sell() {
             return Err("Not allowed to undo".into());
         }
         let sale = self
@@ -5829,13 +6087,20 @@ impl Store {
         if sale.status != "completed" {
             return Err("Sale already voided".into());
         }
-        if sale.created_by_id != actor.id && !actor.role.can_void_refund() {
+        // The original seller may undo directly.
+        let actor_can_quick = sale.created_by_id == actor.id;
+        // Someone else's sale is a void, so it needs the void right outright —
+        // undo has no PIN field.
+        if !actor_can_quick && self.check_right(actor, Right::VoidRefund, None).is_err() {
             return Err("Only the seller can undo this sale".into());
         }
         // Reuse void path with a fixed reason; temporarily allow via owner-level
         // by calling the same SQL as void_sale without the manager gate.
         let reason = "Quick undo";
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         let updated = tx
             .execute(
                 "UPDATE sales SET status = 'voided' WHERE id = ?1 AND status = 'completed'",
@@ -5908,14 +6173,15 @@ impl Store {
         reason: &str,
         actor: &StaffMember,
     ) -> Result<(), String> {
-        if !actor.role.can_void_refund() {
-            return Err("Not allowed to refund".into());
-        }
+        self.check_right(actor, Right::VoidRefund, None)?;
         let reason = reason.trim();
         if reason.is_empty() {
             return Err("Refund reason required".into());
         }
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         let updated = tx
             .execute(
                 "UPDATE sales SET status = 'refunded' WHERE id = ?1 AND status = 'completed'",
@@ -6088,11 +6354,9 @@ impl Store {
                 |r| r.get::<_, i64>(0),
             )
             .map_err(|e| e.to_string())?;
-        let to_bank = one(
-            "SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
+        let to_bank = one("SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
              WHERE kind = 'till_to_bank' AND created_at LIKE ?1
-               AND (branch_id = ?2 OR branch_id = '')",
-        )?;
+               AND (branch_id = ?2 OR branch_id = '')")?;
         Ok(expenses + payable + to_bank)
     }
 
@@ -6109,11 +6373,9 @@ impl Store {
                 .query_row(sql, params![branch], |r| r.get::<_, i64>(0))
                 .map_err(|e| e.to_string())
         };
-        let cash_sales = one(
-            "SELECT COALESCE(SUM(total_paise), 0) FROM sales
+        let cash_sales = one("SELECT COALESCE(SUM(total_paise), 0) FROM sales
              WHERE status = 'completed' AND pay_method = 'cash'
-               AND (branch_id = ?1 OR branch_id = '')",
-        )?;
+               AND (branch_id = ?1 OR branch_id = '')")?;
         let split_cash = one(
             "SELECT COALESCE(SUM(p.amount_paise), 0) FROM sale_payments p
              JOIN sales s ON s.id = p.sale_id
@@ -6131,10 +6393,8 @@ impl Store {
                 |r| r.get::<_, i64>(0),
             )
             .map_err(|e| e.to_string())?;
-        let from_bank = one(
-            "SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
-             WHERE kind = 'bank_to_till' AND (branch_id = ?1 OR branch_id = '')",
-        )?;
+        let from_bank = one("SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
+             WHERE kind = 'bank_to_till' AND (branch_id = ?1 OR branch_id = '')")?;
         let out = self.cash_out_paise(None)?;
         Ok(cash_sales + split_cash + settles_in + from_bank - out)
     }
@@ -6239,6 +6499,398 @@ impl Store {
     }
 
     /// Unlock as Owner — PIN must match an active owner account.
+    // ------------------------------------------------------------ LAN: Server
+
+    /// Pair a phone: a fresh token (only its hash is kept here).
+    pub fn pair_lan_device(&self, name: &str) -> Result<(String, String), String> {
+        let id = new_id();
+        let token = random_token()?;
+        let name = name.trim();
+        let name = if name.is_empty() { "Phone" } else { name };
+        self.conn
+            .execute(
+                "INSERT INTO lan_devices(id, name, token_hash, paired_at, last_seen_at)
+                 VALUES(?1, ?2, ?3, ?4, ?4)",
+                params![id, name, lan_token_hash(&token), Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        // Who joined the office and when, in the books' own history.
+        self.audit_as(&id, name, "lan.pair", "paired with the office's code")?;
+        Ok((id, token))
+    }
+
+    /// The paired, not forgotten phone holding `token` (and note it was seen).
+    pub fn lan_device_for_token(&self, token: &str) -> Result<Option<LanDevice>, String> {
+        if token.trim().is_empty() {
+            return Ok(None);
+        }
+        let device = self
+            .conn
+            .query_row(
+                "SELECT id, name, paired_at, last_seen_at FROM lan_devices
+                  WHERE token_hash = ?1 AND revoked_at = ''",
+                params![lan_token_hash(token)],
+                LanDevice::from_row,
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        if let Some(d) = &device {
+            // Noted at most every half minute: a device asks every few
+            // seconds, and each note is a disk write.
+            let now = Local::now();
+            let _ = self.conn.execute(
+                "UPDATE lan_devices SET last_seen_at = ?2 WHERE id = ?1 AND last_seen_at < ?3",
+                params![
+                    d.id,
+                    now.to_rfc3339(),
+                    (now - chrono::Duration::seconds(LAN_SEEN_EVERY_SECS)).to_rfc3339()
+                ],
+            );
+        }
+        Ok(device)
+    }
+
+    /// Phones paired to this Server, most recently seen first.
+    pub fn list_lan_devices(&self) -> Result<Vec<LanDevice>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, name, paired_at, last_seen_at FROM lan_devices
+                  WHERE revoked_at = '' ORDER BY last_seen_at DESC",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], LanDevice::from_row)
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    /// Forget a phone (lost, stolen, staff left): its token and sign-ins
+    /// stop working at once; it must pair again with the current code.
+    pub fn forget_lan_device(&self, device_id: &str, actor: &StaffMember) -> Result<(), String> {
+        let name: String = self
+            .conn
+            .query_row("SELECT name FROM lan_devices WHERE id = ?1", params![device_id], |r| r.get(0))
+            .optional()
+            .map_err(|e| e.to_string())?
+            .unwrap_or_default();
+        self.conn
+            .execute(
+                "UPDATE lan_devices SET revoked_at = ?2 WHERE id = ?1",
+                params![device_id, Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "DELETE FROM lan_sessions WHERE device_id = ?1",
+                params![device_id],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(actor, "lan.forget", &name)
+    }
+
+    /// A new pairing code; phones already paired keep working.
+    pub fn new_pairing_code(&self, actor: &StaffMember) -> Result<String, String> {
+        self.meta_set("pairing_code", "")?;
+        let code = self.ensure_server_pairing_code()?;
+        self.audit(actor, "lan.new_code", "")?;
+        Ok(code)
+    }
+
+    /// PIN typed on a phone, checked here: the Owner, or one staff member.
+    pub fn authenticate_lan_pin(
+        &self,
+        staff_id: Option<&str>,
+        pin: &str,
+    ) -> Result<Option<StaffMember>, String> {
+        match staff_id {
+            None => self.authenticate_owner_pin(pin),
+            Some(id) => {
+                let Some(member) = self
+                    .list_staff()?
+                    .into_iter()
+                    .find(|s| s.id == id && s.active)
+                else {
+                    return Ok(None);
+                };
+                Ok(verify_pin(pin, &member.pin_hash)?.then_some(member))
+            }
+        }
+    }
+
+    /// Sign `staff_id` in on a phone for a shift; returns the session token.
+    pub fn open_lan_session(&self, device_id: &str, staff_id: &str) -> Result<String, String> {
+        let token = random_token()?;
+        let now = Local::now();
+        self.conn
+            .execute(
+                "DELETE FROM lan_sessions WHERE expires_at < ?1",
+                params![now.to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "INSERT INTO lan_sessions(token_hash, device_id, staff_id, created_at, expires_at)
+                 VALUES(?1, ?2, ?3, ?4, ?5)",
+                params![
+                    lan_token_hash(&token),
+                    device_id,
+                    staff_id,
+                    now.to_rfc3339(),
+                    (now + chrono::Duration::hours(LAN_SESSION_HOURS)).to_rfc3339()
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(token)
+    }
+
+    /// Who is signed in with `token` on this phone (None: sign in again).
+    pub fn lan_session_staff(
+        &self,
+        device_id: &str,
+        token: &str,
+    ) -> Result<Option<StaffMember>, String> {
+        if token.trim().is_empty() {
+            return Ok(None);
+        }
+        let staff_id: Option<String> = self
+            .conn
+            .query_row(
+                "SELECT staff_id FROM lan_sessions
+                  WHERE token_hash = ?1 AND device_id = ?2 AND expires_at > ?3",
+                params![lan_token_hash(token), device_id, Local::now().to_rfc3339()],
+                |r| r.get(0),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        let Some(staff_id) = staff_id else {
+            return Ok(None);
+        };
+        Ok(self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.id == staff_id && s.active))
+    }
+
+    /// The answer already given to this request (a phone retrying after a
+    /// lost reply gets it again; the write is not done twice).
+    pub fn lan_reply(
+        &self,
+        request_id: &str,
+        device_id: &str,
+    ) -> Result<Option<(u16, String)>, String> {
+        self.conn
+            .query_row(
+                "SELECT status, body FROM lan_replies WHERE request_id = ?1 AND device_id = ?2",
+                params![request_id, device_id],
+                |r| Ok((r.get::<_, i64>(0)? as u16, r.get(1)?)),
+            )
+            .optional()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn save_lan_reply(
+        &self,
+        request_id: &str,
+        device_id: &str,
+        status: u16,
+        body: &str,
+    ) -> Result<(), String> {
+        let now = Local::now();
+        self.conn
+            .execute(
+                "INSERT OR REPLACE INTO lan_replies(request_id, device_id, status, body, created_at)
+                 VALUES(?1, ?2, ?3, ?4, ?5)",
+                params![request_id, device_id, status as i64, body, now.to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        // A week covers any phone that sat offline over a weekend.
+        self.conn
+            .execute(
+                "DELETE FROM lan_replies WHERE created_at < ?1",
+                params![(now - chrono::Duration::days(7)).to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    // ------------------------------------------------------------- LAN: phone
+
+    /// Keep a write for the Server; it goes in `seq` order.
+    pub fn enqueue_lan(&self, item: &LanQueued) -> Result<(), String> {
+        self.conn
+            .execute(
+                "INSERT INTO lan_outbox(id, seq, path, body, label, table_id, staff_id, created_at)
+                 VALUES(?1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM lan_outbox), ?2, ?3, ?4, ?5, ?6, ?7)",
+                params![item.id, item.path, item.body, item.label, item.table_id, item.staff_id, Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Everything still waiting, oldest first.
+    pub fn lan_outbox(&self) -> Result<Vec<LanQueued>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, path, body, label, table_id, staff_id, attempts, last_error
+                   FROM lan_outbox ORDER BY seq",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(LanQueued {
+                    id: r.get(0)?,
+                    path: r.get(1)?,
+                    body: r.get(2)?,
+                    label: r.get(3)?,
+                    table_id: r.get(4)?,
+                    staff_id: r.get(5)?,
+                    attempts: r.get(6)?,
+                    last_error: r.get(7)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn lan_outbox_done(&self, id: &str) -> Result<(), String> {
+        self.conn
+            .execute("DELETE FROM lan_outbox WHERE id = ?1", params![id])
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn lan_outbox_retry_later(&self, id: &str, error: &str) -> Result<(), String> {
+        self.conn
+            .execute(
+                "UPDATE lan_outbox SET attempts = attempts + 1, last_error = ?2 WHERE id = ?1",
+                params![id, error],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// The Server turned a waiting write down for good: it leaves the queue
+    /// (it would be refused forever) and is kept, with the Server's words,
+    /// on the "not accepted" list until someone has seen it.
+    pub fn lan_outbox_refused(&self, id: &str, error: &str) -> Result<(), String> {
+        self.in_transaction(|| {
+            self.conn
+                .execute(
+                    "INSERT OR REPLACE INTO lan_refused(id, path, body, label, error, created_at, refused_at)
+                     SELECT id, path, body, label, ?2, created_at, ?3 FROM lan_outbox WHERE id = ?1",
+                    params![id, error, Local::now().to_rfc3339()],
+                )
+                .map_err(|e| e.to_string())?;
+            self.lan_outbox_done(id)
+        })
+    }
+
+    /// Writes the Server would not accept, newest first.
+    pub fn lan_refused(&self) -> Result<Vec<LanRefused>, String> {
+        let mut stmt = self
+            .conn
+            .prepare("SELECT id, label, error, created_at, refused_at FROM lan_refused ORDER BY refused_at DESC")
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(LanRefused {
+                    id: r.get(0)?,
+                    label: r.get(1)?,
+                    error: r.get(2)?,
+                    created_at: r.get(3)?,
+                    refused_at: r.get(4)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>().map_err(|e| e.to_string())
+    }
+
+    /// When this device last had the Server's latest books (RFC 3339), kept
+    /// across restarts so an offline screen can still say how old it is.
+    pub fn lan_synced_at(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("lan_synced_at")?.filter(|s| !s.is_empty()))
+    }
+
+    /// Note that the books are current as of `at` — written at most once a
+    /// minute (a quiet Server is asked every few seconds).
+    pub fn note_lan_synced(&self, at: &chrono::DateTime<Local>) -> Result<(), String> {
+        let stamp = at.to_rfc3339();
+        let same_minute = self.lan_synced_at()?.is_some_and(|t| t.get(..16) == stamp.get(..16));
+        if same_minute { Ok(()) } else { self.meta_set("lan_synced_at", &stamp) }
+    }
+
+    /// Someone has seen the "not accepted" list and dealt with it.
+    pub fn clear_lan_refused(&self) -> Result<(), String> {
+        self.conn
+            .execute("DELETE FROM lan_refused", [])
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Remember a staff member's PIN on this phone after the Server accepted
+    /// it, with their session: they (and only they) can unlock here while
+    /// the Wi‑Fi is down.
+    pub fn remember_lan_sign_in(
+        &self,
+        staff: &StaffMember,
+        pin: &str,
+        session: &str,
+    ) -> Result<(), String> {
+        let key = if staff.is_owner() {
+            "owner".to_string()
+        } else {
+            staff.id.clone()
+        };
+        self.meta_set(&format!("lan_pin:{key}"), &hash_pin(pin)?)?;
+        let member = StaffMember {
+            pin_hash: String::new(),
+            ..staff.clone()
+        };
+        let saved = serde_json::json!({ "session": session, "staff": member });
+        self.meta_set(&format!("lan_session:{key}"), &saved.to_string())?;
+        Ok(())
+    }
+
+    /// The session saved for `key` (a staff id, or "owner").
+    pub fn saved_lan_session(&self, key: &str) -> Result<Option<String>, String> {
+        let Some(saved) = self.meta_get(&format!("lan_session:{key}"))? else {
+            return Ok(None);
+        };
+        let saved: serde_json::Value = serde_json::from_str(&saved).map_err(|e| e.to_string())?;
+        Ok(saved["session"]
+            .as_str()
+            .map(str::to_string)
+            .filter(|s| !s.is_empty()))
+    }
+
+    /// Offline unlock: the session saved when this person last signed in
+    /// on this phone, if the PIN matches. `staff_id` None = the Owner.
+    pub fn offline_lan_sign_in(
+        &self,
+        staff_id: Option<&str>,
+        pin: &str,
+    ) -> Result<Option<(StaffMember, String)>, String> {
+        let key = staff_id.unwrap_or("owner");
+        let Some(hash) = self.meta_get(&format!("lan_pin:{key}"))? else {
+            return Ok(None);
+        };
+        if !verify_pin(pin, &hash)? {
+            return Ok(None);
+        }
+        let Some(saved) = self.meta_get(&format!("lan_session:{key}"))? else {
+            return Ok(None);
+        };
+        let saved: serde_json::Value = serde_json::from_str(&saved).map_err(|e| e.to_string())?;
+        let staff: StaffMember =
+            serde_json::from_value(saved["staff"].clone()).map_err(|e| e.to_string())?;
+        let session = saved["session"].as_str().unwrap_or_default().to_string();
+        Ok(Some((staff, session)))
+    }
+
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
         for member in self.list_staff()? {
             if member.is_owner() && verify_pin(pin, &member.pin_hash)? {
@@ -6439,11 +7091,7 @@ impl Store {
         Ok(())
     }
 
-    pub fn set_own_password(
-        &self,
-        new_password: &str,
-        actor: &StaffMember,
-    ) -> Result<(), String> {
+    pub fn set_own_password(&self, new_password: &str, actor: &StaffMember) -> Result<(), String> {
         self.assert_server_writer("Change your password")?;
         if new_password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
@@ -6509,11 +7157,7 @@ impl Store {
         Ok(())
     }
 
-    pub fn deactivate_staff(
-        &self,
-        staff_id: &str,
-        actor: &StaffMember,
-    ) -> Result<(), String> {
+    pub fn deactivate_staff(&self, staff_id: &str, actor: &StaffMember) -> Result<(), String> {
         self.assert_server_writer("Remove staff")?;
         if !actor.role.can_admin() {
             return Err("Only Owner can deactivate staff".into());
@@ -6535,7 +7179,7 @@ impl Store {
         Ok(())
     }
 
-        pub fn add_customer(&self, name: &str, phone: &str) -> Result<Customer, String> {
+    pub fn add_customer(&self, name: &str, phone: &str) -> Result<Customer, String> {
         self.add_customer_kind(name, phone, "")
     }
 
@@ -6659,10 +7303,7 @@ impl Store {
             ));
         }
         self.conn
-            .execute(
-                "DELETE FROM customers WHERE id = ?1",
-                params![customer_id],
-            )
+            .execute("DELETE FROM customers WHERE id = ?1", params![customer_id])
             .map_err(|e| e.to_string())?;
         Ok(format!("Deleted party {name}"))
     }
@@ -7443,9 +8084,7 @@ impl Store {
                 .map_err(|e| e.to_string())?
                 .unwrap_or(false);
             if !known {
-                return Err(format!(
-                    "Unit '{code}' does not exist — add the unit first"
-                ));
+                return Err(format!("Unit '{code}' does not exist — add the unit first"));
             }
         }
         if crate::domain::standard_unit_family(&from_code).is_some() {
@@ -7505,12 +8144,12 @@ impl Store {
         if from_code == to_code {
             return Ok(qty_milli);
         }
-        let (from_family, from_factor) = self.resolve_unit(&from_code).ok_or_else(|| {
-            format!("Unit '{from_code}' is not linked to a standard unit yet")
-        })?;
-        let (to_family, to_factor) = self.resolve_unit(&to_code).ok_or_else(|| {
-            format!("Unit '{to_code}' is not linked to a standard unit yet")
-        })?;
+        let (from_family, from_factor) = self
+            .resolve_unit(&from_code)
+            .ok_or_else(|| format!("Unit '{from_code}' is not linked to a standard unit yet"))?;
+        let (to_family, to_factor) = self
+            .resolve_unit(&to_code)
+            .ok_or_else(|| format!("Unit '{to_code}' is not linked to a standard unit yet"))?;
         if from_family != to_family {
             return Err(format!(
                 "Cannot convert {from_code} ({from_family}) to {to_code} ({to_family}) — different kinds of measure"
@@ -7526,10 +8165,7 @@ impl Store {
     /// standard unit is reached — a custom unit may be based on another
     /// custom unit, as long as the chain ultimately lands on a standard.
     /// `None` when the chain dangles (never reaches a standard) or loops.
-    pub fn resolve_unit(
-        &self,
-        code: &str,
-    ) -> Option<(String, rust_decimal::Decimal)> {
+    pub fn resolve_unit(&self, code: &str) -> Option<(String, rust_decimal::Decimal)> {
         let code = code.trim().to_ascii_lowercase();
         self.resolve_unit_walk(&code, &mut std::collections::HashSet::new())
     }
@@ -7581,9 +8217,10 @@ impl Store {
             if !seen.insert(code.clone()) {
                 continue;
             }
-            if let Ok(mut stmt) = self.conn.prepare(
-                "SELECT to_code FROM unit_conversions WHERE from_code = ?1",
-            ) {
+            if let Ok(mut stmt) = self
+                .conn
+                .prepare("SELECT to_code FROM unit_conversions WHERE from_code = ?1")
+            {
                 if let Ok(rows) = stmt.query_map(params![code], |row| row.get::<_, String>(0)) {
                     for to in rows.flatten() {
                         stack.push(to);
@@ -7823,6 +8460,12 @@ impl Store {
     }
 
     pub fn audit(&self, actor: &StaffMember, action: &str, detail: &str) -> Result<(), String> {
+        self.audit_as(&actor.id, &actor.name, action, detail)
+    }
+
+    /// An audit line by something that is not a staff member (a device
+    /// pairing itself with the office's code).
+    fn audit_as(&self, actor_id: &str, actor_name: &str, action: &str, detail: &str) -> Result<(), String> {
         self.conn
             .execute(
                 "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -7830,8 +8473,8 @@ impl Store {
                 params![
                     new_id(),
                     Local::now().to_rfc3339(),
-                    actor.id,
-                    actor.name,
+                    actor_id,
+                    actor_name,
                     action,
                     detail
                 ],
@@ -7840,14 +8483,159 @@ impl Store {
         Ok(())
     }
 
+    /// Tests that seed months of trading: write without waiting on the disk.
+    #[cfg(test)]
+    pub(crate) fn fast_writes_for_test(&self) {
+        self.conn.execute_batch("PRAGMA synchronous = OFF").unwrap();
+    }
+
+    /// Tests that seed months of trading: move a bill to an earlier day.
+    #[cfg(test)]
+    pub(crate) fn backdate_sale_for_test(&self, sale_id: &str, at: &str) {
+        self.conn
+            .execute(
+                "UPDATE sales SET created_at = ?1, user_at = ?1, device_at = ?1 WHERE id = ?2",
+                params![at, sale_id],
+            )
+            .unwrap();
+    }
+
+    /// Write a backup to `dest` and read it back: a file that does not pass
+    /// the same check a restore makes (a full disk, a failing USB stick) is
+    /// deleted and reported, never left looking like a backup.
     pub fn backup_to(&self, dest: &Path) -> Result<(), String> {
         if let Some(parent) = dest.parent() {
             fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
-        self.conn
+        let written = self
+            .conn
             .execute("VACUUM INTO ?1", params![dest.to_string_lossy().as_ref()])
-            .map_err(|e| e.to_string())?;
-        Ok(())
+            .map_err(|e| format!("Could not write the backup to {}: {e}", dest.display()))
+            .and_then(|_| check_backup_file(dest));
+        if written.is_err() {
+            let _ = fs::remove_file(dest);
+        }
+        written
+    }
+
+    /// Back up once a day — the first time the books are open 20 hours
+    /// after the last one — into `backups/` beside the books, and into the
+    /// owner's second folder (USB stick, synced folder) when one is set.
+    /// Keeps the last [`AUTO_BACKUP_KEEP`]. Returns the new file, if made.
+    pub fn auto_backup_if_due(&self) -> Result<Option<PathBuf>, String> {
+        let now = Local::now();
+        if let Some(last) = self
+            .meta_get("last_backup_at")?
+            .and_then(|t| chrono::DateTime::parse_from_rfc3339(&t).ok())
+            && now.signed_duration_since(last) < chrono::Duration::hours(20)
+        {
+            return Ok(None);
+        }
+        let dir = self.auto_backup_dir();
+        let file = dir.join(format!("auto-{}.sqlite3", now.format("%Y%m%d-%H%M%S%3f")));
+        if let Err(e) = self.backup_to(&file) {
+            // Said on the owner's screens until a backup works again.
+            self.meta_set("backup_error", &e)?;
+            return Err(e);
+        }
+        self.meta_set("backup_error", "")?;
+        self.meta_set("last_backup_at", &now.to_rfc3339())?;
+        prune_auto_backups(&dir, AUTO_BACKUP_KEEP);
+        if let Some(extra) = self.backup_copy_dir()? {
+            let copied = fs::create_dir_all(&extra)
+                .and_then(|()| fs::copy(&file, extra.join(file.file_name().unwrap_or_default())))
+                .map_err(|e| format!("Could not copy the backup to {}: {e}", extra.display()));
+            match copied {
+                Ok(_) => {
+                    prune_auto_backups(&extra, AUTO_BACKUP_KEEP);
+                    self.meta_set("backup_copy_error", "")?;
+                    self.note_backup_copy_saved()?;
+                }
+                Err(e) => self.meta_set("backup_copy_error", &e)?,
+            }
+        }
+        Ok(Some(file))
+    }
+
+    /// Where the automatic backups of these books go.
+    pub fn auto_backup_dir(&self) -> PathBuf {
+        self.path.parent().unwrap_or(Path::new(".")).join("backups")
+    }
+
+    pub fn last_backup_at(&self) -> Result<Option<String>, String> {
+        Ok(self.meta_get("last_backup_at")?.filter(|s| !s.is_empty()))
+    }
+
+    /// The owner's second place for backups, if set.
+    pub fn backup_copy_dir(&self) -> Result<Option<PathBuf>, String> {
+        Ok(self
+            .meta_get("backup_copy_dir")?
+            .filter(|s| !s.trim().is_empty())
+            .map(PathBuf::from))
+    }
+
+    pub fn set_backup_copy_dir(&self, dir: Option<&Path>) -> Result<(), String> {
+        self.meta_set(
+            "backup_copy_dir",
+            &dir.map(|d| d.to_string_lossy().into_owned())
+                .unwrap_or_default(),
+        )?;
+        self.meta_set("backup_copy_error", "")
+    }
+
+    /// A copy of the books left this device (the second folder, or one the
+    /// owner saved somewhere with "Save a backup copy").
+    pub fn note_backup_copy_saved(&self) -> Result<(), String> {
+        self.meta_set("backup_copy_at", &Local::now().to_rfc3339())
+    }
+
+    /// Days with no copy off this device, once that is [`COPY_DUE_DAYS`] or
+    /// more: counted from the last copy, or — never copied — from the oldest
+    /// backup still kept (how long the books have been here). A device that
+    /// is lost or breaks takes every backup kept on it along.
+    pub fn backup_copy_overdue_days(&self) -> Result<Option<i64>, String> {
+        let now = Local::now();
+        let since = match self.meta_get("backup_copy_at")?.filter(|s| !s.is_empty()) {
+            Some(at) => chrono::DateTime::parse_from_rfc3339(&at).ok().map(|t| t.with_timezone(&Local)),
+            None => fs::read_dir(self.auto_backup_dir())
+                .ok()
+                .into_iter()
+                .flatten()
+                .filter_map(|e| e.ok())
+                .filter(|e| e.file_name().to_string_lossy().starts_with("auto-"))
+                .filter_map(|e| e.metadata().ok()?.modified().ok())
+                .min()
+                .map(chrono::DateTime::<Local>::from),
+        };
+        Ok(since
+            .map(|t| now.signed_duration_since(t).num_days())
+            .filter(|days| *days >= COPY_DUE_DAYS))
+    }
+
+    /// Why the last copy to the second folder failed ("" = it did not).
+    pub fn backup_copy_error(&self) -> Result<String, String> {
+        Ok(self.meta_get("backup_copy_error")?.unwrap_or_default())
+    }
+
+    /// What the owner must know about keeping these books safe: a failing
+    /// backup, no backup for days, or a disk filling up.
+    pub fn backup_health(&self) -> Result<BackupHealth, String> {
+        let last_at = self.last_backup_at()?;
+        let days_since = last_at
+            .as_deref()
+            .and_then(|t| chrono::DateTime::parse_from_rfc3339(t).ok())
+            .map(|t| Local::now().signed_duration_since(t).num_days());
+        let books_mb = fs::metadata(&self.path).map(|m| m.len() / 1_048_576).unwrap_or(0);
+        let free_mb = self.path.parent().and_then(free_space_bytes).map(|b| b / 1_048_576);
+        Ok(BackupHealth {
+            last_at,
+            days_since,
+            error: self.meta_get("backup_error")?.unwrap_or_default(),
+            copy_error: self.backup_copy_error()?,
+            free_mb,
+            low_space: free_mb.is_some_and(|free| free < LOW_SPACE_MB.max(books_mb * 3)),
+            copy_overdue_days: self.backup_copy_overdue_days()?,
+        })
     }
 
     /// Restore into the active local server DB (Server Mode).
@@ -7864,6 +8652,8 @@ impl Store {
         if !backup.exists() {
             return Err(format!("No backup at {}", backup.display()));
         }
+        // A wrong or damaged file must never replace working books.
+        check_backup_file(backup)?;
         if let Some(parent) = dest.parent() {
             fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
@@ -7896,9 +8686,7 @@ impl Store {
     pub fn list_zones(&self) -> Result<Vec<crate::rates::Zone>, String> {
         let mut stmt = self
             .conn
-            .prepare(
-                "SELECT id, name, note, active FROM zones WHERE active = 1 ORDER BY name",
-            )
+            .prepare("SELECT id, name, note, active FROM zones WHERE active = 1 ORDER BY name")
             .map_err(|e| e.to_string())?;
         let rows = stmt
             .query_map([], |r| {
@@ -8012,7 +8800,12 @@ impl Store {
         Ok(())
     }
 
-    pub fn add_rider(&self, name: &str, phone: &str, vehicle: &str) -> Result<crate::manifest::Rider, String> {
+    pub fn add_rider(
+        &self,
+        name: &str,
+        phone: &str,
+        vehicle: &str,
+    ) -> Result<crate::manifest::Rider, String> {
         let mut r = crate::manifest::Rider::new(name);
         r.phone = phone.trim().into();
         r.vehicle_label = vehicle.trim().into();
@@ -8053,7 +8846,11 @@ impl Store {
         Ok(sale)
     }
 
-    pub fn set_sale_carrier_cost(&self, sale_id: &str, carrier_cost_paise: i64) -> Result<(), String> {
+    pub fn set_sale_carrier_cost(
+        &self,
+        sale_id: &str,
+        carrier_cost_paise: i64,
+    ) -> Result<(), String> {
         self.assert_server_writer("Carrier cost")?;
         self.conn
             .execute(
@@ -8109,7 +8906,10 @@ impl Store {
         Ok(event_id)
     }
 
-    pub fn list_tracking_events(&self, sale_id: &str) -> Result<Vec<crate::manifest::TrackingEvent>, String> {
+    pub fn list_tracking_events(
+        &self,
+        sale_id: &str,
+    ) -> Result<Vec<crate::manifest::TrackingEvent>, String> {
         let mut stmt = self
             .conn
             .prepare(
@@ -8178,7 +8978,10 @@ impl Store {
                 (String::new(), r.name)
             }
         };
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         tx.execute(
             "INSERT INTO manifests(
                 id, created_at, user_at, device_at, kind,
@@ -8200,9 +9003,7 @@ impl Store {
         .map_err(|e| e.to_string())?;
 
         let next_status = match kind {
-            crate::manifest::HandoverKind::Carrier => {
-                crate::manifest::TrackingStatus::HandedOver
-            }
+            crate::manifest::HandoverKind::Carrier => crate::manifest::TrackingStatus::HandedOver,
             crate::manifest::HandoverKind::OwnFleet => {
                 crate::manifest::TrackingStatus::OutForDelivery
             }
@@ -8342,7 +9143,10 @@ impl Store {
         let times = EventTimes::capture(None);
         let id = new_id();
         let branch_code = self.active_branch()?.code;
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         let invoice_no = reserve_invoice_no(&tx, &branch_code)?;
         let sale_ids_json = serde_json::to_string(&sale_ids).map_err(|e| e.to_string())?;
         tx.execute(
@@ -8391,7 +9195,10 @@ impl Store {
         })
     }
 
-    pub fn list_period_bills(&self, limit: i64) -> Result<Vec<crate::consignments::PeriodBill>, String> {
+    pub fn list_period_bills(
+        &self,
+        limit: i64,
+    ) -> Result<Vec<crate::consignments::PeriodBill>, String> {
         let mut stmt = self
             .conn
             .prepare(
@@ -8490,7 +9297,10 @@ impl Store {
         let times = EventTimes::capture(None);
         let id = new_id();
         let mut total = 0i64;
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(|e| e.to_string())?;
         for eid in entry_ids {
             let row: Option<(i64, String)> = tx
                 .query_row(
@@ -8549,7 +9359,8 @@ impl Store {
         })
     }
 
-    pub fn write_awb_label(&self, sale_id: &str) -> Result<PathBuf, String> {
+    /// Build the AWB label fields for a sale (SVG + plain-text print).
+    pub fn awb_label_for_sale(&self, sale_id: &str) -> Result<crate::labels::AwbLabel, String> {
         let sale = self
             .get_sale(sale_id)?
             .ok_or_else(|| "Sale not found".to_string())?;
@@ -8572,7 +9383,7 @@ impl Store {
             .locale_settings()
             .map(|l| l.currency)
             .unwrap_or_else(|_| "INR".into());
-        let label = crate::labels::AwbLabel {
+        Ok(crate::labels::AwbLabel {
             awb_no: sale.awb_no.clone(),
             from_name: from,
             to_name: sale.consignee_name.clone(),
@@ -8587,13 +9398,27 @@ impl Store {
                 agency
             },
             currency_code,
-        };
-        let dir = self
-            .path
-            .parent()
-            .unwrap_or(Path::new("."))
-            .join("labels");
+        })
+    }
+
+    pub fn write_awb_label(&self, sale_id: &str) -> Result<PathBuf, String> {
+        let label = self.awb_label_for_sale(sale_id)?;
+        let dir = self.path.parent().unwrap_or(Path::new(".")).join("labels");
         label.write_svg_file(&dir)
+    }
+
+    /// Save the SVG and send plain text along the AWB label printer route.
+    pub fn print_awb_label(&self, sale_id: &str) -> Result<PathBuf, String> {
+        let label = self.awb_label_for_sale(sale_id)?;
+        let dir = self.path.parent().unwrap_or(Path::new(".")).join("labels");
+        let path = label.write_svg_file(&dir)?;
+        let _ = crate::print_share::print_route(
+            crate::print_share::PrintKind::Label,
+            crate::print_share::RouteKey::Label,
+            &label.to_plain_text(),
+            self.path.parent(),
+        )?;
+        Ok(path)
     }
 
     pub fn queue_notify(&self, row: &crate::notify::NotifyOutboxRow) -> Result<(), String> {
@@ -8617,7 +9442,10 @@ impl Store {
         Ok(())
     }
 
-    pub fn list_notify_outbox(&self, limit: i64) -> Result<Vec<crate::notify::NotifyOutboxRow>, String> {
+    pub fn list_notify_outbox(
+        &self,
+        limit: i64,
+    ) -> Result<Vec<crate::notify::NotifyOutboxRow>, String> {
         let mut stmt = self
             .conn
             .prepare(
@@ -8684,6 +9512,17 @@ impl Store {
 pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
 /// Launcher / window label from the same env file.
 pub const APP_LABEL: &str = env!("KUMKAJ_APP_LABEL");
+
+/// What reports call a business whose owner never named it.
+pub const DEFAULT_ORG_NAME: &str = "My business";
+
+/// "Server " + 8 hex digits: the label a local server gets when it is made
+/// without a name (`local_servers::create_local_server`).
+pub fn is_generated_server_label(name: &str) -> bool {
+    name.trim()
+        .strip_prefix("Server ")
+        .is_some_and(|id| id.len() == 8 && id.chars().all(|c| c.is_ascii_hexdigit()))
+}
 /// `development` or `production`.
 pub const APP_ENV: &str = env!("KUMKAJ_ENV");
 /// Show the live W×H badge (development.env sets this to 1).
@@ -8738,6 +9577,14 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
 /// still has — and now that overselling is refused outright, that stock would
 /// be unsellable. Untracked items (`stock_qty` = −1) are skipped.
+/// A right in words, for refusals the person reads.
+fn right_words(right: Right) -> &'static str {
+    match right {
+        Right::VoidRefund => "Voiding or refunding a booking",
+        Right::AmendSale => "Amending a recorded booking",
+    }
+}
+
 fn restore_stock_for_sale(
     tx: &Connection,
     sale_id: &str,
@@ -8821,12 +9668,11 @@ fn apply_amend_stock(
     at: &str,
 ) -> Result<(), String> {
     let mut deltas: Vec<(String, i64)> = Vec::new();
-    let mut bump = |product_id: &str, qty: i64| {
-        match deltas.iter_mut().find(|(id, _)| id == product_id) {
+    let mut bump =
+        |product_id: &str, qty: i64| match deltas.iter_mut().find(|(id, _)| id == product_id) {
             Some((_, sum)) => *sum = sum.saturating_add(qty),
             None => deltas.push((product_id.to_string(), qty)),
-        }
-    };
+        };
     // Positive = goes back on the shelf, negative = leaves the shelf.
     for line in &previous.lines {
         bump(&line.product_id, line.qty);
@@ -8907,7 +9753,11 @@ fn reserve_invoice_no(tx: &Connection, branch_code: &str) -> Result<String, Stri
     )
     .map_err(|e| e.to_string())?;
     let code = branch_code.trim().to_uppercase();
-    let code = if code.is_empty() { "MAIN" } else { code.as_str() };
+    let code = if code.is_empty() {
+        "MAIN"
+    } else {
+        code.as_str()
+    };
     Ok(format!("INV-{code}-{seq:06}"))
 }
 
@@ -9160,11 +10010,206 @@ pub fn save_window_geom(prefs: WindowGeomPrefs) {
     }
 }
 
+/// A file is this app's books, whole: SQLite, passes its own check, and
+/// holds the books' tables. Checked before a restore replaces anything.
+pub fn check_backup_file(path: &Path) -> Result<(), String> {
+    let not_books = || format!("{} is not a backup of these books", path.display());
+    let conn = Connection::open_with_flags(path, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)
+        .map_err(|_| not_books())?;
+    let check: String = conn
+        .query_row("PRAGMA quick_check", [], |r| r.get(0))
+        .map_err(|_| not_books())?;
+    if check != "ok" {
+        return Err(format!(
+            "{} is damaged ({check}) — pick another backup",
+            path.display()
+        ));
+    }
+    for table in ["meta", "sales", "products", "staff"] {
+        let found: i64 = conn
+            .query_row(
+                "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = ?1",
+                params![table],
+                |r| r.get(0),
+            )
+            .map_err(|_| not_books())?;
+        if found == 0 {
+            return Err(not_books());
+        }
+    }
+    // Another Kumkaj app's books have the same tables but are not a
+    // courier office's: never restore them over these.
+    let meta = |key: &str| -> String {
+        conn.query_row("SELECT value FROM meta WHERE key = ?1", params![key], |r| r.get(0))
+            .unwrap_or_default()
+    };
+    let (app, template) = (meta("app"), meta("entity_template"));
+    if (!app.is_empty() && app != APP_MARK) || (!template.is_empty() && !template.starts_with("courier")) {
+        return Err(format!("{} is another app's backup, not these books", path.display()));
+    }
+    Ok(())
+}
+
+/// Stamped on these books (`meta.app`) so a restore can tell them from
+/// another Kumkaj app's books.
+const APP_MARK: &str = "courier";
+
+/// What the owner must know about keeping the books safe.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct BackupHealth {
+    /// When the last automatic backup was made (RFC 3339), if ever.
+    pub last_at: Option<String>,
+    /// Whole days since then.
+    pub days_since: Option<i64>,
+    /// Why the last automatic backup failed ("" = it did not).
+    pub error: String,
+    /// Why the copy to the second folder failed ("" = it did not).
+    pub copy_error: String,
+    /// Free space where the books live, in MB (None: the system won't say).
+    pub free_mb: Option<u64>,
+    /// No copy has left this device for this many days (see
+    /// `Store::backup_copy_overdue_days`).
+    pub copy_overdue_days: Option<i64>,
+    /// Too little room left for the next backups and bookings.
+    pub low_space: bool,
+}
+
+/// Below this much free space (or three times the books' size, if more)
+/// the owner is warned before backups start failing.
+pub const LOW_SPACE_MB: u64 = 500;
+
+/// Free space on the disk holding `path`, in bytes (None where the system
+/// will not say).
+pub fn free_space_bytes(path: &Path) -> Option<u64> {
+    #[cfg(unix)]
+    {
+        use std::os::unix::ffi::OsStrExt;
+        let c_path = std::ffi::CString::new(path.as_os_str().as_bytes()).ok()?;
+        // SAFETY: a valid NUL-terminated path and a zeroed out-struct.
+        let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
+        if unsafe { libc::statvfs(c_path.as_ptr(), &mut stat) } != 0 {
+            return None;
+        }
+        #[allow(clippy::unnecessary_cast)]
+        Some(stat.f_bavail as u64 * stat.f_frsize as u64)
+    }
+    #[cfg(windows)]
+    {
+        use std::os::windows::ffi::OsStrExt;
+        let wide: Vec<u16> = path.as_os_str().encode_wide().chain(Some(0)).collect();
+        let mut free = 0u64;
+        // SAFETY: a valid NUL-terminated wide path; the totals are optional.
+        let ok = unsafe { GetDiskFreeSpaceExW(wide.as_ptr(), &mut free, std::ptr::null_mut(), std::ptr::null_mut()) };
+        (ok != 0).then_some(free)
+    }
+    #[cfg(not(any(unix, windows)))]
+    {
+        let _ = path;
+        None
+    }
+}
+
+#[cfg(windows)]
+#[link(name = "kernel32")]
+unsafe extern "system" {
+    fn GetDiskFreeSpaceExW(dir: *const u16, free_to_caller: *mut u64, total: *mut u64, total_free: *mut u64) -> i32;
+}
+
+/// Daily automatic backups kept (two weeks).
+pub const AUTO_BACKUP_KEEP: usize = 14;
+
+/// A week with every backup on one device is said to the owner.
+pub const COPY_DUE_DAYS: i64 = 7;
+
+/// Keep only the newest `keep` automatic backups in `dir` (names sort by time).
+fn prune_auto_backups(dir: &Path, keep: usize) {
+    let Ok(entries) = fs::read_dir(dir) else {
+        return;
+    };
+    let mut autos: Vec<PathBuf> = entries
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| {
+            let name = p.file_name().and_then(|n| n.to_str()).unwrap_or_default();
+            name.starts_with("auto-") && name.ends_with(".sqlite3")
+        })
+        .collect();
+    autos.sort();
+    let extra = autos.len().saturating_sub(keep);
+    for old in autos.into_iter().take(extra) {
+        let _ = fs::remove_file(old);
+    }
+}
+
 pub fn default_backup_path() -> Result<PathBuf, String> {
     Ok(data_dir()?.join("backups").join(format!(
         "kumkaj-backup-{}.sqlite3",
         Local::now().format("%Y%m%d-%H%M%S")
     )))
+}
+
+/// How long a phone sign-in lasts (a long shift plus a margin).
+pub const LAN_SESSION_HOURS: i64 = 16;
+
+/// A paired device's "last seen" is noted at most this often.
+pub const LAN_SEEN_EVERY_SECS: i64 = 30;
+
+/// A phone paired to this Server.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct LanDevice {
+    pub id: String,
+    pub name: String,
+    pub paired_at: String,
+    pub last_seen_at: String,
+}
+
+impl LanDevice {
+    fn from_row(r: &rusqlite::Row<'_>) -> rusqlite::Result<Self> {
+        Ok(Self {
+            id: r.get(0)?,
+            name: r.get(1)?,
+            paired_at: r.get(2)?,
+            last_seen_at: r.get(3)?,
+        })
+    }
+}
+
+/// A phone's write waiting for the Server. `id` is also the request id the
+/// Server answers by, so sending it twice does it once.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LanQueued {
+    pub id: String,
+    pub path: String,
+    pub body: String,
+    /// What the person did, in their words ("KOT for T3").
+    pub label: String,
+    pub table_id: String,
+    pub staff_id: String,
+    pub attempts: i64,
+    pub last_error: String,
+}
+
+/// A waiting write the Server turned down, kept until someone has seen it.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LanRefused {
+    pub id: String,
+    /// What the person did ("Booking ₹250").
+    pub label: String,
+    /// The Server's words.
+    pub error: String,
+    pub created_at: String,
+    pub refused_at: String,
+}
+
+fn random_token() -> Result<String, String> {
+    let mut bytes = [0u8; 24];
+    getrandom_salt(&mut bytes)?;
+    Ok(hex::encode(bytes))
+}
+
+fn lan_token_hash(token: &str) -> String {
+    hex::encode(Sha256::digest(
+        format!("kumkaj-lan|{}", token.trim()).as_bytes(),
+    ))
 }
 
 pub fn hash_pin(pin: &str) -> Result<String, String> {
@@ -9197,11 +10242,121 @@ fn getrandom_salt(out: &mut [u8]) -> Result<(), String> {
 }
 
 #[cfg(test)]
+impl Store {
+    /// A busy office's books for the performance tests: `days` of trading at
+    /// `bookings_per_day` (three lines each — rate, fuel, docket; every
+    /// tenth split cash + UPI, every twentieth on a party's account and
+    /// settled later), an audit row per booking, `parties` consignors. Raw
+    /// inserts in one transaction — seconds, not the minutes real bookings
+    /// would take.
+    pub(crate) fn seed_busy_books_for_test(&self, days: i64, bookings_per_day: i64, parties: usize) {
+        let branch = self.active_branch_id().unwrap();
+        let start = Local::now() - chrono::Duration::days(days - 1);
+        let tx = self.conn.unchecked_transaction().unwrap();
+        {
+            let mut product = tx.prepare("INSERT INTO products(id, name, price_paise) VALUES(?1, ?2, ?3)").unwrap();
+            let products: Vec<(String, String, i64)> = (0..300)
+                .map(|i| (new_id(), format!("Rate {i}"), 5_000 + i * 10))
+                .collect();
+            for (id, name, price) in &products {
+                product.execute(params![id, name, price]).unwrap();
+            }
+            let consignors: Vec<String> = (0..parties).map(|_| new_id()).collect();
+            for (i, id) in consignors.iter().enumerate() {
+                tx.execute(
+                    "INSERT INTO customers(id, name, phone, created_at, branch_id, kind_label)
+                     VALUES(?1, ?2, ?3, ?4, ?5, 'Consignor')",
+                    params![id, format!("Consignor {i}"), format!("98{i:08}"), start.to_rfc3339(), branch],
+                )
+                .unwrap();
+            }
+            let mut sale = tx
+                .prepare(
+                    "INSERT INTO sales(id, created_at, total_paise, pay_method, status, lines_total_paise,
+                                       customer_id, created_by_name, branch_id, invoice_no, user_at, device_at,
+                                       awb_no, destination, consignee_name)
+                     VALUES(?1, ?2, ?3, ?4, 'completed', ?3, ?5, 'Owner', ?6, ?7, ?2, ?2, ?8, 'Pune', 'Receiver')",
+                )
+                .unwrap();
+            let mut line = tx
+                .prepare(
+                    "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, qty_milli)
+                     VALUES(?1, ?2, ?3, ?4, 1, ?4, 1000)",
+                )
+                .unwrap();
+            let mut pay = tx
+                .prepare("INSERT INTO sale_payments(id, sale_id, pay_method, amount_paise) VALUES(?1, ?2, ?3, ?4)")
+                .unwrap();
+            let mut audit = tx
+                .prepare(
+                    "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
+                     VALUES(?1, ?2, '', 'Owner', 'sale.finalize', ?3)",
+                )
+                .unwrap();
+            let mut ledger = tx
+                .prepare(
+                    "INSERT INTO credit_ledger(id, customer_id, created_at, kind, amount_paise, sale_id,
+                                               pay_method, actor_id, actor_name, user_at, device_at)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, '', 'Owner', ?3, ?3)",
+                )
+                .unwrap();
+            let mut n: i64 = 0;
+            for day in 0..days {
+                for b in 0..bookings_per_day {
+                    n += 1;
+                    let at = (start
+                        + chrono::Duration::days(day)
+                        + chrono::Duration::minutes(-12 * 60 + b * 600 / bookings_per_day.max(1)))
+                    .to_rfc3339();
+                    let sale_id = new_id();
+                    let picks = [(n * 7) % 300, (n * 13) % 300, (n * 31) % 300];
+                    let total: i64 = picks.iter().map(|&i| products[i as usize].2).sum();
+                    let (method, party) = if n % 20 == 0 {
+                        ("credit", Some(consignors[(n as usize / 20) % consignors.len()].clone()))
+                    } else if n % 10 == 0 {
+                        ("split", None)
+                    } else {
+                        (["cash", "upi", "card"][(n % 3) as usize], None)
+                    };
+                    sale.execute(params![sale_id, at, total, method, party, branch, format!("INV-MAIN-{n:06}"), format!("AWB{n:09}")])
+                        .unwrap();
+                    for &i in &picks {
+                        let (pid, name, price) = &products[i as usize];
+                        line.execute(params![sale_id, pid, name, price]).unwrap();
+                    }
+                    if method == "split" {
+                        pay.execute(params![new_id(), sale_id, "cash", total / 2]).unwrap();
+                        pay.execute(params![new_id(), sale_id, "upi", total - total / 2]).unwrap();
+                    }
+                    if let Some(party) = &party {
+                        ledger
+                            .execute(params![new_id(), party, at, "sale", total, sale_id, Option::<String>::None])
+                            .unwrap();
+                        ledger
+                            .execute(params![new_id(), party, at, "settle", -total, Option::<String>::None, "cash"])
+                            .unwrap();
+                    }
+                    audit.execute(params![new_id(), at, sale_id]).unwrap();
+                }
+            }
+        }
+        tx.commit().unwrap();
+    }
+
+    /// How SQLite will run `sql` (EXPLAIN QUERY PLAN, one detail per line).
+    pub(crate) fn query_plan_for_test(&self, sql: &str) -> String {
+        let mut stmt = self.conn.prepare(&format!("EXPLAIN QUERY PLAN {sql}")).unwrap();
+        let rows = stmt.query_map([], |r| r.get::<_, String>(3)).unwrap();
+        rows.map(|r| r.unwrap()).collect::<Vec<_>>().join("\n")
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
     use crate::domain::{
-        AttachmentEntity, Cart, ModifierOption, MoneyLane, MoneyMoveKind, PayMethod,
-        Product, StaffRole,
+        AttachmentEntity, Cart, ModifierOption, MoneyLane, MoneyMoveKind, PayMethod, Product,
+        Rights, StaffRole,
     };
     use crate::fiscal::TaxPricing;
     use std::time::{SystemTime, UNIX_EPOCH};
@@ -9214,6 +10369,228 @@ mod tests {
             0x9c, 0x63, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0xf6, 0x17, 0x38,
             0x55, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
         ]
+    }
+
+    /// Every backup on the one device that holds the books is lost with
+    /// it: after a week with no copy off the device, the owner is told —
+    /// until a copy leaves (the second folder, or "Save a backup copy").
+    #[test]
+    fn a_week_without_a_copy_off_the_device_is_said() {
+        let home = std::env::temp_dir().join(format!("kumkaj-copy-due-{}", new_id()));
+        fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        assert_eq!(store.backup_copy_overdue_days().unwrap(), None, "no backups yet");
+        let made = store.auto_backup_if_due().unwrap().unwrap();
+        assert_eq!(store.backup_copy_overdue_days().unwrap(), None, "a new shop is not nagged");
+        let ten_days_ago = std::time::SystemTime::now() - std::time::Duration::from_secs(10 * 86_400);
+        fs::File::options().write(true).open(&made).unwrap().set_modified(ten_days_ago).unwrap();
+        assert!(store.backup_copy_overdue_days().unwrap().is_some_and(|d| d >= 9));
+        assert!(store.backup_health().unwrap().copy_overdue_days.is_some());
+        store.note_backup_copy_saved().unwrap();
+        assert_eq!(store.backup_copy_overdue_days().unwrap(), None);
+        let _ = fs::remove_dir_all(home);
+    }
+
+    /// One automatic backup a day, two weeks kept, and a copy in the
+    /// owner's second folder — a failed copy is said, never silent.
+    #[test]
+    fn automatic_backups_run_daily_keep_two_weeks_and_copy_to_a_second_place() {
+        // Its own folder: the backups land beside the books.
+        let home = std::env::temp_dir().join(format!("kumkaj-books-{}", new_id()));
+        fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        let dir = store.auto_backup_dir();
+        assert!(dir.starts_with(&home));
+        let made = store.auto_backup_if_due().unwrap().expect("first backup");
+        assert!(made.exists());
+        assert!(store.last_backup_at().unwrap().is_some());
+        assert!(
+            store.auto_backup_if_due().unwrap().is_none(),
+            "not twice in a day"
+        );
+        // Older backups beyond two weeks go.
+        for day in 1..=20 {
+            fs::write(
+                dir.join(format!("auto-202501{day:02}-000000000.sqlite3")),
+                b"old",
+            )
+            .unwrap();
+        }
+        let second = std::env::temp_dir().join(format!("kumkaj-second-{}", new_id()));
+        store.set_backup_copy_dir(Some(&second)).unwrap();
+        store
+            .meta_set("last_backup_at", "2020-01-01T00:00:00+00:00")
+            .unwrap();
+        let made = store.auto_backup_if_due().unwrap().unwrap();
+        let kept = fs::read_dir(&dir).unwrap().count();
+        assert_eq!(kept, AUTO_BACKUP_KEEP);
+        assert!(made.exists(), "the newest is kept");
+        assert!(
+            second.join(made.file_name().unwrap()).exists(),
+            "copied to the second place"
+        );
+        assert_eq!(store.backup_copy_error().unwrap(), "");
+        // The second place is gone (USB pulled): said, and the backup still made.
+        let gone = std::env::temp_dir().join(format!("kumkaj-file-{}", new_id()));
+        fs::write(&gone, b"not a folder").unwrap();
+        store.set_backup_copy_dir(Some(&gone.join("sub"))).unwrap();
+        store
+            .meta_set("last_backup_at", "2020-01-01T00:00:00+00:00")
+            .unwrap();
+        assert!(store.auto_backup_if_due().unwrap().is_some());
+        assert!(
+            store
+                .backup_copy_error()
+                .unwrap()
+                .contains("Could not copy")
+        );
+        let _ = fs::remove_dir_all(&home);
+        let _ = fs::remove_dir_all(&second);
+        let _ = fs::remove_file(gone);
+    }
+
+    /// A wrong file is refused before it can replace the books.
+    #[test]
+    fn restore_refuses_a_file_that_is_not_these_books() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.upsert_product(&test_product("Tea", 20)).unwrap();
+        drop(store);
+        let junk = std::env::temp_dir().join(format!("kumkaj-junk-{}.sqlite3", new_id()));
+        fs::write(&junk, b"not a database at all").unwrap();
+        let refused = Store::restore_from_to_path(&junk, &path)
+            .err()
+            .unwrap_or_default();
+        assert!(refused.contains("not a backup"), "{refused}");
+        let other = std::env::temp_dir().join(format!("kumkaj-other-{}.sqlite3", new_id()));
+        Connection::open(&other)
+            .unwrap()
+            .execute_batch("CREATE TABLE notes(x TEXT);")
+            .unwrap();
+        assert!(Store::restore_from_to_path(&other, &path).is_err());
+        // The books are untouched.
+        let store = Store::open_path(&path).unwrap();
+        assert!(
+            store
+                .list_products(false)
+                .unwrap()
+                .iter()
+                .any(|p| p.name == "Tea")
+        );
+        let _ = fs::remove_file(junk);
+        let _ = fs::remove_file(other);
+        let _ = fs::remove_file(path);
+    }
+
+    /// Another Kumkaj app's books have the same tables; restoring them over
+    /// an office's would swap one business for another. Refused, and the
+    /// books stay as they were.
+    #[test]
+    fn restore_refuses_another_apps_backup() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.upsert_product(&test_product("Parcel 1kg", 100)).unwrap();
+        let other = std::env::temp_dir().join(format!("kumkaj-other-app-{}.sqlite3", new_id()));
+        store.backup_to(&other).unwrap();
+        drop(store);
+        Connection::open(&other)
+            .unwrap()
+            .execute_batch("UPDATE meta SET value = 'khaynjo' WHERE key = 'app';")
+            .unwrap();
+        let refused = Store::restore_from_to_path(&other, &path).err().unwrap_or_default();
+        assert!(refused.contains("another app"), "{refused}");
+        // An older backup without the stamp is still ours if its template is.
+        Connection::open(&other)
+            .unwrap()
+            .execute_batch("DELETE FROM meta WHERE key = 'app';")
+            .unwrap();
+        assert!(check_backup_file(&other).is_ok());
+        let store = Store::open_path(&path).unwrap();
+        assert!(store.list_products(false).unwrap().iter().any(|p| p.name == "Parcel 1kg"));
+        let _ = fs::remove_file(other);
+        let _ = fs::remove_file(path);
+    }
+
+    /// A backup that cannot be written (full disk, a file where the folder
+    /// should be) leaves no file that looks like a backup, and the owner is
+    /// told until a backup works again.
+    #[test]
+    fn a_failing_backup_is_reported_until_one_works() {
+        let dir = std::env::temp_dir().join(format!("kumkaj-backup-health-{}", new_id()));
+        fs::create_dir_all(&dir).unwrap();
+        let store = Store::open_path(&dir.join("courier.sqlite3")).unwrap();
+        // Where the backups folder should be, there is a file.
+        fs::write(dir.join("backups"), b"not a folder").unwrap();
+        assert!(store.auto_backup_if_due().is_err());
+        let health = store.backup_health().unwrap();
+        assert!(!health.error.is_empty(), "the failure is kept for the owner");
+        assert_eq!(health.last_at, None);
+        assert!(health.free_mb.is_some(), "free space is known on this system");
+        fs::remove_file(dir.join("backups")).unwrap();
+        let made = store.auto_backup_if_due().unwrap().expect("a backup is due");
+        check_backup_file(&made).unwrap();
+        let health = store.backup_health().unwrap();
+        assert!(health.error.is_empty(), "a working backup clears the warning");
+        assert_eq!(health.days_since, Some(0));
+        let _ = fs::remove_dir_all(dir);
+    }
+
+    /// The lookups every device sync and every busy screen makes find their
+    /// rows through an index; none reads every booking, line or ledger row
+    /// the office ever made (that is what made a year-old office's sync take
+    /// seconds). Deterministic: it reads SQLite's plan, not a stopwatch.
+    #[test]
+    fn hot_lookups_use_an_index_never_a_scan_of_every_row() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        for (what, sql) in [
+            ("a booking's lines", "SELECT name FROM sale_lines WHERE sale_id = 'x'"),
+            ("a booking's tenders", "SELECT amount_paise FROM sale_payments WHERE sale_id = 'x'"),
+            ("a party's balance", "SELECT SUM(amount_paise) FROM credit_ledger WHERE customer_id = 'x'"),
+            ("recent bookings", "SELECT id FROM sales ORDER BY created_at DESC LIMIT 40"),
+            ("recent account entries", "SELECT id FROM credit_ledger ORDER BY created_at DESC LIMIT 2000"),
+            ("today's bookings", "SELECT id FROM sales WHERE status = 'completed' AND created_at LIKE '2026-10-25%'"),
+            ("today's money moves", "SELECT kind FROM money_movements WHERE created_at LIKE '2026-10-25%'"),
+            ("today's expenses", "SELECT amount_paise FROM expenses WHERE created_at LIKE '2026-10-25%'"),
+            ("today's settlements", "SELECT amount_paise FROM credit_ledger WHERE kind = 'settle' AND created_at LIKE '2026-10-25%'"),
+            ("latest audit", "SELECT id FROM audit_events ORDER BY created_at DESC LIMIT 5"),
+            ("an AWB", "SELECT id FROM sales WHERE awb_no = 'AWB1'"),
+        ] {
+            let plan = store.query_plan_for_test(sql);
+            let scans_all = plan.lines().any(|l| l.starts_with("SCAN") && !l.contains("USING"));
+            assert!(!scans_all, "{what} reads every row:\n{plan}");
+        }
+        let _ = fs::remove_file(path);
+    }
+
+    /// The LAN server and the counter write the same file from separate
+    /// connections: a write that meets another waits, it does not fail
+    /// with "database is locked".
+    #[test]
+    fn a_second_writer_waits_instead_of_failing_locked() {
+        let path = temp_db();
+        let a = Store::open_path(&path).unwrap();
+        let tx = a.conn.unchecked_transaction().unwrap();
+        tx.execute(
+            "INSERT INTO meta(key, value) VALUES ('lock_probe_a', '1')",
+            [],
+        )
+        .unwrap();
+        let p2 = path.clone();
+        let other = std::thread::spawn(move || {
+            let b = Store::open_path(&p2).unwrap();
+            let tx = b.conn.unchecked_transaction()?;
+            tx.execute(
+                "INSERT INTO meta(key, value) VALUES ('lock_probe_b', '1')",
+                [],
+            )?;
+            tx.commit()
+        });
+        std::thread::sleep(std::time::Duration::from_millis(300));
+        tx.commit().unwrap();
+        other.join().unwrap().unwrap();
+        assert_eq!(a.meta_get("lock_probe_b").unwrap().as_deref(), Some("1"));
+        let _ = std::fs::remove_file(path);
     }
 
     fn temp_db() -> PathBuf {
@@ -9245,7 +10622,7 @@ mod tests {
         draft.actual_weight_kg = "12.5".parse().unwrap();
         draft.money_lane = MoneyLane::Declared;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit, Some(&party.id), &owner)
             .unwrap();
         let today = chrono::Local::now().format("%Y-%m-%d").to_string();
         let kg = store.period_chargeable_kg(&today, &today).unwrap();
@@ -9283,9 +10660,11 @@ mod tests {
             .unwrap();
         let parts = store.expense_payments_for(&exp).unwrap();
         assert_eq!(parts.len(), 2);
-        assert!(store
-            .add_expense_tenders(100_00, "rent", "", &owner, &[(PayMethod::Cash, 90_00)])
-            .is_err());
+        assert!(
+            store
+                .add_expense_tenders(100_00, "rent", "", &owner, &[(PayMethod::Cash, 90_00)])
+                .is_err()
+        );
 
         // Till: cash sale in, cash expense part out, till→bank out.
         store.upsert_product(&test_product("Parcel", 100)).unwrap();
@@ -9313,7 +10692,7 @@ mod tests {
             cart.add_or_bump(&p);
             let draft = cart.to_sale_draft().unwrap();
             let sale = store
-                .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
+                .finalize_sale(&draft, PayMethod::Credit, Some(&party.id), &owner)
                 .unwrap();
             bill_ids.push(sale.id);
         }
@@ -9360,7 +10739,9 @@ mod tests {
 
         // CSV: spreadsheet in, spreadsheet out; duplicates skipped.
         let (added, skipped, _) = store
-            .import_parties_csv("name,phone,kind\nAsha,999,Consignor\nBala,,Carrier\nAsha,999,Consignor\n")
+            .import_parties_csv(
+                "name,phone,kind\nAsha,999,Consignor\nBala,,Carrier\nAsha,999,Consignor\n",
+            )
             .unwrap();
         assert_eq!((added, skipped), (2, 1));
         assert!(store.parties_csv().unwrap().contains("Asha"));
@@ -9370,10 +10751,12 @@ mod tests {
         assert_eq!((added, skipped), (1, 1));
         assert!(store.items_csv().unwrap().contains("Box,25.50,pc"));
         assert!(store.day_book_csv().unwrap().contains("till_cash_in_hand"));
-        assert!(store
-            .party_ledger_csv(&party.id)
-            .unwrap()
-            .contains("balance"));
+        assert!(
+            store
+                .party_ledger_csv(&party.id)
+                .unwrap()
+                .contains("balance")
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -9387,7 +10770,12 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
         let sale = store
-            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner)
+            .finalize_sale(
+                &cart.to_sale_draft().unwrap(),
+                PayMethod::Cash,
+                None,
+                &owner,
+            )
             .unwrap();
 
         store
@@ -9397,7 +10785,13 @@ mod tests {
         let png_path = std::env::temp_dir().join(format!("attach-png-{}.png", sale.id));
         std::fs::write(&png_path, tiny_png_bytes()).unwrap();
         let img = store
-            .add_attachment_image(AttachmentEntity::Sale, &sale.id, &png_path, "docket", &owner)
+            .add_attachment_image(
+                AttachmentEntity::Sale,
+                &sale.id,
+                &png_path,
+                "docket",
+                &owner,
+            )
             .unwrap();
         assert_eq!(img.mime, "image/webp");
         assert!(img.stored_name.ends_with(".webp"));
@@ -9410,10 +10804,18 @@ mod tests {
         let pdf_path = std::env::temp_dir().join(format!("attach-pdf-{}.pdf", sale.id));
         std::fs::write(&pdf_path, b"%PDF-1.4 test").unwrap();
         store
-            .add_attachment_file(AttachmentEntity::Sale, &sale.id, &pdf_path, "invoice", &owner)
+            .add_attachment_file(
+                AttachmentEntity::Sale,
+                &sale.id,
+                &pdf_path,
+                "invoice",
+                &owner,
+            )
             .unwrap();
 
-        let list = store.list_attachments(AttachmentEntity::Sale, &sale.id).unwrap();
+        let list = store
+            .list_attachments(AttachmentEntity::Sale, &sale.id)
+            .unwrap();
         assert_eq!(list.len(), 3);
         let summary = store
             .attachments_summary_text(AttachmentEntity::Sale, &sale.id)
@@ -9424,12 +10826,16 @@ mod tests {
 
         let exe = std::env::temp_dir().join(format!("attach-bad-{}.exe", sale.id));
         std::fs::write(&exe, b"MZ").unwrap();
-        assert!(store
-            .add_attachment_image(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
-            .is_err());
-        assert!(store
-            .add_attachment_file(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
-            .is_err());
+        assert!(
+            store
+                .add_attachment_image(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
+                .is_err()
+        );
+        assert!(
+            store
+                .add_attachment_file(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
+                .is_err()
+        );
 
         let _ = std::fs::remove_file(png_path);
         let _ = std::fs::remove_file(pdf_path);
@@ -9456,7 +10862,9 @@ mod tests {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.upsert_product(&test_product("Test item", 25)).unwrap();
+        store
+            .upsert_product(&test_product("Test item", 25))
+            .unwrap();
         let products = store.list_products(false).unwrap();
         assert!(!products.is_empty());
         let p = &products[0];
@@ -9535,7 +10943,9 @@ mod tests {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.upsert_product(&test_product("Test item", 25)).unwrap();
+        store
+            .upsert_product(&test_product("Test item", 25))
+            .unwrap();
         let products = store.list_products(false).unwrap();
         let p = &products[0];
         let mut cart = Cart::default();
@@ -9573,7 +10983,9 @@ mod tests {
             .into_iter()
             .find(|s| s.role == StaffRole::Cashier)
             .unwrap();
-        store.upsert_product(&test_product("Test item", 25)).unwrap();
+        store
+            .upsert_product(&test_product("Test item", 25))
+            .unwrap();
         let products = store.list_products(false).unwrap();
         let p = &products[0];
         let mut cart = Cart::default();
@@ -9585,6 +10997,76 @@ mod tests {
         assert!(store.void_sale(&sale.id, "", &owner).is_err());
         assert!(store.void_sale(&sale.id, "mistake", &cashier).is_err());
         store.void_sale(&sale.id, "mistake", &owner).unwrap();
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Team → Rights decides per person: a cashier set to Allowed voids alone,
+    /// one set to Not allowed is refused even with a manager's PIN, and the
+    /// default (With approval) needs that PIN. Undoing your own sale stays
+    /// free.
+    #[test]
+    fn per_person_rights_gate_void_and_keep_own_undo_free() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store
+            .add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner)
+            .unwrap();
+        store
+            .add_staff("Cash", StaffRole::Cashier, "Cashier", "1111", &owner)
+            .unwrap();
+        let cashier = |store: &Store| {
+            store
+                .list_staff()
+                .unwrap()
+                .into_iter()
+                .find(|s| s.role == StaffRole::Cashier)
+                .unwrap()
+        };
+        let mut cash = cashier(&store);
+        store.upsert_product(&test_product("Docket", 25)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        let sell = |store: &mut Store, who: &StaffMember| {
+            store.finalize_sale(&draft, PayMethod::Cash, None, who).unwrap()
+        };
+
+        // Default: with approval.
+        assert!(store.check_right(&cash, Right::VoidRefund, None).is_err());
+        let approver = store
+            .check_right(&cash, Right::VoidRefund, Some("9999"))
+            .unwrap()
+            .expect("a manager approved");
+        assert_eq!(approver.name, "Mona");
+        assert!(store.check_right(&cash, Right::VoidRefund, Some("1234")).is_err());
+        let sale = sell(&mut store, &owner);
+        store.void_sale(&sale.id, "wrong weight", &approver).unwrap();
+
+        // Undoing their own sale needs no PIN.
+        let own = sell(&mut store, &cash);
+        store.quick_undo_sale(&own.id, &cash).unwrap();
+        // Someone else's sale is a void.
+        let other = sell(&mut store, &owner);
+        assert!(store.quick_undo_sale(&other.id, &cash).is_err());
+
+        // Not allowed: no PIN can override.
+        let mut features = cash.features.clone();
+        let mut rights = Rights::for_role(StaffRole::Cashier);
+        rights.set_level(Right::VoidRefund, RightLevel::Denied);
+        features.rights = Some(rights.clone());
+        store.set_staff_features(&cash.id, &features, &owner).unwrap();
+        cash = cashier(&store);
+        assert!(store.check_right(&cash, Right::VoidRefund, Some("9999")).is_err());
+
+        // Allowed: voids alone.
+        rights.set_level(Right::VoidRefund, RightLevel::Allowed);
+        features.rights = Some(rights);
+        store.set_staff_features(&cash.id, &features, &owner).unwrap();
+        cash = cashier(&store);
+        assert!(store.check_right(&cash, Right::VoidRefund, None).unwrap().is_none());
+        store.void_sale(&other.id, "duplicate", &cash).unwrap();
         let _ = std::fs::remove_file(path);
     }
 
@@ -9610,7 +11092,13 @@ mod tests {
         amended.set_charge_total(Money::from_rupees(48)).unwrap();
         let new_draft = amended.to_sale_draft().unwrap();
         let updated = store
-            .amend_sale(&sale.id, &new_draft, PayMethod::Upi, "customer paid less", &owner)
+            .amend_sale(
+                &sale.id,
+                &new_draft,
+                PayMethod::Upi,
+                "customer paid less",
+                &owner,
+            )
             .unwrap();
         assert_eq!(updated.total_paise, 4800);
         assert_eq!(updated.pay_method, "upi");
@@ -9646,12 +11134,16 @@ mod tests {
             .into_iter()
             .find(|s| s.role == StaffRole::Cashier)
             .unwrap();
-        assert!(store
-            .amend_sale(&sale.id, &new_draft, PayMethod::Cash, "nope", &cashier)
-            .is_err());
-        assert!(store
-            .amend_sale(&sale.id, &new_draft, PayMethod::Cash, "", &owner)
-            .is_err());
+        assert!(
+            store
+                .amend_sale(&sale.id, &new_draft, PayMethod::Cash, "nope", &cashier)
+                .is_err()
+        );
+        assert!(
+            store
+                .amend_sale(&sale.id, &new_draft, PayMethod::Cash, "", &owner)
+                .is_err()
+        );
 
         let _ = std::fs::remove_file(path);
     }
@@ -9662,11 +11154,13 @@ mod tests {
         let mut store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         assert!(owner.is_owner());
-        assert!(store
-            .authenticate_owner_pin("0000")
-            .unwrap()
-            .unwrap()
-            .is_owner());
+        assert!(
+            store
+                .authenticate_owner_pin("0000")
+                .unwrap()
+                .unwrap()
+                .is_owner()
+        );
         assert!(store.authenticate_owner_pin("9999").unwrap().is_none());
 
         store
@@ -9676,14 +11170,18 @@ mod tests {
         assert_eq!(staff.len(), 1);
         assert_eq!(staff[0].display_role(), "Barista");
         let staff_id = staff[0].id.clone();
-        assert!(store
-            .authenticate_staff_pin(&staff_id, "2222")
-            .unwrap()
-            .is_some());
-        assert!(store
-            .authenticate_staff_pin(&staff_id, "0000")
-            .unwrap()
-            .is_none());
+        assert!(
+            store
+                .authenticate_staff_pin(&staff_id, "2222")
+                .unwrap()
+                .is_some()
+        );
+        assert!(
+            store
+                .authenticate_staff_pin(&staff_id, "0000")
+                .unwrap()
+                .is_none()
+        );
         // Owner PIN must not unlock via staff path for owner id
         assert!(store.authenticate_staff_pin(&owner.id, "0000").is_err());
 
@@ -9713,17 +11211,19 @@ mod tests {
         assert_eq!(updated.created_by_name, sale.created_by_name);
 
         // Owner must not change another person's PIN; only self can.
-        assert!(store
-            .set_staff_pin(&staff_id, "3333", &owner)
-            .unwrap_err()
-            .contains("own PIN"));
-        store
-            .set_staff_pin(&staff_id, "3333", &cashier)
-            .unwrap();
-        assert!(store
-            .authenticate_staff_pin(&staff_id, "3333")
-            .unwrap()
-            .is_some());
+        assert!(
+            store
+                .set_staff_pin(&staff_id, "3333", &owner)
+                .unwrap_err()
+                .contains("own PIN")
+        );
+        store.set_staff_pin(&staff_id, "3333", &cashier).unwrap();
+        assert!(
+            store
+                .authenticate_staff_pin(&staff_id, "3333")
+                .unwrap()
+                .is_some()
+        );
 
         let _ = std::fs::remove_file(path);
     }
@@ -9817,11 +11317,13 @@ mod tests {
         let unused = store.add_customer("Unused", "").unwrap();
         let msg = store.delete_customer(&unused.id).unwrap();
         assert!(msg.contains("Deleted party"), "got {msg}");
-        assert!(store
-            .list_customers()
-            .unwrap()
-            .iter()
-            .all(|c| c.id != unused.id));
+        assert!(
+            store
+                .list_customers()
+                .unwrap()
+                .iter()
+                .all(|c| c.id != unused.id)
+        );
 
         // Balance blocks deletion; after write-off the history hides it.
         let owing = store.add_customer("Owing", "").unwrap();
@@ -9833,11 +11335,13 @@ mod tests {
         assert_eq!(store.customer_balance(&owing.id).unwrap(), 0);
         let msg = store.delete_customer(&owing.id).unwrap();
         assert!(msg.contains("hidden"), "got {msg}");
-        assert!(store
-            .list_customers()
-            .unwrap()
-            .iter()
-            .all(|c| c.id != owing.id));
+        assert!(
+            store
+                .list_customers()
+                .unwrap()
+                .iter()
+                .all(|c| c.id != owing.id)
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -9940,7 +11444,9 @@ mod tests {
             80_00
         );
 
-        let party = store.add_customer_kind("Acme Consignor", "", "Consignor").unwrap();
+        let party = store
+            .add_customer_kind("Acme Consignor", "", "Consignor")
+            .unwrap();
         store.set_customer_credit_limit(&party.id, 500_00).unwrap();
         let rider = store.add_rider("Ravi", "999", "Bike 12").unwrap();
 
@@ -9955,7 +11461,7 @@ mod tests {
         draft.zone_id = zone.id;
         draft.money_lane = MoneyLane::Declared;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit, Some(&party.id), &owner)
             .unwrap();
         assert!(!sale.awb_no.is_empty());
         assert_eq!(sale.cod_paise, 100_00);
@@ -10028,16 +11534,18 @@ mod tests {
         let mut freight = Product::new_basic(new_id(), "Surface freight", Money::from_rupees(40));
         freight.unit_label = "kg".into();
         store.upsert_product(&freight).unwrap();
-        let party = store.add_customer_kind("Sumit Int'l", "", "Consignor").unwrap();
+        let party = store
+            .add_customer_kind("Sumit Int'l", "", "Consignor")
+            .unwrap();
         let mut cart = Cart::default();
         cart.add_or_bump(&freight);
         let mut draft = cart.to_sale_draft().unwrap();
         draft.money_lane = MoneyLane::Declared;
         let sale = store
-            .finalize_sale(&draft, PayMethod::Credit,  Some(&party.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit, Some(&party.id), &owner)
             .unwrap();
         let receipt = store.format_receipt_text(&sale.id).unwrap();
-        assert!(receipt.contains("Party: Sumit"));
+        assert!(receipt.contains("Bill to: Sumit"));
         assert!(receipt.contains("kg") || receipt.contains("0.1"));
         assert!(
             receipt.contains("Account booking")
@@ -10046,7 +11554,11 @@ mod tests {
         );
 
         let aging = store.party_aging_report().unwrap();
-        assert!(aging.iter().any(|r| r.name.contains("Sumit") && r.balance_paise > 0));
+        assert!(
+            aging
+                .iter()
+                .any(|r| r.name.contains("Sumit") && r.balance_paise > 0)
+        );
         let today = chrono::Local::now().format("%Y-%m-%d").to_string();
         let books = store.period_books(&today, &today).unwrap();
         assert_eq!(books.sale_count, 1);
@@ -10076,13 +11588,7 @@ mod tests {
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
         store
-            .finalize_sale(
-                &draft,
-                PayMethod::Credit,
-                
-                Some(&customer.id),
-                &owner,
-            )
+            .finalize_sale(&draft, PayMethod::Credit, Some(&customer.id), &owner)
             .unwrap();
         // ₹120 sale consumed from advance → ₹380 held.
         assert_eq!(store.customer_balance(&customer.id).unwrap(), -38_000);
@@ -10124,15 +11630,19 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
         let draft = cart.to_sale_draft().unwrap();
-        assert!(store
-            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
-            .is_err());
+        assert!(
+            store
+                .finalize_sale(&draft, PayMethod::Cash, None, &owner)
+                .is_err()
+        );
         store
-            .set_client_pairing("http://127.0.0.1:7847", "123456")
+            .set_client_device_pairing("http://127.0.0.1:7847", "device-token")
             .unwrap();
-        assert!(store
-            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
-            .is_ok());
+        assert!(
+            store
+                .finalize_sale(&draft, PayMethod::Cash, None, &owner)
+                .is_ok()
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -10185,9 +11695,7 @@ mod tests {
             )
             .unwrap();
         assert_eq!(sale.pay_method, "split");
-        store
-            .add_expense(500, "milk", "morning", &owner)
-            .unwrap();
+        store.add_expense(500, "milk", "morning", &owner).unwrap();
         let report = store.ops_report_today().unwrap();
         assert_eq!(report.day.cash_paise, 1000);
         assert_eq!(report.day.upi_paise, 1000);
@@ -10219,7 +11727,6 @@ mod tests {
             .finalize_sale_tenders(
                 &draft2,
                 &[(PayMethod::Cash, 1000), (PayMethod::Credit, 2000)],
-                
                 Some(&customer.id),
                 &owner,
             )
@@ -10228,6 +11735,24 @@ mod tests {
         assert_eq!(store.customer_balance(&customer.id).unwrap(), 2000);
         let day = store.today_totals().unwrap();
         assert_eq!(day.credit_paise, 2000);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Names on screen are only what the owner saved: nothing is written
+    /// for them, and the "My business" placeholder older books hold reads as
+    /// never saved. Reports still have a name to print.
+    #[test]
+    fn only_names_the_owner_saved_show() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        assert_eq!(store.meta_get("org_name").unwrap().unwrap_or_default(), "");
+        assert_eq!(store.saved_org_name().unwrap(), "");
+        store.meta_set("org_name", DEFAULT_ORG_NAME).unwrap();
+        assert_eq!(store.saved_org_name().unwrap(), "");
+        store.set_venue_title("Swift Couriers").unwrap();
+        assert_eq!(store.org_name().unwrap(), "Swift Couriers", "reports fall back to the shop's name");
+        store.meta_set("venue_title", "Server af76697b").unwrap();
+        assert_eq!(store.venue_title().unwrap(), "");
         let _ = std::fs::remove_file(path);
     }
 
@@ -10240,9 +11765,11 @@ mod tests {
         assert_eq!(branches[0].name, "Main");
         assert!(branches[0].is_this_device);
         assert_eq!(store.active_branch_id().unwrap(), branches[0].id);
-        assert_eq!(store.org_name().unwrap(), "My business");
+        assert_eq!(store.org_name().unwrap(), DEFAULT_ORG_NAME);
+        assert_eq!(store.saved_org_name().unwrap(), "");
         store.set_org_name("Kumkaj Chai Co").unwrap();
         assert_eq!(store.org_name().unwrap(), "Kumkaj Chai Co");
+        assert_eq!(store.saved_org_name().unwrap(), "Kumkaj Chai Co");
         assert!(!store.org_id().unwrap().is_empty());
 
         let second = store.add_branch("MG Road", "mg02").unwrap();
@@ -10256,7 +11783,9 @@ mod tests {
         assert_eq!(store.list_products(false).unwrap().len(), 1);
         store.set_active_branch_id(&second.id).unwrap();
         assert!(store.list_products(false).unwrap().is_empty());
-        store.upsert_product(&test_product("Filter coffee", 25)).unwrap();
+        store
+            .upsert_product(&test_product("Filter coffee", 25))
+            .unwrap();
         let only = store.list_products(false).unwrap();
         assert_eq!(only.len(), 1);
         assert_eq!(only[0].name, "Filter coffee");
@@ -10265,11 +11794,13 @@ mod tests {
         assert_eq!(store.list_products(false).unwrap()[0].name, "Tea");
 
         store.rename_branch(&second.id, "MG Road 2").unwrap();
-        assert!(store
-            .list_branches()
-            .unwrap()
-            .iter()
-            .any(|b| b.name == "MG Road 2"));
+        assert!(
+            store
+                .list_branches()
+                .unwrap()
+                .iter()
+                .any(|b| b.name == "MG Road 2")
+        );
         assert!(store.set_active_branch_id("nope").is_err());
         let _ = std::fs::remove_file(path);
     }
@@ -10333,7 +11864,10 @@ mod tests {
         assert!(loaded.tracks_stock());
         assert_eq!(loaded.modifiers().len(), 1);
         assert_eq!(loaded.branch_id, store.active_branch_id().unwrap());
-        assert_eq!(store.list_products_in_category(&starters.id).unwrap().len(), 1);
+        assert_eq!(
+            store.list_products_in_category(&starters.id).unwrap().len(),
+            1
+        );
         // Legacy items stay untracked and uncategorised.
         store.upsert_product(&test_product("Tea", 10)).unwrap();
         let tea = store
@@ -10367,11 +11901,17 @@ mod tests {
                 .unwrap(),
             7
         );
-        assert!(store
-            .adjust_stock(&samosa.id, -100, "wastage", "", &owner)
-            .unwrap_err()
-            .contains("Not enough stock"));
-        assert!(store.adjust_stock(&samosa.id, 0, "adjust", "", &owner).is_err());
+        assert!(
+            store
+                .adjust_stock(&samosa.id, -100, "wastage", "", &owner)
+                .unwrap_err()
+                .contains("Not enough stock")
+        );
+        assert!(
+            store
+                .adjust_stock(&samosa.id, 0, "adjust", "", &owner)
+                .is_err()
+        );
 
         // Goods received raises stock and records the bill.
         let purchase = store
@@ -10384,7 +11924,10 @@ mod tests {
             .unwrap();
         assert_eq!(purchase.total_paise, 4000);
         assert_eq!(purchase.lines.len(), 1);
-        assert_eq!(store.get_product(&samosa.id).unwrap().unwrap().stock_qty, 12);
+        assert_eq!(
+            store.get_product(&samosa.id).unwrap().unwrap().stock_qty,
+            12
+        );
         assert_eq!(store.list_purchases(10).unwrap()[0].id, purchase.id);
         assert!(store.record_purchase("X", &[], "", &owner).is_err());
 
@@ -10398,7 +11941,10 @@ mod tests {
         store
             .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
-        assert_eq!(store.get_product(&samosa.id).unwrap().unwrap().stock_qty, 10);
+        assert_eq!(
+            store.get_product(&samosa.id).unwrap().unwrap().stock_qty,
+            10
+        );
         assert_eq!(
             store.get_product(&untracked.id).unwrap().unwrap().stock_qty,
             STOCK_UNTRACKED
@@ -10462,7 +12008,11 @@ mod tests {
         assert_eq!(pending.len(), 1);
         assert_eq!(pending[0].1, "sale.finalize");
         assert!(sale.user_at.trim().len() >= 10, "user_at={}", sale.user_at);
-        assert!(sale.device_at.trim().len() >= 10, "device_at={}", sale.device_at);
+        assert!(
+            sale.device_at.trim().len() >= 10,
+            "device_at={}",
+            sale.device_at
+        );
         assert!(sale.server_at.is_empty());
         store.mark_outbox_synced(&pending[0].0).unwrap();
         assert!(store.list_pending_outbox(10).unwrap().is_empty());
@@ -10532,7 +12082,12 @@ mod tests {
         assert_eq!(store.fiscal_settings().unwrap(), settings);
 
         // India's slabs are retired by the switch; the UK ones take over.
-        let bps: Vec<i64> = store.list_tax_rates().unwrap().iter().map(|r| r.bps).collect();
+        let bps: Vec<i64> = store
+            .list_tax_rates()
+            .unwrap()
+            .iter()
+            .map(|r| r.bps)
+            .collect();
         assert_eq!(bps, vec![0, 500, 2_000]);
 
         // A rate an item still uses is never retired, even when the new
@@ -10624,13 +12179,7 @@ mod tests {
         cart.add_or_bump(&burger);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
-            .finalize_sale(
-                &draft,
-                PayMethod::Credit,
-                
-                Some(&customer.id),
-                &owner,
-            )
+            .finalize_sale(&draft, PayMethod::Credit, Some(&customer.id), &owner)
             .unwrap();
         assert_eq!(sale.tax_paise, 165);
         assert_eq!(sale.total_paise, 2_165);
@@ -10659,24 +12208,32 @@ mod tests {
             .unwrap();
         assert_eq!(sale.service_paise, 1_000);
         assert_eq!(sale.total_paise, 11_000);
-        assert_eq!(store.get_sale(&sale.id).unwrap().unwrap().service_paise, 1_000);
+        assert_eq!(
+            store.get_sale(&sale.id).unwrap().unwrap().service_paise,
+            1_000
+        );
         let receipt = store.format_receipt_text(&sale.id).unwrap();
         assert!(receipt.contains("Service ₹10.00"), "{receipt}");
         assert!(receipt.contains("Total ₹110.00"), "{receipt}");
 
         // The house rule outlives a country switch, and turning it off leaves
         // the next bill at the quoted price.
-        assert_eq!(store.apply_country_pack("US").unwrap().service_charge_bps, 1_000);
+        assert_eq!(
+            store.apply_country_pack("US").unwrap().service_charge_bps,
+            1_000
+        );
         store.set_service_charge_bps(0).unwrap();
         let plain = store
             .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
         assert_eq!(plain.service_paise, 0);
         assert_eq!(plain.total_paise, 10_000);
-        assert!(!store
-            .format_receipt_text(&plain.id)
-            .unwrap()
-            .contains("Service"));
+        assert!(
+            !store
+                .format_receipt_text(&plain.id)
+                .unwrap()
+                .contains("Service")
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -10693,7 +12250,9 @@ mod tests {
         assert_eq!(settings.thousands_sep, ".");
         assert_eq!(store.fiscal_settings().unwrap(), settings);
 
-        store.upsert_product(&test_product("Brezel", 1_234)).unwrap();
+        store
+            .upsert_product(&test_product("Brezel", 1_234))
+            .unwrap();
         let p = store.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
@@ -10765,11 +12324,13 @@ mod tests {
 
         // Other countries print one tax line.
         store.apply_country_pack("SG").unwrap();
-        assert!(store
-            .fiscal_settings()
-            .unwrap()
-            .tax_components(900)
-            .is_empty());
+        assert!(
+            store
+                .fiscal_settings()
+                .unwrap()
+                .tax_components(900)
+                .is_empty()
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -10802,7 +12363,10 @@ mod tests {
         let created = store.resolve_tax_rate("7.5").unwrap().unwrap();
         assert_eq!(created.bps, 750);
         assert_eq!(created.name, "GST 7.5%");
-        assert_eq!(store.resolve_tax_rate("7.5").unwrap().unwrap().id, created.id);
+        assert_eq!(
+            store.resolve_tax_rate("7.5").unwrap().unwrap().id,
+            created.id
+        );
         assert!(store.resolve_tax_rate("bogus").is_err());
         assert!(store.resolve_tax_rate("140").is_err());
         let _ = std::fs::remove_file(path);
@@ -10867,10 +12431,11 @@ mod tests {
             .unwrap();
 
         assert!(main.import_branch_snapshot("not json").is_err());
-        assert!(main
-            .import_branch_snapshot(&main.export_branch_snapshot_json().unwrap())
-            .unwrap_err()
-            .contains("own branch"));
+        assert!(
+            main.import_branch_snapshot(&main.export_branch_snapshot_json().unwrap())
+                .unwrap_err()
+                .contains("own branch")
+        );
         let imported = main.import_branch_snapshot(&snapshot_json).unwrap();
         assert_eq!(imported.name, "MG Road");
         assert!(!imported.is_this_device);
@@ -11018,7 +12583,9 @@ mod tests {
         store.set_device_role("client").unwrap();
 
         let refusals: Vec<String> = vec![
-            store.upsert_product(&test_product("Coffee", 30)).unwrap_err(),
+            store
+                .upsert_product(&test_product("Coffee", 30))
+                .unwrap_err(),
             store.archive_product(&tea.id).unwrap_err(),
             store.set_product_available(&tea.id, false).unwrap_err(),
             store.set_product_stock_qty(&tea.id, 5).unwrap_err(),
@@ -11052,11 +12619,13 @@ mod tests {
         assert_eq!(store.list_products(false).unwrap().len(), 1);
         assert!(store.get_product(&tea.id).unwrap().unwrap().available);
         store
-            .set_client_pairing("http://127.0.0.1:7847", "123456")
+            .set_client_device_pairing("http://127.0.0.1:7847", "device-token")
             .unwrap();
-        assert!(store
-            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
-            .is_ok());
+        assert!(
+            store
+                .finalize_sale(&draft, PayMethod::Cash, None, &owner)
+                .is_ok()
+        );
 
         // Sync is the Server's own data arriving, so it must still land.
         store
@@ -11106,7 +12675,12 @@ mod tests {
         assert_eq!(sale.invoice_no, invoice_no);
         assert_eq!(restored.sale_lines(&sale_id).unwrap().len(), 1);
         assert_eq!(restored.today_totals().unwrap().sale_count, 1);
-        assert!(restored.format_receipt_text(&sale_id).unwrap().contains(&invoice_no));
+        assert!(
+            restored
+                .format_receipt_text(&sale_id)
+                .unwrap()
+                .contains(&invoice_no)
+        );
         // The restored DB is a working till, not a read-only copy.
         assert_eq!(restored.db_path(), fresh.as_path());
         assert!(Store::restore_from_to_path(Path::new("/nope/none.sqlite3"), &fresh).is_err());
@@ -11191,7 +12765,10 @@ mod tests {
         assert!(!store.pin_reset_required().unwrap());
         assert!(store.authenticate_owner_pin("9182").unwrap().is_some());
         assert!(store.authenticate_owner_pin("0000").unwrap().is_none());
-        assert!(store.complete_pin_reset("5555").is_err(), "reset is one-shot");
+        assert!(
+            store.complete_pin_reset("5555").is_err(),
+            "reset is one-shot"
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -11237,7 +12814,10 @@ mod tests {
         assert_eq!(store.factor_to_cm("crate"), Some(Decimal::from(40)));
         // Conversions ride the chain in both directions via the anchor:
         // 1 crate = 40 cm, so 2 crate = 80 cm and 80 cm = 4 box.
-        assert_eq!(store.convert_qty_milli(2_000, "crate", "cm").unwrap(), 80_000);
+        assert_eq!(
+            store.convert_qty_milli(2_000, "crate", "cm").unwrap(),
+            80_000
+        );
         assert_eq!(store.convert_qty_milli(80_000, "cm", "box").unwrap(), 4_000);
 
         // Loops are refused: box already leads (through crate's chain
@@ -11277,9 +12857,7 @@ mod tests {
         let units = store.list_units().unwrap();
         assert!(units.iter().any(|u| u.code == "kg"));
         store.add_unit("bag", "Bag").unwrap();
-        store
-            .add_unit_conversion("bag", "kg", 25_000)
-            .unwrap(); // 1 bag = 25 kg
+        store.add_unit_conversion("bag", "kg", 25_000).unwrap(); // 1 bag = 25 kg
         let kg = store.convert_qty_milli(1_000, "bag", "kg").unwrap();
         assert_eq!(kg, 25_000);
 
@@ -11324,9 +12902,7 @@ mod tests {
         let party = store
             .add_customer_kind("Bangles King", "", "Consignor")
             .unwrap();
-        store
-            .seed_opening_credit(&party.id, 1_500, &owner)
-            .unwrap();
+        store.seed_opening_credit(&party.id, 1_500, &owner).unwrap();
         assert_eq!(store.customer_balance(&party.id).unwrap(), 1_500);
         let written = store
             .write_off_credit(&party.id, 0, "clear small balance", &owner)
@@ -11370,7 +12946,12 @@ mod tests {
         let _ = store
             .commit_day_close_with_count(&owner, Some(100))
             .unwrap();
-        assert!(store.meta_get("last_day_close_counted_cash").unwrap().is_some());
+        assert!(
+            store
+                .meta_get("last_day_close_counted_cash")
+                .unwrap()
+                .is_some()
+        );
 
         let _ = std::fs::remove_file(path);
     }
@@ -11403,7 +12984,7 @@ mod tests {
         let mut draft = cart.to_sale_draft().unwrap();
         draft.money_lane = MoneyLane::Declared;
         store
-            .finalize_sale(&draft, PayMethod::Credit,  Some(&a.id), &owner)
+            .finalize_sale(&draft, PayMethod::Credit, Some(&a.id), &owner)
             .unwrap();
         let ar = store.customer_balance(&a.id).unwrap();
         assert!(ar > 0);

@@ -29,8 +29,12 @@ code here borrows from Courier's *internals* only, never its face.
 ```bash
 cargo khaynjo-dev                      # desktop, --hot --remote
 cargo khaynjo-android-dev              # build + install + launch on device
-cargo khaynjo-windows-dev              # Windows dev package → dist/windows-dev/
+cargo khaynjo-windows-dev              # Windows dev package → dist/khaynjo-windows-dev/
+./apps/khaynjo/scripts/windows-prod.sh  # Windows prod package → dist/khaynjo-windows/
+./apps/khaynjo/scripts/msi.sh [prod|dev] # MSI (per-user, own upgrade codes) → dist/Khaynjo-<ver>.msi
 ./apps/khaynjo/scripts/dev.sh          # desktop, without the cargo alias
+./apps/khaynjo/scripts/package-android.sh   # tablet APK → dist/khaynjo-android/
+./apps/khaynjo/scripts/uninstall-android-dev.sh  # adb uninstall (…-prod.sh for com.khaynjo)
 ```
 
 Tooling mirrors Courier's naming (`courier-dev` → `khaynjo-dev`,
@@ -41,9 +45,10 @@ kumkaj.com domain (`com.kumkaj.courier`); Khaynjo has its own domain,
 so its ids are `com.khaynjo` / `com.khaynjo.debug` — see
 [`docs/KHAYNJO.md`](docs/KHAYNJO.md).
 
-Note: root packaging scripts (`scripts/package-*.sh`, `build-msi.sh`)
-still default to Courier; generalising them for Khaynjo is follow-up
-work. `apps/khaynjo/scripts/*-dev.sh` already target Khaynjo.
+Everything that names Khaynjo lives in `apps/khaynjo/scripts/` — its
+package scripts, its own `Setup.bat` / `install.ps1` / `uninstall.ps1`,
+`desktop-ids.sh` and MSI `License.rtf`. Root `scripts/` is shared
+tooling that names no app (docs/DEV.md § Common workspace → Scripts).
 
 ## App icon / logo
 
@@ -53,9 +58,7 @@ icon set — `resources/icon_*`, `resources/icon.ico`, in-app
 generated from it the same way Courier's is:
 
 ```bash
-KUMKAJ_APP_DIR="$PWD/apps/khaynjo" \
-KUMKAJ_ICON_SRC="$PWD/apps/khaynjo/assets/khaynjo-app-icon.png" \
-  bash scripts/generate-app-icons.sh
+./apps/khaynjo/scripts/generate-icons.sh
 ```
 
 Dev scripts export `MAKEPAD_APP_ICON_*` pointing at this app's icons

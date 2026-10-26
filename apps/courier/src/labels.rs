@@ -78,6 +78,43 @@ impl AwbLabel {
         std::fs::write(&path, self.to_svg()).map_err(|e| e.to_string())?;
         Ok(path)
     }
+
+    /// Plain text for thermal / ESC/POS printers (Settings → AWB label route).
+    pub fn to_plain_text(&self) -> String {
+        let currency = if self.currency_code.trim().is_empty() {
+            "INR"
+        } else {
+            self.currency_code.trim()
+        };
+        let weight = format!("{} kg", crate::precise::format_kg(self.weight_kg));
+        let pieces = if self.pieces > 0 { self.pieces } else { 1 };
+        let mut out = String::new();
+        if !self.agency_name.trim().is_empty() {
+            out.push_str(self.agency_name.trim());
+            out.push('\n');
+        }
+        out.push_str("AWB LABEL\n");
+        out.push_str(&self.awb_no);
+        out.push('\n');
+        out.push_str("--------------------------------\n");
+        out.push_str("FROM\n");
+        out.push_str(&self.from_name);
+        out.push('\n');
+        out.push_str("TO\n");
+        out.push_str(&self.to_name);
+        out.push('\n');
+        out.push_str(&self.destination);
+        out.push('\n');
+        out.push_str(&format!("{weight} · {pieces} pc · {}\n", self.service));
+        if self.cod_paise > 0 {
+            out.push_str(&format!(
+                "COD {}\n",
+                Money(self.cod_paise).format_with(currency)
+            ));
+        }
+        out.push_str("--------------------------------\n");
+        out
+    }
 }
 
 fn xml_escape(s: &str) -> String {

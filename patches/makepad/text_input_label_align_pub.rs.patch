@@ -1,0 +1,14 @@
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -553,8 +553,10 @@
+     layout: Layout,
+     #[walk]
+     walk: Walk,
++    // Kumkaj patch: `pub` so apps can right-align text/placeholder for
++    // right-to-left languages at runtime.
+     #[live]
+-    label_align: Align,
++    pub label_align: Align,
+ 
+     #[live]
+     is_password: bool,

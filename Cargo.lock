@@ -1131,20 +1131,25 @@ version = "0.1.0"
 name = "kumkaj-courier"
 version = "0.1.0"
 dependencies = [
+ "ab_glyph_rasterizer",
  "arboard",
  "chrono",
  "dirs",
+ "flate2",
  "hex",
  "image",
+ "libc",
  "makepad-widgets",
  "rand 0.8.8",
  "rfd",
  "rusqlite",
  "rust_decimal",
+ "rustybuzz",
  "serde",
  "serde_json",
  "sha2",
  "sys-locale",
+ "unicode-bidi",
  "ureq",
  "uuid",
 ]
@@ -1153,20 +1158,25 @@ dependencies = [
 name = "kumkaj-khaynjo"
 version = "0.1.0"
 dependencies = [
+ "ab_glyph_rasterizer",
  "arboard",
  "chrono",
  "dirs",
+ "flate2",
  "hex",
  "image",
+ "libc",
  "makepad-widgets",
  "rand 0.8.8",
  "rfd",
  "rusqlite",
  "rust_decimal",
+ "rustybuzz",
  "serde",
  "serde_json",
  "sha2",
  "sys-locale",
+ "unicode-bidi",
  "ureq",
  "uuid",
 ]

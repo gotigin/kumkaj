@@ -16,9 +16,14 @@ pub mod media;
 pub mod menu_images;
 pub mod net;
 pub mod notify;
+pub mod phone;
 pub mod precise;
 pub mod print_share;
+pub mod receipt_raster;
+pub mod startup;
 pub mod store;
+pub mod suggest;
+pub mod thumbs;
 
 // Android packaging compiles this library as the cdylib. The desktop
 // binary's `app_main!` is not in that library, so Activity.onCreate

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Shared desktop install / data path helpers for Kumkaj apps.
-# Requires KUMKAJ_APP_ID and KUMKAJ_APP_LABEL (from the app's env/*.env
-# or install-manifest.env). Per-app identity overrides (env file or
-# caller): KUMKAJ_INSTALL_SLUG, KUMKAJ_BIN_NAME, KUMKAJ_PROGRAMS_NAME.
-# Defaults are Kumkaj Courier's — existing installs must not move.
+# Khaynjo's desktop install / data path helpers (shipped inside its
+# packages; apps/courier/scripts has Courier's own copy).
+# Requires KUMKAJ_APP_ID and KUMKAJ_APP_LABEL (from env/*.env or
+# install-manifest.env). Overrides: KUMKAJ_INSTALL_SLUG, KUMKAJ_BIN_NAME,
+# KUMKAJ_PROGRAMS_NAME. Defaults are Khaynjo's.
 #
-# Courier prod:  com.kumkaj.courier       · "Kumkaj Courier"
-# Courier dev:   com.kumkaj.courier.debug · "Kumkaj Courier Dev"
+# Khaynjo prod:  com.khaynjo       · "Khaynjo"
+# Khaynjo dev:   com.khaynjo.debug · "Khaynjo Dev"
 
 desktop_is_debug() {
   [[ "${KUMKAJ_APP_ID:-}" == *.debug ]] || [[ "${KUMKAJ_ENV:-}" == "development" ]]
@@ -14,7 +14,7 @@ desktop_is_debug() {
 
 # Short folder slug under ~/.local/lib and for package layout (no spaces).
 desktop_install_slug() {
-  local base="${KUMKAJ_INSTALL_SLUG:-kumkaj-courier}"
+  local base="${KUMKAJ_INSTALL_SLUG:-kumkaj-khaynjo}"
   if desktop_is_debug; then
     echo "$base-debug"
   else
@@ -25,12 +25,12 @@ desktop_install_slug() {
 # Windows Programs folder name (spaces OK). The env label already
 # carries the Dev suffix on development builds.
 desktop_programs_name() {
-  echo "${KUMKAJ_PROGRAMS_NAME:-${KUMKAJ_APP_LABEL:-Kumkaj Courier}}"
+  echo "${KUMKAJ_PROGRAMS_NAME:-${KUMKAJ_APP_LABEL:-Khaynjo}}"
 }
 
 # CLI / shortcut binary base name.
 desktop_bin_name() {
-  local base="${KUMKAJ_BIN_NAME:-kumkaj-courier}"
+  local base="${KUMKAJ_BIN_NAME:-kumkaj-khaynjo}"
   if desktop_is_debug; then
     echo "$base-dev"
   else
@@ -40,7 +40,7 @@ desktop_bin_name() {
 
 # Freedesktop desktop file id (no .desktop suffix).
 desktop_entry_id() {
-  echo "${KUMKAJ_APP_ID:-com.kumkaj.courier}"
+  echo "${KUMKAJ_APP_ID:-com.khaynjo}"
 }
 
 # Books / SQLite data directory (same key the app uses via dirs::data_dir + APP_ID).
@@ -101,7 +101,7 @@ desktop_load_manifest() {
 # Prompt: keep data (default) or remove. Returns 0 if caller should delete data.
 desktop_prompt_remove_data() {
   local data_dir="${1:?}"
-  local label="${KUMKAJ_APP_LABEL:-Kumkaj Courier}"
+  local label="${KUMKAJ_APP_LABEL:-Khaynjo}"
   echo
   echo "$label — local books data:"
   echo "  $data_dir"

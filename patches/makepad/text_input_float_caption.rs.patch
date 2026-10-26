@@ -1,0 +1,52 @@
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -542,6 +542,13 @@
+     draw_bg: DrawColor,
+     #[live]
+     draw_text: DrawText,
++    /// Small label drawn in the top padding once the field holds text: the
++    /// short form of `empty_text` (up to " — " or " ("), so a filled form
++    /// still says what each field is. Off unless `float_caption: true`.
++    #[live]
++    draw_caption: DrawText,
++    #[live(false)]
++    float_caption: bool,
+     #[live]
+     draw_selection: DrawQuad,
+     #[live]
+@@ -2267,6 +2274,14 @@
+     }
+ 
+     fn draw_walk(&mut self, cx: &mut Cx2d, _scope: &mut Scope, walk: Walk) -> DrawStep {
++        // A filled field with a caption moves its text down a little (same
++        // total height); an empty one keeps its placeholder centred.
++        let captioned = self.float_caption && !self.text.is_empty();
++        let saved_layout = self.layout;
++        if captioned {
++            self.layout.padding.top += 8.0;
++            self.layout.padding.bottom = (self.layout.padding.bottom - 8.0).max(0.0);
++        }
+         self.draw_bg.begin(cx, walk, self.layout);
+         self.draw_selection.append_to_draw_call(cx);
+         self.draw_composition_underline.append_to_draw_call(cx);
+@@ -2286,6 +2301,20 @@
+         self.draw_composition_underline(cx, text_rect);
+         self.scroll_to_cursor(cx, content_clip_index);
+         cx.pop_clip_rect();
++        if captioned {
++            let full = self.empty_text.trim();
++            let cut = [" — ", " (", " - "]
++                .iter()
++                .filter_map(|sep| full.find(sep))
++                .min()
++                .unwrap_or(full.len());
++            let caption = full[..cut].trim();
++            if !caption.is_empty() {
++                let pos = dvec2(inner_origin.x, inner_origin.y - self.layout.padding.top + 4.0);
++                self.draw_caption.draw_abs(cx, pos, caption);
++            }
++        }
++        self.layout = saved_layout;
+         self.draw_scroll_bar(cx);
+         self.draw_bg.end(cx);
+         // A read-only field does no IME work at all (no state push, no keyboard).

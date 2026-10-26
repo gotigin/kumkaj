@@ -1,0 +1,44 @@
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -42,6 +42,9 @@
+         is_read_only: false
+         is_numeric_only: false
+         empty_text: "Your text here"
++        // Half-second caret blink. Leaving this unset defaults to 0.0 and the
++        // caret never stays visible (timer collapses into the hidden phase).
++        blink_speed: 0.5
+         scroll_bar: mod.widgets.ScrollBar {
+             bar_size: 8.0
+             bar_side_margin: 2.0
+@@ -1118,9 +1121,9 @@
+             .expect("layout should not be `None` because we called `layout_text` in `draw_walk`");
+         let row = &laidout_text.rows[row_index];
+         let cursor_rect = rect(
+-            (x_in_lpxs - 1.0 * self.draw_text.font_scale) as f64,
++            (x_in_lpxs - 1.5 * self.draw_text.font_scale) as f64,
+             ((row.origin_in_lpxs.y - row.ascender_in_lpxs) * self.draw_text.font_scale) as f64,
+-            (2.0 * self.draw_text.font_scale) as f64,
++            (3.0 * self.draw_text.font_scale) as f64,
+             ((row.ascender_in_lpxs - row.descender_in_lpxs) * self.draw_text.font_scale) as f64,
+         );
+         self.draw_cursor
+@@ -1358,9 +1361,16 @@
+                 (laidout_text.size_in_lpxs.height * self.draw_text.font_scale) as f64;
+             let centering = (text_height - height) * 0.5;
+             self.cached_max_scroll_y = 0.0;
+-            // Guard NaN (an unresolved turtle size), which the old clamp
+-            // sanitized implicitly and which would poison the align shift.
+-            self.scroll_y = if centering.is_finite() { centering } else { 0.0 };
++            // An empty field draws `empty_text`, which wraps and is what sized
++            // the box. Centering against the blank value's one-line height
++            // pushes that placeholder down and clips every line after the first.
++            self.scroll_y = if self.text.is_empty() {
++                0.0
++            } else if centering.is_finite() {
++                centering
++            } else {
++                0.0
++            };
+         }
+ 
+         let laidout_text_width = laidout_text.size_in_lpxs.width as f64;

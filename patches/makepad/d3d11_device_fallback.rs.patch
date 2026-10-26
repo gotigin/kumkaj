@@ -1,0 +1,64 @@
+--- a/platform/src/os/windows/d3d11.rs
++++ b/platform/src/os/windows/d3d11.rs
+@@ -2108,20 +2108,41 @@
+             // adapter that went away. Recovery always starts from a fresh factory.
+             let factory: IDXGIFactory2 = CreateDXGIFactory2(DXGI_CREATE_FACTORY_FLAGS(0))?;
+             let adapter = factory.EnumAdapters(0)?;
++            let feature_levels = [D3D_FEATURE_LEVEL_11_0];
++            // 0x800 = VIDEO_SUPPORT, 0x20 = BGRA_SUPPORT. VIDEO_SUPPORT is optional for
++            // UI; requiring it returns DXGI_ERROR_UNSUPPORTED (0x887A0004) on many
++            // Windows 10/11 GPUs. Prefer video when available, else BGRA-only.
++            let flag_sets = [
++                D3D11_CREATE_DEVICE_FLAG(0x800 | 0x20),
++                D3D11_CREATE_DEVICE_FLAG(0x20),
++            ];
++
+             let mut device: Option<ID3D11Device> = None;
+             let mut context: Option<ID3D11DeviceContext> = None;
+-            let mut query: Option<ID3D11Query> = None;
+-            D3D11CreateDevice(
+-                &adapter,
+-                D3D_DRIVER_TYPE_UNKNOWN,
+-                HMODULE(std::ptr::null_mut()),
+-                D3D11_CREATE_DEVICE_FLAG(0x800 | 0x20), // VIDEO_SUPPORT | BGRA_SUPPORT
+-                Some(&[D3D_FEATURE_LEVEL_11_0]),
+-                D3D11_SDK_VERSION,
+-                Some(&mut device),
+-                None,
+-                Some(&mut context),
+-            )?;
++            let mut last_err = None;
++            for &flags in &flag_sets {
++                match D3D11CreateDevice(
++                    &adapter,
++                    D3D_DRIVER_TYPE_UNKNOWN,
++                    HMODULE(std::ptr::null_mut()),
++                    flags,
++                    Some(&feature_levels),
++                    D3D11_SDK_VERSION,
++                    Some(&mut device),
++                    None,
++                    Some(&mut context),
++                ) {
++                    Ok(()) => break,
++                    Err(e) => {
++                        device = None;
++                        context = None;
++                        last_err = Some(e);
++                    }
++                }
++            }
++            if device.is_none() {
++                return Err(last_err.unwrap());
++            }
+ 
+             let device = device.unwrap();
+             let context = context.unwrap();
+@@ -2132,6 +2153,7 @@
+             // render loop. The old device-level IDXGIDevice1::SetMaximumFrameLatency
+             // call has been removed so the two mechanisms don't conflict.
+ 
++            let mut query: Option<ID3D11Query> = None;
+             device.CreateQuery(
+                 &D3D11_QUERY_DESC {
+                     Query: D3D11_QUERY_EVENT,

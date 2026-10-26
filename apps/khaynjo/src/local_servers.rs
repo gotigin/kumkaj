@@ -45,6 +45,39 @@ pub fn client_db_path(base: &Path) -> PathBuf {
     base.join("client").join(DB_FILENAME)
 }
 
+/// App-global language choice: ONE per install, shared by every shop
+/// (server DB) and every staff role on this device. It deliberately lives
+/// outside the per-shop books file — language is a property of the app on
+/// this device, not of a business or a user. `follow_platform` true means
+/// "follow the OS language"; otherwise `language` is a fixed catalogue code.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+struct AppLanguagePref {
+    follow_platform: bool,
+    language: String,
+}
+
+fn app_language_path(base: &Path) -> PathBuf {
+    base.join("app_language.json")
+}
+
+/// The remembered app-global language choice, if the user has made one.
+pub fn load_app_language(base: &Path) -> Option<(bool, String)> {
+    let raw = fs::read_to_string(app_language_path(base)).ok()?;
+    let pref: AppLanguagePref = serde_json::from_str(&raw).ok()?;
+    Some((pref.follow_platform, pref.language))
+}
+
+/// Remember the language choice for the whole app on this device.
+pub fn save_app_language(base: &Path, follow_platform: bool, language: &str) -> Result<(), String> {
+    fs::create_dir_all(base).map_err(|e| e.to_string())?;
+    let pref = AppLanguagePref {
+        follow_platform,
+        language: language.into(),
+    };
+    let raw = serde_json::to_string_pretty(&pref).map_err(|e| e.to_string())?;
+    fs::write(app_language_path(base), raw).map_err(|e| e.to_string())
+}
+
 fn load_registry(base: &Path) -> Result<RegistryFile, String> {
     let path = registry_path(base);
     if !path.exists() {
@@ -96,7 +129,9 @@ pub fn create_local_server(base: &Path, name: &str) -> Result<(LocalServerInfo, 
             trimmed.to_string()
         }
     };
-    if store.venue_title().unwrap_or_default().trim().is_empty() {
+    // A typed name is the restaurant's; the generated label only names the
+    // server in the list (it once leaked into the header and the bills).
+    if !name.trim().is_empty() && store.venue_title().unwrap_or_default().trim().is_empty() {
         let _ = store.set_venue_title(&label);
     }
     let info = LocalServerInfo {
@@ -181,6 +216,45 @@ mod tests {
         let opened = open_server(&base, &a.id).unwrap();
         assert!(opened.db_path().ends_with(DB_FILENAME));
         assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(a.id.as_str()));
+        let _ = fs::remove_dir_all(base);
+    }
+
+    /// A server made without a name gets a generated label for the list,
+    /// never as the restaurant's name (it once showed in the header and on
+    /// bills as "Server af76697b"); books that already took it read as
+    /// unnamed, and other devices list them by the business name.
+    #[test]
+    fn generated_server_label_is_not_the_restaurant_name() {
+        let base = temp_base();
+        let (unnamed, store) = create_local_server(&base, "").unwrap();
+        assert!(store::is_generated_server_label(&unnamed.name), "{}", unnamed.name);
+        assert_eq!(store.venue_title().unwrap(), "");
+        assert_eq!(store.listing_name().unwrap(), "");
+        store.set_org_name("Rajdhani Foods").unwrap();
+        assert_eq!(store.listing_name().unwrap(), "Rajdhani Foods");
+        store.set_venue_title(&unnamed.name).unwrap();
+        assert_eq!(store.venue_title().unwrap(), "");
+        let (_, named) = create_local_server(&base, "Rajdhani").unwrap();
+        assert_eq!(named.venue_title().unwrap(), "Rajdhani");
+        assert_eq!(named.listing_name().unwrap(), "Rajdhani");
+        assert!(!store::is_generated_server_label("Server room"));
+        assert!(!store::is_generated_server_label("Server af76697"));
+        let _ = fs::remove_dir_all(base);
+    }
+
+    #[test]
+    fn app_language_is_one_global_choice_per_install() {
+        let base = temp_base();
+        // Nothing picked yet: no remembered choice.
+        assert!(load_app_language(&base).is_none());
+        save_app_language(&base, false, "hi").unwrap();
+        assert_eq!(load_app_language(&base), Some((false, "hi".to_string())));
+        // Switching to follow-the-OS overwrites the same single slot.
+        save_app_language(&base, true, "en").unwrap();
+        assert_eq!(load_app_language(&base), Some((true, "en".to_string())));
+        // Corrupt file reads as "no choice" instead of failing boot.
+        fs::write(app_language_path(&base), "not json").unwrap();
+        assert!(load_app_language(&base).is_none());
         let _ = fs::remove_dir_all(base);
     }
 }
