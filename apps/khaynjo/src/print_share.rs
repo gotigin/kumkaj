@@ -5,11 +5,13 @@
 //! printer ids per feature) in `printers.json` beside the language choice.
 //! A route tries the first printer, then the next on failure; an empty
 //! route means that feature does not print. KOT routes are per kitchen
-//! station (`""` = default kitchen for unassigned items).
+//! station (`""` = items with no station assigned — not a shared printer for
+//! every kitchen). Each station's route is independent.
 //!
-//! A printer `target` is blank (system default), a system printer name, or
-//! a network address (`192.168.1.50` / `host:port`, ESC/POS). Jobs go
-//! through one queue thread; failures surface via [`take_problems`].
+//! A printer `target` is a system printer name, or a network address
+//! (`192.168.1.50` / `host:port`, ESC/POS). Blank target means this computer's
+//! usual OS printer — never invent a pool entry named "Default". Jobs go
+//! through one worker thread; failures surface via [`take_problems`].
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -58,7 +60,7 @@ pub enum PrintKind {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RouteKey<'a> {
     Bill,
-    /// Kitchen ticket for this station id (`""` = default kitchen).
+    /// Kitchen ticket for this station id (`""` = unassigned items only).
     Kot { station_id: &'a str },
 }
 
@@ -76,7 +78,7 @@ pub struct NamedPrinter {
 pub struct PrintRoutes {
     #[serde(default)]
     pub bill: Vec<String>,
-    /// Station id → ordered printer ids. Key `""` is the default kitchen.
+    /// Station id → ordered printer ids. Key `""` is unassigned items only.
     #[serde(default)]
     pub kot: BTreeMap<String, Vec<String>>,
 }
@@ -90,25 +92,17 @@ pub struct DevicePrinters {
 
 impl Default for DevicePrinters {
     fn default() -> Self {
-        // No file yet: bills still go to the system default; KOT needs an
-        // explicit route (empty = don't print), matching migration of a blank
-        // legacy `kot` field.
-        let id = DEFAULT_PRINTER_ID.to_string();
+        // Nothing configured yet: empty pool, empty routes (don't print until
+        // the owner adds real printers and assigns them).
         Self {
-            printers: vec![NamedPrinter {
-                id: id.clone(),
-                label: "Default".into(),
-                target: String::new(),
-            }],
+            printers: Vec::new(),
             routes: PrintRoutes {
-                bill: vec![id],
+                bill: Vec::new(),
                 kot: BTreeMap::from([("".into(), Vec::new())]),
             },
         }
     }
 }
-
-const DEFAULT_PRINTER_ID: &str = "default";
 
 impl<'de> Deserialize<'de> for DevicePrinters {
     fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
@@ -134,9 +128,7 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             printers: parsed.printers,
             routes: parsed.routes,
         };
-        if out.printers.is_empty() && out.routes.bill.is_empty() && out.routes.kot.is_empty() {
-            return DevicePrinters::default();
-        }
+        scrub_fake_default_printers(&mut out);
         if !out.routes.kot.contains_key("") {
             out.routes.kot.insert(String::new(), Vec::new());
         }
@@ -156,32 +148,44 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
     migrate_legacy(&kot, &bill)
 }
 
+/// Drop the old synthetic pool entry labeled "Default" with a blank target —
+/// that was never a real printer and only confused Settings.
+fn scrub_fake_default_printers(cfg: &mut DevicePrinters) {
+    let fake: Vec<String> = cfg
+        .printers
+        .iter()
+        .filter(|p| {
+            p.target.trim().is_empty()
+                && (p.id == "default" || p.label.eq_ignore_ascii_case("default"))
+        })
+        .map(|p| p.id.clone())
+        .collect();
+    for id in fake {
+        cfg.remove_printer(&id);
+    }
+}
+
 /// Turn old single-string fields into a pool + routes.
+/// Blank fields stay empty routes (don't invent a printer named "Default").
 pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
     let mut printers = Vec::new();
-    let mut push = |target: &str, label: &str| -> String {
+    let mut push = |target: &str, label: &str| -> Option<String> {
         let t = target.trim();
-        if let Some(existing) = printers.iter().find(|p: &&NamedPrinter| p.target == t) {
-            return existing.id.clone();
+        if t.is_empty() {
+            return None;
         }
-        let id = if t.is_empty() {
-            DEFAULT_PRINTER_ID.to_string()
-        } else {
-            uuid::Uuid::new_v4().to_string()
-        };
+        if let Some(existing) = printers.iter().find(|p: &&NamedPrinter| p.target == t) {
+            return Some(existing.id.clone());
+        }
+        let id = uuid::Uuid::new_v4().to_string();
         printers.push(NamedPrinter {
             id: id.clone(),
             label: label.into(),
             target: t.to_string(),
         });
-        id
+        Some(id)
     };
-    let bill_ids = if bill.trim().is_empty() {
-        // Blank bill kept today's "default printer" behaviour.
-        vec![push("", "Default")]
-    } else {
-        vec![push(bill, "Bill printer")]
-    };
+    let bill_ids = push(bill, "Bill printer").into_iter().collect();
     let kot_ids = if kot.trim().is_empty() {
         Vec::new()
     } else {
@@ -190,7 +194,7 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
         } else {
             "Kitchen printer"
         };
-        vec![push(kot, label)]
+        push(kot, label).into_iter().collect()
     };
     DevicePrinters {
         printers,
@@ -203,22 +207,31 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
 
 impl DevicePrinters {
     /// Ordered printer ids for this route (empty = don't print).
+    /// Each kitchen station has its own list — no silent sharing with another
+    /// station. Key `""` is only for items with no station assigned.
     pub fn route_for(&self, key: RouteKey<'_>) -> &[String] {
         match key {
             RouteKey::Bill => &self.routes.bill,
-            RouteKey::Kot { station_id } => {
-                if let Some(ids) = self.routes.kot.get(station_id) {
-                    ids.as_slice()
-                } else if !station_id.is_empty() {
-                    self.routes
-                        .kot
-                        .get("")
-                        .map(|v| v.as_slice())
-                        .unwrap_or(&[])
-                } else {
-                    &[]
-                }
-            }
+            RouteKey::Kot { station_id } => self
+                .routes
+                .kot
+                .get(station_id)
+                .map(|v| v.as_slice())
+                .unwrap_or(&[]),
+        }
+    }
+
+    /// Ensure every kitchen station has its own route entry (starts empty =
+    /// don't print until the owner adds printers for that station).
+    pub fn ensure_station_routes(&mut self, station_ids: impl IntoIterator<Item = impl AsRef<str>>) {
+        if !self.routes.kot.contains_key("") {
+            self.routes.kot.insert(String::new(), Vec::new());
+        }
+        for id in station_ids {
+            self.routes
+                .kot
+                .entry(id.as_ref().to_string())
+                .or_insert_with(Vec::new);
         }
     }
 
@@ -241,23 +254,21 @@ impl DevicePrinters {
 
     pub fn add_printer(&mut self, label: &str, target: &str) -> String {
         let id = uuid::Uuid::new_v4().to_string();
+        let tgt = target.trim().to_string();
         let label = {
             let t = label.trim();
-            if t.is_empty() {
-                let tgt = target.trim();
-                if tgt.is_empty() {
-                    "Default".into()
-                } else {
-                    tgt.to_string()
-                }
-            } else {
+            if !t.is_empty() {
                 t.to_string()
+            } else if !tgt.is_empty() {
+                tgt.clone()
+            } else {
+                "Printer".into()
             }
         };
         self.printers.push(NamedPrinter {
             id: id.clone(),
             label,
-            target: target.trim().to_string(),
+            target: tgt,
         });
         id
     }
@@ -565,7 +576,7 @@ fn queue(job: Job) {
 /// How a person names the printer.
 pub fn describe(target: &PrinterTarget) -> String {
     match target {
-        PrinterTarget::Default => "The default printer".into(),
+        PrinterTarget::Default => "This computer's usual printer (blank address)".into(),
         PrinterTarget::Named(name) => format!("Printer \"{name}\""),
         PrinterTarget::Network(addr) => format!("Network printer {addr}"),
     }
@@ -881,7 +892,7 @@ mod tests {
     #[test]
     fn empty_kot_route_skips_capture() {
         let _g = CFG_LOCK.lock().unwrap();
-        configure(DevicePrinters::default()); // bill has default; kot "" is empty
+        configure(DevicePrinters::default()); // empty routes = don't print
         let _ = take_problems();
         let _ = take_captured();
         let dir = std::env::temp_dir().join(format!("khaynjo-print-skip-{}", uuid::Uuid::new_v4().simple()));
@@ -978,12 +989,10 @@ mod tests {
             migrated.targets_for(RouteKey::Kot { station_id: "" }),
             vec![PrinterTarget::Network("192.168.1.50:9100".into())]
         );
-        // Blank bill → synthetic Default; blank kot → don't print.
+        // Blank fields → empty routes (no invented "Default" printer).
         let blank = migrate_legacy("", "");
-        assert_eq!(
-            blank.targets_for(RouteKey::Bill),
-            vec![PrinterTarget::Default]
-        );
+        assert!(blank.printers.is_empty());
+        assert!(blank.route_for(RouteKey::Bill).is_empty());
         assert!(blank.route_for(RouteKey::Kot { station_id: "" }).is_empty());
         // Round-trip through serde (legacy file shape).
         let base = std::env::temp_dir().join(format!("khaynjo-legacy-{}", uuid::Uuid::new_v4().simple()));
@@ -998,12 +1007,21 @@ mod tests {
             loaded.targets_for(RouteKey::Kot { station_id: "" }),
             vec![PrinterTarget::Network("10.0.0.9:9100".into())]
         );
-        assert_eq!(loaded.targets_for(RouteKey::Bill), vec![PrinterTarget::Default]);
+        assert!(loaded.route_for(RouteKey::Bill).is_empty());
+        // Scrub old synthetic Default from a new-format file.
+        fs::write(
+            base.join("printers.json"),
+            r#"{"printers":[{"id":"default","label":"Default","target":""}],"routes":{"bill":["default"],"kot":{"":[]}}}"#,
+        )
+        .unwrap();
+        let scrubbed = load_device_printers(&base);
+        assert!(scrubbed.printers.is_empty());
+        assert!(scrubbed.route_for(RouteKey::Bill).is_empty());
         let _ = fs::remove_dir_all(base);
     }
 
     #[test]
-    fn station_kot_route_falls_back_to_default_kitchen() {
+    fn each_station_has_its_own_kot_route() {
         let mut cfg = DevicePrinters::default();
         let main = cfg.add_printer("Main", "192.168.1.10");
         let tandoor = cfg.add_printer("Tandoor", "192.168.1.11");
@@ -1017,13 +1035,12 @@ mod tests {
             }),
             vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
-        assert_eq!(
-            cfg.targets_for(RouteKey::Kot {
+        // Unknown / unconfigured station does NOT inherit the unassigned route.
+        assert!(cfg
+            .route_for(RouteKey::Kot {
                 station_id: "unknown"
-            }),
-            vec![PrinterTarget::Network("192.168.1.10:9100".into())]
-        );
-        // Explicit empty station route = don't print (no fallback).
+            })
+            .is_empty());
         *cfg.route_mut(RouteKey::Kot {
             station_id: "st-bar",
         }) = Vec::new();

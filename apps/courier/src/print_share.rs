@@ -7,8 +7,9 @@
 //! route means that feature does not print. Courier routes: **Receipt** and
 //! **AWB label**.
 //!
-//! A printer `target` is blank (system default), a system printer name, or
-//! a network address (`192.168.1.50` / `host:port`, ESC/POS). Jobs go
+//! A printer `target` is a system printer name, or a network address
+//! (`192.168.1.50` / `host:port`, ESC/POS). Blank target means this computer's
+//! usual OS printer — never invent a pool entry named "Default". Jobs go
 //! through one queue thread; failures surface via [`take_problems`].
 //! Tests never reach a printer ([`PrintSink`]; mirrors Khaynjo).
 
@@ -88,24 +89,17 @@ pub struct DevicePrinters {
 
 impl Default for DevicePrinters {
     fn default() -> Self {
-        let id = DEFAULT_PRINTER_ID.to_string();
+        // Nothing configured yet — empty pool and routes until the owner
+        // adds real printers (never invent a printer named "Default").
         Self {
-            printers: vec![NamedPrinter {
-                id: id.clone(),
-                label: "Default".into(),
-                target: String::new(),
-            }],
+            printers: Vec::new(),
             routes: PrintRoutes {
-                // Blank legacy receipt kept the system default.
-                receipt: vec![id],
-                // Labels must be configured (empty = don't print).
+                receipt: Vec::new(),
                 label: Vec::new(),
             },
         }
     }
 }
-
-const DEFAULT_PRINTER_ID: &str = "default";
 
 impl<'de> Deserialize<'de> for DevicePrinters {
     fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
@@ -127,14 +121,11 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             printers: Vec::new(),
             routes: PrintRoutes::default(),
         });
-        let out = DevicePrinters {
+        let mut out = DevicePrinters {
             printers: parsed.printers,
             routes: parsed.routes,
         };
-        if out.printers.is_empty() && out.routes.receipt.is_empty() && out.routes.label.is_empty()
-        {
-            return DevicePrinters::default();
-        }
+        scrub_fake_default_printers(&mut out);
         return out;
     }
     let receipt = value
@@ -145,30 +136,35 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
     migrate_legacy(&receipt)
 }
 
+fn scrub_fake_default_printers(cfg: &mut DevicePrinters) {
+    let fake: Vec<String> = cfg
+        .printers
+        .iter()
+        .filter(|p| {
+            p.target.trim().is_empty()
+                && (p.id == "default" || p.label.eq_ignore_ascii_case("default"))
+        })
+        .map(|p| p.id.clone())
+        .collect();
+    for id in fake {
+        cfg.remove_printer(&id);
+    }
+}
+
 /// Turn the old single `receipt` string into a pool + routes.
+/// Blank receipt → empty route (no invented "Default" printer).
 pub fn migrate_legacy(receipt: &str) -> DevicePrinters {
     let mut printers = Vec::new();
-    let mut push = |target: &str, label: &str| -> String {
-        let t = target.trim();
-        if let Some(existing) = printers.iter().find(|p: &&NamedPrinter| p.target == t) {
-            return existing.id.clone();
-        }
-        let id = if t.is_empty() {
-            DEFAULT_PRINTER_ID.to_string()
-        } else {
-            uuid::Uuid::new_v4().to_string()
-        };
+    let receipt_ids = if receipt.trim().is_empty() {
+        Vec::new()
+    } else {
+        let id = uuid::Uuid::new_v4().to_string();
         printers.push(NamedPrinter {
             id: id.clone(),
-            label: label.into(),
-            target: t.to_string(),
+            label: "Receipt printer".into(),
+            target: receipt.trim().to_string(),
         });
-        id
-    };
-    let receipt_ids = if receipt.trim().is_empty() {
-        vec![push("", "Default")]
-    } else {
-        vec![push(receipt, "Receipt printer")]
+        vec![id]
     };
     DevicePrinters {
         printers,
@@ -205,23 +201,21 @@ impl DevicePrinters {
 
     pub fn add_printer(&mut self, label: &str, target: &str) -> String {
         let id = uuid::Uuid::new_v4().to_string();
+        let tgt = target.trim().to_string();
         let label = {
             let t = label.trim();
-            if t.is_empty() {
-                let tgt = target.trim();
-                if tgt.is_empty() {
-                    "Default".into()
-                } else {
-                    tgt.to_string()
-                }
-            } else {
+            if !t.is_empty() {
                 t.to_string()
+            } else if !tgt.is_empty() {
+                tgt.clone()
+            } else {
+                "Printer".into()
             }
         };
         self.printers.push(NamedPrinter {
             id: id.clone(),
             label,
-            target: target.trim().to_string(),
+            target: tgt,
         });
         id
     }
@@ -511,7 +505,7 @@ fn queue(job: Job) {
 /// How a person names the printer.
 pub fn describe(target: &PrinterTarget) -> String {
     match target {
-        PrinterTarget::Default => "The default printer".into(),
+        PrinterTarget::Default => "This computer's usual printer (blank address)".into(),
         PrinterTarget::Named(name) => format!("Printer \"{name}\""),
         PrinterTarget::Network(addr) => format!("Network printer {addr}"),
     }
@@ -806,7 +800,10 @@ mod tests {
     fn unit_tests_never_reach_the_os_printer() {
         let _g = CFG_LOCK.lock().unwrap();
         assert_eq!(sink(), PrintSink::Capture);
-        configure(DevicePrinters::default());
+        let mut cfg = DevicePrinters::default();
+        let id = cfg.add_printer("Desk", "Canon_G3010");
+        *cfg.route_mut(RouteKey::Receipt) = vec![id];
+        configure(cfg);
         let _ = take_captured();
         let dir = std::env::temp_dir().join(format!("courier-print-{}", std::process::id()));
         let share = print_text(PrintKind::Receipt, "Booking receipt — test", Some(&dir)).unwrap();
@@ -896,7 +893,20 @@ mod tests {
         );
         assert!(migrated.route_for(RouteKey::Label).is_empty());
         let blank = migrate_legacy("");
-        assert_eq!(blank.targets_for(RouteKey::Receipt), vec![PrinterTarget::Default]);
+        assert!(blank.printers.is_empty());
+        assert!(blank.route_for(RouteKey::Receipt).is_empty());
+        // Scrub old synthetic Default from a new-format file.
+        let base = std::env::temp_dir().join(format!("courier-scrub-{}", uuid::Uuid::new_v4().simple()));
+        fs::create_dir_all(&base).unwrap();
+        fs::write(
+            base.join("printers.json"),
+            r#"{"printers":[{"id":"default","label":"Default","target":""}],"routes":{"receipt":["default"],"label":[]}}"#,
+        )
+        .unwrap();
+        let scrubbed = load_device_printers(&base);
+        assert!(scrubbed.printers.is_empty());
+        assert!(scrubbed.route_for(RouteKey::Receipt).is_empty());
+        let _ = fs::remove_dir_all(base);
         configure(DevicePrinters::default());
         let _ = take_captured();
         let dir = std::env::temp_dir().join(format!("courier-label-skip-{}", uuid::Uuid::new_v4().simple()));

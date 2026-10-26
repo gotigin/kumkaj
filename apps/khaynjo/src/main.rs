@@ -5414,17 +5414,23 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                brand_title := WrapLabel{
-                                    width: Fill
-                                    body: "Khaynjo"
-                                    font_color: #xffffff
-                                    font_size: 18.
+                                // Label (not Markdown WrapLabel): white ink must
+                                // stay visible on the maroon header — Markdown
+                                // sometimes reverts to the dark WrapLabel default
+                                // and the name/org vanish against the header.
+                                brand_title := Label{
+                                    width: Fill height: Fit
+                                    text: "Khaynjo"
+                                    flow: Right{wrap: true}
+                                    draw_text.color: #xffffff
+                                    draw_text.text_style.font_size: 18.
                                 }
-                                session_label := WrapLabel{
-                                    width: Fill
-                                    body: "Sell"
-                                    font_color: #xC4A18C
-                                    font_size: 11.
+                                session_label := Label{
+                                    width: Fill height: Fit
+                                    text: "Sell"
+                                    flow: Right{wrap: true}
+                                    draw_text.color: #xC4A18C
+                                    draw_text.text_style.font_size: 11.
                                 }
                             }
                             // Fit + no ellipsis — never pin/crop against the
@@ -6848,6 +6854,13 @@ script_mod! {
                                     font_color: #x6B4A3F
                                     font_size: 13.
                                 }
+                                stations_heading := WrapLabel{body: "Kitchen stations" font_color: #x260B08 font_size: 15.}
+                                stations_help := WrapLabel{
+                                    body: "Each station prints on its own printers (Settings → Where things print). Add Tandoor, Fryer, Cold…"
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                stations_label := mod.widgets.ReportText{}
                                 station_add_heading := WrapLabel{body: "Add a kitchen station" font_color: #x260B08 font_size: 15.}
                                 station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
                                 station_add := StackPrimaryBtn{text: "Add station"}
@@ -9921,8 +9934,9 @@ fn printer_route_rows(
     ));
     for s in stations {
         let key = format!("kot:{}", s.id);
+        // Station name alone — each station has its own printer list.
         rows.push(route_row(
-            &format!("{} — {}", t("route_kot_station"), s.name),
+            &s.name,
             print_share::RouteKey::Kot {
                 station_id: &s.id,
             },
@@ -11855,6 +11869,20 @@ impl App {
             self.ui.widget(cx, ids!(kitchen_counts)).set_visible(cx, !counts.is_empty());
             {
                 let st = app_state().lock().unwrap();
+                let station_rows = if st.stations.is_empty() {
+                    vec![ReportRow::Line(st.t("stations_none"))]
+                } else {
+                    st.stations
+                        .iter()
+                        .enumerate()
+                        .map(|(i, s)| ReportRow::Line(format!("{}. {}", i + 1, s.name)))
+                        .collect()
+                };
+                drop(st);
+                self.set_report_rows(cx, ids!(stations_label), station_rows);
+            }
+            {
+                let st = app_state().lock().unwrap();
                 let none = st.reservations.is_empty();
                 self.ui.widget(cx, ids!(resv_heading)).set_text(cx, &plain_display_text(&st.t("resv_heading")));
                 self.ui.widget(cx, ids!(resv_empty)).set_text(cx, &plain_display_text(&st.t("resv_none")));
@@ -12632,7 +12660,7 @@ impl App {
                 .widget(cx, ids!(settings_tmpl_label))
                 .set_text(cx, &plain_display_text(&tmpl_line));
             {
-                let st = app_state().lock().unwrap();
+                let mut st = app_state().lock().unwrap();
                 let on = st
                     .store
                     .as_ref()
@@ -12641,6 +12669,9 @@ impl App {
                 self.ui
                     .button(cx, ids!(kot_print_toggle))
                     .set_text(cx, &st.t(if on { "kot_print_on" } else { "kot_print_off" }));
+                // Every kitchen station gets its own route row (empty until configured).
+                let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
+                st.printer_draft.ensure_station_routes(station_ids);
                 let pool_rows = printers_pool_rows(&st.printer_draft, |k| st.t(k));
                 let route_rows = printer_route_rows(
                     &st.printer_draft,
@@ -14190,6 +14221,8 @@ impl App {
         self.ui.widget(cx, ids!(kitchen_heading)).set_text(cx, &plain_display_text(&s("kitchen")));
         self.ui.widget(cx, ids!(kitchen_help)).set_text(cx, &plain_display_text(&s("kitchen_help")));
         self.ui.widget(cx, ids!(kitchen_empty)).set_text(cx, &plain_display_text(&s("kitchen_empty")));
+        self.ui.widget(cx, ids!(stations_heading)).set_text(cx, &plain_display_text(&s("stations_heading")));
+        self.ui.widget(cx, ids!(stations_help)).set_text(cx, &plain_display_text(&s("stations_help")));
         self.ui.widget(cx, ids!(station_add_heading)).set_text(cx, &plain_display_text(&s("add_station_heading")));
         self.ui.widget(cx, ids!(categories_help)).set_text(cx, &plain_display_text(&s("categories_help")));
         self.ui.widget(cx, ids!(h_removed_items)).set_text(cx, &plain_display_text(&s("removed_items")));
@@ -20975,7 +21008,15 @@ impl MatchEvent for App {
                     .as_ref()
                     .map(|s| s.list_stations().unwrap_or_default())
                     .unwrap_or_default();
-                Ok(format!("Station {} added", station.name))
+                // Own empty KOT route for this station — never inherit another kitchen's printers.
+                st.printer_draft.ensure_station_routes([&station.id]);
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                }
+                Ok(format!(
+                    "Station {} added — set its printers in Settings → Where things print",
+                    station.name
+                ))
             })();
             match result {
                 Ok(msg) => {

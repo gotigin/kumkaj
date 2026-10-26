@@ -3906,17 +3906,23 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                brand_title := WrapLabel{
-                                    width: Fill
-                                    body: "Kumkaj Courier"
-                                    font_color: #xffffff
-                                    font_size: 18.
+                                // Label (not Markdown WrapLabel): white ink must
+                                // stay visible on the dark header — Markdown
+                                // sometimes reverts to the dark WrapLabel default
+                                // and the name/org vanish against the header.
+                                brand_title := Label{
+                                    width: Fill height: Fit
+                                    text: "Kumkaj Courier"
+                                    flow: Right{wrap: true}
+                                    draw_text.color: #xffffff
+                                    draw_text.text_style.font_size: 18.
                                 }
-                                session_label := WrapLabel{
-                                    width: Fill
-                                    body: "Sell"
-                                    font_color: #x8392b7
-                                    font_size: 11.
+                                session_label := Label{
+                                    width: Fill height: Fit
+                                    text: "Sell"
+                                    flow: Right{wrap: true}
+                                    draw_text.color: #x8392b7
+                                    draw_text.text_style.font_size: 11.
                                 }
                             }
                             // Fit + no ellipsis — never pin/crop against the
@@ -7996,7 +8002,7 @@ fn courier_printers_pool_rows(draft: &print_share::DevicePrinters) -> Vec<Report
         .enumerate()
         .map(|(i, p)| {
             let target = if p.target.is_empty() {
-                "default printer".to_string()
+                "this computer's usual printer (blank address)".to_string()
             } else {
                 p.target.clone()
             };

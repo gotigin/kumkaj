@@ -628,13 +628,13 @@ device, not the books: `printers.json` in the data folder holds a
 edits both. A route tries the first printer, then the next on failure
 (fallback, not fan-out); an empty route means that feature does not
 print. Khaynjo routes: **Bill**, plus **KOT per kitchen station**
-(`""` = default kitchen for unassigned items). Courier routes:
+(`""` = unassigned items only — stations do not share a printer). Courier routes:
 **Receipt** and **AWB label**. Legacy files (`kot`/`bill` or `receipt`
-strings) migrate on load. Settings → **Find printers** lists system printers
+strings) migrate on load; blank fields stay empty (no invented “Default” printer). Settings → **Find printers** lists system printers
 (`lpstat` / `Get-Printer` on desktop) and hosts on this Wi‑Fi that
 accept TCP on port 9100 (ESC/POS) — that scan is what works on Android
-too. A target is blank (system default), a system printer's name, or an
-address — `192.168.1.50` or `host:port`, default 9100 — sent raw as
+too. A target is a system printer's name, or an
+address (blank = this computer's usual OS printer) — `192.168.1.50` or `host:port`, default 9100 — sent raw as
 ESC/POS (`print_network`). A ticket the printer's own font can show (ASCII, with
 ₹ → Rs. and a few symbols spelt out — `printer_has_letters`) goes as
 text; anything else goes as a picture (`receipt_raster.rs`): each line

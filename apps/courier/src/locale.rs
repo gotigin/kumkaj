@@ -845,7 +845,7 @@ fn en(key: &str) -> String {
         "backup_copy_failed" => "The backup copy could not be saved there — pick another place",
         "clock_off" => "This device's clock is {min} min off the shop's server — set the right time on this device",
         "printers_heading" => "Printers on this device",
-        "printers_help" => "Add each printer once, then choose where receipts and AWB labels print — first in the list is tried first; if it fails, the next. Clear a route to not print that feature. A target is blank (this device's default), a system printer name, or a network address (e.g. 192.168.1.50). Each device keeps its own printers.",
+        "printers_help" => "Add real printers (name + address or system name). Then under Where things print, pick Receipt or AWB label and add printers in try-order — first tried first; if it fails, the next. Leave a route empty to not print. Each device keeps its own printers.",
         "printers_pool_heading" => "Printers",
         "printers_routes_heading" => "Where things print",
         "printer_label_ph" => "Name (e.g. Desk)",
