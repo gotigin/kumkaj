@@ -477,6 +477,40 @@ impl Store {
             },
         );
         section(&mut out, "Discounts", &discounts, &|k| k.to_string(), &bills);
+        // Schemes recorded on extras_json as {kind:"scheme", name}.
+        let scheme_rows: Vec<(String, i64, i64)> = {
+            let mut stmt = self
+                .conn
+                .prepare(
+                    "SELECT extras_json FROM sales
+                      WHERE created_at >= ?1 AND created_at < ?1 || 'Z' AND status = 'completed'
+                        AND extras_json LIKE '%scheme%'",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![day], |r| r.get::<_, String>(0))
+                .map_err(|e| e.to_string())?;
+            let mut counts: std::collections::BTreeMap<String, (i64, i64)> =
+                std::collections::BTreeMap::new();
+            for row in rows {
+                let json = row.map_err(|e| e.to_string())?;
+                let extras: Vec<serde_json::Value> =
+                    serde_json::from_str(&json).unwrap_or_default();
+                for ex in extras {
+                    if ex.get("kind").and_then(|v| v.as_str()) == Some("scheme") {
+                        let name = ex
+                            .get("name")
+                            .and_then(|v| v.as_str())
+                            .unwrap_or("Scheme")
+                            .to_string();
+                        let e = counts.entry(name).or_insert((0, 0));
+                        e.0 += 1;
+                    }
+                }
+            }
+            counts.into_iter().map(|(k, (n, p))| (k, n, p)).collect()
+        };
+        section(&mut out, "Schemes", &scheme_rows, &|k| k.to_string(), &bills);
         Ok(out)
     }
 }

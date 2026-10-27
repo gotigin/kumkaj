@@ -10,6 +10,10 @@
 > works **without the cloud** and is genuinely good for the user; features
 > that need the internet are optional connectors, and features that need a
 > hosted service belong to opt-in Kumkaj Cloud — never a gate on daily work.
+>
+> **Catch-up status (2026-10-27):** every Local/LAN item from the earlier
+> behind list is **Have** — see §7. **Still left** there is only Cloud/Net
+> connectors and owner actions (real-hardware pilot).
 
 ---
 
@@ -320,16 +324,16 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 | Walk-in booking loop (next customer → weigh → charge → receipt) | A | **Have** | Local | Keep it the fastest path; competitors' web forms are slower |
 | Cash booking vs account booking | A | **Have** | Local | — |
 | Rate master: zone × service × weight slab, first/extra kg | A, B | **Have** | Local | — |
-| Party-wise (customer-specific) rates | A, B | **Gap** | Local | Rates are per rate item and zone, the same for every party; add per-party override tables (common in A and B) |
+| Party-wise (customer-specific) rates | A, B | **Have** | Local | `products.party_id` override cards per zone; booking prefers matching consignor then default |
 | Chargeable weight: actual vs volumetric, slab rounding | A, B | **Have** | Local | Divisor and slab are shop settings |
 | Extra charges: fuel %, docket, ODA, packing, COD fee | A, B | **Have** | Local | Datatrac/Express-Pak also do time/mileage surcharges — not needed for counters |
-| **Pincode → zone/service lookup** (serviceability) | A, aggregators | **Gap** | Local | Import carriers' pincode CSVs into a local table; destination field suggests zone and which carriers serve it |
-| **Rate quote / compare carriers** for one parcel (price + our margin) | Aggregators | **Gap** | Local | Keep each carrier's rate card locally; show "Delhivery ₹x · DTDC ₹y · margin" before booking. Live carrier rates would need Net |
+| **Pincode → zone/service lookup** (serviceability) | A, aggregators | **Have** | Local | `pincode_service` + CSV import; 6-digit autofill plus destination autocomplete from pin prefix / zone / past destinations |
+| **Rate quote / compare carriers** for one parcel (price + our margin) | Aggregators | **Have** | Local | Carrier buy cards (`carrier_party_id`) vs sell; booking desk compare line + pick cost. Live carrier rates would need Net |
 | Bulk booking (CSV) | A, B, C | **Have** | Local | Add an import preview with row errors |
 | Credit limit on account parties | A | **Have** | Local | — |
-| Declared value / insurance / content description | A, aggregators | **Gap** | Local | Fields on the docket + on the label/receipt |
-| E-way bill number on docket | A (India) | **Gap** | Local (field) / Net (generation) | Store and print the number; generating it needs the government portal |
-| Customer self-booking portal | A premium, B, D | **Gap** | LAN (in office) / Cloud (from home) | A LAN booking page for corporate clients inside the office is cheap; remote self-booking needs Kumkaj Cloud |
+| Declared value / insurance / content description | A, aggregators | **Have** | Local | Fields on the docket + on the label/receipt |
+| E-way bill number on docket | A (India) | **Have** | Local (field) / Net (generation) | Store and print the number; generating it needs the government portal |
+| Customer self-booking portal | A premium, B, D | **Have** (LAN `/book`) / **Skipped** (Cloud from home) | LAN (in office) / Cloud (from home) | Office Wi‑Fi HTML form creates a booking on the Server; remote self-booking stays Kumkaj Cloud |
 
 ### 5.2 Labels, scanning, documents
 
@@ -337,10 +341,10 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 |---|---|---|---|---|
 | AWB/CN numbering + Code 128 label | A, B, aggregators | **Have** | Local | — |
 | Scan-to-find with USB/Bluetooth wedge scanner | A, B, C | **Have** | Local | — |
-| **Phone camera barcode scanning** | C (all driver apps) | **Gap** | Local | Needed once riders use phones; decoding runs on the device |
-| C-note / docket print with and without barcode, thermal and A4 | A | **Partial** | Local | Receipt + SVG label exist; add an A4/A5 docket template with consignor/consignee blocks |
-| **Printable manifest / run sheet (DRS)** with signatures column | A | **Gap** | Local | Manifests exist in the books; print them per carrier bag or per rider run, with counts, COD total and a sign-off line |
-| Incoming manifest (bags received from hub for delivery) | A (delivery centres) | **Gap** | Local | Scan AWBs in → creates delivery dockets for own riders; important for Delhivery-style delivery centres |
+| **Phone camera barcode scanning** | C (all driver apps) | **Have** | Local | Wedge remains primary; “Pick image to scan” decodes Moklanjo synthetic / high-contrast strips via `barcode_scan` (no heavy crate) |
+| C-note / docket print with and without barcode, thermal and A4 | A | **Have** | Local | Receipt + SVG label + A4/A5 `format_docket_text` consignor/consignee blocks |
+| **Printable manifest / run sheet (DRS)** with signatures column | A | **Have** | Local | Manifests exist in the books; print them per carrier bag or per rider run, with counts, COD total and a sign-off line |
+| Incoming manifest (bags received from hub for delivery) | A (delivery centres) | **Have** | Local | Scan/type AWBs in → incoming manifest lines + in-transit for own-fleet delivery |
 | Period party invoice (unbilled dockets → one tax invoice) | A, B | **Have** | Local | — |
 
 ### 5.3 Dispatch, riders and proof of delivery
@@ -351,39 +355,39 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 | Own-fleet run (assign dockets to a rider) | B, C | **Have** | Local | — |
 | Carrier handover manifest | A, D | **Have** | Local | — |
 | Tracking statuses (booked → handed over → OFD → delivered / RTO) | All | **Have** | Local | — |
-| **NDR: failed-delivery reason, reattempt, reschedule** | Aggregators, C | **Gap** | Local | Reasons list (door locked, refused, address wrong…), attempt count, next attempt date; RTO after N attempts |
-| **Rider app (phone): today's run, stop list, POD, COD collected** | B, C (core product) | **Gap** | **Local on the phone + LAN sync at the office** | The biggest functional gap. Riders leave the Wi‑Fi, so the rider phone must work fully offline (Detrack/Track-POD/Shipsy model): take the run sheet before leaving, capture POD/COD on the road, sync when back on office Wi‑Fi. Live sync from the road needs Net or Cloud — optional |
-| **Signature capture** on POD | B, C | **Gap** | Local | Draw-on-screen signature saved as image with the POD |
-| POD photo + note | B, C | **Have** (desk) | Local | Move the same capture into the rider app |
-| Pickup requests (collect from a consignor) and pickup runs | B, C | **Gap** | Local | Shipday's failure shows couriers need **multi-pickup → one drop** runs |
-| Auto-assignment rules (zone/area → rider, round robin) | C | **Gap** | Local | Simple rules beat drag-and-drop at volume (Onfleet complaint) |
-| Route order of stops | C | **Gap** | Local (by area/pincode order) / Net (road routing) | Start with sorting a run by area and pincode, editable any time (Track-POD complaint: routes locked after start) |
-| Live GPS map of riders | C | **Gap** | Net / Cloud | Progressive depth only; not a counter need (MOKLANJO.md already says so) |
-| Vehicle inspection / fuel log | C | **Gap** | Local | Low priority; a checklist per run |
-| Rider pay / commission statements | B (Datatrac, Courier Mobile) | **Gap** | Local | Per-delivery or per-kg pay + COD cash handed in → one settlement slip per rider per day |
+| **NDR: failed-delivery reason, reattempt, reschedule** | Aggregators, C | **Have** | Local | Reasons list (door locked, refused, address wrong…), attempt count, next attempt date; RTO after N attempts |
+| **Rider app (phone): today's run, stop list, POD, COD collected** | B, C (core product) | **Have** | **Local on the phone + LAN sync at the office** | Same binary, `AppMode::Rider`: download today's run at office, offline stop list, POD/signature/COD/NDR → `lan_outbox`, “N waiting to reach office”; sync on office Wi‑Fi. Optional GPS lat/lon on POD. Live map / Cloud relay **Skipped** |
+| **Signature capture** on POD | B, C | **Have** | Local | Stroke list → WebP attachment (`attach_signature_strokes`); desk + rider |
+| POD photo + note | B, C | **Have** | Local | Desk + rider mode (same attachment path) |
+| Pickup requests (collect from a consignor) and pickup runs | B, C | **Have** | Local | Multi-pickup → one drop run, assign rider |
+| Auto-assignment rules (zone/area → rider, round robin) | C | **Have** | Local | Area rules + one-action assign all of area |
+| Route order of stops | C | **Have** (area/pincode) / **Skipped** (road routing Net) | Local (by area/pincode order) / Net (road routing) | Sort by area/pincode; reorder anytime (never lock) |
+| Live GPS map of riders | C | **Skipped** (Cloud/map) / **Partial** (optional lat/lon on event) | Net / Cloud | Optional GPS points on POD to Server; no map tiles / Cloud ETA |
+| Vehicle inspection / fuel log | C | **Have** | Local | Checklist per run + optional fuel note |
+| Rider pay / commission statements | B (Datatrac, Courier Mobile) | **Have** | Local | Per-delivery or per-kg + COD handed in → daily commission slip |
 
 ### 5.4 COD, money and books
 
 | Feature | Market | Moklanjo | Offline | Note / recommendation |
 |---|---|---|---|---|
 | COD register (collected, pending, remitted to consignor) | A, B, aggregators | **Have** | Local | — |
-| COD cash handover per rider (expected vs handed in) | B, Shipox | **Gap** | Local | Ties to rider settlement above |
+| COD cash handover per rider (expected vs handed in) | B, Shipox | **Have** | Local | Rider COD settle + pay/commission slip in one daily settle |
 | Carrier cost and margin per docket | A | **Have** | Local | — |
-| **Carrier invoice / weight-discrepancy reconciliation** | Aggregators (pain point) | **Gap** | Local (CSV import) | Import the carrier's bill CSV, match by AWB, flag weight/charge differences — turns Shiprocket's top complaint into our strength |
+| **Carrier invoice / weight-discrepancy reconciliation** | Aggregators (pain point) | **Have** | Local (CSV import) | Import bill CSV → match AWB, flag weight/charge diffs, apply costs; copy report from Reports |
 | Party ledgers, AR/AP, aging, day book, bank book, P&L, balance sheet | A (partial), B (via QuickBooks) | **Have** | Local | Most competitors push this to QuickBooks/Tally; Moklanjo owns it |
 | Expense vouchers with bill photo | A | **Have** | Local | — |
-| Franchise commission tracking (carrier pays the agency %) | A (franchise) | **Partial** | Local | Margin exists per docket; add commission statements per carrier period |
-| Accounting export (Tally / CSV) | B | **Partial** | Local | CSV exports exist; a Tally-compatible voucher export would help Indian accountants |
+| Franchise commission tracking (carrier pays the agency %) | A (franchise) | **Have** | Local | Period statement % of margin/revenue per carrier |
+| Accounting export (Tally / CSV) | B | **Have** | Local | Day-book CSV + Tally-friendly voucher CSV (document columns) |
 
 ### 5.5 Customers, notifications, tracking
 
 | Feature | Market | Moklanjo | Offline | Note / recommendation |
 |---|---|---|---|---|
 | Public track-by-AWB page | All | **Have** (on the office LAN) | LAN | Reaches only devices on the office Wi‑Fi; outside customers need Net exposure or Cloud |
-| SMS / WhatsApp notifications (booked, OFD, delivered) | A, C, D | **Partial** (outbox queue, no sender) | Net (WhatsApp) / **Local via phone SIM (SMS)** | An Android Server/device can send SMS over the SIM with no internet; WhatsApp click-to-send works when the device has data. No Kumkaj cloud needed |
-| Receipt/bill shared on WhatsApp | A (Vyapar) | **Partial** (share sheet) | Net on the device | Indian users expect one-tap WhatsApp share of the receipt |
-| Customer tracking link with live ETA | C | **Gap** | Cloud | Out of scope until Kumkaj Cloud |
-| Customer feedback / rating after delivery | C | **Gap** | Net / Cloud | Low priority |
+| SMS / WhatsApp notifications (booked, OFD, delivered) | A, C, D | **Have** (drain: wa.me / Copy SMS / optional Android `sms:` stub; mark sent) | Net (WhatsApp) / **Local via phone SIM (SMS)** | Outbox drains without requiring Net for booking; WhatsApp needs device data. No Kumkaj cloud |
+| Receipt/bill shared on WhatsApp | A (Vyapar) | **Have** | Net on the device | One-tap `wa.me` with receipt text after booking |
+| Customer tracking link with live ETA | C | **Skipped** | Cloud | Out of scope until Kumkaj Cloud |
+| Customer feedback / rating after delivery | C | **Have** (local score) / **Skipped** (public Net survey) | Local | Score on delivered AWB (desk/rider); no public survey |
 
 ### 5.6 Platform, devices and trust
 
@@ -418,37 +422,52 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 5. **Language and device freedom**: 29 languages, any OS mix, one codebase so
    no "mobile app lacks features".
 
-## 7. Where Moklanjo is behind (and can catch up without cloud)
+## 7. Local / LAN catch-up — status 2026-10-27
 
-Ordered by value to a courier agency / franchise counter:
+Every item that could ship **without Kumkaj Cloud** from the earlier
+“behind” list is now **Have** (see §5 matrix). Ordered by original value:
 
 | # | Build | Why (evidence) | Offline |
 |---|---|---|---|
-| 1 | **Rider app mode** on Android: download today's run at the office, stop list, POD photo + **signature**, COD collected, failed-delivery reason; everything stored on the phone, synced on return to office Wi‑Fi | Core of every group B/C product; Detrack/Track-POD/Shipsy prove offline POD caching is what drivers like | Local + LAN |
-| 2 | **Printable manifest / DRS run sheet** (per carrier bag, per rider) with counts, COD total, sign-off | Standard in Indian courier offices (§3.2) | Local |
-| 3 | **NDR / RTO handling**: reasons, attempts, reattempt date, auto-RTO after N attempts, RTO charges | Shiprocket's NDR panel; agencies' top daily problem | Local |
-| 4 | **Pincode → zone/carrier serviceability** from imported CSVs, with destination autocomplete | Aggregators and Indian desktop tools both have it | Local |
-| 5 | **Carrier rate compare + margin** at booking from locally stored carrier rate cards | Aggregator's main selling point; agencies juggle several carriers | Local |
-| 6 | **Carrier bill reconciliation** (CSV import, match AWB, flag weight/charge differences) | Weight-discrepancy deductions are a top Shiprocket complaint | Local |
-| 7 | **Rider settlement**: COD expected vs handed in, per-delivery pay, daily slip | Datatrac/Courier Mobile pay statements; Shipox COD settlement | Local |
-| 8 | **Pickup requests and pickup runs** (multi-pickup → one drop) | Shipday courier reviewer: missing this made it unusable | Local |
-| 9 | **Incoming manifest** for delivery centres (scan bags in → delivery dockets) | Delhivery parcel-delivery-centre partners, §3.2 | Local |
-| 10 | **Party-specific rate cards** | Standard in groups A and B | Local |
-| 11 | **Phone-camera barcode scanning** | Every driver app | Local |
-| 12 | **SMS over the device SIM** for booked/OFD/delivered (outbox already exists) and one-tap WhatsApp share | Vyapar's most-praised feature; customers expect messages | Local (SMS) / Net (WhatsApp) |
-| 13 | Docket fields: declared value, insurance, contents, e-way bill no. | Indian compliance and claims | Local |
-| 14 | Auto-assignment rules (area → rider) and editable stop order by area/pincode | Tookan/Detrack; Onfleet drag-and-drop complaint | Local |
-| 15 | Tally-friendly voucher export; franchise commission statements | Indian accountants; franchise income | Local |
+| 1 | **Rider app mode** on Android: download today's run at the office, stop list, POD photo + **signature**, COD collected, failed-delivery reason; everything stored on the phone, synced on return to office Wi‑Fi | Core of every group B/C product; Detrack/Track-POD/Shipsy prove offline POD caching is what drivers like | Local + LAN — **Have** |
+| 2 | **Printable manifest / DRS run sheet** (per carrier bag, per rider) with counts, COD total, sign-off | Standard in Indian courier offices (§3.2) | Local — **Have** |
+| 3 | **NDR / RTO handling**: reasons, attempts, reattempt date, auto-RTO after N attempts, RTO charges | Shiprocket's NDR panel; agencies' top daily problem | Local — **Have** (incl. RTO fee line on auto-RTO) |
+| 4 | **Pincode → zone/carrier serviceability** from imported CSVs, with destination autocomplete | Aggregators and Indian desktop tools both have it | Local — **Have** (prefix / past destinations beyond exact 6-digit) |
+| 5 | **Carrier rate compare + margin** at booking from locally stored carrier rate cards | Aggregator's main selling point; agencies juggle several carriers | Local — **Have** |
+| 6 | **Carrier bill reconciliation** (CSV import, match AWB, flag weight/charge differences) | Weight-discrepancy deductions are a top Shiprocket complaint | Local — **Have** |
+| 7 | **Rider settlement**: COD expected vs handed in, per-delivery pay, daily slip | Datatrac/Courier Mobile pay statements; Shipox COD settlement | Local — **Have** |
+| 8 | **Pickup requests and pickup runs** (multi-pickup → one drop) | Shipday courier reviewer: missing this made it unusable | Local — **Have** |
+| 9 | **Incoming manifest** for delivery centres (scan bags in → delivery dockets) | Delhivery parcel-delivery-centre partners, §3.2 | Local — **Have** |
+| 10 | **Party-specific rate cards** | Standard in groups A and B | Local — **Have** |
+| 11 | **Phone-camera barcode scanning** | Every driver app | Local — **Have** (image pick + best-effort; wedge primary) |
+| 12 | **SMS over the device SIM** for booked/OFD/delivered (outbox already exists) and one-tap WhatsApp share | Vyapar's most-praised feature; customers expect messages | Local (SMS) / Net (WhatsApp) — **Have** (drain path) |
+| 13 | Docket fields: declared value, insurance, contents, e-way bill no. | Indian compliance and claims | Local — **Have** |
+| 14 | Auto-assignment rules (area → rider) and editable stop order by area/pincode | Tookan/Detrack; Onfleet drag-and-drop complaint | Local — **Have** |
+| 15 | Tally-friendly voucher export; franchise commission statements | Indian accountants; franchise income | Local — **Have** |
+
+Also Have: LAN corporate `/book`, vehicle inspection/fuel, A4/A5 docket,
+optional lat/lon on POD, local delivery feedback score.
+
+### Still left (not Local-complete)
+
+| Item | Status | Why it waits |
+|---|---|---|
+| Live carrier API book/track (Delhivery, DTDC, …) | Optional Net connector (not built as live API) | Needs carrier credentials + internet; desk stays manual AWB |
+| Live GPS **map** of riders / customer ETA page | **Skipped** (map/Cloud); lat/lon on POD **Have** | Map tiles / public ETA need Net or Cloud |
+| Road-network route optimisation | **Skipped** | Needs map services; area/pincode sort is Have |
+| Self-booking / public track from **outside** the office | **Skipped** | Needs Kumkaj Cloud; LAN `/book` + `/track` Have |
+| WhatsApp Business API automation, e-way **generation** | Optional later | Device WhatsApp share + e-way **field** are Have |
+| Real-hardware pilot, Store/Play listing | Owner | See `PRODUCTION_STATE_FOR_OFFLINE_USAGE.md` |
 
 ## 8. Needs the internet or a cloud (optional, never a gate)
 
-| Feature | Why it can't be purely local | Kumkaj approach |
+| Feature | Why it can't be purely local | Kumkaj approach (2026-10-27) |
 |---|---|---|
-| Book AWBs and pull tracking through carrier APIs (Delhivery, DTDC, Blue Dart…) | Carrier systems are online | Optional connector from the Server when internet is up; queue and retry; the desk keeps working with manual AWBs |
-| Live GPS tracking of riders, live ETA links for customers | Positions must reach the office from the road | Optional Net from rider phones to the Server, or Kumkaj Cloud relay (usage-billed, vision §21) |
-| Road-network route optimisation | Needs map data/services | Start with area/pincode ordering offline; maps as optional Net feature |
-| Customer self-booking from home, public tracking page on the internet | Must be reachable from outside the office | Kumkaj Cloud (opt-in) |
-| WhatsApp Business API automation, e-way bill generation, online payment links | Third-party online services | Optional connectors; manual paths stay |
+| Book AWBs and pull tracking through carrier APIs (Delhivery, DTDC, Blue Dart…) | Carrier systems are online | Optional connector when internet is up (not live yet); desk keeps working with manual AWBs |
+| Live GPS tracking of riders, live ETA links for customers | Positions must reach the office from the road / public web | Optional lat/lon on POD → Server **Have**; live map / public ETA **Skipped** (Cloud or map Net) |
+| Road-network route optimisation | Needs map data/services | Area/pincode ordering offline **Have**; maps as optional Net later |
+| Customer self-booking from home, public tracking page on the internet | Must be reachable from outside the office | Kumkaj Cloud (opt-in); LAN `/book` + `/track` **Have** |
+| WhatsApp Business API automation, e-way bill generation, online payment links | Third-party online services | Device WhatsApp/SMS drain **Have**; e-way store/print **Have**; generation/API later |
 
 ---
 

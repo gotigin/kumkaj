@@ -90,6 +90,11 @@ Do **not** ship sample party lists in the app.
 
 Still **later** (statutory, needs country filing integration — not promised from this chat alone): statutory e-invoice / GSTR filing, Schedule III formal BS.
 
+Research Local/LAN catch-up (rider mode, DRS, NDR/RTO, pincode, rate
+compare, …): **done 2026-10-27** — see [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md)
+§7. Still left there is Cloud/Net/owner-only (live carrier APIs, map ETA,
+public track outside LAN).
+
 ------------------------------------------------------------------------
 
 ## Where to tap in the app

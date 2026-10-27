@@ -29,9 +29,9 @@ live in [`MOKLANJO_CLIENTS_REQUIREMENTS.md`](../../moklanjo/docs/MOKLANJO_CLIENT
 
 | Ask | Meaning | Status |
 |-----|---------|--------|
-| Owner controls staff visibility | Beyond action rights (pay / cancel / NC), the owner chooses which **screens, summaries, money figures, and reports** each non-owner role may open or read | **Asked** — extend Team → Rights (or a Visibility face) so Owner/Manager pick show/hide per role; Server enforces; Owner always sees everything |
-| Hide books / day totals from waiters | A waiter should not browse Day book, P&L, bank, or other money screens the owner did not grant | **Asked** — nav and deep links gated by the same visibility matrix |
-| Same pattern for other sensitive surfaces | Kitchen may omit prices (already); Reports, Inventory cost, Team, Settings subsets follow the owner's matrix | **Asked** — one owner-edited matrix, not hard-coded per screen only |
+| Owner controls staff visibility | Beyond action rights (pay / cancel / NC), the owner chooses which **screens, summaries, money figures, and reports** each non-owner role may open or read | **Done 2026-10-27** — Team feature chips include Floor/Kitchen; nav gates on `can_access_*` (Books/Buy/DayClose/Reports as before for money); Owner via `StaffFeatures::all()` |
+| Hide books / day totals from waiters | A waiter should not browse Day book, P&L, bank, or other money screens the owner did not grant | **Done 2026-10-27** — Books/Buy hidden unless sales/items/inventory (or owner); DayClose/Reports need sales or owner; Waiter preset keeps Floor without money books |
+| Same pattern for other sensitive surfaces | Kitchen may omit prices (already); Reports, Inventory cost, Team, Settings subsets follow the owner's matrix | **Done 2026-10-27** — same Team → feature chips + nav matrix (Reports/Inventory/Team/Settings already feature-gated) |
 
 Today Khaynjo already gates **actions** (Take payment, Cancel, NC, Move/merge, Discount, Print again) per person — Allowed / With approval / Not allowed (`StaffRights`, Team → Rights). This ask is the **read/see** half: what appears in the shell for that person.
 
@@ -39,8 +39,8 @@ Today Khaynjo already gates **actions** (Take payment, Cancel, NC, Move/merge, D
 
 | Ask | Meaning | Status |
 |-----|---------|--------|
-| Units dropdown shows only what this shop uses | Country pack may ship ~10 units; owner picks which appear in Buy / Inventory / recipe / suggest lists (e.g. only 5) | **Asked** — Settings → Units (or country-pack follow-on): enable/disable for pickers; disabled units stay in the pack for conversions but do not offer in dropdowns |
-| Same for other crowded lists | Areas, kitchen stations, tax rates, payment methods, order-type chips, dish categories in day-to-day pickers — owner decides what the working list contains | **Asked** — same enable/show pattern; never delete pack defaults, only hide from daily UI |
+| Units dropdown shows only what this shop uses | Country pack may ship ~10 units; owner picks which appear in Buy / Inventory / recipe / suggest lists (e.g. only 5) | **Done 2026-10-27** — `units.picker_enabled`; Settings → Units On/Off (Owner); suggest lists filter; conversions keep disabled codes |
+| Same for other crowded lists | Areas, kitchen stations, tax rates, payment methods, order-type chips, dish categories in day-to-day pickers — owner decides what the working list contains | **Done 2026-10-27** — areas / stations / tax rates On/Off in Settings (same pattern as units); suggest lists filter; pack defaults kept |
 
 Doctrine stay: India-first packs still ship the full set ([`UNITS_AND_CONVERSIONS.md`](../../../docs/UNITS_AND_CONVERSIONS.md)); the shop **narrows the face**, not the maths.
 
@@ -48,9 +48,9 @@ Doctrine stay: India-first packs still ship the full set ([`UNITS_AND_CONVERSION
 
 | Ask | Meaning | Status |
 |-----|---------|--------|
-| Mark table occupied when guests sit | Guests arrive and sit; staff mark the table busy **before** any dish is punched | **Asked** — Floor: Free → **Occupied** (seated, no lines yet) without opening a running order; colour/state distinct from Running / In kitchen |
-| Order starts later on that table | When ready, tap the occupied table → Order / Add dishes as today; occupy may create a light seat record or upgrade to running on first line | **Asked** |
-| Free again if they leave without ordering | Occupied with no bill can return to Free (with a clear action); once lines exist, today's cancel / pay path applies | **Asked** |
+| Mark table occupied when guests sit | Guests arrive and sit; staff mark the table busy **before** any dish is punched | **Done 2026-10-27** — `FloorState::Seated` + `Store::seat_table` / LAN `SeatTable`; Free act seats without a running order |
+| Order starts later on that table | When ready, tap the occupied table → Order / Add dishes as today; occupy may create a light seat record or upgrade to running on first line | **Done 2026-10-27** — Seated tile tap opens order as today; first KOT / lines → In kitchen / Eating |
+| Free again if they leave without ordering | Occupied with no bill can return to Free (with a clear action); once lines exist, today's cancel / pay path applies | **Done 2026-10-27** — Seated act frees empty table; open-bill path unchanged |
 
 Today the floor moves Free → busy mainly when a running order / KOT path starts. This ask inserts an explicit **seated / occupied** step so the floor tells the truth during the wait for the first order.
 
@@ -64,8 +64,12 @@ See [`KHAYNJO.md`](KHAYNJO.md) §4b / §4d: running orders, KOT, settle, rights 
 
 ## Gaps to build (priority for product)
 
-1. **Staff visibility matrix** (screens / money / reports) owned by Owner, enforced on Server and Clients.  
-2. **Shop-enabled units (and sibling pick-lists)** so dropdowns only show what the owner turned on.  
-3. **Floor: Occupied without order** — mark seated, then order when ready, free if they leave empty-handed.
+All three typed must-haves (§A–C) are **Done 2026-10-27**. Wider Local/LAN
+research catch-up is tracked in [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md)
+§8 (complete) and §8 “Still left” (Cloud/Net/owner-only).
 
-Track status updates in this file when each lands; mirror one-line status in [`KHAYNJO.md`](KHAYNJO.md) §4b.
+1. **Staff visibility matrix** — **Done 2026-10-27** (Team chips + nav).  
+2. **Shop-enabled units + sibling pick-lists** — **Done 2026-10-27** (areas, stations, tax rates).  
+3. **Floor: Occupied without order** — **Done 2026-10-27** (`FloorState::Seated`).
+
+Mirror one-line status in [`KHAYNJO.md`](KHAYNJO.md) §4b.

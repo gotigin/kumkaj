@@ -127,6 +127,10 @@ pub enum RunningAction {
     TableReady {
         table_id: String,
     },
+    /// Guests sat down — occupy without opening a running order.
+    SeatTable {
+        table_id: String,
+    },
     /// Accidental Print bill — back to an open table (or free if nothing left).
     UndoBill {
         table_id: String,
@@ -697,11 +701,19 @@ fn sync_reply(store: &Store, have: Option<&str>) -> Result<Reply, String> {
     let (json, rev) = snapshot_json(store)?;
     note_rev(store.db_path(), &rev);
     if have.map(|h| h.trim().trim_matches('"')) == Some(rev.as_str()) {
-        return Ok(Reply { status: 304, body: String::new() });
+        return Ok(Reply {
+            status: 304,
+            body: String::new(),
+            content_type: "application/json",
+        });
     }
     // The revision goes in front; it was not part of what was hashed.
     let body = format!("{{\"rev\":\"{rev}\",{}", &json[1..]);
-    Ok(Reply { status: 200, body })
+    Ok(Reply {
+        status: 200,
+        body,
+        content_type: "application/json",
+    })
 }
 
 /// Holds the computer awake (no sleep, no idle suspend) while the LAN server
@@ -864,6 +876,10 @@ pub fn apply_running_action(
             store.audit(actor, "table.ready", table_id)?;
             Ok(None)
         }
+        RunningAction::SeatTable { table_id } => {
+            store.seat_table(table_id, actor)?;
+            Ok(None)
+        }
         RunningAction::UndoBill { table_id } => {
             store.undo_bill_print(table_id, actor)?;
             Ok(None)
@@ -1021,19 +1037,36 @@ fn read_request(stream: &mut impl Read) -> Result<Request, String> {
     Ok(Request { method, path, headers, body })
 }
 
-/// What the Server answers: an HTTP status and a JSON body.
+/// What the Server answers: an HTTP status and a body (JSON by default).
 pub struct Reply {
     pub status: u16,
     pub body: String,
+    pub content_type: &'static str,
 }
 
 impl Reply {
     fn json(value: serde_json::Value) -> Self {
-        Self { status: 200, body: value.to_string() }
+        Self {
+            status: 200,
+            body: value.to_string(),
+            content_type: "application/json",
+        }
+    }
+
+    fn html(body: String) -> Self {
+        Self {
+            status: 200,
+            body,
+            content_type: "text/html; charset=utf-8",
+        }
     }
 
     fn of<T: Serialize>(value: &T) -> Result<Self, String> {
-        Ok(Self { status: 200, body: serde_json::to_string(value).map_err(|e| e.to_string())? })
+        Ok(Self {
+            status: 200,
+            body: serde_json::to_string(value).map_err(|e| e.to_string())?,
+            content_type: "application/json",
+        })
     }
 
     fn done() -> Self {
@@ -1046,6 +1079,7 @@ impl Reply {
         Self {
             status,
             body: serde_json::json!({ "ok": false, "error": message, "code": code }).to_string(),
+            content_type: "application/json",
         }
     }
 }
@@ -1057,7 +1091,7 @@ fn handle_client(mut stream: TcpStream, db_path: &Path, peer: &str, guard: &Guar
         Ok(req) => (answer(db_path, &req, peer, guard), req.accepts_gzip()),
         Err(e) => (Reply::refuse(400, &e, ""), false),
     };
-    write_http(&mut stream, reply.status, &reply.body, gzip)
+    write_http(&mut stream, reply.status, reply.content_type, &reply.body, gzip)
 }
 
 /// Answer one request. Every outcome is a JSON reply — a failure is never a
@@ -1072,6 +1106,10 @@ pub fn answer(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Reply
 fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Result<Reply, String> {
     let route = req.route();
     let mut store = Store::open_path(db_path)?;
+    // Public LAN HTML / guest pages — no pairing (restaurant Wi‑Fi only).
+    if let Some(reply) = public_lan_page(&store, req)? {
+        return Ok(reply);
+    }
     match route {
         "/health" => return Ok(Reply::done()),
         "/hello" => {
@@ -1116,7 +1154,11 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
     if let Some(id) = request_id
         && let Some((status, body)) = store.lan_reply(id, &device.id)?
     {
-        return Ok(Reply { status, body });
+        return Ok(Reply {
+            status,
+            body,
+            content_type: "application/json",
+        });
     }
     let reply = match write(&mut store, route, &req.body, &actor) {
         Ok(reply) => reply,
@@ -1233,6 +1275,30 @@ fn write(store: &mut Store, route: &str, body: &str, actor: &StaffMember) -> Res
             store.advance_kot(&req.kot_id, actor)?;
             Ok(Reply::done())
         }
+        "/kot_recall" => {
+            let req: RemoteKotAdvance = serde_json::from_str(body).map_err(|e| format!("kot recall json: {e}"))?;
+            store.recall_kot(&req.kot_id, actor)?;
+            Ok(Reply::done())
+        }
+        "/upi_display" => {
+            // Second-device LAN: amount + VPA + URI (guest chrome deferred).
+            #[derive(Deserialize)]
+            struct UpiReq {
+                #[serde(default)]
+                amount_paise: i64,
+            }
+            let req: UpiReq = serde_json::from_str(if body.trim().is_empty() { "{}" } else { body })
+                .map_err(|e| format!("upi json: {e}"))?;
+            let vpa = store.upi_vpa()?;
+            let payee = store.upi_payee()?;
+            let uri = crate::upi_qr::upi_pay_uri(&vpa, &payee, req.amount_paise)?;
+            Ok(Reply::json(serde_json::json!({
+                "amount_paise": req.amount_paise,
+                "vpa": vpa,
+                "payee": payee,
+                "upi_uri": uri,
+            })))
+        }
         "/amend" => {
             let req: RemoteAmendRequest = serde_json::from_str(body).map_err(|e| format!("amend json: {e}"))?;
             let pay = PayMethod::parse(&req.pay).ok_or_else(|| "bad pay method".to_string())?;
@@ -1321,17 +1387,29 @@ fn resolve_table_id(
     table_name: Option<&str>,
     table_id: Option<&str>,
 ) -> Result<Option<String>, String> {
+    let tables = store.list_tables()?;
     if let Some(name) = table_name.map(str::trim).filter(|s| !s.is_empty()) {
-        return Ok(store
-            .list_tables()?
-            .into_iter()
-            .find(|t| t.name.eq_ignore_ascii_case(name))
-            .map(|t| t.id));
+        if let Some(t) = tables.iter().find(|t| t.name.eq_ignore_ascii_case(name)) {
+            return Ok(Some(t.id.clone()));
+        }
+        if let Some(t) = tables.iter().find(|t| t.id == name) {
+            return Ok(Some(t.id.clone()));
+        }
+        return Ok(None);
     }
-    Ok(table_id.map(str::to_string))
+    Ok(table_id
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+        .and_then(|id| tables.iter().find(|t| t.id == id).map(|t| t.id.clone())))
 }
 
-fn write_http(stream: &mut TcpStream, status: u16, body: &str, gzip: bool) -> Result<(), String> {
+fn write_http(
+    stream: &mut TcpStream,
+    status: u16,
+    content_type: &str,
+    body: &str,
+    gzip: bool,
+) -> Result<(), String> {
     let reason = match status {
         200 => "OK",
         304 => "Not Modified",
@@ -1349,13 +1427,178 @@ fn write_http(stream: &mut TcpStream, status: u16, body: &str, gzip: bool) -> Re
     };
     // Every reply carries the Server's clock, so a device can tell its own is wrong.
     let head = format!(
-        "HTTP/1.1 {status} {reason}\r\nContent-Type: application/json\r\n{encoding}{HEADER_TIME}: {}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+        "HTTP/1.1 {status} {reason}\r\nContent-Type: {content_type}\r\n{encoding}{HEADER_TIME}: {}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
         chrono::Utc::now().timestamp(),
         body.len()
     );
     stream.write_all(head.as_bytes()).map_err(|e| e.to_string())?;
     stream.write_all(&body).map_err(|e| e.to_string())?;
     Ok(())
+}
+
+/// Guest / secondary-screen pages on the Server LAN (no device token).
+fn public_lan_page(store: &Store, req: &Request) -> Result<Option<Reply>, String> {
+    let route = req.route();
+    let path = req.path.split('?').next().unwrap_or(route);
+    match (req.method.as_str(), path) {
+        ("GET", "/display") => {
+            let table = req.query("table").unwrap_or_default();
+            let tid = if table.is_empty() {
+                None
+            } else {
+                resolve_table_id(store, Some(table), None)?
+            };
+            Ok(Some(Reply::html(store.display_order_html(tid.as_deref())?)))
+        }
+        ("GET", "/tokens") => Ok(Some(Reply::html(store.tokens_ready_html()?))),
+        ("GET", "/expo") => Ok(Some(Reply::html(store.expo_ready_html()?))),
+        ("GET", "/kiosk") => Ok(Some(Reply::html(store.kiosk_html()?))),
+        ("GET", "/feedback") => Ok(Some(Reply::html(
+            r#"<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Feedback</title><style>body{font-family:sans-serif;padding:1.5rem}button{margin:.25rem;padding:.75rem 1rem;font-size:1.2rem}</style></head>
+<body><h1>How was your meal?</h1>
+<form method="POST" action="/feedback"><input type="hidden" name="score" id="score" value="5"/>
+<p><button type="button" onclick="document.getElementById('score').value=5">★★★★★</button>
+<button type="button" onclick="document.getElementById('score').value=4">★★★★</button>
+<button type="button" onclick="document.getElementById('score').value=3">★★★</button>
+<button type="button" onclick="document.getElementById('score').value=2">★★</button>
+<button type="button" onclick="document.getElementById('score').value=1">★</button></p>
+<p><input name="note" placeholder="Optional note" style="width:100%;padding:.5rem"/></p>
+<p><input name="table" placeholder="Table" style="width:100%;padding:.5rem"/></p>
+<button type="submit">Send</button></form></body></html>"#
+                .into(),
+        ))),
+        ("POST", "/feedback") => {
+            let score = form_or_json_i64(&req.body, "score").unwrap_or(5);
+            let note = form_or_json_str(&req.body, "note");
+            let table = form_or_json_str(&req.body, "table");
+            store.add_feedback(score, &note, &table)?;
+            Ok(Some(Reply::html(
+                "<!doctype html><html><body><h1>Thank you</h1></body></html>".into(),
+            )))
+        }
+        ("POST", "/kiosk_order") => {
+            #[derive(Deserialize)]
+            struct Item {
+                product_id: String,
+            }
+            #[derive(Deserialize)]
+            struct Body {
+                #[serde(default)]
+                items: Vec<Item>,
+            }
+            let body: Body = serde_json::from_str(if req.body.trim().is_empty() {
+                "{}"
+            } else {
+                &req.body
+            })
+            .unwrap_or(Body { items: Vec::new() });
+            // Counter takeaway: seat on first Parcel / Takeaway table if any.
+            let tables = store.list_tables()?;
+            let tid = tables
+                .iter()
+                .find(|t| {
+                    t.area.to_lowercase().contains("parcel")
+                        || t.name.to_lowercase().contains("take")
+                })
+                .or_else(|| tables.first())
+                .map(|t| t.id.clone());
+            if let Some(tid) = tid {
+                let ids: Vec<String> = body.items.into_iter().map(|i| i.product_id).collect();
+                store.public_add_to_table(&tid, &ids)?;
+                Ok(Some(Reply::json(serde_json::json!({
+                    "ok": true,
+                    "table_id": tid,
+                    "note": "LAN kiosk — sent to counter order"
+                }))))
+            } else {
+                Ok(Some(Reply::refuse(400, "No table for kiosk orders", "")))
+            }
+        }
+        _ if path.starts_with("/t/") => {
+            let rest = &path["/t/".len()..];
+            if req.method == "GET" {
+                let name = urlencoding_decode(rest);
+                let tid = resolve_table_id(store, Some(&name), Some(&name))?
+                    .ok_or_else(|| "Table not found".to_string())?;
+                return Ok(Some(Reply::html(store.table_order_html(&tid)?)));
+            }
+            if req.method == "POST" && rest.contains("/add") {
+                let table_part = rest.split("/add").next().unwrap_or("");
+                let name = urlencoding_decode(table_part.trim_end_matches('/'));
+                let tid = resolve_table_id(store, Some(&name), Some(&name))?
+                    .ok_or_else(|| "Table not found".to_string())?;
+                #[derive(Deserialize)]
+                struct Item {
+                    product_id: String,
+                }
+                #[derive(Deserialize)]
+                struct Body {
+                    #[serde(default)]
+                    items: Vec<Item>,
+                }
+                let body: Body =
+                    serde_json::from_str(if req.body.trim().is_empty() { "{}" } else { &req.body })
+                        .unwrap_or(Body { items: Vec::new() });
+                let ids: Vec<_> = body.items.into_iter().map(|i| i.product_id).collect();
+                store.public_add_to_table(&tid, &ids)?;
+                return Ok(Some(Reply::json(serde_json::json!({ "ok": true }))));
+            }
+            Ok(None)
+        }
+        _ => Ok(None),
+    }
+}
+
+fn form_or_json_str(body: &str, key: &str) -> String {
+    if let Ok(v) = serde_json::from_str::<serde_json::Value>(body) {
+        if let Some(s) = v.get(key).and_then(|x| x.as_str()) {
+            return s.to_string();
+        }
+    }
+    body.split('&')
+        .filter_map(|p| p.split_once('='))
+        .find(|(k, _)| *k == key)
+        .map(|(_, v)| urlencoding_decode(v))
+        .unwrap_or_default()
+}
+
+fn form_or_json_i64(body: &str, key: &str) -> Option<i64> {
+    if let Ok(v) = serde_json::from_str::<serde_json::Value>(body) {
+        if let Some(n) = v.get(key).and_then(|x| x.as_i64()) {
+            return Some(n);
+        }
+    }
+    form_or_json_str(body, key).parse().ok()
+}
+
+fn urlencoding_decode(s: &str) -> String {
+    let mut out = String::new();
+    let b = s.as_bytes();
+    let mut i = 0;
+    while i < b.len() {
+        match b[i] {
+            b'+' => {
+                out.push(' ');
+                i += 1;
+            }
+            b'%' if i + 2 < b.len() => {
+                let hex = &s[i + 1..i + 3];
+                if let Ok(v) = u8::from_str_radix(hex, 16) {
+                    out.push(v as char);
+                    i += 3;
+                } else {
+                    out.push('%');
+                    i += 1;
+                }
+            }
+            c => {
+                out.push(c as char);
+                i += 1;
+            }
+        }
+    }
+    out
 }
 
 fn gzipped(bytes: &[u8]) -> Result<Vec<u8>, String> {
@@ -2154,7 +2397,7 @@ mod tests {
             String::from_utf8_lossy(&reply).to_string()
         });
         let (mut conn, _) = listener.accept().unwrap();
-        write_http(&mut conn, 200, "{}", false).unwrap();
+        write_http(&mut conn, 200, "application/json", "{}", false).unwrap();
         drop(conn);
         let head = client.join().unwrap();
         let line = head.lines().find(|l| l.starts_with(HEADER_TIME)).expect("time header");

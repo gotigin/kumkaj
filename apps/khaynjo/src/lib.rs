@@ -20,10 +20,12 @@ pub mod phone;
 pub mod precise;
 pub mod print_share;
 pub mod receipt_raster;
+pub mod schemes;
 pub mod startup;
 pub mod store;
 pub mod suggest;
 pub mod thumbs;
+pub mod upi_qr;
 
 // Android packaging compiles this library as the cdylib. The desktop
 // binary's `app_main!` is not in that library, so Activity.onCreate

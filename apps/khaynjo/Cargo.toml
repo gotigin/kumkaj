@@ -36,6 +36,8 @@ sys-locale = "0.3"
 rust_decimal = { version = "1.37", default-features = false, features = ["std", "serde", "serde-str", "maths"] }
 # Decode JPG/PNG/WebP; always re-encode attachments as lossless WebP.
 image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+# Customer-facing UPI QR on the order desk (amount baked into the URI).
+qrcode = { version = "0.14", default-features = false, features = ["image"] }
 
 # Tickets in Gujarati, Hindi, Arabic… go to network receipt printers as a
 # picture (receipt_raster.rs): Makepad's own shaper, bidi and rasterizer.

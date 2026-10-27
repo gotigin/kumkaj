@@ -24,6 +24,9 @@ pub struct Store {
     path: PathBuf,
 }
 
+#[path = "store_courier_ops.rs"]
+mod store_courier_ops;
+
 /// Everything needed to create one staff member. Kept together so the hire
 /// call stays readable instead of an eight-argument list.
 pub struct StaffHire<'a> {
@@ -442,10 +445,19 @@ impl Store {
             "ALTER TABLE sales ADD COLUMN rider_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN pod_note TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN extras_json TEXT NOT NULL DEFAULT '[]'",
+            "ALTER TABLE sales ADD COLUMN declared_value_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN insurance INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN contents TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN eway_bill_no TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN attempt_count INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE sales ADD COLUMN ndr_reason TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN next_attempt_at TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE products ADD COLUMN zone_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE products ADD COLUMN first_kg TEXT NOT NULL DEFAULT '0'",
             "ALTER TABLE products ADD COLUMN first_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE products ADD COLUMN extra_per_kg_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE products ADD COLUMN carrier_party_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE products ADD COLUMN party_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE money_movements ADD COLUMN cleared_at TEXT NOT NULL DEFAULT ''",
         ] {
@@ -460,6 +472,13 @@ impl Store {
                     name TEXT NOT NULL,
                     note TEXT NOT NULL DEFAULT '',
                     active INTEGER NOT NULL DEFAULT 1
+                );
+                CREATE TABLE IF NOT EXISTS pincode_service (
+                    pincode TEXT NOT NULL,
+                    zone_id TEXT NOT NULL,
+                    carrier_party_id TEXT NOT NULL DEFAULT '',
+                    note TEXT NOT NULL DEFAULT '',
+                    PRIMARY KEY(pincode, zone_id, carrier_party_id)
                 );
                 CREATE TABLE IF NOT EXISTS extra_charge_types (
                     id TEXT PRIMARY KEY,
@@ -585,6 +604,7 @@ impl Store {
                 "#,
             )
             .map_err(|e| e.to_string())?;
+        self.migrate_courier_ops_tables()?;
         // Lookups every sync and every screen makes. Without them a year of
         // bookings made each device's sync scan every booking line and ledger
         // row (seconds per sync); `a_busy_years_books_still_sync_quickly`
@@ -1499,6 +1519,25 @@ impl Store {
         if !sale.tracking_status.trim().is_empty() {
             out.push_str("Status: ");
             out.push_str(sale.tracking_status.trim());
+            out.push('\n');
+        }
+        if sale.declared_value_paise > 0 {
+            out.push_str(&format!(
+                "Declared value: {}\n",
+                Money(sale.declared_value_paise).format_localized(&currency, &fiscal_settings)
+            ));
+        }
+        if sale.insurance {
+            out.push_str("Insurance: Yes\n");
+        }
+        if !sale.contents.trim().is_empty() {
+            out.push_str("Contents: ");
+            out.push_str(sale.contents.trim());
+            out.push('\n');
+        }
+        if !sale.eway_bill_no.trim().is_empty() {
+            out.push_str("E-way bill: ");
+            out.push_str(sale.eway_bill_no.trim());
             out.push('\n');
         }
         out.push_str("--------------------\n");
@@ -2751,6 +2790,402 @@ impl Store {
             }
         }
         Ok((added, skipped, problems))
+    }
+
+    /// Import pincode → zone / carrier serviceability rows.
+    /// Columns: pincode, zone (name → find/create), carrier (optional party name), note.
+    pub fn import_pincodes_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
+        self.assert_server_writer("Import pincodes")?;
+        let rows = parse_csv(text);
+        let mut added = 0usize;
+        let mut skipped = 0usize;
+        let mut problems: Vec<String> = Vec::new();
+        let mut start = 0usize;
+        let (mut i_pin, mut i_zone, mut i_carrier, mut i_note) =
+            (0usize, 1usize, usize::MAX, usize::MAX);
+        if let Some(first) = rows.first() {
+            let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
+            if lower.iter().any(|c| {
+                let t = c.trim();
+                t == "pincode" || t == "pin" || t == "pin_code"
+            }) {
+                let find = |names: &[&str]| {
+                    lower
+                        .iter()
+                        .position(|h| names.iter().any(|n| *n == h.trim()))
+                };
+                i_pin = find(&["pincode", "pin", "pin_code", "zip"]).unwrap_or(0);
+                i_zone = find(&["zone", "zone_name", "area"]).unwrap_or(1);
+                i_carrier = find(&["carrier", "carrier_name", "courier"]).unwrap_or(usize::MAX);
+                i_note = find(&["note", "notes", "remark"]).unwrap_or(usize::MAX);
+                start = 1;
+            }
+        }
+        let get = |row: &Vec<String>, i: usize| -> String {
+            if i == usize::MAX {
+                String::new()
+            } else {
+                row.get(i).cloned().unwrap_or_default().trim().to_string()
+            }
+        };
+        for (n, row) in rows.iter().skip(start).enumerate() {
+            let pin = get(row, i_pin);
+            let zone_name = get(row, i_zone);
+            if pin.is_empty() || zone_name.is_empty() {
+                skipped += 1;
+                continue;
+            }
+            let zone = match self.find_or_add_zone(&zone_name) {
+                Ok(z) => z,
+                Err(e) => {
+                    skipped += 1;
+                    if problems.len() < 5 {
+                        problems.push(format!("row {}: {e}", n + start + 1));
+                    }
+                    continue;
+                }
+            };
+            let carrier_name = get(row, i_carrier);
+            let carrier_party_id = if carrier_name.is_empty() {
+                String::new()
+            } else {
+                match self.find_party_id_by_name(&carrier_name) {
+                    Some(id) => id,
+                    None => match self.add_customer_kind(&carrier_name, "", "Carrier") {
+                        Ok(p) => p.id,
+                        Err(e) => {
+                            skipped += 1;
+                            if problems.len() < 5 {
+                                problems.push(format!("row {}: {e}", n + start + 1));
+                            }
+                            continue;
+                        }
+                    },
+                }
+            };
+            let note = get(row, i_note);
+            match self.conn.execute(
+                "INSERT INTO pincode_service(pincode, zone_id, carrier_party_id, note)
+                 VALUES(?1, ?2, ?3, ?4)
+                 ON CONFLICT(pincode, zone_id, carrier_party_id) DO UPDATE SET note=excluded.note",
+                params![pin, zone.id, carrier_party_id, note],
+            ) {
+                Ok(_) => added += 1,
+                Err(e) => {
+                    skipped += 1;
+                    if problems.len() < 5 {
+                        problems.push(format!("row {}: {e}", n + start + 1));
+                    }
+                }
+            }
+        }
+        Ok((added, skipped, problems))
+    }
+
+    /// Look up zones and carriers that serve a pincode.
+    pub fn lookup_pincode(&self, pin: &str) -> Result<Vec<crate::rates::PincodeZoneHit>, String> {
+        let pin = pin.trim();
+        if pin.is_empty() {
+            return Ok(Vec::new());
+        }
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT p.pincode, p.zone_id, COALESCE(z.name, ''), p.carrier_party_id,
+                        COALESCE(c.name, ''), p.note
+                 FROM pincode_service p
+                 LEFT JOIN zones z ON z.id = p.zone_id
+                 LEFT JOIN customers c ON c.id = p.carrier_party_id
+                 WHERE p.pincode = ?1
+                 ORDER BY z.name, c.name",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![pin], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    r.get::<_, String>(1)?,
+                    r.get::<_, String>(2)?,
+                    r.get::<_, String>(3)?,
+                    r.get::<_, String>(4)?,
+                    r.get::<_, String>(5)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut by_zone: Vec<crate::rates::PincodeZoneHit> = Vec::new();
+        for row in rows {
+            let (pincode, zone_id, zone_name, carrier_id, carrier_name, note) =
+                row.map_err(|e| e.to_string())?;
+            if let Some(hit) = by_zone.iter_mut().find(|h| h.zone_id == zone_id) {
+                if !carrier_id.is_empty() || !carrier_name.is_empty() {
+                    hit.carriers.push((carrier_id, carrier_name));
+                }
+                if hit.note.is_empty() && !note.is_empty() {
+                    hit.note = note;
+                }
+            } else {
+                let mut carriers = Vec::new();
+                if !carrier_id.is_empty() || !carrier_name.is_empty() {
+                    carriers.push((carrier_id, carrier_name));
+                }
+                by_zone.push(crate::rates::PincodeZoneHit {
+                    pincode,
+                    zone_id,
+                    zone_name,
+                    carriers,
+                    note,
+                });
+            }
+        }
+        Ok(by_zone)
+    }
+
+    /// Sell rate for a zone: party override if present, else default (party_id empty).
+    pub fn resolve_sell_rate(
+        &self,
+        zone_id: &str,
+        party_id: &str,
+    ) -> Result<Option<Product>, String> {
+        let zone_id = zone_id.trim();
+        if zone_id.is_empty() {
+            return Ok(None);
+        }
+        let products = self.list_products(true)?;
+        let sell: Vec<&Product> = products
+            .iter()
+            .filter(|p| p.is_sell_card() && p.zone_id == zone_id && p.available && !p.archived)
+            .collect();
+        let party_id = party_id.trim();
+        if !party_id.is_empty()
+            && let Some(p) = sell.iter().find(|p| p.party_id == party_id)
+        {
+            return Ok(Some((*p).clone()));
+        }
+        Ok(sell
+            .into_iter()
+            .find(|p| p.party_id.trim().is_empty())
+            .cloned())
+    }
+
+    /// Our sell freight + each carrier buy card for the zone at chargeable kg.
+    pub fn compare_carriers_for_zone(
+        &self,
+        zone_id: &str,
+        chargeable_kg: rust_decimal::Decimal,
+        consignor_party_id: &str,
+    ) -> Result<(i64, Vec<crate::rates::CarrierCompareRow>), String> {
+        let sell = self
+            .resolve_sell_rate(zone_id, consignor_party_id)?
+            .ok_or_else(|| "No sell rate for this zone".to_string())?;
+        let sell_paise = sell.rate_slab().freight_paise(chargeable_kg)?;
+        let products = self.list_products(true)?;
+        let parties = self.list_customers()?;
+        let mut carriers = Vec::new();
+        for p in products
+            .iter()
+            .filter(|p| !p.carrier_party_id.trim().is_empty() && p.zone_id == zone_id && p.available)
+        {
+            let name = parties
+                .iter()
+                .find(|c| c.id == p.carrier_party_id)
+                .map(|c| c.name.clone())
+                .unwrap_or_else(|| {
+                    if p.name.is_empty() {
+                        p.carrier_party_id.clone()
+                    } else {
+                        p.name.clone()
+                    }
+                });
+            let cost = p.rate_slab().freight_paise(chargeable_kg).unwrap_or(0);
+            carriers.push((p.carrier_party_id.clone(), name, cost));
+        }
+        Ok((
+            sell_paise,
+            crate::rates::compare_carriers(sell_paise, &carriers),
+        ))
+    }
+
+    /// Match a carrier bill CSV against booked AWBs; returns a report CSV.
+    /// Columns in: awb, weight_kg|chargeable_kg, amount|amount_paise|charge.
+    pub fn reconcile_carrier_bill_csv(&self, text: &str) -> Result<String, String> {
+        let rows = parse_csv(text);
+        let mut start = 0usize;
+        let (mut i_awb, mut i_kg, mut i_amt) = (0usize, 1usize, 2usize);
+        let mut amount_is_paise = false;
+        if let Some(first) = rows.first() {
+            let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
+            if lower.iter().any(|c| {
+                let t = c.trim();
+                t == "awb" || t == "awb_no" || t == "cn"
+            }) {
+                let find = |names: &[&str]| {
+                    lower
+                        .iter()
+                        .position(|h| names.iter().any(|n| *n == h.trim()))
+                };
+                i_awb = find(&["awb", "awb_no", "cn", "cnote"]).unwrap_or(0);
+                i_kg = find(&["weight_kg", "chargeable_kg", "weight", "kg"]).unwrap_or(usize::MAX);
+                if let Some(i) = find(&["amount_paise", "paise"]) {
+                    i_amt = i;
+                    amount_is_paise = true;
+                } else {
+                    i_amt = find(&["amount", "charge", "cost", "freight"]).unwrap_or(usize::MAX);
+                }
+                start = 1;
+            }
+        }
+        let get = |row: &Vec<String>, i: usize| -> String {
+            if i == usize::MAX {
+                String::new()
+            } else {
+                row.get(i).cloned().unwrap_or_default().trim().to_string()
+            }
+        };
+        let mut out = String::from(
+            "awb,bill_kg,book_kg,bill_paise,book_carrier_cost_paise,status\n",
+        );
+        for row in rows.iter().skip(start) {
+            let awb = get(row, i_awb);
+            if awb.is_empty() {
+                continue;
+            }
+            let bill_kg_raw = get(row, i_kg);
+            let bill_kg = crate::booking::parse_positive(&bill_kg_raw).unwrap_or(crate::precise::ZERO);
+            let amt_raw = get(row, i_amt);
+            let bill_paise = if amount_is_paise {
+                amt_raw.parse::<i64>().unwrap_or(0).max(0)
+            } else {
+                crate::locale::parse_major_input(&amt_raw, "INR").unwrap_or(0).max(0)
+            };
+            match self.find_sale_by_awb(&awb)? {
+                None => {
+                    out.push_str(&format!(
+                        "{},{},,,{},{},missing\n",
+                        csv_cell(&awb),
+                        csv_cell(&bill_kg_raw),
+                        bill_paise,
+                        0
+                    ));
+                }
+                Some(sale) => {
+                    let book_kg = sale.chargeable_weight_kg;
+                    let book_cost = sale.carrier_cost_paise;
+                    let kg_diff = bill_kg > crate::precise::ZERO
+                        && book_kg > crate::precise::ZERO
+                        && bill_kg != book_kg;
+                    let charge_diff = bill_paise > 0 && bill_paise != book_cost;
+                    let status = if kg_diff {
+                        "weight_diff"
+                    } else if charge_diff {
+                        "charge_diff"
+                    } else {
+                        "ok"
+                    };
+                    out.push_str(&format!(
+                        "{},{},{},{},{},{}\n",
+                        csv_cell(&awb),
+                        csv_cell(&crate::precise::format_kg(bill_kg)),
+                        csv_cell(&crate::precise::format_kg(book_kg)),
+                        bill_paise,
+                        book_cost,
+                        status
+                    ));
+                }
+            }
+        }
+        Ok(out)
+    }
+
+    /// Apply bill amounts as `carrier_cost_paise` for AWBs found in the CSV.
+    pub fn apply_carrier_bill_costs(&self, text: &str) -> Result<(usize, usize), String> {
+        self.assert_server_writer("Carrier bill")?;
+        let rows = parse_csv(text);
+        let mut start = 0usize;
+        let (mut i_awb, mut i_amt) = (0usize, 2usize);
+        let mut amount_is_paise = false;
+        if let Some(first) = rows.first() {
+            let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
+            if lower.iter().any(|c| {
+                let t = c.trim();
+                t == "awb" || t == "awb_no" || t == "cn"
+            }) {
+                let find = |names: &[&str]| {
+                    lower
+                        .iter()
+                        .position(|h| names.iter().any(|n| *n == h.trim()))
+                };
+                i_awb = find(&["awb", "awb_no", "cn", "cnote"]).unwrap_or(0);
+                if let Some(i) = find(&["amount_paise", "paise"]) {
+                    i_amt = i;
+                    amount_is_paise = true;
+                } else {
+                    i_amt = find(&["amount", "charge", "cost", "freight"]).unwrap_or(usize::MAX);
+                }
+                start = 1;
+            }
+        }
+        let get = |row: &Vec<String>, i: usize| -> String {
+            if i == usize::MAX {
+                String::new()
+            } else {
+                row.get(i).cloned().unwrap_or_default().trim().to_string()
+            }
+        };
+        let mut applied = 0usize;
+        let mut skipped = 0usize;
+        for row in rows.iter().skip(start) {
+            let awb = get(row, i_awb);
+            if awb.is_empty() {
+                continue;
+            }
+            let amt_raw = get(row, i_amt);
+            let bill_paise = if amount_is_paise {
+                amt_raw.parse::<i64>().unwrap_or(0).max(0)
+            } else {
+                crate::locale::parse_major_input(&amt_raw, "INR")
+                    .unwrap_or(0)
+                    .max(0)
+            };
+            if bill_paise <= 0 {
+                skipped += 1;
+                continue;
+            }
+            match self.find_sale_by_awb(&awb)? {
+                Some(sale) => {
+                    self.set_sale_carrier_cost(&sale.id, bill_paise)?;
+                    applied += 1;
+                }
+                None => skipped += 1,
+            }
+        }
+        Ok((applied, skipped))
+    }
+
+    fn find_or_add_zone(&self, name: &str) -> Result<crate::rates::Zone, String> {
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("Zone name required".into());
+        }
+        if let Some(z) = self
+            .list_zones()?
+            .into_iter()
+            .find(|z| z.name.eq_ignore_ascii_case(name))
+        {
+            return Ok(z);
+        }
+        self.add_zone(name)
+    }
+
+    fn find_party_id_by_name(&self, name: &str) -> Option<String> {
+        let name = name.trim();
+        if name.is_empty() {
+            return None;
+        }
+        self.list_customers()
+            .ok()?
+            .into_iter()
+            .find(|p| p.name.eq_ignore_ascii_case(name))
+            .map(|p| p.id)
     }
 
     fn money_movements_net_for_prefix(&self, day_prefix: &str) -> Result<i64, String> {
@@ -4823,9 +5258,10 @@ impl Store {
                     id, name, price_paise, available, archived, image_key,
                     category_id, tax_bps, stock_qty, modifiers_json, branch_id,
                     tax_rate_id, aliases_json, unit_label,
-                    zone_id, first_kg, first_paise, extra_per_kg_paise
+                    zone_id, first_kg, first_paise, extra_per_kg_paise,
+                    carrier_party_id, party_id
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -4843,7 +5279,9 @@ impl Store {
                    zone_id=excluded.zone_id,
                    first_kg=excluded.first_kg,
                    first_paise=excluded.first_paise,
-                   extra_per_kg_paise=excluded.extra_per_kg_paise",
+                   extra_per_kg_paise=excluded.extra_per_kg_paise,
+                   carrier_party_id=excluded.carrier_party_id,
+                   party_id=excluded.party_id",
                 params![
                     product.id,
                     product.name,
@@ -4866,7 +5304,9 @@ impl Store {
                     product.zone_id,
                     crate::precise::dec_to_sql(product.first_kg),
                     product.first_paise,
-                    product.extra_per_kg_paise
+                    product.extra_per_kg_paise,
+                    product.carrier_party_id,
+                    product.party_id
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -5377,6 +5817,10 @@ impl Store {
         let zone_id = draft.zone_id.trim().to_string();
         let cod_paise = draft.cod_paise.max(0);
         let carrier_cost_paise = draft.carrier_cost_paise.max(0);
+        let declared_value_paise = draft.declared_value_paise.max(0);
+        let insurance = if draft.insurance { 1i64 } else { 0 };
+        let contents = draft.contents.trim().to_string();
+        let eway_bill_no = draft.eway_bill_no.trim().to_string();
         let extras_json = if draft.extras_json.trim().is_empty() {
             "[]".into()
         } else {
@@ -5391,9 +5835,11 @@ impl Store {
                 service_paise, invoice_no, money_lane, user_at, device_at, server_at,
                 awb_no, destination, consignee_name,
                 actual_weight_kg, volumetric_weight_kg, chargeable_weight_kg, tracking_status,
-                zone_id, cod_paise, carrier_cost_paise, extras_json
+                zone_id, cod_paise, carrier_cost_paise, extras_json,
+                declared_value_paise, insurance, contents, eway_bill_no,
+                attempt_count, ndr_reason, next_attempt_at
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34, 0, '', '')",
             params![
                 sale_id,
                 created_at,
@@ -5424,7 +5870,11 @@ impl Store {
                 zone_id,
                 cod_paise,
                 carrier_cost_paise,
-                extras_json
+                extras_json,
+                declared_value_paise,
+                insurance,
+                contents,
+                eway_bill_no
             ],
         )
         .map_err(|e| e.to_string())?;
@@ -5711,6 +6161,16 @@ impl Store {
             rider_id: String::new(),
             pod_note: String::new(),
             extras_json,
+            declared_value_paise,
+            insurance: draft.insurance,
+            contents,
+            eway_bill_no,
+            attempt_count: 0,
+            ndr_reason: String::new(),
+            next_attempt_at: String::new(),
+            feedback_score: 0,
+            area: String::new(),
+            dest_pincode: String::new(),
             lines: draft.lines.clone(),
         };
 
@@ -5946,6 +6406,16 @@ impl Store {
             rider_id: previous.rider_id,
             pod_note: previous.pod_note,
             extras_json: previous.extras_json,
+            declared_value_paise: previous.declared_value_paise,
+            insurance: previous.insurance,
+            contents: previous.contents,
+            eway_bill_no: previous.eway_bill_no,
+            attempt_count: previous.attempt_count,
+            ndr_reason: previous.ndr_reason,
+            next_attempt_at: previous.next_attempt_at,
+            feedback_score: previous.feedback_score,
+            area: previous.area,
+            dest_pincode: previous.dest_pincode,
             lines: draft.lines.clone(),
         })
     }
@@ -8914,7 +9384,8 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, sale_id, awb_no, created_at, user_at, device_at,
-                        status, note, pod_ref, actor_name
+                        status, note, pod_ref, actor_name,
+                        COALESCE(lat, 0), COALESCE(lon, 0)
                  FROM tracking_events WHERE sale_id = ?1 ORDER BY created_at",
             )
             .map_err(|e| e.to_string())?;
@@ -8931,6 +9402,8 @@ impl Store {
                     note: r.get(7)?,
                     pod_ref: r.get(8)?,
                     actor_name: r.get(9)?,
+                    lat: r.get(10)?,
+                    lon: r.get(11)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -9109,6 +9582,357 @@ impl Store {
             .map_err(|e| e.to_string())?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())
+    }
+
+    /// Manifest header + lines joined with live sale weight / COD for DRS print.
+    pub fn manifest_detail(
+        &self,
+        id: &str,
+    ) -> Result<
+        (
+            crate::manifest::Manifest,
+            Vec<crate::manifest::ManifestLineDetail>,
+        ),
+        String,
+    > {
+        let m = self
+            .conn
+            .query_row(
+                "SELECT m.id, m.created_at, m.user_at, m.device_at, m.kind,
+                        m.carrier_party_id, m.carrier_name, m.rider_id, m.rider_name,
+                        m.note, m.status,
+                        (SELECT COUNT(*) FROM manifest_lines l WHERE l.manifest_id = m.id)
+                 FROM manifests m WHERE m.id = ?1",
+                params![id],
+                |r| {
+                    Ok(crate::manifest::Manifest {
+                        id: r.get(0)?,
+                        created_at: r.get(1)?,
+                        user_at: r.get(2)?,
+                        device_at: r.get(3)?,
+                        kind: r.get(4)?,
+                        carrier_party_id: r.get(5)?,
+                        carrier_name: r.get(6)?,
+                        rider_id: r.get(7)?,
+                        rider_name: r.get(8)?,
+                        note: r.get(9)?,
+                        status: r.get(10)?,
+                        line_count: r.get(11)?,
+                    })
+                },
+            )
+            .optional()
+            .map_err(|e| e.to_string())?
+            .ok_or_else(|| "Manifest not found".to_string())?;
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT l.id, l.manifest_id, l.sale_id, l.awb_no, l.destination, l.consignee_name,
+                        COALESCE(s.chargeable_weight_kg, '0'), COALESCE(s.cod_paise, 0),
+                        COALESCE(s.destination, l.destination),
+                        COALESCE(s.consignee_name, l.consignee_name),
+                        COALESCE(s.awb_no, l.awb_no)
+                 FROM manifest_lines l
+                 LEFT JOIN sales s ON s.id = l.sale_id
+                 WHERE l.manifest_id = ?1
+                 ORDER BY l.awb_no",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![id], |r| {
+                let dest_sale: String = r.get(8)?;
+                let cons_sale: String = r.get(9)?;
+                let awb_sale: String = r.get(10)?;
+                let dest_line: String = r.get(4)?;
+                let cons_line: String = r.get(5)?;
+                let awb_line: String = r.get(3)?;
+                Ok(crate::manifest::ManifestLineDetail {
+                    line: crate::manifest::ManifestLine {
+                        id: r.get(0)?,
+                        manifest_id: r.get(1)?,
+                        sale_id: r.get(2)?,
+                        awb_no: if awb_sale.trim().is_empty() {
+                            awb_line
+                        } else {
+                            awb_sale
+                        },
+                        destination: if dest_sale.trim().is_empty() {
+                            dest_line
+                        } else {
+                            dest_sale
+                        },
+                        consignee_name: if cons_sale.trim().is_empty() {
+                            cons_line
+                        } else {
+                            cons_sale
+                        },
+                    },
+                    weight_kg: crate::precise::dec_from_sql(r, 6)?,
+                    cod_paise: r.get(7)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        let lines = rows
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())?;
+        Ok((m, lines))
+    }
+
+    pub fn format_manifest_run_sheet(&self, id: &str) -> Result<String, String> {
+        let (m, lines) = self.manifest_detail(id)?;
+        let shop = self.venue_title().unwrap_or_default();
+        let money = |p: i64| self.money_display(p);
+        Ok(crate::manifest::format_manifest_text(
+            &shop, &m, &lines, &money,
+        ))
+    }
+
+    /// Print DRS / carrier bag via the receipt printer route.
+    pub fn print_manifest(&self, id: &str) -> Result<String, String> {
+        let text = self.format_manifest_run_sheet(id)?;
+        let _ = crate::print_share::print_route(
+            crate::print_share::PrintKind::Receipt,
+            crate::print_share::RouteKey::Receipt,
+            &text,
+            self.path.parent(),
+        )?;
+        Ok(text)
+    }
+
+    pub fn ndr_max_attempts(&self) -> i64 {
+        self.meta_get("ndr_max_attempts")
+            .ok()
+            .flatten()
+            .and_then(|s| s.trim().parse::<i64>().ok())
+            .filter(|n| *n > 0)
+            .unwrap_or(crate::manifest::NDR_MAX_ATTEMPTS_DEFAULT)
+    }
+
+    pub fn set_ndr_max_attempts(&self, n: i64) -> Result<(), String> {
+        let n = n.max(1);
+        self.meta_set("ndr_max_attempts", &n.to_string())
+    }
+
+    /// Record a failed delivery (NDR). Bumps attempt_count; auto-RTO at max attempts.
+    pub fn record_ndr(
+        &mut self,
+        sale_id: &str,
+        reason: &str,
+        next_attempt_date: &str,
+        actor: &StaffMember,
+    ) -> Result<crate::manifest::TrackingStatus, String> {
+        self.assert_server_writer("NDR")?;
+        let sale = self
+            .get_sale(sale_id)?
+            .ok_or_else(|| "Sale not found".to_string())?;
+        let reason = reason.trim();
+        let next = next_attempt_date.trim();
+        let attempts = sale.attempt_count.saturating_add(1);
+        let max = self.ndr_max_attempts();
+        let status = if attempts >= max {
+            crate::manifest::TrackingStatus::Rto
+        } else {
+            crate::manifest::TrackingStatus::Ndr
+        };
+        let note = if status == crate::manifest::TrackingStatus::Rto {
+            format!("NDR attempt {attempts}/{max} → RTO · {reason}")
+        } else {
+            format!("NDR attempt {attempts}/{max} · {reason}")
+        };
+        let times = EventTimes::capture(None);
+        self.conn
+            .execute(
+                "UPDATE sales SET tracking_status = ?1, attempt_count = ?2,
+                     ndr_reason = ?3, next_attempt_at = ?4, pod_note = CASE
+                       WHEN ?5 = '' THEN pod_note ELSE ?5 END
+                 WHERE id = ?6",
+                params![
+                    status.as_str(),
+                    attempts,
+                    reason,
+                    next,
+                    note.as_str(),
+                    sale_id
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "INSERT INTO tracking_events(
+                    id, sale_id, awb_no, created_at, user_at, device_at,
+                    status, note, pod_ref, actor_name
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, '', ?9)",
+                params![
+                    new_id(),
+                    sale_id,
+                    sale.awb_no,
+                    times.user_at,
+                    times.user_at,
+                    times.device_at,
+                    status.as_str(),
+                    note,
+                    actor.lock_label()
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        let _ = self.audit(
+            actor,
+            "ndr",
+            &format!("{} · {} · attempt {attempts}", sale.awb_no, status.as_str()),
+        );
+        if status == crate::manifest::TrackingStatus::Rto {
+            let _ = self.apply_rto_fee_if_needed(sale_id);
+        }
+        Ok(status)
+    }
+
+    /// From NDR back to out for delivery for another attempt.
+    pub fn reattempt_delivery(
+        &mut self,
+        sale_id: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Reattempt")?;
+        let sale = self
+            .get_sale(sale_id)?
+            .ok_or_else(|| "Sale not found".to_string())?;
+        let cur = crate::manifest::TrackingStatus::parse(&sale.tracking_status);
+        if cur != crate::manifest::TrackingStatus::Ndr {
+            return Err("Reattempt only from NDR status".into());
+        }
+        self.conn
+            .execute(
+                "UPDATE sales SET next_attempt_at = '' WHERE id = ?1",
+                params![sale_id],
+            )
+            .map_err(|e| e.to_string())?;
+        let _ = self.advance_tracking(
+            sale_id,
+            crate::manifest::TrackingStatus::OutForDelivery,
+            "Reattempt",
+            "",
+            actor,
+        )?;
+        Ok(())
+    }
+
+    /// Sum COD on dockets assigned to this rider delivered (or collected) on `date` (YYYY-MM-DD).
+    pub fn rider_cod_expected(&self, rider_id: &str, date: &str) -> Result<i64, String> {
+        let date = date.trim();
+        if rider_id.trim().is_empty() || date.is_empty() {
+            return Ok(0);
+        }
+        let day_prefix = format!("{date}%");
+        self.conn
+            .query_row(
+                "SELECT COALESCE(SUM(s.cod_paise), 0)
+                 FROM sales s
+                 WHERE s.rider_id = ?1
+                   AND s.cod_paise > 0
+                   AND (
+                     (s.tracking_status = 'delivered' AND s.created_at LIKE ?2)
+                     OR EXISTS (
+                       SELECT 1 FROM tracking_events e
+                       WHERE e.sale_id = s.id AND e.status = 'delivered'
+                         AND e.created_at LIKE ?2
+                     )
+                     OR EXISTS (
+                       SELECT 1 FROM cod_entries c
+                       WHERE c.sale_id = s.id AND c.status IN ('collected', 'remitted')
+                         AND (c.collected_at LIKE ?2 OR c.created_at LIKE ?2)
+                     )
+                   )",
+                params![rider_id, day_prefix],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())
+    }
+
+    /// Record rider COD handed in vs expected; mark pending COD collected for those AWBs.
+    pub fn settle_rider_cod(
+        &mut self,
+        rider_id: &str,
+        handed_in_paise: i64,
+        actor: &StaffMember,
+    ) -> Result<(i64, i64, String), String> {
+        self.assert_server_writer("Rider COD settle")?;
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let expected = self.rider_cod_expected(rider_id, &today)?;
+        let handed = handed_in_paise.max(0);
+        let variance = handed.saturating_sub(expected);
+        let riders = self.list_riders()?;
+        let rider = riders
+            .into_iter()
+            .find(|r| r.id == rider_id)
+            .ok_or_else(|| "Rider not found".to_string())?;
+        let day_prefix = format!("{today}%");
+        let sale_ids: Vec<(String, String)> = {
+            let mut stmt = self
+                .conn
+                .prepare(
+                    "SELECT s.id, s.awb_no FROM sales s
+                     WHERE s.rider_id = ?1 AND s.cod_paise > 0
+                       AND EXISTS (
+                         SELECT 1 FROM tracking_events e
+                         WHERE e.sale_id = s.id AND e.status = 'delivered'
+                           AND e.created_at LIKE ?2
+                       )",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![rider_id, day_prefix], |r| {
+                    Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?))
+                })
+                .map_err(|e| e.to_string())?;
+            rows.collect::<Result<Vec<_>, _>>()
+                .map_err(|e| e.to_string())?
+        };
+        let mut collected = 0i64;
+        for (sid, _) in &sale_ids {
+            let pending: Vec<String> = {
+                let mut stmt = self
+                    .conn
+                    .prepare(
+                        "SELECT id FROM cod_entries WHERE sale_id = ?1 AND status = 'pending'",
+                    )
+                    .map_err(|e| e.to_string())?;
+                let rows = stmt
+                    .query_map(params![sid], |r| r.get(0))
+                    .map_err(|e| e.to_string())?;
+                rows.collect::<Result<Vec<_>, _>>()
+                    .map_err(|e| e.to_string())?
+            };
+            for eid in pending {
+                let _ = self.mark_cod_collected(&eid)?;
+                collected += 1;
+            }
+        }
+        let slip = format!(
+            "{}\nRider COD settlement\n{}\nRider: {}\nDate: {}\nExpected: {}\nHanded in: {}\nVariance: {}\nAWBs settled: {}\n",
+            self.venue_title().unwrap_or_else(|_| "Your shop".into()),
+            chrono::Local::now().format("%Y-%m-%d %H:%M"),
+            rider.name,
+            today,
+            self.money_display(expected),
+            self.money_display(handed),
+            self.money_display(variance),
+            collected,
+        );
+        let _ = crate::print_share::print_route(
+            crate::print_share::PrintKind::Receipt,
+            crate::print_share::RouteKey::Receipt,
+            &slip,
+            self.path.parent(),
+        )?;
+        let _ = self.audit(
+            actor,
+            "rider_cod_settle",
+            &format!(
+                "{} · expected {} · handed {} · var {}",
+                rider.name, expected, handed, variance
+            ),
+        );
+        Ok((expected, handed, slip))
     }
 
     pub fn create_period_bill(
@@ -9398,6 +10222,10 @@ impl Store {
                 agency
             },
             currency_code,
+            declared_value_paise: sale.declared_value_paise,
+            insurance: sale.insurance,
+            contents: sale.contents.clone(),
+            eway_bill_no: sale.eway_bill_no.clone(),
         })
     }
 
@@ -9551,7 +10379,8 @@ const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
      COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, ''),
      COALESCE(zone_id, ''), COALESCE(first_kg, 0), COALESCE(first_paise, 0),
-     COALESCE(extra_per_kg_paise, 0)";
+     COALESCE(extra_per_kg_paise, 0),
+     COALESCE(carrier_party_id, ''), COALESCE(party_id, '')";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
@@ -9572,7 +10401,12 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(zone_id, ''), COALESCE(cod_paise, 0), COALESCE(carrier_cost_paise, 0),
      COALESCE(period_bill_id, ''), COALESCE(handover_kind, ''),
      COALESCE(carrier_party_id, ''), COALESCE(rider_id, ''),
-     COALESCE(pod_note, ''), COALESCE(extras_json, '[]')";
+     COALESCE(pod_note, ''), COALESCE(extras_json, '[]'),
+     COALESCE(declared_value_paise, 0), COALESCE(insurance, 0),
+     COALESCE(contents, ''), COALESCE(eway_bill_no, ''),
+     COALESCE(attempt_count, 0), COALESCE(ndr_reason, ''),
+     COALESCE(next_attempt_at, ''),
+     COALESCE(feedback_score, 0), COALESCE(area, ''), COALESCE(dest_pincode, '')";
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -9881,6 +10715,16 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         rider_id: row.get(34)?,
         pod_note: row.get(35)?,
         extras_json: row.get(36)?,
+        declared_value_paise: row.get(37)?,
+        insurance: row.get::<_, i64>(38)? != 0,
+        contents: row.get(39)?,
+        eway_bill_no: row.get(40)?,
+        attempt_count: row.get(41)?,
+        ndr_reason: row.get(42)?,
+        next_attempt_at: row.get(43)?,
+        feedback_score: row.get(44)?,
+        area: row.get(45)?,
+        dest_pincode: row.get(46)?,
         lines: Vec::new(),
     })
 }
@@ -9924,6 +10768,8 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         first_kg: crate::precise::dec_from_sql(row, 15)?,
         first_paise: row.get(16)?,
         extra_per_kg_paise: row.get(17)?,
+        carrier_party_id: row.get(18)?,
+        party_id: row.get(19)?,
     })
 }
 
@@ -11518,6 +12364,215 @@ mod tests {
         let billed = store.get_sale(&sale.id).unwrap().unwrap();
         assert_eq!(billed.period_bill_id, bill.id);
 
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn manifest_run_sheet_and_ndr_auto_rto() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        store.set_ndr_max_attempts(2).unwrap();
+        assert_eq!(store.ndr_max_attempts(), 2);
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let rider = store.add_rider("Kiran", "888", "Scooter").unwrap();
+        let rate = Product::new_basic(new_id(), "Express", Money::from_rupees(30));
+        store.upsert_product(&rate).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = "Mysuru".into();
+        draft.consignee_name = "Asha".into();
+        draft.chargeable_weight_kg = "1".parse().unwrap();
+        draft.cod_paise = 50_00;
+        draft.declared_value_paise = 200_00;
+        draft.insurance = true;
+        draft.contents = "Docs".into();
+        draft.eway_bill_no = "EWB123".into();
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
+            .unwrap();
+        assert_eq!(sale.declared_value_paise, 200_00);
+        assert!(sale.insurance);
+        assert_eq!(sale.contents, "Docs");
+        assert_eq!(sale.eway_bill_no, "EWB123");
+        let receipt = store.format_receipt_text(&sale.id).unwrap();
+        assert!(receipt.contains("Declared value"));
+        assert!(receipt.contains("Insurance: Yes"));
+        assert!(receipt.contains("EWB123"));
+        let label = store.awb_label_for_sale(&sale.id).unwrap();
+        assert!(label.to_plain_text().contains("Docs"));
+
+        let manifest = store
+            .create_manifest(
+                crate::manifest::HandoverKind::OwnFleet,
+                "",
+                &rider.id,
+                &[sale.id.clone()],
+                "morning",
+                &owner,
+            )
+            .unwrap();
+        let (m, lines) = store.manifest_detail(&manifest.id).unwrap();
+        assert_eq!(m.line_count, 1);
+        assert_eq!(lines.len(), 1);
+        assert_eq!(lines[0].cod_paise, 50_00);
+        let sheet = store.format_manifest_run_sheet(&manifest.id).unwrap();
+        assert!(sheet.contains(&sale.awb_no));
+        assert!(sheet.contains("COD total"));
+        assert!(sheet.contains("Received by"));
+        let _ = store.print_manifest(&manifest.id).unwrap();
+
+        let st1 = store
+            .record_ndr(&sale.id, "door_locked", "2099-01-02", &owner)
+            .unwrap();
+        assert_eq!(st1, crate::manifest::TrackingStatus::Ndr);
+        let s1 = store.get_sale(&sale.id).unwrap().unwrap();
+        assert_eq!(s1.attempt_count, 1);
+        assert_eq!(s1.ndr_reason, "door_locked");
+        assert_eq!(s1.next_attempt_at, "2099-01-02");
+        store.reattempt_delivery(&sale.id, &owner).unwrap();
+        let s2 = store.get_sale(&sale.id).unwrap().unwrap();
+        assert_eq!(s2.tracking_status, "out_for_delivery");
+
+        let st2 = store
+            .record_ndr(&sale.id, "refused", "", &owner)
+            .unwrap();
+        assert_eq!(st2, crate::manifest::TrackingStatus::Rto);
+        let s3 = store.get_sale(&sale.id).unwrap().unwrap();
+        assert_eq!(s3.attempt_count, 2);
+        assert_eq!(s3.tracking_status, "rto");
+
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn pincode_import_and_lookup() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let _ = store
+            .add_customer_kind("Delhivery", "", "Carrier")
+            .unwrap();
+        let (added, skipped, problems) = store
+            .import_pincodes_csv(
+                "pincode,zone,carrier,note\n110001,North,Delhivery,NCR\n110001,North,DTDC,\n560001,South,,\n",
+            )
+            .unwrap();
+        assert!(problems.is_empty(), "{problems:?}");
+        assert_eq!(added, 3);
+        assert_eq!(skipped, 0);
+        let hits = store.lookup_pincode("110001").unwrap();
+        assert_eq!(hits.len(), 1);
+        assert_eq!(hits[0].zone_name, "North");
+        assert!(hits[0].serves_label().contains("Delhivery"));
+        assert!(hits[0].serves_label().contains("DTDC"));
+        let south = store.lookup_pincode("560001").unwrap();
+        assert_eq!(south.len(), 1);
+        assert_eq!(south[0].zone_name, "South");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn carrier_rate_compare_margins() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let zone = store.add_zone("West").unwrap();
+        let delhivery = store
+            .add_customer_kind("Delhivery", "", "Carrier")
+            .unwrap();
+        let dtdc = store.add_customer_kind("DTDC", "", "Carrier").unwrap();
+        let mut sell = Product::new_basic(new_id(), "Surface West", Money::from_rupees(50));
+        sell.unit_label = "kg".into();
+        sell.zone_id = zone.id.clone();
+        sell.price = Money(50_00); // flat ₹50/kg
+        store.upsert_product(&sell).unwrap();
+        let mut buy_d = Product::new_basic(new_id(), "Delhivery West", Money::from_rupees(30));
+        buy_d.unit_label = "kg".into();
+        buy_d.zone_id = zone.id.clone();
+        buy_d.carrier_party_id = delhivery.id.clone();
+        buy_d.price = Money(30_00);
+        store.upsert_product(&buy_d).unwrap();
+        let mut buy_t = Product::new_basic(new_id(), "DTDC West", Money::from_rupees(35));
+        buy_t.unit_label = "kg".into();
+        buy_t.zone_id = zone.id.clone();
+        buy_t.carrier_party_id = dtdc.id;
+        buy_t.price = Money(35_00);
+        store.upsert_product(&buy_t).unwrap();
+        let kg: rust_decimal::Decimal = "2".parse().unwrap();
+        let (sell_paise, rows) = store
+            .compare_carriers_for_zone(&zone.id, kg, "")
+            .unwrap();
+        assert_eq!(sell_paise, 100_00);
+        assert_eq!(rows.len(), 2);
+        let d = rows.iter().find(|r| r.carrier_name == "Delhivery").unwrap();
+        assert_eq!(d.cost_paise, 60_00);
+        assert_eq!(d.margin_paise, 40_00);
+        let t = rows.iter().find(|r| r.carrier_name == "DTDC").unwrap();
+        assert_eq!(t.cost_paise, 70_00);
+        assert_eq!(t.margin_paise, 30_00);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn carrier_bill_reconcile_flags_charge_and_missing() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let rate = Product::new_basic(new_id(), "Express", Money::from_rupees(40));
+        store.upsert_product(&rate).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = "Pune".into();
+        draft.chargeable_weight_kg = "2".parse().unwrap();
+        draft.carrier_cost_paise = 100_00;
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
+            .unwrap();
+        let csv = format!(
+            "awb,weight_kg,amount\n{},2,120\nAWB-MISSING-000001,1,50\n",
+            sale.awb_no
+        );
+        let report = store.reconcile_carrier_bill_csv(&csv).unwrap();
+        assert!(report.contains("charge_diff"), "{report}");
+        assert!(report.contains("missing"), "{report}");
+        let (applied, skipped) = store.apply_carrier_bill_costs(&csv).unwrap();
+        assert_eq!(applied, 1);
+        assert_eq!(skipped, 1);
+        let updated = store.get_sale(&sale.id).unwrap().unwrap();
+        assert_eq!(updated.carrier_cost_paise, 120_00);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn party_specific_rate_card_preferred() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let zone = store.add_zone("East").unwrap();
+        let vip = store
+            .add_customer_kind("VIP Shipper", "", "Consignor")
+            .unwrap();
+        let other = store
+            .add_customer_kind("Walk-in Co", "", "Consignor")
+            .unwrap();
+        let mut def = Product::new_basic(new_id(), "East default", Money(50_00));
+        def.unit_label = "kg".into();
+        def.zone_id = zone.id.clone();
+        store.upsert_product(&def).unwrap();
+        let mut ov = Product::new_basic(new_id(), "East VIP", Money(40_00));
+        ov.unit_label = "kg".into();
+        ov.zone_id = zone.id.clone();
+        ov.party_id = vip.id.clone();
+        store.upsert_product(&ov).unwrap();
+        let kg: rust_decimal::Decimal = "1".parse().unwrap();
+        let for_vip = store.resolve_sell_rate(&zone.id, &vip.id).unwrap().unwrap();
+        assert_eq!(for_vip.rate_slab().freight_paise(kg).unwrap(), 40_00);
+        let for_other = store
+            .resolve_sell_rate(&zone.id, &other.id)
+            .unwrap()
+            .unwrap();
+        assert_eq!(for_other.rate_slab().freight_paise(kg).unwrap(), 50_00);
+        let for_walkin = store.resolve_sell_rate(&zone.id, "").unwrap().unwrap();
+        assert_eq!(for_walkin.rate_slab().freight_paise(kg).unwrap(), 50_00);
         let _ = std::fs::remove_file(path);
     }
 

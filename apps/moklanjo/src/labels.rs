@@ -4,6 +4,23 @@
 //! printers can rasterise the SVG; the barcode payload is the AWB string.
 
 use crate::domain::Money;
+use std::fmt;
+
+/// Paper size for plain-text docket print.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DocketSize {
+    A4,
+    A5,
+}
+
+impl fmt::Display for DocketSize {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::A4 => write!(f, "A4"),
+            Self::A5 => write!(f, "A5"),
+        }
+    }
+}
 
 /// Label fields frozen at print time.
 #[derive(Clone, Debug, Default)]
@@ -19,6 +36,10 @@ pub struct AwbLabel {
     pub agency_name: String,
     /// Shop currency code (INR default — India first; set from store locale).
     pub currency_code: String,
+    pub declared_value_paise: i64,
+    pub insurance: bool,
+    pub contents: String,
+    pub eway_bill_no: String,
 }
 
 impl AwbLabel {
@@ -42,6 +63,31 @@ impl AwbLabel {
         } else {
             String::new()
         };
+        let mut extras = String::new();
+        if self.declared_value_paise > 0 {
+            extras.push_str(&format!(
+                "Decl. {}",
+                Money(self.declared_value_paise).format_with(currency)
+            ));
+        }
+        if self.insurance {
+            if !extras.is_empty() {
+                extras.push_str(" · ");
+            }
+            extras.push_str("Insured");
+        }
+        if !self.contents.trim().is_empty() {
+            if !extras.is_empty() {
+                extras.push_str(" · ");
+            }
+            extras.push_str(&xml_escape(self.contents.trim()));
+        }
+        if !self.eway_bill_no.trim().is_empty() {
+            if !extras.is_empty() {
+                extras.push_str(" · ");
+            }
+            extras.push_str(&format!("EWB {}", xml_escape(self.eway_bill_no.trim())));
+        }
         let bars = code128_svg_bars(&self.awb_no, 40.0, 220.0, 56.0);
         format!(
             r##"<?xml version="1.0" encoding="UTF-8"?>
@@ -59,11 +105,95 @@ impl AwbLabel {
   <text x="24" y="404" font-family="DejaVu Sans, Arial, sans-serif" font-size="12">TO</text>
   <text x="24" y="426" font-family="DejaVu Sans, Arial, sans-serif" font-size="16">{to}</text>
   <text x="24" y="452" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">{dest}</text>
-  <text x="24" y="490" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">{weight} · {pieces} pc · {service}</text>
-  <text x="24" y="520" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700">{cod}</text>
+  <text x="24" y="480" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">{weight} · {pieces} pc · {service}</text>
+  <text x="24" y="508" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700">{cod}</text>
+  <text x="24" y="536" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">{extras}</text>
 </svg>
 "##
         )
+    }
+
+    /// A4/A5 plain-text docket with consignor / consignee blocks (± barcode on label).
+    pub fn format_docket_text(&self, size: DocketSize) -> String {
+        let currency = if self.currency_code.trim().is_empty() {
+            "INR"
+        } else {
+            self.currency_code.trim()
+        };
+        let weight = format!("{} kg", crate::precise::format_kg(self.weight_kg));
+        let pieces = if self.pieces > 0 { self.pieces } else { 1 };
+        let width = match size {
+            DocketSize::A5 => 48,
+            DocketSize::A4 => 72,
+        };
+        let rule: String = std::iter::repeat('-').take(width).collect();
+        let mut out = String::new();
+        out.push_str(&format!("MOKLANJO DOCKET ({size})\n"));
+        if !self.agency_name.trim().is_empty() {
+            out.push_str(self.agency_name.trim());
+            out.push('\n');
+        }
+        out.push_str(&rule);
+        out.push('\n');
+        out.push_str(&format!("AWB: {}\n", self.awb_no));
+        out.push_str(&format!("Service: {}\n", self.service));
+        out.push_str(&format!("{weight} · {pieces} pc\n"));
+        out.push_str(&rule);
+        out.push('\n');
+        out.push_str("CONSIGNOR\n");
+        out.push_str(if self.from_name.trim().is_empty() {
+            "(sender)\n"
+        } else {
+            self.from_name.trim()
+        });
+        if !self.from_name.trim().is_empty() {
+            out.push('\n');
+        }
+        out.push_str(&rule);
+        out.push('\n');
+        out.push_str("CONSIGNEE\n");
+        out.push_str(if self.to_name.trim().is_empty() {
+            "(receiver)"
+        } else {
+            self.to_name.trim()
+        });
+        out.push('\n');
+        if !self.destination.trim().is_empty() {
+            out.push_str(self.destination.trim());
+            out.push('\n');
+        }
+        out.push_str(&rule);
+        out.push('\n');
+        if self.cod_paise > 0 {
+            out.push_str(&format!(
+                "COD: {}\n",
+                Money(self.cod_paise).format_with(currency)
+            ));
+        }
+        if self.declared_value_paise > 0 {
+            out.push_str(&format!(
+                "Declared value: {}\n",
+                Money(self.declared_value_paise).format_with(currency)
+            ));
+        }
+        if self.insurance {
+            out.push_str("Insurance: Yes\n");
+        }
+        if !self.contents.trim().is_empty() {
+            out.push_str("Contents: ");
+            out.push_str(self.contents.trim());
+            out.push('\n');
+        }
+        if !self.eway_bill_no.trim().is_empty() {
+            out.push_str("E-way bill: ");
+            out.push_str(self.eway_bill_no.trim());
+            out.push('\n');
+        }
+        out.push_str(&rule);
+        out.push('\n');
+        out.push_str("Receiver sign ________  Date ________\n");
+        out.push_str("(Barcode on thermal/SVG label)\n");
+        out
     }
 
     /// Save under `dir` as `{awb}.svg`.
@@ -111,6 +241,25 @@ impl AwbLabel {
                 "COD {}\n",
                 Money(self.cod_paise).format_with(currency)
             ));
+        }
+        if self.declared_value_paise > 0 {
+            out.push_str(&format!(
+                "Declared {}\n",
+                Money(self.declared_value_paise).format_with(currency)
+            ));
+        }
+        if self.insurance {
+            out.push_str("Insurance: Yes\n");
+        }
+        if !self.contents.trim().is_empty() {
+            out.push_str("Contents: ");
+            out.push_str(self.contents.trim());
+            out.push('\n');
+        }
+        if !self.eway_bill_no.trim().is_empty() {
+            out.push_str("E-way: ");
+            out.push_str(self.eway_bill_no.trim());
+            out.push('\n');
         }
         out.push_str("--------------------------------\n");
         out
@@ -170,10 +319,34 @@ mod tests {
             cod_paise: 500_00,
             agency_name: "Moklanjo".into(),
             currency_code: "INR".into(),
+            declared_value_paise: 0,
+            insurance: false,
+            contents: String::new(),
+            eway_bill_no: String::new(),
         };
         let svg = label.to_svg();
         assert!(svg.contains("AWB-260417-000001"));
         assert!(svg.contains("COD"));
         assert!(svg.contains('₹'));
+    }
+
+    #[test]
+    fn docket_text_has_consignee() {
+        let label = AwbLabel {
+            awb_no: "AWB-9".into(),
+            from_name: "Sender Co".into(),
+            to_name: "Priya Receiver".into(),
+            destination: "Pune 411001".into(),
+            weight_kg: "1".parse().unwrap(),
+            pieces: 1,
+            service: "Express".into(),
+            agency_name: "Raju Courier".into(),
+            ..Default::default()
+        };
+        let text = label.format_docket_text(DocketSize::A5);
+        assert!(text.contains("CONSIGNEE"));
+        assert!(text.contains("Priya Receiver"));
+        assert!(text.contains("CONSIGNOR"));
+        assert!(text.contains("Sender Co"));
     }
 }

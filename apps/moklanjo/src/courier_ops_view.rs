@@ -75,8 +75,12 @@ pub fn awb_desk_card(store: &Store, raw_awb: &str) -> Result<String, String> {
         .unwrap_or("");
     let next = match status {
         TrackingStatus::Booked => "Next: Dispatch to rider / Hand to carrier · or Out for delivery",
-        TrackingStatus::OutForDelivery => "Next: Mark delivered (+ POD photo optional)",
+        TrackingStatus::OutForDelivery => {
+            "Next: Mark delivered (+ POD) · or Failed delivery (NDR)"
+        }
+        TrackingStatus::Ndr => "Next: Reattempt · or wait for auto-RTO after max attempts",
         TrackingStatus::Delivered => "Done — Collect COD if pending · Print label if reprint",
+        TrackingStatus::Rto => "RTO — returned to origin",
         _ => "Next: Advance status or Print label",
     };
     let mut out = format!(
@@ -101,13 +105,27 @@ pub fn awb_desk_card(store: &Store, raw_awb: &str) -> Result<String, String> {
             store.money_display(sale.cod_paise)
         ));
     }
+    if sale.attempt_count > 0 || !sale.ndr_reason.trim().is_empty() {
+        out.push_str(&format!(
+            "Attempts: {} · NDR: {}\n",
+            sale.attempt_count,
+            if sale.ndr_reason.trim().is_empty() {
+                "—"
+            } else {
+                sale.ndr_reason.trim()
+            }
+        ));
+    }
+    if !sale.next_attempt_at.trim().is_empty() {
+        out.push_str(&format!("Next attempt: {}\n", sale.next_attempt_at.trim()));
+    }
     if !last_note.is_empty() {
         out.push_str(&format!("Last note: {last_note}\n"));
     }
     out.push_str(next);
     out.push('\n');
     out.push_str(
-        "Scan again or tap Out for delivery / Delivered / Print label / Collect COD.\n",
+        "Scan again or tap Out for delivery / Delivered / Failed delivery / Reattempt / Print label / Collect COD.\n",
     );
     Ok(out)
 }
@@ -133,6 +151,7 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
                 text.push_str(&format_consignment_line(store, &s));
             }
             text.push_str("\n— Manifests —\n");
+            text.push_str("Print run sheet / Print DRS prints the latest manifest.\n");
             for m in store.list_manifests(20)? {
                 let who = if m.kind == "own_fleet" {
                     m.rider_name.as_str()
@@ -140,8 +159,12 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
                     m.carrier_name.as_str()
                 };
                 text.push_str(&format!(
-                    "{} · {} · {} lines · {}\n",
-                    m.kind, who, m.line_count, &m.created_at[..m.created_at.len().min(16)]
+                    "{} · {} · {} lines · {} · id {}\n",
+                    m.kind,
+                    who,
+                    m.line_count,
+                    &m.created_at[..m.created_at.len().min(16)],
+                    &m.id[..m.id.len().min(8)]
                 ));
             }
         }
@@ -165,15 +188,23 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
         }
         OpsFacet::Riders => {
             text.push_str("\n— Own-fleet riders —\n");
-            text.push_str("Add a rider, then Dispatch booked AWBs to them from Ops.\n\n");
+            text.push_str(
+                "Add a rider, then Dispatch booked AWBs from Ops.\n\
+                 Settle: type rider name + COD handed in → Settle rider COD.\n\n",
+            );
             let riders = store.list_riders()?;
             if riders.is_empty() {
                 text.push_str("(none yet)\n");
             }
+            let today = chrono::Local::now().format("%Y-%m-%d").to_string();
             for r in riders {
+                let expected = store.rider_cod_expected(&r.id, &today).unwrap_or(0);
                 text.push_str(&format!(
-                    "{} · {} · {}\n",
-                    r.name, r.phone, r.vehicle_label
+                    "{} · {} · {} · COD today {}\n",
+                    r.name,
+                    r.phone,
+                    r.vehicle_label,
+                    store.money_display(expected)
                 ));
             }
         }
@@ -260,6 +291,91 @@ pub fn print_label(store: &Store, awb: &str) -> Result<String, String> {
             path.display()
         ))
     }
+}
+
+/// Print the latest carrier bag / rider DRS via the receipt route.
+pub fn print_latest_run_sheet(store: &Store) -> Result<String, String> {
+    let list = store.list_manifests(1)?;
+    let m = list
+        .into_iter()
+        .next()
+        .ok_or_else(|| "No manifests yet — dispatch or hand over first".to_string())?;
+    let _ = store.print_manifest(&m.id)?;
+    let who = if m.kind == "own_fleet" {
+        m.rider_name
+    } else {
+        m.carrier_name
+    };
+    if crate::print_share::prints_route(crate::print_share::RouteKey::Receipt) {
+        Ok(format!(
+            "Run sheet / DRS printed · {} · {} AWBs → {}",
+            m.kind, m.line_count, who
+        ))
+    } else {
+        Ok(format!(
+            "Run sheet ready · {} · {} AWBs → {} — set a receipt printer in Settings → Printers",
+            m.kind, m.line_count, who
+        ))
+    }
+}
+
+/// Failed delivery (NDR). `reason` from note or NDR chip; optional YYYY-MM-DD in note after `|`.
+pub fn record_failed_delivery(
+    store: &mut Store,
+    awb: &str,
+    reason: &str,
+    next_attempt_date: &str,
+    actor: &StaffMember,
+) -> Result<String, String> {
+    let sale = find_sale_for_scan(store, awb)?;
+    let status = store.record_ndr(&sale.id, reason, next_attempt_date, actor)?;
+    Ok(format!("{} → {} · {}", sale.awb_no, status.label(), reason.trim()))
+}
+
+pub fn reattempt_awb(
+    store: &mut Store,
+    awb: &str,
+    actor: &StaffMember,
+) -> Result<String, String> {
+    let sale = find_sale_for_scan(store, awb)?;
+    store.reattempt_delivery(&sale.id, actor)?;
+    Ok(format!("{} → Out for delivery (reattempt)", sale.awb_no))
+}
+
+pub fn settle_rider_cod_line(
+    store: &mut Store,
+    rider_name: &str,
+    handed_in_text: &str,
+    actor: &StaffMember,
+) -> Result<String, String> {
+    let rider_name = rider_name.trim();
+    if rider_name.is_empty() {
+        return Err("Type a rider name".into());
+    }
+    let rider = store
+        .list_riders()?
+        .into_iter()
+        .find(|r| r.name.eq_ignore_ascii_case(rider_name))
+        .ok_or_else(|| format!("No rider named {rider_name}"))?;
+    let handed = handed_in_text
+        .trim()
+        .replace(',', "")
+        .parse::<f64>()
+        .ok()
+        .map(|v| (v * 100.0).round() as i64)
+        .or_else(|| {
+            // Already paise digits
+            handed_in_text.trim().parse::<i64>().ok()
+        })
+        .unwrap_or(0);
+    let (expected, handed, _slip) = store.settle_rider_cod(&rider.id, handed, actor)?;
+    Ok(format!(
+        "Settled {} · expected {} · handed {} · variance {}",
+        rider.name,
+        store.money_display(expected),
+        store.money_display(handed),
+        store.money_display(handed.saturating_sub(expected))
+    ))
 }
 
 /// Dispatch all currently booked AWBs (limit) to a rider by name.

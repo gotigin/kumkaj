@@ -31,6 +31,8 @@ pub enum ExtraChargeKind {
     Oda,
     Packing,
     CodFee,
+    /// Return-to-origin fee when auto-RTO finishes a Partial NDR.
+    RtoFee,
     Other,
 }
 
@@ -42,6 +44,7 @@ impl ExtraChargeKind {
             Self::Oda => "oda",
             Self::Packing => "packing",
             Self::CodFee => "cod_fee",
+            Self::RtoFee => "rto_fee",
             Self::Other => "other",
         }
     }
@@ -53,6 +56,7 @@ impl ExtraChargeKind {
             Self::Oda => "ODA",
             Self::Packing => "Packing",
             Self::CodFee => "COD fee",
+            Self::RtoFee => "RTO fee",
             Self::Other => "Extra charge",
         }
     }
@@ -64,6 +68,7 @@ impl ExtraChargeKind {
             Self::Oda,
             Self::Packing,
             Self::CodFee,
+            Self::RtoFee,
             Self::Other,
         ]
     }
@@ -75,6 +80,7 @@ impl ExtraChargeKind {
             "oda" => Self::Oda,
             "packing" => Self::Packing,
             "cod_fee" | "cod" => Self::CodFee,
+            "rto_fee" | "rto" => Self::RtoFee,
             _ => Self::Other,
         }
     }
@@ -160,6 +166,81 @@ impl BookingExtra {
     }
 }
 
+/// One carrier's cost vs our sell freight for the same zone/weight.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct CarrierCompareRow {
+    pub carrier_party_id: String,
+    pub carrier_name: String,
+    pub cost_paise: i64,
+    pub margin_paise: i64,
+}
+
+/// Build compare rows: sell freight vs each carrier's cost freight.
+pub fn compare_carriers(sell_paise: i64, carriers: &[(String, String, i64)]) -> Vec<CarrierCompareRow> {
+    carriers
+        .iter()
+        .map(|(id, name, cost)| {
+            let cost_paise = (*cost).max(0);
+            CarrierCompareRow {
+                carrier_party_id: id.clone(),
+                carrier_name: name.clone(),
+                cost_paise,
+                margin_paise: sell_paise.saturating_sub(cost_paise),
+            }
+        })
+        .collect()
+}
+
+/// Format a one-line booking desk summary of sell + carrier margins.
+pub fn format_carrier_compare(sell_paise: i64, rows: &[CarrierCompareRow], currency: &str) -> String {
+    use crate::locale;
+    let mut parts = vec![format!(
+        "Our charge {}",
+        locale::format_money(sell_paise, currency)
+    )];
+    for row in rows {
+        parts.push(format!(
+            "{} cost {} (margin {})",
+            row.carrier_name,
+            locale::format_money(row.cost_paise, currency),
+            locale::format_money(row.margin_paise, currency)
+        ));
+    }
+    parts.join(" · ")
+}
+
+/// Pincode serviceability hit grouped by zone.
+#[derive(Clone, Debug, Default)]
+pub struct PincodeZoneHit {
+    pub pincode: String,
+    pub zone_id: String,
+    pub zone_name: String,
+    pub carriers: Vec<(String, String)>,
+    pub note: String,
+}
+
+impl PincodeZoneHit {
+    pub fn serves_label(&self) -> String {
+        let names: Vec<&str> = self
+            .carriers
+            .iter()
+            .map(|(_, n)| n.as_str())
+            .filter(|n| !n.is_empty())
+            .collect();
+        if names.is_empty() {
+            format!("Zone {}", self.zone_name)
+        } else {
+            format!("Serves: {}", names.join(", "))
+        }
+    }
+}
+
+/// True when `raw` is a 6-digit Indian pincode.
+pub fn is_india_pincode(raw: &str) -> bool {
+    let t = raw.trim();
+    t.len() == 6 && t.chars().all(|c| c.is_ascii_digit())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -203,5 +284,22 @@ mod tests {
         };
         // 1.5 kg → 0.5 extra × 2000 = 1000
         assert_eq!(slab.freight_paise(d("1.5")).unwrap(), 60_00);
+    }
+
+    #[test]
+    fn compare_carriers_margins() {
+        let rows = compare_carriers(
+            100_00,
+            &[
+                ("d1".into(), "Delhivery".into(), 70_00),
+                ("d2".into(), "DTDC".into(), 80_00),
+            ],
+        );
+        assert_eq!(rows.len(), 2);
+        assert_eq!(rows[0].margin_paise, 30_00);
+        assert_eq!(rows[1].margin_paise, 20_00);
+        let line = format_carrier_compare(100_00, &rows, "INR");
+        assert!(line.contains("Delhivery"));
+        assert!(line.contains("DTDC"));
     }
 }

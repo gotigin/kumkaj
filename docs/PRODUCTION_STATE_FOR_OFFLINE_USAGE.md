@@ -4,15 +4,16 @@
 > [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md),
 > [`KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md).
 
-Updated **2026-10-26** (v2). Every line below was checked against the code, not
-copied from the earlier assessment (several of its "missing" items already
-existed, and one of its "done" items was a bug — see §1).
+Updated **2026-10-27** (v3). Research Local/LAN catch-up for both apps is
+complete (§4); earlier LAN pilot items (§1–2) remain. Every line below was
+checked against the code, not copied from an older assessment.
 
-**Bottom line:** the code is ready for a supervised pilot (a counter device +
-two extras, any mix of supported platforms, at Rajdhani). What blocks a
-non-technical roll-out is no longer code: it is the **real-hardware run**
-and **installing the built packages on clean machines** (§3), which only the
-owner can do.
+**Bottom line:** product code for offline/LAN use (including research
+parity that does not need Kumkaj Cloud) is ready for a supervised pilot
+(a counter device + two extras, any mix of supported platforms). What
+blocks a non-technical roll-out is no longer Local/LAN feature gaps: it
+is the **real-hardware run** and **installing the built packages on clean
+machines** (§3), which only the owner can do.
 
 ---
 
@@ -124,7 +125,15 @@ verified done.
 
 | Item | Why / how |
 |---|---|
-| *(none)* | Printer pass items (Default printer removal, per-station KOT routes, WrapLabel→Label fix, docs) are done. Previous items (quick-start card, in-app tablet help, clock skew) remain verified. |
+| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7. Remaining product work is Cloud/Net connectors (optional stubs only) or owner actions below. |
+
+**Still needs the owner (not code)**
+
+| Item | Why |
+|---|---|
+| Real-hardware pilot | Windows counter + tablets on the shop LAN (§3) |
+| Clean-machine install of built MSI/APK | Confirm Start Menu, firewall, Quick start |
+| Android release signing + Play / web listing | Distribution |
 
 **Deliberately not done (decisions, not gaps)**
 
@@ -135,7 +144,7 @@ verified done.
 | Tamper-evident (hash-chained) audit | Vision §18 asks for attributable, append-only history — that exists (audit events, sale revisions, cancel-not-delete). A cryptographic seal only matters where a tax regime demands it. |
 | Zero-downtime server migration | One Server is the only writer by design; migration is a few minutes outside service (SERVER_MIGRATION.md). |
 | Colour dot for link health | The header says it in words; colour alone would break the "never carry meaning in colour alone" rule (DEV.md). |
-| GSTR-1/3B, e-invoice IRN/QR, tax-period lock, FIFO valuation, cloud features | Vision §23 / later phases; not claimed anywhere. |
+| GSTR-1/3B, e-invoice IRN/QR, tax-period lock, FIFO valuation, **live** cloud features | Vision §23 / later phases; not claimed anywhere. Optional Net stubs (aggregators, card outbox, WhatsApp share) must never gate the counter. |
 
 ---
 
@@ -162,23 +171,25 @@ all day — do it during the hardware run.
 ## 6. Re-check
 
 ```bash
-cargo test -p kumkaj-khaynjo        # 200 tests (+2 opt-in)
-cargo test -p kumkaj-moklanjo        # 157 tests (+1 opt-in)
+cargo test -p kumkaj-khaynjo        # ~229 #[test] markers in src
+cargo test -p kumkaj-moklanjo        # ~181 #[test] markers in src
 apps/khaynjo/scripts/check-tests-never-print.sh
 apps/khaynjo/scripts/check-lock-guards.sh
 cargo test -p kumkaj-khaynjo --release --lib -- --ignored months_of_trading --nocapture
 cargo test -p kumkaj-moklanjo --release --lib -- --ignored months_of_trading --nocapture
 ```
 
-Re-run on **2026-10-26** (printer pass: +2 Khaynjo tests): both packages'
-unit/integration tests green; never-print + lock-guard clean;
-`shipped_languages_translate_chrome` green after the new Settings help keys
-and new KOT locale keys.
+Re-run after **2026-10-27** research Local/LAN catch-up: both packages'
+unit/integration tests green (prior printer pass 2026-10-26 still holds);
+never-print + lock-guard clean. Research status:
+[`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8,
+[`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7.
 
 | | Moklanjo | Khaynjo |
 |---|---|---|
-| Rust source | ~47k lines | ~54k lines |
-| `#[test]`s | ~157 lib + main | ~200 lib + main (incl. 2 opt-in) |
+| Rust source | ~47k+ lines | ~54k+ lines |
+| `#[test]`s | ~181 in `src/` | ~229 in `src/` |
 | LAN guides | `docs/LAN_QUICK_START.md`, `docs/SERVER_MIGRATION.md` (shared) | same |
 | MSI | `dist/Moklanjo-0.1.0.msi` (Quick start) | `dist/Khaynjo-0.1.0.msi` (Quick start) |
+| Research Local/LAN | **Have** (§7); Cloud/Net/owner left | **Have** (§8); Cloud/Net/owner left |
 | Real hardware | not yet (any platform) | not yet (any platform) |

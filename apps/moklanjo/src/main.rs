@@ -435,10 +435,18 @@ struct AppState {
     booking_height_cm: String,
     booking_cod: String,
     booking_carrier_cost: String,
+    booking_declared: String,
+    booking_contents: String,
+    booking_eway: String,
+    booking_insurance: String,
     booking_notify_phone: String,
     booking_fuel: String,
     booking_docket: String,
     booking_zone: String,
+    /// Last carrier-bill reconcile report (Reports → copy).
+    last_carrier_bill_report: String,
+    /// Last carrier compare rows from the booking desk (for "Use carrier cost").
+    last_carrier_compare: Vec<rates::CarrierCompareRow>,
     /// Booking-desk measurement choices: the units the user types in, the
     /// volumetric divisor and the weight slab. Books always record kg/cm;
     /// these only adapt entry and display (see BookingMeasureSettings).
@@ -777,10 +785,16 @@ impl AppState {
             booking_height_cm: String::new(),
             booking_cod: String::new(),
             booking_carrier_cost: String::new(),
+            booking_declared: String::new(),
+            booking_contents: String::new(),
+            booking_eway: String::new(),
+            booking_insurance: String::new(),
             booking_notify_phone: String::new(),
             booking_fuel: String::new(),
             booking_docket: String::new(),
             booking_zone: String::new(),
+            last_carrier_bill_report: String::new(),
+            last_carrier_compare: Vec::new(),
             measure_dim_unit: "cm".into(),
             measure_weight_unit: "kg".into(),
             measure_divisor: rust_decimal::Decimal::from(5000),
@@ -927,6 +941,47 @@ impl AppState {
             .iter()
             .filter_map(|id| self.products.iter().find(|p| &p.id == id).cloned())
             .collect()
+    }
+
+    /// Booking desk catalogue: sell cards only; party overrides for the
+    /// selected consignor (or defaults when no party).
+    fn booking_catalog_products(&self) -> Vec<Product> {
+        let selected = self.selected_customer_id.as_deref().unwrap_or("");
+        self.products
+            .iter()
+            .filter(|p| {
+                if !p.is_sell_card() {
+                    return false;
+                }
+                let pid = p.party_id.trim();
+                pid.is_empty() || (!selected.is_empty() && pid == selected)
+            })
+            .cloned()
+            .collect()
+    }
+
+    /// Prefer a party-specific sell card for the same zone when consignor is set.
+    fn resolve_booking_product(&self, product: &Product) -> Product {
+        if !product.is_sell_card() {
+            return product.clone();
+        }
+        let Some(cid) = self.selected_customer_id.as_deref() else {
+            return product.clone();
+        };
+        if !product.party_id.trim().is_empty() || product.zone_id.trim().is_empty() {
+            return product.clone();
+        }
+        self.products
+            .iter()
+            .find(|p| {
+                p.is_sell_card()
+                    && p.zone_id == product.zone_id
+                    && p.party_id == cid
+                    && p.available
+                    && !p.archived
+            })
+            .cloned()
+            .unwrap_or_else(|| product.clone())
     }
 
     fn uses_lan(&self) -> bool {
@@ -1474,6 +1529,15 @@ impl AppState {
         draft.cod_paise = booking::parse_extra_amount(&self.booking_cod, &currency).unwrap_or(0);
         draft.carrier_cost_paise =
             booking::parse_extra_amount(&self.booking_carrier_cost, &currency).unwrap_or(0);
+        draft.declared_value_paise =
+            booking::parse_extra_amount(&self.booking_declared, &currency).unwrap_or(0);
+        draft.contents = self.booking_contents.trim().to_string();
+        draft.eway_bill_no = self.booking_eway.trim().to_string();
+        let ins = self.booking_insurance.trim().to_lowercase();
+        draft.insurance = matches!(
+            ins.as_str(),
+            "y" | "yes" | "1" | "true" | "insured" | "हाँ" | "हां"
+        );
         draft.notify_phone = self.booking_notify_phone.trim().to_string();
         let mut extras = Vec::new();
         if let Some(p) =
@@ -1499,6 +1563,10 @@ impl AppState {
         self.booking_height_cm.clear();
         self.booking_cod.clear();
         self.booking_carrier_cost.clear();
+        self.booking_declared.clear();
+        self.booking_contents.clear();
+        self.booking_eway.clear();
+        self.booking_insurance.clear();
         self.booking_notify_phone.clear();
         self.booking_fuel.clear();
         self.booking_docket.clear();
@@ -4713,6 +4781,11 @@ script_mod! {
                                 }
                                 booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
                                 booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
+                                booking_pincode_label := WrapLabel{
+                                    body: ""
+                                    font_color: #x006e1c
+                                    font_size: 12.
+                                }
                                 booking_consignee_input := FieldInput{empty_text: "Consignee (receiver)"}
                                 booking_actual_kg_input := FieldInput{empty_text: "Actual kg"}
                                 // Unit choices live on the desk (tap to switch) —
@@ -4782,14 +4855,29 @@ script_mod! {
                                         dunit_m_on := ChipBtnActive{text: "m" visible: false}
                                     }
                                 }
-                                FormFieldRow{
-                                    booking_cod_input := FieldInput{empty_text: "COD amount"}
-                                    booking_carrier_cost_input := FieldInput{empty_text: "Carrier cost"}
-                                }
-                                FormFieldRow{
-                                    booking_fuel_input := FieldInput{empty_text: "Fuel"}
-                                    booking_docket_input := FieldInput{empty_text: "Docket charge"}
-                                }
+                                    FormFieldRow{
+                                        booking_cod_input := FieldInput{empty_text: "COD amount"}
+                                        booking_carrier_cost_input := FieldInput{empty_text: "Carrier cost"}
+                                    }
+                                    booking_compare_label := WrapLabel{
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 12.
+                                    }
+                                    booking_carrier_pick_input := FieldInput{empty_text: "Carrier for cost (from compare)"}
+                                    booking_apply_carrier_cost := RowSecondaryBtn{text: "Use carrier cost"}
+                                    FormFieldRow{
+                                        booking_declared_input := FieldInput{empty_text: "Declared value"}
+                                        booking_contents_input := FieldInput{empty_text: "Contents"}
+                                    }
+                                    FormFieldRow{
+                                        booking_eway_input := FieldInput{empty_text: "E-way bill no."}
+                                        booking_insurance_input := FieldInput{empty_text: "Insurance (yes/no)"}
+                                    }
+                                    FormFieldRow{
+                                        booking_fuel_input := FieldInput{empty_text: "Fuel"}
+                                        booking_docket_input := FieldInput{empty_text: "Docket charge"}
+                                    }
                                 booking_notify_input := FieldInput{empty_text: "Notify phone (WhatsApp/SMS hook)"}
                                 booking_bulk_input := FieldInput{
                                     empty_text: "Bulk CSV — destination,consignee,kg,cod_paise,note"
@@ -5038,6 +5126,10 @@ script_mod! {
                                 FormFieldRow{
                                     menu_extra_kg_input := FieldInput{empty_text: "Extra / kg"}
                                     menu_zone_input := FieldInput{empty_text: "Zone name"}
+                                }
+                                FormFieldRow{
+                                    menu_carrier_input := FieldInput{empty_text: "Carrier (blank = our sell rate)"}
+                                    menu_party_input := FieldInput{empty_text: "Party (blank = all customers)"}
                                 }
                                 ActionStack{
                                     menu_new := StackSecondaryBtn{
@@ -5927,8 +6019,25 @@ script_mod! {
                                         ops_advance_delivered := RowSecondaryBtn{text: "Mark delivered"}
                                     }
                                     ActionStack{
+                                        ops_ndr := RowPrimaryBtn{text: "Failed delivery"}
+                                        ops_reattempt := RowSecondaryBtn{text: "Reattempt"}
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        ops_ndr_door := ChipBtn{text: "Door locked"}
+                                        ops_ndr_refused := ChipBtn{text: "Refused"}
+                                        ops_ndr_address := ChipBtn{text: "Address wrong"}
+                                        ops_ndr_unavailable := ChipBtn{text: "Unavailable"}
+                                        ops_ndr_other := ChipBtn{text: "Other"}
+                                    }
+                                    ActionStack{
                                         ops_dispatch_fleet := RowPrimaryBtn{text: "Dispatch booked → rider"}
                                         ops_handover_carrier := RowSecondaryBtn{text: "Hand booked → carrier"}
+                                    }
+                                    ActionStack{
+                                        ops_print_run_sheet := RowPrimaryBtn{text: "Print run sheet"}
+                                        ops_print_drs := RowSecondaryBtn{text: "Print DRS"}
                                     }
                                     ActionStack{
                                         ops_cod_collect := RowPrimaryBtn{text: "Collect COD (AWB)"}
@@ -5941,6 +6050,12 @@ script_mod! {
                                     FormFieldRow{
                                         ops_rider_phone := FieldInput{empty_text: "Rider phone"}
                                         ops_rider_vehicle := FieldInput{empty_text: "Vehicle"}
+                                    }
+                                    FormFieldRow{
+                                        ops_rider_cod_input := FieldInput{empty_text: "COD handed in"}
+                                    }
+                                    ActionStack{
+                                        ops_settle_rider_cod := RowPrimaryBtn{text: "Settle rider COD"}
                                     }
                                 }
                                 reports_expense_heading := WrapLabel{body: "Log expense" font_color: #x0B1220 font_size: 15.}
@@ -6036,6 +6151,11 @@ script_mod! {
                                     csv_import_parties := RowSecondaryBtn{text: "Import parties CSV…"}
                                 }
                                 csv_import_items := NavBtn{text: "Import items / rates CSV…"}
+                                ActionStack{
+                                    csv_import_pincodes := RowPrimaryBtn{text: "Import pincodes CSV…"}
+                                    csv_import_carrier_bill := RowSecondaryBtn{text: "Import carrier bill CSV…"}
+                                }
+                                csv_copy_carrier_bill := NavBtn{text: "Copy last carrier bill report"}
                             }
                         }
 
@@ -6699,7 +6819,7 @@ impl Widget for ProductList {
         let (products, currency, fiscal, lang) = {
             let st = app_state().lock().unwrap();
             (
-                st.products.clone(),
+                st.booking_catalog_products(),
                 st.locale.currency.clone(),
                 st.fiscal.clone(),
                 st.locale.language.clone(),
@@ -8625,7 +8745,26 @@ impl App {
             .set_text(cx, &plain_display_text(&session_chip));
         // Booking desk: chargeable kg + last AWB / next-booking CTA.
         {
-            let st = app_state().lock().unwrap();
+            // Pull typed dest/zone/weight so pincode + compare stay current.
+            {
+                let mut st = app_state().lock().unwrap();
+                st.booking_destination = self
+                    .ui
+                    .text_input(cx, ids!(booking_destination_input))
+                    .text();
+                st.booking_zone = self.ui.text_input(cx, ids!(booking_zone_input)).text();
+                st.booking_actual_kg =
+                    self.ui.text_input(cx, ids!(booking_actual_kg_input)).text();
+                st.booking_length_cm =
+                    self.ui.text_input(cx, ids!(booking_length_cm_input)).text();
+                st.booking_breadth_cm = self
+                    .ui
+                    .text_input(cx, ids!(booking_breadth_cm_input))
+                    .text();
+                st.booking_height_cm =
+                    self.ui.text_input(cx, ids!(booking_height_cm_input)).text();
+            }
+            let mut st = app_state().lock().unwrap();
             let (actual, vol, chargeable) = st.booking_weights();
             let weight_unit = st.measure_weight_unit.clone();
             let dim_unit = st.measure_dim_unit.clone();
@@ -8652,6 +8791,57 @@ impl App {
                 }
             } else {
                 "Chargeable: set weight or L×B×H".into()
+            };
+            // Pincode → zone / serves; carrier compare when zone + weight known.
+            let dest = st.booking_destination.trim().to_string();
+            let mut zone_for_compare = st.booking_zone.trim().to_string();
+            let mut pin_line = String::new();
+            let mut autofill_zone: Option<String> = None;
+            if let Some(store) = st.store.as_ref()
+                && rates::is_india_pincode(&dest)
+            {
+                match store.lookup_pincode(&dest) {
+                    Ok(hits) if !hits.is_empty() => {
+                        let first = &hits[0];
+                        pin_line = first.serves_label();
+                        if zone_for_compare.is_empty() && !first.zone_name.is_empty() {
+                            zone_for_compare = first.zone_name.clone();
+                            autofill_zone = Some(first.zone_name.clone());
+                        }
+                    }
+                    Ok(_) => pin_line = "Pincode not in service table".into(),
+                    Err(_) => {}
+                }
+            }
+            let currency = st.locale.currency.clone();
+            let consignor = st.selected_customer_id.clone().unwrap_or_default();
+            let mut compare_line = String::new();
+            let mut compare_rows = Vec::new();
+            if chargeable > precise::ZERO
+                && !zone_for_compare.is_empty()
+                && let Some(store) = st.store.as_ref()
+            {
+                let zone_id = store.list_zones().ok().and_then(|zones| {
+                    zones.into_iter().find(|z| {
+                        z.id == zone_for_compare || z.name.eq_ignore_ascii_case(&zone_for_compare)
+                    })
+                });
+                if let Some(z) = zone_id
+                    && let Ok((sell, rows)) =
+                        store.compare_carriers_for_zone(&z.id, chargeable, &consignor)
+                {
+                    compare_line = rates::format_carrier_compare(sell, &rows, &currency);
+                    compare_rows = rows;
+                }
+            }
+            st.last_carrier_compare = compare_rows;
+            let zone_autofill = if let Some(zname) = autofill_zone
+                && st.booking_zone.trim().is_empty()
+            {
+                st.booking_zone = zname.clone();
+                Some(zname)
+            } else {
+                None
             };
             // Booking-desk field hints wear the shop's chosen units.
             self.ui
@@ -8752,6 +8942,18 @@ impl App {
             self.ui
                 .widget(cx, ids!(chargeable_kg_label))
                 .set_text(cx, &plain_display_text(&charge_line));
+            self.ui
+                .widget(cx, ids!(booking_pincode_label))
+                .set_text(cx, &plain_display_text(&pin_line));
+            self.ui
+                .widget(cx, ids!(booking_compare_label))
+                .set_text(cx, &plain_display_text(&compare_line));
+            if let Some(zname) = zone_autofill {
+                let field = self.ui.text_input(cx, ids!(booking_zone_input));
+                if !cx.has_key_focus(field.area()) {
+                    field.set_text(cx, &zname);
+                }
+            }
             self.ui
                 .widget(cx, ids!(last_awb_label))
                 .set_text(cx, &plain_display_text(&awb_line));
@@ -9612,6 +9814,9 @@ impl App {
                 ids!(csv_copy_ledger),
                 ids!(csv_import_parties),
                 ids!(csv_import_items),
+                ids!(csv_import_pincodes),
+                ids!(csv_import_carrier_bill),
+                ids!(csv_copy_carrier_bill),
             ] {
                 self.ui.button(cx, id).set_visible(cx, !ops_facet);
             }
@@ -10599,9 +10804,14 @@ impl App {
         self.align_input(cx, ids!(org_name_input), rtl);
         self.align_input(cx, ids!(credit_add_kind), rtl);
         self.align_input(cx, ids!(booking_carrier_cost_input), rtl);
+        self.align_input(cx, ids!(booking_declared_input), rtl);
+        self.align_input(cx, ids!(booking_contents_input), rtl);
+        self.align_input(cx, ids!(booking_eway_input), rtl);
+        self.align_input(cx, ids!(booking_insurance_input), rtl);
         self.align_input(cx, ids!(booking_docket_input), rtl);
         self.align_input(cx, ids!(booking_fuel_input), rtl);
         self.align_input(cx, ids!(booking_zone_input), rtl);
+        self.align_input(cx, ids!(booking_carrier_pick_input), rtl);
         self.align_input(cx, ids!(branch_switch_input), rtl);
         self.align_input(cx, ids!(business_tax_id_input), rtl);
         self.align_input(cx, ids!(buy_item_input), rtl);
@@ -10630,6 +10840,7 @@ impl App {
         self.align_input(cx, ids!(ops_rider_input), rtl);
         self.align_input(cx, ids!(ops_rider_phone), rtl);
         self.align_input(cx, ids!(ops_rider_vehicle), rtl);
+        self.align_input(cx, ids!(ops_rider_cod_input), rtl);
         self.align_input(cx, ids!(party_attach_note), rtl);
         self.align_input(cx, ids!(reason_input), rtl);
         self.align_input(cx, ids!(sale_attach_note), rtl);
@@ -10649,6 +10860,8 @@ impl App {
         self.align_input(cx, ids!(menu_first_amt_input), rtl);
         self.align_input(cx, ids!(menu_extra_kg_input), rtl);
         self.align_input(cx, ids!(menu_zone_input), rtl);
+        self.align_input(cx, ids!(menu_carrier_input), rtl);
+        self.align_input(cx, ids!(menu_party_input), rtl);
         self.align_input(cx, ids!(buy_qty_input), rtl);
         self.align_input(cx, ids!(buy_cost_input), rtl);
         self.align_input(cx, ids!(buy_expense_amount), rtl);
@@ -11252,6 +11465,18 @@ impl App {
             .button(cx, ids!(csv_import_parties))
             .set_text(cx, &s("import_parties_csv"));
         self.ui
+            .button(cx, ids!(csv_import_pincodes))
+            .set_text(cx, &s("import_pincodes_csv"));
+        self.ui
+            .button(cx, ids!(csv_import_carrier_bill))
+            .set_text(cx, &s("import_carrier_bill_csv"));
+        self.ui
+            .button(cx, ids!(csv_copy_carrier_bill))
+            .set_text(cx, &s("copy_carrier_bill_report"));
+        self.ui
+            .button(cx, ids!(booking_apply_carrier_cost))
+            .set_text(cx, &s("use_carrier_cost"));
+        self.ui
             .button(cx, ids!(customer_use))
             .set_text(cx, &s("add_use_name"));
         self.ui
@@ -11441,6 +11666,27 @@ impl App {
             .button(cx, ids!(ops_advance_ofd))
             .set_text(cx, &s("out_for_delivery"));
         self.ui
+            .button(cx, ids!(ops_ndr))
+            .set_text(cx, &s("failed_delivery"));
+        self.ui
+            .button(cx, ids!(ops_reattempt))
+            .set_text(cx, &s("reattempt"));
+        self.ui
+            .button(cx, ids!(ops_ndr_door))
+            .set_text(cx, &s("ndr_door_locked"));
+        self.ui
+            .button(cx, ids!(ops_ndr_refused))
+            .set_text(cx, &s("ndr_refused"));
+        self.ui
+            .button(cx, ids!(ops_ndr_address))
+            .set_text(cx, &s("ndr_address_wrong"));
+        self.ui
+            .button(cx, ids!(ops_ndr_unavailable))
+            .set_text(cx, &s("ndr_customer_unavailable"));
+        self.ui
+            .button(cx, ids!(ops_ndr_other))
+            .set_text(cx, &s("ndr_other"));
+        self.ui
             .text_input(cx, ids!(ops_carrier_input))
             .set_empty_text(cx, s("carrier_party_ph"));
         self.ui
@@ -11462,11 +11708,23 @@ impl App {
             .button(cx, ids!(ops_label))
             .set_text(cx, &s("print_awb_label"));
         self.ui
+            .button(cx, ids!(ops_print_run_sheet))
+            .set_text(cx, &s("print_run_sheet"));
+        self.ui
+            .button(cx, ids!(ops_print_drs))
+            .set_text(cx, &s("print_drs"));
+        self.ui
             .text_input(cx, ids!(ops_note_input))
             .set_empty_text(cx, s("note_pod_ph"));
         self.ui
             .text_input(cx, ids!(ops_party_input))
             .set_empty_text(cx, s("consignor_party_ph"));
+        self.ui
+            .text_input(cx, ids!(ops_rider_cod_input))
+            .set_empty_text(cx, s("rider_cod_handed_ph"));
+        self.ui
+            .button(cx, ids!(ops_settle_rider_cod))
+            .set_text(cx, &s("settle_rider_cod"));
         self.ui
             .button(cx, ids!(ops_period_bill))
             .set_text(cx, &s("period_bill_party"));
@@ -11638,6 +11896,18 @@ impl App {
             .text_input(cx, ids!(booking_cod_input))
             .set_empty_text(cx, s("cod_amount_ph"));
         self.ui
+            .text_input(cx, ids!(booking_declared_input))
+            .set_empty_text(cx, s("declared_value_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_contents_input))
+            .set_empty_text(cx, s("contents_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_eway_input))
+            .set_empty_text(cx, s("eway_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_insurance_input))
+            .set_empty_text(cx, s("insurance_label"));
+        self.ui
             .text_input(cx, ids!(booking_notify_input))
             .set_empty_text(cx, s("notify_phone_ph"));
         self.ui
@@ -11667,6 +11937,15 @@ impl App {
         self.ui
             .text_input(cx, ids!(menu_zone_input))
             .set_empty_text(cx, s("zone_name_ph"));
+        self.ui
+            .text_input(cx, ids!(menu_carrier_input))
+            .set_empty_text(cx, s("rate_carrier_ph"));
+        self.ui
+            .text_input(cx, ids!(menu_party_input))
+            .set_empty_text(cx, s("rate_party_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_carrier_pick_input))
+            .set_empty_text(cx, s("carrier_pick_ph"));
         self.ui
             .text_input(cx, ids!(menu_tax_input))
             .set_empty_text(cx, s("tax_rate_ph"));
@@ -14583,6 +14862,19 @@ impl App {
             .ui
             .text_input(cx, ids!(booking_carrier_cost_input))
             .text();
+        st.booking_declared = self
+            .ui
+            .text_input(cx, ids!(booking_declared_input))
+            .text();
+        st.booking_contents = self
+            .ui
+            .text_input(cx, ids!(booking_contents_input))
+            .text();
+        st.booking_eway = self.ui.text_input(cx, ids!(booking_eway_input)).text();
+        st.booking_insurance = self
+            .ui
+            .text_input(cx, ids!(booking_insurance_input))
+            .text();
         st.booking_fuel = self.ui.text_input(cx, ids!(booking_fuel_input)).text();
         st.booking_docket = self.ui.text_input(cx, ids!(booking_docket_input)).text();
         st.booking_notify_phone = self.ui.text_input(cx, ids!(booking_notify_input)).text();
@@ -14649,6 +14941,10 @@ impl App {
             ids!(booking_height_cm_input),
             ids!(booking_cod_input),
             ids!(booking_carrier_cost_input),
+            ids!(booking_declared_input),
+            ids!(booking_contents_input),
+            ids!(booking_eway_input),
+            ids!(booking_insurance_input),
             ids!(booking_fuel_input),
             ids!(booking_docket_input),
             ids!(booking_notify_input),
@@ -14663,7 +14959,8 @@ impl App {
             let mut st = app_state().lock().unwrap();
             if st.session.as_ref().map(|s| s.can_access_sell()) != Some(true) {
                 Some("Not allowed to book".into())
-            } else if let Some(product) = st.products.get(index).cloned() {
+            } else if let Some(raw) = st.booking_catalog_products().get(index).cloned() {
+                let product = st.resolve_booking_product(&raw);
                 match st.cart.add_or_bump_in_stock(&product) {
                     Err(e) => Some(e),
                     Ok(()) => {
@@ -15266,6 +15563,8 @@ impl App {
             ids!(menu_first_amt_input),
             ids!(menu_extra_kg_input),
             ids!(menu_zone_input),
+            ids!(menu_carrier_input),
+            ids!(menu_party_input),
         ] {
             self.ui.text_input(cx, path).set_text(cx, "");
         }
@@ -15358,18 +15657,34 @@ impl App {
         } else {
             String::new()
         };
-        let zone_name = {
+        let (zone_name, carrier_name, party_name) = {
             let st = app_state().lock().unwrap();
-            st.store
+            let zones = st
+                .store
                 .as_ref()
                 .and_then(|s| s.list_zones().ok())
-                .and_then(|zones| {
-                    zones
-                        .into_iter()
-                        .find(|z| z.id == product.zone_id)
-                        .map(|z| z.name)
-                })
-                .unwrap_or_default()
+                .unwrap_or_default();
+            let parties = st
+                .store
+                .as_ref()
+                .and_then(|s| s.list_customers().ok())
+                .unwrap_or_default();
+            let zone_name = zones
+                .into_iter()
+                .find(|z| z.id == product.zone_id)
+                .map(|z| z.name)
+                .unwrap_or_default();
+            let carrier_name = parties
+                .iter()
+                .find(|p| p.id == product.carrier_party_id)
+                .map(|p| p.name.clone())
+                .unwrap_or_default();
+            let party_name = parties
+                .iter()
+                .find(|p| p.id == product.party_id)
+                .map(|p| p.name.clone())
+                .unwrap_or_default();
+            (zone_name, carrier_name, party_name)
         };
         self.ui
             .text_input(cx, ids!(menu_first_kg_input))
@@ -15383,6 +15698,12 @@ impl App {
         self.ui
             .text_input(cx, ids!(menu_zone_input))
             .set_text(cx, &zone_name);
+        self.ui
+            .text_input(cx, ids!(menu_carrier_input))
+            .set_text(cx, &carrier_name);
+        self.ui
+            .text_input(cx, ids!(menu_party_input))
+            .set_text(cx, &party_name);
         {
             let mut st = app_state().lock().unwrap();
             st.editing_product_id = Some(product.id.clone());
@@ -15406,6 +15727,8 @@ impl App {
         let first_amt_text = self.ui.text_input(cx, ids!(menu_first_amt_input)).text();
         let extra_kg_text = self.ui.text_input(cx, ids!(menu_extra_kg_input)).text();
         let zone_text = self.ui.text_input(cx, ids!(menu_zone_input)).text();
+        let carrier_text = self.ui.text_input(cx, ids!(menu_carrier_input)).text();
+        let party_text = self.ui.text_input(cx, ids!(menu_party_input)).text();
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
@@ -15501,6 +15824,22 @@ impl App {
             } else {
                 product.zone_id.clear();
             }
+            let parties = store.list_customers()?;
+            let resolve_party = |typed: &str| -> Result<String, String> {
+                let typed = typed.trim();
+                if typed.is_empty() {
+                    return Ok(String::new());
+                }
+                if let Some(p) = parties
+                    .iter()
+                    .find(|p| p.name.eq_ignore_ascii_case(typed) || p.id == typed)
+                {
+                    return Ok(p.id.clone());
+                }
+                Err(format!("No party named “{typed}” — add them on Parties first"))
+            };
+            product.carrier_party_id = resolve_party(&carrier_text)?;
+            product.party_id = resolve_party(&party_text)?;
             store.upsert_product(&product)?;
             let verb = if updating { "menu.update" } else { "menu.add" };
             // A price change says from what to what: who changed a price is
@@ -16170,10 +16509,21 @@ impl MatchEvent for App {
                         }
                     }
                     FileDialogAction::FileSelected { id, paths }
-                        if *id == live_id!(csv_parties_pick) || *id == live_id!(csv_items_pick) =>
+                        if *id == live_id!(csv_parties_pick)
+                            || *id == live_id!(csv_items_pick)
+                            || *id == live_id!(csv_pincodes_pick)
+                            || *id == live_id!(csv_carrier_bill_pick) =>
                     {
                         if let Some(path) = paths.first() {
-                            let parties = *id == live_id!(csv_parties_pick);
+                            let kind = if *id == live_id!(csv_parties_pick) {
+                                "parties"
+                            } else if *id == live_id!(csv_items_pick) {
+                                "items"
+                            } else if *id == live_id!(csv_pincodes_pick) {
+                                "pincodes"
+                            } else {
+                                "carrier_bill"
+                            };
                             let outcome = (|| -> Result<String, String> {
                                 let text = std::fs::read_to_string(path)
                                     .map_err(|e| format!("Could not read the file: {e}"))?;
@@ -16181,19 +16531,41 @@ impl MatchEvent for App {
                                 st.require_server_role("Import from CSV")?;
                                 let store =
                                     st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                                let (added, skipped, problems) = if parties {
-                                    store.import_parties_csv(&text)?
-                                } else {
-                                    store.import_items_csv(&text)?
-                                };
-                                st.reload_all()?;
-                                let mut msg = format!(
-                                    "Imported {added} new, skipped {skipped} (already there or unusable)"
-                                );
-                                if let Some(p) = problems.first() {
-                                    msg.push_str(&format!(" · first problem: {p}"));
+                                match kind {
+                                    "carrier_bill" => {
+                                        let report = store.reconcile_carrier_bill_csv(&text)?;
+                                        let diffs = report
+                                            .lines()
+                                            .skip(1)
+                                            .filter(|l| {
+                                                l.contains("charge_diff")
+                                                    || l.contains("weight_diff")
+                                                    || l.contains("missing")
+                                            })
+                                            .count();
+                                        let (applied, skipped) =
+                                            store.apply_carrier_bill_costs(&text)?;
+                                        st.last_carrier_bill_report = report;
+                                        Ok(format!(
+                                            "Carrier bill: {diffs} flagged · applied cost on {applied} · skipped {skipped}. Copy report from Reports."
+                                        ))
+                                    }
+                                    other => {
+                                        let (added, skipped, problems) = match other {
+                                            "parties" => store.import_parties_csv(&text)?,
+                                            "pincodes" => store.import_pincodes_csv(&text)?,
+                                            _ => store.import_items_csv(&text)?,
+                                        };
+                                        st.reload_all()?;
+                                        let mut msg = format!(
+                                            "Imported {added} new, skipped {skipped} (already there or unusable)"
+                                        );
+                                        if let Some(p) = problems.first() {
+                                            msg.push_str(&format!(" · first problem: {p}"));
+                                        }
+                                        Ok(msg)
+                                    }
                                 }
-                                Ok(msg)
                             })();
                             match outcome {
                                 Ok(msg) => self.set_status(cx, msg),
@@ -16208,6 +16580,8 @@ impl MatchEvent for App {
                             || *id == live_id!(onboard_icon_pick)
                             || *id == live_id!(csv_parties_pick)
                             || *id == live_id!(csv_items_pick)
+                            || *id == live_id!(csv_pincodes_pick)
+                            || *id == live_id!(csv_carrier_bill_pick)
                             || *id == live_id!(entry_attach_pick) =>
                     {
                         app_state().lock().unwrap().attach_pick = None;
@@ -19182,6 +19556,26 @@ impl MatchEvent for App {
             if self.ui.button(cx, ids!(ops_pod_pick)).clicked(actions) {
                 self.attach_pick_ops_pod(cx);
             }
+            // NDR reason chips fill the note field for Failed delivery.
+            let ndr_chip = if self.ui.button(cx, ids!(ops_ndr_door)).clicked(actions) {
+                Some("door_locked")
+            } else if self.ui.button(cx, ids!(ops_ndr_refused)).clicked(actions) {
+                Some("refused")
+            } else if self.ui.button(cx, ids!(ops_ndr_address)).clicked(actions) {
+                Some("address_wrong")
+            } else if self.ui.button(cx, ids!(ops_ndr_unavailable)).clicked(actions) {
+                Some("customer_unavailable")
+            } else if self.ui.button(cx, ids!(ops_ndr_other)).clicked(actions) {
+                Some("other")
+            } else {
+                None
+            };
+            if let Some(reason) = ndr_chip {
+                self.ui
+                    .text_input(cx, ids!(ops_note_input))
+                    .set_text(cx, reason);
+                self.set_status(cx, format!("NDR reason: {reason}"));
+            }
             if self.ui.button(cx, ids!(ops_advance_ofd)).clicked(actions) {
                 ops_msg = Some((|| {
                     let mut st = app_state().lock().unwrap();
@@ -19227,6 +19621,65 @@ impl MatchEvent for App {
                     let st = app_state().lock().unwrap();
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     courier_ops_view::print_label(store, &awb)
+                })());
+            } else if self.ui.button(cx, ids!(ops_ndr)).clicked(actions) {
+                ops_msg = Some((|| {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Failed delivery")?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                    let (reason, next) = {
+                        let raw = note.trim();
+                        if let Some((r, d)) = raw.split_once('|') {
+                            (r.trim().to_string(), d.trim().to_string())
+                        } else {
+                            (raw.to_string(), String::new())
+                        }
+                    };
+                    let reason = if reason.is_empty() {
+                        "other".into()
+                    } else {
+                        reason
+                    };
+                    let msg = courier_ops_view::record_failed_delivery(
+                        store, &awb, &reason, &next, &actor,
+                    )?;
+                    st.refresh_reports_facet()?;
+                    Ok(msg)
+                })());
+            } else if self.ui.button(cx, ids!(ops_reattempt)).clicked(actions) {
+                ops_msg = Some((|| {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Reattempt")?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                    let msg = courier_ops_view::reattempt_awb(store, &awb, &actor)?;
+                    st.refresh_reports_facet()?;
+                    Ok(msg)
+                })());
+            } else if self.ui.button(cx, ids!(ops_print_run_sheet)).clicked(actions)
+                || self.ui.button(cx, ids!(ops_print_drs)).clicked(actions)
+            {
+                ops_msg = Some((|| {
+                    let st = app_state().lock().unwrap();
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    courier_ops_view::print_latest_run_sheet(store)
+                })());
+            } else if self
+                .ui
+                .button(cx, ids!(ops_settle_rider_cod))
+                .clicked(actions)
+            {
+                let handed = self.ui.text_input(cx, ids!(ops_rider_cod_input)).text();
+                ops_msg = Some((|| {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Settle rider COD")?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                    let msg =
+                        courier_ops_view::settle_rider_cod_line(store, &rider, &handed, &actor)?;
+                    st.refresh_reports_facet()?;
+                    Ok(msg)
                 })());
             } else if self
                 .ui
@@ -19564,6 +20017,89 @@ impl MatchEvent for App {
                 .set_id(live_id!(csv_items_pick));
             cx.open_select_file_dialog(dialog);
             self.set_status(cx, "Opening CSV picker…");
+        }
+        if self
+            .ui
+            .button(cx, ids!(csv_import_pincodes))
+            .clicked(actions)
+        {
+            let dialog = FileDialog::new()
+                .set_title("Choose pincodes CSV".into())
+                .add_filter("CSV".into(), vec!["csv".into(), "txt".into()])
+                .set_id(live_id!(csv_pincodes_pick));
+            cx.open_select_file_dialog(dialog);
+            self.set_status(cx, "Opening CSV picker…");
+        }
+        if self
+            .ui
+            .button(cx, ids!(csv_import_carrier_bill))
+            .clicked(actions)
+        {
+            let dialog = FileDialog::new()
+                .set_title("Choose carrier bill CSV".into())
+                .add_filter("CSV".into(), vec!["csv".into(), "txt".into()])
+                .set_id(live_id!(csv_carrier_bill_pick));
+            cx.open_select_file_dialog(dialog);
+            self.set_status(cx, "Opening CSV picker…");
+        }
+        if self
+            .ui
+            .button(cx, ids!(csv_copy_carrier_bill))
+            .clicked(actions)
+        {
+            let text = {
+                let st = app_state().lock().unwrap();
+                st.last_carrier_bill_report.clone()
+            };
+            if text.trim().is_empty() {
+                self.set_status(cx, "Import a carrier bill CSV first");
+            } else {
+                self.copy_text_to_clipboard(cx, &text);
+                self.set_status(cx, "Carrier bill report copied");
+            }
+        }
+        if self
+            .ui
+            .button(cx, ids!(booking_apply_carrier_cost))
+            .clicked(actions)
+        {
+            let typed = self
+                .ui
+                .text_input(cx, ids!(booking_carrier_pick_input))
+                .text();
+            let outcome = {
+                let st = app_state().lock().unwrap();
+                let currency = st.locale.currency.clone();
+                st.last_carrier_compare
+                    .iter()
+                    .find(|r| {
+                        r.carrier_name.eq_ignore_ascii_case(typed.trim())
+                            || r.carrier_party_id == typed.trim()
+                    })
+                    .map(|r| {
+                        (
+                            r.carrier_name.clone(),
+                            locale::format_major_input(r.cost_paise, &currency),
+                        )
+                    })
+            };
+            match outcome {
+                Some((name, amount)) => {
+                    self.ui
+                        .text_input(cx, ids!(booking_carrier_cost_input))
+                        .set_text(cx, &amount);
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        st.booking_carrier_cost = amount;
+                    }
+                    self.set_status(cx, format!("Carrier cost set from {name}"));
+                }
+                None => self.set_status(
+                    cx,
+                    "Type a carrier name from the compare line (e.g. Delhivery)",
+                ),
+            }
+            self.sync_chrome(cx);
         }
 
         let inv_minus = self.ui.button(cx, ids!(inv_adjust_minus)).clicked(actions);

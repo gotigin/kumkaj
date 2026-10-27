@@ -113,21 +113,27 @@ owns several restaurants runs **one Khaynjo restaurant per branch**
 
 | Idea | Seen in | Khaynjo view |
 |---|---|---|
-| Course firing (starters now, mains on "fire") | Toast, TouchBistro | Later — KOT per course on the same running order |
-| Split check by item / by seat / evenly | Toast, Square, TouchBistro | Later — needs seat numbers on lines |
-| Visual floor map + table timers | Toast, TouchBistro | Areas + timers now; drawn map later |
+| Course firing (starters now, mains on "fire") | Toast, TouchBistro | **Have** (2026-10-27) — hold/fire per course; held never prints |
+| Split check by item / by seat / evenly | Toast, Square, TouchBistro | **Have** (2026-10-27) — seat numbers + split evenly / by seat |
+| Visual floor map + table timers | Toast, TouchBistro | **Have** (2026-10-27) — Grid ↔ Layout; timers already on tiles |
 | Offline mode that is the *normal* mode | TouchBistro (local iPad), GoFrugal | Khaynjo is local-first by design |
 | "86" list (sold out now) that every device sees | Toast | Already: item on/off (sold out) syncs |
-| Kitchen all-day counts | Toast KDS, Petpooja KDS | Later on the Kitchen screen |
-| Happy-hour / time-based price | Petpooja, Toast | Later with menu timings |
-| Tip pooling / tip report | Toast, Square | Tip recorded per bill now; pooling later |
+| Kitchen all-day counts | Toast KDS, Petpooja KDS | **Have** — "To cook now" on Kitchen |
+| Happy-hour / time-based price | Petpooja, Toast | **Have** (2026-10-27) — `schedule_json` / `price_now` |
+| Tip pooling / tip report | Toast, Square | **Have** (2026-10-27) — tip per bill + pooling report |
 
 ## 7. Decision summary
 
-- **Build now:** §5 items 1–12, designed for Khaynjo's users, in its own
-  code (no shared crate).
-- **Later, when pulled:** variations matrix, combos/BOGO, area-wise
-  prices, menu timings, inventory recipes, reservations, KDS all-day,
-  course firing, split by seat, loyalty wallet.
-- **Never (cloud):** aggregator sync, campaigns, sync codes, remote
-  dashboard — unless an owner opts into Kumkaj Cloud later (vision §21).
+- **Build now (§5 1–12):** **Done** — designed for Khaynjo's users, in its
+  own code (no shared crate). See [`KHAYNJO.md`](KHAYNJO.md) §4d.
+- **Local/LAN catch-up from market + [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md):**
+  **Done 2026-10-27** (combos/BOGO, timings, UPI QR, KDS age/recall,
+  coursing, split by seat, loyalty/wallet, PO/expiry/variance, waitlist,
+  token/expo/kiosk, pay-at-table, time clock, drawn floor, WhatsApp/SMS
+  share, allergens/vouchers/bulk price, …). Full matrix there §6–§8.
+- **Still later / Cloud:** priced variation matrix polish; live aggregator
+  SaaS; public mobile-data ordering; live multi-outlet dashboard —
+  unless an owner opts into Kumkaj Cloud (vision §21). Optional Net
+  stubs must never gate the counter.
+- **Never as a gate:** sync codes, remote-only dashboard, campaigns that
+  require hosted messaging.

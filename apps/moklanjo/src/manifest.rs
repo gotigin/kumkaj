@@ -95,6 +95,154 @@ pub struct ManifestLine {
     pub consignee_name: String,
 }
 
+/// Manifest row joined with live sale fields for run-sheet / DRS print.
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize)]
+pub struct ManifestLineDetail {
+    pub line: ManifestLine,
+    pub weight_kg: rust_decimal::Decimal,
+    pub cod_paise: i64,
+}
+
+/// Fixed NDR (failed delivery) reason codes — desk chips / suggest list.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum NdrReason {
+    DoorLocked,
+    Refused,
+    AddressWrong,
+    CustomerUnavailable,
+    Other,
+}
+
+impl NdrReason {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::DoorLocked => "door_locked",
+            Self::Refused => "refused",
+            Self::AddressWrong => "address_wrong",
+            Self::CustomerUnavailable => "customer_unavailable",
+            Self::Other => "other",
+        }
+    }
+
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::DoorLocked => "Door locked",
+            Self::Refused => "Refused",
+            Self::AddressWrong => "Address wrong",
+            Self::CustomerUnavailable => "Customer unavailable",
+            Self::Other => "Other",
+        }
+    }
+
+    /// Locale key for the reason chip / label.
+    pub fn locale_key(self) -> &'static str {
+        match self {
+            Self::DoorLocked => "ndr_door_locked",
+            Self::Refused => "ndr_refused",
+            Self::AddressWrong => "ndr_address_wrong",
+            Self::CustomerUnavailable => "ndr_customer_unavailable",
+            Self::Other => "ndr_other",
+        }
+    }
+
+    pub fn all() -> &'static [NdrReason] {
+        &[
+            Self::DoorLocked,
+            Self::Refused,
+            Self::AddressWrong,
+            Self::CustomerUnavailable,
+            Self::Other,
+        ]
+    }
+
+    pub fn parse(raw: &str) -> Self {
+        match raw.trim().to_lowercase().as_str() {
+            "door_locked" | "door locked" => Self::DoorLocked,
+            "refused" => Self::Refused,
+            "address_wrong" | "address wrong" | "wrong_address" => Self::AddressWrong,
+            "customer_unavailable" | "customer unavailable" | "unavailable" => {
+                Self::CustomerUnavailable
+            }
+            _ => Self::Other,
+        }
+    }
+}
+
+/// Default max failed-delivery attempts before auto-RTO (overridable via shop meta).
+pub const NDR_MAX_ATTEMPTS_DEFAULT: i64 = 3;
+
+/// Plain-text carrier bag / rider DRS run sheet (receipt printer).
+pub fn format_manifest_text(
+    shop_name: &str,
+    manifest: &Manifest,
+    lines: &[ManifestLineDetail],
+    money_fmt: &dyn Fn(i64) -> String,
+) -> String {
+    let shop = if shop_name.trim().is_empty() {
+        "Your shop"
+    } else {
+        shop_name.trim()
+    };
+    let title = if manifest.kind == "own_fleet" {
+        format!(
+            "Rider run / DRS — {}",
+            if manifest.rider_name.trim().is_empty() {
+                "(rider)"
+            } else {
+                manifest.rider_name.trim()
+            }
+        )
+    } else {
+        format!(
+            "Carrier bag — {}",
+            if manifest.carrier_name.trim().is_empty() {
+                "(carrier)"
+            } else {
+                manifest.carrier_name.trim()
+            }
+        )
+    };
+    let date = &manifest.created_at[..manifest.created_at.len().min(16)];
+    let mut out = String::new();
+    out.push_str(shop);
+    out.push('\n');
+    out.push_str(&title);
+    out.push('\n');
+    out.push_str(date);
+    out.push('\n');
+    if !manifest.note.trim().is_empty() {
+        out.push_str("Note: ");
+        out.push_str(manifest.note.trim());
+        out.push('\n');
+    }
+    out.push_str("--------------------------------\n");
+    let mut cod_total = 0i64;
+    for (i, row) in lines.iter().enumerate() {
+        cod_total = cod_total.saturating_add(row.cod_paise.max(0));
+        let wt = crate::precise::format_kg(row.weight_kg);
+        let cod = if row.cod_paise > 0 {
+            format!(" · COD {}", money_fmt(row.cod_paise))
+        } else {
+            String::new()
+        };
+        out.push_str(&format!(
+            "{}. {} · {} · {} · {} kg{}\n",
+            i + 1,
+            row.line.awb_no,
+            row.line.destination,
+            row.line.consignee_name,
+            wt,
+            cod
+        ));
+    }
+    out.push_str("--------------------------------\n");
+    out.push_str(&format!("Pieces: {}\n", lines.len()));
+    out.push_str(&format!("COD total: {}\n", money_fmt(cod_total)));
+    out.push('\n');
+    out.push_str("Received by ________  Sign ________  Time ________\n");
+    out
+}
+
 /// AWB tracking statuses — works for carrier portal *and* own riders.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum TrackingStatus {
@@ -104,6 +252,8 @@ pub enum TrackingStatus {
     InTransit,
     OutForDelivery,
     Delivered,
+    /// Non-delivery report — failed attempt; may reattempt or RTO.
+    Ndr,
     Rto,
     Cancelled,
 }
@@ -117,6 +267,7 @@ impl TrackingStatus {
             Self::InTransit => "in_transit",
             Self::OutForDelivery => "out_for_delivery",
             Self::Delivered => "delivered",
+            Self::Ndr => "ndr",
             Self::Rto => "rto",
             Self::Cancelled => "cancelled",
         }
@@ -130,6 +281,7 @@ impl TrackingStatus {
             Self::InTransit => "In transit",
             Self::OutForDelivery => "Out for delivery",
             Self::Delivered => "Delivered",
+            Self::Ndr => "NDR",
             Self::Rto => "RTO",
             Self::Cancelled => "Cancelled",
         }
@@ -143,6 +295,7 @@ impl TrackingStatus {
             Self::InTransit,
             Self::OutForDelivery,
             Self::Delivered,
+            Self::Ndr,
             Self::Rto,
             Self::Cancelled,
         ]
@@ -155,6 +308,7 @@ impl TrackingStatus {
             "in_transit" => Self::InTransit,
             "out_for_delivery" => Self::OutForDelivery,
             "delivered" => Self::Delivered,
+            "ndr" | "failed" | "failed_delivery" => Self::Ndr,
             "rto" => Self::Rto,
             "cancelled" => Self::Cancelled,
             _ => Self::Booked,
@@ -176,4 +330,9 @@ pub struct TrackingEvent {
     /// Optional local path / stub for POD photo.
     pub pod_ref: String,
     pub actor_name: String,
+    /// Optional GPS from rider phone OS (0 = unset). No map tiles required.
+    #[serde(default)]
+    pub lat: f64,
+    #[serde(default)]
+    pub lon: f64,
 }

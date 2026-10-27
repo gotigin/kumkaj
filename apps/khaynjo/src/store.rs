@@ -8,7 +8,7 @@ use crate::domain::{
     DayTotals, DiningTable, EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket,
     Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrderType,
     OrgConsolidatedReport,
-    PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
+    Cart, PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
     Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
     StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef, VenueMode, STOCK_UNTRACKED,
 };
@@ -33,8 +33,14 @@ mod running;
 mod service;
 #[path = "store_recipes.rs"]
 mod recipes;
+#[path = "store_ops.rs"]
+mod ops;
 pub use recipes::{milli_as_typed, recipe_as_typed, LowStock, RecipeLine, DEFAULT_REORDER_AT};
 pub use service::{Reservation, ShiftClose};
+pub use ops::{
+    whatsapp_bill_url, GiftVoucher, PurchaseOrder, PurchaseOrderLine, StockTransferFile,
+    WaiterCall, WaitlistEntry,
+};
 use running::natural_key;
 
 /// Everything needed to create one staff member. Kept together so the hire
@@ -368,7 +374,8 @@ impl Store {
                     id TEXT PRIMARY KEY,
                     code TEXT NOT NULL UNIQUE,
                     name TEXT NOT NULL,
-                    builtin INTEGER NOT NULL DEFAULT 0
+                    builtin INTEGER NOT NULL DEFAULT 0,
+                    picker_enabled INTEGER NOT NULL DEFAULT 1
                 );
                 CREATE TABLE IF NOT EXISTS unit_conversions (
                     id TEXT PRIMARY KEY,
@@ -491,9 +498,39 @@ impl Store {
             // Bill discount taken off the lines, and why (reports, audit).
             "ALTER TABLE sales ADD COLUMN discount_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE sales ADD COLUMN discount_reason TEXT NOT NULL DEFAULT ''",
+            // Shop-narrowed unit pick-lists (disabled units still convert).
+            "ALTER TABLE units ADD COLUMN picker_enabled INTEGER NOT NULL DEFAULT 1",
+            // Menu timings / happy-hour (Mon=1…Sun=7 windows).
+            "ALTER TABLE products ADD COLUMN schedule_json TEXT NOT NULL DEFAULT '[]'",
+            // KDS target prep minutes (ageing colours).
+            "ALTER TABLE kitchen_stations ADD COLUMN target_prep_mins INTEGER NOT NULL DEFAULT 15",
         ] {
             let _ = self.conn.execute(stmt, []);
         }
+        // One-shot: open KOTs left on free tables (paid without kitchen Done)
+        // stuck the next seating on "In kitchen". Close them.
+        let _ = self.conn.execute(
+            "UPDATE kot_tickets SET status = 'completed'
+              WHERE status NOT IN ('completed', 'cancelled')
+                AND table_id != ''
+                AND table_id IN (
+                    SELECT id FROM tables_dining WHERE status = 'available'
+                )",
+            [],
+        );
+        // Combos / BOGO / percent schemes (Local).
+        let _ = self.conn.execute_batch(
+            r#"
+            CREATE TABLE IF NOT EXISTS schemes (
+                id TEXT PRIMARY KEY,
+                name TEXT NOT NULL,
+                kind TEXT NOT NULL,
+                trigger_json TEXT NOT NULL DEFAULT '{}',
+                reward_json TEXT NOT NULL DEFAULT '{}',
+                active INTEGER NOT NULL DEFAULT 1
+            );
+            "#,
+        );
 
         self.conn
             .execute_batch(
@@ -547,7 +584,10 @@ impl Store {
                     approved_by TEXT NOT NULL DEFAULT '',
                     created_at TEXT NOT NULL,
                     created_by TEXT NOT NULL DEFAULT '',
-                    seq INTEGER NOT NULL DEFAULT 0
+                    seq INTEGER NOT NULL DEFAULT 0,
+                    seat_no INTEGER NOT NULL DEFAULT 0,
+                    held INTEGER NOT NULL DEFAULT 0,
+                    course_no INTEGER NOT NULL DEFAULT 0
                 );
                 CREATE INDEX IF NOT EXISTS idx_running_lines_order
                     ON running_lines(order_id);
@@ -605,6 +645,8 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         self.conn.execute_batch(recipes::SCHEMA).map_err(|e| e.to_string())?;
+        // Local/LAN ops tables + column adds on existing books (after CREATE).
+        self.migrate_ops()?;
         // Lookups every sync and every screen makes. Without them a year of
         // bills made each device's sync scan every bill line and ledger row
         // (seconds per sync); `a_busy_years_books_still_sync_quickly` guards
@@ -1668,7 +1710,7 @@ impl Store {
         };
         let balance_paise = self.customer_balance(&id)?;
         Ok(Some(Customer {
-            id,
+            id: id.clone(),
             name,
             phone,
             note,
@@ -1676,6 +1718,8 @@ impl Store {
             balance_paise,
             kind_label,
             credit_limit_paise,
+            loyalty_points: self.loyalty_points(&id).unwrap_or(0),
+            wallet_paise: self.wallet_paise(&id).unwrap_or(0),
         }))
     }
 
@@ -1854,6 +1898,11 @@ impl Store {
             area: String::new(),
             paid_at: String::new(),
             floor_state: crate::domain::FloorState::Free,
+            waiter_staff_id: String::new(),
+            layout_x: 0.0,
+            layout_y: 0.0,
+            layout_w: 0.0,
+            layout_h: 0.0,
         })
     }
 
@@ -2202,7 +2251,7 @@ impl Store {
     }
 
     /// Legacy meta key cleanup (unsent lines are pending `running_lines` now).
-    /// Does not mark Occupied — occupancy comes only from a live running order.
+    /// Does not mark Occupied — seating without an order uses [`Self::seat_table`].
     pub fn save_table_draft(&self, table_id: &str, draft_json: &str) -> Result<(), String> {
         self.meta_set(&format!("table_draft_{table_id}"), draft_json)
     }
@@ -4029,7 +4078,8 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT id, name, COALESCE(code, ''), bps, active
+                "SELECT id, name, COALESCE(code, ''), bps, active,
+                        COALESCE(picker_enabled, 1)
                  FROM tax_rates
                  WHERE (branch_id = ?1 OR branch_id = '') AND active = 1
                  ORDER BY bps, name",
@@ -4043,6 +4093,7 @@ impl Store {
                     code: row.get(2)?,
                     bps: row.get(3)?,
                     active: row.get::<_, i64>(4)? != 0,
+                    picker_enabled: row.get::<_, i64>(5).unwrap_or(1) != 0,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -4075,6 +4126,7 @@ impl Store {
             code,
             bps,
             active: true,
+            picker_enabled: true,
         };
         self.conn
             .execute(
@@ -4681,7 +4733,10 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT id, COALESCE(branch_id, ''), name, sort_order FROM kitchen_stations
+                "SELECT id, COALESCE(branch_id, ''), name, sort_order,
+                        COALESCE(target_prep_mins, 15),
+                        COALESCE(picker_enabled, 1)
+                 FROM kitchen_stations
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY sort_order, name",
             )
@@ -4693,6 +4748,8 @@ impl Store {
                     branch_id: row.get(1)?,
                     name: row.get(2)?,
                     sort_order: row.get(3)?,
+                    target_prep_mins: row.get(4)?,
+                    picker_enabled: row.get::<_, i64>(5).unwrap_or(1) != 0,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -4720,12 +4777,20 @@ impl Store {
             branch_id,
             name: name.to_string(),
             sort_order: next,
+            target_prep_mins: 15,
+            picker_enabled: true,
         };
         self.conn
             .execute(
-                "INSERT INTO kitchen_stations(id, branch_id, name, sort_order)
-                 VALUES(?1, ?2, ?3, ?4)",
-                params![station.id, station.branch_id, station.name, station.sort_order],
+                "INSERT INTO kitchen_stations(id, branch_id, name, sort_order, target_prep_mins)
+                 VALUES(?1, ?2, ?3, ?4, ?5)",
+                params![
+                    station.id,
+                    station.branch_id,
+                    station.name,
+                    station.sort_order,
+                    station.target_prep_mins
+                ],
             )
             .map_err(|e| e.to_string())?;
         Ok(station)
@@ -5405,9 +5470,10 @@ impl Store {
                 "INSERT INTO products(
                     id, name, price_paise, available, archived, image_key,
                     category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
-                    tax_rate_id, aliases_json, unit_label, group_name, area_prices_json, kind
+                    tax_rate_id, aliases_json, unit_label, group_name, area_prices_json, kind,
+                    schedule_json, allergens
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -5425,7 +5491,9 @@ impl Store {
                    unit_label=excluded.unit_label,
                    group_name=excluded.group_name,
                    area_prices_json=excluded.area_prices_json,
-                   kind=excluded.kind",
+                   kind=excluded.kind,
+                   schedule_json=excluded.schedule_json,
+                   allergens=excluded.allergens",
                 params![
                     product.id,
                     product.name,
@@ -5448,7 +5516,9 @@ impl Store {
                     product.unit_label,
                     product.group_name.trim(),
                     if product.area_prices_json.trim().is_empty() { "[]" } else { product.area_prices_json.as_str() },
-                    if product.kind.trim().is_empty() { crate::domain::ITEM_KIND_DISH } else { product.kind.as_str() }
+                    if product.kind.trim().is_empty() { crate::domain::ITEM_KIND_DISH } else { product.kind.as_str() },
+                    if product.schedule_json.trim().is_empty() { "[]" } else { product.schedule_json.as_str() },
+                    product.allergens.trim(),
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -5820,8 +5890,8 @@ impl Store {
         if !actor.can_access_sell() {
             return Err("Not allowed to sell".into());
         }
-        // Taking money is a counter right; a waiter takes orders and sends
-        // KOTs but does not settle by default (owner can change it).
+        // Settle is rights-gated (Allowed / WithApproval / Denied). Waiter
+        // preset is Denied; owner may allow Take payment on a handheld.
         self.check_right(actor, crate::domain::Right::Settle, None)?;
         // A discount is a right of its own, approved by PIN here on the
         // Server — never trusted from the device that sent it.
@@ -6143,10 +6213,24 @@ impl Store {
             .map_err(|e| e.to_string())?
             .unwrap_or_else(|| "restaurant".into()),
         );
+
+        if let Some(tid) = table_id {
+            // Close kitchen tickets already sent this visit (and leftovers)
+            // *before* any new finalize KOTs, so pay-then-cook tickets stay open
+            // and the next seating is not stuck "In kitchen".
+            tx.execute(
+                "UPDATE kot_tickets SET status = ?1
+                  WHERE table_id = ?2 AND status NOT IN ('completed', 'cancelled')",
+                params![KotStatus::Completed.as_str(), tid],
+            )
+            .map_err(|e| e.to_string())?;
+        }
+
         if venue_mode.creates_kot() {
             // One ticket per station on the bill so a big kitchen does not have
             // to read the whole order at every counter. Items with no station
-            // land on a single unassigned ticket.
+            // land on a single unassigned ticket. Only lines not already sent
+            // as a KOT (`kot_sent`) are fired here.
             for (station_id, items) in &by_station {
                 let station_name = stations
                     .iter()
@@ -6171,7 +6255,11 @@ impl Store {
                         format!("{table_prefix}{head}{}", items.join(", ")),
                         branch_id,
                         station_id,
-                        table_id.unwrap_or_default(),
+                        // Never tie a finalize-time KOT to a table id: the
+                        // table is freed on pay, and a leftover open ticket
+                        // stuck the next seating on "In kitchen". Counter
+                        // tickets (no table) already used an empty id.
+                        "",
                         0
                     ],
                 )
@@ -6339,6 +6427,11 @@ impl Store {
         .map_err(|e| e.to_string())?;
 
         tx.commit().map_err(|e| e.to_string())?;
+
+        // Local loyalty: 1 point per ₹100 paid when a customer is on the bill.
+        if let Some(cid) = customer_id {
+            let _ = self.earn_loyalty_on_sale(cid, total_paise, actor);
+        }
 
         Ok(sale)
     }
@@ -7823,7 +7916,10 @@ impl Store {
                             AND k.status != 'cancelled'
                             AND tables_dining.occupied_at != ''
                             AND k.created_at >= tables_dining.occupied_at),
-                        COALESCE(area, ''), COALESCE(paid_at, '')
+                        COALESCE(area, ''), COALESCE(paid_at, ''),
+                        COALESCE(waiter_staff_id, ''),
+                        COALESCE(layout_x, 0), COALESCE(layout_y, 0),
+                        COALESCE(layout_w, 0), COALESCE(layout_h, 0)
                  FROM tables_dining
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY name",
@@ -7842,6 +7938,11 @@ impl Store {
                     area: row.get(6)?,
                     paid_at: row.get(7)?,
                     floor_state: crate::domain::FloorState::Free,
+                    waiter_staff_id: row.get(8).unwrap_or_default(),
+                    layout_x: row.get(9).unwrap_or(0.0),
+                    layout_y: row.get(10).unwrap_or(0.0),
+                    layout_w: row.get(11).unwrap_or(0.0),
+                    layout_h: row.get(12).unwrap_or(0.0),
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -7851,20 +7952,32 @@ impl Store {
         drop(stmt);
         // The running order is the bill: its live, charged lines are the
         // card's amount (cancelled and complimentary lines add nothing).
-        for order in self.list_running_orders()? {
+        let orders = self.list_running_orders()?;
+        for order in &orders {
             if let Some(t) = tables.iter_mut().find(|t| t.id == order.table_id) {
                 t.running_total_paise = order.total_paise();
             }
         }
-        // Where each visit stands: the table plus its open food tickets.
+        // Where each visit stands: the table, live order, and open food tickets
+        // for *this* seating only. Older open KOTs from a previous visit (left
+        // when a bill was paid without the kitchen tapping Done) must not keep
+        // the next guests stuck on "In kitchen".
         let kots = self.list_open_kots()?;
         for t in tables.iter_mut() {
             let statuses: Vec<KotStatus> = kots
                 .iter()
                 .filter(|k| k.table_id == t.id && !k.is_cancel())
+                .filter(|k| {
+                    t.occupied_at.is_empty() || k.created_at.as_str() >= t.occupied_at.as_str()
+                })
                 .map(|k| k.status)
                 .collect();
-            t.floor_state = crate::domain::FloorState::derive(t.status, &statuses);
+            let has_live_order = orders.iter().any(|o| {
+                o.table_id == t.id
+                    && (o.total_paise() > 0 || o.live_lines().next().is_some())
+            }) || t.running_total_paise > 0;
+            t.floor_state =
+                crate::domain::FloorState::derive(t.status, &statuses, has_live_order);
         }
         // Floor order: area by area, then D1, D2 … D10 (not D1, D10, D2).
         tables.sort_by(|a, b| {
@@ -7891,6 +8004,29 @@ impl Store {
                 ],
             )
             .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Guests sat down — mark the table busy without opening a running order.
+    /// Tap the occupied tile later to punch dishes. Free again if they leave
+    /// without ordering.
+    pub fn seat_table(&self, table_id: &str, actor: &StaffMember) -> Result<(), String> {
+        let table = self
+            .list_tables()?
+            .into_iter()
+            .find(|t| t.id == table_id)
+            .ok_or_else(|| "Table not found".to_string())?;
+        match table.status {
+            TableStatus::Available => {}
+            TableStatus::Occupied if table.floor_state == crate::domain::FloorState::Seated => {
+                return Ok(());
+            }
+            TableStatus::Occupied | TableStatus::PaymentPending | TableStatus::Paid => {
+                return Err("Table is already in use".into());
+            }
+        }
+        self.occupy_table(table_id)?;
+        self.audit(actor, "table.seated", &table.name)?;
         Ok(())
     }
 
@@ -7961,6 +8097,23 @@ impl Store {
                 "UPDATE running_orders SET status = 'settled', closed_at = ?2
                   WHERE table_id = ?1 AND status IN ('running', 'printed')",
                 params![table_id, Local::now().to_rfc3339()],
+            )
+            .map_err(|e| e.to_string())?;
+        // Kitchen tickets for this table are no longer cooking for guests —
+        // close them so the KDS and the next seating stay clear.
+        self.complete_open_kots_for_table(table_id)?;
+        Ok(())
+    }
+
+    /// Mark every still-open food/cancel ticket on this table Done. Used when
+    /// the table is freed or paid so leftover New/Preparing/Ready tickets
+    /// cannot paint the next visit as "In kitchen".
+    pub(crate) fn complete_open_kots_for_table(&self, table_id: &str) -> Result<(), String> {
+        self.conn
+            .execute(
+                "UPDATE kot_tickets SET status = ?1
+                  WHERE table_id = ?2 AND status NOT IN ('completed', 'cancelled')",
+                params![KotStatus::Completed.as_str(), table_id],
             )
             .map_err(|e| e.to_string())?;
         Ok(())
@@ -8051,6 +8204,158 @@ impl Store {
         Ok(())
     }
 
+    /// Bring a ticket tapped Done by mistake back to Ready (within
+    /// [`KOT_OPEN_HOURS`]). Cancelled tickets stay cancelled.
+    pub fn recall_kot(&self, kot_id: &str, actor: &StaffMember) -> Result<(), String> {
+        if !actor.role.can_kitchen() {
+            return Err("Not allowed for kitchen".into());
+        }
+        let since = (Local::now() - chrono::Duration::hours(KOT_OPEN_HOURS)).to_rfc3339();
+        let (status_s, created_at): (String, String) = self
+            .conn
+            .query_row(
+                "SELECT status, created_at FROM kot_tickets WHERE id = ?1",
+                params![kot_id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .map_err(|e| e.to_string())?;
+        let status = KotStatus::parse(&status_s);
+        if status != KotStatus::Completed {
+            return Err("Only a finished ticket can be recalled".into());
+        }
+        if created_at < since {
+            return Err("That ticket is too old to recall".into());
+        }
+        let Some(prev) = status.prev() else {
+            return Err("Cannot recall this ticket".into());
+        };
+        self.conn
+            .execute(
+                "UPDATE kot_tickets SET status = ?1 WHERE id = ?2",
+                params![prev.as_str(), kot_id],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(actor, "kot.recall", &format!("{kot_id} -> {}", prev.as_str()))?;
+        Ok(())
+    }
+
+    /// Recently completed KOTs today (for the kitchen "Recently done" strip).
+    pub fn list_recent_completed_kots(&self, limit: i64) -> Result<Vec<KotTicket>, String> {
+        let branch = self.active_branch_id()?;
+        let day = Local::now().format("%Y-%m-%d").to_string();
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT k.id, k.sale_id, k.created_at, k.status, k.summary,
+                        COALESCE(k.station_id, ''), COALESCE(s.name, ''),
+                        COALESCE(k.table_id, ''), COALESCE(k.total_paise, 0),
+                        COALESCE(k.kot_no, 0), COALESCE(k.kind, 'kot'), COALESCE(k.created_by, '')
+                 FROM kot_tickets k
+                 LEFT JOIN kitchen_stations s ON s.id = k.station_id
+                 WHERE k.status = 'completed'
+                   AND (k.branch_id = ?1 OR k.branch_id = '')
+                   AND k.created_at >= ?2
+                 ORDER BY k.created_at DESC
+                 LIMIT ?3",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![branch, day, limit.max(1)], |row| {
+                let status: String = row.get(3)?;
+                Ok(KotTicket {
+                    id: row.get(0)?,
+                    sale_id: row.get(1)?,
+                    created_at: row.get(2)?,
+                    status: KotStatus::parse(&status),
+                    summary: row.get(4)?,
+                    table_id: row.get(7)?,
+                    total_paise: row.get(8)?,
+                    station_id: row.get(5)?,
+                    station_name: row.get(6)?,
+                    kot_no: row.get(9)?,
+                    kind: row.get(10)?,
+                    created_by: row.get(11)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn list_schemes(&self) -> Result<Vec<crate::schemes::Scheme>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, name, kind, trigger_json, reward_json, active FROM schemes
+                 ORDER BY name",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |row| {
+                let kind: String = row.get(2)?;
+                Ok(crate::schemes::Scheme {
+                    id: row.get(0)?,
+                    name: row.get(1)?,
+                    kind: crate::schemes::SchemeKind::parse(&kind),
+                    trigger_json: row.get(3)?,
+                    reward_json: row.get(4)?,
+                    active: row.get::<_, i64>(5)? != 0,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    pub fn upsert_scheme(&self, scheme: &crate::schemes::Scheme) -> Result<(), String> {
+        self.assert_server_writer("Change schemes")?;
+        let name = scheme.name.trim();
+        if name.is_empty() {
+            return Err("Scheme name required".into());
+        }
+        self.conn
+            .execute(
+                "INSERT INTO schemes(id, name, kind, trigger_json, reward_json, active)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6)
+                 ON CONFLICT(id) DO UPDATE SET
+                   name=excluded.name, kind=excluded.kind,
+                   trigger_json=excluded.trigger_json, reward_json=excluded.reward_json,
+                   active=excluded.active",
+                params![
+                    scheme.id,
+                    name,
+                    scheme.kind.as_str(),
+                    if scheme.trigger_json.trim().is_empty() {
+                        "{}"
+                    } else {
+                        scheme.trigger_json.as_str()
+                    },
+                    if scheme.reward_json.trim().is_empty() {
+                        "{}"
+                    } else {
+                        scheme.reward_json.as_str()
+                    },
+                    scheme.active as i64,
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Apply active schemes on `cart` (product groups looked up from the menu).
+    pub fn apply_schemes_to_cart(&self, cart: &mut Cart) -> Result<Vec<String>, String> {
+        let schemes = self.list_schemes()?;
+        let products = self.list_products(true)?;
+        let group_of = |id: &str| -> String {
+            products
+                .iter()
+                .find(|p| p.id == id)
+                .map(|p| p.group_name.clone())
+                .unwrap_or_default()
+        };
+        Ok(crate::schemes::apply_schemes(cart, &schemes, &group_of))
+    }
+
     pub fn add_customer(&self, name: &str, phone: &str) -> Result<Customer, String> {
         self.add_customer_kind(name, phone, "")
     }
@@ -8095,6 +8400,8 @@ impl Store {
             balance_paise: 0,
             kind_label,
             credit_limit_paise: 0,
+            loyalty_points: 0,
+            wallet_paise: 0,
         })
     }
 
@@ -8289,6 +8596,8 @@ impl Store {
             let (id, name, phone, note, active, kind_label, credit_limit_paise) =
                 row.map_err(|e| e.to_string())?;
             let balance_paise = self.customer_balance(&id)?;
+            let loyalty_points = self.loyalty_points(&id).unwrap_or(0);
+            let wallet_paise = self.wallet_paise(&id).unwrap_or(0);
             out.push(Customer {
                 id,
                 name,
@@ -8298,6 +8607,8 @@ impl Store {
                 balance_paise,
                 kind_label,
                 credit_limit_paise,
+                loyalty_points,
+                wallet_paise,
             });
         }
         // Owe first, then name
@@ -8856,7 +9167,10 @@ impl Store {
     pub fn list_units(&self) -> Result<Vec<UnitDef>, String> {
         let mut stmt = self
             .conn
-            .prepare("SELECT id, code, name, builtin FROM units ORDER BY builtin DESC, code")
+            .prepare(
+                "SELECT id, code, name, builtin, picker_enabled FROM units
+                 ORDER BY builtin DESC, code",
+            )
             .map_err(|e| e.to_string())?;
         let rows = stmt
             .query_map([], |row| {
@@ -8865,11 +9179,51 @@ impl Store {
                     code: row.get(1)?,
                     name: row.get(2)?,
                     builtin: row.get::<_, i64>(3)? != 0,
+                    picker_enabled: row.get::<_, i64>(4)? != 0,
                 })
             })
             .map_err(|e| e.to_string())?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())
+    }
+
+    /// Units the shop turned on for Buy / Menu / conversion pickers.
+    pub fn list_picker_units(&self) -> Result<Vec<UnitDef>, String> {
+        Ok(self
+            .list_units()?
+            .into_iter()
+            .filter(|u| u.picker_enabled)
+            .collect())
+    }
+
+    /// Owner turns a unit on or off for pick-lists. Conversions still use it.
+    pub fn set_unit_picker_enabled(
+        &self,
+        code: &str,
+        enabled: bool,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Change unit pickers")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can change which units appear in pickers".into());
+        }
+        let code = code.trim().to_ascii_lowercase();
+        let n = self
+            .conn
+            .execute(
+                "UPDATE units SET picker_enabled = ?1 WHERE code = ?2",
+                params![if enabled { 1 } else { 0 }, code],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err(format!("Unknown unit '{code}'"));
+        }
+        self.audit(
+            actor,
+            "unit.picker",
+            &format!("{code}={}", if enabled { "on" } else { "off" }),
+        )?;
+        Ok(())
     }
 
     pub fn add_unit(&self, code: &str, name: &str) -> Result<UnitDef, String> {
@@ -8890,7 +9244,7 @@ impl Store {
         let id = new_id();
         self.conn
             .execute(
-                "INSERT INTO units(id, code, name, builtin) VALUES(?1, ?2, ?3, 0)",
+                "INSERT INTO units(id, code, name, builtin, picker_enabled) VALUES(?1, ?2, ?3, 0, 1)",
                 params![id, code, name],
             )
             .map_err(|e| {
@@ -8905,6 +9259,7 @@ impl Store {
             code,
             name: name.into(),
             builtin: false,
+            picker_enabled: true,
         })
     }
 
@@ -9587,7 +9942,8 @@ const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image
      COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
      COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
      COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, ''),
-     COALESCE(group_name, ''), COALESCE(area_prices_json, '[]'), COALESCE(kind, 'dish')";
+     COALESCE(group_name, ''), COALESCE(area_prices_json, '[]'), COALESCE(kind, 'dish'),
+     COALESCE(schedule_json, '[]'), COALESCE(allergens, '')";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
@@ -9926,6 +10282,8 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         group_name: row.get(15)?,
         area_prices_json: row.get(16)?,
         kind: row.get(17)?,
+        schedule_json: row.get(18)?,
+        allergens: row.get(19).unwrap_or_default(),
     })
 }
 
@@ -11275,6 +11633,32 @@ mod tests {
             store.list_open_kots().unwrap()[0].status,
             crate::domain::KotStatus::Preparing
         );
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn recall_kot_restores_completed_to_ready() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let table = store.add_table("Recall 1").unwrap();
+        store.upsert_product(&test_product("Poha", 50)).unwrap();
+        let poha = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&poha);
+        let draft = cart.to_sale_draft().unwrap();
+        let kot_id = store.send_kot(&draft, Some(&table.id), &owner).unwrap().remove(0);
+        store.advance_kot(&kot_id, &owner).unwrap(); // preparing
+        store.advance_kot(&kot_id, &owner).unwrap(); // ready
+        store.advance_kot(&kot_id, &owner).unwrap(); // completed
+        assert!(store.list_open_kots().unwrap().is_empty());
+        store.recall_kot(&kot_id, &owner).unwrap();
+        let open = store.list_open_kots().unwrap();
+        assert_eq!(open.len(), 1);
+        assert_eq!(open[0].id, kot_id);
+        assert_eq!(open[0].status, crate::domain::KotStatus::Ready);
+        let recent = store.list_recent_completed_kots(5).unwrap();
+        assert!(recent.iter().all(|k| k.id != kot_id));
         let _ = std::fs::remove_file(path);
     }
 

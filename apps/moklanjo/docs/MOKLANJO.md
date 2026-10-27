@@ -97,7 +97,10 @@ Supplier.
 | Measurement units | User-chosen entry units, standard + custom conversions | **Ship** — Moklanjo defaults: booking desk cm + kg, volumetric ÷ 5000, round up to 0.5 kg (Settings → Booking measures / Units). Canonical units doctrine (standard units, chained custom units, anchor recording) for all apps: [`UNITS_AND_CONVERSIONS.md`](../../../docs/UNITS_AND_CONVERSIONS.md) |
 | Extra charges | Fuel, docket, ODA, packing, COD fee | **Ship** — fuel/docket on desk; catalog seeded |
 | AWB / CN + **label / barcode** | Unique id; print; scan | **Ship** — Code 128 SVG label + Ops Find/Scan (wedge) → desk card → advance/COD |
-| City / zone / pincode | Destination masters | **Ship** — zone master + booking zone field |
+| City / zone / pincode | Destination masters | **Ship** — zone master + booking zone + pincode CSV serviceability |
+| Party-specific rates | Consignor override cards per zone | **Ship** — `products.party_id` + booking resolve |
+| Carrier rate compare | Sell vs buy cards + margin at desk | **Ship** — `carrier_party_id` cards + compare line |
+| Carrier bill reconcile | CSV match AWB / weight / charge | **Ship** — import + report + apply costs |
 | Bulk booking | Many dockets | **Ship** — CSV parse (`notify::parse_bulk_booking_csv`) |
 | Credit limit on account | Block over-limit | **Ship** — `credit_limit_paise` + gate on finalize |
 
@@ -109,16 +112,36 @@ Supplier.
 | Barcode scan-to-find / act | **Ship** — Ops AWB field + Find (scanner Enter); card + OFD / Delivered / label / COD |
 | POD note / photo | **Ship** — note + WebP POD on sale (`pod_ref` = attachment id); ops desk picker |
 | Manifest / handover list | **Ship** — carrier bag **or** own-fleet rider run |
+| Printable DRS / run sheet | **Ship** — receipt-route print with COD total + sign-off |
+| NDR / failed delivery / RTO | **Ship** — reasons, attempts, reattempt, auto-RTO after N |
+| Docket compliance fields | **Ship** — declared value, insurance, contents, e-way (print only) |
+| Rider COD + pay settlement | **Ship** — expected vs handed-in + per-delivery/kg commission slip |
 | Riders / vans | **Ship** — riders master + assign on manifest |
+| Rider app mode (same binary) | **Ship** — download run, offline POD/signature/COD/NDR → LAN outbox |
+| Signature capture (POD) | **Ship** — strokes → WebP attachment (desk + rider) |
+| Incoming manifest | **Ship** — scan/type hub AWBs → delivery dockets |
+| Pickup requests / runs | **Ship** — multi-pickup → one drop, assign rider |
+| Auto-assign + editable stops | **Ship** — area → rider round-robin; sort/reorder anytime |
+| Vehicle inspection / fuel | **Ship** — checklist per run + fuel note |
+| A4/A5 docket template | **Ship** — consignor/consignee blocks (`format_docket_text`) |
+| Franchise commission statement | **Ship** — period % of margin/revenue per carrier |
+| Tally voucher export | **Ship** — beside existing CSV |
+| RTO charges | **Ship** — fee line on auto-RTO |
+| LAN corporate self-booking | **Ship** — `GET/POST /book` HTML on office Wi‑Fi |
+| Phone-camera barcode | **Ship** — pick image decode; wedge primary |
 | Pickup / dispatch lists | **Ship** — same manifest + status filters |
 | COD register + remittance | **Ship** — COD entries + remit batch |
-| Carrier cost / margin on docket | **Ship** — `carrier_cost_paise` + margin helper |
+| Carrier cost / margin on docket | **Ship** — `carrier_cost_paise` + margin helper + bill CSV reconcile |
 | Period party bill | **Ship** — unbilled account dockets → one invoice |
 | Consignment search/filters | **Ship** — AWB / party / date / billed / status |
-| WhatsApp / SMS notify hook | **Ship** — outbox queue (connector later) |
+| WhatsApp / SMS notify drain | **Ship** — outbox + Open WhatsApp / Copy SMS / mark sent |
+| One-tap WhatsApp receipt | **Ship** — `wa.me` with receipt text |
+| Optional GPS on POD | **Ship** — lat/lon on tracking event when OS provides; no map tiles |
+| Delivery feedback (local) | **Ship** — score on delivered AWB; no public Net survey |
+| Destination autocomplete | **Ship** — pincode service + past destinations beyond exact 6-digit |
 | Public track-by-AWB | **Ship** — `GET /track/{awb}` on LAN server (no pairing code) |
-| Aggregator rate compare | Optional later |
-| Live GPS map / AI routes | Progressive depth on dispatch spine |
+| Aggregator rate compare | **Ship** — local carrier cards (live API later) |
+| Live GPS map / AI routes / Cloud ETA | Progressive depth / **Cloud skipped** — optional Net GPS points only |
 
 ### D. Good features competitors have that we should not skip
 
@@ -130,7 +153,8 @@ Prioritize in this order for Moklanjo:
 4. ~~**Period party bill**~~ **done** (store API + Reports)
 5. ~~**Tracking + manifest** (carrier **and** own fleet)~~ **done**
 6. ~~**COD register**~~ **done**
-7. ~~**Carrier cost / margin**~~ **done** (CSV reconcile later)
+7. ~~**Carrier cost / margin**~~ **done** (incl. CSV reconcile)
+8. ~~**Research Local/LAN catch-up**~~ **done 2026-10-27** — rider mode, DRS, NDR/RTO, pincode, rate compare, bill reconcile, party rates, pickups, incoming manifest, barcode image, WhatsApp/SMS drain, Tally/franchise, … Full matrix: [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §5–§7.
 
 ------------------------------------------------------------------------
 
@@ -180,7 +204,7 @@ layout itself is not mirrored.
 | `courier_ops_view.rs` | Reports-facet text + desk actions (advance / dispatch / COD / riders / period bill) |
 | `media.rs` | JPG/PNG/WebP → always store WebP; used by attachments + catalogue/brand photos |
 
-**Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. **Barcode loop:** scan/type AWB → Find → desk card → Out for delivery / Delivered / Print label / Collect COD. Carrier/own-fleet dispatch, COD remit, rider add, and period bill run from the same desk; credit limit + period bill also sit on Parties.
+**Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. **Barcode loop:** scan/type AWB → Find → desk card → Out for delivery / Delivered / Failed delivery (NDR reasons) / Reattempt / Print label / Collect COD. Carrier/own-fleet dispatch, Print run sheet / DRS, COD remit, rider add, Settle rider COD, and period bill run from the same desk; credit limit + period bill also sit on Parties.
 
 **Reports on screen (2026-10-26):** day close, books, the Ops / COD / Riders panels, the scanned-AWB card and every settings summary or list (language, country pack, units by family, booking measures, printers, audit, team, inventory, branches) render as a white card — headings, label/value rows with the value at the right, plain lines — like the Day book's cards, never one run-on paragraph (`ReportText` in `main.rs`: `set_text` → `parse_report` for printable text, `set_rows` for lists built in code). A booking's history, open bills, bank reconciliation, notes & attachments and a party's recent ledger are cards too; booking rows read "AWB · destination", then when / how paid / by whom, with the amount at the right. Right-to-left languages mirror the card (label right, value left).
 
@@ -234,11 +258,17 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   routes per device (Receipt and AWB label; fallback, empty = don't print;
   system name or network ESC/POS; test page), device
   clock checked against the Server, Android backup copies through the
-  system save dialog. Not yet run on real hardware.
+  system save dialog. *2026-10-27:* research Local/LAN catch-up **done**
+  ([`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §7). Not yet run on real
+  hardware.
 
 ## Out of scope (for now)
 
 - Replacing Delhivery/DTDC as a **national network** (hub TMS competing with carriers)  
 - Claiming statutory e-invoicing / GSTR filing before implemented and reviewed  
 - Pre-loading sample rates or parties  
-- AI route optimisation / live GPS fleet map as v1 must-haves (same spine; ship later)
+- **Live** GPS fleet map / public customer ETA page / road-network routing (optional lat/lon on POD already ships; map tiles / Cloud ETA stay later)  
+- Live carrier API book/track connectors (desk stays manual AWB; local rate compare Have)  
+- Remote self-booking / public track from outside the office LAN (LAN `/book` + `/track` Have; Cloud later)
+
+Research “still left” detail: [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §7.

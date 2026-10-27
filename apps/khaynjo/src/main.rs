@@ -11,13 +11,13 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_khaynjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    domain, entity_template, fiscal, locale, local_servers, menu_images, net, phone,
-    precise, print_share, startup, store, suggest, thumbs,
+    domain, entity_template, fiscal, locale, local_servers, menu_images, net, notify, phone,
+    precise, print_share, schemes, startup, store, suggest, thumbs, upi_qr,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_khaynjo::{
-    domain, entity_template, fiscal, locale, local_servers, menu_images, net, phone,
-    precise, print_share, startup, store, suggest, thumbs,
+    domain, entity_template, fiscal, locale, local_servers, menu_images, net, notify, phone,
+    precise, print_share, schemes, startup, store, suggest, thumbs, upi_qr,
 };
 
 use domain::{
@@ -384,6 +384,12 @@ struct AppState {
     day_close_text: String,
     /// Inventory screen body (low stock + recent movements).
     ops_panel_text: String,
+    /// Floor: show only tables assigned to this waiter name (empty = all).
+    floor_waiter_filter: String,
+    /// Floor map: grid of tiles, or drawn positions (`layout_x/y/w/h`).
+    floor_view_layout: bool,
+    /// Table selected for the drawn-layout editor (id).
+    floor_layout_sel: Option<String>,
     /// Branches screen body (org, branch list, roll-up).
     branches_text: String,
     screen: Screen,
@@ -594,6 +600,11 @@ enum FloorRow {
 const FLOOR_MAX_COLUMNS: usize = 8;
 /// A tile is at least this wide (css px) so a table name and amount fit.
 const FLOOR_TILE_MIN_W: f64 = 160.0;
+/// Drawn floor: how many tiles the layout canvas can show at once.
+const FLOOR_LAYOUT_SLOTS: usize = 24;
+/// Auto-pack tile size when every table still has a zero layout box.
+const FLOOR_LAYOUT_PACK_W: f64 = 120.0;
+const FLOOR_LAYOUT_PACK_H: f64 = 90.0;
 
 /// Content width the shell lays screens out at (set by `apply_shell_layout`).
 fn content_width() -> &'static Mutex<f64> {
@@ -1151,6 +1162,9 @@ impl AppState {
             buy_on_account: false,
             day_close_text: String::new(),
             ops_panel_text: String::new(),
+            floor_waiter_filter: String::new(),
+            floor_view_layout: false,
+            floor_layout_sel: None,
             branches_text: String::new(),
             screen: Screen::DeviceSetup,
             status: String::new(),
@@ -1311,6 +1325,7 @@ impl AppState {
         self.raw_materials = raw;
         self.removed_products = store.list_removed_products()?;
         self.tables = store.list_tables()?;
+        self.floor_view_layout = store.floor_view().unwrap_or_else(|_| "grid".into()) == "layout";
         self.recent_sales = store.recent_sales(30)?;
         self.staff = store.list_staff()?;
         self.customers = store.list_customers().unwrap_or_default();
@@ -1703,20 +1718,36 @@ impl AppState {
                 .collect::<Vec<_>>()
         };
         let units = || {
-            let mut v: Vec<SuggestRow> = self
+            let all = self
                 .store
                 .as_ref()
                 .and_then(|s| s.list_units().ok())
-                .unwrap_or_default()
-                .into_iter()
-                .map(|u| SuggestRow::new(u.code, u.name))
+                .unwrap_or_default();
+            // Shop-enabled units only; still offer a unit already on the
+            // product being edited so a disabled code stays editable.
+            let editing = self
+                .editing_product_id
+                .as_ref()
+                .and_then(|id| self.products.iter().find(|p| &p.id == id))
+                .map(|p| p.unit_label.trim().to_ascii_lowercase())
+                .filter(|u| !u.is_empty());
+            let keep = |code: &str| {
+                all.iter().any(|u| {
+                    u.code == code
+                        && (u.picker_enabled || editing.as_ref().is_some_and(|e| e == code))
+                }) || (!code.is_empty() && all.iter().all(|u| u.code != code))
+            };
+            let mut v: Vec<SuggestRow> = all
+                .iter()
+                .filter(|u| u.picker_enabled || editing.as_ref().is_some_and(|e| e == &u.code))
+                .map(|u| SuggestRow::new(u.code.clone(), u.name.clone()))
                 .collect();
             // What the menu already uses comes first.
             let mut used: Vec<SuggestRow> = self
                 .products
                 .iter()
                 .map(|p| p.unit_label.trim().to_string())
-                .filter(|u| !u.is_empty())
+                .filter(|u| !u.is_empty() && keep(u))
                 .map(|u| SuggestRow::new(u, ""))
                 .collect();
             used.append(&mut v);
@@ -1736,10 +1767,27 @@ impl AppState {
                     .collect()
             }
             SuggestField::TableArea => {
+                let enabled: Vec<String> = self
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.list_picker_areas().ok())
+                    .unwrap_or_default()
+                    .into_iter()
+                    .filter(|(_, on)| *on)
+                    .map(|(n, _)| n)
+                    .collect();
                 let mut areas: Vec<String> = Vec::new();
                 for t in &self.tables {
                     if !t.area.is_empty() && !areas.contains(&t.area) {
-                        areas.push(t.area.clone());
+                        if enabled.is_empty() || enabled.iter().any(|e| e.eq_ignore_ascii_case(&t.area))
+                        {
+                            areas.push(t.area.clone());
+                        }
+                    }
+                }
+                for a in enabled {
+                    if !areas.iter().any(|x| x.eq_ignore_ascii_case(&a)) {
+                        areas.push(a);
                     }
                 }
                 areas
@@ -1751,15 +1799,18 @@ impl AppState {
                     .collect()
             }
             SuggestField::MenuStation => self
-                .stations
-                .iter()
+                .store
+                .as_ref()
+                .and_then(|s| s.list_picker_stations().ok())
+                .unwrap_or_else(|| self.stations.clone())
+                .into_iter()
                 .map(|st| SuggestRow::new(st.name.clone(), ""))
                 .collect(),
             SuggestField::MenuUnit | SuggestField::ConvFrom | SuggestField::ConvTo | SuggestField::BuyUnit => units(),
             SuggestField::MenuTax => self
                 .store
                 .as_ref()
-                .and_then(|s| s.list_tax_rates().ok())
+                .and_then(|s| s.list_picker_tax_rates().ok())
                 .unwrap_or_default()
                 .into_iter()
                 .filter(|r| r.active)
@@ -1913,17 +1964,33 @@ impl AppState {
     /// Each size is an item of its own, so each is its own tile.
     fn visible_products(&self) -> Vec<Product> {
         let q = self.menu_filter.trim();
+        let now = chrono::Local::now();
         let in_category = |p: &&Product| match &self.menu_category {
             Some(cat) => &p.category_id == cat,
             None => true,
         };
-        if q.is_empty() {
-            return self.products.iter().filter(in_category).cloned().collect();
-        }
-        let mut ranked: Vec<(u8, &Product)> = self
+        // Schedule visibility (breakfast windows…); sold-out still dims.
+        let on_menu_now = |p: &&Product| p.available_now(now) || !p.available;
+        let base = self
             .products
             .iter()
             .filter(in_category)
+            .filter(|p| {
+                // Hide when outside visibility windows; keep sold-out for the
+                // dimmed "Unavailable" face when they would otherwise show.
+                let windows = p.schedule();
+                let vis: Vec<_> = windows.iter().filter(|w| w.price_paise.is_none()).collect();
+                if vis.is_empty() {
+                    true
+                } else {
+                    vis.iter().any(|w| w.contains(now))
+                }
+            });
+        let _ = on_menu_now;
+        if q.is_empty() {
+            return base.cloned().collect();
+        }
+        let mut ranked: Vec<(u8, &Product)> = base
             .filter_map(|p| {
                 let aliases = p.aliases();
                 if aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q)) {
@@ -1990,12 +2057,13 @@ impl AppState {
     }
 
     fn refresh_inventory_text(&mut self) -> Result<(), String> {
-        // What is on hand is the stock list; this is only the latest changes.
         let store = self.store.as_ref().ok_or("No store")?;
+        let mut lines = store.ops_panel_text().unwrap_or_default();
         let movements = store.list_stock_movements(12)?;
-        let mut lines = Vec::new();
         if !movements.is_empty() {
-            lines.push(format!("{}:", self.t("recent_changes")));
+            lines.push('\n');
+            lines.push_str(&format!("{}:", self.t("recent_changes")));
+            lines.push('\n');
             for m in &movements {
                 let when = m.created_at.get(11..16).unwrap_or("");
                 let sign = if m.delta_qty >= 0 { "+" } else { "" };
@@ -2004,10 +2072,13 @@ impl AppState {
                 } else {
                     format!(" · {}", m.note.trim())
                 };
-                lines.push(format!("{when}  {}  {sign}{}{note}", m.product_name, m.delta_qty));
+                lines.push_str(&format!(
+                    "{when}  {}  {sign}{}{note}\n",
+                    m.product_name, m.delta_qty
+                ));
             }
         }
-        self.ops_panel_text = lines.join("\n");
+        self.ops_panel_text = lines;
         Ok(())
     }
 
@@ -3892,6 +3963,14 @@ script_mod! {
             draw_bg.border_size: 2.
             draw_bg.border_color: #xD8C7BD
         }
+        bg_seated := RoundedView{
+            width: Fill height: Fill
+            visible: false
+            draw_bg.color: #xFFF4CC
+            draw_bg.border_radius: 14.
+            draw_bg.border_size: 2.
+            draw_bg.border_color: #xE8C200
+        }
         bg_kitchen := RoundedView{
             width: Fill height: Fill
             visible: false
@@ -4001,61 +4080,86 @@ script_mod! {
         }
     }
 
-    // Kitchen tab: one card per open KOT — items + state, never prices
-    let KotCard = RoundedView{
+    // Kitchen tab: one card per open KOT — items + state, never prices.
+    // Age colour via stacked backgrounds (same idea as FloorTile).
+    let KotCard = View{
         width: Fill height: Fit
-        padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
-        flow: Down spacing: 6
-        draw_bg.color: #ffffff
-        draw_bg.border_radius: 16.
-        draw_bg.border_size: 2.
-        draw_bg.border_color: #x5A4238
-        title := WrapLabel{
-            width: Fill
-            body: "Kitchen"
-            font_color: #x69090C
-            font_size: 14.
+        flow: Overlay
+        bg_ok := RoundedView{
+            width: Fill height: Fill
+            visible: true
+            draw_bg.color: #ffffff
+            draw_bg.border_radius: 16.
+            draw_bg.border_size: 2.
+            draw_bg.border_color: #x5A4238
         }
-        summary := WrapLabel{
-            width: Fill
-            body: ""
-            font_color: #x260B08
-            font_size: 15.
+        bg_amber := RoundedView{
+            width: Fill height: Fill
+            visible: false
+            draw_bg.color: #xFFF4CC
+            draw_bg.border_radius: 16.
+            draw_bg.border_size: 2.
+            draw_bg.border_color: #xD9A400
+        }
+        bg_red := RoundedView{
+            width: Fill height: Fill
+            visible: false
+            draw_bg.color: #xFFD6D0
+            draw_bg.border_radius: 16.
+            draw_bg.border_size: 2.
+            draw_bg.border_color: #xB43A12
         }
         View{
             width: Fill height: Fit
-            flow: Right spacing: 10
-            align: Align{y: 0.5}
-            state := Label{
+            padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+            flow: Down spacing: 6
+            title := WrapLabel{
                 width: Fill
-                text: "New"
-                flow: Right{wrap: false}
-                max_lines: 1
-                draw_text.color: #x9A6206
-                draw_text.text_style.font_size: 13.
+                body: "Kitchen"
+                font_color: #x69090C
+                font_size: 14.
             }
-            advance := Button{
-                text: "Start"
-                width: Fit height: 44
-                padding: Inset{left: 18. right: 18. top: 10. bottom: 10.}
-                draw_bg +: {
-                    color: #xB43A12
-                    color_hover: #x822801
-                    color_down: #x6f2000
-                    color_focus: #xB43A12
-                    color_2: #xB43A12
-                    color_2_hover: #x822801
-                    color_2_down: #x6f2000
-                    color_2_focus: #xB43A12
-                    border_radius: 12.
-                    border_size: 0.
+            summary := WrapLabel{
+                width: Fill
+                body: ""
+                font_color: #x260B08
+                font_size: 15.
+            }
+            View{
+                width: Fill height: Fit
+                flow: Right spacing: 10
+                align: Align{y: 0.5}
+                state := Label{
+                    width: Fill
+                    text: "New"
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    draw_text.color: #x9A6206
+                    draw_text.text_style.font_size: 13.
                 }
-                draw_text +: {
-                    color: #xffffff
-                    color_hover: #xffffff
-                    color_down: #xffffff
-                    color_focus: #xffffff
-                    text_style +: {font_size: 14.}
+                advance := Button{
+                    text: "Start"
+                    width: Fit height: 44
+                    padding: Inset{left: 18. right: 18. top: 10. bottom: 10.}
+                    draw_bg +: {
+                        color: #xB43A12
+                        color_hover: #x822801
+                        color_down: #x6f2000
+                        color_focus: #xB43A12
+                        color_2: #xB43A12
+                        color_2_hover: #x822801
+                        color_2_down: #x6f2000
+                        color_2_focus: #xB43A12
+                        border_radius: 12.
+                        border_size: 0.
+                    }
+                    draw_text +: {
+                        color: #xffffff
+                        color_hover: #xffffff
+                        color_down: #xffffff
+                        color_focus: #xffffff
+                        text_style +: {font_size: 14.}
+                    }
                 }
             }
         }
@@ -4727,6 +4831,40 @@ script_mod! {
         }
     }
 
+    // Drawn floor: each table at layout_x/y with layout_w/h (Overlay + margin).
+    mod.widgets.FloorLayoutListBase = #(FloorLayoutList::register_widget(vm))
+    mod.widgets.FloorLayoutList = set_type_default() do mod.widgets.FloorLayoutListBase{
+        width: Fill height: Fit
+        canvas := View{
+            width: Fill height: Fit
+            flow: Overlay
+            t0 := FloorTile{}
+            t1 := FloorTile{}
+            t2 := FloorTile{}
+            t3 := FloorTile{}
+            t4 := FloorTile{}
+            t5 := FloorTile{}
+            t6 := FloorTile{}
+            t7 := FloorTile{}
+            t8 := FloorTile{}
+            t9 := FloorTile{}
+            t10 := FloorTile{}
+            t11 := FloorTile{}
+            t12 := FloorTile{}
+            t13 := FloorTile{}
+            t14 := FloorTile{}
+            t15 := FloorTile{}
+            t16 := FloorTile{}
+            t17 := FloorTile{}
+            t18 := FloorTile{}
+            t19 := FloorTile{}
+            t20 := FloorTile{}
+            t21 := FloorTile{}
+            t22 := FloorTile{}
+            t23 := FloorTile{}
+        }
+    }
+
     mod.widgets.KitchenListBase = #(KitchenList::register_widget(vm))
     mod.widgets.KitchenList = set_type_default() do mod.widgets.KitchenListBase{
         width: Fill height: Fit
@@ -5114,21 +5252,25 @@ script_mod! {
                 }
                 Kv := View{
                     width: Fill height: Fit
-                    padding: Inset{top: 5. bottom: 5.}
-                    flow: Right spacing: 12
-                    align: Align{y: 0.5}
-                    k := Label{
-                        width: Fill
-                        text: ""
-                        flow: Right{wrap: true}
-                        draw_text.color: #x6B4A3F
-                        draw_text.text_style.font_size: 14.
-                    }
-                    v := Label{
-                        width: Fit
-                        text: ""
-                        draw_text.color: #x260B08
-                        draw_text.text_style.font_size: 15.
+                    row := View{
+                        width: Fill height: Fit
+                        padding: Inset{top: 5. bottom: 5.}
+                        flow: Right spacing: 12
+                        align: Align{y: 0.5}
+                        cursor: MouseCursor.Hand
+                        k := Label{
+                            width: Fill
+                            text: ""
+                            flow: Right{wrap: true}
+                            draw_text.color: #x6B4A3F
+                            draw_text.text_style.font_size: 14.
+                        }
+                        v := Label{
+                            width: Fit
+                            text: ""
+                            draw_text.color: #x260B08
+                            draw_text.text_style.font_size: 15.
+                        }
                     }
                 }
                 // Right-to-left languages: the label at the right, its
@@ -5136,23 +5278,27 @@ script_mod! {
                 // by a few px, so the labels keep a margin at the right.
                 KvRtl := View{
                     width: Fill height: Fit
-                    padding: Inset{top: 5. bottom: 5.}
-                    flow: Right spacing: 12
-                    align: Align{y: 0.5}
-                    v := Label{
-                        width: Fit
-                        text: ""
-                        draw_text.color: #x260B08
-                        draw_text.text_style.font_size: 15.
-                    }
-                    k := Label{
-                        width: Fill
-                        text: ""
-                        align: Align{x: 1.0}
-                        margin: Inset{right: 8.}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x6B4A3F
-                        draw_text.text_style.font_size: 14.
+                    row := View{
+                        width: Fill height: Fit
+                        padding: Inset{top: 5. bottom: 5.}
+                        flow: Right spacing: 12
+                        align: Align{y: 0.5}
+                        cursor: MouseCursor.Hand
+                        v := Label{
+                            width: Fit
+                            text: ""
+                            draw_text.color: #x260B08
+                            draw_text.text_style.font_size: 15.
+                        }
+                        k := Label{
+                            width: Fill
+                            text: ""
+                            align: Align{x: 1.0}
+                            margin: Inset{right: 8.}
+                            flow: Right{wrap: true}
+                            draw_text.color: #x6B4A3F
+                            draw_text.text_style.font_size: 14.
+                        }
                     }
                 }
                 Line := View{
@@ -6426,6 +6572,10 @@ script_mod! {
                                             print_bill_btn := StackLightBtn{text: "Print bill"}
                                             table_move_btn := StackLightBtn{text: "Move / merge table"}
                                             table_split_btn := StackLightBtn{text: "Split bill"}
+                                            split_evenly_btn := StackLightBtn{text: "Split evenly"}
+                                            fire_course_btn := StackLightBtn{text: "Fire course"}
+                                            hold_item_btn := StackLightBtn{text: "Hold item"}
+                                            waiter_call_btn := StackLightBtn{text: "Call waiter"}
                                         }
                                         // Split: tap the dishes one guest pays for, then make
                                         // their separate bill (a companion table, e.g. D3/2).
@@ -6748,6 +6898,7 @@ script_mod! {
                                         }
                                     }
                                     ActionStack{
+                                        show_upi_qr := StackLightBtn{text: "Show UPI QR"}
                                         pay_mix := PayBtn{text: "Take payment"}
                                     }
                                 }
@@ -6831,6 +6982,15 @@ script_mod! {
                                     }
                                 }
                                 floor_heading := WrapLabel{body: "Floor" font_color: #x260B08 font_size: 20.}
+                                // Grid (default) ↔ Layout (drawn positions).
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    floor_grid_btn := ChipBtn{text: "Grid"}
+                                    floor_grid_btn_on := ChipBtnActive{text: "Grid" visible: false}
+                                    floor_layout_btn := ChipBtn{text: "Layout"}
+                                    floor_layout_btn_on := ChipBtnActive{text: "Layout" visible: false}
+                                }
                                 // At a glance: busy tables, bills to collect, money on
                                 // the floor.
                                 floor_summary := WrapLabel{
@@ -6857,6 +7017,25 @@ script_mod! {
                                         lg_free := Label{
                                             width: Fit
                                             text: "free"
+                                            draw_text.color: #x3A2C26
+                                            draw_text.text_style.font_size: 12.
+                                        }
+                                    }
+                                    View{
+                                        width: Fit height: Fit
+                                        flow: Right spacing: 6
+                                        align: Align{y: 0.5}
+                                        margin: Inset{right: 14. bottom: 4.}
+                                        RoundedView{
+                                            width: 16 height: 16
+                                            draw_bg.color: #xFFF4CC
+                                            draw_bg.border_radius: 4.
+                                            draw_bg.border_size: 1.5
+                                            draw_bg.border_color: #xE8C200
+                                        }
+                                        lg_seated := Label{
+                                            width: Fit
+                                            text: "occupied"
                                             draw_text.color: #x3A2C26
                                             draw_text.text_style.font_size: 12.
                                         }
@@ -6958,6 +7137,49 @@ script_mod! {
                                     }
                                 }
                                 floor_list := mod.widgets.FloorList{}
+                                floor_layout_list := mod.widgets.FloorLayoutList{visible: false}
+                                floor_layout_editor := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    floor_layout_edit_heading := WrapLabel{
+                                        body: "Layout"
+                                        font_color: #x260B08
+                                        font_size: 15.
+                                    }
+                                    FormFieldRow{
+                                        layout_x_input := FieldInput{empty_text: "X"}
+                                        layout_y_input := FieldInput{empty_text: "Y"}
+                                        layout_w_input := FieldInput{empty_text: "W"}
+                                        layout_h_input := FieldInput{empty_text: "H"}
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true} spacing: 8
+                                        layout_nudge_left := NavBtn{text: "← 20"}
+                                        layout_nudge_right := NavBtn{text: "→ 20"}
+                                        layout_nudge_up := NavBtn{text: "↑ 20"}
+                                        layout_nudge_down := NavBtn{text: "↓ 20"}
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true} spacing: 8
+                                        layout_save := StackPrimaryBtn{text: "Save layout"}
+                                        layout_open := StackLightBtn{text: "Open table"}
+                                    }
+                                }
+                                floor_ops_heading := WrapLabel{body: "Local ops" font_color: #x260B08 font_size: 15.}
+                                floor_ops_label := mod.widgets.ReportText{}
+                                floor_waiter_filter := FieldInput{empty_text: "Filter floor by waiter name"}
+                                waitlist_heading := WrapLabel{body: "Waitlist" font_color: #x260B08 font_size: 15.}
+                                FormCard{
+                                    FormFieldRow{
+                                        wait_name_input := FieldInput{empty_text: "Guest name"}
+                                        wait_party_input := FieldInput{empty_text: "Party size"}
+                                        wait_mins_input := FieldInput{empty_text: "Quoted wait (min)"}
+                                    }
+                                    waitlist_add := StackPrimaryBtn{text: "Add to waitlist"}
+                                }
                                 // Bookings: who is coming, when, how many.
                                 resv_heading := WrapLabel{body: "Reservations" font_color: #x260B08 font_size: 15.}
                                 resv_list := mod.widgets.ResvList{}
@@ -7013,6 +7235,10 @@ script_mod! {
                                     font_color: #x6B4A3F
                                     font_size: 13.
                                 }
+                                recently_done_heading := WrapLabel{body: "Recently done" font_color: #x260B08 font_size: 15. visible: false}
+                                recently_done_label := mod.widgets.ReportText{}
+                                recall_kot_input := FieldInput{empty_text: "KOT # to recall (or tap Recall below)"}
+                                recall_kot_btn := NavBtn{text: "Recall"}
                                 stations_heading := WrapLabel{body: "Kitchen stations" font_color: #x260B08 font_size: 15.}
                                 stations_help := WrapLabel{
                                     body: "Each station prints on its own printers (Settings → Where things print). Add Tandoor, Fryer, Cold…"
@@ -7128,6 +7354,7 @@ script_mod! {
                                 // A dearer area (AC) or a parcel price; other areas pay
                                 // the item price.
                                 menu_area_prices_input := FieldInput{empty_text: "Area prices (optional) — AC=220, Parcel=210"}
+                                menu_schedule_input := FieldInput{empty_text: "Hours / happy hour — Mon-Fri 07:00-11:00 or HappyHour 17:00-19:00=150"}
                                 // What one portion takes off the shelf.
                                 menu_recipe_input := FieldInput{empty_text: "Recipe (optional) — one portion uses: Rice=0.2, Paneer=0.15"}
                                 image_hint := WrapLabel{
@@ -7331,6 +7558,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right spacing: 8
                                         receipt_share_btn := NavBtn{text: "Copy receipt"}
+                                        receipt_whatsapp_btn := NavBtn{text: "Share WhatsApp"}
                                         receipt_print_btn := NavBtn{text: "Print / open"}
                                     }
                                     amend_cart_list := mod.widgets.CartList{}
@@ -7658,6 +7886,14 @@ script_mod! {
                                                 feat_credit_on := ChipBtnActive{text: "Credit" visible: false}
                                             }
                                             View{width: Fit height: 40 flow: Overlay
+                                                feat_floor := ChipBtn{text: "Floor"}
+                                                feat_floor_on := ChipBtnActive{text: "Floor" visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                feat_kitchen := ChipBtn{text: "Kitchen"}
+                                                feat_kitchen_on := ChipBtnActive{text: "Kitchen" visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
                                                 feat_team := ChipBtn{text: "Team"}
                                                 feat_team_on := ChipBtnActive{text: "Team" visible: false}
                                             }
@@ -7865,6 +8101,12 @@ script_mod! {
                                     font_color: #x6B4A3F
                                     font_size: 12.
                                 }
+                                h_units_picker_help := WrapLabel{
+                                    width: Fill
+                                    body: "Tap On/Off to show a unit in Buy and Menu pickers. Off units still convert."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
                                 units_label := mod.widgets.ReportText{}
                                 unit_code_input := FieldInput{empty_text: "Code (bag)"}
                                 unit_name_input := FieldInput{empty_text: "Name (Bag)"}
@@ -7875,6 +8117,33 @@ script_mod! {
                                 conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
                                 conv_add := StackPrimaryBtn{text: "Add conversion"}
+                                sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font_color: #x260B08 font_size: 18.}
+                                sibling_pickers_help := WrapLabel{
+                                    width: Fill
+                                    body: "Tap On/Off like units — hide from day-to-day pickers; pack defaults stay."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                sibling_pickers_label := mod.widgets.ReportText{}
+                                bulk_price_heading := WrapLabel{body: "Bulk menu price" font_color: #x260B08 font_size: 18.}
+                                FormFieldRow{
+                                    bulk_cat_input := FieldInput{empty_text: "Category name"}
+                                    bulk_pct_input := FieldInput{empty_text: "% change (e.g. 10 or -5)"}
+                                    bulk_set_input := FieldInput{empty_text: "Or set ₹ amount"}
+                                }
+                                bulk_price_apply := StackLightBtn{text: "Apply bulk price"}
+                                lan_pages_help_label := WrapLabel{
+                                    width: Fill
+                                    body: "LAN pages on Server Wi‑Fi: /display /tokens /expo /kiosk /t/{table} /feedback"
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                card_terminal_note := WrapLabel{
+                                    width: Fill
+                                    body: "Card terminal / payment link (optional when internet available)"
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
                                 h_kitchen_printing := WrapLabel{body: "Kitchen printing" font_color: #x260B08 font_size: 20.}
                                 h_kot_print_help_khaynjo := WrapLabel{
                                     width: Fill
@@ -7935,8 +8204,20 @@ script_mod! {
                                 }
                                 bill_header_input := FieldInput{empty_text: "Address | phone"}
                                 fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
+                                upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
+                                upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
                                 bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
+                                h_schemes := WrapLabel{body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
+                                h_schemes_help := WrapLabel{
+                                    width: Fill
+                                    body: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas"
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                schemes_label := mod.widgets.ReportText{}
+                                scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
+                                scheme_add := StackPrimaryBtn{text: "Add BOGO"}
                                 h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 backup_auto_label := WrapLabel{
                                     width: Fill
@@ -8408,6 +8689,34 @@ script_mod! {
                     // The order desk's menu: search, category tabs and the dishes as
                     // tiles (several per row), over the order. Add dishes opens it; it
                     // stays open while dishes are tapped in, Done / Escape / Back close it.
+                    upi_qr_modal := Modal{
+                        content +: {
+                            width: Fill height: Fill
+                            align: Align{x: 0.5 y: 0.5}
+                            padding: Inset{left: 16. right: 16. top: 20. bottom: 20.}
+                            RoundedView{
+                                width: Fill{max: 420.} height: Fit
+                                flow: Down spacing: 12
+                                padding: Inset{left: 20. right: 20. top: 18. bottom: 18.}
+                                draw_bg.color: #xF9F4F0
+                                draw_bg.border_radius: 18.
+                                upi_qr_title := WrapLabel{body: "UPI" font_color: #x260B08 font_size: 20.}
+                                upi_qr_amount := WrapLabel{body: " " font_color: #x69090C font_size: 18.}
+                                upi_qr_image := Image{
+                                    width: 240 height: 240
+                                    fit: Fit.Contain
+                                }
+                                upi_qr_help := WrapLabel{
+                                    width: Fill
+                                    body: "Guest scans and pays. Tap Take payment after they pay."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                upi_qr_close := StackPrimaryBtn{text: "Close"}
+                            }
+                        }
+                    }
+
                     menu_modal := Modal{
                         content +: {
                             width: Fill height: Fill
@@ -8650,6 +8959,36 @@ fn modifiers_as_typed(mods: &[domain::ModifierOption], currency: &str) -> String
                 modifier.name.clone()
             } else {
                 format!("{}={price}", modifier.name)
+            }
+        })
+        .collect::<Vec<_>>()
+        .join(", ")
+}
+
+fn schedule_as_typed(windows: &[domain::ScheduleWindow], currency: &str) -> String {
+    const DAYS: &[&str] = &["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    windows
+        .iter()
+        .map(|w| {
+            let days = if w.days.is_empty() {
+                String::new()
+            } else if w.days == [1, 2, 3, 4, 5] {
+                "Mon-Fri ".into()
+            } else {
+                w.days
+                    .iter()
+                    .filter_map(|d| DAYS.get(*d as usize).copied())
+                    .collect::<Vec<_>>()
+                    .join(",")
+                    + " "
+            };
+            let range = format!("{}-{}", w.start, w.end);
+            match w.price_paise {
+                Some(p) => format!(
+                    "{days}{range}={}",
+                    locale::format_major_input(p, currency)
+                ),
+                None => format!("{days}{range}"),
             }
         })
         .collect::<Vec<_>>()
@@ -8999,9 +9338,12 @@ impl Widget for ProductList {
                         price.set_visible(cx, product.available);
                         price_off.set_visible(cx, !product.available);
                         if product.available {
+                            let now = chrono::Local::now();
                             price.set_text(
                                 cx,
-                                &product.price_in_area(&area).format_localized(&currency, &fiscal),
+                                &product
+                                    .price_now(&area, now)
+                                    .format_localized(&currency, &fiscal),
                             );
                         } else {
                             price_off.set_text(cx, &locale::t(&lang, "sold_out"));
@@ -9214,6 +9556,99 @@ struct FloorList {
     view: View,
 }
 
+fn floor_tile_labels(st: &AppState, t: &DiningTable) -> (String, String, String, Option<String>, domain::FloorState) {
+    use domain::FloorState as F;
+    let now = chrono::Local::now();
+    let minutes_since = |at: &str| {
+        chrono::DateTime::parse_from_rfc3339(at)
+            .map(|at| {
+                now.signed_duration_since(at.with_timezone(&chrono::Local))
+                    .num_minutes()
+                    .max(0)
+            })
+            .unwrap_or(0)
+    };
+    let state = t.floor_state;
+    let words = match state {
+        F::Free => st.t(state.tile_key()),
+        F::Paid => format!("{} · {} min", st.t(state.tile_key()), minutes_since(&t.paid_at)),
+        _ => format!("{} · {} min", st.t(state.tile_key()), minutes_since(&t.occupied_at)),
+    };
+    let meta = if t.running_total_paise > 0 {
+        st.money(Money(t.running_total_paise))
+    } else {
+        String::new()
+    };
+    let action = match state {
+        F::Free => Some(st.t("tile_occupy_btn")),
+        F::Seated => Some(st.t("tile_free_btn")),
+        F::InKitchen | F::FoodReady | F::Eating => Some(st.t("tile_bill_btn")),
+        F::BillPrinted if t.running_total_paise <= 0 => Some(st.t("tile_ready_btn")),
+        F::BillPrinted => Some(st.t("tile_undo_bill")),
+        F::Paid => Some(st.t("tile_ready_btn")),
+    };
+    (t.name.clone(), words, meta, action, state)
+}
+
+fn floor_filtered_tables(st: &AppState) -> Vec<DiningTable> {
+    let filter = st.floor_waiter_filter.trim().to_lowercase();
+    if filter.is_empty() {
+        return st.tables.clone();
+    }
+    st.tables
+        .iter()
+        .filter(|t| {
+            let Some(store) = st.store.as_ref() else {
+                return true;
+            };
+            let wid = store.table_waiter_id(&t.id).unwrap_or_default();
+            if wid.is_empty() {
+                return false;
+            }
+            store
+                .list_staff()
+                .unwrap_or_default()
+                .into_iter()
+                .any(|s| s.id == wid && s.name.to_lowercase().contains(&filter))
+        })
+        .cloned()
+        .collect()
+}
+
+fn paint_floor_tile(
+    cx: &mut Cx2d,
+    tile: &WidgetRef,
+    name: &str,
+    words: &str,
+    meta: &str,
+    action: Option<&str>,
+    state: domain::FloorState,
+) {
+    use domain::FloorState as F;
+    let backgrounds = [
+        (F::Free, ids!(bg_free)),
+        (F::Seated, ids!(bg_seated)),
+        (F::InKitchen, ids!(bg_kitchen)),
+        (F::FoodReady, ids!(bg_ready)),
+        (F::Eating, ids!(bg_eating)),
+        (F::BillPrinted, ids!(bg_bill)),
+        (F::Paid, ids!(bg_paid)),
+    ];
+    for (s, bg) in &backgrounds {
+        tile.view(cx, *bg).set_visible(cx, state == *s);
+    }
+    tile.label(cx, ids!(name)).set_text(cx, name);
+    tile.label(cx, ids!(state)).set_text(cx, words);
+    let meta_label = tile.label(cx, ids!(meta));
+    meta_label.set_text(cx, meta);
+    meta_label.set_visible(cx, !meta.is_empty());
+    let act = tile.button(cx, ids!(act));
+    act.set_visible(cx, action.is_some());
+    if let Some(label) = action {
+        act.set_text(cx, label);
+    }
+}
+
 impl Widget for FloorList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         use domain::FloorState as F;
@@ -9224,44 +9659,12 @@ impl Widget for FloorList {
         let cols = floor_columns();
         let (rows, tiles, other_area): (Vec<FloorRow>, Vec<Tile>, String) = {
             let st = app_state().lock().unwrap();
-            let now = chrono::Local::now();
-            let minutes_since = |at: &str| {
-                chrono::DateTime::parse_from_rfc3339(at)
-                    .map(|at| {
-                        now.signed_duration_since(at.with_timezone(&chrono::Local))
-                            .num_minutes()
-                            .max(0)
-                    })
-                    .unwrap_or(0)
-            };
-            let tiles = st
-                .tables
+            let tables = floor_filtered_tables(&st);
+            let tiles = tables
                 .iter()
-                .map(|t| {
-                    let state = t.floor_state;
-                    let words = match state {
-                        F::Free => st.t(state.tile_key()),
-                        F::Paid => format!("{} · {} min", st.t(state.tile_key()), minutes_since(&t.paid_at)),
-                        _ => format!("{} · {} min", st.t(state.tile_key()), minutes_since(&t.occupied_at)),
-                    };
-                    let meta = if t.running_total_paise > 0 {
-                        st.money(Money(t.running_total_paise))
-                    } else {
-                        String::new()
-                    };
-                    let action = match state {
-                        F::InKitchen | F::FoodReady | F::Eating => Some(st.t("tile_bill_btn")),
-                        F::BillPrinted if t.running_total_paise <= 0 => {
-                            Some(st.t("tile_ready_btn"))
-                        }
-                        F::BillPrinted => Some(st.t("tile_undo_bill")),
-                        F::Paid => Some(st.t("tile_ready_btn")),
-                        F::Free => None,
-                    };
-                    (t.name.clone(), words, meta, action, state)
-                })
+                .map(|t| floor_tile_labels(&st, t))
                 .collect();
-            (floor_rows(&st.tables, cols), tiles, st.t("tables"))
+            (floor_rows(&tables, cols), tiles, st.t("tables"))
         };
         const HEADER: f64 = 34.0;
         const ROW: f64 = 142.0; // tile 132 + row padding 10
@@ -9274,14 +9677,6 @@ impl Widget for FloorList {
         let walk = Walk { height: Size::Fixed(height), ..walk };
         let slots = [
             ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5), ids!(t6), ids!(t7),
-        ];
-        let backgrounds = [
-            (F::Free, ids!(bg_free)),
-            (F::InKitchen, ids!(bg_kitchen)),
-            (F::FoodReady, ids!(bg_ready)),
-            (F::Eating, ids!(bg_eating)),
-            (F::BillPrinted, ids!(bg_bill)),
-            (F::Paid, ids!(bg_paid)),
         ];
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
@@ -9307,24 +9702,17 @@ impl Widget for FloorList {
                                 }
                                 tile.set_visible(cx, true);
                                 let t = idxs.get(slot).and_then(|i| tiles.get(*i));
-                                for (state, bg) in &backgrounds {
-                                    tile.view(cx, *bg).set_visible(cx, t.is_some_and(|t| t.4 == *state));
-                                }
-                                let (name, words, meta, action) = match t {
-                                    Some(t) => (t.0.as_str(), t.1.as_str(), t.2.as_str(), t.3.clone()),
-                                    None => ("", "", "", None),
-                                };
-                                tile.label(cx, ids!(name)).set_text(cx, name);
-                                tile.label(cx, ids!(state)).set_text(cx, words);
-                                // No amount yet (a free table): the state moves
-                                // up under the name instead of leaving a gap.
-                                let meta_label = tile.label(cx, ids!(meta));
-                                meta_label.set_text(cx, meta);
-                                meta_label.set_visible(cx, !meta.is_empty());
-                                let act = tile.button(cx, ids!(act));
-                                act.set_visible(cx, action.is_some());
-                                if let Some(label) = action {
-                                    act.set_text(cx, &label);
+                                match t {
+                                    Some(t) => paint_floor_tile(
+                                        cx,
+                                        &tile,
+                                        t.0.as_str(),
+                                        t.1.as_str(),
+                                        t.2.as_str(),
+                                        t.3.as_deref(),
+                                        t.4,
+                                    ),
+                                    None => paint_floor_tile(cx, &tile, "", "", "", None, F::Free),
                                 }
                             }
                             item.draw_all_unscoped(cx);
@@ -9335,6 +9723,90 @@ impl Widget for FloorList {
             }
         }
         DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if page_owns_scroll(event) {
+            return;
+        }
+        self.view.handle_event(cx, event, scope);
+    }
+}
+
+/// Drawn floor: tables at persisted (layout_x, layout_y, layout_w, layout_h).
+#[derive(Script, ScriptHook, Widget)]
+struct FloorLayoutList {
+    #[deref]
+    view: View,
+}
+
+impl Widget for FloorLayoutList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let slots = [
+            ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5),
+            ids!(t6), ids!(t7), ids!(t8), ids!(t9), ids!(t10), ids!(t11),
+            ids!(t12), ids!(t13), ids!(t14), ids!(t15), ids!(t16), ids!(t17),
+            ids!(t18), ids!(t19), ids!(t20), ids!(t21), ids!(t22), ids!(t23),
+        ];
+        let (tiles, canvas_h, selected): (Vec<_>, f64, Option<String>) = {
+            let st = app_state().lock().unwrap();
+            let tables = floor_filtered_tables(&st);
+            let mut max_b = FLOOR_LAYOUT_PACK_H;
+            let tiles: Vec<_> = tables
+                .into_iter()
+                .take(FLOOR_LAYOUT_SLOTS)
+                .map(|t| {
+                    let w = if t.layout_w > 0.0 {
+                        t.layout_w
+                    } else {
+                        FLOOR_LAYOUT_PACK_W
+                    };
+                    let h = if t.layout_h > 0.0 {
+                        t.layout_h
+                    } else {
+                        FLOOR_LAYOUT_PACK_H
+                    };
+                    max_b = max_b.max(t.layout_y + h);
+                    let labels = floor_tile_labels(&st, &t);
+                    (t.id, t.layout_x, t.layout_y, w, h, labels)
+                })
+                .collect();
+            (tiles, max_b + 16.0, st.floor_layout_sel.clone())
+        };
+        let canvas = self.view.view(cx, ids!(canvas));
+        if let Some(mut c) = canvas.borrow_mut() {
+            c.walk.height = Size::Fixed(canvas_h.max(120.0));
+        }
+        for (slot, path) in slots.iter().enumerate() {
+            let tile = canvas.view(cx, *path);
+            let Some((id, x, y, w, h, (name, words, meta, action, state))) = tiles.get(slot) else {
+                tile.set_visible(cx, false);
+                continue;
+            };
+            tile.set_visible(cx, true);
+            if let Some(mut v) = tile.borrow_mut() {
+                v.walk.width = Size::Fixed(*w);
+                v.walk.height = Size::Fixed(*h);
+                v.walk.margin = Inset {
+                    left: *x,
+                    top: *y,
+                    right: 0.0,
+                    bottom: 0.0,
+                };
+                v.walk.abs_pos = None;
+            }
+            let mark = if selected.as_deref() == Some(id.as_str()) {
+                format!("● {name}")
+            } else {
+                name.clone()
+            };
+            paint_floor_tile(cx, &tile, &mark, words, meta, action.as_deref(), *state);
+        }
+        let walk = Walk {
+            height: Size::Fixed(canvas_h.max(120.0)),
+            ..walk
+        };
+        self.view.draw_walk(cx, scope, walk)
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
@@ -9557,8 +10029,8 @@ impl Widget for ReportText {
                         }
                         ReportRow::Kv(k, v) => {
                             let item = list.item(cx, item_id, if rtl { id!(KvRtl) } else { id!(Kv) });
-                            item.label(cx, ids!(k)).set_text(cx, k);
-                            item.label(cx, ids!(v)).set_text(cx, v);
+                            item.label(cx, ids!(row.k)).set_text(cx, k);
+                            item.label(cx, ids!(row.v)).set_text(cx, v);
                             item
                         }
                         ReportRow::Line(t) => {
@@ -10196,13 +10668,51 @@ fn printers_found_rows(t: impl Fn(&str) -> String) -> (String, Vec<ReportRow>) {
     (intro.trim_end().to_string(), found.into_iter().map(ReportRow::Line).collect())
 }
 
+/// Settings → areas / stations / tax rates On/Off (same pattern as units).
+fn sibling_pickers_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<ReportRow> {
+    let on_off = |on: bool| {
+        if on {
+            t("unit_picker_on")
+        } else {
+            t("unit_picker_off")
+        }
+    };
+    let mut rows = Vec::new();
+    rows.push(ReportRow::Head("Areas".into()));
+    for (name, on) in store.list_picker_areas().unwrap_or_default() {
+        rows.push(ReportRow::Kv(format!("area:{name}"), on_off(on)));
+    }
+    rows.push(ReportRow::Head("Stations".into()));
+    for s in store.list_stations().unwrap_or_default() {
+        rows.push(ReportRow::Kv(
+            format!("station:{} · {}", s.id, s.name),
+            on_off(s.picker_enabled),
+        ));
+    }
+    rows.push(ReportRow::Head("Tax rates".into()));
+    for r in store.list_tax_rates().unwrap_or_default() {
+        rows.push(ReportRow::Kv(
+            format!("tax:{} · {}", r.id, r.name),
+            on_off(r.picker_enabled),
+        ));
+    }
+    rows
+}
+
 /// Settings → Units as rows: each family's units from smallest to largest
 /// with what one of them is in the family's anchor (what books record),
-/// units not linked to a standard yet, then the conversions grouped by the
-/// unit they start from.
-fn units_report_rows(store: &Store) -> Vec<ReportRow> {
+/// On/Off for pickers, units not linked to a standard yet, then the
+/// conversions grouped by the unit they start from.
+fn units_report_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<ReportRow> {
     let units = store.list_units().unwrap_or_default();
     let convs = store.list_unit_conversions().unwrap_or_default();
+    let on_off = |u: &domain::UnitDef| {
+        if u.picker_enabled {
+            t("unit_picker_on")
+        } else {
+            t("unit_picker_off")
+        }
+    };
     let name = |u: &domain::UnitDef| {
         if u.builtin {
             format!("{} — {}", u.code, u.name)
@@ -10218,12 +10728,15 @@ fn units_report_rows(store: &Store) -> Vec<ReportRow> {
             .filter_map(|u| {
                 let (unit_family, factor) = store.resolve_unit(&u.code)?;
                 (unit_family == family).then(|| {
-                    let value = if u.code == anchor {
+                    let detail = if u.code == anchor {
                         "base unit".to_string()
                     } else {
                         format!("1 {} = {} {anchor}", u.code, precise::format_kg(factor))
                     };
-                    (factor, ReportRow::Kv(name(u), value))
+                    (
+                        factor,
+                        ReportRow::Kv(format!("{} · {detail}", name(u)), on_off(u)),
+                    )
                 })
             })
             .collect();
@@ -10239,7 +10752,7 @@ fn units_report_rows(store: &Store) -> Vec<ReportRow> {
     let unlinked: Vec<ReportRow> = units
         .iter()
         .filter(|u| store.resolve_unit(&u.code).is_none())
-        .map(|u| ReportRow::Line(name(u)))
+        .map(|u| ReportRow::Kv(name(u), on_off(u)))
         .collect();
     if !unlinked.is_empty() {
         rows.push(ReportRow::Head("Not linked to a standard unit yet".into()));
@@ -10370,10 +10883,11 @@ struct KitchenList {
 
 impl Widget for KitchenList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (kots, lang) = {
+        let (kots, stations, lang) = {
             let st = app_state().lock().unwrap();
-            (st.open_kots.clone(), st.locale.language.clone())
+            (st.open_kots.clone(), st.stations.clone(), st.locale.language.clone())
         };
+        let now = chrono::Local::now();
         let count = kots.len();
         let row = *kot_row_height().lock().unwrap();
         let walk = Walk {
@@ -10394,20 +10908,35 @@ impl Widget for KitchenList {
                     } else {
                         kot.station_name.clone()
                     };
-                    let time = kot
-                        .created_at
-                        .split('T')
-                        .nth(1)
-                        .and_then(|t| t.split('.').next())
-                        .unwrap_or(kot.created_at.as_str());
+                    let mins = chrono::DateTime::parse_from_rfc3339(&kot.created_at)
+                        .map(|at| {
+                            now.signed_duration_since(at.with_timezone(&chrono::Local))
+                                .num_minutes()
+                                .max(0)
+                        })
+                        .unwrap_or(0);
+                    let target = stations
+                        .iter()
+                        .find(|s| s.id == kot.station_id)
+                        .map(|s| s.target_prep_mins)
+                        .unwrap_or(15);
+                    let band = domain::kot_age_band(mins, target);
+                    item.view(cx, ids!(kotcard.bg_ok))
+                        .set_visible(cx, band == domain::KotAgeBand::Normal);
+                    item.view(cx, ids!(kotcard.bg_amber))
+                        .set_visible(cx, band == domain::KotAgeBand::Amber);
+                    item.view(cx, ids!(kotcard.bg_red))
+                        .set_visible(cx, band == domain::KotAgeBand::Red);
                     // KOT number first (kitchens call tickets by number); a
                     // cancel slip says so before anything else; who sent it.
                     let number = if kot.kot_no > 0 { format!("#{} · ", kot.kot_no) } else { String::new() };
                     let cancel = if kot.is_cancel() { "✕ CANCEL · " } else { "" };
                     let by = if kot.created_by.is_empty() { String::new() } else { format!(" · {}", kot.created_by) };
-                    item.widget(cx, ids!(title)).set_text(
+                    item.widget(cx, ids!(kotcard.title)).set_text(
                         cx,
-                        &plain_display_text(&format!("{cancel}{number}{station} · {time}{by}")),
+                        &plain_display_text(&format!(
+                            "{cancel}{number}{station} · {mins} min{by}"
+                        )),
                     );
                     // Summary is capped at draw: PortalList rows share one
                     // measured height, so an unbounded multi-line summary
@@ -10419,7 +10948,7 @@ impl Widget for KitchenList {
                     } else {
                         summary
                     };
-                    item.widget(cx, ids!(summary))
+                    item.widget(cx, ids!(kotcard.summary))
                         .set_text(cx, &plain_display_text(&summary));
                     let (state, next) = match kot.status {
                         KotStatus::New => (
@@ -10443,8 +10972,8 @@ impl Widget for KitchenList {
                             locale::t(&lang, "kot_done_btn"),
                         ),
                     };
-                    item.label(cx, ids!(state)).set_text(cx, &state);
-                    item.button(cx, ids!(advance)).set_text(cx, &next);
+                    item.label(cx, ids!(kotcard.state)).set_text(cx, &state);
+                    item.button(cx, ids!(kotcard.advance)).set_text(cx, &next);
                     item.draw_all_unscoped(cx);
                 }
                 if count > 0 {
@@ -12145,6 +12674,47 @@ impl App {
                 self.set_report_rows(cx, ids!(stations_label), station_rows);
             }
             {
+                let (heading, rows, has) = {
+                    let st = app_state().lock().unwrap();
+                    let recent = st
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.list_recent_completed_kots(8).ok())
+                        .unwrap_or_default();
+                    let has = !recent.is_empty();
+                    let rows: Vec<ReportRow> = recent
+                        .into_iter()
+                        .map(|k| {
+                            let num = if k.kot_no > 0 {
+                                format!("#{} ", k.kot_no)
+                            } else {
+                                String::new()
+                            };
+                            ReportRow::Line(format!(
+                                "{num}{} · {}",
+                                if k.station_name.is_empty() {
+                                    st.t("kitchen")
+                                } else {
+                                    k.station_name
+                                },
+                                k.summary.chars().take(60).collect::<String>()
+                            ))
+                        })
+                        .collect();
+                    (st.t("recently_done"), rows, has)
+                };
+                self.ui
+                    .widget(cx, ids!(recently_done_heading))
+                    .set_text(cx, &plain_display_text(&heading));
+                self.ui
+                    .widget(cx, ids!(recently_done_heading))
+                    .set_visible(cx, has);
+                self.set_report_rows(cx, ids!(recently_done_label), rows);
+                self.ui
+                    .widget(cx, ids!(recently_done_label))
+                    .set_visible(cx, has);
+            }
+            {
                 let st = app_state().lock().unwrap();
                 let none = st.reservations.is_empty();
                 self.ui.widget(cx, ids!(resv_heading)).set_text(cx, &plain_display_text(&st.t("resv_heading")));
@@ -12724,6 +13294,10 @@ impl App {
                 let splitting = table_open && st.split_mode;
                 self.ui.view(cx, ids!(split_bar)).set_visible(cx, splitting);
                 self.ui.button(cx, ids!(table_split_btn)).set_text(cx, &st.t("split_bill"));
+                self.ui.button(cx, ids!(split_evenly_btn)).set_text(cx, &st.t("split_evenly"));
+                self.ui.button(cx, ids!(fire_course_btn)).set_text(cx, &st.t("fire_course"));
+                self.ui.button(cx, ids!(hold_item_btn)).set_text(cx, &st.t("hold_item"));
+                self.ui.button(cx, ids!(waiter_call_btn)).set_text(cx, &st.t("waiter_call"));
                 self.ui.button(cx, ids!(split_go)).set_text(cx, &st.t("split_go"));
                 self.ui.button(cx, ids!(split_cancel)).set_text(cx, &st.t("cancel"));
                 let help = st.t("split_help").replace("{n}", &st.split_pick.len().to_string());
@@ -12817,12 +13391,39 @@ impl App {
             };
             self.ui.widget(cx, ids!(floor_summary)).set_text(cx, &plain_display_text(&summary));
             for (id, text) in [
-                ids!(lg_free), ids!(lg_kitchen), ids!(lg_ready), ids!(lg_eating), ids!(lg_bill), ids!(lg_paid),
+                ids!(lg_free),
+                ids!(lg_seated),
+                ids!(lg_kitchen),
+                ids!(lg_ready),
+                ids!(lg_eating),
+                ids!(lg_bill),
+                ids!(lg_paid),
             ]
             .into_iter()
             .zip(legend.iter())
             {
                 self.ui.label(cx, id).set_text(cx, text);
+            }
+            let (layout_on, sel_heading) = {
+                let st = app_state().lock().unwrap();
+                let heading = st.floor_layout_sel.as_ref().and_then(|id| {
+                    st.tables.iter().find(|t| &t.id == id).map(|t| {
+                        format!("{} — {}", st.t("floor_layout_edit"), t.name)
+                    })
+                });
+                (st.floor_view_layout, heading)
+            };
+            self.paint_choice_pair(cx, ids!(floor_grid_btn), ids!(floor_grid_btn_on), !layout_on);
+            self.paint_choice_pair(cx, ids!(floor_layout_btn), ids!(floor_layout_btn_on), layout_on);
+            self.ui.widget(cx, ids!(floor_list)).set_visible(cx, !layout_on);
+            self.ui.widget(cx, ids!(floor_layout_list)).set_visible(cx, layout_on);
+            self.ui
+                .view(cx, ids!(floor_layout_editor))
+                .set_visible(cx, layout_on && sel_heading.is_some());
+            if let Some(heading) = sel_heading {
+                self.ui
+                    .widget(cx, ids!(floor_layout_edit_heading))
+                    .set_text(cx, &plain_display_text(&heading));
             }
         }
         // Team: who is being edited, and their rights (draft until Save).
@@ -12843,6 +13444,8 @@ impl App {
                 (ids!(feat_items), ids!(feat_items_on), on.items),
                 (ids!(feat_sales), ids!(feat_sales_on), on.sales),
                 (ids!(feat_credit), ids!(feat_credit_on), on.credit),
+                (ids!(feat_floor), ids!(feat_floor_on), on.floor),
+                (ids!(feat_kitchen), ids!(feat_kitchen_on), on.kitchen),
                 (ids!(feat_team), ids!(feat_team_on), on.team),
                 (ids!(feat_backup), ids!(feat_backup_on), on.backup),
                 (ids!(feat_inventory), ids!(feat_inventory_on), on.inventory),
@@ -12992,9 +13595,34 @@ impl App {
             }
             let units_rows = {
                 let st = app_state().lock().unwrap();
-                st.store.as_ref().map(units_report_rows).unwrap_or_default()
+                st.store
+                    .as_ref()
+                    .map(|s| units_report_rows(s, |k| st.t(k)))
+                    .unwrap_or_default()
             };
             self.set_report_rows(cx, ids!(units_label), units_rows);
+            let sibling_rows = {
+                let st = app_state().lock().unwrap();
+                st.store
+                    .as_ref()
+                    .map(|s| sibling_pickers_rows(s, |k| st.t(k)))
+                    .unwrap_or_default()
+            };
+            self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
+            {
+                let filter = self.ui.text_input(cx, ids!(floor_waiter_filter)).text();
+                let mut st = app_state().lock().unwrap();
+                st.floor_waiter_filter = filter;
+                let ops = st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.ops_panel_text().ok())
+                    .unwrap_or_else(|| st.ops_panel_text.clone());
+                drop(st);
+                self.ui
+                    .widget(cx, ids!(floor_ops_label))
+                    .set_text(cx, &plain_display_text(&ops));
+            }
             // A blank line is a line break in a WrapLabel (markdown): the
             // product name, what it is, and how it works each on their own.
             let tmpl_hint = if tmpl.how_to.is_empty() {
@@ -13148,6 +13776,8 @@ impl App {
                 items,
                 sales,
                 credit,
+                floor_feat,
+                kitchen_feat,
                 team,
                 backup,
                 inventory,
@@ -13161,13 +13791,18 @@ impl App {
                         s.can_access_items(),
                         s.can_access_sales(),
                         s.can_access_credit(),
+                        s.can_access_floor() || s.is_owner(),
+                        s.can_access_kitchen() || s.is_owner(),
                         s.can_access_team() || s.is_owner(),
                         s.can_access_backup() || s.is_owner(),
                         s.can_access_inventory() || s.is_owner(),
                         s.can_access_branches() || s.is_owner(),
                         s.is_owner(),
                     ),
-                    None => (false, false, false, false, false, false, false, false, false),
+                    None => (
+                        false, false, false, false, false, false, false, false, false, false,
+                        false,
+                    ),
                 }
             };
             let (is_client, is_shop, extra_tills, branch_count) = {
@@ -13232,12 +13867,12 @@ impl App {
                 };
                 for (slot, tab) in order.iter().enumerate() {
                     let visible = match tab {
-                        NavTab::Books
-                        | NavTab::Sell
-                        | NavTab::Buy
-                        | NavTab::Lock => true,
+                        NavTab::Sell | NavTab::Lock => true,
+                        NavTab::Books => books_ok,
+                        NavTab::Buy => buy_ok,
                         NavTab::Menu => items,
-                        NavTab::Floor | NavTab::Kitchen => sales && floor_on,
+                        NavTab::Floor => floor_feat && floor_on,
+                        NavTab::Kitchen => kitchen_feat && floor_on,
                         NavTab::Sales => sales,
                         NavTab::DayClose | NavTab::Reports => sales || is_owner,
                         NavTab::Inventory => inventory && !is_client,
@@ -13884,6 +14519,7 @@ impl App {
         self.align_label(cx, ids!(h_product_only_khaynjo), rtl);
         self.align_label(cx, ids!(h_brand_shown_help), rtl);
         self.align_label(cx, ids!(h_units_help), rtl);
+        self.align_label(cx, ids!(h_units_picker_help), rtl);
         self.align_label(cx, ids!(h_kot_print_help_khaynjo), rtl);
         self.align_label(cx, ids!(h_restore_help), rtl);
         self.align_label(cx, ids!(h_day_close_help), rtl);
@@ -14122,6 +14758,10 @@ impl App {
             (ids!(table_range_add), "add_these_tables"),
             (ids!(client_find_btn), "find_server"),
             (ids!(bill_format_save), "save_bill_format"),
+            (ids!(scheme_add), "add_scheme"),
+            (ids!(show_upi_qr), "show_upi_qr"),
+            (ids!(upi_qr_close), "close_upi_qr"),
+            (ids!(recall_kot_btn), "kot_recall"),
             (ids!(discount_toggle), "discount"),
             (ids!(discount_remove), "remove_discount"),
             (ids!(discount_apply), "apply_discount"),
@@ -14148,6 +14788,11 @@ impl App {
             (ids!(table_range_input), "table_range_ph"),
             (ids!(bill_header_input), "bill_header_ph"),
             (ids!(fssai_input), "fssai_ph"),
+            (ids!(upi_vpa_input), "upi_vpa_ph"),
+            (ids!(upi_payee_input), "upi_payee_ph"),
+            (ids!(scheme_bogo_input), "scheme_bogo_ph"),
+            (ids!(menu_schedule_input), "schedule_ph"),
+            (ids!(recall_kot_input), "recall_kot_ph"),
             (ids!(bill_footer_input), "bill_footer_ph"),
             (ids!(team_pick_input), "team_pick_ph"),
             (ids!(menu_variations_input), "sizes_as_items_ph"),
@@ -14173,6 +14818,9 @@ impl App {
             (ids!(move_help), "move_help"),
             (ids!(h_bill_format), "bill_format"),
             (ids!(h_bill_format_help), "bill_format_help"),
+            (ids!(h_schemes), "schemes"),
+            (ids!(h_schemes_help), "schemes_help"),
+            (ids!(upi_qr_help), "upi_qr_help"),
             (ids!(h_rights_help), "rights_help"),
             (ids!(h_opening_float), "opening_float"),
             (ids!(h_shift_close), "shift_handover"),
@@ -14235,6 +14883,9 @@ impl App {
         self.ui.widget(cx, ids!(h_product_only_khaynjo)).set_text(cx, &plain_display_text(&s("product_only_khaynjo")));
         self.ui.widget(cx, ids!(h_brand_shown_help)).set_text(cx, &plain_display_text(&s("brand_shown_help")));
         self.ui.widget(cx, ids!(h_units_help)).set_text(cx, &plain_display_text(&s("units_help")));
+        self.ui
+            .widget(cx, ids!(h_units_picker_help))
+            .set_text(cx, &plain_display_text(&s("units_picker_help")));
         self.ui.widget(cx, ids!(h_kot_print_help_khaynjo)).set_text(cx, &plain_display_text(&s("kot_print_help_khaynjo")));
         self.ui.widget(cx, ids!(h_restore_help)).set_text(cx, &plain_display_text(&s("restore_help")));
         self.ui.widget(cx, ids!(h_day_close_help)).set_text(cx, &plain_display_text(&s("day_close_help")));
@@ -14368,10 +15019,14 @@ impl App {
         self.ui.button(cx, ids!(feat_branches_on)).set_text(cx, &s("branches"));
         self.ui.button(cx, ids!(feat_credit)).set_text(cx, &s("credit"));
         self.ui.button(cx, ids!(feat_credit_on)).set_text(cx, &s("credit"));
+        self.ui.button(cx, ids!(feat_floor)).set_text(cx, &s("floor"));
+        self.ui.button(cx, ids!(feat_floor_on)).set_text(cx, &s("floor"));
         self.ui.button(cx, ids!(feat_inventory)).set_text(cx, &s("inventory"));
         self.ui.button(cx, ids!(feat_inventory_on)).set_text(cx, &s("inventory"));
         self.ui.button(cx, ids!(feat_items)).set_text(cx, &s("items"));
         self.ui.button(cx, ids!(feat_items_on)).set_text(cx, &s("items"));
+        self.ui.button(cx, ids!(feat_kitchen)).set_text(cx, &s("kitchen"));
+        self.ui.button(cx, ids!(feat_kitchen_on)).set_text(cx, &s("kitchen"));
         self.ui.button(cx, ids!(feat_sales)).set_text(cx, &s("sales"));
         self.ui.button(cx, ids!(feat_sales_on)).set_text(cx, &s("sales"));
         self.ui.button(cx, ids!(feat_save)).set_text(cx, &s("save_features"));
@@ -14427,6 +15082,24 @@ impl App {
         self.ui.text_input(cx, ids!(reason_input)).set_empty_text(cx, s("reason_amend_ph"));
         self.ui.button(cx, ids!(receipt_print_btn)).set_text(cx, &s("print_open"));
         self.ui.button(cx, ids!(receipt_share_btn)).set_text(cx, &s("copy_receipt"));
+        self.ui.button(cx, ids!(receipt_whatsapp_btn)).set_text(cx, &s("share_whatsapp"));
+        self.ui.button(cx, ids!(waitlist_add)).set_text(cx, &s("waitlist_add"));
+        self.ui.button(cx, ids!(bulk_price_apply)).set_text(cx, &s("bulk_price_apply"));
+        self.ui
+            .widget(cx, ids!(floor_ops_heading))
+            .set_text(cx, &plain_display_text(&s("ops_panel")));
+        self.ui
+            .widget(cx, ids!(waitlist_heading))
+            .set_text(cx, &plain_display_text(&s("waitlist")));
+        self.ui
+            .widget(cx, ids!(sibling_pickers_help))
+            .set_text(cx, &plain_display_text(&s("sibling_pickers_help")));
+        self.ui
+            .widget(cx, ids!(lan_pages_help_label))
+            .set_text(cx, &plain_display_text(&s("lan_pages_help")));
+        self.ui
+            .widget(cx, ids!(card_terminal_note))
+            .set_text(cx, &plain_display_text(&s("card_terminal_optional")));
         self.ui.button(cx, ids!(refund_btn)).set_text(cx, &s("refund"));
         self.ui.button(cx, ids!(reports_copy)).set_text(cx, &s("copy_report"));
         self.ui.button(cx, ids!(restore_btn)).set_text(cx, &s("restore_backup"));
@@ -14520,6 +15193,20 @@ impl App {
         self.ui.text_input(cx, ids!(branch_code_input)).set_empty_text(cx, s("short_code_ph"));
         self.ui.widget(cx, ids!(order_help)).set_text(cx, &plain_display_text(&s("order_help")));
         self.ui.widget(cx, ids!(floor_heading)).set_text(cx, &plain_display_text(&s("floor")));
+        self.ui.button(cx, ids!(floor_grid_btn)).set_text(cx, &s("floor_view_grid"));
+        self.ui.button(cx, ids!(floor_grid_btn_on)).set_text(cx, &s("floor_view_grid"));
+        self.ui.button(cx, ids!(floor_layout_btn)).set_text(cx, &s("floor_view_layout"));
+        self.ui.button(cx, ids!(floor_layout_btn_on)).set_text(cx, &s("floor_view_layout"));
+        self.ui.text_input(cx, ids!(layout_x_input)).set_empty_text(cx, s("floor_layout_x"));
+        self.ui.text_input(cx, ids!(layout_y_input)).set_empty_text(cx, s("floor_layout_y"));
+        self.ui.text_input(cx, ids!(layout_w_input)).set_empty_text(cx, s("floor_layout_w"));
+        self.ui.text_input(cx, ids!(layout_h_input)).set_empty_text(cx, s("floor_layout_h"));
+        self.ui.button(cx, ids!(layout_save)).set_text(cx, &s("floor_layout_save"));
+        self.ui.button(cx, ids!(layout_open)).set_text(cx, &s("floor_layout_open"));
+        self.ui.button(cx, ids!(layout_nudge_left)).set_text(cx, &s("floor_layout_nudge_left"));
+        self.ui.button(cx, ids!(layout_nudge_right)).set_text(cx, &s("floor_layout_nudge_right"));
+        self.ui.button(cx, ids!(layout_nudge_up)).set_text(cx, &s("floor_layout_nudge_up"));
+        self.ui.button(cx, ids!(layout_nudge_down)).set_text(cx, &s("floor_layout_nudge_down"));
         self.ui.widget(cx, ids!(floor_add_heading)).set_text(cx, &plain_display_text(&s("add_a_table")));
         self.ui.widget(cx, ids!(kitchen_heading)).set_text(cx, &plain_display_text(&s("kitchen")));
         self.ui.widget(cx, ids!(kitchen_help)).set_text(cx, &plain_display_text(&s("kitchen_help")));
@@ -15407,10 +16094,26 @@ impl App {
 
     /// Settings → Bill format shows what the books hold.
     fn fill_bill_format_fields(&mut self, cx: &mut Cx) {
-        let (header, fssai, footer) = {
+        let (header, fssai, footer, upi_vpa, upi_payee, scheme_rows) = {
             let st = app_state().lock().unwrap();
             let Some(store) = st.store.as_ref() else {
                 return;
+            };
+            let scheme_rows: Vec<ReportRow> = {
+                let schemes = store.list_schemes().unwrap_or_default();
+                if schemes.is_empty() {
+                    vec![ReportRow::Line("No schemes yet.".into())]
+                } else {
+                    schemes
+                        .into_iter()
+                        .map(|s| {
+                            ReportRow::Kv(
+                                s.name,
+                                format!("{}{}", s.kind.as_str(), if s.active { "" } else { " · off" }),
+                            )
+                        })
+                        .collect()
+                }
             };
             (
                 store.bill_header_lines().unwrap_or_default()
@@ -15420,11 +16123,17 @@ impl App {
                     .join(" | "),
                 store.fssai_no().unwrap_or_default(),
                 store.bill_footer().unwrap_or_default(),
+                store.upi_vpa().unwrap_or_default(),
+                store.upi_payee().unwrap_or_default(),
+                scheme_rows,
             )
         };
         self.ui.text_input(cx, ids!(bill_header_input)).set_text(cx, &header);
         self.ui.text_input(cx, ids!(fssai_input)).set_text(cx, &fssai);
+        self.ui.text_input(cx, ids!(upi_vpa_input)).set_text(cx, &upi_vpa);
+        self.ui.text_input(cx, ids!(upi_payee_input)).set_text(cx, &upi_payee);
         self.ui.text_input(cx, ids!(bill_footer_input)).set_text(cx, &footer);
+        self.set_report_rows(cx, ids!(schemes_label), scheme_rows);
     }
 
 
@@ -17148,6 +17857,40 @@ impl App {
     /// picked, nothing typed. On a desktop the search box takes the keys at
     /// once; on a tablet the keyboard waits for a tap on it (it would hide
     /// half the dishes).
+    fn open_upi_qr_modal(&mut self, cx: &mut Cx) {
+        let result = (|| -> Result<(String, String, Vec<u8>), String> {
+            let st = app_state().lock().unwrap();
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            let vpa = store.upi_vpa()?;
+            let payee = store.upi_payee()?;
+            let amount = {
+                let mut cart = st.cart.clone();
+                let _ = store.apply_schemes_to_cart(&mut cart);
+                let draft = cart.to_sale_draft()?;
+                store.preview_sale_total(&draft)?
+            };
+            let uri = upi_qr::upi_pay_uri(&vpa, &payee, amount)?;
+            let png = upi_qr::upi_qr_png(&uri, 8)?;
+            let title_amt = st.money(Money(amount));
+            Ok((format!("UPI {title_amt}"), title_amt, png))
+        })();
+        match result {
+            Ok((title, amount, png)) => {
+                self.ui
+                    .label(cx, ids!(upi_qr_title))
+                    .set_text(cx, &title);
+                self.ui
+                    .label(cx, ids!(upi_qr_amount))
+                    .set_text(cx, &amount);
+                let img = self.ui.image(cx, ids!(upi_qr_image));
+                let _ = img.load_image_from_data(cx, &png);
+                img.redraw(cx);
+                self.ui.modal(cx, ids!(upi_qr_modal)).open(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
     fn open_menu_window(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
@@ -17349,6 +18092,110 @@ impl App {
         self.sync_chrome(cx);
     }
 
+    /// Select a table for the drawn-layout editor and fill X/Y/W/H fields.
+    fn select_floor_layout_table(&mut self, cx: &mut Cx, table_id: &str) {
+        let box_ = {
+            let mut st = app_state().lock().unwrap();
+            st.floor_layout_sel = Some(table_id.to_string());
+            st.tables
+                .iter()
+                .find(|t| t.id == table_id)
+                .map(|t| (t.layout_x, t.layout_y, t.layout_w, t.layout_h))
+        };
+        if let Some((x, y, w, h)) = box_ {
+            let w = if w > 0.0 { w } else { FLOOR_LAYOUT_PACK_W };
+            let h = if h > 0.0 { h } else { FLOOR_LAYOUT_PACK_H };
+            self.ui
+                .text_input(cx, ids!(layout_x_input))
+                .set_text(cx, &format!("{x:.0}"));
+            self.ui
+                .text_input(cx, ids!(layout_y_input))
+                .set_text(cx, &format!("{y:.0}"));
+            self.ui
+                .text_input(cx, ids!(layout_w_input))
+                .set_text(cx, &format!("{w:.0}"));
+            self.ui
+                .text_input(cx, ids!(layout_h_input))
+                .set_text(cx, &format!("{h:.0}"));
+        }
+        self.sync_chrome(cx);
+    }
+
+    fn parse_layout_fields(&mut self, cx: &mut Cx) -> Result<(f64, f64, f64, f64), String> {
+        let parse = |raw: String| -> Result<f64, String> {
+            let t = raw.trim().replace(',', ".");
+            if t.is_empty() {
+                return Ok(0.0);
+            }
+            t.parse::<f64>()
+                .map_err(|_| "Enter numbers for X Y W H".into())
+        };
+        let x = parse(self.ui.text_input(cx, ids!(layout_x_input)).text())?;
+        let y = parse(self.ui.text_input(cx, ids!(layout_y_input)).text())?;
+        let w = parse(self.ui.text_input(cx, ids!(layout_w_input)).text())?;
+        let h = parse(self.ui.text_input(cx, ids!(layout_h_input)).text())?;
+        Ok((x, y, w.max(40.0), h.max(40.0)))
+    }
+
+    fn save_floor_layout_fields(&mut self, cx: &mut Cx) {
+        let result = (|| -> Result<(), String> {
+            let (x, y, w, h) = self.parse_layout_fields(cx)?;
+            let mut st = app_state().lock().unwrap();
+            let tid = st
+                .floor_layout_sel
+                .clone()
+                .ok_or_else(|| st.t("floor_layout_pick"))?;
+            let actor = st.actor()?;
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            store.set_table_layout(&tid, x, y, w, h, &actor)?;
+            st.tables = store.list_tables()?;
+            Ok(())
+        })();
+        match result {
+            Ok(()) => {
+                self.set_status(cx, {
+                    let st = app_state().lock().unwrap();
+                    st.t("floor_layout_saved")
+                });
+                self.sync_chrome(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
+    fn nudge_floor_layout(&mut self, cx: &mut Cx, dx: f64, dy: f64) {
+        let cur = match self.parse_layout_fields(cx) {
+            Ok(v) => v,
+            Err(e) => {
+                self.set_status(cx, e);
+                return;
+            }
+        };
+        let (x, y, w, h) = (cur.0 + dx, (cur.1 + dy).max(0.0), cur.2, cur.3);
+        self.ui
+            .text_input(cx, ids!(layout_x_input))
+            .set_text(cx, &format!("{x:.0}"));
+        self.ui
+            .text_input(cx, ids!(layout_y_input))
+            .set_text(cx, &format!("{y:.0}"));
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            let tid = st
+                .floor_layout_sel
+                .clone()
+                .ok_or_else(|| st.t("floor_layout_pick"))?;
+            let actor = st.actor()?;
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            store.set_table_layout(&tid, x.max(0.0), y, w, h, &actor)?;
+            st.tables = store.list_tables()?;
+            Ok(())
+        })();
+        match result {
+            Ok(()) => self.sync_chrome(cx),
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
     /// Open a table from the floor: what it already has is the ticket; new
     /// taps go on the next KOT. On a paid table this seats new guests.
     /// In pick-table mode (Order → Choose / Change table), attaches or reseats
@@ -17456,7 +18303,33 @@ impl App {
         self.sync_chrome(cx);
     }
 
-    /// Free the table for the next guests (Paid tile, or Bill printed at ₹0).
+    /// Guests sat down — mark Free → Occupied without opening an order.
+    fn seat_table(&mut self, cx: &mut Cx, item_id: usize) {
+        let table = app_state()
+            .lock()
+            .unwrap()
+            .tables
+            .get(item_id)
+            .map(|t| (t.id.clone(), t.name.clone()));
+        let Some((table_id, name)) = table else {
+            return;
+        };
+        let done = format!("{name} occupied — guests seated");
+        let result = app_state().lock().unwrap().table_action(
+            net::RunningAction::SeatTable { table_id },
+            "",
+            &done,
+            phone::Follow::Refresh,
+        );
+        match result {
+            Ok(Acted::Here(_)) => self.set_status(cx, done),
+            Ok(Acted::Sent) => self.set_status(cx, format!("{name} — sending…")),
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
+    }
+
+    /// Free the table for the next guests (Paid tile, Seated empty, or Bill printed at ₹0).
     fn mark_table_ready(&mut self, cx: &mut Cx, item_id: usize) {
         let table = app_state()
             .lock()
@@ -18384,6 +19257,7 @@ impl App {
             ids!(menu_variations_input),
             ids!(menu_group_input),
             ids!(menu_area_prices_input),
+            ids!(menu_schedule_input),
             ids!(menu_recipe_input),
             ids!(menu_station_input),
         ] {
@@ -18437,17 +19311,19 @@ impl App {
                 let modifiers = modifiers_as_typed(&product.modifiers(), &currency);
                 let price = locale::format_major_input(product.price.paise(), &currency);
                 let area_prices = modifiers_as_typed(&product.area_prices(), &currency);
+                let schedule = schedule_as_typed(&product.schedule(), &currency);
                 let recipe = store
                     .and_then(|s| s.recipe(&product.id).ok())
                     .map(|r| store::recipe_as_typed(&r))
                     .unwrap_or_default();
-                Some((product, tax, category, aliases, modifiers, price, area_prices, recipe))
+                Some((product, tax, category, aliases, modifiers, price, area_prices, schedule, recipe))
             }
         };
-        let Some((product, tax, category, aliases, modifiers, price, area_prices, recipe)) = loaded else {
+        let Some((product, tax, category, aliases, modifiers, price, area_prices, schedule, recipe)) = loaded else {
             return;
         };
         self.ui.text_input(cx, ids!(menu_recipe_input)).set_text(cx, &recipe);
+        self.ui.text_input(cx, ids!(menu_schedule_input)).set_text(cx, &schedule);
         // Sizes are items of their own: the quick-entry field starts empty
         // (filling it adds more sizes as new items).
         self.ui.text_input(cx, ids!(menu_variations_input)).set_text(cx, "");
@@ -18636,6 +19512,7 @@ impl App {
         let variations_text = self.ui.text_input(cx, ids!(menu_variations_input)).text();
         let group_text = self.ui.text_input(cx, ids!(menu_group_input)).text();
         let area_prices_text = self.ui.text_input(cx, ids!(menu_area_prices_input)).text();
+        let schedule_text = self.ui.text_input(cx, ids!(menu_schedule_input)).text();
         let recipe_text = self.ui.text_input(cx, ids!(menu_recipe_input)).text();
         let station_text = self.ui.text_input(cx, ids!(menu_station_input)).text();
         let result = (|| -> Result<(), String> {
@@ -18778,6 +19655,8 @@ impl App {
             product.station_id = station_id;
             product.set_modifiers(&modifiers);
             product.set_area_prices(&area_prices);
+            let schedule = domain::ScheduleWindow::parse_human_list(&schedule_text, &currency)?;
+            product.set_schedule(&schedule);
             product.group_name = group_text.trim().to_string();
             if !sizes_only {
                 store.upsert_product(&product)?;
@@ -19593,12 +20472,14 @@ impl MatchEvent for App {
             }
             Some(NavTab::Floor) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Floor, |s| s.can_access_sell());
+                self.go_if_allowed(cx, Screen::Floor, |s| {
+                    s.can_access_floor() || s.is_owner()
+                });
             }
             Some(NavTab::Kitchen) => {
                 cx.set_key_focus(Area::Empty);
                 self.go_if_allowed(cx, Screen::Kitchen, |s| {
-                    s.can_access_sell() || s.is_owner()
+                    s.can_access_kitchen() || s.is_owner()
                 });
             }
             Some(NavTab::Sales) => {
@@ -19622,6 +20503,10 @@ impl MatchEvent for App {
             Some(NavTab::DayClose) => {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() && !actor.can_access_sales() {
+                        return Err("Not allowed".into());
+                    }
                     st.refresh_day_close_text()?;
                     st.screen = Screen::DayClose;
                     Ok(())
@@ -19710,6 +20595,10 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(books_day_close)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed".into());
+                }
                 st.refresh_day_close_text()?;
                 st.screen = Screen::DayClose;
                 Ok(())
@@ -20383,6 +21272,23 @@ impl MatchEvent for App {
                         && minor > 0
                 {
                     let _ = st.cart.set_charge_total(Money(minor));
+                }
+                let (schemes, products) = match st.store.as_ref() {
+                    Some(store) => (
+                        store.list_schemes().unwrap_or_default(),
+                        store.list_products(true).unwrap_or_default(),
+                    ),
+                    None => (Vec::new(), Vec::new()),
+                };
+                {
+                    let group_of = |id: &str| -> String {
+                        products
+                            .iter()
+                            .find(|p| p.id == id)
+                            .map(|p| p.group_name.clone())
+                            .unwrap_or_default()
+                    };
+                    let _ = schemes::apply_schemes(&mut st.cart, &schemes, &group_of);
                 }
                 let mut draft = st.cart.to_sale_draft()?;
                 draft.money_lane = st.money_lane;
@@ -21282,6 +22188,96 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(split_evenly_btn)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let tid = st
+                    .selected_table_id
+                    .clone()
+                    .ok_or_else(|| "Open a table first".to_string())?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or("No store")?;
+                let n = store
+                    .running_order(&tid)?
+                    .map(|o| o.live_lines().count().max(2) as i64)
+                    .unwrap_or(2);
+                let companions = store.split_evenly(&tid, n.min(8), &actor)?;
+                st.reload_all()?;
+                Ok(format!("Split into {} companion bill(s)", companions.len() + 1))
+            })();
+            match result {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(fire_course_btn)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let tid = st
+                    .selected_table_id
+                    .clone()
+                    .ok_or_else(|| "Open a table first".to_string())?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or("No store")?;
+                let ids = store.fire_course(&tid, 1, &actor)?;
+                st.reload_all()?;
+                Ok(if ids.is_empty() {
+                    "Nothing to fire for course 1".into()
+                } else {
+                    format!("Fired course 1 · {} KOT(s)", ids.len())
+                })
+            })();
+            match result {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(hold_item_btn)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let idx = st
+                    .open_cart_line
+                    .ok_or_else(|| "Tap a line on the ticket first".to_string())?;
+                let line_id = st
+                    .cart
+                    .lines
+                    .get(idx)
+                    .map(|l| l.running_line_id.clone())
+                    .filter(|id| !id.is_empty())
+                    .ok_or_else(|| "That line is not on the table order yet — Send KOT first or seat the table".to_string())?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or("No store")?;
+                store.set_line_held(&line_id, true, &actor)?;
+                st.reload_all()?;
+                Ok("Line held — Send KOT skips it until Fire course".into())
+            })();
+            match result {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(waiter_call_btn)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let tid = st
+                    .selected_table_id
+                    .clone()
+                    .ok_or_else(|| "Open a table first".to_string())?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or("No store")?;
+                store.queue_waiter_call(&tid, "service", &actor)?;
+                let _ = st.refresh_inventory_text();
+                Ok("Waiter call queued — clear from Floor ops".into())
+            })();
+            match result {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(split_cancel)).clicked(actions) {
             {
                 let mut st = app_state().lock().unwrap();
@@ -21440,14 +22436,156 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        // Floor view toggle: Grid ↔ Layout (drawn positions).
+        {
+            let (grid_hit, layout_hit) = {
+                let g = self.ui.button(cx, ids!(floor_grid_btn)).clicked(actions)
+                    || self.ui.button(cx, ids!(floor_grid_btn_on)).clicked(actions);
+                let l = self.ui.button(cx, ids!(floor_layout_btn)).clicked(actions)
+                    || self.ui.button(cx, ids!(floor_layout_btn_on)).clicked(actions);
+                (g, l)
+            };
+            if grid_hit || layout_hit {
+                let want_layout = layout_hit;
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    {
+                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                        store.set_floor_view(if want_layout { "layout" } else { "grid" })?;
+                    }
+                    st.floor_view_layout = want_layout;
+                    if want_layout {
+                        let packed = {
+                            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                            store.ensure_table_layouts_packed(&actor)?
+                        };
+                        if packed > 0 {
+                            st.tables = st
+                                .store
+                                .as_ref()
+                                .ok_or_else(|| "No store".to_string())?
+                                .list_tables()?;
+                        }
+                    } else {
+                        st.floor_layout_sel = None;
+                    }
+                    Ok(())
+                })();
+                match result {
+                    Ok(()) => {}
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        // Drawn layout: select a table for the editor; act button same as grid.
+        {
+            let layout_on = app_state().lock().unwrap().floor_view_layout;
+            if layout_on {
+                let widget = self.ui.widget(cx, ids!(floor_layout_list));
+                let canvas = widget.view(cx, ids!(canvas));
+                let slots = [
+                    ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5),
+                    ids!(t6), ids!(t7), ids!(t8), ids!(t9), ids!(t10), ids!(t11),
+                    ids!(t12), ids!(t13), ids!(t14), ids!(t15), ids!(t16), ids!(t17),
+                    ids!(t18), ids!(t19), ids!(t20), ids!(t21), ids!(t22), ids!(t23),
+                ];
+                let filtered_ids: Vec<String> = {
+                    let st = app_state().lock().unwrap();
+                    floor_filtered_tables(&st)
+                        .into_iter()
+                        .take(FLOOR_LAYOUT_SLOTS)
+                        .map(|t| t.id)
+                        .collect()
+                };
+                let mut tapped: Option<(usize, bool)> = None;
+                for (slot, path) in slots.iter().enumerate() {
+                    let tile = canvas.view(cx, *path);
+                    if tile.button(cx, ids!(act)).clicked(actions) {
+                        tapped = Some((slot, true));
+                    } else if tile.finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over) {
+                        tapped = Some((slot, false));
+                    }
+                }
+                if let Some((slot, action)) = tapped {
+                    if let Some(tid) = filtered_ids.get(slot).cloned() {
+                        let idx = {
+                            let st = app_state().lock().unwrap();
+                            st.tables.iter().position(|t| t.id == tid)
+                        };
+                        if let Some(idx) = idx {
+                            if action {
+                                let info = app_state()
+                                    .lock()
+                                    .unwrap()
+                                    .tables
+                                    .get(idx)
+                                    .map(|t| (t.floor_state, t.running_total_paise));
+                                match info {
+                                    Some((domain::FloorState::Free, _)) => {
+                                        self.seat_table(cx, idx)
+                                    }
+                                    Some((domain::FloorState::Seated, _))
+                                    | Some((domain::FloorState::Paid, _)) => {
+                                        self.mark_table_ready(cx, idx)
+                                    }
+                                    Some((domain::FloorState::BillPrinted, amount))
+                                        if amount <= 0 =>
+                                    {
+                                        self.mark_table_ready(cx, idx)
+                                    }
+                                    Some((domain::FloorState::BillPrinted, _)) => {
+                                        self.undo_table_bill(cx, idx)
+                                    }
+                                    Some(_) => self.request_table_bill(cx, idx),
+                                    None => {}
+                                }
+                            } else if app_state().lock().unwrap().picking_table {
+                                self.open_table(cx, idx);
+                            } else {
+                                self.select_floor_layout_table(cx, &tid);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Layout editor: save / nudge / open.
+        if self.ui.button(cx, ids!(layout_save)).clicked(actions) {
+            self.save_floor_layout_fields(cx);
+        }
+        if self.ui.button(cx, ids!(layout_open)).clicked(actions) {
+            let idx = {
+                let st = app_state().lock().unwrap();
+                st.floor_layout_sel
+                    .as_ref()
+                    .and_then(|id| st.tables.iter().position(|t| &t.id == id))
+            };
+            if let Some(idx) = idx {
+                self.open_table(cx, idx);
+            }
+        }
+        for (btn, dx, dy) in [
+            (ids!(layout_nudge_left), -20.0, 0.0),
+            (ids!(layout_nudge_right), 20.0, 0.0),
+            (ids!(layout_nudge_up), 0.0, -20.0),
+            (ids!(layout_nudge_down), 0.0, 20.0),
+        ] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                self.nudge_floor_layout(cx, dx, dy);
+            }
+        }
         // Floor grid: tap a tile to open (or seat) that table; its small
         // action asks for the bill (running) or marks it ready (paid).
-        {
+        if !app_state().lock().unwrap().floor_view_layout {
             let widget = self.ui.widget(cx, ids!(floor_list));
             let list = widget.portal_list(cx, ids!(list));
-            let rows = {
+            let (rows, filtered_ids) = {
                 let st = app_state().lock().unwrap();
-                floor_rows(&st.tables, floor_columns())
+                let tables = floor_filtered_tables(&st);
+                let ids: Vec<String> = tables.iter().map(|t| t.id.clone()).collect();
+                (floor_rows(&tables, floor_columns()), ids)
             };
             let slots = [
                 ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5), ids!(t6), ids!(t7),
@@ -21468,26 +22606,40 @@ impl MatchEvent for App {
                     }
                 }
             }
-            if let Some((idx, action)) = tapped {
-                let info = app_state()
-                    .lock()
-                    .unwrap()
-                    .tables
-                    .get(idx)
-                    .map(|t| (t.floor_state, t.running_total_paise));
-                match (action, info) {
-                    (true, Some((domain::FloorState::Paid, _))) => {
-                        self.mark_table_ready(cx, idx)
+            if let Some((filt_idx, action)) = tapped {
+                let idx = {
+                    let st = app_state().lock().unwrap();
+                    filtered_ids
+                        .get(filt_idx)
+                        .and_then(|id| st.tables.iter().position(|t| &t.id == id))
+                };
+                if let Some(idx) = idx {
+                    let info = app_state()
+                        .lock()
+                        .unwrap()
+                        .tables
+                        .get(idx)
+                        .map(|t| (t.floor_state, t.running_total_paise));
+                    match (action, info) {
+                        (true, Some((domain::FloorState::Free, _))) => {
+                            self.seat_table(cx, idx)
+                        }
+                        (true, Some((domain::FloorState::Seated, _))) => {
+                            self.mark_table_ready(cx, idx)
+                        }
+                        (true, Some((domain::FloorState::Paid, _))) => {
+                            self.mark_table_ready(cx, idx)
+                        }
+                        (true, Some((domain::FloorState::BillPrinted, amount))) if amount <= 0 => {
+                            self.mark_table_ready(cx, idx)
+                        }
+                        (true, Some((domain::FloorState::BillPrinted, _))) => {
+                            self.undo_table_bill(cx, idx)
+                        }
+                        (true, Some(_)) => self.request_table_bill(cx, idx),
+                        (false, Some(_)) => self.open_table(cx, idx),
+                        _ => {}
                     }
-                    (true, Some((domain::FloorState::BillPrinted, amount))) if amount <= 0 => {
-                        self.mark_table_ready(cx, idx)
-                    }
-                    (true, Some((domain::FloorState::BillPrinted, _))) => {
-                        self.undo_table_bill(cx, idx)
-                    }
-                    (true, Some(_)) => self.request_table_bill(cx, idx),
-                    (false, Some(_)) => self.open_table(cx, idx),
-                    _ => {}
                 }
             }
         }
@@ -21496,7 +22648,7 @@ impl MatchEvent for App {
             let widget = self.ui.widget(cx, ids!(kitchen_list));
             let list = widget.portal_list(cx, ids!(list));
             for (item_id, item) in list.items_with_actions(actions) {
-                let tapped = item.button(cx, ids!(advance)).clicked(actions)
+                let tapped = item.button(cx, ids!(kotcard.advance)).clicked(actions)
                     || item
                         .view(cx, ids!(kotcard))
                         .finger_up(actions)
@@ -22618,6 +23770,8 @@ impl MatchEvent for App {
             (ids!(feat_items), ids!(feat_items_on), "items"),
             (ids!(feat_sales), ids!(feat_sales_on), "sales"),
             (ids!(feat_credit), ids!(feat_credit_on), "credit"),
+            (ids!(feat_floor), ids!(feat_floor_on), "floor"),
+            (ids!(feat_kitchen), ids!(feat_kitchen_on), "kitchen"),
             (ids!(feat_team), ids!(feat_team_on), "team"),
             (ids!(feat_backup), ids!(feat_backup_on), "backup"),
             (ids!(feat_inventory), ids!(feat_inventory_on), "inventory"),
@@ -22630,6 +23784,8 @@ impl MatchEvent for App {
                     "items" => st.draft_features.items = !st.draft_features.items,
                     "sales" => st.draft_features.sales = !st.draft_features.sales,
                     "credit" => st.draft_features.credit = !st.draft_features.credit,
+                    "floor" => st.draft_features.floor = !st.draft_features.floor,
+                    "kitchen" => st.draft_features.kitchen = !st.draft_features.kitchen,
                     "team" => st.draft_features.team = !st.draft_features.team,
                     "backup" => st.draft_features.backup = !st.draft_features.backup,
                     "inventory" => st.draft_features.inventory = !st.draft_features.inventory,
@@ -22948,6 +24104,8 @@ impl MatchEvent for App {
             let header = self.ui.text_input(cx, ids!(bill_header_input)).text();
             let fssai = self.ui.text_input(cx, ids!(fssai_input)).text();
             let footer = self.ui.text_input(cx, ids!(bill_footer_input)).text();
+            let upi_vpa = self.ui.text_input(cx, ids!(upi_vpa_input)).text();
+            let upi_payee = self.ui.text_input(cx, ids!(upi_payee_input)).text();
             let result = (|| -> Result<(), String> {
                 let st = app_state().lock().unwrap();
                 st.require_server_role("Change the bill format")?;
@@ -22960,10 +24118,106 @@ impl MatchEvent for App {
                 st.store
                     .as_ref()
                     .ok_or_else(|| "No store".to_string())?
-                    .set_bill_format(&lines, &fssai, &footer)
+                    .set_bill_format_ex(&lines, &fssai, &footer, Some(&upi_vpa), Some(&upi_payee))
             })();
             match result {
-                Ok(()) => self.set_status(cx, "Bill format saved"),
+                Ok(()) => {
+                    self.fill_bill_format_fields(cx);
+                    self.set_status(cx, "Bill format saved");
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(scheme_add)).clicked(actions) {
+            let text = self.ui.text_input(cx, ids!(scheme_bogo_input)).text();
+            let result = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                st.require_server_role("Change schemes")?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let (buy_name, buy_qty, get_name, get_qty) =
+                    schemes::Scheme::parse_bogo_human(&text)
+                        .ok_or_else(|| "Type like: Buy 2 Thali get 1 Chaas".to_string())?;
+                let products = store.list_products(false)?;
+                let find = |name: &str| {
+                    products
+                        .iter()
+                        .find(|p| p.name.eq_ignore_ascii_case(name.trim()))
+                        .map(|p| p.id.clone())
+                        .ok_or_else(|| format!("No menu item named '{name}'"))
+                };
+                let buy_id = find(&buy_name)?;
+                let get_id = find(&get_name)?;
+                let scheme = schemes::Scheme::bogo(
+                    domain::new_id(),
+                    text.trim(),
+                    &buy_id,
+                    buy_qty,
+                    &get_id,
+                    get_qty,
+                );
+                store.upsert_scheme(&scheme)?;
+                Ok(format!("Added scheme: {}", scheme.name))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.fill_bill_format_fields(cx);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(show_upi_qr)).clicked(actions) {
+            self.open_upi_qr_modal(cx);
+        }
+        if self.ui.button(cx, ids!(upi_qr_close)).clicked(actions)
+            || self.ui.modal(cx, ids!(upi_qr_modal)).dismissed(actions)
+        {
+            self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
+        }
+        if self.ui.button(cx, ids!(recall_kot_btn)).clicked(actions) {
+            let typed = self.ui.text_input(cx, ids!(recall_kot_input)).text();
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let recent = store.list_recent_completed_kots(12)?;
+                let kot_id = if let Ok(n) = typed.trim().trim_start_matches('#').parse::<i64>() {
+                    recent
+                        .iter()
+                        .find(|k| k.kot_no == n)
+                        .map(|k| k.id.clone())
+                        .ok_or_else(|| format!("No finished KOT #{n} today"))?
+                } else if !typed.trim().is_empty() {
+                    recent
+                        .iter()
+                        .find(|k| k.id == typed.trim() || k.summary.contains(typed.trim()))
+                        .map(|k| k.id.clone())
+                        .or_else(|| recent.first().map(|k| k.id.clone()))
+                        .ok_or_else(|| "No finished ticket to recall".to_string())?
+                } else {
+                    recent
+                        .first()
+                        .map(|k| k.id.clone())
+                        .ok_or_else(|| "No finished ticket to recall".to_string())?
+                };
+                if st.device_role == DeviceRole::Client {
+                    st.lan_job(
+                        "/kot_recall",
+                        &net::RemoteKotAdvance { kot_id },
+                        "Recall ticket".into(),
+                        "Ticket recalled".into(),
+                        phone::Follow::Refresh,
+                        false,
+                    )?;
+                } else {
+                    store.recall_kot(&kot_id, &actor)?;
+                    st.refresh_live_lists();
+                }
+                Ok(())
+            })();
+            match result {
+                Ok(()) => self.set_status(cx, "Ticket recalled"),
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
@@ -23108,6 +24362,46 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(text) => self.copy_text_to_clipboard(cx, &text),
+                Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(receipt_whatsapp_btn)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                let sale_id = st
+                    .selected_sale_id
+                    .clone()
+                    .ok_or_else(|| "Select a sale first".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let text = store.format_receipt_text(&sale_id)?;
+                let url = store::whatsapp_bill_url(&text);
+                let phone = store
+                    .get_sale(&sale_id)?
+                    .and_then(|s| s.customer_id)
+                    .and_then(|cid| {
+                        st.customers
+                            .iter()
+                            .find(|c| c.id == cid)
+                            .map(|c| c.phone.clone())
+                    })
+                    .unwrap_or_default();
+                let sms = notify::queue_sms_bill(&phone, &text);
+                let _ = store.queue_notify(&sms);
+                Ok(url)
+            })();
+            match result {
+                Ok(url) => {
+                    self.copy_text_to_clipboard(cx, &url);
+                    #[cfg(target_os = "windows")]
+                    let _ = std::process::Command::new("cmd")
+                        .args(["/C", "start", "", &url])
+                        .spawn();
+                    #[cfg(target_os = "macos")]
+                    let _ = std::process::Command::new("open").arg(&url).spawn();
+                    #[cfg(all(not(target_os = "windows"), not(target_os = "macos")))]
+                    let _ = std::process::Command::new("xdg-open").arg(&url).spawn();
+                    self.set_status(cx, "WhatsApp share opened (Net optional on device)");
+                }
                 Err(e) => self.set_status(cx, e),
             }
         }
@@ -23395,6 +24689,61 @@ impl MatchEvent for App {
                     self.ui.text_input(cx, ids!(inv_qty_input)).set_text(cx, "");
                     self.set_status(cx, msg);
                 }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(waitlist_add)).clicked(actions) {
+            let name = self.ui.text_input(cx, ids!(wait_name_input)).text();
+            let party = self.ui.text_input(cx, ids!(wait_party_input)).text();
+            let mins = self.ui.text_input(cx, ids!(wait_mins_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or("No store")?;
+                let party_n: i64 = party.trim().parse().unwrap_or(2);
+                let wait_n: i64 = mins.trim().parse().unwrap_or(15);
+                store.add_waitlist(&name, party_n, wait_n, &actor)?;
+                let _ = st.refresh_inventory_text();
+                Ok(format!("Waitlist: {name}"))
+            })();
+            match result {
+                Ok(m) => {
+                    for id in [ids!(wait_name_input), ids!(wait_party_input), ids!(wait_mins_input)] {
+                        self.ui.text_input(cx, id).set_text(cx, "");
+                    }
+                    self.set_status(cx, m);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(bulk_price_apply)).clicked(actions) {
+            let cat = self.ui.text_input(cx, ids!(bulk_cat_input)).text();
+            let pct = self.ui.text_input(cx, ids!(bulk_pct_input)).text();
+            let set_amt = self.ui.text_input(cx, ids!(bulk_set_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Bulk price")?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or("No store")?;
+                let pct_i: Option<i64> = pct.trim().parse().ok();
+                let set_paise = if set_amt.trim().is_empty() {
+                    None
+                } else {
+                    let major: i64 = set_amt
+                        .trim()
+                        .replace(',', "")
+                        .parse()
+                        .map_err(|_| "Set amount must be a number".to_string())?;
+                    Some(domain::Money::from_rupees(major).paise())
+                };
+                let n = store.bulk_price_category(&cat, pct_i, set_paise, &actor)?;
+                st.reload_all()?;
+                Ok(format!("Updated {n} item(s) in {cat}"))
+            })();
+            match result {
+                Ok(m) => self.set_status(cx, m),
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
@@ -23752,6 +25101,120 @@ impl MatchEvent for App {
 
 
 
+        // Settings → Units: tap a unit row to turn it On/Off in pickers.
+        {
+            let widget = self.ui.widget(cx, ids!(units_label));
+            let list = widget.portal_list(cx, ids!(list));
+            let mut tapped: Option<usize> = None;
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item
+                    .view(cx, ids!(row))
+                    .finger_up(actions)
+                    .is_some_and(|e| e.was_tap() && e.is_over)
+                {
+                    tapped = Some(item_id);
+                }
+            }
+            if let Some(item_id) = tapped {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Change unit pickers")?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let rows = units_report_rows(store, |k| st.t(k));
+                    let code = match rows.get(item_id) {
+                        Some(ReportRow::Kv(k, _)) => k
+                            .split(" — ")
+                            .next()
+                            .map(|c| c.trim().to_string())
+                            .filter(|c| !c.is_empty()),
+                        _ => None,
+                    }
+                    .ok_or_else(|| "Not a unit row".to_string())?;
+                    let enabled = store
+                        .list_units()?
+                        .into_iter()
+                        .find(|u| u.code == code)
+                        .map(|u| u.picker_enabled)
+                        .unwrap_or(true);
+                    store.set_unit_picker_enabled(&code, !enabled, &actor)?;
+                    st.status = if enabled {
+                        format!("{code} hidden from pickers")
+                    } else {
+                        format!("{code} shown in pickers")
+                    };
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        {
+            let widget = self.ui.widget(cx, ids!(sibling_pickers_label));
+            let list = widget.portal_list(cx, ids!(list));
+            let mut tapped: Option<usize> = None;
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item
+                    .view(cx, ids!(row))
+                    .finger_up(actions)
+                    .is_some_and(|e| e.was_tap() && e.is_over)
+                {
+                    tapped = Some(item_id);
+                }
+            }
+            if let Some(item_id) = tapped {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Change pickers")?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let rows = sibling_pickers_rows(store, |k| st.t(k));
+                    let key = match rows.get(item_id) {
+                        Some(ReportRow::Kv(k, _)) => k.clone(),
+                        _ => return Err("Not a picker row".into()),
+                    };
+                    if let Some(name) = key.strip_prefix("area:") {
+                        let on = store
+                            .list_picker_areas()?
+                            .into_iter()
+                            .find(|(n, _)| n == name)
+                            .map(|(_, o)| o)
+                            .unwrap_or(true);
+                        store.set_area_picker_enabled(name, !on, &actor)?;
+                        st.status = format!("Area {name} picker {}", if on { "off" } else { "on" });
+                    } else if let Some(rest) = key.strip_prefix("station:") {
+                        let id = rest.split(" · ").next().unwrap_or("").trim();
+                        let on = store
+                            .list_stations()?
+                            .into_iter()
+                            .find(|s| s.id == id)
+                            .map(|s| s.picker_enabled)
+                            .unwrap_or(true);
+                        store.set_station_picker_enabled(id, !on, &actor)?;
+                        st.status = format!("Station picker {}", if on { "off" } else { "on" });
+                    } else if let Some(rest) = key.strip_prefix("tax:") {
+                        let id = rest.split(" · ").next().unwrap_or("").trim();
+                        let on = store
+                            .list_tax_rates()?
+                            .into_iter()
+                            .find(|r| r.id == id)
+                            .map(|r| r.picker_enabled)
+                            .unwrap_or(true);
+                        store.set_tax_rate_picker_enabled(id, !on, &actor)?;
+                        st.status = format!("Tax picker {}", if on { "off" } else { "on" });
+                    } else {
+                        return Err("Unknown picker row".into());
+                    }
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
         if self.ui.button(cx, ids!(unit_add)).clicked(actions) {
             let code = self.ui.text_input(cx, ids!(unit_code_input)).text();
             let name = self.ui.text_input(cx, ids!(unit_name_input)).text();
@@ -24193,7 +25656,12 @@ mod ux_rules_tests {
         store.add_unit("bag", "Bag").unwrap();
         store.add_unit_conversion("bag", "kg", 25_000).unwrap();
         store.add_unit("tray", "Tray").unwrap();
-        let rows = units_report_rows(&store);
+        let t = |k: &str| match k {
+            "unit_picker_on" => "On".into(),
+            "unit_picker_off" => "Off".into(),
+            _ => k.into(),
+        };
+        let rows = units_report_rows(&store, t);
         let heads: Vec<&str> = rows
             .iter()
             .filter_map(|r| match r {
@@ -24213,10 +25681,19 @@ mod ux_rules_tests {
             ]
         );
         let weight: Vec<&ReportRow> = rows.iter().skip(1).take_while(|r| !matches!(r, ReportRow::Head(_))).collect();
-        assert_eq!(weight.first(), Some(&&ReportRow::Kv("g — Gram".into(), "1 g = 0.001 kg".into())));
-        let kg = weight.iter().position(|r| **r == ReportRow::Kv("kg — Kilogram".into(), "base unit".into())).unwrap();
-        assert_eq!(*weight[kg + 1], ReportRow::Kv("bag — Bag (custom)".into(), "1 bag = 25 kg".into()));
-        assert!(rows.contains(&ReportRow::Line("tray — Tray (custom)".into())));
+        assert_eq!(
+            weight.first(),
+            Some(&&ReportRow::Kv("g — Gram · 1 g = 0.001 kg".into(), "On".into()))
+        );
+        let kg = weight
+            .iter()
+            .position(|r| **r == ReportRow::Kv("kg — Kilogram · base unit".into(), "On".into()))
+            .unwrap();
+        assert_eq!(
+            *weight[kg + 1],
+            ReportRow::Kv("bag — Bag (custom) · 1 bag = 25 kg".into(), "On".into())
+        );
+        assert!(rows.contains(&ReportRow::Kv("tray — Tray (custom)".into(), "On".into())));
         assert!(rows.contains(&ReportRow::Line("1 bag = 25 kg".into())));
         let _ = std::fs::remove_dir_all(home);
     }
@@ -24317,6 +25794,11 @@ mod floor_tests {
             area: area.into(),
             paid_at: String::new(),
             floor_state: Default::default(),
+            waiter_staff_id: String::new(),
+            layout_x: 0.0,
+            layout_y: 0.0,
+            layout_w: 0.0,
+            layout_h: 0.0,
         };
         let tables = vec![
             table("D1", "Dine In"),

@@ -1,7 +1,7 @@
 //! Core Kumkaj domain: integer money, catalog, cart, sales, staff, tables/KDS.
 
 use crate::fiscal::{self, FiscalSettings, TaxPricing};
-use chrono::Local;
+use chrono::{Local, Timelike};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
@@ -323,7 +323,12 @@ impl StaffRole {
     }
 
     pub fn can_kitchen(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager | Self::Kitchen)
+        // Cashier and Waiter also bump tickets: one-person shops and
+        // captains often clear "In kitchen" without a Kitchen login.
+        matches!(
+            self,
+            Self::Owner | Self::Manager | Self::Kitchen | Self::Cashier | Self::Waiter
+        )
     }
 
     pub fn can_admin(self) -> bool {
@@ -397,8 +402,10 @@ impl StaffFeatures {
                 items: false,
                 sales: false,
                 credit: true,
-                floor: false,
-                kitchen: false,
+                floor: true,
+                // Same device often is the kitchen screen — they must be
+                // able to clear "In kitchen" without a Kitchen login.
+                kitchen: true,
                 team: false,
                 backup: false,
                 inventory: false,
@@ -412,7 +419,9 @@ impl StaffFeatures {
                 sales: false,
                 credit: true,
                 floor: true,
-                kitchen: false,
+                // Captains bump Ready → Done when they serve; cooking Start
+                // still works if the shop has no separate kitchen tablet.
+                kitchen: true,
                 team: false,
                 backup: false,
                 inventory: false,
@@ -689,12 +698,32 @@ impl PeriodBooks {
 }
 
 /// Catalogue unit (builtin or owner-defined).
-#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct UnitDef {
     pub id: String,
     pub code: String,
     pub name: String,
     pub builtin: bool,
+    /// Shown in Buy / Menu / conversion pickers when true. Disabled units
+    /// stay for conversions but leave day-to-day dropdowns.
+    #[serde(default = "unit_picker_default_on")]
+    pub picker_enabled: bool,
+}
+
+fn unit_picker_default_on() -> bool {
+    true
+}
+
+impl Default for UnitDef {
+    fn default() -> Self {
+        Self {
+            id: String::new(),
+            code: String::new(),
+            name: String::new(),
+            builtin: false,
+            picker_enabled: true,
+        }
+    }
 }
 
 /// `1 from_code = (factor_milli / 1000) to_code` when qty is in milli-units:
@@ -1089,6 +1118,39 @@ pub struct KitchenStation {
     pub branch_id: String,
     pub name: String,
     pub sort_order: i64,
+    /// Target prep minutes for KDS ageing (amber at ~⅔, red at ~⁴⁄₃). Default 15.
+    #[serde(default = "default_target_prep_mins")]
+    pub target_prep_mins: i64,
+    /// Shown in station pickers when true (like units).
+    #[serde(default = "unit_picker_default_on")]
+    pub picker_enabled: bool,
+}
+
+fn default_target_prep_mins() -> i64 {
+    15
+}
+
+/// KDS ticket age band for colouring (normal / amber / red).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum KotAgeBand {
+    Normal,
+    Amber,
+    Red,
+}
+
+/// Age colour from minutes since `created_at` and the station's target.
+/// With the default target of 15: normal &lt;10, amber 10–20, red &gt;20.
+pub fn kot_age_band(minutes: i64, target_prep_mins: i64) -> KotAgeBand {
+    let target = target_prep_mins.max(1);
+    let amber_at = (target * 2 / 3).max(1);
+    let red_at = (target * 4 / 3).max(amber_at + 1);
+    if minutes < amber_at {
+        KotAgeBand::Normal
+    } else if minutes < red_at {
+        KotAgeBand::Amber
+    } else {
+        KotAgeBand::Red
+    }
 }
 
 /// One paid add-on for an item (`Extra cheese +₹20`).
@@ -1161,6 +1223,9 @@ pub struct TaxRate {
     pub code: String,
     pub bps: i64,
     pub active: bool,
+    /// Shown in tax pickers when true (like units).
+    #[serde(default = "unit_picker_default_on")]
+    pub picker_enabled: bool,
 }
 
 impl TaxRate {
@@ -1243,6 +1308,29 @@ pub struct Product {
     /// the menu.
     #[serde(default = "dish_kind")]
     pub kind: String,
+    /// Menu timings / happy-hour: JSON array of [`ScheduleWindow`]. Empty =
+    /// always available (still respects [`Self::available`]). Days: Mon=1 …
+    /// Sun=7.
+    #[serde(default = "empty_json_array")]
+    pub schedule_json: String,
+    /// Short allergen tags (`dairy, nuts`) printed on KOT.
+    #[serde(default)]
+    pub allergens: String,
+}
+
+/// One visibility and/or alternate-price window on a menu item.
+///
+/// Days use **Mon=1 … Sun=7** (ISO-ish; not chrono's Sun=0). Empty `days`
+/// means every day. `price_paise: None` is a visibility window (hide outside);
+/// `Some` is a happy-hour / timed price while still on the menu.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ScheduleWindow {
+    #[serde(default)]
+    pub days: Vec<u8>,
+    pub start: String,
+    pub end: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub price_paise: Option<i64>,
 }
 
 /// Cooked here and sold (on the menu; never bought).
@@ -1296,6 +1384,8 @@ impl Product {
             kind: ITEM_KIND_DISH.into(),
             group_name: String::new(),
             area_prices_json: "[]".into(),
+            schedule_json: "[]".into(),
+            allergens: String::new(),
         }
     }
 
@@ -1415,10 +1505,225 @@ impl Product {
         self.modifiers_json = ModifierOption::serialize_list(list);
     }
 
+    pub fn schedule(&self) -> Vec<ScheduleWindow> {
+        ScheduleWindow::parse_list(&self.schedule_json)
+    }
+
+    pub fn set_schedule(&mut self, windows: &[ScheduleWindow]) {
+        self.schedule_json = ScheduleWindow::serialize_list(windows);
+    }
+
+    /// Area price, then a timed/happy-hour override when `now` falls in a
+    /// priced schedule window.
+    pub fn price_now(&self, area: &str, now: chrono::DateTime<chrono::Local>) -> Money {
+        let base = self.price_in_area(area);
+        let Some(override_paise) = self.schedule().into_iter().find_map(|w| {
+            if w.price_paise.is_some() && w.contains(now) {
+                w.price_paise
+            } else {
+                None
+            }
+        }) else {
+            return base;
+        };
+        Money(override_paise)
+    }
+
+    /// Visibility: empty schedule → always (respect sold-out). If any
+    /// visibility-only windows exist, the item is shown only inside one of
+    /// them (priced windows do not themselves hide the item).
+    pub fn available_now(&self, now: chrono::DateTime<chrono::Local>) -> bool {
+        if !self.available || self.archived {
+            return false;
+        }
+        let windows = self.schedule();
+        if windows.is_empty() {
+            return true;
+        }
+        let visibility: Vec<_> = windows.iter().filter(|w| w.price_paise.is_none()).collect();
+        if visibility.is_empty() {
+            return true;
+        }
+        visibility.iter().any(|w| w.contains(now))
+    }
+
     /// Tax this item contributes for `amount_paise` under `pricing` — inside
     /// the amount when Inclusive, added on top when Exclusive.
     pub fn tax_for(&self, amount_paise: i64, pricing: TaxPricing) -> i64 {
         fiscal::tax_on_amount(amount_paise, self.tax_bps, pricing)
+    }
+}
+
+impl ScheduleWindow {
+    pub fn parse_list(json: &str) -> Vec<Self> {
+        let s = json.trim();
+        if s.is_empty() {
+            return Vec::new();
+        }
+        serde_json::from_str(s).unwrap_or_default()
+    }
+
+    pub fn serialize_list(list: &[Self]) -> String {
+        serde_json::to_string(list).unwrap_or_else(|_| "[]".into())
+    }
+
+    /// Human form like area prices: `Mon-Fri 07:00-11:00` (visibility) and/or
+    /// `HappyHour 17:00-19:00=150` (alt price). Comma-separated.
+    pub fn parse_human_list(text: &str, currency_code: &str) -> Result<Vec<Self>, String> {
+        let mut out = Vec::new();
+        for part in text.split(',') {
+            let part = part.trim();
+            if part.is_empty() {
+                continue;
+            }
+            out.push(Self::parse_one(part, currency_code)?);
+        }
+        Ok(out)
+    }
+
+    fn parse_one(part: &str, currency_code: &str) -> Result<Self, String> {
+        let (left, price_paise) = match part.rsplit_once('=') {
+            Some((l, p)) => {
+                let paise = crate::locale::parse_major_input(p.trim(), currency_code)
+                    .map_err(|_| format!("Bad schedule price in '{part}'"))?;
+                if paise < 0 {
+                    return Err("Schedule price cannot be negative".into());
+                }
+                (l.trim(), Some(paise))
+            }
+            None => (part, None),
+        };
+        // Optional leading label ("HappyHour ") before days/time.
+        let tokens: Vec<&str> = left.split_whitespace().collect();
+        if tokens.is_empty() {
+            return Err("Schedule window needs a time range".into());
+        }
+        let (days, time_tok) = if tokens.len() == 1 {
+            (Vec::new(), tokens[0])
+        } else if looks_like_time_range(tokens.last().copied().unwrap_or("")) {
+            let time = tokens[tokens.len() - 1];
+            let day_part = tokens[..tokens.len() - 1]
+                .iter()
+                .copied()
+                .filter(|t| parse_day_token(t).is_some() || t.contains('-'))
+                .collect::<Vec<_>>()
+                .join(" ");
+            let days = if day_part.is_empty() {
+                Vec::new()
+            } else {
+                parse_days(&day_part)?
+            };
+            (days, time)
+        } else {
+            return Err(format!("Schedule needs HH:MM-HH:MM in '{part}'"));
+        };
+        let (start, end) = parse_time_range(time_tok)?;
+        Ok(Self {
+            days,
+            start,
+            end,
+            price_paise,
+        })
+    }
+
+    /// True when `now`'s weekday (Mon=1…Sun=7) and clock fall in this window.
+    pub fn contains(&self, now: chrono::DateTime<chrono::Local>) -> bool {
+        use chrono::Datelike;
+        let dow = match now.weekday() {
+            chrono::Weekday::Mon => 1,
+            chrono::Weekday::Tue => 2,
+            chrono::Weekday::Wed => 3,
+            chrono::Weekday::Thu => 4,
+            chrono::Weekday::Fri => 5,
+            chrono::Weekday::Sat => 6,
+            chrono::Weekday::Sun => 7,
+        };
+        if !self.days.is_empty() && !self.days.contains(&dow) {
+            return false;
+        }
+        let mins = now.hour() as i32 * 60 + now.minute() as i32;
+        let start = parse_hhmm(&self.start).unwrap_or(0);
+        let end = parse_hhmm(&self.end).unwrap_or(24 * 60);
+        if start <= end {
+            mins >= start && mins < end
+        } else {
+            // Overnight window (22:00–02:00).
+            mins >= start || mins < end
+        }
+    }
+}
+
+fn looks_like_time_range(s: &str) -> bool {
+    s.contains(':') && s.contains('-')
+}
+
+fn parse_time_range(s: &str) -> Result<(String, String), String> {
+    let (a, b) = s
+        .split_once('-')
+        .ok_or_else(|| format!("Time range needs HH:MM-HH:MM, got '{s}'"))?;
+    let start = normalize_hhmm(a.trim())?;
+    let end = normalize_hhmm(b.trim())?;
+    Ok((start, end))
+}
+
+fn normalize_hhmm(s: &str) -> Result<String, String> {
+    let _ = parse_hhmm(s).ok_or_else(|| format!("Bad time '{s}' (want HH:MM)"))?;
+    let parts: Vec<_> = s.split(':').collect();
+    Ok(format!(
+        "{:02}:{:02}",
+        parts[0].parse::<u32>().unwrap_or(0),
+        parts.get(1).and_then(|p| p.parse().ok()).unwrap_or(0)
+    ))
+}
+
+fn parse_hhmm(s: &str) -> Option<i32> {
+    let (h, m) = s.split_once(':')?;
+    let h: i32 = h.parse().ok()?;
+    let m: i32 = m.parse().ok()?;
+    if (0..24).contains(&h) && (0..60).contains(&m) {
+        Some(h * 60 + m)
+    } else {
+        None
+    }
+}
+
+fn parse_days(text: &str) -> Result<Vec<u8>, String> {
+    let mut out = Vec::new();
+    for bit in text.split(|c| c == ',' || c == '/' || c == '&') {
+        let bit = bit.trim();
+        if bit.is_empty() {
+            continue;
+        }
+        if let Some((a, b)) = bit.split_once('-') {
+            let from = parse_day_token(a.trim())
+                .ok_or_else(|| format!("Bad day '{a}'"))?;
+            let to = parse_day_token(b.trim()).ok_or_else(|| format!("Bad day '{b}'"))?;
+            if from <= to {
+                out.extend(from..=to);
+            } else {
+                out.extend(from..=7);
+                out.extend(1..=to);
+            }
+        } else {
+            let d = parse_day_token(bit).ok_or_else(|| format!("Bad day '{bit}'"))?;
+            out.push(d);
+        }
+    }
+    out.sort_unstable();
+    out.dedup();
+    Ok(out)
+}
+
+fn parse_day_token(s: &str) -> Option<u8> {
+    match s.trim().to_ascii_lowercase().as_str() {
+        "mon" | "monday" => Some(1),
+        "tue" | "tues" | "tuesday" => Some(2),
+        "wed" | "wednesday" => Some(3),
+        "thu" | "thur" | "thurs" | "thursday" => Some(4),
+        "fri" | "friday" => Some(5),
+        "sat" | "saturday" => Some(6),
+        "sun" | "sunday" => Some(7),
+        _ => None,
     }
 }
 
@@ -1569,6 +1874,8 @@ pub struct Cart {
     pub discount: Option<BillDiscount>,
     /// Delivery orders: who takes it out (staff or rider name).
     pub delivery_by: String,
+    /// Names of schemes applied at settle (shown on the ticket as "Scheme: …").
+    pub scheme_notes: Vec<String>,
 }
 
 /// How much off the bill.
@@ -1616,6 +1923,7 @@ impl Cart {
         self.charge_total = None;
         self.discount = None;
         self.delivery_by.clear();
+        self.scheme_notes.clear();
         self.order_type = OrderType::Counter;
         // Keep money_lane — owner choice persists across carts until they flip the chip.
     }
@@ -1685,7 +1993,11 @@ impl Cart {
     /// Add one at the table's area price, refusing what the shop cannot
     /// serve.
     pub fn add_in_area_in_stock(&mut self, product: &Product, area: &str) -> Result<(), String> {
-        let unit_price = product.price_in_area(area);
+        let now = chrono::Local::now();
+        if !product.available_now(now) {
+            return Err(format!("{} is not on the menu right now", product.name));
+        }
+        let unit_price = product.price_now(area, now);
         self.check_can_add(product, unit_price)?;
         self.add_priced(product, unit_price);
         Ok(())
@@ -1981,6 +2293,7 @@ impl Cart {
             discount: None,
             // Kept on the sale's own delivery record; amending leaves it be.
             delivery_by: String::new(),
+            scheme_notes: Vec::new(),
         };
         if sale.rounding_paise != 0 {
             cart.charge_total = Some(Money(sale.total_paise));
@@ -2107,6 +2420,16 @@ impl Cart {
             lines.iter().map(|l| l.line_total_paise).sum::<i64>(),
             lines_total
         );
+        let extras_json = if self.scheme_notes.is_empty() {
+            "[]".into()
+        } else {
+            let extras: Vec<serde_json::Value> = self
+                .scheme_notes
+                .iter()
+                .map(|n| serde_json::json!({ "kind": "scheme", "name": n, "amount_paise": 0 }))
+                .collect();
+            serde_json::to_string(&extras).unwrap_or_else(|_| "[]".into())
+        };
         Ok(SaleDraft {
             lines,
             lines_total_paise: lines_total,
@@ -2120,7 +2443,7 @@ impl Cart {
             order_type: self.order_type,
             money_lane: self.money_lane,
             user_at: None,
-            extras_json: "[]".into(),
+            extras_json,
             delivery_by: self.delivery_by.trim().to_string(),
             notify_phone: String::new(),
             discount_paise: discount,
@@ -2372,6 +2695,12 @@ pub struct Customer {
     /// Max outstanding for account booking (paise). 0 = no limit.
     #[serde(default)]
     pub credit_limit_paise: i64,
+    /// Local loyalty points (earn on pay / redeem at till).
+    #[serde(default)]
+    pub loyalty_points: i64,
+    /// Prepaid wallet balance (paise).
+    #[serde(default)]
+    pub wallet_paise: i64,
 }
 
 impl Customer {
@@ -2750,15 +3079,29 @@ pub struct DiningTable {
     /// the floor's unnamed area.
     #[serde(default)]
     pub area: String,
+    /// Waiter section: staff id assigned to this table (empty = unassigned).
+    #[serde(default)]
+    pub waiter_staff_id: String,
+    /// Optional drawn layout (0 = use grid).
+    #[serde(default)]
+    pub layout_x: f64,
+    #[serde(default)]
+    pub layout_y: f64,
+    #[serde(default)]
+    pub layout_w: f64,
+    #[serde(default)]
+    pub layout_h: f64,
 }
 
 /// A table's place in the guests' visit, as the floor shows it (learned from
-/// how the best restaurant systems colour their floor): free → food in the
-/// kitchen → food ready → eating → bill printed → paid → free.
+/// how the best restaurant systems colour their floor): free → seated → food
+/// in the kitchen → food ready → eating → bill printed → paid → free.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub enum FloorState {
     #[default]
     Free,
+    /// Guests seated; no dishes punched yet (no live order / cooking).
+    Seated,
     /// KOTs being prepared.
     InKitchen,
     /// Every open KOT is Ready — serve it.
@@ -2772,9 +3115,14 @@ pub enum FloorState {
 }
 
 impl FloorState {
-    /// Work out the visit's state from the table and its open KOTs
-    /// (statuses of food tickets only — cancel slips do not count).
-    pub fn derive(status: TableStatus, open_kot_statuses: &[KotStatus]) -> Self {
+    /// Work out the visit's state from the table, whether it has a live
+    /// order, and its open KOTs (food tickets only — cancel slips do not
+    /// count).
+    pub fn derive(
+        status: TableStatus,
+        open_kot_statuses: &[KotStatus],
+        has_live_order: bool,
+    ) -> Self {
         match status {
             TableStatus::Available => Self::Free,
             TableStatus::Paid => Self::Paid,
@@ -2784,12 +3132,16 @@ impl FloorState {
                     .iter()
                     .filter(|s| !matches!(s, KotStatus::Completed | KotStatus::Cancelled))
                     .collect();
-                if cooking.is_empty() {
+                if !cooking.is_empty() {
+                    if cooking.iter().all(|s| **s == KotStatus::Ready) {
+                        Self::FoodReady
+                    } else {
+                        Self::InKitchen
+                    }
+                } else if has_live_order {
                     Self::Eating
-                } else if cooking.iter().all(|s| **s == KotStatus::Ready) {
-                    Self::FoodReady
                 } else {
-                    Self::InKitchen
+                    Self::Seated
                 }
             }
         }
@@ -2801,6 +3153,7 @@ impl FloorState {
     pub fn tile_key(self) -> &'static str {
         match self {
             Self::Free => "tile_free",
+            Self::Seated => "tile_occupied",
             Self::InKitchen => "floor_in_kitchen",
             Self::FoodReady => "tile_food_ready",
             Self::Eating => "floor_eating",
@@ -2809,8 +3162,9 @@ impl FloorState {
         }
     }
 
-    pub const ALL: [FloorState; 6] = [
+    pub const ALL: [FloorState; 7] = [
         Self::Free,
+        Self::Seated,
         Self::InKitchen,
         Self::FoodReady,
         Self::Eating,
@@ -2855,6 +3209,16 @@ impl KotStatus {
             Self::Preparing => Some(Self::Ready),
             Self::Ready => Some(Self::Completed),
             Self::Completed | Self::Cancelled => None,
+        }
+    }
+
+    /// Undo one bump: Completed→Ready→Preparing→New. Cancelled stays.
+    pub fn prev(self) -> Option<Self> {
+        match self {
+            Self::Completed => Some(Self::Ready),
+            Self::Ready => Some(Self::Preparing),
+            Self::Preparing => Some(Self::New),
+            Self::New | Self::Cancelled => None,
         }
     }
 }
@@ -2971,6 +3335,15 @@ pub struct RunningLine {
     pub created_at: String,
     #[serde(default)]
     pub created_by: String,
+    /// Seat number for split-by-seat (0 = unassigned).
+    #[serde(default)]
+    pub seat_no: i64,
+    /// Coursing hold: Send KOT skips until Fire course / unhold.
+    #[serde(default)]
+    pub held: bool,
+    /// Course number for fire-by-course (0 = none).
+    #[serde(default)]
+    pub course_no: i64,
 }
 
 impl RunningLine {
@@ -3232,7 +3605,7 @@ mod tests {
         // Two already in the kitchen, one more punched since.
         cart.add_or_bump_in_stock(&tea()).unwrap();
         cart.add_or_bump_in_stock(&tea()).unwrap();
-        cart.lines[0].running_line_id = "sent".into();
+        cart.lines[0].kot_id = "sent".into();
         cart.add_or_bump_in_stock(&tea()).unwrap();
         assert_eq!(cart.qty_of("tea"), 3);
         cart.remove_one_of("tea").unwrap();
@@ -3490,6 +3863,7 @@ mod tests {
             code: "13.5".into(),
             bps: 1_350,
             active: true,
+            picker_enabled: true,
         };
         assert_eq!(rate.percent_label(), "13.5%");
         assert!(rate.matches("vat 13.5%"));
@@ -3538,8 +3912,84 @@ mod tests {
             balance_paise: 0,
             kind_label: "Customer, Supplier".into(),
             credit_limit_paise: 0,
+            loyalty_points: 0,
+            wallet_paise: 0,
         };
         assert!(c.is_customer() && c.is_supplier());
+    }
+
+    #[test]
+    fn kot_age_band_default_target_fifteen() {
+        // target 15 → amber at 10, red at 20
+        assert_eq!(kot_age_band(0, 15), KotAgeBand::Normal);
+        assert_eq!(kot_age_band(9, 15), KotAgeBand::Normal);
+        assert_eq!(kot_age_band(10, 15), KotAgeBand::Amber);
+        assert_eq!(kot_age_band(19, 15), KotAgeBand::Amber);
+        assert_eq!(kot_age_band(20, 15), KotAgeBand::Red);
+    }
+
+    #[test]
+    fn happy_hour_price_and_breakfast_visibility() {
+        use chrono::TimeZone;
+        let mut p = Product::new_basic("idli", "Idli", Money::from_rupees(40));
+        p.set_schedule(&[
+            ScheduleWindow {
+                days: vec![1, 2, 3, 4, 5],
+                start: "07:00".into(),
+                end: "11:00".into(),
+                price_paise: None,
+            },
+            ScheduleWindow {
+                days: Vec::new(),
+                start: "17:00".into(),
+                end: "19:00".into(),
+                price_paise: Some(15_000),
+            },
+        ]);
+        // Breakfast visibility only Mon–Fri 07–11; outside → hidden.
+        let tue_breakfast = chrono::Local
+            .with_ymd_and_hms(2026, 10, 27, 8, 0, 0)
+            .unwrap(); // Tuesday
+        assert!(p.available_now(tue_breakfast));
+        let tue_afternoon = chrono::Local
+            .with_ymd_and_hms(2026, 10, 27, 14, 0, 0)
+            .unwrap();
+        assert!(!p.available_now(tue_afternoon));
+        // Happy hour price (no visibility window for evenings — but visibility
+        // windows alone gate availability, so evenings are hidden). Split:
+        // only priced window → always available with override in window.
+        let mut happy = Product::new_basic("beer", "Beer", Money::from_rupees(200));
+        happy.set_schedule(&[ScheduleWindow {
+            days: Vec::new(),
+            start: "17:00".into(),
+            end: "19:00".into(),
+            price_paise: Some(15_000),
+        }]);
+        let evening = chrono::Local
+            .with_ymd_and_hms(2026, 10, 27, 18, 0, 0)
+            .unwrap();
+        assert!(happy.available_now(evening));
+        assert_eq!(happy.price_now("", evening).paise(), 15_000);
+        let noon = chrono::Local
+            .with_ymd_and_hms(2026, 10, 27, 12, 0, 0)
+            .unwrap();
+        assert_eq!(happy.price_now("", noon).paise(), 20_000);
+        // Human parse
+        let windows =
+            ScheduleWindow::parse_human_list("Mon-Fri 07:00-11:00, HappyHour 17:00-19:00=150", "INR")
+                .unwrap();
+        assert_eq!(windows.len(), 2);
+        assert!(windows[0].price_paise.is_none());
+        assert_eq!(windows[1].price_paise, Some(15_000));
+    }
+
+    #[test]
+    fn kot_status_prev_recall_chain() {
+        assert_eq!(KotStatus::Completed.prev(), Some(KotStatus::Ready));
+        assert_eq!(KotStatus::Ready.prev(), Some(KotStatus::Preparing));
+        assert_eq!(KotStatus::Preparing.prev(), Some(KotStatus::New));
+        assert_eq!(KotStatus::New.prev(), None);
+        assert_eq!(KotStatus::Cancelled.prev(), None);
     }
 }
 

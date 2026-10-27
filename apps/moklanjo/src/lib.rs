@@ -7,6 +7,7 @@
 #[cfg(target_os = "android")]
 pub use makepad_widgets;
 
+pub mod barcode_scan;
 pub mod booking;
 pub mod cod;
 pub mod consignments;
@@ -22,11 +23,13 @@ pub mod media;
 pub mod menu_images;
 pub mod net;
 pub mod notify;
+pub mod ops_local;
 pub mod phone;
 pub mod precise;
 pub mod print_share;
 pub mod receipt_raster;
 pub mod rates;
+pub mod rider_mode;
 pub mod startup;
 pub mod store;
 pub mod track;

@@ -12,6 +12,10 @@
 > works **without the cloud** and is genuinely good for the restaurant;
 > internet features are optional connectors; hosted features belong to opt-in
 > Kumkaj Cloud and never gate service.
+>
+> **Catch-up status (2026-10-27):** every Local/LAN item from the earlier
+> behind list is **Have** — see §8. **Still left** there is only Cloud/Net
+> connectors (optional stubs) and owner actions (real-hardware pilot).
 
 ---
 
@@ -295,8 +299,8 @@ POS, F = free/open source).
 | Item search, short codes / aliases | I, G | **Have** | Local | — |
 | Modifiers / add-ons, item notes | I, G, F | **Have** | Local | Priced variant matrix later |
 | Sizes (Half/Full) | I, G | **Have** (each size its own item + dish group) | Local | — |
-| Combos / BOGO / schemes | I, G | **Gap** | Local | Common in India; rule = fixed combo price or "buy X get Y" on the bill |
-| Menu timings / happy hour / time-based price | I, G | **Gap** | Local | Breakfast/lunch menus, happy-hour price by clock — all local |
+| Combos / BOGO / schemes | I, G | **Have** (BOGO + percent-off + fixed combo) | Local | Settings → Schemes; fixed combo expands components on Send KOT (held until fired); combo price only on bill |
+| Menu timings / happy hour / time-based price | I, G | **Have** | Local | `schedule_json` on item; `price_now` / `available_now`; menu form human windows |
 | Area-wise prices (AC dearer) | I | **Have** | Local | — |
 | Discounts with reason and right | I, G | **Have** | Local | — |
 | Complimentary (NC) items | I | **Have** | Local | — |
@@ -304,12 +308,12 @@ POS, F = free/open source).
 | Settle: tendered, change, tip, part payment, due on khata | I, G | **Have** | Local | — |
 | Split tenders | I, G | **Have** | Local | — |
 | Split bill by items | I, G | **Have** (to a companion table) | LAN | — |
-| **Split by seat / evenly by N** | G (Square, Toast) | **Partial** | Local | Add seat numbers on lines and "split evenly by N" |
+| **Split by seat / evenly by N** | G (Square, Toast) | **Have** | Local | `seat_no` on lines; Split evenly / Split by seat → companion bills |
 | Move / merge tables, move items | I, G | **Have** | LAN | — |
-| **Coursing: hold / fire** | G | **Gap** | LAN | KOT per course on the running order; fire from the ticket; avoid Square's "held still prints" bug |
-| Customer-facing display (order + total + UPI QR) | G, some I | **Gap** | Local / LAN | A second screen or tablet; UPI QR with amount is generated offline (payment confirmation stays manual) |
-| Integrated card terminals / payment links | G (processor-led), I | **Gap** (manual tender) | Net | Optional connectors per terminal vendor; never required |
-| E-bill by SMS / WhatsApp | I | **Gap** | Local SMS via SIM / Net for WhatsApp | One-tap WhatsApp share of the bill; SMS from an Android device's SIM needs no internet |
+| **Coursing: hold / fire** | G | **Have** | LAN | Held lines never print; Fire course sends only that course; fixed-combo components stay held until combo KOT |
+| Customer-facing display (order + total + UPI QR) | G, some I | **Have** | Local / LAN | Counter UPI QR modal + LAN `GET /display` (lines, total, UPI data-URI when paying) |
+| Integrated card terminals / payment links | G (processor-led), I | **Partial** (manual tender default; optional outbox stub) | Net | `enqueue_card_terminal` / payment-link outbox; never required for counter |
+| E-bill by SMS / WhatsApp | I | **Have** | Local SMS via SIM / Net for WhatsApp | Sales → Share WhatsApp (`wa.me`); SMS queued to notify_outbox (SIM drain stub) |
 
 ### 6.2 Floor, reservations, front of house
 
@@ -317,16 +321,16 @@ POS, F = free/open source).
 |---|---|---|---|---|
 | Areas, tables, colour states, minutes and amount | I, G | **Have** | LAN | — |
 | Parcel as a table area | I (Petpooja) | **Have** | LAN | — |
-| **Drawn floor-plan editor** (shapes, positions, seats, multiple floors) | G, F (Odoo, Square, Lightspeed) | **Gap** (tile grid by area) | Local | Optional "layout" view; keep the tile grid as the fast default |
-| Server sections, colour by waiter | G (TouchBistro) | **Gap** | LAN | Assign tables to waiters; filter floor by waiter |
+| **Drawn floor-plan editor** (shapes, positions, seats, multiple floors) | G, F (Odoo, Square, Lightspeed) | **Have** (Grid ↔ Layout; X/Y/W/H editor + nudge; auto-pack defaults) | Local | `set_table_layout` / `ensure_table_layouts_packed`; `floor_view` meta |
+| Server sections, colour by waiter | G (TouchBistro) | **Have** | LAN | `set_table_waiter`; Floor filter by waiter name |
 | Reservations | I, G (often add-on) | **Have** | LAN | — |
-| **Waitlist** with quoted wait time | G | **Gap** | LAN | Walk-ins waiting for a table; "next free table" |
+| **Waitlist** with quoted wait time | G | **Have** | LAN | Floor waitlist: name, party, quoted mins → seat/cancel |
 | Captain / waiter devices | I, G | **Have** (any Android or Windows device, LAN) | LAN | Competitors often require iPads or branded handhelds |
-| Pay at table on handheld | G | **Gap** (by design: counter settles) | LAN | Allow settling on a handheld for staff with the Take-payment right |
-| QR table ordering by guests | I (DotPe, Petpooja add-on), F (Odoo) | **Gap** | LAN (guest phone on restaurant Wi‑Fi) / Cloud (guest on mobile data) | A LAN web page served by the Server is feasible; guests on mobile data need Cloud |
-| Waiter call / service request | I (Petpooja add-on) | **Gap** | LAN | Low priority |
-| Token / order-ready display for takeaway | I, G | **Gap** | LAN | A TV/tablet showing ready token numbers |
-| Self-order kiosk | F (Odoo), G | **Gap** | LAN | Later |
+| Pay at table on handheld | G | **Have** | LAN | Rights-gated Settle (Allowed/WithApproval); waiter preset Denied; no hard counter-only gate |
+| QR table ordering by guests | I (DotPe, Petpooja add-on), F (Odoo) | **Have** (LAN) / **Skipped** (Cloud mobile-data) | LAN (guest phone on restaurant Wi‑Fi) / Cloud (guest on mobile data) | `GET /t/{table}` + POST add on Server Wi‑Fi; mobile-data guests need Cloud later |
+| Waiter call / service request | I (Petpooja add-on) | **Have** | LAN | Table button queues call; Floor ops badge; clear on attend |
+| Token / order-ready display for takeaway | I, G | **Have** | LAN | `GET /tokens` HTML — ready takeaway tokens |
+| Self-order kiosk | F (Odoo), G | **Have** | LAN | `GET /kiosk` + `POST /kiosk_order` on LAN |
 
 ### 6.3 Kitchen
 
@@ -337,10 +341,10 @@ POS, F = free/open source).
 | Kitchen display: states New → Preparing → Ready → Done | I, G, F | **Have** | LAN | — |
 | All-day counts ("To cook now") | I, G | **Have** | LAN | — |
 | Cancel after KOT with reason, wastage, approver, cancel slip | I | **Have** | LAN | — |
-| **Ticket timers / ageing colours, target prep times** | G | **Gap** | LAN | Ticket turns amber/red after N minutes; per-station averages in reports |
-| Recall / undo bump | G | **Gap** (tickets only move forward) | LAN | Bring a ticket tapped Done by mistake back to the screen |
-| Allergen flags on items and KOT | F (Odoo notes), G | **Gap** | Local | Short allergen tags printed on KOT |
-| Expo / pass screen (all stations, ready for service) | G | **Gap** | LAN | Later |
+| **Ticket timers / ageing colours, target prep times** | G | **Have** | LAN | Minutes since send; amber/red from station `target_prep_mins` (default 15 → 10/20) |
+| Recall / undo bump | G | **Have** | LAN | `recall_kot` Completed→Ready; Kitchen "Recently done"; LAN `POST /kot_recall` |
+| Allergen flags on items and KOT | F (Odoo notes), G | **Have** | Local | `allergens` on product; printed on KOT text |
+| Expo / pass screen (all stations, ready for service) | G | **Have** | LAN | `GET /expo` HTML — Ready across stations |
 
 ### 6.4 Menu, inventory, purchasing
 
@@ -350,12 +354,12 @@ POS, F = free/open source).
 | Menu template (1,452 dishes with photos) | — (unusual) | **Have** | Local | A differentiator for fast setup |
 | Recipes, stock deduction, reorder levels, running-low alerts | I, G | **Have** | Local | — |
 | Raw material vs resold vs dish item kinds | I | **Have** | Local | — |
-| **Expiry / batch tracking** | I (Petpooja) | **Gap** | Local | Expiry date on purchases of perishables; alert list |
-| **Purchase orders to suppliers**, receive against PO | I, G | **Gap** (direct purchases only) | Local | PO → goods received → bill; supplier price history |
-| Supplier price comparison | I | **Gap** | Local | From purchase history |
-| **Stock count / daily closing with variance** | I | **Partial** (± stock with reason) | Local | Count sheet → variance report (theft/wastage visibility) |
-| Store requisition / central kitchen transfers | I (eZee, Restroworks) | **Gap** | Local (within one restaurant) / file between branches | Branches are separate servers; transfers could be exported/imported like day snapshots |
-| Bulk menu edit (price change for a category, CSV import) | I, G | **Partial** (CSV import) | Local | Answer to Petpooja's "menu management is slow" |
+| **Expiry / batch tracking** | I (Petpooja) | **Have** | Local | Batch/expiry on purchases; alert list on Inventory ops panel |
+| **Purchase orders to suppliers**, receive against PO | I, G | **Have** | Local | PO → receive → bill; supplier price history text |
+| Supplier price comparison | I | **Have** | Local | From purchase / PO history |
+| **Stock count / daily closing with variance** | I | **Have** | Local | Count session → expected vs counted → variance report + tip pooling report |
+| Store requisition / central kitchen transfers | I (eZee, Restroworks) | **Have** | Local (file between branches) | Export/import stock transfer JSON like day snapshots |
+| Bulk menu edit (price change for a category, CSV import) | I, G | **Have** | Local | Settings bulk % / set amount per category; CSV round-trip remains |
 
 ### 6.5 Staff, money, reports
 
@@ -365,15 +369,15 @@ POS, F = free/open source).
 | Opening float, shift handover, day close with variance | I, G | **Have** | Local | Toast cannot do tips/clock-out offline; we can |
 | Reports by staff, order type, hour, item, discounts, NC, cancellations | I, G | **Have** | Local | — |
 | P&L, balance sheet, AR/AP aging, bank book, expenses | I (partial), G (via accounting apps) | **Have** | Local | Most POS products push this to Tally/QuickBooks |
-| Tip pooling / tip report per staff | G | **Partial** (tip per bill) | Local | Pool by shift/role |
-| **Time clock / attendance** | G | **Gap** | Local | Clock-in with PIN; hours per staff; useful for wage calculation |
-| Loyalty points / customer wallet | I, G | **Gap** | Local | Points and prepaid wallet on the customer's party record — no cloud needed |
-| Gift cards / vouchers | G | **Gap** | Local | Numbered vouchers redeemed at billing |
-| Feedback after the meal | I (Petpooja app), LimeTray | **Gap** | LAN (tablet at counter) | Low priority |
-| SMS / WhatsApp campaigns | I, G | **Gap** | Net / Cloud | Out of scope without internet; export customer list instead |
-| Multi-outlet dashboard, central menu push | I, G | **Partial** (snapshot export/import per branch) | File / Cloud | Live roll-up = Kumkaj Cloud |
-| Online orders from aggregators (Zomato, Swiggy) | I, G | **Gap** | Net | Optional connector; never gates counter billing (KHAYNJO.md §4b) |
-| Own online ordering website | I (LimeTray, DotPe), G | **Gap** | Cloud | Kumkaj Cloud later |
+| Tip pooling / tip report per staff | G | **Have** | Local | Tip pooling report by staff/shift from recorded tips |
+| **Time clock / attendance** | G | **Have** | Local | Clock-in/out with PIN; hours report |
+| Loyalty points / customer wallet | I, G | **Have** | Local | Earn on pay; redeem; wallet top-up/spend as tender — local only |
+| Gift cards / vouchers | G | **Have** | Local | Numbered vouchers issue/redeem at billing |
+| Feedback after the meal | I (Petpooja app), LimeTray | **Have** | LAN (tablet at counter) | `GET /feedback` stores scores locally |
+| SMS / WhatsApp campaigns | I, G | **Skipped** (Cloud/Net marketing) | Net / Cloud | One-tap bill share is Have; blast campaigns stay out of scope — export customer list |
+| Multi-outlet dashboard, central menu push | I, G | **Partial** (snapshot export/import) / **Skipped** (live Cloud) | File / Cloud | Live roll-up = Kumkaj Cloud |
+| Online orders from aggregators (Zomato, Swiggy) | I, G | **Partial** (optional file import + Net poll stub off by default) | Net | Outbox/inbox stub; never gates counter (KHAYNJO.md §4b) |
+| Own online ordering website | I (LimeTray, DotPe), G | **Skipped** (Cloud) | Cloud | Kumkaj Cloud later; LAN kiosk/QR remain Have |
 
 ### 6.6 Platform
 
@@ -402,38 +406,58 @@ POS, F = free/open source).
    prices, FSSAI on bills, opening float and shift slip.
 5. **Fast setup** — menu template with photos, type-or-pick everywhere.
 
-## 8. Where Khaynjo is behind (and can catch up without cloud)
+## 8. Local / LAN catch-up — status 2026-10-27
 
-Ordered by value to a restaurant like Rajdhani:
+Every item that could ship **without Kumkaj Cloud** from the earlier
+“behind” list is now **Have** (see §6 matrix). Ordered by original value:
 
-| # | Build | Why (evidence) | Offline |
+| # | Build | Status | Offline |
 |---|---|---|---|
-| 1 | **Combos / BOGO / schemes** | Petpooja and Indian customers expect thali combos and offers | Local |
-| 2 | **Menu timings and happy-hour prices** | Petpooja, Toast; breakfast/lunch menus | Local |
-| 3 | **Customer-facing display with UPI QR for the exact amount** | Speeds UPI settlement; QR generated offline | Local / LAN |
-| 4 | **KDS timers and ageing colours**, target prep times, recall | Toast/Square KDS norms; kitchen speed visibility | LAN |
-| 5 | **Coursing (hold / fire)** done right — held items never print until fired | Square feature and its known bug | LAN |
-| 6 | **Split evenly / by seat** | Toast, Square | Local |
-| 7 | **Loyalty points and prepaid wallet** on the customer record | Petpooja, Toast, SpotOn | Local |
-| 8 | **Purchase orders, expiry tracking, stock count with variance, supplier price history** | Petpooja inventory, eZee requisition | Local |
-| 9 | **Waitlist** and **server sections** on the floor | Toast/TouchBistro | LAN |
-| 10 | **Token / order-ready display** for takeaway | Petpooja add-on, QSRs | LAN |
-| 11 | **QR table ordering over the restaurant Wi‑Fi** | DotPe, Petpooja, Odoo | LAN |
-| 12 | **Pay at table on a captain device** (rights-gated) | Toast Go, Clover, SpotOn | LAN |
-| 13 | **Time clock and tip pooling** | Toast, Square | Local |
-| 14 | **Drawn floor layout** (optional view) | Odoo, Square, Lightspeed, TouchBistro | Local |
-| 15 | **One-tap WhatsApp bill, SMS over the device SIM** | Petpooja eBill, Vyapar | Local (SMS) / Net (WhatsApp) |
-| 16 | Allergen tags; gift vouchers; bulk menu price edit | Odoo, global POS; Petpooja menu complaint | Local |
+| 1 | **Combos / BOGO / schemes** (incl. fixed combo KOT expand) | **Have** | Local |
+| 2 | **Menu timings and happy-hour prices** | **Have** | Local |
+| 3 | **Customer-facing display with UPI QR** (counter + LAN `/display`) | **Have** | Local / LAN |
+| 4 | **KDS timers and ageing colours**, target prep times, recall | **Have** | LAN |
+| 5 | **Coursing (hold / fire)** — held never print until fired | **Have** | LAN |
+| 6 | **Split evenly / by seat** | **Have** | Local |
+| 7 | **Loyalty points and prepaid wallet** | **Have** | Local |
+| 8 | **PO, expiry, stock variance, supplier price history** | **Have** | Local |
+| 9 | **Waitlist** and **server sections** | **Have** | LAN |
+| 10 | **Token / order-ready display** | **Have** | LAN |
+| 11 | **QR table ordering over restaurant Wi‑Fi** | **Have** (LAN); Cloud mobile-data **Skipped** | LAN |
+| 12 | **Pay at table** (rights-gated) | **Have** | LAN |
+| 13 | **Time clock and tip pooling** | **Have** | Local |
+| 14 | **Drawn floor layout** (Grid ↔ Layout; editor + auto-pack) | **Have** | Local |
+| 15 | **One-tap WhatsApp bill, SMS outbox** | **Have** | Local (SMS) / Net (WhatsApp) |
+| 16 | Allergen tags; gift vouchers; bulk menu price edit | **Have** | Local |
+
+Also Have outside this numbered list (same pass): waitlist siblings
+(self-order kiosk `/kiosk`, expo `/expo`, waiter call, feedback
+`/feedback`, staff visibility, Seated-without-order, shop pick-list
+On/Off for units/areas/stations/tax). Floor colour no longer sticks on
+**In kitchen** after pay/free (open KOTs closed; next seating filtered
+by `occupied_at`).
+
+### Still left (not Local-complete)
+
+| Item | Status | Why it waits |
+|---|---|---|
+| Live aggregator SaaS (Zomato/Swiggy accept/reject in their cloud) | **Partial** stub (file import + Net poll off by default) | Needs vendor APIs + internet; never gates counter |
+| Card terminal / payment-link confirmation | **Partial** (manual tender default; optional outbox) | Needs PSP / terminal vendor + Net |
+| Guests ordering on **mobile data** / own public website | **Skipped** | Needs Kumkaj Cloud reachability |
+| SMS/WhatsApp **campaigns** (blast marketing) | **Skipped** | Net/Cloud marketing; bill share is Have; export customer list |
+| Live multi-outlet dashboard / central menu push | **Skipped** (live) / **Have** (day snapshot file) | Live roll-up = Kumkaj Cloud |
+| Priced variation **matrix** UI polish | Progressive depth | Half/Full as own items already Have |
+| Real-hardware pilot, Store/Play listing | Owner | See `PRODUCTION_STATE_FOR_OFFLINE_USAGE.md` |
 
 ## 9. Needs the internet or a cloud (optional, never a gate)
 
-| Feature | Why | Kumkaj approach |
+| Feature | Why | Kumkaj approach (2026-10-27) |
 |---|---|---|
-| Zomato / Swiggy / aggregator orders | Their systems are online | Optional connector from the Server when internet is up; counter never depends on it |
-| Card terminal integration, online payment links, payment confirmation from banks | Card networks and PSPs are online | Manual tender stays the default; vendor-specific connectors optional |
-| Guests ordering on mobile data, own ordering website | Must be reachable from the internet | Kumkaj Cloud (opt-in, usage-billed) |
-| SMS/WhatsApp campaigns, review collection | Online services | Optional; export the customer list instead |
-| Live multi-outlet dashboard, central menu push | Several sites must meet somewhere | Kumkaj Cloud; today: per-branch day snapshots exported and imported |
+| Zomato / Swiggy / aggregator orders | Their systems are online | **Partial** optional file import + Net poll stub (off by default); counter never depends on it |
+| Card terminal integration, online payment links, payment confirmation from banks | Card networks and PSPs are online | Manual tender default; **Partial** outbox stub when internet is up |
+| Guests ordering on mobile data, own ordering website | Must be reachable from the internet | **Skipped** until Kumkaj Cloud; LAN `/t/{table}` + `/kiosk` already Have |
+| SMS/WhatsApp campaigns, review collection | Online services | Campaigns **Skipped**; one-tap bill WhatsApp/SMS Have; export customer list |
+| Live multi-outlet dashboard, central menu push | Several sites must meet somewhere | Live **Skipped** (Cloud); today: per-branch day snapshots export/import |
 
 ---
 

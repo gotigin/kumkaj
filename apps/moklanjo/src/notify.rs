@@ -106,6 +106,66 @@ pub struct BulkBookingRow {
     pub note: String,
 }
 
+/// Extract the human message from an outbox payload JSON.
+pub fn message_from_payload(payload_json: &str) -> String {
+    serde_json::from_str::<serde_json::Value>(payload_json)
+        .ok()
+        .and_then(|v| {
+            v.get("message")
+                .and_then(|m| m.as_str())
+                .map(|s| s.to_string())
+        })
+        .unwrap_or_else(|| payload_json.trim().to_string())
+}
+
+/// Digits-only phone for wa.me (keeps leading country code if present).
+pub fn phone_digits(raw: &str) -> String {
+    raw.chars().filter(|c| c.is_ascii_digit()).collect()
+}
+
+/// `https://wa.me/<digits>?text=<urlencoded>` — open in WhatsApp when the
+/// device has Net; app never requires it.
+pub fn whatsapp_click_url(to_phone: &str, text: &str) -> String {
+    let digits = phone_digits(to_phone);
+    let enc = urlencoding_minimal(text);
+    if digits.is_empty() {
+        format!("https://wa.me/?text={enc}")
+    } else {
+        format!("https://wa.me/{digits}?text={enc}")
+    }
+}
+
+/// SMS body ready to copy / hand to an Android `sms:` intent stub.
+pub fn sms_body_from_row(row: &NotifyOutboxRow) -> String {
+    message_from_payload(&row.payload_json)
+}
+
+/// Android `sms:` URI (cfg-gated callers may open it). No send from Rust.
+pub fn android_sms_intent_uri(to_phone: &str, body: &str) -> String {
+    let digits = phone_digits(to_phone);
+    let enc = urlencoding_minimal(body);
+    format!("sms:{digits}?body={enc}")
+}
+
+/// One-tap WhatsApp share for a booking receipt (Net optional on device).
+pub fn whatsapp_receipt_share_url(to_phone: &str, receipt_text: &str) -> String {
+    whatsapp_click_url(to_phone, receipt_text)
+}
+
+fn urlencoding_minimal(s: &str) -> String {
+    let mut out = String::new();
+    for b in s.bytes() {
+        match b {
+            b'A'..=b'Z' | b'a'..=b'z' | b'0'..=b'9' | b'-' | b'_' | b'.' | b'~' => {
+                out.push(b as char)
+            }
+            b' ' => out.push_str("%20"),
+            _ => out.push_str(&format!("%{b:02X}")),
+        }
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -122,5 +182,18 @@ mod tests {
     #[test]
     fn track_path_sanitises() {
         assert_eq!(public_track_path("AWB-1"), "/track/AWB-1");
+    }
+
+    #[test]
+    fn whatsapp_url_prefills() {
+        let url = whatsapp_click_url("+91 98765 43210", "Your shipment AWB-1");
+        assert!(url.starts_with("https://wa.me/919876543210?text="));
+        assert!(url.contains("Your%20shipment"));
+    }
+
+    #[test]
+    fn sms_intent_stub() {
+        let u = android_sms_intent_uri("999", "hello");
+        assert_eq!(u, "sms:999?body=hello");
     }
 }

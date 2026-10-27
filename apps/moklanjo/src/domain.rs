@@ -1062,6 +1062,12 @@ pub struct Product {
     /// Paise per kg beyond `first_kg`.
     #[serde(default)]
     pub extra_per_kg_paise: i64,
+    /// Carrier party id for a buy/cost rate card. Empty = shop sell / default card.
+    #[serde(default)]
+    pub carrier_party_id: String,
+    /// Consignor party id for a sell override card. Empty = everyone.
+    #[serde(default)]
+    pub party_id: String,
 }
 
 fn stock_untracked() -> i64 {
@@ -1102,7 +1108,14 @@ impl Product {
             first_kg: rust_decimal::Decimal::ZERO,
             first_paise: 0,
             extra_per_kg_paise: 0,
+            carrier_party_id: String::new(),
+            party_id: String::new(),
         }
+    }
+
+    /// True when this card is a shop sell rate (not a carrier buy card).
+    pub fn is_sell_card(&self) -> bool {
+        self.carrier_party_id.trim().is_empty()
     }
 
     pub fn rate_slab(&self) -> crate::rates::RateSlab {
@@ -1638,6 +1651,10 @@ impl Cart {
             zone_id: String::new(),
             cod_paise: 0,
             carrier_cost_paise: 0,
+            declared_value_paise: 0,
+            insurance: false,
+            contents: String::new(),
+            eway_bill_no: String::new(),
             extras_json: "[]".into(),
             notify_phone: String::new(),
         })
@@ -1711,6 +1728,18 @@ pub struct SaleDraft {
     /// Expected carrier / rider payout cost (paise) for margin.
     #[serde(default)]
     pub carrier_cost_paise: i64,
+    /// Declared value for claims / compliance (paise).
+    #[serde(default)]
+    pub declared_value_paise: i64,
+    /// Parcel insured (fee may sit in extras if charged).
+    #[serde(default)]
+    pub insurance: bool,
+    /// Contents description for the docket / label.
+    #[serde(default)]
+    pub contents: String,
+    /// E-way bill number (store/print only — no government API).
+    #[serde(default)]
+    pub eway_bill_no: String,
     /// JSON array of `{kind,name,amount_paise}` extras already in lines or noted.
     #[serde(default = "empty_json_array")]
     pub extras_json: String,
@@ -1833,6 +1862,32 @@ pub struct Sale {
     pub pod_note: String,
     #[serde(default)]
     pub extras_json: String,
+    /// Declared value for claims / compliance (paise).
+    #[serde(default)]
+    pub declared_value_paise: i64,
+    #[serde(default)]
+    pub insurance: bool,
+    #[serde(default)]
+    pub contents: String,
+    #[serde(default)]
+    pub eway_bill_no: String,
+    /// Failed-delivery attempt count (NDR workflow).
+    #[serde(default)]
+    pub attempt_count: i64,
+    #[serde(default)]
+    pub ndr_reason: String,
+    /// Next reattempt date `YYYY-MM-DD`, or empty.
+    #[serde(default)]
+    pub next_attempt_at: String,
+    /// Local customer feedback score after delivery (1–5; 0 = none).
+    #[serde(default)]
+    pub feedback_score: i64,
+    /// Delivery area label (auto-assign / stop sort).
+    #[serde(default)]
+    pub area: String,
+    /// Destination pincode when known (autocomplete / stop sort).
+    #[serde(default)]
+    pub dest_pincode: String,
     pub lines: Vec<SaleLine>,
 }
 

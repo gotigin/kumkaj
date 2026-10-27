@@ -585,11 +585,19 @@ fn sync_reply(store: &Store, have: Option<&str>) -> Result<Reply, String> {
     let (json, rev) = snapshot_json(store)?;
     note_rev(store.db_path(), &rev);
     if have.map(|h| h.trim().trim_matches('"')) == Some(rev.as_str()) {
-        return Ok(Reply { status: 304, body: String::new() });
+        return Ok(Reply {
+            status: 304,
+            body: String::new(),
+            content_type: String::new(),
+        });
     }
     // The revision goes in front; it was not part of what was hashed.
     let body = format!("{{\"rev\":\"{rev}\",{}", &json[1..]);
-    Ok(Reply { status: 200, body })
+    Ok(Reply {
+        status: 200,
+        body,
+        content_type: String::new(),
+    })
 }
 
 /// Holds the computer awake (no sleep, no idle suspend) while the LAN server
@@ -828,10 +836,12 @@ fn read_request(stream: &mut impl Read) -> Result<Request, String> {
     })
 }
 
-/// What the Server answers: an HTTP status and a JSON body.
+/// What the Server answers: an HTTP status and a body (JSON by default).
 pub struct Reply {
     pub status: u16,
     pub body: String,
+    /// Empty → `application/json` (every existing caller).
+    pub content_type: String,
 }
 
 impl Reply {
@@ -839,6 +849,7 @@ impl Reply {
         Self {
             status: 200,
             body: value.to_string(),
+            content_type: String::new(),
         }
     }
 
@@ -846,11 +857,20 @@ impl Reply {
         Ok(Self {
             status: 200,
             body: serde_json::to_string(value).map_err(|e| e.to_string())?,
+            content_type: String::new(),
         })
     }
 
     fn done() -> Self {
         Self::json(serde_json::json!({ "ok": true }))
+    }
+
+    fn html(body: String) -> Self {
+        Self {
+            status: 200,
+            body,
+            content_type: "text/html; charset=utf-8".into(),
+        }
     }
 
     /// A refusal the person must read, in the Server's words. `code` tells
@@ -859,6 +879,7 @@ impl Reply {
         Self {
             status,
             body: serde_json::json!({ "ok": false, "error": message, "code": code }).to_string(),
+            content_type: String::new(),
         }
     }
 }
@@ -875,7 +896,13 @@ fn handle_client(
         Ok(req) => (answer(db_path, &req, peer, guard), req.accepts_gzip()),
         Err(e) => (Reply::refuse(400, &e, ""), false),
     };
-    write_http(&mut stream, reply.status, &reply.body, gzip)
+    write_http(
+        &mut stream,
+        reply.status,
+        &reply.body,
+        gzip,
+        &reply.content_type,
+    )
 }
 
 /// Answer one request. Every outcome is a JSON reply — a failure is never a
@@ -906,6 +933,15 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         }
         r if r.starts_with("/track/") => {
             return track(&store, &urlencoding_decode(&r["/track/".len()..]));
+        }
+        // Corporate self-booking on office Wi‑Fi only (no cloud).
+        "/book" => {
+            if req.method == "GET" {
+                return Ok(lan_book_form(&store));
+            }
+            if req.method == "POST" {
+                return lan_book_submit(&mut store, req);
+            }
         }
         "/pair" => return pair(&store, req, peer, guard),
         _ => {}
@@ -949,7 +985,11 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
     if let Some(id) = request_id
         && let Some((status, body)) = store.lan_reply(id, &device.id)?
     {
-        return Ok(Reply { status, body });
+        return Ok(Reply {
+            status,
+            body,
+            content_type: String::new(),
+        });
     }
     let reply = match write(&mut store, route, &req.body, &actor) {
         Ok(reply) => reply,
@@ -1032,9 +1072,86 @@ fn track(store: &Store, awb: &str) -> Result<Reply, String> {
         Some(view) => Reply {
             status: 200,
             body: crate::track::to_json(&view)?,
+            content_type: String::new(),
         },
         None => Reply::refuse(404, "AWB not found", ""),
     })
+}
+
+fn lan_book_form(store: &Store) -> Reply {
+    let shop = store.venue_title().unwrap_or_else(|_| "Moklanjo".into());
+    let shop_esc = shop
+        .replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;");
+    Reply::html(format!(
+        r##"<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book — {shop_esc}</title>
+<style>
+body{{font-family:system-ui,sans-serif;max-width:28rem;margin:2rem auto;padding:0 1rem;color:#0b1220}}
+h1{{font-size:1.25rem}} label{{display:block;margin:.75rem 0 .25rem;font-size:.9rem}}
+input,textarea{{width:100%;padding:.5rem;box-sizing:border-box}}
+button{{margin-top:1rem;padding:.6rem 1rem;width:100%;font-size:1rem}}
+.note{{color:#445;font-size:.85rem;margin-top:1rem}}
+</style></head><body>
+<h1>{shop_esc}</h1>
+<p>Book a parcel on this office Wi‑Fi (not the public internet).</p>
+<form method="POST" action="/book">
+<label>Destination</label><input name="destination" required>
+<label>Consignee</label><input name="consignee" required>
+<label>Weight (kg)</label><input name="weight_kg" value="1" inputmode="decimal">
+<label>Phone (optional notify)</label><input name="phone" inputmode="tel">
+<label>Note</label><textarea name="note" rows="2"></textarea>
+<button type="submit">Create booking</button>
+</form>
+<p class="note">LAN only — no Kumkaj Cloud.</p>
+</body></html>
+"##
+    ))
+}
+
+fn lan_book_submit(store: &mut Store, req: &Request) -> Result<Reply, String> {
+    let form = parse_form_body(&req.body);
+    let destination = form.get("destination").map(|s| s.as_str()).unwrap_or("");
+    let consignee = form.get("consignee").map(|s| s.as_str()).unwrap_or("");
+    let weight = form.get("weight_kg").map(|s| s.as_str()).unwrap_or("1");
+    let phone = form.get("phone").map(|s| s.as_str()).unwrap_or("");
+    let note = form.get("note").map(|s| s.as_str()).unwrap_or("");
+    if destination.trim().is_empty() || consignee.trim().is_empty() {
+        return Ok(Reply::html(
+            "<!DOCTYPE html><html><body><p>Destination and consignee required.</p><p><a href=\"/book\">Back</a></p></body></html>"
+                .into(),
+        ));
+    }
+    let actor = store
+        .list_staff()?
+        .into_iter()
+        .next()
+        .ok_or_else(|| "No staff on Server".to_string())?;
+    match store.lan_self_book(destination, consignee, weight, phone, note, &actor) {
+        Ok(sale) => Ok(Reply::html(format!(
+            "<!DOCTYPE html><html><body><h1>Booked</h1><p>AWB <b>{}</b></p><p>Track on LAN: <a href=\"/track/{}\">/track/{}</a></p><p><a href=\"/book\">Book another</a></p></body></html>",
+            sale.awb_no, sale.awb_no, sale.awb_no
+        ))),
+        Err(e) => Ok(Reply::html(format!(
+            "<!DOCTYPE html><html><body><p>Could not book: {}</p><p><a href=\"/book\">Back</a></p></body></html>",
+            e.replace('<', "&lt;")
+        ))),
+    }
+}
+
+fn parse_form_body(body: &str) -> std::collections::HashMap<String, String> {
+    let mut map = std::collections::HashMap::new();
+    for part in body.split('&') {
+        let mut it = part.splitn(2, '=');
+        let k = it.next().unwrap_or("");
+        let v = it.next().unwrap_or("");
+        if !k.is_empty() {
+            map.insert(urlencoding_decode(k), urlencoding_decode(v));
+        }
+    }
+    map
 }
 
 /// May `actor` do `right`, given the manager PIN typed on the device? The
@@ -1112,6 +1229,12 @@ fn write(store: &mut Store, route: &str, body: &str, actor: &StaffMember) -> Res
             let (who, reason) =
                 approve_on_server(store, actor, Right::AmendSale, &req.approval_pin, &req.reason)?;
             Reply::of(&store.amend_sale(&req.sale_id, &req.draft, pay, &reason, &who)?)
+        }
+        "/rider_pod" => {
+            let event: crate::rider_mode::RiderPodEvent =
+                serde_json::from_str(body).map_err(|e| format!("rider_pod json: {e}"))?;
+            store.apply_rider_pod(&event, actor)?;
+            Ok(Reply::done())
         }
         _ => Ok(Reply::refuse(404, "not found", "")),
     }
@@ -1208,7 +1331,13 @@ fn default_reason() -> String {
     String::new()
 }
 
-fn write_http(stream: &mut TcpStream, status: u16, body: &str, gzip: bool) -> Result<(), String> {
+fn write_http(
+    stream: &mut TcpStream,
+    status: u16,
+    body: &str,
+    gzip: bool,
+    content_type: &str,
+) -> Result<(), String> {
     let reason = match status {
         200 => "OK",
         304 => "Not Modified",
@@ -1219,6 +1348,11 @@ fn write_http(stream: &mut TcpStream, status: u16, body: &str, gzip: bool) -> Re
         429 => "Too Many Requests",
         _ => "Error",
     };
+    let ctype = if content_type.trim().is_empty() {
+        "application/json"
+    } else {
+        content_type.trim()
+    };
     let (body, encoding) = if gzip && body.len() >= GZIP_FROM_BYTES {
         (gzipped(body.as_bytes())?, "Content-Encoding: gzip\r\n")
     } else {
@@ -1226,7 +1360,7 @@ fn write_http(stream: &mut TcpStream, status: u16, body: &str, gzip: bool) -> Re
     };
     // Every reply carries the Server's clock, so a device can tell its own is wrong.
     let head = format!(
-        "HTTP/1.1 {status} {reason}\r\nContent-Type: application/json\r\n{encoding}{HEADER_TIME}: {}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+        "HTTP/1.1 {status} {reason}\r\nContent-Type: {ctype}\r\n{encoding}{HEADER_TIME}: {}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
         chrono::Utc::now().timestamp(),
         body.len()
     );
@@ -1914,6 +2048,35 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
+    #[test]
+    fn lan_book_form_returns_html_without_pairing() {
+        let (path, store, guard) = office();
+        let rate = crate::domain::Product::new_basic(
+            crate::domain::new_id(),
+            "Express",
+            crate::domain::Money::from_rupees(50),
+        );
+        store.upsert_product(&rate).unwrap();
+        let page = answer(&path, &http("GET", "/book", &[], ""), "10.0.0.9", &guard);
+        assert_eq!(page.status, 200);
+        assert!(page.content_type.contains("html"));
+        assert!(page.body.contains("<form") && page.body.contains("destination"));
+        let posted = answer(
+            &path,
+            &http(
+                "POST",
+                "/book",
+                &[],
+                "destination=Pune&consignee=Riya&weight_kg=1.5&phone=&note=",
+            ),
+            "10.0.0.9",
+            &guard,
+        );
+        assert_eq!(posted.status, 200);
+        assert!(posted.body.contains("Booked") || posted.body.contains("AWB"));
+        let _ = std::fs::remove_file(path);
+    }
+
     /// Rush hour: two counter devices book parcels while the office PC books
     /// too — at the same moment, each on its own connection as in the
     /// office. Every booking lands (no "database is locked"), each exactly
@@ -2107,7 +2270,7 @@ mod tests {
             String::from_utf8_lossy(&reply).to_string()
         });
         let (mut conn, _) = listener.accept().unwrap();
-        write_http(&mut conn, 200, "{}", false).unwrap();
+        write_http(&mut conn, 200, "{}", false, "").unwrap();
         drop(conn);
         let head = client.join().unwrap();
         let line = head.lines().find(|l| l.starts_with(HEADER_TIME)).expect("time header");

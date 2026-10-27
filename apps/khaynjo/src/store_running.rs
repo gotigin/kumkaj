@@ -59,12 +59,20 @@ fn row_to_line(row: &rusqlite::Row<'_>) -> rusqlite::Result<RunningLine> {
         approved_by: row.get(14)?,
         created_at: row.get(15)?,
         created_by: row.get(16)?,
+        seat_no: row.get::<_, i64>(17).unwrap_or(0),
+        held: row.get::<_, i64>(18).unwrap_or(0) != 0,
+        course_no: row.get::<_, i64>(19).unwrap_or(0),
     })
 }
 
 const LINE_COLUMNS: &str = "id, order_id, kot_id, product_id, name, unit_price_paise,
     qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
-    changed_by, approved_by, created_at, created_by";
+    changed_by, approved_by, created_at, created_by,
+    COALESCE(seat_no, 0), COALESCE(held, 0), COALESCE(course_no, 0)";
+
+const LINE_INSERT_COLUMNS: &str = "id, order_id, kot_id, product_id, name, unit_price_paise,
+    qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
+    changed_by, approved_by, created_at, created_by, seat_no, held, course_no";
 
 impl Store {
     /// May `actor` do `right`? `Allowed` passes; `WithApproval` needs an
@@ -210,8 +218,8 @@ impl Store {
         self.conn
             .execute(
                 &format!(
-                    "INSERT INTO running_lines({LINE_COLUMNS}, seq)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)"
+                    "INSERT INTO running_lines({LINE_INSERT_COLUMNS}, seq)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21)"
                 ),
                 params![
                     l.id,
@@ -231,6 +239,9 @@ impl Store {
                     l.approved_by,
                     l.created_at,
                     l.created_by,
+                    l.seat_no,
+                    l.held as i64,
+                    l.course_no,
                     seq
                 ],
             )
@@ -249,11 +260,23 @@ impl Store {
     }
 
     /// Live lines not yet on a KOT (empty `kot_id`) — the punched, unsent ticket.
+    /// Held lines are excluded (coursing / combo components wait for Fire).
     fn pending_live_lines(&self, order_id: &str) -> Result<Vec<RunningLine>, String> {
+        self.pending_live_lines_filtered(order_id, None, true)
+    }
+
+    fn pending_live_lines_filtered(
+        &self,
+        order_id: &str,
+        course: Option<i64>,
+        skip_held: bool,
+    ) -> Result<Vec<RunningLine>, String> {
         Ok(self
             .running_lines(order_id)?
             .into_iter()
             .filter(|l| l.is_live() && l.kot_id.is_empty())
+            .filter(|l| !skip_held || !l.held)
+            .filter(|l| course.map(|c| l.course_no == c).unwrap_or(true))
             .collect())
     }
 
@@ -305,21 +328,14 @@ impl Store {
                 &RunningLine {
                     id: new_id(),
                     order_id: order_id.clone(),
-                    kot_id: String::new(),
                     product_id: product.id.clone(),
                     name: product.name.clone(),
                     unit_price_paise: unit_price.paise(),
                     qty_milli: delta_milli,
                     unit_label: product.unit_label.clone(),
-                    note: String::new(),
-                    cancelled: false,
-                    complimentary: false,
-                    reason: String::new(),
-                    prepared: false,
-                    changed_by: String::new(),
-                    approved_by: String::new(),
                     created_at: Local::now().to_rfc3339(),
                     created_by: actor.name.clone(),
+                    ..Default::default()
                 },
                 seq,
             )?;
@@ -388,21 +404,16 @@ impl Store {
                             line.running_line_id.clone()
                         },
                         order_id: order_id.clone(),
-                        kot_id: String::new(),
                         product_id: line.product_id.clone(),
                         name: line.name.clone(),
                         unit_price_paise: line.unit_price.paise(),
                         qty_milli: line.qty_milli,
                         unit_label: line.unit_label.clone(),
                         note: line.note.clone(),
-                        cancelled: false,
                         complimentary: line.complimentary,
-                        reason: String::new(),
-                        prepared: false,
-                        changed_by: String::new(),
-                        approved_by: String::new(),
                         created_at: Local::now().to_rfc3339(),
                         created_by: actor.name.clone(),
+                        ..Default::default()
                     },
                     seq,
                 )?;
@@ -513,7 +524,7 @@ impl Store {
         Ok(kot_id)
     }
 
-    fn table_label(&self, table_id: &str) -> Result<String, String> {
+    pub(crate) fn table_label(&self, table_id: &str) -> Result<String, String> {
         Ok(self
             .conn
             .query_row(
@@ -529,169 +540,338 @@ impl Store {
     /// Send new lines to the kitchen: one KOT per station. With a table,
     /// promotes **pending** running lines (empty `kot_id`) onto KOTs — the
     /// ticket is already the Server order. Without a table (counter), only
-    /// kitchen tickets are written from the draft. Returns KOT ids to print.
+    /// kitchen tickets are written from the draft. Held lines are skipped.
+    /// Returns KOT ids to print.
     pub fn send_kot(
         &self,
         draft: &SaleDraft,
         table_id: Option<&str>,
         actor: &StaffMember,
     ) -> Result<Vec<String>, String> {
+        let table_id = table_id.filter(|t| !t.is_empty());
+        if let Some(tid) = table_id {
+            self.seat_draft_unsent(tid, draft, actor)?;
+            self.send_kot_filtered(tid, actor, None, true)
+        } else {
+            self.send_kot_counter(draft, actor)
+        }
+    }
+
+    fn seat_draft_unsent(
+        &self,
+        tid: &str,
+        draft: &SaleDraft,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        let order_id = self.ensure_running_order(tid, actor)?;
+        let unsent: Vec<crate::domain::CartLine> = draft
+            .lines
+            .iter()
+            .filter(|l| !l.kot_sent)
+            .map(|l| {
+                let qty_milli = if l.qty_milli > 0 {
+                    l.qty_milli
+                } else {
+                    l.qty * 1000
+                };
+                crate::domain::CartLine {
+                    product_id: l.product_id.clone(),
+                    name: l.name.clone(),
+                    unit_price: Money(l.unit_price_paise),
+                    qty: l.qty,
+                    qty_milli,
+                    unit_label: l.unit_label.clone(),
+                    note: l.note.clone(),
+                    base_unit_paise: l.unit_price_paise,
+                    complimentary: l.line_total_paise == 0 && l.unit_price_paise > 0,
+                    ..Default::default()
+                }
+            })
+            .collect();
+        if unsent.is_empty() {
+            return Ok(());
+        }
+        let pending = self.pending_live_lines_filtered(&order_id, None, false)?;
+        let to_seat: Vec<_> = unsent
+            .into_iter()
+            .filter(|l| {
+                !pending.iter().any(|p| {
+                    p.product_id == l.product_id
+                        && p.note == l.note
+                        && p.complimentary == l.complimentary
+                })
+            })
+            .collect();
+        if !to_seat.is_empty() {
+            self.seat_unsent_lines(tid, &to_seat, actor)?;
+        }
+        Ok(())
+    }
+
+    fn send_kot_counter(
+        &self,
+        draft: &SaleDraft,
+        actor: &StaffMember,
+    ) -> Result<Vec<String>, String> {
         self.assert_server_writer("Send a KOT")?;
         if !self.venue_mode()?.creates_kot() {
             return Err("Turn on Tables & kitchen in Settings to send kitchen tickets".into());
         }
-        let table_id = table_id.filter(|t| !t.is_empty());
-        let table_prefix = match table_id {
-            Some(tid) => format!("{} · ", self.table_label(tid)?),
-            None => String::new(),
-        };
         let stations = self.list_stations()?;
-        let mut kot_ids = Vec::new();
-
-        if let Some(tid) = table_id {
-            let order_id = self.ensure_running_order(tid, actor)?;
-            // Draft may still hold punches that never hit the store (race);
-            // seat them as pending first so promote sees everything.
-            let unsent: Vec<crate::domain::CartLine> = draft
-                .lines
-                .iter()
-                .filter(|l| !l.kot_sent)
-                .map(|l| {
-                    let qty_milli = if l.qty_milli > 0 { l.qty_milli } else { l.qty * 1000 };
-                    crate::domain::CartLine {
-                        product_id: l.product_id.clone(),
-                        name: l.name.clone(),
-                        unit_price: Money(l.unit_price_paise),
-                        qty: l.qty,
-                        qty_milli,
-                        unit_label: l.unit_label.clone(),
-                        note: l.note.clone(),
-                        base_unit_paise: l.unit_price_paise,
-                        complimentary: l.line_total_paise == 0 && l.unit_price_paise > 0,
-                        ..Default::default()
-                    }
-                })
-                .collect();
-            if !unsent.is_empty() {
-                // Prefer promoting existing pending; only seat cart-only lines.
-                let pending = self.pending_live_lines(&order_id)?;
-                let to_seat: Vec<_> = unsent
-                    .into_iter()
-                    .filter(|l| {
-                        !pending.iter().any(|p| {
-                            p.product_id == l.product_id
-                                && p.note == l.note
-                                && p.complimentary == l.complimentary
-                        })
-                    })
-                    .collect();
-                if !to_seat.is_empty() {
-                    self.seat_unsent_lines(tid, &to_seat, actor)?;
-                }
-            }
-            let pending = self.pending_live_lines(&order_id)?;
-            if pending.is_empty() {
-                return Err("Nothing new to send — tap items first".into());
-            }
-            let mut by_station: Vec<(String, Vec<RunningLine>)> = Vec::new();
-            for line in pending {
-                let station_id = self
-                    .get_product(&line.product_id)?
-                    .map(|p| p.station_id)
-                    .unwrap_or_default();
-                match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
-                    Some((_, items)) => items.push(line),
-                    None => by_station.push((station_id, vec![line])),
-                }
-            }
-            for (station_id, items) in &by_station {
-                let head = stations
-                    .iter()
-                    .find(|s| s.id == *station_id)
-                    .map(|s| format!("[{}] ", s.name))
-                    .unwrap_or_default();
-                let summary = items
-                    .iter()
-                    .map(|l| {
-                        let qty = crate::domain::format_qty_display(l.qty_milli, 0, &l.unit_label);
-                        if l.note.is_empty() {
-                            format!("{qty}× {}", l.name)
-                        } else {
-                            format!("{qty}× {} ({})", l.name, l.note)
-                        }
-                    })
-                    .collect::<Vec<_>>()
-                    .join(", ");
-                let total: i64 = items.iter().map(|l| l.billed_paise()).sum();
-                let kot_id = self.insert_kot(
-                    &format!("{table_prefix}{head}{summary}"),
-                    station_id,
-                    tid,
-                    &order_id,
-                    total,
-                    "kot",
-                    actor,
-                )?;
-                for l in items {
-                    self.conn
-                        .execute(
-                            "UPDATE running_lines SET kot_id = ?2 WHERE id = ?1 AND kot_id = ''",
-                            params![l.id, kot_id],
-                        )
-                        .map_err(|e| e.to_string())?;
-                }
-                kot_ids.push(kot_id);
-            }
-            self.conn
-                .execute(
-                    "UPDATE running_orders SET status = 'running', printed_at = ''
-                      WHERE id = ?1 AND status = 'printed'",
-                    params![order_id],
-                )
-                .map_err(|e| e.to_string())?;
-            self.conn
-                .execute(
-                    "UPDATE tables_dining SET status = ?1 WHERE id = ?2",
-                    params![TableStatus::Occupied.as_str(), tid],
-                )
-                .map_err(|e| e.to_string())?;
-        } else {
-            let lines: Vec<_> = draft.lines.iter().filter(|l| !l.kot_sent).collect();
-            if lines.is_empty() {
-                return Err("Nothing new to send — tap items first".into());
-            }
-            let mut by_station: Vec<(String, Vec<&crate::domain::SaleLine>)> = Vec::new();
-            for line in &lines {
-                let station_id = self
-                    .get_product(&line.product_id)?
-                    .map(|p| p.station_id)
-                    .unwrap_or_default();
-                match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
-                    Some((_, items)) => items.push(line),
-                    None => by_station.push((station_id, vec![line])),
-                }
-            }
-            for (station_id, items) in &by_station {
-                let head = stations
-                    .iter()
-                    .find(|s| s.id == *station_id)
-                    .map(|s| format!("[{}] ", s.name))
-                    .unwrap_or_default();
-                let summary = items.iter().map(|l| kot_line_label(l)).collect::<Vec<_>>().join(", ");
-                let total: i64 = items.iter().map(|l| l.line_total_paise).sum();
-                let kot_id = self.insert_kot(
-                    &format!("{table_prefix}{head}{summary}"),
-                    station_id,
-                    "",
-                    "",
-                    total,
-                    "kot",
-                    actor,
-                )?;
-                kot_ids.push(kot_id);
+        let lines: Vec<_> = draft.lines.iter().filter(|l| !l.kot_sent).collect();
+        if lines.is_empty() {
+            return Err("Nothing new to send — tap items first".into());
+        }
+        let mut by_station: Vec<(String, Vec<&crate::domain::SaleLine>)> = Vec::new();
+        for line in &lines {
+            let station_id = self
+                .get_product(&line.product_id)?
+                .map(|p| p.station_id)
+                .unwrap_or_default();
+            match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
+                Some((_, items)) => items.push(line),
+                None => by_station.push((station_id, vec![line])),
             }
         }
-        self.audit(actor, "kot.send", &format!("{table_prefix}{} ticket(s)", kot_ids.len()))?;
+        let mut kot_ids = Vec::new();
+        for (station_id, items) in &by_station {
+            let head = stations
+                .iter()
+                .find(|s| s.id == *station_id)
+                .map(|s| format!("[{}] ", s.name))
+                .unwrap_or_default();
+            let summary = items.iter().map(|l| kot_line_label(l)).collect::<Vec<_>>().join(", ");
+            let total: i64 = items.iter().map(|l| l.line_total_paise).sum();
+            let kot_id = self.insert_kot(
+                &format!("{head}{summary}"),
+                station_id,
+                "",
+                "",
+                total,
+                "kot",
+                actor,
+            )?;
+            kot_ids.push(kot_id);
+        }
+        self.audit(actor, "kot.send", &format!("{} ticket(s)", kot_ids.len()))?;
+        Ok(kot_ids)
+    }
+
+    /// Seat a fixed-combo parent at combo price and held component lines
+    /// (they print only when the combo KOT fires).
+    pub fn seat_fixed_combo(
+        &self,
+        table_id: &str,
+        parent_product_id: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Seat combo")?;
+        let schemes = self.list_schemes()?;
+        let scheme = schemes
+            .iter()
+            .find(|s| {
+                s.active
+                    && s.kind == crate::schemes::SchemeKind::Combo
+                    && s.trigger_json.contains(parent_product_id)
+            })
+            .ok_or_else(|| "No fixed combo scheme for that item".to_string())?;
+        let trigger: crate::schemes::ComboTrigger =
+            serde_json::from_str(&scheme.trigger_json).unwrap_or_default();
+        let reward: crate::schemes::ComboReward =
+            serde_json::from_str(&scheme.reward_json).unwrap_or_default();
+        let parent = self
+            .get_product(parent_product_id)?
+            .ok_or_else(|| "Combo item not found".to_string())?;
+        let order_id = self.ensure_running_order(table_id, actor)?;
+        let parent_id = new_id();
+        let price = if reward.price_paise > 0 {
+            reward.price_paise
+        } else {
+            parent.price.paise()
+        };
+        let seq = self.next_line_seq(&order_id)?;
+        self.insert_running_line(
+            &RunningLine {
+                id: parent_id.clone(),
+                order_id: order_id.clone(),
+                product_id: parent.id.clone(),
+                name: parent.name.clone(),
+                unit_price_paise: price,
+                qty_milli: 1000,
+                unit_label: parent.unit_label.clone(),
+                note: format!("Scheme: {}", scheme.name),
+                created_at: Local::now().to_rfc3339(),
+                created_by: actor.name.clone(),
+                ..Default::default()
+            },
+            seq,
+        )?;
+        let mut seq = seq + 1;
+        for comp in &trigger.components {
+            let Some(p) = self.get_product(&comp.product_id)? else {
+                continue;
+            };
+            self.insert_running_line(
+                &RunningLine {
+                    id: new_id(),
+                    order_id: order_id.clone(),
+                    product_id: p.id.clone(),
+                    name: p.name.clone(),
+                    unit_price_paise: p.price.paise(),
+                    qty_milli: comp.qty.max(1) * 1000,
+                    unit_label: p.unit_label.clone(),
+                    note: format!("combo:{parent_id}"),
+                    complimentary: true,
+                    held: true,
+                    created_at: Local::now().to_rfc3339(),
+                    created_by: actor.name.clone(),
+                    ..Default::default()
+                },
+                seq,
+            )?;
+            seq += 1;
+        }
+        self.conn
+            .execute(
+                "UPDATE tables_dining SET status = ?1 WHERE id = ?2",
+                params![TableStatus::Occupied.as_str(), table_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Send pending lines; optionally only one course. When sending a combo
+    /// parent, its held `combo:<parent>` components are unheld and included.
+    pub fn send_kot_filtered(
+        &self,
+        table_id: &str,
+        actor: &StaffMember,
+        course: Option<i64>,
+        skip_held: bool,
+    ) -> Result<Vec<String>, String> {
+        self.assert_server_writer("Send a KOT")?;
+        if !self.venue_mode()?.creates_kot() {
+            return Err("Turn on Tables & kitchen in Settings to send kitchen tickets".into());
+        }
+        let tid = table_id.trim();
+        if tid.is_empty() {
+            return Err("Nothing new to send — tap items first".into());
+        }
+        let order_id = self.ensure_running_order(tid, actor)?;
+        // Fire combo components that belong to parents about to send.
+        let parents: Vec<String> = self
+            .pending_live_lines_filtered(&order_id, course, skip_held)?
+            .into_iter()
+            .map(|l| l.id)
+            .collect();
+        for pid in &parents {
+            self.conn
+                .execute(
+                    "UPDATE running_lines SET held = 0
+                      WHERE order_id = ?1 AND kot_id = '' AND held = 1
+                        AND note = ?2",
+                    params![order_id, format!("combo:{pid}")],
+                )
+                .map_err(|e| e.to_string())?;
+        }
+        let mut pending = self.pending_live_lines_filtered(&order_id, course, skip_held)?;
+        // Include just-unheld combo components even when skip_held (they match note).
+        if skip_held {
+            let have: std::collections::HashSet<_> = pending.iter().map(|l| l.id.clone()).collect();
+            let extra: Vec<_> = self
+                .running_lines(&order_id)?
+                .into_iter()
+                .filter(|l| {
+                    l.is_live()
+                        && l.kot_id.is_empty()
+                        && !l.held
+                        && parents.iter().any(|p| l.note == format!("combo:{p}"))
+                        && !have.contains(&l.id)
+                })
+                .collect();
+            pending.extend(extra);
+        }
+        if pending.is_empty() {
+            return Err("Nothing new to send — tap items first".into());
+        }
+        let table_prefix = format!("{} · ", self.table_label(tid)?);
+        let stations = self.list_stations()?;
+        let mut by_station: Vec<(String, Vec<RunningLine>)> = Vec::new();
+        for line in pending {
+            let station_id = self
+                .get_product(&line.product_id)?
+                .map(|p| p.station_id)
+                .unwrap_or_default();
+            match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
+                Some((_, items)) => items.push(line),
+                None => by_station.push((station_id, vec![line])),
+            }
+        }
+        let mut kot_ids = Vec::new();
+        for (station_id, items) in &by_station {
+            let head = stations
+                .iter()
+                .find(|s| s.id == *station_id)
+                .map(|s| format!("[{}] ", s.name))
+                .unwrap_or_default();
+            let summary = items
+                .iter()
+                .map(|l| {
+                    let qty = crate::domain::format_qty_display(l.qty_milli, 0, &l.unit_label);
+                    let allergens = self
+                        .product_allergens(&l.product_id)
+                        .unwrap_or_default();
+                    let mut s = if l.note.is_empty() || l.note.starts_with("combo:") || l.note.starts_with("Scheme:")
+                    {
+                        format!("{qty}× {}", l.name)
+                    } else {
+                        format!("{qty}× {} ({})", l.name, l.note)
+                    };
+                    if !allergens.is_empty() {
+                        s.push_str(&format!(" [allergen: {allergens}]"));
+                    }
+                    s
+                })
+                .collect::<Vec<_>>()
+                .join(", ");
+            let total: i64 = items.iter().map(|l| l.billed_paise()).sum();
+            let kot_id = self.insert_kot(
+                &format!("{table_prefix}{head}{summary}"),
+                station_id,
+                tid,
+                &order_id,
+                total,
+                "kot",
+                actor,
+            )?;
+            for l in items {
+                self.conn
+                    .execute(
+                        "UPDATE running_lines SET kot_id = ?2, held = 0 WHERE id = ?1 AND kot_id = ''",
+                        params![l.id, kot_id],
+                    )
+                    .map_err(|e| e.to_string())?;
+            }
+            kot_ids.push(kot_id);
+        }
+        self.conn
+            .execute(
+                "UPDATE running_orders SET status = 'running', printed_at = ''
+                  WHERE id = ?1 AND status = 'printed'",
+                params![order_id],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "UPDATE tables_dining SET status = ?1 WHERE id = ?2",
+                params![TableStatus::Occupied.as_str(), tid],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(
+            actor,
+            "kot.send",
+            &format!("{table_prefix}{} ticket(s)", kot_ids.len()),
+        )?;
         Ok(kot_ids)
     }
 
@@ -1323,7 +1503,11 @@ impl Store {
         out.push_str("--------------------------------\n");
         let subtotal = order.total_paise();
         out.push_str(&format!("Sub total: {}\n", money(subtotal)));
-        if let Some(draft) = order_bill_draft(order) {
+        let (draft, scheme_notes) = self.order_bill_draft_schemed(order);
+        for name in &scheme_notes {
+            out.push_str(&format!("Scheme: {name}\n"));
+        }
+        if let Some(draft) = draft {
             let total = self.preview_sale_total(&draft)?;
             if total != subtotal {
                 out.push_str(&format!(
@@ -1372,11 +1556,37 @@ impl Store {
     /// Owner's bill format: header lines (address, phone…), India's FSSAI
     /// food-licence number, and a footer ("Thank you, visit again").
     pub fn set_bill_format(&self, header: &str, fssai_no: &str, footer: &str) -> Result<(), String> {
+        self.set_bill_format_ex(header, fssai_no, footer, None, None)
+    }
+
+    /// Bill format plus optional UPI VPA / payee for the customer-facing QR.
+    pub fn set_bill_format_ex(
+        &self,
+        header: &str,
+        fssai_no: &str,
+        footer: &str,
+        upi_vpa: Option<&str>,
+        upi_payee: Option<&str>,
+    ) -> Result<(), String> {
         self.assert_server_writer("Change the bill format")?;
         self.meta_set("bill_header", header.trim())?;
         self.meta_set("fssai_no", fssai_no.trim())?;
         self.meta_set("bill_footer", footer.trim())?;
+        if let Some(v) = upi_vpa {
+            self.meta_set("upi_vpa", v.trim())?;
+        }
+        if let Some(p) = upi_payee {
+            self.meta_set("upi_payee", p.trim())?;
+        }
         Ok(())
+    }
+
+    pub fn upi_vpa(&self) -> Result<String, String> {
+        Ok(self.meta_get("upi_vpa")?.unwrap_or_default())
+    }
+
+    pub fn upi_payee(&self) -> Result<String, String> {
+        Ok(self.meta_get("upi_payee")?.unwrap_or_default())
     }
 
     /// Settle & Save details on a sale: cash the guest handed over, change
@@ -1560,12 +1770,17 @@ impl Store {
     }
 }
 
-/// The open order's billable lines as a draft, for tax preview (None when
-/// nothing is charged).
-fn order_bill_draft(order: &RunningOrder) -> Option<SaleDraft> {
-    let mut cart = crate::domain::Cart::default();
-    cart.lines = order.to_cart_lines();
-    cart.to_sale_draft().ok()
+impl Store {
+    /// Bill draft with active schemes applied (ticket "Scheme: …" + settle total).
+    pub fn order_bill_draft_schemed(
+        &self,
+        order: &RunningOrder,
+    ) -> (Option<SaleDraft>, Vec<String>) {
+        let mut cart = crate::domain::Cart::default();
+        cart.lines = order.to_cart_lines();
+        let notes = self.apply_schemes_to_cart(&mut cart).unwrap_or_default();
+        (cart.to_sale_draft().ok(), notes)
+    }
 }
 
 fn right_words(right: Right) -> &'static str {
@@ -1810,6 +2025,31 @@ mod tests {
         let _ = crate::print_share::take_captured();
     }
 
+    /// Guests sit before any dish is punched: Free → Seated (no order) →
+    /// In kitchen on first KOT; an empty seated table frees again.
+    #[test]
+    fn seating_marks_occupied_without_an_order_then_frees_or_cooks() {
+        use crate::domain::FloorState;
+        let shop = shop();
+        let d2 = shop.table("D2");
+        assert_eq!(d2.floor_state, FloorState::Free);
+        shop.store.seat_table(&d2.id, &shop.owner).unwrap();
+        let d2 = shop.table("D2");
+        assert_eq!(d2.status, TableStatus::Occupied);
+        assert_eq!(d2.floor_state, FloorState::Seated);
+        assert!(shop.store.running_order(&d2.id).unwrap().is_none());
+        // Leave without ordering.
+        shop.store.free_table(&d2.id).unwrap();
+        assert_eq!(shop.table("D2").floor_state, FloorState::Free);
+        // Sit again, then send a KOT — Seated becomes In kitchen.
+        let d2 = shop.table("D2");
+        shop.store.seat_table(&d2.id, &shop.owner).unwrap();
+        assert_eq!(shop.table("D2").floor_state, FloorState::Seated);
+        shop.kot("D2", &[(&shop.thali, 1)]);
+        assert_eq!(shop.table("D2").floor_state, FloorState::InKitchen);
+        assert!(shop.store.running_order(&shop.table("D2").id).unwrap().is_some());
+    }
+
     /// The floor follows the guests' visit, the same on every device:
     /// free → in kitchen → food ready → eating → bill printed → paid → free.
     #[test]
@@ -1894,6 +2134,47 @@ mod tests {
             .unwrap();
     }
 
+    /// Paying (or freeing) a table must not leave open KOTs that paint the
+    /// *next* seating as "In kitchen" with nothing on the ticket.
+    #[test]
+    fn paying_clears_in_kitchen_so_the_next_guests_start_free() {
+        use crate::domain::FloorState;
+        let mut shop = shop();
+        shop.kot("D2", &[(&shop.thali, 1)]);
+        assert_eq!(shop.table("D2").floor_state, FloorState::InKitchen);
+        let d2 = shop.table("D2");
+        let draft = shop.bill_cart("D2").to_sale_draft().unwrap();
+        let owner = shop.owner.clone();
+        shop.store
+            .finalize_sale(&draft, PayMethod::Cash, Some(&d2.id), None, &owner)
+            .unwrap();
+        assert_eq!(shop.table("D2").floor_state, FloorState::Free);
+        assert!(
+            shop.store
+                .list_open_kots()
+                .unwrap()
+                .iter()
+                .all(|k| k.table_id != d2.id),
+            "no open KOT may still name the freed table"
+        );
+        // Next guests sit with no order — must be Seated, not In kitchen.
+        shop.store.seat_table(&d2.id, &owner).unwrap();
+        assert_eq!(shop.table("D2").floor_state, FloorState::Seated);
+        shop.store.free_table(&d2.id).unwrap();
+        assert_eq!(shop.table("D2").floor_state, FloorState::Free);
+    }
+
+    /// A cashier can bump a kitchen ticket (one-device shops clear "In kitchen"
+    /// without a Kitchen role login).
+    #[test]
+    fn a_cashier_can_advance_a_kitchen_ticket() {
+        let shop = shop();
+        let kots = shop.kot("D1", &[(&shop.thali, 1)]);
+        shop.store
+            .advance_kot(&kots[0], &shop.cashier)
+            .expect("cashier advances New → Preparing");
+    }
+
     /// Cancel after KOT: needs a reason and (for a cashier) a manager's PIN;
     /// part of a line can go; the kitchen gets a cancel slip; nothing is
     /// deleted and the report shows the wastage.
@@ -1969,16 +2250,14 @@ mod tests {
     #[test]
     fn a_printed_bill_with_nothing_to_charge_still_frees_the_table() {
         // A dish still at ₹0 (fresh from the template) or an all-NC order:
-        // the table sat on "Bill printed" forever because Pay needs a sale
-        // above zero. Pay now closes it the way Ready does on the Floor.
+        // Pay cannot close a zero sale, so list_tables heals Bill-printed
+        // with nothing to collect (same end as Ready on the Floor).
         let shop = shop();
         let water = Product::new_basic(new_id(), "Water", Money(0));
         shop.store.upsert_product(&water).unwrap();
         shop.kot("D2", &[(&water, 1)]);
         let d2 = shop.table("D2");
         shop.store.print_running_bill(&d2.id, &shop.owner, None).unwrap();
-        assert_eq!(shop.table("D2").status, TableStatus::PaymentPending);
-        shop.store.free_table(&d2.id).unwrap();
         assert_eq!(shop.table("D2").status, TableStatus::Available);
         assert!(shop.store.running_order(&d2.id).unwrap().is_none());
     }
