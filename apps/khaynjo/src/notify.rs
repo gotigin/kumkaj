@@ -53,8 +53,13 @@ pub fn whatsapp_share_url(bill_text: &str) -> String {
 
 /// Queue SMS bill text for a later Android SIM drain (never requires Net now).
 pub fn queue_sms_bill(to_phone: &str, bill_text: &str) -> NotifyOutboxRow {
+    queue_sms_message(to_phone, bill_text, "e_bill")
+}
+
+/// Queue a free-text SMS (CRM campaign / birthday wish).
+pub fn queue_sms_message(to_phone: &str, message: &str, template_key: &str) -> NotifyOutboxRow {
     let payload = serde_json::json!({
-        "message": bill_text,
+        "message": message,
         "intent": "sms_send",
     });
     NotifyOutboxRow {
@@ -62,7 +67,26 @@ pub fn queue_sms_bill(to_phone: &str, bill_text: &str) -> NotifyOutboxRow {
         created_at: Local::now().to_rfc3339(),
         channel: "sms".into(),
         to_addr: to_phone.trim().into(),
-        template_key: "e_bill".into(),
+        template_key: template_key.into(),
+        payload_json: payload.to_string(),
+        status: "queued".into(),
+        last_error: String::new(),
+    }
+}
+
+/// Queue a WhatsApp intent (device can open `wa.me` when Net is up).
+pub fn queue_whatsapp_message(to_phone: &str, message: &str, template_key: &str) -> NotifyOutboxRow {
+    let payload = serde_json::json!({
+        "message": message,
+        "intent": "whatsapp_send",
+        "whatsapp_url": whatsapp_share_url(message),
+    });
+    NotifyOutboxRow {
+        id: new_id(),
+        created_at: Local::now().to_rfc3339(),
+        channel: "whatsapp".into(),
+        to_addr: to_phone.trim().into(),
+        template_key: template_key.into(),
         payload_json: payload.to_string(),
         status: "queued".into(),
         last_error: String::new(),

@@ -1,14 +1,47 @@
 //! Local / LAN ops beyond the day book: waitlist, loyalty, vouchers, clock,
-//! stock count, POs, transfers, feedback, and optional Net stubs.
+//! stock count, POs, transfers, feedback, CRM segments, and optional Net stubs.
 //!
 //! Child of `store` — shares the connection. Counter and kitchen never wait
 //! on these; outbox / Net stubs stay optional.
 
 use super::Store;
-use crate::domain::{new_id, Money, Product, StaffMember};
-use chrono::Local;
+use crate::domain::{
+    birthday_in_range, new_id, Customer, Money, Product, StaffMember,
+};
+use crate::notify;
+use chrono::{Datelike, Duration, Local, NaiveDate};
 use rusqlite::{params, OptionalExtension};
 use serde::{Deserialize, Serialize};
+
+/// Local guest-book slice for CRM messages (Parties → Guests & messages).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CrmSegment {
+    /// Birthday falls in the next 7 days (incl. today).
+    BirthdayThisWeek,
+    /// Birthday month-day in the current calendar month.
+    BirthdayThisMonth,
+    /// Active customers with a phone number.
+    WithPhone,
+    /// Guests who hold any loyalty points.
+    WithLoyalty,
+    /// No completed sale in the last `days` (default 30).
+    InactiveDays(i64),
+    /// Highest paid-sale totals, limited to `n` (default 20).
+    TopSpenders(usize),
+}
+
+impl CrmSegment {
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::BirthdayThisWeek => "Birthday this week",
+            Self::BirthdayThisMonth => "Birthday this month",
+            Self::WithPhone => "With phone",
+            Self::WithLoyalty => "With loyalty points",
+            Self::InactiveDays(_) => "Inactive 30+ days",
+            Self::TopSpenders(_) => "Top spenders",
+        }
+    }
+}
 
 pub const OPS_SCHEMA: &str = r#"
 CREATE TABLE IF NOT EXISTS waitlist (
@@ -178,6 +211,7 @@ impl Store {
             "ALTER TABLE products ADD COLUMN allergens TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE customers ADD COLUMN loyalty_points INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE customers ADD COLUMN wallet_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE customers ADD COLUMN birthday TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE tables_dining ADD COLUMN waiter_staff_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE tables_dining ADD COLUMN layout_x REAL NOT NULL DEFAULT 0",
             "ALTER TABLE tables_dining ADD COLUMN layout_y REAL NOT NULL DEFAULT 0",
@@ -1046,6 +1080,20 @@ impl Store {
         Ok(v)
     }
 
+    pub fn voucher_balance(&self, code: &str) -> Result<i64, String> {
+        let code = code.trim().to_uppercase();
+        self.conn
+            .query_row(
+                "SELECT balance_paise FROM gift_vouchers
+                  WHERE code = ?1 AND active = 1",
+                params![code],
+                |r| r.get(0),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?
+            .ok_or_else(|| "Voucher not found".to_string())
+    }
+
     pub fn redeem_voucher(
         &self,
         code: &str,
@@ -1894,12 +1942,195 @@ document.getElementById('add').onclick = async () => {{
         out.push_str(&self.time_clock_hours_text("")?);
         let calls = self.list_open_waiter_calls()?.len();
         let waits = self.list_waitlist()?.len();
-        out.push_str(&format!("\nOpen waiter calls: {calls}\nWaitlist: {waits}\n"));
+        let queued = self
+            .list_notify_outbox(500)?
+            .into_iter()
+            .filter(|r| r.status == "queued")
+            .count();
+        let bday_week = self.crm_segment(CrmSegment::BirthdayThisWeek)?.len();
+        out.push_str(&format!(
+            "\nOpen waiter calls: {calls}\nWaitlist: {waits}\nNotify outbox queued: {queued}\nBirthdays this week: {bday_week}\n"
+        ));
         out.push_str(
             "\nLAN pages (Server Wi‑Fi): /display /tokens /expo /kiosk /t/{table} /feedback\n",
         );
         out.push_str("Card terminal / aggregator: optional outbox — never blocks counter.\n");
         Ok(out)
+    }
+
+    // —— CRM segments + campaign queue ——
+
+    /// Guests matching a local CRM segment (customers only; suppliers skipped).
+    pub fn crm_segment(&self, segment: CrmSegment) -> Result<Vec<Customer>, String> {
+        let all = self.list_customers()?;
+        // Guests: Customer role, or unlabeled parties (find_or_create leaves kind
+        // empty). Pure suppliers stay out of birthday / loyalty blasts.
+        let guests: Vec<Customer> = all
+            .into_iter()
+            .filter(|c| c.is_customer() || (!c.is_supplier() && c.kind_label.trim().is_empty()))
+            .collect();
+        let today = Local::now().date_naive();
+        Ok(match segment {
+            CrmSegment::BirthdayThisWeek => {
+                let end = today + Duration::days(6);
+                guests
+                    .into_iter()
+                    .filter(|c| birthday_in_range(&c.birthday, today, end))
+                    .collect()
+            }
+            CrmSegment::BirthdayThisMonth => {
+                let m = today.month();
+                let last = NaiveDate::from_ymd_opt(today.year(), m, 1)
+                    .and_then(|d| {
+                        if m == 12 {
+                            NaiveDate::from_ymd_opt(today.year() + 1, 1, 1)
+                                .and_then(|n| n.pred_opt())
+                        } else {
+                            NaiveDate::from_ymd_opt(today.year(), m + 1, 1)
+                                .and_then(|n| n.pred_opt())
+                        }
+                        .or(Some(d))
+                    })
+                    .unwrap_or(today);
+                let first = NaiveDate::from_ymd_opt(today.year(), m, 1).unwrap_or(today);
+                guests
+                    .into_iter()
+                    .filter(|c| birthday_in_range(&c.birthday, first, last))
+                    .collect()
+            }
+            CrmSegment::WithPhone => guests
+                .into_iter()
+                .filter(|c| !c.phone.trim().is_empty())
+                .collect(),
+            CrmSegment::WithLoyalty => guests
+                .into_iter()
+                .filter(|c| c.loyalty_points > 0)
+                .collect(),
+            CrmSegment::InactiveDays(days) => {
+                let days = days.max(1);
+                let cutoff = (Local::now() - Duration::days(days)).to_rfc3339();
+                let mut out = Vec::new();
+                for c in guests {
+                    let last: Option<String> = self
+                        .conn
+                        .query_row(
+                            "SELECT MAX(created_at) FROM sales
+                              WHERE customer_id = ?1 AND status = 'completed'",
+                            params![c.id],
+                            |r| r.get(0),
+                        )
+                        .map_err(|e| e.to_string())?;
+                    let inactive = match last {
+                        None => true,
+                        Some(at) => at.as_str() < cutoff.as_str(),
+                    };
+                    if inactive {
+                        out.push(c);
+                    }
+                }
+                out
+            }
+            CrmSegment::TopSpenders(n) => {
+                let n = n.max(1);
+                let mut scored: Vec<(Customer, i64)> = Vec::new();
+                for c in guests {
+                    let spent: i64 = self
+                        .conn
+                        .query_row(
+                            "SELECT COALESCE(SUM(total_paise), 0) FROM sales
+                              WHERE customer_id = ?1 AND status = 'completed'",
+                            params![c.id],
+                            |r| r.get(0),
+                        )
+                        .unwrap_or(0);
+                    if spent > 0 {
+                        scored.push((c, spent));
+                    }
+                }
+                scored.sort_by(|a, b| b.1.cmp(&a.1));
+                scored.into_iter().take(n).map(|(c, _)| c).collect()
+            }
+        })
+    }
+
+    /// Preview lines for the CRM card (name · phone · points).
+    pub fn crm_segment_preview(&self, segment: CrmSegment) -> Result<String, String> {
+        let rows = self.crm_segment(segment)?;
+        if rows.is_empty() {
+            return Ok(format!("{}: none\n", segment.label()));
+        }
+        let mut out = format!("{}: {} guest(s)\n", segment.label(), rows.len());
+        for c in rows.iter().take(40) {
+            let phone = if c.phone.trim().is_empty() {
+                "—"
+            } else {
+                c.phone.trim()
+            };
+            out.push_str(&format!(
+                "· {} · {} · {} pts · bday {}\n",
+                c.name,
+                phone,
+                c.loyalty_points,
+                if c.birthday.is_empty() {
+                    "—"
+                } else {
+                    c.birthday.as_str()
+                }
+            ));
+        }
+        if rows.len() > 40 {
+            out.push_str(&format!("… and {} more\n", rows.len() - 40));
+        }
+        Ok(out)
+    }
+
+    /// Queue SMS or WhatsApp intents for every guest in the segment who has a phone.
+    /// Body may use `{name}` and `{points}`. Owner-triggered — never auto-blasts.
+    pub fn queue_segment_campaign(
+        &self,
+        segment: CrmSegment,
+        body: &str,
+        channel: &str,
+        actor: &StaffMember,
+    ) -> Result<usize, String> {
+        self.assert_server_writer("CRM campaign")?;
+        let body = body.trim();
+        if body.is_empty() {
+            return Err("Type a message first".into());
+        }
+        let channel = channel.trim().to_ascii_lowercase();
+        if channel != "sms" && channel != "whatsapp" {
+            return Err("Channel must be sms or whatsapp".into());
+        }
+        let guests = self.crm_segment(segment)?;
+        let mut n = 0usize;
+        let template = match segment {
+            CrmSegment::BirthdayThisWeek | CrmSegment::BirthdayThisMonth => "crm_birthday",
+            CrmSegment::WithLoyalty => "crm_loyalty",
+            _ => "crm_campaign",
+        };
+        for c in guests {
+            let phone = c.phone.trim();
+            if phone.is_empty() {
+                continue;
+            }
+            let msg = body
+                .replace("{name}", &c.name)
+                .replace("{points}", &c.loyalty_points.to_string());
+            let row = if channel == "sms" {
+                notify::queue_sms_message(phone, &msg, template)
+            } else {
+                notify::queue_whatsapp_message(phone, &msg, template)
+            };
+            self.queue_notify(&row)?;
+            n += 1;
+        }
+        self.audit(
+            actor,
+            "crm.campaign",
+            &format!("{} {channel} ×{n}", segment.label()),
+        )?;
+        Ok(n)
     }
 }
 
@@ -2043,6 +2274,39 @@ mod tests {
         shop.store.wallet_top_up(&c.id, 5000, &shop.owner).unwrap();
         shop.store.wallet_spend(&c.id, 2000, &shop.owner).unwrap();
         assert_eq!(shop.store.wallet_paise(&c.id).unwrap(), 3000);
+    }
+
+    #[test]
+    fn crm_birthday_segment_and_campaign_queue() {
+        use crate::domain::birthday_in_range;
+        use chrono::{Duration, Local};
+        let shop = shop();
+        let today = Local::now().date_naive();
+        let md = format!("{:02}-{:02}", today.month(), today.day());
+        let c = shop.store.find_or_create_customer("Bday Guest").unwrap();
+        shop.store
+            .update_customer_details(&c.id, "Bday Guest", "9998887777", Some(&md))
+            .unwrap();
+        assert!(birthday_in_range(&md, today, today + Duration::days(6)));
+        let week = shop
+            .store
+            .crm_segment(CrmSegment::BirthdayThisWeek)
+            .unwrap();
+        assert!(week.iter().any(|g| g.id == c.id), "{week:?}");
+        let n = shop
+            .store
+            .queue_segment_campaign(
+                CrmSegment::BirthdayThisWeek,
+                "Happy birthday {name}! Points: {points}",
+                "sms",
+                &shop.owner,
+            )
+            .unwrap();
+        assert!(n >= 1);
+        let outbox = shop.store.list_notify_outbox(20).unwrap();
+        assert!(outbox.iter().any(|r| r.channel == "sms" && r.to_addr == "9998887777"));
+        let phone_seg = shop.store.crm_segment(CrmSegment::WithPhone).unwrap();
+        assert!(phone_seg.iter().any(|g| g.id == c.id));
     }
 
     #[test]

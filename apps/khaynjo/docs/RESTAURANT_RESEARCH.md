@@ -374,7 +374,7 @@ POS, F = free/open source).
 | Loyalty points / customer wallet | I, G | **Have** | Local | Earn on pay; redeem; wallet top-up/spend as tender — local only |
 | Gift cards / vouchers | G | **Have** | Local | Numbered vouchers issue/redeem at billing |
 | Feedback after the meal | I (Petpooja app), LimeTray | **Have** | LAN (tablet at counter) | `GET /feedback` stores scores locally |
-| SMS / WhatsApp campaigns | I, G | **Skipped** (Cloud/Net marketing) | Net / Cloud | One-tap bill share is Have; blast campaigns stay out of scope — export customer list |
+| SMS / WhatsApp campaigns | I, G | **Have** (local segments + outbox) | Local / Net optional | Parties CRM: birthday / loyalty / inactive / top spenders → Queue SMS or WhatsApp intents; bill share still Have; no Kumkaj Cloud blast SaaS |
 | Multi-outlet dashboard, central menu push | I, G | **Partial** (snapshot export/import) / **Skipped** (live Cloud) | File / Cloud | Live roll-up = Kumkaj Cloud |
 | Online orders from aggregators (Zomato, Swiggy) | I, G | **Partial** (optional file import + Net poll stub off by default) | Net | Outbox/inbox stub; never gates counter (KHAYNJO.md §4b) |
 | Own online ordering website | I (LimeTray, DotPe), G | **Skipped** (Cloud) | Cloud | Kumkaj Cloud later; LAN kiosk/QR remain Have |
@@ -444,7 +444,7 @@ by `occupied_at`).
 | Live aggregator SaaS (Zomato/Swiggy accept/reject in their cloud) | **Partial** stub (file import + Net poll off by default) | Needs vendor APIs + internet; never gates counter |
 | Card terminal / payment-link confirmation | **Partial** (manual tender default; optional outbox) | Needs PSP / terminal vendor + Net |
 | Guests ordering on **mobile data** / own public website | **Skipped** | Needs Kumkaj Cloud reachability |
-| SMS/WhatsApp **campaigns** (blast marketing) | **Skipped** | Net/Cloud marketing; bill share is Have; export customer list |
+| SMS/WhatsApp **campaigns** (hosted blast SaaS) | **Have** local segment outbox; hosted SaaS **Skipped** | Owner-triggered Queue SMS/WhatsApp from Parties; delivery uses device SIM / Net |
 | Live multi-outlet dashboard / central menu push | **Skipped** (live) / **Have** (day snapshot file) | Live roll-up = Kumkaj Cloud |
 | Priced variation **matrix** UI polish | Progressive depth | Half/Full as own items already Have |
 | Real-hardware pilot, Store/Play listing | Owner | See `PRODUCTION_STATE_FOR_OFFLINE_USAGE.md` |
@@ -456,7 +456,7 @@ by `occupied_at`).
 | Zomato / Swiggy / aggregator orders | Their systems are online | **Partial** optional file import + Net poll stub (off by default); counter never depends on it |
 | Card terminal integration, online payment links, payment confirmation from banks | Card networks and PSPs are online | Manual tender default; **Partial** outbox stub when internet is up |
 | Guests ordering on mobile data, own ordering website | Must be reachable from the internet | **Skipped** until Kumkaj Cloud; LAN `/t/{table}` + `/kiosk` already Have |
-| SMS/WhatsApp campaigns, review collection | Online services | Campaigns **Skipped**; one-tap bill WhatsApp/SMS Have; export customer list |
+| SMS/WhatsApp campaigns, review collection | Online services | Local CRM segment campaigns **Have** (outbox); hosted blast SaaS **Skipped**; one-tap bill share Have |
 | Live multi-outlet dashboard, central menu push | Several sites must meet somewhere | Live **Skipped** (Cloud); today: per-branch day snapshots export/import |
 
 ---

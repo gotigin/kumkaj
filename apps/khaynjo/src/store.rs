@@ -1,16 +1,14 @@
 //! Local SQLite persistence for Kumkaj (WAL, restart-safe sales).
 
 use crate::domain::{
-    format_qty_display, milli_to_whole_qty, new_id, normalize_party_roles, AttachmentEntity,
-    AttachmentKind, AuditEvent, BooksOverview, Branch, BranchSnapshot,
-    Category,
-    CreditLedgerEntry, Customer,
-    DayTotals, DiningTable, EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket,
-    Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrderType,
-    OrgConsolidatedReport,
-    Cart, PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
-    Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures, StaffMember, StaffRole,
-    StockMovement, TableStatus, TaxRate, UnitConversion, UnitDef, VenueMode, STOCK_UNTRACKED,
+    format_qty_display, milli_to_whole_qty, new_id, normalize_birthday, normalize_party_roles,
+    AttachmentEntity, AttachmentKind, AuditEvent, BooksOverview, Branch, BranchSnapshot, Category,
+    CreditLedgerEntry, Customer, DayTotals, DiningTable, EntryAttachment, EventTimes,
+    KitchenStation, KotStatus, KotTicket, Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill,
+    OpsReport, OrderType, OrgConsolidatedReport, Cart, PartyAgingRow, PartyPositionRow, PayMethod,
+    PeriodBooks, Product, Purchase, PurchaseLine, Sale, SaleDraft, SaleLine, SaleRevision,
+    StaffFeatures, StaffMember, StaffRole, StockMovement, TableStatus, TaxRate, UnitConversion,
+    UnitDef, VenueMode, STOCK_UNTRACKED,
 };
 use crate::media;
 use crate::entity_template::{self, EntityTemplate};
@@ -38,8 +36,8 @@ mod ops;
 pub use recipes::{milli_as_typed, recipe_as_typed, LowStock, RecipeLine, DEFAULT_REORDER_AT};
 pub use service::{Reservation, ShiftClose};
 pub use ops::{
-    whatsapp_bill_url, GiftVoucher, PurchaseOrder, PurchaseOrderLine, StockTransferFile,
-    WaiterCall, WaitlistEntry,
+    whatsapp_bill_url, CrmSegment, GiftVoucher, PurchaseOrder, PurchaseOrderLine,
+    StockTransferFile, WaiterCall, WaitlistEntry,
 };
 use running::natural_key;
 
@@ -1691,7 +1689,7 @@ impl Store {
             .conn
             .query_row(
                 "SELECT id, name, phone, note, active, COALESCE(kind_label, ''),
-                        COALESCE(credit_limit_paise, 0)
+                        COALESCE(credit_limit_paise, 0), COALESCE(birthday, '')
                  FROM customers WHERE id = ?1",
                 params![id],
                 |row| {
@@ -1703,12 +1701,14 @@ impl Store {
                         row.get::<_, i64>(4)?,
                         row.get::<_, String>(5)?,
                         row.get::<_, i64>(6)?,
+                        row.get::<_, String>(7)?,
                     ))
                 },
             )
             .optional()
             .map_err(|e| e.to_string())?;
-        let Some((id, name, phone, note, active, kind_label, credit_limit_paise)) = row else {
+        let Some((id, name, phone, note, active, kind_label, credit_limit_paise, birthday)) = row
+        else {
             return Ok(None);
         };
         let balance_paise = self.customer_balance(&id)?;
@@ -1723,6 +1723,7 @@ impl Store {
             credit_limit_paise,
             loyalty_points: self.loyalty_points(&id).unwrap_or(0),
             wallet_paise: self.wallet_paise(&id).unwrap_or(0),
+            birthday,
         }))
     }
 
@@ -8695,6 +8696,7 @@ impl Store {
             credit_limit_paise: 0,
             loyalty_points: 0,
             wallet_paise: 0,
+            birthday: String::new(),
         })
     }
 
@@ -8706,18 +8708,39 @@ impl Store {
         name: &str,
         phone: &str,
     ) -> Result<(), String> {
+        self.update_customer_details(customer_id, name, phone, None)
+    }
+
+    /// Update display fields; pass `birthday` as `Some` to set it (`MM-DD` or
+    /// `YYYY-MM-DD`), or `None` to leave the stored birthday alone.
+    pub fn update_customer_details(
+        &self,
+        customer_id: &str,
+        name: &str,
+        phone: &str,
+        birthday: Option<&str>,
+    ) -> Result<(), String> {
         self.assert_server_writer("Update party")?;
         let name = name.trim();
         if name.is_empty() {
             return Err("Party name required".into());
         }
-        let n = self
-            .conn
-            .execute(
-                "UPDATE customers SET name = ?1, phone = ?2 WHERE id = ?3",
-                params![name, phone.trim(), customer_id],
-            )
-            .map_err(|e| e.to_string())?;
+        let n = if let Some(bday) = birthday {
+            let bday = normalize_birthday(bday)?;
+            self.conn
+                .execute(
+                    "UPDATE customers SET name = ?1, phone = ?2, birthday = ?3 WHERE id = ?4",
+                    params![name, phone.trim(), bday, customer_id],
+                )
+                .map_err(|e| e.to_string())?
+        } else {
+            self.conn
+                .execute(
+                    "UPDATE customers SET name = ?1, phone = ?2 WHERE id = ?3",
+                    params![name, phone.trim(), customer_id],
+                )
+                .map_err(|e| e.to_string())?
+        };
         if n == 0 {
             return Err("Party not found".into());
         }
@@ -8865,7 +8888,7 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, name, phone, note, active, COALESCE(kind_label, ''),
-                        COALESCE(credit_limit_paise, 0)
+                        COALESCE(credit_limit_paise, 0), COALESCE(birthday, '')
                  FROM customers
                  WHERE active = 1 AND (branch_id = ?1 OR branch_id = '')
                  ORDER BY name",
@@ -8881,12 +8904,13 @@ impl Store {
                     row.get::<_, i64>(4)?,
                     row.get::<_, String>(5)?,
                     row.get::<_, i64>(6)?,
+                    row.get::<_, String>(7)?,
                 ))
             })
             .map_err(|e| e.to_string())?;
         let mut out = Vec::new();
         for row in rows {
-            let (id, name, phone, note, active, kind_label, credit_limit_paise) =
+            let (id, name, phone, note, active, kind_label, credit_limit_paise, birthday) =
                 row.map_err(|e| e.to_string())?;
             let balance_paise = self.customer_balance(&id)?;
             let loyalty_points = self.loyalty_points(&id).unwrap_or(0);
@@ -8902,6 +8926,7 @@ impl Store {
                 credit_limit_paise,
                 loyalty_points,
                 wallet_paise,
+                birthday,
             });
         }
         // Owe first, then name

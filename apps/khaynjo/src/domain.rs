@@ -3181,6 +3181,9 @@ pub struct Customer {
     /// Prepaid wallet balance (paise).
     #[serde(default)]
     pub wallet_paise: i64,
+    /// Birthday as `MM-DD` or `YYYY-MM-DD` (CRM birthday messages). Empty = unknown.
+    #[serde(default)]
+    pub birthday: String,
 }
 
 impl Customer {
@@ -3198,6 +3201,59 @@ impl Customer {
 
     pub fn is_supplier(&self) -> bool {
         party_has_role(&self.kind_label, PARTY_ROLE_SUPPLIER)
+    }
+
+    /// Month-day of [`Self::birthday`] when the field is set.
+    pub fn birthday_md(&self) -> Option<(u32, u32)> {
+        birthday_month_day(&self.birthday)
+    }
+}
+
+/// Normalize birthday input to `MM-DD` (or empty). Accepts `MM-DD` or `YYYY-MM-DD`.
+pub fn normalize_birthday(raw: &str) -> Result<String, String> {
+    let t = raw.trim();
+    if t.is_empty() {
+        return Ok(String::new());
+    }
+    let (m, d) = birthday_month_day(t).ok_or_else(|| {
+        "Birthday must be MM-DD or YYYY-MM-DD".to_string()
+    })?;
+    Ok(format!("{m:02}-{d:02}"))
+}
+
+/// Parse `MM-DD` or `YYYY-MM-DD` to (month, day).
+pub fn birthday_month_day(raw: &str) -> Option<(u32, u32)> {
+    let t = raw.trim();
+    let parts: Vec<&str> = t.split('-').collect();
+    let (m, d) = match parts.as_slice() {
+        [mm, dd] => (mm.parse().ok()?, dd.parse().ok()?),
+        [_, mm, dd] => (mm.parse().ok()?, dd.parse().ok()?),
+        _ => return None,
+    };
+    if !(1..=12).contains(&m) || !(1..=31).contains(&d) {
+        return None;
+    }
+    Some((m, d))
+}
+
+/// True when the guest's birthday month-day falls on any day in `[from, to]` (inclusive).
+pub fn birthday_in_range(birthday: &str, from: chrono::NaiveDate, to: chrono::NaiveDate) -> bool {
+    use chrono::Datelike;
+    let Some((m, d)) = birthday_month_day(birthday) else {
+        return false;
+    };
+    let mut day = from;
+    loop {
+        if day.month() == m && day.day() == d {
+            return true;
+        }
+        if day >= to {
+            return false;
+        }
+        day = match day.succ_opt() {
+            Some(n) => n,
+            None => return false,
+        };
     }
 }
 
@@ -4495,6 +4551,7 @@ mod tests {
             credit_limit_paise: 0,
             loyalty_points: 0,
             wallet_paise: 0,
+            birthday: String::new(),
         };
         assert!(c.is_customer() && c.is_supplier());
     }

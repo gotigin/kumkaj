@@ -483,10 +483,10 @@ true multi-outlet Cloud or a third-party marketplace.
 | Multi-terminal LAN | **Have** | Server + paired Clients |
 | Recipe stock, low-stock, purchases | **Have** (depth varies) | |
 | Day close + item/staff/hour reports | **Have** | Fewer named reports than Petpooja’s 94 |
-| Loyalty points on customer | **Partial** | Earn on sale; campaigns/SMS need Net |
+| Loyalty points on customer | **Have 2026-10-27** | Earn on pay; Order till redeem points / wallet / voucher; top-up & issue voucher |
 | QR / kiosk / token / waitlist | **Have** (LAN pages) | |
 | Aggregator sync / head-office menu push | **Skip / Partial** | File stub OK; live Zomato/Swiggy + HO push = Cloud |
-| CRM segments + birthday SMS | **Next (Net OK)** | Local guest book exists; campaigns need SMS/WABA |
+| CRM segments + birthday SMS | **Have 2026-10-27** | Parties → Guests & messages; segments + Queue SMS / WhatsApp intents (Net optional) |
 | Variation / add-on sales reports | **Have 2026-10-27** | Day report section from `sale_lines.modifiers_json` |
 | Modifier max (e.g. 3 toppings) in UI | **Have 2026-10-27** | `Toppings+3:` in Options field |
 | Captain upsell AI / Purchase Manager AI | **Skip** | Cloud / vendor marketplace |

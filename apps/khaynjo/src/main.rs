@@ -334,6 +334,15 @@ struct AppState {
     selected_table_id: Option<String>,
     selected_customer_id: Option<String>,
     customers: Vec<Customer>,
+    /// Parties → Guests & messages: which CRM segment is previewed.
+    crm_segment: store::CrmSegment,
+    /// Order till: loyalty points to redeem on Take payment (1 pt = ₹1).
+    pending_loyalty_points: i64,
+    /// Order till: wallet paise to spend on Take payment.
+    pending_wallet_paise: i64,
+    /// Order till: voucher code + paise to redeem on Take payment.
+    pending_voucher_code: String,
+    pending_voucher_paise: i64,
     tables: Vec<DiningTable>,
     recent_sales: Vec<Sale>,
     staff: Vec<StaffMember>,
@@ -636,6 +645,51 @@ const PART_METHODS: [PayMethod; 4] = [PayMethod::Cash, PayMethod::Upi, PayMethod
 
 /// The parts as (method, paise), adding up to `total`. One part may be
 /// blank: it takes what is left. Parts by the same way are merged.
+
+/// Paise covered by pending loyalty / wallet / voucher on the till.
+fn pending_till_redeem_paise(st: &AppState) -> i64 {
+    st.pending_loyalty_points.saturating_mul(100)
+        + st.pending_wallet_paise.max(0)
+        + st.pending_voucher_paise.max(0)
+}
+
+/// Keep cart.discount in sync with pending till redemptions (Amount, no PIN).
+fn apply_pending_till_discount(st: &mut AppState) {
+    let paise = pending_till_redeem_paise(st);
+    if paise <= 0 {
+        if st
+            .cart
+            .discount
+            .as_ref()
+            .is_some_and(|d| d.reason.starts_with("Till redeem"))
+        {
+            st.cart.discount = None;
+            st.cart.charge_total = None;
+        }
+        return;
+    }
+    let mut bits = Vec::new();
+    if st.pending_loyalty_points > 0 {
+        bits.push(format!("{} pts", st.pending_loyalty_points));
+    }
+    if st.pending_wallet_paise > 0 {
+        bits.push(format!("wallet {}", st.money(Money(st.pending_wallet_paise))));
+    }
+    if st.pending_voucher_paise > 0 {
+        bits.push(format!(
+            "voucher {} {}",
+            st.pending_voucher_code,
+            st.money(Money(st.pending_voucher_paise))
+        ));
+    }
+    st.cart.charge_total = None;
+    st.cart.discount = Some(domain::BillDiscount {
+        kind: domain::DiscountKind::Amount(paise),
+        reason: format!("Till redeem · {}", bits.join(" · ")),
+        approval_pin: String::new(),
+    });
+}
+
 fn settle_pay_parts(total: i64, parts: &[PayPart], currency: &str) -> Result<Vec<(PayMethod, i64)>, String> {
     if total <= 0 {
         return Err("Type the amount first".into());
@@ -1140,6 +1194,11 @@ impl AppState {
             sale_revisions: Vec::new(),
             selected_table_id: None,
             selected_customer_id: None,
+            crm_segment: store::CrmSegment::BirthdayThisWeek,
+            pending_loyalty_points: 0,
+            pending_wallet_paise: 0,
+            pending_voucher_code: String::new(),
+            pending_voucher_paise: 0,
             customers: Vec::new(),
             tables: Vec::new(),
             recent_sales: Vec::new(),
@@ -4236,147 +4295,185 @@ script_mod! {
         }
     }
 
-    // Items tab: manage catalogue — remove instead of add-to-cart
-    let MenuCard = RoundedView{
+    // Items tab: manage catalogue. Same idea as the Order "Add dishes"
+    // card — photo fills the face, name/price sit on a soft wash, actions
+    // float on the photo (compact landscape so the list stays dense).
+    let MenuCard = View{
         cursor: MouseCursor.Hand
-        width: Fill height: Fit
-        padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
-        flow: Down spacing: 4
-        draw_bg.color: #ffffff
-        draw_bg.color_hover: #xF0F4FF
-        draw_bg.color_down: #xE0E8FF
-        draw_bg.border_radius: 16.
-        draw_bg.border_size: 2.
-        draw_bg.border_color: #x5A4238
-        name := Label{
-            width: Fill
-            height: Fit
-            padding: 0.
-            align: Align{x: 0.5}
-            text: "Item"
-            flow: Right{wrap: false}
-            max_lines: 1
-            text_overflow: Ellipsis
-            draw_text.color: #x260B08
-            draw_text.text_style.font_size: 18.
+        width: Fill height: 108
+        flow: Overlay
+        RoundedView{
+            width: Fill height: Fill
+            align: Align{x: 0.5 y: 0.5}
+            draw_bg.color: #xB43A12
+            draw_bg.color_2: #x69090C
+            draw_bg.border_radius: 14.
+            thumb_initials := Label{
+                width: Fit height: Fit
+                text: ""
+                draw_text.color: #xFFFFFF
+                draw_text.text_style.font_size: 22.
+            }
+        }
+        thumb := Image{
+            width: Fill height: Fill
+            fit: ImageFit.CropToFill
+            visible: false
+            draw_bg +: {
+                radius: uniform(14.0)
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                    sdf.fill(self.get_color())
+                    return sdf.result
+                }
+            }
         }
         View{
-            width: Fill height: Fit
-            flow: Right spacing: 10
-            align: Align{y: 0.0}
-            View{
-                width: Fill height: Fit
-                flow: Right spacing: 10
-                align: Align{y: 0.5}
-                ThumbAvatar{
-                    width: 56 height: 56
-                    margin: Inset{top: 10. bottom: 2. left: 2. right: 4.}
+            width: Fill height: Fill
+            show_bg: true
+            draw_bg +: {
+                radius: uniform(14.0)
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                    let t = smoothstep(0.15, 1.0, self.pos.y)
+                    let side = smoothstep(0.45, 1.0, self.pos.x)
+                    let a = 0.88 * max(t, side * 0.55)
+                    sdf.fill(vec4(0.10, 0.02, 0.02, a))
+                    return sdf.result
                 }
+            }
+        }
+        View{
+            width: Fill height: Fill
+            padding: Inset{left: 12. right: 10. top: 8. bottom: 10.}
+            flow: Right spacing: 8
+            align: Align{y: 1.0}
             View{
                 width: Fill height: Fit
                 flow: Down spacing: 2
-                price := Label{
+                name := Label{
                     width: Fill
-                    text: "0"
-                    flow: Right{wrap: false}
-                    max_lines: 1
-                    draw_text.color: #xB43A12
-                    draw_text.text_style.font_size: 14.
-                }
-                stock := Label{
-                    width: Fill
-                    text: " "
-                    flow: Right{wrap: false}
-                    max_lines: 1
+                    text: "Item"
+                    flow: Right{wrap: true}
+                    max_lines: 2
                     text_overflow: Ellipsis
-                    draw_text.color: #x6B4A3F
-                    draw_text.text_style.font_size: 12.
+                    draw_text.color: #xFFFFFF
+                    draw_text.text_style.font_size: 15.
                 }
-            }
+                View{
+                    width: Fill height: Fit
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
+                    price := Label{
+                        width: Fit
+                        text: "0"
+                        flow: Right{wrap: false}
+                        max_lines: 1
+                        draw_text.color: #xF7B043
+                        draw_text.text_style.font_size: 14.
+                    }
+                    stock := Label{
+                        width: Fill
+                        text: " "
+                        flow: Right{wrap: false}
+                        max_lines: 1
+                        text_overflow: Ellipsis
+                        draw_text.color: #xF3E3DA
+                        draw_text.text_style.font_size: 11.
+                    }
+                }
             }
             View{
-                width: Fit height: Fit
-                flow: Down spacing: 8
-                align: Align{x: 0.5}
+                width: Fit height: Fill
+                flow: Down spacing: 6
+                align: Align{x: 1.0 y: 0.0}
                 remove := Button{
                     text: "✕"
-                    width: 48 height: 44
+                    width: 36 height: 32
                     align: Align{x: 0.5 y: 0.5}
                     draw_bg +: {
-                        color: #x9A0E10
+                        color: #x9A0E10E6
                         color_hover: #xB43A12
                         color_down: #x69090C
-                        color_focus: #x9A0E10
-                        color_2: #x9A0E10
+                        color_focus: #x9A0E10E6
+                        color_2: #x9A0E10E6
                         color_2_hover: #xB43A12
                         color_2_down: #x69090C
-                        color_2_focus: #x9A0E10
-                        border_color: #x9A0E10
-                        border_radius: 16.
-                        border_size: 0.
-                    }
-                    draw_text +: {
-                        color: #xffffff
-                        color_hover: #ffffff
-                        color_down: #xffffff
-                        color_focus: #xffffff
-                        text_style +: {font_size: 20.}
-                    }
-                }
-                sold_out := Button{
-                    text: "Sold Out"
-                    width: Fit height: 44
-                    align: Align{x: 0.5 y: 0.5}
-                    padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
-            draw_bg +: {
-                color: #xB43A12
-                color_hover: #xB43A12
-                color_down: #x8A320C
-                color_focus: #xB43A12
-                color_2: #xB43A12
-                color_2_hover: #xB43A12
-                color_2_down: #x8A320C
-                color_2_focus: #xB43A12
-                border_color: #xB43A12
-                border_radius: 16.
-                border_size: 0.
-            }
-            draw_text +: {
-                color: #xffffff
-                color_hover: #xffffff
-                color_down: #xffffff
-                color_focus: #xffffff
-                        text_style +: {font_size: 13.}
-                    }
-                }
-                // Removed items only (RemovedList): put it back as it was.
-                restore := Button{
-                    text: "Restore"
-                    width: Fit height: 44
-                    align: Align{x: 0.5 y: 0.5}
-                    padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
-                    draw_bg +: {
-                        color: #x9A0E10
-                        color_hover: #xB43A12
-                        color_down: #x69090C
-                        color_focus: #x9A0E10
-                        color_2: #x9A0E10
-                        color_2_hover: #xB43A12
-                        color_2_down: #x69090C
-                        color_2_focus: #x9A0E10
-                        border_color: #x9A0E10
-                        border_radius: 16.
-                        border_size: 0.
+                        color_2_focus: #x9A0E10E6
+                        border_color: #xFFFFFF55
+                        border_radius: 12.
+                        border_size: 1.
                     }
                     draw_text +: {
                         color: #xffffff
                         color_hover: #xffffff
                         color_down: #xffffff
                         color_focus: #xffffff
-                        text_style +: {font_size: 13.}
+                        text_style +: {font_size: 15.}
+                    }
+                }
+                sold_out := Button{
+                    text: "Sold Out"
+                    width: Fit height: 30
+                    align: Align{x: 0.5 y: 0.5}
+                    padding: Inset{left: 10. right: 10. top: 4. bottom: 4.}
+                    draw_bg +: {
+                        color: #xB43A12E6
+                        color_hover: #xB43A12
+                        color_down: #x8A320C
+                        color_focus: #xB43A12E6
+                        color_2: #xB43A12E6
+                        color_2_hover: #xB43A12
+                        color_2_down: #x8A320C
+                        color_2_focus: #xB43A12E6
+                        border_color: #xFFFFFF55
+                        border_radius: 12.
+                        border_size: 1.
+                    }
+                    draw_text +: {
+                        color: #xffffff
+                        color_hover: #xffffff
+                        color_down: #xffffff
+                        color_focus: #xffffff
+                        text_style +: {font_size: 11.}
+                    }
+                }
+                restore := Button{
+                    text: "Restore"
+                    width: Fit height: 30
+                    align: Align{x: 0.5 y: 0.5}
+                    padding: Inset{left: 10. right: 10. top: 4. bottom: 4.}
+                    draw_bg +: {
+                        color: #x9A0E10E6
+                        color_hover: #xB43A12
+                        color_down: #x69090C
+                        color_focus: #x9A0E10E6
+                        color_2: #x9A0E10E6
+                        color_2_hover: #xB43A12
+                        color_2_down: #x69090C
+                        color_2_focus: #x9A0E10E6
+                        border_color: #xFFFFFF55
+                        border_radius: 12.
+                        border_size: 1.
+                    }
+                    draw_text +: {
+                        color: #xffffff
+                        color_hover: #xffffff
+                        color_down: #xffffff
+                        color_focus: #xffffff
+                        text_style +: {font_size: 11.}
                     }
                 }
             }
+        }
+        RoundedView{
+            width: Fill height: Fill
+            draw_bg.color: #x00000000
+            draw_bg.border_radius: 14.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xD8C7BD
         }
     }
 
@@ -4975,7 +5072,6 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
-                padding: Inset{bottom: 8.}
                 texture_caching: false
                 card := MenuCard{}
             }
@@ -5000,7 +5096,6 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
-                padding: Inset{bottom: 8.}
                 texture_caching: false
                 card := MenuCard{}
             }
@@ -5190,45 +5285,96 @@ script_mod! {
     // from, and what a tap does. The whole row is the tap target (dishrow
     // finger_up) — inside a PortalList item a nested Button's click is not
     // reliable (see the Floor cards).
-    let DishRow = RoundedView{
+    // Dish / category pick row: photo fills the face (same idea as the
+    // Order "Add dishes" card and Menu & items), name + hint on a soft wash,
+    // Use / Edit at the trailing edge. Compact so the picker stays dense.
+    let DishRow = View{
         cursor: MouseCursor.Hand
-        width: Fill height: Fit
-        padding: Inset{left: 8. right: 12. top: 6. bottom: 6.}
-        flow: Right spacing: 10
-        align: Align{y: 0.5}
-        draw_bg.color: #xffffff
-        draw_bg.color_hover: #xFBEFE6
-        draw_bg.color_down: #xF6DCCB
-        draw_bg.border_radius: 12.
-        draw_bg.border_size: 1.
-        draw_bg.border_color: #xD9C3B5
-        ThumbAvatar{
-            width: 48 height: 48
-            margin: Inset{top: 0. bottom: 0. left: 0. right: 0.}
+        width: Fill height: 72
+        flow: Overlay
+        RoundedView{
+            width: Fill height: Fill
+            align: Align{x: 0.5 y: 0.5}
+            draw_bg.color: #xB43A12
+            draw_bg.color_2: #x69090C
+            draw_bg.border_radius: 12.
+            thumb_initials := Label{
+                width: Fit height: Fit
+                text: ""
+                draw_text.color: #xFFFFFF
+                draw_text.text_style.font_size: 18.
+            }
+        }
+        thumb := Image{
+            width: Fill height: Fill
+            fit: ImageFit.CropToFill
+            visible: false
+            draw_bg +: {
+                radius: uniform(12.0)
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                    sdf.fill(self.get_color())
+                    return sdf.result
+                }
+            }
         }
         View{
-            width: Fill height: Fit
-            flow: Down spacing: 2
-            title := Label{
-                width: Fill
-                text: ""
-                flow: Right{wrap: true}
-                draw_text.color: #x260B08
-                draw_text.text_style.font_size: 15.
-            }
-            subtitle := Label{
-                width: Fill
-                text: ""
-                flow: Right{wrap: true}
-                draw_text.color: #x6B4A3F
-                draw_text.text_style.font_size: 12.
+            width: Fill height: Fill
+            show_bg: true
+            draw_bg +: {
+                radius: uniform(12.0)
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                    let t = smoothstep(0.12, 1.0, self.pos.y)
+                    let side = smoothstep(0.40, 1.0, self.pos.x)
+                    let a = 0.86 * max(t, side * 0.5)
+                    sdf.fill(vec4(0.10, 0.02, 0.02, a))
+                    return sdf.result
+                }
             }
         }
-        action := Label{
-            width: Fit
-            text: "Use"
-            draw_text.color: #x9A0E10
-            draw_text.text_style.font_size: 14.
+        View{
+            width: Fill height: Fill
+            padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+            flow: Right spacing: 10
+            align: Align{y: 0.5}
+            View{
+                width: Fill height: Fit
+                flow: Down spacing: 2
+                title := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: true}
+                    max_lines: 1
+                    text_overflow: Ellipsis
+                    draw_text.color: #xFFFFFF
+                    draw_text.text_style.font_size: 15.
+                }
+                subtitle := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    text_overflow: Ellipsis
+                    draw_text.color: #xF3E3DA
+                    draw_text.text_style.font_size: 12.
+                }
+            }
+            action := Label{
+                width: Fit
+                text: "Use"
+                draw_text.color: #xF7B043
+                draw_text.text_style.font_size: 14.
+            }
+        }
+        RoundedView{
+            width: Fill height: Fill
+            draw_bg.color: #x00000000
+            draw_bg.border_radius: 12.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xD8C7BD
         }
     }
 
@@ -6999,6 +7145,36 @@ script_mod! {
                                         font_size: 12.
                                     }
                                     customer_list_sell := mod.widgets.CustomerList{}
+                                    // Loyalty / wallet / voucher — applied as a bill discount on Take payment.
+                                    till_loyalty_panel := View{
+                                        width: Fill height: Fit
+                                        visible: false
+                                        flow: Down spacing: 6
+                                        till_loyalty_chip := WrapLabel{
+                                            body: ""
+                                            font_color: #x69090C
+                                            font_size: 12.
+                                        }
+                                        FormFieldRow{
+                                            till_loyalty_input := FieldInput{empty_text: "Points to redeem"}
+                                            till_wallet_input := FieldInput{empty_text: "Wallet ₹ to spend"}
+                                        }
+                                        FormFieldRow{
+                                            till_voucher_input := FieldInput{empty_text: "Voucher code"}
+                                            till_voucher_amt_input := FieldInput{empty_text: "Voucher ₹ (blank = all)"}
+                                        }
+                                        FormFieldRow{
+                                            till_wallet_topup_input := FieldInput{empty_text: "Top-up wallet ₹"}
+                                            till_voucher_issue_amt_input := FieldInput{empty_text: "Issue voucher ₹"}
+                                        }
+                                        till_voucher_issue_code := FieldInput{empty_text: "New voucher code"}
+                                        ActionStack{
+                                            till_apply_redeem := StackPrimaryBtn{text: "Apply on bill"}
+                                            till_clear_redeem := StackLightBtn{text: "Clear redeem"}
+                                            till_wallet_topup := StackLightBtn{text: "Top up wallet"}
+                                            till_issue_voucher := StackLightBtn{text: "Issue voucher"}
+                                        }
+                                    }
                                     // Delivery orders: who takes it out (day report totals by them).
                                     delivery_by_input := FieldInput{empty_text: "Delivery by (rider or staff name)"}
                                     delivery_by_suggest := mod.widgets.SuggestList{field: "delivery_by"}
@@ -7774,6 +7950,7 @@ script_mod! {
                                         credit_add_name := FieldInput{empty_text: "Party name"}
                                         credit_add_phone := FieldInput{empty_text: "Phone"}
                                     }
+                                    credit_add_birthday := FieldInput{empty_text: "Birthday (MM-DD or YYYY-MM-DD)"}
                                     h_account_kind := WrapLabel{
                                         body: "Account kind (tap one)"
                                         font_color: #x6B4A3F
@@ -7808,6 +7985,34 @@ script_mod! {
                                         flow: Right spacing: 8
                                         party_form_clear := RowSecondaryBtn{text: "New party (clear form)"}
                                         party_delete := RowSecondaryBtn{text: "Delete selected party"}
+                                    }
+                                }
+                                // Local CRM: pick a guest segment, preview, queue SMS / WhatsApp
+                                // intents (Net optional to deliver — never auto-blasts).
+                                FormCard{
+                                    crm_heading := WrapLabel{body: "Guests & messages" font_color: #x260B08 font_size: 15.}
+                                    crm_help := WrapLabel{
+                                        width: Fill
+                                        body: "Birthday, loyalty, inactive and top guests — queue SMS or WhatsApp intents. Use {name} and {points} in the message. Owner taps send; nothing blasts by itself."
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true}
+                                        spacing: 6
+                                        crm_seg_bday_week := SegBtn{text: "Birthday week"}
+                                        crm_seg_bday_month := SegBtn{text: "Birthday month"}
+                                        crm_seg_phone := SegBtn{text: "With phone"}
+                                        crm_seg_loyalty := SegBtn{text: "Loyalty"}
+                                        crm_seg_inactive := SegBtn{text: "Inactive"}
+                                        crm_seg_top := SegBtn{text: "Top spenders"}
+                                    }
+                                    crm_preview := mod.widgets.ReportText{}
+                                    crm_message_input := FieldInput{empty_text: "Happy birthday {name}! You have {points} points."}
+                                    ActionStack{
+                                        crm_queue_sms := StackPrimaryBtn{text: "Queue SMS"}
+                                        crm_queue_wa := StackLightBtn{text: "Queue WhatsApp"}
                                     }
                                 }
                                 customer_list_credit := mod.widgets.CustomerList{}
@@ -9561,20 +9766,22 @@ impl Widget for MenuList {
         // Fixed pitch, never a measured one: PortalList only draws the
         // visible slice, so extent/total-count under-measures and the
         // next list on the page starts early, overlapping the last rows
-        // and stealing their taps. MenuCard = 12 pad + 22 name + 4 +
-        // 96 body row + 12 pad + 8 item pad = 154; 160 leaves slack.
+        // and stealing their taps. MenuCard is a fixed 108 landscape
+        // photo card; PortalList spacing is 10 (Item has no extra pad).
         // Drawing every row (and photo) of a full menu froze the app; only
         // the rows inside the page's window are drawn.
-        let (first, last) = page_window(cx.turtle().pos().y, count, 160.0, 10.0);
+        const ROW: f64 = 108.0;
+        const GAP: f64 = 10.0;
+        let (first, last) = page_window(cx.turtle().pos().y, count, ROW, GAP);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, 160.0, 10.0)),
+            height: Size::Fixed(list_content_height(count, ROW, GAP)),
             ..walk
         };
         if let Some(mut gap) = self.view.view(cx, ids!(top_gap)).borrow_mut() {
-            gap.walk.height = Size::Fixed(first as f64 * 170.0);
+            gap.walk.height = Size::Fixed(first as f64 * (ROW + GAP));
         }
         if let Some(mut boxv) = self.view.view(cx, ids!(list_box)).borrow_mut() {
-            boxv.walk.height = Size::Fixed(list_content_height(last.saturating_sub(first), 160.0, 10.0));
+            boxv.walk.height = Size::Fixed(list_content_height(last.saturating_sub(first), ROW, GAP));
         }
         let editing_id = app_state().lock().unwrap().editing_product_id.clone();
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
@@ -9612,7 +9819,8 @@ impl Widget for MenuList {
                         locale::t(&lang, "marked_sold_out")
                     };
                     item.label(cx, ids!(stock)).set_text(cx, &stock_line);
-                    load_product_thumb(cx, &item, product);
+                    load_product_card_photo(cx, &item, product);
+                    item.button(cx, ids!(sold_out)).set_visible(cx, true);
                     item.button(cx, ids!(sold_out)).set_text(
                         cx,
                         &locale::t(
@@ -9624,6 +9832,7 @@ impl Widget for MenuList {
                             },
                         ),
                     );
+                    item.button(cx, ids!(remove)).set_visible(cx, true);
                     item.button(cx, ids!(remove)).set_text(cx, "✕");
                     // Restore belongs to the RemovedList rows only.
                     item.button(cx, ids!(restore)).set_visible(cx, false);
@@ -9668,8 +9877,10 @@ impl Widget for RemovedList {
         };
         let count = products.len();
         // Fixed pitch (see MenuList): the same MenuCard, so the same row.
+        const ROW: f64 = 108.0;
+        const GAP: f64 = 10.0;
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, 160.0, 10.0)),
+            height: Size::Fixed(list_content_height(count, ROW, GAP)),
             ..walk
         };
         let restore_text = locale::t(&lang, "restore_item");
@@ -9688,9 +9899,10 @@ impl Widget for RemovedList {
                     // line would only confuse — say what the row is instead.
                     item.label(cx, ids!(stock))
                         .set_text(cx, &locale::t(&lang, "removed_items"));
-                    load_product_thumb(cx, &item, product);
+                    load_product_card_photo(cx, &item, product);
                     item.button(cx, ids!(sold_out)).set_visible(cx, false);
                     item.button(cx, ids!(remove)).set_visible(cx, false);
+                    item.button(cx, ids!(restore)).set_visible(cx, true);
                     item.button(cx, ids!(restore)).set_text(cx, &restore_text);
                     item.draw_all_unscoped(cx);
                 }
@@ -10476,8 +10688,9 @@ impl Widget for CategoryPickList {
         if !open || picks.is_empty() {
             return DrawStep::done();
         }
+        // Same DishRow card as the dish picker (72 + spacing 6).
         let walk = Walk {
-            height: Size::Fixed(list_content_height(picks.len(), 62.0, 6.0).min(DISH_PICK_MAX_HEIGHT)),
+            height: Size::Fixed(list_content_height(picks.len(), 72.0, 6.0).min(DISH_PICK_MAX_HEIGHT)),
             ..walk
         };
         let dir = item_images_dir();
@@ -10524,7 +10737,13 @@ impl Widget for CategoryPickList {
                             f.photo.clone(),
                         ),
                     };
-                    apply_thumb_avatar(cx, &item, &initials_from, &photo);
+                    apply_thumb_avatar_kind(
+                        cx,
+                        &item,
+                        &initials_from,
+                        &photo,
+                        thumbs::ThumbKind::Card,
+                    );
                     item.label(cx, ids!(title)).set_text(cx, &title);
                     item.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
                     item.label(cx, ids!(action)).set_text(cx, &use_text);
@@ -10548,7 +10767,7 @@ impl Widget for CategoryPickList {
 
 /// The item form's picker (see [`DishPick`]). Closed, it draws nothing. Open,
 /// it is a scrolling viewport of at most [`DISH_PICK_MAX_HEIGHT`], so only the
-/// rows on screen draw and only their photos' small thumbs are asked for.
+/// rows on screen draw and only their card-sized photo copies are asked for.
 #[derive(Script, ScriptHook, Widget)]
 struct DishPickList {
     #[deref]
@@ -10578,10 +10797,11 @@ impl Widget for DishPickList {
         if !open || picks.is_empty() {
             return DrawStep::done();
         }
-        // DishRow ≈ 48 thumb + 12 pad; spacing 6. Small results shrink the
-        // box; long ones (browsing the shelf) scroll inside it.
+        // DishRow is a fixed 72 landscape photo card; PortalList spacing 6.
+        // Small results shrink the box; long ones (browsing the shelf) scroll
+        // inside it.
         let walk = Walk {
-            height: Size::Fixed(list_content_height(picks.len(), 62.0, 6.0).min(DISH_PICK_MAX_HEIGHT)),
+            height: Size::Fixed(list_content_height(picks.len(), 72.0, 6.0).min(DISH_PICK_MAX_HEIGHT)),
             ..walk
         };
         let shelf = menu_images::shelf();
@@ -10627,7 +10847,13 @@ impl Widget for DishPickList {
                         DishPick::Own(name) => name.as_str(),
                         _ => title.as_str(),
                     };
-                    apply_thumb_avatar(cx, &item, name_for_initials, &photo);
+                    apply_thumb_avatar_kind(
+                        cx,
+                        &item,
+                        name_for_initials,
+                        &photo,
+                        thumbs::ThumbKind::Card,
+                    );
                     item.label(cx, ids!(title)).set_text(cx, &title);
                     item.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
                     item.label(cx, ids!(action)).set_text(cx, &action);
@@ -13057,7 +13283,7 @@ impl App {
                     .iter()
                     .find(|c| &c.id == id)
                     .map(|c| {
-                        if c.balance_paise > 0 {
+                        let mut base = if c.balance_paise > 0 {
                             format!(
                                 "{} · {} {}",
                                 c.name,
@@ -13073,7 +13299,15 @@ impl App {
                             )
                         } else {
                             format!("{} · {}", c.name, st.t("chip_clear_credit"))
+                        };
+                        if c.loyalty_points > 0 || c.wallet_paise > 0 {
+                            base.push_str(&format!(
+                                " · {} pts · wallet {}",
+                                c.loyalty_points,
+                                st.money(Money(c.wallet_paise))
+                            ));
                         }
+                        base
                     })
                     .unwrap_or_else(|| st.t("chip_missing_customer")),
                 None => {
@@ -13160,6 +13394,47 @@ impl App {
         self.set_report_rows(cx, ids!(credit_recent_list), credit_recent);
         self.ui
             .widget(cx, ids!(customers_empty_hint)).set_text(cx, &plain_display_text(empty_hint));
+        {
+            let st = app_state().lock().unwrap();
+            let has_customer = st.selected_customer_id.is_some();
+            self.ui
+                .view(cx, ids!(till_loyalty_panel))
+                .set_visible(cx, has_customer);
+            let till_line = match st
+                .selected_customer_id
+                .as_ref()
+                .and_then(|id| st.customers.iter().find(|c| &c.id == id))
+            {
+                Some(c) => {
+                    let pending = pending_till_redeem_paise(&st);
+                    let mut s = format!(
+                        "{} pts · wallet {} · bday {}",
+                        c.loyalty_points,
+                        st.money(Money(c.wallet_paise)),
+                        if c.birthday.is_empty() {
+                            "—"
+                        } else {
+                            c.birthday.as_str()
+                        }
+                    );
+                    if pending > 0 {
+                        s.push_str(&format!(" · redeeming {}", st.money(Money(pending))));
+                    }
+                    s
+                }
+                None => String::new(),
+            };
+            self.ui
+                .widget(cx, ids!(till_loyalty_chip))
+                .set_text(cx, &plain_display_text(&till_line));
+            let crm_text = st
+                .store
+                .as_ref()
+                .and_then(|s| s.crm_segment_preview(st.crm_segment).ok())
+                .unwrap_or_else(|| "Open as Server to preview guests.".into());
+            drop(st);
+            self.set_report_rows(cx, ids!(crm_preview), parse_report(&crm_text));
+        }
 
         let (sale_selected, sale_history, amend_total_text, amend_natural, amend_applied, amend_round) = {
             let st = app_state().lock().unwrap();
@@ -15345,6 +15620,59 @@ impl App {
         self.ui.button(cx, ids!(receipt_whatsapp_btn)).set_text(cx, &s("share_whatsapp"));
         self.ui.button(cx, ids!(waitlist_add)).set_text(cx, &s("waitlist_add"));
         self.ui.button(cx, ids!(bulk_price_apply)).set_text(cx, &s("bulk_price_apply"));
+        self.ui
+            .widget(cx, ids!(crm_heading))
+            .set_text(cx, &plain_display_text(&s("crm_heading")));
+        self.ui
+            .widget(cx, ids!(crm_help))
+            .set_text(cx, &plain_display_text(&s("crm_help")));
+        self.ui.button(cx, ids!(crm_queue_sms)).set_text(cx, &s("crm_queue_sms"));
+        self.ui.button(cx, ids!(crm_queue_wa)).set_text(cx, &s("crm_queue_wa"));
+        self.ui.button(cx, ids!(crm_seg_bday_week)).set_text(cx, &s("crm_seg_bday_week"));
+        self.ui.button(cx, ids!(crm_seg_bday_month)).set_text(cx, &s("crm_seg_bday_month"));
+        self.ui.button(cx, ids!(crm_seg_phone)).set_text(cx, &s("crm_seg_phone"));
+        self.ui.button(cx, ids!(crm_seg_loyalty)).set_text(cx, &s("crm_seg_loyalty"));
+        self.ui.button(cx, ids!(crm_seg_inactive)).set_text(cx, &s("crm_seg_inactive"));
+        self.ui.button(cx, ids!(crm_seg_top)).set_text(cx, &s("crm_seg_top"));
+        self.ui
+            .text_input(cx, ids!(credit_add_birthday))
+            .set_empty_text(cx, s("birthday_ph"));
+        self.ui
+            .text_input(cx, ids!(crm_message_input))
+            .set_empty_text(cx, s("crm_message_ph"));
+        self.ui
+            .button(cx, ids!(till_apply_redeem))
+            .set_text(cx, &s("till_apply_redeem"));
+        self.ui
+            .button(cx, ids!(till_clear_redeem))
+            .set_text(cx, &s("till_clear_redeem"));
+        self.ui
+            .button(cx, ids!(till_wallet_topup))
+            .set_text(cx, &s("till_wallet_topup"));
+        self.ui
+            .button(cx, ids!(till_issue_voucher))
+            .set_text(cx, &s("till_issue_voucher"));
+        self.ui
+            .text_input(cx, ids!(till_loyalty_input))
+            .set_empty_text(cx, s("till_points_ph"));
+        self.ui
+            .text_input(cx, ids!(till_wallet_input))
+            .set_empty_text(cx, s("till_wallet_ph"));
+        self.ui
+            .text_input(cx, ids!(till_voucher_input))
+            .set_empty_text(cx, s("till_voucher_code_ph"));
+        self.ui
+            .text_input(cx, ids!(till_voucher_amt_input))
+            .set_empty_text(cx, s("till_voucher_amt_ph"));
+        self.ui
+            .text_input(cx, ids!(till_wallet_topup_input))
+            .set_empty_text(cx, s("till_wallet_topup_ph"));
+        self.ui
+            .text_input(cx, ids!(till_voucher_issue_amt_input))
+            .set_empty_text(cx, s("till_voucher_issue_amt_ph"));
+        self.ui
+            .text_input(cx, ids!(till_voucher_issue_code))
+            .set_empty_text(cx, s("till_voucher_issue_code_ph"));
         self.ui
             .widget(cx, ids!(floor_ops_heading))
             .set_text(cx, &plain_display_text(&s("ops_panel")));
@@ -21656,10 +21984,43 @@ impl MatchEvent for App {
                     ));
                 }
                 let is_client = st.device_role == DeviceRole::Client;
-                let customer_id = if credit > 0 {
-                    if let Some(id) = st.selected_customer_id.clone() {
-                        Some(id)
-                    } else if typed_customer.trim().is_empty() {
+                // Loyalty / wallet / voucher: debit balances before the sale is
+                // written (discount already on the cart). Reverse on failure.
+                let pending_pts = st.pending_loyalty_points;
+                let pending_wallet = st.pending_wallet_paise;
+                let pending_v_code = st.pending_voucher_code.clone();
+                let pending_v_paise = st.pending_voucher_paise;
+                if (pending_pts > 0 || pending_wallet > 0 || pending_v_paise > 0)
+                    && st.selected_customer_id.is_none()
+                {
+                    return Err("Pick a customer to redeem loyalty, wallet or voucher".into());
+                }
+                if !is_client
+                    && (pending_pts > 0 || pending_wallet > 0 || pending_v_paise > 0)
+                {
+                    let cid = st.selected_customer_id.clone().unwrap();
+                    let actor = st.actor()?;
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    if pending_v_paise > 0 && !pending_v_code.is_empty() {
+                        let bal = store.voucher_balance(&pending_v_code)?;
+                        if bal < pending_v_paise {
+                            return Err("Voucher balance changed — clear redeem and try again".into());
+                        }
+                    }
+                    if pending_pts > 0 {
+                        store.redeem_loyalty(&cid, pending_pts, &actor)?;
+                    }
+                    if pending_wallet > 0 {
+                        store.wallet_spend(&cid, pending_wallet, &actor)?;
+                    }
+                    if pending_v_paise > 0 && !pending_v_code.is_empty() {
+                        store.redeem_voucher(&pending_v_code, pending_v_paise, &actor)?;
+                    }
+                }
+                let customer_id = if let Some(id) = st.selected_customer_id.clone() {
+                    Some(id)
+                } else if credit > 0 {
+                    if typed_customer.trim().is_empty() {
                         return Err(
                             "Credit part needs a customer — type a name or Pick one".into(),
                         );
@@ -21675,7 +22036,7 @@ impl MatchEvent for App {
                 } else {
                     None
                 };
-                let customer_name = if credit > 0 {
+                let customer_name = {
                     let typed = typed_customer.trim();
                     if !typed.is_empty() {
                         Some(typed.to_string())
@@ -21687,8 +22048,6 @@ impl MatchEvent for App {
                                 .map(|c| c.name.clone())
                         })
                     }
-                } else {
-                    None
                 };
                 let rail = st.fiscal.digital_pay_label().to_string();
                 let cash_label = st.t("cash");
@@ -21781,6 +22140,10 @@ impl MatchEvent for App {
                 st.cart.clear();
                 st.open_cart_line = None;
                 st.selected_table_id = None;
+                st.pending_loyalty_points = 0;
+                st.pending_wallet_paise = 0;
+                st.pending_voucher_code.clear();
+                st.pending_voucher_paise = 0;
                 st.last_receipt = full;
                 st.status = format!("Billed {} · {summary}", sale.invoice_no);
                 let snack = format!("{amount} · {summary}");
@@ -21862,7 +22225,15 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(customer_clear)).clicked(actions) {
-            app_state().lock().unwrap().selected_customer_id = None;
+            {
+                let mut st = app_state().lock().unwrap();
+                st.selected_customer_id = None;
+                st.pending_loyalty_points = 0;
+                st.pending_wallet_paise = 0;
+                st.pending_voucher_code.clear();
+                st.pending_voucher_paise = 0;
+                apply_pending_till_discount(&mut st);
+            }
             self.sync_chrome(cx);
         }
         for ((chip, chip_on), kind) in [
@@ -21898,18 +22269,27 @@ impl MatchEvent for App {
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
             let phone = self.ui.text_input(cx, ids!(credit_add_phone)).text();
             let kind = self.ui.text_input(cx, ids!(credit_add_kind)).text();
+            let birthday = self.ui.text_input(cx, ids!(credit_add_birthday)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if let Some(id) = st.selected_customer_id.clone() {
                     st.require_server_role("Edit party")?;
-                    store.update_customer(&id, &name, &phone)?;
+                    store.update_customer_details(&id, &name, &phone, Some(&birthday))?;
                     store.set_customer_kind_label(&id, kind.trim())?;
                     st.reload_all()?;
                     Ok(format!("Party updated: {}", name.trim()))
                 } else {
                     st.require_server_role("Add customers")?;
                     let customer = store.add_customer_kind(&name, &phone, kind.trim())?;
+                    if !birthday.trim().is_empty() {
+                        store.update_customer_details(
+                            &customer.id,
+                            &customer.name,
+                            &customer.phone,
+                            Some(&birthday),
+                        )?;
+                    }
                     st.selected_customer_id = Some(customer.id);
                     st.reload_all()?;
                     Ok(format!(
@@ -21931,6 +22311,9 @@ impl MatchEvent for App {
                 .set_text(cx, "");
             self.ui
                 .text_input(cx, ids!(credit_add_phone))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(credit_add_birthday))
                 .set_text(cx, "");
             self.ui
                 .text_input(cx, ids!(credit_add_kind))
@@ -22163,12 +22546,225 @@ impl MatchEvent for App {
                             .text_input(cx, ids!(credit_add_phone))
                             .set_text(cx, &c.phone);
                         self.ui
+                            .text_input(cx, ids!(credit_add_birthday))
+                            .set_text(cx, &c.birthday);
+                        self.ui
                             .text_input(cx, ids!(credit_add_kind))
                             .set_text(cx, &c.kind_label);
                     }
                     self.sync_chrome(cx);
                 }
             }
+        }
+
+        for (btn, seg) in [
+            (ids!(crm_seg_bday_week), store::CrmSegment::BirthdayThisWeek),
+            (ids!(crm_seg_bday_month), store::CrmSegment::BirthdayThisMonth),
+            (ids!(crm_seg_phone), store::CrmSegment::WithPhone),
+            (ids!(crm_seg_loyalty), store::CrmSegment::WithLoyalty),
+            (ids!(crm_seg_inactive), store::CrmSegment::InactiveDays(30)),
+            (ids!(crm_seg_top), store::CrmSegment::TopSpenders(20)),
+        ] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                app_state().lock().unwrap().crm_segment = seg;
+                self.sync_chrome(cx);
+            }
+        }
+        for (btn, channel) in [
+            (ids!(crm_queue_sms), "sms"),
+            (ids!(crm_queue_wa), "whatsapp"),
+        ] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                let body = self.ui.text_input(cx, ids!(crm_message_input)).text();
+                let result = (|| -> Result<String, String> {
+                    let st = app_state().lock().unwrap();
+                    st.require_server_role("CRM campaign")?;
+                    let actor = st.actor()?;
+                    let seg = st.crm_segment;
+                    let n = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .queue_segment_campaign(seg, &body, channel, &actor)?;
+                    Ok(format!("Queued {n} {channel} message(s) for {}", seg.label()))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+
+        if self.ui.button(cx, ids!(till_apply_redeem)).clicked(actions) {
+            let pts_text = self.ui.text_input(cx, ids!(till_loyalty_input)).text();
+            let wallet_text = self.ui.text_input(cx, ids!(till_wallet_input)).text();
+            let voucher_code = self.ui.text_input(cx, ids!(till_voucher_input)).text();
+            let voucher_amt = self.ui.text_input(cx, ids!(till_voucher_amt_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let cid = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a customer first".to_string())?;
+                let currency = st.locale.currency.clone();
+                let guest = st
+                    .customers
+                    .iter()
+                    .find(|c| c.id == cid)
+                    .cloned()
+                    .ok_or_else(|| "Customer not found".to_string())?;
+                let pts = if pts_text.trim().is_empty() {
+                    0
+                } else {
+                    pts_text
+                        .trim()
+                        .parse::<i64>()
+                        .map_err(|_| "Points must be a whole number".to_string())?
+                };
+                if pts < 0 {
+                    return Err("Points cannot be negative".into());
+                }
+                if pts > guest.loyalty_points {
+                    return Err(format!("Only {} points available", guest.loyalty_points));
+                }
+                let wallet = if wallet_text.trim().is_empty() {
+                    0
+                } else {
+                    locale::parse_major_input(wallet_text.trim(), &currency)?
+                };
+                if wallet > guest.wallet_paise {
+                    return Err(format!(
+                        "Wallet only has {}",
+                        st.money(Money(guest.wallet_paise))
+                    ));
+                }
+                let (v_code, v_paise) = if voucher_code.trim().is_empty() {
+                    (String::new(), 0)
+                } else {
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let bal = store.voucher_balance(voucher_code.trim())?;
+                    if bal <= 0 {
+                        return Err("Nothing left on this voucher".into());
+                    }
+                    let want = if voucher_amt.trim().is_empty() {
+                        bal
+                    } else {
+                        locale::parse_major_input(voucher_amt.trim(), &currency)?.min(bal)
+                    };
+                    if want <= 0 {
+                        return Err("Voucher amount must be above zero".into());
+                    }
+                    (voucher_code.trim().to_uppercase(), want)
+                };
+                st.pending_loyalty_points = pts;
+                st.pending_wallet_paise = wallet;
+                st.pending_voucher_code = v_code;
+                st.pending_voucher_paise = v_paise;
+                apply_pending_till_discount(&mut st);
+                let pending = pending_till_redeem_paise(&st);
+                Ok(if pending > 0 || !st.pending_voucher_code.is_empty() {
+                    format!(
+                        "Redeem ready {}{}",
+                        st.money(Money(pending.max(0))),
+                        if st.pending_voucher_code.is_empty() {
+                            String::new()
+                        } else {
+                            format!(" · voucher {}", st.pending_voucher_code)
+                        }
+                    )
+                } else {
+                    "Nothing to redeem".into()
+                })
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(till_clear_redeem)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                st.pending_loyalty_points = 0;
+                st.pending_wallet_paise = 0;
+                st.pending_voucher_code.clear();
+                st.pending_voucher_paise = 0;
+                apply_pending_till_discount(&mut st);
+            }
+            for id in [
+                ids!(till_loyalty_input),
+                ids!(till_wallet_input),
+                ids!(till_voucher_input),
+                ids!(till_voucher_amt_input),
+            ] {
+                self.ui.text_input(cx, id).set_text(cx, "");
+            }
+            self.set_status(cx, "Till redeem cleared");
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(till_wallet_topup)).clicked(actions) {
+            let amt = self.ui.text_input(cx, ids!(till_wallet_topup_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Wallet top-up")?;
+                let actor = st.actor()?;
+                let cid = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a customer first".to_string())?;
+                let paise = locale::parse_major_input(amt.trim(), &st.locale.currency)?;
+                let bal = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?
+                    .wallet_top_up(&cid, paise, &actor)?;
+                st.reload_all()?;
+                Ok(format!("Wallet now {}", st.money(Money(bal))))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(till_wallet_topup_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(till_issue_voucher)).clicked(actions) {
+            let code = self.ui.text_input(cx, ids!(till_voucher_issue_code)).text();
+            let amt = self.ui.text_input(cx, ids!(till_voucher_issue_amt_input)).text();
+            let result = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                st.require_server_role("Issue voucher")?;
+                let actor = st.actor()?;
+                let paise = locale::parse_major_input(amt.trim(), &st.locale.currency)?;
+                let v = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?
+                    .issue_voucher(code.trim(), paise, &actor)?;
+                Ok(format!(
+                    "Voucher {} issued for {}",
+                    v.code,
+                    st.money(Money(v.amount_paise))
+                ))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(till_voucher_issue_code))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(till_voucher_issue_amt_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
         }
 
         for (btn, method) in [
