@@ -461,9 +461,13 @@ struct AppState {
     /// The ticket line whose details (price, note, Cancel / NC / Move) are
     /// open. One at a time; every other line stays a single compact row.
     open_cart_line: Option<usize>,
-    /// The Floor was opened from the order desk to seat this order: a tap on
-    /// a table attaches it (keeping the items already punched) and returns.
+    /// The Floor was opened from the order desk to seat / change table: a tap
+    /// attaches (or reseats pending) and returns to Order. Floor from nav does
+    /// not set this — tapping a table there just opens that table's ticket.
     picking_table: bool,
+    /// When Change table: the table we left (pending moves from here). `None`
+    /// when first seating a cart that had no table yet.
+    picking_from_table_id: Option<String>,
     /// The field whose "type or pick" list is open, and its rows.
     suggest_open: Option<SuggestField>,
     suggest_rows: Vec<suggest::SuggestRow>,
@@ -506,10 +510,6 @@ struct AppState {
     split_pick: Vec<String>,
     /// Ticket's discount panel is open.
     discount_panel_open: bool,
-    /// Order desk Counter (payment) section is expanded.
-    counter_panel_open: bool,
-    /// Order desk Items (cart lines) section is expanded.
-    items_panel_open: bool,
     /// Shop servers found on this Wi‑Fi (Connect screen → Find server).
     found_servers: Vec<net::FoundServer>,
     /// Category whose photo is being picked (file-dialog round trip).
@@ -1191,6 +1191,7 @@ impl AppState {
             line_action: None,
             open_cart_line: None,
             picking_table: false,
+            picking_from_table_id: None,
             suggest_open: None,
             suggest_rows: Vec::new(),
             suggest_rev: 0,
@@ -1212,8 +1213,6 @@ impl AppState {
             split_mode: false,
             split_pick: Vec::new(),
             discount_panel_open: false,
-            counter_panel_open: true,
-            items_panel_open: true,
             found_servers: Vec::new(),
             category_photo_id: None,
             removed_products: Vec::new(),
@@ -1504,23 +1503,40 @@ impl AppState {
         }
     }
 
-    /// Open a table on the Order desk: its running order becomes the cart
-    /// (sent lines, NC at ₹0); any new, unsent items already punched for
-    /// this same table stay below them.
+    /// Punch ± qty onto the open table's pending lines (Server SoT).
+    /// No table selected: caller keeps lines in the local cart only.
+    fn bump_table_pending(
+        &mut self,
+        product_id: &str,
+        delta_milli: i64,
+        done: &str,
+    ) -> Result<Acted, String> {
+        let table_id = self
+            .selected_table_id
+            .clone()
+            .ok_or_else(|| "Open a table first".to_string())?;
+        let area = self.current_area();
+        self.table_action(
+            net::RunningAction::BumpPending {
+                table_id,
+                product_id: product_id.to_string(),
+                delta_milli,
+                area,
+            },
+            "",
+            done,
+            phone::Follow::Refresh,
+        )
+    }
+
+    /// Open a table on the Order desk from the Server running order (pending +
+    /// sent). Seating / Change table side-effects happen in [`Self::open_table`].
     fn load_table_cart(&mut self, table_id: &str) -> Result<(), String> {
         if self.selected_table_id.as_deref() != Some(table_id) {
             self.split_mode = false;
             self.split_pick.clear();
         }
-        // Items punched before a table was chosen travel to the table picked
-        // from the floor for them.
-        let seating = self.picking_table && self.selected_table_id.is_none();
-        let keep_new: Vec<_> = if seating || self.selected_table_id.as_deref() == Some(table_id) {
-            self.cart.lines.iter().filter(|l| !l.is_sent()).cloned().collect()
-        } else {
-            Vec::new()
-        };
-        let sent = self
+        let lines = self
             .store
             .as_ref()
             .ok_or("No store")?
@@ -1530,9 +1546,8 @@ impl AppState {
         self.cart.clear();
         self.open_cart_line = None;
         self.cart.set_order_type(OrderType::DineIn);
-        self.cart.lines = sent;
+        self.cart.lines = lines;
         self.cart.lines.extend(self.queued_kot_lines(table_id));
-        self.cart.lines.extend(keep_new);
         self.selected_table_id = Some(table_id.to_string());
         let mut ids: Vec<String> = Vec::new();
         for l in &self.cart.lines {
@@ -1547,6 +1562,40 @@ impl AppState {
                 self.kot_heads.insert(id, (no, time));
             }
         }
+        Ok(())
+    }
+
+    /// First seat: write the desk's unsent lines onto `table_id` as pending.
+    fn seat_cart_onto_table(&mut self, table_id: &str) -> Result<(), String> {
+        let to_seat: Vec<CartLine> = self
+            .cart
+            .lines
+            .iter()
+            .filter(|l| !l.is_sent() && l.qty_milli > 0)
+            .cloned()
+            .collect();
+        if to_seat.is_empty() {
+            return Ok(());
+        }
+        let actor = self.actor()?;
+        if self.device_role == DeviceRole::Client {
+            let _ = self.table_action(
+                net::RunningAction::SeatPending {
+                    table_id: table_id.to_string(),
+                    lines: to_seat.clone(),
+                },
+                "",
+                "Seated",
+                phone::Follow::Refresh,
+            )?;
+            // Host may not have applied yet — keep punches visible until sync.
+            self.selected_table_id = Some(table_id.to_string());
+            self.cart.set_order_type(OrderType::DineIn);
+            self.cart.lines = to_seat;
+            return Ok(());
+        }
+        let store = self.store.as_ref().ok_or("No store")?;
+        store.seat_unsent_lines(table_id, &to_seat, &actor)?;
         Ok(())
     }
 
@@ -6224,10 +6273,9 @@ script_mod! {
                             }
                         }
 
-                        // Seller: tap items → pay. Sticky chrome only: + Add
-                        // dishes + Counter/Items toggles. Expanded Counter and
-                        // cart lines live in pos_scroll so short windows (phone
-                        // or short desktop) can always scroll.
+                        // Seller: tap items → pay. Sticky: order type + Add
+                        // dishes. Cart lines scroll; Counter (payment) is fixed
+                        // at the bottom of the ticket column.
                         pos_screen := View{
                             width: Fill height: Fill
                             visible: false
@@ -6276,8 +6324,7 @@ script_mod! {
                                     table_pick_btn := TablePickBtn{text: "Choose a table"}
                                 }
                             }
-                            // Sticky chrome only (Fit height). Expanded panels
-                            // scroll below — never trap the page on short screens.
+                            // Sticky: + Add dishes (+ empty-menu CTA when needed).
                             pos_desk_sticky := SolidView{
                                 width: Fill height: Fit
                                 padding: Inset{left: 16. right: 16. top: 4. bottom: 8.}
@@ -6311,15 +6358,18 @@ script_mod! {
                                         add_items_btn := StackSecondaryBtn{text: "Add dishes & items"}
                                     }
                                 }
-                                counter_toggle := StackLightBtn{text: "Counter"}
-                                items_toggle := StackLightBtn{text: "Items"}
                             }
-                            pos_scroll := ScrollYView{
+                            // Ticket column: lines scroll; Counter stays fixed at the foot.
+                            pos_ticket := View{
                                 width: Fill height: Fill
-                                pos_page := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 10
-                                    padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                flow: Down spacing: 8
+                                padding: Inset{left: 16. right: 16. top: 0. bottom: 8.}
+                                pos_scroll := ScrollYView{
+                                    width: Fill height: Fill
+                                    pos_page := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 10
+                                        padding: Inset{top: 4. bottom: 16.}
 
                                     // Operational strip (Stitch screen 02)
                                     pos_strip := RoundedView{
@@ -6353,8 +6403,153 @@ script_mod! {
                                         }
                                     }
 
-                                    // Counter body scrolls with the page (sticky
-                                    // toggle above stays put so it can collapse).
+                                    items_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 10
+                                        padding: Inset{bottom: 8.}
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 12
+                                            align: Align{y: 0.5}
+                                            // Ticket state. Cart/pay/KOT errors land on
+                                            // this line, so it must wrap (width: Fill).
+                                            receipt_label := WrapLabel{
+                                                width: Fill
+                                                body: "Ready"
+                                                font_color: #x6B4A3F
+                                                font_size: 13.
+                                            }
+                                        }
+                                        // Table actions (Print bill · Move / merge). Shown
+                                        // while a table is open on the ticket.
+                                        table_actions := ActionStack{
+                                            print_bill_btn := StackLightBtn{text: "Print bill"}
+                                            table_move_btn := StackLightBtn{text: "Move / merge table"}
+                                            table_split_btn := StackLightBtn{text: "Split bill"}
+                                        }
+                                        // Split: tap the dishes one guest pays for, then make
+                                        // their separate bill (a companion table, e.g. D3/2).
+                                        split_bar := RoundedView{
+                                            width: Fill height: Fit
+                                            visible: false
+                                            padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+                                            flow: Down spacing: 8
+                                            draw_bg.color: #xFFF6EE
+                                            draw_bg.border_radius: 14.
+                                            draw_bg.border_size: 2.
+                                            draw_bg.border_color: #xB43A12
+                                            split_help := WrapLabel{
+                                                body: " "
+                                                font_color: #x260B08
+                                                font_size: 13.
+                                            }
+                                            ActionStack{
+                                                split_go := StackPrimaryBtn{text: "Make separate bill"}
+                                                split_cancel := StackSecondaryBtn{text: "Cancel"}
+                                            }
+                                        }
+                                        table_move_panel := RoundedView{
+                                            width: Fill height: Fit
+                                            visible: false
+                                            padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+                                            flow: Down spacing: 8
+                                            draw_bg.color: #xFFF6EE
+                                            draw_bg.border_radius: 14.
+                                            draw_bg.border_size: 2.
+                                            draw_bg.border_color: #xB43A12
+                                            move_help := WrapLabel{
+                                                body: "Move this table's order to a free table, or merge it into a running one."
+                                                font_color: #x260B08
+                                                font_size: 13.
+                                            }
+                                            move_target_input := FieldInput{empty_text: "Table name (e.g. D5, P2)"}
+                                            move_target_suggest := mod.widgets.SuggestList{field: "move_table"}
+                                            move_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
+                                            ActionStack{
+                                                move_table_go := StackPrimaryBtn{text: "Move here"}
+                                                merge_table_go := StackSecondaryBtn{text: "Merge into it"}
+                                            }
+                                        }
+                                        // One sent line's Cancel / NC / Move: reason, cooked or
+                                        // not, how many, where to, and a manager PIN when the
+                                        // person's right says "with approval".
+                                        line_action_panel := RoundedView{
+                                            width: Fill height: Fit
+                                            visible: false
+                                            padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+                                            flow: Down spacing: 8
+                                            draw_bg.color: #xFFF6EE
+                                            draw_bg.border_radius: 14.
+                                            draw_bg.border_size: 2.
+                                            draw_bg.border_color: #xB43A12
+                                            line_action_title := WrapLabel{
+                                                body: "Cancel item"
+                                                font_color: #x69090C
+                                                font_size: 15.
+                                            }
+                                            // Inputs hide through their wrapper (TextInput has no
+                                            // `visible`).
+                                            line_reason_wrap := View{
+                                                width: Fill height: Fit
+                                                line_reason_input := FieldInput{empty_text: "Reason (e.g. guest changed mind, out of stock)"}
+                                            }
+                                            line_qty_wrap := View{
+                                                width: Fill height: Fit
+                                                line_qty_input := FieldInput{empty_text: "How many to cancel (blank = all)"}
+                                            }
+                                            line_cooked_btn := NavBtn{text: "Not cooked yet"}
+                                            line_target_wrap := View{
+                                                width: Fill height: Fit
+                                                line_target_input := FieldInput{empty_text: "Move to table (e.g. D5)"}
+                                                line_target_suggest := mod.widgets.SuggestList{field: "line_table"}
+                                            }
+                                            line_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
+                                            ActionStack{
+                                                line_action_back := StackSecondaryBtn{text: "Back"}
+                                                line_action_go := StackPrimaryBtn{text: "Confirm"}
+                                            }
+                                        }
+
+                                        RoundedView{
+                                            width: Fill height: Fit
+                                            padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
+                                            flow: Down spacing: 10
+                                            draw_bg.color: #xffffff
+                                            draw_bg.border_radius: 16.
+                                            draw_bg.border_size: 2.
+                                            draw_bg.border_color: #x5A4238
+                                            cart_list := mod.widgets.CartList{}
+                                            cart_empty_hint := WrapLabel{
+                                                body: "Order empty — tap items to add."
+                                                font_color: #x6B4A3F
+                                                font_size: 12.
+                                            }
+
+                                            // Right under the lines just punched: which
+                                            // kitchens get a ticket, then send.
+                                            kot_dest_hint := WrapLabel{
+                                                body: " "
+                                                font_color: #x69090C
+                                                font_size: 12.
+                                                visible: false
+                                            }
+                                            send_stack := ActionStack{
+                                                send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
+                                                next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
+                                            }
+                                        }
+                                    }
+                                    } // pos_page
+                                } // pos_scroll
+                                // Counter: fixed at the foot of the ticket. Own
+                                // scroll + capped height (apply_shell_layout) so a
+                                // tall bill never eats the cart lines above.
+                                counter_dock := ScrollYView{
+                                    width: Fill height: Fit
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        padding: Inset{bottom: 12.}
                                     ticket_body := RoundedView{
                                     width: Fill height: Fit
                                     flow: Down spacing: 10
@@ -6586,145 +6781,9 @@ script_mod! {
                                     delivery_by_input := FieldInput{empty_text: "Delivery by (rider or staff name)"}
                                     delivery_by_suggest := mod.widgets.SuggestList{field: "delivery_by"}
                                 }
-
-                                    items_body := View{
-                                        width: Fill height: Fit
-                                        flow: Down spacing: 10
-                                        padding: Inset{bottom: 24.}
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 12
-                                            align: Align{y: 0.5}
-                                            // Ticket state. Cart/pay/KOT errors land on
-                                            // this line, so it must wrap (width: Fill).
-                                            receipt_label := WrapLabel{
-                                                width: Fill
-                                                body: "Ready"
-                                                font_color: #x6B4A3F
-                                                font_size: 13.
-                                            }
-                                        }
-                                        // Table actions (Print bill · Move / merge). Shown
-                                        // while a table is open on the ticket.
-                                        table_actions := ActionStack{
-                                            print_bill_btn := StackLightBtn{text: "Print bill"}
-                                            table_move_btn := StackLightBtn{text: "Move / merge table"}
-                                            table_split_btn := StackLightBtn{text: "Split bill"}
-                                        }
-                                        // Split: tap the dishes one guest pays for, then make
-                                        // their separate bill (a companion table, e.g. D3/2).
-                                        split_bar := RoundedView{
-                                            width: Fill height: Fit
-                                            visible: false
-                                            padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
-                                            flow: Down spacing: 8
-                                            draw_bg.color: #xFFF6EE
-                                            draw_bg.border_radius: 14.
-                                            draw_bg.border_size: 2.
-                                            draw_bg.border_color: #xB43A12
-                                            split_help := WrapLabel{
-                                                body: " "
-                                                font_color: #x260B08
-                                                font_size: 13.
-                                            }
-                                            ActionStack{
-                                                split_go := StackPrimaryBtn{text: "Make separate bill"}
-                                                split_cancel := StackSecondaryBtn{text: "Cancel"}
-                                            }
-                                        }
-                                        table_move_panel := RoundedView{
-                                            width: Fill height: Fit
-                                            visible: false
-                                            padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
-                                            flow: Down spacing: 8
-                                            draw_bg.color: #xFFF6EE
-                                            draw_bg.border_radius: 14.
-                                            draw_bg.border_size: 2.
-                                            draw_bg.border_color: #xB43A12
-                                            move_help := WrapLabel{
-                                                body: "Move this table's order to a free table, or merge it into a running one."
-                                                font_color: #x260B08
-                                                font_size: 13.
-                                            }
-                                            move_target_input := FieldInput{empty_text: "Table name (e.g. D5, P2)"}
-                                            move_target_suggest := mod.widgets.SuggestList{field: "move_table"}
-                                            move_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
-                                            ActionStack{
-                                                move_table_go := StackPrimaryBtn{text: "Move here"}
-                                                merge_table_go := StackSecondaryBtn{text: "Merge into it"}
-                                            }
-                                        }
-                                        // One sent line's Cancel / NC / Move: reason, cooked or
-                                        // not, how many, where to, and a manager PIN when the
-                                        // person's right says "with approval".
-                                        line_action_panel := RoundedView{
-                                            width: Fill height: Fit
-                                            visible: false
-                                            padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
-                                            flow: Down spacing: 8
-                                            draw_bg.color: #xFFF6EE
-                                            draw_bg.border_radius: 14.
-                                            draw_bg.border_size: 2.
-                                            draw_bg.border_color: #xB43A12
-                                            line_action_title := WrapLabel{
-                                                body: "Cancel item"
-                                                font_color: #x69090C
-                                                font_size: 15.
-                                            }
-                                            // Inputs hide through their wrapper (TextInput has no
-                                            // `visible`).
-                                            line_reason_wrap := View{
-                                                width: Fill height: Fit
-                                                line_reason_input := FieldInput{empty_text: "Reason (e.g. guest changed mind, out of stock)"}
-                                            }
-                                            line_qty_wrap := View{
-                                                width: Fill height: Fit
-                                                line_qty_input := FieldInput{empty_text: "How many to cancel (blank = all)"}
-                                            }
-                                            line_cooked_btn := NavBtn{text: "Not cooked yet"}
-                                            line_target_wrap := View{
-                                                width: Fill height: Fit
-                                                line_target_input := FieldInput{empty_text: "Move to table (e.g. D5)"}
-                                                line_target_suggest := mod.widgets.SuggestList{field: "line_table"}
-                                            }
-                                            line_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
-                                            ActionStack{
-                                                line_action_back := StackSecondaryBtn{text: "Back"}
-                                                line_action_go := StackPrimaryBtn{text: "Confirm"}
-                                            }
-                                        }
-
-                                        RoundedView{
-                                            width: Fill height: Fit
-                                            padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
-                                            flow: Down spacing: 10
-                                            draw_bg.color: #xffffff
-                                            draw_bg.border_radius: 16.
-                                            draw_bg.border_size: 2.
-                                            draw_bg.border_color: #x5A4238
-                                            cart_list := mod.widgets.CartList{}
-                                            cart_empty_hint := WrapLabel{
-                                                body: "Order empty — tap items to add."
-                                                font_color: #x6B4A3F
-                                                font_size: 12.
-                                            }
-
-                                            // Right under the lines just punched: which
-                                            // kitchens get a ticket, then send.
-                                            kot_dest_hint := WrapLabel{
-                                                body: " "
-                                                font_color: #x69090C
-                                                font_size: 12.
-                                                visible: false
-                                            }
-                                            send_stack := ActionStack{
-                                                send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
-                                                next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
-                                            }
-                                        }
-                                    }
-                                } // pos_page
-                            } // pos_scroll
+                                    } // counter dock inner
+                                } // counter_dock
+                            } // pos_ticket
                         } // pos_screen
 
                         floor_screen := ScrollYView{
@@ -9192,8 +9251,12 @@ impl Widget for FloorList {
                     };
                     let action = match state {
                         F::InKitchen | F::FoodReady | F::Eating => Some(st.t("tile_bill_btn")),
+                        F::BillPrinted if t.running_total_paise <= 0 => {
+                            Some(st.t("tile_ready_btn"))
+                        }
+                        F::BillPrinted => Some(st.t("tile_undo_bill")),
                         F::Paid => Some(st.t("tile_ready_btn")),
-                        F::Free | F::BillPrinted => None,
+                        F::Free => None,
                     };
                     (t.name.clone(), words, meta, action, state)
                 })
@@ -11762,10 +11825,17 @@ impl App {
                 None => st.t("choose_table"),
             };
             let pending = st.cart.lines.iter().filter(|l| !l.is_sent()).count();
-            let pick_label = if pending > 0 {
-                format!("{} · {pending} {}", st.t("pick_table_banner"), st.t("items_word"))
-            } else {
-                st.t("pick_table_banner")
+            let pick_label = {
+                let base = if st.picking_from_table_id.is_some() {
+                    st.t("change_table")
+                } else {
+                    st.t("pick_table_banner")
+                };
+                if pending > 0 {
+                    format!("{base} · {pending} {}", st.t("items_word"))
+                } else {
+                    base
+                }
             };
             let picking = st.picking_table;
             let cats = st.menu_categories();
@@ -11782,35 +11852,16 @@ impl App {
                 .widget(cx, ids!(floor_pick_label))
                 .set_text(cx, &plain_display_text(&pick_label));
             self.ui.button(cx, ids!(floor_pick_back)).set_text(cx, &back_label);
-            let counter_open = st.counter_panel_open;
-            let items_open = st.items_panel_open;
-            let counter_label = format!(
-                "{} {}",
-                st.t("counter"),
-                if counter_open { "▾" } else { "▸" }
-            );
-            let items_label = format!(
-                "{} {}",
-                st.t("items_section"),
-                if items_open { "▾" } else { "▸" }
-            );
-            self.ui.button(cx, ids!(counter_toggle)).set_text(cx, &counter_label);
-            self.ui.button(cx, ids!(items_toggle)).set_text(cx, &items_label);
-            // Counter expands whenever the section is open — even with an
-            // empty cart (totals stay ₹0; Take payment still needs lines).
-            self.ui
-                .view(cx, ids!(ticket_body))
-                .set_visible(cx, counter_open);
+            // Counter stays docked at the foot of the ticket (always shown).
+            self.ui.view(cx, ids!(ticket_body)).set_visible(cx, true);
             // The customer is asked for only when it matters: credit (khata),
             // a split that may include credit, or a delivery.
             self.ui.view(cx, ids!(ticket_extras)).set_visible(
                 cx,
-                counter_open
-                    && !st.cart.is_empty()
+                !st.cart.is_empty()
                     && (matches!(st.pay_choice, PayChoice::Credit | PayChoice::Split)
                         || st.cart.order_type == OrderType::Delivery),
             );
-            self.ui.view(cx, ids!(items_body)).set_visible(cx, items_open);
             self.ui
                 .widget(cx, ids!(delivery_by_input))
                 .set_visible(cx, st.cart.order_type == OrderType::Delivery);
@@ -14863,8 +14914,8 @@ impl App {
     }
 
     /// Phone (<720): bottom tabs. Tablet/desktop (≥720): side rail.
-    /// Order desk: sticky Add dishes + Counter above; items scroll below
-    /// (always one column — never a Fixed cart leaving an empty gutter).
+    /// Order desk: sticky Add dishes; cart lines scroll; Counter docked
+    /// at the foot of the ticket (always one column).
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
         const DIVIDER_W: f64 = 6.0;
@@ -14923,6 +14974,40 @@ impl App {
                 },
             );
         }
+        set_view_walk(
+            cx,
+            &self.ui.view(cx, ids!(pos_ticket)),
+            Walk {
+                width: Size::fill(),
+                height: Size::fill(),
+                ..Default::default()
+            },
+        );
+        // Reserve ≥ MIN_ITEMS_H for cart lines; Counter takes the rest
+        // (capped). Fill scroll then gets whatever is left above the dock.
+        const MIN_ITEMS_H: f64 = 200.0;
+        let window_h = self.window_inner_size(cx).y;
+        let chrome_h = if show_bottom { 320.0 } else { 250.0 };
+        let ticket_h = (window_h - chrome_h).max(MIN_ITEMS_H + 120.0);
+        let counter_cap = (ticket_h - MIN_ITEMS_H).clamp(120.0, 380.0);
+        set_view_walk(
+            cx,
+            &self.ui.view(cx, ids!(counter_dock)),
+            Walk {
+                width: Size::fill(),
+                height: Size::Fixed(counter_cap),
+                ..Default::default()
+            },
+        );
+        set_view_walk(
+            cx,
+            &self.ui.view(cx, ids!(pos_scroll)),
+            Walk {
+                width: Size::fill(),
+                height: Size::fill(),
+                ..Default::default()
+            },
+        );
     }
 
     /// Nav slot hardware in DSL order. Slots are positions; which tab a
@@ -15241,8 +15326,20 @@ impl App {
     fn go(&mut self, cx: &mut Cx, screen: Screen) {
         {
             let mut st = app_state().lock().unwrap();
+            // Pick-table mode is set only by `pick_table_for_order` after go.
+            // Floor from nav must not keep a stale pick banner.
+            let was_picking = st.picking_table;
+            let pick_from = st.picking_from_table_id.clone();
+            st.picking_table = false;
             if screen != Screen::Floor {
-                st.picking_table = false;
+                st.picking_from_table_id = None;
+            }
+            // Left Floor mid-pick via nav (not Back to order): restore the
+            // previous table so Order and Floor stay on the same ticket.
+            if was_picking && screen != Screen::Floor && screen != Screen::Pos {
+                if let Some(from) = pick_from {
+                    let _ = st.load_table_cart(&from);
+                }
             }
             st.suggest_open = None;
             if st.must_confirm_device_role && screen != Screen::DeviceSetup {
@@ -15291,6 +15388,13 @@ impl App {
                     )
                 {
                     st.status = "Read-only on this extra till — change it on the shop device".into();
+                }
+                // Order desk: always show the Server ticket for the open table
+                // (Floor nav round-trip must not leave a stale local cart).
+                if screen == Screen::Pos
+                    && let Some(tid) = st.selected_table_id.clone()
+                {
+                    let _ = st.load_table_cart(&tid);
                 }
             }
         }
@@ -15509,7 +15613,24 @@ impl App {
                 if prev == Screen::DeviceSetup {
                     st.must_confirm_device_role = true;
                 }
+                if prev != Screen::Floor {
+                    let restore = if st.picking_table {
+                        st.picking_from_table_id.take()
+                    } else {
+                        None
+                    };
+                    st.picking_table = false;
+                    st.picking_from_table_id = None;
+                    if let Some(from) = restore {
+                        let _ = st.load_table_cart(&from);
+                    }
+                }
                 self.set_screen(&mut st, prev, false);
+                if prev == Screen::Pos
+                    && let Some(tid) = st.selected_table_id.clone()
+                {
+                    let _ = st.load_table_cart(&tid);
+                }
             }
             self.sync_chrome(cx);
             true
@@ -15534,6 +15655,9 @@ impl App {
         if let Some(next) = dest {
             {
                 let mut st = app_state().lock().unwrap();
+                if next != Screen::Floor {
+                    st.picking_table = false;
+                }
                 self.set_screen(&mut st, next, false);
             }
             self.sync_chrome(cx);
@@ -17074,18 +17198,52 @@ impl App {
                 Some(_) if st.session.as_ref().map(|s| s.can_access_sell()) != Some(true) => {
                     Some("Not allowed to order".into())
                 }
-                Some(product) => match st.cart.remove_one_of(&product.id) {
-                    Err(e) => Some(e),
-                    Ok(()) => {
-                        let left = st.cart.lines.iter().any(|l| l.product_id == product.id);
-                        st.status = if left {
-                            format!("One {} taken off", product.name)
-                        } else {
-                            format!("{} taken off the order", product.name)
-                        };
-                        None
+                Some(product) => {
+                    let step = st
+                        .cart
+                        .lines
+                        .iter()
+                        .rev()
+                        .find(|l| l.product_id == product.id && !l.is_sent())
+                        .map(|l| l.bump_step_milli())
+                        .unwrap_or(1000);
+                    if st.selected_table_id.is_some() {
+                        match st.bump_table_pending(
+                            &product.id,
+                            -step,
+                            &format!("One {} taken off", product.name),
+                        ) {
+                            Err(e) => Some(e),
+                            Ok(Acted::Sent) => {
+                                let _ = st.cart.remove_one_of(&product.id);
+                                st.status = format!("One {} taken off", product.name);
+                                None
+                            }
+                            Ok(Acted::Here(_)) => {
+                                let left = st.cart.lines.iter().any(|l| l.product_id == product.id);
+                                st.status = if left {
+                                    format!("One {} taken off", product.name)
+                                } else {
+                                    format!("{} taken off the order", product.name)
+                                };
+                                None
+                            }
+                        }
+                    } else {
+                        match st.cart.remove_one_of(&product.id) {
+                            Err(e) => Some(e),
+                            Ok(()) => {
+                                let left = st.cart.lines.iter().any(|l| l.product_id == product.id);
+                                st.status = if left {
+                                    format!("One {} taken off", product.name)
+                                } else {
+                                    format!("{} taken off the order", product.name)
+                                };
+                                None
+                            }
+                        }
                     }
-                },
+                }
             }
         };
         if let Some(e) = err {
@@ -17101,17 +17259,55 @@ impl App {
                 Some("Not allowed to order".into())
             } else if let Some(product) = st.products.iter().find(|p| p.id == product_id).cloned() {
                 let area = st.current_area();
-                match st.cart.add_in_area_in_stock(&product, &area) {
-                    Err(e) => Some(e),
-                    Ok(()) => {
-                        // A dish still at no price (often straight from the
-                        // template) would bill 0 — say so where it is noticed.
-                        st.status = if product.price_in_area(&area).0 == 0 {
-                            format!("{} added · it has no price yet — set it on Menu", product.name)
-                        } else {
-                            format!("{} added", product.name)
-                        };
-                        None
+                let step = if product.is_weight_unit() { 100 } else { 1000 };
+                if st.selected_table_id.is_some() {
+                    match st.cart.check_can_add(&product, product.price_in_area(&area)) {
+                        Err(e) => Some(e),
+                        Ok(()) => match st.bump_table_pending(
+                            &product.id,
+                            step,
+                            &format!("{} added", product.name),
+                        ) {
+                            Err(e) => Some(e),
+                            Ok(Acted::Sent) => {
+                                let _ = st.cart.add_in_area_in_stock(&product, &area);
+                                st.status = if product.price_in_area(&area).0 == 0 {
+                                    format!(
+                                        "{} added · it has no price yet — set it on Menu",
+                                        product.name
+                                    )
+                                } else {
+                                    format!("{} added", product.name)
+                                };
+                                None
+                            }
+                            Ok(Acted::Here(_)) => {
+                                st.status = if product.price_in_area(&area).0 == 0 {
+                                    format!(
+                                        "{} added · it has no price yet — set it on Menu",
+                                        product.name
+                                    )
+                                } else {
+                                    format!("{} added", product.name)
+                                };
+                                None
+                            }
+                        },
+                    }
+                } else {
+                    match st.cart.add_in_area_in_stock(&product, &area) {
+                        Err(e) => Some(e),
+                        Ok(()) => {
+                            st.status = if product.price_in_area(&area).0 == 0 {
+                                format!(
+                                    "{} added · it has no price yet — set it on Menu",
+                                    product.name
+                                )
+                            } else {
+                                format!("{} added", product.name)
+                            };
+                            None
+                        }
                     }
                 }
             } else {
@@ -17155,23 +17351,57 @@ impl App {
 
     /// Open a table from the floor: what it already has is the ticket; new
     /// taps go on the next KOT. On a paid table this seats new guests.
+    /// In pick-table mode (Order → Choose / Change table), attaches or reseats
+    /// pending punches, then returns to Order.
     fn open_table(&mut self, cx: &mut Cx, item_id: usize) {
         let picked = (|| -> Result<bool, String> {
             let mut st = app_state().lock().unwrap();
             let Some(t) = st.tables.get(item_id).cloned() else {
                 return Ok(false);
             };
-            // A tablet shows the Server's latest for this table.
             st.pull_from_server();
             st.line_action = None;
             st.move_panel_open = false;
-            st.load_table_cart(&t.id)?;
-            st.picking_table = false;
-            st.status = if st.cart.is_empty() {
-                format!("{} — tap items, then Send KOT", t.name)
+            let picking = st.picking_table;
+            let from = st.picking_from_table_id.clone();
+            if picking {
+                if let Some(from_id) = from {
+                    if from_id != t.id {
+                        let done = format!("Moved new items to {}", t.name);
+                        st.table_action(
+                            net::RunningAction::ReseatPending {
+                                from_table_id: from_id,
+                                to_table_id: t.id.clone(),
+                            },
+                            "",
+                            &done,
+                            phone::Follow::OpenTable(t.id.clone()),
+                        )?;
+                    }
+                } else {
+                    st.seat_cart_onto_table(&t.id)?;
+                }
+                st.picking_table = false;
+                st.picking_from_table_id = None;
+                // Host: ticket is on the Server now. Client seat/reseat may
+                // still be in flight — keep optimistic cart; sync reloads.
+                if st.device_role != DeviceRole::Client {
+                    st.load_table_cart(&t.id)?;
+                } else {
+                    st.selected_table_id = Some(t.id.clone());
+                    st.cart.set_order_type(OrderType::DineIn);
+                }
+                st.status = format!("{} — add items and Send KOT, or Print bill / Take payment", t.name);
             } else {
-                format!("{} — add items and Send KOT, or Print bill / Take payment", t.name)
-            };
+                // Floor from nav: open that table's Server ticket as-is.
+                st.picking_from_table_id = None;
+                st.load_table_cart(&t.id)?;
+                st.status = if st.cart.is_empty() {
+                    format!("{} — tap items, then Send KOT", t.name)
+                } else {
+                    format!("{} — add items and Send KOT, or Print bill / Take payment", t.name)
+                };
+            }
             Ok(true)
         })();
         match picked {
@@ -17226,7 +17456,7 @@ impl App {
         self.sync_chrome(cx);
     }
 
-    /// Paid table cleared — free for the next guests.
+    /// Free the table for the next guests (Paid tile, or Bill printed at ₹0).
     fn mark_table_ready(&mut self, cx: &mut Cx, item_id: usize) {
         let table = app_state()
             .lock()
@@ -17237,9 +17467,35 @@ impl App {
         let Some((table_id, name)) = table else {
             return;
         };
-        let done = format!("{name} is ready for guests");
+        let done = format!("{name} is free");
         let result = app_state().lock().unwrap().table_action(
             net::RunningAction::TableReady { table_id },
+            "",
+            &done,
+            phone::Follow::Refresh,
+        );
+        match result {
+            Ok(Acted::Here(_)) => self.set_status(cx, done),
+            Ok(Acted::Sent) => self.set_status(cx, format!("{name} — sending…")),
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
+    }
+
+    /// Undo accidental Print bill — table goes back to open (or frees if empty).
+    fn undo_table_bill(&mut self, cx: &mut Cx, item_id: usize) {
+        let table = app_state()
+            .lock()
+            .unwrap()
+            .tables
+            .get(item_id)
+            .map(|t| (t.id.clone(), t.name.clone()));
+        let Some((table_id, name)) = table else {
+            return;
+        };
+        let done = format!("{name} — bill undone, table open again");
+        let result = app_state().lock().unwrap().table_action(
+            net::RunningAction::UndoBill { table_id },
             "",
             &done,
             phone::Follow::Refresh,
@@ -17518,23 +17774,36 @@ impl App {
 
     /// Cart `−`/`+`. Raising a tracked line stops at the on-hand count so the
     /// refusal lands on the button, not on the customer at the till.
-    /// Seat this order: show the floor in "pick a table" mode. A tap on a
-    /// table attaches it, keeps what is already punched, and comes back.
+    /// Seat this order or change its table: Floor in pick mode. A tap moves
+    /// **pending** (not yet Send KOT) onto the chosen table and returns.
+    /// Sent lines stay on the old table (use Move / merge for those).
+    /// Floor from the nav bar is different — it only browses/opens tickets.
     fn pick_table_for_order(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
             st.cart.set_order_type(OrderType::DineIn);
-            if st.selected_table_id.is_some() {
-                // Changing table: unsent items move with the order; what the
-                // kitchen already has stays on its table (Move / merge does
-                // that, with a record).
-                st.cart.lines.retain(|l| !l.is_sent());
-                st.selected_table_id = None;
-                st.open_cart_line = None;
-            }
+            st.picking_from_table_id = st.selected_table_id.clone();
+            st.selected_table_id = None;
+            st.open_cart_line = None;
+            // Keep punched lines in the cart for a first seat (no from-table).
+            // Change-table moves pending on the Server; cart is rebuilt on pick.
         }
         self.go(cx, Screen::Floor);
         app_state().lock().unwrap().picking_table = true;
+        self.sync_chrome(cx);
+    }
+
+    /// Leave pick-table mode without choosing: restore the previous table's
+    /// Server ticket, or keep the unsent cart if none was attached yet.
+    fn cancel_table_pick(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.picking_table = false;
+            if let Some(from) = st.picking_from_table_id.take() {
+                let _ = st.load_table_cart(&from);
+            }
+        }
+        self.go(cx, Screen::Pos);
         self.sync_chrome(cx);
     }
 
@@ -17616,24 +17885,40 @@ impl App {
     fn bump_cart_line(&mut self, cx: &mut Cx, index: usize, delta: i64) {
         let err: Option<String> = {
             let mut st = app_state().lock().unwrap();
-            let blocked = if delta > 0 {
-                match st.cart.lines.get(index).map(|l| l.product_id.clone()) {
-                    Some(product_id) => st
-                        .products
-                        .iter()
-                        .find(|p| p.id == product_id)
-                        .filter(|p| p.tracks_stock())
-                        .filter(|p| st.cart.qty_of(&product_id) + delta > p.stock_qty)
-                        .map(|p| format!("Only {} of {} in stock", p.stock_qty, p.name)),
-                    None => None,
+            match st.cart.lines.get(index).cloned() {
+                None => None,
+                Some(line) if line.is_sent() => None,
+                Some(line) => {
+                    let blocked = if delta > 0 {
+                        st.products
+                            .iter()
+                            .find(|p| p.id == line.product_id)
+                            .filter(|p| p.tracks_stock())
+                            .filter(|p| st.cart.qty_of(&line.product_id) + delta > p.stock_qty)
+                            .map(|p| format!("Only {} of {} in stock", p.stock_qty, p.name))
+                    } else {
+                        None
+                    };
+                    if let Some(e) = blocked {
+                        Some(e)
+                    } else {
+                        let step = line.bump_step_milli().saturating_mul(delta);
+                        if st.selected_table_id.is_some() {
+                            match st.bump_table_pending(&line.product_id, step, "Order updated") {
+                                Err(e) => Some(e),
+                                Ok(Acted::Sent) => {
+                                    st.cart.bump_qty(index, delta);
+                                    None
+                                }
+                                Ok(Acted::Here(_)) => None,
+                            }
+                        } else {
+                            st.cart.bump_qty(index, delta);
+                            None
+                        }
+                    }
                 }
-            } else {
-                None
-            };
-            if blocked.is_none() {
-                st.cart.bump_qty(index, delta);
             }
-            blocked
         };
         if let Some(e) = err {
             self.set_status(cx, e);
@@ -17673,6 +17958,14 @@ impl App {
                 let currency = st.locale.currency.clone();
                 if st.cart.is_empty() {
                     return Err("Cart is empty".into());
+                }
+                if st.selected_table_id.is_some()
+                    && st.cart.lines.iter().any(|l| !l.is_sent())
+                {
+                    return Err(
+                        "Send the new items to the kitchen first (Send KOT), then Take payment"
+                            .into(),
+                    );
                 }
                 if st.cart.charge_total.is_some()
                     && let Ok(minor) = locale::parse_major_input(&typed_total, &currency)
@@ -20044,6 +20337,14 @@ impl MatchEvent for App {
                 if st.cart.is_empty() {
                     return Err("Cart is empty".into());
                 }
+                if st.selected_table_id.is_some()
+                    && st.cart.lines.iter().any(|l| !l.is_sent())
+                {
+                    return Err(
+                        "Send the new items to the kitchen first (Send KOT), then Take payment"
+                            .into(),
+                    );
+                }
                 // Nothing to collect: a table's order closes (the table
                 // frees, no sale row) instead of sticking on "Bill printed".
                 if st.cart.total().paise() == 0 && st.cart.charge_total.is_none() {
@@ -20885,8 +21186,7 @@ impl MatchEvent for App {
             self.pick_table_for_order(cx);
         }
         if self.ui.button(cx, ids!(floor_pick_back)).clicked(actions) {
-            self.go(cx, Screen::Pos);
-            self.sync_chrome(cx);
+            self.cancel_table_pick(cx);
         }
         // Category chips: All, then the slots filled by `sync_category_strip`.
         {
@@ -20910,20 +21210,6 @@ impl MatchEvent for App {
                 }
                 self.sync_chrome(cx);
             }
-        }
-        if self.ui.button(cx, ids!(counter_toggle)).clicked(actions) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.counter_panel_open = !st.counter_panel_open;
-            }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(items_toggle)).clicked(actions) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.items_panel_open = !st.items_panel_open;
-            }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(discount_toggle)).clicked(actions) {
             {
@@ -21134,9 +21420,6 @@ impl MatchEvent for App {
                 match table_id {
                     // The table's order now holds them: show them as sent.
                     Some(tid) => {
-                        // The new lines are on the order now; keeping them
-                        // would list them again as "Not sent yet".
-                        st.cart.lines.retain(|l| l.is_sent());
                         st.reload_all()?;
                         st.load_table_cart(&tid)?;
                     }
@@ -21186,9 +21469,22 @@ impl MatchEvent for App {
                 }
             }
             if let Some((idx, action)) = tapped {
-                let state = app_state().lock().unwrap().tables.get(idx).map(|t| t.floor_state);
-                match (action, state) {
-                    (true, Some(domain::FloorState::Paid)) => self.mark_table_ready(cx, idx),
+                let info = app_state()
+                    .lock()
+                    .unwrap()
+                    .tables
+                    .get(idx)
+                    .map(|t| (t.floor_state, t.running_total_paise));
+                match (action, info) {
+                    (true, Some((domain::FloorState::Paid, _))) => {
+                        self.mark_table_ready(cx, idx)
+                    }
+                    (true, Some((domain::FloorState::BillPrinted, amount))) if amount <= 0 => {
+                        self.mark_table_ready(cx, idx)
+                    }
+                    (true, Some((domain::FloorState::BillPrinted, _))) => {
+                        self.undo_table_bill(cx, idx)
+                    }
                     (true, Some(_)) => self.request_table_bill(cx, idx),
                     (false, Some(_)) => self.open_table(cx, idx),
                     _ => {}

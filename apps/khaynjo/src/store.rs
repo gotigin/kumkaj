@@ -2201,25 +2201,58 @@ impl Store {
         Ok(())
     }
 
+    /// Legacy meta key cleanup (unsent lines are pending `running_lines` now).
+    /// Does not mark Occupied — occupancy comes only from a live running order.
     pub fn save_table_draft(&self, table_id: &str, draft_json: &str) -> Result<(), String> {
-        self.meta_set(&format!("table_draft_{table_id}"), draft_json)?;
-        self.conn
-            .execute(
-                "UPDATE tables_dining SET status = ?1, active_sale_id = ?2 WHERE id = ?3",
-                params![TableStatus::Occupied.as_str(), format!("draft:{table_id}"), table_id],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
+        self.meta_set(&format!("table_draft_{table_id}"), draft_json)
     }
 
     pub fn load_table_draft(&self, table_id: &str) -> Result<Option<String>, String> {
         self.meta_get(&format!("table_draft_{table_id}"))
     }
 
+    /// Drop legacy draft meta and clear a leftover `draft:` occupancy marker.
+    pub fn clear_table_draft_meta(&self, table_id: &str) -> Result<(), String> {
+        self.meta_set(&format!("table_draft_{table_id}"), "")?;
+        let active: String = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(active_sale_id, '') FROM tables_dining WHERE id = ?1",
+                params![table_id],
+                |r| r.get(0),
+            )
+            .unwrap_or_default();
+        if active == format!("draft:{table_id}") {
+            self.conn
+                .execute(
+                    "UPDATE tables_dining SET active_sale_id = NULL WHERE id = ?1",
+                    params![table_id],
+                )
+                .map_err(|e| e.to_string())?;
+            // Free only when nothing else holds the table.
+            if self.running_order(table_id)?.is_none() {
+                let status: String = self
+                    .conn
+                    .query_row(
+                        "SELECT status FROM tables_dining WHERE id = ?1",
+                        params![table_id],
+                        |r| r.get(0),
+                    )
+                    .unwrap_or_default();
+                if status == TableStatus::Occupied.as_str() {
+                    let _ = self.free_table(table_id);
+                }
+            }
+        }
+        Ok(())
+    }
+
     pub fn clear_table_draft(&self, table_id: &str) -> Result<(), String> {
         self.assert_server_writer("Clear a table")?;
-        self.meta_set(&format!("table_draft_{table_id}"), "")?;
-        self.free_table(table_id)?;
+        self.clear_table_draft_meta(table_id)?;
+        if self.running_order(table_id)?.is_none() {
+            self.free_table(table_id)?;
+        }
         Ok(())
     }
 
@@ -6147,13 +6180,13 @@ impl Store {
         }
 
         if let Some(tid) = table_id {
-            // Paid: the floor shows "clear the table" until it is made
-            // ready, new guests are seated, or it clears by itself.
+            // Payment recorded → table is Free for the next guests (no
+            // stuck "Paid / Ready" step — that confused every service test).
             tx.execute(
                 "UPDATE tables_dining
-                    SET status = ?1, active_sale_id = NULL, occupied_at = '', paid_at = ?3
+                    SET status = ?1, active_sale_id = NULL, occupied_at = '', paid_at = ''
                   WHERE id = ?2",
-                params![TableStatus::Paid.as_str(), tid, Local::now().to_rfc3339()],
+                params![TableStatus::Available.as_str(), tid],
             )
             .map_err(|e| e.to_string())?;
             Store::settle_running_order_tx(&tx, tid, &sale_id)?;
@@ -7721,6 +7754,65 @@ impl Store {
                 params![cutoff],
             )
             .map_err(|e| e.to_string())?;
+        // Heal "Bill printed" with nothing left to collect (items cancelled /
+        // emptied) — never leave a tile stuck with no way out.
+        {
+            let stuck: Vec<String> = {
+                let mut stmt = self
+                    .conn
+                    .prepare(
+                        "SELECT id FROM tables_dining
+                          WHERE status = 'payment_pending'
+                            AND (branch_id = ?1 OR branch_id = '')",
+                    )
+                    .map_err(|e| e.to_string())?;
+                let rows = stmt
+                    .query_map(params![branch], |r| r.get(0))
+                    .map_err(|e| e.to_string())?;
+                rows.collect::<Result<Vec<_>, _>>()
+                    .map_err(|e| e.to_string())?
+            };
+            for tid in stuck {
+                match self.running_order(&tid)? {
+                    None => {
+                        let _ = self.conn.execute(
+                            "UPDATE tables_dining
+                                SET status = 'available', active_sale_id = NULL,
+                                    occupied_at = '', paid_at = ''
+                              WHERE id = ?1",
+                            params![tid],
+                        );
+                    }
+                    Some(order) if order.live_lines().next().is_none() => {
+                        let _ = self.conn.execute(
+                            "UPDATE running_orders SET status = 'settled', closed_at = ?2 WHERE id = ?1",
+                            params![order.id, Local::now().to_rfc3339()],
+                        );
+                        let _ = self.conn.execute(
+                            "UPDATE tables_dining
+                                SET status = 'available', active_sale_id = NULL,
+                                    occupied_at = '', paid_at = ''
+                              WHERE id = ?1",
+                            params![tid],
+                        );
+                    }
+                    Some(order) if order.total_paise() == 0 => {
+                        let _ = self.conn.execute(
+                            "UPDATE running_orders SET status = 'settled', closed_at = ?2 WHERE id = ?1",
+                            params![order.id, Local::now().to_rfc3339()],
+                        );
+                        let _ = self.conn.execute(
+                            "UPDATE tables_dining
+                                SET status = 'available', active_sale_id = NULL,
+                                    occupied_at = '', paid_at = ''
+                              WHERE id = ?1",
+                            params![tid],
+                        );
+                    }
+                    _ => {}
+                }
+            }
+        }
         let mut stmt = self
             .conn
             .prepare(
@@ -11235,13 +11327,12 @@ mod tests {
             crate::domain::TableStatus::PaymentPending
         );
 
-        // The counter records the payment — the table shows Paid (clear
-        // it); it no longer holds a bill.
+        // The counter records the payment — the table is Free at once.
         store
             .finalize_sale(&draft, PayMethod::Cash, Some(&table.id), None, &owner)
             .unwrap();
         let t = ours(&store);
-        assert_eq!(t.status, crate::domain::TableStatus::Paid);
+        assert_eq!(t.status, crate::domain::TableStatus::Available);
         assert!(t.occupied_at.is_empty());
         assert_eq!(t.running_total_paise, 0);
         let _ = std::fs::remove_file(path);

@@ -1422,7 +1422,7 @@ impl Product {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct CartLine {
     pub product_id: String,
     pub name: String,
@@ -1511,9 +1511,10 @@ impl CartLine {
             .unwrap_or_else(|| self.actual_total())
     }
 
-    /// Already on the table's running order (went to the kitchen).
+    /// Already carried on a KOT to the kitchen (`kot_id` set). Pending lines
+    /// on the table's running order have a `running_line_id` but empty `kot_id`.
     pub fn is_sent(&self) -> bool {
-        !self.running_line_id.is_empty()
+        !self.kot_id.is_empty()
     }
 
     /// Alias for [`CartLine::applied_total`] (charged amount for this line).
@@ -1690,7 +1691,7 @@ impl Cart {
         Ok(())
     }
 
-    fn check_can_add(&self, product: &Product, unit_price: Money) -> Result<(), String> {
+    pub fn check_can_add(&self, product: &Product, unit_price: Money) -> Result<(), String> {
         if !product.available || product.archived {
             return Err(format!("{} is marked sold out", product.name));
         }

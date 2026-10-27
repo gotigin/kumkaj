@@ -72,5 +72,8 @@ and the theme block in `src/main.rs`.
 ## Docs for this app
 
 - [`docs/KHAYNJO.md`](docs/KHAYNJO.md) — product brief and build plan
-- Global doctrine (vision, business-books concepts checklist, DEV/DESIGN): [`../../docs/`](../../docs/README.md)
+- [`docs/KHAYNJO_CLIENTS_REQUIREMENTS.md`](docs/KHAYNJO_CLIENTS_REQUIREMENTS.md) — sanitized client checklist
+- [`docs/RESTAURANT_MARKET_RESEARCH.md`](docs/RESTAURANT_MARKET_RESEARCH.md) — Petpooja / field deep-dive
+- [`docs/RESTAURANT_RESEARCH.md`](docs/RESTAURANT_RESEARCH.md) — restaurant software market comparison
+- Global doctrine (vision, business-books, DEV/DESIGN, LAN pilot state): [`../../docs/`](../../docs/README.md)
 - Sibling product it was copied from: [`../moklanjo/`](../moklanjo/)

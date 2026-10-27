@@ -123,9 +123,31 @@ pub enum RunningAction {
     PrintBill {
         table_id: String,
     },
-    /// Paid table cleared — free for the next guests.
+    /// Paid / empty table cleared — free for the next guests.
     TableReady {
         table_id: String,
+    },
+    /// Accidental Print bill — back to an open table (or free if nothing left).
+    UndoBill {
+        table_id: String,
+    },
+    /// Punch or − on a table ticket before Send KOT (pending running line).
+    BumpPending {
+        table_id: String,
+        product_id: String,
+        delta_milli: i64,
+        #[serde(default)]
+        area: String,
+    },
+    /// Seat unsent cart lines onto a table as pending (pick-table / change).
+    SeatPending {
+        table_id: String,
+        lines: Vec<crate::domain::CartLine>,
+    },
+    /// Move pending (unsent) lines from one table to another (Change table).
+    ReseatPending {
+        from_table_id: String,
+        to_table_id: String,
     },
 }
 
@@ -840,6 +862,33 @@ pub fn apply_running_action(
         RunningAction::TableReady { table_id } => {
             store.free_table(table_id)?;
             store.audit(actor, "table.ready", table_id)?;
+            Ok(None)
+        }
+        RunningAction::UndoBill { table_id } => {
+            store.undo_bill_print(table_id, actor)?;
+            Ok(None)
+        }
+        RunningAction::BumpPending {
+            table_id,
+            product_id,
+            delta_milli,
+            area,
+        } => {
+            let product = store
+                .get_product(product_id)?
+                .ok_or_else(|| "Missing item".to_string())?;
+            store.bump_pending_product(table_id, &product, *delta_milli, area, actor)?;
+            Ok(None)
+        }
+        RunningAction::SeatPending { table_id, lines } => {
+            store.seat_unsent_lines(table_id, lines, actor)?;
+            Ok(None)
+        }
+        RunningAction::ReseatPending {
+            from_table_id,
+            to_table_id,
+        } => {
+            store.reseat_pending(from_table_id, to_table_id, actor)?;
             Ok(None)
         }
     }

@@ -189,6 +189,8 @@ layout itself is not mirrored.
 ## Client WhatsApp checklist (must remain covered)
 
 Canonical sanitized tracker: [`MOKLANJO_CLIENTS_REQUIREMENTS.md`](MOKLANJO_CLIENTS_REQUIREMENTS.md).
+Courier market comparison (offline tags): [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md).
+LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../../../docs/PRODUCTION_STATE_FOR_OFFLINE_USAGE.md).
 
 - Per day report · kg + credit/debit · party outstanding · bank posting · monthly · P&L / BS · invoice format  
 - Named carriers & consignors as **parties** (owner enters their own names)

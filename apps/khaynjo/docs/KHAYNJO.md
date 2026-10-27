@@ -143,7 +143,7 @@ user needs — In / Later, in Khaynjo's own terms:
 | KOT carries the waiter's name, table, item notes — and never prices | **In (P1/P2)** | KOT record + Kitchen |
 | Kitchen display with ticket states New → Preparing → Ready → Completed, no prices (vision §9) | **In (P1)** | Kitchen screen |
 | Variation / add-on choices and per-item special notes at order time (extra cheese, less spicy…) | **In (P1)** modifiers; priced variant matrix later | Order desk dialogs |
-| Hold an order and come back to it | **In (2026-10-23)** — the table's **running order** is persisted on the Server line by line; opening the table brings it back on any device | `store_running.rs`, Floor → Order |
+| Hold an order and come back to it | **In (2026-10-23)** — the table's **running order** is the ticket on the Server (pending + sent lines). Punch before Send KOT writes **pending** `running_lines` (empty `kot_id`); Floor ↔ Order bounce and other devices reopen the same Server order. **Change table** (Order button) reseats pending onto the picked table; **Floor** in the nav only opens a table's ticket — Occupied is only from a live running order | `store_running.rs` (`bump_pending_product` / `reseat_pending` / `send_kot` promote), Floor → Order |
 | Settle with tender, amount handed over, change to return, and tip | **In (2026-10-23)** — Customer paid → Return to customer; tip recorded apart from sales | Order desk settle; `Store::record_settlement` |
 | Part payment and Due (credit) as normal ways to finish a bill | **In (P1)** — Due lands on the customer's khata in Parties, never a side note | Pay mix; Parties |
 | Customer quick-pick at billing (name/phone) so Due and history attach to the right person | **In (P1)** | Order desk customer panel |
@@ -158,13 +158,26 @@ user needs — In / Later, in Khaynjo's own terms:
 | Online delivery channels (aggregators) with payout reconciliation | **Not without cloud** — needs the internet by nature; never gates counter billing (research §4) | — |
 | Guests ordering from a QR at the table | **Later** — needs the LAN/web surface proven first | After P3 |
 | The shop's own language, all day, on every screen | **In** — static UI fully translated in all 29 Kumkaj languages incl. Arabic/Urdu RTL alignment (vision §23) | `locale*.rs` |
+| Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Asked** — visibility matrix beside today's action rights | Team / Rights; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A |
+| Shop-narrowed pick-lists (units first; same pattern for areas, stations, tax rates, …) | **Asked** — pack still ships the full set; owner enables which appear in dropdowns | Settings; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §B |
+| Mark a table **Occupied** when guests sit, before any dish is punched | **Asked** — Floor Free → Occupied (no lines) → order when ready; free again if they leave without ordering | Floor; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §C |
+| Order desk: Counter payment docked under scrolling cart lines (no Counter/Items chips) | **In (2026-10-27)** | Order desk `pos_ticket` / `counter_dock` |
+
+Sanitized client tracker (must remain covered):
+[`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md).
+Competitor comparison (offline tags): [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md).
+LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../../../docs/PRODUCTION_STATE_FOR_OFFLINE_USAGE.md).
 
 ## 4d. Petpooja parity — no cloud, more control (client, 2026-10-23)
 
 A restaurant client runs Petpooja and wants its useful daily mechanics
 with **no cloud at all** — learned from, done better, designed for
-Khaynjo's users (vision §24), not cloned. Evidence and the full module-by-module
-comparison: [`RESTAURANT_MARKET_RESEARCH.md`](RESTAURANT_MARKET_RESEARCH.md).
+Khaynjo's users (vision §24), not cloned. Evidence: Petpooja deep-dive
+[`RESTAURANT_MARKET_RESEARCH.md`](RESTAURANT_MARKET_RESEARCH.md); wider
+market comparison [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md).
+Owner-control asks beyond Petpooja parity (staff visibility, units
+pick-lists, occupy-without-order):
+[`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md).
 Kumkaj-wide rules this rests on (not restated): branch = separate
 restaurant (vision §5), rights with approval + reason (vision §17),
 cancel-not-delete and explicit zero-charge (vision §18), open orders
@@ -175,7 +188,7 @@ internet (vision §20).
 |---|---|---|
 | KOT → more KOTs → Print bill → Settle & Save | **Done** — running order per table; only new lines go on the next KOT; finalize never re-fires sent lines | `store_running.rs` (`send_kot`, `print_running_bill`), `write_sale` |
 | KOT per station / category printer | **Done** — one ticket per station, numbered per day (`KOT No`), with who sent it | `send_kot`, `format_kot_text` |
-| Table colours Blank / Running / Printed / Paid | **Done, redesigned 2026-10-23 after looking at it** — the floor is a **grid of coloured tiles** (as many per row as fit, ≥ 160 px each; 4 at a 1024 px window), grouped by area. Tile = table name + one useful action (Bill while seated, Ready once paid) · amount · state and minutes. Colour = the guests' visit, worked out on the Server: Free (white) → In kitchen (yellow) → Food ready (orange) → Eating (blue) → Bill printed (green) → Paid (stone) → Free; "Ready", seating new guests, or 15 min frees a paid table. Summary line ("5/12 tables busy · 1 to collect · ₹1,220 on the floor") and a swatch colour key above; floor / kitchen / order desk refresh every 8 s | `FloorState`, `FloorTile`, Floor |
+| Table colours Blank / Running / Printed / Paid | **Done, redesigned 2026-10-23; clarified 2026-10-27** — grid of coloured tiles by area. Visit colour: Free → In kitchen → Food ready → **Served** (was "Eating") → Bill printed → Free on **payment** (no stuck Paid step). Accidental Print bill → tile **Undo bill**; Bill printed with ₹0 → **Free table**. Summary line and colour key above; refresh every 8 s | `FloorState`, `FloorTile`, Floor |
 | Kitchen display on a tablet | **Done** — ticket Start/Ready/Done from a paired tablet reaches the Server (it used to change only the tablet's cache) | Kitchen; `/kot_advance` |
 | Areas (AC / Garden / Parcel) | **Done** — area per table, headings on the floor, range add `D1-D20` | Floor, `add_tables_range` |
 | Move KOT / items, move table, merge tables | **Done** — same order id moves; minutes travel with the guests | ticket Move / merge; `move_*`, `merge_tables` |
@@ -372,12 +385,11 @@ agent-verification rules) — not restated here. Below is only the
 restaurant instantiation the first build broke and must not break
 again:
 
-- **Order desk stack (sticky chrome + scroll body):** order-type chips
-  stay pinned; under them a short sticky band holds **+ Add dishes**
-  and the **Counter** / **Items** collapse toggles only. Expanded
-  Counter (payment) and cart lines live in the page scroll — never
-  sticky — so a phone or short desktop window can always scroll.
-  Always one column (never a side-by-side menu|ticket gutter).
+- **Order desk stack:** order-type chips and **+ Add dishes** stay
+  pinned above; cart lines scroll in the middle; **Counter** (payment)
+  is fixed at the foot of the ticket column (part of the same ticket,
+  not a separate tab/chip). Always one column.
+
 - **Order context lives on the ticket**: order-type chips (short
   labels only), table label, **Send KOT**, totals, tenders — one
   glance tells the waiter what this bill is.

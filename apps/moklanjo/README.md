@@ -24,6 +24,7 @@ code is never shared — Moklanjo owns all of its code under this folder.
 
 - [`docs/MOKLANJO.md`](docs/MOKLANJO.md) — product brief
 - [`docs/MOKLANJO_CLIENTS_REQUIREMENTS.md`](docs/MOKLANJO_CLIENTS_REQUIREMENTS.md) — client checklist
+- [`docs/COURIER_RESEARCH.md`](docs/COURIER_RESEARCH.md) — courier software market comparison
 - [`docs/MOKLANJO_APP_TUTORIAL.md`](docs/MOKLANJO_APP_TUTORIAL.md) — owner tutorial
 - [`docs/USE_CASES.md`](docs/USE_CASES.md) — discovery notes
-- Global doctrine (vision, business-books concepts checklist, DEV/DESIGN): [`../../docs/`](../../docs/README.md)
+- Global doctrine (vision, business-books concepts checklist, DEV/DESIGN, LAN pilot state): [`../../docs/`](../../docs/README.md)
