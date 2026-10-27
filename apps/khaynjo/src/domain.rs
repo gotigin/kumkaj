@@ -1712,6 +1712,29 @@ impl Cart {
         Ok(())
     }
 
+    /// One fewer of `product_id` (the menu window's −): the line still to
+    /// go to the kitchen gives one back, and leaves at nought. What the
+    /// kitchen already has changes only through a reasoned cancel on the
+    /// ticket, so that is an error here.
+    pub fn remove_one_of(&mut self, product_id: &str) -> Result<(), String> {
+        let open = |l: &CartLine| l.product_id == product_id && !l.is_sent();
+        let index = self
+            .lines
+            .iter()
+            .rposition(|l| open(l) && !l.complimentary)
+            .or_else(|| self.lines.iter().rposition(open));
+        match index {
+            Some(index) => {
+                self.bump_qty(index, -1);
+                Ok(())
+            }
+            None if self.lines.iter().any(|l| l.product_id == product_id) => {
+                Err("Already sent to the kitchen — cancel it from the ticket".into())
+            }
+            None => Ok(()),
+        }
+    }
+
     pub fn bump_qty(&mut self, index: usize, delta: i64) {
         // A sent line changes only through a reasoned cancel (store).
         if let Some(line) = self.lines.get_mut(index).filter(|l| !l.is_sent()) {
@@ -3191,6 +3214,31 @@ mod tests {
 
     fn tea() -> Product {
         Product::new_basic("tea", "Tea", Money::from_rupees(13))
+    }
+
+    /// The menu window's − takes back what is still to go to the kitchen;
+    /// what the kitchen already has needs a reasoned cancel.
+    #[test]
+    fn minus_takes_back_only_what_the_kitchen_has_not_got() {
+        let mut cart = Cart::default();
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        cart.remove_one_of("tea").unwrap();
+        assert_eq!(cart.qty_of("tea"), 1);
+        cart.remove_one_of("tea").unwrap();
+        assert!(cart.lines.is_empty(), "the line leaves at nought");
+        assert!(cart.remove_one_of("tea").is_ok(), "nothing to take back is not an error");
+        // Two already in the kitchen, one more punched since.
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        cart.lines[0].running_line_id = "sent".into();
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        assert_eq!(cart.qty_of("tea"), 3);
+        cart.remove_one_of("tea").unwrap();
+        assert_eq!(cart.qty_of("tea"), 2);
+        let refused = cart.remove_one_of("tea").unwrap_err();
+        assert!(refused.contains("kitchen"), "{refused}");
+        assert_eq!(cart.qty_of("tea"), 2);
     }
 
     /// ₹0 is a real menu price (complimentary items, price-at-counter dishes);

@@ -506,6 +506,10 @@ struct AppState {
     split_pick: Vec<String>,
     /// Ticket's discount panel is open.
     discount_panel_open: bool,
+    /// Order desk Counter (payment) section is expanded.
+    counter_panel_open: bool,
+    /// Order desk Items (cart lines) section is expanded.
+    items_panel_open: bool,
     /// Shop servers found on this Wi‑Fi (Connect screen → Find server).
     found_servers: Vec<net::FoundServer>,
     /// Category whose photo is being picked (file-dialog round trip).
@@ -837,9 +841,6 @@ const CATEGORY_CHIPS: [(&[LiveId], &[LiveId]); 24] = [
     (ids!(cat_23), ids!(cat_23_on)),
 ];
 
-/// Order desk: the order pane shows lines and bill side by side from this
-/// content width (two columns need ~280 + 280 + spacing); below, one column.
-const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
 /// The page's visible window in screen coordinates (top, height): set by
 /// the app every event, read by lists that draw only what is on screen.
 fn page_viewport() -> &'static Mutex<(f64, f64)> {
@@ -1211,6 +1212,8 @@ impl AppState {
             split_mode: false,
             split_pick: Vec::new(),
             discount_panel_open: false,
+            counter_panel_open: true,
+            items_panel_open: true,
             found_servers: Vec::new(),
             category_photo_id: None,
             removed_products: Vec::new(),
@@ -3636,106 +3639,189 @@ script_mod! {
         }
     }
 
-    // Sell token: Fit height — list row estimate must stay >= natural size.
-    // One dish on the order desk. The whole tile is the button (a tap
-    // adds one); a red badge says how many are already on this order; a
-    // sold-out dish is greyed and ignores taps. Faces are stacked and one
-    // is shown, because a DSL colour cannot be restyled at runtime.
+    // − / + on a dish card: white on the deep-red pill in every state
+    // (white ink only on deep red; ink never flips while the face does).
+    let CardStepBtn = Button{
+        width: 34 height: 34
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        label_walk: Walk{margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}}
+        draw_bg +: {
+            color: #x9A0E10
+            color_hover: #xB43A12
+            color_down: #x69090C
+            color_focus: #x9A0E10
+            color_2: #x9A0E10
+            color_2_hover: #xB43A12
+            color_2_down: #x69090C
+            color_2_focus: #x9A0E10
+            border_color: #x9A0E10
+            border_color_hover: #xB43A12
+            border_color_down: #x69090C
+            border_color_focus: #x9A0E10
+            border_radius: 17.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+            text_style +: {font_size: 18.}
+        }
+    }
+
+    // One dish in the menu window. The photo is the whole card (cropped to
+    // fill, rounded with the card); a dark wash at the bottom carries the
+    // name and, always on the same baseline, the price. No photo: a red
+    // card with the dish's initials. A tap anywhere on the card adds one;
+    // once the dish is on the order the − n + pill shows at the top and the
+    // card wears a gold edge. A sold-out dish is dimmed. Layers are stacked and shown by state,
+    // because a DSL colour cannot be restyled at runtime.
     let ProductCard = View{
         width: Fill height: Fit
         tile := View{
             cursor: MouseCursor.Hand
-            width: Fill height: 146
+            width: Fill height: 184
             flow: Overlay
-            face := RoundedView{
+            // No photo yet (or none): brand red, the initials on a frosted
+            // plate up top (hidden while the − n + sits there).
+            RoundedView{
                 width: Fill height: Fill
-                draw_bg.color: #xFFFFFF
-                draw_bg.border_radius: 14.
-                draw_bg.border_size: 1.5
-                draw_bg.border_color: #xD8C7BD
+                padding: Inset{top: 16.}
+                align: Align{x: 0.5 y: 0.}
+                draw_bg.color: #xB43A12
+                draw_bg.color_2: #x69090C
+                draw_bg.border_radius: 16.
+                initials_plate := RoundedView{
+                    width: 60 height: 60
+                    align: Align{x: 0.5 y: 0.5}
+                    draw_bg.color: #xFFFFFF24
+                    draw_bg.border_radius: 30.
+                    draw_bg.border_size: 1.5
+                    draw_bg.border_color: #xFFFFFF66
+                    thumb_initials := Label{
+                        width: Fit height: Fit
+                        text: ""
+                        draw_text.color: #xFFFFFF
+                        draw_text.text_style.font_size: 20.
+                    }
+                }
             }
-            face_on := RoundedView{
+            thumb := Image{
                 width: Fill height: Fill
+                fit: ImageFit.CropToFill
                 visible: false
-                draw_bg.color: #xFFF1E8
-                draw_bg.border_radius: 14.
-                draw_bg.border_size: 2.
-                draw_bg.border_color: #x9A0E10
+                draw_bg +: {
+                    radius: uniform(16.0)
+                    pixel: fn() {
+                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                        sdf.fill(self.get_color())
+                        return sdf.result
+                    }
+                }
             }
-            face_off := RoundedView{
+            // The wash the name and price sit on: clear over the top third,
+            // easing into near-black at the foot (eased, so no line shows
+            // where it starts).
+            View{
                 width: Fill height: Fill
+                show_bg: true
+                draw_bg +: {
+                    radius: uniform(16.0)
+                    pixel: fn() {
+                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                        let t = smoothstep(0.3, 1.0, self.pos.y)
+                        sdf.fill(vec4(0.10, 0.02, 0.02, 0.93 * t))
+                        return sdf.result
+                    }
+                }
+            }
+            // Sold out: the whole card dimmed.
+            dim := RoundedView{
                 visible: false
-                draw_bg.color: #xEEE8E4
-                draw_bg.border_radius: 14.
-                draw_bg.border_size: 1.
-                draw_bg.border_color: #xD8C7BD
+                width: Fill height: Fill
+                draw_bg.color: #x1A0505A6
+                draw_bg.border_radius: 16.
             }
             View{
                 width: Fill height: Fill
-                flow: Down spacing: 2
-                padding: Inset{left: 6. right: 6. top: 8. bottom: 6.}
-                align: Align{x: 0.5 y: 0.0}
-                // Same parts as ThumbAvatar (load_product_thumb fills them),
-                // sized for a tile: smaller letters so two initials fit.
-                RoundedView{
-                    width: 40 height: 40
-                    flow: Overlay
-                    align: Align{x: 0.5 y: 0.5}
-                    draw_bg.color: #x9A0E10
-                    draw_bg.border_radius: 10.
-                    View{
-                        width: Fill height: Fill
-                        align: Align{x: 0.5 y: 0.5}
-                        thumb_initials := Label{
-                            width: Fit height: Fit
-                            text: ""
-                            draw_text.color: #xffffff
-                            draw_text.text_style.font_size: 14.
-                        }
-                    }
-                    thumb := Image{
-                        width: Fill height: Fill
-                        fit: ImageFit.CropToFill
+                flow: Down
+                padding: Inset{left: 10. right: 10. top: 8. bottom: 10.}
+                View{
+                    width: Fill height: Fit
+                    align: Align{x: 0.5}
+                    stepper := RoundedView{
                         visible: false
+                        width: Fit height: Fit
+                        padding: Inset{left: 2. right: 2. top: 2. bottom: 2.}
+                        flow: Right
+                        align: Align{y: 0.5}
+                        draw_bg.color: #x9A0E10
+                        draw_bg.border_radius: 19.
+                        draw_bg.border_size: 1.5
+                        draw_bg.border_color: #xF69D2C
+                        minus := CardStepBtn{text: "−"}
+                        View{
+                            width: Fit{min: FitBound.Abs(26.)} height: 34
+                            align: Align{x: 0.5 y: 0.5}
+                            step_qty := Label{
+                                width: Fit height: Fit
+                                text: "1"
+                                draw_text.color: #xFFFFFF
+                                draw_text.text_style.font_size: 15.
+                            }
+                        }
+                        plus := CardStepBtn{text: "+"}
                     }
                 }
+                View{width: Fill height: Fill}
                 name := Label{
                     width: Fill
                     text: "Item"
-                    align: Align{x: 0.5}
                     flow: Right{wrap: true}
                     max_lines: 2
-                    draw_text.color: #x260B08
-                    draw_text.text_style.font_size: 13.
+                    text_overflow: Ellipsis
+                    draw_text.color: #xFFFFFF
+                    draw_text.text_style.font_size: 14.
                 }
                 price := Label{
                     width: Fill
+                    margin: Inset{top: 3.}
                     text: "0"
-                    align: Align{x: 0.5}
                     flow: Right{wrap: false}
                     max_lines: 1
-                    draw_text.color: #xB43A12
-                    draw_text.text_style.font_size: 14.
+                    draw_text.color: #xF7B043
+                    draw_text.text_style.font_size: 15.
+                }
+                // In the price's place when sold out; gold is for prices.
+                price_off := Label{
+                    visible: false
+                    width: Fill
+                    margin: Inset{top: 3.}
+                    text: ""
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    draw_text.color: #xF3E3DA
+                    draw_text.text_style.font_size: 15.
                 }
             }
-            View{
+            // The card's edge: a fine line, or gold once it is on the order.
+            edge := RoundedView{
                 width: Fill height: Fill
-                align: Align{x: 1.0 y: 0.0}
-                padding: Inset{top: 6. right: 6.}
-                badge := RoundedView{
-                    visible: false
-                    width: Fit height: 26
-                    padding: Inset{left: 9. right: 9.}
-                    align: Align{x: 0.5 y: 0.5}
-                    draw_bg.color: #x9A0E10
-                    draw_bg.border_radius: 13.
-                    badge_qty := Label{
-                        width: Fit
-                        text: "1"
-                        draw_text.color: #xFFFFFF
-                        draw_text.text_style.font_size: 13.
-                    }
-                }
+                draw_bg.color: #x00000000
+                draw_bg.border_radius: 16.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #xD8C7BD
+            }
+            edge_on := RoundedView{
+                visible: false
+                width: Fill height: Fill
+                draw_bg.color: #x00000000
+                draw_bg.border_radius: 16.
+                draw_bg.border_size: 3.
+                draw_bg.border_color: #xF69D2C
             }
         }
     }
@@ -4537,7 +4623,9 @@ script_mod! {
             Item := View{
                 width: Fill height: Fit
                 flow: Right spacing: 10
-                padding: Inset{bottom: 4.}
+                // The gap between rows of cards (PortalList spacing adds
+                // none here); a touch wider than across, so rows read apart.
+                padding: Inset{bottom: 14.}
                 texture_caching: false
                 c0 := ProductCard{}
                 c1 := ProductCard{}
@@ -6136,15 +6224,15 @@ script_mod! {
                             }
                         }
 
-                        // Seller: tap items → pay. One page, one scroll: the menu on
-                        // top, the order under it.
-                        // Order desk: pinned strip (order type + total) stays on
-                        // screen; the menu and ticket scroll underneath — same
-                        // idea as CSS sticky, done with layout (outer Fit + Fill scroll).
+                        // Seller: tap items → pay. Sticky chrome only: + Add
+                        // dishes + Counter/Items toggles. Expanded Counter and
+                        // cart lines live in pos_scroll so short windows (phone
+                        // or short desktop) can always scroll.
                         pos_screen := View{
                             width: Fill height: Fill
                             visible: false
                             flow: Down spacing: 0
+                            // Sticky order-type header (always visible at the top).
                             pos_sticky := SolidView{
                                 width: Fill height: Fit
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
@@ -6188,109 +6276,334 @@ script_mod! {
                                     table_pick_btn := TablePickBtn{text: "Choose a table"}
                                 }
                             }
-                            pos_scroll := ScrollYView{
-                            width: Fill height: Fill
-                            pos_page := View{
+                            // Sticky chrome only (Fit height). Expanded panels
+                            // scroll below — never trap the page on short screens.
+                            pos_desk_sticky := SolidView{
                                 width: Fill height: Fit
-                                flow: Down spacing: 10
-                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-
-                                // Operational strip (Stitch screen 02)
-                                pos_strip := RoundedView{
-                                    // The header names who is on, the ticket names the
-                                    // table: on the order desk this strip only cost height.
-                                    visible: false
+                                padding: Inset{left: 16. right: 16. top: 4. bottom: 8.}
+                                flow: Down spacing: 8
+                                draw_bg.color: #xEFD2BC
+                                catalog_header := View{
                                     width: Fill height: Fit
-                                    padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
-                                    flow: Right spacing: 8
-                                    align: Align{y: 0.5}
-                                    draw_bg.color: #xF6E3D3
-                                    draw_bg.border_radius: 12.
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Down spacing: 2
-                                        session_chip := WrapLabel{
-                                            body: "Counter"
-                                            font_color: #x260B08
-                                            font_size: 12.
-                                        }
-                                        table_chip := WrapLabel{
-                                            body: "Ready to order"
-                                            font_color: #x260B08
-                                            font_size: 11.
-                                        }
-                                    }
-                                    h_local_badge_3 := Label{
-                                        text: "LOCAL"
-                                        draw_text.color: #x9A6206
-                                        draw_text.text_style.font_size: 10.
+                                    align: Align{x: 0.5 y: 0.5}
+                                    flow: Down spacing: 6
+                                    menu_open_btn := TablePickBtn{
+                                        text: "+ Add dishes"
+                                        align: Align{x: 0.5 y: 0.5}
+                                        label_walk: Walk{width: Fit height: Fit}
                                     }
                                 }
-
-                                // apply_shell_layout sets flow (Right vs Down) + column widths.
-                                // Default stacked full-width so first paint never leaves a Fixed gutter.
-                                pos_split := View{
-                                    width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 12
                                 pos_catalog := View{
                                     width: Fill height: Fit
-                                    flow: Down spacing: 10
-                                order_help := WrapLabel{
-                                    visible: false
-                                    body: "Tap an item to add it."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
-                                }
-                                empty_catalog := WrapLabel{
-                                    body: "No items yet. Add your dishes and items to start taking orders."
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                catalog_cta := ActionStack{
-                                    add_items_btn := StackSecondaryBtn{text: "Add dishes & items"}
-                                }
-                                // Dishes go on through the menu window (search, category
-                                // tabs, dish tiles); what is already on the order is the
-                                // ticket below, so the desk itself stays short.
-                                menu_open_btn := TablePickBtn{
-                                    text: "+ Add dishes"
-                                    align: Align{x: 0.5 y: 0.5}
-                                    label_walk: Walk{width: Fit height: Fit}
-                                }
-                                } // pos_catalog
-
-                                pos_cart_col := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 10
-                                    padding: Inset{bottom: 24.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 12
-                                    align: Align{y: 0.5}
-                                    // Ticket state + Clear. Cart/pay/KOT errors land
-                                    // on this line, so it must wrap inside the ticket:
-                                    // a Fit-width label pushed Clear past the right
-                                    // edge and clipped it to "Clea…" at 1024 px
-                                    // (2026-10-22). Fill = it wraps, Clear keeps its
-                                    // width at the ticket's right edge.
-                                    receipt_label := WrapLabel{
-                                        width: Fill
-                                        body: "Ready"
+                                    flow: Down spacing: 6
+                                    order_help := WrapLabel{
+                                        visible: false
+                                        body: "Tap an item to add it."
                                         font_color: #x6B4A3F
-                                        font_size: 13.
+                                        font_size: 12.
+                                    }
+                                    empty_catalog := WrapLabel{
+                                        body: "No items yet. Add your dishes and items to start taking orders."
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                    }
+                                    catalog_cta := ActionStack{
+                                        add_items_btn := StackSecondaryBtn{text: "Add dishes & items"}
                                     }
                                 }
-
-                                // Wide: the lines and Send KOT on the left, the bill and
-                                // payment on the right (apply_shell_layout flips the
-                                // flow to Down on narrow screens).
-                                ticket_cols := View{
+                                counter_toggle := StackLightBtn{text: "Counter"}
+                                items_toggle := StackLightBtn{text: "Items"}
+                            }
+                            pos_scroll := ScrollYView{
+                                width: Fill height: Fill
+                                pos_page := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 16
-                                    ticket_left := View{
+                                    flow: Down spacing: 10
+                                    padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+
+                                    // Operational strip (Stitch screen 02)
+                                    pos_strip := RoundedView{
+                                        // The header names who is on, the ticket names the
+                                        // table: on the order desk this strip only cost height.
+                                        visible: false
+                                        width: Fill height: Fit
+                                        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+                                        flow: Right spacing: 8
+                                        align: Align{y: 0.5}
+                                        draw_bg.color: #xF6E3D3
+                                        draw_bg.border_radius: 12.
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Down spacing: 2
+                                            session_chip := WrapLabel{
+                                                body: "Counter"
+                                                font_color: #x260B08
+                                                font_size: 12.
+                                            }
+                                            table_chip := WrapLabel{
+                                                body: "Ready to order"
+                                                font_color: #x260B08
+                                                font_size: 11.
+                                            }
+                                        }
+                                        h_local_badge_3 := Label{
+                                            text: "LOCAL"
+                                            draw_text.color: #x9A6206
+                                            draw_text.text_style.font_size: 10.
+                                        }
+                                    }
+
+                                    // Counter body scrolls with the page (sticky
+                                    // toggle above stays put so it can collapse).
+                                    ticket_body := RoundedView{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 10
+                                    padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 16.
+                                    draw_bg.border_size: 1.5
+                                    draw_bg.border_color: #xD8C7BD
+
+                                    // The bill: one big total (tap it to round), with the
+                                    // menu-vs-applied detail only when lines were re-priced.
+                                    RoundedView{
+                                        width: Fill height: Fit
+                                        padding: Inset{left: 14. right: 10. top: 8. bottom: 8.}
+                                        flow: Right spacing: 10
+                                        align: Align{y: 0.5}
+                                        draw_bg.color: #xEFD2BC
+                                        draw_bg.border_radius: 12.
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Down spacing: 0
+                                            total_word := Label{
+                                                text: "Total"
+                                                draw_text.color: #x260B08
+                                                draw_text.text_style.font_size: 18.
+                                            }
+                                            cart_charge_caption := WrapLabel{
+                                                selectable: false
+                                                body: "ROUNDED"
+                                                font_color: #xB43A12
+                                                font_size: 10.
+                                            }
+                                        }
+                                        cart_total_input := CartField{
+                                            width: 140
+                                            empty_text: "0"
+                                            text: "0"
+                                            draw_bg +: {
+                                                border_color: #xB43A12
+                                                border_color_hover: #x822801
+                                                border_color_focus: #x69090C
+                                                border_radius: 8.
+                                                border_size: 1.
+                                            }
+                                            draw_text +: {
+                                                color: #x822801
+                                                color_hover: #x822801
+                                                color_down: #x822801
+                                                color_focus: #x822801
+                                                color_empty: #x6B4A3F
+                                                color_empty_hover: #x260B08
+                                                color_empty_focus: #x260B08
+                                                text_style +: {font_size: 16.}
+                                            }
+                                        }
+                                    }
+                                    total_detail := View{
+                                        width: Fill height: Fit
+                                        visible: false
+                                        RoundedView{
+                                            width: Fill height: Fit
+                                            padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
+                                            flow: Right spacing: 4
+                                            draw_bg.color: #xEFD2BC
+                                            draw_bg.border_radius: 12.
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Down spacing: 2
+                                                align: Align{x: 0.5}
+                                                h_actual_total_cap := WrapLabel{
+                                                    body: "ACTUAL TOTAL"
+                                                    font_color: #x6B4A3F
+                                                    font_size: 10.
+                                                }
+                                                cart_natural_label := WrapLabel{
+                                                    body: "0"
+                                                    font_color: #x260B08
+                                                    font_size: 14.
+                                                }
+                                            }
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Down spacing: 2
+                                                align: Align{x: 0.5}
+                                                h_applied_total_cap := WrapLabel{
+                                                    body: "APPLIED TOTAL"
+                                                    font_color: #x6B4A3F
+                                                    font_size: 10.
+                                                }
+                                                cart_applied_label := WrapLabel{
+                                                    body: "0"
+                                                    font_color: #x260B08
+                                                    font_size: 14.
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // Exclusive-tax shops quote net prices, so the strip above is
+                                    // not what the customer pays — this line is.
+                                    tax_estimate_label := WrapLabel{
+                                        body: " "
+                                        font_color: #xB43A12
+                                        font_size: 13.
+                                    }
+
+                                    // Bill discount: 10% or an amount, always with a reason;
+                                    // a manager's PIN when the person's right asks for it.
+                                    discount_label := WrapLabel{
+                                        body: " "
+                                        font_color: #x69090C
+                                        font_size: 13.
+                                    }
+                                    ActionStack{
+                                        discount_toggle := StackLightBtn{text: "Discount"}
+                                    }
+                                    discount_panel := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        discount_input := FieldInput{empty_text: "10% or 50"}
+                                        discount_reason_input := FieldInput{empty_text: "Reason (e.g. regular guest, late food)"}
+                                        discount_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
+                                        ActionStack{
+                                            discount_remove := StackSecondaryBtn{text: "Remove discount"}
+                                            discount_apply := StackPrimaryBtn{text: "Apply discount"}
+                                        }
+                                    }
+                                    // Bill type: one compact segmented row.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            lane_declared := SegBtn{text: "Tax invoice"}
+                                            lane_declared_on := SegBtnOn{text: "Tax invoice" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            lane_owner := SegBtn{text: "Cash memo"}
+                                            lane_owner_on := SegBtnOn{text: "Cash memo" visible: false}
+                                        }
+                                    }
+                                    money_lane_label := WrapLabel{
+                                        body: " "
+                                        visible: false
+                                    }
+                                    // How they pay: one tap. A single method takes the
+                                    // whole bill; Split opens the amounts.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 4
+                                        View{width: Fill height: Fit flow: Overlay
+                                            pm_cash := SegBtn{text: "Cash"}
+                                            pm_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            pm_upi := SegBtn{text: "UPI"}
+                                            pm_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            pm_card := SegBtn{text: "Card"}
+                                            pm_card_on := SegBtnOn{text: "Card" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            pm_credit := SegBtn{text: "Credit"}
+                                            pm_credit_on := SegBtnOn{text: "Credit" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            pm_split := SegBtn{text: "Split"}
+                                            pm_split_on := SegBtnOn{text: "Split" visible: false}
+                                        }
+                                    }
+                                    split_panel := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        h_mix_type_hint_khaynjo := WrapLabel{
+                                            body: "Split across cash / UPI / card / credit if needed. Credit needs a customer above."
+                                            font_color: #x6B4A3F
+                                            font_size: 11.
+                                        }
+                                        mix_cash_input := FieldInput{empty_text: "Cash amount"}
+                                        mix_upi_input := FieldInput{empty_text: "UPI amount"}
+                                        mix_card_input := FieldInput{empty_text: "Card amount"}
+                                        mix_credit_input := FieldInput{empty_text: "Credit / khata amount"}
+                                    }
+                                    // Settle & Save: cash handed over → change to return;
+                                    // tip is the staff's (not a sale).
+                                    cash_panel := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        tendered_input := FieldInput{empty_text: "Customer paid"}
+                                        tip_input := FieldInput{empty_text: "Tip"}
+                                        change_label := WrapLabel{
+                                            body: " "
+                                            font_color: #x260B08
+                                            font_size: 14.
+                                        }
+                                    }
+                                    ActionStack{
+                                        pay_mix := PayBtn{text: "Take payment"}
+                                    }
+                                }
+                                // Rounding note and the customer for credit / delivery:
+                                // only once there is something on the ticket.
+                                ticket_extras := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 10
+                                    cart_round_hint := WrapLabel{
+                                        body: "Rounded starts equal to Applied. Edit only to round the bill."
+                                        font_color: #x260B08
+                                        font_size: 12.
+                                    }
+                                    credit_chip := WrapLabel{
+                                        body: "No customer yet — type a name, then tap Credit"
+                                        font_color: #x260B08
+                                        font_size: 13.
+                                    }
+                                    customer_name_input := FieldInput{
+                                        empty_text: "Customer name"
+                                    }
+                                    customer_use := StackLightBtn{text: "Add / use this name"}
+                                    customer_clear := StackLightBtn{text: "Clear customer"}
+                                    customers_empty_hint := WrapLabel{
+                                        body: "Saved customers show up here for quick pick."
+                                        font_color: #x260B08
+                                        font_size: 12.
+                                    }
+                                    customer_list_sell := mod.widgets.CustomerList{}
+                                    // Delivery orders: who takes it out (day report totals by them).
+                                    delivery_by_input := FieldInput{empty_text: "Delivery by (rider or staff name)"}
+                                    delivery_by_suggest := mod.widgets.SuggestList{field: "delivery_by"}
+                                }
+
+                                    items_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
+                                        padding: Inset{bottom: 24.}
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 12
+                                            align: Align{y: 0.5}
+                                            // Ticket state. Cart/pay/KOT errors land on
+                                            // this line, so it must wrap (width: Fill).
+                                            receipt_label := WrapLabel{
+                                                width: Fill
+                                                body: "Ready"
+                                                font_color: #x6B4A3F
+                                                font_size: 13.
+                                            }
+                                        }
                                         // Table actions (Print bill · Move / merge). Shown
                                         // while a table is open on the ticket.
                                         table_actions := ActionStack{
@@ -6410,249 +6723,7 @@ script_mod! {
                                             }
                                         }
                                     }
-                                    ticket_right := View{
-                                        width: Fill height: Fit
-                                        flow: Down spacing: 10
-                                        // Everything that settles the bill: hidden while the
-                                        // ticket is empty.
-                                        ticket_body := RoundedView{
-                                            width: Fill height: Fit
-                                            flow: Down spacing: 10
-                                            padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
-                                            draw_bg.color: #xffffff
-                                            draw_bg.border_radius: 16.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #xD8C7BD
-
-                                            // The bill: one big total (tap it to round), with the
-                                            // menu-vs-applied detail only when lines were re-priced.
-                                            RoundedView{
-                                                width: Fill height: Fit
-                                                padding: Inset{left: 14. right: 10. top: 8. bottom: 8.}
-                                                flow: Right spacing: 10
-                                                align: Align{y: 0.5}
-                                                draw_bg.color: #xEFD2BC
-                                                draw_bg.border_radius: 12.
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Down spacing: 0
-                                                    total_word := Label{
-                                                        text: "Total"
-                                                        draw_text.color: #x260B08
-                                                        draw_text.text_style.font_size: 18.
-                                                    }
-                                                    cart_charge_caption := WrapLabel{
-                                                        selectable: false
-                                                        body: "ROUNDED"
-                                                        font_color: #xB43A12
-                                                        font_size: 10.
-                                                    }
-                                                }
-                                                    cart_total_input := CartField{
-                                                        width: 140
-                                                        empty_text: "0"
-                                                        text: "0"
-                                                        draw_bg +: {
-                                                            border_color: #xB43A12
-                                                            border_color_hover: #x822801
-                                                            border_color_focus: #x69090C
-                                                            border_radius: 8.
-                                                            border_size: 1.
-                                                        }
-                                                        draw_text +: {
-                                                            color: #x822801
-                                                            color_hover: #x822801
-                                                            color_down: #x822801
-                                                            color_focus: #x822801
-                                                            color_empty: #x6B4A3F
-                                                            color_empty_hover: #x260B08
-                                                            color_empty_focus: #x260B08
-                                                            text_style +: {font_size: 16.}
-                                                        }
-                                                    }
-                                            }
-                                            total_detail := View{
-                                                width: Fill height: Fit
-                                                visible: false
-                                            RoundedView{
-                                                width: Fill height: Fit
-                                                padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
-                                                flow: Right spacing: 4
-                                                draw_bg.color: #xEFD2BC
-                                                draw_bg.border_radius: 12.
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Down spacing: 2
-                                                    align: Align{x: 0.5}
-                                                    h_actual_total_cap := WrapLabel{
-                                                        body: "ACTUAL TOTAL"
-                                                        font_color: #x6B4A3F
-                                                        font_size: 10.
-                                                    }
-                                                    cart_natural_label := WrapLabel{
-                                                        body: "0"
-                                                        font_color: #x260B08
-                                                        font_size: 14.
-                                                    }
-                                                }
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Down spacing: 2
-                                                    align: Align{x: 0.5}
-                                                    h_applied_total_cap := WrapLabel{
-                                                        body: "APPLIED TOTAL"
-                                                        font_color: #x6B4A3F
-                                                        font_size: 10.
-                                                    }
-                                                    cart_applied_label := WrapLabel{
-                                                        body: "0"
-                                                        font_color: #x260B08
-                                                        font_size: 14.
-                                                    }
-                                                }
-                                            }
-
-                                            }
-                                            // Exclusive-tax shops quote net prices, so the strip above is
-                                            // not what the customer pays — this line is.
-                                            tax_estimate_label := WrapLabel{
-                                                body: " "
-                                                font_color: #xB43A12
-                                                font_size: 13.
-                                            }
-
-                                            // Bill discount: 10% or an amount, always with a reason;
-                                            // a manager's PIN when the person's right asks for it.
-                                            discount_label := WrapLabel{
-                                                body: " "
-                                                font_color: #x69090C
-                                                font_size: 13.
-                                            }
-                                            ActionStack{
-                                                discount_toggle := StackLightBtn{text: "Discount"}
-                                            }
-                                            discount_panel := View{
-                                                width: Fill height: Fit
-                                                flow: Down spacing: 8
-                                                visible: false
-                                                discount_input := FieldInput{empty_text: "10% or 50"}
-                                                discount_reason_input := FieldInput{empty_text: "Reason (e.g. regular guest, late food)"}
-                                                discount_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
-                                                ActionStack{
-                                                    discount_remove := StackSecondaryBtn{text: "Remove discount"}
-                                                    discount_apply := StackPrimaryBtn{text: "Apply discount"}
-                                                }
-                                            }
-                                            // Bill type: one compact segmented row.
-                                            View{
-                                                width: Fill height: Fit
-                                                flow: Right spacing: 6
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    lane_declared := SegBtn{text: "Tax invoice"}
-                                                    lane_declared_on := SegBtnOn{text: "Tax invoice" visible: false}
-                                                }
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    lane_owner := SegBtn{text: "Cash memo"}
-                                                    lane_owner_on := SegBtnOn{text: "Cash memo" visible: false}
-                                                }
-                                            }
-                                            money_lane_label := WrapLabel{
-                                                body: " "
-                                                visible: false
-                                            }
-                                            // How they pay: one tap. A single method takes the
-                                            // whole bill; Split opens the amounts.
-                                            View{
-                                                width: Fill height: Fit
-                                                flow: Right spacing: 4
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    pm_cash := SegBtn{text: "Cash"}
-                                                    pm_cash_on := SegBtnOn{text: "Cash" visible: false}
-                                                }
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    pm_upi := SegBtn{text: "UPI"}
-                                                    pm_upi_on := SegBtnOn{text: "UPI" visible: false}
-                                                }
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    pm_card := SegBtn{text: "Card"}
-                                                    pm_card_on := SegBtnOn{text: "Card" visible: false}
-                                                }
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    pm_credit := SegBtn{text: "Credit"}
-                                                    pm_credit_on := SegBtnOn{text: "Credit" visible: false}
-                                                }
-                                                View{width: Fill height: Fit flow: Overlay
-                                                    pm_split := SegBtn{text: "Split"}
-                                                    pm_split_on := SegBtnOn{text: "Split" visible: false}
-                                                }
-                                            }
-                                            split_panel := View{
-                                                width: Fill height: Fit
-                                                flow: Down spacing: 8
-                                                visible: false
-                                                h_mix_type_hint_khaynjo := WrapLabel{
-                                                    body: "Split across cash / UPI / card / credit if needed. Credit needs a customer above."
-                                                    font_color: #x6B4A3F
-                                                    font_size: 11.
-                                                }
-                                                mix_cash_input := FieldInput{empty_text: "Cash amount"}
-                                                mix_upi_input := FieldInput{empty_text: "UPI amount"}
-                                                mix_card_input := FieldInput{empty_text: "Card amount"}
-                                                mix_credit_input := FieldInput{empty_text: "Credit / khata amount"}
-                                            }
-                                            // Settle & Save: cash handed over → change to return;
-                                            // tip is the staff's (not a sale).
-                                            cash_panel := View{
-                                                width: Fill height: Fit
-                                                flow: Down spacing: 8
-                                                tendered_input := FieldInput{empty_text: "Customer paid"}
-                                                tip_input := FieldInput{empty_text: "Tip"}
-                                                change_label := WrapLabel{
-                                                    body: " "
-                                                    font_color: #x260B08
-                                                    font_size: 14.
-                                                }
-                                            }
-                                            ActionStack{
-                                                pay_mix := PayBtn{text: "Take payment"}
-                                            }
-                                        }
-
-                                        // Rounding note and the customer for credit / delivery:
-                                        // only once there is something on the ticket.
-                                        ticket_extras := View{
-                                            width: Fill height: Fit
-                                            flow: Down spacing: 10
-                                            cart_round_hint := WrapLabel{
-                                                body: "Rounded starts equal to Applied. Edit only to round the bill."
-                                                font_color: #x260B08
-                                                font_size: 12.
-                                            }
-                                            credit_chip := WrapLabel{
-                                                body: "No customer yet — type a name, then tap Credit"
-                                                font_color: #x260B08
-                                                font_size: 13.
-                                            }
-                                            customer_name_input := FieldInput{
-                                                empty_text: "Customer name"
-                                            }
-                                            customer_use := StackLightBtn{text: "Add / use this name"}
-                                            customer_clear := StackLightBtn{text: "Clear customer"}
-                                            customers_empty_hint := WrapLabel{
-                                                body: "Saved customers show up here for quick pick."
-                                                font_color: #x260B08
-                                                font_size: 12.
-                                            }
-                                            customer_list_sell := mod.widgets.CustomerList{}
-                                            // Delivery orders: who takes it out (day report totals by them).
-                                            delivery_by_input := FieldInput{empty_text: "Delivery by (rider or staff name)"}
-                                            delivery_by_suggest := mod.widgets.SuggestList{field: "delivery_by"}
-                                        }
-                                    }
-                                }
-                                } // pos_cart_col
-                                } // pos_split
-                            } // pos_page
+                                } // pos_page
                             } // pos_scroll
                         } // pos_screen
 
@@ -8578,13 +8649,6 @@ fn ticket_status_line(msg: &str) -> String {
     out
 }
 
-fn set_view_flow(cx: &mut Cx, view: &ViewRef, flow: Flow) {
-    if let Some(mut inner) = view.borrow_mut() {
-        inner.layout.flow = flow;
-    }
-    view.redraw(cx);
-}
-
 fn default_brand_mark_path() -> std::path::PathBuf {
     if let Ok(exe) = std::env::current_exe()
         && let Some(parent) = exe.parent()
@@ -8737,12 +8801,24 @@ fn thumb_cache_dir() -> std::path::PathBuf {
 /// (see [`thumbs`]); the copy is made off the UI thread and the shell redraws
 /// when it lands.
 fn apply_thumb_avatar(cx: &mut Cx, root: &WidgetRef, name: &str, path: &std::path::Path) {
+    apply_thumb_avatar_kind(cx, root, name, path, thumbs::ThumbKind::Row);
+}
+
+/// [`apply_thumb_avatar`] with the copy cut for where it shows: a row's
+/// small square, or a menu card's full face.
+fn apply_thumb_avatar_kind(
+    cx: &mut Cx,
+    root: &WidgetRef,
+    name: &str,
+    path: &std::path::Path,
+    kind: thumbs::ThumbKind,
+) {
     let img = root.image(cx, ids!(thumb));
     let initials_lbl = root.label(cx, ids!(thumb_initials));
     let thumb = if path.as_os_str().is_empty() {
         None
     } else {
-        thumbs::cached_or_request(path, &thumb_cache_dir())
+        thumbs::cached_or_request_kind(path, &thumb_cache_dir(), kind)
     };
     let has_file = thumb.is_some();
     let queued = thumb
@@ -8769,6 +8845,13 @@ fn load_product_thumb(cx: &mut Cx, item: &WidgetRef, product: &Product) {
     apply_thumb_avatar(cx, item, &product.name, &path);
 }
 
+/// The menu window's card: the dish's photo cut to the card's shape.
+fn load_product_card_photo(cx: &mut Cx, tile: &WidgetRef, product: &Product) {
+    let dir = item_images_dir();
+    let path = image_key_path(product.image_key.as_deref(), &dir);
+    apply_thumb_avatar_kind(cx, tile, &product.name, &path, thumbs::ThumbKind::Card);
+}
+
 #[derive(Script, ScriptHook, Widget)]
 struct ProductList {
     #[deref]
@@ -8780,7 +8863,7 @@ struct ProductList {
 }
 
 /// How much of each dish the open order already has (milli-units), for the
-/// tile badges.
+/// cards' − n + and for telling a card tap from a miss.
 fn cart_qty_by_product(lines: &[domain::CartLine]) -> std::collections::HashMap<String, i64> {
     let mut by = std::collections::HashMap::new();
     for line in lines {
@@ -8846,18 +8929,25 @@ impl Widget for ProductList {
                         };
                         tile.set_visible(cx, true);
                         let qty = in_cart.get(&product.id).copied().unwrap_or(0);
-                        tile.view(cx, ids!(face)).set_visible(cx, product.available && qty == 0);
-                        tile.view(cx, ids!(face_on)).set_visible(cx, product.available && qty > 0);
-                        tile.view(cx, ids!(face_off)).set_visible(cx, !product.available);
+                        let on_order = qty > 0;
+                        tile.view(cx, ids!(dim)).set_visible(cx, !product.available);
+                        tile.view(cx, ids!(edge)).set_visible(cx, !on_order);
+                        tile.view(cx, ids!(edge_on)).set_visible(cx, on_order);
+                        tile.view(cx, ids!(stepper)).set_visible(cx, on_order);
                         tile.label(cx, ids!(name)).set_text(cx, &product.name);
-                        let price = if product.available {
-                            product.price_in_area(&area).format_localized(&currency, &fiscal)
+                        let price = tile.label(cx, ids!(price));
+                        let price_off = tile.label(cx, ids!(price_off));
+                        price.set_visible(cx, product.available);
+                        price_off.set_visible(cx, !product.available);
+                        if product.available {
+                            price.set_text(
+                                cx,
+                                &product.price_in_area(&area).format_localized(&currency, &fiscal),
+                            );
                         } else {
-                            locale::t(&lang, "sold_out")
-                        };
-                        tile.label(cx, ids!(price)).set_text(cx, &price);
-                        tile.view(cx, ids!(badge)).set_visible(cx, qty > 0);
-                        if qty > 0 {
+                            price_off.set_text(cx, &locale::t(&lang, "sold_out"));
+                        }
+                        if on_order {
                             let shown = if qty % 1000 == 0 {
                                 format!("{}", qty / 1000)
                             } else {
@@ -8865,9 +8955,14 @@ impl Widget for ProductList {
                                     .trim_end_matches('0')
                                     .to_string()
                             };
-                            tile.label(cx, ids!(badge_qty)).set_text(cx, &shown);
+                            tile.label(cx, ids!(step_qty)).set_text(cx, &shown);
                         }
-                        load_product_thumb(cx, &tile, product);
+                        load_product_card_photo(cx, &tile, product);
+                        // The plate only when it carries initials (no photo)
+                        // and the − n + is not in its place.
+                        let initials = tile.label(cx, ids!(thumb_initials)).text();
+                        tile.view(cx, ids!(initials_plate))
+                            .set_visible(cx, !on_order && !initials.is_empty());
                     }
                     item.draw_all_unscoped(cx);
                 }
@@ -11687,17 +11782,35 @@ impl App {
                 .widget(cx, ids!(floor_pick_label))
                 .set_text(cx, &plain_display_text(&pick_label));
             self.ui.button(cx, ids!(floor_pick_back)).set_text(cx, &back_label);
+            let counter_open = st.counter_panel_open;
+            let items_open = st.items_panel_open;
+            let counter_label = format!(
+                "{} {}",
+                st.t("counter"),
+                if counter_open { "▾" } else { "▸" }
+            );
+            let items_label = format!(
+                "{} {}",
+                st.t("items_section"),
+                if items_open { "▾" } else { "▸" }
+            );
+            self.ui.button(cx, ids!(counter_toggle)).set_text(cx, &counter_label);
+            self.ui.button(cx, ids!(items_toggle)).set_text(cx, &items_label);
+            // Counter expands whenever the section is open — even with an
+            // empty cart (totals stay ₹0; Take payment still needs lines).
             self.ui
                 .view(cx, ids!(ticket_body))
-                .set_visible(cx, !st.cart.is_empty());
+                .set_visible(cx, counter_open);
             // The customer is asked for only when it matters: credit (khata),
             // a split that may include credit, or a delivery.
             self.ui.view(cx, ids!(ticket_extras)).set_visible(
                 cx,
-                !st.cart.is_empty()
+                counter_open
+                    && !st.cart.is_empty()
                     && (matches!(st.pay_choice, PayChoice::Credit | PayChoice::Split)
                         || st.cart.order_type == OrderType::Delivery),
             );
+            self.ui.view(cx, ids!(items_body)).set_visible(cx, items_open);
             self.ui
                 .widget(cx, ids!(delivery_by_input))
                 .set_visible(cx, st.cart.order_type == OrderType::Delivery);
@@ -14750,8 +14863,8 @@ impl App {
     }
 
     /// Phone (<720): bottom tabs. Tablet/desktop (≥720): side rail.
-    /// Order desk: side-by-side only when the *content* column fits two panes;
-    /// otherwise stack full-width (never Fixed cart leaving empty right gutter).
+    /// Order desk: sticky Add dishes + Counter above; items scroll below
+    /// (always one column — never a Fixed cart leaving an empty gutter).
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
         const DIVIDER_W: f64 = 6.0;
@@ -14797,13 +14910,9 @@ impl App {
             - if show_rail { rail_w + DIVIDER_W } else { 0.0 }
             - 32.0)
             .max(280.0);
-        let two_columns = content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
         *content_width().lock().unwrap() = content_w;
 
-        // Order type + total stay pinned above; the desk body (catalog +
-        // ticket) scrolls as one page underneath. Never two side panes.
-        set_view_flow(cx, &self.ui.view(cx, ids!(pos_split)), Flow::Down);
-        for path in [ids!(pos_split), ids!(pos_catalog), ids!(pos_cart_col)] {
+        for path in [ids!(pos_desk_sticky), ids!(pos_catalog), ids!(items_body)] {
             set_view_walk(
                 cx,
                 &self.ui.view(cx, path),
@@ -14814,12 +14923,6 @@ impl App {
                 },
             );
         }
-        // Lines | bill side by side when there is room, else one column.
-        set_view_flow(
-            cx,
-            &self.ui.view(cx, ids!(ticket_cols)),
-            if two_columns { Flow::right() } else { Flow::Down },
-        );
     }
 
     /// Nav slot hardware in DSL order. Slots are positions; which tab a
@@ -16959,6 +17062,36 @@ impl App {
         if let Some(id) = id {
             self.add_product_by_id(cx, &id);
         }
+    }
+
+    /// A card's −: one fewer of that dish (only what the kitchen has not got).
+    fn remove_product_from_cart(&mut self, cx: &mut Cx, index: usize) {
+        let err: Option<String> = {
+            let mut st = app_state().lock().unwrap();
+            let product = st.visible_products().get(index).cloned();
+            match product {
+                None => None,
+                Some(_) if st.session.as_ref().map(|s| s.can_access_sell()) != Some(true) => {
+                    Some("Not allowed to order".into())
+                }
+                Some(product) => match st.cart.remove_one_of(&product.id) {
+                    Err(e) => Some(e),
+                    Ok(()) => {
+                        let left = st.cart.lines.iter().any(|l| l.product_id == product.id);
+                        st.status = if left {
+                            format!("One {} taken off", product.name)
+                        } else {
+                            format!("{} taken off the order", product.name)
+                        };
+                        None
+                    }
+                },
+            }
+        };
+        if let Some(e) = err {
+            self.set_status(cx, e);
+        }
+        self.sync_chrome(cx);
     }
 
     fn add_product_by_id(&mut self, cx: &mut Cx, product_id: &str) {
@@ -20778,6 +20911,20 @@ impl MatchEvent for App {
                 self.sync_chrome(cx);
             }
         }
+        if self.ui.button(cx, ids!(counter_toggle)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                st.counter_panel_open = !st.counter_panel_open;
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(items_toggle)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                st.items_panel_open = !st.items_panel_open;
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(discount_toggle)).clicked(actions) {
             {
                 let mut st = app_state().lock().unwrap();
@@ -21393,28 +21540,36 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(image_pick)).clicked(actions) {
             self.image_pick_file(cx);
         }
-        // Menu window grid: a tap anywhere on a tile adds one of that dish
-        // (the window stays open for the next one).
+        // Menu window grid (the window stays open for the next dish): a tap
+        // anywhere on a card adds one, the same as its +; − takes one back.
+        // A tap on − or + is that button's alone, never also the card's.
         {
             let widget = self.ui.widget(cx, ids!(product_list));
             let list = widget.portal_list(cx, ids!(list));
             let cols = *product_grid_cols().lock().unwrap();
             let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
+            enum CardTap {
+                Add(usize),
+                Minus(usize),
+            }
             let mut tapped = None;
             for (row_id, item) in list.items_with_actions(actions) {
                 for (col, path) in slots.iter().enumerate().take(cols) {
-                    if item
-                        .widget(cx, *path)
-                        .view(cx, ids!(tile))
-                        .finger_up(actions)
-                        .is_some_and(|e| e.was_tap() && e.is_over)
+                    let index = row_id * cols + col;
+                    let tile = item.widget(cx, *path).view(cx, ids!(tile));
+                    if tile.button(cx, ids!(minus)).clicked(actions) {
+                        tapped = Some(CardTap::Minus(index));
+                    } else if tile.button(cx, ids!(plus)).clicked(actions)
+                        || tile.finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over)
                     {
-                        tapped = Some(row_id * cols + col);
+                        tapped = Some(CardTap::Add(index));
                     }
                 }
             }
-            if let Some(index) = tapped {
-                self.add_product_to_cart(cx, index);
+            match tapped {
+                Some(CardTap::Add(index)) => self.add_product_to_cart(cx, index),
+                Some(CardTap::Minus(index)) => self.remove_product_from_cart(cx, index),
+                None => {}
             }
         }
         if let Some(text) = self.ui.text_input(cx, ids!(menu_list_search)).changed(actions) {
