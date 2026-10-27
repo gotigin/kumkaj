@@ -1694,10 +1694,14 @@ impl Store {
 
     pub fn set_table_area(&self, table_id: &str, area: &str) -> Result<(), String> {
         self.assert_server_writer("Change tables")?;
+        let area = area.trim();
+        if !area.is_empty() {
+            self.ensure_floor_area(area)?;
+        }
         self.conn
             .execute(
                 "UPDATE tables_dining SET area = ?2 WHERE id = ?1",
-                params![table_id, area.trim()],
+                params![table_id, area],
             )
             .map_err(|e| e.to_string())?;
         Ok(())
@@ -2349,15 +2353,15 @@ mod tests {
         use crate::domain::ModifierOption;
         let mut shop = shop();
         let mut base = Product::new_basic(new_id(), "Paneer Tikka", Money::from_rupees(200));
-        base.set_area_prices(&[ModifierOption { name: "AC".into(), price_paise: Money::from_rupees(150).paise() }]);
+        base.set_area_prices(&[ModifierOption { name: "AC".into(), price_paise: Money::from_rupees(150).paise() , group: String::new() }]);
         let owner = shop.owner.clone();
         let made = shop
             .store
             .add_variant_items(
                 &base,
                 &[
-                    ModifierOption { name: "Half".into(), price_paise: Money::from_rupees(120).paise() },
-                    ModifierOption { name: "Full".into(), price_paise: Money::from_rupees(200).paise() },
+                    ModifierOption { name: "Half".into(), price_paise: Money::from_rupees(120).paise() , group: String::new() },
+                    ModifierOption { name: "Full".into(), price_paise: Money::from_rupees(200).paise() , group: String::new() },
                 ],
                 None,
                 &owner,

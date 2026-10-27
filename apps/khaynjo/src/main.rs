@@ -504,8 +504,13 @@ struct AppState {
     kitchen_counts_line: String,
     /// Table bookings still to come (Floor screen).
     reservations: Vec<store::Reservation>,
-    /// Order desk category chip (category id); `None` = all items.
+    /// Order desk category chip (category id); `None` = all items;
+    /// `Some(MENU_FREQUENT)` = Frequent strip.
     menu_category: Option<String>,
+    /// Cached Frequent ranking (product ids, most sold first) + config.
+    frequent_ids: Vec<String>,
+    frequent_days: u32,
+    frequent_limit: u32,
     /// Cancel panel: the kitchen had already cooked it (wastage).
     line_cooked: bool,
     /// Ticket's Move / merge table panel is open.
@@ -823,6 +828,9 @@ impl SuggestField {
         }
     }
 }
+
+/// Sentinel for the Frequent chip (not a real category id).
+const MENU_FREQUENT: &str = "__frequent__";
 
 /// Order desk category chip slots in DSL order (`cat_0`…`cat_23`).
 const CATEGORY_CHIPS: [(&[LiveId], &[LiveId]); 24] = [
@@ -1222,6 +1230,9 @@ impl AppState {
             kitchen_counts_line: String::new(),
             reservations: Vec::new(),
             menu_category: None,
+            frequent_ids: Vec::new(),
+            frequent_days: 1,
+            frequent_limit: 24,
             line_cooked: false,
             move_panel_open: false,
             split_mode: false,
@@ -1355,6 +1366,7 @@ impl AppState {
         self.entity_template_id = store
             .entity_template_id()
             .unwrap_or_else(|_| "custom".into());
+        self.refresh_frequent_cache();
         Ok(())
     }
 
@@ -1944,7 +1956,7 @@ impl AppState {
     }
 
     /// Categories that have at least one dish on the menu, in the shop's
-    /// order — the order desk's chips.
+    /// order — the order desk's chips (after All + Frequent).
     fn menu_categories(&self) -> Vec<domain::Category> {
         let mut cats: Vec<_> = self
             .categories
@@ -1957,14 +1969,56 @@ impl AppState {
         cats
     }
 
+    fn refresh_frequent_cache(&mut self) {
+        let Some(store) = self.store.as_ref() else {
+            self.frequent_ids.clear();
+            self.frequent_days = 1;
+            self.frequent_limit = 24;
+            return;
+        };
+        let (days, limit) = store.frequent_config().unwrap_or((1, 24));
+        self.frequent_days = days;
+        self.frequent_limit = limit;
+        self.frequent_ids = store
+            .frequent_product_ids(days, limit)
+            .unwrap_or_default();
+    }
+
     /// The menu window's dish tiles: the picked category's dishes (all of
     /// them under "All items"), narrowed by what is typed — name, alias /
     /// short code, or dish group ("paneer" finds Paneer Tikka (Half) and
     /// (Full)). Best matches first: a short code typed exactly ("101") leads.
     /// Each size is an item of its own, so each is its own tile.
+    /// Frequent ranks by recent completed sales (see Frequent config).
     fn visible_products(&self) -> Vec<Product> {
         let q = self.menu_filter.trim();
         let now = chrono::Local::now();
+        if self.menu_category.as_deref() == Some(MENU_FREQUENT) {
+            let by_id: std::collections::HashMap<&str, &Product> =
+                self.products.iter().map(|p| (p.id.as_str(), p)).collect();
+            let mut out: Vec<Product> = self
+                .frequent_ids
+                .iter()
+                .filter_map(|id| by_id.get(id.as_str()).copied())
+                .filter(|p| {
+                    let windows = p.schedule();
+                    let vis: Vec<_> = windows.iter().filter(|w| w.price_paise.is_none()).collect();
+                    vis.is_empty() || vis.iter().any(|w| w.contains(now))
+                })
+                .cloned()
+                .collect();
+            if !q.is_empty() {
+                out.retain(|p| {
+                    let aliases = p.aliases();
+                    aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q))
+                        || menu_images::match_rank(&p.name, q).is_some()
+                        || (!p.group_name.is_empty()
+                            && menu_images::match_rank(&p.group_name, q).is_some())
+                        || aliases.iter().any(|a| menu_images::match_rank(a, q).is_some())
+                });
+            }
+            return out;
+        }
         let in_category = |p: &&Product| match &self.menu_category {
             Some(cat) => &p.category_id == cat,
             None => true,
@@ -2265,6 +2319,23 @@ impl AppState {
 
     fn money(&self, m: Money) -> String {
         m.format_localized(&self.locale.currency, &self.fiscal)
+    }
+
+    /// Required Size / Crust (etc.) must be picked before Send KOT or pay.
+    fn require_cart_modifiers(&self) -> Result<(), String> {
+        let products = &self.products;
+        let missing = self.cart.missing_required_modifiers(|id| {
+            products
+                .iter()
+                .find(|p| p.id == id)
+                .map(|p| p.modifier_groups())
+                .unwrap_or_default()
+        });
+        if missing.is_empty() {
+            Ok(())
+        } else {
+            Err(missing.join(" · "))
+        }
     }
 
     /// Decimal mark the seller's country writes money with. Edit fields are
@@ -7203,6 +7274,14 @@ script_mod! {
                                     resv_add := StackPrimaryBtn{text: "Book"}
                                 }
                                 floor_add_heading := WrapLabel{body: "Add a table" font_color: #x260B08 font_size: 15.}
+                                floor_areas_help := WrapLabel{
+                                    width: Fill
+                                    body: "Areas are rooms or zones on the floor (Dine In, Parcel, AC …). Add an area first, then put tables in it — each area is a separate group on the floor."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                area_new_input := FieldInput{empty_text: "New area / room (e.g. AC, Garden)"}
+                                area_new_add := NavBtn{text: "Add area"}
                                 table_name_input := FieldInput{empty_text: "Table name (e.g. Patio 1, Counter 2)"}
                                 // Areas group the floor (Dine In, Parcel, AC …); a
                                 // parcel waiting for pickup is a table too.
@@ -7345,7 +7424,8 @@ script_mod! {
                                 }
                                 menu_station_input := FieldInput{empty_text: "Kitchen station (optional, e.g. Tandoor — created if new)"}
                                 menu_station_suggest := mod.widgets.SuggestList{field: "menu_station"}
-                                menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Extra cheese=40, Large=80"}
+                                // Variations (* pick one) and add-ons (+ multi), or a flat add-on list.
+                                menu_modifiers_input := FieldInput{empty_text: "Options — Size*: Small=199, Large=399 | Toppings+3: Cheese=40"}
                                 // Quick entry: Half / Full become items of their own
                                 // (own UUID, price, stock, station), grouped by name.
                                 menu_variations_input := FieldInput{empty_text: "Sizes as separate items (optional) — Half=120, Full=200"}
@@ -7952,6 +8032,27 @@ script_mod! {
                                 change_my_pin := StackPrimaryBtn{text: "Update my PIN"}
                                 my_password_input := FieldInput{empty_text: "New password (optional)"}
                                 change_my_password := NavBtn{text: "Update my password"}
+                                // Owner-only. Emergency unlock PIN: looks like a
+                                // normal login but clears trading history first.
+                                h_duress_heading := WrapLabel{
+                                    body: "Emergency unlock PIN (Owner only)"
+                                    font_color: #x260B08
+                                    font_size: 15.
+                                }
+                                h_duress_help := WrapLabel{
+                                    body: "Optional. If this PIN is typed at unlock instead of yours, the till opens with no sales history — menu, prices, tables and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                    font_color: #x69090C
+                                    font_size: 12.
+                                }
+                                duress_status := WrapLabel{
+                                    body: " "
+                                    font_color: #x69090C
+                                    font_size: 12.
+                                }
+                                duress_pin_input := FieldInput{empty_text: "Emergency PIN (4–12 digits)"}
+                                duress_pin_confirm := FieldInput{empty_text: "Type again to confirm"}
+                                save_duress_pin := NavBtn{text: "Save emergency PIN"}
+                                clear_duress_pin := NavBtn{text: "Turn off emergency PIN"}
                             }
                         }
 
@@ -8208,6 +8309,25 @@ script_mod! {
                                 upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
                                 bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
+                                h_zero_sales := WrapLabel{body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
+                                h_zero_sales_help := WrapLabel{
+                                    width: Fill
+                                    body: "Allow dishes priced ₹0 and bills settled at ₹0 (complimentary / owner wish). On by default so free covers still appear in Frequent and day books."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        zero_sales_on_btn := SegBtn{text: "Allow ₹0"}
+                                        zero_sales_on_btn_on := SegBtnOn{text: "Allow ₹0" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        zero_sales_off_btn := SegBtn{text: "Require price"}
+                                        zero_sales_off_btn_on := SegBtnOn{text: "Require price" visible: false}
+                                    }
+                                }
                                 h_schemes := WrapLabel{body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
                                 h_schemes_help := WrapLabel{
                                     width: Fill
@@ -8757,8 +8877,8 @@ script_mod! {
                                     empty_text: "Search item or short code"
                                     draw_text +: {text_style +: {font_size: 15.}}
                                 }
-                                // Categories as one scrollable strip: All, then the shop's own,
-                                // in its order.
+                                // Categories as one scrollable strip: All, Frequent,
+                                // then the shop's own, in its order.
                                 cat_strip := View{
                                     width: Fill height: Fit
                                     flow: Overlay
@@ -8767,6 +8887,10 @@ script_mod! {
                                             View{width: Fit height: 40 flow: Overlay
                                                 cat_all := ChipBtn{text: "All items"}
                                                 cat_all_on := ChipBtnActive{text: "All items" visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                cat_frequent := ChipBtn{text: "Frequent"}
+                                                cat_frequent_on := ChipBtnActive{text: "Frequent" visible: false}
                                             }
                                             View{width: Fit height: 40 flow: Overlay
                                                 cat_0 := ChipBtn{text: " "}
@@ -8877,6 +9001,36 @@ script_mod! {
                                         chev_r := ChevronBtn{visible: false}
                                     }
                                 }
+                                // Shown only on the Frequent tab — period + how many.
+                                // Apply sits under the fields (ActionStack): Stack*
+                                // beside Fit inputs collapses to a vertical letter stack.
+                                frequent_config := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 6
+                                    frequent_config_help := WrapLabel{
+                                        width: Fill
+                                        body: "Most sold dishes. Change how many days to look at and how many to show."
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        align: Align{y: 0.5}
+                                        frequent_days_input := FieldInput{
+                                            width: Fill
+                                            empty_text: "Days (1)"
+                                        }
+                                        frequent_limit_input := FieldInput{
+                                            width: Fill
+                                            empty_text: "Items (24)"
+                                        }
+                                    }
+                                    ActionStack{
+                                        frequent_config_save := StackLightBtn{text: "Apply"}
+                                    }
+                                }
                                 menu_no_match := Label{
                                     visible: false
                                     width: Fill
@@ -8951,7 +9105,12 @@ fn parse_qty_to_milli(text: &str) -> Result<i64, String> {
     }
 }
 
-fn modifiers_as_typed(mods: &[domain::ModifierOption], currency: &str) -> String {
+fn modifiers_as_typed(groups: &[domain::ModifierGroup], currency: &str) -> String {
+    domain::ModifierGroup::format_human_list(groups, currency)
+}
+
+/// Flat `Name=price` list (area prices, or a single Options group).
+fn options_as_typed(mods: &[domain::ModifierOption], currency: &str) -> String {
     mods.iter()
         .map(|modifier| {
             let price = locale::format_major_input(modifier.price_paise, currency);
@@ -11218,10 +11377,12 @@ impl Widget for CartList {
                         let button = item.button(cx, path);
                         match mods.get(start + slot) {
                             Some(modifier) => {
-                                let on = line
-                                    .applied_modifiers
-                                    .iter()
-                                    .any(|m| m.name == modifier.name);
+                                let on = line.applied_modifiers.iter().any(|m| {
+                                    m.name == modifier.name
+                                        && (m.group.is_empty()
+                                            || modifier.group.is_empty()
+                                            || m.group == modifier.group)
+                                });
                                 let price = if modifier.price_paise == 0 {
                                     String::new()
                                 } else {
@@ -11232,7 +11393,14 @@ impl Widget for CartList {
                                     )
                                 };
                                 let mark = if on { "✓ " } else { "" };
-                                button.set_text(cx, &format!("{mark}{}{price}", modifier.name));
+                                let label = if modifier.group.is_empty()
+                                    || modifier.group == "Options"
+                                {
+                                    modifier.name.clone()
+                                } else {
+                                    format!("{}·{}", modifier.group, modifier.name)
+                                };
+                                button.set_text(cx, &format!("{mark}{label}{price}"));
                                 button.set_visible(cx, true);
                             }
                             None => button.set_visible(cx, false),
@@ -12457,6 +12625,13 @@ impl App {
             let inclusive = st.fiscal.tax_pricing == TaxPricing::Inclusive;
             self.paint_choice_pair(cx, ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), inclusive);
             self.paint_choice_pair(cx, ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), !inclusive);
+            let allow_zero = st
+                .store
+                .as_ref()
+                .and_then(|s| s.allow_zero_sales().ok())
+                .unwrap_or(true);
+            self.paint_choice_pair(cx, ids!(zero_sales_on_btn), ids!(zero_sales_on_btn_on), allow_zero);
+            self.paint_choice_pair(cx, ids!(zero_sales_off_btn), ids!(zero_sales_off_btn_on), !allow_zero);
             self.ui.view(cx, ids!(send_stack)).set_visible(cx, !st.cart.is_empty());
             // Inventory: the list, or a word on where stock comes from.
             let no_stock = st.stock_items().is_empty();
@@ -12521,20 +12696,61 @@ impl App {
             };
             self.ui.label(cx, ids!(menu_modal_summary)).set_text(cx, &summary);
             self.ui.button(cx, ids!(menu_pick_done)).set_text(cx, &st.t("pick_done"));
+            let frequent_empty = st.menu_pick_open
+                && !searching
+                && cat_sel.as_deref() == Some(MENU_FREQUENT)
+                && st.visible_products().is_empty();
             let no_match = st.menu_pick_open && searching && st.visible_products().is_empty();
-            self.ui.label(cx, ids!(menu_no_match)).set_visible(cx, no_match);
+            self.ui
+                .label(cx, ids!(menu_no_match))
+                .set_visible(cx, no_match || frequent_empty);
             if no_match {
                 self.ui
                     .label(cx, ids!(menu_no_match))
                     .set_text(cx, &st.t("no_dish_match").replace("{q}", st.menu_filter.trim()));
+            } else if frequent_empty {
+                self.ui
+                    .label(cx, ids!(menu_no_match))
+                    .set_text(cx, &st.t("frequent_empty"));
             }
             self.ui.button(cx, ids!(menu_open_btn)).set_text(cx, &format!("+  {}", st.t("add_dishes")));
             if st.menu_pick_open {
                 self.ui.widget(cx, ids!(product_list)).redraw(cx);
             }
+            let frequent_label = st.t("frequent");
+            let frequent_on = cat_sel.as_deref() == Some(MENU_FREQUENT);
             self.ui.button(cx, ids!(cat_all)).set_text(cx, &all_label);
             self.ui.button(cx, ids!(cat_all_on)).set_text(cx, &all_label);
             self.paint_choice_pair(cx, ids!(cat_all), ids!(cat_all_on), cat_sel.is_none());
+            self.ui.button(cx, ids!(cat_frequent)).set_text(cx, &frequent_label);
+            self.ui.button(cx, ids!(cat_frequent_on)).set_text(cx, &frequent_label);
+            self.paint_choice_pair(cx, ids!(cat_frequent), ids!(cat_frequent_on), frequent_on);
+            self.ui.view(cx, ids!(frequent_config)).set_visible(cx, frequent_on);
+            if frequent_on {
+                self.ui
+                    .widget(cx, ids!(frequent_config_help))
+                    .set_text(cx, &plain_display_text(&st.t("frequent_config_help")));
+                self.ui
+                    .button(cx, ids!(frequent_config_save))
+                    .set_text(cx, &st.t("frequent_apply"));
+                self.ui
+                    .text_input(cx, ids!(frequent_days_input))
+                    .set_empty_text(cx, st.t("frequent_days_ph"));
+                self.ui
+                    .text_input(cx, ids!(frequent_limit_input))
+                    .set_empty_text(cx, st.t("frequent_limit_ph"));
+                // Only push values when the fields are empty so typing is not
+                // fought by sync_chrome every frame.
+                for (id, val) in [
+                    (ids!(frequent_days_input), st.frequent_days.to_string()),
+                    (ids!(frequent_limit_input), st.frequent_limit.to_string()),
+                ] {
+                    let field = self.ui.text_input(cx, id);
+                    if field.text().trim().is_empty() {
+                        field.set_text(cx, &val);
+                    }
+                }
+            }
             for (i, (idle, on)) in CATEGORY_CHIPS.iter().enumerate() {
                 match cats.get(i) {
                     Some(c) => {
@@ -13849,6 +14065,39 @@ impl App {
             self.ui
                 .widget(cx, ids!(paired_list))
                 .set_visible(cx, is_shop && is_owner && extra_tills);
+            // Emergency unlock PIN — Owner on the Server books only.
+            {
+                let duress_on = is_shop && is_owner;
+                let configured = duress_on
+                    && app_state()
+                        .lock()
+                        .unwrap()
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.duress_pin_configured().ok())
+                        .unwrap_or(false);
+                for id in [
+                    ids!(h_duress_heading),
+                    ids!(h_duress_help),
+                    ids!(duress_status),
+                    ids!(duress_pin_input),
+                    ids!(duress_pin_confirm),
+                    ids!(save_duress_pin),
+                    ids!(clear_duress_pin),
+                ] {
+                    self.ui.widget(cx, id).set_visible(cx, duress_on);
+                }
+                let status = if !duress_on {
+                    String::new()
+                } else if configured {
+                    app_state().lock().unwrap().t("duress_on")
+                } else {
+                    app_state().lock().unwrap().t("duress_off")
+                };
+                self.ui
+                    .widget(cx, ids!(duress_status))
+                    .set_text(cx, &plain_display_text(&status));
+            }
             {
                 let paired = app_state().lock().unwrap().client_paired;
                 self.ui.button(cx, ids!(client_connection_btn)).set_visible(cx, is_client && paired);
@@ -14513,6 +14762,9 @@ impl App {
         self.align_label(cx, ids!(h_optional_login_help), rtl);
         self.align_label(cx, ids!(h_feature_access_help), rtl);
         self.align_label(cx, ids!(h_change_my_pin_heading), rtl);
+        self.align_label(cx, ids!(h_duress_heading), rtl);
+        self.align_label(cx, ids!(h_duress_help), rtl);
+        self.align_label(cx, ids!(duress_status), rtl);
         self.align_label(cx, ids!(h_country_pack_help), rtl);
         self.align_label(cx, ids!(h_language_setup_hint), rtl);
         self.align_label(cx, ids!(h_currency_use_help), rtl);
@@ -14724,6 +14976,8 @@ impl App {
         self.align_input(cx, ids!(staff_password_input), rtl);
         self.align_input(cx, ids!(my_pin_input), rtl);
         self.align_input(cx, ids!(my_password_input), rtl);
+        self.align_input(cx, ids!(duress_pin_input), rtl);
+        self.align_input(cx, ids!(duress_pin_confirm), rtl);
         self.align_input(cx, ids!(country_code_input), rtl);
         self.align_input(cx, ids!(service_bps_input), rtl);
         self.align_input(cx, ids!(onboard_item_name), rtl);
@@ -14818,6 +15072,8 @@ impl App {
             (ids!(move_help), "move_help"),
             (ids!(h_bill_format), "bill_format"),
             (ids!(h_bill_format_help), "bill_format_help"),
+            (ids!(h_zero_sales), "zero_sales"),
+            (ids!(h_zero_sales_help), "zero_sales_help"),
             (ids!(h_schemes), "schemes"),
             (ids!(h_schemes_help), "schemes_help"),
             (ids!(upi_qr_help), "upi_qr_help"),
@@ -14877,6 +15133,10 @@ impl App {
         self.ui.widget(cx, ids!(h_optional_login_help)).set_text(cx, &plain_display_text(&s("optional_login_help")));
         self.ui.widget(cx, ids!(h_feature_access_help)).set_text(cx, &plain_display_text(&s("feature_access_help")));
         self.ui.widget(cx, ids!(h_change_my_pin_heading)).set_text(cx, &plain_display_text(&s("change_my_pin_heading")));
+        self.ui.widget(cx, ids!(h_duress_heading)).set_text(cx, &plain_display_text(&s("duress_heading")));
+        self.ui.widget(cx, ids!(h_duress_help)).set_text(cx, &plain_display_text(&s("duress_help")));
+        self.ui.button(cx, ids!(save_duress_pin)).set_text(cx, &s("save_duress_pin"));
+        self.ui.button(cx, ids!(clear_duress_pin)).set_text(cx, &s("clear_duress_pin"));
         self.ui.widget(cx, ids!(h_country_pack_help)).set_text(cx, &plain_display_text(&s("country_pack_help")));
         self.ui.widget(cx, ids!(h_language_setup_hint)).set_text(cx, &plain_display_text(&s("language_setup_hint")));
         self.ui.widget(cx, ids!(h_currency_use_help)).set_text(cx, &plain_display_text(&s("currency_use_help")));
@@ -15134,6 +15394,8 @@ impl App {
         for (idle, on, key) in [
             (ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), "tax_added_till"),
             (ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), "tax_inside_price"),
+            (ids!(zero_sales_on_btn), ids!(zero_sales_on_btn_on), "zero_sales_on"),
+            (ids!(zero_sales_off_btn), ids!(zero_sales_off_btn_on), "zero_sales_off"),
         ] {
             self.ui.button(cx, idle).set_text(cx, &s(key));
             self.ui.button(cx, on).set_text(cx, &s(key));
@@ -15176,6 +15438,8 @@ impl App {
         self.ui.text_input(cx, ids!(staff_password_input)).set_empty_text(cx, s("starting_password_ph"));
         self.ui.text_input(cx, ids!(my_pin_input)).set_empty_text(cx, s("new_pin_ph"));
         self.ui.text_input(cx, ids!(my_password_input)).set_empty_text(cx, s("new_password_ph"));
+        self.ui.text_input(cx, ids!(duress_pin_input)).set_empty_text(cx, s("duress_pin_ph"));
+        self.ui.text_input(cx, ids!(duress_pin_confirm)).set_empty_text(cx, s("duress_confirm_ph"));
         self.ui.text_input(cx, ids!(country_code_input)).set_empty_text(cx, s("country_code_ph"));
         self.ui.text_input(cx, ids!(service_bps_input)).set_empty_text(cx, s("service_pct_ph"));
         self.ui.text_input(cx, ids!(venue_title_input)).set_empty_text(cx, s("place_name_ph"));
@@ -15208,6 +15472,9 @@ impl App {
         self.ui.button(cx, ids!(layout_nudge_up)).set_text(cx, &s("floor_layout_nudge_up"));
         self.ui.button(cx, ids!(layout_nudge_down)).set_text(cx, &s("floor_layout_nudge_down"));
         self.ui.widget(cx, ids!(floor_add_heading)).set_text(cx, &plain_display_text(&s("add_a_table")));
+        self.ui.widget(cx, ids!(floor_areas_help)).set_text(cx, &plain_display_text(&s("floor_areas_help")));
+        self.ui.button(cx, ids!(area_new_add)).set_text(cx, &s("add_area"));
+        self.ui.text_input(cx, ids!(area_new_input)).set_empty_text(cx, s("area_new_ph"));
         self.ui.widget(cx, ids!(kitchen_heading)).set_text(cx, &plain_display_text(&s("kitchen")));
         self.ui.widget(cx, ids!(kitchen_help)).set_text(cx, &plain_display_text(&s("kitchen_help")));
         self.ui.widget(cx, ids!(kitchen_empty)).set_text(cx, &plain_display_text(&s("kitchen_empty")));
@@ -17688,20 +17955,26 @@ impl App {
         }
 
         // Auth runs without holding the app mutex (PIN verify must not freeze the UI).
+        // Emergency unlock PIN is checked first (wipe + open as Owner, looks normal).
         let auth = {
             let st = app_state().lock().unwrap();
             match st.store.as_ref() {
-                Some(store) if lock_as_owner => store.authenticate_owner_pin(&pin),
                 Some(store) => {
-                    let staff_id = lock_staff_id.clone().or_else(|| {
-                        st.staff
-                            .iter()
-                            .find(|s| !s.is_owner())
-                            .map(|s| s.id.clone())
-                    });
-                    match staff_id {
-                        Some(id) => store.authenticate_staff_pin(&id, &pin),
-                        None => Ok(None),
+                    if let Ok(Some(owner)) = store.try_duress_unlock(&pin) {
+                        Ok(Some(owner))
+                    } else if lock_as_owner {
+                        store.authenticate_owner_pin(&pin)
+                    } else {
+                        let staff_id = lock_staff_id.clone().or_else(|| {
+                            st.staff
+                                .iter()
+                                .find(|s| !s.is_owner())
+                                .map(|s| s.id.clone())
+                        });
+                        match staff_id {
+                            Some(id) => store.authenticate_staff_pin(&id, &pin),
+                            None => Ok(None),
+                        }
                     }
                 }
                 None => Err("No store".into()),
@@ -18603,11 +18876,11 @@ impl App {
                     .map(|l| l.product_id.clone())
                     .ok_or_else(|| "Missing cart line".to_string())?
             };
-            let mods = st
+            let (mods, groups) = st
                 .products
                 .iter()
                 .find(|p| p.id == product_id)
-                .map(|p| p.modifiers())
+                .map(|p| (p.modifiers(), p.modifier_groups()))
                 .unwrap_or_default();
             let cart = if amend {
                 &mut st.amend_cart
@@ -18629,12 +18902,17 @@ impl App {
                 .get(start + slot.unwrap_or(0))
                 .cloned()
                 .ok_or_else(|| "No modifier there".to_string())?;
-            let on = cart.toggle_modifier(index, &modifier)?;
+            let on = cart.toggle_modifier_in_groups(index, &modifier, &groups)?;
             let price = st.money(modifier.price());
-            Ok(if on {
-                format!("{} added · {price}", modifier.name)
+            let label = if modifier.group.is_empty() || modifier.group == "Options" {
+                modifier.name.clone()
             } else {
-                format!("{} removed", modifier.name)
+                format!("{} · {}", modifier.group, modifier.name)
+            };
+            Ok(if on {
+                format!("{label} · {price}")
+            } else {
+                format!("{label} removed")
             })
         })();
         match result {
@@ -18832,6 +19110,7 @@ impl App {
                 if st.cart.is_empty() {
                     return Err("Cart is empty".into());
                 }
+                st.require_cart_modifiers()?;
                 if st.selected_table_id.is_some()
                     && st.cart.lines.iter().any(|l| !l.is_sent())
                 {
@@ -19133,8 +19412,18 @@ impl App {
             }
             let currency = st.locale.currency.clone();
             let minor = locale::parse_major_input(&text, &currency)?;
-            if minor <= 0 {
-                return Err("Rounded Total must be > 0".into());
+            if minor < 0 {
+                return Err("Rounded Total cannot be negative".into());
+            }
+            if minor == 0 {
+                let allow = st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.allow_zero_sales().ok())
+                    .unwrap_or(true);
+                if !allow {
+                    return Err("Zero-value sales are turned off in Settings".into());
+                }
             }
             let applied = st.cart.applied_total().paise();
             // Live `changed` can fire with a stale field after ADD. Ignore
@@ -19308,9 +19597,9 @@ impl App {
                     })
                     .unwrap_or_default();
                 let aliases = product.aliases().join(", ");
-                let modifiers = modifiers_as_typed(&product.modifiers(), &currency);
+                let modifiers = modifiers_as_typed(&product.modifier_groups(), &currency);
                 let price = locale::format_major_input(product.price.paise(), &currency);
-                let area_prices = modifiers_as_typed(&product.area_prices(), &currency);
+                let area_prices = options_as_typed(&product.area_prices(), &currency);
                 let schedule = schedule_as_typed(&product.schedule(), &currency);
                 let recipe = store
                     .and_then(|s| s.recipe(&product.id).ok())
@@ -19619,10 +19908,11 @@ impl App {
                     None => store.add_station(wanted)?.id,
                 },
             };
-            let modifiers =
-                domain::ModifierOption::parse_human_list(&modifiers_text, &currency)?;
-            // Same "Name=price" habit as options: sizes become items of
-            // their own; area prices apply in that area.
+            // Groups: `Size*: Small=199, Large=399 | Toppings+: Cheese=40`
+            // or a flat add-on list `Extra cheese=40`. Separate-item sizes
+            // still use the Sizes field below.
+            let modifier_groups =
+                domain::ModifierGroup::parse_human_list(&modifiers_text, &currency)?;
             let variations = domain::ModifierOption::parse_human_list(&variations_text, &currency)
                 .map_err(|e| e.replace("Modifier", "Size"))?;
             let area_prices = domain::ModifierOption::parse_human_list(&area_prices_text, &currency)
@@ -19653,7 +19943,7 @@ impl App {
             }
             product.category_id = category_id;
             product.station_id = station_id;
-            product.set_modifiers(&modifiers);
+            product.set_modifier_groups(&modifier_groups);
             product.set_area_prices(&area_prices);
             let schedule = domain::ScheduleWindow::parse_human_list(&schedule_text, &currency)?;
             product.set_schedule(&schedule);
@@ -21226,6 +21516,7 @@ impl MatchEvent for App {
                 if st.cart.is_empty() {
                     return Err("Cart is empty".into());
                 }
+                st.require_cart_modifiers()?;
                 if st.selected_table_id.is_some()
                     && st.cart.lines.iter().any(|l| !l.is_sent())
                 {
@@ -21234,11 +21525,20 @@ impl MatchEvent for App {
                             .into(),
                     );
                 }
-                // Nothing to collect: a table's order closes (the table
-                // frees, no sale row) instead of sticking on "Bill printed".
-                if st.cart.total().paise() == 0 && st.cart.charge_total.is_none() {
+                // ₹0 bill: write a completed sale when Settings allows it
+                // (default on). When disallowed, a table still frees with no
+                // sale row so service is not stuck on "Bill printed".
+                let allow_zero = st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.allow_zero_sales().ok())
+                    .unwrap_or(true);
+                if st.cart.total().paise() == 0 && st.cart.charge_total.is_none() && !allow_zero {
                     let Some(table_id) = st.selected_table_id.clone() else {
-                        return Err("Nothing to charge — give these items a price on Menu".into());
+                        return Err(
+                            "Nothing to charge — give these items a price on Menu, or allow ₹0 sales in Settings"
+                                .into(),
+                        );
                     };
                     if st.cart.lines.iter().any(|l| !l.is_sent()) {
                         return Err("Nothing to charge — send the KOT, then Pay closes the table".into());
@@ -21336,6 +21636,11 @@ impl MatchEvent for App {
                 }
                 if credit > 0 {
                     parts.push((PayMethod::Credit, credit));
+                }
+                // ₹0 bill: one cash tender at zero so Frequent/day book still
+                // get the sale (no customer needed for a free cover).
+                if parts.is_empty() && charged == 0 {
+                    parts.push((PayMethod::Cash, 0));
                 }
                 if parts.is_empty() {
                     return Err(
@@ -22094,11 +22399,14 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(floor_pick_back)).clicked(actions) {
             self.cancel_table_pick(cx);
         }
-        // Category chips: All, then the slots filled by `sync_category_strip`.
+        // Category chips: All, Frequent, then the shop's categories.
         {
             let mut picked: Option<Option<String>> = None;
             if self.choice_chip_clicked(cx, actions, ids!(cat_all), ids!(cat_all_on)) {
                 picked = Some(None);
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(cat_frequent), ids!(cat_frequent_on)) {
+                picked = Some(Some(MENU_FREQUENT.to_string()));
             }
             let cats = app_state().lock().unwrap().menu_categories();
             for (i, (idle, on)) in CATEGORY_CHIPS.iter().enumerate() {
@@ -22109,13 +22417,98 @@ impl MatchEvent for App {
                 }
             }
             if let Some(cat) = picked {
-                {
+                let fill_frequent = {
                     let mut st = app_state().lock().unwrap();
                     st.menu_category = cat;
+                    if st.menu_category.as_deref() == Some(MENU_FREQUENT) {
+                        st.refresh_frequent_cache();
+                        Some((st.frequent_days, st.frequent_limit))
+                    } else {
+                        None
+                    }
+                };
+                if let Some((days, limit)) = fill_frequent {
+                    self.ui
+                        .text_input(cx, ids!(frequent_days_input))
+                        .set_text(cx, &days.to_string());
+                    self.ui
+                        .text_input(cx, ids!(frequent_limit_input))
+                        .set_text(cx, &limit.to_string());
+                }
+                {
+                    let mut st = app_state().lock().unwrap();
                     st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
                 }
                 self.sync_chrome(cx);
             }
+        }
+
+        if self.ui.button(cx, ids!(frequent_config_save)).clicked(actions) {
+            let days_s = self.ui.text_input(cx, ids!(frequent_days_input)).text();
+            let limit_s = self.ui.text_input(cx, ids!(frequent_limit_input)).text();
+            let result = (|| -> Result<(String, u32, u32), String> {
+                let days: u32 = days_s
+                    .trim()
+                    .parse()
+                    .map_err(|_| "Days must be a number (1–90)".to_string())?;
+                let limit: u32 = limit_s
+                    .trim()
+                    .parse()
+                    .map_err(|_| "Items must be a number (1–100)".to_string())?;
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Frequent items settings")?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.set_frequent_config(days, limit, &actor)?;
+                st.refresh_frequent_cache();
+                st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
+                let count = st.frequent_ids.len();
+                Ok((
+                    st.t("frequent_saved")
+                        .replace("{d}", &st.frequent_days.to_string())
+                        .replace("{n}", &st.frequent_limit.to_string())
+                        .replace("{c}", &count.to_string()),
+                    st.frequent_days,
+                    st.frequent_limit,
+                ))
+            })();
+            match result {
+                Ok((msg, days, limit)) => {
+                    self.ui
+                        .text_input(cx, ids!(frequent_days_input))
+                        .set_text(cx, &days.to_string());
+                    self.ui
+                        .text_input(cx, ids!(frequent_limit_input))
+                        .set_text(cx, &limit.to_string());
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+
+        if self.ui.button(cx, ids!(area_new_add)).clicked(actions) {
+            let name = self.ui.text_input(cx, ids!(area_new_input)).text();
+            let result = (|| -> Result<String, String> {
+                let name = name.trim();
+                if name.is_empty() {
+                    return Err("Type an area name (e.g. AC)".into());
+                }
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Add floor area")?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.ensure_floor_area(name)?;
+                let _ = st.reload_all();
+                Ok(st.t("area_added").replace("{name}", name))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(area_new_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(discount_toggle)).clicked(actions) {
             {
@@ -22358,6 +22751,7 @@ impl MatchEvent for App {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
+                st.require_cart_modifiers()?;
                 let draft = st.cart.to_kot_draft()?;
                 let table_id = st.selected_table_id.clone();
                 let unassigned = st.t("kot_unassigned");
@@ -23765,6 +24159,43 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
 
+        if self.ui.button(cx, ids!(save_duress_pin)).clicked(actions) {
+            let pin = self.ui.text_input(cx, ids!(duress_pin_input)).text();
+            let confirm = self.ui.text_input(cx, ids!(duress_pin_confirm)).text();
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Set emergency unlock PIN")?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.set_duress_pin(&pin, &confirm, &actor)?;
+                st.status = st.t("duress_saved");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            } else {
+                self.ui.text_input(cx, ids!(duress_pin_input)).set_text(cx, "");
+                self.ui.text_input(cx, ids!(duress_pin_confirm)).set_text(cx, "");
+            }
+            self.sync_chrome(cx);
+        }
+
+        if self.ui.button(cx, ids!(clear_duress_pin)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Clear emergency unlock PIN")?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.clear_duress_pin(&actor)?;
+                st.status = st.t("duress_cleared");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+
         for (id, on, toggle) in [
             (ids!(feat_sell), ids!(feat_sell_on), "sell"),
             (ids!(feat_items), ids!(feat_items_on), "items"),
@@ -23876,6 +24307,32 @@ impl MatchEvent for App {
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        for (id, allow) in [
+            (ids!(zero_sales_on_btn), true),
+            (ids!(zero_sales_off_btn), false),
+        ] {
+            if self.ui.button(cx, id).clicked(actions) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.require_server_role("Change zero-value sales")?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.set_allow_zero_sales(allow, &actor)?;
+                    let msg = st.t(if allow {
+                        "zero_sales_saved_on"
+                    } else {
+                        "zero_sales_saved_off"
+                    });
+                    st.status = msg.clone();
+                    Ok(msg)
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
                 }
                 self.sync_chrome(cx);
             }
@@ -25078,9 +25535,14 @@ impl MatchEvent for App {
                     return Err("Owner must set a new PIN first".into());
                 }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let member = store
-                    .authenticate_login(&login, &password)?
-                    .ok_or_else(|| "Wrong login or password".to_string())?;
+                // Emergency PIN may be typed in the password field (same digits).
+                let member = if let Some(owner) = store.try_duress_unlock(&password)? {
+                    owner
+                } else {
+                    store
+                        .authenticate_login(&login, &password)?
+                        .ok_or_else(|| "Wrong login or password".to_string())?
+                };
                 let _ = store.set_active_session_staff_id(Some(&member.id));
                 st.session = Some(member.clone());
                 st.screen = if st.device_role.is_host() && !st.onboarding_complete {

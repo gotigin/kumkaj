@@ -135,14 +135,16 @@ user needs — In / Later, in Khaynjo's own terms:
 |---|---|---|
 | 3-tap billing: tap item → qty → pay | **In (P1)** — the minimal sell path of vision §3 | Order desk |
 | Order types Counter / Dine-in / Takeaway / Delivery | **In (P1)** | Desk segmented grid; `OrderType` |
-| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas with headings, D1–D20 ranges; Grid ↔ Layout (drawn positions) **Have 2026-10-27** | Floor screen |
+| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms with headings (Add area e.g. AC, then tables into it), D1–D20 ranges; Grid ↔ Layout **Have 2026-10-27** | Floor screen |
+| Frequent dishes as a menu group (like Bakery Cafe) | **Have 2026-10-27** — Frequent chip next to All items; config on that view (days + count; default 1 day / 24); empty state when no completed sales in the window | Menu window; `frequent_product_ids` |
+| ₹0 menu prices and ₹0 bills (complimentary / owner wish) | **Have 2026-10-27** — allowed by default; Settings → Zero-value sales can require a price above ₹0 | `allow_zero_sales` meta; finalize / Take payment |
 | Table cards that show elapsed time and running amount at a glance | **In (P2)** — the counter reads the floor without opening a table | Floor screen |
 | Table states in colour, one shared truth on every device: Free → **Seated** → In kitchen → Food ready → Served → Bill printed → Free on pay | **Have** — Seated without order (2026-10-27); only payment (or Free table) releases; ghost In-kitchen after pay fixed same day | Floor + server sync |
 | Waiters take orders at the table on their own devices | **In (P2)** — waiters are paired Clients; they occupy tables, add items, send KOTs and request billing. Settling money is rights-gated (Take payment Allowed/WithApproval on the staff record — waiter preset Denied) | LAN service, role gates |
 | KOT prints itself the moment an order is sent — no one carries paper to the kitchen | **In (P2)** — the server prints on send; Settings → Printers: pool + ordered fallback route per kitchen station (empty = don't print); hardware stays on the Server device | LAN service, print settings |
 | KOT carries the waiter's name, table, item notes — and never prices | **In (P1/P2)** | KOT record + Kitchen |
 | Kitchen display with ticket states New → Preparing → Ready → Completed, no prices (vision §9) | **In (P1)** | Kitchen screen |
-| Variation / add-on choices and per-item special notes at order time (extra cheese, less spicy…) | **In (P1)** modifiers; priced variant matrix later | Order desk dialogs |
+| Variation / add-on choices and per-item special notes at order time (extra cheese, less spicy…) | **Have 2026-10-27** — Petpooja-style groups: `Size*: Small=199, Large=399 \| Toppings+3: Cheese=40` (`*` = pick one required; `+` / `+N` = add-ons, optional max N); flat list still works; free-text note; Send KOT / pay blocked until required variations picked; day report **Options sold (sizes & toppings)**; choices frozen on `sale_lines.modifiers_json`. Separate-item sizes (`Half=120, Full=200`) remain | Menu Options; `ModifierGroup`; cart chips; day report |
 | Hold an order and come back to it | **In (2026-10-23)** — the table's **running order** is the ticket on the Server (pending + sent lines). Punch before Send KOT writes **pending** `running_lines` (empty `kot_id`); Floor ↔ Order bounce and other devices reopen the same Server order. **Change table** (Order button) reseats pending onto the picked table. Floor can also mark **Seated** with no order yet (2026-10-27); a live order still starts on first punch / KOT | `store_running.rs` (`bump_pending_product` / `reseat_pending` / `send_kot` promote), Floor → Order / `seat_table` |
 | Settle with tender, amount handed over, change to return, and tip | **In (2026-10-23)** — Customer paid → Return to customer; tip recorded apart from sales | Order desk settle; `Store::record_settlement` |
 | Part payment and Due (credit) as normal ways to finish a bill | **In (P1)** — Due lands on the customer's khata in Parties, never a side note | Pay mix; Parties |
@@ -161,6 +163,7 @@ user needs — In / Later, in Khaynjo's own terms:
 | Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Done 2026-10-27** — Team Floor/Kitchen chips; nav gates `can_access_*` (Books/Buy/DayClose/Reports for money) | Team; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A |
 | Shop-narrowed pick-lists (units first; same pattern for areas, stations, tax rates, …) | **Done 2026-10-27** — units + areas/stations/tax On/Off in Settings; suggest lists filter | Settings; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §B |
 | Mark a table **Occupied** when guests sit, before any dish is punched | **Done 2026-10-27** — `FloorState::Seated` + seat/free without order | Floor; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §C |
+| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — Owner sets optional PIN on Team; unlock with it wipes sales/history, keeps menu/prices/tables/staff, opens as Owner looking normal | Team; `try_duress_unlock` |
 | Order desk: Counter payment docked under scrolling cart lines (no Counter/Items chips) | **In (2026-10-27)** | Order desk `pos_ticket` / `counter_dock` |
 
 Sanitized client tracker (must remain covered):
@@ -369,8 +372,11 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
 5. **Phase 4 — Books depth.** Purchases, expenses, stock, party
    ledgers, reports, day close on restaurant wording.
 6. **Phase 5 — Control.** Permissions on discount/void/amend,
-   verified restore, owner retention window, optional emergency
-   wipe password (owner-only, off by default).
+   verified restore, owner retention window. **Emergency unlock PIN
+   done 2026-10-27** (Owner-only, off by default): Team → set a PIN
+   that is not anyone's unlock PIN; if typed at unlock, sales/history
+   wipe and the till opens as Owner looking normal — menu, prices,
+   tables and staff stay.
 7. **Phase 6 — India polish, then country packs.** GST split and
    India completeness first; further packs on identical screens.
 8. **Research Local/LAN catch-up — done 2026-10-27.** Everything from
@@ -462,6 +468,29 @@ again:
   `parcel` → Takeaway parse alias for old rows, and **"Parcel" as a
   restaurant's own floor-area name** — Indian restaurants say parcel
   for takeaway, and the owner names their areas (research §3)).
+## Petpooja-shaped gaps (local / LAN / optional Net — no Cloud required)
+
+Compared with Petpooja POSS marketing (menu variations/add-ons, KOT,
+tables, inventory, CRM, reports). **Have** means Khaynjo already covers
+the job locally; **Next** is worth building without Cloud; **Skip** needs
+true multi-outlet Cloud or a third-party marketplace.
+
+| Capability | Khaynjo | Note |
+|---|---|---|
+| Item variations + priced add-ons | **Have 2026-10-27** | Groups on the item; also separate-item sizes |
+| Combos / BOGO | **Have** | Settings → Schemes |
+| Station KOT / KDS / tables / areas | **Have** | |
+| Multi-terminal LAN | **Have** | Server + paired Clients |
+| Recipe stock, low-stock, purchases | **Have** (depth varies) | |
+| Day close + item/staff/hour reports | **Have** | Fewer named reports than Petpooja’s 94 |
+| Loyalty points on customer | **Partial** | Earn on sale; campaigns/SMS need Net |
+| QR / kiosk / token / waitlist | **Have** (LAN pages) | |
+| Aggregator sync / head-office menu push | **Skip / Partial** | File stub OK; live Zomato/Swiggy + HO push = Cloud |
+| CRM segments + birthday SMS | **Next (Net OK)** | Local guest book exists; campaigns need SMS/WABA |
+| Variation / add-on sales reports | **Have 2026-10-27** | Day report section from `sale_lines.modifiers_json` |
+| Modifier max (e.g. 3 toppings) in UI | **Have 2026-10-27** | `Toppings+3:` in Options field |
+| Captain upsell AI / Purchase Manager AI | **Skip** | Cloud / vendor marketplace |
+
 - Lunch-service acceptance: fresh install → add menu items → Floor
   `D1-D20` (Dine In) + `P1-P20` (Parcel) → tap D3 → add dishes →
   Send KOT → leave the table, come back: the dishes are still on it →

@@ -262,6 +262,14 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   ([`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §7). Not yet run on real
   hardware.
 
+## Emergency unlock PIN (suite-wide, 2026-10-27)
+
+Owner-only, off by default (Team). A PIN that is **not** anyone's unlock
+PIN: if typed at unlock, booking/sales history is wiped and the desk
+opens as Owner looking normal — rates, parties, zones, riders and staff
+stay. Same behaviour in Khaynjo (menu/prices/tables kept). Use only under
+coercion; never advertise the wipe to the person forcing the unlock.
+
 ## Out of scope (for now)
 
 - Replacing Delhivery/DTDC as a **national network** (hub TMS competing with carriers)  

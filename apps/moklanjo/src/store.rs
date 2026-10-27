@@ -7074,6 +7074,9 @@ impl Store {
         staff_id: Option<&str>,
         pin: &str,
     ) -> Result<Option<StaffMember>, String> {
+        if let Some(owner) = self.try_duress_unlock(pin)? {
+            return Ok(Some(owner));
+        }
         match staff_id {
             None => self.authenticate_owner_pin(pin),
             Some(id) => {
@@ -7359,6 +7362,142 @@ impl Store {
             serde_json::from_value(saved["staff"].clone()).map_err(|e| e.to_string())?;
         let session = saved["session"].as_str().unwrap_or_default().to_string();
         Ok(Some((staff, session)))
+    }
+
+    /// Owner-only emergency unlock PIN (duress). Off by default. When typed at
+    /// unlock instead of a real staff PIN, trading history is wiped and the
+    /// desk opens as Owner with empty books — rates, parties, zones, riders and
+    /// settings stay. The unlock looks like a normal Owner login.
+    pub fn duress_pin_configured(&self) -> Result<bool, String> {
+        Ok(self
+            .meta_get("duress_pin_hash")?
+            .filter(|h| !h.trim().is_empty())
+            .is_some())
+    }
+
+    pub fn set_duress_pin(
+        &self,
+        pin: &str,
+        confirm: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Set emergency unlock PIN")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can set the emergency unlock PIN".into());
+        }
+        let pin = pin.trim();
+        let confirm = confirm.trim();
+        if pin.is_empty() {
+            return self.clear_duress_pin(actor);
+        }
+        if pin != confirm {
+            return Err("The two PINs do not match".into());
+        }
+        if !(4..=12).contains(&pin.len()) || !pin.chars().all(|c| c.is_ascii_digit()) {
+            return Err("Emergency PIN must be 4–12 digits".into());
+        }
+        for member in self.list_staff()? {
+            if !member.pin_hash.is_empty() && verify_pin(pin, &member.pin_hash)? {
+                return Err(
+                    "Choose a PIN that is not anyone's unlock PIN (including yours)".into(),
+                );
+            }
+            if !member.password_hash.is_empty() && verify_pin(pin, &member.password_hash)? {
+                return Err("Choose a PIN that is not anyone's login password".into());
+            }
+        }
+        let hash = hash_pin(pin)?;
+        self.meta_set("duress_pin_hash", &hash)?;
+        Ok(())
+    }
+
+    pub fn clear_duress_pin(&self, actor: &StaffMember) -> Result<(), String> {
+        self.assert_server_writer("Clear emergency unlock PIN")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can clear the emergency unlock PIN".into());
+        }
+        self.meta_set("duress_pin_hash", "")?;
+        Ok(())
+    }
+
+    pub fn matches_duress_pin(&self, pin: &str) -> Result<bool, String> {
+        let pin = pin.trim();
+        if pin.is_empty() {
+            return Ok(false);
+        }
+        let Some(hash) = self.meta_get("duress_pin_hash")?.filter(|h| !h.trim().is_empty()) else {
+            return Ok(false);
+        };
+        verify_pin(pin, &hash)
+    }
+
+    pub fn try_duress_unlock(&self, pin: &str) -> Result<Option<StaffMember>, String> {
+        if !self.matches_duress_pin(pin)? {
+            return Ok(None);
+        }
+        self.wipe_trading_data_keep_structure()?;
+        for member in self.list_staff()? {
+            if member.is_owner() && member.active {
+                return Ok(Some(member));
+            }
+        }
+        Err("No Owner account after wipe".into())
+    }
+
+    /// Delete consignments / history / ledgers. Keep structure: rate cards,
+    /// zones, pincode service, charge types, parties (customers), riders,
+    /// staff, tax/units, venue settings, emergency PIN itself.
+    pub fn wipe_trading_data_keep_structure(&self) -> Result<(), String> {
+        self.assert_server_writer("Emergency unlock")?;
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        for sql in [
+            "DELETE FROM sale_payments",
+            "DELETE FROM sale_lines",
+            "DELETE FROM sale_revisions",
+            "DELETE FROM sales",
+            "DELETE FROM expense_payments",
+            "DELETE FROM expenses",
+            "DELETE FROM credit_ledger",
+            "DELETE FROM payable_ledger",
+            "DELETE FROM money_movements",
+            "DELETE FROM stock_movements",
+            "DELETE FROM purchase_lines",
+            "DELETE FROM purchases",
+            "DELETE FROM manifest_lines",
+            "DELETE FROM manifests",
+            "DELETE FROM tracking_events",
+            "DELETE FROM period_bills",
+            "DELETE FROM cod_entries",
+            "DELETE FROM cod_remittances",
+            "DELETE FROM incoming_manifest_lines",
+            "DELETE FROM incoming_manifests",
+            "DELETE FROM pickup_requests",
+            "DELETE FROM pickup_runs",
+            "DELETE FROM vehicle_inspections",
+            "DELETE FROM rider_run_cache",
+            "DELETE FROM audit_events",
+            "DELETE FROM notify_outbox",
+            "DELETE FROM entry_attachments",
+            "DELETE FROM sync_outbox",
+            "DELETE FROM lan_outbox",
+            "DELETE FROM lan_refused",
+            "DELETE FROM lan_replies",
+            "DELETE FROM lan_sessions",
+            "DELETE FROM meta WHERE key IN (
+                'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
+                'shift_opened_by', 'opening_cash_paise'
+             )",
+            "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        ] {
+            match tx.execute(sql, []) {
+                Ok(_) => {}
+                Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) => return Err(e.to_string()),
+            }
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(())
     }
 
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
@@ -11787,6 +11926,35 @@ mod tests {
         let hash = hash_pin("1234").unwrap();
         assert!(verify_pin("1234", &hash).unwrap());
         assert!(!verify_pin("0000", &hash).unwrap());
+    }
+
+    #[test]
+    fn emergency_unlock_pin_wipes_sales_keeps_rates() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("2468").unwrap();
+        store.set_duress_pin("9999", "9999", &owner).unwrap();
+        assert!(store.set_duress_pin("2468", "2468", &owner).is_err());
+        store
+            .upsert_product(&test_product("Delhi-1kg", 80))
+            .unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, &owner)
+            .unwrap();
+        assert!(store.today_totals().unwrap().revenue_paise > 0);
+
+        let unlocked = store.try_duress_unlock("9999").unwrap().expect("owner");
+        assert!(unlocked.is_owner());
+        assert_eq!(store.today_totals().unwrap().revenue_paise, 0);
+        assert_eq!(store.list_products(false).unwrap().len(), 1);
+        assert_eq!(store.list_products(false).unwrap()[0].name, "Delhi-1kg");
+        assert!(store.authenticate_owner_pin("2468").unwrap().is_some());
+        assert!(store.duress_pin_configured().unwrap());
+        let _ = std::fs::remove_file(path);
     }
 
     #[test]

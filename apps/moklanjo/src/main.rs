@@ -5701,6 +5701,25 @@ script_mod! {
                                 change_my_pin := NavBtn{text: "Update my PIN"}
                                 my_password_input := FieldInput{empty_text: "New password (optional)"}
                                 change_my_password := NavBtn{text: "Update my password"}
+                                h_duress_heading := WrapLabel{
+                                    body: "Emergency unlock PIN (Owner only)"
+                                    font_color: #x0B1220
+                                    font_size: 15.
+                                }
+                                h_duress_help := WrapLabel{
+                                    body: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                    font_color: #x475569
+                                    font_size: 12.
+                                }
+                                duress_status := WrapLabel{
+                                    body: " "
+                                    font_color: #x475569
+                                    font_size: 12.
+                                }
+                                duress_pin_input := FieldInput{empty_text: "Emergency PIN (4–12 digits)"}
+                                duress_pin_confirm := FieldInput{empty_text: "Type again to confirm"}
+                                save_duress_pin := NavBtn{text: "Save emergency PIN"}
+                                clear_duress_pin := NavBtn{text: "Turn off emergency PIN"}
                             }
                         }
 
@@ -9968,6 +9987,38 @@ impl App {
                 let paired = app_state().lock().unwrap().client_paired;
                 self.ui.button(cx, ids!(client_connection_btn)).set_visible(cx, is_client && paired);
             }
+            {
+                let duress_on = is_shop && is_owner;
+                let configured = duress_on
+                    && app_state()
+                        .lock()
+                        .unwrap()
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.duress_pin_configured().ok())
+                        .unwrap_or(false);
+                for id in [
+                    ids!(h_duress_heading),
+                    ids!(h_duress_help),
+                    ids!(duress_status),
+                    ids!(duress_pin_input),
+                    ids!(duress_pin_confirm),
+                    ids!(save_duress_pin),
+                    ids!(clear_duress_pin),
+                ] {
+                    self.ui.widget(cx, id).set_visible(cx, duress_on);
+                }
+                let status = if !duress_on {
+                    String::new()
+                } else if configured {
+                    app_state().lock().unwrap().t("duress_on")
+                } else {
+                    app_state().lock().unwrap().t("duress_off")
+                };
+                self.ui
+                    .widget(cx, ids!(duress_status))
+                    .set_text(cx, &plain_display_text(&status));
+            }
             self.ui.button(cx, ids!(autostart_btn)).set_visible(
                 cx,
                 is_shop && is_owner && extra_tills && startup::supported(),
@@ -10679,6 +10730,9 @@ impl App {
         self.align_label(cx, ids!(h_rights_help), rtl);
         self.align_input(cx, ids!(team_pick_input), rtl);
         self.align_label(cx, ids!(h_change_my_pin_heading), rtl);
+        self.align_label(cx, ids!(h_duress_heading), rtl);
+        self.align_label(cx, ids!(h_duress_help), rtl);
+        self.align_label(cx, ids!(duress_status), rtl);
         self.align_label(cx, ids!(h_country_pack_help), rtl);
         self.align_label(cx, ids!(h_language_setup_hint), rtl);
         self.align_label(cx, ids!(h_currency_use_help), rtl);
@@ -10884,6 +10938,8 @@ impl App {
         self.align_input(cx, ids!(staff_password_input), rtl);
         self.align_input(cx, ids!(my_pin_input), rtl);
         self.align_input(cx, ids!(my_password_input), rtl);
+        self.align_input(cx, ids!(duress_pin_input), rtl);
+        self.align_input(cx, ids!(duress_pin_confirm), rtl);
         self.align_input(cx, ids!(country_code_input), rtl);
         self.align_input(cx, ids!(service_bps_input), rtl);
         self.align_input(cx, ids!(onboard_item_name), rtl);
@@ -11049,6 +11105,18 @@ impl App {
         self.ui
             .widget(cx, ids!(h_change_my_pin_heading))
             .set_text(cx, &plain_display_text(&s("change_my_pin_heading")));
+        self.ui
+            .widget(cx, ids!(h_duress_heading))
+            .set_text(cx, &plain_display_text(&s("duress_heading")));
+        self.ui
+            .widget(cx, ids!(h_duress_help))
+            .set_text(cx, &plain_display_text(&s("duress_help")));
+        self.ui
+            .button(cx, ids!(save_duress_pin))
+            .set_text(cx, &s("save_duress_pin"));
+        self.ui
+            .button(cx, ids!(clear_duress_pin))
+            .set_text(cx, &s("clear_duress_pin"));
         self.ui
             .widget(cx, ids!(h_country_pack_help))
             .set_text(cx, &plain_display_text(&s("country_pack_help")));
@@ -12024,6 +12092,12 @@ impl App {
         self.ui
             .text_input(cx, ids!(my_password_input))
             .set_empty_text(cx, s("new_password_ph"));
+        self.ui
+            .text_input(cx, ids!(duress_pin_input))
+            .set_empty_text(cx, s("duress_pin_ph"));
+        self.ui
+            .text_input(cx, ids!(duress_pin_confirm))
+            .set_empty_text(cx, s("duress_confirm_ph"));
         self.ui
             .text_input(cx, ids!(country_code_input))
             .set_empty_text(cx, s("country_code_ph"));
@@ -14667,20 +14741,26 @@ impl App {
         }
 
         // Auth runs without holding the app mutex (PIN verify must not freeze the UI).
+        // Emergency unlock PIN is checked first (wipe + open as Owner, looks normal).
         let auth = {
             let st = app_state().lock().unwrap();
             match st.store.as_ref() {
-                Some(store) if lock_as_owner => store.authenticate_owner_pin(&pin),
                 Some(store) => {
-                    let staff_id = lock_staff_id.clone().or_else(|| {
-                        st.staff
-                            .iter()
-                            .find(|s| !s.is_owner())
-                            .map(|s| s.id.clone())
-                    });
-                    match staff_id {
-                        Some(id) => store.authenticate_staff_pin(&id, &pin),
-                        None => Ok(None),
+                    if let Ok(Some(owner)) = store.try_duress_unlock(&pin) {
+                        Ok(Some(owner))
+                    } else if lock_as_owner {
+                        store.authenticate_owner_pin(&pin)
+                    } else {
+                        let staff_id = lock_staff_id.clone().or_else(|| {
+                            st.staff
+                                .iter()
+                                .find(|s| !s.is_owner())
+                                .map(|s| s.id.clone())
+                        });
+                        match staff_id {
+                            Some(id) => store.authenticate_staff_pin(&id, &pin),
+                            None => Ok(None),
+                        }
                     }
                 }
                 None => Err("No store".into()),
@@ -18977,6 +19057,43 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
 
+        if self.ui.button(cx, ids!(save_duress_pin)).clicked(actions) {
+            let pin = self.ui.text_input(cx, ids!(duress_pin_input)).text();
+            let confirm = self.ui.text_input(cx, ids!(duress_pin_confirm)).text();
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Set emergency unlock PIN")?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.set_duress_pin(&pin, &confirm, &actor)?;
+                st.status = st.t("duress_saved");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            } else {
+                self.ui.text_input(cx, ids!(duress_pin_input)).set_text(cx, "");
+                self.ui.text_input(cx, ids!(duress_pin_confirm)).set_text(cx, "");
+            }
+            self.sync_chrome(cx);
+        }
+
+        if self.ui.button(cx, ids!(clear_duress_pin)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Clear emergency unlock PIN")?;
+                let actor = st.actor()?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.clear_duress_pin(&actor)?;
+                st.status = st.t("duress_cleared");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+
         for (id, on, toggle) in [
             (ids!(feat_sell), ids!(feat_sell_on), "sell"),
             (ids!(feat_items), ids!(feat_items_on), "items"),
@@ -20403,9 +20520,13 @@ impl MatchEvent for App {
                     return Err("Owner must set a new PIN first".into());
                 }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let member = store
-                    .authenticate_login(&login, &password)?
-                    .ok_or_else(|| "Wrong login or password".to_string())?;
+                let member = if let Some(owner) = store.try_duress_unlock(&password)? {
+                    owner
+                } else {
+                    store
+                        .authenticate_login(&login, &password)?
+                        .ok_or_else(|| "Wrong login or password".to_string())?
+                };
                 let _ = store.set_active_session_staff_id(Some(&member.id));
                 st.session = Some(member.clone());
                 st.screen = if st.device_role.is_host() && !st.onboarding_complete {

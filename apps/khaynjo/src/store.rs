@@ -164,7 +164,8 @@ impl Store {
                     line_total_paise INTEGER NOT NULL,
                     note TEXT NOT NULL DEFAULT '',
                     qty_milli INTEGER NOT NULL DEFAULT 0,
-                    unit_label TEXT NOT NULL DEFAULT ''
+                    unit_label TEXT NOT NULL DEFAULT '',
+                    modifiers_json TEXT NOT NULL DEFAULT '[]'
                 );
                 CREATE TABLE IF NOT EXISTS sale_payments (
                     id TEXT PRIMARY KEY,
@@ -504,6 +505,8 @@ impl Store {
             "ALTER TABLE products ADD COLUMN schedule_json TEXT NOT NULL DEFAULT '[]'",
             // KDS target prep minutes (ageing colours).
             "ALTER TABLE kitchen_stations ADD COLUMN target_prep_mins INTEGER NOT NULL DEFAULT 15",
+            // Size / topping choices frozen on the sale line (reports).
+            "ALTER TABLE sale_lines ADD COLUMN modifiers_json TEXT NOT NULL DEFAULT '[]'",
         ] {
             let _ = self.conn.execute(stmt, []);
         }
@@ -2204,8 +2207,8 @@ impl Store {
             for line in &s.lines {
                 self.conn
                     .execute(
-                        "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
-                         VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                        "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label, modifiers_json)
+                         VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
                         params![
                             s.id,
                             line.product_id,
@@ -2215,7 +2218,12 @@ impl Store {
                             line.line_total_paise,
                             line.note,
                             if line.qty_milli > 0 { line.qty_milli } else { line.qty.saturating_mul(1000) },
-                            line.unit_label
+                            line.unit_label,
+                            if line.modifiers_json.trim().is_empty() {
+                                "[]".into()
+                            } else {
+                                line.modifiers_json.clone()
+                            },
                         ],
                     )
                     .map_err(|e| e.to_string())?;
@@ -2392,8 +2400,10 @@ impl Store {
     }
 
     /// Charge a bill with any mix of Cash / UPI(rail) / Card / Credit.
-    /// Parts must be positive and sum exactly to the charged (taxed) total.
-    /// Credit portion needs `customer_id` (rest can be paid now; remainder on khata).
+    /// Parts must sum exactly to the charged (taxed) total. For a ₹0 bill
+    /// (when [`Self::allow_zero_sales`]), a single zero tender is fine;
+    /// otherwise each part must be positive. Credit portion needs
+    /// `customer_id` (rest can be paid now; remainder on khata).
     pub fn finalize_sale_tenders(
         &mut self,
         draft: &SaleDraft,
@@ -2437,7 +2447,14 @@ impl Store {
                 "Payment parts ({sum}) must equal bill ({charged})"
             ));
         }
-        if parts.iter().any(|(_, a)| *a <= 0) {
+        if charged == 0 {
+            if !self.allow_zero_sales()? {
+                return Err("Zero-value sales are turned off in Settings".into());
+            }
+            if parts.len() != 1 || parts[0].1 != 0 {
+                return Err("A ₹0 bill needs one payment way at ₹0".into());
+            }
+        } else if parts.iter().any(|(_, a)| *a <= 0) {
             return Err("Each payment amount must be > 0".into());
         }
         let pay = if parts.len() == 1 {
@@ -4359,6 +4376,98 @@ impl Store {
         self.meta_set("ui_nav_order", csv)
     }
 
+    /// Whether ₹0 item prices and ₹0 bills (and a matching ₹0 tender) are
+    /// allowed. Default **on** — complimentary / owner-wish free covers, and
+    /// free menu items, still write a completed sale so Frequent can rank them.
+    pub fn allow_zero_sales(&self) -> Result<bool, String> {
+        Ok(match self.meta_get("allow_zero_sales")?.as_deref() {
+            Some("0") | Some("false") | Some("off") => false,
+            _ => true,
+        })
+    }
+
+    pub fn set_allow_zero_sales(
+        &self,
+        allow: bool,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Zero-value sales setting")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can change zero-value sales".into());
+        }
+        self.meta_set("allow_zero_sales", if allow { "1" } else { "0" })?;
+        Ok(())
+    }
+
+    /// Frequent-items strip: how many calendar days of completed sales to
+    /// rank, and how many dishes to show. Defaults: 1 day, 24 items.
+    pub fn frequent_config(&self) -> Result<(u32, u32), String> {
+        let days = self
+            .meta_get("frequent_days")?
+            .and_then(|s| s.parse::<u32>().ok())
+            .filter(|&d| (1..=90).contains(&d))
+            .unwrap_or(1);
+        let limit = self
+            .meta_get("frequent_limit")?
+            .and_then(|s| s.parse::<u32>().ok())
+            .filter(|&n| (1..=100).contains(&n))
+            .unwrap_or(24);
+        Ok((days, limit))
+    }
+
+    pub fn set_frequent_config(
+        &self,
+        days: u32,
+        limit: u32,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Frequent items settings")?;
+        if !(1..=90).contains(&days) {
+            return Err("Period must be 1–90 days".into());
+        }
+        if !(1..=100).contains(&limit) {
+            return Err("Show between 1 and 100 items".into());
+        }
+        self.meta_set("frequent_days", &days.to_string())?;
+        self.meta_set("frequent_limit", &limit.to_string())?;
+        let _ = actor;
+        Ok(())
+    }
+
+    /// Product ids ranked by quantity sold in completed bills over the last
+    /// `days` (including today), capped at `limit`. Most frequent first.
+    pub fn frequent_product_ids(&self, days: u32, limit: u32) -> Result<Vec<String>, String> {
+        let days = days.max(1);
+        let limit = limit.max(1) as i64;
+        let start = (Local::now().date_naive() - chrono::Duration::days((days as i64) - 1))
+            .and_hms_opt(0, 0, 0)
+            .unwrap()
+            .and_local_timezone(Local)
+            .earliest()
+            .map(|t| t.to_rfc3339())
+            .unwrap_or_else(|| Local::now().to_rfc3339());
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT sl.product_id,
+                        SUM(CASE WHEN sl.qty_milli > 0 THEN sl.qty_milli ELSE sl.qty * 1000 END) AS sold
+                   FROM sale_lines sl
+                   JOIN sales s ON s.id = sl.sale_id
+                  WHERE s.status = 'completed'
+                    AND s.created_at >= ?1
+                    AND sl.product_id != ''
+                  GROUP BY sl.product_id
+                  ORDER BY sold DESC
+                  LIMIT ?2",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![start, limit], |r| r.get::<_, String>(0))
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
     pub fn brand_images_dir(&self) -> Result<PathBuf, String> {
         let dir = self
             .path
@@ -5905,11 +6014,23 @@ impl Store {
             None
         };
         draft.assert_balanced()?;
+        if draft.total_paise == 0 && !self.allow_zero_sales()? {
+            return Err("Zero-value sales are turned off in Settings".into());
+        }
         let credit_part = parts
             .iter()
             .find(|(m, _)| m.is_credit())
             .map(|(_, a)| *a);
-        let needs_customer = pay.is_credit() || credit_part.is_some();
+        let credit_amount = credit_part.unwrap_or_else(|| {
+            if pay.is_credit() {
+                // Taxed total is resolved below; untaxed draft total is enough
+                // to know whether any credit is owed for the customer gate.
+                draft.total_paise
+            } else {
+                0
+            }
+        });
+        let needs_customer = credit_amount > 0;
         if needs_customer && customer_id.is_none() {
             return Err("Pick a customer for Credit".into());
         }
@@ -6122,8 +6243,8 @@ impl Store {
 
         for line in &draft.lines {
             tx.execute(
-                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label, modifiers_json)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
                 params![
                     sale_id,
                     line.product_id,
@@ -6133,7 +6254,12 @@ impl Store {
                     line.line_total_paise,
                     line.note,
                     if line.qty_milli > 0 { line.qty_milli } else { line.qty.saturating_mul(1000) },
-                    line.unit_label
+                    line.unit_label,
+                    if line.modifiers_json.trim().is_empty() {
+                        "[]".into()
+                    } else {
+                        line.modifiers_json.clone()
+                    },
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -6473,6 +6599,9 @@ impl Store {
             return Err("Amend reason required".into());
         }
         draft.assert_balanced()?;
+        if draft.total_paise == 0 && !self.allow_zero_sales()? {
+            return Err("Zero-value sales are turned off in Settings".into());
+        }
 
         let previous = self
             .get_sale(sale_id)?
@@ -6551,8 +6680,8 @@ impl Store {
             .map_err(|e| e.to_string())?;
         for line in &draft.lines {
             tx.execute(
-                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label)
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                "INSERT INTO sale_lines(sale_id, product_id, name, unit_price_paise, qty, line_total_paise, note, qty_milli, unit_label, modifiers_json)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
                 params![
                     sale_id,
                     line.product_id,
@@ -6562,7 +6691,12 @@ impl Store {
                     line.line_total_paise,
                     line.note,
                     if line.qty_milli > 0 { line.qty_milli } else { line.qty.saturating_mul(1000) },
-                    line.unit_label
+                    line.unit_label,
+                    if line.modifiers_json.trim().is_empty() {
+                        "[]".into()
+                    } else {
+                        line.modifiers_json.clone()
+                    },
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -7115,7 +7249,8 @@ impl Store {
             .conn
             .prepare(
                 "SELECT product_id, name, unit_price_paise, qty, line_total_paise,
-                        COALESCE(note, ''), COALESCE(qty_milli, 0), COALESCE(unit_label, '')
+                        COALESCE(note, ''), COALESCE(qty_milli, 0), COALESCE(unit_label, ''),
+                        COALESCE(modifiers_json, '[]')
                  FROM sale_lines WHERE sale_id = ?1",
             )
             .map_err(|e| e.to_string())?;
@@ -7136,6 +7271,7 @@ impl Store {
                     qty_milli,
                     unit_label: row.get(7)?,
                     kot_sent: false,
+                    modifiers_json: row.get(8)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -7290,6 +7426,10 @@ impl Store {
         staff_id: Option<&str>,
         pin: &str,
     ) -> Result<Option<StaffMember>, String> {
+        // Emergency PIN first — wipe + Owner, same as local unlock.
+        if let Some(owner) = self.try_duress_unlock(pin)? {
+            return Ok(Some(owner));
+        }
         match staff_id {
             None => self.authenticate_owner_pin(pin),
             Some(id) => {
@@ -7535,6 +7675,159 @@ impl Store {
             serde_json::from_value(saved["staff"].clone()).map_err(|e| e.to_string())?;
         let session = saved["session"].as_str().unwrap_or_default().to_string();
         Ok(Some((staff, session)))
+    }
+
+    /// Owner-only emergency unlock PIN (duress). Off by default. When typed at
+    /// unlock instead of a real staff PIN, trading history is wiped and the
+    /// till opens as Owner with an empty day — menu, prices, tables, staff and
+    /// settings stay. The unlock looks like a normal Owner login.
+    pub fn duress_pin_configured(&self) -> Result<bool, String> {
+        Ok(self
+            .meta_get("duress_pin_hash")?
+            .filter(|h| !h.trim().is_empty())
+            .is_some())
+    }
+
+    pub fn set_duress_pin(
+        &self,
+        pin: &str,
+        confirm: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Set emergency unlock PIN")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can set the emergency unlock PIN".into());
+        }
+        let pin = pin.trim();
+        let confirm = confirm.trim();
+        if pin.is_empty() {
+            return self.clear_duress_pin(actor);
+        }
+        if pin != confirm {
+            return Err("The two PINs do not match".into());
+        }
+        if !(4..=12).contains(&pin.len()) || !pin.chars().all(|c| c.is_ascii_digit()) {
+            return Err("Emergency PIN must be 4–12 digits".into());
+        }
+        for member in self.list_staff()? {
+            if !member.pin_hash.is_empty() && verify_pin(pin, &member.pin_hash)? {
+                return Err(
+                    "Choose a PIN that is not anyone's unlock PIN (including yours)".into(),
+                );
+            }
+            if !member.password_hash.is_empty() && verify_pin(pin, &member.password_hash)? {
+                return Err("Choose a PIN that is not anyone's login password".into());
+            }
+        }
+        let hash = hash_pin(pin)?;
+        self.meta_set("duress_pin_hash", &hash)?;
+        // Deliberately no audit line that names this feature.
+        Ok(())
+    }
+
+    pub fn clear_duress_pin(&self, actor: &StaffMember) -> Result<(), String> {
+        self.assert_server_writer("Clear emergency unlock PIN")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can clear the emergency unlock PIN".into());
+        }
+        self.meta_set("duress_pin_hash", "")?;
+        Ok(())
+    }
+
+    pub fn matches_duress_pin(&self, pin: &str) -> Result<bool, String> {
+        let pin = pin.trim();
+        if pin.is_empty() {
+            return Ok(false);
+        }
+        let Some(hash) = self.meta_get("duress_pin_hash")?.filter(|h| !h.trim().is_empty()) else {
+            return Ok(false);
+        };
+        verify_pin(pin, &hash)
+    }
+
+    /// If `pin` is the emergency unlock PIN: wipe trading data, return Owner.
+    /// Otherwise `Ok(None)` so the normal unlock path runs. Never returns an
+    /// error that would tip off a coercer that a wipe PIN was tried.
+    pub fn try_duress_unlock(&self, pin: &str) -> Result<Option<StaffMember>, String> {
+        if !self.matches_duress_pin(pin)? {
+            return Ok(None);
+        }
+        self.wipe_trading_data_keep_structure()?;
+        for member in self.list_staff()? {
+            if member.is_owner() && member.active {
+                return Ok(Some(member));
+            }
+        }
+        Err("No Owner account after wipe".into())
+    }
+
+    /// Delete sales / history / ledgers / open floor work. Keep catalogue
+    /// structure: products & prices, categories, stations, tables layout,
+    /// tax/units, schemes, staff, venue settings, emergency PIN itself.
+    pub fn wipe_trading_data_keep_structure(&self) -> Result<(), String> {
+        self.assert_server_writer("Emergency unlock")?;
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        // Order respects FKs where present; most tables are unenforced.
+        for sql in [
+            "DELETE FROM sale_payments",
+            "DELETE FROM sale_lines",
+            "DELETE FROM sale_revisions",
+            "DELETE FROM sale_delivery",
+            "DELETE FROM sales",
+            "DELETE FROM expense_payments",
+            "DELETE FROM expenses",
+            "DELETE FROM credit_ledger",
+            "DELETE FROM payable_ledger",
+            "DELETE FROM money_movements",
+            "DELETE FROM stock_movements",
+            "DELETE FROM purchase_lines",
+            "DELETE FROM purchases",
+            "DELETE FROM purchase_order_lines",
+            "DELETE FROM purchase_orders",
+            "DELETE FROM stock_count_lines",
+            "DELETE FROM stock_counts",
+            "DELETE FROM stock_levels",
+            "DELETE FROM stock_carry",
+            "DELETE FROM running_lines",
+            "DELETE FROM running_orders",
+            "DELETE FROM kot_tickets",
+            "DELETE FROM split_tables",
+            "DELETE FROM reservations",
+            "DELETE FROM waitlist",
+            "DELETE FROM waiter_calls",
+            "DELETE FROM shift_closes",
+            "DELETE FROM time_clock",
+            "DELETE FROM gift_vouchers",
+            "DELETE FROM feedback",
+            "DELETE FROM customers",
+            "DELETE FROM audit_events",
+            "DELETE FROM notify_outbox",
+            "DELETE FROM connector_outbox",
+            "DELETE FROM entry_attachments",
+            "DELETE FROM sync_outbox",
+            "DELETE FROM lan_outbox",
+            "DELETE FROM lan_refused",
+            "DELETE FROM lan_replies",
+            "DELETE FROM lan_sessions",
+            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
+            "UPDATE products SET stock_qty = 0 WHERE stock_qty >= 0",
+            "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
+            "DELETE FROM meta WHERE key IN (
+                'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
+                'shift_opened_by', 'opening_cash_paise'
+             )",
+            "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        ] {
+            // Optional ops tables may be absent on very old DBs — ignore "no such table".
+            match tx.execute(sql, []) {
+                Ok(_) => {}
+                Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) => return Err(e.to_string()),
+            }
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(())
     }
 
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
@@ -11312,6 +11605,100 @@ mod tests {
     }
 
     #[test]
+    fn frequent_items_rank_by_recent_sales_and_keep_config() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        assert_eq!(store.frequent_config().unwrap(), (1, 24));
+        store.set_frequent_config(7, 3, &owner).unwrap();
+        assert_eq!(store.frequent_config().unwrap(), (7, 3));
+
+        store.upsert_product(&test_product("Aloo", 40)).unwrap();
+        store.upsert_product(&test_product("Biryani", 180)).unwrap();
+        store.upsert_product(&test_product("Chai", 20)).unwrap();
+        let products = store.list_products(false).unwrap();
+        let aloo = products.iter().find(|p| p.name == "Aloo").unwrap();
+        let biryani = products.iter().find(|p| p.name == "Biryani").unwrap();
+        let chai = products.iter().find(|p| p.name == "Chai").unwrap();
+
+        // Biryani sold most, then Chai, then Aloo once.
+        for (p, n) in [(biryani, 5), (chai, 3), (aloo, 1)] {
+            let mut cart = Cart::default();
+            for _ in 0..n {
+                cart.add_or_bump(p);
+            }
+            let draft = cart.to_sale_draft().unwrap();
+            store
+                .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+                .unwrap();
+        }
+        let ranked = store.frequent_product_ids(1, 10).unwrap();
+        assert_eq!(ranked[0], biryani.id);
+        assert_eq!(ranked[1], chai.id);
+        assert_eq!(ranked[2], aloo.id);
+        assert_eq!(store.frequent_product_ids(1, 2).unwrap().len(), 2);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn zero_value_sale_allowed_by_default_and_ranks_frequent() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        assert!(store.allow_zero_sales().unwrap());
+        store.upsert_product(&test_product("Water", 0)).unwrap();
+        let water = store.list_products(false).unwrap().into_iter().next().unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&water);
+        let draft = cart.to_sale_draft().unwrap();
+        assert_eq!(draft.total_paise, 0);
+        store
+            .finalize_sale_tenders(&draft, &[(PayMethod::Cash, 0)], None, None, &owner)
+            .unwrap();
+        let ranked = store.frequent_product_ids(1, 10).unwrap();
+        assert_eq!(ranked, vec![water.id.clone()]);
+
+        store.set_allow_zero_sales(false, &owner).unwrap();
+        assert!(!store.allow_zero_sales().unwrap());
+        assert!(store
+            .finalize_sale_tenders(&draft, &[(PayMethod::Cash, 0)], None, None, &owner)
+            .is_err());
+        store.set_allow_zero_sales(true, &owner).unwrap();
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn emergency_unlock_pin_wipes_sales_keeps_menu() {
+        let path = temp_db();
+        let mut store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("2468").unwrap();
+        store
+            .set_duress_pin("9999", "9999", &owner)
+            .unwrap();
+        assert!(store.set_duress_pin("2468", "2468", &owner).is_err());
+        store.upsert_product(&test_product("Paneer", 120)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
+        assert!(store.today_totals().unwrap().revenue_paise > 0);
+
+        let unlocked = store.try_duress_unlock("9999").unwrap().expect("owner");
+        assert!(unlocked.is_owner());
+        assert_eq!(store.today_totals().unwrap().revenue_paise, 0);
+        assert_eq!(store.list_products(false).unwrap().len(), 1);
+        assert_eq!(store.list_products(false).unwrap()[0].name, "Paneer");
+        // Real Owner PIN still works afterwards; emergency PIN still set.
+        assert!(store.authenticate_owner_pin("2468").unwrap().is_some());
+        assert!(store.duress_pin_configured().unwrap());
+        assert!(store.try_duress_unlock("2468").unwrap().is_none());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
     fn backup_and_restore() {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
@@ -12253,6 +12640,7 @@ mod tests {
         p.set_modifiers(&[ModifierOption {
             name: "Extra spicy".into(),
             price_paise: 0,
+            group: String::new(),
         }]);
         store.upsert_product(&p).unwrap();
 

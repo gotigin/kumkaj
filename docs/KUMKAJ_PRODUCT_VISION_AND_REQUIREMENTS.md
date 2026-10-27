@@ -679,6 +679,14 @@ Initial role concepts discussed include:
 
 Staff PINs are useful for fast local POS access.
 
+**Emergency unlock PIN (duress), suite-wide:** the Owner may optionally
+set a second PIN that is not anyone's unlock PIN. If that PIN is typed
+at unlock, the app wipes trading history (sales / bookings / ledgers /
+audit) and opens as Owner with empty books, while catalogue structure
+(items and prices, rates, parties, tables layout, staff, settings)
+remains. The unlock must look like a normal successful login so a
+coercer is not tipped off. Off by default; Owner-only; never required.
+
 Sensitive actions such as high discounts, refunds, voids or stock
 corrections should be permission-controlled and recorded with a
 reason/audit event where appropriate.

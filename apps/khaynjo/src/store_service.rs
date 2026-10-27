@@ -511,6 +511,54 @@ impl Store {
             counts.into_iter().map(|(k, (n, p))| (k, n, p)).collect()
         };
         section(&mut out, "Schemes", &scheme_rows, &|k| k.to_string(), &bills);
+
+        // Variations (Size Large) and add-ons (Toppings Cheese) from sale lines.
+        let option_rows: Vec<(String, i64, i64)> = {
+            let mut stmt = self
+                .conn
+                .prepare(
+                    "SELECT l.modifiers_json,
+                            CASE WHEN l.qty_milli > 0 THEN l.qty_milli ELSE l.qty * 1000 END
+                       FROM sale_lines l
+                       JOIN sales s ON s.id = l.sale_id
+                      WHERE s.created_at >= ?1 AND s.created_at < ?1 || 'Z'
+                        AND s.status = 'completed'
+                        AND l.modifiers_json != '' AND l.modifiers_json != '[]'",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![day], |r| Ok((r.get::<_, String>(0)?, r.get::<_, i64>(1)?)))
+                .map_err(|e| e.to_string())?;
+            let mut counts: std::collections::BTreeMap<String, (i64, i64)> =
+                std::collections::BTreeMap::new();
+            for row in rows {
+                let (json, milli) = row.map_err(|e| e.to_string())?;
+                let mods: Vec<crate::domain::ModifierOption> =
+                    serde_json::from_str(&json).unwrap_or_default();
+                let portions = (milli / 1000).max(1);
+                for m in mods {
+                    let key = if m.group.is_empty() || m.group == "Options" {
+                        m.name
+                    } else {
+                        format!("{} · {}", m.group, m.name)
+                    };
+                    let e = counts.entry(key).or_insert((0, 0));
+                    e.0 += portions;
+                    e.1 += m.price_paise.saturating_mul(portions);
+                }
+            }
+            let mut v: Vec<_> = counts.into_iter().map(|(k, (n, p))| (k, n, p)).collect();
+            v.sort_by(|a, b| b.2.cmp(&a.2).then_with(|| b.1.cmp(&a.1)));
+            v.truncate(20);
+            v
+        };
+        section(
+            &mut out,
+            "Options sold (sizes & toppings)",
+            &option_rows,
+            &|k| k.to_string(),
+            &|n| format!("×{n}"),
+        );
         Ok(out)
     }
 }
@@ -553,6 +601,54 @@ mod tests {
         store.set_reservation_status(&r.id, "seated", &owner).unwrap();
         assert!(store.set_reservation_status(&r.id, "cancelled", &owner).is_err());
         assert_eq!(store.upcoming_reservations().unwrap().len(), 1);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn day_report_totals_sizes_and_toppings_sold() {
+        use crate::domain::{ModifierGroup, ModifierOption};
+        let (mut store, path) = shop();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let mut pizza = store.list_products(false).unwrap().remove(0);
+        pizza.name = "Pizza".into();
+        pizza.price = Money(0);
+        let groups = ModifierGroup::parse_human_list(
+            "Size*: Small=100, Large=200 | Toppings+2: Cheese=40",
+            "INR",
+        )
+        .unwrap();
+        pizza.set_modifier_groups(&groups);
+        store.upsert_product(&pizza).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&pizza);
+        let large = ModifierOption {
+            name: "Large".into(),
+            price_paise: 20_000,
+            group: "Size".into(),
+        };
+        let cheese = ModifierOption {
+            name: "Cheese".into(),
+            price_paise: 4_000,
+            group: "Toppings".into(),
+        };
+        cart.toggle_modifier_in_groups(0, &large, &groups).unwrap();
+        cart.toggle_modifier_in_groups(0, &cheese, &groups).unwrap();
+        store
+            .finalize_sale(
+                &cart.to_sale_draft().unwrap(),
+                PayMethod::Cash,
+                None,
+                None,
+                &owner,
+            )
+            .unwrap();
+        let report = store.restaurant_day_report_text().unwrap();
+        assert!(
+            report.contains("Options sold")
+                && report.contains("Size · Large")
+                && report.contains("Toppings · Cheese"),
+            "{report}"
+        );
         let _ = std::fs::remove_file(path);
     }
 

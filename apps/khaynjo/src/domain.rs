@@ -1153,26 +1153,129 @@ pub fn kot_age_band(minutes: i64, target_prep_mins: i64) -> KotAgeBand {
     }
 }
 
-/// One paid add-on for an item (`Extra cheese +₹20`).
+/// One paid choice for an item (`Extra cheese +₹20`, or `Large` under Size).
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ModifierOption {
     pub name: String,
     #[serde(default)]
     pub price_paise: i64,
+    /// Catalogue group this option belongs to (`Size`, `Toppings`). Empty on
+    /// legacy flat lists / when the group is the default "Options".
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub group: String,
+}
+
+/// How a [`ModifierGroup`] behaves at the till (Petpooja-style).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ModifierGroupKind {
+    /// Pick one (size, crust). Price adds to the base item price.
+    Variation,
+    /// Pick any that apply (toppings). Each adds its own price.
+    #[default]
+    Addon,
+}
+
+impl ModifierGroupKind {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Variation => "variation",
+            Self::Addon => "addon",
+        }
+    }
+
+    pub fn parse(s: &str) -> Self {
+        match s.trim().to_ascii_lowercase().as_str() {
+            "variation" | "var" | "size" => Self::Variation,
+            _ => Self::Addon,
+        }
+    }
+}
+
+/// Named set of choices on one dish — e.g. Size (variation) or Toppings (add-ons).
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ModifierGroup {
+    pub name: String,
+    #[serde(default)]
+    pub kind: ModifierGroupKind,
+    /// Minimum selections (variation defaults to 1; add-on to 0).
+    #[serde(default)]
+    pub min: u32,
+    /// Maximum selections (`0` = no cap). Variation is always capped at 1.
+    #[serde(default)]
+    pub max: u32,
+    pub options: Vec<ModifierOption>,
+}
+
+impl Default for ModifierGroup {
+    fn default() -> Self {
+        Self {
+            name: "Options".into(),
+            kind: ModifierGroupKind::Addon,
+            min: 0,
+            max: 0,
+            options: Vec::new(),
+        }
+    }
+}
+
+impl ModifierGroup {
+    pub fn is_variation(&self) -> bool {
+        self.kind == ModifierGroupKind::Variation
+    }
+
+    pub fn max_allowed(&self) -> usize {
+        if self.is_variation() {
+            1
+        } else if self.max == 0 {
+            usize::MAX
+        } else {
+            self.max as usize
+        }
+    }
+
+    pub fn min_required(&self) -> usize {
+        if self.is_variation() {
+            self.min.max(1) as usize
+        } else {
+            self.min as usize
+        }
+    }
 }
 
 impl ModifierOption {
-    /// Parse a `modifiers_json` column. Bad/empty JSON reads as "no modifiers".
+    /// Parse a `modifiers_json` column as a flat option list (legacy). Prefer
+    /// [`ModifierGroup::parse_list`] / [`Product::modifier_groups`].
     pub fn parse_list(json: &str) -> Vec<Self> {
-        let s = json.trim();
-        if s.is_empty() {
-            return Vec::new();
-        }
-        serde_json::from_str(s).unwrap_or_default()
+        ModifierGroup::parse_list(json)
+            .into_iter()
+            .flat_map(|g| {
+                let group = g.name.clone();
+                g.options.into_iter().map(move |mut o| {
+                    if o.group.is_empty() {
+                        o.group = group.clone();
+                    }
+                    o
+                })
+            })
+            .collect()
     }
 
     pub fn serialize_list(list: &[Self]) -> String {
-        serde_json::to_string(list).unwrap_or_else(|_| "[]".into())
+        // Keep writing the compact legacy shape when nothing is grouped.
+        if list.iter().all(|o| o.group.is_empty() || o.group == "Options") {
+            let flat: Vec<Self> = list
+                .iter()
+                .map(|o| Self {
+                    name: o.name.clone(),
+                    price_paise: o.price_paise,
+                    group: String::new(),
+                })
+                .collect();
+            return serde_json::to_string(&flat).unwrap_or_else(|_| "[]".into());
+        }
+        let groups = ModifierGroup::from_flat_options(list);
+        ModifierGroup::serialize_list(&groups)
     }
 
     pub fn price(&self) -> Money {
@@ -1206,10 +1309,236 @@ impl ModifierOption {
             out.push(Self {
                 name: name.to_string(),
                 price_paise,
+                group: String::new(),
             });
         }
         Ok(out)
     }
+}
+
+impl ModifierGroup {
+    /// Parse `modifiers_json`: either a group array or a legacy flat option list.
+    pub fn parse_list(json: &str) -> Vec<Self> {
+        let s = json.trim();
+        if s.is_empty() {
+            return Vec::new();
+        }
+        let Ok(value) = serde_json::from_str::<serde_json::Value>(s) else {
+            return Vec::new();
+        };
+        let serde_json::Value::Array(arr) = value else {
+            return Vec::new();
+        };
+        if arr.is_empty() {
+            return Vec::new();
+        }
+        if arr
+            .first()
+            .and_then(|v| v.get("options"))
+            .map(|o| o.is_array())
+            .unwrap_or(false)
+        {
+            return serde_json::from_value(serde_json::Value::Array(arr)).unwrap_or_default();
+        }
+        let opts: Vec<ModifierOption> =
+            serde_json::from_value(serde_json::Value::Array(arr)).unwrap_or_default();
+        if opts.is_empty() {
+            Vec::new()
+        } else {
+            vec![Self {
+                name: "Options".into(),
+                kind: ModifierGroupKind::Addon,
+                min: 0,
+                max: 0,
+                options: opts,
+            }]
+        }
+    }
+
+    pub fn serialize_list(list: &[Self]) -> String {
+        if list.is_empty() {
+            return "[]".into();
+        }
+        // One unnamed Options add-on group → legacy flat array (smaller, compatible).
+        if list.len() == 1
+            && list[0].kind == ModifierGroupKind::Addon
+            && (list[0].name.is_empty() || list[0].name == "Options")
+            && list[0].min == 0
+            && list[0].max == 0
+        {
+            let flat: Vec<ModifierOption> = list[0]
+                .options
+                .iter()
+                .map(|o| ModifierOption {
+                    name: o.name.clone(),
+                    price_paise: o.price_paise,
+                    group: String::new(),
+                })
+                .collect();
+            return serde_json::to_string(&flat).unwrap_or_else(|_| "[]".into());
+        }
+        serde_json::to_string(list).unwrap_or_else(|_| "[]".into())
+    }
+
+    pub(crate) fn from_flat_options(list: &[ModifierOption]) -> Vec<Self> {
+        let mut order: Vec<String> = Vec::new();
+        let mut by: std::collections::HashMap<String, Vec<ModifierOption>> =
+            std::collections::HashMap::new();
+        for o in list {
+            let g = if o.group.trim().is_empty() {
+                "Options".to_string()
+            } else {
+                o.group.trim().to_string()
+            };
+            if !order.iter().any(|n| n == &g) {
+                order.push(g.clone());
+            }
+            by.entry(g).or_default().push(ModifierOption {
+                name: o.name.clone(),
+                price_paise: o.price_paise,
+                group: String::new(),
+            });
+        }
+        order
+            .into_iter()
+            .filter_map(|name| {
+                let options = by.remove(&name)?;
+                let variation = name != "Options";
+                Some(Self {
+                    kind: if variation {
+                        ModifierGroupKind::Variation
+                    } else {
+                        ModifierGroupKind::Addon
+                    },
+                    min: if variation { 1 } else { 0 },
+                    max: if variation { 1 } else { 0 },
+                    name,
+                    options,
+                })
+            })
+            .collect()
+    }
+
+    /// Human form: `Size*: Small=199, Medium=299 | Toppings+: Mushrooms=40 | Extra cheese=20`.
+    ///
+    /// - `Name*:` — required variation (pick one)
+    /// - `Name+:` — add-ons (pick any)
+    /// - `Name:` — variation (pick one), same as `*`
+    /// - bare `a=1, b=2` — add-ons under Options
+    pub fn parse_human_list(text: &str, currency_code: &str) -> Result<Vec<Self>, String> {
+        let text = text.trim();
+        if text.is_empty() {
+            return Ok(Vec::new());
+        }
+        let mut groups: Vec<Self> = Vec::new();
+        for seg in text.split('|') {
+            let seg = seg.trim();
+            if seg.is_empty() {
+                continue;
+            }
+            let (header, body) = match seg.split_once(':') {
+                Some((h, rest)) if !h.contains('=') => (Some(h.trim()), rest.trim()),
+                _ => (None, seg),
+            };
+            let options = ModifierOption::parse_human_list(body, currency_code)?;
+            if options.is_empty() {
+                continue;
+            }
+            match header {
+                None => {
+                    if let Some(existing) = groups
+                        .iter_mut()
+                        .find(|g| g.name == "Options" && g.kind == ModifierGroupKind::Addon)
+                    {
+                        existing.options.extend(options);
+                    } else {
+                        groups.push(Self {
+                            name: "Options".into(),
+                            kind: ModifierGroupKind::Addon,
+                            min: 0,
+                            max: 0,
+                            options,
+                        });
+                    }
+                }
+                Some(raw) => {
+                    let (name, kind, min, max) = parse_group_header(raw)?;
+                    if name.is_empty() {
+                        return Err(
+                            "Option group needs a name (e.g. Size*: Small=199 or Toppings+3: …)"
+                                .into(),
+                        );
+                    }
+                    groups.push(Self {
+                        name: name.to_string(),
+                        kind,
+                        min,
+                        max,
+                        options,
+                    });
+                }
+            }
+        }
+        Ok(groups)
+    }
+
+    /// Inverse of [`Self::parse_human_list`] for the menu form.
+    pub fn format_human_list(groups: &[Self], currency_code: &str) -> String {
+        groups
+            .iter()
+            .map(|g| {
+                let opts = g
+                    .options
+                    .iter()
+                    .map(|o| {
+                        let price = crate::locale::format_major_input(o.price_paise, currency_code);
+                        if o.price_paise == 0 {
+                            o.name.clone()
+                        } else {
+                            format!("{}={price}", o.name)
+                        }
+                    })
+                    .collect::<Vec<_>>()
+                    .join(", ");
+                if g.name == "Options" && g.kind == ModifierGroupKind::Addon && g.max == 0 {
+                    opts
+                } else {
+                    let mark = match g.kind {
+                        ModifierGroupKind::Variation => "*".to_string(),
+                        ModifierGroupKind::Addon if g.max > 0 => format!("+{}", g.max),
+                        ModifierGroupKind::Addon => "+".to_string(),
+                    };
+                    format!("{}{mark}: {opts}", g.name)
+                }
+            })
+            .collect::<Vec<_>>()
+            .join(" | ")
+    }
+}
+
+/// `Size*` → variation; `Toppings+` / `Toppings+3` → add-on (optional max).
+fn parse_group_header(raw: &str) -> Result<(String, ModifierGroupKind, u32, u32), String> {
+    let raw = raw.trim();
+    if let Some(n) = raw.strip_suffix('*') {
+        let name = n.trim().trim_end_matches('+').trim();
+        return Ok((name.to_string(), ModifierGroupKind::Variation, 1, 1));
+    }
+    if let Some(idx) = raw.rfind('+') {
+        let name = raw[..idx].trim();
+        let after = raw[idx + 1..].trim();
+        let max = if after.is_empty() {
+            0u32
+        } else {
+            after
+                .parse::<u32>()
+                .map_err(|_| format!("Bad max after + in '{raw}' — use Toppings+3:"))?
+        };
+        if max > 20 {
+            return Err("Add-on max is at most 20".into());
+        }
+        return Ok((name.to_string(), ModifierGroupKind::Addon, 0, max));
+    }
+    Ok((raw.to_string(), ModifierGroupKind::Variation, 1, 1))
 }
 
 /// One named rate a shop charges, seeded from its country pack and editable.
@@ -1497,12 +1826,22 @@ impl Product {
         !self.tracks_stock() || self.stock_qty > 0
     }
 
+    /// Flat option list for chips (each option carries its [`ModifierOption::group`]).
     pub fn modifiers(&self) -> Vec<ModifierOption> {
         ModifierOption::parse_list(&self.modifiers_json)
     }
 
     pub fn set_modifiers(&mut self, list: &[ModifierOption]) {
         self.modifiers_json = ModifierOption::serialize_list(list);
+    }
+
+    /// Petpooja-style groups: Size / Crust variations and Toppings add-ons.
+    pub fn modifier_groups(&self) -> Vec<ModifierGroup> {
+        ModifierGroup::parse_list(&self.modifiers_json)
+    }
+
+    pub fn set_modifier_groups(&mut self, groups: &[ModifierGroup]) {
+        self.modifiers_json = ModifierGroup::serialize_list(groups);
     }
 
     pub fn schedule(&self) -> Vec<ScheduleWindow> {
@@ -1842,7 +2181,13 @@ impl CartLine {
         let mods = self
             .applied_modifiers
             .iter()
-            .map(|m| m.name.as_str())
+            .map(|m| {
+                if m.group.is_empty() || m.group == "Options" {
+                    m.name.clone()
+                } else {
+                    format!("{} {}", m.group, m.name)
+                }
+            })
             .collect::<Vec<_>>()
             .join(", ");
         match (mods.is_empty(), self.note.is_empty()) {
@@ -1852,7 +2197,7 @@ impl CartLine {
         }
     }
 
-    fn reprice_from_modifiers(&mut self) {
+    pub(crate) fn reprice_from_modifiers(&mut self) {
         let extra: i64 = self.applied_modifiers.iter().map(|m| m.price_paise).sum();
         self.unit_price = Money(self.base_unit_paise.saturating_add(extra));
     }
@@ -2097,28 +2442,94 @@ impl Cart {
         Ok(())
     }
 
-    /// Turn a catalogue modifier on or off for this line. The unit price
+    /// Turn a catalogue modifier on or off for this line. Variation groups
+    /// keep only one choice; add-on groups honour their max. The unit price
     /// follows. Returns whether it is on after the tap.
     pub fn toggle_modifier(
         &mut self,
         index: usize,
         modifier: &ModifierOption,
     ) -> Result<bool, String> {
+        self.toggle_modifier_in_groups(index, modifier, &[])
+    }
+
+    /// Like [`Self::toggle_modifier`], with catalogue groups for exclusivity /
+    /// max rules (pass [`Product::modifier_groups`]).
+    pub fn toggle_modifier_in_groups(
+        &mut self,
+        index: usize,
+        modifier: &ModifierOption,
+        groups: &[ModifierGroup],
+    ) -> Result<bool, String> {
         if modifier.name.trim().is_empty() {
             return Err("Modifier name required".into());
         }
+        let group_name = modifier.group.trim();
+        let group = groups.iter().find(|g| {
+            if !group_name.is_empty() {
+                g.name == group_name
+            } else {
+                g.options.iter().any(|o| o.name == modifier.name)
+            }
+        });
         let line = self
             .lines
             .get_mut(index)
             .ok_or_else(|| "Missing cart line".to_string())?;
-        let turning_on = !line
-            .applied_modifiers
-            .iter()
-            .any(|m| m.name == modifier.name);
+        let same = |m: &ModifierOption| {
+            m.name == modifier.name
+                && (group_name.is_empty()
+                    || m.group.is_empty()
+                    || m.group == group_name)
+        };
+        let turning_on = !line.applied_modifiers.iter().any(same);
         if turning_on {
-            line.applied_modifiers.push(modifier.clone());
+            if let Some(g) = group {
+                if g.is_variation() || g.max_allowed() == 1 {
+                    let gname = g.name.as_str();
+                    line.applied_modifiers.retain(|m| {
+                        let mg = m.group.trim();
+                        mg.is_empty() || mg != gname
+                    });
+                } else {
+                    let gname = g.name.as_str();
+                    let count = line
+                        .applied_modifiers
+                        .iter()
+                        .filter(|m| m.group == gname || (m.group.is_empty() && group_name.is_empty()))
+                        .count();
+                    if count >= g.max_allowed() {
+                        return Err(format!(
+                            "{}: pick at most {}",
+                            g.name,
+                            g.max_allowed()
+                        ));
+                    }
+                }
+            }
+            let mut applied = modifier.clone();
+            if applied.group.is_empty() {
+                if let Some(g) = group {
+                    applied.group = g.name.clone();
+                }
+            }
+            line.applied_modifiers.push(applied);
         } else {
-            line.applied_modifiers.retain(|m| m.name != modifier.name);
+            // Required variation: tapping the only pick again does not clear it.
+            if let Some(g) = group {
+                if g.is_variation() && g.min_required() > 0 {
+                    let gname = g.name.as_str();
+                    let others = line
+                        .applied_modifiers
+                        .iter()
+                        .filter(|m| !same(m) && (m.group == gname))
+                        .count();
+                    if others == 0 {
+                        return Ok(true);
+                    }
+                }
+            }
+            line.applied_modifiers.retain(|m| !same(m));
         }
         line.reprice_from_modifiers();
         if line.unit_price.paise() < 0 {
@@ -2127,6 +2538,32 @@ impl Cart {
         line.line_total_override = None;
         self.charge_total = None;
         Ok(turning_on)
+    }
+
+    /// Lines that still need a required variation (e.g. Size) before pay / KOT.
+    pub fn missing_required_modifiers<'a>(
+        &self,
+        product_groups: impl Fn(&str) -> Vec<ModifierGroup>,
+    ) -> Vec<String> {
+        let mut out = Vec::new();
+        for line in &self.lines {
+            let groups = product_groups(&line.product_id);
+            for g in groups {
+                let need = g.min_required();
+                if need == 0 {
+                    continue;
+                }
+                let have = line
+                    .applied_modifiers
+                    .iter()
+                    .filter(|m| m.group == g.name || (m.group.is_empty() && g.name == "Options"))
+                    .count();
+                if have < need {
+                    out.push(format!("{}: pick {}", line.name, g.name));
+                }
+            }
+        }
+        out
     }
 
     pub fn shift_modifier_page(&mut self, index: usize, delta: isize, count: usize) {
@@ -2176,8 +2613,8 @@ impl Cart {
         if self.lines.is_empty() {
             return Err("Cart is empty".into());
         }
-        if total.paise() <= 0 {
-            return Err("Total must be > 0".into());
+        if total.paise() < 0 {
+            return Err("Total cannot be negative".into());
         }
         if total.paise() == self.applied_total().paise() {
             self.charge_total = None;
@@ -2268,6 +2705,9 @@ impl Cart {
                     } else {
                         None
                     };
+                    let mods = l.modifiers();
+                    let base = l.unit_price_paise
+                        - mods.iter().map(|m| m.price_paise).sum::<i64>();
                     let mut line = CartLine {
                         product_id: l.product_id.clone(),
                         name: l.name.clone(),
@@ -2275,9 +2715,35 @@ impl Cart {
                         qty: l.qty,
                         qty_milli: milli,
                         unit_label: l.unit_label.clone(),
-                        note: l.note.clone(),
-                        base_unit_paise: l.unit_price_paise,
-                        applied_modifiers: Vec::new(),
+                        // Free-text only — modifiers live on applied_modifiers.
+                        note: {
+                            let kitchen = l.note.clone();
+                            let mod_note = mods
+                                .iter()
+                                .map(|m| {
+                                    if m.group.is_empty() || m.group == "Options" {
+                                        m.name.clone()
+                                    } else {
+                                        format!("{} {}", m.group, m.name)
+                                    }
+                                })
+                                .collect::<Vec<_>>()
+                                .join(", ");
+                            if mod_note.is_empty() {
+                                kitchen
+                            } else if kitchen == mod_note {
+                                String::new()
+                            } else if let Some(rest) = kitchen.strip_prefix(&format!("{mod_note}, "))
+                            {
+                                rest.to_string()
+                            } else if kitchen.starts_with(&mod_note) {
+                                String::new()
+                            } else {
+                                kitchen
+                            }
+                        },
+                        base_unit_paise: base.max(0),
+                        applied_modifiers: mods,
                         modifier_page: 0,
                         line_total_override: override_total,
                         running_line_id: String::new(),
@@ -2314,17 +2780,7 @@ impl Cart {
             .lines
             .iter()
             .filter(|l| !l.is_sent() && l.qty_milli > 0)
-            .map(|l| SaleLine {
-                product_id: l.product_id.clone(),
-                name: l.name.clone(),
-                unit_price_paise: l.unit_price.paise(),
-                qty: l.qty,
-                line_total_paise: l.applied_total().paise(),
-                note: l.kitchen_note(),
-                qty_milli: l.qty_milli,
-                unit_label: l.unit_label.clone(),
-                kot_sent: false,
-            })
+            .map(|l| sale_line_from_cart(l, false))
             .collect();
         if lines.is_empty() {
             return Err("Nothing new to send — tap items first".into());
@@ -2362,36 +2818,15 @@ impl Cart {
             return Err("Cart is empty".into());
         }
         let lines_total = self.line_sum().paise();
-        if lines_total <= 0 {
-            return Err("Sale total must be positive".into());
+        if lines_total < 0 {
+            return Err("Sale total cannot be negative".into());
         }
         let total = self.total().paise();
-        if total <= 0 {
-            return Err("Sale total must be positive".into());
+        if total < 0 {
+            return Err("Sale total cannot be negative".into());
         }
         let rounding = total.saturating_sub(lines_total);
-        let lines: Vec<SaleLine> = self
-            .lines
-            .iter()
-            .map(|l| {
-                let milli = if l.qty_milli > 0 {
-                    l.qty_milli
-                } else {
-                    qty_to_milli(l.qty)
-                };
-                SaleLine {
-                    product_id: l.product_id.clone(),
-                    name: l.name.clone(),
-                    unit_price_paise: l.unit_price.paise(),
-                    qty: l.qty,
-                    line_total_paise: l.applied_total().paise(),
-                    note: l.kitchen_note(),
-                    qty_milli: milli,
-                    unit_label: l.unit_label.clone(),
-                    kot_sent: l.is_sent(),
-                }
-            })
-            .collect();
+        let lines: Vec<SaleLine> = self.lines.iter().map(|l| sale_line_from_cart(l, l.is_sent())).collect();
         // The bill discount comes off each line in proportion, so tax (by
         // line) is on what is really charged; the last charged line takes
         // the rounding remainder so the lines still add up exactly.
@@ -2477,6 +2912,49 @@ pub struct SaleLine {
     /// must not fire a second KOT for it.
     #[serde(default)]
     pub kot_sent: bool,
+    /// Chosen Size / toppings at sale time (JSON array of [`ModifierOption`]).
+    #[serde(default = "empty_json_array")]
+    pub modifiers_json: String,
+}
+
+impl SaleLine {
+    pub fn modifiers(&self) -> Vec<ModifierOption> {
+        let s = self.modifiers_json.trim();
+        if s.is_empty() {
+            return Vec::new();
+        }
+        serde_json::from_str(s).unwrap_or_default()
+    }
+
+    pub fn set_modifiers_from(&mut self, mods: &[ModifierOption]) {
+        self.modifiers_json = if mods.is_empty() {
+            "[]".into()
+        } else {
+            serde_json::to_string(mods).unwrap_or_else(|_| "[]".into())
+        };
+    }
+}
+
+fn sale_line_from_cart(l: &CartLine, kot_sent: bool) -> SaleLine {
+    let milli = if l.qty_milli > 0 {
+        l.qty_milli
+    } else {
+        qty_to_milli(l.qty)
+    };
+    let mut line = SaleLine {
+        product_id: l.product_id.clone(),
+        name: l.name.clone(),
+        unit_price_paise: l.unit_price.paise(),
+        qty: l.qty,
+        line_total_paise: l.applied_total().paise(),
+        note: l.kitchen_note(),
+        qty_milli: milli,
+        unit_label: l.unit_label.clone(),
+        kot_sent,
+        modifiers_json: "[]".into(),
+    };
+    line.set_modifiers_from(&l.applied_modifiers);
+    line
 }
 
 /// Snapshot ready to persist. Prior snapshots stay in revision history;
@@ -2543,8 +3021,10 @@ impl SaleDraft {
         if self.tax_paise < 0 || self.tax_paise > self.lines_total_paise {
             return Err("Draft tax must be between 0 and lines_total".into());
         }
-        if self.total_paise <= 0 {
-            return Err("Sale total must be positive".into());
+        // ₹0 bills are allowed here (complimentary / owner wish). Settings
+        // `allow_zero_sales` can still refuse them at finalize time.
+        if self.total_paise < 0 {
+            return Err("Sale total cannot be negative".into());
         }
         if self.lines.is_empty() {
             return Err("Cart is empty".into());
@@ -3639,6 +4119,14 @@ mod tests {
         let draft = cart.to_sale_draft().expect("bill with a free line");
         assert_eq!(draft.total_paise, Money::from_rupees(13).paise());
         assert_eq!(draft.lines[0].line_total_paise, 0);
+        // Entire bill at ₹0 (complimentary cover) is a valid draft.
+        let mut free_only = Cart::default();
+        free_only.add_or_bump_in_stock(&free).unwrap();
+        let zero = free_only.to_sale_draft().expect("₹0 bill draft");
+        assert_eq!(zero.total_paise, 0);
+        zero.assert_balanced().unwrap();
+        free_only.set_charge_total(Money(0)).unwrap();
+        assert!(free_only.charge_total.is_none() || free_only.total().paise() == 0);
     }
 
     #[test]
@@ -3760,15 +4248,20 @@ mod tests {
             ModifierOption {
                 name: "Extra cheese".into(),
                 price_paise: 2000,
+                group: String::new(),
             },
             ModifierOption {
                 name: "No onion".into(),
                 price_paise: 0,
+                group: String::new(),
             },
         ];
         let mut p = tea();
         p.set_modifiers(&mods);
-        assert_eq!(p.modifiers(), mods);
+        let got = p.modifiers();
+        assert_eq!(got.len(), 2);
+        assert_eq!(got[0].name, "Extra cheese");
+        assert_eq!(got[0].price_paise, 2000);
         // Bad JSON must not break the menu.
         p.modifiers_json = "not json".into();
         assert!(p.modifiers().is_empty());
@@ -3781,6 +4274,7 @@ mod tests {
         let cheese = ModifierOption {
             name: "Extra cheese".into(),
             price_paise: 2_000,
+            group: String::new(),
         };
         tea.set_modifiers(std::slice::from_ref(&cheese));
         cart.add_or_bump(&tea);
@@ -3794,6 +4288,93 @@ mod tests {
         assert!(!cart.toggle_modifier(0, &cheese).unwrap());
         assert_eq!(cart.lines[0].unit_price.paise(), 1_300);
         assert_eq!(cart.to_sale_draft().unwrap().lines[0].note, "no onion");
+    }
+
+    #[test]
+    fn variation_group_pick_one_and_addons_stack() {
+        let groups = ModifierGroup::parse_human_list(
+            "Size*: Small=100, Large=200 | Toppings+2: Cheese=40, Olive=30, Jalapeno=20",
+            "INR",
+        )
+        .unwrap();
+        assert_eq!(groups.len(), 2);
+        assert!(groups[0].is_variation());
+        assert_eq!(groups[0].options.len(), 2);
+        assert!(!groups[1].is_variation());
+        assert_eq!(groups[1].max, 2);
+        assert_eq!(groups[1].max_allowed(), 2);
+
+        let mut pizza = Product::new_basic("pizza", "Pizza", Money(0));
+        pizza.set_modifier_groups(&groups);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&pizza);
+        let small = ModifierOption {
+            name: "Small".into(),
+            price_paise: 10_000,
+            group: "Size".into(),
+        };
+        let large = ModifierOption {
+            name: "Large".into(),
+            price_paise: 20_000,
+            group: "Size".into(),
+        };
+        let cheese = ModifierOption {
+            name: "Cheese".into(),
+            price_paise: 4_000,
+            group: "Toppings".into(),
+        };
+        assert!(cart
+            .toggle_modifier_in_groups(0, &small, &groups)
+            .unwrap());
+        assert_eq!(cart.lines[0].unit_price.paise(), 10_000);
+        assert!(cart
+            .toggle_modifier_in_groups(0, &large, &groups)
+            .unwrap());
+        assert_eq!(cart.lines[0].applied_modifiers.len(), 1);
+        assert_eq!(cart.lines[0].unit_price.paise(), 20_000);
+        assert!(cart
+            .toggle_modifier_in_groups(0, &cheese, &groups)
+            .unwrap());
+        assert_eq!(cart.lines[0].unit_price.paise(), 24_000);
+        let olive = ModifierOption {
+            name: "Olive".into(),
+            price_paise: 3_000,
+            group: "Toppings".into(),
+        };
+        let jal = ModifierOption {
+            name: "Jalapeno".into(),
+            price_paise: 2_000,
+            group: "Toppings".into(),
+        };
+        assert!(cart
+            .toggle_modifier_in_groups(0, &olive, &groups)
+            .unwrap());
+        assert!(cart
+            .toggle_modifier_in_groups(0, &jal, &groups)
+            .unwrap_err()
+            .contains("at most 2"));
+        assert_eq!(
+            cart.to_sale_draft().unwrap().lines[0].note,
+            "Size Large, Toppings Cheese, Toppings Olive"
+        );
+        let draft = cart.to_sale_draft().unwrap();
+        assert_eq!(draft.lines[0].modifiers().len(), 3);
+        assert!(cart
+            .missing_required_modifiers(|id| {
+                if id == "pizza" {
+                    groups.clone()
+                } else {
+                    Vec::new()
+                }
+            })
+            .is_empty());
+        cart.lines[0].applied_modifiers.clear();
+        cart.lines[0].reprice_from_modifiers();
+        let missing = cart.missing_required_modifiers(|_| groups.clone());
+        assert!(missing.iter().any(|m| m.contains("Size")), "{missing:?}");
+        let human = ModifierGroup::format_human_list(&groups, "INR");
+        assert!(human.contains("Size*"));
+        assert!(human.contains("Toppings+2"), "{human}");
     }
 
     #[test]

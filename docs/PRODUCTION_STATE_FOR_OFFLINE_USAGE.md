@@ -125,7 +125,7 @@ verified done.
 
 | Item | Why / how |
 |---|---|
-| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7. Remaining product work is Cloud/Net connectors (optional stubs only) or owner actions below. |
+| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7. **Emergency unlock PIN** (Owner duress wipe of trading history, structure kept) shipped 2026-10-27 in both apps. Remaining product work is Cloud/Net connectors (optional stubs only) or owner actions below. |
 
 **Still needs the owner (not code)**
 

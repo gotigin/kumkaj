@@ -777,9 +777,29 @@ impl Store {
         if name.is_empty() {
             return Ok(());
         }
+        let exists: bool = self
+            .conn
+            .query_row(
+                "SELECT 1 FROM floor_areas WHERE lower(name) = lower(?1) LIMIT 1",
+                params![name],
+                |_| Ok(true),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?
+            .unwrap_or(false);
+        if exists {
+            // Make sure an existing area is offered in pickers again.
+            self.conn
+                .execute(
+                    "UPDATE floor_areas SET picker_enabled = 1 WHERE lower(name) = lower(?1)",
+                    params![name],
+                )
+                .map_err(|e| e.to_string())?;
+            return Ok(());
+        }
         self.conn
             .execute(
-                "INSERT OR IGNORE INTO floor_areas(id, name, picker_enabled) VALUES(?1, ?2, 1)",
+                "INSERT INTO floor_areas(id, name, picker_enabled) VALUES(?1, ?2, 1)",
                 params![new_id(), name],
             )
             .map_err(|e| e.to_string())?;
