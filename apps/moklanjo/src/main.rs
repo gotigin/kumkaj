@@ -13187,9 +13187,7 @@ impl App {
                 }
             }
         }
-        if screen == Screen::Settings {
-            print_share::find_printers_in_background();
-        }
+        // Do not auto-scan printers on Settings open — Find is explicit.
         self.sync_chrome(cx);
     }
 
@@ -20858,7 +20856,7 @@ impl AppMain for App {
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
             });
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
-            print_share::find_printers_in_background();
+            // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();

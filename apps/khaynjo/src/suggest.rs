@@ -15,11 +15,22 @@ pub struct SuggestRow {
     /// Small second line: price, area, role, rate — whatever tells two
     /// similar rows apart.
     pub subtitle: String,
+    /// Right-hand action label (`Use`, `Don't use`, …). Empty → locale `use`.
+    pub action: String,
 }
 
 impl SuggestRow {
     pub fn new(value: impl Into<String>, subtitle: impl Into<String>) -> Self {
-        Self { value: value.into(), subtitle: subtitle.into() }
+        Self {
+            value: value.into(),
+            subtitle: subtitle.into(),
+            action: String::new(),
+        }
+    }
+
+    pub fn with_action(mut self, action: impl Into<String>) -> Self {
+        self.action = action.into();
+        self
     }
 }
 

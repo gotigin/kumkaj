@@ -170,6 +170,9 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
 5. **Item / rate photos** — Moklanjo has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
+7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle logs `flow: Right { wrap: true } does not support width: Fill` every frame when a **wrapping** flow walks a **Fill** child; log spam freezes the app (Khaynjo Settings → Add printer / route buttons, 2026-10). Two cases:
+   - **Button face:** `align.x ≥ 0.25` on a Fill-width button makes `Button::draw_face` force a Fill label walk. With `flow: Right{wrap: true}` that is the hang. **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3). The shipping fix is patch `button_label_center` (`patches/makepad/button_label_center.rs.patch`): when the face wraps, keep a **Fit** label walk; text still centers via `text_align` + `ink_centered`.
+   - **Parent View:** never put `width: Fill` children (`NavBtn`, `Stack*`, `SegBtn`, …) inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit-width chips in a wrapping strip.
 
 ### Required approach (shipping)
 
@@ -193,7 +196,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 | Multi-word / translated CTA | `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn`, or `NavBtn` / `PayBtn` / `MoreRow` |
 | Side-by-side fields (no CTAs) | `FormFieldRow` + `FieldInput` (equal `Fill`) |
 
-Full-width CTA faces: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, label `width: Fill`, **no** `max_lines: 1`, **no** `Ellipsis`. Always `padding` **and** `label_walk.margin`.
+Full-width CTA faces: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, `align: Align{x: 0.5 y: 0.5}`, label walk **`width: Fit`** (not Fill — see bug 7 / `button_label_center` patch), **no** `max_lines: 1`, **no** `Ellipsis`. Always `padding` **and** `label_walk.margin`. Never strip wrap or center to dodge a hang — fix the Fill-in-wrap walk instead.
 
 Never invent a one-off button type (`LangSourceBtn`, etc.) when Stack/Nav already cover it. Never put multi-word phrases in `ChipBtn` / `ActionRow`.
 
@@ -223,7 +226,7 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 | Piece | Role |
 |---|---|
 | `TabBtn` / `TabBtnActive` | Bottom-nav idle / selected faces |
-| `NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*` | Full-width CTAs (wrap, no ellipsis) |
+| `NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*` | Full-width CTAs (centered, wrap, no ellipsis; Fit label — see bug 7) |
 | `FormFieldRow` | Side-by-side fields only — never CTAs |
 | `ChipBtn` / `ChipBtnActive` | Short strip chips only |
 | `nav_tab_for` | `Screen` → which bottom peer is active |
@@ -627,31 +630,28 @@ device, not the books: `printers.json` in the data folder holds a
 edits both. A route tries the first printer, then the next on failure
 (fallback, not fan-out); an empty route means that feature does not
 print. Khaynjo routes: **Bill**, plus **KOT per kitchen station**
-(`""` = unassigned items only — stations do not share a printer). Moklanjo routes:
+(`""` = unassigned / default kitchen). KOT lookup: station → `""` →
+**Bill** (one printer on Bill still prints every kitchen ticket). Moklanjo routes:
 **Receipt** and **AWB label**. Legacy files (`kot`/`bill` or `receipt`
 strings) migrate on load; blank fields stay empty (no invented “Default” printer). Settings → **Find printers** lists system printers
 (`lpstat` / `Get-Printer` on desktop) and hosts on this Wi‑Fi that
 accept TCP on port 9100 (ESC/POS) — that scan is what works on Android
 too. A target is a system printer's name, or an
-address (blank = this computer's usual OS printer) — `192.168.1.50` or `host:port`, default 9100 — sent raw as
-ESC/POS (`print_network`). A ticket the printer's own font can show (ASCII, with
-₹ → Rs. and a few symbols spelt out — `printer_has_letters`) goes as
-text; anything else goes as a picture (`receipt_raster.rs`): each line
-shaped with the app's bundled Noto fonts (Makepad's vendored rustybuzz,
-unicode-bidi for Arabic/Urdu, ab_glyph_rasterizer), wrapped to 384 dots
-(58 mm; 80 mm prints it too) and sent as `GS v 0` in 128-row bands. 12
-fonts (~2.3 MB) are compiled in so the print thread needs no Cx; CJK
-(19 MB font) is left out and prints `?`. Look at it:
-`KUMKAJ_RASTER_OUT=t.pbm cargo test -p kumkaj-khaynjo --lib
-draw_a_sample_ticket -- --ignored`. System printing: `lp -d` on Linux
-(CUPS), PowerShell `Out-Printer` on Windows. Jobs go through one queue
-thread; a failure comes back to the screen through `take_problems`
-(deduplicated), never a frozen till. Android has no printer drivers:
-only an address prints; a KOT without a route says so once, and a bill
-opens the Share sheet instead (`prints_here`). KOTs and **Print bill**
-from paired devices print at the Server, on its routes (`/kot`,
-`/running`); only a receipt a device prints for itself (**Print /
-share**) uses that device's bill/receipt route.
+address (blank = this computer's usual OS printer) — `192.168.1.50` or
+`host:port`, default 9100.
+
+**Print targets (owner chooses — large office or small kitchen):**
+
+| Target | Behaviour (every supported OS) |
+|---|---|
+| Network `ip:9100` | Short ASCII ESC/POS over TCP |
+| Named / default system printer | That OS print path (`lp` / `Out-Printer`) — paper size and driver are the owner's |
+
+Do not hard-code “all KOTs must be raw” or “all Bills must be laser” in
+code: shops put whichever printer they want on Bill vs each kitchen
+station route. Network ESC/POS jobs stay short ASCII (max 4 KiB; no
+default `GS v 0` raster). Failures via `take_problems`. Paired-device
+KOTs / Print bill print at the Server.
 
 **Backups.** The server writes a backup automatically once a day
 (`auto_backup_if_due`; the last 14 are kept in the data folder's `backups/`)
@@ -748,7 +748,9 @@ Makepad visual traps found this way (do not reintroduce):
     line, PgUp/PgDn a screenful, Home/End the ends (skipped only while a
     text field has focus — a focused button must not swallow them);
     Back/Forward history across screens (mouse back/forward buttons,
-    Alt+←/→, edge swipe, Android back; lock and first-run setup clear it);
+    Alt+←/→, edge swipe, Android back; lock and first-run setup clear it).
+    Nested in-screen layers (Settings section → hub, open suggest list)
+    dismiss on Back **before** leaving the screen — never skip to Day book;
     drag-to-scroll by touch only on vertical pages/lists — a mouse drag
     never flings them (wheel / scrollbar / keys). Horizontal tab strips
     (`ScrollXView`) allow mouse press-drag on the whitespace around the

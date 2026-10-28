@@ -1,14 +1,14 @@
 ---
-description: Makepad 2 selection + CTA truncation — cause, approach, do/don't
-globs: apps/moklanjo/**/*.{rs,md}
+description: Makepad 2 selection, CTA wrap/center, and wrap+Fill hang — cause, approach, do/don't
+globs: apps/**/*.{rs,md}
 alwaysApply: false
 ---
 
-# Makepad 2 faces (selection + truncation)
+# Makepad 2 faces (selection + truncation + wrap/Fill hang)
 
 Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces.
 
-The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy (examples here are Moklanjo's `apps/moklanjo`), not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
+The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy, not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
 
 ## Cause (regressions we already paid for)
 
@@ -20,6 +20,7 @@ Makepad 2 `Button` has **no selected bit** — only `hover` / `down` / `focus` /
 | Sell lit while Buy/More shows | Selection inferred from focus/hover instead of `Screen` via `paint_nav_tabs` |
 | Label clipped on the right | Full-width CTA with `max_lines: 1` + `Ellipsis`, or multi-word text in `ChipBtn` (Fit max 160) |
 | Button shows `record_purchase` | Missing English `locale::en` entry; `t()` returned the key |
+| **UI freezes on Settings CTAs** | `flow: Right{wrap: true}` walked a **Fill** child → turtle error spam every frame. Often from `Button::draw_face` forcing Fill label when `align.x ≥ 0.25` on a wrapping face, or a parent View wrapping Fill `NavBtn`/`Stack*`/`SegBtn` |
 
 ## Approach (required)
 
@@ -31,27 +32,37 @@ Makepad 2 `Button` has **no selected bit** — only `hover` / `down` / `focus` /
 4. Bottom nav: exactly one peer from `nav_tab_for(screen)`; More children → **More**.
 5. Nav tabs: `grab_key_focus: false`, `reset_hover_on_click: true`.
 
-### Labels
+### Labels (keep design — do not strip wrap/center)
 
 | Labels | Face |
 |---|---|
 | Short strip chip | `ChipBtn` / `ChipBtnActive` (ellipsis OK) |
 | Ultra-short side-by-side | `ActionRow` + `Row*` |
-| Multi-word / translated | `ActionStack` + `Stack*`, or `NavBtn` / `PayBtn` / `MoreRow` (wrap, **no** ellipsis) |
+| Multi-word / translated | `ActionStack` + `Stack*`, or `NavBtn` / `PayBtn` / `MoreRow` (**centered**, **wrap**, **no** ellipsis) |
 | Side-by-side fields only | `FormFieldRow` (equal `Fill` inputs — **no** CTAs) |
+
+Full-width CTAs: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, `align: Align{x: 0.5 y: 0.5}`, label walk **`width: Fit`**, always `padding` **and** `label_walk.margin`.
+
+**Hang fix (required):** patch `patches/makepad/button_label_center.rs.patch` — when the face wraps, `draw_face` must **not** force a Fill label. Never “fix” a hang by removing wrap or setting `align.x: 0` (that reintroduces cropped/left-aligned CTAs).
+
+**Parent Views:** never `flow: Right{wrap: true}` with `width: Fill` children. Use `ActionStack` / `flow: Down`, or Fit chips in a wrap strip.
 
 Always `padding` **and** `label_walk.margin`. Never invent `LangSourceBtn`-style one-offs.
 
 ### Form rows (Makepad has no flex-shrink)
 
-`NavBtn` / `Stack*` use `flow: Right{wrap: true}`. A **Fit** CTA beside **Fill** `FieldInput`s in one `Right` row is given a tiny width → wrap stacks letters vertically (`A d d r a t e`) and overlaps the field. That is not a theme bug.
+A **Fit** CTA beside **Fill** `FieldInput`s in one `Right` row is given a tiny width → wrap stacks letters vertically (`A d d r a t e`) and overlaps the field. That is not a theme bug.
 
 ```text
 ❌ FormFieldRow / Right row: FieldInput + FieldInput + NavBtn{width: Fit}
 ❌ “Just this screen” one-off Fit primary beside fills
+❌ Strip wrap / left-align CTAs to dodge a hang
+❌ View{ flow: Right{wrap: true}; NavBtn/Stack*/SegBtn{width: Fill} }
 
 ✅ FormFieldRow{ FieldInput; FieldInput }
 ✅ ActionStack{ StackSecondaryBtn; StackPrimaryBtn } under the fields
+✅ Centered wrap CTAs + Fit label (button_label_center patch)
+✅ ActionStack / flow Down for full-width button stacks
 ```
 
 ```text
@@ -61,6 +72,6 @@ Always `padding` **and** `label_walk.margin`. Never invent `LangSourceBtn`-style
 ❌ Fix one call site only — edit that app's face definition
 
 ✅ Overlay + paint_nav_tabs / paint_choice_pair + animator clear
-✅ Wrap on full-width CTAs; ChipBtn only for short chips
+✅ Wrap + center on full-width CTAs; ChipBtn only for short chips
 ✅ Fields in FormFieldRow; multi-word CTAs in ActionStack below
 ```

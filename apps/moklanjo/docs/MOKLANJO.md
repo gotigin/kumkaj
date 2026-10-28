@@ -134,7 +134,7 @@ Supplier.
 | Carrier cost / margin on docket | **Ship** — `carrier_cost_paise` + margin helper + bill CSV reconcile |
 | Period party bill | **Ship** — unbilled account dockets → one invoice |
 | Consignment search/filters | **Ship** — AWB / party / date / billed / status |
-| WhatsApp / SMS notify drain | **Ship** — outbox + Open WhatsApp / Copy SMS / mark sent |
+| WhatsApp / SMS notify drain | **Ship** — outbox + Open WhatsApp / Copy SMS / mark sent. SMS **delivery** Planned: Local SMS Gateway (Android sibling) + paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | One-tap WhatsApp receipt | **Ship** — `wa.me` with receipt text |
 | Optional GPS on POD | **Ship** — lat/lon on tracking event when OS provides; no map tiles |
 | Delivery feedback (local) | **Ship** — score on delivered AWB; no public Net survey |

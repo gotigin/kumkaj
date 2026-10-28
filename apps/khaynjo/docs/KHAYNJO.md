@@ -106,14 +106,15 @@ would make one app's change impact another.
   `#69090C`, red-orange `#D64D21`, gold `#F69D2C`, warm cream
   `#F9F4F0` — `docs/DESIGN.md` § Color tokens — Khaynjo).
 - The header shows only names the owner saved (2026-10-26): the
-  restaurant's name (Settings → Your brand; **Khaynjo** until one is
-  saved), then the business name (Settings → Business name; nothing until
-  one is saved — the old "My business" placeholder is never shown) and who
-  is signed in, name and role ("Rajdhani Foods · Owner (Owner)").
-  Nothing is written for the owner (`Store::saved_org_name`). A local
-  server made without a name is labelled "Server af76697b" in the server
-  list only — that label is never taken as the restaurant's name, and
-  books that took it earlier read as unnamed (`is_generated_server_label`).
+  restaurant's name and business name (both under Settings → Your brand;
+  place name shows **Khaynjo** until one is saved; business name shows
+  nothing until one is saved — the old "My business" placeholder is never
+  shown) and who is signed in, name and role
+  ("Rajdhani Foods · Owner (Owner)"). Nothing is written for the owner
+  (`Store::saved_org_name`). A local server made without a name is labelled
+  "Server af76697b" in the server list only — that label is never taken as
+  the restaurant's name, and books that took it earlier read as unnamed
+  (`is_generated_server_label`).
 - Image upload follows Moklanjo's idea, copied with the crate:
   menu-item/party photos are user-picked (or shelf) files re-encoded
   to WebP (`src/media.rs`), item/category photos capped at 768 px
@@ -226,7 +227,7 @@ internet (vision §20).
 | Item-wise / staff-wise / hourly reports | **Done** on the day close: by staff, by order type, by hour, top items, discounts (plus cancellations, NC, tips) | `restaurant_day_report_text` |
 | Split one bill into two | **Done 2026-10-25** — item pick split; **2026-10-27** Split evenly / by seat → companion bills | `split_running_lines`, `split_evenly`, `split_by_seat` |
 | Delivery boy assignment, reservations, KDS all-day counts | **Done 2026-10-25** — Delivery by; Floor **Reservations**; Kitchen all-day counts. **2026-10-27** waitlist, token `/tokens`, expo `/expo`, kiosk `/kiosk`, QR `/t/{table}`, Share WhatsApp | `sale_delivery`, `reservations`, `store_ops`, `net` public LAN |
-| Aggregators, SMS/WhatsApp campaigns, live multi-outlet Cloud | **Skipped** (true Cloud) — optional aggregator file/outbox stub and one-tap WhatsApp bill are local/optional Net; never gate counter | `notify`, connectors |
+| Aggregators, SMS/WhatsApp campaigns, live multi-outlet Cloud | Aggregators / live multi-outlet **Skipped** (true Cloud). CRM queue + WhatsApp share **Have**. SMS **delivery** Planned: Local SMS Gateway (Android sibling) + paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md); never gate counter | `notify`, connectors |
 
 ## 4c. Languages & RTL
 
@@ -486,7 +487,7 @@ true multi-outlet Cloud or a third-party marketplace.
 | Loyalty points on customer | **Have 2026-10-27** | Earn on pay; Order till redeem points / wallet / voucher; top-up & issue voucher |
 | QR / kiosk / token / waitlist | **Have** (LAN pages) | |
 | Aggregator sync / head-office menu push | **Skip / Partial** | File stub OK; live Zomato/Swiggy + HO push = Cloud |
-| CRM segments + birthday SMS | **Have 2026-10-27** | Parties → Guests & messages; segments + Queue SMS / WhatsApp intents (Net optional) |
+| CRM segments + birthday SMS | **Have** queue 2026-10-27; **Planned** delivery | Parties → Guests & messages queues SMS/WhatsApp intents. Delivery: Local SMS Gateway (cloudless Android sibling) or paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | Variation / add-on sales reports | **Have 2026-10-27** | Day report section from `sale_lines.modifiers_json` |
 | Modifier max (e.g. 3 toppings) in UI | **Have 2026-10-27** | `Toppings+3:` in Options field |
 | Captain upsell AI / Purchase Manager AI | **Skip** | Cloud / vendor marketplace |

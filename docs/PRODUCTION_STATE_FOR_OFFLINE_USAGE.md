@@ -144,7 +144,7 @@ verified done.
 | Tamper-evident (hash-chained) audit | Vision §18 asks for attributable, append-only history — that exists (audit events, sale revisions, cancel-not-delete). A cryptographic seal only matters where a tax regime demands it. |
 | Zero-downtime server migration | One Server is the only writer by design; migration is a few minutes outside service (SERVER_MIGRATION.md). |
 | Colour dot for link health | The header says it in words; colour alone would break the "never carry meaning in colour alone" rule (DEV.md). |
-| GSTR-1/3B, e-invoice IRN/QR, tax-period lock, FIFO valuation, **live** cloud features | Vision §23 / later phases; not claimed anywhere. Optional Net stubs (aggregators, card outbox, WhatsApp share) must never gate the counter. |
+| GSTR-1/3B, e-invoice IRN/QR, tax-period lock, FIFO valuation, **live** cloud features | Vision §23 / later phases; not claimed anywhere. Optional Net stubs (aggregators, card outbox, WhatsApp share) must never gate the counter. SMS: local outbox Have; Local SMS Gateway + Cloud SMS Planned — [`SMS_MESSAGING.md`](SMS_MESSAGING.md). |
 
 ---
 

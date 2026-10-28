@@ -14,7 +14,7 @@
          cx.add_nav_stop(self.draw_bg.area(), NavRole::TextInput, Inset::default());
          DrawStep::done()
      }
-@@ -723,14 +720,46 @@
+@@ -723,14 +720,59 @@
  }
  
  impl Button {
@@ -26,9 +26,16 @@
 +    /// A button that sizes to the label keeps a Fit label and lets the turtle
 +    /// center that box. Filling a Fit button collapses it and clips the text
 +    /// down to the middle of the word.
++    ///
++    /// When the face itself uses `flow: Right { wrap: true }` (multi-line CTAs),
++    /// the label walk must stay **Fit**. A Fill label inside a wrapping turtle
++    /// hits Makepad's `wrap does not support width: Fill` path every frame and
++    /// freezes the UI (Kumkaj / Khaynjo Settings hang, 2026-10). Text still
++    /// centers via `text_align` + `ink_centered`.
 +    fn draw_face(&mut self, cx: &mut Cx2d, walk: Walk, label: &str) {
 +        let want_center = self.layout.align.x >= 0.25;
 +        let center_in_box = want_center && !walk.width.is_fit();
++        let wraps = matches!(self.layout.flow, Flow::Right { wrap: true, .. });
 +        let layout = Layout {
 +            align: Align {
 +                x: if center_in_box { 0.0 } else { self.layout.align.x },
@@ -36,9 +43,15 @@
 +            },
 +            ..self.layout
 +        };
-+        let label_walk = if center_in_box {
++        let label_walk = if center_in_box && !wraps {
 +            Walk {
 +                width: Size::fill(),
++                height: Size::fit(),
++                ..self.label_walk
++            }
++        } else if center_in_box && wraps {
++            Walk {
++                width: Size::fit(),
 +                height: Size::fit(),
 +                ..self.label_walk
 +            }

@@ -374,6 +374,12 @@ struct AppState {
     printer_draft: print_share::DevicePrinters,
     /// Which route is focused: `bill`, `kot:` (default kitchen), or `kot:<station_id>`.
     printer_route_key: String,
+    /// Settings hub: `None` = section list; `Some(id)` = that panel (printers, brand, …).
+    settings_panel: Option<&'static str>,
+    /// Phone order desk (stacked): `false` = Added items, `true` = Payment.
+    pos_show_payment: bool,
+    /// Settings → Printers: pool row tapped for Remove / edit (None = last).
+    printer_selected_id: Option<String>,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).
@@ -759,6 +765,8 @@ enum SuggestField {
     LineTable,
     TableArea,
     MenuStation,
+    /// Order desk: station for unsent dishes that have none on the menu item.
+    KotStation,
     MenuUnit,
     MenuTax,
     MenuGroup,
@@ -775,15 +783,19 @@ enum SuggestField {
     DeliveryBy,
     PrinterTarget,
     RoutePick,
-    RouteAddPrinter,
+    /// Kitchen screen: pick a station to remove.
+    StationRemove,
+    /// Settings → Areas · stations: same list, own field.
+    SettingsStationRemove,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 21] = [
+    const ALL: [SuggestField; 23] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
         SuggestField::MenuStation,
+        SuggestField::KotStation,
         SuggestField::MenuUnit,
         SuggestField::MenuTax,
         SuggestField::MenuGroup,
@@ -800,7 +812,8 @@ impl SuggestField {
         SuggestField::DeliveryBy,
         SuggestField::PrinterTarget,
         SuggestField::RoutePick,
-        SuggestField::RouteAddPrinter,
+        SuggestField::StationRemove,
+        SuggestField::SettingsStationRemove,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -810,6 +823,7 @@ impl SuggestField {
             SuggestField::LineTable => "line_table",
             SuggestField::TableArea => "table_area",
             SuggestField::MenuStation => "menu_station",
+            SuggestField::KotStation => "kot_station",
             SuggestField::MenuUnit => "menu_unit",
             SuggestField::MenuTax => "menu_tax",
             SuggestField::MenuGroup => "menu_group",
@@ -826,7 +840,8 @@ impl SuggestField {
             SuggestField::DeliveryBy => "delivery_by",
             SuggestField::PrinterTarget => "printer_target",
             SuggestField::RoutePick => "route_pick",
-            SuggestField::RouteAddPrinter => "route_add_printer",
+            SuggestField::StationRemove => "station_remove",
+            SuggestField::SettingsStationRemove => "settings_station_remove",
         }
     }
 
@@ -836,6 +851,7 @@ impl SuggestField {
             SuggestField::LineTable => ids!(line_target_input),
             SuggestField::TableArea => ids!(table_area_input),
             SuggestField::MenuStation => ids!(menu_station_input),
+            SuggestField::KotStation => ids!(kot_station_input),
             SuggestField::MenuUnit => ids!(menu_unit_input),
             SuggestField::MenuTax => ids!(menu_tax_input),
             SuggestField::MenuGroup => ids!(menu_group_input),
@@ -852,7 +868,8 @@ impl SuggestField {
             SuggestField::DeliveryBy => ids!(delivery_by_input),
             SuggestField::PrinterTarget => ids!(printer_target_input),
             SuggestField::RoutePick => ids!(route_pick_input),
-            SuggestField::RouteAddPrinter => ids!(route_add_printer_input),
+            SuggestField::StationRemove => ids!(station_remove_input),
+            SuggestField::SettingsStationRemove => ids!(settings_station_remove_input),
         }
     }
 
@@ -862,6 +879,7 @@ impl SuggestField {
             SuggestField::LineTable => ids!(line_target_suggest),
             SuggestField::TableArea => ids!(table_area_suggest),
             SuggestField::MenuStation => ids!(menu_station_suggest),
+            SuggestField::KotStation => ids!(kot_station_suggest),
             SuggestField::MenuUnit => ids!(menu_unit_suggest),
             SuggestField::MenuTax => ids!(menu_tax_suggest),
             SuggestField::MenuGroup => ids!(menu_group_suggest),
@@ -878,10 +896,24 @@ impl SuggestField {
             SuggestField::DeliveryBy => ids!(delivery_by_suggest),
             SuggestField::PrinterTarget => ids!(printer_target_suggest),
             SuggestField::RoutePick => ids!(route_pick_suggest),
-            SuggestField::RouteAddPrinter => ids!(route_add_printer_suggest),
+            SuggestField::StationRemove => ids!(station_remove_suggest),
+            SuggestField::SettingsStationRemove => ids!(settings_station_remove_suggest),
         }
     }
 }
+
+/// Settings → Where things print: tap one of these to put that pool printer
+/// on the focused route (Bill / station). Slots match the DSL below.
+const ROUTE_ADD_PRINTER_BTNS: [&[LiveId]; 8] = [
+    ids!(route_add_prn_0),
+    ids!(route_add_prn_1),
+    ids!(route_add_prn_2),
+    ids!(route_add_prn_3),
+    ids!(route_add_prn_4),
+    ids!(route_add_prn_5),
+    ids!(route_add_prn_6),
+    ids!(route_add_prn_7),
+];
 
 /// Sentinel for the Frequent chip (not a real category id).
 const MENU_FREQUENT: &str = "__frequent__";
@@ -1218,6 +1250,9 @@ impl AppState {
             data_base: None,
             printer_draft: print_share::DevicePrinters::default(),
             printer_route_key: "bill".into(),
+            settings_panel: None,
+            pos_show_payment: false,
+            printer_selected_id: None,
             owner_setup_complete: false,
             onboarding_complete: false,
             venue_mode: VenueMode::Restaurant,
@@ -1877,6 +1912,57 @@ impl AppState {
                 .into_iter()
                 .map(|st| SuggestRow::new(st.name.clone(), ""))
                 .collect(),
+            // All stations (incl. picker-off) — remove needs the full list.
+            SuggestField::StationRemove | SuggestField::SettingsStationRemove => self
+                .stations
+                .iter()
+                .map(|st| SuggestRow::new(st.name.clone(), ""))
+                .collect(),
+            // Order desk: stations already on unsent dishes show Don't use
+            // (clear), others show Use. Unassigned dishes get a Don't use row
+            // that holds them off this KOT (same as Hold on the line).
+            SuggestField::KotStation => {
+                let stations = self
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.list_picker_stations().ok())
+                    .unwrap_or_else(|| self.stations.clone());
+                let mut counts: std::collections::HashMap<String, usize> =
+                    std::collections::HashMap::new();
+                let mut unassigned_n = 0usize;
+                for line in self.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
+                    let sid = self
+                        .products
+                        .iter()
+                        .find(|p| p.id == line.product_id)
+                        .map(|p| p.station_id.as_str())
+                        .unwrap_or("");
+                    if sid.is_empty() {
+                        unassigned_n += 1;
+                    } else {
+                        *counts.entry(sid.to_string()).or_default() += 1;
+                    }
+                }
+                let use_l = self.t("use");
+                let clear_l = self.t("dont_use");
+                let mut rows = Vec::new();
+                if unassigned_n > 0 {
+                    rows.push(
+                        SuggestRow::new(self.t("kot_unassigned"), format!("{unassigned_n}"))
+                            .with_action(clear_l.clone()),
+                    );
+                }
+                rows.extend(stations.into_iter().map(|st| {
+                    let n = counts.get(&st.id).copied().unwrap_or(0);
+                    if n > 0 {
+                        SuggestRow::new(st.name.clone(), format!("{n}"))
+                            .with_action(clear_l.clone())
+                    } else {
+                        SuggestRow::new(st.name.clone(), "").with_action(use_l.clone())
+                    }
+                }));
+                rows
+            }
             SuggestField::MenuUnit | SuggestField::ConvFrom | SuggestField::ConvTo | SuggestField::BuyUnit => units(),
             SuggestField::MenuTax => self
                 .store
@@ -1930,28 +2016,16 @@ impl AppState {
                     .collect()
             }
             SuggestField::RoutePick => {
+                // Friendly names only — never put `kot:<uuid>` in the field.
                 let mut rows = vec![
-                    SuggestRow::new("bill", self.t("route_bill")),
-                    SuggestRow::new("kot:", self.t("route_default_kitchen")),
+                    SuggestRow::new(self.t("route_bill"), ""),
+                    SuggestRow::new(self.t("route_default_kitchen"), ""),
                 ];
                 for s in &self.stations {
-                    rows.push(SuggestRow::new(format!("kot:{}", s.id), s.name.clone()));
+                    rows.push(SuggestRow::new(s.name.clone(), ""));
                 }
                 rows
             }
-            SuggestField::RouteAddPrinter => self
-                .printer_draft
-                .printers
-                .iter()
-                .map(|p| {
-                    let detail = if p.target.is_empty() {
-                        self.t("printer_target_default")
-                    } else {
-                        p.target.clone()
-                    };
-                    SuggestRow::new(p.label.clone(), detail)
-                })
-                .collect(),
             // Who took deliveries before, then the active staff.
             SuggestField::DeliveryBy => {
                 let mut rows: Vec<SuggestRow> = self
@@ -2756,15 +2830,15 @@ script_mod! {
 
     // Default Button: light face + dark ink (identical in every pointer state).
     // Set color_2* = color* so the bevel gradient never washes to a second light.
-    // Label inset: Makepad 2 Fill + Ellipsis can pin ink to the face edge when only
-    // layout padding is set — keep padding *and* label_walk.margin on every face.
+    // Label inset: padding does the face inset; label_walk.margin stays small
+    // (padding+16+16 crushed short labels). Never omit margin entirely.
     mod.widgets.Button = set_type_default() do mod.widgets.Button{
         align: Center
         padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2905,9 +2979,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2947,7 +3021,7 @@ script_mod! {
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2979,14 +3053,14 @@ script_mod! {
     // Wrap + no Ellipsis: long/translated labels grow the row instead of clipping.
     let TabBtn = Button{
         width: Fill height: Fit
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         padding: Inset{left: 10. right: 10. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 10. right: 10.}
         }
@@ -3090,14 +3164,14 @@ script_mod! {
     }
     let TabBtnActive = Button{
         width: Fill height: Fit
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         padding: Inset{left: 10. right: 10. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 10. right: 10.}
         }
@@ -3127,17 +3201,17 @@ script_mod! {
         }
     }
 
-    // Secondary pay — navy + white (never white face on white cart).
+    // Secondary pay — brand red + white (never white face on white cart).
     let PayBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3252,9 +3326,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3286,9 +3360,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3329,7 +3403,7 @@ script_mod! {
     // Full-width stacked actions — required when labels are longer than ~4 chars.
     let ActionStack = View{
         width: Fill height: Fit
-        flow: Down spacing: 8
+        flow: Down spacing: 10
     }
     // Equal-width fields only (price|unit, etc.). NEVER put NavBtn / Stack*
     // CTAs here — Fit+wrap beside Fill TextInputs collapses to a vertical
@@ -3349,19 +3423,24 @@ script_mod! {
         flow: Right spacing: 8
         align: Align{y: 0.5}
     }
-    // ActionStack faces — same navy/gray as RowPrimary/Secondary, but height Fit
-    // + wrap (no ellipsis). Use for any multi-word stacked CTA (language source,
-    // Server/Client Mode, etc.). Never put those labels in ChipBtn.
+    // ActionStack faces — full-width stacked CTAs (language source, Server/Client,
+    // Add printer, etc.). Never ChipBtn for multi-word labels.
+    // Centered + wrap (no ellipsis). Hang avoided by Makepad patch
+    // `button_label_center`: wrap faces keep a Fit label walk (Fill label inside
+    // wrap:true freezes the UI). Also never put width:Fill children in a
+    // parent View with flow Right{wrap:true} — use ActionStack / flow Down.
+    // Face padding insets the pill; label_walk.margin stays small (not another
+    // 16+16) so long wrap lines like "Send → Kitchen5 · …" keep room to breathe.
     let StackPrimaryBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3389,13 +3468,13 @@ script_mod! {
     let StackSecondaryBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3423,17 +3502,18 @@ script_mod! {
 
     // Quiet stacked action (Print bill, Move table, Next order): white face,
     // thin border, smaller type — present, but not competing with the one
-    // primary action on the ticket.
+    // primary action on the ticket. Label margin stays small — padding already
+    // insets the face (double 12+12 crushed long labels on the ticket).
     let StackLightBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+        padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 12. right: 12.}
+            margin: Inset{left: 2. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3468,7 +3548,7 @@ script_mod! {
         padding: Inset{left: 0. right: 0. top: 11. bottom: 11.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
-        label_walk: Walk{width: Fill height: Fit}
+        label_walk: Walk{width: Fit height: Fit}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xFFFFFF
@@ -3550,12 +3630,12 @@ script_mod! {
     let ChipBtn = Button{
         width: Fit{max: FitBound.Abs(160.)} height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
         align: Center
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 2. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3585,12 +3665,12 @@ script_mod! {
     let ChipBtnActive = Button{
         width: Fit{max: FitBound.Abs(160.)} height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
         align: Center
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 2. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3677,15 +3757,17 @@ script_mod! {
         width: Fill height: 52
     }
 
+    // Fill chips in a row: padding insets the face; keep label_walk.margin
+    // tiny — padding+14+14 crushed "Hold"-length labels into "Ho…".
     let RoleChip = Button{
         width: Fill height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
         align: Center
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 2. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -3716,12 +3798,12 @@ script_mod! {
     let RoleChipActive = Button{
         width: Fill height: 40
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
         align: Center
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 2. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -4481,8 +4563,13 @@ script_mod! {
     // "2 × ₹250 · Sent" · amount. Tapping the line opens its details (price,
     // applied total, add-ons, note, and Cancel / NC / Move for sent lines),
     // one line at a time, so a ten-dish table still fits on screen.
+    // Square ± only — never put a word label in this face (it clips).
     let TicketStepBtn = Button{
         width: 34 height: 34
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xffffff
             color_hover: #x9A0E10
@@ -4504,7 +4591,47 @@ script_mod! {
             color_hover: #xffffff
             color_down: #xffffff
             color_focus: #x69090C
+            ink_centered: true
             text_style +: {font_size: 17.}
+        }
+    }
+    // Word action on the ticket (Hold / Held): Fit width — never reuse
+    // TicketStepBtn's 34×34 square.
+    let TicketHoldBtn = Button{
+        width: Fit height: 34
+        margin: Inset{left: 4. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
+        align: Align{x: 0.5 y: 0.5}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 2. right: 2.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #x9A0E10
+            color_down: #x69090C
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #x9A0E10
+            color_2_down: #x69090C
+            color_2_focus: #xffffff
+            border_color: #xC9B0A2
+            border_color_hover: #x9A0E10
+            border_color_down: #x69090C
+            border_color_focus: #xC9B0A2
+            border_radius: 9.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x69090C
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #x69090C
+            ink_centered: true
+            max_lines: 1
+            text_style +: {font_size: 12.}
         }
     }
     let CartRow = RoundedView{
@@ -4529,7 +4656,7 @@ script_mod! {
             }
             View{
                 width: Fill height: Fit
-                flow: Down spacing: 2
+                flow: Down spacing: 4
                 View{
                     width: Fill height: Fit
                     flow: Right spacing: 8
@@ -4547,36 +4674,35 @@ script_mod! {
                         draw_text.text_style.font_size: 14.
                     }
                 }
-                View{
+                line_meta := WrapLabel{
+                    selectable: false
+                    body: " "
+                    font_color: #x6B4A3F
+                    font_size: 11.
+                }
+                // Own row so ± and Hold are never crushed by meta text.
+                // Only on lines not yet sent: a sent quantity changes only
+                // by a reasoned Cancel. Hold skips this line on the next
+                // Send KOT (tap again to include).
+                stepper := View{
                     width: Fill height: Fit
-                    flow: Right spacing: 8
+                    flow: Right spacing: 4
                     align: Align{y: 0.5}
-                    line_meta := WrapLabel{
-                        selectable: false
-                        body: " "
-                        font_color: #x6B4A3F
-                        font_size: 11.
-                    }
-                    // Only on lines not yet sent: a sent quantity changes only
-                    // by a reasoned Cancel.
-                    stepper := View{
-                        width: Fit height: Fit
-                        flow: Right spacing: 2
-                        align: Align{y: 0.5}
-                        minus := TicketStepBtn{text: "−"}
-                        // Centred in a fixed box so 1 and 12 sit in the same place.
-                        View{
-                            width: 30 height: 34
-                            align: Align{x: 0.5 y: 0.5}
-                            qty_label := Label{
-                                width: Fit
-                                text: "1"
-                                draw_text.color: #x69090C
-                                draw_text.text_style.font_size: 15.
-                            }
+                    minus := TicketStepBtn{text: "−"}
+                    // Centred in a fixed box so 1 and 12 sit in the same place.
+                    View{
+                        width: 36 height: 34
+                        align: Align{x: 0.5 y: 0.5}
+                        qty_label := Label{
+                            width: Fit
+                            text: "1"
+                            draw_text.color: #x69090C
+                            draw_text.text_style.font_size: 15.
                         }
-                        plus := TicketStepBtn{text: "+"}
                     }
+                    plus := TicketStepBtn{text: "+"}
+                    View{width: Fill height: 1}
+                    hold_send_btn := TicketHoldBtn{text: "Hold"}
                 }
             }
         }
@@ -4758,18 +4884,17 @@ script_mod! {
         }
     }
 
-    // Whole-row language pick (no separate Use button). Same inset law as
-    // every other face: padding *and* label_walk.margin. Long labels wrap
-    // onto the next line inside that inset (no ellipsis / crop).
+    // Whole-row language pick (no separate Use button). Padding insets the
+    // face; small label_walk.margin — long labels wrap, never crop.
     let LanguageRow = Button{
         width: Fill height: Fit
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         enable_long_press: true
@@ -5390,8 +5515,8 @@ script_mod! {
     let SuggestRowView = RoundedView{
         cursor: MouseCursor.Hand
         width: Fill height: Fit
-        padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
-        flow: Right spacing: 12
+        padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+        flow: Right spacing: 10
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 10.
@@ -5406,9 +5531,10 @@ script_mod! {
             draw_text.text_style.font_size: 15.
         }
         subtitle := Label{
-            width: Fit
+            width: Fit{max: FitBound.Abs(96.)}
             text: ""
             max_lines: 1
+            text_overflow: Ellipsis
             draw_text.color: #x6B4A3F
             draw_text.text_style.font_size: 13.
         }
@@ -5424,7 +5550,7 @@ script_mod! {
         width: Fill height: Fit
         list := PortalList{
             width: Fill height: Fill
-            spacing: 4
+            spacing: 6
             scroll_bar: ScrollBar{}
             Item := View{
                 width: Fill height: Fit
@@ -6653,32 +6779,37 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right spacing: 10
                                     align: Align{y: 0.5}
-                                    // Order type: always visible while browsing dishes.
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            otype_dinein := SegBtn{text: "Dine-in"}
-                                            otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            otype_takeaway := SegBtn{text: "Takeaway"}
-                                            otype_takeaway_on := SegBtnOn{text: "Takeaway" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            otype_delivery := SegBtn{text: "Delivery"}
-                                            otype_delivery_on := SegBtnOn{text: "Delivery" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            otype_counter := SegBtn{text: "Counter"}
-                                            otype_counter_on := SegBtnOn{text: "Counter" visible: false}
-                                        }
-                                    }
                                     sticky_total := Label{
-                                        width: Fit height: Fit
+                                        width: Fill height: Fit
                                         text: "Total · ₹0.00"
                                         draw_text.color: #x260B08
                                         draw_text.text_style.font_size: 15.
+                                    }
+                                }
+                                // Horizontal chip strip (same pattern as lock roles /
+                                // category tabs) — one row, scrolls when needed.
+                                otype_strip := View{
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    tabs := ChipStrip{
+                                        ChipStripRow{
+                                            View{width: Fit height: Fit flow: Overlay
+                                                otype_dinein := ChipBtn{text: "Dine-in"}
+                                                otype_dinein_on := ChipBtnActive{text: "Dine-in" visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                otype_takeaway := ChipBtn{text: "Takeaway"}
+                                                otype_takeaway_on := ChipBtnActive{text: "Takeaway" visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                otype_delivery := ChipBtn{text: "Delivery"}
+                                                otype_delivery_on := ChipBtnActive{text: "Delivery" visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                otype_counter := ChipBtn{text: "Counter"}
+                                                otype_counter_on := ChipBtnActive{text: "Counter" visible: false}
+                                            }
+                                        }
                                     }
                                 }
                                 // Dine-in: which table — pinned with the order type.
@@ -6722,11 +6853,31 @@ script_mod! {
                                     }
                                 }
                             }
-                            // Ticket column: lines scroll; Counter stays fixed at the foot.
+                            // Ticket column: cart (work surface) then payment.
+                            // Narrow: one pane at a time via Payment / Added items tabs.
+                            // Wide (≥640 content): Right — cart left, payment right.
                             pos_ticket := View{
                                 width: Fill height: Fill
-                                flow: Down spacing: 8
+                                flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 0. bottom: 8.}
+                                pos_pane_tabs := View{
+                                    width: Fill height: Fit
+                                    visible: false
+                                    flow: Overlay
+                                    tabs := ChipStrip{
+                                        ChipStripRow{
+                                            View{width: Fit height: Fit flow: Overlay
+                                                pos_tab_items := ChipBtn{text: "Added items"}
+                                                pos_tab_items_on := ChipBtnActive{text: "Added items" visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                pos_tab_payment := ChipBtn{text: "Payment"}
+                                                pos_tab_payment_on := ChipBtnActive{text: "Payment" visible: false}
+                                            }
+                                        }
+                                    }
+                                }
+                                // Added items: natural vertical scroll.
                                 pos_scroll := ScrollYView{
                                     width: Fill height: Fill
                                     pos_page := View{
@@ -6877,8 +7028,11 @@ script_mod! {
                                             }
                                         }
 
-                                        RoundedView{
+                                        // Only while the ticket has lines — an empty bordered
+                                        // card is noise; + Add dishes already says what to do.
+                                        cart_ticket_card := RoundedView{
                                             width: Fill height: Fit
+                                            visible: false
                                             padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
                                             flow: Down spacing: 10
                                             draw_bg.color: #xffffff
@@ -6886,21 +7040,33 @@ script_mod! {
                                             draw_bg.border_size: 2.
                                             draw_bg.border_color: #x5A4238
                                             cart_list := mod.widgets.CartList{}
+                                            // Kept for locale/align; card is hidden when empty.
                                             cart_empty_hint := WrapLabel{
+                                                visible: false
                                                 body: "Order empty — tap items to add."
                                                 font_color: #x6B4A3F
                                                 font_size: 12.
                                             }
 
-                                            // Right under the lines just punched: which
-                                            // kitchens get a ticket, then send.
+                                            // Right under the lines just punched: pick a
+                                            // station for dishes that have none, then send.
                                             kot_dest_hint := WrapLabel{
                                                 body: " "
                                                 font_color: #x69090C
                                                 font_size: 12.
                                                 visible: false
                                             }
+                                            kot_station_wrap := View{
+                                                width: Fill height: Fit
+                                                visible: false
+                                                flow: Down spacing: 6
+                                                kot_station_input := FieldInput{
+                                                    empty_text: "Kitchen station for dishes without one (e.g. Tandoor)"
+                                                }
+                                                kot_station_suggest := mod.widgets.SuggestList{field: "kot_station"}
+                                            }
                                             send_stack := ActionStack{
+                                                kot_set_station := StackLightBtn{text: "Use this station" visible: false}
                                                 send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
                                             }
@@ -6908,11 +7074,8 @@ script_mod! {
                                     }
                                     } // pos_page
                                 } // pos_scroll
-                                // Counter: fixed at the foot of the ticket. Own
-                                // scroll + capped height (apply_shell_layout) so a
-                                // tall bill never eats the cart lines above.
                                 counter_dock := ScrollYView{
-                                    width: Fill height: Fit
+                                    width: Fill height: Fill
                                     View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
@@ -7402,15 +7565,15 @@ script_mod! {
                                     }
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right{wrap: true} spacing: 8
+                                        // Never wrap:true with width:Fill children — Makepad
+                                        // logs "wrap does not support width: Fill" every frame and freezes.
+                                        flow: Down spacing: 8
                                         layout_nudge_left := NavBtn{text: "← 20"}
                                         layout_nudge_right := NavBtn{text: "→ 20"}
                                         layout_nudge_up := NavBtn{text: "↑ 20"}
                                         layout_nudge_down := NavBtn{text: "↓ 20"}
                                     }
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right{wrap: true} spacing: 8
+                                    ActionStack{
                                         layout_save := StackPrimaryBtn{text: "Save layout"}
                                         layout_open := StackLightBtn{text: "Open table"}
                                     }
@@ -7504,6 +7667,10 @@ script_mod! {
                                 station_add_heading := WrapLabel{body: "Add a kitchen station" font_color: #x260B08 font_size: 15.}
                                 station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
                                 station_add := StackPrimaryBtn{text: "Add station"}
+                                station_remove_heading := WrapLabel{body: "Remove a kitchen station" font_color: #x260B08 font_size: 15.}
+                                station_remove_input := FieldInput{empty_text: "Station name to remove"}
+                                station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
+                                station_remove := StackSecondaryBtn{text: "Remove station"}
                             }
                         }
 
@@ -7997,10 +8164,8 @@ script_mod! {
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right{wrap: true}
-                                        spacing: 6
+                                    // SegBtn is width:Fill — cannot sit in wrap:true (freezes UI).
+                                    ActionStack{
                                         crm_seg_bday_week := SegBtn{text: "Birthday week"}
                                         crm_seg_bday_month := SegBtn{text: "Birthday month"}
                                         crm_seg_phone := SegBtn{text: "With phone"}
@@ -8268,82 +8433,117 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
+                                settings_hub := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    settings_title := WrapLabel{body: "Language & currency" font_color: #x260B08 font_size: 20.}
+                                    settings_hub_title := WrapLabel{body: "Settings" font_color: #x260B08 font_size: 22.}
+                                    settings_hub_help := WrapLabel{
+                                        width: Fill
+                                        body: "Open one area at a time — less scrolling, clearer choices."
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                    }
+                                    settings_hub_language := StackSecondaryBtn{text: "Language & currency"}
+                                    settings_hub_country := StackSecondaryBtn{text: "Country & tax"}
+                                    settings_hub_tills := StackSecondaryBtn{text: "Extra tills & product"}
+                                    settings_hub_brand := StackSecondaryBtn{text: "Your brand"}
+                                    settings_hub_units := StackSecondaryBtn{text: "Units & conversions"}
+                                    settings_hub_pickers := StackSecondaryBtn{text: "Areas · stations · tax rates"}
+                                    settings_hub_printers := StackSecondaryBtn{text: "Kitchen printing & printers"}
+                                    settings_hub_bill := StackSecondaryBtn{text: "Bill format & schemes"}
+                                    settings_hub_backup := StackSecondaryBtn{text: "Backup & restore"}
                                 }
-                                locale_label := mod.widgets.ReportText{}
-                                h_country_tax := WrapLabel{body: "Country & tax" font_color: #x260B08 font_size: 20.}
-                                h_country_pack_help := WrapLabel{
-                                    width: Fill
-                                    body: "A country pack sets the tax name and maths, the instant-pay rail, and the business id printed on bills. Kumkaj does not file taxes or issue government e-invoices anywhere."
-                                    font_color: #x260B08
-                                    font_size: 12.
-                                }
-                                fiscal_label := mod.widgets.ReportText{}
-                                country_code_input := FieldInput{
-                                    empty_text: "Country code e.g. IN, GB, US, AE, BR"
-                                }
-                                country_suggest := mod.widgets.SuggestList{field: "country"}
-                                ActionStack{
-                                }
-                                country_apply := StackPrimaryBtn{text: "Apply country pack"}
-                                country_hint := mod.widgets.ReportText{}
-                                // Where tax sits: one choice of two, the current one filled.
-                                View{
+                                settings_detail_back := StackLightBtn{text: "Back to Settings" visible: false}
+                                settings_panel_language := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        tax_inclusive_btn := SegBtn{text: "Tax inside price"}
-                                        tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        tax_exclusive_btn := SegBtn{text: "Tax added at till"}
-                                        tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
-                                    }
-                                }
-                                business_tax_id_input := FieldInput{empty_text: "Business tax id"}
-                                service_bps_input := FieldInput{
-                                    empty_text: "Service % optional 0/10/12"
-                                }
-                                fiscal_save := StackPrimaryBtn{text: "Save business id & service %"}
-                                h_language := WrapLabel{body: "Language" font_color: #x260B08 font_size: 15.}
-                                h_language_setup_hint := WrapLabel{
-                                    width: Fill
-                                    body: "Follow this device’s language, or pick one yourself."
-                                    font_color: #x260B08
-                                    font_size: 12.
-                                }
-                                ActionStack{
+                                    flow: Down spacing: 12
+                                    visible: false
                                     View{
                                         width: Fill height: Fit
-                                        flow: Overlay
-                                        settings_lang_platform := StackSecondaryBtn{text: "Use platform native language"}
-                                        settings_lang_platform_on := StackPrimaryBtn{text: "Use platform native language" visible: false}
+                                        flow: Down spacing: 8
+                                        settings_title := WrapLabel{body: "Language & currency" font_color: #x260B08 font_size: 20.}
                                     }
+                                    locale_label := mod.widgets.ReportText{}
+                                    h_language := WrapLabel{body: "Language" font_color: #x260B08 font_size: 15.}
+                                    h_language_setup_hint := WrapLabel{
+                                        width: Fill
+                                        body: "Follow this device’s language, or pick one yourself."
+                                        font_color: #x260B08
+                                        font_size: 12.
+                                    }
+                                    ActionStack{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_lang_platform := StackSecondaryBtn{text: "Use platform native language"}
+                                            settings_lang_platform_on := StackPrimaryBtn{text: "Use platform native language" visible: false}
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_lang_user := StackSecondaryBtn{text: "Use user selected language"}
+                                            settings_lang_user_on := StackPrimaryBtn{text: "Use user selected language" visible: false}
+                                        }
+                                    }
+                                    settings_lang_selected := WrapLabel{
+                                        body: ""
+                                        font_color: #x260B08
+                                        font_size: 13.
+                                    }
+                                    language_list := mod.widgets.LanguageList{}
+                                    h_currency := WrapLabel{body: "Currency" font_color: #x260B08 font_size: 15.}
+                                    h_currency_use_help := WrapLabel{
+                                        width: Fill
+                                        body: "Scroll and tap Use for any supported currency."
+                                        font_color: #x260B08
+                                        font_size: 12.
+                                    }
+                                    currency_list := mod.widgets.CurrencyList{}
+                                }
+                                settings_panel_country := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    h_country_tax := WrapLabel{body: "Country & tax" font_color: #x260B08 font_size: 20.}
+                                    h_country_pack_help := WrapLabel{
+                                        width: Fill
+                                        body: "A country pack sets the tax name and maths, the instant-pay rail, and the business id printed on bills. Kumkaj does not file taxes or issue government e-invoices anywhere."
+                                        font_color: #x260B08
+                                        font_size: 12.
+                                    }
+                                    fiscal_label := mod.widgets.ReportText{}
+                                    country_code_input := FieldInput{
+                                        empty_text: "Country code e.g. IN, GB, US, AE, BR"
+                                    }
+                                    country_suggest := mod.widgets.SuggestList{field: "country"}
+                                    ActionStack{
+                                    }
+                                    country_apply := StackPrimaryBtn{text: "Apply country pack"}
+                                    country_hint := mod.widgets.ReportText{}
+                                    // Where tax sits: one choice of two, the current one filled.
                                     View{
                                         width: Fill height: Fit
-                                        flow: Overlay
-                                        settings_lang_user := StackSecondaryBtn{text: "Use user selected language"}
-                                        settings_lang_user_on := StackPrimaryBtn{text: "Use user selected language" visible: false}
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            tax_inclusive_btn := SegBtn{text: "Tax inside price"}
+                                            tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            tax_exclusive_btn := SegBtn{text: "Tax added at till"}
+                                            tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
+                                        }
                                     }
+                                    business_tax_id_input := FieldInput{empty_text: "Business tax id"}
+                                    service_bps_input := FieldInput{
+                                        empty_text: "Service % optional 0/10/12"
+                                    }
+                                    fiscal_save := StackPrimaryBtn{text: "Save business id & service %"}
                                 }
-                                settings_lang_selected := WrapLabel{
-                                    body: ""
-                                    font_color: #x260B08
-                                    font_size: 13.
-                                }
-                                language_list := mod.widgets.LanguageList{}
-                                h_currency := WrapLabel{body: "Currency" font_color: #x260B08 font_size: 15.}
-                                h_currency_use_help := WrapLabel{
-                                    width: Fill
-                                    body: "Scroll and tap Use for any supported currency."
-                                    font_color: #x260B08
-                                    font_size: 12.
-                                }
-                                currency_list := mod.widgets.CurrencyList{}
-                                h_extra_tills_heading := WrapLabel{body: "Extra tills" font_color: #x260B08 font_size: 20.}
+                                settings_panel_tills := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+h_extra_tills_heading := WrapLabel{body: "Extra tills" font_color: #x260B08 font_size: 20.}
                                 h_other_devices_help_heading := WrapLabel{
                                     body: "Set up other devices"
                                     font_color: #x260B08
@@ -8382,7 +8582,12 @@ script_mod! {
                                     font_color: #x6B4A3F
                                     font_size: 12.
                                 }
-                                h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_size: 20.}
+                                                                }
+                                settings_panel_brand := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_size: 20.}
                                 h_brand_shown_help := WrapLabel{
                                     width: Fill
                                     body: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
@@ -8390,6 +8595,7 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 venue_title_input := FieldInput{empty_text: "Name of this place"}
+                                org_name_input := FieldInput{empty_text: "Business name"}
                                 venue_brand_hint := WrapLabel{
                                     body: "Icon: Kumkaj mark (default) — choose a custom one"
                                     font_color: #x6B4A3F
@@ -8400,7 +8606,12 @@ script_mod! {
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := StackPrimaryBtn{text: "Save brand"}
-                                h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 20.}
+                                                                }
+                                settings_panel_units := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 20.}
                                 h_units_help := WrapLabel{
                                     width: Fill
                                     body: "Codes for item labels (kg, piece, bag). Every unit must link — directly or through other units — to a standard (kg · cm · ml · pc), e.g. 1 crate = 2 box and 1 box = 20 cm. Conversions: 1 from = factor to. Currencies are never units."
@@ -8423,7 +8634,12 @@ script_mod! {
                                 conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
                                 conv_add := StackPrimaryBtn{text: "Add conversion"}
-                                sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font_color: #x260B08 font_size: 18.}
+                                                                }
+                                settings_panel_pickers := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font_color: #x260B08 font_size: 18.}
                                 sibling_pickers_help := WrapLabel{
                                     width: Fill
                                     body: "Tap On/Off like units — hide from day-to-day pickers; pack defaults stay."
@@ -8431,6 +8647,17 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 sibling_pickers_label := mod.widgets.ReportText{}
+                                station_manage_heading := WrapLabel{
+                                    body: "Add or remove a kitchen station"
+                                    font_color: #x260B08
+                                    font_size: 15.
+                                }
+                                // Own ids (Kitchen screen already has station_*).
+                                settings_station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
+                                settings_station_add := StackPrimaryBtn{text: "Add station"}
+                                settings_station_remove_input := FieldInput{empty_text: "Station name to remove"}
+                                settings_station_remove_suggest := mod.widgets.SuggestList{field: "settings_station_remove"}
+                                settings_station_remove := StackSecondaryBtn{text: "Remove station"}
                                 bulk_price_heading := WrapLabel{body: "Bulk menu price" font_color: #x260B08 font_size: 18.}
                                 FormFieldRow{
                                     bulk_cat_input := FieldInput{empty_text: "Category name"}
@@ -8450,7 +8677,12 @@ script_mod! {
                                     font_color: #x6B4A3F
                                     font_size: 12.
                                 }
-                                h_kitchen_printing := WrapLabel{body: "Kitchen printing" font_color: #x260B08 font_size: 20.}
+                                                                }
+                                settings_panel_printers := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+h_kitchen_printing := WrapLabel{body: "Kitchen printing" font_color: #x260B08 font_size: 20.}
                                 h_kot_print_help_khaynjo := WrapLabel{
                                     width: Fill
                                     body: "When a KOT is sent — at the counter or from a waiter's device — the kitchen's paper prints here by itself."
@@ -8485,13 +8717,28 @@ script_mod! {
                                     printer_remove := StackSecondaryBtn{text: "Remove last"}
                                 }
                                 h_printers_routes := WrapLabel{body: "Where things print" font_color: #x260B08 font_size: 16.}
+                                h_printers_routes_help := WrapLabel{
+                                    width: Fill
+                                    body: "Tap a row (Bill or a kitchen station) to edit it. Then tap a printer name below to put that printer on that route. Each station can have different printers."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
                                 printer_routes_label := mod.widgets.ReportText{}
                                 route_pick_input := FieldInput{empty_text: "Bill or kitchen"}
                                 route_pick_suggest := mod.widgets.SuggestList{field: "route_pick"}
-                                route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
-                                route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
+                                // Real buttons only (printer names). No help text here —
+                                // that slot used to look like a second input and people tapped it.
+                                route_add_printers := ActionStack{
+                                    route_add_prn_0 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_1 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_2 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_3 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_4 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_5 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_6 := StackPrimaryBtn{text: "" visible: false}
+                                    route_add_prn_7 := StackPrimaryBtn{text: "" visible: false}
+                                }
                                 ActionStack{
-                                    route_add := StackPrimaryBtn{text: "Add to route"}
                                     route_up := StackSecondaryBtn{text: "Up"}
                                     route_down := StackSecondaryBtn{text: "Down"}
                                     route_remove := StackSecondaryBtn{text: "Remove last"}
@@ -8501,7 +8748,12 @@ script_mod! {
                                     printers_save := StackPrimaryBtn{text: "Save printers"}
                                     print_test_btn := StackSecondaryBtn{text: "Print a test page"}
                                 }
-                                h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 20.}
+                                                                }
+                                settings_panel_bill := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 20.}
                                 h_bill_format_help := WrapLabel{
                                     width: Fill
                                     body: "Printed under your restaurant's name on every bill. Separate lines with |  (e.g. MG Road, Rajkot | Ph 98250 00000)."
@@ -8543,7 +8795,12 @@ script_mod! {
                                 schemes_label := mod.widgets.ReportText{}
                                 scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
                                 scheme_add := StackPrimaryBtn{text: "Add BOGO"}
-                                h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
+                                                                }
+                                settings_panel_backup := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 backup_auto_label := WrapLabel{
                                     width: Fill
                                     body: ""
@@ -8561,6 +8818,7 @@ script_mod! {
                                     font_color: #x260B08
                                 }
                                 restore_btn := NavBtn{text: "Restore backup"}
+                                }
                             }
                         }
 
@@ -8749,8 +9007,8 @@ script_mod! {
                                     flow: Down spacing: 8
                                     branches_title := WrapLabel{body: "Branches" font_color: #x260B08 font_size: 20.}
                                 }
-                                org_name_input := FieldInput{empty_text: "Business name"}
-                                org_save := StackPrimaryBtn{text: "Save business name"}
+                                // Business name is edited under Settings → Your brand
+                                // (single-outlet shops never see this Branches tab).
                                 branches_label := mod.widgets.ReportText{}
                                 // A branch is its own restaurant (vision §5): open
                                 // another in Server Mode, never switch inside these
@@ -9029,7 +9287,7 @@ script_mod! {
                                 upi_qr_amount := WrapLabel{body: " " font_color: #x69090C font_size: 18.}
                                 upi_qr_image := Image{
                                     width: 240 height: 240
-                                    fit: Fit.Contain
+                                    fit: ImageFit.Smallest
                                 }
                                 upi_qr_help := WrapLabel{
                                     width: Fill
@@ -9399,6 +9657,21 @@ fn set_view_walk(cx: &mut Cx, view: &ViewRef, walk: Walk) {
         inner.walk = walk;
     }
     view.redraw(cx);
+}
+
+fn set_view_flow(cx: &mut Cx, view: &ViewRef, flow: Flow) {
+    if let Some(mut inner) = view.borrow_mut() {
+        inner.layout.flow = flow;
+    }
+    view.redraw(cx);
+}
+
+fn size_fill(weight: f64, min: f64) -> Size {
+    Size::Fill {
+        weight,
+        min: Some(min),
+        max: None,
+    }
 }
 
 /// First line of a status / receipt message, kept short for the ticket.
@@ -10064,26 +10337,26 @@ impl Widget for FloorList {
                             let item = list.item(cx, item_id, id!(Item));
                             for (slot, path) in slots.iter().enumerate() {
                                 let tile = item.view(cx, *path);
-                                // Columns past the width are hidden; empty
-                                // places in a short last row keep tile widths
-                                // even (shown, but blank).
+                                // Only real tables — never blank Free shells to
+                                // pad the last row (those read as ghost tables).
                                 if slot >= cols {
                                     tile.set_visible(cx, false);
                                     continue;
                                 }
-                                tile.set_visible(cx, true);
-                                let t = idxs.get(slot).and_then(|i| tiles.get(*i));
-                                match t {
-                                    Some(t) => paint_floor_tile(
-                                        cx,
-                                        &tile,
-                                        t.0.as_str(),
-                                        t.1.as_str(),
-                                        t.2.as_str(),
-                                        t.3.as_deref(),
-                                        t.4,
-                                    ),
-                                    None => paint_floor_tile(cx, &tile, "", "", "", None, F::Free),
+                                match idxs.get(slot).and_then(|i| tiles.get(*i)) {
+                                    Some(t) => {
+                                        tile.set_visible(cx, true);
+                                        paint_floor_tile(
+                                            cx,
+                                            &tile,
+                                            t.0.as_str(),
+                                            t.1.as_str(),
+                                            t.2.as_str(),
+                                            t.3.as_deref(),
+                                            t.4,
+                                        );
+                                    }
+                                    None => tile.set_visible(cx, false),
                                 }
                             }
                             item.draw_all_unscoped(cx);
@@ -10639,7 +10912,12 @@ impl Widget for SuggestList {
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
-                    item.label(cx, ids!(action)).set_text(cx, &use_text);
+                    let action = if row.action.trim().is_empty() {
+                        use_text.as_str()
+                    } else {
+                        row.action.as_str()
+                    };
+                    item.label(cx, ids!(action)).set_text(cx, action);
                     item.draw_all_unscoped(cx);
                 }
             }
@@ -10902,6 +11180,90 @@ fn parse_printer_route_key(key: &str) -> print_share::RouteKey<'_> {
     }
 }
 
+/// What the owner sees in the route field — never a raw `kot:<uuid>`.
+fn printer_route_display_name(
+    key: &str,
+    stations: &[domain::KitchenStation],
+    t: impl Fn(&str) -> String,
+) -> String {
+    let key = key.trim();
+    if key == "bill" {
+        return t("route_bill");
+    }
+    if key == "kot:" || key.is_empty() {
+        return t("route_default_kitchen");
+    }
+    if let Some(id) = key.strip_prefix("kot:") {
+        if let Some(s) = stations.iter().find(|s| s.id == id) {
+            return s.name.clone();
+        }
+    }
+    key.to_string()
+}
+
+/// Turn a typed/picked label (or a stored key) into `bill` / `kot:` / `kot:<id>`.
+fn resolve_printer_route_key(
+    typed: &str,
+    stations: &[domain::KitchenStation],
+    t: impl Fn(&str) -> String,
+) -> String {
+    let typed = typed.trim();
+    if typed.is_empty() {
+        return "bill".into();
+    }
+    if typed == "bill" || typed == "kot:" || typed.starts_with("kot:") {
+        return typed.to_string();
+    }
+    let bill = t("route_bill");
+    let unassigned = t("route_default_kitchen");
+    if typed.eq_ignore_ascii_case(&bill) {
+        return "bill".into();
+    }
+    if typed.eq_ignore_ascii_case(&unassigned)
+        || typed.eq_ignore_ascii_case("unassigned")
+        || typed.eq_ignore_ascii_case("unassigned items (no station)")
+    {
+        return "kot:".into();
+    }
+    if let Some(s) = stations
+        .iter()
+        .find(|s| s.name.eq_ignore_ascii_case(typed))
+    {
+        return format!("kot:{}", s.id);
+    }
+    // Unknown label — keep editing Bill rather than inventing a key.
+    "bill".into()
+}
+
+/// Append a pool printer (by label or id) to the focused route; save if possible.
+/// Returns Ok(true) if added or already on the route, Ok(false) if the pool is empty
+/// or the name was not found.
+fn add_printer_to_focused_route(st: &mut AppState, label_or_id: &str) -> bool {
+    let pick = label_or_id.trim();
+    if pick.is_empty() || st.printer_draft.printers.is_empty() {
+        return false;
+    }
+    let Some(pid) = st
+        .printer_draft
+        .printers
+        .iter()
+        .find(|p| p.label.eq_ignore_ascii_case(pick) || p.id == pick)
+        .map(|p| p.id.clone())
+    else {
+        return false;
+    };
+    let key_str = st.printer_route_key.clone();
+    let key = parse_printer_route_key(&key_str);
+    let route = st.printer_draft.route_mut(key);
+    if !route.iter().any(|id| id == &pid) {
+        route.push(pid);
+    }
+    if let Some(base) = st.data_base.as_ref() {
+        let _ = print_share::save_device_printers(base, &st.printer_draft);
+    }
+    true
+}
+
 /// Kitchen destinations for unsent cart lines: `(station display name, line count)`,
 /// in first-seen order. Empty station → `unassigned` label (caller supplies it).
 fn pending_kot_destinations(
@@ -10911,7 +11273,7 @@ fn pending_kot_destinations(
     unassigned: &str,
 ) -> Vec<(String, usize)> {
     let mut out: Vec<(String, String, usize)> = Vec::new(); // id, name, count
-    for line in lines.iter().filter(|l| !l.is_sent()) {
+    for line in lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
         let sid = products
             .iter()
             .find(|p| p.id == line.product_id)
@@ -10934,21 +11296,13 @@ fn pending_kot_destinations(
     out.into_iter().map(|(_, name, n)| (name, n)).collect()
 }
 
-/// Short line for the Send button / status: `Tandoor · Cold` or `Tandoor (2) · Cold (1)`.
+/// Short line for the Send button / status: kitchen names only
+/// (`Tandoor · Cold`). Counts live on the station list rows, not here.
 fn format_kot_destinations(dests: &[(String, usize)]) -> String {
-    if dests.is_empty() {
-        return String::new();
-    }
-    let show_counts = dests.len() > 1 || dests.iter().any(|(_, n)| *n > 1);
     dests
         .iter()
-        .map(|(name, n)| {
-            if show_counts {
-                format!("{name} ({n})")
-            } else {
-                name.clone()
-            }
-        })
+        .map(|(name, _)| name.as_str())
+        .filter(|n| !n.is_empty())
         .collect::<Vec<_>>()
         .join(" · ")
 }
@@ -10969,9 +11323,14 @@ fn printers_found_line(t: impl Fn(&str) -> String) -> String {
 }
 
 /// The printers added on this device, in the order they are tried.
-fn printers_pool_rows(draft: &print_share::DevicePrinters, t: impl Fn(&str) -> String) -> Vec<ReportRow> {
+/// `selected` marks the row Remove will delete (tap a row to choose).
+fn printers_pool_rows(
+    draft: &print_share::DevicePrinters,
+    selected: Option<&str>,
+    t: impl Fn(&str) -> String,
+) -> Vec<ReportRow> {
     if draft.printers.is_empty() {
-        return vec![ReportRow::Line("(none yet — add one below)".into())];
+        return vec![ReportRow::Line(t("printers_pool_empty"))];
     }
     draft
         .printers
@@ -10983,7 +11342,12 @@ fn printers_pool_rows(draft: &print_share::DevicePrinters, t: impl Fn(&str) -> S
             } else {
                 p.target.clone()
             };
-            ReportRow::Kv(format!("{}. {}", i + 1, p.label), target)
+            let mark = if selected == Some(p.id.as_str()) {
+                "› "
+            } else {
+                ""
+            };
+            ReportRow::Kv(format!("{mark}{}. {}", i + 1, p.label), target)
         })
         .collect()
 }
@@ -11516,21 +11880,25 @@ impl Widget for CartList {
                     }
                     // Unsent lines: which kitchen gets this dish (from the menu item).
                     if !line.is_sent() {
-                        let sid = products
-                            .iter()
-                            .find(|p| p.id == line.product_id)
-                            .map(|p| p.station_id.as_str())
-                            .unwrap_or("");
-                        let dest = if sid.is_empty() {
-                            locale::t(&lang, "kot_unassigned")
+                        if line.hold_send {
+                            meta.push_str(&format!(" · {}", locale::t(&lang, "hold_send_meta")));
                         } else {
-                            stations
+                            let sid = products
                                 .iter()
-                                .find(|s| s.id == sid)
-                                .map(|s| s.name.clone())
-                                .unwrap_or_else(|| locale::t(&lang, "kot_unassigned"))
-                        };
-                        meta.push_str(&format!(" · → {dest}"));
+                                .find(|p| p.id == line.product_id)
+                                .map(|p| p.station_id.as_str())
+                                .unwrap_or("");
+                            let dest = if sid.is_empty() {
+                                locale::t(&lang, "kot_unassigned")
+                            } else {
+                                stations
+                                    .iter()
+                                    .find(|s| s.id == sid)
+                                    .map(|s| s.name.clone())
+                                    .unwrap_or_else(|| locale::t(&lang, "kot_unassigned"))
+                            };
+                            meta.push_str(&format!(" · → {dest}"));
+                        }
                     }
                     if !line.note.trim().is_empty() {
                         meta.push_str(&format!(" · {}", line.note.trim()));
@@ -11579,6 +11947,19 @@ impl Widget for CartList {
                     // changes only by a reasoned Cancel); Cancel / NC / Move.
                     let on_table = line.is_sent() && line.running_line_id != "counter";
                     item.view(cx, ids!(stepper)).set_visible(cx, !line.is_sent());
+                    if !line.is_sent() {
+                        item.button(cx, ids!(hold_send_btn)).set_text(
+                            cx,
+                            &locale::t(
+                                &lang,
+                                if line.hold_send {
+                                    "hold_send_on"
+                                } else {
+                                    "hold_send"
+                                },
+                            ),
+                        );
+                    }
                     item.view(cx, ids!(sent_row)).set_visible(cx, on_table);
                     if on_table {
                         item.button(cx, ids!(line_cancel)).set_text(cx, &locale::t(&lang, "cancel_item_short"));
@@ -12858,7 +13239,9 @@ impl App {
                 .unwrap_or(true);
             self.paint_choice_pair(cx, ids!(zero_sales_on_btn), ids!(zero_sales_on_btn_on), allow_zero);
             self.paint_choice_pair(cx, ids!(zero_sales_off_btn), ids!(zero_sales_off_btn_on), !allow_zero);
-            self.ui.view(cx, ids!(send_stack)).set_visible(cx, !st.cart.is_empty());
+            let has_lines = !st.cart.is_empty();
+            self.ui.view(cx, ids!(cart_ticket_card)).set_visible(cx, has_lines);
+            self.ui.view(cx, ids!(send_stack)).set_visible(cx, has_lines);
             // Inventory: the list, or a word on where stock comes from.
             let no_stock = st.stock_items().is_empty();
             self.ui.widget(cx, ids!(stock_empty)).set_visible(cx, no_stock);
@@ -13193,13 +13576,8 @@ impl App {
         ] {
             self.ui.widget(cx, path).set_visible(cx, removed_count > 0);
         }
-        self.ui
-            .widget(cx, ids!(cart_empty_hint))
-            .set_visible(cx, cart_count == 0);
-        {
-            let hint = app_state().lock().unwrap().t("order_empty_pick");
-            self.ui.widget(cx, ids!(cart_empty_hint)).set_text(cx, &plain_display_text(&hint));
-        }
+        // Empty ticket: no bordered card (see cart_ticket_card). Hint unused.
+        self.ui.widget(cx, ids!(cart_empty_hint)).set_visible(cx, false);
         self.ui
             .widget(cx, ids!(cart_list))
             .set_visible(cx, cart_count > 0);
@@ -13224,7 +13602,9 @@ impl App {
                 .label(cx, ids!(sticky_total))
                 .set_text(cx, &sticky);
         }
-        // Send KOT: name the kitchens this order will reach (and their printers).
+        // Send KOT: name kitchens for unsent lines. After send, keep the station
+        // field and say clearly that the last batch went — never a naked "Send KOT"
+        // that looks broken when there is nothing left to send.
         {
             let st = app_state().lock().unwrap();
             let unassigned = st.t("kot_unassigned");
@@ -13234,13 +13614,65 @@ impl App {
                 &st.cart.lines,
                 &unassigned,
             );
+            let has_unsent = st
+                .cart
+                .lines
+                .iter()
+                .any(|l| !l.is_sent() && !l.hold_send);
+            let has_held = st
+                .cart
+                .lines
+                .iter()
+                .any(|l| !l.is_sent() && l.hold_send);
+            let has_sent = st.cart.lines.iter().any(|l| l.is_sent());
+            let ticket_open = !st.cart.lines.is_empty();
             let dest_line = format_kot_destinations(&dests);
-            let (btn, hint, hint_on) = if dests.is_empty() {
-                (st.t("send_kot"), String::new(), false)
+            let sent_line = {
+                let mut out: Vec<(String, usize)> = Vec::new();
+                for line in st.cart.lines.iter().filter(|l| l.is_sent()) {
+                    let sid = st
+                        .products
+                        .iter()
+                        .find(|p| p.id == line.product_id)
+                        .map(|p| p.station_id.as_str())
+                        .unwrap_or("");
+                    let name = if sid.is_empty() {
+                        unassigned.clone()
+                    } else {
+                        st.stations
+                            .iter()
+                            .find(|s| s.id == sid)
+                            .map(|s| s.name.clone())
+                            .unwrap_or_else(|| unassigned.clone())
+                    };
+                    match out.iter_mut().find(|(n, _)| *n == name) {
+                        Some((_, n)) => *n += 1,
+                        None => out.push((name, 1)),
+                    }
+                }
+                format_kot_destinations(&out)
+            };
+            let (btn, hint, hint_on) = if !dests.is_empty() {
+                (
+                    st.t("send_kot_to").replace("{kitchens}", &dest_line),
+                    st.t("kot_dest_hint").replace("{kitchens}", &dest_line),
+                    true,
+                )
+            } else if has_held && !has_unsent {
+                (st.t("send_kot_held"), st.t("hold_send_meta"), true)
+            } else if has_sent {
+                let kitchens = if sent_line.is_empty() {
+                    st.t("kitchen")
+                } else {
+                    sent_line.clone()
+                };
+                (
+                    st.t("send_kot_again"),
+                    st.t("kot_sent_hint").replace("{kitchens}", &kitchens),
+                    true,
+                )
             } else {
-                let btn = st.t("send_kot_to").replace("{kitchens}", &dest_line);
-                let hint = st.t("kot_dest_hint").replace("{kitchens}", &dest_line);
-                (btn, hint, true)
+                (st.t("send_kot"), String::new(), false)
             };
             drop(st);
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
@@ -13248,6 +13680,13 @@ impl App {
                 .widget(cx, ids!(kot_dest_hint))
                 .set_text(cx, &plain_display_text(&hint));
             self.ui.widget(cx, ids!(kot_dest_hint)).set_visible(cx, hint_on);
+            // Station picker stays while the ticket has dishes (sent or not).
+            self.ui
+                .view(cx, ids!(kot_station_wrap))
+                .set_visible(cx, ticket_open);
+            self.ui
+                .button(cx, ids!(kot_set_station))
+                .set_visible(cx, has_unsent);
         }
         {
             let total_field = self.ui.text_input(cx, ids!(cart_total_input));
@@ -13970,6 +14409,9 @@ impl App {
         self.sync_venue_brand(cx);
 
         self.show_screen(cx, screen);
+        if screen == Screen::Settings {
+            self.sync_settings_panels(cx);
+        }
         {
             let st = app_state().lock().unwrap();
             let pair_label = if st.device_role == DeviceRole::Server {
@@ -14067,22 +14509,49 @@ impl App {
                 // Every kitchen station gets its own route row (empty until configured).
                 let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
                 st.printer_draft.ensure_station_routes(station_ids);
-                let pool_rows = printers_pool_rows(&st.printer_draft, |k| st.t(k));
+                let selected = st.printer_selected_id.clone();
+                let pool_rows =
+                    printers_pool_rows(&st.printer_draft, selected.as_deref(), |k| st.t(k));
                 let route_rows = printer_route_rows(
                     &st.printer_draft,
                     &st.stations,
                     &st.printer_route_key,
                     |k| st.t(k),
                 );
-                let route_key = st.printer_route_key.clone();
+                let route_display = printer_route_display_name(
+                    &st.printer_route_key,
+                    &st.stations,
+                    |k| st.t(k),
+                );
+                let add_labels: Vec<String> = st
+                    .printer_draft
+                    .printers
+                    .iter()
+                    .take(ROUTE_ADD_PRINTER_BTNS.len())
+                    .map(|p| p.label.clone())
+                    .collect();
                 drop(st);
                 self.show_found_printers(cx);
                 self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
                 self.set_report_rows(cx, ids!(printer_routes_label), route_rows);
                 let route_field = self.ui.text_input(cx, ids!(route_pick_input));
-                if !cx.has_key_focus(route_field.area()) && route_field.text() != route_key {
-                    route_field.set_text(cx, &route_key);
+                if !cx.has_key_focus(route_field.area()) && route_field.text() != route_display {
+                    route_field.set_text(cx, &route_display);
                 }
+                for (i, id) in ROUTE_ADD_PRINTER_BTNS.iter().enumerate() {
+                    let btn = self.ui.button(cx, id);
+                    if let Some(label) = add_labels.get(i) {
+                        btn.set_text(cx, label);
+                        btn.set_visible(cx, true);
+                    } else {
+                        btn.set_visible(cx, false);
+                    }
+                }
+                // Hide the whole stack when there is nothing to tap — an empty
+                // gap under the route field looked like a missing input.
+                self.ui
+                    .view(cx, ids!(route_add_printers))
+                    .set_visible(cx, !add_labels.is_empty());
             }
             let units_rows = {
                 let st = app_state().lock().unwrap();
@@ -15087,7 +15556,6 @@ impl App {
         self.align_input(cx, ids!(printer_label_input), rtl);
         self.align_input(cx, ids!(printer_target_input), rtl);
         self.align_input(cx, ids!(route_pick_input), rtl);
-        self.align_input(cx, ids!(route_add_printer_input), rtl);
         self.align_label(cx, ids!(h_backup), rtl);
         self.align_label(cx, ids!(h_drawer_count), rtl);
         self.align_label(cx, ids!(h_paid_by_2), rtl);
@@ -15229,6 +15697,9 @@ impl App {
         self.align_input(cx, ids!(menu_category_input), rtl);
         self.align_input(cx, ids!(menu_modifiers_input), rtl);
         self.align_input(cx, ids!(menu_station_input), rtl);
+        self.align_input(cx, ids!(kot_station_input), rtl);
+        self.align_input(cx, ids!(station_remove_input), rtl);
+        self.align_input(cx, ids!(settings_station_remove_input), rtl);
         self.align_input(cx, ids!(buy_qty_input), rtl);
         self.align_input(cx, ids!(buy_cost_input), rtl);
         self.align_input(cx, ids!(buy_expense_amount), rtl);
@@ -15310,7 +15781,6 @@ impl App {
             (ids!(printer_label_input), "printer_label_ph"),
             (ids!(printer_target_input), "printer_target_ph"),
             (ids!(route_pick_input), "route_pick_ph"),
-            (ids!(route_add_printer_input), "route_add_printer_ph"),
             (ids!(tendered_input), "customer_paid_ph"),
             (ids!(tip_input), "tip_ph"),
             (ids!(table_area_input), "table_area_ph"),
@@ -15461,10 +15931,19 @@ impl App {
         self.ui.widget(cx, ids!(h_printers_help)).set_text(cx, &plain_display_text(&s("printers_help")));
         self.ui.widget(cx, ids!(h_printers_pool)).set_text(cx, &plain_display_text(&s("printers_pool_heading")));
         self.ui.widget(cx, ids!(h_printers_routes)).set_text(cx, &plain_display_text(&s("printers_routes_heading")));
+        self.ui.widget(cx, ids!(h_printers_routes_help)).set_text(cx, &plain_display_text(&s("printers_routes_help")));
+        self.ui.widget(cx, ids!(station_manage_heading)).set_text(cx, &plain_display_text(&s("station_manage_heading")));
+        self.ui.button(cx, ids!(settings_station_add)).set_text(cx, &s("add_station"));
+        self.ui.button(cx, ids!(settings_station_remove)).set_text(cx, &s("station_remove"));
+        self.ui
+            .text_input(cx, ids!(settings_station_name_input))
+            .set_empty_text(cx, s("station_name_ph"));
+        self.ui
+            .text_input(cx, ids!(settings_station_remove_input))
+            .set_empty_text(cx, s("station_remove_ph"));
         self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
         self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
         self.ui.button(cx, ids!(printer_remove)).set_text(cx, &s("remove_printer"));
-        self.ui.button(cx, ids!(route_add)).set_text(cx, &s("route_add"));
         self.ui.button(cx, ids!(route_up)).set_text(cx, &s("route_up"));
         self.ui.button(cx, ids!(route_down)).set_text(cx, &s("route_down"));
         self.ui.button(cx, ids!(route_remove)).set_text(cx, &s("route_remove"));
@@ -15594,7 +16073,6 @@ impl App {
         self.ui.text_input(cx, ids!(onboard_org_input)).set_empty_text(cx, s("org_optional_ph"));
         self.ui.button(cx, ids!(onboard_save_venue)).set_text(cx, &s("save_names"));
         self.ui.text_input(cx, ids!(onboard_venue_input)).set_empty_text(cx, s("restaurant_name_ph"));
-        self.ui.button(cx, ids!(org_save)).set_text(cx, &s("save_business_name"));
         self.ui.button(cx, ids!(otype_counter)).set_text(cx, &s("counter"));
         self.ui.button(cx, ids!(otype_counter_on)).set_text(cx, &s("counter"));
         self.ui.button(cx, ids!(otype_delivery)).set_text(cx, &s("delivery"));
@@ -15603,6 +16081,10 @@ impl App {
         self.ui.button(cx, ids!(otype_dinein_on)).set_text(cx, &s("dine_in"));
         self.ui.button(cx, ids!(otype_takeaway)).set_text(cx, &s("takeaway"));
         self.ui.button(cx, ids!(otype_takeaway_on)).set_text(cx, &s("takeaway"));
+        self.ui.button(cx, ids!(pos_tab_items)).set_text(cx, &s("pos_tab_items"));
+        self.ui.button(cx, ids!(pos_tab_items_on)).set_text(cx, &s("pos_tab_items"));
+        self.ui.button(cx, ids!(pos_tab_payment)).set_text(cx, &s("pos_tab_payment"));
+        self.ui.button(cx, ids!(pos_tab_payment_on)).set_text(cx, &s("pos_tab_payment"));
         self.ui.button(cx, ids!(party_attach_add_note)).set_text(cx, &s("add_note"));
         self.ui.text_input(cx, ids!(party_attach_note)).set_empty_text(cx, s("note_gstin_ph"));
         self.ui.button(cx, ids!(party_attach_pdf)).set_text(cx, &s("attach_pdf"));
@@ -15745,6 +16227,8 @@ impl App {
         self.ui.text_input(cx, ids!(menu_tax_input)).set_empty_text(cx, s("tax_rate_ph"));
         self.ui.text_input(cx, ids!(menu_category_input)).set_empty_text(cx, s("category_search_ph"));
         self.ui.text_input(cx, ids!(menu_station_input)).set_empty_text(cx, s("station_new_ph"));
+        self.ui.text_input(cx, ids!(kot_station_input)).set_empty_text(cx, s("kot_station_ph"));
+        self.ui.button(cx, ids!(kot_set_station)).set_text(cx, &s("kot_set_station"));
         self.ui.text_input(cx, ids!(menu_modifiers_input)).set_empty_text(cx, s("options_khaynjo_ph"));
         self.ui.text_input(cx, ids!(buy_qty_input)).set_empty_text(cx, s("qty_example_ph"));
         self.ui.text_input(cx, ids!(buy_cost_input)).set_empty_text(cx, s("unit_cost_ph"));
@@ -16196,10 +16680,13 @@ impl App {
     }
 
     /// Phone (<720): bottom tabs. Tablet/desktop (≥720): side rail.
-    /// Order desk: sticky Add dishes; cart lines scroll; Counter docked
-    /// at the foot of the ticket (always one column).
+    /// Order desk: sticky Add dishes; cart scrolls; payment docked at the
+    /// foot when stacked. Side-by-side only when content ≥ ~640 (DESIGN.md).
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
+        // Two panes need room; below this, stack full-width (never a Fixed
+        // payment gutter that eats the cart on a phone).
+        const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
         const DIVIDER_W: f64 = 6.0;
         let window_w = {
             let w = self.window_inner_width(cx);
@@ -16244,6 +16731,7 @@ impl App {
             - 32.0)
             .max(280.0);
         *content_width().lock().unwrap() = content_w;
+        let side_by_side = content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
 
         for path in [ids!(pos_desk_sticky), ids!(pos_catalog), ids!(items_body)] {
             set_view_walk(
@@ -16265,31 +16753,83 @@ impl App {
                 ..Default::default()
             },
         );
-        // Reserve ≥ MIN_ITEMS_H for cart lines; Counter takes the rest
-        // (capped). Fill scroll then gets whatever is left above the dock.
-        const MIN_ITEMS_H: f64 = 200.0;
-        let window_h = self.window_inner_size(cx).y;
-        let chrome_h = if show_bottom { 320.0 } else { 250.0 };
-        let ticket_h = (window_h - chrome_h).max(MIN_ITEMS_H + 120.0);
-        let counter_cap = (ticket_h - MIN_ITEMS_H).clamp(120.0, 380.0);
-        set_view_walk(
+        set_view_flow(
             cx,
-            &self.ui.view(cx, ids!(counter_dock)),
-            Walk {
-                width: Size::fill(),
-                height: Size::Fixed(counter_cap),
-                ..Default::default()
+            &self.ui.view(cx, ids!(pos_ticket)),
+            if side_by_side {
+                Flow::right()
+            } else {
+                Flow::Down
             },
         );
-        set_view_walk(
-            cx,
-            &self.ui.view(cx, ids!(pos_scroll)),
-            Walk {
-                width: Size::fill(),
-                height: Size::fill(),
-                ..Default::default()
-            },
-        );
+        // Fill the leftover of pos_screen — never Fixed(window − guessed chrome).
+        // A too-tall Fixed clips Send KOT / Take payment with no usable scroll
+        // (the scrollbar sits past the window edge). Both columns are already
+        // ScrollYView; Fill height is the visible remainder so they scroll.
+        let show_payment = app_state().lock().unwrap().pos_show_payment;
+        self.ui
+            .view(cx, ids!(pos_pane_tabs))
+            .set_visible(cx, !side_by_side);
+        if side_by_side {
+            let pay_w = (content_w * 0.38).clamp(280.0, 420.0);
+            self.ui.view(cx, ids!(pos_scroll)).set_visible(cx, true);
+            self.ui.view(cx, ids!(counter_dock)).set_visible(cx, true);
+            set_view_walk(
+                cx,
+                &self.ui.view(cx, ids!(pos_scroll)),
+                Walk {
+                    width: size_fill(1.2, 280.0),
+                    height: Size::fill(),
+                    ..Default::default()
+                },
+            );
+            set_view_walk(
+                cx,
+                &self.ui.view(cx, ids!(counter_dock)),
+                Walk {
+                    width: Size::Fixed(pay_w),
+                    height: Size::fill(),
+                    ..Default::default()
+                },
+            );
+        } else {
+            self.ui
+                .view(cx, ids!(pos_scroll))
+                .set_visible(cx, !show_payment);
+            self.ui
+                .view(cx, ids!(counter_dock))
+                .set_visible(cx, show_payment);
+            set_view_walk(
+                cx,
+                &self.ui.view(cx, ids!(pos_scroll)),
+                Walk {
+                    width: Size::fill(),
+                    height: Size::fill(),
+                    ..Default::default()
+                },
+            );
+            set_view_walk(
+                cx,
+                &self.ui.view(cx, ids!(counter_dock)),
+                Walk {
+                    width: Size::fill(),
+                    height: Size::fill(),
+                    ..Default::default()
+                },
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(pos_tab_items),
+                ids!(pos_tab_items_on),
+                !show_payment,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(pos_tab_payment),
+                ids!(pos_tab_payment_on),
+                show_payment,
+            );
+        }
     }
 
     /// Nav slot hardware in DSL order. Slots are positions; which tab a
@@ -16398,7 +16938,7 @@ impl App {
     }
 
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
-        let (title, header_title, icon_path, icon_hint, onboard_icon_hint, saved_title) = {
+        let (title, header_title, icon_path, icon_hint, onboard_icon_hint, saved_title, saved_org) = {
             let st = app_state().lock().unwrap();
             // A shop that has not set its name yet still shows the app name
             // next to the logo — never a blank header.
@@ -16424,6 +16964,11 @@ impl App {
             } else {
                 st.t("logo_default")
             };
+            let saved_org = st
+                .store
+                .as_ref()
+                .and_then(|s| s.saved_org_name().ok())
+                .unwrap_or_default();
             (
                 title,
                 header_title,
@@ -16431,6 +16976,7 @@ impl App {
                 icon_hint,
                 onboard_icon_hint,
                 st.venue_title.clone(),
+                saved_org,
             )
         };
         self.ui
@@ -16467,11 +17013,16 @@ impl App {
                 field.set_text(cx, &saved_title);
             }
         }
+        let org_field = self.ui.text_input(cx, ids!(org_name_input));
+        if !cx.has_key_focus(org_field.area()) && org_field.text() != saved_org {
+            org_field.set_text(cx, &saved_org);
+        }
     }
 
     fn save_venue_brand(&mut self, cx: &mut Cx) {
         self.ensure_store(cx);
         let title = self.ui.text_input(cx, ids!(venue_title_input)).text();
+        let org = self.ui.text_input(cx, ids!(org_name_input)).text();
         let outcome = (|| {
             let mut st = app_state().lock().unwrap();
             let actor = st
@@ -16486,13 +17037,22 @@ impl App {
                 .as_ref()
                 .ok_or_else(|| "Storage not ready".to_string())?;
             store.set_venue_title(&title)?;
+            let org = org.trim();
+            if !org.is_empty() {
+                store.set_org_name(org)?;
+            }
             if let Some(path) = st.draft_venue_icon_path.clone() {
                 let key = store.import_venue_icon(&path)?;
                 st.venue_icon_key = Some(key);
                 st.draft_venue_icon_path = None;
             }
             st.venue_title = title.trim().to_string();
-            Ok("Brand saved".to_string())
+            let _ = st.refresh_branches_text();
+            Ok(if org.is_empty() {
+                "Brand saved".to_string()
+            } else {
+                "Brand and business name saved".to_string()
+            })
         })();
         match outcome {
             Ok(msg) => self.set_status(cx, msg),
@@ -16681,10 +17241,90 @@ impl App {
             }
         }
         if screen == Screen::Settings {
+            {
+                let mut st = app_state().lock().unwrap();
+                st.settings_panel = None;
+            }
             self.fill_bill_format_fields(cx);
-            print_share::find_printers_in_background();
+            // Do not auto-scan printers here — Find is explicit. A /24 scan on
+            // every Settings open made Add printer feel like the UI froze.
         }
         self.sync_chrome(cx);
+    }
+
+    /// Settings hub vs one open panel (avoids one endless dump of every control).
+    fn sync_settings_panels(&mut self, cx: &mut Cx) {
+        let panel = {
+            let st = app_state().lock().unwrap();
+            st.settings_panel
+        };
+        let on_hub = panel.is_none();
+        self.ui.view(cx, ids!(settings_hub)).set_visible(cx, on_hub);
+        self.ui
+            .button(cx, ids!(settings_detail_back))
+            .set_visible(cx, !on_hub);
+        let panels: &[(&[LiveId], &str)] = &[
+            (ids!(settings_panel_language), "language"),
+            (ids!(settings_panel_country), "country"),
+            (ids!(settings_panel_tills), "tills"),
+            (ids!(settings_panel_brand), "brand"),
+            (ids!(settings_panel_units), "units"),
+            (ids!(settings_panel_pickers), "pickers"),
+            (ids!(settings_panel_printers), "printers"),
+            (ids!(settings_panel_bill), "bill"),
+            (ids!(settings_panel_backup), "backup"),
+        ];
+        for (id, key) in panels {
+            self.ui
+                .view(cx, id)
+                .set_visible(cx, panel == Some(*key));
+        }
+        {
+            let st = app_state().lock().unwrap();
+            let s = |k: &str| st.t(k);
+            self.ui
+                .widget(cx, ids!(settings_hub_title))
+                .set_text(cx, &plain_display_text(&s("settings_hub_title")));
+            self.ui
+                .widget(cx, ids!(settings_hub_help))
+                .set_text(cx, &plain_display_text(&s("settings_hub_help")));
+            self.ui
+                .button(cx, ids!(settings_detail_back))
+                .set_text(cx, &s("settings_back"));
+            self.ui
+                .button(cx, ids!(settings_hub_language))
+                .set_text(cx, &s("settings_sec_language"));
+            self.ui
+                .button(cx, ids!(settings_hub_country))
+                .set_text(cx, &s("settings_sec_country"));
+            self.ui
+                .button(cx, ids!(settings_hub_tills))
+                .set_text(cx, &s("settings_sec_tills"));
+            self.ui
+                .button(cx, ids!(settings_hub_brand))
+                .set_text(cx, &s("settings_sec_brand"));
+            self.ui
+                .button(cx, ids!(settings_hub_units))
+                .set_text(cx, &s("settings_sec_units"));
+            self.ui
+                .button(cx, ids!(settings_hub_pickers))
+                .set_text(cx, &s("settings_sec_pickers"));
+            self.ui
+                .button(cx, ids!(settings_hub_printers))
+                .set_text(cx, &s("settings_sec_printers"));
+            self.ui
+                .button(cx, ids!(settings_hub_bill))
+                .set_text(cx, &s("settings_sec_bill"));
+            self.ui
+                .button(cx, ids!(settings_hub_backup))
+                .set_text(cx, &s("settings_sec_backup"));
+            self.ui
+                .button(cx, ids!(station_remove))
+                .set_text(cx, &s("station_remove"));
+            self.ui
+                .text_input(cx, ids!(station_remove_input))
+                .set_empty_text(cx, s("station_remove_ph"));
+        }
     }
 
     /// Settings → Bill format shows what the books hold.
@@ -16870,7 +17510,8 @@ impl App {
     }
 
     /// Natural back: dismiss soft-keyboard when a text field is focused,
-    /// else pop screen history (same as mouse Back / left-edge swipe).
+    /// else nested in-screen layers (Settings panel → hub), else pop screen
+    /// history (mouse Back / left-edge swipe / Android back).
     fn navigate_back(&mut self, cx: &mut Cx) -> bool {
         // Back over the menu window closes the window, not the order.
         if app_state().lock().unwrap().menu_pick_open {
@@ -16886,6 +17527,23 @@ impl App {
                 *flag = true;
             }
             return true;
+        }
+        // In-screen layers before screen history (native back / mouse back).
+        {
+            let mut st = app_state().lock().unwrap();
+            if st.suggest_open.is_some() {
+                st.suggest_open = None;
+                drop(st);
+                self.sync_chrome(cx);
+                return true;
+            }
+            // Settings nested section → hub (never jump straight to Day book).
+            if st.screen == Screen::Settings && st.settings_panel.is_some() {
+                st.settings_panel = None;
+                drop(st);
+                self.sync_settings_panels(cx);
+                return true;
+            }
         }
         let dest = {
             let mut st = app_state().lock().unwrap();
@@ -19104,9 +19762,21 @@ impl App {
             };
             let text = text.unwrap_or_default();
             let dir = st.store.as_ref().and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
-            print_share::print_text(print_share::PrintKind::Bill, &text, dir.as_deref())?;
-            st.last_receipt = text;
-            Ok(done.to_string())
+            // Books already say Printed. Paper is best-effort: a printer error
+            // must never fail this action or clear the cart / table.
+            st.last_receipt = text.clone();
+            match print_share::print_route(
+                print_share::PrintKind::Bill,
+                print_share::RouteKey::Bill,
+                &text,
+                dir.as_deref(),
+            ) {
+                Ok(share) if share.opened => Ok(done.to_string()),
+                Ok(_) => Ok(format!(
+                    "{done} · add a bill printer in Settings → Where things print (station printers are for KOTs only)"
+                )),
+                Err(e) => Ok(format!("{done} · paper not sent ({e})")),
+            }
         })();
         match result {
             Ok(msg) => self.set_status(cx, msg),
@@ -20116,6 +20786,220 @@ impl App {
         }
         self.ui.text_input(cx, ids!(menu_name_input)).set_text(cx, name);
         self.set_status(cx, format!("{name} — set your price, then Add item"));
+    }
+
+    fn remove_kitchen_station(&mut self, cx: &mut Cx, typed: &str) -> Result<String, String> {
+        let _ = cx;
+        let mut st = app_state().lock().unwrap();
+        st.require_server_role("Remove kitchen stations")?;
+        let needle = typed.trim().to_lowercase();
+        if needle.is_empty() {
+            return Err(st.t("station_remove_ph"));
+        }
+        let id = st
+            .stations
+            .iter()
+            .find(|s| s.name.trim().to_lowercase() == needle || s.id == typed.trim())
+            .map(|s| s.id.clone())
+            .ok_or_else(|| "Station not found".to_string())?;
+        let name = {
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            store.remove_station(&id)?
+        };
+        st.stations = st
+            .store
+            .as_ref()
+            .map(|s| s.list_stations().unwrap_or_default())
+            .unwrap_or_default();
+        st.printer_draft.remove_station_route(&id);
+        if let Some(base) = st.data_base.as_ref() {
+            let _ = print_share::save_device_printers(base, &st.printer_draft);
+        }
+        Ok(st.t("station_removed").replace("{name}", &name))
+    }
+
+    /// Order desk: Don't use on "Kitchen (no station)" — hold those lines
+    /// off this KOT (same as Hold on each line) so Send only names real stations.
+    fn hold_unassigned_kot_lines(&mut self, cx: &mut Cx) -> Result<String, String> {
+        let mut st = app_state().lock().unwrap();
+        st.require_server_role("Send a KOT")?;
+        let idxs: Vec<usize> = st
+            .cart
+            .lines
+            .iter()
+            .enumerate()
+            .filter(|(_, l)| !l.is_sent() && !l.hold_send)
+            .filter(|(_, l)| {
+                st.products
+                    .iter()
+                    .find(|p| p.id == l.product_id)
+                    .map(|p| p.station_id.trim().is_empty())
+                    .unwrap_or(true)
+            })
+            .map(|(i, _)| i)
+            .collect();
+        let n = idxs.len();
+        for i in idxs {
+            if let Some(line) = st.cart.lines.get_mut(i) {
+                line.hold_send = true;
+            }
+        }
+        let msg = st
+            .t("kot_unassigned_held")
+            .replace("{n}", &n.to_string());
+        drop(st);
+        let _ = cx;
+        Ok(msg)
+    }
+
+    /// Order desk: clear `station_text` from unsent cart dishes that use it
+    /// (Don't use in the station list). Held / already-sent lines stay.
+    fn clear_kot_station_from_unsent(
+        &mut self,
+        cx: &mut Cx,
+        station_text: &str,
+    ) -> Result<String, String> {
+        let wanted = station_text.trim();
+        if wanted.is_empty() {
+            let msg = app_state().lock().unwrap().t("kot_station_needed");
+            return Err(msg);
+        }
+        {
+            let st = app_state().lock().unwrap();
+            if wanted.eq_ignore_ascii_case(&st.t("kot_unassigned"))
+                || wanted.eq_ignore_ascii_case("unassigned")
+                || wanted.eq_ignore_ascii_case("unassigned items (no station)")
+            {
+                drop(st);
+                return self.hold_unassigned_kot_lines(cx);
+            }
+        }
+        let mut st = app_state().lock().unwrap();
+        st.require_server_role("Send a KOT")?;
+        let actor = st.actor()?;
+        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let station_id = store
+            .list_stations()?
+            .into_iter()
+            .find(|s| s.name.eq_ignore_ascii_case(wanted))
+            .map(|s| s.id)
+            .ok_or_else(|| "Station not found".to_string())?;
+        let station_name = store
+            .list_stations()?
+            .into_iter()
+            .find(|s| s.id == station_id)
+            .map(|s| s.name)
+            .unwrap_or_else(|| wanted.to_string());
+        let unsent_pids: Vec<String> = st
+            .cart
+            .lines
+            .iter()
+            .filter(|l| !l.is_sent() && !l.hold_send)
+            .map(|l| l.product_id.clone())
+            .collect();
+        let mut n = 0usize;
+        let mut seen = std::collections::HashSet::new();
+        for pid in unsent_pids {
+            if !seen.insert(pid.clone()) {
+                continue;
+            }
+            let Some(mut product) = store.get_product(&pid)? else {
+                continue;
+            };
+            if product.station_id != station_id {
+                continue;
+            }
+            product.station_id.clear();
+            store.upsert_product(&product)?;
+            n += 1;
+        }
+        if n > 0 {
+            store.audit(
+                &actor,
+                "menu.station",
+                &format!("cleared {station_name} · {n} item(s)"),
+            )?;
+            st.reload_all()?;
+        }
+        let msg = st
+            .t("kot_station_cleared")
+            .replace("{n}", &n.to_string())
+            .replace("{station}", &station_name);
+        drop(st);
+        let _ = cx;
+        Ok(msg)
+    }
+
+    /// Order desk: put `station_text` on every unsent cart dish (create the
+    /// station if new). Overrides a station already on the menu item so the
+    /// till can change kitchen for this ticket. Held lines are left alone.
+    fn apply_kot_station_to_unassigned(
+        &mut self,
+        cx: &mut Cx,
+        station_text: &str,
+    ) -> Result<String, String> {
+        let wanted = station_text.trim();
+        if wanted.is_empty() {
+            let msg = app_state().lock().unwrap().t("kot_station_needed");
+            return Err(msg);
+        }
+        let mut st = app_state().lock().unwrap();
+        // Same bar as Send KOT: the till that can send can name the kitchen.
+        st.require_server_role("Send a KOT")?;
+        let actor = st.actor()?;
+        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let station_id = match store
+            .list_stations()?
+            .into_iter()
+            .find(|s| s.name.eq_ignore_ascii_case(wanted))
+        {
+            Some(s) => s.id,
+            None => store.add_station(wanted)?.id,
+        };
+        let station_name = store
+            .list_stations()?
+            .into_iter()
+            .find(|s| s.id == station_id)
+            .map(|s| s.name)
+            .unwrap_or_else(|| wanted.to_string());
+        let unsent_pids: Vec<String> = st
+            .cart
+            .lines
+            .iter()
+            .filter(|l| !l.is_sent() && !l.hold_send)
+            .map(|l| l.product_id.clone())
+            .collect();
+        let mut n = 0usize;
+        let mut seen = std::collections::HashSet::new();
+        for pid in unsent_pids {
+            if !seen.insert(pid.clone()) {
+                continue;
+            }
+            let Some(mut product) = store.get_product(&pid)? else {
+                continue;
+            };
+            if product.station_id == station_id {
+                continue;
+            }
+            product.station_id = station_id.clone();
+            store.upsert_product(&product)?;
+            n += 1;
+        }
+        if n > 0 {
+            store.audit(
+                &actor,
+                "menu.station",
+                &format!("{station_name} · {n} item(s)"),
+            )?;
+            st.reload_all()?;
+        }
+        let msg = st
+            .t("kot_station_applied")
+            .replace("{n}", &n.to_string())
+            .replace("{station}", &station_name);
+        drop(st);
+        let _ = cx;
+        Ok(msg)
     }
 
     fn add_menu_item(&mut self, cx: &mut Cx) {
@@ -22934,6 +23818,18 @@ impl MatchEvent for App {
                 }
             }
         }
+        // Phone order desk: Payment / Added items panes.
+        if self.choice_chip_clicked(cx, actions, ids!(pos_tab_items), ids!(pos_tab_items_on)) {
+            app_state().lock().unwrap().pos_show_payment = false;
+            self.apply_shell_layout(cx, true);
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(pos_tab_payment), ids!(pos_tab_payment_on))
+        {
+            app_state().lock().unwrap().pos_show_payment = true;
+            self.apply_shell_layout(cx, true);
+            self.sync_chrome(cx);
+        }
         for ((chip, chip_on), c) in [
             ((ids!(pm_cash), ids!(pm_cash_on)), PayChoice::Cash),
             ((ids!(pm_upi), ids!(pm_upi_on)), PayChoice::Upi),
@@ -23339,7 +24235,26 @@ impl MatchEvent for App {
         if tendered_changed || tip_changed || cash_changed {
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(kot_set_station)).clicked(actions) {
+            let text = self.ui.text_input(cx, ids!(kot_station_input)).text();
+            match self.apply_kot_station_to_unassigned(cx, &text) {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(send_kot_btn)).clicked(actions) {
+            // Station field filled → apply / change kitchen before send.
+            {
+                let station_text = self.ui.text_input(cx, ids!(kot_station_input)).text();
+                if !station_text.trim().is_empty() {
+                    if let Err(e) = self.apply_kot_station_to_unassigned(cx, &station_text) {
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                        return;
+                    }
+                }
+            }
             // Only the new lines go; what the kitchen already has stays on
             // the table's running order. A waiter's tablet sends to the
             // Server (it used to write the ticket into its own cache, which
@@ -23766,6 +24681,98 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(station_remove)).clicked(actions) {
+            let typed = self.ui.text_input(cx, ids!(station_remove_input)).text();
+            match self.remove_kitchen_station(cx, &typed) {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(station_remove_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(settings_station_add)).clicked(actions) {
+            let name = self
+                .ui
+                .text_input(cx, ids!(settings_station_name_input))
+                .text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Add kitchen stations")?;
+                let station = {
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.add_station(&name)?
+                };
+                st.stations = st
+                    .store
+                    .as_ref()
+                    .map(|s| s.list_stations().unwrap_or_default())
+                    .unwrap_or_default();
+                st.printer_draft.ensure_station_routes([&station.id]);
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                }
+                Ok(format!(
+                    "Station {} added — set its printers in Settings → Kitchen printing",
+                    station.name
+                ))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(settings_station_name_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(settings_station_remove)).clicked(actions) {
+            let typed = self
+                .ui
+                .text_input(cx, ids!(settings_station_remove_input))
+                .text();
+            match self.remove_kitchen_station(cx, &typed) {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(settings_station_remove_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        // Settings hub: one section at a time.
+        {
+            let hub_clicks: &[(&[LiveId], &str)] = &[
+                (ids!(settings_hub_language), "language"),
+                (ids!(settings_hub_country), "country"),
+                (ids!(settings_hub_tills), "tills"),
+                (ids!(settings_hub_brand), "brand"),
+                (ids!(settings_hub_units), "units"),
+                (ids!(settings_hub_pickers), "pickers"),
+                (ids!(settings_hub_printers), "printers"),
+                (ids!(settings_hub_bill), "bill"),
+                (ids!(settings_hub_backup), "backup"),
+            ];
+            let mut opened: Option<&'static str> = None;
+            for (id, key) in hub_clicks {
+                if self.ui.button(cx, id).clicked(actions) {
+                    opened = Some(*key);
+                    break;
+                }
+            }
+            if let Some(key) = opened {
+                app_state().lock().unwrap().settings_panel = Some(key);
+                self.sync_settings_panels(cx);
+            } else if self.ui.button(cx, ids!(settings_detail_back)).clicked(actions) {
+                app_state().lock().unwrap().settings_panel = None;
+                self.sync_settings_panels(cx);
+            }
+        }
         // "Type or pick" fields (suggest.rs): focus opens the list (empty =
         // everything the shop has), typing narrows it, a tap fills the field,
         // Escape or focusing another field closes it. Losing focus alone does
@@ -23852,9 +24859,32 @@ impl MatchEvent for App {
                     st.team_select_pending = true;
                 }
                 if field == SuggestField::RoutePick {
-                    st.printer_route_key = value.clone();
+                    st.printer_route_key =
+                        resolve_printer_route_key(&value, &st.stations, |k| st.t(k));
                 }
                 changed = true;
+                if field == SuggestField::KotStation {
+                    // Use → put unsent dishes on this station; Don't use → clear it.
+                    let clear = st
+                        .suggest_rows
+                        .iter()
+                        .find(|r| r.value == value)
+                        .map(|r| {
+                            let a = r.action.trim();
+                            !a.is_empty() && a != st.t("use")
+                        })
+                        .unwrap_or(false);
+                    drop(st);
+                    let result = if clear {
+                        self.clear_kot_station_from_unsent(cx, &value)
+                    } else {
+                        self.apply_kot_station_to_unassigned(cx, &value)
+                    };
+                    match result {
+                        Ok(msg) => self.set_status(cx, msg),
+                        Err(e) => self.set_status(cx, e),
+                    }
+                }
             }
             if changed {
                 self.sync_chrome(cx);
@@ -24213,10 +25243,21 @@ impl MatchEvent for App {
             } else if item.button(cx, ids!(plus)).clicked(actions) {
                 self.bump_cart_line(cx, item_id, 1);
                 true
+            } else if item.button(cx, ids!(hold_send_btn)).clicked(actions) {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(line) = st.cart.lines.get_mut(item_id) {
+                        if !line.is_sent() {
+                            line.hold_send = !line.hold_send;
+                        }
+                    }
+                }
+                self.sync_chrome(cx);
+                true
             } else {
                 false
             };
-            // ± sit inside the row: a step must not also open the details.
+            // ± / Hold sit inside the row: a step must not also open the details.
             if !stepped
                 && item
                     .view(cx, ids!(summary))
@@ -25910,28 +26951,6 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(org_save)).clicked(actions) {
-            let name = self.ui.text_input(cx, ids!(org_name_input)).text();
-            let result = (|| -> Result<String, String> {
-                let mut st = app_state().lock().unwrap();
-                st.require_server_role("Rename the business")?;
-                let actor = st.actor()?;
-                if !actor.can_access_branches() && !actor.is_owner() {
-                    return Err("Only Owner can rename the business".into());
-                }
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_org_name(&name)?;
-                st.refresh_branches_text()?;
-                Ok("Business name saved".to_string())
-            })();
-            match result {
-                Ok(msg) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
-            }
-            self.sync_chrome(cx);
-        }
         if self.ui.button(cx, ids!(branch_add)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(branch_name_input)).text();
             let code = self.ui.text_input(cx, ids!(branch_code_input)).text();
@@ -26348,80 +27367,197 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
             let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
             let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-            {
+            let saved = {
                 let mut st = app_state().lock().unwrap();
                 st.printer_draft.add_printer(&label, &target);
-            }
+                // Persist immediately — "Add" without Save used to leave
+                // printers.json empty while the UI looked configured.
+                st.data_base
+                    .as_ref()
+                    .and_then(|base| {
+                        print_share::save_device_printers(base, &st.printer_draft).ok()
+                    })
+                    .is_some()
+            };
             self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
             self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+            if saved {
+                self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+            }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
             {
                 let mut st = app_state().lock().unwrap();
-                if let Some(last) = st.printer_draft.printers.last().map(|p| p.id.clone()) {
-                    st.printer_draft.remove_printer(&last);
+                let id = st
+                    .printer_selected_id
+                    .clone()
+                    .or_else(|| st.printer_draft.printers.last().map(|p| p.id.clone()));
+                if let Some(id) = id {
+                    st.printer_draft.remove_printer(&id);
+                    st.printer_selected_id = None;
+                }
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
                 }
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(route_add)).clicked(actions) {
-            let pick = self.ui.text_input(cx, ids!(route_add_printer_input)).text();
-            let pick_trim = pick.trim().to_string();
-            {
-                let mut st = app_state().lock().unwrap();
-                let key_str = st.printer_route_key.clone();
-                let key = parse_printer_route_key(&key_str);
-                if let Some(p) = st
-                    .printer_draft
-                    .printers
-                    .iter()
-                    .find(|p| p.label.eq_ignore_ascii_case(&pick_trim) || p.id == pick_trim)
-                    .map(|p| p.id.clone())
+        // Tap a printer in the pool → select it for Remove (› mark).
+        {
+            let widget = self.ui.widget(cx, ids!(printers_pool_label));
+            let list = widget.portal_list(cx, ids!(list));
+            let mut tapped: Option<usize> = None;
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item
+                    .view(cx, ids!(row))
+                    .finger_up(actions)
+                    .is_some_and(|e| e.was_tap() && e.is_over)
                 {
-                    let route = st.printer_draft.route_mut(key);
-                    if !route.iter().any(|id| id == &p) {
-                        route.push(p);
-                    }
+                    tapped = Some(item_id);
                 }
             }
-            self.sync_chrome(cx);
+            if let Some(item_id) = tapped {
+                let mut st = app_state().lock().unwrap();
+                if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
+                    st.printer_selected_id = Some(p.id.clone());
+                    drop(st);
+                    self.ui
+                        .text_input(cx, ids!(printer_label_input))
+                        .set_text(cx, &p.label);
+                    self.ui
+                        .text_input(cx, ids!(printer_target_input))
+                        .set_text(cx, &p.target);
+                    self.set_status(cx, format!("{} — tap Remove to delete", p.label));
+                    self.sync_chrome(cx);
+                }
+            }
         }
-        if self.ui.button(cx, ids!(route_up)).clicked(actions)
-            || self.ui.button(cx, ids!(route_down)).clicked(actions)
-            || self.ui.button(cx, ids!(route_remove)).clicked(actions)
-            || self.ui.button(cx, ids!(route_clear)).clicked(actions)
+        // Tap a route row (Bill / station) → focus it so Up/Down/Remove/Don't print
+        // and the printer-name buttons edit that kitchen's printers.
+        {
+            let widget = self.ui.widget(cx, ids!(printer_routes_label));
+            let list = widget.portal_list(cx, ids!(list));
+            let mut tapped: Option<usize> = None;
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item
+                    .view(cx, ids!(row))
+                    .finger_up(actions)
+                    .is_some_and(|e| e.was_tap() && e.is_over)
+                {
+                    tapped = Some(item_id);
+                }
+            }
+            if let Some(item_id) = tapped {
+                let (key, name) = {
+                    let st = app_state().lock().unwrap();
+                    let mut keys: Vec<(String, String)> = Vec::new();
+                    keys.push(("bill".into(), st.t("route_bill")));
+                    keys.push(("kot:".into(), st.t("route_default_kitchen")));
+                    for s in &st.stations {
+                        keys.push((format!("kot:{}", s.id), s.name.clone()));
+                    }
+                    keys
+                        .get(item_id)
+                        .cloned()
+                        .unwrap_or_else(|| ("bill".into(), st.t("route_bill")))
+                };
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.printer_route_key = key;
+                }
+                self.ui
+                    .text_input(cx, ids!(route_pick_input))
+                    .set_text(cx, &name);
+                self.set_status(cx, format!("Editing printers for {name}"));
+                self.sync_chrome(cx);
+            }
+        }
+        {
+            let mut tapped: Option<usize> = None;
+            for (i, id) in ROUTE_ADD_PRINTER_BTNS.iter().enumerate() {
+                if self.ui.button(cx, id).clicked(actions) {
+                    tapped = Some(i);
+                    break;
+                }
+            }
+            if let Some(i) = tapped {
+                let typed_route = self.ui.text_input(cx, ids!(route_pick_input)).text();
+                let (ok, empty_pool, msg) = {
+                    let mut st = app_state().lock().unwrap();
+                    if !typed_route.trim().is_empty() {
+                        st.printer_route_key =
+                            resolve_printer_route_key(&typed_route, &st.stations, |k| st.t(k));
+                    }
+                    let empty_pool = st.printer_draft.printers.is_empty();
+                    let label = st
+                        .printer_draft
+                        .printers
+                        .get(i)
+                        .map(|p| p.label.clone())
+                        .unwrap_or_default();
+                    let ok = add_printer_to_focused_route(&mut st, &label);
+                    let msg = if empty_pool {
+                        st.t("printers_none_hint")
+                    } else if ok {
+                        st.t("printers_saved")
+                    } else {
+                        String::new()
+                    };
+                    (ok, empty_pool, msg)
+                };
+                if empty_pool || ok {
+                    self.set_status(cx, msg);
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        // Capture each click once — a second `.clicked()` after the `if`
+        // always returned false, so Up / Down / Remove / Don't print did nothing.
         {
             let up = self.ui.button(cx, ids!(route_up)).clicked(actions);
             let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
             let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
             let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
-            {
-                let mut st = app_state().lock().unwrap();
-                let key_str = st.printer_route_key.clone();
-                let key = parse_printer_route_key(&key_str);
-                let route = st.printer_draft.route_mut(key);
-                if clear {
-                    route.clear();
-                } else if remove {
-                    route.pop();
-                } else if up && route.len() >= 2 {
-                    let i = route.len() - 1;
-                    route.swap(i - 1, i);
-                } else if down && route.len() >= 2 {
-                    // Demote the current head (priority order).
-                    route.swap(0, 1);
-                }
+            if up || down || remove || clear {
+                let typed_route = self.ui.text_input(cx, ids!(route_pick_input)).text();
+                let msg = {
+                    let mut st = app_state().lock().unwrap();
+                    if !typed_route.trim().is_empty() {
+                        st.printer_route_key =
+                            resolve_printer_route_key(&typed_route, &st.stations, |k| st.t(k));
+                    }
+                    let key_str = st.printer_route_key.clone();
+                    let key = parse_printer_route_key(&key_str);
+                    let route = st.printer_draft.route_mut(key);
+                    if clear {
+                        route.clear();
+                    } else if remove {
+                        let _ = route.pop();
+                    } else if up && route.len() >= 2 {
+                        let i = route.len() - 1;
+                        route.swap(i - 1, i);
+                    } else if down && route.len() >= 2 {
+                        route.swap(0, 1);
+                    }
+                    // Persist immediately — same as Add printer / route add.
+                    if let Some(base) = st.data_base.as_ref() {
+                        let _ = print_share::save_device_printers(base, &st.printer_draft);
+                    }
+                    st.t("printers_saved")
+                };
+                self.set_status(cx, msg);
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printers_save)).clicked(actions) {
-            // Sync focused route key from the pick field before saving.
+            // Sync focused route from the pick field (Bill / station name) before saving.
             let route_typed = self.ui.text_input(cx, ids!(route_pick_input)).text();
             let result = {
                 let mut st = app_state().lock().unwrap();
                 if !route_typed.trim().is_empty() {
-                    st.printer_route_key = route_typed.trim().to_string();
+                    st.printer_route_key =
+                        resolve_printer_route_key(&route_typed, &st.stations, |k| st.t(k));
                 }
                 let printers = st.printer_draft.clone();
                 match st.data_base.as_ref() {
@@ -26535,7 +27671,7 @@ impl AppMain for App {
             thumbs::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             phone::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
-            print_share::find_printers_in_background();
+            // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();

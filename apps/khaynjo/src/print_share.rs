@@ -12,6 +12,14 @@
 //! (`192.168.1.50` / `host:port`, ESC/POS). Blank target means this computer's
 //! usual OS printer — never invent a pool entry named "Default". Jobs go
 //! through one worker thread; failures surface via [`take_problems`].
+//!
+//! The owner picks each printer (system name or `host:9100`). We do not force
+//! one size or one driver mode for every shop:
+//! - **Network `host:9100`** → short ASCII ESC/POS over TCP (every OS, incl. Android).
+//! - **Named / default system printer** → that OS print path (large office
+//!   printers and small KOT queues the owner configured — paper size included).
+//! Kitchen vs bill is which **route** they assign in Settings, not a hardcoded
+//! device class in code.
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -207,17 +215,39 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
 
 impl DevicePrinters {
     /// Ordered printer ids for this route (empty = don't print).
-    /// Each kitchen station has its own list — no silent sharing with another
-    /// station. Key `""` is only for items with no station assigned.
+    ///
+    /// KOT lookup order (owner can still leave a route empty on purpose by
+    /// clearing Bill too):
+    /// 1. that station's own list
+    /// 2. default kitchen `""` (unassigned + stations with no printers yet)
+    /// 3. **Bill** — so a shop with one printer on Bill still gets every KOT
     pub fn route_for(&self, key: RouteKey<'_>) -> &[String] {
         match key {
             RouteKey::Bill => &self.routes.bill,
-            RouteKey::Kot { station_id } => self
-                .routes
-                .kot
-                .get(station_id)
-                .map(|v| v.as_slice())
-                .unwrap_or(&[]),
+            RouteKey::Kot { station_id } => {
+                let own = self
+                    .routes
+                    .kot
+                    .get(station_id)
+                    .map(|v| v.as_slice())
+                    .unwrap_or(&[]);
+                let kitchen = if !own.is_empty() {
+                    own
+                } else if !station_id.is_empty() {
+                    self.routes
+                        .kot
+                        .get("")
+                        .map(|v| v.as_slice())
+                        .unwrap_or(&[])
+                } else {
+                    own
+                };
+                if !kitchen.is_empty() {
+                    kitchen
+                } else {
+                    self.routes.bill.as_slice()
+                }
+            }
         }
     }
 
@@ -233,6 +263,15 @@ impl DevicePrinters {
                 .entry(id.as_ref().to_string())
                 .or_insert_with(Vec::new);
         }
+    }
+
+    /// Drop a station's KOT route when the station is removed (pool printers stay).
+    pub fn remove_station_route(&mut self, station_id: &str) {
+        let id = station_id.trim();
+        if id.is_empty() {
+            return;
+        }
+        self.routes.kot.remove(id);
     }
 
     /// Resolve route ids to print targets (skips unknown ids).
@@ -458,6 +497,11 @@ pub fn print_text(kind: PrintKind, text: &str, app_files: Option<&Path>) -> Resu
 
 /// Write the slip, then try the ordered printers on `route` (fallback, not fan-out).
 /// Empty route: file is written, nothing is queued; KOTs get a one-line note.
+///
+/// Text is kept as the shop wrote it. **Network** targets turn it into short
+/// ASCII ESC/POS inside [`print_network`] / [`escpos_job`]. **Named / default**
+/// targets hand the UTF-8 file to the OS printer the owner picked — we never
+/// force raw USB, a paper size, or ESC/POS onto every KOT.
 pub fn print_route(
     kind: PrintKind,
     route: RouteKey<'_>,
@@ -482,6 +526,7 @@ pub fn print_route(
                 false
             } else {
                 queue(Job {
+                    kind,
                     targets,
                     path: path.clone(),
                     text: text.to_string(),
@@ -491,6 +536,8 @@ pub fn print_route(
         }
         PrintSink::Capture => {
             // Capture still records one job (the slip that would have printed).
+            // Prefer the resolved route (station → "" → Bill), not only the
+            // exact key — same as Os path via targets_for.
             if !printers().route_for(route).is_empty() {
                 CAPTURED.with(|c| {
                     c.borrow_mut().push(PrintJob {
@@ -513,6 +560,7 @@ pub fn print_route(
 }
 
 struct Job {
+    kind: PrintKind,
     /// Try in order; stop after the first success.
     targets: Vec<PrinterTarget>,
     path: PathBuf,
@@ -555,7 +603,7 @@ fn queue(job: Job) {
             for job in rx {
                 let mut last_err: Option<(String, String)> = None;
                 for target in &job.targets {
-                    match send_to_printer(target, &job.path, &job.text) {
+                    match send_to_printer(job.kind, target, &job.path, &job.text) {
                         Ok(()) => {
                             last_err = None;
                             break;
@@ -582,9 +630,20 @@ pub fn describe(target: &PrinterTarget) -> String {
     }
 }
 
-fn send_to_printer(target: &PrinterTarget, path: &Path, text: &str) -> Result<(), String> {
+fn send_to_printer(
+    kind: PrintKind,
+    target: &PrinterTarget,
+    path: &Path,
+    text: &str,
+) -> Result<(), String> {
+    // Kind only selects the route; the *target* chooses the wire format.
+    // Never: "KOT ⇒ always raw" (that tied shops to one concrete USB stack).
+    let _ = kind;
     match target {
+        // Direct thermal / kitchen over LAN — ESC/POS ASCII, every OS.
         PrinterTarget::Network(addr) => print_network(addr, text),
+        // Whatever the OS already knows (Find printers / name). Paper size
+        // and driver are the owner's — large laser or small queue alike.
         PrinterTarget::Default => print_system(None, path),
         PrinterTarget::Named(name) => print_system(Some(name), path),
     }
@@ -593,25 +652,52 @@ fn send_to_printer(target: &PrinterTarget, path: &Path, text: &str) -> Result<()
 /// Send `text` to a network receipt printer: reset, the text, a few lines
 /// to clear the tear bar, cut.
 pub fn print_network(addr: &str, text: &str) -> Result<(), String> {
+    print_network_bytes(addr, &escpos_job(text))
+}
+
+fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
+    if bytes.len() > ESC_POS_JOB_MAX {
+        return Err(format!(
+            "print job too large ({} bytes) — refused so the kitchen printer is not flooded",
+            bytes.len()
+        ));
+    }
     let sock: std::net::SocketAddr = addr.parse().map_err(|_| format!("{addr} is not a printer address"))?;
     let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
         .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
     let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-    stream.write_all(&escpos_job(text)).map_err(|e| e.to_string())?;
+    stream.write_all(bytes).map_err(|e| e.to_string())?;
     stream.flush().map_err(|e| e.to_string())
 }
 
-/// The bytes of one ESC/POS job: the printer's own letters when it has
-/// them all, else the ticket as a picture (`receipt_raster`).
+/// Hard cap: a two-item KOT is a few hundred bytes. Anything near a raster
+/// dump (tens of KB+) is refused before it reaches the printer.
+const ESC_POS_JOB_MAX: usize = 4_096;
+
+/// Short ASCII ESC/POS job for kitchen / network thermals.
+///
+/// Never a `GS v 0` raster picture. Never UTF-8. Unknown letters → `?`.
+/// OS-driver printing of KOTs is what caused endless unreadable slips.
 pub fn escpos_job(text: &str) -> Vec<u8> {
-    if !printer_has_letters(text) {
-        return crate::receipt_raster::escpos_picture(text);
-    }
-    let mut out = vec![0x1B, 0x40]; // ESC @: reset
+    let mut out = Vec::with_capacity(text.len().saturating_add(32));
+    out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset printer state
     out.extend(escpos_text(text));
+    // Feed past the tear bar; partial cut (GS V 1) — widely supported, safer
+    // than full cut on some clones.
     out.extend_from_slice(b"\n\n\n\n");
-    out.extend_from_slice(&[0x1D, 0x56, 0x42, 0x00]); // GS V B 0: feed and cut
+    out.extend_from_slice(&[0x1D, 0x56, 0x01]);
+    // Guard: never accidentally ship a raster header.
+    debug_assert!(
+        !out.windows(3).any(|w| w == [0x1D, 0x76, 0x30]),
+        "escpos_job must not contain GS v 0 raster"
+    );
     out
+}
+
+/// Same slip as a one-bit picture (`GS v 0`). Only for explicit call sites
+/// that know the printer handles raster — never the default network path.
+pub fn escpos_job_picture(text: &str) -> Vec<u8> {
+    crate::receipt_raster::escpos_picture(text)
 }
 
 /// Every letter of `text` is one a receipt printer's built-in font has, or
@@ -636,15 +722,17 @@ fn spelt_out(c: char) -> Option<&'static [u8]> {
     })
 }
 
-/// Text a receipt printer's built-in font can show: plain ASCII, with the
-/// few symbols our slips use spelt out, anything else as "?" (such a
-/// ticket goes as a picture instead — `escpos_job`).
+/// Text a receipt printer's built-in font can show: printable ASCII only
+/// (space–`~` and newline), with the few symbols our slips use spelt out,
+/// anything else as "?". Control bytes never go through — they switch the
+/// printer into graphics/command modes and look like endless garbage.
 pub fn escpos_text(text: &str) -> Vec<u8> {
     let mut out = Vec::with_capacity(text.len());
     for c in text.chars() {
         match c {
-            '\r' => {}
-            c if c.is_ascii() => out.push(c as u8),
+            '\n' => out.push(b'\n'),
+            '\r' | '\t' => {}
+            c if c.is_ascii_graphic() || c == ' ' => out.push(c as u8),
             c => out.extend_from_slice(spelt_out(c).unwrap_or(b"?")),
         }
     }
@@ -652,6 +740,7 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
 }
 
 /// Print a file on a system printer (`None` = the default one).
+/// Named/default targets use this — owner-configured large or small printers.
 fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
@@ -734,54 +823,85 @@ pub fn printers_find_finished() -> bool {
 /// port-[`RAW_PRINT_PORT`] listeners). Works on Linux, macOS, Windows, and
 /// Android (network scan only there). [`found_printers`] updates afterwards
 /// and the screen is woken.
+///
+/// Only call from an explicit Find tap — never on Settings open / startup.
+/// A /24 port scan saturates the NIC and makes the UI feel frozen even when
+/// this runs off the UI thread.
 pub fn find_printers_in_background() {
     if LOOKING.swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
     }
-    let _ = std::thread::Builder::new().name("find-printers".into()).spawn(|| {
-        let mut found = system_printers();
-        for addr in network_raw_printers() {
-            if !found.iter().any(|n| n == &addr) {
-                found.push(addr);
+    if std::thread::Builder::new()
+        .name("find-printers".into())
+        .spawn(|| {
+            let mut found = system_printers();
+            for addr in network_raw_printers() {
+                if !found.iter().any(|n| n == &addr) {
+                    found.push(addr);
+                }
             }
-        }
-        found.sort();
-        *FOUND.lock().unwrap() = Some(found);
+            found.sort();
+            *FOUND.lock().unwrap() = Some(found);
+            LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
+            if let Some(hook) = *NOTIFY.lock().unwrap() {
+                hook();
+            }
+        })
+        .is_err()
+    {
         LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
-        if let Some(hook) = *NOTIFY.lock().unwrap() {
-            hook();
-        }
-    });
+    }
 }
 
-/// The system printers this device knows, by name (empty on Android — no
-/// printer drivers).
+/// System queues that still accept jobs (empty on Android — no drivers).
+///
+/// Prefer accepting/enabled queues. `lpstat -e` also lists CUPS-discovered
+/// ghosts (removed USB, stale network names) that are not real destinations.
 fn system_printers() -> Vec<String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
-        let names = |args: &[&str]| -> Vec<String> {
+        let out = |args: &[&str]| -> String {
             Command::new("lpstat")
                 .args(args)
                 .output()
                 .ok()
                 .filter(|o| o.status.success())
-                .map(|o| {
-                    String::from_utf8_lossy(&o.stdout)
-                        .lines()
-                        .filter_map(|l| l.split_whitespace().next().map(str::to_string))
-                        .collect()
-                })
+                .map(|o| String::from_utf8_lossy(&o.stdout).into_owned())
                 .unwrap_or_default()
         };
-        let found = names(&["-e"]);
-        if found.is_empty() { names(&["-a"]) } else { found }
+        // First token of each `lpstat -a` line is a queue that accepts jobs.
+        let accepting: Vec<String> = out(&["-a"])
+            .lines()
+            .filter_map(|l| l.split_whitespace().next().map(str::to_string))
+            .filter(|n| !n.is_empty())
+            .collect();
+        // `lpstat -p`: "printer NAME is idle.  enabled …" or "… disabled …"
+        let disabled: std::collections::HashSet<String> = out(&["-p"])
+            .lines()
+            .filter(|l| l.contains(" disabled "))
+            .filter_map(|l| {
+                l.strip_prefix("printer ")
+                    .and_then(|rest| rest.split_whitespace().next())
+                    .map(str::to_string)
+            })
+            .collect();
+        accepting
+            .into_iter()
+            .filter(|n| !disabled.contains(n))
+            .collect()
     }
     #[cfg(target_os = "windows")]
     {
         use std::os::windows::process::CommandExt;
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+        // Skip WorkOffline and Offline — those are removed / unplugged ghosts.
         Command::new("powershell")
-            .args(["-NoProfile", "-NonInteractive", "-Command", "Get-Printer | ForEach-Object { $_.Name }"])
+            .args([
+                "-NoProfile",
+                "-NonInteractive",
+                "-Command",
+                "Get-Printer | Where-Object { -not $_.WorkOffline -and $_.PrinterStatus -ne 'Offline' } | ForEach-Object { $_.Name }",
+            ])
             .creation_flags(CREATE_NO_WINDOW)
             .output()
             .ok()
@@ -804,6 +924,9 @@ fn system_printers() -> Vec<String> {
 
 /// Hosts on this /24 that accept TCP on the raw ESC/POS port — the usual
 /// way to find network receipt printers from phones and desktops alike.
+///
+/// Short per-host timeout and small chunks (many workers) so Find finishes
+/// in ~0.5s instead of multi-second NIC saturation.
 fn network_raw_printers() -> Vec<String> {
     use std::net::{SocketAddr, TcpStream, UdpSocket};
     use std::sync::Arc;
@@ -823,14 +946,15 @@ fn network_raw_printers() -> Vec<String> {
         .map(|h| SocketAddr::from(([o[0], o[1], o[2], h], RAW_PRINT_PORT)))
         .collect();
     let found = Arc::new(Mutex::new(Vec::new()));
+    // ~64 workers × 4 hosts × 80ms ≈ 0.3s worst case (was 8×32×200ms ≈ 6s).
     let workers: Vec<_> = addrs
-        .chunks(32)
+        .chunks(4)
         .map(|chunk| {
             let chunk = chunk.to_vec();
             let found = Arc::clone(&found);
             std::thread::spawn(move || {
                 for addr in chunk {
-                    if TcpStream::connect_timeout(&addr, Duration::from_millis(200)).is_ok() {
+                    if TcpStream::connect_timeout(&addr, Duration::from_millis(80)).is_ok() {
                         found.lock().unwrap().push(addr.ip().to_string());
                     }
                 }
@@ -899,6 +1023,8 @@ mod tests {
             assert!(!share.opened, "the OS was not handed the job");
             let jobs = take_captured();
             assert_eq!(jobs.len(), 1);
+            // Capture / Named keep the slip as written; Network ESC/POS
+            // sanitizes inside escpos_job (see receipt_printer_text_is_plain).
             assert_eq!(jobs[0].text, "KOT — test");
             assert_eq!(jobs[0].kind, PrintKind::Kot);
             assert!(take_captured().is_empty(), "taken once");
@@ -909,7 +1035,7 @@ mod tests {
     #[test]
     fn empty_kot_route_skips_capture() {
         with_test_printers(DevicePrinters::default(), || {
-            // empty routes = don't print
+            // empty kot + empty bill = don't print
             let _ = take_problems();
             let _ = take_captured();
             let dir = std::env::temp_dir().join(format!("khaynjo-print-skip-{}", uuid::Uuid::new_v4().simple()));
@@ -925,6 +1051,24 @@ mod tests {
             assert!(!take_problems().is_empty());
             let _ = fs::remove_dir_all(dir);
         });
+    }
+
+    #[test]
+    fn empty_kot_falls_back_to_bill_printer() {
+        let mut cfg = DevicePrinters::default();
+        let p = cfg.add_printer("Counter", "192.168.1.50");
+        cfg.routes.bill = vec![p.clone()];
+        // No KOT routes filled — Bill still prints kitchen tickets.
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot { station_id: "" }),
+            &[p.clone()]
+        );
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot {
+                station_id: "station-a"
+            }),
+            &[p]
+        );
     }
 
     /// What the owner types picks the kind of printer.
@@ -946,14 +1090,21 @@ mod tests {
         assert_eq!(escpos_text("ખીચડી"), b"?????".to_vec());
         assert!(printer_has_letters("Thali × 2 — ₹500"));
         assert!(!printer_has_letters("ખીચડી"));
-        // A Gujarati ticket goes as a picture (GS v 0), never as "?????".
-        let picture = escpos_job("2 x ખીચડી");
+        // Network / KOT jobs stay short ASCII (no GS v 0 raster).
+        let job_guj = escpos_job("2 x ખીચડી");
+        assert!(!job_guj.windows(3).any(|w| w == [0x1D, 0x76, 0x30]));
+        assert!(job_guj.windows(5).any(|w| w == b"?????"));
+        assert!(job_guj.len() < 256, "KOT job must stay tiny, got {}", job_guj.len());
+        let picture = escpos_job_picture("2 x ખીચડી");
         assert!(picture.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
-        assert!(!picture.windows(5).any(|w| w == b"?????"));
-        let job = escpos_job("KOT 7");
+        let job = escpos_job("KOT 7\n2 x Thali\n1 x Roti");
         assert_eq!(&job[..2], &[0x1B, 0x40]);
-        assert!(job.ends_with(&[0x1D, 0x56, 0x42, 0x00]));
+        assert!(job.ends_with(&[0x1D, 0x56, 0x01]));
+        assert!(job.len() < ESC_POS_JOB_MAX);
+        // Control bytes in the slip body must not pass through.
+        assert_eq!(escpos_text("A\u{1b}B\n"), b"A?B\n".to_vec());
     }
+
 
     /// A network printer gets the whole job over one connection.
     #[test]
@@ -1055,19 +1206,21 @@ mod tests {
             }),
             vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
-        // Unknown / unconfigured station does NOT inherit the unassigned route.
-        assert!(cfg
-            .route_for(RouteKey::Kot {
+        // Station with no printers of its own uses the default kitchen route.
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot {
                 station_id: "unknown"
-            })
-            .is_empty());
+            }),
+            &[main.clone()][..]
+        );
         *cfg.route_mut(RouteKey::Kot {
             station_id: "st-bar",
         }) = Vec::new();
-        assert!(cfg
-            .route_for(RouteKey::Kot {
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot {
                 station_id: "st-bar"
-            })
-            .is_empty());
+            }),
+            &[main][..]
+        );
     }
 }

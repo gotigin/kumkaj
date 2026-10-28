@@ -530,17 +530,22 @@ pub fn print_network(addr: &str, text: &str) -> Result<(), String> {
     stream.flush().map_err(|e| e.to_string())
 }
 
-/// The bytes of one ESC/POS job: the printer's own letters when it has
-/// them all, else the ticket as a picture (`receipt_raster`).
+/// The bytes of one ESC/POS job for a **network** receipt printer.
+///
+/// Always plain ASCII (unknown letters → `?`). Raster (`GS v 0`) was mis-read
+/// as garbage by many cheap printers; keep pictures behind `escpos_job_picture`.
 pub fn escpos_job(text: &str) -> Vec<u8> {
-    if !printer_has_letters(text) {
-        return crate::receipt_raster::escpos_picture(text);
-    }
     let mut out = vec![0x1B, 0x40]; // ESC @: reset
+    out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0 — PC437
     out.extend(escpos_text(text));
     out.extend_from_slice(b"\n\n\n\n");
-    out.extend_from_slice(&[0x1D, 0x56, 0x42, 0x00]); // GS V B 0: feed and cut
+    out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
     out
+}
+
+/// Picture job (`GS v 0`) for printers known to handle raster.
+pub fn escpos_job_picture(text: &str) -> Vec<u8> {
+    crate::receipt_raster::escpos_picture(text)
 }
 
 /// Every letter of `text` is one a receipt printer's built-in font has, or
@@ -567,7 +572,7 @@ fn spelt_out(c: char) -> Option<&'static [u8]> {
 
 /// Text a receipt printer's built-in font can show: plain ASCII, with the
 /// few symbols our slips use spelt out, anything else as "?" (such a
-/// ticket goes as a picture instead — `escpos_job`).
+/// anything else as "?".
 pub fn escpos_text(text: &str) -> Vec<u8> {
     let mut out = Vec::with_capacity(text.len());
     for c in text.chars() {
@@ -663,54 +668,82 @@ pub fn printers_find_finished() -> bool {
 /// port-[`RAW_PRINT_PORT`] listeners). Works on Linux, macOS, Windows, and
 /// Android (network scan only there). [`found_printers`] updates afterwards
 /// and the screen is woken.
+///
+/// Only call from an explicit Find tap — never on Settings open / startup.
+/// A /24 port scan saturates the NIC and makes the UI feel frozen even when
+/// this runs off the UI thread.
 pub fn find_printers_in_background() {
     if LOOKING.swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
     }
-    let _ = std::thread::Builder::new().name("find-printers".into()).spawn(|| {
-        let mut found = system_printers();
-        for addr in network_raw_printers() {
-            if !found.iter().any(|n| n == &addr) {
-                found.push(addr);
+    if std::thread::Builder::new()
+        .name("find-printers".into())
+        .spawn(|| {
+            let mut found = system_printers();
+            for addr in network_raw_printers() {
+                if !found.iter().any(|n| n == &addr) {
+                    found.push(addr);
+                }
             }
-        }
-        found.sort();
-        *FOUND.lock().unwrap() = Some(found);
+            found.sort();
+            *FOUND.lock().unwrap() = Some(found);
+            LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
+            if let Some(hook) = *NOTIFY.lock().unwrap() {
+                hook();
+            }
+        })
+        .is_err()
+    {
         LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
-        if let Some(hook) = *NOTIFY.lock().unwrap() {
-            hook();
-        }
-    });
+    }
 }
 
-/// The system printers this device knows, by name (empty on Android — no
-/// printer drivers).
+/// System queues that still accept jobs (empty on Android — no drivers).
+///
+/// Prefer accepting/enabled queues. `lpstat -e` also lists CUPS-discovered
+/// ghosts (removed USB, stale network names) that are not real destinations.
 fn system_printers() -> Vec<String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
-        let names = |args: &[&str]| -> Vec<String> {
+        let out = |args: &[&str]| -> String {
             Command::new("lpstat")
                 .args(args)
                 .output()
                 .ok()
                 .filter(|o| o.status.success())
-                .map(|o| {
-                    String::from_utf8_lossy(&o.stdout)
-                        .lines()
-                        .filter_map(|l| l.split_whitespace().next().map(str::to_string))
-                        .collect()
-                })
+                .map(|o| String::from_utf8_lossy(&o.stdout).into_owned())
                 .unwrap_or_default()
         };
-        let found = names(&["-e"]);
-        if found.is_empty() { names(&["-a"]) } else { found }
+        let accepting: Vec<String> = out(&["-a"])
+            .lines()
+            .filter_map(|l| l.split_whitespace().next().map(str::to_string))
+            .filter(|n| !n.is_empty())
+            .collect();
+        let disabled: std::collections::HashSet<String> = out(&["-p"])
+            .lines()
+            .filter(|l| l.contains(" disabled "))
+            .filter_map(|l| {
+                l.strip_prefix("printer ")
+                    .and_then(|rest| rest.split_whitespace().next())
+                    .map(str::to_string)
+            })
+            .collect();
+        accepting
+            .into_iter()
+            .filter(|n| !disabled.contains(n))
+            .collect()
     }
     #[cfg(target_os = "windows")]
     {
         use std::os::windows::process::CommandExt;
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
         Command::new("powershell")
-            .args(["-NoProfile", "-NonInteractive", "-Command", "Get-Printer | ForEach-Object { $_.Name }"])
+            .args([
+                "-NoProfile",
+                "-NonInteractive",
+                "-Command",
+                "Get-Printer | Where-Object { -not $_.WorkOffline -and $_.PrinterStatus -ne 'Offline' } | ForEach-Object { $_.Name }",
+            ])
             .creation_flags(CREATE_NO_WINDOW)
             .output()
             .ok()
@@ -733,6 +766,9 @@ fn system_printers() -> Vec<String> {
 
 /// Hosts on this /24 that accept TCP on the raw ESC/POS port — the usual
 /// way to find network receipt printers from phones and desktops alike.
+///
+/// Short per-host timeout and small chunks (many workers) so Find finishes
+/// in ~0.5s instead of multi-second NIC saturation.
 fn network_raw_printers() -> Vec<String> {
     use std::net::{SocketAddr, TcpStream, UdpSocket};
     use std::sync::Arc;
@@ -753,13 +789,13 @@ fn network_raw_printers() -> Vec<String> {
         .collect();
     let found = Arc::new(Mutex::new(Vec::new()));
     let workers: Vec<_> = addrs
-        .chunks(32)
+        .chunks(4)
         .map(|chunk| {
             let chunk = chunk.to_vec();
             let found = Arc::clone(&found);
             std::thread::spawn(move || {
                 for addr in chunk {
-                    if TcpStream::connect_timeout(&addr, Duration::from_millis(200)).is_ok() {
+                    if TcpStream::connect_timeout(&addr, Duration::from_millis(80)).is_ok() {
                         found.lock().unwrap().push(addr.ip().to_string());
                     }
                 }
@@ -835,13 +871,15 @@ mod tests {
         assert_eq!(escpos_text("राजकोट"), b"??????".to_vec());
         assert!(printer_has_letters("1 kg × 2 — ₹500"));
         assert!(!printer_has_letters("राजकोट"));
-        // A Hindi receipt goes as a picture (GS v 0), never as "??????".
-        let picture = escpos_job("To: राजकोट");
+        // Network jobs stay ASCII (no GS v 0) — cheap printers mis-read pictures.
+        let job_hi = escpos_job("To: राजकोट");
+        assert!(!job_hi.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
+        assert!(job_hi.windows(6).any(|w| w == b"??????"));
+        let picture = escpos_job_picture("To: राजकोट");
         assert!(picture.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
-        assert!(!picture.windows(6).any(|w| w == b"??????"));
         let job = escpos_job("AWB 7");
         assert_eq!(&job[..2], &[0x1B, 0x40]);
-        assert!(job.ends_with(&[0x1D, 0x56, 0x42, 0x00]));
+        assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
     }
 
     /// A network printer gets the whole job over one connection.

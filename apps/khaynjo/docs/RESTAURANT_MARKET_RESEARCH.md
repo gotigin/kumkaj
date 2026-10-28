@@ -136,4 +136,6 @@ owns several restaurants runs **one Khaynjo restaurant per branch**
   unless an owner opts into Kumkaj Cloud (vision §21). Optional Net
   stubs must never gate the counter.
 - **Never as a gate:** sync codes, remote-only dashboard, campaigns that
-  require hosted messaging.
+  require hosted messaging. SMS delivery is planned as a cloudless Local
+  SMS Gateway (Android sibling) plus optional paid Cloud SMS —
+  [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md).

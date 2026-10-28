@@ -2352,10 +2352,12 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         let when = created_at.get(..16).unwrap_or(&created_at).replace('T', " ");
+        // ASCII-only body: network kitchen printers get this as ESC/POS text.
+        // Fancy dashes/scripts become "?" there; never ship a raster by default.
         let mut out = String::from(if kind == "cancel" {
-            "*** CANCEL — STOP THIS ITEM ***\n"
+            "*** CANCEL - STOP THIS ITEM ***\n"
         } else {
-            "KOT — KITCHEN ORDER\n"
+            "KOT - KITCHEN ORDER\n"
         });
         if kot_no > 0 {
             out.push_str(&format!("KOT No: {kot_no}\n"));
@@ -2397,6 +2399,12 @@ impl Store {
             &text,
             self.path.parent(),
         )?;
+        if !share.opened {
+            return Err(
+                "No printer available for this KOT — add a printer in Settings → Printers (Bill or a kitchen station), then Save"
+                    .into(),
+            );
+        }
         Ok(share.path)
     }
 
@@ -4904,6 +4912,38 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         Ok(station)
+    }
+
+    /// Remove a kitchen station. Clears `products.station_id` that pointed here.
+    /// Open KOTs keep their station name on the ticket; new dishes stop routing here.
+    pub fn remove_station(&self, station_id: &str) -> Result<String, String> {
+        self.assert_server_writer("Remove kitchen stations")?;
+        let id = station_id.trim();
+        if id.is_empty() {
+            return Err("Station required".into());
+        }
+        let name: String = self
+            .conn
+            .query_row(
+                "SELECT name FROM kitchen_stations WHERE id = ?1",
+                params![id],
+                |r| r.get(0),
+            )
+            .map_err(|_| "Station not found".to_string())?;
+        self.conn
+            .execute(
+                "UPDATE products SET station_id = '' WHERE station_id = ?1",
+                params![id],
+            )
+            .map_err(|e| e.to_string())?;
+        let n = self
+            .conn
+            .execute("DELETE FROM kitchen_stations WHERE id = ?1", params![id])
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Station not found".into());
+        }
+        Ok(name)
     }
 
     // ------------------------------------------------------------------- inventory

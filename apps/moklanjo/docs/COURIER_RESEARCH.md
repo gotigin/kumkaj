@@ -384,7 +384,7 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 | Feature | Market | Moklanjo | Offline | Note / recommendation |
 |---|---|---|---|---|
 | Public track-by-AWB page | All | **Have** (on the office LAN) | LAN | Reaches only devices on the office Wi‑Fi; outside customers need Net exposure or Cloud |
-| SMS / WhatsApp notifications (booked, OFD, delivered) | A, C, D | **Have** (drain: wa.me / Copy SMS / optional Android `sms:` stub; mark sent) | Net (WhatsApp) / **Local via phone SIM (SMS)** | Outbox drains without requiring Net for booking; WhatsApp needs device data. No Kumkaj cloud |
+| SMS / WhatsApp notifications (booked, OFD, delivered) | A, C, D | **Have** (wa.me / Copy SMS / mark sent); SMS gateway & Cloud SMS **Planned** | Net (WhatsApp) / Local SIM gateway / optional Cloud SMS | Outbox first. Delivery plan: Local SMS Gateway (Android sibling) or paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | Receipt/bill shared on WhatsApp | A (Vyapar) | **Have** | Net on the device | One-tap `wa.me` with receipt text after booking |
 | Customer tracking link with live ETA | C | **Skipped** | Cloud | Out of scope until Kumkaj Cloud |
 | Customer feedback / rating after delivery | C | **Have** (local score) / **Skipped** (public Net survey) | Local | Score on delivered AWB (desk/rider); no public survey |
@@ -440,7 +440,7 @@ Every item that could ship **without Kumkaj Cloud** from the earlier
 | 9 | **Incoming manifest** for delivery centres (scan bags in → delivery dockets) | Delhivery parcel-delivery-centre partners, §3.2 | Local — **Have** |
 | 10 | **Party-specific rate cards** | Standard in groups A and B | Local — **Have** |
 | 11 | **Phone-camera barcode scanning** | Every driver app | Local — **Have** (image pick + best-effort; wedge primary) |
-| 12 | **SMS over the device SIM** for booked/OFD/delivered (outbox already exists) and one-tap WhatsApp share | Vyapar's most-praised feature; customers expect messages | Local (SMS) / Net (WhatsApp) — **Have** (drain path) |
+| 12 | **SMS over the device SIM** for booked/OFD/delivered (outbox already exists) and one-tap WhatsApp share | Vyapar's most-praised feature; customers expect messages | Outbox + WhatsApp **Have**; Local SMS Gateway + Cloud SMS **Planned** — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | 13 | Docket fields: declared value, insurance, contents, e-way bill no. | Indian compliance and claims | Local — **Have** |
 | 14 | Auto-assignment rules (area → rider) and editable stop order by area/pincode | Tookan/Detrack; Onfleet drag-and-drop complaint | Local — **Have** |
 | 15 | Tally-friendly voucher export; franchise commission statements | Indian accountants; franchise income | Local — **Have** |
@@ -467,7 +467,7 @@ optional lat/lon on POD, local delivery feedback score.
 | Live GPS tracking of riders, live ETA links for customers | Positions must reach the office from the road / public web | Optional lat/lon on POD → Server **Have**; live map / public ETA **Skipped** (Cloud or map Net) |
 | Road-network route optimisation | Needs map data/services | Area/pincode ordering offline **Have**; maps as optional Net later |
 | Customer self-booking from home, public tracking page on the internet | Must be reachable from outside the office | Kumkaj Cloud (opt-in); LAN `/book` + `/track` **Have** |
-| WhatsApp Business API automation, e-way bill generation, online payment links | Third-party online services | Device WhatsApp/SMS drain **Have**; e-way store/print **Have**; generation/API later |
+| WhatsApp Business API automation, e-way bill generation, online payment links | Third-party online services | Device WhatsApp/SMS outbox **Have**; Local SMS Gateway + Cloud SMS **Planned** ([`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md)); e-way store/print **Have**; generation/API later |
 
 ---
 

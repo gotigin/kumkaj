@@ -68,7 +68,7 @@ PATCHES=(
   text_input_label_align_pub        # RTL input alignment
   text_flow_selection               # selectable text: opaque band, owns the drag
   text_input_caret_and_placeholder  # caret blinks and is visible; wrapped placeholder not clipped
-  button_label_center               # fixed-width buttons centre their label
+  button_label_center               # fixed-width buttons centre their label; wrap CTAs keep Fit label (Fill+wrap freezes UI)
   screen_cap_picture_only_fallback  # Linux Shift+F12 recording without audio track
   wayland_maximize_toggle           # Wayland CSD maximize/restore + caption double-click
   mouse_back_button                 # mouse thumb button maps to Back

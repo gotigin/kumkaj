@@ -1,8 +1,10 @@
 //! Outbound notify hook (WhatsApp / SMS / webhook) — local-first stub.
 //!
-//! Does not call messaging APIs yet. Records intent + payload so a later
-//! connector can drain the outbox (order-ready / bill alerts). WhatsApp share
-//! opens `wa.me` on the device (Net optional); SMS queues for Android SIM later.
+//! Records intent + payload on `notify_outbox` (order-ready, bill, CRM
+//! campaigns). WhatsApp share opens `wa.me` on the device (Net optional).
+//! SMS delivery is planned as: (1) a cloudless **Local SMS Gateway** sibling
+//! Android app (shop SIM over LAN/Bluetooth), and (2) optional paid
+//! **Cloud SMS** — see `docs/SMS_MESSAGING.md`. Never gates the counter.
 
 use crate::domain::new_id;
 use chrono::Local;

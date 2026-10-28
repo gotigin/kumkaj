@@ -914,7 +914,7 @@ fn en(key: &str) -> String {
         "printers_found" => "Found on this device: {list}",
         "find_printers" => "Find printers",
         "printers_looking" => "Looking for printers on this device and Wi‑Fi…",
-        "printers_tap_find" => "Tap Find printers to list system printers and network receipt printers on this Wi‑Fi.",
+        "printers_tap_find" => "Tap Find printers for queues that accept jobs and network receipt printers on this Wi‑Fi (not removed or offline ones).",
         "printers_none_found" => "No printers found — type a system printer name, or a network address (e.g. 192.168.1.50).",
         "receipt_printer_ph" => "Printer for receipts",
         "queue_refused" => "Not accepted by the shop ({n}) — check each one at the counter:",

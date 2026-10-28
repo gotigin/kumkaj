@@ -2099,6 +2099,10 @@ pub struct CartLine {
     /// The KOT this sent line went out on ([`RunningLine::kot_id`]); empty
     /// for a line not sent yet. The ticket groups lines by it.
     pub kot_id: String,
+    /// Held back from the next Send KOT (Order desk). Still on the ticket;
+    /// tap Hold again to include it. Not the same as a sent-line kitchen hold.
+    #[serde(default)]
+    pub hold_send: bool,
 }
 
 /// How many modifier chips fit on one cart row.
@@ -2313,6 +2317,7 @@ impl Cart {
                 running_line_id: String::new(),
                 complimentary: false,
                 kot_id: String::new(),
+                hold_send: false,
             };
             line.sync_qty_from_milli();
             self.lines.push(line);
@@ -2749,6 +2754,7 @@ impl Cart {
                         running_line_id: String::new(),
                         complimentary: false,
                         kot_id: String::new(),
+                        hold_send: false,
                     };
                     line.sync_qty_from_milli();
                     line
@@ -2779,11 +2785,16 @@ impl Cart {
         let lines: Vec<SaleLine> = self
             .lines
             .iter()
-            .filter(|l| !l.is_sent() && l.qty_milli > 0)
+            .filter(|l| !l.is_sent() && !l.hold_send && l.qty_milli > 0)
             .map(|l| sale_line_from_cart(l, false))
             .collect();
         if lines.is_empty() {
-            return Err("Nothing new to send — tap items first".into());
+            let held = self.lines.iter().any(|l| !l.is_sent() && l.hold_send);
+            return Err(if held {
+                "Every new dish is on Hold — tap Hold on a line to include it, then Send KOT".into()
+            } else {
+                "Nothing new to send — tap items first".into()
+            });
         }
         let total: i64 = lines.iter().map(|l| l.line_total_paise).sum();
         Ok(SaleDraft {
@@ -3947,6 +3958,7 @@ impl RunningOrder {
                     running_line_id: l.id.clone(),
                     complimentary: l.complimentary,
                     kot_id: l.kot_id.clone(),
+                    hold_send: false,
                 };
                 line.sync_qty_from_milli();
                 line

@@ -1,7 +1,9 @@
 //! Outbound notify hook (WhatsApp / SMS / webhook) — local-first stub.
 //!
-//! Does not call carrier or messaging APIs yet. Records intent + payload so a
-//! later connector can drain the outbox. Public track URL is also formed here.
+//! Records intent + payload on the outbox. Public track URL is also formed
+//! here. SMS delivery is planned as a cloudless Local SMS Gateway (Android
+//! sibling over LAN/Bluetooth) and optional paid Cloud SMS — see
+//! `docs/SMS_MESSAGING.md`. Never gates booking or books.
 
 use crate::domain::new_id;
 use chrono::Local;

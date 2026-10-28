@@ -818,12 +818,29 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
 
 /// Print just-sent KOTs at this (Server) device when the shop prints KOTs
 /// automatically. Counter and waiter KOTs both come through here. Returns
-/// the first print error, if any (the KOTs are sent either way).
+/// a problem summary if any ticket failed (the KOTs are sent either way).
 pub fn print_sent_kots(store: &Store, kot_ids: &[String]) -> Option<String> {
     if !store.kot_auto_print() {
         return None;
     }
-    kot_ids.iter().filter_map(|id| store.print_kot(id).err()).next()
+    let mut ok = 0usize;
+    let mut errors: Vec<String> = Vec::new();
+    for id in kot_ids {
+        match store.print_kot(id) {
+            Ok(_) => ok += 1,
+            Err(e) => errors.push(e),
+        }
+    }
+    if errors.is_empty() {
+        None
+    } else if ok == 0 {
+        Some(errors.join("; "))
+    } else {
+        Some(format!(
+            "{ok} slip(s) printed; others failed: {}",
+            errors.join("; ")
+        ))
+    }
 }
 
 /// Do a table action on the Server's books. Shared by the LAN endpoint and

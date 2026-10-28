@@ -591,7 +591,19 @@ As the business grows, customer management can additionally include:
 -   order history beyond credit;
 -   notes;
 -   future loyalty/reward capabilities;
--   offers/feedback as later capabilities.
+-   offers/feedback as later capabilities;
+-   outbound SMS / WhatsApp from a local outbox (bills, reminders,
+    birthday and loyalty messages) — queue first, never gate the till.
+
+**SMS delivery (planned):** two paths, documented in
+[`SMS_MESSAGING.md`](SMS_MESSAGING.md) — (1) a **Local SMS Gateway**
+sibling Android app using the shop’s own phone and SIM over LAN or
+Bluetooth (cloudless; the business pays its mobile operator); (2) an
+optional paid **Cloud SMS Service** through Kumkaj Cloud and an SMS
+provider (per-SMS / prepaid / plan; internet and regulatory compliance
+required). The gateway is intended for all Kumkaj products and, where
+useful, third parties. Cloud SMS must obey §21–22 (usage-based Cloud;
+never hostage local books).
 
 Kumkaj should collect only information actually required by the
 business and should not make customer registration mandatory for an
@@ -916,6 +928,10 @@ infrastructure, for example:
 -   automatic encrypted cloud backup;
 -   cross-branch cloud reporting and remote device/sync monitoring;
 -   authenticated cloud APIs and similar hosted services;
+-   optional **Cloud SMS** (and similar messaging) billed per message,
+    prepaid credits, or a bundled plan — see
+    [`SMS_MESSAGING.md`](SMS_MESSAGING.md); local SIM gateway remains free
+    of Kumkaj Cloud charges;
 -   later: genuinely expensive compute such as AI or heavy analytics.
 
 Initial metering should stay simple and customer-facing, for example:
