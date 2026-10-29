@@ -1033,7 +1033,7 @@ fn en(key: &str) -> String {
         "applied_total_cap" => "APPLIED TOTAL",
         "bank_balance" => "Bank balance",
         "bank_net_today" => "Bank net today",
-        "branch_export_help" => "Export writes branch_snapshot_CODE_DATE.json into the backups folder and copies it to the clipboard. To import another outlet's day, save its file as import_branch_snapshot.json in the same folder, then tap Import.",
+        "branch_export_help" => "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import.",
         "brand_shown_help" => "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing.",
         "cash_in_hand" => "Cash in hand (till)",
         "change_my_pin_heading" => "Change my PIN (only yours)",

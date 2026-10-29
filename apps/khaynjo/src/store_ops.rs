@@ -1953,36 +1953,32 @@ document.getElementById('add').onclick = async () => {{
         Ok(())
     }
 
+    /// Floor “Local ops” body — owner-facing only. No LAN paths, aggregator
+    /// file paths, or connector jargon (those live in docs / ℹ tips).
     pub fn ops_panel_text(&self) -> Result<String, String> {
-        let mut out = String::from("=== Local ops ===\n");
-        out.push_str(&self.tip_pooling_report_text()?);
-        out.push('\n');
-        out.push_str(&self.expiry_alert_text()?);
-        out.push('\n');
-        out.push_str(&self.feedback_report_text()?);
-        out.push('\n');
-        out.push_str(&self.time_clock_hours_text("")?);
+        let mut parts: Vec<String> = Vec::new();
+        parts.push(self.tip_pooling_report_text()?);
+        parts.push(self.expiry_alert_text()?);
+
+        let fb = self.feedback_report_text()?;
+        if fb.lines().skip(1).any(|l| !l.trim().is_empty()) {
+            parts.push(fb);
+        }
+        let tc = self.time_clock_hours_text("")?;
+        if tc.lines().skip(1).any(|l| !l.trim().is_empty()) {
+            parts.push(tc);
+        }
+
         let calls = self.list_open_waiter_calls()?.len();
         let waits = self.list_waitlist()?.len();
-        let queued = self
-            .list_notify_outbox(500)?
-            .into_iter()
-            .filter(|r| r.status == "queued")
-            .count();
         let bday_week = self.crm_segment(CrmSegment::BirthdayThisWeek)?.len();
-        out.push_str(&format!(
-            "\nOpen waiter calls: {calls}\nWaitlist: {waits}\nNotify outbox queued: {queued}\nBirthdays this week: {bday_week}\n"
-        ));
-        out.push_str(
-            "\nLAN pages (Server Wi‑Fi): /display /tokens /expo /kiosk /t/{table} /feedback\n",
-        );
-        out.push_str(
-            "Card terminal / aggregator: optional outbox — never blocks counter.\n",
-        );
-        out.push_str(
-            "Aggregator file: backups/import_aggregator_orders.json → Settings → Bill format → Import.\n",
-        );
-        Ok(out)
+        let mut counts = format!("Open waiter calls: {calls}\nWaitlist: {waits}");
+        if bday_week > 0 {
+            counts.push_str(&format!("\nBirthdays this week: {bday_week}"));
+        }
+        parts.push(counts);
+
+        Ok(parts.join("\n\n"))
     }
 
     // —— CRM segments + campaign queue ——

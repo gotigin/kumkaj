@@ -6188,11 +6188,8 @@ script_mod! {
                                         sales_title := WrapLabel{body: "Sales" font_color: #x0B1220 font_size: 20.}
                                     }
                                 }
-                                h_amend_help := WrapLabel{
-                                    width: Fill
-                                    body: "Select a sale to amend, void, or refund. Amendments keep full history."
-                                    font_color: #x0B1220
-                                    font_size: 12.
+                                h_amend_help := InfoHelp{
+                                    tip: "Select a sale to amend, void, or refund. Amendments keep full history."
                                 }
                                 sale_selected_label := WrapLabel{
                                     body: "No sale selected"
@@ -6387,11 +6384,15 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 10
                                     visible: false
-                                h_party_custom_heading := WrapLabel{body: "Custom fields (selected party)" font_color: #x0B1220 font_size: 15.}
-                                party_custom_help := WrapLabel{
-                                    body: "Add any label and value on this party — WhatsApp, GSTIN, route code, …"
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_party_custom_heading := WrapLabel{body: "Custom fields (selected party)" font_color: #x0B1220 font_size: 15.}
+                                    party_custom_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Add any label and value on this party — WhatsApp, GSTIN, route code, …"
+                                    }
                                 }
                                 FormFieldRow{
                                     party_custom_key := FieldInput{empty_text: "Field name (e.g. WhatsApp)"}
@@ -6515,10 +6516,9 @@ script_mod! {
                                 staff_add_cashier := RowPrimaryBtn{text: "Add staff"}
                                 staff_set_login := RowSecondaryBtn{text: "Set login on selected"}
                                 staff_deactivate := DangerBtn{text: "Remove selected"}
-                                h_optional_login_help := WrapLabel{
-                                    body: "Optional login (id + password). Owner sets once; only the user can change password later."
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                h_optional_login_help := InfoHelp{
+                                    width: Fit
+                                    tip: "Optional login (id + password). Owner sets once; only the user can change password later."
                                 }
                                 staff_login_input := FieldInput{empty_text: "Login id (optional)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
@@ -6588,10 +6588,8 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
-                                h_rights_help := WrapLabel{
-                                    body: "Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed."
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                h_rights_help := InfoHelp{
+                                    tip: "Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed."
                                 }
                                 right_void_btn := NavBtn{text: "Void or refund a booking"}
                                 right_amend_btn := NavBtn{text: "Amend a recorded booking"}
@@ -6610,10 +6608,8 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 15.
                                 }
-                                h_duress_help := WrapLabel{
-                                    body: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
-                                    font_color: #x475569
-                                    font_size: 12.
+                                h_duress_help := InfoHelp{
+                                    tip: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
                                 }
                                 duress_status := WrapLabel{
                                     body: " "
@@ -6968,12 +6964,6 @@ script_mod! {
                                         ops_find_awb := RowPrimaryBtn{text: "Find / Scan AWB"}
                                         ops_label := RowSecondaryBtn{text: "Print AWB label"}
                                     }
-                                    ops_awb_hint := WrapLabel{
-                                        width: Fill
-                                        body: "(scan or type an AWB, then Find — scanner Enter also works)"
-                                        font_color: #x0B1220
-                                        font_size: 12.
-                                    }
                                     ops_awb_card := mod.widgets.ReportText{}
                                     ops_note_input := FieldInput{empty_text: "Note / POD (optional)"}
                                     ops_pod_pick := RowSecondaryBtn{text: "Pick POD photo"}
@@ -7158,11 +7148,8 @@ script_mod! {
                                     }
                                 }
                                 inventory_label := mod.widgets.ReportText{}
-                                h_stock_type_help := WrapLabel{
-                                    width: Fill
-                                    body: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                h_stock_type_help := InfoHelp{
+                                    tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
                                 }
                                 inv_item_input := FieldInput{empty_text: "Item name"}
                                 inv_qty_input := FieldInput{empty_text: "Quantity"}
@@ -7217,11 +7204,19 @@ script_mod! {
                                     branch_switch_input := FieldInput{empty_text: "Branch name to sell from"}
                                     branch_switch := NavBtn{text: "Switch this device"}
                                 }
-                                h_branch_export_help := WrapLabel{
-                                    width: Fill
-                                    body: "Export writes branch_snapshot_CODE_DATE.json into the backups folder and copies it to the clipboard. To import another outlet's day, save its file as import_branch_snapshot.json in the same folder, then tap Import."
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_branch_export_title := WrapLabel{
+                                        body: "Outlet day transfer"
+                                        font_color: #x0B1220
+                                        font_size: 15.
+                                    }
+                                    h_branch_export_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
+                                    }
                                 }
                                 ActionStack{
                                     branch_export := RowPrimaryBtn{text: "Export day"}
@@ -12403,7 +12398,6 @@ impl App {
         self.align_label(cx, ids!(dev_size_label), rtl);
         self.align_label(cx, ids!(nav_drag_ghost), rtl);
         self.align_label(cx, ids!(nav_drag_ghost_label), rtl);
-        self.align_label(cx, ids!(ops_awb_hint), rtl);
         self.align_label(cx, ids!(setup_server_list), rtl);
         self.align_label(cx, ids!(sale_list), rtl);
         self.align_label(cx, ids!(amend_cart_list), rtl);
@@ -12656,7 +12650,8 @@ impl App {
             .set_text(cx, &plain_display_text(&s("more_help_moklanjo")));
         self.ui
             .widget(cx, ids!(h_amend_help))
-            .set_text(cx, &plain_display_text(&s("amend_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("amend_help")));
         self.ui
             .widget(cx, ids!(h_rounded_total))
             .set_text(cx, &plain_display_text(&s("rounded_total")));
@@ -12674,13 +12669,15 @@ impl App {
             .set_text(cx, &plain_display_text(&s("preset_help_moklanjo")));
         self.ui
             .widget(cx, ids!(h_optional_login_help))
-            .set_text(cx, &plain_display_text(&s("optional_login_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("optional_login_help")));
         self.ui
             .widget(cx, ids!(h_feature_access_help))
             .set_text(cx, &plain_display_text(&s("feature_access_help")));
         self.ui
             .widget(cx, ids!(h_rights_help))
-            .set_text(cx, &plain_display_text(&s("rights_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("rights_help")));
         self.ui
             .widget(cx, ids!(h_change_my_pin_heading))
             .set_text(cx, &plain_display_text(&s("change_my_pin_heading")));
@@ -12689,7 +12686,8 @@ impl App {
             .set_text(cx, &plain_display_text(&s("duress_heading")));
         self.ui
             .widget(cx, ids!(h_duress_help))
-            .set_text(cx, &plain_display_text(&s("duress_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("duress_help")));
         self.ui
             .button(cx, ids!(save_duress_pin))
             .set_text(cx, &s("save_duress_pin"));
@@ -12728,10 +12726,12 @@ impl App {
         }
         self.ui
             .widget(cx, ids!(h_stock_type_help))
-            .set_text(cx, &plain_display_text(&s("stock_type_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("stock_type_help")));
         self.ui
             .widget(cx, ids!(h_branch_export_help))
-            .set_text(cx, &plain_display_text(&s("branch_export_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("branch_export_help")));
         self.ui
             .widget(cx, ids!(h_book_add_product))
             .set_text(cx, &plain_display_text(&s("book_add_product")));
@@ -12779,7 +12779,8 @@ impl App {
             .set_text(cx, &plain_display_text(&s("party_custom_fields_heading")));
         self.ui
             .widget(cx, ids!(party_custom_help))
-            .set_text(cx, &plain_display_text(&s("party_custom_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("party_custom_help")));
         self.ui
             .button(cx, ids!(party_custom_add))
             .set_text(cx, &s("party_custom_add"));
@@ -15727,12 +15728,17 @@ impl App {
 
     /// Docs / debug / LOCAL badges stay out of the day-to-day work surface.
     fn hide_docs_and_debug_chrome(&mut self, cx: &mut Cx) {
+        // Essay / debug WrapLabels stay off the work surface. Useful tips live
+        // on InfoHelp ℹ (booking_help, buy_help, day_close_help, …).
         let help_ids: &[&[LiveId]] = &[
             ids!(books_help),
             ids!(h_more_help_moklanjo),
-            ids!(h_amend_help),
             ids!(h_team_owner_help),
+            ids!(h_feature_access_help),
             ids!(h_country_pack_help),
+            ids!(h_language_setup_hint),
+            ids!(h_currency_use_help),
+            ids!(h_brand_shown_help),
             ids!(h_other_devices_help),
             ids!(h_other_devices_help_heading),
             ids!(h_units_help),
@@ -15743,6 +15749,10 @@ impl App {
             ids!(db_path_label),
             ids!(device_setup_help),
             ids!(booking_scope_hint),
+            ids!(setup_lang_hint),
+            ids!(server_pick_hint),
+            ids!(h_preset_help_moklanjo),
+            ids!(h_product_only_moklanjo),
         ];
         for id in help_ids {
             self.ui.widget(cx, id).set_visible(cx, false);
@@ -18242,7 +18252,6 @@ impl App {
         self.ui
             .widget(cx, ids!(ops_awb_card))
             .set_text(cx, &plain_display_text(&card));
-        self.ui.widget(cx, ids!(ops_awb_hint)).set_visible(cx, false);
         app_state().lock().unwrap().day_close_text = card.clone();
         Ok(card)
     }

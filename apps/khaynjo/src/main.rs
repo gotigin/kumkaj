@@ -503,6 +503,8 @@ struct AppState {
     amount_keys_hidden: Vec<String>,
     /// Books home accordion: which section bodies are open (`today`, `bills`, …).
     books_sections_open: Vec<String>,
+    /// Floor secondary accordions (`floor_ops`, `waitlist`, `resv`, `floor_add`).
+    floor_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).
     draft_venue_icon_path: Option<PathBuf>,
     /// Android: a fresh backup waiting for "Save a backup copy" to be told
@@ -1299,6 +1301,117 @@ fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) {
     img.set_visible(cx, true);
 }
 
+fn info_help_tooltip_options(widget_rect: Rect) -> CalloutTooltipOptions {
+    let icon_right = widget_rect.pos.x + widget_rect.size.x;
+    let position = if widget_rect.pos.x < 120.0 {
+        TooltipPosition::Right
+    } else if icon_right > 640.0 {
+        TooltipPosition::Left
+    } else {
+        TooltipPosition::Bottom
+    };
+    CalloutTooltipOptions {
+        position,
+        text_color: vec4(1.0, 1.0, 1.0, 1.0),
+        bg_color: vec4(0.412, 0.055, 0.063, 0.97), // #69090C
+        triangle_height: 8.0,
+    }
+}
+
+/// Title row with an info control. Emits [`TooltipAction`] so the window
+/// [`CalloutTooltip`] can place a callout without covering the icon.
+#[derive(Script, ScriptHook, Widget)]
+struct InfoHelp {
+    #[source]
+    source: ScriptObjectRef,
+    #[deref]
+    view: View,
+    #[live]
+    tip: String,
+    #[rust]
+    hovered: bool,
+}
+
+impl Widget for InfoHelp {
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let claimed_before = if let Event::MouseMove(_) = event {
+            event.pointer_claimed_area()
+        } else {
+            Area::Empty
+        };
+        self.view.handle_event(cx, event, scope);
+
+        if self.tip.is_empty() {
+            return;
+        }
+
+        let uid = self.widget_uid();
+        if let Event::Actions(actions) = event {
+            if self.view.button(cx, ids!(tip_btn)).clicked(actions) {
+                let rect = self.view.button(cx, ids!(tip_btn)).area().rect(cx);
+                cx.widget_action(
+                    uid,
+                    TooltipAction::HoverIn {
+                        text: self.tip.clone(),
+                        widget_rect: rect,
+                        options: info_help_tooltip_options(rect),
+                    },
+                );
+            }
+        }
+
+        match event {
+            Event::MouseMove(_) => {
+                let claimed_after = event.pointer_claimed_area();
+                let over = claimed_after != claimed_before && !claimed_after.is_empty();
+                if over != self.hovered {
+                    self.hovered = over;
+                    if over {
+                        let rect = self.view.button(cx, ids!(tip_btn)).area().rect(cx);
+                        cx.widget_action(
+                            uid,
+                            TooltipAction::HoverIn {
+                                text: self.tip.clone(),
+                                widget_rect: rect,
+                                options: info_help_tooltip_options(rect),
+                            },
+                        );
+                    } else {
+                        cx.widget_action(uid, TooltipAction::HoverOut);
+                    }
+                }
+            }
+            Event::MouseLeave(_) | Event::ClearHover => {
+                if self.hovered {
+                    self.hovered = false;
+                    cx.widget_action(uid, TooltipAction::HoverOut);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        self.view.draw_walk(cx, scope, walk)
+    }
+
+    fn text(&self) -> String {
+        self.tip.clone()
+    }
+
+    fn set_text(&mut self, _cx: &mut Cx, v: &str) {
+        self.tip = v.to_string();
+    }
+}
+
+impl InfoHelpRef {
+    fn set_tip(&self, tip: &str) {
+        if let Some(mut inner) = self.borrow_mut() {
+            inner.tip = tip.to_string();
+        }
+    }
+}
+
 /// Saved order wins; unknown keys are dropped and any tab missing from the
 /// saved list is appended in default order, so an older saved order can
 /// never hide a newer tab.
@@ -1566,6 +1679,7 @@ impl AppState {
             amounts_screen_hidden: false,
             amount_keys_hidden: Vec::new(),
             books_sections_open: Vec::new(),
+            floor_sections_open: Vec::new(),
             draft_venue_icon_path: None,
             pending_backup_copy: None,
             draft_image_key: None,
@@ -3793,6 +3907,58 @@ script_mod! {
         }
         text: "TODAY"
     }
+    // Screen title + ℹ tip (CalloutTooltip via app_callout). Docs stay off the
+    // work surface — tap/hover the icon when the tip is useful.
+    mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
+    mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
+        width: Fill
+        height: Fit
+        flow: Right
+        spacing: 8
+        align: Align{x: 0.0 y: 0.5}
+        tip: ""
+        icon := Image{
+            width: 28 height: 28
+            fit: ImageFit.Stretch
+            visible: false
+        }
+        title := Label{
+            width: Fit height: Fit
+            text: ""
+            draw_text.color: #x260B08
+            draw_text.text_style.font_size: 20.
+        }
+        tip_btn := Button{
+            width: 32 height: 32
+            text: "ℹ"
+            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            align: Align{x: 0.5 y: 0.5}
+            label_walk: Walk{width: Fit height: Fit}
+            icon_walk: Walk{width: 0. height: 0.}
+            draw_bg +: {
+                color: #xFBEDE4
+                color_hover: #x9A0E10
+                color_down: #x69090C
+                color_focus: #xFBEDE4
+                color_2: #xFBEDE4
+                color_2_hover: #x9A0E10
+                color_2_down: #x69090C
+                color_2_focus: #xFBEDE4
+                border_color: #xEFD2BC
+                border_radius: 16.
+                border_size: 1.
+            }
+            draw_text +: {
+                color: #x69090C
+                color_hover: #xffffff
+                color_down: #xffffff
+                color_focus: #x69090C
+                text_style +: {font_size: 15.}
+            }
+        }
+    }
+    let InfoHelp = mod.widgets.InfoHelp{}
     // Inline quiet action — Fit width, NO wrap (Fill+wrap at Fit stacks
     // letters vertically). Same colours as RowSecondary; not a ChipBtn filter.
     let QuietFitBtn = Button{
@@ -6496,7 +6662,9 @@ script_mod! {
                 }
                 body +: {
                     width: Fill height: Fill
-                    flow: Down spacing: 0
+                    // Overlay — app_callout must NOT be a Down sibling of
+                    // app_hscroll or it steals half the window height.
+                    flow: Overlay
                     // Min layout width 320 css px. Narrower viewports scroll horizontally
                     // instead of crushing faces below that floor.
                     app_hscroll := ScrollXView{
@@ -8298,6 +8466,10 @@ script_mod! {
                                         src: crate_resource("self:resources/nav/floor.webp")
                                     }
                                     floor_heading := WrapLabel{body: "Floor" font_color: #x260B08 font_size: 20.}
+                                    floor_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Tap a table to take or change the order. Colours show free → seated → kitchen → ready → eating → bill → paid."
+                                    }
                                 }
                                 // At a glance: busy tables, bills to collect, money on
                                 // the floor.
@@ -8476,57 +8648,106 @@ script_mod! {
                                         layout_open := StackLightBtn{text: "Open table"}
                                     }
                                 }
-                                floor_ops_heading := WrapLabel{body: "Local ops" font_color: #x260B08 font_size: 15.}
-                                floor_ops_label := mod.widgets.ReportText{}
-                                floor_waiter_filter := FieldInput{empty_text: "Filter floor by waiter name"}
-                                waitlist_heading := WrapLabel{body: "Waitlist" font_color: #x260B08 font_size: 15.}
-                                FormCard{
-                                    FormFieldRow{
-                                        wait_name_input := FieldInput{empty_text: "Guest name"}
-                                        wait_party_input := FieldInput{empty_text: "Party size"}
-                                        wait_mins_input := FieldInput{empty_text: "Quoted wait (min)"}
+                                // Secondary Floor tools — collapsed by default so
+                                // tables stay the hero (not a wall of ops text).
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    floor_ops_hdr := AccordionHdrBtn{text: "LOCAL OPS"}
+                                    floor_ops_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        floor_ops_label := mod.widgets.ReportText{}
+                                        floor_waiter_filter := FieldInput{empty_text: "Filter floor by waiter name"}
                                     }
-                                    waitlist_add := StackPrimaryBtn{text: "Add to waitlist"}
                                 }
-                                // Bookings: who is coming, when, how many.
-                                resv_heading := WrapLabel{body: "Reservations" font_color: #x260B08 font_size: 15.}
-                                resv_list := mod.widgets.ResvList{}
-                                resv_empty := WrapLabel{body: " " font_color: #x6B4A3F font_size: 13.}
-                                FormCard{
-                                    FormFieldRow{
-                                        resv_name_input := FieldInput{empty_text: "Guest name"}
-                                        resv_phone_input := FieldInput{empty_text: "Phone (optional)"}
-                                    }
-                                    FormFieldRow{
-                                        View{
-                                            width: 140 height: Fit
-                                            resv_guests_input := FieldInput{empty_text: "Guests"}
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    waitlist_hdr := AccordionHdrBtn{text: "WAITLIST"}
+                                    waitlist_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        waitlist_heading := WrapLabel{body: "Waitlist" font_color: #x260B08 font_size: 15. visible: false}
+                                        FormCard{
+                                            FormFieldRow{
+                                                wait_name_input := FieldInput{empty_text: "Guest name"}
+                                                wait_party_input := FieldInput{empty_text: "Party size"}
+                                                wait_mins_input := FieldInput{empty_text: "Quoted wait (min)"}
+                                            }
+                                            waitlist_add := StackPrimaryBtn{text: "Add to waitlist"}
                                         }
-                                        resv_when_input := FieldInput{empty_text: "When — 20:30, tomorrow 13:00"}
-                                        View{
-                                            width: 230 height: Fit
-                                            resv_table_input := FieldInput{empty_text: "Table (optional)"}
+                                    }
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    resv_hdr := AccordionHdrBtn{text: "RESERVATIONS"}
+                                    resv_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        resv_heading := WrapLabel{body: "Reservations" font_color: #x260B08 font_size: 15. visible: false}
+                                        resv_list := mod.widgets.ResvList{}
+                                        resv_empty := WrapLabel{body: " " font_color: #x6B4A3F font_size: 13.}
+                                        FormCard{
+                                            FormFieldRow{
+                                                resv_name_input := FieldInput{empty_text: "Guest name"}
+                                                resv_phone_input := FieldInput{empty_text: "Phone (optional)"}
+                                            }
+                                            FormFieldRow{
+                                                View{
+                                                    width: 140 height: Fit
+                                                    resv_guests_input := FieldInput{empty_text: "Guests"}
+                                                }
+                                                resv_when_input := FieldInput{empty_text: "When — 20:30, tomorrow 13:00"}
+                                                View{
+                                                    width: 230 height: Fit
+                                                    resv_table_input := FieldInput{empty_text: "Table (optional)"}
+                                                }
+                                            }
+                                            resv_add := StackPrimaryBtn{text: "Book"}
                                         }
                                     }
-                                    resv_add := StackPrimaryBtn{text: "Book"}
                                 }
-                                floor_add_heading := WrapLabel{body: "Add a table" font_color: #x260B08 font_size: 15.}
-                                floor_areas_help := WrapLabel{
-                                    width: Fill
-                                    body: "Areas are rooms or zones on the floor (Dine In, Parcel, AC …). Add an area first, then put tables in it — each area is a separate group on the floor."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    floor_add_hdr := AccordionHdrBtn{text: "ADD TABLES"}
+                                    floor_add_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        floor_add_heading := WrapLabel{body: "Add a table" font_color: #x260B08 font_size: 15. visible: false}
+                                        floor_areas_help := InfoHelp{
+                                            tip: "Areas are rooms or zones (Dine In, Parcel, AC …). Add an area first, then put tables in it — each area is a separate group on the floor."
+                                        }
+                                        area_new_input := FieldInput{empty_text: "New area / room (e.g. AC, Garden)"}
+                                        area_new_add := NavBtn{text: "Add area"}
+                                        table_name_input := FieldInput{empty_text: "Table name (e.g. Patio 1, Counter 2)"}
+                                        // Areas group the floor (Dine In, Parcel, AC …); a
+                                        // parcel waiting for pickup is a table too.
+                                        table_area_input := FieldInput{empty_text: "Area (e.g. Dine In, Parcel, AC)"}
+                                        table_area_suggest := mod.widgets.SuggestList{field: "table_area"}
+                                        table_add := StackPrimaryBtn{text: "Add table"}
+                                        table_range_input := FieldInput{empty_text: "Many at once: D1-D20"}
+                                        table_range_add := NavBtn{text: "Add these tables"}
+                                    }
                                 }
-                                area_new_input := FieldInput{empty_text: "New area / room (e.g. AC, Garden)"}
-                                area_new_add := NavBtn{text: "Add area"}
-                                table_name_input := FieldInput{empty_text: "Table name (e.g. Patio 1, Counter 2)"}
-                                // Areas group the floor (Dine In, Parcel, AC …); a
-                                // parcel waiting for pickup is a table too.
-                                table_area_input := FieldInput{empty_text: "Area (e.g. Dine In, Parcel, AC)"}
-                                table_area_suggest := mod.widgets.SuggestList{field: "table_area"}
-                                table_add := StackPrimaryBtn{text: "Add table"}
-                                table_range_input := FieldInput{empty_text: "Many at once: D1-D20"}
-                                table_range_add := NavBtn{text: "Add these tables"}
                             }
                         }
 
@@ -8547,11 +8768,10 @@ script_mod! {
                                         src: crate_resource("self:resources/nav/kitchen.webp")
                                     }
                                     kitchen_heading := WrapLabel{body: "Kitchen" font_color: #x260B08 font_size: 20.}
-                                }
-                                kitchen_help := WrapLabel{
-                                    body: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                    kitchen_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices."
+                                    }
                                 }
                                 // All-day counts: how much of each dish is still to cook.
                                 kitchen_counts := WrapLabel{body: " " font_color: #x69090C font_size: 15. visible: false}
@@ -8565,20 +8785,37 @@ script_mod! {
                                 recently_done_label := mod.widgets.ReportText{}
                                 recall_kot_input := FieldInput{empty_text: "KOT # to recall (or tap Recall below)"}
                                 recall_kot_btn := NavBtn{text: "Recall"}
-                                stations_heading := WrapLabel{body: "Kitchen stations" font_color: #x260B08 font_size: 15.}
-                                stations_help := WrapLabel{
-                                    body: "Each station prints on its own printers (Settings → Where things print). Add Tandoor, Fryer, Cold…"
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    stations_hdr := AccordionHdrBtn{text: "KITCHEN STATIONS"}
+                                    stations_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 8
+                                            align: Align{x: 0.0 y: 0.5}
+                                            stations_heading := WrapLabel{body: "Kitchen stations" font_color: #x260B08 font_size: 15. visible: false}
+                                            stations_help := InfoHelp{
+                                                width: Fit
+                                                tip: "Each station prints on its own printers (Settings → Kitchen printing). Add Tandoor, Fryer, Cold…"
+                                            }
+                                        }
+                                        stations_label := mod.widgets.ReportText{}
+                                        station_add_heading := WrapLabel{body: "Add a kitchen station" font_color: #x260B08 font_size: 15.}
+                                        station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
+                                        station_add := StackPrimaryBtn{text: "Add station"}
+                                        station_remove_heading := WrapLabel{body: "Remove a kitchen station" font_color: #x260B08 font_size: 15.}
+                                        station_remove_input := FieldInput{empty_text: "Station name to remove"}
+                                        station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
+                                        station_remove := StackSecondaryBtn{text: "Remove station"}
+                                    }
                                 }
-                                stations_label := mod.widgets.ReportText{}
-                                station_add_heading := WrapLabel{body: "Add a kitchen station" font_color: #x260B08 font_size: 15.}
-                                station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
-                                station_add := StackPrimaryBtn{text: "Add station"}
-                                station_remove_heading := WrapLabel{body: "Remove a kitchen station" font_color: #x260B08 font_size: 15.}
-                                station_remove_input := FieldInput{empty_text: "Station name to remove"}
-                                station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
-                                station_remove := StackSecondaryBtn{text: "Remove station"}
                             }
                         }
 
@@ -8633,7 +8870,9 @@ script_mod! {
                                         template_no := StackLightBtn{text: "Cancel"}
                                     }
                                 }
-                                items_help_label := WrapLabel{body: "Tap an item to edit it. New item clears the form so you can add a different one. Sales already recorded keep the name they were charged with." font_color: #x260B08}
+                                items_help_label := InfoHelp{
+                                    tip: "Tap an item to edit it. New item clears the form. Search our dishes or type your own name and photo, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with."
+                                }
                                 menu_mode_label := WrapLabel{body: "Adding a new item" font_color: #x69090C font_size: 14.}
                                 menu_name_input := FieldInput{
                                     empty_text: "Item name — search our dishes or type your own"
@@ -8645,11 +8884,6 @@ script_mod! {
                                 // tap. Draws nothing while closed.
                                 dish_pick_list := mod.widgets.DishPickList{}
                                 ActionStack{
-                                }
-                                dish_picker_help := WrapLabel{
-                                    body: "Search or browse our dishes and tap one to fill its name and photo — or keep your own name. Set your price (0 is fine), then Add item."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
                                 }
                                 // What this item is: cooked here, or bought and sold as
                                 // is (counted in Inventory, offered on Buy).
@@ -9404,12 +9638,10 @@ script_mod! {
                                             src: crate_resource("self:resources/nav/settings.webp")
                                         }
                                         settings_hub_title := WrapLabel{body: "Settings" font_color: #x260B08 font_size: 22.}
-                                    }
-                                    settings_hub_help := WrapLabel{
-                                        width: Fill
-                                        body: "Open one area at a time — less scrolling, clearer choices."
-                                        font_color: #x6B4A3F
-                                        font_size: 12.
+                                        settings_hub_help := InfoHelp{
+                                            width: Fit
+                                            tip: "Open one area at a time — language, printers, bill format, backup, and more."
+                                        }
                                     }
                                     settings_hub_language := StackSecondaryBtn{text: "Language & currency"}
                                     settings_hub_country := StackSecondaryBtn{text: "Country & tax"}
@@ -9634,17 +9866,8 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     bulk_set_input := FieldInput{empty_text: "Or set ₹ amount"}
                                 }
                                 bulk_price_apply := StackLightBtn{text: "Apply bulk price"}
-                                lan_pages_help_label := WrapLabel{
-                                    width: Fill
-                                    body: "LAN pages on Server Wi‑Fi: /display /tokens /expo /kiosk /t/{table} /feedback"
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
-                                }
-                                card_terminal_note := WrapLabel{
-                                    width: Fill
-                                    body: "Card terminal / payment link (optional when internet available)"
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                settings_lan_help := InfoHelp{
+                                    tip: "On this shop’s Wi‑Fi, guest pages work for display board, tokens, expo, kiosk, table QR, and feedback. Guests on mobile data need Cloud later. Card terminal / payment link is optional when the internet is up — it never blocks the counter."
                                 }
                                                                 }
                                 settings_panel_printers := View{
@@ -9770,20 +9993,26 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     payment_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
                                 }
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
-                                h_aggregator_import := WrapLabel{body: "Aggregator orders (file)" font_color: #x260B08 font_size: 18.}
-                                h_aggregator_import_help := WrapLabel{
-                                    width: Fill
-                                    body: "Optional Local import: put import_aggregator_orders.json in the backups folder (array or {\"orders\":[…]}), then tap Import. Never blocks the counter; live Zomato/Swiggy is Cloud."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_aggregator_import := WrapLabel{body: "Aggregator orders (file)" font_color: #x260B08 font_size: 18.}
+                                    settings_aggregator_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Optional: put import_aggregator_orders.json in the backups folder, then tap Import. Never blocks the counter; live delivery apps are Cloud."
+                                    }
                                 }
                                 aggregator_import_btn := StackSecondaryBtn{text: "Import aggregator file"}
-                                h_zero_sales := WrapLabel{body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
-                                h_zero_sales_help := WrapLabel{
-                                    width: Fill
-                                    body: "Allow dishes priced ₹0 and bills settled at ₹0 (complimentary / owner wish). On by default so free covers still appear in Frequent and day books."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_zero_sales := WrapLabel{body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
+                                    settings_zero_sales_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Allow dishes priced at zero and bills settled at zero (complimentary). On by default so free covers still appear in Frequent and day books."
+                                    }
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -9797,12 +10026,15 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                         zero_sales_off_btn_on := SegBtnOn{text: "Require price" visible: false}
                                     }
                                 }
-                                h_schemes := WrapLabel{body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
-                                h_schemes_help := WrapLabel{
-                                    width: Fill
-                                    body: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas"
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_schemes := WrapLabel{body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
+                                    settings_schemes_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas."
+                                    }
                                 }
                                 schemes_label := mod.widgets.ReportText{}
                                 scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
@@ -9882,6 +10114,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                             src: crate_resource("self:resources/nav/day_close.webp")
                                         }
                                         day_close_title := WrapLabel{body: "Day close" font_color: #x260B08 font_size: 20.}
+                                        h_day_close_help := InfoHelp{
+                                            width: Fit
+                                            tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
+                                        }
                                     }
                                 }
                                 day_close_label := mod.widgets.ReportText{}
@@ -9898,12 +10134,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 day_close_counted_input := FieldInput{empty_text: "Counted cash in drawer"}
                                 day_close_copy := NavBtn{text: "Copy day close"}
                                 day_close_commit := StackPrimaryBtn{text: "Record day close"}
-                                h_day_close_help := WrapLabel{
-                                    width: Fill
-                                    body: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
-                                }
                             }
                         }
 
@@ -9927,13 +10157,11 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                             src: crate_resource("self:resources/nav/reports.webp")
                                         }
                                         reports_title := WrapLabel{body: "Reports" font_color: #x260B08 font_size: 20.}
+                                        reports_help := InfoHelp{
+                                            width: Fit
+                                            tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
+                                        }
                                     }
-                                }
-                                reports_help := WrapLabel{
-                                    width: Fill
-                                    body: "Day books, party aging, bank posts, and period P&L — same books for every entity."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
                                 }
                                 // Which report: one segmented row, not four big buttons.
                                 reports_books_btns := View{
@@ -10105,11 +10333,19 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     branch_switch_suggest := mod.widgets.SuggestList{field: "branch_switch"}
                                     branch_switch := NavBtn{text: "Switch this device"}
                                 }
-                                h_branch_export_help := WrapLabel{
-                                    width: Fill
-                                    body: "Export writes branch_snapshot_CODE_DATE.json into the backups folder and copies it to the clipboard. To import another outlet's day, save its file as import_branch_snapshot.json in the same folder, then tap Import."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_branch_export_title := WrapLabel{
+                                        body: "Outlet day transfer"
+                                        font_color: #x260B08
+                                        font_size: 15.
+                                    }
+                                    h_branch_export_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
+                                    }
                                 }
                                 ActionStack{
                                     branch_export := RowSecondaryBtn{text: "Export day"}
@@ -10738,6 +10974,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             }
                         }
                     }
+
+                    // Host for every InfoHelp ℹ tip (hover / tap).
+                    app_callout := CalloutTooltip{}
                 }
             }
         }
@@ -16618,10 +16857,10 @@ impl App {
                     .widget(cx, ids!(reports_title))
                     .set_text(cx, &plain_display_text(&locale::t(&lang, "reports_facet_title")));
                 paint_page_title_icon(cx, &self.ui, ids!(reports_title_icon), NavTab::Reports);
-                self.ui.widget(cx, ids!(reports_help)).set_text(
-                    cx,
-                    &plain_display_text(&locale::t(&lang, "reports_facet_help")),
-                );
+                self.ui
+                    .widget(cx, ids!(reports_help))
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&locale::t(&lang, "reports_facet_help")));
             }
         }
         // Re-apply after chrome labels — hot-reload / focus must not leave the
@@ -17153,7 +17392,6 @@ impl App {
         self.align_label(cx, ids!(h_caption_outstanding), rtl);
         self.align_label(cx, ids!(h_caption_bank), rtl);
         self.align_label(cx, ids!(h_your_categories), rtl);
-        self.align_label(cx, ids!(dish_picker_help), rtl);
         self.align_label(cx, ids!(h_goods_received), rtl);
         self.align_label(cx, ids!(h_expense_heading), rtl);
         self.align_label(cx, ids!(h_paid_by), rtl);
@@ -17450,11 +17688,8 @@ impl App {
             (ids!(h_print_brand), "print_brand_kit"),
             (ids!(h_print_brand_help), "print_brand_kit_help"),
             (ids!(h_aggregator_import), "aggregator_import"),
-            (ids!(h_aggregator_import_help), "aggregator_import_help"),
             (ids!(h_zero_sales), "zero_sales"),
-            (ids!(h_zero_sales_help), "zero_sales_help"),
             (ids!(h_schemes), "schemes"),
-            (ids!(h_schemes_help), "schemes_help"),
             (ids!(upi_qr_help), "upi_qr_help"),
             (ids!(h_rights_help), "rights_help"),
             (ids!(h_opening_float), "opening_float"),
@@ -17527,11 +17762,17 @@ impl App {
             .set_text(cx, &plain_display_text(&s("units_picker_help")));
         self.ui.widget(cx, ids!(h_kot_print_help_khaynjo)).set_text(cx, &plain_display_text(&s("kot_print_help_khaynjo")));
         self.ui.widget(cx, ids!(h_restore_help)).set_text(cx, &plain_display_text(&s("restore_help")));
-        self.ui.widget(cx, ids!(h_day_close_help)).set_text(cx, &plain_display_text(&s("day_close_help")));
+        self.ui
+            .widget(cx, ids!(h_day_close_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("day_close_help")));
         // Picking a row fills the item; a new name on + Stock becomes a raw material.
         self.ui.widget(cx, ids!(h_stock_type_help)).set_visible(cx, false);
         self.ui.widget(cx, ids!(stock_empty)).set_text(cx, &plain_display_text(&s("stock_empty")));
-        self.ui.widget(cx, ids!(h_branch_export_help)).set_text(cx, &plain_display_text(&s("branch_export_help")));
+        self.ui
+            .widget(cx, ids!(h_branch_export_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("branch_export_help")));
         self.ui.widget(cx, ids!(h_book_add_dish)).set_text(cx, &plain_display_text(&s("book_add_dish")));
         self.ui.widget(cx, ids!(h_book_opening_credit)).set_text(cx, &plain_display_text(&s("book_opening_credit")));
         self.ui.widget(cx, ids!(h_caption_today)).set_text(cx, &plain_display_text(&s("caption_today")));
@@ -17540,7 +17781,6 @@ impl App {
         self.ui.widget(cx, ids!(h_caption_outstanding)).set_text(cx, &plain_display_text(&s("caption_outstanding")));
         self.ui.widget(cx, ids!(h_caption_bank)).set_text(cx, &plain_display_text(&s("caption_bank")));
         self.ui.widget(cx, ids!(h_your_categories)).set_text(cx, &plain_display_text(&s("your_categories")));
-        self.ui.widget(cx, ids!(dish_picker_help)).set_text(cx, &plain_display_text(&s("dish_picker_help")));
         self.ui.widget(cx, ids!(h_goods_received)).set_text(cx, &plain_display_text(&s("goods_received")));
         self.ui.widget(cx, ids!(h_expense_heading)).set_text(cx, &plain_display_text(&s("expense_heading")));
         self.ui.widget(cx, ids!(h_paid_by)).set_text(cx, &plain_display_text(&s("paid_by")));
@@ -17787,20 +18027,40 @@ impl App {
             .text_input(cx, ids!(till_voucher_issue_code))
             .set_empty_text(cx, s("till_voucher_issue_code_ph"));
         self.ui
-            .widget(cx, ids!(floor_ops_heading))
-            .set_text(cx, &plain_display_text(&s("ops_panel")));
-        self.ui
             .widget(cx, ids!(waitlist_heading))
             .set_text(cx, &plain_display_text(&s("waitlist")));
         self.ui
             .widget(cx, ids!(sibling_pickers_help))
             .set_text(cx, &plain_display_text(&s("sibling_pickers_help")));
         self.ui
-            .widget(cx, ids!(lan_pages_help_label))
-            .set_text(cx, &plain_display_text(&s("lan_pages_help")));
+            .widget(cx, ids!(floor_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("floor_help")));
         self.ui
-            .widget(cx, ids!(card_terminal_note))
-            .set_text(cx, &plain_display_text(&s("card_terminal_optional")));
+            .widget(cx, ids!(settings_lan_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("lan_pages_help")));
+        self.ui
+            .widget(cx, ids!(kitchen_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("kitchen_help")));
+        self.ui
+            .widget(cx, ids!(floor_areas_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("floor_areas_help")));
+        self.ui
+            .widget(cx, ids!(settings_aggregator_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("aggregator_import_help")));
+        self.ui
+            .widget(cx, ids!(settings_zero_sales_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("zero_sales_help")));
+        self.ui
+            .widget(cx, ids!(settings_schemes_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("schemes_help")));
+        self.sync_floor_sections(cx);
         self.ui.button(cx, ids!(refund_btn)).set_text(cx, &s("refund"));
         self.ui.button(cx, ids!(reports_copy)).set_text(cx, &s("copy_report"));
         self.ui.button(cx, ids!(restore_btn)).set_text(cx, &s("restore_backup"));
@@ -17912,15 +18172,16 @@ impl App {
         self.ui.button(cx, ids!(layout_nudge_up)).set_text(cx, &s("floor_layout_nudge_up"));
         self.ui.button(cx, ids!(layout_nudge_down)).set_text(cx, &s("floor_layout_nudge_down"));
         self.ui.widget(cx, ids!(floor_add_heading)).set_text(cx, &plain_display_text(&s("add_a_table")));
-        self.ui.widget(cx, ids!(floor_areas_help)).set_text(cx, &plain_display_text(&s("floor_areas_help")));
         self.ui.button(cx, ids!(area_new_add)).set_text(cx, &s("add_area"));
         self.ui.text_input(cx, ids!(area_new_input)).set_empty_text(cx, s("area_new_ph"));
         self.ui.widget(cx, ids!(kitchen_heading)).set_text(cx, &plain_display_text(&s("kitchen")));
         paint_page_title_icon(cx, &self.ui, ids!(kitchen_heading_icon), NavTab::Kitchen);
-        self.ui.widget(cx, ids!(kitchen_help)).set_text(cx, &plain_display_text(&s("kitchen_help")));
         self.ui.widget(cx, ids!(kitchen_empty)).set_text(cx, &plain_display_text(&s("kitchen_empty")));
         self.ui.widget(cx, ids!(stations_heading)).set_text(cx, &plain_display_text(&s("stations_heading")));
-        self.ui.widget(cx, ids!(stations_help)).set_text(cx, &plain_display_text(&s("stations_help")));
+        self.ui
+            .widget(cx, ids!(stations_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("stations_help")));
         self.ui.widget(cx, ids!(station_add_heading)).set_text(cx, &plain_display_text(&s("add_station_heading")));
         self.ui.widget(cx, ids!(categories_help)).set_text(cx, &plain_display_text(&s("categories_help")));
         self.ui.widget(cx, ids!(h_removed_items)).set_text(cx, &plain_display_text(&s("removed_items")));
@@ -18068,22 +18329,20 @@ impl App {
         }
         self.ui.widget(cx, ids!(items_heading)).set_text(cx, &plain_display_text(&s("your_items")));
         paint_page_title_icon(cx, &self.ui, ids!(items_heading_icon), NavTab::Menu);
-        self.ui.widget(cx, ids!(items_help_label)).set_text(cx, &plain_display_text(&s("items_help")));
+        self.ui
+            .widget(cx, ids!(items_help_label))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("items_help")));
         self.ui.widget(cx, ids!(sales_title)).set_text(cx, &plain_display_text(&s("sales")));
         paint_page_title_icon(cx, &self.ui, ids!(sales_title_icon), NavTab::Sales);
         self.ui.widget(cx, ids!(credit_title)).set_text(cx, &plain_display_text(&s("credit")));
         paint_page_title_icon(cx, &self.ui, ids!(credit_title_icon), NavTab::Credit);
-        // Paragraphs that explained the app instead of helping use it: the
-        // screens say it with their fields, pickers and buttons.
+        // Essay WrapLabels stay hidden; useful tips are InfoHelp ℹ above.
         for path in [
             ids!(credit_help),
-            ids!(items_help_label),
-            ids!(dish_picker_help),
             ids!(h_country_pack_help),
             ids!(h_team_owner_help),
             ids!(h_units_help),
-            ids!(h_day_close_help),
-            ids!(reports_help),
             ids!(categories_help),
             ids!(h_brand_shown_help),
         ] {
@@ -18104,7 +18363,8 @@ impl App {
         paint_page_title_icon(cx, &self.ui, ids!(reports_title_icon), NavTab::Reports);
         self.ui
             .widget(cx, ids!(reports_help))
-            .set_text(cx, &plain_display_text(&s("reports_help")));
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("reports_help")));
         for path in [ids!(reports_today), ids!(reports_today_on)] {
             self.ui.button(cx, path).set_text(cx, &s("reports_today"));
         }
@@ -19025,7 +19285,8 @@ impl App {
             paint_page_title_icon(cx, &self.ui, ids!(settings_hub_title_icon), NavTab::Settings);
             self.ui
                 .widget(cx, ids!(settings_hub_help))
-                .set_text(cx, &plain_display_text(&s("settings_hub_help")));
+                .as_info_help()
+                .set_tip(&plain_display_text(&s("settings_hub_help")));
             self.ui
                 .button(cx, ids!(settings_detail_back))
                 .set_text(cx, &s("settings_back"));
@@ -19907,24 +20168,105 @@ impl App {
         self.tick_books_accordion(cx);
     }
 
+    fn sync_floor_sections(&mut self, cx: &mut Cx) {
+        let open = app_state().lock().unwrap().floor_sections_open.clone();
+        let is_open = |key: &str| open.iter().any(|k| k == key);
+        let lang = app_state().lock().unwrap().locale.language.clone();
+        let s = |k: &str| locale::t(&lang, k);
+        let sections: &[(&str, &[LiveId], &[LiveId], &str)] = &[
+            (
+                "floor_ops",
+                ids!(floor_ops_hdr),
+                ids!(floor_ops_body),
+                "ops_panel",
+            ),
+            (
+                "waitlist",
+                ids!(waitlist_hdr),
+                ids!(waitlist_body),
+                "waitlist",
+            ),
+            ("resv", ids!(resv_hdr), ids!(resv_body), "resv_heading"),
+            (
+                "floor_add",
+                ids!(floor_add_hdr),
+                ids!(floor_add_body),
+                "add_a_table",
+            ),
+            (
+                "stations",
+                ids!(stations_hdr),
+                ids!(stations_body),
+                "stations_heading",
+            ),
+        ];
+        for (key, hdr, body, caption_key) in sections {
+            let open = is_open(key);
+            let mark = if open {
+                ACCORDION_MARK_OPEN
+            } else {
+                ACCORDION_MARK_CLOSED
+            };
+            let caption = s(caption_key).to_uppercase();
+            self.ui
+                .button(cx, hdr)
+                .set_text(cx, &format!("{mark}  {caption}"));
+            self.ui.view(cx, body).set_visible(cx, open);
+        }
+    }
+
+    fn toggle_floor_section(&mut self, cx: &mut Cx, key: &str) {
+        {
+            let mut st = app_state().lock().unwrap();
+            if let Some(i) = st.floor_sections_open.iter().position(|k| k == key) {
+                st.floor_sections_open.remove(i);
+            } else {
+                st.floor_sections_open.push(key.to_string());
+            }
+        }
+        self.sync_floor_sections(cx);
+        self.ui.redraw(cx);
+    }
+
     /// Docs / debug / LOCAL badges stay out of the day-to-day work surface.
+    /// Useful tips use InfoHelp ℹ (floor_help, kitchen_help, settings_lan_help, …).
     fn hide_docs_and_debug_chrome(&mut self, cx: &mut Cx) {
         let help_ids: &[&[LiveId]] = &[
             ids!(books_help),
             ids!(credit_help),
-            ids!(h_day_close_help),
-            ids!(reports_help),
             ids!(device_setup_help),
+            ids!(setup_lang_hint),
+            ids!(server_pick_hint),
             ids!(h_other_devices_help),
             ids!(h_other_devices_help_heading),
             ids!(sidebar_settings_help),
             ids!(h_duress_help),
+            ids!(h_optional_login_help),
+            ids!(h_feature_access_help),
+            ids!(h_rights_help),
+            ids!(h_team_owner_help),
+            ids!(h_amend_help),
             ids!(crm_help),
-            ids!(h_schemes_help),
-            ids!(lan_pages_help_label),
-            ids!(h_aggregator_import_help),
             ids!(removed_help),
             ids!(h_units_help),
+            ids!(h_units_picker_help),
+            ids!(sibling_pickers_help),
+            ids!(h_language_setup_hint),
+            ids!(h_currency_use_help),
+            ids!(h_country_pack_help),
+            ids!(h_brand_shown_help),
+            ids!(h_printers_help),
+            ids!(h_printers_routes_help),
+            ids!(h_bill_format_help),
+            ids!(h_print_brand_help),
+            ids!(h_restore_help),
+            ids!(h_stock_type_help),
+            ids!(categories_help),
+            ids!(split_help),
+            ids!(move_help),
+            ids!(order_help),
+            ids!(upi_qr_help),
+            ids!(frequent_config_help),
             ids!(db_path_label),
         ];
         for id in help_ids {
@@ -24322,6 +24664,17 @@ impl MatchEvent for App {
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_books_section(cx, key);
+            }
+        }
+        for (hdr, key) in [
+            (ids!(floor_ops_hdr), "floor_ops"),
+            (ids!(waitlist_hdr), "waitlist"),
+            (ids!(resv_hdr), "resv"),
+            (ids!(floor_add_hdr), "floor_add"),
+            (ids!(stations_hdr), "stations"),
+        ] {
+            if self.ui.button(cx, hdr).clicked(actions) {
+                self.toggle_floor_section(cx, key);
             }
         }
         if self.ui.button(cx, ids!(books_to_sell)).clicked(actions) {
