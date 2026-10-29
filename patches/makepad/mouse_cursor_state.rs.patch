@@ -1,0 +1,113 @@
+--- a/platform/src/os/linux/wayland/wayland_type.rs
++++ b/platform/src/os/linux/wayland/wayland_type.rs
+@@ -9,7 +9,9 @@
+             MouseCursor::Default => wp_cursor_shape_device_v1::Shape::Default,
+             MouseCursor::Crosshair => wp_cursor_shape_device_v1::Shape::Crosshair,
+             MouseCursor::Hand => wp_cursor_shape_device_v1::Shape::Pointer,
+-            MouseCursor::Arrow => wp_cursor_shape_device_v1::Shape::ContextMenu,
++            // Arrow is the ordinary pointer (same as Default). Mapping it to
++            // ContextMenu made focused buttons show a menu cursor on Wayland.
++            MouseCursor::Arrow => wp_cursor_shape_device_v1::Shape::Default,
+             MouseCursor::Move => wp_cursor_shape_device_v1::Shape::Move,
+             MouseCursor::Text => wp_cursor_shape_device_v1::Shape::Text,
+             MouseCursor::Wait => wp_cursor_shape_device_v1::Shape::Wait,
+--- a/platform/src/os/linux/wayland/linux_wayland.rs
++++ b/platform/src/os/linux/wayland/linux_wayland.rs
+@@ -972,9 +972,15 @@
+                     cx.call_event_handler(&Event::DragEnd);
+                 }
+                 CxOsOp::SetCursor(cursor) => {
+-                    if let Some(cursor_shape) = state.cursor_shape.as_ref() {
+-                        if let Some(serial) = state.pointer_serial.as_ref() {
+-                            cursor_shape.set_shape(*serial, cursor.into());
++                    // Window-edge resize owns the cursor while the pointer is
++                    // in the edge band. Widget hover SetCursor runs after the
++                    // motion flush and would otherwise overwrite Nw/E/S/…
++                    // with Text/Hand/Default every frame.
++                    if state.last_resize_edge.is_none() {
++                        if let Some(cursor_shape) = state.cursor_shape.as_ref() {
++                            if let Some(serial) = state.pointer_serial.as_ref() {
++                                cursor_shape.set_shape(*serial, cursor.into());
++                            }
+                         }
+                     }
+                 }
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -933,6 +933,13 @@
+                         self.animator_play(cx, ids!(hover.on));
+                     }
+                 }
++                Hit::FingerHoverOver(_) => {
++                    // Re-assert after window-edge leave / other widgets forced
++                    // Default — HoverIn only fires once per enter.
++                    if let Some(cursor) = &self.cursor {
++                        cx.set_cursor(*cursor);
++                    }
++                }
+                 Hit::FingerHoverOut(e) => {
+                     cx.widget_action(uid, ViewAction::FingerHoverOut(e));
+                     if self.animator.is_defined {
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -314,9 +314,9 @@
+                         draw_text: {focus: 0.0}
+                     }
+                 }
+-                /** focused: focus mix on immediately, arrow cursor */
++                /** focused: focus mix on immediately; keep hand (clickable) */
+                 on: AnimatorState{
+-                    cursor: MouseCursor.Arrow
++                    cursor: MouseCursor.Hand
+                     from: {all: Forward {duration: 0.0}}
+                     apply: {
+                         draw_bg: {focus: 1.0}
+@@ -648,6 +648,14 @@
+                 } else {
+                     cx.set_cursor(MouseCursor::NotAllowed);
+                 }
++            }
++            Hit::FingerHoverOver(_) => {
++                // Re-assert after window-edge leave / focus animator / peers.
++                if self.enabled {
++                    cx.set_cursor(MouseCursor::Hand);
++                } else {
++                    cx.set_cursor(MouseCursor::NotAllowed);
++                }
+             }
+             Hit::FingerHoverOut(_) => {
+                 self.animator_play(cx, ids!(hover.off));
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -2497,6 +2497,10 @@
+                 cx.set_cursor(MouseCursor::Text);
+                 self.animator_play(cx, ids!(hover.on));
+             }
++            Hit::FingerHoverOver(_) => {
++                // Re-assert I-beam after window-edge leave or peer SetCursor.
++                cx.set_cursor(MouseCursor::Text);
++            }
+             Hit::FingerHoverOut(_) => {
+                 cx.set_cursor(MouseCursor::Default);
+                 self.animator_play(cx, ids!(hover.off));
+@@ -2506,6 +2510,7 @@
+                 // latch so Android will show the soft keyboard again (otherwise
+                 // a prior system dismiss blocks ShowTextIME until focus is lost).
+                 cx.reset_text_ime_dismissed();
++                cx.set_cursor(MouseCursor::Text);
+                 self.animator_play(cx, ids!(focus.on));
+                 self.reset_blink_timer(cx);
+                 // Sync text state to platform IME before keyboard shows
+--- a/widgets/src/window.rs
++++ b/widgets/src/window.rs
+@@ -1741,8 +1741,9 @@
+                                 dq.response.set(WindowDragQueryResponse::Client);
+                             } else {
+                                 dq.response.set(WindowDragQueryResponse::Caption);
++                                // Caption drag affordance (buttons use Client + Hand).
++                                cx.set_cursor(MouseCursor::Grab);
+                             }
+-                            cx.set_cursor(MouseCursor::Default);
+                         }
+                     }
+                 }

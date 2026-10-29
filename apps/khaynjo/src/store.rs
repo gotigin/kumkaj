@@ -1010,7 +1010,8 @@ impl Store {
             .map_err(|e| e.to_string())?;
         if table_count == 0 {
             let branch_id = self.active_branch_id()?;
-            for n in 1..=6 {
+            // Fresh floor: T1..T24 (matches layout slot cap).
+            for n in 1..=24 {
                 self.conn
                     .execute(
                         "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id)
@@ -1673,6 +1674,17 @@ impl Store {
         if !footer.trim().is_empty() {
             out.push_str(footer.trim());
             out.push('\n');
+        }
+        // Print brand kit: stamp + static payment QR live as images on the
+        // LAN guest display / HTML faces; text slips name them so the paper
+        // still matches Settings → Bill format.
+        if self.print_stamp_path()?.is_some() {
+            out.push_str("[Stamp]\n");
+        }
+        if self.payment_qr_path()?.is_some() {
+            out.push_str("[Payment QR]\n");
+        } else if !self.upi_vpa()?.trim().is_empty() {
+            out.push_str(&format!("UPI: {}\n", self.upi_vpa()?.trim()));
         }
         if is_invoice {
             out.push_str("— End of invoice —\n");
@@ -4385,6 +4397,35 @@ impl Store {
         self.meta_set("ui_nav_order", csv)
     }
 
+    /// Nav peers the shop hid from the side rail / bottom bar (CSV of keys).
+    pub fn nav_hidden_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_nav_hidden")
+    }
+
+    pub fn set_nav_hidden_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_nav_hidden", csv)
+    }
+
+    /// Individual money figures the owner hid (CSV of keys). Screen-level
+    /// hide is session-only and is not stored here.
+    pub fn amount_keys_hidden_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_amount_keys_hidden")
+    }
+
+    pub fn set_amount_keys_hidden_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_amount_keys_hidden", csv)
+    }
+
+    /// Books home accordion: CSV of open section keys (`today`, `bills`, …).
+    /// Empty / missing → all collapsed.
+    pub fn books_sections_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_books_sections")
+    }
+
+    pub fn set_books_sections_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_books_sections", csv)
+    }
+
     /// Whether ₹0 item prices and ₹0 bills (and a matching ₹0 tender) are
     /// allowed. Default **on** — complimentary / owner-wish free covers, and
     /// free menu items, still write a completed sale so Frequent can rank them.
@@ -4503,6 +4544,105 @@ impl Store {
         let key = format!("custom:{file_name}");
         self.set_venue_icon_key(Some(&key))?;
         Ok(key)
+    }
+
+    /// Print-face stamp image key (`custom:print_stamp.webp`). None → no stamp.
+    pub fn print_stamp_key(&self) -> Result<Option<String>, String> {
+        Ok(self
+            .meta_get("print_stamp_key")?
+            .filter(|s| !s.trim().is_empty()))
+    }
+
+    pub fn set_print_stamp_key(&self, key: Option<&str>) -> Result<(), String> {
+        match key.map(str::trim).filter(|s| !s.is_empty()) {
+            Some(k) => self.meta_set("print_stamp_key", k),
+            None => self.meta_set("print_stamp_key", ""),
+        }
+    }
+
+    /// Static payment / UPI QR image for bill faces (`custom:payment_qr.webp`).
+    /// Complements the dynamic amount QR from Settings → UPI VPA.
+    pub fn payment_qr_key(&self) -> Result<Option<String>, String> {
+        Ok(self
+            .meta_get("payment_qr_key")?
+            .filter(|s| !s.trim().is_empty()))
+    }
+
+    pub fn set_payment_qr_key(&self, key: Option<&str>) -> Result<(), String> {
+        match key.map(str::trim).filter(|s| !s.is_empty()) {
+            Some(k) => self.meta_set("payment_qr_key", k),
+            None => self.meta_set("payment_qr_key", ""),
+        }
+    }
+
+    fn brand_image_path_for_key(&self, key: &str) -> Option<PathBuf> {
+        let file = key.strip_prefix("custom:")?;
+        let path = self.brand_images_dir().ok()?.join(file);
+        path.is_file().then_some(path)
+    }
+
+    pub fn print_stamp_path(&self) -> Result<Option<PathBuf>, String> {
+        Ok(self
+            .print_stamp_key()?
+            .as_deref()
+            .and_then(|k| self.brand_image_path_for_key(k)))
+    }
+
+    pub fn payment_qr_path(&self) -> Result<Option<PathBuf>, String> {
+        Ok(self
+            .payment_qr_key()?
+            .as_deref()
+            .and_then(|k| self.brand_image_path_for_key(k)))
+    }
+
+    fn import_brand_image_named(&self, source: &Path, file_name: &str) -> Result<String, String> {
+        let dir = self.brand_images_dir()?;
+        let ext = source
+            .extension()
+            .and_then(|e| e.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if !media::is_image_ext(&ext) {
+            return Err("Use jpg, jpeg, png, or webp (stored as WebP)".into());
+        }
+        let dest = dir.join(file_name);
+        media::write_image_as_webp(source, &dest)?;
+        Ok(format!("custom:{file_name}"))
+    }
+
+    pub fn import_print_stamp(&self, source: &Path) -> Result<String, String> {
+        let key = self.import_brand_image_named(source, "print_stamp.webp")?;
+        self.set_print_stamp_key(Some(&key))?;
+        Ok(key)
+    }
+
+    pub fn import_payment_qr(&self, source: &Path) -> Result<String, String> {
+        let key = self.import_brand_image_named(source, "payment_qr.webp")?;
+        self.set_payment_qr_key(Some(&key))?;
+        Ok(key)
+    }
+
+    /// Data-URI `<img>` blocks for stamp + static payment QR when set (LAN
+    /// guest display / HTML bill faces). Empty string when neither is set.
+    pub fn print_brand_kit_html(&self) -> Result<String, String> {
+        let mut parts = String::new();
+        if let Some(path) = self.print_stamp_path()? {
+            if let Ok(bytes) = fs::read(&path) {
+                parts.push_str(&format!(
+                    "<p class=\"brand-stamp\"><img alt=\"Stamp\" src=\"data:image/webp;base64,{}\"/></p>",
+                    ops::base64_encode(&bytes)
+                ));
+            }
+        }
+        if let Some(path) = self.payment_qr_path()? {
+            if let Ok(bytes) = fs::read(&path) {
+                parts.push_str(&format!(
+                    "<p class=\"brand-pay-qr\"><img alt=\"Payment QR\" src=\"data:image/webp;base64,{}\"/></p>",
+                    ops::base64_encode(&bytes)
+                ));
+            }
+        }
+        Ok(parts)
     }
 
     // ---------------------------------------------------------------- org / branches
@@ -12059,7 +12199,7 @@ mod tests {
         assert_eq!(store.entity_template_id().unwrap(), "khaynjo_restaurant");
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
 
-        // Fresh shops seed T1..T6; add our own so the id is unambiguous.
+        // Fresh shops seed T1..T24; add our own so the id is unambiguous.
         let table = store.add_table("Counter 1").unwrap();
         store.upsert_product(&test_product("Masala Dosa", 120)).unwrap();
         let dosa = store.list_products(false).unwrap().remove(0);

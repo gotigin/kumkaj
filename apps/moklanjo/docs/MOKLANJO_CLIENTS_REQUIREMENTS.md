@@ -3,7 +3,7 @@
 Sanitized checklist from a **courier / logistics-agency** discovery chat (Oct 2026).  
 **No personal names, phones, chats IDs, or download links** — only product asks.
 
-Companions: [`MOKLANJO.md`](MOKLANJO.md), [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md), [`grokbot/MOKLANJO_BUSINESS_TUTORIAL.md`](grokbot/MOKLANJO_BUSINESS_TUTORIAL.md).
+Companions: [`MOKLANJO.md`](MOKLANJO.md), [`MOKLANJO_APP_TUTORIAL.md`](MOKLANJO_APP_TUTORIAL.md) (practice + demo script), [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md), [`grokbot/MOKLANJO_BUSINESS_TUTORIAL.md`](grokbot/MOKLANJO_BUSINESS_TUTORIAL.md).
 
 **Scope:** this is Moklanjo's discovery evidence and status tracker —
 it stays in Moklanjo's docs. The general BOS needs underneath §A–B
@@ -30,8 +30,8 @@ Voice messages in the source chat were **ignored**; only typed requirements are 
 
 | Ask | Meaning | Status |
 |-----|---------|--------|
-| Carrier company accounts | Carriers as parties (owner types names) | **Done** — Parties · Carrier / multi-role |
-| Our party accounts | Consignors / shippers as parties | **Done** — Parties · Consignor / multi-role |
+| Carrier company accounts | Carriers as parties (owner types names) | **Done** — Parties · Carrier / multi-role · name/phone/address · custom fields |
+| Our party accounts | Consignors / shippers as parties | **Done** — Parties · Consignor / multi-role · name/phone/address · optional logo · custom fields |
 | Debtors and creditors | AR (they owe us) and AP (we owe them) | **Done** — separate ledgers + net position |
 
 ### B. Day / period books
@@ -102,17 +102,17 @@ public track outside LAN).
 | Client words | Screen |
 |--------------|--------|
 | Moklanjo / party accounts | Parties |
-| Day book / per day | Day book · Reports → Today books |
-| Bank posting | Reports → bank actions |
-| Expense | Pay out or Reports → Log expense |
-| Invoice | Booking (Account) → copy / print; Sales → receipt/invoice |
-| Monthly / P&L / BS | Reports → This month (includes P&L + balance sheet) |
+| Day book / per day | Day book · Reports → Day book (today) |
+| Bank posting | Reports → Bank book |
+| Expense | Pay out → Expense voucher · or Reports → Expense voucher |
+| Invoice | Booking (Account booking) → copy / print; Bookings → receipt/invoice |
+| Monthly / P&L / BS | Reports → Profit & loss (month) · Balance sheet |
 | Outstanding / debit–credit | Reports → Outstanding / Dr-Cr |
-| Settle against one bill | Parties → pick party → Open bills → bill # → Pay |
-| Bank reconcile | Reports → Bank reconciliation → tick Uncleared # |
-| Cash in hand | Day book (BANK card) · balance sheet |
+| Settle against one bill | Parties → Pick → Against bill # → Settle cash / Pay UPI / Settle card |
+| Bank reconcile | Reports → Bank book → Bank reconciliation → tick Uncleared # |
+| Cash in hand | Day book (BANK card) · Balance sheet |
 | Spreadsheet in / out | Reports → Spreadsheet (CSV) |
-| Barcode print / scan | Ops → Print AWB label · AWB / scan field → Find |
+| Barcode print / scan | Ops → AWB / scan · Find / Scan AWB · Print AWB label |
 
 ------------------------------------------------------------------------
 

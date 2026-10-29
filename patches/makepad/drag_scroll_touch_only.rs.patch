@@ -1,18 +1,32 @@
 --- a/widgets/src/scroll_bar.rs
 +++ b/widgets/src/scroll_bar.rs
-@@ -875,9 +875,19 @@
-         // capture_overload: co-capture with buttons/links under the finger so
+@@ -280,6 +280,12 @@
+     /// Whether to enable drag scrolling
+     #[live(false)]
+     drag_scrolling: bool,
++    /// When true, a mouse press on a child (nested pane, list, …) can still
++    /// start a drag-scroll. Default false so horizontal chip strips only
++    /// mouse-drag from whitespace (nav drag-to-swap on a chip is not stolen).
++    /// Desk panes that fill the strip set this true.
++    #[live(false)]
++    mouse_capture_overload: bool,
+ 
+     #[apply_default]
+     animator: Animator,
+@@ -876,8 +882,20 @@
          // Android touch-drag can scroll ScrollYView even when the press began
          // on a child Button (desktop wheel never needed this). On the first
          // real move we promote our capture so the child does not also click.
 -        match event.hits_with_capture_overload(cx, scroll_area, true) {
 -            Hit::FingerDown(fe) if fe.is_primary_hit() => {
-+        // Mouse: no capture overload — only a press that lands on the scroll
++        // Mouse default: no capture overload — only a press on the scroll
 +        // view itself (whitespace around child buttons) starts a drag-scroll,
 +        // so an app-level drag on a child Button (nav swap) is not stolen.
-+        // Horizontal strips allow mouse drag-scroll; vertical pages stay
-+        // touch-only (wheel / scrollbar / keys for the mouse).
-+        let capture_overload = !matches!(event, Event::MouseDown(_));
++        // Desk ScrollXViews set `mouse_capture_overload` so press-drag works
++        // over nested panes that fill the strip. Vertical pages stay
++        // touch-only for drag-scroll (wheel / scrollbar / keys for the mouse).
++        let capture_overload = self.mouse_capture_overload
++            || !matches!(event, Event::MouseDown(_));
 +        match event.hits_with_capture_overload(cx, scroll_area, capture_overload) {
 +            Hit::FingerDown(fe)
 +                if fe.is_primary_hit()

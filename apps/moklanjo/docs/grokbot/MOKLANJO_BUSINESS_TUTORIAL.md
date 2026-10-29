@@ -13,10 +13,15 @@
 > modelling suggestions are courier instantiations of the root
 > concepts, not Kumkaj-wide requirements.
 
-*Written for Mearaj, who is building **Kumkaj** (a general business-books app). This one document has two jobs:*
+*Written for someone building and demoing **Moklanjo** (Kumkaj courier product). This document has two jobs:*
 
 1. *Anyone who has passed 10th class, even with no commerce or accounting knowledge, should be able to **run a courier counter and keep all its books** using only this guide. Parts 1 to 9 are written for that person.*
-2. *It is also the full research reference: all the facts, tax rules, sources and "ask your CA" points, plus developer notes on how Kumkaj should model a courier business (Part 10).*
+2. *It is also the full research reference: all the facts, tax rules, sources and "ask your CA" points, plus developer notes on how Moklanjo should model a courier business (Part 10).*
+
+*Hands-on app practice, walk-in rush loop, and client demo script live in
+[`../MOKLANJO_APP_TUTORIAL.md`](../MOKLANJO_APP_TUTORIAL.md) — use that file
+to rehearse; use this file when you need deeper business / tax explanation.
+Screen titles also have short in-app info tips.*
 
 ---
 

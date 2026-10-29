@@ -6,7 +6,9 @@ alwaysApply: false
 
 # Makepad 2 faces (selection + truncation + wrap/Fill hang)
 
-Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces.
+Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces · § **Always responsive** · § **Text selection & copy**.
+
+**Responsive:** size grids from the widget turtle/walk width, not a shell estimate that ignores padding. **Text:** display copy is selectable (`WrapLabel` / `ReportText`) unless it sits inside a tap target (`selectable: false` / plain `Label`).
 
 The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy, not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
 

@@ -4,9 +4,11 @@
 > [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md),
 > [`KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md).
 
-Updated **2026-10-27** (v3). Research Local/LAN catch-up for both apps is
-complete (§4); earlier LAN pilot items (§1–2) remain. Every line below was
-checked against the code, not copied from an older assessment.
+Updated **2026-10-29** (v4). Research Local/LAN catch-up for both apps is
+complete (§4), including the 2026-10-29 Moklanjo C Trunk / ASP.NET Local
+gaps and Khaynjo print-brand + aggregator file-import polish; earlier LAN
+pilot items (§1–2) remain. Every line below was checked against the code,
+not copied from an older assessment.
 
 **Bottom line:** product code for offline/LAN use (including research
 parity that does not need Kumkaj Cloud) is ready for a supervised pilot
@@ -125,7 +127,7 @@ verified done.
 
 | Item | Why / how |
 |---|---|
-| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7. **Emergency unlock PIN** (Owner duress wipe of trading history, structure kept) shipped 2026-10-27 in both apps. Remaining product work is Cloud/Net connectors (optional stubs only) or owner actions below. |
+| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7 (C Trunk Local gaps closed **2026-10-29**: AWB pools, bulk status, TDS/cheque settle, bill chase, stamp/QR, GST month CSV, cargo pieces, mix report; Khaynjo stamp/QR + aggregator drop-file). **Emergency unlock PIN** shipped 2026-10-27. Mouse cursor state patch ships with Makepad setup. Remaining product work is Cloud/Net connectors (optional stubs only), polish (coupons / variation matrix), or owner actions below. |
 
 **Still needs the owner (not code)**
 

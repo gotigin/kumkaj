@@ -311,7 +311,7 @@ POS, F = free/open source).
 | **Split by seat / evenly by N** | G (Square, Toast) | **Have** | Local | `seat_no` on lines; Split evenly / Split by seat → companion bills |
 | Move / merge tables, move items | I, G | **Have** | LAN | — |
 | **Coursing: hold / fire** | G | **Have** | LAN | Held lines never print; Fire course sends only that course; fixed-combo components stay held until combo KOT |
-| Customer-facing display (order + total + UPI QR) | G, some I | **Have** | Local / LAN | Counter UPI QR modal + LAN `GET /display` (lines, total, UPI data-URI when paying) |
+| Customer-facing display (order + total + UPI QR) | G, some I | **Have** | Local / LAN | Counter UPI QR modal + LAN `GET /display` (lines, total, UPI data-URI when paying); **Have 2026-10-29** optional stamp + static payment QR masters on the same face |
 | Integrated card terminals / payment links | G (processor-led), I | **Partial** (manual tender default; optional outbox stub) | Net | `enqueue_card_terminal` / payment-link outbox; never required for counter |
 | E-bill by SMS / WhatsApp | I | **Have** (queue / WhatsApp); SMS drain **Planned** | Local SIM gateway / Net for WhatsApp / optional Cloud SMS | Sales → Share WhatsApp (`wa.me`); SMS → `notify_outbox`. Delivery plan: [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 
@@ -376,7 +376,7 @@ POS, F = free/open source).
 | Feedback after the meal | I (Petpooja app), LimeTray | **Have** | LAN (tablet at counter) | `GET /feedback` stores scores locally |
 | SMS / WhatsApp campaigns | I, G | **Have** (local segments + outbox); delivery **Planned** | Local gateway / Net / optional Cloud SMS | Parties CRM queues intents; WhatsApp via `wa.me`. SMS send: Local SMS Gateway (Android sibling, cloudless) or paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | Multi-outlet dashboard, central menu push | I, G | **Partial** (snapshot export/import) / **Skipped** (live Cloud) | File / Cloud | Live roll-up = Kumkaj Cloud |
-| Online orders from aggregators (Zomato, Swiggy) | I, G | **Partial** (optional file import + Net poll stub off by default) | Net | Outbox/inbox stub; never gates counter (KHAYNJO.md §4b) |
+| Online orders from aggregators (Zomato, Swiggy) | I, G | **Partial** (Local file import UX **Have 2026-10-29**; Net poll stub off by default) | File / Net | Settings → Bill format drop-file; outbox/inbox; never gates counter (KHAYNJO.md §4b) |
 | Own online ordering website | I (LimeTray, DotPe), G | **Skipped** (Cloud) | Cloud | Kumkaj Cloud later; LAN kiosk/QR remain Have |
 
 ### 6.6 Platform
@@ -415,7 +415,7 @@ Every item that could ship **without Kumkaj Cloud** from the earlier
 |---|---|---|---|
 | 1 | **Combos / BOGO / schemes** (incl. fixed combo KOT expand) | **Have** | Local |
 | 2 | **Menu timings and happy-hour prices** | **Have** | Local |
-| 3 | **Customer-facing display with UPI QR** (counter + LAN `/display`) | **Have** | Local / LAN |
+| 3 | **Customer-facing display with UPI QR** (counter + LAN `/display`; stamp + static payment QR masters **Have 2026-10-29**) | **Have** | Local / LAN |
 | 4 | **KDS timers and ageing colours**, target prep times, recall | **Have** | LAN |
 | 5 | **Coursing (hold / fire)** — held never print until fired | **Have** | LAN |
 | 6 | **Split evenly / by seat** | **Have** | Local |
@@ -441,7 +441,7 @@ by `occupied_at`).
 
 | Item | Status | Why it waits |
 |---|---|---|
-| Live aggregator SaaS (Zomato/Swiggy accept/reject in their cloud) | **Partial** stub (file import + Net poll off by default) | Needs vendor APIs + internet; never gates counter |
+| Live aggregator SaaS (Zomato/Swiggy accept/reject in their cloud) | **Partial** — Local file import UX **Have 2026-10-29**; Net poll off by default | Needs vendor APIs + internet; never gates counter |
 | Card terminal / payment-link confirmation | **Partial** (manual tender default; optional outbox) | Needs PSP / terminal vendor + Net |
 | Guests ordering on **mobile data** / own public website | **Skipped** | Needs Kumkaj Cloud reachability |
 | SMS delivery (Local SMS Gateway + paid Cloud SMS) | Queue **Have**; gateway & Cloud SMS **Planned** | See [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) — Android sibling (LAN/Bluetooth, shop SIM) or usage-billed Cloud SMS; hosted third-party blast SaaS still out of scope |
@@ -453,7 +453,7 @@ by `occupied_at`).
 
 | Feature | Why | Kumkaj approach (2026-10-27) |
 |---|---|---|
-| Zomato / Swiggy / aggregator orders | Their systems are online | **Partial** optional file import + Net poll stub (off by default); counter never depends on it |
+| Zomato / Swiggy / aggregator orders | Their systems are online | **Partial** Local file import UX **Have 2026-10-29** + Net poll stub (off by default); counter never depends on it |
 | Card terminal integration, online payment links, payment confirmation from banks | Card networks and PSPs are online | Manual tender default; **Partial** outbox stub when internet is up |
 | Guests ordering on mobile data, own ordering website | Must be reachable from the internet | **Skipped** until Kumkaj Cloud; LAN `/t/{table}` + `/kiosk` already Have |
 | SMS/WhatsApp campaigns, review collection | Online / SIM | CRM outbox **Have**; Local SMS Gateway + Cloud SMS **Planned** ([`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md)); one-tap WhatsApp Have; third-party hosted blast SaaS still out of scope |

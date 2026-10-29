@@ -12,6 +12,8 @@ use crate::notify;
 use chrono::{Datelike, Duration, Local, NaiveDate};
 use rusqlite::{params, OptionalExtension};
 use serde::{Deserialize, Serialize};
+use std::fs;
+use std::path::Path;
 
 /// Local guest-book slice for CRM messages (Parties → Guests & messages).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -1639,6 +1641,22 @@ impl Store {
         Ok(n)
     }
 
+    /// Read `backups/import_aggregator_orders.json` and enqueue each order.
+    /// Same drop-file pattern as branch day import — Local only; never Net.
+    pub fn import_aggregator_orders_drop_file(&self) -> Result<usize, String> {
+        let path = self
+            .path
+            .parent()
+            .unwrap_or(Path::new("."))
+            .join("backups")
+            .join("import_aggregator_orders.json");
+        if !path.exists() {
+            return Err("Missing backups/import_aggregator_orders.json".into());
+        }
+        let json = fs::read_to_string(&path).map_err(|e| e.to_string())?;
+        self.import_aggregator_orders_file(&json)
+    }
+
     /// Net poll stub — disabled by default; only enqueues a wake note.
     pub fn aggregator_net_poll_stub(&self, enabled: bool) -> Result<(), String> {
         if !enabled {
@@ -1688,8 +1706,11 @@ impl Store {
                 0,
             )
         };
+        // Static payment QR (Settings → Bill format) wins for the face; else
+        // bake the bill amount into a dynamic UPI QR when VPA is set.
+        let brand = self.print_brand_kit_html().unwrap_or_default();
         let mut qr = String::new();
-        if upi > 0 {
+        if self.payment_qr_path().ok().flatten().is_none() && upi > 0 {
             if let Ok(vpa) = self.upi_vpa() {
                 if !vpa.trim().is_empty() {
                     if let Ok(uri) = crate::upi_qr::upi_pay_uri(&vpa, &self.upi_payee().unwrap_or_default(), upi)
@@ -1713,11 +1734,12 @@ impl Store {
 <style>body{{font-family:sans-serif;padding:1.5rem;background:#111;color:#f5f5f5}}
 h1{{font-size:1.6rem}}ul{{font-size:1.25rem;line-height:1.6}}
 .total{{font-size:2rem;margin-top:1rem}}img{{background:#fff;padding:12px;border-radius:8px;max-width:240px}}
+.brand-stamp img,.brand-pay-qr img{{max-width:180px}}
 </style></head><body>
 <h1>{title}</h1>
 <ul>{}</ul>
 <p class="total">Total {amount}</p>
-{qr}
+{brand}{qr}
 <p style="opacity:.6;margin-top:2rem">LAN guest display · open this Server URL on a second device</p>
 </body></html>"#,
             lines.join("")
@@ -1954,7 +1976,12 @@ document.getElementById('add').onclick = async () => {{
         out.push_str(
             "\nLAN pages (Server Wi‑Fi): /display /tokens /expo /kiosk /t/{table} /feedback\n",
         );
-        out.push_str("Card terminal / aggregator: optional outbox — never blocks counter.\n");
+        out.push_str(
+            "Card terminal / aggregator: optional outbox — never blocks counter.\n",
+        );
+        out.push_str(
+            "Aggregator file: backups/import_aggregator_orders.json → Settings → Bill format → Import.\n",
+        );
         Ok(out)
     }
 

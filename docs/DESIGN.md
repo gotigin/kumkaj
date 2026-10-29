@@ -62,12 +62,13 @@ Same device may hold **several local servers** (different products or businesses
 Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.sqlite3`, etc.) — there is no migration from those layouts.
 | **Onboard** | Moklanjo: courier defaults baked in (Account/Cash booking, kg). Fresh vs Book for opening rates/parties. Other brand products bake their own defaults. |
 | **Settings** | Country pack, venue, units, backup (no sample catalogue). |
-| **Choice chips** | Short labels only (`ChipBtn` / `ChipBtnActive` in `ChipStrip`). Multi-word choices are **not** chips. |
-| **Stacked CTAs** | Multi-word / long labels → `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn` (full width, wrap, no ellipsis). Same faces as Server/Client Mode. Never `ChipBtn` / `ActionRow` for those. |
+| **Control face by intent** | **Same job → same look.** Navigate elsewhere = `HubDestBtn` + mark (hub lists) or chrome `TabBtn`/`NavChip` — never a filled primary. Select in place = `DeskTab` / `SegBtn` / `ChipBtn`. Submit on this form = **one** filled primary (`RowPrimary` / `StackPrimary`, or `PayBtn` on the ticket). Quiet alt = secondary / outlined `NavBtn`. Destroy = `DangerBtn`. Frequency does **not** promote a navigate link to primary. |
+| **Choice chips** | Short filter labels only (`ChipBtn` / `ChipBtnActive` in `ChipStrip`). Exclusive closed sets (tax lane, pay method, staff role, …) use **`SegBtn` / `SegBtnOn`**. Multi-word CTAs and one-shot actions are **not** chips. |
+| **Stacked CTAs** | Multi-word / long labels → `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn` (full width, wrap, no ellipsis). Same faces as Server/Client Mode. Never `ChipBtn` / `ActionRow` for those. Never use primary for “go to screen X”. |
 | **Form field rows** | Side-by-side inputs only → `FormFieldRow` (equal `Fill` fields). **Never** put a Fit/`NavBtn` CTA in that row — Makepad has no flex-shrink; wrap stacks letters vertically (`A d d r a t e`) and overlaps the field. CTAs go in `ActionStack` under the fields. |
 | **Bottom nav** | Phone chrome (< **720 css px**), horizontally scrollable. Active peer = only the `*Active` face visible (`paint_nav_tabs`); idle stays transparent on hover/focus. Peers include Day book · Booking · Pay out **plus** every former More destination (role-gated). |
-| **Side rail** | Tablet / desktop chrome (≥ **720 css px**), vertically scrollable. Same peer set as bottom nav (`nav_rail` / `apply_shell_layout`). Bottom tabs hide; rail shows. Drag the divider to resize; rail floor **148** css px, main column floor **360** css px. Short chrome labels + wrap (no ellipsis). Top-level peers have no Back button / history swipe. |
-| **Booking split** | Side-by-side when **content** column ≥ ~640 css px (rates \| cart, both `Fill`). Narrower: `flow: Down`, each pane full width — never a Fixed cart with empty right gutter. Shell chrome still flips rail/bottom at 720. |
+| **Side rail** | Tablet / desktop chrome (≥ **720 css px**), vertically scrollable. Same peer set as bottom nav (`nav_rail` / `apply_shell_layout`). Bottom tabs hide; rail shows. Drag the divider to resize; rail floor **148** css px, main column floor **360** css px. **‹** on the rail collapses it to zero width; **›** in the header restores it (`rail_collapsed`). Phone bottom tabs are unchanged. Short chrome labels + wrap (no ellipsis). Top-level peers have no Back button / history swipe. |
+| **Booking / Order desk split** | Parcel+Counter (Moklanjo) and Added items+Payment (Khaynjo) are **always** side by side in a **Fit** row inside a horizontal `ScrollXView` (gap **16** = outer padding). Pane widths are **Fixed** and set in `apply_shell_layout` (mins ~600 \| ~520; grow when the content column is wider). That makes scroll `view_total` real so wheel / trackpad / **mouse press-drag** (`mouse_capture_overload`) can reach the clipped pane — `Fill{min}` was clipping with no scroll range. No Parcel\|Counter / Added items\|Payment tabs. Shell chrome still flips rail/bottom at 720. |
 | **CTA labels** | Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`) wrap — never `Ellipsis`. `ChipBtn` ellipsis only for short strip chips. |
 | **Min width** | Layout floor **320 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`). Desktop restore ignores saved widths below 720 so a squeezed session cannot lock the app into a phone frame. |
 | **Button ink** | Shared faces use `padding` + `label_walk.margin` so labels never sit flush on the face edge. Long dual CTAs use `ActionStack`, not half-width `ActionRow`. |
@@ -82,6 +83,38 @@ Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.s
 Owner order after unlock: **Day book** → **Booking** or **Pay out** as peers.
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
+
+## Always responsive (every app)
+
+Layouts must fit the window they are in — no cropped columns, no
+controls past the right edge, no “designed for one width” grids.
+
+- Size grids and tile columns from the **widget’s turtle / walk width**,
+  not a shell-wide estimate that ignores screen padding (Floor tiles
+  cropped when `content_width` was used before padding — fix: measure
+  in `draw_walk` like the dish grid).
+- Prefer wrap / reflow / scroll over Fixed widths that only fit one
+  desktop size. Desk side-by-side only when the content column is wide
+  enough; otherwise stack.
+- Phone (< **720**) and tablet/desktop (≥ **720**) chrome differ
+  (bottom tabs vs side rail); content inside each mode still reflows.
+
+## Text selection & copy (every app)
+
+**Default: on-screen text is selectable and copyable.** Use
+`WrapLabel` (`selectable: true`) / selectable `ReportText` rows for
+display copy — totals, reports, Local ops, headings, session line,
+today bar, area labels, empty states.
+
+**Exceptions only** (set `selectable: false` or keep plain `Label`):
+
+- Text **inside a tap target** (whole-card rows, floor tiles, cart
+  lines, nav chips) — a selectable `TextFlow` steals the press.
+- Button faces and chrome marks that are not meant to be copied.
+
+Do not ship new display paragraphs as non-selectable `Label` without
+a documented exception. Ctrl/Cmd+C uses the system clipboard
+(`Cx::copy_to_clipboard` — see [`DEV.md`](DEV.md)).
 
 ## Work-surface layout & interaction (lessons for every app)
 
@@ -140,9 +173,21 @@ agent verification): [`DEV.md`](DEV.md) § Makepad 2 UI faces
 
 Full cause / approach / code map: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide). Cursor rule: `.cursor/rules/makepad-layout-faces.mdc`.
 
+**Intent first (navigate ≠ select ≠ submit ≠ destroy):**
+
+| Intent | Face |
+|---|---|
+| Leave this screen / peer jump | `HubDestBtn` + colored mark (Day book and similar hubs); chrome `TabBtn` / `NavChip` |
+| Pick among options here | `DeskTab` (page tabs) · `SegBtn`/`SegBtnOn` (closed radio set) · `ChipBtn`/`ChipBtnActive` (short filter only) |
+| Commit work on this form | **One** `RowPrimaryBtn` / `StackPrimaryBtn` (or ticket `PayBtn`) |
+| Cancel / clear / quiet alt | `RowSecondaryBtn` / `StackSecondaryBtn` / outlined `NavBtn` (full width); inline Fit quiet → `QuietFitBtn` (never `Row*` at `width: Fit`) |
+| Void / refund / delete | `DangerBtn` |
+
+Never promote a hub navigate link to filled primary because it is “the main thing.” Day book’s five jumps (Book a parcel / Sell, Expense / Buy, Day close, Reports, Parties) are **equal** `HubDestBtn` rows.
+
 **Selection:** Makepad 2 `Button` has **no selected bit** — only hover/down/focus/disabled animators. Shipping pattern is Overlay **idle + active** faces; Rust paints visibility from app state (`paint_nav_tabs` / `paint_choice_pair`) and **cuts those animators** so a previous face cannot stay lit. Idle nav chips stay **transparent** on hover/focus; only the active face uses the navy “selected” fill. Each destination has its own peer (no More hub).
 
-**Labels:** Never `max_lines: 1` + `Ellipsis` on full-width / multi-word / translated CTAs (`NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`). Those faces stay **centered** and **wrap** (`height: Fit`, `flow: Right{wrap: true}`, `align` center). Label walk is **Fit** (Makepad patch `button_label_center` — a Fill label inside wrap freezes the UI; do not remove wrap/center to dodge that). `ChipBtn` ellipsis is allowed **only** for short strip chips (Fit max 160). Always set both `padding` and `label_walk.margin`.
+**Labels:** Never `max_lines: 1` + `Ellipsis` on full-width / multi-word / translated CTAs (`NavBtn`, `PayBtn`, `MoreRow`, `HubDestBtn`, `Stack*`, `Row*`, `DangerBtn`). Those faces stay **centered** (hub dest left-aligned) and **wrap** (`height: Fit`, `flow: Right{wrap: true}`). Label walk is **Fit** (Makepad patch `button_label_center` — a Fill label inside wrap freezes the UI; do not remove wrap/center to dodge that). `ChipBtn` ellipsis is allowed **only** for short strip chips (Fit max 160). Always set both `padding` and `label_walk.margin`.
 
 **Form rows:** `FormFieldRow` = fields only. Multi-word CTAs (`Add rate`, `New item`, …) live in `ActionStack` below — never `NavBtn{width: Fit}` beside `FieldInput`s in one `Right` row. Never put `width: Fill` CTAs inside a parent `flow: Right{wrap: true}` View (same freeze); stack them with `ActionStack` / `flow: Down`.
 

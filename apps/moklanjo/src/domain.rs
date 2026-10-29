@@ -1657,6 +1657,8 @@ impl Cart {
             eway_bill_no: String::new(),
             extras_json: "[]".into(),
             notify_phone: String::new(),
+            piece_count: 1,
+            carrier_party_id: String::new(),
         })
     }
 }
@@ -1746,6 +1748,12 @@ pub struct SaleDraft {
     /// Optional phone for booking alert outbox.
     #[serde(default)]
     pub notify_phone: String,
+    /// Cargo / multi-piece count (1 = single parcel).
+    #[serde(default = "default_piece_count")]
+    pub piece_count: i64,
+    /// Carrier party when known at booking (AWB pool + margin).
+    #[serde(default)]
+    pub carrier_party_id: String,
 }
 
 impl SaleDraft {
@@ -1888,7 +1896,14 @@ pub struct Sale {
     /// Destination pincode when known (autocomplete / stop sort).
     #[serde(default)]
     pub dest_pincode: String,
+    /// Cargo / multi-piece count (1 = single parcel).
+    #[serde(default = "default_piece_count")]
+    pub piece_count: i64,
     pub lines: Vec<SaleLine>,
+}
+
+fn default_piece_count() -> i64 {
+    1
 }
 
 impl Sale {
@@ -1955,12 +1970,86 @@ impl Sale {
     }
 }
 
+/// Owner-defined label/value on a party (e.g. WhatsApp → 98…, route code → …).
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct PartyCustomField {
+    pub key: String,
+    pub value: String,
+}
+
+/// Parse `custom_fields_json` from the books. Empty / invalid → no fields.
+pub fn parse_party_custom_fields_json(raw: &str) -> Vec<PartyCustomField> {
+    let t = raw.trim();
+    if t.is_empty() {
+        return Vec::new();
+    }
+    serde_json::from_str::<Vec<PartyCustomField>>(t)
+        .unwrap_or_default()
+        .into_iter()
+        .filter_map(|f| {
+            let key = f.key.trim().to_string();
+            if key.is_empty() {
+                None
+            } else {
+                Some(PartyCustomField {
+                    key,
+                    value: f.value.trim().to_string(),
+                })
+            }
+        })
+        .collect()
+}
+
+pub fn party_custom_fields_to_json(fields: &[PartyCustomField]) -> String {
+    serde_json::to_string(fields).unwrap_or_else(|_| "[]".into())
+}
+
+/// Insert or replace by key (case-insensitive). Empty key → error.
+pub fn upsert_party_custom_field(
+    fields: &mut Vec<PartyCustomField>,
+    key: &str,
+    value: &str,
+) -> Result<(), String> {
+    let key = key.trim();
+    if key.is_empty() {
+        return Err("Field name required".into());
+    }
+    let value = value.trim().to_string();
+    if let Some(existing) = fields
+        .iter_mut()
+        .find(|f| f.key.eq_ignore_ascii_case(key))
+    {
+        existing.key = key.to_string();
+        existing.value = value;
+    } else {
+        fields.push(PartyCustomField {
+            key: key.to_string(),
+            value,
+        });
+    }
+    Ok(())
+}
+
+/// Remove by key (case-insensitive). True when something was removed.
+pub fn remove_party_custom_field(fields: &mut Vec<PartyCustomField>, key: &str) -> bool {
+    let key = key.trim();
+    if key.is_empty() {
+        return false;
+    }
+    let before = fields.len();
+    fields.retain(|f| !f.key.eq_ignore_ascii_case(key));
+    fields.len() != before
+}
+
 /// Lightweight credit party / customer (same primitive; templates rename).
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Customer {
     pub id: String,
     pub name: String,
     pub phone: String,
+    /// Postal / shop / pickup address (free text).
+    #[serde(default)]
+    pub address: String,
     pub note: String,
     pub active: bool,
     /// Outstanding **AR** in paise (positive = they owe us). AP is on payable_ledger.
@@ -1972,6 +2061,13 @@ pub struct Customer {
     /// Max outstanding for account booking (paise). 0 = no limit.
     #[serde(default)]
     pub credit_limit_paise: i64,
+    /// Optional logo / photo (`custom:filename.webp` under party_images/).
+    /// Empty = initials avatar (same pattern as rate photos).
+    #[serde(default)]
+    pub image_key: String,
+    /// Extra labels the owner adds (WhatsApp, GSTIN shortcut, route code, …).
+    #[serde(default)]
+    pub custom_fields: Vec<PartyCustomField>,
 }
 
 impl Customer {
@@ -2717,12 +2813,35 @@ mod tests {
             id: "1".into(),
             name: "Peer".into(),
             phone: String::new(),
+            address: String::new(),
             note: String::new(),
             active: true,
             balance_paise: 0,
             kind_label: "Carrier, Consignor".into(),
             credit_limit_paise: 0,
+            image_key: String::new(),
+            custom_fields: Vec::new(),
         };
         assert!(c.is_consignor() && c.is_carrier());
+    }
+
+    #[test]
+    fn party_custom_fields_upsert_and_remove() {
+        let mut fields = Vec::new();
+        upsert_party_custom_field(&mut fields, "WhatsApp", "98000").unwrap();
+        upsert_party_custom_field(&mut fields, "whatsapp", "98111").unwrap();
+        assert_eq!(fields.len(), 1);
+        assert_eq!(fields[0].key, "whatsapp");
+        assert_eq!(fields[0].value, "98111");
+        assert!(remove_party_custom_field(&mut fields, "WHATSAPP"));
+        assert!(fields.is_empty());
+        assert!(upsert_party_custom_field(&mut fields, "  ", "x").is_err());
+        let json = party_custom_fields_to_json(&[PartyCustomField {
+            key: "GSTIN".into(),
+            value: "27AAAAA0000A1Z5".into(),
+        }]);
+        let back = parse_party_custom_fields_json(&json);
+        assert_eq!(back.len(), 1);
+        assert_eq!(back[0].key, "GSTIN");
     }
 }

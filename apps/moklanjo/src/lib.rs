@@ -32,6 +32,7 @@ pub mod rates;
 pub mod rider_mode;
 pub mod startup;
 pub mod store;
+pub mod thumbs;
 pub mod track;
 
 // Android packaging compiles this library as the cdylib. The desktop

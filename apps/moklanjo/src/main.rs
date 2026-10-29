@@ -12,12 +12,12 @@ pub use makepad_widgets;
 #[cfg(target_os = "android")]
 use crate::{
     booking, courier_ops_view, domain, entity_template, fiscal, local_servers, locale, menu_images,
-    net, notify, phone, precise, print_share, rates, startup, store,
+    net, notify, phone, precise, print_share, rates, startup, store, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
     booking, courier_ops_view, domain, entity_template, fiscal, local_servers, locale, menu_images,
-    net, notify, phone, precise, print_share, rates, startup, store,
+    net, notify, phone, precise, print_share, rates, startup, store, thumbs,
 };
 
 use domain::{
@@ -415,6 +415,14 @@ struct AppState {
     venue_icon_key: Option<String>,
     /// Sidebar / bottom-bar arrangement (drag to swap; saved in the books).
     nav_order: Vec<NavTab>,
+    /// Chrome peers hidden from rail / bottom bar (Settings + Lock stay shown).
+    nav_hidden: Vec<NavTab>,
+    /// Session-only: top eye hides every amount on screen (not persisted).
+    amounts_screen_hidden: bool,
+    /// Individual amount keys the owner hid (persisted). Top eye still overrides.
+    amount_keys_hidden: Vec<String>,
+    /// Books home accordion: which section bodies are open (`today`, `bookings`, …).
+    books_sections_open: Vec<String>,
     /// Favorite product ids for the signed-in user (saved per user).
     favorites: Vec<String>,
     /// User key `favorites` was loaded for; reload when the user changes.
@@ -426,6 +434,11 @@ struct AppState {
     pending_backup_copy: Option<PathBuf>,
     /// None = auto-detect from name; Some(key) = built-in or custom:…
     draft_image_key: Option<String>,
+    /// Pending party logo (`pending_custom:…` / `custom:…`) before Add/Save.
+    draft_party_image_key: Option<String>,
+    /// Desk scope: false = Domestic (shop divisor, usually ÷5000);
+    /// true = International (÷6000 air). Does not rewrite Settings.
+    booking_scope_international: bool,
     /// Booking desk: destination / consignee / dimensions (walk-in loop).
     booking_destination: String,
     booking_consignee: String,
@@ -443,6 +456,10 @@ struct AppState {
     booking_fuel: String,
     booking_docket: String,
     booking_zone: String,
+    /// Cargo / multi-piece count (blank → 1).
+    booking_pieces: String,
+    /// Carrier party name/id for AWB pool + cost compare.
+    booking_carrier_pick: String,
     /// Last carrier-bill reconcile report (Reports → copy).
     last_carrier_bill_report: String,
     /// Last carrier compare rows from the booking desk (for "Use carrier cost").
@@ -487,6 +504,8 @@ struct AppState {
     nav_forward: Vec<Screen>,
     /// User-resized side rail width (css px). Clamped in `apply_shell_layout`.
     rail_width: f64,
+    /// Tablet/desktop: side rail hidden (zero width). Bottom nav unchanged.
+    rail_collapsed: bool,
     /// Which Reports facet is showing (bank / consignments / COD / riders).
     reports_nav: ReportsNav,
     /// Which bank-books report chip is selected (must match `day_close_text` body).
@@ -553,6 +572,8 @@ enum Screen {
     Credit,
     Team,
     Settings,
+    /// Settings → Sidebar: order + show/hide chrome peers.
+    SidebarSettings,
     DayClose,
     Reports,
     Inventory,
@@ -649,6 +670,36 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
     }
 }
 
+/// Bundled colored WebP for a nav tab (`resources/nav/<key>.webp`).
+/// Makepad cannot paint Noto Color Emoji in colour — real images only.
+fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
+    match tab {
+        NavTab::Books => include_bytes!("../resources/nav/books.webp").as_slice(),
+        NavTab::Sell => include_bytes!("../resources/nav/sell.webp").as_slice(),
+        NavTab::Favorites => include_bytes!("../resources/nav/favorites.webp").as_slice(),
+        NavTab::Buy => include_bytes!("../resources/nav/buy.webp").as_slice(),
+        NavTab::Rates => include_bytes!("../resources/nav/rates.webp").as_slice(),
+        NavTab::Ops => include_bytes!("../resources/nav/ops.webp").as_slice(),
+        NavTab::Cod => include_bytes!("../resources/nav/cod.webp").as_slice(),
+        NavTab::Riders => include_bytes!("../resources/nav/riders.webp").as_slice(),
+        NavTab::Sales => include_bytes!("../resources/nav/sales.webp").as_slice(),
+        NavTab::DayClose => include_bytes!("../resources/nav/day_close.webp").as_slice(),
+        NavTab::Reports => include_bytes!("../resources/nav/reports.webp").as_slice(),
+        NavTab::Inventory => include_bytes!("../resources/nav/inventory.webp").as_slice(),
+        NavTab::Branches => include_bytes!("../resources/nav/branches.webp").as_slice(),
+        NavTab::Credit => include_bytes!("../resources/nav/credit.webp").as_slice(),
+        NavTab::Team => include_bytes!("../resources/nav/team.webp").as_slice(),
+        NavTab::Settings => include_bytes!("../resources/nav/settings.webp").as_slice(),
+        NavTab::Lock => include_bytes!("../resources/nav/lock.webp").as_slice(),
+    }
+}
+
+/// Screen / nav label text. Colored mark sits in a sibling `Image`, not in the string
+/// (emoji colour does not survive Makepad text).
+fn nav_tab_caption(_tab: NavTab, label: &str) -> String {
+    label.to_string()
+}
+
 /// Saved order wins; unknown keys are dropped and any tab missing from the
 /// saved list is appended in default order, so an older saved order can
 /// never hide a newer tab.
@@ -680,6 +731,142 @@ fn nav_order_csv(order: &[NavTab]) -> String {
         .join(",")
 }
 
+/// Peers that must stay on the chrome (cannot be hidden in Sidebar settings).
+fn nav_tab_always_visible(tab: NavTab) -> bool {
+    matches!(tab, NavTab::Settings | NavTab::Lock)
+}
+
+fn parse_nav_hidden(csv: Option<&str>) -> Vec<NavTab> {
+    let mut hidden = Vec::new();
+    if let Some(csv) = csv {
+        for key in csv.split(',') {
+            let key = key.trim();
+            if let Some(tab) = NAV_TABS.iter().find(|t| nav_tab_key(**t) == key)
+                && !nav_tab_always_visible(*tab)
+                && !hidden.contains(tab)
+            {
+                hidden.push(*tab);
+            }
+        }
+    }
+    hidden
+}
+
+fn nav_hidden_csv(hidden: &[NavTab]) -> String {
+    hidden
+        .iter()
+        .filter(|t| !nav_tab_always_visible(**t))
+        .map(|t| nav_tab_key(*t))
+        .collect::<Vec<_>>()
+        .join(",")
+}
+
+fn nav_tab_is_visible(hidden: &[NavTab], tab: NavTab) -> bool {
+    nav_tab_always_visible(tab) || !hidden.contains(&tab)
+}
+
+/// Chrome slot order: `nav_order` with hidden peers removed.
+fn nav_display_order(order: &[NavTab], hidden: &[NavTab]) -> Vec<NavTab> {
+    order
+        .iter()
+        .copied()
+        .filter(|t| nav_tab_is_visible(hidden, *t))
+        .collect()
+}
+
+/// Password-style mask: every non-space character becomes a bullet so the
+/// string keeps roughly the same width (no peek at figures when hidden).
+fn mask_sensitive_text(text: &str) -> String {
+    text.chars()
+        .map(|c| if c.is_whitespace() { c } else { '●' })
+        .collect()
+}
+
+fn display_sensitive(text: &str, visible: bool) -> String {
+    if visible {
+        text.to_string()
+    } else {
+        mask_sensitive_text(text)
+    }
+}
+
+const BOOKS_SECTION_KEYS: &[&str] = &["today", "bookings", "payments", "outstanding", "bank"];
+
+fn parse_books_sections(csv: Option<&str>) -> Vec<String> {
+    let Some(raw) = csv.filter(|s| !s.trim().is_empty()) else {
+        return Vec::new();
+    };
+    let mut out = Vec::new();
+    for key in raw.split(',') {
+        let key = key.trim();
+        if BOOKS_SECTION_KEYS.contains(&key) && !out.iter().any(|k| k == key) {
+            out.push(key.to_string());
+        }
+    }
+    out
+}
+
+fn books_sections_csv(open: &[String]) -> String {
+    open.join(",")
+}
+
+const AMOUNT_VALUE_KEYS: &[&str] = &[
+    "books_in",
+    "books_purchases",
+    "books_expenses",
+    "books_gross",
+    "books_net",
+    "books_declared",
+    "books_owner",
+    "books_cash",
+    "books_digital",
+    "books_card",
+    "books_they_owe",
+    "books_we_owe",
+    "books_bank_balance",
+    "books_till",
+    "books_bank_net",
+    "today",
+    "day_close",
+    "reports",
+    "credit_summary",
+    "floor_summary",
+];
+
+fn parse_amount_keys_hidden(csv: Option<&str>) -> Vec<String> {
+    let Some(raw) = csv.filter(|s| !s.trim().is_empty()) else {
+        return Vec::new();
+    };
+    let mut out = Vec::new();
+    for key in raw.split(',') {
+        let key = key.trim();
+        if AMOUNT_VALUE_KEYS.contains(&key) && !out.iter().any(|k| k == key) {
+            out.push(key.to_string());
+        }
+    }
+    out
+}
+
+fn amount_keys_hidden_csv(hidden: &[String]) -> String {
+    hidden.join(",")
+}
+
+fn amount_key_visible(screen_hidden: bool, keys_hidden: &[String], key: &str) -> bool {
+    if screen_hidden {
+        false
+    } else {
+        !keys_hidden.iter().any(|k| k == key)
+    }
+}
+
+fn eye_glyph(visible: bool) -> &'static str {
+    if visible {
+        "👁"
+    } else {
+        "◌"
+    }
+}
+
 fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
     match screen {
         Screen::Books => Some(NavTab::Books),
@@ -699,7 +886,7 @@ fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
         Screen::Branches => Some(NavTab::Branches),
         Screen::Credit => Some(NavTab::Credit),
         Screen::Team => Some(NavTab::Team),
-        Screen::Settings => Some(NavTab::Settings),
+        Screen::Settings | Screen::SidebarSettings => Some(NavTab::Settings),
         Screen::Lock => Some(NavTab::Lock),
         Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair => None,
     }
@@ -772,11 +959,17 @@ impl AppState {
             venue_title: String::new(),
             venue_icon_key: None,
             nav_order: NAV_TABS.to_vec(),
+            nav_hidden: Vec::new(),
+            amounts_screen_hidden: false,
+            amount_keys_hidden: Vec::new(),
+            books_sections_open: Vec::new(),
             favorites: Vec::new(),
             favorites_user: String::new(),
             draft_venue_icon_path: None,
             pending_backup_copy: None,
             draft_image_key: None,
+            draft_party_image_key: None,
+            booking_scope_international: false,
             booking_destination: String::new(),
             booking_consignee: String::new(),
             booking_actual_kg: String::new(),
@@ -793,6 +986,8 @@ impl AppState {
             booking_fuel: String::new(),
             booking_docket: String::new(),
             booking_zone: String::new(),
+            booking_pieces: String::new(),
+            booking_carrier_pick: String::new(),
             last_carrier_bill_report: String::new(),
             last_carrier_compare: Vec::new(),
             measure_dim_unit: "cm".into(),
@@ -814,6 +1009,7 @@ impl AppState {
             nav_back: Vec::new(),
             nav_forward: Vec::new(),
             rail_width: RAIL_WIDTH_DEFAULT,
+            rail_collapsed: false,
             reports_nav: ReportsNav::Bank,
             books_report_kind: BooksReportKind::Today,
         };
@@ -825,7 +1021,7 @@ impl AppState {
         }
         match Store::open_default() {
             Ok(store) => {
-                state.status = format!("Local DB: {}", store.db_path().display());
+                state.status = String::new();
                 state.store = Some(store);
                 let _ = state.reload_all();
                 // Always require PIN after a process start. Session restore was
@@ -875,7 +1071,8 @@ impl AppState {
         self.products = store.list_products(false)?;
         self.recent_sales = store.recent_sales(30)?;
         self.staff = store.list_staff()?;
-        self.customers = store.list_customers().unwrap_or_default();
+        // Surface list failures — silent empty was "I added 12 parties and see none".
+        self.customers = store.list_customers()?;
         self.locale = store.locale_settings()?;
         self.fiscal = store.fiscal_settings()?;
         self.device_role = DeviceRole::from_meta(store.device_role()?.as_deref());
@@ -885,6 +1082,10 @@ impl AppState {
         self.venue_title = store.venue_title()?;
         self.venue_icon_key = store.venue_icon_key()?;
         self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
+        self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
+        self.amount_keys_hidden =
+            parse_amount_keys_hidden(store.amount_keys_hidden_csv()?.as_deref());
+        self.books_sections_open = parse_books_sections(store.books_sections_csv()?.as_deref());
         let measure = store.booking_measure_settings();
         self.measure_dim_factor = store
             .factor_to_cm(&measure.dim_unit)
@@ -1244,12 +1445,16 @@ impl AppState {
         let Some(store) = self.store.as_ref() else {
             return;
         };
-        let recent = store.recent_sales(30).unwrap_or_default();
-        let customers = store.list_customers().unwrap_or_default();
-        let devices = store.list_lan_devices().unwrap_or_default();
-        self.recent_sales = recent;
-        self.customers = customers;
-        self.lan_devices = devices;
+        // Prefer keep-last on failure — never wipe a full party book to empty.
+        if let Ok(recent) = store.recent_sales(30) {
+            self.recent_sales = recent;
+        }
+        if let Ok(customers) = store.list_customers() {
+            self.customers = customers;
+        }
+        if let Ok(devices) = store.list_lan_devices() {
+            self.lan_devices = devices;
+        }
     }
 
     fn refresh_books_overview(&mut self) -> Result<(), String> {
@@ -1496,9 +1701,13 @@ impl AppState {
         let l = booking::to_base(typed(&self.booking_length_cm), self.measure_dim_factor);
         let b = booking::to_base(typed(&self.booking_breadth_cm), self.measure_dim_factor);
         let h = booking::to_base(typed(&self.booking_height_cm), self.measure_dim_factor);
-        let vol = booking::volumetric_kg(l, b, h, self.measure_divisor);
-        let chargeable =
-            booking::chargeable_kg(actual, l, b, h, self.measure_divisor, self.measure_slab_kg);
+        let divisor = if self.booking_scope_international {
+            booking::volumetric_divisor_international()
+        } else {
+            self.measure_divisor
+        };
+        let vol = booking::volumetric_kg(l, b, h, divisor);
+        let chargeable = booking::chargeable_kg(actual, l, b, h, divisor, self.measure_slab_kg);
         (actual, vol, chargeable)
     }
 
@@ -1551,6 +1760,27 @@ impl AppState {
             extras.push(booking::booking_extra(rates::ExtraChargeKind::Docket, p));
         }
         draft.extras_json = serde_json::to_string(&extras).unwrap_or_else(|_| "[]".into());
+        let pieces = self.booking_pieces.trim();
+        draft.piece_count = if pieces.is_empty() {
+            1
+        } else {
+            pieces.parse::<i64>().unwrap_or(1).max(1)
+        };
+        let carrier_typed = self.booking_carrier_pick.trim();
+        draft.carrier_party_id = if carrier_typed.is_empty() {
+            String::new()
+        } else {
+            self.store
+                .as_ref()
+                .and_then(|s| s.list_customers().ok())
+                .and_then(|parties| {
+                    parties.into_iter().find(|p| {
+                        p.id == carrier_typed || p.name.eq_ignore_ascii_case(carrier_typed)
+                    })
+                })
+                .map(|p| p.id)
+                .unwrap_or_default()
+        };
     }
 
     fn clear_booking_desk(&mut self) {
@@ -1571,6 +1801,8 @@ impl AppState {
         self.booking_fuel.clear();
         self.booking_docket.clear();
         self.booking_zone.clear();
+        self.booking_pieces.clear();
+        self.booking_carrier_pick.clear();
         self.last_awb.clear();
         self.selected_customer_id = None;
     }
@@ -1881,7 +2113,10 @@ script_mod! {
     // Pages swipe-scroll on touch; a selectable WrapLabel takes its own drag.
     // The page's scrollbar must be seen: the stock handle colour is almost
     // the page colour. A thin handle that darkens on hover / drag.
+    // Right padding clears the bar (bar_size 10 + gap) so inputs never sit
+    // flush against the scrollbar.
     mod.widgets.ScrollYView = mod.widgets.ViewBase {
+        padding: Inset{right: 16.}
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: false show_scroll_y: true
             // Swipe-to-scroll stays on (tablets, phones) — it is what pages
@@ -1972,8 +2207,17 @@ script_mod! {
         }
     }
 
-    // Full-width CTA — wrap, never ellipsis. Makepad Fill+Ellipsis clips the
-    // right of any multi-word / translated label on every platform.
+    // Face language (intent first — same job → same look):
+    //   Navigate hub jump → HubDestBtn + mark
+    //   Select in place → DeskTab / SegBtn / ChipBtn
+    //   Submit / do → one RowPrimary / StackPrimary (or PayBtn on ticket)
+    //   Quiet alt → RowSecondary / StackSecondary / NavBtn (outlined);
+    //                QuietFitBtn for inline Fit actions (Show PIN, NDR reasons)
+    //   Destroy → DangerBtn
+    // Never put Row*/Stack* (Fill + wrap) at width:Fit — wrap collapses to
+    // one letter per line. Use QuietFitBtn instead.
+    // Full-width quiet action — wrap, never ellipsis. Not a shouty primary;
+    // use RowPrimary/StackPrimary for the single form submit.
     let NavBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
@@ -1987,29 +2231,29 @@ script_mod! {
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
-            color: #x072058
-            color_hover: #x0A3A8C
-            color_down: #x02030B
-            color_focus: #x072058
-            color_disabled: #x6B7F9A
-            color_2: #x072058
-            color_2_hover: #x0A3A8C
-            color_2_down: #x02030B
-            color_2_focus: #x072058
-            color_2_disabled: #x6B7F9A
-            border_color: #x072058
-            border_color_hover: #x0A3A8C
+            color: #xffffff
+            color_hover: #xE0E8F0
+            color_down: #xD0DAE6
+            color_focus: #xffffff
+            color_disabled: #xF0F4F8
+            color_2: #xffffff
+            color_2_hover: #xE0E8F0
+            color_2_down: #xD0DAE6
+            color_2_focus: #xffffff
+            color_2_disabled: #xF0F4F8
+            border_color: #xA8B4C4
+            border_color_hover: #x072058
             border_color_down: #x02030B
-            border_color_focus: #x072058
-            border_radius: 14.
-            border_size: 0.
+            border_color_focus: #xA8B4C4
+            border_radius: 10.
+            border_size: 1.
         }
         draw_text +: {
-            color: #xffffff
-            color_hover: #xffffff
-            color_down: #xffffff
-            color_focus: #xffffff
-            color_disabled: #xE0E8F0
+            color: #x0B1220
+            color_hover: #x0B1220
+            color_down: #x0B1220
+            color_focus: #x0B1220
+            color_disabled: #x6B7F9A
             ink_centered: true
             text_style +: {font_size: 15.}
         }
@@ -2060,11 +2304,12 @@ script_mod! {
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 10. right: 10. top: 12. bottom: 12.}
+        // Left pad clears the colored PNG overlaid at x≈10 (22px mark + gap).
+        padding: Inset{left: 40. right: 12. top: 12. bottom: 12.}
         label_walk: Walk{
             width: Fill
             height: Fit
-            margin: Inset{left: 10. right: 10.}
+            margin: Inset{left: 0. right: 8.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2090,19 +2335,56 @@ script_mod! {
             text_style +: {font_size: 13.}
         }
     }
-    // Bottom-nav chips for expanded More peers (scroll row; Fit width).
-    // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
-    let NavChip = Button{
-        width: Fit{min: FitBound.Abs(76.)} height: 56
-        align: Center
+    // Hide / show the whole side rail (tablet/desktop chrome only).
+    let RailToggleBtn = Button{
+        width: Fit height: 36
+        align: Align{x: 0.5 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+        padding: Inset{left: 10. right: 10. top: 6. bottom: 6.}
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 4. right: 4.}
+            margin: Inset{left: 0. right: 0.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x072058
+            color_down: #x02030B
+            color_focus: #x00000000
+            color_disabled: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x072058
+            color_2_down: #x02030B
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 8.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x8BB8E8
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #x8BB8E8
+            color_disabled: #x56575D
+            text_style +: {font_size: 16.}
+        }
+    }
+    // Bottom-nav chips for expanded More peers (scroll row; Fit width).
+    // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
+    let NavChip = Button{
+        width: Fit{min: FitBound.Abs(96.)} height: 56
+        align: Align{x: 0.0 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
+        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 0. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2129,16 +2411,16 @@ script_mod! {
         }
     }
     let NavChipActive = Button{
-        width: Fit{min: FitBound.Abs(76.)} height: 56
-        align: Center
+        width: Fit{min: FitBound.Abs(96.)} height: 56
+        align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 4. right: 4.}
+            margin: Inset{left: 0. right: 2.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2171,11 +2453,11 @@ script_mod! {
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 10. right: 10. top: 12. bottom: 12.}
+        padding: Inset{left: 40. right: 12. top: 12. bottom: 12.}
         label_walk: Walk{
             width: Fill
             height: Fit
-            margin: Inset{left: 10. right: 10.}
+            margin: Inset{left: 0. right: 8.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2203,11 +2485,12 @@ script_mod! {
         }
     }
 
-    // Secondary pay — navy + white (never white face on white cart).
+    // Ticket take-payment only — taller filled CTA; not Amend/Void twin and
+    // not a form RowPrimary (those stay r14 / 15px on ActionStacks).
     let PayBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 16. right: 16. top: 16. bottom: 16.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -2217,22 +2500,22 @@ script_mod! {
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
-            color: #x072058
-            color_hover: #x0A3A8C
+            color: #x0A3A8C
+            color_hover: #x072058
             color_down: #x02030B
-            color_focus: #x072058
+            color_focus: #x0A3A8C
             color_disabled: #x6B7F9A
-            color_2: #x072058
-            color_2_hover: #x0A3A8C
+            color_2: #x0A3A8C
+            color_2_hover: #x072058
             color_2_down: #x02030B
-            color_2_focus: #x072058
+            color_2_focus: #x0A3A8C
             color_2_disabled: #x6B7F9A
-            border_color: #x072058
-            border_color_hover: #x0A3A8C
-            border_color_down: #x02030B
-            border_color_focus: #x072058
-            border_radius: 16.
-            border_size: 0.
+            border_color: #xFE8357
+            border_color_hover: #xFE8357
+            border_color_down: #xC44E10
+            border_color_focus: #xFE8357
+            border_radius: 12.
+            border_size: 2.
         }
         draw_text +: {
             color: #xffffff
@@ -2241,7 +2524,7 @@ script_mod! {
             color_focus: #xffffff
             color_disabled: #xE0E8F0
             ink_centered: true
-            text_style +: {font_size: 14.}
+            text_style +: {font_size: 16.}
         }
     }
 
@@ -2328,9 +2611,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2362,9 +2645,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2377,7 +2660,7 @@ script_mod! {
             color_2_down: #x02030B
             color_2_focus: #xE0E8F0
             border_color: #xA8B4C4
-            border_radius: 14.
+            border_radius: 8.
             border_size: 1.
         }
         draw_text +: {
@@ -2386,6 +2669,180 @@ script_mod! {
             color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
+            text_style +: {font_size: 15.}
+        }
+    }
+    // Icon-only eye next to a money figure (or the screen-level today-bar eye).
+    let EyeIconBtn = Button{
+        width: Fit height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 6. right: 6. top: 4. bottom: 4.}
+        align: Center
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #xE0E8F0
+            color_down: #xC8D4E0
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #xE0E8F0
+            color_2_down: #xC8D4E0
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 6.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x072058
+            color_hover: #x072058
+            color_down: #x072058
+            color_focus: #x072058
+            text_style +: {font_size: 14.}
+        }
+        text: "👁"
+    }
+    // Books accordion section header — left-aligned ▸/▾ + title.
+    let AccordionHdrBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 4. right: 8. top: 6. bottom: 6.}
+        align: Align{x: 0.0 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fill height: Fit margin: Inset{left: 0. right: 0.}}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #xE0E8F0
+            color_down: #xC8D4E0
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #xE0E8F0
+            color_2_down: #xC8D4E0
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 8.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x66788F
+            color_hover: #x072058
+            color_down: #x072058
+            color_focus: #x66788F
+            text_style +: {font_size: 12.}
+        }
+        text: "▸"
+    }
+    // Inline quiet action — Fit width, NO wrap (Fill+wrap at Fit stacks
+    // letters vertically). Same colours as RowSecondary; not a ChipBtn filter.
+    let QuietFitBtn = Button{
+        width: Fit height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        align: Center
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 4. right: 4.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xE0E8F0
+            color_hover: #x072058
+            color_down: #x02030B
+            color_focus: #xE0E8F0
+            color_2: #xE0E8F0
+            color_2_hover: #x072058
+            color_2_down: #x02030B
+            color_2_focus: #xE0E8F0
+            border_color: #xA8B4C4
+            border_radius: 8.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #x0B1220
+            ink_centered: true
+            max_lines: 1
+            text_style +: {font_size: 13.}
+        }
+    }
+    // Destroy — void / refund / delete. Outline danger; never solid primary.
+    let DangerBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 16. right: 16.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xFDECE4
+            color_down: #xF8D5C8
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xFDECE4
+            color_2_down: #xF8D5C8
+            color_2_focus: #xffffff
+            border_color: #xC44E10
+            border_color_hover: #xA33D0A
+            border_color_down: #x822F08
+            border_color_focus: #xC44E10
+            border_radius: 8.
+            border_size: 1.5
+        }
+        draw_text +: {
+            color: #xC44E10
+            color_hover: #xA33D0A
+            color_down: #x822F08
+            color_focus: #xC44E10
+            ink_centered: true
+            text_style +: {font_size: 15.}
+        }
+    }
+    // Day-book (and similar hub) destination link — left-aligned label with
+    // room for a colored nav mark. Not a stadium chip / SegBtn lookalike.
+    let HubDestBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 44. right: 16. top: 12. bottom: 12.}
+        align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 0. right: 8.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xE0E8F0
+            color_down: #xD0DAE6
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xE0E8F0
+            color_2_down: #xD0DAE6
+            color_2_focus: #xffffff
+            border_color: #xD0DAE6
+            border_radius: 10.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x0B1220
+            color_hover: #x0B1220
+            color_down: #x0B1220
+            color_focus: #x0B1220
+            ink_centered: false
             text_style +: {font_size: 15.}
         }
     }
@@ -2419,9 +2876,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2453,9 +2910,9 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
-            margin: Inset{left: 16. right: 16.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2468,7 +2925,7 @@ script_mod! {
             color_2_down: #x02030B
             color_2_focus: #xE0E8F0
             border_color: #xA8B4C4
-            border_radius: 14.
+            border_radius: 8.
             border_size: 1.
         }
         draw_text +: {
@@ -2481,54 +2938,152 @@ script_mod! {
         }
     }
 
-    // Chip for horizontal strips ONLY: Fit width (scroll, don't crush). Cap so
-    // short labels ellipsis instead of stealing the whole strip.
-    // Fit.max is Option<FitBound> — use FitBound.Abs (same pattern as Flow.Right).
-    // NEVER use ChipBtn for multi-word CTAs — ActionStack + StackPrimary/Secondary.
+    // FILTER CHIP — Fit width in a ChipStrip (kg/lb, cash/UPI…). Soft tag,
+    // not a page tab (DeskTab) and not a radio segment (SegBtn).
+    // NEVER use for multi-word CTAs — ActionStack + StackPrimary/Secondary.
     let ChipBtn = Button{
-        width: Fit{max: FitBound.Abs(160.)} height: 40
+        width: Fit{max: FitBound.Abs(160.)} height: 34
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
         align: Center
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
-            color: #xE0E8F0
-            color_hover: #x072058
-            color_down: #x02030B
-            color_focus: #xE0E8F0
-            color_2: #xE0E8F0
-            color_2_hover: #x072058
-            color_2_down: #x02030B
-            color_2_focus: #xE0E8F0
-            border_color: #xA8B4C4
-            border_radius: 10.
-            border_size: 1.
+            color: #xEEF3F8
+            color_hover: #xD6E0EC
+            color_down: #xC8D2E0
+            color_focus: #xEEF3F8
+            color_2: #xEEF3F8
+            color_2_hover: #xD6E0EC
+            color_2_down: #xC8D2E0
+            color_2_focus: #xEEF3F8
+            border_color: #x00000000
+            border_radius: 16.
+            border_size: 0.
         }
         draw_text +: {
-            color: #x0B1220
-            color_hover: #xffffff
-            color_down: #xffffff
-            color_focus: #x0B1220
+            color: #x3A4554
+            color_hover: #x0B1220
+            color_down: #x0B1220
+            color_focus: #x3A4554
             ink_centered: true
             max_lines: 1
             text_overflow: TextOverflow.Ellipsis
+            text_style +: {font_size: 12.}
+        }
+    }
+    // RADIO SEGMENT — equal Fill share in a Right row (Domestic|International,
+    // Cash|UPI|…). Stadium outline; selected = filled. Not a page tab.
+    let SegBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 8. right: 8. top: 10. bottom: 10.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xEEF3F8
+            color_down: #xE0E8F0
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xEEF3F8
+            color_2_down: #xE0E8F0
+            color_2_focus: #xffffff
+            border_color: #x072058
+            border_radius: 22.
+            border_size: 1.5
+        }
+        draw_text +: {
+            color: #x072058
+            color_hover: #x072058
+            color_down: #x072058
+            color_focus: #x072058
+            ink_centered: true
             text_style +: {font_size: 13.}
         }
     }
-    let ChipBtnActive = Button{
-        width: Fit{max: FitBound.Abs(160.)} height: 40
+    let SegBtnOn = SegBtn{
+        draw_bg +: {
+            color: #x072058
+            color_hover: #x0A3A8C
+            color_down: #x02030B
+            color_focus: #x072058
+            color_2: #x072058
+            color_2_hover: #x0A3A8C
+            color_2_down: #x02030B
+            color_2_focus: #x072058
+            border_color: #x072058
+            border_radius: 22.
+            border_size: 1.5
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+        }
+    }
+
+    // Booking desk page tabs (Parcel | Counter) — flat label + underline, not
+    // bordered pills / radio chips (those are SegBtn for Domestic|International).
+    let DeskTab = Button{
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 8. right: 8. top: 12. bottom: 10.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x00000000
+            color_2_down: #x00000000
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 0.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x3A4554
+            color_hover: #x072058
+            color_down: #x072058
+            color_focus: #x3A4554
+            ink_centered: true
+            text_style +: {font_size: 14.}
+        }
+    }
+    let DeskTabOn = DeskTab{
+        draw_text +: {
+            color: #x072058
+            color_hover: #x072058
+            color_down: #x02030B
+            color_focus: #x072058
+            text_style +: {font_size: 14.}
+        }
+    }
+    // Selected filter chip (pair with ChipBtn via Overlay) — same soft pill
+    // shape as ChipBtn, filled so it still reads as a chip not a SegBtn.
+    let ChipBtnActive = Button{
+        width: Fit{max: FitBound.Abs(160.)} height: 34
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
         align: Center
         label_walk: Walk{
             width: Fit
             height: Fit
-            margin: Inset{left: 14. right: 14.}
+            margin: Inset{left: 4. right: 4.}
         }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -2540,8 +3095,8 @@ script_mod! {
             color_2_hover: #x0A3A8C
             color_2_down: #x02030B
             color_2_focus: #x072058
-            border_color: #x072058
-            border_radius: 10.
+            border_color: #x00000000
+            border_radius: 16.
             border_size: 0.
         }
         draw_text +: {
@@ -2552,7 +3107,7 @@ script_mod! {
             ink_centered: true
             max_lines: 1
             text_overflow: TextOverflow.Ellipsis
-            text_style +: {font_size: 13.}
+            text_style +: {font_size: 12.}
         }
     }
     // Inner row for ChipStrip — Fit-wide so the strip can scroll horizontally.
@@ -2569,7 +3124,7 @@ script_mod! {
     let ChevronBtn = Button{
         width: 46 height: Fill
         margin: Inset{left: 0. right: 0. top: 1. bottom: 1.}
-        padding: Inset{left: 0. right: 0. top: 0. bottom: 3.}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         align: Align{x: 0.5 y: 0.5}
         draw_bg +: {
             color: #xffffff
@@ -2749,7 +3304,8 @@ script_mod! {
 
     // Full-width selectable copy (Markdown TextFlow) with real `visible`
     // support — stock Markdown/TextFlow ignore set_visible. Use `body:`.
-    // Leave Button / product-card Labels as Label so taps stay clean.
+    // Default: display text is selectable. Only tap targets (buttons,
+    // tappable rows) keep Label / selectable: false.
     mod.widgets.WrapLabelBase = #(WrapLabel::register_widget(vm))
     mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
@@ -2770,8 +3326,112 @@ script_mod! {
     }
     let WrapLabel = mod.widgets.WrapLabel{}
 
+    // Settings → Sidebar: reorder + show/hide chrome peers.
+    mod.widgets.SidebarNavListBase = #(SidebarNavList::register_widget(vm))
+    mod.widgets.SidebarNavList = set_type_default() do mod.widgets.SidebarNavListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 8
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := RoundedView{
+                width: Fill height: Fit
+                padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                flow: Down spacing: 8
+                draw_bg.color: #xffffff
+                draw_bg.border_radius: 12.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #xA8B4C4
+                name := WrapLabel{
+                    selectable: false
+                    body: "Books"
+                    font_color: #x0B1220
+                    font_size: 15.
+                }
+                hint := WrapLabel{
+                    selectable: false
+                    body: " "
+                    font_color: #x3A4554
+                    font_size: 11.
+                }
+                View{
+                    width: Fill height: Fit
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
+                    vis := NavBtn{text: "Shown" width: Fill}
+                    up := QuietFitBtn{text: "↑"}
+                    down := QuietFitBtn{text: "↓"}
+                }
+            }
+        }
+    }
+
+
+    // Screen title + info tip. Hover or tap the ℹ to open a CalloutTooltip
+    // (smart placement: below by default, flips above / clamps to edges).
+    // One window-level CalloutTooltip hosts every tip — see app_callout.
+    mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
+    mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
+        width: Fill
+        height: Fit
+        flow: Right
+        spacing: 8
+        align: Align{x: 0.0 y: 0.5}
+        tip: ""
+        // Named children use := (same as ProductList.list) — bare `=` is a
+        // script assign and leaves title/tip_btn missing at runtime.
+        // Colored PNG (same asset as the matching nav tab) — not emoji text.
+        icon := Image{
+            width: 28 height: 28
+            fit: ImageFit.Stretch
+            visible: false
+        }
+        title := Label{
+            width: Fit height: Fit
+            text: ""
+            draw_text.color: #x0B1220
+            draw_text.text_style.font_size: 20.
+        }
+        tip_btn := Button{
+            width: 32 height: 32
+            text: "ℹ"
+            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            align: Align{x: 0.5 y: 0.5}
+            label_walk: Walk{width: Fit height: Fit}
+            icon_walk: Walk{width: 0. height: 0.}
+            draw_bg +: {
+                color: #xE0E8F0
+                color_hover: #x072058
+                color_down: #x02030B
+                color_focus: #xE0E8F0
+                color_2: #xE0E8F0
+                color_2_hover: #x072058
+                color_2_down: #x02030B
+                color_2_focus: #xE0E8F0
+                border_color: #xA8B4C4
+                border_radius: 16.
+                border_size: 1.
+            }
+            draw_text +: {
+                color: #x072058
+                color_hover: #xffffff
+                color_down: #xffffff
+                color_focus: #x072058
+                text_style +: {font_size: 15.}
+            }
+        }
+    }
+    let InfoHelp = mod.widgets.InfoHelp{}
+
     // Photo or name-initials avatar. When no photo: navy well + 1–2 letters
     // (see menu_images::name_initials). Size overridden per call site.
+    // Khaynjo practise: a Fill label keeps glyphs at the top — wrap Fit
+    // initials in a Fill centering view so letters sit in the middle.
     let ThumbAvatar = RoundedView{
         width: 64 height: 64
         margin: Inset{top: 4. bottom: 4. left: 4. right: 4.}
@@ -2780,12 +3440,15 @@ script_mod! {
         draw_bg.color: #x072058
         draw_bg.border_radius: 12.
         draw_bg.border_size: 0.
-        thumb_initials := Label{
+        View{
             width: Fill height: Fill
-            text: ""
             align: Align{x: 0.5 y: 0.5}
-            draw_text.color: #xffffff
-            draw_text.text_style.font_size: 22.
+            thumb_initials := Label{
+                width: Fit height: Fit
+                text: ""
+                draw_text.color: #xffffff
+                draw_text.text_style.font_size: 20.
+            }
         }
         thumb := Image{
             width: Fill height: Fill
@@ -3206,15 +3869,21 @@ script_mod! {
         pick := CardActionBtn{text: "Select" height: 40}
     }
 
+    // Khaynjo practise: WrapLabel + widget().set_text(plain_display_text).
+    // Optional ThumbAvatar for party logo (initials when none).
     let CustomerRow = RoundedView{
         width: Fill height: Fit
-        padding: Inset{left: 16. right: 12. top: 12. bottom: 12.}
+        padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
         flow: Right spacing: 12
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x4A5568
+        ThumbAvatar{
+            width: 48 height: 48
+            margin: Inset{top: 0. bottom: 0. left: 0. right: 0.}
+        }
         View{
             width: Fill height: Fit
             flow: Down spacing: 2
@@ -3698,13 +4367,11 @@ script_mod! {
                 Head := View{
                     width: Fill height: Fit
                     padding: Inset{top: 12. bottom: 4.}
-                    head := Label{
-                        width: Fill
-                        text: ""
+                    head := WrapLabel{
+                        body: ""
                         margin: Inset{right: 8.}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x072058
-                        draw_text.text_style.font_size: 13.
+                        font_color: #x072058
+                        font_size: 13.
                     }
                 }
                 Kv := View{
@@ -3712,18 +4379,16 @@ script_mod! {
                     padding: Inset{top: 5. bottom: 5.}
                     flow: Right spacing: 12
                     align: Align{y: 0.5}
-                    k := Label{
-                        width: Fill
-                        text: ""
-                        flow: Right{wrap: true}
-                        draw_text.color: #x3A4554
-                        draw_text.text_style.font_size: 13.
+                    k := WrapLabel{
+                        body: ""
+                        font_color: #x3A4554
+                        font_size: 13.
                     }
-                    v := Label{
+                    v := WrapLabel{
                         width: Fit
-                        text: ""
-                        draw_text.color: #x0B1220
-                        draw_text.text_style.font_size: 14.
+                        body: ""
+                        font_color: #x0B1220
+                        font_size: 14.
                     }
                 }
                 // Right-to-left languages: the label at the right, its
@@ -3734,44 +4399,37 @@ script_mod! {
                     padding: Inset{top: 5. bottom: 5.}
                     flow: Right spacing: 12
                     align: Align{y: 0.5}
-                    v := Label{
+                    v := WrapLabel{
                         width: Fit
-                        text: ""
-                        draw_text.color: #x0B1220
-                        draw_text.text_style.font_size: 14.
+                        body: ""
+                        font_color: #x0B1220
+                        font_size: 14.
                     }
-                    k := Label{
-                        width: Fill
-                        text: ""
-                        align: Align{x: 1.0}
+                    k := WrapLabel{
+                        body: ""
                         margin: Inset{right: 8.}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x3A4554
-                        draw_text.text_style.font_size: 13.
+                        font_color: #x3A4554
+                        font_size: 13.
                     }
                 }
                 Line := View{
                     width: Fill height: Fit
                     padding: Inset{top: 4. bottom: 4.}
-                    line := Label{
-                        width: Fill
-                        text: ""
+                    line := WrapLabel{
+                        body: ""
                         margin: Inset{right: 8.}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x0B1220
-                        draw_text.text_style.font_size: 13.
+                        font_color: #x0B1220
+                        font_size: 13.
                     }
                 }
                 Sub := View{
                     width: Fill height: Fit
                     padding: Inset{left: 12. top: 3. bottom: 3.}
-                    line := Label{
-                        width: Fill
-                        text: ""
+                    line := WrapLabel{
+                        body: ""
                         margin: Inset{right: 8.}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x3A4554
-                        draw_text.text_style.font_size: 12.
+                        font_color: #x3A4554
+                        font_size: 12.
                     }
                 }
                 Gap := View{
@@ -3817,7 +4475,10 @@ script_mod! {
                 }
                 body +: {
                     width: Fill height: Fill
-                    flow: Down spacing: 0
+                    // Overlay — app_callout must NOT be a Down sibling of
+                    // app_hscroll or it steals half the window height (every
+                    // screen looks split: content above, empty below).
+                    flow: Overlay
                     // Min layout width 320 css px. Narrower viewports scroll horizontally
                     // instead of crushing faces below that floor.
                     app_hscroll := ScrollXView{
@@ -3838,107 +4499,283 @@ script_mod! {
                                 width: Fill height: Fit
                                 padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
                                 flow: Down spacing: 6
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    align: Align{x: 1.0 y: 0.5}
+                                    rail_collapse_btn := RailToggleBtn{text: "‹"}
+                                }
                                 rail_books_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_books := TabBtn{text: "Books"}
                                     rail_books_on := TabBtnActive{text: "Books" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_books_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/books.webp")
+                                        }
+                                    }
                                 }
                                 rail_sell_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_sell := TabBtn{text: "Sell"}
                                     rail_sell_on := TabBtnActive{text: "Sell" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_sell_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/sell.webp")
+                                        }
+                                    }
                                 }
                                 rail_favorites_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_favorites := TabBtn{text: "Favorites"}
                                     rail_favorites_on := TabBtnActive{text: "Favorites" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_favorites_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/favorites.webp")
+                                        }
+                                    }
                                 }
                                 rail_buy_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_buy := TabBtn{text: "Buy"}
                                     rail_buy_on := TabBtnActive{text: "Buy" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_buy_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/buy.webp")
+                                        }
+                                    }
                                 }
                                 rail_rates_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_rates := TabBtn{text: "Rates"}
                                     rail_rates_on := TabBtnActive{text: "Rates" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_rates_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/rates.webp")
+                                        }
+                                    }
                                 }
                                 rail_ops_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_ops := TabBtn{text: "Ops"}
                                     rail_ops_on := TabBtnActive{text: "Ops" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_ops_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/ops.webp")
+                                        }
+                                    }
                                 }
                                 rail_cod_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_cod := TabBtn{text: "COD"}
                                     rail_cod_on := TabBtnActive{text: "COD" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_cod_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/cod.webp")
+                                        }
+                                    }
                                 }
                                 rail_riders_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_riders := TabBtn{text: "Riders"}
                                     rail_riders_on := TabBtnActive{text: "Riders" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_riders_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/riders.webp")
+                                        }
+                                    }
                                 }
                                 rail_sales_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_sales := TabBtn{text: "Sales"}
                                     rail_sales_on := TabBtnActive{text: "Sales" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_sales_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/sales.webp")
+                                        }
+                                    }
                                 }
                                 rail_day_close_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_day_close := TabBtn{text: "Day close"}
                                     rail_day_close_on := TabBtnActive{text: "Day close" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_day_close_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/day_close.webp")
+                                        }
+                                    }
                                 }
                                 rail_reports_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_reports := TabBtn{text: "Reports"}
                                     rail_reports_on := TabBtnActive{text: "Reports" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_reports_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/reports.webp")
+                                        }
+                                    }
                                 }
                                 rail_inventory_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_inventory := TabBtn{text: "Stock"}
                                     rail_inventory_on := TabBtnActive{text: "Stock" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_inventory_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/inventory.webp")
+                                        }
+                                    }
                                 }
                                 rail_branches_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_branches := TabBtn{text: "Branches"}
                                     rail_branches_on := TabBtnActive{text: "Branches" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_branches_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/branches.webp")
+                                        }
+                                    }
                                 }
                                 rail_credit_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_credit := TabBtn{text: "Parties"}
                                     rail_credit_on := TabBtnActive{text: "Parties" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_credit_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/credit.webp")
+                                        }
+                                    }
                                 }
                                 rail_team_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_team := TabBtn{text: "Team"}
                                     rail_team_on := TabBtnActive{text: "Team" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_team_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/team.webp")
+                                        }
+                                    }
                                 }
                                 rail_settings_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_settings := TabBtn{text: "Settings"}
                                     rail_settings_on := TabBtnActive{text: "Settings" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_settings_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/settings.webp")
+                                        }
+                                    }
                                 }
                                 rail_lock_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_lock := TabBtn{text: "Lock"}
                                     rail_lock_on := TabBtnActive{text: "Lock" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_lock_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/lock.webp")
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3964,10 +4801,10 @@ script_mod! {
                             width: Fill height: Fit
                             flow: Right spacing: 10
                             align: Align{y: 0.5}
+                            rail_expand_btn := RailToggleBtn{text: "›" visible: false}
                             brand_mark := Image{
-                                // Bundled default (also on Android, where there is no file path
-                                // to the mark); a shop's own icon replaces it at runtime.
-                                src: crate_resource("self:resources/kumkaj-mark.webp")
+                                // No DSL src — async bundled mark used to overwrite the shop logo after sync.
+                                // sync_venue_brand loads the shop mark (or default) inline.
                                 width: 36 height: 36
                                 fit: ImageFit.Stretch
                             }
@@ -3978,37 +4815,36 @@ script_mod! {
                                 // stay visible on the dark header — Markdown
                                 // sometimes reverts to the dark WrapLabel default
                                 // and the name/org vanish against the header.
-                                brand_title := Label{
-                                    width: Fill height: Fit
-                                    text: "Moklanjo"
-                                    flow: Right{wrap: true}
-                                    draw_text.color: #xffffff
-                                    draw_text.text_style.font_size: 18.
+                                // Selectable WrapLabel — font_color stays white on navy.
+                                brand_title := WrapLabel{
+                                    body: "Moklanjo"
+                                    font_color: #xffffff
+                                    font_size: 18.
                                 }
-                                session_label := Label{
-                                    width: Fill height: Fit
-                                    text: "Sell"
-                                    flow: Right{wrap: true}
-                                    draw_text.color: #x8392b7
-                                    draw_text.text_style.font_size: 11.
+                                session_label := WrapLabel{
+                                    body: "Sell"
+                                    font_color: #x8392b7
+                                    font_size: 11.
                                 }
                             }
                             // Fit + no ellipsis — never pin/crop against the
                             // window edge (header already has right padding).
-                            shop_badge := Label{
-                                width: Fit height: Fit
-                                text: "Shop"
+                            shop_badge := WrapLabel{
+                                width: Fit
+                                body: "Shop"
                                 margin: Inset{left: 4. right: 0. top: 0. bottom: 0.}
-                                draw_text.color: #xfe8357
-                                draw_text.text_style.font_size: 11.
+                                font_color: #xfe8357
+                                font_size: 11.
                             }
                         }
                     }
 
                     today_bar := SolidView{
                         width: Fill height: Fit
-                        flow: Down
-                        padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
+                        flow: Right
+                        spacing: 8
+                        align: Align{y: 0.5}
+                        padding: Inset{left: 16. right: 12. top: 8. bottom: 8.}
                         draw_bg.color: #xE0E8F0
                         today_label := WrapLabel{
                             width: Fill
@@ -4016,6 +4852,7 @@ script_mod! {
                             font_color: #x0B1220
                             font_size: 12.
                         }
+                        amounts_eye := EyeIconBtn{}
                     }
 
                     body_stack := View{
@@ -4074,9 +4911,8 @@ script_mod! {
                                             flow: Right spacing: 12
                                             align: Align{y: 0.5}
                                             setup_brand_mark := Image{
-                                                // Bundled default (also on Android, where there is no file path
-                                                // to the mark); a shop's own icon replaces it at runtime.
-                                                src: crate_resource("self:resources/kumkaj-mark.webp")
+                                                // No DSL src — async bundled mark used to overwrite the shop logo after sync.
+                                // sync_venue_brand loads the shop mark (or default) inline.
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
                                                             }
@@ -4232,9 +5068,8 @@ script_mod! {
                                             flow: Right spacing: 12
                                             align: Align{y: 0.5}
                                             lock_brand_mark := Image{
-                                                // Bundled default (also on Android, where there is no file path
-                                                // to the mark); a shop's own icon replaces it at runtime.
-                                                src: crate_resource("self:resources/kumkaj-mark.webp")
+                                                // No DSL src — async bundled mark used to overwrite the shop logo after sync.
+                                // sync_venue_brand loads the shop mark (or default) inline.
                                                 width: 48 height: 48
                                                 fit: ImageFit.Stretch
                                                             }
@@ -4334,10 +5169,7 @@ script_mod! {
                                             font_color: #x3A4554
                                             font_size: 12.
                                         }
-                                        pin_reveal := ChipBtn{
-                                            text: "Show PIN"
-                                            padding: Inset{left: 14. right: 14.}
-                                        }
+                                        pin_reveal := QuietFitBtn{text: "Show PIN"}
                                         pin_hint := WrapLabel{
                                             body: "4–12 digits · keyboard or pad · Enter = OK · tap Show PIN to check"
                                             font_color: #x3A4554
@@ -4391,7 +5223,7 @@ script_mod! {
                                     }
                                     lock_login_id := FieldInput{empty_text: "Login id"}
                                     lock_login_password := FieldInput{empty_text: "Password"}
-                                    lock_login_ok := NavBtn{text: "Unlock with login"}
+                                    lock_login_ok := RowPrimaryBtn{text: "Unlock with login"}
                                 }
                             }
                         }
@@ -4415,15 +5247,14 @@ script_mod! {
                                 }
                                 onboard_venue_input := FieldInput{empty_text: "Counter / agency name (optional)"}
                                 onboard_org_input := FieldInput{empty_text: "Organization (optional)"}
-                                onboard_save_venue := NavBtn{text: "Save names"}
+                                onboard_save_venue := RowPrimaryBtn{text: "Save names"}
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 12
                                     align: Align{y: 0.5}
                                     onboard_brand_mark := Image{
-                                        // Bundled default (also on Android, where there is no file path
-                                        // to the mark); a shop's own icon replaces it at runtime.
-                                        src: crate_resource("self:resources/kumkaj-mark.webp")
+                                        // No DSL src — async bundled mark used to overwrite the shop logo after sync.
+                                // sync_venue_brand loads the shop mark (or default) inline.
                                         width: 48 height: 48
                                         fit: ImageFit.Stretch
                                             }
@@ -4449,7 +5280,7 @@ script_mod! {
                                     font_size: 15.
                                 }
                                 onboard_tmpl_hint := WrapLabel{
-                                    body: "Booking = walk-ins. Day book = today. Pay out = carrier bills. More → Rates & Parties."
+                                    body: "Booking = walk-ins. Day book = today. Pay out = carrier bills. Rates & Parties are tabs."
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
@@ -4567,93 +5398,147 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                books_heading := WrapLabel{
-                                    body: "Books"
-                                    font_color: #x0B1220
-                                    font_size: 22.
-                                }
-                                books_backup_warning := WrapLabel{body: " " font_color: #xC44E10 font_size: 14. visible: false}
+                                // No tip chrome on Books (docs only) — InfoHelp left an orphan icon.
                                 books_help := WrapLabel{
                                     width: Fill
-                                    body: "Today: money in, purchases/expenses out, they owe us / we owe them, cash vs bank, gross and net."
+                                    visible: false
+                                    body: " "
                                     font_color: #x3A4554
                                     font_size: 13.
                                 }
-                                // Frequent actions first (small vertical
-                                // footprint); today's summary cards below.
+                                books_backup_warning := WrapLabel{body: " " font_color: #xC44E10 font_size: 14. visible: false}
+                                // Hub jumps only — every row navigates, so every
+                                // row is HubDestBtn + mark (never a filled primary).
                                 ActionStack{
-                                    books_to_sell := RowSecondaryBtn{text: "Sell (money in)"}
-                                    books_to_buy := RowSecondaryBtn{text: "Buy (money out)"}
-                                    books_day_close := RowSecondaryBtn{text: "Day close"}
-                                    books_reports := RowSecondaryBtn{text: "Reports & bank"}
-                                    books_credit := RowSecondaryBtn{text: "Parties / credit"}
+                                    books_to_sell_slot := View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        books_to_sell := HubDestBtn{text: "Book a parcel"}
+                                        View{
+                                            width: Fill height: Fill
+                                            flow: Right
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 14. right: 0. top: 0. bottom: 0.}
+                                            books_to_sell_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/sell.webp")
+                                            }
+                                        }
+                                    }
+                                    books_to_buy_slot := View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        books_to_buy := HubDestBtn{text: "Expense / carrier bill"}
+                                        View{
+                                            width: Fill height: Fill
+                                            flow: Right
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 14. right: 0. top: 0. bottom: 0.}
+                                            books_to_buy_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/buy.webp")
+                                            }
+                                        }
+                                    }
+                                    books_day_close_slot := View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        books_day_close := HubDestBtn{text: "Day close"}
+                                        View{
+                                            width: Fill height: Fill
+                                            flow: Right
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 14. right: 0. top: 0. bottom: 0.}
+                                            books_day_close_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/day_close.webp")
+                                            }
+                                        }
+                                    }
+                                    books_reports_slot := View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        books_reports := HubDestBtn{text: "Bank book & P&L"}
+                                        View{
+                                            width: Fill height: Fill
+                                            flow: Right
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 14. right: 0. top: 0. bottom: 0.}
+                                            books_reports_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/reports.webp")
+                                            }
+                                        }
+                                    }
+                                    books_credit_slot := View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        books_credit := HubDestBtn{text: "Parties (debtors & creditors)"}
+                                        View{
+                                            width: Fill height: Fill
+                                            flow: Right
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 14. right: 0. top: 0. bottom: 0.}
+                                            books_credit_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/credit.webp")
+                                            }
+                                        }
+                                    }
                                 }
-                                // Today's figures as stat cards (label/value
-                                // rows) — set from Store::books_overview in
-                                // sync_chrome. Replaces the old one-paragraph
-                                // text wall.
+                                // Accordion — only TODAY open by default.
                                 RoundedView{
                                     width: Fill height: Fit
                                     padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    h_caption_today := Label{text: "TODAY" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_money_in_sales := Label{width: Fill height: Fit text: "Money in (sales)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_in_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_purchases_cogs := Label{width: Fill height: Fit text: "Purchases (COGS)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_purchases_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_expenses_word := Label{width: Fill height: Fit text: "Expenses" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_expenses_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_gross_word := Label{width: Fill height: Fit text: "Gross" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_gross_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_net_word := Label{width: Fill height: Fit text: "Net" draw_text.color: #x072058 draw_text.text_style.font_size: 13.}
-                                        books_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x072058 draw_text.text_style.font_size: 15.}
-                                    }
-                                }
-                                RoundedView{
-                                    width: Fill height: Fit
-                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
-                                    flow: Down spacing: 7
-                                    draw_bg.color: #xffffff
-                                    draw_bg.border_radius: 14.
-                                    h_caption_bookings := Label{text: "BOOKINGS" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        books_declared_name := Label{width: Fill height: Fit text: "Account booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_declared_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        books_owner_name := Label{width: Fill height: Fit text: "Cash booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_owner_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                }
-                                RoundedView{
-                                    width: Fill height: Fit
-                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
-                                    flow: Down spacing: 7
-                                    draw_bg.color: #xffffff
-                                    draw_bg.border_radius: 14.
-                                    h_caption_payments_today := Label{text: "PAYMENTS TODAY" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_cash := Label{width: Fill height: Fit text: "Cash" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_cash_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        books_digital_name := Label{width: Fill height: Fit text: "UPI" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_digital_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_card := Label{width: Fill height: Fit text: "Card" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_card_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    books_sec_today_hdr := AccordionHdrBtn{text: "▸ TODAY"}
+                                    books_sec_today_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 7
+                                        visible: false
+                                        h_caption_today := Label{text: "TODAY" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_money_in_sales := Label{width: Fill height: Fit text: "Money in (sales)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_in_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_in_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_purchases_cogs := Label{width: Fill height: Fit text: "Purchases (COGS)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_purchases_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_purchases_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_expenses_word := Label{width: Fill height: Fit text: "Expenses" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_expenses_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_expenses_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_gross_word := Label{width: Fill height: Fit text: "Gross" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_gross_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_gross_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_net_word := Label{width: Fill height: Fit text: "Net" draw_text.color: #x072058 draw_text.text_style.font_size: 13.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x072058 draw_text.text_style.font_size: 15.}
+                                            books_net_eye := EyeIconBtn{}
+                                        }
+                                        }
                                     }
                                 }
                                 RoundedView{
@@ -4662,14 +5547,26 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    h_caption_outstanding := Label{text: "OUTSTANDING" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_they_owe_us := Label{width: Fill height: Fit text: "They owe us" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_they_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x137333 draw_text.text_style.font_size: 13.}
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_we_owe_them := Label{width: Fill height: Fit text: "We owe them" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_we_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #xB3261E draw_text.text_style.font_size: 13.}
+                                    books_sec_bookings_hdr := AccordionHdrBtn{text: "▸ BOOKINGS"}
+                                    books_sec_bookings_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 7
+                                        visible: false
+                                        h_caption_bookings := Label{text: "BOOKINGS" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            books_declared_name := Label{width: Fill height: Fit text: "Account booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_declared_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_declared_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            books_owner_name := Label{width: Fill height: Fit text: "Cash booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_owner_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_owner_eye := EyeIconBtn{}
+                                        }
+                                        }
                                     }
                                 }
                                 RoundedView{
@@ -4678,18 +5575,96 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    h_caption_bank := Label{text: "BANK" draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_bank_balance := Label{width: Fill height: Fit text: "Bank balance" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_bank_balance_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                    books_sec_payments_hdr := AccordionHdrBtn{text: "▸ PAYMENTS TODAY"}
+                                    books_sec_payments_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 7
+                                        visible: false
+                                        h_caption_payments_today := Label{text: "PAYMENTS TODAY" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_cash := Label{width: Fill height: Fit text: "Cash" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_cash_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_cash_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            books_digital_name := Label{width: Fill height: Fit text: "UPI" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_digital_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_digital_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_card := Label{width: Fill height: Fit text: "Card" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_card_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_card_eye := EyeIconBtn{}
+                                        }
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_cash_in_hand := Label{width: Fill height: Fit text: "Cash in hand (till)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_till_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    books_sec_outstanding_hdr := AccordionHdrBtn{text: "▸ OUTSTANDING"}
+                                    books_sec_outstanding_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 7
+                                        visible: false
+                                        h_caption_outstanding := Label{text: "OUTSTANDING" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_they_owe_us := Label{width: Fill height: Fit text: "They owe us" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_they_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x137333 draw_text.text_style.font_size: 13.}
+                                            books_they_owe_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_we_owe_them := Label{width: Fill height: Fit text: "We owe them" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_we_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #xB3261E draw_text.text_style.font_size: 13.}
+                                            books_we_owe_eye := EyeIconBtn{}
+                                        }
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                        h_bank_net_today := Label{width: Fill height: Fit text: "Bank net today" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
-                                        books_bank_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                }
+                                RoundedView{
+                                    width: Fill height: Fit
+                                    padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                    flow: Down spacing: 7
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    books_sec_bank_hdr := AccordionHdrBtn{text: "▸ BANK"}
+                                    books_sec_bank_body := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 7
+                                        visible: false
+                                        h_caption_bank := Label{text: "BANK" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_bank_balance := Label{width: Fill height: Fit text: "Bank balance" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_bank_balance_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_bank_balance_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_cash_in_hand := Label{width: Fill height: Fit text: "Cash in hand (till)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_till_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_till_eye := EyeIconBtn{}
+                                        }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_bank_net_today := Label{width: Fill height: Fit text: "Bank net today" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
+                                            books_bank_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
+                                            books_bank_net_eye := EyeIconBtn{}
+                                        }
+                                        }
                                     }
                                 }
                             }
@@ -4703,10 +5678,20 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                favorites_heading := WrapLabel{
-                                    body: "Favorites"
-                                    font_color: #x0B1220
-                                    font_size: 22.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{x: 0.0 y: 0.5}
+                                    favorites_heading_icon := Image{
+                                        width: 28 height: 28
+                                        fit: ImageFit.Stretch
+                                        src: crate_resource("self:resources/nav/favorites.webp")
+                                    }
+                                    favorites_heading := WrapLabel{
+                                        body: "Favorites"
+                                        font_color: #x0B1220
+                                        font_size: 22.
+                                    }
                                 }
                                 favorites_help := WrapLabel{
                                     width: Fill
@@ -4727,16 +5712,19 @@ script_mod! {
                             }
                         }
 
-                        // Seller: tap items → pay. Whole page scrolls.
-                        pos_screen := ScrollYView{
+                        // Booking: Parcel (rates/weigh) + Counter (cart/pay) always
+                        // Parcel (rates) + Counter (cart/pay) side by side —
+                        // Fill{min} panes; horizontal scroll when both don't fit.
+                        pos_screen := View{
                             width: Fill height: Fill
                             visible: false
-                            View{
+                            flow: Down spacing: 0
+
+                            booking_desk_top := View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
-                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-
-                                // Operational strip (Stitch screen 02)
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
+                                // Operational strip (owner / till status)
                                 RoundedView{
                                     width: Fill height: Fit
                                     padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
@@ -4764,27 +5752,61 @@ script_mod! {
                                         draw_text.text_style.font_size: 10.
                                     }
                                 }
-
-                                // apply_shell_layout sets flow (Right vs Down) + column widths.
-                                // Default stacked full-width so first paint never leaves a Fixed gutter.
-                                pos_split := View{
-                                    width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 12
-                                pos_catalog := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 10
-                                booking_help := WrapLabel{
-                                    body: "Walk-in: destination → weigh → pick rate → Account/Cash booking → pay. AWB on receipt. Next booking clears the desk."
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                booking_help := InfoHelp{
+                                    tip: "Walk-in: destination → weigh → pick rate → Account/Cash booking → pay. AWB on receipt. Next booking clears the desk."
                                 }
+                            }
+
+                            // Fit row + Fixed panes (widths in apply_shell_layout).
+                            // Fill{min} clipped the cart with no scroll range —
+                            // Fit+Fixed makes view_total = pane sum so mouse
+                            // press-drag / wheel can pan. Gap 16 = outer pad.
+                            booking_desk_hscroll := ScrollXView{
+                                width: Fill height: Fill
+                                // Bottom pad clears the h-scrollbar (bar_size 8 + gap).
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 16.}
+                                scroll_bars: mod.widgets.ScrollBars {
+                                    show_scroll_x: true show_scroll_y: false
+                                    scroll_bar_x.drag_scrolling: true
+                                    scroll_bar_x.mouse_capture_overload: true
+                                    scroll_bar_x.bar_size: 8.
+                                }
+                                booking_desk_row := View{
+                                    width: Fit height: Fill
+                                    flow: Right spacing: 16
+                                    pos_catalog_scroll := ScrollYView{
+                                        width: 600 height: Fill
+                                    pos_catalog := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 10
+                                        padding: Inset{bottom: 48.}
                                 booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
                                 booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
                                 booking_pincode_label := WrapLabel{
                                     body: ""
                                     font_color: #x006e1c
                                     font_size: 12.
+                                }
+                                // Domestic ÷ shop divisor (usually 5000); International ÷6000
+                                // air — same desk-chip pattern as kg/lb. Settings keep the
+                                // shop default; this only changes maths for the open booking.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        booking_scope_domestic := SegBtn{text: "Domestic"}
+                                        booking_scope_domestic_on := SegBtnOn{text: "Domestic" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        booking_scope_intl := SegBtn{text: "International"}
+                                        booking_scope_intl_on := SegBtnOn{text: "International" visible: false}
+                                    }
+                                }
+                                booking_scope_hint := WrapLabel{
+                                    selectable: false
+                                    body: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
+                                    font_color: #x3A4554
+                                    font_size: 11.
                                 }
                                 booking_consignee_input := FieldInput{empty_text: "Consignee (receiver)"}
                                 booking_actual_kg_input := FieldInput{empty_text: "Actual kg"}
@@ -4855,6 +5877,9 @@ script_mod! {
                                         dunit_m_on := ChipBtnActive{text: "m" visible: false}
                                     }
                                 }
+                                    booking_pieces_input := FieldInput{
+                                        empty_text: "Pieces (blank = 1) — expand for cargo / multi-piece"
+                                    }
                                     FormFieldRow{
                                         booking_cod_input := FieldInput{empty_text: "COD amount"}
                                         booking_carrier_cost_input := FieldInput{empty_text: "Carrier cost"}
@@ -4895,16 +5920,20 @@ script_mod! {
                                 }
                                 next_booking_btn := RowPrimaryBtn{text: "Next booking" visible: false}
                                 empty_catalog := WrapLabel{
-                                    body: "No rates yet. Open More → Rates & services."
+                                    body: "No rates yet. Open Rates & services, add one (name + price, unit kg), then Booking."
                                     font_color: #x0B1220
                                     font_size: 14.
                                 }
                                 product_list := mod.widgets.ProductList{}
-                                } // pos_catalog
+                                    } // pos_catalog
+                                    } // pos_catalog_scroll
 
-                                pos_cart_col := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 10
+                                    pos_cart_scroll := ScrollYView{
+                                        width: 520 height: Fill
+                                    pos_cart_col := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 10
+                                        padding: Inset{bottom: 48.}
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 12
@@ -5049,18 +6078,16 @@ script_mod! {
                                         font_color: #x3A4554
                                         font_size: 12.
                                     }
-                                    ActionStack{
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            lane_declared := StackSecondaryBtn{text: "Tax invoice"}
-                                            lane_declared_on := StackPrimaryBtn{text: "Tax invoice" visible: false}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            lane_declared := SegBtn{text: "Tax invoice"}
+                                            lane_declared_on := SegBtnOn{text: "Tax invoice" visible: false}
                                         }
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            lane_owner := StackSecondaryBtn{text: "Cash memo"}
-                                            lane_owner_on := StackPrimaryBtn{text: "Cash memo" visible: false}
+                                        View{width: Fill height: Fit flow: Overlay
+                                            lane_owner := SegBtn{text: "Cash memo"}
+                                            lane_owner_on := SegBtnOn{text: "Cash memo" visible: false}
                                         }
                                     }
                                     mix_cash_input := FieldInput{empty_text: "Cash amount"}
@@ -5094,10 +6121,12 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 customer_list_sell := mod.widgets.CustomerList{}
-                                } // pos_cart_col
-                                } // pos_split
-                            }
-                        }
+                                    } // pos_cart_col
+                                    } // pos_cart_scroll
+                                } // booking_desk_row
+                            } // booking_desk_hscroll
+
+                        } // pos_screen
 
                         menu_screen := ScrollYView{
                             width: Fill height: Fill
@@ -5106,8 +6135,9 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                items_heading := WrapLabel{body: "Your items" font_color: #x0B1220 font_size: 20.}
-                                items_help_label := WrapLabel{body: "Tap an item to edit it. New item clears the form so you can add a different one. Sales already recorded keep the name they were charged with." font_color: #x0B1220}
+                                items_help_label := InfoHelp{
+                                    tip: "Each row is a rate (e.g. Surface Zone A). Unit is usually kg. Tap to edit."
+                                }
                                 menu_mode_label := WrapLabel{body: "Adding a new item" font_color: #x02030B font_size: 14.}
                                 menu_name_input := FieldInput{
                                     empty_text: "Item name — type it in your language"
@@ -5173,16 +6203,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                buy_heading := WrapLabel{
-                                    body: "Buy"
-                                    font_color: #x0B1220
-                                    font_size: 22.
-                                }
-                                buy_help := WrapLabel{
-                                    width: Fill
-                                    body: "Money out: goods received (purchase) or running costs (expense). Same books as Sell."
-                                    font_color: #x3A4554
-                                    font_size: 13.
+                                buy_help := InfoHelp{
+                                    tip: "Money out: goods received (purchase) or running costs (expense). Same books as Booking."
                                 }
                                 h_goods_received := WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 buy_item_input := FieldInput{empty_text: "Item name"}
@@ -5191,72 +6213,67 @@ script_mod! {
                                 buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
                                 buy_party_kind := FieldInput{empty_text: "New party kind (Supplier / Carrier)"}
                                 buy_note_input := FieldInput{empty_text: "Note (optional)"}
-                                // Multi-word — ActionStack, not ChipStrip (160px truncates).
-                                ActionStack{
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Overlay
-                                        buy_paid := StackSecondaryBtn{text: "Paid now"}
-                                        buy_paid_on := StackPrimaryBtn{text: "Paid now" visible: false}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_paid := SegBtn{text: "Paid now"}
+                                        buy_paid_on := SegBtnOn{text: "Paid now" visible: false}
                                     }
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Overlay
-                                        buy_on_account := StackSecondaryBtn{text: "On account (AP)"}
-                                        buy_on_account_on := StackPrimaryBtn{text: "On account (AP)" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_on_account := SegBtn{text: "On account (AP)"}
+                                        buy_on_account_on := SegBtnOn{text: "On account (AP)" visible: false}
                                     }
                                 }
-                                buy_purchase := NavBtn{text: "Record purchase"}
+                                buy_purchase := RowPrimaryBtn{text: "Record purchase"}
                                 h_expense_heading := WrapLabel{body: "Expense" font_color: #x0B1220 font_size: 15.}
                                 buy_expense_amount := FieldInput{empty_text: "Amount"}
                                 buy_expense_note := FieldInput{empty_text: "Note (fuel, rent, …)"}
+                                h_paid_by := Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    h_paid_by := Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t1_cash := ChipBtn{text: "Cash"}
-                                        buy_exp_t1_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t1_cash := SegBtn{text: "Cash"}
+                                        buy_exp_t1_cash_on := SegBtnOn{text: "Cash" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t1_bank := ChipBtn{text: "Bank"}
-                                        buy_exp_t1_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t1_bank := SegBtn{text: "Bank"}
+                                        buy_exp_t1_bank_on := SegBtnOn{text: "Bank" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t1_upi := ChipBtn{text: "UPI"}
-                                        buy_exp_t1_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t1_upi := SegBtn{text: "UPI"}
+                                        buy_exp_t1_upi_on := SegBtnOn{text: "UPI" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t1_card := ChipBtn{text: "Card"}
-                                        buy_exp_t1_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t1_card := SegBtn{text: "Card"}
+                                        buy_exp_t1_card_on := SegBtnOn{text: "Card" visible: false}
                                     }
                                 }
                                 buy_exp_part2 := FieldInput{empty_text: "Part by a second way (optional)"}
+                                h_second_way := Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    h_second_way := Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t2_cash := ChipBtn{text: "Cash"}
-                                        buy_exp_t2_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t2_cash := SegBtn{text: "Cash"}
+                                        buy_exp_t2_cash_on := SegBtnOn{text: "Cash" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t2_bank := ChipBtn{text: "Bank"}
-                                        buy_exp_t2_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t2_bank := SegBtn{text: "Bank"}
+                                        buy_exp_t2_bank_on := SegBtnOn{text: "Bank" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t2_upi := ChipBtn{text: "UPI"}
-                                        buy_exp_t2_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t2_upi := SegBtn{text: "UPI"}
+                                        buy_exp_t2_upi_on := SegBtnOn{text: "UPI" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        buy_exp_t2_card := ChipBtn{text: "Card"}
-                                        buy_exp_t2_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_exp_t2_card := SegBtn{text: "Card"}
+                                        buy_exp_t2_card_on := SegBtnOn{text: "Card" visible: false}
                                     }
                                 }
-                                buy_expense_add := NavBtn{text: "Add expense"}
-                                buy_to_inventory := NavBtn{text: "Inventory & stock adjust"}
+                                buy_expense_add := RowPrimaryBtn{text: "Add expense"}
+                                buy_to_inventory := RowSecondaryBtn{text: "Inventory & stock adjust"}
                             }
                         }
 
@@ -5267,7 +6284,17 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                more_heading := WrapLabel{body: "More" font_color: #x0B1220 font_size: 22.}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{x: 0.0 y: 0.5}
+                                    more_heading_icon := Image{
+                                        width: 28 height: 28
+                                        fit: ImageFit.Stretch
+                                        src: crate_resource("self:resources/nav/rates.webp")
+                                    }
+                                    more_heading := WrapLabel{body: "More" font_color: #x0B1220 font_size: 22.}
+                                }
                                     h_more_help_moklanjo := WrapLabel{
                                         body: "Catalogue, sales, credit, team, backup — plus stock and extra tills when needed."
                                         font_color: #x3A4554
@@ -5303,7 +6330,17 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    sales_title := WrapLabel{body: "Sales" font_color: #x0B1220 font_size: 20.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 10
+                                        align: Align{x: 0.0 y: 0.5}
+                                        sales_title_icon := Image{
+                                            width: 28 height: 28
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/sales.webp")
+                                        }
+                                        sales_title := WrapLabel{body: "Sales" font_color: #x0B1220 font_size: 20.}
+                                    }
                                 }
                                 h_amend_help := WrapLabel{
                                     width: Fill
@@ -5367,10 +6404,21 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 12.
                                 }
-                                ActionStack{
-                                    amend_pay_cash := PayBtn{text: "Cash"}
-                                    amend_pay_upi := PayBtn{text: "UPI"}
-                                    amend_pay_card := PayBtn{text: "Card"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        amend_pay_cash := SegBtn{text: "Cash"}
+                                        amend_pay_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        amend_pay_upi := SegBtn{text: "UPI"}
+                                        amend_pay_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        amend_pay_card := SegBtn{text: "Card"}
+                                        amend_pay_card_on := SegBtnOn{text: "Card" visible: false}
+                                    }
                                 }
                                 reason_input := FieldInput{
                                     empty_text: "Reason for amend / void / refund"
@@ -5384,9 +6432,9 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 ActionStack{
-                                    amend_btn := NavBtn{text: "Amend"}
-                                    void_btn := NavBtn{text: "Void"}
-                                    refund_btn := NavBtn{text: "Refund"}
+                                    amend_btn := RowPrimaryBtn{text: "Amend"}
+                                    void_btn := DangerBtn{text: "Void"}
+                                    refund_btn := DangerBtn{text: "Refund"}
                                 }
                                 sale_history_label := mod.widgets.ReportText{}
                                 h_notes_attach_sale := WrapLabel{body: "Notes & attachments (selected sale)" font_color: #x0B1220 font_size: 15.}
@@ -5416,85 +6464,98 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    credit_title := WrapLabel{body: "Credit" font_color: #x0B1220 font_size: 20.}
-                                }
-                                credit_help := WrapLabel{
-                                    width: Fill
-                                    body: "Each party has a unique id (names may repeat). Tap Consignor, Carrier, Supplier, or Both on one party. AR and AP stay separate; net who-owes-whom is in Reports."
-                                    font_color: #x0B1220
-                                    font_size: 12.
-                                }
-                                credit_summary_label := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
-                                credit_recent_list := mod.widgets.ReportText{}
-                                party_selected_label := WrapLabel{
-                                    body: "New party — fill the form and tap Add party, or Pick a party from the list to edit it."
-                                    font_color: #x072058
-                                    font_size: 13.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 10
+                                        align: Align{x: 0.0 y: 0.5}
+                                        credit_title_icon := Image{
+                                            width: 28 height: 28
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/credit.webp")
+                                        }
+                                        credit_title := WrapLabel{body: "Parties" font_color: #x0B1220 font_size: 20.}
+                                    }
                                 }
                                 FormFieldRow{
                                     credit_add_name := FieldInput{empty_text: "Party name"}
                                     credit_add_phone := FieldInput{empty_text: "Phone"}
+                                }
+                                credit_add_address := FieldInput{empty_text: "Address"}
+                                // Optional logo — same pick/clear pattern as Rates photos.
+                                party_image_hint := WrapLabel{
+                                    body: "Logo: none (initials)"
+                                    font_color: #x0B1220
+                                    font_size: 12.
+                                }
+                                party_draft_preview := ThumbAvatar{
+                                    width: 72 height: 72
+                                    margin: Inset{top: 0. bottom: 0. left: 0. right: 0.}
+                                }
+                                ActionStack{
+                                    party_image_clear := RowSecondaryBtn{text: "Clear logo"}
+                                    party_image_pick := RowPrimaryBtn{text: "Pick logo"}
                                 }
                                 h_account_kind := WrapLabel{
                                     body: "Account kind (tap one)"
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
-                                // Tabs that scroll sideways: ‹ › at the ends, each only while there
-                                // is more that way (sync_tab_chevrons).
-                                kind_tabs := View{
+                                // Khaynjo practise: equal-width SegBtn row — all four
+                                // roles always visible; no ChipStrip / Overlay chevrons.
+                                View{
                                     width: Fill height: Fit
-                                    flow: Overlay
-                                    tabs := ChipStrip{
-                                        ChipStripRow{
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                credit_kind_consignor := ChipBtn{text: "Consignor"}
-                                                credit_kind_consignor_on := ChipBtnActive{text: "Consignor" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                credit_kind_carrier := ChipBtn{text: "Carrier"}
-                                                credit_kind_carrier_on := ChipBtnActive{text: "Carrier" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                credit_kind_both := ChipBtn{text: "Both"}
-                                                credit_kind_both_on := ChipBtnActive{text: "Both" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                credit_kind_supplier := ChipBtn{text: "Supplier"}
-                                                credit_kind_supplier_on := ChipBtnActive{text: "Supplier" visible: false}
-                                            }
-                                        }
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        credit_kind_consignor := SegBtn{text: "Consignor"}
+                                        credit_kind_consignor_on := SegBtnOn{text: "Consignor" visible: false}
                                     }
-                                    View{
-                                        width: Fill height: 52
-                                        align: Align{x: 0.0 y: 0.5}
-                                        chev_l := ChevronBtn{text: "‹" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        credit_kind_carrier := SegBtn{text: "Carrier"}
+                                        credit_kind_carrier_on := SegBtnOn{text: "Carrier" visible: false}
                                     }
-                                    View{
-                                        width: Fill height: 52
-                                        align: Align{x: 1.0 y: 0.5}
-                                        chev_r := ChevronBtn{text: "›" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        credit_kind_both := SegBtn{text: "Both"}
+                                        credit_kind_both_on := SegBtnOn{text: "Both" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        credit_kind_supplier := SegBtn{text: "Supplier"}
+                                        credit_kind_supplier_on := SegBtnOn{text: "Supplier" visible: false}
                                     }
                                 }
-                                credit_add_kind := FieldInput{empty_text: "Roles (Consignor, Carrier, Both…)"}
-                                credit_add_btn := NavBtn{text: "Add party"}
+                                // SegBtns write here (Khaynjo hides this; Moklanjo keeps it
+                                // visible so a rare custom role word can still be typed).
+                                credit_add_kind := FieldInput{empty_text: "Custom role (optional) — or tap a chip above"}
+                                credit_add_btn := RowPrimaryBtn{text: "Add party"}
                                 ActionStack{
                                     party_form_clear := RowSecondaryBtn{text: "New party (clear form)"}
-                                    party_delete := RowSecondaryBtn{text: "Delete selected party"}
+                                    party_delete := DangerBtn{text: "Delete selected party"}
+                                }
+                                parties_list_heading := WrapLabel{
+                                    body: "Saved parties"
+                                    font_color: #x0B1220
+                                    font_size: 15.
                                 }
                                 customer_list_credit := mod.widgets.CustomerList{}
+                                // Detail tools only after Pick (Khaynjo party_detail pattern).
+                                party_detail := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 10
+                                    visible: false
+                                h_party_custom_heading := WrapLabel{body: "Custom fields (selected party)" font_color: #x0B1220 font_size: 15.}
+                                party_custom_help := WrapLabel{
+                                    body: "Add any label and value on this party — WhatsApp, GSTIN, route code, …"
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                FormFieldRow{
+                                    party_custom_key := FieldInput{empty_text: "Field name (e.g. WhatsApp)"}
+                                    party_custom_value := FieldInput{empty_text: "Value"}
+                                }
+                                ActionStack{
+                                    party_custom_add := RowPrimaryBtn{text: "Add / update field"}
+                                    party_custom_remove := RowSecondaryBtn{text: "Remove field"}
+                                }
+                                party_custom_list := mod.widgets.ReportText{}
                                 h_credit_limit_heading := WrapLabel{body: "Credit limit (selected / named party)" font_color: #x0B1220 font_size: 15.}
                                 FormFieldRow{
                                     credit_limit_input := FieldInput{empty_text: "Credit limit (0 = none)"}
@@ -5506,6 +6567,11 @@ script_mod! {
                                 }
                                 h_pay_selected_heading := WrapLabel{body: "Pay selected (settle debt / take advance)" font_color: #x0B1220 font_size: 15.}
                                 settle_amount_input := FieldInput{empty_text: "Amount received"}
+                                FormFieldRow{
+                                    settle_tds_input := FieldInput{empty_text: "TDS cut (optional)"}
+                                    settle_discount_input := FieldInput{empty_text: "Discount (optional)"}
+                                }
+                                settle_cheque_input := FieldInput{empty_text: "Cheque number (optional)"}
                                 ActionStack{
                                     settle_cash := NavBtn{text: "Pay cash"}
                                     settle_upi := NavBtn{text: "Pay UPI"}
@@ -5513,6 +6579,7 @@ script_mod! {
                                 }
                                 settle_open_bills := mod.widgets.ReportText{}
                                 settle_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
+                                credit_bill_chase := RowSecondaryBtn{text: "Bill reminder chase list"}
                                 h_write_off_heading := WrapLabel{body: "Write off (clear without payment)" font_color: #x0B1220 font_size: 15.}
                                 writeoff_amount_input := FieldInput{empty_text: "Amount (blank = full balance)"}
                                 writeoff_reason_input := FieldInput{empty_text: "Reason (required)"}
@@ -5540,6 +6607,7 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 party_attach_list := mod.widgets.ReportText{}
+                                } // party_detail
                             }
                         }
 
@@ -5553,7 +6621,17 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    team_title := WrapLabel{body: "Team" font_color: #x0B1220 font_size: 20.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 10
+                                        align: Align{x: 0.0 y: 0.5}
+                                        team_title_icon := Image{
+                                            width: 28 height: 28
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/team.webp")
+                                        }
+                                        team_title := WrapLabel{body: "Team" font_color: #x0B1220 font_size: 20.}
+                                    }
                                 }
                                 h_team_owner_help := WrapLabel{
                                     width: Fill
@@ -5576,41 +6654,21 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
-                                // Tabs that scroll sideways: ‹ › at the ends, each only while there
-                                // is more that way (sync_tab_chevrons).
-                                staff_role_tabs := View{
+                                View{
                                     width: Fill height: Fit
-                                    flow: Overlay
-                                    tabs := ChipStrip{
-                                        ChipStripRow{
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                staff_role_cashier := ChipBtn{text: "Cashier"}
-                                                staff_role_cashier_on := ChipBtnActive{text: "Cashier" visible: false}
-                                            }
-                                            View{
-                                                width: Fit height: 40
-                                                flow: Overlay
-                                                staff_role_manager := ChipBtn{text: "Manager"}
-                                                staff_role_manager_on := ChipBtnActive{text: "Manager" visible: false}
-                                            }
-                                        }
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        staff_role_cashier := SegBtn{text: "Cashier"}
+                                        staff_role_cashier_on := SegBtnOn{text: "Cashier" visible: false}
                                     }
-                                    View{
-                                        width: Fill height: 52
-                                        align: Align{x: 0.0 y: 0.5}
-                                        chev_l := ChevronBtn{text: "‹" visible: false}
-                                    }
-                                    View{
-                                        width: Fill height: 52
-                                        align: Align{x: 1.0 y: 0.5}
-                                        chev_r := ChevronBtn{text: "›" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        staff_role_manager := SegBtn{text: "Manager"}
+                                        staff_role_manager_on := SegBtnOn{text: "Manager" visible: false}
                                     }
                                 }
-                                staff_add_cashier := NavBtn{text: "Add staff"}
-                                staff_set_login := NavBtn{text: "Set login on selected"}
-                                staff_deactivate := NavBtn{text: "Remove selected"}
+                                staff_add_cashier := RowPrimaryBtn{text: "Add staff"}
+                                staff_set_login := RowSecondaryBtn{text: "Set login on selected"}
+                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_optional_login_help := WrapLabel{
                                     body: "Optional login (id + password). Owner sets once; only the user can change password later."
                                     font_color: #x3A4554
@@ -5691,7 +6749,7 @@ script_mod! {
                                 }
                                 right_void_btn := NavBtn{text: "Void or refund a booking"}
                                 right_amend_btn := NavBtn{text: "Amend a recorded booking"}
-                                feat_save := NavBtn{text: "Save features for selected staff"}
+                                feat_save := RowPrimaryBtn{text: "Save features for selected staff"}
                                 h_change_my_pin_heading := WrapLabel{
                                     body: "Change my PIN (only yours)"
                                     font_color: #x0B1220
@@ -5733,8 +6791,19 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    settings_title := WrapLabel{body: "Language & currency" font_color: #x0B1220 font_size: 20.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 10
+                                        align: Align{x: 0.0 y: 0.5}
+                                        settings_title_icon := Image{
+                                            width: 28 height: 28
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/settings.webp")
+                                        }
+                                        settings_title := WrapLabel{body: "Language & currency" font_color: #x0B1220 font_size: 20.}
+                                    }
                                 }
+                                sidebar_settings_open := NavBtn{text: "Sidebar settings"}
                                 locale_label := mod.widgets.ReportText{}
                                 h_country_tax := WrapLabel{body: "Country & tax" font_color: #x0B1220 font_size: 20.}
                                 h_country_pack_help := WrapLabel{
@@ -5860,6 +6929,33 @@ script_mod! {
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := NavBtn{text: "Save brand"}
+                                h_print_faces := WrapLabel{body: "Print faces (receipt / period bill)" font_color: #x0B1220 font_size: 16.}
+                                print_faces_hint := WrapLabel{
+                                    width: Fill
+                                    body: "Optional stamp and payment QR next to your logo on booking receipts and period bills."
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                ActionStack{
+                                    print_stamp_pick := RowPrimaryBtn{text: "Choose receipt stamp"}
+                                    print_stamp_clear := RowSecondaryBtn{text: "Clear stamp"}
+                                }
+                                ActionStack{
+                                    print_qr_pick := RowPrimaryBtn{text: "Choose payment QR"}
+                                    print_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
+                                }
+                                h_awb_pools := WrapLabel{body: "Carrier AWB number pools" font_color: #x0B1220 font_size: 16.}
+                                awb_pools_label := mod.widgets.ReportText{}
+                                awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
+                                FormFieldRow{
+                                    awb_pool_start_input := FieldInput{empty_text: "Start no."}
+                                    awb_pool_end_input := FieldInput{empty_text: "End no."}
+                                }
+                                FormFieldRow{
+                                    awb_pool_prefix_input := FieldInput{empty_text: "Prefix (optional)"}
+                                    awb_pool_label_input := FieldInput{empty_text: "Label (optional)"}
+                                }
+                                awb_pool_add := NavBtn{text: "Add AWB pool"}
                                 h_units_heading := WrapLabel{body: "Units" font_color: #x0B1220 font_size: 20.}
                                 h_units_help := WrapLabel{
                                     width: Fill
@@ -5878,14 +6974,14 @@ script_mod! {
                                 h_booking_measures := WrapLabel{body: "Booking measures" font_color: #x0B1220 font_size: 20.}
                                 h_measures_help_moklanjo := WrapLabel{
                                     width: Fill
-                                    body: "How parcels are measured at the booking desk. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg above (directly or through other units). Books always record kg. Leave a field empty to keep it."
+                                    body: "How parcels are measured at the booking desk. Domestic bookings use this divisor (India default ÷5000). Tap International on Booking for ÷6000 air without changing Settings. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg. Books always record kg."
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
                                 measure_label := mod.widgets.ReportText{}
                                 measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
                                 measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
-                                measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000)"}
+                                measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000 domestic)"}
                                 measure_slab_input := FieldInput{empty_text: "Chargeable slab in kg (0.5)"}
                                 measure_save := NavBtn{text: "Save booking measures"}
                                 // Printers belong to this device (any OS): a system
@@ -5943,6 +7039,34 @@ script_mod! {
                             }
                         }
 
+                        sidebar_settings_screen := ScrollYView{
+                            width: Fill height: Fill
+                            visible: false
+                            View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 12
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{y: 0.5}
+                                    sidebar_settings_back := QuietFitBtn{text: "← Settings"}
+                                    sidebar_settings_title := WrapLabel{
+                                        body: "Sidebar settings"
+                                        font_color: #x0B1220
+                                        font_size: 20.
+                                    }
+                                }
+                                sidebar_settings_help := WrapLabel{
+                                    width: Fill
+                                    body: "Change the order of nav items and hide ones you do not use. Settings and Lock always stay on the bar. Drag on the rail also reorders."
+                                    font_color: #x3A4554
+                                    font_size: 13.
+                                }
+                                sidebar_nav_list := mod.widgets.SidebarNavList{}
+                            }
+                        }
+
                         day_close_screen := ScrollYView{
                             width: Fill height: Fill
                             visible: false
@@ -5950,22 +7074,14 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    day_close_title := WrapLabel{body: "Day close" font_color: #x0B1220 font_size: 20.}
+                                day_close_help := InfoHelp{
+                                    tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
                                 }
                                 day_close_label := mod.widgets.ReportText{}
                                 h_drawer_count := WrapLabel{body: "Drawer count (optional)" font_color: #x0B1220 font_size: 15.}
                                 day_close_counted_input := FieldInput{empty_text: "Counted cash in drawer"}
                                 day_close_copy := NavBtn{text: "Copy day close"}
-                                day_close_commit := NavBtn{text: "Record day close"}
-                                h_day_close_help := WrapLabel{
-                                    width: Fill
-                                    body: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
+                                day_close_commit := RowPrimaryBtn{text: "Record day close"}
                             }
                         }
 
@@ -5976,16 +7092,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    reports_title := WrapLabel{body: "Reports" font_color: #x0B1220 font_size: 20.}
-                                }
-                                reports_help := WrapLabel{
-                                    width: Fill
-                                    body: "Day books, party aging, bank posts, and period P&L — same books for every entity."
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                reports_help := InfoHelp{
+                                    tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
                                 }
                                 reports_books_btns := ActionStack{
                                     reports_today := RowSecondaryBtn{text: "Today books"}
@@ -6003,13 +7111,13 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     visible: false
-                                    ops_desk_help := WrapLabel{
-                                        width: Fill
-                                        body: "Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128."
-                                        font_color: #x3A4554
-                                        font_size: 12.
+                                    ops_desk_help := InfoHelp{
+                                        tip: "Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128."
                                     }
                                     ops_awb_input := FieldInput{empty_text: "AWB / scan barcode"}
+                                    ops_bulk_awb_input := FieldInput{
+                                        empty_text: "Bulk AWBs — paste many (newline or comma) for one status advance"
+                                    }
                                     ActionStack{
                                         ops_find_awb := RowPrimaryBtn{text: "Find / Scan AWB"}
                                         ops_label := RowSecondaryBtn{text: "Print AWB label"}
@@ -6043,12 +7151,12 @@ script_mod! {
                                     }
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 6
-                                        ops_ndr_door := ChipBtn{text: "Door locked"}
-                                        ops_ndr_refused := ChipBtn{text: "Refused"}
-                                        ops_ndr_address := ChipBtn{text: "Address wrong"}
-                                        ops_ndr_unavailable := ChipBtn{text: "Unavailable"}
-                                        ops_ndr_other := ChipBtn{text: "Other"}
+                                        flow: Right{wrap: true} spacing: 6
+                                        ops_ndr_door := QuietFitBtn{text: "Door locked"}
+                                        ops_ndr_refused := QuietFitBtn{text: "Refused"}
+                                        ops_ndr_address := QuietFitBtn{text: "Address wrong"}
+                                        ops_ndr_unavailable := QuietFitBtn{text: "Unavailable"}
+                                        ops_ndr_other := QuietFitBtn{text: "Other"}
                                     }
                                     ActionStack{
                                         ops_dispatch_fleet := RowPrimaryBtn{text: "Dispatch booked → rider"}
@@ -6080,52 +7188,50 @@ script_mod! {
                                 reports_expense_heading := WrapLabel{body: "Log expense" font_color: #x0B1220 font_size: 15.}
                                 expense_amount_input := FieldInput{empty_text: "Amount"}
                                 expense_note_input := FieldInput{empty_text: "Note (fuel, office, …)"}
+                                h_paid_by_2 := Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
                                 exp_t1_row := View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    h_paid_by_2 := Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t1_cash := ChipBtn{text: "Cash"}
-                                        exp_t1_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t1_cash := SegBtn{text: "Cash"}
+                                        exp_t1_cash_on := SegBtnOn{text: "Cash" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t1_bank := ChipBtn{text: "Bank"}
-                                        exp_t1_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t1_bank := SegBtn{text: "Bank"}
+                                        exp_t1_bank_on := SegBtnOn{text: "Bank" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t1_upi := ChipBtn{text: "UPI"}
-                                        exp_t1_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t1_upi := SegBtn{text: "UPI"}
+                                        exp_t1_upi_on := SegBtnOn{text: "UPI" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t1_card := ChipBtn{text: "Card"}
-                                        exp_t1_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t1_card := SegBtn{text: "Card"}
+                                        exp_t1_card_on := SegBtnOn{text: "Card" visible: false}
                                     }
                                 }
                                 exp_part2 := FieldInput{empty_text: "Part by a second way (optional)"}
+                                h_second_way_2 := Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
                                 exp_t2_row := View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    h_second_way_2 := Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t2_cash := ChipBtn{text: "Cash"}
-                                        exp_t2_cash_on := ChipBtnActive{text: "Cash" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t2_cash := SegBtn{text: "Cash"}
+                                        exp_t2_cash_on := SegBtnOn{text: "Cash" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t2_bank := ChipBtn{text: "Bank"}
-                                        exp_t2_bank_on := ChipBtnActive{text: "Bank" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t2_bank := SegBtn{text: "Bank"}
+                                        exp_t2_bank_on := SegBtnOn{text: "Bank" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t2_upi := ChipBtn{text: "UPI"}
-                                        exp_t2_upi_on := ChipBtnActive{text: "UPI" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t2_upi := SegBtn{text: "UPI"}
+                                        exp_t2_upi_on := SegBtnOn{text: "UPI" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
-                                        exp_t2_card := ChipBtn{text: "Card"}
-                                        exp_t2_card_on := ChipBtnActive{text: "Card" visible: false}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        exp_t2_card := SegBtn{text: "Card"}
+                                        exp_t2_card_on := SegBtnOn{text: "Card" visible: false}
                                     }
                                 }
-                                expense_add := NavBtn{text: "Add expense"}
+                                expense_add := RowPrimaryBtn{text: "Add expense"}
                                 h_attachments_last_expense := WrapLabel{body: "Attachments (last expense)" font_color: #x0B1220 font_size: 15.}
                                 expense_attach_note := FieldInput{empty_text: "Extra note on last expense"}
                                 ActionStack{
@@ -6162,6 +7268,11 @@ script_mod! {
                                     csv_copy_outstanding := RowSecondaryBtn{text: "Copy outstanding CSV"}
                                 }
                                 ActionStack{
+                                    reports_bill_chase := RowPrimaryBtn{text: "Bill reminder chase list"}
+                                    reports_month_mix := RowSecondaryBtn{text: "Month mix report"}
+                                }
+                                csv_copy_gst_month := NavBtn{text: "Copy month GST CSV"}
+                                ActionStack{
                                     csv_copy_parties := RowPrimaryBtn{text: "Copy parties CSV"}
                                     csv_copy_items := RowSecondaryBtn{text: "Copy items CSV"}
                                 }
@@ -6188,7 +7299,17 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    inventory_title := WrapLabel{body: "Inventory" font_color: #x0B1220 font_size: 20.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 10
+                                        align: Align{x: 0.0 y: 0.5}
+                                        inventory_title_icon := Image{
+                                            width: 28 height: 28
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/inventory.webp")
+                                        }
+                                        inventory_title := WrapLabel{body: "Inventory" font_color: #x0B1220 font_size: 20.}
+                                    }
                                 }
                                 inventory_label := mod.widgets.ReportText{}
                                 h_stock_type_help := WrapLabel{
@@ -6222,7 +7343,17 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    branches_title := WrapLabel{body: "Branches" font_color: #x0B1220 font_size: 20.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 10
+                                        align: Align{x: 0.0 y: 0.5}
+                                        branches_title_icon := Image{
+                                            width: 28 height: 28
+                                            fit: ImageFit.Stretch
+                                            src: crate_resource("self:resources/nav/branches.webp")
+                                        }
+                                        branches_title := WrapLabel{body: "Branches" font_color: #x0B1220 font_size: 20.}
+                                    }
                                 }
                                 org_name_input := FieldInput{empty_text: "Business name"}
                                 org_save := NavBtn{text: "Save business name"}
@@ -6345,114 +7476,287 @@ script_mod! {
                                         flow: Overlay
                                         nav_books := NavChip{text: "Books"}
                                         nav_books_on := NavChipActive{text: "Books" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_books_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/books.webp")
+                                            }
+                                        }
                                     }
                                     nav_sell_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_sell := NavChip{text: "Booking"}
                                         nav_sell_on := NavChipActive{text: "Booking" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_sell_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/sell.webp")
+                                            }
+                                        }
                                     }
                                     nav_favorites_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_favorites := NavChip{text: "Favorites"}
                                         nav_favorites_on := NavChipActive{text: "Favorites" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_favorites_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/favorites.webp")
+                                            }
+                                        }
                                     }
                                     nav_buy_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_buy := NavChip{text: "Pay out"}
                                         nav_buy_on := NavChipActive{text: "Pay out" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_buy_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/buy.webp")
+                                            }
+                                        }
                                     }
                                     nav_rates_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_rates := NavChip{text: "Rates"}
                                         nav_rates_on := NavChipActive{text: "Rates" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_rates_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/rates.webp")
+                                            }
+                                        }
                                     }
                                     nav_ops_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_ops := NavChip{text: "Ops"}
                                         nav_ops_on := NavChipActive{text: "Ops" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_ops_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/ops.webp")
+                                            }
+                                        }
                                     }
                                     nav_cod_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_cod := NavChip{text: "COD"}
                                         nav_cod_on := NavChipActive{text: "COD" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_cod_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/cod.webp")
+                                            }
+                                        }
                                     }
                                     nav_riders_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_riders := NavChip{text: "Riders"}
                                         nav_riders_on := NavChipActive{text: "Riders" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_riders_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/riders.webp")
+                                            }
+                                        }
                                     }
                                     nav_sales_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_sales := NavChip{text: "Sales"}
                                         nav_sales_on := NavChipActive{text: "Sales" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_sales_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/sales.webp")
+                                            }
+                                        }
                                     }
                                     nav_day_close_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_day_close := NavChip{text: "Close"}
                                         nav_day_close_on := NavChipActive{text: "Close" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_day_close_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/day_close.webp")
+                                            }
+                                        }
                                     }
                                     nav_reports_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_reports := NavChip{text: "Reports"}
                                         nav_reports_on := NavChipActive{text: "Reports" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_reports_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/reports.webp")
+                                            }
+                                        }
                                     }
                                     nav_inventory_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_inventory := NavChip{text: "Stock"}
                                         nav_inventory_on := NavChipActive{text: "Stock" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_inventory_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/inventory.webp")
+                                            }
+                                        }
                                     }
                                     nav_branches_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_branches := NavChip{text: "Branches"}
                                         nav_branches_on := NavChipActive{text: "Branches" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_branches_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/branches.webp")
+                                            }
+                                        }
                                     }
                                     nav_credit_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_credit := NavChip{text: "Parties"}
                                         nav_credit_on := NavChipActive{text: "Parties" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_credit_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/credit.webp")
+                                            }
+                                        }
                                     }
                                     nav_team_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_team := NavChip{text: "Team"}
                                         nav_team_on := NavChipActive{text: "Team" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_team_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/team.webp")
+                                            }
+                                        }
                                     }
                                     nav_settings_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_settings := NavChip{text: "Settings"}
                                         nav_settings_on := NavChipActive{text: "Settings" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_settings_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/settings.webp")
+                                            }
+                                        }
                                     }
                                     nav_lock_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_lock := NavChip{text: "Lock"}
                                         nav_lock_on := NavChipActive{text: "Lock" visible: false}
+                                        View{
+                                            width: Fit height: 56
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_lock_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                                src: crate_resource("self:resources/nav/lock.webp")
+                                            }
+                                        }
                                     }
                                 }
                             }
+                            // Fill the strip (tabs + padding) so ‹ › sit on the
+                            // same vertical centre as the chips — height:56
+                            // pinned them to the top of the taller Overlay.
                             View{
                                 width: Fill height: Fill
                                 align: Align{x: 0.0 y: 0.5}
-                                chev_l := ChevronBtn{text: "‹" visible: false}
+                                chev_l := ChevronBtn{text: "‹" height: 46 visible: false}
                             }
                             View{
                                 width: Fill height: Fill
                                 align: Align{x: 1.0 y: 0.5}
-                                chev_r := ChevronBtn{text: "›" visible: false}
+                                chev_r := ChevronBtn{text: "›" height: 46 visible: false}
                             }
                         }
                     }
@@ -6495,6 +7799,10 @@ script_mod! {
                             }
                         }
                     }
+
+                    // Host for every InfoHelp ℹ tip. Listens for TooltipAction
+                    // (hover / tap); places callout with edge-aware flip.
+                    app_callout := CalloutTooltip{}
                 }
             }
         }
@@ -6578,6 +7886,16 @@ fn item_images_dir() -> std::path::PathBuf {
         .unwrap_or_else(|| std::path::PathBuf::from("."))
 }
 
+fn party_images_dir() -> std::path::PathBuf {
+    app_state()
+        .lock()
+        .unwrap()
+        .store
+        .as_ref()
+        .and_then(|s| s.party_images_dir().ok())
+        .unwrap_or_else(|| std::path::PathBuf::from("."))
+}
+
 /// Start a thumbnail decode for this widget and path.
 ///
 /// Returns true only when a new decode was queued. PortalList rebinds every
@@ -6622,46 +7940,103 @@ fn default_brand_mark_path() -> std::path::PathBuf {
     std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources/kumkaj-mark.webp")
 }
 
-fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool {
-    static REQUESTED: OnceLock<Mutex<std::collections::HashMap<u64, std::path::PathBuf>>> =
+/// File identity for image widgets: same path with new bytes (re-upload) must
+/// reload. Path alone is not enough — stable names like `venue_icon.webp`.
+fn image_file_fingerprint(path: &std::path::Path) -> u128 {
+    let Ok(meta) = std::fs::metadata(path) else {
+        return 0;
+    };
+    let mtime = meta
+        .modified()
+        .ok()
+        .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+        .map(|d| d.as_nanos() as u64)
+        .unwrap_or(0);
+    ((meta.len() as u128) << 64) | (mtime as u128)
+}
+
+fn thumb_load_cache() -> &'static Mutex<std::collections::HashMap<u64, (std::path::PathBuf, u128)>> {
+    static CACHE: OnceLock<Mutex<std::collections::HashMap<u64, (std::path::PathBuf, u128)>>> =
         OnceLock::new();
-    let requested = REQUESTED.get_or_init(|| Mutex::new(std::collections::HashMap::new()));
+    CACHE.get_or_init(|| Mutex::new(std::collections::HashMap::new()))
+}
+
+fn brand_load_cache() -> &'static Mutex<std::collections::HashMap<u64, (std::path::PathBuf, u128)>> {
+    static CACHE: OnceLock<Mutex<std::collections::HashMap<u64, (std::path::PathBuf, u128)>>> =
+        OnceLock::new();
+    CACHE.get_or_init(|| Mutex::new(std::collections::HashMap::new()))
+}
+
+fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool {
     let uid = image.widget_uid().0;
+    let fp = image_file_fingerprint(path);
     {
-        let map = requested.lock().unwrap();
-        if map.get(&uid).is_some_and(|p| p.as_path() == path) {
+        let map = thumb_load_cache().lock().unwrap();
+        if map
+            .get(&uid)
+            .is_some_and(|(p, f)| p.as_path() == path && *f == fp)
+        {
             return false;
         }
     }
-    // Record the request before the call. The async start redraws immediately,
-    // and that redraw must not queue the same file again.
-    requested.lock().unwrap().insert(uid, path.to_path_buf());
-    let queued = if path.is_file() {
-        // File read stays on this thread; the decode itself does not.
-        // Android still decodes inline inside Makepad, so the once-per-path
-        // guard above is what keeps a redraw from decoding the file again.
-        image.load_image_file_by_path_async(cx, path).is_ok()
+    thumb_load_cache()
+        .lock()
+        .unwrap()
+        .insert(uid, (path.to_path_buf(), fp));
+    // Synchronous decode (same as Khaynjo). Async never repainted recycled
+    // PortalList thumbs — photos only appeared after leaving the screen.
+    let loaded = if path.is_file() {
+        image.load_image_file_by_path(cx, path).is_ok()
     } else {
         false
     };
-    if !queued {
-        requested.lock().unwrap().remove(&uid);
-    }
-    queued
-}
-
-/// Brand marks load inline on every sync. Two traps used to pin the
-/// placeholder forever: the widgets' DSL `src` queued an async load of the
-/// bundled mark on first draw whose completion overwrote the shop logo,
-/// and the sync loader never marks the widget dirty, so a swapped texture
-/// was not repainted until an unrelated full redraw. The brand widgets
-/// therefore carry no DSL `src`, and every load here ends with a redraw.
-fn load_brand_mark_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool {
-    let loaded = path.is_file() && image.load_image_file_by_path(cx, path).is_ok();
-    if loaded {
+    if !loaded {
+        thumb_load_cache().lock().unwrap().remove(&uid);
+    } else {
         image.redraw(cx);
     }
     loaded
+}
+
+/// Drop cached loads so a re-upload at the same path is decoded again.
+fn invalidate_image_loads_for_path(path: &std::path::Path) {
+    thumb_load_cache()
+        .lock()
+        .unwrap()
+        .retain(|_, (p, _)| p.as_path() != path);
+    brand_load_cache()
+        .lock()
+        .unwrap()
+        .retain(|_, (p, _)| p.as_path() != path);
+    thumbs::forget_failed(path);
+}
+
+/// Brand marks load inline on every sync. DSL `src` used to queue an async
+/// load of the bundled mark whose completion overwrote the shop logo. Brand
+/// widgets carry no DSL `src`; every load here ends with a redraw.
+fn load_brand_mark_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool {
+    let uid = image.widget_uid().0;
+    let fp = image_file_fingerprint(path);
+    {
+        let map = brand_load_cache().lock().unwrap();
+        if map
+            .get(&uid)
+            .is_some_and(|(p, f)| p.as_path() == path && *f == fp)
+        {
+            return false;
+        }
+    }
+    let ok = path.is_file() && image.load_image_file_by_path(cx, path).is_ok();
+    if ok {
+        brand_load_cache()
+            .lock()
+            .unwrap()
+            .insert(uid, (path.to_path_buf(), fp));
+        image.redraw(cx);
+    } else {
+        brand_load_cache().lock().unwrap().remove(&uid);
+    }
+    ok
 }
 
 /// What the owner must hear about the books' safety on the device that
@@ -6735,33 +8110,71 @@ fn sale_row_height() -> &'static Mutex<f64> {
     HEIGHT.get_or_init(|| Mutex::new(156.0))
 }
 
-/// Nested PortalList inside a page ScrollYView: claim the wheel/trackpad so the
-/// outer page does not scroll at the same time as the inner list.
-fn claim_nested_scroll(cx: &Cx, area: Area, event: &Event) {
+/// Nested PortalList inside a page `ScrollYView` — **scroll chaining**
+/// (`docs/DEV.md`): the list keeps the wheel only while it can still move
+/// that way; at the edge the page takes over (browser behaviour). Claiming
+/// Y unconditionally trapped the page whenever the pointer sat on a capped
+/// list (Parties, Settings picks, …).
+fn claim_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
     let Event::Scroll(e) = event else {
         return;
     };
-    if !area.is_valid(cx) {
-        return;
-    }
-    if area.clipped_rect(cx).contains(e.abs) {
-        e.handled_y.set(true);
-        if e.scroll.x != 0.0 {
-            e.handled_x.set(true);
-        }
-    }
-}
-
-fn claim_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
-    let list_area = host.widget(cx, ids!(list)).area();
+    let list = host.portal_list(cx, ids!(list));
+    let list_area = list.area();
     let area = if list_area.is_valid(cx) {
         list_area
     } else {
         host.area()
     };
-    // Claim before the list handles the event so the page ScrollYView never
-    // races the same wheel tick; PortalList also marks handled when it moves.
-    claim_nested_scroll(cx, area, event);
+    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
+        return;
+    }
+    let dy = e.scroll.y;
+    // PortalList: delta = -scroll → scroll.y > 0 moves toward the end.
+    if dy != 0.0 {
+        let toward_end = dy > 0.0;
+        let can_move = if toward_end {
+            !list.is_at_end()
+        } else {
+            list.first_id() > 0 || list.scroll_position() > 0.5
+        };
+        if can_move {
+            e.handled_y.set(true);
+        }
+    }
+    // Vertical lists do not scroll sideways — leave X for `app_hscroll` /
+    // ChipStrip so a diagonal trackpad flick does not freeze the page.
+}
+
+/// Horizontal `ScrollXView` (chip / tab strip / bottom nav): claim X only
+/// while the strip can still move that way; never claim Y so the page keeps
+/// vertical scroll when the pointer is over chips.
+fn claim_hstrip_nested_scroll(cx: &mut Cx, strip: &ViewRef, event: &Event) {
+    let Event::Scroll(e) = event else {
+        return;
+    };
+    let area = strip.area();
+    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
+        return;
+    }
+    let dx = e.scroll.x;
+    if dx == 0.0 {
+        return;
+    }
+    let pos = strip.get_scroll_pos().x;
+    let total = strip.get_scroll_view_total().x;
+    let seen = strip.get_scroll_view_visible().x;
+    let max_x = (total - seen).max(0.0);
+    // scroll.x > 0 typically reveals content to the left (pos decreases).
+    let toward_left = dx > 0.0;
+    let can_move = if toward_left {
+        pos > 1.0
+    } else {
+        pos < max_x - 1.0
+    };
+    if can_move {
+        e.handled_x.set(true);
+    }
 }
 
 /// Walk the country list one step from `from`, wrapping at both ends. A code
@@ -6798,14 +8211,40 @@ fn image_key_path(key: Option<&str>, dir: &std::path::Path) -> std::path::PathBu
     }
 }
 
+/// Small display copies of photos live beside the shop's item images.
+fn thumb_cache_dir() -> std::path::PathBuf {
+    let images = item_images_dir();
+    images
+        .parent()
+        .map(|p| p.join("thumbs"))
+        .unwrap_or_else(|| images.join("thumbs"))
+}
+
 /// Bind `ThumbAvatar` (`thumb` Image + `thumb_initials` Label).
-/// Photo when the file exists; otherwise name initials (1 word → 2 letters,
-/// 2+ words → first letter of each of the first two).
+/// Photo when its small copy is ready; otherwise name initials. Full-size
+/// decode is never done on the UI thread — see [`thumbs`].
 fn apply_thumb_avatar(cx: &mut Cx, root: &WidgetRef, name: &str, path: &std::path::Path) {
+    apply_thumb_avatar_kind(cx, root, name, path, thumbs::ThumbKind::Row);
+}
+
+fn apply_thumb_avatar_kind(
+    cx: &mut Cx,
+    root: &WidgetRef,
+    name: &str,
+    path: &std::path::Path,
+    kind: thumbs::ThumbKind,
+) {
     let img = root.image(cx, ids!(thumb));
     let initials_lbl = root.label(cx, ids!(thumb_initials));
-    let has_file = path.is_file();
-    let queued = has_file && load_thumb_at(cx, &img, path);
+    let thumb = if path.as_os_str().is_empty() {
+        None
+    } else {
+        thumbs::cached_or_request_kind(path, &thumb_cache_dir(), kind)
+    };
+    let has_file = thumb.is_some();
+    let queued = thumb
+        .as_deref()
+        .is_some_and(|small| load_thumb_at(cx, &img, small));
     if has_file {
         img.set_visible(cx, true);
         initials_lbl.set_visible(cx, false);
@@ -7274,9 +8713,8 @@ impl Widget for CustomerList {
                 st.locale.language.clone(),
             )
         };
-        // Same capped-list shape as ServerList / LanguageList / CurrencyList:
-        // room for up to 3 full rows, list scrolls inside (nested-scroll claim
-        // in handle_event). CustomerRow ≈ 68px (12+44+12) + 8px item pad.
+        // Capped list (Khaynjo practise): room for a few rows, list scrolls
+        // inside; page scrolls the form below via scroll chaining.
         const ROW: f64 = 76.0;
         const GAP: f64 = 6.0;
         let n = customers.len().max(1);
@@ -7295,11 +8733,17 @@ impl Widget for CustomerList {
                     let item = list.item(cx, item_id, id!(Item));
                     let is_selected = selected_id.as_deref() == Some(c.id.as_str());
                     let mark = if is_selected { "✓ " } else { "" };
+                    let role = c.kind_label.trim();
+                    let name_bit = if role.is_empty() {
+                        c.name.clone()
+                    } else {
+                        format!("{} · {}", c.name, role)
+                    };
                     let text = if c.balance_paise > 0 {
                         format!(
                             "{}{} · {} {}",
                             mark,
-                            c.name,
+                            name_bit,
                             locale::t(&lang, "owes_word"),
                             Money(c.balance_paise).format_localized(&currency, &fiscal)
                         )
@@ -7307,22 +8751,34 @@ impl Widget for CustomerList {
                         format!(
                             "{}{} · {} {}",
                             mark,
-                            c.name,
+                            name_bit,
                             locale::t(&lang, "advance"),
                             Money(-c.balance_paise).format_localized(&currency, &fiscal)
                         )
                     } else {
-                        format!("{}{}", mark, c.name)
+                        format!("{}{}", mark, name_bit)
                     };
+                    // Khaynjo practise: WrapLabel via widget() + plain_display_text
+                    // (Markdown escapes). `.label()` on WrapLabel drew blank rows.
                     item.widget(cx, ids!(label))
                         .set_text(cx, &plain_display_text(&text));
-                    let sub = if c.kind_label.trim().is_empty() {
-                        format!("ID: {}", c.id)
-                    } else {
-                        format!("ID: {} · {}", c.id, c.kind_label.trim())
+                    let phone = c.phone.trim();
+                    let addr = c.address.trim();
+                    let sub = match (phone.is_empty(), addr.is_empty()) {
+                        (true, true) => String::new(),
+                        (false, true) => phone.to_string(),
+                        (true, false) => addr.to_string(),
+                        (false, false) => format!("{phone} · {addr}"),
                     };
                     item.widget(cx, ids!(sublabel))
                         .set_text(cx, &plain_display_text(&sub));
+                    let dir = party_images_dir();
+                    let path = if c.image_key.trim().is_empty() {
+                        std::path::PathBuf::new()
+                    } else {
+                        image_key_path(Some(c.image_key.as_str()), &dir)
+                    };
+                    apply_thumb_avatar(cx, &item, &c.name, &path);
                     let pick_text = if is_selected {
                         locale::t(&lang, "selected_word")
                     } else {
@@ -7337,8 +8793,7 @@ impl Widget for CustomerList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        // Capped list (3 rows): pointer over it = the list owns the wheel/drag
-        // and scrolls internally; the page must not steal the gesture.
+        // Scroll chaining: list while it can move; page at the edge.
         claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
         claim_list_nested_scroll(cx, &self.view, event);
@@ -7815,10 +9270,10 @@ fn short_when(at: &str) -> String {
 
 /// A report row's text, right-aligned in right-to-left languages.
 fn set_report_label(cx: &mut Cx, item: &WidgetRef, id: &[LiveId], text: &str, align_x: f64) {
-    let label = item.label(cx, id);
-    label.set_text(cx, text);
-    if let Some(mut label) = label.borrow_mut() {
-        label.align.x = align_x;
+    let w = item.widget(cx, id);
+    w.set_text(cx, text);
+    if let Some(mut label) = w.borrow_mut::<WrapLabel>() {
+        label.set_text_align_x(align_x);
     }
 }
 
@@ -7884,8 +9339,8 @@ impl Widget for ReportText {
                         }
                         ReportRow::Kv(k, v) => {
                             let item = list.item(cx, item_id, if rtl { id!(KvRtl) } else { id!(Kv) });
-                            item.label(cx, ids!(k)).set_text(cx, k);
-                            item.label(cx, ids!(v)).set_text(cx, v);
+                            set_report_label(cx, &item, ids!(k), k, align_x);
+                            set_report_label(cx, &item, ids!(v), v, align_x);
                             item
                         }
                         ReportRow::Line(t) => {
@@ -7950,6 +9405,98 @@ impl ReportText {
     }
 }
 
+/// Settings → Sidebar: one row per chrome peer (order + show/hide).
+#[derive(Script, ScriptHook, Widget)]
+struct SidebarNavList {
+    #[deref]
+    view: View,
+}
+
+impl Widget for SidebarNavList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        const ROW: f64 = 96.0;
+        const GAP: f64 = 8.0;
+        let (order, hidden) = {
+            let st = app_state().lock().unwrap();
+            (st.nav_order.clone(), st.nav_hidden.clone())
+        };
+        let height = list_content_height(order.len(), ROW, GAP);
+        let walk = Walk {
+            height: Size::Fixed(height),
+            ..walk
+        };
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                list.set_item_range(cx, 0, order.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(tab) = order.get(item_id).copied() else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    let label = {
+                        // Labels match chrome paint (short names).
+                        let lang = app_state().lock().unwrap().locale.language.clone();
+                        match tab {
+                            NavTab::Books => locale::t(&lang, "books"),
+                            NavTab::Sell => locale::t(&lang, "sell"),
+                            NavTab::Favorites => locale::t(&lang, "favorites"),
+                            NavTab::Buy => locale::t(&lang, "buy"),
+                            NavTab::Rates => locale::t(&lang, "items"),
+                            NavTab::Ops => "Ops".into(),
+                            NavTab::Cod => "COD".into(),
+                            NavTab::Riders => locale::t(&lang, "riders"),
+                            NavTab::Sales => locale::t(&lang, "sales"),
+                            NavTab::DayClose => locale::t(&lang, "day_close"),
+                            NavTab::Reports => locale::t(&lang, "nav_reports"),
+                            NavTab::Inventory => locale::t(&lang, "inventory"),
+                            NavTab::Branches => locale::t(&lang, "branches"),
+                            NavTab::Credit => locale::t(&lang, "credit"),
+                            NavTab::Team => locale::t(&lang, "team"),
+                            NavTab::Settings => locale::t(&lang, "nav_settings"),
+                            NavTab::Lock => locale::t(&lang, "nav_lock"),
+                        }
+                    };
+                    let visible = nav_tab_is_visible(&hidden, tab);
+                    let always = nav_tab_always_visible(tab);
+                    let (hint, vis_label) = {
+                        let lang = app_state().lock().unwrap().locale.language.clone();
+                        let hint = if always {
+                            locale::t(&lang, "sidebar_always_on")
+                        } else if visible {
+                            locale::t(&lang, "sidebar_shown_hint")
+                        } else {
+                            locale::t(&lang, "sidebar_hidden_hint")
+                        };
+                        let vis_label = if visible {
+                            locale::t(&lang, "sidebar_shown")
+                        } else {
+                            locale::t(&lang, "sidebar_hidden")
+                        };
+                        (hint, vis_label)
+                    };
+                    item.widget(cx, ids!(name)).set_text(cx, &label);
+                    item.widget(cx, ids!(hint)).set_text(cx, &hint);
+                    let vis = item.button(cx, ids!(vis));
+                    vis.set_text(cx, &vis_label);
+                    vis.set_enabled(cx, !always);
+                    item.button(cx, ids!(up)).set_enabled(cx, item_id > 0);
+                    item.button(cx, ids!(down))
+                        .set_enabled(cx, item_id + 1 < order.len());
+                    item.draw_all_unscoped(cx);
+                }
+            }
+        }
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if page_owns_scroll(event) {
+            return;
+        }
+        self.view.handle_event(cx, event, scope);
+    }
+}
+
 /// Selectable display text (Markdown) with Label-like `visible` support.
 /// Stock Markdown/TextFlow ignore `set_visible`, which left empty-state copy
 /// on screen after products/cart lines appeared.
@@ -8004,6 +9551,155 @@ impl WrapLabel {
     }
 }
 
+/// Title row with an info control. Emits [`TooltipAction`] so the window
+/// [`CalloutTooltip`] can place a callout without covering the icon
+/// (below by default; flips / clamps when space is tight).
+#[derive(Script, ScriptHook, Widget)]
+struct InfoHelp {
+    #[source]
+    source: ScriptObjectRef,
+    #[deref]
+    view: View,
+    /// Body shown in the callout (locale string, may be multi-line).
+    #[live]
+    tip: String,
+    #[rust]
+    hovered: bool,
+}
+
+impl Widget for InfoHelp {
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let claimed_before = if let Event::MouseMove(_) = event {
+            event.pointer_claimed_area()
+        } else {
+            Area::Empty
+        };
+        self.view.handle_event(cx, event, scope);
+
+        if self.tip.is_empty() {
+            return;
+        }
+
+        let uid = self.widget_uid();
+        if let Event::Actions(actions) = event {
+            if self.view.button(cx, ids!(tip_btn)).clicked(actions) {
+                let rect = self.view.button(cx, ids!(tip_btn)).area().rect(cx);
+                cx.widget_action(
+                    uid,
+                    TooltipAction::HoverIn {
+                        text: self.tip.clone(),
+                        widget_rect: rect,
+                        options: info_help_tooltip_options(rect),
+                    },
+                );
+            }
+        }
+
+        match event {
+            Event::MouseMove(_) => {
+                let claimed_after = event.pointer_claimed_area();
+                let over = claimed_after != claimed_before && !claimed_after.is_empty();
+                if over != self.hovered {
+                    self.hovered = over;
+                    if over {
+                        let rect = self.view.button(cx, ids!(tip_btn)).area().rect(cx);
+                        cx.widget_action(
+                            uid,
+                            TooltipAction::HoverIn {
+                                text: self.tip.clone(),
+                                widget_rect: rect,
+                                options: info_help_tooltip_options(rect),
+                            },
+                        );
+                    } else {
+                        cx.widget_action(uid, TooltipAction::HoverOut);
+                    }
+                }
+            }
+            Event::MouseLeave(_) | Event::ClearHover => {
+                if self.hovered {
+                    self.hovered = false;
+                    cx.widget_action(uid, TooltipAction::HoverOut);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        self.view.draw_walk(cx, scope, walk)
+    }
+
+    fn text(&self) -> String {
+        self.tip.clone()
+    }
+
+    fn set_text(&mut self, _cx: &mut Cx, v: &str) {
+        self.tip = v.to_string();
+    }
+}
+
+impl InfoHelpRef {
+    fn set_title(&self, cx: &mut Cx, title: &str) {
+        self.label(cx, ids!(title)).set_text(cx, title);
+    }
+
+    fn set_nav_icon(&self, cx: &mut Cx, tab: NavTab) {
+        load_nav_icon_once(cx, &self.image(cx, ids!(icon)), tab);
+    }
+
+    fn set_tip(&self, tip: &str) {
+        if let Some(mut inner) = self.borrow_mut() {
+            inner.tip = tip.to_string();
+        }
+    }
+}
+
+/// Page heading WrapLabel + matching colored nav PNG (left of the title).
+fn paint_page_title_icon(cx: &mut Cx, ui: &WidgetRef, icon_id: &[LiveId], tab: NavTab) {
+    load_nav_icon_once(cx, &ui.image(cx, icon_id), tab);
+}
+
+/// Decode a nav WebP into `img` only when the tab (or empty image) changed.
+/// Re-loading + `redraw` on every chrome sync scheduled endless frames.
+fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) {
+    static LOADED: OnceLock<Mutex<std::collections::HashMap<u64, &'static str>>> = OnceLock::new();
+    let loaded = LOADED.get_or_init(|| Mutex::new(std::collections::HashMap::new()));
+    let uid = img.widget_uid().0;
+    let key = nav_tab_key(tab);
+    {
+        let map = loaded.lock().unwrap();
+        if map.get(&uid).copied() == Some(key) {
+            img.set_visible(cx, true);
+            return;
+        }
+    }
+    let _ = img.load_image_from_data(cx, nav_tab_icon_bytes(tab));
+    loaded.lock().unwrap().insert(uid, key);
+    img.set_visible(cx, true);
+}
+
+fn info_help_tooltip_options(widget_rect: Rect) -> CalloutTooltipOptions {
+    // Prefer below (toolbar-like). If the icon sits near the right edge,
+    // open to the left so a wide tip stays on-screen; near the left edge,
+    // open to the right. CalloutTooltip still flips/clamps within that side.
+    let icon_right = widget_rect.pos.x + widget_rect.size.x;
+    let position = if widget_rect.pos.x < 120.0 {
+        TooltipPosition::Right
+    } else if icon_right > 640.0 {
+        // Typical phone/tablet width; CalloutTooltip also clamps to the pass.
+        TooltipPosition::Left
+    } else {
+        TooltipPosition::Bottom
+    };
+    CalloutTooltipOptions {
+        position,
+        text_color: vec4(1.0, 1.0, 1.0, 1.0),
+        bg_color: vec4(0.027, 0.125, 0.345, 0.97), // #072058
+        triangle_height: 8.0,
+    }
+}
+
 /// Designed (left-to-right) `align.x` of labels/inputs, captured the
 /// first time a right-to-left language right-aligns them, so switching
 /// back restores the exact original layout.
@@ -8013,10 +9709,8 @@ static ORIG_TEXT_ALIGN: std::sync::LazyLock<
 
 /// Sideways-scrolling tab strips: (wrapper holding the ‹ › chevrons, the
 /// scroll view itself).
-const TAB_STRIPS: [(&[LiveId], &[LiveId]); 5] = [
+const TAB_STRIPS: [(&[LiveId], &[LiveId]); 3] = [
     (ids!(feat_tabs), ids!(feat_tabs.tabs)),
-    (ids!(staff_role_tabs), ids!(staff_role_tabs.tabs)),
-    (ids!(kind_tabs), ids!(kind_tabs.tabs)),
     (ids!(lock_role_tabs), ids!(lock_role_tabs.tabs)),
     (ids!(bottom_nav_tabs), ids!(bottom_nav_scroll)),
 ];
@@ -8255,7 +9949,7 @@ impl App {
         let _ = st.refresh_local_servers();
         match opened {
             Ok(store) => {
-                st.status = format!("Local DB: {}", store.db_path().display());
+                st.status = String::new();
                 st.store = Some(store);
                 let _ = st.reload_all();
                 if let Some(store) = st.store.as_mut() {
@@ -8453,11 +10147,7 @@ impl App {
                 LANGUAGES.len(),
                 CURRENCIES.len()
             );
-            let empty_msg = if st.products.is_empty() {
-                "No items yet. Open Items to add your rates or products.".to_string()
-            } else {
-                st.t("empty_catalog")
-            };
+            let empty_msg = st.t("empty_catalog");
             let natural_label = st.money(st.cart.actual_total());
             let applied_label = st.money(st.cart.applied_total());
             let total_input = locale::format_major_input_ex(
@@ -8644,9 +10334,21 @@ impl App {
             )
         };
 
-        self.ui
-            .widget(cx, ids!(today_label))
-            .set_text(cx, &plain_display_text(&today));
+        {
+            let st = app_state().lock().unwrap();
+            let visible = amount_key_visible(
+                st.amounts_screen_hidden,
+                &st.amount_keys_hidden,
+                "today",
+            );
+            let screen_eye = eye_glyph(!st.amounts_screen_hidden);
+            drop(st);
+            self.ui.widget(cx, ids!(today_label)).set_text(
+                cx,
+                &plain_display_text(&display_sensitive(&today, visible)),
+            );
+            self.ui.button(cx, ids!(amounts_eye)).set_text(cx, screen_eye);
+        }
         self.ui
             .widget(cx, ids!(session_label))
             .set_text(cx, &plain_display_text(&session_line));
@@ -8700,9 +10402,8 @@ impl App {
         self.ui
             .view(cx, ids!(lock_staff_row))
             .set_visible(cx, !lock_as_owner);
-        self.ui
-            .widget(cx, ids!(db_path_label))
-            .set_text(cx, &plain_display_text(&db));
+        let _ = db;
+        self.ui.widget(cx, ids!(db_path_label)).set_visible(cx, false);
         {
             // Automatic backups: when the last one ran, where they are, and
             // whether the second copy works.
@@ -9122,7 +10823,7 @@ impl App {
             .widget(cx, ids!(undo_snack_label))
             .set_text(cx, &plain_display_text(&undo_snack_text));
 
-        let (credit_chip, credit_summary, credit_recent, empty_hint) = {
+        let (credit_chip, empty_hint, parties_heading, party_picked) = {
             let st = app_state().lock().unwrap();
             let credit_chip = match &st.selected_customer_id {
                 Some(id) => st
@@ -9162,68 +10863,39 @@ impl App {
                     }
                 }
             };
-            let open: i64 = st.customers.iter().map(|c| c.balance_paise.max(0)).sum();
-            let prepaid: i64 = st.customers.iter().map(|c| (-c.balance_paise).max(0)).sum();
-            // Per-language sentence with {} slots filled in order.
-            let credit_summary = st
-                .t("credit_summary_fmt")
-                .replacen("{}", &st.customers.len().to_string(), 1)
-                .replacen("{}", &st.money(Money(open)), 1)
-                .replacen("{}", &st.money(Money(prepaid)), 1);
-            // The picked party's latest ledger entries, one row each.
-            let mut credit_recent = Vec::new();
-            if let Some(id) = &st.selected_customer_id
-                && let Some(store) = st.store.as_ref()
-                && let Ok(entries) = store.list_credit_ledger(id, 6)
-                && !entries.is_empty()
-            {
-                credit_recent.push(report_head(&st.t("recent_label")));
-                credit_recent.extend(entries.iter().map(|entry| {
-                    ReportRow::Kv(
-                        format!("{} · {}", &entry.created_at[..entry.created_at.len().min(10)], entry.kind),
-                        st.money(Money(entry.amount_paise)),
-                    )
-                }));
-            }
             let empty_hint = if st.customers.is_empty() {
                 "No saved customers yet — type a name above."
             } else {
                 "Tap Pick to use a saved customer."
             };
-            (credit_chip, credit_summary, credit_recent, empty_hint)
-        };
-        {
-            let (selected_label, form_btn_label) = {
-                let st = app_state().lock().unwrap();
-                match st
-                    .selected_customer_id
-                    .as_ref()
-                    .and_then(|id| st.customers.iter().find(|c| &c.id == id))
-                {
-                    Some(c) => {
-                        let kind = if c.kind_label.trim().is_empty() {
-                            String::new()
-                        } else {
-                            format!(" ({})", c.kind_label.trim())
-                        };
-                        (
-                            format!(
-                                "Editing: {}{} — change the form, tap Save changes. Credit limit, settle, pay and notes below also use this party.",
-                                c.name, kind
-                            ),
-                            "Save changes",
-                        )
-                    }
-                    None => (
-                        "New party — fill the form and tap Add party, or Pick a party from the list to edit it."
-                            .to_string(),
-                        "Add party",
-                    ),
-                }
+            let parties_heading = if st.customers.is_empty() {
+                "Saved parties".to_string()
+            } else {
+                format!("Saved parties ({})", st.customers.len())
             };
-            self.ui
-                .widget(cx, ids!(party_selected_label))
-                .set_text(cx, &plain_display_text(&selected_label));
+            let party_picked = st.selected_customer_id.is_some();
+            (credit_chip, empty_hint, parties_heading, party_picked)
+        };
+        self.ui
+            .widget(cx, ids!(parties_list_heading))
+            .set_text(cx, &plain_display_text(&parties_heading));
+        self.ui
+            .view(cx, ids!(party_detail))
+            .set_visible(cx, party_picked);
+        self.ui
+            .button(cx, ids!(party_delete))
+            .set_visible(cx, party_picked);
+        // Always available — after Add the form clears itself; Clear still
+        // abandons an in-progress edit without saving.
+        self.ui
+            .button(cx, ids!(party_form_clear))
+            .set_visible(cx, true);
+        {
+            let form_btn_label = if party_picked {
+                "Save changes"
+            } else {
+                "Add party"
+            };
             self.ui
                 .button(cx, ids!(credit_add_btn))
                 .set_text(cx, form_btn_label);
@@ -9231,10 +10903,6 @@ impl App {
         self.ui
             .widget(cx, ids!(credit_chip))
             .set_text(cx, &plain_display_text(&credit_chip));
-        self.ui
-            .widget(cx, ids!(credit_summary_label))
-            .set_text(cx, &plain_display_text(&credit_summary));
-        self.set_report_rows(cx, ids!(credit_recent_list), credit_recent);
         self.ui
             .widget(cx, ids!(customers_empty_hint))
             .set_text(cx, &plain_display_text(empty_hint));
@@ -9384,6 +11052,28 @@ impl App {
                 &attach_txt,
                 "(no attachments yet — select a party)",
             );
+        }
+        {
+            let (custom_rows, lang) = {
+                let st = app_state().lock().unwrap();
+                let lang = st.locale.language.clone();
+                let rows = match st
+                    .selected_customer_id
+                    .as_ref()
+                    .and_then(|id| st.customers.iter().find(|c| &c.id == id))
+                {
+                    Some(c) if !c.custom_fields.is_empty() => c
+                        .custom_fields
+                        .iter()
+                        .map(|f| ReportRow::Kv(f.key.clone(), f.value.clone()))
+                        .collect::<Vec<_>>(),
+                    Some(_) => vec![ReportRow::Line(locale::t(&lang, "party_custom_empty"))],
+                    None => vec![ReportRow::Line(locale::t(&lang, "party_custom_pick_first"))],
+                };
+                (rows, lang)
+            };
+            let _ = lang;
+            self.set_report_rows(cx, ids!(party_custom_list), custom_rows);
         }
         {
             // Bill-wise lists for the selected party (numbers match the
@@ -9539,6 +11229,36 @@ impl App {
             let preview = self.ui.widget(cx, ids!(draft_preview));
             apply_thumb_avatar(cx, &preview, &name, &path);
         }
+        let party_image_hint = {
+            let st = app_state().lock().unwrap();
+            let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
+            match st.draft_party_image_key.as_deref() {
+                Some(k) if k.starts_with("pending_custom:") => {
+                    "Logo: new file selected — tap Add / Save".to_string()
+                }
+                Some(k) if k.starts_with("custom:") => {
+                    format!("Logo: {}", menu_images::describe_image(Some(k), &name))
+                }
+                Some(_) => menu_images::describe_image(st.draft_party_image_key.as_deref(), &name),
+                None => "Logo: none (initials)".to_string(),
+            }
+        };
+        self.ui
+            .widget(cx, ids!(party_image_hint))
+            .set_text(cx, &plain_display_text(&party_image_hint));
+        {
+            let (draft_key, name) = {
+                let st = app_state().lock().unwrap();
+                (
+                    st.draft_party_image_key.clone(),
+                    self.ui.text_input(cx, ids!(credit_add_name)).text(),
+                )
+            };
+            let dir = party_images_dir();
+            let path = image_key_path(draft_key.as_deref(), &dir);
+            let preview = self.ui.widget(cx, ids!(party_draft_preview));
+            apply_thumb_avatar(cx, &preview, &name, &path);
+        }
 
         // Team: who is being edited, and their rights (draft until Save).
         {
@@ -9585,8 +11305,10 @@ impl App {
         }
 
         self.sync_venue_brand(cx);
+        self.sync_awb_pools_label(cx);
 
         self.show_screen(cx, screen);
+        self.hide_docs_and_debug_chrome(cx);
         {
             let st = app_state().lock().unwrap();
             let pair_label = if st.device_role == DeviceRole::Server {
@@ -9727,41 +11449,135 @@ impl App {
             self.ui
                 .text_input(cx, ids!(credit_add_name))
                 .set_empty_text(cx, new_cust_ph);
-            self.ui
-                .widget(cx, ids!(day_close_label))
-                .set_text(cx, &plain_display_text(&day_close));
-            // Books home stat cards: each figure is its own label/value
-            // pair (Store::books_overview) instead of one text paragraph.
+            {
+                let visible = {
+                    let st = app_state().lock().unwrap();
+                    amount_key_visible(
+                        st.amounts_screen_hidden,
+                        &st.amount_keys_hidden,
+                        "day_close",
+                    )
+                };
+                self.ui.widget(cx, ids!(day_close_label)).set_text(
+                    cx,
+                    &plain_display_text(&display_sensitive(&day_close, visible)),
+                );
+            }
+            // Books home: each figure has its own eye (persisted).
             {
                 let overview = {
                     let st = app_state().lock().unwrap();
                     st.store.as_ref().and_then(|s| s.books_overview().ok())
                 };
                 if let Some(o) = overview {
-                    let mut set = |id: &[LiveId], text: &str| {
-                        self.ui
-                            .widget(cx, id)
-                            .set_text(cx, &plain_display_text(text));
-                    };
-                    set(ids!(books_in_value), &o.money_in);
-                    set(ids!(books_purchases_value), &o.purchases);
-                    set(ids!(books_expenses_value), &o.expenses);
-                    set(ids!(books_gross_value), &o.gross);
-                    set(ids!(books_net_value), &o.net);
-                    set(ids!(books_declared_name), &o.lane_declared_label);
-                    set(ids!(books_declared_value), &o.lane_declared);
-                    set(ids!(books_owner_name), &o.lane_owner_label);
-                    set(ids!(books_owner_value), &o.lane_owner);
-                    set(ids!(books_cash_value), &o.cash);
-                    set(ids!(books_digital_name), &o.digital_label);
-                    set(ids!(books_digital_value), &o.digital);
-                    set(ids!(books_card_value), &o.card);
-                    set(ids!(books_they_owe_value), &o.they_owe);
-                    set(ids!(books_we_owe_value), &o.we_owe);
-                    set(ids!(books_bank_balance_value), &o.bank_balance);
-                    set(ids!(books_bank_net_value), &o.bank_net_today);
+                    self.ui
+                        .widget(cx, ids!(books_declared_name))
+                        .set_text(cx, &plain_display_text(&o.lane_declared_label));
+                    self.ui
+                        .widget(cx, ids!(books_owner_name))
+                        .set_text(cx, &plain_display_text(&o.lane_owner_label));
+                    self.ui
+                        .widget(cx, ids!(books_digital_name))
+                        .set_text(cx, &plain_display_text(&o.digital_label));
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_in_value),
+                        ids!(books_in_eye),
+                        "books_in",
+                        &o.money_in,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_purchases_value),
+                        ids!(books_purchases_eye),
+                        "books_purchases",
+                        &o.purchases,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_expenses_value),
+                        ids!(books_expenses_eye),
+                        "books_expenses",
+                        &o.expenses,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_gross_value),
+                        ids!(books_gross_eye),
+                        "books_gross",
+                        &o.gross,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_net_value),
+                        ids!(books_net_eye),
+                        "books_net",
+                        &o.net,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_declared_value),
+                        ids!(books_declared_eye),
+                        "books_declared",
+                        &o.lane_declared,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_owner_value),
+                        ids!(books_owner_eye),
+                        "books_owner",
+                        &o.lane_owner,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_cash_value),
+                        ids!(books_cash_eye),
+                        "books_cash",
+                        &o.cash,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_digital_value),
+                        ids!(books_digital_eye),
+                        "books_digital",
+                        &o.digital,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_card_value),
+                        ids!(books_card_eye),
+                        "books_card",
+                        &o.card,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_they_owe_value),
+                        ids!(books_they_owe_eye),
+                        "books_they_owe",
+                        &o.they_owe,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_we_owe_value),
+                        ids!(books_we_owe_eye),
+                        "books_we_owe",
+                        &o.we_owe,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_bank_balance_value),
+                        ids!(books_bank_balance_eye),
+                        "books_bank_balance",
+                        &o.bank_balance,
+                    );
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_bank_net_value),
+                        ids!(books_bank_net_eye),
+                        "books_bank_net",
+                        &o.bank_net_today,
+                    );
                 }
-                // Perpetual till: every recorded cash movement, all time.
                 let till = {
                     let st = app_state().lock().unwrap();
                     st.store
@@ -9770,14 +11586,30 @@ impl App {
                         .map(|v| st.money(Money(v)))
                 };
                 if let Some(till) = till {
-                    self.ui
-                        .widget(cx, ids!(books_till_value))
-                        .set_text(cx, &plain_display_text(&till));
+                    self.paint_amount_value(
+                        cx,
+                        ids!(books_till_value),
+                        ids!(books_till_eye),
+                        "books_till",
+                        &till,
+                    );
                 }
             }
-            self.ui
-                .widget(cx, ids!(reports_label))
-                .set_text(cx, &plain_display_text(&day_close));
+            self.sync_books_sections(cx);
+            {
+                let visible = {
+                    let st = app_state().lock().unwrap();
+                    amount_key_visible(
+                        st.amounts_screen_hidden,
+                        &st.amount_keys_hidden,
+                        "reports",
+                    )
+                };
+                self.ui.widget(cx, ids!(reports_label)).set_text(
+                    cx,
+                    &plain_display_text(&display_sensitive(&day_close, visible)),
+                );
+            }
             let ops_facet = !matches!(reports_nav, ReportsNav::Bank);
             self.ui.view(cx, ids!(ops_desk)).set_visible(cx, ops_facet);
             self.ui
@@ -10045,11 +11877,13 @@ impl App {
             self.ui.button(cx, ids!(more_cod)).set_visible(cx, false);
             self.ui.button(cx, ids!(more_riders)).set_visible(cx, false);
             self.ui.button(cx, ids!(more_lock)).set_visible(cx, false);
-            // Slots are positions: visibility and enabled state follow the
-            // tab the user's arrangement puts in each slot, on both surfaces.
+            // Slots pack the visible arrangement; capability gates still apply.
             // (Stock/branches stay Server-only: a Client's copy is a sync
             // cache, so every write there would be lost.)
-            let order = app_state().lock().unwrap().nav_order.clone();
+            let order = {
+                let st = app_state().lock().unwrap();
+                nav_display_order(&st.nav_order, &st.nav_hidden)
+            };
             for rail in [false, true] {
                 let wrappers = self.nav_slot_wrappers(rail);
                 let pairs = if rail {
@@ -10057,7 +11891,11 @@ impl App {
                 } else {
                     self.bottom_nav_pairs()
                 };
-                for (slot, tab) in order.iter().enumerate() {
+                for slot in 0..NAV_TABS.len() {
+                    let Some(tab) = order.get(slot).copied() else {
+                        self.ui.view(cx, wrappers[slot]).set_visible(cx, false);
+                        continue;
+                    };
                     let visible = match tab {
                         NavTab::Books
                         | NavTab::Sell
@@ -10209,12 +12047,16 @@ impl App {
                         locale::t(&lang, "facet_riders_help"),
                     ),
                 };
-                self.ui
-                    .widget(cx, ids!(reports_title))
-                    .set_text(cx, &plain_display_text(&title));
-                self.ui
-                    .widget(cx, ids!(reports_help))
-                    .set_text(cx, &plain_display_text(&help));
+                let help_w = self.ui.widget(cx, ids!(reports_help)).as_info_help();
+                help_w.set_title(cx, &title);
+                help_w.set_tip(&plain_display_text(&help));
+                let facet_tab = match reports_nav {
+                    ReportsNav::Bank => NavTab::Reports,
+                    ReportsNav::Ops => NavTab::Ops,
+                    ReportsNav::Cod => NavTab::Cod,
+                    ReportsNav::Riders => NavTab::Riders,
+                };
+                help_w.set_nav_icon(cx, facet_tab);
             }
         }
         // Re-apply after chrome labels — hot-reload / focus must not leave the
@@ -10293,10 +12135,13 @@ impl App {
             *nav_suppress_click().lock().unwrap() = false;
             return None;
         }
-        let order = app_state().lock().unwrap().nav_order.clone();
+        let order = {
+            let st = app_state().lock().unwrap();
+            nav_display_order(&st.nav_order, &st.nav_hidden)
+        };
         let bottom = self.bottom_nav_pairs();
         let rail = self.rail_nav_pairs();
-        for slot in 0..NAV_TABS.len() {
+        for slot in 0..order.len() {
             if self.choice_chip_clicked(cx, actions, bottom[slot].0, bottom[slot].1)
                 || self.choice_chip_clicked(cx, actions, rail[slot].0, rail[slot].1)
             {
@@ -10340,6 +12185,7 @@ impl App {
             books_report_kind,
             device_role,
             picking_server,
+            amend_pay,
         ) = {
             let st = app_state().lock().unwrap();
             (
@@ -10351,6 +12197,7 @@ impl App {
                 st.books_report_kind,
                 st.device_role,
                 st.picking_server,
+                st.amend_pay,
             )
         };
         self.paint_choice_pair(
@@ -10431,6 +12278,13 @@ impl App {
             matches!(money_lane, MoneyLane::Owner),
         );
         self.paint_choice_pair(cx, ids!(buy_paid), ids!(buy_paid_on), !buy_on_account);
+        for (idle, on, m) in [
+            (ids!(amend_pay_cash), ids!(amend_pay_cash_on), PayMethod::Cash),
+            (ids!(amend_pay_upi), ids!(amend_pay_upi_on), PayMethod::Upi),
+            (ids!(amend_pay_card), ids!(amend_pay_card_on), PayMethod::Card),
+        ] {
+            self.paint_choice_pair(cx, idle, on, amend_pay == m);
+        }
         self.paint_choice_pair(
             cx,
             ids!(lang_setup_platform),
@@ -10508,6 +12362,30 @@ impl App {
             ids!(credit_kind_supplier_on),
             kind_norm == "Supplier",
         );
+        let scope_intl = app_state().lock().unwrap().booking_scope_international;
+        self.paint_choice_pair(
+            cx,
+            ids!(booking_scope_domestic),
+            ids!(booking_scope_domestic_on),
+            !scope_intl,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(booking_scope_intl),
+            ids!(booking_scope_intl_on),
+            scope_intl,
+        );
+        {
+            let lang = app_state().lock().unwrap().locale.language.clone();
+            let scope_hint = if scope_intl {
+                locale::t(&lang, "booking_scope_hint_intl")
+            } else {
+                locale::t(&lang, "booking_scope_hint_domestic")
+            };
+            self.ui
+                .widget(cx, ids!(booking_scope_hint))
+                .set_text(cx, &scope_hint);
+        }
         // Keep lane labels current on both faces.
         let (declared, owner) = {
             let st = app_state().lock().unwrap();
@@ -10647,9 +12525,7 @@ impl App {
         self.align_label(cx, ids!(cart_charge_caption), rtl);
         self.align_label(cx, ids!(cart_round_hint), rtl);
         self.align_label(cx, ids!(undo_snack_label), rtl);
-        self.align_label(cx, ids!(party_selected_label), rtl);
         self.align_label(cx, ids!(credit_chip), rtl);
-        self.align_label(cx, ids!(credit_summary_label), rtl);
         self.align_label(cx, ids!(customers_empty_hint), rtl);
         self.align_label(cx, ids!(approval_hint), rtl);
         self.align_label(cx, ids!(sale_selected_label), rtl);
@@ -10678,8 +12554,6 @@ impl App {
         self.align_label(cx, ids!(onboard_status), rtl);
         self.align_label(cx, ids!(client_pair_status), rtl);
         self.align_label(cx, ids!(client_queue_label), rtl);
-        self.align_label(cx, ids!(reports_title), rtl);
-        self.align_label(cx, ids!(reports_help), rtl);
         self.align_label(cx, ids!(setup_lang_list), rtl);
         self.align_label(cx, ids!(language_list), rtl);
         self.align_label(cx, ids!(h_qty_cap), rtl);
@@ -10741,7 +12615,6 @@ impl App {
         self.align_label(cx, ids!(h_units_help), rtl);
         self.align_label(cx, ids!(h_measures_help_moklanjo), rtl);
         self.align_label(cx, ids!(h_restore_help), rtl);
-        self.align_label(cx, ids!(h_day_close_help), rtl);
         self.align_label(cx, ids!(h_stock_type_help), rtl);
         self.align_label(cx, ids!(h_branch_export_help), rtl);
         self.align_label(cx, ids!(h_book_add_product), rtl);
@@ -10760,6 +12633,8 @@ impl App {
         self.align_label(cx, ids!(h_paid_by), rtl);
         self.align_label(cx, ids!(h_second_way), rtl);
         self.align_label(cx, ids!(h_notes_attach_sale), rtl);
+        self.align_label(cx, ids!(h_party_custom_heading), rtl);
+        self.align_label(cx, ids!(party_custom_help), rtl);
         self.align_label(cx, ids!(h_credit_limit_heading), rtl);
         self.align_label(cx, ids!(h_pay_selected_heading), rtl);
         self.align_label(cx, ids!(h_write_off_heading), rtl);
@@ -10791,24 +12666,16 @@ impl App {
         self.align_label(cx, ids!(h_spreadsheet_csv), rtl);
         self.align_label(cx, ids!(h_goods_received_2), rtl);
         self.align_label(cx, ids!(shop_badge), rtl);
-        self.align_label(cx, ids!(books_heading), rtl);
-        self.align_label(cx, ids!(books_help), rtl);
         self.align_label(cx, ids!(favorites_heading), rtl);
         self.align_label(cx, ids!(favorites_help), rtl);
         self.align_label(cx, ids!(favorites_empty), rtl);
-        self.align_label(cx, ids!(buy_heading), rtl);
-        self.align_label(cx, ids!(buy_help), rtl);
         self.align_label(cx, ids!(money_lane_label), rtl);
         self.align_label(cx, ids!(menu_mode_label), rtl);
-        self.align_label(cx, ids!(items_heading), rtl);
-        self.align_label(cx, ids!(items_help_label), rtl);
         self.align_label(cx, ids!(more_heading), rtl);
         self.align_label(cx, ids!(sales_title), rtl);
         self.align_label(cx, ids!(credit_title), rtl);
-        self.align_label(cx, ids!(credit_help), rtl);
         self.align_label(cx, ids!(team_title), rtl);
         self.align_label(cx, ids!(settings_title), rtl);
-        self.align_label(cx, ids!(day_close_title), rtl);
         self.align_label(cx, ids!(inventory_title), rtl);
         self.align_label(cx, ids!(branches_title), rtl);
         self.align_label(cx, ids!(setup_lang_title), rtl);
@@ -10923,6 +12790,9 @@ impl App {
         self.align_input(cx, ids!(buy_exp_part2), rtl);
         self.align_input(cx, ids!(mix_credit_input), rtl);
         self.align_input(cx, ids!(credit_add_phone), rtl);
+        self.align_input(cx, ids!(credit_add_address), rtl);
+        self.align_input(cx, ids!(party_custom_key), rtl);
+        self.align_input(cx, ids!(party_custom_value), rtl);
         self.align_input(cx, ids!(credit_limit_input), rtl);
         self.align_input(cx, ids!(writeoff_amount_input), rtl);
         self.align_input(cx, ids!(writeoff_reason_input), rtl);
@@ -11141,9 +13011,12 @@ impl App {
         self.ui
             .widget(cx, ids!(h_restore_help))
             .set_text(cx, &plain_display_text(&s("restore_help")));
-        self.ui
-            .widget(cx, ids!(h_day_close_help))
-            .set_text(cx, &plain_display_text(&s("day_close_help")));
+        {
+            let help = self.ui.widget(cx, ids!(day_close_help)).as_info_help();
+            help.set_title(cx, &s("day_close"));
+            help.set_nav_icon(cx, NavTab::DayClose);
+            help.set_tip(&plain_display_text(&s("day_close_help")));
+        }
         self.ui
             .widget(cx, ids!(h_stock_type_help))
             .set_text(cx, &plain_display_text(&s("stock_type_help")));
@@ -11192,6 +13065,18 @@ impl App {
         self.ui
             .widget(cx, ids!(h_notes_attach_sale))
             .set_text(cx, &plain_display_text(&s("notes_attach_sale")));
+        self.ui
+            .widget(cx, ids!(h_party_custom_heading))
+            .set_text(cx, &plain_display_text(&s("party_custom_fields_heading")));
+        self.ui
+            .widget(cx, ids!(party_custom_help))
+            .set_text(cx, &plain_display_text(&s("party_custom_help")));
+        self.ui
+            .button(cx, ids!(party_custom_add))
+            .set_text(cx, &s("party_custom_add"));
+        self.ui
+            .button(cx, ids!(party_custom_remove))
+            .set_text(cx, &s("party_custom_remove"));
         self.ui
             .widget(cx, ids!(h_credit_limit_heading))
             .set_text(cx, &plain_display_text(&s("credit_limit_heading")));
@@ -11495,10 +13380,10 @@ impl App {
             .set_text(cx, &s("role_consignor"));
         self.ui
             .button(cx, ids!(credit_kind_supplier))
-            .set_text(cx, &s("supplier_ph"));
+            .set_text(cx, &s("role_supplier"));
         self.ui
             .button(cx, ids!(credit_kind_supplier_on))
-            .set_text(cx, &s("supplier_ph"));
+            .set_text(cx, &s("role_supplier"));
         self.ui
             .text_input(cx, ids!(credit_limit_party))
             .set_empty_text(cx, s("party_name_selected_ph"));
@@ -11936,6 +13821,72 @@ impl App {
             .button(cx, ids!(venue_brand_save))
             .set_text(cx, &s("save_brand"));
         self.ui
+            .widget(cx, ids!(h_print_faces))
+            .set_text(cx, &plain_display_text(&s("print_faces")));
+        self.ui
+            .widget(cx, ids!(print_faces_hint))
+            .set_text(cx, &plain_display_text(&s("print_faces_help")));
+        self.ui
+            .button(cx, ids!(print_stamp_pick))
+            .set_text(cx, &s("choose_receipt_stamp"));
+        self.ui
+            .button(cx, ids!(print_stamp_clear))
+            .set_text(cx, &s("clear_stamp"));
+        self.ui
+            .button(cx, ids!(print_qr_pick))
+            .set_text(cx, &s("choose_payment_qr"));
+        self.ui
+            .button(cx, ids!(print_qr_clear))
+            .set_text(cx, &s("clear_payment_qr"));
+        self.ui
+            .widget(cx, ids!(h_awb_pools))
+            .set_text(cx, &plain_display_text(&s("awb_pools_heading")));
+        self.ui
+            .button(cx, ids!(awb_pool_add))
+            .set_text(cx, &s("add_awb_pool"));
+        self.ui
+            .text_input(cx, ids!(awb_pool_carrier_input))
+            .set_empty_text(cx, s("awb_pool_carrier_ph"));
+        self.ui
+            .text_input(cx, ids!(awb_pool_start_input))
+            .set_empty_text(cx, s("awb_pool_start_ph"));
+        self.ui
+            .text_input(cx, ids!(awb_pool_end_input))
+            .set_empty_text(cx, s("awb_pool_end_ph"));
+        self.ui
+            .text_input(cx, ids!(awb_pool_prefix_input))
+            .set_empty_text(cx, s("awb_pool_prefix_ph"));
+        self.ui
+            .text_input(cx, ids!(awb_pool_label_input))
+            .set_empty_text(cx, s("awb_pool_label_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_pieces_input))
+            .set_empty_text(cx, s("pieces_ph"));
+        self.ui
+            .text_input(cx, ids!(ops_bulk_awb_input))
+            .set_empty_text(cx, s("bulk_awbs_ph"));
+        self.ui
+            .text_input(cx, ids!(settle_tds_input))
+            .set_empty_text(cx, s("tds_cut_ph"));
+        self.ui
+            .text_input(cx, ids!(settle_discount_input))
+            .set_empty_text(cx, s("discount_ph"));
+        self.ui
+            .text_input(cx, ids!(settle_cheque_input))
+            .set_empty_text(cx, s("cheque_no_ph"));
+        self.ui
+            .button(cx, ids!(reports_bill_chase))
+            .set_text(cx, &s("bill_reminder_chase"));
+        self.ui
+            .button(cx, ids!(credit_bill_chase))
+            .set_text(cx, &s("bill_reminder_chase"));
+        self.ui
+            .button(cx, ids!(reports_month_mix))
+            .set_text(cx, &s("month_mix_report"));
+        self.ui
+            .button(cx, ids!(csv_copy_gst_month))
+            .set_text(cx, &s("copy_month_gst_csv"));
+        self.ui
             .button(cx, ids!(venue_icon_clear))
             .set_text(cx, &s("clear_icon"));
         self.ui
@@ -12044,6 +13995,15 @@ impl App {
         self.ui
             .text_input(cx, ids!(credit_add_phone))
             .set_empty_text(cx, s("phone_ph"));
+        self.ui
+            .text_input(cx, ids!(credit_add_address))
+            .set_empty_text(cx, s("address_ph"));
+        self.ui
+            .text_input(cx, ids!(party_custom_key))
+            .set_empty_text(cx, s("party_custom_key_ph"));
+        self.ui
+            .text_input(cx, ids!(party_custom_value))
+            .set_empty_text(cx, s("party_custom_value_ph"));
         self.ui
             .text_input(cx, ids!(credit_limit_input))
             .set_empty_text(cx, s("credit_limit_ph"));
@@ -12170,12 +14130,18 @@ impl App {
         self.ui
             .text_input(cx, ids!(branch_code_input))
             .set_empty_text(cx, s("short_code_ph"));
-        self.ui
-            .widget(cx, ids!(booking_help))
-            .set_text(cx, &plain_display_text(&s("booking_help")));
-        self.ui
-            .widget(cx, ids!(ops_desk_help))
-            .set_text(cx, &plain_display_text(&s("ops_desk_help")));
+        {
+            let help = self.ui.widget(cx, ids!(booking_help)).as_info_help();
+            help.set_title(cx, &s("sell"));
+            help.set_nav_icon(cx, NavTab::Sell);
+            help.set_tip(&plain_display_text(&s("booking_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(ops_desk_help)).as_info_help();
+            help.set_title(cx, &s("facet_ops_title"));
+            help.set_nav_icon(cx, NavTab::Ops);
+            help.set_tip(&plain_display_text(&s("ops_desk_help")));
+        }
     }
 
     fn paint_chrome(&mut self, cx: &mut Cx) {
@@ -12198,9 +14164,11 @@ impl App {
         let settings = s("nav_settings");
         let lock = s("nav_lock");
         let riders = s("riders");
-        // Slots are positions; the tab (and so the label) each slot wears
-        // comes from the user's saved arrangement.
-        let order = app_state().lock().unwrap().nav_order.clone();
+        // Slots pack the visible arrangement (hidden peers take no slot).
+        let order = {
+            let st = app_state().lock().unwrap();
+            nav_display_order(&st.nav_order, &st.nav_hidden)
+        };
         let label_for = |tab: NavTab| -> &str {
             match tab {
                 NavTab::Books => &books,
@@ -12224,11 +14192,14 @@ impl App {
         };
         for pairs in [self.bottom_nav_pairs(), self.rail_nav_pairs()] {
             for (slot, (idle, on)) in pairs.iter().enumerate() {
-                let label = label_for(order[slot]);
-                self.ui.button(cx, idle).set_text(cx, label);
-                self.ui.button(cx, on).set_text(cx, label);
+                if let Some(tab) = order.get(slot).copied() {
+                    let caption = nav_tab_caption(tab, label_for(tab));
+                    self.ui.button(cx, idle).set_text(cx, &caption);
+                    self.ui.button(cx, on).set_text(cx, &caption);
+                }
             }
         }
+        self.paint_nav_icons(cx, &order);
         self.ui
             .button(cx, ids!(more_items))
             .set_text(cx, &s("items"));
@@ -12284,14 +14255,9 @@ impl App {
             .button(cx, ids!(buy_to_inventory))
             .set_text(cx, &s("inventory_stock"));
         self.ui
-            .widget(cx, ids!(books_heading))
-            .set_text(cx, &plain_display_text(&s("books")));
-        self.ui
-            .widget(cx, ids!(books_help))
-            .set_text(cx, &plain_display_text(&s("books_help")));
-        self.ui
             .widget(cx, ids!(favorites_heading))
             .set_text(cx, &plain_display_text(&s("favorites")));
+        paint_page_title_icon(cx, &self.ui, ids!(favorites_heading_icon), NavTab::Favorites);
         self.ui
             .widget(cx, ids!(favorites_help))
             .set_text(cx, &plain_display_text(&s("favorites_help")));
@@ -12304,12 +14270,12 @@ impl App {
         self.ui
             .widget(cx, ids!(favorites_empty))
             .set_text(cx, &plain_display_text(&s("no_favorites")));
-        self.ui
-            .widget(cx, ids!(buy_heading))
-            .set_text(cx, &plain_display_text(&s("buy")));
-        self.ui
-            .widget(cx, ids!(buy_help))
-            .set_text(cx, &plain_display_text(&s("buy_help")));
+        {
+            let help = self.ui.widget(cx, ids!(buy_help)).as_info_help();
+            help.set_title(cx, &s("buy"));
+            help.set_nav_icon(cx, NavTab::Buy);
+            help.set_tip(&plain_display_text(&s("buy_help")));
+        }
         self.ui
             .button(cx, ids!(client_pair_back))
             .set_text(cx, &s("back"));
@@ -12369,6 +14335,18 @@ impl App {
             .button(cx, ids!(image_pick))
             .set_text(cx, &s("photo"));
         self.ui
+            .button(cx, ids!(party_image_clear))
+            .set_text(cx, &s("clear_logo"));
+        self.ui
+            .button(cx, ids!(party_image_pick))
+            .set_text(cx, &s("pick_logo"));
+        for path in [ids!(booking_scope_domestic), ids!(booking_scope_domestic_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("domestic"));
+        }
+        for path in [ids!(booking_scope_intl), ids!(booking_scope_intl_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("international"));
+        }
+        self.ui
             .button(cx, ids!(role_owner))
             .set_text(cx, &s("owner"));
         self.ui
@@ -12417,42 +14395,59 @@ impl App {
         self.ui
             .button(cx, ids!(amend_pay_card))
             .set_text(cx, &s("card"));
-        self.ui
-            .widget(cx, ids!(items_heading))
-            .set_text(cx, &plain_display_text(&s("your_items")));
-        self.ui
-            .widget(cx, ids!(items_help_label))
-            .set_text(cx, &plain_display_text(&s("items_help")));
+        {
+            let help = self.ui.widget(cx, ids!(items_help_label)).as_info_help();
+            help.set_title(cx, &s("your_items"));
+            help.set_nav_icon(cx, NavTab::Rates);
+            help.set_tip(&plain_display_text(&s("items_help")));
+        }
         self.ui
             .widget(cx, ids!(more_heading))
             .set_text(cx, &plain_display_text(&s("more")));
+        paint_page_title_icon(cx, &self.ui, ids!(more_heading_icon), NavTab::Rates);
         self.ui
             .widget(cx, ids!(sales_title))
             .set_text(cx, &plain_display_text(&s("sales")));
+        paint_page_title_icon(cx, &self.ui, ids!(sales_title_icon), NavTab::Sales);
         self.ui
             .widget(cx, ids!(credit_title))
             .set_text(cx, &plain_display_text(&s("credit")));
-        self.ui
-            .widget(cx, ids!(credit_help))
-            .set_text(cx, &plain_display_text(&s("credit_help")));
+        paint_page_title_icon(cx, &self.ui, ids!(credit_title_icon), NavTab::Credit);
         self.ui
             .text_input(cx, ids!(credit_add_kind))
             .set_empty_text(cx, s("party_kind_ph"));
         self.ui
             .widget(cx, ids!(team_title))
             .set_text(cx, &plain_display_text(&s("team")));
+        paint_page_title_icon(cx, &self.ui, ids!(team_title_icon), NavTab::Team);
         self.ui
             .widget(cx, ids!(settings_title))
             .set_text(cx, &plain_display_text(&s("language_currency")));
+        paint_page_title_icon(cx, &self.ui, ids!(settings_title_icon), NavTab::Settings);
         self.ui
-            .widget(cx, ids!(day_close_title))
-            .set_text(cx, &plain_display_text(&s("day_close")));
+            .button(cx, ids!(sidebar_settings_open))
+            .set_text(cx, &s("sidebar_settings"));
         self.ui
-            .widget(cx, ids!(reports_title))
-            .set_text(cx, &plain_display_text(&s("reports")));
+            .widget(cx, ids!(sidebar_settings_title))
+            .set_text(cx, &plain_display_text(&s("sidebar_settings")));
         self.ui
-            .widget(cx, ids!(reports_help))
-            .set_text(cx, &plain_display_text(&s("reports_help")));
+            .widget(cx, ids!(sidebar_settings_help))
+            .set_text(cx, &plain_display_text(&s("sidebar_settings_help")));
+        self.ui
+            .button(cx, ids!(sidebar_settings_back))
+            .set_text(cx, &s("sidebar_back_settings"));
+        {
+            let help = self.ui.widget(cx, ids!(day_close_help)).as_info_help();
+            help.set_title(cx, &s("day_close"));
+            help.set_nav_icon(cx, NavTab::DayClose);
+            help.set_tip(&plain_display_text(&s("day_close_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(reports_help)).as_info_help();
+            help.set_title(cx, &s("reports"));
+            help.set_nav_icon(cx, NavTab::Reports);
+            help.set_tip(&plain_display_text(&s("reports_help")));
+        }
         for path in [ids!(reports_today), ids!(reports_today_on)] {
             self.ui.button(cx, path).set_text(cx, &s("reports_today"));
         }
@@ -12479,9 +14474,11 @@ impl App {
         self.ui
             .widget(cx, ids!(inventory_title))
             .set_text(cx, &plain_display_text(&s("inventory")));
+        paint_page_title_icon(cx, &self.ui, ids!(inventory_title_icon), NavTab::Inventory);
         self.ui
             .widget(cx, ids!(branches_title))
             .set_text(cx, &plain_display_text(&s("branches")));
+        paint_page_title_icon(cx, &self.ui, ids!(branches_title_icon), NavTab::Branches);
         self.ui
             .widget(cx, ids!(setup_lang_title))
             .set_text(cx, &plain_display_text(&s("language")));
@@ -12585,6 +14582,7 @@ impl App {
             Screen::Credit => ids!(credit_screen),
             Screen::Team => ids!(team_screen),
             Screen::Settings => ids!(settings_screen),
+            Screen::SidebarSettings => ids!(sidebar_settings_screen),
             Screen::DayClose => ids!(day_close_screen),
             Screen::Reports => ids!(reports_screen),
             Screen::Inventory => ids!(inventory_screen),
@@ -12659,6 +14657,10 @@ impl App {
             (ids!(credit_screen), screen == Screen::Credit),
             (ids!(team_screen), screen == Screen::Team),
             (ids!(settings_screen), screen == Screen::Settings),
+            (
+                ids!(sidebar_settings_screen),
+                screen == Screen::SidebarSettings,
+            ),
             (ids!(day_close_screen), screen == Screen::DayClose),
             (ids!(reports_screen), screen == Screen::Reports),
             (ids!(inventory_screen), screen == Screen::Inventory),
@@ -12677,20 +14679,27 @@ impl App {
         self.paint_nav_tabs(cx, screen);
     }
 
-    /// Phone (<720): bottom tabs. Tablet/desktop (≥720): side rail.
-    /// Booking desk: side-by-side only when the *content* column fits two panes;
-    /// otherwise stack full-width (never Fixed cart leaving empty right gutter).
+    /// Phone (<720): bottom tabs + stacked Booking panes.
+    /// Tablet/desktop (≥720): side rail; side-by-side desk when content is wide
+    /// enough, else still stack. Desk side-by-side uses Fixed panes inside
+    /// `booking_desk_hscroll` so mouse press-drag / wheel can reach Counter.
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
-        // Two panes need ~280 + 280 + spacing inside the content column.
-        const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
         const DIVIDER_W: f64 = 6.0;
+        const DESK_LEFT_MIN: f64 = 600.0;
+        const DESK_RIGHT_MIN: f64 = 520.0;
+        const DESK_GAP: f64 = 16.0;
+        // Match the old phone path: stack until both panes fit comfortably.
+        const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
         let window_w = {
             let w = self.window_inner_width(cx);
             if w >= 1.0 { w } else { DESIGN_DESKTOP_W }
         };
         let shell_wide = window_w >= store::TABLET_SHELL_BREAKPOINT_CSS;
-        let show_rail = unlocked && shell_wide;
+        let rail_collapsed = app_state().lock().unwrap().rail_collapsed;
+        // Sidebar mode only: user can hide the whole rail (zero width).
+        // Phone bottom tabs are never affected.
+        let show_rail = unlocked && shell_wide && !rail_collapsed;
         let show_bottom = unlocked && !shell_wide;
         self.ui.view(cx, ids!(nav_rail)).set_visible(cx, show_rail);
         self.ui
@@ -12699,6 +14708,12 @@ impl App {
         self.ui
             .view(cx, ids!(bottom_nav))
             .set_visible(cx, show_bottom);
+        self.ui
+            .button(cx, ids!(rail_expand_btn))
+            .set_visible(cx, unlocked && shell_wide && rail_collapsed);
+        self.ui
+            .button(cx, ids!(rail_collapse_btn))
+            .set_visible(cx, show_rail);
 
         let rail_w = if show_rail {
             let preferred = app_state().lock().unwrap().rail_width;
@@ -12722,48 +14737,67 @@ impl App {
             0.0
         };
 
-        // Content width ≈ window − rail − divider − screen padding (16+16).
-        let content_w =
-            (window_w - if show_rail { rail_w + DIVIDER_W } else { 0.0 } - 32.0).max(280.0);
+        let content_w = (window_w
+            - if show_rail { rail_w + DIVIDER_W } else { 0.0 }
+            - 32.0)
+            .max(280.0);
         let side_by_side = content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
-
-        // Down = each child takes full row width. Right (no wrap) = share one row.
-        // Avoid Right{wrap}+Fixed: wrapped cart stayed ~320px with a dead gutter.
+        let desk_row = self.ui.view(cx, ids!(booking_desk_row));
         set_view_flow(
             cx,
-            &self.ui.view(cx, ids!(pos_split)),
+            &desk_row,
             if side_by_side {
                 Flow::right()
             } else {
                 Flow::Down
             },
         );
-
-        let (catalog_w, cart_w) = if side_by_side {
-            // Both Fill — grow together across phone→ultrawide; no Fixed cap.
-            (size_fill(1.2, 280.0), size_fill(1.0, 300.0))
+        set_view_walk(
+            cx,
+            &desk_row,
+            Walk {
+                width: if side_by_side {
+                    Size::fit()
+                } else {
+                    Size::fill()
+                },
+                height: Size::fill(),
+                ..Default::default()
+            },
+        );
+        let (left_w, right_w) = if side_by_side {
+            let desk_avail = (content_w - 32.0).max(200.0);
+            let min_total = DESK_LEFT_MIN + DESK_RIGHT_MIN + DESK_GAP;
+            if desk_avail >= min_total {
+                let left = desk_avail * (DESK_LEFT_MIN / (DESK_LEFT_MIN + DESK_RIGHT_MIN));
+                (Size::Fixed(left), Size::Fixed(desk_avail - DESK_GAP - left))
+            } else {
+                (Size::Fixed(DESK_LEFT_MIN), Size::Fixed(DESK_RIGHT_MIN))
+            }
         } else {
-            let full = size_fill(100.0, content_w);
-            (full, full)
+            // Phone / narrow: full-width stack; each pane scrolls inside.
+            (size_fill(1.0, content_w), size_fill(1.0, content_w))
         };
         set_view_walk(
             cx,
-            &self.ui.view(cx, ids!(pos_catalog)),
+            &self.ui.view(cx, ids!(pos_catalog_scroll)),
             Walk {
-                width: catalog_w,
-                height: Size::fit(),
+                width: left_w,
+                height: Size::fill(),
                 ..Default::default()
             },
         );
         set_view_walk(
             cx,
-            &self.ui.view(cx, ids!(pos_cart_col)),
+            &self.ui.view(cx, ids!(pos_cart_scroll)),
             Walk {
-                width: cart_w,
-                height: Size::fit(),
+                width: right_w,
+                height: Size::fill(),
                 ..Default::default()
             },
         );
+        self.ui.view(cx, ids!(pos_catalog_scroll)).set_visible(cx, true);
+        self.ui.view(cx, ids!(pos_cart_scroll)).set_visible(cx, true);
     }
 
     /// Nav slot hardware in DSL order. Slots are positions; which tab a
@@ -12810,6 +14844,61 @@ impl App {
             (ids!(rail_settings), ids!(rail_settings_on)),
             (ids!(rail_lock), ids!(rail_lock_on)),
         ]
+    }
+
+    fn bottom_nav_icon_ids(&self) -> [&[LiveId]; NAV_TABS.len()] {
+        [
+            ids!(nav_books_icon),
+            ids!(nav_sell_icon),
+            ids!(nav_favorites_icon),
+            ids!(nav_buy_icon),
+            ids!(nav_rates_icon),
+            ids!(nav_ops_icon),
+            ids!(nav_cod_icon),
+            ids!(nav_riders_icon),
+            ids!(nav_sales_icon),
+            ids!(nav_day_close_icon),
+            ids!(nav_reports_icon),
+            ids!(nav_inventory_icon),
+            ids!(nav_branches_icon),
+            ids!(nav_credit_icon),
+            ids!(nav_team_icon),
+            ids!(nav_settings_icon),
+            ids!(nav_lock_icon),
+        ]
+    }
+
+    fn rail_nav_icon_ids(&self) -> [&[LiveId]; NAV_TABS.len()] {
+        [
+            ids!(rail_books_icon),
+            ids!(rail_sell_icon),
+            ids!(rail_favorites_icon),
+            ids!(rail_buy_icon),
+            ids!(rail_rates_icon),
+            ids!(rail_ops_icon),
+            ids!(rail_cod_icon),
+            ids!(rail_riders_icon),
+            ids!(rail_sales_icon),
+            ids!(rail_day_close_icon),
+            ids!(rail_reports_icon),
+            ids!(rail_inventory_icon),
+            ids!(rail_branches_icon),
+            ids!(rail_credit_icon),
+            ids!(rail_team_icon),
+            ids!(rail_settings_icon),
+            ids!(rail_lock_icon),
+        ]
+    }
+
+    /// Slot icons follow the visible chrome order (same tab the caption wears).
+    fn paint_nav_icons(&mut self, cx: &mut Cx, order: &[NavTab]) {
+        for icons in [self.bottom_nav_icon_ids(), self.rail_nav_icon_ids()] {
+            for (slot, icon_id) in icons.iter().enumerate() {
+                if let Some(tab) = order.get(slot).copied() {
+                    load_nav_icon_once(cx, &self.ui.image(cx, icon_id), tab);
+                }
+            }
+        }
     }
 
     fn nav_slot_wrappers(&self, rail: bool) -> [&[LiveId]; NAV_TABS.len()] {
@@ -12860,7 +14949,10 @@ impl App {
     fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
         let (reports_nav, order) = {
             let st = app_state().lock().unwrap();
-            (st.reports_nav, st.nav_order.clone())
+            (
+                st.reports_nav,
+                nav_display_order(&st.nav_order, &st.nav_hidden),
+            )
         };
         let active = nav_tab_for(screen, reports_nav);
         // While dragging, the slot under the pointer wears the active face
@@ -12875,14 +14967,37 @@ impl App {
             (false, self.bottom_nav_pairs()),
             (true, self.rail_nav_pairs()),
         ] {
+            let wraps = self.nav_slot_wrappers(rail);
             for (slot, (idle, on)) in pairs.iter().enumerate() {
                 self.clear_button_animators(cx, idle);
                 self.clear_button_animators(cx, on);
+                let show = slot < order.len();
+                self.ui.view(cx, wraps[slot]).set_visible(cx, show);
+                if !show {
+                    self.ui.button(cx, idle).set_visible(cx, false);
+                    self.ui.button(cx, on).set_visible(cx, false);
+                    continue;
+                }
                 let selected = active == Some(order[slot]) || drop == Some((rail, slot));
                 self.ui.button(cx, idle).set_visible(cx, !selected);
                 self.ui.button(cx, on).set_visible(cx, selected);
             }
         }
+    }
+
+    fn sync_awb_pools_label(&mut self, cx: &mut Cx) {
+        let text = app_state()
+            .lock()
+            .unwrap()
+            .store
+            .as_ref()
+            .and_then(|s| s.awb_pools_status_text().ok())
+            .unwrap_or_else(|| "No carrier AWB pools set.\n".into());
+        let rows: Vec<ReportRow> = text
+            .lines()
+            .map(|l| ReportRow::Line(l.to_string()))
+            .collect();
+        self.set_report_rows(cx, ids!(awb_pools_label), rows);
     }
 
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
@@ -12916,7 +15031,11 @@ impl App {
                     _ => title.clone(),
                 }
             };
-            let icon_path = st.venue_icon_path();
+            // Draft pick shows immediately; saved key after Save / onboard import.
+            let icon_path = st
+                .draft_venue_icon_path
+                .clone()
+                .or_else(|| st.venue_icon_path());
             let icon_hint = if st.draft_venue_icon_path.is_some() {
                 st.t("icon_new_selected")
             } else if icon_path.is_some() {
@@ -13018,6 +15137,10 @@ impl App {
             store.set_venue_title(&title)?;
             if let Some(path) = st.draft_venue_icon_path.clone() {
                 let key = store.import_venue_icon(&path)?;
+                if let Ok(dir) = store.brand_images_dir() {
+                    invalidate_image_loads_for_path(&dir.join("venue_icon.webp"));
+                }
+                invalidate_image_loads_for_path(&path);
                 st.venue_icon_key = Some(key);
                 st.draft_venue_icon_path = None;
             }
@@ -13180,6 +15303,7 @@ impl App {
                             | Screen::Branches
                             | Screen::Team
                             | Screen::Settings
+                            | Screen::SidebarSettings
                     )
                 {
                     st.status =
@@ -13544,7 +15668,7 @@ impl App {
                 Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
             );
             let wide = self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
-            unlocked && wide
+            unlocked && wide && !st.rail_collapsed
         };
         match event {
             Event::MouseDown(e) if e.button.is_primary() && unlocked_rail => {
@@ -13570,6 +15694,16 @@ impl App {
                 cx.set_cursor(MouseCursor::ColResize);
                 self.apply_shell_layout(cx, true);
                 true
+            }
+            Event::MouseMove(e) if unlocked_rail => {
+                // Hover affordance even when SolidView HoverIn was wiped by
+                // window-edge leave or a peer SetCursor.
+                let rail_w = app_state().lock().unwrap().rail_width;
+                let x = e.abs.x;
+                if x >= rail_w - 2.0 && x <= rail_w + DIVIDER_W + 8.0 {
+                    cx.set_cursor(MouseCursor::ColResize);
+                }
+                false
             }
             Event::MouseUp(e) if e.button.is_primary() => {
                 if rail_resize_drag().lock().unwrap().take().is_some() {
@@ -13683,6 +15817,204 @@ impl App {
         self.paint_nav_tabs(cx, screen);
     }
 
+    /// Books home accordion bodies + header chevrons from `books_sections_open`.
+    fn sync_books_sections(&mut self, cx: &mut Cx) {
+        let open = app_state().lock().unwrap().books_sections_open.clone();
+        let is_open = |key: &str| open.iter().any(|k| k == key);
+        let lang = app_state().lock().unwrap().locale.language.clone();
+        let s = |k: &str| locale::t(&lang, k);
+        let sections: &[(&str, &[LiveId], &[LiveId], &str)] = &[
+            (
+                "today",
+                ids!(books_sec_today_hdr),
+                ids!(books_sec_today_body),
+                "caption_today",
+            ),
+            (
+                "bookings",
+                ids!(books_sec_bookings_hdr),
+                ids!(books_sec_bookings_body),
+                "caption_bookings",
+            ),
+            (
+                "payments",
+                ids!(books_sec_payments_hdr),
+                ids!(books_sec_payments_body),
+                "caption_payments_today",
+            ),
+            (
+                "outstanding",
+                ids!(books_sec_outstanding_hdr),
+                ids!(books_sec_outstanding_body),
+                "caption_outstanding",
+            ),
+            (
+                "bank",
+                ids!(books_sec_bank_hdr),
+                ids!(books_sec_bank_body),
+                "caption_bank",
+            ),
+        ];
+        for (key, hdr, body, caption_key) in sections {
+            let open = is_open(key);
+            self.ui.view(cx, body).set_visible(cx, open);
+            let mark = if open { "▾" } else { "▸" };
+            self.ui
+                .button(cx, hdr)
+                .set_text(cx, &format!("{mark} {}", s(caption_key)));
+        }
+    }
+
+    fn toggle_amounts_screen(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.amounts_screen_hidden = !st.amounts_screen_hidden;
+        }
+        self.sync_chrome(cx);
+    }
+
+    fn toggle_amount_key(&mut self, cx: &mut Cx, key: &str) {
+        {
+            let mut st = app_state().lock().unwrap();
+            if let Some(i) = st.amount_keys_hidden.iter().position(|k| k == key) {
+                st.amount_keys_hidden.remove(i);
+            } else {
+                st.amount_keys_hidden.push(key.to_string());
+            }
+            if let Some(store) = st.store.as_ref() {
+                let _ = store.set_amount_keys_hidden_csv(&amount_keys_hidden_csv(
+                    &st.amount_keys_hidden,
+                ));
+            }
+        }
+        self.sync_chrome(cx);
+    }
+
+    fn paint_amount_value(
+        &mut self,
+        cx: &mut Cx,
+        value_id: &[LiveId],
+        eye_id: &[LiveId],
+        key: &str,
+        text: &str,
+    ) {
+        let (screen_hidden, keys_hidden) = {
+            let st = app_state().lock().unwrap();
+            (st.amounts_screen_hidden, st.amount_keys_hidden.clone())
+        };
+        let visible = amount_key_visible(screen_hidden, &keys_hidden, key);
+        self.ui
+            .widget(cx, value_id)
+            .set_text(cx, &plain_display_text(&display_sensitive(text, visible)));
+        self.ui.button(cx, eye_id).set_text(cx, eye_glyph(visible));
+    }
+
+    fn toggle_books_section(&mut self, cx: &mut Cx, key: &str) {
+        {
+            let mut st = app_state().lock().unwrap();
+            if let Some(i) = st.books_sections_open.iter().position(|k| k == key) {
+                st.books_sections_open.remove(i);
+            } else {
+                st.books_sections_open.push(key.to_string());
+            }
+            if let Some(store) = st.store.as_ref() {
+                let _ = store.set_books_sections_csv(&books_sections_csv(&st.books_sections_open));
+            }
+        }
+        self.sync_books_sections(cx);
+    }
+
+    /// Docs / debug / LOCAL badges stay out of the day-to-day work surface.
+    fn hide_docs_and_debug_chrome(&mut self, cx: &mut Cx) {
+        let help_ids: &[&[LiveId]] = &[
+            ids!(books_help),
+            ids!(h_more_help_moklanjo),
+            ids!(h_amend_help),
+            ids!(h_team_owner_help),
+            ids!(h_country_pack_help),
+            ids!(h_other_devices_help),
+            ids!(h_other_devices_help_heading),
+            ids!(h_units_help),
+            ids!(h_measures_help_moklanjo),
+            ids!(h_printers_help),
+            ids!(h_restore_help),
+            ids!(sidebar_settings_help),
+            ids!(db_path_label),
+            ids!(device_setup_help),
+            ids!(booking_scope_hint),
+        ];
+        for id in help_ids {
+            self.ui.widget(cx, id).set_visible(cx, false);
+        }
+        for id in [
+            ids!(h_local_badge),
+            ids!(h_local_badge_2),
+            ids!(h_local_badge_3),
+        ] {
+            self.ui.label(cx, id).set_visible(cx, false);
+        }
+    }
+
+    /// Settings → Sidebar list: show/hide + move up/down.
+    fn handle_sidebar_nav_list_actions(&mut self, cx: &mut Cx, actions: &Actions) {
+        if app_state().lock().unwrap().screen != Screen::SidebarSettings {
+            return;
+        }
+        let widget = self.ui.widget(cx, ids!(sidebar_nav_list));
+        let list = widget.portal_list(cx, ids!(list));
+        let order_len = app_state().lock().unwrap().nav_order.len();
+        let mut changed_order = false;
+        let mut changed_vis = false;
+        for (item_id, item) in list.items_with_actions(actions) {
+            if item_id >= order_len {
+                continue;
+            }
+            if item.button(cx, ids!(up)).clicked(actions) && item_id > 0 {
+                let mut st = app_state().lock().unwrap();
+                st.nav_order.swap(item_id, item_id - 1);
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
+                }
+                changed_order = true;
+            }
+            if item.button(cx, ids!(down)).clicked(actions) && item_id + 1 < order_len {
+                let mut st = app_state().lock().unwrap();
+                st.nav_order.swap(item_id, item_id + 1);
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
+                }
+                changed_order = true;
+            }
+            if item.button(cx, ids!(vis)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                let tab = st.nav_order[item_id];
+                if !nav_tab_always_visible(tab) {
+                    if let Some(i) = st.nav_hidden.iter().position(|t| *t == tab) {
+                        st.nav_hidden.remove(i);
+                    } else {
+                        st.nav_hidden.push(tab);
+                    }
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
+                    }
+                    changed_vis = true;
+                }
+            }
+        }
+        if changed_order || changed_vis {
+            let msg = {
+                let st = app_state().lock().unwrap();
+                if changed_order {
+                    st.t("sidebar_order_saved")
+                } else {
+                    st.t("sidebar_visibility_saved")
+                }
+            };
+            self.set_status(cx, msg);
+            self.sync_chrome(cx);
+        }
+    }
+
     /// Display label a nav slot wears for `tab` (same strings as the
     /// chrome paint in paint_chrome).
     fn nav_tab_label(&self, tab: NavTab) -> String {
@@ -13741,7 +16073,7 @@ impl App {
     }
 
     fn show_nav_ghost(&mut self, cx: &mut Cx, tab: NavTab, pos: DVec2) {
-        let label = self.nav_tab_label(tab);
+        let label = nav_tab_caption(tab, &self.nav_tab_label(tab));
         self.ui
             .widget(cx, ids!(nav_drag_ghost_label))
             .set_text(cx, &label);
@@ -13791,7 +16123,13 @@ impl App {
                 }
                 // Only the visible surface can be dragged (mirrors
                 // apply_shell_layout's rail-vs-bottom choice).
-                let rail = self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
+                let shell_wide =
+                    self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
+                let rail_collapsed = app_state().lock().unwrap().rail_collapsed;
+                if shell_wide && rail_collapsed {
+                    return false;
+                }
+                let rail = shell_wide;
                 // The rail divider owns its own drag (resize) — stay out of it.
                 if rail {
                     let rail_w = app_state().lock().unwrap().rail_width;
@@ -13872,8 +16210,15 @@ impl App {
                                 d.hover = hover;
                                 repaint = true;
                             }
-                            let tab = app_state().lock().unwrap().nav_order[d.slot];
-                            ghost = Some((!was_active, tab, d.origin + (e.abs - d.start)));
+                            let tab = {
+                                let st = app_state().lock().unwrap();
+                                nav_display_order(&st.nav_order, &st.nav_hidden)
+                                    .get(d.slot)
+                                    .copied()
+                            };
+                            if let Some(tab) = tab {
+                                ghost = Some((!was_active, tab, d.origin + (e.abs - d.start)));
+                            }
                         }
                     }
                 }
@@ -13912,7 +16257,20 @@ impl App {
                         let swapped = match d.hover {
                             Some(target) if target != d.slot => {
                                 let mut st = app_state().lock().unwrap();
-                                st.nav_order.swap(d.slot, target);
+                                let disp = nav_display_order(&st.nav_order, &st.nav_hidden);
+                                let Some(ta) = disp.get(d.slot).copied() else {
+                                    return true;
+                                };
+                                let Some(tb) = disp.get(target).copied() else {
+                                    return true;
+                                };
+                                let Some(ia) = st.nav_order.iter().position(|t| *t == ta) else {
+                                    return true;
+                                };
+                                let Some(ib) = st.nav_order.iter().position(|t| *t == tb) else {
+                                    return true;
+                                };
+                                st.nav_order.swap(ia, ib);
                                 if let Some(store) = st.store.as_ref() {
                                     let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
                                 }
@@ -14939,6 +17297,11 @@ impl App {
         st.booking_carrier_cost = self
             .ui
             .text_input(cx, ids!(booking_carrier_cost_input))
+            .text();
+        st.booking_pieces = self.ui.text_input(cx, ids!(booking_pieces_input)).text();
+        st.booking_carrier_pick = self
+            .ui
+            .text_input(cx, ids!(booking_carrier_pick_input))
             .text();
         st.booking_declared = self
             .ui
@@ -16329,6 +18692,7 @@ impl App {
     fn on_item_photo_picked(&mut self, cx: &mut Cx, path: PathBuf) {
         match self.materialize_picked_file(cx, &path) {
             Ok(file) => {
+                invalidate_image_loads_for_path(&file);
                 app_state().lock().unwrap().draft_image_key =
                     Some(format!("pending_custom:{}", file.display()));
                 self.set_status(cx, format!("Photo selected: {}", file.display()));
@@ -16336,6 +18700,45 @@ impl App {
             Err(e) => self.set_status(cx, e),
         }
         self.sync_chrome(cx);
+        self.ui.widget(cx, ids!(draft_preview)).redraw(cx);
+    }
+
+    fn party_image_clear_logo(&mut self, cx: &mut Cx) {
+        // Empty string marks clear-on-save when editing; None for a new party.
+        let mut st = app_state().lock().unwrap();
+        if st.selected_customer_id.is_some() {
+            st.draft_party_image_key = Some(String::new());
+        } else {
+            st.draft_party_image_key = None;
+        }
+        drop(st);
+        self.sync_chrome(cx);
+    }
+
+    fn party_image_pick_file(&mut self, cx: &mut Cx) {
+        let dialog = FileDialog::new()
+            .set_title("Choose party logo".into())
+            .add_filter(
+                "Images".into(),
+                vec!["webp".into(), "png".into(), "jpg".into(), "jpeg".into()],
+            )
+            .set_id(live_id!(party_photo_pick));
+        cx.open_select_file_dialog(dialog);
+        self.set_status(cx, "Opening logo picker…");
+    }
+
+    fn on_party_photo_picked(&mut self, cx: &mut Cx, path: PathBuf) {
+        match self.materialize_picked_file(cx, &path) {
+            Ok(file) => {
+                invalidate_image_loads_for_path(&file);
+                app_state().lock().unwrap().draft_party_image_key =
+                    Some(format!("pending_custom:{}", file.display()));
+                self.set_status(cx, format!("Logo selected: {}", file.display()));
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
+        self.ui.widget(cx, ids!(party_draft_preview)).redraw(cx);
     }
 }
 
@@ -16540,13 +18943,72 @@ impl MatchEvent for App {
                         }
                     }
                     FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(party_photo_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            self.on_party_photo_picked(cx, path.clone());
+                        }
+                    }
+                    FileDialogAction::FileSelected { id, paths }
                         if *id == live_id!(venue_icon_pick) =>
                     {
                         if let Some(path) = paths.first() {
                             match self.materialize_picked_file(cx, path) {
                                 Ok(file) => {
-                                    app_state().lock().unwrap().draft_venue_icon_path = Some(file);
+                                    invalidate_image_loads_for_path(&file);
+                                    app_state().lock().unwrap().draft_venue_icon_path =
+                                        Some(file);
                                     self.set_status(cx, "Icon selected — tap Save brand");
+                                    self.sync_chrome(cx);
+                                }
+                                Err(e) => self.set_status(cx, e),
+                            }
+                        }
+                    }
+                    FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(print_stamp_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            match self.materialize_picked_file(cx, path) {
+                                Ok(file) => {
+                                    let outcome = (|| -> Result<String, String> {
+                                        let st = app_state().lock().unwrap();
+                                        let store = st
+                                            .store
+                                            .as_ref()
+                                            .ok_or_else(|| "Storage not ready".to_string())?;
+                                        store.import_receipt_stamp(&file)?;
+                                        Ok("Receipt stamp saved".into())
+                                    })();
+                                    match outcome {
+                                        Ok(m) => self.set_status(cx, m),
+                                        Err(e) => self.set_status(cx, e),
+                                    }
+                                    self.sync_chrome(cx);
+                                }
+                                Err(e) => self.set_status(cx, e),
+                            }
+                        }
+                    }
+                    FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(print_qr_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            match self.materialize_picked_file(cx, path) {
+                                Ok(file) => {
+                                    let outcome = (|| -> Result<String, String> {
+                                        let st = app_state().lock().unwrap();
+                                        let store = st
+                                            .store
+                                            .as_ref()
+                                            .ok_or_else(|| "Storage not ready".to_string())?;
+                                        store.import_payment_qr(&file)?;
+                                        Ok("Payment QR saved".into())
+                                    })();
+                                    match outcome {
+                                        Ok(m) => self.set_status(cx, m),
+                                        Err(e) => self.set_status(cx, e),
+                                    }
                                     self.sync_chrome(cx);
                                 }
                                 Err(e) => self.set_status(cx, e),
@@ -16566,6 +19028,12 @@ impl MatchEvent for App {
                                             .as_ref()
                                             .ok_or_else(|| "Storage not ready".to_string())?;
                                         let key = store.import_venue_icon(&file)?;
+                                        if let Ok(dir) = store.brand_images_dir() {
+                                            invalidate_image_loads_for_path(
+                                                &dir.join("venue_icon.webp"),
+                                            );
+                                        }
+                                        invalidate_image_loads_for_path(&file);
                                         st.venue_icon_key = Some(key);
                                         Ok("Shop logo saved".to_string())
                                     })();
@@ -16654,6 +19122,7 @@ impl MatchEvent for App {
                     }
                     FileDialogAction::FileCancelled { id }
                         if *id == live_id!(item_photo_pick)
+                            || *id == live_id!(party_photo_pick)
                             || *id == live_id!(venue_icon_pick)
                             || *id == live_id!(onboard_icon_pick)
                             || *id == live_id!(csv_parties_pick)
@@ -16668,6 +19137,15 @@ impl MatchEvent for App {
                     _ => {}
                 }
             }
+        }
+        // Whole-rail hide / restore (sidebar mode only).
+        if self.ui.button(cx, ids!(rail_collapse_btn)).clicked(actions) {
+            app_state().lock().unwrap().rail_collapsed = true;
+            self.apply_shell_layout(cx, true);
+        }
+        if self.ui.button(cx, ids!(rail_expand_btn)).clicked(actions) {
+            app_state().lock().unwrap().rail_collapsed = false;
+            self.apply_shell_layout(cx, true);
         }
         // Nav clicks honour the user's slot arrangement; the legacy More
         // rows (hidden, kept for action wiring) still map to their tabs.
@@ -16856,6 +19334,52 @@ impl MatchEvent for App {
                 self.sync_chrome(cx);
             }
             None => {}
+        }
+        if self.ui.button(cx, ids!(sidebar_settings_open)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::SidebarSettings, |s| {
+                s.can_access_backup() || s.is_owner()
+            });
+        }
+        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions) {
+            self.go_if_allowed(cx, Screen::Settings, |s| {
+                s.can_access_backup() || s.is_owner()
+            });
+        }
+        self.handle_sidebar_nav_list_actions(cx, actions);
+        if self.ui.button(cx, ids!(amounts_eye)).clicked(actions) {
+            self.toggle_amounts_screen(cx);
+        }
+        for (eye, key) in [
+            (ids!(books_in_eye), "books_in"),
+            (ids!(books_purchases_eye), "books_purchases"),
+            (ids!(books_expenses_eye), "books_expenses"),
+            (ids!(books_gross_eye), "books_gross"),
+            (ids!(books_net_eye), "books_net"),
+            (ids!(books_declared_eye), "books_declared"),
+            (ids!(books_owner_eye), "books_owner"),
+            (ids!(books_cash_eye), "books_cash"),
+            (ids!(books_digital_eye), "books_digital"),
+            (ids!(books_card_eye), "books_card"),
+            (ids!(books_they_owe_eye), "books_they_owe"),
+            (ids!(books_we_owe_eye), "books_we_owe"),
+            (ids!(books_bank_balance_eye), "books_bank_balance"),
+            (ids!(books_till_eye), "books_till"),
+            (ids!(books_bank_net_eye), "books_bank_net"),
+        ] {
+            if self.ui.button(cx, eye).clicked(actions) {
+                self.toggle_amount_key(cx, key);
+            }
+        }
+        for (hdr, key) in [
+            (ids!(books_sec_today_hdr), "today"),
+            (ids!(books_sec_bookings_hdr), "bookings"),
+            (ids!(books_sec_payments_hdr), "payments"),
+            (ids!(books_sec_outstanding_hdr), "outstanding"),
+            (ids!(books_sec_bank_hdr), "bank"),
+        ] {
+            if self.ui.button(cx, hdr).clicked(actions) {
+                self.toggle_books_section(cx, key);
+            }
         }
         if self.ui.button(cx, ids!(books_to_sell)).clicked(actions) {
             self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
@@ -17712,40 +20236,103 @@ impl MatchEvent for App {
                         _ => locale::t(&lang, "role_help_supplier"),
                     },
                 );
+                // Repaint idle/active chip faces from the field we just set.
+                self.sync_chrome(cx);
             }
         }
         if self.ui.button(cx, ids!(credit_add_btn)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
             let phone = self.ui.text_input(cx, ids!(credit_add_phone)).text();
+            let address = self.ui.text_input(cx, ids!(credit_add_address)).text();
             let kind = self.ui.text_input(cx, ids!(credit_add_kind)).text();
-            let result = (|| -> Result<String, String> {
+            let result = (|| -> Result<(String, bool), String> {
                 let mut st = app_state().lock().unwrap();
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if let Some(id) = st.selected_customer_id.clone() {
                     st.require_server_role("Edit party")?;
-                    store.update_customer(&id, &name, &phone)?;
+                    store.update_customer(&id, &name, &phone, &address)?;
                     store.set_customer_kind_label(&id, kind.trim())?;
+                    // Optional logo picked while editing.
+                    let pending = st.draft_party_image_key.clone();
+                    if let Some(key) = pending.as_deref() {
+                        if key.starts_with("pending_custom:") {
+                            let src = PathBuf::from(&key["pending_custom:".len()..]);
+                            let imported = store.import_party_image(&id, &src)?;
+                            store.set_customer_image_key(&id, Some(&imported))?;
+                        } else if key.is_empty() {
+                            store.set_customer_image_key(&id, None)?;
+                        } else {
+                            store.set_customer_image_key(&id, Some(key))?;
+                        }
+                        st.draft_party_image_key = None;
+                    }
                     st.reload_all()?;
-                    Ok(format!("Party updated: {}", name.trim()))
+                    Ok((format!("Party updated: {}", name.trim()), false))
                 } else {
                     st.require_server_role("Add customers")?;
                     let customer = store.add_customer_kind(&name, &phone, kind.trim())?;
-                    st.selected_customer_id = Some(customer.id);
+                    if !address.trim().is_empty() {
+                        store.update_customer(&customer.id, &name, &phone, &address)?;
+                    }
+                    let pending = st.draft_party_image_key.clone();
+                    if let Some(key) = pending.as_deref() {
+                        if key.starts_with("pending_custom:") {
+                            let src = PathBuf::from(&key["pending_custom:".len()..]);
+                            let imported = store.import_party_image(&customer.id, &src)?;
+                            store.set_customer_image_key(&customer.id, Some(&imported))?;
+                        }
+                        st.draft_party_image_key = None;
+                    }
+                    // Stay ready for the next party — do NOT leave this one
+                    // selected. Otherwise the next "Add party" becomes
+                    // "Save changes" and overwrites the same row (owner
+                    // thought they added 12 and only saw one name).
+                    st.selected_customer_id = None;
                     st.reload_all()?;
-                    Ok(format!(
-                        "Added {} — now editing it; tap New party to add another",
-                        name.trim()
+                    let n = st.customers.len();
+                    Ok((
+                        format!(
+                            "Added {} — {} saved. Form cleared for the next party.",
+                            name.trim(),
+                            n
+                        ),
+                        true,
                     ))
                 }
             })();
             match result {
-                Ok(msg) => self.set_status(cx, msg),
+                Ok((msg, clear_form)) => {
+                    if clear_form {
+                        app_state().lock().unwrap().draft_party_image_key = None;
+                        self.ui
+                            .text_input(cx, ids!(credit_add_name))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(credit_add_phone))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(credit_add_address))
+                            .set_text(cx, "");
+                        // Keep role chip (Consignor/Carrier/…) for the next add.
+                        self.ui
+                            .text_input(cx, ids!(party_custom_key))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(party_custom_value))
+                            .set_text(cx, "");
+                    }
+                    self.set_status(cx, msg);
+                }
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(party_form_clear)).clicked(actions) {
-            app_state().lock().unwrap().selected_customer_id = None;
+            {
+                let mut st = app_state().lock().unwrap();
+                st.selected_customer_id = None;
+                st.draft_party_image_key = None;
+            }
             self.ui
                 .text_input(cx, ids!(credit_add_name))
                 .set_text(cx, "");
@@ -17753,9 +20340,42 @@ impl MatchEvent for App {
                 .text_input(cx, ids!(credit_add_phone))
                 .set_text(cx, "");
             self.ui
-                .text_input(cx, ids!(credit_add_kind))
+                .text_input(cx, ids!(credit_add_address))
+                .set_text(cx, "");
+            // Role chip stays — batch-add carriers/consignors without re-tapping.
+            self.ui
+                .text_input(cx, ids!(party_custom_key))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(party_custom_value))
                 .set_text(cx, "");
             self.set_status(cx, "New party — form cleared");
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(party_image_clear)).clicked(actions) {
+            self.party_image_clear_logo(cx);
+        }
+        if self.ui.button(cx, ids!(party_image_pick)).clicked(actions) {
+            self.party_image_pick_file(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(booking_scope_domestic),
+            ids!(booking_scope_domestic_on),
+        ) {
+            app_state().lock().unwrap().booking_scope_international = false;
+            self.set_status(cx, "Domestic — volumetric ÷ shop divisor (usually 5000)");
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(booking_scope_intl),
+            ids!(booking_scope_intl_on),
+        ) {
+            app_state().lock().unwrap().booking_scope_international = true;
+            self.set_status(cx, "International — volumetric ÷6000 (air)");
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(party_delete)).clicked(actions) {
@@ -17781,7 +20401,65 @@ impl MatchEvent for App {
                         .text_input(cx, ids!(credit_add_phone))
                         .set_text(cx, "");
                     self.ui
-                        .text_input(cx, ids!(credit_add_kind))
+                        .text_input(cx, ids!(credit_add_address))
+                        .set_text(cx, "");
+                    // Keep role chip for the next add.
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(party_custom_add)).clicked(actions) {
+            let key = self.ui.text_input(cx, ids!(party_custom_key)).text();
+            let value = self.ui.text_input(cx, ids!(party_custom_value)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Edit party")?;
+                let id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.set_customer_custom_field(&id, &key, &value)?;
+                st.reload_all()?;
+                Ok(format!("Saved field {}", key.trim()))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(party_custom_key))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(party_custom_value))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(party_custom_remove)).clicked(actions) {
+            let key = self.ui.text_input(cx, ids!(party_custom_key)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Edit party")?;
+                let id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.remove_customer_custom_field(&id, &key)?;
+                st.reload_all()?;
+                Ok(format!("Removed field {}", key.trim()))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(party_custom_key))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(party_custom_value))
                         .set_text(cx, "");
                     self.set_status(cx, msg);
                 }
@@ -18022,8 +20700,17 @@ impl MatchEvent for App {
                             .text_input(cx, ids!(credit_add_phone))
                             .set_text(cx, &c.phone);
                         self.ui
+                            .text_input(cx, ids!(credit_add_address))
+                            .set_text(cx, &c.address);
+                        self.ui
                             .text_input(cx, ids!(credit_add_kind))
                             .set_text(cx, &c.kind_label);
+                        app_state().lock().unwrap().draft_party_image_key =
+                            if c.image_key.trim().is_empty() {
+                                None
+                            } else {
+                                Some(c.image_key.clone())
+                            };
                     }
                     self.sync_chrome(cx);
                 }
@@ -18038,6 +20725,9 @@ impl MatchEvent for App {
             if self.ui.button(cx, btn).clicked(actions) {
                 let amount_text = self.ui.text_input(cx, ids!(settle_amount_input)).text();
                 let bill_text = self.ui.text_input(cx, ids!(settle_bill_input)).text();
+                let tds_text = self.ui.text_input(cx, ids!(settle_tds_input)).text();
+                let disc_text = self.ui.text_input(cx, ids!(settle_discount_input)).text();
+                let cheque_text = self.ui.text_input(cx, ids!(settle_cheque_input)).text();
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let actor = st.actor()?;
@@ -18046,7 +20736,20 @@ impl MatchEvent for App {
                         .clone()
                         .ok_or_else(|| "Pick a customer first".to_string())?;
                     let currency = st.locale.currency.clone();
-                    let minor = locale::parse_major_input(&amount_text, &currency)?;
+                    let received = locale::parse_major_input(&amount_text, &currency).unwrap_or(0);
+                    let tds = locale::parse_major_input(&tds_text, &currency).unwrap_or(0);
+                    let discount = locale::parse_major_input(&disc_text, &currency).unwrap_or(0);
+                    let minor = store::Store::settle_clear_paise(received, tds, discount);
+                    if minor <= 0 {
+                        return Err("Enter amount received and/or TDS / discount".into());
+                    }
+                    let detail = store::Store::format_settle_detail(
+                        method,
+                        "",
+                        tds,
+                        discount,
+                        &cheque_text,
+                    );
                     if st.device_role == DeviceRole::Client {
                         let cust_name = st
                             .customers
@@ -18058,7 +20761,7 @@ impl MatchEvent for App {
                             customer_name: cust_name.clone(),
                             amount_paise: minor,
                             pay: method.as_str().into(),
-                            detail: String::new(),
+                            detail: detail.clone(),
                         };
                         let amount = st.money(Money(minor));
                         let who = cust_name.unwrap_or_default();
@@ -18103,7 +20806,7 @@ impl MatchEvent for App {
                         minor,
                         method,
                         &actor,
-                        "",
+                        &detail,
                         against.as_deref(),
                     )?;
                     st.reload_all()?;
@@ -18147,6 +20850,15 @@ impl MatchEvent for App {
                         .set_text(cx, "");
                     self.ui
                         .text_input(cx, ids!(settle_bill_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(settle_tds_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(settle_discount_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(settle_cheque_input))
                         .set_text(cx, "");
                     // Surface settle/advance result on Sell receipt line too.
                     let msg = app_state().lock().unwrap().status.clone();
@@ -18676,15 +21388,15 @@ impl MatchEvent for App {
             self.handle_modifier_chips(cx, actions, &item, item_id, true);
         }
 
-        if self.ui.button(cx, ids!(amend_pay_cash)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(amend_pay_cash), ids!(amend_pay_cash_on)) {
             app_state().lock().unwrap().amend_pay = PayMethod::Cash;
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(amend_pay_upi)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(amend_pay_upi), ids!(amend_pay_upi_on)) {
             app_state().lock().unwrap().amend_pay = PayMethod::Upi;
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(amend_pay_card)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(amend_pay_card), ids!(amend_pay_card_on)) {
             app_state().lock().unwrap().amend_pay = PayMethod::Card;
             self.sync_chrome(cx);
         }
@@ -19691,21 +22403,40 @@ impl MatchEvent for App {
                     .set_text(cx, reason);
                 self.set_status(cx, format!("NDR reason: {reason}"));
             }
+            let bulk_raw = self.ui.text_input(cx, ids!(ops_bulk_awb_input)).text();
+            let bulk_awbs = store::Store::parse_awb_list(&bulk_raw);
             if self.ui.button(cx, ids!(ops_advance_ofd)).clicked(actions) {
                 ops_msg = Some((|| {
                     let mut st = app_state().lock().unwrap();
                     st.require_server_role("Advance tracking")?;
                     let actor = st.actor()?;
-                    let pod = st.pending_ops_pod.take();
-                    let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                    let msg = courier_ops_view::advance_awb_with_pod(
-                        store,
-                        &awb,
-                        courier_ops_view::TrackingStatus::OutForDelivery,
-                        &note,
-                        pod.as_deref(),
-                        &actor,
-                    )?;
+                    let use_bulk = bulk_awbs.len() > 1 || (bulk_awbs.len() == 1 && awb.is_empty());
+                    let msg = if use_bulk {
+                        let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                        let (ok, errs) = store.bulk_advance_tracking(
+                            &bulk_awbs,
+                            courier_ops_view::TrackingStatus::OutForDelivery,
+                            &note,
+                            &actor,
+                        )?;
+                        let mut m = format!("Bulk OFD · ok {ok}");
+                        for e in errs.iter().take(5) {
+                            m.push('\n');
+                            m.push_str(e);
+                        }
+                        m
+                    } else {
+                        let pod = st.pending_ops_pod.take();
+                        let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                        courier_ops_view::advance_awb_with_pod(
+                            store,
+                            &awb,
+                            courier_ops_view::TrackingStatus::OutForDelivery,
+                            &note,
+                            pod.as_deref(),
+                            &actor,
+                        )?
+                    };
                     st.refresh_reports_facet()?;
                     Ok(msg)
                 })());
@@ -19718,16 +22449,34 @@ impl MatchEvent for App {
                     let mut st = app_state().lock().unwrap();
                     st.require_server_role("Mark delivered")?;
                     let actor = st.actor()?;
-                    let pod = st.pending_ops_pod.take();
-                    let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                    let msg = courier_ops_view::advance_awb_with_pod(
-                        store,
-                        &awb,
-                        courier_ops_view::TrackingStatus::Delivered,
-                        &note,
-                        pod.as_deref(),
-                        &actor,
-                    )?;
+                    let use_bulk =
+                        bulk_awbs.len() > 1 || (bulk_awbs.len() == 1 && awb.is_empty());
+                    let msg = if use_bulk {
+                        let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                        let (ok, errs) = store.bulk_advance_tracking(
+                            &bulk_awbs,
+                            courier_ops_view::TrackingStatus::Delivered,
+                            &note,
+                            &actor,
+                        )?;
+                        let mut m = format!("Bulk delivered · ok {ok}");
+                        for e in errs.iter().take(5) {
+                            m.push('\n');
+                            m.push_str(e);
+                        }
+                        m
+                    } else {
+                        let pod = st.pending_ops_pod.take();
+                        let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                        courier_ops_view::advance_awb_with_pod(
+                            store,
+                            &awb,
+                            courier_ops_view::TrackingStatus::Delivered,
+                            &note,
+                            pod.as_deref(),
+                            &actor,
+                        )?
+                    };
                     st.refresh_reports_facet()?;
                     Ok(msg)
                 })());
@@ -20789,6 +23538,162 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(venue_brand_save)).clicked(actions) {
             self.save_venue_brand(cx);
         }
+        if self.ui.button(cx, ids!(print_stamp_pick)).clicked(actions) {
+            let dialog = FileDialog::new()
+                .set_title("Choose receipt stamp".into())
+                .add_filter(
+                    "Images".into(),
+                    vec![
+                        "webp".into(),
+                        "png".into(),
+                        "jpg".into(),
+                        "jpeg".into(),
+                    ],
+                )
+                .set_id(live_id!(print_stamp_pick));
+            cx.open_select_file_dialog(dialog);
+            self.set_status(cx, "Opening stamp picker…");
+        }
+        if self.ui.button(cx, ids!(print_stamp_clear)).clicked(actions) {
+            let outcome = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.set_receipt_stamp_key(None)?;
+                Ok("Stamp cleared".into())
+            })();
+            match outcome {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(print_qr_pick)).clicked(actions) {
+            let dialog = FileDialog::new()
+                .set_title("Choose payment QR".into())
+                .add_filter(
+                    "Images".into(),
+                    vec![
+                        "webp".into(),
+                        "png".into(),
+                        "jpg".into(),
+                        "jpeg".into(),
+                    ],
+                )
+                .set_id(live_id!(print_qr_pick));
+            cx.open_select_file_dialog(dialog);
+            self.set_status(cx, "Opening payment QR picker…");
+        }
+        if self.ui.button(cx, ids!(print_qr_clear)).clicked(actions) {
+            let outcome = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.set_payment_qr_key(None)?;
+                Ok("Payment QR cleared".into())
+            })();
+            match outcome {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(awb_pool_add)).clicked(actions) {
+            let carrier = self.ui.text_input(cx, ids!(awb_pool_carrier_input)).text();
+            let start_t = self.ui.text_input(cx, ids!(awb_pool_start_input)).text();
+            let end_t = self.ui.text_input(cx, ids!(awb_pool_end_input)).text();
+            let prefix = self.ui.text_input(cx, ids!(awb_pool_prefix_input)).text();
+            let label = self.ui.text_input(cx, ids!(awb_pool_label_input)).text();
+            let outcome = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Add AWB pool")?;
+                let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
+                let party = store
+                    .list_customers()?
+                    .into_iter()
+                    .find(|c| {
+                        c.name.eq_ignore_ascii_case(carrier.trim()) || c.id == carrier.trim()
+                    })
+                    .ok_or_else(|| "Carrier party not found — add them on Parties first".to_string())?;
+                let start_n: i64 = start_t
+                    .trim()
+                    .parse()
+                    .map_err(|_| "Start no. must be a number".to_string())?;
+                let end_n: i64 = end_t
+                    .trim()
+                    .parse()
+                    .map_err(|_| "End no. must be a number".to_string())?;
+                let pool = store.add_awb_pool(&party.id, &prefix, start_n, end_n, &label)?;
+                Ok(format!(
+                    "AWB pool {}{}–{} for {}",
+                    pool.prefix, pool.start_n, pool.end_n, party.name
+                ))
+            })();
+            match outcome {
+                Ok(m) => self.set_status(cx, m),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        for btn in [ids!(reports_bill_chase), ids!(credit_bill_chase)] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                let text = (|| -> Result<String, String> {
+                    let st = app_state().lock().unwrap();
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.pending_bills_chase_text()
+                })();
+                match text {
+                    Ok(t) => {
+                        let rows: Vec<ReportRow> = t
+                            .lines()
+                            .map(|l| ReportRow::Line(l.to_string()))
+                            .collect();
+                        self.set_report_rows(cx, ids!(reports_label), rows);
+                        self.copy_text_to_clipboard(cx, &t);
+                        self.set_status(cx, "Chase list shown · also copied");
+                        let mut st = app_state().lock().unwrap();
+                        st.screen = Screen::Reports;
+                        st.reports_nav = ReportsNav::Bank;
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(reports_month_mix)).clicked(actions) {
+            let ym = chrono::Local::now().format("%Y-%m").to_string();
+            let text = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.month_mix_report_text(&ym)
+            })();
+            match text {
+                Ok(t) => {
+                    let rows: Vec<ReportRow> = t
+                        .lines()
+                        .map(|l| ReportRow::Line(l.to_string()))
+                        .collect();
+                    self.set_report_rows(cx, ids!(reports_label), rows);
+                    self.copy_text_to_clipboard(cx, &t);
+                    self.set_status(cx, format!("Month mix {ym} · copied"));
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(csv_copy_gst_month)).clicked(actions) {
+            let ym = chrono::Local::now().format("%Y-%m").to_string();
+            let text = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.month_gst_summary_csv(&ym)
+            })();
+            match text {
+                Ok(t) => {
+                    self.copy_text_to_clipboard(cx, &t);
+                    self.set_status(cx, format!("Month GST CSV {ym} copied — for your CA"));
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+        }
         if self.ui.button(cx, ids!(venue_icon_pick)).clicked(actions) {
             self.pick_venue_icon(cx);
         }
@@ -20852,6 +23757,10 @@ impl AppMain for App {
             // Before CreateWindow: override the DSL default with the last session.
             self.restore_window_geom(cx);
             self.ensure_store(cx);
+            // Photo thumbs are made on worker threads; wake the UI when one lands.
+            thumbs::set_notify(|| {
+                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
+            });
             phone::set_notify(|| {
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
             });
@@ -20877,6 +23786,9 @@ impl AppMain for App {
                     start_auto_backups(path);
                 }
             }
+        }
+        if matches!(event, Event::Signal) && thumbs::take_ready() {
+            self.ui.redraw(cx);
         }
         if matches!(event, Event::Signal) {
             if BACKUP_MADE.swap(false, std::sync::atomic::Ordering::SeqCst) {
@@ -20943,6 +23855,23 @@ impl AppMain for App {
         }
         if self.pointer_navigates(cx, event) {
             return;
+        }
+        // Horizontal strips: claim sideways only while they can move; never
+        // steal vertical page scroll when the pointer sits on chips/nav.
+        if matches!(event, Event::Scroll(_)) {
+            for (_, scroller) in TAB_STRIPS {
+                let tabs = self.ui.view(cx, scroller);
+                claim_hstrip_nested_scroll(cx, &tabs, event);
+            }
+            for path in [
+                ids!(bottom_nav_scroll),
+                ids!(rail_scroll),
+                ids!(app_hscroll),
+                ids!(booking_desk_hscroll),
+            ] {
+                let strip = self.ui.view(cx, path);
+                claim_hstrip_nested_scroll(cx, &strip, event);
+            }
         }
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.

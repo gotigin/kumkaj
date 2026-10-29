@@ -124,6 +124,41 @@ Each profile: who it is for · what it does · how convenient the GUI is
   party credit, expenses) — that second job is Moklanjo's core. Multi-carrier
   agencies juggle several carrier portals and want one desk.
 
+#### 3.4b C Trunk (India franchise desktop/web demo, YouTube 2026-10-29)
+- **For:** courier franchise counters (Account/Cash booking, party billing, GST).
+- **Features (Local-capable):** Account vs Cash + Domestic/International + cargo;
+  per-client quotation slabs; fuel/insurance extras; receipt with logo/GST/AWB;
+  **carrier AWB/barcode number pools** (start–end series, auto next);
+  period / date-range bills; payment with **TDS / discount / cheque no.**;
+  **bill-reminder** list; client ledger; GST month sheet + Excel; booking
+  reports by client/courier; inward/outward DRS + signature upload; print
+  **stamp + payment QR** with logo.
+- **GUI / UX:** home month KPIs (booking/billing/new clients/courier mix/top
+  clients); **Generate bill** vs **Generate & print**; three-dot overflow for
+  Clients / Quotation. Multi-step is light — booking stays one form.
+- **Offline:** sold as franchise SaaS in the demo, but every mechanic above
+  stores in the office books — **Local** for Moklanjo (Net only if sharing
+  PDF/email from the device).
+- **Takeaway (net-new vs our earlier matrix):** AWB number pools, settlement
+  TDS/cheque fields, bill-reminder chase view, stamp/QR on print, cargo /
+  multi-piece desk path, month mix by courier/service as a **Reports** facet
+  (not a chart dashboard replacing Day book).
+
+#### 3.4c ASP.NET “Courier System Management” demo (YouTube 2026-10-29)
+- **For:** small courier HQ (shipments, riders, invoices, RBAC).
+- **Features (Local-capable):** role matrix; shipment CRUD + status timeline;
+  **bulk status update**; public track-by-id; invoices with line items;
+  riders; locations; weight/cost rules; activity log; shipment/revenue/rider
+  reports.
+- **GUI / UX:** SaaS **dashboard of charts** as home; **multi-step booking
+  wizard**; dense admin CRUD. Easy to admire in a demo; slow for walk-in
+  flood.
+- **Offline:** cloud demo; Local equivalents already mostly **Have** in
+  Moklanjo.
+- **Takeaway:** adopt **bulk status update**; **do not** copy the wizard or
+  chart-heavy home — keep Day book + one-screen Booking desk
+  ([`DESIGN.md`](../../../docs/DESIGN.md)).
+
 #### 3.5 Shiprocket (India, shipping aggregator)
 - **For:** online sellers; also used by small agencies as a booking back-end.
 - **Features:** assign **AWB**, choose courier (**courier recommendation
@@ -330,6 +365,7 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 | **Pincode → zone/service lookup** (serviceability) | A, aggregators | **Have** | Local | `pincode_service` + CSV import; 6-digit autofill plus destination autocomplete from pin prefix / zone / past destinations |
 | **Rate quote / compare carriers** for one parcel (price + our margin) | Aggregators | **Have** | Local | Carrier buy cards (`carrier_party_id`) vs sell; booking desk compare line + pick cost. Live carrier rates would need Net |
 | Bulk booking (CSV) | A, B, C | **Have** | Local | Add an import preview with row errors |
+| **Cargo / multi-piece booking path** (pieces + heavy kg) | A (C Trunk) | **Have 2026-10-29** | Local | `piece_count` on sale + receipt; weight helpers |
 | Credit limit on account parties | A | **Have** | Local | — |
 | Declared value / insurance / content description | A, aggregators | **Have** | Local | Fields on the docket + on the label/receipt |
 | E-way bill number on docket | A (India) | **Have** | Local (field) / Net (generation) | Store and print the number; generating it needs the government portal |
@@ -340,7 +376,10 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 | Feature | Market | Moklanjo | Offline | Note / recommendation |
 |---|---|---|---|---|
 | AWB/CN numbering + Code 128 label | A, B, aggregators | **Have** | Local | — |
+| **Carrier AWB / barcode number pools** (start–end series per courier; next from pool) | A (C Trunk) | **Have 2026-10-29** | Local | `awb_pools` + allocate on finalize |
 | Scan-to-find with USB/Bluetooth wedge scanner | A, B, C | **Have** | Local | — |
+| **Bulk status update** (multi-select AWBs → one status) | B (ASP.NET demo) | **Have 2026-10-29** | Local | `bulk_advance_tracking` — paste AWBs |
+| **Print brand kit**: logo + stamp + payment QR on receipt/period bill | A (C Trunk) | **Have 2026-10-29** | Local | Stamp/QR masters + receipt face lines |
 | **Phone camera barcode scanning** | C (all driver apps) | **Have** | Local | Wedge remains primary; “Pick image to scan” decodes Moklanjo synthetic / high-contrast strips via `barcode_scan` (no heavy crate) |
 | C-note / docket print with and without barcode, thermal and A4 | A | **Have** | Local | Receipt + SVG label + A4/A5 `format_docket_text` consignor/consignee blocks |
 | **Printable manifest / run sheet (DRS)** with signatures column | A | **Have** | Local | Manifests exist in the books; print them per carrier bag or per rider run, with counts, COD total and a sign-off line |
@@ -375,6 +414,10 @@ Legend for "Market": where the feature is common (A/B/C/D = groups in §2).
 | Carrier cost and margin per docket | A | **Have** | Local | — |
 | **Carrier invoice / weight-discrepancy reconciliation** | Aggregators (pain point) | **Have** | Local (CSV import) | Import bill CSV → match AWB, flag weight/charge diffs, apply costs; copy report from Reports |
 | Party ledgers, AR/AP, aging, day book, bank book, P&L, balance sheet | A (partial), B (via QuickBooks) | **Have** | Local | Most competitors push this to QuickBooks/Tally; Moklanjo owns it |
+| **Settlement extras on party pay**: TDS cut, discount, cheque no. | A (C Trunk); tutorial Part 4/7 | **Have 2026-10-29** | Local | `format_settle_detail` / clear paise helpers |
+| **Bill-reminder / unpaid invoices chase list** | A (C Trunk) | **Have 2026-10-29** | Local | `pending_bills_chase_text` |
+| **Month GST summary CSV** (collected vs ITC-style for CA — not GSTR filing) | A | **Have 2026-10-29** | Local | `month_gst_summary_csv` |
+| **Month mix report** (bookings by courier / Document·Surface·Air; top clients) | A (C Trunk home) | **Have 2026-10-29** | Local | `month_mix_report_text` / CSV |
 | Expense vouchers with bill photo | A | **Have** | Local | — |
 | Franchise commission tracking (carrier pays the agency %) | A (franchise) | **Have** | Local | Period statement % of margin/revenue per carrier |
 | Accounting export (Tally / CSV) | B | **Have** | Local | Day-book CSV + Tally-friendly voucher CSV (document columns) |
@@ -448,7 +491,14 @@ Every item that could ship **without Kumkaj Cloud** from the earlier
 Also Have: LAN corporate `/book`, vehicle inspection/fuel, A4/A5 docket,
 optional lat/lon on POD, local delivery feedback score.
 
-### Still left (not Local-complete)
+### C Trunk / ASP.NET Local gaps — closed 2026-10-29
+
+**Have** in `store_local_extras.rs` + Settings/Ops/Reports/Credit desk wiring:
+print brand kit (stamp + payment QR), carrier AWB pools, bulk AWB status,
+settlement TDS/discount/cheque detail, bill-reminder chase list, month GST CSV,
+month mix report, cargo `piece_count`. See matrix §5 rows marked **Have 2026-10-29**.
+
+### Still left (not Local-complete — Cloud/Net/owner)
 
 | Item | Status | Why it waits |
 |---|---|---|
@@ -488,6 +538,15 @@ optional lat/lon on POD, local delivery feedback score.
    reach the office" — Moklanjo already does this for counters.
 7. **Import, don't retype**: CSV previews with row-level errors for bulk
    bookings, carrier bills and pincode lists.
+8. **Don't copy multi-step booking wizards** for walk-ins (ASP.NET demo) —
+   one Booking desk screen; Next booking clears for the next person.
+9. **Don't replace Day book with a chart SaaS home** (ASP.NET / C Trunk
+   dashboards) — month mix and top clients belong in **Reports**, not the
+   unlock landing.
+10. **Generate bill vs Generate & print** as two clear actions on period
+    bills (C Trunk) — avoid a single ambiguous CTA.
+11. **Don't import a 35-permission CRUD matrix** — keep progressive feature
+    chips + void/amend rights (vision §17), not admin RBAC sprawl.
 
 ---
 
@@ -501,6 +560,7 @@ Round-ups and comparisons
 - [G2 — Onfleet vs Tookan](https://www.g2.com/compare/onfleet-vs-tookan) · [Capterra — Onfleet vs Tookan](https://www.capterra.com/compare/142633-218952/Onfleet-vs-Tookan) · [G2 — Detrack vs Onfleet](https://www.g2.com/compare/detrack-vs-onfleet)
 
 Group A
+- [C Trunk courier software demo](https://www.youtube.com/watch?v=R7Wb1tNWXjI) · [ASP.NET Courier System Management demo](https://www.youtube.com/watch?v=jh3SSyg0fYQ) (watched 2026-10-29; Local-capable takeaways in §3.4b–c / §7)
 - [FR Billing on Techjockey](https://www.techjockey.com/detail/frbilling) · [Capterra](https://www.capterra.ca/software/1062127/frbilling)
 - [Courier software listing (IndiaMART)](https://m.indiamart.com/proddetail/courier-software-2658099788.html)
 - [Vyapar courier billing](https://vyaparapp.in/free/courier-billing-software) · [Vyapar reviews (Capterra)](https://www.capterra.in/reviews/180579/vyapar)

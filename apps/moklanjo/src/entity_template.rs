@@ -40,7 +40,7 @@ pub const MOKLANJO: EntityTemplate = EntityTemplate {
     id: "moklanjo_agency",
     title: "Moklanjo",
     blurb: "Courier-agency books + booking desk: consignors, carriers, day book, AWB.",
-    how_to: "Booking = walk-in parcels (weigh → rate → cash/account → AWB). Day book = today. Pay out = carrier bills & expenses. More → Rates, Parties, Bank book & P&L, Team.",
+    how_to: "Booking = walk-in parcels (weigh → rate → cash/account → AWB). Day book = today. Pay out = carrier bills & expenses. Rates, Parties, Reports, Team are tabs.",
     label_overrides: &[],
     qty_unit_hint: "kg",
     lane_declared_label: "Account booking",

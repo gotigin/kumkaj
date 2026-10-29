@@ -1524,6 +1524,14 @@ impl Store {
         if !footer.trim().is_empty() {
             out.push_str(&format!("{}\n", footer.trim()));
         }
+        if self.print_stamp_path()?.is_some() {
+            out.push_str("[Stamp]\n");
+        }
+        if self.payment_qr_path()?.is_some() {
+            out.push_str("[Payment QR]\n");
+        } else if !self.upi_vpa()?.trim().is_empty() {
+            out.push_str(&format!("UPI: {}\n", self.upi_vpa()?.trim()));
+        }
         Ok(out)
     }
 

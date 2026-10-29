@@ -97,6 +97,8 @@ Vendor patches live under `vendor/makepad` (path-dep). Toggle logic is owned by 
 
 RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_x` in `vendor/makepad/widgets/src/text_flow.rs` (resting paragraph alignment; open table cells still override it) and `pub TextInput::label_align` in `vendor/makepad/widgets/src/text_input.rs` (patch files `patches/makepad/text_flow_paragraph_align.rs.patch` and `patches/makepad/text_input_label_align_pub.rs.patch`, applied by `scripts/setup-makepad.sh`). Each app sets them from `apply_text_alignment` while `locale::is_rtl` is active; glyph shaping and bidi ordering are Makepad’s own (rustybuzz + unicode-bidi in `draw/src/text/shaper.rs`). The window layout is not mirrored.
 
+**Mouse cursor state** (`patches/makepad/mouse_cursor_state.rs.patch`): Wayland mapped `MouseCursor::Arrow` to the context-menu shape (focused buttons looked like a menu); it now matches Default. Widget `SetCursor` is ignored while the pointer is in the window-edge resize band so Text/Hand cannot wipe Nw/E/S/…. `View` / `Button` / `TextInput` re-assert their cursor on `FingerHoverOver` (HoverIn only fires once); focused buttons keep Hand; caption drag uses Grab. Both apps also set `ColResize` while hovering the rail divider.
+
 **Bugs we hit (do not reintroduce)**
 
 1. **`display_context.screen_size` is the window size** — never use it as “fills the screen ⇒ maximized”; that made every max click take the restore path.
@@ -187,18 +189,31 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 5. On every paint: `clear_button_animators` (`reset_hover` + `animator_cut` `hover.off` / `focus.off`) on **both** faces before setting visibility, so a hidden/deselected face cannot stay lit.
 6. Clicks: `choice_chip_clicked` (idle **or** active); clear key focus when changing bottom-nav peer.
 
+**Intent → face (same job → same look)**
+
+| Intent | What the click does | Face |
+|---|---|---|
+| **Navigate** | Leaves this screen / opens another peer | `HubDestBtn` + mark (hub lists) or chrome `TabBtn` / `NavChip` |
+| **Select** | Stays here; picks among options | `DeskTab` / `SegBtn`/`SegBtnOn` / `ChipBtn`/`ChipBtnActive` |
+| **Submit / do** | Commits work on this form | **One** filled `RowPrimaryBtn` / `StackPrimaryBtn` (or `PayBtn` on ticket) |
+| **Quiet alt** | Cancel / clear / secondary do | `RowSecondaryBtn` / `StackSecondaryBtn` / outlined `NavBtn` |
+| **Destroy** | Void / refund / delete | `DangerBtn` |
+
+Hard rules: never use a filled primary to mean “this navigate link is more important”; never use `ChipBtn` as a one-shot CTA (NDR / Show PIN / line Cancel → `QuietFitBtn`); exclusive closed sets (tax invoice, amend pay, paid/AP, staff role, …) → `SegBtn`, not Stack primary/secondary twins; short filters (units, catalog facets) → `ChipBtn`; `PayBtn` is ticket take-payment only. **Never** put `Row*` / `Stack*` (Fill + `wrap: true`) at `width: Fit` — wrap measures one glyph wide and stacks letters vertically (`S`/`h`/`o`/`w`…); use `QuietFitBtn` (Fit, no wrap) for inline quiet actions.
+
 **Labels (no right truncation)**
 
 | Kind of label | Face |
 |---|---|
 | Short chip in a horizontal strip | `ChipStrip` + `ChipBtn` / `ChipBtnActive` (Fit max 160, ellipsis OK) |
+| Closed radio set (equal Fill share) | `SegBtn` / `SegBtnOn` in a `Right` row of Overlay cells |
 | Ultra-short side-by-side (≤ ~4 chars) | `ActionRow` + `RowPrimaryBtn` / `RowSecondaryBtn` |
-| Multi-word / translated CTA | `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn`, or `NavBtn` / `PayBtn` / `MoreRow` |
+| Multi-word / translated CTA | `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn`, or outlined `NavBtn` / `PayBtn` / `MoreRow` / `HubDestBtn` / `DangerBtn` |
 | Side-by-side fields (no CTAs) | `FormFieldRow` + `FieldInput` (equal `Fill`) |
 
-Full-width CTA faces: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, `align: Align{x: 0.5 y: 0.5}`, label walk **`width: Fit`** (not Fill — see bug 7 / `button_label_center` patch), **no** `max_lines: 1`, **no** `Ellipsis`. Always `padding` **and** `label_walk.margin`. Never strip wrap or center to dodge a hang — fix the Fill-in-wrap walk instead.
+Full-width CTA faces: `width: Fill`, `height: Fit`, `flow: Right{wrap: true}`, `align: Align{x: 0.5 y: 0.5}` (hub dest left-aligned), label walk **`width: Fit`** (not Fill — see bug 7 / `button_label_center` patch), **no** `max_lines: 1`, **no** `Ellipsis`. Always `padding` **and** `label_walk.margin`. Never strip wrap or center to dodge a hang — fix the Fill-in-wrap walk instead.
 
-Never invent a one-off button type (`LangSourceBtn`, etc.) when Stack/Nav already cover it. Never put multi-word phrases in `ChipBtn` / `ActionRow`.
+Never invent a one-off button type (`LangSourceBtn`, etc.) when Stack/Nav/HubDest/Danger already cover it. Never put multi-word phrases in `ChipBtn` / `ActionRow`.
 
 **FormFieldRow (no flex-shrink):** Makepad will crush a Fit CTA beside Fill inputs until wrap stacks each letter. Example regression: **Add rate** as a vertical navy pill overlapping Unit. Always:
 
@@ -226,9 +241,12 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 | Piece | Role |
 |---|---|
 | `TabBtn` / `TabBtnActive` | Bottom-nav idle / selected faces |
-| `NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*` | Full-width CTAs (centered, wrap, no ellipsis; Fit label — see bug 7) |
+| `HubDestBtn` | Hub navigate jump + mark (never filled primary) |
+| `SegBtn` / `SegBtnOn` | Closed radio sets (select in place) |
+| `NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`, `DangerBtn` | Full-width CTAs by intent (centered, wrap, no ellipsis; Fit label — see bug 7); `PayBtn` = ticket pay only; `DangerBtn` = void/refund/delete |
+| `QuietFitBtn` | Inline Fit quiet action (Show PIN, NDR reason, ticket Cancel/NC/Move) — never `Row*` at `width: Fit` |
 | `FormFieldRow` | Side-by-side fields only — never CTAs |
-| `ChipBtn` / `ChipBtnActive` | Short strip chips only |
+| `ChipBtn` / `ChipBtnActive` | Short strip filter chips only — never one-shot actions |
 | `nav_tab_for` | `Screen` → which bottom peer is active |
 | `paint_nav_tabs` | Exactly one footer peer visible-as-selected |
 | `pointer_nav_drag` / `nav_drop_slot` / `nav_drag_autoscroll` | Tab drag-to-swap, drop targeting, edge auto-scroll (see “Nav drag-to-swap”) |
@@ -240,11 +258,14 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 ```text
 ❌ Idle TabBtn color_hover = selected navy
 ❌ Rely on focus/hover as “selected”
-❌ NavBtn / MoreRow with Ellipsis; ChipBtn for “Tax invoice” / language source
+❌ NavBtn / MoreRow with Ellipsis; ChipBtn for “Tax invoice” / language source / NDR / Show PIN
+❌ RowSecondaryBtn{width: Fit} / any Fill+wrap face forced Fit (vertical letter stack)
+❌ Filled primary for a Day-book (or hub) navigate link (“Book a parcel” miracle CTA)
 ❌ FieldInput + FieldInput + NavBtn{width: Fit} in one Right row
 ❌ Patch one screen only — faces are shared across Linux / Windows / Android
 
 ✅ Overlay idle+active + paint from Screen + clear animators
+✅ Intent first: HubDest for jumps · SegBtn for radios · ChipBtn for short filters · one primary per form · Danger for destroy
 ✅ Wrap on full-width CTAs; ChipBtn only for short chips
 ✅ FormFieldRow for fields; ActionStack for multi-word CTAs under them
 ✅ Fix that app's face definitions once (all platforms for that app)
@@ -714,7 +735,14 @@ Makepad visual traps found this way (do not reintroduce):
    letters** — short chips in a wrapping row, or stack them.
 9. **A `WrapLabel` (selectable `TextFlow`) takes the press** — a tappable
    row whose text is a selectable `WrapLabel` never sees the tap; set
-   `selectable: false` on text inside anything you tap.
+   `selectable: false` on text inside anything you tap. **Everywhere
+   else, display text stays selectable** (`WrapLabel` / `ReportText`) so
+   the owner can copy totals, reports, and labels — see
+   [`DESIGN.md`](DESIGN.md) § Text selection & copy. Do not size tile
+   grids from shell `content_width` alone when the screen adds its own
+   padding (Floor cropped the last column); measure with
+   `cx.turtle().next_walk_width` in `draw_walk` like the dish grid
+   ([`DESIGN.md`](DESIGN.md) § Always responsive).
 10. **A redraw asked for inside a widget's own draw is dropped** — a
     content-sized list that finds its rows changed height while drawing
     must schedule `cx.new_next_frame()` and redraw on that frame, or a
@@ -754,8 +782,16 @@ Makepad visual traps found this way (do not reintroduce):
     drag-to-scroll by touch only on vertical pages/lists — a mouse drag
     never flings them (wheel / scrollbar / keys). Horizontal tab strips
     (`ScrollXView`) allow mouse press-drag on the whitespace around the
-    chips so nav drag-to-swap on a chip is not stolen (Makepad patch
-    `drag_scroll_touch_only`).
+    chips so nav drag-to-swap on a chip is not stolen; desk panes that
+    fill the strip set `scroll_bar_x.mouse_capture_overload: true` so
+    mouse press-drag still pans (Makepad patch `drag_scroll_touch_only`).
+    Selectable `WrapLabel` / TextFlow yields sideways drags to an ancestor
+    ScrollX (commits text-select only when the drag is mostly vertical —
+    `text_flow_selection`). Nested scroll chaining: inner list keeps the
+    wheel only while it can still move that way; at the edge the page/desk
+    takes over (DEV §13). Every `ScrollYView` keeps **right padding 16**
+    so content never sits flush on the vertical scrollbar; desk `ScrollX`
+    keeps **bottom padding** clear of the horizontal bar.
 16. **`ScrollYView{…}` in the DSL binds when the widgets are imported** —
     overriding `mod.widgets.ScrollYView` later changes nothing unless the
     name is re-bound (`let ScrollYView = mod.widgets.ScrollYView`). The

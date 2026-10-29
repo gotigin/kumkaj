@@ -158,7 +158,7 @@ user needs — In / Later, in Khaynjo's own terms:
 | Recipe-level stock deduction, low-stock alerts | **In (2026-10-25)** — recipe; reorder; running-low. Expiry/batch alerts + PO + stock variance **In (2026-10-27)** on Inventory ops | `store_recipes.rs`, `store_ops.rs` |
 | Floor-plan editor: areas, table shapes, seats/covers, coursing | **Have (2026-10-27)** — Grid ↔ Layout (X/Y/W/H + nudge + auto-pack); waitlist, sections, waiter call, hold/fire | Floor; `store_ops` / `set_table_layout` |
 | Kitchen expediting: all-day item counts, fire/hold courses | **Have** — all-day counts; hold/fire; expo `/expo`; allergens on KOT; ageing + recall | Kitchen; `send_kot_filtered`, `fire_course` |
-| Online delivery channels (aggregators) with payout reconciliation | **Partial** optional file import + Net poll stub (off by default); live SaaS **Skipped** (Cloud). Never gates counter | `store_ops` connectors |
+| Online delivery channels (aggregators) with payout reconciliation | **Partial** — **Have 2026-10-29** Local drop-file UX (`backups/import_aggregator_orders.json` → Settings → Bill format → Import); Net poll stub off by default; live SaaS **Skipped** (Cloud). Never gates counter | `store_ops` connectors |
 | Guests ordering from a QR at the table | **Have** on Server Wi‑Fi (`GET /t/{table}`); guests on mobile data **Skipped** until Cloud | `net.rs` public LAN |
 | The shop's own language, all day, on every screen | **In** — static UI fully translated in all 29 Kumkaj languages incl. Arabic/Urdu RTL alignment (vision §23) | `locale*.rs` |
 | Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Done 2026-10-27** — Team Floor/Kitchen chips; nav gates `can_access_*` (Books/Buy/DayClose/Reports for money) | Team; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A |
@@ -194,7 +194,7 @@ internet (vision §20).
 | KOT per station / category printer | **Done** — one ticket per station, numbered per day (`KOT No`), with who sent it | `send_kot`, `format_kot_text` |
 | Table colours Blank / Running / Printed / Paid | **Done, redesigned 2026-10-23; clarified 2026-10-27** — grid of coloured tiles by area (Layout view optional). Visit colour: Free → **Seated** (no order) → In kitchen → Food ready → **Served** → Bill printed → Free on **payment**. Accidental Print bill → **Undo bill**; Bill printed with ₹0 → **Free table**. **Bugfix 2026-10-27:** pay/free completes leftover open KOTs and the floor only counts KOTs for *this* seating — next guests no longer stick on In kitchen. Summary line and colour key above; refresh every 8 s | `FloorState`, `FloorTile`, Floor; `complete_open_kots_for_table` |
 | Kitchen display on a tablet | **Done** — ticket Start/Ready/Done from a paired tablet reaches the Server (it used to change only the tablet's cache); **2026-10-27** ageing colours + Recall | Kitchen; `/kot_advance`, `/kot_recall` |
-| Bill format + UPI QR | **Done** — header / FSSAI / footer; **2026-10-27** UPI VPA + counter QR for the bill amount | Settings → Bill format; Order desk Show UPI QR |
+| Bill format + UPI QR | **Done** — header / FSSAI / footer; **2026-10-27** UPI VPA + counter QR for the bill amount; **Have 2026-10-29** print brand kit (stamp + static payment QR images on bill faces / LAN `/display`; dynamic amount UPI QR still used when no payment-QR image) | Settings → Bill format; Order desk Show UPI QR |
 | Areas (AC / Garden / Parcel) | **Done** — area per table, headings on the floor, range add `D1-D20` | Floor, `add_tables_range` |
 | Move KOT / items, move table, merge tables | **Done** — same order id moves; minutes travel with the guests | ticket Move / merge; `move_*`, `merge_tables` |
 | KOT cancellation with reason, prep status, approver | **Done** — line kept as cancelled, partial qty, cooked = wastage; kitchen gets a ✕ CANCEL slip | ticket Cancel; `cancel_running_line` |
@@ -397,11 +397,11 @@ sign and test — same product when they land.
 ## 5b. Layout & interaction law for Khaynjo screens (learned 2026-10-22)
 
 Generic layout/interaction law for all Kumkaj apps is canonical in
-[`docs/DESIGN.md`](../../../docs/DESIGN.md) § Work-surface layout &
-interaction and [`docs/DEV.md`](../../../docs/DEV.md) (state-guard and
-agent-verification rules) — not restated here. Below is only the
-restaurant instantiation the first build broke and must not break
-again:
+[`docs/DESIGN.md`](../../../docs/DESIGN.md) § **Always responsive**,
+§ **Text selection & copy**, § Work-surface layout & interaction, and
+[`docs/DEV.md`](../../../docs/DEV.md) (state-guard and agent-verification
+rules) — not restated here. Below is only the restaurant instantiation
+the first build broke and must not break again:
 
 - **Order desk stack:** order-type chips and **+ Add dishes** stay
   pinned above; cart lines scroll in the middle; **Counter** (payment)
@@ -450,6 +450,14 @@ again:
   Snapshots carry `running_orders`.
 - Floor/Kitchen peers show only when the venue runs tables & kitchen
   (`creates_kot()`); unlock lands on Day book, Order/Floor one tap away.
+- **Floor grid columns from the list’s turtle width** — never from
+  shell `content_width` alone (that ignores Floor screen padding and
+  crops the last tile). Same pattern as the dish grid.
+- **Display text is selectable** (`WrapLabel` / `ReportText`); only
+  tap targets keep `selectable: false` / plain `Label` (DESIGN § Text
+  selection).
+- Side rail (≥720): **‹** collapses to zero width, **›** in the header
+  restores (`rail_collapsed`); bottom tabs unchanged.
 - Khaynjo's state-guard check: `apps/khaynjo/scripts/check-lock-guards.sh`
   (root rule: `docs/DEV.md` § Makepad 2 UI faces).
 
@@ -486,7 +494,7 @@ true multi-outlet Cloud or a third-party marketplace.
 | Day close + item/staff/hour reports | **Have** | Fewer named reports than Petpooja’s 94 |
 | Loyalty points on customer | **Have 2026-10-27** | Earn on pay; Order till redeem points / wallet / voucher; top-up & issue voucher |
 | QR / kiosk / token / waitlist | **Have** (LAN pages) | |
-| Aggregator sync / head-office menu push | **Skip / Partial** | File stub OK; live Zomato/Swiggy + HO push = Cloud |
+| Aggregator sync / head-office menu push | **Skip / Partial** | **Have 2026-10-29** Local file import UX; live Zomato/Swiggy + HO push = Cloud |
 | CRM segments + birthday SMS | **Have** queue 2026-10-27; **Planned** delivery | Parties → Guests & messages queues SMS/WhatsApp intents. Delivery: Local SMS Gateway (cloudless Android sibling) or paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | Variation / add-on sales reports | **Have 2026-10-27** | Day report section from `sale_lines.modifiers_json` |
 | Modifier max (e.g. 3 toppings) in UI | **Have 2026-10-27** | `Toppings+3:` in Options field |

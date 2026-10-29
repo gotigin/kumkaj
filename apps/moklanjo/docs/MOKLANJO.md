@@ -20,7 +20,7 @@
 > core / shared product code; local-first; free local, usage-based
 > cloud). This brief only says what is courier-agency-specific.
 
-Companions: [`USE_CASES.md`](USE_CASES.md) (industry + client research), [`grokbot/MOKLANJO_BUSINESS_TUTORIAL.md`](grokbot/MOKLANJO_BUSINESS_TUTORIAL.md) (ops + tax + Part 10 mapping), [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md) (business-books concepts checklist — concepts, not shared code), vision §1–2.
+Companions: [`MOKLANJO_APP_TUTORIAL.md`](MOKLANJO_APP_TUTORIAL.md) (learn business + app + rush-desk demo), [`USE_CASES.md`](USE_CASES.md) (industry + client research), [`grokbot/MOKLANJO_BUSINESS_TUTORIAL.md`](grokbot/MOKLANJO_BUSINESS_TUTORIAL.md) (ops + tax + Part 10 mapping), [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md) (business-books concepts checklist — concepts, not shared code), vision §1–2. Screen titles also have in-app info tips.
 
 **Build rule:** implement this product concretely, in Moklanjo's own code only. Never promote logic into shared crates — there is no Kumkaj core. When another Kumkaj product needs the same thing, it copies Moklanjo's code and diverges (as Khaynjo did); a Moklanjo change must never impact another app.
 
@@ -73,7 +73,7 @@ Supplier.
 
 | Feature | Notes | Moklanjo target |
 |---------|--------|------------------------|
-| Consignor + carrier accounts | One party; roles Consignor and/or Carrier (same firm may be both) | **Ship** — Parties multi-role; AR+AP ledgers; net position in reports |
+| Consignor + carrier accounts | One party; roles Consignor and/or Carrier (same firm may be both); phone, address, optional logo, optional custom fields (e.g. WhatsApp) | **Ship** — Parties multi-role + address + logo/photo + custom key/value fields; AR+AP ledgers; net position in reports |
 | Debtors & creditors / aging | AR + AP (separate); net who-owes-whom | **Ship** — Parties + Reports |
 | Day book | Today money in/out | **Ship** — Day book tab / Reports |
 | Bank book | Till ↔ bank | **Ship** — Bank book & P&L |
@@ -93,10 +93,12 @@ Supplier.
 | Consignment / docket booking | Party, destination, weight, service + receipt | **Ship** — Booking desk |
 | Walk-in flood | Clear cart / “new booking” every customer | **Ship** — Next booking |
 | Rate master (zone × service × slab) | ₹/kg, first/extra slab | **Ship** — zone master + first/extra kg on Rates |
-| Chargeable weight | Actual / volumetric / slab | **Ship** — defaults L×B×H ÷ 5000, round up 0.5 kg; divisor + slab are shop settings |
+| Chargeable weight | Actual / volumetric / slab | **Ship** — Domestic default L×B×H ÷ 5000 (shop setting); Booking desk **Domestic / International** chip switches ÷6000 air for that booking without rewriting Settings; round up 0.5 kg |
 | Measurement units | User-chosen entry units, standard + custom conversions | **Ship** — Moklanjo defaults: booking desk cm + kg, volumetric ÷ 5000, round up to 0.5 kg (Settings → Booking measures / Units). Canonical units doctrine (standard units, chained custom units, anchor recording) for all apps: [`UNITS_AND_CONVERSIONS.md`](../../../docs/UNITS_AND_CONVERSIONS.md) |
 | Extra charges | Fuel, docket, ODA, packing, COD fee | **Ship** — fuel/docket on desk; catalog seeded |
 | AWB / CN + **label / barcode** | Unique id; print; scan | **Ship** — Code 128 SVG label + Ops Find/Scan (wedge) → desk card → advance/COD |
+| Carrier AWB / barcode **number pools** | Start–end series per courier; next from pool | **Ship** (2026-10-29) — Settings pools + allocate on book |
+| Cargo / multi-piece booking | Pieces + heavy kg on same spine | **Ship** (2026-10-29) — desk `Pieces` + receipt |
 | City / zone / pincode | Destination masters | **Ship** — zone master + booking zone + pincode CSV serviceability |
 | Party-specific rates | Consignor override cards per zone | **Ship** — `products.party_id` + booking resolve |
 | Carrier rate compare | Sell vs buy cards + margin at desk | **Ship** — `carrier_party_id` cards + compare line |
@@ -109,6 +111,7 @@ Supplier.
 | Feature | Target |
 |---------|--------|
 | Tracking statuses on AWB | **Ship** — timeline events + status advance |
+| Bulk status update | Multi-select AWBs → one status | **Ship** (2026-10-29) — Ops bulk paste |
 | Barcode scan-to-find / act | **Ship** — Ops AWB field + Find (scanner Enter); card + OFD / Delivered / label / COD |
 | POD note / photo | **Ship** — note + WebP POD on sale (`pod_ref` = attachment id); ops desk picker |
 | Manifest / handover list | **Ship** — carrier bag **or** own-fleet rider run |
@@ -133,6 +136,12 @@ Supplier.
 | COD register + remittance | **Ship** — COD entries + remit batch |
 | Carrier cost / margin on docket | **Ship** — `carrier_cost_paise` + margin helper + bill CSV reconcile |
 | Period party bill | **Ship** — unbilled account dockets → one invoice |
+| Generate bill vs Generate & print | Dual CTA on period bill | **Gap** — UX (C Trunk) |
+| Bill-reminder / unpaid invoices list | Chase view beyond aging | **Ship** (2026-10-29) — Reports + Parties |
+| Settlement TDS / discount / cheque on party pay | Record cut + instrument | **Ship** (2026-10-29) — Pay selected fields |
+| Print stamp + payment QR (with logo) | Franchise bill face | **Ship** (2026-10-29) — Settings + receipt face |
+| Month GST summary CSV | CA handoff (not GSTR filing) | **Ship** (2026-10-29) — Reports CSV |
+| Month mix report (courier / service / top clients) | Reports facet; Day book stays home | **Ship** (2026-10-29) — Reports action |
 | Consignment search/filters | **Ship** — AWB / party / date / billed / status |
 | WhatsApp / SMS notify drain | **Ship** — outbox + Open WhatsApp / Copy SMS / mark sent. SMS **delivery** Planned: Local SMS Gateway (Android sibling) + paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | One-tap WhatsApp receipt | **Ship** — `wa.me` with receipt text |
@@ -155,6 +164,7 @@ Prioritize in this order for Moklanjo:
 6. ~~**COD register**~~ **done**
 7. ~~**Carrier cost / margin**~~ **done** (incl. CSV reconcile)
 8. ~~**Research Local/LAN catch-up**~~ **done 2026-10-27** — rider mode, DRS, NDR/RTO, pincode, rate compare, bill reconcile, party rates, pickups, incoming manifest, barcode image, WhatsApp/SMS drain, Tally/franchise, … Full matrix: [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §5–§7.
+9. ~~**C Trunk / ASP.NET Local gaps (2026-10-29)**~~ **done** — AWB pools, bulk status, settlement TDS/cheque, bill reminder, stamp/QR, GST month CSV, cargo/multi-piece, month mix report — [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §3.4b–c / §7.
 
 ------------------------------------------------------------------------
 
@@ -165,9 +175,13 @@ Prioritize in this order for Moklanjo:
 | Day book | Today’s position |
 | Booking | Money in — book parcels |
 | Pay out | Money out — carrier bills & expenses |
-| Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock | Former More destinations — first-class bottom/rail peers (scrollable) |
+| Rates · Ops · COD · Riders · Bookings · Day close · Reports · Parties · Team · Settings · Lock | Bottom/rail peers (scrollable) |
 
 **Rearrangeable tabs.** The tab order is the shop's, not ours: press a tab and drag it onto another to swap them (bottom bar and rail alike). The arrangement is saved in the books (`ui_nav_order`), so it survives reinstall and follows the shop, not the device. Scrolling stays one gesture away: the bars keep whitespace lanes around the tabs — swipe the lane to scroll, grab a tab to drag. Holding a dragged tab against the left/right edge of the bar (top/bottom of the rail) auto-scrolls it, so tabs that start off-screen can still be reached and swapped with. Implementation rules that keep this working are in `docs/DEV.md` (“Nav drag-to-swap”).
+
+**Collapsible side rail (≥720 css px).** **‹** at the top of the rail hides the whole nav (zero width); **›** in the header restores it. Phone bottom tabs are unchanged. Same pattern as Khaynjo (`rail_collapsed` in `apply_shell_layout`).
+
+**Responsive + selectable text.** Layouts reflow to the window; on-screen display text is selectable/copyable by default (`WrapLabel` / `ReportText`). Exceptions only inside tap targets — see [`docs/DESIGN.md`](../../../docs/DESIGN.md) § Always responsive and § Text selection & copy.
 
 ------------------------------------------------------------------------
 

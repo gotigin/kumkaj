@@ -88,6 +88,12 @@ pub fn take_ready() -> bool {
     READY.swap(false, Ordering::SeqCst)
 }
 
+/// Allow a source path to be tried again after a failed decode or a re-upload
+/// that overwrote the same file (same path, new bytes).
+pub fn forget_failed(src: &Path) {
+    shared().queue.lock().unwrap().failed.remove(src);
+}
+
 /// Where the row thumb for `src` lives (made or not), or `None` when `src`
 /// is not a readable file.
 pub fn thumb_path(src: &Path, cache_dir: &Path) -> Option<PathBuf> {

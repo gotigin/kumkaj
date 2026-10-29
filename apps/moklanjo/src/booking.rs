@@ -15,9 +15,20 @@ use crate::domain::{CartLine, Money, Product, QTY_MILLI_UNIT};
 use crate::precise::{self, ZERO};
 use crate::rates::{BookingExtra, ExtraChargeKind};
 
-/// Default volumetric divisor (Indian surface/air express convention).
+/// Default volumetric divisor (Indian domestic surface/air express).
 pub fn volumetric_divisor() -> Decimal {
+    volumetric_divisor_domestic()
+}
+
+/// Domestic India convention (Delhivery Surface/Express style ÷5000).
+pub fn volumetric_divisor_domestic() -> Decimal {
     Decimal::from(5000)
+}
+
+/// International air convention (IATA-style ÷6000). Desk chip switches
+/// chargeable maths to this without rewriting Settings.
+pub fn volumetric_divisor_international() -> Decimal {
+    Decimal::from(6000)
 }
 
 /// Convert a value typed in the shop's chosen unit into the canonical

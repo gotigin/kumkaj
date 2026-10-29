@@ -26,6 +26,8 @@ pub struct Store {
 
 #[path = "store_courier_ops.rs"]
 mod store_courier_ops;
+#[path = "store_local_extras.rs"]
+mod store_local_extras;
 
 /// Everything needed to create one staff member. Kept together so the hire
 /// call stays readable instead of an eight-argument list.
@@ -198,11 +200,14 @@ impl Store {
                     id TEXT PRIMARY KEY,
                     name TEXT NOT NULL,
                     phone TEXT NOT NULL DEFAULT '',
+                    address TEXT NOT NULL DEFAULT '',
                     note TEXT NOT NULL DEFAULT '',
                     active INTEGER NOT NULL DEFAULT 1,
                     created_at TEXT NOT NULL,
                     branch_id TEXT NOT NULL DEFAULT '',
-                    kind_label TEXT NOT NULL DEFAULT ''
+                    kind_label TEXT NOT NULL DEFAULT '',
+                    custom_fields_json TEXT NOT NULL DEFAULT '[]',
+                    image_key TEXT NOT NULL DEFAULT ''
                 );
                 CREATE TABLE IF NOT EXISTS credit_ledger (
                     id TEXT PRIMARY KEY,
@@ -459,6 +464,9 @@ impl Store {
             "ALTER TABLE products ADD COLUMN carrier_party_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE products ADD COLUMN party_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE customers ADD COLUMN address TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE customers ADD COLUMN custom_fields_json TEXT NOT NULL DEFAULT '[]'",
+            "ALTER TABLE customers ADD COLUMN image_key TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE money_movements ADD COLUMN cleared_at TEXT NOT NULL DEFAULT ''",
         ] {
             let _ = self.conn.execute(stmt, []);
@@ -605,6 +613,7 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         self.migrate_courier_ops_tables()?;
+        self.migrate_local_extras_tables()?;
         // Lookups every sync and every screen makes. Without them a year of
         // bookings made each device's sync scan every booking line and ledger
         // row (seconds per sync); `a_busy_years_books_still_sync_quickly`
@@ -1508,6 +1517,9 @@ impl Store {
             out.push_str(sale.consignee_name.trim());
             out.push('\n');
         }
+        if sale.piece_count > 1 {
+            out.push_str(&format!("Pieces: {}\n", sale.piece_count));
+        }
         if sale.chargeable_weight_kg > crate::precise::ZERO {
             out.push_str(&format!(
                 "Weight: actual {} kg · vol {} kg · chargeable {} kg\n",
@@ -1515,6 +1527,10 @@ impl Store {
                 crate::precise::format_kg(sale.volumetric_weight_kg),
                 crate::precise::format_kg(sale.chargeable_weight_kg)
             ));
+        }
+        let brand_faces = self.print_brand_face_lines().unwrap_or_default();
+        if !brand_faces.is_empty() {
+            out.push_str(&brand_faces);
         }
         if !sale.tracking_status.trim().is_empty() {
             out.push_str("Status: ");
@@ -1644,7 +1660,10 @@ impl Store {
             .conn
             .query_row(
                 "SELECT id, name, phone, note, active, COALESCE(kind_label, ''),
-                        COALESCE(credit_limit_paise, 0)
+                        COALESCE(credit_limit_paise, 0),
+                        COALESCE(address, ''),
+                        COALESCE(custom_fields_json, '[]'),
+                        COALESCE(image_key, '')
                  FROM customers WHERE id = ?1",
                 params![id],
                 |row| {
@@ -1656,12 +1675,27 @@ impl Store {
                         row.get::<_, i64>(4)?,
                         row.get::<_, String>(5)?,
                         row.get::<_, i64>(6)?,
+                        row.get::<_, String>(7)?,
+                        row.get::<_, String>(8)?,
+                        row.get::<_, String>(9)?,
                     ))
                 },
             )
             .optional()
             .map_err(|e| e.to_string())?;
-        let Some((id, name, phone, note, active, kind_label, credit_limit_paise)) = row else {
+        let Some((
+            id,
+            name,
+            phone,
+            note,
+            active,
+            kind_label,
+            credit_limit_paise,
+            address,
+            custom_json,
+            image_key,
+        )) = row
+        else {
             return Ok(None);
         };
         let balance_paise = self.customer_balance(&id)?;
@@ -1669,11 +1703,14 @@ impl Store {
             id,
             name,
             phone,
+            address,
             note,
             active: active != 0,
             balance_paise,
             kind_label,
             credit_limit_paise,
+            image_key,
+            custom_fields: crate::domain::parse_party_custom_fields_json(&custom_json),
         }))
     }
 
@@ -1834,17 +1871,21 @@ impl Store {
     pub fn replace_customers_from_sync(&self, customers: &[Customer]) -> Result<(), String> {
         // Keep ledger; only refresh customer rows for display. Full ledger sync is future work.
         for c in customers {
+            let custom_json = crate::domain::party_custom_fields_to_json(&c.custom_fields);
             self.conn
                 .execute(
-                    "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label, credit_limit_paise)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+                    "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label, credit_limit_paise, address, custom_fields_json, image_key)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)
                      ON CONFLICT(id) DO UPDATE SET
                        name=excluded.name,
                        phone=excluded.phone,
                        note=excluded.note,
                        active=excluded.active,
                        kind_label=excluded.kind_label,
-                       credit_limit_paise=excluded.credit_limit_paise",
+                       credit_limit_paise=excluded.credit_limit_paise,
+                       address=excluded.address,
+                       custom_fields_json=excluded.custom_fields_json,
+                       image_key=excluded.image_key",
                     params![
                         c.id,
                         c.name,
@@ -1854,7 +1895,10 @@ impl Store {
                         Local::now().to_rfc3339(),
                         self.active_branch_id()?,
                         c.kind_label,
-                        c.credit_limit_paise
+                        c.credit_limit_paise,
+                        c.address,
+                        custom_json,
+                        c.image_key
                     ],
                 )
                 .map_err(|e| e.to_string())?;
@@ -2532,19 +2576,29 @@ impl Store {
 
     /// Parties with their receivable / payable position.
     pub fn parties_csv(&self) -> Result<String, String> {
-        let mut out = String::from("name,phone,kind,credit_limit,they_owe_us,we_owe_them,net\n");
+        let mut out = String::from(
+            "name,phone,address,kind,credit_limit,they_owe_us,we_owe_them,net,custom_fields\n",
+        );
         for p in self.list_customers()? {
             let ar = p.balance_paise.max(0);
             let ap = self.party_payable_balance(&p.id)?.max(0);
+            let custom = p
+                .custom_fields
+                .iter()
+                .map(|f| format!("{}={}", f.key, f.value))
+                .collect::<Vec<_>>()
+                .join("; ");
             out.push_str(&format!(
-                "{},{},{},{},{},{},{}\n",
+                "{},{},{},{},{},{},{},{},{}\n",
                 csv_cell(&p.name),
                 csv_cell(&p.phone),
+                csv_cell(&p.address),
                 csv_cell(&p.kind_label),
                 csv_money(p.credit_limit_paise),
                 csv_money(ar),
                 csv_money(ap),
                 csv_money(ar - ap),
+                csv_cell(&custom),
             ));
         }
         Ok(out)
@@ -2675,7 +2729,8 @@ impl Store {
             .map(|p| (p.name.to_ascii_lowercase(), p.phone))
             .collect();
         let mut start = 0usize;
-        let mut idx = (0usize, 1usize, 2usize, 3usize);
+        // name, phone, kind, note, address
+        let mut idx = (0usize, 1usize, 2usize, 3usize, usize::MAX);
         if let Some(first) = rows.first() {
             let lower: Vec<String> = first.iter().map(|c| c.to_ascii_lowercase()).collect();
             if lower.iter().any(|c| c.trim() == "name") {
@@ -2684,6 +2739,7 @@ impl Store {
                     col(&["phone", "mobile", "contact"], &lower).unwrap_or(usize::MAX),
                     col(&["kind", "role", "kind_label", "type"], &lower).unwrap_or(usize::MAX),
                     col(&["note", "notes", "remark"], &lower).unwrap_or(usize::MAX),
+                    col(&["address", "addr"], &lower).unwrap_or(usize::MAX),
                 );
                 start = 1;
             }
@@ -2709,7 +2765,11 @@ impl Store {
                 continue;
             }
             match self.add_customer_kind(&name, &phone, &get(row, idx.2)) {
-                Ok(_) => {
+                Ok(party) => {
+                    let address = get(row, idx.4);
+                    if !address.is_empty() {
+                        let _ = self.update_customer(&party.id, &party.name, &party.phone, &address);
+                    }
                     added += 1;
                     existing.push((name.to_ascii_lowercase(), phone));
                 }
@@ -4349,6 +4409,35 @@ impl Store {
         self.meta_set("ui_nav_order", csv)
     }
 
+    /// Nav peers the shop hid from the side rail / bottom bar (CSV of keys).
+    pub fn nav_hidden_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_nav_hidden")
+    }
+
+    pub fn set_nav_hidden_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_nav_hidden", csv)
+    }
+
+    /// Individual money figures the owner hid (CSV of keys). Screen-level
+    /// hide is session-only and is not stored here.
+    pub fn amount_keys_hidden_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_amount_keys_hidden")
+    }
+
+    pub fn set_amount_keys_hidden_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_amount_keys_hidden", csv)
+    }
+
+    /// Books home accordion: CSV of open section keys (`today`, `bookings`, …).
+    /// Empty / missing → all collapsed.
+    pub fn books_sections_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_books_sections")
+    }
+
+    pub fn set_books_sections_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_books_sections", csv)
+    }
+
     /// Favorite product ids for one user (`owner` or a staff id), in the
     /// order the user added them. Remembered per user in the books.
     pub fn favorite_product_ids(&self, user_key: &str) -> Vec<String> {
@@ -5364,6 +5453,53 @@ impl Store {
         Ok(format!("custom:{file_name}"))
     }
 
+    pub fn party_images_dir(&self) -> Result<PathBuf, String> {
+        let dir = self
+            .path
+            .parent()
+            .unwrap_or(Path::new("."))
+            .join("party_images");
+        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        Ok(dir)
+    }
+
+    /// Import party logo/photo → WebP under party_images/ (`custom:id.webp`).
+    pub fn import_party_image(&self, party_id: &str, source: &Path) -> Result<String, String> {
+        let dir = self.party_images_dir()?;
+        let ext = source
+            .extension()
+            .and_then(|e| e.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if !media::is_image_ext(&ext) {
+            return Err("Use jpg, jpeg, png, or webp (stored as WebP)".into());
+        }
+        let file_name = format!("{party_id}.webp");
+        let dest = dir.join(&file_name);
+        media::write_image_as_webp(source, &dest)?;
+        Ok(format!("custom:{file_name}"))
+    }
+
+    pub fn set_customer_image_key(
+        &self,
+        customer_id: &str,
+        image_key: Option<&str>,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Update party logo")?;
+        let key = image_key.unwrap_or("").trim();
+        let n = self
+            .conn
+            .execute(
+                "UPDATE customers SET image_key = ?1 WHERE id = ?2",
+                params![key, customer_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Party not found".into());
+        }
+        Ok(())
+    }
+
     pub fn add_attachment_note(
         &self,
         entity: AttachmentEntity,
@@ -5796,19 +5932,26 @@ impl Store {
         let branch_code = self.active_branch()?.code;
         let times = EventTimes::capture(draft.user_at.as_deref());
         let created_at = times.user_at.clone(); // books day = user time
+
+        // Carrier AWB pool (or shop-wide seq) before the sale tx.
+        let awb_no = if draft.awb_no.trim().is_empty() {
+            let (awb, warn) = self.allocate_awb_for_carrier(draft.carrier_party_id.trim())?;
+            if let Some(w) = warn.as_deref() {
+                let _ = self.audit(actor, "awb.pool_warn", w);
+            }
+            awb
+        } else {
+            draft.awb_no.trim().to_string()
+        };
+
         let tx = self
             .conn
             .unchecked_transaction()
             .map_err(|e| e.to_string())?;
 
-        // Reserved inside the sale's transaction so a crash can never hand the
-        // same number to two bills.
+        // Invoice reserved inside the sale's transaction so a crash can never
+        // hand the same number to two bills.
         let invoice_no = reserve_invoice_no(&tx, &branch_code)?;
-        let awb_no = if draft.awb_no.trim().is_empty() {
-            reserve_awb_no(&tx)?
-        } else {
-            draft.awb_no.trim().to_string()
-        };
         let destination = draft.destination.trim().to_string();
         let consignee_name = draft.consignee_name.trim().to_string();
         let actual_weight_kg = draft.actual_weight_kg;
@@ -5837,9 +5980,9 @@ impl Store {
                 actual_weight_kg, volumetric_weight_kg, chargeable_weight_kg, tracking_status,
                 zone_id, cod_paise, carrier_cost_paise, extras_json,
                 declared_value_paise, insurance, contents, eway_bill_no,
-                attempt_count, ndr_reason, next_attempt_at
+                attempt_count, ndr_reason, next_attempt_at, piece_count
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34, 0, '', '')",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34, 0, '', '', ?35)",
             params![
                 sale_id,
                 created_at,
@@ -5874,10 +6017,18 @@ impl Store {
                 declared_value_paise,
                 insurance,
                 contents,
-                eway_bill_no
+                eway_bill_no,
+                draft.piece_count.max(1)
             ],
         )
         .map_err(|e| e.to_string())?;
+        if !draft.carrier_party_id.trim().is_empty() {
+            tx.execute(
+                "UPDATE sales SET carrier_party_id = ?1 WHERE id = ?2",
+                params![draft.carrier_party_id.trim(), sale_id],
+            )
+            .map_err(|e| e.to_string())?;
+        }
 
         // Initial tracking event.
         tx.execute(
@@ -6157,7 +6308,7 @@ impl Store {
             carrier_cost_paise,
             period_bill_id: String::new(),
             handover_kind: String::new(),
-            carrier_party_id: String::new(),
+            carrier_party_id: draft.carrier_party_id.trim().to_string(),
             rider_id: String::new(),
             pod_note: String::new(),
             extras_json,
@@ -6171,6 +6322,7 @@ impl Store {
             feedback_score: 0,
             area: String::new(),
             dest_pincode: String::new(),
+            piece_count: draft.piece_count.max(1),
             lines: draft.lines.clone(),
         };
 
@@ -6416,6 +6568,7 @@ impl Store {
             feedback_score: previous.feedback_score,
             area: previous.area,
             dest_pincode: previous.dest_pincode,
+            piece_count: previous.piece_count.max(1),
             lines: draft.lines.clone(),
         })
     }
@@ -7811,8 +7964,8 @@ impl Store {
         let kind_label = normalize_party_roles(kind_label);
         self.conn
             .execute(
-                "INSERT INTO customers(id, name, phone, note, active, created_at, branch_id, kind_label)
-                 VALUES(?1, ?2, ?3, '', 1, ?4, ?5, ?6)",
+                "INSERT INTO customers(id, name, phone, address, note, active, created_at, branch_id, kind_label, custom_fields_json)
+                 VALUES(?1, ?2, ?3, '', '', 1, ?4, ?5, ?6, '[]')",
                 params![
                     id,
                     name,
@@ -7827,21 +7980,25 @@ impl Store {
             id,
             name: name.into(),
             phone,
+            address: String::new(),
             note: String::new(),
             active: true,
             balance_paise: 0,
             kind_label,
             credit_limit_paise: 0,
+            image_key: String::new(),
+            custom_fields: Vec::new(),
         })
     }
 
-    /// Rename / re-phone an existing party by id. Identity is the UUID, so
-    /// ledgers, bookings and balances are unaffected — display text only.
+    /// Rename / re-phone / re-address an existing party by id. Identity is the
+    /// UUID, so ledgers, bookings and balances are unaffected — display text only.
     pub fn update_customer(
         &self,
         customer_id: &str,
         name: &str,
         phone: &str,
+        address: &str,
     ) -> Result<(), String> {
         self.assert_server_writer("Update party")?;
         let name = name.trim();
@@ -7851,13 +8008,58 @@ impl Store {
         let n = self
             .conn
             .execute(
-                "UPDATE customers SET name = ?1, phone = ?2 WHERE id = ?3",
-                params![name, phone.trim(), customer_id],
+                "UPDATE customers SET name = ?1, phone = ?2, address = ?3 WHERE id = ?4",
+                params![name, phone.trim(), address.trim(), customer_id],
             )
             .map_err(|e| e.to_string())?;
         if n == 0 {
             return Err("Party not found".into());
         }
+        Ok(())
+    }
+
+    /// Add or replace one custom field on a party (e.g. WhatsApp → number).
+    pub fn set_customer_custom_field(
+        &self,
+        customer_id: &str,
+        key: &str,
+        value: &str,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Update party custom field")?;
+        let mut party = self
+            .get_customer(customer_id)?
+            .ok_or_else(|| "Party not found".to_string())?;
+        crate::domain::upsert_party_custom_field(&mut party.custom_fields, key, value)?;
+        let json = crate::domain::party_custom_fields_to_json(&party.custom_fields);
+        self.conn
+            .execute(
+                "UPDATE customers SET custom_fields_json = ?1 WHERE id = ?2",
+                params![json, customer_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Remove one custom field by name (case-insensitive).
+    pub fn remove_customer_custom_field(
+        &self,
+        customer_id: &str,
+        key: &str,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Remove party custom field")?;
+        let mut party = self
+            .get_customer(customer_id)?
+            .ok_or_else(|| "Party not found".to_string())?;
+        if !crate::domain::remove_party_custom_field(&mut party.custom_fields, key) {
+            return Err("Custom field not found".into());
+        }
+        let json = crate::domain::party_custom_fields_to_json(&party.custom_fields);
+        self.conn
+            .execute(
+                "UPDATE customers SET custom_fields_json = ?1 WHERE id = ?2",
+                params![json, customer_id],
+            )
+            .map_err(|e| e.to_string())?;
         Ok(())
     }
 
@@ -7999,7 +8201,10 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, name, phone, note, active, COALESCE(kind_label, ''),
-                        COALESCE(credit_limit_paise, 0)
+                        COALESCE(credit_limit_paise, 0),
+                        COALESCE(address, ''),
+                        COALESCE(custom_fields_json, '[]'),
+                        COALESCE(image_key, '')
                  FROM customers
                  WHERE active = 1 AND (branch_id = ?1 OR branch_id = '')
                  ORDER BY name",
@@ -8015,23 +8220,39 @@ impl Store {
                     row.get::<_, i64>(4)?,
                     row.get::<_, String>(5)?,
                     row.get::<_, i64>(6)?,
+                    row.get::<_, String>(7)?,
+                    row.get::<_, String>(8)?,
+                    row.get::<_, String>(9)?,
                 ))
             })
             .map_err(|e| e.to_string())?;
         let mut out = Vec::new();
         for row in rows {
-            let (id, name, phone, note, active, kind_label, credit_limit_paise) =
-                row.map_err(|e| e.to_string())?;
+            let (
+                id,
+                name,
+                phone,
+                note,
+                active,
+                kind_label,
+                credit_limit_paise,
+                address,
+                custom_json,
+                image_key,
+            ) = row.map_err(|e| e.to_string())?;
             let balance_paise = self.customer_balance(&id)?;
             out.push(Customer {
                 id,
                 name,
                 phone,
+                address,
                 note,
                 active: active != 0,
                 balance_paise,
                 kind_label,
                 credit_limit_paise,
+                image_key,
+                custom_fields: crate::domain::parse_party_custom_fields_json(&custom_json),
             });
         }
         // Owe first, then name
@@ -10545,7 +10766,8 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(contents, ''), COALESCE(eway_bill_no, ''),
      COALESCE(attempt_count, 0), COALESCE(ndr_reason, ''),
      COALESCE(next_attempt_at, ''),
-     COALESCE(feedback_score, 0), COALESCE(area, ''), COALESCE(dest_pincode, '')";
+     COALESCE(feedback_score, 0), COALESCE(area, ''), COALESCE(dest_pincode, ''),
+     COALESCE(piece_count, 1)";
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -10735,7 +10957,7 @@ fn reserve_invoice_no(tx: &Connection, branch_code: &str) -> Result<String, Stri
     Ok(format!("INV-{code}-{seq:06}"))
 }
 
-fn reserve_awb_no(tx: &Connection) -> Result<String, String> {
+pub(crate) fn reserve_awb_no(tx: &Connection) -> Result<String, String> {
     let seq: i64 = tx
         .query_row(
             "SELECT CAST(value AS INTEGER) FROM meta WHERE key = 'next_awb_seq'",
@@ -10756,7 +10978,7 @@ fn reserve_awb_no(tx: &Connection) -> Result<String, String> {
 }
 
 /// One CSV cell, quoted when it holds a comma, quote, or newline.
-fn csv_cell(s: &str) -> String {
+pub(crate) fn csv_cell(s: &str) -> String {
     if s.contains(',') || s.contains('"') || s.contains('\n') {
         format!("\"{}\"", s.replace('"', "\"\""))
     } else {
@@ -10765,7 +10987,7 @@ fn csv_cell(s: &str) -> String {
 }
 
 /// Paise → major units with 2 decimals, for spreadsheet amounts.
-fn csv_money(paise: i64) -> String {
+pub(crate) fn csv_money(paise: i64) -> String {
     let sign = if paise < 0 { "-" } else { "" };
     let a = paise.abs();
     format!("{sign}{}.{:02}", a / 100, a % 100)
@@ -10864,6 +11086,7 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         feedback_score: row.get(44)?,
         area: row.get(45)?,
         dest_pincode: row.get(46)?,
+        piece_count: row.get::<_, i64>(47).unwrap_or(1).max(1),
         lines: Vec::new(),
     })
 }
@@ -12310,7 +12533,7 @@ mod tests {
             .seed_opening_credit(&customer.id, 5000, &owner)
             .unwrap();
         store
-            .update_customer(&customer.id, "Right Name", "98200")
+            .update_customer(&customer.id, "Right Name", "98200", "Shop lane 2")
             .unwrap();
         let renamed = store
             .list_customers()
@@ -12320,9 +12543,31 @@ mod tests {
             .unwrap();
         assert_eq!(renamed.name, "Right Name");
         assert_eq!(renamed.phone, "98200");
+        assert_eq!(renamed.address, "Shop lane 2");
         assert_eq!(store.customer_balance(&customer.id).unwrap(), 5000);
-        assert!(store.update_customer(&customer.id, "  ", "").is_err());
-        assert!(store.update_customer("missing", "X", "").is_err());
+        store
+            .set_customer_custom_field(&customer.id, "WhatsApp", "9800112233")
+            .unwrap();
+        assert_eq!(
+            store
+                .get_customer(&customer.id)
+                .unwrap()
+                .unwrap()
+                .custom_fields[0]
+                .value,
+            "9800112233"
+        );
+        store
+            .remove_customer_custom_field(&customer.id, "whatsapp")
+            .unwrap();
+        assert!(store
+            .get_customer(&customer.id)
+            .unwrap()
+            .unwrap()
+            .custom_fields
+            .is_empty());
+        assert!(store.update_customer(&customer.id, "  ", "", "").is_err());
+        assert!(store.update_customer("missing", "X", "", "").is_err());
         let _ = std::fs::remove_file(path);
     }
 

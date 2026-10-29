@@ -77,6 +77,8 @@ PATCHES=(
   drag_scroll_touch_only            # vertical: touch-only drag-scroll; horizontal strips: mouse on whitespace
   android_keep_screen_on            # Android: Cx::keep_screen_on while serving (MakepadActivity-keep-awake.java)
   android_write_content_uri         # Android: Cx::write_content_uri for "Save a backup copy" (MakepadActivity-write.java)
+  mouse_cursor_state                # Wayland Arrow=Default; edge resize keeps cursor; HoverOver re-asserts Text/Hand/View cursor
+  scroll_bar_orphan_unblock         # wheel: clear stuck TextFlow Empty scroll-block (thumb drag still worked)
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \
