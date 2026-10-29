@@ -5886,13 +5886,17 @@ script_mod! {
     mod.widgets.CustomerList = set_type_default() do mod.widgets.CustomerListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
+        // Page-scroll like SaleList: full content height, no inner scroll.
+        // A capped nested PortalList left a stuck scroll offset → huge blank
+        // gap under "Saved parties" until you scrub the list.
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
+            drag_scrolling: false
             bounce_at_start: false
             bounce_at_end: false
             capture_overload: false
-            scroll_bar: ScrollBar{}
+            scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 8.}
@@ -7377,10 +7381,20 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                books_heading := WrapLabel{
-                                    body: "Books"
-                                    font_color: #x260B08
-                                    font_size: 22.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{x: 0.0 y: 0.5}
+                                    books_title_icon := Image{
+                                        width: 28 height: 28
+                                        fit: ImageFit.Stretch
+                                        src: crate_resource("self:resources/nav/books.webp")
+                                    }
+                                    books_heading := WrapLabel{
+                                        body: "Day book"
+                                        font_color: #x260B08
+                                        font_size: 20.
+                                    }
                                 }
                                 books_low_stock := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
                                 books_backup_warning := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
@@ -11043,6 +11057,12 @@ fn kot_row_height() -> &'static Mutex<f64> {
     HEIGHT.get_or_init(|| Mutex::new(150.0))
 }
 
+fn customer_row_height() -> &'static Mutex<f64> {
+    static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
+    // Seed: party row + item pad; draw replaces with measured extent.
+    HEIGHT.get_or_init(|| Mutex::new(90.0))
+}
+
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
     HEIGHT.get_or_init(|| Mutex::new(320.0))
@@ -13553,20 +13573,19 @@ impl Widget for CustomerList {
                 st.locale.language.clone(),
             )
         };
-        // Same capped-list shape as ServerList / LanguageList / CurrencyList:
-        // room for up to 3 full rows, list scrolls inside (nested-scroll claim
-        // in handle_event). CustomerRow ≈ 68px (12+44+12) + 8px item pad.
-        const ROW: f64 = 76.0;
-        const GAP: f64 = 6.0;
-        let n = customers.len().max(1);
-        let want = list_content_height(n.min(3), ROW, GAP).max(ROW + 16.0);
+        // Full content height + page scroll (SaleList rule). A 3-row capped
+        // nested PortalList kept an inner scroll offset → blank gap under
+        // "Saved parties" with rows stuck at the bottom of the viewport.
+        let row = *customer_row_height().lock().unwrap();
+        let n = customers.len();
         let walk = Walk {
-            height: Size::Fixed(want.min(240.0)),
+            height: Size::Fixed(list_content_height(n, row, 0.0)),
             ..walk
         };
+        let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, customers.len());
+                list.set_item_range(cx, 0, n);
                 while let Some(item_id) = list.next_visible_item(cx) {
                     let Some(c) = customers.get(item_id) else {
                         continue;
@@ -13609,17 +13628,23 @@ impl Widget for CustomerList {
                     item.button(cx, ids!(pick)).set_text(cx, &pick_text);
                     item.draw_all_unscoped(cx);
                 }
+                if n > 0 {
+                    let extent = list.drawn_range_extent();
+                    if extent > 1.0 {
+                        measured_row = extent / n as f64;
+                    }
+                }
             }
         }
+        remember_content_row(cx, &mut self.view, customer_row_height(), row, measured_row);
         DrawStep::done()
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        // Capped list (3 rows): pointer over it = the list owns the wheel/drag
-        // and scrolls internally; the page must not steal the gesture.
-        claim_list_nested_scroll(cx, &self.view, event);
+        if page_owns_scroll(event) {
+            return;
+        }
         self.view.handle_event(cx, event, scope);
-        claim_list_nested_scroll(cx, &self.view, event);
     }
 }
 
@@ -17967,6 +17992,7 @@ impl App {
         self.ui.text_input(cx, ids!(buy_unit_input)).set_empty_text(cx, s("buy_unit_ph"));
         self.ui.button(cx, ids!(buy_parts_add)).set_text(cx, &s("add_another_way"));
         self.ui.widget(cx, ids!(books_heading)).set_text(cx, &plain_display_text(&s("books")));
+        paint_page_title_icon(cx, &self.ui, ids!(books_title_icon), NavTab::Books);
         self.ui.widget(cx, ids!(books_help)).set_text(cx, &plain_display_text(&s("books_help")));
         self.ui.widget(cx, ids!(buy_heading)).set_text(cx, &plain_display_text(&s("buy")));
         paint_page_title_icon(cx, &self.ui, ids!(buy_heading_icon), NavTab::Buy);

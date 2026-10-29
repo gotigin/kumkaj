@@ -9,11 +9,11 @@ Product brief: [`MOKLANJO.md`](MOKLANJO.md). Books vocabulary:
 
 **Order**
 
-1. Parts 0–1 — idea and first open  
-2. Parts 2–3 — parties, rates, then the booking desk with people in line  
-3. Parts 4–7 — Day book, corrections, Pay out / Reports, Ops  
-4. Parts 8–9 — talking points and demo script  
-5. Part 10 — checklist  
+1. Parts 0–1 — idea and first open
+2. Parts 2–3 — parties, rates, then the booking desk with people in line
+3. Parts 4–7 — Day book, corrections, Pay out / Reports, Ops
+4. Parts 8–9 — talking points and demo script
+5. Part 10 — checklist
 
 Use practice names only. Owners type their own party names; do not seed sample
 party lists into a demo build. Solidify on Linux before Windows packaging.
@@ -31,6 +31,7 @@ A courier **agency / franchise counter** is a travel agent for parcels:
 2. You weigh, price, take money or put it on account, give a receipt / AWB.
 3. You hand bags to **carriers** and/or send them with **your own riders**.
 4. Your edge is roughly: what the customer paid you − what the carrier / rider
+
    cost you. Rent and salaries come out of that.
 
 | Role | Meaning | Money |
@@ -47,10 +48,13 @@ Server before pairing extra tills on office Wi‑Fi.
 ## Part 1 — First open
 
 1. Launch Moklanjo → language → **Server Mode** → create a server → set an
+
    **Owner PIN** (there is no default).
 2. You land on **Day book**. ₹0 is correct until you book. Full reading of
+
    this screen is in Part 4, after you have bookings.
 3. Tabs you will use first (scroll the bar / rail; drag a tab onto another to
+
    rearrange — order is saved in the books):
 
 | Tab | Role |
@@ -143,9 +147,9 @@ shows the same idea when the catalogue is empty).
 
 **Minimum practice:**
 
-1. Name e.g. `Surface Local` · Unit `kg` · Price `0` if using the slab.  
-2. First kg `1` · First amount (practice) · Extra / kg (practice).  
-3. Zone name e.g. `Local` — remember it for Booking.  
+1. Name e.g. `Surface Local` · Unit `kg` · Price `0` if using the slab.
+2. First kg `1` · First amount (practice) · Extra / kg (practice).
+3. Zone name e.g. `Local` — remember it for Booking.
 4. Carrier and Party blank · **Add rate**.
 
 ------------------------------------------------------------------------
@@ -218,24 +222,26 @@ default.
 
 ### 3.3 Cash walk-in
 
-1. Destination and Zone (same zone name as on the rate).  
-2. Domestic or International as needed.  
-3. Consignee.  
-4. Actual weight (and size if bulky). Check Chargeable kg.  
-5. **ADD** on a rate (more lines if needed).  
-6. Select **Cash booking**.  
+1. Destination and Zone (same zone name as on the rate).
+2. Domestic or International as needed.
+3. Consignee.
+4. Actual weight (and size if bulky). Check Chargeable kg.
+5. **ADD** on a rate (more lines if needed).
+6. Select **Cash booking**.
 7. Put the full bill in **Cash amount** and/or **UPI amount** / **Card amount**
-   (they must add up to the bill).  
-8. **Take payment**. Note the AWB; print if a printer is set.  
+
+   (they must add up to the bill).
+8. **Take payment**. Note the AWB; print if a printer is set.
 9. **Next booking**.
 
 ### 3.4 Account / credit walk-in
 
-1. Same desk fill as §3.3.  
-2. **Pick** or **Add / use this name** so **Active ledger** has the consignor.  
-3. Select **Account booking**.  
-4. Put the amount on **Credit / khata amount** (or mix with cash/UPI/card).  
+1. Same desk fill as §3.3.
+2. **Pick** or **Add / use this name** so **Active ledger** has the consignor.
+3. Select **Account booking**.
+4. Put the amount on **Credit / khata amount** (or mix with cash/UPI/card).
 5. **Take payment**. Cash strip does not rise for the credit part; **They owe
+
    us** rises. Over credit limit, booking is refused.
 
 ### 3.5 Rush drill

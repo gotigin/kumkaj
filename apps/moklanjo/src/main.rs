@@ -483,10 +483,6 @@ struct AppState {
     amount_keys_hidden: Vec<String>,
     /// Books home accordion: which section bodies are open (`today`, `bookings`, …).
     books_sections_open: Vec<String>,
-    /// Favorite product ids for the signed-in user (saved per user).
-    favorites: Vec<String>,
-    /// User key `favorites` was loaded for; reload when the user changes.
-    favorites_user: String,
     /// Pending custom icon path from picker (before Save brand).
     draft_venue_icon_path: Option<PathBuf>,
     /// Android: a fresh backup waiting for "Save a backup copy" to be told
@@ -621,8 +617,6 @@ enum Screen {
     ClientPair,
     /// Books home — today's position (money in/out, owed, cash vs bank).
     Books,
-    /// The signed-in user's favorite items (quick bill + manage list).
-    Favorites,
     Pos,
     /// Money out — purchase + expense.
     Buy,
@@ -650,7 +644,6 @@ fn unlocked_home() -> Screen {
 enum NavTab {
     Books,
     Sell,
-    Favorites,
     Buy,
     Rates,
     Ops,
@@ -688,10 +681,9 @@ enum BooksReportKind {
 }
 
 /// Default sidebar / bottom-bar arrangement (matches the DSL slot order).
-const NAV_TABS: [NavTab; 17] = [
+const NAV_TABS: [NavTab; 16] = [
     NavTab::Books,
     NavTab::Sell,
-    NavTab::Favorites,
     NavTab::Buy,
     NavTab::Rates,
     NavTab::Ops,
@@ -712,7 +704,6 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
     match tab {
         NavTab::Books => "books",
         NavTab::Sell => "sell",
-        NavTab::Favorites => "favorites",
         NavTab::Buy => "buy",
         NavTab::Rates => "rates",
         NavTab::Ops => "ops",
@@ -736,7 +727,6 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
     match tab {
         NavTab::Books => include_bytes!("../resources/nav/books.webp").as_slice(),
         NavTab::Sell => include_bytes!("../resources/nav/sell.webp").as_slice(),
-        NavTab::Favorites => include_bytes!("../resources/nav/favorites.webp").as_slice(),
         NavTab::Buy => include_bytes!("../resources/nav/buy.webp").as_slice(),
         NavTab::Rates => include_bytes!("../resources/nav/rates.webp").as_slice(),
         NavTab::Ops => include_bytes!("../resources/nav/ops.webp").as_slice(),
@@ -930,7 +920,6 @@ fn eye_glyph(visible: bool) -> &'static str {
 fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
     match screen {
         Screen::Books => Some(NavTab::Books),
-        Screen::Favorites => Some(NavTab::Favorites),
         Screen::Pos => Some(NavTab::Sell),
         Screen::Buy => Some(NavTab::Buy),
         Screen::Menu | Screen::More => Some(NavTab::Rates),
@@ -1023,8 +1012,6 @@ impl AppState {
             amounts_screen_hidden: false,
             amount_keys_hidden: Vec::new(),
             books_sections_open: Vec::new(),
-            favorites: Vec::new(),
-            favorites_user: String::new(),
             draft_venue_icon_path: None,
             pending_backup_copy: None,
             draft_image_key: None,
@@ -1165,43 +1152,6 @@ impl AppState {
             .entity_template_id()
             .unwrap_or_else(|_| "custom".into());
         Ok(())
-    }
-
-    /// Persistence key for this user's favorites: the owner shares one
-    /// list; each staff login remembers its own.
-    fn favorites_user_key(&self) -> String {
-        match &self.session {
-            Some(s) if !s.is_owner() => format!("staff:{}", s.id),
-            _ => "owner".to_string(),
-        }
-    }
-
-    /// Load the signed-in user's favorites when the user has changed
-    /// (cheap no-op otherwise; called from the chrome sync).
-    fn ensure_favorites(&mut self) {
-        let key = self.favorites_user_key();
-        if key != self.favorites_user {
-            self.favorites_user = key.clone();
-            self.favorites = self
-                .store
-                .as_ref()
-                .map(|s| s.favorite_product_ids(&key))
-                .unwrap_or_default();
-        }
-    }
-
-    fn save_favorites(&self) {
-        if let Some(store) = self.store.as_ref() {
-            let _ = store.set_favorite_product_ids(&self.favorites_user_key(), &self.favorites);
-        }
-    }
-
-    /// Favorite products in the user's saved order (gone items skipped).
-    fn favorite_products(&self) -> Vec<Product> {
-        self.favorites
-            .iter()
-            .filter_map(|id| self.products.iter().find(|p| &p.id == id).cloned())
-            .collect()
     }
 
     /// Booking desk catalogue: sell cards only; party overrides for the
@@ -3984,92 +3934,6 @@ script_mod! {
         }
     }
 
-    // Favorites rows: name + price, a primary action and a remove button.
-    let FavoriteRow = RoundedView{
-        width: Fill height: Fit
-        padding: Inset{left: 14. right: 10. top: 10. bottom: 10.}
-        flow: Right spacing: 8
-        align: Align{y: 0.5}
-        draw_bg.color: #xffffff
-        draw_bg.border_radius: 14.
-        draw_bg.border_size: 2.
-        draw_bg.border_color: #x4A5568
-        View{
-            width: Fill height: Fit
-            flow: Down spacing: 2
-            name := Label{
-                width: Fill height: Fit
-                text: "Item"
-                flow: Right{wrap: false}
-                max_lines: 1
-                text_overflow: Ellipsis
-                draw_text.color: #x0B1220
-                draw_text.text_style.font_size: 14.
-            }
-            price := Label{
-                width: Fill height: Fit
-                text: "0"
-                flow: Right{wrap: false}
-                max_lines: 1
-                draw_text.color: #xC44E10
-                draw_text.text_style.font_size: 13.
-            }
-        }
-        act := Button{
-            text: "Add"
-            width: 112 height: 44
-            padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
-            draw_bg +: {
-                color: #x072058
-                color_hover: #x0A3A8C
-                color_down: #x02030B
-                color_focus: #x072058
-                color_disabled: #xA8B4C4
-                color_2: #x072058
-                color_2_hover: #x0A3A8C
-                color_2_down: #x02030B
-                color_2_focus: #x072058
-                color_2_disabled: #xA8B4C4
-                border_color: #x072058
-                border_radius: 12.
-                border_size: 0.
-            }
-            draw_text +: {
-                color: #xffffff
-                color_hover: #xffffff
-                color_down: #xffffff
-                color_focus: #xffffff
-                color_disabled: #x56575D
-                text_style +: {font_size: 13.}
-            }
-        }
-        drop := Button{
-            text: "Remove"
-            width: 84 height: 44
-            padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
-            draw_bg +: {
-                color: #xFDECEA
-                color_hover: #xF8D7D3
-                color_down: #xF3C1BC
-                color_focus: #xFDECEA
-                color_2: #xFDECEA
-                color_2_hover: #xF8D7D3
-                color_2_down: #xF3C1BC
-                color_2_focus: #xFDECEA
-                border_color: #xB3261E
-                border_radius: 12.
-                border_size: 1.
-            }
-            draw_text +: {
-                color: #xB3261E
-                color_hover: #xB3261E
-                color_down: #xB3261E
-                color_focus: #xB3261E
-                text_style +: {font_size: 13.}
-            }
-        }
-    }
-
     // Whole-row language pick (no separate Use button). Same inset law as
     // every other face: padding *and* label_walk.margin. Long labels wrap
     // onto the next line inside that inset (no ellipsis / crop).
@@ -4280,58 +4144,22 @@ script_mod! {
     mod.widgets.CustomerList = set_type_default() do mod.widgets.CustomerListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
+        // Page-scroll like SaleList: full content height, no inner scroll.
+        // A capped nested PortalList left a stuck scroll offset → huge blank
+        // gap under "Saved parties" until you scrub the list.
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
+            drag_scrolling: false
             bounce_at_start: false
             bounce_at_end: false
             capture_overload: false
-            scroll_bar: ScrollBar{}
+            scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 8.}
                 texture_caching: false
                 CustomerRow{}
-            }
-        }
-    }
-
-    mod.widgets.FavoriteListBase = #(FavoriteList::register_widget(vm))
-    mod.widgets.FavoriteList = set_type_default() do mod.widgets.FavoriteListBase{
-        width: Fill height: Fit
-        list := PortalList{
-            width: Fill height: Fill
-            spacing: 8
-            drag_scrolling: false
-            bounce_at_start: false
-            bounce_at_end: false
-            capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
-            Item := View{
-                width: Fill height: Fit
-                padding: Inset{bottom: 8.}
-                texture_caching: false
-                FavoriteRow{}
-            }
-        }
-    }
-
-    mod.widgets.FavoritePickListBase = #(FavoritePickList::register_widget(vm))
-    mod.widgets.FavoritePickList = set_type_default() do mod.widgets.FavoritePickListBase{
-        width: Fill height: Fit
-        list := PortalList{
-            width: Fill height: Fill
-            spacing: 8
-            drag_scrolling: false
-            bounce_at_start: false
-            bounce_at_end: false
-            capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
-            Item := View{
-                width: Fill height: Fit
-                padding: Inset{bottom: 8.}
-                texture_caching: false
-                FavoriteRow{}
             }
         }
     }
@@ -4595,22 +4423,6 @@ script_mod! {
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
                                             src: crate_resource("self:resources/nav/sell.webp")
-                                        }
-                                    }
-                                }
-                                rail_favorites_slot := View{
-                                    width: Fill height: Fit
-                                    flow: Overlay
-                                    rail_favorites := TabBtn{text: "Favorites"}
-                                    rail_favorites_on := TabBtnActive{text: "Favorites" visible: false}
-                                    View{
-                                        width: Fit height: 40
-                                        align: Align{x: 0.0 y: 0.5}
-                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
-                                        rail_favorites_icon := Image{
-                                            width: 22 height: 22
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/favorites.webp")
                                         }
                                     }
                                 }
@@ -5459,6 +5271,21 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 10
+                                    align: Align{x: 0.0 y: 0.5}
+                                    books_title_icon := Image{
+                                        width: 28 height: 28
+                                        fit: ImageFit.Stretch
+                                        src: crate_resource("self:resources/nav/books.webp")
+                                    }
+                                    books_title := WrapLabel{
+                                        body: "Day book"
+                                        font_color: #x0B1220
+                                        font_size: 20.
+                                    }
+                                }
                                 // No tip chrome on Books (docs only) — InfoHelp left an orphan icon.
                                 books_help := WrapLabel{
                                     width: Fill
@@ -5728,48 +5555,6 @@ script_mod! {
                                         }
                                     }
                                 }
-                            }
-                        }
-
-                        // Favorites: this user's quick items. Whole page scrolls.
-                        favorites_screen := ScrollYView{
-                            width: Fill height: Fill
-                            visible: false
-                            View{
-                                width: Fill height: Fit
-                                flow: Down spacing: 10
-                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    favorites_heading_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/favorites.webp")
-                                    }
-                                    favorites_heading := WrapLabel{
-                                        body: "Favorites"
-                                        font_color: #x0B1220
-                                        font_size: 22.
-                                    }
-                                }
-                                favorites_help := WrapLabel{
-                                    width: Fill
-                                    body: "Items you sell often, saved for your login. Add one to the bill, or build your list from all items below."
-                                    font_color: #x3A4554
-                                    font_size: 13.
-                                }
-                                favorites_yours_caption := Label{text: "Your favorites" draw_text.color: #x66788F draw_text.text_style.font_size: 11.}
-                                favorites_empty := WrapLabel{
-                                    width: Fill
-                                    body: "No favorites yet — add items from the list below."
-                                    font_color: #x3A4554
-                                    font_size: 13.
-                                }
-                                favorites_list := mod.widgets.FavoriteList{}
-                                favorites_all_caption := Label{text: "All items" draw_text.color: #x66788F draw_text.text_style.font_size: 11.}
-                                favorites_pick_list := mod.widgets.FavoritePickList{}
                             }
                         }
 
@@ -7564,22 +7349,6 @@ script_mod! {
                                             }
                                         }
                                     }
-                                    nav_favorites_slot := View{
-                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
-                                        flow: Overlay
-                                        nav_favorites := NavChip{text: "Favorites"}
-                                        nav_favorites_on := NavChipActive{text: "Favorites" visible: false}
-                                        View{
-                                            width: Fit height: 56
-                                            align: Align{x: 0.0 y: 0.5}
-                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
-                                            nav_favorites_icon := Image{
-                                                width: 22 height: 22
-                                                fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/favorites.webp")
-                                            }
-                                        }
-                                    }
                                     nav_buy_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
@@ -8154,11 +7923,6 @@ fn menu_row_height() -> &'static Mutex<f64> {
     HEIGHT.get_or_init(|| Mutex::new(220.0))
 }
 
-fn favorite_row_height() -> &'static Mutex<f64> {
-    static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    HEIGHT.get_or_init(|| Mutex::new(76.0))
-}
-
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
     HEIGHT.get_or_init(|| Mutex::new(320.0))
@@ -8169,6 +7933,12 @@ fn sale_row_height() -> &'static Mutex<f64> {
     // Seed clears the AWB line, the when / paid / by line and Select. The
     // draw replaces it with the measured row.
     HEIGHT.get_or_init(|| Mutex::new(156.0))
+}
+
+fn customer_row_height() -> &'static Mutex<f64> {
+    static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
+    // Seed: ThumbAvatar row + item pad; draw replaces with measured extent.
+    HEIGHT.get_or_init(|| Mutex::new(90.0))
 }
 
 /// Nested PortalList inside a page `ScrollYView` — **scroll chaining**
@@ -8774,19 +8544,19 @@ impl Widget for CustomerList {
                 st.locale.language.clone(),
             )
         };
-        // Capped list (Khaynjo practise): room for a few rows, list scrolls
-        // inside; page scrolls the form below via scroll chaining.
-        const ROW: f64 = 76.0;
-        const GAP: f64 = 6.0;
-        let n = customers.len().max(1);
-        let want = list_content_height(n.min(3), ROW, GAP).max(ROW + 16.0);
+        // Full content height + page scroll (SaleList rule). A 3-row capped
+        // nested PortalList kept an inner scroll offset → blank gap under
+        // "Saved parties" with rows stuck at the bottom of the viewport.
+        let row = *customer_row_height().lock().unwrap();
+        let n = customers.len();
         let walk = Walk {
-            height: Size::Fixed(want.min(240.0)),
+            height: Size::Fixed(list_content_height(n, row, 0.0)),
             ..walk
         };
+        let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, customers.len());
+                list.set_item_range(cx, 0, n);
                 while let Some(item_id) = list.next_visible_item(cx) {
                     let Some(c) = customers.get(item_id) else {
                         continue;
@@ -8848,121 +8618,16 @@ impl Widget for CustomerList {
                     item.button(cx, ids!(pick)).set_text(cx, &pick_text);
                     item.draw_all_unscoped(cx);
                 }
-            }
-        }
-        DrawStep::done()
-    }
-
-    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        // Scroll chaining: list while it can move; page at the edge.
-        claim_list_nested_scroll(cx, &self.view, event);
-        self.view.handle_event(cx, event, scope);
-        claim_list_nested_scroll(cx, &self.view, event);
-    }
-}
-
-/// Favorites page rows share one draw: `pick == false` lists the user's
-/// favorites (add-to-bill + remove), `pick == true` lists the whole
-/// catalogue (add-to-favorites, or "Added" when already saved).
-fn draw_favorite_rows(
-    cx: &mut Cx2d,
-    scope: &mut Scope,
-    view: &mut View,
-    walk: Walk,
-    pick: bool,
-) -> DrawStep {
-    let (rows, favorites, currency, fiscal, lang) = {
-        let st = app_state().lock().unwrap();
-        let rows = if pick {
-            st.products.clone()
-        } else {
-            st.favorite_products()
-        };
-        (
-            rows,
-            st.favorites.clone(),
-            st.locale.currency.clone(),
-            st.fiscal.clone(),
-            st.locale.language.clone(),
-        )
-    };
-    let count = rows.len();
-    let row = *favorite_row_height().lock().unwrap();
-    let walk = Walk {
-        height: Size::Fixed(list_content_height(count, row, 0.0).max(1.0)),
-        ..walk
-    };
-    let mut measured_row = 0.0;
-    while let Some(step) = view.draw_walk(cx, scope, walk).step() {
-        if let Some(mut list) = step.as_portal_list().borrow_mut() {
-            list.set_item_range(cx, 0, count);
-            while let Some(item_id) = list.next_visible_item(cx) {
-                let Some(product) = rows.get(item_id) else {
-                    continue;
-                };
-                let item = list.item(cx, item_id, id!(Item));
-                item.label(cx, ids!(name)).set_text(cx, &product.name);
-                item.label(cx, ids!(price))
-                    .set_text(cx, &product.price.format_localized(&currency, &fiscal));
-                let act = item.button(cx, ids!(act));
-                let drop = item.button(cx, ids!(drop));
-                if pick {
-                    drop.set_visible(cx, false);
-                    if favorites.contains(&product.id) {
-                        act.set_text(cx, &locale::t(&lang, "added"));
-                        act.set_enabled(cx, false);
-                    } else {
-                        act.set_text(cx, &locale::t(&lang, "add_upper"));
-                        act.set_enabled(cx, product.available);
+                if n > 0 {
+                    let extent = list.drawn_range_extent();
+                    if extent > 1.0 {
+                        measured_row = extent / n as f64;
                     }
-                } else {
-                    drop.set_visible(cx, true);
-                    drop.set_text(cx, &locale::t(&lang, "remove"));
-                    act.set_text(cx, &locale::t(&lang, "add_to_bill"));
-                    act.set_enabled(cx, product.available);
-                }
-                item.draw_all_unscoped(cx);
-            }
-            if count > 0 {
-                let extent = list.drawn_range_extent();
-                if extent > 1.0 {
-                    measured_row = extent / count as f64;
                 }
             }
         }
-    }
-    remember_content_row(cx, view, favorite_row_height(), row, measured_row);
-    DrawStep::done()
-}
-
-#[derive(Script, ScriptHook, Widget)]
-struct FavoriteList {
-    #[deref]
-    view: View,
-}
-
-impl Widget for FavoriteList {
-    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        draw_favorite_rows(cx, scope, &mut self.view, walk, false)
-    }
-
-    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if page_owns_scroll(event) {
-            return;
-        }
-        self.view.handle_event(cx, event, scope);
-    }
-}
-
-#[derive(Script, ScriptHook, Widget)]
-struct FavoritePickList {
-    #[deref]
-    view: View,
-}
-
-impl Widget for FavoritePickList {
-    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        draw_favorite_rows(cx, scope, &mut self.view, walk, true)
+        remember_content_row(cx, &mut self.view, customer_row_height(), row, measured_row);
+        DrawStep::done()
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
@@ -9500,7 +9165,6 @@ impl Widget for SidebarNavList {
                         match tab {
                             NavTab::Books => locale::t(&lang, "books"),
                             NavTab::Sell => locale::t(&lang, "sell"),
-                            NavTab::Favorites => locale::t(&lang, "favorites"),
                             NavTab::Buy => locale::t(&lang, "buy"),
                             NavTab::Rates => locale::t(&lang, "items"),
                             NavTab::Ops => "Ops".into(),
@@ -10828,17 +10492,6 @@ impl App {
         self.ui
             .widget(cx, ids!(product_list_menu))
             .set_visible(cx, product_count > 0);
-        let fav_count = {
-            let mut st = app_state().lock().unwrap();
-            st.ensure_favorites();
-            st.favorite_products().len()
-        };
-        self.ui
-            .widget(cx, ids!(favorites_empty))
-            .set_visible(cx, fav_count == 0);
-        self.ui
-            .widget(cx, ids!(favorites_list))
-            .set_visible(cx, fav_count > 0);
         self.ui
             .widget(cx, ids!(cart_empty_hint))
             .set_visible(cx, cart_count == 0);
@@ -11960,7 +11613,6 @@ impl App {
                     let visible = match tab {
                         NavTab::Books
                         | NavTab::Sell
-                        | NavTab::Favorites
                         | NavTab::Buy
                         | NavTab::Lock => true,
                         NavTab::Rates => items,
@@ -12681,8 +12333,6 @@ impl App {
         self.align_label(cx, ids!(h_book_add_product), rtl);
         self.align_label(cx, ids!(h_book_opening_credit), rtl);
         self.align_label(cx, ids!(h_caption_today), rtl);
-        self.align_label(cx, ids!(favorites_yours_caption), rtl);
-        self.align_label(cx, ids!(favorites_all_caption), rtl);
         self.align_label(cx, ids!(h_caption_bookings), rtl);
         self.align_label(cx, ids!(h_caption_payments_today), rtl);
         self.align_label(cx, ids!(h_caption_outstanding), rtl);
@@ -12727,12 +12377,10 @@ impl App {
         self.align_label(cx, ids!(h_spreadsheet_csv), rtl);
         self.align_label(cx, ids!(h_goods_received_2), rtl);
         self.align_label(cx, ids!(shop_badge), rtl);
-        self.align_label(cx, ids!(favorites_heading), rtl);
-        self.align_label(cx, ids!(favorites_help), rtl);
-        self.align_label(cx, ids!(favorites_empty), rtl);
         self.align_label(cx, ids!(money_lane_label), rtl);
         self.align_label(cx, ids!(menu_mode_label), rtl);
         self.align_label(cx, ids!(more_heading), rtl);
+        self.align_label(cx, ids!(books_title), rtl);
         self.align_label(cx, ids!(sales_title), rtl);
         self.align_label(cx, ids!(credit_title), rtl);
         self.align_label(cx, ids!(team_title), rtl);
@@ -14212,7 +13860,6 @@ impl App {
         // Long More-row strings stay on more_* buttons below.
         let books = s("books");
         let sell = s("sell");
-        let favorites = s("favorites");
         let buy = s("buy");
         let rates = s("items");
         let sales = s("sales");
@@ -14234,7 +13881,6 @@ impl App {
             match tab {
                 NavTab::Books => &books,
                 NavTab::Sell => &sell,
-                NavTab::Favorites => &favorites,
                 NavTab::Buy => &buy,
                 NavTab::Rates => &rates,
                 NavTab::Ops => "Ops",
@@ -14315,22 +13961,6 @@ impl App {
         self.ui
             .button(cx, ids!(buy_to_inventory))
             .set_text(cx, &s("inventory_stock"));
-        self.ui
-            .widget(cx, ids!(favorites_heading))
-            .set_text(cx, &plain_display_text(&s("favorites")));
-        paint_page_title_icon(cx, &self.ui, ids!(favorites_heading_icon), NavTab::Favorites);
-        self.ui
-            .widget(cx, ids!(favorites_help))
-            .set_text(cx, &plain_display_text(&s("favorites_help")));
-        self.ui
-            .widget(cx, ids!(favorites_yours_caption))
-            .set_text(cx, &plain_display_text(&s("your_favorites")));
-        self.ui
-            .widget(cx, ids!(favorites_all_caption))
-            .set_text(cx, &plain_display_text(&s("all_items")));
-        self.ui
-            .widget(cx, ids!(favorites_empty))
-            .set_text(cx, &plain_display_text(&s("no_favorites")));
         {
             let help = self.ui.widget(cx, ids!(buy_help)).as_info_help();
             help.set_title(cx, &s("buy"));
@@ -14466,6 +14096,10 @@ impl App {
             .widget(cx, ids!(more_heading))
             .set_text(cx, &plain_display_text(&s("more")));
         paint_page_title_icon(cx, &self.ui, ids!(more_heading_icon), NavTab::Rates);
+        self.ui
+            .widget(cx, ids!(books_title))
+            .set_text(cx, &plain_display_text(&s("books")));
+        paint_page_title_icon(cx, &self.ui, ids!(books_title_icon), NavTab::Books);
         self.ui
             .widget(cx, ids!(sales_title))
             .set_text(cx, &plain_display_text(&s("sales")));
@@ -14634,7 +14268,6 @@ impl App {
             Screen::Onboard => ids!(onboard_screen),
             Screen::ClientPair => ids!(client_pair_screen),
             Screen::Books => ids!(books_screen),
-            Screen::Favorites => ids!(favorites_screen),
             Screen::Pos => ids!(pos_screen),
             Screen::Buy => ids!(buy_screen),
             Screen::Menu => ids!(menu_screen),
@@ -14709,7 +14342,6 @@ impl App {
             (ids!(onboard_screen), screen == Screen::Onboard),
             (ids!(client_pair_screen), screen == Screen::ClientPair),
             (ids!(books_screen), screen == Screen::Books),
-            (ids!(favorites_screen), screen == Screen::Favorites),
             (ids!(pos_screen), screen == Screen::Pos),
             (ids!(buy_screen), screen == Screen::Buy),
             (ids!(menu_screen), screen == Screen::Menu),
@@ -14867,7 +14499,6 @@ impl App {
         [
             (ids!(nav_books), ids!(nav_books_on)),
             (ids!(nav_sell), ids!(nav_sell_on)),
-            (ids!(nav_favorites), ids!(nav_favorites_on)),
             (ids!(nav_buy), ids!(nav_buy_on)),
             (ids!(nav_rates), ids!(nav_rates_on)),
             (ids!(nav_ops), ids!(nav_ops_on)),
@@ -14889,7 +14520,6 @@ impl App {
         [
             (ids!(rail_books), ids!(rail_books_on)),
             (ids!(rail_sell), ids!(rail_sell_on)),
-            (ids!(rail_favorites), ids!(rail_favorites_on)),
             (ids!(rail_buy), ids!(rail_buy_on)),
             (ids!(rail_rates), ids!(rail_rates_on)),
             (ids!(rail_ops), ids!(rail_ops_on)),
@@ -14911,7 +14541,6 @@ impl App {
         [
             ids!(nav_books_icon),
             ids!(nav_sell_icon),
-            ids!(nav_favorites_icon),
             ids!(nav_buy_icon),
             ids!(nav_rates_icon),
             ids!(nav_ops_icon),
@@ -14933,7 +14562,6 @@ impl App {
         [
             ids!(rail_books_icon),
             ids!(rail_sell_icon),
-            ids!(rail_favorites_icon),
             ids!(rail_buy_icon),
             ids!(rail_rates_icon),
             ids!(rail_ops_icon),
@@ -14967,7 +14595,6 @@ impl App {
             [
                 ids!(rail_books_slot),
                 ids!(rail_sell_slot),
-                ids!(rail_favorites_slot),
                 ids!(rail_buy_slot),
                 ids!(rail_rates_slot),
                 ids!(rail_ops_slot),
@@ -14987,7 +14614,6 @@ impl App {
             [
                 ids!(nav_books_slot),
                 ids!(nav_sell_slot),
-                ids!(nav_favorites_slot),
                 ids!(nav_buy_slot),
                 ids!(nav_rates_slot),
                 ids!(nav_ops_slot),
@@ -16198,7 +15824,6 @@ impl App {
         match tab {
             NavTab::Books => s("books"),
             NavTab::Sell => s("sell"),
-            NavTab::Favorites => s("favorites"),
             NavTab::Buy => s("buy"),
             NavTab::Rates => s("items"),
             NavTab::Ops => "Ops".to_string(),
@@ -19388,10 +19013,6 @@ impl MatchEvent for App {
                 cx.set_key_focus(Area::Empty);
                 self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
             }
-            Some(NavTab::Favorites) => {
-                cx.set_key_focus(Area::Empty);
-                self.go(cx, Screen::Favorites);
-            }
             Some(NavTab::Buy) => {
                 cx.set_key_focus(Area::Empty);
                 self.go_if_allowed(cx, Screen::Buy, |s| {
@@ -21254,69 +20875,6 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(image_pick)).clicked(actions) {
             self.image_pick_file(cx);
-        }
-        // Favorites page: saved rows bill or remove; catalogue rows add.
-        {
-            let widget = self.ui.widget(cx, ids!(favorites_list));
-            let list = widget.portal_list(cx, ids!(list));
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item.button(cx, ids!(drop)).clicked(actions) {
-                    let removed = {
-                        let mut st = app_state().lock().unwrap();
-                        st.ensure_favorites();
-                        let favs = st.favorite_products();
-                        if let Some(p) = favs.get(item_id) {
-                            let id = p.id.clone();
-                            st.favorites.retain(|f| f != &id);
-                            st.save_favorites();
-                            Some(p.name.clone())
-                        } else {
-                            None
-                        }
-                    };
-                    if let Some(name) = removed {
-                        self.set_status(cx, format!("{name} removed from favorites"));
-                    }
-                    self.sync_chrome(cx);
-                }
-                if item.button(cx, ids!(act)).clicked(actions) {
-                    let index = {
-                        let st = app_state().lock().unwrap();
-                        let favs = st.favorite_products();
-                        favs.get(item_id)
-                            .and_then(|p| st.products.iter().position(|x| x.id == p.id))
-                    };
-                    if let Some(index) = index {
-                        self.add_product_to_cart(cx, index);
-                        self.go(cx, Screen::Pos);
-                    }
-                }
-            }
-        }
-        {
-            let widget = self.ui.widget(cx, ids!(favorites_pick_list));
-            let list = widget.portal_list(cx, ids!(list));
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item.button(cx, ids!(act)).clicked(actions) {
-                    let added = {
-                        let mut st = app_state().lock().unwrap();
-                        st.ensure_favorites();
-                        if let Some(p) = st.products.get(item_id).cloned() {
-                            if !st.favorites.contains(&p.id) {
-                                st.favorites.push(p.id.clone());
-                                st.save_favorites();
-                            }
-                            Some(p.name.clone())
-                        } else {
-                            None
-                        }
-                    };
-                    if let Some(name) = added {
-                        self.set_status(cx, format!("{name} added to favorites"));
-                    }
-                    self.sync_chrome(cx);
-                }
-            }
         }
         // Sell list: 3-col token grid — each PortalList row holds c0/c1/c2.
         {
