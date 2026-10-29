@@ -25,6 +25,7 @@ pub mod startup;
 pub mod store;
 pub mod suggest;
 pub mod thumbs;
+pub mod uninstall_wipe;
 pub mod upi_qr;
 
 // Android packaging compiles this library as the cdylib. The desktop

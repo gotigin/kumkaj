@@ -82,6 +82,22 @@ echo "  Data:      $DATA_DIR"
 APP_PRESENT=0
 [[ -d "$INSTALL_DIR" && ( -f "$INSTALL_DIR/run.sh" || -f "$INSTALL_DIR/bin/kumkaj-moklanjo" ) ]] && APP_PRESENT=1
 
+# Ask about data while the binary can still wipe SQLite categories.
+DESKTOP_WIPE_ARGS=""
+WIPED=0
+EXE=""
+if [[ -x "$INSTALL_DIR/bin/kumkaj-moklanjo" ]]; then
+  EXE="$INSTALL_DIR/bin/kumkaj-moklanjo"
+elif [[ -x "$INSTALL_DIR/run.sh" ]]; then
+  EXE="$INSTALL_DIR/run.sh"
+fi
+if desktop_prompt_wipe_data "$DATA_DIR"; then
+  desktop_apply_wipe_data "$DATA_DIR" "$EXE"
+  WIPED=1
+elif [[ -e "$DATA_DIR" ]]; then
+  echo "Keeping local data at: $DATA_DIR"
+fi
+
 if [[ "$APP_PRESENT" -eq 1 ]]; then
   echo
   echo "Removing app files…"
@@ -106,28 +122,12 @@ else
   CLEANUP_DIR=""
 fi
 
-REMOVE_DATA=0
-if desktop_prompt_remove_data "$DATA_DIR"; then
-  REMOVE_DATA=1
-fi
-
-if [[ "$REMOVE_DATA" -eq 1 ]]; then
-  echo "Removing data…"
-  rm -rf "$DATA_DIR"
-  echo "  Data removed: $DATA_DIR"
-else
-  if [[ -e "$DATA_DIR" ]]; then
-    echo "Keeping data at: $DATA_DIR"
-    echo "Run this uninstaller again later if you want to delete it."
-  fi
-fi
-
 rm -f "$CFG_BOOKMARK"
 
 echo
 echo "Done."
-if [[ "$REMOVE_DATA" -eq 0 && -e "$DATA_DIR" ]]; then
-  echo "Reminder: books data is still on disk. Re-run uninstall to remove it."
+if [[ "$WIPED" -eq 0 && -e "$DATA_DIR" ]]; then
+  echo "Reminder: local data is still on disk. Re-run uninstall to remove it."
 fi
 
 if [[ -n "${CLEANUP_DIR:-}" ]]; then

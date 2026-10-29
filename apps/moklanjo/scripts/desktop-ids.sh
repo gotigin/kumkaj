@@ -98,30 +98,78 @@ desktop_load_manifest() {
   done <"$file"
 }
 
-# Prompt: keep data (default) or remove. Returns 0 if caller should delete data.
-desktop_prompt_remove_data() {
+# Prompt for which local data categories to wipe. Sets DESKTOP_WIPE_ARGS to a
+# space-separated list of --uninstall-wipe categories (trading / schema / ui),
+# or empty if the owner keeps everything. Returns 0 when any wipe was chosen.
+desktop_prompt_wipe_data() {
   local data_dir="${1:?}"
   local label="${KUMKAJ_APP_LABEL:-Moklanjo}"
+  DESKTOP_WIPE_ARGS=""
   echo
-  echo "$label — local books data:"
+  echo "$label — local data:"
   echo "  $data_dir"
   if [[ ! -e "$data_dir" ]]; then
     echo "  (no data directory found — nothing to remove)"
     return 1
   fi
-  echo
-  echo "Remove this data? (books, backups, settings)"
-  echo "  y = delete data forever"
-  echo "  N = keep data (run uninstall again later to remove it)"
-  local ans=""
-  if [[ -t 0 ]]; then
-    read -r -p "Remove data? [y/N] " ans || true
-  else
-    echo "(non-interactive: keeping data)"
-    ans="n"
+  if [[ ! -t 0 ]]; then
+    echo "(non-interactive: keeping all local data)"
+    return 1
   fi
-  case "${ans,,}" in
-    y|yes) return 0 ;;
-    *) return 1 ;;
+  local ans_records="" ans_setup="" ans_ui=""
+  echo
+  echo "Delete business records (sales, payments, day books)? Shop setup stays. [y/N]"
+  read -r -p "> " ans_records || true
+  echo "Delete shop setup (products, rates, staff, brand, empty books)? [y/N]"
+  read -r -p "> " ans_setup || true
+  echo "Delete screen preferences (sidebar, amounts, window, language)? [y/N]"
+  read -r -p "> " ans_ui || true
+  local cats=()
+  case "${ans_setup,,}" in
+    y|yes) cats+=(schema) ;;
+    *)
+      case "${ans_records,,}" in
+        y|yes) cats+=(trading) ;;
+      esac
+      ;;
   esac
+  case "${ans_ui,,}" in
+    y|yes) cats+=(ui) ;;
+  esac
+  if [[ ${#cats[@]} -eq 0 ]]; then
+    return 1
+  fi
+  DESKTOP_WIPE_ARGS="${cats[*]}"
+  return 0
+}
+
+# Run `$1 --uninstall-wipe $DESKTOP_WIPE_ARGS`, or fall back to folder deletes.
+desktop_apply_wipe_data() {
+  local data_dir="${1:?}"
+  local exe="${2:-}"
+  if [[ -z "${DESKTOP_WIPE_ARGS:-}" ]]; then
+    return 0
+  fi
+  if [[ -n "$exe" && -x "$exe" ]]; then
+    echo "Wiping: $DESKTOP_WIPE_ARGS"
+    "$exe" --uninstall-wipe $DESKTOP_WIPE_ARGS || true
+    return 0
+  fi
+  echo "App exe not available; applying folder deletes for: $DESKTOP_WIPE_ARGS"
+  local a
+  for a in $DESKTOP_WIPE_ARGS; do
+    case "$a" in
+      schema)
+        rm -rf "$data_dir/servers" "$data_dir/client" "$data_dir/backups"
+        rm -f "$data_dir/servers.json"
+        ;;
+      ui)
+        rm -f "$data_dir/window_geom.json" "$data_dir/app_language.json"
+        ;;
+      trading)
+        echo "  (business records need the app binary; choose shop setup to remove databases)"
+        ;;
+    esac
+  done
+  rmdir "$data_dir" 2>/dev/null || true
 }

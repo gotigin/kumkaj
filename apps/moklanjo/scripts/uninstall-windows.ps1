@@ -94,7 +94,54 @@ Write-Host "  App id:    $AppId"
 Write-Host "  App files: $InstallDir"
 Write-Host "  Data:      $DataDir"
 
-$appPresent = Test-Path (Join-Path $InstallDir "kumkaj-moklanjo.exe")
+$exe = Join-Path $InstallDir "kumkaj-moklanjo.exe"
+$appPresent = Test-Path $exe
+
+# Ask about data while the exe can still wipe SQLite categories.
+Write-Host ""
+Write-Host "$Label - local data:"
+Write-Host "  $DataDir"
+$wiped = $false
+$cats = @()
+if (Test-Path $DataDir) {
+    Write-Host ""
+    Write-Host "Delete business records (sales, payments, day books)? Shop setup stays."
+    $ansRecords = Read-Host "[y/N]"
+    Write-Host "Delete shop setup (products, rates, staff, brand, empty books)?"
+    $ansSetup = Read-Host "[y/N]"
+    Write-Host "Delete screen preferences (sidebar, amounts, window, language)?"
+    $ansUi = Read-Host "[y/N]"
+    if ($ansSetup -match '^(y|yes)$') {
+        $cats += "schema"
+    } elseif ($ansRecords -match '^(y|yes)$') {
+        $cats += "trading"
+    }
+    if ($ansUi -match '^(y|yes)$') { $cats += "ui" }
+    if ($cats.Count -gt 0) {
+        if (Test-Path $exe) {
+            Write-Host "Wiping: $($cats -join ', ') ..."
+            Start-Process -FilePath $exe -ArgumentList (@("--uninstall-wipe") + $cats) -Wait -WindowStyle Hidden
+        } else {
+            Write-Host "App exe missing; applying folder deletes..."
+            if ($cats -contains "schema") {
+                Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $DataDir "servers")
+                Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $DataDir "client")
+                Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $DataDir "backups")
+                Remove-Item -Force -ErrorAction SilentlyContinue (Join-Path $DataDir "servers.json")
+            }
+            if ($cats -contains "ui") {
+                Remove-Item -Force -ErrorAction SilentlyContinue (Join-Path $DataDir "window_geom.json")
+                Remove-Item -Force -ErrorAction SilentlyContinue (Join-Path $DataDir "app_language.json")
+            }
+        }
+        $wiped = $true
+    } else {
+        Write-Host "Keeping local data at: $DataDir"
+    }
+} else {
+    Write-Host "  (no data directory found - nothing to remove)"
+}
+
 if ($appPresent) {
     Write-Host ""
     Write-Host "Removing app files..."
@@ -121,36 +168,12 @@ if ($appPresent) {
     $cleanup = $null
 }
 
-Write-Host ""
-Write-Host "$Label - local books data:"
-Write-Host "  $DataDir"
-$removeData = $false
-if (Test-Path $DataDir) {
-    Write-Host ""
-    Write-Host "Remove this data? (books, backups, settings)"
-    Write-Host "  Y = delete data forever"
-    Write-Host "  N = keep data (run uninstall again later to remove it)"
-    $ans = Read-Host "Remove data? [y/N]"
-    if ($ans -match '^(y|yes)$') { $removeData = $true }
-} else {
-    Write-Host "  (no data directory found - nothing to remove)"
-}
-
-if ($removeData) {
-    Write-Host "Removing data..."
-    Remove-Item -Recurse -Force $DataDir
-    Write-Host "  Data removed: $DataDir"
-} elseif (Test-Path $DataDir) {
-    Write-Host "Keeping data at: $DataDir"
-    Write-Host "Run this uninstaller again later if you want to delete it."
-}
-
 if (Test-Path $Bookmark) { Remove-Item -Force $Bookmark }
 
 Write-Host ""
 Write-Host "Done."
-if (-not $removeData -and (Test-Path $DataDir)) {
-    Write-Host "Reminder: books data is still on disk. Re-run uninstall to remove it."
+if (-not $wiped -and (Test-Path $DataDir)) {
+    Write-Host "Reminder: local data is still on disk. Re-run uninstall to remove it."
 }
 
 if ($cleanup) {

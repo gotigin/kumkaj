@@ -14,11 +14,12 @@
 #
 # The MSI installs to %LOCALAPPDATA%\Programs\<Label>\ (no admin), adds a
 # Start Menu shortcut, and appears in Settings -> Apps for uninstall.
-# A full uninstall asks whether to also delete the books data
-# (%APPDATA%\<app id>\); upgrades never ask and always keep it. A Start Menu
-# "Delete books data" shortcut deletes it on demand (with confirmation).
-# Uses wixl (msitools). If missing, a pinned copy is downloaded to the user
-# cache (Arch package mirrors). Override with WIXL=/path/to/wixl.
+# A full uninstall asks which local data to delete (business records, shop
+# setup / schema, screen preferences under %APPDATA%\<app id>\); upgrades
+# never ask and always keep it. A Start Menu "Delete books data" shortcut
+# offers the same categories on demand. Uses wixl (msitools). If missing, a
+# pinned copy is downloaded to the user cache (Arch package mirrors).
+# Override with WIXL=/path/to/wixl.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -68,10 +69,12 @@ LABEL="$(manifest_get KUMKAJ_APP_LABEL)"
 [[ -n "$LABEL" ]] || { echo "install-manifest.env missing KUMKAJ_APP_LABEL" >&2; exit 1; }
 APP_ID="$(manifest_get KUMKAJ_APP_ID)"
 [[ -n "$APP_ID" ]] || { echo "install-manifest.env missing KUMKAJ_APP_ID" >&2; exit 1; }
-# Per-flavor delete-data helper (app id substituted in).
-sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
+# Per-flavor delete-data helper (app id / label / exe name substituted in).
+sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
+  "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
 # Uninstall prompt script (same substitution; JScript is all wixl supports).
-sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
+sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
+  "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
 VER="$(sed -n '/^\[package\]/,/^\[/p' "$APP_DIR/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
 [[ -n "$VER" ]] || VER="0.1.0"
 

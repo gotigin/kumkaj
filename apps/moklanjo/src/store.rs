@@ -7653,6 +7653,72 @@ impl Store {
         Ok(())
     }
 
+    /// Uninstall / "Delete books data": wipe trading rows without the live
+    /// server-writer gate (the app is quitting; client DBs are wiped too).
+    pub fn uninstall_wipe_trading_data(&self) -> Result<(), String> {
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        for sql in [
+            "DELETE FROM sale_payments",
+            "DELETE FROM sale_lines",
+            "DELETE FROM sale_revisions",
+            "DELETE FROM sales",
+            "DELETE FROM expense_payments",
+            "DELETE FROM expenses",
+            "DELETE FROM credit_ledger",
+            "DELETE FROM payable_ledger",
+            "DELETE FROM money_movements",
+            "DELETE FROM stock_movements",
+            "DELETE FROM purchase_lines",
+            "DELETE FROM purchases",
+            "DELETE FROM manifest_lines",
+            "DELETE FROM manifests",
+            "DELETE FROM tracking_events",
+            "DELETE FROM period_bills",
+            "DELETE FROM cod_entries",
+            "DELETE FROM cod_remittances",
+            "DELETE FROM incoming_manifest_lines",
+            "DELETE FROM incoming_manifests",
+            "DELETE FROM pickup_requests",
+            "DELETE FROM pickup_runs",
+            "DELETE FROM vehicle_inspections",
+            "DELETE FROM rider_run_cache",
+            "DELETE FROM audit_events",
+            "DELETE FROM notify_outbox",
+            "DELETE FROM entry_attachments",
+            "DELETE FROM sync_outbox",
+            "DELETE FROM lan_outbox",
+            "DELETE FROM lan_refused",
+            "DELETE FROM lan_replies",
+            "DELETE FROM lan_sessions",
+            "DELETE FROM meta WHERE key IN (
+                'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
+                'shift_opened_by', 'opening_cash_paise'
+             )",
+            "DELETE FROM meta WHERE key LIKE 'lan_session:%'",
+            "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        ] {
+            match tx.execute(sql, []) {
+                Ok(_) => {}
+                Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) => return Err(e.to_string()),
+            }
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Clear persisted screen preferences stored in books meta (`ui_*`).
+    pub fn uninstall_wipe_ui_prefs(&self) -> Result<(), String> {
+        self.conn
+            .execute(
+                "DELETE FROM meta WHERE key LIKE 'ui_%'",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
         for member in self.list_staff()? {
             if member.is_owner() && verify_pin(pin, &member.pin_hash)? {

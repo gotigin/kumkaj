@@ -139,7 +139,7 @@ cat >"$APP_DIR/${ENTRY_ID}-uninstall.desktop" <<EOF
 Type=Application
 Version=1.0
 Name=Uninstall $LABEL
-Comment=Remove $LABEL (asks whether to keep books data)
+Comment=Remove $LABEL (asks which local data to keep)
 Exec=$INSTALL_DIR/uninstall.sh
 Terminal=true
 Categories=Utility;

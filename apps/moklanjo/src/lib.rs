@@ -34,6 +34,7 @@ pub mod startup;
 pub mod store;
 pub mod thumbs;
 pub mod track;
+pub mod uninstall_wipe;
 
 // Android packaging compiles this library as the cdylib. The desktop
 // binary's `app_main!` is not in that library, so Activity.onCreate

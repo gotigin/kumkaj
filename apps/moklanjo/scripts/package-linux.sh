@@ -60,7 +60,7 @@ Uninstall (after install, or re-run to delete leftover data):
   or: ~/.local/lib/kumkaj-moklanjo/uninstall.sh
   or: ./uninstall.sh --prod
 
-Uninstall asks whether to keep or remove books data:
+Uninstall asks which local data to remove (records / setup / preferences):
   ${HOME}/.local/share/${KUMKAJ_APP_ID}/
 
 First start asks for the Owner PIN (Server Mode) — there is no default PIN to change.

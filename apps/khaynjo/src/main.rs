@@ -17,7 +17,7 @@ use crate::{
 #[cfg(not(target_os = "android"))]
 use kumkaj_khaynjo::{
     domain, entity_template, fiscal, locale, local_servers, menu_images, net, notify, phone,
-    precise, print_share, schemes, startup, store, suggest, thumbs, upi_qr,
+    precise, print_share, schemes, startup, store, suggest, thumbs, uninstall_wipe, upi_qr,
 };
 
 use domain::{
@@ -35,6 +35,24 @@ use std::path::PathBuf;
 use std::sync::{Mutex, OnceLock};
 use std::time::Duration;
 
+// Desktop: intercept `--uninstall-wipe …` before Makepad opens a window
+// (MSI / "Delete books data" call this while the exe is still installed).
+#[cfg(not(target_os = "android"))]
+fn main() {
+    if uninstall_wipe::try_run() {
+        return;
+    }
+    desktop_entry::app_main();
+}
+
+#[cfg(not(target_os = "android"))]
+mod desktop_entry {
+    use super::App;
+    use makepad_widgets::*;
+    app_main!(App);
+}
+
+#[cfg(target_os = "android")]
 app_main!(App);
 
 fn app_state() -> &'static Mutex<AppState> {
@@ -234,6 +252,48 @@ fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
 fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
     static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
     FRAME.get_or_init(|| Mutex::new(None))
+}
+
+/// Font Awesome solid (`WorldFonts` icons member): chevron-right / chevron-down.
+/// Noto Sans often has no ▸/▾, so those looked like missing icons.
+const ACCORDION_MARK_CLOSED: &str = "\u{f054}";
+const ACCORDION_MARK_OPEN: &str = "\u{f078}";
+
+/// Books accordion open/close height animation (~220ms ease-out).
+struct AccordionAnim {
+    /// Visual progress 0 = collapsed, 1 = expanded.
+    from: f64,
+    to: f64,
+    content_h: f64,
+    started: std::time::Instant,
+}
+
+fn accordion_anims() -> &'static Mutex<std::collections::HashMap<String, AccordionAnim>> {
+    static ANIMS: OnceLock<Mutex<std::collections::HashMap<String, AccordionAnim>>> = OnceLock::new();
+    ANIMS.get_or_init(|| Mutex::new(std::collections::HashMap::new()))
+}
+
+fn accordion_frame() -> &'static Mutex<Option<NextFrame>> {
+    static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    FRAME.get_or_init(|| Mutex::new(None))
+}
+
+const ACCORDION_ANIM_MS: f64 = 220.0;
+
+fn accordion_ease(t: f64) -> f64 {
+    let t = t.clamp(0.0, 1.0);
+    1.0 - (1.0 - t).powi(3)
+}
+
+fn accordion_estimate_h(key: &str) -> f64 {
+    match key {
+        "today" => 168.0,
+        "bookings" | "bills" => 72.0,
+        "payments" => 108.0,
+        "outstanding" => 72.0,
+        "bank" => 108.0,
+        _ => 100.0,
+    }
 }
 
 /// Set when a drag (not a click) ends on a nav item, so the Button's
@@ -3700,11 +3760,12 @@ script_mod! {
         }
         text: "👁"
     }
-    // Books accordion section header — left-aligned ▸/▾ + title.
+    // Books accordion section header — FA chevron (›/˅) + title.
+    // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 4. right: 8. top: 6. bottom: 6.}
+        padding: Inset{left: 6. right: 8. top: 8. bottom: 8.}
         align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
@@ -3724,13 +3785,13 @@ script_mod! {
             border_size: 0.
         }
         draw_text +: {
-            color: #x93705F
-            color_hover: #x69090C
-            color_down: #x69090C
-            color_focus: #x93705F
-            text_style +: {font_size: 12.}
+            color: #x69090C
+            color_hover: #x3D0507
+            color_down: #x3D0507
+            color_focus: #x69090C
+            text_style +: {font_size: 14.}
         }
-        text: "▸"
+        text: "TODAY"
     }
     // Inline quiet action — Fit width, NO wrap (Fill+wrap at Fit stacks
     // letters vertically). Same colours as RowSecondary; not a ChipBtn filter.
@@ -7422,7 +7483,7 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    books_sec_today_hdr := AccordionHdrBtn{text: "▸ TODAY"}
+                                    books_sec_today_hdr := AccordionHdrBtn{text: "TODAY"}
                                     books_sec_today_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 7
@@ -7471,7 +7532,7 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    books_sec_bills_hdr := AccordionHdrBtn{text: "▸ BILLS"}
+                                    books_sec_bills_hdr := AccordionHdrBtn{text: "BILLS"}
                                     books_sec_bills_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 7
@@ -7499,7 +7560,7 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    books_sec_payments_hdr := AccordionHdrBtn{text: "▸ PAYMENTS TODAY"}
+                                    books_sec_payments_hdr := AccordionHdrBtn{text: "PAYMENTS TODAY"}
                                     books_sec_payments_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 7
@@ -7534,7 +7595,7 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    books_sec_outstanding_hdr := AccordionHdrBtn{text: "▸ OUTSTANDING"}
+                                    books_sec_outstanding_hdr := AccordionHdrBtn{text: "OUTSTANDING"}
                                     books_sec_outstanding_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 7
@@ -7562,7 +7623,7 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    books_sec_bank_hdr := AccordionHdrBtn{text: "▸ BANK"}
+                                    books_sec_bank_hdr := AccordionHdrBtn{text: "BANK"}
                                     books_sec_bank_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 7
@@ -19600,11 +19661,13 @@ impl App {
     }
 
     /// Books home accordion bodies + header chevrons from `books_sections_open`.
+    /// Skips visibility/height while a section is mid-animation.
     fn sync_books_sections(&mut self, cx: &mut Cx) {
         let open = app_state().lock().unwrap().books_sections_open.clone();
         let is_open = |key: &str| open.iter().any(|k| k == key);
         let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |k: &str| locale::t(&lang, k);
+        let animating = accordion_anims().lock().unwrap();
         let sections: &[(&str, &[LiveId], &[LiveId], &str)] = &[
             (
                 "today",
@@ -19639,12 +19702,92 @@ impl App {
         ];
         for (key, hdr, body, caption_key) in sections {
             let open = is_open(key);
-            self.ui.view(cx, body).set_visible(cx, open);
-            let mark = if open { "▾" } else { "▸" };
+            let mark = if open {
+                ACCORDION_MARK_OPEN
+            } else {
+                ACCORDION_MARK_CLOSED
+            };
             self.ui
                 .button(cx, hdr)
-                .set_text(cx, &format!("{mark} {}", s(caption_key)));
+                .set_text(cx, &format!("{mark}  {}", s(caption_key)));
+            if animating.contains_key(*key) {
+                continue;
+            }
+            self.ui.view(cx, body).set_visible(cx, open);
+            if let Some(mut v) = self.ui.view(cx, body).borrow_mut() {
+                v.walk.height = Size::fit();
+            }
         }
+    }
+
+    fn books_section_body_id(key: &str) -> Option<&'static [LiveId]> {
+        match key {
+            "today" => Some(ids!(books_sec_today_body)),
+            "bills" => Some(ids!(books_sec_bills_body)),
+            "payments" => Some(ids!(books_sec_payments_body)),
+            "outstanding" => Some(ids!(books_sec_outstanding_body)),
+            "bank" => Some(ids!(books_sec_bank_body)),
+            _ => None,
+        }
+    }
+
+    fn set_books_section_body_height(&mut self, cx: &mut Cx, body: &[LiveId], height: Option<f64>) {
+        if let Some(mut v) = self.ui.view(cx, body).borrow_mut() {
+            v.walk.height = match height {
+                Some(h) => Size::Fixed(h.max(0.0)),
+                None => Size::fit(),
+            };
+        }
+        self.ui.view(cx, body).redraw(cx);
+    }
+
+    /// Drive accordion height animations; call from `Event::NextFrame`.
+    fn tick_books_accordion(&mut self, cx: &mut Cx) {
+        let now = std::time::Instant::now();
+        let mut done_keys = Vec::new();
+        let mut any_live = false;
+        {
+            let mut anims = accordion_anims().lock().unwrap();
+            for (key, anim) in anims.iter_mut() {
+                let Some(body) = Self::books_section_body_id(key) else {
+                    done_keys.push(key.clone());
+                    continue;
+                };
+                let t = now.duration_since(anim.started).as_secs_f64() * 1000.0 / ACCORDION_ANIM_MS;
+                let p = accordion_ease(t);
+                let progress = anim.from + (anim.to - anim.from) * p;
+                let h = anim.content_h * progress;
+                self.ui.view(cx, body).set_visible(cx, true);
+                self.set_books_section_body_height(cx, body, Some(h));
+                if t >= 1.0 {
+                    done_keys.push(key.clone());
+                } else {
+                    any_live = true;
+                }
+            }
+            for key in &done_keys {
+                let Some(anim) = anims.remove(key) else {
+                    continue;
+                };
+                let Some(body) = Self::books_section_body_id(key) else {
+                    continue;
+                };
+                if anim.to <= 0.0 {
+                    self.ui.view(cx, body).set_visible(cx, false);
+                    self.set_books_section_body_height(cx, body, None);
+                } else {
+                    self.ui.view(cx, body).set_visible(cx, true);
+                    self.set_books_section_body_height(cx, body, None);
+                }
+            }
+            any_live = any_live || !anims.is_empty();
+        }
+        if any_live {
+            *accordion_frame().lock().unwrap() = Some(cx.new_next_frame());
+        } else {
+            *accordion_frame().lock().unwrap() = None;
+        }
+        self.ui.redraw(cx);
     }
 
     /// Top eye: session-only hide/show for every amount on screen.
@@ -19694,18 +19837,48 @@ impl App {
     }
 
     fn toggle_books_section(&mut self, cx: &mut Cx, key: &str) {
-        {
+        let Some(body) = Self::books_section_body_id(key) else {
+            return;
+        };
+        let will_open = {
             let mut st = app_state().lock().unwrap();
-            if let Some(i) = st.books_sections_open.iter().position(|k| k == key) {
+            let open = if let Some(i) = st.books_sections_open.iter().position(|k| k == key) {
                 st.books_sections_open.remove(i);
+                false
             } else {
                 st.books_sections_open.push(key.to_string());
-            }
+                true
+            };
             if let Some(store) = st.store.as_ref() {
                 let _ = store.set_books_sections_csv(&books_sections_csv(&st.books_sections_open));
             }
+            open
+        };
+        let measured = self.ui.view(cx, body).area().rect(cx).size.y;
+        let content_h = if measured > 1.0 {
+            measured
+        } else {
+            accordion_estimate_h(key)
+        };
+        let (from, to) = if will_open { (0.0, 1.0) } else { (1.0, 0.0) };
+        if will_open {
+            self.ui.view(cx, body).set_visible(cx, true);
+            self.set_books_section_body_height(cx, body, Some(0.0));
+        } else {
+            self.set_books_section_body_height(cx, body, Some(content_h));
         }
+        accordion_anims().lock().unwrap().insert(
+            key.to_string(),
+            AccordionAnim {
+                from,
+                to,
+                content_h,
+                started: std::time::Instant::now(),
+            },
+        );
+        *accordion_frame().lock().unwrap() = Some(cx.new_next_frame());
         self.sync_books_sections(cx);
+        self.tick_books_accordion(cx);
     }
 
     /// Docs / debug / LOCAL badges stay out of the day-to-day work surface.
@@ -29814,6 +29987,14 @@ impl AppMain for App {
                 .unwrap_or(false);
             if ours {
                 self.nav_drag_autoscroll(cx);
+            }
+            let accordion_ours = accordion_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if accordion_ours {
+                self.tick_books_accordion(cx);
             }
         }
         if self.pointer_nav_drag(cx, event) {

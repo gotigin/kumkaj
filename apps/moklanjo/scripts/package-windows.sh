@@ -87,7 +87,7 @@ Uninstall:
   or Settings → Apps → Moklanjo
   or double-click Uninstall.bat
 
-Uninstall asks whether to keep or remove books data:
+Uninstall asks which local data to remove (records / setup / preferences):
   %APPDATA%\\${KUMKAJ_APP_ID}\\
 Re-run uninstall later to delete leftover data if you chose Keep.
 

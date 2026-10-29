@@ -8011,6 +8011,80 @@ impl Store {
         Ok(())
     }
 
+    /// Uninstall / "Delete books data": wipe trading rows without the live
+    /// server-writer gate (the app is quitting; client DBs are wiped too).
+    pub fn uninstall_wipe_trading_data(&self) -> Result<(), String> {
+        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        for sql in [
+            "DELETE FROM sale_payments",
+            "DELETE FROM sale_lines",
+            "DELETE FROM sale_revisions",
+            "DELETE FROM sale_delivery",
+            "DELETE FROM sales",
+            "DELETE FROM expense_payments",
+            "DELETE FROM expenses",
+            "DELETE FROM credit_ledger",
+            "DELETE FROM payable_ledger",
+            "DELETE FROM money_movements",
+            "DELETE FROM stock_movements",
+            "DELETE FROM purchase_lines",
+            "DELETE FROM purchases",
+            "DELETE FROM purchase_order_lines",
+            "DELETE FROM purchase_orders",
+            "DELETE FROM stock_count_lines",
+            "DELETE FROM stock_counts",
+            "DELETE FROM stock_levels",
+            "DELETE FROM stock_carry",
+            "DELETE FROM running_lines",
+            "DELETE FROM running_orders",
+            "DELETE FROM kot_tickets",
+            "DELETE FROM split_tables",
+            "DELETE FROM reservations",
+            "DELETE FROM waitlist",
+            "DELETE FROM waiter_calls",
+            "DELETE FROM shift_closes",
+            "DELETE FROM time_clock",
+            "DELETE FROM gift_vouchers",
+            "DELETE FROM feedback",
+            "DELETE FROM customers",
+            "DELETE FROM audit_events",
+            "DELETE FROM notify_outbox",
+            "DELETE FROM connector_outbox",
+            "DELETE FROM entry_attachments",
+            "DELETE FROM sync_outbox",
+            "DELETE FROM lan_outbox",
+            "DELETE FROM lan_refused",
+            "DELETE FROM lan_replies",
+            "DELETE FROM lan_sessions",
+            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
+            "UPDATE products SET stock_qty = 0 WHERE stock_qty >= 0",
+            "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
+            "DELETE FROM meta WHERE key IN (
+                'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
+                'shift_opened_by', 'opening_cash_paise'
+             )",
+            "DELETE FROM meta WHERE key LIKE 'lan_session:%'",
+            "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        ] {
+            match tx.execute(sql, []) {
+                Ok(_) => {}
+                Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) => return Err(e.to_string()),
+            }
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    /// Clear persisted screen preferences stored in books meta (`ui_*`).
+    pub fn uninstall_wipe_ui_prefs(&self) -> Result<(), String> {
+        self.conn
+            .execute("DELETE FROM meta WHERE key LIKE 'ui_%'", [])
+            .map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
         for member in self.list_staff()? {
             if member.is_owner() && verify_pin(pin, &member.pin_hash)? {
