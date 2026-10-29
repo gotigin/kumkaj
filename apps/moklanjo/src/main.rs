@@ -255,6 +255,30 @@ fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
+/// Settings → Sidebar list drag-reordered; App syncs chrome when taken.
+fn sidebar_order_dirty() -> &'static Mutex<bool> {
+    static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
+    FLAG.get_or_init(|| Mutex::new(false))
+}
+
+/// Settings → Sidebar list: same ghost-chip drag as the rail/bottom bar
+/// (`pointer_sidebar_settings_drag`), not an in-list swap.
+#[derive(Clone)]
+struct SettingsNavDrag {
+    slot: usize,
+    start: DVec2,
+    last: DVec2,
+    origin: DVec2,
+    rects: Vec<Rect>,
+    active: bool,
+    hover: Option<usize>,
+}
+
+fn settings_nav_drag() -> &'static Mutex<Option<SettingsNavDrag>> {
+    static DRAG: OnceLock<Mutex<Option<SettingsNavDrag>>> = OnceLock::new();
+    DRAG.get_or_init(|| Mutex::new(None))
+}
+
 /// Pending frame callback that keeps edge auto-scroll alive while a
 /// nav drag is held against the bar's edge (see `nav_drag_autoscroll`).
 fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
@@ -495,9 +519,15 @@ struct AppState {
     /// Desk scope: false = Domestic (shop divisor, usually ÷5000);
     /// true = International (÷6000 air). Does not rewrite Settings.
     booking_scope_international: bool,
-    /// Booking desk: destination / consignee / dimensions (walk-in loop).
+    /// Booking desk: consignor (= customer) + consignee address blocks
+    /// (always on the form; values may stay empty) + destination / weights.
+    booking_origin_name: String,
+    booking_origin_phone: String,
+    booking_origin_address: String,
     booking_destination: String,
     booking_consignee: String,
+    booking_consignee_phone: String,
+    booking_consignee_address: String,
     booking_actual_kg: String,
     booking_length_cm: String,
     booking_breadth_cm: String,
@@ -1017,8 +1047,13 @@ impl AppState {
             draft_image_key: None,
             draft_party_image_key: None,
             booking_scope_international: false,
+            booking_origin_name: String::new(),
+            booking_origin_phone: String::new(),
+            booking_origin_address: String::new(),
             booking_destination: String::new(),
             booking_consignee: String::new(),
+            booking_consignee_phone: String::new(),
+            booking_consignee_address: String::new(),
             booking_actual_kg: String::new(),
             booking_length_cm: String::new(),
             booking_breadth_cm: String::new(),
@@ -1722,8 +1757,13 @@ impl AppState {
     }
 
     fn apply_booking_fields(&self, draft: &mut domain::SaleDraft) {
+        draft.origin_name = self.booking_origin_name.trim().to_string();
+        draft.origin_phone = self.booking_origin_phone.trim().to_string();
+        draft.origin_address = self.booking_origin_address.trim().to_string();
         draft.destination = self.booking_destination.trim().to_string();
         draft.consignee_name = self.booking_consignee.trim().to_string();
+        draft.consignee_phone = self.booking_consignee_phone.trim().to_string();
+        draft.consignee_address = self.booking_consignee_address.trim().to_string();
         let (actual, vol, chargeable) = self.booking_weights();
         draft.actual_weight_kg = actual;
         draft.volumetric_weight_kg = vol;
@@ -1795,8 +1835,13 @@ impl AppState {
 
     fn clear_booking_desk(&mut self) {
         self.cart.clear();
+        self.booking_origin_name.clear();
+        self.booking_origin_phone.clear();
+        self.booking_origin_address.clear();
         self.booking_destination.clear();
         self.booking_consignee.clear();
+        self.booking_consignee_phone.clear();
+        self.booking_consignee_address.clear();
         self.booking_actual_kg.clear();
         self.booking_length_cm.clear();
         self.booking_breadth_cm.clear();
@@ -3338,44 +3383,159 @@ script_mod! {
     let WrapLabel = mod.widgets.WrapLabel{}
 
     // Settings → Sidebar: reorder + show/hide chrome peers.
+    // Settings → Sidebar row: icon+name (drag via nav_drag_ghost) +
+    // pill toggle switch (grey off / brand on, white thumb). Settings/Lock
+    // stay locked on, with an "Always on" caption.
+    let SidebarNavRow = Button{
+        width: Fill height: Fit
+        align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
+        // Right pad clears the in-row pill toggle (and "Always on").
+        padding: Inset{left: 40. right: 110. top: 12. bottom: 12.}
+        label_walk: Walk{
+            width: Fill
+            height: Fit
+            margin: Inset{left: 0. right: 8.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #x072058
+            color_down: #x02030B
+            color_focus: #xffffff
+            color_disabled: #xEEF3F8
+            color_2: #xffffff
+            color_2_hover: #x072058
+            color_2_down: #x02030B
+            color_2_focus: #xffffff
+            border_color: #xA8B4C4
+            border_radius: 12.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x0B1220
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #x0B1220
+            color_disabled: #x8A9AAB
+            text_style +: {font_size: 13.}
+        }
+    }
+    // Transparent hit target over the pill toggle track + thumb.
+    let SidebarToggleHit = Button{
+        width: Fill height: Fill
+        margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+            color_disabled: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x00000000
+            color_2_down: #x00000000
+            color_2_focus: #x00000000
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+            color_disabled: #x00000000
+        }
+    }
     mod.widgets.SidebarNavListBase = #(SidebarNavList::register_widget(vm))
     mod.widgets.SidebarNavList = set_type_default() do mod.widgets.SidebarNavListBase{
         width: Fill height: Fit
         list := PortalList{
             width: Fill height: Fill
-            spacing: 8
+            spacing: 6
             drag_scrolling: false
             bounce_at_start: false
             bounce_at_end: false
             capture_overload: false
             scroll_bar: ScrollBar{bar_size: 0.}
-            Item := RoundedView{
+            Item := View{
                 width: Fill height: Fit
-                padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
-                flow: Down spacing: 8
-                draw_bg.color: #xffffff
-                draw_bg.border_radius: 12.
-                draw_bg.border_size: 1.
-                draw_bg.border_color: #xA8B4C4
-                name := WrapLabel{
-                    selectable: false
-                    body: "Books"
-                    font_color: #x0B1220
-                    font_size: 15.
-                }
-                hint := WrapLabel{
-                    selectable: false
-                    body: " "
-                    font_color: #x3A4554
-                    font_size: 11.
+                flow: Overlay
+                // Full-row card; icon left, pill toggle inside on the right.
+                face := SidebarNavRow{text: "Books"}
+                View{
+                    width: Fit height: 48
+                    align: Align{x: 0.0 y: 0.5}
+                    padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                    // No DSL src — paint_sidebar_settings_icons /
+                    // load_nav_icon_once supply the real WebP.
+                    icon := Image{
+                        width: 22 height: 22
+                        fit: ImageFit.Stretch
+                    }
                 }
                 View{
-                    width: Fill height: Fit
-                    flow: Right spacing: 8
-                    align: Align{y: 0.5}
-                    vis := NavBtn{text: "Shown" width: Fill}
-                    up := QuietFitBtn{text: "↑"}
-                    down := QuietFitBtn{text: "↓"}
+                    width: Fill height: 48
+                    align: Align{x: 1.0 y: 0.5}
+                    padding: Inset{left: 0. right: 10. top: 0. bottom: 0.}
+                    vis_toggle := View{
+                        width: Fit height: Fit
+                        flow: Right
+                        spacing: 8
+                        align: Align{y: 0.5}
+                        always_label := Label{
+                            width: Fit height: Fit
+                            visible: false
+                            text: "Always on"
+                            draw_text.color: #x8A9AAB
+                            draw_text.text_style.font_size: 12.
+                        }
+                        // Pill switch: grey track + left thumb (off) /
+                        // brand track + right thumb (on).
+                        toggle := View{
+                            width: 46 height: 28
+                            flow: Overlay
+                            track_off := RoundedView{
+                                width: Fill height: Fill
+                                draw_bg.color: #xD0D5DD
+                                draw_bg.border_radius: 14.
+                            }
+                            track_on := RoundedView{
+                                width: Fill height: Fill
+                                visible: false
+                                draw_bg.color: #x072058
+                                draw_bg.border_radius: 14.
+                            }
+                            thumb_off := View{
+                                width: Fill height: Fill
+                                align: Align{x: 0.0 y: 0.5}
+                                padding: Inset{left: 3. right: 0. top: 0. bottom: 0.}
+                                RoundedView{
+                                    width: 22 height: 22
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 11.
+                                }
+                            }
+                            thumb_on := View{
+                                width: Fill height: Fill
+                                visible: false
+                                align: Align{x: 1.0 y: 0.5}
+                                padding: Inset{left: 0. right: 3. top: 0. bottom: 0.}
+                                RoundedView{
+                                    width: 22 height: 22
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 11.
+                                }
+                            }
+                            toggle_hit := SidebarToggleHit{text: ""}
+                        }
+                    }
                 }
             }
         }
@@ -5626,6 +5786,31 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
                                         padding: Inset{bottom: 48.}
+                                // Address blocks always on the form (structure
+                                // required); values may stay empty for walk-ins.
+                                // Consignor = customer / sender — same party.
+                                h_booking_consignor := WrapLabel{
+                                    body: "Consignor (customer / sender)"
+                                    font_color: #x0B1220
+                                    font_size: 14.
+                                }
+                                booking_origin_name_input := FieldInput{empty_text: "Sender name"}
+                                booking_origin_phone_input := FieldInput{empty_text: "Sender phone"}
+                                booking_origin_address_input := FieldInput{empty_text: "Pickup / origin address"}
+                                booking_consignor_hint := WrapLabel{
+                                    selectable: false
+                                    body: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
+                                    font_color: #x3A4554
+                                    font_size: 11.
+                                }
+                                h_booking_consignee := WrapLabel{
+                                    body: "Consignee (receiver)"
+                                    font_color: #x0B1220
+                                    font_size: 14.
+                                }
+                                booking_consignee_input := FieldInput{empty_text: "Receiver name"}
+                                booking_consignee_phone_input := FieldInput{empty_text: "Receiver phone"}
+                                booking_consignee_address_input := FieldInput{empty_text: "Delivery address"}
                                 booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
                                 booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
                                 booking_pincode_label := WrapLabel{
@@ -5654,7 +5839,6 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 11.
                                 }
-                                booking_consignee_input := FieldInput{empty_text: "Consignee (receiver)"}
                                 booking_actual_kg_input := FieldInput{empty_text: "Actual kg"}
                                 // Unit choices live on the desk (tap to switch) —
                                 // nobody should have to hunt Settings to weigh
@@ -6901,9 +7085,16 @@ script_mod! {
                                 }
                                 sidebar_settings_help := WrapLabel{
                                     width: Fill
-                                    body: "Change the order of nav items and hide ones you do not use. Settings and Lock always stay on the bar. Drag on the rail also reorders."
+                                    body: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                     font_color: #x3A4554
                                     font_size: 13.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 8
+                                    sidebar_enable_all := NavBtn{text: "Enable All"}
+                                    sidebar_disable_all := NavBtn{text: "Disable All"}
                                 }
                                 sidebar_nav_list := mod.widgets.SidebarNavList{}
                             }
@@ -7610,11 +7801,18 @@ script_mod! {
                             nav_drag_ghost := RoundedView{
                                 visible: false
                                 width: Fit height: Fit
-                                padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+                                flow: Right
+                                spacing: 8
+                                align: Align{x: 0.0 y: 0.5}
+                                padding: Inset{left: 12. right: 16. top: 10. bottom: 10.}
                                 draw_bg.color: #x072058E6
                                 draw_bg.border_radius: 12.
                                 draw_bg.border_color: #x8BB8E8
                                 draw_bg.border_size: 1.
+                                nav_drag_ghost_icon := Image{
+                                    width: 22 height: 22
+                                    fit: ImageFit.Stretch
+                                }
                                 nav_drag_ghost_label := Label{
                                     width: Fit height: Fit
                                     text: ""
@@ -9131,12 +9329,17 @@ impl ReportText {
 struct SidebarNavList {
     #[deref]
     view: View,
+    /// Set by `pointer_sidebar_settings_drag` when a reorder gesture
+    /// went active, so a release does not also toggle show/hide.
+    #[rust]
+    suppress_face_click: bool,
 }
 
 impl Widget for SidebarNavList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        const ROW: f64 = 96.0;
-        const GAP: f64 = 8.0;
+        // Same footprint as a rail TabBtn row (icon 22 + pad).
+        const ROW: f64 = 52.0;
+        const GAP: f64 = 6.0;
         let (order, hidden) = {
             let st = app_state().lock().unwrap();
             (st.nav_order.clone(), st.nav_hidden.clone())
@@ -9146,6 +9349,7 @@ impl Widget for SidebarNavList {
             height: Size::Fixed(height),
             ..walk
         };
+        let mut icons_fresh = false;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 list.set_item_range(cx, 0, order.len());
@@ -9155,13 +9359,12 @@ impl Widget for SidebarNavList {
                     };
                     let item = list.item(cx, item_id, id!(Item));
                     let label = {
-                        // Labels match chrome paint (short names).
                         let lang = app_state().lock().unwrap().locale.language.clone();
                         match tab {
                             NavTab::Books => locale::t(&lang, "books"),
                             NavTab::Sell => locale::t(&lang, "sell"),
                             NavTab::Buy => locale::t(&lang, "buy"),
-                            NavTab::Rates => locale::t(&lang, "items"),
+                            NavTab::Rates => locale::t(&lang, "sidebar_menu_items"),
                             NavTab::Ops => "Ops".into(),
                             NavTab::Cod => "COD".into(),
                             NavTab::Riders => locale::t(&lang, "riders"),
@@ -9178,38 +9381,48 @@ impl Widget for SidebarNavList {
                     };
                     let visible = nav_tab_is_visible(&hidden, tab);
                     let always = nav_tab_always_visible(tab);
-                    let (hint, vis_label) = {
+                    let always_lbl = {
                         let lang = app_state().lock().unwrap().locale.language.clone();
-                        let hint = if always {
-                            locale::t(&lang, "sidebar_always_on")
-                        } else if visible {
-                            locale::t(&lang, "sidebar_shown_hint")
-                        } else {
-                            locale::t(&lang, "sidebar_hidden_hint")
-                        };
-                        let vis_label = if visible {
-                            locale::t(&lang, "sidebar_shown")
-                        } else {
-                            locale::t(&lang, "sidebar_hidden")
-                        };
-                        (hint, vis_label)
+                        locale::t(&lang, "sidebar_always_on_short")
                     };
-                    item.widget(cx, ids!(name)).set_text(cx, &label);
-                    item.widget(cx, ids!(hint)).set_text(cx, &hint);
-                    let vis = item.button(cx, ids!(vis));
-                    vis.set_text(cx, &vis_label);
-                    vis.set_enabled(cx, !always);
-                    item.button(cx, ids!(up)).set_enabled(cx, item_id > 0);
-                    item.button(cx, ids!(down))
-                        .set_enabled(cx, item_id + 1 < order.len());
+                    {
+                        let face = item.button(cx, ids!(face));
+                        face.set_text(cx, &label);
+                        face.set_enabled(cx, true);
+                    }
+                    {
+                        let icon = item.image(cx, ids!(icon));
+                        if load_nav_icon_once(cx, &icon, tab) {
+                            icons_fresh = true;
+                        }
+                    }
+                    let on = visible || always;
+                    item.view(cx, ids!(track_off)).set_visible(cx, !on);
+                    item.view(cx, ids!(track_on)).set_visible(cx, on);
+                    item.view(cx, ids!(thumb_off)).set_visible(cx, !on);
+                    item.view(cx, ids!(thumb_on)).set_visible(cx, on);
+                    {
+                        let hit = item.button(cx, ids!(toggle_hit));
+                        hit.set_enabled(cx, !always);
+                    }
+                    item.label(cx, ids!(always_label)).set_visible(cx, always);
+                    item.label(cx, ids!(always_label)).set_text(cx, &always_lbl);
                     item.draw_all_unscoped(cx);
                 }
             }
+        }
+        // Texture upload from load_image_from_data lands next frame —
+        // without a redraw the rows stay blank (same reason rail icons
+        // are painted from sync_chrome, not only inside draw).
+        if icons_fresh {
+            self.view.redraw(cx);
         }
         DrawStep::done()
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        // Reorder is owned by App::pointer_sidebar_settings_drag (same
+        // ghost chip as the rail). This widget only draws + face taps.
         if page_owns_scroll(event) {
             return;
         }
@@ -9382,7 +9595,9 @@ fn paint_page_title_icon(cx: &mut Cx, ui: &WidgetRef, icon_id: &[LiveId], tab: N
 
 /// Decode a nav WebP into `img` only when the tab (or empty image) changed.
 /// Re-loading + `redraw` on every chrome sync scheduled endless frames.
-fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) {
+/// Returns `true` when bytes were freshly loaded (caller may need a
+/// follow-up redraw so the texture is visible).
+fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) -> bool {
     static LOADED: OnceLock<Mutex<std::collections::HashMap<u64, &'static str>>> = OnceLock::new();
     let loaded = LOADED.get_or_init(|| Mutex::new(std::collections::HashMap::new()));
     let uid = img.widget_uid().0;
@@ -9391,12 +9606,13 @@ fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) {
         let map = loaded.lock().unwrap();
         if map.get(&uid).copied() == Some(key) {
             img.set_visible(cx, true);
-            return;
+            return false;
         }
     }
     let _ = img.load_image_from_data(cx, nav_tab_icon_bytes(tab));
     loaded.lock().unwrap().insert(uid, key);
     img.set_visible(cx, true);
+    true
 }
 
 fn info_help_tooltip_options(widget_rect: Rect) -> CalloutTooltipOptions {
@@ -10185,12 +10401,36 @@ impl App {
             .set_text(cx, &plain_display_text(&session_chip));
         // Booking desk: chargeable kg + last AWB / next-booking CTA.
         {
-            // Pull typed dest/zone/weight so pincode + compare stay current.
+            // Pull typed address/dest/zone/weight so pincode + compare stay current.
             {
                 let mut st = app_state().lock().unwrap();
+                st.booking_origin_name = self
+                    .ui
+                    .text_input(cx, ids!(booking_origin_name_input))
+                    .text();
+                st.booking_origin_phone = self
+                    .ui
+                    .text_input(cx, ids!(booking_origin_phone_input))
+                    .text();
+                st.booking_origin_address = self
+                    .ui
+                    .text_input(cx, ids!(booking_origin_address_input))
+                    .text();
                 st.booking_destination = self
                     .ui
                     .text_input(cx, ids!(booking_destination_input))
+                    .text();
+                st.booking_consignee = self
+                    .ui
+                    .text_input(cx, ids!(booking_consignee_input))
+                    .text();
+                st.booking_consignee_phone = self
+                    .ui
+                    .text_input(cx, ids!(booking_consignee_phone_input))
+                    .text();
+                st.booking_consignee_address = self
+                    .ui
+                    .text_input(cx, ids!(booking_consignee_address_input))
                     .text();
                 st.booking_zone = self.ui.text_input(cx, ids!(booking_zone_input)).text();
                 st.booking_actual_kg =
@@ -12355,6 +12595,9 @@ impl App {
         self.align_label(cx, ids!(h_start_template), rtl);
         self.align_label(cx, ids!(h_your_brand), rtl);
         self.align_label(cx, ids!(h_units_heading), rtl);
+        self.align_label(cx, ids!(h_booking_consignor), rtl);
+        self.align_label(cx, ids!(booking_consignor_hint), rtl);
+        self.align_label(cx, ids!(h_booking_consignee), rtl);
         self.align_label(cx, ids!(h_booking_measures), rtl);
         self.align_label(cx, ids!(h_backup), rtl);
         self.align_label(cx, ids!(h_printers), rtl);
@@ -12470,8 +12713,13 @@ impl App {
         self.align_input(cx, ids!(sale_attach_note), rtl);
         self.align_input(cx, ids!(server_name_input), rtl);
         self.align_input(cx, ids!(venue_title_input), rtl);
+        self.align_input(cx, ids!(booking_origin_name_input), rtl);
+        self.align_input(cx, ids!(booking_origin_phone_input), rtl);
+        self.align_input(cx, ids!(booking_origin_address_input), rtl);
         self.align_input(cx, ids!(booking_destination_input), rtl);
         self.align_input(cx, ids!(booking_consignee_input), rtl);
+        self.align_input(cx, ids!(booking_consignee_phone_input), rtl);
+        self.align_input(cx, ids!(booking_consignee_address_input), rtl);
         self.align_input(cx, ids!(booking_cod_input), rtl);
         self.align_input(cx, ids!(booking_notify_input), rtl);
         self.align_input(cx, ids!(menu_aliases_input), rtl);
@@ -13613,6 +13861,24 @@ impl App {
             .text_input(cx, ids!(onboard_cust_bal))
             .set_empty_text(cx, s("amount_owed_ph"));
         self.ui
+            .widget(cx, ids!(h_booking_consignor))
+            .set_text(cx, &s("booking_consignor_heading"));
+        self.ui
+            .widget(cx, ids!(booking_consignor_hint))
+            .set_text(cx, &s("booking_consignor_hint"));
+        self.ui
+            .widget(cx, ids!(h_booking_consignee))
+            .set_text(cx, &s("booking_consignee_heading"));
+        self.ui
+            .text_input(cx, ids!(booking_origin_name_input))
+            .set_empty_text(cx, s("origin_name_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_origin_phone_input))
+            .set_empty_text(cx, s("origin_phone_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_origin_address_input))
+            .set_empty_text(cx, s("origin_address_ph"));
+        self.ui
             .text_input(cx, ids!(booking_destination_input))
             .set_empty_text(cx, s("destination_ph"));
         self.ui
@@ -13621,6 +13887,12 @@ impl App {
         self.ui
             .text_input(cx, ids!(booking_consignee_input))
             .set_empty_text(cx, s("consignee_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_consignee_phone_input))
+            .set_empty_text(cx, s("consignee_phone_ph"));
+        self.ui
+            .text_input(cx, ids!(booking_consignee_address_input))
+            .set_empty_text(cx, s("consignee_address_ph"));
         self.ui
             .text_input(cx, ids!(booking_cod_input))
             .set_empty_text(cx, s("cod_amount_ph"));
@@ -13908,6 +14180,7 @@ impl App {
             }
         }
         self.paint_nav_icons(cx, &order);
+        self.paint_sidebar_settings_icons(cx);
         self.ui
             .button(cx, ids!(more_items))
             .set_text(cx, &s("items"));
@@ -14132,6 +14405,12 @@ impl App {
         self.ui
             .button(cx, ids!(sidebar_settings_back))
             .set_text(cx, &s("sidebar_back_settings"));
+        self.ui
+            .button(cx, ids!(sidebar_enable_all))
+            .set_text(cx, &s("sidebar_enable_all"));
+        self.ui
+            .button(cx, ids!(sidebar_disable_all))
+            .set_text(cx, &s("sidebar_disable_all"));
         {
             let help = self.ui.widget(cx, ids!(day_close_help)).as_info_help();
             help.set_title(cx, &s("day_close"));
@@ -14588,6 +14867,24 @@ impl App {
                     load_nav_icon_once(cx, &self.ui.image(cx, icon_id), tab);
                 }
             }
+        }
+    }
+
+    /// Settings → Sidebar list icons: same load path as the rail, run
+    /// from chrome sync (outside PortalList draw) so WebP textures are
+    /// ready before the next paint.
+    fn paint_sidebar_settings_icons(&mut self, cx: &mut Cx) {
+        if app_state().lock().unwrap().screen != Screen::SidebarSettings {
+            return;
+        }
+        let order = app_state().lock().unwrap().nav_order.clone();
+        let list = self
+            .ui
+            .widget(cx, ids!(sidebar_nav_list))
+            .portal_list(cx, ids!(list));
+        for (i, tab) in order.iter().enumerate() {
+            let item = list.item(cx, i, id!(Item));
+            load_nav_icon_once(cx, &item.image(cx, ids!(icon)), *tab);
         }
     }
 
@@ -15766,64 +16063,86 @@ impl App {
         }
     }
 
-    /// Settings → Sidebar list: show/hide + move up/down.
+    /// Settings → Sidebar: pill toggles + Enable/Disable All.
     fn handle_sidebar_nav_list_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         if app_state().lock().unwrap().screen != Screen::SidebarSettings {
             return;
         }
+        if self.ui.button(cx, ids!(sidebar_enable_all)).clicked(actions) {
+            self.set_all_sidebar_visibility(cx, true);
+            return;
+        }
+        if self.ui.button(cx, ids!(sidebar_disable_all)).clicked(actions) {
+            self.set_all_sidebar_visibility(cx, false);
+            return;
+        }
         let widget = self.ui.widget(cx, ids!(sidebar_nav_list));
+        // A drag-reorder release over a toggle must not also flip visibility.
+        let suppress = widget
+            .as_sidebar_nav_list()
+            .borrow()
+            .map(|w| w.suppress_face_click)
+            .unwrap_or(false);
+        if suppress {
+            if let Some(mut w) = widget.as_sidebar_nav_list().borrow_mut() {
+                w.suppress_face_click = false;
+            }
+            return;
+        }
         let list = widget.portal_list(cx, ids!(list));
         let order_len = app_state().lock().unwrap().nav_order.len();
-        let mut changed_order = false;
         let mut changed_vis = false;
         for (item_id, item) in list.items_with_actions(actions) {
             if item_id >= order_len {
                 continue;
             }
-            if item.button(cx, ids!(up)).clicked(actions) && item_id > 0 {
-                let mut st = app_state().lock().unwrap();
-                st.nav_order.swap(item_id, item_id - 1);
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                }
-                changed_order = true;
+            if !item.button(cx, ids!(toggle_hit)).clicked(actions) {
+                continue;
             }
-            if item.button(cx, ids!(down)).clicked(actions) && item_id + 1 < order_len {
-                let mut st = app_state().lock().unwrap();
-                st.nav_order.swap(item_id, item_id + 1);
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                }
-                changed_order = true;
+            let mut st = app_state().lock().unwrap();
+            let tab = st.nav_order[item_id];
+            if nav_tab_always_visible(tab) {
+                continue;
             }
-            if item.button(cx, ids!(vis)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                let tab = st.nav_order[item_id];
-                if !nav_tab_always_visible(tab) {
-                    if let Some(i) = st.nav_hidden.iter().position(|t| *t == tab) {
-                        st.nav_hidden.remove(i);
-                    } else {
-                        st.nav_hidden.push(tab);
-                    }
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
-                    }
-                    changed_vis = true;
-                }
+            if let Some(i) = st.nav_hidden.iter().position(|t| *t == tab) {
+                st.nav_hidden.remove(i);
+            } else {
+                st.nav_hidden.push(tab);
             }
+            if let Some(store) = st.store.as_ref() {
+                let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
+            }
+            changed_vis = true;
+            break;
         }
-        if changed_order || changed_vis {
-            let msg = {
-                let st = app_state().lock().unwrap();
-                if changed_order {
-                    st.t("sidebar_order_saved")
-                } else {
-                    st.t("sidebar_visibility_saved")
-                }
-            };
+        if changed_vis {
+            let msg = app_state().lock().unwrap().t("sidebar_visibility_saved");
             self.set_status(cx, msg);
             self.sync_chrome(cx);
         }
+    }
+
+    /// Show or hide every chrome peer that is allowed to toggle
+    /// (Settings and Lock stay on the bar).
+    fn set_all_sidebar_visibility(&mut self, cx: &mut Cx, enable: bool) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.nav_hidden = if enable {
+                Vec::new()
+            } else {
+                NAV_TABS
+                    .iter()
+                    .copied()
+                    .filter(|t| !nav_tab_always_visible(*t))
+                    .collect()
+            };
+            if let Some(store) = st.store.as_ref() {
+                let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
+            }
+        }
+        let msg = app_state().lock().unwrap().t("sidebar_visibility_saved");
+        self.set_status(cx, msg);
+        self.sync_chrome(cx);
     }
 
     /// Display label a nav slot wears for `tab` (same strings as the
@@ -15887,6 +16206,7 @@ impl App {
         self.ui
             .widget(cx, ids!(nav_drag_ghost_label))
             .set_text(cx, &label);
+        load_nav_icon_once(cx, &self.ui.image(cx, ids!(nav_drag_ghost_icon)), tab);
         self.place_nav_ghost(cx, pos);
         self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, true);
         // The ghost lives in a Modal so it paints on the overlay draw
@@ -15900,6 +16220,230 @@ impl App {
         self.ui
             .view(cx, ids!(nav_drag_ghost))
             .set_visible(cx, false);
+    }
+
+    /// Settings → Sidebar list: same ghost-chip drag as the rail/bottom
+    /// bar. Press on a row, move past the threshold → floating chip with
+    /// icon+name; drop on another row to swap. Tap (no move) still
+    /// toggles show/hide via the face button.
+    fn pointer_sidebar_settings_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        match event {
+            Event::MouseDown(e) if e.button.is_primary() => {
+                *settings_nav_drag().lock().unwrap() = None;
+                if app_state().lock().unwrap().screen != Screen::SidebarSettings {
+                    return false;
+                }
+                // Press on the in-row toggle is a flip, not a reorder.
+                if self.sidebar_settings_press_on_toggle(cx, e.abs) {
+                    return false;
+                }
+                if let Some(slot) = self.sidebar_settings_slot_at(cx, e.abs) {
+                    *nav_drag().lock().unwrap() = None;
+                    self.hide_nav_ghost(cx);
+                    let origin = self
+                        .sidebar_settings_row_rect(cx, slot)
+                        .map(|rect| rect.pos)
+                        .unwrap_or(e.abs);
+                    let scroll = self
+                        .ui
+                        .view(cx, ids!(sidebar_settings_screen))
+                        .get_scroll_pos();
+                    let n = app_state().lock().unwrap().nav_order.len();
+                    let mut rects = Vec::with_capacity(n);
+                    for i in 0..n {
+                        let mut found = Rect::default();
+                        if let Some(rect) = self.sidebar_settings_row_rect(cx, i) {
+                            found = Rect {
+                                pos: DVec2 {
+                                    x: rect.pos.x + scroll.x,
+                                    y: rect.pos.y + scroll.y,
+                                },
+                                size: rect.size,
+                            };
+                        }
+                        rects.push(found);
+                    }
+                    *settings_nav_drag().lock().unwrap() = Some(SettingsNavDrag {
+                        slot,
+                        start: e.abs,
+                        last: e.abs,
+                        origin,
+                        rects,
+                        active: false,
+                        hover: Some(slot),
+                    });
+                }
+                false
+            }
+            Event::MouseMove(e) => {
+                let mut active = false;
+                let mut ghost: Option<(bool, NavTab, DVec2)> = None;
+                let mut suppress_list = false;
+                {
+                    let mut guard = settings_nav_drag().lock().unwrap();
+                    if let Some(d) = guard.as_mut() {
+                        let was_active = d.active;
+                        if !d.active && (e.abs - d.start).length() > 10.0 {
+                            d.active = true;
+                            suppress_list = true;
+                        }
+                        if d.active {
+                            active = true;
+                            d.last = e.abs;
+                            d.hover = self.sidebar_settings_drop_slot(cx, d, e.abs);
+                            let tab = {
+                                app_state()
+                                    .lock()
+                                    .unwrap()
+                                    .nav_order
+                                    .get(d.slot)
+                                    .copied()
+                            };
+                            if let Some(tab) = tab {
+                                ghost = Some((!was_active, tab, d.origin + (e.abs - d.start)));
+                            }
+                        }
+                    }
+                }
+                if suppress_list {
+                    let widget = self.ui.widget(cx, ids!(sidebar_nav_list));
+                    if let Some(mut w) = widget.as_sidebar_nav_list().borrow_mut() {
+                        w.suppress_face_click = true;
+                    }
+                }
+                if active {
+                    cx.set_cursor(MouseCursor::Grabbing);
+                }
+                if let Some((first, tab, pos)) = ghost {
+                    if first {
+                        self.show_nav_ghost(cx, tab, pos);
+                    } else {
+                        self.place_nav_ghost(cx, pos);
+                    }
+                }
+                active
+            }
+            Event::MouseUp(e) if e.button.is_primary() => {
+                let taken = { settings_nav_drag().lock().unwrap().take() };
+                if let Some(d) = taken {
+                    self.hide_nav_ghost(cx);
+                    if d.active {
+                        cx.set_cursor(MouseCursor::Default);
+                        let swapped = match d.hover {
+                            Some(target) if target != d.slot => {
+                                let mut st = app_state().lock().unwrap();
+                                if d.slot < st.nav_order.len() && target < st.nav_order.len() {
+                                    st.nav_order.swap(d.slot, target);
+                                    if let Some(store) = st.store.as_ref() {
+                                        let _ =
+                                            store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
+                                    }
+                                    true
+                                } else {
+                                    false
+                                }
+                            }
+                            _ => false,
+                        };
+                        if swapped {
+                            let msg = app_state().lock().unwrap().t("sidebar_order_saved");
+                            self.set_status(cx, msg);
+                            self.sync_chrome(cx);
+                        }
+                        return true;
+                    }
+                }
+                false
+            }
+            _ => false,
+        }
+    }
+
+    fn sidebar_settings_row_rect(&mut self, cx: &mut Cx, index: usize) -> Option<Rect> {
+        let list = self
+            .ui
+            .widget(cx, ids!(sidebar_nav_list))
+            .portal_list(cx, ids!(list));
+        let item = list.item(cx, index, id!(Item));
+        let rect = item.button(cx, ids!(face)).area().rect(cx);
+        if rect.size.x > 0.0 && rect.size.y > 0.0 {
+            Some(rect)
+        } else {
+            None
+        }
+    }
+
+    fn sidebar_settings_press_on_toggle(&mut self, cx: &mut Cx, abs: DVec2) -> bool {
+        let list = self
+            .ui
+            .widget(cx, ids!(sidebar_nav_list))
+            .portal_list(cx, ids!(list));
+        let n = app_state().lock().unwrap().nav_order.len();
+        for i in 0..n {
+            let item = list.item(cx, i, id!(Item));
+            let rect = item.button(cx, ids!(toggle_hit)).area().rect(cx);
+            if rect.size.x > 0.0 && rect.size.y > 0.0 && rect.contains(abs) {
+                return true;
+            }
+        }
+        false
+    }
+
+    fn sidebar_settings_slot_at(&mut self, cx: &mut Cx, abs: DVec2) -> Option<usize> {
+        let n = app_state().lock().unwrap().nav_order.len();
+        for i in 0..n {
+            if let Some(rect) = self.sidebar_settings_row_rect(cx, i) {
+                if rect.contains(abs) {
+                    return Some(i);
+                }
+            }
+        }
+        None
+    }
+
+    fn sidebar_settings_drop_slot(
+        &mut self,
+        cx: &mut Cx,
+        drag: &SettingsNavDrag,
+        pos: DVec2,
+    ) -> Option<usize> {
+        let scroll = self
+            .ui
+            .view(cx, ids!(sidebar_settings_screen))
+            .get_scroll_pos();
+        let pos = DVec2 {
+            x: pos.x + scroll.x,
+            y: pos.y + scroll.y,
+        };
+        let mut first_rect: Option<Rect> = None;
+        let mut last_rect: Option<Rect> = None;
+        for (slot, rect) in drag.rects.iter().enumerate() {
+            if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
+                continue;
+            }
+            if first_rect.is_none() {
+                first_rect = Some(*rect);
+            }
+            last_rect = Some(*rect);
+            let hit = pos.x >= rect.pos.x - 2.0
+                && pos.x <= rect.pos.x + rect.size.x + 2.0
+                && pos.y >= rect.pos.y - 5.0
+                && pos.y <= rect.pos.y + rect.size.y + 5.0;
+            if hit {
+                return Some(slot);
+            }
+        }
+        if let (Some(first), Some(last)) = (first_rect, last_rect) {
+            let last_slot = drag.rects.len() - 1;
+            let in_band = pos.x >= first.pos.x - 28.0 && pos.x <= first.pos.x + first.size.x + 28.0;
+            if in_band && pos.y >= last.pos.y + last.size.y {
+                return Some(last_slot);
+            }
+            if in_band && pos.y <= first.pos.y {
+                return Some(0);
+            }
+        }
+        None
     }
 
     /// Drag a sidebar / bottom-bar item onto another one to swap them.
@@ -15917,10 +16461,16 @@ impl App {
         match event {
             Event::MouseDown(e) if e.button.is_primary() => {
                 *nav_drag().lock().unwrap() = None;
+                // Do not clear settings_nav_drag here — that peek runs
+                // first and may have just armed a press on the list.
                 // A fresh press starts a fresh gesture — never let a
                 // leftover scroll-suppression eat this tap.
                 *nav_suppress_click().lock().unwrap() = false;
-                self.hide_nav_ghost(cx);
+                // Only hide the ghost when this press is not already a
+                // settings-list arm (otherwise we'd flash the chip away).
+                if settings_nav_drag().lock().unwrap().is_none() {
+                    self.hide_nav_ghost(cx);
+                }
                 let unlocked = {
                     let st = app_state().lock().unwrap();
                     !matches!(
@@ -15948,6 +16498,8 @@ impl App {
                     }
                 }
                 if let Some(slot) = self.nav_slot_at(cx, rail, e.abs, 0.0, 0.0) {
+                    *settings_nav_drag().lock().unwrap() = None;
+                    self.hide_nav_ghost(cx);
                     let origin = self
                         .nav_slot_rect(cx, rail, slot)
                         .map(|rect| rect.pos)
@@ -17090,12 +17642,32 @@ impl App {
 
     fn sync_booking_desk_from_ui(&mut self, cx: &mut Cx) {
         let mut st = app_state().lock().unwrap();
+        st.booking_origin_name = self
+            .ui
+            .text_input(cx, ids!(booking_origin_name_input))
+            .text();
+        st.booking_origin_phone = self
+            .ui
+            .text_input(cx, ids!(booking_origin_phone_input))
+            .text();
+        st.booking_origin_address = self
+            .ui
+            .text_input(cx, ids!(booking_origin_address_input))
+            .text();
         st.booking_destination = self
             .ui
             .text_input(cx, ids!(booking_destination_input))
             .text();
         st.booking_zone = self.ui.text_input(cx, ids!(booking_zone_input)).text();
         st.booking_consignee = self.ui.text_input(cx, ids!(booking_consignee_input)).text();
+        st.booking_consignee_phone = self
+            .ui
+            .text_input(cx, ids!(booking_consignee_phone_input))
+            .text();
+        st.booking_consignee_address = self
+            .ui
+            .text_input(cx, ids!(booking_consignee_address_input))
+            .text();
         st.booking_actual_kg = self.ui.text_input(cx, ids!(booking_actual_kg_input)).text();
         st.booking_length_cm = self.ui.text_input(cx, ids!(booking_length_cm_input)).text();
         st.booking_breadth_cm = self
@@ -17183,9 +17755,14 @@ impl App {
 
     fn clear_booking_desk_ui(&mut self, cx: &mut Cx) {
         for id in [
+            ids!(booking_origin_name_input),
+            ids!(booking_origin_phone_input),
+            ids!(booking_origin_address_input),
             ids!(booking_destination_input),
             ids!(booking_zone_input),
             ids!(booking_consignee_input),
+            ids!(booking_consignee_phone_input),
+            ids!(booking_consignee_address_input),
             ids!(booking_actual_kg_input),
             ids!(booking_length_cm_input),
             ids!(booking_breadth_cm_input),
@@ -17201,6 +17778,34 @@ impl App {
             ids!(booking_notify_input),
         ] {
             self.ui.text_input(cx, id).set_text(cx, "");
+        }
+    }
+
+    /// Party = consignor / customer / sender. Fill desk FROM fields; leave
+    /// blank cells alone when the party record has no phone/address yet.
+    fn fill_booking_consignor_from_party(&mut self, cx: &mut Cx, party: &domain::Customer) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.booking_origin_name = party.name.clone();
+            if !party.phone.trim().is_empty() {
+                st.booking_origin_phone = party.phone.clone();
+            }
+            if !party.address.trim().is_empty() {
+                st.booking_origin_address = party.address.clone();
+            }
+        }
+        self.ui
+            .text_input(cx, ids!(booking_origin_name_input))
+            .set_text(cx, &party.name);
+        if !party.phone.trim().is_empty() {
+            self.ui
+                .text_input(cx, ids!(booking_origin_phone_input))
+                .set_text(cx, &party.phone);
+        }
+        if !party.address.trim().is_empty() {
+            self.ui
+                .text_input(cx, ids!(booking_origin_address_input))
+                .set_text(cx, &party.address);
         }
     }
 
@@ -19151,6 +19756,11 @@ impl MatchEvent for App {
             });
         }
         self.handle_sidebar_nav_list_actions(cx, actions);
+        if std::mem::take(&mut *sidebar_order_dirty().lock().unwrap()) {
+            let msg = app_state().lock().unwrap().t("sidebar_order_saved");
+            self.set_status(cx, msg);
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(amounts_eye)).clicked(actions) {
             self.toggle_amounts_screen(cx);
         }
@@ -19978,7 +20588,7 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(customer_use)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(customer_name_input)).text();
-            let result = (|| -> Result<(), String> {
+            let result = (|| -> Result<Option<domain::Customer>, String> {
                 let mut st = app_state().lock().unwrap();
                 // The Server owns the customer book; a Client picks from what
                 // sync brought down so both ends agree on the id.
@@ -19992,19 +20602,21 @@ impl MatchEvent for App {
                         .ok_or_else(|| {
                             "No such customer here — add them on the Server, then Sync".to_string()
                         })?;
-                    st.selected_customer_id = Some(customer.id);
-                    st.status = format!("Credit customer: {}", customer.name);
-                    return Ok(());
+                    st.selected_customer_id = Some(customer.id.clone());
+                    st.status = format!("Consignor: {}", customer.name);
+                    return Ok(Some(customer));
                 }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 let customer = store.find_or_create_customer(&name)?;
                 st.selected_customer_id = Some(customer.id.clone());
-                st.status = format!("Credit customer: {}", customer.name);
+                st.status = format!("Consignor: {}", customer.name);
                 st.reload_all()?;
-                Ok(())
+                Ok(Some(customer))
             })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
+            match result {
+                Ok(Some(customer)) => self.fill_booking_consignor_from_party(cx, &customer),
+                Err(e) => self.set_status(cx, e),
+                Ok(None) => {}
             }
             self.sync_chrome(cx);
         }
@@ -20493,7 +21105,7 @@ impl MatchEvent for App {
                         let picked = st.customers.get(item_id).cloned();
                         if let Some(c) = &picked {
                             st.selected_customer_id = Some(c.id.clone());
-                            st.status = format!("Credit customer: {}", c.name);
+                            st.status = format!("Consignor: {}", c.name);
                         }
                         picked
                     };
@@ -20516,6 +21128,8 @@ impl MatchEvent for App {
                             } else {
                                 Some(c.image_key.clone())
                             };
+                        // Same party is the booking consignor / sender.
+                        self.fill_booking_consignor_from_party(cx, &c);
                     }
                     self.sync_chrome(cx);
                 }
@@ -23599,6 +24213,9 @@ impl AppMain for App {
             if accordion_ours {
                 self.tick_books_accordion(cx);
             }
+        }
+        if self.pointer_sidebar_settings_drag(cx, event) {
+            return;
         }
         if self.pointer_nav_drag(cx, event) {
             return;

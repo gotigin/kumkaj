@@ -1644,7 +1644,12 @@ impl Cart {
             user_at: None,
             awb_no: String::new(),
             destination: String::new(),
+            origin_name: String::new(),
+            origin_phone: String::new(),
+            origin_address: String::new(),
             consignee_name: String::new(),
+            consignee_phone: String::new(),
+            consignee_address: String::new(),
             actual_weight_kg: rust_decimal::Decimal::ZERO,
             volumetric_weight_kg: rust_decimal::Decimal::ZERO,
             chargeable_weight_kg: rust_decimal::Decimal::ZERO,
@@ -1710,12 +1715,23 @@ pub struct SaleDraft {
     /// AWB / CN — filled by the store at finalize when empty.
     #[serde(default)]
     pub awb_no: String,
-    /// Destination city / zone text from the booking desk.
+    /// Destination city / zone text from the booking desk (rating / route).
     #[serde(default)]
     pub destination: String,
+    /// Consignor = customer / sender. Snapshot at booking (may be blank).
+    #[serde(default)]
+    pub origin_name: String,
+    #[serde(default)]
+    pub origin_phone: String,
+    #[serde(default)]
+    pub origin_address: String,
     /// Consignee (receiver) name — usually not the paying party.
     #[serde(default)]
     pub consignee_name: String,
+    #[serde(default)]
+    pub consignee_phone: String,
+    #[serde(default)]
+    pub consignee_address: String,
     #[serde(default)]
     pub actual_weight_kg: rust_decimal::Decimal,
     #[serde(default)]
@@ -1839,8 +1855,19 @@ pub struct Sale {
     pub awb_no: String,
     #[serde(default)]
     pub destination: String,
+    /// Consignor / customer / sender snapshot (blank OK for walk-ins).
+    #[serde(default)]
+    pub origin_name: String,
+    #[serde(default)]
+    pub origin_phone: String,
+    #[serde(default)]
+    pub origin_address: String,
     #[serde(default)]
     pub consignee_name: String,
+    #[serde(default)]
+    pub consignee_phone: String,
+    #[serde(default)]
+    pub consignee_address: String,
     #[serde(default)]
     pub actual_weight_kg: rust_decimal::Decimal,
     #[serde(default)]

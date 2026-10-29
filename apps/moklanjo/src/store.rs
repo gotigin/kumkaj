@@ -457,6 +457,13 @@ impl Store {
             "ALTER TABLE sales ADD COLUMN attempt_count INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE sales ADD COLUMN ndr_reason TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE sales ADD COLUMN next_attempt_at TEXT NOT NULL DEFAULT ''",
+            // Consignor (= customer) + consignee address blocks snapshotted
+            // at booking. Form always shows them; values may stay empty.
+            "ALTER TABLE sales ADD COLUMN origin_name TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN origin_phone TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN origin_address TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN consignee_phone TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE sales ADD COLUMN consignee_address TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE products ADD COLUMN zone_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE products ADD COLUMN first_kg TEXT NOT NULL DEFAULT '0'",
             "ALTER TABLE products ADD COLUMN first_paise INTEGER NOT NULL DEFAULT 0",
@@ -5953,7 +5960,29 @@ impl Store {
         // hand the same number to two bills.
         let invoice_no = reserve_invoice_no(&tx, &branch_code)?;
         let destination = draft.destination.trim().to_string();
+        // Consignor = customer. Prefer draft snapshot; if name blank but a
+        // party was selected, fill name from the party so labels still say who.
+        let mut origin_name = draft.origin_name.trim().to_string();
+        let mut origin_phone = draft.origin_phone.trim().to_string();
+        let mut origin_address = draft.origin_address.trim().to_string();
+        if let Some(cid) = customer_id {
+            if !cid.trim().is_empty() {
+                if let Ok(Some(c)) = self.get_customer(cid) {
+                    if origin_name.is_empty() {
+                        origin_name = c.name.trim().to_string();
+                    }
+                    if origin_phone.is_empty() {
+                        origin_phone = c.phone.trim().to_string();
+                    }
+                    if origin_address.is_empty() {
+                        origin_address = c.address.trim().to_string();
+                    }
+                }
+            }
+        }
         let consignee_name = draft.consignee_name.trim().to_string();
+        let consignee_phone = draft.consignee_phone.trim().to_string();
+        let consignee_address = draft.consignee_address.trim().to_string();
         let actual_weight_kg = draft.actual_weight_kg;
         let volumetric_weight_kg = draft.volumetric_weight_kg;
         let chargeable_weight_kg = draft.chargeable_weight_kg;
@@ -5980,9 +6009,11 @@ impl Store {
                 actual_weight_kg, volumetric_weight_kg, chargeable_weight_kg, tracking_status,
                 zone_id, cod_paise, carrier_cost_paise, extras_json,
                 declared_value_paise, insurance, contents, eway_bill_no,
-                attempt_count, ndr_reason, next_attempt_at, piece_count
+                attempt_count, ndr_reason, next_attempt_at, piece_count,
+                origin_name, origin_phone, origin_address,
+                consignee_phone, consignee_address
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34, 0, '', '', ?35)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, 'booked', ?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34, 0, '', '', ?35, ?36, ?37, ?38, ?39, ?40)",
             params![
                 sale_id,
                 created_at,
@@ -6018,7 +6049,12 @@ impl Store {
                 insurance,
                 contents,
                 eway_bill_no,
-                draft.piece_count.max(1)
+                draft.piece_count.max(1),
+                origin_name,
+                origin_phone,
+                origin_address,
+                consignee_phone,
+                consignee_address
             ],
         )
         .map_err(|e| e.to_string())?;
@@ -6298,7 +6334,12 @@ impl Store {
             money_lane: draft.money_lane.as_str().into(),
             awb_no,
             destination,
+            origin_name,
+            origin_phone,
+            origin_address,
             consignee_name,
+            consignee_phone,
+            consignee_address,
             actual_weight_kg,
             volumetric_weight_kg,
             chargeable_weight_kg,
@@ -6544,7 +6585,12 @@ impl Store {
             money_lane: draft.money_lane.as_str().into(),
             awb_no: previous.awb_no,
             destination: previous.destination,
+            origin_name: previous.origin_name,
+            origin_phone: previous.origin_phone,
+            origin_address: previous.origin_address,
             consignee_name: previous.consignee_name,
+            consignee_phone: previous.consignee_phone,
+            consignee_address: previous.consignee_address,
             actual_weight_kg: previous.actual_weight_kg,
             volumetric_weight_kg: previous.volumetric_weight_kg,
             chargeable_weight_kg: previous.chargeable_weight_kg,
@@ -10618,12 +10664,33 @@ impl Store {
             return Err("Sale has no AWB".into());
         }
         let agency = self.venue_title().unwrap_or_default();
-        let from = sale
-            .customer_id
-            .as_ref()
-            .and_then(|id| self.get_customer(id).ok().flatten())
-            .map(|c| c.name)
-            .unwrap_or_else(|| "Walk-in".into());
+        // Prefer snapshotted consignor; fall back to live party, then Walk-in.
+        let (from_name, from_phone, from_address) = {
+            let mut name = sale.origin_name.trim().to_string();
+            let mut phone = sale.origin_phone.trim().to_string();
+            let mut address = sale.origin_address.trim().to_string();
+            if name.is_empty() || phone.is_empty() || address.is_empty() {
+                if let Some(c) = sale
+                    .customer_id
+                    .as_ref()
+                    .and_then(|id| self.get_customer(id).ok().flatten())
+                {
+                    if name.is_empty() {
+                        name = c.name.trim().to_string();
+                    }
+                    if phone.is_empty() {
+                        phone = c.phone.trim().to_string();
+                    }
+                    if address.is_empty() {
+                        address = c.address.trim().to_string();
+                    }
+                }
+            }
+            if name.is_empty() {
+                name = "Walk-in".into();
+            }
+            (name, phone, address)
+        };
         let service = sale
             .lines
             .first()
@@ -10635,11 +10702,15 @@ impl Store {
             .unwrap_or_else(|_| "INR".into());
         Ok(crate::labels::AwbLabel {
             awb_no: sale.awb_no.clone(),
-            from_name: from,
+            from_name,
+            from_phone,
+            from_address,
             to_name: sale.consignee_name.clone(),
+            to_phone: sale.consignee_phone.clone(),
+            to_address: sale.consignee_address.clone(),
             destination: sale.destination.clone(),
             weight_kg: sale.chargeable_weight_kg,
-            pieces: 1,
+            pieces: sale.piece_count.max(1),
             service,
             cod_paise: sale.cod_paise,
             agency_name: if agency.trim().is_empty() {
@@ -10833,7 +10904,9 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(attempt_count, 0), COALESCE(ndr_reason, ''),
      COALESCE(next_attempt_at, ''),
      COALESCE(feedback_score, 0), COALESCE(area, ''), COALESCE(dest_pincode, ''),
-     COALESCE(piece_count, 1)";
+     COALESCE(piece_count, 1),
+     COALESCE(origin_name, ''), COALESCE(origin_phone, ''), COALESCE(origin_address, ''),
+     COALESCE(consignee_phone, ''), COALESCE(consignee_address, '')";
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -11153,6 +11226,11 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         area: row.get(45)?,
         dest_pincode: row.get(46)?,
         piece_count: row.get::<_, i64>(47).unwrap_or(1).max(1),
+        origin_name: row.get(48).unwrap_or_default(),
+        origin_phone: row.get(49).unwrap_or_default(),
+        origin_address: row.get(50).unwrap_or_default(),
+        consignee_phone: row.get(51).unwrap_or_default(),
+        consignee_address: row.get(52).unwrap_or_default(),
         lines: Vec::new(),
     })
 }

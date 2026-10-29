@@ -27,7 +27,11 @@ impl fmt::Display for DocketSize {
 pub struct AwbLabel {
     pub awb_no: String,
     pub from_name: String,
+    pub from_phone: String,
+    pub from_address: String,
     pub to_name: String,
+    pub to_phone: String,
+    pub to_address: String,
     pub destination: String,
     pub weight_kg: rust_decimal::Decimal,
     pub pieces: i64,
@@ -48,7 +52,11 @@ impl AwbLabel {
         let awb = xml_escape(&self.awb_no);
         let agency = xml_escape(&self.agency_name);
         let from = xml_escape(&self.from_name);
+        let from_phone = xml_escape(self.from_phone.trim());
+        let from_addr = xml_escape(self.from_address.trim());
         let to = xml_escape(&self.to_name);
+        let to_phone = xml_escape(self.to_phone.trim());
+        let to_addr = xml_escape(self.to_address.trim());
         let dest = xml_escape(&self.destination);
         let service = xml_escape(&self.service);
         let weight = format!("{} kg", crate::precise::format_kg(self.weight_kg));
@@ -100,14 +108,18 @@ impl AwbLabel {
   {bars}
   <text x="192" y="300" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="14">*{awb}*</text>
   <line x1="24" y1="320" x2="360" y2="320" stroke="#111" stroke-width="1"/>
-  <text x="24" y="348" font-family="DejaVu Sans, Arial, sans-serif" font-size="12">FROM</text>
-  <text x="24" y="370" font-family="DejaVu Sans, Arial, sans-serif" font-size="16">{from}</text>
-  <text x="24" y="404" font-family="DejaVu Sans, Arial, sans-serif" font-size="12">TO</text>
-  <text x="24" y="426" font-family="DejaVu Sans, Arial, sans-serif" font-size="16">{to}</text>
-  <text x="24" y="452" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">{dest}</text>
-  <text x="24" y="480" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">{weight} · {pieces} pc · {service}</text>
-  <text x="24" y="508" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700">{cod}</text>
-  <text x="24" y="536" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">{extras}</text>
+  <text x="24" y="340" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">FROM (consignor)</text>
+  <text x="24" y="360" font-family="DejaVu Sans, Arial, sans-serif" font-size="15">{from}</text>
+  <text x="24" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">{from_phone}</text>
+  <text x="24" y="396" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">{from_addr}</text>
+  <text x="24" y="422" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">TO (consignee)</text>
+  <text x="24" y="442" font-family="DejaVu Sans, Arial, sans-serif" font-size="15">{to}</text>
+  <text x="24" y="460" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">{to_phone}</text>
+  <text x="24" y="478" font-family="DejaVu Sans, Arial, sans-serif" font-size="11">{to_addr}</text>
+  <text x="24" y="500" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">{dest}</text>
+  <text x="24" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="12">{weight} · {pieces} pc · {service}</text>
+  <text x="24" y="544" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">{cod}</text>
+  <text x="24" y="564" font-family="DejaVu Sans, Arial, sans-serif" font-size="10">{extras}</text>
 </svg>
 "##
         )
@@ -140,24 +152,38 @@ impl AwbLabel {
         out.push_str(&format!("{weight} · {pieces} pc\n"));
         out.push_str(&rule);
         out.push('\n');
-        out.push_str("CONSIGNOR\n");
+        out.push_str("CONSIGNOR (customer / sender)\n");
         out.push_str(if self.from_name.trim().is_empty() {
-            "(sender)\n"
+            "(sender)"
         } else {
             self.from_name.trim()
         });
-        if !self.from_name.trim().is_empty() {
+        out.push('\n');
+        if !self.from_phone.trim().is_empty() {
+            out.push_str(self.from_phone.trim());
+            out.push('\n');
+        }
+        if !self.from_address.trim().is_empty() {
+            out.push_str(self.from_address.trim());
             out.push('\n');
         }
         out.push_str(&rule);
         out.push('\n');
-        out.push_str("CONSIGNEE\n");
+        out.push_str("CONSIGNEE (receiver)\n");
         out.push_str(if self.to_name.trim().is_empty() {
             "(receiver)"
         } else {
             self.to_name.trim()
         });
         out.push('\n');
+        if !self.to_phone.trim().is_empty() {
+            out.push_str(self.to_phone.trim());
+            out.push('\n');
+        }
+        if !self.to_address.trim().is_empty() {
+            out.push_str(self.to_address.trim());
+            out.push('\n');
+        }
         if !self.destination.trim().is_empty() {
             out.push_str(self.destination.trim());
             out.push('\n');
@@ -227,12 +253,28 @@ impl AwbLabel {
         out.push_str(&self.awb_no);
         out.push('\n');
         out.push_str("--------------------------------\n");
-        out.push_str("FROM\n");
+        out.push_str("FROM (consignor)\n");
         out.push_str(&self.from_name);
         out.push('\n');
-        out.push_str("TO\n");
+        if !self.from_phone.trim().is_empty() {
+            out.push_str(self.from_phone.trim());
+            out.push('\n');
+        }
+        if !self.from_address.trim().is_empty() {
+            out.push_str(self.from_address.trim());
+            out.push('\n');
+        }
+        out.push_str("TO (consignee)\n");
         out.push_str(&self.to_name);
         out.push('\n');
+        if !self.to_phone.trim().is_empty() {
+            out.push_str(self.to_phone.trim());
+            out.push('\n');
+        }
+        if !self.to_address.trim().is_empty() {
+            out.push_str(self.to_address.trim());
+            out.push('\n');
+        }
         out.push_str(&self.destination);
         out.push('\n');
         out.push_str(&format!("{weight} · {pieces} pc · {}\n", self.service));
@@ -311,7 +353,11 @@ mod tests {
         let label = AwbLabel {
             awb_no: "AWB-260417-000001".into(),
             from_name: "Acme".into(),
+            from_phone: "9876543210".into(),
+            from_address: "Shop 12, MG Road".into(),
             to_name: "Bob".into(),
+            to_phone: String::new(),
+            to_address: String::new(),
             destination: "Pune".into(),
             weight_kg: "2.5".parse().unwrap(),
             pieces: 1,
@@ -335,7 +381,11 @@ mod tests {
         let label = AwbLabel {
             awb_no: "AWB-9".into(),
             from_name: "Sender Co".into(),
+            from_phone: String::new(),
+            from_address: "Lane 4".into(),
             to_name: "Priya Receiver".into(),
+            to_phone: String::new(),
+            to_address: String::new(),
             destination: "Pune 411001".into(),
             weight_kg: "1".parse().unwrap(),
             pieces: 1,
