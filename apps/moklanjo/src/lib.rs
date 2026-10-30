@@ -32,6 +32,7 @@ pub mod rates;
 pub mod rider_mode;
 pub mod startup;
 pub mod store;
+pub mod suggest;
 pub mod thumbs;
 pub mod track;
 pub mod uninstall_wipe;

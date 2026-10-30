@@ -884,6 +884,46 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 7. Branches: create a second local server in Server Mode; export a day snapshot from each, import it on the owner's device, open the roll-up
 8. Extra till: pair IP + code after the shop allows extra tills → book against the shop
 
+### Amount visibility (screen eye vs per-figure)
+
+Both apps (`apps/moklanjo/src/main.rs`, `apps/khaynjo/src/main.rs`) share the same
+rules — duplicated per app, not a shared crate.
+
+**Screen icon vs per-figure eyes**
+
+1. **Screen icon HIDDEN** (`amounts_screen_hidden`, session-only) → all crucial
+   money **values** are hidden by default. An individual figure’s eye may
+   temporarily **peek** that one value (`amount_keys_peek`, session-only).
+   Labels, headings, placeholders, counts, and prose stay visible — never
+   bullet them.
+2. **Screen icon VISIBLE** → each figure uses its **own** persisted hide state
+   (`amount_keys_hidden`). Per-figure eye toggles membership in that list.
+   Screen eye does **not** force everything visible; it means “apply individual
+   state.”
+
+Encoded by `amount_key_visible(screen_hidden, keys_hidden, keys_peek, key)`:
+
+- screen hidden → `true` only if `key` is in `keys_peek`
+- screen visible → `true` unless `key` is in `keys_hidden`
+
+**What may be masked**
+
+- Only money **values**. Call sites must not put labels or composite prose
+  through `display_sensitive` / `mask_sensitive_text` / `display_money` /
+  `mask_money_tokens`.
+- `paint_amount_value` is the canonical path for discrete figures (books home
+  slots, etc.): it paints the value widget via `display_money` and the eye
+  glyph from `amount_key_visible`, leaving the label widget alone.
+- Composite strips (`today_label`, credit/floor summaries) format words and
+  counts in the clear and pass only money slots through `display_money`.
+- Day close / reports blobs use one key (`"day_close"` / `"reports"`) for
+  whether money is masked, via `apply_amount_visibility`: Kv **values** that
+  look like money (and money tokens inside Line/Sub) are masked; keys,
+  Head rows, digit-free heading lines, and trailing `(N)` counts stay readable.
+  Report structure is never erased.
+
+Toggles: `toggle_amounts_screen`, `toggle_amount_key`.
+
 ## Schema
 
 Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder).

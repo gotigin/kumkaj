@@ -12,12 +12,13 @@ pub use makepad_widgets;
 #[cfg(target_os = "android")]
 use crate::{
     booking, courier_ops_view, domain, entity_template, fiscal, local_servers, locale, menu_images,
-    net, notify, phone, precise, print_share, rates, startup, store, thumbs,
+    net, notify, phone, precise, print_share, rates, startup, store, suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
     booking, courier_ops_view, domain, entity_template, fiscal, local_servers, locale, menu_images,
-    net, notify, phone, precise, print_share, rates, startup, store, thumbs, uninstall_wipe,
+    net, notify, phone, precise, print_share, rates, startup, store, suggest, thumbs,
+    uninstall_wipe,
 };
 
 use domain::{
@@ -463,6 +464,8 @@ struct AppState {
     money_lane: MoneyLane,
     /// Buy tab: purchase posts to AP when true.
     buy_on_account: bool,
+    /// Buy tab: kind for a new party when recording on account (Supplier / Carrier).
+    buy_party_kind: String,
     day_close_text: String,
     /// Inventory screen body (low stock + recent movements).
     ops_panel_text: String,
@@ -501,10 +504,14 @@ struct AppState {
     nav_order: Vec<NavTab>,
     /// Chrome peers hidden from rail / bottom bar (Settings + Lock stay shown).
     nav_hidden: Vec<NavTab>,
-    /// Session-only: top eye hides every amount on screen (not persisted).
+    /// Session-only: top eye hides every amount by default (not persisted).
     amounts_screen_hidden: bool,
-    /// Individual amount keys the owner hid (persisted). Top eye still overrides.
+    /// Individual amount keys the owner hid while the screen eye is showing
+    /// (persisted). When the screen eye is hiding, use [`amount_keys_peek`].
     amount_keys_hidden: Vec<String>,
+    /// Session-only: keys revealed while the screen eye is hiding — so a
+    /// per-figure eye can still show one amount without clearing the screen.
+    amount_keys_peek: Vec<String>,
     /// Books home accordion: which section bodies are open (`today`, `bookings`, …).
     books_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).
@@ -516,6 +523,8 @@ struct AppState {
     draft_image_key: Option<String>,
     /// Pending party logo (`pending_custom:…` / `custom:…`) before Add/Save.
     draft_party_image_key: Option<String>,
+    /// Country typed/picked on the party address form (drives state suggestions).
+    party_form_country: String,
     /// Desk scope: false = Domestic (shop divisor, usually ÷5000);
     /// true = International (÷6000 air). Does not rewrite Settings.
     booking_scope_international: bool,
@@ -537,7 +546,8 @@ struct AppState {
     booking_declared: String,
     booking_contents: String,
     booking_eway: String,
-    booking_insurance: String,
+    /// Booking desk: parcel is insured (SegBtn Yes/No — not free text).
+    booking_insurance: bool,
     booking_notify_phone: String,
     booking_fuel: String,
     booking_docket: String,
@@ -596,6 +606,11 @@ struct AppState {
     reports_nav: ReportsNav,
     /// Which bank-books report chip is selected (must match `day_close_text` body).
     books_report_kind: BooksReportKind,
+    /// The field whose "type or pick" list is open, and its rows.
+    suggest_open: Option<SuggestField>,
+    suggest_rows: Vec<suggest::SuggestRow>,
+    /// Bumped on every refresh so the list scrolls back to the top.
+    suggest_rev: u64,
 }
 
 /// Wrong PINs tolerated before [`UNLOCK_BLOCK`] kicks in.
@@ -708,6 +723,188 @@ enum BooksReportKind {
     Month,
     Aging,
     BalanceSheet,
+}
+
+/// A field whose value is usually something the counter already has. Each
+/// has a [`SuggestList`] right under its input (see `suggest.rs`).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+enum SuggestField {
+    BookingDestination,
+    BookingZone,
+    BookingCarrier,
+    BookingOrigin,
+    CustomerName,
+    MenuUnit,
+    MenuZone,
+    MenuCarrier,
+    MenuParty,
+    MenuTax,
+    MenuCategory,
+    BuyItem,
+    BuySupplier,
+    InvItem,
+    InvSupplier,
+    CreditParty,
+    TeamPick,
+    Country,
+    ConvFrom,
+    ConvTo,
+    MeasureDim,
+    MeasureWeight,
+    PrinterTarget,
+    RouteAddPrinter,
+    AwbPoolCarrier,
+    OpsRider,
+    OpsCarrier,
+    OpsParty,
+    /// Parties form: country / state / pincode for the address block.
+    PartyCountry,
+    PartyState,
+    PartyPincode,
+}
+
+impl SuggestField {
+    const ALL: [SuggestField; 31] = [
+        SuggestField::BookingDestination,
+        SuggestField::BookingZone,
+        SuggestField::BookingCarrier,
+        SuggestField::BookingOrigin,
+        SuggestField::CustomerName,
+        SuggestField::MenuUnit,
+        SuggestField::MenuZone,
+        SuggestField::MenuCarrier,
+        SuggestField::MenuParty,
+        SuggestField::MenuTax,
+        SuggestField::MenuCategory,
+        SuggestField::BuyItem,
+        SuggestField::BuySupplier,
+        SuggestField::InvItem,
+        SuggestField::InvSupplier,
+        SuggestField::CreditParty,
+        SuggestField::TeamPick,
+        SuggestField::Country,
+        SuggestField::ConvFrom,
+        SuggestField::ConvTo,
+        SuggestField::MeasureDim,
+        SuggestField::MeasureWeight,
+        SuggestField::PrinterTarget,
+        SuggestField::RouteAddPrinter,
+        SuggestField::AwbPoolCarrier,
+        SuggestField::OpsRider,
+        SuggestField::OpsCarrier,
+        SuggestField::OpsParty,
+        SuggestField::PartyCountry,
+        SuggestField::PartyState,
+        SuggestField::PartyPincode,
+    ];
+
+    fn key(self) -> &'static str {
+        match self {
+            SuggestField::BookingDestination => "booking_destination",
+            SuggestField::BookingZone => "booking_zone",
+            SuggestField::BookingCarrier => "booking_carrier",
+            SuggestField::BookingOrigin => "booking_origin",
+            SuggestField::CustomerName => "customer_name",
+            SuggestField::MenuUnit => "menu_unit",
+            SuggestField::MenuZone => "menu_zone",
+            SuggestField::MenuCarrier => "menu_carrier",
+            SuggestField::MenuParty => "menu_party",
+            SuggestField::MenuTax => "menu_tax",
+            SuggestField::MenuCategory => "menu_category",
+            SuggestField::BuyItem => "buy_item",
+            SuggestField::BuySupplier => "buy_supplier",
+            SuggestField::InvItem => "inv_item",
+            SuggestField::InvSupplier => "inv_supplier",
+            SuggestField::CreditParty => "credit_party",
+            SuggestField::TeamPick => "team_pick",
+            SuggestField::Country => "country",
+            SuggestField::ConvFrom => "conv_from",
+            SuggestField::ConvTo => "conv_to",
+            SuggestField::MeasureDim => "measure_dim",
+            SuggestField::MeasureWeight => "measure_weight",
+            SuggestField::PrinterTarget => "printer_target",
+            SuggestField::RouteAddPrinter => "route_add_printer",
+            SuggestField::AwbPoolCarrier => "awb_pool_carrier",
+            SuggestField::OpsRider => "ops_rider",
+            SuggestField::OpsCarrier => "ops_carrier",
+            SuggestField::OpsParty => "ops_party",
+            SuggestField::PartyCountry => "party_country",
+            SuggestField::PartyState => "party_state",
+            SuggestField::PartyPincode => "party_pincode",
+        }
+    }
+
+    fn input(self) -> &'static [LiveId] {
+        match self {
+            SuggestField::BookingDestination => ids!(booking_destination_input),
+            SuggestField::BookingZone => ids!(booking_zone_input),
+            SuggestField::BookingCarrier => ids!(booking_carrier_pick_input),
+            SuggestField::BookingOrigin => ids!(booking_origin_name_input),
+            SuggestField::CustomerName => ids!(customer_name_input),
+            SuggestField::MenuUnit => ids!(menu_unit_input),
+            SuggestField::MenuZone => ids!(menu_zone_input),
+            SuggestField::MenuCarrier => ids!(menu_carrier_input),
+            SuggestField::MenuParty => ids!(menu_party_input),
+            SuggestField::MenuTax => ids!(menu_tax_input),
+            SuggestField::MenuCategory => ids!(menu_category_input),
+            SuggestField::BuyItem => ids!(buy_item_input),
+            SuggestField::BuySupplier => ids!(buy_supplier_input),
+            SuggestField::InvItem => ids!(inv_item_input),
+            SuggestField::InvSupplier => ids!(inv_supplier_input),
+            SuggestField::CreditParty => ids!(credit_limit_party),
+            SuggestField::TeamPick => ids!(team_pick_input),
+            SuggestField::Country => ids!(country_code_input),
+            SuggestField::ConvFrom => ids!(conv_from_input),
+            SuggestField::ConvTo => ids!(conv_to_input),
+            SuggestField::MeasureDim => ids!(measure_dim_input),
+            SuggestField::MeasureWeight => ids!(measure_weight_input),
+            SuggestField::PrinterTarget => ids!(printer_target_input),
+            SuggestField::RouteAddPrinter => ids!(route_add_printer_input),
+            SuggestField::AwbPoolCarrier => ids!(awb_pool_carrier_input),
+            SuggestField::OpsRider => ids!(ops_rider_input),
+            SuggestField::OpsCarrier => ids!(ops_carrier_input),
+            SuggestField::OpsParty => ids!(ops_party_input),
+            SuggestField::PartyCountry => ids!(party_country_input),
+            SuggestField::PartyState => ids!(party_state_input),
+            SuggestField::PartyPincode => ids!(party_pincode_input),
+        }
+    }
+
+    fn list(self) -> &'static [LiveId] {
+        match self {
+            SuggestField::BookingDestination => ids!(booking_destination_suggest),
+            SuggestField::BookingZone => ids!(booking_zone_suggest),
+            SuggestField::BookingCarrier => ids!(booking_carrier_suggest),
+            SuggestField::BookingOrigin => ids!(booking_origin_suggest),
+            SuggestField::CustomerName => ids!(customer_name_suggest),
+            SuggestField::MenuUnit => ids!(menu_unit_suggest),
+            SuggestField::MenuZone => ids!(menu_zone_suggest),
+            SuggestField::MenuCarrier => ids!(menu_carrier_suggest),
+            SuggestField::MenuParty => ids!(menu_party_suggest),
+            SuggestField::MenuTax => ids!(menu_tax_suggest),
+            SuggestField::MenuCategory => ids!(menu_category_suggest),
+            SuggestField::BuyItem => ids!(buy_item_suggest),
+            SuggestField::BuySupplier => ids!(buy_supplier_suggest),
+            SuggestField::InvItem => ids!(inv_item_suggest),
+            SuggestField::InvSupplier => ids!(inv_supplier_suggest),
+            SuggestField::CreditParty => ids!(credit_party_suggest),
+            SuggestField::TeamPick => ids!(team_pick_suggest),
+            SuggestField::Country => ids!(country_suggest),
+            SuggestField::ConvFrom => ids!(conv_from_suggest),
+            SuggestField::ConvTo => ids!(conv_to_suggest),
+            SuggestField::MeasureDim => ids!(measure_dim_suggest),
+            SuggestField::MeasureWeight => ids!(measure_weight_suggest),
+            SuggestField::PrinterTarget => ids!(printer_target_suggest),
+            SuggestField::RouteAddPrinter => ids!(route_add_printer_suggest),
+            SuggestField::AwbPoolCarrier => ids!(awb_pool_carrier_suggest),
+            SuggestField::OpsRider => ids!(ops_rider_suggest),
+            SuggestField::OpsCarrier => ids!(ops_carrier_suggest),
+            SuggestField::OpsParty => ids!(ops_party_suggest),
+            SuggestField::PartyCountry => ids!(party_country_suggest),
+            SuggestField::PartyState => ids!(party_state_suggest),
+            SuggestField::PartyPincode => ids!(party_pincode_suggest),
+        }
+    }
 }
 
 /// Default sidebar / bottom-bar arrangement (matches the DSL slot order).
@@ -856,18 +1053,134 @@ fn nav_display_order(order: &[NavTab], hidden: &[NavTab]) -> Vec<NavTab> {
 
 /// Password-style mask: every non-space character becomes a bullet so the
 /// string keeps roughly the same width (no peek at figures when hidden).
+/// **Only** for money values — never feed labels, headings, counts, or prose.
 fn mask_sensitive_text(text: &str) -> String {
     text.chars()
         .map(|c| if c.is_whitespace() { c } else { '●' })
         .collect()
 }
 
+/// Show `text` or bullet-mask it. Prefer [`display_money`] at call sites.
 fn display_sensitive(text: &str, visible: bool) -> String {
     if visible {
         text.to_string()
     } else {
         mask_sensitive_text(text)
     }
+}
+
+/// Canonical path for a **discrete money figure** (books value, today slot, etc.).
+/// Labels / headings / placeholders / counts / prose must never go through this.
+fn display_money(text: &str, visible: bool) -> String {
+    display_sensitive(text, visible)
+}
+
+/// Split `₹50.00 (2)` → (`₹50.00`, Some(`(2)`)); plain values keep no count.
+fn split_trailing_count(v: &str) -> (&str, Option<&str>) {
+    let t = v.trim();
+    if let Some((rest, count)) = t.rsplit_once(' ')
+        && count.starts_with('(')
+        && count.ends_with(')')
+        && count.len() > 2
+        && count[1..count.len() - 1]
+            .chars()
+            .all(|c| c.is_ascii_digit())
+    {
+        (rest, Some(count))
+    } else {
+        (t, None)
+    }
+}
+
+/// True when `v` is a formatted money amount (`₹120.00`, `€1 234,50`, `CHF1'234.50`),
+/// optionally with a trailing `(N)` count. Rejects bare counts (`"3"`), times
+/// (`12:30`), prose (`3 parcels`), and invoice-like ids.
+fn looks_like_money_value(v: &str) -> bool {
+    let (core, _) = split_trailing_count(v);
+    if core.is_empty() {
+        return false;
+    }
+    let rest = core
+        .strip_prefix('-')
+        .or_else(|| core.strip_prefix('+'))
+        .unwrap_or(core);
+    let Some(digit_start) = rest.find(|c: char| c.is_ascii_digit()) else {
+        return false;
+    };
+    let prefix = &rest[..digit_start];
+    let number = &rest[digit_start..];
+    // `{symbol}{number}` — symbol is short (₹, $, CHF, KSh, د.ك) and has no spaces.
+    if prefix.is_empty()
+        || prefix.chars().count() > 5
+        || prefix.contains(|c: char| c.is_whitespace())
+        || prefix.contains(':')
+        || prefix.contains('·')
+        || prefix.contains('→')
+    {
+        return false;
+    }
+    number
+        .chars()
+        .all(|c| c.is_ascii_digit() || c == ',' || c == '.' || c == '\'' || c == ' ')
+        && number.chars().any(|c| c.is_ascii_digit())
+}
+
+/// Mask only whitespace-separated money tokens; leave labels and prose.
+fn mask_money_tokens(text: &str) -> String {
+    text.split_inclusive(char::is_whitespace)
+        .map(|part| {
+            let trimmed_end = part.trim_end();
+            let ws = &part[trimmed_end.len()..];
+            if looks_like_money_value(trimmed_end) {
+                format!("{}{}", mask_sensitive_text(trimmed_end), ws)
+            } else {
+                part.to_string()
+            }
+        })
+        .collect()
+}
+
+/// Mask a Kv **value**: whole money figures (incl. space-grouped) → bullets;
+/// keep trailing `(N)` counts and any non-money text.
+fn mask_kv_amount(v: &str) -> String {
+    let (core, count) = split_trailing_count(v);
+    if looks_like_money_value(core) {
+        let masked = mask_sensitive_text(core);
+        match count {
+            Some(c) => format!("{masked} {c}"),
+            None => masked,
+        }
+    } else {
+        mask_money_tokens(v)
+    }
+}
+
+/// For report cards: mask money in Kv values and money tokens in Line/Sub;
+/// never rewrite headings, labels, or digit-free lines into bullets.
+fn apply_amount_visibility(rows: Vec<ReportRow>, visible: bool) -> Vec<ReportRow> {
+    if visible {
+        return rows;
+    }
+    rows.into_iter()
+        .map(|row| match row {
+            ReportRow::Kv(k, v) => ReportRow::Kv(k, mask_kv_amount(&v)),
+            ReportRow::Line(t) => {
+                if !t.chars().any(|c| c.is_ascii_digit()) {
+                    ReportRow::Line(t)
+                } else {
+                    ReportRow::Line(mask_money_tokens(&t))
+                }
+            }
+            ReportRow::Sub(t) => {
+                if !t.chars().any(|c| c.is_ascii_digit()) {
+                    ReportRow::Sub(t)
+                } else {
+                    ReportRow::Sub(mask_money_tokens(&t))
+                }
+            }
+            other => other,
+        })
+        .collect()
 }
 
 const BOOKS_SECTION_KEYS: &[&str] = &["today", "bookings", "payments", "outstanding", "bank"];
@@ -931,20 +1244,175 @@ fn amount_keys_hidden_csv(hidden: &[String]) -> String {
     hidden.join(",")
 }
 
-fn amount_key_visible(screen_hidden: bool, keys_hidden: &[String], key: &str) -> bool {
+/// Whether one money **value** key should show its digits right now.
+///
+/// Encodes the screen-eye vs per-figure rules (see `docs/DEV.md` § Amount visibility):
+/// - Screen icon **hidden** (`screen_hidden`) → values hidden by default; only keys in
+///   `keys_peek` (session) are temporarily revealed.
+/// - Screen icon **visible** → apply each figure's own persisted state: hide only keys
+///   in `keys_hidden`. The screen eye does **not** force every figure visible.
+///
+/// Labels / headings / placeholders / counts / prose are out of scope — callers must
+/// mask money only ([`display_money`], [`paint_amount_value`], [`apply_amount_visibility`]).
+fn amount_key_visible(
+    screen_hidden: bool,
+    keys_hidden: &[String],
+    keys_peek: &[String],
+    key: &str,
+) -> bool {
     if screen_hidden {
-        false
+        keys_peek.iter().any(|k| k == key)
     } else {
         !keys_hidden.iter().any(|k| k == key)
     }
 }
 
+/// Font Awesome solid (`WorldFonts` icons member).
+/// Shown amounts: eye. Hidden amounts: lock (eye-slash looked odd at 14px).
+const EYE_MARK_OPEN: &str = "\u{f06e}";
+const EYE_MARK_HIDDEN: &str = "\u{f023}";
+
 fn eye_glyph(visible: bool) -> &'static str {
     if visible {
-        "👁"
+        EYE_MARK_OPEN
     } else {
-        "◌"
+        EYE_MARK_HIDDEN
     }
+}
+
+/// Placeholder like `Phone (+91)` from the active country pack.
+fn phone_placeholder(label: &str, country_code: &str) -> String {
+    let dial = fiscal::calling_code(country_code);
+    if dial.is_empty() {
+        label.to_string()
+    } else {
+        format!("{label} ({dial})")
+    }
+}
+
+/// Prepend the pack's calling code when the typed phone has no `+`.
+fn with_calling_code(phone: &str, country_code: &str) -> String {
+    let p = phone.trim();
+    if p.is_empty() {
+        return String::new();
+    }
+    if p.starts_with('+') {
+        return p.to_string();
+    }
+    let dial = fiscal::calling_code(country_code);
+    if dial.is_empty() {
+        return p.to_string();
+    }
+    let local = p.trim_start_matches('0').trim();
+    if local.is_empty() {
+        return p.to_string();
+    }
+    format!("{dial}{local}")
+}
+
+/// Resolve a typed country name or ISO code to a pack code.
+fn country_code_from_label(label: &str) -> String {
+    let t = label.trim();
+    if t.is_empty() {
+        return String::new();
+    }
+    let upper = t.to_ascii_uppercase();
+    if let Some(c) = fiscal::COUNTRY_PROFILES
+        .iter()
+        .find(|c| c.code.eq_ignore_ascii_case(&upper))
+    {
+        return c.code.to_string();
+    }
+    if let Some(c) = fiscal::COUNTRY_PROFILES
+        .iter()
+        .find(|c| c.name_en.eq_ignore_ascii_case(t))
+    {
+        return c.code.to_string();
+    }
+    upper
+}
+
+/// Street + state + PIN + country → one address line for storage.
+fn compose_party_address(street: &str, state: &str, pin: &str, country: &str) -> String {
+    let mut parts: Vec<&str> = Vec::new();
+    let street = street.trim();
+    let state = state.trim();
+    let pin = pin.trim();
+    let country = country.trim();
+    if !street.is_empty() {
+        parts.push(street);
+    }
+    if !state.is_empty() {
+        parts.push(state);
+    }
+    if !pin.is_empty() {
+        parts.push(pin);
+    }
+    if !country.is_empty() {
+        parts.push(country);
+    }
+    parts.join(", ")
+}
+
+/// Best-effort split of a stored address into street / state / pin / country.
+fn split_party_address(address: &str) -> (String, String, String, String) {
+    let raw = address.trim();
+    if raw.is_empty() {
+        return (
+            String::new(),
+            String::new(),
+            String::new(),
+            String::new(),
+        );
+    }
+    let mut parts: Vec<&str> = raw
+        .split(',')
+        .map(|p| p.trim())
+        .filter(|p| !p.is_empty())
+        .collect();
+    if parts.is_empty() {
+        return (raw.to_string(), String::new(), String::new(), String::new());
+    }
+    let mut country = String::new();
+    let mut state = String::new();
+    let mut pin = String::new();
+    // Trailing country name/code.
+    if let Some(last) = parts.last().copied() {
+        if !country_code_from_label(last).is_empty()
+            && fiscal::COUNTRY_PROFILES.iter().any(|c| {
+                c.code.eq_ignore_ascii_case(last) || c.name_en.eq_ignore_ascii_case(last)
+            })
+        {
+            country = last.to_string();
+            parts.pop();
+        }
+    }
+    // Trailing PIN / ZIP (digits, optionally with spaces).
+    if let Some(last) = parts.last().copied() {
+        let digits: String = last.chars().filter(|c| c.is_ascii_digit()).collect();
+        if digits.len() >= 4 && digits.len() <= 10 && digits.len() >= last.len().saturating_sub(2) {
+            pin = last.to_string();
+            parts.pop();
+        }
+    }
+    // Trailing admin area when we know the country pack.
+    if let Some(last) = parts.last().copied() {
+        let code = if country.is_empty() {
+            String::new()
+        } else {
+            country_code_from_label(&country)
+        };
+        let areas = if code.is_empty() {
+            &[][..]
+        } else {
+            fiscal::admin_areas(&code)
+        };
+        if areas.iter().any(|a| a.eq_ignore_ascii_case(last)) {
+            state = last.to_string();
+            parts.pop();
+        }
+    }
+    (parts.join(", "), state, pin, country)
 }
 
 fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
@@ -1016,6 +1484,7 @@ impl AppState {
             entity_template_id: "moklanjo_agency".into(),
             money_lane: MoneyLane::Declared,
             buy_on_account: false,
+            buy_party_kind: "Supplier".into(),
             day_close_text: String::new(),
             ops_panel_text: String::new(),
             branches_text: String::new(),
@@ -1041,11 +1510,13 @@ impl AppState {
             nav_hidden: Vec::new(),
             amounts_screen_hidden: false,
             amount_keys_hidden: Vec::new(),
+            amount_keys_peek: Vec::new(),
             books_sections_open: Vec::new(),
             draft_venue_icon_path: None,
             pending_backup_copy: None,
             draft_image_key: None,
             draft_party_image_key: None,
+            party_form_country: String::new(),
             booking_scope_international: false,
             booking_origin_name: String::new(),
             booking_origin_phone: String::new(),
@@ -1063,7 +1534,7 @@ impl AppState {
             booking_declared: String::new(),
             booking_contents: String::new(),
             booking_eway: String::new(),
-            booking_insurance: String::new(),
+            booking_insurance: false,
             booking_notify_phone: String::new(),
             booking_fuel: String::new(),
             booking_docket: String::new(),
@@ -1094,6 +1565,9 @@ impl AppState {
             rail_collapsed: false,
             reports_nav: ReportsNav::Bank,
             books_report_kind: BooksReportKind::Today,
+            suggest_open: None,
+            suggest_rows: Vec::new(),
+            suggest_rev: 0,
         };
         if let Ok(dir) = store::data_dir() {
             state.data_base = Some(dir.clone());
@@ -1757,12 +2231,13 @@ impl AppState {
     }
 
     fn apply_booking_fields(&self, draft: &mut domain::SaleDraft) {
+        let dial = &self.fiscal.country_code;
         draft.origin_name = self.booking_origin_name.trim().to_string();
-        draft.origin_phone = self.booking_origin_phone.trim().to_string();
+        draft.origin_phone = with_calling_code(&self.booking_origin_phone, dial);
         draft.origin_address = self.booking_origin_address.trim().to_string();
         draft.destination = self.booking_destination.trim().to_string();
         draft.consignee_name = self.booking_consignee.trim().to_string();
-        draft.consignee_phone = self.booking_consignee_phone.trim().to_string();
+        draft.consignee_phone = with_calling_code(&self.booking_consignee_phone, dial);
         draft.consignee_address = self.booking_consignee_address.trim().to_string();
         let (actual, vol, chargeable) = self.booking_weights();
         draft.actual_weight_kg = actual;
@@ -1792,12 +2267,8 @@ impl AppState {
             booking::parse_extra_amount(&self.booking_declared, &currency).unwrap_or(0);
         draft.contents = self.booking_contents.trim().to_string();
         draft.eway_bill_no = self.booking_eway.trim().to_string();
-        let ins = self.booking_insurance.trim().to_lowercase();
-        draft.insurance = matches!(
-            ins.as_str(),
-            "y" | "yes" | "1" | "true" | "insured" | "हाँ" | "हां"
-        );
-        draft.notify_phone = self.booking_notify_phone.trim().to_string();
+        draft.insurance = self.booking_insurance;
+        draft.notify_phone = with_calling_code(&self.booking_notify_phone, dial);
         let mut extras = Vec::new();
         if let Some(p) =
             booking::parse_extra_amount(&self.booking_fuel, &currency).filter(|p| *p > 0)
@@ -1851,7 +2322,7 @@ impl AppState {
         self.booking_declared.clear();
         self.booking_contents.clear();
         self.booking_eway.clear();
-        self.booking_insurance.clear();
+        self.booking_insurance = false;
         self.booking_notify_phone.clear();
         self.booking_fuel.clear();
         self.booking_docket.clear();
@@ -1860,6 +2331,238 @@ impl AppState {
         self.booking_carrier_pick.clear();
         self.last_awb.clear();
         self.selected_customer_id = None;
+    }
+
+    /// What a "type or pick" field can offer, before narrowing.
+    fn suggest_candidates(&self, field: SuggestField) -> Vec<suggest::SuggestRow> {
+        use suggest::SuggestRow;
+        let parties = |filter: fn(&Customer) -> bool| {
+            self.customers
+                .iter()
+                .filter(|c| c.active && filter(c))
+                .map(|c| {
+                    let sub = [c.kind_label.trim(), c.phone.trim()]
+                        .into_iter()
+                        .filter(|x| !x.is_empty())
+                        .collect::<Vec<_>>()
+                        .join(" · ");
+                    SuggestRow::new(c.name.clone(), sub)
+                })
+                .collect::<Vec<_>>()
+        };
+        let all_parties = || parties(|_| true);
+        let carriers = || parties(|c| c.is_carrier());
+        let consignors = || parties(|c| c.is_consignor());
+        let suppliers = || {
+            parties(|c| domain::party_has_role(&c.kind_label, domain::PARTY_ROLE_SUPPLIER))
+        };
+        let units = || {
+            let all = self
+                .store
+                .as_ref()
+                .and_then(|s| s.list_units().ok())
+                .unwrap_or_default();
+            let mut v: Vec<SuggestRow> = all
+                .iter()
+                .map(|u| SuggestRow::new(u.code.clone(), u.name.clone()))
+                .collect();
+            let mut used: Vec<SuggestRow> = self
+                .products
+                .iter()
+                .map(|p| p.unit_label.trim().to_string())
+                .filter(|u| !u.is_empty())
+                .map(|u| SuggestRow::new(u, ""))
+                .collect();
+            used.append(&mut v);
+            used
+        };
+        let zones = || {
+            self.store
+                .as_ref()
+                .and_then(|s| s.list_zones().ok())
+                .unwrap_or_default()
+                .into_iter()
+                .map(|z| SuggestRow::new(z.name, ""))
+                .collect::<Vec<_>>()
+        };
+        match field {
+            SuggestField::BookingDestination => self
+                .store
+                .as_ref()
+                .and_then(|s| s.suggest_destinations("", 60).ok())
+                .unwrap_or_default()
+                .into_iter()
+                .map(|d| SuggestRow::new(d, ""))
+                .collect(),
+            SuggestField::BookingZone | SuggestField::MenuZone => zones(),
+            SuggestField::BookingCarrier
+            | SuggestField::MenuCarrier
+            | SuggestField::AwbPoolCarrier
+            | SuggestField::OpsCarrier => {
+                let mut rows = carriers();
+                for r in &self.last_carrier_compare {
+                    let sub = locale::format_major_input(r.cost_paise, &self.locale.currency);
+                    rows.insert(0, SuggestRow::new(r.carrier_name.clone(), sub));
+                }
+                rows
+            }
+            SuggestField::BookingOrigin
+            | SuggestField::CustomerName
+            | SuggestField::CreditParty
+            | SuggestField::MenuParty
+            | SuggestField::OpsParty => {
+                let mut rows = consignors();
+                rows.extend(all_parties());
+                rows
+            }
+            SuggestField::MenuUnit
+            | SuggestField::ConvFrom
+            | SuggestField::ConvTo
+            | SuggestField::MeasureDim
+            | SuggestField::MeasureWeight => units(),
+            SuggestField::MenuTax => self
+                .store
+                .as_ref()
+                .and_then(|s| s.list_tax_rates().ok())
+                .unwrap_or_default()
+                .into_iter()
+                .filter(|r| r.active)
+                .map(|r| {
+                    let pct = format!("{:.2}", r.bps as f64 / 100.0);
+                    let pct = format!("{}%", pct.trim_end_matches('0').trim_end_matches('.'));
+                    SuggestRow::new(r.name, pct)
+                })
+                .collect(),
+            SuggestField::MenuCategory => self
+                .store
+                .as_ref()
+                .and_then(|s| s.list_categories().ok())
+                .unwrap_or_default()
+                .into_iter()
+                .map(|c| SuggestRow::new(c.name, ""))
+                .collect(),
+            SuggestField::BuyItem | SuggestField::InvItem => self
+                .products
+                .iter()
+                .map(|p| {
+                    let unit = p.unit_label.trim();
+                    SuggestRow::new(p.name.clone(), unit.to_string())
+                })
+                .collect(),
+            SuggestField::BuySupplier | SuggestField::InvSupplier => {
+                let mut rows = suppliers();
+                rows.extend(carriers());
+                rows.extend(all_parties());
+                rows
+            }
+            SuggestField::TeamPick => self
+                .staff
+                .iter()
+                .map(|m| SuggestRow::new(m.name.clone(), m.lock_label()))
+                .collect(),
+            SuggestField::Country => fiscal::COUNTRY_PROFILES
+                .iter()
+                .map(|c| SuggestRow::new(c.code, c.name_en))
+                .collect(),
+            SuggestField::PrinterTarget => {
+                let here = self.t("printers_heading");
+                print_share::found_printers()
+                    .into_iter()
+                    .map(|name| SuggestRow::new(name, here.clone()))
+                    .collect()
+            }
+            SuggestField::RouteAddPrinter => self
+                .printer_draft
+                .printers
+                .iter()
+                .map(|p| SuggestRow::new(p.label.clone(), p.target.clone()))
+                .collect(),
+            SuggestField::OpsRider => self
+                .store
+                .as_ref()
+                .and_then(|s| s.list_riders().ok())
+                .unwrap_or_default()
+                .into_iter()
+                .map(|r| SuggestRow::new(r.name, r.phone))
+                .collect(),
+            SuggestField::PartyCountry => fiscal::COUNTRY_PROFILES
+                .iter()
+                .filter(|c| c.code != fiscal::GENERIC_CODE)
+                .map(|c| {
+                    let dial = fiscal::calling_code(c.code);
+                    let sub = if dial.is_empty() {
+                        c.code.to_string()
+                    } else {
+                        format!("{} · {dial}", c.code)
+                    };
+                    SuggestRow::new(c.name_en, sub)
+                })
+                .collect(),
+            SuggestField::PartyState => {
+                let typed = self.party_form_country.trim();
+                let code = if typed.is_empty() {
+                    self.fiscal.country_code.clone()
+                } else {
+                    country_code_from_label(typed)
+                };
+                let mut rows: Vec<SuggestRow> = fiscal::admin_areas(&code)
+                    .iter()
+                    .map(|s| SuggestRow::new(*s, ""))
+                    .collect();
+                // Also offer areas already typed on parties.
+                for c in &self.customers {
+                    for part in c.address.split(|ch| ch == ',' || ch == '\n') {
+                        let p = part.trim();
+                        if p.len() >= 3 && p.len() <= 48 {
+                            rows.push(SuggestRow::new(p, ""));
+                        }
+                    }
+                }
+                rows
+            }
+            SuggestField::PartyPincode => {
+                let mut rows: Vec<SuggestRow> = Vec::new();
+                let mut seen = std::collections::HashSet::new();
+                for c in &self.customers {
+                    for token in c.address.split(|ch: char| !(ch.is_ascii_alphanumeric())) {
+                        let digits: String =
+                            token.chars().filter(|ch| ch.is_ascii_digit()).collect();
+                        if digits.len() >= 4
+                            && digits.len() <= 10
+                            && digits.len() >= token.len().saturating_sub(1)
+                            && seen.insert(digits.clone())
+                        {
+                            rows.push(SuggestRow::new(digits, ""));
+                        }
+                    }
+                }
+                rows
+            }
+        }
+    }
+
+    /// Open (or re-narrow) a field's list.
+    fn open_suggest(&mut self, field: SuggestField, query: &str) {
+        let q = if matches!(field, SuggestField::BookingDestination) && !query.trim().is_empty() {
+            // Destination uses store-side ranking (pins + past sales).
+            let ranked = self
+                .store
+                .as_ref()
+                .and_then(|s| s.suggest_destinations(query, 60).ok())
+                .unwrap_or_default()
+                .into_iter()
+                .map(|d| suggest::SuggestRow::new(d, ""))
+                .collect::<Vec<_>>();
+            self.suggest_rows = suggest::rank(ranked, "");
+            self.suggest_open = Some(field);
+            self.suggest_rev = self.suggest_rev.wrapping_add(1);
+            return;
+        } else {
+            query
+        };
+        self.suggest_rows = suggest::rank(self.suggest_candidates(field), q);
+        self.suggest_open = Some(field);
+        self.suggest_rev = self.suggest_rev.wrapping_add(1);
     }
 
     fn lane_declared_label(&self) -> String {
@@ -1874,7 +2577,9 @@ impl AppState {
             .into()
     }
 
-    fn today_label(&self) -> String {
+    /// One-line/multi-line “today” strip. Word prefixes and counts stay
+    /// readable; only money slots go through [`display_money`].
+    fn today_label(&self, amounts_visible: bool) -> String {
         match self.store.as_ref().and_then(|s| s.today_totals().ok()) {
             Some(t) => {
                 let outstanding = self
@@ -1882,45 +2587,46 @@ impl AppState {
                     .as_ref()
                     .and_then(|s| s.outstanding_credit_total().ok())
                     .unwrap_or(0);
+                let money = |m: Money| display_money(&self.money(m), amounts_visible);
                 let mut lines = vec![format!(
                     "{}: {} · {}",
                     self.t("today_prefix"),
                     t.sale_count,
-                    self.money(t.revenue())
+                    money(t.revenue())
                 )];
                 if t.declared_paise != 0 || t.owner_lane_paise != 0 {
                     lines.push(format!(
                         "{} {} · {} {}",
                         self.lane_declared_label(),
-                        self.money(Money(t.declared_paise)),
+                        money(Money(t.declared_paise)),
                         self.lane_owner_label(),
-                        self.money(Money(t.owner_lane_paise))
+                        money(Money(t.owner_lane_paise))
                     ));
                 }
                 lines.push(format!(
                     "{} {} · {} {} · {} {}",
                     self.t("cash"),
-                    self.money(t.cash()),
+                    money(t.cash()),
                     self.t("upi"),
-                    self.money(t.upi()),
+                    money(t.upi()),
                     self.t("card"),
-                    self.money(t.card())
+                    money(t.card())
                 ));
                 if t.credit_paise != 0 || outstanding != 0 {
                     lines.push(format!(
                         "{} {} {} · {} {}",
                         self.t("credit"),
                         self.t("today_mid"),
-                        self.money(t.credit()),
+                        money(t.credit()),
                         self.t("owed"),
-                        self.money(Money(outstanding))
+                        money(Money(outstanding))
                     ));
                 }
                 if t.rounding_paise != 0 {
                     lines.push(format!(
                         "{} {}",
                         self.t("round_word"),
-                        self.money(t.rounding())
+                        money(t.rounding())
                     ));
                 }
                 // Markdown treats a single \\n as a soft break (often one
@@ -2757,7 +3463,7 @@ script_mod! {
             color_focus: #x072058
             text_style +: {font_size: 14.}
         }
-        text: "👁"
+        text: "\u{f06e}"
     }
     // Books accordion section header — FA chevron (›/˅) + title.
     // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
@@ -2921,6 +3627,17 @@ script_mod! {
         width: Fill height: Fit
         flow: Right spacing: 8
         align: Align{y: 0.5}
+    }
+    // A section of a form: white card, roomy padding, one job per card.
+    // Navy-adjacent border (#E0E8F0) — matches StackSecondary / settings chips.
+    let FormCard = RoundedView{
+        width: Fill height: Fit
+        flow: Down spacing: 10
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 16.}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 16.
+        draw_bg.border_size: 1.
+        draw_bg.border_color: #xE0E8F0
     }
     // ActionStack faces — same navy/gray as RowPrimary/Secondary, but height Fit
     // + wrap (no ellipsis). Use for any multi-word stacked CTA (language source,
@@ -3288,8 +4005,11 @@ script_mod! {
     let FieldInput = TextInput{
         width: Fill
         height: Fit
-        padding: Inset{left: 14. right: 14. top: 14. bottom: 14.}
+        padding: Inset{left: 14. right: 14. top: 15. bottom: 15.}
         blink_speed: 0.5
+        // Once filled, the placeholder's short form stays as a small label
+        // on the top edge so a filled form still says what each box is.
+        float_caption: true
         draw_bg +: {
             color: #xffffff
             color_hover: #xEEF3F8
@@ -3328,6 +4048,13 @@ script_mod! {
             color_empty_hover: #x0B1220
             color_empty_focus: #x0B1220
             text_style +: {font_size: 16.}
+        }
+        // Float caption uses draw_caption (not draw_text). Unstyled defaults are
+        // light/theme ink → invisible on the white well; value then looks
+        // "stuck at the bottom with no label".
+        draw_caption +: {
+            color: #x3A4554
+            text_style +: {font_size: 11.}
         }
     }
 
@@ -4296,6 +5023,56 @@ script_mod! {
                 padding: Inset{bottom: 8.}
                 texture_caching: false
                 SaleRow{}
+            }
+        }
+    }
+
+    // One "type or pick" row: value, a small distinguishing line, and Use.
+    // Plain Labels — selectable text would steal the row tap.
+    let SuggestRowView = RoundedView{
+        cursor: MouseCursor.Hand
+        width: Fill height: Fit
+        padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+        flow: Right spacing: 10
+        align: Align{y: 0.5}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 10.
+        draw_bg.border_size: 1.
+        draw_bg.border_color: #x4A5568
+        title := Label{
+            width: Fill
+            text: ""
+            max_lines: 1
+            text_overflow: Ellipsis
+            draw_text.color: #x0B1220
+            draw_text.text_style.font_size: 15.
+        }
+        subtitle := Label{
+            width: Fit{max: FitBound.Abs(96.)}
+            text: ""
+            max_lines: 1
+            text_overflow: Ellipsis
+            draw_text.color: #x3A4554
+            draw_text.text_style.font_size: 13.
+        }
+        action := Label{
+            width: Fit
+            text: "Use"
+            draw_text.color: #xC44E10
+            draw_text.text_style.font_size: 13.
+        }
+    }
+    mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
+    mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 6
+            scroll_bar: ScrollBar{}
+            Item := View{
+                width: Fill height: Fit
+                texture_caching: false
+                row := SuggestRowView{}
             }
         }
     }
@@ -5431,28 +6208,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    books_title_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/books.webp")
-                                    }
-                                    books_title := WrapLabel{
-                                        body: "Day book"
-                                        font_color: #x0B1220
-                                        font_size: 20.
-                                    }
-                                }
-                                // No tip chrome on Books (docs only) — InfoHelp left an orphan icon.
-                                books_help := WrapLabel{
-                                    width: Fill
-                                    visible: false
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 13.
+                                books_help := InfoHelp{
+                                    tip: "Today’s position. Booking = parcels in. Pay out = carrier bills & expenses. Parties = consignors & carriers."
                                 }
                                 books_backup_warning := WrapLabel{body: " " font_color: #xC44E10 font_size: 14. visible: false}
                                 // Hub jumps only — every row navigates, so every
@@ -5759,7 +6516,7 @@ script_mod! {
                                     }
                                 }
                                 booking_help := InfoHelp{
-                                    tip: "Walk-in: destination → weigh → pick rate → Account/Cash booking → pay. AWB on receipt. Next booking clears the desk."
+                                    tip: "Consignor + consignee (blank OK) → destination → weigh → pick rate → Account/Cash → pay. AWB prints on the receipt. Next booking clears the desk. Rounded starts equal to Applied — edit only to round the bill."
                                 }
                             }
 
@@ -5789,12 +6546,22 @@ script_mod! {
                                 // Address blocks always on the form (structure
                                 // required); values may stay empty for walk-ins.
                                 // Consignor = customer / sender — same party.
-                                h_booking_consignor := WrapLabel{
-                                    body: "Consignor (customer / sender)"
-                                    font_color: #x0B1220
-                                    font_size: 14.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_booking_consignor := WrapLabel{
+                                        body: "Consignor (customer / sender)"
+                                        font_color: #x0B1220
+                                        font_size: 14.
+                                    }
+                                    booking_consignor_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
+                                    }
                                 }
                                 booking_origin_name_input := FieldInput{empty_text: "Sender name"}
+                                booking_origin_suggest := mod.widgets.SuggestList{field: "booking_origin"}
                                 booking_origin_phone_input := FieldInput{empty_text: "Sender phone"}
                                 booking_origin_address_input := FieldInput{empty_text: "Pickup / origin address"}
                                 booking_consignor_hint := WrapLabel{
@@ -5802,17 +6569,29 @@ script_mod! {
                                     body: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
                                     font_color: #x3A4554
                                     font_size: 11.
+                                    visible: false
                                 }
-                                h_booking_consignee := WrapLabel{
-                                    body: "Consignee (receiver)"
-                                    font_color: #x0B1220
-                                    font_size: 14.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    h_booking_consignee := WrapLabel{
+                                        body: "Consignee (receiver)"
+                                        font_color: #x0B1220
+                                        font_size: 14.
+                                    }
+                                    booking_consignee_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Receiver of the parcel. Leave blank for walk-in counter drop-offs."
+                                    }
                                 }
                                 booking_consignee_input := FieldInput{empty_text: "Receiver name"}
                                 booking_consignee_phone_input := FieldInput{empty_text: "Receiver phone"}
                                 booking_consignee_address_input := FieldInput{empty_text: "Delivery address"}
                                 booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
+                                booking_destination_suggest := mod.widgets.SuggestList{field: "booking_destination"}
                                 booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
+                                booking_zone_suggest := mod.widgets.SuggestList{field: "booking_zone"}
                                 booking_pincode_label := WrapLabel{
                                     body: ""
                                     font_color: #x006e1c
@@ -5824,6 +6603,7 @@ script_mod! {
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
+                                    align: Align{x: 0.0 y: 0.5}
                                     View{width: Fill height: Fit flow: Overlay
                                         booking_scope_domestic := SegBtn{text: "Domestic"}
                                         booking_scope_domestic_on := SegBtnOn{text: "Domestic" visible: false}
@@ -5832,12 +6612,17 @@ script_mod! {
                                         booking_scope_intl := SegBtn{text: "International"}
                                         booking_scope_intl_on := SegBtnOn{text: "International" visible: false}
                                     }
+                                    booking_scope_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
+                                    }
                                 }
                                 booking_scope_hint := WrapLabel{
                                     selectable: false
                                     body: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
                                     font_color: #x3A4554
                                     font_size: 11.
+                                    visible: false
                                 }
                                 booking_actual_kg_input := FieldInput{empty_text: "Actual kg"}
                                 // Unit choices live on the desk (tap to switch) —
@@ -5920,14 +6705,29 @@ script_mod! {
                                         font_size: 12.
                                     }
                                     booking_carrier_pick_input := FieldInput{empty_text: "Carrier for cost (from compare)"}
+                                    booking_carrier_suggest := mod.widgets.SuggestList{field: "booking_carrier"}
                                     booking_apply_carrier_cost := RowSecondaryBtn{text: "Use carrier cost"}
                                     FormFieldRow{
                                         booking_declared_input := FieldInput{empty_text: "Declared value"}
                                         booking_contents_input := FieldInput{empty_text: "Contents"}
                                     }
-                                    FormFieldRow{
-                                        booking_eway_input := FieldInput{empty_text: "E-way bill no."}
-                                        booking_insurance_input := FieldInput{empty_text: "Insurance (yes/no)"}
+                                    booking_eway_input := FieldInput{empty_text: "E-way bill no."}
+                                    h_booking_insurance := Label{
+                                        text: "Insurance"
+                                        draw_text.color: #x3A4554
+                                        draw_text.text_style.font_size: 11.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            booking_insurance_no := SegBtn{text: "No"}
+                                            booking_insurance_no_on := SegBtnOn{text: "No" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            booking_insurance_yes := SegBtn{text: "Yes"}
+                                            booking_insurance_yes_on := SegBtnOn{text: "Yes" visible: false}
+                                        }
                                     }
                                     FormFieldRow{
                                         booking_fuel_input := FieldInput{empty_text: "Fuel"}
@@ -6102,11 +6902,21 @@ script_mod! {
                                         body: "Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above."
                                         font_color: #x3A4554
                                         font_size: 11.
+                                        visible: false
                                     }
-                                    money_lane_label := WrapLabel{
-                                        body: "Bill: Tax invoice"
-                                        font_color: #x3A4554
-                                        font_size: 12.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        align: Align{x: 0.0 y: 0.5}
+                                        money_lane_label := WrapLabel{
+                                            body: "Bill: Tax invoice"
+                                            font_color: #x3A4554
+                                            font_size: 12.
+                                        }
+                                        payment_help := InfoHelp{
+                                            width: Fit
+                                            tip: "Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above."
+                                        }
                                     }
                                     View{
                                         width: Fill height: Fit
@@ -6134,6 +6944,7 @@ script_mod! {
                                     body: "Rounded starts equal to Applied. Edit only to round the bill."
                                     font_color: #x0B1220
                                     font_size: 12.
+                                    visible: false
                                 }
                                 credit_chip := WrapLabel{
                                     body: "No customer yet — type a name, then tap Credit"
@@ -6143,6 +6954,7 @@ script_mod! {
                                 customer_name_input := FieldInput{
                                     empty_text: "Customer name"
                                 }
+                                customer_name_suggest := mod.widgets.SuggestList{field: "customer_name"}
                                 customer_use := NavBtn{text: "Add / use this name"}
                                 customer_clear := NavBtn{text: "Clear customer"}
                                 customers_empty_hint := WrapLabel{
@@ -6168,6 +6980,7 @@ script_mod! {
                                 items_help_label := InfoHelp{
                                     tip: "Each row is a rate (e.g. Surface Zone A). Unit is usually kg. Tap to edit."
                                 }
+                                FormCard{
                                 menu_mode_label := WrapLabel{body: "Adding a new item" font_color: #x02030B font_size: 14.}
                                 menu_name_input := FieldInput{
                                     empty_text: "Item name — type it in your language"
@@ -6179,6 +6992,7 @@ script_mod! {
                                     menu_price_input := FieldInput{empty_text: "0"}
                                     menu_unit_input := FieldInput{empty_text: "Unit (kg or blank)"}
                                 }
+                                menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
                                 FormFieldRow{
                                     menu_first_kg_input := FieldInput{empty_text: "First kg (slab)"}
                                     menu_first_amt_input := FieldInput{empty_text: "First amount"}
@@ -6187,21 +7001,19 @@ script_mod! {
                                     menu_extra_kg_input := FieldInput{empty_text: "Extra / kg"}
                                     menu_zone_input := FieldInput{empty_text: "Zone name"}
                                 }
+                                menu_zone_suggest := mod.widgets.SuggestList{field: "menu_zone"}
                                 FormFieldRow{
                                     menu_carrier_input := FieldInput{empty_text: "Carrier (blank = our sell rate)"}
                                     menu_party_input := FieldInput{empty_text: "Party (blank = all customers)"}
                                 }
-                                ActionStack{
-                                    menu_new := StackSecondaryBtn{
-                                        text: "New item"
-                                        visible: false
-                                    }
-                                    menu_add := StackPrimaryBtn{text: "Add rate"}
-                                }
+                                menu_carrier_suggest := mod.widgets.SuggestList{field: "menu_carrier"}
+                                menu_party_suggest := mod.widgets.SuggestList{field: "menu_party"}
                                 menu_tax_input := FieldInput{
                                     empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
                                 }
+                                menu_tax_suggest := mod.widgets.SuggestList{field: "menu_tax"}
                                 menu_category_input := FieldInput{empty_text: "Category (optional, created if new)"}
+                                menu_category_suggest := mod.widgets.SuggestList{field: "menu_category"}
                                 menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Large=20, Gift wrap=10"}
                                 image_hint := WrapLabel{
                                     body: "Image: auto (from name)"
@@ -6214,7 +7026,16 @@ script_mod! {
                                 }
                                 ActionStack{
                                     image_clear := RowSecondaryBtn{text: "Clear photo"}
-                                    image_pick := RowPrimaryBtn{text: "Pick photo"}
+                                    image_pick := RowSecondaryBtn{text: "Pick photo"}
+                                }
+                                // Add / Save after every field — match Khaynjo.
+                                ActionStack{
+                                    menu_new := StackSecondaryBtn{
+                                        text: "New item"
+                                        visible: false
+                                    }
+                                    menu_add := StackPrimaryBtn{text: "Add rate"}
+                                }
                                 }
                                 menu_empty := WrapLabel{
                                     body: "No items yet — add one above."
@@ -6238,10 +7059,28 @@ script_mod! {
                                 }
                                 h_goods_received := WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 buy_item_input := FieldInput{empty_text: "Item name"}
+                                buy_item_suggest := mod.widgets.SuggestList{field: "buy_item"}
                                 buy_qty_input := FieldInput{empty_text: "Qty (e.g. 1.5 for kg)"}
                                 buy_cost_input := FieldInput{empty_text: "Unit cost"}
                                 buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
-                                buy_party_kind := FieldInput{empty_text: "New party kind (Supplier / Carrier)"}
+                                buy_supplier_suggest := mod.widgets.SuggestList{field: "buy_supplier"}
+                                h_buy_party_kind := Label{
+                                    text: "New party kind"
+                                    draw_text.color: #x3A4554
+                                    draw_text.text_style.font_size: 11.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_kind_supplier := SegBtn{text: "Supplier"}
+                                        buy_kind_supplier_on := SegBtnOn{text: "Supplier" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        buy_kind_carrier := SegBtn{text: "Carrier"}
+                                        buy_kind_carrier_on := SegBtnOn{text: "Carrier" visible: false}
+                                    }
+                                }
                                 buy_note_input := FieldInput{empty_text: "Note (optional)"}
                                 View{
                                     width: Fill height: Fit
@@ -6314,21 +7153,9 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    more_heading_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/rates.webp")
-                                    }
-                                    more_heading := WrapLabel{body: "More" font_color: #x0B1220 font_size: 22.}
+                                more_help := InfoHelp{
+                                    tip: "Catalogue, sales, credit, team, backup — plus stock and extra tills when needed."
                                 }
-                                    h_more_help_moklanjo := WrapLabel{
-                                        body: "Catalogue, sales, credit, team, backup — plus stock and extra tills when needed."
-                                        font_color: #x3A4554
-                                    }
                                 more_items := MoreRow{text: "Rates & services"}
                                 more_ops := MoreRow{text: "Consignments & dispatch"}
                                 more_cod := MoreRow{text: "COD register"}
@@ -6357,23 +7184,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        sales_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/sales.webp")
-                                        }
-                                        sales_title := WrapLabel{body: "Sales" font_color: #x0B1220 font_size: 20.}
-                                    }
-                                }
-                                h_amend_help := InfoHelp{
-                                    tip: "Select a sale to amend, void, or refund. Amendments keep full history."
+                                sales_help := InfoHelp{
+                                    tip: "Select a sale to amend, void, or refund. Amendments keep full history. Rounded Total starts equal to Applied — edit only to round. Void and refund may need an Owner or Manager PIN."
                                 }
                                 sale_selected_label := WrapLabel{
                                     body: "No sale selected"
@@ -6430,6 +7242,7 @@ script_mod! {
                                     body: "Rounded Total starts equal to Applied Total. Edit only to round the bill."
                                     font_color: #x0B1220
                                     font_size: 12.
+                                    visible: false
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -6457,6 +7270,7 @@ script_mod! {
                                     body: " "
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
                                 ActionStack{
                                     amend_btn := RowPrimaryBtn{text: "Amend"}
@@ -6488,26 +7302,23 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        credit_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/credit.webp")
-                                        }
-                                        credit_title := WrapLabel{body: "Parties" font_color: #x0B1220 font_size: 20.}
-                                    }
+                                credit_help := InfoHelp{
+                                    tip: "Party id is unique (names may repeat). Roles: Consignor (AR), Carrier (AP), or both on that id. Ledgers stay separate; reports show net."
                                 }
+                                FormCard{
                                 FormFieldRow{
                                     credit_add_name := FieldInput{empty_text: "Party name"}
                                     credit_add_phone := FieldInput{empty_text: "Phone"}
                                 }
-                                credit_add_address := FieldInput{empty_text: "Address"}
+                                FormFieldRow{
+                                    party_country_input := FieldInput{empty_text: "Country"}
+                                    party_state_input := FieldInput{empty_text: "State / region"}
+                                }
+                                party_country_suggest := mod.widgets.SuggestList{field: "party_country"}
+                                party_state_suggest := mod.widgets.SuggestList{field: "party_state"}
+                                party_pincode_input := FieldInput{empty_text: "PIN / ZIP / postcode"}
+                                party_pincode_suggest := mod.widgets.SuggestList{field: "party_pincode"}
+                                credit_add_address := FieldInput{empty_text: "Street / area address"}
                                 // Optional logo — same pick/clear pattern as Rates photos.
                                 party_image_hint := WrapLabel{
                                     body: "Logo: none (initials)"
@@ -6520,7 +7331,7 @@ script_mod! {
                                 }
                                 ActionStack{
                                     party_image_clear := RowSecondaryBtn{text: "Clear logo"}
-                                    party_image_pick := RowPrimaryBtn{text: "Pick logo"}
+                                    party_image_pick := RowSecondaryBtn{text: "Pick logo"}
                                 }
                                 h_account_kind := WrapLabel{
                                     body: "Account kind (tap one)"
@@ -6552,10 +7363,11 @@ script_mod! {
                                 // SegBtns write here (Khaynjo hides this; Moklanjo keeps it
                                 // visible so a rare custom role word can still be typed).
                                 credit_add_kind := FieldInput{empty_text: "Custom role (optional) — or tap a chip above"}
-                                credit_add_btn := RowPrimaryBtn{text: "Add party"}
+                                credit_add_btn := StackPrimaryBtn{text: "Add party"}
                                 ActionStack{
                                     party_form_clear := RowSecondaryBtn{text: "New party (clear form)"}
                                     party_delete := DangerBtn{text: "Delete selected party"}
+                                }
                                 }
                                 parties_list_heading := WrapLabel{
                                     body: "Saved parties"
@@ -6568,11 +7380,12 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 10
                                     visible: false
+                                FormCard{
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
                                     align: Align{x: 0.0 y: 0.5}
-                                    h_party_custom_heading := WrapLabel{body: "Custom fields (selected party)" font_color: #x0B1220 font_size: 15.}
+                                    h_party_custom_heading := WrapLabel{body: "Custom fields" font_color: #x0B1220 font_size: 15.}
                                     party_custom_help := InfoHelp{
                                         width: Fit
                                         tip: "Add any label and value on this party — WhatsApp, GSTIN, route code, …"
@@ -6583,19 +7396,24 @@ script_mod! {
                                     party_custom_value := FieldInput{empty_text: "Value"}
                                 }
                                 ActionStack{
-                                    party_custom_add := RowPrimaryBtn{text: "Add / update field"}
+                                    party_custom_add := RowSecondaryBtn{text: "Add field"}
                                     party_custom_remove := RowSecondaryBtn{text: "Remove field"}
                                 }
                                 party_custom_list := mod.widgets.ReportText{}
-                                h_credit_limit_heading := WrapLabel{body: "Credit limit (selected / named party)" font_color: #x0B1220 font_size: 15.}
+                                }
+                                FormCard{
+                                h_credit_limit_heading := WrapLabel{body: "Credit limit" font_color: #x0B1220 font_size: 15.}
                                 FormFieldRow{
                                     credit_limit_input := FieldInput{empty_text: "Credit limit (0 = none)"}
                                     credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
                                 }
+                                credit_party_suggest := mod.widgets.SuggestList{field: "credit_party"}
                                 ActionStack{
-                                    credit_limit_set := RowPrimaryBtn{text: "Set credit limit"}
+                                    credit_limit_set := RowSecondaryBtn{text: "Apply limit to party"}
                                     credit_period_bill := RowSecondaryBtn{text: "Period bill"}
                                 }
+                                }
+                                FormCard{
                                 h_pay_selected_heading := WrapLabel{body: "Pay selected (settle debt / take advance)" font_color: #x0B1220 font_size: 15.}
                                 settle_amount_input := FieldInput{empty_text: "Amount received"}
                                 FormFieldRow{
@@ -6625,10 +7443,12 @@ script_mod! {
                                 payable_open_bills := mod.widgets.ReportText{}
                                 payable_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                 payable_writeoff := NavBtn{text: "Write off AP"}
-                                h_notes_attach_party := WrapLabel{body: "Notes & attachments (selected party)" font_color: #x0B1220 font_size: 15.}
+                                }
+                                FormCard{
+                                h_notes_attach_party := WrapLabel{body: "Notes & attachments" font_color: #x0B1220 font_size: 15.}
                                 party_attach_note := FieldInput{empty_text: "Note / GSTIN / agreement reminder"}
                                 ActionStack{
-                                    party_attach_add_note := RowPrimaryBtn{text: "Add note"}
+                                    party_attach_add_note := RowSecondaryBtn{text: "Add note"}
                                     party_attach_photo := RowSecondaryBtn{text: "Attach photo"}
                                     party_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
                                 }
@@ -6638,6 +7458,7 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 party_attach_list := mod.widgets.ReportText{}
+                                }
                                 } // party_detail
                             }
                         }
@@ -6649,41 +7470,25 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        team_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/team.webp")
-                                        }
-                                        team_title := WrapLabel{body: "Team" font_color: #x0B1220 font_size: 20.}
-                                    }
-                                }
-                                h_team_owner_help := WrapLabel{
-                                    width: Fill
-                                    body: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
-                                    font_color: #x0B1220
-                                    font_size: 12.
+                                team_help := InfoHelp{
+                                    tip: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
                                 }
                                 staff_label := mod.widgets.ReportText{}
+                                FormCard{
                                 staff_name_input := FieldInput{empty_text: "Staff name / id"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Barista)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
                                 h_permission_preset := WrapLabel{
-                                    body: "Permission preset (what they can access)"
+                                    body: "Permission preset"
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
                                 h_preset_help_moklanjo := WrapLabel{
                                     width: Fill
-                                    body: "Cashier: sell. Manager: sell + items + void/amend."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -6697,17 +7502,21 @@ script_mod! {
                                         staff_role_manager_on := SegBtnOn{text: "Manager" visible: false}
                                     }
                                 }
-                                staff_add_cashier := RowPrimaryBtn{text: "Add staff"}
-                                staff_set_login := RowSecondaryBtn{text: "Set login on selected"}
+                                staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 staff_deactivate := DangerBtn{text: "Remove selected"}
+                                }
+                                FormCard{
                                 h_optional_login_help := InfoHelp{
                                     width: Fit
                                     tip: "Optional login (id + password). Owner sets once; only the user can change password later."
                                 }
                                 staff_login_input := FieldInput{empty_text: "Login id (optional)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
+                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
+                                }
+                                FormCard{
                                 h_feature_access_help := WrapLabel{
-                                    body: "Feature access for selected staff (tap after adding)"
+                                    body: "Feature access for selected staff"
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
@@ -6766,6 +7575,7 @@ script_mod! {
                                 // Pick who to edit by name; their rights below are a
                                 // draft until Save.
                                 team_pick_input := FieldInput{empty_text: "Staff name to edit"}
+                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_pick_btn := NavBtn{text: "Select this staff"}
                                 team_selected_label := WrapLabel{
                                     body: " "
@@ -6777,16 +7587,20 @@ script_mod! {
                                 }
                                 right_void_btn := NavBtn{text: "Void or refund a booking"}
                                 right_amend_btn := NavBtn{text: "Amend a recorded booking"}
-                                feat_save := RowPrimaryBtn{text: "Save features for selected staff"}
+                                feat_save := StackPrimaryBtn{text: "Save features"}
+                                }
+                                FormCard{
                                 h_change_my_pin_heading := WrapLabel{
                                     body: "Change my PIN (only yours)"
                                     font_color: #x0B1220
                                     font_size: 15.
                                 }
                                 my_pin_input := FieldInput{empty_text: "New PIN (4–12 digits)"}
-                                change_my_pin := NavBtn{text: "Update my PIN"}
+                                change_my_pin := StackPrimaryBtn{text: "Update my PIN"}
                                 my_password_input := FieldInput{empty_text: "New password (optional)"}
-                                change_my_password := NavBtn{text: "Update my password"}
+                                change_my_password := RowSecondaryBtn{text: "Update my password"}
+                                }
+                                FormCard{
                                 h_duress_heading := WrapLabel{
                                     body: "Emergency unlock PIN (Owner only)"
                                     font_color: #x0B1220
@@ -6802,8 +7616,9 @@ script_mod! {
                                 }
                                 duress_pin_input := FieldInput{empty_text: "Emergency PIN (4–12 digits)"}
                                 duress_pin_confirm := FieldInput{empty_text: "Type again to confirm"}
-                                save_duress_pin := NavBtn{text: "Save emergency PIN"}
-                                clear_duress_pin := NavBtn{text: "Turn off emergency PIN"}
+                                save_duress_pin := StackPrimaryBtn{text: "Save emergency PIN"}
+                                clear_duress_pin := RowSecondaryBtn{text: "Turn off emergency PIN"}
+                                }
                             }
                         }
 
@@ -6814,54 +7629,56 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        settings_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/settings.webp")
-                                        }
-                                        settings_title := WrapLabel{body: "Language & currency" font_color: #x0B1220 font_size: 20.}
-                                    }
+                                settings_help := InfoHelp{
+                                    tip: "Follow this device’s language, or pick one yourself."
                                 }
                                 sidebar_settings_open := NavBtn{text: "Sidebar settings"}
                                 locale_label := mod.widgets.ReportText{}
                                 h_country_tax := WrapLabel{body: "Country & tax" font_color: #x0B1220 font_size: 20.}
                                 h_country_pack_help := WrapLabel{
                                     width: Fill
-                                    body: "A country pack sets the tax name and maths, the instant-pay rail, and the business id printed on bills. Kumkaj does not file taxes or issue government e-invoices anywhere."
+                                    body: ""
                                     font_color: #x0B1220
                                     font_size: 12.
+                                    visible: false
                                 }
+                                FormCard{
                                 fiscal_label := mod.widgets.ReportText{}
                                 country_code_input := FieldInput{
                                     empty_text: "Country code e.g. IN, GB, US, AE, BR"
                                 }
+                                country_suggest := mod.widgets.SuggestList{field: "country"}
                                 ActionStack{
-                                    country_prev := NavBtn{text: "Previous country"}
-                                    country_next := NavBtn{text: "Next country"}
+                                    country_prev := RowSecondaryBtn{text: "Previous country"}
+                                    country_next := RowSecondaryBtn{text: "Next country"}
                                 }
-                                country_apply := NavBtn{text: "Apply country pack"}
+                                country_apply := StackPrimaryBtn{text: "Apply country pack"}
                                 country_hint := WrapLabel{
                                     body: " "
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
                                 country_pack_list := mod.widgets.ReportText{}
-                                ActionStack{
-                                    tax_inclusive_btn := NavBtn{text: "Tax inside price"}
-                                    tax_exclusive_btn := NavBtn{text: "Tax added at till"}
+                                }
+                                FormCard{
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        tax_inclusive_btn := SegBtn{text: "Tax inside price"}
+                                        tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        tax_exclusive_btn := SegBtn{text: "Tax added at till"}
+                                        tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
+                                    }
                                 }
                                 business_tax_id_input := FieldInput{empty_text: "Business tax id"}
                                 service_bps_input := FieldInput{
                                     empty_text: "Service % optional 0/10/12"
                                 }
-                                fiscal_save := NavBtn{text: "Save business id & service %"}
+                                fiscal_save := StackPrimaryBtn{text: "Save business id"}
+                                }
                                 h_language := WrapLabel{body: "Language" font_color: #x0B1220 font_size: 15.}
                                 h_language_setup_hint := WrapLabel{
                                     width: Fill
@@ -6933,16 +7750,19 @@ script_mod! {
                                 }
                                 h_product_only_moklanjo := WrapLabel{
                                     width: Fill
-                                    body: "This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
+                                FormCard{
                                 h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x0B1220 font_size: 20.}
                                 h_brand_shown_help := WrapLabel{
                                     width: Fill
-                                    body: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
+                                    body: ""
                                     font_color: #x0B1220
                                     font_size: 12.
+                                    visible: false
                                 }
                                 venue_title_input := FieldInput{empty_text: "Name of this place"}
                                 venue_brand_hint := WrapLabel{
@@ -6951,28 +7771,34 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 ActionStack{
-                                    venue_icon_pick := RowPrimaryBtn{text: "Choose icon"}
+                                    venue_icon_pick := RowSecondaryBtn{text: "Choose icon"}
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
-                                venue_brand_save := NavBtn{text: "Save brand"}
+                                venue_brand_save := StackPrimaryBtn{text: "Save brand"}
+                                }
+                                FormCard{
                                 h_print_faces := WrapLabel{body: "Print faces (receipt / period bill)" font_color: #x0B1220 font_size: 16.}
                                 print_faces_hint := WrapLabel{
                                     width: Fill
-                                    body: "Optional stamp and payment QR next to your logo on booking receipts and period bills."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
                                 ActionStack{
-                                    print_stamp_pick := RowPrimaryBtn{text: "Choose receipt stamp"}
+                                    print_stamp_pick := RowSecondaryBtn{text: "Choose receipt stamp"}
                                     print_stamp_clear := RowSecondaryBtn{text: "Clear stamp"}
                                 }
                                 ActionStack{
-                                    print_qr_pick := RowPrimaryBtn{text: "Choose payment QR"}
+                                    print_qr_pick := RowSecondaryBtn{text: "Choose payment QR"}
                                     print_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
                                 }
+                                }
+                                FormCard{
                                 h_awb_pools := WrapLabel{body: "Carrier AWB number pools" font_color: #x0B1220 font_size: 16.}
                                 awb_pools_label := mod.widgets.ReportText{}
                                 awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
+                                awb_pool_carrier_suggest := mod.widgets.SuggestList{field: "awb_pool_carrier"}
                                 FormFieldRow{
                                     awb_pool_start_input := FieldInput{empty_text: "Start no."}
                                     awb_pool_end_input := FieldInput{empty_text: "End no."}
@@ -6981,43 +7807,58 @@ script_mod! {
                                     awb_pool_prefix_input := FieldInput{empty_text: "Prefix (optional)"}
                                     awb_pool_label_input := FieldInput{empty_text: "Label (optional)"}
                                 }
-                                awb_pool_add := NavBtn{text: "Add AWB pool"}
+                                awb_pool_add := StackPrimaryBtn{text: "Add AWB pool"}
+                                }
+                                FormCard{
                                 h_units_heading := WrapLabel{body: "Units" font_color: #x0B1220 font_size: 20.}
                                 h_units_help := WrapLabel{
                                     width: Fill
-                                    body: "Codes for item labels (kg, piece, bag). Every unit must link — directly or through other units — to a standard (kg · cm · ml · pc), e.g. 1 crate = 2 box and 1 box = 20 cm. Conversions: 1 from = factor to. Currencies are never units."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
                                 units_label := mod.widgets.ReportText{}
                                 unit_code_input := FieldInput{empty_text: "Code (bag)"}
                                 unit_name_input := FieldInput{empty_text: "Name (Bag)"}
-                                unit_add := NavBtn{text: "Add unit"}
+                                unit_add := StackPrimaryBtn{text: "Add unit"}
+                                }
+                                FormCard{
                                 conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
                                 conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
-                                conv_add := NavBtn{text: "Add conversion"}
+                                conv_add := StackPrimaryBtn{text: "Add conversion"}
+                                }
+                                FormCard{
                                 h_booking_measures := WrapLabel{body: "Booking measures" font_color: #x0B1220 font_size: 20.}
                                 h_measures_help_moklanjo := WrapLabel{
                                     width: Fill
-                                    body: "How parcels are measured at the booking desk. Domestic bookings use this divisor (India default ÷5000). Tap International on Booking for ÷6000 air without changing Settings. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg. Books always record kg."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
                                 measure_label := mod.widgets.ReportText{}
                                 measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
+                                measure_dim_suggest := mod.widgets.SuggestList{field: "measure_dim"}
                                 measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
+                                measure_weight_suggest := mod.widgets.SuggestList{field: "measure_weight"}
                                 measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000 domestic)"}
                                 measure_slab_input := FieldInput{empty_text: "Chargeable slab in kg (0.5)"}
-                                measure_save := NavBtn{text: "Save booking measures"}
+                                measure_save := StackPrimaryBtn{text: "Save booking measures"}
+                                }
                                 // Printers belong to this device (any OS): a system
                                 // printer by name, or a network receipt printer's address.
+                                FormCard{
                                 h_printers := WrapLabel{body: "Printers on this device" font_color: #x0B1220 font_size: 20.}
                                 h_printers_help := WrapLabel{
                                     width: Fill
                                     body: " "
                                     font_color: #x3A4554
                                     font_size: 12.
+                                    visible: false
                                 }
                                 printers_found_label := WrapLabel{
                                     width: Fill
@@ -7026,24 +7867,49 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 printers_found_list := mod.widgets.ReportText{}
-                                find_printers_btn := NavBtn{text: "Find printers"}
+                                find_printers_btn := RowSecondaryBtn{text: "Find printers"}
                                 h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
                                 printers_pool_label := mod.widgets.ReportText{}
                                 printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
                                 printer_target_input := FieldInput{empty_text: "Address or system name"}
-                                printer_add := NavBtn{text: "Add printer"}
-                                printer_remove := NavBtn{text: "Remove last"}
+                                printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
+                                ActionStack{
+                                    printer_add := RowSecondaryBtn{text: "Add printer"}
+                                    printer_remove := RowSecondaryBtn{text: "Remove last"}
+                                }
                                 h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
                                 printer_routes_label := mod.widgets.ReportText{}
-                                route_pick_input := FieldInput{empty_text: "receipt or label"}
+                                h_route_pick := Label{
+                                    text: "Print route"
+                                    draw_text.color: #x3A4554
+                                    draw_text.text_style.font_size: 11.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        route_pick_receipt := SegBtn{text: "Receipt"}
+                                        route_pick_receipt_on := SegBtnOn{text: "Receipt" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        route_pick_label := SegBtn{text: "Label"}
+                                        route_pick_label_on := SegBtnOn{text: "Label" visible: false}
+                                    }
+                                }
                                 route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
-                                route_add := NavBtn{text: "Add to route"}
-                                route_up := NavBtn{text: "Up"}
-                                route_down := NavBtn{text: "Down"}
-                                route_remove := NavBtn{text: "Remove last"}
-                                route_clear := NavBtn{text: "Don't print"}
-                                printers_save := NavBtn{text: "Save printers"}
-                                print_test_btn := NavBtn{text: "Print a test page"}
+                                route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
+                                ActionStack{
+                                    route_add := RowSecondaryBtn{text: "Add to route"}
+                                    route_up := RowSecondaryBtn{text: "Up"}
+                                    route_down := RowSecondaryBtn{text: "Down"}
+                                    route_remove := RowSecondaryBtn{text: "Remove last"}
+                                    route_clear := RowSecondaryBtn{text: "Don't print"}
+                                }
+                                ActionStack{
+                                    printers_save := StackPrimaryBtn{text: "Save printers"}
+                                    print_test_btn := RowSecondaryBtn{text: "Print a test page"}
+                                }
+                                }
                                 h_backup := WrapLabel{body: "Backup" font_color: #x0B1220 font_size: 20.}
                                 backup_auto_label := WrapLabel{
                                     width: Fill
@@ -7077,17 +7943,9 @@ script_mod! {
                                     flow: Right spacing: 10
                                     align: Align{y: 0.5}
                                     sidebar_settings_back := QuietFitBtn{text: "← Settings"}
-                                    sidebar_settings_title := WrapLabel{
-                                        body: "Sidebar settings"
-                                        font_color: #x0B1220
-                                        font_size: 20.
+                                    sidebar_settings_help := InfoHelp{
+                                        tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                     }
-                                }
-                                sidebar_settings_help := WrapLabel{
-                                    width: Fill
-                                    body: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
-                                    font_color: #x3A4554
-                                    font_size: 13.
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -7167,7 +8025,10 @@ script_mod! {
                                         ops_rider_input := FieldInput{empty_text: "Rider name"}
                                         ops_carrier_input := FieldInput{empty_text: "Carrier party"}
                                     }
+                                    ops_rider_suggest := mod.widgets.SuggestList{field: "ops_rider"}
+                                    ops_carrier_suggest := mod.widgets.SuggestList{field: "ops_carrier"}
                                     ops_party_input := FieldInput{empty_text: "Consignor / party name"}
+                                    ops_party_suggest := mod.widgets.SuggestList{field: "ops_party"}
                                     ActionStack{
                                         ops_advance_ofd := RowPrimaryBtn{text: "Out for delivery"}
                                         ops_advance_delivered := RowSecondaryBtn{text: "Mark delivered"}
@@ -7323,26 +8184,12 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        inventory_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/inventory.webp")
-                                        }
-                                        inventory_title := WrapLabel{body: "Inventory" font_color: #x0B1220 font_size: 20.}
-                                    }
-                                }
-                                inventory_label := mod.widgets.ReportText{}
-                                h_stock_type_help := InfoHelp{
+                                inventory_help := InfoHelp{
                                     tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
                                 }
+                                inventory_label := mod.widgets.ReportText{}
                                 inv_item_input := FieldInput{empty_text: "Item name"}
+                                inv_item_suggest := mod.widgets.SuggestList{field: "inv_item"}
                                 inv_qty_input := FieldInput{empty_text: "Quantity"}
                                 inv_note_input := FieldInput{empty_text: "Reason / note (wastage, count, …)"}
                                 ActionStack{
@@ -7353,6 +8200,7 @@ script_mod! {
                                 h_goods_received_2 := WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 inv_cost_input := FieldInput{empty_text: "Unit cost"}
                                 inv_supplier_input := FieldInput{empty_text: "Supplier"}
+                                inv_supplier_suggest := mod.widgets.SuggestList{field: "inv_supplier"}
                                 inv_purchase := NavBtn{text: "Record purchase"}
                             }
                         }
@@ -7364,20 +8212,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        branches_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/branches.webp")
-                                        }
-                                        branches_title := WrapLabel{body: "Branches" font_color: #x0B1220 font_size: 20.}
-                                    }
+                                branches_help := InfoHelp{
+                                    tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
                                 }
                                 org_name_input := FieldInput{empty_text: "Business name"}
                                 org_save := NavBtn{text: "Save business name"}
@@ -7395,19 +8231,10 @@ script_mod! {
                                     branch_switch_input := FieldInput{empty_text: "Branch name to sell from"}
                                     branch_switch := NavBtn{text: "Switch this device"}
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    align: Align{x: 0.0 y: 0.5}
-                                    h_branch_export_title := WrapLabel{
-                                        body: "Outlet day transfer"
-                                        font_color: #x0B1220
-                                        font_size: 15.
-                                    }
-                                    h_branch_export_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
-                                    }
+                                h_branch_export_title := WrapLabel{
+                                    body: "Outlet day transfer"
+                                    font_color: #x0B1220
+                                    font_size: 15.
                                 }
                                 ActionStack{
                                     branch_export := RowPrimaryBtn{text: "Export day"}
@@ -8719,6 +9546,86 @@ impl Widget for SaleList {
     }
 }
 
+/// Under a "type or pick" field (see `suggest.rs`): closed it draws
+/// nothing; open it is a capped scrolling list of what the counter
+/// already has for that field. `field` names which [`SuggestField`] it serves.
+#[derive(Script, ScriptHook, Widget)]
+struct SuggestList {
+    #[deref]
+    view: View,
+    #[live]
+    field: String,
+    #[rust]
+    drawn_rev: u64,
+}
+
+impl SuggestList {
+    fn is_open(&self) -> bool {
+        app_state().lock().unwrap().suggest_open.map(|f| f.key()) == Some(self.field.as_str())
+    }
+}
+
+impl Widget for SuggestList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (open, rows, rev, lang) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.suggest_open.map(|f| f.key()) == Some(self.field.as_str()),
+                st.suggest_rows.clone(),
+                st.suggest_rev,
+                st.locale.language.clone(),
+            )
+        };
+        if !open || rows.is_empty() {
+            return DrawStep::done();
+        }
+        let walk = Walk {
+            height: Size::Fixed(list_content_height(rows.len(), 51.0, 4.0).min(SUGGEST_MAX_HEIGHT)),
+            ..walk
+        };
+        let use_text = locale::t(&lang, "use");
+        let new_rev = self.drawn_rev != rev;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                if new_rev {
+                    list.set_first_id_and_scroll(0, 0.0);
+                }
+                list.set_item_range(cx, 0, rows.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(row) = rows.get(item_id) else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    item.label(cx, ids!(title)).set_text(cx, &row.value);
+                    item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
+                    item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
+                    let action = if row.action.trim().is_empty() {
+                        use_text.as_str()
+                    } else {
+                        row.action.as_str()
+                    };
+                    item.label(cx, ids!(action)).set_text(cx, action);
+                    item.draw_all_unscoped(cx);
+                }
+            }
+        }
+        self.drawn_rev = rev;
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if !self.is_open() {
+            return;
+        }
+        claim_list_nested_scroll(cx, &self.view, event);
+        self.view.handle_event(cx, event, scope);
+        claim_list_nested_scroll(cx, &self.view, event);
+    }
+}
+
+/// Tallest a "type or pick" list gets before it scrolls (about six rows).
+const SUGGEST_MAX_HEIGHT: f64 = 330.0;
+
 #[derive(Script, ScriptHook, Widget)]
 struct CustomerList {
     #[deref]
@@ -9588,11 +10495,6 @@ impl InfoHelpRef {
     }
 }
 
-/// Page heading WrapLabel + matching colored nav PNG (left of the title).
-fn paint_page_title_icon(cx: &mut Cx, ui: &WidgetRef, icon_id: &[LiveId], tab: NavTab) {
-    load_nav_icon_once(cx, &ui.image(cx, icon_id), tab);
-}
-
 /// Decode a nav WebP into `img` only when the tab (or empty image) changed.
 /// Re-loading + `redraw` on every chrome sync scheduled endless frames.
 /// Returns `true` when bytes were freshly loaded (caller may need a
@@ -10229,8 +11131,14 @@ impl App {
                 );
             let undo_snack_text = st.undo_snack_text.clone();
             let bill_round_active = st.cart.charge_total.is_some();
+            let today_visible = amount_key_visible(
+                st.amounts_screen_hidden,
+                &st.amount_keys_hidden,
+                &st.amount_keys_peek,
+                "today",
+            );
             (
-                st.today_label(),
+                st.today_label(today_visible),
                 session_line,
                 st.status.clone(),
                 if st.last_receipt == "No sale yet" {
@@ -10272,17 +11180,12 @@ impl App {
 
         {
             let st = app_state().lock().unwrap();
-            let visible = amount_key_visible(
-                st.amounts_screen_hidden,
-                &st.amount_keys_hidden,
-                "today",
-            );
             let screen_eye = eye_glyph(!st.amounts_screen_hidden);
             drop(st);
-            self.ui.widget(cx, ids!(today_label)).set_text(
-                cx,
-                &plain_display_text(&display_sensitive(&today, visible)),
-            );
+            // Money slots already masked in `today_label`; keep words visible.
+            self.ui
+                .widget(cx, ids!(today_label))
+                .set_text(cx, &plain_display_text(&today));
             self.ui.button(cx, ids!(amounts_eye)).set_text(cx, screen_eye);
         }
         self.ui
@@ -10955,9 +11858,10 @@ impl App {
                     "Void and refund need an Owner or Manager. Type their PIN above and the approval is recorded with your name.",
                 ),
             );
+            // Tip lives on sales_help ℹ (amend_help); keep essay off the work surface.
             self.ui
                 .widget(cx, ids!(approval_hint))
-                .set_visible(cx, !may_void);
+                .set_visible(cx, false);
         }
         self.ui
             .widget(cx, ids!(sale_selected_label))
@@ -11404,13 +12308,13 @@ impl App {
                     amount_key_visible(
                         st.amounts_screen_hidden,
                         &st.amount_keys_hidden,
+                        &st.amount_keys_peek,
                         "day_close",
                     )
                 };
-                self.ui.widget(cx, ids!(day_close_label)).set_text(
-                    cx,
-                    &plain_display_text(&display_sensitive(&day_close, visible)),
-                );
+                // Mask money values only — headings/labels/counts stay readable.
+                let rows = apply_amount_visibility(parse_report(&day_close), visible);
+                self.set_report_rows(cx, ids!(day_close_label), rows);
             }
             // Books home: each figure has its own eye (persisted).
             {
@@ -11551,13 +12455,12 @@ impl App {
                     amount_key_visible(
                         st.amounts_screen_hidden,
                         &st.amount_keys_hidden,
+                        &st.amount_keys_peek,
                         "reports",
                     )
                 };
-                self.ui.widget(cx, ids!(reports_label)).set_text(
-                    cx,
-                    &plain_display_text(&display_sensitive(&day_close, visible)),
-                );
+                let rows = apply_amount_visibility(parse_report(&day_close), visible);
+                self.set_report_rows(cx, ids!(reports_label), rows);
             }
             let ops_facet = !matches!(reports_nav, ReportsNav::Bank);
             self.ui.view(cx, ids!(ops_desk)).set_visible(cx, ops_facet);
@@ -12134,6 +13037,7 @@ impl App {
             device_role,
             picking_server,
             amend_pay,
+            tax_inclusive,
         ) = {
             let st = app_state().lock().unwrap();
             (
@@ -12146,8 +13050,21 @@ impl App {
                 st.device_role,
                 st.picking_server,
                 st.amend_pay,
+                st.fiscal.tax_pricing.is_inclusive(),
             )
         };
+        self.paint_choice_pair(
+            cx,
+            ids!(tax_inclusive_btn),
+            ids!(tax_inclusive_btn_on),
+            tax_inclusive,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(tax_exclusive_btn),
+            ids!(tax_exclusive_btn_on),
+            !tax_inclusive,
+        );
         self.paint_choice_pair(
             cx,
             ids!(reports_today),
@@ -12323,6 +13240,50 @@ impl App {
             ids!(booking_scope_intl_on),
             scope_intl,
         );
+        let (insured, buy_kind, route_key) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.booking_insurance,
+                st.buy_party_kind.clone(),
+                st.printer_route_key.clone(),
+            )
+        };
+        self.paint_choice_pair(
+            cx,
+            ids!(booking_insurance_no),
+            ids!(booking_insurance_no_on),
+            !insured,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(booking_insurance_yes),
+            ids!(booking_insurance_yes_on),
+            insured,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(buy_kind_supplier),
+            ids!(buy_kind_supplier_on),
+            buy_kind.eq_ignore_ascii_case("Supplier"),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(buy_kind_carrier),
+            ids!(buy_kind_carrier_on),
+            buy_kind.eq_ignore_ascii_case("Carrier"),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(route_pick_receipt),
+            ids!(route_pick_receipt_on),
+            route_key.eq_ignore_ascii_case("receipt"),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(route_pick_label),
+            ids!(route_pick_label_on),
+            route_key.eq_ignore_ascii_case("label"),
+        );
         {
             let lang = app_state().lock().unwrap().locale.language.clone();
             let scope_hint = if scope_intl {
@@ -12333,6 +13294,10 @@ impl App {
             self.ui
                 .widget(cx, ids!(booking_scope_hint))
                 .set_text(cx, &scope_hint);
+            self.ui
+                .widget(cx, ids!(booking_scope_help))
+                .as_info_help()
+                .set_tip(&plain_display_text(&scope_hint));
         }
         // Keep lane labels current on both faces.
         let (declared, owner) = {
@@ -12540,11 +13505,8 @@ impl App {
         self.align_label(cx, ids!(h_actual_total_cap), rtl);
         self.align_label(cx, ids!(h_applied_total_cap), rtl);
         self.align_label(cx, ids!(h_mix_type_hint_moklanjo), rtl);
-        self.align_label(cx, ids!(h_more_help_moklanjo), rtl);
-        self.align_label(cx, ids!(h_amend_help), rtl);
         self.align_label(cx, ids!(h_rounded_total), rtl);
         self.align_label(cx, ids!(h_account_kind), rtl);
-        self.align_label(cx, ids!(h_team_owner_help), rtl);
         self.align_label(cx, ids!(h_permission_preset), rtl);
         self.align_label(cx, ids!(h_preset_help_moklanjo), rtl);
         self.align_label(cx, ids!(h_optional_login_help), rtl);
@@ -12563,8 +13525,6 @@ impl App {
         self.align_label(cx, ids!(h_units_help), rtl);
         self.align_label(cx, ids!(h_measures_help_moklanjo), rtl);
         self.align_label(cx, ids!(h_restore_help), rtl);
-        self.align_label(cx, ids!(h_stock_type_help), rtl);
-        self.align_label(cx, ids!(h_branch_export_help), rtl);
         self.align_label(cx, ids!(h_book_add_product), rtl);
         self.align_label(cx, ids!(h_book_opening_credit), rtl);
         self.align_label(cx, ids!(h_caption_today), rtl);
@@ -12605,7 +13565,6 @@ impl App {
         self.align_label(cx, ids!(printers_found_label), rtl);
         self.align_input(cx, ids!(printer_label_input), rtl);
         self.align_input(cx, ids!(printer_target_input), rtl);
-        self.align_input(cx, ids!(route_pick_input), rtl);
         self.align_input(cx, ids!(route_add_printer_input), rtl);
         self.align_label(cx, ids!(h_drawer_count), rtl);
         self.align_label(cx, ids!(h_paid_by_2), rtl);
@@ -12617,14 +13576,6 @@ impl App {
         self.align_label(cx, ids!(shop_badge), rtl);
         self.align_label(cx, ids!(money_lane_label), rtl);
         self.align_label(cx, ids!(menu_mode_label), rtl);
-        self.align_label(cx, ids!(more_heading), rtl);
-        self.align_label(cx, ids!(books_title), rtl);
-        self.align_label(cx, ids!(sales_title), rtl);
-        self.align_label(cx, ids!(credit_title), rtl);
-        self.align_label(cx, ids!(team_title), rtl);
-        self.align_label(cx, ids!(settings_title), rtl);
-        self.align_label(cx, ids!(inventory_title), rtl);
-        self.align_label(cx, ids!(branches_title), rtl);
         self.align_label(cx, ids!(setup_lang_title), rtl);
         self.align_label(cx, ids!(setup_lang_hint), rtl);
         self.align_label(cx, ids!(device_setup_banner), rtl);
@@ -12674,7 +13625,6 @@ impl App {
         self.align_input(cx, ids!(booking_declared_input), rtl);
         self.align_input(cx, ids!(booking_contents_input), rtl);
         self.align_input(cx, ids!(booking_eway_input), rtl);
-        self.align_input(cx, ids!(booking_insurance_input), rtl);
         self.align_input(cx, ids!(booking_docket_input), rtl);
         self.align_input(cx, ids!(booking_fuel_input), rtl);
         self.align_input(cx, ids!(booking_zone_input), rtl);
@@ -12683,7 +13633,6 @@ impl App {
         self.align_input(cx, ids!(business_tax_id_input), rtl);
         self.align_input(cx, ids!(buy_item_input), rtl);
         self.align_input(cx, ids!(buy_note_input), rtl);
-        self.align_input(cx, ids!(buy_party_kind), rtl);
         self.align_input(cx, ids!(buy_supplier_input), rtl);
         self.align_input(cx, ids!(client_code_input), rtl);
         self.align_input(cx, ids!(client_host_input), rtl);
@@ -12742,6 +13691,9 @@ impl App {
         self.align_input(cx, ids!(mix_credit_input), rtl);
         self.align_input(cx, ids!(credit_add_phone), rtl);
         self.align_input(cx, ids!(credit_add_address), rtl);
+        self.align_input(cx, ids!(party_country_input), rtl);
+        self.align_input(cx, ids!(party_state_input), rtl);
+        self.align_input(cx, ids!(party_pincode_input), rtl);
         self.align_input(cx, ids!(party_custom_key), rtl);
         self.align_input(cx, ids!(party_custom_value), rtl);
         self.align_input(cx, ids!(credit_limit_input), rtl);
@@ -12783,7 +13735,22 @@ impl App {
     }
 
     fn paint_static_texts(&mut self, cx: &mut Cx) {
-        let lang = app_state().lock().unwrap().locale.language.clone();
+        let (lang, country_code, party_country) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.locale.language.clone(),
+                st.fiscal.country_code.clone(),
+                st.party_form_country.clone(),
+            )
+        };
+        let dial_country = {
+            let from_party = country_code_from_label(&party_country);
+            if from_party.is_empty() {
+                country_code.clone()
+            } else {
+                from_party
+            }
+        };
         let s = |key: &str| locale::t(&lang, key);
         self.ui
             .widget(cx, ids!(h_qty_cap))
@@ -12894,21 +13861,15 @@ impl App {
             .widget(cx, ids!(h_mix_type_hint_moklanjo))
             .set_text(cx, &plain_display_text(&s("mix_type_hint_moklanjo")));
         self.ui
-            .widget(cx, ids!(h_more_help_moklanjo))
-            .set_text(cx, &plain_display_text(&s("more_help_moklanjo")));
-        self.ui
-            .widget(cx, ids!(h_amend_help))
+            .widget(cx, ids!(payment_help))
             .as_info_help()
-            .set_tip(&plain_display_text(&s("amend_help")));
+            .set_tip(&plain_display_text(&s("mix_type_hint_moklanjo")));
         self.ui
             .widget(cx, ids!(h_rounded_total))
             .set_text(cx, &plain_display_text(&s("rounded_total")));
         self.ui
             .widget(cx, ids!(h_account_kind))
             .set_text(cx, &plain_display_text(&s("account_kind")));
-        self.ui
-            .widget(cx, ids!(h_team_owner_help))
-            .set_text(cx, &plain_display_text(&s("team_owner_help")));
         self.ui
             .widget(cx, ids!(h_permission_preset))
             .set_text(cx, &plain_display_text(&s("permission_preset")));
@@ -12972,14 +13933,6 @@ impl App {
             help.set_nav_icon(cx, NavTab::DayClose);
             help.set_tip(&plain_display_text(&s("day_close_help")));
         }
-        self.ui
-            .widget(cx, ids!(h_stock_type_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("stock_type_help")));
-        self.ui
-            .widget(cx, ids!(h_branch_export_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("branch_export_help")));
         self.ui
             .widget(cx, ids!(h_book_add_product))
             .set_text(cx, &plain_display_text(&s("book_add_product")));
@@ -13107,9 +14060,6 @@ impl App {
         self.ui
             .text_input(cx, ids!(printer_target_input))
             .set_empty_text(cx, s("printer_target_ph"));
-        self.ui
-            .text_input(cx, ids!(route_pick_input))
-            .set_empty_text(cx, s("route_pick_ph"));
         self.ui
             .text_input(cx, ids!(route_add_printer_input))
             .set_empty_text(cx, s("route_add_printer_ph"));
@@ -13263,9 +14213,6 @@ impl App {
         self.ui
             .button(cx, ids!(buy_paid_on))
             .set_text(cx, &s("paid_now"));
-        self.ui
-            .text_input(cx, ids!(buy_party_kind))
-            .set_empty_text(cx, s("new_party_kind_ph"));
         self.ui
             .text_input(cx, ids!(buy_supplier_input))
             .set_empty_text(cx, s("supplier_name_ph"));
@@ -13766,12 +14713,12 @@ impl App {
                 "autostart_off"
             }),
         );
-        self.ui
-            .button(cx, ids!(tax_exclusive_btn))
-            .set_text(cx, &s("tax_added_till"));
-        self.ui
-            .button(cx, ids!(tax_inclusive_btn))
-            .set_text(cx, &s("tax_inside_price"));
+        for path in [ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("tax_added_till"));
+        }
+        for path in [ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("tax_inside_price"));
+        }
         self.ui
             .button(cx, ids!(unit_add))
             .set_text(cx, &s("add_unit"));
@@ -13867,14 +14814,22 @@ impl App {
             .widget(cx, ids!(booking_consignor_hint))
             .set_text(cx, &s("booking_consignor_hint"));
         self.ui
+            .widget(cx, ids!(booking_consignor_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("booking_consignor_hint")));
+        self.ui
             .widget(cx, ids!(h_booking_consignee))
             .set_text(cx, &s("booking_consignee_heading"));
+        self.ui
+            .widget(cx, ids!(booking_consignee_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("booking_consignee_hint")));
         self.ui
             .text_input(cx, ids!(booking_origin_name_input))
             .set_empty_text(cx, s("origin_name_ph"));
         self.ui
             .text_input(cx, ids!(booking_origin_phone_input))
-            .set_empty_text(cx, s("origin_phone_ph"));
+            .set_empty_text(cx, phone_placeholder(&s("origin_phone_ph"), &country_code));
         self.ui
             .text_input(cx, ids!(booking_origin_address_input))
             .set_empty_text(cx, s("origin_address_ph"));
@@ -13889,7 +14844,7 @@ impl App {
             .set_empty_text(cx, s("consignee_ph"));
         self.ui
             .text_input(cx, ids!(booking_consignee_phone_input))
-            .set_empty_text(cx, s("consignee_phone_ph"));
+            .set_empty_text(cx, phone_placeholder(&s("consignee_phone_ph"), &country_code));
         self.ui
             .text_input(cx, ids!(booking_consignee_address_input))
             .set_empty_text(cx, s("consignee_address_ph"));
@@ -13906,11 +14861,8 @@ impl App {
             .text_input(cx, ids!(booking_eway_input))
             .set_empty_text(cx, s("eway_ph"));
         self.ui
-            .text_input(cx, ids!(booking_insurance_input))
-            .set_empty_text(cx, s("insurance_label"));
-        self.ui
             .text_input(cx, ids!(booking_notify_input))
-            .set_empty_text(cx, s("notify_phone_ph"));
+            .set_empty_text(cx, phone_placeholder(&s("notify_phone_ph"), &country_code));
         self.ui
             .text_input(cx, ids!(booking_bulk_input))
             .set_empty_text(cx, s("bulk_csv_ph"));
@@ -13976,10 +14928,19 @@ impl App {
             .set_empty_text(cx, s("manager_pin_ph"));
         self.ui
             .text_input(cx, ids!(credit_add_phone))
-            .set_empty_text(cx, s("phone_ph"));
+            .set_empty_text(cx, phone_placeholder(&s("phone_ph"), &dial_country));
         self.ui
             .text_input(cx, ids!(credit_add_address))
             .set_empty_text(cx, s("address_ph"));
+        self.ui
+            .text_input(cx, ids!(party_country_input))
+            .set_empty_text(cx, "Country".to_string());
+        self.ui
+            .text_input(cx, ids!(party_state_input))
+            .set_empty_text(cx, "State / region".to_string());
+        self.ui
+            .text_input(cx, ids!(party_pincode_input))
+            .set_empty_text(cx, "PIN / ZIP / postcode".to_string());
         self.ui
             .text_input(cx, ids!(party_custom_key))
             .set_empty_text(cx, s("party_custom_key_ph"));
@@ -14312,6 +15273,33 @@ impl App {
             self.ui.button(cx, path).set_text(cx, &s("international"));
         }
         self.ui
+            .label(cx, ids!(h_booking_insurance))
+            .set_text(cx, &s("insurance_label"));
+        for path in [ids!(booking_insurance_no), ids!(booking_insurance_no_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("no_label"));
+        }
+        for path in [ids!(booking_insurance_yes), ids!(booking_insurance_yes_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("yes_label"));
+        }
+        self.ui
+            .label(cx, ids!(h_buy_party_kind))
+            .set_text(cx, &s("new_party_kind_label"));
+        for path in [ids!(buy_kind_supplier), ids!(buy_kind_supplier_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("role_supplier"));
+        }
+        for path in [ids!(buy_kind_carrier), ids!(buy_kind_carrier_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("role_carrier"));
+        }
+        self.ui
+            .label(cx, ids!(h_route_pick))
+            .set_text(cx, &s("print_route_label"));
+        for path in [ids!(route_pick_receipt), ids!(route_pick_receipt_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("route_receipt"));
+        }
+        for path in [ids!(route_pick_label), ids!(route_pick_label_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("route_label"));
+        }
+        self.ui
             .button(cx, ids!(role_owner))
             .set_text(cx, &s("owner"));
         self.ui
@@ -14362,46 +15350,58 @@ impl App {
             .set_text(cx, &s("card"));
         {
             let help = self.ui.widget(cx, ids!(items_help_label)).as_info_help();
-            help.set_title(cx, &s("your_items"));
+            help.set_title(cx, &s("items"));
             help.set_nav_icon(cx, NavTab::Rates);
             help.set_tip(&plain_display_text(&s("items_help")));
         }
-        self.ui
-            .widget(cx, ids!(more_heading))
-            .set_text(cx, &plain_display_text(&s("more")));
-        paint_page_title_icon(cx, &self.ui, ids!(more_heading_icon), NavTab::Rates);
-        self.ui
-            .widget(cx, ids!(books_title))
-            .set_text(cx, &plain_display_text(&s("books")));
-        paint_page_title_icon(cx, &self.ui, ids!(books_title_icon), NavTab::Books);
-        self.ui
-            .widget(cx, ids!(sales_title))
-            .set_text(cx, &plain_display_text(&s("sales")));
-        paint_page_title_icon(cx, &self.ui, ids!(sales_title_icon), NavTab::Sales);
-        self.ui
-            .widget(cx, ids!(credit_title))
-            .set_text(cx, &plain_display_text(&s("credit")));
-        paint_page_title_icon(cx, &self.ui, ids!(credit_title_icon), NavTab::Credit);
+        {
+            let help = self.ui.widget(cx, ids!(more_help)).as_info_help();
+            help.set_title(cx, &s("more"));
+            help.set_nav_icon(cx, NavTab::Rates);
+            help.set_tip(&plain_display_text(&s("more_help_moklanjo")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(books_help)).as_info_help();
+            help.set_title(cx, &s("books"));
+            help.set_nav_icon(cx, NavTab::Books);
+            help.set_tip(&plain_display_text(&s("books_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(sales_help)).as_info_help();
+            help.set_title(cx, &s("sales"));
+            help.set_nav_icon(cx, NavTab::Sales);
+            help.set_tip(&plain_display_text(&s("amend_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(credit_help)).as_info_help();
+            help.set_title(cx, &s("credit"));
+            help.set_nav_icon(cx, NavTab::Credit);
+            help.set_tip(&plain_display_text(&s("credit_help")));
+        }
         self.ui
             .text_input(cx, ids!(credit_add_kind))
             .set_empty_text(cx, s("party_kind_ph"));
-        self.ui
-            .widget(cx, ids!(team_title))
-            .set_text(cx, &plain_display_text(&s("team")));
-        paint_page_title_icon(cx, &self.ui, ids!(team_title_icon), NavTab::Team);
-        self.ui
-            .widget(cx, ids!(settings_title))
-            .set_text(cx, &plain_display_text(&s("language_currency")));
-        paint_page_title_icon(cx, &self.ui, ids!(settings_title_icon), NavTab::Settings);
+        {
+            let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
+            help.set_title(cx, &s("team"));
+            help.set_nav_icon(cx, NavTab::Team);
+            help.set_tip(&plain_display_text(&s("team_owner_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(settings_help)).as_info_help();
+            help.set_title(cx, &s("nav_settings"));
+            help.set_nav_icon(cx, NavTab::Settings);
+            help.set_tip(&plain_display_text(&s("language_setup_hint")));
+        }
         self.ui
             .button(cx, ids!(sidebar_settings_open))
             .set_text(cx, &s("sidebar_settings"));
-        self.ui
-            .widget(cx, ids!(sidebar_settings_title))
-            .set_text(cx, &plain_display_text(&s("sidebar_settings")));
-        self.ui
-            .widget(cx, ids!(sidebar_settings_help))
-            .set_text(cx, &plain_display_text(&s("sidebar_settings_help")));
+        {
+            let help = self.ui.widget(cx, ids!(sidebar_settings_help)).as_info_help();
+            help.set_title(cx, &s("sidebar_settings"));
+            help.set_nav_icon(cx, NavTab::Settings);
+            help.set_tip(&plain_display_text(&s("sidebar_settings_help")));
+        }
         self.ui
             .button(cx, ids!(sidebar_settings_back))
             .set_text(cx, &s("sidebar_back_settings"));
@@ -14419,7 +15419,7 @@ impl App {
         }
         {
             let help = self.ui.widget(cx, ids!(reports_help)).as_info_help();
-            help.set_title(cx, &s("reports"));
+            help.set_title(cx, &s("nav_reports"));
             help.set_nav_icon(cx, NavTab::Reports);
             help.set_tip(&plain_display_text(&s("reports_help")));
         }
@@ -14446,14 +15446,18 @@ impl App {
         self.ui
             .widget(cx, ids!(reports_bank_heading))
             .set_text(cx, &plain_display_text(&s("bank_book")));
-        self.ui
-            .widget(cx, ids!(inventory_title))
-            .set_text(cx, &plain_display_text(&s("inventory")));
-        paint_page_title_icon(cx, &self.ui, ids!(inventory_title_icon), NavTab::Inventory);
-        self.ui
-            .widget(cx, ids!(branches_title))
-            .set_text(cx, &plain_display_text(&s("branches")));
-        paint_page_title_icon(cx, &self.ui, ids!(branches_title_icon), NavTab::Branches);
+        {
+            let help = self.ui.widget(cx, ids!(inventory_help)).as_info_help();
+            help.set_title(cx, &s("inventory"));
+            help.set_nav_icon(cx, NavTab::Inventory);
+            help.set_tip(&plain_display_text(&s("stock_type_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(branches_help)).as_info_help();
+            help.set_title(cx, &s("branches"));
+            help.set_nav_icon(cx, NavTab::Branches);
+            help.set_tip(&plain_display_text(&s("branch_export_help")));
+        }
         self.ui
             .widget(cx, ids!(setup_lang_title))
             .set_text(cx, &plain_display_text(&s("language")));
@@ -15095,10 +16099,7 @@ impl App {
         };
         self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
         self.set_report_rows(cx, ids!(printer_routes_label), route_rows);
-        let route_field = self.ui.text_input(cx, ids!(route_pick_input));
-        if !cx.has_key_focus(route_field.area()) && route_field.text() != route_key {
-            route_field.set_text(cx, &route_key);
-        }
+        let _ = route_key;
         self.show_found_printers(cx);
         self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, true);
     }
@@ -15237,6 +16238,7 @@ impl App {
             st.nav_back.clear();
             st.nav_forward.clear();
         }
+        st.suggest_open = None;
         st.screen = next;
     }
 
@@ -15446,6 +16448,16 @@ impl App {
                 *flag = true;
             }
             return true;
+        }
+        // In-screen layers before screen history (open suggest list).
+        {
+            let mut st = app_state().lock().unwrap();
+            if st.suggest_open.is_some() {
+                st.suggest_open = None;
+                drop(st);
+                self.sync_chrome(cx);
+                return true;
+            }
         }
         let dest = {
             let mut st = app_state().lock().unwrap();
@@ -15932,31 +16944,53 @@ impl App {
         self.ui.redraw(cx);
     }
 
+    /// Top (screen) eye — session-only. When turning **hidden**, clears peeks so a
+    /// fresh hide session starts; does not rewrite labels or report structure.
     fn toggle_amounts_screen(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
             st.amounts_screen_hidden = !st.amounts_screen_hidden;
+            // Fresh hide session — don't keep peeks from the last hide.
+            if st.amounts_screen_hidden {
+                st.amount_keys_peek.clear();
+            }
         }
         self.sync_chrome(cx);
     }
 
+    /// Per-figure eye for one amount key:
+    /// - Screen **hidden** → peek / un-peek that key in `amount_keys_peek` (session).
+    /// - Screen **visible** → add / remove the key in persisted `amount_keys_hidden`.
     fn toggle_amount_key(&mut self, cx: &mut Cx, key: &str) {
         {
             let mut st = app_state().lock().unwrap();
-            if let Some(i) = st.amount_keys_hidden.iter().position(|k| k == key) {
-                st.amount_keys_hidden.remove(i);
+            if st.amounts_screen_hidden {
+                // Screen is hiding values by default: this eye peeks / un-peeks one figure.
+                if let Some(i) = st.amount_keys_peek.iter().position(|k| k == key) {
+                    st.amount_keys_peek.remove(i);
+                } else {
+                    st.amount_keys_peek.push(key.to_string());
+                }
             } else {
-                st.amount_keys_hidden.push(key.to_string());
-            }
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_amount_keys_hidden_csv(&amount_keys_hidden_csv(
-                    &st.amount_keys_hidden,
-                ));
+                // Screen is applying individual state: this eye hides / shows one figure.
+                if let Some(i) = st.amount_keys_hidden.iter().position(|k| k == key) {
+                    st.amount_keys_hidden.remove(i);
+                } else {
+                    st.amount_keys_hidden.push(key.to_string());
+                }
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_amount_keys_hidden_csv(&amount_keys_hidden_csv(
+                        &st.amount_keys_hidden,
+                    ));
+                }
             }
         }
         self.sync_chrome(cx);
     }
 
+    /// Canonical paint path for a discrete money figure + its eye control.
+    /// Uses [`amount_key_visible`] + [`display_money`] — pass **only** the money
+    /// string; keep the label widget separate and always visible.
     fn paint_amount_value(
         &mut self,
         cx: &mut Cx,
@@ -15965,14 +16999,18 @@ impl App {
         key: &str,
         text: &str,
     ) {
-        let (screen_hidden, keys_hidden) = {
+        let (screen_hidden, keys_hidden, keys_peek) = {
             let st = app_state().lock().unwrap();
-            (st.amounts_screen_hidden, st.amount_keys_hidden.clone())
+            (
+                st.amounts_screen_hidden,
+                st.amount_keys_hidden.clone(),
+                st.amount_keys_peek.clone(),
+            )
         };
-        let visible = amount_key_visible(screen_hidden, &keys_hidden, key);
+        let visible = amount_key_visible(screen_hidden, &keys_hidden, &keys_peek, key);
         self.ui
             .widget(cx, value_id)
-            .set_text(cx, &plain_display_text(&display_sensitive(text, visible)));
+            .set_text(cx, &plain_display_text(&display_money(text, visible)));
         self.ui.button(cx, eye_id).set_text(cx, eye_glyph(visible));
     }
 
@@ -16028,9 +17066,6 @@ impl App {
         // Essay / debug WrapLabels stay off the work surface. Useful tips live
         // on InfoHelp ℹ (booking_help, buy_help, day_close_help, …).
         let help_ids: &[&[LiveId]] = &[
-            ids!(books_help),
-            ids!(h_more_help_moklanjo),
-            ids!(h_team_owner_help),
             ids!(h_feature_access_help),
             ids!(h_country_pack_help),
             ids!(h_language_setup_hint),
@@ -16042,10 +17077,14 @@ impl App {
             ids!(h_measures_help_moklanjo),
             ids!(h_printers_help),
             ids!(h_restore_help),
-            ids!(sidebar_settings_help),
             ids!(db_path_label),
             ids!(device_setup_help),
             ids!(booking_scope_hint),
+            ids!(booking_consignor_hint),
+            ids!(h_mix_type_hint_moklanjo),
+            ids!(cart_round_hint),
+            ids!(amend_round_hint),
+            ids!(approval_hint),
             ids!(setup_lang_hint),
             ids!(server_pick_hint),
             ids!(h_preset_help_moklanjo),
@@ -17694,10 +18733,6 @@ impl App {
             .text_input(cx, ids!(booking_contents_input))
             .text();
         st.booking_eway = self.ui.text_input(cx, ids!(booking_eway_input)).text();
-        st.booking_insurance = self
-            .ui
-            .text_input(cx, ids!(booking_insurance_input))
-            .text();
         st.booking_fuel = self.ui.text_input(cx, ids!(booking_fuel_input)).text();
         st.booking_docket = self.ui.text_input(cx, ids!(booking_docket_input)).text();
         st.booking_notify_phone = self.ui.text_input(cx, ids!(booking_notify_input)).text();
@@ -17772,7 +18807,6 @@ impl App {
             ids!(booking_declared_input),
             ids!(booking_contents_input),
             ids!(booking_eway_input),
-            ids!(booking_insurance_input),
             ids!(booking_fuel_input),
             ids!(booking_docket_input),
             ids!(booking_notify_input),
@@ -19305,6 +20339,139 @@ impl MatchEvent for App {
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         self.tab_chevron_clicks(cx, actions);
+        // "Type or pick" fields: focus opens the list, typing narrows it, a
+        // tap fills the field, Escape or focusing another field closes it.
+        {
+            let open = app_state().lock().unwrap().suggest_open;
+            let mut changed = false;
+            let mut picked: Option<(SuggestField, String)> = None;
+            for field in SuggestField::ALL {
+                let input = self.ui.text_input(cx, field.input());
+                let uid = input.widget_uid();
+                let focused = actions
+                    .filter_widget_actions_cast::<TextInputAction>(uid)
+                    .any(|a| matches!(a, TextInputAction::KeyFocus));
+                let typed = input.changed(actions);
+                if focused || typed.is_some() {
+                    let text = typed.unwrap_or_else(|| input.text());
+                    let party_country = if matches!(
+                        field,
+                        SuggestField::PartyCountry | SuggestField::PartyState
+                    ) {
+                        if field == SuggestField::PartyCountry {
+                            text.clone()
+                        } else {
+                            self.ui.text_input(cx, ids!(party_country_input)).text()
+                        }
+                    } else {
+                        String::new()
+                    };
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        if !party_country.is_empty()
+                            || matches!(
+                                field,
+                                SuggestField::PartyCountry | SuggestField::PartyState
+                            )
+                        {
+                            st.party_form_country = party_country;
+                        }
+                        st.open_suggest(field, &text);
+                    }
+                    changed = true;
+                } else if input.escaped(actions) && open == Some(field) {
+                    app_state().lock().unwrap().suggest_open = None;
+                    changed = true;
+                }
+                if open == Some(field) {
+                    let widget = self.ui.widget(cx, field.list());
+                    let list = widget.portal_list(cx, ids!(list));
+                    for (item_id, item) in list.items_with_actions(actions) {
+                        if item
+                            .view(cx, ids!(row))
+                            .finger_up(actions)
+                            .is_some_and(|e| e.was_tap() && e.is_over)
+                        {
+                            let value = app_state()
+                                .lock()
+                                .unwrap()
+                                .suggest_rows
+                                .get(item_id)
+                                .map(|r| r.value.clone());
+                            if let Some(v) = value {
+                                picked = Some((field, v));
+                            }
+                        }
+                    }
+                }
+            }
+            if let Some(field) = open
+                && !changed
+            {
+                let mine = self.ui.text_input(cx, field.input()).widget_uid();
+                let elsewhere = actions.iter().filter_map(|a| a.as_widget_action()).any(|wa| {
+                    wa.widget_uid != mine
+                        && matches!(wa.cast::<TextInputAction>(), TextInputAction::KeyFocus)
+                });
+                if elsewhere {
+                    app_state().lock().unwrap().suggest_open = None;
+                    changed = true;
+                }
+            }
+            if let Some((field, value)) = picked {
+                self.ui.text_input(cx, field.input()).set_text(cx, &value);
+                let fill_origin = {
+                    let mut st = app_state().lock().unwrap();
+                    st.suggest_open = None;
+                    if field == SuggestField::Country {
+                        st.country_browse = value.clone();
+                    }
+                    if field == SuggestField::PartyCountry {
+                        st.party_form_country = value.clone();
+                    }
+                    let party = if matches!(
+                        field,
+                        SuggestField::BookingOrigin | SuggestField::CustomerName
+                    ) {
+                        st.customers
+                            .iter()
+                            .find(|c| c.name.eq_ignore_ascii_case(value.trim()))
+                            .cloned()
+                    } else {
+                        None
+                    };
+                    if let Some(ref p) = party {
+                        st.selected_customer_id = Some(p.id.clone());
+                    }
+                    (field == SuggestField::BookingOrigin).then_some(party).flatten()
+                };
+                if let Some(party) = fill_origin {
+                    self.fill_booking_consignor_from_party(cx, &party);
+                }
+                if field == SuggestField::PartyCountry {
+                    let dial_country = country_code_from_label(&value);
+                    let code = if dial_country.is_empty() {
+                        app_state().lock().unwrap().fiscal.country_code.clone()
+                    } else {
+                        dial_country
+                    };
+                    let ph = phone_placeholder(
+                        &app_state().lock().unwrap().t("phone_ph"),
+                        &code,
+                    );
+                    self.ui
+                        .text_input(cx, ids!(credit_add_phone))
+                        .set_empty_text(cx, ph);
+                }
+                changed = true;
+            }
+            if changed {
+                self.sync_chrome(cx);
+                for field in SuggestField::ALL {
+                    self.ui.widget(cx, field.list()).redraw(cx);
+                }
+            }
+        }
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
                 match fd {
@@ -19860,12 +21027,53 @@ impl MatchEvent for App {
             app_state().lock().unwrap().buy_on_account = true;
             self.sync_chrome(cx);
         }
+        if self.choice_chip_clicked(cx, actions, ids!(buy_kind_supplier), ids!(buy_kind_supplier_on))
+        {
+            app_state().lock().unwrap().buy_party_kind = "Supplier".into();
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(buy_kind_carrier), ids!(buy_kind_carrier_on)) {
+            app_state().lock().unwrap().buy_party_kind = "Carrier".into();
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(booking_insurance_no),
+            ids!(booking_insurance_no_on),
+        ) {
+            app_state().lock().unwrap().booking_insurance = false;
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(booking_insurance_yes),
+            ids!(booking_insurance_yes_on),
+        ) {
+            app_state().lock().unwrap().booking_insurance = true;
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(route_pick_receipt),
+            ids!(route_pick_receipt_on),
+        ) {
+            app_state().lock().unwrap().printer_route_key = "receipt".into();
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(route_pick_label), ids!(route_pick_label_on))
+        {
+            app_state().lock().unwrap().printer_route_key = "label".into();
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(buy_purchase)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(buy_item_input)).text();
             let qty_text = self.ui.text_input(cx, ids!(buy_qty_input)).text();
             let cost_text = self.ui.text_input(cx, ids!(buy_cost_input)).text();
             let supplier = self.ui.text_input(cx, ids!(buy_supplier_input)).text();
-            let party_kind = self.ui.text_input(cx, ids!(buy_party_kind)).text();
+            let party_kind = app_state().lock().unwrap().buy_party_kind.clone();
             let note = self.ui.text_input(cx, ids!(buy_note_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
@@ -20659,11 +21867,21 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(credit_add_btn)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
-            let phone = self.ui.text_input(cx, ids!(credit_add_phone)).text();
-            let address = self.ui.text_input(cx, ids!(credit_add_address)).text();
+            let phone_raw = self.ui.text_input(cx, ids!(credit_add_phone)).text();
+            let street = self.ui.text_input(cx, ids!(credit_add_address)).text();
+            let state = self.ui.text_input(cx, ids!(party_state_input)).text();
+            let pin = self.ui.text_input(cx, ids!(party_pincode_input)).text();
+            let country = self.ui.text_input(cx, ids!(party_country_input)).text();
+            let address = compose_party_address(&street, &state, &pin, &country);
             let kind = self.ui.text_input(cx, ids!(credit_add_kind)).text();
             let result = (|| -> Result<(String, bool), String> {
                 let mut st = app_state().lock().unwrap();
+                let dial_country = if country.trim().is_empty() {
+                    st.fiscal.country_code.clone()
+                } else {
+                    country_code_from_label(&country)
+                };
+                let phone = with_calling_code(&phone_raw, &dial_country);
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if let Some(id) = st.selected_customer_id.clone() {
                     st.require_server_role("Edit party")?;
@@ -20720,7 +21938,11 @@ impl MatchEvent for App {
             match result {
                 Ok((msg, clear_form)) => {
                     if clear_form {
-                        app_state().lock().unwrap().draft_party_image_key = None;
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            st.draft_party_image_key = None;
+                            st.party_form_country.clear();
+                        }
                         self.ui
                             .text_input(cx, ids!(credit_add_name))
                             .set_text(cx, "");
@@ -20729,6 +21951,15 @@ impl MatchEvent for App {
                             .set_text(cx, "");
                         self.ui
                             .text_input(cx, ids!(credit_add_address))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(party_country_input))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(party_state_input))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(party_pincode_input))
                             .set_text(cx, "");
                         // Keep role chip (Consignor/Carrier/…) for the next add.
                         self.ui
@@ -20749,6 +21980,7 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 st.selected_customer_id = None;
                 st.draft_party_image_key = None;
+                st.party_form_country.clear();
             }
             self.ui
                 .text_input(cx, ids!(credit_add_name))
@@ -20758,6 +21990,15 @@ impl MatchEvent for App {
                 .set_text(cx, "");
             self.ui
                 .text_input(cx, ids!(credit_add_address))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(party_country_input))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(party_state_input))
+                .set_text(cx, "");
+            self.ui
+                .text_input(cx, ids!(party_pincode_input))
                 .set_text(cx, "");
             // Role chip stays — batch-add carriers/consignors without re-tapping.
             self.ui
@@ -20811,6 +22052,7 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(msg) => {
+                    app_state().lock().unwrap().party_form_country.clear();
                     self.ui
                         .text_input(cx, ids!(credit_add_name))
                         .set_text(cx, "");
@@ -20819,6 +22061,15 @@ impl MatchEvent for App {
                         .set_text(cx, "");
                     self.ui
                         .text_input(cx, ids!(credit_add_address))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(party_country_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(party_state_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(party_pincode_input))
                         .set_text(cx, "");
                     // Keep role chip for the next add.
                     self.set_status(cx, msg);
@@ -21110,6 +22361,7 @@ impl MatchEvent for App {
                         picked
                     };
                     if let Some(c) = picked {
+                        let (street, state, pin, country) = split_party_address(&c.address);
                         self.ui
                             .text_input(cx, ids!(credit_add_name))
                             .set_text(cx, &c.name);
@@ -21118,16 +22370,28 @@ impl MatchEvent for App {
                             .set_text(cx, &c.phone);
                         self.ui
                             .text_input(cx, ids!(credit_add_address))
-                            .set_text(cx, &c.address);
+                            .set_text(cx, &street);
+                        self.ui
+                            .text_input(cx, ids!(party_state_input))
+                            .set_text(cx, &state);
+                        self.ui
+                            .text_input(cx, ids!(party_pincode_input))
+                            .set_text(cx, &pin);
+                        self.ui
+                            .text_input(cx, ids!(party_country_input))
+                            .set_text(cx, &country);
                         self.ui
                             .text_input(cx, ids!(credit_add_kind))
                             .set_text(cx, &c.kind_label);
-                        app_state().lock().unwrap().draft_party_image_key =
-                            if c.image_key.trim().is_empty() {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            st.draft_party_image_key = if c.image_key.trim().is_empty() {
                                 None
                             } else {
                                 Some(c.image_key.clone())
                             };
+                            st.party_form_country = country;
+                        }
                         // Same party is the booking consignor / sender.
                         self.fill_booking_consignor_from_party(cx, &c);
                     }
@@ -22320,11 +23584,19 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        for (id, pricing) in [
-            (ids!(tax_inclusive_btn), TaxPricing::Inclusive),
-            (ids!(tax_exclusive_btn), TaxPricing::Exclusive),
+        for (idle, active, pricing) in [
+            (
+                ids!(tax_inclusive_btn),
+                ids!(tax_inclusive_btn_on),
+                TaxPricing::Inclusive,
+            ),
+            (
+                ids!(tax_exclusive_btn),
+                ids!(tax_exclusive_btn_on),
+                TaxPricing::Exclusive,
+            ),
         ] {
-            if self.ui.button(cx, id).clicked(actions) {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     st.require_server_role("Change tax pricing")?;
@@ -23740,12 +25012,8 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(route_add)).clicked(actions) {
             let pick = self.ui.text_input(cx, ids!(route_add_printer_input)).text();
             let pick_trim = pick.trim().to_string();
-            let route_typed = self.ui.text_input(cx, ids!(route_pick_input)).text();
             {
                 let mut st = app_state().lock().unwrap();
-                if !route_typed.trim().is_empty() {
-                    st.printer_route_key = route_typed.trim().to_ascii_lowercase();
-                }
                 let key = parse_courier_route_key(&st.printer_route_key);
                 if let Some(p) = st
                     .printer_draft
@@ -23771,12 +25039,8 @@ impl MatchEvent for App {
             let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
             let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
             let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
-            let route_typed = self.ui.text_input(cx, ids!(route_pick_input)).text();
             {
                 let mut st = app_state().lock().unwrap();
-                if !route_typed.trim().is_empty() {
-                    st.printer_route_key = route_typed.trim().to_ascii_lowercase();
-                }
                 let key_str = st.printer_route_key.clone();
                 let key = parse_courier_route_key(&key_str);
                 let route = st.printer_draft.route_mut(key);
@@ -23794,12 +25058,8 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printers_save)).clicked(actions) {
-            let route_typed = self.ui.text_input(cx, ids!(route_pick_input)).text();
             let result = {
-                let mut st = app_state().lock().unwrap();
-                if !route_typed.trim().is_empty() {
-                    st.printer_route_key = route_typed.trim().to_ascii_lowercase();
-                }
+                let st = app_state().lock().unwrap();
                 let printers = st.printer_draft.clone();
                 match st.data_base.as_ref() {
                     Some(base) => print_share::save_device_printers(base, &printers)

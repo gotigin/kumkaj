@@ -521,10 +521,14 @@ struct AppState {
     nav_order: Vec<NavTab>,
     /// Chrome peers hidden from rail / bottom bar (Settings + Lock stay shown).
     nav_hidden: Vec<NavTab>,
-    /// Session-only: top eye hides every amount on screen (not persisted).
+    /// Session-only: top eye hides every amount by default (not persisted).
     amounts_screen_hidden: bool,
-    /// Individual amount keys the owner hid (persisted). Top eye still overrides.
+    /// Individual amount keys the owner hid while the screen eye is showing
+    /// (persisted). When the screen eye is hiding, use [`amount_keys_peek`].
     amount_keys_hidden: Vec<String>,
+    /// Session-only: keys revealed while the screen eye is hiding — so a
+    /// per-figure eye can still show one amount without clearing the screen.
+    amount_keys_peek: Vec<String>,
     /// Books home accordion: which section bodies are open (`today`, `bills`, …).
     books_sections_open: Vec<String>,
     /// Floor secondary accordions (`floor_ops`, `waitlist`, `resv`, `floor_add`).
@@ -887,10 +891,18 @@ enum SuggestField {
     StationRemove,
     /// Settings → Areas · stations: same list, own field.
     SettingsStationRemove,
+    /// Order desk: customer / khata party name.
+    CustomerName,
+    /// Floor: reservation preferred table.
+    ResvTable,
+    /// Floor: filter tiles by waiter / staff name.
+    FloorWaiter,
+    /// Settings: bulk price by category name.
+    BulkCat,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 23] = [
+    const ALL: [SuggestField; 27] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -914,6 +926,10 @@ impl SuggestField {
         SuggestField::RoutePick,
         SuggestField::StationRemove,
         SuggestField::SettingsStationRemove,
+        SuggestField::CustomerName,
+        SuggestField::ResvTable,
+        SuggestField::FloorWaiter,
+        SuggestField::BulkCat,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -942,6 +958,10 @@ impl SuggestField {
             SuggestField::RoutePick => "route_pick",
             SuggestField::StationRemove => "station_remove",
             SuggestField::SettingsStationRemove => "settings_station_remove",
+            SuggestField::CustomerName => "customer_name",
+            SuggestField::ResvTable => "resv_table",
+            SuggestField::FloorWaiter => "floor_waiter",
+            SuggestField::BulkCat => "bulk_cat",
         }
     }
 
@@ -970,6 +990,10 @@ impl SuggestField {
             SuggestField::RoutePick => ids!(route_pick_input),
             SuggestField::StationRemove => ids!(station_remove_input),
             SuggestField::SettingsStationRemove => ids!(settings_station_remove_input),
+            SuggestField::CustomerName => ids!(customer_name_input),
+            SuggestField::ResvTable => ids!(resv_table_input),
+            SuggestField::FloorWaiter => ids!(floor_waiter_filter),
+            SuggestField::BulkCat => ids!(bulk_cat_input),
         }
     }
 
@@ -998,6 +1022,10 @@ impl SuggestField {
             SuggestField::RoutePick => ids!(route_pick_suggest),
             SuggestField::StationRemove => ids!(station_remove_suggest),
             SuggestField::SettingsStationRemove => ids!(settings_station_remove_suggest),
+            SuggestField::CustomerName => ids!(customer_name_suggest),
+            SuggestField::ResvTable => ids!(resv_table_suggest),
+            SuggestField::FloorWaiter => ids!(floor_waiter_suggest),
+            SuggestField::BulkCat => ids!(bulk_cat_suggest),
         }
     }
 }
@@ -1302,10 +1330,6 @@ fn nav_tab_caption(_tab: NavTab, label: &str) -> String {
     label.to_string()
 }
 
-fn paint_page_title_icon(cx: &mut Cx, ui: &WidgetRef, icon_id: &[LiveId], tab: NavTab) {
-    load_nav_icon_once(cx, &ui.image(cx, icon_id), tab);
-}
-
 /// Decode a nav WebP into `img` only when the tab (or empty image) changed.
 /// Re-loading + `redraw` on every chrome sync scheduled endless frames.
 /// Returns `true` when bytes were freshly loaded (caller may need a
@@ -1432,6 +1456,14 @@ impl Widget for InfoHelp {
 }
 
 impl InfoHelpRef {
+    fn set_title(&self, cx: &mut Cx, title: &str) {
+        self.label(cx, ids!(title)).set_text(cx, title);
+    }
+
+    fn set_nav_icon(&self, cx: &mut Cx, tab: NavTab) {
+        load_nav_icon_once(cx, &self.image(cx, ids!(icon)), tab);
+    }
+
     fn set_tip(&self, tip: &str) {
         if let Some(mut inner) = self.borrow_mut() {
             inner.tip = tip.to_string();
@@ -1511,18 +1543,134 @@ fn nav_display_order(order: &[NavTab], hidden: &[NavTab]) -> Vec<NavTab> {
 
 /// Password-style mask: every non-space character becomes a bullet so the
 /// string keeps roughly the same width (no peek at figures when hidden).
+/// **Only** for money values — never feed labels, headings, counts, or prose.
 fn mask_sensitive_text(text: &str) -> String {
     text.chars()
         .map(|c| if c.is_whitespace() { c } else { '●' })
         .collect()
 }
 
+/// Show `text` or bullet-mask it. Prefer [`display_money`] at call sites.
 fn display_sensitive(text: &str, visible: bool) -> String {
     if visible {
         text.to_string()
     } else {
         mask_sensitive_text(text)
     }
+}
+
+/// Canonical path for a **discrete money figure** (books value, today slot, etc.).
+/// Labels / headings / placeholders / counts / prose must never go through this.
+fn display_money(text: &str, visible: bool) -> String {
+    display_sensitive(text, visible)
+}
+
+/// Split `₹50.00 (2)` → (`₹50.00`, Some(`(2)`)); plain values keep no count.
+fn split_trailing_count(v: &str) -> (&str, Option<&str>) {
+    let t = v.trim();
+    if let Some((rest, count)) = t.rsplit_once(' ')
+        && count.starts_with('(')
+        && count.ends_with(')')
+        && count.len() > 2
+        && count[1..count.len() - 1]
+            .chars()
+            .all(|c| c.is_ascii_digit())
+    {
+        (rest, Some(count))
+    } else {
+        (t, None)
+    }
+}
+
+/// True when `v` is a formatted money amount (`₹120.00`, `€1 234,50`, `CHF1'234.50`),
+/// optionally with a trailing `(N)` count. Rejects bare counts (`"3"`), times
+/// (`12:30`), prose (`3 parcels`), and invoice-like ids.
+fn looks_like_money_value(v: &str) -> bool {
+    let (core, _) = split_trailing_count(v);
+    if core.is_empty() {
+        return false;
+    }
+    let rest = core
+        .strip_prefix('-')
+        .or_else(|| core.strip_prefix('+'))
+        .unwrap_or(core);
+    let Some(digit_start) = rest.find(|c: char| c.is_ascii_digit()) else {
+        return false;
+    };
+    let prefix = &rest[..digit_start];
+    let number = &rest[digit_start..];
+    // `{symbol}{number}` — symbol is short (₹, $, CHF, KSh, د.ك) and has no spaces.
+    if prefix.is_empty()
+        || prefix.chars().count() > 5
+        || prefix.contains(|c: char| c.is_whitespace())
+        || prefix.contains(':')
+        || prefix.contains('·')
+        || prefix.contains('→')
+    {
+        return false;
+    }
+    number
+        .chars()
+        .all(|c| c.is_ascii_digit() || c == ',' || c == '.' || c == '\'' || c == ' ')
+        && number.chars().any(|c| c.is_ascii_digit())
+}
+
+/// Mask only whitespace-separated money tokens; leave labels and prose.
+fn mask_money_tokens(text: &str) -> String {
+    text.split_inclusive(char::is_whitespace)
+        .map(|part| {
+            let trimmed_end = part.trim_end();
+            let ws = &part[trimmed_end.len()..];
+            if looks_like_money_value(trimmed_end) {
+                format!("{}{}", mask_sensitive_text(trimmed_end), ws)
+            } else {
+                part.to_string()
+            }
+        })
+        .collect()
+}
+
+/// Mask a Kv **value**: whole money figures (incl. space-grouped) → bullets;
+/// keep trailing `(N)` counts and any non-money text.
+fn mask_kv_amount(v: &str) -> String {
+    let (core, count) = split_trailing_count(v);
+    if looks_like_money_value(core) {
+        let masked = mask_sensitive_text(core);
+        match count {
+            Some(c) => format!("{masked} {c}"),
+            None => masked,
+        }
+    } else {
+        mask_money_tokens(v)
+    }
+}
+
+/// For report cards: mask money in Kv values and money tokens in Line/Sub;
+/// never rewrite headings, labels, or digit-free lines into bullets.
+fn apply_amount_visibility(rows: Vec<ReportRow>, visible: bool) -> Vec<ReportRow> {
+    if visible {
+        return rows;
+    }
+    rows.into_iter()
+        .map(|row| match row {
+            ReportRow::Kv(k, v) => ReportRow::Kv(k, mask_kv_amount(&v)),
+            ReportRow::Line(t) => {
+                if !t.chars().any(|c| c.is_ascii_digit()) {
+                    ReportRow::Line(t)
+                } else {
+                    ReportRow::Line(mask_money_tokens(&t))
+                }
+            }
+            ReportRow::Sub(t) => {
+                if !t.chars().any(|c| c.is_ascii_digit()) {
+                    ReportRow::Sub(t)
+                } else {
+                    ReportRow::Sub(mask_money_tokens(&t))
+                }
+            }
+            other => other,
+        })
+        .collect()
 }
 
 const BOOKS_SECTION_KEYS: &[&str] = &["today", "bills", "payments", "outstanding", "bank"];
@@ -1586,21 +1734,70 @@ fn amount_keys_hidden_csv(hidden: &[String]) -> String {
     hidden.join(",")
 }
 
-/// Effective visibility for one amount: screen eye overrides; else per-key.
-fn amount_key_visible(screen_hidden: bool, keys_hidden: &[String], key: &str) -> bool {
+/// Whether one money **value** key should show its digits right now.
+///
+/// Encodes the screen-eye vs per-figure rules (see `docs/DEV.md` § Amount visibility):
+/// - Screen icon **hidden** (`screen_hidden`) → values hidden by default; only keys in
+///   `keys_peek` (session) are temporarily revealed.
+/// - Screen icon **visible** → apply each figure's own persisted state: hide only keys
+///   in `keys_hidden`. The screen eye does **not** force every figure visible.
+///
+/// Labels / headings / placeholders / counts / prose are out of scope — callers must
+/// mask money only ([`display_money`], [`paint_amount_value`], [`apply_amount_visibility`]).
+fn amount_key_visible(
+    screen_hidden: bool,
+    keys_hidden: &[String],
+    keys_peek: &[String],
+    key: &str,
+) -> bool {
     if screen_hidden {
-        false
+        keys_peek.iter().any(|k| k == key)
     } else {
         !keys_hidden.iter().any(|k| k == key)
     }
 }
 
+/// Font Awesome solid (`WorldFonts` icons member).
+/// Shown amounts: eye. Hidden amounts: lock (eye-slash looked odd at 14px).
+const EYE_MARK_OPEN: &str = "\u{f06e}";
+const EYE_MARK_HIDDEN: &str = "\u{f023}";
+
 fn eye_glyph(visible: bool) -> &'static str {
     if visible {
-        "👁"
+        EYE_MARK_OPEN
     } else {
-        "◌"
+        EYE_MARK_HIDDEN
     }
+}
+
+/// Placeholder like `Phone (+91)` from the active country pack.
+fn phone_placeholder(label: &str, country_code: &str) -> String {
+    let dial = fiscal::calling_code(country_code);
+    if dial.is_empty() {
+        label.to_string()
+    } else {
+        format!("{label} ({dial})")
+    }
+}
+
+/// Prepend the pack's calling code when the typed phone has no `+`.
+fn with_calling_code(phone: &str, country_code: &str) -> String {
+    let p = phone.trim();
+    if p.is_empty() {
+        return String::new();
+    }
+    if p.starts_with('+') {
+        return p.to_string();
+    }
+    let dial = fiscal::calling_code(country_code);
+    if dial.is_empty() {
+        return p.to_string();
+    }
+    let local = p.trim_start_matches('0').trim();
+    if local.is_empty() {
+        return p.to_string();
+    }
+    format!("{dial}{local}")
 }
 
 fn nav_tab_for(screen: Screen) -> Option<NavTab> {
@@ -1705,6 +1902,7 @@ impl AppState {
             nav_hidden: Vec::new(),
             amounts_screen_hidden: false,
             amount_keys_hidden: Vec::new(),
+            amount_keys_peek: Vec::new(),
             books_sections_open: Vec::new(),
             floor_sections_open: Vec::new(),
             draft_venue_icon_path: None,
@@ -2486,6 +2684,31 @@ impl AppState {
                 .filter(|b| b.active)
                 .map(|b| SuggestRow::new(b.name, b.code))
                 .collect(),
+            SuggestField::CustomerName => parties(false),
+            SuggestField::ResvTable => self
+                .tables
+                .iter()
+                .map(|t| {
+                    let state = locale::t(&lang, t.floor_state.tile_key());
+                    let sub = if t.area.is_empty() {
+                        state
+                    } else {
+                        format!("{} · {state}", t.area)
+                    };
+                    SuggestRow::new(t.name.clone(), sub)
+                })
+                .collect(),
+            SuggestField::FloorWaiter => self
+                .staff
+                .iter()
+                .filter(|m| m.active)
+                .map(|m| SuggestRow::new(m.name.clone(), m.lock_label()))
+                .collect(),
+            SuggestField::BulkCat => self
+                .categories
+                .iter()
+                .map(|c| SuggestRow::new(c.name.clone(), ""))
+                .collect(),
         }
     }
 
@@ -3032,7 +3255,9 @@ impl AppState {
             .into()
     }
 
-    fn today_label(&self) -> String {
+    /// One-line “today” strip. Word prefixes and counts stay readable; only
+    /// money slots go through [`display_money`].
+    fn today_label(&self, amounts_visible: bool) -> String {
         match self.store.as_ref().and_then(|s| s.today_totals().ok()) {
             Some(t) => {
                 let outstanding = self
@@ -3040,6 +3265,7 @@ impl AppState {
                     .as_ref()
                     .and_then(|s| s.outstanding_credit_total().ok())
                     .unwrap_or(0);
+                let money = |m: Money| display_money(&self.money(m), amounts_visible);
                 // One line on every screen: what came in today, and only the
                 // ways it came in that are not zero. The bill-type split
                 // lives on Day close and Reports.
@@ -3047,7 +3273,7 @@ impl AppState {
                     "{}: {} · {}",
                     self.t("today_prefix"),
                     t.sale_count,
-                    self.money(t.revenue())
+                    money(t.revenue())
                 )];
                 for (label, amount) in [
                     (self.t("cash"), t.cash()),
@@ -3056,11 +3282,11 @@ impl AppState {
                     (self.t("pay_credit"), t.credit()),
                 ] {
                     if amount.paise() != 0 {
-                        parts.push(format!("{label} {}", self.money(amount)));
+                        parts.push(format!("{label} {}", money(amount)));
                     }
                 }
                 if outstanding != 0 {
-                    parts.push(format!("{} {}", self.t("owed"), self.money(Money(outstanding))));
+                    parts.push(format!("{} {}", self.t("owed"), money(Money(outstanding))));
                 }
                 parts.join("   ·   ")
             }
@@ -3899,7 +4125,7 @@ script_mod! {
             color_focus: #x69090C
             text_style +: {font_size: 14.}
         }
-        text: "👁"
+        text: "\u{f06e}"
     }
     // Books accordion section header — FA chevron (›/˅) + title.
     // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
@@ -5652,9 +5878,18 @@ script_mod! {
                 flow: Right spacing: 6
                 align: Align{y: 0.5}
                 mod_prev := RoleChip{text: "‹" width: 36}
-                mod_0 := RoleChip{text: ""}
-                mod_1 := RoleChip{text: ""}
-                mod_2 := RoleChip{text: ""}
+                View{width: Fill height: Fit flow: Overlay
+                    mod_0 := RoleChip{text: ""}
+                    mod_0_on := RoleChipActive{text: "" visible: false}
+                }
+                View{width: Fill height: Fit flow: Overlay
+                    mod_1 := RoleChip{text: ""}
+                    mod_1_on := RoleChipActive{text: "" visible: false}
+                }
+                View{width: Fill height: Fit flow: Overlay
+                    mod_2 := RoleChip{text: ""}
+                    mod_2_on := RoleChipActive{text: "" visible: false}
+                }
                 mod_next := RoleChip{text: "›" width: 36}
             }
             note := CartField{
@@ -7691,20 +7926,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    books_title_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/books.webp")
-                                    }
-                                    books_heading := WrapLabel{
-                                        body: "Day book"
-                                        font_color: #x260B08
-                                        font_size: 20.
-                                    }
+                                books_help := InfoHelp{
+                                    tip: "Today’s position. Order = orders in. Buy = purchases & expenses. Parties = credit customers & suppliers."
                                 }
                                 books_low_stock := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
                                 books_backup_warning := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
@@ -7791,14 +8014,6 @@ script_mod! {
                                             }
                                         }
                                     }
-                                }
-                                // Docs stay in docs — no essay on the work surface.
-                                books_help := WrapLabel{
-                                    width: Fill
-                                    visible: false
-                                    body: " "
-                                    font_color: #x6B4A3F
-                                    font_size: 13.
                                 }
 // Accordion sections — only TODAY open by default.
                                 RoundedView{
@@ -7992,6 +8207,9 @@ script_mod! {
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
                                 flow: Down spacing: 8
                                 draw_bg.color: #xEFD2BC
+                                sell_help := InfoHelp{
+                                    tip: "Tap an item to add it."
+                                }
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 10
@@ -8162,10 +8380,25 @@ script_mod! {
                                             draw_bg.border_radius: 14.
                                             draw_bg.border_size: 2.
                                             draw_bg.border_color: #xB43A12
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Right spacing: 8
+                                                align: Align{x: 0.0 y: 0.5}
+                                                h_split_bill := WrapLabel{
+                                                    body: "Split bill"
+                                                    font_color: #x260B08
+                                                    font_size: 14.
+                                                }
+                                                split_bill_help := InfoHelp{
+                                                    width: Fit
+                                                    tip: "Tap the dishes one guest pays for, then make their separate bill."
+                                                }
+                                            }
                                             split_help := WrapLabel{
                                                 body: " "
                                                 font_color: #x260B08
                                                 font_size: 13.
+                                                visible: false
                                             }
                                             ActionStack{
                                                 split_go := StackPrimaryBtn{text: "Make separate bill"}
@@ -8181,10 +8414,25 @@ script_mod! {
                                             draw_bg.border_radius: 14.
                                             draw_bg.border_size: 2.
                                             draw_bg.border_color: #xB43A12
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Right spacing: 8
+                                                align: Align{x: 0.0 y: 0.5}
+                                                h_move_table := WrapLabel{
+                                                    body: "Move / merge"
+                                                    font_color: #x260B08
+                                                    font_size: 14.
+                                                }
+                                                move_table_help := InfoHelp{
+                                                    width: Fit
+                                                    tip: "Move this table's order to a free table, or merge it into a running one."
+                                                }
+                                            }
                                             move_help := WrapLabel{
                                                 body: "Move this table's order to a free table, or merge it into a running one."
                                                 font_color: #x260B08
                                                 font_size: 13.
+                                                visible: false
                                             }
                                             move_target_input := FieldInput{empty_text: "Table name (e.g. D5, P2)"}
                                             move_target_suggest := mod.widgets.SuggestList{field: "move_table"}
@@ -8221,7 +8469,18 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 line_qty_input := FieldInput{empty_text: "How many to cancel (blank = all)"}
                                             }
-                                            line_cooked_btn := NavBtn{text: "Not cooked yet"}
+                                            line_cooked_wrap := View{
+                                                width: Fill height: Fit
+                                                flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    line_cooked_raw := SegBtn{text: "Not cooked yet"}
+                                                    line_cooked_raw_on := SegBtnOn{text: "Not cooked yet" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    line_cooked_done := SegBtn{text: "Already cooked"}
+                                                    line_cooked_done_on := SegBtnOn{text: "Already cooked" visible: false}
+                                                }
+                                            }
                                             line_target_wrap := View{
                                                 width: Fill height: Fit
                                                 line_target_input := FieldInput{empty_text: "Move to table (e.g. D5)"}
@@ -8460,10 +8719,25 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
                                         visible: false
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 8
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_split_payment := WrapLabel{
+                                                body: "Split"
+                                                font_color: #x260B08
+                                                font_size: 14.
+                                            }
+                                            payment_help := InfoHelp{
+                                                width: Fit
+                                                tip: "Split across cash / UPI / card / credit if needed. Credit needs a customer above."
+                                            }
+                                        }
                                         h_mix_type_hint_khaynjo := WrapLabel{
                                             body: "Split across cash / UPI / card / credit if needed. Credit needs a customer above."
                                             font_color: #x6B4A3F
                                             font_size: 11.
+                                            visible: false
                                         }
                                         mix_cash_input := FieldInput{empty_text: "Cash amount"}
                                         mix_upi_input := FieldInput{empty_text: "UPI amount"}
@@ -8497,6 +8771,7 @@ script_mod! {
                                         body: "Rounded starts equal to Applied. Edit only to round the bill."
                                         font_color: #x260B08
                                         font_size: 12.
+                                        visible: false
                                     }
                                     credit_chip := WrapLabel{
                                         body: "No customer yet — type a name, then tap Credit"
@@ -8506,6 +8781,7 @@ script_mod! {
                                     customer_name_input := FieldInput{
                                         empty_text: "Customer name"
                                     }
+                                    customer_name_suggest := mod.widgets.SuggestList{field: "customer_name"}
                                     customer_use := StackLightBtn{text: "Add / use this name"}
                                     customer_clear := StackLightBtn{text: "Clear customer"}
                                     customers_empty_hint := WrapLabel{
@@ -8598,20 +8874,8 @@ script_mod! {
                                         }
                                     }
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    floor_heading_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/floor.webp")
-                                    }
-                                    floor_heading := WrapLabel{body: "Floor" font_color: #x260B08 font_size: 20.}
-                                    floor_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Tap a table to take or change the order. Colours show free → seated → kitchen → ready → eating → bill → paid."
-                                    }
+                                floor_help := InfoHelp{
+                                    tip: "Tap a table to take or change the order. Colours show free → seated → kitchen → ready → eating → bill → paid."
                                 }
                                 // At a glance: busy tables, bills to collect, money on
                                 // the floor.
@@ -8805,6 +9069,7 @@ script_mod! {
                                         visible: false
                                         floor_ops_label := mod.widgets.ReportText{}
                                         floor_waiter_filter := FieldInput{empty_text: "Filter floor by waiter name"}
+                                        floor_waiter_suggest := mod.widgets.SuggestList{field: "floor_waiter"}
                                     }
                                 }
                                 RoundedView{
@@ -8856,7 +9121,9 @@ script_mod! {
                                                 resv_when_input := FieldInput{empty_text: "When — 20:30, tomorrow 13:00"}
                                                 View{
                                                     width: 230 height: Fit
+                                                    flow: Down spacing: 4
                                                     resv_table_input := FieldInput{empty_text: "Table (optional)"}
+                                                    resv_table_suggest := mod.widgets.SuggestList{field: "resv_table"}
                                                 }
                                             }
                                             resv_add := StackPrimaryBtn{text: "Book"}
@@ -8900,20 +9167,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    kitchen_heading_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/kitchen.webp")
-                                    }
-                                    kitchen_heading := WrapLabel{body: "Kitchen" font_color: #x260B08 font_size: 20.}
-                                    kitchen_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices."
-                                    }
+                                kitchen_help := InfoHelp{
+                                    tip: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices."
                                 }
                                 // All-day counts: how much of each dish is still to cook.
                                 kitchen_counts := WrapLabel{body: " " font_color: #x69090C font_size: 15. visible: false}
@@ -8968,16 +9223,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 14
                                 padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    items_heading_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/menu.webp")
-                                    }
-                                    items_heading := WrapLabel{body: "Your items" font_color: #x260B08 font_size: 20.}
+                                items_help_label := InfoHelp{
+                                    tip: "Tap an item to edit it. New item clears the form. Search our dishes or type your own name and photo, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with."
                                 }
                                 // Form errors and confirmations have to be visible
                                 // where the form is: this screen had no status line,
@@ -9011,9 +9258,6 @@ script_mod! {
                                         template_yes := StackPrimaryBtn{text: "Yes, import"}
                                         template_no := StackLightBtn{text: "Cancel"}
                                     }
-                                }
-                                items_help_label := InfoHelp{
-                                    tip: "Tap an item to edit it. New item clears the form. Search our dishes or type your own name and photo, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with."
                                 }
                                 menu_mode_label := WrapLabel{body: "Adding a new item" font_color: #x69090C font_size: 14.}
                                 menu_name_input := FieldInput{
@@ -9145,20 +9389,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 14
                                 padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    buy_heading_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/buy.webp")
-                                    }
-                                    buy_heading := WrapLabel{
-                                    body: "Buy"
-                                    font_color: #x260B08
-                                    font_size: 22.
-                                                                    }
+                                buy_help := InfoHelp{
+                                    tip: "Expense vouchers and supplier bills (money out). On-account stays on the party ledger."
                                 }
                                 buy_low_stock := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
                                 FormCard{
@@ -9260,26 +9492,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        sales_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/sales.webp")
-                                        }
-                                        sales_title := WrapLabel{body: "Sales" font_color: #x260B08 font_size: 20.}
-                                    }
-                                }
-                                h_amend_help := WrapLabel{
-                                    width: Fill
-                                    body: "Select a sale to amend, void, or refund. Amendments keep full history."
-                                    font_color: #x260B08
-                                    font_size: 12.
+                                sales_help := InfoHelp{
+                                    tip: "Select a sale to amend, void, or refund. Amendments keep full history. Rounded Total starts equal to Applied — edit only to round. Void and refund may need an Owner or Manager PIN."
                                 }
                                 // The day's sales first; the picked sale's details
                                 // (copy, print, amend, void, refund, notes) under them.
@@ -9345,6 +9559,7 @@ script_mod! {
                                         body: "Rounded Total starts equal to Applied Total. Edit only to round the bill."
                                         font_color: #x260B08
                                         font_size: 12.
+                                        visible: false
                                     }
                                     View{
                                         width: Fill height: Fit
@@ -9372,6 +9587,7 @@ script_mod! {
                                         body: " "
                                         font_color: #x6B4A3F
                                         font_size: 12.
+                                        visible: false
                                     }
                                     ActionStack{
                                         amend_btn := StackPrimaryBtn{text: "Amend"}
@@ -9403,26 +9619,8 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        credit_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/credit.webp")
-                                        }
-                                        credit_title := WrapLabel{body: "Credit" font_color: #x260B08 font_size: 20.}
-                                    }
-                                }
-                                credit_help := WrapLabel{
-                                    width: Fill
-                                    body: "Each party has a unique id (names may repeat). A Customer runs a khata tab (owes us); a Supplier sells us stock (we owe them); Both does the two. Khata and payables stay separate; net who-owes-whom is in Reports."
-                                    font_color: #x260B08
-                                    font_size: 12.
+                                credit_help := InfoHelp{
+                                    tip: "Each party has a unique id (names may repeat). A Customer runs a khata tab (owes us); a Supplier sells us stock (we owe them); Both does the two. Khata and payables stay separate; net who-owes-whom is in Reports."
                                 }
                                 credit_summary_label := WrapLabel{
                                     body: ""
@@ -9484,9 +9682,10 @@ script_mod! {
                                     crm_heading := WrapLabel{body: "Guests & messages" font_color: #x260B08 font_size: 15.}
                                     crm_help := WrapLabel{
                                         width: Fill
-                                        body: "Birthday, loyalty, inactive and top guests — queue SMS or WhatsApp intents. Use {name} and {points} in the message. Owner taps send; nothing blasts by itself."
+                                        body: ""
                                         font_color: #x6B4A3F
                                         font_size: 12.
+                                        visible: false
                                     }
                                     // SegBtn is width:Fill — cannot sit in wrap:true (freezes UI).
                                     ActionStack{
@@ -9507,9 +9706,12 @@ script_mod! {
                                 customer_list_credit := mod.widgets.CustomerList{}
                                 // Everything about the picked party: limit, money in and
                                 // out, write-offs, notes. Hidden until one is picked.
-                                party_detail := FormCard{
+                                party_detail := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 10
                                     visible: false
-                                    h_credit_limit_heading := WrapLabel{body: "Credit limit (selected / named party)" font_color: #x260B08 font_size: 15.}
+                                    FormCard{
+                                    h_credit_limit_heading := WrapLabel{body: "Credit limit" font_color: #x260B08 font_size: 15.}
                                     FormFieldRow{
                                         credit_limit_input := FieldInput{empty_text: "Credit limit (0 = none)"}
                                         View{
@@ -9520,8 +9722,10 @@ script_mod! {
                                     }
                                     credit_party_suggest := mod.widgets.SuggestList{field: "credit_party"}
                                     ActionStack{
-                                        credit_limit_set := RowPrimaryBtn{text: "Set credit limit"}
+                                        credit_limit_set := RowSecondaryBtn{text: "Apply limit to party"}
                                     }
+                                    }
+                                    FormCard{
                                     h_pay_selected_heading := WrapLabel{body: "Pay selected (settle debt / take advance)" font_color: #x260B08 font_size: 15.}
                                     settle_amount_input := FieldInput{empty_text: "Amount received"}
                                     View{
@@ -9549,7 +9753,9 @@ script_mod! {
                                     payable_open_bills := mod.widgets.ReportText{}
                                     payable_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                     payable_writeoff := NavBtn{text: "Write off AP"}
-                                    h_notes_attach_party := WrapLabel{body: "Notes & attachments (selected party)" font_color: #x260B08 font_size: 15.}
+                                    }
+                                    FormCard{
+                                    h_notes_attach_party := WrapLabel{body: "Notes & attachments" font_color: #x260B08 font_size: 15.}
                                     party_attach_note := FieldInput{empty_text: "Note / GSTIN / agreement reminder"}
                                     ActionStack{
                                         party_attach_add_note := RowSecondaryBtn{text: "Add note"}
@@ -9562,6 +9768,7 @@ script_mod! {
                                         font_size: 12.
                                     }
                                     party_attach_list := mod.widgets.ReportText{}
+                                    }
                                 }
                             }
                         }
@@ -9573,41 +9780,25 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        team_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/team.webp")
-                                        }
-                                        team_title := WrapLabel{body: "Team" font_color: #x260B08 font_size: 20.}
-                                    }
-                                }
-                                h_team_owner_help := WrapLabel{
-                                    width: Fill
-                                    body: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
-                                    font_color: #x260B08
-                                    font_size: 12.
+                                team_help := InfoHelp{
+                                    tip: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
                                 }
                                 staff_label := mod.widgets.ReportText{}
+                                FormCard{
                                 staff_name_input := FieldInput{empty_text: "Staff name / id"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Captain, Head cook)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
                                 h_permission_preset := WrapLabel{
-                                    body: "Permission preset (what they can access)"
+                                    body: "Permission preset"
                                     font_color: #x260B08
                                     font_size: 13.
                                 }
                                 h_preset_help_khaynjo := WrapLabel{
                                     width: Fill
-                                    body: "Cashier: sell. Manager: sell + items + void/amend."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 // A restaurant's people: who takes orders, who takes
                                 // money, who cooks, who manages.
@@ -9632,17 +9823,22 @@ script_mod! {
                                     }
                                 }
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
-                                staff_set_login := NavBtn{text: "Set login on selected"}
                                 staff_deactivate := DangerBtn{text: "Remove selected"}
+                                }
+                                FormCard{
                                 h_optional_login_help := WrapLabel{
-                                    body: "Optional login (id + password). Owner sets once; only the user can change password later."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 staff_login_input := FieldInput{empty_text: "Login id (optional)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
+                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
+                                }
+                                FormCard{
                                 h_feature_access_help := WrapLabel{
-                                    body: "Feature access for selected staff (tap after adding)"
+                                    body: "Feature access for selected staff"
                                     font_color: #x260B08
                                     font_size: 13.
                                 }
@@ -9716,9 +9912,10 @@ script_mod! {
                                     font_size: 13.
                                 }
                                 h_rights_help := WrapLabel{
-                                    body: "Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed."
+                                    body: ""
                                     font_color: #x260B08
                                     font_size: 13.
+                                    visible: false
                                 }
                                 right_settle_btn := NavBtn{text: "Take payment"}
                                 right_cancel_btn := NavBtn{text: "Cancel a sent item"}
@@ -9726,7 +9923,9 @@ script_mod! {
                                 right_move_btn := NavBtn{text: "Move / merge tables"}
                                 right_reprint_btn := NavBtn{text: "Print bill again"}
                                 right_discount_btn := NavBtn{text: "Give a discount"}
-                                feat_save := StackPrimaryBtn{text: "Save features for selected staff"}
+                                feat_save := StackPrimaryBtn{text: "Save features"}
+                                }
+                                FormCard{
                                 h_change_my_pin_heading := WrapLabel{
                                     body: "Change my PIN (only yours)"
                                     font_color: #x260B08
@@ -9735,18 +9934,21 @@ script_mod! {
                                 my_pin_input := FieldInput{empty_text: "New PIN (4–12 digits)"}
                                 change_my_pin := StackPrimaryBtn{text: "Update my PIN"}
                                 my_password_input := FieldInput{empty_text: "New password (optional)"}
-                                change_my_password := NavBtn{text: "Update my password"}
+                                change_my_password := RowSecondaryBtn{text: "Update my password"}
+                                }
                                 // Owner-only. Emergency unlock PIN: looks like a
                                 // normal login but clears trading history first.
+                                FormCard{
                                 h_duress_heading := WrapLabel{
                                     body: "Emergency unlock PIN (Owner only)"
                                     font_color: #x260B08
                                     font_size: 15.
                                 }
                                 h_duress_help := WrapLabel{
-                                    body: "Optional. If this PIN is typed at unlock instead of yours, the till opens with no sales history — menu, prices, tables and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                    body: ""
                                     font_color: #x69090C
                                     font_size: 12.
+                                    visible: false
                                 }
                                 duress_status := WrapLabel{
                                     body: " "
@@ -9755,8 +9957,9 @@ script_mod! {
                                 }
                                 duress_pin_input := FieldInput{empty_text: "Emergency PIN (4–12 digits)"}
                                 duress_pin_confirm := FieldInput{empty_text: "Type again to confirm"}
-                                save_duress_pin := NavBtn{text: "Save emergency PIN"}
-                                clear_duress_pin := NavBtn{text: "Turn off emergency PIN"}
+                                save_duress_pin := StackPrimaryBtn{text: "Save emergency PIN"}
+                                clear_duress_pin := RowSecondaryBtn{text: "Turn off emergency PIN"}
+                                }
                             }
                         }
 
@@ -9770,20 +9973,8 @@ script_mod! {
                                 settings_hub := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        settings_hub_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/settings.webp")
-                                        }
-                                        settings_hub_title := WrapLabel{body: "Settings" font_color: #x260B08 font_size: 22.}
-                                        settings_hub_help := InfoHelp{
-                                            width: Fit
-                                            tip: "Open one area at a time — language, printers, bill format, backup, and more."
-                                        }
+                                    settings_hub_help := InfoHelp{
+                                        tip: "Open one area at a time — language, printers, bill format, backup, and more."
                                     }
                                     settings_hub_language := StackSecondaryBtn{text: "Language & currency"}
                                     settings_hub_country := StackSecondaryBtn{text: "Country & tax"}
@@ -9850,10 +10041,12 @@ script_mod! {
                                     h_country_tax := WrapLabel{body: "Country & tax" font_color: #x260B08 font_size: 20.}
                                     h_country_pack_help := WrapLabel{
                                         width: Fill
-                                        body: "A country pack sets the tax name and maths, the instant-pay rail, and the business id printed on bills. Kumkaj does not file taxes or issue government e-invoices anywhere."
+                                        body: ""
                                         font_color: #x260B08
                                         font_size: 12.
+                                        visible: false
                                     }
+                                    FormCard{
                                     fiscal_label := mod.widgets.ReportText{}
                                     country_code_input := FieldInput{
                                         empty_text: "Country code e.g. IN, GB, US, AE, BR"
@@ -9863,6 +10056,8 @@ script_mod! {
                                     }
                                     country_apply := StackPrimaryBtn{text: "Apply country pack"}
                                     country_hint := mod.widgets.ReportText{}
+                                    }
+                                    FormCard{
                                     // Where tax sits: one choice of two, the current one filled.
                                     View{
                                         width: Fill height: Fit
@@ -9880,7 +10075,8 @@ script_mod! {
                                     service_bps_input := FieldInput{
                                         empty_text: "Service % optional 0/10/12"
                                     }
-                                    fiscal_save := StackPrimaryBtn{text: "Save business id & service %"}
+                                    fiscal_save := StackPrimaryBtn{text: "Save business id"}
+                                    }
                                 }
                                 settings_panel_tills := View{
                                     width: Fill height: Fit
@@ -9930,12 +10126,14 @@ h_extra_tills_heading := WrapLabel{body: "Extra tills" font_color: #x260B08 font
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
+                                FormCard{
 h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_size: 20.}
                                 h_brand_shown_help := WrapLabel{
                                     width: Fill
-                                    body: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
+                                    body: ""
                                     font_color: #x260B08
                                     font_size: 12.
+                                    visible: false
                                 }
                                 venue_title_input := FieldInput{empty_text: "Name of this place"}
                                 org_name_input := FieldInput{empty_text: "Business name"}
@@ -9949,34 +10147,41 @@ h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := StackPrimaryBtn{text: "Save brand"}
+                                }
                                                                 }
                                 settings_panel_units := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
+                                FormCard{
 h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 20.}
                                 h_units_help := WrapLabel{
                                     width: Fill
-                                    body: "Codes for item labels (kg, piece, bag). Every unit must link — directly or through other units — to a standard (kg · cm · ml · pc), e.g. 1 crate = 2 box and 1 box = 20 cm. Conversions: 1 from = factor to. Currencies are never units."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 h_units_picker_help := WrapLabel{
                                     width: Fill
-                                    body: "Tap On/Off to show a unit in Buy and Menu pickers. Off units still convert."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 units_label := mod.widgets.ReportText{}
                                 unit_code_input := FieldInput{empty_text: "Code (bag)"}
                                 unit_name_input := FieldInput{empty_text: "Name (Bag)"}
                                 unit_add := StackPrimaryBtn{text: "Add unit"}
+                                }
+                                FormCard{
                                 conv_from_input := FieldInput{empty_text: "From code (bag)"}
                                 conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
                                 conv_to_input := FieldInput{empty_text: "To code (kg)"}
                                 conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
                                 conv_add := StackPrimaryBtn{text: "Add conversion"}
+                                }
                                                                 }
                                 settings_panel_pickers := View{
                                     width: Fill height: Fit
@@ -9985,11 +10190,13 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 20.}
 sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font_color: #x260B08 font_size: 18.}
                                 sibling_pickers_help := WrapLabel{
                                     width: Fill
-                                    body: "Tap On/Off like units — hide from day-to-day pickers; pack defaults stay."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 sibling_pickers_label := mod.widgets.ReportText{}
+                                FormCard{
                                 station_manage_heading := WrapLabel{
                                     body: "Add or remove a kitchen station"
                                     font_color: #x260B08
@@ -10001,13 +10208,17 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 settings_station_remove_input := FieldInput{empty_text: "Station name to remove"}
                                 settings_station_remove_suggest := mod.widgets.SuggestList{field: "settings_station_remove"}
                                 settings_station_remove := StackSecondaryBtn{text: "Remove station"}
+                                }
+                                FormCard{
                                 bulk_price_heading := WrapLabel{body: "Bulk menu price" font_color: #x260B08 font_size: 18.}
                                 FormFieldRow{
                                     bulk_cat_input := FieldInput{empty_text: "Category name"}
                                     bulk_pct_input := FieldInput{empty_text: "% change (e.g. 10 or -5)"}
                                     bulk_set_input := FieldInput{empty_text: "Or set ₹ amount"}
                                 }
-                                bulk_price_apply := StackLightBtn{text: "Apply bulk price"}
+                                bulk_cat_suggest := mod.widgets.SuggestList{field: "bulk_cat"}
+                                bulk_price_apply := RowSecondaryBtn{text: "Apply bulk price"}
+                                }
                                 settings_lan_help := InfoHelp{
                                     tip: "On this shop’s Wi‑Fi, guest pages work for display board, tokens, expo, kiosk, table QR, and feedback. Guests on mobile data need Cloud later. Card terminal / payment link is optional when the internet is up — it never blocks the counter."
                                 }
@@ -10019,20 +10230,34 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     // Two steps only: (1) name the printers this
                                     // device can reach, (2) tap Bill/kitchen then
                                     // tap a printer. No route text field, no Up/Down.
+                                    FormCard{
                                     h_kitchen_printing := WrapLabel{body: "Kitchen printing & printers" font_color: #x260B08 font_size: 20.}
                                     h_kot_print_help_khaynjo := WrapLabel{
                                         width: Fill
-                                        body: "When On, each kitchen prints its own KOT paper as soon as you Send."
+                                        body: ""
                                         font_color: #x6B4A3F
                                         font_size: 12.
+                                        visible: false
                                     }
-                                    kot_print_toggle := NavBtn{text: "Kitchen printing: On"}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_print_off := SegBtn{text: "Kitchen printing off"}
+                                            kot_print_off_on := SegBtnOn{text: "Kitchen printing off" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_print_on := SegBtn{text: "Kitchen printing on"}
+                                            kot_print_on_on := SegBtnOn{text: "Kitchen printing on" visible: false}
+                                        }
+                                    }
                                     h_printers_pool := WrapLabel{body: "1. Your printers" font_color: #x260B08 font_size: 16.}
                                     h_printers_help := WrapLabel{
                                         width: Fill
-                                        body: "Add each printer once — a network IP (e.g. 192.168.1.50) or a name from Find."
+                                        body: ""
                                         font_color: #x6B4A3F
                                         font_size: 12.
+                                        visible: false
                                     }
                                     find_printers_btn := StackSecondaryBtn{text: "Find printers"}
                                     printers_found_label := WrapLabel{
@@ -10047,15 +10272,16 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     printer_target_input := FieldInput{empty_text: "Address or system name"}
                                     printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
                                     ActionStack{
-                                        printer_add := StackPrimaryBtn{text: "Add printer"}
+                                        printer_add := StackSecondaryBtn{text: "Add printer"}
                                         printer_remove := StackSecondaryBtn{text: "Remove"}
                                     }
                                     h_printers_routes := WrapLabel{body: "2. What prints where" font_color: #x260B08 font_size: 16.}
                                     h_printers_routes_help := WrapLabel{
                                         width: Fill
-                                        body: "Tap a row below, or type Bill / a kitchen here — then tap a printer to assign."
+                                        body: ""
                                         font_color: #x6B4A3F
                                         font_size: 12.
+                                        visible: false
                                     }
                                     printer_routes_label := mod.widgets.ReportText{}
                                     route_editing_label := WrapLabel{
@@ -10069,14 +10295,14 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     route_pick_input := FieldInput{empty_text: "Bill or a kitchen station"}
                                     route_pick_suggest := mod.widgets.SuggestList{field: "route_pick"}
                                     route_add_printers := ActionStack{
-                                        route_add_prn_0 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_1 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_2 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_3 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_4 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_5 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_6 := StackPrimaryBtn{text: "" visible: false}
-                                        route_add_prn_7 := StackPrimaryBtn{text: "" visible: false}
+                                        route_add_prn_0 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_1 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_2 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_3 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_4 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_5 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_6 := StackSecondaryBtn{text: "" visible: false}
+                                        route_add_prn_7 := StackSecondaryBtn{text: "" visible: false}
                                     }
                                     ActionStack{
                                         route_remove := StackSecondaryBtn{text: "Remove printer"}
@@ -10087,22 +10313,25 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     route_up := StackSecondaryBtn{text: "Up" visible: false}
                                     route_down := StackSecondaryBtn{text: "Down" visible: false}
                                     ActionStack{
-                                        printers_save := StackPrimaryBtn{text: "Save"}
+                                        printers_save := StackPrimaryBtn{text: "Save printers"}
                                         print_test_btn := StackSecondaryBtn{text: "Print a test page"}
                                     }
                                     // Legacy heading id still filled for RTL align.
                                     h_printers := WrapLabel{body: "" visible: false}
+                                    }
                                                                 }
                                 settings_panel_bill := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
+                                FormCard{
 h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 20.}
                                 h_bill_format_help := WrapLabel{
                                     width: Fill
-                                    body: "Printed under your restaurant's name on every bill. Separate lines with |  (e.g. MG Road, Rajkot | Ph 98250 00000)."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 bill_header_input := FieldInput{empty_text: "Address | phone"}
                                 fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
@@ -10112,9 +10341,10 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 h_print_brand := WrapLabel{body: "Print brand kit" font_color: #x260B08 font_size: 18.}
                                 h_print_brand_help := WrapLabel{
                                     width: Fill
-                                    body: "Optional stamp and payment QR images on bill faces and the LAN guest display. Dynamic UPI QR from the VPA above still works when no payment QR image is set."
+                                    body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 print_stamp_hint := WrapLabel{
                                     body: "Stamp: none"
@@ -10135,6 +10365,8 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     payment_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
                                 }
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
+                                }
+                                FormCard{
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
@@ -10168,6 +10400,8 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                         zero_sales_off_btn_on := SegBtnOn{text: "Require price" visible: false}
                                     }
                                 }
+                                }
+                                FormCard{
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
@@ -10181,6 +10415,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 schemes_label := mod.widgets.ReportText{}
                                 scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
                                 scheme_add := StackPrimaryBtn{text: "Add BOGO"}
+                                }
                                                                 }
                                 settings_panel_backup := View{
                                     width: Fill height: Fit
@@ -10220,17 +10455,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     flow: Right spacing: 10
                                     align: Align{y: 0.5}
                                     sidebar_settings_back := QuietFitBtn{text: "← Settings"}
-                                    sidebar_settings_title := WrapLabel{
-                                        body: "Sidebar settings"
-                                        font_color: #x260B08
-                                        font_size: 20.
-                                    }
                                 }
-                                sidebar_settings_help := WrapLabel{
-                                    width: Fill
-                                    body: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
-                                    font_color: #x6B4A3F
-                                    font_size: 13.
+                                sidebar_settings_help := InfoHelp{
+                                    tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -10250,24 +10477,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        day_close_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/day_close.webp")
-                                        }
-                                        day_close_title := WrapLabel{body: "Day close" font_color: #x260B08 font_size: 20.}
-                                        h_day_close_help := InfoHelp{
-                                            width: Fit
-                                            tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
-                                        }
-                                    }
+                                day_close_help := InfoHelp{
+                                    tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
                                 }
                                 day_close_label := mod.widgets.ReportText{}
                                 // Morning float, then drawer handovers between billers
@@ -10293,24 +10504,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        reports_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/reports.webp")
-                                        }
-                                        reports_title := WrapLabel{body: "Reports" font_color: #x260B08 font_size: 20.}
-                                        reports_help := InfoHelp{
-                                            width: Fit
-                                            tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
-                                        }
-                                    }
+                                reports_help := InfoHelp{
+                                    tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
                                 }
                                 // Which report: one segmented row, not four big buttons.
                                 reports_books_btns := View{
@@ -10384,16 +10579,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 width: Fill height: Fit
                                 flow: Down spacing: 14
                                 padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{x: 0.0 y: 0.5}
-                                    inventory_title_icon := Image{
-                                        width: 28 height: 28
-                                        fit: ImageFit.Stretch
-                                        src: crate_resource("self:resources/nav/inventory.webp")
-                                    }
-                                    inventory_title := WrapLabel{body: "Inventory" font_color: #x260B08 font_size: 22.}
+                                inventory_help := InfoHelp{
+                                    tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
                                 }
                                 FormCard{
                                     inv_item_input := FieldInput{empty_text: "Item name"}
@@ -10424,12 +10611,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         }
                                         inv_reorder_save := StackLightBtn{text: "Set reorder level"}
                                     }
-                                    h_stock_type_help := WrapLabel{
-                                        width: Fill
-                                        body: " "
-                                        font_color: #x8A6A5C
-                                        font_size: 12.
-                                    }
                                 }
                                 stock_list := mod.widgets.StockList{}
                                 stock_empty := WrapLabel{
@@ -10449,20 +10630,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 10
-                                        align: Align{x: 0.0 y: 0.5}
-                                        branches_title_icon := Image{
-                                            width: 28 height: 28
-                                            fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/branches.webp")
-                                        }
-                                        branches_title := WrapLabel{body: "Branches" font_color: #x260B08 font_size: 20.}
-                                    }
+                                branches_help := InfoHelp{
+                                    tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
                                 }
                                 // Business name is edited under Settings → Your brand
                                 // (single-outlet shops never see this Branches tab).
@@ -10482,19 +10651,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     branch_switch_suggest := mod.widgets.SuggestList{field: "branch_switch"}
                                     branch_switch := NavBtn{text: "Switch this device"}
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    align: Align{x: 0.0 y: 0.5}
-                                    h_branch_export_title := WrapLabel{
-                                        body: "Outlet day transfer"
-                                        font_color: #x260B08
-                                        font_size: 15.
-                                    }
-                                    h_branch_export_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
-                                    }
+                                h_branch_export_title := WrapLabel{
+                                    body: "Outlet day transfer"
+                                    font_color: #x260B08
+                                    font_size: 15.
                                 }
                                 ActionStack{
                                     branch_export := RowSecondaryBtn{text: "Export day"}
@@ -10908,7 +11068,16 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 padding: Inset{left: 20. right: 20. top: 18. bottom: 18.}
                                 draw_bg.color: #xF9F4F0
                                 draw_bg.border_radius: 18.
-                                upi_qr_title := WrapLabel{body: "UPI" font_color: #x260B08 font_size: 20.}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 8
+                                    align: Align{x: 0.0 y: 0.5}
+                                    upi_qr_title := WrapLabel{body: "UPI" font_color: #x260B08 font_size: 20.}
+                                    upi_qr_title_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Guest scans and pays. Tap Take payment after they pay."
+                                    }
+                                }
                                 upi_qr_amount := WrapLabel{body: " " font_color: #x69090C font_size: 18.}
                                 upi_qr_image := Image{
                                     width: 240 height: 240
@@ -10919,6 +11088,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     body: "Guest scans and pays. Tap Take payment after they pay."
                                     font_color: #x6B4A3F
                                     font_size: 12.
+                                    visible: false
                                 }
                                 upi_qr_close := StackPrimaryBtn{text: "Close"}
                             }
@@ -13828,12 +13998,13 @@ impl Widget for CartList {
                         .set_visible(cx, mods.len() > domain::MODIFIER_PAGE);
                     item.button(cx, ids!(mod_next))
                         .set_visible(cx, mods.len() > domain::MODIFIER_PAGE);
-                    for (slot, path) in [
-                        (0, ids!(mod_0)),
-                        (1, ids!(mod_1)),
-                        (2, ids!(mod_2)),
+                    for (slot, idle, active) in [
+                        (0, ids!(mod_0), ids!(mod_0_on)),
+                        (1, ids!(mod_1), ids!(mod_1_on)),
+                        (2, ids!(mod_2), ids!(mod_2_on)),
                     ] {
-                        let button = item.button(cx, path);
+                        let idle_btn = item.button(cx, idle);
+                        let active_btn = item.button(cx, active);
                         match mods.get(start + slot) {
                             Some(modifier) => {
                                 let on = line.applied_modifiers.iter().any(|m| {
@@ -13851,7 +14022,6 @@ impl Widget for CartList {
                                             .format_localized(&currency, &fiscal)
                                     )
                                 };
-                                let mark = if on { "✓ " } else { "" };
                                 let label = if modifier.group.is_empty()
                                     || modifier.group == "Options"
                                 {
@@ -13859,10 +14029,16 @@ impl Widget for CartList {
                                 } else {
                                     format!("{}·{}", modifier.group, modifier.name)
                                 };
-                                button.set_text(cx, &format!("{mark}{label}{price}"));
-                                button.set_visible(cx, true);
+                                let text = format!("{label}{price}");
+                                idle_btn.set_text(cx, &text);
+                                active_btn.set_text(cx, &text);
+                                idle_btn.set_visible(cx, !on);
+                                active_btn.set_visible(cx, on);
                             }
-                            None => button.set_visible(cx, false),
+                            None => {
+                                idle_btn.set_visible(cx, false);
+                                active_btn.set_visible(cx, false);
+                            }
                         }
                     }
                     item.draw_all_unscoped(cx);
@@ -14809,8 +14985,14 @@ impl App {
                 );
             let undo_snack_text = st.undo_snack_text.clone();
             let bill_round_active = st.cart.charge_total.is_some();
+            let today_visible = amount_key_visible(
+                st.amounts_screen_hidden,
+                &st.amount_keys_hidden,
+                &st.amount_keys_peek,
+                "today",
+            );
             (
-                st.today_label(),
+                st.today_label(today_visible),
                 session_line,
                 st.status.clone(),
                 // The ticket's status line: one short line (a whole invoice
@@ -14854,17 +15036,12 @@ impl App {
 
         {
             let st = app_state().lock().unwrap();
-            let visible = amount_key_visible(
-                st.amounts_screen_hidden,
-                &st.amount_keys_hidden,
-                "today",
-            );
             let screen_eye = eye_glyph(!st.amounts_screen_hidden);
             drop(st);
-            self.ui.widget(cx, ids!(today_label)).set_text(
-                cx,
-                &plain_display_text(&display_sensitive(&today, visible)),
-            );
+            // Money slots already masked in `today_label`; keep words visible.
+            self.ui
+                .widget(cx, ids!(today_label))
+                .set_text(cx, &plain_display_text(&today));
             // Top eye: screen-level only (icon, no label). Open = amounts may
             // show; closed = force every figure to dots for this session.
             self.ui.button(cx, ids!(amounts_eye)).set_text(cx, screen_eye);
@@ -15643,12 +15820,26 @@ impl App {
                 .iter()
                 .map(|c| (-c.balance_paise).max(0))
                 .sum();
-            // Per-language sentence with {} slots filled in order.
+            let credit_summary_visible = amount_key_visible(
+                st.amounts_screen_hidden,
+                &st.amount_keys_hidden,
+                &st.amount_keys_peek,
+                "credit_summary",
+            );
+            // Per-language sentence with {} slots filled in order — mask money only.
             let credit_summary = st
                 .t("credit_summary_fmt")
                 .replacen("{}", &st.customers.len().to_string(), 1)
-                .replacen("{}", &st.money(Money(open)), 1)
-                .replacen("{}", &st.money(Money(prepaid)), 1);
+                .replacen(
+                    "{}",
+                    &display_money(&st.money(Money(open)), credit_summary_visible),
+                    1,
+                )
+                .replacen(
+                    "{}",
+                    &display_money(&st.money(Money(prepaid)), credit_summary_visible),
+                    1,
+                );
             // The picked party's latest ledger entries, one row each.
             let mut credit_recent = Vec::new();
             if let Some(id) = &st.selected_customer_id
@@ -15705,20 +15896,7 @@ impl App {
             .widget(cx, ids!(credit_chip)).set_text(cx, &plain_display_text(&credit_chip));
         self.ui
             .widget(cx, ids!(credit_summary_label))
-            .set_text(
-                cx,
-                &plain_display_text(&display_sensitive(
-                    &credit_summary,
-                    {
-                        let st = app_state().lock().unwrap();
-                        amount_key_visible(
-                            st.amounts_screen_hidden,
-                            &st.amount_keys_hidden,
-                            "credit_summary",
-                        )
-                    },
-                )),
-            );
+            .set_text(cx, &plain_display_text(&credit_summary));
         self.set_report_rows(cx, ids!(credit_recent_list), credit_recent);
         self.ui
             .widget(cx, ids!(customers_empty_hint)).set_text(cx, &plain_display_text(empty_hint));
@@ -15867,9 +16045,10 @@ impl App {
                     "Void and refund need an Owner or Manager. Type their PIN above and the approval is recorded with your name.",
                 ),
             );
+            // Tip lives on sales_help ℹ (amend_help); keep essay off the work surface.
             self.ui
                 .widget(cx, ids!(approval_hint))
-                .set_visible(cx, !may_void);
+                .set_visible(cx, false);
         }
         self.ui
             .widget(cx, ids!(sale_selected_label)).set_text(cx, &plain_display_text(&sale_selected));
@@ -16121,6 +16300,10 @@ impl App {
                 self.ui.button(cx, ids!(split_cancel)).set_text(cx, &st.t("cancel"));
                 let help = st.t("split_help").replace("{n}", &st.split_pick.len().to_string());
                 self.ui.widget(cx, ids!(split_help)).set_text(cx, &plain_display_text(&help));
+                self.ui
+                    .widget(cx, ids!(split_bill_help))
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&help));
             }
             self.ui.view(cx, ids!(table_move_panel)).set_visible(cx, table_open && move_open);
             self.ui
@@ -16136,11 +16319,28 @@ impl App {
                 self.ui.widget(cx, ids!(line_action_title)).set_text(cx, &plain_display_text(&t(title)));
                 self.ui.view(cx, ids!(line_reason_wrap)).set_visible(cx, reason);
                 self.ui.view(cx, ids!(line_qty_wrap)).set_visible(cx, qty);
-                self.ui.button(cx, ids!(line_cooked_btn)).set_visible(cx, cooked_btn);
+                self.ui.view(cx, ids!(line_cooked_wrap)).set_visible(cx, cooked_btn);
+                if cooked_btn {
+                    self.paint_choice_pair(
+                        cx,
+                        ids!(line_cooked_raw),
+                        ids!(line_cooked_raw_on),
+                        !cooked,
+                    );
+                    self.paint_choice_pair(
+                        cx,
+                        ids!(line_cooked_done),
+                        ids!(line_cooked_done_on),
+                        cooked,
+                    );
+                    for path in [ids!(line_cooked_raw), ids!(line_cooked_raw_on)] {
+                        self.ui.button(cx, path).set_text(cx, &t("not_cooked_yet"));
+                    }
+                    for path in [ids!(line_cooked_done), ids!(line_cooked_done_on)] {
+                        self.ui.button(cx, path).set_text(cx, &t("already_cooked"));
+                    }
+                }
                 self.ui.view(cx, ids!(line_target_wrap)).set_visible(cx, target);
-                self.ui
-                    .button(cx, ids!(line_cooked_btn))
-                    .set_text(cx, &t(if cooked { "already_cooked" } else { "not_cooked_yet" }));
             }
             self.ui.widget(cx, ids!(change_label)).set_text(cx, &plain_display_text(&change_line));
             let (discount_open, discount_line) = {
@@ -16197,31 +16397,26 @@ impl App {
                     .filter(|t| t.floor_state == domain::FloorState::BillPrinted)
                     .count();
                 let on_floor: i64 = st.tables.iter().map(|t| t.running_total_paise).sum();
+                let floor_visible = amount_key_visible(
+                    st.amounts_screen_hidden,
+                    &st.amount_keys_hidden,
+                    &st.amount_keys_peek,
+                    "floor_summary",
+                );
                 let summary = format!(
                     "{busy}/{} {} · {to_collect} {} · {} {}",
                     st.tables.len(),
                     st.t("summary_busy"),
                     st.t("summary_to_collect"),
-                    st.money(Money(on_floor)),
+                    display_money(&st.money(Money(on_floor)), floor_visible),
                     st.t("summary_on_floor")
                 );
                 let legend: Vec<String> = domain::FloorState::ALL.iter().map(|s| st.t(s.tile_key())).collect();
                 (summary, legend)
             };
-            self.ui.widget(cx, ids!(floor_summary)).set_text(
-                cx,
-                &plain_display_text(&display_sensitive(
-                    &summary,
-                    {
-                        let st = app_state().lock().unwrap();
-                        amount_key_visible(
-                            st.amounts_screen_hidden,
-                            &st.amount_keys_hidden,
-                            "floor_summary",
-                        )
-                    },
-                )),
-            );
+            self.ui
+                .widget(cx, ids!(floor_summary))
+                .set_text(cx, &plain_display_text(&summary));
             for (id, text) in [
                 ids!(lg_free),
                 ids!(lg_seated),
@@ -16388,15 +16583,25 @@ impl App {
                 .widget(cx, ids!(settings_tmpl_label))
                 .set_text(cx, &plain_display_text(&tmpl_line));
             {
+                let on = {
+                    let st = app_state().lock().unwrap();
+                    st.store
+                        .as_ref()
+                        .map(|s| s.kot_auto_print())
+                        .unwrap_or(true)
+                };
+                self.paint_choice_pair(cx, ids!(kot_print_off), ids!(kot_print_off_on), !on);
+                self.paint_choice_pair(cx, ids!(kot_print_on), ids!(kot_print_on_on), on);
+                {
+                    let st = app_state().lock().unwrap();
+                    for path in [ids!(kot_print_off), ids!(kot_print_off_on)] {
+                        self.ui.button(cx, path).set_text(cx, &st.t("kot_print_off"));
+                    }
+                    for path in [ids!(kot_print_on), ids!(kot_print_on_on)] {
+                        self.ui.button(cx, path).set_text(cx, &st.t("kot_print_on"));
+                    }
+                }
                 let mut st = app_state().lock().unwrap();
-                let on = st
-                    .store
-                    .as_ref()
-                    .map(|s| s.kot_auto_print())
-                    .unwrap_or(true);
-                self.ui
-                    .button(cx, ids!(kot_print_toggle))
-                    .set_text(cx, &st.t(if on { "kot_print_on" } else { "kot_print_off" }));
                 // Every kitchen station gets its own route row (empty until configured).
                 let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
                 st.printer_draft.ensure_station_routes(station_ids);
@@ -16521,13 +16726,13 @@ impl App {
                     amount_key_visible(
                         st.amounts_screen_hidden,
                         &st.amount_keys_hidden,
+                        &st.amount_keys_peek,
                         "day_close",
                     )
                 };
-                self.ui.widget(cx, ids!(day_close_label)).set_text(
-                    cx,
-                    &plain_display_text(&display_sensitive(&day_close, visible)),
-                );
+                // Mask money values only — headings/labels/counts stay readable.
+                let rows = apply_amount_visibility(parse_report(&day_close), visible);
+                self.set_report_rows(cx, ids!(day_close_label), rows);
             }
             // Books home stat cards: label + value + per-figure eye.
             {
@@ -16663,17 +16868,17 @@ impl App {
             }
             self.sync_books_sections(cx);
             {
-                let st = app_state().lock().unwrap();
-                let visible = amount_key_visible(
-                    st.amounts_screen_hidden,
-                    &st.amount_keys_hidden,
-                    "reports",
-                );
-                drop(st);
-                self.ui.widget(cx, ids!(reports_label)).set_text(
-                    cx,
-                    &plain_display_text(&display_sensitive(&day_close, visible)),
-                );
+                let visible = {
+                    let st = app_state().lock().unwrap();
+                    amount_key_visible(
+                        st.amounts_screen_hidden,
+                        &st.amount_keys_hidden,
+                        &st.amount_keys_peek,
+                        "reports",
+                    )
+                };
+                let rows = apply_amount_visibility(parse_report(&day_close), visible);
+                self.set_report_rows(cx, ids!(reports_label), rows);
             }
             self.ui
                 .widget(cx, ids!(inventory_label)).set_text(cx, &plain_display_text(&inventory_text));
@@ -17024,14 +17229,10 @@ impl App {
                 (st.screen, st.locale.language.clone())
             };
             if screen == Screen::Reports {
-                self.ui
-                    .widget(cx, ids!(reports_title))
-                    .set_text(cx, &plain_display_text(&locale::t(&lang, "reports_facet_title")));
-                paint_page_title_icon(cx, &self.ui, ids!(reports_title_icon), NavTab::Reports);
-                self.ui
-                    .widget(cx, ids!(reports_help))
-                    .as_info_help()
-                    .set_tip(&plain_display_text(&locale::t(&lang, "reports_facet_help")));
+                let help = self.ui.widget(cx, ids!(reports_help)).as_info_help();
+                help.set_title(cx, &locale::t(&lang, "reports_facet_title"));
+                help.set_nav_icon(cx, NavTab::Reports);
+                help.set_tip(&plain_display_text(&locale::t(&lang, "reports_facet_help")));
             }
         }
         // Re-apply after chrome labels — hot-reload / focus must not leave the
@@ -17493,7 +17694,6 @@ impl App {
         self.align_label(cx, ids!(onboard_status), rtl);
         self.align_label(cx, ids!(client_pair_status), rtl);
         self.align_label(cx, ids!(client_queue_label), rtl);
-        self.align_label(cx, ids!(reports_title), rtl);
         self.align_label(cx, ids!(reports_help), rtl);
         self.align_label(cx, ids!(setup_lang_list), rtl);
         self.align_label(cx, ids!(language_list), rtl);
@@ -17531,10 +17731,10 @@ impl App {
         self.align_label(cx, ids!(h_actual_total_cap), rtl);
         self.align_label(cx, ids!(h_applied_total_cap), rtl);
         self.align_label(cx, ids!(h_mix_type_hint_khaynjo), rtl);
-        self.align_label(cx, ids!(h_amend_help), rtl);
+        self.align_label(cx, ids!(sales_help), rtl);
         self.align_label(cx, ids!(h_rounded_total), rtl);
         self.align_label(cx, ids!(h_account_kind), rtl);
-        self.align_label(cx, ids!(h_team_owner_help), rtl);
+        self.align_label(cx, ids!(team_help), rtl);
         self.align_label(cx, ids!(h_permission_preset), rtl);
         self.align_label(cx, ids!(h_preset_help_khaynjo), rtl);
         self.align_label(cx, ids!(h_optional_login_help), rtl);
@@ -17552,9 +17752,9 @@ impl App {
         self.align_label(cx, ids!(h_units_picker_help), rtl);
         self.align_label(cx, ids!(h_kot_print_help_khaynjo), rtl);
         self.align_label(cx, ids!(h_restore_help), rtl);
-        self.align_label(cx, ids!(h_day_close_help), rtl);
-        self.align_label(cx, ids!(h_stock_type_help), rtl);
-        self.align_label(cx, ids!(h_branch_export_help), rtl);
+        self.align_label(cx, ids!(day_close_help), rtl);
+        self.align_label(cx, ids!(inventory_help), rtl);
+        self.align_label(cx, ids!(branches_help), rtl);
         self.align_label(cx, ids!(h_book_add_dish), rtl);
         self.align_label(cx, ids!(h_book_opening_credit), rtl);
         self.align_label(cx, ids!(h_caption_today), rtl);
@@ -17598,22 +17798,17 @@ impl App {
         self.align_label(cx, ids!(h_bank_reconciliation), rtl);
         self.align_label(cx, ids!(h_spreadsheet_csv), rtl);
         self.align_label(cx, ids!(shop_badge), rtl);
-        self.align_label(cx, ids!(books_heading), rtl);
         self.align_label(cx, ids!(books_help), rtl);
-        self.align_label(cx, ids!(buy_heading), rtl);
+        self.align_label(cx, ids!(sell_help), rtl);
+        self.align_label(cx, ids!(buy_help), rtl);
         self.align_label(cx, ids!(money_lane_label), rtl);
         self.align_label(cx, ids!(menu_mode_label), rtl);
-        self.align_label(cx, ids!(items_heading), rtl);
         self.align_label(cx, ids!(items_help_label), rtl);
-        self.align_label(cx, ids!(sales_title), rtl);
-        self.align_label(cx, ids!(credit_title), rtl);
         self.align_label(cx, ids!(credit_help), rtl);
-        self.align_label(cx, ids!(team_title), rtl);
+        self.align_label(cx, ids!(settings_hub_help), rtl);
+        self.align_label(cx, ids!(sidebar_settings_help), rtl);
         self.align_label(cx, ids!(settings_title), rtl);
-        self.align_label(cx, ids!(day_close_title), rtl);
         self.align_label(cx, ids!(reports_bank_heading), rtl);
-        self.align_label(cx, ids!(inventory_title), rtl);
-        self.align_label(cx, ids!(branches_title), rtl);
         self.align_label(cx, ids!(setup_lang_title), rtl);
         self.align_label(cx, ids!(setup_lang_hint), rtl);
         self.align_label(cx, ids!(device_setup_banner), rtl);
@@ -17779,7 +17974,13 @@ impl App {
     }
 
     fn paint_static_texts(&mut self, cx: &mut Cx) {
-        let lang = app_state().lock().unwrap().locale.language.clone();
+        let (lang, country_code) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.locale.language.clone(),
+                st.fiscal.country_code.clone(),
+            )
+        };
         let s = |key: &str| locale::t(&lang, key);
         // Restaurant loop (running table, settle, floor, rights, LAN find).
         for (id, key) in [
@@ -17852,6 +18053,10 @@ impl App {
         ] {
             self.ui.text_input(cx, id).set_empty_text(cx, s(key));
         }
+        self.ui.text_input(cx, ids!(resv_phone_input)).set_empty_text(
+            cx,
+            phone_placeholder(&s("resv_phone_ph"), &country_code),
+        );
         for (id, key) in [
             (ids!(move_help), "move_help"),
             (ids!(h_bill_format), "bill_format"),
@@ -17865,9 +18070,24 @@ impl App {
             (ids!(h_rights_help), "rights_help"),
             (ids!(h_opening_float), "opening_float"),
             (ids!(h_shift_close), "shift_handover"),
+            (ids!(h_split_payment), "split"),
+            (ids!(h_split_bill), "split_bill"),
+            (ids!(h_move_table), "move_merge_table"),
         ] {
             self.ui.widget(cx, id).set_text(cx, &plain_display_text(&s(key)));
         }
+        self.ui
+            .widget(cx, ids!(payment_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("mix_type_hint_khaynjo")));
+        self.ui
+            .widget(cx, ids!(move_table_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("move_help")));
+        self.ui
+            .widget(cx, ids!(upi_qr_title_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("upi_qr_help")));
         self.ui.widget(cx, ids!(h_unit_at_cap)).set_text(cx, &plain_display_text(&s("unit_at_cap")));
         self.ui.widget(cx, ids!(h_applied)).set_text(cx, &plain_display_text(&s("applied")));
         self.ui.widget(cx, ids!(h_local_badge)).set_text(cx, &plain_display_text(&s("local_badge")));
@@ -17902,10 +18122,8 @@ impl App {
         self.ui.widget(cx, ids!(h_actual_total_cap)).set_text(cx, &plain_display_text(&s("actual_total_cap")));
         self.ui.widget(cx, ids!(h_applied_total_cap)).set_text(cx, &plain_display_text(&s("applied_total_cap")));
         self.ui.widget(cx, ids!(h_mix_type_hint_khaynjo)).set_text(cx, &plain_display_text(&s("mix_type_hint_khaynjo")));
-        self.ui.widget(cx, ids!(h_amend_help)).set_text(cx, &plain_display_text(&s("amend_help")));
         self.ui.widget(cx, ids!(h_rounded_total)).set_text(cx, &plain_display_text(&s("rounded_total")));
         self.ui.widget(cx, ids!(h_account_kind)).set_text(cx, &plain_display_text(&s("account_kind")));
-        self.ui.widget(cx, ids!(h_team_owner_help)).set_text(cx, &plain_display_text(&s("team_owner_help")));
         self.ui.widget(cx, ids!(h_permission_preset)).set_text(cx, &plain_display_text(&s("permission_preset")));
         self.ui.widget(cx, ids!(h_preset_help_khaynjo)).set_text(cx, &plain_display_text(&s("preset_help_rest")));
         for (idle, on, key) in [
@@ -17933,17 +18151,7 @@ impl App {
             .set_text(cx, &plain_display_text(&s("units_picker_help")));
         self.ui.widget(cx, ids!(h_kot_print_help_khaynjo)).set_text(cx, &plain_display_text(&s("kot_print_help_khaynjo")));
         self.ui.widget(cx, ids!(h_restore_help)).set_text(cx, &plain_display_text(&s("restore_help")));
-        self.ui
-            .widget(cx, ids!(h_day_close_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("day_close_help")));
-        // Picking a row fills the item; a new name on + Stock becomes a raw material.
-        self.ui.widget(cx, ids!(h_stock_type_help)).set_visible(cx, false);
         self.ui.widget(cx, ids!(stock_empty)).set_text(cx, &plain_display_text(&s("stock_empty")));
-        self.ui
-            .widget(cx, ids!(h_branch_export_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("branch_export_help")));
         self.ui.widget(cx, ids!(h_book_add_dish)).set_text(cx, &plain_display_text(&s("book_add_dish")));
         self.ui.widget(cx, ids!(h_book_opening_credit)).set_text(cx, &plain_display_text(&s("book_opening_credit")));
         self.ui.widget(cx, ids!(h_caption_today)).set_text(cx, &plain_display_text(&s("caption_today")));
@@ -18203,18 +18411,22 @@ impl App {
         self.ui
             .widget(cx, ids!(sibling_pickers_help))
             .set_text(cx, &plain_display_text(&s("sibling_pickers_help")));
-        self.ui
-            .widget(cx, ids!(floor_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("floor_help")));
+        {
+            let help = self.ui.widget(cx, ids!(floor_help)).as_info_help();
+            help.set_title(cx, &s("floor"));
+            help.set_nav_icon(cx, NavTab::Floor);
+            help.set_tip(&plain_display_text(&s("floor_help")));
+        }
         self.ui
             .widget(cx, ids!(settings_lan_help))
             .as_info_help()
             .set_tip(&plain_display_text(&s("lan_pages_help")));
-        self.ui
-            .widget(cx, ids!(kitchen_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("kitchen_help")));
+        {
+            let help = self.ui.widget(cx, ids!(kitchen_help)).as_info_help();
+            help.set_title(cx, &s("kitchen"));
+            help.set_nav_icon(cx, NavTab::Kitchen);
+            help.set_tip(&plain_display_text(&s("kitchen_help")));
+        }
         self.ui
             .widget(cx, ids!(floor_areas_help))
             .as_info_help()
@@ -18297,7 +18509,10 @@ impl App {
         self.ui.text_input(cx, ids!(buy_expense_amount)).set_empty_text(cx, s("amount_ph"));
         self.ui.text_input(cx, ids!(buy_expense_note)).set_empty_text(cx, s("note_buy_expense_ph"));
         self.ui.text_input(cx, ids!(approval_pin_input)).set_empty_text(cx, s("manager_pin_ph"));
-        self.ui.text_input(cx, ids!(credit_add_phone)).set_empty_text(cx, s("phone_ph"));
+        self.ui.text_input(cx, ids!(credit_add_phone)).set_empty_text(
+            cx,
+            phone_placeholder(&s("phone_ph"), &country_code),
+        );
         self.ui.text_input(cx, ids!(credit_limit_input)).set_empty_text(cx, s("credit_limit_ph"));
         self.ui.text_input(cx, ids!(settle_amount_input)).set_empty_text(cx, s("amount_received_ph"));
         self.ui.text_input(cx, ids!(settle_bill_input)).set_empty_text(cx, s("against_bill_ph"));
@@ -18330,8 +18545,6 @@ impl App {
         self.ui.text_input(cx, ids!(branch_name_input)).set_empty_text(cx, s("new_branch_name_ph"));
         self.ui.text_input(cx, ids!(branch_code_input)).set_empty_text(cx, s("short_code_ph"));
         self.ui.widget(cx, ids!(order_help)).set_text(cx, &plain_display_text(&s("order_help")));
-        self.ui.widget(cx, ids!(floor_heading)).set_text(cx, &plain_display_text(&s("floor")));
-        paint_page_title_icon(cx, &self.ui, ids!(floor_heading_icon), NavTab::Floor);
         self.ui.text_input(cx, ids!(layout_x_input)).set_empty_text(cx, s("floor_layout_x"));
         self.ui.text_input(cx, ids!(layout_y_input)).set_empty_text(cx, s("floor_layout_y"));
         self.ui.text_input(cx, ids!(layout_w_input)).set_empty_text(cx, s("floor_layout_w"));
@@ -18345,8 +18558,6 @@ impl App {
         self.ui.widget(cx, ids!(floor_add_heading)).set_text(cx, &plain_display_text(&s("add_a_table")));
         self.ui.button(cx, ids!(area_new_add)).set_text(cx, &s("add_area"));
         self.ui.text_input(cx, ids!(area_new_input)).set_empty_text(cx, s("area_new_ph"));
-        self.ui.widget(cx, ids!(kitchen_heading)).set_text(cx, &plain_display_text(&s("kitchen")));
-        paint_page_title_icon(cx, &self.ui, ids!(kitchen_heading_icon), NavTab::Kitchen);
         self.ui.widget(cx, ids!(kitchen_empty)).set_text(cx, &plain_display_text(&s("kitchen_empty")));
         self.ui.widget(cx, ids!(stations_heading)).set_text(cx, &plain_display_text(&s("stations_heading")));
         self.ui
@@ -18424,11 +18635,24 @@ impl App {
         self.ui.widget(cx, ids!(h_buy_expense)).set_text(cx, &plain_display_text(&s("expense_heading")));
         self.ui.text_input(cx, ids!(buy_unit_input)).set_empty_text(cx, s("buy_unit_ph"));
         self.ui.button(cx, ids!(buy_parts_add)).set_text(cx, &s("add_another_way"));
-        self.ui.widget(cx, ids!(books_heading)).set_text(cx, &plain_display_text(&s("books")));
-        paint_page_title_icon(cx, &self.ui, ids!(books_title_icon), NavTab::Books);
-        self.ui.widget(cx, ids!(books_help)).set_text(cx, &plain_display_text(&s("books_help")));
-        self.ui.widget(cx, ids!(buy_heading)).set_text(cx, &plain_display_text(&s("buy")));
-        paint_page_title_icon(cx, &self.ui, ids!(buy_heading_icon), NavTab::Buy);
+        {
+            let help = self.ui.widget(cx, ids!(books_help)).as_info_help();
+            help.set_title(cx, &s("books"));
+            help.set_nav_icon(cx, NavTab::Books);
+            help.set_tip(&plain_display_text(&s("books_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(sell_help)).as_info_help();
+            help.set_title(cx, &s("sell"));
+            help.set_nav_icon(cx, NavTab::Sell);
+            help.set_tip(&plain_display_text(&s("order_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(buy_help)).as_info_help();
+            help.set_title(cx, &s("buy"));
+            help.set_nav_icon(cx, NavTab::Buy);
+            help.set_tip(&plain_display_text(&s("buy_help")));
+        }
         self.ui
             .button(cx, ids!(client_pair_back))
             .set_text(cx, &s("back"));
@@ -18499,21 +18723,27 @@ impl App {
             self.ui.button(cx, idle).set_text(cx, &s(key));
             self.ui.button(cx, on).set_text(cx, &s(key));
         }
-        self.ui.widget(cx, ids!(items_heading)).set_text(cx, &plain_display_text(&s("your_items")));
-        paint_page_title_icon(cx, &self.ui, ids!(items_heading_icon), NavTab::Menu);
-        self.ui
-            .widget(cx, ids!(items_help_label))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("items_help")));
-        self.ui.widget(cx, ids!(sales_title)).set_text(cx, &plain_display_text(&s("sales")));
-        paint_page_title_icon(cx, &self.ui, ids!(sales_title_icon), NavTab::Sales);
-        self.ui.widget(cx, ids!(credit_title)).set_text(cx, &plain_display_text(&s("credit")));
-        paint_page_title_icon(cx, &self.ui, ids!(credit_title_icon), NavTab::Credit);
+        {
+            let help = self.ui.widget(cx, ids!(items_help_label)).as_info_help();
+            help.set_title(cx, &s("items"));
+            help.set_nav_icon(cx, NavTab::Menu);
+            help.set_tip(&plain_display_text(&s("items_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(sales_help)).as_info_help();
+            help.set_title(cx, &s("sales"));
+            help.set_nav_icon(cx, NavTab::Sales);
+            help.set_tip(&plain_display_text(&s("amend_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(credit_help)).as_info_help();
+            help.set_title(cx, &s("credit"));
+            help.set_nav_icon(cx, NavTab::Credit);
+            help.set_tip(&plain_display_text(&s("credit_help")));
+        }
         // Essay WrapLabels stay hidden; useful tips are InfoHelp ℹ above.
         for path in [
-            ids!(credit_help),
             ids!(h_country_pack_help),
-            ids!(h_team_owner_help),
             ids!(h_units_help),
             ids!(categories_help),
             ids!(h_brand_shown_help),
@@ -18521,22 +18751,27 @@ impl App {
             self.ui.widget(cx, path).set_visible(cx, false);
         }
         self.ui
-            .widget(cx, ids!(credit_help))
-            .set_text(cx, &plain_display_text(&s("credit_help")));
-        self.ui
             .text_input(cx, ids!(credit_add_kind))
             .set_empty_text(cx, s("party_kind_ph"));
-        self.ui.widget(cx, ids!(team_title)).set_text(cx, &plain_display_text(&s("team")));
-        paint_page_title_icon(cx, &self.ui, ids!(team_title_icon), NavTab::Team);
+        {
+            let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
+            help.set_title(cx, &s("team"));
+            help.set_nav_icon(cx, NavTab::Team);
+            help.set_tip(&plain_display_text(&s("team_owner_help")));
+        }
         self.ui.widget(cx, ids!(settings_title)).set_text(cx, &plain_display_text(&s("language_currency")));
-        self.ui.widget(cx, ids!(day_close_title)).set_text(cx, &plain_display_text(&s("day_close")));
-        paint_page_title_icon(cx, &self.ui, ids!(day_close_title_icon), NavTab::DayClose);
-        self.ui.widget(cx, ids!(reports_title)).set_text(cx, &plain_display_text(&s("reports")));
-        paint_page_title_icon(cx, &self.ui, ids!(reports_title_icon), NavTab::Reports);
-        self.ui
-            .widget(cx, ids!(reports_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("reports_help")));
+        {
+            let help = self.ui.widget(cx, ids!(day_close_help)).as_info_help();
+            help.set_title(cx, &s("day_close"));
+            help.set_nav_icon(cx, NavTab::DayClose);
+            help.set_tip(&plain_display_text(&s("day_close_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(reports_help)).as_info_help();
+            help.set_title(cx, &s("nav_reports"));
+            help.set_nav_icon(cx, NavTab::Reports);
+            help.set_tip(&plain_display_text(&s("reports_help")));
+        }
         for path in [ids!(reports_today), ids!(reports_today_on)] {
             self.ui.button(cx, path).set_text(cx, &s("reports_today"));
         }
@@ -18556,16 +18791,24 @@ impl App {
         self.ui
             .widget(cx, ids!(reports_bank_heading))
             .set_text(cx, &plain_display_text(&s("bank_book")));
-        self.ui.widget(cx, ids!(inventory_title)).set_text(cx, &plain_display_text(&s("inventory")));
-        paint_page_title_icon(cx, &self.ui, ids!(inventory_title_icon), NavTab::Inventory);
-        self.ui.widget(cx, ids!(branches_title)).set_text(cx, &plain_display_text(&s("branches")));
-        paint_page_title_icon(cx, &self.ui, ids!(branches_title_icon), NavTab::Branches);
-        self.ui
-            .widget(cx, ids!(sidebar_settings_title))
-            .set_text(cx, &plain_display_text(&s("sidebar_settings")));
-        self.ui
-            .widget(cx, ids!(sidebar_settings_help))
-            .set_text(cx, &plain_display_text(&s("sidebar_settings_help")));
+        {
+            let help = self.ui.widget(cx, ids!(inventory_help)).as_info_help();
+            help.set_title(cx, &s("inventory"));
+            help.set_nav_icon(cx, NavTab::Inventory);
+            help.set_tip(&plain_display_text(&s("stock_type_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(branches_help)).as_info_help();
+            help.set_title(cx, &s("branches"));
+            help.set_nav_icon(cx, NavTab::Branches);
+            help.set_tip(&plain_display_text(&s("branch_export_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(sidebar_settings_help)).as_info_help();
+            help.set_title(cx, &s("sidebar_settings"));
+            help.set_nav_icon(cx, NavTab::Settings);
+            help.set_tip(&plain_display_text(&s("sidebar_settings_help")));
+        }
         self.ui
             .button(cx, ids!(sidebar_settings_back))
             .set_text(cx, &s("sidebar_back_settings"));
@@ -19475,14 +19718,12 @@ impl App {
         {
             let st = app_state().lock().unwrap();
             let s = |k: &str| st.t(k);
-            self.ui
-                .widget(cx, ids!(settings_hub_title))
-                .set_text(cx, &plain_display_text(&s("settings_hub_title")));
-            paint_page_title_icon(cx, &self.ui, ids!(settings_hub_title_icon), NavTab::Settings);
-            self.ui
-                .widget(cx, ids!(settings_hub_help))
-                .as_info_help()
-                .set_tip(&plain_display_text(&s("settings_hub_help")));
+            {
+                let help = self.ui.widget(cx, ids!(settings_hub_help)).as_info_help();
+                help.set_title(cx, &s("nav_settings"));
+                help.set_nav_icon(cx, NavTab::Settings);
+                help.set_tip(&plain_display_text(&s("settings_hub_help")));
+            }
             self.ui
                 .button(cx, ids!(settings_detail_back))
                 .set_text(cx, &s("settings_back"));
@@ -20273,33 +20514,52 @@ impl App {
         self.ui.redraw(cx);
     }
 
-    /// Top eye: session-only hide/show for every amount on screen.
+    /// Top (screen) eye — session-only. When turning **hidden**, clears peeks so a
+    /// fresh hide session starts; does not rewrite labels or report structure.
     fn toggle_amounts_screen(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
             st.amounts_screen_hidden = !st.amounts_screen_hidden;
+            if st.amounts_screen_hidden {
+                st.amount_keys_peek.clear();
+            }
         }
         self.sync_chrome(cx);
     }
 
-    /// Per-figure eye next to a books value — remembered in the books.
+    /// Per-figure eye for one amount key:
+    /// - Screen **hidden** → peek / un-peek that key in `amount_keys_peek` (session).
+    /// - Screen **visible** → add / remove the key in persisted `amount_keys_hidden`.
     fn toggle_amount_key(&mut self, cx: &mut Cx, key: &str) {
         {
             let mut st = app_state().lock().unwrap();
-            if let Some(i) = st.amount_keys_hidden.iter().position(|k| k == key) {
-                st.amount_keys_hidden.remove(i);
+            if st.amounts_screen_hidden {
+                // Screen is hiding values by default: this eye peeks / un-peeks one figure.
+                if let Some(i) = st.amount_keys_peek.iter().position(|k| k == key) {
+                    st.amount_keys_peek.remove(i);
+                } else {
+                    st.amount_keys_peek.push(key.to_string());
+                }
             } else {
-                st.amount_keys_hidden.push(key.to_string());
-            }
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_amount_keys_hidden_csv(&amount_keys_hidden_csv(
-                    &st.amount_keys_hidden,
-                ));
+                // Screen is applying individual state: this eye hides / shows one figure.
+                if let Some(i) = st.amount_keys_hidden.iter().position(|k| k == key) {
+                    st.amount_keys_hidden.remove(i);
+                } else {
+                    st.amount_keys_hidden.push(key.to_string());
+                }
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_amount_keys_hidden_csv(&amount_keys_hidden_csv(
+                        &st.amount_keys_hidden,
+                    ));
+                }
             }
         }
         self.sync_chrome(cx);
     }
 
+    /// Canonical paint path for a discrete money figure + its eye control.
+    /// Uses [`amount_key_visible`] + [`display_money`] — pass **only** the money
+    /// string; keep the label widget separate and always visible.
     fn paint_amount_value(
         &mut self,
         cx: &mut Cx,
@@ -20308,14 +20568,18 @@ impl App {
         key: &str,
         text: &str,
     ) {
-        let (screen_hidden, keys_hidden) = {
+        let (screen_hidden, keys_hidden, keys_peek) = {
             let st = app_state().lock().unwrap();
-            (st.amounts_screen_hidden, st.amount_keys_hidden.clone())
+            (
+                st.amounts_screen_hidden,
+                st.amount_keys_hidden.clone(),
+                st.amount_keys_peek.clone(),
+            )
         };
-        let visible = amount_key_visible(screen_hidden, &keys_hidden, key);
+        let visible = amount_key_visible(screen_hidden, &keys_hidden, &keys_peek, key);
         self.ui
             .widget(cx, value_id)
-            .set_text(cx, &plain_display_text(&display_sensitive(text, visible)));
+            .set_text(cx, &plain_display_text(&display_money(text, visible)));
         self.ui.button(cx, eye_id).set_text(cx, eye_glyph(visible));
     }
 
@@ -20428,20 +20692,15 @@ impl App {
     /// Useful tips use InfoHelp ℹ (floor_help, kitchen_help, settings_lan_help, …).
     fn hide_docs_and_debug_chrome(&mut self, cx: &mut Cx) {
         let help_ids: &[&[LiveId]] = &[
-            ids!(books_help),
-            ids!(credit_help),
             ids!(device_setup_help),
             ids!(setup_lang_hint),
             ids!(server_pick_hint),
             ids!(h_other_devices_help),
             ids!(h_other_devices_help_heading),
-            ids!(sidebar_settings_help),
             ids!(h_duress_help),
             ids!(h_optional_login_help),
             ids!(h_feature_access_help),
             ids!(h_rights_help),
-            ids!(h_team_owner_help),
-            ids!(h_amend_help),
             ids!(crm_help),
             ids!(removed_help),
             ids!(h_units_help),
@@ -20456,12 +20715,15 @@ impl App {
             ids!(h_bill_format_help),
             ids!(h_print_brand_help),
             ids!(h_restore_help),
-            ids!(h_stock_type_help),
             ids!(categories_help),
             ids!(split_help),
             ids!(move_help),
             ids!(order_help),
             ids!(upi_qr_help),
+            ids!(h_mix_type_hint_khaynjo),
+            ids!(cart_round_hint),
+            ids!(amend_round_hint),
+            ids!(approval_hint),
             ids!(frequent_config_help),
             ids!(db_path_label),
         ];
@@ -22748,11 +23010,17 @@ impl App {
         index: usize,
         amend: bool,
     ) {
-        let slot = if item.button(cx, ids!(mod_0)).clicked(actions) {
+        let slot = if item.button(cx, ids!(mod_0)).clicked(actions)
+            || item.button(cx, ids!(mod_0_on)).clicked(actions)
+        {
             Some(0)
-        } else if item.button(cx, ids!(mod_1)).clicked(actions) {
+        } else if item.button(cx, ids!(mod_1)).clicked(actions)
+            || item.button(cx, ids!(mod_1_on)).clicked(actions)
+        {
             Some(1)
-        } else if item.button(cx, ids!(mod_2)).clicked(actions) {
+        } else if item.button(cx, ids!(mod_2)).clicked(actions)
+            || item.button(cx, ids!(mod_2_on)).clicked(actions)
+        {
             Some(2)
         } else {
             None
@@ -26198,11 +26466,12 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(credit_add_btn)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();
-            let phone = self.ui.text_input(cx, ids!(credit_add_phone)).text();
+            let phone_raw = self.ui.text_input(cx, ids!(credit_add_phone)).text();
             let kind = self.ui.text_input(cx, ids!(credit_add_kind)).text();
             let birthday = self.ui.text_input(cx, ids!(credit_add_birthday)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
+                let phone = with_calling_code(&phone_raw, &st.fiscal.country_code);
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if let Some(id) = st.selected_customer_id.clone() {
                     st.require_server_role("Edit party")?;
@@ -27230,11 +27499,22 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(line_action_go)).clicked(actions) {
             self.confirm_line_action(cx);
         }
-        if self.ui.button(cx, ids!(line_cooked_btn)).clicked(actions) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.line_cooked = !st.line_cooked;
-            }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(line_cooked_raw),
+            ids!(line_cooked_raw_on),
+        ) {
+            app_state().lock().unwrap().line_cooked = false;
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(line_cooked_done),
+            ids!(line_cooked_done_on),
+        ) {
+            app_state().lock().unwrap().line_cooked = true;
             self.sync_chrome(cx);
         }
         // The menu window: Add dishes opens it; Done, Escape, a tap outside
@@ -27849,6 +28129,15 @@ impl MatchEvent for App {
                 // Picking a person to edit is the whole step: select them.
                 if field == SuggestField::TeamPick {
                     st.team_select_pending = true;
+                }
+                if field == SuggestField::CustomerName {
+                    if let Some(c) = st
+                        .customers
+                        .iter()
+                        .find(|c| c.name.eq_ignore_ascii_case(value.trim()))
+                    {
+                        st.selected_customer_id = Some(c.id.clone());
+                    }
                 }
                 if field == SuggestField::RoutePick {
                     st.printer_route_key =
@@ -29895,7 +30184,7 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(resv_add)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(resv_name_input)).text();
-            let phone = self.ui.text_input(cx, ids!(resv_phone_input)).text();
+            let phone_raw = self.ui.text_input(cx, ids!(resv_phone_input)).text();
             let guests = self.ui.text_input(cx, ids!(resv_guests_input)).text();
             let when = self.ui.text_input(cx, ids!(resv_when_input)).text();
             let table = self.ui.text_input(cx, ids!(resv_table_input)).text();
@@ -29903,6 +30192,7 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Book tables")?;
                 let actor = st.actor()?;
+                let phone = with_calling_code(&phone_raw, &st.fiscal.country_code);
                 let guests: i64 = if guests.trim().is_empty() {
                     0
                 } else {
@@ -30666,23 +30956,27 @@ impl MatchEvent for App {
                 Err(e) => self.set_status(cx, e),
             }
         }
-        if self.ui.button(cx, ids!(kot_print_toggle)).clicked(actions) {
-            let result = (|| -> Result<String, String> {
-                let st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let next = !store.kot_auto_print();
-                store.set_kot_auto_print(next)?;
-                Ok(if next {
-                    "Kitchen printing on — KOTs print as they are sent".to_string()
-                } else {
-                    "Kitchen printing off — KOTs stay on the Kitchen screen".to_string()
-                })
-            })();
-            match result {
-                Ok(msg) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
+        for (want_on, idle, active) in [
+            (false, ids!(kot_print_off), ids!(kot_print_off_on)),
+            (true, ids!(kot_print_on), ids!(kot_print_on_on)),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
+                let result = (|| -> Result<String, String> {
+                    let st = app_state().lock().unwrap();
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.set_kot_auto_print(want_on)?;
+                    Ok(if want_on {
+                        "Kitchen printing on — KOTs print as they are sent".to_string()
+                    } else {
+                        "Kitchen printing off — KOTs stay on the Kitchen screen".to_string()
+                    })
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
 
         if self.ui.button(cx, ids!(backup_btn)).clicked(actions) {

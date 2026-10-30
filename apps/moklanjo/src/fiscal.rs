@@ -1659,6 +1659,112 @@ impl FiscalSettings {
     }
 }
 
+/// ITU-T calling code for a country pack (`+91`, …). Empty when unknown.
+pub fn calling_code(country_code: &str) -> &'static str {
+    match country_code.trim().to_ascii_uppercase().as_str() {
+        "AE" => "+971",
+        "AR" => "+54",
+        "AT" => "+43",
+        "AU" => "+61",
+        "BD" => "+880",
+        "BE" => "+32",
+        "BH" => "+973",
+        "BR" => "+55",
+        "CA" => "+1",
+        "CH" => "+41",
+        "CL" => "+56",
+        "CN" => "+86",
+        "CO" => "+57",
+        "CZ" => "+420",
+        "DE" => "+49",
+        "DK" => "+45",
+        "EG" => "+20",
+        "ES" => "+34",
+        "FI" => "+358",
+        "FR" => "+33",
+        "GB" => "+44",
+        "GH" => "+233",
+        "GR" => "+30",
+        "HK" => "+852",
+        "HU" => "+36",
+        "ID" => "+62",
+        "IE" => "+353",
+        "IL" => "+972",
+        "IN" => "+91",
+        "IT" => "+39",
+        "JP" => "+81",
+        "KE" => "+254",
+        "KR" => "+82",
+        "KW" => "+965",
+        "LK" => "+94",
+        "MA" => "+212",
+        "MX" => "+52",
+        "MY" => "+60",
+        "NG" => "+234",
+        "NL" => "+31",
+        "NO" => "+47",
+        "NP" => "+977",
+        "NZ" => "+64",
+        "OM" => "+968",
+        "PE" => "+51",
+        "PH" => "+63",
+        "PK" => "+92",
+        "PL" => "+48",
+        "PT" => "+351",
+        "QA" => "+974",
+        "RO" => "+40",
+        "RU" => "+7",
+        "SA" => "+966",
+        "SE" => "+46",
+        "SG" => "+65",
+        "TH" => "+66",
+        "TR" => "+90",
+        "TW" => "+886",
+        "UA" => "+380",
+        "US" => "+1",
+        "VN" => "+84",
+        "ZA" => "+27",
+        _ => "",
+    }
+}
+
+
+/// State / province / region names for structured address pickers.
+/// Empty for countries we have not listed yet — the field stays free text.
+pub fn admin_areas(country_code: &str) -> &'static [&'static str] {
+    match country_code.trim().to_ascii_uppercase().as_str() {
+        "IN" => INDIA_STATES,
+        "US" => US_STATES,
+        "AE" => UAE_EMIRATES,
+        _ => &[],
+    }
+}
+
+const INDIA_STATES: &[&str] = &[
+    "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam",
+    "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli and Daman and Diu",
+    "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir",
+    "Jharkhand", "Karnataka", "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh",
+    "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha",
+    "Puducherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana",
+    "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+];
+
+const US_STATES: &[&str] = &[
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+    "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois",
+    "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts",
+    "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
+    "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
+    "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+    "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
+    "West Virginia", "Wisconsin", "Wyoming",
+];
+
+const UAE_EMIRATES: &[&str] = &[
+    "Abu Dhabi", "Ajman", "Dubai", "Fujairah", "Ras Al Khaimah", "Sharjah", "Umm Al Quwain",
+];
+
 #[cfg(test)]
 mod tests {
     use super::*;
