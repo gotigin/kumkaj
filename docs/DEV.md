@@ -777,8 +777,18 @@ Makepad visual traps found this way (do not reintroduce):
     text field has focus — a focused button must not swallow them);
     Back/Forward history across screens (mouse back/forward buttons,
     Alt+←/→, edge swipe, Android back; lock and first-run setup clear it).
-    Nested in-screen layers (Settings section → hub, open suggest list)
-    dismiss on Back **before** leaving the screen — never skip to Day book;
+    **Peer vs drill-down:** chrome tabs (bottom nav / side rail) call
+    `go_peer` / `go_peer_if_allowed` — replace the screen as a new root and
+    clear `nav_back` + `nav_forward` (no Back chrome on peers). Nested
+    screens (`go` / `go_if_allowed`) push history — e.g. Settings → Sidebar
+    settings, Order → Floor pick-table (Khaynjo). Peer destinations opened
+    from another screen (Settings → Branches, Books shortcuts, undo → Sell)
+    also use `go_peer` so Back does not invent a fake parent. Back chrome /
+    mouse/Android back **pops** (`navigate_back`), with empty-stack fallbacks
+    (SidebarSettings → Settings, ClientPair → DeviceSetup). Nested in-screen
+    layers (Settings section → hub, suggest list, picking-server overlay,
+    Khaynjo line-action / move / split / pick-table) dismiss on Back
+    **before** leaving the screen — never skip to Day book;
     drag-to-scroll by touch only on vertical pages/lists — a mouse drag
     never flings them (wheel / scrollbar / keys). Horizontal tab strips
     (`ScrollXView`) allow mouse press-drag on the whitespace around the
@@ -889,22 +899,39 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 Both apps (`apps/moklanjo/src/main.rs`, `apps/khaynjo/src/main.rs`) share the same
 rules — duplicated per app, not a shared crate.
 
+**Scope**
+
+- **Global across screens** for the signed-in user: one screen-eye flag and the
+  two per-figure lists apply on Books, Sell, Reports, etc. alike.
+- **Per user** (`owner` or staff id, same keying as LAN / favorites): owner and
+  each staff member keep their own prefs. Loaded on unlock via
+  `reload_amount_visibility`.
+
 **Screen icon vs per-figure eyes**
 
-1. **Screen icon HIDDEN** (`amounts_screen_hidden`, session-only) → all crucial
-   money **values** are hidden by default. An individual figure’s eye may
-   temporarily **peek** that one value (`amount_keys_peek`, session-only).
+1. **Screen icon HIDDEN** → all crucial money **values** are masked, except
+   figures whose keys are in `amount_keys_peek` (still-visible exceptions).
    Labels, headings, placeholders, counts, and prose stay visible — never
    bullet them.
-2. **Screen icon VISIBLE** → each figure uses its **own** persisted hide state
-   (`amount_keys_hidden`). Per-figure eye toggles membership in that list.
-   Screen eye does **not** force everything visible; it means “apply individual
-   state.”
+2. **Screen icon VISIBLE** → each figure uses its **own** hide state in
+   `amount_keys_hidden`. Screen eye does **not** force everything visible; it
+   means “apply individual state.”
 
 Encoded by `amount_key_visible(screen_hidden, keys_hidden, keys_peek, key)`:
 
 - screen hidden → `true` only if `key` is in `keys_peek`
 - screen visible → `true` unless `key` is in `keys_hidden`
+
+**Persistence** (books meta, per `user_key`)
+
+| Pref | Meta key |
+|---|---|
+| Screen eye | `ui_amounts_screen_hidden:{user}` |
+| Hidden while screen showing | `ui_amount_keys_hidden:{user}` |
+| Visible while screen hiding | `ui_amount_keys_peek:{user}` |
+
+Legacy unkeyed meta names are read once as fallback, then overwritten under
+the per-user key on the next toggle.
 
 **What may be masked**
 
@@ -922,7 +949,8 @@ Encoded by `amount_key_visible(screen_hidden, keys_hidden, keys_peek, key)`:
   Head rows, digit-free heading lines, and trailing `(N)` counts stay readable.
   Report structure is never erased.
 
-Toggles: `toggle_amounts_screen`, `toggle_amount_key`.
+Toggles: `toggle_amounts_screen`, `toggle_amount_key` (both write the matching
+per-user meta).
 
 ## Schema
 

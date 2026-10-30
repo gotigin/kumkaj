@@ -600,7 +600,7 @@ fn en(key: &str) -> String {
         "sidebar_settings" => "Sidebar settings",
         "sidebar_settings_help" => "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar.",
         "sidebar_always_on_short" => "Always on",
-        "sidebar_back_settings" => "← Settings",
+        "sidebar_back_settings" => "Back",
         "sidebar_shown" => "Shown",
         "sidebar_hidden" => "Hidden",
         "sidebar_always_on" => "Always on the bar",

@@ -4406,14 +4406,51 @@ impl Store {
         self.meta_set("ui_nav_hidden", csv)
     }
 
-    /// Individual money figures the owner hid (CSV of keys). Screen-level
-    /// hide is session-only and is not stored here.
-    pub fn amount_keys_hidden_csv(&self) -> Result<Option<String>, String> {
-        self.meta_get("ui_amount_keys_hidden")
+    /// Per-user amount visibility (`user_key` = `"owner"` or a staff id).
+    /// Global across screens for that user; not shared with other users.
+    fn amount_vis_meta(&self, kind: &str, user_key: &str) -> Result<Option<String>, String> {
+        let keyed = self.meta_get(&format!("{kind}:{user_key}"))?;
+        if keyed.is_some() {
+            return Ok(keyed);
+        }
+        // One-time legacy fallback (pre–per-user keys).
+        self.meta_get(kind)
     }
 
-    pub fn set_amount_keys_hidden_csv(&self, csv: &str) -> Result<(), String> {
-        self.meta_set("ui_amount_keys_hidden", csv)
+    /// Figures this user hid while the screen eye is **showing**.
+    pub fn amount_keys_hidden_csv(&self, user_key: &str) -> Result<Option<String>, String> {
+        self.amount_vis_meta("ui_amount_keys_hidden", user_key)
+    }
+
+    pub fn set_amount_keys_hidden_csv(&self, user_key: &str, csv: &str) -> Result<(), String> {
+        self.meta_set(&format!("ui_amount_keys_hidden:{user_key}"), csv)
+    }
+
+    /// Figures this user keeps **visible** while the screen eye is **hiding**.
+    pub fn amount_keys_peek_csv(&self, user_key: &str) -> Result<Option<String>, String> {
+        self.amount_vis_meta("ui_amount_keys_peek", user_key)
+    }
+
+    pub fn set_amount_keys_peek_csv(&self, user_key: &str, csv: &str) -> Result<(), String> {
+        self.meta_set(&format!("ui_amount_keys_peek:{user_key}"), csv)
+    }
+
+    /// Screen-level amount eye for this user (applies on every screen).
+    /// True → all money values hide except keys in [`Self::amount_keys_peek_csv`].
+    /// False → apply [`Self::amount_keys_hidden_csv`] per figure. Missing → false.
+    pub fn amounts_screen_hidden(&self, user_key: &str) -> Result<bool, String> {
+        Ok(matches!(
+            self.amount_vis_meta("ui_amounts_screen_hidden", user_key)?
+                .as_deref(),
+            Some("1") | Some("true") | Some("yes")
+        ))
+    }
+
+    pub fn set_amounts_screen_hidden(&self, user_key: &str, hidden: bool) -> Result<(), String> {
+        self.meta_set(
+            &format!("ui_amounts_screen_hidden:{user_key}"),
+            if hidden { "1" } else { "0" },
+        )
     }
 
     /// Books home accordion: CSV of open section keys (`today`, `bills`, …).

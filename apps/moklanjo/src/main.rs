@@ -504,13 +504,14 @@ struct AppState {
     nav_order: Vec<NavTab>,
     /// Chrome peers hidden from rail / bottom bar (Settings + Lock stay shown).
     nav_hidden: Vec<NavTab>,
-    /// Session-only: top eye hides every amount by default (not persisted).
+    /// Top eye for the signed-in user (persisted, applies on every screen).
+    /// Hidden → mask all money values except [`amount_keys_peek`].
+    /// Visible → apply each figure’s [`amount_keys_hidden`].
     amounts_screen_hidden: bool,
-    /// Individual amount keys the owner hid while the screen eye is showing
-    /// (persisted). When the screen eye is hiding, use [`amount_keys_peek`].
+    /// Keys this user hid while the screen eye is showing (persisted per user).
     amount_keys_hidden: Vec<String>,
-    /// Session-only: keys revealed while the screen eye is hiding — so a
-    /// per-figure eye can still show one amount without clearing the screen.
+    /// Keys this user keeps visible while the screen eye is hiding (persisted
+    /// per user). Same list across screens for that user.
     amount_keys_peek: Vec<String>,
     /// Books home accordion: which section bodies are open (`today`, `bookings`, …).
     books_sections_open: Vec<String>,
@@ -594,8 +595,8 @@ struct AppState {
     unlock_blocked_until: Option<std::time::Instant>,
     /// Owner must choose a new PIN before the till opens (post-migration reset).
     pin_reset_required: bool,
-    /// Nested-flow history only (e.g. ClientPair ← DeviceSetup). Top-level peers
-    /// do not push history — no mouse Back / edge-swipe between Books, Parties, …
+    /// Drill-down history (Settings → SidebarSettings, …). Chrome peers use
+    /// `go_peer` and clear these; Back / mouse / Android pop via `navigate_back`.
     nav_back: Vec<Screen>,
     nav_forward: Vec<Screen>,
     /// User-resized side rail width (css px). Clamped in `apply_shell_layout`.
@@ -1439,10 +1440,10 @@ fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
     }
 }
 
-/// Back / Forward work like a browser or a native app: every screen the
-/// person moved to is history (mouse back/forward buttons, Alt+←/→, edge
-/// swipe, Android back). Only the lock screen and first-run setup are not —
-/// locking clears the history.
+/// Whether arriving at `screen` may keep (or receive) drill-down history.
+/// Lock and Onboard always clear stacks. Chrome peers still use `go_peer`
+/// (clear then land with `record_history: false`); only `go` pushes.
+/// Mouse Back / Alt+← / edge swipe / Android back pop via `navigate_back`.
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(screen, Screen::Lock | Screen::Onboard)
 }
@@ -1639,8 +1640,15 @@ impl AppState {
         self.venue_icon_key = store.venue_icon_key()?;
         self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
         self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
-        self.amount_keys_hidden =
-            parse_amount_keys_hidden(store.amount_keys_hidden_csv()?.as_deref());
+        if let Some(user) = self.session.as_ref().map(lan_key) {
+            self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
+            self.amount_keys_hidden = parse_amount_keys_hidden(
+                store.amount_keys_hidden_csv(&user).ok().flatten().as_deref(),
+            );
+            self.amount_keys_peek = parse_amount_keys_hidden(
+                store.amount_keys_peek_csv(&user).ok().flatten().as_deref(),
+            );
+        }
         self.books_sections_open = parse_books_sections(store.books_sections_csv()?.as_deref());
         let measure = store.booking_measure_settings();
         self.measure_dim_factor = store
@@ -2070,6 +2078,21 @@ impl AppState {
         self.session
             .clone()
             .ok_or_else(|| "Unlock with PIN first".to_string())
+    }
+
+    /// Load this signed-in user's amount-visibility prefs (global across screens).
+    fn reload_amount_visibility(&mut self) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        let Some(user) = self.session.as_ref().map(lan_key) else {
+            return;
+        };
+        self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
+        self.amount_keys_hidden =
+            parse_amount_keys_hidden(store.amount_keys_hidden_csv(&user).ok().flatten().as_deref());
+        self.amount_keys_peek =
+            parse_amount_keys_hidden(store.amount_keys_peek_csv(&user).ok().flatten().as_deref());
     }
 
     fn money(&self, m: Money) -> String {
@@ -7942,7 +7965,7 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right spacing: 10
                                     align: Align{y: 0.5}
-                                    sidebar_settings_back := QuietFitBtn{text: "← Settings"}
+                                    sidebar_settings_back := QuietFitBtn{text: "Back"}
                                     sidebar_settings_help := InfoHelp{
                                         tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                     }
@@ -15404,7 +15427,7 @@ impl App {
         }
         self.ui
             .button(cx, ids!(sidebar_settings_back))
-            .set_text(cx, &s("sidebar_back_settings"));
+            .set_text(cx, &s("back"));
         self.ui
             .button(cx, ids!(sidebar_enable_all))
             .set_text(cx, &s("sidebar_enable_all"));
@@ -16223,7 +16246,9 @@ impl App {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when moving between app screens; clear it for lock/setup.
+    /// Push history when `record_history` (drill-down via `go`); peers use
+    /// `go_peer` which clears stacks then calls with `record_history: false`.
+    /// Lock/onboard destinations also clear history.
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -16242,7 +16267,17 @@ impl App {
         st.screen = next;
     }
 
+    /// Drill-down: push current screen onto `nav_back` (browser-style).
     fn go(&mut self, cx: &mut Cx, screen: Screen) {
+        self.go_with(cx, screen, true);
+    }
+
+    /// Chrome peer switch: replace screen as a new root (clears back/forward).
+    fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
+        self.go_with(cx, screen, false);
+    }
+
+    fn go_with(&mut self, cx: &mut Cx, screen: Screen, push_history: bool) {
         // More hub removed — its destinations are chrome peers.
         let screen = if screen == Screen::More {
             Screen::Menu
@@ -16279,7 +16314,11 @@ impl App {
             {
                 self.set_screen(&mut st, Screen::Onboard, false);
             } else {
-                self.set_screen(&mut st, screen, true);
+                if !push_history {
+                    st.nav_back.clear();
+                    st.nav_forward.clear();
+                }
+                self.set_screen(&mut st, screen, push_history);
                 // A device opens each screen on the office's latest books.
                 st.pull_from_server();
                 if st.device_role == DeviceRole::Client
@@ -16314,6 +16353,23 @@ impl App {
         };
         if ok {
             self.go(cx, screen);
+        } else {
+            self.set_status(cx, "Not allowed for your role");
+        }
+    }
+
+    fn go_peer_if_allowed(
+        &mut self,
+        cx: &mut Cx,
+        screen: Screen,
+        allowed: impl Fn(&StaffMember) -> bool,
+    ) {
+        let ok = {
+            let st = app_state().lock().unwrap();
+            st.session.as_ref().map(allowed).unwrap_or(false)
+        };
+        if ok {
+            self.go_peer(cx, screen);
         } else {
             self.set_status(cx, "Not allowed for your role");
         }
@@ -16449,11 +16505,17 @@ impl App {
             }
             return true;
         }
-        // In-screen layers before screen history (open suggest list).
+        // In-screen layers before screen history (native / mouse / Android back).
         {
             let mut st = app_state().lock().unwrap();
             if st.suggest_open.is_some() {
                 st.suggest_open = None;
+                drop(st);
+                self.sync_chrome(cx);
+                return true;
+            }
+            if st.picking_server {
+                st.picking_server = false;
                 drop(st);
                 self.sync_chrome(cx);
                 return true;
@@ -16469,8 +16531,8 @@ impl App {
                 }
                 Some(prev)
             } else {
-                // Empty stack: only nested setup can fall back. Top-level peers
-                // (former More destinations) have no Back parent.
+                // Empty stack: only nested screens fall back. Top-level peers
+                // are roots (no Back parent).
                 match st.screen {
                     Screen::ClientPair => {
                         st.nav_forward.clear();
@@ -16478,6 +16540,10 @@ impl App {
                         st.status =
                             "Pick Server Mode or Client Mode — Back left Client pairing".into();
                         Some(Screen::DeviceSetup)
+                    }
+                    Screen::SidebarSettings => {
+                        st.nav_forward.clear();
+                        Some(Screen::Settings)
                     }
                     _ => None,
                 }
@@ -16944,44 +17010,50 @@ impl App {
         self.ui.redraw(cx);
     }
 
-    /// Top (screen) eye — session-only. When turning **hidden**, clears peeks so a
-    /// fresh hide session starts; does not rewrite labels or report structure.
+    /// Top (screen) eye — persisted per signed-in user; applies on every screen.
     fn toggle_amounts_screen(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
             st.amounts_screen_hidden = !st.amounts_screen_hidden;
-            // Fresh hide session — don't keep peeks from the last hide.
-            if st.amounts_screen_hidden {
-                st.amount_keys_peek.clear();
+            if let (Some(store), Some(user)) =
+                (st.store.as_ref(), st.session.as_ref().map(lan_key))
+            {
+                let _ = store.set_amounts_screen_hidden(&user, st.amounts_screen_hidden);
             }
         }
         self.sync_chrome(cx);
     }
 
-    /// Per-figure eye for one amount key:
-    /// - Screen **hidden** → peek / un-peek that key in `amount_keys_peek` (session).
-    /// - Screen **visible** → add / remove the key in persisted `amount_keys_hidden`.
+    /// Per-figure eye for one amount key (persisted per user):
+    /// - Screen **hidden** → add / remove the key in `amount_keys_peek` (still visible).
+    /// - Screen **visible** → add / remove the key in `amount_keys_hidden`.
     fn toggle_amount_key(&mut self, cx: &mut Cx, key: &str) {
         {
             let mut st = app_state().lock().unwrap();
+            let user = st.session.as_ref().map(lan_key);
             if st.amounts_screen_hidden {
-                // Screen is hiding values by default: this eye peeks / un-peeks one figure.
                 if let Some(i) = st.amount_keys_peek.iter().position(|k| k == key) {
                     st.amount_keys_peek.remove(i);
                 } else {
                     st.amount_keys_peek.push(key.to_string());
                 }
+                if let (Some(store), Some(user)) = (st.store.as_ref(), user.as_deref()) {
+                    let _ = store.set_amount_keys_peek_csv(
+                        user,
+                        &amount_keys_hidden_csv(&st.amount_keys_peek),
+                    );
+                }
             } else {
-                // Screen is applying individual state: this eye hides / shows one figure.
                 if let Some(i) = st.amount_keys_hidden.iter().position(|k| k == key) {
                     st.amount_keys_hidden.remove(i);
                 } else {
                     st.amount_keys_hidden.push(key.to_string());
                 }
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.set_amount_keys_hidden_csv(&amount_keys_hidden_csv(
-                        &st.amount_keys_hidden,
-                    ));
+                if let (Some(store), Some(user)) = (st.store.as_ref(), user.as_deref()) {
+                    let _ = store.set_amount_keys_hidden_csv(
+                        user,
+                        &amount_keys_hidden_csv(&st.amount_keys_hidden),
+                    );
                 }
             }
         }
@@ -18387,6 +18459,7 @@ impl App {
                 st.onboarding_complete = false;
                 st.onboard_step = 1;
                 st.session = Some(member);
+                st.reload_amount_visibility();
                 st.pin_buffer.clear();
                 st.pin_visible = false;
                 st.lock_as_owner = true;
@@ -18420,6 +18493,7 @@ impl App {
                 let member = store.complete_pin_reset(&pin)?;
                 let _ = store.set_active_session_staff_id(Some(&member.id));
                 st.session = Some(member.clone());
+                st.reload_amount_visibility();
                 st.pin_buffer.clear();
                 st.pin_visible = false;
                 st.lock_as_owner = true;
@@ -18603,6 +18677,7 @@ impl App {
                         let _ = store.set_active_session_staff_id(Some(&member.id));
                     }
                     st.session = Some(member.clone());
+                    st.reload_amount_visibility();
                     st.pin_buffer.clear();
                     st.pin_visible = false;
                     st.failed_unlocks = 0;
@@ -19283,7 +19358,6 @@ impl App {
                 st.status = "Undoing…".into();
                 st.undo_sale_id = None;
                 st.undo_snack_text.clear();
-                st.screen = Screen::Pos;
                 return Ok(());
             }
             let mut st = app_state().lock().unwrap();
@@ -19296,7 +19370,6 @@ impl App {
             st.undo_sale_id = None;
             st.undo_snack_text.clear();
             st.reload_all()?;
-            st.screen = Screen::Pos;
             Ok(())
         })();
         {
@@ -19309,6 +19382,8 @@ impl App {
         if let Err(e) = result {
             self.set_status(cx, e);
             self.clear_undo_snackbar(cx);
+        } else {
+            self.go_peer(cx, Screen::Pos);
         }
         self.sync_chrome(cx);
     }
@@ -20780,45 +20855,47 @@ impl MatchEvent for App {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     st.refresh_books_overview()?;
-                    st.screen = Screen::Books;
                     Ok(())
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
+                } else {
+                    // Drop leftover focus so the old Sell face cannot look selected.
+                    cx.set_key_focus(Area::Empty);
+                    self.go_peer(cx, Screen::Books);
                 }
-                // Drop leftover focus so the old Sell face cannot look selected.
-                cx.set_key_focus(Area::Empty);
-                self.sync_chrome(cx);
             }
             Some(NavTab::Sell) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+                self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
             }
             Some(NavTab::Buy) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Buy, |s| {
+                self.go_peer_if_allowed(cx, Screen::Buy, |s| {
                     s.can_access_inventory() || s.can_access_sales() || s.is_owner()
                 });
             }
             Some(NavTab::Rates) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+                self.go_peer_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
             }
             Some(NavTab::Sales) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
+                self.go_peer_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
             }
             Some(NavTab::Credit) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
+                self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
             }
             Some(NavTab::Team) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Team, |s| s.can_access_team() || s.is_owner());
+                self.go_peer_if_allowed(cx, Screen::Team, |s| {
+                    s.can_access_team() || s.is_owner()
+                });
             }
             Some(NavTab::Settings) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_if_allowed(cx, Screen::Settings, |s| {
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| {
                     s.can_access_backup() || s.is_owner()
                 });
             }
@@ -20826,13 +20903,13 @@ impl MatchEvent for App {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     st.refresh_day_close_text()?;
-                    st.screen = Screen::DayClose;
                     Ok(())
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::DayClose);
                 }
-                self.sync_chrome(cx);
             }
             Some(NavTab::Ops)
             | Some(NavTab::Cod)
@@ -20852,13 +20929,13 @@ impl MatchEvent for App {
                     }
                     st.reports_nav = focus;
                     st.refresh_reports_facet()?;
-                    st.screen = Screen::Reports;
                     Ok(())
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Reports);
                 }
-                self.sync_chrome(cx);
             }
             Some(NavTab::Inventory) => {
                 let result = (|| -> Result<(), String> {
@@ -20868,13 +20945,13 @@ impl MatchEvent for App {
                         return Err("Not allowed for your role".into());
                     }
                     st.refresh_inventory_text()?;
-                    st.screen = Screen::Inventory;
                     Ok(())
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Inventory);
                 }
-                self.sync_chrome(cx);
             }
             Some(NavTab::Branches) => {
                 let result = (|| -> Result<(), String> {
@@ -20884,31 +20961,31 @@ impl MatchEvent for App {
                         return Err("Not allowed for your role".into());
                     }
                     st.refresh_branches_text()?;
-                    st.screen = Screen::Branches;
                     Ok(())
                 })();
                 if let Err(e) = result {
                     self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Branches);
                 }
-                self.sync_chrome(cx);
             }
             Some(NavTab::Lock) => {
                 self.clear_undo_snackbar(cx);
-                {
+                let dest = {
                     let mut st = app_state().lock().unwrap();
                     if let Some(store) = st.store.as_ref() {
                         let _ = store.set_active_session_staff_id(None);
                     }
                     st.session = None;
-                    st.screen = if st.must_confirm_device_role {
+                    st.pin_buffer.clear();
+                    st.status = "Locked".into();
+                    if st.must_confirm_device_role {
                         Screen::DeviceSetup
                     } else {
                         Screen::Lock
-                    };
-                    st.pin_buffer.clear();
-                    st.status = "Locked".into();
-                }
-                self.sync_chrome(cx);
+                    }
+                };
+                self.go_peer(cx, dest);
             }
             None => {}
         }
@@ -20918,9 +20995,7 @@ impl MatchEvent for App {
             });
         }
         if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::Settings, |s| {
-                s.can_access_backup() || s.is_owner()
-            });
+            self.navigate_back(cx);
         }
         self.handle_sidebar_nav_list_actions(cx, actions);
         if std::mem::take(&mut *sidebar_order_dirty().lock().unwrap()) {
@@ -20964,10 +21039,10 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(books_to_sell)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+            self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
         }
         if self.ui.button(cx, ids!(books_to_buy)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::Buy, |s| {
+            self.go_peer_if_allowed(cx, Screen::Buy, |s| {
                 s.can_access_inventory() || s.can_access_sales() || s.is_owner()
             });
         }
@@ -20975,13 +21050,13 @@ impl MatchEvent for App {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 st.refresh_day_close_text()?;
-                st.screen = Screen::DayClose;
                 Ok(())
             })();
             if let Err(e) = result {
                 self.set_status(cx, e);
+            } else {
+                self.go_peer(cx, Screen::DayClose);
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(books_reports)).clicked(actions) {
             let result = (|| -> Result<(), String> {
@@ -20992,16 +21067,16 @@ impl MatchEvent for App {
                 }
                 st.reports_nav = ReportsNav::Bank;
                 st.refresh_reports_facet()?;
-                st.screen = Screen::Reports;
                 Ok(())
             })();
             if let Err(e) = result {
                 self.set_status(cx, e);
+            } else {
+                self.go_peer(cx, Screen::Reports);
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(books_credit)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
+            self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
         }
         if self.ui.button(cx, ids!(buy_to_inventory)).clicked(actions) {
             let result = (|| -> Result<(), String> {
@@ -21011,13 +21086,13 @@ impl MatchEvent for App {
                     return Err("Not allowed for your role".into());
                 }
                 st.refresh_inventory_text()?;
-                st.screen = Screen::Inventory;
                 Ok(())
             })();
             if let Err(e) = result {
                 self.set_status(cx, e);
+            } else {
+                self.go_peer(cx, Screen::Inventory);
             }
-            self.sync_chrome(cx);
         }
         if self.choice_chip_clicked(cx, actions, ids!(buy_paid), ids!(buy_paid_on)) {
             app_state().lock().unwrap().buy_on_account = false;
@@ -21402,7 +21477,8 @@ impl MatchEvent for App {
             .button(cx, ids!(settings_open_branches))
             .clicked(actions)
         {
-            self.go_if_allowed(cx, Screen::Branches, |s| {
+            // Branches is a chrome peer root — not a Settings drill-down.
+            self.go_peer_if_allowed(cx, Screen::Branches, |s| {
                 s.can_access_branches() || s.is_owner()
             });
         }
@@ -23957,6 +24033,8 @@ impl MatchEvent for App {
                         st.books_report_kind = k;
                     }
                     st.load_books_report()?;
+                    st.nav_back.clear();
+                    st.nav_forward.clear();
                     st.screen = Screen::Reports;
                     st.status = match st.books_report_kind {
                         BooksReportKind::Aging => st.t("book_kind_aging"),
@@ -24298,6 +24376,8 @@ impl MatchEvent for App {
                     .as_ref()
                     .ok_or_else(|| "No store".to_string())?
                     .books_report_text("today")?;
+                st.nav_back.clear();
+                st.nav_forward.clear();
                 st.screen = Screen::Reports;
                 st.status = "Expense logged".into();
                 Ok(())
@@ -24390,6 +24470,8 @@ impl MatchEvent for App {
                         .as_ref()
                         .ok_or_else(|| "No store".to_string())?
                         .books_report_text("today")?;
+                    st.nav_back.clear();
+                    st.nav_forward.clear();
                     st.screen = Screen::Reports;
                     st.status = format!("{} posted", kind.label());
                     Ok(())
@@ -24904,6 +24986,7 @@ impl MatchEvent for App {
                 };
                 let _ = store.set_active_session_staff_id(Some(&member.id));
                 st.session = Some(member.clone());
+                st.reload_amount_visibility();
                 st.screen = if st.device_role.is_host() && !st.onboarding_complete {
                     Screen::Onboard
                 } else {
@@ -25266,6 +25349,8 @@ impl MatchEvent for App {
                         self.copy_text_to_clipboard(cx, &t);
                         self.set_status(cx, "Chase list shown · also copied");
                         let mut st = app_state().lock().unwrap();
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
                         st.screen = Screen::Reports;
                         st.reports_nav = ReportsNav::Bank;
                     }
