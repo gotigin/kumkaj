@@ -68,6 +68,147 @@ fn nav_display_order(order: &[NavTab], hidden: &[NavTab]) -> Vec<NavTab> {
         .collect()
 }
 
+/// What the signed-in person (and this device role) may open in the chrome.
+#[derive(Clone, Copy, Debug, Default)]
+struct NavCaps {
+    sell: bool,
+    items: bool,
+    sales: bool,
+    credit: bool,
+    floor: bool,
+    kitchen: bool,
+    team: bool,
+    backup: bool,
+    inventory: bool,
+    branches: bool,
+    is_owner: bool,
+    is_client: bool,
+    /// Tables & kitchen peers exist only when this shop runs that mode.
+    floor_on: bool,
+    branch_count: usize,
+}
+
+impl NavCaps {
+    fn from_session(
+        session: Option<&StaffMember>,
+        is_client: bool,
+        floor_on: bool,
+        branch_count: usize,
+    ) -> Self {
+        match session {
+            Some(s) => Self {
+                sell: s.can_access_sell(),
+                items: s.can_access_items(),
+                sales: s.can_access_sales(),
+                credit: s.can_access_credit(),
+                floor: s.can_access_floor() || s.is_owner(),
+                kitchen: s.can_access_kitchen() || s.is_owner(),
+                team: s.can_access_team() || s.is_owner(),
+                backup: s.can_access_backup() || s.is_owner(),
+                inventory: s.can_access_inventory() || s.is_owner(),
+                branches: s.can_access_branches() || s.is_owner(),
+                is_owner: s.is_owner(),
+                is_client,
+                floor_on,
+                branch_count,
+            },
+            None => Self {
+                is_client,
+                floor_on,
+                branch_count,
+                ..Self::default()
+            },
+        }
+    }
+
+    fn books_ok(self) -> bool {
+        self.sales || self.is_owner || self.items
+    }
+
+    fn buy_ok(self) -> bool {
+        self.inventory || self.sales || self.is_owner
+    }
+}
+
+/// Day totals strip ("Today: …") — Owner and anyone with Sales access.
+/// Waiters / cashiers by default never see the shop's day's business.
+fn session_may_see_today(session: Option<&StaffMember>) -> bool {
+    match session {
+        Some(s) => s.is_owner() || s.can_access_sales(),
+        None => false,
+    }
+}
+
+/// Counter (Take payment) dock — Settle right not Denied (Owner always may).
+fn session_may_settle(session: Option<&StaffMember>) -> bool {
+    match session {
+        Some(s) => !matches!(
+            s.rights().level(domain::Right::Settle),
+            domain::RightLevel::Denied
+        ),
+        None => false,
+    }
+}
+
+/// Print bill / reprint — Reprint right not Denied.
+fn session_may_reprint(session: Option<&StaffMember>) -> bool {
+    match session {
+        Some(s) => !matches!(
+            s.rights().level(domain::Right::Reprint),
+            domain::RightLevel::Denied
+        ),
+        None => false,
+    }
+}
+
+/// True when this peer may appear for the signed-in person on this device.
+fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
+    match tab {
+        NavTab::Lock => true,
+        // Only people who can open Settings — never a dead tab (waiters on
+        // an extra till used to see it and get "Not allowed").
+        NavTab::Settings => caps.backup || caps.is_owner || caps.sales,
+        NavTab::Sell => caps.sell,
+        NavTab::Books => caps.books_ok(),
+        NavTab::Buy => caps.buy_ok(),
+        NavTab::Menu => caps.items,
+        NavTab::Floor => caps.floor && caps.floor_on,
+        NavTab::Kitchen => caps.kitchen && caps.floor_on,
+        NavTab::Sales => caps.sales,
+        NavTab::DayClose | NavTab::Reports => caps.sales || caps.is_owner,
+        NavTab::Inventory => caps.inventory && !caps.is_client,
+        NavTab::Branches => caps.branches && !caps.is_client && caps.branch_count > 1,
+        NavTab::Credit => caps.credit,
+        NavTab::Team => caps.team,
+    }
+}
+
+/// Chrome slots: preference order, minus user-hidden, minus no-access peers.
+fn nav_chrome_order(order: &[NavTab], hidden: &[NavTab], caps: NavCaps) -> Vec<NavTab> {
+    nav_display_order(order, hidden)
+        .into_iter()
+        .filter(|t| nav_tab_permitted(*t, caps))
+        .collect()
+}
+
+/// Live chrome order for paint / click mapping (preference + rights).
+fn current_nav_chrome_order() -> Vec<NavTab> {
+    let st = app_state().lock().unwrap();
+    let branch_count = st
+        .store
+        .as_ref()
+        .and_then(|s| s.list_branches().ok())
+        .map(|b| b.len())
+        .unwrap_or(1);
+    let caps = NavCaps::from_session(
+        st.session.as_ref(),
+        st.device_role == DeviceRole::Client,
+        st.venue_mode.creates_kot(),
+        branch_count,
+    );
+    nav_chrome_order(&st.nav_order, &st.nav_hidden, caps)
+}
+
 /// Password-style mask: every non-space character becomes a bullet so the
 /// string keeps roughly the same width (no peek at figures when hidden).
 /// **Only** for money values — never feed labels, headings, counts, or prose.

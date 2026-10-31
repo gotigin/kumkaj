@@ -458,7 +458,7 @@ impl AppState {
     }
 
     /// Open a table on the Order desk from the Server running order (pending +
-    /// sent). Seating / Change table side-effects happen in [`Self::open_table`].
+    /// sent). First-seat / Change-table side-effects live in `open_table`.
     fn load_table_cart(&mut self, table_id: &str) -> Result<(), String> {
         if self.selected_table_id.as_deref() != Some(table_id) {
             self.split_mode = false;
@@ -823,11 +823,8 @@ impl AppState {
                     .collect()
             }
             SuggestField::RoutePick => {
-                // Friendly names only — never put `kot:<uuid>` in the field.
-                let mut rows = vec![
-                    SuggestRow::new(self.t("route_bill"), ""),
-                    SuggestRow::new(self.t("route_default_kitchen"), ""),
-                ];
+                // Bill + real stations only — no invented "No station" row.
+                let mut rows = vec![SuggestRow::new(self.t("route_bill"), "")];
                 for s in &self.stations {
                     rows.push(SuggestRow::new(s.name.clone(), ""));
                 }

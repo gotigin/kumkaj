@@ -203,10 +203,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             *nav_suppress_click().lock().unwrap() = false;
             return None;
         }
-        let order = {
-            let st = app_state().lock().unwrap();
-            nav_display_order(&st.nav_order, &st.nav_hidden)
-        };
+        let order = current_nav_chrome_order();
         let bottom = self.bottom_nav_pairs();
         let rail = self.rail_nav_pairs();
         for slot in 0..order.len() {
@@ -511,10 +508,11 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(booking_scope_hint))
                 .set_text(cx, &scope_hint);
-            self.ui
-                .widget(cx, ids!(booking_scope_help))
-                .as_info_help()
-                .set_tip(&plain_display_text(&scope_hint));
+            {
+                let help = self.ui.widget(cx, ids!(booking_scope_help)).as_info_help();
+                help.set_title(cx, &locale::t(&lang, "booking_scope_heading"));
+                help.set_tip(&plain_display_text(&scope_hint));
+            }
         }
         // Keep lane labels current on both faces.
         let (declared, owner) = {
@@ -798,7 +796,6 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_bank_reconciliation), rtl);
         self.align_label(cx, ids!(h_spreadsheet_csv), rtl);
         self.align_label(cx, ids!(h_goods_received_2), rtl);
-        self.align_label(cx, ids!(shop_badge), rtl);
         self.align_label(cx, ids!(money_lane_label), rtl);
         self.align_label(cx, ids!(menu_mode_label), rtl);
         self.align_label(cx, ids!(device_setup_banner), rtl);

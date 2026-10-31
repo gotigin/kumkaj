@@ -395,9 +395,7 @@ impl MatchEvent for App {
             }
             Some(NavTab::Settings) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| {
-                    s.can_access_backup() || s.is_owner()
-                });
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
             }
             Some(NavTab::DayClose) => {
                 let result = (|| -> Result<(), String> {
@@ -484,11 +482,11 @@ impl MatchEvent for App {
             None => {}
         }
         if self.ui.button(cx, ids!(settings_hub_sidebar)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::SidebarSettings, |s| {
-                s.can_access_backup() || s.is_owner()
-            });
+            self.go_if_allowed(cx, Screen::SidebarSettings, |s| s.can_access_settings());
         }
-        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions) {
+        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions)
+            || self.ui.button(cx, ids!(header_back)).clicked(actions)
+        {
             self.navigate_back(cx);
         }
         self.handle_sidebar_nav_list_actions(cx, actions);
@@ -1083,7 +1081,7 @@ impl MatchEvent for App {
         if self.ui.text_input(cx, ids!(lock_login_password)).returned(actions).is_some() {
             self.try_unlock_with_login(cx);
         }
-        if self.ui.button(cx, ids!(role_owner)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(role_owner), ids!(role_owner_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 st.lock_as_owner = true;
@@ -1092,7 +1090,7 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(role_staff)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(role_staff), ids!(role_staff_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 let has_staff = st.staff.iter().any(|s| !s.is_owner());
@@ -2283,8 +2281,11 @@ impl MatchEvent for App {
                 let seat_now = {
                     let mut st = app_state().lock().unwrap();
                     st.cart.set_order_type(kind);
-                    if kind != OrderType::DineIn {
-                        st.selected_table_id = None;
+                    // Leaving a table desk: drop that ticket so a later
+                    // Choose-a-table cannot seat those lines onto another.
+                    if kind != OrderType::DineIn && st.selected_table_id.take().is_some() {
+                        st.cart.clear();
+                        st.open_cart_line = None;
                     }
                     // Dine-in without a table: go and pick one now rather
                     // than say where to go.
@@ -3051,6 +3052,36 @@ impl MatchEvent for App {
             match result {
                 Ok(msg) => {
                     self.ui.text_input(cx, ids!(table_range_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(table_remove_btn)).clicked(actions) {
+            let typed = self.ui.text_input(cx, ids!(table_remove_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Remove tables")?;
+                let names: Vec<String> = match parse_table_range(&typed) {
+                    Ok((prefix, from, to)) => (from..=to).map(|n| format!("{prefix}{n}")).collect(),
+                    Err(_) if !typed.trim().is_empty() && !typed.contains('-') => vec![typed.trim().to_string()],
+                    Err(e) => return Err(e),
+                };
+                let (removed, busy) = {
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.remove_tables_named(&names)?
+                };
+                st.reload_all()?;
+                let mut msg = format!("{removed} table(s) removed");
+                if !busy.is_empty() {
+                    msg.push_str(&format!(" · kept, open order: {}", busy.join(", ")));
+                }
+                Ok(msg)
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(table_remove_input)).set_text(cx, "");
                     self.set_status(cx, msg);
                 }
                 Err(e) => self.set_status(cx, e),
@@ -5977,7 +6008,6 @@ impl MatchEvent for App {
                     let st = app_state().lock().unwrap();
                     let mut keys: Vec<(String, String)> = Vec::new();
                     keys.push(("bill".into(), st.t("route_bill")));
-                    keys.push(("kot:".into(), st.t("route_default_kitchen")));
                     for s in &st.stations {
                         keys.push((format!("kot:{}", s.id), s.name.clone()));
                     }
@@ -6081,7 +6111,8 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(print_test_btn)).clicked(actions) {
-            // Test the first printer on the Bill route (or the first in the pool).
+            // Queue only — the print worker talks to CUPS / the network printer.
+            // Never wait for `lp` / PowerShell / TCP on the UI thread.
             let (dir, msg, own, target_desc) = {
                 let st = app_state().lock().unwrap();
                 let targets = st.printer_draft.targets_for(print_share::RouteKey::Bill);
@@ -6131,18 +6162,17 @@ impl MatchEvent for App {
         }
 
         if self.ui.button(cx, ids!(backup_btn)).clicked(actions) {
-            let result = (|| -> Result<std::path::PathBuf, String> {
+            // VACUUM INTO can take seconds on a busy shop — never block the UI.
+            let job = (|| -> Result<(PathBuf, PathBuf), String> {
                 let st = app_state().lock().unwrap();
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let path = default_backup_path()?;
-                store.backup_to(&path)?;
-                Ok(path)
+                let dest = default_backup_path()?;
+                Ok((store.db_path().to_path_buf(), dest))
             })();
-            match result {
-                Ok(path) => {
-                    self.ui
-                        .widget(cx, ids!(backup_path_label)).set_text(cx, &plain_display_text(&format!("Backup: {}", path.display())));
-                    self.set_status(cx, "Backup created");
+            match job {
+                Ok((db, dest)) => {
+                    self.set_status(cx, "Creating backup…");
+                    backup_job(db, dest);
                 }
                 Err(e) => self.set_status(cx, e),
             }

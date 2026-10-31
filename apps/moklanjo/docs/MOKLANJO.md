@@ -130,7 +130,7 @@ Supplier.
 | Franchise commission statement | **Ship** — period % of margin/revenue per carrier |
 | Tally voucher export | **Ship** — beside existing CSV |
 | RTO charges | **Ship** — fee line on auto-RTO |
-| LAN corporate self-booking | **Ship** — `GET/POST /book` HTML on office Wi‑Fi |
+| LAN corporate self-booking | **Ship** — `GET/POST /book` HTML on office Wi‑Fi: the company names itself, picks a service; priced by weight with that rate's slab (as at the desk) and **billed to its account** — never cash the drawer does not have (fixed 2026-10-31; it booked as Owner, cash, at the first rate) |
 | Phone-camera barcode | **Ship** — pick image decode; wedge primary |
 | Pickup / dispatch lists | **Ship** — same manifest + status filters |
 | COD register + remittance | **Ship** — COD entries + remit batch |

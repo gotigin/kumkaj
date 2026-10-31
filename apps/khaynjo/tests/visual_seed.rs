@@ -8,7 +8,7 @@ use kumkaj_khaynjo::{domain::*, store::Store};
 #[ignore]
 fn seed_visual() {
     let db = std::env::var("SEED_DB").unwrap();
-    let mut s = Store::open_path(std::path::Path::new(&db)).unwrap();
+    let s = Store::open_path(std::path::Path::new(&db)).unwrap();
     s.complete_onboarding().unwrap();
     s.set_venue_title("Rajdhani Thali").unwrap();
     let owner = s.list_staff().unwrap().into_iter().find(|m| m.is_owner()).unwrap();

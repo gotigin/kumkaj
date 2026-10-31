@@ -15,7 +15,7 @@ use sha2::{Digest, Sha256};
 use std::io::{Read, Write};
 use std::net::{Ipv4Addr, SocketAddr, TcpListener, TcpStream, UdpSocket};
 use std::path::{Path, PathBuf};
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::{Arc, Condvar, Mutex, OnceLock};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
@@ -191,6 +191,14 @@ pub const HEADER_REQUEST: &str = "X-Kumkaj-Request";
 /// The snapshot revision a device already holds (`/sync` answers 304 when
 /// the books are still that).
 pub const HEADER_IF_NONE_MATCH: &str = "If-None-Match";
+/// The LAN protocol both sides speak, on every request and every reply.
+pub const HEADER_PROTOCOL: &str = "X-Kumkaj-Protocol";
+
+/// What the Server and its devices say to each other (routes, bodies, the
+/// snapshot). Bump it with any change an older build would misread; the
+/// two sides then say "update the app" instead of failing quietly (an old
+/// device read a newer snapshot as "no reply" and looked offline for ever).
+pub const LAN_PROTOCOL: u32 = 1;
 
 /// Longest a device's `/wait` is held open before the Server answers anyway.
 pub const WAIT_MAX_SECS: u64 = 30;
@@ -450,14 +458,24 @@ fn run_server_loop(db_path: PathBuf) -> Result<(), String> {
 pub fn serve(listener: TcpListener, db_path: PathBuf, keep_going: &dyn Fn() -> bool) -> Result<(), String> {
     listener.set_nonblocking(true).map_err(|e| e.to_string())?;
     let guard = Arc::new(Guard::default());
+    let active = Arc::new(AtomicUsize::new(0));
     while keep_going() {
         match listener.accept() {
-            Ok((stream, peer)) => {
+            Ok((mut stream, peer)) => {
                 // Accepted sockets inherit non-blocking on some systems.
                 let _ = stream.set_nonblocking(false);
+                if active.load(Ordering::SeqCst) >= MAX_CONNECTIONS {
+                    // "Not now", said at once — the device tries again.
+                    let _ = stream.set_write_timeout(Some(Duration::from_secs(1)));
+                    let busy = Reply::refuse(503, "The office server is busy — trying again", "retry");
+                    let _ = write_http(&mut stream, busy.status, &busy.body, false, &busy.content_type);
+                    continue;
+                }
                 let path = db_path.clone();
                 let guard = Arc::clone(&guard);
+                let served = Served::start(&active);
                 let _ = thread::spawn(move || {
+                    let _served = served;
                     if let Err(e) = handle_client(stream, &path, &peer.ip().to_string(), &guard) {
                         eprintln!("Kumkaj LAN request error: {e}");
                         diag::warn(Cat::Lan, "lan_request_error", &e);
@@ -475,6 +493,28 @@ pub fn serve(listener: TcpListener, db_path: PathBuf, keep_going: &dyn Fn() -> b
         }
     }
     Ok(())
+}
+
+/// Most requests served at once. A device holds one open (`/wait`) and
+/// sends one more now and then: this covers a busy shop many times over,
+/// while a flood from one misbehaving host cannot use up the Server's
+/// threads (each connection is a thread).
+const MAX_CONNECTIONS: usize = 64;
+
+/// One connection being served, counted while it lives.
+struct Served(Arc<AtomicUsize>);
+
+impl Served {
+    fn start(active: &Arc<AtomicUsize>) -> Self {
+        active.fetch_add(1, Ordering::SeqCst);
+        Self(Arc::clone(active))
+    }
+}
+
+impl Drop for Served {
+    fn drop(&mut self) {
+        self.0.fetch_sub(1, Ordering::SeqCst);
+    }
 }
 
 // ---- Books revision: answer "has anything changed?" without the books ------
@@ -910,17 +950,61 @@ fn handle_client(
 }
 
 /// Answer one request. Every outcome is a JSON reply — a failure is never a
-/// dropped connection the phone has to guess about.
+/// dropped connection the phone has to guess about. "Not now" (the books
+/// busy, the disk full) is a 503 the device keeps its write for and sends
+/// again; anything else is the Server's answer for good. A bug that panics
+/// is a 500 — said once, never a request that hangs up on every retry and
+/// holds up the device's whole queue behind it.
 pub fn answer(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Reply {
-    match answer_inner(db_path, req, peer, guard) {
-        Ok(reply) => reply,
-        Err(e) => Reply::refuse(400, &e, ""),
+    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| answer_inner(db_path, req, peer, guard))) {
+        Ok(Ok(reply)) => reply,
+        Ok(Err(e)) if is_transient(&e) => Reply::refuse(503, &e, "retry"),
+        Ok(Err(e)) => Reply::refuse(400, &e, ""),
+        Err(_) => {
+            diag::error(Cat::Lan, "lan_request_panic", req.route());
+            Reply::refuse(
+                500,
+                "The office server could not do that (an error in the app) — tell the owner",
+                "",
+            )
+        }
     }
+}
+
+/// Errors that mean "not now" rather than "no": the books were busy past
+/// the wait, or the disk would not take the write. Nothing was done; the
+/// same request may well go through in a moment.
+fn is_transient(e: &str) -> bool {
+    let e = e.to_ascii_lowercase();
+    [
+        "database is locked",
+        "database table is locked",
+        "disk i/o error",
+        "database or disk is full",
+        "unable to open database file",
+    ]
+    .iter()
+    .any(|m| e.contains(m))
+}
+
+/// The device's protocol, from its request (none = this build's: devices
+/// from before the header spoke protocol 1).
+fn protocol_refusal(req: &Request) -> Option<Reply> {
+    let theirs = req.header(HEADER_PROTOCOL).map_or(Some(LAN_PROTOCOL), |v| v.trim().parse::<u32>().ok())?;
+    if theirs == LAN_PROTOCOL {
+        return None;
+    }
+    let message = if theirs < LAN_PROTOCOL {
+        "This device runs an older Moklanjo than the office server — update the app on this device"
+    } else {
+        "The office server runs an older Moklanjo than this device — update the app on the server"
+    };
+    Some(Reply::refuse(426, message, "update_app"))
 }
 
 fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Result<Reply, String> {
     let route = req.route();
-    let mut store = Store::open_path(db_path)?;
+    let store = Store::open_path(db_path)?;
     match route {
         "/health" => return Ok(Reply::done()),
         "/hello" => {
@@ -928,6 +1012,7 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
                 "app": DISCOVERY_APP,
                 "venue": store.venue_title().unwrap_or_default(),
                 "server_id": store.lan_server_id().unwrap_or_default(),
+                "protocol": LAN_PROTOCOL,
             })));
         }
         // Public track-by-AWB is open on the LAN (no pairing).
@@ -944,11 +1029,16 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
                 return Ok(lan_book_form(&store));
             }
             if req.method == "POST" {
-                return lan_book_submit(&mut store, req);
+                return store.in_transaction(|| lan_book_submit(&store, req));
             }
         }
-        "/pair" => return pair(&store, req, peer, guard),
         _ => {}
+    }
+    if let Some(refusal) = protocol_refusal(req) {
+        return Ok(refusal);
+    }
+    if route == "/pair" {
+        return pair(&store, req, peer, guard);
     }
     let Some(device) = store.lan_device_for_token(req.header(HEADER_DEVICE).unwrap_or_default())?
     else {
@@ -959,12 +1049,8 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         ));
     };
     match route {
-        "/sync" | "/today" => {
-            store.touch_device_seen(&device.id)?;
-            return sync_reply(&store, req.header(HEADER_IF_NONE_MATCH));
-        }
+        "/sync" | "/today" => return sync_reply(&store, req.header(HEADER_IF_NONE_MATCH)),
         "/wait" => {
-            store.touch_device_seen(&device.id)?;
             // Held open until the books change: let go of the books first.
             drop(store);
             let secs = query_param(&req.path, "secs").and_then(|s| s.parse().ok()).unwrap_or(WAIT_MAX_SECS);
@@ -986,6 +1072,11 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         return Ok(Reply::refuse(404, "not found", ""));
     }
     let request_id = req.header(HEADER_REQUEST);
+    // One device write is one unit of work, its reply record included: a
+    // retry after a lost reply — or after a crash between the two — is
+    // answered from the record, never done twice; and two tills booking at
+    // once take turns instead of interleaving.
+    let request = store.begin()?;
     if let Some(id) = request_id
         && let Some((status, body)) = store.lan_reply(id, &device.id)?
     {
@@ -995,9 +1086,19 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
             content_type: String::new(),
         });
     }
-    let reply = match write(&mut store, route, &req.body, &actor) {
-        Ok(reply) => reply,
-        Err(e) => Reply::refuse(400, &e, ""),
+    let attempt = store.begin()?;
+    let reply = match write(&store, route, &req.body, &actor) {
+        Ok(reply) => {
+            attempt.commit().map_err(|e| e.to_string())?;
+            reply
+        }
+        // Not done, and not refused: no record, the device asks again.
+        Err(e) if is_transient(&e) => return Err(e),
+        Err(e) => {
+            // Whatever the refused write did before it stopped is undone.
+            drop(attempt);
+            Reply::refuse(400, &e, "")
+        }
     };
     if let Some(id) = request_id
         && reply.status != 404
@@ -1005,6 +1106,7 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         // A refusal is an answer too: a retry gets the same words.
         store.save_lan_reply(id, &device.id, reply.status, &reply.body)?;
     }
+    request.commit().map_err(|e| e.to_string())?;
     Ok(reply)
 }
 
@@ -1082,12 +1184,21 @@ fn track(store: &Store, awb: &str) -> Result<Reply, String> {
     })
 }
 
+fn html_esc(text: &str) -> String {
+    text.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;").replace('"', "&quot;")
+}
+
 fn lan_book_form(store: &Store) -> Reply {
     let shop = store.venue_title().unwrap_or_else(|_| "Moklanjo".into());
-    let shop_esc = shop
-        .replace('&', "&amp;")
-        .replace('<', "&lt;")
-        .replace('>', "&gt;");
+    let shop_esc = html_esc(&shop);
+    // The office's own rates (services) to book under, first one picked.
+    let rates: String = store
+        .list_products(false)
+        .unwrap_or_default()
+        .into_iter()
+        .filter(|p| p.available && !p.archived)
+        .map(|p| format!("<option value=\"{}\">{}</option>", html_esc(&p.id), html_esc(&p.name)))
+        .collect();
     Reply::html(format!(
         r##"<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1102,6 +1213,8 @@ button{{margin-top:1rem;padding:.6rem 1rem;width:100%;font-size:1rem}}
 <h1>{shop_esc}</h1>
 <p>Book a parcel on this office Wi‑Fi (not the public internet).</p>
 <form method="POST" action="/book">
+<label>Your company / name (billed to your account)</label><input name="consignor" required>
+<label>Service</label><select name="rate">{rates}</select>
 <label>Destination</label><input name="destination" required>
 <label>Consignee</label><input name="consignee" required>
 <label>Weight (kg)</label><input name="weight_kg" value="1" inputmode="decimal">
@@ -1115,32 +1228,39 @@ button{{margin-top:1rem;padding:.6rem 1rem;width:100%;font-size:1rem}}
     ))
 }
 
-fn lan_book_submit(store: &mut Store, req: &Request) -> Result<Reply, String> {
+fn lan_book_submit(store: &Store, req: &Request) -> Result<Reply, String> {
     let form = parse_form_body(&req.body);
-    let destination = form.get("destination").map(|s| s.as_str()).unwrap_or("");
-    let consignee = form.get("consignee").map(|s| s.as_str()).unwrap_or("");
-    let weight = form.get("weight_kg").map(|s| s.as_str()).unwrap_or("1");
-    let phone = form.get("phone").map(|s| s.as_str()).unwrap_or("");
-    let note = form.get("note").map(|s| s.as_str()).unwrap_or("");
-    if destination.trim().is_empty() || consignee.trim().is_empty() {
+    let field = |key: &str| form.get(key).map(|s| s.as_str()).unwrap_or("");
+    let asked = crate::store::LanSelfBooking {
+        consignor: field("consignor"),
+        rate_id: field("rate"),
+        destination: field("destination"),
+        consignee: field("consignee"),
+        weight_kg: form.get("weight_kg").map(|s| s.as_str()).unwrap_or("1"),
+        phone: field("phone"),
+        note: field("note"),
+    };
+    if asked.consignor.trim().is_empty() || asked.destination.trim().is_empty() || asked.consignee.trim().is_empty() {
         return Ok(Reply::html(
-            "<!DOCTYPE html><html><body><p>Destination and consignee required.</p><p><a href=\"/book\">Back</a></p></body></html>"
+            "<!DOCTYPE html><html><body><p>Your company, destination and consignee are required.</p><p><a href=\"/book\">Back</a></p></body></html>"
                 .into(),
         ));
     }
     let actor = store
         .list_staff()?
         .into_iter()
-        .next()
-        .ok_or_else(|| "No staff on Server".to_string())?;
-    match store.lan_self_book(destination, consignee, weight, phone, note, &actor) {
-        Ok(sale) => Ok(Reply::html(format!(
-            "<!DOCTYPE html><html><body><h1>Booked</h1><p>AWB <b>{}</b></p><p>Track on LAN: <a href=\"/track/{}\">/track/{}</a></p><p><a href=\"/book\">Book another</a></p></body></html>",
-            sale.awb_no, sale.awb_no, sale.awb_no
-        ))),
+        .find(|s| s.is_owner())
+        .ok_or_else(|| "No owner on the Server".to_string())?;
+    match store.lan_self_book(&asked, &actor) {
+        Ok(sale) => {
+            let awb = html_esc(&sale.awb_no);
+            Ok(Reply::html(format!(
+                "<!DOCTYPE html><html><body><h1>Booked</h1><p>AWB <b>{awb}</b> — on your account; hand the parcel in at the counter.</p><p>Track on LAN: <a href=\"/track/{awb}\">/track/{awb}</a></p><p><a href=\"/book\">Book another</a></p></body></html>"
+            )))
+        }
         Err(e) => Ok(Reply::html(format!(
             "<!DOCTYPE html><html><body><p>Could not book: {}</p><p><a href=\"/book\">Back</a></p></body></html>",
-            e.replace('<', "&lt;")
+            html_esc(&e)
         ))),
     }
 }
@@ -1179,7 +1299,7 @@ fn approve_on_server(
 }
 
 /// A signed-in phone's write, done as `actor`.
-fn write(store: &mut Store, route: &str, body: &str, actor: &StaffMember) -> Result<Reply, String> {
+fn write(store: &Store, route: &str, body: &str, actor: &StaffMember) -> Result<Reply, String> {
     match route {
         "/sale" => {
             let req: RemoteSaleRequest =
@@ -1245,7 +1365,7 @@ fn write(store: &mut Store, route: &str, body: &str, actor: &StaffMember) -> Res
 }
 
 fn remote_sale(
-    store: &mut Store,
+    store: &Store,
     req: &RemoteSaleRequest,
     actor: &StaffMember,
 ) -> Result<Sale, String> {
@@ -1328,7 +1448,8 @@ fn urlencoding_decode(raw: &str) -> String {
             }
         }
     }
-    String::from_utf8(out).unwrap_or_default()
+    // A cut-off sequence keeps the rest of the text (it used to blank it all).
+    String::from_utf8_lossy(&out).into_owned()
 }
 
 fn default_reason() -> String {
@@ -1349,7 +1470,10 @@ fn write_http(
         401 => "Unauthorized",
         403 => "Forbidden",
         404 => "Not Found",
+        426 => "Upgrade Required",
         429 => "Too Many Requests",
+        500 => "Internal Server Error",
+        503 => "Service Unavailable",
         _ => "Error",
     };
     let ctype = if content_type.trim().is_empty() {
@@ -1362,9 +1486,10 @@ fn write_http(
     } else {
         (body.as_bytes().to_vec(), "")
     };
-    // Every reply carries the Server's clock, so a device can tell its own is wrong.
+    // Every reply carries the Server's clock, so a device can tell its own
+    // is wrong, and the protocol it speaks.
     let head = format!(
-        "HTTP/1.1 {status} {reason}\r\nContent-Type: {ctype}\r\n{encoding}{HEADER_TIME}: {}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+        "HTTP/1.1 {status} {reason}\r\nContent-Type: {ctype}\r\n{encoding}{HEADER_TIME}: {}\r\n{HEADER_PROTOCOL}: {LAN_PROTOCOL}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
         chrono::Utc::now().timestamp(),
         body.len()
     );
@@ -1453,8 +1578,14 @@ fn agent(timeout: Duration) -> ureq::Agent {
 
 fn lan_error(e: ureq::Error) -> LanError {
     match e {
-        ureq::Error::Status(_, resp) => {
+        ureq::Error::Status(status, resp) => {
             let body: serde_json::Value = resp.into_json().unwrap_or_default();
+            // "Not now" (the books busy, the disk full): nothing was done or
+            // refused — keep the write and send it again, like a lost reply.
+            if status == 503 || body.get("code").and_then(|v| v.as_str()) == Some("retry") {
+                let said = body.get("error").and_then(|v| v.as_str()).unwrap_or("server busy");
+                return LanError::Offline(format!("the office server said: {said}"));
+            }
             LanError::Refused {
                 message: body
                     .get("error")
@@ -1497,8 +1628,27 @@ fn note_server_time(resp: &ureq::Response) {
     }
 }
 
+/// A reply from a Server on another LAN protocol: said as "update the
+/// app", never misread (a newer snapshot used to fail to parse and look
+/// like no reply at all — "offline" for ever).
+fn check_protocol(resp: &ureq::Response) -> Result<(), LanError> {
+    let Some(theirs) = resp.header(HEADER_PROTOCOL).and_then(|v| v.trim().parse::<u32>().ok()) else {
+        return Ok(());
+    };
+    if theirs == LAN_PROTOCOL {
+        return Ok(());
+    }
+    let message = if theirs > LAN_PROTOCOL {
+        "The office server runs a newer Moklanjo — update the app on this device"
+    } else {
+        "The office server runs an older Moklanjo — update the app on the server"
+    };
+    Err(LanError::Refused { message: message.into(), code: "update_app".into() })
+}
+
 fn reply_json<T: serde::de::DeserializeOwned>(resp: ureq::Response) -> Result<T, LanError> {
     note_server_time(&resp);
+    check_protocol(&resp)?;
     // A cut-off reply is as good as no reply: the request id makes a retry safe.
     resp.into_json()
         .map_err(|e| LanError::Offline(format!("reply: {e}")))
@@ -1514,6 +1664,7 @@ pub fn client_pair(
     let base = base_url(host);
     let resp = agent(Duration::from_secs(8))
         .post(&format!("{base}/pair"))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
         .send_json(PairRequest {
             code: code.trim().to_string(),
             device_name: device_name.to_string(),
@@ -1534,6 +1685,7 @@ pub fn client_pair(
 pub fn client_login(link: &Link, staff_id: Option<&str>, pin: &str) -> Result<LoginOk, LanError> {
     let resp = agent(Duration::from_secs(8))
         .post(&format!("{}/login", link.base))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
         .set(HEADER_DEVICE, &link.device)
         .send_json(LoginRequest {
             staff_id: staff_id.map(str::to_string),
@@ -1549,6 +1701,7 @@ pub fn client_login(link: &Link, staff_id: Option<&str>, pin: &str) -> Result<Lo
 pub fn client_sync(link: &Link, have: &str) -> Result<Option<SyncSnapshot>, LanError> {
     let mut request = agent(Duration::from_secs(20))
         .get(&format!("{}/sync", link.base))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
         .set(HEADER_DEVICE, &link.device);
     if !have.is_empty() {
         request = request.set(HEADER_IF_NONE_MATCH, have);
@@ -1556,6 +1709,7 @@ pub fn client_sync(link: &Link, have: &str) -> Result<Option<SyncSnapshot>, LanE
     let resp = request.call().map_err(lan_error)?;
     if resp.status() == 304 {
         note_server_time(&resp);
+        check_protocol(&resp)?;
         return Ok(None);
     }
     reply_json(resp).map(Some)
@@ -1567,6 +1721,7 @@ pub fn client_sync(link: &Link, have: &str) -> Result<Option<SyncSnapshot>, LanE
 pub fn client_wait(link: &Link, rev: &str, secs: u64) -> Result<String, LanError> {
     let resp = agent(Duration::from_secs(secs + 10))
         .get(&format!("{}/wait?rev={rev}&secs={secs}", link.base))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
         .set(HEADER_DEVICE, &link.device)
         .call()
         .map_err(lan_error)?;
@@ -1584,6 +1739,7 @@ pub fn client_send(
 ) -> Result<serde_json::Value, LanError> {
     let resp = agent(Duration::from_secs(15))
         .post(&format!("{}{path}", link.base))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
         .set(HEADER_DEVICE, &link.device)
         .set(HEADER_SESSION, &link.session)
         .set(HEADER_REQUEST, request_id)
@@ -1870,6 +2026,80 @@ mod tests {
         .unwrap()
     }
 
+    /// Books busy past the wait (a long write elsewhere) is "not now": a
+    /// 503 the device keeps its booking for, with no reply recorded — so the
+    /// same request, sent again once the books are free, is done (once).
+    #[test]
+    fn busy_books_are_a_retry_never_a_refusal() {
+        let (path, store, guard) = office();
+        let (device, session) = paired_device(&path, &store, &guard, "Asha", "2222");
+        let sale = sale_body(&store);
+        let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, "busy-1")];
+        let send = || answer(&path, &http("POST", "/sale", &headers, &sale), "10.0.0.5", &guard);
+        let holder = Store::open_path(&path).unwrap();
+        let held = holder.begin().unwrap();
+        let busy = send();
+        assert_eq!(busy.status, 503, "{}", busy.body);
+        assert_eq!(body(&busy)["code"], "retry");
+        drop(held);
+        let done = send();
+        assert_eq!(done.status, 200, "{}", done.body);
+        assert_eq!(send().body, done.body, "answered from the record");
+        assert_eq!(store.recent_sales(10).unwrap().len(), 1);
+        assert!(lan_error_for(503, &busy.body).is_offline(), "kept waiting on the device");
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// The device's side of a refusal, as `client_send` reads it.
+    fn lan_error_for(status: u16, body: &str) -> LanError {
+        let resp = ureq::Response::new(status, "x", body).unwrap();
+        lan_error(ureq::Error::Status(status, resp))
+    }
+
+    /// Another version of the app on the other end is told plainly: update
+    /// — never a reply misread as "offline". `/hello` still answers.
+    #[test]
+    fn another_protocol_is_told_to_update_the_app() {
+        let (path, store, guard) = office();
+        let (device, _) = paired_device(&path, &store, &guard, "Asha", "2222");
+        let newer = (LAN_PROTOCOL + 1).to_string();
+        let sync = answer(&path, &http("GET", "/sync", &[(HEADER_DEVICE, &device), (HEADER_PROTOCOL, &newer)], ""), "10.0.0.5", &guard);
+        assert_eq!(sync.status, 426);
+        assert_eq!(body(&sync)["code"], "update_app");
+        let hello = answer(&path, &http("GET", "/hello", &[(HEADER_PROTOCOL, &newer)], ""), "10.0.0.5", &guard);
+        assert_eq!(body(&hello)["protocol"], LAN_PROTOCOL);
+        let same = answer(&path, &http("GET", "/sync", &[(HEADER_DEVICE, &device), (HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())], ""), "10.0.0.5", &guard);
+        assert_eq!(same.status, 200);
+        assert_eq!(lan_error_for(426, &sync.body).code(), "update_app");
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// A device's sync only reads: it never waits on (or fails behind) a
+    /// booking being written elsewhere.
+    #[test]
+    fn a_sync_never_waits_on_a_writer() {
+        let (path, store, guard) = office();
+        let (device, _) = paired_device(&path, &store, &guard, "Asha", "2222");
+        let holder = Store::open_path(&path).unwrap();
+        let held = holder.begin().unwrap();
+        let started = Instant::now();
+        let sync = answer(&path, &http("GET", "/sync", &[(HEADER_DEVICE, &device)], ""), "10.0.0.5", &guard);
+        assert_eq!(sync.status, 200, "{}", sync.body);
+        assert!(started.elapsed() < Duration::from_secs(2), "took {:?}", started.elapsed());
+        drop(held);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Query text arrives whole: a stray `%` keeps the rest (it used to
+    /// blank the whole value), non-ASCII after it is no panic.
+    #[test]
+    fn query_text_arrives_whole() {
+        assert_eq!(urlencoding_decode("%E0%AA%A1+1"), "ડ 1");
+        assert_eq!(urlencoding_decode("AWB%2"), "AWB%2");
+        assert_eq!(urlencoding_decode("%અ"), "%અ");
+        assert_eq!(urlencoding_decode("Pune%E0"), "Pune\u{FFFD}");
+    }
+
     #[test]
     fn wrong_pairing_codes_make_that_address_wait() {
         let (path, store, guard) = office();
@@ -2065,19 +2295,25 @@ mod tests {
         assert_eq!(page.status, 200);
         assert!(page.content_type.contains("html"));
         assert!(page.body.contains("<form") && page.body.contains("destination"));
-        let posted = answer(
-            &path,
-            &http(
-                "POST",
-                "/book",
-                &[],
-                "destination=Pune&consignee=Riya&weight_kg=1.5&phone=&note=",
-            ),
-            "10.0.0.9",
-            &guard,
-        );
+        assert!(page.body.contains("consignor") && page.body.contains("Express"), "rates to pick");
+        let post = |form: &str| answer(&path, &http("POST", "/book", &[], form), "10.0.0.9", &guard);
+        // No company to bill: nothing is booked.
+        let nobody = post("destination=Pune&consignee=Riya&weight_kg=1.5");
+        assert!(nobody.body.contains("required"), "{}", nobody.body);
+        assert!(store.recent_sales(10).unwrap().is_empty());
+        let posted = post(&format!(
+            "consignor=Acme+Corp&rate={}&destination=Pune&consignee=Riya&weight_kg=1.5&phone=&note=Floor+3",
+            rate.id
+        ));
         assert_eq!(posted.status, 200);
-        assert!(posted.body.contains("Booked") || posted.body.contains("AWB"));
+        assert!(posted.body.contains("Booked") && posted.body.contains("account"), "{}", posted.body);
+        // On the company's account — to collect, never cash the drawer lacks.
+        let today = store.today_totals().unwrap();
+        assert_eq!((today.sale_count, today.cash_paise), (1, 0));
+        assert!(today.credit_paise > 0);
+        let acme = store.list_customers().unwrap().into_iter().find(|c| c.name == "Acme Corp").unwrap();
+        assert!(acme.balance_paise > 0, "owed by the booking company");
+        assert!(store.list_audit(20).unwrap().iter().any(|a| a.action == "lan.self_book" && a.detail.contains("Floor 3")));
         let _ = std::fs::remove_file(path);
     }
 
@@ -2117,7 +2353,7 @@ mod tests {
                 });
             }
             s.spawn(|| {
-                let mut office = Store::open_path(&path).unwrap();
+                let office = Store::open_path(&path).unwrap();
                 for _ in 0..EACH {
                     office.finalize_sale(&draft, PayMethod::Cash, None, &owner).unwrap();
                 }
@@ -2183,7 +2419,7 @@ mod tests {
     #[test]
     #[ignore]
     fn months_of_trading_stay_quick() {
-        let (path, mut store, guard) = office();
+        let (path, store, guard) = office();
         store.fast_writes_for_test();
         let owner = store.list_staff().unwrap().into_iter().find(|s| s.is_owner()).unwrap();
         for i in 0..300 {

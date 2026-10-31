@@ -147,27 +147,31 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_preset_help_moklanjo))
             .set_text(cx, &plain_display_text(&s("preset_help_moklanjo")));
-        self.ui
-            .widget(cx, ids!(h_optional_login_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("optional_login_help")));
+        {
+            let help = self.ui.widget(cx, ids!(h_optional_login_help)).as_info_help();
+            help.set_title(cx, &s("optional_login_heading"));
+            help.set_tip(&plain_display_text(&s("optional_login_help")));
+        }
         self.ui
             .widget(cx, ids!(h_feature_access_help))
             .set_text(cx, &plain_display_text(&s("feature_access_help")));
-        self.ui
-            .widget(cx, ids!(h_rights_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("rights_help")));
+        {
+            let help = self.ui.widget(cx, ids!(h_rights_help)).as_info_help();
+            help.set_title(cx, &s("rights_heading"));
+            help.set_tip(&plain_display_text(&s("rights_help")));
+        }
         self.ui
             .widget(cx, ids!(h_change_my_pin_heading))
             .set_text(cx, &plain_display_text(&s("change_my_pin_heading")));
         self.ui
             .widget(cx, ids!(h_duress_heading))
             .set_text(cx, &plain_display_text(&s("duress_heading")));
-        self.ui
-            .widget(cx, ids!(h_duress_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("duress_help")));
+        {
+            let help = self.ui.widget(cx, ids!(h_duress_help)).as_info_help();
+            // Title is the sibling WrapLabel on the same Right row.
+            help.set_title(cx, "");
+            help.set_tip(&plain_display_text(&s("duress_help")));
+        }
         self.ui
             .button(cx, ids!(save_duress_pin))
             .set_text(cx, &s("save_duress_pin"));
@@ -946,10 +950,11 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_diag_level))
             .set_text(cx, &plain_display_text(&s("diag_level")));
-        self.ui
-            .widget(cx, ids!(diag_send_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("diag_send_help")));
+        {
+            let help = self.ui.widget(cx, ids!(diag_send_help)).as_info_help();
+            help.set_title(cx, &s("diag_send_heading"));
+            help.set_tip(&plain_display_text(&s("diag_send_help")));
+        }
         self.ui
             .button(cx, ids!(diag_support_start))
             .set_text(cx, &s("diag_support_start"));
@@ -995,9 +1000,6 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(settings_open_branches))
             .set_text(cx, &s("branches_org"));
-        self.ui
-            .widget(cx, ids!(shop_badge))
-            .set_text(cx, &plain_display_text(&s("shop")));
         self.ui
             .button(cx, ids!(staff_add_cashier))
             .set_text(cx, &s("add_staff"));

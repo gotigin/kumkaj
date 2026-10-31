@@ -18,11 +18,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let settings = s("nav_settings");
         let lock = s("nav_lock");
         let riders = s("riders");
-        // Slots pack the visible arrangement (hidden peers take no slot).
-        let order = {
-            let st = app_state().lock().unwrap();
-            nav_display_order(&st.nav_order, &st.nav_hidden)
-        };
+        // Slots pack preference + rights (must match paint_nav_tabs).
+        let order = current_nav_chrome_order();
         let label_for = |tab: NavTab| -> &str {
             match tab {
                 NavTab::Books => &books,
@@ -211,12 +208,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         for path in [ids!(route_pick_label), ids!(route_pick_label_on)] {
             self.ui.button(cx, path).set_text(cx, &s("route_label"));
         }
-        self.ui
-            .button(cx, ids!(role_owner))
-            .set_text(cx, &s("owner"));
-        self.ui
-            .button(cx, ids!(role_staff))
-            .set_text(cx, &s("staff"));
+        for path in [ids!(role_owner), ids!(role_owner_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("owner"));
+        }
+        for path in [ids!(role_staff), ids!(role_staff_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("staff"));
+        }
         self.ui
             .button(cx, ids!(lock_staff_prev))
             .set_text(cx, &s("prev"));
@@ -398,7 +395,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         {
             let help = self.ui.widget(cx, ids!(server_pick_help)).as_info_help();
-            help.set_title(cx, "");
+            help.set_title(cx, &s("choose_server"));
             help.set_tip(&plain_display_text(&s("choose_server_hint")));
         }
         {
@@ -476,7 +473,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::Onboard => ids!(onboard_screen),
             Screen::ClientPair => ids!(client_pair_screen),
             Screen::Books => ids!(books_screen),
-            Screen::Pos => ids!(pos_screen),
+            Screen::Pos => ids!(pos_catalog_scroll),
             Screen::Buy => ids!(buy_screen),
             Screen::Menu => ids!(menu_screen),
             Screen::More => ids!(more_screen),
@@ -575,7 +572,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
         );
         self.ui.view(cx, ids!(header)).set_visible(cx, unlocked);
-        self.ui.view(cx, ids!(today_bar)).set_visible(cx, unlocked);
+        let show_today = unlocked
+            && session_may_see_today(app_state().lock().unwrap().session.as_ref());
+        self.ui.view(cx, ids!(today_bar)).set_visible(cx, show_today);
         self.apply_shell_layout(cx, unlocked);
         self.paint_nav_tabs(cx, screen);
         if screen == Screen::Settings {
@@ -584,16 +583,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     /// Phone (<720): bottom tabs + stacked Booking panes.
-    /// Tablet/desktop (≥720): side rail; side-by-side desk when content is wide
-    /// enough, else still stack. Desk side-by-side uses Fixed panes inside
-    /// `booking_desk_hscroll` so mouse press-drag / wheel can reach Counter.
+    /// Tablet/desktop (≥720): side rail; Parcel | Counter side by side under
+    /// sticky `booking_desk_top` (Fixed panes in ScrollX).
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
         const DIVIDER_W: f64 = 6.0;
         const DESK_LEFT_MIN: f64 = 600.0;
         const DESK_RIGHT_MIN: f64 = 520.0;
         const DESK_GAP: f64 = 16.0;
-        // Match the old phone path: stack until both panes fit comfortably.
         const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
         let window_w = {
             let w = self.window_inner_width(cx);
@@ -679,8 +676,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 (Size::Fixed(DESK_LEFT_MIN), Size::Fixed(DESK_RIGHT_MIN))
             }
         } else {
-            // Phone / narrow: full-width stack; each pane scrolls inside.
-            (size_fill(1.0, content_w), size_fill(1.0, content_w))
+            (Size::fill(), Size::fill())
         };
         set_view_walk(
             cx,
@@ -862,13 +858,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     /// Exactly one nav peer highlighted for `screen` (bottom and/or rail).
+    /// Slot order packs preference + rights: peers the signed-in person cannot
+    /// open never take a slot (draw used to re-show them after sync_chrome hid
+    /// them — that left forbidden tabs visible on Client / staff unlocks).
     fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
         let (reports_nav, order) = {
-            let st = app_state().lock().unwrap();
-            (
-                st.reports_nav,
-                nav_display_order(&st.nav_order, &st.nav_hidden),
-            )
+            let reports_nav = app_state().lock().unwrap().reports_nav;
+            (reports_nav, current_nav_chrome_order())
         };
         let active = nav_tab_for(screen, reports_nav);
         // While dragging, the slot under the pointer wears the active face

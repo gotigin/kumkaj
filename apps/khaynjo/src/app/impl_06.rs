@@ -1274,8 +1274,8 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
 
     /// Open a table from the floor: what it already has is the ticket; new
     /// taps go on the next KOT. On a paid table this seats new guests.
-    /// In pick-table mode (Order → Choose / Change table), attaches or reseats
-    /// pending punches, then returns to Order.
+    /// Pick-table mode: first Choose seats unsent punches; Change table only
+    /// opens the picked ticket (no drag of the previous table's lines).
     fn open_table(&mut self, cx: &mut Cx, item_id: usize) {
         // `Some(was_picking)` → opened a table; `None` → no-op.
         let picked = (|| -> Result<Option<bool>, String> {
@@ -1289,32 +1289,14 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             let picking = st.picking_table;
             let from = st.picking_from_table_id.clone();
             if picking {
-                if let Some(from_id) = from {
-                    if from_id != t.id {
-                        let done = format!("Moved new items to {}", t.name);
-                        st.table_action(
-                            net::RunningAction::ReseatPending {
-                                from_table_id: from_id,
-                                to_table_id: t.id.clone(),
-                            },
-                            "",
-                            &done,
-                            phone::Follow::OpenTable(t.id.clone()),
-                        )?;
-                    }
-                } else {
+                // First seat only: attach unsent punches. Change table never
+                // moves lines (Move / merge does that on purpose).
+                if pick_seats_desk_cart(from.as_deref()) {
                     st.seat_cart_onto_table(&t.id)?;
                 }
                 st.picking_table = false;
                 st.picking_from_table_id = None;
-                // Host: ticket is on the Server now. Client seat/reseat may
-                // still be in flight — keep optimistic cart; sync reloads.
-                if st.device_role != DeviceRole::Client {
-                    st.load_table_cart(&t.id)?;
-                } else {
-                    st.selected_table_id = Some(t.id.clone());
-                    st.cart.set_order_type(OrderType::DineIn);
-                }
+                st.load_table_cart(&t.id)?;
                 st.status = format!("{} — add items and Send KOT, or Print bill / Take payment", t.name);
             } else {
                 // Floor from nav: open that table's Server ticket as-is.

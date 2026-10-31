@@ -350,7 +350,7 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -432,7 +432,7 @@ script_mod! {
         // Left pad clears the colored PNG overlaid at x≈10 (22px mark + gap).
         padding: Inset{left: 40. right: 12. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -580,7 +580,7 @@ script_mod! {
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         padding: Inset{left: 40. right: 12. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -619,7 +619,7 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -762,7 +762,7 @@ script_mod! {
             text_style +: {font_size: 15.}
         }
     }
-    // Icon-only eye next to a money figure (or the screen-level today-bar eye).
+    // Icon-only eye next to a money figure (or the screen-level header eye).
     let EyeIconBtn = Button{
         width: Fit height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
@@ -796,14 +796,16 @@ script_mod! {
     }
     // Books accordion section header — FA chevron (›/˅) + title.
     // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
+    // label_walk must be Fit: with width: Fit (title+ℹ rows) a Fill label
+    // collapses to zero and the caption disappears (chevron-only row).
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 6. right: 8. top: 8. bottom: 8.}
+        padding: Inset{left: 6. right: 8. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
-        label_walk: Walk{width: Fill height: Fit margin: Inset{left: 0. right: 0.}}
+        label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x00000000
@@ -871,7 +873,7 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -910,7 +912,7 @@ script_mod! {
         align: Align{x: 0.0 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -947,7 +949,7 @@ script_mod! {
     // Full-width stacked actions — required when labels are longer than ~4 chars.
     let ActionStack = View{
         width: Fill height: Fit
-        flow: Down spacing: 8
+        flow: Down spacing: 14
     }
     // Equal-width fields only (price|unit, etc.). NEVER put NavBtn / Stack*
     // CTAs here — Fit+wrap beside Fill TextInputs collapses to a vertical
@@ -961,8 +963,8 @@ script_mod! {
     // Navy-adjacent border (#E0E8F0) — matches StackSecondary / settings chips.
     let FormCard = RoundedView{
         width: Fill height: Fit
-        flow: Down spacing: 10
-        padding: Inset{left: 16. right: 16. top: 14. bottom: 16.}
+        flow: Down spacing: 14
+        padding: Inset{left: 18. right: 18. top: 16. bottom: 18.}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 16.
         draw_bg.border_size: 1.
@@ -1334,6 +1336,9 @@ script_mod! {
     let FieldInput = TextInput{
         width: Fill
         height: Fit
+        // Extra vertical margin so scroll gestures miss the field (fewer
+        // accidental keyboard opens mid-scroll).
+        margin: Inset{left: 0. right: 0. top: 6. bottom: 6.}
         padding: Inset{left: 14. right: 14. top: 15. bottom: 15.}
         blink_speed: 0.5
         // Soft keyboard: Done/Go fires TextInputAction::Returned → form submit.
@@ -1454,7 +1459,7 @@ script_mod! {
         // Right pad clears the in-row pill toggle (and "Always on").
         padding: Inset{left: 40. right: 110. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -2162,7 +2167,7 @@ script_mod! {
         flow: Right{wrap: true}
         padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -2240,7 +2245,7 @@ script_mod! {
         flow: Right{wrap: true}
         padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 16. right: 16.}
         }
@@ -2952,6 +2957,37 @@ script_mod! {
                             flow: Right spacing: 10
                             align: Align{y: 0.5}
                             rail_expand_btn := RailToggleBtn{text: "›" visible: false}
+                            // Elegant back — left of the shop mark; body "Back" buttons stay hidden.
+                            header_back := Button{
+                                width: 36 height: 36
+                                visible: false
+                                align: Center
+                                padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                margin: Inset{left: 0. right: 2. top: 0. bottom: 0.}
+                                text: "\u{f053}"
+                                label_walk: Walk{width: Fit height: Fit}
+                                icon_walk: Walk{width: 0. height: 0.}
+                                draw_bg +: {
+                                    color: #x00000000
+                                    color_hover: #x072058
+                                    color_down: #x02030B
+                                    color_focus: #x00000000
+                                    color_2: #x00000000
+                                    color_2_hover: #x072058
+                                    color_2_down: #x02030B
+                                    color_2_focus: #x00000000
+                                    border_color: #x00000000
+                                    border_radius: 18.
+                                    border_size: 0.
+                                }
+                                draw_text +: {
+                                    color: #xffffff
+                                    color_hover: #xffffff
+                                    color_down: #xffffff
+                                    color_focus: #xffffff
+                                    text_style +: {font_size: 18.}
+                                }
+                            }
                             brand_mark := Image{
                                 // No DSL src — async bundled mark used to overwrite the shop logo after sync.
                                 // sync_venue_brand loads the shop mark (or default) inline.
@@ -2977,14 +3013,23 @@ script_mod! {
                                     font_size: 11.
                                 }
                             }
-                            // Fit + no ellipsis — never pin/crop against the
-                            // window edge (header already has right padding).
-                            shop_badge := WrapLabel{
-                                width: Fit
-                                body: "Shop"
+                            // Screen eye/lock — was the body-top control; lives
+                            // here in place of the old "Shop" word. Terracotta
+                            // ink so the glyph reads on the navy header.
+                            amounts_eye := EyeIconBtn{
                                 margin: Inset{left: 4. right: 0. top: 0. bottom: 0.}
-                                font_color: #xfe8357
-                                font_size: 11.
+                                draw_bg +: {
+                                    color_hover: #x00000040
+                                    color_down: #x00000055
+                                    color_2_hover: #x00000040
+                                    color_2_down: #x00000055
+                                }
+                                draw_text +: {
+                                    color: #xfe8357
+                                    color_hover: #xfe8357
+                                    color_down: #xfe8357
+                                    color_focus: #xfe8357
+                                }
                             }
                         }
                     }
@@ -3002,7 +3047,6 @@ script_mod! {
                             font_color: #x0B1220
                             font_size: 12.
                         }
-                        amounts_eye := EyeIconBtn{}
                     }
 
                     body_stack := View{
@@ -3016,8 +3060,8 @@ script_mod! {
 
                             View{
                                 width: Fill height: Fit
-                                flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                flow: Down spacing: 16
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
 
                                 RoundedView{
                                     width: Fill height: Fit
@@ -3190,7 +3234,7 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
 
                                 // Offline strip (Stitch screen 01)
                                 RoundedView{
@@ -3270,14 +3314,28 @@ script_mod! {
                                         flow: Overlay
                                         tabs := ChipStrip{
                                             ChipStripRow{
-                                                role_owner := ChipBtnActive{
-                                                    text: "Owner"
-                                                    padding: Inset{left: 18. right: 18.}
+                                                View{width: Fit height: 40 flow: Overlay
+                                                    role_owner := ChipBtn{
+                                                        text: "Owner"
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
+                                                    role_owner_on := ChipBtnActive{
+                                                        text: "Owner"
+                                                        visible: false
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
                                                 }
-                                                role_staff := ChipBtn{
-                                                    text: "Staff"
-                                                    visible: false
-                                                    padding: Inset{left: 18. right: 18.}
+                                                View{width: Fit height: 40 flow: Overlay
+                                                    role_staff := ChipBtn{
+                                                        text: "Staff"
+                                                        visible: false
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
+                                                    role_staff_on := ChipBtnActive{
+                                                        text: "Staff"
+                                                        visible: false
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
                                                 }
                                             }
                                         }
@@ -3366,7 +3424,7 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 h_setup_app_moklanjo := WrapLabel{
                                     body: "Set up Moklanjo"
                                     font_color: #x0B1220
@@ -3501,23 +3559,24 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 10
+                                    flow: Right spacing: 8
                                     align: Align{y: 0.5}
-                                    client_pair_back := BackBtn{text: "Back"}
                                     h_connect_to_server := WrapLabel{
                                         width: Fit
                                         body: "Connect to the Server"
                                         font_color: #x0B1220
                                         font_size: 22.
                                     }
+                                    client_pair_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
+                                    }
                                 }
-                                client_pair_help := InfoHelp{
-                                    width: Fit
-                                    tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
-                                }
+                                // Back is header_back (left of brand) — not a body button.
+                                client_pair_back := BackBtn{text: "Back" visible: false}
                                 client_pair_status := WrapLabel{
                                     body: " "
                                     font_color: #x3A4554
@@ -3876,13 +3935,10 @@ script_mod! {
                                 }
                             }
 
-                            // Fit row + Fixed panes (widths in apply_shell_layout).
-                            // Fill{min} clipped the cart with no scroll range —
-                            // Fit+Fixed makes view_total = pane sum so mouse
-                            // press-drag / wheel can pan. Gap 16 = outer pad.
+                            // Fit row + Fixed panes under sticky booking_desk_top.
+                            // Side by side; ScrollX pans when mins do not fit.
                             booking_desk_hscroll := ScrollXView{
                                 width: Fill height: Fill
-                                // Bottom pad clears the h-scrollbar (bar_size 8 + gap).
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 16.}
                                 scroll_bars: mod.widgets.ScrollBars {
                                     show_scroll_x: true show_scroll_y: false
@@ -3959,6 +4015,10 @@ script_mod! {
                                 // Domestic ÷ shop divisor (usually 5000); International ÷6000
                                 // air — same desk-chip pattern as kg/lb. Settings keep the
                                 // shop default; this only changes maths for the open booking.
+                                booking_scope_help := InfoHelp{
+                                    width: Fit
+                                    tip: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
+                                }
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
@@ -3970,10 +4030,6 @@ script_mod! {
                                     View{width: Fill height: Fit flow: Overlay
                                         booking_scope_intl := SegBtn{text: "International"}
                                         booking_scope_intl_on := SegBtnOn{text: "International" visible: false}
-                                    }
-                                    booking_scope_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
                                     }
                                 }
                                 booking_scope_hint := WrapLabel{
@@ -4990,14 +5046,20 @@ script_mod! {
                                 change_my_password := RowSecondaryBtn{text: "Update my password"}
                                 }
                                 FormCard{
-                                h_duress_heading := WrapLabel{
-                                    width: Fit
-                                    body: "Emergency unlock PIN (Owner only)"
-                                    font_color: #x0B1220
-                                    font_size: 15.
-                                }
-                                h_duress_help := InfoHelp{
-                                    tip: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    h_duress_heading := WrapLabel{
+                                        width: Fit
+                                        body: "Emergency unlock PIN (Owner only)"
+                                        font_color: #x0B1220
+                                        font_size: 15.
+                                    }
+                                    h_duress_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                    }
                                 }
                                 duress_status := WrapLabel{
                                     width: Fit
@@ -5333,19 +5395,18 @@ script_mod! {
                                         route_pick_label_on := SegBtnOn{text: "Label" visible: false}
                                     }
                                 }
-                                route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
+                                route_add_printer_input := FieldInput{empty_text: "Printer name for this route"}
                                 route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
                                 ActionStack{
-                                    route_add := RowSecondaryBtn{text: "Add to route"}
-                                    route_up := RowSecondaryBtn{text: "Up"}
-                                    route_down := RowSecondaryBtn{text: "Down"}
-                                    route_remove := RowSecondaryBtn{text: "Remove last"}
-                                    route_clear := RowSecondaryBtn{text: "Don't print"}
+                                    route_add := RowPrimaryBtn{text: "Use this printer"}
+                                    route_clear := RowSecondaryBtn{text: "Don't print here"}
                                 }
-                                ActionStack{
-                                    printers_save := StackPrimaryBtn{text: "Save printers"}
-                                    print_test_btn := RowSecondaryBtn{text: "Print a test page"}
-                                }
+                                // LiveIds kept; assign replaces + auto-saves.
+                                route_up := RowSecondaryBtn{text: "Up" visible: false}
+                                route_down := RowSecondaryBtn{text: "Down" visible: false}
+                                route_remove := RowSecondaryBtn{text: "Remove last" visible: false}
+                                printers_save := StackPrimaryBtn{text: "Save printers" visible: false}
+                                print_test_btn := RowSecondaryBtn{text: "Print a test page"}
                                 }
                                 h_backup := WrapLabel{body: "Backup" font_color: #x0B1220 font_size: 20.}
                                 backup_auto_label := WrapLabel{
@@ -5409,16 +5470,11 @@ script_mod! {
                                     diag_support_stop := RowSecondaryBtn{text: "End support session"}
                                 }
                                 diag_export_local := RowSecondaryBtn{text: "Export local copy"}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    align: Align{y: 0.5}
-                                    diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
-                                    diag_send_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
-                                    }
+                                diag_send_help := InfoHelp{
+                                    width: Fit
+                                    tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                 }
+                                diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
                                 diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
                                 diag_clear := NavBtn{text: "Clear diagnostic logs"}
                             }
@@ -5431,15 +5487,11 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{y: 0.5}
-                                    sidebar_settings_back := QuietFitBtn{text: "Back"}
-                                    sidebar_settings_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
-                                    }
+                                // Back is header_back — body Back stays hidden.
+                                sidebar_settings_back := QuietFitBtn{text: "Back" visible: false}
+                                sidebar_settings_help := InfoHelp{
+                                    width: Fit
+                                    tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                 }
                                 View{
                                     width: Fill height: Fit

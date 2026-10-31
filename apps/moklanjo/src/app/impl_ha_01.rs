@@ -491,9 +491,7 @@ impl App {
             }
             Some(NavTab::Settings) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| {
-                    s.can_access_backup() || s.is_owner()
-                });
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
             }
             Some(NavTab::DayClose) => {
                 let result = (|| -> Result<(), String> {
@@ -586,11 +584,11 @@ impl App {
             None => {}
         }
         if self.ui.button(cx, ids!(sidebar_settings_open)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::SidebarSettings, |s| {
-                s.can_access_backup() || s.is_owner()
-            });
+            self.go_if_allowed(cx, Screen::SidebarSettings, |s| s.can_access_settings());
         }
-        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions) {
+        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions)
+            || self.ui.button(cx, ids!(header_back)).clicked(actions)
+        {
             self.navigate_back(cx);
         }
         self.handle_sidebar_nav_list_actions(cx, actions);
@@ -1128,7 +1126,7 @@ impl App {
         if self.ui.text_input(cx, ids!(lock_login_password)).returned(actions).is_some() {
             self.try_unlock_with_login(cx);
         }
-        if self.ui.button(cx, ids!(role_owner)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(role_owner), ids!(role_owner_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 st.lock_as_owner = true;
@@ -1137,7 +1135,7 @@ impl App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(role_staff)).clicked(actions) {
+        if self.choice_chip_clicked(cx, actions, ids!(role_staff), ids!(role_staff_on)) {
             {
                 let mut st = app_state().lock().unwrap();
                 let has_staff = st.staff.iter().any(|s| !s.is_owner());

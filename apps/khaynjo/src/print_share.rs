@@ -459,9 +459,9 @@ pub fn take_captured() -> Vec<PrintJob> {
 /// What happened to a receipt: always written, sometimes sent to a printer.
 pub struct ReceiptShare {
     pub path: PathBuf,
-    /// True when the job went to a printer's queue. False where this device
-    /// cannot print it (Android with no network printer: the caller offers
-    /// the share sheet) and in tests.
+    /// True when the job went to a printer's queue (in tests: was captured).
+    /// False where this device cannot print it (Android with no network
+    /// printer: the caller offers the share sheet).
     pub opened: bool,
 }
 
@@ -537,7 +537,9 @@ pub fn print_route(
         PrintSink::Capture => {
             // Capture still records one job (the slip that would have printed).
             // Prefer the resolved route (station → "" → Bill), not only the
-            // exact key — same as Os path via targets_for.
+            // exact key — same as Os path via targets_for. A captured job
+            // counts as handed to a printer, so callers take the same path
+            // they would on a device with that printer.
             if !printers().route_for(route).is_empty() {
                 CAPTURED.with(|c| {
                     c.borrow_mut().push(PrintJob {
@@ -546,13 +548,16 @@ pub fn print_route(
                         text: text.to_string(),
                     })
                 });
-            } else if kind == PrintKind::Kot {
-                note_problem(
-                    "KOTs are not printed on this device — add a kitchen printer in Settings → Printers"
-                        .into(),
-                );
+                true
+            } else {
+                if kind == PrintKind::Kot {
+                    note_problem(
+                        "KOTs are not printed on this device — add a kitchen printer in Settings → Printers"
+                            .into(),
+                    );
+                }
+                false
             }
-            false
         }
         PrintSink::Off => false,
     };
@@ -1020,7 +1025,7 @@ mod tests {
             let _ = take_problems();
             let _ = take_captured();
             let share = print_text(PrintKind::Kot, "KOT — test", Some(&dir)).unwrap();
-            assert!(!share.opened, "the OS was not handed the job");
+            assert!(share.opened, "captured as if a printer took it");
             let jobs = take_captured();
             assert_eq!(jobs.len(), 1);
             // Capture / Named keep the slip as written; Network ESC/POS
@@ -1221,6 +1226,24 @@ mod tests {
                 station_id: "st-bar"
             }),
             &[main][..]
+        );
+    }
+
+    #[test]
+    fn changing_station_printer_replaces_not_appends() {
+        let mut cfg = DevicePrinters::default();
+        let a = cfg.add_printer("A", "192.168.1.10");
+        let b = cfg.add_printer("B", "192.168.1.11");
+        let key = RouteKey::Kot {
+            station_id: "hot",
+        };
+        *cfg.route_mut(key) = vec![a];
+        // Owner picks a different printer for Hot — must replace.
+        *cfg.route_mut(key) = vec![b.clone()];
+        assert_eq!(cfg.route_for(key), &[b][..]);
+        assert_eq!(
+            cfg.targets_for(key),
+            vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
     }
 }

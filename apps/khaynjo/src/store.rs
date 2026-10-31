@@ -25,6 +25,68 @@ pub struct Store {
     path: PathBuf,
 }
 
+/// One unit of work on the books: lands whole or not at all. Outside a
+/// transaction it is one (`BEGIN IMMEDIATE`: the write lock is taken up
+/// front, so a check made inside it still holds when the write lands);
+/// inside one already open on this connection — a device's LAN request
+/// runs whole as one — it is a savepoint, so the inner work still rolls
+/// back as a whole. Dropped without [`Tx::commit`] it rolls back.
+pub(crate) struct Tx<'a> {
+    conn: &'a Connection,
+    nested: bool,
+    open: bool,
+}
+
+impl<'a> Tx<'a> {
+    fn begin(conn: &'a Connection) -> Result<Self, String> {
+        let nested = !conn.is_autocommit();
+        conn.execute_batch(if nested { "SAVEPOINT kumkaj_unit" } else { "BEGIN IMMEDIATE" })
+            .map_err(|e| e.to_string())?;
+        Ok(Self { conn, nested, open: true })
+    }
+
+    pub(crate) fn commit(mut self) -> rusqlite::Result<()> {
+        self.conn
+            .execute_batch(if self.nested { "RELEASE kumkaj_unit" } else { "COMMIT" })?;
+        self.open = false;
+        Ok(())
+    }
+}
+
+impl Drop for Tx<'_> {
+    fn drop(&mut self) {
+        if self.open {
+            let _ = self.conn.execute_batch(if self.nested {
+                "ROLLBACK TO kumkaj_unit; RELEASE kumkaj_unit"
+            } else {
+                "ROLLBACK"
+            });
+        }
+    }
+}
+
+impl std::ops::Deref for Tx<'_> {
+    type Target = Connection;
+
+    fn deref(&self) -> &Connection {
+        self.conn
+    }
+}
+
+/// Books this process already brought up to this build's schema. The LAN
+/// server opens the books for every request, and migrating each time took
+/// the write lock (even a no-op `UPDATE` does), so every device's read
+/// queued behind any write in progress — and failed after the busy wait.
+fn migrated_paths() -> &'static std::sync::Mutex<std::collections::HashSet<PathBuf>> {
+    static PATHS: std::sync::OnceLock<std::sync::Mutex<std::collections::HashSet<PathBuf>>> =
+        std::sync::OnceLock::new();
+    PATHS.get_or_init(Default::default)
+}
+
+/// `PRAGMA user_version` once migrate + seed ran on a file. A file made
+/// again at the same path reads 0 and is migrated again.
+const SCHEMA_STAMP: i64 = 1;
+
 #[path = "store_running.rs"]
 mod running;
 #[path = "store_service.rs"]
@@ -79,20 +141,42 @@ impl Store {
             conn,
             path: path.to_path_buf(),
         };
-        store.migrate()?;
-        store.ensure_seed_data()?;
+        let stamp: i64 = store
+            .conn
+            .query_row("PRAGMA user_version", [], |r| r.get(0))
+            .unwrap_or(0);
+        if stamp != SCHEMA_STAMP || !migrated_paths().lock().unwrap().contains(path) {
+            store.bring_up_to_date()?;
+        }
         Ok(store)
+    }
+
+    /// Schema and first-run data for this build, then remember the file is
+    /// done (see [`migrated_paths`]).
+    fn bring_up_to_date(&mut self) -> Result<(), String> {
+        self.migrate()?;
+        self.ensure_seed_data()?;
+        self.conn
+            .execute_batch(&format!("PRAGMA user_version = {SCHEMA_STAMP}"))
+            .map_err(|e| e.to_string())?;
+        migrated_paths().lock().unwrap().insert(self.path.clone());
+        Ok(())
     }
 
     pub fn db_path(&self) -> &Path {
         &self.path
     }
 
-    /// Run `f` as one transaction: all of its writes land together or none
+    /// Start one unit of work (see [`Tx`]).
+    pub(crate) fn begin(&self) -> Result<Tx<'_>, String> {
+        Tx::begin(&self.conn)
+    }
+
+    /// Run `f` as one unit of work: all of its writes land together or none
     /// do, other connections never see half of them, and the disk is synced
-    /// once instead of once per row.
+    /// once instead of once per row. Nests (see [`Tx`]).
     pub fn in_transaction<T>(&self, f: impl FnOnce() -> Result<T, String>) -> Result<T, String> {
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         let out = f()?;
         tx.commit().map_err(|e| e.to_string())?;
         Ok(out)
@@ -648,6 +732,8 @@ impl Store {
         self.conn.execute_batch(recipes::SCHEMA).map_err(|e| e.to_string())?;
         // Local/LAN ops tables + column adds on existing books (after CREATE).
         self.migrate_ops()?;
+        // Old Waiter preset wrongly included Parties (credit). Strip it once.
+        self.migrate_waiter_no_parties()?;
         // Lookups every sync and every screen makes. Without them a year of
         // bills made each device's sync scan every bill line and ledger row
         // (seconds per sync); `a_busy_years_books_still_sync_quickly` guards
@@ -1004,11 +1090,17 @@ impl Store {
             self.meta_set("owner_setup_complete", "1")?;
         }
 
+        // A fresh floor once, ever: a counter shop that removed every table
+        // must not find T1..T24 back after the next restart.
         let table_count: i64 = self
             .conn
             .query_row("SELECT COUNT(*) FROM tables_dining", [], |r| r.get(0))
             .map_err(|e| e.to_string())?;
-        if table_count == 0 {
+        let floor_seeded = self.meta_get("floor_seeded")?.is_some();
+        if !floor_seeded {
+            self.meta_set("floor_seeded", "1")?;
+        }
+        if table_count == 0 && !floor_seeded {
             let branch_id = self.active_branch_id()?;
             // Fresh floor: T1..T24 (matches layout slot cap).
             for n in 1..=24 {
@@ -1281,18 +1373,6 @@ impl Store {
 
     pub fn device_last_seen(&self) -> Result<Option<String>, String> {
         Ok(self.meta_get("device_last_seen")?.filter(|s| !s.trim().is_empty()))
-    }
-
-    /// Server side: record that a paired device made contact.
-    pub fn touch_device_seen(&self, device_id: &str) -> Result<(), String> {
-        let now = chrono::Local::now().to_rfc3339();
-        self.conn
-            .execute(
-                "UPDATE lan_devices SET last_seen_at = ?1 WHERE id = ?2",
-                rusqlite::params![now, device_id],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(())
     }
 
     pub fn clear_client_pairing(&self) -> Result<(), String> {
@@ -1941,8 +2021,37 @@ impl Store {
         Ok(())
     }
 
+    /// Take tables off the floor by name (any case). One in use (guests
+    /// seated, an open order) stays, named in the answer; a name the floor does not have is
+    /// skipped. Returns how many went and the busy ones kept.
+    pub fn remove_tables_named(&self, names: &[String]) -> Result<(usize, Vec<String>), String> {
+        self.assert_server_writer("Remove tables")?;
+        self.in_transaction(|| {
+            let tables = self.list_tables()?;
+            let mut removed = 0;
+            let mut busy = Vec::new();
+            for name in names {
+                let Some(table) = tables.iter().find(|t| t.name.eq_ignore_ascii_case(name.trim())) else {
+                    continue;
+                };
+                // Guests seated (even before any dish) keep their table.
+                if table.status != TableStatus::Available || self.running_order(&table.id)?.is_some() {
+                    busy.push(table.name.clone());
+                    continue;
+                }
+                self.delete_table(&table.id)?;
+                removed += 1;
+            }
+            Ok((removed, busy))
+        })
+    }
+
     pub fn delete_table(&self, table_id: &str) -> Result<(), String> {
         self.assert_server_writer("Delete tables")?;
+        // Its open order (dishes, KOTs, money owed) would be left on no table.
+        if self.running_order(table_id)?.is_some() {
+            return Err("This table has an open order — bill it, move it or free it first".into());
+        }
         let n = self
             .conn
             .execute("DELETE FROM tables_dining WHERE id = ?1", params![table_id])
@@ -2143,10 +2252,10 @@ impl Store {
         Ok(())
     }
 
+    /// The Server's floor, as it is — none included (a counter shop): the
+    /// device's own first-run tables must not linger as tables the Server
+    /// does not have.
     pub fn replace_tables_from_sync(&self, tables: &[DiningTable]) -> Result<(), String> {
-        if tables.is_empty() {
-            return Ok(());
-        }
         self.conn
             .execute("DELETE FROM tables_dining", [])
             .map_err(|e| e.to_string())?;
@@ -2426,7 +2535,7 @@ impl Store {
     /// otherwise each part must be positive. Credit portion needs
     /// `customer_id` (rest can be paid now; remainder on khata).
     pub fn finalize_sale_tenders(
-        &mut self,
+        &self,
         draft: &SaleDraft,
         parts: &[(PayMethod, i64)],
         table_id: Option<&str>,
@@ -2489,7 +2598,7 @@ impl Store {
 
     /// Old name — prefer `finalize_sale_tenders`.
     pub fn finalize_sale_split(
-        &mut self,
+        &self,
         draft: &SaleDraft,
         parts: &[(PayMethod, i64)],
         table_id: Option<&str>,
@@ -4875,8 +4984,7 @@ impl Store {
     pub fn import_catalogue(&self, dishes: &[crate::menu_images::ShelfDish]) -> Result<CatalogueImport, String> {
         self.assert_server_writer("Import the menu template")?;
         let mut summary = CatalogueImport::default();
-        self.conn.execute_batch("BEGIN IMMEDIATE").map_err(|e| e.to_string())?;
-        let result = (|| -> Result<(), String> {
+        self.in_transaction(|| {
             let mut categories = self.list_categories()?;
             let existing: std::collections::HashSet<String> = self
                 .list_products(true)?
@@ -4890,18 +4998,20 @@ impl Store {
                     .find(|c| c.name.trim().eq_ignore_ascii_case(dish.folder.trim()))
                 {
                     Some(c) => {
-                        if c.image_key.is_empty()
-                            && let Some(key) = crate::menu_images::shelf_key(&dish.path)
-                        {
-                            self.set_category_image(&c.id, &key)?;
+                        // Copy into item_images so Clients / Android can sync
+                        // the file (shelf: paths are missing off the desktop).
+                        if c.image_key.is_empty() && dish.path.is_file() {
+                            let _ = self.set_category_photo_if_missing(&c.id, &dish.path);
                         }
                         c.id.clone()
                     }
                     None => {
                         let mut c = self.add_category(&dish.folder)?;
-                        if let Some(key) = crate::menu_images::shelf_key(&dish.path) {
-                            self.set_category_image(&c.id, &key)?;
-                            c.image_key = key;
+                        if dish.path.is_file() {
+                            if let Ok(key) = self.import_category_image(&c.id, &dish.path) {
+                                self.set_category_image(&c.id, &key)?;
+                                c.image_key = key;
+                            }
                         }
                         summary.categories_added += 1;
                         let id = c.id.clone();
@@ -4915,22 +5025,19 @@ impl Store {
                 }
                 let mut p = Product::new_basic(new_id(), dish.name.trim(), Money(0));
                 p.category_id = cat_id;
-                p.image_key = crate::menu_images::shelf_key(&dish.path);
+                // Materialise shelf art as custom:… under item_images — Android
+                // never ships assets/items, and LAN sync only sends keys.
+                if dish.path.is_file() {
+                    if let Ok(key) = self.import_item_image(&p.id, &dish.path) {
+                        p.image_key = Some(key);
+                    }
+                }
                 self.upsert_product(&p)?;
                 summary.items_added += 1;
             }
             Ok(())
-        })();
-        match result {
-            Ok(()) => {
-                self.conn.execute_batch("COMMIT").map_err(|e| e.to_string())?;
-                Ok(summary)
-            }
-            Err(e) => {
-                let _ = self.conn.execute_batch("ROLLBACK");
-                Err(e)
-            }
-        }
+        })?;
+        Ok(summary)
     }
 
     pub fn add_category(&self, name: &str) -> Result<Category, String> {
@@ -5899,6 +6006,43 @@ impl Store {
         Ok(format!("custom:{file_name}"))
     }
 
+    /// Copy any remaining `shelf:…` product/category photos into `item_images`
+    /// as `custom:…` so LAN Clients (and Android) can fetch real files. Safe
+    /// to call repeatedly; no-ops when the shelf pack is not on disk.
+    pub fn materialize_shelf_photos(&self) -> Result<usize, String> {
+        let mut n = 0usize;
+        for mut p in self.list_products(true)? {
+            let Some(key) = p.image_key.as_deref() else {
+                continue;
+            };
+            if !key.starts_with(crate::menu_images::SHELF_KEY_PREFIX) {
+                continue;
+            }
+            let src = crate::menu_images::resolve_image_path(Some(key), "", Path::new(""));
+            if !src.is_file() {
+                continue;
+            }
+            let new_key = self.import_item_image(&p.id, &src)?;
+            p.image_key = Some(new_key);
+            self.upsert_product(&p)?;
+            n += 1;
+        }
+        for c in self.list_categories()? {
+            if !c.image_key.starts_with(crate::menu_images::SHELF_KEY_PREFIX) {
+                continue;
+            }
+            let src =
+                crate::menu_images::resolve_image_path(Some(&c.image_key), "", Path::new(""));
+            if !src.is_file() {
+                continue;
+            }
+            let new_key = self.import_category_image(&c.id, &src)?;
+            self.set_category_image(&c.id, &new_key)?;
+            n += 1;
+        }
+        Ok(n)
+    }
+
     pub fn add_attachment_note(
         &self,
         entity: AttachmentEntity,
@@ -6192,7 +6336,7 @@ impl Store {
     }
 
     pub fn finalize_sale(
-        &mut self,
+        &self,
         draft: &SaleDraft,
         pay: PayMethod,
         table_id: Option<&str>,
@@ -6202,8 +6346,24 @@ impl Store {
         self.write_sale(draft, pay, table_id, customer_id, actor, &[])
     }
 
+    /// One sale, whole: every check (rights, stock, the table's order) is
+    /// made inside the same unit of work as the write, so a payment from a
+    /// tablet and one at the counter cannot both pass a check only one of
+    /// them should (the last plate of stock, the same table twice).
     fn write_sale(
-        &mut self,
+        &self,
+        draft: &SaleDraft,
+        pay: PayMethod,
+        table_id: Option<&str>,
+        customer_id: Option<&str>,
+        actor: &StaffMember,
+        parts: &[(PayMethod, i64)],
+    ) -> Result<Sale, String> {
+        self.in_transaction(|| self.write_sale_unit(draft, pay, table_id, customer_id, actor, parts))
+    }
+
+    fn write_sale_unit(
+        &self,
         draft: &SaleDraft,
         pay: PayMethod,
         table_id: Option<&str>,
@@ -6354,7 +6514,7 @@ impl Store {
         let branch_code = self.active_branch()?.code;
         let times = EventTimes::capture(draft.user_at.as_deref());
         let created_at = times.user_at.clone(); // books day = user time
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
 
         // Reserved inside the sale's transaction so a crash can never hand the
         // same number to two bills.
@@ -6799,7 +6959,7 @@ impl Store {
     /// Replace the live sale with a new draft. Previous live state is appended
     /// to `sale_revisions` (who / when / reason / full previous snapshot).
     pub fn amend_sale(
-        &mut self,
+        &self,
         sale_id: &str,
         draft: &SaleDraft,
         pay: PayMethod,
@@ -6841,7 +7001,7 @@ impl Store {
         let revised_at = Local::now().to_rfc3339();
         let revision_id = new_id();
 
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         tx.execute(
             "INSERT INTO sale_revisions(
                 id, sale_id, revised_at, actor_id, actor_name, reason, previous_json
@@ -7031,7 +7191,7 @@ impl Store {
     }
 
     pub fn void_sale(
-        &mut self,
+        &self,
         sale_id: &str,
         reason: &str,
         actor: &StaffMember,
@@ -7043,7 +7203,7 @@ impl Store {
         if reason.is_empty() {
             return Err("Void reason required".into());
         }
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         let updated = tx
             .execute(
                 "UPDATE sales SET status = 'voided' WHERE id = ?1 AND status = 'completed'",
@@ -7114,7 +7274,7 @@ impl Store {
     /// Post-charge snackbar undo: void a just-recorded sale for the seller
     /// who charged it (or Owner/Manager). Fixed reason; no manual reason UI.
     pub fn quick_undo_sale(
-        &mut self,
+        &self,
         sale_id: &str,
         actor: &StaffMember,
     ) -> Result<Sale, String> {
@@ -7133,7 +7293,7 @@ impl Store {
         // Reuse void path with a fixed reason; temporarily allow via owner-level
         // by calling the same SQL as void_sale without the manager gate.
         let reason = "Quick undo";
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         let updated = tx
             .execute(
                 "UPDATE sales SET status = 'voided' WHERE id = ?1 AND status = 'completed'",
@@ -7208,7 +7368,7 @@ impl Store {
     }
 
     pub fn refund_sale(
-        &mut self,
+        &self,
         sale_id: &str,
         reason: &str,
         actor: &StaffMember,
@@ -7220,7 +7380,7 @@ impl Store {
         if reason.is_empty() {
             return Err("Refund reason required".into());
         }
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         let updated = tx
             .execute(
                 "UPDATE sales SET status = 'refunded' WHERE id = ?1 AND status = 'completed'",
@@ -7490,6 +7650,7 @@ impl Store {
                     unit_label: row.get(7)?,
                     kot_sent: false,
                     modifiers_json: row.get(8)?,
+                    station_id: String::new(),
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -7584,12 +7745,18 @@ impl Store {
             .map_err(|e| e.to_string())?;
         if let Some(d) = &device {
             // Noted at most every half minute: a device asks every few
-            // seconds, and each note is a disk write.
+            // seconds, and each note is a disk write. Judged here, not in
+            // the UPDATE's WHERE: even an UPDATE that changes nothing takes
+            // the write lock, so every request queued behind any write.
             let now = Local::now();
-            let _ = self.conn.execute(
-                "UPDATE lan_devices SET last_seen_at = ?2 WHERE id = ?1 AND last_seen_at < ?3",
-                params![d.id, now.to_rfc3339(), (now - chrono::Duration::seconds(LAN_SEEN_EVERY_SECS)).to_rfc3339()],
-            );
+            let fresh = chrono::DateTime::parse_from_rfc3339(&d.last_seen_at)
+                .is_ok_and(|t| now.signed_duration_since(t) < chrono::Duration::seconds(LAN_SEEN_EVERY_SECS));
+            if !fresh {
+                let _ = self.conn.execute(
+                    "UPDATE lan_devices SET last_seen_at = ?2 WHERE id = ?1",
+                    params![d.id, now.to_rfc3339()],
+                );
+            }
         }
         Ok(device)
     }
@@ -7984,7 +8151,7 @@ impl Store {
     /// tax/units, schemes, staff, venue settings, emergency PIN itself.
     pub fn wipe_trading_data_keep_structure(&self) -> Result<(), String> {
         self.assert_server_writer("Emergency unlock")?;
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         // Order respects FKs where present; most tables are unenforced.
         for sql in [
             "DELETE FROM sale_payments",
@@ -8051,7 +8218,7 @@ impl Store {
     /// Uninstall / "Delete books data": wipe trading rows without the live
     /// server-writer gate (the app is quitting; client DBs are wiped too).
     pub fn uninstall_wipe_trading_data(&self) -> Result<(), String> {
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         for sql in [
             "DELETE FROM sale_payments",
             "DELETE FROM sale_lines",
@@ -8421,17 +8588,29 @@ impl Store {
     pub fn list_tables(&self) -> Result<Vec<DiningTable>, String> {
         let branch = self.active_branch_id()?;
         // A paid table reads "clear the table" for a while, then frees itself
-        // so the floor never shows a stale state.
+        // so the floor never shows a stale state. Looked for first: an
+        // UPDATE takes the write lock even when it changes nothing, and
+        // every snapshot and floor refresh reads the tables. Best effort —
+        // a busy moment frees it on the next read instead of failing this one.
         let cutoff = (Local::now()
             - chrono::Duration::minutes(crate::domain::PAID_TABLE_CLEARS_AFTER_MIN))
         .to_rfc3339();
-        self.conn
-            .execute(
+        let paid_to_free: bool = self
+            .conn
+            .query_row(
+                "SELECT EXISTS(SELECT 1 FROM tables_dining
+                  WHERE status = 'paid' AND (paid_at = '' OR paid_at < ?1))",
+                params![cutoff],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        if paid_to_free {
+            let _ = self.conn.execute(
                 "UPDATE tables_dining SET status = 'available'
                   WHERE status = 'paid' AND (paid_at = '' OR paid_at < ?1)",
                 params![cutoff],
-            )
-            .map_err(|e| e.to_string())?;
+            );
+        }
         // Heal "Bill printed" with nothing left to collect (items cancelled /
         // emptied) — never leave a tile stuck with no way out.
         {
@@ -9310,7 +9489,7 @@ impl Store {
     ///   negative = shop holds the customer's money).
     /// - With no debt, the full amount is an advance.
     pub fn settle_credit(
-        &mut self,
+        &self,
         customer_id: &str,
         amount_paise: i64,
         pay: PayMethod,
@@ -9326,7 +9505,7 @@ impl Store {
     /// stays unlinked (FIFO) exactly as a plain settlement would.
     #[allow(clippy::too_many_arguments)]
     pub fn settle_credit_against(
-        &mut self,
+        &self,
         customer_id: &str,
         amount_paise: i64,
         pay: PayMethod,
@@ -9443,7 +9622,7 @@ impl Store {
     /// Clear AR without collecting cash (write-off / nil balance).
     /// `amount_paise == 0` means write off the full outstanding.
     pub fn write_off_credit(
-        &mut self,
+        &self,
         customer_id: &str,
         amount_paise: i64,
         reason: &str,
@@ -9592,7 +9771,7 @@ impl Store {
 
     /// Pay down AP (we owed them). Excess is not tracked as receivable here.
     pub fn settle_payable(
-        &mut self,
+        &self,
         party_id: &str,
         amount_paise: i64,
         pay: PayMethod,
@@ -9606,7 +9785,7 @@ impl Store {
     /// purchase bill (capped at its open amount; remainder unlinked).
     #[allow(clippy::too_many_arguments)]
     pub fn settle_payable_against(
-        &mut self,
+        &self,
         party_id: &str,
         amount_paise: i64,
         pay: PayMethod,
@@ -9686,7 +9865,7 @@ impl Store {
     }
 
     pub fn write_off_payable(
-        &mut self,
+        &self,
         party_id: &str,
         amount_paise: i64,
         reason: &str,
@@ -10420,19 +10599,26 @@ impl Store {
         if let Some(parent) = dest.parent() {
             fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
-        // Copy to a sibling temp then rename, so a half-written restore can
-        // never replace a working till DB.
-        let tmp = dest.with_extension("restore.tmp");
-        fs::copy(backup, &tmp).map_err(|e| e.to_string())?;
-        fs::rename(&tmp, dest).map_err(|e| e.to_string())?;
-        // `backup_to` writes a single self-contained file, so any -wal/-shm left
-        // over from the replaced DB now describes pages that no longer exist.
-        // Leaving them made SQLite replay a stale journal over fresh rows.
-        for sidecar in ["-wal", "-shm"] {
-            let mut name = dest.as_os_str().to_os_string();
-            name.push(sidecar);
-            let _ = fs::remove_file(PathBuf::from(name));
+        // Into the live books through SQLite itself, every page in one step
+        // and one transaction: a restore cut short leaves the books as they
+        // were, and connections still open on them (the LAN server's
+        // watcher, a device's request) see the restored books on their next
+        // read. Replacing the file instead failed on Windows (a file open
+        // elsewhere cannot be renamed over) and on Linux left those
+        // connections serving the old books.
+        {
+            let src = Connection::open_with_flags(backup, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)
+                .map_err(|e| e.to_string())?;
+            let mut live = Connection::open(dest).map_err(|e| e.to_string())?;
+            live.busy_timeout(std::time::Duration::from_secs(10)).map_err(|e| e.to_string())?;
+            let copy = rusqlite::backup::Backup::new(&src, &mut live).map_err(|e| e.to_string())?;
+            match copy.step(-1).map_err(|e| e.to_string())? {
+                rusqlite::backup::StepResult::Done => {}
+                _ => return Err("Could not restore — the books were busy; try again".into()),
+            }
         }
+        // What the backup holds may be an older build's schema.
+        migrated_paths().lock().unwrap().remove(dest);
         Self::open_path(dest)
     }
 
@@ -11549,12 +11735,64 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
+    /// A floor of the shop's own: T1..T24 go — not the table guests sit
+    /// at — and stay gone when the app starts again.
+    #[test]
+    fn removed_tables_stay_removed() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let t3 = store.list_tables().unwrap().into_iter().find(|t| t.name == "T3").unwrap();
+        store.seat_table(&t3.id, &owner).unwrap();
+        let names: Vec<String> = (1..=24).map(|n| format!("t{n}")).collect();
+        assert_eq!(store.remove_tables_named(&names).unwrap(), (23, vec!["T3".to_string()]));
+        store.free_table(&t3.id).unwrap();
+        assert_eq!(store.remove_tables_named(&["T3".into()]).unwrap().0, 1);
+        drop(store);
+        // As a new process would: nothing remembered as migrated.
+        migrated_paths().lock().unwrap().remove(&path);
+        let store = Store::open_path(&path).unwrap();
+        assert!(store.list_tables().unwrap().is_empty(), "no T1..T24 again");
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// A table with an open order cannot be deleted from under it.
+    #[test]
+    fn a_table_with_an_open_order_is_not_deleted() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let tea = test_product("Tea", 10);
+        store.upsert_product(&tea).unwrap();
+        let t1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "T1").unwrap();
+        store.bump_pending_product(&t1.id, &tea, 1000, "", &owner).unwrap();
+        assert!(store.delete_table(&t1.id).unwrap_err().contains("open order"));
+        assert!(store.running_order(&t1.id).unwrap().is_some());
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// The books are migrated once per file, then opened without the write
+    /// lock: a device's read never waits behind someone's write to open.
+    #[test]
+    fn opening_migrated_books_takes_no_write_lock() {
+        let path = temp_db();
+        let first = Store::open_path(&path).unwrap();
+        let held = first.begin().unwrap();
+        let started = std::time::Instant::now();
+        let second = Store::open_path(&path).unwrap();
+        assert!(started.elapsed() < std::time::Duration::from_secs(2), "opened without waiting on the writer");
+        assert!(!second.list_tables().unwrap().is_empty());
+        drop(held);
+        let _ = std::fs::remove_file(path);
+    }
+
     fn temp_db() -> PathBuf {
+        // Tests run side by side: the clock alone can hand two of them one file.
         let n = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        std::env::temp_dir().join(format!("kumkaj-smoke-{n}.sqlite3"))
+        std::env::temp_dir().join(format!("kumkaj-smoke-{n}-{}.sqlite3", new_id()))
     }
 
     fn test_product(name: &str, rupees: i64) -> Product {
@@ -11564,7 +11802,7 @@ mod tests {
     #[test]
     fn client_books_debit_credit_and_balance_sheet() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Thali", 100)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -11598,7 +11836,7 @@ mod tests {
     #[test]
     fn ground_truth_tenders_till_bills_brs_and_csv() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
 
         // One expense, settled part bank + part cash (ground truth §18).
@@ -11710,7 +11948,7 @@ mod tests {
     #[test]
     fn entry_attachments_note_image_pdf_on_sale() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Thali", 100)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -11786,9 +12024,10 @@ mod tests {
         let products = store.list_products(false).unwrap();
         assert_eq!(products.len(), shelf.len());
         let photo = products.iter().find(|p| p.id != own.id).unwrap().image_key.clone().unwrap();
-        assert!(photo.starts_with("shelf:"), "{photo}");
-        assert!(crate::menu_images::resolve_image_path(Some(&photo), "", std::path::Path::new("")).is_file());
-        assert!(store.list_categories().unwrap().iter().all(|c| c.image_key.starts_with("shelf:")));
+        assert!(photo.starts_with("custom:"), "{photo}");
+        let dir = store.item_images_dir().unwrap();
+        assert!(dir.join(&photo["custom:".len()..]).is_file());
+        assert!(store.list_categories().unwrap().iter().all(|c| c.image_key.starts_with("custom:")));
         let _ = std::fs::remove_file(path);
     }
 
@@ -11844,7 +12083,7 @@ mod tests {
     #[test]
     fn finalize_sale_survives_reopen() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Test item", 25)).unwrap();
         let products = store.list_products(false).unwrap();
@@ -11873,7 +12112,7 @@ mod tests {
     #[test]
     fn rounded_sale_keeps_line_amounts_and_rounding() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Tea", 13)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -11923,7 +12162,7 @@ mod tests {
     #[test]
     fn frequent_items_rank_by_recent_sales_and_keep_config() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         assert_eq!(store.frequent_config().unwrap(), (1, 24));
         store.set_frequent_config(7, 3, &owner).unwrap();
@@ -11959,7 +12198,7 @@ mod tests {
     #[test]
     fn zero_value_sale_allowed_by_default_and_ranks_frequent() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         assert!(store.allow_zero_sales().unwrap());
         store.upsert_product(&test_product("Water", 0)).unwrap();
@@ -11986,7 +12225,7 @@ mod tests {
     #[test]
     fn emergency_unlock_pin_wipes_sales_keeps_menu() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.complete_owner_setup("2468").unwrap();
         store
             .set_duress_pin("9999", "9999", &owner)
@@ -12017,7 +12256,7 @@ mod tests {
     #[test]
     fn backup_and_restore() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Test item", 25)).unwrap();
         let products = store.list_products(false).unwrap();
@@ -12046,7 +12285,7 @@ mod tests {
     #[test]
     fn void_requires_reason_and_role() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store
             .add_staff("Cash", StaffRole::Cashier, "Cashier", "1111", &owner)
@@ -12075,7 +12314,7 @@ mod tests {
     #[test]
     fn amend_keeps_previous_snapshot_with_actor_and_time() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Tea", 13)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -12143,7 +12382,7 @@ mod tests {
     #[test]
     fn owner_staff_auth_and_sale_authorship() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         assert!(owner.is_owner());
         assert!(store
@@ -12229,7 +12468,7 @@ mod tests {
     #[test]
     fn sale_line_note_persists() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Tea", 13)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -12252,7 +12491,7 @@ mod tests {
     #[test]
     fn counter_mode_skips_kot_restaurant_creates() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.set_venue_mode(VenueMode::Counter).unwrap();
         store.upsert_product(&test_product("Tea", 10)).unwrap();
@@ -12371,7 +12610,7 @@ mod tests {
     #[test]
     fn table_payment_pending_releases_only_after_payment() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let table = store.add_table("Patio 9").unwrap();
         store.upsert_product(&test_product("Thali", 200)).unwrap();
@@ -12502,7 +12741,7 @@ mod tests {
     #[test]
     fn delete_customer_guards_balance_and_history() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
 
         // Unused party: hard delete.
@@ -12536,7 +12775,7 @@ mod tests {
     #[test]
     fn khaynjo_template_labels_without_seeds() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let tmpl = store.apply_entity_template("khaynjo_restaurant").unwrap();
         assert_eq!(tmpl.id, "khaynjo_restaurant");
         assert_eq!(store.entity_template_id().unwrap(), "khaynjo_restaurant");
@@ -12585,7 +12824,7 @@ mod tests {
     #[test]
     fn dine_in_sale_assigns_bill_no_table_and_receipt() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         store.apply_entity_template("khaynjo_restaurant").unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let dosa = Product::new_basic(new_id(), "Masala Dosa", Money::from_rupees(120));
@@ -12612,7 +12851,7 @@ mod tests {
     #[test]
     fn bank_posting_aging_period_and_rich_receipt() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         store.apply_entity_template("khaynjo_restaurant").unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store
@@ -12660,7 +12899,7 @@ mod tests {
     #[test]
     fn customer_advance_then_credit_sale_applies_prepaid() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Tea", 120)).unwrap();
         let customer = store.add_customer("Asha", "").unwrap();
@@ -12715,7 +12954,7 @@ mod tests {
     #[test]
     fn unpaired_client_cannot_finalize() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         // A terminal's catalogue arrives from the Server, so stock the menu
         // before this device becomes a Client.
@@ -12741,7 +12980,7 @@ mod tests {
     fn backup_restore_preserves_sale_on_reopen() {
         let path = temp_db();
         let backup = path.with_extension("bak.sqlite3");
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Tea", 10)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -12766,7 +13005,7 @@ mod tests {
     #[test]
     fn mix_pay_cash_upi_card_and_expense_report() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&test_product("Tea", 30)).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
@@ -12901,7 +13140,7 @@ mod tests {
     #[test]
     fn fresh_db_is_schema_one_with_books_spine() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
         assert_eq!(store.fiscal_settings().unwrap().country_code, "IN");
         assert_eq!(store.list_tax_rates().unwrap().len(), 5);
@@ -12909,7 +13148,7 @@ mod tests {
         assert_eq!(branch.name, "Main");
         assert!(branch.is_this_device);
         assert_eq!(store.list_stations().unwrap().len(), 2);
-        assert_eq!(store.list_tables().unwrap().len(), 6);
+        assert_eq!(store.list_tables().unwrap().len(), 24, "T1..T24");
         assert!(store.list_units().unwrap().iter().any(|u| u.code == "kg"));
 
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
@@ -12987,7 +13226,7 @@ mod tests {
     #[test]
     fn stock_purchase_adjust_and_sale_decrement() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let mut samosa = test_product("Samosa", 15);
         samosa.stock_qty = 10;
@@ -13059,7 +13298,7 @@ mod tests {
     #[test]
     fn tax_extracted_on_sale() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         // ₹105 quoted tax inclusive at 5% → ₹5 of tax sits inside the bill.
         let mut thali = test_product("Thali", 105);
@@ -13118,7 +13357,7 @@ mod tests {
     fn inclusive_tax_unchanged_total() {
         // India is the default pack: the quoted price is the charged price.
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let fiscal_settings = store.fiscal_settings().unwrap();
         assert_eq!(fiscal_settings.country_code, "IN");
@@ -13198,7 +13437,7 @@ mod tests {
     fn exclusive_tax_increases_sale_total() {
         // UAE quotes net prices and adds 5% VAT at the till.
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let settings = store.apply_country_pack("AE").unwrap();
         assert_eq!(settings.tax_pricing, TaxPricing::Exclusive);
@@ -13244,7 +13483,7 @@ mod tests {
     #[test]
     fn exclusive_tax_credit_sale_owes_the_taxed_total() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.apply_country_pack("US").unwrap();
         // US ships no rate at all — the seller enters the one they collect.
@@ -13279,7 +13518,7 @@ mod tests {
     #[test]
     fn optional_service_charge_rides_on_top_of_the_lines() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         // Off by default: no country pack invents a service charge.
         assert_eq!(store.fiscal_settings().unwrap().service_charge_bps, 0);
@@ -13321,7 +13560,7 @@ mod tests {
     #[test]
     fn apply_country_pack_de_sets_comma_decimal() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         // India writes 1,234.50; Germany writes 1.234,50.
         assert_eq!(store.fiscal_settings().unwrap().decimal_sep, ".");
@@ -13354,7 +13593,7 @@ mod tests {
     #[test]
     fn receipt_shows_digital_pay_label_for_br_pix() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.apply_country_pack("BR").unwrap();
         store.upsert_product(&test_product("Pastel", 12)).unwrap();
@@ -13377,7 +13616,7 @@ mod tests {
     #[test]
     fn tax_split_india_cgst_sgst_on_receipt() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.set_business_tax_id("29ABCDE1234F1Z5").unwrap();
         let mut biryani = test_product("Biryani", 118);
@@ -13449,7 +13688,7 @@ mod tests {
     #[test]
     fn inclusive_sale_stores_net_and_tax_pricing() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let mut tea = test_product("Tea", 105);
@@ -13473,8 +13712,8 @@ mod tests {
     fn branch_snapshot_import_consolidated() {
         let main_path = temp_db();
         let remote_path = temp_db();
-        let mut main = Store::open_path(&main_path).unwrap();
-        let mut remote = Store::open_path(&remote_path).unwrap();
+        let main = Store::open_path(&main_path).unwrap();
+        let remote = Store::open_path(&remote_path).unwrap();
 
         // Remote outlet: rename its own branch, sell ₹60 cash.
         let remote_branch = remote.list_branches().unwrap().remove(0);
@@ -13546,7 +13785,7 @@ mod tests {
     #[test]
     fn multi_station_kot_split() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.set_venue_mode(VenueMode::Restaurant).unwrap();
         let stations = store.list_stations().unwrap();
@@ -13613,7 +13852,7 @@ mod tests {
     #[test]
     fn selling_more_than_stock_is_refused_and_leaves_stock_alone() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let mut ladoo = test_product("Ladoo", 20);
         ladoo.stock_qty = 1;
@@ -13706,7 +13945,7 @@ mod tests {
     #[test]
     fn client_device_cannot_write_the_shop_books() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         // Stock the menu as the Server, then demote this device.
         store.upsert_product(&test_product("Tea", 10)).unwrap();
@@ -13770,6 +14009,31 @@ mod tests {
     }
 
     /// A backup must restore onto a DB path that has never seen this shop.
+    /// A restore while the LAN server still has the books open (its watcher,
+    /// a device's request): those connections read the restored books — the
+    /// file is never swapped from under them (on Windows that failed).
+    #[test]
+    fn restore_reaches_connections_already_open() {
+        let path = temp_db();
+        let backup = path.with_extension("backup.sqlite3");
+        let store = Store::open_path(&path).unwrap();
+        store.upsert_product(&test_product("Thali", 120)).unwrap();
+        store.backup_to(&backup).unwrap();
+        store.upsert_product(&test_product("Chaas", 30)).unwrap();
+        let watcher = Store::open_path(&path).unwrap();
+        assert_eq!(watcher.list_products(false).unwrap().len(), 2);
+        drop(store);
+        let restored = Store::restore_from_to_path(&backup, &path).unwrap();
+        assert_eq!(restored.list_products(false).unwrap().len(), 1);
+        assert_eq!(watcher.list_products(false).unwrap().len(), 1, "the open connection sees the restore");
+        drop((restored, watcher));
+        for file in [path.clone(), backup] {
+            let _ = std::fs::remove_file(file);
+        }
+        let _ = std::fs::remove_file(path.with_extension("sqlite3-wal"));
+        let _ = std::fs::remove_file(path.with_extension("sqlite3-shm"));
+    }
+
     #[test]
     fn restore_from_path_preserves_sale() {
         let path = temp_db();
@@ -13777,7 +14041,7 @@ mod tests {
         let fresh = path.with_extension("restored.sqlite3");
 
         let (sale_id, invoice_no, total_paise) = {
-            let mut store = Store::open_path(&path).unwrap();
+            let store = Store::open_path(&path).unwrap();
             let owner = store.list_staff().unwrap().into_iter().next().unwrap();
             store.upsert_product(&test_product("Thali", 120)).unwrap();
             let p = store.list_products(false).unwrap().remove(0);
@@ -13825,7 +14089,7 @@ mod tests {
     fn sales_get_sequential_invoice_numbers() {
         let path = temp_db();
         let first = {
-            let mut store = Store::open_path(&path).unwrap();
+            let store = Store::open_path(&path).unwrap();
             let owner = store.list_staff().unwrap().into_iter().next().unwrap();
             store.upsert_product(&test_product("Chai", 10)).unwrap();
             let p = store.list_products(false).unwrap().remove(0);
@@ -13852,7 +14116,7 @@ mod tests {
         };
 
         // Reopen: the counter carries on rather than reissuing 000001.
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let p = store.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
@@ -13972,7 +14236,7 @@ mod tests {
     #[test]
     fn write_off_ap_cogs_units_and_books_overview() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.complete_owner_setup("0000").unwrap();
         assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
 
@@ -14061,7 +14325,7 @@ mod tests {
     #[test]
     fn dual_role_party_roles_on_uuid_and_nets_ar_ap() {
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         // Names are not unique — two rows with the same display name stay distinct by UUID.
         let a = store

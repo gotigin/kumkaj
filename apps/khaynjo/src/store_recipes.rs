@@ -126,7 +126,7 @@ impl Store {
                 None => rows.push((item.id.clone(), milli)),
             }
         }
-        let tx = self.conn.unchecked_transaction().map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         tx.execute("DELETE FROM recipe_lines WHERE dish_id = ?1", params![dish_id])
             .map_err(|e| e.to_string())?;
         for (item_id, milli) in &rows {
@@ -335,7 +335,7 @@ mod tests {
 
     #[test]
     fn selling_a_dish_uses_its_recipe_and_a_void_puts_it_back() {
-        let (mut store, path, owner, dish) = kitchen();
+        let (store, path, owner, dish) = kitchen();
         let set = store.set_recipe_from_text(&dish.id, "rice=0.4, Paneer=0.25", &owner).unwrap();
         assert_eq!(recipe_as_typed(&set), "Rice=0.4, Paneer=0.25");
         assert!(store.set_recipe_from_text(&dish.id, "Saffron=0.01", &owner).is_err());

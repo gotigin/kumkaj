@@ -323,11 +323,7 @@ impl Widget for CartList {
                         if line.hold_send {
                             meta.push_str(&format!(" · {}", locale::t(&lang, "hold_send_meta")));
                         } else {
-                            let sid = products
-                                .iter()
-                                .find(|p| p.id == line.product_id)
-                                .map(|p| p.station_id.as_str())
-                                .unwrap_or("");
+                            let sid = line.kitchen_station_id(&products);
                             let dest = if sid.is_empty() {
                                 locale::t(&lang, "kot_unassigned")
                             } else {

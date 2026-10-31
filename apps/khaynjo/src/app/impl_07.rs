@@ -260,10 +260,11 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
 
     /// Cart `−`/`+`. Raising a tracked line stops at the on-hand count so the
     /// refusal lands on the button, not on the customer at the till.
-    /// Seat this order or change its table: Floor in pick mode. A tap moves
-    /// **pending** (not yet Send KOT) onto the chosen table and returns.
-    /// Sent lines stay on the old table (use Move / merge for those).
-    /// Floor from the nav bar is different — it only browses/opens tickets.
+    /// Choose / Change table: Floor in pick mode, then return to Order.
+    /// - No table yet: seat the desk's unsent punches onto the tapped table.
+    /// - Already on a table (Change table): open that table's ticket only —
+    ///   previous table's lines stay put (use Move / merge to relocate).
+    /// Floor from the nav bar only browses/opens tickets (same open path).
     fn pick_table_for_order(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
@@ -271,8 +272,12 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             st.picking_from_table_id = st.selected_table_id.clone();
             st.selected_table_id = None;
             st.open_cart_line = None;
-            // Keep punched lines in the cart for a first seat (no from-table).
-            // Change-table moves pending on the Server; cart is rebuilt on pick.
+            // First seat: keep punched lines so they attach on tap.
+            // Change table: drop the old ticket from the desk — the pick
+            // reloads the chosen table from the Server.
+            if st.picking_from_table_id.is_some() {
+                st.cart.clear();
+            }
         }
         self.go(cx, Screen::Floor);
         app_state().lock().unwrap().picking_table = true;
@@ -1161,20 +1166,14 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     /// off this KOT (same as Hold on each line) so Send only names real stations.
     fn hold_unassigned_kot_lines(&mut self, cx: &mut Cx) -> Result<String, String> {
         let mut st = app_state().lock().unwrap();
-        st.require_server_role("Send a KOT")?;
+        // Local cart only — waiters on an extra till must be able to Hold.
         let idxs: Vec<usize> = st
             .cart
             .lines
             .iter()
             .enumerate()
             .filter(|(_, l)| !l.is_sent() && !l.hold_send)
-            .filter(|(_, l)| {
-                st.products
-                    .iter()
-                    .find(|p| p.id == l.product_id)
-                    .map(|p| p.station_id.trim().is_empty())
-                    .unwrap_or(true)
-            })
+            .filter(|(_, l)| l.kitchen_station_id(&st.products).is_empty())
             .map(|(i, _)| i)
             .collect();
         let n = idxs.len();
@@ -1214,51 +1213,38 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             }
         }
         let mut st = app_state().lock().unwrap();
-        st.require_server_role("Send a KOT")?;
-        let actor = st.actor()?;
-        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-        let station_id = store
-            .list_stations()?
-            .into_iter()
+        let (station_id, station_name) = st
+            .stations
+            .iter()
             .find(|s| s.name.eq_ignore_ascii_case(wanted))
-            .map(|s| s.id)
+            .map(|s| (s.id.clone(), s.name.clone()))
             .ok_or_else(|| "Station not found".to_string())?;
-        let station_name = store
-            .list_stations()?
-            .into_iter()
-            .find(|s| s.id == station_id)
-            .map(|s| s.name)
-            .unwrap_or_else(|| wanted.to_string());
-        let unsent_pids: Vec<String> = st
+        // Cart-local clear — do not rewrite the menu from an extra till.
+        let idxs: Vec<usize> = st
             .cart
             .lines
             .iter()
-            .filter(|l| !l.is_sent() && !l.hold_send)
-            .map(|l| l.product_id.clone())
+            .enumerate()
+            .filter(|(_, l)| !l.is_sent() && !l.hold_send)
+            .filter(|(_, l)| l.kitchen_station_id(&st.products) == station_id)
+            .map(|(i, _)| i)
             .collect();
         let mut n = 0usize;
-        let mut seen = std::collections::HashSet::new();
-        for pid in unsent_pids {
-            if !seen.insert(pid.clone()) {
-                continue;
+        for i in idxs {
+            let pid = st.cart.lines[i].product_id.clone();
+            let menu_sid = st
+                .products
+                .iter()
+                .find(|p| p.id == pid)
+                .map(|p| p.station_id.clone())
+                .unwrap_or_default();
+            let line = &mut st.cart.lines[i];
+            line.station_id.clear();
+            // Menu still routes here → hold off this KOT instead of reappearing.
+            if menu_sid == station_id {
+                line.hold_send = true;
             }
-            let Some(mut product) = store.get_product(&pid)? else {
-                continue;
-            };
-            if product.station_id != station_id {
-                continue;
-            }
-            product.station_id.clear();
-            store.upsert_product(&product)?;
             n += 1;
-        }
-        if n > 0 {
-            store.audit(
-                &actor,
-                "menu.station",
-                &format!("cleared {station_name} · {n} item(s)"),
-            )?;
-            st.reload_all()?;
         }
         let msg = st
             .t("kot_station_cleared")
@@ -1269,9 +1255,10 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         Ok(msg)
     }
 
-    /// Order desk: put `station_text` on every unsent cart dish (create the
-    /// station if new). Overrides a station already on the menu item so the
-    /// till can change kitchen for this ticket. Held lines are left alone.
+    /// Order desk: put `station_text` on every unsent cart dish for this
+    /// ticket (cart-local — works on an extra till). Does not rewrite the
+    /// menu. Unknown station names: create on the shop device only; on a
+    /// client, pick an existing kitchen. Held lines are left alone.
     fn apply_kot_station_to_unassigned(
         &mut self,
         cx: &mut Cx,
@@ -1283,54 +1270,38 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             return Err(msg);
         }
         let mut st = app_state().lock().unwrap();
-        // Same bar as Send KOT: the till that can send can name the kitchen.
-        st.require_server_role("Send a KOT")?;
-        let actor = st.actor()?;
-        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-        let station_id = match store
-            .list_stations()?
-            .into_iter()
-            .find(|s| s.name.eq_ignore_ascii_case(wanted))
-        {
-            Some(s) => s.id,
-            None => store.add_station(wanted)?.id,
+        let (station_id, station_name) = {
+            let existing = st
+                .stations
+                .iter()
+                .find(|s| s.name.eq_ignore_ascii_case(wanted))
+                .map(|s| (s.id.clone(), s.name.clone()));
+            if let Some(pair) = existing {
+                pair
+            } else if st.device_role == DeviceRole::Client {
+                return Err(
+                    "Unknown kitchen — pick one that exists, or add stations on the shop device"
+                        .into(),
+                );
+            } else {
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let s = store.add_station(wanted)?;
+                st.stations = store.list_stations().unwrap_or_default();
+                (s.id, s.name)
+            }
         };
-        let station_name = store
-            .list_stations()?
-            .into_iter()
-            .find(|s| s.id == station_id)
-            .map(|s| s.name)
-            .unwrap_or_else(|| wanted.to_string());
-        let unsent_pids: Vec<String> = st
+        let mut n = 0usize;
+        for line in st
             .cart
             .lines
-            .iter()
+            .iter_mut()
             .filter(|l| !l.is_sent() && !l.hold_send)
-            .map(|l| l.product_id.clone())
-            .collect();
-        let mut n = 0usize;
-        let mut seen = std::collections::HashSet::new();
-        for pid in unsent_pids {
-            if !seen.insert(pid.clone()) {
+        {
+            if line.station_id == station_id {
                 continue;
             }
-            let Some(mut product) = store.get_product(&pid)? else {
-                continue;
-            };
-            if product.station_id == station_id {
-                continue;
-            }
-            product.station_id = station_id.clone();
-            store.upsert_product(&product)?;
+            line.station_id = station_id.clone();
             n += 1;
-        }
-        if n > 0 {
-            store.audit(
-                &actor,
-                "menu.station",
-                &format!("{station_name} · {n} item(s)"),
-            )?;
-            st.reload_all()?;
         }
         let msg = st
             .t("kot_station_applied")

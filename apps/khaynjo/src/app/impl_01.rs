@@ -146,6 +146,14 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                 st.status = String::new();
                 st.store = Some(store);
                 let _ = st.reload_all();
+                // Shelf keys → custom files while the pack is still on disk
+                // (desktop Server). Clients then fetch over LAN; Android has
+                // no assets/items pack of its own.
+                if st.device_role == DeviceRole::Server
+                    && let Some(store) = st.store.as_ref()
+                {
+                    let _ = store.materialize_shelf_photos();
+                }
                 if let Some(store) = st.store.as_mut() {
                     let _ = store.set_active_session_staff_id(None);
                 }

@@ -220,7 +220,7 @@ impl Store {
     }
 
     pub fn add_awb_pool(
-        &mut self,
+        &self,
         carrier_party_id: &str,
         prefix: &str,
         start_n: i64,
@@ -263,7 +263,7 @@ impl Store {
         })
     }
 
-    pub fn delete_awb_pool(&mut self, pool_id: &str) -> Result<(), String> {
+    pub fn delete_awb_pool(&self, pool_id: &str) -> Result<(), String> {
         self.assert_server_writer("Delete AWB pool")?;
         self.conn
             .execute("DELETE FROM awb_pools WHERE id = ?1", params![pool_id])
@@ -273,7 +273,7 @@ impl Store {
 
     /// Next number from a carrier's first non-exhausted pool, or shop-wide seq.
     pub fn allocate_awb_for_carrier(
-        &mut self,
+        &self,
         carrier_party_id: &str,
     ) -> Result<(String, Option<String>), String> {
         self.assert_server_writer("Allocate AWB")?;
@@ -346,7 +346,7 @@ impl Store {
 
     /// Advance many AWBs to one status. Returns (ok_count, error lines).
     pub fn bulk_advance_tracking(
-        &mut self,
+        &self,
         awbs: &[String],
         status: TrackingStatus,
         note: &str,
@@ -739,7 +739,7 @@ mod tests {
 
     #[test]
     fn awb_pool_allocates_and_exhausts() {
-        let mut store = Store::open_path(&temp_db()).unwrap();
+        let store = Store::open_path(&temp_db()).unwrap();
         store
             .add_awb_pool("carrier1", "DT", 100, 101, "DTDC pad")
             .unwrap();
@@ -790,7 +790,7 @@ mod tests {
     fn bulk_advance_and_chase_smoke() {
         use crate::domain::{Cart, Money, MoneyLane, PayMethod, Product};
         let path = temp_db();
-        let mut store = Store::open_path(&path).unwrap();
+        let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store
             .upsert_product(&Product::new_basic(new_id(), "Surface", Money::from_rupees(50)))

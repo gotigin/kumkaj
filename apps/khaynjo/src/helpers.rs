@@ -6,6 +6,13 @@ fn typed_aliases(text: &str) -> Vec<String> {
         .collect()
 }
 
+/// Order → Floor table pick: seat the desk's unsent punches only on **first**
+/// Choose a table (`from` is None). Change table (`from` is Some) must open
+/// the picked ticket alone — never drag the previous table's lines over.
+fn pick_seats_desk_cart(from_table_id: Option<&str>) -> bool {
+    from_table_id.is_none()
+}
+
 /// Parse `1`, `1.5`, `1,5` into qty milli (1000 = 1 whole).
 /// `D1-D20`, `P 1-20`, `AC1 – AC10` → ("D", 1, 20). The prefix is whatever
 /// comes before the first number; the second side may repeat it or not.
@@ -147,14 +154,6 @@ fn set_view_flow(cx: &mut Cx, view: &ViewRef, flow: Flow) {
         inner.layout.flow = flow;
     }
     view.redraw(cx);
-}
-
-fn size_fill(weight: f64, min: f64) -> Size {
-    Size::Fill {
-        weight,
-        min: Some(min),
-        max: None,
-    }
 }
 
 /// First line of a status / receipt message, kept short for the ticket.
@@ -475,15 +474,31 @@ fn page_owns_scroll(event: &Event) -> bool {
     matches!(event, Event::Scroll(_))
 }
 
-/// Resolve on-disk path for a product/draft image key (custom photo or empty).
+/// Resolve on-disk path for a product/draft image key (custom / shelf / LAN cache).
 fn image_key_path(key: Option<&str>, dir: &std::path::Path) -> std::path::PathBuf {
-    match key {
-        Some(k) if k.starts_with("pending_custom:") => {
-            std::path::PathBuf::from(&k["pending_custom:".len()..])
+    let Some(k) = key.map(str::trim).filter(|s| !s.is_empty()) else {
+        return std::path::PathBuf::new();
+    };
+    // Client devices: pull missing photos from the Server (Android has no shelf pack).
+    let link = {
+        let st = app_state().lock().unwrap();
+        if st.device_role == DeviceRole::Client {
+            st.store.as_ref().and_then(|store| {
+                let base = store.server_url().ok().flatten()?;
+                let device = store.client_device_token().ok().flatten()?;
+                let server_id = store.paired_server_id().ok().flatten().unwrap_or_default();
+                Some(net::Link {
+                    base,
+                    device,
+                    session: String::new(),
+                    server_id,
+                })
+            })
+        } else {
+            None
         }
-        Some(k) if k.starts_with("custom:") => dir.join(&k["custom:".len()..]),
-        other => menu_images::resolve_image_path(other, "", dir),
-    }
+    };
+    lan_images::ensure_or_request(k, dir, link.as_ref())
 }
 
 /// Small display copies of photos live beside the shop's item images.

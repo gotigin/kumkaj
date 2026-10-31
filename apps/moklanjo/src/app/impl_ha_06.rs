@@ -505,12 +505,21 @@ impl App {
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
             let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
             let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-            {
+            let saved = {
                 let mut st = app_state().lock().unwrap();
                 st.printer_draft.add_printer(&label, &target);
-            }
+                st.data_base
+                    .as_ref()
+                    .and_then(|base| {
+                        print_share::save_device_printers(base, &st.printer_draft).ok()
+                    })
+                    .is_some()
+            };
             self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
             self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+            if saved {
+                self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+            }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
@@ -519,38 +528,50 @@ impl App {
                 if let Some(last) = st.printer_draft.printers.last().map(|p| p.id.clone()) {
                     st.printer_draft.remove_printer(&last);
                 }
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                }
             }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(route_add)).clicked(actions) {
             let pick = self.ui.text_input(cx, ids!(route_add_printer_input)).text();
             let pick_trim = pick.trim().to_string();
-            {
+            let msg = {
                 let mut st = app_state().lock().unwrap();
                 let key = parse_courier_route_key(&st.printer_route_key);
-                if let Some(p) = st
+                let assigned = if let Some(p) = st
                     .printer_draft
                     .printers
                     .iter()
                     .find(|p| p.label.eq_ignore_ascii_case(&pick_trim) || p.id == pick_trim)
                     .map(|p| p.id.clone())
                 {
-                    let route = st.printer_draft.route_mut(key);
-                    if !route.iter().any(|id| id == &p) {
-                        route.push(p);
+                    // Replace — one printer per route; append never "changed".
+                    *st.printer_draft.route_mut(key) = vec![p];
+                    if let Some(base) = st.data_base.as_ref() {
+                        let _ = print_share::save_device_printers(base, &st.printer_draft);
                     }
+                    true
+                } else {
+                    false
+                };
+                if assigned {
+                    st.t("printers_saved")
+                } else if pick_trim.is_empty() {
+                    "Add a printer above, then type its name here".into()
+                } else {
+                    "No printer with that name — pick one from the list above".into()
                 }
+            };
+            if !msg.is_empty() {
+                self.set_status(cx, msg);
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(route_up)).clicked(actions)
-            || self.ui.button(cx, ids!(route_down)).clicked(actions)
+        if self.ui.button(cx, ids!(route_clear)).clicked(actions)
             || self.ui.button(cx, ids!(route_remove)).clicked(actions)
-            || self.ui.button(cx, ids!(route_clear)).clicked(actions)
         {
-            let up = self.ui.button(cx, ids!(route_up)).clicked(actions);
-            let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
-            let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
             let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
             {
                 let mut st = app_state().lock().unwrap();
@@ -559,13 +580,11 @@ impl App {
                 let route = st.printer_draft.route_mut(key);
                 if clear {
                     route.clear();
-                } else if remove {
+                } else {
                     route.pop();
-                } else if up && route.len() >= 2 {
-                    let i = route.len() - 1;
-                    route.swap(i - 1, i);
-                } else if down && route.len() >= 2 {
-                    route.swap(0, 1);
+                }
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
                 }
             }
             self.sync_chrome(cx);
@@ -837,20 +856,17 @@ impl App {
 
         self.handle_diag_actions(cx, actions);
         if self.ui.button(cx, ids!(backup_btn)).clicked(actions) {
-            let result = (|| -> Result<std::path::PathBuf, String> {
+            // VACUUM INTO can take seconds on a busy shop — never block the UI.
+            let job = (|| -> Result<(PathBuf, PathBuf), String> {
                 let st = app_state().lock().unwrap();
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let path = default_backup_path()?;
-                store.backup_to(&path)?;
-                Ok(path)
+                let dest = default_backup_path()?;
+                Ok((store.db_path().to_path_buf(), dest))
             })();
-            match result {
-                Ok(path) => {
-                    self.ui.widget(cx, ids!(backup_path_label)).set_text(
-                        cx,
-                        &plain_display_text(&format!("Backup: {}", path.display())),
-                    );
-                    self.set_status(cx, "Backup created");
+            match job {
+                Ok((db, dest)) => {
+                    self.set_status(cx, "Creating backup…");
+                    backup_job(db, dest);
                 }
                 Err(e) => self.set_status(cx, e),
             }

@@ -76,6 +76,9 @@ pub struct LinkState {
     pub needs_pairing: bool,
     /// The sign-in that sends the waiting writes ran out: sign in again.
     pub needs_sign_in: bool,
+    /// This device and the Server run app versions that cannot talk:
+    /// update one of them. Waiting writes stay waiting meanwhile.
+    pub needs_update: bool,
     /// When this device last knew it had the Server's latest books ("14:05";
     /// empty before the first time). Said while offline: how old the screen is.
     pub updated_at: String,
@@ -419,6 +422,13 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                 state.needs_pairing = true;
                 break;
             }
+            // Another version of the app on the Server: not a "no" to this
+            // write — it waits (with the Server's words) until one is updated.
+            Err(e) if e.code() == "update_app" => {
+                let _ = store.lan_outbox_retry_later(&item.id, &e.to_string());
+                state.needs_update = true;
+                break;
+            }
             // Turned down for good (it would be refused forever): off the
             // queue, onto the "not accepted" list with the Server's words.
             Err(e) => {
@@ -430,6 +440,7 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
         }
         reached = true;
         state.needs_sign_in = false;
+        state.needs_update = false;
         wrote = true;
         let (done, follow) = shared()
             .0
@@ -460,6 +471,7 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
         match &reply {
             Err(e) if e.is_offline() => offline = true,
             Err(e) if e.code() == "pair_again" => state.needs_pairing = true,
+            Err(e) if e.code() == "update_app" => state.needs_update = true,
             Err(_) => reached = true,
             Ok(_) => {
                 reached = true;
@@ -497,13 +509,17 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                     }
                 }
                 Err(e) if e.is_offline() => offline = true,
-                Err(e) => state.needs_pairing |= e.code() == "pair_again",
+                Err(e) => {
+                    state.needs_pairing |= e.code() == "pair_again";
+                    state.needs_update |= e.code() == "update_app";
+                }
             }
         }
     }
 
     if reached {
         state.needs_pairing = false;
+        state.needs_update = false;
         shared().0.lock().unwrap().offline_since = None;
     }
     let tried = wrote || want || offline || store.lan_outbox().map(|o| !o.is_empty()).unwrap_or(false);

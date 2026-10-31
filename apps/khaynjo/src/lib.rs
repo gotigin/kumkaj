@@ -13,6 +13,7 @@ pub mod entity_template;
 pub mod fiscal;
 pub mod locale;
 pub mod local_servers;
+pub mod lan_images;
 pub mod media;
 pub mod menu_images;
 pub mod net;

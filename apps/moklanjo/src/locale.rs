@@ -713,7 +713,11 @@ fn en(key: &str) -> String {
         "diag_export_local" => "Export local copy",
         "diag_export_local_done" => "Local diagnostics ready at {path} — pick where to save a copy",
         "diag_approve_send" => "Approve share off this device",
+        "diag_send_heading" => "Share off this device",
         "diag_send_help" => "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android.",
+        "optional_login_heading" => "Optional login",
+        "rights_heading" => "Rights",
+        "booking_scope_heading" => "Domestic / International",
         "diag_send_approved" => "Share approved for one package (expires soon)",
         "diag_export_send" => "Create share package (needs approval)",
         "diag_export_send_done" => "Share package ready at {path} — pick where to save, then send only to Kumkaj support",
@@ -944,11 +948,13 @@ fn en(key: &str) -> String {
         "forget_device" => "Forget",
         "last_seen" => "seen",
         "new_pair_code" => "New pairing code",
-        "lan_offline" => "Offline",
-        "lan_offline_waiting" => "Offline · {n} waiting",
+        "lan_offline" => "Shop server unreachable",
+        "lan_offline_waiting" => "Shop server unreachable · {n} waiting",
+        "lan_connecting" => "Connecting to shop…",
         "lan_sending" => "{n} sending",
         "lan_sign_in_to_send" => "Sign in again to send {n}",
         "lan_pair_again" => "Pair this device again",
+        "lan_update_app" => "Update the app — this device and the office server have different versions",
         "allow_firewall" => "Allow other devices to connect",
         "firewall_blocked" => "This computer's firewall is blocking other devices — tap Allow other devices to connect.",
         "firewall_waiting" => "Waiting for the admin prompt…",
@@ -1747,7 +1753,7 @@ mod tests {
             "device_forgotten",
             "forget_device", "last_seen", "new_pair_code",
             "lan_offline",
-            "lan_offline_waiting", "lan_sending", "lan_sign_in_to_send", "lan_pair_again",
+            "lan_offline_waiting", "lan_connecting", "lan_sending", "lan_sign_in_to_send", "lan_pair_again", "lan_update_app",
             "allow_firewall", "firewall_blocked", "firewall_waiting",
             "lan_join_help", "lan_pair_status", "lan_join_help_no_addr", "lan_no_address", "lan_not_listening", "lan_tills_off", "paired_with", "not_paired", "choose_device_use", "paired_note", "last_update_at", "pair_intro", "queue_waiting", "queue_tries", "save_backup_copy", "backup_copy_saved", "backup_copy_overdue", "backup_copy_failed", "clock_off", "printers_heading", "printers_help", "printers_pool_heading", "printers_routes_heading", "printer_label_ph", "printer_target_ph", "add_printer", "remove_printer", "route_pick_ph", "route_add_printer_ph", "route_receipt", "route_label", "route_dont_print", "route_add", "route_up", "route_down", "route_remove", "route_clear", "save_printers", "print_test_page", "printers_saved", "test_page_sent", "printers_found", "find_printers", "printers_looking", "printers_tap_find", "printers_none_found", "receipt_printer_ph", "queue_refused", "clear_not_accepted", "device_name_ph", "lan_last_update", "lan_not_accepted", "connected_now", "backup_failed", "backup_overdue", "disk_low",
             "connection_to_shop",
@@ -1783,7 +1789,7 @@ mod tests {
             "duress_heading", "duress_help", "duress_pin_ph", "duress_confirm_ph", "save_duress_pin", "clear_duress_pin", "duress_on", "duress_off", "duress_saved", "duress_cleared",
             "chip_missing_customer", "chip_no_customer",             "choose_icon",
             "choose_language", "choose_logo", "choose_payment_qr", "choose_receipt_stamp",
-            "choose_server", "choose_server_hint",
+            "choose_server", "choose_server_hint", "diag_send_heading", "optional_login_heading", "rights_heading", "booking_scope_heading",
             "clear", "clear_icon", "clear_logo", "clear_payment_qr", "clear_photo",
             "clear_stamp", "client", "cod_amount_ph",
             "add_awb_pool", "awb_pool_carrier_ph", "awb_pool_end_ph", "awb_pool_label_ph",
@@ -1907,19 +1913,23 @@ mod tests {
             "write_off_heading", "write_off_nil", "your_brand", "your_favorites",
             "your_items", "zone_name_ph", "zone_ph", "contents_ph",
         ];
+        // Every gap at once, so one run says everything still to translate.
+        let mut gaps = Vec::new();
         for lang in LANGS {
             for key in KEYS {
                 let value = t(lang, key);
-                assert_ne!(value, *key, "{lang} left {key} untranslated");
-                assert!(!value.is_empty(), "{lang} {key}");
-                // A chrome row (or the per-language table) must cover the
-                // key — falling back to the English text is a failure.
-                assert!(
-                    chrome_extra(lang, key).is_some() || value != en(key),
-                    "{lang} falls back to English for {key}"
-                );
+                if value == *key {
+                    gaps.push(format!("{lang} left {key} untranslated"));
+                } else if value.is_empty() && !en(key).is_empty() {
+                    gaps.push(format!("{lang} {key} is empty"));
+                } else if chrome_extra(lang, key).is_none() && value == en(key) && !en(key).is_empty() {
+                    // A chrome row (or the per-language table) must cover the
+                    // key — falling back to the English text is a failure.
+                    gaps.push(format!("{lang} falls back to English for {key}"));
+                }
             }
         }
+        assert!(gaps.is_empty(), "{} gaps:\n{}", gaps.len(), gaps.join("\n"));
         assert_eq!(t("en", "sold_out"), "Unavailable");
         assert_eq!(t("gu", "cash"), "રોકડ");
         assert_eq!(t("gu", "owed"), "બાકી");

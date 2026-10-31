@@ -44,6 +44,18 @@ impl AppMain for App {
             self.ui.redraw(cx);
         }
         if matches!(event, Event::Signal) {
+            if let Some(result) = backup_once().lock().unwrap().take() {
+                match result {
+                    Ok(path) => {
+                        self.ui.widget(cx, ids!(backup_path_label)).set_text(
+                            cx,
+                            &plain_display_text(&format!("Backup: {}", path.display())),
+                        );
+                        self.set_status(cx, "Backup created");
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
             if BACKUP_MADE.swap(false, std::sync::atomic::Ordering::SeqCst) {
                 self.sync_chrome(cx);
             }

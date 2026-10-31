@@ -110,7 +110,26 @@ printer installed on a Windows or Linux computer.
 
 ---
 
-## 6. Troubleshooting
+## 6. Guest and kitchen screens (Khaynjo)
+
+Any phone, tablet or TV browser **on the shop's Wi‑Fi** can open these
+pages from the Server — type the Server's address from step 1.2, its
+port `7847`, then the page, e.g. `http://192.168.1.10:7847/display`.
+They need no pairing; guests on mobile data cannot reach them.
+
+| Page | Shows |
+|---|---|
+| `/display` (or `/display?table=D3`) | the order being billed and its UPI QR — a second screen facing the guest |
+| `/tokens` | takeaway tokens that are ready |
+| `/expo` | kitchen tickets marked Ready, for the pass |
+| `/kiosk` | self-order menu; orders land as a Parcel table's pending order |
+| `/t/D3` | table D3's QR menu: dishes guests add show on the table's order **before** anyone sends a KOT — staff check and send |
+| `/feedback` | a one-tap rating form |
+
+Only dishes on the menu and not sold out can be added from these pages,
+never raw materials, and at most 50 at a time.
+
+## 7. Troubleshooting
 
 | Problem | What to check |
 |---|---|
@@ -121,5 +140,7 @@ printer installed on a Windows or Linux computer.
 | **Pair this device again** | The device was forgotten, or the Server's books were replaced by a backup older than the pairing. Pair with the current code. |
 | KOTs do not print | On the Server: **Settings → Printers on this device → Print a test page**. A network printer must be on the same Wi‑Fi and switched on. |
 | "This device's clock is … off" | Set the date and time on that device (automatic time is best). |
+| "Update the app — this device and the shop's server have different versions" | Install the same version of the app on the Server and every device. Waiting KOTs and payments stay on the device and go once both match. |
+| Waiting writes say "the shop's server said: database is locked" (or "disk is full") | The Server was busy or its disk is full. Nothing is lost: the device sends them again by itself. A full disk: free space on the Server (Settings warns when it is low). |
 
 Moving the books to another device: [`SERVER_MIGRATION.md`](SERVER_MIGRATION.md).

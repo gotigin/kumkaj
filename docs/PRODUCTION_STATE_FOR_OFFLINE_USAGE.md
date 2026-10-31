@@ -4,11 +4,13 @@
 > [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md),
 > [`KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md).
 
-Updated **2026-10-29** (v4). Research Local/LAN catch-up for both apps is
-complete (§4), including the 2026-10-29 Moklanjo C Trunk / ASP.NET Local
-gaps and Khaynjo print-brand + aggregator file-import polish; earlier LAN
-pilot items (§1–2) remain. Every line below was checked against the code,
-not copied from an older assessment.
+Updated **2026-10-31** (v5): a LAN hardening and correctness pass (§1,
+first table) — concurrent writes, transient errors, version mismatch,
+restore on Windows, Moklanjo self-booking money, Khaynjo floor control —
+and the test suites green again (on 2026-10-29 v4 said green while 7
+Khaynjo and 3 Moklanjo tests failed). Research Local/LAN catch-up for both
+apps is complete (§4). Every line below was checked against the code, not
+copied from an older assessment.
 
 **Bottom line:** product code for offline/LAN use (including research
 parity that does not need Kumkaj Cloud) is ready for a supervised pilot
@@ -21,8 +23,23 @@ machines** (§3), which only the owner can do.
 
 ## 1. Fixed / completed in this pass
 
+**2026-10-31 (v5) — LAN hardening.** Found by reading the LAN path end to
+end and by the suites (which were red); every fix has a test.
+
 | Item | What changed | Where |
 |---|---|---|
+| **Two tablets sending to one table lost KOTs** (bug, Khaynjo) | A device's write ran as many separate statements: two waiters' Send KOT on the same table interleaved — one got "Nothing new to send" (and dropped it as refused) while the other's KOT carried both waiters' lines. The 8-devices test showed it. Every device write is now **one transaction**, reply record included; `send_kot` and `write_sale` make their checks inside their own unit. | both apps `net.rs` (`answer_inner`), `store.rs` (`Tx`, `begin`, `in_transaction` nests as a savepoint) |
+| **Two tills could get the same AWB** (bug, Moklanjo) | AWB pool allocation read `next_n` then wrote `next_n + 1` outside any transaction (and stock was checked before the sale's transaction). Now inside the booking's unit. | Moklanjo `store.rs` `write_sale` |
+| **"Database is locked" was a permanent refusal** (bug) | Any server error — including a busy database or a full disk — came back 400, so the tablet moved the KOT / payment to "not accepted" for good, and the refusal was even recorded as the answer for retries. Now "not now" errors are **503 `retry`**: not recorded, the device keeps the write and sends it again. A panic in a request is a 500, never a hang-up that blocks the device's queue. | both apps `net.rs` (`answer`, `is_transient`, `lan_error`) |
+| **Every read took the write lock** (bug) | Opening the books (once per LAN request — `/sync`, `/wait`, discovery) ran the migration's no-op `UPDATE`s, and `list_tables` (every snapshot, every floor refresh) ran an `UPDATE` each time: each device's read queued behind any write and failed after 5 s. Books are now migrated once per schema (`PRAGMA user_version`); heals look first and write only when needed. | both apps `store.rs` (`open_path`, `lan_device_for_token`), Khaynjo `list_tables` |
+| **Mixed app versions looked "offline" for ever** (gap) | No protocol version: a newer Server's snapshot failed to parse on an older tablet and read as "no reply". `LAN_PROTOCOL` now travels on every request and reply; a mismatch is 426 **"Update the app — this device and the shop's server have different versions"** in the header (translated, 29 languages), waiting writes kept. | both apps `net.rs`, `phone.rs` (`needs_update`), header |
+| **Restore failed on Windows while serving** (bug) | Restore renamed a file over the live books, but the LAN watcher keeps them open: on Windows the rename fails; on Linux the watcher kept serving the old books. Restore now goes into the live database through SQLite's backup API, one step, one transaction. | both apps `store.rs` `restore_from_to_path` |
+| **Open `/book` page wrote fake cash** (bug, Moklanjo) | Anyone on the office Wi‑Fi could post the self-booking form: it booked as the Owner, **paid in cash**, at whichever rate came first, ignoring weight. Now the company names itself (required), picks a service, is priced by that rate's slab like the desk, and is **billed on account**; audited `lan.self_book`. | Moklanjo `net.rs` `lan_book_*`, `store_courier_ops.rs` `lan_self_book` |
+| **Tables could not be removed** (gap, Khaynjo) | A fresh shop seeds T1..T24 and the UI could only add tables — Rajdhani's D1–D20 + P1–P20 floor would carry 24 unused tables for ever (and deleting them in code brought them back on the next start). Floor → ADD TABLES → **Remove these tables** (`T1-T24` or a name; a table in use is kept and named); seeded once; a table with an open order cannot be deleted; a tablet drops tables the Server no longer has. | Khaynjo `store.rs` (`remove_tables_named`, `ensure_seed_data`, `replace_tables_from_sync`), floor UI |
+| **Guest pages** (Khaynjo) | The table-QR / kiosk endpoints (no pairing) could add raw materials and sold-out dishes, in any number; form decoding could panic on non-ASCII and garbled Gujarati. Now only what the guest menu shows, ≤ 50 per request, all or nothing; UTF-8-safe decoding; menu JSON safe inside `<script>`. Pages listed for owners in `LAN_QUICK_START.md` §6. | Khaynjo `net.rs`, `store_ops.rs` |
+| **Unbounded threads** | One thread per connection with no cap: past 64 at once the Server now answers 503 at once. | both apps `net.rs` `serve` |
+| **Tests and checks were red / blind** | 10 failing tests fixed (1 real race, 9 stale after deliberate changes — each checked against the code); 865 + 277 missing translations added (Moklanjo's 2026-10-29 AWB-pool / TDS / consignor labels shipped untranslated); the locale test now lists every gap at once. `check-lock-guards.sh` scanned only `main.rs`, which the shell split emptied — it now scans `src/app/` and `src/widgets/`, and Moklanjo has its own copy. KOT print capture in tests now behaves like a printer took the job. | both apps |
+
 | **KOTs from tablets delayed up to 20 s** (bug) | The "exponential backoff" listed as done skipped *every* worker round after a quiet one — including the round a waiter's Send KOT or a cancel woke. Now anything asked for (a KOT, a payment, a refresh, the regular pull) goes at once; only the unasked 5 s tick pauses while the Server is out of reach. Test `asked_rounds_are_never_held_back`. | both apps, `phone.rs` (`round_due`) |
 | **Sync grew without limit** (bug, Khaynjo) | Kitchen tickets nobody tapped Done on (a kitchen that cooks from the paper KOT) stayed "open" for ever: at 9,000 bills every tablet's sync was **3 MB**, and every floor colour scanned them all. Tickets older than 12 h (`KOT_OPEN_HOURS`) are no longer open → **417 KB**. Test `kitchen_tickets_nobody_closed_age_out`. | `store.rs` `list_open_kots` |
 | Scale testing | New tests: **10 tablets/devices at once** (KOTs or bookings + pulls, every other reply lost and re-sent): nothing lost or doubled, no "database is locked". Opt-in **months of trading** test: 9,000 bills over 30 days, 1,000 customers, 300 items — fails if the snapshot passes 600 KB or any step takes 3 s. Numbers in §5. | both apps, `net.rs` tests |
@@ -108,13 +125,16 @@ verified done.
    it — manual IP is the fallback), the firewall prompt on Win 10/11,
    **Start with this computer** after a real power cut, sleep with the lid
    closed, the KOT printer through Windows.
-2. **Install the built packages on clean machines.** Rebuilt on
-   2026-10-26 (previous pass): `dist/Khaynjo-0.1.0.msi` (Windows),
-   `dist/Moklanjo-0.1.0.msi` (Windows), folder packages under
-   `dist/khaynjo-windows/` / `dist/moklanjo-windows/`, and the Android APK
-   (`apps/khaynjo/scripts/package-android.sh`). Not yet installed on a
-   clean machine of any supported platform. Printer pass (2026-10-26 v2) did
-   not change packaging — same packages are valid.
+2. **Install the built packages on clean machines.** Windows rebuilt on
+   **2026-10-31** with the v5 fixes: `dist/Khaynjo-0.1.0.msi`,
+   `dist/Moklanjo-0.1.0.msi`, folder packages under `dist/khaynjo-windows/`
+   / `dist/moklanjo-windows/`. The **Android APKs in `dist/` are from
+   2026-10-26 and predate v5** — rebuild them before the pilot
+   (`apps/khaynjo/scripts/package-android.sh`, Moklanjo's likewise; they
+   patch the vendored Makepad, so run them on a settled tree). **Every device
+   in the shop must run the same build** — v5 adds the LAN protocol check,
+   and an older tablet would be told to update. Not yet installed on a
+   clean machine of any supported platform.
 3. **Android release signing + Play listing** (Moklanjo and Khaynjo), web
    deploy (kumkaj.com / khaynjo.com). iOS/macOS stay scaffold-only until a
    Mac exists.
@@ -150,20 +170,23 @@ verified done.
 
 ---
 
-## 5. Measured (2026-10-25, this machine, release build)
+## 5. Measured (2026-10-31, this machine, release build)
 
 Opt-in test `months_of_trading_stay_quick` — 9,000 bills over 30 days
 (300 today), 1,000 customers, 300 items:
 
 | Step | Khaynjo | Moklanjo |
 |---|---|---|
-| Snapshot built | 18 ms | 16 ms |
-| Snapshot size (before gzip) | 417 KB (was 3,083 KB) | 330 KB |
-| `/sync` answered | 20 ms | 20 ms |
+| Snapshot built | 30 ms | 17 ms |
+| Snapshot size (before gzip) | 484 KB (limit 600) | 398 KB |
+| `/sync` answered | 31 ms | 17 ms |
 | Today's totals | 0.3 ms | 0.3 ms |
-| Day close | 10 ms | 9 ms |
+| Day close | 14 ms | 9 ms |
 | Day report | 1 ms | — |
-| Backup | 77 ms | 73 ms |
+| Backup | 73 ms | 75 ms |
+
+(2026-10-25: Khaynjo snapshot 417 KB / 18 ms, Moklanjo 330 KB / 16 ms —
+the growth is features added since, not this pass.)
 
 Not measured: low-end Android memory and battery while serving or syncing
 all day — do it during the hardware run.
@@ -173,24 +196,27 @@ all day — do it during the hardware run.
 ## 6. Re-check
 
 ```bash
-cargo test -p kumkaj-khaynjo        # ~229 #[test] markers in src
-cargo test -p kumkaj-moklanjo        # ~181 #[test] markers in src
+cargo test -p kumkaj-khaynjo --no-fail-fast   # 247 lib + 11 bin (2026-10-31)
+cargo test -p kumkaj-moklanjo --no-fail-fast  # 210 lib + 5 bin
 apps/khaynjo/scripts/check-tests-never-print.sh
+apps/moklanjo/scripts/check-tests-never-print.sh
 apps/khaynjo/scripts/check-lock-guards.sh
+apps/moklanjo/scripts/check-lock-guards.sh
 cargo test -p kumkaj-khaynjo --release --lib -- --ignored months_of_trading --nocapture
 cargo test -p kumkaj-moklanjo --release --lib -- --ignored months_of_trading --nocapture
 ```
 
-Re-run after **2026-10-27** research Local/LAN catch-up: both packages'
-unit/integration tests green (prior printer pass 2026-10-26 still holds);
-never-print + lock-guard clean. Research status:
+Re-run **2026-10-31**: both packages green with `--no-fail-fast` (without
+it cargo stops at the first red binary and the rest never run — that is
+how the bin tests went unseen); never-print and lock-guard clean in both
+apps. Research status:
 [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8,
 [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7.
 
 | | Moklanjo | Khaynjo |
 |---|---|---|
-| Rust source | ~47k+ lines | ~54k+ lines |
-| `#[test]`s | ~181 in `src/` | ~229 in `src/` |
+| Rust source | ~62k lines | ~72k lines |
+| Tests passing | 210 lib + 5 bin | 247 lib + 11 bin |
 | LAN guides | `docs/LAN_QUICK_START.md`, `docs/SERVER_MIGRATION.md` (shared) | same |
 | MSI | `dist/Moklanjo-0.1.0.msi` (Quick start) | `dist/Khaynjo-0.1.0.msi` (Quick start) |
 | Research Local/LAN | **Have** (§7); Cloud/Net/owner left | **Have** (§8); Cloud/Net/owner left |

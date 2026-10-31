@@ -174,9 +174,10 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 5. **Item / rate photos** — Moklanjo has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
-7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle logs `flow: Right { wrap: true } does not support width: Fill` every frame when a **wrapping** flow walks a **Fill** child; log spam freezes the app (Khaynjo Settings → Add printer / route buttons, 2026-10). Two cases:
-   - **Button face:** `align.x ≥ 0.25` on a Fill-width button makes `Button::draw_face` force a Fill label walk. With `flow: Right{wrap: true}` that is the hang. **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3). The shipping fix is patch `button_label_center` (`patches/makepad/button_label_center.rs.patch`): when the face wraps, keep a **Fit** label walk; text still centers via `text_align` + `ink_centered`.
+7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle logs `flow: Right { wrap: true } does not support width: Fill` every frame when a **wrapping** flow walks a **Fill** child; log spam freezes the app (Khaynjo Settings → Add printer after a chrome redraw, 2026-10). Two cases:
+   - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit** — including left-aligned rail tabs (`TabBtn` / `HubDestBtn` / sidebar rows), not only centered CTAs. A DSL `label_walk` of Fill with wrap freezes every frame once labels wrap ("Menu & items"). **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3). The shipping fix is patch `button_label_center` (`patches/makepad/button_label_center.rs.patch`): **when the face wraps, always Fit the label**; centered faces still center via `text_align` + `ink_centered`.
    - **Parent View:** never put `width: Fill` children (`NavBtn`, `Stack*`, `SegBtn`, …) inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit-width chips in a wrapping strip.
+7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
 ### Required approach (shipping)
@@ -486,8 +487,11 @@ by `scripts/apply-android-activity-bridge.sh` before an Android build:
 Because the receipt file is under `getFilesDir`, another app cannot open it
 without a `FileProvider`; the share sheet and clipboard carry the text.
 
-The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK,
-so Android shows initials for shelf dishes until the owner sets a photo.
+The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK.
+Template import on a desktop Server copies each photo into `item_images` as
+`custom:…`; Clients (including Android) pull missing photos over LAN
+(`GET /item-image`) into a local cache. Initials show only until that fetch
+lands, or when the Server itself has no file for the key.
 
 `arboard` and `rfd` are desktop-only dependencies — neither compiles for
 Android, and `arboard` being unconditional used to break the Android build
@@ -578,12 +582,25 @@ The two apps use different ports so both can serve from one device.
 **Requests.** Plain HTTP/1.1 + JSON; every outcome is a JSON reply
 (`{"ok":false,"error":…,"code":…}` on refusal), never a dropped
 connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
-`X-Kumkaj-Session` (from `/login`), `X-Kumkaj-Request` (one id per write).
+`X-Kumkaj-Session` (from `/login`), `X-Kumkaj-Request` (one id per write),
+`X-Kumkaj-Protocol` (both directions, see below).
+
+| Status / `code` | Meaning | What the device does |
+|---|---|---|
+| 200 | done | queue item leaves the queue |
+| 400 / 403 / 404 | refused for good, in the Server's words | queued write → "not accepted" list |
+| 401 `pair_again` / `sign_in_again` | the device or sign-in is gone | queue stops, header says so |
+| 426 `update_app` | the two ends speak different `LAN_PROTOCOL`s | queue **kept**, header says "Update the app…" |
+| 429 `wait` | too many wrong codes / PINs | — |
+| 500 | the Server panicked doing it (a bug) | refused once — never a hang-up that blocks the queue |
+| 503 `retry` | "not now": books busy past the wait, disk full or failing | queue **kept**, sent again (like a lost reply); no reply recorded |
 
 | Path | Who | Purpose |
 |---|---|---|
 | `GET /health`, `GET /hello` | anyone | liveness; app + venue name for discovery |
 | `GET /track/{awb}` (Moklanjo) | anyone | public parcel status — no pairing |
+| `GET/POST /book` (Moklanjo) | anyone on the office Wi‑Fi | corporate self-booking: priced by the chosen rate's slab and **billed to the named company's account** (never cash), audited `lan.self_book` |
+| `GET /display` `/tokens` `/expo` `/kiosk` `/t/{table}` `/feedback` (Khaynjo) | anyone on the shop Wi‑Fi | guest / second-screen pages; table QR and kiosk add only dishes the guest menu offers, at most 50 per request, as pending lines staff see before Send KOT |
 | `POST /pair` | anyone (rate-limited) | pairing code → device token |
 | `GET /sync` | paired device | snapshot of the books — **no PIN or password hashes, no pairing code** |
 | `POST /login` | paired device | staff PIN checked **on the server** → session |
@@ -596,8 +613,34 @@ connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
   snapshot overwrites; `Store::assert_server_writer` refuses local writes on a
   client, so no UI path can bypass it. The `*_from_sync` writers skip the
   check — that is the server's own data arriving.
-- **Each write once.** The server stores the reply per `X-Kumkaj-Request`;
-  a retry after a lost reply gets the same answer, never a second sale or KOT.
+- **Each write once, and whole.** A device's write runs as **one
+  transaction** (`BEGIN IMMEDIATE`, `Store::begin`), the reply record per
+  `X-Kumkaj-Request` included: a retry after a lost reply — or after a
+  crash between the write and its record — gets the same answer, never a
+  second sale or KOT; a refused write leaves nothing half done (its
+  savepoint rolls back); two devices writing to one table or the last unit
+  of stock take turns. Store functions open their own unit with
+  `Store::begin` / `in_transaction`, which **nests** as a savepoint — never
+  `conn.unchecked_transaction()` (a nested `BEGIN` fails). Compound writes
+  (`write_sale`, Khaynjo `send_kot`, Moklanjo AWB allocation) make their
+  checks inside their unit, never before it. KOTs and bills for a device's
+  write print only after it committed. Tests:
+  `eight_devices_over_real_sockets_lose_and_double_nothing`,
+  `busy_books_are_a_retry_never_a_refusal`.
+- **Reads never take the write lock.** The server opens the books per
+  request; `Store::open_path` migrates a file once per process and schema
+  (`PRAGMA user_version` + an in-process set) — migrating each time took
+  the write lock even when nothing changed. A read path that "heals" state
+  (Khaynjo `list_tables` freeing paid tables) looks first and writes only
+  when needed, best effort. Tests: `opening_migrated_books_takes_no_write_lock`,
+  `a_sync_never_waits_on_a_writer`.
+- **Versions say so.** `net::LAN_PROTOCOL` goes on every request and reply
+  (`/hello` too). Bump it with any route/body/snapshot change an older
+  build would misread: a mismatch is a 426 "update the app on this device /
+  on the server" instead of a snapshot that fails to parse and looks like
+  "offline" for ever. A request without the header is treated as the
+  current protocol (devices from before it). Test
+  `another_protocol_is_told_to_update_the_app`.
 - **Rights and PINs are judged on the server.** A manager's approval PIN is
   sent as typed; `check_right` (per-person rights, Team → Rights) decides.
   The approver is recorded and the reason names both people.
@@ -680,6 +723,11 @@ KOTs / Print bill print at the Server.
 **Backups.** The server writes a backup automatically once a day
 (`auto_backup_if_due`; the last 14 are kept in the data folder's `backups/`)
 and Settings → **Also copy backups to a folder…** keeps a second copy, e.g. on a USB drive.
+A restore goes **into the live books through SQLite's backup API**
+(`restore_from_to_path`, one step, one transaction) — never by replacing
+the file: the LAN watcher and devices' requests keep connections open, a
+rename over an open file fails on Windows, and on Linux those connections
+kept serving the old books. Test `restore_reaches_connections_already_open`.
 
 **Discovery.** "Find the shop's server" broadcasts on the UDP port and falls
 back to scanning the /24; replies list the venue name so staff pick the right

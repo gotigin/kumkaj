@@ -873,6 +873,12 @@ impl StaffMember {
         self.effective_features().backup
     }
 
+    /// Settings (printers, LAN, shop setup). Owner, Backup, or Sales (managers).
+    /// Never show a dead Settings tab to staff who cannot open it.
+    pub fn can_access_settings(&self) -> bool {
+        self.is_owner() || self.can_access_backup() || self.can_access_sales()
+    }
+
     pub fn can_access_inventory(&self) -> bool {
         self.effective_features().inventory
     }

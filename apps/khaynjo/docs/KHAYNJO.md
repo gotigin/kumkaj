@@ -88,7 +88,10 @@ would make one app's change impact another.
   `VenueMode::Restaurant`, Tax invoice / Cash memo lanes, no seed
   catalogue — the owner adds their own menu and parties).
 - Fresh shops default to the Restaurant venue: KOT creation on,
-  tables T1..T6 seeded, stations Hot/Cold seeded.
+  tables T1..T24 seeded once (a floor the owner clears stays clear),
+  stations Hot/Cold seeded. Floor → ADD TABLES → **Remove these tables**
+  takes them off by range or name (`T1-T24`); a table in use — guests
+  seated or an open order — is kept and named (`remove_tables_named`).
 - **The copied courier product has been removed, not hidden**
   (2026-10-22): no booking desk, AWB, zones/slabs, carriers,
   manifests, COD register, riders, or public tracking anywhere in
@@ -146,7 +149,7 @@ user needs — In / Later, in Khaynjo's own terms:
 | KOT carries the waiter's name, table, item notes — and never prices | **In (P1/P2)** | KOT record + Kitchen |
 | Kitchen display with ticket states New → Preparing → Ready → Completed, no prices (vision §9) | **In (P1)** | Kitchen screen |
 | Variation / add-on choices and per-item special notes at order time (extra cheese, less spicy…) | **Have 2026-10-27** — Petpooja-style groups: `Size*: Small=199, Large=399 \| Toppings+3: Cheese=40` (`*` = pick one required; `+` / `+N` = add-ons, optional max N); flat list still works; free-text note; Send KOT / pay blocked until required variations picked; day report **Options sold (sizes & toppings)**; choices frozen on `sale_lines.modifiers_json`. Separate-item sizes (`Half=120, Full=200`) remain | Menu Options; `ModifierGroup`; cart chips; day report |
-| Hold an order and come back to it | **In (2026-10-23)** — the table's **running order** is the ticket on the Server (pending + sent lines). Punch before Send KOT writes **pending** `running_lines` (empty `kot_id`); Floor ↔ Order bounce and other devices reopen the same Server order. **Change table** (Order button) reseats pending onto the picked table. Floor can also mark **Seated** with no order yet (2026-10-27); a live order still starts on first punch / KOT | `store_running.rs` (`bump_pending_product` / `reseat_pending` / `send_kot` promote), Floor → Order / `seat_table` |
+| Hold an order and come back to it | **In (2026-10-23)** — the table's **running order** is the ticket on the Server (pending + sent lines). Punch before Send KOT writes **pending** `running_lines` (empty `kot_id`); Floor ↔ Order bounce and other devices reopen the same Server order. **Change table** opens the picked table's ticket only (previous table keeps its lines; use Move / merge to relocate). First **Choose a table** seats unsent punches. Floor can also mark **Seated** with no order yet (2026-10-27); a live order still starts on first punch / KOT | `store_running.rs` (`bump_pending_product` / `send_kot` promote), Floor → Order / `seat_table` |
 | Settle with tender, amount handed over, change to return, and tip | **In (2026-10-23)** — Customer paid → Return to customer; tip recorded apart from sales | Order desk settle; `Store::record_settlement` |
 | Part payment and Due (credit) as normal ways to finish a bill | **In (P1)** — Due lands on the customer's khata in Parties, never a side note | Pay mix; Parties |
 | Customer quick-pick at billing (name/phone) so Due and history attach to the right person | **In (P1)** | Order desk customer panel |
@@ -501,7 +504,8 @@ true multi-outlet Cloud or a third-party marketplace.
 | Captain upsell AI / Purchase Manager AI | **Skip** | Cloud / vendor marketplace |
 
 - Lunch-service acceptance: fresh install → add menu items → Floor
-  `D1-D20` (Dine In) + `P1-P20` (Parcel) → tap D3 → add dishes →
+  `D1-D20` (Dine In) + `P1-P20` (Parcel), **Remove these tables** `T1-T24`
+  (restart: they stay gone) → tap D3 → add dishes →
   Send KOT → leave the table, come back: the dishes are still on it →
   add one more → Send KOT (only the new dish prints) → Cancel one
   sent dish as a cashier (asks a manager PIN; kitchen gets ✕ CANCEL)

@@ -234,7 +234,7 @@ impl Store {
 
     /// Offline POD on the rider phone: update cache + enqueue LAN write.
     pub fn rider_queue_pod(
-        &mut self,
+        &self,
         rider_id: &str,
         event: &RiderPodEvent,
     ) -> Result<String, String> {
@@ -270,7 +270,7 @@ impl Store {
 
     /// Apply a rider POD event on the Server (from LAN drain or desk).
     pub fn apply_rider_pod(
-        &mut self,
+        &self,
         event: &RiderPodEvent,
         actor: &StaffMember,
     ) -> Result<(), String> {
@@ -366,7 +366,7 @@ impl Store {
     // ----- Incoming manifest ----------------------------------------------
 
     pub fn create_incoming_manifest(
-        &mut self,
+        &self,
         hub_name: &str,
         awbs: &[String],
         note: &str,
@@ -376,10 +376,7 @@ impl Store {
         let id = new_id();
         let now = Local::now().to_rfc3339();
         let mut line_count = 0i64;
-        let tx = self
-            .conn
-            .unchecked_transaction()
-            .map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         tx.execute(
             "INSERT INTO incoming_manifests(id, created_at, hub_name, note)
              VALUES(?1, ?2, ?3, ?4)",
@@ -506,7 +503,7 @@ impl Store {
     }
 
     pub fn create_pickup_run(
-        &mut self,
+        &self,
         rider_id: &str,
         request_ids: &[String],
         drop_note: &str,
@@ -523,10 +520,7 @@ impl Store {
         }
         let id = new_id();
         let now = Local::now().to_rfc3339();
-        let tx = self
-            .conn
-            .unchecked_transaction()
-            .map_err(|e| e.to_string())?;
+        let tx = self.begin()?;
         tx.execute(
             "INSERT INTO pickup_runs(id, created_at, rider_id, rider_name, drop_note, status)
              VALUES(?1, ?2, ?3, ?4, ?5, 'open')",
@@ -642,7 +636,7 @@ impl Store {
 
     /// One action: assign all booked dockets in an area to riders (round-robin).
     pub fn auto_assign_area(
-        &mut self,
+        &self,
         area: &str,
         actor: &StaffMember,
     ) -> Result<(usize, String), String> {
@@ -791,7 +785,7 @@ impl Store {
 
     /// Full daily slip: per-delivery/kg pay + COD expected vs handed in.
     pub fn settle_rider_commission(
-        &mut self,
+        &self,
         rider_id: &str,
         handed_in_paise: i64,
         actor: &StaffMember,
@@ -1134,34 +1128,60 @@ impl Store {
         Ok(crate::notify::whatsapp_receipt_share_url(phone, &text))
     }
 
-    /// LAN corporate self-booking: create a draft/cash booking from form fields.
-    pub fn lan_self_book(
-        &mut self,
-        destination: &str,
-        consignee: &str,
-        weight_kg: &str,
-        phone: &str,
-        note: &str,
-        actor: &StaffMember,
-    ) -> Result<Sale, String> {
+    /// LAN corporate self-booking from the office Wi‑Fi form (no sign-in):
+    /// priced by weight with the chosen rate's slab, exactly as at the desk,
+    /// and put on the booking company's account — money to collect, never
+    /// cash the drawer does not have. Audited with the form's note.
+    pub fn lan_self_book(&self, asked: &LanSelfBooking<'_>, actor: &StaffMember) -> Result<Sale, String> {
         self.assert_server_writer("LAN book")?;
-        let products = self.list_products(false)?;
-        let rate = products
-            .into_iter()
-            .find(|p| p.available && !p.archived)
-            .ok_or_else(|| "Add a rate before self-booking".to_string())?;
-        let mut cart = crate::domain::Cart::default();
-        cart.add_or_bump(&rate);
-        let mut draft = cart.to_sale_draft().unwrap();
-        draft.destination = destination.trim().into();
-        draft.consignee_name = consignee.trim().into();
-        draft.chargeable_weight_kg = crate::precise::parse_non_negative(weight_kg)
-            .unwrap_or(crate::precise::ZERO);
-        draft.actual_weight_kg = draft.chargeable_weight_kg;
-        draft.notify_phone = phone.trim().into();
-        let _ = note; // LAN form note is audit-only for now
-        self.finalize_sale(&draft, PayMethod::Cash, None, actor)
+        // All or nothing: a booking refused (credit limit, no rate) leaves
+        // no new party behind.
+        self.in_transaction(|| {
+            let rates: Vec<_> = self
+                .list_products(false)?
+                .into_iter()
+                .filter(|p| p.available && !p.archived)
+                .collect();
+            let rate = rates
+                .iter()
+                .find(|p| p.id == asked.rate_id.trim())
+                .or_else(|| rates.first())
+                .ok_or_else(|| "Add a rate before self-booking".to_string())?;
+            let weight = crate::precise::parse_non_negative(asked.weight_kg)
+                .filter(|w| *w > crate::precise::ZERO)
+                .ok_or_else(|| "Weight must be more than 0 kg".to_string())?;
+            let consignor = self.find_or_create_customer(asked.consignor.trim())?;
+            let mut cart = crate::domain::Cart::default();
+            cart.add_or_bump(rate);
+            if let Some(line) = cart.lines.last_mut() {
+                crate::booking::apply_weight_and_slab(line, rate, weight)?;
+            }
+            let mut draft = cart.to_sale_draft()?;
+            draft.destination = asked.destination.trim().into();
+            draft.consignee_name = asked.consignee.trim().into();
+            draft.chargeable_weight_kg = weight;
+            draft.actual_weight_kg = weight;
+            draft.notify_phone = asked.phone.trim().into();
+            let sale = self.finalize_sale(&draft, PayMethod::Credit, Some(&consignor.id), actor)?;
+            self.audit(
+                actor,
+                "lan.self_book",
+                &format!("{} · {} · {}", sale.awb_no, consignor.name, asked.note.trim()),
+            )?;
+            Ok(sale)
+        })
     }
+}
+
+/// What the office Wi‑Fi booking form sent.
+pub struct LanSelfBooking<'a> {
+    pub consignor: &'a str,
+    pub rate_id: &'a str,
+    pub destination: &'a str,
+    pub consignee: &'a str,
+    pub weight_kg: &'a str,
+    pub phone: &'a str,
+    pub note: &'a str,
 }
 
 #[cfg(test)]

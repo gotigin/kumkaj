@@ -432,8 +432,9 @@ script_mod! {
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         padding: Inset{left: 40. right: 12. top: 12. bottom: 12.}
+        // Fit label inside wrap:true — Fill freezes the UI (Settings hang).
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -580,8 +581,9 @@ script_mod! {
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         padding: Inset{left: 40. right: 12. top: 12. bottom: 12.}
+        // Fit label inside wrap:true — Fill freezes the UI (Settings hang).
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -769,7 +771,7 @@ script_mod! {
             text_style +: {font_size: 14.}
         }
     }
-    // Icon-only eye next to a money figure (or the screen-level today-bar eye).
+    // Icon-only eye next to a money figure (or the screen-level header eye).
     let EyeIconBtn = Button{
         width: Fit height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
@@ -803,14 +805,16 @@ script_mod! {
     }
     // Books accordion section header — FA chevron (›/˅) + title.
     // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
+    // label_walk must be Fit: with width: Fit (title+ℹ rows) a Fill label
+    // collapses to zero and the caption disappears (chevron-only row).
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 6. right: 8. top: 8. bottom: 8.}
+        padding: Inset{left: 6. right: 8. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
-        label_walk: Walk{width: Fill height: Fit margin: Inset{left: 0. right: 0.}}
+        label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #x00000000
@@ -937,7 +941,7 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 4. right: 4.}
         }
@@ -974,8 +978,9 @@ script_mod! {
         padding: Inset{left: 44. right: 16. top: 12. bottom: 12.}
         align: Align{x: 0.0 y: 0.5}
         flow: Right{wrap: true}
+        // Fit label inside wrap:true — Fill freezes the UI.
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -1012,7 +1017,7 @@ script_mod! {
     // Full-width stacked actions — required when labels are longer than ~4 chars.
     let ActionStack = View{
         width: Fill height: Fit
-        flow: Down spacing: 10
+        flow: Down spacing: 14
     }
     // Equal-width fields only (price|unit, etc.). NEVER put NavBtn / Stack*
     // CTAs here — Fit+wrap beside Fill TextInputs collapses to a vertical
@@ -1020,8 +1025,8 @@ script_mod! {
     // A section of a form: white card, roomy padding, one job per card.
     let FormCard = RoundedView{
         width: Fill height: Fit
-        flow: Down spacing: 10
-        padding: Inset{left: 16. right: 16. top: 14. bottom: 16.}
+        flow: Down spacing: 14
+        padding: Inset{left: 18. right: 18. top: 16. bottom: 18.}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 16.
         draw_bg.border_size: 1.
@@ -1494,6 +1499,9 @@ script_mod! {
     let FieldInput = TextInput{
         width: Fill
         height: Fit
+        // Extra vertical margin so scroll gestures miss the field (fewer
+        // accidental keyboard opens mid-scroll).
+        margin: Inset{left: 0. right: 0. top: 6. bottom: 6.}
         padding: Inset{left: 14. right: 14. top: 15. bottom: 15.}
         blink_speed: 0.5
         // Soft keyboard: Done/Go fires TextInputAction::Returned → form submit.
@@ -1610,8 +1618,9 @@ script_mod! {
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
         // Right pad clears the in-row pill toggle (and "Always on").
         padding: Inset{left: 40. right: 110. top: 12. bottom: 12.}
+        // Fit label inside wrap:true — Fill freezes the UI.
         label_walk: Walk{
-            width: Fill
+            width: Fit
             height: Fit
             margin: Inset{left: 0. right: 8.}
         }
@@ -4018,6 +4027,37 @@ script_mod! {
                             flow: Right spacing: 10
                             align: Align{y: 0.5}
                             rail_expand_btn := RailToggleBtn{text: "›" visible: false}
+                            // Elegant back — left of the shop mark; body "Back" buttons stay hidden.
+                            header_back := Button{
+                                width: 36 height: 36
+                                visible: false
+                                align: Center
+                                padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                margin: Inset{left: 0. right: 2. top: 0. bottom: 0.}
+                                text: "\u{f053}"
+                                label_walk: Walk{width: Fit height: Fit}
+                                icon_walk: Walk{width: 0. height: 0.}
+                                draw_bg +: {
+                                    color: #x00000000
+                                    color_hover: #x9A0E10
+                                    color_down: #x3D0507
+                                    color_focus: #x00000000
+                                    color_2: #x00000000
+                                    color_2_hover: #x9A0E10
+                                    color_2_down: #x3D0507
+                                    color_2_focus: #x00000000
+                                    border_color: #x00000000
+                                    border_radius: 18.
+                                    border_size: 0.
+                                }
+                                draw_text +: {
+                                    color: #xffffff
+                                    color_hover: #xffffff
+                                    color_down: #xffffff
+                                    color_focus: #xffffff
+                                    text_style +: {font_size: 18.}
+                                }
+                            }
                             brand_mark := Image{
                                 // No DSL src — async bundled mark used to overwrite the shop logo after sync.
                                 // sync_venue_brand loads the shop mark (or default) inline.
@@ -4039,14 +4079,23 @@ script_mod! {
                                     font_size: 11.
                                 }
                             }
-                            // Fit + no ellipsis — never pin/crop against the
-                            // window edge (header already has right padding).
-                            shop_badge := WrapLabel{
-                                width: Fit
-                                body: "Shop"
+                            // Screen eye/lock — was the body-top control; lives
+                            // here in place of the old "Shop" word. Terracotta
+                            // ink so the glyph reads on the maroon header.
+                            amounts_eye := EyeIconBtn{
                                 margin: Inset{left: 4. right: 0. top: 0. bottom: 0.}
-                                font_color: #xfe8357
-                                font_size: 11.
+                                draw_bg +: {
+                                    color_hover: #x00000040
+                                    color_down: #x00000055
+                                    color_2_hover: #x00000040
+                                    color_2_down: #x00000055
+                                }
+                                draw_text +: {
+                                    color: #xfe8357
+                                    color_hover: #xfe8357
+                                    color_down: #xfe8357
+                                    color_focus: #xfe8357
+                                }
                             }
                         }
                     }
@@ -4064,8 +4113,6 @@ script_mod! {
                             font_color: #x260B08
                             font_size: 12.
                         }
-                        // Eye: hide/show money figures (password-style bullets).
-                        amounts_eye := EyeIconBtn{}
                     }
 
                     body_stack := View{
@@ -4079,8 +4126,8 @@ script_mod! {
 
                             View{
                                 width: Fill height: Fit
-                                flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                flow: Down spacing: 16
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
 
                                 RoundedView{
                                     width: Fill height: Fit
@@ -4253,7 +4300,7 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
 
                                 // Offline strip (Stitch screen 01)
                                 RoundedView{
@@ -4333,14 +4380,28 @@ script_mod! {
                                         flow: Overlay
                                         tabs := ChipStrip{
                                             ChipStripRow{
-                                                role_owner := ChipBtnActive{
-                                                    text: "Owner"
-                                                    padding: Inset{left: 18. right: 18.}
+                                                View{width: Fit height: 40 flow: Overlay
+                                                    role_owner := ChipBtn{
+                                                        text: "Owner"
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
+                                                    role_owner_on := ChipBtnActive{
+                                                        text: "Owner"
+                                                        visible: false
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
                                                 }
-                                                role_staff := ChipBtn{
-                                                    text: "Staff"
-                                                    visible: false
-                                                    padding: Inset{left: 18. right: 18.}
+                                                View{width: Fit height: 40 flow: Overlay
+                                                    role_staff := ChipBtn{
+                                                        text: "Staff"
+                                                        visible: false
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
+                                                    role_staff_on := ChipBtnActive{
+                                                        text: "Staff"
+                                                        visible: false
+                                                        padding: Inset{left: 18. right: 18.}
+                                                    }
                                                 }
                                             }
                                         }
@@ -4429,7 +4490,7 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 h_setup_app_khaynjo := WrapLabel{
                                     body: "Set up Khaynjo"
                                     font_color: #x260B08
@@ -4572,22 +4633,23 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
+                                // Back is header_back (left of brand) — not a body button.
+                                client_pair_back := BackBtn{text: "Back" visible: false}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 10
+                                    flow: Right spacing: 8
                                     align: Align{y: 0.5}
-                                    client_pair_back := BackBtn{text: "Back"}
                                     h_connect_to_server := WrapLabel{
                                         width: Fit
                                         body: "Connect to the Server"
                                         font_color: #x260B08
                                         font_size: 22.
                                     }
-                                }
-                                client_pair_help := InfoHelp{
-                                    width: Fit
-                                    tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
+                                    client_pair_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
+                                    }
                                 }
                                 client_pair_status := WrapLabel{
                                     body: " "
@@ -4893,38 +4955,23 @@ script_mod! {
                             }
                         }
 
-                        // Seller: tap items → pay. Sticky: order type + Add
-                        // dishes. Cart lines scroll; Counter (payment) is fixed
-                        // at the bottom of the ticket column.
+                        // Seller: tap items → pay.
+                        // Sticky = ONLY Dine-in|Takeaway|Delivery|Counter.
+                        // Title, total, table pick, Add dishes live in the
+                        // scrolling Added-items column so the ticket gets height.
                         pos_screen := View{
                             width: Fill height: Fill
                             visible: false
                             flow: Down spacing: 0
-                            // Sticky order-type header (always visible at the top).
+                            // Sticky: the four order-type buttons — nothing else.
                             pos_sticky := SolidView{
                                 width: Fill height: Fit
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
-                                flow: Down spacing: 8
+                                flow: Down spacing: 0
                                 draw_bg.color: #xEFD2BC
-                                sell_help := InfoHelp{
-                                    width: Fit
-                                    tip: "Tap an item to add it."
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 10
-                                    align: Align{y: 0.5}
-                                    sticky_total := Label{
-                                        width: Fill height: Fit
-                                        text: "Total · ₹0.00"
-                                        draw_text.color: #x260B08
-                                        draw_text.text_style.font_size: 15.
-                                    }
-                                }
-                                // Exclusive order type — radio segments (not chips/tabs).
                                 otype_strip := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
+                                    flow: Right spacing: 8
                                     View{width: Fill height: Fit flow: Overlay
                                         otype_dinein := SegBtn{text: "Dine-in"}
                                         otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
@@ -4942,55 +4989,10 @@ script_mod! {
                                         otype_counter_on := SegBtnOn{text: "Counter" visible: false}
                                     }
                                 }
-                                // Dine-in: which table — pinned with the order type.
-                                table_pick_wrap := View{
-                                    width: Fill height: Fit
-                                    table_pick_btn := TablePickBtn{text: "Choose a table"}
-                                }
                             }
-                            // Sticky: + Add dishes (+ empty-menu CTA when needed).
-                            pos_desk_sticky := SolidView{
-                                width: Fill height: Fit
-                                padding: Inset{left: 16. right: 16. top: 4. bottom: 8.}
-                                flow: Down spacing: 8
-                                draw_bg.color: #xEFD2BC
-                                catalog_header := View{
-                                    width: Fill height: Fit
-                                    align: Align{x: 0.5 y: 0.5}
-                                    flow: Down spacing: 6
-                                    menu_open_btn := TablePickBtn{
-                                        text: "+ Add dishes"
-                                        align: Align{x: 0.5 y: 0.5}
-                                        label_walk: Walk{width: Fit height: Fit}
-                                    }
-                                }
-                                pos_catalog := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 6
-                                    order_help := WrapLabel{
-                                        visible: false
-                                        body: "Tap an item to add it."
-                                        font_color: #x6B4A3F
-                                        font_size: 12.
-                                    }
-                                    empty_catalog := WrapLabel{
-                                        body: "No items yet. Add your dishes and items to start taking orders."
-                                        font_color: #x260B08
-                                        font_size: 14.
-                                    }
-                                    catalog_cta := ActionStack{
-                                        add_items_btn := StackSecondaryBtn{text: "Add dishes & items"}
-                                    }
-                                }
-                            }
-                            // Ticket: Added items + Payment side by side.
-                            // Fit row + Fixed panes (widths set in apply_shell_layout):
-                            // grow when wide; when narrow the row stays at mins so
-                            // ScrollX actually has overflow to mouse-drag / wheel.
-                            // mouse_capture_overload: press-drag over nested panes.
+                            // Ticket: Added items | Counter under the four sticky chips.
                             pos_ticket := ScrollXView{
                                 width: Fill height: Fill
-                                // Bottom pad clears the h-scrollbar (bar_size 8 + gap).
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 16.}
                                 scroll_bars: mod.widgets.ScrollBars {
                                     show_scroll_x: true show_scroll_y: false
@@ -5001,13 +5003,56 @@ script_mod! {
                                 pos_ticket_row := View{
                                     width: Fit height: Fill
                                     flow: Right spacing: 16
-                                // Added items: natural vertical scroll.
                                 pos_scroll := ScrollYView{
                                     width: 600 height: Fill
                                     pos_page := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
                                         padding: Inset{top: 4. bottom: 16.}
+
+                                    // Scrolls with the ticket — not sticky.
+                                    sell_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Tap an item to add it."
+                                    }
+                                    sticky_total := Label{
+                                        width: Fill height: Fit
+                                        text: "Total · ₹0.00"
+                                        draw_text.color: #x260B08
+                                        draw_text.text_style.font_size: 15.
+                                    }
+                                    table_pick_wrap := View{
+                                        width: Fill height: Fit
+                                        table_pick_btn := TablePickBtn{text: "Choose a table"}
+                                    }
+                                    catalog_header := View{
+                                        width: Fill height: Fit
+                                        align: Align{x: 0.5 y: 0.5}
+                                        flow: Down spacing: 10
+                                        menu_open_btn := TablePickBtn{
+                                            text: "+ Add dishes"
+                                            align: Align{x: 0.5 y: 0.5}
+                                            label_walk: Walk{width: Fit height: Fit}
+                                        }
+                                    }
+                                    pos_catalog := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 10
+                                        order_help := WrapLabel{
+                                            visible: false
+                                            body: "Tap an item to add it."
+                                            font_color: #x6B4A3F
+                                            font_size: 12.
+                                        }
+                                        empty_catalog := WrapLabel{
+                                            body: "No items yet. Add your dishes and items to start taking orders."
+                                            font_color: #x260B08
+                                            font_size: 14.
+                                        }
+                                        catalog_cta := ActionStack{
+                                            add_items_btn := StackSecondaryBtn{text: "Add dishes & items"}
+                                        }
+                                    }
 
                                     // Operational strip (Stitch screen 02)
                                     pos_strip := RoundedView{
@@ -5840,16 +5885,26 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    floor_add_hdr := AccordionHdrBtn{text: "ADD TABLES"}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        align: Align{y: 0.5}
+                                        floor_add_hdr := AccordionHdrBtn{width: Fit text: "ADD TABLES"}
+                                        floor_areas_help := InfoHelp{
+                                            width: Fit
+                                            tip: "Areas are rooms or zones (Dine In, Parcel, AC …). Add an area first, then put tables in it — each area is a separate group on the floor."
+                                        }
+                                    }
                                     floor_add_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
                                         visible: false
-                                        floor_add_heading := WrapLabel{ width: Fit
-                                                    body: "Add a table" font_color: #x260B08 font_size: 15. visible: false}
-                                        floor_areas_help := InfoHelp{
+                                        floor_add_heading := WrapLabel{
                                             width: Fit
-                                            tip: "Areas are rooms or zones (Dine In, Parcel, AC …). Add an area first, then put tables in it — each area is a separate group on the floor."
+                                            body: "Add a table"
+                                            font_color: #x260B08
+                                            font_size: 15.
+                                            visible: false
                                         }
                                         area_new_input := FieldInput{empty_text: "New area / room (e.g. AC, Garden)"}
                                         area_new_add := NavBtn{text: "Add area"}
@@ -5861,6 +5916,10 @@ script_mod! {
                                         table_add := StackPrimaryBtn{text: "Add table"}
                                         table_range_input := FieldInput{empty_text: "Many at once: D1-D20"}
                                         table_range_add := NavBtn{text: "Add these tables"}
+                                        // Fresh shops start with T1..T24; a floor of
+                                        // its own (D1-D20, P1-P20) takes them off.
+                                        table_remove_input := FieldInput{empty_text: "Remove: T1-T24, or one table's name"}
+                                        table_remove_btn := DangerBtn{text: "Remove these tables"}
                                     }
                                 }
                             }
@@ -5895,22 +5954,26 @@ script_mod! {
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
                                     draw_bg.border_radius: 14.
-                                    stations_hdr := AccordionHdrBtn{text: "KITCHEN STATIONS"}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        align: Align{y: 0.5}
+                                        stations_hdr := AccordionHdrBtn{width: Fit text: "KITCHEN STATIONS"}
+                                        stations_help := InfoHelp{
+                                            width: Fit
+                                            tip: "Each station prints on its own printers (Settings → Kitchen printing). Add Tandoor, Fryer, Cold…"
+                                        }
+                                    }
                                     stations_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
                                         visible: false
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 8
-                                            align: Align{x: 0.0 y: 0.5}
-                                            stations_heading := WrapLabel{
-                                                    width: Fit
-                                                    body: "Kitchen stations" font_color: #x260B08 font_size: 15. visible: false}
-                                            stations_help := InfoHelp{
-                                                width: Fit
-                                                tip: "Each station prints on its own printers (Settings → Kitchen printing). Add Tandoor, Fryer, Cold…"
-                                            }
+                                        stations_heading := WrapLabel{
+                                            width: Fit
+                                            body: "Kitchen stations"
+                                            font_color: #x260B08
+                                            font_size: 15.
+                                            visible: false
                                         }
                                         stations_label := mod.widgets.ReportText{}
                                         station_add_heading := WrapLabel{body: "Add a kitchen station" font_color: #x260B08 font_size: 15.}
@@ -5931,7 +5994,7 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 14
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 items_help_label := InfoHelp{
                                     width: Fit
                                     tip: "Tap an item to edit it. New item clears the form. Search our dishes or type your own name and photo, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with."
@@ -6114,7 +6177,7 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 14
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 buy_help := InfoHelp{
                                     width: Fit
                                     tip: "Expense vouchers and supplier bills (money out). On-account stays on the party ledger."
@@ -7070,10 +7133,10 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_color: #x260B08
                                         font_size: 13.
                                     }
-                                    // Editable. Chrome must not rewrite this while focused
-                                    // (that stuck "Bill" so backspace never stuck).
-                                    route_pick_input := FieldInput{empty_text: "Bill or a kitchen station"}
-                                    route_pick_suggest := mod.widgets.SuggestList{field: "route_pick"}
+                                    // Tap a row above, then tap a printer name —
+                                    // no second text field (it fought the list).
+                                    route_pick_input := FieldInput{empty_text: "Bill or a kitchen station" visible: false}
+                                    route_pick_suggest := mod.widgets.SuggestList{field: "route_pick" visible: false}
                                     route_add_printers := ActionStack{
                                         route_add_prn_0 := StackSecondaryBtn{text: "" visible: false}
                                         route_add_prn_1 := StackSecondaryBtn{text: "" visible: false}
@@ -7084,18 +7147,14 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         route_add_prn_6 := StackSecondaryBtn{text: "" visible: false}
                                         route_add_prn_7 := StackSecondaryBtn{text: "" visible: false}
                                     }
-                                    ActionStack{
-                                        route_remove := StackSecondaryBtn{text: "Remove printer"}
-                                        route_clear := StackSecondaryBtn{text: "Don't print"}
-                                    }
-                                    // Up/Down kept off-screen — rare; most shops
-                                    // put one printer per kitchen.
+                                    route_clear := StackSecondaryBtn{text: "Don't print here"}
+                                    // Kept for LiveId stability; assign replaces, so
+                                    // Remove/Up/Down/Save are unused chrome.
+                                    route_remove := StackSecondaryBtn{text: "Remove printer" visible: false}
                                     route_up := StackSecondaryBtn{text: "Up" visible: false}
                                     route_down := StackSecondaryBtn{text: "Down" visible: false}
-                                    ActionStack{
-                                        printers_save := StackPrimaryBtn{text: "Save printers"}
-                                        print_test_btn := StackSecondaryBtn{text: "Print a test page"}
-                                    }
+                                    printers_save := StackPrimaryBtn{text: "Save printers" visible: false}
+                                    print_test_btn := StackSecondaryBtn{text: "Print a test page"}
                                     // Legacy heading id still filled for RTL align.
                                     h_printers := WrapLabel{body: "" visible: false}
                                     }
@@ -7302,16 +7361,11 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         diag_support_stop := StackSecondaryBtn{text: "End support session"}
                                     }
                                     diag_export_local := StackSecondaryBtn{text: "Export local copy"}
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 8
-                                        align: Align{y: 0.5}
-                                        diag_approve_send := StackPrimaryBtn{text: "Approve share off this device"}
-                                        diag_send_help := InfoHelp{
-                                            width: Fit
-                                            tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
-                                        }
+                                    diag_send_help := InfoHelp{
+                                        width: Fit
+                                        tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                     }
+                                    diag_approve_send := StackPrimaryBtn{text: "Approve share off this device"}
                                     diag_export_send := StackSecondaryBtn{text: "Create share package (needs approval)"}
                                     diag_clear := NavBtn{text: "Clear diagnostic logs"}
                                 }
@@ -7457,7 +7511,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 14
-                                padding: Inset{left: 16. right: 16. top: 12. bottom: 120.}
+                                padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 inventory_help := InfoHelp{
                                     width: Fit
                                     tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."

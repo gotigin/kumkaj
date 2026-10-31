@@ -114,10 +114,14 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         st.t("lan_pair_again")
                     } else if link.needs_sign_in {
                         st.t("lan_sign_in_to_send").replace("{n}", &n)
+                    } else if link.needs_update {
+                        st.t("lan_update_app")
                     } else if link.online == Some(false) && link.waiting == 0 {
                         st.t("lan_offline")
                     } else if link.online == Some(false) {
                         st.t("lan_offline_waiting").replace("{n}", &n)
+                    } else if link.online.is_none() {
+                        st.t("lan_connecting")
                     } else if link.waiting > 0 {
                         st.t("lan_sending").replace("{n}", &n)
                     } else {
@@ -358,12 +362,32 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(today_label))
                 .set_text(cx, &plain_display_text(&today));
-            // Top eye: screen-level only (icon, no label). Open = amounts may
+            // Header eye: screen-level only (icon, no label). Open = amounts may
             // show; closed = force every figure to dots for this session.
             self.ui.button(cx, ids!(amounts_eye)).set_text(cx, screen_eye);
         }
         self.ui
             .widget(cx, ids!(session_label)).set_text(cx, &plain_display_text(&session_line));
+        // Client: session_line already carries Offline / Connecting; toast once
+        // when the shop server drops so the header eye is not overloaded.
+        {
+            let is_client_paired = {
+                let st = app_state().lock().unwrap();
+                st.device_role == DeviceRole::Client && st.client_paired
+            };
+            if is_client_paired {
+                let link = phone::link_state();
+                static LAST_ONLINE: std::sync::Mutex<Option<bool>> =
+                    std::sync::Mutex::new(None);
+                let mut prev = LAST_ONLINE.lock().unwrap();
+                let went_unreachable = *prev == Some(true) && link.online == Some(false);
+                *prev = link.online;
+                if went_unreachable {
+                    let msg = app_state().lock().unwrap().t("lan_offline");
+                    self.set_status(cx, msg);
+                }
+            }
+        }
         self.ui
             .widget(cx, ids!(receipt_label)).set_text(cx, &plain_display_text(&receipt));
         self.ui.widget(cx, ids!(receipt_label)).set_visible(cx, !receipt.trim().is_empty());
@@ -403,9 +427,14 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 locale::t(&st.locale.language, "unlock")
             },
         );
-        self.ui
-            .button(cx, ids!(role_staff))
-            .set_visible(cx, show_staff_role);
+        // Owner/Staff: Overlay idle+active faces — Owner must not stay lit after Staff.
+        self.paint_choice_pair(cx, ids!(role_owner), ids!(role_owner_on), lock_as_owner);
+        if show_staff_role {
+            self.paint_choice_pair(cx, ids!(role_staff), ids!(role_staff_on), !lock_as_owner);
+        } else {
+            self.ui.button(cx, ids!(role_staff)).set_visible(cx, false);
+            self.ui.button(cx, ids!(role_staff_on)).set_visible(cx, false);
+        }
         // On the lock screen, surface status (wrong PIN / no store) under the dots.
         let pin_status_text = if screen == Screen::Lock {
             if status.is_empty() || status.starts_with("Local DB:") {
@@ -536,8 +565,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 .widget(cx, ids!(floor_pick_label))
                 .set_text(cx, &plain_display_text(&pick_label));
             self.ui.button(cx, ids!(floor_pick_back)).set_text(cx, &back_label);
-            // Counter stays docked at the foot of the ticket (always shown).
-            self.ui.view(cx, ids!(ticket_body)).set_visible(cx, true);
+            // Counter payment body — shown only when Settle is allowed (layout
+            // also hides the whole `counter_dock` for waiters).
+            self.ui.view(cx, ids!(ticket_body)).set_visible(
+                cx,
+                session_may_settle(st.session.as_ref()),
+            );
             // The customer is asked for only when it matters: credit (khata),
             // a split that may include credit, or a delivery.
             self.ui.view(cx, ids!(ticket_extras)).set_visible(
@@ -1010,12 +1043,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             let sent_line = {
                 let mut out: Vec<(String, usize)> = Vec::new();
                 for line in st.cart.lines.iter().filter(|l| l.is_sent()) {
-                    let sid = st
-                        .products
-                        .iter()
-                        .find(|p| p.id == line.product_id)
-                        .map(|p| p.station_id.as_str())
-                        .unwrap_or("");
+                    let sid = line.kitchen_station_id(&st.products);
                     let name = if sid.is_empty() {
                         unassigned.clone()
                     } else {
@@ -1056,10 +1084,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             };
             drop(st);
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
-            self.ui
-                .widget(cx, ids!(kot_dest_help))
-                .as_info_help()
-                .set_tip(&plain_display_text(&hint));
+            {
+                let help = self.ui.widget(cx, ids!(kot_dest_help)).as_info_help();
+                let st = app_state().lock().unwrap();
+                help.set_title(cx, &st.t("kot_dest_heading"));
+                help.set_tip(&plain_display_text(&hint));
+            }
             self.ui.widget(cx, ids!(kot_dest_help)).set_visible(cx, hint_on);
             // Station picker stays while the ticket has dishes (sent or not).
             self.ui
@@ -1620,7 +1650,19 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.view(cx, ids!(table_actions)).set_visible(cx, table_open);
             {
                 let st = app_state().lock().unwrap();
-                let splitting = table_open && st.split_mode;
+                let may_reprint = session_may_reprint(st.session.as_ref());
+                let may_settle = session_may_settle(st.session.as_ref());
+                let splitting = table_open && st.split_mode && may_settle;
+                self.ui
+                    .button(cx, ids!(print_bill_btn))
+                    .set_visible(cx, table_open && may_reprint);
+                // Split / bill actions are counter work — hide when Settle Denied.
+                self.ui
+                    .button(cx, ids!(table_split_btn))
+                    .set_visible(cx, table_open && may_settle);
+                self.ui
+                    .button(cx, ids!(split_evenly_btn))
+                    .set_visible(cx, table_open && may_settle);
                 self.ui.view(cx, ids!(split_bar)).set_visible(cx, splitting);
                 self.ui.button(cx, ids!(table_split_btn)).set_text(cx, &st.t("split_bill"));
                 self.ui.button(cx, ids!(split_evenly_btn)).set_text(cx, &st.t("split_evenly"));
@@ -2275,64 +2317,17 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(client_clear_refused)).set_visible(cx, refused);
         }
         
-        // Role-aware More rows / tabs
+        // Role-aware settings rows + chrome peers (rights live in paint_nav_tabs).
         {
-            let (
-                _sell,
-                items,
-                sales,
-                credit,
-                floor_feat,
-                kitchen_feat,
-                team,
-                backup,
-                inventory,
-                branches,
-                is_owner,
-            ) = {
+            let (is_owner, is_client, is_shop, extra_tills) = {
                 let st = app_state().lock().unwrap();
-                match &st.session {
-                    Some(s) => (
-                        s.can_access_sell(),
-                        s.can_access_items(),
-                        s.can_access_sales(),
-                        s.can_access_credit(),
-                        s.can_access_floor() || s.is_owner(),
-                        s.can_access_kitchen() || s.is_owner(),
-                        s.can_access_team() || s.is_owner(),
-                        s.can_access_backup() || s.is_owner(),
-                        s.can_access_inventory() || s.is_owner(),
-                        s.can_access_branches() || s.is_owner(),
-                        s.is_owner(),
-                    ),
-                    None => (
-                        false, false, false, false, false, false, false, false, false, false,
-                        false,
-                    ),
-                }
-            };
-            let (is_client, is_shop, extra_tills, branch_count) = {
-                let st = app_state().lock().unwrap();
-                let branch_count = st
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.list_branches().ok())
-                    .map(|b| b.len())
-                    .unwrap_or(1);
                 (
+                    st.session.as_ref().is_some_and(|s| s.is_owner()),
                     st.device_role == DeviceRole::Client,
                     st.device_role == DeviceRole::Server,
                     st.extra_tills_allowed,
-                    branch_count,
                 )
             };
-            let _ = is_client;
-            let books_ok = sales || is_owner || items;
-            let buy_ok = inventory || sales || is_owner;
-            // Progressive depth (vision §30): Floor/Kitchen peers exist only
-            // when this shop runs tables & kitchen — a counter-only shop
-            // never sees the floor.
-            let floor_on = app_state().lock().unwrap().venue_mode.creates_kot();
             self.ui
                 .button(cx, ids!(allow_extra_tills))
                 .set_visible(cx, is_shop && is_owner && !extra_tills);
@@ -2396,49 +2391,36 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .button(cx, ids!(client_skip_lock))
                     .set_visible(cx, is_client && paired);
             }
-            // Slots pack the visible arrangement; capability gates still apply.
-            // (Stock/branches stay Server-only: a Client's copy is a sync
-            // cache, so every write there would be lost.)
-            let order = {
+            let screen = app_state().lock().unwrap().screen;
+            self.paint_nav_tabs(cx, screen);
+        }
+
+        // Header back (‹ left of shop mark). Body Back buttons stay hidden.
+        {
+            let show = {
                 let st = app_state().lock().unwrap();
-                nav_display_order(&st.nav_order, &st.nav_hidden)
+                st.picking_server
+                    || st.settings_panel.is_some()
+                    || st.line_action.is_some()
+                    || st.move_panel_open
+                    || st.split_mode
+                    || (st.screen == Screen::Floor && st.picking_table)
+                    || matches!(
+                        st.screen,
+                        Screen::ClientPair | Screen::SidebarSettings
+                    )
+                    || !st.nav_back.is_empty()
             };
-            for rail in [false, true] {
-                let wrappers = self.nav_slot_wrappers(rail);
-                let pairs = if rail {
-                    self.rail_nav_pairs()
-                } else {
-                    self.bottom_nav_pairs()
-                };
-                for slot in 0..NAV_TABS.len() {
-                    let Some(tab) = order.get(slot).copied() else {
-                        self.ui.view(cx, wrappers[slot]).set_visible(cx, false);
-                        continue;
-                    };
-                    let visible = match tab {
-                        NavTab::Sell | NavTab::Lock => true,
-                        NavTab::Books => books_ok,
-                        NavTab::Buy => buy_ok,
-                        NavTab::Menu => items,
-                        NavTab::Floor => floor_feat && floor_on,
-                        NavTab::Kitchen => kitchen_feat && floor_on,
-                        NavTab::Sales => sales,
-                        NavTab::DayClose | NavTab::Reports => sales || is_owner,
-                        NavTab::Inventory => inventory && !is_client,
-                        NavTab::Branches => branches && !is_client && branch_count > 1,
-                        NavTab::Credit => credit,
-                        NavTab::Team => team,
-                        NavTab::Settings => backup,
-                    };
-                    self.ui.view(cx, wrappers[slot]).set_visible(cx, visible);
-                    let enabled = match tab {
-                        NavTab::Books => books_ok,
-                        NavTab::Buy => buy_ok,
-                        _ => true,
-                    };
-                    self.ui.button(cx, pairs[slot].0).set_enabled(cx, enabled);
-                    self.ui.button(cx, pairs[slot].1).set_enabled(cx, enabled);
-                }
+            self.ui.button(cx, ids!(header_back)).set_visible(cx, show);
+            for id in [
+                ids!(client_pair_back),
+                ids!(server_pick_cancel),
+                ids!(sidebar_settings_back),
+                ids!(settings_detail_back),
+                ids!(line_action_back),
+                ids!(floor_pick_back),
+            ] {
+                self.ui.button(cx, id).set_visible(cx, false);
             }
         }
 

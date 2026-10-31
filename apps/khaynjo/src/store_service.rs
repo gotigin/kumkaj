@@ -607,7 +607,7 @@ mod tests {
     #[test]
     fn day_report_totals_sizes_and_toppings_sold() {
         use crate::domain::{ModifierGroup, ModifierOption};
-        let (mut store, path) = shop();
+        let (store, path) = shop();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let mut pizza = store.list_products(false).unwrap().remove(0);
         pizza.name = "Pizza".into();
@@ -656,7 +656,7 @@ mod tests {
     /// by them and the name is offered next time.
     #[test]
     fn deliveries_are_totalled_by_who_took_them() {
-        let (mut store, path) = shop();
+        let (store, path) = shop();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let thali = store.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
@@ -673,7 +673,7 @@ mod tests {
 
     #[test]
     fn shift_handover_names_the_variance_and_starts_the_next_shift() {
-        let (mut store, path) = shop();
+        let (store, path) = shop();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let thali = store.list_products(false).unwrap().remove(0);
         store.set_opening_float(Money::from_rupees(2000).paise(), &owner).unwrap();
@@ -702,7 +702,7 @@ mod tests {
     /// (checked on the Server), spread over the lines for tax, and reported.
     #[test]
     fn discounts_need_a_reason_and_the_right_and_show_in_the_report() {
-        let (mut store, path) = shop();
+        let (store, path) = shop();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.add_staff("Cash", StaffRole::Cashier, "Cashier", "1111", &owner).unwrap();
         store.add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner).unwrap();
@@ -748,6 +748,8 @@ mod tests {
             approval_pin: String::new(),
         });
         assert_eq!(cart.discount_paise(), Money::from_rupees(200).paise());
-        assert!(cart.to_sale_draft().is_err(), "a ₹0 bill is not a sale");
+        // Discounted to nothing is a ₹0 bill: allowed unless Settings asks
+        // for a price above ₹0 (checked when the bill is taken).
+        assert_eq!(cart.to_sale_draft().unwrap().total_paise, 0);
     }
 }

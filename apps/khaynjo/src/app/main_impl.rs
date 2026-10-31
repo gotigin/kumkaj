@@ -16,6 +16,7 @@ impl AppMain for App {
             self.ensure_store(cx);
             // Photo thumbs are made on worker threads; wake the UI when one lands.
             thumbs::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
+            lan_images::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             phone::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Printer Find is Settings → Find printers only (never at startup).
@@ -38,10 +39,22 @@ impl AppMain for App {
                 }
             }
         }
-        if matches!(event, Event::Signal) && thumbs::take_ready() {
+        if matches!(event, Event::Signal) && (thumbs::take_ready() || lan_images::take_ready()) {
             self.ui.redraw(cx);
         }
         if matches!(event, Event::Signal) {
+            if let Some(result) = backup_once().lock().unwrap().take() {
+                match result {
+                    Ok(path) => {
+                        self.ui.widget(cx, ids!(backup_path_label)).set_text(
+                            cx,
+                            &plain_display_text(&format!("Backup: {}", path.display())),
+                        );
+                        self.set_status(cx, "Backup created");
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
             if BACKUP_MADE.swap(false, std::sync::atomic::Ordering::SeqCst) {
                 self.sync_chrome(cx);
             }

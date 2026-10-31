@@ -18,7 +18,7 @@ use crate::domain::{
     RunningOrderStatus, SaleDraft, StaffMember, TableStatus,
 };
 use chrono::Local;
-use rusqlite::{params, OptionalExtension};
+use rusqlite::{params, Connection, OptionalExtension};
 
 /// Sort key that puts `D2` before `D10` (owners number tables, not spell them).
 pub(crate) fn natural_key(name: &str) -> Vec<(String, u64)> {
@@ -343,16 +343,16 @@ impl Store {
         Ok(())
     }
 
-    /// Move not-yet-KOT'd lines from one table's ticket to another (Order →
-    /// Change table). Sent lines stay on the old table. No Move-table right —
-    /// this is re-seating punches, not relocating a party that already has KOTs.
+    /// Move not-yet-KOT'd lines from one table to another. Sent lines stay.
+    /// Order UI **Change table** does not call this (it only opens the other
+    /// ticket). Prefer Move / merge for relocating a party.
     pub fn reseat_pending(
         &self,
         from_table_id: &str,
         to_table_id: &str,
         actor: &StaffMember,
     ) -> Result<(), String> {
-        self.assert_server_writer("Change table")?;
+        self.assert_server_writer("Move pending lines")?;
         if from_table_id == to_table_id {
             return Ok(());
         }
@@ -541,7 +541,9 @@ impl Store {
     /// promotes **pending** running lines (empty `kot_id`) onto KOTs — the
     /// ticket is already the Server order. Without a table (counter), only
     /// kitchen tickets are written from the draft. Held lines are skipped.
-    /// Returns KOT ids to print.
+    /// Returns KOT ids to print. One unit of work: two devices sending to
+    /// the same table take turns, so neither sends the other's lines nor
+    /// finds "nothing new" because the other just sent them.
     pub fn send_kot(
         &self,
         draft: &SaleDraft,
@@ -549,12 +551,21 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<Vec<String>, String> {
         let table_id = table_id.filter(|t| !t.is_empty());
-        if let Some(tid) = table_id {
-            self.seat_draft_unsent(tid, draft, actor)?;
-            self.send_kot_filtered(tid, actor, None, true)
-        } else {
-            self.send_kot_counter(draft, actor)
-        }
+        self.in_transaction(|| {
+            if let Some(tid) = table_id {
+                self.seat_draft_unsent(tid, draft, actor)?;
+                let mut station_by_product = std::collections::HashMap::<String, String>::new();
+                for line in draft.lines.iter().filter(|l| !l.kot_sent) {
+                    let sid = line.station_id.trim();
+                    if !sid.is_empty() {
+                        station_by_product.insert(line.product_id.clone(), sid.to_string());
+                    }
+                }
+                self.send_kot_filtered(tid, actor, None, true, &station_by_product)
+            } else {
+                self.send_kot_counter(draft, actor)
+            }
+        })
     }
 
     fn seat_draft_unsent(
@@ -584,6 +595,7 @@ impl Store {
                     note: l.note.clone(),
                     base_unit_paise: l.unit_price_paise,
                     complimentary: l.line_total_paise == 0 && l.unit_price_paise > 0,
+                    station_id: l.station_id.clone(),
                     ..Default::default()
                 }
             })
@@ -624,10 +636,16 @@ impl Store {
         }
         let mut by_station: Vec<(String, Vec<&crate::domain::SaleLine>)> = Vec::new();
         for line in &lines {
-            let station_id = self
-                .get_product(&line.product_id)?
-                .map(|p| p.station_id)
-                .unwrap_or_default();
+            let station_id = {
+                let own = line.station_id.trim();
+                if !own.is_empty() {
+                    own.to_string()
+                } else {
+                    self.get_product(&line.product_id)?
+                        .map(|p| p.station_id)
+                        .unwrap_or_default()
+                }
+            };
             match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
                 Some((_, items)) => items.push(line),
                 None => by_station.push((station_id, vec![line])),
@@ -748,6 +766,7 @@ impl Store {
         actor: &StaffMember,
         course: Option<i64>,
         skip_held: bool,
+        station_by_product: &std::collections::HashMap<String, String>,
     ) -> Result<Vec<String>, String> {
         self.assert_server_writer("Send a KOT")?;
         if !self.venue_mode()?.creates_kot() {
@@ -798,9 +817,15 @@ impl Store {
         let stations = self.list_stations()?;
         let mut by_station: Vec<(String, Vec<RunningLine>)> = Vec::new();
         for line in pending {
-            let station_id = self
-                .get_product(&line.product_id)?
-                .map(|p| p.station_id)
+            let station_id = station_by_product
+                .get(&line.product_id)
+                .cloned()
+                .or_else(|| {
+                    self.get_product(&line.product_id)
+                        .ok()
+                        .flatten()
+                        .map(|p| p.station_id)
+                })
                 .unwrap_or_default();
             match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
                 Some((_, items)) => items.push(line),
@@ -1647,7 +1672,7 @@ impl Store {
     /// Close the table's running order with the sale that paid it. Called
     /// inside finalize's transaction.
     pub(crate) fn settle_running_order_tx(
-        tx: &rusqlite::Transaction<'_>,
+        tx: &Connection,
         table_id: &str,
         sale_id: &str,
     ) -> Result<(), String> {
@@ -1957,15 +1982,18 @@ mod tests {
     /// exactly what the waiter sent, and the kitchen is not told twice.
     #[test]
     fn table_runs_kot_by_kot_and_the_counter_bills_what_was_sent() {
-        let mut shop = shop();
+        let shop = shop();
         shop.kot("D1", &[(&shop.thali, 2)]);
         shop.kot("D1", &[(&shop.chaas, 1)]);
         let d1 = shop.table("D1");
         assert_eq!(d1.status, TableStatus::Occupied);
         assert_eq!(d1.area, "Dine In");
         assert_eq!(d1.running_total_paise, Money::from_rupees(430).paise());
-        let kots_before = shop.store.list_open_kots().unwrap().len();
-        assert_eq!(kots_before, 2);
+        assert_eq!(shop.store.list_open_kots().unwrap().len(), 2);
+        let kots_sent = |shop: &Shop| {
+            shop.store.list_audit(1000).unwrap().into_iter().filter(|a| a.action == "kot.send").count()
+        };
+        let kots_before = kots_sent(&shop);
 
         // A new tap on a sent dish is a new line, never a bump of history.
         let mut cart = shop.bill_cart("D1");
@@ -1983,7 +2011,9 @@ mod tests {
             .finalize_sale(&draft, PayMethod::Cash, Some(&d1.id), None, &owner)
             .unwrap();
         assert_eq!(sale.total_paise, Money::from_rupees(430).paise());
-        assert_eq!(shop.store.list_open_kots().unwrap().len(), kots_before, "no second KOT");
+        assert_eq!(kots_sent(&shop), kots_before, "no second KOT");
+        // Paid: the kitchen's open tickets for this seating close with it.
+        assert!(shop.store.list_open_kots().unwrap().is_empty());
         let d1 = shop.table("D1");
         assert_eq!(d1.status, TableStatus::Available);
         assert!(shop.store.running_order(&d1.id).unwrap().is_none());
@@ -2010,7 +2040,7 @@ mod tests {
     /// once paid.
     #[test]
     fn a_split_bill_is_paid_separately_and_its_companion_table_goes() {
-        let mut shop = shop();
+        let shop = shop();
         shop.kot("D1", &[(&shop.thali, 2), (&shop.chaas, 1)]);
         let d1 = shop.table("D1");
         let order = shop.store.running_order(&d1.id).unwrap().unwrap();
@@ -2067,7 +2097,7 @@ mod tests {
     #[test]
     fn the_floor_follows_the_visit_from_free_to_paid_and_back() {
         use crate::domain::FloorState;
-        let mut shop = shop();
+        let shop = shop();
         let state = |shop: &Shop| shop.table("D2").floor_state;
         assert_eq!(state(&shop), FloorState::Free);
         let kots = shop.kot("D2", &[(&shop.thali, 1)]);
@@ -2130,7 +2160,7 @@ mod tests {
 
     #[test]
     fn a_waiter_takes_orders_but_does_not_settle() {
-        let mut shop = shop();
+        let shop = shop();
         shop.kot("D2", &[(&shop.thali, 1)]);
         let d2 = shop.table("D2");
         let draft = shop.bill_cart("D2").to_sale_draft().unwrap();
@@ -2151,7 +2181,7 @@ mod tests {
     #[test]
     fn paying_clears_in_kitchen_so_the_next_guests_start_free() {
         use crate::domain::FloorState;
-        let mut shop = shop();
+        let shop = shop();
         shop.kot("D2", &[(&shop.thali, 1)]);
         assert_eq!(shop.table("D2").floor_state, FloorState::InKitchen);
         let d2 = shop.table("D2");
@@ -2222,7 +2252,7 @@ mod tests {
 
     #[test]
     fn complimentary_items_are_free_on_the_bill_and_visible_in_reports() {
-        let mut shop = shop();
+        let shop = shop();
         shop.kot("D3", &[(&shop.thali, 1), (&shop.chaas, 2)]);
         let d3 = shop.table("D3");
         let chaas = shop
@@ -2359,7 +2389,7 @@ mod tests {
     #[test]
     fn variants_are_items_of_their_own_and_area_prices_price_the_line() {
         use crate::domain::ModifierOption;
-        let mut shop = shop();
+        let shop = shop();
         let mut base = Product::new_basic(new_id(), "Paneer Tikka", Money::from_rupees(200));
         base.set_area_prices(&[ModifierOption { name: "AC".into(), price_paise: Money::from_rupees(150).paise() , group: String::new() }]);
         let owner = shop.owner.clone();
@@ -2426,7 +2456,7 @@ mod tests {
 
     #[test]
     fn floor_ranges_skip_existing_tables_and_settlement_keeps_tips_apart() {
-        let mut shop = shop();
+        let shop = shop();
         assert_eq!(shop.store.add_tables_range("D", 1, 5, "Dine In").unwrap(), 2);
         // Fresh shops seed T1–T6 in the unnamed area; ours follow it.
         assert_eq!(shop.store.list_areas().unwrap(), vec!["", "Dine In", "Parcel"]);
@@ -2508,7 +2538,26 @@ mod tests {
         assert!(shop.store.running_order(&d2.id).unwrap().is_none());
     }
 
-    /// Change table: pending moves to the new table; sent stays on the old.
+    /// Switching tickets without reseat leaves each table's lines alone
+    /// (Order Change table / Floor open = load only, never silent move).
+    #[test]
+    fn opening_another_table_does_not_move_pending() {
+        let shop = shop();
+        let d1 = shop.table("D1");
+        let d2 = shop.table("D2");
+        let waiter = shop.waiter.clone();
+        shop.kot("D1", &[(&shop.thali, 1)]);
+        shop.store
+            .bump_pending_product(&d1.id, &shop.chaas, 1000, "", &waiter)
+            .unwrap();
+        // "Open D2" without reseat — D1 must still hold Thali + Chaas.
+        assert!(shop.store.running_order(&d2.id).unwrap().is_none());
+        let on_d1 = shop.store.running_order(&d1.id).unwrap().unwrap();
+        assert_eq!(on_d1.live_lines().count(), 2);
+        assert!(shop.store.running_order(&d2.id).unwrap().is_none());
+    }
+
+    /// reseat_pending still moves unsent and leaves sent (explicit tool only).
     #[test]
     fn reseat_pending_moves_unsent_and_leaves_sent() {
         let shop = shop();

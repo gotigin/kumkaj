@@ -18,7 +18,7 @@ min_sdk_version = 26
 
 [dependencies]
 makepad-widgets = { path = "../../vendor/makepad/widgets" }
-rusqlite = { version = "0.37", features = ["bundled"] }
+rusqlite = { version = "0.37", features = ["bundled", "backup"] }
 dirs = "6"
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
 sha2 = "0.10"

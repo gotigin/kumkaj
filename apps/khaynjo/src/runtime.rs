@@ -126,6 +126,32 @@ fn auto_backup_target() -> &'static Mutex<(Option<PathBuf>, bool)> {
 /// A backup was just made: the Settings line says so on the next wake.
 static BACKUP_MADE: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
 
+/// Manual "Create backup" result (VACUUM can take seconds — never on the UI thread).
+fn backup_once() -> &'static Mutex<Option<Result<PathBuf, String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<PathBuf, String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn backup_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+/// Run a books backup off the UI thread; the Signal handler paints the result.
+fn backup_job(db_path: PathBuf, dest: PathBuf) {
+    if backup_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-backup-once".into())
+        .spawn(move || {
+            let result = Store::open_path(&db_path).and_then(|s| s.backup_to(&dest).map(|()| dest));
+            *backup_once().lock().unwrap() = Some(result);
+            backup_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
 /// The screen is being kept on because this device serves others.
 static SCREEN_KEPT_ON: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
 

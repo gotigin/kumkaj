@@ -104,14 +104,6 @@ fn set_view_flow(cx: &mut Cx, view: &ViewRef, flow: Flow) {
     view.redraw(cx);
 }
 
-fn size_fill(weight: f64, min: f64) -> Size {
-    Size::Fill {
-        weight,
-        min: Some(min),
-        max: None,
-    }
-}
-
 /// Bundled default mark — `CARGO_MANIFEST_DIR` / next-to-exe paths are missing
 /// on Android APK installs; `include_bytes` is what actually ships.
 const DEFAULT_BRAND_MARK_BYTES: &[u8] = include_bytes!("../resources/kumkaj-mark.webp");

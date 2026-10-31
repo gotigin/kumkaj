@@ -178,12 +178,11 @@ struct AppState {
     /// The ticket line whose details (price, note, Cancel / NC / Move) are
     /// open. One at a time; every other line stays a single compact row.
     open_cart_line: Option<usize>,
-    /// The Floor was opened from the order desk to seat / change table: a tap
-    /// attaches (or reseats pending) and returns to Order. Floor from nav does
-    /// not set this — tapping a table there just opens that table's ticket.
+    /// Floor opened from Order to Choose / Change table. A tap returns to
+    /// Order. Floor from nav does not set this — it only opens that ticket.
     picking_table: bool,
-    /// When Change table: the table we left (pending moves from here). `None`
-    /// when first seating a cart that had no table yet.
+    /// `Some` = Change table (we left this table; pick opens the new ticket
+    /// only). `None` = first Choose a table (seat unsent desk punches).
     picking_from_table_id: Option<String>,
     /// The field whose "type or pick" list is open, and its rows.
     suggest_open: Option<SuggestField>,

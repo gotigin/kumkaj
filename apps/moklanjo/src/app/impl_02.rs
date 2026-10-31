@@ -99,10 +99,14 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         st.t("lan_pair_again")
                     } else if link.needs_sign_in {
                         st.t("lan_sign_in_to_send").replace("{n}", &n)
+                    } else if link.needs_update {
+                        st.t("lan_update_app")
                     } else if link.online == Some(false) && link.waiting == 0 {
                         st.t("lan_offline")
                     } else if link.online == Some(false) {
                         st.t("lan_offline_waiting").replace("{n}", &n)
+                    } else if link.online.is_none() {
+                        st.t("lan_connecting")
                     } else if link.waiting > 0 {
                         st.t("lan_sending").replace("{n}", &n)
                     } else {
@@ -332,11 +336,32 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(today_label))
                 .set_text(cx, &plain_display_text(&today));
+            // Header eye: screen-level only (icon, no label).
             self.ui.button(cx, ids!(amounts_eye)).set_text(cx, screen_eye);
         }
         self.ui
             .widget(cx, ids!(session_label))
             .set_text(cx, &plain_display_text(&session_line));
+        // Client: session_line already carries Offline / Connecting; toast once
+        // when the shop server drops so the header eye is not overloaded.
+        {
+            let is_client_paired = {
+                let st = app_state().lock().unwrap();
+                st.device_role == DeviceRole::Client && st.client_paired
+            };
+            if is_client_paired {
+                let link = phone::link_state();
+                static LAST_ONLINE: std::sync::Mutex<Option<bool>> =
+                    std::sync::Mutex::new(None);
+                let mut prev = LAST_ONLINE.lock().unwrap();
+                let went_unreachable = *prev == Some(true) && link.online == Some(false);
+                *prev = link.online;
+                if went_unreachable {
+                    let msg = app_state().lock().unwrap().t("lan_offline");
+                    self.set_status(cx, msg);
+                }
+            }
+        }
         self.ui
             .widget(cx, ids!(receipt_label))
             .set_text(cx, &plain_display_text(&receipt));
@@ -362,9 +387,14 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 locale::t(&st.locale.language, "unlock")
             },
         );
-        self.ui
-            .button(cx, ids!(role_staff))
-            .set_visible(cx, show_staff_role);
+        // Owner/Staff: Overlay idle+active faces — Owner must not stay lit after Staff.
+        self.paint_choice_pair(cx, ids!(role_owner), ids!(role_owner_on), lock_as_owner);
+        if show_staff_role {
+            self.paint_choice_pair(cx, ids!(role_staff), ids!(role_staff_on), !lock_as_owner);
+        } else {
+            self.ui.button(cx, ids!(role_staff)).set_visible(cx, false);
+            self.ui.button(cx, ids!(role_staff_on)).set_visible(cx, false);
+        }
         // On the lock screen, surface status (wrong PIN / no store) under the dots.
         let pin_status_text = if screen == Screen::Lock {
             if status.is_empty() || status.starts_with("Local DB:") {
@@ -1737,50 +1767,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(client_clear_refused)).set_visible(cx, refused);
         }
 
-        // Role-aware More rows / tabs
+        // Role-aware settings rows + chrome peers (rights live in paint_nav_tabs).
         {
-            let (_sell, items, sales, credit, team, backup, inventory, branches, is_owner) = {
+            let (is_owner, is_client, is_shop, extra_tills) = {
                 let st = app_state().lock().unwrap();
-                match &st.session {
-                    Some(s) => (
-                        s.can_access_sell(),
-                        s.can_access_items(),
-                        s.can_access_sales(),
-                        s.can_access_credit(),
-                        s.can_access_team() || s.is_owner(),
-                        s.can_access_backup() || s.is_owner(),
-                        s.can_access_inventory() || s.is_owner(),
-                        s.can_access_branches() || s.is_owner(),
-                        s.is_owner(),
-                    ),
-                    None => (
-                        false, false, false, false, false, false, false, false, false,
-                    ),
-                }
-            };
-            let (is_client, is_shop, extra_tills, branch_count) = {
-                let st = app_state().lock().unwrap();
-                let branch_count = st
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.list_branches().ok())
-                    .map(|b| b.len())
-                    .unwrap_or(1);
                 (
+                    st.session.as_ref().is_some_and(|s| s.is_owner()),
                     st.device_role == DeviceRole::Client,
                     st.device_role == DeviceRole::Server,
                     st.extra_tills_allowed,
-                    branch_count,
                 )
             };
-            let _ = is_client;
-            let books_ok = sales || is_owner || items;
-            let buy_ok = inventory || sales || is_owner;
             self.ui.button(cx, ids!(more_items)).set_visible(cx, false);
             // More hub removed — former rows are chrome peers (bottom + rail).
             self.ui.view(cx, ids!(more_screen)).set_visible(cx, false);
-            // Ops / COD / riders: same gate as Reports (desk ops).
-            let ops_ok = sales || is_owner;
             self.ui
                 .button(cx, ids!(allow_extra_tills))
                 .set_visible(cx, is_shop && is_owner && !extra_tills);
@@ -1866,49 +1866,28 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(more_cod)).set_visible(cx, false);
             self.ui.button(cx, ids!(more_riders)).set_visible(cx, false);
             self.ui.button(cx, ids!(more_lock)).set_visible(cx, false);
-            // Slots pack the visible arrangement; capability gates still apply.
-            // (Stock/branches stay Server-only: a Client's copy is a sync
-            // cache, so every write there would be lost.)
-            let order = {
+            let screen = app_state().lock().unwrap().screen;
+            self.paint_nav_tabs(cx, screen);
+        }
+
+        // Header back (‹ left of shop mark). Body Back buttons stay hidden.
+        {
+            let show = {
                 let st = app_state().lock().unwrap();
-                nav_display_order(&st.nav_order, &st.nav_hidden)
+                st.picking_server
+                    || matches!(
+                        st.screen,
+                        Screen::ClientPair | Screen::SidebarSettings
+                    )
+                    || !st.nav_back.is_empty()
             };
-            for rail in [false, true] {
-                let wrappers = self.nav_slot_wrappers(rail);
-                let pairs = if rail {
-                    self.rail_nav_pairs()
-                } else {
-                    self.bottom_nav_pairs()
-                };
-                for slot in 0..NAV_TABS.len() {
-                    let Some(tab) = order.get(slot).copied() else {
-                        self.ui.view(cx, wrappers[slot]).set_visible(cx, false);
-                        continue;
-                    };
-                    let visible = match tab {
-                        NavTab::Books
-                        | NavTab::Sell
-                        | NavTab::Buy
-                        | NavTab::Lock => true,
-                        NavTab::Rates => items,
-                        NavTab::Ops | NavTab::Cod | NavTab::Riders => ops_ok,
-                        NavTab::Sales => sales,
-                        NavTab::DayClose | NavTab::Reports => sales || is_owner,
-                        NavTab::Inventory => inventory && !is_client,
-                        NavTab::Branches => branches && !is_client && branch_count > 1,
-                        NavTab::Credit => credit,
-                        NavTab::Team => team,
-                        NavTab::Settings => backup,
-                    };
-                    self.ui.view(cx, wrappers[slot]).set_visible(cx, visible);
-                    let enabled = match tab {
-                        NavTab::Books => books_ok,
-                        NavTab::Buy => buy_ok,
-                        _ => true,
-                    };
-                    self.ui.button(cx, pairs[slot].0).set_enabled(cx, enabled);
-                    self.ui.button(cx, pairs[slot].1).set_enabled(cx, enabled);
-                }
+            self.ui.button(cx, ids!(header_back)).set_visible(cx, show);
+            for id in [
+                ids!(client_pair_back),
+                ids!(server_pick_cancel),
+                ids!(sidebar_settings_back),
+            ] {
+                self.ui.button(cx, id).set_visible(cx, false);
             }
         }
 

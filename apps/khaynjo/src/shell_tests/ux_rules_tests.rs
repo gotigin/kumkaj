@@ -6,6 +6,16 @@ mod ux_rules_tests {
         PayPart { method, amount: amount.into() }
     }
 
+    /// Change table must not seat/move the previous ticket onto the new one.
+    #[test]
+    fn change_table_opens_only_first_choose_seats_cart() {
+        assert!(pick_seats_desk_cart(None), "first Choose a table seats desk cart");
+        assert!(
+            !pick_seats_desk_cart(Some("table-a")),
+            "Change table must not drag lines onto the picked table"
+        );
+    }
+
     #[test]
     fn one_blank_way_takes_the_rest_and_same_ways_merge() {
         let parts = [part(PayMethod::Cash, "300"), part(PayMethod::Upi, ""), part(PayMethod::Cash, "50")];

@@ -6,7 +6,7 @@
 
 use super::Store;
 use crate::domain::{
-    birthday_in_range, new_id, Customer, Money, Product, StaffMember,
+    birthday_in_range, new_id, Customer, Money, Product, StaffFeatures, StaffMember, StaffRole,
 };
 use crate::notify;
 use chrono::{Datelike, Duration, Local, NaiveDate};
@@ -226,6 +226,46 @@ impl Store {
         ] {
             let _ = self.conn.execute(stmt, []);
         }
+        Ok(())
+    }
+
+    /// One-shot: Waiter preset used to include Parties (`credit`). New hires
+    /// already get `credit: false`; this strips it from existing waiter rows
+    /// so Parties disappears from their chrome without a Team edit.
+    pub(crate) fn migrate_waiter_no_parties(&self) -> Result<(), String> {
+        if self.meta_get("migrate_waiter_no_parties")?.as_deref() == Some("1") {
+            return Ok(());
+        }
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, COALESCE(features_json, '') FROM staff
+                 WHERE role = 'waiter' AND active = 1",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows: Vec<(String, String)> = stmt
+            .query_map([], |row| Ok((row.get::<_, String>(0)?, row.get::<_, String>(1)?)))
+            .map_err(|e| e.to_string())?
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())?;
+        for (id, json) in rows {
+            let mut features = if json.trim().is_empty() {
+                StaffFeatures::for_role(StaffRole::Waiter)
+            } else {
+                StaffFeatures::from_json(&json)
+            };
+            if !features.credit {
+                continue;
+            }
+            features.credit = false;
+            self.conn
+                .execute(
+                    "UPDATE staff SET features_json = ?1 WHERE id = ?2",
+                    params![features.to_json(), id],
+                )
+                .map_err(|e| e.to_string())?;
+        }
+        self.meta_set("migrate_waiter_no_parties", "1")?;
         Ok(())
     }
 
@@ -565,7 +605,13 @@ impl Store {
                 params![order.id, course_no],
             )
             .map_err(|e| e.to_string())?;
-        self.send_kot_filtered(table_id, actor, Some(course_no), false)
+        self.send_kot_filtered(
+            table_id,
+            actor,
+            Some(course_no),
+            false,
+            &std::collections::HashMap::new(),
+        )
     }
 
     /// Split open bill evenly across `n` companion bills (item round-robin).
@@ -1852,7 +1898,8 @@ li{{font-size:1.3rem;margin:.4rem 0}}</style></head>
                 })
             })
             .collect();
-        Ok(serde_json::json!({ "items": items }).to_string())
+        // Goes inside a <script>: no "</script>" in a dish name may end it.
+        Ok(serde_json::json!({ "items": items }).to_string().replace('<', "\\u003c"))
     }
 
     pub fn kiosk_html(&self) -> Result<String, String> {
@@ -1926,13 +1973,19 @@ document.getElementById('add').onclick = async () => {{
         ))
     }
 
-    /// Public LAN: add products to a table's running order (guest QR).
+    /// Public LAN: add products to a table's running order (guest QR). Only
+    /// what the guest menu offers (on the menu, not sold out, never a raw
+    /// material), as pending lines staff see before Send KOT; a request is
+    /// all or nothing, and at most [`GUEST_ORDER_MAX_ITEMS`] dishes.
     pub fn public_add_to_table(
         &self,
         table_id: &str,
         product_ids: &[String],
     ) -> Result<(), String> {
         self.assert_server_writer("QR table order")?;
+        if product_ids.len() > GUEST_ORDER_MAX_ITEMS {
+            return Err(format!("At most {GUEST_ORDER_MAX_ITEMS} dishes at a time"));
+        }
         let actor = self
             .list_staff()?
             .into_iter()
@@ -1944,13 +1997,15 @@ document.getElementById('add').onclick = async () => {{
             .find(|t| t.id == table_id)
             .map(|t| t.area)
             .unwrap_or_default();
-        for pid in product_ids {
-            let Some(p) = self.get_product(pid)? else {
-                continue;
-            };
-            self.bump_pending_product(table_id, &p, 1000, &area, &actor)?;
-        }
-        Ok(())
+        self.in_transaction(|| {
+            for pid in product_ids {
+                let Some(p) = self.get_product(pid)?.filter(|p| !p.archived && p.available && !p.is_raw()) else {
+                    continue;
+                };
+                self.bump_pending_product(table_id, &p, 1000, &area, &actor)?;
+            }
+            Ok(())
+        })
     }
 
     /// Floor “Local ops” body — owner-facing only. No LAN paths, aggregator
@@ -2179,6 +2234,9 @@ fn clock_minutes(cin: &str, cout: &str) -> i64 {
     ((b - a) / 60).max(0)
 }
 
+/// Most dishes one guest-page request may add (a table's real order, not a flood).
+pub const GUEST_ORDER_MAX_ITEMS: usize = 50;
+
 fn html_esc(s: &str) -> String {
     s.replace('&', "&amp;")
         .replace('<', "&lt;")
@@ -2268,6 +2326,56 @@ mod tests {
             discount_approval_pin: String::new(),
             delivery_by: String::new(),
         }
+    }
+
+    #[test]
+    fn waiter_migration_strips_parties_credit() {
+        let shop = shop();
+        shop.store
+            .add_staff("Ahmed", StaffRole::Waiter, "Waiter", "2222", &shop.owner)
+            .unwrap();
+        let waiter = shop
+            .store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.name == "Ahmed")
+            .unwrap();
+        // New hire already has credit off; re-introduce the old mistaken preset.
+        let mut old = StaffFeatures::for_role(StaffRole::Waiter);
+        old.credit = true;
+        shop.store
+            .set_staff_features(&waiter.id, &old, &shop.owner)
+            .unwrap();
+        assert!(shop
+            .store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.name == "Ahmed")
+            .unwrap()
+            .can_access_credit());
+        shop.store.meta_set("migrate_waiter_no_parties", "").unwrap();
+        shop.store.migrate_waiter_no_parties().unwrap();
+        let waiter = shop
+            .store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.name == "Ahmed")
+            .unwrap();
+        assert!(!waiter.features.credit);
+        assert!(!waiter.can_access_credit());
+        // Idempotent.
+        shop.store.migrate_waiter_no_parties().unwrap();
+        assert!(!shop
+            .store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.name == "Ahmed")
+            .unwrap()
+            .can_access_credit());
     }
 
     #[test]
@@ -2586,6 +2694,31 @@ mod tests {
         );
     }
 
+    /// A guest's phone adds only what the guest menu offers — never a raw
+    /// material or a sold-out dish — and not a flood of them.
+    #[test]
+    fn guests_add_only_what_the_guest_menu_offers() {
+        let shop = shop();
+        let t = shop.store.add_table_in_area("Q1", "Dine In").unwrap();
+        let gas = Product::new_raw_material("Gas", "kg");
+        let mut off = Product::new_basic(new_id(), "Off today", Money::from_rupees(10));
+        off.available = false;
+        let tea = Product::new_basic(new_id(), "Tea", Money::from_rupees(20));
+        for p in [&gas, &off, &tea] {
+            shop.store.upsert_product(p).unwrap();
+        }
+        assert!(!shop.store.menu_public_json().unwrap().contains("Gas"));
+        shop.store
+            .public_add_to_table(&t.id, &[gas.id.clone(), off.id.clone(), tea.id.clone()])
+            .unwrap();
+        let order = shop.store.running_order(&t.id).unwrap().unwrap();
+        let names: Vec<_> = order.live_lines().map(|l| l.name.clone()).collect();
+        assert_eq!(names, vec!["Tea".to_string()]);
+        let flood = vec![tea.id.clone(); GUEST_ORDER_MAX_ITEMS + 1];
+        assert!(shop.store.public_add_to_table(&t.id, &flood).is_err());
+        let _ = std::fs::remove_file(&shop.path);
+    }
+
     #[test]
     fn lan_public_html_pages_ok() {
         let shop = shop();
@@ -2600,7 +2733,9 @@ mod tests {
         assert!(kiosk.contains("<html") || kiosk.contains("menu"), "{kiosk}");
         let table = shop.store.table_order_html(&t.id).unwrap();
         assert!(table.contains("<html") || table.contains("L1"), "{table}");
+        // The owner's panel says what happened in words; LAN paths and
+        // connector jargon live in the docs and the ℹ tip, never here.
         let ops = shop.store.ops_panel_text().unwrap();
-        assert!(ops.contains("/display"), "{ops}");
+        assert!(ops.contains("Waitlist") && !ops.contains("/display"), "{ops}");
     }
 }

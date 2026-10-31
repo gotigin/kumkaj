@@ -162,10 +162,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             *nav_suppress_click().lock().unwrap() = false;
             return None;
         }
-        let order = {
-            let st = app_state().lock().unwrap();
-            nav_display_order(&st.nav_order, &st.nav_hidden)
-        };
+        let order = current_nav_chrome_order();
         let bottom = self.bottom_nav_pairs();
         let rail = self.rail_nav_pairs();
         for slot in 0..order.len() {
@@ -675,7 +672,6 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_attachments_last_expense), rtl);
         self.align_label(cx, ids!(h_bank_reconciliation), rtl);
         self.align_label(cx, ids!(h_spreadsheet_csv), rtl);
-        self.align_label(cx, ids!(shop_badge), rtl);
         self.align_label(cx, ids!(books_help), rtl);
         self.align_label(cx, ids!(sell_help), rtl);
         self.align_label(cx, ids!(buy_help), rtl);
@@ -731,6 +727,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(tip_input),
             ids!(table_area_input),
             ids!(table_range_input),
+            ids!(table_remove_input),
             ids!(bill_header_input),
             ids!(fssai_input),
             ids!(bill_footer_input),
@@ -868,6 +865,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(line_action_back), "back"),
             (ids!(line_action_go), "confirm"),
             (ids!(table_range_add), "add_these_tables"),
+            (ids!(table_remove_btn), "remove_these_tables"),
             (ids!(client_find_btn), "find_server"),
             (ids!(bill_format_save), "save_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
@@ -902,6 +900,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(tip_input), "tip_ph"),
             (ids!(table_area_input), "table_area_ph"),
             (ids!(table_range_input), "table_range_ph"),
+            (ids!(table_remove_input), "table_remove_ph"),
             (ids!(bill_header_input), "bill_header_ph"),
             (ids!(fssai_input), "fssai_ph"),
             (ids!(upi_vpa_input), "upi_vpa_ph"),
@@ -1296,10 +1295,11 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             help.set_nav_icon(cx, NavTab::Floor);
             help.set_tip(&plain_display_text(&s("floor_help")));
         }
-        self.ui
-            .widget(cx, ids!(settings_lan_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("lan_pages_help")));
+        {
+            let help = self.ui.widget(cx, ids!(settings_lan_help)).as_info_help();
+            help.set_title(cx, &s("lan_pages_heading"));
+            help.set_tip(&plain_display_text(&s("lan_pages_help")));
+        }
         {
             let help = self.ui.widget(cx, ids!(kitchen_help)).as_info_help();
             help.set_title(cx, &s("kitchen"));
@@ -1356,7 +1356,6 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(sale_attach_pdf)).set_text(cx, &s("attach_pdf"));
         self.ui.button(cx, ids!(sale_attach_photo)).set_text(cx, &s("attach_photo"));
         // send_kot_btn text is set in sync_chrome (names the kitchens).
-        self.ui.widget(cx, ids!(shop_badge)).set_text(cx, &plain_display_text(&s("shop")));
         self.ui.button(cx, ids!(staff_add_cashier)).set_text(cx, &s("add_staff"));
         self.ui.button(cx, ids!(staff_deactivate)).set_text(cx, &s("remove_selected"));
         self.ui.button(cx, ids!(staff_role_cashier)).set_text(cx, &s("role_cashier"));

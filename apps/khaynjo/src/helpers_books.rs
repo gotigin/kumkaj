@@ -79,9 +79,9 @@ fn resolve_printer_route_key(
     "bill".into()
 }
 
-/// Append a pool printer (by label or id) to the focused route; save if possible.
-/// Returns Ok(true) if added or already on the route, Ok(false) if the pool is empty
-/// or the name was not found.
+/// Assign a pool printer to the focused Bill/kitchen route (replaces any
+/// previous printers there — shops expect one printer per place). Saves.
+/// Returns false if the pool is empty or the name was not found.
 fn add_printer_to_focused_route(st: &mut AppState, label_or_id: &str) -> bool {
     let pick = label_or_id.trim();
     if pick.is_empty() || st.printer_draft.printers.is_empty() {
@@ -99,9 +99,8 @@ fn add_printer_to_focused_route(st: &mut AppState, label_or_id: &str) -> bool {
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
     let route = st.printer_draft.route_mut(key);
-    if !route.iter().any(|id| id == &pid) {
-        route.push(pid);
-    }
+    // Replace — append left the old printer first so "change" never stuck.
+    *route = vec![pid];
     if let Some(base) = st.data_base.as_ref() {
         let _ = print_share::save_device_printers(base, &st.printer_draft);
     }
@@ -118,11 +117,7 @@ fn pending_kot_destinations(
 ) -> Vec<(String, usize)> {
     let mut out: Vec<(String, String, usize)> = Vec::new(); // id, name, count
     for line in lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-        let sid = products
-            .iter()
-            .find(|p| p.id == line.product_id)
-            .map(|p| p.station_id.as_str())
-            .unwrap_or("");
+        let sid = line.kitchen_station_id(products);
         let name = if sid.is_empty() {
             unassigned.to_string()
         } else {
@@ -230,11 +225,8 @@ fn printer_route_rows(
         print_share::RouteKey::Bill,
         focus.trim() == "bill",
     ));
-    rows.push(route_row(
-        &t("route_default_kitchen"),
-        print_share::RouteKey::Kot { station_id: "" },
-        focus.trim() == "kot:",
-    ));
+    // Real kitchen stations only — never invent a "No station" row.
+    // Dishes with no station fall through to Bill in `route_for`.
     for s in stations {
         let key = format!("kot:{}", s.id);
         // Station name alone — each station has its own printer list.

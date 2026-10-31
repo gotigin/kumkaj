@@ -825,7 +825,12 @@ fn en(key: &str) -> String {
         "copy_party_ledger_csv" => "Copy party ledger CSV",
         "copy_receipt" => "Copy receipt",
         "share_whatsapp" => "Share WhatsApp",
+        "lan_pages_heading" => "Guest pages on Wi‑Fi",
         "lan_pages_help" => "On this shop’s Wi‑Fi, guest pages work for display board, tokens, expo, kiosk, table QR, and feedback. Guests on mobile data need Cloud later. Card terminal / payment link is optional when the internet is up — it never blocks the counter.",
+        "diag_send_heading" => "Share off this device",
+        "kot_dest_heading" => "Kitchen station",
+        "optional_login_heading" => "Optional login",
+        "rights_heading" => "Rights",
         "ops_panel" => "Local ops",
         "crm_heading" => "Guests & messages",
         "crm_help" => "Birthday, loyalty, inactive and top guests — queue SMS or WhatsApp intents. Use {name} and {points} in the message. Owner taps send; nothing blasts by itself.",
@@ -960,15 +965,17 @@ fn en(key: &str) -> String {
         "autostart_done_on" => "This computer now opens the app when it starts — the shop's server is back after a power cut.",
         "autostart_done_off" => "This computer no longer opens the app when it starts.",
         "device_forgotten" => "The shop forgot this device — pair it again with the shop's current code. Orders waiting on it are kept.",
-        "lan_offline" => "Offline",
+        "lan_offline" => "Shop server unreachable",
         "forget_device" => "Forget",
         "last_seen" => "seen",
         "new_pair_code" => "New pairing code",
         "kot_waiting" => "Waiting to send",
-        "lan_offline_waiting" => "Offline · {n} waiting",
+        "lan_offline_waiting" => "Shop server unreachable · {n} waiting",
+        "lan_connecting" => "Connecting to shop…",
         "lan_sending" => "{n} sending",
         "lan_sign_in_to_send" => "Sign in again to send {n}",
         "lan_pair_again" => "Pair this device again",
+        "lan_update_app" => "Update the app — this device and the shop's server have different versions",
         "allow_firewall" => "Allow other devices to connect",
         "firewall_blocked" => "This computer's firewall is blocking other devices — tap Allow other devices to connect.",
         "firewall_waiting" => "Waiting for the admin prompt…",
@@ -995,11 +1002,11 @@ fn en(key: &str) -> String {
         "printers_help" => "Add each printer once — a network IP (e.g. 192.168.1.50) or a name from Find.",
         "printers_pool_heading" => "1. Your printers",
         "printers_pool_empty" => "(none yet — add one below)",
-        "printers_routes_help" => "Tap Bill or a kitchen, then tap a printer name to assign it there.",
+        "printers_routes_help" => "Tap Bill or a kitchen in the list, then tap one printer below. That printer replaces any previous one for that place (saved immediately).",
         "station_manage_heading" => "Add or remove a kitchen station",
         "printers_routes_heading" => "2. What prints where",
-        "route_editing" => "Assigning: {name} — tap a printer below",
-        "route_assigned" => "{place} → {printer}",
+        "route_editing" => "Assigning: {name} — tap one printer below (replaces the old one)",
+        "route_assigned" => "{place} → {printer} (saved)",
         "printer_label_ph" => "Name (e.g. Kitchen)",
         "printer_target_ph" => "Address or system name",
         "printer_target_default" => "this computer's usual printer (blank address)",
@@ -1311,6 +1318,8 @@ fn en(key: &str) -> String {
         "table_area_ph" => "Area (e.g. Dine In, Parcel, AC)",
         "table_range_ph" => "Many at once: D1-D20",
         "add_these_tables" => "Add these tables",
+        "remove_these_tables" => "Remove these tables",
+        "table_remove_ph" => "Remove: T1-T24, or one table's name",
         "find_server" => "Find the shop's server",
         "bill_format" => "Bill format",
         "bill_format_help" => "Printed under your restaurant's name on every bill. Separate lines with | (e.g. MG Road, Rajkot | Ph 98250 00000).",
@@ -1928,7 +1937,7 @@ mod tests {
             "device_forgotten",
             "lan_offline",
             "forget_device", "last_seen", "new_pair_code",
-            "kot_waiting", "lan_offline_waiting", "lan_sending", "lan_sign_in_to_send", "lan_pair_again",
+            "kot_waiting", "lan_offline_waiting", "lan_connecting", "lan_sending", "lan_sign_in_to_send", "lan_pair_again", "lan_update_app",
             "allow_firewall", "firewall_blocked", "firewall_waiting",
             "lan_join_help", "lan_pair_status", "lan_join_help_no_addr", "lan_no_address", "lan_not_listening", "lan_tills_off", "paired_with", "not_paired", "choose_device_use", "paired_note", "last_update_at", "pair_intro", "queue_waiting", "queue_tries", "save_backup_copy", "backup_copy_saved", "backup_copy_overdue", "backup_copy_failed", "clock_off", "printers_heading", "printers_help", "printers_pool_heading", "printers_pool_empty", "printers_routes_heading", "printers_routes_help", "station_manage_heading", "printer_label_ph", "printer_target_ph", "printer_target_default", "add_printer", "remove_printer", "route_pick_ph", "route_bill", "route_default_kitchen", "route_kot_station", "route_dont_print", "route_up", "route_down", "route_remove", "route_clear", "save_printers", "print_test_page", "printers_saved", "test_page_sent", "printers_found", "find_printers", "printers_looking", "printers_tap_find", "printers_none_found", "kot_printer_ph", "bill_printer_ph", "kot_print_on", "kot_print_off", "queue_refused", "clear_not_accepted", "device_name_ph", "lan_last_update", "lan_not_accepted", "connected_now", "backup_failed", "backup_overdue", "disk_low",
             "connection_to_shop",
@@ -1957,7 +1966,7 @@ mod tests {
             "business_tax_id_ph", "buy", "buy_help", "buy_money_out",
             "caption_bank", "caption_bills", "caption_outstanding",
             "caption_payments_today", "caption_today", "card", "card_amount_ph",
-            "cash", "cash_amount_ph", "cash_in_hand", "cash_memo", "close_dish_list", "dish_picker_help", "dish_search_ph", "tile_free", "tile_occupied", "tile_food_ready", "tile_bill_printed", "tile_paid", "tile_bill_btn", "tile_occupy_btn", "tile_free_btn", "tile_ready_btn", "tile_undo_bill", "summary_busy", "summary_to_collect", "summary_on_floor", "unit_picker_on", "unit_picker_off", "units_picker_help", "sizes_as_items_ph", "dish_group_ph",             "discount", "remove_discount", "apply_discount", "save_opening_cash", "close_shift_print", "area_prices_ph", "discount_ph", "discount_reason_ph", "opening_float_ph", "shift_counted_ph", "opening_float", "shift_handover", "shift_since", "expected_in_drawer", "right_discount", "floor_in_kitchen", "floor_eating", "pick_category", "close_category_list", "new_category_row", "your_category", "suggested_category", "category_search_ph", "line_sent_state", "line_nc_state", "cancel_item_short", "nc_short", "charge_again_short", "move_short", "cancel_item_title", "nc_item_title", "charge_again_title", "move_item_title", "already_cooked", "not_cooked_yet", "return_to_customer", "short_by", "tip_not_sale", "right_settle", "right_cancel_sent", "right_complimentary", "right_move_table", "right_reprint", "right_allowed", "right_with_approval", "right_denied", "editing_staff", "finding_server", "no_server_found", "print_bill", "move_merge_table", "move_help", "move_target_ph", "approval_pin_ph", "move_here", "merge_into", "line_reason_ph", "line_qty_ph", "line_target_ph", "confirm", "menu_search_ph", "customer_paid_ph", "tip_ph", "table_area_ph", "table_range_ph", "add_these_tables", "find_server", "bill_format", "bill_format_help", "bill_header_ph", "fssai_ph", "bill_footer_ph", "save_bill_format", "print_brand_kit", "print_brand_kit_help", "choose_stamp", "clear_stamp", "stamp_set", "stamp_none", "choose_payment_qr", "clear_payment_qr", "payment_qr_set", "payment_qr_none", "aggregator_import", "aggregator_import_help", "import_aggregator_file", "schemes", "schemes_help", "scheme_bogo_ph", "add_scheme", "schedule_ph", "upi_vpa_ph", "upi_payee_ph", "upi_qr", "show_upi_qr", "close_upi_qr", "upi_qr_help", "kot_recall", "recently_done", "recall_kot_ph",  "team_pick_ph", "select_staff", "rights_help", "edit", "on_your_menu", "own_item_name",
+            "cash", "cash_amount_ph", "cash_in_hand", "cash_memo", "close_dish_list", "dish_picker_help", "dish_search_ph", "tile_free", "tile_occupied", "tile_food_ready", "tile_bill_printed", "tile_paid", "tile_bill_btn", "tile_occupy_btn", "tile_free_btn", "tile_ready_btn", "tile_undo_bill", "summary_busy", "summary_to_collect", "summary_on_floor", "unit_picker_on", "unit_picker_off", "units_picker_help", "sizes_as_items_ph", "dish_group_ph",             "discount", "remove_discount", "apply_discount", "save_opening_cash", "close_shift_print", "area_prices_ph", "discount_ph", "discount_reason_ph", "opening_float_ph", "shift_counted_ph", "opening_float", "shift_handover", "shift_since", "expected_in_drawer", "right_discount", "floor_in_kitchen", "floor_eating", "pick_category", "close_category_list", "new_category_row", "your_category", "suggested_category", "category_search_ph", "line_sent_state", "line_nc_state", "cancel_item_short", "nc_short", "charge_again_short", "move_short", "cancel_item_title", "nc_item_title", "charge_again_title", "move_item_title", "already_cooked", "not_cooked_yet", "return_to_customer", "short_by", "tip_not_sale", "right_settle", "right_cancel_sent", "right_complimentary", "right_move_table", "right_reprint", "right_allowed", "right_with_approval", "right_denied", "editing_staff", "finding_server", "no_server_found", "print_bill", "move_merge_table", "move_help", "move_target_ph", "approval_pin_ph", "move_here", "merge_into", "line_reason_ph", "line_qty_ph", "line_target_ph", "confirm", "menu_search_ph", "customer_paid_ph", "tip_ph", "table_area_ph", "table_range_ph", "add_these_tables", "remove_these_tables", "table_remove_ph", "find_server", "bill_format", "bill_format_help", "bill_header_ph", "fssai_ph", "bill_footer_ph", "save_bill_format", "print_brand_kit", "print_brand_kit_help", "choose_stamp", "clear_stamp", "stamp_set", "stamp_none", "choose_payment_qr", "clear_payment_qr", "payment_qr_set", "payment_qr_none", "aggregator_import", "aggregator_import_help", "import_aggregator_file", "schemes", "schemes_help", "scheme_bogo_ph", "add_scheme", "schedule_ph", "upi_vpa_ph", "upi_payee_ph", "upi_qr", "show_upi_qr", "close_upi_qr", "upi_qr_help", "kot_recall", "recently_done", "recall_kot_ph",  "team_pick_ph", "select_staff", "rights_help", "edit", "on_your_menu", "own_item_name",
             "duress_heading", "duress_help", "duress_pin_ph", "duress_confirm_ph", "save_duress_pin", "clear_duress_pin", "duress_on", "duress_off", "duress_saved", "duress_cleared",
             "categories_help", "category_new_ph", "change_my_pin_heading",
             "chip_clear_credit", "chip_missing_customer", "chip_no_customer",
@@ -1966,7 +1975,7 @@ mod tests {
             "code_bag_ph", "collect_at_counter", "collect_payment",
             "connect_to_server", "continue", "conv_factor_ph", "copy_day_book_csv",
             "copy_day_close", "copy_items_csv", "copy_outstanding_csv",
-            "copy_parties_csv", "copy_party_ledger_csv", "copy_receipt", "share_whatsapp", "lan_pages_help", "ops_panel", "split_evenly", "waitlist", "fire_course", "hold_item", "waiter_call", "waitlist_add", "floor_view_grid", "floor_view_layout", "floor_layout_x", "floor_layout_y", "floor_layout_w", "floor_layout_h", "floor_layout_save", "floor_layout_open", "floor_layout_edit", "floor_layout_pick", "floor_layout_saved", "floor_layout_nudge_left", "floor_layout_nudge_right", "floor_layout_nudge_up", "floor_layout_nudge_down", "sibling_pickers_help", "bulk_price_apply", "card_terminal_optional", "crm_heading", "crm_help", "crm_queue_sms", "crm_queue_wa", "crm_seg_bday_week", "crm_seg_bday_month", "crm_seg_phone", "crm_seg_loyalty", "crm_seg_inactive", "crm_seg_top", "birthday_ph", "crm_message_ph", "till_apply_redeem", "till_clear_redeem", "till_wallet_topup", "till_issue_voucher", "till_points_ph", "till_wallet_ph", "till_voucher_code_ph", "till_voucher_amt_ph", "till_wallet_topup_ph", "till_voucher_issue_amt_ph", "till_voucher_issue_code_ph",
+            "copy_parties_csv", "copy_party_ledger_csv", "copy_receipt", "share_whatsapp", "lan_pages_heading", "lan_pages_help", "diag_send_heading", "kot_dest_heading", "optional_login_heading", "rights_heading", "ops_panel", "split_evenly", "waitlist", "fire_course", "hold_item", "waiter_call", "waitlist_add", "floor_view_grid", "floor_view_layout", "floor_layout_x", "floor_layout_y", "floor_layout_w", "floor_layout_h", "floor_layout_save", "floor_layout_open", "floor_layout_edit", "floor_layout_pick", "floor_layout_saved", "floor_layout_nudge_left", "floor_layout_nudge_right", "floor_layout_nudge_up", "floor_layout_nudge_down", "sibling_pickers_help", "bulk_price_apply", "card_terminal_optional", "crm_heading", "crm_help", "crm_queue_sms", "crm_queue_wa", "crm_seg_bday_week", "crm_seg_bday_month", "crm_seg_phone", "crm_seg_loyalty", "crm_seg_inactive", "crm_seg_top", "birthday_ph", "crm_message_ph", "till_apply_redeem", "till_clear_redeem", "till_wallet_topup", "till_issue_voucher", "till_points_ph", "till_wallet_ph", "till_voucher_code_ph", "till_voucher_amt_ph", "till_wallet_topup_ph", "till_voucher_issue_amt_ph", "till_voucher_issue_code_ph",
             "copy_report", "counted_cash_ph", "counter", "counter_locked",
             "country_code_ph", "country_pack_help", "country_tax", "create_backup",
             "create_new_server", "credit", "credit_customers", "credit_help",
@@ -2060,19 +2069,23 @@ mod tests {
             "write_off_ap", "write_off_heading", "write_off_nil", "your_brand",
             "your_categories", "your_favorites", "your_items",
         ];
+        // Every gap at once, so one run says everything still to translate.
+        let mut gaps = Vec::new();
         for lang in LANGS {
             for key in KEYS {
                 let value = t(lang, key);
-                assert_ne!(value, *key, "{lang} left {key} untranslated");
-                assert!(!value.is_empty(), "{lang} {key}");
-                // A chrome row (or the per-language table) must cover the
-                // key — falling back to the English text is a failure.
-                assert!(
-                    chrome_extra(lang, key).is_some() || value != en(key),
-                    "{lang} falls back to English for {key}"
-                );
+                if value == *key {
+                    gaps.push(format!("{lang} left {key} untranslated"));
+                } else if value.is_empty() && !en(key).is_empty() {
+                    gaps.push(format!("{lang} {key} is empty"));
+                } else if chrome_extra(lang, key).is_none() && value == en(key) && !en(key).is_empty() {
+                    // A chrome row (or the per-language table) must cover the
+                    // key — falling back to the English text is a failure.
+                    gaps.push(format!("{lang} falls back to English for {key}"));
+                }
             }
         }
+        assert!(gaps.is_empty(), "{} gaps:\n{}", gaps.len(), gaps.join("\n"));
         assert_eq!(t("en", "sold_out"), "Unavailable");
         assert_eq!(t("gu", "cash"), "રોકડ");
         assert_eq!(t("gu", "owed"), "બાકી");

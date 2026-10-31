@@ -19,11 +19,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let team = s("team");
         let settings = s("nav_settings");
         let lock = s("nav_lock");
-        // Slots pack the visible arrangement (hidden peers take no slot).
-        let order = {
-            let st = app_state().lock().unwrap();
-            nav_display_order(&st.nav_order, &st.nav_hidden)
-        };
+        // Slots pack preference + rights (must match paint_nav_tabs).
+        let order = current_nav_chrome_order();
         let label_for = |tab: NavTab| -> &str {
             match tab {
                 NavTab::Books => &books,
@@ -127,8 +124,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             },));
         self.ui.button(cx, ids!(image_clear)).set_text(cx, &s("clear_photo"));
         self.ui.button(cx, ids!(image_pick)).set_text(cx, &s("photo"));
-        self.ui.button(cx, ids!(role_owner)).set_text(cx, &s("owner"));
-        self.ui.button(cx, ids!(role_staff)).set_text(cx, &s("staff"));
+        for path in [ids!(role_owner), ids!(role_owner_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("owner"));
+        }
+        for path in [ids!(role_staff), ids!(role_staff_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("staff"));
+        }
         self.ui.button(cx, ids!(lock_staff_prev)).set_text(cx, &s("prev"));
         self.ui.button(cx, ids!(lock_staff_next)).set_text(cx, &s("next"));
         self.ui.button(cx, ids!(pin_ok)).set_text(cx, &s("ok"));
@@ -265,7 +266,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         {
             let help = self.ui.widget(cx, ids!(server_pick_help)).as_info_help();
-            help.set_title(cx, "");
+            help.set_title(cx, &s("choose_server"));
             help.set_tip(&plain_display_text(&s("choose_server_hint")));
         }
         {
@@ -454,15 +455,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
         );
         self.ui.view(cx, ids!(header)).set_visible(cx, unlocked);
-        self.ui.view(cx, ids!(today_bar)).set_visible(cx, unlocked);
+        let show_today = unlocked
+            && session_may_see_today(app_state().lock().unwrap().session.as_ref());
+        self.ui.view(cx, ids!(today_bar)).set_visible(cx, show_today);
         self.apply_shell_layout(cx, unlocked);
         self.paint_nav_tabs(cx, screen);
     }
 
     /// Phone (<720): bottom tabs + stacked Order ticket panes.
-    /// Tablet/desktop (≥720): side rail; side-by-side ticket when content is
-    /// wide enough. Desk side-by-side uses Fixed panes inside `pos_ticket`
-    /// ScrollX so mouse press-drag / wheel can pan.
+    /// Tablet/desktop (≥720): side rail; Added items | Counter side by side
+    /// under the sticky type strip (Fixed panes in `pos_ticket` ScrollX —
+    /// neighbours, with H-pan when mins do not fit). Waiters (Settle Denied):
+    /// Counter dock hidden; cart takes the full ticket width.
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
         const DIVIDER_W: f64 = 6.0;
@@ -523,7 +527,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .max(280.0);
         *content_width().lock().unwrap() = content_w;
 
-        for path in [ids!(pos_desk_sticky), ids!(pos_catalog), ids!(items_body)] {
+        for path in [ids!(pos_catalog), ids!(items_body), ids!(catalog_header)] {
             set_view_walk(
                 cx,
                 &self.ui.view(cx, path),
@@ -535,7 +539,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             );
         }
 
-        let side_by_side = content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
+        let may_settle =
+            session_may_settle(app_state().lock().unwrap().session.as_ref());
+        // Owner/cashier: keep Added items | Counter as neighbours whenever the
+        // content column is tablet-wide. Waiter: no Counter → full-width cart.
+        let side_by_side = may_settle && content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
         let ticket_row = self.ui.view(cx, ids!(pos_ticket_row));
         set_view_flow(
             cx,
@@ -559,17 +567,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ..Default::default()
             },
         );
-        let (left_w, right_w) = if side_by_side {
+        let (left_w, right_w) = if !may_settle {
+            (Size::fill(), Size::Fixed(0.0))
+        } else if side_by_side {
             let desk_avail = (content_w - 32.0).max(200.0);
             let min_total = DESK_LEFT_MIN + DESK_RIGHT_MIN + DESK_GAP;
             if desk_avail >= min_total {
                 let left = desk_avail * (DESK_LEFT_MIN / (DESK_LEFT_MIN + DESK_RIGHT_MIN));
                 (Size::Fixed(left), Size::Fixed(desk_avail - DESK_GAP - left))
             } else {
+                // Still side by side — ScrollX pans; never stack for the owner.
                 (Size::Fixed(DESK_LEFT_MIN), Size::Fixed(DESK_RIGHT_MIN))
             }
         } else {
-            (size_fill(1.0, content_w), size_fill(1.0, content_w))
+            (Size::fill(), Size::fill())
         };
         set_view_walk(
             cx,
@@ -590,7 +601,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             },
         );
         self.ui.view(cx, ids!(pos_scroll)).set_visible(cx, true);
-        self.ui.view(cx, ids!(counter_dock)).set_visible(cx, true);
+        self.ui.view(cx, ids!(counter_dock)).set_visible(cx, may_settle);
     }
 
     /// Nav slot hardware in DSL order. Slots are positions; which tab a
@@ -744,11 +755,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     /// Exactly one nav peer highlighted for `screen` (bottom and/or rail).
+    /// Slot order packs preference + rights: peers the signed-in person cannot
+    /// open never take a slot (draw used to re-show them after sync_chrome hid
+    /// them — that left forbidden tabs visible on Client / staff unlocks).
     fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
-        let order = {
-            let st = app_state().lock().unwrap();
-            nav_display_order(&st.nav_order, &st.nav_hidden)
-        };
+        let order = current_nav_chrome_order();
         let active = nav_tab_for(screen);
         // While dragging, the slot under the pointer wears the active face
         // so the drop target is unmistakable.
@@ -1157,9 +1168,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         };
         let on_hub = panel.is_none();
         self.ui.view(cx, ids!(settings_hub)).set_visible(cx, on_hub);
+        // Body Back removed — header_back (left of brand) is the only back control.
         self.ui
             .button(cx, ids!(settings_detail_back))
-            .set_visible(cx, !on_hub);
+            .set_visible(cx, false);
         let panels: &[(&[LiveId], &str)] = &[
             (ids!(settings_panel_language), "language"),
             (ids!(settings_panel_country), "country"),
@@ -1248,10 +1260,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_diag_level))
             .set_text(cx, &plain_display_text(&s("diag_level")));
-        self.ui
-            .widget(cx, ids!(diag_send_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("diag_send_help")));
+        {
+            let help = self.ui.widget(cx, ids!(diag_send_help)).as_info_help();
+            help.set_title(cx, &s("diag_send_heading"));
+            help.set_tip(&plain_display_text(&s("diag_send_help")));
+        }
         self.ui
             .button(cx, ids!(diag_support_start))
             .set_text(cx, &s("diag_support_start"));

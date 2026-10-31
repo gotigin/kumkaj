@@ -412,12 +412,13 @@ impl StaffFeatures {
                 branches: false,
                 rights: None,
             },
-            // A waiter is a cashier who also works the floor.
+            // Waiter: takes orders / floor / KOT — never books, Parties,
+            // Counter settle, or day's business (Sales + Settle Denied).
             StaffRole::Waiter => Self {
                 sell: true,
                 items: false,
                 sales: false,
-                credit: true,
+                credit: false,
                 floor: true,
                 // Captains bump Ready → Done when they serve; cooking Start
                 // still works if the shop has no separate kitchen tablet.
@@ -883,6 +884,12 @@ impl StaffMember {
 
     pub fn can_access_backup(&self) -> bool {
         self.effective_features().backup
+    }
+
+    /// Settings (printers, LAN, shop setup). Owner, anyone with Backup, or
+    /// Sales (managers). Waiters / kitchen never see a dead Settings tab.
+    pub fn can_access_settings(&self) -> bool {
+        self.is_owner() || self.can_access_backup() || self.can_access_sales()
     }
 
     pub fn can_access_inventory(&self) -> bool {
@@ -2103,6 +2110,11 @@ pub struct CartLine {
     /// tap Hold again to include it. Not the same as a sent-line kitchen hold.
     #[serde(default)]
     pub hold_send: bool,
+    /// Kitchen for this ticket line. Empty = use the menu item's station.
+    /// Set by Order desk "Use this station" (works on an extra till without
+    /// rewriting the shop catalogue).
+    #[serde(default)]
+    pub station_id: String,
 }
 
 /// How many modifier chips fit on one cart row.
@@ -2125,6 +2137,19 @@ pub fn menu_price_error(price: Money) -> Option<String> {
 impl CartLine {
     fn sync_qty_from_milli(&mut self) {
         self.qty = milli_to_whole_qty(self.qty_milli);
+    }
+
+    /// Station this line prints to: ticket override, else the menu item.
+    pub fn kitchen_station_id<'a>(&'a self, products: &'a [Product]) -> &'a str {
+        let own = self.station_id.trim();
+        if !own.is_empty() {
+            return own;
+        }
+        products
+            .iter()
+            .find(|p| p.id == self.product_id)
+            .map(|p| p.station_id.as_str())
+            .unwrap_or("")
     }
 
     /// Step when +/- is tapped: 1.0 unit, or 0.1 for weight units.
@@ -2318,6 +2343,7 @@ impl Cart {
                 complimentary: false,
                 kot_id: String::new(),
                 hold_send: false,
+                station_id: String::new(),
             };
             line.sync_qty_from_milli();
             self.lines.push(line);
@@ -2755,6 +2781,7 @@ impl Cart {
                         complimentary: false,
                         kot_id: String::new(),
                         hold_send: false,
+                        station_id: l.station_id.clone(),
                     };
                     line.sync_qty_from_milli();
                     line
@@ -2926,6 +2953,10 @@ pub struct SaleLine {
     /// Chosen Size / toppings at sale time (JSON array of [`ModifierOption`]).
     #[serde(default = "empty_json_array")]
     pub modifiers_json: String,
+    /// Kitchen for this line on the KOT. Empty = use the menu item's station
+    /// on the shop device. Extra tills send this so routing survives LAN.
+    #[serde(default)]
+    pub station_id: String,
 }
 
 impl SaleLine {
@@ -2963,6 +2994,7 @@ fn sale_line_from_cart(l: &CartLine, kot_sent: bool) -> SaleLine {
         unit_label: l.unit_label.clone(),
         kot_sent,
         modifiers_json: "[]".into(),
+        station_id: l.station_id.clone(),
     };
     line.set_modifiers_from(&l.applied_modifiers);
     line
@@ -3959,6 +3991,7 @@ impl RunningOrder {
                     complimentary: l.complimentary,
                     kot_id: l.kot_id.clone(),
                     hold_send: false,
+                    station_id: String::new(),
                 };
                 line.sync_qty_from_milli();
                 line
@@ -4640,6 +4673,26 @@ mod tests {
         assert_eq!(KotStatus::Preparing.prev(), Some(KotStatus::New));
         assert_eq!(KotStatus::New.prev(), None);
         assert_eq!(KotStatus::Cancelled.prev(), None);
+    }
+
+    #[test]
+    fn settings_access_matches_who_may_open_the_tab() {
+        let member = |role: StaffRole| StaffMember {
+            id: "1".into(),
+            name: "X".into(),
+            role_title: String::new(),
+            role,
+            pin_hash: String::new(),
+            active: true,
+            login_id: String::new(),
+            password_hash: String::new(),
+            features: StaffFeatures::for_role(role),
+        };
+        assert!(member(StaffRole::Owner).can_access_settings());
+        assert!(member(StaffRole::Manager).can_access_settings());
+        assert!(!member(StaffRole::Waiter).can_access_settings());
+        assert!(!member(StaffRole::Kitchen).can_access_settings());
+        assert!(!member(StaffRole::Cashier).can_access_settings());
     }
 }
 
