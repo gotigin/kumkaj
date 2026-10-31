@@ -38,20 +38,22 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
     /// Ephemeral chrome snack (info / success / warn / error). Undo snack stays separate.
     fn show_snack(&mut self, cx: &mut Cx, kind: SnackKind, msg: impl Into<String>) {
         let msg = msg.into();
-        if msg.trim().is_empty() {
+        let msg = msg.trim().to_string();
+        if msg.is_empty() {
             return;
         }
         {
             let mut st = app_state().lock().unwrap();
-            if !st.snack_text.is_empty() && kind.priority() < st.snack_kind.priority() {
+            if !st.snack_text.trim().is_empty() && kind.priority() < st.snack_kind.priority() {
                 return;
             }
             if !st.snack_timer.is_empty() {
                 cx.stop_timer(st.snack_timer);
             }
+            let secs = kind.duration_secs(st.snack_secs);
             st.snack_text = msg;
             st.snack_kind = kind;
-            st.snack_timer = cx.start_timeout(kind.duration_secs());
+            st.snack_timer = cx.start_timeout(secs);
         }
         self.paint_app_snackbar(cx);
     }
@@ -89,12 +91,16 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
 
     fn paint_app_snackbar(&mut self, cx: &mut Cx) {
         let (visible, text, kind) = {
-            let st = app_state().lock().unwrap();
-            (
-                !st.snack_text.is_empty(),
-                st.snack_text.clone(),
-                st.snack_kind,
-            )
+            let mut st = app_state().lock().unwrap();
+            // Never show a blank bar (whitespace-only / cleared mid-frame).
+            if st.snack_text.trim().is_empty() {
+                if !st.snack_text.is_empty() {
+                    st.snack_text.clear();
+                }
+                (false, String::new(), SnackKind::Info)
+            } else {
+                (true, st.snack_text.clone(), st.snack_kind)
+            }
         };
         self.ui
             .view(cx, ids!(app_snackbar))
@@ -112,6 +118,8 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                 self.ui
                     .widget(cx, label)
                     .set_text(cx, &plain_display_text(&text));
+            } else {
+                self.ui.widget(cx, label).set_text(cx, "");
             }
         }
     }

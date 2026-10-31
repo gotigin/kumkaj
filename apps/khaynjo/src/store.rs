@@ -4515,6 +4515,20 @@ impl Store {
         self.meta_set("ui_nav_hidden", csv)
     }
 
+    /// Snackbar auto-dismiss seconds for this signed-in user (default 10).
+    pub fn snack_secs(&self, user_key: &str) -> Result<f64, String> {
+        let raw = self.amount_vis_meta("ui_snack_secs", user_key)?;
+        Ok(raw
+            .and_then(|s| s.parse::<f64>().ok())
+            .map(crate::snack::SnackKind::clamp_secs)
+            .unwrap_or(crate::snack::SnackKind::DEFAULT_SECS))
+    }
+
+    pub fn set_snack_secs(&self, user_key: &str, secs: f64) -> Result<(), String> {
+        let secs = crate::snack::SnackKind::clamp_secs(secs);
+        self.meta_set(&format!("ui_snack_secs:{user_key}"), &format!("{secs}"))
+    }
+
     /// Per-user amount visibility (`user_key` = `"owner"` or a staff id).
     /// Global across screens for that user; not shared with other users.
     fn amount_vis_meta(&self, kind: &str, user_key: &str) -> Result<Option<String>, String> {

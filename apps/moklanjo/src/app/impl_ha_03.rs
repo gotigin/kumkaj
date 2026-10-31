@@ -901,7 +901,10 @@ impl App {
                 self.sync_chrome(cx);
             }
         }
-        if self.ui.button(cx, ids!(team_pick_btn)).clicked(actions)
+        let team_pick_now =
+            std::mem::take(&mut app_state().lock().unwrap().team_select_pending);
+        if team_pick_now
+            || self.ui.button(cx, ids!(team_pick_btn)).clicked(actions)
             || self.ui.text_input(cx, ids!(team_pick_input)).returned(actions).is_some()
         {
             let name = self.ui.text_input(cx, ids!(team_pick_input)).text();

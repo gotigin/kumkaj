@@ -1074,6 +1074,15 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             .text_input(cx, ids!(settings_station_remove_input))
             .set_empty_text(cx, s("station_remove_ph"));
         self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
+        self.ui
+            .widget(cx, ids!(h_printer_wire))
+            .set_text(cx, &plain_display_text(&s("printer_wire_heading")));
+        for path in [ids!(printer_wire_escpos), ids!(printer_wire_escpos_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("printer_wire_escpos"));
+        }
+        for path in [ids!(printer_wire_os), ids!(printer_wire_os_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("printer_wire_os"));
+        }
         self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
         self.ui.button(cx, ids!(printer_remove)).set_text(cx, &s("remove_printer"));
         self.ui.button(cx, ids!(route_up)).set_text(cx, &s("route_up"));

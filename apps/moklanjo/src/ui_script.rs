@@ -5017,9 +5017,10 @@ script_mod! {
                                 }
                                 // Pick who to edit by name; their rights below are a
                                 // draft until Save.
-                                team_pick_input := FieldInput{empty_text: "Staff name to edit"}
+                                team_pick_input := FieldInput{empty_text: "Tap a staff name in the list to edit"}
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
-                                team_pick_btn := NavBtn{text: "Select this staff"}
+                                // Pick selects immediately; keep for typed + Enter only (hidden).
+                                team_pick_btn := NavBtn{text: "Select this staff" visible: false}
                                 team_selected_label := WrapLabel{
                                     width: Fit
                                     body: " "
@@ -5395,18 +5396,19 @@ script_mod! {
                                         route_pick_label_on := SegBtnOn{text: "Label" visible: false}
                                     }
                                 }
-                                route_add_printer_input := FieldInput{empty_text: "Printer name for this route"}
+                                route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
                                 route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
                                 ActionStack{
-                                    route_add := RowPrimaryBtn{text: "Use this printer"}
-                                    route_clear := RowSecondaryBtn{text: "Don't print here"}
+                                    route_add := RowSecondaryBtn{text: "Add to route"}
+                                    route_up := RowSecondaryBtn{text: "Up"}
+                                    route_down := RowSecondaryBtn{text: "Down"}
+                                    route_remove := RowSecondaryBtn{text: "Remove last"}
+                                    route_clear := RowSecondaryBtn{text: "Clear printers for this place"}
                                 }
-                                // LiveIds kept; assign replaces + auto-saves.
-                                route_up := RowSecondaryBtn{text: "Up" visible: false}
-                                route_down := RowSecondaryBtn{text: "Down" visible: false}
-                                route_remove := RowSecondaryBtn{text: "Remove last" visible: false}
-                                printers_save := StackPrimaryBtn{text: "Save printers" visible: false}
-                                print_test_btn := RowSecondaryBtn{text: "Print a test page"}
+                                ActionStack{
+                                    printers_save := StackPrimaryBtn{text: "Save printers"}
+                                    print_test_btn := RowSecondaryBtn{text: "Print a test page"}
+                                }
                                 }
                                 h_backup := WrapLabel{body: "Backup" font_color: #x0B1220 font_size: 20.}
                                 backup_auto_label := WrapLabel{

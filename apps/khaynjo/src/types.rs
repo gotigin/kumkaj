@@ -582,7 +582,8 @@ enum BooksReportKind {
 }
 
 /// Default sidebar / bottom-bar arrangement (matches the DSL slot order).
-const NAV_TABS: [NavTab; 15] = [
+/// Team is Settings → Team (not a chrome peer).
+const NAV_TABS: [NavTab; 14] = [
     NavTab::Books,
     NavTab::Sell,
     NavTab::Buy,
@@ -595,7 +596,6 @@ const NAV_TABS: [NavTab; 15] = [
     NavTab::Inventory,
     NavTab::Branches,
     NavTab::Credit,
-    NavTab::Team,
     NavTab::Settings,
     NavTab::Lock,
 ];

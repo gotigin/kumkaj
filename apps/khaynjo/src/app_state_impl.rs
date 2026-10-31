@@ -35,6 +35,7 @@ impl AppState {
             printer_route_key: "bill".into(),
             settings_panel: None,
             printer_selected_id: None,
+            printer_add_wire: print_share::PrinterWire::OsDocument,
             owner_setup_complete: false,
             onboarding_complete: false,
             venue_mode: VenueMode::Restaurant,
@@ -59,6 +60,7 @@ impl AppState {
             snack_text: String::new(),
             snack_kind: SnackKind::Info,
             snack_timer: Timer::empty(),
+            snack_secs: SnackKind::DEFAULT_SECS,
             live_timer: Timer::empty(),
             pin_buffer: String::new(),
             pin_visible: false,
@@ -248,6 +250,11 @@ impl AppState {
             self.amount_keys_peek = parse_amount_keys_hidden(
                 store.amount_keys_peek_csv(&user).ok().flatten().as_deref(),
             );
+            self.snack_secs = store
+                .snack_secs(&user)
+                .unwrap_or(SnackKind::DEFAULT_SECS);
+        } else {
+            self.snack_secs = SnackKind::DEFAULT_SECS;
         }
         self.books_sections_open = parse_books_sections(store.books_sections_csv()?.as_deref());
         self.open_kots = store.list_open_kots().unwrap_or_default();
@@ -738,12 +745,7 @@ impl AppState {
                     std::collections::HashMap::new();
                 let mut unassigned_n = 0usize;
                 for line in self.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-                    let sid = self
-                        .products
-                        .iter()
-                        .find(|p| p.id == line.product_id)
-                        .map(|p| p.station_id.as_str())
-                        .unwrap_or("");
+                    let sid = line.kitchen_station_id(&self.products);
                     if sid.is_empty() {
                         unassigned_n += 1;
                     } else {
@@ -1285,6 +1287,7 @@ impl AppState {
             return;
         };
         let Some(user) = self.session.as_ref().map(lan_key) else {
+            self.snack_secs = SnackKind::DEFAULT_SECS;
             return;
         };
         self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
@@ -1292,6 +1295,9 @@ impl AppState {
             parse_amount_keys_hidden(store.amount_keys_hidden_csv(&user).ok().flatten().as_deref());
         self.amount_keys_peek =
             parse_amount_keys_hidden(store.amount_keys_peek_csv(&user).ok().flatten().as_deref());
+        self.snack_secs = store
+            .snack_secs(&user)
+            .unwrap_or(SnackKind::DEFAULT_SECS);
     }
 
     fn money(&self, m: Money) -> String {

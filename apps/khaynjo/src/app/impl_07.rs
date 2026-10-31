@@ -658,13 +658,18 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     }
 
     fn show_undo_snackbar(&mut self, cx: &mut Cx, sale_id: String, text: String) {
+        let text = text.trim().to_string();
+        if text.is_empty() {
+            return;
+        }
         let mut st = app_state().lock().unwrap();
         if !st.undo_timer.is_empty() {
             cx.stop_timer(st.undo_timer);
         }
+        let secs = SnackKind::clamp_secs(st.snack_secs);
         st.undo_sale_id = Some(sale_id);
         st.undo_snack_text = text;
-        st.undo_timer = cx.start_timeout(10.0);
+        st.undo_timer = cx.start_timeout(secs);
     }
 
     fn clear_undo_snackbar(&mut self, cx: &mut Cx) {
@@ -1160,6 +1165,38 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             let _ = print_share::save_device_printers(base, &st.printer_draft);
         }
         Ok(st.t("station_removed").replace("{name}", &name))
+    }
+
+    /// Switch this device's active branch (list pick or typed name).
+    fn switch_active_branch(&mut self, cx: &mut Cx, wanted: &str) -> Result<String, String> {
+        let _ = cx;
+        let mut st = app_state().lock().unwrap();
+        st.require_server_role("Switch branch")?;
+        let actor = st.actor()?;
+        if !actor.can_access_branches() && !actor.is_owner() {
+            return Err("Only Owner can switch branch".into());
+        }
+        let needle = wanted.trim().to_lowercase();
+        if needle.is_empty() {
+            return Err("Type the branch name to switch to".into());
+        }
+        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let branch = store
+            .list_branches()?
+            .into_iter()
+            .find(|b| {
+                b.name.to_lowercase() == needle
+                    || b.code.to_lowercase() == needle
+                    || b.name.to_lowercase().contains(&needle)
+            })
+            .ok_or_else(|| format!("No branch matches \"{}\"", wanted.trim()))?;
+        store.set_active_branch_id(&branch.id)?;
+        st.cart.clear();
+        st.open_cart_line = None;
+        st.selected_table_id = None;
+        st.reload_all()?;
+        st.refresh_branches_text()?;
+        Ok(format!("Now selling for {}", branch.label()))
     }
 
     /// Order desk: Don't use on "Kitchen (no station)" — hold those lines

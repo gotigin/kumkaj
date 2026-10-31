@@ -17,6 +17,7 @@ impl AppState {
             draft_staff_role: StaffRole::Cashier,
             draft_features: StaffFeatures::for_role(StaffRole::Cashier),
             team_staff_id: None,
+            team_select_pending: false,
             device_role: DeviceRole::Unset,
             must_confirm_device_role: true,
             language_follow_platform: true,

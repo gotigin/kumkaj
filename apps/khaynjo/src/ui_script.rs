@@ -3954,7 +3954,9 @@ script_mod! {
                                         }
                                     }
                                 }
+                                // Team is Settings → Team (not a chrome peer).
                                 rail_team_slot := View{
+                                    visible: false
                                     width: Fill height: Fit
                                     flow: Overlay
                                     rail_team := TabBtn{text: "Team"}
@@ -5980,8 +5982,9 @@ script_mod! {
                                         station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
                                         station_add := StackPrimaryBtn{text: "Add station"}
                                         station_remove_heading := WrapLabel{body: "Remove a kitchen station" font_color: #x260B08 font_size: 15.}
-                                        station_remove_input := FieldInput{empty_text: "Station name to remove"}
+                                        station_remove_input := FieldInput{empty_text: "Tap a station in the list to remove it"}
                                         station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
+                                        // Pick removes immediately; button kept for typed + tap.
                                         station_remove := StackSecondaryBtn{text: "Remove station"}
                                     }
                                 }
@@ -6781,6 +6784,8 @@ script_mod! {
                                     settings_hub_pickers := StackSecondaryBtn{text: "Areas · stations · tax rates"}
                                     settings_hub_printers := StackSecondaryBtn{text: "Kitchen printing & printers"}
                                     settings_hub_bill := StackSecondaryBtn{text: "Bill format & schemes"}
+                                    settings_hub_team := StackSecondaryBtn{text: "Team & PINs"}
+                                    settings_hub_alerts := StackSecondaryBtn{text: "Alerts"}
                                     settings_hub_backup := StackSecondaryBtn{text: "Backup & restore"}
                                     settings_hub_diag := StackSecondaryBtn{text: "Diagnostics"}
                                     settings_hub_sidebar := StackSecondaryBtn{text: "Sidebar"}
@@ -7114,6 +7119,24 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     printer_label_input := FieldInput{empty_text: "Name (e.g. Kitchen)"}
                                     printer_target_input := FieldInput{empty_text: "Address or system name"}
                                     printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
+                                    h_printer_wire := WrapLabel{
+                                        width: Fill
+                                        body: "How to send"
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_wire_escpos := SegBtn{text: "Thermal ESC/POS"}
+                                            printer_wire_escpos_on := SegBtnOn{text: "Thermal ESC/POS" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_wire_os := SegBtn{text: "System print"}
+                                            printer_wire_os_on := SegBtnOn{text: "System print" visible: false}
+                                        }
+                                    }
                                     ActionStack{
                                         printer_add := StackSecondaryBtn{text: "Add printer"}
                                         printer_remove := StackSecondaryBtn{text: "Remove"}
@@ -7133,10 +7156,9 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_color: #x260B08
                                         font_size: 13.
                                     }
-                                    // Tap a row above, then tap a printer name —
-                                    // no second text field (it fought the list).
-                                    route_pick_input := FieldInput{empty_text: "Bill or a kitchen station" visible: false}
-                                    route_pick_suggest := mod.widgets.SuggestList{field: "route_pick" visible: false}
+                                    // Optional: type/pick Bill or a kitchen (list tap also works).
+                                    route_pick_input := FieldInput{empty_text: "Bill or a kitchen station"}
+                                    route_pick_suggest := mod.widgets.SuggestList{field: "route_pick"}
                                     route_add_printers := ActionStack{
                                         route_add_prn_0 := StackSecondaryBtn{text: "" visible: false}
                                         route_add_prn_1 := StackSecondaryBtn{text: "" visible: false}
@@ -7147,14 +7169,17 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         route_add_prn_6 := StackSecondaryBtn{text: "" visible: false}
                                         route_add_prn_7 := StackSecondaryBtn{text: "" visible: false}
                                     }
-                                    route_clear := StackSecondaryBtn{text: "Don't print here"}
-                                    // Kept for LiveId stability; assign replaces, so
-                                    // Remove/Up/Down/Save are unused chrome.
-                                    route_remove := StackSecondaryBtn{text: "Remove printer" visible: false}
+                                    ActionStack{
+                                        route_remove := StackSecondaryBtn{text: "Remove last printer"}
+                                        route_clear := StackSecondaryBtn{text: "Clear printers for this place"}
+                                    }
+                                    // Up/Down: reorder when more than one printer is on a route.
                                     route_up := StackSecondaryBtn{text: "Up" visible: false}
                                     route_down := StackSecondaryBtn{text: "Down" visible: false}
-                                    printers_save := StackPrimaryBtn{text: "Save printers" visible: false}
-                                    print_test_btn := StackSecondaryBtn{text: "Print a test page"}
+                                    ActionStack{
+                                        printers_save := StackPrimaryBtn{text: "Save printers"}
+                                        print_test_btn := StackSecondaryBtn{text: "Print a test page"}
+                                    }
                                     // Legacy heading id still filled for RTL align.
                                     h_printers := WrapLabel{body: "" visible: false}
                                     }
@@ -7290,6 +7315,22 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 scheme_add := StackPrimaryBtn{text: "Add BOGO"}
                                 }
                                                                 }
+                                settings_panel_alerts := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                        h_alerts := WrapLabel{body: "Alerts" font_color: #x260B08 font_size: 20.}
+                                        h_alerts_help := WrapLabel{
+                                            width: Fill
+                                            body: "How long status messages stay on screen for you (this login)."
+                                            font_color: #x6B4A3F
+                                            font_size: 12.
+                                        }
+                                        snack_secs_input := FieldInput{empty_text: "Seconds (3–60, default 10)"}
+                                        snack_secs_save := StackPrimaryBtn{text: "Save alert time"}
+                                    }
+                                }
                                 settings_panel_backup := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
@@ -7949,7 +7990,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                             }
                                         }
                                     }
+                                    // Team is Settings → Team (not a chrome peer).
                                     nav_team_slot := View{
+                                        visible: false
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
                                         nav_team := NavChip{text: "Team"}

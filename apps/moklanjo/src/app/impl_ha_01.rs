@@ -90,6 +90,19 @@ impl App {
                     if field == SuggestField::PartyCountry {
                         st.party_form_country = value.clone();
                     }
+                    if field == SuggestField::TeamPick {
+                        // Same as Khaynjo: pick selects — no "Select this staff".
+                        st.team_select_pending = true;
+                    }
+                    if field == SuggestField::CustomerName {
+                        if let Some(c) = st
+                            .customers
+                            .iter()
+                            .find(|c| c.name.eq_ignore_ascii_case(value.trim()))
+                        {
+                            st.status = format!("Credit customer: {}", c.name);
+                        }
+                    }
                     let party = if matches!(
                         field,
                         SuggestField::BookingOrigin | SuggestField::CustomerName
@@ -123,6 +136,13 @@ impl App {
                     self.ui
                         .text_input(cx, ids!(credit_add_phone))
                         .set_empty_text(cx, ph);
+                }
+                if field == SuggestField::RouteAddPrinter {
+                    // Pick assigns that printer to the focused route (replace).
+                    match self.assign_printer_to_focused_route(cx, &value) {
+                        Ok(msg) => self.set_status(cx, msg),
+                        Err(e) => self.set_status(cx, e),
+                    }
                 }
                 changed = true;
             }

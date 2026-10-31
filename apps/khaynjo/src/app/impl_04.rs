@@ -620,7 +620,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(nav_inventory), ids!(nav_inventory_on)),
             (ids!(nav_branches), ids!(nav_branches_on)),
             (ids!(nav_credit), ids!(nav_credit_on)),
-            (ids!(nav_team), ids!(nav_team_on)),
             (ids!(nav_settings), ids!(nav_settings_on)),
             (ids!(nav_lock), ids!(nav_lock_on)),
         ]
@@ -640,7 +639,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(rail_inventory), ids!(rail_inventory_on)),
             (ids!(rail_branches), ids!(rail_branches_on)),
             (ids!(rail_credit), ids!(rail_credit_on)),
-            (ids!(rail_team), ids!(rail_team_on)),
             (ids!(rail_settings), ids!(rail_settings_on)),
             (ids!(rail_lock), ids!(rail_lock_on)),
         ]
@@ -660,7 +658,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(nav_inventory_icon),
             ids!(nav_branches_icon),
             ids!(nav_credit_icon),
-            ids!(nav_team_icon),
             ids!(nav_settings_icon),
             ids!(nav_lock_icon),
         ]
@@ -680,7 +677,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(rail_inventory_icon),
             ids!(rail_branches_icon),
             ids!(rail_credit_icon),
-            ids!(rail_team_icon),
             ids!(rail_settings_icon),
             ids!(rail_lock_icon),
         ]
@@ -729,7 +725,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(rail_inventory_slot),
                 ids!(rail_branches_slot),
                 ids!(rail_credit_slot),
-                ids!(rail_team_slot),
                 ids!(rail_settings_slot),
                 ids!(rail_lock_slot),
             ]
@@ -747,7 +742,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(nav_inventory_slot),
                 ids!(nav_branches_slot),
                 ids!(nav_credit_slot),
-                ids!(nav_team_slot),
                 ids!(nav_settings_slot),
                 ids!(nav_lock_slot),
             ]
@@ -1181,6 +1175,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(settings_panel_pickers), "pickers"),
             (ids!(settings_panel_printers), "printers"),
             (ids!(settings_panel_bill), "bill"),
+            (ids!(settings_panel_alerts), "alerts"),
             (ids!(settings_panel_backup), "backup"),
             (ids!(settings_panel_diag), "diag"),
         ];
@@ -1226,6 +1221,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 .button(cx, ids!(settings_hub_bill))
                 .set_text(cx, &s("settings_sec_bill"));
             self.ui
+                .button(cx, ids!(settings_hub_team))
+                .set_text(cx, &s("team_pins"));
+            self.ui
+                .button(cx, ids!(settings_hub_alerts))
+                .set_text(cx, &s("settings_sec_alerts"));
+            self.ui
                 .button(cx, ids!(settings_hub_backup))
                 .set_text(cx, &s("settings_sec_backup"));
             self.ui
@@ -1240,6 +1241,35 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .text_input(cx, ids!(station_remove_input))
                 .set_empty_text(cx, s("station_remove_ph"));
+        }
+        if panel == Some("alerts") {
+            let (secs, ph, help, save) = {
+                let st = app_state().lock().unwrap();
+                (
+                    format!("{}", st.snack_secs.round() as i64),
+                    st.t("snack_secs_ph"),
+                    st.t("alerts_help"),
+                    st.t("snack_secs_save"),
+                )
+            };
+            self.ui
+                .widget(cx, ids!(h_alerts))
+                .set_text(cx, &plain_display_text(
+                    &app_state().lock().unwrap().t("settings_sec_alerts"),
+                ));
+            self.ui
+                .widget(cx, ids!(h_alerts_help))
+                .set_text(cx, &plain_display_text(&help));
+            self.ui
+                .text_input(cx, ids!(snack_secs_input))
+                .set_empty_text(cx, ph);
+            let field = self.ui.text_input(cx, ids!(snack_secs_input));
+            if !cx.has_key_focus(field.area()) {
+                field.set_text(cx, &secs);
+            }
+            self.ui
+                .button(cx, ids!(snack_secs_save))
+                .set_text(cx, &save);
         }
         if panel == Some("diag") {
             self.sync_diag_panel(cx);

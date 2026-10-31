@@ -20,6 +20,8 @@ struct AppState {
     draft_features: StaffFeatures,
     /// Staff id selected on Team for feature edits.
     team_staff_id: Option<String>,
+    /// Suggest pick of a staff name — select them without a second button.
+    team_select_pending: bool,
     /// Whether this device holds the books (shop/server) or is an extra till.
     device_role: DeviceRole,
     /// True only until the owner picks shop or extra till once.

@@ -472,8 +472,8 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
         Screen::Inventory => Some(NavTab::Inventory),
         Screen::Branches => Some(NavTab::Branches),
         Screen::Credit => Some(NavTab::Credit),
-        Screen::Team => Some(NavTab::Team),
-        Screen::Settings | Screen::SidebarSettings => Some(NavTab::Settings),
+        // Team lives under Settings (hub → Team); keep Settings highlighted.
+        Screen::Team | Screen::Settings | Screen::SidebarSettings => Some(NavTab::Settings),
         Screen::Lock => Some(NavTab::Lock),
         Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair => None,
     }

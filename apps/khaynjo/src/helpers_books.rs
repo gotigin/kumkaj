@@ -181,12 +181,19 @@ fn printers_pool_rows(
             } else {
                 p.target.clone()
             };
+            let wire = match print_share::effective_wire(p) {
+                print_share::PrinterWire::EscPos => t("printer_wire_escpos_short"),
+                print_share::PrinterWire::OsDocument => t("printer_wire_os_short"),
+            };
             let mark = if selected == Some(p.id.as_str()) {
                 "› "
             } else {
                 ""
             };
-            ReportRow::Kv(format!("{mark}{}. {}", i + 1, p.label), target)
+            ReportRow::Kv(
+                format!("{mark}{}. {}", i + 1, p.label),
+                format!("{target} · {wire}"),
+            )
         })
         .collect()
 }

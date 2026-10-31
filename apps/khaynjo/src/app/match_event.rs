@@ -388,10 +388,9 @@ impl MatchEvent for App {
                 self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
             }
             Some(NavTab::Team) => {
+                // Team is no longer a chrome peer — open via Settings → Team.
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Team, |s| {
-                    s.can_access_team() || s.is_owner()
-                });
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
             }
             Some(NavTab::Settings) => {
                 cx.set_key_focus(Area::Empty);
@@ -483,6 +482,37 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(settings_hub_sidebar)).clicked(actions) {
             self.go_if_allowed(cx, Screen::SidebarSettings, |s| s.can_access_settings());
+        }
+        if self.ui.button(cx, ids!(settings_hub_team)).clicked(actions) {
+            // Nested under Settings (history Back returns to the hub).
+            self.go_if_allowed(cx, Screen::Team, |s| s.can_access_team() || s.is_owner());
+        }
+        if self.ui.button(cx, ids!(snack_secs_save)).clicked(actions) {
+            let typed = self.ui.text_input(cx, ids!(snack_secs_input)).text();
+            let result = (|| -> Result<String, String> {
+                let secs = typed
+                    .trim()
+                    .parse::<f64>()
+                    .map_err(|_| "Enter seconds as a number (3–60)".to_string())?;
+                let secs = SnackKind::clamp_secs(secs);
+                let mut st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let user = st
+                    .session
+                    .as_ref()
+                    .map(lan_key)
+                    .ok_or_else(|| "Unlock first".to_string())?;
+                store.set_snack_secs(&user, secs)?;
+                st.snack_secs = secs;
+                Ok(st
+                    .t("snack_secs_saved")
+                    .replace("{n}", &format!("{}", secs.round() as i64)))
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions)
             || self.ui.button(cx, ids!(header_back)).clicked(actions)
@@ -2714,14 +2744,6 @@ impl MatchEvent for App {
         if tendered_changed || tip_changed || cash_changed {
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(kot_set_station)).clicked(actions) {
-            let text = self.ui.text_input(cx, ids!(kot_station_input)).text();
-            match self.apply_kot_station_to_unassigned(cx, &text) {
-                Ok(msg) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
-            }
-            self.sync_chrome(cx);
-        }
         if self.ui.button(cx, ids!(send_kot_btn)).clicked(actions) {
             // Station field filled → apply / change kitchen before send.
             {
@@ -3147,7 +3169,13 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(station_remove)).clicked(actions) {
+        if self.ui.button(cx, ids!(station_remove)).clicked(actions)
+            || self
+                .ui
+                .text_input(cx, ids!(station_remove_input))
+                .returned(actions)
+                .is_some()
+        {
             let typed = self.ui.text_input(cx, ids!(station_remove_input)).text();
             match self.remove_kitchen_station(cx, &typed) {
                 Ok(msg) => {
@@ -3195,7 +3223,13 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(settings_station_remove)).clicked(actions) {
+        if self.ui.button(cx, ids!(settings_station_remove)).clicked(actions)
+            || self
+                .ui
+                .text_input(cx, ids!(settings_station_remove_input))
+                .returned(actions)
+                .is_some()
+        {
             let typed = self
                 .ui
                 .text_input(cx, ids!(settings_station_remove_input))
@@ -3222,6 +3256,7 @@ impl MatchEvent for App {
                 (ids!(settings_hub_pickers), "pickers"),
                 (ids!(settings_hub_printers), "printers"),
                 (ids!(settings_hub_bill), "bill"),
+                (ids!(settings_hub_alerts), "alerts"),
                 (ids!(settings_hub_backup), "backup"),
                 (ids!(settings_hub_diag), "diag"),
             ];
@@ -3327,12 +3362,14 @@ impl MatchEvent for App {
                     st.team_select_pending = true;
                 }
                 if field == SuggestField::CustomerName {
-                    if let Some(c) = st
+                    let found = st
                         .customers
                         .iter()
                         .find(|c| c.name.eq_ignore_ascii_case(value.trim()))
-                    {
-                        st.selected_customer_id = Some(c.id.clone());
+                        .map(|c| (c.id.clone(), c.name.clone()));
+                    if let Some((id, name)) = found {
+                        st.selected_customer_id = Some(id);
+                        st.status = format!("Credit customer: {name}");
                     }
                 }
                 if field == SuggestField::RoutePick {
@@ -3340,27 +3377,49 @@ impl MatchEvent for App {
                         resolve_printer_route_key(&value, &st.stations, |k| st.t(k));
                 }
                 changed = true;
-                if field == SuggestField::KotStation {
-                    // Use → put unsent dishes on this station; Don't use → clear it.
-                    let clear = st
-                        .suggest_rows
+                // Pick = do the thing. No second Confirm/Use/Remove/Switch button.
+                let kot_clear = if field == SuggestField::KotStation {
+                    st.suggest_rows
                         .iter()
                         .find(|r| r.value == value)
                         .map(|r| {
                             let a = r.action.trim();
                             !a.is_empty() && a != st.t("use")
                         })
-                        .unwrap_or(false);
-                    drop(st);
-                    let result = if clear {
-                        self.clear_kot_station_from_unsent(cx, &value)
-                    } else {
-                        self.apply_kot_station_to_unassigned(cx, &value)
-                    };
-                    match result {
-                        Ok(msg) => self.set_status(cx, msg),
-                        Err(e) => self.set_status(cx, e),
+                        .unwrap_or(false)
+                } else {
+                    false
+                };
+                drop(st);
+                match field {
+                    SuggestField::KotStation => {
+                        let result = if kot_clear {
+                            self.clear_kot_station_from_unsent(cx, &value)
+                        } else {
+                            self.apply_kot_station_to_unassigned(cx, &value)
+                        };
+                        match result {
+                            Ok(msg) => self.set_status(cx, msg),
+                            Err(e) => self.set_status(cx, e),
+                        }
                     }
+                    SuggestField::StationRemove | SuggestField::SettingsStationRemove => {
+                        let input = field.input();
+                        match self.remove_kitchen_station(cx, &value) {
+                            Ok(msg) => {
+                                self.ui.text_input(cx, input).set_text(cx, "");
+                                self.set_status(cx, msg);
+                            }
+                            Err(e) => self.set_status(cx, e),
+                        }
+                    }
+                    SuggestField::BranchSwitch => {
+                        match self.switch_active_branch(cx, &value) {
+                            Ok(msg) => self.set_status(cx, msg),
+                            Err(e) => self.set_status(cx, e),
+                        }
+                    }
+                    _ => {}
                 }
             }
             if changed {
@@ -5532,39 +5591,15 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(branch_switch)).clicked(actions) {
+        if self.ui.button(cx, ids!(branch_switch)).clicked(actions)
+            || self
+                .ui
+                .text_input(cx, ids!(branch_switch_input))
+                .returned(actions)
+                .is_some()
+        {
             let wanted = self.ui.text_input(cx, ids!(branch_switch_input)).text();
-            let result = (|| -> Result<String, String> {
-                let mut st = app_state().lock().unwrap();
-                st.require_server_role("Switch branch")?;
-                let actor = st.actor()?;
-                if !actor.can_access_branches() && !actor.is_owner() {
-                    return Err("Only Owner can switch branch".into());
-                }
-                let needle = wanted.trim().to_lowercase();
-                if needle.is_empty() {
-                    return Err("Type the branch name to switch to".into());
-                }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let branch = store
-                    .list_branches()?
-                    .into_iter()
-                    .find(|b| {
-                        b.name.to_lowercase() == needle
-                            || b.code.to_lowercase() == needle
-                            || b.name.to_lowercase().contains(&needle)
-                    })
-                    .ok_or_else(|| format!("No branch matches \"{}\"", wanted.trim()))?;
-                store.set_active_branch_id(&branch.id)?;
-                // Catalogue, tables and tickets are all branch scoped.
-                st.cart.clear();
-                st.open_cart_line = None;
-                st.selected_table_id = None;
-                st.reload_all()?;
-                st.refresh_branches_text()?;
-                Ok(format!("Now selling for {}", branch.label()))
-            })();
-            match result {
+            match self.switch_active_branch(cx, &wanted) {
                 Ok(msg) => self.set_status(cx, msg),
                 Err(e) => self.set_status(cx, e),
             }
@@ -5892,7 +5927,8 @@ impl MatchEvent for App {
             let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
             let saved = {
                 let mut st = app_state().lock().unwrap();
-                st.printer_draft.add_printer(&label, &target);
+                let wire = st.printer_add_wire;
+                st.printer_draft.add_printer(&label, &target, wire);
                 // Persist immediately — "Add" without Save used to leave
                 // printers.json empty while the UI looked configured.
                 st.data_base
@@ -5908,6 +5944,31 @@ impl MatchEvent for App {
                 self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
             }
             self.sync_chrome(cx);
+        }
+        for (want, idle, active) in [
+            (
+                print_share::PrinterWire::EscPos,
+                ids!(printer_wire_escpos),
+                ids!(printer_wire_escpos_on),
+            ),
+            (
+                print_share::PrinterWire::OsDocument,
+                ids!(printer_wire_os),
+                ids!(printer_wire_os_on),
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
+                let mut st = app_state().lock().unwrap();
+                st.printer_add_wire = want;
+                if let Some(id) = st.printer_selected_id.clone() {
+                    st.printer_draft.set_wire(&id, want);
+                    if let Some(base) = st.data_base.as_ref() {
+                        let _ = print_share::save_device_printers(base, &st.printer_draft);
+                    }
+                }
+                drop(st);
+                self.sync_chrome(cx);
+            }
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
             {
@@ -5977,6 +6038,7 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
                     st.printer_selected_id = Some(p.id.clone());
+                    st.printer_add_wire = print_share::effective_wire(&p);
                     drop(st);
                     self.ui
                         .text_input(cx, ids!(printer_label_input))

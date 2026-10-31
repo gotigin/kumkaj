@@ -53,6 +53,8 @@ struct AppState {
     settings_panel: Option<&'static str>,
     /// Settings → Printers: pool row tapped for Remove / edit (None = last).
     printer_selected_id: Option<String>,
+    /// Settings → Printers: wire for Add / selected pool printer.
+    printer_add_wire: print_share::PrinterWire,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).
@@ -91,6 +93,8 @@ struct AppState {
     snack_text: String,
     snack_kind: SnackKind,
     snack_timer: Timer,
+    /// Auto-dismiss seconds for snacks (per signed-in user; default 10).
+    snack_secs: f64,
     /// Keeps the floor and kitchen live: every few seconds the tables'
     /// visit states (and minutes) refresh; a tablet pulls from the Server.
     live_timer: Timer,

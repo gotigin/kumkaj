@@ -32,14 +32,21 @@ impl SnackKind {
         }
     }
 
-    /// Auto-dismiss seconds (Material-style: errors linger longer).
-    pub fn duration_secs(self) -> f64 {
-        match self {
-            Self::Info => 4.0,
-            Self::Success => 4.0,
-            Self::Warn => 6.0,
-            Self::Error => 8.0,
+    /// Default auto-dismiss when the user has not set a preference.
+    pub const DEFAULT_SECS: f64 = 10.0;
+
+    /// Clamp a typed preference into a sane range.
+    pub fn clamp_secs(secs: f64) -> f64 {
+        if !secs.is_finite() {
+            return Self::DEFAULT_SECS;
         }
+        secs.clamp(3.0, 60.0)
+    }
+
+    /// Auto-dismiss seconds from the signed-in user's preference (same for every kind).
+    pub fn duration_secs(self, user_secs: f64) -> f64 {
+        let _ = self;
+        Self::clamp_secs(user_secs)
     }
 }
 
@@ -148,7 +155,10 @@ mod tests {
     }
 
     #[test]
-    fn durations_sensible() {
-        assert!(SnackKind::Error.duration_secs() >= SnackKind::Info.duration_secs());
+    fn durations_use_user_preference() {
+        assert!((SnackKind::Info.duration_secs(10.0) - 10.0).abs() < f64::EPSILON);
+        assert!((SnackKind::Error.duration_secs(10.0) - 10.0).abs() < f64::EPSILON);
+        assert!((SnackKind::clamp_secs(1.0) - 3.0).abs() < f64::EPSILON);
+        assert!((SnackKind::clamp_secs(99.0) - 60.0).abs() < f64::EPSILON);
     }
 }

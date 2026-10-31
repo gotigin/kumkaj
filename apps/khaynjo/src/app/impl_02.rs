@@ -290,6 +290,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             };
             let show_staff_role = owner_setup_complete && has_staff && !pin_reset_required;
             let undo_visible = st.undo_sale_id.is_some()
+                && !st.undo_snack_text.trim().is_empty()
                 && matches!(
                     st.screen,
                     Screen::Books
@@ -300,6 +301,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         | Screen::Credit
                         | Screen::Team
                         | Screen::Settings
+                        | Screen::SidebarSettings
                         | Screen::Inventory
                         | Screen::Branches
                 );
@@ -1095,9 +1097,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(kot_station_wrap))
                 .set_visible(cx, ticket_open);
+            // Station applies on suggest tap (and again on Send). No second
+            // "Use this station" button — that was a dead confirm after pick.
             self.ui
                 .button(cx, ids!(kot_set_station))
-                .set_visible(cx, has_unsent);
+                .set_visible(cx, false);
         }
         {
             let total_field = self.ui.text_input(cx, ids!(cart_total_input));
@@ -1978,6 +1982,32 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     for path in [ids!(kot_print_on), ids!(kot_print_on_on)] {
                         self.ui.button(cx, path).set_text(cx, &st.t("kot_print_on"));
                     }
+                    let wire = st.printer_add_wire;
+                    self.paint_choice_pair(
+                        cx,
+                        ids!(printer_wire_escpos),
+                        ids!(printer_wire_escpos_on),
+                        wire == print_share::PrinterWire::EscPos,
+                    );
+                    self.paint_choice_pair(
+                        cx,
+                        ids!(printer_wire_os),
+                        ids!(printer_wire_os_on),
+                        wire == print_share::PrinterWire::OsDocument,
+                    );
+                    for path in [ids!(printer_wire_escpos), ids!(printer_wire_escpos_on)] {
+                        self.ui
+                            .button(cx, path)
+                            .set_text(cx, &st.t("printer_wire_escpos"));
+                    }
+                    for path in [ids!(printer_wire_os), ids!(printer_wire_os_on)] {
+                        self.ui
+                            .button(cx, path)
+                            .set_text(cx, &st.t("printer_wire_os"));
+                    }
+                    self.ui
+                        .widget(cx, ids!(h_printer_wire))
+                        .set_text(cx, &plain_display_text(&st.t("printer_wire_heading")));
                 }
                 let mut st = app_state().lock().unwrap();
                 // Every kitchen station gets its own route row (empty until configured).

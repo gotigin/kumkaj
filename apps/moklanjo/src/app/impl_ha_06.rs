@@ -534,44 +534,28 @@ impl App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(route_add)).clicked(actions) {
+        if self.ui.button(cx, ids!(route_add)).clicked(actions)
+            || self
+                .ui
+                .text_input(cx, ids!(route_add_printer_input))
+                .returned(actions)
+                .is_some()
+        {
             let pick = self.ui.text_input(cx, ids!(route_add_printer_input)).text();
-            let pick_trim = pick.trim().to_string();
-            let msg = {
-                let mut st = app_state().lock().unwrap();
-                let key = parse_courier_route_key(&st.printer_route_key);
-                let assigned = if let Some(p) = st
-                    .printer_draft
-                    .printers
-                    .iter()
-                    .find(|p| p.label.eq_ignore_ascii_case(&pick_trim) || p.id == pick_trim)
-                    .map(|p| p.id.clone())
-                {
-                    // Replace — one printer per route; append never "changed".
-                    *st.printer_draft.route_mut(key) = vec![p];
-                    if let Some(base) = st.data_base.as_ref() {
-                        let _ = print_share::save_device_printers(base, &st.printer_draft);
-                    }
-                    true
-                } else {
-                    false
-                };
-                if assigned {
-                    st.t("printers_saved")
-                } else if pick_trim.is_empty() {
-                    "Add a printer above, then type its name here".into()
-                } else {
-                    "No printer with that name — pick one from the list above".into()
-                }
-            };
-            if !msg.is_empty() {
-                self.set_status(cx, msg);
+            match self.assign_printer_to_focused_route(cx, &pick) {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(route_clear)).clicked(actions)
+        if self.ui.button(cx, ids!(route_up)).clicked(actions)
+            || self.ui.button(cx, ids!(route_down)).clicked(actions)
             || self.ui.button(cx, ids!(route_remove)).clicked(actions)
+            || self.ui.button(cx, ids!(route_clear)).clicked(actions)
         {
+            let up = self.ui.button(cx, ids!(route_up)).clicked(actions);
+            let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
+            let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
             let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
             {
                 let mut st = app_state().lock().unwrap();
@@ -580,8 +564,13 @@ impl App {
                 let route = st.printer_draft.route_mut(key);
                 if clear {
                     route.clear();
-                } else {
+                } else if remove {
                     route.pop();
+                } else if up && route.len() >= 2 {
+                    let i = route.len() - 1;
+                    route.swap(i - 1, i);
+                } else if down && route.len() >= 2 {
+                    route.swap(0, 1);
                 }
                 if let Some(base) = st.data_base.as_ref() {
                     let _ = print_share::save_device_printers(base, &st.printer_draft);
@@ -890,5 +879,34 @@ impl App {
             }
             cx.open_select_file_dialog(dialog);
         }
+    }
+
+    /// Assign a pool printer to the focused Receipt/Label route (replaces).
+    fn assign_printer_to_focused_route(
+        &mut self,
+        cx: &mut Cx,
+        label_or_id: &str,
+    ) -> Result<String, String> {
+        let _ = cx;
+        let pick = label_or_id.trim();
+        let mut st = app_state().lock().unwrap();
+        if pick.is_empty() {
+            return Err("Add a printer above, then pick its name here".into());
+        }
+        let key = parse_courier_route_key(&st.printer_route_key);
+        let Some(pid) = st
+            .printer_draft
+            .printers
+            .iter()
+            .find(|p| p.label.eq_ignore_ascii_case(pick) || p.id == pick)
+            .map(|p| p.id.clone())
+        else {
+            return Err("No printer with that name — pick one from the list".into());
+        };
+        *st.printer_draft.route_mut(key) = vec![pid];
+        if let Some(base) = st.data_base.as_ref() {
+            let _ = print_share::save_device_printers(base, &st.printer_draft);
+        }
+        Ok(st.t("printers_saved"))
     }
 }

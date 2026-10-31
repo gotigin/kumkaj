@@ -2856,7 +2856,11 @@ mod tests {
         // Empty KOT routes skip print (and Capture); give the unassigned
         // kitchen a printer so the cancel slip is recorded.
         let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        let kitchen = printers.add_printer(
+            "Kitchen",
+            "192.168.1.50",
+            crate::print_share::PrinterWire::EscPos,
+        );
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
@@ -2927,7 +2931,11 @@ mod tests {
         // Each station (and the unassigned kitchen) needs its own route —
         // empty routes skip Capture, matching Settings.
         let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        let kitchen = printers.add_printer(
+            "Kitchen",
+            "192.168.1.50",
+            crate::print_share::PrinterWire::EscPos,
+        );
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen.clone()];
         *printers.route_mut(crate::print_share::RouteKey::Kot {

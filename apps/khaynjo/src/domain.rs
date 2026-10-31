@@ -2111,8 +2111,8 @@ pub struct CartLine {
     #[serde(default)]
     pub hold_send: bool,
     /// Kitchen for this ticket line. Empty = use the menu item's station.
-    /// Set by Order desk "Use this station" (works on an extra till without
-    /// rewriting the shop catalogue).
+    /// Set when the waiter picks a kitchen on the Order desk (works on an
+    /// extra till without rewriting the shop catalogue).
     #[serde(default)]
     pub station_id: String,
 }
