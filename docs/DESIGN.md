@@ -98,6 +98,10 @@ controls past the right edge, no “designed for one width” grids.
   enough; otherwise stack.
 - Phone (< **720**) and tablet/desktop (≥ **720**) chrome differ
   (bottom tabs vs side rail); content inside each mode still reflows.
+- **Page-scroll lists:** expand-to-content `PortalList`s must not use a
+  Fixed pitch shorter than the real Fit row — that crops the last cards
+  into the next block and makes the page look unscrolled. Measure
+  (or match a Fixed DSL card height). See `docs/DEV.md` bug 8.
 
 ## Text selection & copy (every app)
 

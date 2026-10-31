@@ -1,0 +1,37 @@
+--- a/platform/src/os/linux/android/android.rs
++++ b/platform/src/os/linux/android/android.rs
+@@ -374,8 +374,16 @@
+                         // Force a full redraw on the first frame after the surface
+                         // becomes (or becomes again) drawable.
+                         if self.os.needs_first_draw {
+                             self.os.needs_first_draw = false;
++                            // First layout often settles on the frame *after*
++                            // this one (body size 0→real). Extra redraws avoid a
++                            // stuck clear-color present on API 26.
++                            self.os.post_layout_redraws_left = 8;
+                             self.redraw_all();
++                        } else if self.os.post_layout_redraws_left > 0 {
++                            self.os.post_layout_redraws_left -= 1;
++                            self.redraw_all();
+                         }
+                         self.handle_drawing();
+                     } else {
+@@ -3382,6 +3390,7 @@
+             location_updates_wanted: false,
+             start_time: Instant::now(),
+             first_after_resize: true,
+             needs_first_draw: true,
++            post_layout_redraws_left: 0,
+             hide_surface_cover_after_first_present: false,
+             refresh_surface_snapshot_after_first_present: true,
+             frame_time: 0,
+@@ -3498,6 +3507,9 @@
+     /// can start up showing a black screen if the initial redraw request was
+     /// consumed before the surface was available.
+     pub needs_first_draw: bool,
++    /// Follow-up redraws after the first drawable frame so layout that settles
++    /// a frame later (common on API 26) is painted, not just clear_color.
++    pub post_layout_redraws_left: u8,
+     /// Tracks whether the Java-side surface cover overlay should remain visible
+     /// until the next successful present reaches the rebuilt Android surface.
+     pub hide_surface_cover_after_first_present: bool,

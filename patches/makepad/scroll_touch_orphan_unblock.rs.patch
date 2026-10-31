@@ -1,0 +1,19 @@
+--- a/widgets/src/scroll_bar.rs
++++ b/widgets/src/scroll_bar.rs
+@@ -870,6 +870,16 @@
+             return;
+         }
+ 
++        // TextFlow select-drag can leave an Empty scroll-block if FingerUp is
++        // lost. Wheel path clears that on Event::Scroll; Android has no wheel,
++        // so clear orphan Empty blocks here when nothing is still captured.
++        if !cx.is_scrolling_allowed_within(&scroll_area) && !cx.fingers.any_areas_captured() {
++            if let Some(area) = cx.fingers.blocked_scrolling_exception_area() {
++                if area.is_empty() {
++                    cx.unblock_scrolling();
++                }
++            }
++        }
+ 
+         // Don't start or continue a touch-based drag scroll if scrolling is blocked.
+         // These force-stops must also let go of any stretched rubber band: leaving

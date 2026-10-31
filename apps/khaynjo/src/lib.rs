@@ -7,6 +7,7 @@
 #[cfg(target_os = "android")]
 pub use makepad_widgets;
 
+pub mod diag;
 pub mod domain;
 pub mod entity_template;
 pub mod fiscal;
@@ -21,6 +22,7 @@ pub mod precise;
 pub mod print_share;
 pub mod receipt_raster;
 pub mod schemes;
+pub mod snack;
 pub mod startup;
 pub mod store;
 pub mod suggest;

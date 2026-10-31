@@ -69,6 +69,7 @@ pub fn run(trading: bool, schema: bool, ui: bool) -> Result<(), String> {
 fn wipe_ui(base: &Path, clear_db_meta: bool) -> Result<(), String> {
     let _ = fs::remove_file(base.join("window_geom.json"));
     let _ = fs::remove_file(base.join("app_language.json"));
+    crate::diag::wipe_dir(base);
     if clear_db_meta {
         for db in books_db_paths(base) {
             if let Ok(store) = Store::open_path(&db) {

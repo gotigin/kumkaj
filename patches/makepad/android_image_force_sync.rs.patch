@@ -1,6 +1,18 @@
 --- a/draw/src/image_cache.rs
 +++ b/draw/src/image_cache.rs
-@@ -1903,9 +1903,12 @@
+@@ -837,7 +837,10 @@
+     }
+ }
+ 
+-#[cfg(not(target_arch = "wasm32"))]
++// Same cfg as the only call site (async load path). Android/wasm force
++// sync decode and never call this — keep the fn out of those builds so
++// rustc does not warn dead_code.
++#[cfg(not(any(target_arch = "wasm32", target_os = "android")))]
+ fn headless_mode_enabled() -> bool {
+     static ENABLED: OnceLock<bool> = OnceLock::new();
+     *ENABLED.get_or_init(|| {
+@@ -1903,9 +1906,12 @@
      // On wasm, decode synchronously on the UI thread since thread pools
      // are not reliably available. Also decode synchronously for headless
      // single-frame runs so textured output is available in the first emitted PNG.

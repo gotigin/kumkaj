@@ -46,3 +46,16 @@ opt-level = 3
 opt-level = 3
 [profile.dev.package.makepad-zune-inflate]
 opt-level = 3
+
+# Android live-dev: release-speed native code, but NOT the cargo profile name
+# `release` — cargo-makepad sets android:debuggable=true iff profile != "release".
+# Plain `dev` on phone is too slow (first frame after surface already torn down → black screen).
+# Full `debug = true` embeds ~400MB DWARF into libmakepad.so; load alone on API 26
+# Mali leaves a black SurfaceView for many seconds (looks "broken"). Line tables
+# keep useful panic locations without that bloat. APK stays debuggable via profile name.
+[profile.android-dev]
+inherits = "release"
+debug = "line-tables-only"
+# keep lto off for faster incremental device rebuilds than full release
+lto = false
+codegen-units = 16

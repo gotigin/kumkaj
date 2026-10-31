@@ -38,6 +38,17 @@ resolve_makepad_root() {
   fi
 }
 
+# Real API migrations (associated MAX/MIN, Atomic::try_update) on the
+# cargo-makepad tree and the app path-dep — not allow(deprecated).
+fix_makepad_android_deprecations() {
+  local app_makepad="$ROOT/vendor/makepad"
+  if [[ -d "$app_makepad" && "$MAKEPAD_ROOT" != "$app_makepad" ]]; then
+    "$ROOT/scripts/fix-makepad-rust-deprecations.sh" "$MAKEPAD_ROOT" "$app_makepad"
+  else
+    "$ROOT/scripts/fix-makepad-rust-deprecations.sh" "$MAKEPAD_ROOT"
+  fi
+}
+
 # cargo-makepad installs INTO --sdk-path (ANDROID_HOME), not under tools/cargo_makepad.
 # These match ANDROID_SDK_URLS_33 in vendor/makepad-full/tools/cargo_makepad/src/android/sdk.rs
 android_toolchain_ready() {

@@ -67,6 +67,7 @@ fi
 
 ensure_android_toolchain "$ANDROID_HOME"
 "$ROOT/scripts/apply-android-activity-bridge.sh"
+fix_makepad_android_deprecations
 
 CARGO_MP=(cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release --)
 

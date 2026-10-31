@@ -30,6 +30,8 @@ resize_png() {
   echo "wrote $dest (${size}x${size} png)"
 }
 
+# PNG sizes for OS / Makepad window chrome (desktop). Android launcher uses
+# mipmaps below — these PNGs are not packaged into the APK assets tree.
 resize_png 32 "$RES/icon_32.png"
 resize_png 64 "$RES/icon_64.png"
 resize_png 128 "$RES/icon_128.png"
@@ -37,12 +39,9 @@ resize_png 256 "$RES/icon_256.png"
 resize_png 512 "$RES/icon_512.png"
 resize_png 1024 "$RES/icon_1024.png"
 
-# Brand mark PNGs (legacy names still referenced by docs / older paths).
-cp -f "$RES/icon_512.png" "$RES/kumkaj-mark.png"
-cp -f "$RES/icon_128.png" "$RES/kumkaj-mark-128.png"
-
-# In-app embedding: lossless WebP + alpha. Lossy VP8 drops alpha and can
-# composite onto black; Makepad then shows a solid black square.
+# In-app embedding: lossless WebP + alpha only. Lossy VP8 drops alpha and can
+# composite onto black; Makepad then shows a solid black square. No PNG/AVIF
+# brand marks — those used to ship into Android assets unused (~2MB+).
 webp_from() {
   local size="$1" dest="$2"
   magick "$SRC" -resize "${size}x${size}" -background none -gravity center \
@@ -50,20 +49,19 @@ webp_from() {
   echo "wrote $dest (${size}x${size} webp lossless)"
 }
 
-webp_from 128 "$RES/kumkaj-mark-128.webp"
 webp_from 256 "$RES/kumkaj-mark.webp"
-webp_from 512 "$RES/kumkaj-mark-512.webp"
 
-# Optional AVIF companions when ImageMagick builds with AVIF.
-if magick -list format 2>/dev/null | grep -qi '^ *AVIF'; then
-  magick "$SRC" -resize 128x128 -background none -gravity center -extent 128x128 \
-    -quality 55 "$RES/kumkaj-mark-128.avif"
-  magick "$SRC" -resize 256x256 -background none -gravity center -extent 256x256 \
-    -quality 55 "$RES/kumkaj-mark.avif"
-  magick "$SRC" -resize 512x512 -background none -gravity center -extent 512x512 \
-    -quality 55 "$RES/kumkaj-mark-512.avif"
-  echo "wrote kumkaj-mark*.avif"
-fi
+# Drop legacy companions so they cannot be re-bundled into APK assets.
+rm -f \
+  "$RES/kumkaj-mark.png" \
+  "$RES/kumkaj-mark-128.png" \
+  "$RES/kumkaj-mark-128.webp" \
+  "$RES/kumkaj-mark-512.webp" \
+  "$RES/kumkaj-mark.avif" \
+  "$RES/kumkaj-mark-128.avif" \
+  "$RES/kumkaj-mark-512.avif" \
+  "$RES/gotigin-mark.webp"
+
 
 declare -A MIPMAPS=(
   [mipmap-mdpi]=48

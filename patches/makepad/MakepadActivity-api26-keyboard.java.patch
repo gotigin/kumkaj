@@ -1,0 +1,25 @@
+--- a/tools/cargo_makepad/src/android/java/dev/makepad/android/MakepadActivity.java
++++ b/tools/cargo_makepad/src/android/java/dev/makepad/android/MakepadActivity.java
+@@ -1070,10 +1070,16 @@
+         System.loadLibrary("makepad");
+     }
+ 
+     private boolean isPhysicalTextKeyboard(InputDevice device) {
+-        return device != null
+-            && device.isEnabled()
+-            && !device.isVirtual()
+-            && device.supportsSource(InputDevice.SOURCE_KEYBOARD)
+-            && device.getKeyboardType() == InputDevice.KEYBOARD_TYPE_ALPHABETIC;
++        // InputDevice.isEnabled() is API 27+. Our shops still run API 26
++        // (Android 8.0); calling it there is a NoSuchMethodError crash at boot.
++        if (device == null || device.isVirtual()) {
++            return false;
++        }
++        if (android.os.Build.VERSION.SDK_INT >= 27 && !device.isEnabled()) {
++            return false;
++        }
++        return device.supportsSource(InputDevice.SOURCE_KEYBOARD)
++            && device.getKeyboardType() == InputDevice.KEYBOARD_TYPE_ALPHABETIC;
+     }
+ 
+     private boolean hasPhysicalTextKeyboard() {

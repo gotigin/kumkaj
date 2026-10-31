@@ -65,6 +65,7 @@ Loads [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env
 - Local Makepad 2 tree: `vendor/makepad`
   - First time / after clean: `./scripts/setup-makepad.sh`
   - Path-dep from each app (`apps/moklanjo`, `apps/khaynjo`). The script rebuilds the tree from the pinned upstream commit (`MAKEPAD_REV`) and applies every patch in `patches/makepad/` in the order its `PATCHES` list gives; any patch that fails stops the script
+  - After patches, `scripts/fix-makepad-rust-deprecations.sh` migrates deprecated `std::u64::MAX` / `core::usize::MAX` / `Atomic::fetch_update` → associated `MAX`/`MIN` and `try_update` (real API updates, not `allow(deprecated)`). Android scripts also run it on `MAKEPAD_ROOT` (`vendor/makepad-full`, used only for `cargo-makepad`) so device builds stay clean
   - `vendor/makepad` is gitignored: **an edit there is lost on the next setup unless it is also a patch in `patches/makepad/` listed in `PATCHES`**. After changing a vendor file, regenerate its patch, then rerun the setup in a scratch copy and diff it against `vendor/makepad`
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
@@ -172,9 +173,11 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
 5. **Item / rate photos** — Moklanjo has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
+6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
 7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle logs `flow: Right { wrap: true } does not support width: Fill` every frame when a **wrapping** flow walks a **Fill** child; log spam freezes the app (Khaynjo Settings → Add printer / route buttons, 2026-10). Two cases:
    - **Button face:** `align.x ≥ 0.25` on a Fill-width button makes `Button::draw_face` force a Fill label walk. With `flow: Right{wrap: true}` that is the hang. **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3). The shipping fix is patch `button_label_center` (`patches/makepad/button_label_center.rs.patch`): when the face wraps, keep a **Fit** label walk; text still centers via `text_align` + `ink_centered`.
    - **Parent View:** never put `width: Fill` children (`NavBtn`, `Stack*`, `SegBtn`, …) inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit-width chips in a wrapping strip.
+8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
 ### Required approach (shipping)
 
@@ -284,7 +287,7 @@ Each concrete product uses **reverse-DNS under its own domain** (Moklanjo: `com.
 | Size badge (`KUMKAJ_SHOW_SIZE_BADGE`) | on (`1`) — `W×H` in caption | off (`0`) |
 | Windows console | yes (logs) | no (GUI subsystem) |
 
-`apps/moklanjo/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo moklanjo-windows-dev` builds the **debug** profile with `development.env` (Dev app id / console). Android live-dev still uses Cargo `--release` for install speed, but exports `KUMKAJ_ENV=development` so the **debug** package id and badge stay on.
+`apps/moklanjo/build.rs` bakes the selected env file into the binary (`KUMKAJ_ENV` wins; otherwise debug Cargo profile → development, release → production). **Cargo profile ≠ app env:** `cargo moklanjo-windows-dev` uses the **debug** Cargo profile with `development.env`. `cargo moklanjo-android-dev` / `cargo khaynjo-android-dev` use workspace profile **`android-dev`** (release-speed native code, still `android:debuggable=true` and development app id) — plain Cargo `dev` on API 26 phones often never paints (black SurfaceView). Production package scripts use `--release` (`debuggable=false`).
 
 ### Platform naming (dev vs prod)
 
@@ -340,7 +343,7 @@ Equivalent: `./apps/moklanjo/scripts/android-dev.sh`
 
 Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.moklanjo.debug`** (from `apps/moklanjo/env/development.env`).
 
-**Launcher / logo:** Master art is `apps/moklanjo/assets/moklanjo-app-icon.png`. Run `./apps/moklanjo/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP). Reinstall Android after regenerating.
+**Launcher / logo:** Master art is `apps/moklanjo/assets/moklanjo-app-icon.png`. Run `./apps/moklanjo/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP only — no PNG/AVIF brand marks). Nav icons are WebP under `resources/nav/`. Android launcher mipmaps stay PNG (platform requirement). Desktop `icon_*.png` / `.ico` stay on disk for MSI/window chrome but are **not** packed into APK assets (`prune_android_runtime_assets` in cargo-makepad via `apply-android-activity-bridge.sh`). Reinstall Android after regenerating.
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo moklanjo-dev`; use `cargo moklanjo-android-dev` to verify on device.
 
@@ -797,11 +800,16 @@ Makepad visual traps found this way (do not reintroduce):
     mouse press-drag still pans (Makepad patch `drag_scroll_touch_only`).
     Selectable `WrapLabel` / TextFlow yields sideways drags to an ancestor
     ScrollX (commits text-select only when the drag is mostly vertical —
-    `text_flow_selection`). Nested scroll chaining: inner list keeps the
-    wheel only while it can still move that way; at the edge the page/desk
-    takes over (DEV §13). Every `ScrollYView` keeps **right padding 16**
-    so content never sits flush on the vertical scrollbar; desk `ScrollX`
-    keeps **bottom padding** clear of the horizontal bar.
+    `text_flow_selection`). On **touch**, vertical swipe always scrolls the
+    page; text select-drag starts on long-press only (`text_flow_touch_scroll`)
+    — otherwise WrapLabels covering DeviceSetup / help stole every swipe.
+    Stuck Empty scroll-blocks clear on wheel (`scroll_bar_orphan_unblock`) and
+    on touch when nothing is captured (`scroll_touch_orphan_unblock`). Nested
+    scroll chaining: inner list keeps the wheel only while it can still move
+    that way; at the edge the page/desk takes over (DEV §13). Every
+    `ScrollYView` keeps **right padding 16** so content never sits flush on
+    the vertical scrollbar; desk `ScrollX` keeps **bottom padding** clear of
+    the horizontal bar.
 16. **`ScrollYView{…}` in the DSL binds when the widgets are imported** —
     overriding `mod.widgets.ScrollYView` later changes nothing unless the
     name is re-bound (`let ScrollYView = mod.widgets.ScrollYView`). The
@@ -943,11 +951,13 @@ the per-user key on the next toggle.
   glyph from `amount_key_visible`, leaving the label widget alone.
 - Composite strips (`today_label`, credit/floor summaries) format words and
   counts in the clear and pass only money slots through `display_money`.
-- Day close / reports blobs use one key (`"day_close"` / `"reports"`) for
-  whether money is masked, via `apply_amount_visibility`: Kv **values** that
-  look like money (and money tokens inside Line/Sub) are masked; keys,
-  Head rows, digit-free heading lines, and trailing `(N)` counts stay readable.
-  Report structure is never erased.
+- `ReportText` (Day close, Reports, and every other report card): each Kv
+  **money** value gets its own eye on the right (`kv:{label}` key, same
+  screen/peek/hidden rules as Books). Labels stay clear. Line/Sub prose
+  masks money tokens only while the **screen** eye is hiding (no per-token
+  eye). Headings and digit-free lines stay readable. Report structure is
+  never erased. Callers must pass **raw** rows (pre-masking destroyed the
+  original figures so a per-row eye could not reveal them).
 
 Toggles: `toggle_amounts_screen`, `toggle_amount_key` (both write the matching
 per-user meta).
@@ -1011,3 +1021,52 @@ The cart stays tax-agnostic under both modes — `SaleDraft::assert_balanced` on
 The instant rail is still stored as `PayMethod::Upi` (`"upi"`) in every country; only `PayMethod::label_for` changes, so historical rows and sync payloads keep parsing. `SyncSnapshot` carries the Server's `fiscal` settings and `tax_rates` so Client terminals print the same wording.
 
 **Not claimed anywhere:** statutory e-invoicing, fiscal-printer protocols, or tax filing. Seed rates are starting points a seller edits.
+
+### Snackbar (standard feedback)
+
+Both apps show a leveled snackbar above the bottom chrome (`app_snackbar`),
+separate from the post-charge **Undo** snackbar. Same Makepad UI on **Linux,
+Windows, macOS, and Android** (phone bottom nav and desktop rail).
+
+| Kind | Typical use | Auto-hide |
+|---|---|---|
+| Info | Neutral status | 4s |
+| Success | Saved / posted / copied | 4s |
+| Warn | Read-only / retry / partial | 6s |
+| Error | Failures / not allowed | 8s |
+
+API (per app `main.rs`): `show_snack` / `show_error` / `show_warn` / `show_ok`,
+`clear_snack`. `set_status` classifies the message (`snack::classify`) and shows
+a snack when unlocked (errors/warnings also on lock). Higher priority replaces a
+lower one; dismiss ✕ or timeout clears. Module: `apps/*/src/snack.rs`.
+
+### Diagnostics (privacy-first local logs)
+
+Both apps ship a duplicated `diag` module (`apps/*/src/diag.rs`) — **not** a shared
+crate. Ships on **every supported OS** (Linux / Windows / macOS / Android):
+
+| Concern | How |
+|---|---|
+| Storage | `{data_dir}/diag/` via `Cx::get_data_dir` (Android `files/`) or `dirs::data_dir` (desktop) |
+| Windows prod | No console — file JSONL is the log sink (dev builds still have a console) |
+| Android | Init on `ensure_store`; export uses Save dialog + `content://` write like backups |
+| Share | Single-file `.kumkaj-diag.json` bundle (folder export kept for desktop convenience) |
+
+**Collect on device:** rotating JSONL + in-memory ring. Levels `error`…`trace`;
+categories `system|nav|store|lan|print|ui|sync|pay`. PIN/password/token-like text
+is always redacted; long digit runs and emails are scrubbed. Panic hook writes
+`last_panic.txt` + an error event. Manifest records `os` / `arch`.
+
+**Support session (Settings → Diagnostics):** 30 minutes of Debug-level capture
+without changing the saved min level permanently.
+
+**Send / share off device:** never automatic. Owner must tap **Approve share off
+this device** (single-use, short TTL), then **Create share package**, then pick
+where to save the bundle (Downloads / USB / Android document picker). Local
+export does not need approval. Privacy note in the package: used only to
+fix/improve the product; not sold or given to third parties.
+
+**Controls:** Settings → Diagnostics (Khaynjo hub panel; Moklanjo section on
+Settings). Clear logs; uninstall UI wipe removes the `diag/` folder.
+
+**Tests:** `cargo test -p kumkaj-khaynjo diag::` / `kumkaj-moklanjo diag::`.

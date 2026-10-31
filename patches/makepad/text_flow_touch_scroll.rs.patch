@@ -1,0 +1,46 @@
+--- a/widgets/src/text_flow.rs
++++ b/widgets/src/text_flow.rs
+@@ -1271,8 +1271,26 @@
+                     self.selection_committed = false;
+                     self.select_down_abs = fe.abs;
+                     // Do not block / promote yet: a sideways drag should pan an
+-                    // ancestor ScrollX (desk panes). Vertical / text-direction
+-                    // drags commit selection on the first meaningful move.
++                    // ancestor ScrollX (desk panes). Mouse vertical drag commits
++                    // selection on the first meaningful move; touch waits for
++                    // long-press so a swipe can still scroll the page
++                    // (selectable WrapLabels cover most of DeviceSetup / help).
++                    self.redraw(cx);
++                }
++            }
++            Hit::FingerLongPress(lp) => {
++                // Touch select-drag starts on long-press only — otherwise every
++                // vertical swipe over copy steals the page ScrollYView.
++                if self.is_selecting && !self.selection_committed {
++                    self.selection_committed = true;
++                    cx.block_scrolling_except_within(Area::Empty);
++                    let _ = cx.promote_finger_capture_over(self.area);
++                    if let Some(idx) = self.selection_tracker.point_to_index(cx, lp.abs) {
++                        if self.selection_cursor != idx {
++                            self.selection_cursor = idx;
++                            self.propagate_selection_to_children();
++                        }
++                    }
+                     self.redraw(cx);
+                 }
+             }
+@@ -1287,6 +1305,14 @@
+                         self.is_selecting = false;
+                         self.selection_cursor = self.selection_anchor;
+                         self.redraw(cx);
++                        return;
++                    }
++                    // Touch: vertical swipe scrolls the page. Long-press (above)
++                    // is what commits touch selection. Mouse keeps drag-select.
++                    if fe.device.is_touch() {
++                        self.is_selecting = false;
++                        self.selection_cursor = self.selection_anchor;
++                        self.redraw(cx);
+                         return;
+                     }
+                     self.selection_committed = true;

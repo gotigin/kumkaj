@@ -3,6 +3,7 @@
 //! Server listens on `DEFAULT_PORT` and answers with JSON over HTTP/1.1.
 //! Client uses `ureq` to pair, pull catalog/ledger/sales, and push sales/settlements.
 
+use crate::diag::{self, Cat};
 use crate::domain::{
     Category, CreditLedgerEntry, Customer, DayTotals, PayMethod, Product, Right, Sale, SaleDraft,
     StaffMember, TaxRate,
@@ -420,6 +421,7 @@ pub fn ensure_server(db_path: PathBuf) -> Result<(), String> {
         .spawn(move || {
             if let Err(e) = run_server_loop(path) {
                 eprintln!("Kumkaj LAN server stopped: {e}");
+                diag::error(Cat::Lan, "lan_server_stopped", &e);
             }
             SERVER_RUNNING.store(false, Ordering::SeqCst);
         })
@@ -458,6 +460,7 @@ pub fn serve(listener: TcpListener, db_path: PathBuf, keep_going: &dyn Fn() -> b
                 let _ = thread::spawn(move || {
                     if let Err(e) = handle_client(stream, &path, &peer.ip().to_string(), &guard) {
                         eprintln!("Kumkaj LAN request error: {e}");
+                        diag::warn(Cat::Lan, "lan_request_error", &e);
                     }
                 });
             }
@@ -466,6 +469,7 @@ pub fn serve(listener: TcpListener, db_path: PathBuf, keep_going: &dyn Fn() -> b
             }
             Err(e) => {
                 eprintln!("Kumkaj LAN accept: {e}");
+                diag::warn(Cat::Lan, "lan_accept", &e.to_string());
                 thread::sleep(Duration::from_millis(80));
             }
         }

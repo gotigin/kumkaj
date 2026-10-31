@@ -58,6 +58,8 @@ PATCHES=(
   animator_skip_dead_tracks         # Android: drop freed animator tracks, no panic
   android_image_force_sync          # Android: decode images synchronously
   android_ime_dismiss               # Android: one keyboard, stays hidden once dismissed
+  android_api26_render_loop         # Android API 26–28: guard bad refresh rates in simple frame pump
+  android_post_layout_redraw        # Android: extra redraws after first drawable so layout paints
   android_asset_load_prefix         # Android: assets under the package root; as_mut_ptr read
   android_share_and_content_uri     # Android: share sheet + content:// reads (MakepadActivity-share.java)
   portal_list_stop_at_range         # content-sized PortalList
@@ -67,6 +69,7 @@ PATCHES=(
   text_flow_paragraph_align         # RTL prose alignment
   text_input_label_align_pub        # RTL input alignment
   text_flow_selection               # selectable text: opaque band, owns the drag
+  text_flow_touch_scroll            # Android/touch: swipe scrolls; long-press selects (WrapLabel)
   text_input_caret_and_placeholder  # caret blinks and is visible; wrapped placeholder not clipped
   button_label_center               # fixed-width buttons centre their label; wrap CTAs keep Fit label (Fill+wrap freezes UI)
   screen_cap_picture_only_fallback  # Linux Shift+F12 recording without audio track
@@ -79,6 +82,7 @@ PATCHES=(
   android_write_content_uri         # Android: Cx::write_content_uri for "Save a backup copy" (MakepadActivity-write.java)
   mouse_cursor_state                # Wayland Arrow=Default; edge resize keeps cursor; HoverOver re-asserts Text/Hand/View cursor
   scroll_bar_orphan_unblock         # wheel: clear stuck TextFlow Empty scroll-block (thumb drag still worked)
+  scroll_touch_orphan_unblock       # Android: same Empty orphan clear on touch drag (no wheel)
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

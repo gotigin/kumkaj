@@ -14,7 +14,7 @@ source "$ROOT/scripts/load-kumkaj-env.sh"
 source "$ROOT/scripts/android-env.sh"
 
 export KUMKAJ_ROOT="$ROOT"
-# Dev install uses --release for speed, but still the development app id / badge.
+# Development app id / badge + Cargo *debug* profile (debuggable=true).
 load_kumkaj_env development
 
 resolve_makepad_root
@@ -28,13 +28,17 @@ fi
 
 ensure_android_toolchain "$ANDROID_HOME"
 "$ROOT/scripts/apply-android-activity-bridge.sh"
+fix_makepad_android_deprecations
 android_pkg_opts "$ANDROID_HOME"
 
 echo "Makepad: $MAKEPAD_ROOT"
 echo "ANDROID_HOME: $ANDROID_HOME"
-echo "Building + installing + launching (Cargo --release, KUMKAJ_ENV=development)…"
+echo "Building + installing + launching (Cargo profile=android-dev, KUMKAJ_ENV=development, debuggable=true)…"
 echo "Note: Android has no Splash --hot; each run rebuilds and relaunches."
 echo "If adb says unauthorized: unlock the phone and accept the RSA prompt."
 
+# cargo-makepad host tool: --release. App: workspace profile `android-dev`
+# (release-speed, still android:debuggable=true — plain `dev` blacks out on
+# API 26 before the first GL frame).
 exec cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \
-  android "${ANDROID_PKG_OPTS[@]}" run -p kumkaj-khaynjo --release "$@"
+  android "${ANDROID_PKG_OPTS[@]}" run -p kumkaj-khaynjo --profile=android-dev "$@"

@@ -1,0 +1,23 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -582,9 +582,20 @@
+ /// Fallback render loop used when the Android Choreographer isn't available
+ /// (API < 29, and `no_android_choreographer` builds such as OHOS). A dedicated
+ /// thread paces frames manually, since there is no system vsync callback.
+ fn init_simple_render_loop(device_refresh_rate: f32) {
++    // Reject 0/NaN/negative refresh rates (would panic or spin in from_secs_f32).
++    let rate = if device_refresh_rate.is_finite() && device_refresh_rate >= 1.0 {
++        device_refresh_rate
++    } else {
++        crate::log!(
++            "init_simple_render_loop: bad refresh rate {device_refresh_rate}; using 60Hz"
++        );
++        60.0
++    };
+     std::thread::spawn(move || {
+         let mut last_frame_time = std::time::Instant::now();
+-        let target_frame_time = std::time::Duration::from_secs_f32(1.0 / device_refresh_rate);
++        let target_frame_time = std::time::Duration::from_secs_f32(1.0 / rate);
+         loop {
+             // Exit the thread once the app has shut down and the Java->native
+             // message channel has been torn down by `from_java_messages_clear()`

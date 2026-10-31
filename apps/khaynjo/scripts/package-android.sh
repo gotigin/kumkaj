@@ -27,6 +27,7 @@ if [[ ! -d "$ANDROID_HOME" ]]; then
 fi
 ensure_android_toolchain "$ANDROID_HOME"
 "$ROOT/scripts/apply-android-activity-bridge.sh"
+fix_makepad_android_deprecations
 android_pkg_opts "$ANDROID_HOME"
 android_release_opts
 
