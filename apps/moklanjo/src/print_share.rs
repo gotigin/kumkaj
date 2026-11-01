@@ -8,10 +8,11 @@
 //! **AWB label**.
 //!
 //! A printer `target` is a system printer name, or a network address
-//! (`192.168.1.50` / `host:port`, ESC/POS). Blank target means this computer's
-//! usual OS printer — never invent a pool entry named "Default". Jobs go
-//! through one queue thread; failures surface via [`take_problems`].
-//! Tests never reach a printer ([`PrintSink`]; mirrors Khaynjo).
+//! (`192.168.1.50` / `host:port`). System names print through the OS driver
+//! (same idea as Geany). Network `host:9100` speaks ESC/POS over TCP. Blank
+//! target means this computer's usual OS printer. Jobs go through one queue
+//! thread; failures surface via [`take_problems`]. Tests never reach a
+//! printer ([`PrintSink`]; mirrors Khaynjo).
 
 use std::fs;
 use std::io::Write;
@@ -62,41 +63,114 @@ pub enum RouteKey {
     Label,
 }
 
-/// One named printer in this device's pool.
+pub const FORMAT_STANDARD: &str = "standard";
+pub const FORMAT_KOT: &str = "kot";
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct PrintFormat {
+    pub id: String,
+    pub label: String,
+    #[serde(default = "default_true")]
+    pub document: bool,
+    #[serde(default = "default_em")]
+    pub em: f32,
+    #[serde(default = "default_line")]
+    pub line: u32,
+    #[serde(default = "default_baseline")]
+    pub baseline: f32,
+    #[serde(default = "default_side")]
+    pub side: f32,
+}
+
+fn default_true() -> bool { true }
+fn default_em() -> f32 { 22.0 }
+fn default_line() -> u32 { 32 }
+fn default_baseline() -> f32 { 24.0 }
+fn default_side() -> f32 { 8.0 }
+
+impl PrintFormat {
+    pub fn standard() -> Self {
+        Self { id: FORMAT_STANDARD.into(), label: "Standard".into(), document: true, em: 22.0, line: 32, baseline: 24.0, side: 8.0 }
+    }
+    pub fn kot() -> Self {
+        Self { id: FORMAT_KOT.into(), label: "Thermal".into(), document: false, em: 24.0, line: 36, baseline: 26.0, side: 4.0 }
+    }
+    pub fn raster_metrics(&self) -> crate::receipt_raster::RasterMetrics {
+        crate::receipt_raster::RasterMetrics { em: self.em, line: self.line as usize, baseline: self.baseline, side: self.side }
+    }
+    pub fn ensure_builtins(list: &mut Vec<PrintFormat>) {
+        if !list.iter().any(|f| f.id == FORMAT_STANDARD) { list.insert(0, PrintFormat::standard()); }
+        if !list.iter().any(|f| f.id == FORMAT_KOT) {
+            let idx = if list.first().map(|f| f.id.as_str()) == Some(FORMAT_STANDARD) { 1 } else { 0 };
+            list.insert(idx, PrintFormat::kot());
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum PrinterMode {
+    #[default]
+    Standard,
+    Kot,
+}
+
+impl PrinterMode {
+    pub fn from_legacy_wire_str(s: &str) -> Self {
+        match s { "esc_pos" | "kot" => Self::Kot, _ => Self::Standard }
+    }
+}
+
+/// Destination only.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct NamedPrinter {
     pub id: String,
     pub label: String,
-    /// Blank = system default; name = system printer; `ip` / `ip:port` = ESC/POS.
     pub target: String,
+    #[serde(default, alias = "wire", alias = "mode", skip_serializing)]
+    pub _legacy_mode: Option<String>,
 }
 
-/// Ordered printer ids for each print feature.
-#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PrintRoutes {
     #[serde(default)]
     pub receipt: Vec<String>,
     #[serde(default)]
     pub label: Vec<String>,
+    #[serde(default = "default_format_standard")]
+    pub receipt_format: String,
+    #[serde(default = "default_format_kot")]
+    pub label_format: String,
 }
 
-/// This device's printer pool and routes (Settings → Printers).
-#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+fn default_format_standard() -> String { FORMAT_STANDARD.into() }
+fn default_format_kot() -> String { FORMAT_KOT.into() }
+
+impl Default for PrintRoutes {
+    fn default() -> Self {
+        Self {
+            receipt: Vec::new(),
+            label: Vec::new(),
+            receipt_format: FORMAT_STANDARD.into(),
+            label_format: FORMAT_KOT.into(),
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct DevicePrinters {
     pub printers: Vec<NamedPrinter>,
+    #[serde(default)]
+    pub formats: Vec<PrintFormat>,
     pub routes: PrintRoutes,
 }
 
 impl Default for DevicePrinters {
     fn default() -> Self {
-        // Nothing configured yet — empty pool and routes until the owner
-        // adds real printers (never invent a printer named "Default").
         Self {
             printers: Vec::new(),
-            routes: PrintRoutes {
-                receipt: Vec::new(),
-                label: Vec::new(),
-            },
+            formats: vec![PrintFormat::standard(), PrintFormat::kot()],
+            routes: PrintRoutes::default(),
         }
     }
 }
@@ -115,17 +189,29 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             #[serde(default)]
             printers: Vec<NamedPrinter>,
             #[serde(default)]
+            formats: Vec<PrintFormat>,
+            #[serde(default)]
             routes: PrintRoutes,
         }
         let parsed: New = serde_json::from_value(value).unwrap_or_else(|_| New {
             printers: Vec::new(),
+            formats: Vec::new(),
             routes: PrintRoutes::default(),
         });
+        let mut formats = parsed.formats;
+        PrintFormat::ensure_builtins(&mut formats);
         let mut out = DevicePrinters {
             printers: parsed.printers,
+            formats,
             routes: parsed.routes,
         };
         scrub_fake_default_printers(&mut out);
+        if out.routes.receipt_format.trim().is_empty() {
+            out.routes.receipt_format = FORMAT_STANDARD.into();
+        }
+        if out.routes.label_format.trim().is_empty() {
+            out.routes.label_format = FORMAT_KOT.into();
+        }
         return out;
     }
     let receipt = value
@@ -163,14 +249,18 @@ pub fn migrate_legacy(receipt: &str) -> DevicePrinters {
             id: id.clone(),
             label: "Receipt printer".into(),
             target: receipt.trim().to_string(),
+            _legacy_mode: None,
         });
         vec![id]
     };
     DevicePrinters {
         printers,
+        formats: vec![PrintFormat::standard(), PrintFormat::kot()],
         routes: PrintRoutes {
             receipt: receipt_ids,
             label: Vec::new(),
+            receipt_format: FORMAT_STANDARD.into(),
+            label_format: FORMAT_KOT.into(),
         },
     }
 }
@@ -216,8 +306,61 @@ impl DevicePrinters {
             id: id.clone(),
             label,
             target: tgt,
+            _legacy_mode: None,
         });
         id
+    }
+
+    pub fn format_id_for(&self, key: RouteKey) -> String {
+        match key {
+            RouteKey::Receipt => {
+                let f = self.routes.receipt_format.trim();
+                if f.is_empty() { FORMAT_STANDARD.into() } else { f.to_string() }
+            }
+            RouteKey::Label => {
+                let f = self.routes.label_format.trim();
+                if f.is_empty() { FORMAT_KOT.into() } else { f.to_string() }
+            }
+        }
+    }
+
+    pub fn format_by_id(&self, id: &str) -> PrintFormat {
+        self.formats.iter().find(|f| f.id == id).cloned().unwrap_or_else(|| {
+            if id == FORMAT_KOT { PrintFormat::kot() } else { PrintFormat::standard() }
+        })
+    }
+
+    pub fn format_for(&self, key: RouteKey) -> PrintFormat {
+        self.format_by_id(&self.format_id_for(key))
+    }
+
+    pub fn set_route_format(&mut self, key: RouteKey, format_id: &str) {
+        let id = format_id.trim();
+        if id.is_empty() { return; }
+        match key {
+            RouteKey::Receipt => self.routes.receipt_format = id.to_string(),
+            RouteKey::Label => self.routes.label_format = id.to_string(),
+        }
+    }
+
+    pub fn add_format_from(&mut self, from_id: &str, label: &str) -> String {
+        PrintFormat::ensure_builtins(&mut self.formats);
+        let base = self.format_by_id(from_id);
+        let id = format!("custom-{}", &uuid::Uuid::new_v4().simple().to_string()[..8]);
+        let label = { let t = label.trim(); if t.is_empty() { format!("Custom ({})", base.label) } else { t.to_string() } };
+        self.formats.push(PrintFormat { id: id.clone(), label, document: base.document, em: base.em, line: base.line, baseline: base.baseline, side: base.side });
+        id
+    }
+
+    pub fn destinations_for(&self, key: RouteKey) -> Vec<PrintDest> {
+        let format = self.format_for(key);
+        self.route_for(key)
+            .iter()
+            .filter_map(|id| {
+                let p = self.printers.iter().find(|p| p.id == *id)?;
+                Some(PrintDest { target: parse_target(&p.target), format: format.clone() })
+            })
+            .collect()
     }
 
     pub fn remove_printer(&mut self, id: &str) {
@@ -237,12 +380,18 @@ impl DevicePrinters {
 /// Where one job goes.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum PrinterTarget {
-    /// The device's default system printer.
     Default,
-    /// A system printer by name.
     Named(String),
-    /// A network receipt printer, `ip:port`, spoken to directly (ESC/POS).
     Network(String),
+    Bluetooth(String),
+    Usb(String),
+    AndroidPrint,
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct PrintDest {
+    pub target: PrinterTarget,
+    pub format: PrintFormat,
 }
 
 /// Port network receipt printers listen on for raw jobs.
@@ -255,19 +404,50 @@ pub fn parse_target(typed: &str) -> PrinterTarget {
     if t.is_empty() {
         return PrinterTarget::Default;
     }
+    let lower = t.to_ascii_lowercase();
+    if lower == "android-print:" || lower == "android-print" {
+        return PrinterTarget::AndroidPrint;
+    }
+    if lower.starts_with("bt:") {
+        return PrinterTarget::Bluetooth(t.to_string());
+    }
+    if lower.starts_with("usb:") {
+        return PrinterTarget::Usb(t.to_string());
+    }
     if let Ok(ip) = t.parse::<std::net::Ipv4Addr>() {
         return PrinterTarget::Network(format!("{ip}:{RAW_PRINT_PORT}"));
     }
     if let Ok(addr) = t.parse::<std::net::SocketAddrV4>() {
         return PrinterTarget::Network(addr.to_string());
     }
+    if let Some((host, port)) = t.rsplit_once(':') {
+        if !host.is_empty()
+            && port.parse::<u16>().is_ok()
+            && host.chars().all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '-')
+        {
+            return PrinterTarget::Network(t.to_string());
+        }
+    }
     PrinterTarget::Named(t.to_string())
 }
 
-/// Whether this device can print to `target` without a person: a network
-/// printer always; a system printer wherever the OS has printer drivers.
+pub fn can_print_format(target: &PrinterTarget, format: &PrintFormat) -> bool {
+    match target {
+        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => true,
+        PrinterTarget::AndroidPrint => format.document && cfg!(target_os = "android"),
+        PrinterTarget::Default | PrinterTarget::Named(_) => {
+            if cfg!(target_os = "android") { format.document } else { true }
+        }
+    }
+}
+
 pub fn can_print(target: &PrinterTarget) -> bool {
-    matches!(target, PrinterTarget::Network(_)) || !cfg!(target_os = "android")
+    can_print_format(target, &PrintFormat::standard()) || can_print_format(target, &PrintFormat::kot())
+}
+
+pub fn can_print_mode(target: &PrinterTarget, mode: PrinterMode) -> bool {
+    let f = match mode { PrinterMode::Standard => PrintFormat::standard(), PrinterMode::Kot => PrintFormat::kot() };
+    can_print_format(target, &f)
 }
 
 fn default_route_for(kind: PrintKind) -> RouteKey {
@@ -284,7 +464,10 @@ pub fn prints_here(kind: PrintKind) -> bool {
 
 /// Whether this route has at least one printable target.
 pub fn prints_route(key: RouteKey) -> bool {
-    printers().targets_for(key).iter().any(can_print)
+    printers()
+        .destinations_for(key)
+        .iter()
+        .any(|d| can_print_format(&d.target, &d.format))
 }
 
 static PRINTERS: Mutex<Option<DevicePrinters>> = Mutex::new(None);
@@ -408,16 +591,16 @@ pub fn print_route(
     let path = write_receipt(text, app_files)?;
     let opened = match sink() {
         PrintSink::Os => {
-            let targets: Vec<PrinterTarget> = printers()
-                .targets_for(route)
+            let dests: Vec<PrintDest> = printers()
+                .destinations_for(route)
                 .into_iter()
-                .filter(can_print)
+                .filter(|d| can_print_format(&d.target, &d.format))
                 .collect();
-            if targets.is_empty() {
+            if dests.is_empty() {
                 false
             } else {
                 queue(Job {
-                    targets,
+                    dests,
                     path: path.clone(),
                     text: text.to_string(),
                 });
@@ -443,7 +626,7 @@ pub fn print_route(
 
 struct Job {
     /// Try in order; stop after the first success.
-    targets: Vec<PrinterTarget>,
+    dests: Vec<PrintDest>,
     path: PathBuf,
     text: String,
 }
@@ -483,13 +666,13 @@ fn queue(job: Job) {
         let _ = std::thread::Builder::new().name("print".into()).spawn(move || {
             for job in rx {
                 let mut last_err: Option<(String, String)> = None;
-                for target in &job.targets {
-                    match send_to_printer(target, &job.path, &job.text) {
+                for dest in &job.dests {
+                    match send_to_printer(&dest.format, &dest.target, &job.path, &job.text) {
                         Ok(()) => {
                             last_err = None;
                             break;
                         }
-                        Err(e) => last_err = Some((describe(target), e)),
+                        Err(e) => last_err = Some((describe(&dest.target), e)),
                     }
                 }
                 if let Some((who, e)) = last_err {
@@ -508,44 +691,151 @@ pub fn describe(target: &PrinterTarget) -> String {
         PrinterTarget::Default => "This computer's usual printer (blank address)".into(),
         PrinterTarget::Named(name) => format!("Printer \"{name}\""),
         PrinterTarget::Network(addr) => format!("Network printer {addr}"),
+        PrinterTarget::Bluetooth(mac) => format!("Bluetooth printer {mac}"),
+        PrinterTarget::Usb(id) => format!("USB printer {id}"),
+        PrinterTarget::AndroidPrint => "Android print service".into(),
     }
 }
 
-fn send_to_printer(target: &PrinterTarget, path: &Path, text: &str) -> Result<(), String> {
+fn send_to_printer(
+    format: &PrintFormat,
+    target: &PrinterTarget,
+    path: &Path,
+    text: &str,
+) -> Result<(), String> {
+    let bytes = escpos_job_format(format, text);
     match target {
-        PrinterTarget::Network(addr) => print_network(addr, text),
-        PrinterTarget::Default => print_system(None, path),
-        PrinterTarget::Named(name) => print_system(Some(name), path),
+        PrinterTarget::Network(addr) => {
+            if bytes.len() > ESC_POS_JOB_MAX {
+                return Err(format!("print job too large ({} bytes)", bytes.len()));
+            }
+            let sock: std::net::SocketAddr = addr.parse().map_err(|_| format!("{addr} is not a printer address"))?;
+            let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
+                .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
+            let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
+            stream.write_all(&bytes).map_err(|e| e.to_string())?;
+            stream.flush().map_err(|e| e.to_string())
+        }
+        PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &bytes),
+        PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, &bytes),
+        PrinterTarget::AndroidPrint => {
+            if !format.document {
+                return Err(format!(
+                    "format \"{}\" needs Network, Bluetooth, or USB",
+                    format.label
+                ));
+            }
+            print_android_document(text)
+        }
+        PrinterTarget::Default => {
+            if format.document { print_system_standard(None, path, text) }
+            else if cfg!(target_os = "android") {
+                Err(format!(
+                    "format \"{}\" on Android needs Network, Bluetooth, or USB",
+                    format.label
+                ))
+            } else { print_system_raw(None, &bytes) }
+        }
+        PrinterTarget::Named(name) => {
+            if format.document { print_system_standard(Some(name), path, text) }
+            else if cfg!(target_os = "android") {
+                Err(format!(
+                    "format \"{}\" on Android needs Network, Bluetooth, or USB",
+                    format.label
+                ))
+            } else { print_system_raw(Some(name), &bytes) }
+        }
     }
 }
 
-/// Send `text` to a network receipt printer: reset, the text, a few lines
-/// to clear the tear bar, cut.
+fn print_android_document(text: &str) -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        crate::print_android::print_document("Moklanjo", text)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = text;
+        Err("Android print service is only on Android".into())
+    }
+}
+
+fn print_system_standard(name: Option<&str>, path: &Path, text: &str) -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        let _ = (name, path);
+        crate::print_android::print_document("Moklanjo", text)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = text;
+        print_system(name, path)
+    }
+}
+
 pub fn print_network(addr: &str, text: &str) -> Result<(), String> {
-    let sock: std::net::SocketAddr = addr.parse().map_err(|_| format!("{addr} is not a printer address"))?;
+    print_network_mode(addr, PrinterMode::Kot, text)
+}
+
+pub fn print_network_mode(addr: &str, mode: PrinterMode, text: &str) -> Result<(), String> {
+    let bytes = escpos_job_mode(mode, text);
+    if bytes.len() > ESC_POS_JOB_MAX {
+        return Err(format!(
+            "print job too large ({} bytes) — refused so the printer is not flooded",
+            bytes.len()
+        ));
+    }
+    let sock: std::net::SocketAddr = addr
+        .parse()
+        .map_err(|_| format!("{addr} is not a printer address"))?;
     let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
         .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
     let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-    stream.write_all(&escpos_job(text)).map_err(|e| e.to_string())?;
+    stream.write_all(&bytes).map_err(|e| e.to_string())?;
     stream.flush().map_err(|e| e.to_string())
 }
 
-/// The bytes of one ESC/POS job for a **network** receipt printer.
+/// Cap for one ESC/POS payload (text or raster bands).
+const ESC_POS_JOB_MAX: usize = 512_000;
+
+/// Thermal / network jobs: draw the slip as dots (`GS v 0`), then cut.
 ///
-/// Always plain ASCII (unknown letters → `?`). Raster (`GS v 0`) was mis-read
-/// as garbage by many cheap printers; keep pictures behind `escpos_job_picture`.
+/// Same idea as other POS apps that print a rendered page: line gaps and
+/// every line live in the image, so we never depend on the printer's
+/// built-in font pitch (CR overstrike → only the last line + `_`-like smear).
 pub fn escpos_job(text: &str) -> Vec<u8> {
-    let mut out = vec![0x1B, 0x40]; // ESC @: reset
+    escpos_job_format(&PrintFormat::kot(), text)
+}
+
+pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
+    crate::receipt_raster::escpos_picture_metrics(text, &format.raster_metrics())
+}
+
+pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
+    match mode {
+        PrinterMode::Standard => escpos_job_format(&PrintFormat::standard(), text),
+        PrinterMode::Kot => escpos_job_format(&PrintFormat::kot(), text),
+    }
+}
+
+/// Built-in-font ASCII job (tests / rare call sites). Prefer [`escpos_job`].
+pub fn escpos_job_text(text: &str) -> Vec<u8> {
+    let mut out = Vec::with_capacity(text.len().saturating_add(48));
+    out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
     out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0 — PC437
+    out.extend_from_slice(&[0x1B, 0x4D, 0x00]); // ESC M 0: Font A
+    out.extend_from_slice(&[0x1D, 0x21, 0x00]); // GS ! 0: normal size
+    out.extend_from_slice(&[0x1B, 0x61, 0x00]); // ESC a 0: left align
+    out.extend_from_slice(&[0x1B, 0x32]); // ESC 2: default line spacing
     out.extend(escpos_text(text));
-    out.extend_from_slice(b"\n\n\n\n");
+    out.extend_from_slice(b"\n\n\n\n\n"); // LF only — never CR
     out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
     out
 }
 
-/// Picture job (`GS v 0`) for printers known to handle raster.
+/// Same as [`escpos_job`] (raster).
 pub fn escpos_job_picture(text: &str) -> Vec<u8> {
-    crate::receipt_raster::escpos_picture(text)
+    escpos_job(text)
 }
 
 /// Every letter of `text` is one a receipt printer's built-in font has, or
@@ -570,15 +860,15 @@ fn spelt_out(c: char) -> Option<&'static [u8]> {
     })
 }
 
-/// Text a receipt printer's built-in font can show: plain ASCII, with the
-/// few symbols our slips use spelt out, anything else as "?" (such a
-/// anything else as "?".
+/// Text a receipt printer's built-in font can show: printable ASCII + LF,
+/// symbols spelt out, anything else as "?". **Never emit CR** (overstrike).
 pub fn escpos_text(text: &str) -> Vec<u8> {
     let mut out = Vec::with_capacity(text.len());
     for c in text.chars() {
         match c {
-            '\r' => {}
-            c if c.is_ascii() => out.push(c as u8),
+            '\n' => out.push(b'\n'),
+            '\r' | '\t' => {}
+            c if c.is_ascii_graphic() || c == ' ' => out.push(c as u8),
             c => out.extend_from_slice(spelt_out(c).unwrap_or(b"?")),
         }
     }
@@ -640,6 +930,138 @@ fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
     }
 }
 
+fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
+    if bytes.len() > ESC_POS_JOB_MAX {
+        return Err(format!(
+            "print job too large ({} bytes) — refused so the printer is not flooded",
+            bytes.len()
+        ));
+    }
+    let dir = std::env::temp_dir().join("kumkaj-thermal-raw");
+    fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+    let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
+    fs::write(&path, bytes).map_err(|e| e.to_string())?;
+    let result = print_system_raw_path(name, &path);
+    let _ = fs::remove_file(&path);
+    result
+}
+
+fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> {
+    #[cfg(any(target_os = "linux", target_os = "macos"))]
+    {
+        let mut cmd = Command::new("lp");
+        cmd.args(["-o", "raw"]);
+        if let Some(name) = name {
+            cmd.args(["-d", name]);
+        }
+        cmd.arg("--").arg(path);
+        match cmd.output() {
+            Ok(out) if out.status.success() => Ok(()),
+            Ok(out) => {
+                let detail = String::from_utf8_lossy(&out.stderr);
+                let line = detail.lines().map(str::trim).find(|l| !l.is_empty()).unwrap_or("raw print refused");
+                Err(format!("{line} — prefer host:9100 / bt: / usb: for thermal"))
+            }
+            Err(_) => Err("no printing system (CUPS) — use host:9100 / bt: / usb:".into()),
+        }
+    }
+    #[cfg(target_os = "windows")]
+    {
+        use std::os::windows::process::CommandExt;
+        const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+        let Some(name) = name else {
+            return Err(
+                "pick the thermal printer by name, or use host:9100 / bt: / usb: in Settings → Printers"
+                    .into(),
+            );
+        };
+        let quote = |s: &str| s.replace('\'', "''");
+        let path_s = quote(&path.display().to_string());
+        let name_s = quote(name);
+        let script = format!(
+            r#"
+$ErrorActionPreference = 'Stop'
+Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+public class KumkajRawPrint {{
+  [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+  public class DOCINFOA {{
+    [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
+    [MarshalAs(UnmanagedType.LPStr)] public string pOutputFile;
+    [MarshalAs(UnmanagedType.LPStr)] public string pDataType;
+  }}
+  [DllImport("winspool.Drv", EntryPoint = "OpenPrinterA", SetLastError = true, CharSet = CharSet.Ansi)]
+  public static extern bool OpenPrinter([MarshalAs(UnmanagedType.LPStr)] string szPrinter, out IntPtr hPrinter, IntPtr pd);
+  [DllImport("winspool.Drv", EntryPoint = "ClosePrinter", SetLastError = true)]
+  public static extern bool ClosePrinter(IntPtr hPrinter);
+  [DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA", SetLastError = true, CharSet = CharSet.Ansi)]
+  public static extern bool StartDocPrinter(IntPtr hPrinter, int level, [In] DOCINFOA di);
+  [DllImport("winspool.Drv", EntryPoint = "EndDocPrinter", SetLastError = true)]
+  public static extern bool EndDocPrinter(IntPtr hPrinter);
+  [DllImport("winspool.Drv", EntryPoint = "StartPagePrinter", SetLastError = true)]
+  public static extern bool StartPagePrinter(IntPtr hPrinter);
+  [DllImport("winspool.Drv", EntryPoint = "EndPagePrinter", SetLastError = true)]
+  public static extern bool EndPagePrinter(IntPtr hPrinter);
+  [DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true)]
+  public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
+}}
+"@
+$bytes = [IO.File]::ReadAllBytes('{path_s}')
+$h = [IntPtr]::Zero
+if (-not [KumkajRawPrint]::OpenPrinter('{name_s}', [ref]$h, [IntPtr]::Zero)) {{ throw "OpenPrinter failed" }}
+try {{
+  $di = New-Object KumkajRawPrint+DOCINFOA
+  $di.pDocName = 'THERMAL'
+  $di.pDataType = 'RAW'
+  if (-not [KumkajRawPrint]::StartDocPrinter($h, 1, $di)) {{ throw "StartDocPrinter failed" }}
+  try {{
+    if (-not [KumkajRawPrint]::StartPagePrinter($h)) {{ throw "StartPagePrinter failed" }}
+    try {{
+      $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
+      try {{
+        $offset = 0
+        while ($offset -lt $bytes.Length) {{
+          $written = 0
+          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
+          $chunk = $bytes.Length - $offset
+          if (-not [KumkajRawPrint]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
+          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
+          $offset += $written
+        }}
+      }} finally {{ $pinned.Free() }}
+    }} finally {{ [void][KumkajRawPrint]::EndPagePrinter($h) }}
+  }} finally {{ [void][KumkajRawPrint]::EndDocPrinter($h) }}
+}} finally {{ [void][KumkajRawPrint]::ClosePrinter($h) }}
+"#,
+            path_s = path_s,
+            name_s = name_s,
+        );
+        let out = Command::new("powershell")
+            .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
+            .creation_flags(CREATE_NO_WINDOW)
+            .output()
+            .map_err(|e| format!("PowerShell did not start ({e})"))?;
+        if out.status.success() {
+            Ok(())
+        } else {
+            let detail = String::from_utf8_lossy(&out.stderr);
+            let line = detail.lines().map(str::trim).find(|l| !l.is_empty()).unwrap_or("Windows raw print failed");
+            Err(format!("{line} — prefer host:9100 / bt: / usb: for thermal"))
+        }
+    }
+    #[cfg(target_os = "android")]
+    {
+        let _ = (name, path);
+        Err("Android thermal needs Network, Bluetooth, or USB".into())
+    }
+    #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows", target_os = "android")))]
+    {
+        let _ = (name, path);
+        Err("printing is not supported on this system".into())
+    }
+}
+
 #[cfg(not(target_os = "android"))]
 fn first_line(bytes: &[u8]) -> Option<String> {
     String::from_utf8_lossy(bytes).lines().map(str::trim).find(|l| !l.is_empty()).map(str::to_string)
@@ -647,6 +1069,9 @@ fn first_line(bytes: &[u8]) -> Option<String> {
 
 static FOUND: Mutex<Option<Vec<String>>> = Mutex::new(None);
 static LOOKING: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+static FIND_CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+static FIND_WAS_CANCELLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
 
 /// Printers last found on this device (system names + network addresses on
 /// port [`RAW_PRINT_PORT`]). Empty until a look has finished.
@@ -657,6 +1082,20 @@ pub fn found_printers() -> Vec<String> {
 /// `true` while a background look is still running.
 pub fn is_finding_printers() -> bool {
     LOOKING.load(std::sync::atomic::Ordering::SeqCst)
+}
+
+/// Ask the background Find worker to stop early (partial results still apply).
+pub fn cancel_find_printers() {
+    FIND_CANCEL.store(true, std::sync::atomic::Ordering::SeqCst);
+}
+
+/// Whether the last Find finished because Cancel was tapped.
+pub fn find_printers_was_cancelled() -> bool {
+    FIND_WAS_CANCELLED.load(std::sync::atomic::Ordering::SeqCst)
+}
+
+fn find_cancelled() -> bool {
+    FIND_CANCEL.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 /// Whether at least one look has finished (`found_printers` is meaningful).
@@ -676,15 +1115,43 @@ pub fn find_printers_in_background() {
     if LOOKING.swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
     }
+    FIND_CANCEL.store(false, std::sync::atomic::Ordering::SeqCst);
+    FIND_WAS_CANCELLED.store(false, std::sync::atomic::Ordering::SeqCst);
     if std::thread::Builder::new()
         .name("find-printers".into())
         .spawn(|| {
             let mut found = system_printers();
-            for addr in network_raw_printers() {
-                if !found.iter().any(|n| n == &addr) {
-                    found.push(addr);
+            if !find_cancelled() {
+                for addr in network_raw_printers() {
+                    if !found.iter().any(|n| n == &addr) {
+                        found.push(addr);
+                    }
                 }
             }
+            if !find_cancelled() {
+                for bt in crate::print_bt::list_printers() {
+                    if !found.iter().any(|n| n == &bt) {
+                        found.push(bt);
+                    }
+                }
+            }
+            if !find_cancelled() {
+                for usb in crate::print_usb::list_printers() {
+                    if !found.iter().any(|n| n == &usb) {
+                        found.push(usb);
+                    }
+                }
+            }
+            #[cfg(target_os = "android")]
+            if !find_cancelled() {
+                for a in crate::print_android::list_print_services() {
+                    if !found.iter().any(|n| n == &a) {
+                        found.push(a);
+                    }
+                }
+            }
+            let cancelled = find_cancelled();
+            FIND_WAS_CANCELLED.store(cancelled, std::sync::atomic::Ordering::SeqCst);
             found.sort();
             *FOUND.lock().unwrap() = Some(found);
             LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
@@ -795,6 +1262,9 @@ fn network_raw_printers() -> Vec<String> {
             let found = Arc::clone(&found);
             std::thread::spawn(move || {
                 for addr in chunk {
+                    if find_cancelled() {
+                        break;
+                    }
                     if TcpStream::connect_timeout(&addr, Duration::from_millis(80)).is_ok() {
                         found.lock().unwrap().push(addr.ip().to_string());
                     }
@@ -871,15 +1341,18 @@ mod tests {
         assert_eq!(escpos_text("राजकोट"), b"??????".to_vec());
         assert!(printer_has_letters("1 kg × 2 — ₹500"));
         assert!(!printer_has_letters("राजकोट"));
-        // Network jobs stay ASCII (no GS v 0) — cheap printers mis-read pictures.
-        let job_hi = escpos_job("To: राजकोट");
-        assert!(!job_hi.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
-        assert!(job_hi.windows(6).any(|w| w == b"??????"));
-        let picture = escpos_job_picture("To: राजकोट");
-        assert!(picture.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
-        let job = escpos_job("AWB 7");
+        let text_hi = escpos_job_text("To: राजकोट");
+        assert!(!text_hi.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
+        assert!(text_hi.windows(6).any(|w| w == b"??????"));
+        let job = escpos_job("AWB 7\nLine two\nLine three");
         assert_eq!(&job[..2], &[0x1B, 0x40]);
+        assert!(
+            job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "thermal jobs are raster so every line has spacing in the image"
+        );
         assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
+        assert!(!escpos_text("A\nB").contains(&b'\r'));
+        assert_eq!(escpos_text("A\nB"), b"A\nB".to_vec());
     }
 
     /// A network printer gets the whole job over one connection.

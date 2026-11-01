@@ -331,8 +331,12 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .set_text(cx, &plain_display_text(&s("printers_help")));
         self.ui.widget(cx, ids!(h_printers_pool)).set_text(cx, &plain_display_text(&s("printers_pool_heading")));
         self.ui.widget(cx, ids!(h_printers_routes)).set_text(cx, &plain_display_text(&s("printers_routes_heading")));
-        self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
-        self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
+        if !print_share::is_finding_printers() {
+            self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
+        }
+        if !printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
+        }
         self.ui.button(cx, ids!(printer_remove)).set_text(cx, &s("remove_printer"));
         self.ui.button(cx, ids!(route_add)).set_text(cx, &s("route_add"));
         self.ui.button(cx, ids!(route_up)).set_text(cx, &s("route_up"));
@@ -377,9 +381,11 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(amend_btn))
             .set_text(cx, &s("amend"));
-        self.ui
-            .button(cx, ids!(backup_btn))
-            .set_text(cx, &s("create_backup"));
+        if !backup_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(backup_btn))
+                .set_text(cx, &s("create_backup"));
+        }
         self.ui
             .button(cx, ids!(bank_bank_to_till))
             .set_text(cx, &s("bank_to_till"));
@@ -419,12 +425,14 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(branch_consolidated))
             .set_text(cx, &s("rollup"));
-        self.ui
-            .button(cx, ids!(branch_export))
-            .set_text(cx, &s("export_day"));
-        self.ui
-            .button(cx, ids!(branch_import))
-            .set_text(cx, &s("import_day"));
+        if !branch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(branch_export))
+                .set_text(cx, &s("export_day"));
+            self.ui
+                .button(cx, ids!(branch_import))
+                .set_text(cx, &s("import_day"));
+        }
         self.ui
             .button(cx, ids!(branch_switch))
             .set_text(cx, &s("switch_device"));
@@ -518,9 +526,11 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(client_pair_btn))
             .set_text(cx, &s("pair_now"));
-        self.ui
-            .button(cx, ids!(client_find_btn))
-            .set_text(cx, &s("find_server"));
+        if !client_find_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(client_find_btn))
+                .set_text(cx, &s("find_server"));
+        }
         self.ui
             .button(cx, ids!(client_skip_lock))
             .set_text(cx, &s("unlock_after_pairing"));
@@ -603,18 +613,20 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(csv_copy_parties))
             .set_text(cx, &s("copy_parties_csv"));
-        self.ui
-            .button(cx, ids!(csv_import_items))
-            .set_text(cx, &s("import_items_csv"));
-        self.ui
-            .button(cx, ids!(csv_import_parties))
-            .set_text(cx, &s("import_parties_csv"));
-        self.ui
-            .button(cx, ids!(csv_import_pincodes))
-            .set_text(cx, &s("import_pincodes_csv"));
-        self.ui
-            .button(cx, ids!(csv_import_carrier_bill))
-            .set_text(cx, &s("import_carrier_bill_csv"));
+        if !csv_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(csv_import_items))
+                .set_text(cx, &s("import_items_csv"));
+            self.ui
+                .button(cx, ids!(csv_import_parties))
+                .set_text(cx, &s("import_parties_csv"));
+            self.ui
+                .button(cx, ids!(csv_import_pincodes))
+                .set_text(cx, &s("import_pincodes_csv"));
+            self.ui
+                .button(cx, ids!(csv_import_carrier_bill))
+                .set_text(cx, &s("import_carrier_bill_csv"));
+        }
         self.ui
             .button(cx, ids!(csv_copy_carrier_bill))
             .set_text(cx, &s("copy_carrier_bill_report"));
@@ -936,9 +948,11 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(reports_copy))
             .set_text(cx, &s("copy_report"));
-        self.ui
-            .button(cx, ids!(restore_btn))
-            .set_text(cx, &s("restore_backup"));
+        if !restore_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(restore_btn))
+                .set_text(cx, &s("restore_backup"));
+        }
         // Diagnostics block (Settings) — privacy-first local logs.
         self.ui
             .widget(cx, ids!(h_diag))
@@ -961,15 +975,17 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(diag_support_stop))
             .set_text(cx, &s("diag_support_stop"));
-        self.ui
-            .button(cx, ids!(diag_export_local))
-            .set_text(cx, &s("diag_export_local"));
+        if !diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(diag_export_local))
+                .set_text(cx, &s("diag_export_local"));
+            self.ui
+                .button(cx, ids!(diag_export_send))
+                .set_text(cx, &s("diag_export_send"));
+        }
         self.ui
             .button(cx, ids!(diag_approve_send))
             .set_text(cx, &s("diag_approve_send"));
-        self.ui
-            .button(cx, ids!(diag_export_send))
-            .set_text(cx, &s("diag_export_send"));
         self.ui
             .button(cx, ids!(diag_clear))
             .set_text(cx, &s("diag_clear"));
@@ -1030,11 +1046,13 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(new_pair_code))
             .set_text(cx, &s("new_pair_code"));
-        self.ui
-            .button(cx, ids!(backup_copy_btn))
-            // Android has no folder to copy into each day: the owner saves a
-            // copy where they choose (USB stick, SD card, Downloads).
-            .set_text(cx, &s(if cfg!(target_os = "android") { "save_backup_copy" } else { "backup_copy_btn" }));
+        if !backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(backup_copy_btn))
+                // Android has no folder to copy into each day: the owner saves a
+                // copy where they choose (USB stick, SD card, Downloads).
+                .set_text(cx, &s(if cfg!(target_os = "android") { "save_backup_copy" } else { "backup_copy_btn" }));
+        }
         self.ui.button(cx, ids!(autostart_btn)).set_text(
             cx,
             &s(if startup::is_on() {

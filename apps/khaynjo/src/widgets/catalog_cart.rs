@@ -39,6 +39,7 @@ impl Widget for CategoryList {
                     apply_thumb_avatar(cx, &item, &cat.name, &path);
                     item.widget(cx, ids!(label))
                         .set_text(cx, &plain_display_text(&cat.name));
+                    paint_first_alias(cx, &item, cat.first_alias().as_deref());
                     item.button(cx, ids!(pick)).set_text(cx, &locale::t(&app_state().lock().unwrap().locale.language, "use"));
                     item.draw_all_unscoped(cx);
                 }

@@ -137,17 +137,530 @@ fn backup_busy() -> &'static std::sync::atomic::AtomicBool {
     &BUSY
 }
 
+fn backup_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
 /// Run a books backup off the UI thread; the Signal handler paints the result.
 fn backup_job(db_path: PathBuf, dest: PathBuf) {
     if backup_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
     }
+    backup_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status("Creating backup…");
     let _ = std::thread::Builder::new()
         .name("khaynjo-backup-once".into())
         .spawn(move || {
-            let result = Store::open_path(&db_path).and_then(|s| s.backup_to(&dest).map(|()| dest));
+            let result = if backup_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                Err("Cancelled".into())
+            } else {
+                Store::open_path(&db_path).and_then(|s| s.backup_to(&dest).map(|()| dest))
+            };
             *backup_once().lock().unwrap() = Some(result);
             backup_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+/// Shared "work in progress" line for long jobs (restore, CSV, shelf photos…).
+fn books_work_status() -> &'static Mutex<Option<String>> {
+    static SLOT: OnceLock<Mutex<Option<String>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn set_books_work_status(msg: &str) {
+    *books_work_status().lock().unwrap() = Some(msg.to_string());
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+}
+
+fn clear_books_work_status() {
+    *books_work_status().lock().unwrap() = None;
+}
+
+fn restore_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn restore_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn restore_once() -> &'static Mutex<Option<Result<(PathBuf, PathBuf), String>>> {
+    // Ok((backup_path, before_restore_path))
+    static SLOT: OnceLock<Mutex<Option<Result<(PathBuf, PathBuf), String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+/// VACUUM + SQLite restore off the UI thread. Caller must drop `st.store` first.
+fn restore_job(db_path: PathBuf, backup: PathBuf, before: PathBuf) {
+    if restore_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    restore_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status("Restoring backup…");
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-restore".into())
+        .spawn(move || {
+            let result = (|| -> Result<(PathBuf, PathBuf), String> {
+                if restore_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                store::check_backup_file(&backup)?;
+                if restore_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                {
+                    let s = Store::open_path(&db_path)?;
+                    s.backup_to(&before)?;
+                }
+                if restore_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                let _ = Store::restore_from(&backup)?;
+                Ok((backup, before))
+            })();
+            *restore_once().lock().unwrap() = Some(result);
+            restore_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+fn backup_copy_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn backup_copy_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn backup_copy_once() -> &'static Mutex<Option<Result<(PathBuf, String), String>>> {
+    // Ok((file, suggested save name))
+    static SLOT: OnceLock<Mutex<Option<Result<(PathBuf, String), String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+/// Android "Save a backup copy": VACUUM off UI, then Signal opens the save dialog.
+fn backup_copy_job(db_path: PathBuf, dest: PathBuf, suggested_name: String) {
+    if backup_copy_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    backup_copy_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status("Making backup copy…");
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-backup-copy".into())
+        .spawn(move || {
+            let result = if backup_copy_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                Err("Cancelled".into())
+            } else {
+                Store::open_path(&db_path)
+                    .and_then(|s| s.backup_to(&dest).map(|()| (dest, suggested_name)))
+            };
+            *backup_copy_once().lock().unwrap() = Some(result);
+            backup_copy_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+fn csv_import_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn csv_import_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn csv_import_once() -> &'static Mutex<Option<Result<String, String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<String, String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn csv_import_job(db_path: PathBuf, path: PathBuf, parties: bool) {
+    if csv_import_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    csv_import_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status(if parties {
+        "Importing parties…"
+    } else {
+        "Importing items…"
+    });
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-csv-import".into())
+        .spawn(move || {
+            let result = (|| -> Result<String, String> {
+                if csv_import_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                let text = std::fs::read_to_string(&path)
+                    .map_err(|e| format!("Could not read the file: {e}"))?;
+                if csv_import_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                let store = Store::open_path(&db_path)?;
+                let (added, skipped, problems) = if parties {
+                    store.import_parties_csv(&text)?
+                } else {
+                    store.import_items_csv(&text)?
+                };
+                let mut msg = format!(
+                    "Imported {added} new, skipped {skipped} (already there or unusable)"
+                );
+                if let Some(p) = problems.first() {
+                    msg.push_str(&format!(" · first problem: {p}"));
+                }
+                Ok(msg)
+            })();
+            *csv_import_once().lock().unwrap() = Some(result);
+            csv_import_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+fn shelf_mat_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn shelf_mat_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn shelf_mat_once() -> &'static Mutex<Option<Result<usize, String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<usize, String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn shelf_mat_progress_tick(done: usize, total: usize) {
+    if total == 0 {
+        set_books_work_status("Preparing menu photos…");
+    } else {
+        *books_work_status().lock().unwrap() =
+            Some(format!("Preparing menu photos… {done}/{total}"));
+    }
+    static LAST: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+    let prev = LAST.load(std::sync::atomic::Ordering::Relaxed);
+    if done == 0 || done == total || done.saturating_sub(prev) >= 8 {
+        LAST.store(done, std::sync::atomic::Ordering::Relaxed);
+        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+    }
+}
+
+fn shelf_mat_cancel_poll() -> bool {
+    shelf_mat_cancel().load(std::sync::atomic::Ordering::SeqCst)
+}
+
+/// Materialise `shelf:…` photos into `item_images` off the UI thread.
+fn shelf_materialize_job(db_path: PathBuf) {
+    if shelf_mat_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    shelf_mat_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status("Preparing menu photos…");
+    store::set_import_progress_notify(Some(shelf_mat_progress_tick));
+    store::set_import_cancel_check(Some(shelf_mat_cancel_poll));
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-shelf-mat".into())
+        .spawn(move || {
+            let result = Store::open_path(&db_path).and_then(|s| s.materialize_shelf_photos());
+            store::set_import_progress_notify(None);
+            store::set_import_cancel_check(None);
+            *shelf_mat_once().lock().unwrap() = Some(result);
+            shelf_mat_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+/// Menu template / shelf catalogue import — never on the UI thread (webp copy
+/// of hundreds of dishes freezes the window for a long time).
+#[derive(Clone, Debug)]
+enum MenuImportKind {
+    Shelf,
+    Client { id: String, title: String },
+}
+
+struct MenuImportOutcome {
+    kind: MenuImportKind,
+    result: Result<store::CatalogueImport, String>,
+}
+
+fn menu_import_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn menu_import_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn menu_import_progress() -> &'static Mutex<(usize, usize)> {
+    static SLOT: OnceLock<Mutex<(usize, usize)>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new((0, 0)))
+}
+
+fn menu_import_once() -> &'static Mutex<Option<MenuImportOutcome>> {
+    static SLOT: OnceLock<Mutex<Option<MenuImportOutcome>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn menu_import_running() -> &'static Mutex<Option<MenuImportKind>> {
+    static SLOT: OnceLock<Mutex<Option<MenuImportKind>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn menu_import_progress_tick(done: usize, total: usize) {
+    *menu_import_progress().lock().unwrap() = (done, total);
+    *books_work_status().lock().unwrap() = Some(format!("Importing… {done}/{total}"));
+    // Throttle wakes so a 1,400-dish shelf import does not flood the UI queue.
+    static LAST: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+    let prev = LAST.load(std::sync::atomic::Ordering::Relaxed);
+    if done == 0 || done == total || done.saturating_sub(prev) >= 3 {
+        LAST.store(done, std::sync::atomic::Ordering::Relaxed);
+        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+    }
+}
+
+fn menu_import_cancel_poll() -> bool {
+    menu_import_cancel().load(std::sync::atomic::Ordering::SeqCst)
+}
+
+fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
+    if menu_import_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    menu_import_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    // Known total before the worker starts so the progress button paints 0/N
+    // on the same click frame (not after the first encode).
+    let known_total = match &kind {
+        MenuImportKind::Shelf => menu_images::shelf().len().max(1),
+        MenuImportKind::Client { id, .. } => menu_templates::find(id)
+            .map(|t| {
+                t.categories
+                    .iter()
+                    .map(|c| c.items.len().saturating_add(1))
+                    .sum::<usize>()
+                    .max(1)
+            })
+            .unwrap_or(1),
+    };
+    *menu_import_progress().lock().unwrap() = (0, known_total);
+    *menu_import_once().lock().unwrap() = None;
+    *menu_import_running().lock().unwrap() = Some(kind.clone());
+    set_books_work_status(&format!("Importing… 0/{known_total}"));
+    store::set_import_progress_notify(Some(menu_import_progress_tick));
+    store::set_import_cancel_check(Some(menu_import_cancel_poll));
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-menu-import".into())
+        .spawn(move || {
+            let result = (|| -> Result<store::CatalogueImport, String> {
+                let store = Store::open_path(&db_path)?;
+                match &kind {
+                    MenuImportKind::Shelf => store.import_catalogue(menu_images::shelf()),
+                    MenuImportKind::Client { id, .. } => {
+                        let tmpl = menu_templates::find(id)
+                            .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
+                        store.import_menu_template(tmpl)
+                    }
+                }
+            })();
+            store::set_import_progress_notify(None);
+            store::set_import_cancel_check(None);
+            *menu_import_once().lock().unwrap() = Some(MenuImportOutcome { kind, result });
+            *menu_import_running().lock().unwrap() = None;
+            menu_import_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+/// Cancel whichever books / import job is currently busy (best-effort for VACUUM).
+fn request_books_job_cancel() {
+    if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        menu_import_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        shelf_mat_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if csv_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        csv_import_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if backup_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        backup_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if restore_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        restore_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        backup_copy_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        aggregator_import_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        diag_export_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+fn printer_add_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn printer_add_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn printer_add_status() -> &'static Mutex<Option<String>> {
+    static SLOT: OnceLock<Mutex<Option<String>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn printer_add_once() -> &'static Mutex<Option<Result<(), String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<(), String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn printer_add_job(base: PathBuf, draft: print_share::DevicePrinters) {
+    if printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    printer_add_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    *printer_add_status().lock().unwrap() = Some("Saving…".into());
+    *printer_add_once().lock().unwrap() = None;
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-printer-add".into())
+        .spawn(move || {
+            let result = (|| -> Result<(), String> {
+                if printer_add_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                print_share::save_device_printers(&base, &draft)
+            })();
+            *printer_add_once().lock().unwrap() = Some(result);
+            *printer_add_status().lock().unwrap() = None;
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+fn client_find_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn client_find_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn aggregator_import_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn aggregator_import_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn aggregator_import_once() -> &'static Mutex<Option<Result<String, String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<String, String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn aggregator_import_job(db_path: PathBuf) {
+    if aggregator_import_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    aggregator_import_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status("Importing aggregator file…");
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-agg-import".into())
+        .spawn(move || {
+            let result = (|| -> Result<String, String> {
+                if aggregator_import_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                let store = Store::open_path(&db_path)?;
+                if aggregator_import_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                let n = store.import_aggregator_orders_drop_file()?;
+                Ok(format!("Imported {n} aggregator order(s) into the inbox"))
+            })();
+            *aggregator_import_once().lock().unwrap() = Some(result);
+            aggregator_import_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
+fn diag_export_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn diag_export_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn diag_export_for_send() -> &'static std::sync::atomic::AtomicBool {
+    static FOR_SEND: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &FOR_SEND
+}
+
+fn diag_export_once() -> &'static Mutex<Option<Result<(diag::ExportPaths, bool), String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<(diag::ExportPaths, bool), String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn diag_export_job(for_send: bool) {
+    if diag_export_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    diag_export_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    diag_export_for_send().store(for_send, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status(if for_send {
+        "Creating share package…"
+    } else {
+        "Exporting diagnostics…"
+    });
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-diag-export".into())
+        .spawn(move || {
+            let result = (|| -> Result<(diag::ExportPaths, bool), String> {
+                if diag_export_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                let paths = if for_send {
+                    diag::export_for_send()?
+                } else {
+                    diag::export_local()?
+                };
+                if diag_export_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                Ok((paths, for_send))
+            })();
+            *diag_export_once().lock().unwrap() = Some(result);
+            diag_export_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
             makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
         });
 }

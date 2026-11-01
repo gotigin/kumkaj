@@ -468,11 +468,14 @@ Makepad exposes the clipboard (`Cx::copy_to_clipboard` → `ClipboardManager`).
 by `scripts/apply-android-activity-bridge.sh` before an Android build:
 
 - **Copy receipt** puts the text on the system clipboard.
-- **Print / share** prints on a network printer when one is set (Settings →
-  Printers on this device); otherwise it opens an `ACTION_SEND` chooser
-  (`shareText`). Either way it writes `receipts/receipt-YYYYMMDD-HHMMSS.txt`
-  under the app files dir. Desktop prints through the system (`lp` /
-  `Out-Printer`) — see LAN § Printing.
+- **Print / share** sends through this device's printer pool when a printable
+  route exists (Settings → Printers): Network `:9100`, Bluetooth SPP (`bt:`),
+  USB host (`usb:`), or Standard via Android PrintManager (`android-print:` /
+  blank target). Otherwise it opens an `ACTION_SEND` chooser (`shareText`).
+  Either way it writes `receipts/receipt-YYYYMMDD-HHMMSS.txt` under the app
+  files dir. Desktop also uses system queues (`lp` / `Out-Printer`) — see
+  LAN § Printing. Bridge: `MakepadActivity-print.java` via
+  `scripts/apply-android-activity-bridge.sh` + patch `android_print`.
 - A gallery or file-picker `content://` URI is read with `readContentUri`
   and saved as a real file before it becomes an item photo, venue icon or
   a backup to restore (`backups/picked-<ts>.sqlite3`).
@@ -488,10 +491,13 @@ Because the receipt file is under `getFilesDir`, another app cannot open it
 without a `FileProvider`; the share sheet and clipboard carry the text.
 
 The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK.
-Template import on a desktop Server copies each photo into `item_images` as
-`custom:…`; Clients (including Android) pull missing photos over LAN
-(`GET /item-image`) into a local cache. Initials show only until that fetch
-lands, or when the Server itself has no file for the key.
+**Shelf** import (“Import complete template”) and **named client** imports
+(`assets/templates/<id>/`, e.g. Rajdhani — Menu → Client menu) both run on a
+desktop Server and copy each photo into `item_images` as `custom:…`; Clients
+(including Android) pull missing photos over LAN (`GET /item-image`) into a
+local cache. Initials show only until that fetch lands, or when the Server
+itself has no file for the key. How to add a client template:
+`apps/khaynjo/assets/templates/README.md`.
 
 `arboard` and `rfd` are desktop-only dependencies — neither compiles for
 Android, and `arboard` being unconditional used to break the Android build
@@ -691,34 +697,33 @@ times (waiting writes, "last update") would mislead. Test
 `replies_carry_the_server_clock`.
 
 **Printing (`print_share.rs`, per device).** Printers belong to the
-device, not the books: `printers.json` in the data folder holds a
-**pool** of named printers (`id` / `label` / `target`) and **routes**
-(ordered printer ids per feature). Settings → **Printers on this device**
-edits both. A route tries the first printer, then the next on failure
-(fallback, not fan-out); an empty route means that feature does not
-print. Khaynjo routes: **Bill**, plus **KOT per kitchen station**
-(`""` = unassigned / default kitchen). KOT lookup: station → `""` →
-**Bill** (one printer on Bill still prints every kitchen ticket). Moklanjo routes:
-**Receipt** and **AWB label**. Legacy files (`kot`/`bill` or `receipt`
-strings) migrate on load; blank fields stay empty (no invented “Default” printer). Settings → **Find printers** lists system printers
-(`lpstat` / `Get-Printer` on desktop) and hosts on this Wi‑Fi that
-accept TCP on port 9100 (ESC/POS) — that scan is what works on Android
-too. A target is a system printer's name, or an
-address (blank = this computer's usual OS printer) — `192.168.1.50` or
-`host:port`, default 9100.
+device, not the books: `printers.json` holds a **pool** of named printers
+(`id` / `label` / `target` / `mode`) and **routes** (ordered printer ids).
+Settings → **Printers** edits both. A route tries the first printer, then
+the next on failure; an empty route means that feature does not print.
+Khaynjo routes: **Bill**, plus **KOT per kitchen station** (`""` =
+unassigned). KOT lookup: station → `""` → **Bill**. Moklanjo routes:
+**Receipt** and **AWB label**. Legacy files migrate on load; blank fields
+stay empty (no invented “Default” printer).
 
-**Print targets (owner chooses — large office or small kitchen):**
+**Formats** (Standard, KOT/Thermal, plus owner **custom** formats) are the
+slip shape. Printers are **destinations only**. Each route picks a format
+(Bill/Receipt → Standard, kitchen/label → KOT by default); the owner can
+change it or tap **New custom format**. Format metrics drive
+`receipt_raster`; `document: true` formats may use OS / Android PrintManager,
+thermal-style formats need Network/BT/USB (or desktop raw spool).
 
-| Target | Behaviour (every supported OS) |
-|---|---|
-| Network `ip:9100` | Short ASCII ESC/POS over TCP |
-| Named / default system printer | That OS print path (`lp` / `Out-Printer`) — paper size and driver are the owner's |
+**Find printers** lists system queues (desktop), Wi‑Fi `:9100` hosts,
+Bluetooth `bt:MAC`, USB `usb:VID:PID`, and on Android `android-print:`.
 
-Do not hard-code “all KOTs must be raw” or “all Bills must be laser” in
-code: shops put whichever printer they want on Bill vs each kitchen
-station route. Network ESC/POS jobs stay short ASCII (max 4 KiB; no
-default `GS v 0` raster). Failures via `take_problems`. Paired-device
-KOTs / Print bill print at the Server.
+| Target | Document format | Thermal-style format |
+|---|---|---|
+| Network / BT / USB | ESC/POS raster | ESC/POS raster |
+| Desktop system name / blank | OS document (`lp` / Out-Printer) | Raw ESC/POS spool |
+| Android blank / `android-print:` | PrintManager PDF UI | refused — use Network/BT/USB |
+
+Android-as-Server is first-class: Network, BT, USB, and document PrintManager.
+Failures via `take_problems`. Client devices print at the Server.
 
 **Backups.** The server writes a backup automatically once a day
 (`auto_backup_if_due`; the last 14 are kept in the data folder's `backups/`)

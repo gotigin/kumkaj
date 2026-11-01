@@ -56,6 +56,112 @@ impl AppMain for App {
                     Err(e) => self.set_status(cx, e),
                 }
             }
+            if restore_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || branch_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || print_share::is_finding_printers()
+                || client_find_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                if let Some(msg) = books_work_status().lock().unwrap().clone() {
+                    self.set_status(cx, msg);
+                }
+                self.paint_submit_busy_chrome(cx);
+            }
+            if let Some(result) = printer_add_once().lock().unwrap().take() {
+                match result {
+                    Ok(()) => {
+                        self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.set_status(cx, e);
+                        self.paint_submit_busy_chrome(cx);
+                    }
+                }
+            }
+            if let Some(result) = branch_once().lock().unwrap().take() {
+                match result {
+                    Ok(msg) => {
+                        let _ = app_state().lock().unwrap().refresh_branches_text();
+                        self.set_status(cx, msg);
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.set_status(cx, e);
+                        self.paint_submit_busy_chrome(cx);
+                    }
+                }
+            }
+            if let Some(result) = diag_export_once().lock().unwrap().take() {
+                match result {
+                    Ok((paths, for_send)) => {
+                        self.sync_diag_panel(cx);
+                        self.offer_diag_bundle_save(cx, paths, for_send);
+                        self.paint_submit_busy_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.show_error(cx, e);
+                        self.paint_submit_busy_chrome(cx);
+                    }
+                }
+            }
+            if let Some(result) = backup_copy_once().lock().unwrap().take() {
+                match result {
+                    Ok((file, name)) => {
+                        app_state().lock().unwrap().pending_backup_copy = Some(file);
+                        let title = app_state().lock().unwrap().t("save_backup_copy");
+                        cx.open_save_file_dialog(
+                            FileDialog::new()
+                                .set_title(title)
+                                .set_filename(name)
+                                .add_filter("Backups".into(), vec!["sqlite3".into()])
+                                .set_id(live_id!(backup_save_pick)),
+                        );
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            if let Some(result) = restore_once().lock().unwrap().take() {
+                match result {
+                    Ok((backup, before)) => {
+                        self.ensure_store(cx);
+                        let _ = app_state().lock().unwrap().reload_all();
+                        self.set_status(
+                            cx,
+                            format!(
+                                "Restored from {} — the books before it are saved as {}",
+                                backup.file_name().unwrap_or_default().to_string_lossy(),
+                                before.file_name().unwrap_or_default().to_string_lossy()
+                            ),
+                        );
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        if app_state().lock().unwrap().store.is_none() {
+                            self.ensure_store(cx);
+                        }
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                    }
+                }
+            }
+            if let Some(result) = csv_import_once().lock().unwrap().take() {
+                if let Some(report) = carrier_bill_report_once().lock().unwrap().take() {
+                    app_state().lock().unwrap().last_carrier_bill_report = report;
+                }
+                match result {
+                    Ok(msg) => {
+                        let _ = app_state().lock().unwrap().reload_all();
+                        self.set_status(cx, msg);
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
             if BACKUP_MADE.swap(false, std::sync::atomic::Ordering::SeqCst) {
                 self.sync_chrome(cx);
             }

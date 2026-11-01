@@ -2167,12 +2167,25 @@ pub fn local_ipv4() -> Option<Ipv4Addr> {
     }
 }
 
+static DISCOVER_CANCEL: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+
+/// Ask [`discover_servers`] to stop early (partial results still return).
+pub fn cancel_discover_servers() {
+    DISCOVER_CANCEL.store(true, std::sync::atomic::Ordering::SeqCst);
+}
+
+fn discover_cancelled() -> bool {
+    DISCOVER_CANCEL.load(std::sync::atomic::Ordering::SeqCst)
+}
+
 /// Find Khaynjo shop servers on this Wi‑Fi: first a broadcast that servers
 /// answer, then — when a router drops broadcasts — a quick knock on every
 /// address of this /24 for the server port. Takes a few seconds at most.
 pub fn discover_servers(wait: Duration) -> Vec<FoundServer> {
+    DISCOVER_CANCEL.store(false, std::sync::atomic::Ordering::SeqCst);
     let mut found = discover_by_broadcast(wait);
-    if found.is_empty() {
+    if found.is_empty() && !discover_cancelled() {
         found = discover_by_scan();
     }
     found.sort_by(|a, b| a.host.cmp(&b.host));
@@ -2206,6 +2219,9 @@ fn discover_by_broadcast(wait: Duration) -> Vec<FoundServer> {
     let deadline = std::time::Instant::now() + wait;
     let mut buf = [0u8; 1024];
     while let Some(left) = deadline.checked_duration_since(std::time::Instant::now()) {
+        if discover_cancelled() {
+            break;
+        }
         let _ = socket.set_read_timeout(Some(left.max(Duration::from_millis(10))));
         let Ok((n, from)) = socket.recv_from(&mut buf) else {
             break;
@@ -2242,6 +2258,9 @@ fn scan_for_servers(addrs: Vec<SocketAddr>) -> Vec<FoundServer> {
             let found = Arc::clone(&found);
             thread::spawn(move || {
                 for addr in chunk {
+                    if discover_cancelled() {
+                        break;
+                    }
                     if TcpStream::connect_timeout(&addr, Duration::from_millis(300)).is_err() {
                         continue;
                     }
@@ -2857,10 +2876,7 @@ mod tests {
         // kitchen a printer so the cancel slip is recorded.
         let mut printers = crate::print_share::DevicePrinters::default();
         let kitchen = printers.add_printer(
-            "Kitchen",
-            "192.168.1.50",
-            crate::print_share::PrinterWire::EscPos,
-        );
+            "Kitchen", "192.168.1.50");
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
@@ -2932,10 +2948,7 @@ mod tests {
         // empty routes skip Capture, matching Settings.
         let mut printers = crate::print_share::DevicePrinters::default();
         let kitchen = printers.add_printer(
-            "Kitchen",
-            "192.168.1.50",
-            crate::print_share::PrinterWire::EscPos,
-        );
+            "Kitchen", "192.168.1.50");
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen.clone()];
         *printers.route_mut(crate::print_share::RouteKey::Kot {

@@ -13,14 +13,13 @@
 //! usual OS printer — never invent a pool entry named "Default". Jobs go
 //! through one worker thread; failures surface via [`take_problems`].
 //!
-//! How a job is wired is **per printer** (the owner chooses — not by Bill vs KOT):
-//! - **Thermal ESC/POS** — short ASCII over TCP `host:9100`, or raw spool to a
-//!   system queue (`lp -o raw` / Windows RAW). Use for kitchen and for bills
-//!   on a receipt printer.
-//! - **System print** — normal OS/driver job (A4, PDF, whatever that queue is).
-//!   Use for office printers.
-//! Network addresses (`host:9100`) always use ESC/POS. Bill vs kitchen is only
-//! which **route** the owner assigns in Settings.
+//! How a job is sent:
+//! - **Format** (Standard, KOT, or a custom format) = slip shape. Chosen per
+//!   route (Bill → Standard, kitchens → KOT by default); owner can change or
+//!   add custom formats.
+//! - **Printer target** = transport only: system name / blank, `host:9100`,
+//!   `bt:MAC`, `usb:VID:PID`, or `android-print:` (document formats on Android).
+//! Routes choose which printers Bill / each kitchen use.
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -73,56 +72,165 @@ pub enum RouteKey<'a> {
     Kot { station_id: &'a str },
 }
 
-/// How jobs are sent to a pool printer (owner picks — not inferred from Bill/KOT).
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum PrinterWire {
-    /// ESC/POS: TCP 9100 or raw spool to a system queue (thermals).
-    EscPos,
-    /// OS/driver document print (A4, PDF, etc.).
-    #[default]
-    OsDocument,
+/// Built-in format ids (always present; owner may customize their metrics).
+pub const FORMAT_STANDARD: &str = "standard";
+pub const FORMAT_KOT: &str = "kot";
+
+/// One slip format: how the ticket is drawn / sent.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct PrintFormat {
+    pub id: String,
+    pub label: String,
+    /// When true, system / Android PrintManager use a document path; thermal
+    /// targets still get ESC/POS raster with these metrics.
+    #[serde(default = "default_true")]
+    pub document: bool,
+    #[serde(default = "default_em")]
+    pub em: f32,
+    #[serde(default = "default_line")]
+    pub line: u32,
+    #[serde(default = "default_baseline")]
+    pub baseline: f32,
+    #[serde(default = "default_side")]
+    pub side: f32,
 }
 
-/// One named printer in this device's pool.
+fn default_true() -> bool { true }
+fn default_em() -> f32 { 22.0 }
+fn default_line() -> u32 { 32 }
+fn default_baseline() -> f32 { 24.0 }
+fn default_side() -> f32 { 8.0 }
+
+impl PrintFormat {
+    pub fn standard() -> Self {
+        Self {
+            id: FORMAT_STANDARD.into(),
+            label: "Standard".into(),
+            document: true,
+            em: 22.0,
+            line: 32,
+            baseline: 24.0,
+            side: 8.0,
+        }
+    }
+
+    pub fn kot() -> Self {
+        Self {
+            id: FORMAT_KOT.into(),
+            label: "KOT".into(),
+            document: false,
+            em: 24.0,
+            line: 36,
+            baseline: 26.0,
+            side: 4.0,
+        }
+    }
+
+    pub fn raster_metrics(&self) -> crate::receipt_raster::RasterMetrics {
+        crate::receipt_raster::RasterMetrics {
+            em: self.em,
+            line: self.line as usize,
+            baseline: self.baseline,
+            side: self.side,
+        }
+    }
+
+    /// Built-ins plus any customs; always includes Standard and KOT.
+    pub fn ensure_builtins(list: &mut Vec<PrintFormat>) {
+        if !list.iter().any(|f| f.id == FORMAT_STANDARD) {
+            list.insert(0, PrintFormat::standard());
+        }
+        if !list.iter().any(|f| f.id == FORMAT_KOT) {
+            let idx = if list.first().map(|f| f.id.as_str()) == Some(FORMAT_STANDARD) { 1 } else { 0 };
+            list.insert(idx, PrintFormat::kot());
+        }
+    }
+}
+
+/// Legacy alias — prefer [`PrintFormat`] / format ids.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum PrinterMode {
+    #[default]
+    Standard,
+    Kot,
+}
+
+pub type PrinterWire = PrinterMode;
+
+impl PrinterMode {
+    pub fn format_id(self) -> &'static str {
+        match self {
+            Self::Standard => FORMAT_STANDARD,
+            Self::Kot => FORMAT_KOT,
+        }
+    }
+
+    pub fn from_legacy_wire_str(s: &str) -> Self {
+        match s {
+            "esc_pos" | "kot" => Self::Kot,
+            _ => Self::Standard,
+        }
+    }
+}
+
+/// One named printer in this device's pool (destination only).
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct NamedPrinter {
     pub id: String,
     pub label: String,
-    /// Blank = system default; name = system printer; `ip` / `ip:port` = network.
+    /// Blank = system default; name = system printer; `ip` / `ip:port` = network;
+    /// `bt:MAC`, `usb:VID:PID`, `android-print:`.
     pub target: String,
-    /// How to send (ignored for network targets — those are always ESC/POS).
-    #[serde(default)]
-    pub wire: PrinterWire,
+    /// Ignored on load (legacy); printers no longer store a mode.
+    #[serde(default, alias = "wire", alias = "mode", skip_serializing)]
+    pub _legacy_mode: Option<String>,
 }
 
-/// Ordered printer ids for each print feature.
-#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+/// Ordered printer ids for each print feature, plus which format each uses.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PrintRoutes {
     #[serde(default)]
     pub bill: Vec<String>,
     /// Station id → ordered printer ids. Key `""` is unassigned items only.
     #[serde(default)]
     pub kot: BTreeMap<String, Vec<String>>,
+    /// Format id for Bill (default [`FORMAT_STANDARD`]).
+    #[serde(default = "default_format_standard")]
+    pub bill_format: String,
+    /// Station id → format id for that kitchen (missing → [`FORMAT_KOT`]).
+    #[serde(default)]
+    pub kot_format: BTreeMap<String, String>,
 }
 
-/// This device's printer pool and routes (Settings → Printers).
-#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+fn default_format_standard() -> String { FORMAT_STANDARD.into() }
+
+impl Default for PrintRoutes {
+    fn default() -> Self {
+        Self {
+            bill: Vec::new(),
+            kot: BTreeMap::from([("".into(), Vec::new())]),
+            bill_format: FORMAT_STANDARD.into(),
+            kot_format: BTreeMap::new(),
+        }
+    }
+}
+
+/// This device's printer pool, formats, and routes (Settings → Printers).
+#[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct DevicePrinters {
     pub printers: Vec<NamedPrinter>,
+    #[serde(default)]
+    pub formats: Vec<PrintFormat>,
     pub routes: PrintRoutes,
 }
 
 impl Default for DevicePrinters {
     fn default() -> Self {
-        // Nothing configured yet: empty pool, empty routes (don't print until
-        // the owner adds real printers and assigns them).
         Self {
             printers: Vec::new(),
-            routes: PrintRoutes {
-                bill: Vec::new(),
-                kot: BTreeMap::from([("".into(), Vec::new())]),
-            },
+            formats: vec![PrintFormat::standard(), PrintFormat::kot()],
+            routes: PrintRoutes::default(),
         }
     }
 }
@@ -143,22 +251,23 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             label: String,
             #[serde(default)]
             target: String,
-            /// Absent in kind-era files — inferred from routes below.
-            #[serde(default)]
-            wire: Option<PrinterWire>,
         }
         #[derive(Deserialize)]
         struct New {
             #[serde(default)]
             printers: Vec<NamedRaw>,
             #[serde(default)]
+            formats: Vec<PrintFormat>,
+            #[serde(default)]
             routes: PrintRoutes,
         }
         let parsed: New = serde_json::from_value(value).unwrap_or_else(|_| New {
             printers: Vec::new(),
+            formats: Vec::new(),
             routes: PrintRoutes::default(),
         });
-        let wire_explicit: Vec<bool> = parsed.printers.iter().map(|r| r.wire.is_some()).collect();
+        let mut formats = parsed.formats;
+        PrintFormat::ensure_builtins(&mut formats);
         let mut out = DevicePrinters {
             printers: parsed
                 .printers
@@ -167,14 +276,16 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
                     id: r.id,
                     label: r.label,
                     target: r.target,
-                    wire: r.wire.unwrap_or(PrinterWire::OsDocument),
+                    _legacy_mode: None,
                 })
                 .collect(),
+            formats,
             routes: parsed.routes,
         };
-        infer_legacy_wires(&mut out, &wire_explicit);
         scrub_fake_default_printers(&mut out);
-        scrub_printer_wires(&mut out);
+        if out.routes.bill_format.trim().is_empty() {
+            out.routes.bill_format = FORMAT_STANDARD.into();
+        }
         if !out.routes.kot.contains_key("") {
             out.routes.kot.insert(String::new(), Vec::new());
         }
@@ -192,41 +303,6 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
         .unwrap_or("")
         .to_string();
     migrate_legacy(&kot, &bill)
-}
-
-/// Network addresses always speak ESC/POS on 9100.
-fn scrub_printer_wires(cfg: &mut DevicePrinters) {
-    for p in &mut cfg.printers {
-        if matches!(parse_target(&p.target), PrinterTarget::Network(_)) {
-            p.wire = PrinterWire::EscPos;
-        }
-    }
-}
-
-/// Kind-era files had no `wire`: KOT on a system queue used raw ESC/POS.
-/// Only fill that in when JSON omitted `wire` and the printer is kitchen-only.
-fn infer_legacy_wires(cfg: &mut DevicePrinters, wire_explicit: &[bool]) {
-    let bill_ids = cfg.routes.bill.clone();
-    let kot_ids: Vec<String> = cfg
-        .routes
-        .kot
-        .values()
-        .flat_map(|ids| ids.iter().cloned())
-        .collect();
-    for (i, p) in cfg.printers.iter_mut().enumerate() {
-        if wire_explicit.get(i).copied().unwrap_or(true) {
-            continue;
-        }
-        if matches!(parse_target(&p.target), PrinterTarget::Network(_)) {
-            p.wire = PrinterWire::EscPos;
-            continue;
-        }
-        let on_bill = bill_ids.iter().any(|id| id == &p.id);
-        let on_kot = kot_ids.iter().any(|id| id == &p.id);
-        if on_kot && !on_bill {
-            p.wire = PrinterWire::EscPos;
-        }
-    }
 }
 
 /// Drop the old synthetic pool entry labeled "Default" with a blank target —
@@ -259,16 +335,11 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
             return Some(existing.id.clone());
         }
         let id = uuid::Uuid::new_v4().to_string();
-        let wire = match parse_target(t) {
-            PrinterTarget::Network(_) => PrinterWire::EscPos,
-            _ if label == "Kitchen printer" => PrinterWire::EscPos,
-            _ => PrinterWire::OsDocument,
-        };
         printers.push(NamedPrinter {
             id: id.clone(),
             label: label.into(),
             target: t.to_string(),
-            wire,
+            _legacy_mode: None,
         });
         Some(id)
     };
@@ -285,9 +356,12 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
     };
     DevicePrinters {
         printers,
+        formats: vec![PrintFormat::standard(), PrintFormat::kot()],
         routes: PrintRoutes {
             bill: bill_ids,
             kot: BTreeMap::from([("".into(), kot_ids)]),
+            bill_format: FORMAT_STANDARD.into(),
+            kot_format: BTreeMap::new(),
         },
     }
 }
@@ -361,15 +435,74 @@ impl DevicePrinters {
             .collect()
     }
 
-    /// Resolve route ids to target + how to send (owner's wire per printer).
+    /// Format id for this route (Bill → bill_format; kitchen → kot_format / KOT).
+    pub fn format_id_for(&self, key: RouteKey<'_>) -> String {
+        match key {
+            RouteKey::Bill => {
+                let f = self.routes.bill_format.trim();
+                if f.is_empty() { FORMAT_STANDARD.into() } else { f.to_string() }
+            }
+            RouteKey::Kot { station_id } => {
+                if let Some(f) = self.routes.kot_format.get(station_id) {
+                    let f = f.trim();
+                    if !f.is_empty() {
+                        return f.to_string();
+                    }
+                }
+                if !station_id.is_empty() {
+                    if let Some(f) = self.routes.kot_format.get("") {
+                        let f = f.trim();
+                        if !f.is_empty() {
+                            return f.to_string();
+                        }
+                    }
+                }
+                FORMAT_KOT.into()
+            }
+        }
+    }
+
+    pub fn format_by_id(&self, id: &str) -> PrintFormat {
+        self.formats
+            .iter()
+            .find(|f| f.id == id)
+            .cloned()
+            .unwrap_or_else(|| {
+                if id == FORMAT_KOT {
+                    PrintFormat::kot()
+                } else {
+                    PrintFormat::standard()
+                }
+            })
+    }
+
+    pub fn format_for(&self, key: RouteKey<'_>) -> PrintFormat {
+        self.format_by_id(&self.format_id_for(key))
+    }
+
+    pub fn set_route_format(&mut self, key: RouteKey<'_>, format_id: &str) {
+        let id = format_id.trim();
+        if id.is_empty() {
+            return;
+        }
+        match key {
+            RouteKey::Bill => self.routes.bill_format = id.to_string(),
+            RouteKey::Kot { station_id } => {
+                self.routes.kot_format.insert(station_id.to_string(), id.to_string());
+            }
+        }
+    }
+
+    /// Resolve route ids to target + the route's format.
     pub fn destinations_for(&self, key: RouteKey<'_>) -> Vec<PrintDest> {
+        let format = self.format_for(key);
         self.route_for(key)
             .iter()
             .filter_map(|id| {
                 let p = self.printers.iter().find(|p| p.id == *id)?;
                 Some(PrintDest {
                     target: parse_target(&p.target),
-                    wire: effective_wire(p),
+                    format: format.clone(),
                 })
             })
             .collect()
@@ -379,16 +512,48 @@ impl DevicePrinters {
         self.printers.iter().find(|p| p.id == id)
     }
 
-    pub fn set_wire(&mut self, id: &str, wire: PrinterWire) {
-        if let Some(p) = self.printers.iter_mut().find(|p| p.id == id) {
-            p.wire = match parse_target(&p.target) {
-                PrinterTarget::Network(_) => PrinterWire::EscPos,
-                _ => wire,
-            };
+    pub fn add_format_from(&mut self, from_id: &str, label: &str) -> String {
+        PrintFormat::ensure_builtins(&mut self.formats);
+        let base = self.format_by_id(from_id);
+        let id = format!("custom-{}", &uuid::Uuid::new_v4().simple().to_string()[..8]);
+        let label = {
+            let t = label.trim();
+            if t.is_empty() { format!("Custom ({})", base.label) } else { t.to_string() }
+        };
+        self.formats.push(PrintFormat {
+            id: id.clone(),
+            label,
+            document: base.document,
+            em: base.em,
+            line: base.line,
+            baseline: base.baseline,
+            side: base.side,
+        });
+        id
+    }
+
+    pub fn update_format(&mut self, format: PrintFormat) {
+        if let Some(slot) = self.formats.iter_mut().find(|f| f.id == format.id) {
+            *slot = format;
         }
     }
 
-    pub fn add_printer(&mut self, label: &str, target: &str, wire: PrinterWire) -> String {
+    pub fn remove_format(&mut self, id: &str) {
+        if id == FORMAT_STANDARD || id == FORMAT_KOT {
+            return;
+        }
+        self.formats.retain(|f| f.id != id);
+        if self.routes.bill_format == id {
+            self.routes.bill_format = FORMAT_STANDARD.into();
+        }
+        for v in self.routes.kot_format.values_mut() {
+            if v == id {
+                *v = FORMAT_KOT.into();
+            }
+        }
+    }
+
+    pub fn add_printer(&mut self, label: &str, target: &str) -> String {
         let id = uuid::Uuid::new_v4().to_string();
         let tgt = target.trim().to_string();
         let label = {
@@ -401,17 +566,18 @@ impl DevicePrinters {
                 "Printer".into()
             }
         };
-        let wire = match parse_target(&tgt) {
-            PrinterTarget::Network(_) => PrinterWire::EscPos,
-            _ => wire,
-        };
         self.printers.push(NamedPrinter {
             id: id.clone(),
             label,
             target: tgt,
-            wire,
+            _legacy_mode: None,
         });
         id
+    }
+
+    /// Compat for call sites that still pass a discarded mode.
+    pub fn add_printer_with_mode(&mut self, label: &str, target: &str, _mode: PrinterMode) -> String {
+        self.add_printer(label, target)
     }
 
     pub fn remove_printer(&mut self, id: &str) {
@@ -437,38 +603,50 @@ impl DevicePrinters {
 /// Where one job goes.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum PrinterTarget {
-    /// The device's default system printer.
+    /// The device's default system printer / Android PrintManager.
     Default,
-    /// A system printer by name.
+    /// A system printer by name (desktop CUPS / Windows).
     Named(String),
-    /// A network receipt printer, `ip:port`, spoken to directly (ESC/POS).
+    /// Network receipt printer `ip:port` (ESC/POS over TCP).
     Network(String),
+    /// Bluetooth SPP `bt:AA:BB:CC:DD:EE:FF`.
+    Bluetooth(String),
+    /// USB host `usb:VID:PID` or `usb:VID:PID:serial`.
+    Usb(String),
+    /// Android PrintManager Standard path.
+    AndroidPrint,
 }
 
-/// One place to send a job: address/name plus the owner's wire choice.
-#[derive(Clone, Debug, PartialEq, Eq)]
+/// One place to send a job: address/name plus the owner's mode.
+#[derive(Clone, Debug, PartialEq)]
 pub struct PrintDest {
     pub target: PrinterTarget,
-    pub wire: PrinterWire,
+    pub format: PrintFormat,
 }
 
-/// Wire actually used for this printer (network is always ESC/POS).
-pub fn effective_wire(p: &NamedPrinter) -> PrinterWire {
-    match parse_target(&p.target) {
-        PrinterTarget::Network(_) => PrinterWire::EscPos,
-        _ => p.wire,
-    }
+/// Whether this format may use OS / Android document print.
+pub fn format_allows_document(format: &PrintFormat) -> bool {
+    format.document
 }
 
 /// Port network receipt printers listen on for raw jobs.
 pub const RAW_PRINT_PORT: u16 = 9100;
 
-/// A printer as typed: blank = default, an IPv4 address (with or without a
-/// port) = network printer, anything else = a system printer's name.
+/// Parse the owner's target string into a transport.
 pub fn parse_target(typed: &str) -> PrinterTarget {
     let t = typed.trim();
     if t.is_empty() {
         return PrinterTarget::Default;
+    }
+    let lower = t.to_ascii_lowercase();
+    if lower == "android-print:" || lower == "android-print" {
+        return PrinterTarget::AndroidPrint;
+    }
+    if lower.starts_with("bt:") {
+        return PrinterTarget::Bluetooth(t.to_string());
+    }
+    if lower.starts_with("usb:") {
+        return PrinterTarget::Usb(t.to_string());
     }
     if let Ok(ip) = t.parse::<std::net::Ipv4Addr>() {
         return PrinterTarget::Network(format!("{ip}:{RAW_PRINT_PORT}"));
@@ -476,13 +654,45 @@ pub fn parse_target(typed: &str) -> PrinterTarget {
     if let Ok(addr) = t.parse::<std::net::SocketAddrV4>() {
         return PrinterTarget::Network(addr.to_string());
     }
+    // host:port where host is not a bare IPv4 SocketAddrV4 (hostname)
+    if let Some((host, port)) = t.rsplit_once(':') {
+        if !host.is_empty()
+            && port.parse::<u16>().is_ok()
+            && host.chars().all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '-')
+        {
+            return PrinterTarget::Network(t.to_string());
+        }
+    }
     PrinterTarget::Named(t.to_string())
 }
 
-/// Whether this device can print to `target` without a person: a network
-/// printer always; a system printer wherever the OS has printer drivers.
+/// Whether this device can auto-print to `target` for the given mode.
+pub fn can_print_format(target: &PrinterTarget, format: &PrintFormat) -> bool {
+    match target {
+        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => true,
+        PrinterTarget::AndroidPrint => format.document && cfg!(target_os = "android"),
+        PrinterTarget::Default | PrinterTarget::Named(_) => {
+            if cfg!(target_os = "android") {
+                format.document
+            } else {
+                true
+            }
+        }
+    }
+}
+
+/// Whether this device can print to `target` with some built-in format.
 pub fn can_print(target: &PrinterTarget) -> bool {
-    matches!(target, PrinterTarget::Network(_)) || !cfg!(target_os = "android")
+    can_print_format(target, &PrintFormat::standard())
+        || can_print_format(target, &PrintFormat::kot())
+}
+
+pub fn can_print_mode(target: &PrinterTarget, mode: PrinterMode) -> bool {
+    let f = match mode {
+        PrinterMode::Standard => PrintFormat::standard(),
+        PrinterMode::Kot => PrintFormat::kot(),
+    };
+    can_print_format(target, &f)
 }
 
 fn default_route_for(kind: PrintKind) -> RouteKey<'static> {
@@ -499,7 +709,10 @@ pub fn prints_here(kind: PrintKind) -> bool {
 
 /// Whether this route has at least one printable target.
 pub fn prints_route(key: RouteKey<'_>) -> bool {
-    printers().targets_for(key).iter().any(can_print)
+    printers()
+        .destinations_for(key)
+        .iter()
+        .any(|d| can_print_format(&d.target, &d.format))
 }
 
 static PRINTERS: Mutex<Option<DevicePrinters>> = Mutex::new(None);
@@ -528,10 +741,12 @@ pub fn load_device_printers(base: &Path) -> DevicePrinters {
 
 /// Keep `printers` for this install and use them from now on.
 pub fn save_device_printers(base: &Path, printers: &DevicePrinters) -> Result<(), String> {
+    let mut printers = printers.clone();
+    PrintFormat::ensure_builtins(&mut printers.formats);
     fs::create_dir_all(base).map_err(|e| e.to_string())?;
-    let raw = serde_json::to_string_pretty(printers).map_err(|e| e.to_string())?;
+    let raw = serde_json::to_string_pretty(&printers).map_err(|e| e.to_string())?;
     fs::write(printers_path(base), raw).map_err(|e| e.to_string())?;
-    configure(printers.clone());
+    configure(printers);
     Ok(())
 }
 
@@ -615,7 +830,7 @@ pub fn print_text(kind: PrintKind, text: &str, app_files: Option<&Path>) -> Resu
 /// Write the slip, then try the ordered printers on `route` (fallback, not fan-out).
 /// Empty route: file is written, nothing is queued; KOTs get a one-line note.
 ///
-/// How each printer is driven is that printer's wire (Settings), not Bill vs KOT.
+/// How each printer is driven is that printer's mode (Settings), not Bill vs KOT.
 pub fn print_route(
     kind: PrintKind,
     route: RouteKey<'_>,
@@ -628,7 +843,7 @@ pub fn print_route(
             let dests: Vec<PrintDest> = printers()
                 .destinations_for(route)
                 .into_iter()
-                .filter(|d| can_print(&d.target))
+                .filter(|d| can_print_format(&d.target, &d.format))
                 .collect();
             if dests.is_empty() {
                 if kind == PrintKind::Kot {
@@ -679,7 +894,7 @@ pub fn print_route(
 }
 
 struct Job {
-    /// Kept for problem notes / future per-kind wording; send path uses wire.
+    /// Kept for problem notes / future per-kind wording.
     #[allow(dead_code)]
     kind: PrintKind,
     /// Try in order; stop after the first success.
@@ -724,7 +939,7 @@ fn queue(job: Job) {
             for job in rx {
                 let mut last_err: Option<(String, String)> = None;
                 for dest in &job.dests {
-                    match send_to_printer(dest.wire, &dest.target, &job.path, &job.text) {
+                    match send_to_printer(&dest.format, &dest.target, &job.path, &job.text) {
                         Ok(()) => {
                             last_err = None;
                             break;
@@ -748,32 +963,99 @@ pub fn describe(target: &PrinterTarget) -> String {
         PrinterTarget::Default => "This computer's usual printer (blank address)".into(),
         PrinterTarget::Named(name) => format!("Printer \"{name}\""),
         PrinterTarget::Network(addr) => format!("Network printer {addr}"),
+        PrinterTarget::Bluetooth(mac) => format!("Bluetooth printer {mac}"),
+        PrinterTarget::Usb(id) => format!("USB printer {id}"),
+        PrinterTarget::AndroidPrint => "Android print service".into(),
     }
 }
 
 fn send_to_printer(
-    wire: PrinterWire,
+    format: &PrintFormat,
     target: &PrinterTarget,
     path: &Path,
     text: &str,
 ) -> Result<(), String> {
+    let bytes = escpos_job_format(format, text);
     match target {
-        PrinterTarget::Network(addr) => print_network(addr, text),
-        PrinterTarget::Default => match wire {
-            PrinterWire::EscPos => print_system_raw(None, &escpos_job(text)),
-            PrinterWire::OsDocument => print_system(None, path),
-        },
-        PrinterTarget::Named(name) => match wire {
-            PrinterWire::EscPos => print_system_raw(Some(name), &escpos_job(text)),
-            PrinterWire::OsDocument => print_system(Some(name), path),
-        },
+        PrinterTarget::Network(addr) => print_network_bytes(addr, &bytes),
+        PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &bytes),
+        PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, &bytes),
+        PrinterTarget::AndroidPrint => {
+            if !format.document {
+                return Err(format!(
+                    "format \"{}\" needs Network, Bluetooth, or USB — Android print is for document formats",
+                    format.label
+                ));
+            }
+            print_android_document(text)
+        }
+        PrinterTarget::Default => {
+            if format.document {
+                print_system_standard(None, path, text)
+            } else if cfg!(target_os = "android") {
+                Err(format!(
+                    "format \"{}\" on Android needs Network, Bluetooth, or USB — not the system print service",
+                    format.label
+                ))
+            } else {
+                print_system_raw(None, &bytes)
+            }
+        }
+        PrinterTarget::Named(name) => {
+            if format.document {
+                print_system_standard(Some(name), path, text)
+            } else if cfg!(target_os = "android") {
+                Err(format!(
+                    "format \"{}\" on Android needs Network, Bluetooth, or USB — not a system printer name",
+                    format.label
+                ))
+            } else {
+                print_system_raw(Some(name), &bytes)
+            }
+        }
     }
 }
 
-/// Send `text` to a network receipt printer: reset, the text, a few lines
-/// to clear the tear bar, cut.
+fn print_android_document(text: &str) -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        crate::print_android::print_document("Khaynjo", text)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = text;
+        Err("Android print service is only on Android".into())
+    }
+}
+
+fn print_system_standard(name: Option<&str>, path: &Path, text: &str) -> Result<(), String> {
+    #[cfg(target_os = "android")]
+    {
+        let _ = (name, path);
+        crate::print_android::print_document("Khaynjo", text)
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = text;
+        print_system(name, path)
+    }
+}
+
+/// Network `:9100` — ESC/POS slip (KOT metrics by default).
 pub fn print_network(addr: &str, text: &str) -> Result<(), String> {
-    print_network_bytes(addr, &escpos_job(text))
+    print_network_format(addr, &PrintFormat::kot(), text)
+}
+
+pub fn print_network_format(addr: &str, format: &PrintFormat, text: &str) -> Result<(), String> {
+    print_network_bytes(addr, &escpos_job_format(format, text))
+}
+
+pub fn print_network_mode(addr: &str, mode: PrinterMode, text: &str) -> Result<(), String> {
+    let f = match mode {
+        PrinterMode::Standard => PrintFormat::standard(),
+        PrinterMode::Kot => PrintFormat::kot(),
+    };
+    print_network_format(addr, &f, text)
 }
 
 fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
@@ -791,34 +1073,47 @@ fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
     stream.flush().map_err(|e| e.to_string())
 }
 
-/// Hard cap: a two-item KOT is a few hundred bytes. Anything near a raster
-/// dump (tens of KB+) is refused before it reaches the printer.
-const ESC_POS_JOB_MAX: usize = 4_096;
+/// Cap for one ESC/POS payload (text or raster bands).
+const ESC_POS_JOB_MAX: usize = 512_000;
 
-/// Short ASCII ESC/POS job for kitchen / network thermals.
+/// Thermal / network jobs: draw the slip as dots (`GS v 0`), then cut.
 ///
-/// Never a `GS v 0` raster picture. Never UTF-8. Unknown letters → `?`.
-/// OS-driver printing of KOTs is what caused endless unreadable slips.
+/// Line gaps and every line live in the image, so we do not depend on the
+/// printer's built-in font pitch (CR overstrike → only the last line +
+/// `_`-like smear). Same idea as a rendered page, over raw ESC/POS.
 pub fn escpos_job(text: &str) -> Vec<u8> {
-    let mut out = Vec::with_capacity(text.len().saturating_add(32));
-    out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset printer state
+    escpos_job_format(&PrintFormat::kot(), text)
+}
+
+pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
+    crate::receipt_raster::escpos_picture_metrics(text, &format.raster_metrics())
+}
+
+pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
+    match mode {
+        PrinterMode::Standard => escpos_job_format(&PrintFormat::standard(), text),
+        PrinterMode::Kot => escpos_job_format(&PrintFormat::kot(), text),
+    }
+}
+
+/// Built-in-font ASCII job (tests / rare call sites). Prefer [`escpos_job`].
+pub fn escpos_job_text(text: &str) -> Vec<u8> {
+    let mut out = Vec::with_capacity(text.len().saturating_add(48));
+    out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
+    out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0: PC437
+    out.extend_from_slice(&[0x1B, 0x4D, 0x00]); // ESC M 0: Font A
+    out.extend_from_slice(&[0x1D, 0x21, 0x00]); // GS ! 0: normal size
+    out.extend_from_slice(&[0x1B, 0x61, 0x00]); // ESC a 0: left align
+    out.extend_from_slice(&[0x1B, 0x32]); // ESC 2: default line spacing
     out.extend(escpos_text(text));
-    // Feed past the tear bar; partial cut (GS V 1) — widely supported, safer
-    // than full cut on some clones.
-    out.extend_from_slice(b"\n\n\n\n");
-    out.extend_from_slice(&[0x1D, 0x56, 0x01]);
-    // Guard: never accidentally ship a raster header.
-    debug_assert!(
-        !out.windows(3).any(|w| w == [0x1D, 0x76, 0x30]),
-        "escpos_job must not contain GS v 0 raster"
-    );
+    out.extend_from_slice(b"\n\n\n\n\n"); // LF only — never CR
+    out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
     out
 }
 
-/// Same slip as a one-bit picture (`GS v 0`). Only for explicit call sites
-/// that know the printer handles raster — never the default network path.
+/// Same as [`escpos_job`] (raster).
 pub fn escpos_job_picture(text: &str) -> Vec<u8> {
-    crate::receipt_raster::escpos_picture(text)
+    escpos_job(text)
 }
 
 /// Every letter of `text` is one a receipt printer's built-in font has, or
@@ -844,9 +1139,9 @@ fn spelt_out(c: char) -> Option<&'static [u8]> {
 }
 
 /// Text a receipt printer's built-in font can show: printable ASCII only
-/// (space–`~` and newline), with the few symbols our slips use spelt out,
-/// anything else as "?". Control bytes never go through — they switch the
-/// printer into graphics/command modes and look like endless garbage.
+/// (space–`~` and LF), symbols spelt out, anything else as "?".
+/// **Never emit CR** — on many ESC/POS heads CR reprints on the same row
+/// (overstrike); stacked lines collapse to the last one with `_`-like smear.
 pub fn escpos_text(text: &str) -> Vec<u8> {
     let mut out = Vec::with_capacity(text.len());
     for c in text.chars() {
@@ -915,8 +1210,7 @@ fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
     }
 }
 
-/// Send ESC/POS bytes to a system printer as a **raw** job (no page layout).
-/// Used for **KOT** on named/default targets on every desktop OS.
+/// Send ESC/POS bytes to a system printer as a **raw** job (KOT on desktop queues).
 fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
     if bytes.len() > ESC_POS_JOB_MAX {
         return Err(format!(
@@ -1007,8 +1301,17 @@ try {{
     try {{
       $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
       try {{
-        $written = 0
-        if (-not [KumkajRawPrint]::WritePrinter($h, $pinned.AddrOfPinnedObject(), $bytes.Length, [ref]$written)) {{ throw "WritePrinter failed" }}
+        # WritePrinter often returns success after only part of the buffer —
+        # loop until every byte is accepted or the ticket prints truncated.
+        $offset = 0
+        while ($offset -lt $bytes.Length) {{
+          $written = 0
+          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
+          $chunk = $bytes.Length - $offset
+          if (-not [KumkajRawPrint]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
+          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
+          $offset += $written
+        }}
       }} finally {{ $pinned.Free() }}
     }} finally {{ [void][KumkajRawPrint]::EndPagePrinter($h) }}
   }} finally {{ [void][KumkajRawPrint]::EndDocPrinter($h) }}
@@ -1061,6 +1364,9 @@ fn first_line(bytes: &[u8]) -> Option<String> {
 
 static FOUND: Mutex<Option<Vec<String>>> = Mutex::new(None);
 static LOOKING: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+static FIND_CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+static FIND_WAS_CANCELLED: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
 
 /// Printers last found on this device (system names + network addresses on
 /// port [`RAW_PRINT_PORT`]). Empty until a look has finished.
@@ -1071,6 +1377,20 @@ pub fn found_printers() -> Vec<String> {
 /// `true` while a background look is still running.
 pub fn is_finding_printers() -> bool {
     LOOKING.load(std::sync::atomic::Ordering::SeqCst)
+}
+
+/// Ask the background Find worker to stop early (partial results still apply).
+pub fn cancel_find_printers() {
+    FIND_CANCEL.store(true, std::sync::atomic::Ordering::SeqCst);
+}
+
+/// Whether the last Find finished because Cancel was tapped.
+pub fn find_printers_was_cancelled() -> bool {
+    FIND_WAS_CANCELLED.load(std::sync::atomic::Ordering::SeqCst)
+}
+
+fn find_cancelled() -> bool {
+    FIND_CANCEL.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 /// Whether at least one look has finished (`found_printers` is meaningful).
@@ -1090,15 +1410,43 @@ pub fn find_printers_in_background() {
     if LOOKING.swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
     }
+    FIND_CANCEL.store(false, std::sync::atomic::Ordering::SeqCst);
+    FIND_WAS_CANCELLED.store(false, std::sync::atomic::Ordering::SeqCst);
     if std::thread::Builder::new()
         .name("find-printers".into())
         .spawn(|| {
             let mut found = system_printers();
-            for addr in network_raw_printers() {
-                if !found.iter().any(|n| n == &addr) {
-                    found.push(addr);
+            if !find_cancelled() {
+                for addr in network_raw_printers() {
+                    if !found.iter().any(|n| n == &addr) {
+                        found.push(addr);
+                    }
                 }
             }
+            if !find_cancelled() {
+                for bt in crate::print_bt::list_printers() {
+                    if !found.iter().any(|n| n == &bt) {
+                        found.push(bt);
+                    }
+                }
+            }
+            if !find_cancelled() {
+                for usb in crate::print_usb::list_printers() {
+                    if !found.iter().any(|n| n == &usb) {
+                        found.push(usb);
+                    }
+                }
+            }
+            #[cfg(target_os = "android")]
+            if !find_cancelled() {
+                for a in crate::print_android::list_print_services() {
+                    if !found.iter().any(|n| n == &a) {
+                        found.push(a);
+                    }
+                }
+            }
+            let cancelled = find_cancelled();
+            FIND_WAS_CANCELLED.store(cancelled, std::sync::atomic::Ordering::SeqCst);
             found.sort();
             *FOUND.lock().unwrap() = Some(found);
             LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
@@ -1213,6 +1561,9 @@ fn network_raw_printers() -> Vec<String> {
             let found = Arc::clone(&found);
             std::thread::spawn(move || {
                 for addr in chunk {
+                    if find_cancelled() {
+                        break;
+                    }
                     if TcpStream::connect_timeout(&addr, Duration::from_millis(80)).is_ok() {
                         found.lock().unwrap().push(addr.ip().to_string());
                     }
@@ -1271,7 +1622,7 @@ mod tests {
     #[test]
     fn unit_tests_never_reach_the_os_printer() {
         let mut cfg = DevicePrinters::default();
-        let kitchen = cfg.add_printer("Kitchen", "192.168.1.50", PrinterWire::EscPos);
+        let kitchen = cfg.add_printer("Kitchen", "192.168.1.50");
         *cfg.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen];
         with_test_printers(cfg, || {
             assert_eq!(sink(), PrintSink::Capture);
@@ -1315,7 +1666,7 @@ mod tests {
     #[test]
     fn empty_kot_falls_back_to_bill_printer() {
         let mut cfg = DevicePrinters::default();
-        let p = cfg.add_printer("Counter", "192.168.1.50", PrinterWire::EscPos);
+        let p = cfg.add_printer("Counter", "192.168.1.50");
         cfg.routes.bill = vec![p.clone()];
         // No KOT routes filled — Bill still prints kitchen tickets.
         assert_eq!(
@@ -1349,54 +1700,77 @@ mod tests {
         assert_eq!(escpos_text("ખીચડી"), b"?????".to_vec());
         assert!(printer_has_letters("Thali × 2 — ₹500"));
         assert!(!printer_has_letters("ખીચડી"));
-        // Network / KOT jobs stay short ASCII (no GS v 0 raster).
-        let job_guj = escpos_job("2 x ખીચડી");
-        assert!(!job_guj.windows(3).any(|w| w == [0x1D, 0x76, 0x30]));
-        assert!(job_guj.windows(5).any(|w| w == b"?????"));
-        assert!(job_guj.len() < 256, "KOT job must stay tiny, got {}", job_guj.len());
-        let picture = escpos_job_picture("2 x ખીચડી");
-        assert!(picture.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
+        // Built-in-font path stays ASCII; thermal wire uses raster instead.
+        let text_job = escpos_job_text("2 x ખીચડી");
+        assert!(!text_job.windows(3).any(|w| w == [0x1D, 0x76, 0x30]));
+        assert!(text_job.windows(5).any(|w| w == b"?????"));
+        assert!(text_job.len() < 256, "text job must stay tiny, got {}", text_job.len());
         let job = escpos_job("KOT 7\n2 x Thali\n1 x Roti");
         assert_eq!(&job[..2], &[0x1B, 0x40]);
-        assert!(job.ends_with(&[0x1D, 0x56, 0x01]));
+        assert!(
+            job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "thermal jobs are raster so every line has spacing in the image"
+        );
+        assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
         assert!(job.len() < ESC_POS_JOB_MAX);
-        // Control bytes in the slip body must not pass through.
         assert_eq!(escpos_text("A\u{1b}B\n"), b"A?B\n".to_vec());
+        // CR must never appear — it overstrikes on many heads.
+        assert!(!escpos_text("A\nB").contains(&b'\r'));
+        assert_eq!(escpos_text("A\nB"), b"A\nB".to_vec());
     }
 
 
-    /// ESC/POS jobs stay short ASCII (used when the owner picks Thermal wire).
+    /// Thermal wire sends a picture job (GS v 0), not a page/document spool.
     #[test]
-    fn escpos_jobs_are_not_page_documents() {
-        let job = escpos_job("KOT 1\n2 x Tea");
+    fn escpos_jobs_are_raster_not_page_documents() {
+        let job = escpos_job("KOT 1\n2 x Tea\n1 x Roti");
         assert_eq!(&job[..2], &[0x1B, 0x40], "reset");
         assert!(
-            !job.windows(3).any(|w| w == [0x1D, 0x76, 0x30]),
-            "no raster"
+            job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "GS v 0 raster"
         );
         assert!(job.len() < ESC_POS_JOB_MAX);
         assert!(escpos_text("Café").iter().all(|&b| b != 0xC3));
     }
 
     #[test]
-    fn printer_wire_is_per_printer_not_job_kind() {
+    fn route_picks_format_printers_are_destinations_only() {
         let mut cfg = DevicePrinters::default();
-        let thermal = cfg.add_printer("Kitchen", "EPSON_TM", PrinterWire::EscPos);
-        let office = cfg.add_printer("Office", "Canon_G3010", PrinterWire::OsDocument);
-        cfg.routes.bill = vec![thermal.clone(), office.clone()];
+        let kitchen = cfg.add_printer("Kitchen", "EPSON_TM");
+        let office = cfg.add_printer("Office", "Canon_G3010");
+        cfg.routes.bill = vec![kitchen.clone(), office.clone()];
         *cfg.route_mut(RouteKey::Kot { station_id: "" }) = vec![office.clone()];
+        assert_eq!(cfg.format_id_for(RouteKey::Bill), FORMAT_STANDARD);
+        assert_eq!(cfg.format_id_for(RouteKey::Kot { station_id: "" }), FORMAT_KOT);
         let bill = cfg.destinations_for(RouteKey::Bill);
-        assert_eq!(bill[0].wire, PrinterWire::EscPos);
-        assert_eq!(bill[1].wire, PrinterWire::OsDocument);
-        let kot = cfg.destinations_for(RouteKey::Kot { station_id: "" });
-        // Same office printer keeps OsDocument even on a KOT route.
-        assert_eq!(kot[0].wire, PrinterWire::OsDocument);
-        // Network always EscPos regardless of what was asked.
-        let net = cfg.add_printer("Net", "10.0.0.9", PrinterWire::OsDocument);
+        assert_eq!(bill[0].format.id, FORMAT_STANDARD);
+        assert_eq!(bill[1].format.id, FORMAT_STANDARD);
+        cfg.set_route_format(RouteKey::Bill, FORMAT_KOT);
+        assert_eq!(cfg.destinations_for(RouteKey::Bill)[0].format.id, FORMAT_KOT);
+        let custom = cfg.add_format_from(FORMAT_STANDARD, "Wide bill");
+        cfg.set_route_format(RouteKey::Bill, &custom);
+        assert_eq!(cfg.format_id_for(RouteKey::Bill), custom);
+    }
+
+    #[test]
+    fn typed_schemes_parse() {
         assert_eq!(
-            cfg.printer_by_id(&net).map(|p| p.wire),
-            Some(PrinterWire::EscPos)
+            parse_target("bt:AA:BB:CC:DD:EE:FF"),
+            PrinterTarget::Bluetooth("bt:AA:BB:CC:DD:EE:FF".into())
         );
+        assert_eq!(
+            parse_target("usb:04b8:0e15"),
+            PrinterTarget::Usb("usb:04b8:0e15".into())
+        );
+        assert_eq!(parse_target("android-print:"), PrinterTarget::AndroidPrint);
+        assert!(can_print_mode(
+            &PrinterTarget::Bluetooth("bt:AA:BB:CC:DD:EE:FF".into()),
+            PrinterMode::Kot
+        ));
+        assert!(can_print_mode(
+            &PrinterTarget::Usb("usb:04b8:0e15".into()),
+            PrinterMode::Standard
+        ));
     }
 
     /// A network printer gets the whole job over one connection.
@@ -1424,8 +1798,8 @@ mod tests {
         let base = std::env::temp_dir().join(format!("khaynjo-printers-{}", uuid::Uuid::new_v4().simple()));
         assert_eq!(load_device_printers(&base), DevicePrinters::default());
         let mut chosen = DevicePrinters::default();
-        let kitchen = chosen.add_printer("Kitchen", "192.168.1.50", PrinterWire::EscPos);
-        let counter = chosen.add_printer("Counter", "Canon_G3010", PrinterWire::OsDocument);
+        let kitchen = chosen.add_printer("Kitchen", "192.168.1.50");
+        let counter = chosen.add_printer("Counter", "Canon_G3010");
         chosen.routes.bill = vec![counter.clone()];
         *chosen.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen.clone()];
         // save_device_printers also configure()s — hold the test lock for the
@@ -1487,8 +1861,8 @@ mod tests {
     #[test]
     fn each_station_has_its_own_kot_route() {
         let mut cfg = DevicePrinters::default();
-        let main = cfg.add_printer("Main", "192.168.1.10", PrinterWire::EscPos);
-        let tandoor = cfg.add_printer("Tandoor", "192.168.1.11", PrinterWire::EscPos);
+        let main = cfg.add_printer("Main", "192.168.1.10");
+        let tandoor = cfg.add_printer("Tandoor", "192.168.1.11");
         *cfg.route_mut(RouteKey::Kot { station_id: "" }) = vec![main.clone()];
         *cfg.route_mut(RouteKey::Kot {
             station_id: "st-tandoor",
@@ -1520,8 +1894,8 @@ mod tests {
     #[test]
     fn changing_station_printer_replaces_not_appends() {
         let mut cfg = DevicePrinters::default();
-        let a = cfg.add_printer("A", "192.168.1.10", PrinterWire::EscPos);
-        let b = cfg.add_printer("B", "192.168.1.11", PrinterWire::EscPos);
+        let a = cfg.add_printer("A", "192.168.1.10");
+        let b = cfg.add_printer("B", "192.168.1.11");
         let key = RouteKey::Kot {
             station_id: "hot",
         };

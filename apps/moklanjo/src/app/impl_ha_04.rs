@@ -265,13 +265,13 @@ impl App {
                 .set_text(cx, &plain_display_text(&looking));
             self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, true);
             self.set_report_rows(cx, ids!(client_found_list), Vec::new());
-            let _ = std::thread::Builder::new()
-                .name("courier-find-server".into())
-                .spawn(|| {
-                    let found = net::discover_servers(std::time::Duration::from_millis(3000));
-                    *discovery_result().lock().unwrap() = Some(found);
-                    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-                });
+            self.paint_submit_busy_chrome(cx);
+            client_find_job();
+            self.paint_submit_busy_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(client_find_cancel)).clicked(actions) {
+            client_find_cancel_flag().store(true, std::sync::atomic::Ordering::SeqCst);
+            self.paint_submit_busy_chrome(cx);
         }
         let pair_enter = self
             .ui

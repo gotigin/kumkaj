@@ -1,0 +1,147 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1574,6 +1574,143 @@
+     ok != 0
+ }
+ 
++/// Kumkaj printers: paired Bluetooth devices as `bt:MAC` lines.
++pub unsafe fn to_java_list_bluetooth_printers() -> Vec<String> {
++    let env = attach_jni_env();
++    let result = ndk_utils::call_object_method!(
++        env,
++        get_activity(),
++        "listBluetoothPrinters",
++        "()[Ljava/lang/String;"
++    );
++    java_string_array_to_vec(env, result)
++}
++
++/// Kumkaj printers: write ESC/POS bytes over Bluetooth SPP.
++pub unsafe fn to_java_write_bluetooth_spp(mac: String, data: &[u8]) -> bool {
++    let env = attach_jni_env();
++    let Ok(mac) = CString::new(mac) else {
++        return false;
++    };
++    let mac = ((**env).NewStringUTF.unwrap())(env, mac.as_ptr());
++    let bytes = (**env).NewByteArray.unwrap()(env, data.len() as i32);
++    if bytes.is_null() {
++        return false;
++    }
++    (**env).SetByteArrayRegion.unwrap()(
++        env,
++        bytes,
++        0,
++        data.len() as i32,
++        data.as_ptr() as *const jni_sys::jbyte,
++    );
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "writeBluetoothSpp",
++        "(Ljava/lang/String;[B)Z",
++        mac,
++        bytes
++    );
++    ok != 0
++}
++
++/// Kumkaj printers: attached USB devices as `usb:VID:PID` lines.
++pub unsafe fn to_java_list_usb_printers() -> Vec<String> {
++    let env = attach_jni_env();
++    let result = ndk_utils::call_object_method!(
++        env,
++        get_activity(),
++        "listUsbPrinters",
++        "()[Ljava/lang/String;"
++    );
++    java_string_array_to_vec(env, result)
++}
++
++/// Kumkaj printers: write ESC/POS bytes to a USB device (`VID:PID` or `VID:PID:serial`).
++pub unsafe fn to_java_write_usb_printer(key: String, data: &[u8]) -> bool {
++    let env = attach_jni_env();
++    let Ok(key) = CString::new(key) else {
++        return false;
++    };
++    let key = ((**env).NewStringUTF.unwrap())(env, key.as_ptr());
++    let bytes = (**env).NewByteArray.unwrap()(env, data.len() as i32);
++    if bytes.is_null() {
++        return false;
++    }
++    (**env).SetByteArrayRegion.unwrap()(
++        env,
++        bytes,
++        0,
++        data.len() as i32,
++        data.as_ptr() as *const jni_sys::jbyte,
++    );
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "writeUsbPrinter",
++        "(Ljava/lang/String;[B)Z",
++        key,
++        bytes
++    );
++    ok != 0
++}
++
++/// Kumkaj printers: Standard slip via Android PrintManager (system print UI).
++pub unsafe fn to_java_print_document(job_name: String, text: String) -> bool {
++    let env = attach_jni_env();
++    let Ok(job_name) = CString::new(job_name) else {
++        return false;
++    };
++    let Ok(text) = CString::new(text) else {
++        return false;
++    };
++    let job_name = ((**env).NewStringUTF.unwrap())(env, job_name.as_ptr());
++    let text = ((**env).NewStringUTF.unwrap())(env, text.as_ptr());
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "printDocument",
++        "(Ljava/lang/String;Ljava/lang/String;)Z",
++        job_name,
++        text
++    );
++    ok != 0
++}
++
++/// App-facing wrappers used by Khaynjo/Moklanjo `print_android` (Option form).
++pub unsafe fn try_list_strings(method: &str, _sig: &str) -> Option<Vec<String>> {
++    match method {
++        "listBluetoothPrinters" => Some(to_java_list_bluetooth_printers()),
++        "listUsbPrinters" => Some(to_java_list_usb_printers()),
++        _ => Some(Vec::new()),
++    }
++}
++
++pub unsafe fn try_write_printer_bytes(
++    method: &str,
++    key: &str,
++    bytes: &[u8],
++) -> Option<Result<(), String>> {
++    let ok = match method {
++        "writeBluetoothSpp" => to_java_write_bluetooth_spp(key.to_owned(), bytes),
++        "writeUsbPrinter" => to_java_write_usb_printer(key.to_owned(), bytes),
++        _ => false,
++    };
++    if ok {
++        Some(Ok(()))
++    } else {
++        Some(Err(format!("{method} failed — is the printer paired/plugged and permitted?")))
++    }
++}
++
++pub unsafe fn try_print_document(job_name: &str, text: &str) -> Option<Result<(), String>> {
++    if to_java_print_document(job_name.to_owned(), text.to_owned()) {
++        Some(Ok(()))
++    } else {
++        Some(Err("Android PrintManager refused the job".into()))
++    }
++}
++
+ pub unsafe fn to_java_paste_from_clipboard() -> String {
+     let env = attach_jni_env();
+     let result = ndk_utils::call_object_method!(

@@ -1,4 +1,220 @@
 impl App {
+/// Progress-only paint while a worker owns the books — no SQL, no full chrome.
+fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
+        let (done, total) = *menu_import_progress().lock().unwrap();
+        let cancel_label = app_state().lock().unwrap().t("cancel");
+        let progress = if total > 0 {
+            app_state()
+                .lock()
+                .unwrap()
+                .t("template_import_progress")
+                .replace("{d}", &done.to_string())
+                .replace("{t}", &total.to_string())
+        } else {
+            app_state().lock().unwrap().t("template_importing")
+        };
+        if let Some(msg) = books_work_status().lock().unwrap().clone() {
+            self.set_status(cx, msg);
+        } else {
+            self.set_status(cx, progress.clone());
+        }
+        let kind = menu_import_running().lock().unwrap().clone();
+        match kind {
+            Some(MenuImportKind::Shelf) => {
+                self.ui.view(cx, ids!(template_confirm)).set_visible(cx, true);
+                self.ui.button(cx, ids!(template_import)).set_visible(cx, false);
+                self.ui.button(cx, ids!(template_yes)).set_text(cx, &progress);
+                self.ui.button(cx, ids!(template_no)).set_text(cx, &cancel_label);
+                self.ui.button(cx, ids!(template_no)).set_visible(cx, true);
+                self.ui
+                    .label(cx, ids!(template_info))
+                    .set_text(cx, &app_state().lock().unwrap().t("template_importing"));
+            }
+            Some(MenuImportKind::Client { title, .. }) => {
+                self.ui
+                    .view(cx, ids!(client_template_confirm))
+                    .set_visible(cx, true);
+                self.ui
+                    .button(cx, ids!(client_template_import))
+                    .set_visible(cx, false);
+                self.ui
+                    .button(cx, ids!(client_template_yes))
+                    .set_text(cx, &progress);
+                self.ui
+                    .button(cx, ids!(client_template_no))
+                    .set_text(cx, &cancel_label);
+                self.ui
+                    .button(cx, ids!(client_template_no))
+                    .set_visible(cx, true);
+                self.ui.label(cx, ids!(client_template_info)).set_text(
+                    cx,
+                    &app_state()
+                        .lock()
+                        .unwrap()
+                        .t("client_template_importing")
+                        .replace("{title}", &title),
+                );
+            }
+            None => {
+                // Restore / CSV / backup / shelf-mat — status + cancel chrome below.
+            }
+        }
+        self.paint_submit_busy_chrome(cx);
+    }
+
+/// Idle→busy submit chrome: live status on the go button + visible Cancel sibling.
+fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
+        let cancel = app_state().lock().unwrap().t("cancel");
+        let finding = print_share::is_finding_printers();
+        if finding {
+            self.ui
+                .button(cx, ids!(find_printers_btn))
+                .set_text(cx, &app_state().lock().unwrap().t("printers_looking"));
+        }
+        self.ui
+            .button(cx, ids!(find_printers_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(find_printers_cancel))
+            .set_visible(cx, finding);
+
+        let add_busy = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if add_busy {
+            let text = printer_add_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| app_state().lock().unwrap().t("saving_printer"));
+            self.ui.button(cx, ids!(printer_add)).set_text(cx, &text);
+        }
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_visible(cx, add_busy);
+
+        let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if client_busy {
+            self.ui
+                .button(cx, ids!(client_find_btn))
+                .set_text(cx, &app_state().lock().unwrap().t("finding_server"));
+        }
+        self.ui
+            .button(cx, ids!(client_find_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(client_find_cancel))
+            .set_visible(cx, client_busy);
+
+        let backup = backup_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if backup {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Creating backup…".into());
+            self.ui.button(cx, ids!(backup_btn)).set_text(cx, &text);
+        }
+        self.ui.button(cx, ids!(backup_cancel)).set_text(cx, &cancel);
+        self.ui.button(cx, ids!(backup_cancel)).set_visible(cx, backup);
+
+        let restore = restore_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if restore {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Restoring backup…".into());
+            self.ui.button(cx, ids!(restore_btn)).set_text(cx, &text);
+        }
+        self.ui.button(cx, ids!(restore_cancel)).set_text(cx, &cancel);
+        self.ui.button(cx, ids!(restore_cancel)).set_visible(cx, restore);
+
+        let copy = backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if copy {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Making backup copy…".into());
+            self.ui.button(cx, ids!(backup_copy_btn)).set_text(cx, &text);
+        }
+        self.ui
+            .button(cx, ids!(backup_copy_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(backup_copy_cancel))
+            .set_visible(cx, copy);
+
+        let agg = aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if agg {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Importing aggregator file…".into());
+            self.ui
+                .button(cx, ids!(aggregator_import_btn))
+                .set_text(cx, &text);
+        }
+        self.ui
+            .button(cx, ids!(aggregator_import_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(aggregator_import_cancel))
+            .set_visible(cx, agg);
+
+        let diag = diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let diag_send = diag && diag_export_for_send().load(std::sync::atomic::Ordering::SeqCst);
+        let diag_local = diag && !diag_send;
+        if diag_local {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Exporting diagnostics…".into());
+            self.ui.button(cx, ids!(diag_export_local)).set_text(cx, &text);
+        }
+        self.ui
+            .button(cx, ids!(diag_export_local_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(diag_export_local_cancel))
+            .set_visible(cx, diag_local);
+        if diag_send {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Creating share package…".into());
+            self.ui.button(cx, ids!(diag_export_send)).set_text(cx, &text);
+        }
+        self.ui
+            .button(cx, ids!(diag_export_send_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(diag_export_send_cancel))
+            .set_visible(cx, diag_send);
+
+        let csv = csv_import_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if csv {
+            let text = books_work_status()
+                .lock()
+                .unwrap()
+                .clone()
+                .unwrap_or_else(|| "Importing…".into());
+            self.ui.button(cx, ids!(csv_import_items)).set_text(cx, &text);
+            self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, &text);
+        }
+        self.ui
+            .button(cx, ids!(csv_import_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(csv_import_cancel))
+            .set_visible(cx, csv);
+    }
+
 fn sync_chrome(&mut self, cx: &mut Cx) {
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
@@ -35,6 +251,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             if st.language_follow_platform {
                 st.locale.language = locale::detect_platform_language();
             }
+        }
+        // While a worker holds the books (import / restore / CSV / VACUUM),
+        // never run SQL from the UI — busy_timeout waits look like a freeze.
+        let heavy_job = menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if heavy_job {
+            self.paint_import_progress_chrome(cx);
+            return;
         }
         // Keep the showing tab's figures fresh — data is always live, so
         // these screens need no Refresh button.
@@ -520,7 +750,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(session_chip)).set_text(cx, &plain_display_text(&session_chip));
         // Order desk: order type chips + expense tender chips.
         {
-            let st = app_state().lock().unwrap();
+            let mut st = app_state().lock().unwrap();
             let cart_active = !st.cart.is_empty();
             self.ui
                 .button(cx, ids!(next_order_btn))
@@ -617,18 +847,153 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         .replace("{c}", &folders.to_string())
                         .replace("{d}", &missing.to_string())
                 };
-                let confirming = st.template_confirm && missing > 0;
+                let shelf_busy = matches!(
+                    menu_import_running().lock().unwrap().as_ref(),
+                    Some(MenuImportKind::Shelf)
+                );
+                let confirming = (st.template_confirm && missing > 0) || shelf_busy;
                 self.ui.view(cx, ids!(template_card)).set_visible(cx, !shelf.is_empty());
                 self.ui.label(cx, ids!(template_heading)).set_text(cx, &st.t("template_heading"));
                 self.ui.label(cx, ids!(template_info)).set_text(
                     cx,
-                    &if confirming { st.t("template_confirm").replace("{d}", &missing.to_string()) } else { info },
+                    &if shelf_busy {
+                        st.t("template_importing")
+                    } else if confirming {
+                        st.t("template_confirm").replace("{d}", &missing.to_string())
+                    } else {
+                        info
+                    },
                 );
                 self.ui.button(cx, ids!(template_import)).set_text(cx, &st.t("template_import"));
-                self.ui.button(cx, ids!(template_import)).set_visible(cx, missing > 0 && !confirming);
+                self.ui
+                    .button(cx, ids!(template_import))
+                    .set_visible(cx, missing > 0 && !confirming);
                 self.ui.view(cx, ids!(template_confirm)).set_visible(cx, confirming);
-                self.ui.button(cx, ids!(template_yes)).set_text(cx, &st.t("template_yes"));
+                let yes_label = if shelf_busy {
+                    let (done, total) = *menu_import_progress().lock().unwrap();
+                    if total > 0 {
+                        st.t("template_import_progress")
+                            .replace("{d}", &done.to_string())
+                            .replace("{t}", &total.to_string())
+                    } else {
+                        st.t("template_importing")
+                    }
+                } else {
+                    st.t("template_yes")
+                };
+                self.ui.button(cx, ids!(template_yes)).set_text(cx, &yes_label);
                 self.ui.button(cx, ids!(template_no)).set_text(cx, &st.t("cancel_item_short"));
+                // Keep Cancel visible while importing so the owner can abort.
+                self.ui.button(cx, ids!(template_no)).set_visible(cx, true);
+            }
+            // Named client templates (Rajdhani today; more folders later).
+            {
+                let named = menu_templates::all();
+                let have: std::collections::HashSet<String> =
+                    st.products.iter().map(|p| p.name.trim().to_lowercase()).collect();
+                if st.client_template_id.is_empty()
+                    || menu_templates::find(&st.client_template_id).is_none()
+                {
+                    if let Some(first) = named.first() {
+                        st.client_template_id = first.id.clone();
+                    }
+                }
+                let selected = menu_templates::find(&st.client_template_id);
+                let missing = selected
+                    .map(|t| {
+                        t.categories
+                            .iter()
+                            .flat_map(|c| c.items.iter())
+                            .filter(|i| !have.contains(&i.name.trim().to_lowercase()))
+                            .count()
+                    })
+                    .unwrap_or(0);
+                let client_busy = matches!(
+                    menu_import_running().lock().unwrap().as_ref(),
+                    Some(MenuImportKind::Client { .. })
+                );
+                let confirming = (st
+                    .client_template_confirm
+                    .as_ref()
+                    .is_some_and(|id| selected.is_some_and(|t| t.id == *id))
+                    && missing > 0)
+                    || client_busy;
+                self.ui
+                    .view(cx, ids!(client_template_card))
+                    .set_visible(cx, !named.is_empty());
+                self.ui
+                    .label(cx, ids!(client_template_heading))
+                    .set_text(cx, &st.t("client_template_heading"));
+                let chip_slots = [
+                    (ids!(client_tmpl_0), ids!(client_tmpl_0_on)),
+                    (ids!(client_tmpl_1), ids!(client_tmpl_1_on)),
+                    (ids!(client_tmpl_2), ids!(client_tmpl_2_on)),
+                ];
+                for (i, (idle, on)) in chip_slots.iter().enumerate() {
+                    if let Some(t) = named.get(i) {
+                        let on_sel = st.client_template_id == t.id;
+                        self.ui.button(cx, *idle).set_visible(cx, !on_sel && !client_busy);
+                        self.ui.button(cx, *on).set_visible(cx, on_sel);
+                        self.ui.button(cx, *idle).set_text(cx, &t.title);
+                        self.ui.button(cx, *on).set_text(cx, &t.title);
+                    } else {
+                        self.ui.button(cx, *idle).set_visible(cx, false);
+                        self.ui.button(cx, *on).set_visible(cx, false);
+                    }
+                }
+                self.ui.view(cx, ids!(client_template_chips)).set_visible(cx, named.len() > 1);
+                let info = match selected {
+                    None => String::new(),
+                    Some(t) if client_busy => st
+                        .t("client_template_importing")
+                        .replace("{title}", &t.title),
+                    Some(t) if missing == 0 => st
+                        .t("client_template_done")
+                        .replace("{title}", &t.title),
+                    Some(t) if confirming => st
+                        .t("client_template_confirm")
+                        .replace("{d}", &missing.to_string())
+                        .replace("{title}", &t.title),
+                    Some(t) => st
+                        .t("client_template_info")
+                        .replace("{title}", &t.title)
+                        .replace("{c}", &t.category_count().to_string())
+                        .replace("{d}", &missing.to_string()),
+                };
+                self.ui
+                    .label(cx, ids!(client_template_info))
+                    .set_text(cx, &info);
+                self.ui
+                    .button(cx, ids!(client_template_import))
+                    .set_text(cx, &st.t("client_template_import"));
+                self.ui
+                    .button(cx, ids!(client_template_import))
+                    .set_visible(cx, missing > 0 && !confirming);
+                self.ui
+                    .view(cx, ids!(client_template_confirm))
+                    .set_visible(cx, confirming);
+                let yes_label = if client_busy {
+                    let (done, total) = *menu_import_progress().lock().unwrap();
+                    if total > 0 {
+                        st.t("template_import_progress")
+                            .replace("{d}", &done.to_string())
+                            .replace("{t}", &total.to_string())
+                    } else {
+                        st.t("template_importing")
+                    }
+                } else {
+                    st.t("template_yes")
+                };
+                self.ui
+                    .button(cx, ids!(client_template_yes))
+                    .set_text(cx, &yes_label);
+                self.ui
+                    .button(cx, ids!(client_template_no))
+                    .set_text(cx, &st.t("cancel_item_short"));
+                // Keep Cancel visible while importing so the owner can abort.
+                self.ui
+                    .button(cx, ids!(client_template_no))
+                    .set_visible(cx, true);
             }
             let party_picked = st.selected_customer_id.is_some();
             self.ui.view(cx, ids!(party_detail)).set_visible(cx, party_picked);
@@ -778,8 +1143,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             for (i, (idle, on)) in CATEGORY_CHIPS.iter().enumerate() {
                 match cats.get(i) {
                     Some(c) => {
-                        self.ui.button(cx, idle).set_text(cx, &c.name);
-                        self.ui.button(cx, on).set_text(cx, &c.name);
+                        let chip = match c.first_alias() {
+                            Some(a) => format!("{} · {a}", c.name),
+                            None => c.name.clone(),
+                        };
+                        self.ui.button(cx, idle).set_text(cx, &chip);
+                        self.ui.button(cx, on).set_text(cx, &chip);
                         self.paint_choice_pair(cx, idle, on, cat_sel.as_deref() == Some(c.id.as_str()));
                     }
                     None => {
@@ -1944,9 +2313,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 st.t("setup_complete")
             } else {
                 match st.onboard_step {
-                    1 => st.t("onboard_fresh_tmpl").replacen("{}", tmpl.title, 1),
                     2 => st.t("onboard_book_tmpl").replacen("{}", tmpl.title, 1),
-                    _ => st.t("onboard_template_tmpl").replacen("{}", tmpl.title, 1),
+                    _ => st.t("onboard_fresh_tmpl").replacen("{}", tmpl.title, 1),
                 }
             };
             let cust_ph = st.t("customer_name_ph");
@@ -1982,18 +2350,23 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     for path in [ids!(kot_print_on), ids!(kot_print_on_on)] {
                         self.ui.button(cx, path).set_text(cx, &st.t("kot_print_on"));
                     }
-                    let wire = st.printer_add_wire;
+                    let key_str = resolve_printer_route_key(&st.printer_route_key, &st.stations, |k| {
+                        st.t(k)
+                    });
+                    let format_id = st
+                        .printer_draft
+                        .format_id_for(printer_route_key_as_route(&key_str));
                     self.paint_choice_pair(
                         cx,
                         ids!(printer_wire_escpos),
                         ids!(printer_wire_escpos_on),
-                        wire == print_share::PrinterWire::EscPos,
+                        format_id == print_share::FORMAT_KOT,
                     );
                     self.paint_choice_pair(
                         cx,
                         ids!(printer_wire_os),
                         ids!(printer_wire_os_on),
-                        wire == print_share::PrinterWire::OsDocument,
+                        format_id == print_share::FORMAT_STANDARD,
                     );
                     for path in [ids!(printer_wire_escpos), ids!(printer_wire_escpos_on)] {
                         self.ui
@@ -2008,6 +2381,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     self.ui
                         .widget(cx, ids!(h_printer_wire))
                         .set_text(cx, &plain_display_text(&st.t("printer_wire_heading")));
+                    self.ui
+                        .button(cx, ids!(printer_format_custom))
+                        .set_text(cx, &st.t("printer_format_custom"));
                 }
                 let mut st = app_state().lock().unwrap();
                 // Every kitchen station gets its own route row (empty until configured).
@@ -2456,6 +2832,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
 
         self.lift_footer_above_system_bar(cx);
         self.repair_focused_carets(cx);
+        // After idle locale labels — restore busy go+cancel chrome when a job runs.
+        self.paint_submit_busy_chrome(cx);
         self.ui.redraw(cx);
     }
 }

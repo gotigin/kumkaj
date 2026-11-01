@@ -45,6 +45,18 @@ fn printer_route_display_name(
     key.to_string()
 }
 
+/// Stored key `bill` / `kot:` / `kot:<id>` → [`print_share::RouteKey`].
+fn printer_route_key_as_route(key: &str) -> print_share::RouteKey<'_> {
+    let key = key.trim();
+    if key == "bill" || key.is_empty() {
+        print_share::RouteKey::Bill
+    } else if let Some(rest) = key.strip_prefix("kot:") {
+        print_share::RouteKey::Kot { station_id: rest }
+    } else {
+        print_share::RouteKey::Bill
+    }
+}
+
 /// Turn a typed/picked label (or a stored key) into `bill` / `kot:` / `kot:<id>`.
 fn resolve_printer_route_key(
     typed: &str,
@@ -155,7 +167,11 @@ fn printers_found_line(t: impl Fn(&str) -> String) -> String {
     }
     let found = print_share::found_printers();
     if found.is_empty() {
-        t("printers_none_found")
+        if print_share::find_printers_was_cancelled() {
+            t("cancelled")
+        } else {
+            t("printers_none_found")
+        }
     } else {
         t("printers_found").replace("{list}", &found.join(" · "))
     }
@@ -181,19 +197,12 @@ fn printers_pool_rows(
             } else {
                 p.target.clone()
             };
-            let wire = match print_share::effective_wire(p) {
-                print_share::PrinterWire::EscPos => t("printer_wire_escpos_short"),
-                print_share::PrinterWire::OsDocument => t("printer_wire_os_short"),
-            };
             let mark = if selected == Some(p.id.as_str()) {
                 "› "
             } else {
                 ""
             };
-            ReportRow::Kv(
-                format!("{mark}{}. {}", i + 1, p.label),
-                format!("{target} · {wire}"),
-            )
+            ReportRow::Kv(format!("{mark}{}. {}", i + 1, p.label), target)
         })
         .collect()
 }
@@ -215,7 +224,8 @@ fn printer_route_rows(
     };
     let route_row = |title: &str, key: print_share::RouteKey<'_>, focused: bool| -> ReportRow {
         let ids = draft.route_for(key);
-        let body = if ids.is_empty() {
+        let format = draft.format_for(key);
+        let printers = if ids.is_empty() {
             t("route_dont_print")
         } else {
             ids.iter()
@@ -223,6 +233,7 @@ fn printer_route_rows(
                 .collect::<Vec<_>>()
                 .join(" → ")
         };
+        let body = format!("{} · {}", format.label, printers);
         let mark = if focused { "› " } else { "" };
         ReportRow::Kv(format!("{mark}{title}"), body)
     };

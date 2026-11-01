@@ -3584,7 +3584,10 @@ script_mod! {
                                     selectable: false
                                 }
                                 // No typing IPs: the office's server answers on this Wi‑Fi.
-                                client_find_btn := StackPrimaryBtn{text: "Find the shop's server"}
+                                ActionStack{
+                                    client_find_btn := StackPrimaryBtn{text: "Find the shop's server"}
+                                    client_find_cancel := StackSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 client_found_label := WrapLabel{
                                     body: " "
                                     font_color: #x3A4554
@@ -5367,14 +5370,37 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 printers_found_list := mod.widgets.ReportText{}
-                                find_printers_btn := RowSecondaryBtn{text: "Find printers"}
+                                ActionStack{
+                                    find_printers_btn := RowSecondaryBtn{text: "Find printers"}
+                                    find_printers_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
                                 printers_pool_label := mod.widgets.ReportText{}
                                 printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
-                                printer_target_input := FieldInput{empty_text: "Address or system name"}
+                                printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
                                 printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
+                                h_printer_mode := WrapLabel{
+                                    width: Fill
+                                    body: "Format for the selected route"
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        printer_mode_thermal := SegBtn{text: "Thermal"}
+                                        printer_mode_thermal_on := SegBtnOn{text: "Thermal" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        printer_mode_standard := SegBtn{text: "Standard"}
+                                        printer_mode_standard_on := SegBtnOn{text: "Standard" visible: false}
+                                    }
+                                }
+                                printer_format_custom := RowSecondaryBtn{text: "New custom format"}
                                 ActionStack{
                                     printer_add := RowSecondaryBtn{text: "Add printer"}
+                                    printer_add_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
                                     printer_remove := RowSecondaryBtn{text: "Remove last"}
                                 }
                                 h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
@@ -5417,17 +5443,26 @@ script_mod! {
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
-                                backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
+                                ActionStack{
+                                    backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
+                                    backup_copy_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 db_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                 audit_label := mod.widgets.ReportText{}
-                                backup_btn := NavBtn{text: "Create backup"}
+                                ActionStack{
+                                    backup_btn := NavBtn{text: "Create backup"}
+                                    backup_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 backup_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                 h_restore_help := WrapLabel{
                                     width: Fill
                                     body: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
                                     font_color: #x0B1220
                                 }
-                                restore_btn := NavBtn{text: "Restore backup"}
+                                ActionStack{
+                                    restore_btn := NavBtn{text: "Restore backup"}
+                                    restore_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
@@ -5471,13 +5506,19 @@ script_mod! {
                                     diag_support_start := RowSecondaryBtn{text: "Start 30-min support session"}
                                     diag_support_stop := RowSecondaryBtn{text: "End support session"}
                                 }
-                                diag_export_local := RowSecondaryBtn{text: "Export local copy"}
+                                ActionStack{
+                                    diag_export_local := RowSecondaryBtn{text: "Export local copy"}
+                                    diag_export_local_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 diag_send_help := InfoHelp{
                                     width: Fit
                                     tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                 }
                                 diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
-                                diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
+                                ActionStack{
+                                    diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
+                                    diag_export_send_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 diag_clear := NavBtn{text: "Clear diagnostic logs"}
                             }
                         }
@@ -5719,7 +5760,10 @@ script_mod! {
                                     csv_copy_ledger := RowPrimaryBtn{text: "Copy party ledger CSV"}
                                     csv_import_parties := RowSecondaryBtn{text: "Import parties CSV…"}
                                 }
-                                csv_import_items := NavBtn{text: "Import items / rates CSV…"}
+                                ActionStack{
+                                    csv_import_items := NavBtn{text: "Import items / rates CSV…"}
+                                    csv_import_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                }
                                 ActionStack{
                                     csv_import_pincodes := RowPrimaryBtn{text: "Import pincodes CSV…"}
                                     csv_import_carrier_bill := RowSecondaryBtn{text: "Import carrier bill CSV…"}
@@ -5792,7 +5836,9 @@ script_mod! {
                                 }
                                 ActionStack{
                                     branch_export := RowPrimaryBtn{text: "Export day"}
+                                    branch_export_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
                                     branch_import := RowPrimaryBtn{text: "Import day"}
+                                    branch_import_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
                                     branch_consolidated := RowSecondaryBtn{text: "Roll-up"}
                                 }
                             }

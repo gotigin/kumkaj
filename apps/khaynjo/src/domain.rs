@@ -1116,6 +1116,27 @@ pub struct Category {
     /// Owner-picked photo key (`custom:<file>`); empty = initials placeholder.
     #[serde(default)]
     pub image_key: String,
+    /// Extra names (e.g. Gujarati), JSON string array — same shape as products.
+    #[serde(default = "empty_json_array")]
+    pub aliases_json: String,
+}
+
+impl Category {
+    pub fn aliases(&self) -> Vec<String> {
+        serde_json::from_str(&self.aliases_json).unwrap_or_default()
+    }
+
+    /// First non-empty alias (e.g. Gujarati name shown under the English name).
+    pub fn first_alias(&self) -> Option<String> {
+        self.aliases()
+            .into_iter()
+            .map(|a| a.trim().to_string())
+            .find(|a| !a.is_empty())
+    }
+
+    pub fn set_aliases(&mut self, aliases: &[String]) {
+        self.aliases_json = serde_json::to_string(aliases).unwrap_or_else(|_| "[]".into());
+    }
 }
 
 /// Kitchen station a line is routed to (Hot / Cold / Tandoor …).
@@ -1803,6 +1824,14 @@ impl Product {
     /// Extra names, in the order the seller typed them.
     pub fn aliases(&self) -> Vec<String> {
         serde_json::from_str(&self.aliases_json).unwrap_or_default()
+    }
+
+    /// First non-empty alias (e.g. Gujarati name shown under the English name).
+    pub fn first_alias(&self) -> Option<String> {
+        self.aliases()
+            .into_iter()
+            .map(|a| a.trim().to_string())
+            .find(|a| !a.is_empty())
     }
 
     pub fn set_aliases(&mut self, aliases: &[String]) {

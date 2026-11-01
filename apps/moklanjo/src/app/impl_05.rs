@@ -1011,17 +1011,44 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// Pool + routes draft, and the system printers found here.
     fn sync_printer_fields(&mut self, cx: &mut Cx) {
-        let (pool_rows, route_rows, route_key) = {
+        let (pool_rows, route_rows, format_id) = {
             let st = app_state().lock().unwrap();
+            let key = parse_courier_route_key(&st.printer_route_key);
             (
                 courier_printers_pool_rows(&st.printer_draft),
                 courier_printer_route_rows(&st.printer_draft, &st.printer_route_key, |k| st.t(k)),
-                st.printer_route_key.clone(),
+                st.printer_draft.format_id_for(key),
             )
         };
         self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
         self.set_report_rows(cx, ids!(printer_routes_label), route_rows);
-        let _ = route_key;
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_mode_thermal),
+            ids!(printer_mode_thermal_on),
+            format_id == print_share::FORMAT_KOT,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_mode_standard),
+            ids!(printer_mode_standard_on),
+            format_id == print_share::FORMAT_STANDARD,
+        );
+        {
+            let st = app_state().lock().unwrap();
+            self.ui
+                .widget(cx, ids!(h_printer_mode))
+                .set_text(cx, &plain_display_text(&st.t("printer_mode_heading")));
+            for path in [ids!(printer_mode_thermal), ids!(printer_mode_thermal_on)] {
+                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_thermal"));
+            }
+            for path in [ids!(printer_mode_standard), ids!(printer_mode_standard_on)] {
+                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_standard"));
+            }
+            self.ui
+                .button(cx, ids!(printer_format_custom))
+                .set_text(cx, &st.t("printer_format_custom"));
+        }
         self.show_found_printers(cx);
         self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, true);
     }
@@ -1333,13 +1360,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             return;
         }
         if self.ui.button(cx, ids!(diag_export_local)).clicked(actions) {
-            match diag::export_local() {
-                Ok(paths) => {
-                    self.sync_diag_panel(cx);
-                    self.offer_diag_bundle_save(cx, paths, false);
-                }
-                Err(e) => self.show_error(cx, e),
+            if !diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.set_status(cx, "Exporting diagnostics…");
+                self.paint_submit_busy_chrome(cx);
+                diag_export_job(false);
             }
+            return;
+        }
+        if self.ui.button(cx, ids!(diag_export_local_cancel)).clicked(actions)
+            || self.ui.button(cx, ids!(diag_export_send_cancel)).clicked(actions)
+        {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
             return;
         }
         if self.ui.button(cx, ids!(diag_approve_send)).clicked(actions) {
@@ -1349,12 +1381,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             return;
         }
         if self.ui.button(cx, ids!(diag_export_send)).clicked(actions) {
-            match diag::export_for_send() {
-                Ok(paths) => {
-                    self.sync_diag_panel(cx);
-                    self.offer_diag_bundle_save(cx, paths, true);
-                }
-                Err(e) => self.show_error(cx, e),
+            if !diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.set_status(cx, "Creating share package…");
+                self.paint_submit_busy_chrome(cx);
+                diag_export_job(true);
             }
             return;
         }

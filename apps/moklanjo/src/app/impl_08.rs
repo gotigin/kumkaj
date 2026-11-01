@@ -690,30 +690,28 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
     }
 
     fn save_backup_copy(&mut self, cx: &mut Cx) {
-        let made = (|| -> Result<String, String> {
+        // VACUUM runs on a worker; the save dialog opens when Signal fires.
+        let job = (|| -> Result<(PathBuf, PathBuf, String), String> {
             let mut st = app_state().lock().unwrap();
             st.require_server_role("Save a backup copy")?;
-            // A copy whose save was cancelled goes now.
             if let Some(old) = st.pending_backup_copy.take() {
                 let _ = std::fs::remove_file(old);
             }
             let store = st.store.as_ref().ok_or("No store")?;
             let stamp = chrono::Local::now().format("%Y%m%d-%H%M").to_string();
             let file = store.auto_backup_dir().join(format!("copy-{stamp}.sqlite3"));
-            store.backup_to(&file)?;
-            st.pending_backup_copy = Some(file);
-            Ok(format!("{}-backup-{stamp}.sqlite3", store::APP_LABEL.to_lowercase().replace(' ', "-")))
+            let db = store.db_path().to_path_buf();
+            let name = format!(
+                "{}-backup-{stamp}.sqlite3",
+                store::APP_LABEL.to_lowercase().replace(' ', "-")
+            );
+            Ok((db, file, name))
         })();
-        match made {
-            Ok(name) => {
-                let title = app_state().lock().unwrap().t("save_backup_copy");
-                cx.open_save_file_dialog(
-                    FileDialog::new()
-                        .set_title(title)
-                        .set_filename(name)
-                        .add_filter("Backups".into(), vec!["sqlite3".into()])
-                        .set_id(live_id!(backup_save_pick)),
-                );
+        match job {
+            Ok((db, file, name)) => {
+                self.set_status(cx, "Making backup copy…");
+                self.paint_submit_busy_chrome(cx);
+                backup_copy_job(db, file, name);
             }
             Err(e) => self.set_status(cx, e),
         }
@@ -747,40 +745,34 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
     }
 
     fn restore_backup_from(&mut self, cx: &mut Cx, backup: PathBuf) {
-        let result = (|| -> Result<String, String> {
+        // VACUUM + full SQLite copy must never run on the UI thread.
+        let job = (|| -> Result<(PathBuf, PathBuf, PathBuf), String> {
             store::check_backup_file(&backup)?;
-            let saved = {
-                let mut st = app_state().lock().unwrap();
-                // Restoring a Client would overwrite its pairing with the
-                // Server's own books.
-                st.require_server_role("Restore a backup")?;
-                let store = st.store.as_ref().ok_or("No store")?;
-                let saved = store.auto_backup_dir().join(format!(
-                    "before-restore-{}.sqlite3",
-                    chrono::Local::now().format("%Y%m%d-%H%M%S")
-                ));
-                store.backup_to(&saved)?;
-                st.store = None;
-                saved
-            };
-            let new_store = Store::restore_from(&backup)?;
             let mut st = app_state().lock().unwrap();
-            st.store = Some(new_store);
-            st.reload_all()?;
-            Ok(format!(
-                "Restored from {} — the books before it are saved as {}",
-                backup.file_name().unwrap_or_default().to_string_lossy(),
-                saved.file_name().unwrap_or_default().to_string_lossy()
-            ))
+            st.require_server_role("Restore a backup")?;
+            let store = st.store.as_ref().ok_or("No store")?;
+            let db = store.db_path().to_path_buf();
+            let before = store.auto_backup_dir().join(format!(
+                "before-restore-{}.sqlite3",
+                chrono::Local::now().format("%Y%m%d-%H%M%S")
+            ));
+            st.store = None;
+            Ok((db, backup, before))
         })();
-        // A failed restore after the store was let go: open the books again.
-        if app_state().lock().unwrap().store.is_none() {
-            self.ensure_store(cx);
+        match job {
+            Ok((db, backup, before)) => {
+                self.set_status(cx, "Restoring backup…");
+                self.paint_submit_busy_chrome(cx);
+                restore_job(db, backup, before);
+            }
+            Err(e) => {
+                if app_state().lock().unwrap().store.is_none() {
+                    self.ensure_store(cx);
+                }
+                self.set_status(cx, e);
+                self.sync_chrome(cx);
+            }
         }
-        match result {
-            Ok(msg) | Err(msg) => self.set_status(cx, msg),
-        }
-        self.sync_chrome(cx);
     }
 
     fn on_item_photo_picked(&mut self, cx: &mut Cx, path: PathBuf) {

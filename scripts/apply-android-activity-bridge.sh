@@ -75,6 +75,27 @@ else
   echo "Inserted writeContentUri into $JAVA"
 fi
 
+if grep -q 'public boolean printDocument' "$JAVA"; then
+  echo "Android print/Bluetooth/USB bridge already present."
+else
+  ensure_import 'import android.bluetooth.BluetoothAdapter;'
+  ensure_import 'import android.bluetooth.BluetoothDevice;'
+  ensure_import 'import android.bluetooth.BluetoothSocket;'
+  ensure_import 'import android.hardware.usb.UsbConstants;'
+  ensure_import 'import android.hardware.usb.UsbDevice;'
+  ensure_import 'import android.hardware.usb.UsbDeviceConnection;'
+  ensure_import 'import android.hardware.usb.UsbEndpoint;'
+  ensure_import 'import android.hardware.usb.UsbInterface;'
+  ensure_import 'import android.hardware.usb.UsbManager;'
+  ensure_import 'import android.print.PrintAttributes;'
+  ensure_import 'import android.print.PrintDocumentAdapter;'
+  ensure_import 'import android.print.PrintDocumentInfo;'
+  ensure_import 'import android.print.PrintManager;'
+  ensure_import 'import java.util.UUID;'
+  insert_snippet "$ROOT/patches/makepad/MakepadActivity-print.java"
+  echo "Inserted printDocument / Bluetooth / USB into $JAVA"
+fi
+
 # API 26 (Android 8.0) crash: InputDevice.isEnabled() is API 27+.
 if grep -qF 'Our shops still run API 26' "$JAVA"; then
   echo "Android API-26 InputDevice.isEnabled guard already present."

@@ -154,14 +154,14 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                 st.status = String::new();
                 st.store = Some(store);
                 let _ = st.reload_all();
-                // Shelf keys → custom files while the pack is still on disk
-                // (desktop Server). Clients then fetch over LAN; Android has
-                // no assets/items pack of its own.
-                if st.device_role == DeviceRole::Server
-                    && let Some(store) = st.store.as_ref()
-                {
-                    let _ = store.materialize_shelf_photos();
-                }
+                // Shelf keys → custom files off the UI thread (webp encode of
+                // many dishes freezes the window). Clients fetch over LAN;
+                // Android has no assets/items pack of its own.
+                let shelf_job = if st.device_role == DeviceRole::Server {
+                    st.store.as_ref().map(|s| s.db_path().to_path_buf())
+                } else {
+                    None
+                };
                 if let Some(store) = st.store.as_mut() {
                     let _ = store.set_active_session_staff_id(None);
                 }
@@ -175,6 +175,10 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                     .unwrap_or_default();
                 log!("Kumkaj store ready at {path}");
                 diag::info(diag::Cat::Store, "store_ready", "store open ok");
+                drop(st);
+                if let Some(db) = shelf_job {
+                    shelf_materialize_job(db);
+                }
             }
             Err(e) => {
                 if e.contains("No local server") {

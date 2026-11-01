@@ -21,6 +21,22 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 st.locale.language = locale::detect_platform_language();
             }
         }
+        // Worker owns the books — skip SQL so busy_timeout waits never freeze the UI.
+        // Still paint status+cancel chrome so Cancel stays tappable.
+        let heavy_job = restore_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || branch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
+        self.paint_submit_busy_chrome(cx);
+        if heavy_job {
+            if let Some(msg) = books_work_status().lock().unwrap().clone() {
+                self.set_status(cx, msg);
+            }
+            return;
+        }
         // Keep the showing tab's figures fresh — data is always live, so
         // these screens need no Refresh button.
         {
@@ -1891,8 +1907,164 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             }
         }
 
+        self.paint_submit_busy_chrome(cx);
         self.lift_footer_above_system_bar(cx);
         self.repair_focused_carets(cx);
         self.ui.redraw(cx);
+    }
+
+    /// Live status on the go button + Cancel sibling while a long submit runs.
+    fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
+        let finding = print_share::is_finding_printers();
+        let backup = backup_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let restore = restore_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let backup_copy = backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let csv = csv_import_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let branch = branch_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let diag = diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let printer_add = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let client_find = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let status = books_work_status().lock().unwrap().clone();
+
+        let (find_label, cancel_lbl) = {
+            let st = app_state().lock().unwrap();
+            (
+                if finding {
+                    st.t("printers_looking")
+                } else {
+                    st.t("find_printers")
+                },
+                "Cancel".to_string(),
+            )
+        };
+
+        self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &find_label);
+        self.ui
+            .button(cx, ids!(find_printers_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(find_printers_cancel))
+            .set_visible(cx, finding);
+
+        if printer_add {
+            self.ui
+                .button(cx, ids!(printer_add))
+                .set_text(cx, status.as_deref().unwrap_or("Saving printer…"));
+        }
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_visible(cx, printer_add);
+
+        if backup {
+            self.ui
+                .button(cx, ids!(backup_btn))
+                .set_text(cx, status.as_deref().unwrap_or("Creating backup…"));
+        }
+        self.ui.button(cx, ids!(backup_cancel)).set_text(cx, &cancel_lbl);
+        self.ui.button(cx, ids!(backup_cancel)).set_visible(cx, backup);
+
+        if restore {
+            self.ui
+                .button(cx, ids!(restore_btn))
+                .set_text(cx, status.as_deref().unwrap_or("Restoring backup…"));
+        }
+        self.ui.button(cx, ids!(restore_cancel)).set_text(cx, &cancel_lbl);
+        self.ui.button(cx, ids!(restore_cancel)).set_visible(cx, restore);
+
+        if backup_copy {
+            self.ui
+                .button(cx, ids!(backup_copy_btn))
+                .set_text(cx, status.as_deref().unwrap_or("Making backup copy…"));
+        }
+        self.ui
+            .button(cx, ids!(backup_copy_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(backup_copy_cancel))
+            .set_visible(cx, backup_copy);
+
+        if csv {
+            let msg = status.as_deref().unwrap_or("Importing…");
+            self.ui.button(cx, ids!(csv_import_items)).set_text(cx, msg);
+            self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, msg);
+            self.ui.button(cx, ids!(csv_import_pincodes)).set_text(cx, msg);
+            self.ui
+                .button(cx, ids!(csv_import_carrier_bill))
+                .set_text(cx, msg);
+        }
+        self.ui
+            .button(cx, ids!(csv_import_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(csv_import_cancel))
+            .set_visible(cx, csv);
+
+        if branch {
+            let msg = status.as_deref().unwrap_or("Working…");
+            if msg.contains("Import") {
+                self.ui.button(cx, ids!(branch_import)).set_text(cx, msg);
+            } else {
+                self.ui.button(cx, ids!(branch_export)).set_text(cx, msg);
+            }
+        }
+        let branch_exporting = branch
+            && status
+                .as_deref()
+                .map(|m| m.contains("Export"))
+                .unwrap_or(true);
+        let branch_importing = branch && !branch_exporting;
+        self.ui
+            .button(cx, ids!(branch_export_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(branch_export_cancel))
+            .set_visible(cx, branch_exporting);
+        self.ui
+            .button(cx, ids!(branch_import_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(branch_import_cancel))
+            .set_visible(cx, branch_importing);
+
+        if diag {
+            let msg = status.as_deref().unwrap_or("Exporting…");
+            if msg.contains("share") {
+                self.ui.button(cx, ids!(diag_export_send)).set_text(cx, msg);
+            } else {
+                self.ui.button(cx, ids!(diag_export_local)).set_text(cx, msg);
+            }
+        }
+        let diag_send = diag
+            && status
+                .as_deref()
+                .map(|m| m.contains("share"))
+                .unwrap_or(false);
+        let diag_local = diag && !diag_send;
+        self.ui
+            .button(cx, ids!(diag_export_local_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(diag_export_local_cancel))
+            .set_visible(cx, diag_local);
+        self.ui
+            .button(cx, ids!(diag_export_send_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(diag_export_send_cancel))
+            .set_visible(cx, diag_send);
+
+        if client_find {
+            let looking = app_state().lock().unwrap().t("finding_server");
+            self.ui.button(cx, ids!(client_find_btn)).set_text(cx, &looking);
+        }
+        self.ui
+            .button(cx, ids!(client_find_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(client_find_cancel))
+            .set_visible(cx, client_find);
     }
 }

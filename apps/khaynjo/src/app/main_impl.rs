@@ -55,6 +55,165 @@ impl AppMain for App {
                     Err(e) => self.set_status(cx, e),
                 }
             }
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                self.paint_import_progress_chrome(cx);
+            } else if print_share::is_finding_printers()
+                || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || client_find_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                self.paint_submit_busy_chrome(cx);
+            }
+            if let Some(result) = printer_add_once().lock().unwrap().take() {
+                match result {
+                    Ok(()) => {
+                        self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                    }
+                }
+            }
+            if let Some(result) = aggregator_import_once().lock().unwrap().take() {
+                match result {
+                    Ok(msg) => {
+                        let _ = app_state().lock().unwrap().reload_all();
+                        self.set_status(cx, msg);
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            if let Some(result) = diag_export_once().lock().unwrap().take() {
+                match result {
+                    Ok((paths, for_send)) => {
+                        self.sync_diag_panel(cx);
+                        self.offer_diag_bundle_save(cx, paths, for_send);
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            if let Some(result) = backup_copy_once().lock().unwrap().take() {
+                match result {
+                    Ok((file, name)) => {
+                        app_state().lock().unwrap().pending_backup_copy = Some(file);
+                        let title = app_state().lock().unwrap().t("save_backup_copy");
+                        cx.open_save_file_dialog(
+                            FileDialog::new()
+                                .set_title(title)
+                                .set_filename(name)
+                                .add_filter("Backups".into(), vec!["sqlite3".into()])
+                                .set_id(live_id!(backup_save_pick)),
+                        );
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            if let Some(result) = restore_once().lock().unwrap().take() {
+                match result {
+                    Ok((backup, before)) => {
+                        self.ensure_store(cx);
+                        let _ = app_state().lock().unwrap().reload_all();
+                        self.set_status(
+                            cx,
+                            format!(
+                                "Restored from {} — the books before it are saved as {}",
+                                backup.file_name().unwrap_or_default().to_string_lossy(),
+                                before.file_name().unwrap_or_default().to_string_lossy()
+                            ),
+                        );
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        if app_state().lock().unwrap().store.is_none() {
+                            self.ensure_store(cx);
+                        }
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                    }
+                }
+            }
+            if let Some(result) = csv_import_once().lock().unwrap().take() {
+                match result {
+                    Ok(msg) => {
+                        let _ = app_state().lock().unwrap().reload_all();
+                        self.set_status(cx, msg);
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            if let Some(result) = shelf_mat_once().lock().unwrap().take() {
+                match result {
+                    Ok(n) if n > 0 => {
+                        let _ = app_state().lock().unwrap().reload_all();
+                        self.set_status(cx, format!("Menu photos ready ({n})"));
+                        self.ui.redraw(cx);
+                    }
+                    Ok(_) => {}
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            // Menu import completion (progress is painted above while busy).
+            if let Some(outcome) = menu_import_once().lock().unwrap().take() {
+                let msg = match outcome.result {
+                    Ok(done) => {
+                        let reload = app_state().lock().unwrap().reload_all();
+                        if let Err(e) = reload {
+                            Err(e)
+                        } else {
+                            let st = app_state().lock().unwrap();
+                            Ok(match &outcome.kind {
+                                MenuImportKind::Shelf => st
+                                    .t("template_imported")
+                                    .replace("{d}", &done.items_added.to_string())
+                                    .replace("{c}", &done.categories_added.to_string()),
+                                MenuImportKind::Client { title, .. } => st
+                                    .t("client_template_imported")
+                                    .replace("{d}", &done.items_added.to_string())
+                                    .replace("{c}", &done.categories_added.to_string())
+                                    .replace("{title}", title),
+                            })
+                        }
+                    }
+                    Err(e) => Err(e),
+                };
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.template_confirm = false;
+                    st.client_template_confirm = None;
+                }
+                match msg {
+                    Ok(m) => self.set_status(cx, m),
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"))
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
             if BACKUP_MADE.swap(false, std::sync::atomic::Ordering::SeqCst) {
                 self.sync_chrome(cx);
             }
@@ -79,6 +238,10 @@ impl AppMain for App {
             }
             if app_state().lock().unwrap().screen == Screen::Settings {
                 self.show_found_printers(cx);
+                if print_share::find_printers_was_cancelled() {
+                    self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                }
+                self.paint_submit_busy_chrome(cx);
             }
             let fresh = std::mem::take(&mut firewall_state().lock().unwrap().fresh);
             if fresh {
@@ -87,6 +250,7 @@ impl AppMain for App {
             let found = discovery_result().lock().unwrap().take();
             if let Some(found) = found {
                 self.show_found_servers(cx, found);
+                self.paint_submit_busy_chrome(cx);
             }
         }
         if matches!(event, Event::WindowGeomChange(_)) {

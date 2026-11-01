@@ -333,7 +333,7 @@ impl App {
                             || *id == live_id!(csv_carrier_bill_pick) =>
                     {
                         if let Some(path) = paths.first() {
-                            let kind = if *id == live_id!(csv_parties_pick) {
+                            let kind: &'static str = if *id == live_id!(csv_parties_pick) {
                                 "parties"
                             } else if *id == live_id!(csv_items_pick) {
                                 "items"
@@ -342,54 +342,37 @@ impl App {
                             } else {
                                 "carrier_bill"
                             };
-                            let outcome = (|| -> Result<String, String> {
-                                let text = std::fs::read_to_string(path)
-                                    .map_err(|e| format!("Could not read the file: {e}"))?;
-                                let mut st = app_state().lock().unwrap();
+                            let job = (|| -> Result<(PathBuf, PathBuf, &'static str), String> {
+                                let st = app_state().lock().unwrap();
                                 st.require_server_role("Import from CSV")?;
-                                let store =
-                                    st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                                match kind {
-                                    "carrier_bill" => {
-                                        let report = store.reconcile_carrier_bill_csv(&text)?;
-                                        let diffs = report
-                                            .lines()
-                                            .skip(1)
-                                            .filter(|l| {
-                                                l.contains("charge_diff")
-                                                    || l.contains("weight_diff")
-                                                    || l.contains("missing")
-                                            })
-                                            .count();
-                                        let (applied, skipped) =
-                                            store.apply_carrier_bill_costs(&text)?;
-                                        st.last_carrier_bill_report = report;
-                                        Ok(format!(
-                                            "Carrier bill: {diffs} flagged · applied cost on {applied} · skipped {skipped}. Copy report from Reports."
-                                        ))
-                                    }
-                                    other => {
-                                        let (added, skipped, problems) = match other {
-                                            "parties" => store.import_parties_csv(&text)?,
-                                            "pincodes" => store.import_pincodes_csv(&text)?,
-                                            _ => store.import_items_csv(&text)?,
-                                        };
-                                        st.reload_all()?;
-                                        let mut msg = format!(
-                                            "Imported {added} new, skipped {skipped} (already there or unusable)"
-                                        );
-                                        if let Some(p) = problems.first() {
-                                            msg.push_str(&format!(" · first problem: {p}"));
-                                        }
-                                        Ok(msg)
-                                    }
-                                }
+                                let db = st
+                                    .store
+                                    .as_ref()
+                                    .ok_or_else(|| "No store".to_string())?
+                                    .db_path()
+                                    .to_path_buf();
+                                Ok((db, path.clone(), kind))
                             })();
-                            match outcome {
-                                Ok(msg) => self.set_status(cx, msg),
-                                Err(e) => self.set_status(cx, e),
+                            match job {
+                                Ok((db, path, kind)) => {
+                                    self.set_status(
+                                        cx,
+                                        match kind {
+                                            "parties" => "Importing parties…",
+                                            "pincodes" => "Importing pincodes…",
+                                            "carrier_bill" => "Importing carrier bill…",
+                                            _ => "Importing items…",
+                                        },
+                                    );
+                                    csv_import_job(db, path, kind);
+                                    self.paint_submit_busy_chrome(cx);
+                                    // Status only — sync_chrome would hit SQLite while the worker writes.
+                                }
+                                Err(e) => {
+                                    self.set_status(cx, e);
+                                    self.sync_chrome(cx);
+                                }
                             }
-                            self.sync_chrome(cx);
                         }
                     }
                     FileDialogAction::FileCancelled { id }

@@ -28,6 +28,10 @@ pub mod ops_local;
 pub mod phone;
 pub mod precise;
 pub mod print_share;
+#[cfg(target_os = "android")]
+pub mod print_android;
+pub mod print_bt;
+pub mod print_usb;
 pub mod receipt_raster;
 pub mod rates;
 pub mod rider_mode;

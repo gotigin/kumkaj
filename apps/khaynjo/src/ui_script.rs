@@ -38,13 +38,14 @@ script_mod! {
         icons := FontMember{res: crate_resource("makepad_widgets:resources/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
         emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
+    // Card names/prices: Bold (one step under Black) + Gujarati Bold.
     let WorldFontsBold = FontFamily{
-        latin := FontMember{res: crate_resource("self:resources/fonts/NotoSans-Regular.ttf") asc: -0.1 desc: 0.0}
+        latin := FontMember{res: crate_resource("self:resources/fonts/NotoSans-Bold.ttf") asc: -0.1 desc: 0.0}
         devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
         bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
         tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
         telugu := FontMember{res: crate_resource("self:resources/fonts/NotoSansTelugu-Regular.ttf") asc: 0.0 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
+        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Bold.ttf") asc: 0.0 desc: 0.0}
         kannada := FontMember{res: crate_resource("self:resources/fonts/NotoSansKannada-Regular.ttf") asc: 0.0 desc: 0.0}
         malayalam := FontMember{res: crate_resource("self:resources/fonts/NotoSansMalayalam-Regular.ttf") asc: 0.0 desc: 0.0}
         gurmukhi := FontMember{res: crate_resource("self:resources/fonts/NotoSansGurmukhi-Regular.ttf") asc: 0.0 desc: 0.0}
@@ -1837,7 +1838,7 @@ script_mod! {
         width: Fill height: Fit
         tile := View{
             cursor: MouseCursor.Hand
-            width: Fill height: 184
+            width: Fill height: 196
             flow: Overlay
             // No photo yet (or none): brand red, the initials on a frosted
             // plate up top (hidden while the − n + sits there).
@@ -1877,9 +1878,8 @@ script_mod! {
                     }
                 }
             }
-            // The wash the name and price sit on: clear over the top third,
-            // easing into near-black at the foot (eased, so no line shows
-            // where it starts).
+            // Foot wash under name/price: darker and denser so white/gold
+            // type stays readable on bright food photos.
             View{
                 width: Fill height: Fill
                 show_bg: true
@@ -1888,8 +1888,8 @@ script_mod! {
                     pixel: fn() {
                         let sdf = Sdf2d.viewport(self.pos * self.rect_size)
                         sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                        let t = smoothstep(0.3, 1.0, self.pos.y)
-                        sdf.fill(vec4(0.10, 0.02, 0.02, 0.93 * t))
+                        let t = smoothstep(0.22, 0.92, self.pos.y)
+                        sdf.fill(vec4(0.04, 0.01, 0.01, 0.98 * t))
                         return sdf.result
                     }
                 }
@@ -1940,7 +1940,18 @@ script_mod! {
                     max_lines: 2
                     text_overflow: Ellipsis
                     draw_text.color: #xFFFFFF
-                    draw_text.text_style.font_size: 14.
+                    draw_text.text_style: theme.font_bold{font_size: 14.}
+                }
+                alias := Label{
+                    visible: false
+                    width: Fill
+                    margin: Inset{top: 1.}
+                    text: ""
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    text_overflow: Ellipsis
+                    draw_text.color: #xF3E3DA
+                    draw_text.text_style: theme.font_bold{font_size: 11.}
                 }
                 price := Label{
                     width: Fill
@@ -1949,7 +1960,7 @@ script_mod! {
                     flow: Right{wrap: false}
                     max_lines: 1
                     draw_text.color: #xF7B043
-                    draw_text.text_style.font_size: 15.
+                    draw_text.text_style: theme.font_bold{font_size: 15.}
                 }
                 // In the price's place when sold out; gold is for prices.
                 price_off := Label{
@@ -1960,7 +1971,7 @@ script_mod! {
                     flow: Right{wrap: false}
                     max_lines: 1
                     draw_text.color: #xF3E3DA
-                    draw_text.text_style.font_size: 15.
+                    draw_text.text_style: theme.font_bold{font_size: 15.}
                 }
             }
             // The card's edge: a fine line, or gold once it is on the order.
@@ -2205,7 +2216,7 @@ script_mod! {
     // under name/price keeps type readable. Actions float as frosted pills.
     let MenuCard = View{
         cursor: MouseCursor.Hand
-        width: Fill height: 140
+        width: Fill height: 152
         flow: Overlay
         RoundedView{
             width: Fill height: Fill
@@ -2234,7 +2245,7 @@ script_mod! {
                 }
             }
         }
-        // Clear photo above; opaque-enough foot under the text — no side wash.
+        // Darker foot wash so name/price stay readable on bright photos.
         View{
             width: Fill height: Fill
             show_bg: true
@@ -2243,8 +2254,8 @@ script_mod! {
                 pixel: fn() {
                     let sdf = Sdf2d.viewport(self.pos * self.rect_size)
                     sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                    let t = smoothstep(0.50, 0.90, self.pos.y)
-                    sdf.fill(vec4(0.04, 0.02, 0.01, 0.88 * t))
+                    let t = smoothstep(0.40, 0.88, self.pos.y)
+                    sdf.fill(vec4(0.04, 0.01, 0.01, 0.97 * t))
                     return sdf.result
                 }
             }
@@ -2264,7 +2275,17 @@ script_mod! {
                     max_lines: 2
                     text_overflow: Ellipsis
                     draw_text.color: #xFFFFFF
-                    draw_text.text_style.font_size: 16.
+                    draw_text.text_style: theme.font_bold{font_size: 16.}
+                }
+                alias := Label{
+                    visible: false
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    text_overflow: Ellipsis
+                    draw_text.color: #xF3E3DA
+                    draw_text.text_style: theme.font_bold{font_size: 12.}
                 }
                 View{
                     width: Fill height: Fit
@@ -2276,7 +2297,7 @@ script_mod! {
                         flow: Right{wrap: false}
                         max_lines: 1
                         draw_text.color: #xFFD28A
-                        draw_text.text_style.font_size: 14.
+                        draw_text.text_style: theme.font_bold{font_size: 14.}
                     }
                     stock := Label{
                         width: Fill
@@ -2817,11 +2838,25 @@ script_mod! {
         ThumbAvatar{
             width: 48 height: 48
         }
-        label := WrapLabel{
-            width: Fill
-            body: "item"
-            font_color: #x260B08
-            font_size: 14.
+        View{
+            width: Fill height: Fit
+            flow: Down spacing: 2
+            label := WrapLabel{
+                width: Fill
+                body: "item"
+                font_color: #x260B08
+                font_size: 14.
+            }
+            alias := Label{
+                visible: false
+                width: Fill
+                text: ""
+                flow: Right{wrap: false}
+                max_lines: 1
+                text_overflow: Ellipsis
+                draw_text.color: #x7A5A4E
+                draw_text.text_style.font_size: 12.
+            }
         }
         photo := Button{
             text: "Photo"
@@ -3251,7 +3286,7 @@ script_mod! {
     // tap target (nested Button clicks are unreliable inside PortalList).
     let DishRow = View{
         cursor: MouseCursor.Hand
-        width: Fill height: 104
+        width: Fill height: 118
         flow: Overlay
         RoundedView{
             width: Fill height: Fill
@@ -3302,7 +3337,7 @@ script_mod! {
             align: Align{y: 1.0}
             View{
                 width: Fill height: Fit
-                flow: Down spacing: 3
+                flow: Down spacing: 2
                 title := Label{
                     width: Fill
                     text: ""
@@ -3311,6 +3346,16 @@ script_mod! {
                     text_overflow: Ellipsis
                     draw_text.color: #xFFFFFF
                     draw_text.text_style.font_size: 16.
+                }
+                alias := Label{
+                    visible: false
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    text_overflow: Ellipsis
+                    draw_text.color: #xF3E3DA
+                    draw_text.text_style.font_size: 11.
                 }
                 subtitle := Label{
                     width: Fill
@@ -4576,14 +4621,9 @@ script_mod! {
                                     onboard_fresh := RowSecondaryBtn{text: "Start fresh"}
                                     onboard_fresh_on := RowPrimaryBtn{text: "Start fresh" visible: false}
                                 }
-                                // Every dish and category we ship, with photos —
-                                // imported when setup is done; prices set after.
-                                View{
-                                    width: Fill height: 52
-                                    flow: Overlay
-                                    onboard_template := RowSecondaryBtn{text: "Start with our menu template"}
-                                    onboard_template_on := RowPrimaryBtn{text: "Start with our menu template" visible: false}
-                                }
+                                // Full-setup templates (staff, defaults, …) land
+                                // here later — not a menu-item dump. Menu imports
+                                // stay on the Menu screen.
                                 View{
                                     width: Fill height: 52
                                     flow: Overlay
@@ -4660,7 +4700,10 @@ script_mod! {
                                     selectable: false
                                 }
                                 // No typing IPs: the shop's server answers on this Wi‑Fi.
-                                client_find_btn := StackPrimaryBtn{text: "Find the shop's server"}
+                                ActionStack{
+                                    client_find_btn := StackPrimaryBtn{text: "Find the shop's server"}
+                                    client_find_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                }
                                 client_found_label := WrapLabel{
                                     body: " "
                                     font_color: #x6B4A3F
@@ -6035,6 +6078,42 @@ script_mod! {
                                         template_no := StackLightBtn{text: "Cancel"}
                                     }
                                 }
+                                // Named client menus (assets/templates/<id>/). One card;
+                                // chips pick which template when more than one ships.
+                                client_template_card := FormCard{
+                                    client_template_heading := Label{
+                                        text: "Client menu"
+                                        draw_text.color: #x260B08
+                                        draw_text.text_style.font_size: 17.
+                                    }
+                                    client_template_chips := View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true} spacing: 8
+                                        // Fixed chip slots — paint shows as many as we ship
+                                        // (add another LiveId here when a fourth template arrives).
+                                        client_tmpl_0 := ChoiceChip{text: " "}
+                                        client_tmpl_0_on := ChoiceChipOn{text: " "}
+                                        client_tmpl_1 := ChoiceChip{text: " "}
+                                        client_tmpl_1_on := ChoiceChipOn{text: " "}
+                                        client_tmpl_2 := ChoiceChip{text: " "}
+                                        client_tmpl_2_on := ChoiceChipOn{text: " "}
+                                    }
+                                    client_template_info := Label{
+                                        width: Fill
+                                        text: " "
+                                        flow: Right{wrap: true}
+                                        draw_text.color: #x6B4A3F
+                                        draw_text.text_style.font_size: 13.
+                                    }
+                                    client_template_import := NavBtn{text: "Import this menu"}
+                                    client_template_confirm := View{
+                                        width: Fill height: Fit
+                                        visible: false
+                                        flow: Right spacing: 8
+                                        client_template_yes := StackPrimaryBtn{text: "Yes, import"}
+                                        client_template_no := StackLightBtn{text: "Cancel"}
+                                    }
+                                }
                                 menu_mode_label := WrapLabel{body: "Adding a new item" font_color: #x69090C font_size: 14.}
                                 menu_name_input := FieldInput{
                                     empty_text: "Item name — search our dishes or type your own"
@@ -7107,7 +7186,10 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_size: 12.
                                         visible: false
                                     }
-                                    find_printers_btn := StackSecondaryBtn{text: "Find printers"}
+                                    ActionStack{
+                                        find_printers_btn := StackSecondaryBtn{text: "Find printers"}
+                                        find_printers_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    }
                                     printers_found_label := WrapLabel{
                                         width: Fill
                                         body: ""
@@ -7117,11 +7199,11 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     printers_found_list := mod.widgets.ReportText{}
                                     printers_pool_label := mod.widgets.ReportText{}
                                     printer_label_input := FieldInput{empty_text: "Name (e.g. Kitchen)"}
-                                    printer_target_input := FieldInput{empty_text: "Address or system name"}
+                                    printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
                                     printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
                                     h_printer_wire := WrapLabel{
                                         width: Fill
-                                        body: "How to send"
+                                        body: "Format for the place above (Standard / KOT / custom)"
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }
@@ -7129,16 +7211,18 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         width: Fill height: Fit
                                         flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_wire_escpos := SegBtn{text: "Thermal ESC/POS"}
-                                            printer_wire_escpos_on := SegBtnOn{text: "Thermal ESC/POS" visible: false}
+                                            printer_wire_escpos := SegBtn{text: "KOT"}
+                                            printer_wire_escpos_on := SegBtnOn{text: "KOT" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_wire_os := SegBtn{text: "System print"}
-                                            printer_wire_os_on := SegBtnOn{text: "System print" visible: false}
+                                            printer_wire_os := SegBtn{text: "Standard"}
+                                            printer_wire_os_on := SegBtnOn{text: "Standard" visible: false}
                                         }
                                     }
+                                    printer_format_custom := StackSecondaryBtn{text: "New custom format"}
                                     ActionStack{
                                         printer_add := StackSecondaryBtn{text: "Add printer"}
+                                        printer_add_cancel := StackLightBtn{text: "Cancel" visible: false}
                                         printer_remove := StackSecondaryBtn{text: "Remove"}
                                     }
                                     h_printers_routes := WrapLabel{body: "2. What prints where" font_color: #x260B08 font_size: 16.}
@@ -7271,7 +7355,10 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                         tip: "Optional: put import_aggregator_orders.json in the backups folder, then tap Import. Never blocks the counter; live delivery apps are Cloud."
                                     }
                                 }
-                                aggregator_import_btn := StackSecondaryBtn{text: "Import aggregator file"}
+                                ActionStack{
+                                    aggregator_import_btn := StackSecondaryBtn{text: "Import aggregator file"}
+                                    aggregator_import_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                }
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
@@ -7342,17 +7429,26 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     font_color: #x6B4A3F
                                     font_size: 12.
                                 }
-                                backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
+                                ActionStack{
+                                    backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
+                                    backup_copy_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                }
                                 db_path_label := WrapLabel{body: "" font_color: #x260B08}
                                 audit_label := mod.widgets.ReportText{}
-                                backup_btn := StackPrimaryBtn{text: "Create backup"}
+                                ActionStack{
+                                    backup_btn := StackPrimaryBtn{text: "Create backup"}
+                                    backup_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                }
                                 backup_path_label := WrapLabel{body: "" font_color: #x260B08}
                                 h_restore_help := WrapLabel{
                                     width: Fill
                                     body: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
                                     font_color: #x260B08
                                 }
-                                restore_btn := NavBtn{text: "Restore backup"}
+                                ActionStack{
+                                    restore_btn := NavBtn{text: "Restore backup"}
+                                    restore_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                }
                                 }
                                 settings_panel_diag := View{
                                     width: Fill height: Fit
@@ -7401,13 +7497,19 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         diag_support_start := StackSecondaryBtn{text: "Start 30-min support session"}
                                         diag_support_stop := StackSecondaryBtn{text: "End support session"}
                                     }
-                                    diag_export_local := StackSecondaryBtn{text: "Export local copy"}
+                                    ActionStack{
+                                        diag_export_local := StackSecondaryBtn{text: "Export local copy"}
+                                        diag_export_local_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    }
                                     diag_send_help := InfoHelp{
                                         width: Fit
                                         tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                     }
                                     diag_approve_send := StackPrimaryBtn{text: "Approve share off this device"}
-                                    diag_export_send := StackSecondaryBtn{text: "Create share package (needs approval)"}
+                                    ActionStack{
+                                        diag_export_send := StackSecondaryBtn{text: "Create share package (needs approval)"}
+                                        diag_export_send_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    }
                                     diag_clear := NavBtn{text: "Clear diagnostic logs"}
                                 }
                             }
@@ -7539,7 +7641,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     csv_copy_ledger := RowSecondaryBtn{text: "Copy party ledger CSV"}
                                     csv_import_parties := RowSecondaryBtn{text: "Import parties CSV…"}
                                 }
-                                csv_import_items := NavBtn{text: "Import items CSV…"}
+                                ActionStack{
+                                    csv_import_items := NavBtn{text: "Import items CSV…"}
+                                    csv_import_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                }
                             }
                         }
 

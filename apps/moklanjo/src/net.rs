@@ -1823,9 +1823,17 @@ pub fn local_ipv4() -> Option<Ipv4Addr> {
 /// answer, then — when a router drops broadcasts — a quick knock on every
 /// address of this /24 for the server port. Takes a few seconds at most.
 pub fn discover_servers(wait: Duration) -> Vec<FoundServer> {
-    let mut found = discover_by_broadcast(wait);
-    if found.is_empty() {
-        found = discover_by_scan();
+    discover_servers_cancellable(wait, || false)
+}
+
+/// Same as [`discover_servers`], but `cancel` is polled so Find can abort early.
+pub fn discover_servers_cancellable(wait: Duration, cancel: impl Fn() -> bool) -> Vec<FoundServer> {
+    if cancel() {
+        return Vec::new();
+    }
+    let mut found = discover_by_broadcast_cancellable(wait, &cancel);
+    if found.is_empty() && !cancel() {
+        found = discover_by_scan_cancellable(&cancel);
     }
     found.sort_by(|a, b| a.host.cmp(&b.host));
     found.dedup_by(|a, b| a.host == b.host);
@@ -1841,7 +1849,10 @@ fn found_from(reply: &serde_json::Value, host: String) -> Option<FoundServer> {
     Some(FoundServer { host, venue: text("venue"), server_id: text("server_id") })
 }
 
-fn discover_by_broadcast(wait: Duration) -> Vec<FoundServer> {
+fn discover_by_broadcast_cancellable(
+    wait: Duration,
+    cancel: &impl Fn() -> bool,
+) -> Vec<FoundServer> {
     let mut out = Vec::new();
     let Ok(socket) = UdpSocket::bind("0.0.0.0:0") else {
         return out;
@@ -1853,11 +1864,17 @@ fn discover_by_broadcast(wait: Duration) -> Vec<FoundServer> {
         targets.push(SocketAddr::from(([o[0], o[1], o[2], 255], DISCOVERY_PORT)));
     }
     for t in &targets {
+        if cancel() {
+            return out;
+        }
         let _ = socket.send_to(DISCOVERY_ASK.as_bytes(), t);
     }
     let deadline = std::time::Instant::now() + wait;
     let mut buf = [0u8; 1024];
     while let Some(left) = deadline.checked_duration_since(std::time::Instant::now()) {
+        if cancel() {
+            break;
+        }
         let _ = socket.set_read_timeout(Some(left.max(Duration::from_millis(10))));
         let Ok((n, from)) = socket.recv_from(&mut buf) else {
             break;
@@ -1874,7 +1891,7 @@ fn discover_by_broadcast(wait: Duration) -> Vec<FoundServer> {
     out
 }
 
-fn discover_by_scan() -> Vec<FoundServer> {
+fn discover_by_scan_cancellable(cancel: &impl Fn() -> bool) -> Vec<FoundServer> {
     let Some(ip) = local_ipv4() else {
         return Vec::new();
     };
@@ -1883,20 +1900,28 @@ fn discover_by_scan() -> Vec<FoundServer> {
         .filter(|h| *h != o[3])
         .map(|h| SocketAddr::from(([o[0], o[1], o[2], h], DEFAULT_PORT)))
         .collect();
-    scan_for_servers(addrs)
+    scan_for_servers_cancellable(addrs, cancel)
 }
 
 /// Knock on each address (16 at a time, 300 ms each) and ask the ones that
 /// open for `/hello`. Routers that drop broadcasts still let this through.
-fn scan_for_servers(addrs: Vec<SocketAddr>) -> Vec<FoundServer> {
+fn scan_for_servers_cancellable(
+    addrs: Vec<SocketAddr>,
+    cancel: &impl Fn() -> bool,
+) -> Vec<FoundServer> {
     let found = Arc::new(std::sync::Mutex::new(Vec::new()));
+    let cancel_flag = Arc::new(AtomicBool::new(false));
     let workers: Vec<_> = addrs
         .chunks(16)
         .map(|chunk| {
             let chunk = chunk.to_vec();
             let found = Arc::clone(&found);
+            let cancel_flag = Arc::clone(&cancel_flag);
             thread::spawn(move || {
                 for addr in chunk {
+                    if cancel_flag.load(Ordering::SeqCst) {
+                        break;
+                    }
                     if TcpStream::connect_timeout(&addr, Duration::from_millis(300)).is_err() {
                         continue;
                     }
@@ -1912,6 +1937,14 @@ fn scan_for_servers(addrs: Vec<SocketAddr>) -> Vec<FoundServer> {
             })
         })
         .collect();
+    // Poll caller cancel while workers run; do not join forever after Cancel.
+    while workers.iter().any(|w| !w.is_finished()) {
+        if cancel() {
+            cancel_flag.store(true, Ordering::SeqCst);
+            break;
+        }
+        thread::sleep(Duration::from_millis(40));
+    }
     for w in workers {
         let _ = w.join();
     }

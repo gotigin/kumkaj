@@ -282,12 +282,6 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(onboard_book_on),
             onboard_step == 2,
         );
-        self.paint_choice_pair(
-            cx,
-            ids!(onboard_template),
-            ids!(onboard_template_on),
-            onboard_step == 3,
-        );
         self.ui
             .view(cx, ids!(onboard_fresh_panel))
             .set_visible(cx, onboard_step == 1);
@@ -866,13 +860,11 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(line_action_go), "confirm"),
             (ids!(table_range_add), "add_these_tables"),
             (ids!(table_remove_btn), "remove_these_tables"),
-            (ids!(client_find_btn), "find_server"),
             (ids!(bill_format_save), "save_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
             (ids!(print_stamp_clear), "clear_stamp"),
             (ids!(payment_qr_pick), "choose_payment_qr"),
             (ids!(payment_qr_clear), "clear_payment_qr"),
-            (ids!(aggregator_import_btn), "import_aggregator_file"),
             (ids!(scheme_add), "add_scheme"),
             (ids!(show_upi_qr), "show_upi_qr"),
             (ids!(upi_qr_close), "close_upi_qr"),
@@ -884,6 +876,14 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(shift_close_btn), "close_shift_print"),
         ] {
             self.ui.button(cx, id).set_text(cx, &s(key));
+        }
+        if !client_find_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(client_find_btn)).set_text(cx, &s("find_server"));
+        }
+        if !aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(aggregator_import_btn))
+                .set_text(cx, &s("import_aggregator_file"));
         }
         for (id, key) in [
             (ids!(move_target_input), "move_target_ph"),
@@ -1073,7 +1073,12 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(settings_station_remove_input))
             .set_empty_text(cx, s("station_remove_ph"));
-        self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
+        if !print_share::is_finding_printers() {
+            self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
+        }
+        self.ui
+            .button(cx, ids!(find_printers_cancel))
+            .set_text(cx, &s("cancel"));
         self.ui
             .widget(cx, ids!(h_printer_wire))
             .set_text(cx, &plain_display_text(&s("printer_wire_heading")));
@@ -1083,7 +1088,12 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         for path in [ids!(printer_wire_os), ids!(printer_wire_os_on)] {
             self.ui.button(cx, path).set_text(cx, &s("printer_wire_os"));
         }
-        self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
+        if !printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
+        }
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_text(cx, &s("cancel"));
         self.ui.button(cx, ids!(printer_remove)).set_text(cx, &s("remove_printer"));
         self.ui.button(cx, ids!(route_up)).set_text(cx, &s("route_up"));
         self.ui.button(cx, ids!(route_down)).set_text(cx, &s("route_down"));
@@ -1101,7 +1111,26 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(add_items_btn)).set_text(cx, &s("add_dishes_items"));
         self.ui.button(cx, ids!(allow_extra_tills)).set_text(cx, &s("allow_extra_tills"));
         self.ui.button(cx, ids!(amend_btn)).set_text(cx, &s("amend"));
-        self.ui.button(cx, ids!(backup_btn)).set_text(cx, &s("create_backup"));
+        if !backup_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(backup_btn)).set_text(cx, &s("create_backup"));
+        }
+        self.ui.button(cx, ids!(backup_cancel)).set_text(cx, &s("cancel"));
+        self.ui.button(cx, ids!(restore_cancel)).set_text(cx, &s("cancel"));
+        self.ui
+            .button(cx, ids!(backup_copy_cancel))
+            .set_text(cx, &s("cancel"));
+        self.ui
+            .button(cx, ids!(aggregator_import_cancel))
+            .set_text(cx, &s("cancel"));
+        self.ui
+            .button(cx, ids!(client_find_cancel))
+            .set_text(cx, &s("cancel"));
+        self.ui
+            .button(cx, ids!(diag_export_local_cancel))
+            .set_text(cx, &s("cancel"));
+        self.ui
+            .button(cx, ids!(diag_export_send_cancel))
+            .set_text(cx, &s("cancel"));
         self.ui.button(cx, ids!(bank_bank_to_till)).set_text(cx, &s("bank_to_till"));
         self.ui.button(cx, ids!(bank_in)).set_text(cx, &s("bank_in"));
         self.ui.button(cx, ids!(bank_mark_cleared)).set_text(cx, &s("mark_cleared"));
@@ -1158,8 +1187,11 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(csv_copy_ledger)).set_text(cx, &s("copy_party_ledger_csv"));
         self.ui.button(cx, ids!(csv_copy_outstanding)).set_text(cx, &s("copy_outstanding_csv"));
         self.ui.button(cx, ids!(csv_copy_parties)).set_text(cx, &s("copy_parties_csv"));
-        self.ui.button(cx, ids!(csv_import_items)).set_text(cx, &s("import_items_csv_plain"));
-        self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, &s("import_parties_csv"));
+        if !csv_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(csv_import_items)).set_text(cx, &s("import_items_csv_plain"));
+            self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, &s("import_parties_csv"));
+        }
+        self.ui.button(cx, ids!(csv_import_cancel)).set_text(cx, &s("cancel"));
         self.ui.button(cx, ids!(customer_use)).set_text(cx, &s("add_use_name"));
         self.ui.button(cx, ids!(day_close_commit)).set_text(cx, &s("record_day_close"));
         self.ui.button(cx, ids!(day_close_copy)).set_text(cx, &s("copy_day_close"));
@@ -1207,8 +1239,6 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(onboard_book_on)).set_text(cx, &s("bring_my_book"));
         self.ui.button(cx, ids!(onboard_done)).set_text(cx, &s("done_open_books"));
         self.ui.button(cx, ids!(onboard_fresh)).set_text(cx, &s("start_fresh"));
-        self.ui.button(cx, ids!(onboard_template)).set_text(cx, &s("start_with_template"));
-        self.ui.button(cx, ids!(onboard_template_on)).set_text(cx, &s("start_with_template"));
         self.ui.button(cx, ids!(onboard_fresh_on)).set_text(cx, &s("start_fresh"));
         self.ui.button(cx, ids!(onboard_icon_pick)).set_text(cx, &s("choose_logo"));
         self.ui.text_input(cx, ids!(onboard_org_input)).set_empty_text(cx, s("org_optional_ph"));
@@ -1359,7 +1389,9 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.sync_device_setup_sections(cx);
         self.ui.button(cx, ids!(refund_btn)).set_text(cx, &s("refund"));
         self.ui.button(cx, ids!(reports_copy)).set_text(cx, &s("copy_report"));
-        self.ui.button(cx, ids!(restore_btn)).set_text(cx, &s("restore_backup"));
+        if !restore_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(restore_btn)).set_text(cx, &s("restore_backup"));
+        }
         self.ui.button(cx, ids!(sale_attach_add_note)).set_text(cx, &s("add_note"));
         self.ui.text_input(cx, ids!(sale_attach_note)).set_empty_text(cx, s("extra_note_bill_ph"));
         self.ui.button(cx, ids!(sale_attach_pdf)).set_text(cx, &s("attach_pdf"));
@@ -1378,10 +1410,16 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(new_pair_code)).set_text(cx, &s("new_pair_code"));
         // Android has no folder to copy into each day: the owner saves a
         // copy where they choose (USB stick, SD card, Downloads).
-        self.ui.button(cx, ids!(backup_copy_btn)).set_text(
-            cx,
-            &s(if cfg!(target_os = "android") { "save_backup_copy" } else { "backup_copy_btn" }),
-        );
+        if !backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(backup_copy_btn)).set_text(
+                cx,
+                &s(if cfg!(target_os = "android") {
+                    "save_backup_copy"
+                } else {
+                    "backup_copy_btn"
+                }),
+            );
+        }
         self.ui.button(cx, ids!(autostart_btn)).set_text(
             cx,
             &s(if startup::is_on() { "autostart_on" } else { "autostart_off" }),

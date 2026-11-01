@@ -1301,15 +1301,27 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(diag_support_stop))
             .set_text(cx, &s("diag_support_stop"));
-        self.ui
-            .button(cx, ids!(diag_export_local))
-            .set_text(cx, &s("diag_export_local"));
+        let diag_busy = diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let diag_send = diag_busy && diag_export_for_send().load(std::sync::atomic::Ordering::SeqCst);
+        if !(diag_busy && !diag_send) {
+            self.ui
+                .button(cx, ids!(diag_export_local))
+                .set_text(cx, &s("diag_export_local"));
+        }
         self.ui
             .button(cx, ids!(diag_approve_send))
             .set_text(cx, &s("diag_approve_send"));
+        if !diag_send {
+            self.ui
+                .button(cx, ids!(diag_export_send))
+                .set_text(cx, &s("diag_export_send"));
+        }
         self.ui
-            .button(cx, ids!(diag_export_send))
-            .set_text(cx, &s("diag_export_send"));
+            .button(cx, ids!(diag_export_local_cancel))
+            .set_text(cx, &s("cancel"));
+        self.ui
+            .button(cx, ids!(diag_export_send_cancel))
+            .set_text(cx, &s("cancel"));
         self.ui
             .button(cx, ids!(diag_clear))
             .set_text(cx, &s("diag_clear"));
@@ -1382,14 +1394,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.show_ok(cx, app_state().lock().unwrap().t("diag_support_ended"));
             return;
         }
+        if self.ui.button(cx, ids!(diag_export_local_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
+            return;
+        }
+        if self.ui.button(cx, ids!(diag_export_send_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
+            return;
+        }
         if self.ui.button(cx, ids!(diag_export_local)).clicked(actions) {
-            match diag::export_local() {
-                Ok(paths) => {
-                    self.sync_diag_panel(cx);
-                    self.offer_diag_bundle_save(cx, paths, false);
-                }
-                Err(e) => self.show_error(cx, e),
+            if diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                return;
             }
+            self.paint_submit_busy_chrome(cx);
+            diag_export_job(false);
+            self.paint_submit_busy_chrome(cx);
             return;
         }
         if self.ui.button(cx, ids!(diag_approve_send)).clicked(actions) {
@@ -1399,13 +1420,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             return;
         }
         if self.ui.button(cx, ids!(diag_export_send)).clicked(actions) {
-            match diag::export_for_send() {
-                Ok(paths) => {
-                    self.sync_diag_panel(cx);
-                    self.offer_diag_bundle_save(cx, paths, true);
-                }
-                Err(e) => self.show_error(cx, e),
+            if diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                return;
             }
+            diag_export_job(true);
+            self.paint_submit_busy_chrome(cx);
             return;
         }
         if self.ui.button(cx, ids!(diag_clear)).clicked(actions) {

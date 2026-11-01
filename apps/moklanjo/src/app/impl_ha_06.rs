@@ -302,68 +302,56 @@ impl App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(branch_export)).clicked(actions) {
-            let result = (|| -> Result<String, String> {
+            let job = (|| -> Result<PathBuf, String> {
                 let st = app_state().lock().unwrap();
                 let actor = st.actor()?;
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can export a branch day".into());
                 }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let branch = store.active_branch()?;
-                let json = store.export_branch_snapshot_json()?;
-                let dir = store::data_dir()?.join("backups");
-                std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-                let code = if branch.code.trim().is_empty() {
-                    "BRANCH".to_string()
-                } else {
-                    branch.code.trim().to_uppercase()
-                };
-                let path = dir.join(format!(
-                    "branch_snapshot_{code}_{}.json",
-                    chrono::Local::now().format("%Y-%m-%d")
-                ));
-                std::fs::write(&path, &json).map_err(|e| e.to_string())?;
-                let copied = print_share::copy_text(&json);
-                Ok(format!(
-                    "Snapshot: {}{}",
-                    path.display(),
-                    if copied { " (also copied)" } else { "" }
-                ))
+                Ok(store.db_path().to_path_buf())
             })();
-            match result {
-                Ok(msg) => self.set_status(cx, msg),
+            match job {
+                Ok(db) => {
+                    self.set_status(cx, "Exporting day…");
+                    self.paint_submit_busy_chrome(cx);
+                    branch_export_job(db);
+                }
                 Err(e) => self.set_status(cx, e),
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(branch_import)).clicked(actions) {
-            let result = (|| -> Result<String, String> {
-                let mut st = app_state().lock().unwrap();
+            let job = (|| -> Result<PathBuf, String> {
+                let st = app_state().lock().unwrap();
                 st.require_server_role("Import a branch day")?;
                 let actor = st.actor()?;
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can import a branch day".into());
                 }
-                let path = store::data_dir()?
-                    .join("backups")
-                    .join("import_branch_snapshot.json");
-                if !path.exists() {
-                    return Err("Missing backups/import_branch_snapshot.json".into());
-                }
-                let json = std::fs::read_to_string(&path).map_err(|e| e.to_string())?;
-                let branch = st
+                Ok(st
                     .store
                     .as_ref()
                     .ok_or_else(|| "No store".to_string())?
-                    .import_branch_snapshot(&json)?;
-                st.refresh_branches_text()?;
-                Ok(format!("Imported day for {}", branch.label()))
+                    .db_path()
+                    .to_path_buf())
             })();
-            match result {
-                Ok(msg) => self.set_status(cx, msg),
+            match job {
+                Ok(db) => {
+                    self.set_status(cx, "Importing day…");
+                    self.paint_submit_busy_chrome(cx);
+                    branch_import_job(db);
+                }
                 Err(e) => self.set_status(cx, e),
             }
-            self.sync_chrome(cx);
+        }
+        for cancel_id in [
+            ids!(branch_export_cancel),
+            ids!(branch_import_cancel),
+        ] {
+            if self.ui.button(cx, cancel_id).clicked(actions) {
+                request_books_job_cancel();
+                self.paint_submit_busy_chrome(cx);
+            }
         }
         if self
             .ui
@@ -500,27 +488,78 @@ impl App {
         }
         if self.ui.button(cx, ids!(find_printers_btn)).clicked(actions) {
             print_share::find_printers_in_background();
+            self.paint_submit_busy_chrome(cx);
+            self.show_found_printers(cx);
+            self.set_status(cx, app_state().lock().unwrap().t("printers_looking"));
+        }
+        if self.ui.button(cx, ids!(find_printers_cancel)).clicked(actions) {
+            print_share::cancel_find_printers();
+            self.paint_submit_busy_chrome(cx);
+        }
+        for (format_id, idle, active) in [
+            (
+                print_share::FORMAT_KOT,
+                ids!(printer_mode_thermal),
+                ids!(printer_mode_thermal_on),
+            ),
+            (
+                print_share::FORMAT_STANDARD,
+                ids!(printer_mode_standard),
+                ids!(printer_mode_standard_on),
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, active) {
+                let mut st = app_state().lock().unwrap();
+                let key = parse_courier_route_key(&st.printer_route_key);
+                st.printer_draft.set_route_format(key, format_id);
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                }
+                drop(st);
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(printer_format_custom)).clicked(actions) {
+            let mut st = app_state().lock().unwrap();
+            let key = parse_courier_route_key(&st.printer_route_key);
+            let from = st.printer_draft.format_id_for(key);
+            let label = st.t("printer_format_custom_label");
+            let id = st.printer_draft.add_format_from(&from, &label);
+            st.printer_draft.set_route_format(key, &id);
+            if let Some(base) = st.data_base.as_ref() {
+                let _ = print_share::save_device_printers(base, &st.printer_draft);
+            }
+            let msg = st.t("printer_format_custom_added");
+            drop(st);
+            self.set_status(cx, msg);
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
+        if self.ui.button(cx, ids!(printer_add)).clicked(actions)
+            && !printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+        {
             let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
             let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-            let saved = {
+            let job = {
                 let mut st = app_state().lock().unwrap();
                 st.printer_draft.add_printer(&label, &target);
                 st.data_base
                     .as_ref()
-                    .and_then(|base| {
-                        print_share::save_device_printers(base, &st.printer_draft).ok()
-                    })
-                    .is_some()
+                    .map(|base| (base.clone(), st.printer_draft.clone()))
             };
             self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
             self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
-            if saved {
-                self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+            match job {
+                Some((base, draft)) => {
+                    self.set_status(cx, "Saving printer…");
+                    self.paint_submit_busy_chrome(cx);
+                    printer_add_job(base, draft);
+                }
+                None => self.set_status(cx, "No store path to save printers"),
             }
-            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(printer_add_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
             {
@@ -855,9 +894,21 @@ impl App {
             match job {
                 Ok((db, dest)) => {
                     self.set_status(cx, "Creating backup…");
+                    self.paint_submit_busy_chrome(cx);
                     backup_job(db, dest);
                 }
                 Err(e) => self.set_status(cx, e),
+            }
+        }
+        for cancel_id in [
+            ids!(backup_cancel),
+            ids!(restore_cancel),
+            ids!(backup_copy_cancel),
+            ids!(csv_import_cancel),
+        ] {
+            if self.ui.button(cx, cancel_id).clicked(actions) {
+                request_books_job_cancel();
+                self.paint_submit_busy_chrome(cx);
             }
         }
 

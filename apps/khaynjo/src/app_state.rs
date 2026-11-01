@@ -53,8 +53,6 @@ struct AppState {
     settings_panel: Option<&'static str>,
     /// Settings → Printers: pool row tapped for Remove / edit (None = last).
     printer_selected_id: Option<String>,
-    /// Settings → Printers: wire for Add / selected pool printer.
-    printer_add_wire: print_share::PrinterWire,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).
@@ -196,8 +194,12 @@ struct AppState {
     /// A staff name was picked from the list: select them on this pass.
     team_select_pending: bool,
     pay_choice: PayChoice,
-    /// Menu: "Import complete template" was tapped; asking to confirm.
+    /// Menu: "Import complete template" (full shelf) was tapped; asking to confirm.
     template_confirm: bool,
+    /// Menu: a named client template id pending confirm (`rajdhani`, …).
+    client_template_confirm: Option<String>,
+    /// Which named client template the Menu card is showing (first if empty).
+    client_template_id: String,
     /// Menu screen: the list's search ("Find in your menu").
     menu_list_filter: String,
     /// Menu screen: list only the dishes still at no price (the template

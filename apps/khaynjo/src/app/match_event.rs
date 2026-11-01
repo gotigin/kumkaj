@@ -284,29 +284,29 @@ impl MatchEvent for App {
                     {
                         if let Some(path) = paths.first() {
                             let parties = *id == live_id!(csv_parties_pick);
-                            let outcome = (|| -> Result<String, String> {
-                                let text = std::fs::read_to_string(path)
-                                    .map_err(|e| format!("Could not read the file: {e}"))?;
-                                let mut st = app_state().lock().unwrap();
+                            let job = (|| -> Result<(PathBuf, PathBuf, bool), String> {
+                                let st = app_state().lock().unwrap();
                                 st.require_server_role("Import from CSV")?;
-                                let store =
-                                    st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                                let (added, skipped, problems) = if parties {
-                                    store.import_parties_csv(&text)?
-                                } else {
-                                    store.import_items_csv(&text)?
-                                };
-                                st.reload_all()?;
-                                let mut msg = format!(
-                                    "Imported {added} new, skipped {skipped} (already there or unusable)"
-                                );
-                                if let Some(p) = problems.first() {
-                                    msg.push_str(&format!(" · first problem: {p}"));
-                                }
-                                Ok(msg)
+                                let db = st
+                                    .store
+                                    .as_ref()
+                                    .ok_or_else(|| "No store".to_string())?
+                                    .db_path()
+                                    .to_path_buf();
+                                Ok((db, path.clone(), parties))
                             })();
-                            match outcome {
-                                Ok(msg) => self.set_status(cx, msg),
+                            match job {
+                                Ok((db, path, parties)) => {
+                                    self.set_status(
+                                        cx,
+                                        if parties {
+                                            "Importing parties…"
+                                        } else {
+                                            "Importing items…"
+                                        },
+                                    );
+                                    csv_import_job(db, path, parties);
+                                }
                                 Err(e) => self.set_status(cx, e),
                             }
                             self.sync_chrome(cx);
@@ -2350,38 +2350,144 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(template_import)).clicked(actions) {
-            app_state().lock().unwrap().template_confirm = true;
+            {
+                let mut st = app_state().lock().unwrap();
+                st.template_confirm = true;
+                st.client_template_confirm = None;
+            }
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(template_no)).clicked(actions) {
-            app_state().lock().unwrap().template_confirm = false;
-            self.sync_chrome(cx);
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                request_books_job_cancel();
+                self.paint_import_progress_chrome(cx);
+            } else {
+                app_state().lock().unwrap().template_confirm = false;
+                self.sync_chrome(cx);
+            }
         }
         if self.ui.button(cx, ids!(template_yes)).clicked(actions) {
-            let result = (|| -> Result<String, String> {
-                let mut st = app_state().lock().unwrap();
-                st.template_confirm = false;
-                st.require_server_role("Import the menu template")?;
-                let actor = st.actor()?;
-                if !actor.role.can_manage_menu() {
-                    return Err("Not allowed to manage items".into());
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Progress button — ignore re-taps while the worker runs.
+            } else {
+                let job = (|| -> Result<PathBuf, String> {
+                    let st = app_state().lock().unwrap();
+                    st.require_server_role("Import the menu template")?;
+                    let actor = st.actor()?;
+                    if !actor.role.can_manage_menu() {
+                        return Err("Not allowed to manage items".into());
+                    }
+                    Ok(st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .db_path()
+                        .to_path_buf())
+                })();
+                match job {
+                    Ok(db) => {
+                        app_state().lock().unwrap().template_confirm = true;
+                        menu_import_job(db, MenuImportKind::Shelf);
+                        // Progress only — full sync_chrome would hit SQLite while the worker writes.
+                        self.paint_import_progress_chrome(cx);
+                    }
+                    Err(e) => {
+                        app_state().lock().unwrap().template_confirm = false;
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                    }
                 }
-                let done = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .import_catalogue(menu_images::shelf())?;
-                st.reload_all()?;
-                Ok(st
-                    .t("template_imported")
-                    .replace("{d}", &done.items_added.to_string())
-                    .replace("{c}", &done.categories_added.to_string()))
-            })();
-            match result {
-                Ok(msg) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
+            }
+        }
+        // Named client templates (assets/templates/<id>/).
+        {
+            let named = menu_templates::all();
+            let chip_slots = [
+                (ids!(client_tmpl_0), ids!(client_tmpl_0_on)),
+                (ids!(client_tmpl_1), ids!(client_tmpl_1_on)),
+                (ids!(client_tmpl_2), ids!(client_tmpl_2_on)),
+            ];
+            for (i, (idle, on)) in chip_slots.iter().enumerate() {
+                if named.get(i).is_some()
+                    && self.choice_chip_clicked(cx, actions, *idle, *on)
+                {
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        st.client_template_id = named[i].id.clone();
+                        st.client_template_confirm = None;
+                        st.template_confirm = false;
+                    }
+                    self.sync_chrome(cx);
+                    break;
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(client_template_import)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                let id = st.client_template_id.clone();
+                if !id.is_empty() {
+                    st.client_template_confirm = Some(id);
+                    st.template_confirm = false;
+                }
             }
             self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(client_template_no)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                request_books_job_cancel();
+                self.paint_import_progress_chrome(cx);
+            } else {
+                app_state().lock().unwrap().client_template_confirm = None;
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(client_template_yes)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Progress button — ignore re-taps while the worker runs.
+            } else {
+                let job = (|| -> Result<(PathBuf, String, String), String> {
+                    let st = app_state().lock().unwrap();
+                    let id = st
+                        .client_template_confirm
+                        .clone()
+                        .unwrap_or_else(|| st.client_template_id.clone());
+                    if id.is_empty() {
+                        return Err("Pick a client menu first".into());
+                    }
+                    st.require_server_role("Import a menu template")?;
+                    let actor = st.actor()?;
+                    if !actor.role.can_manage_menu() {
+                        return Err("Not allowed to manage items".into());
+                    }
+                    let tmpl = menu_templates::find(&id)
+                        .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
+                    let db = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .db_path()
+                        .to_path_buf();
+                    Ok((db, tmpl.id.clone(), tmpl.title.clone()))
+                })();
+                match job {
+                    Ok((db, id, title)) => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            st.client_template_confirm = Some(id.clone());
+                            st.template_confirm = false;
+                        }
+                        menu_import_job(db, MenuImportKind::Client { id, title });
+                        // Progress only — do not sync_chrome (SQLite) while the worker runs.
+                        self.paint_import_progress_chrome(cx);
+                    }
+                    Err(e) => {
+                        app_state().lock().unwrap().client_template_confirm = None;
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                    }
+                }
+            }
         }
         if self.ui.button(cx, ids!(table_pick_btn)).clicked(actions) {
             self.pick_table_for_order(cx);
@@ -4589,21 +4695,6 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.choice_chip_clicked(cx, actions, ids!(onboard_template), ids!(onboard_template_on)) {
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                Self::ensure_default_template(&mut st)?;
-                st.onboard_step = 3;
-                st.status = st.t("template_info")
-                    .replace("{c}", &menu_images::shelf_folders(menu_images::shelf()).len().to_string())
-                    .replace("{d}", &menu_images::shelf().len().to_string());
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            }
-            self.sync_chrome(cx);
-        }
         if self.choice_chip_clicked(cx, actions, ids!(onboard_book), ids!(onboard_book_on)) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
@@ -4682,33 +4773,13 @@ impl MatchEvent for App {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 Self::ensure_default_template(&mut st)?;
-                // Chose the template: bring in every category and dish now.
-                let imported = if st.onboard_step == 3 {
-                    Some(
-                        st.store
-                            .as_ref()
-                            .ok_or_else(|| "No store".to_string())?
-                            .import_catalogue(menu_images::shelf())?,
-                    )
-                } else {
-                    None
-                };
+                // Menu catalogues import later on Menu (shelf / client
+                // templates) — not during setup. Setup templates later =
+                // whole shop face, not a dish dump.
                 st.store.as_ref().ok_or_else(|| "No store".to_string())?.complete_onboarding()?;
                 st.onboarding_complete = true;
                 st.screen = unlocked_home();
-                st.status = match imported {
-                    Some(done) => st
-                        .t("template_imported")
-                        .replace("{d}", &done.items_added.to_string())
-                        .replace("{c}", &done.categories_added.to_string()),
-                    None => "Shop ready — your books are open".into(),
-                };
-                if imported.is_some() {
-                    // Peer land on Items (prices) — not a drill-down from Onboard.
-                    st.nav_back.clear();
-                    st.nav_forward.clear();
-                    st.screen = Screen::Menu;
-                }
+                st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();
                 let _ = st.refresh_books_overview();
                 Ok(())
@@ -4717,20 +4788,33 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
 
+        if self.ui.button(cx, ids!(client_find_cancel)).clicked(actions) {
+            net::cancel_discover_servers();
+            client_find_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+            self.paint_submit_busy_chrome(cx);
+        }
         if self.ui.button(cx, ids!(client_find_btn)).clicked(actions) {
-            let looking = app_state().lock().unwrap().t("finding_server");
-            self.ui
-                .widget(cx, ids!(client_found_label))
-                .set_text(cx, &plain_display_text(&looking));
-            self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, true);
-            self.set_report_rows(cx, ids!(client_found_list), Vec::new());
-            let _ = std::thread::Builder::new()
-                .name("khaynjo-find-server".into())
-                .spawn(|| {
-                    let found = net::discover_servers(std::time::Duration::from_millis(3000));
-                    *discovery_result().lock().unwrap() = Some(found);
-                    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-                });
+            if client_find_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Looking… — ignore re-taps.
+            } else {
+                client_find_busy().store(true, std::sync::atomic::Ordering::SeqCst);
+                client_find_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+                let looking = app_state().lock().unwrap().t("finding_server");
+                self.ui
+                    .widget(cx, ids!(client_found_label))
+                    .set_text(cx, &plain_display_text(&looking));
+                self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, true);
+                self.set_report_rows(cx, ids!(client_found_list), Vec::new());
+                self.paint_submit_busy_chrome(cx);
+                let _ = std::thread::Builder::new()
+                    .name("khaynjo-find-server".into())
+                    .spawn(|| {
+                        let found = net::discover_servers(std::time::Duration::from_millis(3000));
+                        *discovery_result().lock().unwrap() = Some(found);
+                        client_find_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+                    });
+            }
         }
         if self.ui.button(cx, ids!(bill_format_save)).clicked(actions) {
             let header = self.ui.text_input(cx, ids!(bill_header_input)).text();
@@ -4803,22 +4887,32 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(aggregator_import_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
+        }
         if self.ui.button(cx, ids!(aggregator_import_btn)).clicked(actions) {
-            let result = (|| -> Result<String, String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Import aggregator orders")?;
-                let n = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .import_aggregator_orders_drop_file()?;
-                Ok(format!("Imported {n} aggregator order(s) into the inbox"))
-            })();
-            match result {
-                Ok(msg) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
+            if aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Progress — ignore re-taps.
+            } else {
+                let job = (|| -> Result<PathBuf, String> {
+                    let st = app_state().lock().unwrap();
+                    st.require_server_role("Import aggregator orders")?;
+                    Ok(st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .db_path()
+                        .to_path_buf())
+                })();
+                match job {
+                    Ok(db) => {
+                        aggregator_import_job(db);
+                        self.paint_submit_busy_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(scheme_add)).clicked(actions) {
             let text = self.ui.text_input(cx, ids!(scheme_bogo_input)).text();
@@ -5918,57 +6012,85 @@ impl MatchEvent for App {
             self.pick_onboard_icon(cx);
         }
 
+        if self.ui.button(cx, ids!(find_printers_cancel)).clicked(actions) {
+            print_share::cancel_find_printers();
+            self.paint_submit_busy_chrome(cx);
+        }
         if self.ui.button(cx, ids!(find_printers_btn)).clicked(actions) {
-            print_share::find_printers_in_background();
-            self.sync_chrome(cx);
+            if print_share::is_finding_printers() {
+                // Looking… — ignore re-taps.
+            } else {
+                print_share::find_printers_in_background();
+                self.paint_submit_busy_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(printer_add_cancel)).clicked(actions) {
+            printer_add_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+            self.paint_submit_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
-            let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
-            let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-            let saved = {
-                let mut st = app_state().lock().unwrap();
-                let wire = st.printer_add_wire;
-                st.printer_draft.add_printer(&label, &target, wire);
-                // Persist immediately — "Add" without Save used to leave
-                // printers.json empty while the UI looked configured.
-                st.data_base
-                    .as_ref()
-                    .and_then(|base| {
-                        print_share::save_device_printers(base, &st.printer_draft).ok()
-                    })
-                    .is_some()
-            };
-            self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
-            self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
-            if saved {
-                self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+            if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Saving… — ignore re-taps.
+            } else {
+                let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
+                let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
+                let job = {
+                    let mut st = app_state().lock().unwrap();
+                    st.printer_draft.add_printer(&label, &target);
+                    st.data_base
+                        .as_ref()
+                        .map(|base| (base.clone(), st.printer_draft.clone()))
+                };
+                if let Some((base, draft)) = job {
+                    self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
+                    self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+                    printer_add_job(base, draft);
+                    self.paint_submit_busy_chrome(cx);
+                }
             }
-            self.sync_chrome(cx);
         }
-        for (want, idle, active) in [
+        // Format chips apply to the focused print route (not the printer).
+        for (format_id, idle, active) in [
             (
-                print_share::PrinterWire::EscPos,
+                print_share::FORMAT_KOT,
                 ids!(printer_wire_escpos),
                 ids!(printer_wire_escpos_on),
             ),
             (
-                print_share::PrinterWire::OsDocument,
+                print_share::FORMAT_STANDARD,
                 ids!(printer_wire_os),
                 ids!(printer_wire_os_on),
             ),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, active) {
                 let mut st = app_state().lock().unwrap();
-                st.printer_add_wire = want;
-                if let Some(id) = st.printer_selected_id.clone() {
-                    st.printer_draft.set_wire(&id, want);
-                    if let Some(base) = st.data_base.as_ref() {
-                        let _ = print_share::save_device_printers(base, &st.printer_draft);
-                    }
+                let key_str = resolve_printer_route_key(&st.printer_route_key, &st.stations, |k| {
+                    st.t(k)
+                });
+                let key = printer_route_key_as_route(&key_str);
+                st.printer_draft.set_route_format(key, format_id);
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
                 }
                 drop(st);
                 self.sync_chrome(cx);
             }
+        }
+        if self.ui.button(cx, ids!(printer_format_custom)).clicked(actions) {
+            let mut st = app_state().lock().unwrap();
+            let key_str = resolve_printer_route_key(&st.printer_route_key, &st.stations, |k| st.t(k));
+            let key = printer_route_key_as_route(&key_str);
+            let from = st.printer_draft.format_id_for(key);
+            let custom_label = st.t("printer_format_custom_label");
+            let id = st.printer_draft.add_format_from(&from, &custom_label);
+            st.printer_draft.set_route_format(key, &id);
+            if let Some(base) = st.data_base.as_ref() {
+                let _ = print_share::save_device_printers(base, &st.printer_draft);
+            }
+            let msg = st.t("printer_format_custom_added");
+            drop(st);
+            self.set_status(cx, msg);
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
             {
@@ -6038,7 +6160,6 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
                     st.printer_selected_id = Some(p.id.clone());
-                    st.printer_add_wire = print_share::effective_wire(&p);
                     drop(st);
                     self.ui
                         .text_input(cx, ids!(printer_label_input))
@@ -6223,21 +6344,43 @@ impl MatchEvent for App {
             }
         }
 
+        if self.ui.button(cx, ids!(backup_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
+        }
         if self.ui.button(cx, ids!(backup_btn)).clicked(actions) {
-            // VACUUM INTO can take seconds on a busy shop — never block the UI.
-            let job = (|| -> Result<(PathBuf, PathBuf), String> {
-                let st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let dest = default_backup_path()?;
-                Ok((store.db_path().to_path_buf(), dest))
-            })();
-            match job {
-                Ok((db, dest)) => {
-                    self.set_status(cx, "Creating backup…");
-                    backup_job(db, dest);
+            if backup_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Creating… — ignore re-taps.
+            } else {
+                // VACUUM INTO can take seconds on a busy shop — never block the UI.
+                let job = (|| -> Result<(PathBuf, PathBuf), String> {
+                    let st = app_state().lock().unwrap();
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let dest = default_backup_path()?;
+                    Ok((store.db_path().to_path_buf(), dest))
+                })();
+                match job {
+                    Ok((db, dest)) => {
+                        self.set_status(cx, "Creating backup…");
+                        backup_job(db, dest);
+                        self.paint_submit_busy_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
                 }
-                Err(e) => self.set_status(cx, e),
             }
+        }
+
+        if self.ui.button(cx, ids!(restore_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(backup_copy_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(csv_import_cancel)).clicked(actions) {
+            request_books_job_cancel();
+            self.paint_submit_busy_chrome(cx);
         }
 
         if self.ui.button(cx, ids!(restore_btn)).clicked(actions) {

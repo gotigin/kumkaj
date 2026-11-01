@@ -1,0 +1,1056 @@
+{
+  "id": "rajdhani",
+  "title": "Rajdhani",
+  "blurb": "Non-veg caterers menu — Gujarati names, English aliases, listed prices, photos.",
+  "categories": [
+    {
+      "name": "ચીકન રોસ્ટેડ",
+      "aliases": [
+        "Chicken Roasted"
+      ],
+      "image": "shelf:indo-chinese/chicken-65.webp",
+      "items": [
+        {
+          "name": "ચીકન તંદુરી સીના",
+          "aliases": [
+            "Chicken Tandoori Seena"
+          ],
+          "price": 160,
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
+        },
+        {
+          "name": "ચીકન તંદુરી (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken Tandoori (Red-Green-Golden)"
+          ],
+          "price": 150,
+          "image": "shelf:thai-asian/chicken-satay.webp"
+        },
+        {
+          "name": "ચીકન વિન્ટર તંદુરી (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken Winter Tandoori (Red-Green-Golden)"
+          ],
+          "price": 250,
+          "image": "shelf:thai-asian/chicken-adobo.webp"
+        },
+        {
+          "name": "ચીકન સેજવાન તંદુરી",
+          "aliases": [
+            "Chicken Schezwan Tandoori"
+          ],
+          "price": 250,
+          "image": "shelf:street-food-chaat/chicken-momos.webp"
+        },
+        {
+          "name": "ચીકન B.B.Q. તંદુરી (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken B.B.Q. Tandoori (Red-Green-Golden)"
+          ],
+          "price": 250,
+          "image": "shelf:soups-salads/chicken-soup.webp"
+        },
+        {
+          "name": "ચીકન સ્પેશ્યલ તંદુરી (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken Special Tandoori (Red-Green-Golden)"
+          ],
+          "price": 250,
+          "image": "shelf:soups-salads/chicken-salad.webp"
+        },
+        {
+          "name": "ચીકન તવા ટીક્કા (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken Tawa Tikka (Red-Green-Golden)"
+          ],
+          "price": 280,
+          "image": "shelf:indian-mains/chicken-tikka.webp"
+        },
+        {
+          "name": "ચીકન મલાઈ ટીક્કા",
+          "aliases": [
+            "Chicken Malai Tikka"
+          ],
+          "price": 320,
+          "image": "shelf:indian-mains/chicken-malai-tikka.webp"
+        },
+        {
+          "name": "ચીકન જાફરાની ટીક્કા",
+          "aliases": [
+            "Chicken Jafrani Tikka"
+          ],
+          "price": 400,
+          "image": "shelf:pizza-pasta/chicken-tikka-pizza.webp"
+        },
+        {
+          "name": "ચીકન સેજવાન ટીક્કા",
+          "aliases": [
+            "Chicken Schezwan Tikka"
+          ],
+          "price": 280,
+          "image": "shelf:indian-mains/chicken-tikka-masala.webp"
+        },
+        {
+          "name": "ચીકન B.B.Q. ટીક્કા (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken B.B.Q. Tikka (Red-Green-Golden)"
+          ],
+          "price": 290,
+          "image": "shelf:snacks/chicken-cutlet.webp"
+        },
+        {
+          "name": "ચીકન સીજલર ટીક્કા",
+          "aliases": [
+            "Chicken Sizzler Tikka"
+          ],
+          "price": 310,
+          "image": "shelf:continental/chicken-sizzler.webp"
+        },
+        {
+          "name": "સ્પે.ચીકન ટંગડી રેડ ૩ પીસ",
+          "aliases": [
+            "Spe. Chicken Tangdi Red 3 Piece"
+          ],
+          "price": 290,
+          "image": "shelf:pizza-pasta/chicken-parmesan.webp"
+        },
+        {
+          "name": "ચીકન વિન્ટર ટંગડી ૩ પીસ",
+          "aliases": [
+            "Chicken Winter Tangdi 3 Piece"
+          ],
+          "price": 290,
+          "image": "shelf:middle-eastern/chicken-tagine.webp"
+        },
+        {
+          "name": "ચીકન B.B.Q. ટંગડી ૩ પીસ",
+          "aliases": [
+            "Chicken B.B.Q. Tangdi 3 Piece"
+          ],
+          "price": 310,
+          "image": "shelf:middle-eastern/chicken-mandi.webp"
+        },
+        {
+          "name": "ચીકન સેજવાન ટંગડી ૩ પીસ",
+          "aliases": [
+            "Chicken Schezwan Tangdi 3 Piece"
+          ],
+          "price": 290,
+          "image": "shelf:mexican/chicken-quesadilla.webp"
+        },
+        {
+          "name": "ચીકન પઠાણી",
+          "aliases": [
+            "Chicken Pathani"
+          ],
+          "price": 280,
+          "image": "shelf:japanese/teriyaki-chicken.webp"
+        },
+        {
+          "name": "ચીકન લોલીપોપ",
+          "aliases": [
+            "Chicken Lollipop"
+          ],
+          "price": 290,
+          "image": "shelf:indo-chinese/chicken-lollipop.webp"
+        },
+        {
+          "name": "ચીકન ચીલ્લી ફ્રાય",
+          "aliases": [
+            "Chicken Chilli Fry"
+          ],
+          "price": 280,
+          "image": "shelf:indo-chinese/chilli-chicken.webp"
+        },
+        {
+          "name": "ચીકન પેરી પેરી ટીક્કા",
+          "aliases": [
+            "Chicken Peri Peri Tikka"
+          ],
+          "price": 290,
+          "image": "shelf:japanese/chicken-katsu.webp"
+        },
+        {
+          "name": "ચીઝ + બટર તંદુરી",
+          "aliases": [
+            "Cheese + Butter Tandoori"
+          ],
+          "price": 200,
+          "image": "shelf:street-food-chaat/tandoori-momos.webp"
+        }
+      ]
+    },
+    {
+      "name": "ચીકન ગ્રેવી",
+      "aliases": [
+        "Chicken Gravy"
+      ],
+      "image": "shelf:japanese/chicken-karaage.webp",
+      "items": [
+        {
+          "name": "ચીકન મસાલા",
+          "aliases": [
+            "Chicken Masala"
+          ],
+          "price": 150,
+          "image": "shelf:indo-chinese/dragon-chicken.webp"
+        },
+        {
+          "name": "ચીકન મસાલા ગ્રીન",
+          "aliases": [
+            "Chicken Masala Green"
+          ],
+          "price": 280,
+          "image": "shelf:indo-chinese/chicken-manchurian.webp"
+        },
+        {
+          "name": "ચીકન તવા કોરમા",
+          "aliases": [
+            "Chicken Tawa Korma"
+          ],
+          "price": 380,
+          "image": "shelf:indian-mains/chicken-korma.webp"
+        },
+        {
+          "name": "ચીકન બોનલેસ",
+          "aliases": [
+            "Chicken Boneless"
+          ],
+          "price": 140,
+          "image": "shelf:indian-rice/chicken-biryani.webp"
+        },
+        {
+          "name": "ચીકન ટીક્કા મસાલા (રેડ-ગ્રીન)",
+          "aliases": [
+            "Chicken Tikka Masala (Red-Green)"
+          ],
+          "price": 300,
+          "image": "shelf:indian-mains/kolhapuri-chicken.webp"
+        },
+        {
+          "name": "ચીકન તવા મસાલા (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Chicken Tawa Masala (Red-Green-Golden)"
+          ],
+          "price": 280,
+          "image": "shelf:indian-mains/kadai-chicken.webp"
+        },
+        {
+          "name": "ચીકન અંગારા",
+          "aliases": [
+            "Chicken Angara"
+          ],
+          "price": 320,
+          "image": "shelf:indian-mains/chicken-xacuti.webp"
+        },
+        {
+          "name": "ચીકન ટંગડી મસાલા",
+          "aliases": [
+            "Chicken Tangdi Masala"
+          ],
+          "price": 340,
+          "image": "shelf:indian-mains/chicken-vindaloo.webp"
+        },
+        {
+          "name": "ચીકન તંદુરી મસાલા (રેડ-ગ્રીન)",
+          "aliases": [
+            "Chicken Tandoori Masala (Red-Green)"
+          ],
+          "price": 280,
+          "image": "shelf:indian-mains/chicken-saag.webp"
+        },
+        {
+          "name": "ચીકન લાઈવ મસાલા",
+          "aliases": [
+            "Chicken Live Masala"
+          ],
+          "price": 270,
+          "image": "shelf:indian-mains/chicken-curry.webp"
+        },
+        {
+          "name": "ચીકન મોગલાઈ મસાલા",
+          "aliases": [
+            "Chicken Moglai Masala"
+          ],
+          "price": 480,
+          "image": "shelf:indian-mains/chicken-chettinad.webp"
+        },
+        {
+          "name": "ચીકન તવા ચીલ્લી",
+          "aliases": [
+            "Chicken Tawa Chilli"
+          ],
+          "price": 290,
+          "image": "shelf:indian-mains/chicken-changezi.webp"
+        },
+        {
+          "name": "ચીકન ગ્રેવી લોલીપોપ",
+          "aliases": [
+            "Chicken Gravy Lollipop"
+          ],
+          "price": 390,
+          "image": "shelf:indian-mains/butter-chicken.webp"
+        }
+      ]
+    },
+    {
+      "name": "ચીકન ફ્રાય",
+      "aliases": [
+        "Chicken Fry"
+      ],
+      "image": "shelf:fast-food/popcorn-chicken.webp",
+      "items": [
+        {
+          "name": "ચીકન દાના (રેડ-ગ્રીન-વ્હાઈટ)",
+          "aliases": [
+            "Chicken Dana (Red-Green-White)"
+          ],
+          "price": 190,
+          "image": "shelf:fast-food/fried-chicken.webp"
+        },
+        {
+          "name": "ચીકન 65",
+          "aliases": [
+            "Chicken 65"
+          ],
+          "price": 280,
+          "image": "shelf:fast-food/chicken-wrap.webp"
+        },
+        {
+          "name": "ચીકન કરંચી",
+          "aliases": [
+            "Chicken Crunchy"
+          ],
+          "price": 290,
+          "image": "shelf:fast-food/chicken-strips.webp"
+        }
+      ]
+    },
+    {
+      "name": "મટન રોસ્ટેડ",
+      "aliases": [
+        "Mutton Roasted"
+      ],
+      "image": "shelf:indian-rice/mutton-biryani.webp",
+      "items": [
+        {
+          "name": "મટન રાન રોસ્ટેડ",
+          "aliases": [
+            "Mutton Raan Roasted"
+          ],
+          "price": 1400,
+          "image": "shelf:indian-mains/mutton-curry.webp"
+        },
+        {
+          "name": "મટન B.B.Q. રાન",
+          "aliases": [
+            "Mutton B.B.Q. Raan"
+          ],
+          "price": 1800,
+          "image": "shelf:south-indian/chettinad-mutton-curry.webp"
+        },
+        {
+          "name": "મટન તવા રાન",
+          "aliases": [
+            "Mutton Tawa Raan"
+          ],
+          "price": 1900,
+          "image": "shelf:indian-mains/mutton-rogan-josh.webp"
+        },
+        {
+          "name": "મટન ચાપ રોસ્ટેડ",
+          "aliases": [
+            "Mutton Chaap Roasted"
+          ],
+          "price": 650,
+          "image": "shelf:continental/rack-of-lamb.webp"
+        },
+        {
+          "name": "મટન B.B.Q. રોસ્ટેડ (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Mutton B.B.Q. Roasted (Red-Green-Golden)"
+          ],
+          "price": 700,
+          "image": "shelf:continental/lamb-chops.webp"
+        },
+        {
+          "name": "મટન ફ્રાય રોસ્ટેડ (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Mutton Fry Roasted (Red-Green-Golden)"
+          ],
+          "price": 650,
+          "image": "shelf:japanese/ebi-fry.webp"
+        },
+        {
+          "name": "મટન સેજવાન",
+          "aliases": [
+            "Mutton Schezwan"
+          ],
+          "price": 700,
+          "image": "shelf:indo-chinese/schezwan-noodles.webp"
+        },
+        {
+          "name": "મટન તવા રોસ્ટેડ (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Mutton Tawa Roasted (Red-Green-Golden)"
+          ],
+          "price": 700,
+          "image": "shelf:indian-rice/tawa-pulao.webp"
+        },
+        {
+          "name": "મટન ડ્રાય ચોકી",
+          "aliases": [
+            "Mutton Dry Choki"
+          ],
+          "price": 1600,
+          "image": "shelf:middle-eastern/shish-kebab.webp"
+        }
+      ]
+    },
+    {
+      "name": "મટન ગ્રેવી",
+      "aliases": [
+        "Mutton Gravy"
+      ],
+      "image": "shelf:sides-dips/gravy.webp",
+      "items": [
+        {
+          "name": "મટન રાન કોરમા મસાલા",
+          "aliases": [
+            "Mutton Raan Korma Masala"
+          ],
+          "price": 1900,
+          "image": "shelf:south-indian/masala-vada.webp"
+        },
+        {
+          "name": "મટન તવા રાન મસાલા",
+          "aliases": [
+            "Mutton Tawa Raan Masala"
+          ],
+          "price": 1900,
+          "image": "shelf:south-indian/masala-dosa.webp"
+        },
+        {
+          "name": "મટન તવા ફ્રાય મસાલા (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Mutton Tawa Fry Masala (Red-Green-Golden)"
+          ],
+          "price": 750,
+          "image": "shelf:snacks/masala-peanuts.webp"
+        },
+        {
+          "name": "મટન તવા કોરમા (રેડ-ગ્રીન)",
+          "aliases": [
+            "Mutton Tawa Korma (Red-Green)"
+          ],
+          "price": 770,
+          "image": "shelf:indian-mains/navratan-korma.webp"
+        },
+        {
+          "name": "મટન ટીક્કા મસાલા બોટા (રેડ-ગ્રીન)",
+          "aliases": [
+            "Mutton Tikka Masala Bota (Red-Green)"
+          ],
+          "price": 770,
+          "image": "shelf:snacks/masala-papad.webp"
+        },
+        {
+          "name": "મટન મસાલા",
+          "aliases": [
+            "Mutton Masala"
+          ],
+          "price": 290,
+          "image": "shelf:indian-mains/rajma-masala.webp"
+        },
+        {
+          "name": "મટન કોરમા મસાલા",
+          "aliases": [
+            "Mutton Korma Masala"
+          ],
+          "price": 320,
+          "image": "shelf:indian-mains/mushroom-masala.webp"
+        },
+        {
+          "name": "મટન ભુના મસાલા",
+          "aliases": [
+            "Mutton Bhuna Masala"
+          ],
+          "price": 320,
+          "image": "shelf:indian-mains/chana-masala.webp"
+        },
+        {
+          "name": "મટન અંગારા",
+          "aliases": [
+            "Mutton Angara"
+          ],
+          "price": 390,
+          "image": "shelf:thai-asian/tteokbokki.webp"
+        },
+        {
+          "name": "મટન ગ્રીન મસાલા",
+          "aliases": [
+            "Mutton Green Masala"
+          ],
+          "price": 390,
+          "image": "shelf:indian-mains/bhindi-masala.webp"
+        },
+        {
+          "name": "મટન કલેજી ફ્રાય (રેડ-ગ્રીન)",
+          "aliases": [
+            "Mutton Kaleji Fry (Red-Green)"
+          ],
+          "price": 350,
+          "image": "shelf:south-indian/kerala-beef-fry.webp"
+        },
+        {
+          "name": "મટન ભેજા ફ્રાય (રેડ-ગ્રીન)",
+          "aliases": [
+            "Mutton Bheja Fry (Red-Green)"
+          ],
+          "price": 350,
+          "image": "shelf:chinese/chinese-stir-fry-vegetables.webp"
+        },
+        {
+          "name": "મટન કીમો ફ્રાય (રેડ-ગ્રીન)",
+          "aliases": [
+            "Mutton Keema Fry (Red-Green)"
+          ],
+          "price": 350,
+          "image": "shelf:street-food-chaat/keema-pav.webp"
+        },
+        {
+          "name": "મટન ચોકી",
+          "aliases": [
+            "Mutton Choki"
+          ],
+          "price": 1800,
+          "image": "shelf:middle-eastern/kofta-kebab.webp"
+        }
+      ]
+    },
+    {
+      "name": "ફીશ & પ્રાઉન્સ",
+      "aliases": [
+        "Fish & Prawns"
+      ],
+      "image": "shelf:snacks/fish-fry.webp",
+      "items": [
+        {
+          "name": "પાપલેટ ફ્રાય",
+          "aliases": [
+            "Paplet Fry"
+          ],
+          "price": 0,
+          "image": "shelf:mexican/fish-tacos.webp"
+        },
+        {
+          "name": "પાપલેટ રોસ્ટેડ",
+          "aliases": [
+            "Paplet Roasted"
+          ],
+          "price": 0,
+          "image": "shelf:indian-mains/fish-tikka.webp"
+        },
+        {
+          "name": "ફીશ મસાલા (રેડ-ગ્રીન)",
+          "aliases": [
+            "Fish Masala (Red-Green)"
+          ],
+          "price": 270,
+          "image": "shelf:indian-mains/amritsari-fish.webp"
+        },
+        {
+          "name": "જીંગા મસાલા",
+          "aliases": [
+            "Jinga Masala"
+          ],
+          "price": 380,
+          "image": "shelf:indian-rice/prawn-biryani.webp"
+        },
+        {
+          "name": "ફીશ ફ્રાય ગ્રેવી (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Fish Fry Gravy (Red-Green-Golden)"
+          ],
+          "price": 360,
+          "image": "shelf:fast-food/fish-burger.webp"
+        },
+        {
+          "name": "જીંગા ફ્રાય ગ્રેવી",
+          "aliases": [
+            "Jinga Fry Gravy"
+          ],
+          "price": 400,
+          "image": "shelf:indian-mains/prawn-curry.webp"
+        },
+        {
+          "name": "ફીશ લાઈવ મસાલા",
+          "aliases": [
+            "Fish Live Masala"
+          ],
+          "price": 360,
+          "image": "shelf:fast-food/fish-and-chips.webp"
+        },
+        {
+          "name": "જીંગા લાઈવ મસાલા",
+          "aliases": [
+            "Jinga Live Masala"
+          ],
+          "price": 430,
+          "image": "shelf:soups-salads/tom-yum-prawn-soup.webp"
+        },
+        {
+          "name": "રોસ્ટેડ ફીશ",
+          "aliases": [
+            "Roasted Fish"
+          ],
+          "price": 400,
+          "image": "shelf:continental/grilled-fish.webp"
+        },
+        {
+          "name": "જીંગા રોસ્ટેડ",
+          "aliases": [
+            "Jinga Roasted"
+          ],
+          "price": 400,
+          "image": "shelf:continental/shrimp-scampi.webp"
+        },
+        {
+          "name": "ફ્રાય ફીશ",
+          "aliases": [
+            "Fry Fish"
+          ],
+          "price": 280,
+          "image": "shelf:continental/fish-pie.webp"
+        },
+        {
+          "name": "ફ્રાય જીંગા",
+          "aliases": [
+            "Fry Jinga"
+          ],
+          "price": 380,
+          "image": "shelf:thai-asian/tom-yum-soup.webp"
+        }
+      ]
+    },
+    {
+      "name": "રોટી-પાવ-પાપડ",
+      "aliases": [
+        "Roti-Pav-Papad"
+      ],
+      "image": "shelf:thai-asian/roti-canai.webp",
+      "items": [
+        {
+          "name": "પ્લેન રોટી",
+          "aliases": [
+            "Plain Roti"
+          ],
+          "price": 10,
+          "image": "shelf:thai-asian/kottu-roti.webp"
+        },
+        {
+          "name": "બટર રોટી",
+          "aliases": [
+            "Butter Roti"
+          ],
+          "price": 20,
+          "image": "shelf:street-food-chaat/baida-roti.webp"
+        },
+        {
+          "name": "પ્લેન પાવ",
+          "aliases": [
+            "Plain Pav"
+          ],
+          "price": 10,
+          "image": "shelf:bakery-cafe/pav-bun.webp"
+        },
+        {
+          "name": "બટર પાવ",
+          "aliases": [
+            "Butter Pav"
+          ],
+          "price": 20,
+          "image": "shelf:indian-breads/butter-naan.webp"
+        },
+        {
+          "name": "ફ્રાય પાપડ",
+          "aliases": [
+            "Fry Papad"
+          ],
+          "price": 30,
+          "image": "shelf:indian-mains/dal-fry.webp"
+        },
+        {
+          "name": "રોસ્ટેડ પાપડ",
+          "aliases": [
+            "Roasted Papad"
+          ],
+          "price": 30,
+          "image": "shelf:thai-asian/tom-kha-gai.webp"
+        },
+        {
+          "name": "છાશ",
+          "aliases": [
+            "Chaas"
+          ],
+          "price": 30,
+          "image": "shelf:cold-beverages/masala-chaas.webp"
+        }
+      ]
+    },
+    {
+      "name": "એગ્ઝ",
+      "aliases": [
+        "Eggs"
+      ],
+      "image": "shelf:chinese/tea-eggs.webp",
+      "items": [
+        {
+          "name": "ઈંડા કળી (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Kali (Red-Green)"
+          ],
+          "price": 80,
+          "image": "shelf:indian-mains/egg-curry.webp"
+        },
+        {
+          "name": "ઈંડા કીમો (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Keema (Red-Green)"
+          ],
+          "price": 80,
+          "image": "shelf:street-food-chaat/egg-roll.webp"
+        },
+        {
+          "name": "લાઈવ કળી",
+          "aliases": [
+            "Live Kali"
+          ],
+          "price": 100,
+          "image": "shelf:thai-asian/thai-red-curry.webp"
+        },
+        {
+          "name": "લાઈવ કીમો",
+          "aliases": [
+            "Live Keema"
+          ],
+          "price": 100,
+          "image": "shelf:indian-mains/keema-matar.webp"
+        },
+        {
+          "name": "ઈંડા મીકચર ૫ નંગ (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Mixture 5 Number (Red-Green)"
+          ],
+          "price": 280,
+          "image": "shelf:soups-salads/egg-salad.webp"
+        },
+        {
+          "name": "ઈંડા મસાલા બોઈલ ફ્રાય ૪ નંગ (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Masala Boil Fry 4 Number (Red-Green)"
+          ],
+          "price": 220,
+          "image": "shelf:breakfast/masala-omelette.webp"
+        },
+        {
+          "name": "ઈંડા ગોટાળો ૧૦ નંગ (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Gotalo 10 Number (Red-Green)"
+          ],
+          "price": 460,
+          "image": "shelf:indian-mains/egg-bhurji.webp"
+        },
+        {
+          "name": "ઈંડા મોગલાઈ ૮ નંગ (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Moglai 8 Number (Red-Green)"
+          ],
+          "price": 440,
+          "image": "shelf:indian-rice/egg-biryani.webp"
+        },
+        {
+          "name": "ઈંડા મોટી હંગામા ૧૦ નંગ (રેડ-ગ્રીન)",
+          "aliases": [
+            "Inda Moti Hangama 10 Number (Red-Green)"
+          ],
+          "price": 440,
+          "image": "shelf:breakfast/egg-bhurji-toast.webp"
+        },
+        {
+          "name": "મસાલા હાફ ફ્રાય ૨ નંગ",
+          "aliases": [
+            "Masala Half Fry 2 Number"
+          ],
+          "price": 140,
+          "image": "shelf:breakfast/fried-egg.webp"
+        },
+        {
+          "name": "હાફ ફ્રાય સીમ્પલ ૨ નંગ",
+          "aliases": [
+            "Half Fry Simple 2 Number"
+          ],
+          "price": 80,
+          "image": "shelf:indo-chinese/egg-fried-rice.webp"
+        },
+        {
+          "name": "સુરતી કળી (રેડ-ગ્રીન)",
+          "aliases": [
+            "Surati Kali (Red-Green)"
+          ],
+          "price": 90,
+          "image": "shelf:thai-asian/thai-green-curry.webp"
+        },
+        {
+          "name": "ઈંડા ભુરજી ૨ નંગ",
+          "aliases": [
+            "Inda Bhurji 2 Number"
+          ],
+          "price": 80,
+          "image": "shelf:hot-beverages/egg-coffee.webp"
+        },
+        {
+          "name": "ઈંડા ભુરજી ગ્રેવી ૨ નંગ",
+          "aliases": [
+            "Inda Bhurji Gravy 2 Number"
+          ],
+          "price": 160,
+          "image": "shelf:fast-food/egg-sandwich.webp"
+        },
+        {
+          "name": "આમલેટ ૨ નંગ",
+          "aliases": [
+            "Omlet 2 Number"
+          ],
+          "price": 80,
+          "image": "shelf:breakfast/omelette.webp"
+        },
+        {
+          "name": "સ્પેશ્યલ આમલેટ ૨ નંગ",
+          "aliases": [
+            "Special Omlet 2 Number"
+          ],
+          "price": 160,
+          "image": "shelf:continental/spanish-omelette.webp"
+        },
+        {
+          "name": "ઈંડા બોઈલ ૧ નંગ",
+          "aliases": [
+            "Inda Boil 1 Number"
+          ],
+          "price": 20,
+          "image": "shelf:continental/scotch-egg.webp"
+        },
+        {
+          "name": "ઈંડા સેજવાન પ નંગ",
+          "aliases": [
+            "Inda Schezwan 5 Number"
+          ],
+          "price": 260,
+          "image": "shelf:breakfast/poached-egg.webp"
+        },
+        {
+          "name": "ઈંડા તવા ટીક્કા પ નંગ (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Inda Tawa Tikka 5 Number (Red-Green-Golden)"
+          ],
+          "price": 270,
+          "image": "shelf:bakery-cafe/egg-tart.webp"
+        },
+        {
+          "name": "ઈંડા તવા ફ્રાય ચીઝ પ નંગ (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Inda Tawa Fry Cheese 5 Number (Red-Green-Golden)"
+          ],
+          "price": 290,
+          "image": "shelf:breakfast/cheese-omelette.webp"
+        },
+        {
+          "name": "ઈંડા B.B.Q. પ નંગ (રેડ-ગ્રીન-ગોલ્ડન)",
+          "aliases": [
+            "Inda B.B.Q. 5 Number (Red-Green-Golden)"
+          ],
+          "price": 270,
+          "image": "shelf:bakery-cafe/egg-puff.webp"
+        },
+        {
+          "name": "લસણીયા બોઈલ ૪ નંગ",
+          "aliases": [
+            "Lasaniya Boil 4 Number"
+          ],
+          "price": 180,
+          "image": "shelf:soups-salads/egg-drop-soup.webp"
+        },
+        {
+          "name": "ઈંડા બોઈલ ફ્રાય સાદા ૩ નંગ",
+          "aliases": [
+            "Inda Boil Fry Sada 3 Number"
+          ],
+          "price": 100,
+          "image": "shelf:chinese/egg-foo-young.webp"
+        }
+      ]
+    },
+    {
+      "name": "રાઈસ",
+      "aliases": [
+        "Rice"
+      ],
+      "image": "shelf:mexican/mexican-rice.webp",
+      "items": [
+        {
+          "name": "ચીકન બોમ્બે બીરીયાની",
+          "aliases": [
+            "Chicken Bombay Biryani"
+          ],
+          "price": 210,
+          "image": "shelf:fast-food/chicken-nuggets.webp"
+        },
+        {
+          "name": "ચીકન દમ બીરીયાની",
+          "aliases": [
+            "Chicken Dum Biryani"
+          ],
+          "price": 210,
+          "image": "shelf:fast-food/chicken-burger.webp"
+        },
+        {
+          "name": "ચીકન ટીક્કા બીરીયાની",
+          "aliases": [
+            "Chicken Tikka Biryani"
+          ],
+          "price": 260,
+          "image": "shelf:fast-food/chicken-bucket.webp"
+        },
+        {
+          "name": "ચીકન તંદુરી બીરીયાની",
+          "aliases": [
+            "Chicken Tandoori Biryani"
+          ],
+          "price": 330,
+          "image": "shelf:continental/roast-chicken.webp"
+        },
+        {
+          "name": "ચીકન તવા રાઈસ",
+          "aliases": [
+            "Chicken Tawa Rice"
+          ],
+          "price": 210,
+          "image": "shelf:indo-chinese/chicken-fried-rice.webp"
+        },
+        {
+          "name": "મટન તવા રાઈસ",
+          "aliases": [
+            "Mutton Tawa Rice"
+          ],
+          "price": 460,
+          "image": "shelf:thai-asian/thukpa.webp"
+        },
+        {
+          "name": "મટન ટીક્કા બીરીયાની",
+          "aliases": [
+            "Mutton Tikka Biryani"
+          ],
+          "price": 380,
+          "image": "shelf:indian-rice/thalassery-biryani.webp"
+        },
+        {
+          "name": "મટન બીરીયાની",
+          "aliases": [
+            "Mutton Biryani"
+          ],
+          "price": 340,
+          "image": "shelf:indian-rice/sindhi-biryani.webp"
+        },
+        {
+          "name": "ફીશ બીરીયાની",
+          "aliases": [
+            "Fish Biryani"
+          ],
+          "price": 250,
+          "image": "shelf:south-indian/kerala-fish-curry.webp"
+        },
+        {
+          "name": "જીંગા બીરીયાની",
+          "aliases": [
+            "Jinga Biryani"
+          ],
+          "price": 350,
+          "image": "shelf:indian-rice/lucknowi-biryani.webp"
+        },
+        {
+          "name": "ફીશ તવા રાઈસ",
+          "aliases": [
+            "Fish Tawa Rice"
+          ],
+          "price": 210,
+          "image": "shelf:indian-mains/goan-fish-curry.webp"
+        },
+        {
+          "name": "જીંગા તવા રાઈસ",
+          "aliases": [
+            "Jinga Tawa Rice"
+          ],
+          "price": 360,
+          "image": "shelf:thai-asian/thai-yellow-curry.webp"
+        },
+        {
+          "name": "ઈંડા બીરીયાની",
+          "aliases": [
+            "Inda Biryani"
+          ],
+          "price": 190,
+          "image": "shelf:breakfast/scrambled-eggs.webp"
+        },
+        {
+          "name": "ઈંડા તવા રાઈસ",
+          "aliases": [
+            "Inda Tawa Rice"
+          ],
+          "price": 190,
+          "image": "shelf:breakfast/eggs-florentine.webp"
+        },
+        {
+          "name": "ફ્રાય રાઈસ ગ્રેવી",
+          "aliases": [
+            "Fry Rice Gravy"
+          ],
+          "price": 130,
+          "image": "shelf:japanese/hayashi-rice.webp"
+        },
+        {
+          "name": "ચીકન ગ્રેવી રાઈસ",
+          "aliases": [
+            "Chicken Gravy Rice"
+          ],
+          "price": 170,
+          "image": "shelf:chinese/hainan-chicken-rice.webp"
+        },
+        {
+          "name": "ઈંડા ગ્રેવી રાઈસ",
+          "aliases": [
+            "Inda Gravy Rice"
+          ],
+          "price": 150,
+          "image": "shelf:breakfast/eggs-benedict.webp"
+        },
+        {
+          "name": "જીરા રાઈસ",
+          "aliases": [
+            "Jeera Rice"
+          ],
+          "price": 50,
+          "image": "shelf:indian-rice/jeera-rice.webp"
+        },
+        {
+          "name": "રસાવારા રાઈસ",
+          "aliases": [
+            "Rasawara Rice"
+          ],
+          "price": 70,
+          "image": "shelf:indian-rice/tomato-rice.webp"
+        }
+      ]
+    }
+  ]
+}

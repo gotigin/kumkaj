@@ -35,7 +35,6 @@ impl AppState {
             printer_route_key: "bill".into(),
             settings_panel: None,
             printer_selected_id: None,
-            printer_add_wire: print_share::PrinterWire::OsDocument,
             owner_setup_complete: false,
             onboarding_complete: false,
             venue_mode: VenueMode::Restaurant,
@@ -109,6 +108,8 @@ impl AppState {
             team_select_pending: false,
             pay_choice: PayChoice::Cash,
             template_confirm: false,
+            client_template_confirm: None,
+            client_template_id: String::new(),
             menu_list_filter: String::new(),
             menu_unpriced_only: false,
             form_resale: false,
@@ -1188,7 +1189,16 @@ impl AppState {
             .categories
             .iter()
             .filter_map(|c| {
-                let rank = if query.is_empty() { Some(0) } else { menu_images::match_rank(&c.name, query) };
+                let rank = if query.is_empty() {
+                    Some(0)
+                } else {
+                    menu_images::match_rank(&c.name, query).or_else(|| {
+                        c.aliases()
+                            .iter()
+                            .filter_map(|a| menu_images::match_rank(a, query))
+                            .min()
+                    })
+                };
                 rank.map(|r| (r, c.name.as_str(), c.id.as_str()))
             })
             .collect();
@@ -1242,9 +1252,14 @@ impl AppState {
                 .collect();
             picks.extend(menu);
         }
+        // Cap browse rows: the shelf has ~1,400 dishes; painting every
+        // index on each keystroke freezes the form. Search still ranks;
+        // empty query shows the first slice only.
+        const SHELF_PICK_CAP: usize = 80;
         picks.extend(
             menu_images::search_shelf(menu_images::shelf(), query)
                 .into_iter()
+                .take(SHELF_PICK_CAP)
                 .map(DishPick::Shelf),
         );
         self.dish_picks = picks;

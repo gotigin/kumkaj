@@ -577,3 +577,19 @@ fn load_product_card_photo(cx: &mut Cx, tile: &WidgetRef, product: &Product) {
     apply_thumb_avatar_kind(cx, tile, &product.name, &path, thumbs::ThumbKind::Card);
 }
 
+/// Show the first alias under a name (ProductCard / MenuCard / DishRow /
+/// CategoryRow). Hidden when there is none.
+fn paint_first_alias(cx: &mut Cx, root: &WidgetRef, alias: Option<&str>) {
+    let label = root.label(cx, ids!(alias));
+    match alias.map(str::trim).filter(|a| !a.is_empty()) {
+        Some(text) => {
+            label.set_visible(cx, true);
+            label.set_text(cx, text);
+        }
+        None => {
+            label.set_visible(cx, false);
+            label.set_text(cx, "");
+        }
+    }
+}
+

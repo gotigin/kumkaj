@@ -12,16 +12,59 @@ use unicode_bidi::BidiInfo;
 
 /// Dots across 58 mm paper (8 dots/mm); an 80 mm printer prints it too.
 pub const PAPER_DOTS: usize = 384;
-/// Letter size, line pitch and where the baseline sits in a line, in dots.
-const EM: f32 = 24.0;
-const LINE: usize = 36;
-const BASELINE: f32 = 26.0;
-const SIDE: f32 = 4.0;
 /// Rows per `GS v 0` command — small enough for any printer's buffer.
 const BAND: usize = 128;
 /// Coverage from which a dot is black (a little under half: thermal heads
 /// print thin strokes faint).
 const INK: f32 = 0.45;
+
+/// Letter size, line pitch, baseline and side margin (dots).
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct RasterMetrics {
+    pub em: f32,
+    pub line: usize,
+    pub baseline: f32,
+    pub side: f32,
+}
+
+impl RasterMetrics {
+    /// Built-in Standard (bill) metrics.
+    pub const fn standard() -> Self {
+        Self {
+            em: 22.0,
+            line: 32,
+            baseline: 24.0,
+            side: 8.0,
+        }
+    }
+
+    /// Built-in KOT (kitchen) metrics.
+    pub const fn kot() -> Self {
+        Self {
+            em: 24.0,
+            line: 36,
+            baseline: 26.0,
+            side: 4.0,
+        }
+    }
+}
+
+/// How the slip is drawn: Standard (bills) vs KOT (kitchen tickets).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SlipStyle {
+    /// Bill / office-like: slightly wider side margin, tighter line pitch.
+    Standard,
+    /// Kitchen ticket: larger type, taller line pitch.
+    Kot,
+}
+
+fn metrics(style: SlipStyle) -> RasterMetrics {
+    match style {
+        SlipStyle::Standard => RasterMetrics::standard(),
+        SlipStyle::Kot => RasterMetrics::kot(),
+    }
+}
+
 
 /// Fonts tried in order for each letter: Latin/Cyrillic/Greek first, then
 /// the scripts the app's languages are written in.
@@ -44,10 +87,30 @@ fn faces() -> Vec<Face<'static>> {
     FONTS.iter().filter_map(|f| Face::from_slice(f, 0)).collect()
 }
 
+/// The ESC/POS bytes that print `text` as a picture (kitchen / KOT metrics).
+pub fn escpos_picture(text: &str) -> Vec<u8> {
+    escpos_picture_style(text, SlipStyle::Kot)
+}
+
+/// Standard (bill) raster ESC/POS job.
+pub fn escpos_picture_standard(text: &str) -> Vec<u8> {
+    escpos_picture_style(text, SlipStyle::Standard)
+}
+
+/// KOT raster ESC/POS job (same as [`escpos_picture`]).
+pub fn escpos_picture_kot(text: &str) -> Vec<u8> {
+    escpos_picture_style(text, SlipStyle::Kot)
+}
+
 /// The ESC/POS bytes that print `text` as a picture: reset, the picture in
 /// bands, a few blank lines, cut.
-pub fn escpos_picture(text: &str) -> Vec<u8> {
-    let (rows, height) = draw(text);
+pub fn escpos_picture_style(text: &str, style: SlipStyle) -> Vec<u8> {
+    escpos_picture_metrics(text, &metrics(style))
+}
+
+/// ESC/POS raster using explicit metrics (custom formats).
+pub fn escpos_picture_metrics(text: &str, m: &RasterMetrics) -> Vec<u8> {
+    let (rows, height) = draw_metrics(text, m);
     let row_bytes = PAPER_DOTS / 8;
     let mut out = vec![0x1B, 0x40]; // ESC @: reset
     for top in (0..height).step_by(BAND) {
@@ -56,23 +119,37 @@ pub fn escpos_picture(text: &str) -> Vec<u8> {
         out.extend_from_slice(&[0x1D, 0x76, 0x30, 0x00, row_bytes as u8, 0, (h & 0xFF) as u8, (h >> 8) as u8]);
         out.extend_from_slice(&rows[top * row_bytes..(top + h) * row_bytes]);
     }
-    out.extend_from_slice(b"\n\n\n\n");
-    out.extend_from_slice(&[0x1D, 0x56, 0x42, 0x00]); // GS V B 0: feed and cut
+    // LF only (never CR — overstrike). Then the most common full-cut form.
+    out.extend_from_slice(b"\n\n\n\n\n");
+    out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
     out
+}
+
+/// `text` drawn with kitchen metrics.
+pub fn draw(text: &str) -> (Vec<u8>, usize) {
+    draw_style(text, SlipStyle::Kot)
+}
+
+/// `text` drawn `PAPER_DOTS` wide with a built-in style.
+pub fn draw_style(text: &str, style: SlipStyle) -> (Vec<u8>, usize) {
+    draw_metrics(text, &metrics(style))
 }
 
 /// `text` drawn `PAPER_DOTS` wide: packed rows (leftmost dot in the high
 /// bit, 1 = black) and the height in dots.
-pub fn draw(text: &str) -> (Vec<u8>, usize) {
+pub fn draw_metrics(text: &str, m: &RasterMetrics) -> (Vec<u8>, usize) {
     let faces = faces();
-    let room = PAPER_DOTS as f32 - 2.0 * SIDE;
-    let lines: Vec<Vec<Placed>> = text.lines().flat_map(|l| wrap(&faces, l, room)).collect();
-    let height = lines.len().max(1) * LINE;
+    let room = PAPER_DOTS as f32 - 2.0 * m.side;
+    let lines: Vec<Vec<Placed>> = text
+        .lines()
+        .flat_map(|l| wrap(&faces, l, room, m))
+        .collect();
+    let height = lines.len().max(1) * m.line;
     let mut dots = vec![false; PAPER_DOTS * height];
     for (i, line) in lines.iter().enumerate() {
-        let baseline = (i * LINE) as f32 + BASELINE;
+        let baseline = (i * m.line) as f32 + m.baseline;
         for g in line {
-            stamp(&faces[g.face], g, baseline, &mut dots);
+            stamp(&faces[g.face], g, baseline, m, &mut dots);
         }
     }
     let mut rows = vec![0u8; PAPER_DOTS / 8 * height];
@@ -102,29 +179,33 @@ fn drawable(faces: &[Face], c: char) -> bool {
 }
 
 /// `line` laid out, broken at spaces into as many lines as `room` needs.
-fn wrap(faces: &[Face], line: &str, room: f32) -> Vec<Vec<Placed>> {
-    let (placed, width) = layout(faces, line);
+fn wrap(faces: &[Face], line: &str, room: f32, m: &RasterMetrics) -> Vec<Vec<Placed>> {
+    let (placed, width) = layout(faces, line, m);
     if width <= room {
         return vec![placed];
     }
     let mut out = Vec::new();
     let mut current = String::new();
     for word in line.split(' ') {
-        let candidate = if current.is_empty() { word.to_string() } else { format!("{current} {word}") };
-        if !current.is_empty() && layout(faces, &candidate).1 > room {
-            out.push(layout(faces, &current).0);
+        let candidate = if current.is_empty() {
+            word.to_string()
+        } else {
+            format!("{current} {word}")
+        };
+        if !current.is_empty() && layout(faces, &candidate, m).1 > room {
+            out.push(layout(faces, &current, m).0);
             current = word.to_string();
         } else {
             current = candidate;
         }
     }
-    out.push(layout(faces, &current).0);
+    out.push(layout(faces, &current, m).0);
     out
 }
 
 /// One line shaped left to right as it will be seen: bidi runs in visual
 /// order, each split by font and shaped; returns the glyphs and the width.
-fn layout(faces: &[Face], line: &str) -> (Vec<Placed>, f32) {
+fn layout(faces: &[Face], line: &str, m: &RasterMetrics) -> (Vec<Placed>, f32) {
     let line: String = line
         .chars()
         .map(|c| match c {
@@ -156,10 +237,14 @@ fn layout(faces: &[Face], line: &str) -> (Vec<Placed>, f32) {
         for (face, piece) in pieces {
             let mut buf = UnicodeBuffer::new();
             buf.push_str(piece);
-            buf.set_direction(if rtl { Direction::RightToLeft } else { Direction::LeftToRight });
+            buf.set_direction(if rtl {
+                Direction::RightToLeft
+            } else {
+                Direction::LeftToRight
+            });
             buf.guess_segment_properties();
             let shaped = rustybuzz::shape(&faces[face], &[], buf);
-            let scale = EM / faces[face].units_per_em() as f32;
+            let scale = m.em / faces[face].units_per_em() as f32;
             for (info, pos) in shaped.glyph_infos().iter().zip(shaped.glyph_positions()) {
                 placed.push(Placed {
                     face,
@@ -253,10 +338,10 @@ impl OutlineBuilder for Outline {
 }
 
 /// Ink one glyph onto `dots` (`PAPER_DOTS` wide), clipped to the page.
-fn stamp(face: &Face, g: &Placed, baseline: f32, dots: &mut [bool]) {
+fn stamp(face: &Face, g: &Placed, baseline: f32, m: &RasterMetrics, dots: &mut [bool]) {
     let mut outline = Outline {
-        scale: EM / face.units_per_em() as f32,
-        x: SIDE + g.x,
+        scale: m.em / face.units_per_em() as f32,
+        x: m.side + g.x,
         y: baseline - g.dy,
         start: point(0.0, 0.0),
         last: point(0.0, 0.0),
@@ -329,7 +414,8 @@ mod tests {
         ] {
             assert!(missing_letters(sample).is_empty(), "{sample}: {:?}", missing_letters(sample));
             let (rows, height) = draw(sample);
-            assert_eq!(height, LINE, "{sample} fits one line");
+            let line = metrics(SlipStyle::Kot).line;
+            assert_eq!(height, line, "{sample} fits one line");
             assert!(ink(&rows) > 150, "{sample} left ink on the paper");
         }
         assert_eq!(missing_letters("炒饭"), vec!['炒', '饭']);
@@ -339,7 +425,8 @@ mod tests {
     fn a_long_line_wraps_inside_the_paper() {
         let line = "2 x ખીચડી કઢી with extra ghee and papad on the side, no onion";
         let (rows, height) = draw(line);
-        assert!(height >= 2 * LINE, "wrapped onto more lines");
+        let line_h = metrics(SlipStyle::Kot).line;
+        assert!(height >= 2 * line_h, "wrapped onto more lines");
         // Nothing drawn in the last dot column: the text stayed inside.
         let row_bytes = PAPER_DOTS / 8;
         assert!((0..height).all(|y| rows[y * row_bytes + row_bytes - 1] & 1 == 0));
@@ -350,7 +437,8 @@ mod tests {
         // "Shawarma 2" in Arabic: read right to left, so the digit — last
         // in reading order — is drawn first, at the left margin.
         let faces = faces();
-        let (placed, width) = layout(&faces, "شاورما 2");
+        let m = metrics(SlipStyle::Kot);
+        let (placed, width) = layout(&faces, "شاورما 2", &m);
         assert!(width > 0.0);
         let arabic = FONTS.len() - 2;
         assert_eq!(placed.first().map(|g| g.face), Some(0), "the digit, in the Latin font, comes first");
@@ -378,7 +466,7 @@ mod tests {
         assert_eq!(&job[..2], &[0x1B, 0x40]);
         let headers = job.windows(4).filter(|w| *w == [0x1D, 0x76, 0x30, 0x00]).count();
         assert_eq!(headers, height.div_ceil(BAND));
-        assert_eq!(&job[job.len() - 4..], &[0x1D, 0x56, 0x42, 0x00]);
+        assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
         let row_bytes = PAPER_DOTS / 8;
         assert_eq!(job.len(), 2 + headers * 8 + height * row_bytes + 4 + 4);
     }

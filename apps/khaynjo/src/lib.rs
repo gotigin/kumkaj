@@ -16,11 +16,16 @@ pub mod local_servers;
 pub mod lan_images;
 pub mod media;
 pub mod menu_images;
+pub mod menu_templates;
 pub mod net;
 pub mod notify;
 pub mod phone;
 pub mod precise;
 pub mod print_share;
+#[cfg(target_os = "android")]
+pub mod print_android;
+pub mod print_bt;
+pub mod print_usb;
 pub mod receipt_raster;
 pub mod schemes;
 pub mod snack;

@@ -361,7 +361,8 @@ impl Store {
                     branch_id TEXT NOT NULL DEFAULT '',
                     name TEXT NOT NULL,
                     sort_order INTEGER NOT NULL DEFAULT 0,
-                    image_key TEXT NOT NULL DEFAULT ''
+                    image_key TEXT NOT NULL DEFAULT '',
+                    aliases_json TEXT NOT NULL DEFAULT '[]'
                 );
                 CREATE TABLE IF NOT EXISTS kitchen_stations (
                     id TEXT PRIMARY KEY,
@@ -555,6 +556,7 @@ impl Store {
             "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE money_movements ADD COLUMN cleared_at TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE categories ADD COLUMN image_key TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE categories ADD COLUMN aliases_json TEXT NOT NULL DEFAULT '[]'",
             "ALTER TABLE tables_dining ADD COLUMN occupied_at TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE kot_tickets ADD COLUMN table_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE kot_tickets ADD COLUMN total_paise INTEGER NOT NULL DEFAULT 0",
@@ -2098,9 +2100,20 @@ impl Store {
         for c in categories {
             self.conn
                 .execute(
-                    "INSERT OR REPLACE INTO categories(id, branch_id, name, sort_order, image_key)
-                     VALUES(?1, ?2, ?3, ?4, ?5)",
-                    params![c.id, branch_id, c.name, c.sort_order, c.image_key],
+                    "INSERT OR REPLACE INTO categories(id, branch_id, name, sort_order, image_key, aliases_json)
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6)",
+                    params![
+                        c.id,
+                        branch_id,
+                        c.name,
+                        c.sort_order,
+                        c.image_key,
+                        if c.aliases_json.trim().is_empty() {
+                            "[]".to_string()
+                        } else {
+                            c.aliases_json.clone()
+                        }
+                    ],
                 )
                 .map_err(|e| e.to_string())?;
         }
@@ -2452,11 +2465,12 @@ impl Store {
 
     /// Printable KOT text: table, time, station, items — never prices.
     pub fn format_kot_text(&self, kot_id: &str) -> Result<String, String> {
-        let (created_at, summary, station_name, kot_no, kind, created_by): (
+        let (created_at, summary, station_name, kot_no, kind, created_by, table_id): (
             String,
             String,
             String,
             i64,
+            String,
             String,
             String,
         ) = self
@@ -2464,15 +2478,30 @@ impl Store {
             .query_row(
                 "SELECT k.created_at, k.summary, COALESCE(s.name, ''),
                         COALESCE(k.kot_no, 0), COALESCE(k.kind, 'kot'),
-                        COALESCE(k.created_by, '')
+                        COALESCE(k.created_by, ''), COALESCE(k.table_id, '')
                    FROM kot_tickets k
                    LEFT JOIN kitchen_stations s ON s.id = k.station_id
                   WHERE k.id = ?1",
                 params![kot_id],
-                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?, r.get(5)?)),
+                |r| {
+                    Ok((
+                        r.get(0)?,
+                        r.get(1)?,
+                        r.get(2)?,
+                        r.get(3)?,
+                        r.get(4)?,
+                        r.get(5)?,
+                        r.get(6)?,
+                    ))
+                },
             )
             .map_err(|e| e.to_string())?;
         let when = created_at.get(..16).unwrap_or(&created_at).replace('T', " ");
+        let table_label = if table_id.is_empty() {
+            String::new()
+        } else {
+            self.table_label(&table_id).unwrap_or_default()
+        };
         // ASCII-only body: network kitchen printers get this as ESC/POS text.
         // Fancy dashes/scripts become "?" there; never ship a raster by default.
         let mut out = String::from(if kind == "cancel" {
@@ -2487,11 +2516,16 @@ impl Store {
         if !created_by.is_empty() {
             out.push_str(&format!("By: {created_by}\n"));
         }
+        if !table_label.is_empty() {
+            out.push_str(&format!("Table: {table_label}\n"));
+        }
         if !station_name.is_empty() {
             out.push_str(&format!("Station: {station_name}\n"));
         }
         out.push_str("--------------------------------\n");
-        for item in summary.split(", ") {
+        // Stored summary is "D1 · [Station] 2× Dish, 1× …" for the Kitchen
+        // screen. Print must not glue table/station onto the first dish line.
+        for item in kot_print_item_lines(&summary, &table_label, &station_name) {
             out.push_str(&format!("{item}\n"));
         }
         out.push_str("--------------------------------\n");
@@ -4970,7 +5004,8 @@ impl Store {
             .conn
             .prepare(
                 "SELECT id, COALESCE(branch_id, ''), name, sort_order,
-                        COALESCE(image_key, '') FROM categories
+                        COALESCE(image_key, ''), COALESCE(aliases_json, '[]')
+                 FROM categories
                  WHERE branch_id = ?1 OR branch_id = ''
                  ORDER BY sort_order, name",
             )
@@ -4983,11 +5018,47 @@ impl Store {
                     name: row.get(2)?,
                     sort_order: row.get(3)?,
                     image_key: row.get(4)?,
+                    aliases_json: row.get(5)?,
                 })
             })
             .map_err(|e| e.to_string())?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())
+    }
+
+    /// Set category aliases when the category has none yet (template import).
+    pub fn set_category_aliases_if_empty(
+        &self,
+        category_id: &str,
+        aliases: &[String],
+    ) -> Result<(), String> {
+        if aliases.is_empty() {
+            return Ok(());
+        }
+        let current: String = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(aliases_json, '[]') FROM categories WHERE id = ?1",
+                params![category_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let existing: Vec<String> = serde_json::from_str(&current).unwrap_or_default();
+        if existing.iter().any(|a| !a.trim().is_empty()) {
+            return Ok(());
+        }
+        let json = serde_json::to_string(aliases).unwrap_or_else(|_| "[]".into());
+        let n = self
+            .conn
+            .execute(
+                "UPDATE categories SET aliases_json = ?1 WHERE id = ?2",
+                params![json, category_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Category not found".into());
+        }
+        Ok(())
     }
 
     /// Bring in the whole provided menu template: every catalogue folder as a
@@ -4998,59 +5069,159 @@ impl Store {
     pub fn import_catalogue(&self, dishes: &[crate::menu_images::ShelfDish]) -> Result<CatalogueImport, String> {
         self.assert_server_writer("Import the menu template")?;
         let mut summary = CatalogueImport::default();
-        self.in_transaction(|| {
-            let mut categories = self.list_categories()?;
-            let existing: std::collections::HashSet<String> = self
-                .list_products(true)?
-                .into_iter()
-                .map(|p| p.name.trim().to_lowercase())
-                .collect();
-            let mut seen = existing;
-            for dish in dishes {
-                let cat_id = match categories
-                    .iter()
-                    .find(|c| c.name.trim().eq_ignore_ascii_case(dish.folder.trim()))
-                {
-                    Some(c) => {
-                        // Copy into item_images so Clients / Android can sync
-                        // the file (shelf: paths are missing off the desktop).
-                        if c.image_key.is_empty() && dish.path.is_file() {
-                            let _ = self.set_category_photo_if_missing(&c.id, &dish.path);
-                        }
-                        c.id.clone()
+        let total = dishes.len().max(1);
+        report_import_progress(0, total)?;
+        // No single long transaction: WebP encode must not hold a SQLite write
+        // lock or the UI connection freezes on every busy_timeout wait.
+        let mut categories = self.list_categories()?;
+        let existing: std::collections::HashSet<String> = self
+            .list_products(true)?
+            .into_iter()
+            .map(|p| p.name.trim().to_lowercase())
+            .collect();
+        let mut seen = existing;
+        for (i, dish) in dishes.iter().enumerate() {
+            import_cancelled()?;
+            let cat_id = match categories
+                .iter()
+                .find(|c| c.name.trim().eq_ignore_ascii_case(dish.folder.trim()))
+            {
+                Some(c) => {
+                    if c.image_key.is_empty() && dish.path.is_file() {
+                        let _ = self.set_category_photo_if_missing(&c.id, &dish.path);
                     }
-                    None => {
-                        let mut c = self.add_category(&dish.folder)?;
-                        if dish.path.is_file() {
-                            if let Ok(key) = self.import_category_image(&c.id, &dish.path) {
-                                self.set_category_image(&c.id, &key)?;
-                                c.image_key = key;
-                            }
+                    c.id.clone()
+                }
+                None => {
+                    let mut c = self.add_category(&dish.folder)?;
+                    if dish.path.is_file() {
+                        if let Ok(key) = self.import_category_image(&c.id, &dish.path) {
+                            self.set_category_image(&c.id, &key)?;
+                            c.image_key = key;
                         }
-                        summary.categories_added += 1;
-                        let id = c.id.clone();
-                        categories.push(c);
-                        id
                     }
-                };
-                if !seen.insert(dish.name.trim().to_lowercase()) {
-                    summary.items_kept += 1;
+                    summary.categories_added += 1;
+                    let id = c.id.clone();
+                    categories.push(c);
+                    id
+                }
+            };
+            if !seen.insert(dish.name.trim().to_lowercase()) {
+                summary.items_kept += 1;
+                report_import_progress(i + 1, total)?;
+                continue;
+            }
+            let mut p = Product::new_basic(new_id(), dish.name.trim(), Money(0));
+            p.category_id = cat_id;
+            // Encode the photo before the upsert so we never sit in a write txn
+            // across image codecs.
+            if dish.path.is_file() {
+                if let Ok(key) = self.import_item_image(&p.id, &dish.path) {
+                    p.image_key.replace(key);
+                }
+            }
+            self.upsert_product(&p)?;
+            summary.items_added += 1;
+            report_import_progress(i + 1, total)?;
+        }
+        report_import_progress(total, total)?;
+        Ok(summary)
+    }
+
+    /// Import a named client menu template (prices + aliases + photos).
+    /// Same dedupe rule as [`Self::import_catalogue`]: existing dish names stay.
+    pub fn import_menu_template(
+        &self,
+        tmpl: &crate::menu_templates::MenuTemplate,
+    ) -> Result<CatalogueImport, String> {
+        self.assert_server_writer("Import a menu template")?;
+        let mut summary = CatalogueImport::default();
+        let total = tmpl
+            .categories
+            .iter()
+            .map(|c| c.items.len().saturating_add(1))
+            .sum::<usize>()
+            .max(1);
+        let mut step = 0usize;
+        report_import_progress(0, total)?;
+        // Commit per row — never hold BEGIN across WebP encode (that froze the UI).
+        let mut categories = self.list_categories()?;
+        let existing: std::collections::HashSet<String> = self
+            .list_products(true)?
+            .into_iter()
+            .map(|p| p.name.trim().to_lowercase())
+            .collect();
+        let mut seen = existing;
+        for cat_spec in &tmpl.categories {
+            import_cancelled()?;
+            let cat_name = cat_spec.name.trim();
+            if cat_name.is_empty() {
+                continue;
+            }
+            let cat_id = match categories
+                .iter()
+                .find(|c| c.name.trim().eq_ignore_ascii_case(cat_name))
+            {
+                Some(c) => {
+                    let _ = self.set_category_aliases_if_empty(&c.id, &cat_spec.aliases);
+                    if c.image_key.is_empty() {
+                        if let Some(path) = tmpl.resolve_image(&cat_spec.image) {
+                            let _ = self.set_category_photo_if_missing(&c.id, &path);
+                        }
+                    }
+                    c.id.clone()
+                }
+                None => {
+                    let mut c = self.add_category(cat_name)?;
+                    let _ = self.set_category_aliases_if_empty(&c.id, &cat_spec.aliases);
+                    if let Some(path) = tmpl.resolve_image(&cat_spec.image) {
+                        if let Ok(key) = self.import_category_image(&c.id, &path) {
+                            self.set_category_image(&c.id, &key)?;
+                            c.image_key = key;
+                        }
+                    }
+                    summary.categories_added += 1;
+                    let id = c.id.clone();
+                    categories.push(c);
+                    id
+                }
+            };
+            step += 1;
+            report_import_progress(step.min(total), total)?;
+            for item in &cat_spec.items {
+                let name = item.name.trim();
+                if name.is_empty() {
+                    step += 1;
+                    report_import_progress(step.min(total), total)?;
                     continue;
                 }
-                let mut p = Product::new_basic(new_id(), dish.name.trim(), Money(0));
-                p.category_id = cat_id;
-                // Materialise shelf art as custom:… under item_images — Android
-                // never ships assets/items, and LAN sync only sends keys.
-                if dish.path.is_file() {
-                    if let Ok(key) = self.import_item_image(&p.id, &dish.path) {
+                if !seen.insert(name.to_lowercase()) {
+                    summary.items_kept += 1;
+                    step += 1;
+                    report_import_progress(step.min(total), total)?;
+                    continue;
+                }
+                let mut p = Product::new_basic(
+                    new_id(),
+                    name,
+                    Money::from_rupees(item.price.max(0)),
+                );
+                p.category_id = cat_id.clone();
+                if !item.aliases.is_empty() {
+                    p.set_aliases(&item.aliases);
+                }
+                if let Some(path) = tmpl.resolve_image(&item.image) {
+                    if let Ok(key) = self.import_item_image(&p.id, &path) {
                         p.image_key = Some(key);
                     }
                 }
                 self.upsert_product(&p)?;
                 summary.items_added += 1;
+                step += 1;
+                report_import_progress(step.min(total), total)?;
             }
-            Ok(())
-        })?;
+        }
+        report_import_progress(total, total)?;
         Ok(summary)
     }
 
@@ -5075,6 +5246,7 @@ impl Store {
             name: name.to_string(),
             sort_order: next,
             image_key: String::new(),
+            aliases_json: "[]".into(),
         };
         self.conn
             .execute(
@@ -6024,8 +6196,26 @@ impl Store {
     /// as `custom:…` so LAN Clients (and Android) can fetch real files. Safe
     /// to call repeatedly; no-ops when the shelf pack is not on disk.
     pub fn materialize_shelf_photos(&self) -> Result<usize, String> {
+        let mut products = self.list_products(true)?;
+        let categories = self.list_categories()?;
+        let total = products
+            .iter()
+            .filter(|p| {
+                p.image_key
+                    .as_deref()
+                    .is_some_and(|k| k.starts_with(crate::menu_images::SHELF_KEY_PREFIX))
+            })
+            .count()
+            + categories
+                .iter()
+                .filter(|c| c.image_key.starts_with(crate::menu_images::SHELF_KEY_PREFIX))
+                .count();
+        let total = total.max(1);
+        report_import_progress(0, total)?;
         let mut n = 0usize;
-        for mut p in self.list_products(true)? {
+        let mut step = 0usize;
+        for p in &mut products {
+            import_cancelled()?;
             let Some(key) = p.image_key.as_deref() else {
                 continue;
             };
@@ -6033,27 +6223,35 @@ impl Store {
                 continue;
             }
             let src = crate::menu_images::resolve_image_path(Some(key), "", Path::new(""));
+            step += 1;
             if !src.is_file() {
+                report_import_progress(step, total)?;
                 continue;
             }
             let new_key = self.import_item_image(&p.id, &src)?;
             p.image_key = Some(new_key);
-            self.upsert_product(&p)?;
+            self.upsert_product(p)?;
             n += 1;
+            report_import_progress(step, total)?;
         }
-        for c in self.list_categories()? {
+        for c in categories {
+            import_cancelled()?;
             if !c.image_key.starts_with(crate::menu_images::SHELF_KEY_PREFIX) {
                 continue;
             }
             let src =
                 crate::menu_images::resolve_image_path(Some(&c.image_key), "", Path::new(""));
+            step += 1;
             if !src.is_file() {
+                report_import_progress(step, total)?;
                 continue;
             }
             let new_key = self.import_category_image(&c.id, &src)?;
             self.set_category_image(&c.id, &new_key)?;
             n += 1;
+            report_import_progress(step, total)?;
         }
+        report_import_progress(total, total)?;
         Ok(n)
     }
 
@@ -10696,6 +10894,45 @@ impl Store {
 
 }
 
+/// Dish lines for a printed KOT. The Kitchen card keeps
+/// `"D1 · [Station] 2× Dish, …"` in `summary`; print already has Table /
+/// Station headers, so strip those prefixes and split items onto their own lines.
+fn kot_print_item_lines(summary: &str, table_label: &str, station_name: &str) -> Vec<String> {
+    let mut body = summary.trim();
+    if !table_label.is_empty() {
+        let prefix = format!("{table_label} · ");
+        if let Some(rest) = body.strip_prefix(&prefix) {
+            body = rest;
+        }
+    }
+    if !station_name.is_empty() {
+        let prefix = format!("[{station_name}] ");
+        if let Some(rest) = body.strip_prefix(&prefix) {
+            body = rest;
+        }
+    }
+    body.split(", ")
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+        .map(str::to_string)
+        .collect()
+}
+
+#[cfg(test)]
+mod kot_print_item_lines_tests {
+    use super::kot_print_item_lines;
+
+    #[test]
+    fn first_dish_is_not_glued_to_table_or_station() {
+        let lines = kot_print_item_lines(
+            "D1 · [Tandoor] 2× Butter Naan, 1× Chaas",
+            "D1",
+            "Tandoor",
+        );
+        assert_eq!(lines, vec!["2× Butter Naan".to_string(), "1× Chaas".to_string()]);
+    }
+}
+
 /// Reverse-DNS app id from this crate's `env/development.env` or `env/production.env`
 /// (baked by `build.rs`). Dev: `com.khaynjo.debug`. Prod: `com.khaynjo`.
 pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
@@ -10740,6 +10977,42 @@ pub struct CatalogueImport {
     pub items_added: usize,
     /// Dishes the shop already had by that name (left as they are).
     pub items_kept: usize,
+}
+
+/// Optional progress wake for long menu imports (UI sets this from a worker).
+static IMPORT_PROGRESS_NOTIFY: std::sync::Mutex<Option<fn(usize, usize)>> =
+    std::sync::Mutex::new(None);
+
+/// Optional cancel poll for long imports / shelf photo materialise.
+static IMPORT_CANCEL_CHECK: std::sync::Mutex<Option<fn() -> bool>> =
+    std::sync::Mutex::new(None);
+
+/// Wire a progress callback for [`Store::import_catalogue`] /
+/// [`Store::import_menu_template`]. Pass `None` to clear.
+pub fn set_import_progress_notify(f: Option<fn(usize, usize)>) {
+    *IMPORT_PROGRESS_NOTIFY.lock().unwrap() = f;
+}
+
+/// Wire a cancel poll for long imports. Pass `None` to clear.
+pub fn set_import_cancel_check(f: Option<fn() -> bool>) {
+    *IMPORT_CANCEL_CHECK.lock().unwrap() = f;
+}
+
+fn import_cancelled() -> Result<(), String> {
+    if let Some(f) = *IMPORT_CANCEL_CHECK.lock().unwrap() {
+        if f() {
+            return Err("Cancelled".into());
+        }
+    }
+    Ok(())
+}
+
+fn report_import_progress(done: usize, total: usize) -> Result<(), String> {
+    import_cancelled()?;
+    if let Some(f) = *IMPORT_PROGRESS_NOTIFY.lock().unwrap() {
+        f(done, total);
+    }
+    Ok(())
 }
 
 /// Every column [`row_to_product`] expects, in order.
@@ -12016,6 +12289,45 @@ mod tests {
         let _ = std::fs::remove_file(png_path);
         let _ = std::fs::remove_file(pdf_path);
         let _ = std::fs::remove_file(exe);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn importing_a_named_client_template_sets_prices_and_aliases() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let tmpl = crate::menu_templates::find("rajdhani").expect("rajdhani ships");
+        let first = store.import_menu_template(tmpl).unwrap();
+        assert!(first.categories_added >= 8, "{}", first.categories_added);
+        assert!(first.items_added >= 100, "{}", first.items_added);
+        let again = store.import_menu_template(tmpl).unwrap();
+        assert_eq!((again.categories_added, again.items_added), (0, 0));
+        let products = store.list_products(false).unwrap();
+        let seena = products
+            .iter()
+            .find(|p| p.name.contains('ચ') && p.name.contains("સીના"))
+            .expect("seena");
+        assert_eq!(seena.price, Money::from_rupees(160));
+        assert!(
+            seena
+                .aliases()
+                .iter()
+                .any(|a| a == "Chicken Tandoori Seena"),
+            "{:?}",
+            seena.aliases()
+        );
+        assert!(seena.image_key.as_ref().unwrap().starts_with("custom:"));
+        let cats = store.list_categories().unwrap();
+        let roast = cats
+            .iter()
+            .find(|c| c.name.contains("રોસ્ટેડ"))
+            .expect("chicken roasted");
+        assert!(
+            roast.aliases().iter().any(|a| a == "Chicken Roasted"),
+            "{:?}",
+            roast.aliases()
+        );
+        assert!(!roast.aliases().iter().any(|a| a.contains("આઈટમ")));
         let _ = std::fs::remove_file(path);
     }
 

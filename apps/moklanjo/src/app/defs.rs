@@ -157,7 +157,8 @@ fn courier_printer_route_rows(
     };
     let route_row = |title: &str, key: print_share::RouteKey, focused: bool| -> ReportRow {
         let ids = draft.route_for(key);
-        let body = if ids.is_empty() {
+        let format = draft.format_for(key);
+        let printers = if ids.is_empty() {
             t("route_dont_print")
         } else {
             ids.iter()
@@ -165,6 +166,7 @@ fn courier_printer_route_rows(
                 .collect::<Vec<_>>()
                 .join(" → ")
         };
+        let body = format!("{} · {}", format.label, printers);
         let mark = if focused { "› " } else { "" };
         ReportRow::Kv(format!("{mark}{title}"), body)
     };
