@@ -1157,6 +1157,9 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
 
 /// Print a UTF-8 text/document file on a system printer (`None` = default).
 /// Used for **bills** on named/default targets (office paper / driver layout).
+/// Android document jobs go through [`print_system_standard`] → `print_android`
+/// instead; this CUPS/PowerShell path is desktop-only.
+#[cfg(not(target_os = "android"))]
 fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
@@ -1198,12 +1201,7 @@ fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
             Err(first_line(&out.stderr).unwrap_or_else(|| "Windows refused the job".into()))
         }
     }
-    #[cfg(target_os = "android")]
-    {
-        let _ = (name, path);
-        Err("this device has no printer drivers — use a network address (host:9100) in Settings → Printers".into())
-    }
-    #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows", target_os = "android")))]
+    #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
     {
         let _ = (name, path);
         Err("printing is not supported on this system".into())

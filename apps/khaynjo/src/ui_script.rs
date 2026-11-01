@@ -82,6 +82,20 @@ script_mod! {
     mod.widgets.Button.draw_text.text_style.font_family = WorldFonts
     mod.widgets.TextInput.draw_text.text_style.font_family = WorldFonts
     mod.widgets.TextInputFlat.draw_text.text_style.font_family = WorldFonts
+    // Markdown / TextFlow / Html copy theme faces at class-def time (before
+    // WorldFonts). Pin their text_style_* so shaping never sees an empty family.
+    mod.widgets.Markdown.text_style_normal.font_family = WorldFonts
+    mod.widgets.Markdown.text_style_italic.font_family = WorldFonts
+    mod.widgets.Markdown.text_style_bold.font_family = WorldFontsBold
+    mod.widgets.Markdown.text_style_bold_italic.font_family = WorldFontsBold
+    mod.widgets.TextFlow.text_style_normal.font_family = WorldFonts
+    mod.widgets.TextFlow.text_style_italic.font_family = WorldFonts
+    mod.widgets.TextFlow.text_style_bold.font_family = WorldFontsBold
+    mod.widgets.TextFlow.text_style_bold_italic.font_family = WorldFontsBold
+    mod.widgets.Html.text_style_normal.font_family = WorldFonts
+    mod.widgets.Html.text_style_italic.font_family = WorldFonts
+    mod.widgets.Html.text_style_bold.font_family = WorldFontsBold
+    mod.widgets.Html.text_style_bold_italic.font_family = WorldFontsBold
     // Contrast law: never pair two lights or two darks — theme OR local styles.
     // Palette from apps/khaynjo/assets/khaynjo-app-icon.png (deep red,
     // maroon, red-orange, gold, warm cream — sampled with ImageMagick).
@@ -1592,9 +1606,16 @@ script_mod! {
         pre_code_spacing: 0.
         font_size: 14.
         font_color: #x260B08
+        // Markdown copies theme faces before WorldFonts is assigned — pin every
+        // text_style so shaping never sees an empty FontFamily (console WARNING).
         draw_text +: {
             color: #x260B08
+            text_style.font_family: WorldFonts
         }
+        text_style_normal.font_family: WorldFonts
+        text_style_italic.font_family: WorldFonts
+        text_style_bold.font_family: WorldFontsBold
+        text_style_bold_italic.font_family: WorldFontsBold
         draw_block +: {
             // Opaque mid-blue (RRGGBBAA) — readable dark ink on top, clear on white page.
             selection_color: #xF69D2CFF
@@ -1831,29 +1852,24 @@ script_mod! {
     // card wears a gold edge. A sold-out dish is dimmed. Layers are stacked and shown by state,
     // because a DSL colour cannot be restyled at runtime.
     // Experiment: one continuous card — left photo, right name/alias/price.
-    // One shell (no gap); ~2× old overlay width (usually one card per row).
-    // Dish tile: image | text. DESIGN § Always responsive — wrap/reflow, never
-    // mid-glyph crop. Card grows with bilingual name+alias (Fit min 200);
-    // Overlay is sized by the Fit row below (Fill-only Overlay collapses to 0).
+    // Dish tile: photo | text. Fixed 176 row (Fill+Fill collapsed the grid to
+    // blank cards). −/qty/+ centered on photo. Name/alias ≤2 lines + Ellipsis,
+    // natural LTR align, smaller type.
     let ProductCard = View{
         width: Fill height: Fit
         tile := View{
             cursor: MouseCursor.Hand
-            width: Fill height: Fit{min: FitBound.Abs(200.)}
+            width: Fill height: Fit
             flow: Overlay
-            // Single shell: cream under the text half; photo covers the left.
             RoundedView{
                 width: Fill height: Fill
                 draw_bg.color: #xFFF8F3
                 draw_bg.color_2: #xF3E3DA
                 draw_bg.border_radius: 16.
             }
-            // Fit row sizes the Overlay. Image Fill stretches; text Fit grows.
             View{
-                width: Fill height: Fit{min: FitBound.Abs(200.)}
+                width: Fill height: 176
                 flow: Right spacing: 0
-                // Left half: photo (or initials). Same CropToFill + round mask
-                // as MenuCard — do not use a custom box_all (it broke sizing).
                 View{
                     width: Fill height: Fill
                     flow: Overlay
@@ -1895,9 +1911,6 @@ script_mod! {
                     }
                     View{
                         width: Fill height: Fill
-                        flow: Down
-                        padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
-                        // − n + sits in the middle of the photo half, not the top.
                         align: Align{x: 0.5 y: 0.5}
                         stepper := RoundedView{
                             visible: false
@@ -1924,48 +1937,51 @@ script_mod! {
                         }
                     }
                 }
-                // Right half: full name+alias wrap (no crop, no ellipsis);
-                // price always after the text. Centered cluster.
+                // Name/alias top; price pinned to the bottom so every card
+                // lines up (centering the whole cluster put prices at different Y).
                 View{
-                    width: Fill height: Fit
-                    flow: Down spacing: 8
-                    padding: Inset{left: 14. right: 14. top: 14. bottom: 14.}
-                    align: Align{x: 0.5 y: 0.5}
-                    name := Label{
-                        width: Fill
-                        text: "Item"
-                        align: Align{x: 0.5}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x260B08
-                        draw_text.text_style: theme.font_bold{font_size: 15.}
-                    }
-                    alias := Label{
-                        visible: false
-                        width: Fill
-                        text: ""
-                        align: Align{x: 0.5}
-                        flow: Right{wrap: true}
-                        draw_text.color: #x6B4A3F
-                        draw_text.text_style: theme.font_bold{font_size: 15.}
+                    width: Fill height: Fill
+                    flow: Down
+                    padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+                    View{
+                        width: Fill height: Fill
+                        flow: Down spacing: 2
+                        name := Label{
+                            width: Fill
+                            text: "Item"
+                            flow: Right{wrap: true}
+                            max_lines: 2
+                            text_overflow: Ellipsis
+                            draw_text.color: #x260B08
+                            draw_text.text_style: theme.font_bold{font_size: 13.}
+                        }
+                        alias := Label{
+                            visible: false
+                            width: Fill
+                            text: ""
+                            flow: Right{wrap: true}
+                            max_lines: 2
+                            text_overflow: Ellipsis
+                            draw_text.color: #x6B4A3F
+                            draw_text.text_style: theme.font_bold{font_size: 12.}
+                        }
                     }
                     price := Label{
                         width: Fill
                         text: "0"
-                        align: Align{x: 0.5}
                         flow: Right{wrap: false}
                         max_lines: 1
                         draw_text.color: #x9A0E10
-                        draw_text.text_style: theme.font_bold{font_size: 17.}
+                        draw_text.text_style: theme.font_bold{font_size: 14.}
                     }
                     price_off := Label{
                         visible: false
                         width: Fill
                         text: ""
-                        align: Align{x: 0.5}
                         flow: Right{wrap: false}
                         max_lines: 1
                         draw_text.color: #x6B4A3F
-                        draw_text.text_style: theme.font_bold{font_size: 17.}
+                        draw_text.text_style: theme.font_bold{font_size: 14.}
                     }
                 }
             }
@@ -1992,6 +2008,7 @@ script_mod! {
             }
         }
     }
+
 
     // Floor tab: one card per table — free (cream) or occupied (deep red)
     // One table on the floor grid. The visit state is the colour (one of
@@ -6087,12 +6104,14 @@ script_mod! {
                                         flow: Right{wrap: true} spacing: 8
                                         // Fixed chip slots — paint shows as many as we ship
                                         // (add another LiveId here when a fourth template arrives).
-                                        client_tmpl_0 := ChoiceChip{text: " "}
-                                        client_tmpl_0_on := ChoiceChipOn{text: " "}
-                                        client_tmpl_1 := ChoiceChip{text: " "}
-                                        client_tmpl_1_on := ChoiceChipOn{text: " "}
-                                        client_tmpl_2 := ChoiceChip{text: " "}
-                                        client_tmpl_2_on := ChoiceChipOn{text: " "}
+                                        // ChipBtn / ChipBtnActive — same faces as category strip
+                                        // (ChoiceChip was never defined → script errors every boot).
+                                        client_tmpl_0 := ChipBtn{text: " " visible: false}
+                                        client_tmpl_0_on := ChipBtnActive{text: " " visible: false}
+                                        client_tmpl_1 := ChipBtn{text: " " visible: false}
+                                        client_tmpl_1_on := ChipBtnActive{text: " " visible: false}
+                                        client_tmpl_2 := ChipBtn{text: " " visible: false}
+                                        client_tmpl_2_on := ChipBtnActive{text: " " visible: false}
                                     }
                                     client_template_info := Label{
                                         width: Fill

@@ -1,5 +1,7 @@
 //! Bluetooth SPP raw write for ESC/POS printers (`bt:AA:BB:CC:DD:EE:FF`).
 
+// File::write_all on Linux/macOS RFCOMM/serial paths only — Windows uses PowerShell.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
 use std::io::Write;
 
 /// Normalize `bt:…` / bare MAC into uppercase `AA:BB:CC:DD:EE:FF`.

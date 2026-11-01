@@ -1,5 +1,7 @@
 //! USB host ESC/POS write (`usb:VID:PID` or `usb:VID:PID:serial`).
 
+// File::write_all on Linux usblp paths only — Windows uses winspool WritePrinter.
+#[cfg(target_os = "linux")]
 use std::io::Write;
 
 /// Parsed USB printer identity.

@@ -81,6 +81,20 @@ script_mod! {
     mod.widgets.Button.draw_text.text_style.font_family = WorldFonts
     mod.widgets.TextInput.draw_text.text_style.font_family = WorldFonts
     mod.widgets.TextInputFlat.draw_text.text_style.font_family = WorldFonts
+    // Markdown / TextFlow / Html copy theme faces at class-def time (before
+    // WorldFonts). Pin their text_style_* so shaping never sees an empty family.
+    mod.widgets.Markdown.text_style_normal.font_family = WorldFonts
+    mod.widgets.Markdown.text_style_italic.font_family = WorldFonts
+    mod.widgets.Markdown.text_style_bold.font_family = WorldFontsBold
+    mod.widgets.Markdown.text_style_bold_italic.font_family = WorldFontsBold
+    mod.widgets.TextFlow.text_style_normal.font_family = WorldFonts
+    mod.widgets.TextFlow.text_style_italic.font_family = WorldFonts
+    mod.widgets.TextFlow.text_style_bold.font_family = WorldFontsBold
+    mod.widgets.TextFlow.text_style_bold_italic.font_family = WorldFontsBold
+    mod.widgets.Html.text_style_normal.font_family = WorldFonts
+    mod.widgets.Html.text_style_italic.font_family = WorldFonts
+    mod.widgets.Html.text_style_bold.font_family = WorldFontsBold
+    mod.widgets.Html.text_style_bold_italic.font_family = WorldFontsBold
     // Contrast law: never pair two lights or two darks — theme OR local styles.
     // Palette from apps/moklanjo/assets/moklanjo-app-icon.png (navy C, sky blue, orange, yellow).
     // Light face → dark ink (#0B1220 / #3A4554 / #56575D) in EVERY state.
@@ -1431,9 +1445,16 @@ script_mod! {
         pre_code_spacing: 0.
         font_size: 14.
         font_color: #x0B1220
+        // Markdown copies theme faces before WorldFonts is assigned — pin every
+        // text_style so shaping never sees an empty FontFamily (console WARNING).
         draw_text +: {
             color: #x0B1220
+            text_style.font_family: WorldFonts
         }
+        text_style_normal.font_family: WorldFonts
+        text_style_italic.font_family: WorldFonts
+        text_style_bold.font_family: WorldFontsBold
+        text_style_bold_italic.font_family: WorldFontsBold
         draw_block +: {
             // Opaque mid-blue (RRGGBBAA) — readable dark ink on top, clear on white page.
             selection_color: #x2E5BADFF
