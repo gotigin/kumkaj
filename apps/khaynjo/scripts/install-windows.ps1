@@ -4,6 +4,7 @@
 # Package layout required:
 #   kumkaj-khaynjo.exe
 #   kumkaj_khaynjo\resources\     (underscores - Makepad crate name)
+#   assets\items\ + assets\templates\  (menu imports; required for Server)
 #   install-manifest.env
 #   uninstall.ps1
 #
@@ -77,6 +78,10 @@ Makepad needs kumkaj_khaynjo\resources (underscores). Re-run the package script.
     if (-not (Test-Path $FontCheck)) {
         Write-Error "Missing UI font: $FontCheck - package is incomplete. Re-run scripts/fetch-ui-fonts.sh apps/khaynjo then apps/khaynjo/scripts/windows-prod.sh"
     }
+    $FaCheck = Join-Path $ResSrc "fonts\fa-solid-900.ttf"
+    if (-not (Test-Path $FaCheck)) {
+        Write-Error "Missing icon font: $FaCheck - Floor/header icons will be empty boxes. Re-run scripts/fetch-ui-fonts.sh apps/khaynjo then re-package."
+    }
 
     Write-Host "Installing $Label"
     Write-Host "  App files:    $InstallDir"
@@ -91,6 +96,11 @@ Makepad needs kumkaj_khaynjo\resources (underscores). Re-run the package script.
 
     Copy-Item $ExeSrc (Join-Path $InstallDir "kumkaj-khaynjo.exe")
     Copy-Item (Join-Path $PackageDir $ResDirName) (Join-Path $InstallDir $ResDirName) -Recurse -Force
+    # Menu shelf + client templates (Import complete template / Client menu).
+    $AssetsSrc = Join-Path $PackageDir "assets"
+    if (Test-Path $AssetsSrc) {
+        Copy-Item $AssetsSrc (Join-Path $InstallDir "assets") -Recurse -Force
+    }
 
     # Uninstall + manifest beside the app (re-runnable).
     Copy-Item (Join-Path $PackageDir "uninstall.ps1") (Join-Path $InstallDir "uninstall.ps1") -Force

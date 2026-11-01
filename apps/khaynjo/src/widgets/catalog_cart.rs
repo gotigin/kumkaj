@@ -220,27 +220,37 @@ impl Widget for CartList {
             )
         };
         let count = lines.len();
-        // Fixed pitch + page window (MenuList): PortalList only covers the
-        // on-screen slice so outer Order scroll works from inside the cart.
+        // Full list; outer Order ScrollYView scrolls. Closed-row pitch only —
+        // open details add a one-shot extra so we do not reserve 320px/line.
         const GAP: f64 = 8.0;
-        let row = *cart_row_height().lock().unwrap();
-        let (first, last) = page_window(cx.turtle().pos().y, count, row, GAP);
+        const OPEN_EXTRA: f64 = 220.0;
+        // Self-heal a stale 320px pitch left from an older process seed.
+        let row = {
+            let mut g = cart_row_height().lock().unwrap();
+            if *g > 140.0 {
+                *g = 96.0;
+            }
+            *g
+        };
+        let open_extra = if open_line.is_some() { OPEN_EXTRA } else { 0.0 };
+        let (first, last) = (0usize, count);
+        let content_h = (list_content_height(count, row, GAP) + open_extra).max(56.0);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, row, GAP).max(56.0)),
+            height: Size::Fixed(content_h),
             ..walk
         };
         if let Some(mut gap) = self.view.view(cx, ids!(top_gap)).borrow_mut() {
-            gap.walk.height = Size::Fixed(first as f64 * (row + GAP));
+            gap.walk.height = Size::Fixed(0.0);
         }
         if let Some(mut boxv) = self.view.view(cx, ids!(list_box)).borrow_mut() {
-            boxv.walk.height =
-                Size::Fixed(list_content_height(last.saturating_sub(first), row, GAP).max(56.0));
+            boxv.walk.height = Size::Fixed(content_h);
         }
         let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 list.set_item_range(cx, first, last);
-                list.set_first_id_and_scroll(first, 0.0);
+                // Do NOT reset scroll every frame — that fought remeasure and
+                // made Added items flicker continuously.
                 while let Some(item_id) = list.next_visible_item(cx) {
                     if item_id < first || item_id >= last {
                         continue;
@@ -335,6 +345,7 @@ impl Widget for CartList {
                         meta.push_str(&format!(" · {}", locale::t(&lang, "nc_short")));
                     }
                     // Unsent lines: which kitchen gets this dish (from the menu item).
+                    // Sent lines: whether this dish is in the next recovery print.
                     if !line.is_sent() {
                         if line.hold_send {
                             meta.push_str(&format!(" · {}", locale::t(&lang, "hold_send_meta")));
@@ -351,6 +362,8 @@ impl Widget for CartList {
                             };
                             meta.push_str(&format!(" · → {dest}"));
                         }
+                    } else if line.reprint_skip {
+                        meta.push_str(&format!(" · {}", locale::t(&lang, "reprint_skip_meta")));
                     }
                     if !line.note.trim().is_empty() {
                         meta.push_str(&format!(" · {}", line.note.trim()));
@@ -395,12 +408,20 @@ impl Widget for CartList {
                         .map(|p| p.modifiers())
                         .unwrap_or_default();
                     item.view(cx, ids!(mod_row)).set_visible(cx, !mods.is_empty());
-                    // Sent to the kitchen on a table: no ± (a sent quantity
-                    // changes only by a reasoned Cancel); Cancel / NC / Move.
-                    let on_table = line.is_sent() && line.running_line_id != "counter";
+                    // Sent to the kitchen: no ± (quantity changes only by a
+                    // reasoned Cancel). Real table lines have a running id;
+                    // counter-only KOTs use "counter" and cannot cancel here.
+                    let has_running = line.is_sent()
+                        && !line.running_line_id.is_empty()
+                        && line.running_line_id != "counter"
+                        && !line.running_line_id.starts_with(QUEUED_LINE);
+                    let on_table = has_running;
                     let unsent = !line.is_sent();
+                    let sent = line.is_sent();
                     item.view(cx, ids!(stepper)).set_visible(cx, unsent);
                     item.button(cx, ids!(hold_send_btn)).set_visible(cx, unsent);
+                    item.button(cx, ids!(reprint_incl_btn)).set_visible(cx, sent);
+                    item.button(cx, ids!(line_cancel_sum)).set_visible(cx, has_running);
                     if unsent {
                         item.button(cx, ids!(hold_send_btn)).set_text(
                             cx,
@@ -413,6 +434,23 @@ impl Widget for CartList {
                                 },
                             ),
                         );
+                    }
+                    if sent {
+                        item.button(cx, ids!(reprint_incl_btn)).set_text(
+                            cx,
+                            &locale::t(
+                                &lang,
+                                if line.reprint_skip {
+                                    "reprint_skip"
+                                } else {
+                                    "reprint_incl"
+                                },
+                            ),
+                        );
+                    }
+                    if has_running {
+                        item.button(cx, ids!(line_cancel_sum))
+                            .set_text(cx, &locale::t(&lang, "cancel_item_short"));
                     }
                     item.view(cx, ids!(sent_row)).set_visible(cx, on_table);
                     if on_table {
@@ -484,21 +522,15 @@ impl Widget for CartList {
                 }
             }
         }
-        if measured_row > 1.0 && (measured_row - row).abs() > 1.0 {
-            self.settle = cx.new_next_frame();
+        // Only learn closed-row pitch — open details must not inflate every line.
+        if open_line.is_none() {
+            remember_content_row(cx, &mut self.view, cart_row_height(), row, measured_row);
         }
-        remember_content_row(cx, &mut self.view, cart_row_height(), row, measured_row);
         DrawStep::done()
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if self.settle.is_event(event).is_some() {
-            self.view.redraw(cx);
-        }
-        // Virtualized rows: redraw when the page scrolls so the window moves.
-        if matches!(event, Event::Scroll(_)) {
-            self.view.redraw(cx);
-        }
+        let _ = &self.settle;
         if page_owns_scroll(event) {
             return;
         }

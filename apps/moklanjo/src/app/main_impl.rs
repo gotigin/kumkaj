@@ -21,6 +21,7 @@ impl AppMain for App {
             // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
+                FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
             });
             // Started with the computer: devices and backups don't wait for
@@ -76,6 +77,8 @@ impl AppMain for App {
                     let mut st = app_state().lock().unwrap();
                     st.printer_draft = draft;
                 }
+                clear_books_work_status();
+                printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
                 match result {
                     Ok(()) => {
                         self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));

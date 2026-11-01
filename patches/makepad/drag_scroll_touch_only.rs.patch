@@ -7,7 +7,7 @@
 +    /// When true, a mouse press on a child (nested pane, list, …) can still
 +    /// start a drag-scroll. Default false so horizontal chip strips only
 +    /// mouse-drag from whitespace (nav drag-to-swap on a chip is not stolen).
-+    /// Desk panes that fill the strip set this true.
++    /// Desk panes / page ScrollYViews that fill the view set this true.
 +    #[live(false)]
 +    mouse_capture_overload: bool,
  
@@ -22,17 +22,12 @@
 +        // Mouse default: no capture overload — only a press on the scroll
 +        // view itself (whitespace around child buttons) starts a drag-scroll,
 +        // so an app-level drag on a child Button (nav swap) is not stolen.
-+        // Desk ScrollXViews set `mouse_capture_overload` so press-drag works
-+        // over nested panes that fill the strip. Vertical pages stay
-+        // touch-only for drag-scroll (wheel / scrollbar / keys for the mouse).
++        // Pages / desk panes set `mouse_capture_overload` so press-drag works
++        // over nested lists and buttons (vertical and horizontal).
 +        let capture_overload = self.mouse_capture_overload
 +            || !matches!(event, Event::MouseDown(_));
 +        match event.hits_with_capture_overload(cx, scroll_area, capture_overload) {
-+            Hit::FingerDown(fe)
-+                if fe.is_primary_hit()
-+                    && (!fe.device.is_mouse()
-+                        || matches!(self.axis, ScrollAxis::Horizontal)) =>
-+            {
++            Hit::FingerDown(fe) if fe.is_primary_hit() => {
                  let abs = match self.axis {
                      ScrollAxis::Horizontal => fe.abs.x,
                      ScrollAxis::Vertical => fe.abs.y,
@@ -42,8 +37,9 @@
                              self.update_item_selections(cx);
                          }
                      } else if self.drag_scrolling && fe.is_primary_hit()
-+                        // Touch gesture only: a mouse drag never flings a list.
-+                        && !fe.device.is_mouse()
++                        // Touch gesture only: a mouse drag never flings a list
++                        // (page ScrollYView owns mouse press-drag instead).
+                         && !fe.device.is_mouse()
                          && cx.is_scrolling_allowed_within(&self.area)
                      {
                          // Always enter drag state to enable drag-to-scroll even over

@@ -313,7 +313,23 @@ struct FloorList {
     view: View,
 }
 
-fn floor_tile_labels(st: &AppState, t: &DiningTable) -> (String, String, String, Option<String>, domain::FloorState) {
+/// FA solid icons on the tile action button (no long labels).
+fn floor_act_icon(state: domain::FloorState, total_paise: i64) -> Option<&'static str> {
+    use domain::FloorState as F;
+    match state {
+        // user-plus — seat guests
+        F::Free => Some("\u{f234}"),
+        // check — free table
+        F::Seated | F::Paid => Some("\u{f00c}"),
+        F::BillPrinted if total_paise <= 0 => Some("\u{f00c}"),
+        // undo — undo bill
+        F::BillPrinted => Some("\u{f0e2}"),
+        // file — request bill / payment pending
+        F::InKitchen | F::FoodReady | F::Eating => Some("\u{f15b}"),
+    }
+}
+
+fn floor_tile_labels(st: &AppState, t: &DiningTable) -> (String, String, String, Option<&'static str>, domain::FloorState, bool) {
     use domain::FloorState as F;
     let now = chrono::Local::now();
     let minutes_since = |at: &str| {
@@ -336,15 +352,14 @@ fn floor_tile_labels(st: &AppState, t: &DiningTable) -> (String, String, String,
     } else {
         String::new()
     };
-    let action = match state {
-        F::Free => Some(st.t("tile_occupy_btn")),
-        F::Seated => Some(st.t("tile_free_btn")),
-        F::InKitchen | F::FoodReady | F::Eating => Some(st.t("tile_bill_btn")),
-        F::BillPrinted if t.running_total_paise <= 0 => Some(st.t("tile_ready_btn")),
-        F::BillPrinted => Some(st.t("tile_undo_bill")),
-        F::Paid => Some(st.t("tile_ready_btn")),
-    };
-    (t.name.clone(), words, meta, action, state)
+    let action = floor_act_icon(state, t.running_total_paise);
+    // Print / view when the table has a running order to bill.
+    let bill_tools = t.running_total_paise > 0
+        && matches!(
+            state,
+            F::InKitchen | F::FoodReady | F::Eating | F::BillPrinted | F::Seated
+        );
+    (t.name.clone(), words, meta, action, state, bill_tools)
 }
 
 fn floor_filtered_tables(st: &AppState) -> Vec<DiningTable> {
@@ -380,6 +395,8 @@ fn paint_floor_tile(
     meta: &str,
     action: Option<&str>,
     state: domain::FloorState,
+    bill_tools: bool,
+    focused: bool,
 ) {
     use domain::FloorState as F;
     let backgrounds = [
@@ -394,6 +411,7 @@ fn paint_floor_tile(
     for (s, bg) in &backgrounds {
         tile.view(cx, *bg).set_visible(cx, state == *s);
     }
+    tile.view(cx, ids!(bg_focus)).set_visible(cx, focused);
     tile.label(cx, ids!(name)).set_text(cx, name);
     tile.label(cx, ids!(state)).set_text(cx, words);
     let meta_label = tile.label(cx, ids!(meta));
@@ -401,49 +419,69 @@ fn paint_floor_tile(
     meta_label.set_visible(cx, !meta.is_empty());
     let act = tile.button(cx, ids!(act));
     act.set_visible(cx, action.is_some());
-    if let Some(label) = action {
-        act.set_text(cx, label);
+    if let Some(icon) = action {
+        act.set_text(cx, icon);
     }
+    tile.button(cx, ids!(print_ico)).set_visible(cx, bill_tools);
+    tile.button(cx, ids!(view_ico)).set_visible(cx, bill_tools);
 }
 
 impl Widget for FloorList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         use domain::FloorState as F;
-        // Per table: (name, state words, minutes · amount, action label).
-        // The tile's colour is the visit state (`FloorState`), worked out
-        // on the Server so every device agrees.
-        type Tile = (String, String, String, Option<String>, F);
+        // Per table: name, state words, meta, act icon, state, bill tools.
+        type Tile = (String, String, String, Option<&'static str>, F, bool);
         // Use the list's real turtle width — `content_width` is the shell
         // column before screen padding, so sizing tiles from it crops the
         // last column against the right edge.
         let avail = cx.turtle().next_walk_width(walk.width, walk.margin);
         let cols = floor_columns_for(avail);
         *floor_grid_cols().lock().unwrap() = cols;
-        let (rows, tiles, other_area): (Vec<FloorRow>, Vec<Tile>, String) = {
+        let (rows, tiles, focused, other_area): (Vec<FloorRow>, Vec<Tile>, Vec<bool>, String) = {
             let st = app_state().lock().unwrap();
             let tables = floor_filtered_tables(&st);
+            let focus = st.floor_focus_table_id.clone();
+            let focused = tables
+                .iter()
+                .map(|t| focus.as_ref() == Some(&t.id))
+                .collect();
             let tiles = tables
                 .iter()
                 .map(|t| floor_tile_labels(&st, t))
                 .collect();
-            (floor_rows(&tables, cols), tiles, st.t("tables"))
+            (
+                floor_rows(&tables, cols),
+                tiles,
+                focused,
+                st.t("tables"),
+            )
         };
-        const HEADER: f64 = 34.0;
-        const ROW: f64 = 162.0; // tile 152 + row padding 10
         const GAP: f64 = 10.0; // the PortalList's own spacing between rows
         let height: f64 = rows
             .iter()
-            .map(|r| if matches!(r, FloorRow::Area(_)) { HEADER } else { ROW })
+            .map(floor_row_pitch)
             .sum::<f64>()
             + GAP * rows.len().saturating_sub(1) as f64;
+        let list_top = cx.turtle().pos().y;
+        let (first, last, before, slice) = floor_page_window(list_top, &rows, GAP);
         let walk = Walk { height: Size::Fixed(height), ..walk };
+        if let Some(mut gap) = self.view.view(cx, ids!(top_gap)).borrow_mut() {
+            gap.walk.height = Size::Fixed(before);
+        }
+        if let Some(mut boxv) = self.view.view(cx, ids!(list_box)).borrow_mut() {
+            boxv.walk.height = Size::Fixed(slice);
+        }
         let slots = [
             ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5), ids!(t6), ids!(t7),
         ];
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, rows.len());
+                list.set_item_range(cx, first, last);
+                list.set_first_id_and_scroll(first, 0.0);
                 while let Some(item_id) = list.next_visible_item(cx) {
+                    if item_id < first || item_id >= last {
+                        continue;
+                    }
                     match rows.get(item_id) {
                         Some(FloorRow::Area(area)) => {
                             let item = list.item(cx, item_id, id!(Header));
@@ -474,12 +512,12 @@ impl Widget for FloorList {
                                     tile.set_visible(cx, false);
                                     continue;
                                 }
-                                match idxs.get(slot).and_then(|i| tiles.get(*i)) {
-                                    Some(t) => {
+                                match idxs.get(slot).and_then(|i| tiles.get(*i).map(|t| (*i, t))) {
+                                    Some((ti, t)) => {
                                         tile.set_visible(cx, true);
                                         if let Some(mut v) = tile.borrow_mut() {
                                             v.walk.width = Size::Fixed(tile_w);
-                                            v.walk.height = Size::Fixed(152.0);
+                                            v.walk.height = Size::Fixed(176.0);
                                         }
                                         paint_floor_tile(
                                             cx,
@@ -487,8 +525,10 @@ impl Widget for FloorList {
                                             t.0.as_str(),
                                             t.1.as_str(),
                                             t.2.as_str(),
-                                            t.3.as_deref(),
+                                            t.3,
                                             t.4,
+                                            t.5,
+                                            focused.get(ti).copied().unwrap_or(false),
                                         );
                                     }
                                     None => tile.set_visible(cx, false),
@@ -505,6 +545,10 @@ impl Widget for FloorList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        // Virtualized rows: redraw when the page scrolls so the window moves.
+        if matches!(event, Event::Scroll(_)) {
+            self.view.redraw(cx);
+        }
         if page_owns_scroll(event) {
             return;
         }
@@ -558,7 +602,9 @@ impl Widget for FloorLayoutList {
         }
         for (slot, path) in slots.iter().enumerate() {
             let tile = canvas.view(cx, *path);
-            let Some((id, x, y, w, h, (name, words, meta, action, state))) = tiles.get(slot) else {
+            let Some((id, x, y, w, h, (name, words, meta, action, state, bill_tools))) =
+                tiles.get(slot)
+            else {
                 tile.set_visible(cx, false);
                 continue;
             };
@@ -579,7 +625,17 @@ impl Widget for FloorLayoutList {
             } else {
                 name.clone()
             };
-            paint_floor_tile(cx, &tile, &mark, words, meta, action.as_deref(), *state);
+            paint_floor_tile(
+                cx,
+                &tile,
+                &mark,
+                words,
+                meta,
+                *action,
+                *state,
+                *bill_tools,
+                selected.as_deref() == Some(id.as_str()),
+            );
         }
         let walk = Walk {
             height: Size::Fixed(canvas_h.max(120.0)),

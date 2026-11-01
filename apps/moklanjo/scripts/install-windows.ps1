@@ -77,6 +77,10 @@ Makepad needs kumkaj_moklanjo\resources (underscores). Re-run the package script
     if (-not (Test-Path $FontCheck)) {
         Write-Error "Missing UI font: $FontCheck - package is incomplete. Re-run scripts/fetch-ui-fonts.sh apps/moklanjo then apps/moklanjo/scripts/package-windows.sh"
     }
+    $FaCheck = Join-Path $ResSrc "fonts\fa-solid-900.ttf"
+    if (-not (Test-Path $FaCheck)) {
+        Write-Error "Missing icon font: $FaCheck - action icons will be empty boxes. Re-run scripts/fetch-ui-fonts.sh apps/moklanjo then re-package."
+    }
 
     Write-Host "Installing $Label"
     Write-Host "  App files:    $InstallDir"

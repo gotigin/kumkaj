@@ -79,34 +79,26 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .set_visible(cx, finding);
 
         let add_busy = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
-        let add_status = if add_busy {
-            printer_add_status()
+        // Text-only busy + Fit Cancel. No ActionStack face swap (that redraw
+        // path kept freezing Settings via Makepad wrap+Fill log spam).
+        if add_busy {
+            let add_status = printer_add_status()
                 .lock()
                 .unwrap()
                 .clone()
-                .unwrap_or_else(|| app_state().lock().unwrap().t("saving_printer"))
-        } else {
-            String::new()
-        };
-        // Swap whole sibling faces — do not toggle Cancel inside the idle ActionStack.
-        self.ui
-            .view(cx, ids!(printer_add_idle))
-            .set_visible(cx, !add_busy);
-        self.ui
-            .view(cx, ids!(printer_add_busy_face))
-            .set_visible(cx, add_busy);
-        if add_busy {
-            self.ui
-                .button(cx, ids!(printer_add_progress))
-                .set_text(cx, &add_status);
-            self.ui
-                .button(cx, ids!(printer_add_cancel))
-                .set_text(cx, &cancel);
+                .unwrap_or_else(|| app_state().lock().unwrap().t("saving_printer"));
+            self.ui.button(cx, ids!(printer_add)).set_text(cx, &add_status);
         } else {
             self.ui
                 .button(cx, ids!(printer_add))
                 .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
         }
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_visible(cx, add_busy);
 
         let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
         if client_busy {
@@ -298,20 +290,32 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.redraw(cx);
             return;
         }
-        // Keep the showing tab's figures fresh — data is always live, so
-        // these screens need no Refresh button.
+        // Facet bodies stay live via navigate + BOOKS_CHANGED (`FACET_DIRTY`).
+        // Re-running period_books / inventory SQL on every Signal froze phones.
+        let facet_dirty = FACET_DIRTY.swap(false, std::sync::atomic::Ordering::SeqCst);
         {
             let mut st = app_state().lock().unwrap();
             if st.session.is_some() {
                 match st.screen {
                     Screen::Books => {
-                        let _ = st.refresh_books_overview();
+                        if facet_dirty || st.books_cards.is_none() {
+                            let _ = st.refresh_books_overview();
+                        }
                     }
                     Screen::Inventory => {
-                        let _ = st.refresh_inventory_text();
+                        if facet_dirty || st.ops_panel_text.is_empty() {
+                            let _ = st.refresh_inventory_text();
+                        }
                     }
                     Screen::Reports => {
-                        let _ = st.refresh_reports_facet();
+                        if facet_dirty || st.day_close_text.is_empty() {
+                            let _ = st.refresh_reports_facet();
+                        }
+                    }
+                    Screen::Floor => {
+                        if facet_dirty || st.floor_ops_text.is_empty() {
+                            let _ = st.refresh_floor_ops_text();
+                        }
                     }
                     _ => {}
                 }
@@ -542,14 +546,10 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         locale::t(&st.locale.language, "no_staff_yet")
                     })
             };
-            // Until Owner finishes setup, and until staff exist, only Owner
-            // unlock. A pending PIN reset is the Owner's job too.
-            let lock_as_owner = if !owner_setup_complete || !has_staff || pin_reset_required {
-                st.lock_as_owner = true;
-                true
-            } else {
-                st.lock_as_owner
-            };
+            // Client first-time → Staff; Server → Owner; then remember last chip.
+            // Until setup/staff/PIN-reset allow Staff, only Owner unlock.
+            st.apply_lock_role_selection();
+            let lock_as_owner = st.lock_as_owner;
             let show_staff_role = owner_setup_complete && has_staff && !pin_reset_required;
             let undo_visible = st.undo_sale_id.is_some()
                 && !st.undo_snack_text.trim().is_empty()
@@ -859,7 +859,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 self.ui.button(cx, idle).set_text(cx, &text);
                 self.ui.button(cx, on).set_text(cx, &text);
             }
-            let price_ph = st.t("price_ph");
+            let price_ph = if st.fiscal.tax_pricing.is_inside_price() {
+                st.t("price_ph_gst_inside")
+            } else {
+                st.t("price_ph")
+            };
             self.ui.text_input(cx, ids!(menu_price_input)).set_empty_text(cx, price_ph);
             self.ui.view(cx, ids!(sale_detail)).set_visible(cx, st.selected_sale_id.is_some());
 
@@ -1041,7 +1045,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             ] {
                 self.paint_choice_pair(cx, idle, on, st.amend_pay == m);
             }
-            let inclusive = st.fiscal.tax_pricing == TaxPricing::Inclusive;
+            let inclusive = st.fiscal.tax_pricing == TaxPricing::InsidePrice;
             self.paint_choice_pair(cx, ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), inclusive);
             self.paint_choice_pair(cx, ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), !inclusive);
             let allow_zero = st
@@ -1500,8 +1504,29 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             } else {
                 (st.t("send_kot"), String::new(), false)
             };
+            let may_reprint = session_may_reprint(st.session.as_ref());
+            let reprint_n = st
+                .cart
+                .lines
+                .iter()
+                .filter(|l| l.is_sent() && !l.reprint_skip && l.kot_id != QUEUED_KOT)
+                .count();
+            let reprint_label = {
+                let base = st.t("reprint_kot");
+                if reprint_n > 0 {
+                    format!("{base} ({reprint_n})")
+                } else {
+                    base
+                }
+            };
             drop(st);
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
+            self.ui
+                .button(cx, ids!(reprint_kot_btn))
+                .set_visible(cx, has_sent && may_reprint);
+            self.ui
+                .button(cx, ids!(reprint_kot_btn))
+                .set_text(cx, &reprint_label);
             {
                 let help = self.ui.widget(cx, ids!(kot_dest_help)).as_info_help();
                 let st = app_state().lock().unwrap();
@@ -1737,13 +1762,19 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(till_loyalty_chip))
                 .set_text(cx, &plain_display_text(&till_line));
-            let crm_text = st
-                .store
-                .as_ref()
-                .and_then(|s| s.crm_segment_preview(st.crm_segment).ok())
-                .unwrap_or_else(|| "Open as Server to preview guests.".into());
+            let on_credit = st.screen == Screen::Credit;
+            let crm_text = if on_credit {
+                st.store
+                    .as_ref()
+                    .and_then(|s| s.crm_segment_preview(st.crm_segment).ok())
+                    .unwrap_or_else(|| "Open as Server to preview guests.".into())
+            } else {
+                String::new()
+            };
             drop(st);
-            self.set_report_rows(cx, ids!(crm_preview), parse_report(&crm_text));
+            if on_credit {
+                self.set_report_rows(cx, ids!(crm_preview), parse_report(&crm_text));
+            }
         }
 
         let (sale_selected, sale_history, amend_total_text, amend_natural, amend_applied, amend_round) = {
@@ -2123,9 +2154,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .set_tip(&plain_display_text(&help));
             }
             self.ui.view(cx, ids!(table_move_panel)).set_visible(cx, table_open && move_open);
+            // Cancel/NC/Move panel follows the open action — not only when a
+            // table chip is lit (that hid Cancel after KOT for many tickets).
             self.ui
                 .view(cx, ids!(line_action_panel))
-                .set_visible(cx, table_open && line_action.is_some());
+                .set_visible(cx, line_action.is_some());
             if let Some(action) = line_action {
                 let (title, reason, qty, cooked_btn, target) = match action {
                     LineAction::Cancel => ("cancel_item_title", true, true, true, false),
@@ -2254,6 +2287,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 st.floor_view_layout = false;
                 st.floor_layout_sel = None;
             }
+            // No separate "active table" strip — the tile border already marks focus;
+            // print / view / open live on each card.
+            self.ui.view(cx, ids!(floor_toolbar)).set_visible(cx, false);
             self.ui.widget(cx, ids!(floor_list)).set_visible(cx, true);
             self.ui.widget(cx, ids!(floor_layout_list)).set_visible(cx, false);
             self.ui.view(cx, ids!(floor_layout_editor)).set_visible(cx, false);
@@ -2403,6 +2439,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(settings_tmpl_label))
                 .set_text(cx, &plain_display_text(&tmpl_line));
+            // Printers / units / sibling pickers — Settings only (was rebuilt on
+            // every sync_chrome and froze Floor / Lock on phones).
+            if screen == Screen::Settings {
             {
                 let on = {
                     let st = app_state().lock().unwrap();
@@ -2542,16 +2581,18 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .unwrap_or_default()
             };
             self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
-            {
+            } // Settings printers / units / siblings
+            if screen == Screen::Floor {
                 let filter = self.ui.text_input(cx, ids!(floor_waiter_filter)).text();
-                let mut st = app_state().lock().unwrap();
-                st.floor_waiter_filter = filter;
-                let ops = st
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.ops_panel_text().ok())
-                    .unwrap_or_else(|| st.ops_panel_text.clone());
-                drop(st);
+                let ops = {
+                    let mut st = app_state().lock().unwrap();
+                    if st.floor_waiter_filter != filter {
+                        st.floor_waiter_filter = filter;
+                        // Filter change: refresh ops for the new waiter slice.
+                        let _ = st.refresh_floor_ops_text();
+                    }
+                    st.floor_ops_text.clone()
+                };
                 self.ui
                     .widget(cx, ids!(floor_ops_label))
                     .set_text(cx, &plain_display_text(&ops));
@@ -2579,11 +2620,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 // Raw rows — ReportText paints per-Kv eyes + masks at draw time.
                 self.set_report_rows(cx, ids!(day_close_label), parse_report(&day_close));
             }
-            // Books home stat cards: label + value + per-figure eye.
-            {
-                let overview = {
+            // Books home stat cards from cache (filled in refresh_books_overview).
+            if screen == Screen::Books {
+                let (overview, till) = {
                     let st = app_state().lock().unwrap();
-                    st.store.as_ref().and_then(|s| s.books_overview().ok())
+                    (st.books_cards.clone(), st.till_balance_label.clone())
                 };
                 if let Some(o) = overview {
                     self.ui
@@ -2694,14 +2735,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         &o.bank_net_today,
                     );
                 }
-                let till = {
-                    let st = app_state().lock().unwrap();
-                    st.store
-                        .as_ref()
-                        .and_then(|s| s.till_balance_paise().ok())
-                        .map(|v| st.money(Money(v)))
-                };
-                if let Some(till) = till {
+                if !till.is_empty() {
                     self.paint_amount_value(
                         cx,
                         ids!(books_till_value),
@@ -2872,26 +2906,43 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Header back (‹ left of shop mark). Body Back buttons stay hidden.
+        // Back chrome: header ‹ when the unlocked header is on screen; body
+        // Back on auth screens where that header is hidden (ClientPair,
+        // Onboard, Server-pick). Never leave a nested/auth step with no Back.
         {
-            let show = {
+            let (show_header_back, show_client_pair_back, show_onboard_back, show_server_pick_cancel) = {
                 let st = app_state().lock().unwrap();
-                st.picking_server
-                    || st.settings_panel.is_some()
+                let header_on = !matches!(
+                    st.screen,
+                    Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+                );
+                let nested = st.settings_panel.is_some()
                     || st.line_action.is_some()
                     || st.move_panel_open
                     || st.split_mode
                     || (st.screen == Screen::Floor && st.picking_table)
-                    || matches!(
-                        st.screen,
-                        Screen::ClientPair | Screen::SidebarSettings
-                    )
-                    || !st.nav_back.is_empty()
+                    || st.screen == Screen::SidebarSettings
+                    || !st.nav_back.is_empty();
+                (
+                    header_on && nested,
+                    st.screen == Screen::ClientPair,
+                    st.screen == Screen::Onboard && !st.onboarding_complete,
+                    st.picking_server,
+                )
             };
-            self.ui.button(cx, ids!(header_back)).set_visible(cx, show);
+            self.ui
+                .button(cx, ids!(header_back))
+                .set_visible(cx, show_header_back);
+            self.ui
+                .button(cx, ids!(client_pair_back))
+                .set_visible(cx, show_client_pair_back);
+            self.ui
+                .button(cx, ids!(onboard_back))
+                .set_visible(cx, show_onboard_back);
+            self.ui
+                .button(cx, ids!(server_pick_cancel))
+                .set_visible(cx, show_server_pick_cancel);
             for id in [
-                ids!(client_pair_back),
-                ids!(server_pick_cancel),
                 ids!(sidebar_settings_back),
                 ids!(settings_detail_back),
                 ids!(line_action_back),

@@ -67,7 +67,7 @@ Apply a country in Settings to set the tax name and maths (VAT · GST · sales t
 
 - Line: **Actual** (`@ × qty`) and **Applied** (editable; defaults to Actual)
 - Bill: **Actual Total**, **Applied Total**, **Rounded Total** (editable charge; defaults to Applied)
-- Tax is extracted from the total (inclusive pricing) or added on top of it (exclusive pricing) at finalize
+- Tax at finalize: **Tax inside price** (extract taxable value + tax from the same charged total) or **Tax added at till** (add tax on top so the guest pays more). Tax *name* (GST / VAT / …) is the country pack label — separate from this mode.
 
 **Ship:** see [`DEV.md`](DEV.md) packaging + publish checklist. Website: **https://kumkaj.com** (`../web/`). Apple App Store deferred.
 

@@ -1669,9 +1669,9 @@ impl Store {
             let unit = Money(line.unit_price_paise).format_localized(&currency, &fiscal_settings);
             let total = Money(line.line_total_paise).format_localized(&currency, &fiscal_settings);
             let qty_raw = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
+            // Piece qty is "x4" — strip so the line reads "Name  4 x ₹…".
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
-            out.push_str(&format!("{}\n", line.name));
-            out.push_str(&format!("{qty} x {unit}  {total}\n"));
+            out.push_str(&format!("{}  {qty} x {unit}  {total}\n", line.name));
             if !line.note.is_empty() {
                 out.push_str(&format!("  ({})\n", line.note));
             }
@@ -1684,13 +1684,12 @@ impl Store {
                 Money(sale.rounding_paise).format_localized(&currency, &fiscal_settings)
             ));
         }
-        // Inclusive shops read the bill top-down (Net → tax → Total, all
-        // inside the quoted price); exclusive shops read it as Subtotal plus
-        // tax. Either way the components add up to the Total line.
+        // Tax inside price: Taxable value → tax → Total (same charged total).
+        // Tax added at till: Subtotal + tax → Total.
         let tax_label = sale.tax_label();
         if sale.tax_paise > 0 {
-            let base_caption = if sale.tax_pricing().is_inclusive() {
-                "Net"
+            let base_caption = if sale.tax_pricing().is_inside_price() {
+                "Taxable value"
             } else {
                 "Subtotal"
             };
@@ -1749,8 +1748,8 @@ impl Store {
                 }
             ));
         }
-        if sale.tax_paise > 0 && sale.tax_pricing().is_inclusive() {
-            out.push_str(&format!("(Incl. {tax_label})\n"));
+        if sale.tax_paise > 0 && sale.tax_pricing().is_inside_price() {
+            out.push_str(&format!("({tax_label} inside price)\n"));
         }
         if !sale.created_by_name.is_empty() {
             out.push_str(&format!("By {}\n", sale.created_by_name));
@@ -1932,10 +1931,10 @@ impl Store {
             .filter(|s| !s.trim().is_empty()))
     }
 
-    /// `GST inside sales` vs `VAT collected` — inclusive tax was already in
-    /// the price, exclusive tax was charged on top.
+    /// Day-report tax line: Tax inside price → “GST inside sales”; Tax added
+    /// at till → “VAT collected” (label from the country pack).
     pub fn tax_total_caption(&self, fiscal_settings: &FiscalSettings) -> String {
-        if fiscal_settings.tax_pricing.is_inclusive() {
+        if fiscal_settings.tax_pricing.is_inside_price() {
             format!("{} inside sales", fiscal_settings.tax_label())
         } else {
             format!("{} collected", fiscal_settings.tax_label())
@@ -4462,6 +4461,20 @@ impl Store {
             "server" | "client" => self.meta_set("device_role", role),
             _ => Err("device_role must be server or client".into()),
         }
+    }
+
+    /// Last Lock chip: Owner vs Staff. `None` = never chosen on this device —
+    /// UI defaults Client→Staff, Server→Owner.
+    pub fn lock_role_prefer_owner(&self) -> Result<Option<bool>, String> {
+        Ok(match self.meta_get("lock_prefer_owner")?.as_deref() {
+            Some("1") => Some(true),
+            Some("0") => Some(false),
+            _ => None,
+        })
+    }
+
+    pub fn set_lock_role_prefer_owner(&self, as_owner: bool) -> Result<(), String> {
+        self.meta_set("lock_prefer_owner", if as_owner { "1" } else { "0" })
     }
 
     /// Extra tills may pair on LAN. Default off until the owner allows them.
@@ -13797,10 +13810,10 @@ mod tests {
         assert_eq!(totals.revenue_paise, 12_500);
         assert_eq!(totals.tax_paise, 500);
         assert_eq!(sale.net_paise, 12_000);
-        assert_eq!(sale.tax_pricing(), TaxPricing::Inclusive);
+        assert_eq!(sale.tax_pricing(), TaxPricing::InsidePrice);
         let receipt = store.format_receipt_text(&sale.id).unwrap();
-        assert!(receipt.contains("(Incl. GST)"), "{receipt}");
-        assert!(receipt.contains("Net "), "{receipt}");
+        assert!(receipt.contains("(GST inside price)"), "{receipt}");
+        assert!(receipt.contains("Taxable value "), "{receipt}");
 
         // Finalizing queues a durable event for a future cloud push.
         let pending = store.list_pending_outbox(10).unwrap();
@@ -13833,7 +13846,7 @@ mod tests {
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let fiscal_settings = store.fiscal_settings().unwrap();
         assert_eq!(fiscal_settings.country_code, "IN");
-        assert_eq!(fiscal_settings.tax_pricing, TaxPricing::Inclusive);
+        assert_eq!(fiscal_settings.tax_pricing, TaxPricing::InsidePrice);
         assert_eq!(fiscal_settings.tax_label(), "GST");
         assert_eq!(fiscal_settings.business_id_label, "GSTIN");
 
@@ -13872,7 +13885,7 @@ mod tests {
         let settings = store.apply_country_pack("gb").unwrap();
         assert_eq!(settings.country_code, "GB");
         assert_eq!(settings.tax_label, "VAT");
-        assert_eq!(settings.tax_pricing, TaxPricing::Inclusive);
+        assert_eq!(settings.tax_pricing, TaxPricing::InsidePrice);
         assert_eq!(settings.business_id_label, "VAT number");
         assert_eq!(settings.digital_pay_label, "Bank transfer");
         assert_eq!(settings.date_order, "dmy");
@@ -13917,7 +13930,7 @@ mod tests {
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let settings = store.apply_country_pack("AE").unwrap();
-        assert_eq!(settings.tax_pricing, TaxPricing::Exclusive);
+        assert_eq!(settings.tax_pricing, TaxPricing::AddedAtTill);
         assert_eq!(settings.business_id_label, "TRN");
 
         let mut shawarma = test_product("Shawarma", 100);
@@ -14138,11 +14151,11 @@ mod tests {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         store.apply_country_pack("GB").unwrap();
-        store.set_tax_pricing(TaxPricing::Exclusive).unwrap();
+        store.set_tax_pricing(TaxPricing::AddedAtTill).unwrap();
         let settings = store.fiscal_settings().unwrap();
         assert_eq!(settings.country_code, "GB", "country is unchanged");
         assert_eq!(settings.tax_label, "VAT");
-        assert_eq!(settings.tax_pricing, TaxPricing::Exclusive);
+        assert_eq!(settings.tax_pricing, TaxPricing::AddedAtTill);
         let _ = std::fs::remove_file(path);
     }
 
@@ -14190,7 +14203,7 @@ mod tests {
         assert_eq!(sale.total_paise, 10_500);
         assert_eq!(sale.tax_paise, 500);
         assert_eq!(sale.net_paise, 10_000);
-        assert_eq!(sale.tax_pricing(), TaxPricing::Inclusive);
+        assert_eq!(sale.tax_pricing(), TaxPricing::InsidePrice);
         let _ = std::fs::remove_file(path);
     }
 
@@ -14398,7 +14411,7 @@ mod tests {
             store.add_category("Snacks").unwrap_err(),
             store.apply_country_pack("GB").unwrap_err(),
             store.set_business_tax_id("X").unwrap_err(),
-            store.set_tax_pricing(TaxPricing::Exclusive).unwrap_err(),
+            store.set_tax_pricing(TaxPricing::AddedAtTill).unwrap_err(),
             store.add_expense(500, "misc", "", &owner).unwrap_err(),
             store
                 .add_staff("Ravi", StaffRole::Cashier, "Cashier", "1234", &owner)

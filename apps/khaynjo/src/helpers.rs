@@ -331,10 +331,12 @@ fn list_content_height(count: usize, row: f64, gap: f64) -> f64 {
     }
 }
 
+/// Remember a content row pitch. No redraw from here (redraw+remeasure loops
+/// flicker). Updates when the measured average moves by more than 1px.
 fn remember_content_row(cx: &mut Cx, view: &mut View, slot: &Mutex<f64>, used: f64, measured: f64) {
+    let _ = (cx, view);
     if measured > 1.0 && (measured - used).abs() > 1.0 {
         *slot.lock().unwrap() = measured;
-        view.redraw(cx);
     }
 }
 
@@ -351,7 +353,9 @@ fn customer_row_height() -> &'static Mutex<f64> {
 
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    HEIGHT.get_or_init(|| Mutex::new(320.0))
+    // Closed compact row (~name + meta). Open-line details add extra in CartList.
+    // A 320 seed reserved a tall blank gap above Kitchen for every closed line.
+    HEIGHT.get_or_init(|| Mutex::new(96.0))
 }
 
 fn stock_row_height() -> &'static Mutex<f64> {
@@ -431,43 +435,6 @@ fn claim_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
             !list.is_at_end()
         } else {
             list.first_id() > 0 || list.scroll_position() > 0.5
-        };
-        if can_move {
-            e.handled_y.set(true);
-        }
-    }
-}
-
-/// Same chaining as [`claim_list_nested_scroll`], for a `ReorderList` child
-/// (`list` id) — Kitchen station dropdown.
-fn claim_reorder_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
-    let Event::Scroll(e) = event else {
-        return;
-    };
-    let host_ref = host.widget(cx, ids!(list));
-    let rl = host_ref.as_reorder_list();
-    let Some(list) = rl.borrow() else {
-        claim_list_nested_scroll(cx, host, event);
-        return;
-    };
-    let list_area = list.area();
-    let area = if list_area.is_valid(cx) {
-        list_area
-    } else {
-        host.area()
-    };
-    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
-        return;
-    }
-    let dy = e.scroll.y;
-    if dy != 0.0 {
-        let toward_end = dy > 0.0;
-        // ReorderList #[deref] → PortalList.
-        let pl: &PortalList = &*list;
-        let can_move = if toward_end {
-            !pl.is_at_end()
-        } else {
-            pl.first_id() > 0 || pl.first_scroll() > 0.5
         };
         if can_move {
             e.handled_y.set(true);

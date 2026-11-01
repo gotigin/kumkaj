@@ -46,6 +46,7 @@ chmod +x "$OUT/bin/kumkaj-khaynjo"
 # Makepad: resources at <package>/kumkaj_khaynjo/resources/ (underscores; cwd = package root).
 # Binary lives under bin/ (hyphenated name) so it never collides with the resources dir.
 makepad_copy_desktop_resources "$OUT"
+copy_app_menu_assets_if_present "$OUT"
 
 stage_desktop_package "$OUT" linux
 

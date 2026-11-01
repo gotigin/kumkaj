@@ -49,4 +49,23 @@ mod floor_tests {
         let plain = vec![table("T1", ""), table("T2", "")];
         assert_eq!(floor_rows(&plain, 6), vec![FloorRow::Tiles(vec![0, 1])]);
     }
+
+    #[test]
+    fn floor_page_window_only_covers_the_viewport() {
+        let rows: Vec<FloorRow> = (0..40).map(|i| FloorRow::Tiles(vec![i])).collect();
+        *page_viewport().lock().unwrap() = (100.0, 400.0);
+        // List starts at y=100 (flush with the viewport top): first slice
+        // must be a handful of rows, not the whole floor.
+        let (first, last, before, slice) = floor_page_window(100.0, &rows, 10.0);
+        assert_eq!(first, 0);
+        assert!(last < rows.len(), "must not draw all {n} rows", n = rows.len());
+        assert!(last <= 6, "≈400px viewport fits a few 186px tiles, got last={last}");
+        assert_eq!(before, 0.0);
+        assert!(slice > 0.0 && slice < 2000.0);
+        // Scrolled so row 10 is near the top.
+        let (first, last, before, _) = floor_page_window(-1800.0, &rows, 10.0);
+        assert!(first >= 8, "scrolled deep: first={first}");
+        assert!(last - first <= 6, "window stayed small: {first}..{last}");
+        assert!(before > 0.0);
+    }
 }

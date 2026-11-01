@@ -32,11 +32,11 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        // CJK / icons / emoji: same files Makepad widgets already ships — use
-        // that crate so Android/desktop packages do not double-bundle ~48MB.
-        chinese := FontMember{res: crate_resource("makepad_widgets:resources/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
-        icons := FontMember{res: crate_resource("makepad_widgets:resources/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
+        // CJK / icons / emoji live under this app's resources/fonts (desktop
+        // packages ship only that tree — not makepad_widgets/resources).
+        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
+        icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
+        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     // Card names/prices: Bold (one step under Black) + Gujarati Bold.
     let WorldFontsBold = FontFamily{
@@ -64,9 +64,9 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        chinese := FontMember{res: crate_resource("makepad_widgets:resources/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
-        icons := FontMember{res: crate_resource("makepad_widgets:resources/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
+        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
+        icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
+        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     mod.theme.font_regular.font_family = WorldFonts
     mod.theme.font_label.font_family = WorldFonts
@@ -251,7 +251,7 @@ script_mod! {
     // freezing the whole UI (PIN keypad included). Style fields via theme +
     // per-instance blink_speed/padding only (see FieldInput).
 
-    // Makepad 2 ScrollYView: wheel/trackpad + app keyboard (↑/↓, PgUp/PgDn).
+    // Makepad 2 ScrollYView: wheel/trackpad + mouse/touch press-drag + keys.
     // Pages swipe-scroll on touch; a selectable WrapLabel takes its own drag.
     // The page's scrollbar must be seen: the stock handle colour is almost
     // the page colour. A thin handle that darkens on hover / drag.
@@ -261,11 +261,11 @@ script_mod! {
         padding: Inset{right: 16.}
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: false show_scroll_y: true
-            // Swipe-to-scroll stays on (tablets, phones) — it is what pages
-            // always did; the stock definition was the one in effect.
             scroll_bar_y: mod.widgets.ScrollBar{
                 drag_scrolling: true
-                // Pages feel jumpy with iOS rubber-band; keep fling, drop bounce.
+                // Press-drag over cart / buttons / filled panes (not only
+                // whitespace). Nested PortalList still claims via nested_touch.
+                mouse_capture_overload: true
                 bounce_at_start: false
                 bounce_at_end: false
                 bar_size: 10.
@@ -287,7 +287,7 @@ script_mod! {
     // Horizontal chip/tab strip. Mouse drag-scroll starts on whitespace
     // around the chips (Makepad: no capture overload for mouse), so a press
     // on a chip stays a tap or nav drag-to-swap; touch still scrolls from a
-    // chip. Vertical pages stay touch-only (`drag_scroll_touch_only`).
+    // chip. Desk panes that fill the strip set mouse_capture_overload.
     mod.widgets.ScrollXView = mod.widgets.ViewBase {
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: true show_scroll_y: false
@@ -2172,16 +2172,46 @@ script_mod! {
     }
 
 
-    // Floor tab: one card per table — free (cream) or occupied (deep red)
-    // One table on the floor grid. The visit state is the colour (one of
-    // the stacked backgrounds is shown — Makepad's reliable way to restyle by
-    // state, like the idle/active button faces); the whole tile is the tap
-    // target; a small action appears only where it helps (Bill / Ready).
-    // 152px: room for name + amount + a wrapping status line ("Bill printed ·
-    // 60 min") without the last line sitting on the stroke or clipping "min".
+        // Floor tab: one card per dining table — colour = visit state.
+    // Icon actions only (no "Seat guests" text). Focus = stronger border.
+    let FloorTileIconBtn = Button{
+        width: 36 height: 32
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        text: ""
+        label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xFFFFFF
+            color_hover: #xF4E8E0
+            color_down: #xE8D6CA
+            color_focus: #xFFFFFF
+            color_2: #xFFFFFF
+            color_2_hover: #xF4E8E0
+            color_2_down: #xE8D6CA
+            color_2_focus: #xFFFFFF
+            border_radius: 9.
+            border_size: 1.5
+            border_color: #x5A4238
+            border_color_hover: #x5A4238
+            border_color_down: #x5A4238
+            border_color_focus: #x5A4238
+        }
+        draw_text +: {
+            color: #x1F1A17
+            color_hover: #x1F1A17
+            color_down: #x1F1A17
+            color_focus: #x1F1A17
+            ink_centered: true
+            text_style +: {font_size: 14.}
+        }
+    }
     let FloorTile = View{
         cursor: MouseCursor.Hand
-        width: Fill height: 152
+        // Taller + roomier than the old 152 so status text clears the border.
+        width: Fill height: 176
         flow: Overlay
         bg_free := RoundedView{
             width: Fill height: Fill
@@ -2239,14 +2269,19 @@ script_mod! {
             draw_bg.border_size: 2.
             draw_bg.border_color: #x8C7B72
         }
+        bg_focus := RoundedView{
+            width: Fill height: Fill
+            visible: false
+            draw_bg.color: #x00000000
+            draw_bg.border_radius: 14.
+            draw_bg.border_size: 3.
+            draw_bg.border_color: #x9A0E10
+        }
         View{
             width: Fill height: Fill
-            // Extra bottom inset so descenders ("g" in kitchen) and a wrapped
-            // second status line clear the 2px stroke.
-            padding: Inset{left: 12. right: 10. top: 10. bottom: 12.}
-            flow: Down spacing: 4
-            // Name and the one useful action share the top row, so the
-            // action never falls out of the tile.
+            // Extra bottom inset so status never kisses the stroke.
+            padding: Inset{left: 14. right: 14. top: 12. bottom: 16.}
+            flow: Down spacing: 6
             View{
                 width: Fill height: Fit
                 flow: Right spacing: 6
@@ -2254,55 +2289,35 @@ script_mod! {
                 name := Label{
                     width: Fill
                     text: "T1"
-                    // No wrap: a squeezed Fill next to "Seat guests" used to
-                    // stack "T5" as two characters. Ellipsis if truly long.
                     flow: Right{wrap: false}
+                    max_lines: 1
+                    text_overflow: Ellipsis
                     draw_text.color: #x1F1A17
                     draw_text.text_style.font_size: 18.
                 }
-                act := Button{
-                    text: "Bill"
-                    width: Fit height: 26
-                    padding: Inset{left: 10. right: 10. top: 4. bottom: 4.}
-                    label_walk: Walk{width: Fit height: Fit margin: Inset{left: 2. right: 2.}}
-                    draw_bg +: {
-                        color: #xFFFFFF
-                        color_hover: #xF4E8E0
-                        color_down: #xE8D6CA
-                        color_focus: #xFFFFFF
-                        color_2: #xFFFFFF
-                        color_2_hover: #xF4E8E0
-                        color_2_down: #xE8D6CA
-                        color_2_focus: #xFFFFFF
-                        border_radius: 9.
-                        border_size: 1.5
-                        border_color: #x5A4238
-                        border_color_hover: #x5A4238
-                        border_color_down: #x5A4238
-                        border_color_focus: #x5A4238
-                    }
-                    draw_text +: {
-                        color: #x1F1A17
-                        color_hover: #x1F1A17
-                        color_down: #x1F1A17
-                        color_focus: #x1F1A17
-                        text_style +: {font_size: 12.}
-                    }
-                }
+                // Print / view sit with the primary act — never a bottom row
+                // that clips under the tile height.
+                print_ico := FloorTileIconBtn{text: "\u{f02f}" visible: false}
+                view_ico := FloorTileIconBtn{text: "\u{f06e}" visible: false}
+                act := FloorTileIconBtn{text: "\u{f234}"}
             }
-            // Money first (what the counter scans for), then the state and
-            // how long the guests have been here.
+            // Never wrap:true + Fill on Labels — turtle coerces every draw and
+            // froze Floor on phones with dozens of tables (2026-11).
             meta := Label{
                 width: Fill
                 text: ""
-                flow: Right{wrap: true}
+                flow: Right{wrap: false}
+                max_lines: 1
+                text_overflow: Ellipsis
                 draw_text.color: #x1F1A17
                 draw_text.text_style.font_size: 15.
             }
             state := Label{
                 width: Fill
                 text: "Free"
-                flow: Right{wrap: true}
+                flow: Right{wrap: false}
+                max_lines: 1
+                text_overflow: Ellipsis
                 draw_text.color: #x3A2C26
                 draw_text.text_style.font_size: 12.
             }
@@ -2361,7 +2376,9 @@ script_mod! {
                 state := Label{
                     width: Fill
                     text: "New"
-                    flow: Right{wrap: true}
+                    flow: Right{wrap: false}
+                    max_lines: 1
+                    text_overflow: Ellipsis
                     draw_text.color: #x9A6206
                     draw_text.text_style.font_size: 13.
                 }
@@ -2721,9 +2738,17 @@ script_mod! {
                     font_color: #x6B4A3F
                     font_size: 11.
                 }
-                // Hold under the meta — not in the price column.
-                // Only on unsent lines (sent qty changes via Cancel).
-                hold_send_btn := TicketHoldBtn{text: "Hold"}
+                // Hold (unsent) / include-in-recovery-print (sent) under the meta.
+                // Cancel sits here too — buried under tap-to-expand made "can't
+                // cancel after KOT" feel broken (2026-11).
+                View{
+                    width: Fit height: Fit
+                    flow: Right{wrap: true}
+                    spacing: 6
+                    hold_send_btn := TicketHoldBtn{text: "Hold"}
+                    reprint_incl_btn := TicketHoldBtn{text: "In print" visible: false}
+                    line_cancel_sum := QuietFitBtn{text: "Cancel" visible: false}
+                }
             }
             // Right column: same −/qty/+ as the menu card, stacked above the
             // line amount. Fit width keeps the amount's horizontal place;
@@ -3156,40 +3181,47 @@ script_mod! {
     }
 
     mod.widgets.FloorListBase = #(FloorList::register_widget(vm))
+    // Page scrolls; only on-screen rows draw (same top_gap / list_box as MenuList).
+    // Drawing every FloorTile for 40+ tables froze Android (2026-11).
     mod.widgets.FloorList = set_type_default() do mod.widgets.FloorListBase{
         width: Fill height: Fit
-        list := PortalList{
-            width: Fill height: Fill
-            spacing: 10
-            drag_scrolling: false
-            bounce_at_start: false
-            bounce_at_end: false
-            capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
-            // A row of up to 8 tiles; the draw shows as many as the width
-            // allows (`floor_columns`).
-            Item := View{
-                width: Fill height: Fit
-                padding: Inset{bottom: 10.}
-                flow: Right spacing: 10
-                texture_caching: false
-                t0 := FloorTile{}
-                t1 := FloorTile{}
-                t2 := FloorTile{}
-                t3 := FloorTile{}
-                t4 := FloorTile{}
-                t5 := FloorTile{}
-                t6 := FloorTile{}
-                t7 := FloorTile{}
-            }
-            // Area heading (Dine In, Parcel, AC …) above that area's tables.
-            Header := View{
-                width: Fill height: Fit
-                padding: Inset{top: 6. bottom: 2.}
-                area_label := WrapLabel{
-                    body: ""
-                    font_color: #x69090C
-                    font_size: 16.
+        flow: Down
+        top_gap := View{width: Fill height: 0}
+        list_box := View{
+            width: Fill height: 0
+            list := PortalList{
+                width: Fill height: Fill
+                spacing: 10
+                drag_scrolling: false
+                bounce_at_start: false
+                bounce_at_end: false
+                capture_overload: false
+                scroll_bar: ScrollBar{bar_size: 0.}
+                // A row of up to 8 tiles; the draw shows as many as the width
+                // allows (`floor_columns`).
+                Item := View{
+                    width: Fill height: Fit
+                    padding: Inset{bottom: 10.}
+                    flow: Right spacing: 10
+                    texture_caching: false
+                    t0 := FloorTile{}
+                    t1 := FloorTile{}
+                    t2 := FloorTile{}
+                    t3 := FloorTile{}
+                    t4 := FloorTile{}
+                    t5 := FloorTile{}
+                    t6 := FloorTile{}
+                    t7 := FloorTile{}
+                }
+                // Area heading (Dine In, Parcel, AC …) above that area's tables.
+                Header := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 6. bottom: 2.}
+                    area_label := WrapLabel{
+                        body: ""
+                        font_color: #x69090C
+                        font_size: 16.
+                    }
                 }
             }
         }
@@ -3300,8 +3332,8 @@ script_mod! {
     }
 
     mod.widgets.CartListBase = #(CartList::register_widget(vm))
-    // Page-scrolled like MenuList: only the on-screen window is a PortalList
-    // so a finger on Added items can still drag the outer Order ScrollYView.
+    // Full ticket height; outer Order ScrollYView scrolls. No page-window
+    // slice — variable open/closed line heights made that flicker.
     mod.widgets.CartList = set_type_default() do mod.widgets.CartListBase{
         width: Fill height: Fit
         flow: Down
@@ -3660,58 +3692,80 @@ script_mod! {
         }
     }
 
-    // Checkbox face for kitchen dropdown rows (checked = station is on the ticket).
-    let StationCheckBox = RoundedView{
-        width: 24 height: 24
-        align: Align{x: 0.5 y: 0.5}
-        draw_bg.color: #xffffff
-        draw_bg.border_radius: 6.
-        draw_bg.border_size: 1.5
-        draw_bg.border_color: #xD8BBA6
-    }
-    // Button (not RoundedView) so the ✓ SDF paints the same way as CloseIconBtn.
-    let StationCheckBoxOn = Button{
-        width: 24 height: 24
+    // Kitchen station row: drawn box + ✓ (Noto has ✓; ☐ was missing → tofu).
+    // ↑↓ swap print order.
+    let StationPrioBtn = Button{
+        width: 28 height: 28
         padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        text: ""
-        label_walk: Walk{width: 0. height: 0.}
-        icon_walk: Walk{width: 0. height: 0.}
+        align: Align{x: 0.5 y: 0.5}
         grab_key_focus: false
+        reset_hover_on_click: true
+        text: ""
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
-            color: #x9A0E10
-            color_hover: #x9A0E10
-            color_down: #x69090C
-            color_focus: #x9A0E10
-            border_radius: 6.
+            color: #xF7EFE8
+            color_hover: #xF4E8E0
+            color_down: #xE8D6CA
+            color_focus: #xF7EFE8
+            color_2: #xF7EFE8
+            color_2_hover: #xF4E8E0
+            color_2_down: #xE8D6CA
+            color_2_focus: #xF7EFE8
+            border_radius: 8.
             border_size: 0.
-            pixel: fn() {
-                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
-                sdf.fill(self.color)
-                let c = self.rect_size * vec2(0.5, 0.5)
-                sdf.move_to(c.x - 5.0, c.y + 0.5)
-                sdf.line_to(c.x - 1.5, c.y + 4.0)
-                sdf.line_to(c.x + 5.5, c.y - 4.0)
-                sdf.stroke(#xffffff, 2.4)
-                return sdf.result
-            }
+        }
+        draw_text +: {
+            color: #x8A5A48
+            color_hover: #x8A5A48
+            color_down: #x8A5A48
+            color_focus: #x8A5A48
+            ink_centered: true
+            text_style +: {font_size: 16.}
         }
     }
     let StationCheckRow = RoundedView{
         cursor: MouseCursor.Hand
         width: Fill height: Fit
-        padding: Inset{left: 4. right: 14. top: 12. bottom: 12.}
+        padding: Inset{left: 8. right: 8. top: 10. bottom: 10.}
         flow: Right spacing: 8
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
         draw_bg.border_radius: 10.
         draw_bg.border_size: 1.
         draw_bg.border_color: #xE3D3C8
+        // Drawn checkbox — never depends on a missing Private-Use / ballot glyph.
         View{
-            width: Fit height: Fit
+            width: 22 height: 22
             flow: Overlay
-            check_off := StationCheckBox{}
-            check_on := StationCheckBoxOn{visible: false}
+            align: Align{x: 0.5 y: 0.5}
+            check_off := RoundedView{
+                width: 18 height: 18
+                draw_bg.color: #xffffff
+                draw_bg.border_radius: 3.
+                draw_bg.border_size: 1.5
+                draw_bg.border_color: #x8A5A48
+            }
+            check_on := RoundedView{
+                width: 18 height: 18
+                visible: false
+                flow: Overlay
+                align: Align{x: 0.5 y: 0.5}
+                draw_bg.color: #x9A0E10
+                draw_bg.border_radius: 3.
+                draw_bg.border_size: 0.
+                Label{
+                    text: "\u{2713}"
+                    draw_text.color: #xffffff
+                    draw_text.text_style.font_size: 12.
+                }
+            }
+        }
+        prio := Label{
+            width: Fit
+            text: ""
+            draw_text.color: #x8A5A48
+            draw_text.text_style.font_size: 13.
         }
         title := Label{
             width: Fill
@@ -3727,37 +3781,24 @@ script_mod! {
             draw_text.color: #x6B4A3F
             draw_text.text_style.font_size: 13.
         }
+        prio_up := StationPrioBtn{text: "\u{2191}"}
+        prio_down := StationPrioBtn{text: "\u{2193}"}
     }
     mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
     mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
         width: Fill height: Fit
-        // Multi-check + drag-reorder priority (not exclusive radios).
-        list := ReorderList{
+        // Same PortalList pattern as SuggestList — stable; no ReorderList.
+        list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            drag_handle: @grip
-            drag_scrolling: true
+            drag_scrolling: false
             bounce_at_start: false
             bounce_at_end: false
-            capture_overload: false
+            capture_overload: true
             scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
-                flow: Right spacing: 0
-                align: Align{y: 0.5}
                 texture_caching: false
-                // Direct child of Item so ReorderList drag_handle resolves.
-                grip := View{
-                    width: 28 height: Fill
-                    cursor: MouseCursor.Hand
-                    align: Align{x: 0.5 y: 0.5}
-                    padding: Inset{left: 4. right: 2.}
-                    Label{
-                        text: "⠿"
-                        draw_text.color: #x8A5A48
-                        draw_text.text_style.font_size: 16.
-                    }
-                }
                 row := StationCheckRow{}
             }
         }
@@ -4861,6 +4902,9 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
+                                // Auth header is hidden here — body Back like ClientPair
+                                // (→ DeviceSetup / previous onboard step).
+                                onboard_back := BackBtn{text: "Back"}
                                 h_setup_app_khaynjo := WrapLabel{
                                     body: "Set up Khaynjo"
                                     font_color: #x260B08
@@ -4999,8 +5043,9 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
-                                // Back is header_back (left of brand) — not a body button.
-                                client_pair_back := BackBtn{text: "Back" visible: false}
+                                // Auth header is hidden here — body Back calls navigate_back
+                                // (→ DeviceSetup). Unlocked screens use header_back instead.
+                                client_pair_back := BackBtn{text: "Back"}
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 0
@@ -5662,10 +5707,11 @@ script_mod! {
                                                 flow: Down spacing: 6
                                                 // Dropdown — opens checkbox station list (not a type-in field).
                                                 kot_station_dd := StackSecondaryBtn{text: "Kitchen" flow: Right}
-                                                // Hidden: keeps SuggestField::input + send_kot apply path working.
+                                                // TextInput has no `visible` — collapse height; wrap hides the strip.
                                                 kot_station_input := FieldInput{
-                                                    visible: false
                                                     height: 0.
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                                     empty_text: "Kitchen"
                                                 }
                                                 kot_station_suggest := mod.widgets.StationCheckList{field: "kot_station"}
@@ -5673,6 +5719,7 @@ script_mod! {
                                             send_stack := ActionStack{
                                                 kot_set_station := StackLightBtn{text: "Use this station" visible: false}
                                                 send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
+                                                reprint_kot_btn := StackLightBtn{text: "Print selected again" visible: false}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
                                             }
                                         }
@@ -6017,7 +6064,42 @@ script_mod! {
                                 }
                                 floor_help := InfoHelp{
                                     width: Fit
-                                    tip: "Tap a table to take or change the order. Colours show free → seated → kitchen → ready → eating → bill → paid."
+                                    tip: "Tap a table to open its order. Icons on the card: seat · free · bill · print · view. Active table uses a stronger border."
+                                }
+                                // Kept hidden — tile border marks the active table; icons are on the card.
+                                floor_toolbar := RoundedView{
+                                    width: Fill height: Fit
+                                    visible: false
+                                    padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+                                    flow: Right spacing: 10
+                                    align: Align{y: 0.5}
+                                    draw_bg.color: #xFFF6EE
+                                    draw_bg.border_radius: 14.
+                                    draw_bg.border_size: 1.
+                                    draw_bg.border_color: #xE3D3C8
+                                    floor_tb_name := Label{
+                                        width: Fill
+                                        text: ""
+                                        draw_text.color: #x260B08
+                                        draw_text.text_style.font_size: 15.
+                                    }
+                                    floor_tb_print := FloorTileIconBtn{text: "\u{f02f}"}
+                                    floor_tb_view := FloorTileIconBtn{text: "\u{f06e}"}
+                                    floor_tb_open := FloorTileIconBtn{text: "\u{f07c}"}
+                                }
+                                floor_bill_view := RoundedView{
+                                    width: Fill height: Fit
+                                    visible: false
+                                    padding: Inset{left: 8. right: 8. top: 8. bottom: 12.}
+                                    flow: Down spacing: 8
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 14.
+                                    draw_bg.border_size: 1.
+                                    draw_bg.border_color: #xE3D3C8
+                                    // Same ReportText layout as printed day books —
+                                    // WrapLabel flattened newlines into one paragraph.
+                                    floor_bill_text := mod.widgets.ReportText{}
+                                    floor_bill_close := StackSecondaryBtn{text: "Close bill" flow: Right}
                                 }
                                 // At a glance: busy tables, bills to collect, money on
                                 // the floor.
@@ -6309,9 +6391,9 @@ script_mod! {
                                         table_add := StackPrimaryBtn{text: "Add table"}
                                         table_range_input := FieldInput{empty_text: "Many at once: D1-D20"}
                                         table_range_add := NavBtn{text: "Add these tables"}
-                                        // Fresh shops start with T1..T24; a floor of
-                                        // its own (D1-D20, P1-P20) takes them off.
-                                        table_remove_input := FieldInput{empty_text: "Remove: T1-T24, or one table's name"}
+                                        // Fresh shops start with T1..T24 + Parcel P1..P24;
+                                        // a floor of its own stays clear after Remove.
+                                        table_remove_input := FieldInput{empty_text: "Remove: T1-T24, P1-P24, or one name"}
                                         table_remove_btn := DangerBtn{text: "Remove these tables"}
                                     }
                                 }
@@ -7537,9 +7619,11 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         visible: false
                                     }
                                     ActionStack{
-                                        find_printers_btn := StackSecondaryBtn{text: "Find printers" flow: Right}
-                                        find_printers_cancel := StackSecondaryBtn{text: "Cancel" flow: Right visible: false}
+                                        find_printers_btn := StackSecondaryBtn{text: "Find printers"}
                                     }
+                                    // Fit + no wrap — safe to show/hide. Never toggle a
+                                    // Fill wrap CTA visible inside the Find ActionStack.
+                                    find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     printers_found_label := WrapLabel{
                                         width: Fill
                                         body: ""
@@ -7569,21 +7653,16 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                             printer_wire_os_on := SegBtnOn{text: "Standard" visible: false}
                                         }
                                     }
-                                    printer_format_custom := StackSecondaryBtn{text: "New custom format" flow: Right}
-                                    // Idle go/remove vs busy progress/cancel are separate siblings
-                                    // (same pattern as template_import / template_confirm). Never
-                                    // toggle Cancel visible inside the pressed Stack* ActionStack —
-                                    // that has frozen Settings. Never Overlay-stack the two faces
-                                    // either: Fit+Fill children under Overlay have also hung layout.
-                                    printer_add_idle := ActionStack{
-                                        printer_add := StackPrimaryBtn{text: "Add printer" flow: Right}
-                                        printer_remove := StackSecondaryBtn{text: "Remove" flow: Right}
+                                    printer_format_custom := StackSecondaryBtn{text: "New custom format"}
+                                    // One ActionStack only. Busy = change Add's label (and show a
+                                    // Fit Cancel). Never swap sibling ActionStacks / Overlay faces
+                                    // and never toggle a Fill wrap CTA visible — those redraws hit
+                                    // Makepad wrap+Fill logging and froze Settings on every OS.
+                                    ActionStack{
+                                        printer_add := StackPrimaryBtn{text: "Add printer"}
+                                        printer_remove := StackSecondaryBtn{text: "Remove"}
                                     }
-                                    printer_add_busy_face := ActionStack{
-                                        visible: false
-                                        printer_add_progress := StackPrimaryBtn{text: "Adding printer…" flow: Right}
-                                        printer_add_cancel := StackSecondaryBtn{text: "Cancel" flow: Right}
-                                    }
+                                    printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     h_printers_routes := WrapLabel{body: "2. What prints where" font_color: #x260B08 font_size: 16.}
                                     h_printers_routes_help := WrapLabel{
                                         width: Fill

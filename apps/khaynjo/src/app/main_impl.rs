@@ -7,8 +7,18 @@ impl AppMain for App {
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
         self.sync_tab_chevrons(cx);
         {
-            let r = self.ui.view(cx, ids!(body_stack)).area().rect(cx);
-            *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+            // Page-window lists (Added items, Menu, …) need the *scrolling*
+            // page rect — not body_stack — or the window is wrong and scroll
+            // inside the cart feels broken.
+            let screen = app_state().lock().unwrap().screen;
+            let path = Self::screen_scroll_view(screen);
+            let r = self.ui.view(cx, path).area().rect(cx);
+            if r.size.y > 1.0 {
+                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+            } else {
+                let r = self.ui.view(cx, ids!(body_stack)).area().rect(cx);
+                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+            }
         }
         if matches!(event, Event::Startup) {
             // Before CreateWindow: override the DSL default with the last session.
@@ -22,6 +32,7 @@ impl AppMain for App {
             // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
+                FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
             });
             // Started with the computer: devices and backups don't wait for
@@ -77,6 +88,8 @@ impl AppMain for App {
                     st.printer_draft = draft;
                     st.printer_selected_id = None;
                 }
+                *printer_add_status().lock().unwrap() = None;
+                printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
                 match result {
                     Ok(()) => {
                         self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
@@ -245,11 +258,25 @@ impl AppMain for App {
                 self.set_status(cx, problem);
             }
             if app_state().lock().unwrap().screen == Screen::Settings {
-                self.show_found_printers(cx);
-                if print_share::find_printers_was_cancelled() {
+                // Only rebuild the found list when Find is running or just
+                // finished — thumbs / LAN Signals used to rebuild it every wake.
+                let finding = print_share::is_finding_printers();
+                static WAS_FINDING: std::sync::atomic::AtomicBool =
+                    std::sync::atomic::AtomicBool::new(false);
+                let was_finding = WAS_FINDING.swap(finding, std::sync::atomic::Ordering::SeqCst);
+                let cancelled = print_share::find_printers_was_cancelled();
+                if finding || was_finding || cancelled {
+                    self.show_found_printers(cx);
+                }
+                if cancelled {
                     self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
                 }
-                self.paint_submit_busy_chrome(cx);
+                if finding
+                    || was_finding
+                    || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+                {
+                    self.paint_submit_busy_chrome(cx);
+                }
             }
             let fresh = std::mem::take(&mut firewall_state().lock().unwrap().fresh);
             if fresh {

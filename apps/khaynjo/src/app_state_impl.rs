@@ -8,6 +8,7 @@ impl AppState {
             amend_pay: PayMethod::Cash,
             sale_revisions: Vec::new(),
             selected_table_id: None,
+            floor_focus_table_id: None,
             selected_customer_id: None,
             crm_segment: store::CrmSegment::BirthdayThisWeek,
             pending_loyalty_points: 0,
@@ -45,7 +46,10 @@ impl AppState {
             money_lane: MoneyLane::Declared,
             buy_on_account: false,
             day_close_text: String::new(),
+            books_cards: None,
+            till_balance_label: String::new(),
             ops_panel_text: String::new(),
+            floor_ops_text: String::new(),
             floor_waiter_filter: String::new(),
             floor_view_layout: false,
             floor_layout_sel: None,
@@ -106,6 +110,7 @@ impl AppState {
             suggest_rows: Vec::new(),
             suggest_rev: 0,
             kot_station_priority: Vec::new(),
+            kot_stations_selected: Vec::new(),
             kot_station_default: String::new(),
             team_select_pending: false,
             pay_choice: PayChoice::Cash,
@@ -253,6 +258,14 @@ impl AppState {
             .filter(|s| !s.is_empty())
             .map(str::to_string)
             .collect();
+        self.kot_stations_selected = store
+            .kot_stations_selected_csv()?
+            .unwrap_or_default()
+            .split(',')
+            .map(str::trim)
+            .filter(|s| !s.is_empty())
+            .map(str::to_string)
+            .collect();
         self.kot_station_default = store
             .kot_station_default()?
             .unwrap_or_default()
@@ -314,6 +327,34 @@ impl AppState {
         };
         // Warm LAN only after they confirm Server + extra tills on Lock path.
         // Do not start the server while the chooser is open.
+    }
+
+    /// Lock Owner/Staff chip: remembered preference, else first-time default
+    /// (Client → Staff, Server → Owner). Forces Owner when setup/staff/PIN
+    /// reset require it.
+    fn apply_lock_role_selection(&mut self) {
+        let has_staff = self.staff.iter().any(|s| !s.is_owner());
+        if !self.owner_setup_complete || !has_staff || self.pin_reset_required {
+            self.lock_as_owner = true;
+            return;
+        }
+        let prefer = self
+            .store
+            .as_ref()
+            .and_then(|s| s.lock_role_prefer_owner().ok())
+            .flatten();
+        self.lock_as_owner = match prefer {
+            Some(as_owner) => as_owner,
+            // First time on this books file: Client → Staff, Server → Owner.
+            None => !matches!(self.device_role, DeviceRole::Client),
+        };
+        if !self.lock_as_owner && self.lock_staff_id.is_none() {
+            self.lock_staff_id = self
+                .staff
+                .iter()
+                .find(|s| !s.is_owner())
+                .map(|s| s.id.clone());
+        }
     }
 
     /// The app-global remembered language choice for this install, if any.
@@ -760,7 +801,7 @@ impl AppState {
                     .as_ref()
                     .and_then(|s| s.list_picker_stations().ok())
                     .unwrap_or_else(|| self.stations.clone());
-                // Drag-drop priority: listed ids first, then any new stations.
+                // ↑↓ print priority: listed ids first, then any new stations.
                 if !self.kot_station_priority.is_empty() {
                     let mut ordered = Vec::with_capacity(stations.len());
                     for id in &self.kot_station_priority {
@@ -793,11 +834,14 @@ impl AppState {
                 }
                 rows.extend(stations.into_iter().map(|st| {
                     let n = counts.get(&st.id).copied().unwrap_or(0);
-                    if n > 0 {
-                        SuggestRow::new(st.name.clone(), format!("{n}"))
-                            .with_action(clear_l.clone())
+                    // Checked = multi-select OR dishes already on this kitchen.
+                    let selected = n > 0
+                        || self.kot_stations_selected.iter().any(|s| s == &st.id);
+                    let sub = if n > 0 { format!("{n}") } else { String::new() };
+                    if selected {
+                        SuggestRow::new(st.name.clone(), sub).with_action(clear_l.clone())
                     } else {
-                        SuggestRow::new(st.name.clone(), "").with_action(use_l.clone())
+                        SuggestRow::new(st.name.clone(), sub).with_action(use_l.clone())
                     }
                 }));
                 rows
@@ -931,36 +975,57 @@ impl AppState {
         self.suggest_rev = self.suggest_rev.wrapping_add(1);
     }
 
-    /// Write Kitchen dropdown priority + default station into books meta.
+    /// Write Kitchen dropdown priority / multi-check / default into books meta.
     fn persist_kot_station_prefs(&self) {
         let Some(store) = self.store.as_ref() else {
             return;
         };
-        let csv = self.kot_station_priority.join(",");
-        let _ = store.set_kot_station_priority_csv(&csv);
+        let _ = store.set_kot_station_priority_csv(&self.kot_station_priority.join(","));
+        let _ = store.set_kot_stations_selected_csv(&self.kot_stations_selected.join(","));
         let _ = store.set_kot_station_default(&self.kot_station_default);
     }
 
-    /// Remember `station_id` as the default for new unassigned dishes and
-    /// keep it first in the priority list.
-    fn remember_kot_station(&mut self, station_id: &str) {
+    /// Check a station (multi-select): remember selection + default.
+    /// Does **not** touch print priority — ↑↓ alone reorder the dropdown;
+    /// appending here made a checkbox tap jump the row.
+    fn select_kot_station(&mut self, station_id: &str) {
         let id = station_id.trim();
-        if id.is_empty() {
+        if id.is_empty() || !self.stations.iter().any(|s| s.id == id) {
             return;
         }
-        if !self.stations.iter().any(|s| s.id == id) {
-            return;
+        if !self.kot_stations_selected.iter().any(|s| s == id) {
+            self.kot_stations_selected.push(id.to_string());
         }
         self.kot_station_default = id.to_string();
-        self.kot_station_priority.retain(|s| s != id);
-        self.kot_station_priority.insert(0, id.to_string());
+        self.persist_kot_station_prefs();
+    }
+
+    /// Uncheck a station (leave others checked).
+    fn deselect_kot_station(&mut self, station_id: &str) {
+        let id = station_id.trim();
+        self.kot_stations_selected.retain(|s| s != id);
+        if self.kot_station_default == id {
+            self.kot_station_default = self
+                .kot_station_priority
+                .iter()
+                .find(|p| self.kot_stations_selected.iter().any(|s| s == *p))
+                .cloned()
+                .or_else(|| self.kot_stations_selected.first().cloned())
+                .unwrap_or_default();
+        }
         self.persist_kot_station_prefs();
     }
 
     /// Put the remembered kitchen on unsent lines that still have none
     /// (menu station and Hold left alone).
     fn apply_remembered_kot_to_unassigned(&mut self) {
-        let default = self.kot_station_default.trim().to_string();
+        let default = self
+            .kot_station_priority
+            .iter()
+            .find(|p| self.kot_stations_selected.iter().any(|s| s == *p))
+            .cloned()
+            .filter(|id| !id.is_empty())
+            .unwrap_or_else(|| self.kot_station_default.trim().to_string());
         if default.is_empty() || !self.stations.iter().any(|s| s.id == default) {
             return;
         }
@@ -1226,7 +1291,20 @@ impl AppState {
     /// Books home: money in/out, AR/AP, cash vs bank (not sales-only day close).
     fn refresh_books_overview(&mut self) -> Result<(), String> {
         let store = self.store.as_ref().ok_or("No store")?;
-        self.day_close_text = store.books_overview_text()?;
+        let o = store.books_overview()?;
+        self.day_close_text = Store::books_overview_text_from(&o);
+        self.till_balance_label = store
+            .till_balance_paise()
+            .map(|v| self.money(Money(v)))
+            .unwrap_or_default();
+        self.books_cards = Some(o);
+        Ok(())
+    }
+
+    /// Floor ops strip (open calls / waitlist) — separate from Inventory body.
+    fn refresh_floor_ops_text(&mut self) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or("No store")?;
+        self.floor_ops_text = store.ops_panel_text().unwrap_or_default();
         Ok(())
     }
 
@@ -1448,12 +1526,10 @@ impl AppState {
         self.fiscal.decimal_sep()
     }
 
-    /// Tax the open cart will have added at the till. Always 0 for a shop that
-    /// prices tax-inclusive, where the strip above already shows the real bill.
+    /// Tax portion of the open cart at the shop's pricing mode (extracted
+    /// under Tax inside price; added on top under Tax added at till).
     fn cart_tax_estimate_paise(&self) -> i64 {
-        if self.fiscal.tax_pricing.is_inclusive() {
-            return 0;
-        }
+        let pricing = self.fiscal.tax_pricing;
         self.cart
             .lines
             .iter()
@@ -1464,7 +1540,7 @@ impl AppState {
                     .find(|p| p.id == line.product_id)
                     .map(|p| p.tax_bps)
                     .unwrap_or(0);
-                fiscal::tax_on_amount(line.applied_total().paise(), bps, TaxPricing::Exclusive)
+                fiscal::tax_on_amount(line.applied_total().paise(), bps, pricing)
             })
             .sum()
     }
@@ -1524,13 +1600,42 @@ impl AppState {
         lines.join("\n")
     }
 
-    /// One line under the totals strip: silent unless exclusive tax is about
-    /// to change what the customer actually pays.
+    /// One line under the totals strip: tax added at till changes pay; tax
+    /// inside price shows the GST already inside the total (and warns when
+    /// dishes have no tax rate so "inclusive GST" looks missing).
     fn cart_tax_estimate_line(&self) -> String {
         let tax = self.cart_tax_estimate_paise();
         let service = self.fiscal.service_on(self.cart.line_sum().paise());
+        let inside = self.fiscal.tax_pricing.is_inside_price();
+        let any_rated = self.cart.lines.iter().any(|line| {
+            self.products
+                .iter()
+                .find(|p| p.id == line.product_id)
+                .is_some_and(|p| p.tax_bps > 0)
+        });
+        if inside && !self.cart.lines.is_empty() && !any_rated {
+            return self.t("tax_rates_missing_hint");
+        }
         if tax <= 0 && service <= 0 {
             return " ".to_string();
+        }
+        if inside {
+            let total = self.cart.rounded_total().paise();
+            let taxable = fiscal::net_of_tax(total, tax, TaxPricing::InsidePrice);
+            let mut parts = vec![
+                format!(
+                    "{} {} · {} {}",
+                    self.t("taxable_value"),
+                    self.money(Money(taxable)),
+                    self.fiscal.tax_label(),
+                    self.money(Money(tax))
+                ),
+                self.t("gst_inside_price_note"),
+            ];
+            if service > 0 {
+                parts.push(format!("+ Service {}", self.money(Money(service))));
+            }
+            return parts.join(" · ");
         }
         let mut parts = Vec::new();
         if tax > 0 {

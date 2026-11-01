@@ -80,7 +80,9 @@ makepad_copy_desktop_resources() {
   local widgets_res="$root/vendor/makepad/widgets/resources"
   local fonts_out="$out/$crate_dir/resources/fonts"
   local f
-  for f in LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
+  # FA icons + CJK + emoji: WorldFonts loads these from self:resources/fonts
+  # (desktop packages do not ship a separate makepad_widgets/resources tree).
+  for f in fa-solid-900.ttf LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
     if [[ -f "$fonts_out/$f" ]]; then
       continue
     fi
@@ -95,5 +97,31 @@ makepad_copy_desktop_resources() {
     echo "error: missing NotoSans-Regular.ttf under $fonts_out" >&2
     echo "Run ./scripts/fetch-ui-fonts.sh $KUMKAJ_APP_DIR before packaging." >&2
     return 1
+  fi
+  if [[ ! -f "$fonts_out/fa-solid-900.ttf" ]]; then
+    echo "error: missing fa-solid-900.ttf under $fonts_out (Floor/header icon buttons)" >&2
+    echo "Run ./scripts/fetch-ui-fonts.sh $KUMKAJ_APP_DIR before packaging." >&2
+    return 1
+  fi
+}
+
+# Khaynjo menu shelf + named client templates next to the packaged app
+# (`assets/items`, `assets/templates`). Menu → Import complete template /
+# Client menu read these beside the exe (or one level up when the exe
+# lives under bin/). No-op when the app has no assets/items (Moklanjo).
+# Same tree on Windows, Linux, and MSI — never desktop-platform-skip.
+copy_app_menu_assets_if_present() {
+  local out="${1:?}"
+  local items="${KUMKAJ_APP_DIR:?}/assets/items"
+  local templates="${KUMKAJ_APP_DIR}/assets/templates"
+  if [[ ! -d "$items" ]]; then
+    return 0
+  fi
+  mkdir -p "$out/assets"
+  echo "Staging menu shelf → $out/assets/items ..."
+  rsync -a --delete "$items/" "$out/assets/items/"
+  if [[ -d "$templates" ]]; then
+    echo "Staging client templates → $out/assets/templates ..."
+    rsync -a --delete "$templates/" "$out/assets/templates/"
   fi
 }

@@ -539,7 +539,6 @@ impl App {
             self.paint_submit_busy_chrome(cx);
         }
         // Progress face is not a submit — ignore taps while Adding….
-        let _ = self.ui.button(cx, ids!(printer_add_progress)).clicked(actions);
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
             if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Adding… — ignore re-taps.

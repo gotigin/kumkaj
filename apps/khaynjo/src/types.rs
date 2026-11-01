@@ -33,8 +33,10 @@ enum FloorRow {
 
 /// Tiles per row are capped by the row template's slots.
 const FLOOR_MAX_COLUMNS: usize = 8;
-/// A tile is at least this wide (css px) so a table name and amount fit.
-const FLOOR_TILE_MIN_W: f64 = 160.0;
+/// Preferred min tile width (css px). Prefer **big** cards: only add a
+/// column when another tile of this size fits. At 320px → 1 per row;
+/// 2/3/… only when the row is wide enough to keep name + icons + status readable.
+const FLOOR_TILE_MIN_W: f64 = 280.0;
 /// Drawn floor: how many tiles the layout canvas can show at once.
 const FLOOR_LAYOUT_SLOTS: usize = 24;
 /// Auto-pack tile size when every table still has a zero layout box.
@@ -50,7 +52,7 @@ fn content_width() -> &'static Mutex<f64> {
 /// Columns the floor grid last drew with (taps map through the same count).
 fn floor_grid_cols() -> &'static Mutex<usize> {
     static C: OnceLock<Mutex<usize>> = OnceLock::new();
-    C.get_or_init(|| Mutex::new(2))
+    C.get_or_init(|| Mutex::new(1))
 }
 
 /// One way an expense was paid: the method and the amount as typed (blank
@@ -414,6 +416,58 @@ fn page_window(top: f64, rows: usize, row_h: f64, gap: f64) -> (usize, usize) {
     (from.min(rows), to)
 }
 
+/// Floor grid pitch: area headings are short; tile rows match FloorTile 176 + pad.
+fn floor_row_pitch(row: &FloorRow) -> f64 {
+    match row {
+        FloorRow::Area(_) => 34.0,
+        FloorRow::Tiles(_) => 186.0,
+    }
+}
+
+/// Page-window for Floor's mixed header/tile rows. Returns
+/// `(first, last, height_before_first, height_of_drawn_slice)` so the list can
+/// expand to full content height while only painting on-screen rows.
+fn floor_page_window(top: f64, rows: &[FloorRow], gap: f64) -> (usize, usize, f64, f64) {
+    let n = rows.len();
+    if n == 0 {
+        return (0, 0, 0.0, 0.0);
+    }
+    let pitches: Vec<f64> = rows.iter().map(floor_row_pitch).collect();
+    let mut starts = Vec::with_capacity(n);
+    let mut y = top;
+    for (i, &h) in pitches.iter().enumerate() {
+        starts.push(y);
+        y += h + if i + 1 < n { gap } else { 0.0 };
+    }
+    let (vp_top, vp_h) = *page_viewport().lock().unwrap();
+    let (first, last) = if vp_h <= 1.0 {
+        (0, n.min(6))
+    } else {
+        let vp_bot = vp_top + vp_h;
+        let mut first = 0;
+        while first < n && starts[first] + pitches[first] < vp_top {
+            first += 1;
+        }
+        let mut last = first;
+        while last < n && starts[last] < vp_bot {
+            last += 1;
+        }
+        (first.saturating_sub(1), (last + 1).min(n))
+    };
+    let before = if first == 0 {
+        0.0
+    } else {
+        starts[first] - top
+    };
+    let slice = if last <= first {
+        0.0
+    } else {
+        let end = starts[last - 1] + pitches[last - 1];
+        end - starts[first]
+    };
+    (first, last, before, slice)
+}
+
 /// Narrowest a dish tile may get in the menu window.
 /// Prefer two readable image|text cards over three cramped ones.
 const PRODUCT_TILE_MIN_W: f64 = 300.0;
@@ -436,20 +490,22 @@ fn product_grid_cols() -> &'static Mutex<usize> {
 }
 
 /// How many tiles fit across `width` (or the last drawn / content width).
+/// Smallest supported width (~320) → **1** column; more columns only when
+/// another preferred-width tile fits (looks big, not cramped).
 fn floor_columns_for(width: f64) -> usize {
     let w = if width.is_finite() && width > 0.0 {
         width
     } else {
         *content_width().lock().unwrap()
     };
-    (((w + 10.0) / (FLOOR_TILE_MIN_W + 10.0)).floor() as usize).clamp(2, FLOOR_MAX_COLUMNS)
+    (((w + 10.0) / (FLOOR_TILE_MIN_W + 10.0)).floor() as usize).clamp(1, FLOOR_MAX_COLUMNS)
 }
 
 /// Columns the floor grid last drew (falls back to content-width estimate).
 fn floor_columns() -> usize {
     let drawn = *floor_grid_cols().lock().unwrap();
-    if drawn >= 2 {
-        drawn.clamp(2, FLOOR_MAX_COLUMNS)
+    if drawn >= 1 {
+        drawn.clamp(1, FLOOR_MAX_COLUMNS)
     } else {
         floor_columns_for(*content_width().lock().unwrap())
     }

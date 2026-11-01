@@ -47,20 +47,26 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.redraw(cx);
             return;
         }
-        // Keep the showing tab's figures fresh — data is always live, so
-        // these screens need no Refresh button.
+        // Facet bodies stay live via navigate + BOOKS_CHANGED (`FACET_DIRTY`).
+        let facet_dirty = FACET_DIRTY.swap(false, std::sync::atomic::Ordering::SeqCst);
         {
             let mut st = app_state().lock().unwrap();
             if st.session.is_some() {
                 match st.screen {
                     Screen::Books => {
-                        let _ = st.refresh_books_overview();
+                        if facet_dirty || st.day_close_text.is_empty() {
+                            let _ = st.refresh_books_overview();
+                        }
                     }
                     Screen::Inventory => {
-                        let _ = st.refresh_inventory_text();
+                        if facet_dirty || st.ops_panel_text.is_empty() {
+                            let _ = st.refresh_inventory_text();
+                        }
                     }
                     Screen::Reports => {
-                        let _ = st.refresh_reports_facet();
+                        if facet_dirty || st.day_close_text.is_empty() {
+                            let _ = st.refresh_reports_facet();
+                        }
                     }
                     _ => {}
                 }
@@ -281,14 +287,10 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     })
                     .unwrap_or_else(|| locale::t(&st.locale.language, "no_staff_yet"))
             };
-            // Until Owner finishes setup, and until staff exist, only Owner
-            // unlock. A pending PIN reset is the Owner's job too.
-            let lock_as_owner = if !owner_setup_complete || !has_staff || pin_reset_required {
-                st.lock_as_owner = true;
-                true
-            } else {
-                st.lock_as_owner
-            };
+            // Client first-time → Staff; Server → Owner; then remember last chip.
+            // Until setup/staff/PIN-reset allow Staff, only Owner unlock.
+            st.apply_lock_role_selection();
+            let lock_as_owner = st.lock_as_owner;
             let show_staff_role = owner_setup_complete && has_staff && !pin_reset_required;
             let undo_visible = st.undo_sale_id.is_some()
                 && matches!(
@@ -1896,25 +1898,41 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Header back (‹ left of shop mark). Body Back buttons stay hidden.
+        // Back chrome: header ‹ when the unlocked header is on screen; body
+        // Back on auth screens where that header is hidden (ClientPair,
+        // Onboard, Server-pick). Never leave a nested/auth step with no Back.
         {
-            let show = {
+            let (show_header_back, show_client_pair_back, show_onboard_back, show_server_pick_cancel) =
+            {
                 let st = app_state().lock().unwrap();
-                st.picking_server
-                    || matches!(
-                        st.screen,
-                        Screen::ClientPair | Screen::SidebarSettings
-                    )
-                    || !st.nav_back.is_empty()
+                let header_on = !matches!(
+                    st.screen,
+                    Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+                );
+                let nested =
+                    st.screen == Screen::SidebarSettings || !st.nav_back.is_empty();
+                (
+                    header_on && nested,
+                    st.screen == Screen::ClientPair,
+                    st.screen == Screen::Onboard && !st.onboarding_complete,
+                    st.picking_server,
+                )
             };
-            self.ui.button(cx, ids!(header_back)).set_visible(cx, show);
-            for id in [
-                ids!(client_pair_back),
-                ids!(server_pick_cancel),
-                ids!(sidebar_settings_back),
-            ] {
-                self.ui.button(cx, id).set_visible(cx, false);
-            }
+            self.ui
+                .button(cx, ids!(header_back))
+                .set_visible(cx, show_header_back);
+            self.ui
+                .button(cx, ids!(client_pair_back))
+                .set_visible(cx, show_client_pair_back);
+            self.ui
+                .button(cx, ids!(onboard_back))
+                .set_visible(cx, show_onboard_back);
+            self.ui
+                .button(cx, ids!(server_pick_cancel))
+                .set_visible(cx, show_server_pick_cancel);
+            self.ui
+                .button(cx, ids!(sidebar_settings_back))
+                .set_visible(cx, false);
         }
 
         self.paint_submit_busy_chrome(cx);
@@ -1956,26 +1974,24 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(find_printers_cancel))
             .set_visible(cx, finding);
 
-        // Swap whole sibling faces — do not toggle Cancel inside the idle ActionStack.
-        self.ui
-            .view(cx, ids!(printer_add_idle))
-            .set_visible(cx, !printer_add);
-        self.ui
-            .view(cx, ids!(printer_add_busy_face))
-            .set_visible(cx, printer_add);
+        // Text-only busy + Fit Cancel. No ActionStack face swap (that redraw
+        // path kept freezing Settings via Makepad wrap+Fill log spam).
         if printer_add {
-            self.ui.button(cx, ids!(printer_add_progress)).set_text(
+            self.ui.button(cx, ids!(printer_add)).set_text(
                 cx,
                 status.as_deref().unwrap_or("Adding printer…"),
             );
-            self.ui
-                .button(cx, ids!(printer_add_cancel))
-                .set_text(cx, &cancel_lbl);
         } else {
             self.ui
                 .button(cx, ids!(printer_add))
                 .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
         }
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_text(cx, &cancel_lbl);
+        self.ui
+            .button(cx, ids!(printer_add_cancel))
+            .set_visible(cx, printer_add);
 
         if backup {
             self.ui

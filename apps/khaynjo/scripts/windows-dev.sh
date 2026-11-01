@@ -81,6 +81,7 @@ fi
 
 cp -f "$EXE" "$OUT/kumkaj-khaynjo.exe"
 makepad_copy_desktop_resources "$OUT"
+copy_app_menu_assets_if_present "$OUT"
 stage_desktop_package "$OUT" windows
 
 SIZE="$(du -h "$OUT/kumkaj-khaynjo.exe" | awk '{print $1}')"
@@ -110,4 +111,4 @@ MSI:  ./apps/khaynjo/scripts/msi.sh [prod|dev] → dist/Khaynjo-<ver>.msi
 EOF
 
 echo "Windows $FLAVOR package: $OUT/  (exe ${SIZE})"
-echo "Copy the whole folder to Windows (exe + kumkaj_khaynjo/resources + Setup.bat)."
+echo "Copy the whole folder to Windows (exe + kumkaj_khaynjo/resources + assets/ + Setup.bat)."

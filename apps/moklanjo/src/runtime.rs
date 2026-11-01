@@ -444,8 +444,7 @@ fn printer_add_job_continue(
                     *printer_add_once().lock().unwrap() = Some(Err(e));
                 }
             }
-            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-            clear_books_work_status();
+            // Keep busy until UI takes the result and applies the draft.
             makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
         });
 }
@@ -628,6 +627,10 @@ static SCREEN_KEPT_ON: std::sync::atomic::AtomicBool = std::sync::atomic::Atomic
 /// The Server's books changed under this screen (a booking from a counter
 /// device): today's figures and lists refresh on the next wake.
 static BOOKS_CHANGED: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+
+/// Books / Inventory / Reports facet text needs a fresh SQL pass. Cleared by
+/// `sync_chrome` after it refreshes — avoids re-running period SQL on every Signal.
+static FACET_DIRTY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(true);
 
 fn start_auto_backups(db_path: PathBuf) {
     let mut slot = auto_backup_target().lock().unwrap();

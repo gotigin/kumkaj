@@ -45,6 +45,7 @@ mkdir -p "$OUT/bin"
 cp -f "$BIN" "$OUT/bin/kumkaj-khaynjo"
 chmod +x "$OUT/bin/kumkaj-khaynjo"
 makepad_copy_desktop_resources "$OUT"
+copy_app_menu_assets_if_present "$OUT"
 
 stage_desktop_package "$OUT" linux
 

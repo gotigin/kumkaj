@@ -5,6 +5,11 @@
 #   ./scripts/fetch-ui-fonts.sh apps/khaynjo   # one app
 #   ./scripts/fetch-ui-fonts.sh                # every app under apps/
 # Uses curl + jq (no Python).
+#
+# fa-solid-900.ttf is required on every desktop package (Windows MSI /
+# Linux): WorldFonts loads icons from self:resources/fonts/ only — not
+# from makepad_widgets. Missing FA → empty Floor/header icon boxes.
+# See docs/DEV.md § WorldFonts / packaged icon fonts.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP="${1:-${KUMKAJ_APP_DIR:-}}"
@@ -99,7 +104,8 @@ download_family notosansarmenian "$OUT/NotoSansArmenian-Regular.ttf"
 
 WIDGETS="$ROOT/vendor/makepad/widgets/resources"
 # Single font tree under the app resources/fonts — never duplicate into
-# a second package folder (makepad_widgets/resources).
+# a second package folder (makepad_widgets/resources). Desktop WorldFonts
+# and makepad_copy_desktop_resources read only this tree.
 for f in fa-solid-900.ttf LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoji.ttf; do
   if [[ -s "$OUT/$f" ]]; then
     echo "have $f"
@@ -112,6 +118,12 @@ for f in fa-solid-900.ttf LXGWWenKaiRegular.ttf LXGWWenKaiBold.ttf NotoColorEmoj
     echo "warn: run ./scripts/setup-makepad.sh first for $f" >&2
   fi
 done
+
+if [[ ! -s "$OUT/fa-solid-900.ttf" ]]; then
+  echo "error: fa-solid-900.ttf missing under $OUT" >&2
+  echo "Desktop packages need it for Floor/header icon buttons (DEV.md § WorldFonts)." >&2
+  exit 1
+fi
 
 echo "fonts ready in $OUT"
 ls -lh "$OUT"

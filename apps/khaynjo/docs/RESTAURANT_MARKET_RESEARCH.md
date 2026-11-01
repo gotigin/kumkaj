@@ -115,7 +115,7 @@ owns several restaurants runs **one Khaynjo restaurant per branch**
 |---|---|---|
 | Course firing (starters now, mains on "fire") | Toast, TouchBistro | **Have** (2026-10-27) — hold/fire per course; held never prints |
 | Split check by item / by seat / evenly | Toast, Square, TouchBistro | **Have** (2026-10-27) — seat numbers + split evenly / by seat |
-| Visual floor map + table timers | Toast, TouchBistro | **Have** (2026-10-27) — Grid ↔ Layout; timers already on tiles |
+| Visual floor map + table timers | Toast, TouchBistro | **Have** timers + colour grid (2026-11-01 prefers big tiles, 1-col from ~320px). Drawn Grid↔Layout map **removed from Floor chrome** |
 | Offline mode that is the *normal* mode | TouchBistro (local iPad), GoFrugal | Khaynjo is local-first by design |
 | "86" list (sold out now) that every device sees | Toast | Already: item on/off (sold out) syncs |
 | Kitchen all-day counts | Toast KDS, Petpooja KDS | **Have** — "To cook now" on Kitchen |
@@ -129,8 +129,9 @@ owns several restaurants runs **one Khaynjo restaurant per branch**
 - **Local/LAN catch-up from market + [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md):**
   **Done 2026-10-27** (combos/BOGO, timings, UPI QR, KDS age/recall,
   coursing, split by seat, loyalty/wallet, PO/expiry/variance, waitlist,
-  token/expo/kiosk, pay-at-table, time clock, drawn floor, WhatsApp/SMS
-  share, allergens/vouchers/bulk price, …). Full matrix there §6–§8.
+  token/expo/kiosk, pay-at-table, time clock, colour floor grid, WhatsApp/SMS
+  share, allergens/vouchers/bulk price, …). Drawn Grid↔Layout map was
+  dropped from Floor chrome. Full matrix there §6–§8.
 - **Still later / Cloud:** priced variation matrix polish; live aggregator
   SaaS; public mobile-data ordering; live multi-outlet dashboard —
   unless an owner opts into Kumkaj Cloud (vision §21). Optional Net

@@ -177,6 +177,14 @@ DIR_COUNTER=$((DIR_COUNTER + 1))
 printf '            <Directory Id="D%s" Name="%s">\n' "$DIR_COUNTER" "$RES_DIR" >>"$WXS.open"
 emit_tree "              " "$PKG/$RES_DIR"
 printf '            </Directory>\n' >>"$WXS.open"
+# Khaynjo menu shelf + client templates (assets/items, assets/templates).
+# Same install folder as the exe so Menu import works on Windows like Linux.
+if [[ -d "$PKG/assets" ]]; then
+  DIR_COUNTER=$((DIR_COUNTER + 1))
+  printf '            <Directory Id="D%s" Name="assets">\n' "$DIR_COUNTER" >>"$WXS.open"
+  emit_tree "              " "$PKG/assets"
+  printf '            </Directory>\n' >>"$WXS.open"
+fi
 
 {
   printf '          </Directory>\n'

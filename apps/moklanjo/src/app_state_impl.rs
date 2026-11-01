@@ -290,6 +290,34 @@ impl AppState {
         // Do not start the server while the chooser is open.
     }
 
+    /// Lock Owner/Staff chip: remembered preference, else first-time default
+    /// (Client → Staff, Server → Owner). Forces Owner when setup/staff/PIN
+    /// reset require it.
+    fn apply_lock_role_selection(&mut self) {
+        let has_staff = self.staff.iter().any(|s| !s.is_owner());
+        if !self.owner_setup_complete || !has_staff || self.pin_reset_required {
+            self.lock_as_owner = true;
+            return;
+        }
+        let prefer = self
+            .store
+            .as_ref()
+            .and_then(|s| s.lock_role_prefer_owner().ok())
+            .flatten();
+        self.lock_as_owner = match prefer {
+            Some(as_owner) => as_owner,
+            // First time on this books file: Client → Staff, Server → Owner.
+            None => !matches!(self.device_role, DeviceRole::Client),
+        };
+        if !self.lock_as_owner && self.lock_staff_id.is_none() {
+            self.lock_staff_id = self
+                .staff
+                .iter()
+                .find(|s| !s.is_owner())
+                .map(|s| s.id.clone());
+        }
+    }
+
     /// The app-global remembered language choice for this install, if any.
     /// One choice for the whole device — not per shop, not per staff role.
     fn remembered_language(&self) -> Option<(bool, String)> {
@@ -662,7 +690,7 @@ impl AppState {
     }
 
     /// Tax the open cart will have added at the till. Always 0 for a shop that
-    /// prices tax-inclusive, where the strip above already shows the real bill.
+    /// prices with Tax inside price, where the strip above already shows the real bill.
     fn cart_tax_estimate_paise(&self) -> i64 {
         if self.fiscal.tax_pricing.is_inclusive() {
             return 0;
@@ -677,7 +705,7 @@ impl AppState {
                     .find(|p| p.id == line.product_id)
                     .map(|p| p.tax_bps)
                     .unwrap_or(0);
-                fiscal::tax_on_amount(line.applied_total().paise(), bps, TaxPricing::Exclusive)
+                fiscal::tax_on_amount(line.applied_total().paise(), bps, TaxPricing::AddedAtTill)
             })
             .sum()
     }

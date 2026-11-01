@@ -1120,6 +1120,44 @@ impl Store {
                     .map_err(|e| e.to_string())?;
             }
         }
+        // Parcel slots once (same 24-cap as Tables). Skips names already on
+        // the floor so a shop with P1..P9 only gets P10..P24; a shop that
+        // later clears Parcel does not get them back.
+        self.seed_parcel_slots_once()?;
+        Ok(())
+    }
+
+    /// One-shot P1..P24 in area "Parcel". Idempotent per shop via meta.
+    fn seed_parcel_slots_once(&self) -> Result<(), String> {
+        if self.meta_get("parcel_seeded")?.is_some() {
+            return Ok(());
+        }
+        self.meta_set("parcel_seeded", "1")?;
+        self.ensure_floor_area("Parcel")?;
+        let branch_id = self.active_branch_id()?;
+        let existing: std::collections::HashSet<String> = self
+            .list_tables()?
+            .into_iter()
+            .map(|t| t.name.trim().to_lowercase())
+            .collect();
+        for n in 1..=24 {
+            let name = format!("P{n}");
+            if existing.contains(&name.to_lowercase()) {
+                continue;
+            }
+            self.conn
+                .execute(
+                    "INSERT INTO tables_dining(id, name, status, active_sale_id, branch_id, area)
+                     VALUES(?1, ?2, ?3, NULL, ?4, 'Parcel')",
+                    params![
+                        new_id(),
+                        name,
+                        TableStatus::Available.as_str(),
+                        branch_id
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+        }
         Ok(())
     }
 
@@ -1667,10 +1705,9 @@ impl Store {
             let unit = Money(line.unit_price_paise).format_localized(&currency, &fiscal_settings);
             let total = Money(line.line_total_paise).format_localized(&currency, &fiscal_settings);
             let qty_raw = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
-            // Piece qty is "x4" — strip so the rate line reads "4 x ₹…".
+            // Piece qty is "x4" — strip so the line reads "Name  4 x ₹…".
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
-            out.push_str(&format!("{}\n", line.name));
-            out.push_str(&format!("{qty} x {unit}  {total}\n"));
+            out.push_str(&format!("{}  {qty} x {unit}  {total}\n", line.name));
             if !line.note.is_empty() {
                 out.push_str(&format!("  ({})\n", line.note));
             }
@@ -1683,13 +1720,12 @@ impl Store {
                 Money(sale.rounding_paise).format_localized(&currency, &fiscal_settings)
             ));
         }
-        // Inclusive shops read the bill top-down (Net → tax → Total, all
-        // inside the quoted price); exclusive shops read it as Subtotal plus
-        // tax. Either way the components add up to the Total line.
+        // Tax inside price: Net → tax → Total (same charged total). Tax added
+        // at till: Subtotal + tax → Total. Components always add to Total.
         let tax_label = sale.tax_label();
         if sale.tax_paise > 0 {
-            let base_caption = if sale.tax_pricing().is_inclusive() {
-                "Net"
+            let base_caption = if sale.tax_pricing().is_inside_price() {
+                "Taxable value"
             } else {
                 "Subtotal"
             };
@@ -1745,8 +1781,8 @@ impl Store {
                 }
             ));
         }
-        if sale.tax_paise > 0 && sale.tax_pricing().is_inclusive() {
-            out.push_str(&format!("(Incl. {tax_label})\n"));
+        if sale.tax_paise > 0 && sale.tax_pricing().is_inside_price() {
+            out.push_str(&format!("({tax_label} inside price)\n"));
         }
         if sale.order_type() != OrderType::Counter {
             out.push_str(&format!("{}\n", sale.order_type().label()));
@@ -1988,10 +2024,10 @@ impl Store {
             .filter(|s| !s.trim().is_empty()))
     }
 
-    /// `GST inside sales` vs `VAT collected` — inclusive tax was already in
-    /// the price, exclusive tax was charged on top.
+    /// Day-report tax line: Tax inside price → “GST inside sales”; Tax added
+    /// at till → “VAT collected” (label from the country pack).
     pub fn tax_total_caption(&self, fiscal_settings: &FiscalSettings) -> String {
-        if fiscal_settings.tax_pricing.is_inclusive() {
+        if fiscal_settings.tax_pricing.is_inside_price() {
             format!("{} inside sales", fiscal_settings.tax_label())
         } else {
             format!("{} collected", fiscal_settings.tax_label())
@@ -2492,6 +2528,17 @@ impl Store {
 
     pub fn set_kot_auto_print(&self, on: bool) -> Result<(), String> {
         self.meta_set("kot_auto_print", if on { "1" } else { "0" })
+    }
+
+    /// Day KOT number for a ticket id (0 if unknown).
+    pub fn kot_no_for(&self, kot_id: &str) -> Result<i64, String> {
+        self.conn
+            .query_row(
+                "SELECT COALESCE(kot_no, 0) FROM kot_tickets WHERE id = ?1",
+                params![kot_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())
     }
 
     /// Printable KOT text: table, time, station, items — never prices.
@@ -4504,6 +4551,20 @@ impl Store {
         }
     }
 
+    /// Last Lock chip: Owner vs Staff. `None` = never chosen on this device —
+    /// UI defaults Client→Staff, Server→Owner.
+    pub fn lock_role_prefer_owner(&self) -> Result<Option<bool>, String> {
+        Ok(match self.meta_get("lock_prefer_owner")?.as_deref() {
+            Some("1") => Some(true),
+            Some("0") => Some(false),
+            _ => None,
+        })
+    }
+
+    pub fn set_lock_role_prefer_owner(&self, as_owner: bool) -> Result<(), String> {
+        self.meta_set("lock_prefer_owner", if as_owner { "1" } else { "0" })
+    }
+
     /// Extra tills may pair on LAN. Default off until the owner allows them.
     pub fn extra_tills_allowed(&self) -> Result<bool, String> {
         if self.is_client_device()? {
@@ -4596,6 +4657,15 @@ impl Store {
 
     pub fn set_kot_station_default(&self, station_id: &str) -> Result<(), String> {
         self.meta_set("ui_kot_station_default", station_id.trim())
+    }
+
+    /// Checked kitchen stations in the Order Kitchen dropdown (CSV of ids).
+    pub fn kot_stations_selected_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_kot_stations_selected")
+    }
+
+    pub fn set_kot_stations_selected_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_kot_stations_selected", csv)
     }
 
     /// Snackbar auto-dismiss seconds for this signed-in user (default 10).
@@ -10561,9 +10631,8 @@ impl Store {
         })
     }
 
-    pub fn books_overview_text(&self) -> Result<String, String> {
-        let o = self.books_overview()?;
-        Ok(format!(
+    pub fn books_overview_text_from(o: &BooksOverview) -> String {
+        format!(
             "Today — books at a glance\n\
              Money in (sales) {}\n\
              Money out — purchases (COGS) {} · expenses {}\n\
@@ -10591,7 +10660,11 @@ impl Store {
             o.we_owe,
             o.bank_balance,
             o.bank_net_today,
-        ))
+        )
+    }
+
+    pub fn books_overview_text(&self) -> Result<String, String> {
+        Ok(Self::books_overview_text_from(&self.books_overview()?))
     }
 
     pub fn list_credit_ledger(
@@ -12071,8 +12144,8 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// A floor of the shop's own: T1..T24 go — not the table guests sit
-    /// at — and stay gone when the app starts again.
+    /// A floor of the shop's own: T1..T24 and Parcel P1..P24 go — not the
+    /// table guests sit at — and stay gone when the app starts again.
     #[test]
     fn removed_tables_stay_removed() {
         let path = temp_db();
@@ -12080,15 +12153,19 @@ mod tests {
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let t3 = store.list_tables().unwrap().into_iter().find(|t| t.name == "T3").unwrap();
         store.seat_table(&t3.id, &owner).unwrap();
-        let names: Vec<String> = (1..=24).map(|n| format!("t{n}")).collect();
-        assert_eq!(store.remove_tables_named(&names).unwrap(), (23, vec!["T3".to_string()]));
+        let mut names: Vec<String> = (1..=24).map(|n| format!("t{n}")).collect();
+        names.extend((1..=24).map(|n| format!("p{n}")));
+        assert_eq!(store.remove_tables_named(&names).unwrap(), (47, vec!["T3".to_string()]));
         store.free_table(&t3.id).unwrap();
         assert_eq!(store.remove_tables_named(&["T3".into()]).unwrap().0, 1);
         drop(store);
         // As a new process would: nothing remembered as migrated.
         migrated_paths().lock().unwrap().remove(&path);
         let store = Store::open_path(&path).unwrap();
-        assert!(store.list_tables().unwrap().is_empty(), "no T1..T24 again");
+        assert!(
+            store.list_tables().unwrap().is_empty(),
+            "no T1..T24 / P1..P24 again"
+        );
         let _ = std::fs::remove_file(path);
     }
 
@@ -13523,7 +13600,21 @@ mod tests {
         assert_eq!(branch.name, "Main");
         assert!(branch.is_this_device);
         assert_eq!(store.list_stations().unwrap().len(), 2);
-        assert_eq!(store.list_tables().unwrap().len(), 24, "T1..T24");
+        let tables = store.list_tables().unwrap();
+        assert_eq!(tables.len(), 48, "T1..T24 + Parcel P1..P24");
+        assert_eq!(
+            tables.iter().filter(|t| t.name.starts_with('T') && t.area.is_empty()).count(),
+            24,
+            "T1..T24 in the main floor"
+        );
+        assert_eq!(
+            tables
+                .iter()
+                .filter(|t| t.area == "Parcel" && t.name.starts_with('P'))
+                .count(),
+            24,
+            "P1..P24 in Parcel"
+        );
         assert!(store.list_units().unwrap().iter().any(|u| u.code == "kg"));
 
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
@@ -13704,10 +13795,10 @@ mod tests {
         assert_eq!(totals.revenue_paise, 12_500);
         assert_eq!(totals.tax_paise, 500);
         assert_eq!(sale.net_paise, 12_000);
-        assert_eq!(sale.tax_pricing(), TaxPricing::Inclusive);
+        assert_eq!(sale.tax_pricing(), TaxPricing::InsidePrice);
         let receipt = store.format_receipt_text(&sale.id).unwrap();
-        assert!(receipt.contains("(Incl. GST)"), "{receipt}");
-        assert!(receipt.contains("Net "), "{receipt}");
+        assert!(receipt.contains("(GST inside price)"), "{receipt}");
+        assert!(receipt.contains("Taxable value "), "{receipt}");
 
         // Finalizing queues a durable event for a future cloud push.
         let pending = store.list_pending_outbox(10).unwrap();
@@ -13736,7 +13827,7 @@ mod tests {
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let fiscal_settings = store.fiscal_settings().unwrap();
         assert_eq!(fiscal_settings.country_code, "IN");
-        assert_eq!(fiscal_settings.tax_pricing, TaxPricing::Inclusive);
+        assert_eq!(fiscal_settings.tax_pricing, TaxPricing::InsidePrice);
         assert_eq!(fiscal_settings.tax_label(), "GST");
         assert_eq!(fiscal_settings.business_id_label, "GSTIN");
 
@@ -13775,7 +13866,7 @@ mod tests {
         let settings = store.apply_country_pack("gb").unwrap();
         assert_eq!(settings.country_code, "GB");
         assert_eq!(settings.tax_label, "VAT");
-        assert_eq!(settings.tax_pricing, TaxPricing::Inclusive);
+        assert_eq!(settings.tax_pricing, TaxPricing::InsidePrice);
         assert_eq!(settings.business_id_label, "VAT number");
         assert_eq!(settings.digital_pay_label, "Bank transfer");
         assert_eq!(settings.date_order, "dmy");
@@ -13815,7 +13906,7 @@ mod tests {
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let settings = store.apply_country_pack("AE").unwrap();
-        assert_eq!(settings.tax_pricing, TaxPricing::Exclusive);
+        assert_eq!(settings.tax_pricing, TaxPricing::AddedAtTill);
         assert_eq!(settings.business_id_label, "TRN");
 
         let mut shawarma = test_product("Shawarma", 100);
@@ -14030,11 +14121,11 @@ mod tests {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         store.apply_country_pack("GB").unwrap();
-        store.set_tax_pricing(TaxPricing::Exclusive).unwrap();
+        store.set_tax_pricing(TaxPricing::AddedAtTill).unwrap();
         let settings = store.fiscal_settings().unwrap();
         assert_eq!(settings.country_code, "GB", "country is unchanged");
         assert_eq!(settings.tax_label, "VAT");
-        assert_eq!(settings.tax_pricing, TaxPricing::Exclusive);
+        assert_eq!(settings.tax_pricing, TaxPricing::AddedAtTill);
         let _ = std::fs::remove_file(path);
     }
 
@@ -14079,7 +14170,7 @@ mod tests {
         assert_eq!(sale.total_paise, 10_500);
         assert_eq!(sale.tax_paise, 500);
         assert_eq!(sale.net_paise, 10_000);
-        assert_eq!(sale.tax_pricing(), TaxPricing::Inclusive);
+        assert_eq!(sale.tax_pricing(), TaxPricing::InsidePrice);
         let _ = std::fs::remove_file(path);
     }
 
@@ -14349,7 +14440,7 @@ mod tests {
             store.add_category("Snacks").unwrap_err(),
             store.apply_country_pack("GB").unwrap_err(),
             store.set_business_tax_id("X").unwrap_err(),
-            store.set_tax_pricing(TaxPricing::Exclusive).unwrap_err(),
+            store.set_tax_pricing(TaxPricing::AddedAtTill).unwrap_err(),
             store.add_expense(500, "misc", "", &owner).unwrap_err(),
             store
                 .add_staff("Ravi", StaffRole::Cashier, "Cashier", "1234", &owner)

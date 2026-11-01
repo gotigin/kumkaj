@@ -32,7 +32,6 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
         st.device_role = DeviceRole::Server;
         st.must_confirm_device_role = false;
         st.picking_server = false;
-        st.lock_as_owner = true;
         st.pin_buffer.clear();
         st.nav_back.clear();
         st.nav_forward.clear();
@@ -49,6 +48,8 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
                 }
             }
         }
+        // First Server lock → Owner; else remembered chip.
+        st.apply_lock_role_selection();
         st.screen = Screen::Lock;
         st.status = if !st.owner_setup_complete {
             locale::t(&st.locale.language, "status_server_set_pin")
@@ -90,26 +91,20 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
             st.owner_setup_complete = true;
             st.onboarding_complete = true;
             st.extra_tills_allowed = false;
-            st.lock_as_owner = true;
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
             let _ = st.reload_all();
             st.client_paired = store_client_paired(st.store.as_ref());
-            if st.staff.iter().any(|s| !s.is_owner()) {
-                st.lock_as_owner = false;
-                if st.lock_staff_id.is_none() {
-                    st.lock_staff_id = st
-                        .staff
-                        .iter()
-                        .find(|s| !s.is_owner())
-                        .map(|s| s.id.clone());
-                }
-            }
+            // First Client lock → Staff (when staff exist); else remembered chip.
+            st.apply_lock_role_selection();
             if st.client_paired {
                 st.screen = Screen::Lock;
                 st.status = locale::t(&st.locale.language, "status_client_unlock");
             } else {
+                // Nested under DeviceSetup so Back (body / mouse / Android)
+                // returns to Server/Client — do not clear this parent away.
+                st.nav_back.push(Screen::DeviceSetup);
                 st.screen = Screen::ClientPair;
                 st.status = "Client Mode — pair to the Server before selling".into();
             }
@@ -402,6 +397,10 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
                 st.pin_buffer.clear();
                 st.pin_visible = false;
                 st.lock_as_owner = true;
+                // Nested under DeviceSetup so Back returns to Server/Client.
+                st.nav_back.clear();
+                st.nav_forward.clear();
+                st.nav_back.push(Screen::DeviceSetup);
                 st.screen = Screen::Onboard;
                 st.status = "Owner ready — set up your shop".into();
                 let _ = st.reload_all();
@@ -622,9 +621,15 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
                     st.failed_unlocks = 0;
                     st.unlock_blocked_until = None;
                     if st.device_role == DeviceRole::Client && !st.client_paired {
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
+                        st.nav_back.push(Screen::DeviceSetup);
                         st.screen = Screen::ClientPair;
                         st.status = "Pair to the shop device before selling".into();
                     } else if st.device_role.is_host() && !st.onboarding_complete {
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
+                        st.nav_back.push(Screen::DeviceSetup);
                         st.screen = Screen::Onboard;
                         st.status = format!("Welcome, {} — finish shop setup", member.lock_label());
                     } else {

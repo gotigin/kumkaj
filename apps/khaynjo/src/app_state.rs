@@ -7,6 +7,9 @@ struct AppState {
     amend_pay: PayMethod,
     sale_revisions: Vec<SaleRevision>,
     selected_table_id: Option<String>,
+    /// Floor: table the toolbar (Print / View bill) applies to. Tap a tile
+    /// to focus; Open / Print / View use this without needing Order open.
+    floor_focus_table_id: Option<String>,
     selected_customer_id: Option<String>,
     customers: Vec<Customer>,
     /// Parties → Guests & messages: which CRM segment is previewed.
@@ -70,8 +73,14 @@ struct AppState {
     /// Buy tab: purchase posts to AP when true.
     buy_on_account: bool,
     day_close_text: String,
+    /// Books home stat cards (filled with `day_close_text` in `refresh_books_overview`).
+    books_cards: Option<domain::BooksOverview>,
+    /// Till figure for the Books home card (same refresh as `books_cards`).
+    till_balance_label: String,
     /// Inventory screen body (low stock + recent movements).
     ops_panel_text: String,
+    /// Floor ops panel body (waiter filter / open calls) — not the inventory text.
+    floor_ops_text: String,
     /// Floor: show only tables assigned to this waiter name (empty = all).
     floor_waiter_filter: String,
     /// Floor map: grid of tiles, or drawn positions (`layout_x/y/w/h`).
@@ -191,10 +200,13 @@ struct AppState {
     suggest_rows: Vec<suggest::SuggestRow>,
     /// Bumped on every refresh so the list scrolls back to the top.
     suggest_rev: u64,
-    /// Order-desk Kitchen dropdown: station ids in drag-drop priority order
-    /// (first = highest). Missing ids append in store order. Persisted.
+    /// Order-desk Kitchen dropdown: station ids in drag-drop print priority
+    /// (first = highest). Persisted.
     kot_station_priority: Vec<String>,
-    /// Last kitchen station id used for unassigned dishes (Kitchen checkbox).
+    /// Kitchen stations currently checked (multi-select). Print order follows
+    /// [`kot_station_priority`] among these. Persisted.
+    kot_stations_selected: Vec<String>,
+    /// First selected / last applied kitchen for new unassigned dishes.
     /// Persisted so the next ticket does not require reopening the dropdown.
     kot_station_default: String,
     /// A staff name was picked from the list: select them on this pass.

@@ -274,7 +274,6 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         st.device_role = DeviceRole::Server;
         st.must_confirm_device_role = false;
         st.picking_server = false;
-        st.lock_as_owner = true;
         st.pin_buffer.clear();
         st.nav_back.clear();
         st.nav_forward.clear();
@@ -291,6 +290,8 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 }
             }
         }
+        // First Server lock → Owner; else remembered chip.
+        st.apply_lock_role_selection();
         st.screen = Screen::Lock;
         st.status = if !st.owner_setup_complete {
             locale::t(&st.locale.language, "status_server_set_pin")
@@ -332,26 +333,20 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.owner_setup_complete = true;
             st.onboarding_complete = true;
             st.extra_tills_allowed = false;
-            st.lock_as_owner = true;
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
             let _ = st.reload_all();
             st.client_paired = store_client_paired(st.store.as_ref());
-            if st.staff.iter().any(|s| !s.is_owner()) {
-                st.lock_as_owner = false;
-                if st.lock_staff_id.is_none() {
-                    st.lock_staff_id = st
-                        .staff
-                        .iter()
-                        .find(|s| !s.is_owner())
-                        .map(|s| s.id.clone());
-                }
-            }
+            // First Client lock → Staff (when staff exist); else remembered chip.
+            st.apply_lock_role_selection();
             if st.client_paired {
                 st.screen = Screen::Lock;
                 st.status = locale::t(&st.locale.language, "status_client_unlock");
             } else {
+                // Nested under DeviceSetup so Back (body / mouse / Android)
+                // returns to Server/Client — do not clear this parent away.
+                st.nav_back.push(Screen::DeviceSetup);
                 st.screen = Screen::ClientPair;
                 st.status = "Client Mode — pair to the Server before selling".into();
             }
@@ -540,6 +535,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             }
             if synced {
                 let _ = st.reload_all();
+                FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
             }
             if let Some(tid) = st.selected_table_id.clone() {
                 let _ = st.load_table_cart(&tid);
@@ -620,6 +616,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 st.pin_buffer.clear();
                 st.pin_visible = false;
                 st.lock_as_owner = true;
+                // Nested under DeviceSetup so Back returns to Server/Client.
+                st.nav_back.clear();
+                st.nav_forward.clear();
+                st.nav_back.push(Screen::DeviceSetup);
                 st.screen = Screen::Onboard;
                 st.status = "Owner ready — set up your shop".into();
                 let _ = st.reload_all();
@@ -819,9 +819,15 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     st.failed_unlocks = 0;
                     st.unlock_blocked_until = None;
                     if st.device_role == DeviceRole::Client && !st.client_paired {
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
+                        st.nav_back.push(Screen::DeviceSetup);
                         st.screen = Screen::ClientPair;
                         st.status = "Pair to the shop device before selling".into();
                     } else if st.device_role.is_host() && !st.onboarding_complete {
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
+                        st.nav_back.push(Screen::DeviceSetup);
                         st.screen = Screen::Onboard;
                         st.status = format!("Welcome, {} — finish shop setup", member.lock_label());
                     } else {
@@ -1413,6 +1419,95 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
+    /// Index of the floor-focused table in `st.tables`, if any.
+    fn floor_focus_index(&self) -> Option<usize> {
+        let st = app_state().lock().unwrap();
+        let id = st.floor_focus_table_id.as_ref()?;
+        st.tables.iter().position(|t| &t.id == id)
+    }
+
+    /// Floor: print the guest bill for `tables[item_id]` (waiter + owner).
+    /// Does not require the Order cart to be open on that table.
+    fn print_floor_table_bill(&mut self, cx: &mut Cx, item_id: usize) {
+        let pin = self.ui.text_input(cx, ids!(move_pin_input)).text();
+        let result = (|| -> Result<String, String> {
+            let mut st = app_state().lock().unwrap();
+            let table = st
+                .tables
+                .get(item_id)
+                .cloned()
+                .ok_or_else(|| "Table gone".to_string())?;
+            st.floor_focus_table_id = Some(table.id.clone());
+            if !session_may_reprint(st.session.as_ref()) {
+                return Err("Not allowed to print bills — ask the owner".into());
+            }
+            let done = "Bill printed — take payment when the guests pay";
+            let acted = st.table_action(
+                net::RunningAction::PrintBill {
+                    table_id: table.id.clone(),
+                },
+                &pin,
+                done,
+                phone::Follow::BillText,
+            )?;
+            let Acted::Here(text) = acted else {
+                return Ok("Printing the bill at the counter…".to_string());
+            };
+            let text = text.unwrap_or_default();
+            let dir = st
+                .store
+                .as_ref()
+                .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
+            st.last_receipt = text.clone();
+            match print_share::print_route(
+                print_share::PrintKind::Bill,
+                print_share::RouteKey::Bill,
+                &text,
+                dir.as_deref(),
+            ) {
+                Ok(share) if share.opened => Ok(done.to_string()),
+                Ok(_) => Ok(format!(
+                    "{done} · add a bill printer in Settings → Where things print"
+                )),
+                Err(e) => Ok(format!("{done} · paper not sent ({e})")),
+            }
+        })();
+        match result {
+            Ok(msg) => self.set_status(cx, msg),
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
+    }
+
+    /// Show the guest bill text on the Floor (no printer).
+    fn view_floor_table_bill(&mut self, cx: &mut Cx, item_id: usize) {
+        let result = (|| -> Result<String, String> {
+            let st = app_state().lock().unwrap();
+            let table = st
+                .tables
+                .get(item_id)
+                .cloned()
+                .ok_or_else(|| "Table gone".to_string())?;
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            let order = store
+                .running_order(&table.id)?
+                .ok_or_else(|| format!("{} — no open bill yet", table.name))?;
+            store.format_running_bill_text(&order)
+        })();
+        match result {
+            Ok(text) => {
+                app_state().lock().unwrap().last_receipt = text.clone();
+                // ReportText lays out the same lines the printer gets
+                // (name / qty×rate / totals) — not one WrapLabel paragraph.
+                self.ui.widget(cx, ids!(floor_bill_text)).set_text(cx, &text);
+                self.ui.view(cx, ids!(floor_bill_view)).set_visible(cx, true);
+                self.set_status(cx, "Bill on screen — Print from the toolbar when ready");
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
+    }
+
     /// Guests sat down — mark Free → Occupied without opening an order.
     fn seat_table(&mut self, cx: &mut Cx, item_id: usize) {
         let table = app_state()
@@ -1500,6 +1595,11 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             };
             if line.kot_id == QUEUED_KOT {
                 st.status = format!("{} is waiting to send — it can be changed once the kitchen has it", line.name);
+                return;
+            }
+            // Counter-only KOT (no table): nothing in running_lines to cancel.
+            if line.running_line_id.is_empty() || line.running_line_id == "counter" {
+                st.status = st.t("cancel_needs_table");
                 return;
             }
             st.line_action = Some((line.running_line_id.clone(), action));

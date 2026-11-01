@@ -99,8 +99,10 @@ struct StationCheckList {
     view: View,
     #[live]
     field: String,
+    /// True while the menu was drawn open last frame — scroll resets only
+    /// on open, never on checkbox refresh (that felt like a jump).
     #[rust]
-    drawn_rev: u64,
+    was_open: bool,
 }
 
 impl StationCheckList {
@@ -111,18 +113,20 @@ impl StationCheckList {
 
 impl Widget for StationCheckList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (open, rows, rev, lang) = {
+        let (open, rows, lang) = {
             let st = app_state().lock().unwrap();
             (
                 st.suggest_open.map(|f| f.key()) == Some(self.field.as_str()),
                 st.suggest_rows.clone(),
-                st.suggest_rev,
                 st.locale.language.clone(),
             )
         };
         if !open || rows.is_empty() {
+            self.was_open = false;
             return DrawStep::done();
         }
+        let just_opened = !self.was_open;
+        self.was_open = true;
         let row_h = *suggest_row_height().lock().unwrap();
         let n = rows.len();
         let walk = Walk {
@@ -130,12 +134,11 @@ impl Widget for StationCheckList {
             ..walk
         };
         let use_l = locale::t(&lang, "use");
-        let new_rev = self.drawn_rev != rev;
+        let unassigned = locale::t(&lang, "kot_unassigned");
         let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
-            // ReorderList draws as its inner PortalList.
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                if new_rev {
+                if just_opened {
                     list.set_first_id_and_scroll(0, 0.0);
                 }
                 list.set_item_range(cx, 0, n);
@@ -145,16 +148,46 @@ impl Widget for StationCheckList {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
+                    let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item
                         .label(cx, ids!(subtitle))
                         .set_visible(cx, !row.subtitle.is_empty());
-                    // Checked = station is on unsent dishes (Don't use clears it).
                     let action = row.action.trim();
                     let checked = !action.is_empty() && action != use_l;
+                    // Drawn box / filled+✓ — ☐ was missing from Noto (tofu).
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
-                    item.button(cx, ids!(check_on)).set_visible(cx, checked);
+                    item.view(cx, ids!(check_on)).set_visible(cx, checked);
+                    if is_unassigned {
+                        item.label(cx, ids!(prio)).set_visible(cx, false);
+                        item.button(cx, ids!(prio_up)).set_visible(cx, false);
+                        item.button(cx, ids!(prio_down)).set_visible(cx, false);
+                    } else {
+                        let mut ord = 0usize;
+                        let mut station_ids: Vec<usize> = Vec::new();
+                        for (i, r) in rows.iter().enumerate() {
+                            if r.value.eq_ignore_ascii_case(&unassigned) {
+                                continue;
+                            }
+                            station_ids.push(i);
+                            ord += 1;
+                            if i == item_id {
+                                break;
+                            }
+                        }
+                        let can_up = station_ids.len() > 1 && station_ids.first() != Some(&item_id);
+                        let can_down = {
+                            let last = rows.iter().rposition(|r| {
+                                !r.value.eq_ignore_ascii_case(&unassigned)
+                            });
+                            last != Some(item_id)
+                        };
+                        item.label(cx, ids!(prio)).set_visible(cx, true);
+                        item.label(cx, ids!(prio)).set_text(cx, &format!("#{ord}"));
+                        item.button(cx, ids!(prio_up)).set_visible(cx, can_up);
+                        item.button(cx, ids!(prio_down)).set_visible(cx, can_down);
+                    }
                     item.draw_all_unscoped(cx);
                     drew += 1;
                 }
@@ -167,7 +200,6 @@ impl Widget for StationCheckList {
             }
         }
         remember_content_row(cx, &mut self.view, suggest_row_height(), row_h, measured_row);
-        self.drawn_rev = rev;
         DrawStep::done()
     }
 
@@ -175,9 +207,9 @@ impl Widget for StationCheckList {
         if !self.is_open() {
             return;
         }
-        claim_reorder_list_nested_scroll(cx, &self.view, event);
+        claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
-        claim_reorder_list_nested_scroll(cx, &self.view, event);
+        claim_list_nested_scroll(cx, &self.view, event);
     }
 }
 

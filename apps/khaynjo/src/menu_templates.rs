@@ -60,28 +60,11 @@ impl MenuTemplate {
     }
 }
 
-/// Where named templates live (dev: crate `assets/templates`; packaged: beside
-/// the executable). `KHAYNJO_TEMPLATES_DIR` overrides both.
+/// Where named templates live (dev: crate `assets/templates`; packaged:
+/// `assets/templates` beside the exe / package root — same Windows + Linux).
+/// `KHAYNJO_TEMPLATES_DIR` overrides.
 pub fn templates_root() -> Option<PathBuf> {
-    if let Ok(dir) = std::env::var("KHAYNJO_TEMPLATES_DIR") {
-        let p = PathBuf::from(dir);
-        if p.is_dir() {
-            return Some(p);
-        }
-    }
-    let manifest = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets/templates");
-    if manifest.is_dir() {
-        return Some(manifest);
-    }
-    if let Ok(exe) = std::env::current_exe()
-        && let Some(parent) = exe.parent()
-    {
-        let beside = parent.join("assets/templates");
-        if beside.is_dir() {
-            return Some(beside);
-        }
-    }
-    None
+    crate::menu_images::packaged_assets_dir("assets/templates", "KHAYNJO_TEMPLATES_DIR")
 }
 
 fn load_one(dir: &Path) -> Option<MenuTemplate> {

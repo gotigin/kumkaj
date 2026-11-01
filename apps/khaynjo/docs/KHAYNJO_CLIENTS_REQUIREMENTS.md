@@ -50,9 +50,9 @@ Doctrine stay: India-first packs still ship the full set ([`UNITS_AND_CONVERSION
 |-----|---------|--------|
 | Mark table occupied when guests sit | Guests arrive and sit; staff mark the table busy **before** any dish is punched | **Done 2026-10-27** — `FloorState::Seated` + `Store::seat_table` / LAN `SeatTable`; Free act seats without a running order |
 | Order starts later on that table | When ready, tap the occupied table → Order / Add dishes as today; occupy may create a light seat record or upgrade to running on first line | **Done 2026-10-27** — Seated tile tap opens order as today; first KOT / lines → In kitchen / Eating |
-| Free again if they leave without ordering | Occupied with no bill can return to Free (with a clear action); once lines exist, today's cancel / pay path applies | **Done 2026-10-27** — Seated act frees empty table; open-bill path unchanged |
+| Free again if they leave without ordering | Occupied with no bill can return to Free (with a clear action); once lines exist, today's cancel / pay path applies | **Done 2026-10-27** — empty Seated frees; **open bill must be paid** (or NC / ₹0 settle) before `free_table` |
 
-Today the floor moves Free → busy mainly when a running order / KOT path starts. This ask inserts an explicit **seated / occupied** step so the floor tells the truth during the wait for the first order.
+**Seated** is shipped: Free → Seated (no order yet) → In kitchen / … once dishes go. Empty Seated frees without payment; a table with an open bill still requires pay (or NC / ₹0 settle) before release.
 
 ------------------------------------------------------------------------
 
@@ -62,14 +62,14 @@ See [`KHAYNJO.md`](KHAYNJO.md) §4b / §4d: running orders, KOT, settle, rights 
 
 ------------------------------------------------------------------------
 
-## Gaps to build (priority for product)
+## Status (typed must-haves)
 
-All three typed must-haves (§A–C) are **Done 2026-10-27**. Wider Local/LAN
-research catch-up is tracked in [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md)
-§8 (complete) and §8 “Still left” (Cloud/Net/owner-only).
+All three §A–C asks are **Done 2026-10-27**. Wider Local/LAN research
+catch-up: [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md) §8 (complete)
+and §8 “Still left” (Cloud/Net/owner-only).
 
-1. **Staff visibility matrix** — **Done 2026-10-27** (Team chips + nav).  
-2. **Shop-enabled units + sibling pick-lists** — **Done 2026-10-27** (areas, stations, tax rates).  
-3. **Floor: Occupied without order** — **Done 2026-10-27** (`FloorState::Seated`).
+1. **Staff visibility matrix** — Team chips + nav.  
+2. **Shop-enabled units + sibling pick-lists** — areas, stations, tax rates.  
+3. **Floor: Occupied without order** — `FloorState::Seated`; open bills still need pay / NC / ₹0 settle before free.
 
 Mirror one-line status in [`KHAYNJO.md`](KHAYNJO.md) §4b.

@@ -29,6 +29,26 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 self.sync_chrome(cx);
                 return true;
             }
+            // DeviceSetup nested accordion (Language open) closes before leaving.
+            if st.screen == Screen::DeviceSetup
+                && st
+                    .device_setup_sections_open
+                    .iter()
+                    .any(|k| k == "language")
+            {
+                st.device_setup_sections_open.retain(|k| k != "language");
+                drop(st);
+                self.sync_device_setup_sections(cx);
+                self.ui.redraw(cx);
+                return true;
+            }
+            // Onboard nested: Bring my book → back to Start fresh choice.
+            if st.screen == Screen::Onboard && st.onboard_step == 2 {
+                st.onboard_step = 1;
+                drop(st);
+                self.sync_chrome(cx);
+                return true;
+            }
         }
         let dest = {
             let mut st = app_state().lock().unwrap();
@@ -43,11 +63,14 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 // Empty stack: only nested screens fall back. Top-level peers
                 // are roots (no Back parent).
                 match st.screen {
-                    Screen::ClientPair => {
+                    Screen::ClientPair | Screen::Onboard => {
                         st.nav_forward.clear();
                         st.must_confirm_device_role = true;
-                        st.status =
-                            "Pick Server Mode or Client Mode — Back left Client pairing".into();
+                        st.status = if st.screen == Screen::Onboard {
+                            "Pick Server Mode or Client Mode — Back left shop setup".into()
+                        } else {
+                            "Pick Server Mode or Client Mode — Back left Client pairing".into()
+                        };
                         Some(Screen::DeviceSetup)
                     }
                     Screen::SidebarSettings => {

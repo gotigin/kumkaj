@@ -59,8 +59,13 @@ assets/templates/<id>/
 ```
 
 Override discovery root with `KHAYNJO_TEMPLATES_DIR` (tests / packaging).
-Dev reads `CARGO_MANIFEST_DIR/assets/templates`; packaged builds look for
-`assets/templates` beside the executable (same pattern as `assets/items`).
+Dev reads `CARGO_MANIFEST_DIR/assets/templates`. **Every desktop package**
+(Windows MSI / portable folder, Linux) stages `assets/templates` and
+`assets/items` next to the app (see `copy_app_menu_assets_if_present` in
+`scripts/windows-env.sh`). Runtime also accepts the Linux `bin/` layout
+(package-root `assets/`) and `MAKEPAD_PACKAGE_DIR`. Android still omits the
+~130 MB photo shelf from the APK (Clients pull photos over LAN from a
+desktop Server).
 
 ## `template.json` schema
 
@@ -115,3 +120,9 @@ Built from the client menu scans under
 `local/khaynjo/clients/rajdhani/` (`menu-items-english.txt` +
 `menu-items-gujarati.txt`). All dish photos currently point at existing
 `shelf:…` webps — no unique `images/` files required.
+
+**Names (client request 2026-11-02):** drop a trailing parenthetical on the
+dish name and its English alias when the last words are in `(…)` — e.g.
+`ચીકન તંદુરી (રેડ-ગ્રીન-ગોલ્ડન)` / `Chicken Tandoori (Red-Green-Golden)` →
+`ચીકન તંદુરી` / `Chicken Tandoori`. Colour / style tags are not kept in the
+imported title.

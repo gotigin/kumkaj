@@ -882,7 +882,9 @@ impl App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(client_pair_back)).clicked(actions) {
+        if self.ui.button(cx, ids!(client_pair_back)).clicked(actions)
+            || self.ui.button(cx, ids!(onboard_back)).clicked(actions)
+        {
             let _ = self.navigate_back(cx);
         }
         if self.choice_chip_clicked(
@@ -1095,7 +1097,7 @@ impl App {
             if digits != text {
                 self.ui.text_input(cx, ids!(lock_pin_input)).set_text(cx, &digits);
             }
-            {
+            let clear_status = {
                 let mut st = app_state().lock().unwrap();
                 st.pin_buffer = digits;
                 if st.status.starts_with("Wrong")
@@ -1104,20 +1106,30 @@ impl App {
                     || st.status.starts_with("Add staff")
                 {
                     st.status.clear();
+                    true
+                } else {
+                    false
                 }
+            };
+            // Digits only — never full sync_chrome (SQL rebuild froze unlock).
+            if clear_status {
+                self.ui
+                    .widget(cx, ids!(pin_status))
+                    .set_text(cx, " ");
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(pin_reveal)).clicked(actions) {
-            {
+            let show = {
                 let mut st = app_state().lock().unwrap();
                 st.pin_visible = !st.pin_visible;
-            }
-            let show = app_state().lock().unwrap().pin_visible;
+                st.pin_visible
+            };
             self.ui
                 .text_input(cx, ids!(lock_pin_input))
                 .set_is_password(cx, !show);
-            self.sync_chrome(cx);
+            self.ui
+                .button(cx, ids!(pin_reveal))
+                .set_text(cx, eye_glyph(show));
         }
         // Soft-keyboard Done / physical Enter on the PIN field = Unlock.
         if self.ui.text_input(cx, ids!(lock_pin_input)).returned(actions).is_some()
@@ -1133,6 +1145,9 @@ impl App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.lock_as_owner = true;
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_lock_role_prefer_owner(true);
+                }
                 st.pin_buffer.clear();
                 st.status = "Unlock as Owner".into();
             }
@@ -1147,6 +1162,9 @@ impl App {
                     st.status = "Set up Owner first, then add staff in Team".into();
                 } else {
                     st.lock_as_owner = false;
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_lock_role_prefer_owner(false);
+                    }
                     st.pin_buffer.clear();
                     if st.lock_staff_id.is_none() {
                         st.lock_staff_id = st

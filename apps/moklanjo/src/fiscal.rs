@@ -5,52 +5,68 @@
 //! fiscal-printer payloads or tax returns anywhere in the world; sellers stay
 //! responsible for the rates they enter and for their own filings.
 //!
-//! Two pricing models cover every country we ship:
+//! Two pricing models cover every country we ship (Settings labels — prefer
+//! these words over vague “inclusive/exclusive tax”):
 //!
-//! * [`TaxPricing::Inclusive`] — the menu price already contains the tax
-//!   (India, UK hospitality, most of the EU, Australia, Singapore, Japan …).
-//!   The bill total never moves; the tax portion is *extracted* for the
-//!   receipt and reports.
-//! * [`TaxPricing::Exclusive`] — the menu price is net and tax is *added* at
-//!   the till (US sales tax, Gulf VAT in B2B, Mexico, Brazil …). The charged
-//!   total is `lines + rounding + tax`.
+//! * [`TaxPricing::InsidePrice`] — **Tax inside price.** Menu/bill amounts
+//!   already contain tax (India GST, UK VAT hospitality, much of the EU, …).
+//!   The charged total does not grow; tax is *extracted* for the receipt as
+//!   taxable value + tax (= same total). Example: ₹3000 at 18% → taxable
+//!   value ₹3000/1.18, tax = remainder.
+//! * [`TaxPricing::AddedAtTill`] — **Tax added at till.** Menu amounts are
+//!   net; tax is *added on top* so the guest pays more (US sales tax, many
+//!   B2B VAT defaults, …). Charged total = lines + rounding + tax.
+//!
+//! Tax *name* (GST / VAT / sales tax / custom) is separate — the country pack
+//! `tax_label` — and does not change which of the two arithmetic modes applies.
 
 use serde::{Deserialize, Serialize};
 
-/// Whether quoted item prices already contain tax.
+/// How quoted prices relate to tax — not the tax’s legal name.
+///
+/// Product wording: **Tax inside price** vs **Tax added at till**.
+/// Persisted as `inclusive` / `exclusive` for stable meta and sale rows.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TaxPricing {
+    /// Tax already sits inside the quoted price (extract for the receipt).
     #[default]
-    Inclusive,
-    Exclusive,
+    InsidePrice,
+    /// Tax is added on top of the quoted price at the till.
+    AddedAtTill,
 }
 
 impl TaxPricing {
     pub fn as_str(self) -> &'static str {
         match self {
-            Self::Inclusive => "inclusive",
-            Self::Exclusive => "exclusive",
+            // Stable storage keys — do not rename without a migration.
+            Self::InsidePrice => "inclusive",
+            Self::AddedAtTill => "exclusive",
         }
     }
 
-    /// Anything unrecognised reads as Inclusive — the historical Kumkaj
+    /// Anything unrecognised reads as InsidePrice — historical Kumkaj
     /// behaviour, so legacy rows and bad input never inflate a bill.
     pub fn parse(s: &str) -> Self {
         match s.trim().to_ascii_lowercase().as_str() {
-            "exclusive" | "excl" | "added" | "on_top" => Self::Exclusive,
-            _ => Self::Inclusive,
+            "exclusive" | "excl" | "added" | "on_top" | "added_at_till" => Self::AddedAtTill,
+            _ => Self::InsidePrice,
         }
     }
 
     pub fn label(self) -> &'static str {
         match self {
-            Self::Inclusive => "Tax inside price",
-            Self::Exclusive => "Tax added at till",
+            Self::InsidePrice => "Tax inside price",
+            Self::AddedAtTill => "Tax added at till",
         }
     }
 
+    pub fn is_inside_price(self) -> bool {
+        matches!(self, Self::InsidePrice)
+    }
+
+    /// Alias of [`Self::is_inside_price`] (old name; prefer `is_inside_price`).
     pub fn is_inclusive(self) -> bool {
-        matches!(self, Self::Inclusive)
+        self.is_inside_price()
     }
 }
 
@@ -200,7 +216,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Gst,
         tax_name: "GST",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: IN_RATES,
         tax_split: IN_SPLIT,
         digital_pay_code: "upi",
@@ -221,7 +237,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::SalesTax,
         tax_name: "Sales tax",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Exempt", "0", 0), seed("Sales tax 18%", "18", 1_800)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -239,7 +255,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Exempt", "0", 0), seed("VAT 15%", "15", 1_500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -257,7 +273,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Exempt", "0", 0), seed("VAT 18%", "18", 1_800)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -275,7 +291,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Exempt", "0", 0), seed("VAT 13%", "13", 1_300)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -294,7 +310,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 5%", "5", 500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -312,7 +328,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 15%", "15", 1_500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -330,7 +346,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::None,
         tax_name: "None",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: NO_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -348,7 +364,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::None,
         tax_name: "None",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: NO_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -366,7 +382,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 5%", "5", 500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -384,7 +400,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 10%", "10", 1_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -402,7 +418,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 18%", "18", 1_800)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -420,7 +436,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "KDV",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("KDV 1%", "1", 100),
             seed("KDV 10%", "10", 1_000),
@@ -443,7 +459,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: GB_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -461,7 +477,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("Zero rated", "0", 0),
             seed("VAT 9%", "9", 900),
@@ -484,7 +500,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "MwSt",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("MwSt 7%", "7", 700), seed("MwSt 19%", "19", 1_900)],
         tax_split: EU_STANDARD_SPLIT,
         digital_pay_code: "upi",
@@ -502,7 +518,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "TVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("TVA 5.5%", "5.5", 550),
             seed("TVA 10%", "10", 1_000),
@@ -524,7 +540,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("IVA 4%", "4", 400),
             seed("IVA 10%", "10", 1_000),
@@ -546,7 +562,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("IVA 4%", "4", 400),
             seed("IVA 10%", "10", 1_000),
@@ -568,7 +584,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "BTW",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("BTW 9%", "9", 900), seed("BTW 21%", "21", 2_100)],
         tax_split: EU_STANDARD_SPLIT,
         digital_pay_code: "upi",
@@ -586,7 +602,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "BTW",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("BTW 6%", "6", 600),
             seed("BTW 12%", "12", 1_200),
@@ -608,7 +624,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("IVA 6%", "6", 600),
             seed("IVA 13%", "13", 1_300),
@@ -630,7 +646,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("VAT 5%", "5", 500),
             seed("VAT 8%", "8", 800),
@@ -652,7 +668,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "Moms",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("Moms 6%", "6", 600),
             seed("Moms 12%", "12", 1_200),
@@ -674,7 +690,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "MVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("MVA 15%", "15", 1_500), seed("MVA 25%", "25", 2_500)],
         tax_split: EU_STANDARD_SPLIT,
         digital_pay_code: "upi",
@@ -692,7 +708,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "Moms",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Moms 25%", "25", 2_500)],
         tax_split: EU_STANDARD_SPLIT,
         digital_pay_code: "upi",
@@ -710,7 +726,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "ALV",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("ALV 10%", "10", 1_000),
             seed("ALV 14%", "14", 1_400),
@@ -732,7 +748,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "MwSt",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("MwSt 10%", "10", 1_000),
             seed("MwSt 13%", "13", 1_300),
@@ -754,7 +770,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("VAT 6%", "6", 600),
             seed("VAT 13%", "13", 1_300),
@@ -776,7 +792,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "DPH",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("DPH 12%", "12", 1_200), seed("DPH 21%", "21", 2_100)],
         tax_split: EU_STANDARD_SPLIT,
         digital_pay_code: "upi",
@@ -794,7 +810,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "AFA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("AFA 5%", "5", 500),
             seed("AFA 18%", "18", 1_800),
@@ -816,7 +832,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "TVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("TVA 11%", "11", 1_100), seed("TVA 21%", "21", 2_100)],
         tax_split: EU_STANDARD_SPLIT,
         digital_pay_code: "upi",
@@ -834,7 +850,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: "'",
         tax_system: TaxSystemKind::Vat,
         tax_name: "MWST",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("MWST 2.6%", "2.6", 260),
             seed("MWST 3.8%", "3.8", 380),
@@ -856,7 +872,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("VAT 10%", "10", 1_000), seed("VAT 20%", "20", 2_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -874,7 +890,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("VAT 7%", "7", 700), seed("VAT 20%", "20", 2_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -895,7 +911,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         tax_name: "Sales tax",
         // State + county + city rates differ street by street, so Kumkaj
         // ships no rate at all: the seller enters the one they collect.
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: NO_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -915,7 +931,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         tax_name: "GST/HST",
         // Provinces stack PST/QST on top of GST — seed the federal rate and
         // the common HST blends; the seller picks what their province charges.
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[
             seed("Zero rated", "0", 0),
             seed("GST 5%", "5", 500),
@@ -938,7 +954,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Tasa 0%", "0", 0), seed("IVA 16%", "16", 1_600)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -958,7 +974,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         // per service. Kumkaj keeps one simplified seller-set rate.
         tax_system: TaxSystemKind::Other,
         tax_name: "Imposto",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: NO_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -976,7 +992,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("IVA 10.5%", "10.5", 1_050), seed("IVA 21%", "21", 2_100)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -994,7 +1010,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("IVA 19%", "19", 1_900)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1012,7 +1028,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IVA",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("IVA 5%", "5", 500), seed("IVA 19%", "19", 1_900)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1030,7 +1046,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "IGV",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("IGV 18%", "18", 1_800)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1049,7 +1065,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Gst,
         tax_name: "GST",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("GST free", "0", 0), seed("GST 10%", "10", 1_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1067,7 +1083,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Gst,
         tax_name: "GST",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("GST 15%", "15", 1_500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1085,7 +1101,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Gst,
         tax_name: "GST",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("GST 9%", "9", 900)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1103,7 +1119,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Other,
         tax_name: "SST",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[
             seed("Service tax 6%", "6", 600),
             seed("Sales tax 10%", "10", 1_000),
@@ -1124,7 +1140,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 7%", "7", 700)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1142,7 +1158,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "PPN",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("PPN 11%", "11", 1_100), seed("PPN 12%", "12", 1_200)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1160,7 +1176,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("VAT exempt", "0", 0), seed("VAT 12%", "12", 1_200)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1178,7 +1194,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ".",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("VAT 8%", "8", 800), seed("VAT 10%", "10", 1_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1196,7 +1212,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Other,
         tax_name: "Consumption tax",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[
             seed("Reduced 8%", "8", 800),
             seed("Standard 10%", "10", 1_000),
@@ -1217,7 +1233,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 10%", "10", 1_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1235,7 +1251,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("VAT 6%", "6", 600), seed("VAT 13%", "13", 1_300)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1254,7 +1270,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         // No general consumption tax on food and drink.
         tax_system: TaxSystemKind::None,
         tax_name: "None",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: NO_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1272,7 +1288,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Other,
         tax_name: "Business tax",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Business tax 5%", "5", 500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1291,7 +1307,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 15%", "15", 1_500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1309,7 +1325,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Exempt", "0", 0), seed("VAT 7.5%", "7.5", 750)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1327,7 +1343,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 16%", "16", 1_600)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1345,7 +1361,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Exclusive,
+        tax_pricing: TaxPricing::AddedAtTill,
         default_rates: &[seed("Exempt", "0", 0), seed("VAT 15%", "15", 1_500)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1363,7 +1379,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Vat,
         tax_name: "VAT",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("Zero rated", "0", 0), seed("VAT 14%", "14", 1_400)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1381,7 +1397,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: " ",
         tax_system: TaxSystemKind::Vat,
         tax_name: "TVA",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: &[seed("TVA 10%", "10", 1_000), seed("TVA 20%", "20", 2_000)],
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1402,7 +1418,7 @@ pub const COUNTRY_PROFILES: &[CountryProfile] = &[
         thousands_sep: ",",
         tax_system: TaxSystemKind::Other,
         tax_name: "Tax",
-        tax_pricing: TaxPricing::Inclusive,
+        tax_pricing: TaxPricing::InsidePrice,
         default_rates: NO_RATES,
         tax_split: NO_SPLIT,
         digital_pay_code: "upi",
@@ -1439,33 +1455,33 @@ pub fn country_or_generic(code: &str) -> &'static CountryProfile {
 
 /// Tax for `amount_paise` at `bps`.
 ///
-/// * Inclusive — the portion already inside: `amount × bps / (10000 + bps)`
-/// * Exclusive — the amount added on top: `amount × bps / 10000`
+/// * **Tax inside price** — portion already inside: `amount × bps / (10000 + bps)`
+/// * **Tax added at till** — amount added on top: `amount × bps / 10000`
 pub fn tax_on_amount(amount_paise: i64, bps: i64, pricing: TaxPricing) -> i64 {
     if bps <= 0 || amount_paise <= 0 {
         return 0;
     }
     match pricing {
-        TaxPricing::Inclusive => amount_paise.saturating_mul(bps) / (10_000 + bps),
-        TaxPricing::Exclusive => amount_paise.saturating_mul(bps) / 10_000,
+        TaxPricing::InsidePrice => amount_paise.saturating_mul(bps) / (10_000 + bps),
+        TaxPricing::AddedAtTill => amount_paise.saturating_mul(bps) / 10_000,
     }
 }
 
-/// Taxable base. Pass the charged total under Inclusive pricing, or the
-/// pre-tax line amount under Exclusive pricing — both yield the net.
+/// Taxable value (net). Pass the charged total under Tax inside price, or the
+/// pre-tax line amount under Tax added at till — both yield the net base.
 pub fn net_of_tax(gross_or_net: i64, tax: i64, pricing: TaxPricing) -> i64 {
     match pricing {
-        TaxPricing::Inclusive => gross_or_net.saturating_sub(tax),
-        TaxPricing::Exclusive => gross_or_net,
+        TaxPricing::InsidePrice => gross_or_net.saturating_sub(tax),
+        TaxPricing::AddedAtTill => gross_or_net,
     }
 }
 
-/// Amount actually collected: Inclusive already contains the tax, Exclusive
-/// adds it on top.
+/// Amount the customer pays: Tax inside price keeps `lines_total`; Tax added
+/// at till adds tax on top.
 pub fn gross_with_tax(lines_total: i64, tax: i64, pricing: TaxPricing) -> i64 {
     match pricing {
-        TaxPricing::Inclusive => lines_total,
-        TaxPricing::Exclusive => lines_total.saturating_add(tax),
+        TaxPricing::InsidePrice => lines_total,
+        TaxPricing::AddedAtTill => lines_total.saturating_add(tax),
     }
 }
 
@@ -1772,14 +1788,14 @@ mod tests {
     #[test]
     fn inclusive_extracts_exclusive_adds() {
         // ₹105 quoted inclusive at 5% holds ₹5 of tax.
-        assert_eq!(tax_on_amount(10_500, 500, TaxPricing::Inclusive), 500);
-        assert_eq!(gross_with_tax(10_500, 500, TaxPricing::Inclusive), 10_500);
-        assert_eq!(net_of_tax(10_500, 500, TaxPricing::Inclusive), 10_000);
+        assert_eq!(tax_on_amount(10_500, 500, TaxPricing::InsidePrice), 500);
+        assert_eq!(gross_with_tax(10_500, 500, TaxPricing::InsidePrice), 10_500);
+        assert_eq!(net_of_tax(10_500, 500, TaxPricing::InsidePrice), 10_000);
         // $100 quoted net at 5% is charged as $105.
-        assert_eq!(tax_on_amount(10_000, 500, TaxPricing::Exclusive), 500);
-        assert_eq!(gross_with_tax(10_000, 500, TaxPricing::Exclusive), 10_500);
-        assert_eq!(net_of_tax(10_000, 500, TaxPricing::Exclusive), 10_000);
-        assert_eq!(tax_on_amount(10_000, 0, TaxPricing::Exclusive), 0);
+        assert_eq!(tax_on_amount(10_000, 500, TaxPricing::AddedAtTill), 500);
+        assert_eq!(gross_with_tax(10_000, 500, TaxPricing::AddedAtTill), 10_500);
+        assert_eq!(net_of_tax(10_000, 500, TaxPricing::AddedAtTill), 10_000);
+        assert_eq!(tax_on_amount(10_000, 0, TaxPricing::AddedAtTill), 0);
     }
 
     #[test]

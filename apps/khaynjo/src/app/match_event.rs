@@ -881,7 +881,9 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(client_pair_back)).clicked(actions) {
+        if self.ui.button(cx, ids!(client_pair_back)).clicked(actions)
+            || self.ui.button(cx, ids!(onboard_back)).clicked(actions)
+        {
             let _ = self.navigate_back(cx);
         }
         if self.choice_chip_clicked(
@@ -1077,7 +1079,7 @@ impl MatchEvent for App {
             if digits != text {
                 self.ui.text_input(cx, ids!(lock_pin_input)).set_text(cx, &digits);
             }
-            {
+            let clear_status = {
                 let mut st = app_state().lock().unwrap();
                 st.pin_buffer = digits;
                 if st.status.starts_with("Wrong")
@@ -1086,20 +1088,30 @@ impl MatchEvent for App {
                     || st.status.starts_with("Add staff")
                 {
                     st.status.clear();
+                    true
+                } else {
+                    false
                 }
+            };
+            // Digits only — never full sync_chrome (SQL + Settings rebuild froze unlock).
+            if clear_status {
+                self.ui
+                    .widget(cx, ids!(pin_status))
+                    .set_text(cx, " ");
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(pin_reveal)).clicked(actions) {
-            {
+            let show = {
                 let mut st = app_state().lock().unwrap();
                 st.pin_visible = !st.pin_visible;
-            }
-            let show = app_state().lock().unwrap().pin_visible;
+                st.pin_visible
+            };
             self.ui
                 .text_input(cx, ids!(lock_pin_input))
                 .set_is_password(cx, !show);
-            self.sync_chrome(cx);
+            self.ui
+                .button(cx, ids!(pin_reveal))
+                .set_text(cx, eye_glyph(show));
         }
         // Soft-keyboard Done / physical Enter on the PIN field = Unlock.
         if self.ui.text_input(cx, ids!(lock_pin_input)).returned(actions).is_some()
@@ -1115,6 +1127,9 @@ impl MatchEvent for App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.lock_as_owner = true;
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_lock_role_prefer_owner(true);
+                }
                 st.pin_buffer.clear();
                 st.status = "Unlock as Owner".into();
             }
@@ -1129,6 +1144,9 @@ impl MatchEvent for App {
                     st.status = "Set up Owner first, then add staff in Team".into();
                 } else {
                     st.lock_as_owner = false;
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_lock_role_prefer_owner(false);
+                    }
                     st.pin_buffer.clear();
                     if st.lock_staff_id.is_none() {
                         st.lock_staff_id = st
@@ -2857,13 +2875,35 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(kot_station_dd)).clicked(actions) {
-            {
+            let empty_msg = {
                 let mut st = app_state().lock().unwrap();
                 if st.suggest_open == Some(SuggestField::KotStation) {
                     st.suggest_open = None;
+                    None
                 } else {
                     st.open_suggest(SuggestField::KotStation, "");
+                    let n = st
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.list_picker_stations().ok())
+                        .unwrap_or_else(|| st.stations.clone())
+                        .len();
+                    if n == 0 {
+                        Some(st.t("kot_station_none"))
+                    } else {
+                        None
+                    }
                 }
+            };
+            if let Some(msg) = empty_msg {
+                self.set_status(cx, msg);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(reprint_kot_btn)).clicked(actions) {
+            match self.reprint_open_kots(cx) {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }
@@ -3067,23 +3107,26 @@ impl MatchEvent for App {
             let slots = [
                 ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5), ids!(t6), ids!(t7),
             ];
-            let mut tapped: Option<(usize, bool)> = None;
+            // act | print | view | open (tile body tap)
+            let mut tapped: Option<(usize, &'static str)> = None;
             for (item_id, item) in list.items_with_actions(actions) {
                 let Some(FloorRow::Tiles(tables)) = rows.get(item_id) else {
                     continue;
                 };
                 for (slot, &table_idx) in tables.iter().enumerate() {
                     let tile = item.view(cx, slots[slot]);
-                    // The action sits inside the tile: check it first so the
-                    // tile tap behind it does not also open the order.
                     if tile.button(cx, ids!(act)).clicked(actions) {
-                        tapped = Some((table_idx, true));
+                        tapped = Some((table_idx, "act"));
+                    } else if tile.button(cx, ids!(print_ico)).clicked(actions) {
+                        tapped = Some((table_idx, "print"));
+                    } else if tile.button(cx, ids!(view_ico)).clicked(actions) {
+                        tapped = Some((table_idx, "view"));
                     } else if tile.finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over) {
-                        tapped = Some((table_idx, false));
+                        tapped = Some((table_idx, "open"));
                     }
                 }
             }
-            if let Some((filt_idx, action)) = tapped {
+            if let Some((filt_idx, kind)) = tapped {
                 let idx = {
                     let st = app_state().lock().unwrap();
                     filtered_ids
@@ -3091,34 +3134,61 @@ impl MatchEvent for App {
                         .and_then(|id| st.tables.iter().position(|t| &t.id == id))
                 };
                 if let Some(idx) = idx {
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        if let Some(t) = st.tables.get(idx) {
+                            st.floor_focus_table_id = Some(t.id.clone());
+                        }
+                    }
                     let info = app_state()
                         .lock()
                         .unwrap()
                         .tables
                         .get(idx)
                         .map(|t| (t.floor_state, t.running_total_paise));
-                    match (action, info) {
-                        (true, Some((domain::FloorState::Free, _))) => {
+                    match (kind, info) {
+                        ("act", Some((domain::FloorState::Free, _))) => {
                             self.seat_table(cx, idx)
                         }
-                        (true, Some((domain::FloorState::Seated, _))) => {
+                        ("act", Some((domain::FloorState::Seated, _))) => {
                             self.mark_table_ready(cx, idx)
                         }
-                        (true, Some((domain::FloorState::Paid, _))) => {
+                        ("act", Some((domain::FloorState::Paid, _))) => {
                             self.mark_table_ready(cx, idx)
                         }
-                        (true, Some((domain::FloorState::BillPrinted, amount))) if amount <= 0 => {
+                        ("act", Some((domain::FloorState::BillPrinted, amount))) if amount <= 0 => {
                             self.mark_table_ready(cx, idx)
                         }
-                        (true, Some((domain::FloorState::BillPrinted, _))) => {
+                        ("act", Some((domain::FloorState::BillPrinted, _))) => {
                             self.undo_table_bill(cx, idx)
                         }
-                        (true, Some(_)) => self.request_table_bill(cx, idx),
-                        (false, Some(_)) => self.open_table(cx, idx),
+                        ("act", Some(_)) => self.request_table_bill(cx, idx),
+                        ("print", Some(_)) => self.print_floor_table_bill(cx, idx),
+                        ("view", Some(_)) => self.view_floor_table_bill(cx, idx),
+                        ("open", Some(_)) => self.open_table(cx, idx),
                         _ => {}
                     }
                 }
             }
+        }
+        // Floor toolbar: Print / View / Open for the focused table.
+        if self.ui.button(cx, ids!(floor_tb_print)).clicked(actions) {
+            if let Some(idx) = self.floor_focus_index() {
+                self.print_floor_table_bill(cx, idx);
+            }
+        }
+        if self.ui.button(cx, ids!(floor_tb_view)).clicked(actions) {
+            if let Some(idx) = self.floor_focus_index() {
+                self.view_floor_table_bill(cx, idx);
+            }
+        }
+        if self.ui.button(cx, ids!(floor_tb_open)).clicked(actions) {
+            if let Some(idx) = self.floor_focus_index() {
+                self.open_table(cx, idx);
+            }
+        }
+        if self.ui.button(cx, ids!(floor_bill_close)).clicked(actions) {
+            self.ui.view(cx, ids!(floor_bill_view)).set_visible(cx, false);
         }
         // Kitchen: advance a ticket New → Preparing → Ready → Done.
         {
@@ -3418,22 +3488,58 @@ impl MatchEvent for App {
                 }
                 if open == Some(field) {
                     let widget = self.ui.widget(cx, field.list());
-                    let list_host = widget.widget(cx, ids!(list));
-                    // Kitchen dropdown is a ReorderList (multi-check + drag priority).
-                    let item_actions: Vec<(usize, _)> = if field == SuggestField::KotStation {
-                        if let Some(rl) = list_host.as_reorder_list().borrow() {
-                            if let Some((from, to)) = rl.reordered(actions) {
-                                self.reorder_kot_station_priority(cx, from, to);
-                                changed = true;
-                            }
-                            rl.items_with_actions(actions)
-                        } else {
-                            Vec::new()
-                        }
-                    } else {
-                        widget.portal_list(cx, ids!(list)).items_with_actions(actions)
-                    };
+                    let item_actions: Vec<(usize, _)> = widget
+                        .portal_list(cx, ids!(list))
+                        .items_with_actions(actions);
                     for (item_id, item) in item_actions {
+                        if field == SuggestField::KotStation {
+                            // ↑↓ swap with neighbouring *station* (skip Unassigned).
+                            // Only the glyph buttons reorder — never the row body.
+                            let up = item.button(cx, ids!(prio_up));
+                            let down = item.button(cx, ids!(prio_down));
+                            if up.clicked(actions) {
+                                let to = {
+                                    let st = app_state().lock().unwrap();
+                                    let u = st.t("kot_unassigned");
+                                    (0..item_id).rev().find(|&i| {
+                                        st.suggest_rows
+                                            .get(i)
+                                            .is_some_and(|r| !r.value.eq_ignore_ascii_case(&u))
+                                    })
+                                };
+                                if let Some(to) = to {
+                                    self.reorder_kot_station_priority(cx, item_id, to);
+                                    changed = true;
+                                }
+                                continue;
+                            }
+                            if down.clicked(actions) {
+                                let to = {
+                                    let st = app_state().lock().unwrap();
+                                    let u = st.t("kot_unassigned");
+                                    let n = st.suggest_rows.len();
+                                    ((item_id + 1)..n).find(|&i| {
+                                        st.suggest_rows
+                                            .get(i)
+                                            .is_some_and(|r| !r.value.eq_ignore_ascii_case(&u))
+                                    })
+                                };
+                                if let Some(to) = to {
+                                    self.reorder_kot_station_priority(cx, item_id, to);
+                                    changed = true;
+                                }
+                                continue;
+                            }
+                            // Press/release on ↑↓ (even without a clean click)
+                            // must not also toggle via the row finger_up.
+                            if up.pressed(actions)
+                                || down.pressed(actions)
+                                || up.released(actions)
+                                || down.released(actions)
+                            {
+                                continue;
+                            }
+                        }
                         if item
                             .view(cx, ids!(row))
                             .finger_up(actions)
@@ -3931,10 +4037,21 @@ impl MatchEvent for App {
                 }
                 self.sync_chrome(cx);
                 true
+            } else if item.button(cx, ids!(reprint_incl_btn)).clicked(actions) {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(line) = st.cart.lines.get_mut(item_id) {
+                        if line.is_sent() {
+                            line.reprint_skip = !line.reprint_skip;
+                        }
+                    }
+                }
+                self.sync_chrome(cx);
+                true
             } else {
                 false
             };
-            // ± / Hold sit inside the row: a step must not also open the details.
+            // ± / Hold / In-print sit inside the row: a step must not also open the details.
             if !stepped
                 && item
                     .view(cx, ids!(summary))
@@ -3967,6 +4084,7 @@ impl MatchEvent for App {
             self.handle_modifier_chips(cx, actions, &item, item_id, false);
             for (button, action) in [
                 (ids!(line_cancel), LineAction::Cancel),
+                (ids!(line_cancel_sum), LineAction::Cancel),
                 (ids!(line_nc), LineAction::Complimentary),
                 (ids!(line_move), LineAction::Move),
             ] {
@@ -4590,8 +4708,8 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         for (id, pricing) in [
-            (ids!(tax_inclusive_btn), TaxPricing::Inclusive),
-            (ids!(tax_exclusive_btn), TaxPricing::Exclusive),
+            (ids!(tax_inclusive_btn), TaxPricing::InsidePrice),
+            (ids!(tax_exclusive_btn), TaxPricing::AddedAtTill),
         ] {
             if self.ui.button(cx, id).clicked(actions) {
                 let result = (|| -> Result<(), String> {
@@ -6051,8 +6169,6 @@ impl MatchEvent for App {
             printer_add_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
             self.paint_submit_busy_chrome(cx);
         }
-        // Progress face is not a submit — ignore taps while Adding….
-        let _ = self.ui.button(cx, ids!(printer_add_progress)).clicked(actions);
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
             if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Adding… — ignore re-taps.

@@ -65,6 +65,12 @@ if [[ ! -f "$PKG/$RES_DIR/resources/fonts/NotoSans-Regular.ttf" ]]; then
   echo "Run ./scripts/fetch-ui-fonts.sh apps/khaynjo then re-package." >&2
   exit 1
 fi
+if [[ ! -f "$PKG/$RES_DIR/resources/fonts/fa-solid-900.ttf" ]]; then
+  echo "Missing icon font: $PKG/$RES_DIR/resources/fonts/fa-solid-900.ttf" >&2
+  echo "Floor/header icon buttons will be empty boxes without it." >&2
+  echo "Run ./scripts/fetch-ui-fonts.sh apps/khaynjo then re-package." >&2
+  exit 1
+fi
 
 INSTALL_DIR="$(desktop_install_dir_linux)"
 BIN_DIR="$(desktop_bin_dir_linux)"
@@ -89,6 +95,10 @@ chmod +x "$INSTALL_DIR/bin/kumkaj-khaynjo"
 # Makepad layout: resources at <install>/kumkaj_khaynjo/resources next to run cwd.
 mkdir -p "$INSTALL_DIR/$RES_DIR"
 rsync -a --delete "$PKG/$RES_DIR/resources/" "$INSTALL_DIR/$RES_DIR/resources/"
+# Menu shelf + client templates (package root; exe under bin/ → lookup goes up).
+if [[ -d "$PKG/assets" ]]; then
+  rsync -a --delete "$PKG/assets/" "$INSTALL_DIR/assets/"
+fi
 # Drop any leftover hyphenated tree from older installs.
 rm -rf "$INSTALL_DIR/kumkaj-khaynjo"
 

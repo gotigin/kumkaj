@@ -88,10 +88,11 @@ would make one app's change impact another.
   `VenueMode::Restaurant`, Tax invoice / Cash memo lanes, no seed
   catalogue — the owner adds their own menu and parties).
 - Fresh shops default to the Restaurant venue: KOT creation on,
-  tables T1..T24 seeded once (a floor the owner clears stays clear),
-  stations Hot/Cold seeded. Floor → ADD TABLES → **Remove these tables**
-  takes them off by range or name (`T1-T24`); a table in use — guests
-  seated or an open order — is kept and named (`remove_tables_named`).
+  tables T1..T24 plus Parcel P1..P24 seeded once (a floor the owner
+  clears stays clear), stations Hot/Cold seeded. Floor → ADD TABLES →
+  **Remove these tables** takes them off by range or name (`T1-T24`,
+  `P1-P24`); a table in use — guests seated or an open order — is kept
+  and named (`remove_tables_named`).
 - **The copied courier product has been removed, not hidden**
   (2026-10-22): no booking desk, AWB, zones/slabs, carriers,
   manifests, COD register, riders, or public tracking anywhere in
@@ -139,11 +140,11 @@ user needs — In / Later, in Khaynjo's own terms:
 |---|---|---|
 | 3-tap billing: tap item → qty → pay | **In (P1)** — the minimal sell path of vision §3 | Order desk |
 | Order types Counter / Dine-in / Takeaway / Delivery | **In (P1)** | Desk segmented grid; `OrderType` |
-| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms with headings (Add area e.g. AC, then tables into it), D1–D20 ranges; Grid ↔ Layout **Have 2026-10-27** | Floor screen |
+| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms with headings (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of large colour tiles** (responsive: **1 column from ~320px**, more columns only when another ~280px tile fits). Print / view / seat-or-free icons on each card; active table = stronger border (no separate focus strip). Drawn Grid↔Layout map **removed from Floor chrome** (layout APIs may remain unused) | Floor screen; `floor_columns_for`, `FloorTile` |
 | Frequent dishes as a menu group (like Bakery Cafe) | **Have 2026-10-27** — Frequent chip next to All items; config on that view (days + count; default 1 day / 24); empty state when no completed sales in the window | Menu window; `frequent_product_ids` |
 | ₹0 menu prices and ₹0 bills (complimentary / owner wish) | **Have 2026-10-27** — allowed by default; Settings → Zero-value sales can require a price above ₹0 | `allow_zero_sales` meta; finalize / Take payment |
-| Table cards that show elapsed time and running amount at a glance | **In (P2)** — the counter reads the floor without opening a table | Floor screen |
-| Table states in colour, one shared truth on every device: Free → **Seated** → In kitchen → Food ready → Served → Bill printed → Free on pay | **Have** — Seated without order (2026-10-27); only payment (or Free table) releases; ghost In-kitchen after pay fixed same day | Floor + server sync |
+| Table cards that show elapsed time and running amount at a glance | **Have** — name, amount, status · minutes; long status wraps ≤2 lines then ellipsis; tall cards with clear bottom padding | `FloorTile`, Floor |
+| Table states in colour, one shared truth on every device: Free → **Seated** → In kitchen → Food ready → Served → Bill printed → Free on pay | **Have** — Seated without order (2026-10-27); **`free_table` refuses while the open bill still has money** — record payment (or NC / ₹0 settle when Zero-value sales allows) first; empty Seated / Paid / ₹0 Bill-printed can free; ghost In-kitchen after pay fixed same day | Floor + `Store::free_table` |
 | Waiters take orders at the table on their own devices | **In (P2)** — waiters are paired Clients; they occupy tables, add items, send KOTs and request billing. Settling money is rights-gated (Take payment Allowed/WithApproval on the staff record — waiter preset Denied) | LAN service, role gates |
 | KOT prints itself the moment an order is sent — no one carries paper to the kitchen | **In (P2)** — the server prints on send; Settings → Printers: pool + ordered fallback route per kitchen station (empty = don't print); hardware stays on the Server device | LAN service, print settings |
 | KOT carries the waiter's name, table, item notes — and never prices | **In (P1/P2)** | KOT record + Kitchen |
@@ -159,8 +160,10 @@ user needs — In / Later, in Khaynjo's own terms:
 | KOT with station/category routing | **In (P1)** — `station_id` per menu item, tickets grouped per station | Send KOT, Kitchen |
 | Day close the owner trusts: tender totals, credit given/collected, item sales, profit view | **In** via Khaynjo's own books; depth over report count | Day book, Reports |
 | Recipe-level stock deduction, low-stock alerts | **In (2026-10-25)** — recipe; reorder; running-low. Expiry/batch alerts + PO + stock variance **In (2026-10-27)** on Inventory ops | `store_recipes.rs`, `store_ops.rs` |
-| Floor-plan editor: areas, table shapes, seats/covers, coursing | **Have (2026-10-27)** — Grid ↔ Layout (X/Y/W/H + nudge + auto-pack); waitlist, sections, waiter call, hold/fire | Floor; `store_ops` / `set_table_layout` |
+| Drawn floor-plan editor (shapes, X/Y positions) | **Removed from Floor chrome** — colour **grid** is the face (areas + waitlist + waiter filter **Have**; coursing hold/fire **Have** on Kitchen/Order) | Floor grid; `store_ops` |
 | Kitchen expediting: all-day item counts, fire/hold courses | **Have** — all-day counts; hold/fire; expo `/expo`; allergens on KOT; ageing + recall | Kitchen; `send_kot_filtered`, `fire_course` |
+| Order desk: pick kitchen stations for unsent dishes + print order | **Have** — **Kitchen** multi-check dropdown (`StationCheckList`); drawn ☐/☑; ↑↓ reorder print priority among stations; tap applies / Don't use | Order ticket; `kot_station_*`, `kot_station_priority` |
+| Recover a missed kitchen slip after several Sends (include/exclude dishes) | **Have 2026-11-02** — on each **sent** line: **In print** / **Skip**; **Print selected again** builds recovery slips (REPRINT header, no prices, by station) for included dishes only — not a new Send; Reprint right; shop device (Clients directed to the counter). Hold remains for **unsent** only | `reprint_skip`; `reprint_open_kots`; Order desk |
 | Online delivery channels (aggregators) with payout reconciliation | **Partial** — **Have 2026-10-29** Local drop-file UX (`backups/import_aggregator_orders.json` → Settings → Bill format → Import); Net poll stub off by default; live SaaS **Skipped** (Cloud). Never gates counter | `store_ops` connectors |
 | Guests ordering from a QR at the table | **Have** on Server Wi‑Fi (`GET /t/{table}`); guests on mobile data **Skipped** until Cloud | `net.rs` public LAN |
 | The shop's own language, all day, on every screen | **In** — static UI fully translated in all 29 Kumkaj languages incl. Arabic/Urdu RTL alignment (vision §23) | `locale*.rs` |
@@ -195,14 +198,14 @@ internet (vision §20).
 |---|---|---|
 | KOT → more KOTs → Print bill → Settle & Save | **Done** — running order per table; only new lines go on the next KOT; finalize never re-fires sent lines | `store_running.rs` (`send_kot`, `print_running_bill`), `write_sale` |
 | KOT per station / category printer | **Done** — one ticket per station, numbered per day (`KOT No`), with who sent it | `send_kot`, `format_kot_text` |
-| Table colours Blank / Running / Printed / Paid | **Done, redesigned 2026-10-23; clarified 2026-10-27** — grid of coloured tiles by area (Layout view optional). Visit colour: Free → **Seated** (no order) → In kitchen → Food ready → **Served** → Bill printed → Free on **payment**. Accidental Print bill → **Undo bill**; Bill printed with ₹0 → **Free table**. **Bugfix 2026-10-27:** pay/free completes leftover open KOTs and the floor only counts KOTs for *this* seating — next guests no longer stick on In kitchen. Summary line and colour key above; refresh every 8 s | `FloorState`, `FloorTile`, Floor; `complete_open_kots_for_table` |
+| Table colours Blank / Running / Printed / Paid | **Done, redesigned 2026-10-23; clarified 2026-10-27; grid chrome 2026-11-01** — colour tiles by area (no Layout toggle). Visit colour: Free → **Seated** (no order) → In kitchen → Food ready → **Served** → Bill printed → Free on **payment** (or Free when bill is ₹0). Accidental Print bill → **Undo bill**. Icons on the card (seat / free / print / view); focus = border. **Bugfix 2026-10-27:** pay/free completes leftover open KOTs for *this* seating. Summary + colour key; refresh every 8 s. Floor **View bill** uses `ReportText` (same lines as print) | `FloorState`, `FloorTile`, Floor; `complete_open_kots_for_table` |
 | Kitchen display on a tablet | **Done** — ticket Start/Ready/Done from a paired tablet reaches the Server (it used to change only the tablet's cache); **2026-10-27** ageing colours + Recall | Kitchen; `/kot_advance`, `/kot_recall` |
 | Bill format + UPI QR | **Done** — header / FSSAI / footer; **2026-10-27** UPI VPA + counter QR for the bill amount; **Have 2026-10-29** print brand kit (stamp + static payment QR images on bill faces / LAN `/display`; dynamic amount UPI QR still used when no payment-QR image) | Settings → Bill format; Order desk Show UPI QR |
 | Areas (AC / Garden / Parcel) | **Done** — area per table, headings on the floor, range add `D1-D20` | Floor, `add_tables_range` |
 | Move KOT / items, move table, merge tables | **Done** — same order id moves; minutes travel with the guests | ticket Move / merge; `move_*`, `merge_tables` |
 | KOT cancellation with reason, prep status, approver | **Done** — line kept as cancelled, partial qty, cooked = wastage; kitchen gets a ✕ CANCEL slip | ticket Cancel; `cancel_running_line` |
-| NC (complimentary) items | **Done** — ₹0 with value kept, reason + approver, on the bill as NC | ticket NC; `set_running_line_complimentary` |
-| User rights matrix with "with password" | **Done** — per person: Take payment, Cancel sent item, NC, Move/merge, Print again → Allowed / With approval (manager PIN) / Not allowed; enforced on the Server | Team → Rights; `Store::check_right` |
+| NC (No Charge / complimentary) items | **Done** — dish stays on the bill at ₹0 with original value kept for reports; reason + approver; owner may also settle a whole bill at ₹0 when Zero-value sales allows | ticket NC; `set_running_line_complimentary`; `allow_zero_sales` |
+| User rights matrix with "with password" | **Done** — per person: Take payment, Cancel sent item, NC, Move/merge, Print again (selective KOT recovery + bill reprint) → Allowed / With approval (manager PIN) / Not allowed; enforced on the Server | Team → Rights; `Store::check_right` |
 | Captain can't settle | **Done** — Waiter preset: Take payment = Not allowed | `StaffRights::for_role` |
 | Captain app on a tablet, LAN | **Done** — Send KOT from a paired tablet reaches the Server (it used to stay in the tablet's cache); table actions go over `/running`; refusals come back in words | `net.rs` |
 | Find Server IP | **Done** — UDP broadcast + /24 scan fallback, lists restaurant names | Connect → Find the shop's server |
@@ -210,12 +213,12 @@ internet (vision §20).
 | Expense paid several ways | **Done** — one row per way (Cash / UPI / Card / Bank + amount), "+ Add another way", one blank amount takes the rest, live "Entered ₹300 of ₹500 · ₹200 left"; expenses are logged on Buy only (Reports only reports) | `PayPart`, `settle_pay_parts`, `PartsList` |
 | Type or pick, everywhere | **Done** — every field that names something the shop has (table, area, station, unit, tax rate, dish group, stock item, supplier, party, staff, branch, country) opens a list on focus and narrows as you type; filled fields keep a small label | `suggest.rs`, `SuggestList`, Makepad patch `text_input_float_caption` |
 | Reports on screen | **Done** — day close, books, settings summaries render as headings + label/value rows in a card, never one run-on paragraph. **2026-10-26:** every list that was still one paragraph is a card too — Units (by family, smallest first, then conversions), printers and where things print, printers found, audit, a sale's history, open bills, bank reconciliation, notes & attachments, a party's recent ledger, shift handover, the country pack being browsed, a tablet's waiting queue and servers found; run-on figure lines ("Cash ₹120 · UPI ₹0") split into rows. Right-to-left languages mirror the card (label right, value left) | `ReportText` (`set_text` → `parse_report`; lists built in code → `set_rows`) |
-| Import the complete menu template | **Done 2026-10-24** — every catalogue folder becomes a category (with its photo) and every dish a menu item in it (price ₹0 for the owner to set; photo materialised into `item_images` as `custom:…` so Clients can sync). On Menu only ("Import complete template", with a confirm) — **not** first-run setup (setup templates later = whole shop face; menu imports stay on Menu). Dishes the shop already has (same name) are kept; importing twice adds nothing. Big menus stay fast: the menu window's dish grid and the Menu list draw only the rows on screen; the Menu list has "Find in your menu" | `Store::import_catalogue`, `menu_images::shelf_key`, `MENU_LIST_MAX_HEIGHT` |
-| Named client menu templates | **Done 2026-11-01** — per-restaurant menus under `assets/templates/<id>/` (today **Rajdhani**). Gujarati names with English aliases, listed prices, webp photos (`shelf:…` or `images/`). **Each template row uses a unique image path** (shop can still share photos later). Menu → **Client menu**; import runs on a worker with progress. How to add: [`assets/templates/README.md`](../assets/templates/README.md) | `menu_templates`, `Store::import_menu_template`, category `aliases_json` |
+| Import the complete menu template | **Done 2026-10-24** — every catalogue folder becomes a category (with its photo) and every dish a menu item in it (price ₹0 for the owner to set; photo materialised into `item_images` as `custom:…` so Clients can sync). On Menu only ("Import complete template", with a confirm) — **not** first-run setup (setup templates later = whole shop face; menu imports stay on Menu). Dishes the shop already has (same name) are kept; importing twice adds nothing. Big menus stay fast: the menu window's dish grid and the Menu list draw only the rows on screen; the Menu list has "Find in your menu". **2026-11-02:** desktop packages (Windows MSI / portable, Linux) ship `assets/items` — cards were missing on Windows when packaging omitted the shelf | `Store::import_catalogue`, `menu_images::shelf_key`, `MENU_LIST_MAX_HEIGHT`, `copy_app_menu_assets_if_present` |
+| Named client menu templates | **Done 2026-11-01** — per-restaurant menus under `assets/templates/<id>/` (today **Rajdhani**). Gujarati names with English aliases, listed prices, webp photos (`shelf:…` or `images/`). **Each template row uses a unique image path** (shop can still share photos later). **2026-11-02:** Rajdhani titles drop trailing `(…)` colour/style tags on name + English alias; desktop packages ship `assets/templates` (same Windows + Linux path as the shelf). Menu → **Client menu**; import runs on a worker with progress. How to add: [`assets/templates/README.md`](../assets/templates/README.md) | `menu_templates`, `Store::import_menu_template`, category `aliases_json` |
 | Favorites screen | **Removed 2026-10-24** — duplicated the order desk and confused staff | — |
 | Order screen: the menu in its own window (owner's request, 2026-10-25) | **Done** — one **+ Add dishes** button opens a window over the order: search (name, alias / short code, dish group; a short code typed exactly comes first), the category tabs (All items + the shop's categories, ‹ › when they overflow) and the dishes as cards, as many per row as fit and **never fewer than two**. **Card (redesigned 2026-10-27):** the dish's photo fills the whole card (cut to the card's shape off the UI thread, `thumbs::ThumbKind::Card`); with no photo, a red card with the initials on a frosted plate. A dark wash at the foot carries the name (up to 2 lines) and the price, always on the same line on every card. A tap anywhere on the card adds one; once the dish is on the order a **− n +** pill shows at the top and the card gets a gold edge (− never takes back what the kitchen already has — that stays a reasoned cancel on the ticket). Sold out: dimmed, "Unavailable" in place of the price, taps add nothing. Rows sit 14 px apart. The window stays open for the next dish and says "On this order: 3 dishes · ₹180" under its title. Typing looks through every category (a tab tapped afterwards narrows the results); Done, Escape, Back or a tap outside closes it and the next opening starts fresh. What is on the order shows only on the ticket (the separate "On this order" tiles were removed: they repeated the ticket) | `menu_modal`, `ProductList`, `visible_products`, `open_menu_window` |
 | Billing screen: Dine In / Delivery / Take Away tabs, table button, category list, item tiles | **Done, redesigned 2026-10-23/24** (menu grid moved into the menu window above, 2026-10-25) — one page with one scroll (2026-10-24: two separately scrolling panes were rejected) — menu on top (search, category tabs with ‹ › chevrons, the first 3 rows of tiles + "Show all N dishes"), the order under it (lines + Send KOT left, bill + one-tap payment right). One segmented row Dine-in · Takeaway · Delivery · Counter. **Dine-in with no table opens the floor in "pick a table for this order · N items" mode**; a tap seats the order there with what was already punched and comes back (Back to order leaves it unseated). The ticket's table is a button: "Choose a table" / "D3 · Change table". Category chips (All + the shop's categories in use) above the grid; tiles are the button (tap = +1; since 2026-10-27 photo cards with a − n + pill, see the row above); as many across as fit (min 124 px). The ticket gets 1 : 1.25 of the width (a real bill pane). An empty ticket shows only its hint — no ₹0 totals, pay fields or Clear | `ProductCard`, `ProductList`, `pick_table_for_order`, Floor `floor_pick_bar` |
-| Order ticket that stays readable on a busy table | **Done, redesigned 2026-10-23 after looking at it** — one compact row per dish: name · amount, then "2 × ₹250 · Sent to kitchen · note" with − qty + on lines not yet sent. Tap a row to open its price, applied total, add-ons, note and Cancel / NC / Move (one row open at a time). Send KOT sits right under the lines; Print bill, Move / merge and Next order are light outlined buttons, not competing with it | `CartRow`, `CartList`, Order desk |
+| Order ticket that stays readable on a busy table | **Done, redesigned 2026-10-23; cart scroll 2026-11-01; selective KOT recovery 2026-11-02** — one compact row per dish: name · amount, then "2 × ₹250 · … · → station" with − qty + on lines not yet sent. Tap a row to open price, applied total, add-ons, note and Cancel / NC / Move (one row open at a time). **Hold** on unsent = skip next Send KOT. **In print / Skip** on sent = include/exclude for recovery paper (not a new Send). **Print selected again** (Reprint right) prints only included dishes, one slip per kitchen, marked REPRINT — shop device only. **Kitchen** station multi-check + ↑↓; Send KOT auto-print unchanged. Cart **expand-to-content** | `CartRow`, `CartList`, `reprint_skip`, `StationCheckList`, Order desk |
 | Settle: customer paid, return, tip | **Done** | Order desk |
 | Search by name / short code | **Done** — aliases double as short codes | Order desk search |
 | Bill format: header, GSTIN, FSSAI, footer | **Done** | Settings → Bill format |
@@ -262,22 +265,22 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    stands in its place: Order desk (order-type chips, menu grid,
    Actual/Applied/Rounded, pay / credit / split tenders, bill
    number on receipt), Floor (tap table → Order, occupied/free,
-   table frees on bill), Kitchen (station-grouped KOTs,
+   table frees on **payment**), Kitchen (station-grouped KOTs,
    New → Preparing → Ready → Done, no prices), Menu (items with
    category + kitchen station). Later deepened: allergens/veg marks,
    per-line notes/variants, running-order additions on an occupied
    table (§4d / research §8).
-3. **Phase 2 — Floor & kitchen, the service day.** Table map
-   (areas, colour states incl. **Payment pending**, elapsed time,
-   running amount), tap table → order → Send KOT → additions →
+3. **Phase 2 — Floor & kitchen, the service day.** Colour table grid
+   (areas, visit colours incl. **Payment pending**, elapsed time,
+   running amount; large responsive tiles), tap table → order → Send KOT → additions →
    bill → payment recorded at the counter → table released;
    station routing; **KOT auto-prints at the server on send**
    (printer per station; printing can follow the device that owns
    the printer); kitchen (KDS) list without prices; settle with
    change-return and tip.
    *First cut done 2026-10-22:* `TableStatus::PaymentPending`,
-   running total + elapsed time on floor cards, **Request bill**
-   on the card (waiter clients reach the server via
+   running total + elapsed time on floor cards, bill request on the
+   card (today: **Print bill** / View bill; waiter clients use
    `POST /table_billing`), release gated on payment in
    `Store::free_table`, KOT auto-print on send (host counter +
    server-side for client KOTs; Settings → Kitchen printing
@@ -463,7 +466,9 @@ the first build broke and must not break again:
   (`creates_kot()`); unlock lands on Day book, Order/Floor one tap away.
 - **Floor grid columns from the list’s turtle width** — never from
   shell `content_width` alone (that ignores Floor screen padding and
-  crops the last tile). Same pattern as the dish grid.
+  crops the last tile). Prefer **big** tiles: **1 column from ~320px**;
+  more columns only when another ~280px-wide card fits (`FLOOR_TILE_MIN_W`).
+  Same turtle-width pattern as the dish grid.
 - **Display text is selectable** (`WrapLabel` / `ReportText`); only
   tap targets keep `selectable: false` / plain `Label` (DESIGN § Text
   selection).
@@ -517,9 +522,10 @@ true multi-outlet Cloud or a third-party marketplace.
   Send KOT → leave the table, come back: the dishes are still on it →
   add one more → Send KOT (only the new dish prints) → Cancel one
   sent dish as a cashier (asks a manager PIN; kitchen gets ✕ CANCEL)
-  → NC the chaas → Print bill (D3 turns 🟢) → Customer paid 500 →
+  → NC (No Charge) the chaas → Skip one sent dish → **Print selected again**
+  (only included dishes; REPRINT slip) → Print bill (D3 turns 🟢) → Customer paid 500 →
   Return to customer shown → Take payment split cash/UPI → table
-  frees — without the owner ever seeing a courier word.
+  frees (cannot free while money is still due) — without the owner ever seeing a courier word.
 - Extra-device acceptance (any client: Android, Windows or Linux) →
   Client Mode → Find the shop's server → pair → as Waiter, open a
   table, Send KOT → it prints at the Server; Take payment is refused

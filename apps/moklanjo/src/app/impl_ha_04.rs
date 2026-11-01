@@ -40,12 +40,12 @@ impl App {
             (
                 ids!(tax_inclusive_btn),
                 ids!(tax_inclusive_btn_on),
-                TaxPricing::Inclusive,
+                TaxPricing::InsidePrice,
             ),
             (
                 ids!(tax_exclusive_btn),
                 ids!(tax_exclusive_btn_on),
-                TaxPricing::Exclusive,
+                TaxPricing::AddedAtTill,
             ),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, active) {

@@ -1042,7 +1042,9 @@ impl StaffRights {
                 cancel_sent_item: WithApproval,
                 complimentary: Denied,
                 move_table: Allowed,
-                reprint: Denied,
+                // Print guest bill / KOT again from Floor and Order (first and
+                // reprint). Settle stays at the counter.
+                reprint: Allowed,
                 discount: Denied,
             },
             StaffRole::Kitchen => Self {
@@ -2144,6 +2146,10 @@ pub struct CartLine {
     /// extra till without rewriting the shop catalogue).
     #[serde(default)]
     pub station_id: String,
+    /// Sent line: skip this dish when printing a recovery KOT (include/exclude).
+    /// Default false = included. Cart-local; not a new Send.
+    #[serde(default)]
+    pub reprint_skip: bool,
 }
 
 /// How many modifier chips fit on one cart row.
@@ -2373,6 +2379,7 @@ impl Cart {
                 kot_id: String::new(),
                 hold_send: false,
                 station_id: String::new(),
+                reprint_skip: false,
             };
             line.sync_qty_from_milli();
             self.lines.push(line);
@@ -2811,6 +2818,7 @@ impl Cart {
                         kot_id: String::new(),
                         hold_send: false,
                         station_id: l.station_id.clone(),
+                        reprint_skip: false,
                     };
                     line.sync_qty_from_milli();
                     line
@@ -2939,7 +2947,7 @@ impl Cart {
             total_paise: total,
             // The cart is deliberately tax-agnostic under both pricing modes.
             // The store resolves the shop's country pack at finalize: it
-            // extracts inclusive tax, or adds exclusive tax on top of this
+            // extracts tax under Tax inside price, or adds Tax added at till on this
             // total. Doing it here would let a stale pack price a bill.
             tax_paise: 0,
             order_type: self.order_type,
@@ -3040,8 +3048,8 @@ pub struct SaleDraft {
     pub rounding_paise: i64,
     /// Amount the seller quoted and the cart agreed on.
     ///
-    /// Under Inclusive pricing this is already the charged total. Under
-    /// Exclusive pricing the store adds tax to it at finalize, so the *sale*
+    /// Under Tax inside price this is already the charged total. Under
+    /// Tax added at till the store adds tax to it at finalize, so the *sale*
     /// total can be higher than the draft total.
     pub total_paise: i64,
     /// Tax **inside** `lines_total_paise`. Carts always leave this at 0; the
@@ -3135,8 +3143,8 @@ pub struct Sale {
     /// [`OrderType::as_str`] value; empty/unknown reads as Counter.
     #[serde(default)]
     pub order_type: String,
-    /// Tax on this bill. Inside `total_paise` when the shop prices inclusive,
-    /// added on top of the line total when it prices exclusive.
+    /// Tax on this bill. Inside `total_paise` under Tax inside price;
+    /// added on top of the line total under Tax added at till.
     #[serde(default)]
     pub tax_paise: i64,
     /// [`TaxPricing::as_str`] at the moment of sale. Frozen on the row so a
@@ -3146,8 +3154,8 @@ pub struct Sale {
     /// Country wording for the tax at the moment of sale (`GST`, `VAT`, `IVA`…).
     #[serde(default)]
     pub tax_label: String,
-    /// Taxable base: `total − tax` when inclusive, `lines + rounding` when
-    /// exclusive. Always `total_paise − tax_paise` for a completed sale.
+    /// Taxable value: `total − tax` under Tax inside price, `lines + rounding`
+    /// under Tax added at till. Always `total_paise − tax_paise` for a completed sale.
     #[serde(default)]
     pub net_paise: i64,
     /// House service charge added on top of the lines, already inside
@@ -3224,7 +3232,7 @@ impl Sale {
             Money(fiscal::net_of_tax(
                 self.total_paise,
                 self.tax_paise,
-                TaxPricing::Inclusive,
+                TaxPricing::InsidePrice,
             ))
         }
     }
@@ -3552,7 +3560,7 @@ pub struct DayTotals {
     pub card_paise: i64,
     /// Today's sales put on credit (not cash-in).
     pub credit_paise: i64,
-    /// Tax already contained in `lines_total_paise` (tax-inclusive pricing).
+    /// Tax already contained in `lines_total_paise` (Tax inside price mode).
     #[serde(default)]
     pub tax_paise: i64,
     /// Revenue tagged Account booking / Tax invoice.
@@ -4042,6 +4050,7 @@ impl RunningOrder {
                     kot_id: l.kot_id.clone(),
                     hold_send: false,
                     station_id: String::new(),
+                    reprint_skip: false,
                 };
                 line.sync_qty_from_milli();
                 line
@@ -4531,8 +4540,8 @@ mod tests {
     #[test]
     fn inclusive_tax_never_inflates_the_bill() {
         // ₹105 at 5% inclusive → ₹5 tax inside, bill unchanged.
-        assert_eq!(fiscal::tax_on_amount(10_500, 500, TaxPricing::Inclusive), 500);
-        assert_eq!(fiscal::tax_on_amount(10_500, 0, TaxPricing::Inclusive), 0);
+        assert_eq!(fiscal::tax_on_amount(10_500, 500, TaxPricing::InsidePrice), 500);
+        assert_eq!(fiscal::tax_on_amount(10_500, 0, TaxPricing::InsidePrice), 0);
         let mut cart = Cart::default();
         let mut p = tea();
         p.tax_bps = 500;
@@ -4543,7 +4552,7 @@ mod tests {
         assert_eq!(draft.tax_paise, 0, "store fills tax at finalize");
         assert_eq!(draft.order_type, OrderType::Takeaway);
         assert_eq!(draft.total_paise, 1300);
-        assert_eq!(p.tax_for(1300, TaxPricing::Inclusive), 61);
+        assert_eq!(p.tax_for(1300, TaxPricing::InsidePrice), 61);
     }
 
     #[test]
@@ -4559,14 +4568,14 @@ mod tests {
         assert_eq!(draft.total_paise, 1_000);
         assert_eq!(draft.tax_paise, 0);
 
-        let tax = p.tax_for(draft.lines_total_paise, TaxPricing::Exclusive);
+        let tax = p.tax_for(draft.lines_total_paise, TaxPricing::AddedAtTill);
         assert_eq!(tax, 50);
         assert_eq!(
-            fiscal::gross_with_tax(draft.total_paise, tax, TaxPricing::Exclusive),
+            fiscal::gross_with_tax(draft.total_paise, tax, TaxPricing::AddedAtTill),
             1_050
         );
         assert_eq!(
-            fiscal::net_of_tax(draft.total_paise, tax, TaxPricing::Exclusive),
+            fiscal::net_of_tax(draft.total_paise, tax, TaxPricing::AddedAtTill),
             1_000
         );
     }

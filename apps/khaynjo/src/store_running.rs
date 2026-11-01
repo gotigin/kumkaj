@@ -1520,17 +1520,22 @@ impl Store {
             );
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
             let unit = money(line.unit_price_paise);
-            // Name alone, then qty × rate and the line total — not one jammed
-            // line, and not one row per KOT send (see bill_print_lines).
-            out.push_str(&format!("{}\n", line.name));
+            // Name and qty × rate = total on one line (KOT splits already
+            // collapsed by bill_print_lines). The blank line after the rule
+            // above is what starts the first dish on a fresh line.
             if line.complimentary {
                 out.push_str(&format!(
-                    "{qty} x {unit}  NC ({}) {}\n",
+                    "{}  {qty} x {unit}  NC ({}) {}\n",
+                    line.name,
                     money(line.value_paise()),
                     money(0)
                 ));
             } else {
-                out.push_str(&format!("{qty} x {unit}  {}\n", money(line.billed_paise())));
+                out.push_str(&format!(
+                    "{}  {qty} x {unit}  {}\n",
+                    line.name,
+                    money(line.billed_paise())
+                ));
             }
             if !line.note.trim().is_empty() {
                 out.push_str(&format!("  ({})\n", line.note.trim()));
@@ -1548,7 +1553,11 @@ impl Store {
             if total != subtotal {
                 out.push_str(&format!(
                     "{}: {}\n",
-                    if fiscal.tax_pricing.is_inclusive() { "Total (incl. tax)" } else { "Tax + charges" },
+                    if fiscal.tax_pricing.is_inside_price() {
+                        "Tax inside this total"
+                    } else {
+                        "Tax + charges (added at till)"
+                    },
                     money(total - subtotal)
                 ));
             }
@@ -1938,10 +1947,11 @@ mod tests {
         }
     }
 
-    /// Guest bill: name on its own line, then qty × rate; KOT splits of the
-    /// same dish collapse to one row (2 then 3 Thali → one "5 x …").
+    /// Guest bill: name + qty × rate on one line; first dish after a blank
+    /// line under the rule; KOT splits of the same dish collapse (2 then 3
+    /// Thali → one "5 x …").
     #[test]
-    fn running_bill_aggregates_kot_splits_and_puts_rate_under_the_name() {
+    fn running_bill_aggregates_kot_splits_with_rate_beside_the_name() {
         let shop = shop();
         shop.kot("D1", &[(&shop.thali, 2)]);
         shop.kot("D1", &[(&shop.thali, 3), (&shop.chaas, 1)]);
@@ -1968,26 +1978,20 @@ mod tests {
         let text = shop.store.format_running_bill_text(&order).unwrap();
         let after_rule = text.split("--------------------------------\n\n").nth(1).unwrap_or("");
         assert!(
-            after_rule.starts_with("Thali\n"),
-            "first dish must start on its own line after a blank line, got:\n{text}"
+            after_rule.starts_with("Thali  "),
+            "first dish must start on a fresh line after the rule, got:\n{text}"
         );
         assert!(
-            text.contains("Thali\n2 x ₹200.00  ₹400.00")
-                || text.contains("Thali\n5 x ₹200.00  ₹1,000.00"),
-            "name then qty × rate; Thali must be one aggregated row, got:\n{text}"
+            text.contains("Thali  5 x ₹200.00  ₹1,000.00"),
+            "name and qty × rate on one line; 2+3 Thali once as 5, got:\n{text}"
         );
         assert!(
-            text.contains("Thali\n5 x ₹200.00  ₹1,000.00"),
-            "2+3 Thali must print once as 5, got:\n{text}"
-        );
-        assert_eq!(
-            text.matches("Thali\n").count(),
-            1,
-            "Thali must not appear twice:\n{text}"
+            !text.contains("Thali\n"),
+            "qty × rate must not wrap under the name, got:\n{text}"
         );
         assert!(
-            text.contains("Chaas\n1 x ₹30.00  ₹30.00"),
-            "expected Chaas under its name, got:\n{text}"
+            text.contains("Chaas  1 x ₹30.00  ₹30.00"),
+            "expected Chaas with rate beside the name, got:\n{text}"
         );
     }
 

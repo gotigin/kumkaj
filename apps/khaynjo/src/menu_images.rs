@@ -88,29 +88,55 @@ pub struct ShelfDish {
     pub path: PathBuf,
 }
 
-/// Where the provided items live. Dev runs read the workspace copy via
-/// the compile-time manifest dir; packaged builds ship `assets/items`
-/// next to the executable. `KHAYNJO_CATALOGUE_DIR` overrides both.
-pub fn catalogue_root() -> Option<PathBuf> {
-    if let Ok(dir) = std::env::var("KHAYNJO_CATALOGUE_DIR") {
+/// Packaged `assets/…` lookup — same on Windows, Linux, and portable folders.
+/// Tries: `env_key` (if set), cargo manifest (dev), beside the exe, one
+/// level up (Linux `bin/` layout), `MAKEPAD_PACKAGE_DIR`, then cwd.
+pub(crate) fn packaged_assets_dir(rel: &str, env_key: &str) -> Option<PathBuf> {
+    if let Ok(dir) = std::env::var(env_key) {
         let p = PathBuf::from(dir);
         if p.is_dir() {
             return Some(p);
         }
     }
-    let manifest = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets/items");
+    let manifest = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join(rel);
     if manifest.is_dir() {
         return Some(manifest);
     }
-    if let Ok(exe) = std::env::current_exe()
-        && let Some(parent) = exe.parent()
-    {
-        let beside = parent.join("assets/items");
-        if beside.is_dir() {
-            return Some(beside);
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(parent) = exe.parent() {
+            let beside = parent.join(rel);
+            if beside.is_dir() {
+                return Some(beside);
+            }
+            if let Some(grand) = parent.parent() {
+                let up = grand.join(rel);
+                if up.is_dir() {
+                    return Some(up);
+                }
+            }
+        }
+    }
+    if let Ok(pkg) = std::env::var("MAKEPAD_PACKAGE_DIR") {
+        let p = PathBuf::from(pkg).join(rel);
+        if p.is_dir() {
+            return Some(p);
+        }
+    }
+    if let Ok(cwd) = std::env::current_dir() {
+        let p = cwd.join(rel);
+        if p.is_dir() {
+            return Some(p);
         }
     }
     None
+}
+
+/// Where the provided items live. Dev runs read the workspace copy via
+/// the compile-time manifest dir; packaged builds ship `assets/items`
+/// next to the executable (Windows MSI / portable, Linux package root).
+/// `KHAYNJO_CATALOGUE_DIR` overrides.
+pub fn catalogue_root() -> Option<PathBuf> {
+    packaged_assets_dir("assets/items", "KHAYNJO_CATALOGUE_DIR")
 }
 
 /// Image keys that point into the bundled catalogue: `shelf:<folder>/<file>`.

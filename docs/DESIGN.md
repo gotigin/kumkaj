@@ -39,7 +39,7 @@ Booking is not the whole product; Day book and Pay out are peers.
 | Screen | When |
 |---|---|
 | **DeviceSetup** | **Every app start** (multi-user / multi-business on one device). One screen: **language** + **Server Mode / Client Mode**. |
-| **Lock** | Owner/Staff PIN (extra till prefers Staff when team exists) |
+| **Lock** | Owner/Staff PIN. First time: **Server → Owner**, **Client → Staff** (when team exists); after that the last chip is remembered per books file (`lock_prefer_owner`). |
 
 #### DeviceSetup — language (every launch)
 
@@ -73,7 +73,7 @@ Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.s
 | **Min width** | Layout floor **320 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`). Desktop restore ignores saved widths below 720 so a squeezed session cannot lock the app into a phone frame. |
 | **Button ink** | Shared faces use `padding` + `label_walk.margin` so labels never sit flush on the face edge. Long dual CTAs use `ActionStack`, not half-width `ActionRow`. |
 | **Reports** | Today / month books, party aging, expenses, bank cashbook posts — generic books, not a vertical report suite. |
-| **ClientPair** | Extra till until paired (IP + pairing code) |
+| **ClientPair** | Extra till until paired (IP + pairing code). Body **Back** returns to DeviceSetup (auth screens hide the unlocked header — see DEV § Native input / Back). |
 | **DayClose** | Day book shortcut or Day close peer |
 | **Bank book & P&L** | Day book shortcut or Reports peer — period P&L, aging, bank posts, expense voucher |
 | **Parties** | Consignor / Carrier; AR settle; AP pay |
@@ -92,7 +92,9 @@ controls past the right edge, no “designed for one width” grids.
 - Size grids and tile columns from the **widget’s turtle / walk width**,
   not a shell-wide estimate that ignores screen padding (Floor tiles
   cropped when `content_width` was used before padding — fix: measure
-  in `draw_walk` like the dish grid).
+  in `draw_walk` like the dish grid). Prefer **big** tiles: Khaynjo Floor
+  is **1 column from ~320 css px**, more columns only when another
+  ~280 px tile fits (`FLOOR_TILE_MIN_W`).
 - Prefer wrap / reflow / scroll over Fixed widths that only fit one
   desktop size. Desk side-by-side only when the content column is wide
   enough; otherwise stack.
@@ -101,7 +103,10 @@ controls past the right edge, no “designed for one width” grids.
 - **Page-scroll lists:** expand-to-content `PortalList`s must not use a
   Fixed pitch shorter than the real Fit row — that crops the last cards
   into the next block and makes the page look unscrolled. Measure
-  (or match a Fixed DSL card height). See `docs/DEV.md` bug 8.
+  (or match a Fixed DSL card height). Outer page `ScrollYView` owns
+  wheel **and** mouse/touch press-drag (`mouse_capture_overload`); do
+  not nest a cart/list fling on those lists. See `docs/DEV.md` §13 /
+  bug 8.
 
 ## Text selection & copy (every app)
 

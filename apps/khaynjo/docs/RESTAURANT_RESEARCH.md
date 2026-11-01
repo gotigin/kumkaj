@@ -303,7 +303,7 @@ POS, F = free/open source).
 | Menu timings / happy hour / time-based price | I, G | **Have** | Local | `schedule_json` on item; `price_now` / `available_now`; menu form human windows |
 | Area-wise prices (AC dearer) | I | **Have** | Local | — |
 | Discounts with reason and right | I, G | **Have** | Local | — |
-| Complimentary (NC) items | I | **Have** | Local | — |
+| Complimentary (NC / No Charge) items | I | **Have** | Local | Line or bill ₹0 with reason; counted, not hidden |
 | Running table order, more KOTs, print bill, settle | I, G | **Have** | LAN | — |
 | Settle: tendered, change, tip, part payment, due on khata | I, G | **Have** | Local | — |
 | Split tenders | I, G | **Have** | Local | — |
@@ -321,7 +321,7 @@ POS, F = free/open source).
 |---|---|---|---|---|
 | Areas, tables, colour states, minutes and amount | I, G | **Have** | LAN | — |
 | Parcel as a table area | I (Petpooja) | **Have** | LAN | — |
-| **Drawn floor-plan editor** (shapes, positions, seats, multiple floors) | G, F (Odoo, Square, Lightspeed) | **Have** (Grid ↔ Layout; X/Y/W/H editor + nudge; auto-pack defaults) | Local | `set_table_layout` / `ensure_table_layouts_packed`; `floor_view` meta |
+| **Drawn floor-plan editor** (shapes, positions, seats, multiple floors) | G, F (Odoo, Square, Lightspeed) | **Removed from Floor chrome** — product face is the colour **grid** (large responsive tiles). Layout APIs may remain unused | Local | Prefer grid; see [`KHAYNJO.md`](KHAYNJO.md) Floor |
 | Server sections, colour by waiter | G (TouchBistro) | **Have** | LAN | `set_table_waiter`; Floor filter by waiter name |
 | Reservations | I, G (often add-on) | **Have** | LAN | — |
 | **Waitlist** with quoted wait time | G | **Have** | LAN | Floor waitlist: name, party, quoted mins → seat/cancel |
@@ -426,7 +426,7 @@ Every item that could ship **without Kumkaj Cloud** from the earlier
 | 11 | **QR table ordering over restaurant Wi‑Fi** | **Have** (LAN); Cloud mobile-data **Skipped** | LAN |
 | 12 | **Pay at table** (rights-gated) | **Have** | LAN |
 | 13 | **Time clock and tip pooling** | **Have** | Local |
-| 14 | **Drawn floor layout** (Grid ↔ Layout; editor + auto-pack) | **Have** | Local |
+| 14 | **Drawn floor layout** (Grid ↔ Layout; editor + auto-pack) | **Removed from Floor chrome** (grid tiles are the face) | Local |
 | 15 | **One-tap WhatsApp bill, SMS outbox** | **Have** (queue); SMS gateway / Cloud SMS **Planned** | Local / Net / Cloud SMS |
 | 16 | Allergen tags; gift vouchers; bulk menu price edit | **Have** | Local |
 

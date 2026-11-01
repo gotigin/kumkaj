@@ -285,6 +285,22 @@ Use when implementing a row above or a deferred compliance feature.
 - **Retail vs service emphasis:** retail stresses stock + COGS; services stress
   AR and costs without inventory — same checklist, progressive stock in each app's own shell.
 
+### Tax pricing modes (product wording — every app)
+
+Prefer these Settings labels; avoid bare “inclusive/exclusive tax” (ambiguous
+elsewhere). Tax *name* (GST / VAT / sales tax / custom) is the country pack
+label and is independent of the mode.
+
+| Mode | What the guest pays | Receipt breakup |
+|------|---------------------|-----------------|
+| **Tax inside price** | Quoted/charged total unchanged | **Taxable value** + tax (= same total); footnote “(GST inside price)” etc. |
+| **Tax added at till** | Net prices + tax on top | **Subtotal** + tax → higher Total |
+
+Example (Tax inside price, 18% on ₹3000): taxable value = ₹3000 ÷ 1.18, tax =
+remainder; guest still pays ₹3000. Code: `TaxPricing::InsidePrice` /
+`AddedAtTill` (`apps/*/src/fiscal.rs`); meta still stores `inclusive` /
+`exclusive`. Detail: [`DEV.md`](DEV.md) § Fiscal country packs.
+
 ### India compliance (deferred — config rates, don’t hard-code)
 - GST: place of supply → CGST/SGST vs IGST; HSN/SAC on items; tax invoice fields
   (Rule 46); bill of supply / composition later.

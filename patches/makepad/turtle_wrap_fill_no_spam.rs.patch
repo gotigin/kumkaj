@@ -1,0 +1,21 @@
+--- a/draw/src/turtle.rs
++++ b/draw/src/turtle.rs
+@@ -2193,7 +2193,17 @@
+                 })
+             }
+             Flow::Right { wrap: true, .. } if walk.width.is_fill() => {
+-                error!("flow: Right {{ wrap: true }} does not support width: Fill");
++                // Never error!/println! here every frame — that freezes the UI
++                // (Kumkaj Settings → Add printer on every platform, 2026-10/11).
++                // Return None so the View draws the child immediately; walk_turtle
++                // resolves Fill to the remaining row width. Log once for authors.
++                use std::sync::atomic::{AtomicBool, Ordering};
++                static WARNED: AtomicBool = AtomicBool::new(false);
++                if !WARNED.swap(true, Ordering::Relaxed) {
++                    warning!(
++                        "flow: Right {{ wrap: true }} does not support width: Fill (coerced; logged once)"
++                    );
++                }
+                 None
+             }
+             _ => None,

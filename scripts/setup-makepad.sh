@@ -72,12 +72,13 @@ PATCHES=(
   text_flow_touch_scroll            # Android/touch: swipe scrolls; long-press selects (WrapLabel)
   text_input_caret_and_placeholder  # caret blinks and is visible; wrapped placeholder not clipped
   button_label_center               # fixed-width buttons centre their label; wrap CTAs keep Fit label (Fill+wrap freezes UI)
+  turtle_wrap_fill_no_spam          # wrap+Fill: log once, never error!-spam every frame (that freezes Settings → Add printer)
   screen_cap_picture_only_fallback  # Linux Shift+F12 recording without audio track
   wayland_maximize_toggle           # Wayland CSD maximize/restore + caption double-click
   mouse_back_button                 # mouse thumb button maps to Back
   d3d11_device_fallback             # Windows: create D3D11 without VIDEO_SUPPORT if refused
   text_input_float_caption          # filled fields keep a small label (their placeholder's short form)
-  drag_scroll_touch_only            # vertical: touch-only drag-scroll; horizontal strips: mouse on whitespace
+  drag_scroll_touch_only            # page mouse/touch press-drag + mouse_capture_overload; lists stay touch-fling
   android_keep_screen_on            # Android: Cx::keep_screen_on while serving (MakepadActivity-keep-awake.java)
   android_write_content_uri         # Android: Cx::write_content_uri for "Save a backup copy" (MakepadActivity-write.java)
   android_print                     # Android: PrintManager + Bluetooth SPP + USB host (MakepadActivity-print.java)

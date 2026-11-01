@@ -34,9 +34,11 @@ script_mod! {
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
         // CJK / icons / emoji: same files Makepad widgets already ships — use
         // that crate so Android/desktop packages do not double-bundle ~48MB.
-        chinese := FontMember{res: crate_resource("makepad_widgets:resources/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
-        icons := FontMember{res: crate_resource("makepad_widgets:resources/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
+        // CJK / icons / emoji live under this app's resources/fonts (desktop
+        // packages ship only that tree — not makepad_widgets/resources).
+        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
+        icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
+        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     let WorldFontsBold = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/NotoSans-Regular.ttf") asc: -0.1 desc: 0.0}
@@ -63,9 +65,9 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        chinese := FontMember{res: crate_resource("makepad_widgets:resources/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
-        icons := FontMember{res: crate_resource("makepad_widgets:resources/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("makepad_widgets:resources/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
+        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
+        icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
+        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     mod.theme.font_regular.font_family = WorldFonts
     mod.theme.font_label.font_family = WorldFonts
@@ -248,7 +250,7 @@ script_mod! {
     // freezing the whole UI (PIN keypad included). Style fields via theme +
     // per-instance blink_speed/padding only (see FieldInput).
 
-    // Makepad 2 ScrollYView: wheel/trackpad + app keyboard (↑/↓, PgUp/PgDn).
+    // Makepad 2 ScrollYView: wheel/trackpad + mouse/touch press-drag + keys.
     // Pages swipe-scroll on touch; a selectable WrapLabel takes its own drag.
     // The page's scrollbar must be seen: the stock handle colour is almost
     // the page colour. A thin handle that darkens on hover / drag.
@@ -258,10 +260,11 @@ script_mod! {
         padding: Inset{right: 16.}
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: false show_scroll_y: true
-            // Swipe-to-scroll stays on (tablets, phones) — it is what pages
-            // always did; the stock definition was the one in effect.
             scroll_bar_y: mod.widgets.ScrollBar{
                 drag_scrolling: true
+                // Press-drag over lists / buttons / filled panes (not only
+                // whitespace). Nested PortalList still claims via nested_touch.
+                mouse_capture_overload: true
                 bounce_at_start: false
                 bounce_at_end: false
                 bar_size: 10.
@@ -283,7 +286,7 @@ script_mod! {
     // Horizontal chip/tab strip. Mouse drag-scroll starts on whitespace
     // around the chips (Makepad: no capture overload for mouse), so a press
     // on a chip stays a tap or nav drag-to-swap; touch still scrolls from a
-    // chip. Vertical pages stay touch-only (`drag_scroll_touch_only`).
+    // chip. Desk panes that fill the strip set mouse_capture_overload.
     mod.widgets.ScrollXView = mod.widgets.ViewBase {
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: true show_scroll_y: false
@@ -3623,6 +3626,9 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
+                                // Auth header is hidden here — body Back like ClientPair
+                                // (→ DeviceSetup / previous onboard step).
+                                onboard_back := BackBtn{text: "Back"}
                                 h_setup_app_moklanjo := WrapLabel{
                                     body: "Set up Moklanjo"
                                     font_color: #x0B1220
@@ -3773,8 +3779,9 @@ script_mod! {
                                         tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
                                     }
                                 }
-                                // Back is header_back (left of brand) — not a body button.
-                                client_pair_back := BackBtn{text: "Back" visible: false}
+                                // Auth header is hidden here — body Back calls navigate_back
+                                // (→ DeviceSetup). Unlocked screens use header_back instead.
+                                client_pair_back := BackBtn{text: "Back"}
                                 client_pair_status := WrapLabel{
                                     body: " "
                                     font_color: #x3A4554
@@ -5569,9 +5576,11 @@ script_mod! {
                                 }
                                 printers_found_list := mod.widgets.ReportText{}
                                 ActionStack{
-                                    find_printers_btn := RowSecondaryBtn{text: "Find printers" flow: Right}
-                                    find_printers_cancel := RowSecondaryBtn{text: "Cancel" flow: Right visible: false}
+                                    find_printers_btn := RowSecondaryBtn{text: "Find printers"}
                                 }
+                                // Fit + no wrap — safe to show/hide. Never toggle a
+                                // Fill wrap CTA visible inside the Find ActionStack.
+                                find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                 h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
                                 printers_pool_label := mod.widgets.ReportText{}
                                 printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
@@ -5596,18 +5605,15 @@ script_mod! {
                                     }
                                 }
                                 printer_format_custom := RowSecondaryBtn{text: "New custom format"}
-                                // Idle go/remove vs busy progress/cancel are separate siblings
-                                // (same as template import confirm). Never toggle Cancel visible
-                                // inside the pressed Row* ActionStack — that freezes Settings.
-                                printer_add_idle := ActionStack{
-                                    printer_add := RowPrimaryBtn{text: "Add printer" flow: Right}
-                                    printer_remove := RowSecondaryBtn{text: "Remove last" flow: Right}
+                                // One ActionStack only. Busy = change Add's label (and show a
+                                // Fit Cancel). Never swap sibling ActionStacks / Overlay faces
+                                // and never toggle a Fill wrap CTA visible — those redraws hit
+                                // Makepad wrap+Fill logging and froze Settings on every OS.
+                                ActionStack{
+                                    printer_add := RowPrimaryBtn{text: "Add printer"}
+                                    printer_remove := RowSecondaryBtn{text: "Remove last"}
                                 }
-                                printer_add_busy_face := ActionStack{
-                                    visible: false
-                                    printer_add_progress := RowPrimaryBtn{text: "Adding printer…" flow: Right}
-                                    printer_add_cancel := RowSecondaryBtn{text: "Cancel" flow: Right}
-                                }
+                                printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                 h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
                                 printer_routes_label := mod.widgets.ReportText{}
                                 h_route_pick := Label{

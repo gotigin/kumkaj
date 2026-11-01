@@ -69,7 +69,7 @@ Loads [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env
   - `vendor/makepad` is gitignored: **an edit there is lost on the next setup unless it is also a patch in `patches/makepad/` listed in `PATCHES`**. After changing a vendor file, regenerate its patch, then rerun the setup in a scratch copy and diff it against `vendor/makepad`
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
-- Multi-script UI fonts live **per app**: `apps/moklanjo/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Desktop packages copy only that app's `<crate_name>/resources/` (underscores — Makepad crate name) — not a second `makepad_widgets/resources/` font tree. Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing.
+- Multi-script UI fonts live **per app**: `apps/moklanjo/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing. **Desktop icon fonts — do not regress (2026-11-02):** see § WorldFonts / packaged icon fonts below.
 - **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
@@ -173,10 +173,12 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 4. **Raw locale keys on buttons** — `locale::t` falling through to the key (`record_purchase`). English `en()` must define every chrome key; see `locale::tests::english_chrome_never_returns_raw_keys`.
 5. **Item / rate photos** — Moklanjo has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
+6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
-7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle logs `flow: Right { wrap: true } does not support width: Fill` every frame when a **wrapping** flow walks a **Fill** child; log spam freezes the app (Khaynjo Settings → Add printer after a chrome redraw, 2026-10). Two cases:
-   - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit** — including left-aligned rail tabs (`TabBtn` / `HubDestBtn` / sidebar rows), not only centered CTAs. A DSL `label_walk` of Fill with wrap freezes every frame once labels wrap ("Menu & items"). **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3). The shipping fix is patch `button_label_center` (`patches/makepad/button_label_center.rs.patch`): **when the face wraps, always Fit the label**; centered faces still center via `text_align` + `ink_centered`.
+7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws (never per-frame spam). Still avoid the bad layout:
+   - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit** — including left-aligned rail tabs (`TabBtn` / `HubDestBtn` / sidebar rows), not only centered CTAs. Patch `button_label_center`: **when the face wraps, always Fit the label**; centered faces still center via `text_align` + `ink_centered`. **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3).
    - **Parent View:** never put `width: Fill` children (`NavBtn`, `Stack*`, `SegBtn`, …) inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit-width chips in a wrapping strip.
+   - **Busy chrome:** never swap sibling `ActionStack` faces or toggle a Fill wrap CTA `visible` to show Cancel during Add/Find. Change the submit label in place; Cancel is a `QuietFitBtn` (Fit, no wrap) shown beside/under the stack.
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
@@ -432,7 +434,20 @@ Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, 
 
 One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.moklanjo.debug` vs `com.moklanjo`).
 
-Makepad loads fonts from **`kumkaj_moklanjo/resources/`** next to the `.exe` (crate name uses underscores). Hyphenated `kumkaj-moklanjo/resources/` will not load UI fonts.
+Makepad loads fonts from **`<crate>/resources/`** next to the `.exe` (crate name uses underscores: `kumkaj_moklanjo`, `kumkaj_khaynjo`). Hyphenated `kumkaj-*/resources/` will not load UI fonts.
+
+### WorldFonts / packaged icon fonts (all desktop packages)
+
+Floor tile actions, header eye, chevrons, and other glyph buttons use **Font Awesome** via `WorldFonts` → `icons` (`fa-solid-900.ttf`). Sidebar nav pictures are **WebP** under `resources/nav/` — those can look fine while FA buttons show empty rectangles.
+
+| Rule | Detail |
+|---|---|
+| **Load path** | `WorldFonts` **must** use `self:resources/fonts/…` for icons, CJK (LXGW), and emoji — **never** `makepad_widgets:resources/…` for packaged desktop. Dev-from-source can see the widgets crate; MSI / folder / Linux packages do **not** ship a second `makepad_widgets/resources/` tree. |
+| **Must ship** | At least `NotoSans-Regular.ttf`, **`fa-solid-900.ttf`**, plus the other Noto/LXGW/emoji files the app's `WorldFonts` lists. Staging: `makepad_copy_desktop_resources` in `scripts/windows-env.sh` (copies FA from vendor if missing; **errors** if FA still absent). Populate sources with `./scripts/fetch-ui-fonts.sh apps/<app>`. |
+| **Symptom of a miss** | Windows/Linux install: sidebar icons OK, Floor/header action circles show blank boxes / tofu. Fix: re-fetch fonts, re-package, reinstall — not an OS theme issue. |
+| **Install guards** | Each app's `install-linux.sh` / `install-windows.ps1` refuse packages missing `NotoSans-Regular.ttf` **or** `fa-solid-900.ttf`. |
+
+Same rules for **Moklanjo and Khaynjo**, Windows **and** Linux. Android APK still packs the app's `resources/`; keep FA under the app fonts tree so all platforms share one path.
 
 | | Development | Production |
 |---|---|---|
@@ -490,14 +505,18 @@ by `scripts/apply-android-activity-bridge.sh` before an Android build:
 Because the receipt file is under `getFilesDir`, another app cannot open it
 without a `FileProvider`; the share sheet and clipboard carry the text.
 
-The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK.
-**Shelf** import (“Import complete template”) and **named client** imports
-(`assets/templates/<id>/`, e.g. Rajdhani — Menu → Client menu) both run on a
-desktop Server and copy each photo into `item_images` as `custom:…`; Clients
-(including Android) pull missing photos over LAN (`GET /item-image`) into a
-local cache. Initials show only until that fetch lands, or when the Server
-itself has no file for the key. How to add a client template:
-`apps/khaynjo/assets/templates/README.md`.
+The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK
+(size). **Desktop packages (Windows MSI / portable, Linux) must ship both
+`assets/items` and `assets/templates`** beside the app — Menu → **Import
+complete template** and **Client menu** (e.g. Rajdhani) disappear if those
+folders are missing. Staging: `copy_app_menu_assets_if_present` in
+`scripts/windows-env.sh` (called from Khaynjo `windows-dev.sh` /
+`package-linux*.sh`); MSI harvests `assets/` via `scripts/build-msi.sh`.
+**Shelf** / **named client** imports run on the Server and copy each photo
+into `item_images` as `custom:…`; Clients (including Android) pull missing
+photos over LAN (`GET /item-image`) into a local cache. Initials show only
+until that fetch lands, or when the Server itself has no file for the key.
+How to add a client template: `apps/khaynjo/assets/templates/README.md`.
 
 `arboard` and `rfd` are desktop-only dependencies — neither compiles for
 Android, and `arboard` being unconditional used to break the Android build
@@ -810,10 +829,15 @@ Makepad visual traps found this way (do not reintroduce):
 12. **xdotool cannot type into Makepad fields under X input methods** —
     launch the app with `XMODIFIERS=@im=none` on the virtual display.
 13. **A screen scrolls as one page** (two separately scrolling halves were
-    rejected 2026-10-24). A big list inside it is a bounded box with its own
-    thin scrollbar and *scroll chaining* — the wheel scrolls the box while it
-    can move that way, then the page (browser behaviour). Lists that grow
-    with the page draw only the rows inside the window (`page_window`).
+    rejected 2026-10-24). Two list shapes:
+    - **Expand-to-content** (Khaynjo Order cart / Floor grid, Moklanjo sale
+      lists): full content height, `page_owns_scroll`, outer `ScrollYView`
+      owns wheel **and** mouse/touch press-drag (`mouse_capture_overload`).
+      Do **not** use `page_window` here — variable open/closed row heights
+      made it flicker.
+    - **Capped nested viewport** (long Menu catalogue, Settings pickers):
+      bounded box + thin scrollbar + *scroll chaining*; may use
+      `page_window` so only on-screen rows draw.
     A picker that needs the whole height (Khaynjo's menu: search, category
     tabs, dish tiles) is a `Modal` window over the screen instead — the
     page behind it holds still (2026-10-25).
@@ -839,18 +863,23 @@ Makepad visual traps found this way (do not reintroduce):
     screens (`go` / `go_if_allowed`) push history — e.g. Settings → Sidebar
     settings, Order → Floor pick-table (Khaynjo). Peer destinations opened
     from another screen (Settings → Branches, Books shortcuts, undo → Sell)
-    also use `go_peer` so Back does not invent a fake parent. Back chrome /
+    also use `go_peer` so Back does not invent a fake parent.     Back chrome /
     mouse/Android back **pops** (`navigate_back`), with empty-stack fallbacks
-    (SidebarSettings → Settings, ClientPair → DeviceSetup). Nested in-screen
+    (SidebarSettings → Settings, ClientPair → DeviceSetup). Auth screens
+    (Lock / DeviceSetup / Onboard / ClientPair) hide the unlocked header, so
+    **ClientPair** and **Server-pick** show a body `Back` (`client_pair_back` /
+    `server_pick_cancel`) that still calls `navigate_back` — never leave those
+    steps with no visible Back on any supported device. Nested in-screen
     layers (Settings section → hub, suggest list, picking-server overlay,
     Khaynjo line-action / move / split / pick-table) dismiss on Back
     **before** leaving the screen — never skip to Day book;
-    drag-to-scroll by touch only on vertical pages/lists — a mouse drag
-    never flings them (wheel / scrollbar / keys). Horizontal tab strips
-    (`ScrollXView`) allow mouse press-drag on the whitespace around the
-    chips so nav drag-to-swap on a chip is not stolen; desk panes that
-    fill the strip set `scroll_bar_x.mouse_capture_overload: true` so
-    mouse press-drag still pans (Makepad patch `drag_scroll_touch_only`).
+    page `ScrollYView` press-drag works with mouse and touch
+    (`scroll_bar_y.mouse_capture_overload: true` on both apps). Nested
+    PortalLists stay touch-fling only so the page owns mouse drag over
+    expand-to-content carts. Horizontal tab strips (`ScrollXView`) mouse
+    press-drag on whitespace around chips (nav drag-to-swap on a chip is
+    not stolen); desk panes set `scroll_bar_x.mouse_capture_overload: true`
+    (Makepad patch `drag_scroll_touch_only`).
     Selectable `WrapLabel` / TextFlow yields sideways drags to an ancestor
     ScrollX (commits text-select only when the drag is mostly vertical —
     `text_flow_selection`). On **touch**, vertical swipe always scrolls the
@@ -905,6 +934,12 @@ can never reach the OS printer from a test.
 
 ## Packaging
 
+Before any desktop package: `./scripts/fetch-ui-fonts.sh apps/<app>` so
+`resources/fonts/` includes **`fa-solid-900.ttf`** (and Noto/LXGW/emoji).
+`makepad_copy_desktop_resources` refuses to finish without FA — empty
+Floor/header icon boxes on Windows mean that file never reached the package
+(see § WorldFonts / packaged icon fonts).
+
 ```bash
 ./apps/moklanjo/scripts/package-linux.sh       # prod → dist/linux/ (+ install.sh / uninstall.sh)
 ./apps/moklanjo/scripts/package-linux-dev.sh   # debug → dist/linux-dev/
@@ -950,7 +985,7 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
 4. Day book shows today; Pay out records carrier bills & expenses; More → Parties settle; Day close; Reports
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
-5b. Settings → Country & tax: apply `GB` (VAT, inclusive, £), then `US` (sales tax, exclusive, $); save a business id and check it prints
+5b. Settings → Country & tax: apply `GB` (VAT, Tax inside price, £), then `US` (sales tax, Tax added at till, $); save a business id and check it prints
 6. Ops / COD / Riders when fleet features are used
 7. Branches: create a second local server in Server Mode; export a day snapshot from each, import it on the owner's device, open the roll-up
 8. Extra till: pair IP + code after the shop allows extra tills → book against the shop
@@ -1048,7 +1083,7 @@ reversed charge would strand stock that strict enforcement then made unsellable.
 
 ## Fiscal country packs (`apps/moklanjo/src/fiscal.rs`)
 
-`COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, inclusive/exclusive pricing, seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone.
+`COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, pricing mode (**Tax inside price** / **Tax added at till** — `TaxPricing::InsidePrice` / `AddedAtTill`; meta still stores `inclusive` / `exclusive`), seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone. Prefer the Settings labels in docs and UI — avoid bare “inclusive tax” (ambiguous elsewhere).
 
 ### Number style
 
@@ -1064,10 +1099,12 @@ reversed charge would strand stock that strict enforcement then made unsellable.
 
 Finalize math lives in `fiscal::{tax_on_amount, net_of_tax, gross_with_tax}`:
 
-| Pricing | tax | sale total | net |
+| Mode (Settings label) | tax | sale total (charged) | taxable value (net) |
 |---|---|---|---|
-| Inclusive | `line × bps / (10000 + bps)` | `draft.total` (unchanged) | `draft.total − tax` |
-| Exclusive | `line × bps / 10000` | `draft.total + tax` | `draft.total` |
+| **Tax inside price** | `line × bps / (10000 + bps)` | `draft.total` (unchanged) | `draft.total − tax` |
+| **Tax added at till** | `line × bps / 10000` | `draft.total + tax` | `draft.total` |
+
+Example (Tax inside price, 18% on a ₹3000 bill): taxable value = `3000 / 1.18`, tax = remainder, guest still pays ₹3000. Receipt shows Taxable value / GST (or pack label) / Total / “(GST inside price)”.
 
 The cart stays tax-agnostic under both modes — `SaleDraft::assert_balanced` only checks `lines_total + rounding = total`. `Store::finalize_sale` resolves the pack, freezes `tax_pricing`/`tax_label` onto the sale row, and uses the taxed total for the payment row, the credit ledger and day totals. `Store::preview_sale_total` gives the UI (and split pay) the same figure before charging.
 
