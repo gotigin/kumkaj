@@ -413,14 +413,17 @@ fn page_window(top: f64, rows: usize, row_h: f64, gap: f64) -> (usize, usize) {
 }
 
 /// Narrowest a dish tile may get in the menu window.
-const PRODUCT_TILE_MIN_W: f64 = 124.0;
+/// Prefer two readable image|text cards over three cramped ones.
+const PRODUCT_TILE_MIN_W: f64 = 300.0;
 /// Dish tile slots per row in the DSL (`c0`…`c5`).
 const PRODUCT_MAX_COLUMNS: usize = 6;
 
-/// How many dish tiles fit across `width` — never fewer than two, so a
-/// phone still shows the menu as a grid, not one long column of rows.
+/// Horizontal gap between cards in a ProductList row (keep in sync with DSL).
+const PRODUCT_TILE_GAP: f64 = 20.0;
+
 fn product_columns(width: f64) -> usize {
-    (((width + 10.0) / (PRODUCT_TILE_MIN_W + 10.0)).floor() as usize).clamp(2, PRODUCT_MAX_COLUMNS)
+    (((width + PRODUCT_TILE_GAP) / (PRODUCT_TILE_MIN_W + PRODUCT_TILE_GAP)).floor() as usize)
+        .clamp(1, PRODUCT_MAX_COLUMNS)
 }
 
 /// Tiles per row the menu window's grid last drew with (taps map a row and

@@ -22,7 +22,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             }
         }
         // Worker owns the books — skip SQL so busy_timeout waits never freeze the UI.
-        // Still paint status+cancel chrome so Cancel stays tappable.
+        // Still paint status+cancel chrome and switch screens so the user can leave
+        // the busy page (nav / header) while the job keeps running.
         let heavy_job = restore_busy().load(std::sync::atomic::Ordering::SeqCst)
             || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
             || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -35,6 +36,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             if let Some(msg) = books_work_status().lock().unwrap().clone() {
                 self.set_status(cx, msg);
             }
+            let screen = app_state().lock().unwrap().screen;
+            self.show_screen(cx, screen);
+            self.lift_footer_above_system_bar(cx);
+            self.repair_focused_carets(cx);
+            self.ui.redraw(cx);
             return;
         }
         // Keep the showing tab's figures fresh — data is always live, so

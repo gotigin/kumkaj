@@ -254,6 +254,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         }
         // While a worker holds the books (import / restore / CSV / VACUUM),
         // never run SQL from the UI — busy_timeout waits look like a freeze.
+        // Still switch screens + shell so the user can leave the busy page.
         let heavy_job = menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
             || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
             || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -264,6 +265,14 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
         if heavy_job {
             self.paint_import_progress_chrome(cx);
+            let screen = app_state().lock().unwrap().screen;
+            self.show_screen(cx, screen);
+            if screen == Screen::Settings {
+                self.sync_settings_panels(cx);
+            }
+            self.lift_footer_above_system_bar(cx);
+            self.repair_focused_carets(cx);
+            self.ui.redraw(cx);
             return;
         }
         // Keep the showing tab's figures fresh — data is always live, so

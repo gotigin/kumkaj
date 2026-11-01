@@ -1283,10 +1283,11 @@ script_mod! {
         }
     }
 
-    // FILTER CHIP — Fit width in a ChipStrip. Soft tag, not DeskTab / SegBtn.
+    // FILTER CHIP — Fit width in a ChipStrip (scroll sideways for long bilingual
+    // names). Soft tag, not DeskTab / SegBtn. Never cap/ellipsis — full label.
     // NEVER use for multi-word CTAs — ActionStack + StackPrimary/Secondary.
     let ChipBtn = Button{
-        width: Fit{max: FitBound.Abs(160.)} height: 34
+        width: Fit height: 34
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
         align: Center
@@ -1316,12 +1317,11 @@ script_mod! {
             color_focus: #x6B4A3F
             ink_centered: true
             max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 12.}
         }
     }
     let ChipBtnActive = Button{
-        width: Fit{max: FitBound.Abs(160.)} height: 34
+        width: Fit height: 34
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
         align: Center
@@ -1351,7 +1351,6 @@ script_mod! {
             color_focus: #xffffff
             ink_centered: true
             max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 12.}
         }
     }
@@ -1415,13 +1414,13 @@ script_mod! {
         width: Fill height: 52
     }
 
-    // Fill chips in a row: padding insets the face; keep label_walk.margin
-    // tiny — padding+14+14 crushed "Hold"-length labels into "Ho…".
+    // Fill chips in a row: wrap (no ellipsis) so translated labels stay whole.
     let RoleChip = Button{
-        width: Fill height: 40
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
-        align: Center
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1447,17 +1446,16 @@ script_mod! {
             color_down: #xffffff
             color_focus: #x260B08
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 13.}
         }
     }
 
     let RoleChipActive = Button{
-        width: Fill height: 40
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
-        align: Center
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1483,8 +1481,6 @@ script_mod! {
             color_down: #xffffff
             color_focus: #xffffff
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 13.}
         }
     }
@@ -1834,147 +1830,151 @@ script_mod! {
     // once the dish is on the order the − n + pill shows at the top and the
     // card wears a gold edge. A sold-out dish is dimmed. Layers are stacked and shown by state,
     // because a DSL colour cannot be restyled at runtime.
+    // Experiment: one continuous card — left photo, right name/alias/price.
+    // One shell (no gap); ~2× old overlay width (usually one card per row).
+    // Dish tile: image | text. DESIGN § Always responsive — wrap/reflow, never
+    // mid-glyph crop. Card grows with bilingual name+alias (Fit min 200);
+    // Overlay is sized by the Fit row below (Fill-only Overlay collapses to 0).
     let ProductCard = View{
         width: Fill height: Fit
         tile := View{
             cursor: MouseCursor.Hand
-            width: Fill height: 196
+            width: Fill height: Fit{min: FitBound.Abs(200.)}
             flow: Overlay
-            // No photo yet (or none): brand red, the initials on a frosted
-            // plate up top (hidden while the − n + sits there).
+            // Single shell: cream under the text half; photo covers the left.
             RoundedView{
                 width: Fill height: Fill
-                padding: Inset{top: 16.}
-                align: Align{x: 0.5 y: 0.}
-                draw_bg.color: #xB43A12
-                draw_bg.color_2: #x69090C
+                draw_bg.color: #xFFF8F3
+                draw_bg.color_2: #xF3E3DA
                 draw_bg.border_radius: 16.
-                initials_plate := RoundedView{
-                    width: 60 height: 60
-                    align: Align{x: 0.5 y: 0.5}
-                    draw_bg.color: #xFFFFFF24
-                    draw_bg.border_radius: 30.
-                    draw_bg.border_size: 1.5
-                    draw_bg.border_color: #xFFFFFF66
-                    thumb_initials := Label{
-                        width: Fit height: Fit
-                        text: ""
-                        draw_text.color: #xFFFFFF
-                        draw_text.text_style.font_size: 20.
-                    }
-                }
             }
-            thumb := Image{
-                width: Fill height: Fill
-                fit: ImageFit.CropToFill
-                visible: false
-                draw_bg +: {
-                    radius: uniform(16.0)
-                    pixel: fn() {
-                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                        sdf.fill(self.get_color())
-                        return sdf.result
-                    }
-                }
-            }
-            // Foot wash under name/price: darker and denser so white/gold
-            // type stays readable on bright food photos.
+            // Fit row sizes the Overlay. Image Fill stretches; text Fit grows.
             View{
-                width: Fill height: Fill
-                show_bg: true
-                draw_bg +: {
-                    radius: uniform(16.0)
-                    pixel: fn() {
-                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                        let t = smoothstep(0.22, 0.92, self.pos.y)
-                        sdf.fill(vec4(0.04, 0.01, 0.01, 0.98 * t))
-                        return sdf.result
+                width: Fill height: Fit{min: FitBound.Abs(200.)}
+                flow: Right spacing: 0
+                // Left half: photo (or initials). Same CropToFill + round mask
+                // as MenuCard — do not use a custom box_all (it broke sizing).
+                View{
+                    width: Fill height: Fill
+                    flow: Overlay
+                    RoundedView{
+                        width: Fill height: Fill
+                        padding: Inset{top: 16.}
+                        align: Align{x: 0.5 y: 0.}
+                        draw_bg.color: #xB43A12
+                        draw_bg.color_2: #x69090C
+                        draw_bg.border_radius: 16.
+                        initials_plate := RoundedView{
+                            width: 60 height: 60
+                            align: Align{x: 0.5 y: 0.5}
+                            draw_bg.color: #xFFFFFF24
+                            draw_bg.border_radius: 30.
+                            draw_bg.border_size: 1.5
+                            draw_bg.border_color: #xFFFFFF66
+                            thumb_initials := Label{
+                                width: Fit height: Fit
+                                text: ""
+                                draw_text.color: #xFFFFFF
+                                draw_text.text_style.font_size: 20.
+                            }
+                        }
+                    }
+                    thumb := Image{
+                        width: Fill height: Fill
+                        fit: ImageFit.CropToFill
+                        visible: false
+                        draw_bg +: {
+                            radius: uniform(16.0)
+                            pixel: fn() {
+                                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                                sdf.fill(self.get_color())
+                                return sdf.result
+                            }
+                        }
+                    }
+                    View{
+                        width: Fill height: Fill
+                        flow: Down
+                        padding: Inset{left: 8. right: 8. top: 8. bottom: 8.}
+                        // − n + sits in the middle of the photo half, not the top.
+                        align: Align{x: 0.5 y: 0.5}
+                        stepper := RoundedView{
+                            visible: false
+                            width: Fit height: Fit
+                            padding: Inset{left: 2. right: 2. top: 2. bottom: 2.}
+                            flow: Right
+                            align: Align{y: 0.5}
+                            draw_bg.color: #x9A0E10
+                            draw_bg.border_radius: 19.
+                            draw_bg.border_size: 1.5
+                            draw_bg.border_color: #xF69D2C
+                            minus := CardStepBtn{text: "−"}
+                            View{
+                                width: Fit{min: FitBound.Abs(26.)} height: 34
+                                align: Align{x: 0.5 y: 0.5}
+                                step_qty := Label{
+                                    width: Fit height: Fit
+                                    text: "1"
+                                    draw_text.color: #xFFFFFF
+                                    draw_text.text_style.font_size: 15.
+                                }
+                            }
+                            plus := CardStepBtn{text: "+"}
+                        }
+                    }
+                }
+                // Right half: full name+alias wrap (no crop, no ellipsis);
+                // price always after the text. Centered cluster.
+                View{
+                    width: Fill height: Fit
+                    flow: Down spacing: 8
+                    padding: Inset{left: 14. right: 14. top: 14. bottom: 14.}
+                    align: Align{x: 0.5 y: 0.5}
+                    name := Label{
+                        width: Fill
+                        text: "Item"
+                        align: Align{x: 0.5}
+                        flow: Right{wrap: true}
+                        draw_text.color: #x260B08
+                        draw_text.text_style: theme.font_bold{font_size: 15.}
+                    }
+                    alias := Label{
+                        visible: false
+                        width: Fill
+                        text: ""
+                        align: Align{x: 0.5}
+                        flow: Right{wrap: true}
+                        draw_text.color: #x6B4A3F
+                        draw_text.text_style: theme.font_bold{font_size: 15.}
+                    }
+                    price := Label{
+                        width: Fill
+                        text: "0"
+                        align: Align{x: 0.5}
+                        flow: Right{wrap: false}
+                        max_lines: 1
+                        draw_text.color: #x9A0E10
+                        draw_text.text_style: theme.font_bold{font_size: 17.}
+                    }
+                    price_off := Label{
+                        visible: false
+                        width: Fill
+                        text: ""
+                        align: Align{x: 0.5}
+                        flow: Right{wrap: false}
+                        max_lines: 1
+                        draw_text.color: #x6B4A3F
+                        draw_text.text_style: theme.font_bold{font_size: 17.}
                     }
                 }
             }
-            // Sold out: the whole card dimmed.
             dim := RoundedView{
                 visible: false
                 width: Fill height: Fill
                 draw_bg.color: #x1A0505A6
                 draw_bg.border_radius: 16.
             }
-            View{
-                width: Fill height: Fill
-                flow: Down
-                padding: Inset{left: 10. right: 10. top: 8. bottom: 10.}
-                View{
-                    width: Fill height: Fit
-                    align: Align{x: 0.5}
-                    stepper := RoundedView{
-                        visible: false
-                        width: Fit height: Fit
-                        padding: Inset{left: 2. right: 2. top: 2. bottom: 2.}
-                        flow: Right
-                        align: Align{y: 0.5}
-                        draw_bg.color: #x9A0E10
-                        draw_bg.border_radius: 19.
-                        draw_bg.border_size: 1.5
-                        draw_bg.border_color: #xF69D2C
-                        minus := CardStepBtn{text: "−"}
-                        View{
-                            width: Fit{min: FitBound.Abs(26.)} height: 34
-                            align: Align{x: 0.5 y: 0.5}
-                            step_qty := Label{
-                                width: Fit height: Fit
-                                text: "1"
-                                draw_text.color: #xFFFFFF
-                                draw_text.text_style.font_size: 15.
-                            }
-                        }
-                        plus := CardStepBtn{text: "+"}
-                    }
-                }
-                View{width: Fill height: Fill}
-                name := Label{
-                    width: Fill
-                    text: "Item"
-                    flow: Right{wrap: true}
-                    max_lines: 2
-                    text_overflow: Ellipsis
-                    draw_text.color: #xFFFFFF
-                    draw_text.text_style: theme.font_bold{font_size: 14.}
-                }
-                alias := Label{
-                    visible: false
-                    width: Fill
-                    margin: Inset{top: 1.}
-                    text: ""
-                    flow: Right{wrap: false}
-                    max_lines: 1
-                    text_overflow: Ellipsis
-                    draw_text.color: #xF3E3DA
-                    draw_text.text_style: theme.font_bold{font_size: 11.}
-                }
-                price := Label{
-                    width: Fill
-                    margin: Inset{top: 3.}
-                    text: "0"
-                    flow: Right{wrap: false}
-                    max_lines: 1
-                    draw_text.color: #xF7B043
-                    draw_text.text_style: theme.font_bold{font_size: 15.}
-                }
-                // In the price's place when sold out; gold is for prices.
-                price_off := Label{
-                    visible: false
-                    width: Fill
-                    margin: Inset{top: 3.}
-                    text: ""
-                    flow: Right{wrap: false}
-                    max_lines: 1
-                    draw_text.color: #xF3E3DA
-                    draw_text.text_style: theme.font_bold{font_size: 15.}
-                }
-            }
-            // The card's edge: a fine line, or gold once it is on the order.
             edge := RoundedView{
                 width: Fill height: Fill
                 draw_bg.color: #x00000000
@@ -2071,8 +2071,7 @@ script_mod! {
                 name := Label{
                     width: Fill
                     text: "T1"
-                    flow: Right{wrap: false}
-                    max_lines: 1
+                    flow: Right{wrap: true}
                     draw_text.color: #x1F1A17
                     draw_text.text_style.font_size: 18.
                 }
@@ -2111,16 +2110,14 @@ script_mod! {
             meta := Label{
                 width: Fill
                 text: ""
-                flow: Right{wrap: false}
-                max_lines: 1
+                flow: Right{wrap: true}
                 draw_text.color: #x1F1A17
                 draw_text.text_style.font_size: 15.
             }
             state := Label{
                 width: Fill
                 text: "Free"
-                flow: Right{wrap: false}
-                max_lines: 1
+                flow: Right{wrap: true}
                 draw_text.color: #x3A2C26
                 draw_text.text_style.font_size: 12.
             }
@@ -2179,8 +2176,7 @@ script_mod! {
                 state := Label{
                     width: Fill
                     text: "New"
-                    flow: Right{wrap: false}
-                    max_lines: 1
+                    flow: Right{wrap: true}
                     draw_text.color: #x9A6206
                     draw_text.text_style.font_size: 13.
                 }
@@ -2216,6 +2212,8 @@ script_mod! {
     // under name/price keeps type readable. Actions float as frosted pills.
     let MenuCard = View{
         cursor: MouseCursor.Hand
+        // Fixed height — Overlay+Fit collapses and empties MenuList.
+        // Name/alias wrap inside (no ellipsis).
         width: Fill height: 152
         flow: Overlay
         RoundedView{
@@ -2268,6 +2266,7 @@ script_mod! {
             View{
                 width: Fill height: Fit
                 flow: Down spacing: 3
+                // Fixed photo card: wrap then clean Ellipsis — never mid-glyph crop.
                 name := Label{
                     width: Fill
                     text: "Item"
@@ -2281,7 +2280,7 @@ script_mod! {
                     visible: false
                     width: Fill
                     text: ""
-                    flow: Right{wrap: false}
+                    flow: Right{wrap: true}
                     max_lines: 1
                     text_overflow: Ellipsis
                     draw_text.color: #xF3E3DA
@@ -2302,7 +2301,7 @@ script_mod! {
                     stock := Label{
                         width: Fill
                         text: " "
-                        flow: Right{wrap: false}
+                        flow: Right{wrap: true}
                         max_lines: 1
                         text_overflow: Ellipsis
                         draw_text.color: #xF6E8DF
@@ -2851,9 +2850,7 @@ script_mod! {
                 visible: false
                 width: Fill
                 text: ""
-                flow: Right{wrap: false}
-                max_lines: 1
-                text_overflow: Ellipsis
+                flow: Right{wrap: true}
                 draw_text.color: #x7A5A4E
                 draw_text.text_style.font_size: 12.
             }
@@ -2919,7 +2916,7 @@ script_mod! {
         width: Fill height: Fit
         list := PortalList{
             width: Fill height: Fill
-            spacing: 8
+            spacing: 12
             drag_scrolling: true
             bounce_at_start: false
             bounce_at_end: false
@@ -2936,10 +2933,9 @@ script_mod! {
             }
             Item := View{
                 width: Fill height: Fit
-                flow: Right spacing: 10
-                // The gap between rows of cards (PortalList spacing adds
-                // none here); a touch wider than across, so rows read apart.
-                padding: Inset{bottom: 14.}
+                flow: Right spacing: 20
+                // Row gap under each card row (across gap is `spacing` above).
+                padding: Inset{bottom: 24.}
                 texture_caching: false
                 c0 := ProductCard{}
                 c1 := ProductCard{}
@@ -3286,6 +3282,7 @@ script_mod! {
     // tap target (nested Button clicks are unreliable inside PortalList).
     let DishRow = View{
         cursor: MouseCursor.Hand
+        // Fixed height — Overlay+Fit collapses pick lists. Title wraps inside.
         width: Fill height: 118
         flow: Overlay
         RoundedView{
@@ -3338,11 +3335,12 @@ script_mod! {
             View{
                 width: Fill height: Fit
                 flow: Down spacing: 2
+                // Fixed DishRow: wrap then Ellipsis — never mid-glyph crop.
                 title := Label{
                     width: Fill
                     text: ""
-                    flow: Right{wrap: false}
-                    max_lines: 1
+                    flow: Right{wrap: true}
+                    max_lines: 2
                     text_overflow: Ellipsis
                     draw_text.color: #xFFFFFF
                     draw_text.text_style.font_size: 16.
@@ -3351,7 +3349,7 @@ script_mod! {
                     visible: false
                     width: Fill
                     text: ""
-                    flow: Right{wrap: false}
+                    flow: Right{wrap: true}
                     max_lines: 1
                     text_overflow: Ellipsis
                     draw_text.color: #xF3E3DA
@@ -3360,7 +3358,7 @@ script_mod! {
                 subtitle := Label{
                     width: Fill
                     text: ""
-                    flow: Right{wrap: false}
+                    flow: Right{wrap: true}
                     max_lines: 1
                     text_overflow: Ellipsis
                     draw_text.color: #xFFD28A
@@ -3414,16 +3412,14 @@ script_mod! {
         title := Label{
             width: Fill
             text: ""
-            max_lines: 1
-            text_overflow: Ellipsis
+            flow: Right{wrap: true}
             draw_text.color: #x260B08
             draw_text.text_style.font_size: 15.
         }
         subtitle := Label{
-            width: Fit{max: FitBound.Abs(96.)}
+            width: Fit
             text: ""
-            max_lines: 1
-            text_overflow: Ellipsis
+            flow: Right{wrap: true}
             draw_text.color: #x6B4A3F
             draw_text.text_style.font_size: 13.
         }

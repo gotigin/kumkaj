@@ -31,12 +31,14 @@ mod menu_window_tests {
         assert!(names(&st).is_empty());
     }
 
-    /// Never fewer than two tiles a row, even on the narrowest phone.
+    /// Prefer two readable cards; three only when the window is truly wide.
     #[test]
-    fn menu_grid_has_at_least_two_columns() {
-        assert_eq!(product_columns(200.0), 2);
-        assert_eq!(product_columns(296.0), 2);
-        assert_eq!(product_columns(948.0), 6);
+    fn menu_grid_columns_for_wide_split_tiles() {
+        assert_eq!(product_columns(200.0), 1);
+        assert_eq!(product_columns(500.0), 1);
+        assert_eq!(product_columns(640.0), 2);
+        assert_eq!(product_columns(900.0), 2);
+        assert_eq!(product_columns(1000.0), 3);
         assert_eq!(product_columns(4000.0), PRODUCT_MAX_COLUMNS);
     }
 }

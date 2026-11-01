@@ -1042,11 +1042,11 @@ script_mod! {
         }
     }
 
-    // FILTER CHIP — Fit width in a ChipStrip (kg/lb, cash/UPI…). Soft tag,
-    // not a page tab (DeskTab) and not a radio segment (SegBtn).
-    // NEVER use for multi-word CTAs — ActionStack + StackPrimary/Secondary.
+    // FILTER CHIP — Fit width in a ChipStrip (scroll sideways for long labels).
+    // Soft tag, not a page tab (DeskTab) and not a radio segment (SegBtn).
+    // Never cap/ellipsis — full label. NEVER use for multi-word CTAs.
     let ChipBtn = Button{
-        width: Fit{max: FitBound.Abs(160.)} height: 34
+        width: Fit height: 34
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
         align: Center
@@ -1076,7 +1076,6 @@ script_mod! {
             color_focus: #x3A4554
             ink_centered: true
             max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 12.}
         }
     }
@@ -1180,7 +1179,7 @@ script_mod! {
     // Selected filter chip (pair with ChipBtn via Overlay) — same soft pill
     // shape as ChipBtn, filled so it still reads as a chip not a SegBtn.
     let ChipBtnActive = Button{
-        width: Fit{max: FitBound.Abs(160.)} height: 34
+        width: Fit height: 34
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
         align: Center
@@ -1210,7 +1209,6 @@ script_mod! {
             color_focus: #xffffff
             ink_centered: true
             max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 12.}
         }
     }
@@ -1257,10 +1255,11 @@ script_mod! {
     }
 
     let RoleChip = Button{
-        width: Fill height: 40
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
-        align: Center
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1286,17 +1285,16 @@ script_mod! {
             color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 13.}
         }
     }
 
     let RoleChipActive = Button{
-        width: Fill height: 40
+        width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
-        align: Center
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1322,8 +1320,6 @@ script_mod! {
             color_down: #xffffff
             color_focus: #xffffff
             ink_centered: true
-            max_lines: 1
-            text_overflow: TextOverflow.Ellipsis
             text_style +: {font_size: 13.}
         }
     }
@@ -1709,9 +1705,7 @@ script_mod! {
             width: Fill
             text: "Item"
             align: Align{x: 0.5}
-            flow: Right{wrap: false}
-            max_lines: 1
-            text_overflow: Ellipsis
+            flow: Right{wrap: true}
             draw_text.color: #x0B1220
             draw_text.text_style.font_size: 13.
         }
@@ -1781,9 +1775,7 @@ script_mod! {
             padding: 0.
             align: Align{x: 0.5}
             text: "Item"
-            flow: Right{wrap: false}
-            max_lines: 1
-            text_overflow: Ellipsis
+            flow: Right{wrap: true}
             draw_text.color: #x0B1220
             draw_text.text_style.font_size: 18.
         }
@@ -1813,9 +1805,7 @@ script_mod! {
                 stock := Label{
                     width: Fill
                     text: " "
-                    flow: Right{wrap: false}
-                    max_lines: 1
-                    text_overflow: Ellipsis
+                    flow: Right{wrap: true}
                     draw_text.color: #x3A4554
                     draw_text.text_style.font_size: 12.
                 }
@@ -2379,16 +2369,14 @@ script_mod! {
         title := Label{
             width: Fill
             text: ""
-            max_lines: 1
-            text_overflow: Ellipsis
+            flow: Right{wrap: true}
             draw_text.color: #x0B1220
             draw_text.text_style.font_size: 15.
         }
         subtitle := Label{
-            width: Fit{max: FitBound.Abs(96.)}
+            width: Fit
             text: ""
-            max_lines: 1
-            text_overflow: Ellipsis
+            flow: Right{wrap: true}
             draw_text.color: #x3A4554
             draw_text.text_style.font_size: 13.
         }

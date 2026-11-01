@@ -462,10 +462,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.paint_nav_tabs(cx, screen);
     }
 
-    /// Phone (<720): bottom tabs + stacked Order ticket panes.
-    /// Tablet/desktop (≥720): side rail; Added items | Counter side by side
-    /// under the sticky type strip (Fixed panes in `pos_ticket` ScrollX —
-    /// neighbours, with H-pan when mins do not fit). Waiters (Settle Denied):
+    /// Phone (<720): bottom tabs. Tablet/desktop (≥720): side rail.
+    /// Owner/cashier: Added items | Counter always side by side under the
+    /// sticky type strip (`pos_ticket` ScrollX pans when mins do not fit) —
+    /// never stacked above/below on a narrow window. Waiters (Settle Denied):
     /// Counter dock hidden; cart takes the full ticket width.
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
@@ -473,7 +473,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         const DESK_LEFT_MIN: f64 = 600.0;
         const DESK_RIGHT_MIN: f64 = 520.0;
         const DESK_GAP: f64 = 16.0;
-        const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
         let window_w = {
             let w = self.window_inner_width(cx);
             if w >= 1.0 {
@@ -541,14 +540,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
         let may_settle =
             session_may_settle(app_state().lock().unwrap().session.as_ref());
-        // Owner/cashier: keep Added items | Counter as neighbours whenever the
-        // content column is tablet-wide. Waiter: no Counter → full-width cart.
-        let side_by_side = may_settle && content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
+        // Owner/cashier: always neighbours (ScrollX if the window is tight).
+        // Waiter: no Counter → full-width cart.
         let ticket_row = self.ui.view(cx, ids!(pos_ticket_row));
         set_view_flow(
             cx,
             &ticket_row,
-            if side_by_side {
+            if may_settle {
                 Flow::right()
             } else {
                 Flow::Down
@@ -558,7 +556,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             cx,
             &ticket_row,
             Walk {
-                width: if side_by_side {
+                width: if may_settle {
                     Size::fit()
                 } else {
                     Size::fill()
@@ -569,18 +567,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         );
         let (left_w, right_w) = if !may_settle {
             (Size::fill(), Size::Fixed(0.0))
-        } else if side_by_side {
+        } else {
             let desk_avail = (content_w - 32.0).max(200.0);
             let min_total = DESK_LEFT_MIN + DESK_RIGHT_MIN + DESK_GAP;
             if desk_avail >= min_total {
                 let left = desk_avail * (DESK_LEFT_MIN / (DESK_LEFT_MIN + DESK_RIGHT_MIN));
                 (Size::Fixed(left), Size::Fixed(desk_avail - DESK_GAP - left))
             } else {
-                // Still side by side — ScrollX pans; never stack for the owner.
+                // Side by side at design mins — ScrollX pans; never stack.
                 (Size::Fixed(DESK_LEFT_MIN), Size::Fixed(DESK_RIGHT_MIN))
             }
-        } else {
-            (Size::fill(), Size::fill())
         };
         set_view_walk(
             cx,
