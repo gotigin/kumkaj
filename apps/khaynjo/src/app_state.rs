@@ -191,6 +191,12 @@ struct AppState {
     suggest_rows: Vec<suggest::SuggestRow>,
     /// Bumped on every refresh so the list scrolls back to the top.
     suggest_rev: u64,
+    /// Order-desk Kitchen dropdown: station ids in drag-drop priority order
+    /// (first = highest). Missing ids append in store order. Persisted.
+    kot_station_priority: Vec<String>,
+    /// Last kitchen station id used for unassigned dishes (Kitchen checkbox).
+    /// Persisted so the next ticket does not require reopening the dropdown.
+    kot_station_default: String,
     /// A staff name was picked from the list: select them on this pass.
     team_select_pending: bool,
     pay_choice: PayChoice,

@@ -24,13 +24,16 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         // Worker owns the books — skip SQL so busy_timeout waits never freeze the UI.
         // Still paint status+cancel chrome and switch screens so the user can leave
         // the busy page (nav / header) while the job keeps running.
+        let printer_add = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let finding = print_share::is_finding_printers();
         let heavy_job = restore_busy().load(std::sync::atomic::Ordering::SeqCst)
             || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
             || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
             || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
             || branch_busy().load(std::sync::atomic::Ordering::SeqCst)
             || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
+            || printer_add
+            || finding;
         self.paint_submit_busy_chrome(cx);
         if heavy_job {
             if let Some(msg) = books_work_status().lock().unwrap().clone() {
@@ -38,6 +41,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             }
             let screen = app_state().lock().unwrap().screen;
             self.show_screen(cx, screen);
+            // Printer add/find: never rebuild Settings lists mid-job (looks like a freeze).
             self.lift_footer_above_system_bar(cx);
             self.repair_focused_carets(cx);
             self.ui.redraw(cx);
@@ -1952,17 +1956,26 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(find_printers_cancel))
             .set_visible(cx, finding);
 
+        // Swap whole sibling faces — do not toggle Cancel inside the idle ActionStack.
+        self.ui
+            .view(cx, ids!(printer_add_idle))
+            .set_visible(cx, !printer_add);
+        self.ui
+            .view(cx, ids!(printer_add_busy_face))
+            .set_visible(cx, printer_add);
         if printer_add {
+            self.ui.button(cx, ids!(printer_add_progress)).set_text(
+                cx,
+                status.as_deref().unwrap_or("Adding printer…"),
+            );
+            self.ui
+                .button(cx, ids!(printer_add_cancel))
+                .set_text(cx, &cancel_lbl);
+        } else {
             self.ui
                 .button(cx, ids!(printer_add))
-                .set_text(cx, status.as_deref().unwrap_or("Saving printer…"));
+                .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
         }
-        self.ui
-            .button(cx, ids!(printer_add_cancel))
-            .set_text(cx, &cancel_lbl);
-        self.ui
-            .button(cx, ids!(printer_add_cancel))
-            .set_visible(cx, printer_add);
 
         if backup {
             self.ui
@@ -2072,5 +2085,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(client_find_cancel))
             .set_visible(cx, client_find);
+        // Face swap / Cancel must paint this frame — otherwise Add stays pressed
+        // and Settings looks frozen until the worker signals.
+        self.ui.redraw(cx);
     }
 }

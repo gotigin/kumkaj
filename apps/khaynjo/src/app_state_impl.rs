@@ -105,6 +105,8 @@ impl AppState {
             suggest_open: None,
             suggest_rows: Vec::new(),
             suggest_rev: 0,
+            kot_station_priority: Vec::new(),
+            kot_station_default: String::new(),
             team_select_pending: false,
             pay_choice: PayChoice::Cash,
             template_confirm: false,
@@ -243,6 +245,19 @@ impl AppState {
         self.venue_icon_key = store.venue_icon_key()?;
         self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
         self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
+        self.kot_station_priority = store
+            .kot_station_priority_csv()?
+            .unwrap_or_default()
+            .split(',')
+            .map(str::trim)
+            .filter(|s| !s.is_empty())
+            .map(str::to_string)
+            .collect();
+        self.kot_station_default = store
+            .kot_station_default()?
+            .unwrap_or_default()
+            .trim()
+            .to_string();
         if let Some(user) = self.session.as_ref().map(lan_key) {
             self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
             self.amount_keys_hidden = parse_amount_keys_hidden(
@@ -498,6 +513,7 @@ impl AppState {
                 self.kot_heads.insert(id, (no, time));
             }
         }
+        self.apply_remembered_kot_to_unassigned();
         Ok(())
     }
 
@@ -601,6 +617,8 @@ impl AppState {
         let store = self.store.as_ref().ok_or("No store")?;
         let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
         let text = net::apply_running_action(store, &actor, pin, &action)?;
+        // Other devices on `/wait` see the bump / seat / cancel at once.
+        net::publish_books(store);
         self.reload_all()?;
         if let Some(tid) = self.selected_table_id.clone() {
             self.load_table_cart(&tid)?;
@@ -737,11 +755,22 @@ impl AppState {
             // (clear), others show Use. Unassigned dishes get a Don't use row
             // that holds them off this KOT (same as Hold on the line).
             SuggestField::KotStation => {
-                let stations = self
+                let mut stations = self
                     .store
                     .as_ref()
                     .and_then(|s| s.list_picker_stations().ok())
                     .unwrap_or_else(|| self.stations.clone());
+                // Drag-drop priority: listed ids first, then any new stations.
+                if !self.kot_station_priority.is_empty() {
+                    let mut ordered = Vec::with_capacity(stations.len());
+                    for id in &self.kot_station_priority {
+                        if let Some(i) = stations.iter().position(|s| &s.id == id) {
+                            ordered.push(stations.remove(i));
+                        }
+                    }
+                    ordered.append(&mut stations);
+                    stations = ordered;
+                }
                 let mut counts: std::collections::HashMap<String, usize> =
                     std::collections::HashMap::new();
                 let mut unassigned_n = 0usize;
@@ -902,6 +931,52 @@ impl AppState {
         self.suggest_rev = self.suggest_rev.wrapping_add(1);
     }
 
+    /// Write Kitchen dropdown priority + default station into books meta.
+    fn persist_kot_station_prefs(&self) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        let csv = self.kot_station_priority.join(",");
+        let _ = store.set_kot_station_priority_csv(&csv);
+        let _ = store.set_kot_station_default(&self.kot_station_default);
+    }
+
+    /// Remember `station_id` as the default for new unassigned dishes and
+    /// keep it first in the priority list.
+    fn remember_kot_station(&mut self, station_id: &str) {
+        let id = station_id.trim();
+        if id.is_empty() {
+            return;
+        }
+        if !self.stations.iter().any(|s| s.id == id) {
+            return;
+        }
+        self.kot_station_default = id.to_string();
+        self.kot_station_priority.retain(|s| s != id);
+        self.kot_station_priority.insert(0, id.to_string());
+        self.persist_kot_station_prefs();
+    }
+
+    /// Put the remembered kitchen on unsent lines that still have none
+    /// (menu station and Hold left alone).
+    fn apply_remembered_kot_to_unassigned(&mut self) {
+        let default = self.kot_station_default.trim().to_string();
+        if default.is_empty() || !self.stations.iter().any(|s| s.id == default) {
+            return;
+        }
+        let products = self.products.clone();
+        for line in self
+            .cart
+            .lines
+            .iter_mut()
+            .filter(|l| !l.is_sent() && !l.hold_send)
+        {
+            if line.kitchen_station_id(&products).is_empty() {
+                line.station_id = default.clone();
+            }
+        }
+    }
+
     /// Menu screen rows: indices into `products` matching the list search
     /// (all of them while it is empty).
     fn menu_list_indices(&self) -> Vec<usize> {
@@ -972,6 +1047,37 @@ impl AppState {
                 })
                 .cloned()
                 .collect();
+            if !q.is_empty() {
+                out.retain(|p| {
+                    let aliases = p.aliases();
+                    aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q))
+                        || menu_images::match_rank(&p.name, q).is_some()
+                        || (!p.group_name.is_empty()
+                            && menu_images::match_rank(&p.group_name, q).is_some())
+                        || aliases.iter().any(|a| menu_images::match_rank(a, q).is_some())
+                });
+            }
+            return out;
+        }
+        // Added Item(s): dishes on this ticket (qty > 0), in cart order.
+        if self.menu_category.as_deref() == Some(MENU_ADDED) {
+            let by_id: std::collections::HashMap<&str, &Product> =
+                self.products.iter().map(|p| (p.id.as_str(), p)).collect();
+            let mut seen = std::collections::HashSet::new();
+            let mut out: Vec<Product> = Vec::new();
+            for line in &self.cart.lines {
+                let milli = if line.qty_milli > 0 {
+                    line.qty_milli
+                } else {
+                    line.qty.saturating_mul(1000)
+                };
+                if milli <= 0 || !seen.insert(line.product_id.clone()) {
+                    continue;
+                }
+                if let Some(p) = by_id.get(line.product_id.as_str()) {
+                    out.push((*p).clone());
+                }
+            }
             if !q.is_empty() {
                 out.retain(|p| {
                     let aliases = p.aliases();

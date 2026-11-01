@@ -3994,6 +3994,27 @@ impl RunningOrder {
         self.lines.iter().filter(|l| l.is_live())
     }
 
+    /// Guest-bill view of live lines: same dish at the same rate (and note /
+    /// NC flag) is one row with qty summed. KOT sends stay separate on the
+    /// order; the bill must not list "2 Thali" then "3 Thali" for five.
+    pub fn bill_print_lines(&self) -> Vec<RunningLine> {
+        let mut out: Vec<RunningLine> = Vec::new();
+        for line in self.live_lines() {
+            if let Some(existing) = out.iter_mut().find(|e| {
+                e.product_id == line.product_id
+                    && e.unit_price_paise == line.unit_price_paise
+                    && e.complimentary == line.complimentary
+                    && e.unit_label.trim() == line.unit_label.trim()
+                    && e.note.trim() == line.note.trim()
+            }) {
+                existing.qty_milli = existing.qty_milli.saturating_add(line.qty_milli);
+            } else {
+                out.push((*line).clone());
+            }
+        }
+        out
+    }
+
     /// Running amount for the floor card and the bill.
     pub fn total_paise(&self) -> i64 {
         self.lines.iter().map(RunningLine::billed_paise).sum()

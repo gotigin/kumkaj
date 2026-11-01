@@ -309,29 +309,45 @@ fn round_due(asked: bool, online: Option<bool>) -> bool {
 /// The second thread: hold a `/wait` open on the Server and ask the worker
 /// for the books the moment they change. Quiet while there is no Server to
 /// ask; an older Server without `/wait` leaves the worker's own pull to it.
+///
+/// Always waits against the revision this phone has *applied* (not a
+/// previously observed server rev). That way a brief drop that saw a new
+/// rev before `/sync` landed still catches up the moment the link is back
+/// — `/wait` returns at once while applied lags the office.
 fn watcher(transport: &dyn Transport) {
-    let mut seen = String::new();
+    // Server rev we already asked the worker to pull; avoids flooding
+    // `want_sync` while a pull is in flight for the same books.
+    let mut notified = String::new();
     loop {
         let (link, applied) = {
             let sh = shared().0.lock().unwrap();
             (sh.watch_link.clone(), sh.applied_rev.clone())
         };
         let Some(link) = link else {
+            notified.clear();
             std::thread::sleep(Duration::from_secs(2));
             continue;
         };
-        if seen.is_empty() {
-            seen = applied;
+        // Applied caught up (or books were forgotten): allow a fresh notify.
+        if !applied.is_empty() && applied == notified {
+            notified.clear();
         }
-        match transport.wait(&link, &seen, WAIT_SECS) {
+        match transport.wait(&link, &applied, WAIT_SECS) {
             Ok(rev) if rev.is_empty() => std::thread::sleep(Duration::from_secs(20)),
             Ok(rev) => {
-                if rev != seen {
-                    seen = rev;
+                if rev != applied && rev != notified {
+                    notified = rev;
                     want_sync();
                 }
             }
-            Err(e) if e.is_offline() => std::thread::sleep(IDLE),
+            Err(e) if e.is_offline() => {
+                // Link dropped: forget what we thought we notified so the
+                // next online wait re-asks, and poke the worker to pull the
+                // moment the Server answers again.
+                notified.clear();
+                want_sync();
+                std::thread::sleep(IDLE);
+            }
             Err(_) => std::thread::sleep(Duration::from_secs(60)),
         }
     }
@@ -484,13 +500,16 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
 
     // 3. The Server's books, when asked or after a write — unless this
     //    phone already holds their latest revision.
+    let was_offline = state.online == Some(false);
     let want = std::mem::take(&mut shared().0.lock().unwrap().want_sync);
+    let mut sync_pending = want;
     if !offline && (want || wrote) {
         if let Some(link) = link_of(store, "") {
             let have = shared().0.lock().unwrap().applied_rev.clone();
             match transport.sync(&link, &have) {
                 Ok(fresh) => {
                     reached = true;
+                    sync_pending = false;
                     let now = chrono::Local::now();
                     let _ = store.note_lan_synced(&now);
                     let _ = store.set_device_last_seen(&now.to_rfc3339());
@@ -508,19 +527,36 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                         changed = true;
                     }
                 }
-                Err(e) if e.is_offline() => offline = true,
+                Err(e) if e.is_offline() => {
+                    offline = true;
+                    // Keep the ask: the next round after Wi‑Fi returns
+                    // must pull at once, not wait a full sync interval.
+                }
                 Err(e) => {
+                    sync_pending = false;
                     state.needs_pairing |= e.code() == "pair_again";
                     state.needs_update |= e.code() == "update_app";
                 }
             }
         }
     }
+    if sync_pending {
+        shared().0.lock().unwrap().want_sync = true;
+    }
 
     if reached {
         state.needs_pairing = false;
         state.needs_update = false;
         shared().0.lock().unwrap().offline_since = None;
+        // Was offline, now answering: pull the books immediately even if
+        // this round did not already ask (watcher may still be waking).
+        if was_offline {
+            let (lock, cvar) = shared();
+            let mut sh = lock.lock().unwrap();
+            sh.want_sync = true;
+            sh.wake = true;
+            cvar.notify_all();
+        }
     }
     let tried = wrote || want || offline || store.lan_outbox().map(|o| !o.is_empty()).unwrap_or(false);
     if tried {

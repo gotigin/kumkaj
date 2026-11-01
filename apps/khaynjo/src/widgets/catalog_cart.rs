@@ -220,16 +220,31 @@ impl Widget for CartList {
             )
         };
         let count = lines.len();
+        // Fixed pitch + page window (MenuList): PortalList only covers the
+        // on-screen slice so outer Order scroll works from inside the cart.
+        const GAP: f64 = 8.0;
         let row = *cart_row_height().lock().unwrap();
+        let (first, last) = page_window(cx.turtle().pos().y, count, row, GAP);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, row, 0.0).max(56.0)),
+            height: Size::Fixed(list_content_height(count, row, GAP).max(56.0)),
             ..walk
         };
+        if let Some(mut gap) = self.view.view(cx, ids!(top_gap)).borrow_mut() {
+            gap.walk.height = Size::Fixed(first as f64 * (row + GAP));
+        }
+        if let Some(mut boxv) = self.view.view(cx, ids!(list_box)).borrow_mut() {
+            boxv.walk.height =
+                Size::Fixed(list_content_height(last.saturating_sub(first), row, GAP).max(56.0));
+        }
         let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, lines.len());
+                list.set_item_range(cx, first, last);
+                list.set_first_id_and_scroll(first, 0.0);
                 while let Some(item_id) = list.next_visible_item(cx) {
+                    if item_id < first || item_id >= last {
+                        continue;
+                    }
                     let Some(line) = lines.get(item_id) else {
                         continue;
                     };
@@ -383,8 +398,10 @@ impl Widget for CartList {
                     // Sent to the kitchen on a table: no ± (a sent quantity
                     // changes only by a reasoned Cancel); Cancel / NC / Move.
                     let on_table = line.is_sent() && line.running_line_id != "counter";
-                    item.view(cx, ids!(stepper)).set_visible(cx, !line.is_sent());
-                    if !line.is_sent() {
+                    let unsent = !line.is_sent();
+                    item.view(cx, ids!(stepper)).set_visible(cx, unsent);
+                    item.button(cx, ids!(hold_send_btn)).set_visible(cx, unsent);
+                    if unsent {
                         item.button(cx, ids!(hold_send_btn)).set_text(
                             cx,
                             &locale::t(
@@ -458,10 +475,11 @@ impl Widget for CartList {
                     }
                     item.draw_all_unscoped(cx);
                 }
-                if count > 0 {
+                let drew = last.saturating_sub(first);
+                if drew > 0 {
                     let extent = list.drawn_range_extent();
                     if extent > 1.0 {
-                        measured_row = extent / count as f64;
+                        measured_row = extent / drew as f64;
                     }
                 }
             }
@@ -475,6 +493,10 @@ impl Widget for CartList {
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
         if self.settle.is_event(event).is_some() {
+            self.view.redraw(cx);
+        }
+        // Virtualized rows: redraw when the page scrolls so the window moves.
+        if matches!(event, Event::Scroll(_)) {
             self.view.redraw(cx);
         }
         if page_owns_scroll(event) {

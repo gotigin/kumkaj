@@ -362,6 +362,8 @@ const ROUTE_ADD_PRINTER_BTNS: [&[LiveId]; 8] = [
 
 /// Sentinel for the Frequent chip (not a real category id).
 const MENU_FREQUENT: &str = "__frequent__";
+/// Sentinel for the Added Item(s) chip — dishes currently on this order.
+const MENU_ADDED: &str = "__added__";
 
 /// Order desk category chip slots in DSL order (`cat_0`…`cat_23`).
 const CATEGORY_CHIPS: [(&[LiveId], &[LiveId]); 24] = [

@@ -429,7 +429,7 @@ impl Widget for FloorList {
             (floor_rows(&tables, cols), tiles, st.t("tables"))
         };
         const HEADER: f64 = 34.0;
-        const ROW: f64 = 142.0; // tile 132 + row padding 10
+        const ROW: f64 = 162.0; // tile 152 + row padding 10
         const GAP: f64 = 10.0; // the PortalList's own spacing between rows
         let height: f64 = rows
             .iter()
@@ -479,7 +479,7 @@ impl Widget for FloorList {
                                         tile.set_visible(cx, true);
                                         if let Some(mut v) = tile.borrow_mut() {
                                             v.walk.width = Size::Fixed(tile_w);
-                                            v.walk.height = Size::Fixed(132.0);
+                                            v.walk.height = Size::Fixed(152.0);
                                         }
                                         paint_floor_tile(
                                             cx,

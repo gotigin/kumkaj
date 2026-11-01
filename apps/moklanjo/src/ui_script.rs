@@ -238,6 +238,8 @@ script_mod! {
             color_down: #xffffff
             color_focus: #x0B1220
             color_disabled: #x56575D
+            // Icon glyphs (✕ ‹ › − + ℹ FA) sit on the baseline without this.
+            ink_centered: true
         }
     }
 
@@ -475,20 +477,21 @@ script_mod! {
         }
     }
     // Hide / show the whole side rail (tablet/desktop chrome only).
+    // Drawn ›/‹ (not a glyph): glyphs sit on the text baseline and read low
+    // inside the hover pill. `draw_bg.point`: 1 = ›, -1 = ‹.
     let RailToggleBtn = Button{
-        width: Fit height: 36
+        width: 36 height: 36
         align: Align{x: 0.5 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 10. right: 10. top: 6. bottom: 6.}
-        label_walk: Walk{
-            width: Fit
-            height: Fit
-            margin: Inset{left: 0. right: 0.}
-        }
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
+            point: uniform(1.0)
+            mark_color: uniform(#x8BB8E8)
             color: #x00000000
             color_hover: #x072058
             color_down: #x02030B
@@ -501,14 +504,25 @@ script_mod! {
             border_color: #x00000000
             border_radius: 8.
             border_size: 0.
-        }
-        draw_text +: {
-            color: #x8BB8E8
-            color_hover: #xffffff
-            color_down: #xffffff
-            color_focus: #x8BB8E8
-            color_disabled: #x56575D
-            text_style +: {font_size: 16.}
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill(fill)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let w = 4.0 * self.point
+                let h = 7.5
+                sdf.move_to(c.x - w, c.y - h)
+                sdf.line_to(c.x + w, c.y)
+                sdf.line_to(c.x - w, c.y + h)
+                let mark = self.mark_color
+                    .mix(#xffffff, self.hover)
+                    .mix(#xffffff, self.down)
+                sdf.stroke(mark, 2.4)
+                return sdf.result
+            }
         }
     }
     // Bottom-nav chips for expanded More peers (scroll row; Fit width).
@@ -777,11 +791,12 @@ script_mod! {
         }
     }
     // Icon-only eye next to a money figure (or the screen-level header eye).
+    // FA glyph (eye ↔ lock via set_text); ink_centered keeps it in the face.
     let EyeIconBtn = Button{
-        width: Fit height: Fit
+        width: 28 height: 28
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 6. right: 6. top: 4. bottom: 4.}
-        align: Center
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
         label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
@@ -804,6 +819,7 @@ script_mod! {
             color_hover: #x072058
             color_down: #x072058
             color_focus: #x072058
+            ink_centered: true
             text_style +: {font_size: 14.}
         }
         text: "\u{f06e}"
@@ -815,7 +831,8 @@ script_mod! {
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 6. right: 8. top: 10. bottom: 10.}
+        // right: 0 — when Fit beside InfoHelp, tip_btn.margin.left is the only title→ℹ gap.
+        padding: Inset{left: 6. right: 0. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
@@ -839,6 +856,7 @@ script_mod! {
             color_hover: #x02030B
             color_down: #x02030B
             color_focus: #x072058
+            ink_centered: true
             text_style +: {font_size: 14.}
         }
         text: "TODAY"
@@ -1237,30 +1255,209 @@ script_mod! {
     // ‹ / › at the ends of a sideways-scrolling tab strip.
     // Fills the strip's whole height (taller than the tabs, never smaller),
     // so it reads as the strip's own control, not a stray dot.
+    // ‹ / › at the ends of a sideways-scrolling tab strip.
+    // Drawn, not a glyph: a glyph sits on the text baseline and reads low.
+    // `draw_bg.point`: 1 = › (default), -1 = ‹.
     let ChevronBtn = Button{
         width: 46 height: Fill
         margin: Inset{left: 0. right: 0. top: 1. bottom: 1.}
         padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        align: Align{x: 0.5 y: 0.5}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
+            point: uniform(1.0)
+            mark_color: uniform(#x072058)
             color: #xffffff
             color_hover: #xE0E8F0
             color_down: #xC8D2E0
-            color_focus: #xffffff
-            color_2: #xffffff
-            color_2_hover: #xE0E8F0
-            color_2_down: #xC8D2E0
-            color_2_focus: #xffffff
             border_color: #xA8B4C4
             border_radius: 5.
             border_size: 1.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill_keep(fill)
+                sdf.stroke(self.border_color, self.border_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let w = 4.5 * self.point
+                let h = 8.5
+                sdf.move_to(c.x - w, c.y - h)
+                sdf.line_to(c.x + w, c.y)
+                sdf.line_to(c.x - w, c.y + h)
+                sdf.stroke(self.mark_color, 2.5)
+                return sdf.result
+            }
         }
-        draw_text +: {
-            color: #x072058
+    }
+
+    // Modifier pager ‹/› — same chrome as RoleChip, drawn mark (not glyph).
+    let RoleChevronBtn = Button{
+        width: 36 height: 40
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            point: uniform(1.0)
+            mark_color: uniform(#x072058)
+            color: #xE0E8F0
             color_hover: #x072058
-            color_down: #x072058
+            color_down: #x02030B
+            color_focus: #xE0E8F0
+            border_color: #xA8B4C4
+            border_radius: 10.
+            border_size: 1.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill_keep(fill)
+                sdf.stroke(self.border_color, self.border_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let w = 4.0 * self.point
+                let h = 7.5
+                sdf.move_to(c.x - w, c.y - h)
+                sdf.line_to(c.x + w, c.y)
+                sdf.line_to(c.x - w, c.y + h)
+                let mark = self.mark_color
+                    .mix(#xffffff, self.hover)
+                    .mix(#xffffff, self.down)
+                sdf.stroke(mark, 2.4)
+                return sdf.result
+            }
+        }
+    }
+
+    // Icon-only ✕ — drawn, never a glyph (glyphs sit low in the face).
+    let CloseIconBtn = Button{
+        width: 36 height: 36
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            mark_color: uniform(#xffffff)
+            color: #x072058
+            color_hover: #x0A3A8C
+            color_down: #x02030B
             color_focus: #x072058
-            text_style +: {font_size: 30.}
+            color_2: #x072058
+            color_2_hover: #x0A3A8C
+            color_2_down: #x02030B
+            color_2_focus: #x072058
+            border_color: #x00000000
+            border_radius: 10.
+            border_size: 0.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                // Always stroke the face path so it is consumed — skipping this
+                // when border_size is 0 left the box SDF active and snack
+                // dismisses drew a white ring with no ✕.
+                sdf.fill_keep(fill)
+                sdf.stroke(self.border_color, self.border_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let side = if self.rect_size.x < self.rect_size.y self.rect_size.x else self.rect_size.y
+                let s = side * 0.22
+                let mark = self.mark_color
+                sdf.move_to(c.x - s, c.y - s)
+                sdf.line_to(c.x + s, c.y + s)
+                sdf.stroke(mark, 2.4)
+                sdf.move_to(c.x + s, c.y - s)
+                sdf.line_to(c.x - s, c.y + s)
+                sdf.stroke(mark, 2.4)
+                return sdf.result
+            }
+        }
+    }
+
+    // − / + icon faces. Drawn (`draw_bg.mark`: 3 = +, 4 = −).
+    let StepIconBtn = Button{
+        width: 44 height: 44
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            mark: uniform(3.0)
+            mark_color: uniform(#x02030B)
+            color: #xffffff
+            color_hover: #x072058
+            color_down: #x02030B
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #x072058
+            color_2_down: #x02030B
+            color_2_focus: #xffffff
+            border_color: #x4A5568
+            border_color_hover: #x072058
+            border_color_down: #x3A4554
+            border_color_focus: #x4A5568
+            border_radius: 12.
+            border_size: 2.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill_keep(fill)
+                sdf.stroke(
+                    self.border_color
+                        .mix(self.border_color_hover, self.hover)
+                        .mix(self.border_color_down, self.down),
+                    self.border_size
+                )
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let sz = 8.0
+                let ink = self.mark_color
+                    .mix(#xffffff, self.hover)
+                    .mix(#xffffff, self.down)
+                sdf.move_to(c.x - sz, c.y)
+                sdf.line_to(c.x + sz, c.y)
+                if self.mark < 3.5 {
+                    sdf.move_to(c.x, c.y - sz)
+                    sdf.line_to(c.x, c.y + sz)
+                }
+                sdf.stroke(ink, 2.4)
+                return sdf.result
+            }
         }
     }
 
@@ -1628,10 +1825,12 @@ script_mod! {
     mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
     mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
         // Fit so title+ℹ pack as one cluster; do not stretch ℹ to the row end.
+        // Title→ℹ gap is ONLY tip_btn.margin.left (6). Parent rows that place an
+        // external title beside InfoHelp must use spacing: 0 so the gap stays 6.
         width: Fit
         height: Fit
         flow: Right
-        spacing: 6
+        spacing: 0
         align: Align{x: 0.0 y: 0.5}
         tip: ""
         // Named children use := (same as ProductList.list) — bare `=` is a
@@ -1641,22 +1840,25 @@ script_mod! {
             width: 28 height: 28
             fit: ImageFit.Stretch
             visible: false
+            margin: Inset{left: 0. right: 6. top: 0. bottom: 0.}
         }
         title := Label{
             width: Fit height: Fit
             text: ""
+            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
             draw_text.color: #x0B1220
             draw_text.text_style.font_size: 20.
         }
         tip_btn := Button{
             width: 32 height: 32
-            text: "ℹ"
-            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            text: ""
+            margin: Inset{left: 6. right: 0. top: 0. bottom: 0.}
             padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
             align: Align{x: 0.5 y: 0.5}
-            label_walk: Walk{width: Fit height: Fit}
+            label_walk: Walk{width: 0. height: 0.}
             icon_walk: Walk{width: 0. height: 0.}
             draw_bg +: {
+                mark_color: uniform(#x072058)
                 color: #xE0E8F0
                 color_hover: #x072058
                 color_down: #x02030B
@@ -1668,13 +1870,31 @@ script_mod! {
                 border_color: #xA8B4C4
                 border_radius: 16.
                 border_size: 1.
-            }
-            draw_text +: {
-                color: #x072058
-                color_hover: #xffffff
-                color_down: #xffffff
-                color_focus: #x072058
-                text_style +: {font_size: 15.}
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(
+                        self.border_size,
+                        self.border_size,
+                        self.rect_size.x - self.border_size * 2.,
+                        self.rect_size.y - self.border_size * 2.,
+                        self.border_radius
+                    )
+                    let fill = self.color
+                        .mix(self.color_hover, self.hover)
+                        .mix(self.color_down, self.down)
+                    sdf.fill_keep(fill)
+                    sdf.stroke(self.border_color, self.border_size)
+                    let c = self.rect_size * vec2(0.5, 0.5)
+                    let ink = self.mark_color
+                        .mix(#xffffff, self.hover)
+                        .mix(#xffffff, self.down)
+                    sdf.circle(c.x, c.y - 5.5, 1.6)
+                    sdf.fill(ink)
+                    sdf.move_to(c.x, c.y - 2.0)
+                    sdf.line_to(c.x, c.y + 6.0)
+                    sdf.stroke(ink, 2.2)
+                    return sdf.result
+                }
             }
         }
     }
@@ -1836,11 +2056,10 @@ script_mod! {
                 width: Fit height: Fit
                 flow: Down spacing: 8
                 align: Align{x: 0.5}
-                remove := Button{
-                    text: "✕"
+                remove := CloseIconBtn{
                     width: 48 height: 44
-                    align: Align{x: 0.5 y: 0.5}
                     draw_bg +: {
+                        mark_color: #xffffff
                         color: #x072058
                         color_hover: #x0A3A8C
                         color_down: #x02030B
@@ -1852,13 +2071,6 @@ script_mod! {
                         border_color: #x072058
                         border_radius: 16.
                         border_size: 0.
-                    }
-                    draw_text +: {
-                        color: #xffffff
-                        color_hover: #ffffff
-                        color_down: #xffffff
-                        color_focus: #xffffff
-                        text_style +: {font_size: 20.}
                     }
                 }
                 sold_out := Button{
@@ -1922,33 +2134,7 @@ script_mod! {
                     draw_text.text_style.font_size: 10.
                 }
             }
-            minus := Button{
-                text: "−"
-                width: 44 height: 44
-                draw_bg +: {
-                    color: #xffffff
-                    color_hover: #x072058
-                    color_down: #x02030B
-                    color_focus: #xffffff
-                    color_2: #xffffff
-                    color_2_hover: #x072058
-                    color_2_down: #x02030B
-                    color_2_focus: #xffffff
-                    border_color: #x4A5568
-                    border_color_hover: #x072058
-                    border_color_down: #x3A4554
-                    border_color_focus: #x4A5568
-                    border_radius: 12.
-                    border_size: 2.
-                }
-                draw_text +: {
-                    color: #x02030B
-                    color_hover: #xffffff
-                    color_down: #xffffff
-                    color_focus: #x02030B
-                    text_style +: {font_size: 22.}
-                }
-            }
+            minus := StepIconBtn{draw_bg.mark: 4.0}
             // As wide as "0.25 kg" needs: a fixed width stacked a weighed
             // quantity into one character per line.
             qty_label := Label{
@@ -1957,10 +2143,10 @@ script_mod! {
                 draw_text.color: #x02030B
                 draw_text.text_style.font_size: 26.
             }
-            plus := Button{
-                text: "+"
-                width: 44 height: 44
+            plus := StepIconBtn{
+                draw_bg.mark: 3.0
                 draw_bg +: {
+                    mark_color: #xffffff
                     color: #x072058
                     color_hover: #x0A3A8C
                     color_down: #x02030B
@@ -1973,15 +2159,7 @@ script_mod! {
                     border_color_hover: #x0A3A8C
                     border_color_down: #x02030B
                     border_color_focus: #x072058
-                    border_radius: 12.
                     border_size: 0.
-                }
-                draw_text +: {
-                    color: #xffffff
-                    color_hover: #xffffff
-                    color_down: #xffffff
-                    color_focus: #xffffff
-                    text_style +: {font_size: 22.}
                 }
             }
         }
@@ -2025,11 +2203,11 @@ script_mod! {
             width: Fill height: Fit
             flow: Right spacing: 6
             align: Align{y: 0.5}
-            mod_prev := RoleChip{text: "‹" width: 36}
+            mod_prev := RoleChevronBtn{draw_bg.point: -1.0}
             mod_0 := RoleChip{text: ""}
             mod_1 := RoleChip{text: ""}
             mod_2 := RoleChip{text: ""}
-            mod_next := RoleChip{text: "›" width: 36}
+            mod_next := RoleChevronBtn{}
         }
         note := CartField{
             height: 48
@@ -2683,7 +2861,7 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     align: Align{x: 1.0 y: 0.5}
-                                    rail_collapse_btn := RailToggleBtn{text: "‹"}
+                                    rail_collapse_btn := RailToggleBtn{draw_bg.point: -1.0}
                                 }
                                 rail_books_slot := View{
                                     width: Fill height: Fit
@@ -2965,7 +3143,7 @@ script_mod! {
                             width: Fill height: Fit
                             flow: Right spacing: 10
                             align: Align{y: 0.5}
-                            rail_expand_btn := RailToggleBtn{text: "›" visible: false}
+                            rail_expand_btn := RailToggleBtn{visible: false}
                             // Elegant back — left of the shop mark; body "Back" buttons stay hidden.
                             header_back := Button{
                                 width: 36 height: 36
@@ -2973,10 +3151,12 @@ script_mod! {
                                 align: Center
                                 padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                 margin: Inset{left: 0. right: 2. top: 0. bottom: 0.}
-                                text: "\u{f053}"
-                                label_walk: Walk{width: Fit height: Fit}
+                                text: ""
+                                label_walk: Walk{width: 0. height: 0.}
                                 icon_walk: Walk{width: 0. height: 0.}
                                 draw_bg +: {
+                                    point: uniform(-1.0)
+                                    mark_color: uniform(#xffffff)
                                     color: #x00000000
                                     color_hover: #x072058
                                     color_down: #x02030B
@@ -2988,13 +3168,22 @@ script_mod! {
                                     border_color: #x00000000
                                     border_radius: 18.
                                     border_size: 0.
-                                }
-                                draw_text +: {
-                                    color: #xffffff
-                                    color_hover: #xffffff
-                                    color_down: #xffffff
-                                    color_focus: #xffffff
-                                    text_style +: {font_size: 18.}
+                                    pixel: fn() {
+                                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
+                                        let fill = self.color
+                                            .mix(self.color_hover, self.hover)
+                                            .mix(self.color_down, self.down)
+                                        sdf.fill(fill)
+                                        let c = self.rect_size * vec2(0.5, 0.5)
+                                        let w = 4.0 * self.point
+                                        let h = 7.5
+                                        sdf.move_to(c.x - w, c.y - h)
+                                        sdf.line_to(c.x + w, c.y)
+                                        sdf.line_to(c.x - w, c.y + h)
+                                        sdf.stroke(self.mark_color, 2.4)
+                                        return sdf.result
+                                    }
                                 }
                             }
                             brand_mark := Image{
@@ -3147,7 +3336,7 @@ script_mod! {
                                         draw_bg.border_radius: 12.
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 6
+                                            flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             // Fit (not Fill) so ℹ sits right after the title text,
                                             // not at the far end of the row.
@@ -3193,7 +3382,7 @@ script_mod! {
                                         draw_bg.border_radius: 12.
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 6
+                                            flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             setup_role_hdr := AccordionHdrBtn{width: Fit text: "THIS DEVICE"}
                                             setup_device_help := InfoHelp{
@@ -3351,12 +3540,12 @@ script_mod! {
                                         View{
                                             width: Fill height: 52
                                             align: Align{x: 0.0 y: 0.5}
-                                            chev_l := ChevronBtn{text: "‹" visible: false}
+                                            chev_l := ChevronBtn{draw_bg.point: -1.0 visible: false}
                                         }
                                         View{
                                             width: Fill height: 52
                                             align: Align{x: 1.0 y: 0.5}
-                                            chev_r := ChevronBtn{text: "›" visible: false}
+                                            chev_r := ChevronBtn{visible: false}
                                         }
                                     }
 
@@ -3462,7 +3651,7 @@ script_mod! {
                                         flow: Down spacing: 4
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 8
+                                            flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             h_shop_logo_optional := WrapLabel{
                                                     width: Fit
@@ -3491,7 +3680,7 @@ script_mod! {
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_onboard_layout := WrapLabel{
                                                     width: Fit
@@ -3571,7 +3760,7 @@ script_mod! {
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_connect_to_server := WrapLabel{
                                         width: Fit
@@ -3972,7 +4161,7 @@ script_mod! {
                                 // Consignor = customer / sender — same party.
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     h_booking_consignor := WrapLabel{
                                         width: Fit
@@ -3998,7 +4187,7 @@ script_mod! {
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     h_booking_consignee := WrapLabel{
                                         width: Fit
@@ -4333,7 +4522,7 @@ script_mod! {
                                     }
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 8
+                                        flow: Right spacing: 0
                                         align: Align{x: 0.0 y: 0.5}
                                         money_lane_label := WrapLabel{
                                             width: Fit
@@ -4447,7 +4636,7 @@ script_mod! {
                                 menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Large=20, Gift wrap=10"}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_item_photo := WrapLabel{
                                                     width: Fit
@@ -4835,7 +5024,7 @@ script_mod! {
                                 FormCard{
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     h_party_custom_heading := WrapLabel{ width: Fit
                                                     body: "Custom fields" font_color: #x0B1220 font_size: 15.}
@@ -5019,12 +5208,12 @@ script_mod! {
                                     View{
                                         width: Fill height: 52
                                         align: Align{x: 0.0 y: 0.5}
-                                        chev_l := ChevronBtn{text: "‹" visible: false}
+                                        chev_l := ChevronBtn{draw_bg.point: -1.0 visible: false}
                                     }
                                     View{
                                         width: Fill height: 52
                                         align: Align{x: 1.0 y: 0.5}
-                                        chev_r := ChevronBtn{text: "›" visible: false}
+                                        chev_r := ChevronBtn{visible: false}
                                     }
                                 }
                                 // Pick who to edit by name; their rights below are a
@@ -5061,7 +5250,7 @@ script_mod! {
                                 FormCard{
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_duress_heading := WrapLabel{
                                         width: Fit
@@ -5183,7 +5372,7 @@ script_mod! {
                                 currency_list := mod.widgets.CurrencyList{}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_extra_tills_heading := WrapLabel{
                                         width: Fit
@@ -5261,7 +5450,7 @@ script_mod! {
                                 venue_title_input := FieldInput{empty_text: "Name of this place"}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_venue_icon := WrapLabel{
                                                     width: Fit
@@ -5288,7 +5477,7 @@ script_mod! {
                                 FormCard{
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_print_faces := WrapLabel{ width: Fit
                                                     body: "Print faces (receipt / period bill)" font_color: #x0B1220 font_size: 16.}
@@ -5380,8 +5569,8 @@ script_mod! {
                                 }
                                 printers_found_list := mod.widgets.ReportText{}
                                 ActionStack{
-                                    find_printers_btn := RowSecondaryBtn{text: "Find printers"}
-                                    find_printers_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    find_printers_btn := RowSecondaryBtn{text: "Find printers" flow: Right}
+                                    find_printers_cancel := RowSecondaryBtn{text: "Cancel" flow: Right visible: false}
                                 }
                                 h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
                                 printers_pool_label := mod.widgets.ReportText{}
@@ -5407,10 +5596,17 @@ script_mod! {
                                     }
                                 }
                                 printer_format_custom := RowSecondaryBtn{text: "New custom format"}
-                                ActionStack{
-                                    printer_add := RowSecondaryBtn{text: "Add printer"}
-                                    printer_add_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                    printer_remove := RowSecondaryBtn{text: "Remove last"}
+                                // Idle go/remove vs busy progress/cancel are separate siblings
+                                // (same as template import confirm). Never toggle Cancel visible
+                                // inside the pressed Row* ActionStack — that freezes Settings.
+                                printer_add_idle := ActionStack{
+                                    printer_add := RowPrimaryBtn{text: "Add printer" flow: Right}
+                                    printer_remove := RowSecondaryBtn{text: "Remove last" flow: Right}
+                                }
+                                printer_add_busy_face := ActionStack{
+                                    visible: false
+                                    printer_add_progress := RowPrimaryBtn{text: "Adding printer…" flow: Right}
+                                    printer_add_cancel := RowSecondaryBtn{text: "Cancel" flow: Right}
                                 }
                                 h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
                                 printer_routes_label := mod.widgets.ReportText{}
@@ -5474,7 +5670,7 @@ script_mod! {
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_diag := WrapLabel{
                                                     width: Fit
@@ -5870,10 +6066,8 @@ script_mod! {
                             draw_bg.color: #x072058
                             draw_bg.border_radius: 12.
                             snack_label_info := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_info := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #x0A3A8C color_hover: #x0D4A9E color_down: #x02030B color_focus: #x0A3A8C color_2: #x0A3A8C color_2_hover: #x0D4A9E color_2_down: #x02030B color_2_focus: #x0A3A8C border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_info := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff  color: #x0A3A8C color_hover: #x0D4A9E color_down: #x02030B color_focus: #x0A3A8C color_2: #x0A3A8C color_2_hover: #x0D4A9E color_2_down: #x02030B color_2_focus: #x0A3A8C border_radius: 10. border_size: 0. }
                             }
                         }
                         snack_face_ok := RoundedView{
@@ -5886,10 +6080,8 @@ script_mod! {
                             draw_bg.color: #x2F5D3A
                             draw_bg.border_radius: 12.
                             snack_label_ok := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_ok := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #x1E3D28 color_hover: #x1E3D28 color_down: #x152A1C color_focus: #x1E3D28 color_2: #x1E3D28 color_2_hover: #x1E3D28 color_2_down: #x152A1C color_2_focus: #x1E3D28 border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #ffffff color_hover: #xffffff color_down: #ffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_ok := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff  color: #x1E3D28 color_hover: #x1E3D28 color_down: #x152A1C color_focus: #x1E3D28 color_2: #x1E3D28 color_2_hover: #x1E3D28 color_2_down: #x152A1C color_2_focus: #x1E3D28 border_radius: 10. border_size: 0. }
                             }
                         }
                         snack_face_warn := RoundedView{
@@ -5902,10 +6094,8 @@ script_mod! {
                             draw_bg.color: #xC44E10
                             draw_bg.border_radius: 12.
                             snack_label_warn := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_warn := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #x072058 color_hover: #x0A3A8C color_down: #x02030B color_focus: #x072058 color_2: #x072058 color_2_hover: #x0A3A8C color_2_down: #x02030B color_2_focus: #x072058 border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_warn := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff  color: #x072058 color_hover: #x0A3A8C color_down: #x02030B color_focus: #x072058 color_2: #x072058 color_2_hover: #x0A3A8C color_2_down: #x02030B color_2_focus: #x072058 border_radius: 10. border_size: 0. }
                             }
                         }
                         snack_face_err := RoundedView{
@@ -5918,10 +6108,8 @@ script_mod! {
                             draw_bg.color: #x9A0E10
                             draw_bg.border_radius: 12.
                             snack_label_err := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_err := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_err := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff  color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
                             }
                         }
                     }
@@ -5966,10 +6154,9 @@ script_mod! {
                                 text_style +: {font_size: 13.}
                             }
                         }
-                        undo_snack_dismiss := Button{
-                            text: "✕"
-                            width: 36 height: 36
+                        undo_snack_dismiss := CloseIconBtn{
                             draw_bg +: {
+                                mark_color: #xffffff
                                 color: #x0A3A8C
                                 color_hover: #x0D4A9E
                                 color_down: #x02030B
@@ -5980,13 +6167,6 @@ script_mod! {
                                 color_2_focus: #x0A3A8C
                                 border_radius: 10.
                                 border_size: 0.
-                            }
-                            draw_text +: {
-                                color: #xffffff
-                                color_hover: #xffffff
-                                color_down: #xffffff
-                                color_focus: #xffffff
-                                text_style +: {font_size: 14.}
                             }
                         }
                     }
@@ -6274,12 +6454,12 @@ script_mod! {
                             View{
                                 width: Fill height: Fill
                                 align: Align{x: 0.0 y: 0.5}
-                                chev_l := ChevronBtn{text: "‹" height: 46 visible: false}
+                                chev_l := ChevronBtn{draw_bg.point: -1.0 height: 46 visible: false}
                             }
                             View{
                                 width: Fill height: Fill
                                 align: Align{x: 1.0 y: 0.5}
-                                chev_r := ChevronBtn{text: "›" height: 46 visible: false}
+                                chev_r := ChevronBtn{height: 46 visible: false}
                             }
                         }
                     }

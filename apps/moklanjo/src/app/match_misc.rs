@@ -5,14 +5,25 @@ impl MatchEvent for App {
     }
 
     fn handle_timer(&mut self, cx: &mut Cx, e: &TimerEvent) {
-        // Settings shows which devices are connected right now.
-        let settings = {
+        // Sell / Sales / Credit stay live on extra tills: catalogue and
+        // day totals from the office. Host Settings still refreshes the
+        // paired-device list. (A device's write also refreshes at once —
+        // `BOOKS_CHANGED` / `/wait`.)
+        let (live, settings) = {
             let st = app_state().lock().unwrap();
-            st.live_timer.is_timer(e).is_some()
-                && st.session.is_some()
-                && st.screen == Screen::Settings
-                && st.device_role.is_host()
+            let ours = st.live_timer.is_timer(e).is_some() && st.session.is_some();
+            (
+                ours
+                    && matches!(st.screen, Screen::Pos | Screen::Sales | Screen::Credit)
+                    && st.device_role == DeviceRole::Client,
+                ours && st.screen == Screen::Settings && st.device_role.is_host(),
+            )
         };
+        if live {
+            app_state().lock().unwrap().pull_from_server();
+            self.ui.redraw(cx);
+            return;
+        }
         if settings {
             {
                 let mut st = app_state().lock().unwrap();

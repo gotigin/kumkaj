@@ -119,13 +119,24 @@ fn add_printer_to_focused_route(st: &mut AppState, label_or_id: &str) -> bool {
     true
 }
 
-/// Kitchen destinations for unsent cart lines: `(station display name, line count)`,
-/// in first-seen order. Empty station → `unassigned` label (caller supplies it).
+/// Kitchen destinations for unsent cart lines: `(station display name, line count)`.
+/// Order follows `priority` station ids when provided; else first-seen.
+/// Empty station → `unassigned` label (caller supplies it).
 fn pending_kot_destinations(
     products: &[domain::Product],
     stations: &[domain::KitchenStation],
     lines: &[domain::CartLine],
     unassigned: &str,
+) -> Vec<(String, usize)> {
+    pending_kot_destinations_ordered(products, stations, lines, unassigned, &[])
+}
+
+fn pending_kot_destinations_ordered(
+    products: &[domain::Product],
+    stations: &[domain::KitchenStation],
+    lines: &[domain::CartLine],
+    unassigned: &str,
+    priority: &[String],
 ) -> Vec<(String, usize)> {
     let mut out: Vec<(String, String, usize)> = Vec::new(); // id, name, count
     for line in lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
@@ -143,6 +154,17 @@ fn pending_kot_destinations(
             Some((_, _, n)) => *n += 1,
             None => out.push((sid.to_string(), name, 1)),
         }
+    }
+    if !priority.is_empty() {
+        let mut ordered = Vec::with_capacity(out.len());
+        for id in priority {
+            if let Some(i) = out.iter().position(|(sid, _, _)| sid == id) {
+                ordered.push(out.remove(i));
+            }
+        }
+        // Unassigned (empty id) and any unknown stations keep relative order after.
+        ordered.append(&mut out);
+        out = ordered;
     }
     out.into_iter().map(|(_, name, n)| (name, n)).collect()
 }

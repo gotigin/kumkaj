@@ -240,6 +240,9 @@ script_mod! {
             color_down: #xffffff
             color_focus: #x260B08
             color_disabled: #x8A6A5C
+            // Icon glyphs (✕ ‹ › − + ℹ FA) sit on the baseline without this —
+            // every face inherits it; left-aligned hubs may still set false.
+            ink_centered: true
         }
     }
 
@@ -478,20 +481,21 @@ script_mod! {
         }
     }
     // Hide / show the whole side rail (tablet/desktop chrome only).
+    // Drawn ›/‹ (not a glyph): glyphs sit on the text baseline and read low
+    // inside the hover pill. `draw_bg.point`: 1 = ›, -1 = ‹.
     let RailToggleBtn = Button{
-        width: Fit height: 36
+        width: 36 height: 36
         align: Align{x: 0.5 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 10. right: 10. top: 6. bottom: 6.}
-        label_walk: Walk{
-            width: Fit
-            height: Fit
-            margin: Inset{left: 0. right: 0.}
-        }
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
+            point: uniform(1.0)
+            mark_color: uniform(#xF2B183)
             color: #x00000000
             color_hover: #x9A0E10
             color_down: #x69090C
@@ -504,14 +508,25 @@ script_mod! {
             border_color: #x00000000
             border_radius: 8.
             border_size: 0.
-        }
-        draw_text +: {
-            color: #xF2B183
-            color_hover: #xffffff
-            color_down: #xffffff
-            color_focus: #xF2B183
-            color_disabled: #x8A6A5C
-            text_style +: {font_size: 16.}
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill(fill)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let w = 4.0 * self.point
+                let h = 7.5
+                sdf.move_to(c.x - w, c.y - h)
+                sdf.line_to(c.x + w, c.y)
+                sdf.line_to(c.x - w, c.y + h)
+                let mark = self.mark_color
+                    .mix(#xffffff, self.hover)
+                    .mix(#xffffff, self.down)
+                sdf.stroke(mark, 2.4)
+                return sdf.result
+            }
         }
     }
     // Bottom-nav chips for expanded More peers (scroll row; Fit width).
@@ -787,11 +802,12 @@ script_mod! {
         }
     }
     // Icon-only eye next to a money figure (or the screen-level header eye).
+    // FA glyph (eye ↔ lock via set_text); ink_centered keeps it in the face.
     let EyeIconBtn = Button{
-        width: Fit height: Fit
+        width: 28 height: 28
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 6. right: 6. top: 4. bottom: 4.}
-        align: Center
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
         label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
@@ -814,6 +830,7 @@ script_mod! {
             color_hover: #x69090C
             color_down: #x69090C
             color_focus: #x69090C
+            ink_centered: true
             text_style +: {font_size: 14.}
         }
         text: "\u{f06e}"
@@ -825,7 +842,8 @@ script_mod! {
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 6. right: 8. top: 10. bottom: 10.}
+        // right: 0 — when Fit beside InfoHelp, tip_btn.margin.left is the only title→ℹ gap.
+        padding: Inset{left: 6. right: 0. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
         reset_hover_on_click: true
@@ -849,6 +867,7 @@ script_mod! {
             color_hover: #x3D0507
             color_down: #x3D0507
             color_focus: #x69090C
+            ink_centered: true
             text_style +: {font_size: 14.}
         }
         text: "TODAY"
@@ -858,32 +877,37 @@ script_mod! {
     mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
     mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
         // Fit so title+ℹ pack as one cluster; do not stretch ℹ to the row end.
+        // Title→ℹ gap is ONLY tip_btn.margin.left (6). Parent rows that place an
+        // external title beside InfoHelp must use spacing: 0 so the gap stays 6.
         width: Fit
         height: Fit
         flow: Right
-        spacing: 6
+        spacing: 0
         align: Align{x: 0.0 y: 0.5}
         tip: ""
         icon := Image{
             width: 28 height: 28
             fit: ImageFit.Stretch
             visible: false
+            margin: Inset{left: 0. right: 6. top: 0. bottom: 0.}
         }
         title := Label{
             width: Fit height: Fit
             text: ""
+            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
             draw_text.color: #x260B08
             draw_text.text_style.font_size: 20.
         }
         tip_btn := Button{
             width: 32 height: 32
-            text: "ℹ"
-            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            text: ""
+            margin: Inset{left: 6. right: 0. top: 0. bottom: 0.}
             padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
             align: Align{x: 0.5 y: 0.5}
-            label_walk: Walk{width: Fit height: Fit}
+            label_walk: Walk{width: 0. height: 0.}
             icon_walk: Walk{width: 0. height: 0.}
             draw_bg +: {
+                mark_color: uniform(#x69090C)
                 color: #xFBEDE4
                 color_hover: #x9A0E10
                 color_down: #x69090C
@@ -895,13 +919,32 @@ script_mod! {
                 border_color: #xEFD2BC
                 border_radius: 16.
                 border_size: 1.
-            }
-            draw_text +: {
-                color: #x69090C
-                color_hover: #xffffff
-                color_down: #xffffff
-                color_focus: #x69090C
-                text_style +: {font_size: 15.}
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(
+                        self.border_size,
+                        self.border_size,
+                        self.rect_size.x - self.border_size * 2.,
+                        self.rect_size.y - self.border_size * 2.,
+                        self.border_radius
+                    )
+                    let fill = self.color
+                        .mix(self.color_hover, self.hover)
+                        .mix(self.color_down, self.down)
+                    sdf.fill_keep(fill)
+                    sdf.stroke(self.border_color, self.border_size)
+                    let c = self.rect_size * vec2(0.5, 0.5)
+                    let ink = self.mark_color
+                        .mix(#xffffff, self.hover)
+                        .mix(#xffffff, self.down)
+                    // Dot + stem ≈ ℹ, centred in the face.
+                    sdf.circle(c.x, c.y - 5.5, 1.6)
+                    sdf.fill(ink)
+                    sdf.move_to(c.x, c.y - 2.0)
+                    sdf.line_to(c.x, c.y + 6.0)
+                    sdf.stroke(ink, 2.2)
+                    return sdf.result
+                }
             }
         }
     }
@@ -1424,6 +1467,107 @@ script_mod! {
         }
     }
 
+    // Modifier pager ‹/› — same chrome as RoleChip, drawn mark (not glyph).
+    let RoleChevronBtn = Button{
+        width: 36 height: 40
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            point: uniform(1.0)
+            mark_color: uniform(#x260B08)
+            color: #xEFD2BC
+            color_hover: #x9A0E10
+            color_down: #x69090C
+            color_focus: #xEFD2BC
+            border_color: #xD8BBA6
+            border_radius: 10.
+            border_size: 1.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill_keep(fill)
+                sdf.stroke(self.border_color, self.border_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let w = 4.0 * self.point
+                let h = 7.5
+                sdf.move_to(c.x - w, c.y - h)
+                sdf.line_to(c.x + w, c.y)
+                sdf.line_to(c.x - w, c.y + h)
+                let mark = self.mark_color
+                    .mix(#xffffff, self.hover)
+                    .mix(#xffffff, self.down)
+                sdf.stroke(mark, 2.4)
+                return sdf.result
+            }
+        }
+    }
+
+    // Icon-only ✕ — drawn, never a glyph (glyphs sit low in the face).
+    // Override face/mark colours per call site; keep text empty.
+    let CloseIconBtn = Button{
+        width: 36 height: 36
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            mark_color: uniform(#xffffff)
+            color: #xB43A12
+            color_hover: #x9A0E10
+            color_down: #x69090C
+            color_focus: #xB43A12
+            color_2: #xB43A12
+            color_2_hover: #x9A0E10
+            color_2_down: #x69090C
+            color_2_focus: #xB43A12
+            border_color: #x00000000
+            border_radius: 10.
+            border_size: 0.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                // Always stroke the face path so it is consumed — skipping this
+                // when border_size is 0 left the box SDF active and snack
+                // dismisses drew a white ring with no ✕.
+                sdf.fill_keep(fill)
+                sdf.stroke(self.border_color, self.border_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let side = if self.rect_size.x < self.rect_size.y self.rect_size.x else self.rect_size.y
+                let s = side * 0.22
+                let mark = self.mark_color
+                sdf.move_to(c.x - s, c.y - s)
+                sdf.line_to(c.x + s, c.y + s)
+                sdf.stroke(mark, 2.4)
+                sdf.move_to(c.x + s, c.y - s)
+                sdf.line_to(c.x - s, c.y + s)
+                sdf.stroke(mark, 2.4)
+                return sdf.result
+            }
+        }
+    }
+
     let ChipStrip = ScrollXView{
         width: Fill height: 52
     }
@@ -1815,11 +1959,18 @@ script_mod! {
 
     // − / + on a dish card: white on the deep-red pill in every state
     // (white ink only on deep red; ink never flips while the face does).
+    // − / + on dish cards. Drawn mark (`draw_bg.mark`: 3 = +, 4 = −) — glyphs
+    // sit low in the circle even with ink_centered.
     let CardStepBtn = Button{
         width: 34 height: 34
         padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        label_walk: Walk{margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}}
+        align: Align{x: 0.5 y: 0.5}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
+            mark: uniform(3.0)
+            mark_color: uniform(#xffffff)
             color: #x9A0E10
             color_hover: #xB43A12
             color_down: #x69090C
@@ -1834,13 +1985,24 @@ script_mod! {
             border_color_focus: #x9A0E10
             border_radius: 17.
             border_size: 0.
-        }
-        draw_text +: {
-            color: #xffffff
-            color_hover: #xffffff
-            color_down: #xffffff
-            color_focus: #xffffff
-            text_style +: {font_size: 18.}
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill(fill)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let s = 7.0
+                sdf.move_to(c.x - s, c.y)
+                sdf.line_to(c.x + s, c.y)
+                if self.mark < 3.5 {
+                    sdf.move_to(c.x, c.y - s)
+                    sdf.line_to(c.x, c.y + s)
+                }
+                sdf.stroke(self.mark_color, 2.4)
+                return sdf.result
+            }
         }
     }
 
@@ -1922,7 +2084,7 @@ script_mod! {
                             draw_bg.border_radius: 19.
                             draw_bg.border_size: 1.5
                             draw_bg.border_color: #xF69D2C
-                            minus := CardStepBtn{text: "−"}
+                            minus := CardStepBtn{draw_bg.mark: 4.0}
                             View{
                                 width: Fit{min: FitBound.Abs(26.)} height: 34
                                 align: Align{x: 0.5 y: 0.5}
@@ -1933,7 +2095,7 @@ script_mod! {
                                     draw_text.text_style.font_size: 15.
                                 }
                             }
-                            plus := CardStepBtn{text: "+"}
+                            plus := CardStepBtn{draw_bg.mark: 3.0}
                         }
                     }
                 }
@@ -2015,9 +2177,11 @@ script_mod! {
     // the stacked backgrounds is shown — Makepad's reliable way to restyle by
     // state, like the idle/active button faces); the whole tile is the tap
     // target; a small action appears only where it helps (Bill / Ready).
+    // 152px: room for name + amount + a wrapping status line ("Bill printed ·
+    // 60 min") without the last line sitting on the stroke or clipping "min".
     let FloorTile = View{
         cursor: MouseCursor.Hand
-        width: Fill height: 132
+        width: Fill height: 152
         flow: Overlay
         bg_free := RoundedView{
             width: Fill height: Fill
@@ -2077,8 +2241,10 @@ script_mod! {
         }
         View{
             width: Fill height: Fill
-            padding: Inset{left: 12. right: 8. top: 8. bottom: 8.}
-            flow: Down spacing: 2
+            // Extra bottom inset so descenders ("g" in kitchen) and a wrapped
+            // second status line clear the 2px stroke.
+            padding: Inset{left: 12. right: 10. top: 10. bottom: 12.}
+            flow: Down spacing: 4
             // Name and the one useful action share the top row, so the
             // action never falls out of the tile.
             View{
@@ -2088,14 +2254,16 @@ script_mod! {
                 name := Label{
                     width: Fill
                     text: "T1"
-                    flow: Right{wrap: true}
+                    // No wrap: a squeezed Fill next to "Seat guests" used to
+                    // stack "T5" as two characters. Ellipsis if truly long.
+                    flow: Right{wrap: false}
                     draw_text.color: #x1F1A17
                     draw_text.text_style.font_size: 18.
                 }
                 act := Button{
                     text: "Bill"
                     width: Fit height: 26
-                    padding: Inset{left: 12. right: 12. top: 4. bottom: 4.}
+                    padding: Inset{left: 10. right: 10. top: 4. bottom: 4.}
                     label_walk: Walk{width: Fit height: Fit margin: Inset{left: 2. right: 2.}}
                     draw_bg +: {
                         color: #xFFFFFF
@@ -2330,12 +2498,11 @@ script_mod! {
                 width: Fit height: Fill
                 flow: Down spacing: 8
                 align: Align{x: 1.0 y: 0.0}
-                remove := Button{
-                    text: "✕"
+                remove := CloseIconBtn{
                     width: 34 height: 34
-                    align: Align{x: 0.5 y: 0.5}
                     draw_bg +: {
                         // Frosted dark — readable on any photo without a side wash.
+                        mark_color: #xffffff
                         color: #x1A0A08CC
                         color_hover: #x9A0E10
                         color_down: #x69090C
@@ -2347,13 +2514,6 @@ script_mod! {
                         border_color: #xFFFFFF88
                         border_radius: 17.
                         border_size: 1.
-                    }
-                    draw_text +: {
-                        color: #xffffff
-                        color_hover: #xffffff
-                        color_down: #xffffff
-                        color_focus: #xffffff
-                        text_style +: {font_size: 14.}
                     }
                 }
                 View{width: Fit height: Fill}
@@ -2425,13 +2585,17 @@ script_mod! {
     // applied total, add-ons, note, and Cancel / NC / Move for sent lines),
     // one line at a time, so a ten-dish table still fits on screen.
     // Square ± only — never put a word label in this face (it clips).
+    // Drawn mark (`draw_bg.mark`: 3 = +, 4 = −).
     let TicketStepBtn = Button{
         width: 34 height: 34
         padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         align: Align{x: 0.5 y: 0.5}
-        label_walk: Walk{width: Fit height: Fit}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
+            mark: uniform(3.0)
+            mark_color: uniform(#x69090C)
             color: #xffffff
             color_hover: #x9A0E10
             color_down: #x69090C
@@ -2446,14 +2610,39 @@ script_mod! {
             border_color_focus: #xC9B0A2
             border_radius: 9.
             border_size: 1.
-        }
-        draw_text +: {
-            color: #x69090C
-            color_hover: #xffffff
-            color_down: #xffffff
-            color_focus: #x69090C
-            ink_centered: true
-            text_style +: {font_size: 17.}
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(
+                    self.border_size,
+                    self.border_size,
+                    self.rect_size.x - self.border_size * 2.,
+                    self.rect_size.y - self.border_size * 2.,
+                    self.border_radius
+                )
+                let fill = self.color
+                    .mix(self.color_hover, self.hover)
+                    .mix(self.color_down, self.down)
+                sdf.fill_keep(fill)
+                sdf.stroke(
+                    self.border_color
+                        .mix(self.border_color_hover, self.hover)
+                        .mix(self.border_color_down, self.down),
+                    self.border_size
+                )
+                let c = self.rect_size * vec2(0.5, 0.5)
+                let s = 7.0
+                let ink = self.mark_color
+                    .mix(#xffffff, self.hover)
+                    .mix(#xffffff, self.down)
+                sdf.move_to(c.x - s, c.y)
+                sdf.line_to(c.x + s, c.y)
+                if self.mark < 3.5 {
+                    sdf.move_to(c.x, c.y - s)
+                    sdf.line_to(c.x, c.y + s)
+                }
+                sdf.stroke(ink, 2.4)
+                return sdf.result
+            }
         }
     }
     // Word action on the ticket (Hold / Held): Fit width — never reuse
@@ -2509,6 +2698,8 @@ script_mod! {
             cursor: MouseCursor.Hand
             width: Fill height: Fit
             flow: Right spacing: 10
+            // Thumb + name/meta | (− qty + above amount) — both columns
+            // share the row's vertical centre; amount keeps its right edge.
             align: Align{y: 0.5}
             // The dish's photo (or initials), so a busy ticket reads at a glance.
             ThumbAvatar{
@@ -2518,22 +2709,11 @@ script_mod! {
             View{
                 width: Fill height: Fit
                 flow: Down spacing: 4
-                View{
-                    width: Fill height: Fit
-                    flow: Right spacing: 8
-                    align: Align{y: 0.5}
-                    label := WrapLabel{
-                        selectable: false
-                        body: "Item"
-                        font_color: #x260B08
-                        font_size: 14.
-                    }
-                    line_amount := Label{
-                        width: Fit
-                        text: "0"
-                        draw_text.color: #x69090C
-                        draw_text.text_style.font_size: 14.
-                    }
+                label := WrapLabel{
+                    selectable: false
+                    body: "Item"
+                    font_color: #x260B08
+                    font_size: 14.
                 }
                 line_meta := WrapLabel{
                     selectable: false
@@ -2541,15 +2721,22 @@ script_mod! {
                     font_color: #x6B4A3F
                     font_size: 11.
                 }
-                // Own row so ± and Hold are never crushed by meta text.
-                // Only on lines not yet sent: a sent quantity changes only
-                // by a reasoned Cancel. Hold skips this line on the next
-                // Send KOT (tap again to include).
+                // Hold under the meta — not in the price column.
+                // Only on unsent lines (sent qty changes via Cancel).
+                hold_send_btn := TicketHoldBtn{text: "Hold"}
+            }
+            // Right column: same −/qty/+ as the menu card, stacked above the
+            // line amount. Fit width keeps the amount's horizontal place;
+            // column is vertically centred with the thumb/name block.
+            View{
+                width: Fit height: Fit
+                flow: Down spacing: 6
+                align: Align{x: 1.0 y: 0.5}
                 stepper := View{
-                    width: Fill height: Fit
+                    width: Fit height: Fit
                     flow: Right spacing: 4
                     align: Align{y: 0.5}
-                    minus := TicketStepBtn{text: "−"}
+                    minus := TicketStepBtn{draw_bg.mark: 4.0}
                     // Centred in a fixed box so 1 and 12 sit in the same place.
                     View{
                         width: 36 height: 34
@@ -2561,9 +2748,13 @@ script_mod! {
                             draw_text.text_style.font_size: 15.
                         }
                     }
-                    plus := TicketStepBtn{text: "+"}
-                    View{width: Fill height: 1}
-                    hold_send_btn := TicketHoldBtn{text: "Hold"}
+                    plus := TicketStepBtn{draw_bg.mark: 3.0}
+                }
+                line_amount := Label{
+                    width: Fit
+                    text: "0"
+                    draw_text.color: #x69090C
+                    draw_text.text_style.font_size: 14.
                 }
             }
         }
@@ -2600,7 +2791,7 @@ script_mod! {
                 width: Fill height: Fit
                 flow: Right spacing: 6
                 align: Align{y: 0.5}
-                mod_prev := RoleChip{text: "‹" width: 36}
+                mod_prev := RoleChevronBtn{draw_bg.point: -1.0}
                 View{width: Fill height: Fit flow: Overlay
                     mod_0 := RoleChip{text: ""}
                     mod_0_on := RoleChipActive{text: "" visible: false}
@@ -2613,7 +2804,7 @@ script_mod! {
                     mod_2 := RoleChip{text: ""}
                     mod_2_on := RoleChipActive{text: "" visible: false}
                 }
-                mod_next := RoleChip{text: "›" width: 36}
+                mod_next := RoleChevronBtn{}
             }
             note := CartField{
                 height: 44
@@ -3109,32 +3300,39 @@ script_mod! {
     }
 
     mod.widgets.CartListBase = #(CartList::register_widget(vm))
+    // Page-scrolled like MenuList: only the on-screen window is a PortalList
+    // so a finger on Added items can still drag the outer Order ScrollYView.
     mod.widgets.CartList = set_type_default() do mod.widgets.CartListBase{
         width: Fill height: Fit
-        list := PortalList{
-            width: Fill height: Fill
-            spacing: 8
-            drag_scrolling: false
-            bounce_at_start: false
-            bounce_at_end: false
-            capture_overload: false
-            scroll_bar: ScrollBar{bar_size: 0.}
-            Item := View{
-                width: Fill height: Fit
-                flow: Down spacing: 4
-                padding: Inset{bottom: 8.}
-                texture_caching: false
-                // Group header over the first line of each KOT ("KOT 3 ·
-                // 20:40") and over the lines not sent yet.
-                kot_head := Label{
-                    visible: false
-                    width: Fill
-                    text: ""
-                    padding: Inset{left: 4. top: 4.}
-                    draw_text.color: #x8A5A48
-                    draw_text.text_style.font_size: 12.
+        flow: Down
+        top_gap := View{width: Fill height: 0}
+        list_box := View{
+            width: Fill height: 0
+            list := PortalList{
+                width: Fill height: Fill
+                spacing: 8
+                drag_scrolling: false
+                bounce_at_start: false
+                bounce_at_end: false
+                capture_overload: false
+                scroll_bar: ScrollBar{bar_size: 0.}
+                Item := View{
+                    width: Fill height: Fit
+                    flow: Down spacing: 4
+                    padding: Inset{bottom: 8.}
+                    texture_caching: false
+                    // Group header over the first line of each KOT ("KOT 3 ·
+                    // 20:40") and over the lines not sent yet.
+                    kot_head := Label{
+                        visible: false
+                        width: Fill
+                        text: ""
+                        padding: Inset{left: 4. top: 4.}
+                        draw_text.color: #x8A5A48
+                        draw_text.text_style.font_size: 12.
+                    }
+                    CartRow{}
                 }
-                CartRow{}
             }
         }
     }
@@ -3462,6 +3660,109 @@ script_mod! {
         }
     }
 
+    // Checkbox face for kitchen dropdown rows (checked = station is on the ticket).
+    let StationCheckBox = RoundedView{
+        width: 24 height: 24
+        align: Align{x: 0.5 y: 0.5}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 6.
+        draw_bg.border_size: 1.5
+        draw_bg.border_color: #xD8BBA6
+    }
+    // Button (not RoundedView) so the ✓ SDF paints the same way as CloseIconBtn.
+    let StationCheckBoxOn = Button{
+        width: 24 height: 24
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        grab_key_focus: false
+        draw_bg +: {
+            color: #x9A0E10
+            color_hover: #x9A0E10
+            color_down: #x69090C
+            color_focus: #x9A0E10
+            border_radius: 6.
+            border_size: 0.
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
+                sdf.fill(self.color)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                sdf.move_to(c.x - 5.0, c.y + 0.5)
+                sdf.line_to(c.x - 1.5, c.y + 4.0)
+                sdf.line_to(c.x + 5.5, c.y - 4.0)
+                sdf.stroke(#xffffff, 2.4)
+                return sdf.result
+            }
+        }
+    }
+    let StationCheckRow = RoundedView{
+        cursor: MouseCursor.Hand
+        width: Fill height: Fit
+        padding: Inset{left: 4. right: 14. top: 12. bottom: 12.}
+        flow: Right spacing: 8
+        align: Align{y: 0.5}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 10.
+        draw_bg.border_size: 1.
+        draw_bg.border_color: #xE3D3C8
+        View{
+            width: Fit height: Fit
+            flow: Overlay
+            check_off := StationCheckBox{}
+            check_on := StationCheckBoxOn{visible: false}
+        }
+        title := Label{
+            width: Fill
+            text: ""
+            flow: Right{wrap: true}
+            draw_text.color: #x260B08
+            draw_text.text_style.font_size: 15.
+        }
+        subtitle := Label{
+            width: Fit
+            text: ""
+            flow: Right{wrap: true}
+            draw_text.color: #x6B4A3F
+            draw_text.text_style.font_size: 13.
+        }
+    }
+    mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
+    mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
+        width: Fill height: Fit
+        // Multi-check + drag-reorder priority (not exclusive radios).
+        list := ReorderList{
+            width: Fill height: Fill
+            spacing: 6
+            drag_handle: @grip
+            drag_scrolling: true
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 6.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Right spacing: 0
+                align: Align{y: 0.5}
+                texture_caching: false
+                // Direct child of Item so ReorderList drag_handle resolves.
+                grip := View{
+                    width: 28 height: Fill
+                    cursor: MouseCursor.Hand
+                    align: Align{x: 0.5 y: 0.5}
+                    padding: Inset{left: 4. right: 2.}
+                    Label{
+                        text: "⠿"
+                        draw_text.color: #x8A5A48
+                        draw_text.text_style.font_size: 16.
+                    }
+                }
+                row := StationCheckRow{}
+            }
+        }
+    }
+
     // A report on screen (day close, books, …): headings, "label  value"
     // rows with the value at the right, and plain lines — in a white card,
     // never one run-on paragraph. Fed with the same text that prints.
@@ -3679,24 +3980,21 @@ script_mod! {
                         float_caption: false
                     }
                 }
-                part_remove := Button{
-                    text: "✕"
+                part_remove := CloseIconBtn{
                     width: 40 height: 40
                     draw_bg +: {
+                        mark_color: #x69090C
                         color: #xffffff
                         color_hover: #xFBE3D3
                         color_down: #xEFD2BC
                         color_focus: #xffffff
+                        color_2: #xffffff
+                        color_2_hover: #xFBE3D3
+                        color_2_down: #xEFD2BC
+                        color_2_focus: #xffffff
                         border_color: #xD8BBA6
                         border_radius: 10.
                         border_size: 1.
-                    }
-                    draw_text +: {
-                        color: #x69090C
-                        color_hover: #x69090C
-                        color_down: #x69090C
-                        color_focus: #x69090C
-                        text_style +: {font_size: 15.}
                     }
                 }
             }
@@ -3818,7 +4116,7 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     align: Align{x: 1.0 y: 0.5}
-                                    rail_collapse_btn := RailToggleBtn{text: "‹"}
+                                    rail_collapse_btn := RailToggleBtn{draw_bg.point: -1.0}
                                 }
                                 rail_books_slot := View{
                                     width: Fill height: Fit
@@ -4086,18 +4384,21 @@ script_mod! {
                             width: Fill height: Fit
                             flow: Right spacing: 10
                             align: Align{y: 0.5}
-                            rail_expand_btn := RailToggleBtn{text: "›" visible: false}
+                            rail_expand_btn := RailToggleBtn{visible: false}
                             // Elegant back — left of the shop mark; body "Back" buttons stay hidden.
+                            // Drawn ‹ (not FA glyph): glyphs sit low in the 36×36 hit target.
                             header_back := Button{
                                 width: 36 height: 36
                                 visible: false
                                 align: Center
                                 padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                 margin: Inset{left: 0. right: 2. top: 0. bottom: 0.}
-                                text: "\u{f053}"
-                                label_walk: Walk{width: Fit height: Fit}
+                                text: ""
+                                label_walk: Walk{width: 0. height: 0.}
                                 icon_walk: Walk{width: 0. height: 0.}
                                 draw_bg +: {
+                                    point: uniform(-1.0)
+                                    mark_color: uniform(#xffffff)
                                     color: #x00000000
                                     color_hover: #x9A0E10
                                     color_down: #x3D0507
@@ -4109,13 +4410,22 @@ script_mod! {
                                     border_color: #x00000000
                                     border_radius: 18.
                                     border_size: 0.
-                                }
-                                draw_text +: {
-                                    color: #xffffff
-                                    color_hover: #xffffff
-                                    color_down: #xffffff
-                                    color_focus: #xffffff
-                                    text_style +: {font_size: 18.}
+                                    pixel: fn() {
+                                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.border_radius)
+                                        let fill = self.color
+                                            .mix(self.color_hover, self.hover)
+                                            .mix(self.color_down, self.down)
+                                        sdf.fill(fill)
+                                        let c = self.rect_size * vec2(0.5, 0.5)
+                                        let w = 4.0 * self.point
+                                        let h = 7.5
+                                        sdf.move_to(c.x - w, c.y - h)
+                                        sdf.line_to(c.x + w, c.y)
+                                        sdf.line_to(c.x - w, c.y + h)
+                                        sdf.stroke(self.mark_color, 2.4)
+                                        return sdf.result
+                                    }
                                 }
                             }
                             brand_mark := Image{
@@ -4264,7 +4574,7 @@ script_mod! {
                                         draw_bg.border_radius: 12.
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 6
+                                            flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             // Fit (not Fill) so ℹ sits right after the title text,
                                             // not at the far end of the row.
@@ -4310,7 +4620,7 @@ script_mod! {
                                         draw_bg.border_radius: 12.
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 6
+                                            flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             setup_role_hdr := AccordionHdrBtn{width: Fit text: "THIS DEVICE"}
                                             setup_device_help := InfoHelp{
@@ -4579,7 +4889,7 @@ script_mod! {
                                         flow: Down spacing: 4
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 8
+                                            flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             h_shop_logo_optional := WrapLabel{
                                                     width: Fit
@@ -4608,7 +4918,7 @@ script_mod! {
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_onboard_layout := WrapLabel{
                                                     width: Fit
@@ -4693,7 +5003,7 @@ script_mod! {
                                 client_pair_back := BackBtn{text: "Back" visible: false}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_connect_to_server := WrapLabel{
                                         width: Fit
@@ -5063,6 +5373,26 @@ script_mod! {
                                     flow: Right spacing: 16
                                 pos_scroll := ScrollYView{
                                     width: 600 height: Fill
+                                    // Mouse drag over cart rows / buttons must still
+                                    // pan the Order page (touch already co-captures).
+                                    scroll_bars: mod.widgets.ScrollBars {
+                                        show_scroll_x: false show_scroll_y: true
+                                        scroll_bar_y: mod.widgets.ScrollBar{
+                                            drag_scrolling: true
+                                            mouse_capture_overload: true
+                                            bounce_at_start: false
+                                            bounce_at_end: false
+                                            bar_size: 10.
+                                            min_handle_size: 40.
+                                            draw_bg +: {
+                                                size: 6.
+                                                border_radius: 3.
+                                                color: #xC9AFA2
+                                                color_hover: #x9A0E10
+                                                color_drag: #x69090C
+                                            }
+                                        }
+                                    }
                                     pos_page := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
@@ -5185,7 +5515,7 @@ script_mod! {
                                             draw_bg.border_color: #xB43A12
                                             View{
                                                 width: Fill height: Fit
-                                                flow: Right spacing: 8
+                                                flow: Right spacing: 0
                                                 align: Align{x: 0.0 y: 0.5}
                                                 h_split_bill := WrapLabel{
                                                     width: Fit
@@ -5220,7 +5550,7 @@ script_mod! {
                                             draw_bg.border_color: #xB43A12
                                             View{
                                                 width: Fill height: Fit
-                                                flow: Right spacing: 8
+                                                flow: Right spacing: 0
                                                 align: Align{x: 0.0 y: 0.5}
                                                 h_move_table := WrapLabel{
                                                     width: Fit
@@ -5330,10 +5660,15 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 visible: false
                                                 flow: Down spacing: 6
+                                                // Dropdown — opens checkbox station list (not a type-in field).
+                                                kot_station_dd := StackSecondaryBtn{text: "Kitchen" flow: Right}
+                                                // Hidden: keeps SuggestField::input + send_kot apply path working.
                                                 kot_station_input := FieldInput{
-                                                    empty_text: "Kitchen station for dishes without one (e.g. Tandoor)"
+                                                    visible: false
+                                                    height: 0.
+                                                    empty_text: "Kitchen"
                                                 }
-                                                kot_station_suggest := mod.widgets.SuggestList{field: "kot_station"}
+                                                kot_station_suggest := mod.widgets.StationCheckList{field: "kot_station"}
                                             }
                                             send_stack := ActionStack{
                                                 kot_set_station := StackLightBtn{text: "Use this station" visible: false}
@@ -5526,7 +5861,7 @@ script_mod! {
                                         visible: false
                                         View{
                                             width: Fill height: Fit
-                                            flow: Right spacing: 8
+                                            flow: Right spacing: 0
                                             align: Align{x: 0.0 y: 0.5}
                                             h_split_payment := WrapLabel{
                                                     width: Fit
@@ -5945,7 +6280,7 @@ script_mod! {
                                     draw_bg.border_radius: 14.
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 6
+                                        flow: Right spacing: 0
                                         align: Align{y: 0.5}
                                         floor_add_hdr := AccordionHdrBtn{width: Fit text: "ADD TABLES"}
                                         floor_areas_help := InfoHelp{
@@ -6014,7 +6349,7 @@ script_mod! {
                                     draw_bg.border_radius: 14.
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 6
+                                        flow: Right spacing: 0
                                         align: Align{y: 0.5}
                                         stations_hdr := AccordionHdrBtn{width: Fit text: "KITCHEN STATIONS"}
                                         stations_help := InfoHelp{
@@ -6190,7 +6525,7 @@ script_mod! {
                                 menu_recipe_input := FieldInput{empty_text: "Recipe (optional) — one portion uses: Rice=0.2, Paneer=0.15"}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_item_photo := WrapLabel{
                                                     width: Fit
@@ -6981,7 +7316,7 @@ script_mod! {
                                     visible: false
 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_extra_tills_heading := WrapLabel{
                                         width: Fit
@@ -7064,7 +7399,7 @@ h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_
                                 org_name_input := FieldInput{empty_text: "Business name"}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_venue_icon := WrapLabel{
                                                     width: Fit
@@ -7202,8 +7537,8 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         visible: false
                                     }
                                     ActionStack{
-                                        find_printers_btn := StackSecondaryBtn{text: "Find printers"}
-                                        find_printers_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                        find_printers_btn := StackSecondaryBtn{text: "Find printers" flow: Right}
+                                        find_printers_cancel := StackSecondaryBtn{text: "Cancel" flow: Right visible: false}
                                     }
                                     printers_found_label := WrapLabel{
                                         width: Fill
@@ -7234,11 +7569,20 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                             printer_wire_os_on := SegBtnOn{text: "Standard" visible: false}
                                         }
                                     }
-                                    printer_format_custom := StackSecondaryBtn{text: "New custom format"}
-                                    ActionStack{
-                                        printer_add := StackSecondaryBtn{text: "Add printer"}
-                                        printer_add_cancel := StackLightBtn{text: "Cancel" visible: false}
-                                        printer_remove := StackSecondaryBtn{text: "Remove"}
+                                    printer_format_custom := StackSecondaryBtn{text: "New custom format" flow: Right}
+                                    // Idle go/remove vs busy progress/cancel are separate siblings
+                                    // (same pattern as template_import / template_confirm). Never
+                                    // toggle Cancel visible inside the pressed Stack* ActionStack —
+                                    // that has frozen Settings. Never Overlay-stack the two faces
+                                    // either: Fit+Fill children under Overlay have also hung layout.
+                                    printer_add_idle := ActionStack{
+                                        printer_add := StackPrimaryBtn{text: "Add printer" flow: Right}
+                                        printer_remove := StackSecondaryBtn{text: "Remove" flow: Right}
+                                    }
+                                    printer_add_busy_face := ActionStack{
+                                        visible: false
+                                        printer_add_progress := StackPrimaryBtn{text: "Adding printer…" flow: Right}
+                                        printer_add_cancel := StackSecondaryBtn{text: "Cancel" flow: Right}
                                     }
                                     h_printers_routes := WrapLabel{body: "2. What prints where" font_color: #x260B08 font_size: 16.}
                                     h_printers_routes_help := WrapLabel{
@@ -7303,7 +7647,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_print_brand := WrapLabel{
                                                     width: Fit
@@ -7315,7 +7659,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_stamp := WrapLabel{
                                                     width: Fit
@@ -7336,7 +7680,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     h_payment_qr := WrapLabel{
                                                     width: Fit
@@ -7360,7 +7704,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 FormCard{
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     h_aggregator_import := WrapLabel{
                                                     width: Fit
@@ -7376,7 +7720,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 }
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     h_zero_sales := WrapLabel{
                                                     width: Fit
@@ -7402,7 +7746,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 FormCard{
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     h_schemes := WrapLabel{
                                                     width: Fit
@@ -7471,7 +7815,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     visible: false
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 8
+                                        flow: Right spacing: 0
                                         align: Align{y: 0.5}
                                         h_diag := WrapLabel{
                                                     width: Fit
@@ -7539,7 +7883,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 10
+                                    flow: Right spacing: 0
                                     align: Align{y: 0.5}
                                     sidebar_settings_back := QuietFitBtn{text: "Back"}
                                 }
@@ -7778,10 +8122,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             draw_bg.color: #x69090C
                             draw_bg.border_radius: 12.
                             snack_label_info := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_info := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_info := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
                             }
                         }
                         snack_face_ok := RoundedView{
@@ -7794,10 +8136,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             draw_bg.color: #x2F5D3A
                             draw_bg.border_radius: 12.
                             snack_label_ok := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_ok := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #x1E3D28 color_hover: #x1E3D28 color_down: #x152A1C color_focus: #x1E3D28 color_2: #x1E3D28 color_2_hover: #x1E3D28 color_2_down: #x152A1C color_2_focus: #x1E3D28 border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_ok := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff color: #x1E3D28 color_hover: #x1E3D28 color_down: #x152A1C color_focus: #x1E3D28 color_2: #x1E3D28 color_2_hover: #x1E3D28 color_2_down: #x152A1C color_2_focus: #x1E3D28 border_radius: 10. border_size: 0. }
                             }
                         }
                         snack_face_warn := RoundedView{
@@ -7810,10 +8150,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             draw_bg.color: #xB43A12
                             draw_bg.border_radius: 12.
                             snack_label_warn := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_warn := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #x69090C color_hover: #x69090C color_down: #x260B08 color_focus: #x69090C color_2: #x69090C color_2_hover: #x69090C color_2_down: #x260B08 color_2_focus: #x69090C border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_warn := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff color: #x69090C color_hover: #x69090C color_down: #x260B08 color_focus: #x69090C color_2: #x69090C color_2_hover: #x69090C color_2_down: #x260B08 color_2_focus: #x69090C border_radius: 10. border_size: 0. }
                             }
                         }
                         snack_face_err := RoundedView{
@@ -7826,10 +8164,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             draw_bg.color: #x9A0E10
                             draw_bg.border_radius: 12.
                             snack_label_err := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
-                            snack_dismiss_err := Button{
-                                text: "✕" width: 36 height: 36
-                                draw_bg +: { color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
-                                draw_text +: { color: #xffffff color_hover: #xffffff color_down: #xffffff color_focus: #xffffff text_style +: {font_size: 14.} }
+                            snack_dismiss_err := CloseIconBtn{
+                                draw_bg +: { mark_color: #xffffff color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
                             }
                         }
                     }
@@ -7874,10 +8210,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 text_style +: {font_size: 13.}
                             }
                         }
-                        undo_snack_dismiss := Button{
-                            text: "✕"
-                            width: 36 height: 36
+                        undo_snack_dismiss := CloseIconBtn{
                             draw_bg +: {
+                                mark_color: #xffffff
                                 color: #xB43A12
                                 color_hover: #xB43A12
                                 color_down: #x69090C
@@ -7888,13 +8223,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 color_2_focus: #xB43A12
                                 border_radius: 10.
                                 border_size: 0.
-                            }
-                            draw_text +: {
-                                color: #xffffff
-                                color_hover: #xffffff
-                                color_down: #xffffff
-                                color_focus: #xffffff
-                                text_style +: {font_size: 14.}
                             }
                         }
                     }
@@ -8240,7 +8568,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 draw_bg.border_radius: 18.
                                 View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
+                                    flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
                                     upi_qr_title := WrapLabel{
                                                     width: Fit
@@ -8308,7 +8636,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     draw_text +: {text_style +: {font_size: 15.}}
                                 }
                                 // Categories as one scrollable strip: All, Frequent,
-                                // then the shop's own, in its order.
+                                // Added Item(s), then the shop's own, in its order.
                                 cat_strip := View{
                                     width: Fill height: Fit
                                     flow: Overlay
@@ -8321,6 +8649,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                             View{width: Fit height: 40 flow: Overlay
                                                 cat_frequent := ChipBtn{text: "Frequent"}
                                                 cat_frequent_on := ChipBtnActive{text: "Frequent" visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                cat_added := ChipBtn{text: "Added Item(s)"}
+                                                cat_added_on := ChipBtnActive{text: "Added Item(s)" visible: false}
                                             }
                                             View{width: Fit height: 40 flow: Overlay
                                                 cat_0 := ChipBtn{text: " "}

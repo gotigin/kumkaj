@@ -1227,6 +1227,42 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         Ok(msg)
     }
 
+    /// Kitchen dropdown: drag-reorder rows → update priority (and row order).
+    /// `from`/`to` are indices into the open `suggest_rows` list.
+    fn reorder_kot_station_priority(&mut self, cx: &mut Cx, from: usize, to: usize) {
+        let mut st = app_state().lock().unwrap();
+        if from == to || from >= st.suggest_rows.len() {
+            return;
+        }
+        let row = st.suggest_rows.remove(from);
+        let insert_at = to.min(st.suggest_rows.len());
+        st.suggest_rows.insert(insert_at, row);
+        // Rebuild priority from station rows (skip the Unassigned pseudo-row).
+        let unassigned = st.t("kot_unassigned");
+        let mut priority = Vec::new();
+        for r in &st.suggest_rows {
+            if r.value.eq_ignore_ascii_case(&unassigned) {
+                continue;
+            }
+            if let Some(id) = st
+                .stations
+                .iter()
+                .find(|s| s.name.eq_ignore_ascii_case(&r.value))
+                .map(|s| s.id.clone())
+            {
+                priority.push(id);
+            }
+        }
+        st.kot_station_priority = priority;
+        st.persist_kot_station_prefs();
+        // Keep suggest_rev so the open list does not jump to the top mid-drag.
+        drop(st);
+        self.ui
+            .widget(cx, ids!(kot_station_suggest))
+            .redraw(cx);
+        self.sync_chrome(cx);
+    }
+
     /// Order desk: clear `station_text` from unsent cart dishes that use it
     /// (Don't use in the station list). Held / already-sent lines stay.
     fn clear_kot_station_from_unsent(
@@ -1327,6 +1363,9 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 (s.id, s.name)
             }
         };
+        // Multi-check: only assign dishes that still have no kitchen. Never
+        // overwrite another station (that felt like exclusive radios).
+        let products = st.products.clone();
         let mut n = 0usize;
         for line in st
             .cart
@@ -1334,12 +1373,13 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .iter_mut()
             .filter(|l| !l.is_sent() && !l.hold_send)
         {
-            if line.station_id == station_id {
+            if !line.kitchen_station_id(&products).is_empty() {
                 continue;
             }
             line.station_id = station_id.clone();
             n += 1;
         }
+        st.remember_kot_station(&station_id);
         let msg = st
             .t("kot_station_applied")
             .replace("{n}", &n.to_string())

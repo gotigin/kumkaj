@@ -526,6 +526,9 @@ struct BooksWatch {
     revs: Mutex<std::collections::HashMap<PathBuf, String>>,
     changed: Condvar,
     hook: Mutex<Option<fn()>>,
+    /// A write already rebuilt the revision — the watcher should look again
+    /// without waiting out its poll sleep.
+    nudge: AtomicBool,
 }
 
 fn books_watch() -> &'static BooksWatch {
@@ -534,6 +537,7 @@ fn books_watch() -> &'static BooksWatch {
         revs: Mutex::new(std::collections::HashMap::new()),
         changed: Condvar::new(),
         hook: Mutex::new(None),
+        nudge: AtomicBool::new(false),
     })
 }
 
@@ -559,9 +563,19 @@ fn note_rev(db_path: &Path, rev: &str) {
         }
         revs.insert(db_path.to_path_buf(), rev.to_string());
     }
+    watch.nudge.store(true, Ordering::Release);
     watch.changed.notify_all();
     if let Some(hook) = *watch.hook.lock().unwrap() {
         hook();
+    }
+}
+
+/// Rebuild the snapshot revision now and wake every `/wait`er (and this
+/// device's own screens). Call after any commit that changes what paired
+/// devices see — do not leave them for the watcher's next poll.
+pub fn publish_books(store: &Store) {
+    if let Ok((_, rev)) = snapshot_json(store) {
+        note_rev(store.db_path(), &rev);
     }
 }
 
@@ -575,7 +589,8 @@ fn snapshot_json(store: &Store) -> Result<(String, String), String> {
 }
 
 /// How often the watcher looks for new commits (one cheap read each time).
-const WATCH_EVERY: Duration = Duration::from_millis(300);
+/// Interrupted early when `publish_books` / `note_rev` nudges the Condvar.
+const WATCH_EVERY: Duration = Duration::from_millis(100);
 /// Rebuilt at least this often anyway: the day can roll over with no one
 /// writing.
 const REBUILD_EVERY: Duration = Duration::from_secs(30);
@@ -584,6 +599,8 @@ const REBUILD_EVERY: Duration = Duration::from_secs(30);
 /// `data_version` moves whenever any other connection (the office's own
 /// screen, a device's request) commits; only then is the snapshot rebuilt
 /// and hashed, and waiting devices are woken only if it really changed.
+/// Writes that already called `publish_books` also nudge this loop so a
+/// second look does not wait out the full poll.
 pub(crate) fn watch_books(db_path: &Path, keep_going: &dyn Fn() -> bool) {
     let Ok(store) = Store::open_path(db_path) else {
         return;
@@ -591,15 +608,18 @@ pub(crate) fn watch_books(db_path: &Path, keep_going: &dyn Fn() -> bool) {
     let mut seen = None;
     let mut built = Instant::now();
     while keep_going() {
+        let nudged = books_watch().nudge.swap(false, Ordering::AcqRel);
         let version = store.data_version().ok();
-        if version != seen || built.elapsed() >= REBUILD_EVERY {
+        if nudged || version != seen || built.elapsed() >= REBUILD_EVERY {
             seen = version;
             built = Instant::now();
             if let Ok((_, rev)) = snapshot_json(&store) {
                 note_rev(db_path, &rev);
             }
         }
-        thread::sleep(WATCH_EVERY);
+        let watch = books_watch();
+        let revs = watch.revs.lock().unwrap();
+        let (_guard, _) = watch.changed.wait_timeout(revs, WATCH_EVERY).unwrap();
     }
 }
 
@@ -1107,6 +1127,11 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         store.save_lan_reply(id, &device.id, reply.status, &reply.body)?;
     }
     request.commit().map_err(|e| e.to_string())?;
+    // Wake `/wait`ers now — paired tills must see the new sale / settle
+    // without waiting for the books watcher's next poll.
+    if (200..300).contains(&reply.status) {
+        publish_books(&store);
+    }
     Ok(reply)
 }
 
@@ -1905,6 +1930,11 @@ fn discover_by_scan_cancellable(cancel: &impl Fn() -> bool) -> Vec<FoundServer> 
 
 /// Knock on each address (16 at a time, 300 ms each) and ask the ones that
 /// open for `/hello`. Routers that drop broadcasts still let this through.
+#[cfg(test)]
+fn scan_for_servers(addrs: Vec<SocketAddr>) -> Vec<FoundServer> {
+    scan_for_servers_cancellable(addrs, &|| false)
+}
+
 fn scan_for_servers_cancellable(
     addrs: Vec<SocketAddr>,
     cancel: &impl Fn() -> bool,

@@ -438,6 +438,43 @@ fn claim_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
     }
 }
 
+/// Same chaining as [`claim_list_nested_scroll`], for a `ReorderList` child
+/// (`list` id) — Kitchen station dropdown.
+fn claim_reorder_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
+    let Event::Scroll(e) = event else {
+        return;
+    };
+    let host_ref = host.widget(cx, ids!(list));
+    let rl = host_ref.as_reorder_list();
+    let Some(list) = rl.borrow() else {
+        claim_list_nested_scroll(cx, host, event);
+        return;
+    };
+    let list_area = list.area();
+    let area = if list_area.is_valid(cx) {
+        list_area
+    } else {
+        host.area()
+    };
+    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
+        return;
+    }
+    let dy = e.scroll.y;
+    if dy != 0.0 {
+        let toward_end = dy > 0.0;
+        // ReorderList #[deref] → PortalList.
+        let pl: &PortalList = &*list;
+        let can_move = if toward_end {
+            !pl.is_at_end()
+        } else {
+            pl.first_id() > 0 || pl.first_scroll() > 0.5
+        };
+        if can_move {
+            e.handled_y.set(true);
+        }
+    }
+}
+
 /// Horizontal `ScrollXView` (chip strip / order ticket / app shell): claim X
 /// only while the strip can still move that way; never claim Y.
 fn claim_hstrip_nested_scroll(cx: &mut Cx, strip: &ViewRef, event: &Event) {

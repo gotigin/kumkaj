@@ -1507,25 +1507,36 @@ impl Store {
             "Date: {}\n",
             Local::now().format("%Y-%m-%d %H:%M")
         ));
-        out.push_str("--------------------------------\n");
-        for line in order.live_lines() {
-            let qty = crate::domain::format_qty_display(
+        // Blank line after the rule so the first dish never shares a line
+        // with the header on narrow thermal printers.
+        out.push_str("--------------------------------\n\n");
+        for line in order.bill_print_lines() {
+            // Piece qty from format_qty_display is "x4"; strip the leading
+            // x so the rate line reads "4 x ₹80.00", not "x4 x ₹80.00".
+            let qty_raw = crate::domain::format_qty_display(
                 line.qty_milli,
                 crate::domain::milli_to_whole_qty(line.qty_milli),
                 &line.unit_label,
             );
+            let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
+            let unit = money(line.unit_price_paise);
+            // Name alone, then qty × rate and the line total — not one jammed
+            // line, and not one row per KOT send (see bill_print_lines).
+            out.push_str(&format!("{}\n", line.name));
             if line.complimentary {
                 out.push_str(&format!(
-                    "{qty} {}  NC ({}) {}\n",
-                    line.name,
+                    "{qty} x {unit}  NC ({}) {}\n",
                     money(line.value_paise()),
                     money(0)
                 ));
             } else {
-                out.push_str(&format!("{qty} {}  {}\n", line.name, money(line.billed_paise())));
+                out.push_str(&format!("{qty} x {unit}  {}\n", money(line.billed_paise())));
+            }
+            if !line.note.trim().is_empty() {
+                out.push_str(&format!("  ({})\n", line.note.trim()));
             }
         }
-        out.push_str("--------------------------------\n");
+        out.push_str("\n--------------------------------\n");
         let subtotal = order.total_paise();
         out.push_str(&format!("Sub total: {}\n", money(subtotal)));
         let (draft, scheme_notes) = self.order_bill_draft_schemed(order);
@@ -1925,6 +1936,59 @@ mod tests {
             cart.lines = order.to_cart_lines();
             cart
         }
+    }
+
+    /// Guest bill: name on its own line, then qty × rate; KOT splits of the
+    /// same dish collapse to one row (2 then 3 Thali → one "5 x …").
+    #[test]
+    fn running_bill_aggregates_kot_splits_and_puts_rate_under_the_name() {
+        let shop = shop();
+        shop.kot("D1", &[(&shop.thali, 2)]);
+        shop.kot("D1", &[(&shop.thali, 3), (&shop.chaas, 1)]);
+        let order = shop
+            .store
+            .running_order(&shop.table("D1").id)
+            .unwrap()
+            .unwrap();
+        assert_eq!(
+            order.live_lines().filter(|l| l.name == "Thali").count(),
+            2,
+            "order still keeps per-KOT rows"
+        );
+        assert_eq!(order.bill_print_lines().iter().filter(|l| l.name == "Thali").count(), 1);
+        assert_eq!(
+            order
+                .bill_print_lines()
+                .iter()
+                .find(|l| l.name == "Thali")
+                .unwrap()
+                .qty_milli,
+            5000
+        );
+        let text = shop.store.format_running_bill_text(&order).unwrap();
+        let after_rule = text.split("--------------------------------\n\n").nth(1).unwrap_or("");
+        assert!(
+            after_rule.starts_with("Thali\n"),
+            "first dish must start on its own line after a blank line, got:\n{text}"
+        );
+        assert!(
+            text.contains("Thali\n2 x ₹200.00  ₹400.00")
+                || text.contains("Thali\n5 x ₹200.00  ₹1,000.00"),
+            "name then qty × rate; Thali must be one aggregated row, got:\n{text}"
+        );
+        assert!(
+            text.contains("Thali\n5 x ₹200.00  ₹1,000.00"),
+            "2+3 Thali must print once as 5, got:\n{text}"
+        );
+        assert_eq!(
+            text.matches("Thali\n").count(),
+            1,
+            "Thali must not appear twice:\n{text}"
+        );
+        assert!(
+            text.contains("Chaas\n1 x ₹30.00  ₹30.00"),
+            "expected Chaas under its name, got:\n{text}"
+        );
     }
 
     /// Punch pending on D1, open D2, reopen D1 — pending still there; Send KOT

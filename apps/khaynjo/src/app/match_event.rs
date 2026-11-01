@@ -2504,6 +2504,9 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, ids!(cat_frequent), ids!(cat_frequent_on)) {
                 picked = Some(Some(MENU_FREQUENT.to_string()));
             }
+            if self.choice_chip_clicked(cx, actions, ids!(cat_added), ids!(cat_added_on)) {
+                picked = Some(Some(MENU_ADDED.to_string()));
+            }
             let cats = app_state().lock().unwrap().menu_categories();
             for (i, (idle, on)) in CATEGORY_CHIPS.iter().enumerate() {
                 if self.choice_chip_clicked(cx, actions, idle, on)
@@ -2513,6 +2516,7 @@ impl MatchEvent for App {
                 }
             }
             if let Some(cat) = picked {
+                self.dismiss_soft_keyboard(cx);
                 let fill_frequent = {
                     let mut st = app_state().lock().unwrap();
                     st.menu_category = cat;
@@ -2841,7 +2845,9 @@ impl MatchEvent for App {
                 st.menu_filter = text;
                 st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
             }
-            self.sync_chrome(cx);
+            // Grid + empty label only — full sync_chrome every key made Android
+            // IME and scroll feel broken.
+            self.refresh_menu_pick_search(cx);
         }
         // Customer paid / tip: the change line follows live.
         let tendered_changed = self.ui.text_input(cx, ids!(tendered_input)).changed(actions).is_some();
@@ -2850,18 +2856,20 @@ impl MatchEvent for App {
         if tendered_changed || tip_changed || cash_changed {
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(send_kot_btn)).clicked(actions) {
-            // Station field filled → apply / change kitchen before send.
+        if self.ui.button(cx, ids!(kot_station_dd)).clicked(actions) {
             {
-                let station_text = self.ui.text_input(cx, ids!(kot_station_input)).text();
-                if !station_text.trim().is_empty() {
-                    if let Err(e) = self.apply_kot_station_to_unassigned(cx, &station_text) {
-                        self.set_status(cx, e);
-                        self.sync_chrome(cx);
-                        return;
-                    }
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::KotStation) {
+                    st.suggest_open = None;
+                } else {
+                    st.open_suggest(SuggestField::KotStation, "");
                 }
             }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(send_kot_btn)).clicked(actions) {
+            // Station already applied via checkbox dropdown taps — no type-in
+            // field to re-apply on Send.
             // Only the new lines go; what the kitchen already has stays on
             // the table's running order. A waiter's tablet sends to the
             // Server (it used to write the ticket into its own cache, which
@@ -3391,24 +3399,41 @@ impl MatchEvent for App {
             let mut changed = false;
             let mut picked: Option<(SuggestField, String)> = None;
             for field in SuggestField::ALL {
-                let input = self.ui.text_input(cx, field.input());
-                let uid = input.widget_uid();
-                let focused = actions
-                    .filter_widget_actions_cast::<TextInputAction>(uid)
-                    .any(|a| matches!(a, TextInputAction::KeyFocus));
-                let typed = input.changed(actions);
-                if focused || typed.is_some() {
-                    let text = typed.unwrap_or_else(|| input.text());
-                    app_state().lock().unwrap().open_suggest(field, &text);
-                    changed = true;
-                } else if input.escaped(actions) && open == Some(field) {
-                    app_state().lock().unwrap().suggest_open = None;
-                    changed = true;
+                // Kitchen dropdown opens via kot_station_dd — not a type-in field.
+                if field != SuggestField::KotStation {
+                    let input = self.ui.text_input(cx, field.input());
+                    let uid = input.widget_uid();
+                    let focused = actions
+                        .filter_widget_actions_cast::<TextInputAction>(uid)
+                        .any(|a| matches!(a, TextInputAction::KeyFocus));
+                    let typed = input.changed(actions);
+                    if focused || typed.is_some() {
+                        let text = typed.unwrap_or_else(|| input.text());
+                        app_state().lock().unwrap().open_suggest(field, &text);
+                        changed = true;
+                    } else if input.escaped(actions) && open == Some(field) {
+                        app_state().lock().unwrap().suggest_open = None;
+                        changed = true;
+                    }
                 }
                 if open == Some(field) {
                     let widget = self.ui.widget(cx, field.list());
-                    let list = widget.portal_list(cx, ids!(list));
-                    for (item_id, item) in list.items_with_actions(actions) {
+                    let list_host = widget.widget(cx, ids!(list));
+                    // Kitchen dropdown is a ReorderList (multi-check + drag priority).
+                    let item_actions: Vec<(usize, _)> = if field == SuggestField::KotStation {
+                        if let Some(rl) = list_host.as_reorder_list().borrow() {
+                            if let Some((from, to)) = rl.reordered(actions) {
+                                self.reorder_kot_station_priority(cx, from, to);
+                                changed = true;
+                            }
+                            rl.items_with_actions(actions)
+                        } else {
+                            Vec::new()
+                        }
+                    } else {
+                        widget.portal_list(cx, ids!(list)).items_with_actions(actions)
+                    };
+                    for (item_id, item) in item_actions {
                         if item
                             .view(cx, ids!(row))
                             .finger_up(actions)
@@ -3442,7 +3467,9 @@ impl MatchEvent for App {
                 }
             }
             if let Some((field, value)) = picked {
-                self.ui.text_input(cx, field.input()).set_text(cx, &value);
+                if field != SuggestField::KotStation {
+                    self.ui.text_input(cx, field.input()).set_text(cx, &value);
+                }
                 // A known stock item brings its own unit.
                 if field == SuggestField::BuyItem {
                     let unit = app_state()
@@ -3458,7 +3485,10 @@ impl MatchEvent for App {
                     }
                 }
                 let mut st = app_state().lock().unwrap();
-                st.suggest_open = None;
+                // Kitchen checkbox dropdown stays open so more stations can be toggled.
+                if field != SuggestField::KotStation {
+                    st.suggest_open = None;
+                }
                 // A picked country is shown with what it sets, ready to apply.
                 if field == SuggestField::Country {
                     st.country_browse = value.clone();
@@ -3508,6 +3538,11 @@ impl MatchEvent for App {
                             Ok(msg) => self.set_status(cx, msg),
                             Err(e) => self.set_status(cx, e),
                         }
+                        // Refresh checkbox states while the menu stays open.
+                        app_state()
+                            .lock()
+                            .unwrap()
+                            .open_suggest(SuggestField::KotStation, "");
                     }
                     SuggestField::StationRemove | SuggestField::SettingsStationRemove => {
                         let input = field.input();
@@ -4282,6 +4317,8 @@ impl MatchEvent for App {
         for ((chip, chip_on), role, key) in [
             ((ids!(staff_role_waiter), ids!(staff_role_waiter_on)), StaffRole::Waiter, "role_waiter"),
             ((ids!(staff_role_kitchen), ids!(staff_role_kitchen_on)), StaffRole::Kitchen, "role_kitchen"),
+            ((ids!(staff_role_cashier), ids!(staff_role_cashier_on)), StaffRole::Cashier, "role_cashier"),
+            ((ids!(staff_role_manager), ids!(staff_role_manager_on)), StaffRole::Manager, "role_manager"),
         ] {
             if self.choice_chip_clicked(cx, actions, chip, chip_on) {
                 let label = {
@@ -4290,27 +4327,13 @@ impl MatchEvent for App {
                     st.draft_features = StaffFeatures::for_role(role);
                     st.t(key)
                 };
+                // Role title follows the preset (edit afterward for Captain, etc.).
+                self.ui
+                    .text_input(cx, ids!(staff_title_input))
+                    .set_text(cx, &label);
                 self.set_status(cx, format!("Preset: {label}"));
                 self.sync_chrome(cx);
             }
-        }
-        if self.choice_chip_clicked(cx, actions, ids!(staff_role_cashier), ids!(staff_role_cashier_on)) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.draft_staff_role = StaffRole::Cashier;
-                st.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
-            }
-            self.set_status(cx, "Preset: Cashier");
-            self.sync_chrome(cx);
-        }
-        if self.choice_chip_clicked(cx, actions, ids!(staff_role_manager), ids!(staff_role_manager_on)) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.draft_staff_role = StaffRole::Manager;
-                st.draft_features = StaffFeatures::for_role(StaffRole::Manager);
-            }
-            self.set_status(cx, "Preset: Manager");
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(staff_add_cashier)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(staff_name_input)).text();
@@ -6028,24 +6051,38 @@ impl MatchEvent for App {
             printer_add_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
             self.paint_submit_busy_chrome(cx);
         }
+        // Progress face is not a submit — ignore taps while Adding….
+        let _ = self.ui.button(cx, ids!(printer_add_progress)).clicked(actions);
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
             if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Saving… — ignore re-taps.
-            } else {
+                // Adding… — ignore re-taps.
+            } else if !printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
                 let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
                 let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
+                printer_add_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+                *printer_add_status().lock().unwrap() =
+                    Some(app_state().lock().unwrap().t("saving_printer"));
+                *printer_add_once().lock().unwrap() = None;
+                // Swap to progress+Cancel face before any clone/IO.
+                self.paint_submit_busy_chrome(cx);
                 let job = {
-                    let mut st = app_state().lock().unwrap();
-                    st.printer_draft.add_printer(&label, &target);
+                    let st = app_state().lock().unwrap();
                     st.data_base
                         .as_ref()
-                        .map(|base| (base.clone(), st.printer_draft.clone()))
+                        .map(|base| (base.clone(), st.printer_draft.clone(), label, target))
                 };
-                if let Some((base, draft)) = job {
-                    self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
-                    self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
-                    printer_add_job(base, draft);
-                    self.paint_submit_busy_chrome(cx);
+                match job {
+                    Some((base, draft, label, target)) => {
+                        self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
+                        self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+                        printer_add_job_continue(base, draft, PrinterAddOp::Add { label, target });
+                    }
+                    None => {
+                        *printer_add_status().lock().unwrap() = None;
+                        printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                        self.paint_submit_busy_chrome(cx);
+                        self.set_status(cx, "No store path to save printers");
+                    }
                 }
             }
         }
@@ -6093,21 +6130,36 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
-            {
-                let mut st = app_state().lock().unwrap();
-                let id = st
-                    .printer_selected_id
-                    .clone()
-                    .or_else(|| st.printer_draft.printers.last().map(|p| p.id.clone()));
-                if let Some(id) = id {
-                    st.printer_draft.remove_printer(&id);
-                    st.printer_selected_id = None;
-                }
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+            if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Adding… — ignore Remove until the pool save finishes.
+            } else if !printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+                printer_add_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+                *printer_add_status().lock().unwrap() =
+                    Some(app_state().lock().unwrap().t("saving_printer"));
+                *printer_add_once().lock().unwrap() = None;
+                self.paint_submit_busy_chrome(cx);
+                let job = {
+                    let st = app_state().lock().unwrap();
+                    let id = st
+                        .printer_selected_id
+                        .clone()
+                        .or_else(|| st.printer_draft.printers.last().map(|p| p.id.clone()));
+                    st.data_base
+                        .as_ref()
+                        .map(|base| (base.clone(), st.printer_draft.clone(), id))
+                };
+                match job {
+                    Some((base, draft, id)) => {
+                        printer_add_job_continue(base, draft, PrinterAddOp::Remove { id });
+                    }
+                    None => {
+                        *printer_add_status().lock().unwrap() = None;
+                        printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                        self.paint_submit_busy_chrome(cx);
+                        self.sync_chrome(cx);
+                    }
                 }
             }
-            self.sync_chrome(cx);
         }
         // Tap a found printer → fill the Add form (step 1).
         {

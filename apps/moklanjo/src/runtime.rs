@@ -393,22 +393,57 @@ fn printer_add_once() -> &'static Mutex<Option<Result<(), String>>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+enum PrinterAddOp {
+    Add { label: String, target: String },
+    Remove { id: Option<String> },
+}
+
+fn printer_add_result_draft() -> &'static Mutex<Option<print_share::DevicePrinters>> {
+    static SLOT: OnceLock<Mutex<Option<print_share::DevicePrinters>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
 /// Persist printer pool off the UI thread (file IO can hitch Settings).
-fn printer_add_job(base: PathBuf, draft: print_share::DevicePrinters) {
-    if printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
-        return;
-    }
-    printer_add_cancel_flag().store(false, std::sync::atomic::Ordering::SeqCst);
-    set_books_work_status("Saving printer…");
+/// Caller must already have set [`printer_add_busy`] + status and painted the busy face.
+fn printer_add_job_continue(
+    base: PathBuf,
+    mut draft: print_share::DevicePrinters,
+    op: PrinterAddOp,
+) {
     let _ = std::thread::Builder::new()
         .name("moklanjo-printer-add".into())
         .spawn(move || {
-            let result = if printer_add_cancel_flag().load(std::sync::atomic::Ordering::SeqCst) {
-                Err("Cancelled".into())
-            } else {
-                print_share::save_device_printers(&base, &draft)
-            };
-            *printer_add_once().lock().unwrap() = Some(result);
+            let result = (|| -> Result<print_share::DevicePrinters, String> {
+                if printer_add_cancel_flag().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                match op {
+                    PrinterAddOp::Add { label, target } => {
+                        draft.add_printer(&label, &target);
+                    }
+                    PrinterAddOp::Remove { id } => {
+                        if let Some(id) = id {
+                            draft.remove_printer(&id);
+                        }
+                    }
+                }
+                if printer_add_cancel_flag().load(std::sync::atomic::Ordering::SeqCst) {
+                    return Err("Cancelled".into());
+                }
+                // Never USB/BT I/O here — pool file write only.
+                print_share::save_device_printers(&base, &draft)?;
+                Ok(draft)
+            })();
+            match result {
+                Ok(draft) => {
+                    *printer_add_result_draft().lock().unwrap() = Some(draft);
+                    *printer_add_once().lock().unwrap() = Some(Ok(()));
+                }
+                Err(e) => {
+                    *printer_add_result_draft().lock().unwrap() = None;
+                    *printer_add_once().lock().unwrap() = Some(Err(e));
+                }
+            }
             printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
             clear_books_work_status();
             makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
@@ -646,6 +681,9 @@ struct NavDrag {
     rects: Vec<Rect>,
     active: bool,
     hover: Option<usize>,
+    /// Touch finger that owns this drag (`None` = mouse / desktop).
+    /// Android only sends `TouchUpdate`, so without this the drag never arms.
+    finger: Option<u64>,
 }
 
 fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
@@ -670,6 +708,8 @@ struct SettingsNavDrag {
     rects: Vec<Rect>,
     active: bool,
     hover: Option<usize>,
+    /// Touch finger that owns this drag (`None` = mouse / desktop).
+    finger: Option<u64>,
 }
 
 fn settings_nav_drag() -> &'static Mutex<Option<SettingsNavDrag>> {

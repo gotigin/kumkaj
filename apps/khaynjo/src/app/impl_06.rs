@@ -995,12 +995,50 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         }
         self.ui.text_input(cx, ids!(menu_search_input)).set_text(cx, "");
         self.ui.modal(cx, ids!(menu_modal)).close(cx);
-        cx.set_key_focus(Area::Empty);
+        self.dismiss_soft_keyboard(cx);
         self.sync_chrome(cx);
+    }
+
+    /// After typing in Add dishes search: refresh the grid + empty-state label
+    /// only — never full `sync_chrome` (that redraws the whole app every key
+    /// and makes Android IME / scroll feel broken).
+    fn refresh_menu_pick_search(&mut self, cx: &mut Cx) {
+        let (show_empty, empty_msg) = {
+            let st = app_state().lock().unwrap();
+            let searching = !st.menu_filter.trim().is_empty();
+            let products_empty = st.visible_products().is_empty();
+            let frequent_empty = !searching
+                && st.menu_category.as_deref() == Some(MENU_FREQUENT)
+                && products_empty;
+            let added_empty = !searching
+                && st.menu_category.as_deref() == Some(MENU_ADDED)
+                && products_empty;
+            let no_match = searching && products_empty;
+            let empty_msg = if no_match {
+                st.t("no_dish_match")
+                    .replace("{q}", st.menu_filter.trim())
+            } else if frequent_empty {
+                st.t("frequent_empty")
+            } else if added_empty {
+                st.t("added_items_empty")
+            } else {
+                String::new()
+            };
+            (no_match || frequent_empty || added_empty, empty_msg)
+        };
+        self.ui
+            .label(cx, ids!(menu_no_match))
+            .set_visible(cx, show_empty);
+        if show_empty {
+            self.ui.label(cx, ids!(menu_no_match)).set_text(cx, &empty_msg);
+        }
+        self.ui.widget(cx, ids!(product_list)).redraw(cx);
+        self.repair_focused_carets(cx);
     }
 
     /// A tile in the menu window: one more of that dish on the order.
     fn add_product_to_cart(&mut self, cx: &mut Cx, index: usize) {
+        self.dismiss_soft_keyboard(cx);
         let id = app_state().lock().unwrap().visible_products().get(index).map(|p| p.id.clone());
         if let Some(id) = id {
             self.add_product_by_id(cx, &id);
@@ -1009,6 +1047,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
 
     /// A card's −: one fewer of that dish (only what the kitchen has not got).
     fn remove_product_from_cart(&mut self, cx: &mut Cx, index: usize) {
+        self.dismiss_soft_keyboard(cx);
         let err: Option<String> = {
             let mut st = app_state().lock().unwrap();
             let product = st.visible_products().get(index).cloned();
@@ -1079,7 +1118,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             } else if let Some(product) = st.products.iter().find(|p| p.id == product_id).cloned() {
                 let area = st.current_area();
                 let step = if product.is_weight_unit() { 100 } else { 1000 };
-                if st.selected_table_id.is_some() {
+                let result = if st.selected_table_id.is_some() {
                     match st.cart.check_can_add(&product, product.price_in_area(&area)) {
                         Err(e) => Some(e),
                         Ok(()) => match st.bump_table_pending(
@@ -1128,7 +1167,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                             None
                         }
                     }
+                };
+                // Reuse last Kitchen choice so each new ticket need not reopen it.
+                if result.is_none() {
+                    st.apply_remembered_kot_to_unassigned();
                 }
+                result
             } else {
                 Some("Missing item".into())
             }

@@ -1636,17 +1636,47 @@ impl Store {
             out.push_str(sale.eway_bill_no.trim());
             out.push('\n');
         }
-        out.push_str("--------------------\n");
+        // Blank line after the rule so the first dish is never stuck on it.
+        out.push_str("--------------------\n\n");
+        // One row per dish+rate when the sale stored split qty rows.
+        let mut printed: Vec<SaleLine> = Vec::new();
         for line in &lines {
+            if let Some(existing) = printed.iter_mut().find(|e| {
+                e.product_id == line.product_id
+                    && e.unit_price_paise == line.unit_price_paise
+                    && e.unit_label.trim() == line.unit_label.trim()
+                    && e.note.trim() == line.note.trim()
+            }) {
+                let add_milli = if line.qty_milli > 0 {
+                    line.qty_milli
+                } else {
+                    line.qty.saturating_mul(1000)
+                };
+                existing.qty_milli = if existing.qty_milli > 0 {
+                    existing.qty_milli
+                } else {
+                    existing.qty.saturating_mul(1000)
+                }
+                .saturating_add(add_milli);
+                existing.qty = crate::domain::milli_to_whole_qty(existing.qty_milli);
+                existing.line_total_paise =
+                    existing.line_total_paise.saturating_add(line.line_total_paise);
+            } else {
+                printed.push(line.clone());
+            }
+        }
+        for line in &printed {
             let unit = Money(line.unit_price_paise).format_localized(&currency, &fiscal_settings);
             let total = Money(line.line_total_paise).format_localized(&currency, &fiscal_settings);
-            let qty = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
-            out.push_str(&format!("{} {} @ {} = {}\n", line.name, qty, unit, total));
+            let qty_raw = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
+            let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
+            out.push_str(&format!("{}\n", line.name));
+            out.push_str(&format!("{qty} x {unit}  {total}\n"));
             if !line.note.is_empty() {
                 out.push_str(&format!("  ({})\n", line.note));
             }
         }
-        out.push_str("--------------------\n");
+        out.push_str("\n--------------------\n");
         if sale.rounding_paise != 0 {
             out.push_str(&format!(
                 "Applied {}\nRound {}\n",

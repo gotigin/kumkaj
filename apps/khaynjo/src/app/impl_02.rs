@@ -79,20 +79,34 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .set_visible(cx, finding);
 
         let add_busy = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
-        if add_busy {
-            let text = printer_add_status()
+        let add_status = if add_busy {
+            printer_add_status()
                 .lock()
                 .unwrap()
                 .clone()
-                .unwrap_or_else(|| app_state().lock().unwrap().t("saving_printer"));
-            self.ui.button(cx, ids!(printer_add)).set_text(cx, &text);
-        }
+                .unwrap_or_else(|| app_state().lock().unwrap().t("saving_printer"))
+        } else {
+            String::new()
+        };
+        // Swap whole sibling faces — do not toggle Cancel inside the idle ActionStack.
         self.ui
-            .button(cx, ids!(printer_add_cancel))
-            .set_text(cx, &cancel);
+            .view(cx, ids!(printer_add_idle))
+            .set_visible(cx, !add_busy);
         self.ui
-            .button(cx, ids!(printer_add_cancel))
+            .view(cx, ids!(printer_add_busy_face))
             .set_visible(cx, add_busy);
+        if add_busy {
+            self.ui
+                .button(cx, ids!(printer_add_progress))
+                .set_text(cx, &add_status);
+            self.ui
+                .button(cx, ids!(printer_add_cancel))
+                .set_text(cx, &cancel);
+        } else {
+            self.ui
+                .button(cx, ids!(printer_add))
+                .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
+        }
 
         let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
         if client_busy {
@@ -213,6 +227,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(csv_import_cancel))
             .set_visible(cx, csv);
+        // Face swap / Cancel must paint this frame — otherwise Add stays pressed
+        // and Settings looks frozen until the worker signals.
+        self.ui.redraw(cx);
     }
 
 fn sync_chrome(&mut self, cx: &mut Cx) {
@@ -262,12 +279,18 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
             || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
             || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
+            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || print_share::is_finding_printers();
         if heavy_job {
             self.paint_import_progress_chrome(cx);
             let screen = app_state().lock().unwrap().screen;
             self.show_screen(cx, screen);
-            if screen == Screen::Settings {
+            // Printer add/find: never rebuild Settings lists mid-job (looks like a freeze).
+            if screen == Screen::Settings
+                && !printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+                && !print_share::is_finding_printers()
+            {
                 self.sync_settings_panels(cx);
             }
             self.lift_footer_above_system_bar(cx);
@@ -1094,14 +1117,19 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             };
             self.ui.label(cx, ids!(menu_modal_summary)).set_text(cx, &summary);
             self.ui.button(cx, ids!(menu_pick_done)).set_text(cx, &st.t("pick_done"));
+            let products_empty = st.visible_products().is_empty();
             let frequent_empty = st.menu_pick_open
                 && !searching
                 && cat_sel.as_deref() == Some(MENU_FREQUENT)
-                && st.visible_products().is_empty();
-            let no_match = st.menu_pick_open && searching && st.visible_products().is_empty();
+                && products_empty;
+            let added_empty = st.menu_pick_open
+                && !searching
+                && cat_sel.as_deref() == Some(MENU_ADDED)
+                && products_empty;
+            let no_match = st.menu_pick_open && searching && products_empty;
             self.ui
                 .label(cx, ids!(menu_no_match))
-                .set_visible(cx, no_match || frequent_empty);
+                .set_visible(cx, no_match || frequent_empty || added_empty);
             if no_match {
                 self.ui
                     .label(cx, ids!(menu_no_match))
@@ -1110,19 +1138,28 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .label(cx, ids!(menu_no_match))
                     .set_text(cx, &st.t("frequent_empty"));
+            } else if added_empty {
+                self.ui
+                    .label(cx, ids!(menu_no_match))
+                    .set_text(cx, &st.t("added_items_empty"));
             }
             self.ui.button(cx, ids!(menu_open_btn)).set_text(cx, &format!("+  {}", st.t("add_dishes")));
             if st.menu_pick_open {
                 self.ui.widget(cx, ids!(product_list)).redraw(cx);
             }
             let frequent_label = st.t("frequent");
+            let added_label = st.t("added_items");
             let frequent_on = cat_sel.as_deref() == Some(MENU_FREQUENT);
+            let added_on = cat_sel.as_deref() == Some(MENU_ADDED);
             self.ui.button(cx, ids!(cat_all)).set_text(cx, &all_label);
             self.ui.button(cx, ids!(cat_all_on)).set_text(cx, &all_label);
             self.paint_choice_pair(cx, ids!(cat_all), ids!(cat_all_on), cat_sel.is_none());
             self.ui.button(cx, ids!(cat_frequent)).set_text(cx, &frequent_label);
             self.ui.button(cx, ids!(cat_frequent_on)).set_text(cx, &frequent_label);
             self.paint_choice_pair(cx, ids!(cat_frequent), ids!(cat_frequent_on), frequent_on);
+            self.ui.button(cx, ids!(cat_added)).set_text(cx, &added_label);
+            self.ui.button(cx, ids!(cat_added_on)).set_text(cx, &added_label);
+            self.paint_choice_pair(cx, ids!(cat_added), ids!(cat_added_on), added_on);
             self.ui.view(cx, ids!(frequent_config)).set_visible(cx, frequent_on);
             if frequent_on {
                 self.ui
@@ -1401,11 +1438,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         {
             let st = app_state().lock().unwrap();
             let unassigned = st.t("kot_unassigned");
-            let dests = pending_kot_destinations(
+            let dests = pending_kot_destinations_ordered(
                 &st.products,
                 &st.stations,
                 &st.cart.lines,
                 &unassigned,
+                &st.kot_station_priority,
             );
             let has_unsent = st
                 .cart
@@ -1475,8 +1513,32 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(kot_station_wrap))
                 .set_visible(cx, ticket_open);
-            // Station applies on suggest tap (and again on Send). No second
-            // "Use this station" button — that was a dead confirm after pick.
+            // Dropdown label: Kitchen, or Kitchen · Tandoor, Fryer when set.
+            {
+                let st = app_state().lock().unwrap();
+                let mut names: Vec<String> = Vec::new();
+                for line in st.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
+                    let sid = line.kitchen_station_id(&st.products);
+                    if sid.is_empty() {
+                        continue;
+                    }
+                    if let Some(name) = st.stations.iter().find(|s| s.id == sid).map(|s| s.name.clone())
+                    {
+                        if !names.iter().any(|n| n == &name) {
+                            names.push(name);
+                        }
+                    }
+                }
+                let label = if names.is_empty() {
+                    st.t("kot_station_dd")
+                } else {
+                    st.t("kot_station_dd_n")
+                        .replace("{stations}", &names.join(", "))
+                };
+                drop(st);
+                self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &label);
+            }
+            // Station applies on checkbox tap. No second "Use this station" button.
             self.ui
                 .button(cx, ids!(kot_set_station))
                 .set_visible(cx, false);

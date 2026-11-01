@@ -1,13 +1,17 @@
 impl App {
-fn navigate_back(&mut self, cx: &mut Cx) -> bool {
+fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
+        cx.set_key_focus(Area::Empty);
+        cx.hide_text_ime();
+        if let Ok(mut flag) = ime_suppress_refocus().lock() {
+            *flag = true;
+        }
+    }
+
+    fn navigate_back(&mut self, cx: &mut Cx) -> bool {
         // Do NOT treat generic key focus (buttons after tap) as a back step —
         // that forced a useless double swipe on Android.
         if self.text_field_has_focus(cx) {
-            cx.set_key_focus(Area::Empty);
-            cx.hide_text_ime();
-            if let Ok(mut flag) = ime_suppress_refocus().lock() {
-                *flag = true;
-            }
+            self.dismiss_soft_keyboard(cx);
             return true;
         }
         // In-screen layers before screen history (native / mouse / Android back).
@@ -865,24 +869,26 @@ fn navigate_back(&mut self, cx: &mut Cx) -> bool {
     /// bar. Press on a row, move past the threshold → floating chip with
     /// icon+name; drop on another row to swap. Tap (no move) still
     /// toggles show/hide via the face button.
-    fn pointer_sidebar_settings_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        match event {
-            Event::MouseDown(e) if e.button.is_primary() => {
+    /// Settings → Sidebar: drag a row's face to reorder (ghost chip), same
+    /// contract as the rail/bottom bar. Touch and mouse share one path —
+    /// Android only gets `TouchUpdate`.
+
+    fn sidebar_settings_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
                 *settings_nav_drag().lock().unwrap() = None;
                 if app_state().lock().unwrap().screen != Screen::SidebarSettings {
-                    return false;
+                    return;
                 }
                 // Press on the in-row toggle is a flip, not a reorder.
-                if self.sidebar_settings_press_on_toggle(cx, e.abs) {
-                    return false;
+                if self.sidebar_settings_press_on_toggle(cx, abs) {
+                    return;
                 }
-                if let Some(slot) = self.sidebar_settings_slot_at(cx, e.abs) {
+                if let Some(slot) = self.sidebar_settings_slot_at(cx, abs) {
                     *nav_drag().lock().unwrap() = None;
                     self.hide_nav_ghost(cx);
                     let origin = self
                         .sidebar_settings_row_rect(cx, slot)
                         .map(|rect| rect.pos)
-                        .unwrap_or(e.abs);
+                        .unwrap_or(abs);
                     let scroll = self
                         .ui
                         .view(cx, ids!(sidebar_settings_screen))
@@ -904,32 +910,38 @@ fn navigate_back(&mut self, cx: &mut Cx) -> bool {
                     }
                     *settings_nav_drag().lock().unwrap() = Some(SettingsNavDrag {
                         slot,
-                        start: e.abs,
-                        last: e.abs,
+                        start: abs,
+                        last: abs,
                         origin,
                         rects,
                         active: false,
                         hover: Some(slot),
+                        finger,
                     });
                 }
-                false
-            }
-            Event::MouseMove(e) => {
+                // armed; tap still goes to the button
+                
+    }
+
+    fn sidebar_settings_drag_move(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
                 let mut active = false;
                 let mut ghost: Option<(bool, NavTab, DVec2)> = None;
                 let mut suppress_list = false;
                 {
                     let mut guard = settings_nav_drag().lock().unwrap();
                     if let Some(d) = guard.as_mut() {
+                        if d.finger != finger {
+                            return false;
+                        }
                         let was_active = d.active;
-                        if !d.active && (e.abs - d.start).length() > 10.0 {
+                        if !d.active && (abs - d.start).length() > 10.0 {
                             d.active = true;
                             suppress_list = true;
                         }
                         if d.active {
                             active = true;
-                            d.last = e.abs;
-                            d.hover = self.sidebar_settings_drop_slot(cx, d, e.abs);
+                            d.last = abs;
+                            d.hover = self.sidebar_settings_drop_slot(cx, d, abs);
                             let tab = {
                                 app_state()
                                     .lock()
@@ -939,7 +951,7 @@ fn navigate_back(&mut self, cx: &mut Cx) -> bool {
                                     .copied()
                             };
                             if let Some(tab) = tab {
-                                ghost = Some((!was_active, tab, d.origin + (e.abs - d.start)));
+                                ghost = Some((!was_active, tab, d.origin + (abs - d.start)));
                             }
                         }
                     }
@@ -960,10 +972,17 @@ fn navigate_back(&mut self, cx: &mut Cx) -> bool {
                         self.place_nav_ghost(cx, pos);
                     }
                 }
-                active
-            }
-            Event::MouseUp(e) if e.button.is_primary() => {
-                let taken = { settings_nav_drag().lock().unwrap().take() };
+                return active;
+    }
+
+    fn sidebar_settings_drag_release(&mut self, cx: &mut Cx, _abs: DVec2, finger: Option<u64>) -> bool {
+                let taken = {
+                    let mut guard = settings_nav_drag().lock().unwrap();
+                    match guard.as_ref() {
+                        Some(d) if d.finger == finger => guard.take(),
+                        _ => None,
+                    }
+                };
                 if let Some(d) = taken {
                     self.hide_nav_ghost(cx);
                     if d.active {
@@ -993,10 +1012,286 @@ fn navigate_back(&mut self, cx: &mut Cx) -> bool {
                     }
                 }
                 false
-            }
-            _ => false,
-        }
     }
+
+
+    fn nav_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
+                *nav_drag().lock().unwrap() = None;
+                // Do not clear settings_nav_drag here — that peek runs
+                // first and may have just armed a press on the list.
+                // A fresh press starts a fresh gesture — never let a
+                // leftover scroll-suppression eat this tap.
+                *nav_suppress_click().lock().unwrap() = false;
+                // Only hide the ghost when this press is not already a
+                // settings-list arm (otherwise we'd flash the chip away).
+                if settings_nav_drag().lock().unwrap().is_none() {
+                    self.hide_nav_ghost(cx);
+                }
+                let unlocked = {
+                    let st = app_state().lock().unwrap();
+                    !matches!(
+                        st.screen,
+                        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+                    )
+                };
+                if !unlocked {
+                    return;
+                }
+                // Only the visible surface can be dragged (mirrors
+                // apply_shell_layout's rail-vs-bottom choice).
+                let shell_wide =
+                    self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
+                let rail_collapsed = app_state().lock().unwrap().rail_collapsed;
+                if shell_wide && rail_collapsed {
+                    return;
+                }
+                let rail = shell_wide;
+                // The rail divider owns its own drag (resize) — stay out of it.
+                if rail {
+                    let rail_w = app_state().lock().unwrap().rail_width;
+                    if abs.x >= rail_w - 2.0 && abs.x <= rail_w + 14.0 {
+                        return;
+                    }
+                }
+                if let Some(slot) = self.nav_slot_at(cx, rail, abs, 0.0, 0.0) {
+                    *settings_nav_drag().lock().unwrap() = None;
+                    self.hide_nav_ghost(cx);
+                    let origin = self
+                        .nav_slot_rect(cx, rail, slot)
+                        .map(|rect| rect.pos)
+                        .unwrap_or(abs);
+                    // Freeze every slot's rect in content coordinates
+                    // (drawn rect + scroll right now, while settled);
+                    // drag-time hit tests use these, not live areas.
+                    let scroll = if rail {
+                        self.ui.view(cx, ids!(rail_scroll)).get_scroll_pos()
+                    } else {
+                        self.ui.view(cx, ids!(bottom_nav_scroll)).get_scroll_pos()
+                    };
+                    let pairs = if rail {
+                        self.rail_nav_pairs()
+                    } else {
+                        self.bottom_nav_pairs()
+                    };
+                    let mut rects = Vec::with_capacity(pairs.len());
+                    for (idle, on) in &pairs {
+                        let mut found = Rect::default();
+                        for face in [idle, on] {
+                            let rect = self.ui.button(cx, face).area().rect(cx);
+                            if rect.size.x > 0.0 && rect.size.y > 0.0 {
+                                found = Rect {
+                                    pos: DVec2 {
+                                        x: rect.pos.x + scroll.x,
+                                        y: rect.pos.y + scroll.y,
+                                    },
+                                    size: rect.size,
+                                };
+                                break;
+                            }
+                        }
+                        rects.push(found);
+                    }
+                    *nav_drag().lock().unwrap() = Some(NavDrag {
+                        rail,
+                        slot,
+                        start: abs,
+                        last: abs,
+                        origin,
+                        rects,
+                        active: false,
+                        hover: Some(slot),
+                        finger,
+                    });
+                }
+                // armed; tap still goes to the button
+                
+    }
+
+    fn nav_drag_move(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
+                let mut repaint = false;
+                let mut active = false;
+                let mut ghost: Option<(bool, NavTab, DVec2)> = None;
+                {
+                    let mut guard = nav_drag().lock().unwrap();
+                    if let Some(d) = guard.as_mut() {
+                        if d.finger != finger {
+                            return false;
+                        }
+                        let was_active = d.active;
+                        if !d.active && (abs - d.start).length() > 10.0 {
+                            d.active = true;
+                        }
+                        if d.active {
+                            active = true;
+                            d.last = abs;
+                            if !was_active {
+                                // Start the per-frame edge auto-scroll
+                                // loop for this drag.
+                                *nav_autoscroll_frame().lock().unwrap() = Some(cx.new_next_frame());
+                            }
+                            let hover = self.nav_drop_slot(cx, d, abs);
+                            if hover != d.hover {
+                                d.hover = hover;
+                                repaint = true;
+                            }
+                            // Same order the bar paints (rights-filtered), not
+                            // the full preference list — else the ghost label
+                            // is the wrong peer on a restricted / Android till.
+                            let tab = current_nav_chrome_order().get(d.slot).copied();
+                            if let Some(tab) = tab {
+                                ghost = Some((!was_active, tab, d.origin + (abs - d.start)));
+                            }
+                        }
+                    }
+                }
+                if active {
+                    // Drag icon for the whole drag — the button's Hand
+                    // hover cursor would otherwise stay on screen.
+                    cx.set_cursor(MouseCursor::Grabbing);
+                }
+                if let Some((first, tab, pos)) = ghost {
+                    if first {
+                        self.show_nav_ghost(cx, tab, pos);
+                    } else {
+                        self.place_nav_ghost(cx, pos);
+                    }
+                }
+                if repaint {
+                    self.repaint_nav_tabs(cx);
+                }
+                return active;
+    }
+
+    fn nav_drag_release(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
+                // Take in its own scope: an `if let` scrutinee guard would
+                // stay locked across the block and deadlock the repaint
+                // below (paint_nav_tabs reads the same mutex).
+                let taken = {
+                    let mut guard = nav_drag().lock().unwrap();
+                    match guard.as_ref() {
+                        Some(d) if d.finger == finger => guard.take(),
+                        _ => None,
+                    }
+                };
+                if let Some(mut d) = taken {
+                    self.hide_nav_ghost(cx);
+                    if d.active {
+                        // Touch often ends with Stop and no Move on the drop
+                        // slot — recompute the target from the lift point.
+                        let drop_at = if abs.x != 0.0 || abs.y != 0.0 {
+                            abs
+                        } else {
+                            d.last
+                        };
+                        d.hover = self.nav_drop_slot(cx, &d, drop_at);
+                        // Drag over: back to the nav button's pointer when
+                        // still over a slot, plain arrow anywhere else.
+                        cx.set_cursor(if d.hover.is_some() {
+                            MouseCursor::Hand
+                        } else {
+                            MouseCursor::Default
+                        });
+                        // Slots are chrome indices (what the bar shows), not
+                        // raw preference-order indices — using display order
+                        // here swapped the wrong peers and looked like a
+                        // no-op on Android tills.
+                        let chrome = current_nav_chrome_order();
+                        let swapped = match d.hover {
+                            Some(target) if target != d.slot => {
+                                let Some(ta) = chrome.get(d.slot).copied() else {
+                                    *nav_suppress_click().lock().unwrap() = false;
+                                    self.sync_chrome(cx);
+                                    return true;
+                                };
+                                let Some(tb) = chrome.get(target).copied() else {
+                                    *nav_suppress_click().lock().unwrap() = false;
+                                    self.sync_chrome(cx);
+                                    return true;
+                                };
+                                let mut st = app_state().lock().unwrap();
+                                let Some(ia) = st.nav_order.iter().position(|t| *t == ta) else {
+                                    drop(st);
+                                    *nav_suppress_click().lock().unwrap() = false;
+                                    self.sync_chrome(cx);
+                                    return true;
+                                };
+                                let Some(ib) = st.nav_order.iter().position(|t| *t == tb) else {
+                                    drop(st);
+                                    *nav_suppress_click().lock().unwrap() = false;
+                                    self.sync_chrome(cx);
+                                    return true;
+                                };
+                                st.nav_order.swap(ia, ib);
+                                if let Some(store) = st.store.as_ref() {
+                                    let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
+                                }
+                                true
+                            }
+                            _ => false,
+                        };
+                        if swapped {
+                            self.set_status(cx, "Menu order saved");
+                        }
+                        // The release is consumed, so no Button click is
+                        // generated — nothing to suppress afterwards.
+                        *nav_suppress_click().lock().unwrap() = false;
+                        self.sync_chrome(cx);
+                        return true;
+                    }
+                }
+                false
+    }
+
+    fn pointer_sidebar_settings_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        enum Phase {
+            Press(DVec2, Option<u64>),
+            Move(DVec2, Option<u64>),
+            Release(DVec2, Option<u64>),
+        }
+        let phases: Vec<Phase> = match event {
+            Event::MouseDown(e) if e.button.is_primary() => {
+                vec![Phase::Press(e.abs, None)]
+            }
+            Event::MouseMove(e) => vec![Phase::Move(e.abs, None)],
+            Event::MouseUp(e) if e.button.is_primary() => {
+                vec![Phase::Release(e.abs, None)]
+            }
+            Event::TouchUpdate(e) => {
+                let mut out = Vec::new();
+                for t in &e.touches {
+                    match t.state {
+                        TouchState::Start => out.push(Phase::Press(t.abs, Some(t.uid))),
+                        TouchState::Move | TouchState::Stable => {
+                            out.push(Phase::Move(t.abs, Some(t.uid)))
+                        }
+                        TouchState::Stop => out.push(Phase::Release(t.abs, Some(t.uid))),
+                    }
+                }
+                out
+            }
+            _ => return false,
+        };
+        let mut consumed = false;
+        for phase in phases {
+            match phase {
+                Phase::Press(abs, finger) => {
+                    self.sidebar_settings_drag_press(cx, abs, finger);
+                }
+                Phase::Move(abs, finger) => {
+                    if self.sidebar_settings_drag_move(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+                Phase::Release(abs, finger) => {
+                    if self.sidebar_settings_drag_release(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+            }
+        }
+        consumed
+    }
+
 
     fn sidebar_settings_row_rect(&mut self, cx: &mut Cx, index: usize) -> Option<Rect> {
         let list = self
@@ -1095,204 +1390,57 @@ fn navigate_back(&mut self, cx: &mut Cx) -> bool {
     /// gesture so the scroll view cannot scroll the drop target away
     /// mid-drag. The new arrangement is saved into the books, so it
     /// survives reinstall.
+    /// Works for mouse (desktop) and touch (Android): phones only get
+    /// `TouchUpdate`, so the same press/move/release path runs for both.
     /// Returns true when the event was consumed by the drag.
     fn pointer_nav_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        match event {
-            Event::MouseDown(e) if e.button.is_primary() => {
-                *nav_drag().lock().unwrap() = None;
-                // Do not clear settings_nav_drag here — that peek runs
-                // first and may have just armed a press on the list.
-                // A fresh press starts a fresh gesture — never let a
-                // leftover scroll-suppression eat this tap.
-                *nav_suppress_click().lock().unwrap() = false;
-                // Only hide the ghost when this press is not already a
-                // settings-list arm (otherwise we'd flash the chip away).
-                if settings_nav_drag().lock().unwrap().is_none() {
-                    self.hide_nav_ghost(cx);
-                }
-                let unlocked = {
-                    let st = app_state().lock().unwrap();
-                    !matches!(
-                        st.screen,
-                        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
-                    )
-                };
-                if !unlocked {
-                    return false;
-                }
-                // Only the visible surface can be dragged (mirrors
-                // apply_shell_layout's rail-vs-bottom choice).
-                let shell_wide =
-                    self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
-                let rail_collapsed = app_state().lock().unwrap().rail_collapsed;
-                if shell_wide && rail_collapsed {
-                    return false;
-                }
-                let rail = shell_wide;
-                // The rail divider owns its own drag (resize) — stay out of it.
-                if rail {
-                    let rail_w = app_state().lock().unwrap().rail_width;
-                    if e.abs.x >= rail_w - 2.0 && e.abs.x <= rail_w + 14.0 {
-                        return false;
-                    }
-                }
-                if let Some(slot) = self.nav_slot_at(cx, rail, e.abs, 0.0, 0.0) {
-                    *settings_nav_drag().lock().unwrap() = None;
-                    self.hide_nav_ghost(cx);
-                    let origin = self
-                        .nav_slot_rect(cx, rail, slot)
-                        .map(|rect| rect.pos)
-                        .unwrap_or(e.abs);
-                    // Freeze every slot's rect in content coordinates
-                    // (drawn rect + scroll right now, while settled);
-                    // drag-time hit tests use these, not live areas.
-                    let scroll = if rail {
-                        self.ui.view(cx, ids!(rail_scroll)).get_scroll_pos()
-                    } else {
-                        self.ui.view(cx, ids!(bottom_nav_scroll)).get_scroll_pos()
-                    };
-                    let pairs = if rail {
-                        self.rail_nav_pairs()
-                    } else {
-                        self.bottom_nav_pairs()
-                    };
-                    let mut rects = Vec::with_capacity(pairs.len());
-                    for (idle, on) in &pairs {
-                        let mut found = Rect::default();
-                        for face in [idle, on] {
-                            let rect = self.ui.button(cx, face).area().rect(cx);
-                            if rect.size.x > 0.0 && rect.size.y > 0.0 {
-                                found = Rect {
-                                    pos: DVec2 {
-                                        x: rect.pos.x + scroll.x,
-                                        y: rect.pos.y + scroll.y,
-                                    },
-                                    size: rect.size,
-                                };
-                                break;
-                            }
-                        }
-                        rects.push(found);
-                    }
-                    *nav_drag().lock().unwrap() = Some(NavDrag {
-                        rail,
-                        slot,
-                        start: e.abs,
-                        last: e.abs,
-                        origin,
-                        rects,
-                        active: false,
-                        hover: Some(slot),
-                    });
-                }
-                false
-            }
-            Event::MouseMove(e) => {
-                let mut repaint = false;
-                let mut active = false;
-                let mut ghost: Option<(bool, NavTab, DVec2)> = None;
-                {
-                    let mut guard = nav_drag().lock().unwrap();
-                    if let Some(d) = guard.as_mut() {
-                        let was_active = d.active;
-                        if !d.active && (e.abs - d.start).length() > 10.0 {
-                            d.active = true;
-                        }
-                        if d.active {
-                            active = true;
-                            d.last = e.abs;
-                            if !was_active {
-                                // Start the per-frame edge auto-scroll
-                                // loop for this drag.
-                                *nav_autoscroll_frame().lock().unwrap() = Some(cx.new_next_frame());
-                            }
-                            let hover = self.nav_drop_slot(cx, d, e.abs);
-                            if hover != d.hover {
-                                d.hover = hover;
-                                repaint = true;
-                            }
-                            let tab = {
-                                let st = app_state().lock().unwrap();
-                                nav_display_order(&st.nav_order, &st.nav_hidden)
-                                    .get(d.slot)
-                                    .copied()
-                            };
-                            if let Some(tab) = tab {
-                                ghost = Some((!was_active, tab, d.origin + (e.abs - d.start)));
-                            }
-                        }
-                    }
-                }
-                if active {
-                    // Drag icon for the whole drag — the button's Hand
-                    // hover cursor would otherwise stay on screen.
-                    cx.set_cursor(MouseCursor::Grabbing);
-                }
-                if let Some((first, tab, pos)) = ghost {
-                    if first {
-                        self.show_nav_ghost(cx, tab, pos);
-                    } else {
-                        self.place_nav_ghost(cx, pos);
-                    }
-                }
-                if repaint {
-                    self.repaint_nav_tabs(cx);
-                }
-                active
-            }
-            Event::MouseUp(e) if e.button.is_primary() => {
-                // Take in its own scope: an `if let` scrutinee guard would
-                // stay locked across the block and deadlock the repaint
-                // below (paint_nav_tabs reads the same mutex).
-                let taken = { nav_drag().lock().unwrap().take() };
-                if let Some(d) = taken {
-                    self.hide_nav_ghost(cx);
-                    if d.active {
-                        // Drag over: back to the nav button's pointer when
-                        // still over a slot, plain arrow anywhere else.
-                        cx.set_cursor(if d.hover.is_some() {
-                            MouseCursor::Hand
-                        } else {
-                            MouseCursor::Default
-                        });
-                        let swapped = match d.hover {
-                            Some(target) if target != d.slot => {
-                                let mut st = app_state().lock().unwrap();
-                                let disp = nav_display_order(&st.nav_order, &st.nav_hidden);
-                                let Some(ta) = disp.get(d.slot).copied() else {
-                                    return true;
-                                };
-                                let Some(tb) = disp.get(target).copied() else {
-                                    return true;
-                                };
-                                let Some(ia) = st.nav_order.iter().position(|t| *t == ta) else {
-                                    return true;
-                                };
-                                let Some(ib) = st.nav_order.iter().position(|t| *t == tb) else {
-                                    return true;
-                                };
-                                st.nav_order.swap(ia, ib);
-                                if let Some(store) = st.store.as_ref() {
-                                    let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                                }
-                                true
-                            }
-                            _ => false,
-                        };
-                        if swapped {
-                            self.set_status(cx, "Menu order saved");
-                        }
-                        // The release is consumed, so no Button click is
-                        // generated — nothing to suppress afterwards.
-                        *nav_suppress_click().lock().unwrap() = false;
-                        self.sync_chrome(cx);
-                        return true;
-                    }
-                }
-                false
-            }
-            _ => false,
+        enum Phase {
+            Press(DVec2, Option<u64>),
+            Move(DVec2, Option<u64>),
+            Release(DVec2, Option<u64>),
         }
+        let phases: Vec<Phase> = match event {
+            Event::MouseDown(e) if e.button.is_primary() => {
+                vec![Phase::Press(e.abs, None)]
+            }
+            Event::MouseMove(e) => vec![Phase::Move(e.abs, None)],
+            Event::MouseUp(e) if e.button.is_primary() => {
+                vec![Phase::Release(e.abs, None)]
+            }
+            Event::TouchUpdate(e) => {
+                let mut out = Vec::new();
+                for t in &e.touches {
+                    match t.state {
+                        TouchState::Start => out.push(Phase::Press(t.abs, Some(t.uid))),
+                        TouchState::Move | TouchState::Stable => {
+                            out.push(Phase::Move(t.abs, Some(t.uid)))
+                        }
+                        TouchState::Stop => out.push(Phase::Release(t.abs, Some(t.uid))),
+                    }
+                }
+                out
+            }
+            _ => return false,
+        };
+        let mut consumed = false;
+        for phase in phases {
+            match phase {
+                Phase::Press(abs, finger) => {
+                    self.nav_drag_press(cx, abs, finger);
+                }
+                Phase::Move(abs, finger) => {
+                    if self.nav_drag_move(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+                Phase::Release(abs, finger) => {
+                    if self.nav_drag_release(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+            }
+        }
+        consumed
     }
 
     /// Edge auto-scroll, one call per frame while a nav drag is live:

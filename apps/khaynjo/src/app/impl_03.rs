@@ -29,6 +29,13 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(menu_aliases_input),
             ids!(menu_price_input),
             ids!(menu_unit_input),
+            ids!(menu_search_input),
+            ids!(menu_list_search),
+            ids!(tendered_input),
+            ids!(tip_input),
+            ids!(kot_station_input),
+            ids!(frequent_days_input),
+            ids!(frequent_limit_input),
             ids!(amend_total_input),
             ids!(reason_input),
             ids!(approval_pin_input),
@@ -1452,6 +1459,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(menu_category_input)).set_empty_text(cx, s("category_search_ph"));
         self.ui.text_input(cx, ids!(menu_station_input)).set_empty_text(cx, s("station_new_ph"));
         self.ui.text_input(cx, ids!(kot_station_input)).set_empty_text(cx, s("kot_station_ph"));
+        self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &s("kot_station_dd"));
         self.ui.button(cx, ids!(kot_set_station)).set_text(cx, &s("kot_set_station"));
         self.ui.text_input(cx, ids!(menu_modifiers_input)).set_empty_text(cx, s("options_khaynjo_ph"));
         self.ui.text_input(cx, ids!(buy_qty_input)).set_empty_text(cx, s("qty_example_ph"));

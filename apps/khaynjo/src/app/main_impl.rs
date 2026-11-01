@@ -72,17 +72,25 @@ impl AppMain for App {
                 self.paint_submit_busy_chrome(cx);
             }
             if let Some(result) = printer_add_once().lock().unwrap().take() {
+                if let Some(draft) = printer_add_result_draft().lock().unwrap().take() {
+                    let mut st = app_state().lock().unwrap();
+                    st.printer_draft = draft;
+                    st.printer_selected_id = None;
+                }
                 match result {
                     Ok(()) => {
                         self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+                        self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
                         self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
                     Err(e) => {
                         self.set_status(cx, e);
+                        self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
                 }
