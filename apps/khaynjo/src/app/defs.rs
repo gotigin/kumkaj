@@ -7,10 +7,11 @@ static ORIG_TEXT_ALIGN: std::sync::LazyLock<
 
 /// Sideways-scrolling tab strips: (wrapper holding the ‹ › chevrons, the
 /// scroll view itself).
-const TAB_STRIPS: [(&[LiveId], &[LiveId]); 4] = [
+const TAB_STRIPS: [(&[LiveId], &[LiveId]); 5] = [
     (ids!(feat_tabs), ids!(feat_tabs.tabs)),
     (ids!(lock_role_tabs), ids!(lock_role_tabs.tabs)),
     (ids!(cat_strip), ids!(cat_strip.tabs)),
+    (ids!(floor_area_strip), ids!(floor_area_strip.tabs)),
     (ids!(bottom_nav_tabs), ids!(bottom_nav_scroll)),
 ];
 

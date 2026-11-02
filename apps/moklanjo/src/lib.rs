@@ -17,6 +17,7 @@ pub mod domain;
 pub mod entity_template;
 pub mod fiscal;
 pub mod labels;
+pub mod lan_images;
 pub mod locale;
 pub mod local_servers;
 pub mod manifest;

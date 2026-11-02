@@ -51,6 +51,9 @@ impl AppState {
             ops_panel_text: String::new(),
             floor_ops_text: String::new(),
             floor_waiter_filter: String::new(),
+            floor_columns: 0,
+            floor_area_tab: String::new(),
+            floor_area_order: Vec::new(),
             floor_view_layout: false,
             floor_layout_sel: None,
             branches_text: String::new(),
@@ -206,6 +209,8 @@ impl AppState {
 
     fn reload_all(&mut self) -> Result<(), String> {
         let store = self.store.as_ref().ok_or("No store")?;
+        // Columns belong to the selected area tab (legacy global is fallback).
+        self.floor_columns = store.floor_columns_for_area(&self.floor_area_tab);
         if self.device_role.is_host() {
             self.lan_devices = store.list_lan_devices().unwrap_or_default();
             // A split bill's companion table goes once its bill is paid.
@@ -250,6 +255,7 @@ impl AppState {
         self.venue_icon_key = store.venue_icon_key()?;
         self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
         self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
+        self.floor_area_order = parse_floor_area_order(store.floor_area_order_csv()?.as_deref());
         self.kot_station_priority = store
             .kot_station_priority_csv()?
             .unwrap_or_default()
@@ -963,6 +969,20 @@ impl AppState {
                 .iter()
                 .map(|c| SuggestRow::new(c.name.clone(), ""))
                 .collect(),
+            SuggestField::FloorColumns => {
+                // Numbers only (1, 2, 3 …) — leave the field empty to fit the
+                // screen. Widen to this area's table count (not every area).
+                let area = self.floor_area_tab.as_str();
+                let widest = self
+                    .tables
+                    .iter()
+                    .filter(|t| t.area == area)
+                    .count();
+                let upto = widest.max(12).max(self.floor_columns.min(suggest::SUGGEST_LIMIT));
+                (1..=upto)
+                    .map(|n| SuggestRow::new(n.to_string(), String::new()))
+                    .collect()
+            }
         }
     }
 

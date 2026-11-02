@@ -586,6 +586,7 @@ impl App {
             }
             None => {}
         }
+        self.handle_settings_hub_actions(cx, actions);
         if self.ui.button(cx, ids!(sidebar_settings_open)).clicked(actions) {
             self.go_if_allowed(cx, Screen::SidebarSettings, |s| s.can_access_settings());
         }

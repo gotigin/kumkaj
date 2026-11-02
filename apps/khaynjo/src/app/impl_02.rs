@@ -2596,6 +2596,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .widget(cx, ids!(floor_ops_label))
                     .set_text(cx, &plain_display_text(&ops));
+                self.paint_floor_area_tabs(cx);
+                self.sync_floor_columns_field(cx, false);
             }
             // One short ℹ tip — not the full product map.
             let tmpl_hint = if tmpl_blurb_s.is_empty() {

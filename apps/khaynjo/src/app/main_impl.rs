@@ -19,6 +19,14 @@ impl AppMain for App {
                 let r = self.ui.view(cx, ids!(body_stack)).area().rect(cx);
                 *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
             }
+            // The Floor tables scroll sideways in `floor_scroll`: its box is
+            // the viewport the grid draws its visible columns for.
+            if screen == Screen::Floor {
+                let r = self.ui.view(cx, ids!(floor_scroll)).area().rect(cx);
+                if r.size.x > 1.0 {
+                    *floor_hviewport().lock().unwrap() = (r.pos.x, r.size.x);
+                }
+            }
         }
         if matches!(event, Event::Startup) {
             // Before CreateWindow: override the DSL default with the last session.
@@ -314,6 +322,14 @@ impl AppMain for App {
             if ours {
                 self.nav_drag_autoscroll(cx);
             }
+            let floor_ours = floor_area_autoscroll_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if floor_ours {
+                self.floor_area_drag_autoscroll(cx);
+            }
             let accordion_ours = accordion_frame()
                 .lock()
                 .unwrap()
@@ -327,6 +343,9 @@ impl AppMain for App {
             return;
         }
         if self.pointer_nav_drag(cx, event) {
+            return;
+        }
+        if self.pointer_floor_area_drag(cx, event) {
             return;
         }
         if self.pointer_navigates(cx, event) {
@@ -344,11 +363,15 @@ impl AppMain for App {
                 ids!(rail_scroll),
                 ids!(app_hscroll),
                 ids!(pos_ticket),
+                ids!(floor_legend),
             ] {
                 let strip = self.ui.view(cx, path);
                 claim_hstrip_nested_scroll(cx, &strip, event);
             }
         }
+        // Tap outside a type-or-pick list closes it (before the press is
+        // delivered so Floor tiles / other chrome still receive the click).
+        self.dismiss_suggest_on_outside_press(cx, event);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.
         if matches!(event, Event::LiveEdit | Event::ScriptReapply | Event::Startup) {

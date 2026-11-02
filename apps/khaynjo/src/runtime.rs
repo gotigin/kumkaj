@@ -771,6 +771,30 @@ fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
+/// Floor area ChipStrip drag-to-swap (same contract as [`NavDrag`]:
+/// tap selects; press + move swaps and persists `ui_floor_area_order`).
+#[derive(Clone)]
+struct FloorAreaDrag {
+    slot: usize,
+    start: DVec2,
+    last: DVec2,
+    origin: DVec2,
+    rects: Vec<Rect>,
+    active: bool,
+    hover: Option<usize>,
+    finger: Option<u64>,
+}
+
+fn floor_area_drag() -> &'static Mutex<Option<FloorAreaDrag>> {
+    static DRAG: OnceLock<Mutex<Option<FloorAreaDrag>>> = OnceLock::new();
+    DRAG.get_or_init(|| Mutex::new(None))
+}
+
+fn floor_area_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
+    static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    FRAME.get_or_init(|| Mutex::new(None))
+}
+
 /// Settings → Sidebar list drag-reordered; App syncs chrome when taken.
 fn sidebar_order_dirty() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();

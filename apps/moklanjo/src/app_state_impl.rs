@@ -64,6 +64,8 @@ impl AppState {
             nav_order: NAV_TABS.to_vec(),
             nav_hidden: Vec::new(),
             amounts_screen_hidden: false,
+            snack_secs: SnackKind::DEFAULT_SECS,
+            settings_panel: None,
             amount_keys_hidden: Vec::new(),
             amount_keys_peek: Vec::new(),
             books_sections_open: Vec::new(),
@@ -204,6 +206,11 @@ impl AppState {
             self.amount_keys_peek = parse_amount_keys_hidden(
                 store.amount_keys_peek_csv(&user).ok().flatten().as_deref(),
             );
+            self.snack_secs = store
+                .snack_secs(&user)
+                .unwrap_or(SnackKind::DEFAULT_SECS);
+        } else {
+            self.snack_secs = SnackKind::DEFAULT_SECS;
         }
         self.books_sections_open = parse_books_sections(store.books_sections_csv()?.as_deref());
         let measure = store.booking_measure_settings();
@@ -670,6 +677,7 @@ impl AppState {
             return;
         };
         let Some(user) = self.session.as_ref().map(lan_key) else {
+            self.snack_secs = SnackKind::DEFAULT_SECS;
             return;
         };
         self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
@@ -677,6 +685,9 @@ impl AppState {
             parse_amount_keys_hidden(store.amount_keys_hidden_csv(&user).ok().flatten().as_deref());
         self.amount_keys_peek =
             parse_amount_keys_hidden(store.amount_keys_peek_csv(&user).ok().flatten().as_deref());
+        self.snack_secs = store
+            .snack_secs(&user)
+            .unwrap_or(SnackKind::DEFAULT_SECS);
     }
 
     fn money(&self, m: Money) -> String {

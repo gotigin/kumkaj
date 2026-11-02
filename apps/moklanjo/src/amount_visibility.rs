@@ -376,10 +376,10 @@ fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
     }
 }
 
-/// Whether arriving at `screen` may keep (or receive) drill-down history.
-/// Lock and Onboard always clear stacks. Chrome peers still use `go_peer`
-/// (clear then land with `record_history: false`); only `go` pushes.
-/// Mouse Back / Alt+← / edge swipe / Android back pop via `navigate_back`.
+/// Whether arriving at `screen` may keep (or receive) visit history.
+/// Lock and Onboard always clear stacks. Peer chrome and drill-downs both
+/// push via `go` / `go_peer`. Mouse Back / Alt+← / edge swipe / Android back
+/// pop via `navigate_back`.
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(screen, Screen::Lock | Screen::Onboard)
 }

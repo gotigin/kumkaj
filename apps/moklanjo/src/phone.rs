@@ -521,6 +521,8 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                         if !snap.server_id.is_empty() && matches!(store.paired_server_id(), Ok(None)) {
                             let _ = store.set_paired_server_id(&snap.server_id);
                         }
+                        // Photos are keys only in the snapshot — pull the files.
+                        crate::lan_images::request_missing_from_store(store, &link);
                         let mut sh = shared().0.lock().unwrap();
                         sh.applied_rev = snap.rev;
                         sh.synced = true;

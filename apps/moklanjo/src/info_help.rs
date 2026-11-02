@@ -55,6 +55,14 @@ impl WrapLabel {
 /// Title row with an info control. Emits [`TooltipAction`] so the window
 /// [`CalloutTooltip`] can place a callout without covering the icon
 /// (below by default; flips / clamps when space is tight).
+///
+/// Layout contract (DESIGN / DEV — do not weaken; both apps):
+/// - **Always Fit** so title+ℹ pack as one cluster. Gap is only
+///   `tip_btn.margin.left` (6). Never `width: Fill` — that parks ℹ at the
+///   row end (lock-screen regression, 2026-11).
+/// - Title is **WrapLabel** at `Fit{max: parent}` — wraps at 375 instead of
+///   mid-cropping; never `Label{width:Fill, wrap}` (turtle NaN, DEV bug 7).
+/// - Empty title stays **hidden** so tip-only companions stay tip-sized.
 #[derive(Script, ScriptHook, Widget)]
 struct InfoHelp {
     #[source]
@@ -66,6 +74,10 @@ struct InfoHelp {
     tip: String,
     #[rust]
     hovered: bool,
+    /// Mirrors the title WrapLabel for empty/hide without relying on child
+    /// text alone during the same frame as set_title.
+    #[rust]
+    title_text: String,
 }
 
 impl Widget for InfoHelp {
@@ -128,6 +140,10 @@ impl Widget for InfoHelp {
     }
 
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let has_title = !self.title_text.trim().is_empty();
+        self.view
+            .widget(cx, ids!(title))
+            .set_visible(cx, has_title);
         self.view.draw_walk(cx, scope, walk)
     }
 
@@ -142,7 +158,13 @@ impl Widget for InfoHelp {
 
 impl InfoHelpRef {
     fn set_title(&self, cx: &mut Cx, title: &str) {
-        self.label(cx, ids!(title)).set_text(cx, title);
+        let has = !title.trim().is_empty();
+        if let Some(mut inner) = self.borrow_mut() {
+            inner.title_text = title.to_string();
+        }
+        let w = self.widget(cx, ids!(title));
+        w.set_text(cx, title);
+        w.set_visible(cx, has);
     }
 
     fn set_nav_icon(&self, cx: &mut Cx, tab: NavTab) {

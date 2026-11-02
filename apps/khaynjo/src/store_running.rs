@@ -1884,7 +1884,7 @@ mod tests {
     }
 
     /// A restaurant with an owner, a manager (PIN 9999), a cashier, a
-    /// waiter, two dishes, and Dine In D1–D3 + Parcel P1–P2.
+    /// waiter, two dishes, Dine In D1–D3, and the seeded Parcel P1–P24.
     fn shop() -> Shop {
         let path = std::env::temp_dir().join(format!("khaynjo-running-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
@@ -1902,7 +1902,7 @@ mod tests {
         let products = store.list_products(false).unwrap();
         let product = |n: &str| products.iter().find(|p| p.name == n).unwrap().clone();
         store.add_tables_range("D", 1, 3, "Dine In").unwrap();
-        store.add_tables_range("P", 1, 2, "Parcel").unwrap();
+        // Parcel P1–P24 arrive from `seed_parcel_slots_once` on open.
         Shop {
             cashier: find("Cash"),
             waiter: find("Wasim"),
@@ -2526,7 +2526,7 @@ mod tests {
     fn floor_ranges_skip_existing_tables_and_settlement_keeps_tips_apart() {
         let shop = shop();
         assert_eq!(shop.store.add_tables_range("D", 1, 5, "Dine In").unwrap(), 2);
-        // Fresh shops seed T1–T6 in the unnamed area; ours follow it.
+        // Fresh shops seed T1–T24 (unnamed) + Parcel P1–P24; shop() adds Dine In.
         assert_eq!(shop.store.list_areas().unwrap(), vec!["", "Dine In", "Parcel"]);
         let names: Vec<String> = shop
             .store
@@ -2536,7 +2536,9 @@ mod tests {
             .filter(|t| !t.area.is_empty())
             .map(|t| t.name)
             .collect();
-        assert_eq!(names, vec!["D1", "D2", "D3", "D4", "D5", "P1", "P2"]);
+        let mut want: Vec<String> = (1..=5).map(|n| format!("D{n}")).collect();
+        want.extend((1..=24).map(|n| format!("P{n}")));
+        assert_eq!(names, want);
 
         shop.kot("P1", &[(&shop.thali, 1)]);
         let p1 = shop.table("P1");

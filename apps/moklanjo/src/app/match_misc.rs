@@ -64,7 +64,9 @@ impl MatchEvent for App {
             }
             return;
         }
-        if e.key_code == KeyCode::ArrowRight && e.modifiers.alt {
+        if e.key_code == KeyCode::Forward
+            || (e.key_code == KeyCode::ArrowRight && e.modifiers.alt)
+        {
             if nav_gesture_ok() {
                 let _ = self.navigate_forward(cx);
             }

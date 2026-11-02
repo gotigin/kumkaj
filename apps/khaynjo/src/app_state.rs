@@ -83,6 +83,12 @@ struct AppState {
     floor_ops_text: String,
     /// Floor: show only tables assigned to this waiter name (empty = all).
     floor_waiter_filter: String,
+    /// Selected floor area tab (table `area` string; empty = unnamed / Other).
+    floor_area_tab: String,
+    /// Preferred Floor area-tab order (drag-to-swap); unknown areas append.
+    floor_area_order: Vec<String>,
+    /// Floor: tables per row on this device. 0 = as many as fit the screen.
+    floor_columns: usize,
     /// Floor map: grid of tiles, or drawn positions (`layout_x/y/w/h`).
     floor_view_layout: bool,
     /// Table selected for the drawn-layout editor (id).
@@ -289,7 +295,8 @@ struct AppState {
     /// Owner must choose a new PIN before the till opens (post-migration reset).
     pin_reset_required: bool,
     /// Drill-down history (Settings → SidebarSettings, …). Chrome peers use
-    /// `go_peer` and clear these; Back / mouse / Android pop via `navigate_back`.
+    /// Visit history for Back / mouse / swipe / Android (`navigate_back`).
+    /// Peer chrome and drill-downs push; Lock / first-run clear.
     nav_back: Vec<Screen>,
     nav_forward: Vec<Screen>,
     /// User-resized side rail width (css px). Clamped in `apply_shell_layout`.

@@ -565,6 +565,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
     /// Settings → Printers: what the printer search says, and the printers
     /// it found as a list under it.
     fn show_found_printers(&mut self, cx: &mut Cx) {
+        *found_printers_painted().lock().unwrap() =
+            Some((print_share::is_finding_printers(), print_share::found_printers()));
         let (line, rows) = {
             let st = app_state().lock().unwrap();
             printers_found_rows(|k| st.t(k))
@@ -778,6 +780,9 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_booking_consignee), rtl);
         self.align_label(cx, ids!(h_booking_measures), rtl);
         self.align_label(cx, ids!(h_backup), rtl);
+        self.align_label(cx, ids!(h_settings_language), rtl);
+        self.align_label(cx, ids!(h_alerts), rtl);
+        self.align_label(cx, ids!(h_alerts_help), rtl);
         self.align_label(cx, ids!(h_diag), rtl);
         self.align_label(cx, ids!(diag_privacy_help), rtl);
         self.align_label(cx, ids!(diag_status_label), rtl);

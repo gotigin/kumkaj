@@ -140,7 +140,7 @@ user needs — In / Later, in Khaynjo's own terms:
 |---|---|---|
 | 3-tap billing: tap item → qty → pay | **In (P1)** — the minimal sell path of vision §3 | Order desk |
 | Order types Counter / Dine-in / Takeaway / Delivery | **In (P1)** | Desk segmented grid; `OrderType` |
-| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms with headings (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of large colour tiles** (responsive: **1 column from ~320px**, more columns only when another ~280px tile fits). Print / view / seat-or-free icons on each card; active table = stronger border (no separate focus strip). Drawn Grid↔Layout map **removed from Floor chrome** (layout APIs may remain unused) | Floor screen; `floor_columns_for`, `FloorTile` |
+| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of colour tiles, always 280×178** (2026-11-02). **Area tabs** (horizontal ChipStrip + ‹ ›) — one selected area at a time; **drag a tab to swap** (same as nav; saved as `ui_floor_area_order`); that tab’s body has its own **Columns** dropdown (per device, per area: *Fit screen* or ≥ 1) and its tables; rows wider than the screen **scroll sideways** (mouse/touch press-drag over tiles, gaps, and pads — short press stays a tap). Print / view / seat-or-free icons on each card; active table = stronger border. Drawn Grid↔Layout map **removed from Floor chrome** | Floor screen; `floor_area_strip`, `pointer_floor_area_drag`, `floor_columns_for_area`, `FloorTile`, `floor_scroll` |
 | Frequent dishes as a menu group (like Bakery Cafe) | **Have 2026-10-27** — Frequent chip next to All items; config on that view (days + count; default 1 day / 24); empty state when no completed sales in the window | Menu window; `frequent_product_ids` |
 | ₹0 menu prices and ₹0 bills (complimentary / owner wish) | **Have 2026-10-27** — allowed by default; Settings → Zero-value sales can require a price above ₹0 | `allow_zero_sales` meta; finalize / Take payment |
 | Table cards that show elapsed time and running amount at a glance | **Have** — name, amount, status · minutes; long status wraps ≤2 lines then ellipsis; tall cards with clear bottom padding | `FloorTile`, Floor |
@@ -464,11 +464,13 @@ the first build broke and must not break again:
   Snapshots carry `running_orders`.
 - Floor/Kitchen peers show only when the venue runs tables & kitchen
   (`creates_kot()`); unlock lands on Day book, Order/Floor one tap away.
-- **Floor grid columns from the list’s turtle width** — never from
-  shell `content_width` alone (that ignores Floor screen padding and
-  crops the last tile). Prefer **big** tiles: **1 column from ~320px**;
-  more columns only when another ~280px-wide card fits (`FLOOR_TILE_MIN_W`).
-  Same turtle-width pattern as the dish grid.
+- **Floor tiles are a fixed 280×178** (`FLOOR_TILE_W/H`) — columns
+  never shrink them. **Areas are tabs** (`floor_area_strip` + ‹ ›); the
+  selected tab’s body has that area’s **Columns** (`ui_floor_columns_by_area`
+  JSON on this device; legacy `ui_floor_columns` is the fallback) — *Fit
+  screen* (0) or ≥ 1. Fit uses the Floor list’s turtle width
+  (`floor_columns_for`). Only the selected area’s tables draw; sideways
+  viewport columns use `floor_col_window` / `floor_first_col`.
 - **Display text is selectable** (`WrapLabel` / `ReportText`); only
   tap targets keep `selectable: false` / plain `Label` (DESIGN § Text
   selection).

@@ -2518,6 +2518,44 @@ impl Store {
     /// Whether this device prints a KOT the moment one is sent
     /// (Settings → kitchen printing; on by default — paper is how
     /// most kitchens still run).
+    /// Legacy whole-floor columns (this device only). Prefer
+    /// [`floor_columns_for_area`] — kept as the default when an area has
+    /// no entry yet. 0 = fit the screen.
+    pub fn floor_columns(&self) -> usize {
+        self.meta_get("ui_floor_columns")
+            .ok()
+            .flatten()
+            .and_then(|v| v.trim().parse().ok())
+            .unwrap_or(0)
+    }
+
+    pub fn set_floor_columns(&self, cols: usize) -> Result<(), String> {
+        self.meta_set("ui_floor_columns", &cols.to_string())
+    }
+
+    /// Per-area Columns map on this device (`ui_floor_columns_by_area` JSON).
+    fn floor_columns_by_area_map(&self) -> std::collections::HashMap<String, usize> {
+        self.meta_get("ui_floor_columns_by_area")
+            .ok()
+            .flatten()
+            .and_then(|j| serde_json::from_str(&j).ok())
+            .unwrap_or_default()
+    }
+
+    /// Columns for one floor area on this device. Falls back to the legacy
+    /// whole-floor value when that area has never been set. 0 = fit screen.
+    pub fn floor_columns_for_area(&self, area: &str) -> usize {
+        let map = self.floor_columns_by_area_map();
+        map.get(area).copied().unwrap_or_else(|| self.floor_columns())
+    }
+
+    pub fn set_floor_columns_for_area(&self, area: &str, cols: usize) -> Result<(), String> {
+        let mut map = self.floor_columns_by_area_map();
+        map.insert(area.to_string(), cols);
+        let json = serde_json::to_string(&map).map_err(|e| e.to_string())?;
+        self.meta_set("ui_floor_columns_by_area", &json)
+    }
+
     pub fn kot_auto_print(&self) -> bool {
         self.meta_get("kot_auto_print")
             .ok()
@@ -4630,6 +4668,16 @@ impl Store {
 
     pub fn set_nav_order_csv(&self, csv: &str) -> Result<(), String> {
         self.meta_set("ui_nav_order", csv)
+    }
+
+    /// Floor area tab order on this device (CSV of area names). Empty area
+    /// (unnamed tables) is stored as an empty field between commas.
+    pub fn floor_area_order_csv(&self) -> Result<Option<String>, String> {
+        self.meta_get("ui_floor_area_order")
+    }
+
+    pub fn set_floor_area_order_csv(&self, csv: &str) -> Result<(), String> {
+        self.meta_set("ui_floor_area_order", csv)
     }
 
     /// Nav peers the shop hid from the side rail / bottom bar (CSV of keys).
@@ -11512,8 +11560,8 @@ pub fn data_dir() -> Result<PathBuf, String> {
 }
 
 /// Hard floor for desktop window width/height (css px) on every desktop OS.
-/// Matches the app_shell layout floor (`Fill{min: 320.}`); Android ignores window sizing.
-pub const MIN_DESKTOP_WINDOW_CSS: f64 = 320.0;
+/// Matches the app_shell layout floor (`Fill{min: 375.}`); Android ignores window sizing.
+pub const MIN_DESKTOP_WINDOW_CSS: f64 = 375.0;
 
 /// Below this width the shell uses phone chrome (bottom tabs). Saved geoms narrower
 /// than this are ignored on restore so a squeezed session cannot lock desktop

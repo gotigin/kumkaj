@@ -219,6 +219,26 @@ mod tests {
         let _ = fs::remove_dir_all(base);
     }
 
+    /// A server made without a name gets a generated label for the server
+    /// list only — never as the office's name in the header or on bills
+    /// (Khaynjo printed "Server af76697b" on a bill); books that already
+    /// took it read as unnamed.
+    #[test]
+    fn generated_server_label_is_not_the_office_name() {
+        let base = temp_base();
+        let (unnamed, store) = create_local_server(&base, "").unwrap();
+        assert!(store::is_generated_server_label(&unnamed.name), "{}", unnamed.name);
+        assert_eq!(store.venue_title().unwrap(), "");
+        assert_eq!(store.saved_org_name().unwrap(), "");
+        store.set_venue_title(&unnamed.name).unwrap();
+        assert_eq!(store.venue_title().unwrap(), "", "a label that slipped in reads as unnamed");
+        let (_, named) = create_local_server(&base, "Swift Courier").unwrap();
+        assert_eq!(named.venue_title().unwrap(), "Swift Courier");
+        assert!(!store::is_generated_server_label("Server room"));
+        assert!(!store::is_generated_server_label("Server af76697"));
+        let _ = fs::remove_dir_all(base);
+    }
+
     #[test]
     fn app_language_is_one_global_choice_per_install() {
         let base = temp_base();

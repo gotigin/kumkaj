@@ -72,6 +72,22 @@ impl std::ops::Deref for Tx<'_> {
     }
 }
 
+/// Rows per unit of work in a spreadsheet import ([`Store::import_rows`]).
+const IMPORT_CHUNK_ROWS: usize = 250;
+
+/// How a long import running on a worker reports progress and hears Cancel:
+/// `progress(done, total)` after each chunk, `cancelled()` before the next.
+#[derive(Clone, Copy)]
+pub struct ImportWatch {
+    pub progress: fn(usize, usize),
+    pub cancelled: fn() -> bool,
+}
+
+impl ImportWatch {
+    /// No progress shown, never cancelled (tests, quick in-UI imports).
+    pub const NONE: Self = Self { progress: |_, _| {}, cancelled: || false };
+}
+
 /// Books this process already brought up to this build's schema. The LAN
 /// server opens the books for every request, and migrating each time took
 /// the write lock (even a no-op `UPDATE` does), so every device's read
@@ -2821,7 +2837,49 @@ impl Store {
     /// the order is name,phone,kind,note. Existing parties are not
     /// duplicated (same name + phone is skipped). Returns
     /// (added, skipped, first few problems).
+    /// Feed an import's data rows to `row` in chunks of [`IMPORT_CHUNK_ROWS`],
+    /// each chunk one unit of work: one disk sync per chunk instead of per
+    /// row (a 19,000-row pincode file took minutes), and the write lock is
+    /// let go between chunks so the counter and paired devices never wait
+    /// past their busy timeout. Progress is told after each chunk; a Cancel
+    /// stops between chunks and keeps what landed — every import skips or
+    /// updates what it already has, so the same file can simply run again.
+    fn import_rows<R>(
+        &self,
+        rows: &[R],
+        watch: ImportWatch,
+        mut row: impl FnMut(usize, &R),
+    ) -> Result<(), String> {
+        let total = rows.len();
+        (watch.progress)(0, total);
+        for (c, chunk) in rows.chunks(IMPORT_CHUNK_ROWS).enumerate() {
+            let done = c * IMPORT_CHUNK_ROWS;
+            if (watch.cancelled)() {
+                return Err(format!(
+                    "Cancelled — {done} of {total} rows in; importing the same file again skips them"
+                ));
+            }
+            self.in_transaction(|| {
+                for (j, r) in chunk.iter().enumerate() {
+                    row(done + j, r);
+                }
+                Ok(())
+            })?;
+            (watch.progress)((done + chunk.len()).min(total), total);
+        }
+        Ok(())
+    }
+
     pub fn import_parties_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
+        self.import_parties_csv_watched(text, ImportWatch::NONE)
+    }
+
+    /// [`Self::import_parties_csv`] in chunks, with progress and Cancel ([`ImportWatch`]).
+    pub fn import_parties_csv_watched(
+        &self,
+        text: &str,
+        watch: ImportWatch,
+    ) -> Result<(usize, usize, Vec<String>), String> {
         let rows = parse_csv(text);
         let mut added = 0usize;
         let mut skipped = 0usize;
@@ -2860,10 +2918,10 @@ impl Store {
                 row.get(i).cloned().unwrap_or_default().trim().to_string()
             }
         };
-        for (n, row) in rows.iter().skip(start).enumerate() {
+        self.import_rows(&rows[start..], watch, |n, row| {
             let name = get(row, idx.0);
             if name.is_empty() {
-                continue;
+                return;
             }
             let phone = get(row, idx.1);
             if existing
@@ -2871,7 +2929,7 @@ impl Store {
                 .any(|(en, ep)| *en == name.to_ascii_lowercase() && *ep == phone)
             {
                 skipped += 1;
-                continue;
+                return;
             }
             match self.add_customer_kind(&name, &phone, &get(row, idx.2)) {
                 Ok(party) => {
@@ -2889,7 +2947,7 @@ impl Store {
                     }
                 }
             }
-        }
+        })?;
         Ok((added, skipped, problems))
     }
 
@@ -2897,6 +2955,15 @@ impl Store {
     /// Columns: name, price (major units, e.g. 250.50), unit. Items
     /// whose name already exists are skipped, never overwritten.
     pub fn import_items_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
+        self.import_items_csv_watched(text, ImportWatch::NONE)
+    }
+
+    /// [`Self::import_items_csv`] in chunks, with progress and Cancel ([`ImportWatch`]).
+    pub fn import_items_csv_watched(
+        &self,
+        text: &str,
+        watch: ImportWatch,
+    ) -> Result<(usize, usize, Vec<String>), String> {
         let rows = parse_csv(text);
         let mut added = 0usize;
         let mut skipped = 0usize;
@@ -2929,14 +2996,14 @@ impl Store {
                 row.get(i).cloned().unwrap_or_default().trim().to_string()
             }
         };
-        for (n, row) in rows.iter().skip(start).enumerate() {
+        self.import_rows(&rows[start..], watch, |n, row| {
             let name = get(row, i_name);
             if name.is_empty() {
-                continue;
+                return;
             }
             if existing.iter().any(|e| *e == name.to_ascii_lowercase()) {
                 skipped += 1;
-                continue;
+                return;
             }
             let price_major: f64 = get(row, i_price).parse().unwrap_or(0.0);
             let mut product =
@@ -2957,13 +3024,22 @@ impl Store {
                     }
                 }
             }
-        }
+        })?;
         Ok((added, skipped, problems))
     }
 
     /// Import pincode → zone / carrier serviceability rows.
     /// Columns: pincode, zone (name → find/create), carrier (optional party name), note.
     pub fn import_pincodes_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
+        self.import_pincodes_csv_watched(text, ImportWatch::NONE)
+    }
+
+    /// [`Self::import_pincodes_csv`] in chunks, with progress and Cancel ([`ImportWatch`]).
+    pub fn import_pincodes_csv_watched(
+        &self,
+        text: &str,
+        watch: ImportWatch,
+    ) -> Result<(usize, usize, Vec<String>), String> {
         self.assert_server_writer("Import pincodes")?;
         let rows = parse_csv(text);
         let mut added = 0usize;
@@ -2997,12 +3073,12 @@ impl Store {
                 row.get(i).cloned().unwrap_or_default().trim().to_string()
             }
         };
-        for (n, row) in rows.iter().skip(start).enumerate() {
+        self.import_rows(&rows[start..], watch, |n, row| {
             let pin = get(row, i_pin);
             let zone_name = get(row, i_zone);
             if pin.is_empty() || zone_name.is_empty() {
                 skipped += 1;
-                continue;
+                return;
             }
             let zone = match self.find_or_add_zone(&zone_name) {
                 Ok(z) => z,
@@ -3011,7 +3087,7 @@ impl Store {
                     if problems.len() < 5 {
                         problems.push(format!("row {}: {e}", n + start + 1));
                     }
-                    continue;
+                    return;
                 }
             };
             let carrier_name = get(row, i_carrier);
@@ -3027,7 +3103,7 @@ impl Store {
                             if problems.len() < 5 {
                                 problems.push(format!("row {}: {e}", n + start + 1));
                             }
-                            continue;
+                            return;
                         }
                     },
                 }
@@ -3047,7 +3123,7 @@ impl Store {
                     }
                 }
             }
-        }
+        })?;
         Ok((added, skipped, problems))
     }
 
@@ -4541,6 +4617,20 @@ impl Store {
         self.meta_set("ui_nav_hidden", csv)
     }
 
+    /// Snackbar auto-dismiss seconds for this signed-in user (default 10).
+    pub fn snack_secs(&self, user_key: &str) -> Result<f64, String> {
+        let raw = self.amount_vis_meta("ui_snack_secs", user_key)?;
+        Ok(raw
+            .and_then(|s| s.parse::<f64>().ok())
+            .map(crate::snack::SnackKind::clamp_secs)
+            .unwrap_or(crate::snack::SnackKind::DEFAULT_SECS))
+    }
+
+    pub fn set_snack_secs(&self, user_key: &str, secs: f64) -> Result<(), String> {
+        let secs = crate::snack::SnackKind::clamp_secs(secs);
+        self.meta_set(&format!("ui_snack_secs:{user_key}"), &format!("{secs}"))
+    }
+
     /// Per-user amount visibility (`user_key` = `"owner"` or a staff id).
     /// Global across screens for that user; not shared with other users.
     fn amount_vis_meta(&self, kind: &str, user_key: &str) -> Result<Option<String>, String> {
@@ -4639,7 +4729,7 @@ impl Store {
         }
         let file_name = "venue_icon.webp".to_string();
         let dest = dir.join(&file_name);
-        media::write_image_as_webp(source, &dest)?;
+        media::write_image_as_webp_fit(source, &dest, media::SMALL_PHOTO_EDGE)?;
         let key = format!("custom:{file_name}");
         self.set_venue_icon_key(Some(&key))?;
         Ok(key)
@@ -5609,7 +5699,7 @@ impl Store {
         }
         let file_name = format!("{product_id}.webp");
         let dest = dir.join(&file_name);
-        media::write_image_as_webp(source, &dest)?;
+        media::write_image_as_webp_fit(source, &dest, media::SMALL_PHOTO_EDGE)?;
         Ok(format!("custom:{file_name}"))
     }
 
@@ -5636,7 +5726,7 @@ impl Store {
         }
         let file_name = format!("{party_id}.webp");
         let dest = dir.join(&file_name);
-        media::write_image_as_webp(source, &dest)?;
+        media::write_image_as_webp_fit(source, &dest, media::SMALL_PHOTO_EDGE)?;
         Ok(format!("custom:{file_name}"))
     }
 
@@ -11453,8 +11543,8 @@ pub fn data_dir() -> Result<PathBuf, String> {
 }
 
 /// Hard floor for desktop window width/height (css px) on every desktop OS.
-/// Matches the app_shell layout floor (`Fill{min: 320.}`); Android ignores window sizing.
-pub const MIN_DESKTOP_WINDOW_CSS: f64 = 320.0;
+/// Matches the app_shell layout floor (`Fill{min: 375.}`); Android ignores window sizing.
+pub const MIN_DESKTOP_WINDOW_CSS: f64 = 375.0;
 
 /// Below this width the shell uses phone chrome (bottom tabs). Saved geoms narrower
 /// than this are ignored on restore so a squeezed session cannot lock desktop
@@ -12991,6 +13081,54 @@ mod tests {
         assert_eq!(store.entity_template_id().unwrap(), "moklanjo_agency");
         assert!(store.list_products(false).unwrap().is_empty());
         assert!(store.list_customers().unwrap().is_empty());
+        let _ = std::fs::remove_file(path);
+    }
+
+    thread_local! {
+        static IMPORT_SEEN: std::cell::RefCell<Vec<(usize, usize)>> =
+            const { std::cell::RefCell::new(Vec::new()) };
+    }
+
+    fn note_import(done: usize, total: usize) {
+        IMPORT_SEEN.with(|s| s.borrow_mut().push((done, total)));
+    }
+
+    /// Cancel tapped while the first chunk was going in.
+    fn cancel_after_first_chunk() -> bool {
+        IMPORT_SEEN.with(|s| s.borrow().len() >= 2)
+    }
+
+    /// A long spreadsheet tells its progress chunk by chunk; Cancel keeps
+    /// whole chunks only, and the same file run again finishes the job
+    /// without doubling a row.
+    #[test]
+    fn long_imports_show_progress_and_cancel_between_chunks() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let mut csv = String::from("pincode,zone\n");
+        for n in 0..600 {
+            csv.push_str(&format!("{},{}\n", 360_000 + n, if n % 2 == 0 { "West" } else { "Local" }));
+        }
+        let count = || -> i64 {
+            store
+                .conn
+                .query_row("SELECT COUNT(*) FROM pincode_service", [], |r| r.get(0))
+                .unwrap()
+        };
+        let watch = |cancelled: fn() -> bool| ImportWatch { progress: note_import, cancelled };
+        let stopped = store
+            .import_pincodes_csv_watched(&csv, watch(cancel_after_first_chunk))
+            .unwrap_err();
+        assert!(stopped.starts_with("Cancelled — 250 of 600 rows in"), "{stopped}");
+        assert_eq!(count(), 250, "only the whole first chunk landed");
+        IMPORT_SEEN.with(|s| s.borrow_mut().clear());
+        let (added, skipped, problems) =
+            store.import_pincodes_csv_watched(&csv, watch(|| false)).unwrap();
+        assert_eq!((added, skipped, problems.len()), (600, 0, 0));
+        assert_eq!(count(), 600, "the first 250 were updated, not doubled");
+        let seen = IMPORT_SEEN.with(|s| s.borrow().clone());
+        assert_eq!(seen, vec![(0, 600), (250, 600), (500, 600), (600, 600)]);
+        assert_eq!(store.list_zones().unwrap().len(), 2);
         let _ = std::fs::remove_file(path);
     }
 

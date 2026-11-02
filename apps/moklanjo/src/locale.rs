@@ -700,6 +700,15 @@ fn en(key: &str) -> String {
         "currency" => "Currency",
         "backup" => "Backup",
         "settings_sec_diag" => "Diagnostics",
+        "settings_hub_help" => "Open one area at a time — less scrolling, clearer choices.",
+        "settings_sec_devices" => "Extra tills & branches",
+        "settings_sec_alerts" => "Alerts",
+        "alerts_help" => "How long status messages stay on screen for you (this login).",
+        "snack_secs_ph" => "Seconds (3–60, default 10)",
+        "snack_secs_save" => "Save alert time",
+        "snack_secs_saved" => "Alert time saved — {n} seconds",
+        "snack_secs_bad" => "Enter seconds as a number (3–60)",
+        "cancelled" => "Cancelled",
         "diag_privacy_help" => "Logs stay on this device. Secrets (PIN, passwords) are never stored. Sharing a package off the device needs your explicit approval each time — never sold or given to third parties.",
         "diag_level" => "Detail level",
         "diag_level_error" => "Errors",
@@ -1755,6 +1764,8 @@ mod tests {
         // Every English key must have a real translation in every
         // shipped language — static UI must never fall back to English.
         const KEYS: &[&str] = &[
+            "settings_hub_help", "settings_sec_devices", "settings_sec_alerts", "settings_sec_diag", "sidebar_settings",
+            "alerts_help", "snack_secs_ph", "snack_secs_save", "snack_secs_saved", "snack_secs_bad", "cancelled",
             "backup_auto", "backup_auto_none", "backup_copy_to", "backup_copy_btn", "autostart_off", "autostart_on", "autostart_done_on", "autostart_done_off",
             "right_allowed", "right_with_approval", "right_denied", "editing_staff", "team_pick_ph", "select_staff", "rights_help", "right_void_refund", "right_amend_sale",
             "find_server", "finding_server", "no_server_found",

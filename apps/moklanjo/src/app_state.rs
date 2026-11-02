@@ -104,6 +104,10 @@ struct AppState {
     /// Hidden → mask all money values except [`amount_keys_peek`].
     /// Visible → apply each figure’s [`amount_keys_hidden`].
     amounts_screen_hidden: bool,
+    /// Settings → Alerts: this signed-in user's base snackbar seconds.
+    snack_secs: f64,
+    /// Settings hub: the one section open (`None` = the hub list).
+    settings_panel: Option<&'static str>,
     /// Keys this user hid while the screen eye is showing (persisted per user).
     amount_keys_hidden: Vec<String>,
     /// Keys this user keeps visible while the screen eye is hiding (persisted
@@ -195,8 +199,8 @@ struct AppState {
     unlock_blocked_until: Option<std::time::Instant>,
     /// Owner must choose a new PIN before the till opens (post-migration reset).
     pin_reset_required: bool,
-    /// Drill-down history (Settings → SidebarSettings, …). Chrome peers use
-    /// `go_peer` and clear these; Back / mouse / Android pop via `navigate_back`.
+    /// Visit history for Back / mouse / swipe / Android (`navigate_back`).
+    /// Peer chrome and drill-downs push; Lock / first-run clear.
     nav_back: Vec<Screen>,
     nav_forward: Vec<Screen>,
     /// User-resized side rail width (css px). Clamped in `apply_shell_layout`.

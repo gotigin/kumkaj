@@ -48,7 +48,8 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             }
             st.snack_text = msg;
             st.snack_kind = kind;
-            st.snack_timer = cx.start_timeout(kind.duration_secs());
+            let secs = kind.duration_secs(st.snack_secs);
+            st.snack_timer = cx.start_timeout(secs);
         }
         self.paint_app_snackbar(cx);
     }

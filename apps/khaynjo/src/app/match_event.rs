@@ -69,7 +69,9 @@ impl MatchEvent for App {
             }
             return;
         }
-        if e.key_code == KeyCode::ArrowRight && e.modifiers.alt {
+        if e.key_code == KeyCode::Forward
+            || (e.key_code == KeyCode::ArrowRight && e.modifiers.alt)
+        {
             if nav_gesture_ok() {
                 let _ = self.navigate_forward(cx);
             }
@@ -2513,6 +2515,26 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(floor_pick_back)).clicked(actions) {
             self.cancel_table_pick(cx);
         }
+        // Floor area tabs — each owns its Columns + table body.
+        // Slot order follows drag-to-swap (`floor_area_tab_names`).
+        {
+            let areas = self.floor_area_tab_names();
+            let mut picked: Option<String> = None;
+            for (i, (idle, on)) in FLOOR_AREA_CHIPS.iter().enumerate() {
+                if self.choice_chip_clicked(cx, actions, idle, on)
+                    && let Some(area) = areas.get(i)
+                {
+                    picked = Some(area.clone());
+                }
+            }
+            if let Some(area) = picked {
+                self.dismiss_soft_keyboard(cx);
+                self.select_floor_area_tab(cx, area);
+                // Category chips re-sync chrome after the pick so the active
+                // face is painted in the same event — do the same here.
+                self.sync_chrome(cx);
+            }
+        }
         // Category chips: All, Frequent, then the shop's categories.
         {
             let mut picked: Option<Option<String>> = None;
@@ -3021,7 +3043,7 @@ impl MatchEvent for App {
                     let tile = canvas.view(cx, *path);
                     if tile.button(cx, ids!(act)).clicked(actions) {
                         tapped = Some((slot, true));
-                    } else if tile.finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over) {
+                    } else if tile.finger_up(actions).is_some_and(finger_up_is_tap) {
                         tapped = Some((slot, false));
                     }
                 }
@@ -3098,31 +3120,69 @@ impl MatchEvent for App {
         if !app_state().lock().unwrap().floor_view_layout {
             let widget = self.ui.widget(cx, ids!(floor_list));
             let list = widget.portal_list(cx, ids!(list));
-            let (rows, filtered_ids) = {
+            // One selected area tab — idxs into the filtered table list.
+            let (idxs, filtered_ids) = {
                 let st = app_state().lock().unwrap();
                 let tables = floor_filtered_tables(&st);
                 let ids: Vec<String> = tables.iter().map(|t| t.id.clone()).collect();
-                (floor_rows(&tables, floor_columns()), ids)
+                let tab = st.floor_area_tab.as_str();
+                let groups = floor_area_groups(&tables);
+                let idxs = groups
+                    .iter()
+                    .find(|(a, _)| a.as_str() == tab)
+                    .map(|(_, i)| i.clone())
+                    .or_else(|| groups.first().map(|(_, i)| i.clone()))
+                    .unwrap_or_default();
+                (idxs, ids)
             };
-            let slots = [
-                ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5), ids!(t6), ids!(t7),
-            ];
+            let cols = floor_columns();
+            let vp_w = floor_hviewport().lock().unwrap().1;
             // act | print | view | open (tile body tap)
+            // Nested PortalList (area → rows) stamps the *inner* group on
+            // actions first; outer `list.items_with_actions` then never
+            // matches. Walk the single area item + every row slot directly
+            // (same as FloorLayoutList) — button/finger_up key off uid.
             let mut tapped: Option<(usize, &'static str)> = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                let Some(FloorRow::Tiles(tables)) = rows.get(item_id) else {
-                    continue;
+            if !idxs.is_empty() {
+                let item = list.item(cx, 0, id!(Item));
+                let scroll = item.view(cx, ids!(area_scroll));
+                let scroll_x = scroll.get_scroll_pos().x;
+                let area_vp_w = {
+                    let r = scroll.area().rect(cx);
+                    if r.size.x > 1.0 {
+                        r.size.x
+                    } else {
+                        vp_w.max(1.0)
+                    }
                 };
-                for (slot, &table_idx) in tables.iter().enumerate() {
-                    let tile = item.view(cx, slots[slot]);
-                    if tile.button(cx, ids!(act)).clicked(actions) {
-                        tapped = Some((table_idx, "act"));
-                    } else if tile.button(cx, ids!(print_ico)).clicked(actions) {
-                        tapped = Some((table_idx, "print"));
-                    } else if tile.button(cx, ids!(view_ico)).clicked(actions) {
-                        tapped = Some((table_idx, "view"));
-                    } else if tile.finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over) {
-                        tapped = Some((table_idx, "open"));
+                let first_col = if cols <= FLOOR_ROW_SLOTS {
+                    0
+                } else {
+                    floor_col_window(0.0, scroll_x, area_vp_w, cols).0
+                };
+                let rows_list = item.portal_list(cx, ids!(area_rows));
+                let n_rows = idxs.chunks(cols.max(1)).count().max(1);
+                for row_id in 0..n_rows {
+                    let row_item = rows_list.item(cx, row_id, id!(Item));
+                    let chunk_start = row_id * cols.max(1);
+                    for (slot, path) in FLOOR_SLOT_IDS.iter().enumerate() {
+                        let Some(&table_idx) = idxs.get(chunk_start + first_col + slot) else {
+                            break;
+                        };
+                        let tile = row_item.view(cx, *path);
+                        if tile.button(cx, ids!(act)).clicked(actions) {
+                            tapped = Some((table_idx, "act"));
+                        } else if tile.button(cx, ids!(print_ico)).clicked(actions) {
+                            tapped = Some((table_idx, "print"));
+                        } else if tile.button(cx, ids!(view_ico)).clicked(actions) {
+                            tapped = Some((table_idx, "view"));
+                        } else if tile.finger_up(actions).is_some_and(finger_up_is_tap) {
+                            // Tap opens. Sideways press-drag (tiles / gaps /
+                            // pads) scrolls after axis_lock ~8px and takes
+                            // capture — not was_tap() which dies on a 6px
+                            // jitter / slow press.
+                            tapped = Some((table_idx, "open"));
+                        }
                     }
                 }
             }
@@ -3169,6 +3229,18 @@ impl MatchEvent for App {
                         _ => {}
                     }
                 }
+            }
+        }
+        // Floor columns typed: Enter (or Done on a phone) or leaving the field
+        // applies it. A pick from the list applies above.
+        {
+            let input = self.ui.text_input(cx, ids!(floor_cols_input));
+            if let Some((text, _)) = input.returned(actions) {
+                app_state().lock().unwrap().suggest_open = None;
+                self.apply_floor_columns(cx, &text);
+            } else if input.key_focus_lost(actions) {
+                let text = input.text();
+                self.apply_floor_columns(cx, &text);
             }
         }
         // Floor toolbar: Print / View / Open for the focused table.
@@ -3478,7 +3550,13 @@ impl MatchEvent for App {
                         .any(|a| matches!(a, TextInputAction::KeyFocus));
                     let typed = input.changed(actions);
                     if focused || typed.is_some() {
-                        let text = typed.unwrap_or_else(|| input.text());
+                        // A dropdown opens on every choice, not filtered by
+                        // the value already showing (Floor columns).
+                        let text = match typed {
+                            Some(t) => t,
+                            None if field == SuggestField::FloorColumns => String::new(),
+                            None => input.text(),
+                        };
                         app_state().lock().unwrap().open_suggest(field, &text);
                         changed = true;
                     } else if input.escaped(actions) && open == Some(field) {
@@ -3575,6 +3653,10 @@ impl MatchEvent for App {
             if let Some((field, value)) = picked {
                 if field != SuggestField::KotStation {
                     self.ui.text_input(cx, field.input()).set_text(cx, &value);
+                }
+                if field == SuggestField::FloorColumns {
+                    app_state().lock().unwrap().suggest_open = None;
+                    self.apply_floor_columns(cx, &value);
                 }
                 // A known stock item brings its own unit.
                 if field == SuggestField::BuyItem {

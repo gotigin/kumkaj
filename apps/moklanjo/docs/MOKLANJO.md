@@ -179,6 +179,10 @@ Prioritize in this order for Moklanjo:
 
 **Rearrangeable tabs.** The tab order is the shop's, not ours: press a tab and drag it onto another to swap them (bottom bar and rail alike). The arrangement is saved in the books (`ui_nav_order`), so it survives reinstall and follows the shop, not the device. Scrolling stays one gesture away: the bars keep whitespace lanes around the tabs — swipe the lane to scroll, grab a tab to drag. Holding a dragged tab against the left/right edge of the bar (top/bottom of the rail) auto-scrolls it, so tabs that start off-screen can still be reached and swapped with. Implementation rules that keep this working are in `docs/DEV.md` (“Nav drag-to-swap”).
 
+**Booking desk: Parcel | Counter side by side at every width (2026-11-02).** Never one above the other, phones included. Both fit → they share the width; else each pane keeps its min (600 | 520) and the desk pans sideways — but a pane is never wider than the screen: on a phone each fills it with a 28 px peek of the other, so a swipe goes Parcel ↔ Counter (`booking_desk_pane_widths`). Mouse / trackpad sideways scroll pans it too (the old `claim_hstrip_nested_scroll` pre-claim stopped every sideways strip after one step — removed; Makepad chains nested scroll on its own).
+
+**Settings is a hub (2026-11-02).** One row per section — Language & currency, Country & tax, Your brand, Printers, AWB pools, Booking measures, Units, Extra tills & branches, Alerts, Backup, Diagnostics, Sidebar settings — each a `HubDestBtn` with a Font Awesome mark (the Books hub's look). A row opens that section alone, from its top; the header ‹ / Back / Alt+← / Android back close it to the hub before leaving Settings; tapping the Settings tab again starts at the hub. **Alerts:** how long messages stay for the signed-in person (3–60 s, default 10; warnings 1.5×, errors 2×).
+
 **Collapsible side rail (≥720 css px).** **‹** at the top of the rail hides the whole nav (zero width); **›** in the header restores it. Phone bottom tabs are unchanged. Same pattern as Khaynjo (`rail_collapsed` in `apply_shell_layout`).
 
 **Responsive + selectable text.** Layouts reflow to the window; on-screen display text is selectable/copyable by default (`WrapLabel` / `ReportText`). Exceptions only inside tap targets — see [`docs/DESIGN.md`](../../../docs/DESIGN.md) § Always responsive and § Text selection & copy.
@@ -216,7 +220,9 @@ layout itself is not mirrored.
 | `notify.rs` | Alert outbox + bulk CSV |
 | `track.rs` | Public track JSON view |
 | `courier_ops_view.rs` | Reports-facet text + desk actions (advance / dispatch / COD / riders / period bill) |
-| `media.rs` | JPG/PNG/WebP → always store WebP; used by attachments + catalogue/brand photos |
+| `media.rs` | JPG/PNG/WebP → always store WebP; rate photos, party logos and the app icon capped at 768 px (`SMALL_PHOTO_EDGE`); POD / bill attachments, stamp and payment QR stay full size |
+| `lan_images.rs` | Paired devices pull rate photos / party logos from the Server (`GET /photo`, bare file names only) into `…/lan/` copies; refreshed every 6 h, failed fetches retried after 5 min |
+| `app/settings_hub.rs` | Settings hub: one section open at a time, Back closes it to the hub; Alerts (per-user snackbar time) |
 
 **Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. **Barcode loop:** scan/type AWB → Find → desk card → Out for delivery / Delivered / Failed delivery (NDR reasons) / Reattempt / Print label / Collect COD. Carrier/own-fleet dispatch, Print run sheet / DRS, COD remit, rider add, Settle rider COD, and period bill run from the same desk; credit limit + period bill also sit on Parties.
 
@@ -275,6 +281,31 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   system save dialog. *2026-10-27:* research Local/LAN catch-up **done**
   ([`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §7). Not yet run on real
   hardware.
+
+## Lessons adopted from Khaynjo (2026-11-02)
+
+Khaynjo ran real shop trials (LAN pilot, Android tablets, Windows counter)
+and learned engineering lessons Moklanjo had not met yet. They were copied as
+**approaches**, written in Moklanjo's own code and shaped for a courier
+office — not Khaynjo's screens or features (no Kumkaj core; copy-then-diverge).
+
+| Lesson (Khaynjo) | In Moklanjo | Where |
+|---|---|---|
+| Settings as one endless page is unusable → hub, one section at a time, Back closes the section first | **Adopted**, in Moklanjo's own hub look (`HubDestBtn` + mark, as Books) | `app/settings_hub.rs`, `ui_script.rs` `settings_hub` |
+| Fixed 4 s messages vanish before staff read them → per-user alert time | **Adopted, improved**: base time per user; warnings / errors still linger longer | `snack.rs`, Settings → Alerts |
+| Paired devices only get photo *keys* → fetch the files from the Server | **Adopted, hardened**: bare `.webp` names only (Khaynjo's route joins the key onto a path), retry after 5 min, refresh after 6 h | `lan_images.rs`, `net.rs` `/photo` |
+| Full-size photos make lists crawl → cap photos only ever shown small | **Adopted**: rates, party logos, app icon at 768 px | `media::write_image_as_webp_fit` |
+| Signals (thumbs, LAN, device queue) rebuilt Settings lists every wake | **Adopted**: found-printers list repaints only when Find's state moves (and says "Cancelled" once, not on every wake) | `main_impl.rs`, `found_printers_painted` |
+| Long imports need progress + Cancel on a worker | **Adopted, improved**: CSV imports run in 250-row units (one disk sync per chunk, the write lock let go between chunks), progress on the buttons, Cancel keeps whole chunks; running the file again finishes it | `Store::import_rows`, `ImportWatch` |
+| Look at the screen with realistic data | **Adopted**: opt-in courier seed (bookings in every desk state, logos, riders, carriers) | `tests/visual_seed.rs` |
+| Tests for UI rules / generated server labels | **Adopted** | `shell_tests/settings_hub_tests.rs`, `local_servers` |
+| Input labels visible once a field is filled (floating caption) | **Adopted**: the caption had no font (`text_style +:` on an unstyled `draw_caption`), so every filled field showed a blank band; now `theme.font_regular`. Cart / totals fields beside their own label: no caption; the line note keeps one; Rates price placeholder "Price", not "0" | `FieldInput` / `CartField` in `ui_script.rs` |
+| Static UI translated in all 29 languages | **Restored**: 13 keys fell back to English (`shipped_languages_translate_chrome` was red); new keys land translated | `locale_chrome.rs` |
+
+Considered and **not** adopted: Khaynjo's `remember_content_row` without a
+redraw (its fix for a cart whose rows open and close; Moklanjo's lists have no
+such rows) and `page_window` (fixed-pitch heavy grids only; Moklanjo's lists
+are variable-height cards — DEV § Look at the screen 13).
 
 ## Emergency unlock PIN (suite-wide, 2026-10-27)
 

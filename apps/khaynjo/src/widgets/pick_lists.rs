@@ -19,13 +19,15 @@ impl SuggestList {
 
 impl Widget for SuggestList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (open, rows, rev, lang) = {
+        let cols_menu = self.field == "floor_cols";
+        let (open, rows, rev, lang, selected_cols) = {
             let st = app_state().lock().unwrap();
             (
                 st.suggest_open.map(|f| f.key()) == Some(self.field.as_str()),
                 st.suggest_rows.clone(),
                 st.suggest_rev,
                 st.locale.language.clone(),
+                st.floor_columns,
             )
         };
         if !open || rows.is_empty() {
@@ -34,7 +36,7 @@ impl Widget for SuggestList {
         let row_h = *suggest_row_height().lock().unwrap();
         let n = rows.len();
         let walk = Walk {
-            height: Size::Fixed(list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)),
+            height: Size::Fixed(list_content_height(n, row_h, 6.0).min(SUGGEST_MAX_HEIGHT)),
             ..walk
         };
         let use_text = locale::t(&lang, "use");
@@ -42,6 +44,7 @@ impl Widget for SuggestList {
         let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                // Always open from the top so every value is reachable by scroll.
                 if new_rev {
                     list.set_first_id_and_scroll(0, 0.0);
                 }
@@ -55,12 +58,23 @@ impl Widget for SuggestList {
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
-                    let action = if row.action.trim().is_empty() {
-                        use_text.as_str()
+                    if cols_menu {
+                        let selected = selected_cols >= 1
+                            && row.value.parse::<usize>().ok() == Some(selected_cols);
+                        item.label(cx, ids!(action)).set_visible(cx, selected);
+                        item.label(cx, ids!(action)).set_text(
+                            cx,
+                            if selected { "\u{2713}" } else { "" },
+                        );
                     } else {
-                        row.action.as_str()
-                    };
-                    item.label(cx, ids!(action)).set_text(cx, action);
+                        let action = if row.action.trim().is_empty() {
+                            use_text.as_str()
+                        } else {
+                            row.action.as_str()
+                        };
+                        item.label(cx, ids!(action)).set_visible(cx, true);
+                        item.label(cx, ids!(action)).set_text(cx, action);
+                    }
                     item.draw_all_unscoped(cx);
                     drew += 1;
                 }

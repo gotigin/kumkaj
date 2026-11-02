@@ -1,0 +1,122 @@
+--- a/widgets/src/scroll_bar.rs
++++ b/widgets/src/scroll_bar.rs
+@@ -209,6 +209,23 @@
+ }
+ 
+ /// The scrolling state
++/// `axis_lock`: where one press-drag stands for this bar.
++#[derive(Clone, Copy, Debug, Default, PartialEq)]
++enum DragLock {
++    /// Still inside the slop: no bar scrolls yet, a lift is still a tap.
++    #[default]
++    Pending,
++    /// The drag runs mostly along this bar's axis: this bar scrolls it.
++    Mine,
++    /// The drag runs along the other axis, or there is nothing to scroll
++    /// here: this bar sits the gesture out for the other axis' scroll view.
++    Yielded,
++}
++
++/// How far a press must travel before `axis_lock` decides its direction —
++/// the platforms' touch slop (Android 8dp, iOS about 10pt).
++const AXIS_LOCK_SLOP: f64 = 8.0;
++
+ enum ScrollState {
+     Stopped,
+     Drag {
+@@ -286,6 +303,20 @@
+     /// Desk panes that fill the strip set this true.
+     #[live(false)]
+     mouse_capture_overload: bool,
++    /// Direction lock for press-drags (opt-in). A drag only becomes this
++    /// bar's scroll once it has travelled `AXIS_LOCK_SLOP` px, mostly along
++    /// this bar's axis, and only when there is something to scroll; otherwise
++    /// the scroll view of the other axis gets it whole. Without it, nested
++    /// views of different axes (a sideways strip in a downward page) race on
++    /// the first 2px and a jitter decides. Also makes Shift+wheel scroll
++    /// sideways (horizontal bars take it, vertical bars leave it), as browsers do.
++    #[live(false)]
++    axis_lock: bool,
++    /// Where the current press-drag began, both axes (`axis_lock`).
++    #[rust]
++    drag_origin: Vec2d,
++    #[rust]
++    drag_lock: DragLock,
+ 
+     #[apply_default]
+     animator: Animator,
+@@ -601,9 +632,15 @@
+                     ScrollAxis::Horizontal => e.handled_x.get(),
+                     ScrollAxis::Vertical => e.handled_y.get(),
+                 } {
++                    // axis_lock: Shift with a plain (vertical-only) wheel
++                    // scrolls sideways, as browsers do.
++                    let shift_wheel = self.axis_lock
++                        && e.modifiers.shift
++                        && e.scroll.x == 0.0
++                        && e.scroll.y != 0.0;
+                     let scroll = match self.axis {
+                         ScrollAxis::Horizontal => {
+-                            if self.use_vertical_finger_scroll {
++                            if self.use_vertical_finger_scroll || shift_wheel {
+                                 // Accept both horizontal and vertical scroll input,
+                                 // so trackpad horizontal scrolling and mouse wheel
+                                 // vertical scrolling both work.
+@@ -612,6 +649,7 @@
+                                 e.scroll.x
+                             }
+                         }
++                        ScrollAxis::Vertical if shift_wheel => 0.0,
+                         ScrollAxis::Vertical => e.scroll.y,
+                     };
+                     let mark_handled = |e: &crate::event::ScrollEvent, axis: ScrollAxis| match axis
+@@ -931,8 +969,49 @@
+                 self.scroll_state = ScrollState::Drag {
+                     samples: vec![ScrollSample { abs, time: fe.time }],
+                 };
++                self.drag_origin = fe.abs;
++                self.drag_lock = DragLock::Pending;
+             }
+             Hit::FingerMove(e) => {
++                if !nested_owns
++                    && self.axis_lock
++                    && self.drag_lock == DragLock::Pending
++                    && matches!(self.scroll_state, ScrollState::Drag { .. })
++                {
++                    // Inside the slop nothing scrolls (a lift is still a tap).
++                    // Past it, the dominant axis takes the whole gesture:
++                    // views see moves innermost-first, so the inner view of
++                    // the winning axis promotes its capture before an outer
++                    // one could, and the losing axis' views sit it out.
++                    let d = e.abs - self.drag_origin;
++                    if d.x.abs().max(d.y.abs()) < AXIS_LOCK_SLOP {
++                        return;
++                    }
++                    let (own, other) = match self.axis {
++                        ScrollAxis::Horizontal => (d.x.abs(), d.y.abs()),
++                        ScrollAxis::Vertical => (d.y.abs(), d.x.abs()),
++                    };
++                    // A perfect diagonal goes to the vertical bar: page
++                    // scrolling is the common case.
++                    let wins = own > other
++                        || (own == other && matches!(self.axis, ScrollAxis::Vertical));
++                    if wins && self.scrollable() {
++                        self.drag_lock = DragLock::Mine;
++                        let _ = cx.promote_finger_capture_over(scroll_area);
++                        // Scroll from here on: the slop is not replayed as a jump.
++                        let abs = match self.axis {
++                            ScrollAxis::Horizontal => e.abs.x,
++                            ScrollAxis::Vertical => e.abs.y,
++                        };
++                        self.scroll_state = ScrollState::Drag {
++                            samples: vec![ScrollSample { abs, time: e.time }],
++                        };
++                    } else {
++                        self.drag_lock = DragLock::Yielded;
++                        self.scroll_state = ScrollState::Stopped;
++                    }
++                    return;
++                }
+                 if nested_owns {
+                     // Nested list owns the gesture — park page samples so we do
+                     // not promote_capture over the list. Re-arm when nested clears.

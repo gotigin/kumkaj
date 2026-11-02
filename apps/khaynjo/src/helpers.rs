@@ -471,6 +471,47 @@ fn claim_hstrip_nested_scroll(cx: &mut Cx, strip: &ViewRef, event: &Event) {
     }
 }
 
+/// Wheel / trackpad into a nested `ScrollXView` that lives inside an
+/// expand-to-content list (`page_owns_scroll` blocks forwarding Scroll into
+/// the PortalList). Applies X (and Shift+vertical, same as `axis_lock` bars)
+/// then claims so the page does not also pan sideways.
+fn apply_hstrip_wheel(cx: &mut Cx, strip: &ViewRef, event: &Event) {
+    let Event::Scroll(e) = event else {
+        return;
+    };
+    let area = strip.area();
+    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
+        return;
+    }
+    let mut dx = e.scroll.x;
+    if dx == 0.0 && e.modifiers.shift {
+        dx = e.scroll.y;
+    }
+    if dx == 0.0 {
+        return;
+    }
+    let pos = strip.get_scroll_pos();
+    let max_x = (strip.get_scroll_view_total().x - strip.get_scroll_view_visible().x).max(0.0);
+    // ScrollBar uses `scroll_pos + scroll` for wheel/trackpad deltas.
+    let new_x = (pos.x + dx).clamp(0.0, max_x);
+    if (new_x - pos.x).abs() < 0.5 {
+        return;
+    }
+    strip.set_scroll_pos(cx, dvec2(new_x, pos.y));
+    strip.redraw(cx);
+    e.handled_x.set(true);
+}
+
+/// Tap on a Floor tile / menu card — not Makepad `was_tap()`.
+/// `was_tap` needs <0.5s and <5px, but `axis_lock` waits 8px before a
+/// scroll starts, so a steady press or 6px jitter opened nothing while
+/// looking like a tap. Same rule as the menu cards (2026-11).
+fn finger_up_is_tap(e: FingerUpEvent) -> bool {
+    e.is_over
+        && !e.has_long_press_occurred
+        && (e.abs_start - e.abs).length() < 24.0
+}
+
 /// Expand-to-content lists: let the page ScrollYView own wheel/trackpad.
 /// Forwarding Scroll into PortalList makes it eat the gesture at the bottom edge
 /// so Tea / pay / anything below never comes into view.

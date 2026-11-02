@@ -112,6 +112,13 @@ fn device_name() -> String {
         .unwrap_or_else(|| "Device".into())
 }
 
+/// What Settings → Printers last showed from Find: (still looking, found).
+/// A wake repaints the found list only when this moved.
+fn found_printers_painted() -> &'static Mutex<Option<(bool, Vec<String>)>> {
+    static SLOT: OnceLock<Mutex<Option<(bool, Vec<String>)>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
 /// "Find the shop's server" runs on a worker thread; its answer waits here
 /// until the UI wakes (`Event::Signal`).
 fn discovery_result() -> &'static Mutex<Option<Vec<net::FoundServer>>> {
@@ -284,6 +291,23 @@ fn csv_import_once() -> &'static Mutex<Option<Result<String, String>>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+/// What the running CSV import is called on its button ("Importing parties…").
+fn csv_import_label() -> &'static Mutex<&'static str> {
+    static LABEL: Mutex<&'static str> = Mutex::new("");
+    &LABEL
+}
+
+/// After each chunk: "Importing pincodes… 1250/19000" on the import buttons.
+fn csv_import_progress(done: usize, total: usize) {
+    let label = *csv_import_label().lock().unwrap();
+    *books_work_status().lock().unwrap() = Some(format!("{label} {done}/{total}"));
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+}
+
+fn csv_import_cancelled() -> bool {
+    csv_import_cancel().load(std::sync::atomic::Ordering::SeqCst)
+}
+
 /// `kind`: "parties" | "items" | "pincodes" | "carrier_bill"
 fn csv_import_job(db_path: PathBuf, path: PathBuf, kind: &'static str) {
     if csv_import_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
@@ -297,6 +321,7 @@ fn csv_import_job(db_path: PathBuf, path: PathBuf, kind: &'static str) {
         _ => "Importing items…",
     };
     set_books_work_status(label);
+    *csv_import_label().lock().unwrap() = label;
     let _ = std::thread::Builder::new()
         .name("moklanjo-csv-import".into())
         .spawn(move || {
@@ -330,10 +355,16 @@ fn csv_import_job(db_path: PathBuf, path: PathBuf, kind: &'static str) {
                         ))
                     }
                     other => {
+                        // Progress on the buttons and Cancel between chunks
+                        // (a whole India pincode file is ~19,000 rows).
+                        let watch = store::ImportWatch {
+                            progress: csv_import_progress,
+                            cancelled: csv_import_cancelled,
+                        };
                         let (added, skipped, problems) = match other {
-                            "parties" => store.import_parties_csv(&text)?,
-                            "pincodes" => store.import_pincodes_csv(&text)?,
-                            _ => store.import_items_csv(&text)?,
+                            "parties" => store.import_parties_csv_watched(&text, watch)?,
+                            "pincodes" => store.import_pincodes_csv_watched(&text, watch)?,
+                            _ => store.import_items_csv_watched(&text, watch)?,
                         };
                         let mut msg = format!(
                             "Imported {added} new, skipped {skipped} (already there or unusable)"

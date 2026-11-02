@@ -115,7 +115,7 @@ owns several restaurants runs **one Khaynjo restaurant per branch**
 |---|---|---|
 | Course firing (starters now, mains on "fire") | Toast, TouchBistro | **Have** (2026-10-27) — hold/fire per course; held never prints |
 | Split check by item / by seat / evenly | Toast, Square, TouchBistro | **Have** (2026-10-27) — seat numbers + split evenly / by seat |
-| Visual floor map + table timers | Toast, TouchBistro | **Have** timers + colour grid (2026-11-01 prefers big tiles, 1-col from ~320px). Drawn Grid↔Layout map **removed from Floor chrome** |
+| Visual floor map + table timers | Toast, TouchBistro | **Have** timers + colour grid (2026-11-01 prefers big tiles, 1-col from the 375 css px app floor). Drawn Grid↔Layout map **removed from Floor chrome** |
 | Offline mode that is the *normal* mode | TouchBistro (local iPad), GoFrugal | Khaynjo is local-first by design |
 | "86" list (sold out now) that every device sees | Toast | Already: item on/off (sold out) syncs |
 | Kitchen all-day counts | Toast KDS, Petpooja KDS | **Have** — "To cook now" on Kitchen |

@@ -24,19 +24,26 @@ enum LineAction {
 }
 
 /// One floor row: an area heading, or a row of table tiles (indexes into
-/// `tables`, at most [`FLOOR_MAX_COLUMNS`]).
+/// `tables`, as many as the chosen columns — no upper limit).
+/// Production Floor paints one selected area tab; this shape stays for
+/// unit tests of the older multi-area row algorithm.
+#[cfg(test)]
 #[derive(Clone, Debug, PartialEq)]
 enum FloorRow {
     Area(String),
     Tiles(Vec<usize>),
 }
 
-/// Tiles per row are capped by the row template's slots.
-const FLOOR_MAX_COLUMNS: usize = 8;
-/// Preferred min tile width (css px). Prefer **big** cards: only add a
-/// column when another tile of this size fits. At 320px → 1 per row;
-/// 2/3/… only when the row is wide enough to keep name + icons + status readable.
-const FLOOR_TILE_MIN_W: f64 = 280.0;
+/// Every floor table tile is this size (css px), whatever the column count:
+/// more columns than fit make the tables scroll sideways, never shrink.
+const FLOOR_TILE_W: f64 = 280.0;
+const FLOOR_TILE_H: f64 = 178.0;
+/// Gap between tiles across, and between rows (the row's bottom padding).
+const FLOOR_TILE_GAP: f64 = 10.0;
+/// Tile slots in one row template. Only the columns on screen are drawn into
+/// them (the rest of a wide row is a spacer), so this bounds the columns
+/// *visible at once* (24 × 290 ≈ 7000px), not the columns a row may have.
+const FLOOR_ROW_SLOTS: usize = 24;
 /// Drawn floor: how many tiles the layout canvas can show at once.
 const FLOOR_LAYOUT_SLOTS: usize = 24;
 /// Auto-pack tile size when every table still has a zero layout box.
@@ -53,6 +60,20 @@ fn content_width() -> &'static Mutex<f64> {
 fn floor_grid_cols() -> &'static Mutex<usize> {
     static C: OnceLock<Mutex<usize>> = OnceLock::new();
     C.get_or_init(|| Mutex::new(1))
+}
+
+/// The column the floor grid's first tile slot last drew (scrolled sideways,
+/// slot 0 is not column 0) — taps map slot → column through it.
+fn floor_first_col() -> &'static Mutex<usize> {
+    static C: OnceLock<Mutex<usize>> = OnceLock::new();
+    C.get_or_init(|| Mutex::new(0))
+}
+
+/// The Floor tables' sideways viewport: `(left, width)` of `floor_scroll`
+/// on screen, set every event (like [`page_viewport`] for the page).
+fn floor_hviewport() -> &'static Mutex<(f64, f64)> {
+    static V: OnceLock<Mutex<(f64, f64)>> = OnceLock::new();
+    V.get_or_init(|| Mutex::new((0.0, 0.0)))
 }
 
 /// One way an expense was paid: the method and the amount as typed (blank
@@ -218,10 +239,12 @@ enum SuggestField {
     FloorWaiter,
     /// Settings: bulk price by category name.
     BulkCat,
+    /// Floor: tables per row (Fit screen, 1, 2 … or any typed number).
+    FloorColumns,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 27] = [
+    const ALL: [SuggestField; 28] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -249,6 +272,7 @@ impl SuggestField {
         SuggestField::ResvTable,
         SuggestField::FloorWaiter,
         SuggestField::BulkCat,
+        SuggestField::FloorColumns,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -281,6 +305,7 @@ impl SuggestField {
             SuggestField::ResvTable => "resv_table",
             SuggestField::FloorWaiter => "floor_waiter",
             SuggestField::BulkCat => "bulk_cat",
+            SuggestField::FloorColumns => "floor_cols",
         }
     }
 
@@ -313,6 +338,7 @@ impl SuggestField {
             SuggestField::ResvTable => ids!(resv_table_input),
             SuggestField::FloorWaiter => ids!(floor_waiter_filter),
             SuggestField::BulkCat => ids!(bulk_cat_input),
+            SuggestField::FloorColumns => ids!(floor_cols_input),
         }
     }
 
@@ -345,9 +371,19 @@ impl SuggestField {
             SuggestField::ResvTable => ids!(resv_table_suggest),
             SuggestField::FloorWaiter => ids!(floor_waiter_suggest),
             SuggestField::BulkCat => ids!(bulk_cat_suggest),
+            SuggestField::FloorColumns => ids!(floor_cols_suggest),
         }
     }
 }
+
+/// The tile slots of one floor row (`FloorList` `Item`), left to right:
+/// slot `k` shows column `floor_first_col() + k`.
+const FLOOR_SLOT_IDS: [&[LiveId]; FLOOR_ROW_SLOTS] = [
+    ids!(t0), ids!(t1), ids!(t2), ids!(t3), ids!(t4), ids!(t5),
+    ids!(t6), ids!(t7), ids!(t8), ids!(t9), ids!(t10), ids!(t11),
+    ids!(t12), ids!(t13), ids!(t14), ids!(t15), ids!(t16), ids!(t17),
+    ids!(t18), ids!(t19), ids!(t20), ids!(t21), ids!(t22), ids!(t23),
+];
 
 /// Settings → Where things print: tap one of these to put that pool printer
 /// on the focused route (Bill / station). Slots match the DSL below.
@@ -395,6 +431,35 @@ const CATEGORY_CHIPS: [(&[LiveId], &[LiveId]); 24] = [
     (ids!(cat_23), ids!(cat_23_on)),
 ];
 
+/// Floor area tab chips (`floor_area_0`…`floor_area_23`) — one selected area
+/// at a time; that tab's body owns Columns + tables.
+const FLOOR_AREA_CHIPS: [(&[LiveId], &[LiveId]); 24] = [
+    (ids!(floor_area_0), ids!(floor_area_0_on)),
+    (ids!(floor_area_1), ids!(floor_area_1_on)),
+    (ids!(floor_area_2), ids!(floor_area_2_on)),
+    (ids!(floor_area_3), ids!(floor_area_3_on)),
+    (ids!(floor_area_4), ids!(floor_area_4_on)),
+    (ids!(floor_area_5), ids!(floor_area_5_on)),
+    (ids!(floor_area_6), ids!(floor_area_6_on)),
+    (ids!(floor_area_7), ids!(floor_area_7_on)),
+    (ids!(floor_area_8), ids!(floor_area_8_on)),
+    (ids!(floor_area_9), ids!(floor_area_9_on)),
+    (ids!(floor_area_10), ids!(floor_area_10_on)),
+    (ids!(floor_area_11), ids!(floor_area_11_on)),
+    (ids!(floor_area_12), ids!(floor_area_12_on)),
+    (ids!(floor_area_13), ids!(floor_area_13_on)),
+    (ids!(floor_area_14), ids!(floor_area_14_on)),
+    (ids!(floor_area_15), ids!(floor_area_15_on)),
+    (ids!(floor_area_16), ids!(floor_area_16_on)),
+    (ids!(floor_area_17), ids!(floor_area_17_on)),
+    (ids!(floor_area_18), ids!(floor_area_18_on)),
+    (ids!(floor_area_19), ids!(floor_area_19_on)),
+    (ids!(floor_area_20), ids!(floor_area_20_on)),
+    (ids!(floor_area_21), ids!(floor_area_21_on)),
+    (ids!(floor_area_22), ids!(floor_area_22_on)),
+    (ids!(floor_area_23), ids!(floor_area_23_on)),
+];
+
 /// The page's visible window in screen coordinates (top, height): set by
 /// the app every event, read by lists that draw only what is on screen.
 fn page_viewport() -> &'static Mutex<(f64, f64)> {
@@ -416,17 +481,42 @@ fn page_window(top: f64, rows: usize, row_h: f64, gap: f64) -> (usize, usize) {
     (from.min(rows), to)
 }
 
-/// Floor grid pitch: area headings are short; tile rows match FloorTile 176 + pad.
+/// Floor grid pitch: area headings are short; tile rows are a tile + gap.
+/// Production FloorList windows by area-block height; these helpers keep the
+/// older FloorRow pitch algorithm under test.
+#[cfg(test)]
 fn floor_row_pitch(row: &FloorRow) -> f64 {
     match row {
         FloorRow::Area(_) => 34.0,
-        FloorRow::Tiles(_) => 186.0,
+        FloorRow::Tiles(_) => FLOOR_TILE_H + FLOOR_TILE_GAP,
     }
+}
+
+/// Width of a floor row of `cols` tiles.
+fn floor_grid_width(cols: usize) -> f64 {
+    let cols = cols.max(1) as f64;
+    cols * FLOOR_TILE_W + (cols - 1.0) * FLOOR_TILE_GAP
+}
+
+/// Columns `first..last` of a floor row that show in the sideways viewport
+/// (`vp_left`, `vp_w`) when the row starts at `row_left` — at most
+/// [`FLOOR_ROW_SLOTS`]. Before the viewport is known, the first columns.
+fn floor_col_window(row_left: f64, vp_left: f64, vp_w: f64, cols: usize) -> (usize, usize) {
+    if vp_w <= 1.0 {
+        return (0, cols.min(FLOOR_ROW_SLOTS));
+    }
+    let pitch = FLOOR_TILE_W + FLOOR_TILE_GAP;
+    let first = ((vp_left - row_left) / pitch).floor().max(0.0) as usize;
+    let first = first.min(cols);
+    let last = ((vp_left + vp_w - row_left) / pitch).ceil().max(0.0) as usize;
+    let last = last.clamp(first, cols).min(first + FLOOR_ROW_SLOTS);
+    (first, last)
 }
 
 /// Page-window for Floor's mixed header/tile rows. Returns
 /// `(first, last, height_before_first, height_of_drawn_slice)` so the list can
 /// expand to full content height while only painting on-screen rows.
+#[cfg(test)]
 fn floor_page_window(top: f64, rows: &[FloorRow], gap: f64) -> (usize, usize, f64, f64) {
     let n = rows.len();
     if n == 0 {
@@ -489,32 +579,27 @@ fn product_grid_cols() -> &'static Mutex<usize> {
     C.get_or_init(|| Mutex::new(2))
 }
 
-/// How many tiles fit across `width` (or the last drawn / content width).
-/// Smallest supported width (~320) → **1** column; more columns only when
-/// another preferred-width tile fits (looks big, not cramped).
+/// How many whole tiles fit across `width` (or the content width) — the
+/// "Fit screen" column count. At least 1 (the 375 css px app floor shows one).
 fn floor_columns_for(width: f64) -> usize {
     let w = if width.is_finite() && width > 0.0 {
         width
     } else {
         *content_width().lock().unwrap()
     };
-    (((w + 10.0) / (FLOOR_TILE_MIN_W + 10.0)).floor() as usize).clamp(1, FLOOR_MAX_COLUMNS)
+    (((w + FLOOR_TILE_GAP) / (FLOOR_TILE_W + FLOOR_TILE_GAP)).floor() as usize).max(1)
 }
 
-/// Columns the floor grid last drew (falls back to content-width estimate).
+/// Columns the floor grid last drew (taps map through the same count).
 fn floor_columns() -> usize {
-    let drawn = *floor_grid_cols().lock().unwrap();
-    if drawn >= 1 {
-        drawn.clamp(1, FLOOR_MAX_COLUMNS)
-    } else {
-        floor_columns_for(*content_width().lock().unwrap())
-    }
+    (*floor_grid_cols().lock().unwrap()).max(1)
 }
 
 /// Floor rows in order: each area's heading, then its tables in rows of
 /// `cols` (the list is already sorted area by area, D1, D2 … D10).
+#[cfg(test)]
 fn floor_rows(tables: &[DiningTable], cols: usize) -> Vec<FloorRow> {
-    let cols = cols.clamp(1, FLOOR_MAX_COLUMNS);
+    let cols = cols.max(1);
     let named = tables.iter().any(|t| !t.area.is_empty());
     let mut rows = Vec::new();
     let mut i = 0;

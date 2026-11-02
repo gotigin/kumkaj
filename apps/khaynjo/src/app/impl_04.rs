@@ -60,6 +60,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(buy_expense_add)).set_text(cx, &s("save_expense"));
         self.ui.widget(cx, ids!(h_buy_expense)).set_text(cx, &plain_display_text(&s("expense_heading")));
         self.ui.text_input(cx, ids!(buy_unit_input)).set_empty_text(cx, s("buy_unit_ph"));
+        self.ui.text_input(cx, ids!(floor_cols_input)).set_empty_text(cx, s("floor_cols_ph"));
         self.ui.button(cx, ids!(buy_parts_add)).set_text(cx, &s("add_another_way"));
         {
             let help = self.ui.widget(cx, ids!(books_help)).as_info_help();
@@ -379,6 +380,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             e.key_code,
             KeyCode::ArrowUp
                 | KeyCode::ArrowDown
+                | KeyCode::ArrowLeft
+                | KeyCode::ArrowRight
                 | KeyCode::PageUp
                 | KeyCode::PageDown
                 | KeyCode::Home
@@ -396,6 +399,41 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             return false;
         }
         let screen = app_state().lock().unwrap().screen;
+        // ← / → pan the focused table's area (or the first area) one column.
+        if matches!(e.key_code, KeyCode::ArrowLeft | KeyCode::ArrowRight) {
+            if screen != Screen::Floor {
+                return false;
+            }
+            let area_idx = {
+                let st = app_state().lock().unwrap();
+                let tables = floor_filtered_tables(&st);
+                let areas = floor_area_groups(&tables);
+                let want = st
+                    .floor_focus_table_id
+                    .as_ref()
+                    .and_then(|id| tables.iter().position(|t| &t.id == id))
+                    .and_then(|ti| {
+                        areas.iter().position(|(_, idxs)| idxs.contains(&ti))
+                    });
+                want.unwrap_or(0)
+            };
+            let list = self.ui.widget(cx, ids!(floor_list)).portal_list(cx, ids!(list));
+            let item = list.item(cx, area_idx, id!(Item));
+            let view = item.view(cx, ids!(area_scroll));
+            let pos = view.get_scroll_pos();
+            let max_x = (view.get_scroll_view_total().x - view.get_scroll_view_visible().x).max(0.0);
+            let step = FLOOR_TILE_W + FLOOR_TILE_GAP;
+            let new_x = if e.key_code == KeyCode::ArrowLeft {
+                (pos.x - step).max(0.0)
+            } else {
+                (pos.x + step).min(max_x)
+            };
+            if (new_x - pos.x).abs() >= 0.5 {
+                view.set_scroll_pos(cx, dvec2(new_x, pos.y));
+                view.redraw(cx);
+            }
+            return true;
+        }
         let view = self.ui.view(cx, Self::screen_scroll_view(screen));
         let pos = view.get_scroll_pos();
         let total = view.get_scroll_view_total();
@@ -1021,9 +1059,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (drill-down via `go`); peers use
-    /// `go_peer` which clears stacks then calls with `record_history: false`.
-    /// Lock/onboard destinations also clear history.
+    /// Push history when `record_history` (`go` / `go_peer`). Lock/onboard
+    /// destinations clear stacks via `screen_keeps_history`.
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1049,9 +1086,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.go_with(cx, screen, true);
     }
 
-    /// Chrome peer switch: replace screen as a new root (clears back/forward).
+    /// Chrome peer switch (bottom nav / side rail / shortcuts).
+    /// Records visit history like a browser so mouse Back/Forward, Alt+←/→,
+    /// edge swipe, and Android back can move between screens. Lock / first-run
+    /// still clear stacks via `screen_keeps_history`.
     fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
-        self.go_with(cx, screen, false);
+        self.go_with(cx, screen, true);
     }
 
     fn go_with(&mut self, cx: &mut Cx, screen: Screen, push_history: bool) {

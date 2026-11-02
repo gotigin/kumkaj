@@ -72,7 +72,7 @@ Loads [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env
 - Multi-script UI fonts live **per app**: `apps/moklanjo/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing. **Desktop icon fonts — do not regress (2026-11-02):** see § WorldFonts / packaged icon fonts below.
 - **Desktop window size & maximize** — see § below.
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
-- **Min layout width 320 css px** — `app_shell` uses `Fill{min: 320.}` inside a horizontal scroll. The UI never lays out narrower than 320; if the device/window is below 320, content scrolls horizontally
+- **Min layout width 375 css px** — `app_shell` uses `Fill{min: 375.}` inside a horizontal scroll. The UI never lays out narrower than 375; if the device/window is below 375, content scrolls horizontally (no crop). Desktop resize is also floored at 375.
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
 - **Button label inset** — every face within an app sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
 - **Reusable layout widgets** — see § Makepad 2 UI faces (agent guide) below (selection + truncation). Product summary: [`DESIGN.md`](DESIGN.md) § Makepad 2 faces.
@@ -88,7 +88,7 @@ Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Moklanjo
 | Max button (single click) | Toggle maximize ↔ restore |
 | Caption bar double-click | **Same** toggle as the max button (not a second code path) |
 | Restore with no saved float size | **1024×768** (never a monitor-fill size) |
-| Resize floor | **320 css px** width and height |
+| Resize floor | **375 css px** width and height |
 
 `window_geom.json` must **never** store maximized/fullscreen geometry. Persisting ~monitor size (e.g. `2560×1048` on an ultrawide) made the next launch look maximized while floating; the next `set_maximized` then fought Mutter on multi-monitor layouts.
 
@@ -179,6 +179,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
    - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit** — including left-aligned rail tabs (`TabBtn` / `HubDestBtn` / sidebar rows), not only centered CTAs. Patch `button_label_center`: **when the face wraps, always Fit the label**; centered faces still center via `text_align` + `ink_centered`. **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3).
    - **Parent View:** never put `width: Fill` children (`NavBtn`, `Stack*`, `SegBtn`, …) inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit-width chips in a wrapping strip.
    - **Busy chrome:** never swap sibling `ActionStack` faces or toggle a Fill wrap CTA `visible` to show Cancel during Add/Find. Change the submit label in place; Cancel is a `QuietFitBtn` (Fit, no wrap) shown beside/under the stack.
+   - **InfoHelp (title+ℹ pack):** Always **`width: Fit`** (`Fit{max: parent}` OK) so title+ℹ stay one cluster — gap only `tip_btn.margin.left` (6). **Never Fill** on InfoHelp or its title (parks ℹ at row end; lock screen, 2026-11). Title is **`WrapLabel` Fit{max: parent}** (wraps at 375; never `Label{width:Fill, wrap}` — turtle NaN). Empty title hidden. Do not “fix” crop by switching to Fill. Sibling heading beside InfoHelp is Fit too; row `spacing: 0`. Regression: `shell_tests/info_help_layout_tests.rs` in each app.
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
@@ -628,6 +629,7 @@ connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
 | `GET /display` `/tokens` `/expo` `/kiosk` `/t/{table}` `/feedback` (Khaynjo) | anyone on the shop Wi‑Fi | guest / second-screen pages; table QR and kiosk add only dishes the guest menu offers, at most 50 per request, as pending lines staff see before Send KOT |
 | `POST /pair` | anyone (rate-limited) | pairing code → device token |
 | `GET /sync` | paired device | snapshot of the books — **no PIN or password hashes, no pairing code** |
+| `GET /photo?kind=item\|party&file=<id>.webp` (Moklanjo) · `GET /item-image?key=…` (Khaynjo) | paired device | one photo the snapshot names only by key (`lan_images` fetches and caches it on the device) — Moklanjo takes a **bare file name only**, never a path |
 | `POST /login` | paired device | staff PIN checked **on the server** → session |
 | `POST /sale` `/settle` `/undo` `/void` `/refund` `/amend` | signed-in device | money writes, done as the signed-in person |
 | `POST /kot` `/running` `/kot_advance` `/table_billing` (Khaynjo) | signed-in device | kitchen and table actions |
@@ -786,8 +788,11 @@ DISPLAY=:99 xdotool mousemove X Y click 1  # drive it
 DISPLAY=:99 import -window root shot.png   # and look
 ```
 
-Seed realistic data first (Khaynjo: `tests/visual_seed.rs`, opt-in) so
-every state is on screen, not just the empty one.
+Seed realistic data first (each app's own `tests/visual_seed.rs`, opt-in) so
+every state is on screen, not just the empty one. Khaynjo: `SEED_DB=<…/khaynjo.sqlite3>`.
+Moklanjo: `SEED_DATA_DIR=<empty folder>` creates the office server there (owner
+PIN 1234, cashier Asha 2222, bookings in every desk state, logos) — start the
+app with `KUMKAJ_DATA_DIR=<same folder>`, pick Server, open "Swift Courier".
 
 Makepad visual traps found this way (do not reintroduce):
 
@@ -826,6 +831,14 @@ Makepad visual traps found this way (do not reintroduce):
     unlabelled numbers. Fields set `float_caption: true` (Makepad patch
     `text_input_float_caption`): once filled, the placeholder's short form
     stays as a small label; empty, the placeholder stays centred.
+    The patch gives `draw_caption` **no style of its own**: set the whole
+    style, `draw_caption +: { color: … text_style: theme.font_regular{font_size: 10.5} }`.
+    `text_style +: {font_size: …}` only patches the size onto a style with no
+    font, so the caption draws nothing and a filled field shows a blank band
+    above its value (Moklanjo until 2026-11-02; Khaynjo had it right). Fields
+    that sit beside their own label with a "0" placeholder (cart / totals)
+    turn the caption off; a placeholder must name the field ("Price", never
+    "0") or the caption reads "0".
 12. **xdotool cannot type into Makepad fields under X input methods** —
     launch the app with `XMODIFIERS=@im=none` on the virtual display.
 13. **A screen scrolls as one page** (two separately scrolling halves were
@@ -846,6 +859,9 @@ Makepad visual traps found this way (do not reintroduce):
     `sync_tab_chevrons` in each app). The chevron is *drawn* by the
     `ChevronBtn` face's shader (`draw_bg.point` 1 = ›, −1 = ‹), never a
     "‹ ›" glyph: a glyph sits on the text baseline and read low in the strip.
+    Chevrons **overlay** the strip (~46px): bottom-nav content end padding must
+    be ≥ that width, and chevron clicks **snap to the next tab** (or step ≈½ the
+    clear viewport) — a 70% viewport jump skipped tabs on phones (2026-11).
 17. **Count every list a sync carries against months of data.** Khaynjo's
     open kitchen tickets were never closed by a kitchen that cooks from the
     paper KOT, so every tablet's sync grew to 3 MB at 9,000 bills (it is
@@ -857,13 +873,11 @@ Makepad visual traps found this way (do not reintroduce):
     text field has focus — a focused button must not swallow them);
     Back/Forward history across screens (mouse back/forward buttons,
     Alt+←/→, edge swipe, Android back; lock and first-run setup clear it).
-    **Peer vs drill-down:** chrome tabs (bottom nav / side rail) call
-    `go_peer` / `go_peer_if_allowed` — replace the screen as a new root and
-    clear `nav_back` + `nav_forward` (no Back chrome on peers). Nested
-    screens (`go` / `go_if_allowed`) push history — e.g. Settings → Sidebar
-    settings, Order → Floor pick-table (Khaynjo). Peer destinations opened
-    from another screen (Settings → Branches, Books shortcuts, undo → Sell)
-    also use `go_peer` so Back does not invent a fake parent.     Back chrome /
+    **Visit history:** chrome tabs (bottom nav / side rail) and nested
+    screens both push `nav_back` / clear `nav_forward` via `go` /
+    `go_peer` / `go_peer_if_allowed` — Floor → Order → mouse Back returns
+    to Floor, same as a browser. Nested drill-downs (Settings → Sidebar
+    settings, Order → Floor pick-table) use the same stack. Back chrome /
     mouse/Android back **pops** (`navigate_back`), with empty-stack fallbacks
     (SidebarSettings → Settings, ClientPair → DeviceSetup). Auth screens
     (Lock / DeviceSetup / Onboard / ClientPair) hide the unlocked header, so
@@ -886,12 +900,24 @@ Makepad visual traps found this way (do not reintroduce):
     page; text select-drag starts on long-press only (`text_flow_touch_scroll`)
     — otherwise WrapLabels covering DeviceSetup / help stole every swipe.
     Stuck Empty scroll-blocks clear on wheel (`scroll_bar_orphan_unblock`) and
-    on touch when nothing is captured (`scroll_touch_orphan_unblock`). Nested
+    on touch when nothing is captured (`scroll_touch_orphan_unblock`).
+    **Nested scroll views of different axes** (a sideways region in a
+    downward page, the Order desk's columns, the app-wide `app_hscroll`)
+    set `axis_lock: true` on their bars (Makepad patch `scroll_axis_lock`;
+    Khaynjo's page/strip/desk views all do): a press-drag waits 8px, then
+    goes whole to the bar whose axis dominates and that can scroll — never
+    to whichever saw a 2px jitter first. Same flag: Shift+wheel scrolls
+    sideways (vertical bars leave it). Nested
     scroll chaining: inner list keeps the wheel only while it can still move
     that way; at the edge the page/desk takes over (DEV §13). Every
     `ScrollYView` keeps **right padding 16** so content never sits flush on
     the vertical scrollbar; desk `ScrollX` keeps **bottom padding** clear of
     the horizontal bar.
+15b. **A `width: Fill` child of a scroll view is laid out from its declared
+    walk**, deferred, so a width set later in its own `draw_walk` never
+    reaches the parent's measurement: `ScrollXView` saw 0 content and the
+    Floor would not scroll sideways (2026-11-02). A child that sizes itself
+    at draw time declares `width: Fit` (`FloorList`).
 16. **`ScrollYView{…}` in the DSL binds when the widgets are imported** —
     overriding `mod.widgets.ScrollYView` later changes nothing unless the
     name is re-bound (`let ScrollYView = mod.widgets.ScrollYView`). The
@@ -1118,12 +1144,16 @@ Both apps show a leveled snackbar above the bottom chrome (`app_snackbar`),
 separate from the post-charge **Undo** snackbar. Same Makepad UI on **Linux,
 Windows, macOS, and Android** (phone bottom nav and desktop rail).
 
-| Kind | Typical use | Auto-hide |
+| Kind | Typical use | Auto-hide (base = the user's time, default 10 s) |
 |---|---|---|
-| Info | Neutral status | 4s |
-| Success | Saved / posted / copied | 4s |
-| Warn | Read-only / retry / partial | 6s |
-| Error | Failures / not allowed | 8s |
+| Info | Neutral status | base (Khaynjo: base) |
+| Success | Saved / posted / copied | base (Khaynjo: base) |
+| Warn | Read-only / retry / partial | Moklanjo 1.5 × base · Khaynjo base |
+| Error | Failures / not allowed | Moklanjo 2 × base · Khaynjo base |
+
+The base is per signed-in user (Settings → Alerts, 3–60 s, books meta
+`ui_snack_secs:<user>`). The old fixed 4 s went before a busy counter could
+read it. Moklanjo keeps warnings and errors lingering longer (capped at 60 s).
 
 API (per app `main.rs`): `show_snack` / `show_error` / `show_warn` / `show_ok`,
 `clear_snack`. `set_status` classifies the message (`snack::classify`) and shows
@@ -1156,7 +1186,6 @@ where to save the bundle (Downloads / USB / Android document picker). Local
 export does not need approval. Privacy note in the package: used only to
 fix/improve the product; not sold or given to third parties.
 
-**Controls:** Settings → Diagnostics (Khaynjo hub panel; Moklanjo section on
-Settings). Clear logs; uninstall UI wipe removes the `diag/` folder.
+**Controls:** Settings → Diagnostics (a hub section in both apps). Clear logs; uninstall UI wipe removes the `diag/` folder.
 
 **Tests:** `cargo test -p kumkaj-khaynjo diag::` / `kumkaj-moklanjo diag::`.

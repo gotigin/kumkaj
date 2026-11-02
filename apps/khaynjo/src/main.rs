@@ -91,3 +91,4 @@ include!("shell_tests/nav_order_tests.rs");
 include!("shell_tests/ux_rules_tests.rs");
 include!("shell_tests/menu_window_tests.rs");
 include!("shell_tests/floor_tests.rs");
+include!("shell_tests/info_help_layout_tests.rs");

@@ -723,7 +723,7 @@ script_mod! {
     // Side-by-side row actions — same height/margins so mixed primary/secondary
     // never sit on different baselines (Makepad Fill+theme margin misaligns).
     // Defined as full Button (not PinOkKey alias) so padding always applies.
-    // Prefer ActionStack when labels are longer than ~4 chars at 320px width.
+    // Prefer ActionStack when labels are longer than ~4 chars at the 375px floor.
     // Row faces wrap (no ellipsis) so half-width ActionRow still shows full text.
     let RowPrimaryBtn = Button{
         width: Fill height: Fit
@@ -974,8 +974,18 @@ script_mod! {
             text_style +: {font_size: 15.}
         }
     }
+    // Settings hub row mark: a Font Awesome glyph (WorldFonts `icons`) in the
+    // HubDestBtn's left pad — same slot the Books hub fills with a nav image.
+    let SettingsHubMark = Label{
+        width: 24 height: Fit
+        align: Align{x: 0.5 y: 0.5}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        draw_text.color: #x072058
+        draw_text.text_style.font_size: 15.
+        text: ""
+    }
     // Prefer ActionStack for CTAs. ActionRow only for 2 ultra-short labels
-    // (≤4 chars) — Fill NavBtn/PayBtn in a Right row becomes "..." at ~320px.
+    // (≤4 chars) — Fill NavBtn/PayBtn in a Right row becomes "..." near the 375px floor.
     let ActionRow = View{
         width: Fill height: Fit
         flow: Right spacing: 8
@@ -1595,17 +1605,24 @@ script_mod! {
             color_empty_focus: #x0B1220
             text_style +: {font_size: 16.}
         }
-        // Float caption uses draw_caption (not draw_text). Unstyled defaults are
-        // light/theme ink → invisible on the white well; value then looks
-        // "stuck at the bottom with no label".
+        // Float caption uses draw_caption (not draw_text), and Makepad gives
+        // draw_caption no style of its own: `text_style +:` only patched the
+        // size onto a style with no font, so the caption drew nothing and a
+        // filled field showed a blank band above its value (2026-11-02). Set
+        // the whole text_style from the theme font (WorldFonts, every script)
+        // — as Khaynjo's FieldInput does.
         draw_caption +: {
             color: #x3A4554
-            text_style +: {font_size: 11.}
+            text_style: theme.font_regular{font_size: 10.5}
         }
     }
 
     // Compact cart / totals field — same caret as FieldInput; tighter padding.
+    // These sit beside their own labels (Unit @, Applied, ROUNDED) with "0"
+    // as placeholder: no floating caption (a "0" over the value). A cart
+    // field with no label beside it turns it back on (the line note).
     let CartField = FieldInput{
+        float_caption: false
         padding: Inset{left: 10. right: 10. top: 12. bottom: 12.}
         draw_bg +: {
             color: #xffffff
@@ -1825,12 +1842,14 @@ script_mod! {
     // Screen title + info tip. Hover or tap the ℹ to open a CalloutTooltip
     // (smart placement: below by default, flips above / clamps to edges).
     // One window-level CalloutTooltip hosts every tip — see app_callout.
+    // ALWAYS Fit so title+ℹ pack as one cluster (gap = tip_btn.margin.left 6
+    // only). Never width: Fill — that parks ℹ at the row end. Title is
+    // WrapLabel Fit{max: parent} so long / translated headings wrap at 375
+    // instead of mid-cropping; Label{width:Fill, wrap} NaNs (DEV bug 7).
+    // Parent rows with an external heading beside InfoHelp use spacing: 0.
     mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
     mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
-        // Fit so title+ℹ pack as one cluster; do not stretch ℹ to the row end.
-        // Title→ℹ gap is ONLY tip_btn.margin.left (6). Parent rows that place an
-        // external title beside InfoHelp must use spacing: 0 so the gap stays 6.
-        width: Fit
+        width: Fit{max: FitBound.Rel{base: Base.Full, factor: 1.0}}
         height: Fit
         flow: Right
         spacing: 0
@@ -1845,12 +1864,15 @@ script_mod! {
             visible: false
             margin: Inset{left: 0. right: 6. top: 0. bottom: 0.}
         }
-        title := Label{
-            width: Fit height: Fit
-            text: ""
+        title := WrapLabel{
+            width: Fit{max: FitBound.Rel{base: Base.Full, factor: 1.0}}
+            height: Fit
+            body: ""
+            // Hidden until set_title — empty title must not take layout.
+            visible: false
+            font_size: 20.
+            font_color: #x0B1220
             margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-            draw_text.color: #x0B1220
-            draw_text.text_style.font_size: 20.
         }
         tip_btn := Button{
             width: 32 height: 32
@@ -2212,9 +2234,13 @@ script_mod! {
             mod_2 := RoleChip{text: ""}
             mod_next := RoleChevronBtn{}
         }
+        // No label beside the note: once typed, "Note" floats above it. Fit
+        // height with FieldInput's 15 px padding — at a fixed 48 the caption
+        // sat on the border and the text on the floor.
         note := CartField{
-            height: 48
-            padding: Inset{left: 10. right: 10. top: 10. bottom: 10.}
+            float_caption: true
+            height: Fit
+            padding: Inset{left: 10. right: 10. top: 15. bottom: 15.}
             empty_text: "Note (optional)"
             text: ""
             draw_text +: {
@@ -2806,7 +2832,7 @@ script_mod! {
                 window.title: "Kumkaj"
                 // First-run desktop default (not a phone frame). Later launches
                 // restore last size/position from window_geom.json in App code.
-                // Layout content still never goes below 320 css px (app_shell).
+                // Layout content still never goes below 375 css px (app_shell).
                 window.inner_size: vec2(1024, 768)
                 pass.clear_color: #xD6E0EC
                 caption_bar +: {
@@ -2840,12 +2866,12 @@ script_mod! {
                     // app_hscroll or it steals half the window height (every
                     // screen looks split: content above, empty below).
                     flow: Overlay
-                    // Min layout width 320 css px. Narrower viewports scroll horizontally
+                    // Min layout width 375 css px. Narrower viewports scroll horizontally
                     // instead of crushing faces below that floor.
                     app_hscroll := ScrollXView{
                         width: Fill height: Fill
                         app_shell := View{
-                            width: Fill{min: 320.} height: Fill
+                            width: Fill{min: 375.} height: Fill
                             // Wide (≥720): side rail. Narrow: bottom tabs. See apply_shell_layout.
                             flow: Right spacing: 0
 
@@ -3345,7 +3371,6 @@ script_mod! {
                                             // not at the far end of the row.
                                             setup_lang_hdr := AccordionHdrBtn{width: Fit text: "LANGUAGE"}
                                             setup_lang_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Follow this device’s language, or pick one yourself."
                                             }
                                         }
@@ -3389,7 +3414,6 @@ script_mod! {
                                             align: Align{y: 0.5}
                                             setup_role_hdr := AccordionHdrBtn{width: Fit text: "THIS DEVICE"}
                                             setup_device_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Server keeps the books here. Client pairs to a Server."
                                             }
                                         }
@@ -3408,7 +3432,6 @@ script_mod! {
                                                 flow: Down spacing: 12
                                                 visible: false
                                                 server_pick_help := InfoHelp{
-                                                    width: Fit
                                                     tip: "Open an existing server, or create one for another business."
                                                 }
                                                 server_name_input := FieldInput{empty_text: "New server name (optional)"}
@@ -3582,7 +3605,6 @@ script_mod! {
                                         draw_bg.border_size: 1.
                                         draw_bg.border_color: #xE0E8F0
                                         pin_help := InfoHelp{
-                                            width: Fit
                                             tip: "4–12 digits. System keyboard only — Enter unlocks."
                                         }
                                         View{
@@ -3606,7 +3628,6 @@ script_mod! {
                                     }
 
                                     lock_login_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional: unlock with login id and password instead of PIN."
                                     }
                                     lock_login_id := FieldInput{empty_text: "Login id"}
@@ -3666,7 +3687,6 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             onboard_icon_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Optional shop mark on screens in the app."
                                             }
                                         }
@@ -3696,7 +3716,6 @@ script_mod! {
                                         selectable: false
                                     }
                                     onboard_tmpl_help := InfoHelp{
-                                        width: Fit
                                         tip: " "
                                     }
                                 }
@@ -3775,7 +3794,6 @@ script_mod! {
                                         font_size: 22.
                                     }
                                     client_pair_help := InfoHelp{
-                                        width: Fit
                                         tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
                                     }
                                 }
@@ -3803,14 +3821,7 @@ script_mod! {
                                 client_code_input := FieldInput{empty_text: "Pairing code"}
                                 // How the office's server lists this device (Forget picks it by this).
                                 // Filled with this device's own name: keep a small label on it.
-                                client_name_input := FieldInput{
-                                    empty_text: "This device's name"
-                                    float_caption: true
-                                    draw_caption +: {
-                                        color: #x3A4554
-                                        text_style: theme.font_regular{font_size: 10.5}
-                                    }
-                                }
+                                client_name_input := FieldInput{empty_text: "This device's name"}
                                 client_pair_btn := PinOkKey{text: "Pair now"}
                                 client_sync_btn := NavBtn{text: "Refresh from shop"}
                                 client_queue_label := mod.widgets.ReportText{}
@@ -3829,7 +3840,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 books_help := InfoHelp{
-                                    width: Fit
                                     tip: "Today’s position. Booking = parcels in. Pay out = carrier bills & expenses. Parties = consignors & carriers."
                                 }
                                 books_backup_warning := WrapLabel{body: " " font_color: #xC44E10 font_size: 14. visible: false}
@@ -4138,7 +4148,6 @@ script_mod! {
                                     }
                                 }
                                 booking_help := InfoHelp{
-                                    width: Fit
                                     tip: "Consignor + consignee (blank OK) → destination → weigh → pick rate → Account/Cash → pay. AWB prints on the receipt. Next booking clears the desk. Rounded starts equal to Applied — edit only to round the bill."
                                 }
                             }
@@ -4177,7 +4186,6 @@ script_mod! {
                                         font_size: 14.
                                     }
                                     booking_consignor_help := InfoHelp{
-                                        width: Fit
                                         tip: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
                                     }
                                 }
@@ -4203,7 +4211,6 @@ script_mod! {
                                         font_size: 14.
                                     }
                                     booking_consignee_help := InfoHelp{
-                                        width: Fit
                                         tip: "Receiver of the parcel. Leave blank for walk-in counter drop-offs."
                                     }
                                 }
@@ -4224,7 +4231,6 @@ script_mod! {
                                 // air — same desk-chip pattern as kg/lb. Settings keep the
                                 // shop default; this only changes maths for the open booking.
                                 booking_scope_help := InfoHelp{
-                                    width: Fit
                                     tip: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
                                 }
                                 View{
@@ -4538,7 +4544,6 @@ script_mod! {
                                             font_size: 12.
                                         }
                                         payment_help := InfoHelp{
-                                            width: Fit
                                             tip: "Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above."
                                         }
                                     }
@@ -4603,7 +4608,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 items_help_label := InfoHelp{
-                                    width: Fit
                                     tip: "Each row is a rate (e.g. Surface Zone A). Unit is usually kg. Tap to edit."
                                 }
                                 FormCard{
@@ -4615,7 +4619,7 @@ script_mod! {
                                     empty_text: "Aliases — other names, comma separated"
                                 }
                                 FormFieldRow{
-                                    menu_price_input := FieldInput{empty_text: "0"}
+                                    menu_price_input := FieldInput{empty_text: "Price"}
                                     menu_unit_input := FieldInput{empty_text: "Unit (kg or blank)"}
                                 }
                                 menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
@@ -4652,7 +4656,6 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     item_photo_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional. Without a photo we show initials from the item name."
                                     }
                                 }
@@ -4697,7 +4700,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 buy_help := InfoHelp{
-                                    width: Fit
                                     tip: "Money out: goods received (purchase) or running costs (expense). Same books as Booking."
                                 }
                                 h_goods_received := WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
@@ -4797,7 +4799,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 more_help := InfoHelp{
-                                    width: Fit
                                     tip: "Catalogue, sales, credit, team, backup — plus stock and extra tills when needed."
                                 }
                                 more_items := MoreRow{text: "Rates & services"}
@@ -4830,7 +4831,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 sales_help := InfoHelp{
-                                    width: Fit
                                     tip: "Select a sale to amend, void, or refund. Amendments keep full history. Rounded Total starts equal to Applied — edit only to round. Void and refund may need an Owner or Manager PIN."
                                 }
                                 sale_selected_label := WrapLabel{
@@ -4950,7 +4950,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 credit_help := InfoHelp{
-                                    width: Fit
                                     tip: "Party id is unique (names may repeat). Roles: Consignor (AR), Carrier (AP), or both on that id. Ledgers stay separate; reports show net."
                                 }
                                 FormCard{
@@ -5036,7 +5035,6 @@ script_mod! {
                                     h_party_custom_heading := WrapLabel{ width: Fit
                                                     body: "Custom fields" font_color: #x0B1220 font_size: 15.}
                                     party_custom_help := InfoHelp{
-                                        width: Fit
                                         tip: "Add any label and value on this party — WhatsApp, GSTIN, route code, …"
                                     }
                                 }
@@ -5121,7 +5119,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 team_help := InfoHelp{
-                                    width: Fit
                                     tip: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
                                 }
                                 staff_label := mod.widgets.ReportText{}
@@ -5158,7 +5155,6 @@ script_mod! {
                                 }
                                 FormCard{
                                 h_optional_login_help := InfoHelp{
-                                    width: Fit
                                     tip: "Optional login (id + password). Owner sets once; only the user can change password later."
                                 }
                                 staff_login_input := FieldInput{empty_text: "Login id (optional)"}
@@ -5236,7 +5232,6 @@ script_mod! {
                                     font_size: 13.
                                 }
                                 h_rights_help := InfoHelp{
-                                    width: Fit
                                     tip: "Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed."
                                 }
                                 right_void_btn := NavBtn{text: "Void or refund a booking"}
@@ -5266,7 +5261,6 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     h_duress_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
                                     }
                                 }
@@ -5291,446 +5285,659 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                settings_help := InfoHelp{
-                                    width: Fit
-                                    tip: "Follow this device’s language, or pick one yourself."
+                                // One section at a time (learned on Khaynjo, 2026-10-31): the old
+                                // single page stacked every control and scrolled for ever. Every row
+                                // opens a section, so every row is HubDestBtn + mark (Books hub rule).
+                                settings_hub := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    settings_help := InfoHelp{
+                                        tip: "Follow this device’s language, or pick one yourself."
+                                    }
+                                    ActionStack{
+                                        settings_hub_language_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_language := HubDestBtn{text: "Language & currency"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f1ab}"}
+                                            }
+                                        }
+                                        settings_hub_country_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_country := HubDestBtn{text: "Country & tax"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f0ac}"}
+                                            }
+                                        }
+                                        settings_hub_brand_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_brand := HubDestBtn{text: "Your brand (in-app)"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f1fc}"}
+                                            }
+                                        }
+                                        settings_hub_printers_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_printers := HubDestBtn{text: "Printers on this device"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f02f}"}
+                                            }
+                                        }
+                                        settings_hub_awb_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_awb := HubDestBtn{text: "Carrier AWB number pools"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f02a}"}
+                                            }
+                                        }
+                                        settings_hub_measures_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_measures := HubDestBtn{text: "Booking measures"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f5cd}"}
+                                            }
+                                        }
+                                        settings_hub_units_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_units := HubDestBtn{text: "Units"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f545}"}
+                                            }
+                                        }
+                                        settings_hub_devices_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_devices := HubDestBtn{text: "Extra tills & branches"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f6ff}"}
+                                            }
+                                        }
+                                        settings_hub_alerts_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_alerts := HubDestBtn{text: "Alerts"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f0f3}"}
+                                            }
+                                        }
+                                        settings_hub_backup_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_backup := HubDestBtn{text: "Backup"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f1c0}"}
+                                            }
+                                        }
+                                        settings_hub_diag_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_hub_diag := HubDestBtn{text: "Diagnostics"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f0f1}"}
+                                            }
+                                        }
+                                        sidebar_settings_open_slot := View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            sidebar_settings_open := HubDestBtn{text: "Sidebar settings"}
+                                            View{
+                                                width: Fill height: Fill
+                                                flow: Right
+                                                align: Align{x: 0.0 y: 0.5}
+                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
+                                                SettingsHubMark{text: "\u{f0c9}"}
+                                            }
+                                        }
+                                    }
                                 }
-                                sidebar_settings_open := NavBtn{text: "Sidebar settings"}
-                                locale_label := mod.widgets.ReportText{}
-                                h_country_tax := WrapLabel{body: "Country & tax" font_color: #x0B1220 font_size: 20.}
-                                h_country_pack_help := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 12.
+                                settings_panel_language := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
                                     visible: false
-                                }
-                                FormCard{
-                                fiscal_label := mod.widgets.ReportText{}
-                                country_code_input := FieldInput{
-                                    empty_text: "Country code e.g. IN, GB, US, AE, BR"
-                                }
-                                country_suggest := mod.widgets.SuggestList{field: "country"}
-                                ActionStack{
-                                    country_prev := RowSecondaryBtn{text: "Previous country"}
-                                    country_next := RowSecondaryBtn{text: "Next country"}
-                                }
-                                country_apply := StackPrimaryBtn{text: "Apply country pack"}
-                                country_hint := WrapLabel{
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                country_pack_list := mod.widgets.ReportText{}
-                                }
-                                FormCard{
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        tax_inclusive_btn := SegBtn{text: "Tax inside price"}
-                                        tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        tax_exclusive_btn := SegBtn{text: "Tax added at till"}
-                                        tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
-                                    }
-                                }
-                                business_tax_id_input := FieldInput{empty_text: "Business tax id"}
-                                service_bps_input := FieldInput{
-                                    empty_text: "Service % optional 0/10/12"
-                                }
-                                fiscal_save := StackPrimaryBtn{text: "Save business id"}
-                                }
-                                h_language := WrapLabel{body: "Language" font_color: #x0B1220 font_size: 15.}
-                                h_language_setup_hint := WrapLabel{
-                                    width: Fill
-                                    body: "Follow this device’s language, or pick one yourself."
-                                    font_color: #x0B1220
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Overlay
-                                        settings_lang_platform := StackSecondaryBtn{text: "Use platform native language"}
-                                        settings_lang_platform_on := StackPrimaryBtn{text: "Use platform native language" visible: false}
-                                    }
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Overlay
-                                        settings_lang_user := StackSecondaryBtn{text: "Use user selected language"}
-                                        settings_lang_user_on := StackPrimaryBtn{text: "Use user selected language" visible: false}
-                                    }
-                                }
-                                settings_lang_selected := WrapLabel{
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
-                                language_list := mod.widgets.LanguageList{}
-                                h_currency := WrapLabel{body: "Currency" font_color: #x0B1220 font_size: 15.}
-                                h_currency_use_help := WrapLabel{
-                                    width: Fill
-                                    body: "Scroll and tap Use for any supported currency."
-                                    font_color: #x0B1220
-                                    font_size: 12.
-                                }
-                                currency_list := mod.widgets.CurrencyList{}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_extra_tills_heading := WrapLabel{
-                                        width: Fit
-                                        body: "Extra tills"
+                                    h_settings_language := WrapLabel{body: "Language & currency" font_color: #x0B1220 font_size: 20.}
+                                    locale_label := mod.widgets.ReportText{}
+                                    h_language := WrapLabel{body: "Language" font_color: #x0B1220 font_size: 15.}
+                                    h_language_setup_hint := WrapLabel{
+                                        width: Fill
+                                        body: "Follow this device’s language, or pick one yourself."
                                         font_color: #x0B1220
-                                        font_size: 20.
+                                        font_size: 12.
                                     }
-                                    server_pair_help := InfoHelp{
-                                        width: Fit
-                                        tip: "On the other device: Client Mode → Find server → enter this pairing code."
+                                    ActionStack{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_lang_platform := StackSecondaryBtn{text: "Use platform native language"}
+                                            settings_lang_platform_on := StackPrimaryBtn{text: "Use platform native language" visible: false}
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            settings_lang_user := StackSecondaryBtn{text: "Use user selected language"}
+                                            settings_lang_user_on := StackPrimaryBtn{text: "Use user selected language" visible: false}
+                                        }
                                     }
+                                    settings_lang_selected := WrapLabel{
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 13.
+                                    }
+                                    language_list := mod.widgets.LanguageList{}
+                                    h_currency := WrapLabel{body: "Currency" font_color: #x0B1220 font_size: 15.}
+                                    h_currency_use_help := WrapLabel{
+                                        width: Fill
+                                        body: "Scroll and tap Use for any supported currency."
+                                        font_color: #x0B1220
+                                        font_size: 12.
+                                    }
+                                    currency_list := mod.widgets.CurrencyList{}
                                 }
-                                h_other_devices_help_heading := WrapLabel{
-                                    body: "Set up other devices"
-                                    font_color: #x0B1220
-                                    font_size: 15.
-                                    visible: false
-                                }
-                                h_other_devices_help := WrapLabel{
-                                    width: Fill
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                    visible: false
-                                }
-                                // Big digits stay visible even when firewall/listen notes fill the status line.
-                                pairing_code_value := WrapLabel{
-                                    width: Fit
-                                    body: " "
-                                    font_color: #x0B1220
-                                    font_size: 28.
-                                    selectable: true
-                                    visible: false
-                                }
-                                server_pair_label := WrapLabel{
-                                    width: Fill
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 13.
-                                    selectable: false
-                                }
-                                ActionStack{
-                                    allow_extra_tills := RowPrimaryBtn{text: "Allow extra tills"}
-                                    stop_extra_tills := RowSecondaryBtn{text: "Stop extra tills"}
-                                    allow_firewall := RowPrimaryBtn{text: "Allow other devices to connect" visible: false}
-                                }
-                                autostart_btn := RowSecondaryBtn{text: "Start with this computer" visible: false}
-                                new_pair_code := RowSecondaryBtn{text: "New pairing code" visible: false}
-                                paired_list := mod.widgets.PairedList{}
-                                // A paired device: its link, what waits, what was not accepted.
-                                client_connection_btn := RowSecondaryBtn{text: "Connection to the shop" visible: false}
-                                settings_open_branches := NavBtn{text: "Branches & org"}
-                                h_start_template := WrapLabel{body: "Product" font_color: #x0B1220 font_size: 20.}
-                                settings_tmpl_label := WrapLabel{
-                                    body: "Moklanjo"
-                                    font_color: #x3A4554
-                                    font_size: 13.
-                                }
-                                h_product_only_moklanjo := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                    visible: false
-                                }
-                                FormCard{
-                                h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x0B1220 font_size: 20.}
-                                h_brand_shown_help := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 12.
-                                    visible: false
-                                }
-                                venue_title_input := FieldInput{empty_text: "Name of this place"}
-                                View{
+                                settings_panel_country := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_venue_icon := WrapLabel{
-                                                    width: Fit
-                                        body: "App icon"
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    h_country_tax := WrapLabel{body: "Country & tax" font_color: #x0B1220 font_size: 20.}
+                                    h_country_pack_help := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    FormCard{
+                                    fiscal_label := mod.widgets.ReportText{}
+                                    country_code_input := FieldInput{
+                                        empty_text: "Country code e.g. IN, GB, US, AE, BR"
+                                    }
+                                    country_suggest := mod.widgets.SuggestList{field: "country"}
+                                    ActionStack{
+                                        country_prev := RowSecondaryBtn{text: "Previous country"}
+                                        country_next := RowSecondaryBtn{text: "Next country"}
+                                    }
+                                    country_apply := StackPrimaryBtn{text: "Apply country pack"}
+                                    country_hint := WrapLabel{
+                                        body: " "
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    country_pack_list := mod.widgets.ReportText{}
+                                    }
+                                    FormCard{
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            tax_inclusive_btn := SegBtn{text: "Tax inside price"}
+                                            tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            tax_exclusive_btn := SegBtn{text: "Tax added at till"}
+                                            tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
+                                        }
+                                    }
+                                    business_tax_id_input := FieldInput{empty_text: "Business tax id"}
+                                    service_bps_input := FieldInput{
+                                        empty_text: "Service % optional 0/10/12"
+                                    }
+                                    fiscal_save := StackPrimaryBtn{text: "Save business id"}
+                                    }
+                                }
+                                settings_panel_brand := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    h_start_template := WrapLabel{body: "Product" font_color: #x0B1220 font_size: 20.}
+                                    settings_tmpl_label := WrapLabel{
+                                        body: "Moklanjo"
+                                        font_color: #x3A4554
+                                        font_size: 13.
+                                    }
+                                    h_product_only_moklanjo := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    FormCard{
+                                    h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x0B1220 font_size: 20.}
+                                    h_brand_shown_help := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    venue_title_input := FieldInput{empty_text: "Name of this place"}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_venue_icon := WrapLabel{
+                                                        width: Fit
+                                            body: "App icon"
+                                            font_color: #x0B1220
+                                            font_size: 15.
+                                        }
+                                        venue_icon_help := InfoHelp{
+                                            tip: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
+                                        }
+                                    }
+                                    venue_icon_status := WrapLabel{
+                                        body: " "
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    ActionStack{
+                                        venue_icon_pick := RowSecondaryBtn{text: "Choose icon"}
+                                        venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
+                                    }
+                                    venue_brand_save := StackPrimaryBtn{text: "Save brand"}
+                                    }
+                                    FormCard{
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_print_faces := WrapLabel{ width: Fit
+                                                        body: "Print faces (receipt / period bill)" font_color: #x0B1220 font_size: 16.}
+                                        print_faces_help := InfoHelp{
+                                            tip: "Optional stamp and payment QR next to your logo on booking receipts and period bills."
+                                        }
+                                    }
+                                    ActionStack{
+                                        print_stamp_pick := RowSecondaryBtn{text: "Choose receipt stamp"}
+                                        print_stamp_clear := RowSecondaryBtn{text: "Clear stamp"}
+                                    }
+                                    ActionStack{
+                                        print_qr_pick := RowSecondaryBtn{text: "Choose payment QR"}
+                                        print_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
+                                    }
+                                    }
+                                }
+                                settings_panel_printers := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    // Printers belong to this device (any OS): a system
+                                    // printer by name, or a network receipt printer's address.
+                                    FormCard{
+                                    h_printers := WrapLabel{body: "Printers on this device" font_color: #x0B1220 font_size: 20.}
+                                    h_printers_help := WrapLabel{
+                                        width: Fill
+                                        body: " "
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    printers_found_label := WrapLabel{
+                                        width: Fill
+                                        body: " "
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    printers_found_list := mod.widgets.ReportText{}
+                                    ActionStack{
+                                        find_printers_btn := RowSecondaryBtn{text: "Find printers"}
+                                    }
+                                    // Fit + no wrap — safe to show/hide. Never toggle a
+                                    // Fill wrap CTA visible inside the Find ActionStack.
+                                    find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                    h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
+                                    printers_pool_label := mod.widgets.ReportText{}
+                                    printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
+                                    printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
+                                    printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
+                                    h_printer_mode := WrapLabel{
+                                        width: Fill
+                                        body: "Format for the selected route"
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_mode_thermal := SegBtn{text: "Thermal"}
+                                            printer_mode_thermal_on := SegBtnOn{text: "Thermal" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_mode_standard := SegBtn{text: "Standard"}
+                                            printer_mode_standard_on := SegBtnOn{text: "Standard" visible: false}
+                                        }
+                                    }
+                                    printer_format_custom := RowSecondaryBtn{text: "New custom format"}
+                                    // One ActionStack only. Busy = change Add's label (and show a
+                                    // Fit Cancel). Never swap sibling ActionStacks / Overlay faces
+                                    // and never toggle a Fill wrap CTA visible — those redraws hit
+                                    // Makepad wrap+Fill logging and froze Settings on every OS.
+                                    ActionStack{
+                                        printer_add := RowPrimaryBtn{text: "Add printer"}
+                                        printer_remove := RowSecondaryBtn{text: "Remove last"}
+                                    }
+                                    printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                    h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
+                                    printer_routes_label := mod.widgets.ReportText{}
+                                    h_route_pick := Label{
+                                        text: "Print route"
+                                        draw_text.color: #x3A4554
+                                        draw_text.text_style.font_size: 11.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            route_pick_receipt := SegBtn{text: "Receipt"}
+                                            route_pick_receipt_on := SegBtnOn{text: "Receipt" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            route_pick_label := SegBtn{text: "Label"}
+                                            route_pick_label_on := SegBtnOn{text: "Label" visible: false}
+                                        }
+                                    }
+                                    route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
+                                    route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
+                                    ActionStack{
+                                        route_add := RowSecondaryBtn{text: "Add to route"}
+                                        route_up := RowSecondaryBtn{text: "Up"}
+                                        route_down := RowSecondaryBtn{text: "Down"}
+                                        route_remove := RowSecondaryBtn{text: "Remove last"}
+                                        route_clear := RowSecondaryBtn{text: "Clear printers for this place"}
+                                    }
+                                    ActionStack{
+                                        printers_save := StackPrimaryBtn{text: "Save printers"}
+                                        print_test_btn := RowSecondaryBtn{text: "Print a test page"}
+                                    }
+                                    }
+                                }
+                                settings_panel_awb := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                    h_awb_pools := WrapLabel{body: "Carrier AWB number pools" font_color: #x0B1220 font_size: 16.}
+                                    awb_pools_label := mod.widgets.ReportText{}
+                                    awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
+                                    awb_pool_carrier_suggest := mod.widgets.SuggestList{field: "awb_pool_carrier"}
+                                    FormFieldRow{
+                                        awb_pool_start_input := FieldInput{empty_text: "Start no."}
+                                        awb_pool_end_input := FieldInput{empty_text: "End no."}
+                                    }
+                                    FormFieldRow{
+                                        awb_pool_prefix_input := FieldInput{empty_text: "Prefix (optional)"}
+                                        awb_pool_label_input := FieldInput{empty_text: "Label (optional)"}
+                                    }
+                                    awb_pool_add := StackPrimaryBtn{text: "Add AWB pool"}
+                                    }
+                                }
+                                settings_panel_measures := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                    h_booking_measures := WrapLabel{body: "Booking measures" font_color: #x0B1220 font_size: 20.}
+                                    h_measures_help_moklanjo := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    measure_label := mod.widgets.ReportText{}
+                                    measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
+                                    measure_dim_suggest := mod.widgets.SuggestList{field: "measure_dim"}
+                                    measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
+                                    measure_weight_suggest := mod.widgets.SuggestList{field: "measure_weight"}
+                                    measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000 domestic)"}
+                                    measure_slab_input := FieldInput{empty_text: "Chargeable slab in kg (0.5)"}
+                                    measure_save := StackPrimaryBtn{text: "Save booking measures"}
+                                    }
+                                }
+                                settings_panel_units := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                    h_units_heading := WrapLabel{body: "Units" font_color: #x0B1220 font_size: 20.}
+                                    h_units_help := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    units_label := mod.widgets.ReportText{}
+                                    unit_code_input := FieldInput{empty_text: "Code (bag)"}
+                                    unit_name_input := FieldInput{empty_text: "Name (Bag)"}
+                                    unit_add := StackPrimaryBtn{text: "Add unit"}
+                                    }
+                                    FormCard{
+                                    conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                    conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
+                                    conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                    conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
+                                    conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
+                                    conv_add := StackPrimaryBtn{text: "Add conversion"}
+                                    }
+                                }
+                                settings_panel_devices := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_extra_tills_heading := WrapLabel{
+                                            width: Fit
+                                            body: "Extra tills"
+                                            font_color: #x0B1220
+                                            font_size: 20.
+                                        }
+                                        server_pair_help := InfoHelp{
+                                            tip: "On the other device: Client Mode → Find server → enter this pairing code."
+                                        }
+                                    }
+                                    h_other_devices_help_heading := WrapLabel{
+                                        body: "Set up other devices"
                                         font_color: #x0B1220
                                         font_size: 15.
+                                        visible: false
                                     }
-                                    venue_icon_help := InfoHelp{
+                                    h_other_devices_help := WrapLabel{
+                                        width: Fill
+                                        body: " "
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                        visible: false
+                                    }
+                                    // Big digits stay visible even when firewall/listen notes fill the status line.
+                                    pairing_code_value := WrapLabel{
                                         width: Fit
-                                        tip: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
+                                        body: " "
+                                        font_color: #x0B1220
+                                        font_size: 28.
+                                        selectable: true
+                                        visible: false
                                     }
+                                    server_pair_label := WrapLabel{
+                                        width: Fill
+                                        body: " "
+                                        font_color: #x3A4554
+                                        font_size: 13.
+                                        selectable: false
+                                    }
+                                    ActionStack{
+                                        allow_extra_tills := RowPrimaryBtn{text: "Allow extra tills"}
+                                        stop_extra_tills := RowSecondaryBtn{text: "Stop extra tills"}
+                                        allow_firewall := RowPrimaryBtn{text: "Allow other devices to connect" visible: false}
+                                    }
+                                    autostart_btn := RowSecondaryBtn{text: "Start with this computer" visible: false}
+                                    new_pair_code := RowSecondaryBtn{text: "New pairing code" visible: false}
+                                    paired_list := mod.widgets.PairedList{}
+                                    // A paired device: its link, what waits, what was not accepted.
+                                    client_connection_btn := RowSecondaryBtn{text: "Connection to the shop" visible: false}
+                                    settings_open_branches := NavBtn{text: "Branches & org"}
                                 }
-                                venue_icon_status := WrapLabel{
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    venue_icon_pick := RowSecondaryBtn{text: "Choose icon"}
-                                    venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
-                                }
-                                venue_brand_save := StackPrimaryBtn{text: "Save brand"}
-                                }
-                                FormCard{
-                                View{
+                                settings_panel_alerts := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_print_faces := WrapLabel{ width: Fit
-                                                    body: "Print faces (receipt / period bill)" font_color: #x0B1220 font_size: 16.}
-                                    print_faces_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Optional stamp and payment QR next to your logo on booking receipts and period bills."
-                                    }
-                                }
-                                ActionStack{
-                                    print_stamp_pick := RowSecondaryBtn{text: "Choose receipt stamp"}
-                                    print_stamp_clear := RowSecondaryBtn{text: "Clear stamp"}
-                                }
-                                ActionStack{
-                                    print_qr_pick := RowSecondaryBtn{text: "Choose payment QR"}
-                                    print_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
-                                }
-                                }
-                                FormCard{
-                                h_awb_pools := WrapLabel{body: "Carrier AWB number pools" font_color: #x0B1220 font_size: 16.}
-                                awb_pools_label := mod.widgets.ReportText{}
-                                awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
-                                awb_pool_carrier_suggest := mod.widgets.SuggestList{field: "awb_pool_carrier"}
-                                FormFieldRow{
-                                    awb_pool_start_input := FieldInput{empty_text: "Start no."}
-                                    awb_pool_end_input := FieldInput{empty_text: "End no."}
-                                }
-                                FormFieldRow{
-                                    awb_pool_prefix_input := FieldInput{empty_text: "Prefix (optional)"}
-                                    awb_pool_label_input := FieldInput{empty_text: "Label (optional)"}
-                                }
-                                awb_pool_add := StackPrimaryBtn{text: "Add AWB pool"}
-                                }
-                                FormCard{
-                                h_units_heading := WrapLabel{body: "Units" font_color: #x0B1220 font_size: 20.}
-                                h_units_help := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                    flow: Down spacing: 12
                                     visible: false
+                                    FormCard{
+                                    h_alerts := WrapLabel{body: "Alerts" font_color: #x0B1220 font_size: 20.}
+                                    h_alerts_help := WrapLabel{
+                                        width: Fill
+                                        body: "How long status messages stay on screen for you (this login)."
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    snack_secs_input := FieldInput{empty_text: "Seconds (3–60, default 10)"}
+                                    snack_secs_save := StackPrimaryBtn{text: "Save alert time"}
+                                    }
                                 }
-                                units_label := mod.widgets.ReportText{}
-                                unit_code_input := FieldInput{empty_text: "Code (bag)"}
-                                unit_name_input := FieldInput{empty_text: "Name (Bag)"}
-                                unit_add := StackPrimaryBtn{text: "Add unit"}
-                                }
-                                FormCard{
-                                conv_from_input := FieldInput{empty_text: "From code (bag)"}
-                                conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
-                                conv_to_input := FieldInput{empty_text: "To code (kg)"}
-                                conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
-                                conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
-                                conv_add := StackPrimaryBtn{text: "Add conversion"}
-                                }
-                                FormCard{
-                                h_booking_measures := WrapLabel{body: "Booking measures" font_color: #x0B1220 font_size: 20.}
-                                h_measures_help_moklanjo := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                settings_panel_backup := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
                                     visible: false
+                                    h_backup := WrapLabel{body: "Backup" font_color: #x0B1220 font_size: 20.}
+                                    backup_auto_label := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    ActionStack{
+                                        backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
+                                        backup_copy_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    }
+                                    db_path_label := WrapLabel{body: "" font_color: #x0B1220}
+                                    audit_label := mod.widgets.ReportText{}
+                                    ActionStack{
+                                        backup_btn := NavBtn{text: "Create backup"}
+                                        backup_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    }
+                                    backup_path_label := WrapLabel{body: "" font_color: #x0B1220}
+                                    h_restore_help := WrapLabel{
+                                        width: Fill
+                                        body: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
+                                        font_color: #x0B1220
+                                    }
+                                    ActionStack{
+                                        restore_btn := NavBtn{text: "Restore backup"}
+                                        restore_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    }
                                 }
-                                measure_label := mod.widgets.ReportText{}
-                                measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
-                                measure_dim_suggest := mod.widgets.SuggestList{field: "measure_dim"}
-                                measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
-                                measure_weight_suggest := mod.widgets.SuggestList{field: "measure_weight"}
-                                measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000 domestic)"}
-                                measure_slab_input := FieldInput{empty_text: "Chargeable slab in kg (0.5)"}
-                                measure_save := StackPrimaryBtn{text: "Save booking measures"}
-                                }
-                                // Printers belong to this device (any OS): a system
-                                // printer by name, or a network receipt printer's address.
-                                FormCard{
-                                h_printers := WrapLabel{body: "Printers on this device" font_color: #x0B1220 font_size: 20.}
-                                h_printers_help := WrapLabel{
-                                    width: Fill
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
+                                settings_panel_diag := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
                                     visible: false
-                                }
-                                printers_found_label := WrapLabel{
-                                    width: Fill
-                                    body: " "
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                printers_found_list := mod.widgets.ReportText{}
-                                ActionStack{
-                                    find_printers_btn := RowSecondaryBtn{text: "Find printers"}
-                                }
-                                // Fit + no wrap — safe to show/hide. Never toggle a
-                                // Fill wrap CTA visible inside the Find ActionStack.
-                                find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
-                                h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
-                                printers_pool_label := mod.widgets.ReportText{}
-                                printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
-                                printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
-                                printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
-                                h_printer_mode := WrapLabel{
-                                    width: Fill
-                                    body: "Format for the selected route"
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        printer_mode_thermal := SegBtn{text: "Thermal"}
-                                        printer_mode_thermal_on := SegBtnOn{text: "Thermal" visible: false}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_diag := WrapLabel{
+                                                        width: Fit
+                                                        body: "Diagnostics" font_color: #x0B1220 font_size: 20.}
+                                        diag_privacy_help := InfoHelp{
+                                            tip: "Logs stay on this device. Secrets (PIN, passwords) are never stored. Sharing a package off the device needs your explicit approval each time — never sold or given to third parties."
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        printer_mode_standard := SegBtn{text: "Standard"}
-                                        printer_mode_standard_on := SegBtnOn{text: "Standard" visible: false}
+                                    diag_status_label := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 12.
                                     }
-                                }
-                                printer_format_custom := RowSecondaryBtn{text: "New custom format"}
-                                // One ActionStack only. Busy = change Add's label (and show a
-                                // Fit Cancel). Never swap sibling ActionStacks / Overlay faces
-                                // and never toggle a Fill wrap CTA visible — those redraws hit
-                                // Makepad wrap+Fill logging and froze Settings on every OS.
-                                ActionStack{
-                                    printer_add := RowPrimaryBtn{text: "Add printer"}
-                                    printer_remove := RowSecondaryBtn{text: "Remove last"}
-                                }
-                                printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
-                                h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
-                                printer_routes_label := mod.widgets.ReportText{}
-                                h_route_pick := Label{
-                                    text: "Print route"
-                                    draw_text.color: #x3A4554
-                                    draw_text.text_style.font_size: 11.
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        route_pick_receipt := SegBtn{text: "Receipt"}
-                                        route_pick_receipt_on := SegBtnOn{text: "Receipt" visible: false}
+                                    h_diag_level := WrapLabel{body: "Detail level" font_color: #x0B1220 font_size: 15.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            diag_level_error := SegBtn{text: "Errors"}
+                                            diag_level_error_on := SegBtnOn{text: "Errors" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            diag_level_warn := SegBtn{text: "Warnings"}
+                                            diag_level_warn_on := SegBtnOn{text: "Warnings" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            diag_level_info := SegBtn{text: "Info"}
+                                            diag_level_info_on := SegBtnOn{text: "Info" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            diag_level_debug := SegBtn{text: "Debug"}
+                                            diag_level_debug_on := SegBtnOn{text: "Debug" visible: false}
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        route_pick_label := SegBtn{text: "Label"}
-                                        route_pick_label_on := SegBtnOn{text: "Label" visible: false}
+                                    ActionStack{
+                                        diag_support_start := RowSecondaryBtn{text: "Start 30-min support session"}
+                                        diag_support_stop := RowSecondaryBtn{text: "End support session"}
                                     }
-                                }
-                                route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
-                                route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
-                                ActionStack{
-                                    route_add := RowSecondaryBtn{text: "Add to route"}
-                                    route_up := RowSecondaryBtn{text: "Up"}
-                                    route_down := RowSecondaryBtn{text: "Down"}
-                                    route_remove := RowSecondaryBtn{text: "Remove last"}
-                                    route_clear := RowSecondaryBtn{text: "Clear printers for this place"}
-                                }
-                                ActionStack{
-                                    printers_save := StackPrimaryBtn{text: "Save printers"}
-                                    print_test_btn := RowSecondaryBtn{text: "Print a test page"}
-                                }
-                                }
-                                h_backup := WrapLabel{body: "Backup" font_color: #x0B1220 font_size: 20.}
-                                backup_auto_label := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
-                                    backup_copy_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                }
-                                db_path_label := WrapLabel{body: "" font_color: #x0B1220}
-                                audit_label := mod.widgets.ReportText{}
-                                ActionStack{
-                                    backup_btn := NavBtn{text: "Create backup"}
-                                    backup_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                }
-                                backup_path_label := WrapLabel{body: "" font_color: #x0B1220}
-                                h_restore_help := WrapLabel{
-                                    width: Fill
-                                    body: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
-                                    font_color: #x0B1220
-                                }
-                                ActionStack{
-                                    restore_btn := NavBtn{text: "Restore backup"}
-                                    restore_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_diag := WrapLabel{
-                                                    width: Fit
-                                                    body: "Diagnostics" font_color: #x0B1220 font_size: 20.}
-                                    diag_privacy_help := InfoHelp{
-                                        width: Fit
-                                        tip: "Logs stay on this device. Secrets (PIN, passwords) are never stored. Sharing a package off the device needs your explicit approval each time — never sold or given to third parties."
+                                    ActionStack{
+                                        diag_export_local := RowSecondaryBtn{text: "Export local copy"}
+                                        diag_export_local_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
                                     }
-                                }
-                                diag_status_label := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x0B1220
-                                    font_size: 12.
-                                }
-                                h_diag_level := WrapLabel{body: "Detail level" font_color: #x0B1220 font_size: 15.}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        diag_level_error := SegBtn{text: "Errors"}
-                                        diag_level_error_on := SegBtnOn{text: "Errors" visible: false}
+                                    diag_send_help := InfoHelp{
+                                        tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        diag_level_warn := SegBtn{text: "Warnings"}
-                                        diag_level_warn_on := SegBtnOn{text: "Warnings" visible: false}
+                                    diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
+                                    ActionStack{
+                                        diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
+                                        diag_export_send_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        diag_level_info := SegBtn{text: "Info"}
-                                        diag_level_info_on := SegBtnOn{text: "Info" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        diag_level_debug := SegBtn{text: "Debug"}
-                                        diag_level_debug_on := SegBtnOn{text: "Debug" visible: false}
-                                    }
+                                    diag_clear := NavBtn{text: "Clear diagnostic logs"}
                                 }
-                                ActionStack{
-                                    diag_support_start := RowSecondaryBtn{text: "Start 30-min support session"}
-                                    diag_support_stop := RowSecondaryBtn{text: "End support session"}
-                                }
-                                ActionStack{
-                                    diag_export_local := RowSecondaryBtn{text: "Export local copy"}
-                                    diag_export_local_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                }
-                                diag_send_help := InfoHelp{
-                                    width: Fit
-                                    tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
-                                }
-                                diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
-                                ActionStack{
-                                    diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
-                                    diag_export_send_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                }
-                                diag_clear := NavBtn{text: "Clear diagnostic logs"}
                             }
                         }
 
@@ -5744,7 +5951,6 @@ script_mod! {
                                 // Back is header_back — body Back stays hidden.
                                 sidebar_settings_back := QuietFitBtn{text: "Back" visible: false}
                                 sidebar_settings_help := InfoHelp{
-                                    width: Fit
                                     tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                 }
                                 View{
@@ -5785,7 +5991,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 reports_help := InfoHelp{
-                                    width: Fit
                                     tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
                                 }
                                 reports_books_btns := ActionStack{
@@ -5805,7 +6010,6 @@ script_mod! {
                                     flow: Down spacing: 8
                                     visible: false
                                     ops_desk_help := InfoHelp{
-                                        width: Fit
                                         tip: "Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128."
                                     }
                                     ops_awb_input := FieldInput{empty_text: "AWB / scan barcode"}
@@ -5991,7 +6195,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 inventory_help := InfoHelp{
-                                    width: Fit
                                     tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
                                 }
                                 inventory_label := mod.widgets.ReportText{}
@@ -6021,7 +6224,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 branches_help := InfoHelp{
-                                    width: Fit
                                     tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
                                 }
                                 org_name_input := FieldInput{empty_text: "Business name"}
@@ -6192,9 +6394,11 @@ script_mod! {
                                 // bottom, ends, gaps): a press there belongs
                                 // to the scroll view, a press on a chip is a
                                 // tap or a drag — see pointer_nav_drag.
+                                // End pad ≥ ChevronBtn (46) so first/last tabs
+                                // can scroll clear of overlay ‹ › (2026-11).
                                 View{
                                     width: Fit height: Fit
-                                    padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+                                    padding: Inset{left: 52. right: 52. top: 12. bottom: 12.}
                                     flow: Right spacing: 6
                                     nav_books_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit

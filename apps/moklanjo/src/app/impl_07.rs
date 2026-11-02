@@ -1299,9 +1299,10 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
         if !st.undo_timer.is_empty() {
             cx.stop_timer(st.undo_timer);
         }
+        let secs = SnackKind::clamp_secs(st.snack_secs);
         st.undo_sale_id = Some(sale_id);
         st.undo_snack_text = text;
-        st.undo_timer = cx.start_timeout(10.0);
+        st.undo_timer = cx.start_timeout(secs);
     }
 
     fn clear_undo_snackbar(&mut self, cx: &mut Cx) {

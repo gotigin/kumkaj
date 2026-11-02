@@ -29,6 +29,12 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 self.sync_chrome(cx);
                 return true;
             }
+            // Settings section → hub (never straight off Settings).
+            if let Some(next) = settings_back_step(st.screen, st.settings_panel) {
+                drop(st);
+                self.open_settings_panel(cx, next);
+                return true;
+            }
             // DeviceSetup nested accordion (Language open) closes before leaving.
             if st.screen == Screen::DeviceSetup
                 && st
@@ -179,7 +185,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         size_mismatch || pos_mismatch
     }
 
-    /// Desktop (Windows / Linux / macOS): never allow inner size below 320 css px.
+    /// Desktop (Windows / Linux / macOS): never allow inner size below 375 css px.
     fn enforce_min_desktop_window_size(&self, cx: &mut Cx) {
         if cfg!(target_os = "android") {
             return;
@@ -1546,8 +1552,9 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
 
     /// Mouse Back/Forward, left-edge swipe → back, right-edge swipe → forward.
     /// TouchUpdate on phones; primary MouseDown/Up edge drag on desktop.
-    /// Top-level peers do not keep history, so Back/swipe is a no-op there
-    /// (except dismissing the soft keyboard).
+    /// Peer chrome and drill-downs both push visit history, so Back/Forward
+    /// move between screens (empty stack is still a no-op, after dismissing
+    /// soft keyboard / in-screen layers).
     fn pointer_navigates(&mut self, cx: &mut Cx, event: &Event) -> bool {
         if self.pointer_rail_resize(cx, event) {
             return true;
@@ -1562,9 +1569,9 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 self.navigate_forward(cx)
             }
             Event::MouseDown(e) if e.button.is_primary() => {
-                // Skip edge-swipe arming while the rail is showing — left edge
-                // is the rail itself; swipe-back is for nested setup only.
-                let skip_edge = {
+                // While the rail is showing, left edge is the rail — don't
+                // arm swipe-back there. Right-edge forward still works.
+                let rail_owns_left = {
                     let st = app_state().lock().unwrap();
                     let unlocked = !matches!(
                         st.screen,
@@ -1574,9 +1581,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 };
                 let width = self.window_inner_width(cx);
                 let mut origin = mouse_swipe_origin().lock().unwrap();
-                if skip_edge {
-                    *origin = None;
-                } else if e.abs.x < 48.0 {
+                if e.abs.x < 48.0 && !rail_owns_left {
                     *origin = Some((e.abs, SwipeNav::Back));
                 } else if e.abs.x > width - 48.0 {
                     *origin = Some((e.abs, SwipeNav::Forward));

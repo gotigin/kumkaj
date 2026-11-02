@@ -50,6 +50,132 @@ mod floor_tests {
         assert_eq!(floor_rows(&plain, 6), vec![FloorRow::Tiles(vec![0, 1])]);
     }
 
+    /// Tiles never shrink: the owner's column count is what a row holds,
+    /// with no upper limit; "Fit screen" counts whole tiles across.
+    #[test]
+    fn columns_have_no_upper_limit_and_fit_counts_whole_tiles() {
+        assert_eq!(floor_columns_for(375.0), 1, "app floor (375) shows one 280px tile");
+        assert_eq!(floor_columns_for(569.0), 1);
+        assert_eq!(floor_columns_for(570.0), 2, "2 × 280 + one 10px gap");
+        assert_eq!(floor_columns_for(2900.0), 10, "no cap of 8 any more");
+        assert_eq!(floor_grid_width(1), 280.0);
+        // Columns=3 is always 3×280 + 2×10 — never the ~2-tile viewport width.
+        assert_eq!(floor_grid_width(3), 860.0);
+        assert!(
+            floor_grid_width(3) > 570.0,
+            "3-col body must be wider than a phone viewport so ScrollX can show the third tile"
+        );
+        let table = |i: usize| DiningTable {
+            id: i.to_string(),
+            name: format!("T{i}"),
+            status: domain::TableStatus::Available,
+            active_sale_id: None,
+            occupied_at: String::new(),
+            running_total_paise: 0,
+            area: String::new(),
+            paid_at: String::new(),
+            floor_state: Default::default(),
+            waiter_staff_id: String::new(),
+            layout_x: 0.0,
+            layout_y: 0.0,
+            layout_w: 0.0,
+            layout_h: 0.0,
+        };
+        let tables: Vec<_> = (0..40).map(table).collect();
+        let rows = floor_rows(&tables, 30);
+        assert_eq!(rows.len(), 2);
+        assert_eq!(rows[0], FloorRow::Tiles((0..30).collect()));
+        assert_eq!(floor_rows(&tables, 0).len(), 40, "0 is read as 1 column");
+    }
+
+    /// Only the columns in the sideways viewport are drawn — scrolled or
+    /// not, a few slots, never a whole 100-column row.
+    #[test]
+    fn column_window_follows_the_sideways_scroll() {
+        // Not laid out yet: the first columns, at most one row of slots.
+        assert_eq!(floor_col_window(0.0, 0.0, 0.0, 100), (0, FLOOR_ROW_SLOTS));
+        assert_eq!(floor_col_window(0.0, 0.0, 0.0, 3), (0, 3));
+        // Unscrolled 1000px viewport: columns 0..4 (the 4th partly).
+        assert_eq!(floor_col_window(16.0, 16.0, 1000.0, 100), (0, 4));
+        // Scrolled 2900px (10 columns) to the left.
+        let (first, last) = floor_col_window(16.0 - 2900.0, 16.0, 1000.0, 100);
+        assert_eq!((first, last), (10, 14));
+        // Near the end: never past the last column.
+        let (first, last) = floor_col_window(16.0 - 2900.0, 16.0, 1000.0, 12);
+        assert_eq!((first, last), (10, 12));
+        // A huge monitor still fits in one row of slots.
+        let (first, last) = floor_col_window(0.0, 0.0, 20_000.0, 500);
+        assert_eq!(last - first, FLOOR_ROW_SLOTS);
+    }
+
+    #[test]
+    fn area_order_prefers_saved_then_appends_new() {
+        let present = vec![
+            "".to_string(),
+            "Dine In".to_string(),
+            "Parcel".to_string(),
+            "AC".to_string(),
+        ];
+        let preferred = vec!["Parcel".to_string(), "Dine In".to_string()];
+        assert_eq!(
+            order_floor_areas(&present, &preferred),
+            vec![
+                "Parcel".to_string(),
+                "Dine In".to_string(),
+                "".to_string(),
+                "AC".to_string(),
+            ]
+        );
+        assert_eq!(
+            parse_floor_area_order(Some("Parcel,Dine In")),
+            vec!["Parcel".to_string(), "Dine In".to_string()]
+        );
+        assert_eq!(
+            floor_area_order_csv(&["Parcel".into(), "".into(), "AC".into()]),
+            "Parcel,,AC"
+        );
+    }
+
+    #[test]
+    fn area_groups_keep_each_area_separate_for_tabs() {
+        let table = |name: &str, area: &str| DiningTable {
+            id: name.into(),
+            name: name.into(),
+            status: domain::TableStatus::Available,
+            active_sale_id: None,
+            occupied_at: String::new(),
+            running_total_paise: 0,
+            area: area.into(),
+            paid_at: String::new(),
+            floor_state: Default::default(),
+            waiter_staff_id: String::new(),
+            layout_x: 0.0,
+            layout_y: 0.0,
+            layout_w: 0.0,
+            layout_h: 0.0,
+        };
+        let tables = vec![
+            table("D1", "Dine In"),
+            table("D2", "Dine In"),
+            table("P1", "Parcel"),
+        ];
+        let groups = floor_area_groups(&tables);
+        assert_eq!(
+            groups,
+            vec![
+                ("Dine In".into(), vec![0, 1]),
+                ("Parcel".into(), vec![2]),
+            ]
+        );
+        // Selected tab body uses only that group's indices.
+        let parcel = groups
+            .iter()
+            .find(|(a, _)| a == "Parcel")
+            .map(|(_, idxs)| idxs.clone())
+            .unwrap();
+        assert_eq!(parcel, vec![2]);
+    }
+
     #[test]
     fn floor_page_window_only_covers_the_viewport() {
         let rows: Vec<FloorRow> = (0..40).map(|i| FloorRow::Tiles(vec![i])).collect();

@@ -1224,6 +1224,10 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(menu_aliases_input))
             .set_empty_text(cx, s("aliases_ph"));
+        // Its words float above a typed price — never a "0" caption.
+        self.ui
+            .text_input(cx, ids!(menu_price_input))
+            .set_empty_text(cx, s("price_ph"));
         self.ui
             .text_input(cx, ids!(menu_unit_input))
             .set_empty_text(cx, s("unit_kg_blank_ph"));

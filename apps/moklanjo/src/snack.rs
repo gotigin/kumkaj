@@ -32,14 +32,29 @@ impl SnackKind {
         }
     }
 
-    /// Auto-dismiss seconds (Material-style: errors linger longer).
-    pub fn duration_secs(self) -> f64 {
-        match self {
-            Self::Info => 4.0,
-            Self::Success => 4.0,
-            Self::Warn => 6.0,
-            Self::Error => 8.0,
+    /// Default base seconds when the user has not set a preference. The old
+    /// fixed 4 s went before a busy counter could read it (Khaynjo's shop
+    /// trials, 2026-10); 10 s is the suite default.
+    pub const DEFAULT_SECS: f64 = 10.0;
+
+    /// Clamp a typed preference into a sane range.
+    pub fn clamp_secs(secs: f64) -> f64 {
+        if !secs.is_finite() {
+            return Self::DEFAULT_SECS;
         }
+        secs.clamp(3.0, 60.0)
+    }
+
+    /// Auto-dismiss seconds from the signed-in user's base time (Settings →
+    /// Alerts). Warnings and errors still linger longer than plain news.
+    pub fn duration_secs(self, user_secs: f64) -> f64 {
+        let base = Self::clamp_secs(user_secs);
+        let factor = match self {
+            Self::Info | Self::Success => 1.0,
+            Self::Warn => 1.5,
+            Self::Error => 2.0,
+        };
+        (base * factor).min(60.0)
     }
 }
 
@@ -148,7 +163,15 @@ mod tests {
     }
 
     #[test]
-    fn durations_sensible() {
-        assert!(SnackKind::Error.duration_secs() >= SnackKind::Info.duration_secs());
+    fn durations_follow_the_users_time_and_errors_linger() {
+        assert!((SnackKind::Info.duration_secs(10.0) - 10.0).abs() < f64::EPSILON);
+        assert!((SnackKind::Success.duration_secs(4.0) - 4.0).abs() < f64::EPSILON);
+        assert!((SnackKind::Warn.duration_secs(10.0) - 15.0).abs() < f64::EPSILON);
+        assert!((SnackKind::Error.duration_secs(10.0) - 20.0).abs() < f64::EPSILON);
+        // Never past a minute, never under 3 s, and junk falls back to 10.
+        assert!((SnackKind::Error.duration_secs(45.0) - 60.0).abs() < f64::EPSILON);
+        assert!((SnackKind::clamp_secs(1.0) - 3.0).abs() < f64::EPSILON);
+        assert!((SnackKind::clamp_secs(99.0) - 60.0).abs() < f64::EPSILON);
+        assert!((SnackKind::clamp_secs(f64::NAN) - SnackKind::DEFAULT_SECS).abs() < f64::EPSILON);
     }
 }

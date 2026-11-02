@@ -38,6 +38,51 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
     }
 
+    /// Close an open type-or-pick list when the press lands outside its
+    /// field + list (and the kitchen dropdown button). Focus-loss alone
+    /// cannot close it: tapping a row steals focus before the pick lands.
+    fn dismiss_suggest_on_outside_press(&mut self, cx: &mut Cx, event: &Event) {
+        let abs = match event {
+            Event::MouseDown(e) if e.button.is_primary() => e.abs,
+            Event::TouchUpdate(e) => {
+                match e
+                    .touches
+                    .iter()
+                    .find(|t| matches!(t.state, TouchState::Start))
+                {
+                    Some(t) => t.abs,
+                    None => return,
+                }
+            }
+            _ => return,
+        };
+        let Some(field) = app_state().lock().unwrap().suggest_open else {
+            return;
+        };
+        let inside = if field == SuggestField::FloorColumns {
+            let r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
+            r.size.x > 0.0 && r.size.y > 0.0 && r.contains(abs)
+        } else {
+            let input = self.ui.text_input(cx, field.input()).area().rect(cx);
+            let list = self.ui.widget(cx, field.list()).area().rect(cx);
+            let in_input = input.size.x > 0.0 && input.contains(abs);
+            let in_list = list.size.x > 0.0 && list.size.y > 0.0 && list.contains(abs);
+            let in_extra = if field == SuggestField::KotStation {
+                let r = self.ui.button(cx, ids!(kot_station_dd)).area().rect(cx);
+                r.size.x > 0.0 && r.contains(abs)
+            } else {
+                false
+            };
+            in_input || in_list || in_extra
+        };
+        if inside {
+            return;
+        }
+        app_state().lock().unwrap().suggest_open = None;
+        self.ui.widget(cx, field.list()).redraw(cx);
+        self.ui.redraw(cx);
+    }
+
     /// True when a seller text field (not a button) holds key focus / soft keyboard.
     fn text_field_has_focus(&mut self, cx: &mut Cx) -> bool {
         let top_level = [
@@ -363,7 +408,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         size_mismatch || pos_mismatch
     }
 
-    /// Desktop (Windows / Linux / macOS): never allow inner size below 320 css px.
+    /// Desktop (Windows / Linux / macOS): never allow inner size below 375 css px.
     fn enforce_min_desktop_window_size(&self, cx: &mut Cx) {
         if cfg!(target_os = "android") {
             return;
@@ -1129,11 +1174,27 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         self.ui
             .widget(cx, ids!(nav_drag_ghost_label))
             .set_text(cx, &label);
-        load_nav_icon_once(cx, &self.ui.image(cx, ids!(nav_drag_ghost_icon)), tab);
+        let icon = self.ui.image(cx, ids!(nav_drag_ghost_icon));
+        icon.set_visible(cx, true);
+        load_nav_icon_once(cx, &icon, tab);
         self.place_nav_ghost(cx, pos);
         self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, true);
         // The ghost lives in a Modal so it paints on the overlay draw
         // list, above every scroll view (rail, page, bottom bar alike).
+        self.ui.modal(cx, ids!(nav_drag_modal)).open(cx);
+        cx.redraw_all();
+    }
+
+    /// Floor area chip ghost — same modal as nav, label only (no peer icon).
+    fn show_floor_area_ghost(&mut self, cx: &mut Cx, label: &str, pos: DVec2) {
+        self.ui
+            .widget(cx, ids!(nav_drag_ghost_label))
+            .set_text(cx, label);
+        self.ui
+            .image(cx, ids!(nav_drag_ghost_icon))
+            .set_visible(cx, false);
+        self.place_nav_ghost(cx, pos);
+        self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, true);
         self.ui.modal(cx, ids!(nav_drag_modal)).open(cx);
         cx.redraw_all();
     }
@@ -1295,6 +1356,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
 
     fn nav_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
                 *nav_drag().lock().unwrap() = None;
+                *floor_area_drag().lock().unwrap() = None;
                 // Do not clear settings_nav_drag here — that peek runs
                 // first and may have just armed a press on the list.
                 // A fresh press starts a fresh gesture — never let a
@@ -1725,5 +1787,325 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             }
         }
         consumed
+    }
+
+    /// Slot under the pointer on the Floor area ChipStrip (exact hit, pad 0 —
+    /// same rule as nav: padding would turn lane swipes into swaps).
+    fn floor_area_slot_at(&mut self, cx: &mut Cx, abs: DVec2) -> Option<usize> {
+        let n = self.floor_area_tab_names().len().min(FLOOR_AREA_CHIPS.len());
+        for (i, (idle, on)) in FLOOR_AREA_CHIPS.iter().enumerate().take(n) {
+            for face in [idle, on] {
+                let rect = self.ui.button(cx, face).area().rect(cx);
+                if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
+                    continue;
+                }
+                if abs.x >= rect.pos.x
+                    && abs.x <= rect.pos.x + rect.size.x
+                    && abs.y >= rect.pos.y
+                    && abs.y <= rect.pos.y + rect.size.y
+                {
+                    return Some(i);
+                }
+            }
+        }
+        None
+    }
+
+    fn floor_area_drop_slot(&mut self, cx: &mut Cx, drag: &FloorAreaDrag, pos: DVec2) -> Option<usize> {
+        let scroll = self
+            .ui
+            .view(cx, ids!(floor_area_strip.tabs))
+            .get_scroll_pos();
+        let pos = DVec2 {
+            x: pos.x + scroll.x,
+            y: pos.y + scroll.y,
+        };
+        let mut first_rect: Option<Rect> = None;
+        let mut last_rect: Option<Rect> = None;
+        for (slot, rect) in drag.rects.iter().enumerate() {
+            if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
+                continue;
+            }
+            if first_rect.is_none() {
+                first_rect = Some(*rect);
+            }
+            last_rect = Some(*rect);
+            let hit = pos.x >= rect.pos.x - 2.0
+                && pos.x <= rect.pos.x + rect.size.x + 2.0
+                && pos.y >= rect.pos.y - 5.0
+                && pos.y <= rect.pos.y + rect.size.y + 5.0;
+            if hit {
+                return Some(slot);
+            }
+        }
+        if let (Some(first), Some(last)) = (first_rect, last_rect) {
+            let last_slot = drag.rects.len().saturating_sub(1);
+            let in_band = pos.y >= first.pos.y - 28.0
+                && pos.y <= first.pos.y + first.size.y + 28.0;
+            if in_band && pos.x >= last.pos.x + last.size.x {
+                return Some(last_slot);
+            }
+            if in_band && pos.x <= first.pos.x {
+                return Some(0);
+            }
+        }
+        None
+    }
+
+    fn floor_area_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
+        *floor_area_drag().lock().unwrap() = None;
+        if app_state().lock().unwrap().screen != Screen::Floor {
+            return;
+        }
+        if let Some(slot) = self.floor_area_slot_at(cx, abs) {
+            *nav_drag().lock().unwrap() = None;
+            *settings_nav_drag().lock().unwrap() = None;
+            self.hide_nav_ghost(cx);
+            let scroll = self
+                .ui
+                .view(cx, ids!(floor_area_strip.tabs))
+                .get_scroll_pos();
+            let mut origin = abs;
+            let mut rects = Vec::with_capacity(FLOOR_AREA_CHIPS.len());
+            let n = self.floor_area_tab_names().len().min(FLOOR_AREA_CHIPS.len());
+            for (i, (idle, on)) in FLOOR_AREA_CHIPS.iter().enumerate().take(n) {
+                let mut found = Rect::default();
+                for face in [idle, on] {
+                    let rect = self.ui.button(cx, face).area().rect(cx);
+                    if rect.size.x > 0.0 && rect.size.y > 0.0 {
+                        found = Rect {
+                            pos: DVec2 {
+                                x: rect.pos.x + scroll.x,
+                                y: rect.pos.y + scroll.y,
+                            },
+                            size: rect.size,
+                        };
+                        if i == slot {
+                            origin = rect.pos;
+                        }
+                        break;
+                    }
+                }
+                rects.push(found);
+            }
+            *floor_area_drag().lock().unwrap() = Some(FloorAreaDrag {
+                slot,
+                start: abs,
+                last: abs,
+                origin,
+                rects,
+                active: false,
+                hover: Some(slot),
+                finger,
+            });
+        }
+    }
+
+    fn floor_area_drag_move(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
+        let mut repaint = false;
+        let mut active = false;
+        let mut ghost: Option<(bool, String, DVec2)> = None;
+        {
+            let mut guard = floor_area_drag().lock().unwrap();
+            if let Some(d) = guard.as_mut() {
+                if d.finger != finger {
+                    return false;
+                }
+                let was_active = d.active;
+                if !d.active && (abs - d.start).length() > 10.0 {
+                    d.active = true;
+                }
+                if d.active {
+                    active = true;
+                    d.last = abs;
+                    if !was_active {
+                        *floor_area_autoscroll_frame().lock().unwrap() =
+                            Some(cx.new_next_frame());
+                    }
+                    let hover = self.floor_area_drop_slot(cx, d, abs);
+                    if hover != d.hover {
+                        d.hover = hover;
+                        repaint = true;
+                    }
+                    let label = {
+                        let names = self.floor_area_tab_names();
+                        names.get(d.slot).cloned().unwrap_or_default()
+                    };
+                    let show = if label.is_empty() {
+                        app_state().lock().unwrap().t("tables")
+                    } else {
+                        label
+                    };
+                    ghost = Some((!was_active, show, d.origin + (abs - d.start)));
+                }
+            }
+        }
+        if active {
+            cx.set_cursor(MouseCursor::Grabbing);
+        }
+        if let Some((first, label, pos)) = ghost {
+            if first {
+                self.show_floor_area_ghost(cx, &label, pos);
+            } else {
+                self.place_nav_ghost(cx, pos);
+            }
+        }
+        if repaint {
+            self.paint_floor_area_tabs(cx);
+        }
+        active
+    }
+
+    fn floor_area_drag_release(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
+        let taken = {
+            let mut guard = floor_area_drag().lock().unwrap();
+            match guard.as_ref() {
+                Some(d) if d.finger == finger => guard.take(),
+                _ => None,
+            }
+        };
+        if let Some(mut d) = taken {
+            self.hide_nav_ghost(cx);
+            if d.active {
+                let drop_at = if abs.x != 0.0 || abs.y != 0.0 {
+                    abs
+                } else {
+                    d.last
+                };
+                d.hover = self.floor_area_drop_slot(cx, &d, drop_at);
+                cx.set_cursor(if d.hover.is_some() {
+                    MouseCursor::Hand
+                } else {
+                    MouseCursor::Default
+                });
+                let swapped = match d.hover {
+                    Some(target) if target != d.slot => {
+                        let mut names = self.floor_area_tab_names();
+                        if d.slot < names.len() && target < names.len() {
+                            names.swap(d.slot, target);
+                            let mut st = app_state().lock().unwrap();
+                            st.floor_area_order = names.clone();
+                            if let Some(store) = st.store.as_ref() {
+                                let _ = store.set_floor_area_order_csv(&floor_area_order_csv(&names));
+                            }
+                            true
+                        } else {
+                            false
+                        }
+                    }
+                    _ => false,
+                };
+                if swapped {
+                    self.set_status(cx, "Area order saved");
+                }
+                self.sync_chrome(cx);
+                return true;
+            }
+        }
+        false
+    }
+
+    /// Floor area tabs: tap selects; press + move swaps (persists order).
+    /// Same mouse/touch path as [`pointer_nav_drag`].
+    fn pointer_floor_area_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        enum Phase {
+            Press(DVec2, Option<u64>),
+            Move(DVec2, Option<u64>),
+            Release(DVec2, Option<u64>),
+        }
+        let phases: Vec<Phase> = match event {
+            Event::MouseDown(e) if e.button.is_primary() => {
+                vec![Phase::Press(e.abs, None)]
+            }
+            Event::MouseMove(e) => vec![Phase::Move(e.abs, None)],
+            Event::MouseUp(e) if e.button.is_primary() => {
+                vec![Phase::Release(e.abs, None)]
+            }
+            Event::TouchUpdate(e) => {
+                let mut out = Vec::new();
+                for t in &e.touches {
+                    match t.state {
+                        TouchState::Start => out.push(Phase::Press(t.abs, Some(t.uid))),
+                        TouchState::Move | TouchState::Stable => {
+                            out.push(Phase::Move(t.abs, Some(t.uid)))
+                        }
+                        TouchState::Stop => out.push(Phase::Release(t.abs, Some(t.uid))),
+                    }
+                }
+                out
+            }
+            _ => return false,
+        };
+        let mut consumed = false;
+        for phase in phases {
+            match phase {
+                Phase::Press(abs, finger) => {
+                    self.floor_area_drag_press(cx, abs, finger);
+                }
+                Phase::Move(abs, finger) => {
+                    if self.floor_area_drag_move(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+                Phase::Release(abs, finger) => {
+                    if self.floor_area_drag_release(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+            }
+        }
+        consumed
+    }
+
+    fn floor_area_drag_autoscroll(&mut self, cx: &mut Cx) {
+        let last = {
+            let guard = floor_area_drag().lock().unwrap();
+            match guard.as_ref() {
+                Some(d) if d.active => d.last,
+                _ => return,
+            }
+        };
+        *floor_area_autoscroll_frame().lock().unwrap() = Some(cx.new_next_frame());
+        let view = self.ui.view(cx, ids!(floor_area_strip.tabs));
+        let rect = view.area().rect(cx);
+        if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
+            return;
+        }
+        const ZONE: f64 = 56.0;
+        let near_start = (ZONE - (last.x - rect.pos.x)).clamp(0.0, ZONE);
+        let near_end = (ZONE - (rect.pos.x + rect.size.x - last.x)).clamp(0.0, ZONE);
+        let step = |depth: f64| {
+            if depth > 0.0 {
+                2.0 + depth / ZONE * 10.0
+            } else {
+                0.0
+            }
+        };
+        let delta = step(near_end) - step(near_start);
+        if delta == 0.0 {
+            return;
+        }
+        let cur = view.get_scroll_pos();
+        let total = view.get_scroll_view_total();
+        let visible = view.get_scroll_view_visible();
+        let next_x = (cur.x + delta).clamp(0.0, (total.x - visible.x).max(0.0));
+        if (next_x - cur.x).abs() < 0.5 {
+            return;
+        }
+        view.set_scroll_pos(cx, dvec2(next_x, cur.y));
+        let mut repaint = false;
+        {
+            let mut guard = floor_area_drag().lock().unwrap();
+            if let Some(d) = guard.as_mut() {
+                let hover = self.floor_area_drop_slot(cx, d, d.last);
+                if hover != d.hover {
+                    d.hover = hover;
+                    repaint = true;
+                }
+            }
+        }
+        if repaint {
+            self.paint_floor_area_tabs(cx);
+        }
     }
 }

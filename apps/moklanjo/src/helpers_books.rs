@@ -124,36 +124,6 @@ fn claim_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
     // ChipStrip so a diagonal trackpad flick does not freeze the page.
 }
 
-/// Horizontal `ScrollXView` (chip / tab strip / bottom nav): claim X only
-/// while the strip can still move that way; never claim Y so the page keeps
-/// vertical scroll when the pointer is over chips.
-fn claim_hstrip_nested_scroll(cx: &mut Cx, strip: &ViewRef, event: &Event) {
-    let Event::Scroll(e) = event else {
-        return;
-    };
-    let area = strip.area();
-    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
-        return;
-    }
-    let dx = e.scroll.x;
-    if dx == 0.0 {
-        return;
-    }
-    let pos = strip.get_scroll_pos().x;
-    let total = strip.get_scroll_view_total().x;
-    let seen = strip.get_scroll_view_visible().x;
-    let max_x = (total - seen).max(0.0);
-    // scroll.x > 0 typically reveals content to the left (pos decreases).
-    let toward_left = dx > 0.0;
-    let can_move = if toward_left {
-        pos > 1.0
-    } else {
-        pos < max_x - 1.0
-    };
-    if can_move {
-        e.handled_x.set(true);
-    }
-}
 
 /// Walk the country list one step from `from`, wrapping at both ends. A code
 /// that matches nothing (half-typed, say) resumes from the applied pack.
@@ -178,13 +148,19 @@ fn page_owns_scroll(event: &Event) -> bool {
     matches!(event, Event::Scroll(_))
 }
 
-/// Resolve on-disk path for a product/draft image key (custom photo or empty).
-fn image_key_path(key: Option<&str>, dir: &std::path::Path) -> std::path::PathBuf {
+/// Resolve on-disk path for a rate photo / party logo / draft image key.
+/// A paired device holds the keys only: its copy of the Server's file, or
+/// empty (initials) while `lan_images` fetches it.
+fn image_key_path(
+    key: Option<&str>,
+    dir: &std::path::Path,
+    kind: lan_images::PhotoKind,
+) -> std::path::PathBuf {
     match key {
         Some(k) if k.starts_with("pending_custom:") => {
             std::path::PathBuf::from(&k["pending_custom:".len()..])
         }
-        Some(k) if k.starts_with("custom:") => dir.join(&k["custom:".len()..]),
+        Some(k) if k.starts_with("custom:") => lan_images::ensure_or_request(kind, k, dir),
         other => menu_images::resolve_image_path(other, "", dir),
     }
 }
@@ -249,6 +225,6 @@ fn apply_thumb_avatar_kind(
 
 fn load_product_thumb(cx: &mut Cx, item: &WidgetRef, product: &Product) {
     let dir = item_images_dir();
-    let path = image_key_path(product.image_key.as_deref(), &dir);
+    let path = image_key_path(product.image_key.as_deref(), &dir, lan_images::PhotoKind::Item);
     apply_thumb_avatar(cx, item, &product.name, &path);
 }

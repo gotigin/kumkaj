@@ -1070,6 +1070,13 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
     };
     match route {
         "/sync" | "/today" => return sync_reply(&store, req.header(HEADER_IF_NONE_MATCH)),
+        "/photo" => {
+            return photo_reply(
+                &store,
+                &query_param(&req.path, "kind").unwrap_or_default(),
+                &query_param(&req.path, "file").unwrap_or_default(),
+            );
+        }
         "/wait" => {
             // Held open until the books change: let go of the books first.
             drop(store);
@@ -1432,6 +1439,25 @@ fn remote_sale(
     store.finalize_sale_tenders(&req.draft, &parts, customer_id.as_deref(), actor)
 }
 
+/// `/photo?kind=item|party&file=<id>.webp`: one rate photo or party logo as
+/// hex JSON, for paired devices — sync carries keys only. A bare file name
+/// or nothing: a path never walks out of the photo folders.
+fn photo_reply(store: &Store, kind: &str, file: &str) -> Result<Reply, String> {
+    let Some(kind) = crate::lan_images::PhotoKind::parse(kind) else {
+        return Ok(Reply::refuse(400, "unknown photo kind", ""));
+    };
+    let key = format!("custom:{file}");
+    let Some(file) = crate::lan_images::key_file(&key) else {
+        return Ok(Reply::refuse(400, "not a photo name", ""));
+    };
+    let path = kind.dir(store)?.join(file);
+    let bytes = std::fs::read(&path).unwrap_or_default();
+    if bytes.is_empty() || bytes.len() > 4 * 1024 * 1024 {
+        return Ok(Reply::refuse(404, "photo not on this office's server", ""));
+    }
+    Ok(Reply::json(serde_json::json!({ "ok": true, "hex": hex::encode(bytes) })))
+}
+
 fn query_param(path: &str, key: &str) -> Option<String> {
     let q = path.split('?').nth(1)?;
     for pair in q.split('&') {
@@ -1718,6 +1744,22 @@ pub fn client_login(link: &Link, staff_id: Option<&str>, pin: &str) -> Result<Lo
         })
         .map_err(lan_error)?;
     reply_json(resp)
+}
+
+/// One rate photo or party logo from the Server (`/photo`).
+pub fn client_fetch_photo(link: &Link, kind: &str, file: &str) -> Result<Vec<u8>, LanError> {
+    #[derive(serde::Deserialize)]
+    struct PhotoOk {
+        hex: String,
+    }
+    let resp = agent(Duration::from_secs(20))
+        .get(&format!("{}/photo?kind={kind}&file={file}", link.base))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
+        .set(HEADER_DEVICE, &link.device)
+        .call()
+        .map_err(lan_error)?;
+    let photo: PhotoOk = reply_json(resp)?;
+    hex::decode(photo.hex.trim()).map_err(|e| LanError::Offline(format!("photo: {e}")))
 }
 
 /// The Server's books — or `None` when they are still revision `have` (the
@@ -2328,6 +2370,41 @@ mod tests {
         assert_eq!(void("1234", "v2").status, 400, "nor with a made-up PIN");
         let ok = void("9999", "v3");
         assert_eq!(ok.status, 200, "{}", ok.body);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// A paired device gets a party logo it only knows by key; an unpaired
+    /// one gets nothing, and no name can reach a file outside the photos.
+    #[test]
+    fn paired_devices_fetch_photos_but_never_another_file() {
+        let (path, store, guard) = office();
+        let (device, _) = paired_device(&path, &store, &guard, "Asha", "2222");
+        let party = store.add_customer_kind("Mehta Traders", "", "Consignor").unwrap();
+        let png = std::env::temp_dir().join(format!("moklanjo-logo-{}.png", party.id));
+        image::RgbImage::new(64, 64).save(&png).unwrap();
+        let key = store.import_party_image(&party.id, &png).unwrap();
+        let file = crate::lan_images::key_file(&key).unwrap().to_string();
+        let get = |route: &str, headers: &[(&str, &str)]| {
+            answer(&path, &http("GET", route, headers, ""), "10.0.0.5", &guard)
+        };
+        let photo = get(&format!("/photo?kind=party&file={file}"), &[(HEADER_DEVICE, &device)]);
+        assert_eq!(photo.status, 200, "{}", photo.body);
+        let bytes = hex::decode(body(&photo)["hex"].as_str().unwrap()).unwrap();
+        assert_eq!(&bytes[8..12], b"WEBP");
+        let stranger = get(&format!("/photo?kind=party&file={file}"), &[]);
+        assert_eq!(body(&stranger)["code"], "pair_again");
+        for bad in [
+            "../moklanjo.sqlite3",
+            "..%2F..%2Fmoklanjo.sqlite3",
+            "%2Fetc%2Fpasswd",
+            "x.png",
+        ] {
+            let refused = get(&format!("/photo?kind=party&file={bad}"), &[(HEADER_DEVICE, &device)]);
+            assert_eq!(refused.status, 400, "{bad}: {}", refused.body);
+        }
+        let wrong_folder = get(&format!("/photo?kind=item&file={file}"), &[(HEADER_DEVICE, &device)]);
+        assert_eq!(wrong_folder.status, 404);
+        let _ = std::fs::remove_file(png);
         let _ = std::fs::remove_file(path);
     }
 

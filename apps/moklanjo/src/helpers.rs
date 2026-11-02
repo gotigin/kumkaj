@@ -65,6 +65,28 @@ fn name_for_id<'a>(mut pairs: impl Iterator<Item = (&'a str, &'a str)>, id: &str
         .unwrap_or_default()
 }
 
+/// Booking desk pane widths (Parcel, Counter) for a content width `view_w`
+/// (window less rail). Both mins fit: they share the room in the mins'
+/// ratio. Else each keeps its min and the desk pans sideways — but a pane is
+/// never wider than the screen less a `peek` of its neighbour, so on a phone
+/// each pane is one screen and the other shows at the edge.
+fn booking_desk_pane_widths(
+    view_w: f64,
+    left_min: f64,
+    right_min: f64,
+    gap: f64,
+    peek: f64,
+) -> (f64, f64) {
+    let desk_avail = (view_w - 32.0).max(200.0);
+    if desk_avail >= left_min + right_min + gap {
+        let left = desk_avail * (left_min / (left_min + right_min));
+        return (left, desk_avail - gap - left);
+    }
+    // `view_w` is the desk's visible width (its 16 px side padding taken off).
+    let screen = (view_w - peek).max(240.0);
+    (left_min.min(screen), right_min.min(screen))
+}
+
 fn item_images_dir() -> std::path::PathBuf {
     app_state()
         .lock()

@@ -25,6 +25,44 @@ fn nav_order_csv(order: &[NavTab]) -> String {
     order.iter().map(|t| nav_tab_key(*t)).collect::<Vec<_>>().join(",")
 }
 
+/// Floor area tab order from books meta. Empty fields are the unnamed area.
+fn parse_floor_area_order(csv: Option<&str>) -> Vec<String> {
+    let Some(csv) = csv else {
+        return Vec::new();
+    };
+    // Keep empty tokens (unnamed area); trim only non-empty names.
+    csv.split(',')
+        .map(|p| {
+            let t = p.trim();
+            if t.is_empty() {
+                String::new()
+            } else {
+                t.to_string()
+            }
+        })
+        .collect()
+}
+
+fn floor_area_order_csv(order: &[String]) -> String {
+    order.join(",")
+}
+
+/// Preferred order first (that still exist), then any new areas in discovery order.
+fn order_floor_areas(present: &[String], preferred: &[String]) -> Vec<String> {
+    let mut out = Vec::with_capacity(present.len());
+    for p in preferred {
+        if present.iter().any(|a| a == p) && !out.iter().any(|a| a == p) {
+            out.push(p.clone());
+        }
+    }
+    for a in present {
+        if !out.iter().any(|x| x == a) {
+            out.push(a.clone());
+        }
+    }
+    out
+}
+
 /// Peers that must stay on the chrome (cannot be hidden in Sidebar settings).
 fn nav_tab_always_visible(tab: NavTab) -> bool {
     matches!(tab, NavTab::Settings | NavTab::Lock)
@@ -479,10 +517,10 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
     }
 }
 
-/// Whether arriving at `screen` may keep (or receive) drill-down history.
-/// Lock and Onboard always clear stacks. Chrome peers still use `go_peer`
-/// (clear then land with `record_history: false`); only `go` pushes.
-/// Mouse Back / Alt+← / edge swipe / Android back pop via `navigate_back`.
+/// Whether arriving at `screen` may keep (or receive) visit history.
+/// Lock and Onboard always clear stacks. Peer chrome and drill-downs both
+/// push via `go` / `go_peer`. Mouse Back / Alt+← / edge swipe / Android back
+/// pop via `navigate_back`.
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(screen, Screen::Lock | Screen::Onboard)
 }

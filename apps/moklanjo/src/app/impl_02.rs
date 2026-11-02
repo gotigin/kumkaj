@@ -1292,7 +1292,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 )
             };
             let dir = item_images_dir();
-            let path = image_key_path(draft_key.as_deref(), &dir);
+            let path = image_key_path(draft_key.as_deref(), &dir, lan_images::PhotoKind::Item);
             let preview = self.ui.widget(cx, ids!(draft_preview));
             apply_thumb_avatar(cx, &preview, &name, &path);
         }
@@ -1322,7 +1322,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 )
             };
             let dir = party_images_dir();
-            let path = image_key_path(draft_key.as_deref(), &dir);
+            let path = image_key_path(draft_key.as_deref(), &dir, lan_images::PhotoKind::Party);
             let preview = self.ui.widget(cx, ids!(party_draft_preview));
             apply_thumb_avatar(cx, &preview, &name, &path);
         }
@@ -1909,8 +1909,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     st.screen,
                     Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
                 );
-                let nested =
-                    st.screen == Screen::SidebarSettings || !st.nav_back.is_empty();
+                let nested = st.screen == Screen::SidebarSettings
+                    || (st.screen == Screen::Settings && st.settings_panel.is_some())
+                    || !st.nav_back.is_empty();
                 (
                     header_on && nested,
                     st.screen == Screen::ClientPair,

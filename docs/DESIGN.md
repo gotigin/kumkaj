@@ -61,16 +61,16 @@ Same device may hold **several local servers** (different products or businesses
 
 Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.sqlite3`, etc.) — there is no migration from those layouts.
 | **Onboard** | Moklanjo: courier defaults baked in (Account/Cash booking, kg). Fresh vs Book for opening rates/parties. Other brand products bake their own defaults. |
-| **Settings** | Country pack, venue, units, backup (no sample catalogue). |
+| **Settings** | Country pack, venue, units, backup (no sample catalogue). A **hub** in both apps (each with its own sections and look — Moklanjo rows are `HubDestBtn` + mark): one section open at a time, Back closes it to the hub first. |
 | **Control face by intent** | **Same job → same look.** Navigate elsewhere = `HubDestBtn` + mark (hub lists) or chrome `TabBtn`/`NavChip` — never a filled primary. Select in place = `DeskTab` / `SegBtn` / `ChipBtn`. Submit on this form = **one** filled primary (`RowPrimary` / `StackPrimary`, or `PayBtn` on the ticket). Quiet alt = secondary / outlined `NavBtn`. Destroy = `DangerBtn`. Frequency does **not** promote a navigate link to primary. |
 | **Choice chips** | Short filter labels only (`ChipBtn` / `ChipBtnActive` in `ChipStrip`). Exclusive closed sets (tax lane, pay method, staff role, …) use **`SegBtn` / `SegBtnOn`**. Multi-word CTAs and one-shot actions are **not** chips. |
 | **Stacked CTAs** | Multi-word / long labels → `ActionStack` + `StackPrimaryBtn` / `StackSecondaryBtn` (full width, wrap, no ellipsis). Same faces as Server/Client Mode. Never `ChipBtn` / `ActionRow` for those. Never use primary for “go to screen X”. |
 | **Form field rows** | Side-by-side inputs only → `FormFieldRow` (equal `Fill` fields). **Never** put a Fit/`NavBtn` CTA in that row — Makepad has no flex-shrink; wrap stacks letters vertically (`A d d r a t e`) and overlaps the field. CTAs go in `ActionStack` under the fields. |
 | **Bottom nav** | Phone chrome (< **720 css px**), horizontally scrollable. Active peer = only the `*Active` face visible (`paint_nav_tabs`); idle stays transparent on hover/focus. Peers include Day book · Booking · Pay out **plus** every former More destination (role-gated). |
 | **Side rail** | Tablet / desktop chrome (≥ **720 css px**), vertically scrollable. Same peer set as bottom nav (`nav_rail` / `apply_shell_layout`). Bottom tabs hide; rail shows. Drag the divider to resize; rail floor **148** css px, main column floor **360** css px. **‹** on the rail collapses it to zero width; **›** in the header restores it (`rail_collapsed`). Phone bottom tabs are unchanged. Short chrome labels + wrap (no ellipsis). Top-level peers are roots (`go_peer` — no Back chrome); nested screens show Back that pops; mouse/Android back still works via the history stack. |
-| **Booking / Order desk split** | Khaynjo sticky chrome = **only** Dine-in\|Takeaway\|Delivery\|Counter. Order title, total, table pick, Add dishes scroll inside Added-items. Parcel/Added-items \| Counter stay **side by side** in a Fit row inside horizontal `ScrollXView` (gap **16**). Pane widths Fixed in `apply_shell_layout` (mins ~600 \| ~520; grow when wider). H-pan when mins do not fit — never stack those two for tablet/desktop. Phone-narrow may stack. Moklanjo: booking top strip + same side-by-side. Shell chrome flips rail/bottom at 720. |
+| **Booking / Order desk split** | Khaynjo sticky chrome = **only** Dine-in\|Takeaway\|Delivery\|Counter. Order title, total, table pick, Add dishes scroll inside Added-items. Parcel/Added-items \| Counter stay **side by side** in a Fit row inside horizontal `ScrollXView` (gap **16**). Pane widths Fixed in `apply_shell_layout` (mins ~600 \| ~520; grow when wider). H-pan when mins do not fit — never stack those two for tablet/desktop. Phone-narrow may stack (Khaynjo). Moklanjo: booking top strip + same side-by-side at **every** width, phones included (owner, 2026-11-02): on a phone each pane is one screen wide less a 28 px peek of the other, swipe sideways between them (`booking_desk_pane_widths`). Shell chrome flips rail/bottom at 720. |
 | **CTA labels** | Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`) wrap — never `Ellipsis`. `ChipBtn` ellipsis only for short strip chips. |
-| **Min width** | Layout floor **320 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`). Desktop restore ignores saved widths below 720 so a squeezed session cannot lock the app into a phone frame. |
+| **Min width** | Layout floor **375 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`) — no crop. Desktop window resize is floored at the same 375. Desktop restore ignores saved widths below 720 so a squeezed session cannot lock the app into a phone frame. |
 | **Button ink** | Shared faces use `padding` + `label_walk.margin` so labels never sit flush on the face edge. Long dual CTAs use `ActionStack`, not half-width `ActionRow`. |
 | **Reports** | Today / month books, party aging, expenses, bank cashbook posts — generic books, not a vertical report suite. |
 | **ClientPair** | Extra till until paired (IP + pairing code). Body **Back** returns to DeviceSetup (auth screens hide the unlocked header — see DEV § Native input / Back). |
@@ -93,11 +93,13 @@ controls past the right edge, no “designed for one width” grids.
   not a shell-wide estimate that ignores screen padding (Floor tiles
   cropped when `content_width` was used before padding — fix: measure
   in `draw_walk` like the dish grid). Prefer **big** tiles: Khaynjo Floor
-  is **1 column from ~320 css px**, more columns only when another
+  is **1 column from the 375 css px app floor**, more columns only when another
   ~280 px tile fits (`FLOOR_TILE_MIN_W`).
 - Prefer wrap / reflow / scroll over Fixed widths that only fit one
   desktop size. Desk side-by-side only when the content column is wide
-  enough; otherwise stack.
+  enough; otherwise stack. Sole `InfoHelp` headings stay **Fit** (pack
+  with ℹ) and wrap via **`Fit{max: parent}`** / WrapLabel — never switch
+  them to Fill to dodge crop (that parks ℹ at the row end).
 - Phone (< **720**) and tablet/desktop (≥ **720**) chrome differ
   (bottom tabs vs side rail); content inside each mode still reflows.
 - **Page-scroll lists:** expand-to-content `PortalList`s must not use a
@@ -197,6 +199,8 @@ Never promote a hub navigate link to filled primary because it is “the main th
 **Selection:** Makepad 2 `Button` has **no selected bit** — only hover/down/focus/disabled animators. Shipping pattern is Overlay **idle + active** faces; Rust paints visibility from app state (`paint_nav_tabs` / `paint_choice_pair`) and **cuts those animators** so a previous face cannot stay lit. Idle nav chips stay **transparent** on hover/focus; only the active face uses the navy “selected” fill. Each destination has its own peer (no More hub).
 
 **Labels:** Never `max_lines: 1` + `Ellipsis` on full-width / multi-word / translated CTAs (`NavBtn`, `PayBtn`, `MoreRow`, `HubDestBtn`, `Stack*`, `Row*`, `DangerBtn`). Those faces stay **centered** (hub dest left-aligned) and **wrap** (`height: Fit`, `flow: Right{wrap: true}`). Label walk is **Fit** (Makepad patch `button_label_center` — a Fill label inside wrap freezes the UI; do not remove wrap/center to dodge that). `ChipBtn` ellipsis is allowed **only** for short strip chips (Fit max 160). Always set both `padding` and `label_walk.margin`.
+
+**InfoHelp (screen / section titles):** **Always `width: Fit`** (optionally `Fit{max: parent}`) so **title+ℹ pack as one cluster**. Gap is **only** `tip_btn.margin.left` (6). **Never `width: Fill`** on InfoHelp or its title — that parks ℹ at the far end of the row (lock-screen regression, 2026-11). Title is **`WrapLabel` at `Fit{max: parent}`** so long / translated headings wrap at 375 instead of mid-cropping. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden** (tip-only companions). Sibling external headings beside InfoHelp are **`width: Fit`** too (same pack); parent row `spacing: 0`. Guarded by `info_help_layout_tests` in each app — fix the shared face, not one screen.
 
 **Form rows:** `FormFieldRow` = fields only. Multi-word CTAs (`Add rate`, `New item`, …) live in `ActionStack` below — never `NavBtn{width: Fit}` beside `FieldInput`s in one `Right` row. Never put `width: Fill` CTAs inside a parent `flow: Right{wrap: true}` View (same freeze); stack them with `ActionStack` / `flow: Down`.
 

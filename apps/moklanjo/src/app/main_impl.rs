@@ -14,6 +14,10 @@ impl AppMain for App {
             thumbs::set_notify(|| {
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
             });
+            // Rate photos / party logos pulled from the Server (paired devices).
+            lan_images::set_notify(|| {
+                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
+            });
             phone::set_notify(|| {
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
             });
@@ -41,7 +45,7 @@ impl AppMain for App {
                 }
             }
         }
-        if matches!(event, Event::Signal) && thumbs::take_ready() {
+        if matches!(event, Event::Signal) && (thumbs::take_ready() | lan_images::take_ready()) {
             self.ui.redraw(cx);
         }
         if matches!(event, Event::Signal) {
@@ -86,7 +90,7 @@ impl AppMain for App {
                         self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, "Cancelled");
+                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
                         self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
@@ -198,7 +202,23 @@ impl AppMain for App {
             if let Some(problem) = print_share::take_problems().pop() {
                 self.set_status(cx, problem);
             }
-            self.sync_printer_fields(cx);
+            // Settings → Printers: repaint what Find found only when Find's
+            // state moved. Rebuilding it with the pool and route cards on
+            // every wake (photo thumbs, the device worker, LAN) redrew
+            // Settings for nothing — Khaynjo learned the same, 2026-11.
+            if app_state().lock().unwrap().screen == Screen::Settings {
+                let now = (print_share::is_finding_printers(), print_share::found_printers());
+                let before = found_printers_painted().lock().unwrap().clone();
+                if before.as_ref() != Some(&now) {
+                    let stopped = before.is_some_and(|(looking, _)| looking) && !now.0;
+                    self.show_found_printers(cx);
+                    if stopped && print_share::find_printers_was_cancelled() {
+                        let msg = app_state().lock().unwrap().t("cancelled");
+                        self.set_status(cx, msg);
+                    }
+                    self.paint_submit_busy_chrome(cx);
+                }
+            }
             let found = discovery_result().lock().unwrap().take();
             if let Some(found) = found {
                 self.show_found_servers(cx, found);
@@ -252,23 +272,12 @@ impl AppMain for App {
         if self.pointer_navigates(cx, event) {
             return;
         }
-        // Horizontal strips: claim sideways only while they can move; never
-        // steal vertical page scroll when the pointer sits on chips/nav.
-        if matches!(event, Event::Scroll(_)) {
-            for (_, scroller) in TAB_STRIPS {
-                let tabs = self.ui.view(cx, scroller);
-                claim_hstrip_nested_scroll(cx, &tabs, event);
-            }
-            for path in [
-                ids!(bottom_nav_scroll),
-                ids!(rail_scroll),
-                ids!(app_hscroll),
-                ids!(booking_desk_hscroll),
-            ] {
-                let strip = self.ui.view(cx, path);
-                claim_hstrip_nested_scroll(cx, &strip, event);
-            }
-        }
+        // Sideways strips (tab strips, nav bars, the booking desk) need no
+        // pre-claim: Makepad gives a wheel to the innermost scroll view first
+        // and marks it handled only when that view moved, so the strip pans
+        // and its parent takes over at the edge. Pre-marking X handled here
+        // (claim_hstrip_nested_scroll, removed 2026-11-02) stopped the strip
+        // itself — a trackpad moved the booking desk one step, then nothing.
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.
         if matches!(

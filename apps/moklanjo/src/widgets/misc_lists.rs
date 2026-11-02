@@ -79,7 +79,7 @@ impl Widget for CustomerList {
                     let path = if c.image_key.trim().is_empty() {
                         std::path::PathBuf::new()
                     } else {
-                        image_key_path(Some(c.image_key.as_str()), &dir)
+                        image_key_path(Some(c.image_key.as_str()), &dir, lan_images::PhotoKind::Party)
                     };
                     apply_thumb_avatar(cx, &item, &c.name, &path);
                     let pick_text = if is_selected {

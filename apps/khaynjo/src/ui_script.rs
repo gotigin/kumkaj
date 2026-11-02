@@ -266,6 +266,10 @@ script_mod! {
                 // Press-drag over cart / buttons / filled panes (not only
                 // whitespace). Nested PortalList still claims via nested_touch.
                 mouse_capture_overload: true
+                // A drag that runs sideways (over a sideways strip or the
+                // Floor's tables) is not the page's: direction decides who
+                // scrolls, never a 2px jitter (patch scroll_axis_lock).
+                axis_lock: true
                 bounce_at_start: false
                 bounce_at_end: false
                 bar_size: 10.
@@ -292,6 +296,7 @@ script_mod! {
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: true show_scroll_y: false
             scroll_bar_x.drag_scrolling: true
+            scroll_bar_x.axis_lock: true
             scroll_bar_x.bar_size: 4.
         }
     }
@@ -725,7 +730,7 @@ script_mod! {
     // Side-by-side row actions — same height/margins so mixed primary/secondary
     // never sit on different baselines (Makepad Fill+theme margin misaligns).
     // Defined as full Button (not PinOkKey alias) so padding always applies.
-    // Prefer ActionStack when labels are longer than ~4 chars at 320px width.
+    // Prefer ActionStack when labels are longer than ~4 chars at the 375px floor.
     // Row faces wrap (no ellipsis) so half-width ActionRow still shows full text.
     let RowPrimaryBtn = Button{
         width: Fill height: Fit
@@ -872,83 +877,10 @@ script_mod! {
         }
         text: "TODAY"
     }
-    // Screen title + ℹ tip (CalloutTooltip via app_callout). Docs stay off the
-    // work surface — tap/hover the icon when the tip is useful.
+    // InfoHelp DSL lives after WrapLabel (title is WrapLabel — Label+Fill+wrap
+    // NaNs the turtle; see DEV bug 7). Register the type here so the widget
+    // exists; set_type_default runs once WrapLabel is in scope.
     mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
-    mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
-        // Fit so title+ℹ pack as one cluster; do not stretch ℹ to the row end.
-        // Title→ℹ gap is ONLY tip_btn.margin.left (6). Parent rows that place an
-        // external title beside InfoHelp must use spacing: 0 so the gap stays 6.
-        width: Fit
-        height: Fit
-        flow: Right
-        spacing: 0
-        align: Align{x: 0.0 y: 0.5}
-        tip: ""
-        icon := Image{
-            width: 28 height: 28
-            fit: ImageFit.Stretch
-            visible: false
-            margin: Inset{left: 0. right: 6. top: 0. bottom: 0.}
-        }
-        title := Label{
-            width: Fit height: Fit
-            text: ""
-            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-            draw_text.color: #x260B08
-            draw_text.text_style.font_size: 20.
-        }
-        tip_btn := Button{
-            width: 32 height: 32
-            text: ""
-            margin: Inset{left: 6. right: 0. top: 0. bottom: 0.}
-            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-            align: Align{x: 0.5 y: 0.5}
-            label_walk: Walk{width: 0. height: 0.}
-            icon_walk: Walk{width: 0. height: 0.}
-            draw_bg +: {
-                mark_color: uniform(#x69090C)
-                color: #xFBEDE4
-                color_hover: #x9A0E10
-                color_down: #x69090C
-                color_focus: #xFBEDE4
-                color_2: #xFBEDE4
-                color_2_hover: #x9A0E10
-                color_2_down: #x69090C
-                color_2_focus: #xFBEDE4
-                border_color: #xEFD2BC
-                border_radius: 16.
-                border_size: 1.
-                pixel: fn() {
-                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                    sdf.box(
-                        self.border_size,
-                        self.border_size,
-                        self.rect_size.x - self.border_size * 2.,
-                        self.rect_size.y - self.border_size * 2.,
-                        self.border_radius
-                    )
-                    let fill = self.color
-                        .mix(self.color_hover, self.hover)
-                        .mix(self.color_down, self.down)
-                    sdf.fill_keep(fill)
-                    sdf.stroke(self.border_color, self.border_size)
-                    let c = self.rect_size * vec2(0.5, 0.5)
-                    let ink = self.mark_color
-                        .mix(#xffffff, self.hover)
-                        .mix(#xffffff, self.down)
-                    // Dot + stem ≈ ℹ, centred in the face.
-                    sdf.circle(c.x, c.y - 5.5, 1.6)
-                    sdf.fill(ink)
-                    sdf.move_to(c.x, c.y - 2.0)
-                    sdf.line_to(c.x, c.y + 6.0)
-                    sdf.stroke(ink, 2.2)
-                    return sdf.result
-                }
-            }
-        }
-    }
-    let InfoHelp = mod.widgets.InfoHelp{}
     // Inline quiet action — Fit width, NO wrap (Fill+wrap at Fit stacks
     // letters vertically). Same colours as RowSecondary; not a ChipBtn filter.
     let QuietFitBtn = Button{
@@ -1066,7 +998,7 @@ script_mod! {
         }
     }
     // Prefer ActionStack for CTAs. ActionRow only for 2 ultra-short labels
-    // (≤4 chars) — Fill NavBtn/PayBtn in a Right row becomes "..." at ~320px.
+    // (≤4 chars) — Fill NavBtn/PayBtn in a Right row becomes "..." near the 375px floor.
     let ActionRow = View{
         width: Fill height: Fit
         flow: Right spacing: 8
@@ -1767,6 +1699,88 @@ script_mod! {
     }
     let WrapLabel = mod.widgets.WrapLabel{}
 
+    // Screen title + ℹ tip (CalloutTooltip via app_callout). Docs stay off the
+    // work surface — tap/hover the icon when the tip is useful.
+    // ALWAYS Fit so title+ℹ pack as one cluster (gap = tip_btn.margin.left 6
+    // only). Never width: Fill — that parks ℹ at the row end. Title is
+    // WrapLabel Fit{max: parent} so long / translated headings wrap at 375
+    // instead of mid-cropping; Label{width:Fill, wrap} NaNs (DEV bug 7).
+    // Parent rows with an external heading beside InfoHelp use spacing: 0.
+    mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
+        width: Fit{max: FitBound.Rel{base: Base.Full, factor: 1.0}}
+        height: Fit
+        flow: Right
+        spacing: 0
+        align: Align{x: 0.0 y: 0.5}
+        tip: ""
+        icon := Image{
+            width: 28 height: 28
+            fit: ImageFit.Stretch
+            visible: false
+            margin: Inset{left: 0. right: 6. top: 0. bottom: 0.}
+        }
+        title := WrapLabel{
+            width: Fit{max: FitBound.Rel{base: Base.Full, factor: 1.0}}
+            height: Fit
+            body: ""
+            // Hidden until set_title — empty title must not take layout.
+            visible: false
+            font_size: 20.
+            font_color: #x260B08
+            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        }
+        tip_btn := Button{
+            width: 32 height: 32
+            text: ""
+            margin: Inset{left: 6. right: 0. top: 0. bottom: 0.}
+            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+            align: Align{x: 0.5 y: 0.5}
+            label_walk: Walk{width: 0. height: 0.}
+            icon_walk: Walk{width: 0. height: 0.}
+            draw_bg +: {
+                mark_color: uniform(#x69090C)
+                color: #xFBEDE4
+                color_hover: #x9A0E10
+                color_down: #x69090C
+                color_focus: #xFBEDE4
+                color_2: #xFBEDE4
+                color_2_hover: #x9A0E10
+                color_2_down: #x69090C
+                color_2_focus: #xFBEDE4
+                border_color: #xEFD2BC
+                border_radius: 16.
+                border_size: 1.
+                pixel: fn() {
+                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                    sdf.box(
+                        self.border_size,
+                        self.border_size,
+                        self.rect_size.x - self.border_size * 2.,
+                        self.rect_size.y - self.border_size * 2.,
+                        self.border_radius
+                    )
+                    let fill = self.color
+                        .mix(self.color_hover, self.hover)
+                        .mix(self.color_down, self.down)
+                    sdf.fill_keep(fill)
+                    sdf.stroke(self.border_color, self.border_size)
+                    let c = self.rect_size * vec2(0.5, 0.5)
+                    let ink = self.mark_color
+                        .mix(#xffffff, self.hover)
+                        .mix(#ffffff, self.down)
+                    // Dot + stem ≈ ℹ, centred in the face.
+                    sdf.circle(c.x, c.y - 5.5, 1.6)
+                    sdf.fill(ink)
+                    sdf.move_to(c.x, c.y - 2.0)
+                    sdf.line_to(c.x, c.y + 6.0)
+                    sdf.stroke(ink, 2.2)
+                    return sdf.result
+                }
+            }
+        }
+    }
+    let InfoHelp = mod.widgets.InfoHelp{}
+
     // Settings → Sidebar: reorder + show/hide chrome peers.
     // Settings → Sidebar row: icon+name (drag via nav_drag_ghost) +
     // pill toggle switch (grey off / brand on, white thumb). Settings/Lock
@@ -2210,8 +2224,9 @@ script_mod! {
     }
     let FloorTile = View{
         cursor: MouseCursor.Hand
-        // Taller + roomier than the old 152 so status text clears the border.
-        width: Fill height: 176
+        // One size on every screen (FLOOR_TILE_W × FLOOR_TILE_H): more
+        // columns than fit scroll sideways instead of shrinking the cards.
+        width: 280 height: 178
         flow: Overlay
         bg_free := RoundedView{
             width: Fill height: Fill
@@ -3180,9 +3195,44 @@ script_mod! {
         }
     }
 
+    // One tile row inside an area's sideways scroller.
+    // `width: Fit` — never Fill. Fill collapses to the ScrollX viewport
+    // (~2×280 on a phone), so Columns=3 clipped the third tile with no
+    // sideways scroll. Rust sets each row to floor_grid_width(cols).
+    let FloorTileRow = View{
+        width: Fit height: Fit
+        padding: Inset{bottom: 10.}
+        flow: Right spacing: 10
+        texture_caching: false
+        left_gap := View{width: 0 height: 1 visible: false}
+        t0 := FloorTile{}
+        t1 := FloorTile{}
+        t2 := FloorTile{}
+        t3 := FloorTile{}
+        t4 := FloorTile{}
+        t5 := FloorTile{}
+        t6 := FloorTile{}
+        t7 := FloorTile{}
+        t8 := FloorTile{}
+        t9 := FloorTile{}
+        t10 := FloorTile{}
+        t11 := FloorTile{}
+        t12 := FloorTile{}
+        t13 := FloorTile{}
+        t14 := FloorTile{}
+        t15 := FloorTile{}
+        t16 := FloorTile{}
+        t17 := FloorTile{}
+        t18 := FloorTile{}
+        t19 := FloorTile{}
+        t20 := FloorTile{}
+        t21 := FloorTile{}
+        t22 := FloorTile{}
+        t23 := FloorTile{}
+    }
     mod.widgets.FloorListBase = #(FloorList::register_widget(vm))
-    // Page scrolls; only on-screen rows draw (same top_gap / list_box as MenuList).
-    // Drawing every FloorTile for 40+ tables froze Android (2026-11).
+    // One PortalList item per area. Each area has its own ScrollXView so
+    // sideways pan on Dine In does not move Parcel (and the reverse).
     mod.widgets.FloorList = set_type_default() do mod.widgets.FloorListBase{
         width: Fill height: Fit
         flow: Down
@@ -3197,30 +3247,65 @@ script_mod! {
                 bounce_at_end: false
                 capture_overload: false
                 scroll_bar: ScrollBar{bar_size: 0.}
-                // A row of up to 8 tiles; the draw shows as many as the width
-                // allows (`floor_columns`).
                 Item := View{
                     width: Fill height: Fit
-                    padding: Inset{bottom: 10.}
-                    flow: Right spacing: 10
+                    flow: Down spacing: 4
                     texture_caching: false
-                    t0 := FloorTile{}
-                    t1 := FloorTile{}
-                    t2 := FloorTile{}
-                    t3 := FloorTile{}
-                    t4 := FloorTile{}
-                    t5 := FloorTile{}
-                    t6 := FloorTile{}
-                    t7 := FloorTile{}
-                }
-                // Area heading (Dine In, Parcel, AC …) above that area's tables.
-                Header := View{
-                    width: Fill height: Fit
-                    padding: Inset{top: 6. bottom: 2.}
-                    area_label := WrapLabel{
-                        body: ""
-                        font_color: #x69090C
-                        font_size: 16.
+                    area_label := Label{
+                        width: Fit
+                        text: ""
+                        padding: Inset{top: 6. bottom: 2.}
+                        draw_text.color: #x69090C
+                        draw_text.text_style.font_size: 16.
+                    }
+                    // Desk pane (not a chip strip): mouse + touch press-drag
+                    // pans sideways over tiles, gaps, and pads. `axis_lock`
+                    // waits ~8px before scroll owns the gesture — a short
+                    // press stays a tile tap / icon click (finger_up_is_tap).
+                    // Capture overload must be on: rows/PortalList cover the
+                    // body, so "whitespace only" overload-off never saw the
+                    // pads or the gaps between tables.
+                    area_scroll := ScrollXView{
+                        width: Fill height: Fit
+                        padding: Inset{top: 18. bottom: 22.}
+                        scroll_bars: mod.widgets.ScrollBars {
+                            show_scroll_x: true show_scroll_y: false
+                            scroll_bar_x: mod.widgets.ScrollBar{
+                                drag_scrolling: true
+                                mouse_capture_overload: true
+                                axis_lock: true
+                                bounce_at_start: false
+                                bounce_at_end: false
+                                bar_size: 10.
+                                min_handle_size: 40.
+                                draw_bg +: {
+                                    size: 6.
+                                    border_radius: 3.
+                                    color: #xC9AFA2
+                                    color_hover: #x9A0E10
+                                    color_drag: #x69090C
+                                }
+                            }
+                        }
+                        area_body := View{
+                            // Rust sets Fixed(floor_grid_width(cols)) so Columns=N
+                            // is always N tiles wide (scroll sideways when needed).
+                            width: Fit height: Fit
+                            flow: Down
+                            // Comfort pads above/below rows (same width as the
+                            // grid) — press-drag here pans too.
+                            padding: Inset{top: 10. bottom: 14.}
+                            area_rows := PortalList{
+                                width: Fill height: Fill
+                                spacing: 10
+                                drag_scrolling: false
+                                bounce_at_start: false
+                                bounce_at_end: false
+                                capture_overload: false
+                                scroll_bar: ScrollBar{bar_size: 0.}
+                                Item := FloorTileRow{}
+                            }
+                        }
                     }
                 }
             }
@@ -3691,7 +3776,6 @@ script_mod! {
             }
         }
     }
-
     // Kitchen station row: drawn box + ✓ (Noto has ✓; ☐ was missing → tofu).
     // ↑↓ swap print order.
     let StationPrioBtn = Button{
@@ -4100,7 +4184,7 @@ script_mod! {
                 window.title: "Kumkaj"
                 // First-run desktop default (not a phone frame). Later launches
                 // restore last size/position from window_geom.json in App code.
-                // Layout content still never goes below 320 css px (app_shell).
+                // Layout content still never goes below 375 css px (app_shell).
                 window.inner_size: vec2(1024, 768)
                 pass.clear_color: #xF9F4F0
                 caption_bar +: {
@@ -4133,12 +4217,12 @@ script_mod! {
                     // Overlay — app_callout must NOT be a Down sibling of
                     // app_hscroll or it steals half the window height.
                     flow: Overlay
-                    // Min layout width 320 css px. Narrower viewports scroll horizontally
+                    // Min layout width 375 css px. Narrower viewports scroll horizontally
                     // instead of crushing faces below that floor.
                     app_hscroll := ScrollXView{
                         width: Fill height: Fill
                         app_shell := View{
-                            width: Fill{min: 320.} height: Fill
+                            width: Fill{min: 375.} height: Fill
                             // Wide (≥720): side rail. Narrow: bottom tabs. See apply_shell_layout.
                             flow: Right spacing: 0
 
@@ -4621,7 +4705,6 @@ script_mod! {
                                             // not at the far end of the row.
                                             setup_lang_hdr := AccordionHdrBtn{width: Fit text: "LANGUAGE"}
                                             setup_lang_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Follow this device’s language, or pick one yourself."
                                             }
                                         }
@@ -4665,7 +4748,6 @@ script_mod! {
                                             align: Align{y: 0.5}
                                             setup_role_hdr := AccordionHdrBtn{width: Fit text: "THIS DEVICE"}
                                             setup_device_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Server keeps the books here. Client pairs to a Server."
                                             }
                                         }
@@ -4684,7 +4766,6 @@ script_mod! {
                                                 flow: Down spacing: 12
                                                 visible: false
                                                 server_pick_help := InfoHelp{
-                                                    width: Fit
                                                     tip: "Open an existing server, or create one for another business."
                                                 }
                                                 server_name_input := FieldInput{empty_text: "New server name (optional)"}
@@ -4858,7 +4939,6 @@ script_mod! {
                                         draw_bg.border_size: 1.
                                         draw_bg.border_color: #xEFD2BC
                                         pin_help := InfoHelp{
-                                            width: Fit
                                             tip: "4–12 digits. System keyboard only — Enter unlocks."
                                         }
                                         View{
@@ -4882,7 +4962,6 @@ script_mod! {
                                     }
 
                                     lock_login_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional: unlock with login id and password instead of PIN."
                                     }
                                     lock_login_id := FieldInput{empty_text: "Login id"}
@@ -4942,7 +5021,6 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             onboard_icon_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Optional shop mark on screens in the app."
                                             }
                                         }
@@ -4972,7 +5050,6 @@ script_mod! {
                                         selectable: false
                                     }
                                     onboard_tmpl_help := InfoHelp{
-                                        width: Fit
                                         tip: " "
                                     }
                                 }
@@ -5057,7 +5134,6 @@ script_mod! {
                                         font_size: 22.
                                     }
                                     client_pair_help := InfoHelp{
-                                        width: Fit
                                         tip: "Find the shop's server on Wi‑Fi, or type its address and pairing code."
                                     }
                                 }
@@ -5100,7 +5176,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 books_help := InfoHelp{
-                                    width: Fit
                                     tip: "Today’s position. Order = orders in. Buy = purchases & expenses. Parties = credit customers & suppliers."
                                 }
                                 books_low_stock := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
@@ -5411,6 +5486,7 @@ script_mod! {
                                     show_scroll_x: true show_scroll_y: false
                                     scroll_bar_x.drag_scrolling: true
                                     scroll_bar_x.mouse_capture_overload: true
+                                    scroll_bar_x.axis_lock: true
                                     scroll_bar_x.bar_size: 8.
                                 }
                                 pos_ticket_row := View{
@@ -5425,6 +5501,7 @@ script_mod! {
                                         scroll_bar_y: mod.widgets.ScrollBar{
                                             drag_scrolling: true
                                             mouse_capture_overload: true
+                                            axis_lock: true
                                             bounce_at_start: false
                                             bounce_at_end: false
                                             bar_size: 10.
@@ -5445,7 +5522,6 @@ script_mod! {
 
                                     // Scrolls with the ticket — not sticky.
                                     sell_help := InfoHelp{
-                                        width: Fit
                                         tip: "Tap an item to add it."
                                     }
                                     sticky_total := Label{
@@ -5569,7 +5645,6 @@ script_mod! {
                                                     font_size: 14.
                                                 }
                                                 split_bill_help := InfoHelp{
-                                                    width: Fit
                                                     tip: "Tap the dishes one guest pays for, then make their separate bill."
                                                 }
                                             }
@@ -5604,7 +5679,6 @@ script_mod! {
                                                     font_size: 14.
                                                 }
                                                 move_table_help := InfoHelp{
-                                                    width: Fit
                                                     tip: "Move this table's order to a free table, or merge it into a running one."
                                                 }
                                             }
@@ -5697,7 +5771,6 @@ script_mod! {
                                             // Right under the lines just punched: pick a
                                             // station for dishes that have none, then send.
                                             kot_dest_help := InfoHelp{
-                                                width: Fit
                                                 tip: " "
                                                 visible: false
                                             }
@@ -5917,7 +5990,6 @@ script_mod! {
                                                 font_size: 14.
                                             }
                                             payment_help := InfoHelp{
-                                                width: Fit
                                                 tip: "Split across cash / UPI / card / credit if needed. Credit needs a customer above."
                                             }
                                         }
@@ -6063,7 +6135,6 @@ script_mod! {
                                     }
                                 }
                                 floor_help := InfoHelp{
-                                    width: Fit
                                     tip: "Tap a table to open its order. Icons on the card: seat · free · bill · print · view. Active table uses a stronger border."
                                 }
                                 // Kept hidden — tile border marks the active table; icons are on the card.
@@ -6108,145 +6179,312 @@ script_mod! {
                                     font_color: #x3A2C26
                                     font_size: 14.
                                 }
-                                // Colour key — real swatches, the same colours as the tiles.
-                                View{
+                                // Colour key — one line; scroll sideways if the
+                                // labels do not fit (never wrap to a second line).
+                                floor_legend := ScrollXView{
                                     width: Fill height: Fit
-                                    flow: Right{wrap: true}
-                                    View{
-                                        width: Fit height: Fit
-                                        flow: Right spacing: 6
-                                        align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xFFFFFF
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #xD8C7BD
-                                        }
-                                        lg_free := Label{
-                                            width: Fit
-                                            text: "free"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
-                                        }
-                                    }
-                                    View{
-                                        width: Fit height: Fit
-                                        flow: Right spacing: 6
-                                        align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xFFF4CC
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #xE8C200
-                                        }
-                                        lg_seated := Label{
-                                            width: Fit
-                                            text: "occupied"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
+                                    padding: Inset{bottom: 4.}
+                                    scroll_bars: mod.widgets.ScrollBars {
+                                        show_scroll_x: true show_scroll_y: false
+                                        scroll_bar_x: mod.widgets.ScrollBar{
+                                            drag_scrolling: true
+                                            mouse_capture_overload: true
+                                            axis_lock: true
+                                            bounce_at_start: false
+                                            bounce_at_end: false
+                                            bar_size: 6.
+                                            min_handle_size: 24.
+                                            draw_bg +: {
+                                                size: 4.
+                                                border_radius: 2.
+                                                color: #xC9AFA2
+                                                color_hover: #x9A0E10
+                                                color_drag: #x69090C
+                                            }
                                         }
                                     }
                                     View{
                                         width: Fit height: Fit
-                                        flow: Right spacing: 6
+                                        flow: Right{wrap: false}
+                                        spacing: 14
                                         align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xFFE9A8
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #xD9A400
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xFFFFFF
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #xD8C7BD
+                                            }
+                                            lg_free := Label{
+                                                width: Fit
+                                                text: "free"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
-                                        lg_kitchen := Label{
-                                            width: Fit
-                                            text: "kitchen"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xFFF4CC
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #xE8C200
+                                            }
+                                            lg_seated := Label{
+                                                width: Fit
+                                                text: "occupied"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
-                                    }
-                                    View{
-                                        width: Fit height: Fit
-                                        flow: Right spacing: 6
-                                        align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xFFC48A
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #xE06A00
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xFFE9A8
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #xD9A400
+                                            }
+                                            lg_kitchen := Label{
+                                                width: Fit
+                                                text: "kitchen"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
-                                        lg_ready := Label{
-                                            width: Fit
-                                            text: "ready"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xFFC48A
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #xE06A00
+                                            }
+                                            lg_ready := Label{
+                                                width: Fit
+                                                text: "ready"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
-                                    }
-                                    View{
-                                        width: Fit height: Fit
-                                        flow: Right spacing: 6
-                                        align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xCFE3FF
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #x3B7DD8
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xCFE3FF
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #x3B7DD8
+                                            }
+                                            lg_eating := Label{
+                                                width: Fit
+                                                text: "eating"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
-                                        lg_eating := Label{
-                                            width: Fit
-                                            text: "eating"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xBFEBC8
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #x2E9E4F
+                                            }
+                                            lg_bill := Label{
+                                                width: Fit
+                                                text: "bill"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
-                                    }
-                                    View{
-                                        width: Fit height: Fit
-                                        flow: Right spacing: 6
-                                        align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xBFEBC8
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #x2E9E4F
-                                        }
-                                        lg_bill := Label{
-                                            width: Fit
-                                            text: "bill"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
-                                        }
-                                    }
-                                    View{
-                                        width: Fit height: Fit
-                                        flow: Right spacing: 6
-                                        align: Align{y: 0.5}
-                                        margin: Inset{right: 14. bottom: 4.}
-                                        RoundedView{
-                                            width: 16 height: 16
-                                            draw_bg.color: #xE3DCD7
-                                            draw_bg.border_radius: 4.
-                                            draw_bg.border_size: 1.5
-                                            draw_bg.border_color: #x8C7B72
-                                        }
-                                        lg_paid := Label{
-                                            width: Fit
-                                            text: "paid"
-                                            draw_text.color: #x3A2C26
-                                            draw_text.text_style.font_size: 12.
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            align: Align{y: 0.5}
+                                            RoundedView{
+                                                width: 16 height: 16
+                                                draw_bg.color: #xE3DCD7
+                                                draw_bg.border_radius: 4.
+                                                draw_bg.border_size: 1.5
+                                                draw_bg.border_color: #x8C7B72
+                                            }
+                                            lg_paid := Label{
+                                                width: Fit
+                                                text: "paid"
+                                                draw_text.color: #x3A2C26
+                                                draw_text.text_style.font_size: 12.
+                                            }
                                         }
                                     }
                                 }
-                                floor_list := mod.widgets.FloorList{}
+                                // Areas as a sideways tab strip (‹ › when needed).
+                                // Each tab's body below = that area's Columns + tables.
+                                floor_area_strip := View{
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    visible: false
+                                    tabs := ChipStrip{
+                                        ChipStripRow{
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_0 := ChipBtn{text: " "}
+                                                floor_area_0_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_1 := ChipBtn{text: " "}
+                                                floor_area_1_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_2 := ChipBtn{text: " "}
+                                                floor_area_2_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_3 := ChipBtn{text: " "}
+                                                floor_area_3_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_4 := ChipBtn{text: " "}
+                                                floor_area_4_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_5 := ChipBtn{text: " "}
+                                                floor_area_5_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_6 := ChipBtn{text: " "}
+                                                floor_area_6_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_7 := ChipBtn{text: " "}
+                                                floor_area_7_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_8 := ChipBtn{text: " "}
+                                                floor_area_8_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_9 := ChipBtn{text: " "}
+                                                floor_area_9_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_10 := ChipBtn{text: " "}
+                                                floor_area_10_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_11 := ChipBtn{text: " "}
+                                                floor_area_11_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_12 := ChipBtn{text: " "}
+                                                floor_area_12_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_13 := ChipBtn{text: " "}
+                                                floor_area_13_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_14 := ChipBtn{text: " "}
+                                                floor_area_14_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_15 := ChipBtn{text: " "}
+                                                floor_area_15_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_16 := ChipBtn{text: " "}
+                                                floor_area_16_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_17 := ChipBtn{text: " "}
+                                                floor_area_17_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_18 := ChipBtn{text: " "}
+                                                floor_area_18_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_19 := ChipBtn{text: " "}
+                                                floor_area_19_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_20 := ChipBtn{text: " "}
+                                                floor_area_20_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_21 := ChipBtn{text: " "}
+                                                floor_area_21_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_22 := ChipBtn{text: " "}
+                                                floor_area_22_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                            View{width: Fit height: 40 flow: Overlay
+                                                floor_area_23 := ChipBtn{text: " "}
+                                                floor_area_23_on := ChipBtnActive{text: " " visible: false}
+                                            }
+                                        }
+                                    }
+                                    View{
+                                        width: Fill height: 52
+                                        align: Align{x: 0.0 y: 0.5}
+                                        chev_l := ChevronBtn{draw_bg.point: -1.0 visible: false}
+                                    }
+                                    View{
+                                        width: Fill height: 52
+                                        align: Align{x: 1.0 y: 0.5}
+                                        chev_r := ChevronBtn{visible: false}
+                                    }
+                                }
+                                // Columns for the selected area only (this device).
+                                // Pick 1, 2, 3 … or type; leave empty to fit the screen.
+                                floor_cols_box := View{
+                                    width: Fixed(168.) height: Fit
+                                    flow: Down
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Overlay
+                                        align: Align{x: 1.0 y: 0.5}
+                                        floor_cols_input := FieldInput{
+                                            margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
+                                            padding: Inset{left: 12. right: 36. top: 11. bottom: 11.}
+                                            empty_text: "Columns"
+                                            is_numeric_only: true
+                                        }
+                                        Label{
+                                            width: Fit
+                                            margin: Inset{right: 14.}
+                                            text: "\u{f078}"
+                                            draw_text.color: #x6B4A3F
+                                            draw_text.text_style.font_size: 11.
+                                        }
+                                    }
+                                    floor_cols_suggest := mod.widgets.SuggestList{field: "floor_cols"}
+                                }
+                                // Tables for the selected area; sideways ScrollXView
+                                // inside FloorList when columns exceed the viewport.
+                                floor_scroll := View{
+                                    width: Fill height: Fit
+                                    padding: Inset{bottom: 8.}
+                                    floor_list := mod.widgets.FloorList{}
+                                }
                                 // Drawn-layout editor removed from Floor chrome —
                                 // widgets kept off-screen so old ids still resolve.
                                 floor_layout_list := mod.widgets.FloorLayoutList{visible: false}
@@ -6366,7 +6604,6 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         floor_add_hdr := AccordionHdrBtn{width: Fit text: "ADD TABLES"}
                                         floor_areas_help := InfoHelp{
-                                            width: Fit
                                             tip: "Areas are rooms or zones (Dine In, Parcel, AC …). Add an area first, then put tables in it — each area is a separate group on the floor."
                                         }
                                     }
@@ -6408,7 +6645,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 kitchen_help := InfoHelp{
-                                    width: Fit
                                     tip: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices."
                                 }
                                 // All-day counts: how much of each dish is still to cook.
@@ -6435,7 +6671,6 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         stations_hdr := AccordionHdrBtn{width: Fit text: "KITCHEN STATIONS"}
                                         stations_help := InfoHelp{
-                                            width: Fit
                                             tip: "Each station prints on its own printers (Settings → Kitchen printing). Add Tandoor, Fryer, Cold…"
                                         }
                                     }
@@ -6472,7 +6707,6 @@ script_mod! {
                                 flow: Down spacing: 14
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 items_help_label := InfoHelp{
-                                    width: Fit
                                     tip: "Tap an item to edit it. New item clears the form. Search our dishes or type your own name and photo, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with."
                                 }
                                 // Form errors and confirmations have to be visible
@@ -6616,7 +6850,6 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     item_photo_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional. Without a photo we show initials from the item name."
                                     }
                                 }
@@ -6693,7 +6926,6 @@ script_mod! {
                                 flow: Down spacing: 14
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 buy_help := InfoHelp{
-                                    width: Fit
                                     tip: "Expense vouchers and supplier bills (money out). On-account stays on the party ledger."
                                 }
                                 buy_low_stock := WrapLabel{body: " " font_color: #x9A0E10 font_size: 14. visible: false}
@@ -6797,7 +7029,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 sales_help := InfoHelp{
-                                    width: Fit
                                     tip: "Select a sale to amend, void, or refund. Amendments keep full history. Rounded Total starts equal to Applied — edit only to round. Void and refund may need an Owner or Manager PIN."
                                 }
                                 // The day's sales first; the picked sale's details
@@ -6926,7 +7157,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 credit_help := InfoHelp{
-                                    width: Fit
                                     tip: "Each party has a unique id (names may repeat). A Customer runs a khata tab (owes us); a Supplier sells us stock (we owe them); Both does the two. Khata and payables stay separate; net who-owes-whom is in Reports."
                                 }
                                 credit_summary_label := WrapLabel{
@@ -7089,7 +7319,6 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 team_help := InfoHelp{
-                                    width: Fit
                                     tip: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
                                 }
                                 staff_label := mod.widgets.ReportText{}
@@ -7284,7 +7513,6 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 8
                                     settings_hub_help := InfoHelp{
-                                        width: Fit
                                         tip: "Open one area at a time — language, printers, bill format, backup, and more."
                                     }
                                     settings_hub_language := StackSecondaryBtn{text: "Language & currency"}
@@ -7407,7 +7635,6 @@ View{
                                         font_size: 20.
                                     }
                                     server_pair_help := InfoHelp{
-                                        width: Fit
                                         tip: "On the other device: Client Mode → Find server → enter this pairing code."
                                     }
                                 }
@@ -7490,7 +7717,6 @@ h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_
                                         font_size: 15.
                                     }
                                     venue_icon_help := InfoHelp{
-                                        width: Fit
                                         tip: "Shown on screens inside the app. The installed app name and icon on this device stay as the platform listing."
                                     }
                                 }
@@ -7578,7 +7804,6 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 bulk_price_apply := RowSecondaryBtn{text: "Apply bulk price"}
                                 }
                                 settings_lan_help := InfoHelp{
-                                    width: Fit
                                     tip: "On this shop’s Wi‑Fi, guest pages work for display board, tokens, expo, kiosk, table QR, and feedback. Guests on mobile data need Cloud later. Card terminal / payment link is optional when the internet is up — it never blocks the counter."
                                 }
                                                                 }
@@ -7732,7 +7957,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Print brand kit" font_color: #x260B08 font_size: 18.}
                                     print_brand_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional stamp and payment QR images on bill faces and the LAN guest display. Dynamic UPI QR from the VPA above still works when no payment QR image is set."
                                     }
                                 }
@@ -7744,7 +7968,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Stamp" font_color: #x260B08 font_size: 15.}
                                     print_stamp_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional stamp image on printed bills and the guest display."
                                     }
                                 }
@@ -7765,7 +7988,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Payment QR" font_color: #x260B08 font_size: 15.}
                                     payment_qr_image_help := InfoHelp{
-                                        width: Fit
                                         tip: "Static QR on bills and guest display; otherwise paying uses a dynamic UPI QR from the VPA above."
                                     }
                                 }
@@ -7789,7 +8011,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Aggregator orders (file)" font_color: #x260B08 font_size: 18.}
                                     settings_aggregator_help := InfoHelp{
-                                        width: Fit
                                         tip: "Optional: put import_aggregator_orders.json in the backups folder, then tap Import. Never blocks the counter; live delivery apps are Cloud."
                                     }
                                 }
@@ -7805,7 +8026,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
                                     settings_zero_sales_help := InfoHelp{
-                                        width: Fit
                                         tip: "Allow dishes priced at zero and bills settled at zero (complimentary). On by default so free covers still appear in Frequent and day books."
                                     }
                                 }
@@ -7831,7 +8051,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
                                     settings_schemes_help := InfoHelp{
-                                        width: Fit
                                         tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas."
                                     }
                                 }
@@ -7900,7 +8119,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                                     width: Fit
                                                     body: "Diagnostics" font_color: #x260B08 font_size: 20.}
                                         diag_privacy_help := InfoHelp{
-                                            width: Fit
                                             tip: "Logs stay on this device. Secrets (PIN, passwords) are never stored. Sharing a package off the device needs your explicit approval each time — never sold or given to third parties."
                                         }
                                     }
@@ -7940,7 +8158,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         diag_export_local_cancel := StackLightBtn{text: "Cancel" visible: false}
                                     }
                                     diag_send_help := InfoHelp{
-                                        width: Fit
                                         tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                     }
                                     diag_approve_send := StackPrimaryBtn{text: "Approve share off this device"}
@@ -7967,7 +8184,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     sidebar_settings_back := QuietFitBtn{text: "Back"}
                                 }
                                 sidebar_settings_help := InfoHelp{
-                                    width: Fit
                                     tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
                                 }
                                 View{
@@ -7989,7 +8205,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 day_close_help := InfoHelp{
-                                    width: Fit
                                     tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
                                 }
                                 day_close_label := mod.widgets.ReportText{}
@@ -8018,7 +8233,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 reports_help := InfoHelp{
-                                    width: Fit
                                     tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
                                 }
                                 // Which report: one segmented row, not four big buttons.
@@ -8097,7 +8311,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 flow: Down spacing: 14
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
                                 inventory_help := InfoHelp{
-                                    width: Fit
                                     tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
                                 }
                                 FormCard{
@@ -8150,7 +8363,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 branches_help := InfoHelp{
-                                    width: Fit
                                     tip: "Export writes a day snapshot into the backups folder and copies it to the clipboard. To import another outlet’s day, save its file as import_branch_snapshot.json in that folder, then tap Import."
                                 }
                                 // Business name is edited under Settings → Your brand
@@ -8321,9 +8533,11 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 // bottom, ends, gaps): a press there belongs
                                 // to the scroll view, a press on a chip is a
                                 // tap or a drag — see pointer_nav_drag.
+                                // End pad ≥ ChevronBtn (46) so first/last tabs
+                                // can scroll clear of overlay ‹ › (2026-11).
                                 View{
                                     width: Fit height: Fit
-                                    padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+                                    padding: Inset{left: 52. right: 52. top: 12. bottom: 12.}
                                     flow: Right spacing: 6
                                     nav_books_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
@@ -8653,7 +8867,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                                     width: Fit
                                                     body: "UPI" font_color: #x260B08 font_size: 20.}
                                     upi_qr_title_help := InfoHelp{
-                                        width: Fit
                                         tip: "Guest scans and pays. Tap Take payment after they pay."
                                     }
                                 }

@@ -85,6 +85,7 @@ PATCHES=(
   mouse_cursor_state                # Wayland Arrow=Default; edge resize keeps cursor; HoverOver re-asserts Text/Hand/View cursor
   scroll_bar_orphan_unblock         # wheel: clear stuck TextFlow Empty scroll-block (thumb drag still worked)
   scroll_touch_orphan_unblock       # Android: same Empty orphan clear on touch drag (no wheel)
+  scroll_axis_lock                  # opt-in: drag direction lock for nested X/Y scroll views; Shift+wheel sideways
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

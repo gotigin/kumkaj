@@ -974,6 +974,12 @@ fn en(key: &str) -> String {
         "spreadsheet_csv" => "Spreadsheet (CSV)",
         "start_fresh" => "Start fresh",
         "stop_extra_tills" => "Stop extra tills",
+        "floor_cols_ph" => "Columns",
+        "floor_cols_fit" => "Fit screen",
+        "floor_cols_fit_sub" => "{n} fit here",
+        "floor_cols_fits" => "fits",
+        "floor_cols_scroll" => "scrolls sideways",
+        "floor_cols_min" => "Columns: at least 1 — or leave it empty to fit the screen",
         "backup_auto" => "Backed up automatically every day · last {when} · the last 14 days are kept in {dir}.",
         "backup_auto_none" => "Backed up automatically every day — the first one runs in a moment.",
         "backup_copy_to" => "Copies also go to {dir}.",
@@ -1975,6 +1981,7 @@ mod tests {
         // Every English key must have a real translation in every
         // shipped language — static UI must never fall back to English.
         const KEYS: &[&str] = &[
+            "floor_cols_ph", "floor_cols_fit", "floor_cols_fit_sub", "floor_cols_fits", "floor_cols_scroll", "floor_cols_min",
             "backup_auto", "backup_auto_none", "backup_copy_to", "backup_copy_btn", "autostart_off", "autostart_on", "autostart_done_on", "autostart_done_off",
             "device_forgotten",
             "lan_offline",

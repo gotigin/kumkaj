@@ -300,11 +300,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let help = self.ui.widget(cx, ids!(settings_help)).as_info_help();
             help.set_title(cx, &s("nav_settings"));
             help.set_nav_icon(cx, NavTab::Settings);
-            help.set_tip(&plain_display_text(&s("language_setup_hint")));
+            help.set_tip(&plain_display_text(&s("settings_hub_help")));
         }
-        self.ui
-            .button(cx, ids!(sidebar_settings_open))
-            .set_text(cx, &s("sidebar_settings"));
         {
             let help = self.ui.widget(cx, ids!(sidebar_settings_help)).as_info_help();
             help.set_title(cx, &s("sidebar_settings"));
@@ -578,11 +575,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.apply_shell_layout(cx, unlocked);
         self.paint_nav_tabs(cx, screen);
         if screen == Screen::Settings {
+            self.sync_settings_panels(cx);
             self.sync_diag_panel(cx);
         }
     }
 
-    /// Phone (<720): bottom tabs + stacked Booking panes.
+    /// Phone (<720): bottom tabs; Booking panes side by side, one screen each.
     /// Tablet/desktop (≥720): side rail; Parcel | Counter side by side under
     /// sticky `booking_desk_top` (Fixed panes in ScrollX).
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
@@ -591,7 +589,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         const DESK_LEFT_MIN: f64 = 600.0;
         const DESK_RIGHT_MIN: f64 = 520.0;
         const DESK_GAP: f64 = 16.0;
-        const POS_SIDE_BY_SIDE_MIN_CONTENT: f64 = 640.0;
+        // Phone: how much of the next pane shows at the screen's edge, so a
+        // sideways swipe to Counter (or back to Parcel) is plain to see.
+        const DESK_PEEK: f64 = 28.0;
         let window_w = {
             let w = self.window_inner_width(cx);
             if w >= 1.0 { w } else { DESIGN_DESKTOP_W }
@@ -642,42 +642,25 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             - if show_rail { rail_w + DIVIDER_W } else { 0.0 }
             - 32.0)
             .max(280.0);
-        let side_by_side = content_w >= POS_SIDE_BY_SIDE_MIN_CONTENT;
+        // Parcel | Counter always side by side, phones included — never one
+        // above the other (owner, 2026-11-02). Both fit: they share the
+        // width. Else each keeps its min and the desk pans sideways, but a
+        // pane is never wider than the screen: on a phone each fills it
+        // (less a peek of the other) instead of a 600 px form to pan inside.
         let desk_row = self.ui.view(cx, ids!(booking_desk_row));
-        set_view_flow(
-            cx,
-            &desk_row,
-            if side_by_side {
-                Flow::right()
-            } else {
-                Flow::Down
-            },
-        );
+        set_view_flow(cx, &desk_row, Flow::right());
         set_view_walk(
             cx,
             &desk_row,
             Walk {
-                width: if side_by_side {
-                    Size::fit()
-                } else {
-                    Size::fill()
-                },
+                width: Size::fit(),
                 height: Size::fill(),
                 ..Default::default()
             },
         );
-        let (left_w, right_w) = if side_by_side {
-            let desk_avail = (content_w - 32.0).max(200.0);
-            let min_total = DESK_LEFT_MIN + DESK_RIGHT_MIN + DESK_GAP;
-            if desk_avail >= min_total {
-                let left = desk_avail * (DESK_LEFT_MIN / (DESK_LEFT_MIN + DESK_RIGHT_MIN));
-                (Size::Fixed(left), Size::Fixed(desk_avail - DESK_GAP - left))
-            } else {
-                (Size::Fixed(DESK_LEFT_MIN), Size::Fixed(DESK_RIGHT_MIN))
-            }
-        } else {
-            (Size::fill(), Size::fill())
-        };
+        let (left_w, right_w) =
+            booking_desk_pane_widths(content_w, DESK_LEFT_MIN, DESK_RIGHT_MIN, DESK_GAP, DESK_PEEK);
+        let (left_w, right_w) = (Size::Fixed(left_w), Size::Fixed(right_w));
         set_view_walk(
             cx,
             &self.ui.view(cx, ids!(pos_catalog_scroll)),
@@ -1172,9 +1155,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (drill-down via `go`); peers use
-    /// `go_peer` which clears stacks then calls with `record_history: false`.
-    /// Lock/onboard destinations also clear history.
+    /// Push history when `record_history` (`go` / `go_peer`). Lock/onboard
+    /// destinations clear stacks via `screen_keeps_history`.
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1198,9 +1180,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.go_with(cx, screen, true);
     }
 
-    /// Chrome peer switch: replace screen as a new root (clears back/forward).
+    /// Chrome peer switch (bottom nav / side rail / shortcuts).
+    /// Records visit history like a browser so mouse Back/Forward, Alt+←/→,
+    /// edge swipe, and Android back can move between screens. Lock / first-run
+    /// still clear stacks via `screen_keeps_history`.
     fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
-        self.go_with(cx, screen, false);
+        self.go_with(cx, screen, true);
     }
 
     fn go_with(&mut self, cx: &mut Cx, screen: Screen, push_history: bool) {
@@ -1245,6 +1230,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     st.nav_forward.clear();
                 }
                 self.set_screen(&mut st, screen, push_history);
+                if screen == Screen::Settings {
+                    // Settings opens on its hub (also a tap on its tab while
+                    // a section is open). History Back into Settings keeps
+                    // the section that was open.
+                    st.settings_panel = None;
+                }
                 // A device opens each screen on the office's latest books.
                 st.pull_from_server();
                 if st.device_role == DeviceRole::Client

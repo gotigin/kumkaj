@@ -11,15 +11,15 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_moklanjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    booking, courier_ops_view, diag, domain, entity_template, fiscal, local_servers, locale,
-    menu_images, net, notify, phone, precise, print_share, rates, snack, startup, store, suggest,
-    thumbs,
+    booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images, local_servers,
+    locale, menu_images, net, notify, phone, precise, print_share, rates, snack, startup, store,
+    suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
-    booking, courier_ops_view, diag, domain, entity_template, fiscal, local_servers, locale,
-    menu_images, net, notify, phone, precise, print_share, rates, snack, startup, store, suggest,
-    thumbs, uninstall_wipe,
+    booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images, local_servers,
+    locale, menu_images, net, notify, phone, precise, print_share, rates, snack, startup, store,
+    suggest, thumbs, uninstall_wipe,
 };
 use snack::SnackKind;
 
@@ -83,6 +83,7 @@ include!("app/impl_07.rs");
 include!("app/impl_08.rs");
 include!("helpers_image.rs");
 include!("app/chevrons.rs");
+include!("app/settings_hub.rs");
 include!("app/impl_ha_01.rs");
 include!("app/impl_ha_02.rs");
 include!("app/impl_ha_03.rs");
@@ -93,3 +94,6 @@ include!("app/match_misc.rs");
 include!("app/main_impl.rs");
 include!("shell_tests/nav_order_tests.rs");
 include!("shell_tests/report_text_tests.rs");
+include!("shell_tests/settings_hub_tests.rs");
+include!("shell_tests/booking_desk_tests.rs");
+include!("shell_tests/info_help_layout_tests.rs");

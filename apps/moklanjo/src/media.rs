@@ -29,9 +29,35 @@ pub fn write_image_as_webp(src: &Path, dest_webp: &Path) -> Result<u64, String> 
     encode_bytes_as_webp(&bytes, dest_webp)
 }
 
+/// Longest edge a rate photo, party logo or the app icon is stored at. They
+/// are only ever shown small (list thumbs, the header) or printed at most
+/// 576 dots wide; a phone photo picked as a logo was stored full size — a
+/// few MB of lossless WebP to decode wherever it shows (Khaynjo capped its
+/// menu photos the same way, 2026-10).
+pub const SMALL_PHOTO_EDGE: u32 = 768;
+
+/// Like [`write_image_as_webp`], but shrinks the picture to fit `max_edge`
+/// first (never enlarges). POD photos, bill attachments, the receipt stamp
+/// and the payment QR keep full size — they must stay legible / scannable —
+/// so they use [`write_image_as_webp`].
+pub fn write_image_as_webp_fit(src: &Path, dest_webp: &Path, max_edge: u32) -> Result<u64, String> {
+    let bytes = fs::read(src).map_err(|e| format!("Read image: {e}"))?;
+    let img = image::load_from_memory(&bytes).map_err(|e| format!("Decode image: {e}"))?;
+    let img = if img.width() > max_edge || img.height() > max_edge {
+        img.resize(max_edge, max_edge, image::imageops::FilterType::Triangle)
+    } else {
+        img
+    };
+    write_webp(&img, dest_webp)
+}
+
 /// Decode image bytes and write WebP to `dest_webp`. Returns file size.
 pub fn encode_bytes_as_webp(bytes: &[u8], dest_webp: &Path) -> Result<u64, String> {
     let img = image::load_from_memory(bytes).map_err(|e| format!("Decode image: {e}"))?;
+    write_webp(&img, dest_webp)
+}
+
+fn write_webp(img: &image::DynamicImage, dest_webp: &Path) -> Result<u64, String> {
     if let Some(parent) = dest_webp.parent() {
         fs::create_dir_all(parent).map_err(|e| e.to_string())?;
     }
@@ -83,5 +109,23 @@ mod tests {
     #[test]
     fn rejects_garbage() {
         assert!(image_bytes_to_webp(b"not-an-image").is_err());
+    }
+
+    #[test]
+    fn fit_shrinks_large_photos_and_leaves_small_ones() {
+        let dir = std::env::temp_dir().join(format!("moklanjo-media-fit-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let big = dir.join("big.png");
+        image::RgbImage::new(1000, 500).save(&big).unwrap();
+        let out = dir.join("big.webp");
+        write_image_as_webp_fit(&big, &out, SMALL_PHOTO_EDGE).unwrap();
+        let img = image::open(&out).unwrap();
+        assert_eq!((img.width(), img.height()), (768, 384));
+        let small = dir.join("small.png");
+        image::RgbImage::new(40, 30).save(&small).unwrap();
+        write_image_as_webp_fit(&small, &out, SMALL_PHOTO_EDGE).unwrap();
+        let img = image::open(&out).unwrap();
+        assert_eq!((img.width(), img.height()), (40, 30));
+        let _ = std::fs::remove_dir_all(dir);
     }
 }

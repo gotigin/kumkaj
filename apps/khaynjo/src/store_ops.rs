@@ -2645,6 +2645,13 @@ mod tests {
         assert_eq!(shop.store.floor_view().unwrap(), "layout");
         shop.store.set_floor_view("grid").unwrap();
         assert_eq!(shop.store.floor_view().unwrap(), "grid");
+        // Columns are per area on this device (legacy whole-floor is fallback).
+        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 0);
+        shop.store.set_floor_columns(3).unwrap();
+        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 3);
+        shop.store.set_floor_columns_for_area("Parcel", 5).unwrap();
+        assert_eq!(shop.store.floor_columns_for_area("Parcel"), 5);
+        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 3);
     }
 
     #[test]

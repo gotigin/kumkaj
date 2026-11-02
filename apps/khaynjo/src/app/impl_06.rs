@@ -72,8 +72,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
 
     /// Mouse Back/Forward, left-edge swipe → back, right-edge swipe → forward.
     /// TouchUpdate on phones; primary MouseDown/Up edge drag on desktop.
-    /// Top-level peers do not keep history, so Back/swipe is a no-op there
-    /// (except dismissing the soft keyboard).
+    /// Peer chrome and drill-downs both push visit history, so Back/Forward
+    /// move between screens (empty stack is still a no-op, after dismissing
+    /// soft keyboard / in-screen layers).
     fn pointer_navigates(&mut self, cx: &mut Cx, event: &Event) -> bool {
         if self.pointer_rail_resize(cx, event) {
             return true;
@@ -88,9 +89,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 self.navigate_forward(cx)
             }
             Event::MouseDown(e) if e.button.is_primary() => {
-                // Skip edge-swipe arming while the rail is showing — left edge
-                // is the rail itself; swipe-back is for nested setup only.
-                let skip_edge = {
+                // While the rail is showing, left edge is the rail — don't
+                // arm swipe-back there. Right-edge forward still works.
+                let rail_owns_left = {
                     let st = app_state().lock().unwrap();
                     let unlocked = !matches!(
                         st.screen,
@@ -100,9 +101,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 };
                 let width = self.window_inner_width(cx);
                 let mut origin = mouse_swipe_origin().lock().unwrap();
-                if skip_edge {
-                    *origin = None;
-                } else if e.abs.x < 48.0 {
+                if e.abs.x < 48.0 && !rail_owns_left {
                     *origin = Some((e.abs, SwipeNav::Back));
                 } else if e.abs.x > width - 48.0 {
                     *origin = Some((e.abs, SwipeNav::Forward));
@@ -1417,6 +1416,164 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             Err(e) => self.set_status(cx, e),
         }
         self.sync_chrome(cx);
+    }
+
+    /// Columns for the **selected area** tab: empty = fit the screen; a
+    /// number ≥ 1 = that many (rows wider than the screen scroll sideways).
+    /// Saved per area on this device only.
+    fn apply_floor_columns(&mut self, cx: &mut Cx, text: &str) {
+        let text = text.trim();
+        let result = {
+            let mut st = app_state().lock().unwrap();
+            let area = st.floor_area_tab.clone();
+            let cols = if text.is_empty() || text.eq_ignore_ascii_case(&st.t("floor_cols_fit")) {
+                Some(0)
+            } else {
+                text.parse::<usize>().ok().filter(|n| *n >= 1)
+            };
+            match cols {
+                Some(cols) => {
+                    let saved = st
+                        .store
+                        .as_ref()
+                        .map(|s| s.set_floor_columns_for_area(&area, cols));
+                    if let Some(Err(e)) = saved {
+                        Err(e)
+                    } else {
+                        st.floor_columns = cols;
+                        Ok(())
+                    }
+                }
+                None => Err(st.t("floor_cols_min")),
+            }
+        };
+        self.sync_floor_columns_field(cx, true);
+        match result {
+            Ok(()) => {
+                self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+                self.ui.view(cx, ids!(floor_scroll)).redraw(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
+    /// Put this area's columns into the Floor field, unless the person is
+    /// typing in it (`force` after applying / switching tabs).
+    fn sync_floor_columns_field(&mut self, cx: &mut Cx, force: bool) {
+        let input = self.ui.text_input(cx, ids!(floor_cols_input));
+        if !force && cx.has_key_focus(input.area()) {
+            return;
+        }
+        let cols = app_state().lock().unwrap().floor_columns;
+        let want = if cols == 0 { String::new() } else { cols.to_string() };
+        if input.text() != want {
+            input.set_text(cx, &want);
+        }
+    }
+
+    /// Select a floor area tab: load that area's Columns, paint the active
+    /// chip face, and redraw that tab's table body.
+    fn select_floor_area_tab(&mut self, cx: &mut Cx, area: String) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.floor_area_tab = area.clone();
+            st.floor_columns = st
+                .store
+                .as_ref()
+                .map(|s| s.floor_columns_for_area(&area))
+                .unwrap_or(0);
+        }
+        self.sync_floor_columns_field(cx, true);
+        // Same as category chips: paint idle/active faces from state now —
+        // a strip redraw alone keeps the previous face lit.
+        self.paint_floor_area_tabs(cx);
+        self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+        self.ui.view(cx, ids!(floor_scroll)).redraw(cx);
+    }
+
+    /// Present floor areas in the owner's drag-to-swap order.
+    fn floor_area_tab_names(&self) -> Vec<String> {
+        let st = app_state().lock().unwrap();
+        let present: Vec<String> = floor_area_groups(&floor_filtered_tables(&st))
+            .into_iter()
+            .map(|(a, _)| a)
+            .collect();
+        order_floor_areas(&present, &st.floor_area_order)
+    }
+
+    /// Paint area tabs from the current floor tables; clamp the selection.
+    /// Selected tab = `ChipBtnActive` visible (DESIGN § Selection /
+    /// `paint_choice_pair`); never leave every face idle. While dragging,
+    /// the drop-target slot also wears the active face (same as nav).
+    fn paint_floor_area_tabs(&mut self, cx: &mut Cx) {
+        let drop_slot = floor_area_drag()
+            .lock()
+            .unwrap()
+            .as_ref()
+            .filter(|d| d.active)
+            .and_then(|d| d.hover);
+        let (areas, selected, other_label, cols_changed) = {
+            let mut st = app_state().lock().unwrap();
+            let present: Vec<String> = floor_area_groups(&floor_filtered_tables(&st))
+                .into_iter()
+                .map(|(a, _)| a)
+                .collect();
+            let names = order_floor_areas(&present, &st.floor_area_order);
+            let mut cols_changed = false;
+            if names.is_empty() {
+                st.floor_area_tab.clear();
+            } else if !names.iter().any(|a| a == &st.floor_area_tab) {
+                st.floor_area_tab = names[0].clone();
+                let cols = st
+                    .store
+                    .as_ref()
+                    .map(|s| s.floor_columns_for_area(&st.floor_area_tab))
+                    .unwrap_or(0);
+                cols_changed = st.floor_columns != cols;
+                st.floor_columns = cols;
+            }
+            let sel = st.floor_area_tab.clone();
+            let other = st.t("tables");
+            (names, sel, other, cols_changed)
+        };
+        if cols_changed {
+            self.sync_floor_columns_field(cx, true);
+        }
+        let show = !areas.is_empty();
+        self.ui
+            .view(cx, ids!(floor_area_strip))
+            .set_visible(cx, show);
+        self.ui
+            .view(cx, ids!(floor_cols_box))
+            .set_visible(cx, show);
+        if !show {
+            for (idle, on) in FLOOR_AREA_CHIPS.iter() {
+                self.ui.button(cx, idle).set_visible(cx, false);
+                self.ui.button(cx, on).set_visible(cx, false);
+            }
+            return;
+        }
+        for (i, (idle, on)) in FLOOR_AREA_CHIPS.iter().enumerate() {
+            match areas.get(i) {
+                Some(area) => {
+                    let label = if area.is_empty() {
+                        other_label.as_str()
+                    } else {
+                        area.as_str()
+                    };
+                    let on_sel = area.as_str() == selected.as_str() || drop_slot == Some(i);
+                    self.ui.button(cx, idle).set_text(cx, label);
+                    self.ui.button(cx, on).set_text(cx, label);
+                    self.paint_choice_pair(cx, idle, on, on_sel);
+                }
+                None => {
+                    self.ui.button(cx, idle).set_visible(cx, false);
+                    self.ui.button(cx, on).set_visible(cx, false);
+                }
+            }
+        }
+        self.ui.view(cx, ids!(floor_area_strip)).redraw(cx);
+        self.sync_tab_chevrons(cx);
     }
 
     /// Index of the floor-focused table in `st.tables`, if any.
