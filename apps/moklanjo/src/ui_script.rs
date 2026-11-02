@@ -118,8 +118,10 @@ script_mod! {
     mod.theme.color_label_inner_down = #x0B1220
     mod.theme.color_label_inner_focus = #x0B1220
     mod.theme.color_label_inner_active = #x0B1220
-    mod.theme.color_text_placeholder = #x3A4554
-    mod.theme.color_text_placeholder_hover = #x0B1220
+    // Placeholders stay muted in every state — never body ink (#x0B1220),
+    // or empty wells look filled (hover/focus used to jump to typed colour).
+    mod.theme.color_text_placeholder = #x56575D
+    mod.theme.color_text_placeholder_hover = #x56575D
     // Caret must be dark on cool/white wells (stock theme uses white = invisible).
     mod.theme.color_text_cursor = #x02030B
     mod.theme.color_cursor = #x02030B
@@ -142,8 +144,8 @@ script_mod! {
             color_focus: #x0B1220
             color_down: #x0B1220
             color_empty: #x56575D
-            color_empty_hover: #x3A4554
-            color_empty_focus: #x3A4554
+            color_empty_hover: #x56575D
+            color_empty_focus: #x56575D
         }
     }
     mod.widgets.TextInput = mod.widgets.TextInput{
@@ -157,8 +159,8 @@ script_mod! {
             color_focus: #x0B1220
             color_down: #x0B1220
             color_empty: #x56575D
-            color_empty_hover: #x3A4554
-            color_empty_focus: #x3A4554
+            color_empty_hover: #x56575D
+            color_empty_focus: #x56575D
         }
     }
     mod.theme.color_icon = #x0B1220
@@ -1596,13 +1598,15 @@ script_mod! {
             color_2_empty: #x2E5BADFF
         }
         draw_text +: {
+            // Typed ink stays #x0B1220; placeholders stay muted even on
+            // hover/focus so empty fields never look pre-filled.
             color: #x0B1220
             color_hover: #x0B1220
             color_focus: #x0B1220
             color_down: #x0B1220
-            color_empty: #x3A4554
-            color_empty_hover: #x0B1220
-            color_empty_focus: #x0B1220
+            color_empty: #x56575D
+            color_empty_hover: #x56575D
+            color_empty_focus: #x56575D
             text_style +: {font_size: 16.}
         }
         // Float caption uses draw_caption (not draw_text), and Makepad gives
@@ -1639,8 +1643,8 @@ script_mod! {
         draw_text +: {
             color: #x0B1220
             color_empty: #x56575D
-            color_empty_hover: #x3A4554
-            color_empty_focus: #x3A4554
+            color_empty_hover: #x56575D
+            color_empty_focus: #x56575D
             color_hover: #x0B1220
             color_down: #x0B1220
             color_focus: #x0B1220
@@ -4509,9 +4513,9 @@ script_mod! {
                                                     color_hover: #x822801
                                                     color_down: #x822801
                                                     color_focus: #x822801
-                                                    color_empty: #x3A4554
-                                                    color_empty_hover: #x0B1220
-                                                    color_empty_focus: #x0B1220
+                                                    color_empty: #x56575D
+                                                    color_empty_hover: #x56575D
+                                                    color_empty_focus: #x56575D
                                                     text_style +: {font_size: 16.}
                                                 }
                                             }
@@ -4877,9 +4881,9 @@ script_mod! {
                                             color_hover: #x822801
                                             color_down: #x822801
                                             color_focus: #x822801
-                                            color_empty: #x3A4554
-                                            color_empty_hover: #x0B1220
-                                            color_empty_focus: #x0B1220
+                                            color_empty: #x56575D
+                                            color_empty_hover: #x56575D
+                                            color_empty_focus: #x56575D
                                             text_style +: {font_size: 16.}
                                         }
                                     }

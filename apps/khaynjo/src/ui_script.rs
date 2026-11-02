@@ -118,8 +118,10 @@ script_mod! {
     mod.theme.color_label_inner_down = #x260B08
     mod.theme.color_label_inner_focus = #x260B08
     mod.theme.color_label_inner_active = #x260B08
-    mod.theme.color_text_placeholder = #x6B4A3F
-    mod.theme.color_text_placeholder_hover = #x260B08
+    // Placeholders stay muted in every state — never body ink (#x260B08),
+    // or empty wells look filled (hover/focus used to jump to typed colour).
+    mod.theme.color_text_placeholder = #x8A6A5C
+    mod.theme.color_text_placeholder_hover = #x8A6A5C
     // Caret must be dark on cool/white wells (stock theme uses white = invisible).
     mod.theme.color_text_cursor = #x69090C
     mod.theme.color_cursor = #x69090C
@@ -142,8 +144,8 @@ script_mod! {
             color_focus: #x260B08
             color_down: #x260B08
             color_empty: #x8A6A5C
-            color_empty_hover: #x6B4A3F
-            color_empty_focus: #x6B4A3F
+            color_empty_hover: #x8A6A5C
+            color_empty_focus: #x8A6A5C
         }
     }
     mod.widgets.TextInput = mod.widgets.TextInput{
@@ -157,8 +159,8 @@ script_mod! {
             color_focus: #x260B08
             color_down: #x260B08
             color_empty: #x8A6A5C
-            color_empty_hover: #x6B4A3F
-            color_empty_focus: #x6B4A3F
+            color_empty_hover: #x8A6A5C
+            color_empty_focus: #x8A6A5C
         }
     }
     mod.theme.color_icon = #x260B08
@@ -1628,13 +1630,15 @@ script_mod! {
             color_2_empty: #xF69D2CFF
         }
         draw_text +: {
+            // Typed ink stays #x260B08; placeholders stay muted even on
+            // hover/focus so empty fields never look pre-filled.
             color: #x260B08
             color_hover: #x260B08
             color_focus: #x260B08
             color_down: #x260B08
-            color_empty: #x6B4A3F
-            color_empty_hover: #x260B08
-            color_empty_focus: #x260B08
+            color_empty: #x8A6A5C
+            color_empty_hover: #x8A6A5C
+            color_empty_focus: #x8A6A5C
             text_style +: {font_size: 16.}
         }
     }
@@ -1659,8 +1663,8 @@ script_mod! {
         draw_text +: {
             color: #x260B08
             color_empty: #x8A6A5C
-            color_empty_hover: #x6B4A3F
-            color_empty_focus: #x6B4A3F
+            color_empty_hover: #x8A6A5C
+            color_empty_focus: #x8A6A5C
             color_hover: #x260B08
             color_down: #x260B08
             color_focus: #x260B08
@@ -5854,9 +5858,9 @@ script_mod! {
                                                 color_hover: #x822801
                                                 color_down: #x822801
                                                 color_focus: #x822801
-                                                color_empty: #x6B4A3F
-                                                color_empty_hover: #x260B08
-                                                color_empty_focus: #x260B08
+                                                color_empty: #x8A6A5C
+                                                color_empty_hover: #x8A6A5C
+                                                color_empty_focus: #x8A6A5C
                                                 text_style +: {font_size: 16.}
                                             }
                                         }
@@ -7084,9 +7088,9 @@ script_mod! {
                                                 color_hover: #x822801
                                                 color_down: #x822801
                                                 color_focus: #x822801
-                                                color_empty: #x6B4A3F
-                                                color_empty_hover: #x260B08
-                                                color_empty_focus: #x260B08
+                                                color_empty: #x8A6A5C
+                                                color_empty_hover: #x8A6A5C
+                                                color_empty_focus: #x8A6A5C
                                                 text_style +: {font_size: 16.}
                                             }
                                         }

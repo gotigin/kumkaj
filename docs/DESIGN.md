@@ -262,7 +262,10 @@ source colour, darkened to `#B43A12` for shipping faces.
 ## Contrast checklist (Makepad)
 
 - Theme label ink = `#0B1220` (never white/cream as default).
-- Placeholders = `#3A4554` (hover `#0B1220`) on **white** `FieldInput` wells; never gray placeholder on gray inset. Re-bind `draw_text.color_empty*` on stock inputs after theme (same bake issue as the caret).
+- Placeholders stay muted on **white** `FieldInput` wells in every state
+  (Moklanjo `#56575D`, Khaynjo `#8A6A5C`) — never jump to body ink on
+  hover/focus, or empty fields look pre-filled. Re-bind `draw_text.color_empty*`
+  on stock inputs after theme (same bake issue as the caret).
 - Pay / tab buttons on navy: white text in every state.
 
 ## Product cues that must stay obvious
