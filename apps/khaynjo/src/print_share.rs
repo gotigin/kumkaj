@@ -172,8 +172,8 @@ impl PrintFormat {
 }
 
 /// Owner-tunable kitchen slip layout. Always a standard KOT (no prices;
-/// KOT No / table / dishes stay). Options are clamped so 58–80 mm heads
-/// do not crop mid-word.
+/// dishes always print). Optional lines and paper metrics are clamped so
+/// 58–80 mm heads do not crop mid-word.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KotSlipFormat {
     /// Print the shop / place name under the title.
@@ -185,12 +185,25 @@ pub struct KotSlipFormat {
     pub show_waiter: bool,
     #[serde(default = "default_true")]
     pub show_station: bool,
+    /// Print `Table:` when the ticket has a table.
+    #[serde(default = "default_true")]
+    pub show_table: bool,
+    /// Print `KOT No:` when the ticket is numbered.
+    #[serde(default = "default_true")]
+    pub show_kot_no: bool,
     /// Soft-wrap width in characters. Clamped to [`KOT_CHARS_MIN`]..=[`KOT_CHARS_MAX`].
     #[serde(default = "default_kot_chars")]
     pub chars_per_line: u32,
     /// Thermal type size (raster). Clamped to [`KOT_EM_MIN`]..=[`KOT_EM_MAX`].
     #[serde(default = "default_kot_em")]
     pub em: u32,
+    /// How many identical slips to send per KOT. Clamped to [`KOT_COPIES_MIN`]..=[`KOT_COPIES_MAX`].
+    #[serde(default = "default_kot_copies")]
+    pub copies: u32,
+    /// Optional title under the cancel/reprint banner. Empty → `KOT - KITCHEN ORDER`.
+    /// Max [`KOT_TITLE_MAX`] chars; never prices.
+    #[serde(default)]
+    pub title: String,
     /// Optional kitchen note under the items (never prices). Max [`KOT_FOOTER_MAX`] chars.
     #[serde(default)]
     pub footer: String,
@@ -206,9 +219,24 @@ pub const KOT_EM_SMALL: u32 = 20;
 pub const KOT_EM_NORMAL: u32 = 24;
 pub const KOT_EM_LARGE: u32 = 28;
 pub const KOT_FOOTER_MAX: usize = 48;
+pub const KOT_TITLE_MAX: usize = 32;
+pub const KOT_COPIES_MIN: u32 = 1;
+pub const KOT_COPIES_MAX: u32 = 3;
+pub const KOT_DEFAULT_TITLE: &str = "KOT - KITCHEN ORDER";
 
 fn default_kot_chars() -> u32 { KOT_CHARS_58MM }
 fn default_kot_em() -> u32 { KOT_EM_NORMAL }
+fn default_kot_copies() -> u32 { KOT_COPIES_MIN }
+
+fn scrub_kot_text(raw: &str, max: usize) -> String {
+    raw.chars()
+        .filter(|c| *c != '₹' && *c != '$' && *c != '€')
+        .collect::<String>()
+        .trim()
+        .chars()
+        .take(max)
+        .collect()
+}
 
 impl Default for KotSlipFormat {
     fn default() -> Self {
@@ -217,8 +245,12 @@ impl Default for KotSlipFormat {
             show_time: true,
             show_waiter: true,
             show_station: true,
+            show_table: true,
+            show_kot_no: true,
             chars_per_line: KOT_CHARS_58MM,
             em: KOT_EM_NORMAL,
+            copies: KOT_COPIES_MIN,
+            title: String::new(),
             footer: String::new(),
         }
     }
@@ -238,17 +270,20 @@ impl KotSlipFormat {
     pub fn clamped(mut self) -> Self {
         self.chars_per_line = self.chars_per_line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
         self.em = self.em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        self.copies = self.copies.clamp(KOT_COPIES_MIN, KOT_COPIES_MAX);
         // Strip currency marks — a KOT must never carry prices.
-        self.footer = self
-            .footer
-            .chars()
-            .filter(|c| *c != '₹' && *c != '$' && *c != '€')
-            .collect::<String>()
-            .trim()
-            .chars()
-            .take(KOT_FOOTER_MAX)
-            .collect();
+        self.title = scrub_kot_text(&self.title, KOT_TITLE_MAX);
+        self.footer = scrub_kot_text(&self.footer, KOT_FOOTER_MAX);
         self
+    }
+
+    pub fn title_line(&self) -> &str {
+        let t = self.title.trim();
+        if t.is_empty() {
+            KOT_DEFAULT_TITLE
+        } else {
+            t
+        }
     }
 
     pub fn to_json(&self) -> String {
@@ -271,20 +306,44 @@ impl KotSlipFormat {
         wrap_text_cols(line, cols)
     }
 
+    /// On-screen Preview type size (pt). Thermal `em` still drives print raster.
+    pub fn preview_font_pt(&self) -> f32 {
+        let em = self.em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        if em <= KOT_EM_SMALL {
+            11.0
+        } else if em >= KOT_EM_LARGE {
+            17.0
+        } else {
+            13.5
+        }
+    }
+
+    /// On-screen paper strip width (px) from wrap columns + Preview type size.
+    pub fn preview_paper_width_px(&self) -> f64 {
+        let cols = self.chars_per_line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as f64;
+        let font = f64::from(self.preview_font_pt());
+        // ~0.62em per character — wide enough that 58 mm vs 80 mm is obvious.
+        (cols * font * 0.62 + 28.0).clamp(168.0, 460.0)
+    }
+
     /// Sample kitchen slip for Settings preview (never prices).
     pub fn render_sample(&self, shop_name: &str) -> String {
         self.render(KotSlipContent {
             cancel: false,
+            reprint: false,
             shop_name,
             kot_no: 12,
+            kot_nos_label: None,
             when: "2026-11-03 19:42",
             created_by: "Ramesh",
             table_label: "T1",
             station_name: "Kitchen",
             items: &[
                 "2 x Butter Naan",
+                // Long enough to wrap on 58 mm (32 cols) but stay one line on 80 mm (42).
+                "1 x Hyderabadi chicken biryani full",
+                "  no onion, extra raita on side",
                 "1 x Paneer Tikka",
-                "  no onion",
                 "1 x Chaas",
             ],
         })
@@ -292,11 +351,18 @@ impl KotSlipFormat {
 
     pub fn render(&self, c: KotSlipContent<'_>) -> String {
         let fmt = self.clone().clamped();
-        let mut out = String::from(if c.cancel {
-            "*** CANCEL - STOP THIS ITEM ***\n"
+        let cols = fmt.chars_per_line as usize;
+        let rule = "-".repeat(cols);
+        let mut out = String::new();
+        if c.reprint {
+            out.push_str("*** REPRINT - SAME ORDER ***\n");
+        }
+        if c.cancel {
+            out.push_str("*** CANCEL - STOP THIS ITEM ***\n");
         } else {
-            "KOT - KITCHEN ORDER\n"
-        });
+            out.push_str(fmt.title_line());
+            out.push('\n');
+        }
         let push = |out: &mut String, line: &str| {
             for part in fmt.wrap_line(line) {
                 out.push_str(&part);
@@ -309,8 +375,13 @@ impl KotSlipFormat {
                 push(&mut out, shop);
             }
         }
-        if c.kot_no > 0 {
-            push(&mut out, &format!("KOT No: {}", c.kot_no));
+        if fmt.show_kot_no {
+            if let Some(label) = c.kot_nos_label.filter(|s| !s.trim().is_empty()) {
+                push(&mut out, label);
+            } else if c.kot_no > 0 {
+                let label = if c.reprint { "Was KOT No" } else { "KOT No" };
+                push(&mut out, &format!("{label}: {}", c.kot_no));
+            }
         }
         if fmt.show_time && !c.when.is_empty() {
             push(&mut out, &format!("Time: {}", c.when));
@@ -318,17 +389,19 @@ impl KotSlipFormat {
         if fmt.show_waiter && !c.created_by.is_empty() {
             push(&mut out, &format!("By: {}", c.created_by));
         }
-        if !c.table_label.is_empty() {
+        if fmt.show_table && !c.table_label.is_empty() {
             push(&mut out, &format!("Table: {}", c.table_label));
         }
         if fmt.show_station && !c.station_name.is_empty() {
             push(&mut out, &format!("Station: {}", c.station_name));
         }
-        out.push_str("--------------------------------\n");
+        out.push_str(&rule);
+        out.push('\n');
         for item in c.items {
             push(&mut out, item);
         }
-        out.push_str("--------------------------------\n");
+        out.push_str(&rule);
+        out.push('\n');
         if !fmt.footer.is_empty() {
             push(&mut out, &fmt.footer);
         }
@@ -339,8 +412,12 @@ impl KotSlipFormat {
 /// Fields for one kitchen slip body (real KOT or Settings sample).
 pub struct KotSlipContent<'a> {
     pub cancel: bool,
+    /// Recovery slip after selective reprint (banner + "Was KOT No").
+    pub reprint: bool,
     pub shop_name: &'a str,
     pub kot_no: i64,
+    /// When set, replaces the usual KOT No line (e.g. `"Was KOT No: 12, 15"`).
+    pub kot_nos_label: Option<&'a str>,
     pub when: &'a str,
     pub created_by: &'a str,
     pub table_label: &'a str,
@@ -385,6 +462,83 @@ mod kot_slip_format_tests {
         let rows = fmt.wrap_line(&"x".repeat(30));
         assert!(rows.iter().all(|r| r.chars().count() <= 24));
         assert!(rows.len() >= 2);
+    }
+
+    #[test]
+    fn preview_rule_tracks_paper_width() {
+        let narrow = KotSlipFormat {
+            chars_per_line: KOT_CHARS_58MM,
+            ..KotSlipFormat::default()
+        }
+        .render_sample("Shop");
+        let wide = KotSlipFormat {
+            chars_per_line: KOT_CHARS_80MM,
+            ..KotSlipFormat::default()
+        }
+        .render_sample("Shop");
+        let rule_n = "-".repeat(KOT_CHARS_58MM as usize);
+        let rule_w = "-".repeat(KOT_CHARS_80MM as usize);
+        assert!(narrow.contains(&rule_n));
+        assert!(!narrow.contains(&rule_w));
+        assert!(wide.contains(&rule_w));
+        // Long sample wraps on 58 mm; stays one line on 80 mm.
+        let long = "1 x Hyderabadi chicken biryani full";
+        assert!(wide.lines().any(|l| l == long));
+        assert!(!narrow.lines().any(|l| l == long));
+        assert!(narrow.contains("Hyderabadi"));
+    }
+
+    #[test]
+    fn preview_font_scales_with_em() {
+        let s = KotSlipFormat {
+            em: KOT_EM_SMALL,
+            ..KotSlipFormat::default()
+        };
+        let m = KotSlipFormat {
+            em: KOT_EM_NORMAL,
+            ..KotSlipFormat::default()
+        };
+        let l = KotSlipFormat {
+            em: KOT_EM_LARGE,
+            ..KotSlipFormat::default()
+        };
+        assert!(s.preview_font_pt() < m.preview_font_pt());
+        assert!(m.preview_font_pt() < l.preview_font_pt());
+        assert!(s.preview_paper_width_px() < l.preview_paper_width_px());
+    }
+
+    #[test]
+    fn optional_table_kot_no_title_and_copies() {
+        let hidden = KotSlipFormat {
+            show_table: false,
+            show_kot_no: false,
+            title: "KITCHEN FIRE".into(),
+            copies: 9,
+            ..KotSlipFormat::default()
+        }
+        .clamped();
+        assert_eq!(hidden.copies, KOT_COPIES_MAX);
+        let text = hidden.render_sample("Shop");
+        assert!(text.contains("KITCHEN FIRE"));
+        assert!(!text.contains("KOT No:"));
+        assert!(!text.contains("Table:"));
+        assert!(text.contains("KITCHEN FIRE"));
+        let reprint = hidden.render(KotSlipContent {
+            cancel: false,
+            reprint: true,
+            shop_name: "Shop",
+            kot_no: 3,
+            kot_nos_label: None,
+            when: "now",
+            created_by: "A",
+            table_label: "T9",
+            station_name: "Grill",
+            items: &["1 x Tea"],
+        });
+        assert!(reprint.contains("*** REPRINT - SAME ORDER ***"));
+        // Hidden flags still suppress even on reprint.
+        assert!(!reprint.contains("Was KOT No"));
+        assert!(!reprint.contains("Table:"));
     }
 }
 

@@ -536,15 +536,17 @@ script_mod! {
             }
         }
     }
-    // Bottom-nav chips for expanded More peers (scroll row; Fit width).
+    // Bottom-nav chips (scroll row). Short chrome labels + wrap, never
+    // ellipsis — long translated titles grow a second line instead of "Menu & it…".
     // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
     let NavChip = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: 56
+        width: Fit{min: FitBound.Abs(96.)} height: Fit
         align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
+        padding: Inset{left: 36. right: 12. top: 10. bottom: 10.}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -575,12 +577,13 @@ script_mod! {
         }
     }
     let NavChipActive = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: 56
+        width: Fit{min: FitBound.Abs(96.)} height: Fit
         align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
+        padding: Inset{left: 36. right: 12. top: 10. bottom: 10.}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1068,6 +1071,8 @@ script_mod! {
         draw_bg.border_size: 1.
         draw_bg.border_color: #xE3D3C8
     }
+    // Equal Fill fields only. Max two FieldInputs — a third long placeholder
+    // wraps and makes the row look stair-stepped on Settings widths.
     let FormFieldRow = View{
         width: Fill height: Fit
         flow: Right spacing: 8
@@ -1631,11 +1636,13 @@ script_mod! {
     // filled form still says what each box is — nobody has to remember.
     let FieldInput = TextInput{
         width: Fill
-        height: Fit
+        // Fixed height so FormFieldRow peers stay level when one field is
+        // focused (float caption) or a long placeholder would otherwise wrap.
+        height: 56.
         // Extra vertical margin so scroll gestures miss the field (fewer
         // accidental keyboard opens mid-scroll).
         margin: Inset{left: 0. right: 0. top: 6. bottom: 6.}
-        padding: Inset{left: 14. right: 14. top: 15. bottom: 15.}
+        padding: Inset{left: 14. right: 14. top: 16. bottom: 12.}
         blink_speed: 0.5
         // Soft keyboard: Done/Go fires TextInputAction::Returned → form submit.
         return_key_type: ReturnKeyType.Done
@@ -4705,11 +4712,26 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                // Selectable WrapLabel — font_color stays white on maroon.
-                                brand_title := WrapLabel{
-                                    body: "Khaynjo"
-                                    font_color: #xffffff
-                                    font_size: 18.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    // Selectable WrapLabel — font_color stays white on maroon.
+                                    brand_title := WrapLabel{
+                                        width: Fit
+                                        body: "Khaynjo"
+                                        font_color: #xffffff
+                                        font_size: 18.
+                                    }
+                                    // Short server id — smaller than the shop name.
+                                    brand_server_id := WrapLabel{
+                                        width: Fit
+                                        body: ""
+                                        font_color: #xE8C4B0
+                                        font_size: 11.
+                                        visible: false
+                                        selectable: false
+                                    }
                                 }
                                 session_label := WrapLabel{
                                     body: "Sell"
@@ -4817,11 +4839,25 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                setup_brand_title := WrapLabel{
-                                                    body: "Your shop"
-                                                    font_color: #x69090C
-                                                    font_size: 18.
-                                                    selectable: false
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 6
+                                                    align: Align{y: 0.5}
+                                                    setup_brand_title := WrapLabel{
+                                                        width: Fit
+                                                        body: "Your shop"
+                                                        font_color: #x69090C
+                                                        font_size: 18.
+                                                        selectable: false
+                                                    }
+                                                    setup_brand_server_id := WrapLabel{
+                                                        width: Fit
+                                                        body: ""
+                                                        font_color: #x6B4A3F
+                                                        font_size: 11.
+                                                        visible: false
+                                                        selectable: false
+                                                    }
                                                 }
                                                 device_use_question := WrapLabel{
                                                     body: ""
@@ -5008,10 +5044,24 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                lock_brand_title := WrapLabel{
-                                                    body: "Your shop"
-                                                    font_color: #x69090C
-                                                    font_size: 18.
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 6
+                                                    align: Align{y: 0.5}
+                                                    lock_brand_title := WrapLabel{
+                                                        width: Fit
+                                                        body: "Your shop"
+                                                        font_color: #x69090C
+                                                        font_size: 18.
+                                                    }
+                                                    lock_brand_server_id := WrapLabel{
+                                                        width: Fit
+                                                        body: ""
+                                                        font_color: #x6B4A3F
+                                                        font_size: 11.
+                                                        visible: false
+                                                        selectable: false
+                                                    }
                                                 }
                                                 h_counter_locked := WrapLabel{
                                                     body: "Counter 01 · Locked"
@@ -6689,6 +6739,8 @@ script_mod! {
                                     FormFieldRow{
                                         layout_x_input := FieldInput{empty_text: "X"}
                                         layout_y_input := FieldInput{empty_text: "Y"}
+                                    }
+                                    FormFieldRow{
                                         layout_w_input := FieldInput{empty_text: "W"}
                                         layout_h_input := FieldInput{empty_text: "H"}
                                     }
@@ -6736,12 +6788,14 @@ script_mod! {
                                         visible: false
                                         waitlist_heading := WrapLabel{body: "Waitlist" font_color: #x260B08 font_size: 15. visible: false}
                                         FormCard{
+                                            wait_name_input := FieldInput{empty_text: "Guest name"}
                                             FormFieldRow{
-                                                wait_name_input := FieldInput{empty_text: "Guest name"}
                                                 wait_party_input := FieldInput{empty_text: "Party size"}
-                                                wait_mins_input := FieldInput{empty_text: "Quoted wait (min)"}
+                                                wait_mins_input := FieldInput{empty_text: "Wait (min)"}
                                             }
-                                            waitlist_add := StackPrimaryBtn{text: "Add to waitlist"}
+                                            ActionStack{
+                                                waitlist_add := StackPrimaryBtn{text: "Add to waitlist"}
+                                            }
                                         }
                                     }
                                 }
@@ -6762,22 +6816,17 @@ script_mod! {
                                         FormCard{
                                             FormFieldRow{
                                                 resv_name_input := FieldInput{empty_text: "Guest name"}
-                                                resv_phone_input := FieldInput{empty_text: "Phone (optional)"}
+                                                resv_phone_input := FieldInput{empty_text: "Phone"}
                                             }
                                             FormFieldRow{
-                                                View{
-                                                    width: 140 height: Fit
-                                                    resv_guests_input := FieldInput{empty_text: "Guests"}
-                                                }
-                                                resv_when_input := FieldInput{empty_text: "When — 20:30, tomorrow 13:00"}
-                                                View{
-                                                    width: 230 height: Fit
-                                                    flow: Down spacing: 4
-                                                    resv_table_input := FieldInput{empty_text: "Table (optional)"}
-                                                    resv_table_suggest := mod.widgets.SuggestList{field: "resv_table"}
-                                                }
+                                                resv_guests_input := FieldInput{empty_text: "Guests"}
+                                                resv_when_input := FieldInput{empty_text: "When"}
                                             }
-                                            resv_add := StackPrimaryBtn{text: "Book"}
+                                            resv_table_input := FieldInput{empty_text: "Table (optional)"}
+                                            resv_table_suggest := mod.widgets.SuggestList{field: "resv_table"}
+                                            ActionStack{
+                                                resv_add := StackPrimaryBtn{text: "Book"}
+                                            }
                                         }
                                     }
                                 }
@@ -7002,7 +7051,7 @@ script_mod! {
                                 }
                                 FormFieldRow{
                                     menu_price_input := FieldInput{empty_text: "Price"}
-                                    menu_unit_input := FieldInput{empty_text: "Unit (plate / pc — blank = each)"}
+                                    menu_unit_input := FieldInput{empty_text: "Unit (blank = each)"}
                                 }
                                 menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
                                 menu_tax_input := FieldInput{
@@ -7125,8 +7174,8 @@ script_mod! {
                                     buy_item_input := FieldInput{empty_text: "Item name"}
                                     buy_item_suggest := mod.widgets.SuggestList{field: "buy_item"}
                                     FormFieldRow{
-                                        buy_qty_input := FieldInput{empty_text: "Qty (e.g. 1.5 for kg)"}
-                                        buy_unit_input := FieldInput{empty_text: "Unit (kg, litre, pcs)"}
+                                        buy_qty_input := FieldInput{empty_text: "Qty"}
+                                        buy_unit_input := FieldInput{empty_text: "Unit"}
                                     }
                                     buy_unit_suggest := mod.widgets.SuggestList{field: "buy_unit"}
                                     buy_cost_input := FieldInput{empty_text: "Unit cost"}
@@ -7955,17 +8004,23 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 20.}
                                     visible: false
                                 }
                                 units_label := mod.widgets.ReportText{}
-                                unit_code_input := FieldInput{empty_text: "Code (bag)"}
-                                unit_name_input := FieldInput{empty_text: "Name (Bag)"}
-                                unit_add := StackPrimaryBtn{text: "Add unit"}
+                                FormFieldRow{
+                                    unit_code_input := FieldInput{empty_text: "Code (bag)"}
+                                    unit_name_input := FieldInput{empty_text: "Name (Bag)"}
+                                }
+                                ActionStack{
+                                    unit_add := StackPrimaryBtn{text: "Add unit"}
+                                }
                                 }
                                 FormCard{
                                 conv_from_input := FieldInput{empty_text: "From code (bag)"}
                                 conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
                                 conv_to_input := FieldInput{empty_text: "To code (kg)"}
                                 conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
-                                conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
-                                conv_add := StackPrimaryBtn{text: "Add conversion"}
+                                conv_factor_input := FieldInput{empty_text: "Factor (1 bag → kg)"}
+                                ActionStack{
+                                    conv_add := StackPrimaryBtn{text: "Add conversion"}
+                                }
                                 }
                                                                 }
                                 settings_panel_pickers := View{
@@ -7997,13 +8052,15 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 FormCard{
                                 bulk_price_heading := WrapLabel{ width: Fit
                                                     body: "Bulk menu price" font_color: #x260B08 font_size: 18.}
-                                FormFieldRow{
-                                    bulk_cat_input := FieldInput{empty_text: "Category name"}
-                                    bulk_pct_input := FieldInput{empty_text: "% change (e.g. 10 or -5)"}
-                                    bulk_set_input := FieldInput{empty_text: "Or set ₹ amount"}
-                                }
+                                bulk_cat_input := FieldInput{empty_text: "Category name"}
                                 bulk_cat_suggest := mod.widgets.SuggestList{field: "bulk_cat"}
-                                bulk_price_apply := RowSecondaryBtn{text: "Apply bulk price"}
+                                FormFieldRow{
+                                    bulk_pct_input := FieldInput{empty_text: "% change"}
+                                    bulk_set_input := FieldInput{empty_text: "Or set ₹"}
+                                }
+                                ActionStack{
+                                    bulk_price_apply := StackPrimaryBtn{text: "Apply bulk price"}
+                                }
                                 }
                                 settings_lan_help := InfoHelp{
                                     tip: "On this shop’s Wi‑Fi, guest pages work for display board, tokens, expo, kiosk, table QR, and feedback. Guests on mobile data need Cloud later. Card terminal / payment link is optional when the internet is up — it never blocks the counter."
@@ -8214,8 +8271,8 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     font_size: 12.
                                 }
                                 ActionStack{
-                                    print_stamp_pick := RowSecondaryBtn{text: "Choose stamp"}
-                                    print_stamp_clear := RowSecondaryBtn{text: "Clear stamp"}
+                                    print_stamp_pick := StackSecondaryBtn{text: "Choose stamp"}
+                                    print_stamp_clear := StackSecondaryBtn{text: "Clear stamp"}
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -8234,8 +8291,8 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     font_size: 12.
                                 }
                                 ActionStack{
-                                    payment_qr_pick := RowSecondaryBtn{text: "Choose payment QR"}
-                                    payment_qr_clear := RowSecondaryBtn{text: "Clear payment QR"}
+                                    payment_qr_pick := StackSecondaryBtn{text: "Choose payment QR"}
+                                    payment_qr_clear := StackSecondaryBtn{text: "Clear payment QR"}
                                 }
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
                                 }
@@ -8248,7 +8305,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "KOT format" font_color: #x260B08 font_size: 20.}
                                     kot_format_help := InfoHelp{
-                                        tip: "Kitchen slips stay a standard KOT: no prices; KOT No, table and dishes always print. Tune optional lines, paper width and type size — clamped so text does not crop."
+                                        tip: "Kitchen slips stay a standard KOT — no prices; dishes always print. Optional lines, title, copies, paper width and type size are clamped so text does not crop."
                                     }
                                 }
                                 h_kot_format_fields := WrapLabel{
@@ -8304,6 +8361,30 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                         kot_station_off_on := SegBtnOn{text: "Hide station" visible: false}
                                     }
                                 }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_table_on := SegBtn{text: "Table"}
+                                        kot_table_on_on := SegBtnOn{text: "Table" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_table_off := SegBtn{text: "Hide table"}
+                                        kot_table_off_on := SegBtnOn{text: "Hide table" visible: false}
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_no_on := SegBtn{text: "KOT No"}
+                                        kot_no_on_on := SegBtnOn{text: "KOT No" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_no_off := SegBtn{text: "Hide KOT No"}
+                                        kot_no_off_on := SegBtnOn{text: "Hide KOT No" visible: false}
+                                    }
+                                }
                                 h_kot_width := WrapLabel{
                                     body: "Paper width"
                                     font_color: #x260B08
@@ -8342,13 +8423,53 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                         kot_size_l_on := SegBtnOn{text: "Large" visible: false}
                                     }
                                 }
+                                h_kot_copies := WrapLabel{
+                                    body: "Copies"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_copies_1 := SegBtn{text: "1"}
+                                        kot_copies_1_on := SegBtnOn{text: "1" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_copies_2 := SegBtn{text: "2"}
+                                        kot_copies_2_on := SegBtnOn{text: "2" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_copies_3 := SegBtn{text: "3"}
+                                        kot_copies_3_on := SegBtnOn{text: "3" visible: false}
+                                    }
+                                }
+                                kot_title_input := FieldInput{empty_text: "Title (blank = KOT - KITCHEN ORDER)"}
                                 kot_footer_input := FieldInput{empty_text: "Kitchen note (optional, no prices)"}
                                 h_kot_preview := WrapLabel{
                                     body: "Preview"
                                     font_color: #x260B08
                                     font_size: 14.
                                 }
-                                kot_format_preview := mod.widgets.ReportText{}
+                                // Paper strip: width + type size update live with the chips.
+                                kot_format_preview_card := RoundedView{
+                                    width: Fit height: Fit
+                                    padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+                                    draw_bg.color: #xffffff
+                                    draw_bg.border_radius: 12.
+                                    draw_bg.border_size: 1.
+                                    draw_bg.border_color: #xE3D3C8
+                                    // Soft-wrap is already applied in render();
+                                    // do not Label{wrap} (DEV bug 7).
+                                    kot_format_preview := Label{
+                                        width: Fill height: Fit
+                                        text: " "
+                                        draw_text: {
+                                            color: #x260B08
+                                            text_style: {font_size: 13.5}
+                                        }
+                                    }
+                                }
                                 kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
                                 }
                                 FormCard{

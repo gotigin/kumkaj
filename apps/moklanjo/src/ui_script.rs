@@ -530,15 +530,17 @@ script_mod! {
             }
         }
     }
-    // Bottom-nav chips for expanded More peers (scroll row; Fit width).
+    // Bottom-nav chips (scroll row). Short chrome labels + wrap, never
+    // ellipsis — long translated titles grow a second line instead of cropping.
     // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
     let NavChip = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: 56
+        width: Fit{min: FitBound.Abs(96.)} height: Fit
         align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
+        padding: Inset{left: 36. right: 12. top: 10. bottom: 10.}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -569,12 +571,13 @@ script_mod! {
         }
     }
     let NavChipActive = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: 56
+        width: Fit{min: FitBound.Abs(96.)} height: Fit
         align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
+        padding: Inset{left: 36. right: 12. top: 10. bottom: 10.}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -3357,15 +3360,26 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                // Label (not Markdown WrapLabel): white ink must
-                                // stay visible on the dark header — Markdown
-                                // sometimes reverts to the dark WrapLabel default
-                                // and the name/org vanish against the header.
-                                // Selectable WrapLabel — font_color stays white on navy.
-                                brand_title := WrapLabel{
-                                    body: "Moklanjo"
-                                    font_color: #xffffff
-                                    font_size: 18.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    align: Align{y: 0.5}
+                                    // Selectable WrapLabel — font_color stays white on navy.
+                                    brand_title := WrapLabel{
+                                        width: Fit
+                                        body: "Moklanjo"
+                                        font_color: #xffffff
+                                        font_size: 18.
+                                    }
+                                    // Short server id — smaller than the shop name.
+                                    brand_server_id := WrapLabel{
+                                        width: Fit
+                                        body: ""
+                                        font_color: #x8392b7
+                                        font_size: 11.
+                                        visible: false
+                                        selectable: false
+                                    }
                                 }
                                 session_label := WrapLabel{
                                     body: "Sell"
@@ -3473,11 +3487,25 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                setup_brand_title := WrapLabel{
-                                                    body: "Your shop"
-                                                    font_color: #x02030B
-                                                    font_size: 18.
-                                                    selectable: false
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 6
+                                                    align: Align{y: 0.5}
+                                                    setup_brand_title := WrapLabel{
+                                                        width: Fit
+                                                        body: "Your shop"
+                                                        font_color: #x02030B
+                                                        font_size: 18.
+                                                        selectable: false
+                                                    }
+                                                    setup_brand_server_id := WrapLabel{
+                                                        width: Fit
+                                                        body: ""
+                                                        font_color: #x3A4554
+                                                        font_size: 11.
+                                                        visible: false
+                                                        selectable: false
+                                                    }
                                                 }
                                                 device_use_question := WrapLabel{
                                                     body: ""
@@ -3664,10 +3692,24 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                lock_brand_title := WrapLabel{
-                                                    body: "Your shop"
-                                                    font_color: #x02030B
-                                                    font_size: 18.
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 6
+                                                    align: Align{y: 0.5}
+                                                    lock_brand_title := WrapLabel{
+                                                        width: Fit
+                                                        body: "Your shop"
+                                                        font_color: #x02030B
+                                                        font_size: 18.
+                                                    }
+                                                    lock_brand_server_id := WrapLabel{
+                                                        width: Fit
+                                                        body: ""
+                                                        font_color: #x3A4554
+                                                        font_size: 11.
+                                                        visible: false
+                                                        selectable: false
+                                                    }
                                                 }
                                                 h_counter_locked := WrapLabel{
                                                     body: "Counter 01 · Locked"

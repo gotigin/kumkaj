@@ -5303,6 +5303,22 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().kot_slip_draft.show_station = false;
                 changed = true;
             }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_table_on), ids!(kot_table_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_table = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_table_off), ids!(kot_table_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_table = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_no_on), ids!(kot_no_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_kot_no = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_no_off), ids!(kot_no_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_kot_no = false;
+                changed = true;
+            }
             if self.choice_chip_clicked(cx, actions, ids!(kot_width_58), ids!(kot_width_58_on)) {
                 app_state().lock().unwrap().kot_slip_draft.chars_per_line =
                     print_share::KOT_CHARS_58MM;
@@ -5325,9 +5341,26 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_LARGE;
                 changed = true;
             }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_copies_1), ids!(kot_copies_1_on)) {
+                app_state().lock().unwrap().kot_slip_draft.copies = 1;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_copies_2), ids!(kot_copies_2_on)) {
+                app_state().lock().unwrap().kot_slip_draft.copies = 2;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_copies_3), ids!(kot_copies_3_on)) {
+                app_state().lock().unwrap().kot_slip_draft.copies = 3;
+                changed = true;
+            }
+            let title_now = self.ui.text_input(cx, ids!(kot_title_input)).text();
             let footer_now = self.ui.text_input(cx, ids!(kot_footer_input)).text();
             {
                 let mut st = app_state().lock().unwrap();
+                if st.kot_slip_draft.title != title_now {
+                    st.kot_slip_draft.title = title_now;
+                    changed = true;
+                }
                 if st.kot_slip_draft.footer != footer_now {
                     st.kot_slip_draft.footer = footer_now;
                     changed = true;
@@ -5338,10 +5371,12 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(kot_format_save)).clicked(actions) {
+            let title = self.ui.text_input(cx, ids!(kot_title_input)).text();
             let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Change the KOT format")?;
+                st.kot_slip_draft.title = title;
                 st.kot_slip_draft.footer = footer;
                 let saved = st
                     .store

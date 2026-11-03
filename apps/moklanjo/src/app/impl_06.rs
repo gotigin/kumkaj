@@ -844,7 +844,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             NavTab::Books => s("books"),
             NavTab::Sell => s("sell"),
             NavTab::Buy => s("buy"),
-            NavTab::Rates => s("items"),
+            NavTab::Rates => s("nav_items"),
             NavTab::Ops => "Ops".to_string(),
             NavTab::Cod => "COD".to_string(),
             NavTab::Riders => s("riders"),

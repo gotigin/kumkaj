@@ -550,6 +550,8 @@ fn en(key: &str) -> String {
         "settle_cash" => "Settle cash",
         "settle_card" => "Settle card",
         "items" => "Rates & services",
+        // Short bottom-nav / rail chrome — never the long page title.
+        "nav_items" => "Rates",
         "more" => "More",
         "your_items" => "Your rates",
         "items_help" => "Each row is a rate (e.g. Surface Zone A). Unit is usually kg. Tap to edit.",
@@ -1863,7 +1865,7 @@ mod tests {
             "manifest_received_by", "manifest_sign", "mark_cleared",
             "mark_delivered", "marked_sold_out", "measures_help_moklanjo",
             "mix_type_hint_moklanjo", "money_in_sales", "more", "more_help_moklanjo",
-            "na", "nav_lock", "nav_reports", "nav_settings", "ndr_address_wrong",
+            "na", "nav_items", "nav_lock", "nav_reports", "nav_settings", "ndr_address_wrong",
             "ndr_customer_unavailable", "ndr_door_locked", "ndr_other", "ndr_refused",
             "net_word",
             "new_branch_name_ph", "new_customer_ph", "new_item", "new_party_clear",

@@ -3,11 +3,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |key: &str| locale::t(&lang, key);
         // Short chrome labels for bottom chips + rail (wrap, no ellipsis).
-        // Long More-row strings stay on more_* buttons below.
+        // Page titles stay long (`items` = "Rates & services"); chrome uses `nav_items`.
         let books = s("books");
         let sell = s("sell");
         let buy = s("buy");
-        let rates = s("items");
+        let rates = s("nav_items");
         let sales = s("sales");
         let day_close = s("day_close");
         let reports = s("nav_reports");
@@ -913,7 +913,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
-        let (title, header_title, icon_path, icon_hint, onboard_icon_hint, saved_title) = {
+        let (title, header_title, server_id_short, icon_path, icon_hint, onboard_icon_hint, saved_title) = {
             let st = app_state().lock().unwrap();
             // A shop that has not set its name yet still shows the app name
             // next to the logo — never a blank header.
@@ -922,20 +922,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             } else {
                 st.display_venue_title()
             };
-            // Short server id in parentheses next to the shop name (same 8
-            // chars as the local server list) so multi-server desks can tell
-            // shops apart.
-            let with_server_id = |name: &str| -> String {
-                let short = st
-                    .data_base
-                    .as_ref()
-                    .and_then(|base| local_servers::active_server_id(base).ok().flatten())
-                    .map(|id| id.chars().take(8).collect::<String>());
-                match short {
-                    Some(id) if !id.is_empty() => format!("{name} ({id})"),
-                    _ => name.to_string(),
-                }
-            };
+            // Short server id beside the shop name (smaller sibling label).
+            let server_id_short = st
+                .data_base
+                .as_ref()
+                .and_then(|base| local_servers::active_server_id(base).ok().flatten())
+                .map(|id| id.chars().take(8).collect::<String>())
+                .filter(|id| !id.is_empty());
             // Multi-outlet owners need to see which shop this device is selling
             // for; a single Main-only setup keeps the plain venue name.
             let header_title = {
@@ -945,7 +938,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     .and_then(|s| s.list_branches().ok())
                     .map(|b| b.len())
                     .unwrap_or(0);
-                let base = match st.store.as_ref().and_then(|s| s.active_branch().ok()) {
+                match st.store.as_ref().and_then(|s| s.active_branch().ok()) {
                     Some(branch) if branch_count > 1 => {
                         let tag = if branch.code.trim().is_empty() {
                             branch.name.clone()
@@ -955,10 +948,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                         format!("{title} · {tag}")
                     }
                     _ => title.clone(),
-                };
-                with_server_id(&base)
+                }
             };
-            let title = with_server_id(&title);
             // Draft pick shows immediately; saved key after Save / onboard import.
             let icon_path = st
                 .draft_venue_icon_path
@@ -979,6 +970,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (
                 title,
                 header_title,
+                server_id_short,
                 icon_path,
                 icon_hint,
                 onboard_icon_hint,
@@ -992,6 +984,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, id)
                 .set_text(cx, &plain_display_text(&title));
+        }
+        let id_label = server_id_short
+            .as_ref()
+            .map(|id| format!("({id})"))
+            .unwrap_or_default();
+        let id_visible = server_id_short.is_some();
+        for id in [
+            ids!(brand_server_id),
+            ids!(setup_brand_server_id),
+            ids!(lock_brand_server_id),
+        ] {
+            let w = self.ui.widget(cx, id);
+            w.set_text(cx, &plain_display_text(&id_label));
+            w.set_visible(cx, id_visible);
         }
         for id in [
             ids!(brand_mark),

@@ -3,13 +3,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |key: &str| locale::t(&lang, key);
         // Short chrome labels for bottom chips + rail (wrap, no ellipsis).
-        // Long More-row strings stay on more_* buttons below.
+        // Page titles stay long (`items` = "Menu & items"); chrome uses `nav_items`.
         let floor = s("floor");
         let kitchen = s("kitchen");
         let books = s("books");
         let sell = s("sell");
         let buy = s("buy");
-        let rates = s("items");
+        let rates = s("nav_items");
         let sales = s("sales");
         let day_close = s("day_close");
         let reports = s("nav_reports");
@@ -834,7 +834,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
-        let (title, header_title, icon_path, icon_hint, onboard_icon_hint, saved_title, saved_org) = {
+        let (title, header_title, server_id_short, icon_path, icon_hint, onboard_icon_hint, saved_title, saved_org) = {
             let st = app_state().lock().unwrap();
             // A shop that has not set its name yet still shows the app name
             // next to the logo — never a blank header.
@@ -843,24 +843,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             } else {
                 st.display_venue_title()
             };
-            // Short server id in parentheses next to the restaurant name so
-            // multi-server desks can tell shops apart (same 8 chars as the list).
-            let with_server_id = |name: &str| -> String {
-                let short = st
-                    .data_base
-                    .as_ref()
-                    .and_then(|base| local_servers::active_server_id(base).ok().flatten())
-                    .map(|id| id.chars().take(8).collect::<String>());
-                match short {
-                    Some(id) if !id.is_empty() => format!("{name} ({id})"),
-                    _ => name.to_string(),
-                }
-            };
+            // Short server id beside the restaurant name (smaller sibling label).
+            let server_id_short = st
+                .data_base
+                .as_ref()
+                .and_then(|base| local_servers::active_server_id(base).ok().flatten())
+                .map(|id| id.chars().take(8).collect::<String>())
+                .filter(|id| !id.is_empty());
             // The header shows the restaurant's name as the owner saved it
             // (the app's name until they do); the business and who is signed
             // in sit under it (sync_chrome).
-            let header_title = with_server_id(&title);
-            let title = with_server_id(&title);
+            let header_title = title.clone();
             // Draft pick shows immediately; saved key after Save / onboard import.
             let icon_path = st
                 .draft_venue_icon_path
@@ -886,6 +879,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (
                 title,
                 header_title,
+                server_id_short,
                 icon_path,
                 icon_hint,
                 onboard_icon_hint,
@@ -897,6 +891,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(brand_title)).set_text(cx, &plain_display_text(&header_title));
         for id in [ids!(setup_brand_title), ids!(lock_brand_title)] {
             self.ui.widget(cx, id).set_text(cx, &plain_display_text(&title));
+        }
+        let id_label = server_id_short
+            .as_ref()
+            .map(|id| format!("({id})"))
+            .unwrap_or_default();
+        let id_visible = server_id_short.is_some();
+        for id in [
+            ids!(brand_server_id),
+            ids!(setup_brand_server_id),
+            ids!(lock_brand_server_id),
+        ] {
+            let w = self.ui.widget(cx, id);
+            w.set_text(cx, &plain_display_text(&id_label));
+            w.set_visible(cx, id_visible);
         }
         for id in [
             ids!(brand_mark),
@@ -1614,14 +1622,24 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(h_kot_size))
             .set_text(cx, &plain_display_text(&s("kot_size")));
         self.ui
+            .widget(cx, ids!(h_kot_copies))
+            .set_text(cx, &plain_display_text(&s("kot_copies")));
+        self.ui
             .widget(cx, ids!(h_kot_preview))
             .set_text(cx, &plain_display_text(&s("kot_preview")));
         self.ui
             .button(cx, ids!(kot_format_save))
             .set_text(cx, &s("save_kot_format"));
         self.ui
+            .text_input(cx, ids!(kot_title_input))
+            .set_empty_text(cx, s("kot_title_ph"));
+        self.ui
             .text_input(cx, ids!(kot_footer_input))
             .set_empty_text(cx, s("kot_footer_ph"));
+        let title_field = self.ui.text_input(cx, ids!(kot_title_input));
+        if !cx.has_key_focus(title_field.area()) {
+            title_field.set_text(cx, &draft.title);
+        }
         let footer_field = self.ui.text_input(cx, ids!(kot_footer_input));
         if !cx.has_key_focus(footer_field.area()) {
             footer_field.set_text(cx, &draft.footer);
@@ -1635,11 +1653,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(kot_waiter_off), ids!(kot_waiter_off_on), "kot_hide_waiter"),
             (ids!(kot_station_on), ids!(kot_station_on_on), "kot_show_station"),
             (ids!(kot_station_off), ids!(kot_station_off_on), "kot_hide_station"),
+            (ids!(kot_table_on), ids!(kot_table_on_on), "kot_show_table"),
+            (ids!(kot_table_off), ids!(kot_table_off_on), "kot_hide_table"),
+            (ids!(kot_no_on), ids!(kot_no_on_on), "kot_show_kot_no"),
+            (ids!(kot_no_off), ids!(kot_no_off_on), "kot_hide_kot_no"),
             (ids!(kot_width_58), ids!(kot_width_58_on), "kot_width_58"),
             (ids!(kot_width_80), ids!(kot_width_80_on), "kot_width_80"),
             (ids!(kot_size_s), ids!(kot_size_s_on), "kot_size_s"),
             (ids!(kot_size_m), ids!(kot_size_m_on), "kot_size_m"),
             (ids!(kot_size_l), ids!(kot_size_l_on), "kot_size_l"),
+            (ids!(kot_copies_1), ids!(kot_copies_1_on), "kot_copies_1"),
+            (ids!(kot_copies_2), ids!(kot_copies_2_on), "kot_copies_2"),
+            (ids!(kot_copies_3), ids!(kot_copies_3_on), "kot_copies_3"),
         ] {
             let t = s(label);
             self.ui.button(cx, idle).set_text(cx, &t);
@@ -1663,6 +1688,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(kot_station_off_on),
             !draft.show_station,
         );
+        self.paint_choice_pair(cx, ids!(kot_table_on), ids!(kot_table_on_on), draft.show_table);
+        self.paint_choice_pair(cx, ids!(kot_table_off), ids!(kot_table_off_on), !draft.show_table);
+        self.paint_choice_pair(cx, ids!(kot_no_on), ids!(kot_no_on_on), draft.show_kot_no);
+        self.paint_choice_pair(cx, ids!(kot_no_off), ids!(kot_no_off_on), !draft.show_kot_no);
         let wide = draft.chars_per_line >= print_share::KOT_CHARS_80MM;
         self.paint_choice_pair(cx, ids!(kot_width_58), ids!(kot_width_58_on), !wide);
         self.paint_choice_pair(cx, ids!(kot_width_80), ids!(kot_width_80_on), wide);
@@ -1685,12 +1714,26 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(kot_size_l_on),
             em >= print_share::KOT_EM_LARGE,
         );
+        let copies = draft.copies.clamp(
+            print_share::KOT_COPIES_MIN,
+            print_share::KOT_COPIES_MAX,
+        );
+        self.paint_choice_pair(cx, ids!(kot_copies_1), ids!(kot_copies_1_on), copies == 1);
+        self.paint_choice_pair(cx, ids!(kot_copies_2), ids!(kot_copies_2_on), copies == 2);
+        self.paint_choice_pair(cx, ids!(kot_copies_3), ids!(kot_copies_3_on), copies == 3);
         let preview = draft.render_sample(&shop);
-        let rows: Vec<ReportRow> = preview
-            .lines()
-            .map(|l| ReportRow::Line(l.to_string()))
-            .collect();
-        self.set_report_rows(cx, ids!(kot_format_preview), rows);
+        let font_pt = draft.preview_font_pt();
+        let paper_w = draft.preview_paper_width_px();
+        if let Some(mut card) = self.ui.view(cx, ids!(kot_format_preview_card)).borrow_mut() {
+            card.walk.width = Size::Fixed(paper_w);
+        }
+        if let Some(mut label) = self.ui.label(cx, ids!(kot_format_preview)).borrow_mut() {
+            label.draw_text.text_style.font_size = font_pt;
+            label.set_text(cx, &preview.trim_end());
+        }
+        self.ui
+            .view(cx, ids!(kot_format_preview_card))
+            .redraw(cx);
     }
 
 

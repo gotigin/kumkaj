@@ -2655,8 +2655,10 @@ impl Store {
         let fmt = self.kot_slip_format()?;
         Ok(fmt.render(crate::print_share::KotSlipContent {
             cancel: kind == "cancel",
+            reprint: false,
             shop_name: &shop,
             kot_no,
+            kot_nos_label: None,
             when: &when,
             created_by: &created_by,
             table_label: &table_label,
@@ -2679,21 +2681,28 @@ impl Store {
                 |r| r.get(0),
             )
             .unwrap_or_default();
-        let share = crate::print_share::print_route(
-            crate::print_share::PrintKind::Kot,
-            crate::print_share::RouteKey::Kot {
-                station_id: &station_id,
-            },
-            &text,
-            self.path.parent(),
-        )?;
-        if !share.opened {
+        let copies = self.kot_slip_format()?.copies.max(1);
+        let mut last_path = None;
+        let mut opened = false;
+        for _ in 0..copies {
+            let share = crate::print_share::print_route(
+                crate::print_share::PrintKind::Kot,
+                crate::print_share::RouteKey::Kot {
+                    station_id: &station_id,
+                },
+                &text,
+                self.path.parent(),
+            )?;
+            opened |= share.opened;
+            last_path = Some(share.path);
+        }
+        if !opened {
             return Err(
                 "No printer available for this KOT — add a printer in Settings → Printers (Bill or a kitchen station), then Save"
                     .into(),
             );
         }
-        Ok(share.path)
+        last_path.ok_or_else(|| "Print failed".to_string())
     }
 
     /// Charge a bill with any mix of Cash / UPI(rail) / Card / Credit.

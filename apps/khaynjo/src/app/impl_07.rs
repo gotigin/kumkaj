@@ -146,20 +146,10 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         let mut kitchen_names: Vec<String> = Vec::new();
         let dish_n = selected.len();
         let now = chrono::Local::now().format("%Y-%m-%d %H:%M").to_string();
+        let shop = store.venue_title().unwrap_or_default();
+        let fmt = store.kot_slip_format().unwrap_or_default();
+        let copies = fmt.copies.max(1);
         for (station_id, station_name, lines) in &groups {
-            let mut text = String::from("*** REPRINT - SAME ORDER ***\n");
-            text.push_str("KOT - KITCHEN ORDER\n");
-            text.push_str(&format!("Time: {now}\n"));
-            if !by.is_empty() {
-                text.push_str(&format!("By: {by}\n"));
-            }
-            if !table_label.is_empty() {
-                text.push_str(&format!("Table: {table_label}\n"));
-            }
-            if !station_name.is_empty() {
-                text.push_str(&format!("Station: {station_name}\n"));
-            }
-            // Original KOT numbers when all selected lines share them.
             let mut kot_nos: Vec<i64> = Vec::new();
             for line in lines {
                 if let Ok(no) = store.kot_no_for(&line.kot_id) {
@@ -168,43 +158,71 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                     }
                 }
             }
-            if !kot_nos.is_empty() {
-                let list = kot_nos
-                    .iter()
-                    .map(|n| n.to_string())
-                    .collect::<Vec<_>>()
-                    .join(", ");
-                text.push_str(&format!("Was KOT No: {list}\n"));
+            let kot_nos_joined = if kot_nos.len() > 1 {
+                Some(format!(
+                    "Was KOT No: {}",
+                    kot_nos
+                        .iter()
+                        .map(|n| n.to_string())
+                        .collect::<Vec<_>>()
+                        .join(", ")
+                ))
+            } else {
+                None
+            };
+            let item_lines: Vec<String> = lines
+                .iter()
+                .map(|line| {
+                    let qty =
+                        domain::format_qty_display(line.qty_milli, line.qty, &line.unit_label);
+                    let mut row = format!("{qty} x {}", line.name);
+                    for m in &line.applied_modifiers {
+                        row.push_str(&format!(" + {}", m.name));
+                    }
+                    if !line.note.trim().is_empty() {
+                        row.push_str(&format!(" ({})", line.note.trim()));
+                    }
+                    row
+                })
+                .collect();
+            let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
+            let text = fmt.render(print_share::KotSlipContent {
+                cancel: false,
+                reprint: true,
+                shop_name: &shop,
+                kot_no: kot_nos.first().copied().unwrap_or(0),
+                kot_nos_label: kot_nos_joined.as_deref(),
+                when: &now,
+                created_by: &by,
+                table_label: &table_label,
+                station_name: station_name.as_str(),
+                items: &item_refs,
+            });
+            let mut printed = false;
+            let mut last_err: Option<String> = None;
+            for _ in 0..copies {
+                match print_share::print_route(
+                    print_share::PrintKind::Kot,
+                    print_share::RouteKey::Kot {
+                        station_id: station_id.as_str(),
+                    },
+                    &text,
+                    store.db_path().parent(),
+                ) {
+                    Ok(share) if share.opened => printed = true,
+                    Ok(_) => {
+                        last_err = Some(format!(
+                            "{station_name}: no printer — Settings → Printers"
+                        ));
+                    }
+                    Err(e) => last_err = Some(format!("{station_name}: {e}")),
+                }
             }
-            text.push_str("--------------------------------\n");
-            for line in lines {
-                let qty = domain::format_qty_display(line.qty_milli, line.qty, &line.unit_label);
-                let mut row = format!("{qty} x {}", line.name);
-                for m in &line.applied_modifiers {
-                    row.push_str(&format!(" + {}", m.name));
-                }
-                if !line.note.trim().is_empty() {
-                    row.push_str(&format!(" ({})", line.note.trim()));
-                }
-                text.push_str(&format!("{row}\n"));
-            }
-            text.push_str("--------------------------------\n");
-            match print_share::print_route(
-                print_share::PrintKind::Kot,
-                print_share::RouteKey::Kot {
-                    station_id: station_id.as_str(),
-                },
-                &text,
-                store.db_path().parent(),
-            ) {
-                Ok(share) if share.opened => {
-                    ok += 1;
-                    kitchen_names.push(station_name.clone());
-                }
-                Ok(_) => errors.push(format!(
-                    "{station_name}: no printer — Settings → Printers"
-                )),
-                Err(e) => errors.push(format!("{station_name}: {e}")),
+            if printed {
+                ok += 1;
+                kitchen_names.push(station_name.clone());
+            } else if let Some(e) = last_err {
+                errors.push(e);
             }
         }
         if ok == 0 {

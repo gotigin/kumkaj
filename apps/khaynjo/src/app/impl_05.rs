@@ -1180,7 +1180,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             NavTab::Books => s("books"),
             NavTab::Sell => s("sell"),
             NavTab::Buy => s("buy"),
-            NavTab::Menu => s("items"),
+            NavTab::Menu => s("nav_items"),
             NavTab::Floor => s("floor"),
             NavTab::Kitchen => s("kitchen"),
             NavTab::Sales => s("sales"),

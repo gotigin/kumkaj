@@ -770,6 +770,9 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(setup_lang_selected), rtl);
         self.align_label(cx, ids!(settings_lang_selected), rtl);
         self.align_label(cx, ids!(brand_title), rtl);
+        self.align_label(cx, ids!(brand_server_id), rtl);
+        self.align_label(cx, ids!(setup_brand_server_id), rtl);
+        self.align_label(cx, ids!(lock_brand_server_id), rtl);
         self.align_label(cx, ids!(h_venue_icon), rtl);
         self.align_label(cx, ids!(venue_icon_status), rtl);
         self.align_label(cx, ids!(onboard_icon_status), rtl);
