@@ -191,8 +191,14 @@
         }
     }
 
-    /** Standard bill: Noto-raster PNG from Rust (same glyphs on every OS). */
+    /** Standard bill PNG — portrait A4 (compat for older JNI callers). */
     public boolean printPngDocument(final String jobName, final byte[] pngBytes) {
+        return printPngDocumentOriented(jobName, pngBytes, false);
+    }
+
+    /** Standard bill: Noto-raster PNG; `landscape` selects A4 orientation. */
+    public boolean printPngDocumentOriented(
+            final String jobName, final byte[] pngBytes, final boolean landscape) {
         final byte[] body = pngBytes == null ? new byte[0] : pngBytes;
         final String title = (jobName == null || jobName.length() == 0) ? "Slip" : jobName;
         try {
@@ -210,8 +216,14 @@
                             Log.e(LOG_TAG, "printPngDocument: bad PNG");
                             return;
                         }
+                        PrintAttributes.MediaSize media = landscape
+                                ? PrintAttributes.MediaSize.ISO_A4.asLandscape()
+                                : PrintAttributes.MediaSize.ISO_A4;
+                        // PDF points: portrait 595×842, landscape 842×595.
+                        final int pageW = landscape ? 842 : 595;
+                        final int pageH = landscape ? 595 : 842;
                         PrintAttributes attrs = new PrintAttributes.Builder()
-                                .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
+                                .setMediaSize(media)
                                 .setColorMode(PrintAttributes.COLOR_MODE_MONOCHROME)
                                 .setMinMargins(PrintAttributes.Margins.NO_MARGINS)
                                 .build();
@@ -245,12 +257,12 @@
                                 try {
                                     android.graphics.pdf.PdfDocument.PageInfo pageInfo =
                                             new android.graphics.pdf.PdfDocument.PageInfo.Builder(
-                                                    595, 842, 1).create();
+                                                    pageW, pageH, 1).create();
                                     android.graphics.pdf.PdfDocument.Page page = pdf.startPage(pageInfo);
                                     android.graphics.Canvas canvas = page.getCanvas();
                                     float margin = 36f;
-                                    float maxW = 595f - 2f * margin;
-                                    float maxH = 842f - 2f * margin;
+                                    float maxW = pageW - 2f * margin;
+                                    float maxH = pageH - 2f * margin;
                                     float scale = Math.min(maxW / bmp.getWidth(), maxH / bmp.getHeight());
                                     float w = bmp.getWidth() * scale;
                                     float h = bmp.getHeight() * scale;

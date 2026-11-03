@@ -287,16 +287,17 @@ Use when implementing a row above or a deferred compliance feature.
 
 ### Tax pricing modes (product wording — every app)
 
-Prefer these Settings labels; avoid bare “inclusive/exclusive tax” (ambiguous
-elsewhere). Tax *name* (GST / VAT / sales tax / custom) is the country pack
-label and is independent of the mode.
+Settings name the mode with the country tax label: **GST inclusive** /
+**GST exclusive**, **VAT inclusive** / **VAT exclusive**, and so on. Bare
+“inclusive tax” without the tax name is ambiguous — always pair it with GST /
+VAT / … Tax *name* is the country pack label and is independent of the mode.
 
 | Mode | What the guest pays | Receipt breakup |
 |------|---------------------|-----------------|
-| **Tax inside price** | Quoted/charged total unchanged | **Taxable value** + tax (= same total); footnote “(GST inside price)” etc. |
-| **Tax added at till** | Net prices + tax on top | **Subtotal** + tax → higher Total |
+| **`{tax} inclusive`** | Quoted/charged total unchanged | **Taxable value** + tax (= same total); footnote “(GST inclusive)” etc. |
+| **`{tax} exclusive`** | Net prices + tax on top | **Subtotal** + tax → higher Total |
 
-Example (Tax inside price, 18% on ₹3000): taxable value = ₹3000 ÷ 1.18, tax =
+Example (GST inclusive, 18% on ₹3000): taxable value = ₹3000 ÷ 1.18, tax =
 remainder; guest still pays ₹3000. Code: `TaxPricing::InsidePrice` /
 `AddedAtTill` (`apps/*/src/fiscal.rs`); meta still stores `inclusive` /
 `exclusive`. Detail: [`DEV.md`](DEV.md) § Fiscal country packs.

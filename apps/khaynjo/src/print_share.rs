@@ -73,8 +73,28 @@ pub enum RouteKey<'a> {
 }
 
 /// Built-in format ids (always present; owner may customize their metrics).
+/// Legacy `"standard"` migrates to portrait on load.
 pub const FORMAT_STANDARD: &str = "standard";
+pub const FORMAT_STANDARD_PORTRAIT: &str = "standard_portrait";
+pub const FORMAT_STANDARD_LANDSCAPE: &str = "standard_landscape";
 pub const FORMAT_KOT: &str = "kot";
+
+/// Document (office) Standard formats — not thermal KOT.
+pub fn is_standard_document(id: &str) -> bool {
+    matches!(
+        id,
+        FORMAT_STANDARD | FORMAT_STANDARD_PORTRAIT | FORMAT_STANDARD_LANDSCAPE
+    )
+}
+
+/// Map legacy `"standard"` → portrait.
+pub fn normalize_format_id(id: &str) -> &str {
+    if id == FORMAT_STANDARD {
+        FORMAT_STANDARD_PORTRAIT
+    } else {
+        id
+    }
+}
 
 /// Route slot: `printer_id` or `printer_id@format_id`.
 fn encode_route_slot(printer_id: &str, format_id: &str) -> String {
@@ -109,6 +129,9 @@ pub struct PrintFormat {
     /// targets still get ESC/POS raster with these metrics.
     #[serde(default = "default_true")]
     pub document: bool,
+    /// Office document orientation (ignored for thermal KOT).
+    #[serde(default)]
+    pub landscape: bool,
     #[serde(default = "default_em")]
     pub em: f32,
     #[serde(default = "default_line")]
@@ -126,11 +149,30 @@ fn default_baseline() -> f32 { 24.0 }
 fn default_side() -> f32 { 8.0 }
 
 impl PrintFormat {
+    /// Alias for [`standard_portrait`] (legacy API name).
     pub fn standard() -> Self {
+        Self::standard_portrait()
+    }
+
+    pub fn standard_portrait() -> Self {
         Self {
-            id: FORMAT_STANDARD.into(),
-            label: "Standard".into(),
+            id: FORMAT_STANDARD_PORTRAIT.into(),
+            label: "Standard Portrait".into(),
             document: true,
+            landscape: false,
+            em: 22.0,
+            line: 32,
+            baseline: 24.0,
+            side: 8.0,
+        }
+    }
+
+    pub fn standard_landscape() -> Self {
+        Self {
+            id: FORMAT_STANDARD_LANDSCAPE.into(),
+            label: "Standard Landscape".into(),
+            document: true,
+            landscape: true,
             em: 22.0,
             line: 32,
             baseline: 24.0,
@@ -143,6 +185,7 @@ impl PrintFormat {
             id: FORMAT_KOT.into(),
             label: "KOT".into(),
             document: false,
+            landscape: false,
             em: 24.0,
             line: 36,
             baseline: 26.0,
@@ -159,13 +202,35 @@ impl PrintFormat {
         }
     }
 
-    /// Built-ins plus any customs; always includes Standard and KOT.
+    /// Built-ins: Portrait, Landscape, KOT. Legacy `"standard"` → Portrait.
     pub fn ensure_builtins(list: &mut Vec<PrintFormat>) {
-        if !list.iter().any(|f| f.id == FORMAT_STANDARD) {
-            list.insert(0, PrintFormat::standard());
+        for f in list.iter_mut() {
+            if f.id == FORMAT_STANDARD {
+                f.id = FORMAT_STANDARD_PORTRAIT.into();
+                if f.label.trim().eq_ignore_ascii_case("standard") {
+                    f.label = "Standard Portrait".into();
+                }
+                f.document = true;
+                f.landscape = false;
+            }
+        }
+        if !list.iter().any(|f| f.id == FORMAT_STANDARD_PORTRAIT) {
+            list.insert(0, PrintFormat::standard_portrait());
+        }
+        if !list.iter().any(|f| f.id == FORMAT_STANDARD_LANDSCAPE) {
+            let idx = list
+                .iter()
+                .position(|f| f.id == FORMAT_STANDARD_PORTRAIT)
+                .map(|i| i + 1)
+                .unwrap_or(0);
+            list.insert(idx, PrintFormat::standard_landscape());
         }
         if !list.iter().any(|f| f.id == FORMAT_KOT) {
-            let idx = if list.first().map(|f| f.id.as_str()) == Some(FORMAT_STANDARD) { 1 } else { 0 };
+            let idx = list
+                .iter()
+                .position(|f| f.id == FORMAT_STANDARD_LANDSCAPE)
+                .map(|i| i + 1)
+                .unwrap_or(list.len());
             list.insert(idx, PrintFormat::kot());
         }
     }
@@ -606,7 +671,7 @@ pub type PrinterWire = PrinterMode;
 impl PrinterMode {
     pub fn format_id(self) -> &'static str {
         match self {
-            Self::Standard => FORMAT_STANDARD,
+            Self::Standard => FORMAT_STANDARD_PORTRAIT,
             Self::Kot => FORMAT_KOT,
         }
     }
@@ -640,7 +705,7 @@ pub struct PrintRoutes {
     /// Station id → ordered printer ids. Key `""` is unassigned items only.
     #[serde(default)]
     pub kot: BTreeMap<String, Vec<String>>,
-    /// Format id for Bill (default [`FORMAT_STANDARD`]).
+    /// Format id for Bill (default [`FORMAT_STANDARD_PORTRAIT`]).
     #[serde(default = "default_format_standard")]
     pub bill_format: String,
     /// Station id → format id for that kitchen (missing → [`FORMAT_KOT`]).
@@ -648,14 +713,14 @@ pub struct PrintRoutes {
     pub kot_format: BTreeMap<String, String>,
 }
 
-fn default_format_standard() -> String { FORMAT_STANDARD.into() }
+fn default_format_standard() -> String { FORMAT_STANDARD_PORTRAIT.into() }
 
 impl Default for PrintRoutes {
     fn default() -> Self {
         Self {
             bill: Vec::new(),
             kot: BTreeMap::from([("".into(), Vec::new())]),
-            bill_format: FORMAT_STANDARD.into(),
+            bill_format: FORMAT_STANDARD_PORTRAIT.into(),
             kot_format: BTreeMap::new(),
         }
     }
@@ -674,7 +739,11 @@ impl Default for DevicePrinters {
     fn default() -> Self {
         Self {
             printers: Vec::new(),
-            formats: vec![PrintFormat::standard(), PrintFormat::kot()],
+            formats: vec![
+                PrintFormat::standard_portrait(),
+                PrintFormat::standard_landscape(),
+                PrintFormat::kot(),
+            ],
             routes: PrintRoutes::default(),
         }
     }
@@ -729,8 +798,9 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
         };
         scrub_fake_default_printers(&mut out);
         if out.routes.bill_format.trim().is_empty() {
-            out.routes.bill_format = FORMAT_STANDARD.into();
+            out.routes.bill_format = FORMAT_STANDARD_PORTRAIT.into();
         }
+        out.migrate_legacy_standard_ids();
         if !out.routes.kot.contains_key("") {
             out.routes.kot.insert(String::new(), Vec::new());
         }
@@ -801,11 +871,15 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
     };
     DevicePrinters {
         printers,
-        formats: vec![PrintFormat::standard(), PrintFormat::kot()],
+        formats: vec![
+            PrintFormat::standard_portrait(),
+            PrintFormat::standard_landscape(),
+            PrintFormat::kot(),
+        ],
         routes: PrintRoutes {
             bill: bill_ids,
             kot: BTreeMap::from([("".into(), kot_ids)]),
-            bill_format: FORMAT_STANDARD.into(),
+            bill_format: FORMAT_STANDARD_PORTRAIT.into(),
             kot_format: BTreeMap::new(),
         },
     }
@@ -882,7 +956,11 @@ impl DevicePrinters {
         match key {
             RouteKey::Bill => {
                 let f = self.routes.bill_format.trim();
-                if f.is_empty() { FORMAT_STANDARD.into() } else { f.to_string() }
+                if f.is_empty() {
+                    FORMAT_STANDARD_PORTRAIT.into()
+                } else {
+                    normalize_format_id(f).to_string()
+                }
             }
             RouteKey::Kot { station_id } => {
                 if let Some(f) = self.routes.kot_format.get(station_id) {
@@ -905,6 +983,7 @@ impl DevicePrinters {
     }
 
     pub fn format_by_id(&self, id: &str) -> PrintFormat {
+        let id = normalize_format_id(id);
         self.formats
             .iter()
             .find(|f| f.id == id)
@@ -912,8 +991,10 @@ impl DevicePrinters {
             .unwrap_or_else(|| {
                 if id == FORMAT_KOT {
                     PrintFormat::kot()
+                } else if id == FORMAT_STANDARD_LANDSCAPE {
+                    PrintFormat::standard_landscape()
                 } else {
-                    PrintFormat::standard()
+                    PrintFormat::standard_portrait()
                 }
             })
     }
@@ -984,6 +1065,7 @@ impl DevicePrinters {
             id: id.clone(),
             label,
             document: base.document,
+            landscape: base.landscape,
             em: base.em,
             line: base.line,
             baseline: base.baseline,
@@ -999,17 +1081,41 @@ impl DevicePrinters {
     }
 
     pub fn remove_format(&mut self, id: &str) {
-        if id == FORMAT_STANDARD || id == FORMAT_KOT {
+        if id == FORMAT_KOT
+            || id == FORMAT_STANDARD
+            || id == FORMAT_STANDARD_PORTRAIT
+            || id == FORMAT_STANDARD_LANDSCAPE
+        {
             return;
         }
         self.formats.retain(|f| f.id != id);
         if self.routes.bill_format == id {
-            self.routes.bill_format = FORMAT_STANDARD.into();
+            self.routes.bill_format = FORMAT_STANDARD_PORTRAIT.into();
         }
         for v in self.routes.kot_format.values_mut() {
             if v == id {
                 *v = FORMAT_KOT.into();
             }
+        }
+    }
+
+    /// Rewrite legacy `@standard` slots and bill_format to portrait.
+    pub fn migrate_legacy_standard_ids(&mut self) {
+        PrintFormat::ensure_builtins(&mut self.formats);
+        if self.routes.bill_format.trim() == FORMAT_STANDARD {
+            self.routes.bill_format = FORMAT_STANDARD_PORTRAIT.into();
+        }
+        let rewrite = |slots: &mut Vec<String>| {
+            for slot in slots.iter_mut() {
+                let (pid, fmt) = decode_route_slot(slot);
+                if fmt == FORMAT_STANDARD {
+                    *slot = encode_route_slot(&pid, FORMAT_STANDARD_PORTRAIT);
+                }
+            }
+        };
+        rewrite(&mut self.routes.bill);
+        for slots in self.routes.kot.values_mut() {
+            rewrite(slots);
         }
     }
 
@@ -1358,6 +1464,7 @@ pub fn load_device_printers(base: &Path) -> DevicePrinters {
         .ok()
         .and_then(|raw| serde_json::from_str(&raw).ok())
         .unwrap_or_default();
+    printers.migrate_legacy_standard_ids();
     printers.dedupe_printers();
     printers
 }
@@ -1611,11 +1718,11 @@ fn send_to_printer(
                     format.label
                 ));
             }
-            print_android_document(text)
+            print_android_document(text, format.landscape)
         }
         PrinterTarget::Default => {
             if format.document {
-                print_system_standard(None, path, text)
+                print_system_standard(None, path, text, format.landscape)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB — not the system print service",
@@ -1627,7 +1734,7 @@ fn send_to_printer(
         }
         PrinterTarget::Named(name) => {
             if format.document {
-                print_system_standard(Some(name), path, text)
+                print_system_standard(Some(name), path, text, format.landscape)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB — not a system printer name",
@@ -1640,16 +1747,16 @@ fn send_to_printer(
     }
 }
 
-fn print_android_document(text: &str) -> Result<(), String> {
+fn print_android_document(text: &str, landscape: bool) -> Result<(), String> {
     // Same Noto PNG as desktop Standard — never rely on the device font.
     let png = crate::receipt_raster::png_document(text)?;
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_png("Khaynjo", &png)
+        crate::print_android::print_png("Khaynjo", &png, landscape)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = png;
+        let _ = (png, landscape);
         Err("Android print service is only on Android".into())
     }
 }
@@ -1657,18 +1764,23 @@ fn print_android_document(text: &str) -> Result<(), String> {
 /// Standard (document) jobs: always render with bundled Noto fonts to a PNG,
 /// then hand that image to the OS printer. Plain UTF-8 text depended on each
 /// driver's fonts (Gujarati/Hindi became □ before qty on Brother etc.).
-fn print_system_standard(name: Option<&str>, path: &Path, text: &str) -> Result<(), String> {
+fn print_system_standard(
+    name: Option<&str>,
+    path: &Path,
+    text: &str,
+    landscape: bool,
+) -> Result<(), String> {
     let png = crate::receipt_raster::png_document(text)?;
     let png_path = path.with_extension("png");
     fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
         let _ = name;
-        crate::print_android::print_png("Khaynjo", &png)
+        crate::print_android::print_png("Khaynjo", &png, landscape)
     }
     #[cfg(not(target_os = "android"))]
     {
-        print_system_image(name, &png_path)
+        print_system_image(name, &png_path, landscape)
     }
 }
 
@@ -1848,13 +1960,22 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
 
 /// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
 #[cfg(not(target_os = "android"))]
-fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
+fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
         let mut cmd = Command::new("lp");
         if let Some(name) = name {
             cmd.args(["-d", name]);
         }
+        // 3 = portrait, 4 = landscape (IPP orientation-requested).
+        cmd.args([
+            "-o",
+            if landscape {
+                "orientation-requested=4"
+            } else {
+                "orientation-requested=3"
+            },
+        ]);
         cmd.arg("--").arg(path);
         match cmd.output() {
             Ok(out) if out.status.success() => Ok(()),
@@ -1872,6 +1993,7 @@ fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
         let quote = |s: &str| s.replace('\'', "''");
         let path_q = quote(&path.display().to_string());
+        let land = if landscape { "$true" } else { "$false" };
         // Draw the PNG with System.Drawing — Out-Printer on UTF-8 text had no
         // Indic fonts; the image already has our Noto glyphs.
         let mut script = format!(
@@ -1879,6 +2001,7 @@ fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
              $img = [System.Drawing.Image]::FromFile('{path_q}'); \
              $doc = New-Object System.Drawing.Printing.PrintDocument; \
              $doc.DocumentName = 'Khaynjo'; \
+             $doc.DefaultPageSettings.Landscape = {land}; \
              $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(40,40,40,40);"
         );
         if let Some(name) = name {
@@ -2533,14 +2656,14 @@ mod tests {
         let office = cfg.add_printer("Office", "Canon_G3010");
         cfg.routes.bill = vec![kitchen.clone(), office.clone()];
         *cfg.route_mut(RouteKey::Kot { station_id: "" }) = vec![office.clone()];
-        assert_eq!(cfg.format_id_for(RouteKey::Bill), FORMAT_STANDARD);
+        assert_eq!(cfg.format_id_for(RouteKey::Bill), FORMAT_STANDARD_PORTRAIT);
         assert_eq!(cfg.format_id_for(RouteKey::Kot { station_id: "" }), FORMAT_KOT);
         let bill = cfg.destinations_for(RouteKey::Bill);
-        assert_eq!(bill[0].format.id, FORMAT_STANDARD);
-        assert_eq!(bill[1].format.id, FORMAT_STANDARD);
+        assert_eq!(bill[0].format.id, FORMAT_STANDARD_PORTRAIT);
+        assert_eq!(bill[1].format.id, FORMAT_STANDARD_PORTRAIT);
         cfg.set_route_format(RouteKey::Bill, FORMAT_KOT);
         assert_eq!(cfg.destinations_for(RouteKey::Bill)[0].format.id, FORMAT_KOT);
-        let custom = cfg.add_format_from(FORMAT_STANDARD, "Wide bill");
+        let custom = cfg.add_format_from(FORMAT_STANDARD_PORTRAIT, "Wide bill");
         cfg.set_route_format(RouteKey::Bill, &custom);
         assert_eq!(cfg.format_id_for(RouteKey::Bill), custom);
     }
@@ -2595,6 +2718,9 @@ mod tests {
         let counter = chosen.add_printer("Counter", "Canon_G3010");
         chosen.routes.bill = vec![counter.clone()];
         *chosen.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen.clone()];
+        // save/load fill bare ids with place default format (`id@format`).
+        chosen.dedupe_printers();
+        PrintFormat::ensure_builtins(&mut chosen.formats);
         // save_device_printers also configure()s — hold the test lock for the
         // whole round-trip so a parallel empty-route test cannot see these.
         with_test_printers(chosen.clone(), || {
@@ -2724,7 +2850,7 @@ mod tests {
         // Bare id is filled with the place's default format on dedupe.
         assert_eq!(
             cfg.route_for(RouteKey::Bill),
-            &[encode_route_slot(&a, FORMAT_STANDARD)][..]
+            &[encode_route_slot(&a, FORMAT_STANDARD_PORTRAIT)][..]
         );
     }
 

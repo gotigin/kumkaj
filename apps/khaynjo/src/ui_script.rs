@@ -7777,7 +7777,7 @@ script_mod! {
                                     }
                                     settings_hub_language := StackSecondaryBtn{text: "Language & currency"}
                                     settings_hub_country := StackSecondaryBtn{text: "Country & tax"}
-                                    settings_hub_tills := StackSecondaryBtn{text: "Extra tills & product"}
+                                    settings_hub_tills := StackSecondaryBtn{text: "Other devices"}
                                     settings_hub_brand := StackSecondaryBtn{text: "Your brand"}
                                     settings_hub_units := StackSecondaryBtn{text: "Units & conversions"}
                                     settings_hub_pickers := StackSecondaryBtn{text: "Areas · stations · tax rates"}
@@ -7865,12 +7865,12 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
-                                            tax_inclusive_btn := SegBtn{text: "Tax inside price"}
-                                            tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
+                                            tax_inclusive_btn := SegBtn{text: "Tax inclusive"}
+                                            tax_inclusive_btn_on := SegBtnOn{text: "Tax inclusive" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            tax_exclusive_btn := SegBtn{text: "Tax added at till"}
-                                            tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
+                                            tax_exclusive_btn := SegBtn{text: "Tax exclusive"}
+                                            tax_exclusive_btn_on := SegBtnOn{text: "Tax exclusive" visible: false}
                                         }
                                     }
                                     business_tax_id_input := FieldInput{empty_text: "Business tax id"}
@@ -8136,6 +8136,12 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         empty_text: ""
                                     }
                                     printer_assign_suggest := mod.widgets.StationCheckList{field: "printer_assign"}
+                                    // Checklist stays open for multi-check — Done closes it.
+                                    printer_assign_done := StackSecondaryBtn{
+                                        text: "Done"
+                                        flow: Down
+                                        visible: false
+                                    }
                                     route_place_btns := View{width: Fill height: Fit visible: false
                                         route_place_slot_0 := View{width: Fit height: Fit flow: Overlay
                                             route_place_0 := ChipBtn{text: "Bill"}
@@ -8460,24 +8466,11 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     font_color: #x260B08
                                     font_size: 14.
                                 }
-                                // Paper strip: width + type size update live with the chips.
-                                kot_format_preview_card := RoundedView{
+                                // Paper strip width updates with the chips.
+                                // ReportText keeps slip newlines (plain Label left Preview blank).
+                                kot_format_preview_card := View{
                                     width: Fit height: Fit
-                                    padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
-                                    draw_bg.color: #xffffff
-                                    draw_bg.border_radius: 12.
-                                    draw_bg.border_size: 1.
-                                    draw_bg.border_color: #xE3D3C8
-                                    // Soft-wrap is already applied in render();
-                                    // do not Label{wrap} (DEV bug 7).
-                                    kot_format_preview := Label{
-                                        width: Fill height: Fit
-                                        text: " "
-                                        draw_text: {
-                                            color: #x260B08
-                                            text_style: {font_size: 13.5}
-                                        }
-                                    }
+                                    kot_format_preview := mod.widgets.ReportText{}
                                 }
                                 kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
                                 }

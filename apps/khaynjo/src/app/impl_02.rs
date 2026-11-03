@@ -885,6 +885,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             }
             let price_ph = if st.fiscal.tax_pricing.is_inside_price() {
                 st.t("price_ph_gst_inside")
+                    .replace("{tax}", st.fiscal.tax_label())
             } else {
                 st.t("price_ph")
             };
@@ -2815,10 +2816,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Back chrome: one header ‹. Peers are roots (`go_peer` clears history)
-        // — no ‹ between Order/Floor/Kitchen. Show ‹ for in-screen layers,
-        // drill-down history (`go`), and nested setup. Mouse/Android Back /
-        // Alt+← / edge swipe call the same `navigate_back`.
+        // Back chrome: browser-style ‹ whenever Back can run (visit history or
+        // in-screen layer). Root after unlock has no ‹. Platform Back/Forward
+        // share `navigate_back` / `navigate_forward` (DEV § Native input).
         self.paint_header_back_chrome(cx);
         self.ui
             .button(cx, ids!(client_pair_back))

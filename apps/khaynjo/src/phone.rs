@@ -272,7 +272,12 @@ fn worker(transport: &dyn Transport) {
             // Woken on purpose: a write to send, a screen wanting the books,
             // a fresh sign-in.
             let woken = std::mem::take(&mut sh.wake);
-            let interval = store.as_ref().and_then(|(_, s)| s.sync_interval_secs().ok()).unwrap_or(20).max(10);
+            // Default 5s (min 3): strong Wi‑Fi still felt "slow" at 20s.
+            let interval = store
+                .as_ref()
+                .and_then(|(_, s)| s.sync_interval_secs().ok())
+                .unwrap_or(5)
+                .max(3);
             if sh.want_sync || last_sync.elapsed() >= Duration::from_secs(interval) {
                 sh.want_sync = true;
                 last_sync = Instant::now();

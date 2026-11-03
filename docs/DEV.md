@@ -878,23 +878,29 @@ Makepad visual traps found this way (do not reintroduce):
     line, PgUp/PgDn a screenful, Home/End the ends (skipped only while a
     text field has focus — a focused button must not swallow them);
     Back/Forward history across screens (mouse back/forward buttons,
-    Alt+←/→, edge swipe, Android back).
-    **Visit history:** chrome tabs (bottom nav / side rail) are **roots** —
-    `go_peer` / `go_peer_if_allowed` clear `nav_back` / `nav_forward` (no
-    header ‹ between Order ↔ Floor ↔ Kitchen). Nested drill-downs use `go`
-    (push stack): Settings → Sidebar settings, Order → Floor pick-table, etc.
-    Back chrome shows only when nested (in-screen layer or non-empty stack).
-    **Settings section → hub** is an in-screen layer (`settings_panel`):
-    `open_settings_panel` / `sync_settings_panels` must call
-    `paint_header_back_chrome` so ‹ appears even after `go_peer` cleared
-    history (do not rely only on `nav_back`). Same helper for DeviceSetup
-    Language accordion and `sync_chrome` heavy-job early return. Predicate:
-    `header_back_visible` / `in_screen_nested_layer` in each app’s
-    `amount_visibility.rs` — nest flags are **screen-scoped** (Settings
-    section only on Settings; Khaynjo line/move/split only on Order). Peer
-    jumps (`go_peer`) clear those layers with history. Mouse/Android back /
-    Alt+← / edge swipe **pop** (`navigate_back`), with empty-stack fallbacks
-    (SidebarSettings → Settings; Lock / ClientPair / Onboard → DeviceSetup).
+    Alt+←/→, edge swipe, Android system back). **Model (every OS, both apps):**
+    one browser-style visit trail — not “peers without Back.”
+    - **`go_peer`** (bottom nav / side rail) **and** **`go`** (drill-down) both
+      push `nav_back` and clear `nav_forward`. Peer jumps also clear in-screen
+      layers (Settings section, Order sheets, …) so those cannot linger.
+    - **Header ‹** (`header_back_visible` in each app’s `amount_visibility.rs`):
+      show whenever Back can do something — `nav_back` non-empty **or** an
+      in-screen overlay (`in_screen_nested_layer`) **or** nested setup. Hide
+      only on the **visit root** (first unlocked screen after onboarding /
+      unlock: empty stack, no overlay). Do **not** hide ‹ on Floor just
+      because it is a chrome peer.
+    - **Same action everywhere:** ‹, mouse Back, Alt+←, left-edge swipe, and
+      Android Back all call `navigate_back` (overlays first, then pop).
+      Mouse Forward / Alt+→ / right-edge swipe call `navigate_forward`.
+    - Empty-stack fallbacks: SidebarSettings → Settings; Lock / ClientPair /
+      Onboard → DeviceSetup. Paint via `paint_header_back_chrome` (also after
+      Settings panel open and DeviceSetup Language accordion).
+    - **Setup fence:** once Back opens **Server/Client** (`DeviceSetup`), drop
+      Forward and never restore **Onboard** via Forward/‹ history. Leaving
+      Onboard for DeviceSetup does not push Onboard onto Forward. Unlocking
+      into the main till clears the visit stack (same as finishing onboard)
+      so the books are a root. Onboard is only entered by the unlock /
+      first-PIN path when setup is still incomplete — not by browsing back.
     **Do not** let a focused text field swallow mouse Back on desktop — that
     made Lock (PIN focused) look broken (2026-11). Android may still use the
     first Back to dismiss the soft keyboard outside auth/setup. Auth screens
@@ -1027,7 +1033,7 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
 4. Day book shows today; Pay out records carrier bills & expenses; More → Parties settle; Day close; Reports
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
-5b. Settings → Country & tax: apply `GB` (VAT, Tax inside price, £), then `US` (sales tax, Tax added at till, $); save a business id and check it prints
+5b. Settings → Country & tax: apply `GB` (VAT inclusive, £), then `US` (sales tax exclusive, $); save a business id and check it prints
 6. Ops / COD / Riders when fleet features are used
 7. Branches: create a second local server in Server Mode; export a day snapshot from each, import it on the owner's device, open the roll-up
 8. Extra till: pair IP + code after the shop allows extra tills → book against the shop
@@ -1125,7 +1131,7 @@ reversed charge would strand stock that strict enforcement then made unsellable.
 
 ## Fiscal country packs (`apps/moklanjo/src/fiscal.rs`)
 
-`COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, pricing mode (**Tax inside price** / **Tax added at till** — `TaxPricing::InsidePrice` / `AddedAtTill`; meta still stores `inclusive` / `exclusive`), seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone. Prefer the Settings labels in docs and UI — avoid bare “inclusive tax” (ambiguous elsewhere).
+`COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, pricing mode (**`{tax} inclusive`** / **`{tax} exclusive`** — e.g. GST inclusive when the total already includes GST — `TaxPricing::InsidePrice` / `AddedAtTill`; meta still stores `inclusive` / `exclusive`), seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone. Always pair inclusive/exclusive with the tax name (GST / VAT / …).
 
 ### Number style
 
@@ -1143,10 +1149,10 @@ Finalize math lives in `fiscal::{tax_on_amount, net_of_tax, gross_with_tax}`:
 
 | Mode (Settings label) | tax | sale total (charged) | taxable value (net) |
 |---|---|---|---|
-| **Tax inside price** | `line × bps / (10000 + bps)` | `draft.total` (unchanged) | `draft.total − tax` |
-| **Tax added at till** | `line × bps / 10000` | `draft.total + tax` | `draft.total` |
+| **`{tax} inclusive`** | `line × bps / (10000 + bps)` | `draft.total` (unchanged) | `draft.total − tax` |
+| **`{tax} exclusive`** | `line × bps / 10000` | `draft.total + tax` | `draft.total` |
 
-Example (Tax inside price, 18% on a ₹3000 bill): taxable value = `3000 / 1.18`, tax = remainder, guest still pays ₹3000. Receipt shows Taxable value / GST (or pack label) / Total / “(GST inside price)”.
+Example (GST inclusive, 18% on a ₹3000 bill): taxable value = `3000 / 1.18`, tax = remainder, guest still pays ₹3000. Receipt shows Taxable value / GST (or pack label) / Total / “(GST inclusive)”.
 
 The cart stays tax-agnostic under both modes — `SaleDraft::assert_balanced` only checks `lines_total + rounding = total`. `Store::finalize_sale` resolves the pack, freezes `tax_pricing`/`tax_label` onto the sale row, and uses the taxed total for the payment row, the credit ledger and day totals. `Store::preview_sale_total` gives the UI (and split pay) the same figure before charging.
 

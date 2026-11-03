@@ -503,9 +503,14 @@ impl App {
                 ids!(printer_mode_thermal_on),
             ),
             (
-                print_share::FORMAT_STANDARD,
+                print_share::FORMAT_STANDARD_PORTRAIT,
                 ids!(printer_mode_standard),
                 ids!(printer_mode_standard_on),
+            ),
+            (
+                print_share::FORMAT_STANDARD_LANDSCAPE,
+                ids!(printer_mode_landscape),
+                ids!(printer_mode_landscape_on),
             ),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, active) {

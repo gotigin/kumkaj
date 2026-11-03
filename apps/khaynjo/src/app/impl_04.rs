@@ -1099,11 +1099,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (`go` drill-down only). Peer chrome
-    /// uses `go_peer` → `record_history: false` (roots). Entering or leaving
-    /// Lock/Onboard clears stacks via `screen_keeps_history` so Back cannot
-    /// return to setup after the main screen is open. During Onboard, nested
-    /// Back still uses the explicit DeviceSetup parent pushed at owner-setup.
+    /// Push history when `record_history` (both peer jumps and drill-downs).
+    /// Entering or leaving Lock/Onboard clears stacks via `screen_keeps_history`
+    /// so Back cannot return to setup after the main screen is open. During
+    /// Onboard, nested Back still uses the explicit DeviceSetup parent pushed
+    /// at owner-setup.
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1124,21 +1124,25 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         st.screen = next;
     }
 
-    /// Drill-down: push current screen onto `nav_back`. Header ‹ / mouse /
-    /// Android Back / Alt+← / edge swipe pop this stack.
+    /// Drill-down under a peer (Settings → Team, Order → Floor pick, …).
+    /// Pushes visit history; header ‹ shows when the stack (or an overlay)
+    /// means Back can run — see [`header_back_visible`].
     fn go(&mut self, cx: &mut Cx, screen: Screen) {
-        self.go_with(cx, screen, true);
-    }
-
-    /// Chrome peer switch (bottom nav / side rail / shortcuts).
-    /// Top-level peers are **roots**: clear visit history (no header ‹ between
-    /// Order ↔ Floor ↔ Kitchen). Nested drill-downs use [`go`]. Lock / first-run
-    /// still clear stacks via `screen_keeps_history`.
-    fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
         self.go_with(cx, screen, false);
     }
 
-    fn go_with(&mut self, cx: &mut Cx, screen: Screen, push_history: bool) {
+    /// Chrome peer switch (bottom nav / side rail / shortcuts).
+    /// Pushes visit history like a browser tab change; header ‹ appears on
+    /// the destination when `nav_back` is non-empty. Clears in-screen layers
+    /// so a Settings section / Order sheet cannot linger. Nested drill-downs
+    /// use [`go`]. Platform Back/Forward: [`navigate_back`] / [`navigate_forward`].
+    fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
+        self.go_with(cx, screen, true);
+    }
+
+    /// `is_peer`: chrome tab jump (clear in-screen layers). Both paths record
+    /// visit history when `screen_keeps_history` allows.
+    fn go_with(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
         {
             let mut st = app_state().lock().unwrap();
             // Pick-table mode is set only by `pick_table_for_order` after go.
@@ -1191,18 +1195,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             {
                 self.set_screen(&mut st, Screen::Onboard, false);
             } else {
-                if !push_history {
-                    // Peer root jump: drop visit history and that screen's
-                    // in-screen layers (‹ must not linger on the next peer).
-                    st.nav_back.clear();
-                    st.nav_forward.clear();
+                if is_peer {
+                    // Clear in-screen layers so ‹ does not linger on the next
+                    // peer. Keep nav_back / nav_forward for platform gestures.
                     st.settings_panel = None;
                     st.line_action = None;
                     st.move_panel_open = false;
                     st.split_mode = false;
                     st.split_pick.clear();
                 }
-                self.set_screen(&mut st, screen, push_history);
+                self.set_screen(&mut st, screen, true);
                 if screen == Screen::Settings {
                     // Settings tab / peer opens on its hub. History Back into
                     // Settings (set_screen, not go_with) keeps the section.
@@ -1236,7 +1238,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             // every Settings open made Add printer feel like the UI froze.
         }
         diag::breadcrumb(
-            if push_history { "go" } else { "go_peer" },
+            if is_peer { "go_peer" } else { "go" },
             format!("{screen:?}"),
         );
         self.sync_chrome(cx);
@@ -1753,15 +1755,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.paint_choice_pair(cx, ids!(kot_copies_2), ids!(kot_copies_2_on), copies == 2);
         self.paint_choice_pair(cx, ids!(kot_copies_3), ids!(kot_copies_3_on), copies == 3);
         let preview = draft.render_sample(&shop);
-        let font_pt = draft.preview_font_pt();
         let paper_w = draft.preview_paper_width_px();
         if let Some(mut card) = self.ui.view(cx, ids!(kot_format_preview_card)).borrow_mut() {
             card.walk.width = Size::Fixed(paper_w);
         }
-        if let Some(mut label) = self.ui.label(cx, ids!(kot_format_preview)).borrow_mut() {
-            label.draw_text.text_style.font_size = font_pt;
-            label.set_text(cx, &preview.trim_end());
-        }
+        // ReportText keeps slip newlines (Label left Preview blank).
+        self.ui
+            .widget(cx, ids!(kot_format_preview))
+            .set_text(cx, &preview.trim_end());
         self.ui
             .view(cx, ids!(kot_format_preview_card))
             .redraw(cx);

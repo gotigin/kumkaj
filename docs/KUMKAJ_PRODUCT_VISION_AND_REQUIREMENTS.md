@@ -1032,16 +1032,17 @@ round up to 0.5 kg).
 This is now implemented as **country packs** (`apps/moklanjo/src/fiscal.rs`).
 A pack carries the tax system and its name (VAT, GST, sales tax, IVA,
 BTW, SST, consumption tax — or a custom label), the pricing mode
-(**Tax inside price** vs **Tax added at till** — prefer these words over
-vague “inclusive/exclusive tax”), the usual rates, any receipt split such
+(**`{tax} inclusive`** when quoted totals already include that tax vs
+**`{tax} exclusive`** when tax is added on top — e.g. GST inclusive /
+GST exclusive), the usual rates, any receipt split such
 as India's CGST/SGST, the instant-pay rail label (UPI, Pix, PayNow, FPS,
 Interac), the business-id label (GSTIN, VAT number, ABN, EIN, TRN) and the
 date order. India remains the default pack, so seeding the product for its
 first market costs an existing shop nothing.
 
-Under **Tax inside price**, the charged total does not grow: tax is
+Under **inclusive**, the charged total does not grow: tax is
 *extracted* for the receipt (taxable value + tax = same total). Under
-**Tax added at till**, tax is *added on top* of net prices. The tax name
+**exclusive**, tax is *added on top* of net prices. The tax name
 on the pack does not change which arithmetic mode applies.
 
 A country pack is seller-facing wording plus arithmetic defaults. It is

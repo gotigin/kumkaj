@@ -1586,9 +1586,9 @@ impl AppState {
     #[allow(dead_code)] // Kept for a short till snapshot; Reports Today uses full books_report_text.
     fn ops_report_text(&self, report: &domain::OpsReport) -> String {
         let tax_caption = if self.fiscal.tax_pricing.is_inclusive() {
-            format!("{} inside today's sales", self.fiscal.tax_label())
+            format!("{} inclusive in today's sales", self.fiscal.tax_label())
         } else {
-            format!("{} collected today", self.fiscal.tax_label())
+            format!("{} exclusive collected today", self.fiscal.tax_label())
         };
         let mut lines = vec![
             format!("Sales today: {}", report.day.sale_count),
@@ -1651,7 +1651,9 @@ impl AppState {
                 .is_some_and(|p| p.tax_bps > 0)
         });
         if inside && !self.cart.lines.is_empty() && !any_rated {
-            return self.t("tax_rates_missing_hint");
+            return self
+                .t("tax_rates_missing_hint")
+                .replace("{tax}", self.fiscal.tax_label());
         }
         if tax <= 0 && service <= 0 {
             return " ".to_string();
@@ -1667,7 +1669,8 @@ impl AppState {
                     self.fiscal.tax_label(),
                     self.money(Money(tax))
                 ),
-                self.t("gst_inside_price_note"),
+                self.t("gst_inside_price_note")
+                    .replace("{tax}", self.fiscal.tax_label()),
             ];
             if service > 0 {
                 parts.push(format!("+ Service {}", self.money(Money(service))));

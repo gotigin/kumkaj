@@ -1055,7 +1055,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             cx,
             ids!(printer_mode_standard),
             ids!(printer_mode_standard_on),
-            format_id == print_share::FORMAT_STANDARD,
+            format_id == print_share::FORMAT_STANDARD
+                || format_id == print_share::FORMAT_STANDARD_PORTRAIT,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_mode_landscape),
+            ids!(printer_mode_landscape_on),
+            format_id == print_share::FORMAT_STANDARD_LANDSCAPE,
         );
         {
             let st = app_state().lock().unwrap();
@@ -1063,10 +1070,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 .widget(cx, ids!(h_printer_mode))
                 .set_text(cx, &plain_display_text(&st.t("printer_mode_heading")));
             for path in [ids!(printer_mode_thermal), ids!(printer_mode_thermal_on)] {
-                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_thermal"));
+                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_thermal_short"));
             }
             for path in [ids!(printer_mode_standard), ids!(printer_mode_standard_on)] {
-                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_standard"));
+                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_standard_short"));
+            }
+            for path in [ids!(printer_mode_landscape), ids!(printer_mode_landscape_on)] {
+                self.ui.button(cx, path).set_text(cx, &st.t("printer_mode_landscape_short"));
             }
             self.ui
                 .button(cx, ids!(printer_format_custom))
@@ -1195,11 +1205,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (`go` drill-down only). Peer chrome
-    /// uses `go_peer` → `record_history: false` (roots). Entering or leaving
-    /// Lock/Onboard clears stacks via `screen_keeps_history` so Back cannot
-    /// return to setup after the main screen is open. During Onboard, nested
-    /// Back still uses the explicit DeviceSetup parent pushed at owner-setup.
+    /// Push history when `record_history` (both peer jumps and drill-downs).
+    /// Entering or leaving Lock/Onboard clears stacks via `screen_keeps_history`
+    /// so Back cannot return to setup after the main screen is open. During
+    /// Onboard, nested Back still uses the explicit DeviceSetup parent pushed
+    /// at owner-setup.
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1218,21 +1228,25 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         st.screen = next;
     }
 
-    /// Drill-down: push current screen onto `nav_back`. Header ‹ / mouse /
-    /// Android Back / Alt+← / edge swipe pop this stack.
+    /// Drill-down under a peer (Settings → Sidebar settings, …).
+    /// Pushes visit history; header ‹ shows when Back can run — see
+    /// [`header_back_visible`].
     fn go(&mut self, cx: &mut Cx, screen: Screen) {
-        self.go_with(cx, screen, true);
-    }
-
-    /// Chrome peer switch (bottom nav / side rail / shortcuts).
-    /// Top-level peers are **roots**: clear visit history (no header ‹ between
-    /// Day book ↔ Booking ↔ …). Nested drill-downs use [`go`]. Lock / first-run
-    /// still clear stacks via `screen_keeps_history`.
-    fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
         self.go_with(cx, screen, false);
     }
 
-    fn go_with(&mut self, cx: &mut Cx, screen: Screen, push_history: bool) {
+    /// Chrome peer switch (bottom nav / side rail / shortcuts).
+    /// Pushes visit history like a browser; header ‹ appears when `nav_back`
+    /// is non-empty. Clears in-screen Settings layers so they cannot linger.
+    /// Nested drill-downs use [`go`]. Platform Back/Forward: [`navigate_back`]
+    /// / [`navigate_forward`].
+    fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
+        self.go_with(cx, screen, true);
+    }
+
+    /// `is_peer`: chrome tab jump (clear in-screen layers). Both paths record
+    /// visit history when `screen_keeps_history` allows.
+    fn go_with(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
         // More hub removed — its destinations are chrome peers.
         let screen = if screen == Screen::More {
             Screen::Menu
@@ -1269,14 +1283,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             {
                 self.set_screen(&mut st, Screen::Onboard, false);
             } else {
-                if !push_history {
-                    // Peer root jump: drop visit history and Settings section
-                    // (‹ must not linger; History Back via set_screen keeps it).
-                    st.nav_back.clear();
-                    st.nav_forward.clear();
+                if is_peer {
+                    // Clear Settings section so ‹ does not linger on the next
+                    // peer. Keep nav_back / nav_forward for platform gestures.
                     st.settings_panel = None;
                 }
-                self.set_screen(&mut st, screen, push_history);
+                self.set_screen(&mut st, screen, true);
                 if screen == Screen::Settings {
                     // Settings tab / peer opens on its hub. History Back into
                     // Settings (set_screen, not go_with) keeps the section.
@@ -1302,7 +1314,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         // Do not auto-scan printers on Settings open — Find is explicit.
         diag::breadcrumb(
-            if push_history { "go" } else { "go_peer" },
+            if is_peer { "go_peer" } else { "go" },
             format!("{screen:?}"),
         );
         self.sync_chrome(cx);

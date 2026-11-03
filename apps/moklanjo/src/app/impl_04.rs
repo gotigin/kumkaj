@@ -1061,11 +1061,19 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
                 "autostart_off"
             }),
         );
-        for path in [ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("tax_added_till"));
-        }
-        for path in [ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("tax_inside_price"));
+        {
+            let tax = {
+                let st = app_state().lock().unwrap();
+                st.fiscal.tax_label().to_string()
+            };
+            let excl = s("tax_added_till").replace("{tax}", &tax);
+            let incl = s("tax_inside_price").replace("{tax}", &tax);
+            for path in [ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on)] {
+                self.ui.button(cx, path).set_text(cx, &excl);
+            }
+            for path in [ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on)] {
+                self.ui.button(cx, path).set_text(cx, &incl);
+            }
         }
         self.ui
             .button(cx, ids!(unit_add))

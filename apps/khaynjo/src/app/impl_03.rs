@@ -517,6 +517,16 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(printer_assign_dd))
             .set_text(cx, &assign_label);
+        let assign_open = {
+            let st = app_state().lock().unwrap();
+            st.suggest_open == Some(SuggestField::PrinterAssign)
+        };
+        self.ui
+            .button(cx, ids!(printer_assign_done))
+            .set_visible(cx, assign_open);
+        self.ui
+            .button(cx, ids!(printer_assign_done))
+            .set_text(cx, &app_t("pick_done"));
         // Legacy +chips stay hidden — assign is the checkbox dropdown.
         self.ui.view(cx, ids!(route_add_printers)).set_visible(cx, false);
         for id in ROUTE_ADD_PRINTER_BTNS.iter() {
@@ -1519,9 +1529,21 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             &s(if startup::is_on() { "autostart_on" } else { "autostart_off" }),
         );
         self.ui.button(cx, ids!(table_add)).set_text(cx, &s("add_table"));
+        {
+            let tax = {
+                let st = app_state().lock().unwrap();
+                st.fiscal.tax_label().to_string()
+            };
+            for (idle, on, key) in [
+                (ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), "tax_added_till"),
+                (ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), "tax_inside_price"),
+            ] {
+                let text = s(key).replace("{tax}", &tax);
+                self.ui.button(cx, idle).set_text(cx, &text);
+                self.ui.button(cx, on).set_text(cx, &text);
+            }
+        }
         for (idle, on, key) in [
-            (ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), "tax_added_till"),
-            (ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), "tax_inside_price"),
             (ids!(zero_sales_on_btn), ids!(zero_sales_on_btn_on), "zero_sales_on"),
             (ids!(zero_sales_off_btn), ids!(zero_sales_off_btn_on), "zero_sales_off"),
         ] {

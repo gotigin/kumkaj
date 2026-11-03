@@ -2981,6 +2981,14 @@ impl MatchEvent for App {
             self.ui.redraw(cx);
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(printer_assign_done)).clicked(actions) {
+            app_state().lock().unwrap().suggest_open = None;
+            self.ui
+                .widget(cx, ids!(printer_assign_suggest))
+                .redraw(cx);
+            self.paint_printers_panel(cx);
+            self.ui.redraw(cx);
+        }
         if self.ui.button(cx, ids!(reprint_kot_btn)).clicked(actions) {
             match self.reprint_open_kots(cx) {
                 Ok(msg) => self.set_status(cx, msg),
@@ -3019,8 +3027,8 @@ impl MatchEvent for App {
                         st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
                     });
                     let place = table_name.clone().unwrap_or_else(|| "counter".into());
-                    // Saved on this device first: a Wi‑Fi drop delays the
-                    // kitchen's paper, it never loses the order.
+                    // Kitchen paper prints on the Server (its Settings → Printers),
+                    // not from this till's local printer list.
                     let job = st.lan_job(
                         "/kot",
                         &net::RemoteKotRequest { draft, table_name, table_id: table_id.clone() },
@@ -3039,7 +3047,7 @@ impl MatchEvent for App {
                         st.cart.mark_new_lines_sent("counter");
                     }
                     return Ok(format!(
-                        "KOT for {place} → {kitchens} saved — sending"
+                        "KOT for {place} → {kitchens} saved — kitchen prints at the shop device"
                     ));
                 } else {
                     let kot_ids = {
@@ -4999,7 +5007,7 @@ impl MatchEvent for App {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     store.set_tax_pricing(pricing)?;
                     st.reload_all()?;
-                    st.status = format!("{} — {}", st.fiscal.tax_label(), pricing.label());
+                    st.status = pricing.label_for(st.fiscal.tax_label());
                     Ok(())
                 })();
                 if let Err(e) = result {

@@ -109,7 +109,8 @@
 +}
 +
 +/// Standard bill as a Noto-raster PNG (same glyphs on Linux / Windows / Android).
-+pub unsafe fn to_java_print_png(job_name: String, png: &[u8]) -> bool {
++/// `landscape` → A4 landscape page; otherwise portrait.
++pub unsafe fn to_java_print_png(job_name: String, png: &[u8], landscape: bool) -> bool {
 +    let env = attach_jni_env();
 +    let Ok(job_name) = CString::new(job_name) else {
 +        return false;
@@ -123,10 +124,11 @@
 +    let ok = ndk_utils::call_bool_method!(
 +        env,
 +        get_activity(),
-+        "printPngDocument",
-+        "(Ljava/lang/String;[B)Z",
++        "printPngDocumentOriented",
++        "(Ljava/lang/String;[BZ)Z",
 +        job_name,
-+        arr
++        arr,
++        landscape as u8 as std::os::raw::c_int
 +    );
 +    ok != 0
 +}

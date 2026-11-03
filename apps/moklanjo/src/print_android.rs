@@ -55,9 +55,10 @@ pub fn print_document(job_name: &str, text: &str) -> Result<(), String> {
 }
 
 /// Standard bill as a Noto-raster PNG (same glyphs as Linux/Windows).
-pub fn print_png(job_name: &str, png: &[u8]) -> Result<(), String> {
+/// `landscape` selects A4 landscape vs portrait in PrintManager.
+pub fn print_png(job_name: &str, png: &[u8], landscape: bool) -> Result<(), String> {
     unsafe {
-        if android_jni::to_java_print_png(job_name.to_owned(), png) {
+        if android_jni::to_java_print_png(job_name.to_owned(), png, landscape) {
             Ok(())
         } else {
             Err("Android PrintManager refused the image job".into())

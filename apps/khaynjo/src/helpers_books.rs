@@ -295,7 +295,14 @@ fn printer_assign_suggest_rows(
     let clear_l = t("dont_use");
     let formats = [
         (print_share::FORMAT_KOT, t("printer_wire_escpos")),
-        (print_share::FORMAT_STANDARD, t("printer_wire_os")),
+        (
+            print_share::FORMAT_STANDARD_PORTRAIT,
+            t("printer_wire_os_portrait"),
+        ),
+        (
+            print_share::FORMAT_STANDARD_LANDSCAPE,
+            t("printer_wire_os_landscape"),
+        ),
     ];
     let assigned_slots: Vec<String> = draft.route_for(key).to_vec();
     let mut rows = Vec::new();

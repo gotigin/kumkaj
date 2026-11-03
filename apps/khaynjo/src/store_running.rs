@@ -40,6 +40,12 @@ pub(crate) fn natural_key(name: &str) -> Vec<(String, u64)> {
     out
 }
 
+/// Match a draft kitchen override to a seated running line (product alone is
+/// wrong when two identical dishes go to different stations).
+fn kot_station_override_key(product_id: &str, note: &str, complimentary: bool) -> String {
+    format!("{product_id}\n{note}\n{}", complimentary as u8)
+}
+
 fn row_to_line(row: &rusqlite::Row<'_>) -> rusqlite::Result<RunningLine> {
     Ok(RunningLine {
         id: row.get(0)?,
@@ -554,14 +560,23 @@ impl Store {
         self.in_transaction(|| {
             if let Some(tid) = table_id {
                 self.seat_draft_unsent(tid, draft, actor)?;
-                let mut station_by_product = std::collections::HashMap::<String, String>::new();
+                // Key by product+note+comp — not product alone (two same dishes
+                // to different kitchens must not collapse to the last pick).
+                let mut station_by_line = std::collections::HashMap::<String, String>::new();
                 for line in draft.lines.iter().filter(|l| !l.kot_sent) {
                     let sid = line.station_id.trim();
                     if !sid.is_empty() {
-                        station_by_product.insert(line.product_id.clone(), sid.to_string());
+                        station_by_line.insert(
+                            kot_station_override_key(
+                                &line.product_id,
+                                &line.note,
+                                line.line_total_paise == 0 && line.unit_price_paise > 0,
+                            ),
+                            sid.to_string(),
+                        );
                     }
                 }
-                self.send_kot_filtered(tid, actor, None, true, &station_by_product)
+                self.send_kot_filtered(tid, actor, None, true, &station_by_line)
             } else {
                 self.send_kot_counter(draft, actor)
             }
@@ -766,7 +781,8 @@ impl Store {
         actor: &StaffMember,
         course: Option<i64>,
         skip_held: bool,
-        station_by_product: &std::collections::HashMap<String, String>,
+        // Overrides keyed by `kot_station_override_key` (not bare product id).
+        station_by_line: &std::collections::HashMap<String, String>,
     ) -> Result<Vec<String>, String> {
         self.assert_server_writer("Send a KOT")?;
         if !self.venue_mode()?.creates_kot() {
@@ -817,8 +833,13 @@ impl Store {
         let stations = self.list_stations()?;
         let mut by_station: Vec<(String, Vec<RunningLine>)> = Vec::new();
         for line in pending {
-            let station_id = station_by_product
-                .get(&line.product_id)
+            let key = kot_station_override_key(
+                &line.product_id,
+                &line.note,
+                line.complimentary,
+            );
+            let station_id = station_by_line
+                .get(&key)
                 .cloned()
                 .or_else(|| {
                     self.get_product(&line.product_id)
@@ -1554,9 +1575,9 @@ impl Store {
                 out.push_str(&format!(
                     "{}: {}\n",
                     if fiscal.tax_pricing.is_inside_price() {
-                        "Tax inside this total"
+                        format!("{} inclusive in this total", fiscal.tax_label())
                     } else {
-                        "Tax + charges (added at till)"
+                        format!("{} exclusive + charges", fiscal.tax_label())
                     },
                     money(total - subtotal)
                 ));

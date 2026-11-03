@@ -725,9 +725,9 @@ impl AppState {
     #[allow(dead_code)] // Kept for a short till snapshot; Reports Today uses full books_report_text.
     fn ops_report_text(&self, report: &domain::OpsReport) -> String {
         let tax_caption = if self.fiscal.tax_pricing.is_inclusive() {
-            format!("{} inside today's sales", self.fiscal.tax_label())
+            format!("{} inclusive in today's sales", self.fiscal.tax_label())
         } else {
-            format!("{} collected today", self.fiscal.tax_label())
+            format!("{} exclusive collected today", self.fiscal.tax_label())
         };
         let mut lines = vec![
             format!("Sales today: {}", report.day.sale_count),

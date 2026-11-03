@@ -9,8 +9,9 @@ enum CategoryPick {
     Shelf(menu_images::ShelfFolder),
 }
 
-/// How often the floor, kitchen and order desk refresh themselves (seconds).
-const LIVE_REFRESH_SECS: f64 = 8.0;
+/// How often the floor, kitchen and order desk ask for fresh books (seconds).
+/// Kept short so a paired till sees the Server's KOTs / tables without a long wait.
+const LIVE_REFRESH_SECS: f64 = 3.0;
 
 /// What the ticket's action panel does to one sent line.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

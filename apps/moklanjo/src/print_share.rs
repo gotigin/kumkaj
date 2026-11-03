@@ -64,7 +64,24 @@ pub enum RouteKey {
 }
 
 pub const FORMAT_STANDARD: &str = "standard";
+pub const FORMAT_STANDARD_PORTRAIT: &str = "standard_portrait";
+pub const FORMAT_STANDARD_LANDSCAPE: &str = "standard_landscape";
 pub const FORMAT_KOT: &str = "kot";
+
+pub fn is_standard_document(id: &str) -> bool {
+    matches!(
+        id,
+        FORMAT_STANDARD | FORMAT_STANDARD_PORTRAIT | FORMAT_STANDARD_LANDSCAPE
+    )
+}
+
+pub fn normalize_format_id(id: &str) -> &str {
+    if id == FORMAT_STANDARD {
+        FORMAT_STANDARD_PORTRAIT
+    } else {
+        id
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PrintFormat {
@@ -72,6 +89,8 @@ pub struct PrintFormat {
     pub label: String,
     #[serde(default = "default_true")]
     pub document: bool,
+    #[serde(default)]
+    pub landscape: bool,
     #[serde(default = "default_em")]
     pub em: f32,
     #[serde(default = "default_line")]
@@ -90,18 +109,75 @@ fn default_side() -> f32 { 8.0 }
 
 impl PrintFormat {
     pub fn standard() -> Self {
-        Self { id: FORMAT_STANDARD.into(), label: "Standard".into(), document: true, em: 22.0, line: 32, baseline: 24.0, side: 8.0 }
+        Self::standard_portrait()
+    }
+    pub fn standard_portrait() -> Self {
+        Self {
+            id: FORMAT_STANDARD_PORTRAIT.into(),
+            label: "Standard Portrait".into(),
+            document: true,
+            landscape: false,
+            em: 22.0,
+            line: 32,
+            baseline: 24.0,
+            side: 8.0,
+        }
+    }
+    pub fn standard_landscape() -> Self {
+        Self {
+            id: FORMAT_STANDARD_LANDSCAPE.into(),
+            label: "Standard Landscape".into(),
+            document: true,
+            landscape: true,
+            em: 22.0,
+            line: 32,
+            baseline: 24.0,
+            side: 8.0,
+        }
     }
     pub fn kot() -> Self {
-        Self { id: FORMAT_KOT.into(), label: "Thermal".into(), document: false, em: 24.0, line: 36, baseline: 26.0, side: 4.0 }
+        Self {
+            id: FORMAT_KOT.into(),
+            label: "Thermal".into(),
+            document: false,
+            landscape: false,
+            em: 24.0,
+            line: 36,
+            baseline: 26.0,
+            side: 4.0,
+        }
     }
     pub fn raster_metrics(&self) -> crate::receipt_raster::RasterMetrics {
         crate::receipt_raster::RasterMetrics { em: self.em, line: self.line as usize, baseline: self.baseline, side: self.side }
     }
     pub fn ensure_builtins(list: &mut Vec<PrintFormat>) {
-        if !list.iter().any(|f| f.id == FORMAT_STANDARD) { list.insert(0, PrintFormat::standard()); }
+        for f in list.iter_mut() {
+            if f.id == FORMAT_STANDARD {
+                f.id = FORMAT_STANDARD_PORTRAIT.into();
+                if f.label.trim().eq_ignore_ascii_case("standard") {
+                    f.label = "Standard Portrait".into();
+                }
+                f.document = true;
+                f.landscape = false;
+            }
+        }
+        if !list.iter().any(|f| f.id == FORMAT_STANDARD_PORTRAIT) {
+            list.insert(0, PrintFormat::standard_portrait());
+        }
+        if !list.iter().any(|f| f.id == FORMAT_STANDARD_LANDSCAPE) {
+            let idx = list
+                .iter()
+                .position(|f| f.id == FORMAT_STANDARD_PORTRAIT)
+                .map(|i| i + 1)
+                .unwrap_or(0);
+            list.insert(idx, PrintFormat::standard_landscape());
+        }
         if !list.iter().any(|f| f.id == FORMAT_KOT) {
-            let idx = if list.first().map(|f| f.id.as_str()) == Some(FORMAT_STANDARD) { 1 } else { 0 };
+            let idx = list
+                .iter()
+                .position(|f| f.id == FORMAT_STANDARD_LANDSCAPE)
+                .map(|i| i + 1)
+                .unwrap_or(list.len());
             list.insert(idx, PrintFormat::kot());
         }
     }
@@ -143,7 +219,7 @@ pub struct PrintRoutes {
     pub label_format: String,
 }
 
-fn default_format_standard() -> String { FORMAT_STANDARD.into() }
+fn default_format_standard() -> String { FORMAT_STANDARD_PORTRAIT.into() }
 fn default_format_kot() -> String { FORMAT_KOT.into() }
 
 impl Default for PrintRoutes {
@@ -151,7 +227,7 @@ impl Default for PrintRoutes {
         Self {
             receipt: Vec::new(),
             label: Vec::new(),
-            receipt_format: FORMAT_STANDARD.into(),
+            receipt_format: FORMAT_STANDARD_PORTRAIT.into(),
             label_format: FORMAT_KOT.into(),
         }
     }
@@ -169,7 +245,11 @@ impl Default for DevicePrinters {
     fn default() -> Self {
         Self {
             printers: Vec::new(),
-            formats: vec![PrintFormat::standard(), PrintFormat::kot()],
+            formats: vec![
+                PrintFormat::standard_portrait(),
+                PrintFormat::standard_landscape(),
+                PrintFormat::kot(),
+            ],
             routes: PrintRoutes::default(),
         }
     }
@@ -207,11 +287,15 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
         };
         scrub_fake_default_printers(&mut out);
         if out.routes.receipt_format.trim().is_empty() {
-            out.routes.receipt_format = FORMAT_STANDARD.into();
+            out.routes.receipt_format = FORMAT_STANDARD_PORTRAIT.into();
         }
         if out.routes.label_format.trim().is_empty() {
             out.routes.label_format = FORMAT_KOT.into();
         }
+        if out.routes.receipt_format.trim() == FORMAT_STANDARD {
+            out.routes.receipt_format = FORMAT_STANDARD_PORTRAIT.into();
+        }
+        PrintFormat::ensure_builtins(&mut out.formats);
         return out;
     }
     let receipt = value
@@ -255,11 +339,15 @@ pub fn migrate_legacy(receipt: &str) -> DevicePrinters {
     };
     DevicePrinters {
         printers,
-        formats: vec![PrintFormat::standard(), PrintFormat::kot()],
+        formats: vec![
+            PrintFormat::standard_portrait(),
+            PrintFormat::standard_landscape(),
+            PrintFormat::kot(),
+        ],
         routes: PrintRoutes {
             receipt: receipt_ids,
             label: Vec::new(),
-            receipt_format: FORMAT_STANDARD.into(),
+            receipt_format: FORMAT_STANDARD_PORTRAIT.into(),
             label_format: FORMAT_KOT.into(),
         },
     }
@@ -315,7 +403,11 @@ impl DevicePrinters {
         match key {
             RouteKey::Receipt => {
                 let f = self.routes.receipt_format.trim();
-                if f.is_empty() { FORMAT_STANDARD.into() } else { f.to_string() }
+                if f.is_empty() {
+                    FORMAT_STANDARD_PORTRAIT.into()
+                } else {
+                    normalize_format_id(f).to_string()
+                }
             }
             RouteKey::Label => {
                 let f = self.routes.label_format.trim();
@@ -325,8 +417,15 @@ impl DevicePrinters {
     }
 
     pub fn format_by_id(&self, id: &str) -> PrintFormat {
+        let id = normalize_format_id(id);
         self.formats.iter().find(|f| f.id == id).cloned().unwrap_or_else(|| {
-            if id == FORMAT_KOT { PrintFormat::kot() } else { PrintFormat::standard() }
+            if id == FORMAT_KOT {
+                PrintFormat::kot()
+            } else if id == FORMAT_STANDARD_LANDSCAPE {
+                PrintFormat::standard_landscape()
+            } else {
+                PrintFormat::standard_portrait()
+            }
         })
     }
 
@@ -348,7 +447,16 @@ impl DevicePrinters {
         let base = self.format_by_id(from_id);
         let id = format!("custom-{}", &uuid::Uuid::new_v4().simple().to_string()[..8]);
         let label = { let t = label.trim(); if t.is_empty() { format!("Custom ({})", base.label) } else { t.to_string() } };
-        self.formats.push(PrintFormat { id: id.clone(), label, document: base.document, em: base.em, line: base.line, baseline: base.baseline, side: base.side });
+        self.formats.push(PrintFormat {
+            id: id.clone(),
+            label,
+            document: base.document,
+            landscape: base.landscape,
+            em: base.em,
+            line: base.line,
+            baseline: base.baseline,
+            side: base.side,
+        });
         id
     }
 
@@ -488,10 +596,15 @@ fn printers_path(base: &Path) -> PathBuf {
 
 /// This install's saved printers (none saved = the defaults).
 pub fn load_device_printers(base: &Path) -> DevicePrinters {
-    fs::read_to_string(printers_path(base))
+    let mut printers: DevicePrinters = fs::read_to_string(printers_path(base))
         .ok()
         .and_then(|raw| serde_json::from_str(&raw).ok())
-        .unwrap_or_default()
+        .unwrap_or_default();
+    if printers.routes.receipt_format.trim() == FORMAT_STANDARD {
+        printers.routes.receipt_format = FORMAT_STANDARD_PORTRAIT.into();
+    }
+    PrintFormat::ensure_builtins(&mut printers.formats);
+    printers
 }
 
 /// Keep `printers` for this install and use them from now on.
@@ -725,10 +838,10 @@ fn send_to_printer(
                     format.label
                 ));
             }
-            print_android_document(text)
+            print_android_document(text, format.landscape)
         }
         PrinterTarget::Default => {
-            if format.document { print_system_standard(None, path, text) }
+            if format.document { print_system_standard(None, path, text, format.landscape) }
             else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB",
@@ -737,7 +850,7 @@ fn send_to_printer(
             } else { print_system_raw(None, &bytes) }
         }
         PrinterTarget::Named(name) => {
-            if format.document { print_system_standard(Some(name), path, text) }
+            if format.document { print_system_standard(Some(name), path, text, format.landscape) }
             else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB",
@@ -748,33 +861,38 @@ fn send_to_printer(
     }
 }
 
-fn print_android_document(text: &str) -> Result<(), String> {
+fn print_android_document(text: &str, landscape: bool) -> Result<(), String> {
     let png = crate::receipt_raster::png_document(text)?;
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_png("Moklanjo", &png)
+        crate::print_android::print_png("Moklanjo", &png, landscape)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = png;
+        let _ = (png, landscape);
         Err("Android print service is only on Android".into())
     }
 }
 
 /// Standard (document) jobs: always render with bundled Noto fonts to a PNG,
 /// then hand that image to the OS printer — same glyphs on every platform.
-fn print_system_standard(name: Option<&str>, path: &Path, text: &str) -> Result<(), String> {
+fn print_system_standard(
+    name: Option<&str>,
+    path: &Path,
+    text: &str,
+    landscape: bool,
+) -> Result<(), String> {
     let png = crate::receipt_raster::png_document(text)?;
     let png_path = path.with_extension("png");
     fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
         let _ = name;
-        crate::print_android::print_png("Moklanjo", &png)
+        crate::print_android::print_png("Moklanjo", &png, landscape)
     }
     #[cfg(not(target_os = "android"))]
     {
-        print_system_image(name, &png_path)
+        print_system_image(name, &png_path, landscape)
     }
 }
 
@@ -929,13 +1047,21 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
 
 /// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
 #[cfg(not(target_os = "android"))]
-fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
+fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
         let mut cmd = Command::new("lp");
         if let Some(name) = name {
             cmd.args(["-d", name]);
         }
+        cmd.args([
+            "-o",
+            if landscape {
+                "orientation-requested=4"
+            } else {
+                "orientation-requested=3"
+            },
+        ]);
         cmd.arg("--").arg(path);
         match cmd.output() {
             Ok(out) if out.status.success() => Ok(()),
@@ -953,11 +1079,13 @@ fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
         let quote = |s: &str| s.replace('\'', "''");
         let path_q = quote(&path.display().to_string());
+        let land = if landscape { "$true" } else { "$false" };
         let mut script = format!(
             "Add-Type -AssemblyName System.Drawing; \
              $img = [System.Drawing.Image]::FromFile('{path_q}'); \
              $doc = New-Object System.Drawing.Printing.PrintDocument; \
              $doc.DocumentName = 'Moklanjo'; \
+             $doc.DefaultPageSettings.Landscape = {land}; \
              $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(40,40,40,40);"
         );
         if let Some(name) = name {
@@ -992,7 +1120,7 @@ fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
     {
-        let _ = (name, path);
+        let _ = (name, path, landscape);
         Err("printing is not supported on this system".into())
     }
 }

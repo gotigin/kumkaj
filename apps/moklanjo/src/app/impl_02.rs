@@ -1934,10 +1934,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Back chrome: one header ‹. Peers are roots (`go_peer` clears history)
-        // — no ‹ between Day book / Booking / … Show ‹ for in-screen layers,
-        // drill-down history (`go`), and nested setup. Mouse/Android Back /
-        // Alt+← / edge swipe call the same `navigate_back`.
+        // Back chrome: browser-style ‹ whenever Back can run (visit history or
+        // in-screen layer). Root after unlock has no ‹. Platform Back/Forward
+        // share `navigate_back` / `navigate_forward` (DEV § Native input).
         self.paint_header_back_chrome(cx);
         self.ui
             .button(cx, ids!(client_pair_back))

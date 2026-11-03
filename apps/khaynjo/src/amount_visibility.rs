@@ -520,7 +520,7 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
 /// Whether a screen may sit on (or receive) visit history.
 /// Lock and Onboard never keep history — entering **or** leaving them
 /// clears stacks (`set_screen`) so Back cannot reopen setup after the
-/// main screen. Peer chrome and drill-downs push via `go` / `go_peer`.
+/// main screen. Peer chrome and drill-downs both push via `go` / `go_peer`.
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(screen, Screen::Lock | Screen::Onboard)
 }
@@ -544,23 +544,32 @@ fn setup_shows_header_back(st: &AppState) -> bool {
     }
 }
 
-/// In-screen layers and drill-downs that need header ‹ (peers are roots —
-/// empty `nav_back` alone is not enough after `go_peer`).
-/// Flags are **screen-scoped** so a peer jump cannot leave a phantom ‹.
+/// In-screen overlays Back dismisses **before** popping `nav_back`
+/// (Settings section, Order sheets, Floor pick). Screen-scoped so a peer
+/// jump cannot leave a phantom layer. Separate screens reached via `go`
+/// (Team, SidebarSettings) rely on visit history for ‹.
 fn in_screen_nested_layer(st: &AppState) -> bool {
-    st.screen == Screen::SidebarSettings
-        || (st.screen == Screen::Settings && st.settings_panel.is_some())
+    (st.screen == Screen::Settings && st.settings_panel.is_some())
         || (st.screen == Screen::Pos
             && (st.line_action.is_some() || st.move_panel_open || st.split_mode))
         || (st.screen == Screen::Floor && st.picking_table)
-        || !st.nav_back.is_empty()
 }
 
-/// Single source for header ‹ visibility (unlocked nested + setup nested).
+/// Header ‹ — browser-style. Show whenever Back can do something:
+/// visit history non-empty, or an in-screen layer to dismiss, or nested
+/// setup. Hide only on the visit root (first unlocked screen, empty stack,
+/// no overlay). Same affordance on every OS; platform Back/Forward share
+/// `navigate_back` / `navigate_forward`.
 fn header_back_visible(st: &AppState) -> bool {
     let header_on = !matches!(
         st.screen,
         Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
     );
-    (header_on && in_screen_nested_layer(st)) || setup_shows_header_back(st)
+    if setup_shows_header_back(st) {
+        return true;
+    }
+    if !header_on {
+        return false;
+    }
+    in_screen_nested_layer(st) || !st.nav_back.is_empty()
 }

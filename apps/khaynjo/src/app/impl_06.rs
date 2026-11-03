@@ -617,6 +617,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let mut snack = None;
         let mut said = None;
         let mut receipt = None;
+        let mut open_table: Option<String> = None;
         {
             let mut st = app_state().lock().unwrap();
             for answer in answers {
@@ -640,7 +641,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                                 receipt = reply["text"].as_str().map(str::to_string);
                             }
                             phone::Follow::OpenTable(table_id) => {
-                                st.selected_table_id = Some(table_id);
+                                open_table = Some(table_id);
                             }
                             phone::Follow::Sale => {
                                 if let Ok(sale) = serde_json::from_value::<Sale>(reply) {
@@ -652,14 +653,27 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     }
                 }
             }
-            if synced {
+            st.lan_shown = phone::link_state();
+        }
+        // Reload outside the answer loop so a long SQL pass does not nest
+        // under other UI work holding `app_state` (felt like a Client freeze).
+        if synced {
+            let tid = {
+                let mut st = app_state().lock().unwrap();
+                if let Some(tid) = open_table.take() {
+                    st.selected_table_id = Some(tid);
+                }
                 let _ = st.reload_all();
                 FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
+                st.selected_table_id.clone()
+            };
+            if let Some(tid) = tid {
+                let _ = app_state().lock().unwrap().load_table_cart(&tid);
             }
-            if let Some(tid) = st.selected_table_id.clone() {
-                let _ = st.load_table_cart(&tid);
-            }
-            st.lan_shown = phone::link_state();
+        } else if let Some(tid) = open_table {
+            let mut st = app_state().lock().unwrap();
+            st.selected_table_id = Some(tid.clone());
+            let _ = st.load_table_cart(&tid);
         }
         if let Some(msg) = said {
             self.set_status(cx, msg);
@@ -950,6 +964,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                         st.screen = Screen::Onboard;
                         st.status = format!("Welcome, {} — finish shop setup", member.lock_label());
                     } else {
+                        // Main till is a visit root — no Back into setup.
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
                         st.screen = unlocked_home();
                         st.status = match &note {
                             Some(note) => format!("Welcome, {} · {note}", member.lock_label()),

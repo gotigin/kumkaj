@@ -404,19 +404,28 @@ fn setup_shows_header_back(st: &AppState) -> bool {
     }
 }
 
-/// In-screen layers and drill-downs that need header ‹ (peers are roots —
-/// empty `nav_back` alone is not enough after `go_peer`).
+/// In-screen overlays Back dismisses **before** popping `nav_back`
+/// (Settings section). SidebarSettings is a separate screen — ‹ comes from
+/// visit history after `go`.
 fn in_screen_nested_layer(st: &AppState) -> bool {
-    st.screen == Screen::SidebarSettings
-        || (st.screen == Screen::Settings && st.settings_panel.is_some())
-        || !st.nav_back.is_empty()
+    st.screen == Screen::Settings && st.settings_panel.is_some()
 }
 
-/// Single source for header ‹ visibility (unlocked nested + setup nested).
+/// Header ‹ — browser-style. Show whenever Back can do something:
+/// visit history non-empty, or an in-screen layer to dismiss, or nested
+/// setup. Hide only on the visit root (first unlocked screen, empty stack,
+/// no overlay). Same affordance on every OS; platform Back/Forward share
+/// `navigate_back` / `navigate_forward`.
 fn header_back_visible(st: &AppState) -> bool {
     let header_on = !matches!(
         st.screen,
         Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
     );
-    (header_on && in_screen_nested_layer(st)) || setup_shows_header_back(st)
+    if setup_shows_header_back(st) {
+        return true;
+    }
+    if !header_on {
+        return false;
+    }
+    in_screen_nested_layer(st) || !st.nav_back.is_empty()
 }

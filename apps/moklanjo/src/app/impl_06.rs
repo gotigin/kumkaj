@@ -73,14 +73,18 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             let mut st = app_state().lock().unwrap();
             if let Some(prev) = st.nav_back.pop() {
                 let current = st.screen;
-                st.nav_forward.push(current);
-                if st.nav_forward.len() > 32 {
-                    st.nav_forward.remove(0);
+                // Never put Onboard on Forward — once Server/Client
+                // (DeviceSetup) is open, shop setup must not return via Forward.
+                if current != Screen::Onboard {
+                    st.nav_forward.push(current);
+                    if st.nav_forward.len() > 32 {
+                        st.nav_forward.remove(0);
+                    }
                 }
                 Some(prev)
             } else {
-                // Empty stack: only nested screens fall back. Top-level peers
-                // are roots (no Back parent).
+                // Empty stack: setup / SidebarSettings have a fixed parent.
+                // Peers with no history stay put (platform Back is a no-op).
                 match st.screen {
                     Screen::Lock | Screen::ClientPair | Screen::Onboard => {
                         st.nav_forward.clear();
@@ -110,6 +114,10 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 let mut st = app_state().lock().unwrap();
                 if prev == Screen::DeviceSetup {
                     st.must_confirm_device_role = true;
+                    // Role picker is a fence: drop Forward (esp. Onboard) and
+                    // any Onboard still under Back.
+                    st.nav_forward.clear();
+                    st.nav_back.retain(|s| *s != Screen::Onboard);
                 }
                 self.set_screen(&mut st, prev, false);
             }
@@ -124,14 +132,22 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     fn navigate_forward(&mut self, cx: &mut Cx) -> bool {
         let dest = {
             let mut st = app_state().lock().unwrap();
-            st.nav_forward.pop().map(|next| {
+            // Skip Onboard — shop setup is never restored by Forward after
+            // Server/Client mode.
+            loop {
+                let Some(next) = st.nav_forward.pop() else {
+                    break None;
+                };
+                if next == Screen::Onboard {
+                    continue;
+                }
                 let current = st.screen;
                 st.nav_back.push(current);
                 if st.nav_back.len() > 32 {
                     st.nav_back.remove(0);
                 }
-                next
-            })
+                break Some(next);
+            }
         };
         if let Some(next) = dest {
             {

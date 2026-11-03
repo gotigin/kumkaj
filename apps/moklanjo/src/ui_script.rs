@@ -5738,12 +5738,12 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
-                                            tax_inclusive_btn := SegBtn{text: "Tax inside price"}
-                                            tax_inclusive_btn_on := SegBtnOn{text: "Tax inside price" visible: false}
+                                            tax_inclusive_btn := SegBtn{text: "Tax inclusive"}
+                                            tax_inclusive_btn_on := SegBtnOn{text: "Tax inclusive" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            tax_exclusive_btn := SegBtn{text: "Tax added at till"}
-                                            tax_exclusive_btn_on := SegBtnOn{text: "Tax added at till" visible: false}
+                                            tax_exclusive_btn := SegBtn{text: "Tax exclusive"}
+                                            tax_exclusive_btn_on := SegBtnOn{text: "Tax exclusive" visible: false}
                                         }
                                     }
                                     business_tax_id_input := FieldInput{empty_text: "Business tax id"}
@@ -5873,8 +5873,12 @@ script_mod! {
                                             printer_mode_thermal_on := SegBtnOn{text: "Thermal" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_mode_standard := SegBtn{text: "Standard"}
-                                            printer_mode_standard_on := SegBtnOn{text: "Standard" visible: false}
+                                            printer_mode_standard := SegBtn{text: "Portrait"}
+                                            printer_mode_standard_on := SegBtnOn{text: "Portrait" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_mode_landscape := SegBtn{text: "Landscape"}
+                                            printer_mode_landscape_on := SegBtnOn{text: "Landscape" visible: false}
                                         }
                                     }
                                     printer_format_custom := RowSecondaryBtn{text: "New custom format"}

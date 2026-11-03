@@ -1,0 +1,33 @@
+---
+description: Browser-style Back/Forward — ‹ when history exists; root after unlock has no ‹
+alwaysApply: true
+---
+
+# Browser-style visit history (every OS, both apps)
+
+Canonical detail: `docs/DEV.md` § Native input behaviour (Back/Forward).
+
+## Model
+
+One visit trail like a browser — **not** “chrome peers never show Back.”
+
+- **`go_peer`** (bottom nav / side rail) and **`go`** (drill-down) both **push** `nav_back` and clear `nav_forward`.
+- Peer jumps clear in-screen layers (Settings section, Order sheets, …); they must **not** clear the visit stack.
+- **Header ‹** (`header_back_visible` in each app’s `amount_visibility.rs`): show when Back can run — `!nav_back.is_empty()` **or** `in_screen_nested_layer` **or** nested setup. Hide only on the **visit root** (first unlocked screen: empty stack, no overlay).
+- **Same action:** ‹, mouse Back, Alt+←, edge swipe, Android system Back → `navigate_back`. Forward / Alt+→ → `navigate_forward`.
+
+## Do not
+
+- Clear `nav_back` / `nav_forward` on peer chrome jumps “so ‹ stays off.”
+- Hide ‹ on Floor/Kitchen/Day book just because they are nav peers while history exists.
+- Invent a second Back path that skips overlays (Settings section / pick-table must dismiss first).
+- Restore **Onboard** via Forward/history after the user is on **DeviceSetup**
+  (Server/Client). Landing on DeviceSetup clears Forward and strips Onboard
+  from Back; never push Onboard onto Forward. Unlock → main till clears the
+  stack (visit root).
+
+## Code
+
+- Predicates: `apps/*/src/amount_visibility.rs` — `header_back_visible`, `in_screen_nested_layer`, `setup_shows_header_back`.
+- Stack: `go` / `go_peer` / `navigate_back` / `navigate_forward` in each app’s `app/impl_*.rs`.
+- Paint: `paint_header_back_chrome`.

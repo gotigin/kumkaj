@@ -1722,8 +1722,8 @@ impl Store {
                 Money(sale.rounding_paise).format_localized(&currency, &fiscal_settings)
             ));
         }
-        // Tax inside price: Net → tax → Total (same charged total). Tax added
-        // at till: Subtotal + tax → Total. Components always add to Total.
+        // Inclusive: Net → tax → Total (same charged total). Exclusive:
+        // Subtotal + tax → Total. Components always add to Total.
         let tax_label = sale.tax_label();
         if sale.tax_paise > 0 {
             let base_caption = if sale.tax_pricing().is_inside_price() {
@@ -1784,7 +1784,7 @@ impl Store {
             ));
         }
         if sale.tax_paise > 0 && sale.tax_pricing().is_inside_price() {
-            out.push_str(&format!("({tax_label} inside price)\n"));
+            out.push_str(&format!("({tax_label} inclusive)\n"));
         }
         if sale.order_type() != OrderType::Counter {
             out.push_str(&format!("{}\n", sale.order_type().label()));
@@ -2026,13 +2026,13 @@ impl Store {
             .filter(|s| !s.trim().is_empty()))
     }
 
-    /// Day-report tax line: Tax inside price → “GST inside sales”; Tax added
-    /// at till → “VAT collected” (label from the country pack).
+    /// Day-report tax line: inclusive → “GST inclusive in sales”; exclusive
+    /// → “VAT exclusive collected” (label from the country pack).
     pub fn tax_total_caption(&self, fiscal_settings: &FiscalSettings) -> String {
         if fiscal_settings.tax_pricing.is_inside_price() {
-            format!("{} inside sales", fiscal_settings.tax_label())
+            format!("{} inclusive in sales", fiscal_settings.tax_label())
         } else {
-            format!("{} collected", fiscal_settings.tax_label())
+            format!("{} exclusive collected", fiscal_settings.tax_label())
         }
     }
 
@@ -13874,7 +13874,7 @@ mod tests {
         assert_eq!(sale.net_paise, 12_000);
         assert_eq!(sale.tax_pricing(), TaxPricing::InsidePrice);
         let receipt = store.format_receipt_text(&sale.id).unwrap();
-        assert!(receipt.contains("(GST inside price)"), "{receipt}");
+        assert!(receipt.contains("(GST inclusive)"), "{receipt}");
         assert!(receipt.contains("Taxable value "), "{receipt}");
 
         // Finalizing queues a durable event for a future cloud push.

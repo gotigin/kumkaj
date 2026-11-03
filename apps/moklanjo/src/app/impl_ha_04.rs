@@ -59,7 +59,7 @@ impl App {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     store.set_tax_pricing(pricing)?;
                     st.reload_all()?;
-                    st.status = format!("{} — {}", st.fiscal.tax_label(), pricing.label());
+                    st.status = pricing.label_for(st.fiscal.tax_label());
                     Ok(())
                 })();
                 if let Err(e) = result {

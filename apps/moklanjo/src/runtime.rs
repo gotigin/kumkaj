@@ -721,7 +721,8 @@ fn carrier_bill_report_once() -> &'static Mutex<Option<String>> {
 }
 
 /// How often Settings re-reads which devices are connected.
-const LIVE_REFRESH_SECS: f64 = 8.0;
+/// Paired tills ask for fresh books this often (seconds).
+const LIVE_REFRESH_SECS: f64 = 3.0;
 
 /// The screen is being kept on because this device serves others.
 static SCREEN_KEPT_ON: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);

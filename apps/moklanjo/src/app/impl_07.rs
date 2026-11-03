@@ -742,6 +742,9 @@ impl App {
                         st.screen = Screen::Onboard;
                         st.status = format!("Welcome, {} — finish shop setup", member.lock_label());
                     } else {
+                        // Main till is a visit root — no Back into setup.
+                        st.nav_back.clear();
+                        st.nav_forward.clear();
                         st.screen = unlocked_home();
                         st.status = match &note {
                             Some(note) => format!("Welcome, {} · {note}", member.lock_label()),

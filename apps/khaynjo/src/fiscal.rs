@@ -5,27 +5,29 @@
 //! fiscal-printer payloads or tax returns anywhere in the world; sellers stay
 //! responsible for the rates they enter and for their own filings.
 //!
-//! Two pricing models cover every country we ship (Settings labels — prefer
-//! these words over vague “inclusive/exclusive tax”):
+//! Two pricing models cover every country we ship. Settings name them with the
+//! country tax label: **GST inclusive** / **GST exclusive**, **VAT inclusive** /
+//! **VAT exclusive**, and so on.
 //!
-//! * [`TaxPricing::InsidePrice`] — **Tax inside price.** Menu/bill amounts
-//!   already contain tax (India GST, UK VAT hospitality, much of the EU, …).
-//!   The charged total does not grow; tax is *extracted* for the receipt as
+//! * [`TaxPricing::InsidePrice`] — **inclusive.** Menu/bill amounts already
+//!   contain tax (India GST, UK VAT hospitality, much of the EU, …). The
+//!   charged total does not grow; tax is *extracted* for the receipt as
 //!   taxable value + tax (= same total). Example: ₹3000 at 18% → taxable
 //!   value ₹3000/1.18, tax = remainder.
-//! * [`TaxPricing::AddedAtTill`] — **Tax added at till.** Menu amounts are
-//!   net; tax is *added on top* so the guest pays more (US sales tax, many
-//!   B2B VAT defaults, …). Charged total = lines + rounding + tax.
+//! * [`TaxPricing::AddedAtTill`] — **exclusive.** Menu amounts are net; tax is
+//!   *added on top* so the guest pays more (US sales tax, many B2B VAT
+//!   defaults, …). Charged total = lines + rounding + tax.
 //!
-//! Tax *name* (GST / VAT / sales tax / custom) is separate — the country pack
-//! `tax_label` — and does not change which of the two arithmetic modes applies.
+//! Tax *name* (GST / VAT / sales tax / custom) is the country pack `tax_label`
+//! and does not change which of the two arithmetic modes applies.
 
 use serde::{Deserialize, Serialize};
 
 /// How quoted prices relate to tax — not the tax’s legal name.
 ///
-/// Product wording: **Tax inside price** vs **Tax added at till**.
-/// Persisted as `inclusive` / `exclusive` for stable meta and sale rows.
+/// Product wording: **`{tax} inclusive`** (total already has tax) vs
+/// **`{tax} exclusive`** (tax added on top). Persisted as `inclusive` /
+/// `exclusive` for stable meta and sale rows.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TaxPricing {
     /// Tax already sits inside the quoted price (extract for the receipt).
@@ -55,8 +57,20 @@ impl TaxPricing {
 
     pub fn label(self) -> &'static str {
         match self {
-            Self::InsidePrice => "Tax inside price",
-            Self::AddedAtTill => "Tax added at till",
+            Self::InsidePrice => "Tax inclusive",
+            Self::AddedAtTill => "Tax exclusive",
+        }
+    }
+
+    /// `{tax_name} inclusive` or `{tax_name} exclusive` (falls back to "Tax").
+    pub fn label_for(self, tax_name: &str) -> String {
+        let tax = match tax_name.trim() {
+            "" => "Tax",
+            t => t,
+        };
+        match self {
+            Self::InsidePrice => format!("{tax} inclusive"),
+            Self::AddedAtTill => format!("{tax} exclusive"),
         }
     }
 
@@ -158,7 +172,7 @@ impl CountryProfile {
     /// country picker shows one per row.
     pub fn apply_facts(&self) -> Vec<(&'static str, String)> {
         let tax = if self.has_tax() {
-            format!("{} · {}", self.tax_name, self.tax_pricing.label())
+            self.tax_pricing.label_for(self.tax_name)
         } else {
             "No consumption tax by default".to_string()
         };
@@ -1662,11 +1676,10 @@ impl FiscalSettings {
             label => label,
         };
         format!(
-            "Country: {} ({})\nTax: {} · {}\nPay rail: {}\nCredit: {}\nNumbers: 1{}234{}56{service}\n{id_label}: {id}",
+            "Country: {} ({})\nTax: {}\nPay rail: {}\nCredit: {}\nNumbers: 1{}234{}56{service}\n{id_label}: {id}",
             profile.name_en,
             profile.code,
-            self.tax_label(),
-            self.tax_pricing.label(),
+            self.tax_pricing.label_for(self.tax_label()),
             self.digital_pay_label(),
             self.credit_label(),
             self.thousands_sep(),
