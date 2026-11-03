@@ -524,3 +524,21 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(screen, Screen::Lock | Screen::Onboard)
 }
+
+/// Setup steps that sit under another step. The header ‹ is the back control
+/// (same as every other nested screen). Lock has no parent.
+fn setup_shows_header_back(st: &AppState) -> bool {
+    match st.screen {
+        Screen::Onboard => !st.onboarding_complete,
+        Screen::ClientPair => true,
+        Screen::DeviceSetup => {
+            st.picking_server
+                || st
+                    .device_setup_sections_open
+                    .iter()
+                    .any(|k| k == "language")
+                || !st.nav_back.is_empty()
+        }
+        _ => false,
+    }
+}

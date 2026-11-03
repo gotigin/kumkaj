@@ -1,5 +1,8 @@
 impl App {
 fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
+        // Callers must pass an owned string. Never
+        // `set_status(cx, app_state().lock().unwrap().t(...))` — that keeps the
+        // MutexGuard alive across this call and deadlocks here (DEV.md).
         let msg = msg.into();
         let kind = snack::classify(&msg);
         self.set_status_line_only(cx, &msg);

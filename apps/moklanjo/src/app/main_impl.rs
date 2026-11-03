@@ -85,12 +85,12 @@ impl AppMain for App {
                 printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
                 match result {
                     Ok(()) => {
-                        self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+                        self.set_status(cx, app_t("printers_saved"));
                         self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.set_status(cx, app_t("cancelled"));
                         self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }

@@ -201,6 +201,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 drop(st);
                 self.activate_new_server(cx, "")?;
             } else {
+                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
                 st.picking_server = true;
                 st.status = st.t("choose_server");
             }
@@ -231,6 +232,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             // across the reload (which reads the new shop's own meta).
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
+            // The previous shop's login must not ride into this new shop.
+            // sync_chrome used to see that session on Lock and open the till,
+            // so the new server skipped Owner PIN and onboarding.
+            st.session = None;
+            st.onboarding_complete = false;
+            st.owner_setup_complete = false;
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);

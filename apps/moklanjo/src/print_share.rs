@@ -791,24 +791,33 @@ pub fn print_network_mode(addr: &str, mode: PrinterMode, text: &str) -> Result<(
     let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
         .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
     let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-    stream.write_all(&bytes).map_err(|e| e.to_string())?;
+    // Chunk writes — some heads drop mid-job when the whole payload lands at once.
+    const CHUNK: usize = 4096;
+    for piece in bytes.chunks(CHUNK) {
+        stream.write_all(piece).map_err(|e| e.to_string())?;
+    }
     stream.flush().map_err(|e| e.to_string())
 }
 
 /// Cap for one ESC/POS payload (text or raster bands).
 const ESC_POS_JOB_MAX: usize = 512_000;
 
-/// Thermal / network jobs: draw the slip as dots (`GS v 0`), then cut.
+/// Thermal / network ESC/POS job (printer-agnostic).
 ///
-/// Same idea as other POS apps that print a rendered page: line gaps and
-/// every line live in the image, so we never depend on the printer's
-/// built-in font pitch (CR overstrike → only the last line + `_`-like smear).
+/// ASCII-capable slips → plain text (LF only, never CR). Scripts without
+/// built-in letters → Noto raster (`GS v 0`). Avoids binary-as-garbage
+/// (`_____` / `-----` / cut-off lines) on heads that mishandle always-raster.
 pub fn escpos_job(text: &str) -> Vec<u8> {
     escpos_job_format(&PrintFormat::kot(), text)
 }
 
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
-    crate::receipt_raster::escpos_picture_metrics(text, &format.raster_metrics())
+    let cleaned = text.replace('\r', "");
+    if printer_has_letters(&cleaned) {
+        escpos_job_text(&cleaned)
+    } else {
+        crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
+    }
 }
 
 pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
@@ -818,18 +827,56 @@ pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
     }
 }
 
-/// Built-in-font ASCII job (tests / rare call sites). Prefer [`escpos_job`].
+/// Built-in-font ASCII job. Soft-wraps long lines to 32 cols (safe on 58 mm
+/// and 80 mm Font A).
 pub fn escpos_job_text(text: &str) -> Vec<u8> {
-    let mut out = Vec::with_capacity(text.len().saturating_add(48));
+    let wrapped = wrap_escpos_cols(text, 32);
+    let mut out = Vec::with_capacity(wrapped.len().saturating_add(48));
     out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
     out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0 — PC437
     out.extend_from_slice(&[0x1B, 0x4D, 0x00]); // ESC M 0: Font A
     out.extend_from_slice(&[0x1D, 0x21, 0x00]); // GS ! 0: normal size
     out.extend_from_slice(&[0x1B, 0x61, 0x00]); // ESC a 0: left align
     out.extend_from_slice(&[0x1B, 0x32]); // ESC 2: default line spacing
-    out.extend(escpos_text(text));
+    out.extend(escpos_text(&wrapped));
     out.extend_from_slice(b"\n\n\n\n\n"); // LF only — never CR
     out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
+    out
+}
+
+fn wrap_escpos_cols(text: &str, cols: usize) -> String {
+    let cols = cols.max(8);
+    let mut out = String::with_capacity(text.len().saturating_add(16));
+    for (i, line) in text.lines().enumerate() {
+        if i > 0 {
+            out.push('\n');
+        }
+        if line.chars().count() <= cols {
+            out.push_str(line);
+            continue;
+        }
+        let mut width = 0usize;
+        let mut first_on_row = true;
+        for word in line.split(' ') {
+            let wlen = word.chars().count();
+            if wlen == 0 {
+                continue;
+            }
+            if first_on_row {
+                out.push_str(word);
+                width = wlen;
+                first_on_row = false;
+            } else if width + 1 + wlen <= cols {
+                out.push(' ');
+                out.push_str(word);
+                width += 1 + wlen;
+            } else {
+                out.push('\n');
+                out.push_str(word);
+                width = wlen;
+            }
+        }
+    }
     out
 }
 
@@ -1342,13 +1389,19 @@ mod tests {
         let text_hi = escpos_job_text("To: राजकोट");
         assert!(!text_hi.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]));
         assert!(text_hi.windows(6).any(|w| w == b"??????"));
-        let job = escpos_job("AWB 7\nLine two\nLine three");
-        assert_eq!(&job[..2], &[0x1B, 0x40]);
+        let ascii = escpos_job("AWB 7\nLine two\nLine three");
+        assert_eq!(&ascii[..2], &[0x1B, 0x40]);
         assert!(
-            job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "thermal jobs are raster so every line has spacing in the image"
+            !ascii.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "ASCII slips use plain ESC/POS text"
         );
-        assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
+        assert!(ascii.windows(3).any(|w| w == b"AWB"));
+        assert!(ascii.ends_with(&[0x1D, 0x56, 0x00]));
+        let indic = escpos_job("राजकोट");
+        assert!(
+            indic.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "scripts without built-in letters still use raster"
+        );
         assert!(!escpos_text("A\nB").contains(&b'\r'));
         assert_eq!(escpos_text("A\nB"), b"A\nB".to_vec());
     }

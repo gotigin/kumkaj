@@ -375,6 +375,11 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    restores from Downloads/USB; two devices of different supported platforms
    served a third device end to end on the emulator (pair, PIN on the Server,
    names synced).
+   *2026-11-03:* Kitchen printing & printers UX — Find **auto-saves** every
+   discovery (no pool Add/Remove); Places = InfoHelp + place dropdown +
+   format chips + assign chips; **drag** to reorder, **tap** to remove.
+   Settings “Not Responding” on place tap = `app_state` deadlock in
+   `set_status` (DEV.md bug **7a**), not wrap/Fill.
    *2026-10-27:* research Local/LAN catch-up **done** — see
    [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md) §8 (Cloud/Net/owner
    items only in “Still left”).

@@ -3,6 +3,17 @@ fn app_state() -> &'static Mutex<AppState> {
     STATE.get_or_init(|| Mutex::new(AppState::boot()))
 }
 
+/// Locale string with the lock released before return.
+///
+/// Never write `set_status(cx, app_state().lock().unwrap().t(...))` — the
+/// temporary MutexGuard lives for the whole statement, so `set_status` (which
+/// locks again) deadlocks the UI thread. gdb: Bill place tap →
+/// `match_event` → `set_status` → `set_status_line_only` stuck on
+/// `app_state::STATE` (2026-11-03).
+fn app_t(key: &str) -> String {
+    app_state().lock().unwrap().t(key)
+}
+
 /// Pending desktop window restore. Applied at Startup via `configure_window`,
 /// then re-checked on the first `WindowGeomChange` (Windows sometimes creates
 /// with the DSL default and ignores create_inner_size until a post-create resize).
@@ -135,6 +146,12 @@ fn backup_once() -> &'static Mutex<Option<Result<PathBuf, String>>> {
 fn backup_busy() -> &'static std::sync::atomic::AtomicBool {
     static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &BUSY
+}
+
+/// First tap on Create new server only arms this. The second tap creates.
+fn new_server_armed() -> &'static std::sync::atomic::AtomicBool {
+    static ARM: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &ARM
 }
 
 fn backup_cancel() -> &'static std::sync::atomic::AtomicBool {
@@ -534,62 +551,9 @@ fn printer_add_once() -> &'static Mutex<Option<Result<(), String>>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
-enum PrinterAddOp {
-    Add { label: String, target: String },
-    Remove { id: Option<String> },
-}
-
 fn printer_add_result_draft() -> &'static Mutex<Option<print_share::DevicePrinters>> {
     static SLOT: OnceLock<Mutex<Option<print_share::DevicePrinters>>> = OnceLock::new();
     SLOT.get_or_init(|| Mutex::new(None))
-}
-
-/// Persist printers off the UI thread. Caller must already have set
-/// [`printer_add_busy`] + status and painted the busy face (progress + Cancel).
-fn printer_add_job_continue(
-    base: PathBuf,
-    mut draft: print_share::DevicePrinters,
-    op: PrinterAddOp,
-) {
-    let _ = std::thread::Builder::new()
-        .name("khaynjo-printer-add".into())
-        .spawn(move || {
-            let result = (|| -> Result<print_share::DevicePrinters, String> {
-                if printer_add_cancel().load(std::sync::atomic::Ordering::SeqCst) {
-                    return Err("Cancelled".into());
-                }
-                match op {
-                    PrinterAddOp::Add { label, target } => {
-                        draft.add_printer(&label, &target);
-                    }
-                    PrinterAddOp::Remove { id } => {
-                        if let Some(id) = id {
-                            draft.remove_printer(&id);
-                        }
-                    }
-                }
-                if printer_add_cancel().load(std::sync::atomic::Ordering::SeqCst) {
-                    return Err("Cancelled".into());
-                }
-                // Never USB/BT I/O here — pool file write only.
-                print_share::save_device_printers(&base, &draft)?;
-                Ok(draft)
-            })();
-            match result {
-                Ok(draft) => {
-                    *printer_add_result_draft().lock().unwrap() = Some(draft);
-                    *printer_add_once().lock().unwrap() = Some(Ok(()));
-                }
-                Err(e) => {
-                    *printer_add_result_draft().lock().unwrap() = None;
-                    *printer_add_once().lock().unwrap() = Some(Err(e));
-                }
-            }
-            // Keep busy=true until the UI thread takes `printer_add_once` and
-            // applies the draft — clearing here left Settings stuck on
-            // "Adding…" / missing the new printer when Signal lagged.
-            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-        });
 }
 
 fn client_find_busy() -> &'static std::sync::atomic::AtomicBool {
@@ -819,6 +783,39 @@ struct SettingsNavDrag {
 fn settings_nav_drag() -> &'static Mutex<Option<SettingsNavDrag>> {
     static DRAG: OnceLock<Mutex<Option<SettingsNavDrag>>> = OnceLock::new();
     DRAG.get_or_init(|| Mutex::new(None))
+}
+
+/// Settings → printers: drag-to-swap printers on the focused place.
+#[derive(Clone)]
+struct RoutePrinterDrag {
+    slot: usize,
+    start: DVec2,
+    last: DVec2,
+    origin: DVec2,
+    rects: Vec<Rect>,
+    active: bool,
+    hover: Option<usize>,
+    finger: Option<u64>,
+    label: String,
+}
+
+fn route_printer_drag() -> &'static Mutex<Option<RoutePrinterDrag>> {
+    static DRAG: OnceLock<Mutex<Option<RoutePrinterDrag>>> = OnceLock::new();
+    DRAG.get_or_init(|| Mutex::new(None))
+}
+
+/// After a drag-swap, suppress the following tap-to-remove on that list.
+fn route_printer_tap_suppress() -> &'static Mutex<bool> {
+    static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
+    FLAG.get_or_init(|| Mutex::new(false))
+}
+
+#[allow(dead_code)] // Assigned list is read-only; remove via checklist.
+fn route_printer_tap_suppressed() -> bool {
+    let mut g = route_printer_tap_suppress().lock().unwrap();
+    let v = *g;
+    *g = false;
+    v
 }
 
 /// Pending frame callback that keeps edge auto-scroll alive while a

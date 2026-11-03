@@ -175,11 +175,12 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
-7. **Settings / CTAs freeze the UI (wrap + Fill)** — Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws (never per-frame spam). Still avoid the bad layout:
-   - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit** — including left-aligned rail tabs (`TabBtn` / `HubDestBtn` / sidebar rows), not only centered CTAs. Patch `button_label_center`: **when the face wraps, always Fit the label**; centered faces still center via `text_align` + `ink_centered`. **Do not** “fix” by removing wrap or left-aligning labels — that brings back truncated/cropped CTAs (bug 3).
-   - **Parent View:** never put `width: Fill` children (`NavBtn`, `Stack*`, `SegBtn`, …) inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit-width chips in a wrapping strip.
-   - **Busy chrome:** never swap sibling `ActionStack` faces or toggle a Fill wrap CTA `visible` to show Cancel during Add/Find. Change the submit label in place; Cancel is a `QuietFitBtn` (Fit, no wrap) shown beside/under the stack.
-   - **InfoHelp (title+ℹ pack):** Always **`width: Fit`** (`Fit{max: parent}` OK) so title+ℹ stay one cluster — gap only `tip_btn.margin.left` (6). **Never Fill** on InfoHelp or its title (parks ℹ at row end; lock screen, 2026-11). Title is **`WrapLabel` Fit{max: parent}** (wraps at 375; never `Label{width:Fill, wrap}` — turtle NaN). Empty title hidden. Do not “fix” crop by switching to Fill. Sibling heading beside InfoHelp is Fit too; row `spacing: 0`. Regression: `shell_tests/info_help_layout_tests.rs` in each app.
+7. **Settings / CTAs freeze the UI (wrap + Fill)** — Separate from bug **7a**. Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Signature: high CPU / draw path / turtle warning. Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws. Still avoid the bad layout:
+   - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit**. Patch `button_label_center`. **Do not** “fix” by removing wrap or left-aligning labels (bug 3).
+   - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
+   - **Busy chrome:** never `set_text` / toggle `visible` on Fill+wrap Stack\* for Looking/Adding/Cancel. Cancel is `QuietFitBtn`; progress on a WrapLabel.
+   - **InfoHelp:** Always **`width: Fit`**; title is **`WrapLabel` Fit{max: parent}** (never `Label{width:Fill, wrap}`).
+7a. **Settings “Not Responding” on printers place pick = `app_state` deadlock (not wrap/Fill)** — gdb on hung Khaynjo (2026-11-03): main thread `futex_do_wait` / `Mutex::lock` on `app_state::STATE` inside `set_status_line_only` ← `set_status` ← Bill/kitchen place tap. Cause: `self.set_status(cx, app_state().lock().unwrap().t(...))` — temporary `MutexGuard` lives for the whole statement, so `set_status` locks again on the same thread and never returns. Low CPU, not turtle spam. **Rule:** never pass `app_state().lock()…` into a function that locks `app_state`. Use `app_t("key")` or `{ let st = app_state().lock().unwrap(); … }` first. Cursor rule: `.cursor/rules/app-state-lock.mdc`. Do not “fix” this hang by swapping button faces.
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
@@ -722,20 +723,24 @@ device, not the books: `printers.json` holds a **pool** of named printers
 (`id` / `label` / `target` / `mode`) and **routes** (ordered printer ids).
 Settings → **Printers** edits both. A route tries the first printer, then
 the next on failure; an empty route means that feature does not print.
-Khaynjo routes: **Bill**, plus **KOT per kitchen station** (`""` =
-unassigned). KOT lookup: station → `""` → **Bill**. Moklanjo routes:
-**Receipt** and **AWB label**. Legacy files migrate on load; blank fields
-stay empty (no invented “Default” printer).
+Khaynjo routes: **Bill**, plus **KOT per kitchen station**. KOT lookup:
+station’s own route (empty = do not print that station — never fall through
+to Bill). Moklanjo routes: **Receipt** and **AWB label**. Legacy files
+migrate on load; blank fields stay empty (no invented “Default” printer).
 
-**Formats** (Standard, KOT/Thermal, plus owner **custom** formats) are the
-slip shape. Printers are **destinations only**. Each route picks a format
-(Bill/Receipt → Standard, kitchen/label → KOT by default); the owner can
-change it or tap **New custom format**. Format metrics drive
-`receipt_raster`; `document: true` formats may use OS / Android PrintManager,
-thermal-style formats need Network/BT/USB (or desktop raw spool).
+**Khaynjo Settings → Places (printers UX):** InfoHelp titles (no essay
+body). Find refreshes one printer list. Assign chips are
+`+ Name (KOT)` / `+ Name (Standard)` — same printer once per format;
+rows show `Name (KOT)`. Drag reorder; tap remove. No place-level
+KOT/Standard tabs. Place-tap “Not Responding” = bug **7a**.
 
-**Find printers** lists system queues (desktop), Wi‑Fi `:9100` hosts,
-Bluetooth `bt:MAC`, USB `usb:VID:PID`, and on Android `android-print:`.
+**Formats** (Standard, KOT/Thermal) are per **assignment**, not a place
+toggle. Format metrics drive `receipt_raster`; thermal-style formats need
+Network/BT/USB (or desktop raw spool).
+
+**Find printers** publishes after system queues (`lpstat`), then again
+after Wi‑Fi `:9100` / BT / USB — UI merges into the pool on each Signal
+(do not wait for the full /24 scan or a scroll to show names).
 
 | Target | Document format | Thermal-style format |
 |---|---|---|

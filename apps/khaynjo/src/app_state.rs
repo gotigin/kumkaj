@@ -56,6 +56,8 @@ struct AppState {
     settings_panel: Option<&'static str>,
     /// Settings → Printers: pool row tapped for Remove / edit (None = last).
     printer_selected_id: Option<String>,
+    /// Settings → Printers: printer id selected on the focused place (Up/Down/Remove).
+    printer_route_sel: Option<String>,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).

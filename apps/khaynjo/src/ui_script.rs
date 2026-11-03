@@ -3974,12 +3974,17 @@ script_mod! {
                 }
                 Line := View{
                     width: Fill height: Fit
-                    padding: Inset{top: 4. bottom: 4.}
-                    line := WrapLabel{
-                        body: ""
-                        margin: Inset{right: 8.}
-                        font_color: #x260B08
-                        font_size: 14.
+                    // `row` hit target — same as Kv (tap / drag-reorder).
+                    row := View{
+                        width: Fill height: Fit
+                        padding: Inset{top: 4. bottom: 4.}
+                        cursor: MouseCursor.Hand
+                        line := WrapLabel{
+                            body: ""
+                            margin: Inset{right: 8.}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
                     }
                 }
                 Sub := View{
@@ -7815,43 +7820,21 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
-                                    // Two steps only: (1) name the printers this
-                                    // device can reach, (2) tap Bill/kitchen then
-                                    // tap a printer. No route text field, no Up/Down.
                                     FormCard{
-                                    h_kitchen_printing := WrapLabel{body: "Kitchen printing & printers" font_color: #x260B08 font_size: 20.}
-                                    h_kot_print_help_khaynjo := WrapLabel{
-                                        width: Fill
-                                        body: ""
-                                        font_color: #x6B4A3F
-                                        font_size: 12.
-                                        visible: false
+                                    printers_panel_help := InfoHelp{
+                                        tip: "Find refreshes the printers on this device. Pick a place, set KOT or Standard, assign printers, drag to reorder."
                                     }
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            kot_print_off := SegBtn{text: "Kitchen printing off"}
-                                            kot_print_off_on := SegBtnOn{text: "Kitchen printing off" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            kot_print_on := SegBtn{text: "Kitchen printing on"}
-                                            kot_print_on_on := SegBtnOn{text: "Kitchen printing on" visible: false}
-                                        }
+                                    View{width: Fit height: Fit flow: Overlay
+                                        kot_print_off := ChipBtn{text: "Kitchen printing: Off"}
+                                        kot_print_on := ChipBtnActive{text: "Kitchen printing: On" visible: false}
                                     }
-                                    h_printers_pool := WrapLabel{body: "1. Your printers" font_color: #x260B08 font_size: 16.}
-                                    h_printers_help := WrapLabel{
-                                        width: Fill
-                                        body: ""
-                                        font_color: #x6B4A3F
-                                        font_size: 12.
-                                        visible: false
+                                    // One block: Find refreshes this list (no second “On this device”).
+                                    printers_find_help := InfoHelp{
+                                        tip: "Find scans this device and keeps this list up to date."
                                     }
                                     ActionStack{
-                                        find_printers_btn := StackSecondaryBtn{text: "Find printers"}
+                                        find_printers_btn := StackSecondaryBtn{text: "Find printers" flow: Down}
                                     }
-                                    // Fit + no wrap — safe to show/hide. Never toggle a
-                                    // Fill wrap CTA visible inside the Find ActionStack.
                                     find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     printers_found_label := WrapLabel{
                                         width: Fill
@@ -7859,79 +7842,136 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }
-                                    printers_found_list := mod.widgets.ReportText{}
                                     printers_pool_label := mod.widgets.ReportText{}
-                                    printer_label_input := FieldInput{empty_text: "Name (e.g. Kitchen)"}
-                                    printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
-                                    printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
-                                    h_printer_wire := WrapLabel{
+                                    // Legacy — Find used to mirror the pool in a second list.
+                                    printers_found_list := mod.widgets.ReportText{visible: false}
+                                    printers_pool_help := InfoHelp{tip: " " visible: false}
+                                    // Legacy ids (hot-reload) — Find owns the pool; no manual Add/Remove.
+                                    printer_manual_legacy := View{width: Fill height: Fit visible: false
+                                        printer_target_input := FieldInput{height: 0. empty_text: ""}
+                                        printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
+                                        printer_add := StackPrimaryBtn{text: "Add printer" flow: Down}
+                                        printer_remove := StackSecondaryBtn{text: "Remove" flow: Down}
+                                        printer_add_cancel := QuietFitBtn{text: "Cancel"}
+                                    }
+                                    printers_routes_help := InfoHelp{
+                                        tip: "Pick a place, then Select printer. Check Name (KOT) or Name (Standard). ↑↓ set print order (first = highest). Uncheck to remove."
+                                    }
+                                    ActionStack{
+                                        printer_place_dd := StackSecondaryBtn{text: "Bill" flow: Down}
+                                    }
+                                    printer_place_input := FieldInput{
+                                        height: 0.
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        empty_text: ""
+                                    }
+                                    printer_place_suggest := mod.widgets.SuggestList{field: "printer_place"}
+                                    ActionStack{
+                                        printer_assign_dd := StackSecondaryBtn{text: "Select printer for Bill" flow: Down}
+                                    }
+                                    printer_assign_input := FieldInput{
+                                        height: 0.
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        empty_text: ""
+                                    }
+                                    printer_assign_suggest := mod.widgets.StationCheckList{field: "printer_assign"}
+                                    route_place_btns := View{width: Fill height: Fit visible: false
+                                        route_place_slot_0 := View{width: Fit height: Fit flow: Overlay
+                                            route_place_0 := ChipBtn{text: "Bill"}
+                                            route_place_0_on := ChipBtnActive{text: "Bill" visible: false}
+                                        }
+                                        route_place_slot_1 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_1 := ChipBtn{text: ""}
+                                            route_place_1_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        route_place_slot_2 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_2 := ChipBtn{text: ""}
+                                            route_place_2_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        route_place_slot_3 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_3 := ChipBtn{text: ""}
+                                            route_place_3_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        route_place_slot_4 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_4 := ChipBtn{text: ""}
+                                            route_place_4_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        route_place_slot_5 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_5 := ChipBtn{text: ""}
+                                            route_place_5_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        route_place_slot_6 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_6 := ChipBtn{text: ""}
+                                            route_place_6_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        route_place_slot_7 := View{width: Fit height: Fit flow: Overlay visible: false
+                                            route_place_7 := ChipBtn{text: ""}
+                                            route_place_7_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                    }
+                                    printer_routes_label := mod.widgets.ReportText{visible: false}
+                                    route_editing_label := WrapLabel{body: "" visible: false}
+                                    // Legacy place-format chips — format is on each assignment now.
+                                    printer_wire_legacy := View{width: Fit height: Fit visible: false
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_escpos := ChipBtn{text: "KOT"}
+                                            printer_wire_escpos_on := ChipBtnActive{text: "KOT" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_os := ChipBtn{text: "Standard"}
+                                            printer_wire_os_on := ChipBtnActive{text: "Standard" visible: false}
+                                        }
+                                    }
+                                    route_assigned_empty := WrapLabel{
                                         width: Fill
-                                        body: "Format for the place above (Standard / KOT / custom)"
+                                        body: ""
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }
-                                    View{
+                                    route_assigned_list := mod.widgets.ReportText{}
+                                    // Legacy +chips — assign is printer_assign_dd checklist now.
+                                    route_add_printers := View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            printer_wire_escpos := SegBtn{text: "KOT"}
-                                            printer_wire_escpos_on := SegBtnOn{text: "KOT" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            printer_wire_os := SegBtn{text: "Standard"}
-                                            printer_wire_os_on := SegBtnOn{text: "Standard" visible: false}
-                                        }
-                                    }
-                                    printer_format_custom := StackSecondaryBtn{text: "New custom format"}
-                                    // One ActionStack only. Busy = change Add's label (and show a
-                                    // Fit Cancel). Never swap sibling ActionStacks / Overlay faces
-                                    // and never toggle a Fill wrap CTA visible — those redraws hit
-                                    // Makepad wrap+Fill logging and froze Settings on every OS.
-                                    ActionStack{
-                                        printer_add := StackPrimaryBtn{text: "Add printer"}
-                                        printer_remove := StackSecondaryBtn{text: "Remove"}
-                                    }
-                                    printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
-                                    h_printers_routes := WrapLabel{body: "2. What prints where" font_color: #x260B08 font_size: 16.}
-                                    h_printers_routes_help := WrapLabel{
-                                        width: Fill
-                                        body: ""
-                                        font_color: #x6B4A3F
-                                        font_size: 12.
                                         visible: false
-                                    }
-                                    printer_routes_label := mod.widgets.ReportText{}
-                                    route_editing_label := WrapLabel{
-                                        width: Fill
-                                        body: ""
-                                        font_color: #x260B08
-                                        font_size: 13.
-                                    }
-                                    // Optional: type/pick Bill or a kitchen (list tap also works).
-                                    route_pick_input := FieldInput{empty_text: "Bill or a kitchen station"}
-                                    route_pick_suggest := mod.widgets.SuggestList{field: "route_pick"}
-                                    route_add_printers := ActionStack{
-                                        route_add_prn_0 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_1 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_2 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_3 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_4 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_5 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_6 := StackSecondaryBtn{text: "" visible: false}
-                                        route_add_prn_7 := StackSecondaryBtn{text: "" visible: false}
+                                        flow: Right{wrap: true}
+                                        spacing: 8
+                                        route_add_prn_0 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_1 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_2 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_3 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_4 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_5 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_6 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_7 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_8 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_9 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_10 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_11 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_12 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_13 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_14 := QuietFitBtn{text: "" visible: false}
+                                        route_add_prn_15 := QuietFitBtn{text: "" visible: false}
                                     }
                                     ActionStack{
-                                        route_remove := StackSecondaryBtn{text: "Remove last printer"}
-                                        route_clear := StackSecondaryBtn{text: "Clear printers for this place"}
+                                        route_clear := StackSecondaryBtn{text: "Clear" flow: Down}
                                     }
-                                    // Up/Down: reorder when more than one printer is on a route.
-                                    route_up := StackSecondaryBtn{text: "Up" visible: false}
-                                    route_down := StackSecondaryBtn{text: "Down" visible: false}
                                     ActionStack{
-                                        printers_save := StackPrimaryBtn{text: "Save printers"}
-                                        print_test_btn := StackSecondaryBtn{text: "Print a test page"}
+                                        print_test_btn := StackSecondaryBtn{text: "Print a test page" flow: Down}
                                     }
-                                    // Legacy heading id still filled for RTL align.
+                                    // Legacy ids kept for RTL / paint paths.
+                                    h_kitchen_printing := WrapLabel{body: "" visible: false}
+                                    h_kot_print_help_khaynjo := WrapLabel{body: "" visible: false}
+                                    h_printers_find := WrapLabel{body: "" visible: false}
+                                    h_printers_help := WrapLabel{body: "" visible: false}
+                                    h_printers_pool := WrapLabel{body: "" visible: false}
+                                    h_printers_routes := WrapLabel{body: "" visible: false}
+                                    h_printers_routes_help := WrapLabel{body: "" visible: false}
+                                    h_route_pick := WrapLabel{body: "" visible: false}
+                                    h_printer_wire := WrapLabel{body: "" visible: false}
+                                    h_route_assigned := WrapLabel{body: "" visible: false}
+                                    h_route_add := WrapLabel{body: "" visible: false}
                                     h_printers := WrapLabel{body: "" visible: false}
                                     }
                                                                 }

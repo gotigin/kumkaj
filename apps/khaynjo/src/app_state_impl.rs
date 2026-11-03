@@ -36,6 +36,7 @@ impl AppState {
             printer_route_key: "bill".into(),
             settings_panel: None,
             printer_selected_id: None,
+            printer_route_sel: None,
             owner_setup_complete: false,
             onboarding_complete: false,
             venue_mode: VenueMode::Restaurant,
@@ -904,14 +905,28 @@ impl AppState {
                     .map(|name| SuggestRow::new(name, here.clone()))
                     .collect()
             }
-            SuggestField::RoutePick => {
-                // Bill + real stations only — no invented "No station" row.
-                let mut rows = vec![SuggestRow::new(self.t("route_bill"), "")];
-                for s in &self.stations {
-                    rows.push(SuggestRow::new(s.name.clone(), ""));
+            SuggestField::PrinterPlace => printer_place_choices(
+                &self.stations,
+                &self.printer_route_key,
+                |k| self.t(k),
+            )
+            .into_iter()
+            .map(|(_key, label, selected)| {
+                // Title = place name (Bill / kitchen). Pick resolves the
+                // route key from that label. ✓ marks the place being edited.
+                let row = SuggestRow::new(label, String::new());
+                if selected {
+                    row.with_action("\u{2713}")
+                } else {
+                    row
                 }
-                rows
-            }
+            })
+            .collect(),
+            SuggestField::PrinterAssign => printer_assign_suggest_rows(
+                &self.printer_draft,
+                &self.printer_route_key,
+                |k| self.t(k),
+            ),
             // Who took deliveries before, then the active staff.
             SuggestField::DeliveryBy => {
                 let mut rows: Vec<SuggestRow> = self

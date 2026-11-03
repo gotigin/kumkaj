@@ -1,0 +1,36 @@
+---
+description: Never pass app_state().lock() into set_status — same-thread deadlock
+alwaysApply: true
+---
+
+# `app_state` lock — UI deadlock
+
+Canonical: `docs/DEV.md` bug **7a**.
+
+## Fact (gdb, Khaynjo 2026-11-03)
+
+Hung process: main thread on `futex_do_wait` / `Mutex::lock` of `app_state::STATE` inside `set_status_line_only` ← `set_status` ← Settings Bill/place tap.
+
+Not wrap/Fill spam (that is bug 7; different signature: draw-time / high log volume).
+
+## Forbidden
+
+```rust
+self.set_status(cx, app_state().lock().unwrap().t("…"));
+self.set_status(cx, app_state().lock().unwrap().t("…").replace(…));
+```
+
+The temporary `MutexGuard` lives for the whole statement. `set_status` locks again → same-thread deadlock → OS “Not Responding”.
+
+## Required
+
+```rust
+self.set_status(cx, app_t("…"));
+// or
+let msg = { let st = app_state().lock().unwrap(); st.t("…").replace(…) };
+self.set_status(cx, msg);
+```
+
+`app_t` is in each app’s `runtime.rs`. Duplicate the same fix per app — no shared core.
+
+Before claiming a Settings hang is wrap/Fill: dump stacks (`futex` + `app_state::STATE` vs turtle/draw).

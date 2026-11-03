@@ -22,7 +22,8 @@ Makepad 2 `Button` has **no selected bit** — only `hover` / `down` / `focus` /
 | Sell lit while Buy/More shows | Selection inferred from focus/hover instead of `Screen` via `paint_nav_tabs` |
 | Label clipped on the right | Full-width CTA with `max_lines: 1` + `Ellipsis`, or multi-word text in `ChipBtn` (Fit max 160) |
 | Button shows `record_purchase` | Missing English `locale::en` entry; `t()` returned the key |
-| **UI freezes on Settings CTAs** | `flow: Right{wrap: true}` walked a **Fill** child → turtle error spam every frame. Often from `Button::draw_face` forcing Fill label when `align.x ≥ 0.25` on a wrapping face, or a parent View wrapping Fill `NavBtn`/`Stack*`/`SegBtn` |
+| **UI freezes on Settings CTAs (wrap)** | `flow: Right{wrap: true}` + **Fill** child → turtle error spam / draw thrash. High CPU. See DEV.md bug **7**. |
+| **Settings “Not Responding” on Bill/place tap** | **Not wrap.** Same-thread `app_state` deadlock: `set_status(cx, app_state().lock()…)`. Low CPU + `futex_do_wait`. See DEV.md bug **7a** / `app-state-lock.mdc`. |
 
 ## Approach (required)
 

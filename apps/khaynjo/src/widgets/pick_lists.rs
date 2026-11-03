@@ -164,16 +164,22 @@ impl Widget for StationCheckList {
                     let item = list.item(cx, item_id, id!(Item));
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
-                    item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
-                    item
-                        .label(cx, ids!(subtitle))
-                        .set_visible(cx, !row.subtitle.is_empty());
+                    let printer_assign = self.field == "printer_assign";
+                    // PrinterAssign keeps slot encode in subtitle — never show it.
+                    item.label(cx, ids!(subtitle)).set_text(
+                        cx,
+                        if printer_assign { "" } else { &row.subtitle },
+                    );
+                    item.label(cx, ids!(subtitle)).set_visible(
+                        cx,
+                        !printer_assign && !row.subtitle.is_empty(),
+                    );
                     let action = row.action.trim();
                     let checked = !action.is_empty() && action != use_l;
                     // Drawn box / filled+✓ — ☐ was missing from Noto (tofu).
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
                     item.view(cx, ids!(check_on)).set_visible(cx, checked);
-                    if is_unassigned {
+                    if is_unassigned || (printer_assign && !checked) {
                         item.label(cx, ids!(prio)).set_visible(cx, false);
                         item.button(cx, ids!(prio_up)).set_visible(cx, false);
                         item.button(cx, ids!(prio_down)).set_visible(cx, false);
@@ -184,6 +190,12 @@ impl Widget for StationCheckList {
                             if r.value.eq_ignore_ascii_case(&unassigned) {
                                 continue;
                             }
+                            if printer_assign {
+                                let a = r.action.trim();
+                                if a.is_empty() || a == use_l {
+                                    continue;
+                                }
+                            }
                             station_ids.push(i);
                             ord += 1;
                             if i == item_id {
@@ -192,9 +204,16 @@ impl Widget for StationCheckList {
                         }
                         let can_up = station_ids.len() > 1 && station_ids.first() != Some(&item_id);
                         let can_down = {
-                            let last = rows.iter().rposition(|r| {
-                                !r.value.eq_ignore_ascii_case(&unassigned)
-                            });
+                            let last = if printer_assign {
+                                rows.iter().rposition(|r| {
+                                    let a = r.action.trim();
+                                    !a.is_empty() && a != use_l
+                                })
+                            } else {
+                                rows.iter().rposition(|r| {
+                                    !r.value.eq_ignore_ascii_case(&unassigned)
+                                })
+                            };
                             last != Some(item_id)
                         };
                         item.label(cx, ids!(prio)).set_visible(cx, true);

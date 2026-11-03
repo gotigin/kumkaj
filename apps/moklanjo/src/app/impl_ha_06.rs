@@ -490,7 +490,7 @@ impl App {
             print_share::find_printers_in_background();
             self.paint_submit_busy_chrome(cx);
             self.show_found_printers(cx);
-            self.set_status(cx, app_state().lock().unwrap().t("printers_looking"));
+            self.set_status(cx, app_t("printers_looking"));
         }
         if self.ui.button(cx, ids!(find_printers_cancel)).clicked(actions) {
             print_share::cancel_find_printers();
@@ -535,71 +535,56 @@ impl App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_add_cancel)).clicked(actions) {
+            // Legacy Cancel (async add removed) — clear any stuck busy flag.
             printer_add_cancel_flag().store(true, std::sync::atomic::Ordering::SeqCst);
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
             self.paint_submit_busy_chrome(cx);
         }
-        // Progress face is not a submit — ignore taps while Adding….
+        // Add/Remove save printers.json on this thread — same as Save printers.
+        // Background + busy set_text froze Settings ("Adding printer…" forever).
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
-            if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Adding… — ignore re-taps.
-            } else if !printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
-                let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
-                let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-                printer_add_cancel_flag().store(false, std::sync::atomic::Ordering::SeqCst);
-                set_books_work_status("Adding printer…");
-                *printer_add_once().lock().unwrap() = None;
-                self.set_status(cx, "Adding printer…");
-                // Swap to progress+Cancel face before any clone/IO.
-                self.paint_submit_busy_chrome(cx);
-                let job = {
-                    let st = app_state().lock().unwrap();
-                    st.data_base
-                        .as_ref()
-                        .map(|base| (base.clone(), st.printer_draft.clone(), label, target))
-                };
-                match job {
-                    Some((base, draft, label, target)) => {
-                        self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
-                        self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
-                        printer_add_job_continue(base, draft, PrinterAddOp::Add { label, target });
-                    }
-                    None => {
-                        printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-                        clear_books_work_status();
-                        self.paint_submit_busy_chrome(cx);
-                        self.set_status(cx, "No store path to save printers");
-                    }
+            let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
+            let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
+            let result = {
+                let mut st = app_state().lock().unwrap();
+                st.printer_draft.add_printer(&label, &target);
+                match st.data_base.as_ref() {
+                    Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                        .map(|()| st.t("printers_saved")),
+                    None => Err("No store path to save printers".into()),
                 }
+            };
+            self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
+            self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            match result {
+                Ok(msg) | Err(msg) => self.set_status(cx, msg),
             }
+            self.paint_submit_busy_chrome(cx);
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
-            if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Adding… — ignore Remove until the pool save finishes.
-            } else if !printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
-                printer_add_cancel_flag().store(false, std::sync::atomic::Ordering::SeqCst);
-                set_books_work_status("Removing printer…");
-                *printer_add_once().lock().unwrap() = None;
-                self.set_status(cx, "Removing printer…");
-                self.paint_submit_busy_chrome(cx);
-                let job = {
-                    let st = app_state().lock().unwrap();
-                    let id = st.printer_draft.printers.last().map(|p| p.id.clone());
-                    st.data_base
-                        .as_ref()
-                        .map(|base| (base.clone(), st.printer_draft.clone(), id))
-                };
-                match job {
-                    Some((base, draft, id)) => {
-                        printer_add_job_continue(base, draft, PrinterAddOp::Remove { id });
-                    }
-                    None => {
-                        printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-                        clear_books_work_status();
-                        self.paint_submit_busy_chrome(cx);
-                        self.sync_chrome(cx);
-                    }
+            let result = {
+                let mut st = app_state().lock().unwrap();
+                let id = st.printer_draft.printers.last().map(|p| p.id.clone());
+                if let Some(id) = id {
+                    st.printer_draft.remove_printer(&id);
                 }
+                match st.data_base.as_ref() {
+                    Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                        .map(|()| st.t("printers_saved")),
+                    None => Err("No store path to save printers".into()),
+                }
+            };
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            match result {
+                Ok(msg) | Err(msg) => self.set_status(cx, msg),
             }
+            self.paint_submit_busy_chrome(cx);
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(route_add)).clicked(actions)
             || self

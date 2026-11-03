@@ -10,9 +10,17 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     fn navigate_back(&mut self, cx: &mut Cx) -> bool {
         // Do NOT treat generic key focus (buttons after tap) as a back step —
         // that forced a useless double swipe on Android.
+        // Setup screens are the exception: mouse Back is also a key within
+        // 140ms, and returning here drops the real pop. Blur, then pop.
         if self.text_field_has_focus(cx) {
             self.dismiss_soft_keyboard(cx);
-            return true;
+            let setup = matches!(
+                app_state().lock().unwrap().screen,
+                Screen::Onboard | Screen::ClientPair | Screen::DeviceSetup
+            );
+            if !setup {
+                return true;
+            }
         }
         // In-screen layers before screen history (native / mouse / Android back).
         {
@@ -44,8 +52,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             {
                 st.device_setup_sections_open.retain(|k| k != "language");
                 drop(st);
-                self.sync_device_setup_sections(cx);
-                self.ui.redraw(cx);
+                self.sync_chrome(cx);
                 return true;
             }
             // Onboard nested: Bring my book → back to Start fresh choice.
@@ -1679,6 +1686,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 drop(st);
                 self.activate_new_server(cx, "")?;
             } else {
+                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
                 st.picking_server = true;
                 st.status = st.t("choose_server");
             }
@@ -1709,6 +1717,12 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             // across the reload (which reads the new shop's own meta).
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
+            // The previous shop's login must not ride into this new shop.
+            // sync_chrome used to see that session on Lock and open the till,
+            // so the new server skipped Owner PIN and onboarding.
+            st.session = None;
+            st.onboarding_complete = false;
+            st.owner_setup_complete = false;
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);

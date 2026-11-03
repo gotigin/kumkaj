@@ -492,7 +492,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             screen,
             Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
         );
-        self.ui.view(cx, ids!(header)).set_visible(cx, unlocked);
+        // Nested setup (Onboard, Client pair, open Language / server pick)
+        // uses the same header ‹ as every other nested screen. Lock stays bare.
+        let setup_back = setup_shows_header_back(&app_state().lock().unwrap());
+        self.ui.view(cx, ids!(header)).set_visible(cx, unlocked || setup_back);
+        self.ui
+            .button(cx, ids!(amounts_eye))
+            .set_visible(cx, unlocked);
         let show_today = unlocked
             && session_may_see_today(app_state().lock().unwrap().session.as_ref());
         self.ui.view(cx, ids!(today_bar)).set_visible(cx, show_today);

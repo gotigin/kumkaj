@@ -70,6 +70,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             let in_extra = if field == SuggestField::KotStation {
                 let r = self.ui.button(cx, ids!(kot_station_dd)).area().rect(cx);
                 r.size.x > 0.0 && r.contains(abs)
+            } else if field == SuggestField::PrinterPlace {
+                let r = self.ui.button(cx, ids!(printer_place_dd)).area().rect(cx);
+                r.size.x > 0.0 && r.contains(abs)
+            } else if field == SuggestField::PrinterAssign {
+                let r = self.ui.button(cx, ids!(printer_assign_dd)).area().rect(cx);
+                r.size.x > 0.0 && r.contains(abs)
             } else {
                 false
             };
@@ -181,9 +187,17 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
         // Do NOT treat generic key focus (buttons after tap) as a back step —
         // that forced a useless double swipe on Android.
+        // Setup screens are the exception: mouse Back is also a key within
+        // 140ms, and returning here drops the real pop. Blur, then pop.
         if self.text_field_has_focus(cx) {
             self.dismiss_soft_keyboard(cx);
-            return true;
+            let setup = matches!(
+                app_state().lock().unwrap().screen,
+                Screen::Onboard | Screen::ClientPair | Screen::DeviceSetup
+            );
+            if !setup {
+                return true;
+            }
         }
         // In-screen layers before screen history (native / mouse / Android back).
         {
@@ -209,8 +223,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             {
                 st.device_setup_sections_open.retain(|k| k != "language");
                 drop(st);
-                self.sync_device_setup_sections(cx);
-                self.ui.redraw(cx);
+                self.sync_chrome(cx);
                 return true;
             }
             // Onboard nested: Bring my book → back to Start fresh choice.
@@ -2107,5 +2120,233 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         if repaint {
             self.paint_floor_area_tabs(cx);
         }
+    }
+
+    fn route_printer_slot_at(&mut self, cx: &mut Cx, abs: DVec2) -> Option<usize> {
+        let n = {
+            let st = app_state().lock().unwrap();
+            let key = parse_printer_route_key(&st.printer_route_key);
+            st.printer_draft.route_for(key).len()
+        };
+        if n == 0 {
+            return None;
+        }
+        let list = self
+            .ui
+            .widget(cx, ids!(route_assigned_list))
+            .portal_list(cx, ids!(list));
+        for i in 0..n {
+            let item = list.item(cx, i, id!(Line));
+            let rect = item.view(cx, ids!(row)).area().rect(cx);
+            if rect.size.x > 0.0 && rect.size.y > 0.0 && rect.contains(abs) {
+                return Some(i);
+            }
+        }
+        None
+    }
+
+    fn route_printer_drop_slot(
+        &self,
+        d: &RoutePrinterDrag,
+        abs: DVec2,
+    ) -> Option<usize> {
+        for (i, rect) in d.rects.iter().enumerate() {
+            if rect.size.x > 0.0
+                && rect.size.y > 0.0
+                && abs.y >= rect.pos.y
+                && abs.y <= rect.pos.y + rect.size.y
+            {
+                return Some(i);
+            }
+        }
+        None
+    }
+
+    fn route_printer_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
+        *route_printer_drag().lock().unwrap() = None;
+        if app_state().lock().unwrap().screen != Screen::Settings {
+            return;
+        }
+        if !self.ui.view(cx, ids!(settings_panel_printers)).visible() {
+            return;
+        }
+        let Some(slot) = self.route_printer_slot_at(cx, abs) else {
+            return;
+        };
+        *nav_drag().lock().unwrap() = None;
+        *settings_nav_drag().lock().unwrap() = None;
+        *floor_area_drag().lock().unwrap() = None;
+        self.hide_nav_ghost(cx);
+        let list = self
+            .ui
+            .widget(cx, ids!(route_assigned_list))
+            .portal_list(cx, ids!(list));
+        let n = {
+            let st = app_state().lock().unwrap();
+            let key = parse_printer_route_key(&st.printer_route_key);
+            st.printer_draft.route_for(key).len()
+        };
+        let mut origin = abs;
+        let mut rects = Vec::with_capacity(n);
+        let mut label = String::new();
+        {
+            let st = app_state().lock().unwrap();
+            let key = parse_printer_route_key(&st.printer_route_key);
+            let ids = st.printer_draft.route_for(key);
+            if let Some(pid) = ids.get(slot) {
+                if let Some(p) = st.printer_draft.printer_by_id(pid) {
+                    label = if !p.target.trim().is_empty() {
+                        p.target.clone()
+                    } else {
+                        p.label.clone()
+                    };
+                }
+            }
+        }
+        for i in 0..n {
+            let item = list.item(cx, i, id!(Line));
+            let rect = item.view(cx, ids!(row)).area().rect(cx);
+            let found = if rect.size.x > 0.0 && rect.size.y > 0.0 {
+                if i == slot {
+                    origin = rect.pos;
+                }
+                rect
+            } else {
+                Rect::default()
+            };
+            rects.push(found);
+        }
+        *route_printer_drag().lock().unwrap() = Some(RoutePrinterDrag {
+            slot,
+            start: abs,
+            last: abs,
+            origin,
+            rects,
+            active: false,
+            hover: Some(slot),
+            finger,
+            label,
+        });
+    }
+
+    fn route_printer_drag_move(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
+        let mut active = false;
+        let mut ghost: Option<(bool, String, DVec2)> = None;
+        {
+            let mut guard = route_printer_drag().lock().unwrap();
+            if let Some(d) = guard.as_mut() {
+                if d.finger != finger {
+                    return false;
+                }
+                let was_active = d.active;
+                if !d.active && (abs - d.start).length() > 10.0 {
+                    d.active = true;
+                }
+                if d.active {
+                    active = true;
+                    d.last = abs;
+                    d.hover = self.route_printer_drop_slot(d, abs);
+                    ghost = Some((
+                        !was_active,
+                        d.label.clone(),
+                        d.origin + (abs - d.start),
+                    ));
+                }
+            }
+        }
+        if active {
+            cx.set_cursor(MouseCursor::Grabbing);
+        }
+        if let Some((first, label, pos)) = ghost {
+            if first {
+                self.show_floor_area_ghost(cx, &label, pos);
+            } else {
+                self.place_nav_ghost(cx, pos);
+            }
+        }
+        active
+    }
+
+    fn route_printer_drag_release(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
+        let taken = {
+            let mut guard = route_printer_drag().lock().unwrap();
+            match guard.as_ref() {
+                Some(d) if d.finger == finger => guard.take(),
+                _ => None,
+            }
+        };
+        if let Some(mut d) = taken {
+            self.hide_nav_ghost(cx);
+            if d.active {
+                *route_printer_tap_suppress().lock().unwrap() = true;
+                let drop_at = if abs.x != 0.0 || abs.y != 0.0 {
+                    abs
+                } else {
+                    d.last
+                };
+                d.hover = self.route_printer_drop_slot(&d, drop_at);
+                cx.set_cursor(MouseCursor::Default);
+                if let Some(target) = d.hover {
+                    if target != d.slot {
+                        let mut st = app_state().lock().unwrap();
+                        let _ = swap_focused_route_printer(&mut st, d.slot, target);
+                        drop(st);
+                        self.paint_printers_panel(cx);
+                    }
+                }
+                return true;
+            }
+        }
+        false
+    }
+
+    fn pointer_route_printer_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        enum Phase {
+            Press(DVec2, Option<u64>),
+            Move(DVec2, Option<u64>),
+            Release(DVec2, Option<u64>),
+        }
+        let phases: Vec<Phase> = match event {
+            Event::MouseDown(e) if e.button.is_primary() => {
+                vec![Phase::Press(e.abs, None)]
+            }
+            Event::MouseMove(e) => vec![Phase::Move(e.abs, None)],
+            Event::MouseUp(e) if e.button.is_primary() => {
+                vec![Phase::Release(e.abs, None)]
+            }
+            Event::TouchUpdate(e) => {
+                let mut out = Vec::new();
+                for t in &e.touches {
+                    match t.state {
+                        TouchState::Start => out.push(Phase::Press(t.abs, Some(t.uid))),
+                        TouchState::Move | TouchState::Stable => {
+                            out.push(Phase::Move(t.abs, Some(t.uid)))
+                        }
+                        TouchState::Stop => out.push(Phase::Release(t.abs, Some(t.uid))),
+                    }
+                }
+                out
+            }
+            _ => return false,
+        };
+        let mut consumed = false;
+        for phase in phases {
+            match phase {
+                Phase::Press(abs, finger) => {
+                    self.route_printer_drag_press(cx, abs, finger);
+                }
+                Phase::Move(abs, finger) => {
+                    if self.route_printer_drag_move(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+                Phase::Release(abs, finger) => {
+                    if self.route_printer_drag_release(cx, abs, finger) {
+                        consumed = true;
+                    }
+                }
+            }
+        }
+        consumed
     }
 }

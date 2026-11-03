@@ -76,6 +76,30 @@ pub enum RouteKey<'a> {
 pub const FORMAT_STANDARD: &str = "standard";
 pub const FORMAT_KOT: &str = "kot";
 
+/// Route slot: `printer_id` or `printer_id@format_id`.
+fn encode_route_slot(printer_id: &str, format_id: &str) -> String {
+    let p = printer_id.trim();
+    let f = format_id.trim();
+    if p.is_empty() {
+        return String::new();
+    }
+    if f.is_empty() {
+        p.to_string()
+    } else {
+        format!("{p}@{f}")
+    }
+}
+
+fn decode_route_slot(slot: &str) -> (String, String) {
+    let s = slot.trim();
+    if let Some((p, f)) = s.rsplit_once('@') {
+        if !p.is_empty() && !f.is_empty() {
+            return (p.to_string(), f.to_string());
+        }
+    }
+    (s.to_string(), String::new())
+}
+
 /// One slip format: how the ticket is drawn / sent.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PrintFormat {
@@ -367,39 +391,36 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
 }
 
 impl DevicePrinters {
-    /// Ordered printer ids for this route (empty = don't print).
+    /// Ordered printer ids for this route (empty = don't print that place).
     ///
-    /// KOT lookup order (owner can still leave a route empty on purpose by
-    /// clearing Bill too):
-    /// 1. that station's own list
-    /// 2. default kitchen `""` (unassigned + stations with no printers yet)
-    /// 3. **Bill** — so a shop with one printer on Bill still gets every KOT
+    /// Each Bill / kitchen station is independent. If this station already has
+    /// its own map entry — even an empty one after the owner cleared it — that
+    /// list is used as-is (no silent copy onto every other station).
+    ///
+    /// Only when the station key is **missing** (legacy / never configured)
+    /// do we fall back: default kitchen `""`, then Bill.
     pub fn route_for(&self, key: RouteKey<'_>) -> &[String] {
         match key {
             RouteKey::Bill => &self.routes.bill,
             RouteKey::Kot { station_id } => {
-                let own = self
-                    .routes
-                    .kot
-                    .get(station_id)
-                    .map(|v| v.as_slice())
-                    .unwrap_or(&[]);
-                let kitchen = if !own.is_empty() {
-                    own
+                if let Some(own) = self.routes.kot.get(station_id) {
+                    // Named kitchen: empty list = don't print there (owner's choice).
+                    if !station_id.is_empty() {
+                        return own.as_slice();
+                    }
+                    // Default kitchen `""`: use it when non-empty; else Bill.
+                    if !own.is_empty() {
+                        return own.as_slice();
+                    }
                 } else if !station_id.is_empty() {
-                    self.routes
-                        .kot
-                        .get("")
-                        .map(|v| v.as_slice())
-                        .unwrap_or(&[])
-                } else {
-                    own
-                };
-                if !kitchen.is_empty() {
-                    kitchen
-                } else {
-                    self.routes.bill.as_slice()
+                    // Station never configured — try default kitchen, then Bill.
+                    if let Some(kitchen) = self.routes.kot.get("") {
+                        if !kitchen.is_empty() {
+                            return kitchen.as_slice();
+                        }
+                    }
                 }
+                self.routes.bill.as_slice()
             }
         }
     }
@@ -493,23 +514,41 @@ impl DevicePrinters {
         }
     }
 
-    /// Resolve route ids to target + the route's format.
+    /// Resolve route slots to target + that slot's format.
+    /// Slot strings are `printer_id` (legacy → place default format) or
+    /// `printer_id@format_id` (per-assignment format).
     pub fn destinations_for(&self, key: RouteKey<'_>) -> Vec<PrintDest> {
-        let format = self.format_for(key);
+        let place_default = self.format_for(key);
         self.route_for(key)
             .iter()
-            .filter_map(|id| {
-                let p = self.printers.iter().find(|p| p.id == *id)?;
+            .filter_map(|slot| {
+                let (pid, fmt_id) = decode_route_slot(slot);
+                let p = self.printers.iter().find(|p| p.id == pid)?;
+                let format = if fmt_id.is_empty() {
+                    place_default.clone()
+                } else {
+                    self.format_by_id(&fmt_id)
+                };
                 Some(PrintDest {
                     target: parse_target(&p.target),
-                    format: format.clone(),
+                    format,
                 })
             })
             .collect()
     }
 
     pub fn printer_by_id(&self, id: &str) -> Option<&NamedPrinter> {
-        self.printers.iter().find(|p| p.id == id)
+        let (pid, _) = decode_route_slot(id);
+        self.printers.iter().find(|p| p.id == pid)
+    }
+
+    /// Encode / decode helpers for per-assignment format on a route slot.
+    pub fn encode_route_slot(printer_id: &str, format_id: &str) -> String {
+        encode_route_slot(printer_id, format_id)
+    }
+
+    pub fn decode_route_slot(slot: &str) -> (String, String) {
+        decode_route_slot(slot)
     }
 
     pub fn add_format_from(&mut self, from_id: &str, label: &str) -> String {
@@ -553,8 +592,20 @@ impl DevicePrinters {
         }
     }
 
-    pub fn add_printer(&mut self, label: &str, target: &str) -> String {
-        let id = uuid::Uuid::new_v4().to_string();
+    /// Same destination = same printer. Target is compared case-insensitively
+    /// (CUPS / Windows names); blank target falls back to label.
+    fn printer_dedupe_key(label: &str, target: &str) -> String {
+        let t = target.trim();
+        if !t.is_empty() {
+            t.to_ascii_lowercase()
+        } else {
+            label.trim().to_ascii_lowercase()
+        }
+    }
+
+    /// Add a printer, or return the existing id when the same destination is
+    /// already saved. `newly_added` is false for duplicates.
+    pub fn ensure_printer(&mut self, label: &str, target: &str) -> (String, bool) {
         let tgt = target.trim().to_string();
         let label = {
             let t = label.trim();
@@ -566,13 +617,29 @@ impl DevicePrinters {
                 "Printer".into()
             }
         };
+        let key = Self::printer_dedupe_key(&label, &tgt);
+        if key.is_empty() {
+            return (String::new(), false);
+        }
+        if let Some(p) = self
+            .printers
+            .iter()
+            .find(|p| Self::printer_dedupe_key(&p.label, &p.target) == key)
+        {
+            return (p.id.clone(), false);
+        }
+        let id = uuid::Uuid::new_v4().to_string();
         self.printers.push(NamedPrinter {
             id: id.clone(),
             label,
             target: tgt,
             _legacy_mode: None,
         });
-        id
+        (id, true)
+    }
+
+    pub fn add_printer(&mut self, label: &str, target: &str) -> String {
+        self.ensure_printer(label, target).0
     }
 
     /// Compat for call sites that still pass a discarded mode.
@@ -580,11 +647,61 @@ impl DevicePrinters {
         self.add_printer(label, target)
     }
 
+    /// Collapse duplicate destinations (same target/name) and remap routes.
+    pub fn dedupe_printers(&mut self) {
+        let mut keep_ids: Vec<String> = Vec::new();
+        let mut remap: std::collections::HashMap<String, String> =
+            std::collections::HashMap::new();
+        let mut by_key: std::collections::HashMap<String, String> =
+            std::collections::HashMap::new();
+        let mut kept: Vec<NamedPrinter> = Vec::new();
+        for p in self.printers.drain(..) {
+            let key = Self::printer_dedupe_key(&p.label, &p.target);
+            if key.is_empty() {
+                continue;
+            }
+            if let Some(keep) = by_key.get(&key) {
+                remap.insert(p.id, keep.clone());
+            } else {
+                by_key.insert(key, p.id.clone());
+                keep_ids.push(p.id.clone());
+                remap.insert(p.id.clone(), p.id.clone());
+                kept.push(p);
+            }
+        }
+        self.printers = kept;
+        let map_slot = |slot: &mut String| {
+            let (pid, fmt) = decode_route_slot(slot);
+            if let Some(n) = remap.get(&pid) {
+                *slot = encode_route_slot(n, &fmt);
+            }
+        };
+        for slot in &mut self.routes.bill {
+            map_slot(slot);
+        }
+        self.routes.bill.dedup();
+        self.routes.bill.retain(|slot| {
+            let (pid, _) = decode_route_slot(slot);
+            keep_ids.iter().any(|k| k == &pid)
+        });
+        for ids in self.routes.kot.values_mut() {
+            for slot in ids.iter_mut() {
+                map_slot(slot);
+            }
+            ids.dedup();
+            ids.retain(|slot| {
+                let (pid, _) = decode_route_slot(slot);
+                keep_ids.iter().any(|k| k == &pid)
+            });
+        }
+        let _ = keep_ids;
+    }
+
     pub fn remove_printer(&mut self, id: &str) {
         self.printers.retain(|p| p.id != id);
-        self.routes.bill.retain(|x| x != id);
+        self.routes.bill.retain(|slot| decode_route_slot(slot).0 != id);
         for ids in self.routes.kot.values_mut() {
-            ids.retain(|x| x != id);
+            ids.retain(|slot| decode_route_slot(slot).0 != id);
         }
     }
 
@@ -733,15 +850,18 @@ fn printers_path(base: &Path) -> PathBuf {
 
 /// This install's saved printers (none saved = the defaults).
 pub fn load_device_printers(base: &Path) -> DevicePrinters {
-    fs::read_to_string(printers_path(base))
+    let mut printers: DevicePrinters = fs::read_to_string(printers_path(base))
         .ok()
         .and_then(|raw| serde_json::from_str(&raw).ok())
-        .unwrap_or_default()
+        .unwrap_or_default();
+    printers.dedupe_printers();
+    printers
 }
 
 /// Keep `printers` for this install and use them from now on.
 pub fn save_device_printers(base: &Path, printers: &DevicePrinters) -> Result<(), String> {
     let mut printers = printers.clone();
+    printers.dedupe_printers();
     PrintFormat::ensure_builtins(&mut printers.formats);
     fs::create_dir_all(base).map_err(|e| e.to_string())?;
     let raw = serde_json::to_string_pretty(&printers).map_err(|e| e.to_string())?;
@@ -1069,24 +1189,38 @@ fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
     let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
         .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
     let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-    stream.write_all(bytes).map_err(|e| e.to_string())?;
+    // Chunk writes — some heads drop mid-job when the whole raster lands at once.
+    const CHUNK: usize = 4096;
+    for piece in bytes.chunks(CHUNK) {
+        stream.write_all(piece).map_err(|e| e.to_string())?;
+    }
     stream.flush().map_err(|e| e.to_string())
 }
 
 /// Cap for one ESC/POS payload (text or raster bands).
 const ESC_POS_JOB_MAX: usize = 512_000;
 
-/// Thermal / network jobs: draw the slip as dots (`GS v 0`), then cut.
+/// Thermal / network ESC/POS job (printer-agnostic).
 ///
-/// Line gaps and every line live in the image, so we do not depend on the
-/// printer's built-in font pitch (CR overstrike → only the last line +
-/// `_`-like smear). Same idea as a rendered page, over raw ESC/POS.
+/// - Slips the built-in font can show (ASCII + ₹/dashes spelt out) go as
+///   **plain text** — LF only, never CR (CR overstrike → last line +
+///   `_`/`-` smear on many heads).
+/// - Scripts the head has no letters for (Gujarati, Hindi, …) go as a
+///   **raster picture** (`GS v 0`) drawn with Noto.
+///
+/// Always-raster used to dump binary as garbage (`_____`, `-----`, cut-off
+/// letters) on heads that do not speak `GS v 0` well. Prefer text when safe.
 pub fn escpos_job(text: &str) -> Vec<u8> {
     escpos_job_format(&PrintFormat::kot(), text)
 }
 
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
-    crate::receipt_raster::escpos_picture_metrics(text, &format.raster_metrics())
+    let cleaned = text.replace('\r', "");
+    if printer_has_letters(&cleaned) {
+        escpos_job_text(&cleaned)
+    } else {
+        crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
+    }
 }
 
 pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
@@ -1096,18 +1230,57 @@ pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
     }
 }
 
-/// Built-in-font ASCII job (tests / rare call sites). Prefer [`escpos_job`].
+/// Built-in-font ASCII job. Soft-wraps long lines to 32 cols (safe on 58 mm
+/// and 80 mm Font A) so heads do not mid-word wrap into incomplete lines.
 pub fn escpos_job_text(text: &str) -> Vec<u8> {
-    let mut out = Vec::with_capacity(text.len().saturating_add(48));
+    let wrapped = wrap_escpos_cols(text, 32);
+    let mut out = Vec::with_capacity(wrapped.len().saturating_add(48));
     out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
     out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0: PC437
     out.extend_from_slice(&[0x1B, 0x4D, 0x00]); // ESC M 0: Font A
     out.extend_from_slice(&[0x1D, 0x21, 0x00]); // GS ! 0: normal size
     out.extend_from_slice(&[0x1B, 0x61, 0x00]); // ESC a 0: left align
     out.extend_from_slice(&[0x1B, 0x32]); // ESC 2: default line spacing
-    out.extend(escpos_text(text));
+    out.extend(escpos_text(&wrapped));
     out.extend_from_slice(b"\n\n\n\n\n"); // LF only — never CR
     out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
+    out
+}
+
+/// Soft-wrap each input line to `cols` (break on spaces when possible).
+fn wrap_escpos_cols(text: &str, cols: usize) -> String {
+    let cols = cols.max(8);
+    let mut out = String::with_capacity(text.len().saturating_add(16));
+    for (i, line) in text.lines().enumerate() {
+        if i > 0 {
+            out.push('\n');
+        }
+        if line.chars().count() <= cols {
+            out.push_str(line);
+            continue;
+        }
+        let mut width = 0usize;
+        let mut first_on_row = true;
+        for word in line.split(' ') {
+            let wlen = word.chars().count();
+            if wlen == 0 {
+                continue;
+            }
+            if first_on_row {
+                out.push_str(word);
+                width = wlen;
+                first_on_row = false;
+            } else if width + 1 + wlen <= cols {
+                out.push(' ');
+                out.push_str(word);
+                width += 1 + wlen;
+            } else {
+                out.push('\n');
+                out.push_str(word);
+                width = wlen;
+            }
+        }
+    }
     out
 }
 
@@ -1378,8 +1551,14 @@ pub fn is_finding_printers() -> bool {
 }
 
 /// Ask the background Find worker to stop early (partial results still apply).
+/// Marks cancelled immediately and wakes the UI — do not wait for the /24
+/// scan join, or Cancel feels dead while Looking… stays up.
 pub fn cancel_find_printers() {
     FIND_CANCEL.store(true, std::sync::atomic::Ordering::SeqCst);
+    FIND_WAS_CANCELLED.store(true, std::sync::atomic::Ordering::SeqCst);
+    if let Some(hook) = *NOTIFY.lock().unwrap() {
+        hook();
+    }
 }
 
 /// Whether the last Find finished because Cancel was tapped.
@@ -1396,57 +1575,91 @@ pub fn printers_find_finished() -> bool {
     FOUND.lock().unwrap().is_some()
 }
 
+fn publish_found_partial(found: &[String]) {
+    let mut sorted = found.to_vec();
+    sorted.sort();
+    sorted.dedup();
+    *FOUND.lock().unwrap() = Some(sorted);
+    if let Some(hook) = *NOTIFY.lock().unwrap() {
+        hook();
+    }
+}
+
 /// Look for printers on a worker thread (system list + this Wi‑Fi's raw
 /// port-[`RAW_PRINT_PORT`] listeners). Works on Linux, macOS, Windows, and
-/// Android (network scan only there). [`found_printers`] updates afterwards
-/// and the screen is woken.
+/// Android (network scan only there).
 ///
-/// Only call from an explicit Find tap — never on Settings open / startup.
-/// A /24 port scan saturates the NIC and makes the UI feel frozen even when
-/// this runs off the UI thread.
+/// **Publishes as soon as system queues are known**, then again after the
+/// network/BT/USB passes — so Settings is not stuck on Looking… for the
+/// whole /24 scan. Only call from an explicit Find tap.
 pub fn find_printers_in_background() {
     if LOOKING.swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
     }
     FIND_CANCEL.store(false, std::sync::atomic::Ordering::SeqCst);
     FIND_WAS_CANCELLED.store(false, std::sync::atomic::Ordering::SeqCst);
+    // Drop the previous Find result immediately so the UI cannot keep
+    // showing an old/partial list (or look like the saved pool) mid-search.
+    *FOUND.lock().unwrap() = None;
+    if let Some(hook) = *NOTIFY.lock().unwrap() {
+        hook();
+    }
     if std::thread::Builder::new()
         .name("find-printers".into())
         .spawn(|| {
             let mut found = system_printers();
+            // System names first — do not wait for the /24 scan.
+            publish_found_partial(&found);
             if !find_cancelled() {
                 for addr in network_raw_printers() {
                     if !found.iter().any(|n| n == &addr) {
                         found.push(addr);
                     }
                 }
+                publish_found_partial(&found);
             }
+            // Skip BT/USB/Android service probes once Cancel was tapped —
+            // bluetoothctl / PnP can block for seconds with no cancel check.
             if !find_cancelled() {
                 for bt in crate::print_bt::list_printers() {
+                    if find_cancelled() {
+                        break;
+                    }
                     if !found.iter().any(|n| n == &bt) {
                         found.push(bt);
                     }
                 }
+                publish_found_partial(&found);
             }
             if !find_cancelled() {
                 for usb in crate::print_usb::list_printers() {
+                    if find_cancelled() {
+                        break;
+                    }
                     if !found.iter().any(|n| n == &usb) {
                         found.push(usb);
                     }
                 }
+                publish_found_partial(&found);
             }
             #[cfg(target_os = "android")]
             if !find_cancelled() {
                 for a in crate::print_android::list_print_services() {
+                    if find_cancelled() {
+                        break;
+                    }
                     if !found.iter().any(|n| n == &a) {
                         found.push(a);
                     }
                 }
+                publish_found_partial(&found);
             }
             let cancelled = find_cancelled();
-            FIND_WAS_CANCELLED.store(cancelled, std::sync::atomic::Ordering::SeqCst);
-            found.sort();
-            *FOUND.lock().unwrap() = Some(found);
+            // Keep an earlier Cancel mark — do not clear FIND_WAS_CANCELLED.
+            if cancelled {
+                FIND_WAS_CANCELLED.store(true, std::sync::atomic::Ordering::SeqCst);
+            }
+            publish_found_partial(&found);
             LOOKING.store(false, std::sync::atomic::Ordering::SeqCst);
             if let Some(hook) = *NOTIFY.lock().unwrap() {
                 hook();
@@ -1458,10 +1671,13 @@ pub fn find_printers_in_background() {
     }
 }
 
-/// System queues that still accept jobs (empty on Android — no drivers).
+/// System printer destinations (empty on Android — no drivers).
 ///
-/// Prefer accepting/enabled queues. `lpstat -e` also lists CUPS-discovered
-/// ghosts (removed USB, stale network names) that are not real destinations.
+/// Linux/macOS: union of `lpstat -e` (every CUPS destination the OS knows)
+/// and accepting queues from `lpstat -a`, minus queues `lpstat -p` marks
+/// disabled. Using only `-a` dropped valid destinations (e.g. alternate
+/// Brother_* names that `-e` lists) so Find looked like “only the one I
+/// already added”.
 fn system_printers() -> Vec<String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
@@ -1474,12 +1690,6 @@ fn system_printers() -> Vec<String> {
                 .map(|o| String::from_utf8_lossy(&o.stdout).into_owned())
                 .unwrap_or_default()
         };
-        // First token of each `lpstat -a` line is a queue that accepts jobs.
-        let accepting: Vec<String> = out(&["-a"])
-            .lines()
-            .filter_map(|l| l.split_whitespace().next().map(str::to_string))
-            .filter(|n| !n.is_empty())
-            .collect();
         // `lpstat -p`: "printer NAME is idle.  enabled …" or "… disabled …"
         let disabled: std::collections::HashSet<String> = out(&["-p"])
             .lines()
@@ -1490,10 +1700,25 @@ fn system_printers() -> Vec<String> {
                     .map(str::to_string)
             })
             .collect();
-        accepting
-            .into_iter()
-            .filter(|n| !disabled.contains(n))
-            .collect()
+        let mut names: Vec<String> = out(&["-e"])
+            .lines()
+            .map(str::trim)
+            .filter(|n| !n.is_empty() && !disabled.contains(*n))
+            .map(str::to_string)
+            .collect();
+        // Accepting queues — cover cases where `-e` is empty or incomplete.
+        for n in out(&["-a"])
+            .lines()
+            .filter_map(|l| l.split_whitespace().next().map(str::to_string))
+            .filter(|n| !n.is_empty() && !disabled.contains(n))
+        {
+            if !names.iter().any(|x| x == &n) {
+                names.push(n);
+            }
+        }
+        names.sort();
+        names.dedup();
+        names
     }
     #[cfg(target_os = "windows")]
     {
@@ -1530,11 +1755,16 @@ fn system_printers() -> Vec<String> {
 /// Hosts on this /24 that accept TCP on the raw ESC/POS port — the usual
 /// way to find network receipt printers from phones and desktops alike.
 ///
-/// Short per-host timeout and small chunks (many workers) so Find finishes
-/// in ~0.5s instead of multi-second NIC saturation.
+/// Bounded worker pool (not one thread per chunk) so Cancel can stop the
+/// scan without thrashing the NIC / thread table. Each connect is short
+/// and checks the cancel flag between hosts.
 fn network_raw_printers() -> Vec<String> {
     use std::net::{SocketAddr, TcpStream, UdpSocket};
+    use std::sync::atomic::{AtomicUsize, Ordering};
     use std::sync::Arc;
+    if find_cancelled() {
+        return Vec::new();
+    }
     let Some(ip) = (|| {
         let socket = UdpSocket::bind("0.0.0.0:0").ok()?;
         socket.connect("10.255.255.255:1").ok()?;
@@ -1546,23 +1776,32 @@ fn network_raw_printers() -> Vec<String> {
         return Vec::new();
     };
     let o = ip.octets();
-    let addrs: Vec<SocketAddr> = (1u8..=254)
-        .filter(|h| *h != o[3])
-        .map(|h| SocketAddr::from(([o[0], o[1], o[2], h], RAW_PRINT_PORT)))
-        .collect();
+    let addrs: Arc<Vec<SocketAddr>> = Arc::new(
+        (1u8..=254)
+            .filter(|h| *h != o[3])
+            .map(|h| SocketAddr::from(([o[0], o[1], o[2], h], RAW_PRINT_PORT)))
+            .collect(),
+    );
+    let next = Arc::new(AtomicUsize::new(0));
     let found = Arc::new(Mutex::new(Vec::new()));
-    // ~64 workers × 4 hosts × 80ms ≈ 0.3s worst case (was 8×32×200ms ≈ 6s).
-    let workers: Vec<_> = addrs
-        .chunks(4)
-        .map(|chunk| {
-            let chunk = chunk.to_vec();
+    // 16 workers × ~16 hosts × 50ms ≈ 0.8s worst case; Cancel aborts the
+    // next host pick so joins finish within one connect timeout.
+    const WORKERS: usize = 16;
+    let workers: Vec<_> = (0..WORKERS)
+        .map(|_| {
+            let addrs = Arc::clone(&addrs);
+            let next = Arc::clone(&next);
             let found = Arc::clone(&found);
             std::thread::spawn(move || {
-                for addr in chunk {
+                loop {
                     if find_cancelled() {
                         break;
                     }
-                    if TcpStream::connect_timeout(&addr, Duration::from_millis(80)).is_ok() {
+                    let i = next.fetch_add(1, Ordering::SeqCst);
+                    let Some(addr) = addrs.get(i) else {
+                        break;
+                    };
+                    if TcpStream::connect_timeout(addr, Duration::from_millis(50)).is_ok() {
                         found.lock().unwrap().push(addr.ip().to_string());
                     }
                 }
@@ -1662,11 +1901,11 @@ mod tests {
     }
 
     #[test]
-    fn empty_kot_falls_back_to_bill_printer() {
+    fn missing_station_falls_back_to_bill_printer() {
         let mut cfg = DevicePrinters::default();
         let p = cfg.add_printer("Counter", "192.168.1.50");
         cfg.routes.bill = vec![p.clone()];
-        // No KOT routes filled — Bill still prints kitchen tickets.
+        // No KOT map entries at all — legacy fallthrough to Bill.
         assert_eq!(
             cfg.route_for(RouteKey::Kot { station_id: "" }),
             &[p.clone()]
@@ -1675,8 +1914,16 @@ mod tests {
             cfg.route_for(RouteKey::Kot {
                 station_id: "station-a"
             }),
-            &[p]
+            &[p.clone()]
         );
+        // An explicit empty station entry means don't print there — not Bill.
+        cfg.ensure_station_routes(["station-a"]);
+        assert!(cfg
+            .route_for(RouteKey::Kot {
+                station_id: "station-a"
+            })
+            .is_empty());
+        assert_eq!(cfg.route_for(RouteKey::Bill), &[p][..]);
     }
 
     /// What the owner types picks the kind of printer.
@@ -1698,19 +1945,25 @@ mod tests {
         assert_eq!(escpos_text("ખીચડી"), b"?????".to_vec());
         assert!(printer_has_letters("Thali × 2 — ₹500"));
         assert!(!printer_has_letters("ખીચડી"));
-        // Built-in-font path stays ASCII; thermal wire uses raster instead.
+        // Built-in-font path stays ASCII (even when forced); Indic slips use raster.
         let text_job = escpos_job_text("2 x ખીચડી");
         assert!(!text_job.windows(3).any(|w| w == [0x1D, 0x76, 0x30]));
         assert!(text_job.windows(5).any(|w| w == b"?????"));
         assert!(text_job.len() < 256, "text job must stay tiny, got {}", text_job.len());
-        let job = escpos_job("KOT 7\n2 x Thali\n1 x Roti");
-        assert_eq!(&job[..2], &[0x1B, 0x40]);
+        let ascii_job = escpos_job("KOT 7\n2 x Thali\n1 x Roti");
+        assert_eq!(&ascii_job[..2], &[0x1B, 0x40]);
         assert!(
-            job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "thermal jobs are raster so every line has spacing in the image"
+            !ascii_job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "ASCII slips use plain ESC/POS text — not GS v 0 raster"
         );
-        assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
-        assert!(job.len() < ESC_POS_JOB_MAX);
+        assert!(ascii_job.windows(5).any(|w| w == b"Thali"));
+        assert!(ascii_job.ends_with(&[0x1D, 0x56, 0x00]));
+        assert!(ascii_job.len() < ESC_POS_JOB_MAX);
+        let indic = escpos_job("KOT\nખીચડી x 2");
+        assert!(
+            indic.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "scripts without built-in letters still use raster"
+        );
         assert_eq!(escpos_text("A\u{1b}B\n"), b"A?B\n".to_vec());
         // CR must never appear — it overstrikes on many heads.
         assert!(!escpos_text("A\nB").contains(&b'\r'));
@@ -1718,16 +1971,21 @@ mod tests {
     }
 
 
-    /// Thermal wire sends a picture job (GS v 0), not a page/document spool.
+    /// ASCII thermal jobs stay plain ESC/POS; Indic still uses GS v 0 raster.
     #[test]
-    fn escpos_jobs_are_raster_not_page_documents() {
-        let job = escpos_job("KOT 1\n2 x Tea\n1 x Roti");
-        assert_eq!(&job[..2], &[0x1B, 0x40], "reset");
+    fn escpos_jobs_prefer_text_when_printer_has_letters() {
+        let ascii = escpos_job("KOT 1\n2 x Tea\n1 x Roti");
+        assert_eq!(&ascii[..2], &[0x1B, 0x40], "reset");
         assert!(
-            job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "GS v 0 raster"
+            !ascii.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "plain text for ASCII"
         );
-        assert!(job.len() < ESC_POS_JOB_MAX);
+        let indic = escpos_job("ખીચડી");
+        assert!(
+            indic.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "raster for scripts without built-in letters"
+        );
+        assert!(indic.len() < ESC_POS_JOB_MAX);
         assert!(escpos_text("Café").iter().all(|&b| b != 0xC3));
     }
 
@@ -1871,22 +2129,22 @@ mod tests {
             }),
             vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
-        // Station with no printers of its own uses the default kitchen route.
+        // Unknown station (no map entry) still falls back to default kitchen.
         assert_eq!(
             cfg.route_for(RouteKey::Kot {
                 station_id: "unknown"
             }),
             &[main.clone()][..]
         );
+        // Explicit empty list = this station prints nowhere (not a shared pool).
         *cfg.route_mut(RouteKey::Kot {
             station_id: "st-bar",
         }) = Vec::new();
-        assert_eq!(
-            cfg.route_for(RouteKey::Kot {
+        assert!(cfg
+            .route_for(RouteKey::Kot {
                 station_id: "st-bar"
-            }),
-            &[main][..]
-        );
+            })
+            .is_empty());
     }
 
     #[test]
@@ -1905,5 +2163,27 @@ mod tests {
             cfg.targets_for(key),
             vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
+    }
+
+    #[test]
+    fn same_destination_is_not_added_twice() {
+        let mut cfg = DevicePrinters::default();
+        let (a, first) = cfg.ensure_printer("80Series2", "80Series2");
+        let (b, second) = cfg.ensure_printer("80Series2", "80Series2");
+        assert!(first);
+        assert!(!second);
+        assert_eq!(a, b);
+        assert_eq!(cfg.printers.len(), 1);
+        // Pre-existing duplicates collapse on dedupe.
+        cfg.printers.push(NamedPrinter {
+            id: "dup".into(),
+            label: "80Series2".into(),
+            target: "80Series2".into(),
+            _legacy_mode: None,
+        });
+        *cfg.route_mut(RouteKey::Bill) = vec![a.clone(), "dup".into()];
+        cfg.dedupe_printers();
+        assert_eq!(cfg.printers.len(), 1);
+        assert_eq!(cfg.route_for(RouteKey::Bill), &[a][..]);
     }
 }

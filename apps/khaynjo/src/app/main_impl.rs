@@ -100,12 +100,12 @@ impl AppMain for App {
                 printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
                 match result {
                     Ok(()) => {
-                        self.set_status(cx, app_state().lock().unwrap().t("printers_saved"));
+                        self.set_status(cx, app_t("printers_saved"));
                         self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.set_status(cx, app_t("cancelled"));
                         self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
@@ -124,7 +124,7 @@ impl AppMain for App {
                         self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.set_status(cx, app_t("cancelled"));
                         self.sync_chrome(cx);
                     }
                     Err(e) => self.set_status(cx, e),
@@ -138,7 +138,7 @@ impl AppMain for App {
                         self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                        self.set_status(cx, app_t("cancelled"));
                         self.sync_chrome(cx);
                     }
                     Err(e) => self.set_status(cx, e),
@@ -237,7 +237,7 @@ impl AppMain for App {
                 match msg {
                     Ok(m) => self.set_status(cx, m),
                     Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_state().lock().unwrap().t("cancelled"))
+                        self.set_status(cx, app_t("cancelled"))
                     }
                     Err(e) => self.set_status(cx, e),
                 }
@@ -271,16 +271,50 @@ impl AppMain for App {
                 let finding = print_share::is_finding_printers();
                 static WAS_FINDING: std::sync::atomic::AtomicBool =
                     std::sync::atomic::AtomicBool::new(false);
+                static SAW_CANCEL: std::sync::atomic::AtomicBool =
+                    std::sync::atomic::AtomicBool::new(false);
                 let was_finding = WAS_FINDING.swap(finding, std::sync::atomic::Ordering::SeqCst);
                 let cancelled = print_share::find_printers_was_cancelled();
-                if finding || was_finding || cancelled {
-                    self.show_found_printers(cx);
+                if !cancelled {
+                    SAW_CANCEL.store(false, std::sync::atomic::Ordering::SeqCst);
                 }
-                if cancelled {
-                    self.set_status(cx, app_state().lock().unwrap().t("cancelled"));
+                // Edge-trigger Cancel — the flag stays set until the next Find,
+                // and used to re-paint / set_status on every Signal forever.
+                let cancel_edge = cancelled
+                    && !SAW_CANCEL.swap(true, std::sync::atomic::Ordering::SeqCst);
+                if finding || was_finding || cancel_edge {
+                    // Progressive Find: merge whatever is published so far
+                    // into the pool and repaint — do not wait for the /24 scan.
+                    let sync_msg = if !cancelled && print_share::printers_find_finished() {
+                        let mut st = app_state().lock().unwrap();
+                        match sync_found_printers_into_pool(&mut st) {
+                            Ok((0, 0)) if !finding => Some(st.t("printers_none_found")),
+                            Ok((new, n)) if was_finding && !finding => Some(
+                                st.t("printers_find_synced")
+                                    .replace("{n}", &n.to_string())
+                                    .replace("{new}", &new.to_string()),
+                            ),
+                            Ok(_) => None,
+                            Err(e) => Some(e),
+                        }
+                    } else {
+                        None
+                    };
+                    if let Some(msg) = sync_msg {
+                        self.set_status(cx, msg);
+                    }
+                    if self.ui.view(cx, ids!(settings_panel_printers)).visible() {
+                        self.paint_printers_panel(cx);
+                    } else {
+                        self.show_found_printers(cx);
+                    }
+                }
+                if cancel_edge {
+                    self.set_status(cx, app_t("cancelled"));
                 }
                 if finding
                     || was_finding
+                    || cancel_edge
                     || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
                 {
                     self.paint_submit_busy_chrome(cx);
@@ -340,6 +374,9 @@ impl AppMain for App {
             }
         }
         if self.pointer_sidebar_settings_drag(cx, event) {
+            return;
+        }
+        if self.pointer_route_printer_drag(cx, event) {
             return;
         }
         if self.pointer_nav_drag(cx, event) {

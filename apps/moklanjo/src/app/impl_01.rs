@@ -1,5 +1,7 @@
 impl App {
 fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
+        // Never `set_status(cx, app_state().lock().unwrap().t(...))` — temporary
+        // MutexGuard spans this call and deadlocks (use `app_t` / a `let` first).
         let msg = msg.into();
         let kind = snack::classify(&msg);
         self.set_status_line_only(cx, &msg);

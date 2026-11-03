@@ -434,17 +434,94 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.set_report_rows(cx, list, rows);
     }
 
-    /// Settings → Printers: what the printer search says, and the printers
-    /// it found as a list under it.
+    /// Settings → Printers: Find status line only. The pool list is the
+    /// single printer list (Find refreshes it — no second “found” list).
     fn show_found_printers(&mut self, cx: &mut Cx) {
-        let (line, rows) = {
+        let line = {
             let st = app_state().lock().unwrap();
-            printers_found_rows(|k| st.t(k))
+            printers_found_line(|k| st.t(k))
         };
         self.ui
             .widget(cx, ids!(printers_found_label))
             .set_text(cx, &plain_display_text(&line));
-        self.set_report_rows(cx, ids!(printers_found_list), rows);
+        self.ui
+            .widget(cx, ids!(printers_found_label))
+            .set_visible(cx, !line.trim().is_empty());
+        self.ui
+            .widget(cx, ids!(printers_found_list))
+            .set_visible(cx, false);
+    }
+
+    /// Kitchen printing panel only — never full `sync_chrome` after Add /
+    /// assign / Remove (that rebuilt all of Settings and froze the UI).
+    ///
+    /// Hard rule (DEV.md bug 7): this paint path must **never** `set_text` a
+    /// Fill+wrap face (Stack*/SegBtn). Place chips and add-printer buttons are
+    /// Fit (ChipBtn / QuietFitBtn). Kitchen on/off and KOT/Standard are
+    /// visibility swaps of fixed-label overlays.
+    fn paint_printers_panel(&mut self, cx: &mut Cx) {
+        let (on, pool_rows, assigned_rows, place_label, assign_label) = {
+            let mut st = app_state().lock().unwrap();
+            let on = st
+                .store
+                .as_ref()
+                .map(|s| s.kot_auto_print())
+                .unwrap_or(true);
+            let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
+            st.printer_draft.ensure_station_routes(station_ids);
+            let before = st.printer_draft.printers.len();
+            st.printer_draft.dedupe_printers();
+            if st.printer_draft.printers.len() != before {
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                }
+            }
+            let _ = normalize_focused_route(&mut st);
+            let selected = st.printer_selected_id.clone();
+            let pool_rows =
+                printers_pool_rows(&st.printer_draft, selected.as_deref(), |k| st.t(k));
+            let sel = st.printer_route_sel.clone();
+            let assigned_rows = focused_route_printer_rows(
+                &st.printer_draft,
+                &st.printer_route_key,
+                sel.as_deref(),
+                |k| st.t(k),
+            );
+            let place_choices =
+                printer_place_choices(&st.stations, &st.printer_route_key, |k| st.t(k));
+            let place_label = place_choices
+                .iter()
+                .find(|(_, _, selected)| *selected)
+                .map(|(_, label, _)| label.clone())
+                .or_else(|| place_choices.first().map(|(_, label, _)| label.clone()))
+                .unwrap_or_else(|| st.t("route_bill"));
+            let assign_label = st
+                .t("printer_assign_dd")
+                .replace("{place}", &place_label);
+            (on, pool_rows, assigned_rows, place_label, assign_label)
+        };
+        self.paint_choice_pair(cx, ids!(kot_print_off), ids!(kot_print_on), on);
+        self.show_found_printers(cx);
+        self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        let assigned_empty = assigned_rows.is_empty();
+        self.set_report_rows(cx, ids!(route_assigned_list), assigned_rows);
+        self.ui
+            .widget(cx, ids!(route_assigned_empty))
+            .set_visible(cx, assigned_empty);
+        self.ui
+            .widget(cx, ids!(route_assigned_list))
+            .set_visible(cx, !assigned_empty);
+        self.ui
+            .button(cx, ids!(printer_place_dd))
+            .set_text(cx, &place_label);
+        self.ui
+            .button(cx, ids!(printer_assign_dd))
+            .set_text(cx, &assign_label);
+        // Legacy +chips stay hidden — assign is the checkbox dropdown.
+        self.ui.view(cx, ids!(route_add_printers)).set_visible(cx, false);
+        for id in ROUTE_ADD_PRINTER_BTNS.iter() {
+            self.ui.button(cx, id).set_visible(cx, false);
+        }
     }
 
     fn align_label(&mut self, cx: &mut Cx, id: &[LiveId], rtl: bool) {
@@ -655,12 +732,16 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_units_heading), rtl);
         self.align_label(cx, ids!(h_kitchen_printing), rtl);
         self.align_label(cx, ids!(h_printers), rtl);
+        self.align_label(cx, ids!(h_printers_find), rtl);
+        self.align_label(cx, ids!(h_printers_pool), rtl);
         self.align_label(cx, ids!(h_printers_help), rtl);
         self.align_label(cx, ids!(route_editing_label), rtl);
+        self.align_label(cx, ids!(h_route_pick), rtl);
+        self.align_label(cx, ids!(h_route_assigned), rtl);
+        self.align_label(cx, ids!(route_assigned_empty), rtl);
+        self.align_label(cx, ids!(h_route_add), rtl);
         self.align_label(cx, ids!(printers_found_label), rtl);
-        self.align_input(cx, ids!(printer_label_input), rtl);
         self.align_input(cx, ids!(printer_target_input), rtl);
-        self.align_input(cx, ids!(route_pick_input), rtl);
         self.align_label(cx, ids!(h_backup), rtl);
         self.align_label(cx, ids!(h_diag), rtl);
         self.align_label(cx, ids!(diag_privacy_help), rtl);
@@ -900,9 +981,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(line_target_input), "line_target_ph"),
             (ids!(line_pin_input), "approval_pin_ph"),
             (ids!(menu_search_input), "menu_search_ph"),
-            (ids!(printer_label_input), "printer_label_ph"),
             (ids!(printer_target_input), "printer_target_ph"),
-            (ids!(route_pick_input), "route_pick_ph"),
             (ids!(tendered_input), "customer_paid_ph"),
             (ids!(tip_input), "tip_ph"),
             (ids!(table_area_input), "table_area_ph"),
@@ -1068,9 +1147,24 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_kot_print_help_khaynjo)).set_text(cx, &plain_display_text(&s("kot_print_help_khaynjo")));
         self.ui.widget(cx, ids!(h_printers)).set_text(cx, &plain_display_text(&s("printers_heading")));
         self.ui.widget(cx, ids!(h_printers_help)).set_text(cx, &plain_display_text(&s("printers_help")));
-        self.ui.widget(cx, ids!(h_printers_pool)).set_text(cx, &plain_display_text(&s("printers_pool_heading")));
-        self.ui.widget(cx, ids!(h_printers_routes)).set_text(cx, &plain_display_text(&s("printers_routes_heading")));
-        self.ui.widget(cx, ids!(h_printers_routes_help)).set_text(cx, &plain_display_text(&s("printers_routes_help")));
+        {
+            let help = self.ui.widget(cx, ids!(printers_panel_help)).as_info_help();
+            help.set_title(cx, &s("printers_heading"));
+            help.set_tip(&plain_display_text(&s("printers_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(printers_find_help)).as_info_help();
+            help.set_title(cx, &s("printers_find_heading"));
+            help.set_tip(&plain_display_text(&s("printers_find_tip")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(printers_routes_help)).as_info_help();
+            help.set_title(cx, &s("printers_routes_heading"));
+            help.set_tip(&plain_display_text(&s("printers_routes_help")));
+        }
+        self.ui
+            .widget(cx, ids!(route_assigned_empty))
+            .set_text(cx, &plain_display_text(&s("route_assigned_empty")));
         self.ui.widget(cx, ids!(station_manage_heading)).set_text(cx, &plain_display_text(&s("station_manage_heading")));
         self.ui.button(cx, ids!(settings_station_add)).set_text(cx, &s("add_station"));
         self.ui.button(cx, ids!(settings_station_remove)).set_text(cx, &s("station_remove"));
@@ -1080,34 +1174,15 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(settings_station_remove_input))
             .set_empty_text(cx, s("station_remove_ph"));
-        if !print_share::is_finding_printers() {
-            self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &s("find_printers"));
-        }
+        // Find / Add / Remove / Clear / test page are Fill+wrap. Never
+        // set_text them — that froze this screen (DEV.md bug 7). DSL labels
+        // stay. Cancel is QuietFitBtn (Fit, no wrap).
         self.ui
             .button(cx, ids!(find_printers_cancel))
             .set_text(cx, &s("cancel"));
         self.ui
-            .widget(cx, ids!(h_printer_wire))
-            .set_text(cx, &plain_display_text(&s("printer_wire_heading")));
-        for path in [ids!(printer_wire_escpos), ids!(printer_wire_escpos_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("printer_wire_escpos"));
-        }
-        for path in [ids!(printer_wire_os), ids!(printer_wire_os_on)] {
-            self.ui.button(cx, path).set_text(cx, &s("printer_wire_os"));
-        }
-        if !printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
-            self.ui.button(cx, ids!(printer_add)).set_text(cx, &s("add_printer"));
-        }
-        self.ui
             .button(cx, ids!(printer_add_cancel))
             .set_text(cx, &s("cancel"));
-        self.ui.button(cx, ids!(printer_remove)).set_text(cx, &s("remove_printer"));
-        self.ui.button(cx, ids!(route_up)).set_text(cx, &s("route_up"));
-        self.ui.button(cx, ids!(route_down)).set_text(cx, &s("route_down"));
-        self.ui.button(cx, ids!(route_remove)).set_text(cx, &s("route_remove"));
-        self.ui.button(cx, ids!(route_clear)).set_text(cx, &s("route_clear"));
-        self.ui.button(cx, ids!(printers_save)).set_text(cx, &s("save_printers"));
-        self.ui.button(cx, ids!(print_test_btn)).set_text(cx, &s("print_test_page"));
         self.ui.widget(cx, ids!(h_backup)).set_text(cx, &plain_display_text(&s("backup")));
         self.ui.widget(cx, ids!(h_drawer_count)).set_text(cx, &plain_display_text(&s("drawer_count")));
         self.ui.widget(cx, ids!(h_paid_by_2)).set_text(cx, &plain_display_text(&s("paid_by")));

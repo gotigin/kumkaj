@@ -14,7 +14,16 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             if st.must_confirm_device_role {
                 st.screen = Screen::DeviceSetup;
             } else if st.session.is_some() && st.screen == Screen::Lock {
-                st.screen = unlocked_home();
+                // Hot-reload must not stick on Lock while a session is live.
+                // A new server still has to set the Owner PIN and finish
+                // setup — do not dump that shop straight into the till.
+                if st.device_role.is_host() && !st.owner_setup_complete {
+                    // Stay on Lock.
+                } else if st.device_role.is_host() && !st.onboarding_complete {
+                    st.screen = Screen::Onboard;
+                } else {
+                    st.screen = unlocked_home();
+                }
             }
             // Follow-OS mode: keep UI language in sync with the device.
             if st.language_follow_platform {
@@ -1898,9 +1907,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Back chrome: header ‹ when the unlocked header is on screen; body
-        // Back on auth screens where that header is hidden (ClientPair,
-        // Onboard, Server-pick). Never leave a nested/auth step with no Back.
+        // Back chrome: one header ‹. It calls navigate_back (mouse / Android /
+        // Alt+← / edge swipe use that same function). Nested setup shows it
+        // too — the header used to stay hidden there, so Back never appeared.
         {
             let (show_header_back, show_client_pair_back, show_onboard_back, show_server_pick_cancel) =
             {
@@ -1912,11 +1921,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 let nested = st.screen == Screen::SidebarSettings
                     || (st.screen == Screen::Settings && st.settings_panel.is_some())
                     || !st.nav_back.is_empty();
+                let setup_back = setup_shows_header_back(&st);
                 (
-                    header_on && nested,
-                    st.screen == Screen::ClientPair,
-                    st.screen == Screen::Onboard && !st.onboarding_complete,
-                    st.picking_server,
+                    (header_on && nested) || setup_back,
+                    false,
+                    false,
+                    false,
                 )
             };
             self.ui
@@ -1975,24 +1985,18 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(find_printers_cancel))
             .set_visible(cx, finding);
 
-        // Text-only busy + Fit Cancel. No ActionStack face swap (that redraw
-        // path kept freezing Settings via Makepad wrap+Fill log spam).
-        if printer_add {
-            self.ui.button(cx, ids!(printer_add)).set_text(
-                cx,
-                status.as_deref().unwrap_or("Adding printer…"),
-            );
-        } else {
-            self.ui
-                .button(cx, ids!(printer_add))
-                .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
-        }
+        // Add/Remove are sync now — never rewrite the Add face while "busy"
+        // (that set_text + wrap path froze Settings and left Adding… stuck).
+        let _ = (printer_add, &status);
+        self.ui
+            .button(cx, ids!(printer_add))
+            .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
         self.ui
             .button(cx, ids!(printer_add_cancel))
             .set_text(cx, &cancel_lbl);
         self.ui
             .button(cx, ids!(printer_add_cancel))
-            .set_visible(cx, printer_add);
+            .set_visible(cx, false);
 
         if backup {
             self.ui

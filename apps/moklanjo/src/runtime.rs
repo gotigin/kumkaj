@@ -3,6 +3,15 @@ fn app_state() -> &'static Mutex<AppState> {
     STATE.get_or_init(|| Mutex::new(AppState::boot()))
 }
 
+/// Locale string with the lock released before return.
+///
+/// Never write `set_status(cx, app_state().lock().unwrap().t(...))` — the
+/// temporary MutexGuard lives for the whole statement, so `set_status` (which
+/// locks again) deadlocks the UI thread.
+fn app_t(key: &str) -> String {
+    app_state().lock().unwrap().t(key)
+}
+
 /// Pending desktop window restore. Applied at Startup via `configure_window`,
 /// then re-checked on the first `WindowGeomChange` (Windows sometimes creates
 /// with the DSL default and ignores create_inner_size until a post-create resize).
@@ -146,6 +155,12 @@ fn backup_once() -> &'static Mutex<Option<Result<PathBuf, String>>> {
 fn backup_busy() -> &'static std::sync::atomic::AtomicBool {
     static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &BUSY
+}
+
+/// First tap on Create new server only arms this. The second tap creates.
+fn new_server_armed() -> &'static std::sync::atomic::AtomicBool {
+    static ARM: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &ARM
 }
 
 fn backup_cancel() -> &'static std::sync::atomic::AtomicBool {
@@ -424,60 +439,9 @@ fn printer_add_once() -> &'static Mutex<Option<Result<(), String>>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
-enum PrinterAddOp {
-    Add { label: String, target: String },
-    Remove { id: Option<String> },
-}
-
 fn printer_add_result_draft() -> &'static Mutex<Option<print_share::DevicePrinters>> {
     static SLOT: OnceLock<Mutex<Option<print_share::DevicePrinters>>> = OnceLock::new();
     SLOT.get_or_init(|| Mutex::new(None))
-}
-
-/// Persist printer pool off the UI thread (file IO can hitch Settings).
-/// Caller must already have set [`printer_add_busy`] + status and painted the busy face.
-fn printer_add_job_continue(
-    base: PathBuf,
-    mut draft: print_share::DevicePrinters,
-    op: PrinterAddOp,
-) {
-    let _ = std::thread::Builder::new()
-        .name("moklanjo-printer-add".into())
-        .spawn(move || {
-            let result = (|| -> Result<print_share::DevicePrinters, String> {
-                if printer_add_cancel_flag().load(std::sync::atomic::Ordering::SeqCst) {
-                    return Err("Cancelled".into());
-                }
-                match op {
-                    PrinterAddOp::Add { label, target } => {
-                        draft.add_printer(&label, &target);
-                    }
-                    PrinterAddOp::Remove { id } => {
-                        if let Some(id) = id {
-                            draft.remove_printer(&id);
-                        }
-                    }
-                }
-                if printer_add_cancel_flag().load(std::sync::atomic::Ordering::SeqCst) {
-                    return Err("Cancelled".into());
-                }
-                // Never USB/BT I/O here — pool file write only.
-                print_share::save_device_printers(&base, &draft)?;
-                Ok(draft)
-            })();
-            match result {
-                Ok(draft) => {
-                    *printer_add_result_draft().lock().unwrap() = Some(draft);
-                    *printer_add_once().lock().unwrap() = Some(Ok(()));
-                }
-                Err(e) => {
-                    *printer_add_result_draft().lock().unwrap() = None;
-                    *printer_add_once().lock().unwrap() = Some(Err(e));
-                }
-            }
-            // Keep busy until UI takes the result and applies the draft.
-            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-        });
 }
 
 fn branch_busy() -> &'static std::sync::atomic::AtomicBool {

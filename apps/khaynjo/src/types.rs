@@ -226,7 +226,6 @@ enum SuggestField {
     Country,
     DeliveryBy,
     PrinterTarget,
-    RoutePick,
     /// Kitchen screen: pick a station to remove.
     StationRemove,
     /// Settings → Areas · stations: same list, own field.
@@ -241,10 +240,14 @@ enum SuggestField {
     BulkCat,
     /// Floor: tables per row (Fit screen, 1, 2 … or any typed number).
     FloorColumns,
+    /// Settings → Printers: which place (Bill / kitchen) is being edited.
+    PrinterPlace,
+    /// Settings → Places: check printers (× format) for the focused place.
+    PrinterAssign,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 28] = [
+    const ALL: [SuggestField; 29] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -265,7 +268,6 @@ impl SuggestField {
         SuggestField::Country,
         SuggestField::DeliveryBy,
         SuggestField::PrinterTarget,
-        SuggestField::RoutePick,
         SuggestField::StationRemove,
         SuggestField::SettingsStationRemove,
         SuggestField::CustomerName,
@@ -273,6 +275,8 @@ impl SuggestField {
         SuggestField::FloorWaiter,
         SuggestField::BulkCat,
         SuggestField::FloorColumns,
+        SuggestField::PrinterPlace,
+        SuggestField::PrinterAssign,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -298,7 +302,6 @@ impl SuggestField {
             SuggestField::Country => "country",
             SuggestField::DeliveryBy => "delivery_by",
             SuggestField::PrinterTarget => "printer_target",
-            SuggestField::RoutePick => "route_pick",
             SuggestField::StationRemove => "station_remove",
             SuggestField::SettingsStationRemove => "settings_station_remove",
             SuggestField::CustomerName => "customer_name",
@@ -306,6 +309,8 @@ impl SuggestField {
             SuggestField::FloorWaiter => "floor_waiter",
             SuggestField::BulkCat => "bulk_cat",
             SuggestField::FloorColumns => "floor_cols",
+            SuggestField::PrinterPlace => "printer_place",
+            SuggestField::PrinterAssign => "printer_assign",
         }
     }
 
@@ -331,7 +336,6 @@ impl SuggestField {
             SuggestField::Country => ids!(country_code_input),
             SuggestField::DeliveryBy => ids!(delivery_by_input),
             SuggestField::PrinterTarget => ids!(printer_target_input),
-            SuggestField::RoutePick => ids!(route_pick_input),
             SuggestField::StationRemove => ids!(station_remove_input),
             SuggestField::SettingsStationRemove => ids!(settings_station_remove_input),
             SuggestField::CustomerName => ids!(customer_name_input),
@@ -339,6 +343,8 @@ impl SuggestField {
             SuggestField::FloorWaiter => ids!(floor_waiter_filter),
             SuggestField::BulkCat => ids!(bulk_cat_input),
             SuggestField::FloorColumns => ids!(floor_cols_input),
+            SuggestField::PrinterPlace => ids!(printer_place_input),
+            SuggestField::PrinterAssign => ids!(printer_assign_input),
         }
     }
 
@@ -364,7 +370,6 @@ impl SuggestField {
             SuggestField::Country => ids!(country_suggest),
             SuggestField::DeliveryBy => ids!(delivery_by_suggest),
             SuggestField::PrinterTarget => ids!(printer_target_suggest),
-            SuggestField::RoutePick => ids!(route_pick_suggest),
             SuggestField::StationRemove => ids!(station_remove_suggest),
             SuggestField::SettingsStationRemove => ids!(settings_station_remove_suggest),
             SuggestField::CustomerName => ids!(customer_name_suggest),
@@ -372,6 +377,8 @@ impl SuggestField {
             SuggestField::FloorWaiter => ids!(floor_waiter_suggest),
             SuggestField::BulkCat => ids!(bulk_cat_suggest),
             SuggestField::FloorColumns => ids!(floor_cols_suggest),
+            SuggestField::PrinterPlace => ids!(printer_place_suggest),
+            SuggestField::PrinterAssign => ids!(printer_assign_suggest),
         }
     }
 }
@@ -387,7 +394,7 @@ const FLOOR_SLOT_IDS: [&[LiveId]; FLOOR_ROW_SLOTS] = [
 
 /// Settings → Where things print: tap one of these to put that pool printer
 /// on the focused route (Bill / station). Slots match the DSL below.
-const ROUTE_ADD_PRINTER_BTNS: [&[LiveId]; 8] = [
+const ROUTE_ADD_PRINTER_BTNS: [&[LiveId]; 16] = [
     ids!(route_add_prn_0),
     ids!(route_add_prn_1),
     ids!(route_add_prn_2),
@@ -396,6 +403,40 @@ const ROUTE_ADD_PRINTER_BTNS: [&[LiveId]; 8] = [
     ids!(route_add_prn_5),
     ids!(route_add_prn_6),
     ids!(route_add_prn_7),
+    ids!(route_add_prn_8),
+    ids!(route_add_prn_9),
+    ids!(route_add_prn_10),
+    ids!(route_add_prn_11),
+    ids!(route_add_prn_12),
+    ids!(route_add_prn_13),
+    ids!(route_add_prn_14),
+    ids!(route_add_prn_15),
+];
+
+/// Bill + kitchen stations to edit (one place at a time).
+/// Idle/active SegBtn pairs — selection by visibility, never by rewriting
+/// Stack* labels (set_text on Fill+wrap freezes Settings; DEV.md bug 7).
+const ROUTE_PLACE_BTNS: [(&[LiveId], &[LiveId]); 8] = [
+    (ids!(route_place_0), ids!(route_place_0_on)),
+    (ids!(route_place_1), ids!(route_place_1_on)),
+    (ids!(route_place_2), ids!(route_place_2_on)),
+    (ids!(route_place_3), ids!(route_place_3_on)),
+    (ids!(route_place_4), ids!(route_place_4_on)),
+    (ids!(route_place_5), ids!(route_place_5_on)),
+    (ids!(route_place_6), ids!(route_place_6_on)),
+    (ids!(route_place_7), ids!(route_place_7_on)),
+];
+
+#[allow(dead_code)] // Legacy chip strip slots; place UI is printer_place_dd now.
+const ROUTE_PLACE_SLOTS: [&[LiveId]; 8] = [
+    ids!(route_place_slot_0),
+    ids!(route_place_slot_1),
+    ids!(route_place_slot_2),
+    ids!(route_place_slot_3),
+    ids!(route_place_slot_4),
+    ids!(route_place_slot_5),
+    ids!(route_place_slot_6),
+    ids!(route_place_slot_7),
 ];
 
 /// Sentinel for the Frequent chip (not a real category id).

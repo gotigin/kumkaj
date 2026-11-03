@@ -972,15 +972,26 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(server_name_input)).text();
-            if let Err(e) = self.activate_new_server(cx, &name) {
-                self.set_status(cx, e);
+            // One tap must not create a shop. The second tap does, then
+            // Owner PIN and setup still have to finish.
+            if !new_server_armed().swap(true, std::sync::atomic::Ordering::SeqCst) {
+                self.set_status(
+                    cx,
+                    "Not created yet — tap Create new server again. You still set the Owner PIN and finish setup.",
+                );
             } else {
-                self.ui
-                    .text_input(cx, ids!(server_name_input))
-                    .set_text(cx, "");
+                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
+                if let Err(e) = self.activate_new_server(cx, &name) {
+                    self.set_status(cx, e);
+                } else {
+                    self.ui
+                        .text_input(cx, ids!(server_name_input))
+                        .set_text(cx, "");
+                }
             }
         }
         if self.ui.button(cx, ids!(server_pick_cancel)).clicked(actions) {
+            new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
         }
@@ -996,6 +1007,7 @@ impl MatchEvent for App {
                         .get(item_id)
                         .map(|s| s.id.clone());
                     if let Some(id) = id {
+                        new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
                         if let Err(e) = self.activate_existing_server(cx, &id) {
                             self.set_status(cx, e);
                         }
@@ -2922,6 +2934,46 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(printer_place_dd)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::PrinterPlace) {
+                    st.suggest_open = None;
+                } else {
+                    st.open_suggest(SuggestField::PrinterPlace, "");
+                }
+            }
+            self.ui
+                .widget(cx, ids!(printer_place_suggest))
+                .redraw(cx);
+            self.ui.redraw(cx);
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(printer_assign_dd)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                let _ = normalize_focused_route(&mut st);
+                if st.suggest_open == Some(SuggestField::PrinterAssign) {
+                    st.suggest_open = None;
+                } else if st.printer_draft.printers.is_empty() {
+                    st.suggest_open = None;
+                } else {
+                    st.open_suggest(SuggestField::PrinterAssign, "");
+                }
+            }
+            let empty = {
+                let st = app_state().lock().unwrap();
+                st.printer_draft.printers.is_empty()
+            };
+            if empty {
+                self.set_status(cx, app_t("printers_none_hint"));
+            }
+            self.ui
+                .widget(cx, ids!(printer_assign_suggest))
+                .redraw(cx);
+            self.ui.redraw(cx);
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(reprint_kot_btn)).clicked(actions) {
             match self.reprint_open_kots(cx) {
                 Ok(msg) => self.set_status(cx, msg),
@@ -3541,8 +3593,11 @@ impl MatchEvent for App {
             let mut changed = false;
             let mut picked: Option<(SuggestField, String)> = None;
             for field in SuggestField::ALL {
-                // Kitchen dropdown opens via kot_station_dd — not a type-in field.
-                if field != SuggestField::KotStation {
+                // Kitchen / place / printer-assign open via dd buttons — not type-in.
+                if field != SuggestField::KotStation
+                    && field != SuggestField::PrinterPlace
+                    && field != SuggestField::PrinterAssign
+                {
                     let input = self.ui.text_input(cx, field.input());
                     let uid = input.widget_uid();
                     let focused = actions
@@ -3618,6 +3673,64 @@ impl MatchEvent for App {
                                 continue;
                             }
                         }
+                        if field == SuggestField::PrinterAssign {
+                            let up = item.button(cx, ids!(prio_up));
+                            let down = item.button(cx, ids!(prio_down));
+                            if up.clicked(actions) {
+                                let to = {
+                                    let st = app_state().lock().unwrap();
+                                    let clear_l = st.t("dont_use");
+                                    (0..item_id).rev().find(|&i| {
+                                        st.suggest_rows
+                                            .get(i)
+                                            .is_some_and(|r| r.action == clear_l)
+                                    })
+                                };
+                                if let Some(to) = to {
+                                    let mut st = app_state().lock().unwrap();
+                                    if reorder_printer_assign_priority(&mut st, item_id, to) {
+                                        st.open_suggest(SuggestField::PrinterAssign, "");
+                                        drop(st);
+                                        self.paint_printers_panel(cx);
+                                        self.ui
+                                            .widget(cx, ids!(printer_assign_suggest))
+                                            .redraw(cx);
+                                    }
+                                }
+                                continue;
+                            }
+                            if down.clicked(actions) {
+                                let to = {
+                                    let st = app_state().lock().unwrap();
+                                    let clear_l = st.t("dont_use");
+                                    let n = st.suggest_rows.len();
+                                    ((item_id + 1)..n).find(|&i| {
+                                        st.suggest_rows
+                                            .get(i)
+                                            .is_some_and(|r| r.action == clear_l)
+                                    })
+                                };
+                                if let Some(to) = to {
+                                    let mut st = app_state().lock().unwrap();
+                                    if reorder_printer_assign_priority(&mut st, item_id, to) {
+                                        st.open_suggest(SuggestField::PrinterAssign, "");
+                                        drop(st);
+                                        self.paint_printers_panel(cx);
+                                        self.ui
+                                            .widget(cx, ids!(printer_assign_suggest))
+                                            .redraw(cx);
+                                    }
+                                }
+                                continue;
+                            }
+                            if up.pressed(actions)
+                                || down.pressed(actions)
+                                || up.released(actions)
+                                || down.released(actions)
+                            {
+                                continue;
+                            }
+                        }
                         if item
                             .view(cx, ids!(row))
                             .finger_up(actions)
@@ -3628,7 +3741,13 @@ impl MatchEvent for App {
                                 .unwrap()
                                 .suggest_rows
                                 .get(item_id)
-                                .map(|r| r.value.clone());
+                                .map(|r| {
+                                    if field == SuggestField::PrinterAssign {
+                                        r.subtitle.clone()
+                                    } else {
+                                        r.value.clone()
+                                    }
+                                });
                             if let Some(v) = value {
                                 picked = Some((field, v));
                             }
@@ -3651,7 +3770,10 @@ impl MatchEvent for App {
                 }
             }
             if let Some((field, value)) = picked {
-                if field != SuggestField::KotStation {
+                if field != SuggestField::KotStation
+                    && field != SuggestField::PrinterPlace
+                    && field != SuggestField::PrinterAssign
+                {
                     self.ui.text_input(cx, field.input()).set_text(cx, &value);
                 }
                 if field == SuggestField::FloorColumns {
@@ -3673,8 +3795,8 @@ impl MatchEvent for App {
                     }
                 }
                 let mut st = app_state().lock().unwrap();
-                // Kitchen checkbox dropdown stays open so more stations can be toggled.
-                if field != SuggestField::KotStation {
+                // Kitchen / printer-assign checkbox menus stay open for more toggles.
+                if field != SuggestField::KotStation && field != SuggestField::PrinterAssign {
                     st.suggest_open = None;
                 }
                 // A picked country is shown with what it sets, ready to apply.
@@ -3695,10 +3817,6 @@ impl MatchEvent for App {
                         st.selected_customer_id = Some(id);
                         st.status = format!("Credit customer: {name}");
                     }
-                }
-                if field == SuggestField::RoutePick {
-                    st.printer_route_key =
-                        resolve_printer_route_key(&value, &st.stations, |k| st.t(k));
                 }
                 changed = true;
                 // Pick = do the thing. No second Confirm/Use/Remove/Switch button.
@@ -3747,6 +3865,78 @@ impl MatchEvent for App {
                             Ok(msg) => self.set_status(cx, msg),
                             Err(e) => self.set_status(cx, e),
                         }
+                    }
+                    SuggestField::PrinterPlace => {
+                        let (key, name) = {
+                            let st = app_state().lock().unwrap();
+                            let choices =
+                                printer_place_choices(&st.stations, "", |k| st.t(k));
+                            choices
+                                .into_iter()
+                                .find(|(_, label, _)| label == &value)
+                                .map(|(k, label, _)| (k, label))
+                                .unwrap_or_else(|| ("bill".into(), st.t("route_bill")))
+                        };
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            st.printer_route_key = key;
+                            st.printer_route_sel = None;
+                            let _ = normalize_focused_route(&mut st);
+                        }
+                        let msg = {
+                            let st = app_state().lock().unwrap();
+                            st.t("route_editing").replace("{name}", &name)
+                        };
+                        self.set_status(cx, msg);
+                        self.paint_printers_panel(cx);
+                    }
+                    SuggestField::PrinterAssign => {
+                        let msg = {
+                            let mut st = app_state().lock().unwrap();
+                            let place = printer_route_display_name(
+                                &st.printer_route_key,
+                                &st.stations,
+                                |k| st.t(k),
+                            );
+                            let clear_l = st.t("dont_use");
+                            let was_on = st
+                                .suggest_rows
+                                .iter()
+                                .find(|r| r.subtitle == value)
+                                .is_some_and(|r| r.action == clear_l);
+                            let shown = st
+                                .suggest_rows
+                                .iter()
+                                .find(|r| r.subtitle == value)
+                                .map(|r| r.value.clone())
+                                .unwrap_or_else(|| value.clone());
+                            if toggle_printer_assign_slot(&mut st, &value) {
+                                if was_on {
+                                    st.t("route_removed")
+                                        .replace("{place}", &place)
+                                        .replace("{printer}", &shown)
+                                } else {
+                                    st.t("route_assigned")
+                                        .replace("{place}", &place)
+                                        .replace("{printer}", &shown)
+                                }
+                            } else {
+                                String::new()
+                            }
+                        };
+                        if !msg.is_empty() {
+                            self.set_status(cx, msg);
+                        }
+                        app_state()
+                            .lock()
+                            .unwrap()
+                            .open_suggest(SuggestField::PrinterAssign, "");
+                        self.paint_printers_panel(cx);
+                        self.ui
+                            .widget(cx, ids!(printer_assign_suggest))
+                            .redraw(cx);
+                        // Panel paint only — full sync_chrome freezes Settings.
+                        changed = false;
                     }
                     _ => {}
                 }
@@ -6236,7 +6426,10 @@ impl MatchEvent for App {
         }
 
         if self.ui.button(cx, ids!(find_printers_cancel)).clicked(actions) {
+            // Flag + wake only — never set_text Looking on the Find Stack*
+            // button (that wrap path freezes Settings; DEV.md bug 7).
             print_share::cancel_find_printers();
+            self.show_found_printers(cx);
             self.paint_submit_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(find_printers_btn)).clicked(actions) {
@@ -6244,304 +6437,134 @@ impl MatchEvent for App {
                 // Looking… — ignore re-taps.
             } else {
                 print_share::find_printers_in_background();
+                // Immediate Looking… on the found line — do not leave
+                // "Tap Find…" over the saved-pool card (looked like Find
+                // returned only the already-added printer).
+                self.show_found_printers(cx);
                 self.paint_submit_busy_chrome(cx);
             }
         }
         if self.ui.button(cx, ids!(printer_add_cancel)).clicked(actions) {
+            // Legacy Cancel (async add removed) — clear any stuck busy flag.
             printer_add_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            *printer_add_status().lock().unwrap() = None;
             self.paint_submit_busy_chrome(cx);
         }
+        // Add/Remove save printers.json on this thread. Refresh only the
+        // printers panel — full sync_chrome froze Settings after Add.
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
-            if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Adding… — ignore re-taps.
-            } else if !printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
-                let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
-                let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-                printer_add_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
-                *printer_add_status().lock().unwrap() =
-                    Some(app_state().lock().unwrap().t("saving_printer"));
-                *printer_add_once().lock().unwrap() = None;
-                // Swap to progress+Cancel face before any clone/IO.
-                self.paint_submit_busy_chrome(cx);
-                let job = {
-                    let st = app_state().lock().unwrap();
-                    st.data_base
-                        .as_ref()
-                        .map(|base| (base.clone(), st.printer_draft.clone(), label, target))
-                };
-                match job {
-                    Some((base, draft, label, target)) => {
-                        self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
-                        self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
-                        printer_add_job_continue(base, draft, PrinterAddOp::Add { label, target });
-                    }
-                    None => {
-                        *printer_add_status().lock().unwrap() = None;
-                        printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-                        self.paint_submit_busy_chrome(cx);
-                        self.set_status(cx, "No store path to save printers");
-                    }
-                }
-            }
-        }
-        // Format chips apply to the focused print route (not the printer).
-        for (format_id, idle, active) in [
-            (
-                print_share::FORMAT_KOT,
-                ids!(printer_wire_escpos),
-                ids!(printer_wire_escpos_on),
-            ),
-            (
-                print_share::FORMAT_STANDARD,
-                ids!(printer_wire_os),
-                ids!(printer_wire_os_on),
-            ),
-        ] {
-            if self.choice_chip_clicked(cx, actions, idle, active) {
+            let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
+            let result = {
                 let mut st = app_state().lock().unwrap();
-                let key_str = resolve_printer_route_key(&st.printer_route_key, &st.stations, |k| {
-                    st.t(k)
-                });
-                let key = printer_route_key_as_route(&key_str);
-                st.printer_draft.set_route_format(key, format_id);
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                if target.trim().is_empty() {
+                    Err(st.t("printer_target_ph"))
+                } else {
+                    let (_id, newly) = st.printer_draft.ensure_printer(&target, &target);
+                    st.printer_selected_id = None;
+                    if !newly {
+                        Ok(st.t("printer_already_saved").replace("{name}", target.trim()))
+                    } else {
+                        match st.data_base.as_ref() {
+                            Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                                .map(|()| st.t("printers_saved")),
+                            None => Err("No store path to save printers".into()),
+                        }
+                    }
                 }
-                drop(st);
-                self.sync_chrome(cx);
+            };
+            self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            *printer_add_status().lock().unwrap() = None;
+            match result {
+                Ok(msg) | Err(msg) => self.set_status(cx, msg),
             }
-        }
-        if self.ui.button(cx, ids!(printer_format_custom)).clicked(actions) {
-            let mut st = app_state().lock().unwrap();
-            let key_str = resolve_printer_route_key(&st.printer_route_key, &st.stations, |k| st.t(k));
-            let key = printer_route_key_as_route(&key_str);
-            let from = st.printer_draft.format_id_for(key);
-            let custom_label = st.t("printer_format_custom_label");
-            let id = st.printer_draft.add_format_from(&from, &custom_label);
-            st.printer_draft.set_route_format(key, &id);
-            if let Some(base) = st.data_base.as_ref() {
-                let _ = print_share::save_device_printers(base, &st.printer_draft);
-            }
-            let msg = st.t("printer_format_custom_added");
-            drop(st);
-            self.set_status(cx, msg);
-            self.sync_chrome(cx);
+            self.paint_submit_busy_chrome(cx);
+            self.paint_printers_panel(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
-            if printer_add_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Adding… — ignore Remove until the pool save finishes.
-            } else if !printer_add_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
-                printer_add_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
-                *printer_add_status().lock().unwrap() =
-                    Some(app_state().lock().unwrap().t("saving_printer"));
-                *printer_add_once().lock().unwrap() = None;
-                self.paint_submit_busy_chrome(cx);
-                let job = {
-                    let st = app_state().lock().unwrap();
-                    let id = st
-                        .printer_selected_id
-                        .clone()
-                        .or_else(|| st.printer_draft.printers.last().map(|p| p.id.clone()));
-                    st.data_base
-                        .as_ref()
-                        .map(|base| (base.clone(), st.printer_draft.clone(), id))
-                };
-                match job {
-                    Some((base, draft, id)) => {
-                        printer_add_job_continue(base, draft, PrinterAddOp::Remove { id });
-                    }
-                    None => {
-                        *printer_add_status().lock().unwrap() = None;
-                        printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-                        self.paint_submit_busy_chrome(cx);
-                        self.sync_chrome(cx);
-                    }
-                }
-            }
-        }
-        // Tap a found printer → fill the Add form (step 1).
-        {
-            let widget = self.ui.widget(cx, ids!(printers_found_list));
-            let list = widget.portal_list(cx, ids!(list));
-            let mut tapped: Option<usize> = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item
-                    .view(cx, ids!(row))
-                    .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
-                {
-                    tapped = Some(item_id);
-                }
-            }
-            if let Some(item_id) = tapped {
-                let found = print_share::found_printers();
-                if let Some(name) = found.get(item_id).cloned() {
-                    let label = name.clone();
-                    self.ui
-                        .text_input(cx, ids!(printer_label_input))
-                        .set_text(cx, &label);
-                    self.ui
-                        .text_input(cx, ids!(printer_target_input))
-                        .set_text(cx, &name);
-                    let msg = app_state()
-                        .lock()
-                        .unwrap()
-                        .t("printer_from_find")
-                        .replace("{name}", &name);
-                    self.set_status(cx, msg);
-                }
-            }
-        }
-        // Tap a printer in the pool → select it for Remove (› mark).
-        {
-            let widget = self.ui.widget(cx, ids!(printers_pool_label));
-            let list = widget.portal_list(cx, ids!(list));
-            let mut tapped: Option<usize> = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item
-                    .view(cx, ids!(row))
-                    .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
-                {
-                    tapped = Some(item_id);
-                }
-            }
-            if let Some(item_id) = tapped {
+            let result = {
                 let mut st = app_state().lock().unwrap();
-                if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
-                    st.printer_selected_id = Some(p.id.clone());
-                    drop(st);
-                    self.ui
-                        .text_input(cx, ids!(printer_label_input))
-                        .set_text(cx, &p.label);
-                    self.ui
-                        .text_input(cx, ids!(printer_target_input))
-                        .set_text(cx, &p.target);
-                    self.set_status(cx, format!("{} — tap Remove to delete", p.label));
-                    self.sync_chrome(cx);
+                let id = st
+                    .printer_selected_id
+                    .clone()
+                    .or_else(|| st.printer_draft.printers.last().map(|p| p.id.clone()));
+                if let Some(id) = id {
+                    st.printer_draft.remove_printer(&id);
                 }
+                st.printer_selected_id = None;
+                match st.data_base.as_ref() {
+                    Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                        .map(|()| st.t("printers_saved")),
+                    None => Err("No store path to save printers".into()),
+                }
+            };
+            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            *printer_add_status().lock().unwrap() = None;
+            match result {
+                Ok(msg) | Err(msg) => self.set_status(cx, msg),
             }
+            self.paint_submit_busy_chrome(cx);
+            self.paint_printers_panel(cx);
         }
-        // Tap Bill / kitchen row → that is what step 2 edits (no text field).
-        {
-            let widget = self.ui.widget(cx, ids!(printer_routes_label));
-            let list = widget.portal_list(cx, ids!(list));
-            let mut tapped: Option<usize> = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item
-                    .view(cx, ids!(row))
-                    .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
-                {
-                    tapped = Some(item_id);
-                }
-            }
-            if let Some(item_id) = tapped {
-                let (key, name) = {
-                    let st = app_state().lock().unwrap();
-                    let mut keys: Vec<(String, String)> = Vec::new();
-                    keys.push(("bill".into(), st.t("route_bill")));
-                    for s in &st.stations {
-                        keys.push((format!("kot:{}", s.id), s.name.clone()));
-                    }
-                    keys
-                        .get(item_id)
-                        .cloned()
-                        .unwrap_or_else(|| ("bill".into(), st.t("route_bill")))
-                };
-                {
-                    let mut st = app_state().lock().unwrap();
-                    st.printer_route_key = key;
-                }
-                self.set_status(
-                    cx,
-                    app_state()
-                        .lock()
-                        .unwrap()
-                        .t("route_editing")
-                        .replace("{name}", &name),
-                );
-                self.sync_chrome(cx);
-            }
-        }
+        // Find auto-merges discoveries into the pool — no tap-to-add on the
+        // found list. Pool tap still selects for Remove.
+        // Legacy hidden place chips (kept for hot-reload ids) — dropdown is
+        // SuggestField::PrinterPlace via printer_place_dd.
         {
             let mut tapped: Option<usize> = None;
-            for (i, id) in ROUTE_ADD_PRINTER_BTNS.iter().enumerate() {
-                if self.ui.button(cx, id).clicked(actions) {
+            for (i, (idle, active)) in ROUTE_PLACE_BTNS.iter().enumerate() {
+                if self.choice_chip_clicked(cx, actions, idle, active) {
                     tapped = Some(i);
                     break;
                 }
             }
             if let Some(i) = tapped {
-                let (ok, empty_pool, msg) = {
-                    let mut st = app_state().lock().unwrap();
-                    let empty_pool = st.printer_draft.printers.is_empty();
-                    let label = st
-                        .printer_draft
-                        .printers
+                let (key, name) = {
+                    let st = app_state().lock().unwrap();
+                    let choices = printer_place_choices(&st.stations, "", |k| st.t(k));
+                    choices
                         .get(i)
-                        .map(|p| p.label.clone())
-                        .unwrap_or_default();
-                    let place = printer_route_display_name(
-                        &st.printer_route_key,
-                        &st.stations,
-                        |k| st.t(k),
-                    );
-                    let ok = add_printer_to_focused_route(&mut st, &label);
-                    let msg = if empty_pool {
-                        st.t("printers_none_hint")
-                    } else if ok {
-                        st.t("route_assigned")
-                            .replace("{place}", &place)
-                            .replace("{printer}", &label)
-                    } else {
-                        String::new()
-                    };
-                    (ok, empty_pool, msg)
+                        .map(|(k, _, _)| {
+                            let name = printer_route_display_name(k, &st.stations, |k| st.t(k));
+                            (k.clone(), name)
+                        })
+                        .unwrap_or_else(|| ("bill".into(), st.t("route_bill")))
                 };
-                if empty_pool || ok {
-                    self.set_status(cx, msg);
-                }
-                self.sync_chrome(cx);
-            }
-        }
-        {
-            let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
-            let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
-            if remove || clear {
-                let msg = {
+                {
                     let mut st = app_state().lock().unwrap();
-                    let key_str = st.printer_route_key.clone();
-                    let key = parse_printer_route_key(&key_str);
-                    let route = st.printer_draft.route_mut(key);
-                    if clear {
-                        route.clear();
-                    } else if remove {
-                        let _ = route.pop();
-                    }
-                    if let Some(base) = st.data_base.as_ref() {
-                        let _ = print_share::save_device_printers(base, &st.printer_draft);
-                    }
-                    st.t("printers_saved")
+                    st.printer_route_key = key;
+                    st.printer_route_sel = None;
+                }
+                let msg = {
+                    let st = app_state().lock().unwrap();
+                    st.t("route_editing").replace("{name}", &name)
                 };
                 self.set_status(cx, msg);
-                self.sync_chrome(cx);
+                self.paint_printers_panel(cx);
             }
         }
-        if self.ui.button(cx, ids!(printers_save)).clicked(actions) {
-            let result = {
-                let st = app_state().lock().unwrap();
-                let printers = st.printer_draft.clone();
-                match st.data_base.as_ref() {
-                    Some(base) => print_share::save_device_printers(base, &printers)
-                        .map(|()| st.t("printers_saved")),
-                    None => Err("Storage not ready".to_string()),
+        // Assign / remove / priority: SuggestField::PrinterAssign checklist
+        // (printer_assign_dd). Legacy +chips and tap-to-remove stay dormant.
+        if self.ui.button(cx, ids!(route_clear)).clicked(actions) {
+            let msg = {
+                let mut st = app_state().lock().unwrap();
+                let key_str = st.printer_route_key.clone();
+                let place = printer_route_display_name(
+                    &key_str,
+                    &st.stations,
+                    |k| st.t(k),
+                );
+                let key = parse_printer_route_key(&key_str);
+                st.printer_draft.route_mut(key).clear();
+                st.printer_route_sel = None;
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
                 }
+                st.t("route_cleared").replace("{name}", &place)
             };
-            match result {
-                Ok(msg) | Err(msg) => self.set_status(cx, msg),
-            }
-            self.sync_chrome(cx);
+            self.set_status(cx, msg);
+            self.paint_printers_panel(cx);
         }
         if self.ui.button(cx, ids!(print_test_btn)).clicked(actions) {
             // Queue only — the print worker talks to CUPS / the network printer.
@@ -6571,27 +6594,23 @@ impl MatchEvent for App {
                 Err(e) => self.set_status(cx, e),
             }
         }
-        for (want_on, idle, active) in [
-            (false, ids!(kot_print_off), ids!(kot_print_off_on)),
-            (true, ids!(kot_print_on), ids!(kot_print_on_on)),
-        ] {
-            if self.choice_chip_clicked(cx, actions, idle, active) {
-                let result = (|| -> Result<String, String> {
-                    let st = app_state().lock().unwrap();
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.set_kot_auto_print(want_on)?;
-                    Ok(if want_on {
-                        "Kitchen printing on — KOTs print as they are sent".to_string()
-                    } else {
-                        "Kitchen printing off — KOTs stay on the Kitchen screen".to_string()
-                    })
-                })();
-                match result {
-                    Ok(msg) => self.set_status(cx, msg),
-                    Err(e) => self.set_status(cx, e),
-                }
-                self.sync_chrome(cx);
+        if self.choice_chip_clicked(cx, actions, ids!(kot_print_off), ids!(kot_print_on)) {
+            let result = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let want_on = !store.kot_auto_print();
+                store.set_kot_auto_print(want_on)?;
+                Ok(if want_on {
+                    st.t("kot_print_on")
+                } else {
+                    st.t("kot_print_off")
+                })
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
             }
+            self.paint_printers_panel(cx);
         }
 
         if self.ui.button(cx, ids!(backup_cancel)).clicked(actions) {

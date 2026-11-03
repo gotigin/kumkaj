@@ -62,43 +62,26 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
         self.paint_submit_busy_chrome(cx);
     }
 
-/// Idle→busy submit chrome: live status on the go button + visible Cancel sibling.
+/// Idle→busy submit chrome: Cancel sibling only. Never rewrite Find/Add
+/// Stack* labels while busy — `set_text` on Fill+wrap faces freezes Settings
+/// (DEV.md bug 7; same hang as the old "Adding printer…" path).
 fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         let cancel = app_state().lock().unwrap().t("cancel");
-        let finding = print_share::is_finding_printers();
-        if finding {
-            self.ui
-                .button(cx, ids!(find_printers_btn))
-                .set_text(cx, &app_state().lock().unwrap().t("printers_looking"));
-        }
-        self.ui
-            .button(cx, ids!(find_printers_cancel))
-            .set_text(cx, &cancel);
+        // Looking status lives on `printers_found_label`, not the Find CTA.
+        let finding = print_share::is_finding_printers()
+            && !print_share::find_printers_was_cancelled();
+        // Find / Add stay on their DSL labels. set_text on those Fill+wrap
+        // faces freezes Settings (DEV.md bug 7). Progress stays on the label.
         self.ui
             .button(cx, ids!(find_printers_cancel))
             .set_visible(cx, finding);
 
-        let add_busy = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
-        // Text-only busy + Fit Cancel. No ActionStack face swap (that redraw
-        // path kept freezing Settings via Makepad wrap+Fill log spam).
-        if add_busy {
-            let add_status = printer_add_status()
-                .lock()
-                .unwrap()
-                .clone()
-                .unwrap_or_else(|| app_state().lock().unwrap().t("saving_printer"));
-            self.ui.button(cx, ids!(printer_add)).set_text(cx, &add_status);
-        } else {
-            self.ui
-                .button(cx, ids!(printer_add))
-                .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
-        }
         self.ui
             .button(cx, ids!(printer_add_cancel))
             .set_text(cx, &cancel);
         self.ui
             .button(cx, ids!(printer_add_cancel))
-            .set_visible(cx, add_busy);
+            .set_visible(cx, false);
 
         let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
         if client_busy {
@@ -254,7 +237,16 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             if st.must_confirm_device_role {
                 st.screen = Screen::DeviceSetup;
             } else if st.session.is_some() && st.screen == Screen::Lock {
-                st.screen = unlocked_home();
+                // Hot-reload must not stick on Lock while a session is live.
+                // A new server still has to set the Owner PIN and finish
+                // setup — do not dump that shop straight into the till.
+                if st.device_role.is_host() && !st.owner_setup_complete {
+                    // Stay on Lock.
+                } else if st.device_role.is_host() && !st.onboarding_complete {
+                    st.screen = Screen::Onboard;
+                } else {
+                    st.screen = unlocked_home();
+                }
             }
             // Follow-OS mode: keep UI language in sync with the device.
             if st.language_follow_platform {
@@ -2442,128 +2434,10 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             // Printers / units / sibling pickers — Settings only (was rebuilt on
             // every sync_chrome and froze Floor / Lock on phones).
             if screen == Screen::Settings {
-            {
-                let on = {
-                    let st = app_state().lock().unwrap();
-                    st.store
-                        .as_ref()
-                        .map(|s| s.kot_auto_print())
-                        .unwrap_or(true)
-                };
-                self.paint_choice_pair(cx, ids!(kot_print_off), ids!(kot_print_off_on), !on);
-                self.paint_choice_pair(cx, ids!(kot_print_on), ids!(kot_print_on_on), on);
-                {
-                    let st = app_state().lock().unwrap();
-                    for path in [ids!(kot_print_off), ids!(kot_print_off_on)] {
-                        self.ui.button(cx, path).set_text(cx, &st.t("kot_print_off"));
-                    }
-                    for path in [ids!(kot_print_on), ids!(kot_print_on_on)] {
-                        self.ui.button(cx, path).set_text(cx, &st.t("kot_print_on"));
-                    }
-                    let key_str = resolve_printer_route_key(&st.printer_route_key, &st.stations, |k| {
-                        st.t(k)
-                    });
-                    let format_id = st
-                        .printer_draft
-                        .format_id_for(printer_route_key_as_route(&key_str));
-                    self.paint_choice_pair(
-                        cx,
-                        ids!(printer_wire_escpos),
-                        ids!(printer_wire_escpos_on),
-                        format_id == print_share::FORMAT_KOT,
-                    );
-                    self.paint_choice_pair(
-                        cx,
-                        ids!(printer_wire_os),
-                        ids!(printer_wire_os_on),
-                        format_id == print_share::FORMAT_STANDARD,
-                    );
-                    for path in [ids!(printer_wire_escpos), ids!(printer_wire_escpos_on)] {
-                        self.ui
-                            .button(cx, path)
-                            .set_text(cx, &st.t("printer_wire_escpos"));
-                    }
-                    for path in [ids!(printer_wire_os), ids!(printer_wire_os_on)] {
-                        self.ui
-                            .button(cx, path)
-                            .set_text(cx, &st.t("printer_wire_os"));
-                    }
-                    self.ui
-                        .widget(cx, ids!(h_printer_wire))
-                        .set_text(cx, &plain_display_text(&st.t("printer_wire_heading")));
-                    self.ui
-                        .button(cx, ids!(printer_format_custom))
-                        .set_text(cx, &st.t("printer_format_custom"));
-                }
-                let mut st = app_state().lock().unwrap();
-                // Every kitchen station gets its own route row (empty until configured).
-                let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
-                st.printer_draft.ensure_station_routes(station_ids);
-                let selected = st.printer_selected_id.clone();
-                let pool_rows =
-                    printers_pool_rows(&st.printer_draft, selected.as_deref(), |k| st.t(k));
-                let add_labels: Vec<String> = st
-                    .printer_draft
-                    .printers
-                    .iter()
-                    .take(ROUTE_ADD_PRINTER_BTNS.len())
-                    .map(|p| p.label.clone())
-                    .collect();
-                // Commit typed Bill/kitchen when the field is not focused —
-                // never while typing (that made "Bill" immortal after backspace).
-                let route_field = self.ui.text_input(cx, ids!(route_pick_input));
-                let route_focused = cx.has_key_focus(route_field.area());
-                if !route_focused {
-                    let typed = route_field.text();
-                    let current_display = printer_route_display_name(
-                        &st.printer_route_key,
-                        &st.stations,
-                        |k| st.t(k),
-                    );
-                    if typed != current_display {
-                        let new_key =
-                            resolve_printer_route_key(&typed, &st.stations, |k| st.t(k));
-                        if new_key != st.printer_route_key {
-                            st.printer_route_key = new_key;
-                        }
-                    }
-                }
-                let route_display = printer_route_display_name(
-                    &st.printer_route_key,
-                    &st.stations,
-                    |k| st.t(k),
-                );
-                if !route_focused && route_field.text() != route_display {
-                    route_field.set_text(cx, &route_display);
-                }
-                let route_rows = printer_route_rows(
-                    &st.printer_draft,
-                    &st.stations,
-                    &st.printer_route_key,
-                    |k| st.t(k),
-                );
-                let editing = st
-                    .t("route_editing")
-                    .replace("{name}", &route_display);
-                drop(st);
-                self.show_found_printers(cx);
-                self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
-                self.set_report_rows(cx, ids!(printer_routes_label), route_rows);
-                self.ui
-                    .widget(cx, ids!(route_editing_label))
-                    .set_text(cx, &plain_display_text(&editing));
-                for (i, id) in ROUTE_ADD_PRINTER_BTNS.iter().enumerate() {
-                    let btn = self.ui.button(cx, id);
-                    if let Some(label) = add_labels.get(i) {
-                        btn.set_text(cx, label);
-                        btn.set_visible(cx, true);
-                    } else {
-                        btn.set_visible(cx, false);
-                    }
-                }
-                self.ui
-                    .view(cx, ids!(route_add_printers))
-                    .set_visible(cx, !add_labels.is_empty());
+            // Only paint the printers panel while it is open — Add/assign
+            // refresh via paint_printers_panel, not a full Settings rebuild.
+            if self.ui.view(cx, ids!(settings_panel_printers)).visible() {
+                self.paint_printers_panel(cx);
             }
             let units_rows = {
                 let st = app_state().lock().unwrap();
@@ -2908,9 +2782,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Back chrome: header ‹ when the unlocked header is on screen; body
-        // Back on auth screens where that header is hidden (ClientPair,
-        // Onboard, Server-pick). Never leave a nested/auth step with no Back.
+        // Back chrome: one header ‹. It calls navigate_back (mouse / Android /
+        // Alt+← / edge swipe use that same function). Nested setup shows it
+        // too — the header used to stay hidden there, so Back never appeared.
         {
             let (show_header_back, show_client_pair_back, show_onboard_back, show_server_pick_cancel) = {
                 let st = app_state().lock().unwrap();
@@ -2925,11 +2799,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     || (st.screen == Screen::Floor && st.picking_table)
                     || st.screen == Screen::SidebarSettings
                     || !st.nav_back.is_empty();
+                let setup_back = setup_shows_header_back(&st);
                 (
-                    header_on && nested,
-                    st.screen == Screen::ClientPair,
-                    st.screen == Screen::Onboard && !st.onboarding_complete,
-                    st.picking_server,
+                    (header_on && nested) || setup_back,
+                    false,
+                    false,
+                    false,
                 )
             };
             self.ui
