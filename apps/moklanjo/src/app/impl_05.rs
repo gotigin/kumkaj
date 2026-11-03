@@ -390,14 +390,22 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_title(cx, "");
             help.set_tip(&plain_display_text(&s("pair_intro")));
         }
+        self.ui
+            .widget(cx, ids!(server_pick_title))
+            .set_text(cx, &plain_display_text(&s("choose_server")));
         {
             let help = self.ui.widget(cx, ids!(server_pick_help)).as_info_help();
-            help.set_title(cx, &s("choose_server"));
+            // Tip-only — title is the sibling WrapLabel (ℹ hugs the label).
+            help.set_title(cx, "");
             help.set_tip(&plain_display_text(&s("choose_server_hint")));
         }
+        self.ui
+            .widget(cx, ids!(lock_login_title))
+            .set_text(cx, &plain_display_text(&s("or_unlock_login")));
         {
             let help = self.ui.widget(cx, ids!(lock_login_help)).as_info_help();
-            help.set_title(cx, &s("or_unlock_login"));
+            help.set_title(cx, "");
+            // Tip for unlock-with-login (not Team's "optional login" essay).
             help.set_tip(&plain_display_text(&s("or_unlock_login")));
         }
         self.ui
@@ -409,6 +417,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(server_name_input))
             .set_empty_text(cx, s("new_server_name_ph"));
+        self.ui
+            .text_input(cx, ids!(server_remove_pin))
+            .set_empty_text(cx, s("server_remove_pin_ph"));
         let picking_server = app_state().lock().unwrap().picking_server;
         self.ui
             .view(cx, ids!(server_pick_section))
@@ -911,6 +922,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             } else {
                 st.display_venue_title()
             };
+            // Short server id in parentheses next to the shop name (same 8
+            // chars as the local server list) so multi-server desks can tell
+            // shops apart.
+            let with_server_id = |name: &str| -> String {
+                let short = st
+                    .data_base
+                    .as_ref()
+                    .and_then(|base| local_servers::active_server_id(base).ok().flatten())
+                    .map(|id| id.chars().take(8).collect::<String>());
+                match short {
+                    Some(id) if !id.is_empty() => format!("{name} ({id})"),
+                    _ => name.to_string(),
+                }
+            };
             // Multi-outlet owners need to see which shop this device is selling
             // for; a single Main-only setup keeps the plain venue name.
             let header_title = {
@@ -920,7 +945,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     .and_then(|s| s.list_branches().ok())
                     .map(|b| b.len())
                     .unwrap_or(0);
-                match st.store.as_ref().and_then(|s| s.active_branch().ok()) {
+                let base = match st.store.as_ref().and_then(|s| s.active_branch().ok()) {
                     Some(branch) if branch_count > 1 => {
                         let tag = if branch.code.trim().is_empty() {
                             branch.name.clone()
@@ -930,8 +955,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                         format!("{title} · {tag}")
                     }
                     _ => title.clone(),
-                }
+                };
+                with_server_id(&base)
             };
+            let title = with_server_id(&title);
             // Draft pick shows immediately; saved key after Save / onboard import.
             let icon_path = st
                 .draft_venue_icon_path
@@ -1161,8 +1188,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (`go` / `go_peer`). Lock/onboard
-    /// destinations clear stacks via `screen_keeps_history`.
+    /// Push history when `record_history` (`go` / `go_peer`). Entering or
+    /// leaving Lock/Onboard clears stacks via `screen_keeps_history` so Back
+    /// cannot return to setup after the main screen is open. During Onboard,
+    /// nested Back still uses the explicit DeviceSetup parent pushed at
+    /// owner-setup time (not this path).
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1173,7 +1203,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 st.nav_back.remove(0);
             }
             st.nav_forward.clear();
-        } else if !screen_keeps_history(next) {
+        } else if !screen_keeps_history(next) || !screen_keeps_history(st.screen) {
             st.nav_back.clear();
             st.nav_forward.clear();
         }

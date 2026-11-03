@@ -148,6 +148,10 @@ struct AppState {
     books_sections_open: Vec<String>,
     /// Floor secondary accordions (`floor_ops`, `waitlist`, `resv`, `floor_add`).
     floor_sections_open: Vec<String>,
+    /// Order ticket foot accordion (`table_actions`). Collapsed by default.
+    order_sections_open: Vec<String>,
+    /// Settings → Bill & KOT: draft kitchen-slip options (preview before Save).
+    kot_slip_draft: print_share::KotSlipFormat,
     /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

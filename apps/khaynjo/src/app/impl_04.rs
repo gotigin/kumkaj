@@ -265,9 +265,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_title(cx, "");
             help.set_tip(&plain_display_text(&s("device_setup_help")));
         }
+        self.ui
+            .widget(cx, ids!(server_pick_title))
+            .set_text(cx, &plain_display_text(&s("choose_server")));
         {
             let help = self.ui.widget(cx, ids!(server_pick_help)).as_info_help();
-            help.set_title(cx, &s("choose_server"));
+            // Tip-only — title is the sibling WrapLabel (ℹ hugs the label).
+            help.set_title(cx, "");
             help.set_tip(&plain_display_text(&s("choose_server_hint")));
         }
         {
@@ -280,9 +284,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_title(cx, "");
             help.set_tip(&plain_display_text(&s("pair_intro")));
         }
+        self.ui
+            .widget(cx, ids!(lock_login_title))
+            .set_text(cx, &plain_display_text(&s("or_unlock_login")));
         {
             let help = self.ui.widget(cx, ids!(lock_login_help)).as_info_help();
-            help.set_title(cx, &s("or_unlock_login"));
+            help.set_title(cx, "");
+            // Tip for unlock-with-login (not Team's "optional login" essay).
             help.set_tip(&plain_display_text(&s("or_unlock_login")));
         }
         self.ui
@@ -294,6 +302,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(server_name_input))
             .set_empty_text(cx, s("new_server_name_ph"));
+        self.ui
+            .text_input(cx, ids!(server_remove_pin))
+            .set_empty_text(cx, s("server_remove_pin_ph"));
         let picking_server = app_state().lock().unwrap().picking_server;
         self.ui
             .view(cx, ids!(server_pick_section))
@@ -832,10 +843,24 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             } else {
                 st.display_venue_title()
             };
+            // Short server id in parentheses next to the restaurant name so
+            // multi-server desks can tell shops apart (same 8 chars as the list).
+            let with_server_id = |name: &str| -> String {
+                let short = st
+                    .data_base
+                    .as_ref()
+                    .and_then(|base| local_servers::active_server_id(base).ok().flatten())
+                    .map(|id| id.chars().take(8).collect::<String>());
+                match short {
+                    Some(id) if !id.is_empty() => format!("{name} ({id})"),
+                    _ => name.to_string(),
+                }
+            };
             // The header shows the restaurant's name as the owner saved it
             // (the app's name until they do); the business and who is signed
             // in sit under it (sync_chrome).
-            let header_title = title.clone();
+            let header_title = with_server_id(&title);
+            let title = with_server_id(&title);
             // Draft pick shows immediately; saved key after Save / onboard import.
             let icon_path = st
                 .draft_venue_icon_path
@@ -1065,8 +1090,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (`go` / `go_peer`). Lock/onboard
-    /// destinations clear stacks via `screen_keeps_history`.
+    /// Push history when `record_history` (`go` / `go_peer`). Entering or
+    /// leaving Lock/Onboard clears stacks via `screen_keeps_history` so Back
+    /// cannot return to setup after the main screen is open. During Onboard,
+    /// nested Back still uses the explicit DeviceSetup parent pushed at
+    /// owner-setup time (not this path).
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1080,7 +1108,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 st.nav_back.remove(0);
             }
             st.nav_forward.clear();
-        } else if !screen_keeps_history(next) {
+        } else if !screen_keeps_history(next) || !screen_keeps_history(st.screen) {
             st.nav_back.clear();
             st.nav_forward.clear();
         }
@@ -1541,6 +1569,128 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(payment_qr_status))
             .set_text(cx, &plain_display_text(&pay_qr_hint));
         self.set_report_rows(cx, ids!(schemes_label), scheme_rows);
+        self.fill_kot_format_fields(cx);
+    }
+
+    /// Settings → Bill & KOT: load kitchen-slip draft + preview.
+    fn fill_kot_format_fields(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            let fmt = st
+                .store
+                .as_ref()
+                .and_then(|s| s.kot_slip_format().ok())
+                .unwrap_or_default();
+            st.kot_slip_draft = fmt;
+        }
+        self.sync_kot_format_ui(cx);
+    }
+
+    fn sync_kot_format_ui(&mut self, cx: &mut Cx) {
+        let (draft, shop, lang) = {
+            let st = app_state().lock().unwrap();
+            let shop = st
+                .store
+                .as_ref()
+                .and_then(|s| s.venue_title().ok())
+                .unwrap_or_else(|| st.display_venue_title());
+            (st.kot_slip_draft.clone(), shop, st.locale.language.clone())
+        };
+        let s = |k: &str| locale::t(&lang, k);
+        self.ui
+            .widget(cx, ids!(h_kot_format))
+            .set_text(cx, &plain_display_text(&s("kot_format")));
+        self.ui
+            .widget(cx, ids!(kot_format_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("kot_format_help")));
+        self.ui
+            .widget(cx, ids!(h_kot_format_fields))
+            .set_text(cx, &plain_display_text(&s("kot_format_fields")));
+        self.ui
+            .widget(cx, ids!(h_kot_width))
+            .set_text(cx, &plain_display_text(&s("kot_width")));
+        self.ui
+            .widget(cx, ids!(h_kot_size))
+            .set_text(cx, &plain_display_text(&s("kot_size")));
+        self.ui
+            .widget(cx, ids!(h_kot_preview))
+            .set_text(cx, &plain_display_text(&s("kot_preview")));
+        self.ui
+            .button(cx, ids!(kot_format_save))
+            .set_text(cx, &s("save_kot_format"));
+        self.ui
+            .text_input(cx, ids!(kot_footer_input))
+            .set_empty_text(cx, s("kot_footer_ph"));
+        let footer_field = self.ui.text_input(cx, ids!(kot_footer_input));
+        if !cx.has_key_focus(footer_field.area()) {
+            footer_field.set_text(cx, &draft.footer);
+        }
+        for (idle, active, label) in [
+            (ids!(kot_shop_on), ids!(kot_shop_on_on), "kot_show_shop"),
+            (ids!(kot_shop_off), ids!(kot_shop_off_on), "kot_hide_shop"),
+            (ids!(kot_time_on), ids!(kot_time_on_on), "kot_show_time"),
+            (ids!(kot_time_off), ids!(kot_time_off_on), "kot_hide_time"),
+            (ids!(kot_waiter_on), ids!(kot_waiter_on_on), "kot_show_waiter"),
+            (ids!(kot_waiter_off), ids!(kot_waiter_off_on), "kot_hide_waiter"),
+            (ids!(kot_station_on), ids!(kot_station_on_on), "kot_show_station"),
+            (ids!(kot_station_off), ids!(kot_station_off_on), "kot_hide_station"),
+            (ids!(kot_width_58), ids!(kot_width_58_on), "kot_width_58"),
+            (ids!(kot_width_80), ids!(kot_width_80_on), "kot_width_80"),
+            (ids!(kot_size_s), ids!(kot_size_s_on), "kot_size_s"),
+            (ids!(kot_size_m), ids!(kot_size_m_on), "kot_size_m"),
+            (ids!(kot_size_l), ids!(kot_size_l_on), "kot_size_l"),
+        ] {
+            let t = s(label);
+            self.ui.button(cx, idle).set_text(cx, &t);
+            self.ui.button(cx, active).set_text(cx, &t);
+        }
+        self.paint_choice_pair(cx, ids!(kot_shop_on), ids!(kot_shop_on_on), draft.show_shop_name);
+        self.paint_choice_pair(cx, ids!(kot_shop_off), ids!(kot_shop_off_on), !draft.show_shop_name);
+        self.paint_choice_pair(cx, ids!(kot_time_on), ids!(kot_time_on_on), draft.show_time);
+        self.paint_choice_pair(cx, ids!(kot_time_off), ids!(kot_time_off_on), !draft.show_time);
+        self.paint_choice_pair(cx, ids!(kot_waiter_on), ids!(kot_waiter_on_on), draft.show_waiter);
+        self.paint_choice_pair(cx, ids!(kot_waiter_off), ids!(kot_waiter_off_on), !draft.show_waiter);
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_station_on),
+            ids!(kot_station_on_on),
+            draft.show_station,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_station_off),
+            ids!(kot_station_off_on),
+            !draft.show_station,
+        );
+        let wide = draft.chars_per_line >= print_share::KOT_CHARS_80MM;
+        self.paint_choice_pair(cx, ids!(kot_width_58), ids!(kot_width_58_on), !wide);
+        self.paint_choice_pair(cx, ids!(kot_width_80), ids!(kot_width_80_on), wide);
+        let em = draft.em;
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_size_s),
+            ids!(kot_size_s_on),
+            em <= print_share::KOT_EM_SMALL,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_size_m),
+            ids!(kot_size_m_on),
+            em > print_share::KOT_EM_SMALL && em < print_share::KOT_EM_LARGE,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_size_l),
+            ids!(kot_size_l_on),
+            em >= print_share::KOT_EM_LARGE,
+        );
+        let preview = draft.render_sample(&shop);
+        let rows: Vec<ReportRow> = preview
+            .lines()
+            .map(|l| ReportRow::Line(l.to_string()))
+            .collect();
+        self.set_report_rows(cx, ids!(kot_format_preview), rows);
     }
 
 

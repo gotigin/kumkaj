@@ -353,9 +353,10 @@ fn customer_row_height() -> &'static Mutex<f64> {
 
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    // Closed compact row (~name + meta). Open-line details add extra in CartList.
-    // A 320 seed reserved a tall blank gap above Kitchen for every closed line.
-    HEIGHT.get_or_init(|| Mutex::new(96.0))
+    // Closed CartRow: thumb + name/meta wrap + Hold/Cancel chips. Must start
+    // *above* a short closed row — a 96 seed (2026-11-02) clipped "Not sent
+    // yet" into the Kitchen strip. Open-line details add extra in CartList.
+    HEIGHT.get_or_init(|| Mutex::new(140.0))
 }
 
 fn stock_row_height() -> &'static Mutex<f64> {

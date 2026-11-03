@@ -246,6 +246,9 @@ impl App {
                     .ok_or_else(|| "No store".to_string())?
                     .complete_onboarding()?;
                 st.onboarding_complete = true;
+                // Main screen is a root — drop DeviceSetup/Onboard from Back.
+                st.nav_back.clear();
+                st.nav_forward.clear();
                 st.screen = unlocked_home();
                 st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();

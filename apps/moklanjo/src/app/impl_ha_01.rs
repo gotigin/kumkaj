@@ -974,22 +974,12 @@ impl App {
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(server_name_input)).text();
-            // One tap must not create a shop. The second tap does, then
-            // Owner PIN and setup still have to finish.
-            if !new_server_armed().swap(true, std::sync::atomic::Ordering::SeqCst) {
-                self.set_status(
-                    cx,
-                    "Not created yet — tap Create new server again. You still set the Owner PIN and finish setup.",
-                );
+            if let Err(e) = self.activate_new_server(cx, &name) {
+                self.set_status(cx, e);
             } else {
-                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
-                if let Err(e) = self.activate_new_server(cx, &name) {
-                    self.set_status(cx, e);
-                } else {
-                    self.ui
-                        .text_input(cx, ids!(server_name_input))
-                        .set_text(cx, "");
-                }
+                self.ui
+                    .text_input(cx, ids!(server_name_input))
+                    .set_text(cx, "");
             }
         }
         if self
@@ -997,7 +987,6 @@ impl App {
             .button(cx, ids!(server_pick_cancel))
             .clicked(actions)
         {
-            new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
         }
@@ -1005,16 +994,22 @@ impl App {
             let widget = self.ui.widget(cx, ids!(setup_server_list));
             let list = widget.portal_list(cx, ids!(list));
             for (item_id, item) in list.items_with_actions(actions) {
+                let id = app_state()
+                    .lock()
+                    .unwrap()
+                    .local_servers
+                    .get(item_id)
+                    .map(|s| s.id.clone());
                 if item.button(cx, ids!(pick)).clicked(actions) {
-                    let id = app_state()
-                        .lock()
-                        .unwrap()
-                        .local_servers
-                        .get(item_id)
-                        .map(|s| s.id.clone());
-                    if let Some(id) = id {
-                        new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
+                    if let Some(id) = id.clone() {
                         if let Err(e) = self.activate_existing_server(cx, &id) {
+                            self.set_status(cx, e);
+                        }
+                    }
+                }
+                if item.button(cx, ids!(remove)).clicked(actions) {
+                    if let Some(id) = id {
+                        if let Err(e) = self.delete_existing_server(cx, &id) {
                             self.set_status(cx, e);
                         }
                     }

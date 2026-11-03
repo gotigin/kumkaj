@@ -57,15 +57,14 @@ impl WrapLabel {
 /// (below by default; flips / clamps when space is tight).
 ///
 /// Layout contract (DESIGN / DEV — do not weaken; both apps):
-/// - **Always Fit** so title+ℹ pack as one cluster. Gap is only
-///   `tip_btn.margin.left` (6). Never `width: Fill` — that parks ℹ at the
-///   row end (lock-screen regression, 2026-11).
-/// - Title is **WrapLabel** at `Fit{max: parent}` — wraps at 375 instead of
-///   mid-cropping; never `Label{width:Fill, wrap}` (turtle NaN, DEV bug 7).
-/// - Empty title stays **hidden** so tip-only companions stay tip-sized.
-/// - Beside an accordion: keep **this** Fit next to a **Fit** caption; add a
-///   Fill `_ext` sibling so the rest of the card still toggles (DEV bug 7c).
-///   Do not park ℹ at the far end of the row.
+/// - **Titled:** walk **Fill**; children are **Fit title + tip + Fill trail**
+///   so ℹ sits **next to** the label on every screen (never parked at the
+///   far end).
+/// - **Tip-only:** trail hidden; walk **Fit** so ℹ stays tip-sized.
+/// - Never `Label{width:Fill, wrap}` for the title (turtle NaN, DEV bug 7).
+/// - Empty title stays **hidden**.
+/// - Beside an accordion: Fit caption + tip-only this + Fill `_ext`
+///   (`AccordionHdrHitBtn`).
 #[derive(Script, ScriptHook, Widget)]
 struct InfoHelp {
     #[source]
@@ -147,6 +146,17 @@ impl Widget for InfoHelp {
         self.view
             .widget(cx, ids!(title))
             .set_visible(cx, has_title);
+        // Trail is Fill — only with a title, or tip-only Fit collapses wrong.
+        self.view.view(cx, ids!(trail)).set_visible(cx, has_title);
+        let walk = Walk {
+            width: if has_title {
+                Size::fill()
+            } else {
+                Size::fit()
+            },
+            height: Size::fit(),
+            ..walk
+        };
         self.view.draw_walk(cx, scope, walk)
     }
 

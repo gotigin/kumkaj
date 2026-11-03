@@ -24,7 +24,7 @@ Makepad 2 `Button` has **no selected bit** — only `hover` / `down` / `focus` /
 | Button shows `record_purchase` | Missing English `locale::en` entry; `t()` returned the key |
 | **UI freezes on Settings CTAs (wrap)** | `flow: Right{wrap: true}` + **Fill** child → turtle error spam / draw thrash. High CPU. See DEV.md bug **7**. |
 | **Settings “Not Responding” on Bill/place tap** | **Not wrap.** Same-thread `app_state` deadlock: `set_status(cx, app_state().lock()…)`. Low CPU + `futex_do_wait`. See DEV.md bug **7a** / `app-state-lock.mdc`. |
-| **Large row / check only a thin strip works** | Fit accordion alone, or check-box-only hits. Prefer Fill face or Fit caption+ℹ+Fill `_ext`; whole label row for checks. Exceptions OK (sidebar pill, ↑↓). DEV.md bug **7c**. |
+| **Large row / check only a thin strip works** | Fit accordion alone, or check-box-only hits. Prefer Fill face, or Fit caption+ℹ+Fill `_ext` as **`AccordionHdrHitBtn`** (invisible face — one header, not painted segments); whole label row for checks. Exceptions OK (sidebar pill, ↑↓). DEV.md bug **7c**. |
 
 ## Approach (required)
 
@@ -80,6 +80,6 @@ A **Fit** CTA beside **Fill** `FieldInput`s in one `Right` row is given a tiny w
 ✅ Overlay + paint_nav_tabs / paint_choice_pair + animator clear
 ✅ Wrap + center on full-width CTAs; ChipBtn only for short chips
 ✅ Fields in FormFieldRow; multi-word CTAs in ActionStack below
-✅ Most toggles: generous hit (Fill / label row); Fit caption + ℹ + Fill `_ext` when tip hugs title
+✅ Most toggles: generous hit (Fill / label row); tip rows: Fit caption + ℹ + Fill `_ext` as AccordionHdrHitBtn (no hover slab)
 ✅ Exceptions when full-row hit would break drag / ↑↓ / other UX — comment why
 ```

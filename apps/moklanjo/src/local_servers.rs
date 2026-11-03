@@ -161,6 +161,48 @@ pub fn open_server(base: &Path, server_id: &str) -> Result<Store, String> {
     Ok(store)
 }
 
+/// Owner-only gate before wiping a local server (vision §17).
+/// Incomplete first-run shops (no Owner PIN yet) may be removed without a PIN.
+/// Otherwise the Owner PIN for **that** server's books is required.
+pub fn assert_owner_may_delete(base: &Path, server_id: &str, pin: &str) -> Result<(), String> {
+    let path = server_db_path(base, server_id);
+    if !path.exists() {
+        return Err("Server database missing".into());
+    }
+    let store = Store::open_path(&path)?;
+    if !store.owner_setup_complete().unwrap_or(false) {
+        return Ok(());
+    }
+    let pin = pin.trim();
+    if pin.is_empty() {
+        return Err("Owner PIN required to remove this server".into());
+    }
+    match store.authenticate_owner_pin(pin)? {
+        Some(_) => Ok(()),
+        None => Err("Only the Owner can remove a server".into()),
+    }
+}
+
+/// Drop a local server from the registry and delete its books directory.
+/// Caller must close any open `Store` on that path first (SQLite file lock),
+/// and must have passed [`assert_owner_may_delete`] (or equivalent) first.
+pub fn delete_local_server(base: &Path, server_id: &str) -> Result<(), String> {
+    let mut reg = load_registry(base)?;
+    if !reg.servers.iter().any(|s| s.id == server_id) {
+        return Err("Server not found".into());
+    }
+    reg.servers.retain(|s| s.id != server_id);
+    if reg.active_id.as_deref() == Some(server_id) {
+        reg.active_id = reg.servers.first().map(|s| s.id.clone());
+    }
+    save_registry(base, &reg)?;
+    let dir = servers_root(base).join(server_id);
+    if dir.exists() {
+        fs::remove_dir_all(&dir).map_err(|e| e.to_string())?;
+    }
+    Ok(())
+}
+
 pub fn open_client_store(base: &Path) -> Result<Store, String> {
     let path = client_db_path(base);
     if let Some(parent) = path.parent() {
@@ -216,6 +258,40 @@ mod tests {
         let opened = open_server(&base, &a.id).unwrap();
         assert!(opened.db_path().ends_with(DB_FILENAME));
         assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(a.id.as_str()));
+        let _ = fs::remove_dir_all(base);
+    }
+
+    #[test]
+    fn delete_server_drops_registry_and_files() {
+        let base = temp_base();
+        let (a, store_a) = create_local_server(&base, "Tea stall").unwrap();
+        let (b, _) = create_local_server(&base, "Moklanjo desk").unwrap();
+        drop(store_a);
+        assert_eq!(list_local_servers(&base).unwrap().len(), 2);
+        // First-run incomplete: Owner PIN not required yet.
+        assert_owner_may_delete(&base, &a.id, "").unwrap();
+        delete_local_server(&base, &a.id).unwrap();
+        let list = list_local_servers(&base).unwrap();
+        assert_eq!(list.len(), 1);
+        assert_eq!(list[0].id, b.id);
+        assert!(!server_db_path(&base, &a.id).exists());
+        assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(b.id.as_str()));
+        let _ = fs::remove_dir_all(base);
+    }
+
+    #[test]
+    fn delete_after_owner_setup_needs_owner_pin() {
+        let base = temp_base();
+        let (a, store) = create_local_server(&base, "Tea stall").unwrap();
+        store.complete_owner_setup("2468").unwrap();
+        drop(store);
+        assert!(assert_owner_may_delete(&base, &a.id, "").unwrap_err().contains("Owner PIN"));
+        assert!(assert_owner_may_delete(&base, &a.id, "0000")
+            .unwrap_err()
+            .contains("Only the Owner"));
+        assert_owner_may_delete(&base, &a.id, "2468").unwrap();
+        delete_local_server(&base, &a.id).unwrap();
+        assert!(list_local_servers(&base).unwrap().is_empty());
         let _ = fs::remove_dir_all(base);
     }
 

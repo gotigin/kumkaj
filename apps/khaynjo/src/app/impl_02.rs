@@ -2114,7 +2114,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 )
             };
             let t = |k: &str| locale::t(&lang, k);
-            self.ui.view(cx, ids!(table_actions)).set_visible(cx, table_open);
+            self.ui.view(cx, ids!(table_actions_wrap)).set_visible(cx, table_open);
+            self.sync_order_sections(cx);
             {
                 let st = app_state().lock().unwrap();
                 let may_reprint = session_may_reprint(st.session.as_ref());

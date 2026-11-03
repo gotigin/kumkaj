@@ -517,10 +517,10 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
     }
 }
 
-/// Whether arriving at `screen` may keep (or receive) visit history.
-/// Lock and Onboard always clear stacks. Peer chrome and drill-downs both
-/// push via `go` / `go_peer`. Mouse Back / Alt+← / edge swipe / Android back
-/// pop via `navigate_back`.
+/// Whether a screen may sit on (or receive) visit history.
+/// Lock and Onboard never keep history — entering **or** leaving them
+/// clears stacks (`set_screen`) so Back cannot reopen setup after the
+/// main screen. Peer chrome and drill-downs push via `go` / `go_peer`.
 fn screen_keeps_history(screen: Screen) -> bool {
     !matches!(screen, Screen::Lock | Screen::Onboard)
 }

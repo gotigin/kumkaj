@@ -1697,7 +1697,6 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 drop(st);
                 self.activate_new_server(cx, "")?;
             } else {
-                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
                 st.picking_server = true;
                 st.status = st.t("choose_server");
             }

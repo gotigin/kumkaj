@@ -781,6 +781,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(nav_drag_ghost), rtl);
         self.align_label(cx, ids!(nav_drag_ghost_label), rtl);
         self.align_label(cx, ids!(setup_server_list), rtl);
+        self.align_label(cx, ids!(server_pick_title), rtl);
+        self.align_label(cx, ids!(lock_login_title), rtl);
         self.align_label(cx, ids!(floor_list), rtl);
         self.align_label(cx, ids!(kitchen_list), rtl);
         self.align_label(cx, ids!(category_list), rtl);
@@ -874,6 +876,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(reason_input), rtl);
         self.align_input(cx, ids!(sale_attach_note), rtl);
         self.align_input(cx, ids!(server_name_input), rtl);
+        self.align_input(cx, ids!(server_remove_pin), rtl);
         self.align_input(cx, ids!(venue_title_input), rtl);
         self.align_input(cx, ids!(menu_aliases_input), rtl);
         self.align_input(cx, ids!(menu_price_input), rtl);
@@ -1101,7 +1104,12 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_feature_access_help)).set_text(cx, &plain_display_text(&s("feature_access_help")));
         self.ui.widget(cx, ids!(h_change_my_pin_heading)).set_text(cx, &plain_display_text(&s("change_my_pin_heading")));
         self.ui.widget(cx, ids!(h_duress_heading)).set_text(cx, &plain_display_text(&s("duress_heading")));
-        self.ui.widget(cx, ids!(h_duress_help)).set_text(cx, &plain_display_text(&s("duress_help")));
+        {
+            let help = self.ui.widget(cx, ids!(h_duress_help)).as_info_help();
+            // Title is the sibling WrapLabel on the same Right row.
+            help.set_title(cx, "");
+            help.set_tip(&plain_display_text(&s("duress_help")));
+        }
         self.ui.button(cx, ids!(save_duress_pin)).set_text(cx, &s("save_duress_pin"));
         self.ui.button(cx, ids!(clear_duress_pin)).set_text(cx, &s("clear_duress_pin"));
         self.ui.widget(cx, ids!(h_country_pack_help)).set_text(cx, &plain_display_text(&s("country_pack_help")));
@@ -1468,6 +1476,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             .as_info_help()
             .set_tip(&plain_display_text(&s("payment_qr_image_help")));
         self.sync_floor_sections(cx);
+        self.sync_order_sections(cx);
         self.sync_device_setup_sections(cx);
         self.ui.button(cx, ids!(refund_btn)).set_text(cx, &s("refund"));
         self.ui.button(cx, ids!(reports_copy)).set_text(cx, &s("copy_report"));

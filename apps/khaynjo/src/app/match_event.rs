@@ -575,6 +575,9 @@ impl MatchEvent for App {
                 self.toggle_floor_section(cx, key);
             }
         }
+        if self.ui.button(cx, ids!(table_actions_hdr)).clicked(actions) {
+            self.toggle_order_section(cx, "table_actions");
+        }
         for (hdr, key) in [
             (ids!(setup_lang_hdr), "language"),
             (ids!(setup_lang_hdr_ext), "language"),
@@ -976,26 +979,15 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(server_name_input)).text();
-            // One tap must not create a shop. The second tap does, then
-            // Owner PIN and setup still have to finish.
-            if !new_server_armed().swap(true, std::sync::atomic::Ordering::SeqCst) {
-                self.set_status(
-                    cx,
-                    "Not created yet — tap Create new server again. You still set the Owner PIN and finish setup.",
-                );
+            if let Err(e) = self.activate_new_server(cx, &name) {
+                self.set_status(cx, e);
             } else {
-                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
-                if let Err(e) = self.activate_new_server(cx, &name) {
-                    self.set_status(cx, e);
-                } else {
-                    self.ui
-                        .text_input(cx, ids!(server_name_input))
-                        .set_text(cx, "");
-                }
+                self.ui
+                    .text_input(cx, ids!(server_name_input))
+                    .set_text(cx, "");
             }
         }
         if self.ui.button(cx, ids!(server_pick_cancel)).clicked(actions) {
-            new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
         }
@@ -1003,16 +995,22 @@ impl MatchEvent for App {
             let widget = self.ui.widget(cx, ids!(setup_server_list));
             let list = widget.portal_list(cx, ids!(list));
             for (item_id, item) in list.items_with_actions(actions) {
+                let id = app_state()
+                    .lock()
+                    .unwrap()
+                    .local_servers
+                    .get(item_id)
+                    .map(|s| s.id.clone());
                 if item.button(cx, ids!(pick)).clicked(actions) {
-                    let id = app_state()
-                        .lock()
-                        .unwrap()
-                        .local_servers
-                        .get(item_id)
-                        .map(|s| s.id.clone());
-                    if let Some(id) = id {
-                        new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
+                    if let Some(id) = id.clone() {
                         if let Err(e) = self.activate_existing_server(cx, &id) {
+                            self.set_status(cx, e);
+                        }
+                    }
+                }
+                if item.button(cx, ids!(remove)).clicked(actions) {
+                    if let Some(id) = id {
+                        if let Err(e) = self.delete_existing_server(cx, &id) {
                             self.set_status(cx, e);
                         }
                     }
@@ -3582,6 +3580,9 @@ impl MatchEvent for App {
             if let Some(key) = opened {
                 app_state().lock().unwrap().settings_panel = Some(key);
                 self.sync_settings_panels(cx);
+                if key == "bill" {
+                    self.fill_bill_format_fields(cx);
+                }
             } else if self.ui.button(cx, ids!(settings_detail_back)).clicked(actions) {
                 app_state().lock().unwrap().settings_panel = None;
                 self.sync_settings_panels(cx);
@@ -5195,6 +5196,9 @@ impl MatchEvent for App {
                 // whole shop face, not a dish dump.
                 st.store.as_ref().ok_or_else(|| "No store".to_string())?.complete_onboarding()?;
                 st.onboarding_complete = true;
+                // Main screen is a root — drop DeviceSetup/Onboard from Back.
+                st.nav_back.clear();
+                st.nav_forward.clear();
                 st.screen = unlocked_home();
                 st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();
@@ -5257,6 +5261,100 @@ impl MatchEvent for App {
                 Ok(()) => {
                     self.fill_bill_format_fields(cx);
                     self.set_status(cx, "Bill format saved");
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        // KOT format: optional lines / width / type size — preview updates live.
+        {
+            let mut changed = false;
+            if self.choice_chip_clicked(cx, actions, ids!(kot_shop_on), ids!(kot_shop_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_shop_name = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_shop_off), ids!(kot_shop_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_shop_name = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_time_on), ids!(kot_time_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_time = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_time_off), ids!(kot_time_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_time = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_waiter_on), ids!(kot_waiter_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_waiter = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_waiter_off), ids!(kot_waiter_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_waiter = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_station_on), ids!(kot_station_on_on))
+            {
+                app_state().lock().unwrap().kot_slip_draft.show_station = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_station_off), ids!(kot_station_off_on))
+            {
+                app_state().lock().unwrap().kot_slip_draft.show_station = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_width_58), ids!(kot_width_58_on)) {
+                app_state().lock().unwrap().kot_slip_draft.chars_per_line =
+                    print_share::KOT_CHARS_58MM;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_width_80), ids!(kot_width_80_on)) {
+                app_state().lock().unwrap().kot_slip_draft.chars_per_line =
+                    print_share::KOT_CHARS_80MM;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_size_s), ids!(kot_size_s_on)) {
+                app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_SMALL;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_size_m), ids!(kot_size_m_on)) {
+                app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_NORMAL;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_size_l), ids!(kot_size_l_on)) {
+                app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_LARGE;
+                changed = true;
+            }
+            let footer_now = self.ui.text_input(cx, ids!(kot_footer_input)).text();
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.kot_slip_draft.footer != footer_now {
+                    st.kot_slip_draft.footer = footer_now;
+                    changed = true;
+                }
+            }
+            if changed {
+                self.sync_kot_format_ui(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(kot_format_save)).clicked(actions) {
+            let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Change the KOT format")?;
+                st.kot_slip_draft.footer = footer;
+                let saved = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?
+                    .set_kot_slip_format(&st.kot_slip_draft)?;
+                st.kot_slip_draft = saved;
+                Ok(st.t("kot_format_saved"))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.sync_kot_format_ui(cx);
+                    self.set_status(cx, msg);
                 }
                 Err(e) => self.set_status(cx, e),
             }

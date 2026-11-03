@@ -148,12 +148,6 @@ fn backup_busy() -> &'static std::sync::atomic::AtomicBool {
     &BUSY
 }
 
-/// First tap on Create new server only arms this. The second tap creates.
-fn new_server_armed() -> &'static std::sync::atomic::AtomicBool {
-    static ARM: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
-    &ARM
-}
-
 fn backup_cancel() -> &'static std::sync::atomic::AtomicBool {
     static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &CANCEL

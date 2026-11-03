@@ -2579,7 +2579,38 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
+    /// Owner's kitchen-slip options (clamped). Always a standard KOT shape.
+    pub fn kot_slip_format(&self) -> Result<crate::print_share::KotSlipFormat, String> {
+        Ok(crate::print_share::KotSlipFormat::parse(
+            &self.meta_get("kot_slip_format")?.unwrap_or_default(),
+        ))
+    }
+
+    /// Save kitchen-slip options and sync the built-in KOT print metrics
+    /// (type size / wrap width) on this device.
+    pub fn set_kot_slip_format(
+        &self,
+        fmt: &crate::print_share::KotSlipFormat,
+    ) -> Result<crate::print_share::KotSlipFormat, String> {
+        self.assert_server_writer("Change the KOT format")?;
+        let clamped = fmt.clone().clamped();
+        self.meta_set("kot_slip_format", &clamped.to_json())?;
+        if let Some(base) = self.path.parent() {
+            let mut printers = crate::print_share::load_device_printers(base);
+            if let Some(f) = printers
+                .formats
+                .iter_mut()
+                .find(|f| f.id == crate::print_share::FORMAT_KOT)
+            {
+                clamped.apply_to_print_format(f);
+            }
+            crate::print_share::save_device_printers(base, &printers)?;
+        }
+        Ok(clamped)
+    }
+
     /// Printable KOT text: table, time, station, items — never prices.
+    /// Layout follows Settings → Bill & KOT format (clamped options).
     pub fn format_kot_text(&self, kot_id: &str) -> Result<String, String> {
         let (created_at, summary, station_name, kot_no, kind, created_by, table_id): (
             String,
@@ -2618,34 +2649,20 @@ impl Store {
         } else {
             self.table_label(&table_id).unwrap_or_default()
         };
-        // ASCII-only body: network kitchen printers get this as ESC/POS text.
-        // Fancy dashes/scripts become "?" there; never ship a raster by default.
-        let mut out = String::from(if kind == "cancel" {
-            "*** CANCEL - STOP THIS ITEM ***\n"
-        } else {
-            "KOT - KITCHEN ORDER\n"
-        });
-        if kot_no > 0 {
-            out.push_str(&format!("KOT No: {kot_no}\n"));
-        }
-        out.push_str(&format!("Time: {when}\n"));
-        if !created_by.is_empty() {
-            out.push_str(&format!("By: {created_by}\n"));
-        }
-        if !table_label.is_empty() {
-            out.push_str(&format!("Table: {table_label}\n"));
-        }
-        if !station_name.is_empty() {
-            out.push_str(&format!("Station: {station_name}\n"));
-        }
-        out.push_str("--------------------------------\n");
-        // Stored summary is "D1 · [Station] 2× Dish, 1× …" for the Kitchen
-        // screen. Print must not glue table/station onto the first dish line.
-        for item in kot_print_item_lines(&summary, &table_label, &station_name) {
-            out.push_str(&format!("{item}\n"));
-        }
-        out.push_str("--------------------------------\n");
-        Ok(out)
+        let shop = self.venue_title().unwrap_or_default();
+        let items = kot_print_item_lines(&summary, &table_label, &station_name);
+        let item_refs: Vec<&str> = items.iter().map(String::as_str).collect();
+        let fmt = self.kot_slip_format()?;
+        Ok(fmt.render(crate::print_share::KotSlipContent {
+            cancel: kind == "cancel",
+            shop_name: &shop,
+            kot_no,
+            when: &when,
+            created_by: &created_by,
+            table_label: &table_label,
+            station_name: &station_name,
+            items: &item_refs,
+        }))
     }
 
     /// Print a KOT on this device (writes the print file and sends it along
@@ -8442,9 +8459,10 @@ impl Store {
     }
 
     /// Owner-only emergency unlock PIN (duress). Off by default. When typed at
-    /// unlock instead of a real staff PIN, trading history is wiped and the
-    /// till opens as Owner with an empty day — menu, prices, tables, staff and
-    /// settings stay. The unlock looks like a normal Owner login.
+    /// unlock instead of a real staff PIN, **books entries** are wiped and the
+    /// till opens as Owner with empty books — schema, config, menu, prices,
+    /// tables, staff and settings stay (vision §17). Does not delete the local
+    /// server. The unlock looks like a normal Owner login.
     pub fn duress_pin_configured(&self) -> Result<bool, String> {
         Ok(self
             .meta_get("duress_pin_hash")?

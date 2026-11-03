@@ -816,6 +816,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(nav_drag_ghost), rtl);
         self.align_label(cx, ids!(nav_drag_ghost_label), rtl);
         self.align_label(cx, ids!(setup_server_list), rtl);
+        self.align_label(cx, ids!(server_pick_title), rtl);
+        self.align_label(cx, ids!(lock_login_title), rtl);
         self.align_label(cx, ids!(sale_list), rtl);
         self.align_label(cx, ids!(amend_cart_list), rtl);
         self.align_label(cx, ids!(backup_path_label), rtl);
@@ -884,6 +886,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(reason_input), rtl);
         self.align_input(cx, ids!(sale_attach_note), rtl);
         self.align_input(cx, ids!(server_name_input), rtl);
+        self.align_input(cx, ids!(server_remove_pin), rtl);
         self.align_input(cx, ids!(venue_title_input), rtl);
         self.align_input(cx, ids!(booking_origin_name_input), rtl);
         self.align_input(cx, ids!(booking_origin_phone_input), rtl);

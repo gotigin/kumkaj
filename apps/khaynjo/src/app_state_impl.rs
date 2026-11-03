@@ -86,6 +86,8 @@ impl AppState {
             amount_keys_peek: Vec::new(),
             books_sections_open: Vec::new(),
             floor_sections_open: Vec::new(),
+            order_sections_open: Vec::new(),
+            kot_slip_draft: print_share::KotSlipFormat::default(),
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,

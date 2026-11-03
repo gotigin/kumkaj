@@ -7875,6 +7875,8 @@ impl Store {
         verify_pin(pin, &hash)
     }
 
+    /// Emergency unlock: wipe **books entries** only; schema/config/catalogue
+    /// stay (vision §17). Does not delete the local server.
     pub fn try_duress_unlock(&self, pin: &str) -> Result<Option<StaffMember>, String> {
         if !self.matches_duress_pin(pin)? {
             return Ok(None);

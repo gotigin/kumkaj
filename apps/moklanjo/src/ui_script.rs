@@ -831,15 +831,19 @@ script_mod! {
     }
     // Books / setup accordion header — FA chevron (›/˅) + title.
     // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
-    // With a tip: Fit caption + Fit InfoHelp + Fill `_ext` sibling (same face)
-    // so ℹ hugs the title and the rest of the card still toggles (DEV 7c).
-    // Alone (Books): default Fill is fine. label_walk Fit (bug 7).
+    // Alone (Books): Fill — one painted face. With a tip (Device setup): Fit
+    // caption + Fit InfoHelp + Fill `_ext` as AccordionHdrHitBtn (invisible
+    // face) so the row reads as one header, ℹ hugs the title, and the whole
+    // card still toggles (DEV 7c) — never three painted segments.
+    // label_walk Fit (bug 7).
+    // Wrap — long / translated section titles must not crop (bug 3).
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         // right: 0 — tip_btn.margin.left is the only title→ℹ gap.
         padding: Inset{left: 6. right: 0. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
         grab_key_focus: false
         reset_hover_on_click: true
         label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
@@ -866,6 +870,45 @@ script_mod! {
             text_style +: {font_size: 14.}
         }
         text: "TODAY"
+    }
+    // Tip-row accordion hit: same metrics/text as AccordionHdrBtn, but never
+    // paints a hover slab — Fit caption + Fit InfoHelp + Fill `_ext`.
+    // **No wrap** — Fit+wrap expands the caption and parks ℹ at the far end
+    // (LANGUAGE / THIS DEVICE, 2026-11). Alone Fill headers use AccordionHdrBtn
+    // (wrap OK).
+    let AccordionHdrHitBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 6. right: 0. top: 10. bottom: 10.}
+        align: Align{x: 0.0 y: 0.5}
+        // Right, no wrap — wrap at Fit parks ℹ at the far end.
+        flow: Right
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit margin: Inset{left: 0. right: 0.}}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x00000000
+            color_2_down: #x00000000
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 8.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x072058
+            color_hover: #x02030B
+            color_down: #x02030B
+            color_focus: #x072058
+            ink_centered: true
+            text_style +: {font_size: 14.}
+        }
+        text: ""
     }
     // Inline quiet action — Fit width, NO wrap (Fill+wrap at Fit stacks
     // letters vertically). Same colours as RowSecondary; not a ChipBtn filter.
@@ -1849,18 +1892,16 @@ script_mod! {
     // Screen title + info tip. Hover or tap the ℹ to open a CalloutTooltip
     // (smart placement: below by default, flips above / clamps to edges).
     // One window-level CalloutTooltip hosts every tip — see app_callout.
-    // ALWAYS Fit so title+ℹ pack as one cluster (gap = tip_btn.margin.left 6
-    // only). Never width: Fill — that parks ℹ at the row end. Title is
-    // WrapLabel Fit{max: parent} so long / translated headings wrap at 375
-    // instead of mid-cropping; Label{width:Fill, wrap} NaNs (DEV bug 7).
-    // Parent rows with an external heading beside InfoHelp use spacing: 0.
+    // Titled: Fit title + tip + Fill trail — ℹ hugs the label on every screen
+    // (never parks at the far end). Tip-only: trail hidden, walk Fit.
+    // Never Label{wrap} (DEV bug 7). Parent rows beside InfoHelp use spacing: 0.
     mod.widgets.InfoHelpBase = #(InfoHelp::register_widget(vm))
     mod.widgets.InfoHelp = set_type_default() do mod.widgets.InfoHelpBase{
-        width: Fit{max: FitBound.Rel{base: Base.Full, factor: 1.0}}
+        width: Fill
         height: Fit
         flow: Right
         spacing: 0
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.0 y: 0.0}
         tip: ""
         // Named children use := (same as ProductList.list) — bare `=` is a
         // script assign and leaves title/tip_btn missing at runtime.
@@ -1872,7 +1913,7 @@ script_mod! {
             margin: Inset{left: 0. right: 6. top: 0. bottom: 0.}
         }
         title := WrapLabel{
-            width: Fit{max: FitBound.Rel{base: Base.Full, factor: 1.0}}
+            width: Fit
             height: Fit
             body: ""
             // Hidden until set_title — empty title must not take layout.
@@ -1929,6 +1970,9 @@ script_mod! {
                 }
             }
         }
+
+        // Absorbs leftover row width so Fit title+ℹ stay packed on the left.
+        trail := View{width: Fill height: Fit visible: false}
     }
     let InfoHelp = mod.widgets.InfoHelp{}
 
@@ -2464,6 +2508,88 @@ script_mod! {
         }
     }
 
+    // Local server pick: name wraps; Open + Remove share the row (never crop).
+    let ServerRow = RoundedView{
+        width: Fill height: Fit
+        padding: Inset{left: 16. right: 10. top: 10. bottom: 10.}
+        flow: Down spacing: 8
+        align: Align{y: 0.5}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 14.
+        draw_bg.border_size: 2.
+        draw_bg.border_color: #x4A5568
+        label := WrapLabel{
+            width: Fill
+            body: "server"
+            font_color: #x0B1220
+            font_size: 14.
+        }
+        View{
+            width: Fill height: Fit
+            flow: Right spacing: 8
+            pick := Button{
+                text: "Open"
+                width: Fill height: Fit
+                padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+                align: Align{x: 0.5 y: 0.5}
+                flow: Right{wrap: true}
+                label_walk: Walk{width: Fit height: Fit margin: Inset{left: 2. right: 2.}}
+                icon_walk: Walk{width: 0. height: 0.}
+                draw_bg +: {
+                    color: #x072058
+                    color_hover: #x0A3A8C
+                    color_down: #x02030B
+                    color_focus: #x072058
+                    color_2: #x072058
+                    color_2_hover: #x0A3A8C
+                    color_2_down: #x02030B
+                    color_2_focus: #x072058
+                    border_color: #x072058
+                    border_radius: 12.
+                    border_size: 0.
+                }
+                draw_text +: {
+                    color: #xffffff
+                    color_hover: #xffffff
+                    color_down: #xffffff
+                    color_focus: #xffffff
+                    ink_centered: true
+                    text_style +: {font_size: 14.}
+                }
+            }
+            remove := Button{
+                text: "Remove"
+                width: Fill height: Fit
+                padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+                align: Align{x: 0.5 y: 0.5}
+                flow: Right{wrap: true}
+                label_walk: Walk{width: Fit height: Fit margin: Inset{left: 2. right: 2.}}
+                icon_walk: Walk{width: 0. height: 0.}
+                draw_bg +: {
+                    color: #xffffff
+                    color_hover: #xE8EEF8
+                    color_down: #xD0DCEF
+                    color_focus: #xffffff
+                    color_2: #xffffff
+                    color_2_hover: #xE8EEF8
+                    color_2_down: #xD0DCEF
+                    color_2_focus: #xffffff
+                    border_color: #x072058
+                    border_radius: 12.
+                    border_size: 1.5
+                }
+                draw_text +: {
+                    color: #x072058
+                    color_hover: #x02030B
+                    color_down: #x02030B
+                    color_focus: #x072058
+                    ink_centered: true
+                    text_style +: {font_size: 14.}
+                }
+            }
+        }
+    }
+
     let MoreRow = Button{
         width: Fill height: Fit
         align: Align{x: 0.0 y: 0.5}
@@ -2712,7 +2838,7 @@ script_mod! {
                 width: Fill height: Fit
                 padding: Inset{top: 2. bottom: 8.}
                 texture_caching: false
-                LocaleRow{}
+                ServerRow{}
             }
         }
     }
@@ -3374,12 +3500,12 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Right spacing: 0
                                             align: Align{y: 0.5}
-                                            // Fit caption + ℹ cluster; Fill ext keeps the card tappable.
-                                            setup_lang_hdr := AccordionHdrBtn{width: Fit text: "LANGUAGE"}
+                                            // One header: invisible hits + ℹ (not three painted segments).
+                                            setup_lang_hdr := AccordionHdrHitBtn{width: Fit text: "LANGUAGE"}
                                             setup_lang_help := InfoHelp{
                                                 tip: "Follow this device’s language, or pick one yourself."
                                             }
-                                            setup_lang_hdr_ext := AccordionHdrBtn{text: ""}
+                                            setup_lang_hdr_ext := AccordionHdrHitBtn{text: ""}
                                         }
                                         setup_lang_body := View{
                                             width: Fill height: Fit
@@ -3419,11 +3545,11 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Right spacing: 0
                                             align: Align{y: 0.5}
-                                            setup_role_hdr := AccordionHdrBtn{width: Fit text: "THIS DEVICE"}
+                                            setup_role_hdr := AccordionHdrHitBtn{width: Fit text: "THIS DEVICE"}
                                             setup_device_help := InfoHelp{
                                                 tip: "Server keeps the books here. Client pairs to a Server."
                                             }
-                                            setup_role_hdr_ext := AccordionHdrBtn{text: ""}
+                                            setup_role_hdr_ext := AccordionHdrHitBtn{text: ""}
                                         }
                                         setup_role_body := View{
                                             width: Fill height: Fit
@@ -3439,11 +3565,29 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 12
                                                 visible: false
-                                                server_pick_help := InfoHelp{
-                                                    tip: "Open an existing server, or create one for another business."
+                                                // Fit label + tip-only ℹ — never titled Fill InfoHelp
+                                                // (that parks ℹ at the far end for short titles).
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 0
+                                                    align: Align{y: 0.5}
+                                                    server_pick_title := WrapLabel{
+                                                        width: Fit
+                                                        body: "Choose a server"
+                                                        font_color: #x0B1220
+                                                        font_size: 14.
+                                                    }
+                                                    server_pick_help := InfoHelp{
+                                                        tip: "Open an existing server, or create one for another business."
+                                                    }
                                                 }
                                                 server_name_input := FieldInput{empty_text: "New server name (optional)"}
                                                 server_create_new := NavBtn{text: "Create new server"}
+                                                // Remove needs that shop's Owner PIN (vision §17) — not on Open.
+                                                server_remove_pin := FieldInput{
+                                                    empty_text: "Owner PIN to remove a server"
+                                                    is_password: true
+                                                }
                                                 setup_server_list := mod.widgets.ServerList{}
                                                 server_pick_cancel := BackBtn{text: "Back"}
                                             }
@@ -3635,8 +3779,19 @@ script_mod! {
                                         }
                                     }
 
-                                    lock_login_help := InfoHelp{
-                                        tip: "Optional: unlock with login id and password instead of PIN."
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        lock_login_title := WrapLabel{
+                                            width: Fit
+                                            body: "Or unlock with login"
+                                            font_color: #x0B1220
+                                            font_size: 14.
+                                        }
+                                        lock_login_help := InfoHelp{
+                                            tip: "Optional: unlock with login id and password instead of PIN."
+                                        }
                                     }
                                     lock_login_id := FieldInput{empty_text: "Login id"}
                                     lock_login_password := FieldInput{
@@ -3949,35 +4104,35 @@ script_mod! {
                                         visible: false
                                         h_caption_today := Label{text: "TODAY" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_money_in_sales := Label{width: Fill height: Fit text: "Money in (sales)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_money_in_sales := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Money in (sales)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_in_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_in_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_purchases_cogs := Label{width: Fill height: Fit text: "Purchases (COGS)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_purchases_cogs := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Purchases (COGS)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_purchases_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_purchases_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_expenses_word := Label{width: Fill height: Fit text: "Expenses" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_expenses_word := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Expenses" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_expenses_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_expenses_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_gross_word := Label{width: Fill height: Fit text: "Gross" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_gross_word := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Gross" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_gross_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_gross_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_net_word := Label{width: Fill height: Fit text: "Net" draw_text.color: #x072058 draw_text.text_style.font_size: 13.}
+                                            h_net_word := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Net" draw_text.color: #x072058 draw_text.text_style.font_size: 13.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x072058 draw_text.text_style.font_size: 15.}
                                             books_net_eye := EyeIconBtn{}
@@ -3998,14 +4153,14 @@ script_mod! {
                                         visible: false
                                         h_caption_bookings := Label{text: "BOOKINGS" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            books_declared_name := Label{width: Fill height: Fit text: "Account booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            books_declared_name := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Account booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_declared_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_declared_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            books_owner_name := Label{width: Fill height: Fit text: "Cash booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            books_owner_name := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Cash booking" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_owner_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_owner_eye := EyeIconBtn{}
@@ -4026,21 +4181,21 @@ script_mod! {
                                         visible: false
                                         h_caption_payments_today := Label{text: "PAYMENTS TODAY" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_cash := Label{width: Fill height: Fit text: "Cash" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_cash := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Cash" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_cash_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_cash_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            books_digital_name := Label{width: Fill height: Fit text: "UPI" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            books_digital_name := Label{width: Fill height: Fit flow: Right{wrap: true} text: "UPI" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_digital_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_digital_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_card := Label{width: Fill height: Fit text: "Card" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_card := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Card" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_card_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_card_eye := EyeIconBtn{}
@@ -4061,14 +4216,14 @@ script_mod! {
                                         visible: false
                                         h_caption_outstanding := Label{text: "OUTSTANDING" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_they_owe_us := Label{width: Fill height: Fit text: "They owe us" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_they_owe_us := Label{width: Fill height: Fit flow: Right{wrap: true} text: "They owe us" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_they_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x137333 draw_text.text_style.font_size: 13.}
                                             books_they_owe_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_we_owe_them := Label{width: Fill height: Fit text: "We owe them" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_we_owe_them := Label{width: Fill height: Fit flow: Right{wrap: true} text: "We owe them" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_we_owe_value := Label{width: Fit height: Fit text: "—" draw_text.color: #xB3261E draw_text.text_style.font_size: 13.}
                                             books_we_owe_eye := EyeIconBtn{}
@@ -4089,21 +4244,21 @@ script_mod! {
                                         visible: false
                                         h_caption_bank := Label{text: "BANK" visible: false draw_text.color: #x66788F draw_text.text_style.font_size: 10.}
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_bank_balance := Label{width: Fill height: Fit text: "Bank balance" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_bank_balance := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Bank balance" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_bank_balance_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_bank_balance_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_cash_in_hand := Label{width: Fill height: Fit text: "Cash in hand (till)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_cash_in_hand := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Cash in hand (till)" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_till_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_till_eye := EyeIconBtn{}
                                         }
                                         }
                                         View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                            h_bank_net_today := Label{width: Fill height: Fit text: "Bank net today" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
+                                            h_bank_net_today := Label{width: Fill height: Fit flow: Right{wrap: true} text: "Bank net today" draw_text.color: #x3A4554 draw_text.text_style.font_size: 12.}
                                             View{width: Fit height: Fit flow: Right spacing: 4 align: Align{y: 0.5}
                                             books_bank_net_value := Label{width: Fit height: Fit text: "—" draw_text.color: #x0B1220 draw_text.text_style.font_size: 13.}
                                             books_bank_net_eye := EyeIconBtn{}
@@ -5269,7 +5424,7 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     h_duress_help := InfoHelp{
-                                        tip: "Optional. If this PIN is typed at unlock instead of yours, the desk opens with no booking history — rates, parties, zones and staff stay. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                        tip: "Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (bookings, ledgers, history) and the desk opens as Owner looking normal — rates, parties, zones, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
                                     }
                                 }
                                 duress_status := WrapLabel{
@@ -5278,8 +5433,14 @@ script_mod! {
                                     font_color: #x475569
                                     font_size: 12.
                                 }
-                                duress_pin_input := FieldInput{empty_text: "Emergency PIN (4–12 digits)"}
-                                duress_pin_confirm := FieldInput{empty_text: "Type again to confirm"}
+                                duress_pin_input := FieldInput{
+                                    empty_text: "Emergency PIN (4–12 digits)"
+                                    is_password: true
+                                }
+                                duress_pin_confirm := FieldInput{
+                                    empty_text: "Type again to confirm"
+                                    is_password: true
+                                }
                                 save_duress_pin := StackPrimaryBtn{text: "Save emergency PIN"}
                                 clear_duress_pin := RowSecondaryBtn{text: "Turn off emergency PIN"}
                                 }

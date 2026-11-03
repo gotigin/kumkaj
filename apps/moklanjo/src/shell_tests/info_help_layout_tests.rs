@@ -1,9 +1,8 @@
 #[cfg(test)]
 mod info_help_layout_tests {
-    /// InfoHelp must stay Fit so title+ℹ pack (gap = tip_btn.margin.left only).
-    /// Fill parks ℹ at the row end (lock-screen regression, 2026-11).
+    /// InfoHelp root stays Fill so the trail can absorb leftover row width.
     #[test]
-    fn infohelp_default_is_fit_pack_not_fill_row_end() {
+    fn infohelp_default_is_fill_so_trail_absorbs() {
         let body = infohelp_default_body();
         let after = body
             .split("mod.widgets.InfoHelp = set_type_default()")
@@ -14,15 +13,15 @@ mod info_help_layout_tests {
             .map(str::trim)
             .find(|l| l.starts_with("width:"))
             .unwrap_or("");
-        assert!(
-            first_width.starts_with("width: Fit"),
-            "InfoHelp first width must be Fit…, got {first_width:?}"
+        assert_eq!(
+            first_width, "width: Fill",
+            "InfoHelp first width must be Fill so trail absorbs leftover, got {first_width:?}"
         );
     }
 
-    /// Title is WrapLabel Fit{max:…} — never Label Fill+wrap (DEV bug 7 NaN).
+    /// Title is WrapLabel Fit — Fill title parks ℹ at the far end.
     #[test]
-    fn infohelp_title_is_wraplabel_fit_not_fill_label() {
+    fn infohelp_title_is_wraplabel_fit() {
         let body = infohelp_default_body();
         assert!(
             body.contains("title := WrapLabel{"),
@@ -30,44 +29,100 @@ mod info_help_layout_tests {
         );
         assert!(
             !body.contains("title := Label{"),
-            "InfoHelp title must not be Label — Fill+wrap NaNs the turtle"
+            "InfoHelp title must not be Label — Fill+wrap Label NaNs the turtle"
         );
         let title_block = body
             .split("title := WrapLabel{")
             .nth(1)
-            .and_then(|s| s.split('}').next())
+            .and_then(|s| s.split("tip_btn").next())
             .unwrap_or("");
         assert!(
             title_block.contains("width: Fit"),
-            "title WrapLabel must be Fit (pack with ℹ), got {title_block:?}"
+            "title WrapLabel must be Fit so ℹ hugs the label, got {title_block:?}"
         );
         assert!(
             !title_block.contains("width: Fill"),
-            "title WrapLabel must not be Fill (parks ℹ at row end)"
+            "title WrapLabel must not be Fill — parks ℹ at the far end"
         );
     }
 
-    /// set_title must not force Fill on the widget walk (that undoes Fit pack).
     #[test]
-    fn set_title_never_forces_fill_walk() {
-        let src = include_str!("../info_help.rs");
-        // Allow Size mentions only outside InfoHelp set_title/draw — ban fill coerce.
-        let help_impl = src
-            .split("impl InfoHelpRef")
-            .nth(1)
-            .unwrap_or(src);
+    fn infohelp_has_fill_trail_after_tip() {
+        let body = infohelp_default_body();
         assert!(
-            !help_impl.contains("Size::fill()") && !help_impl.contains("walk.width = Size::"),
-            "InfoHelpRef must not force Fill/Fit walk overrides — DSL owns pack"
+            body.contains("trail := View{width: Fill height: Fit"),
+            "InfoHelp must have Fill trail after tip so title+ℹ pack left"
         );
-        let draw = src
-            .split("fn draw_walk")
+    }
+
+    #[test]
+    fn draw_walk_packs_title_with_tip_via_trail() {
+        let src = include_str!("../info_help.rs");
+        assert!(
+            src.contains("Size::fill()") && src.contains("Size::fit()"),
+            "info_help draw_walk must Size::fill() when titled and Size::fit() when tip-only"
+        );
+        assert!(
+            src.contains("ids!(trail)"),
+            "draw_walk must show/hide trail with the title"
+        );
+    }
+
+    #[test]
+    fn accordion_hdr_hit_btn_must_not_wrap() {
+        let ui = include_str!("../ui_script.rs");
+        let start = ui
+            .find("let AccordionHdrHitBtn = Button{")
+            .expect("AccordionHdrHitBtn");
+        let end = ui[start..]
+            .find("let QuietFitBtn = Button{")
+            .or_else(|| ui[start..].find("\n    let "))
+            .unwrap_or(800);
+        let block = &ui[start..start + end];
+        assert!(
+            !block.contains("wrap: true"),
+            "AccordionHdrHitBtn must not use wrap:true — breaks Fit caption+ℹ pack"
+        );
+    }
+
+    #[test]
+    fn tip_rows_use_hit_btn_not_wrapped_accordion_hdr() {
+        let ui = include_str!("../ui_script.rs");
+        assert!(
+            !ui.contains("AccordionHdrBtn{width: Fit"),
+            "AccordionHdrBtn{{width: Fit}} + wrap parks ℹ far — use AccordionHdrHitBtn"
+        );
+        assert!(
+            ui.contains("AccordionHdrHitBtn{width: Fit"),
+            "tip-row captions must use AccordionHdrHitBtn{{width: Fit}}"
+        );
+    }
+
+    #[test]
+    fn short_tip_labels_are_fit_wraplabel_not_titled_infohelp() {
+        let ui = include_str!("../ui_script.rs");
+        for id in ["server_pick_title", "lock_login_title"] {
+            assert!(
+                ui.contains(&format!("{id} := WrapLabel{{")),
+                "{id} must be a sibling WrapLabel, not InfoHelp title"
+            );
+        }
+        let pick = ui
+            .split("server_pick_title := WrapLabel{")
             .nth(1)
-            .and_then(|s| s.split("fn text").next())
+            .and_then(|s| s.split("server_name_input").next())
             .unwrap_or("");
         assert!(
-            !draw.contains("Size::fill()") && !draw.contains("Size::Fill"),
-            "draw_walk must not force Fill — breaks title+ℹ pack"
+            pick.contains("width: Fit"),
+            "server_pick_title WrapLabel must be width: Fit"
+        );
+        assert!(
+            pick.contains("server_pick_help := InfoHelp{"),
+            "server_pick_help must follow the Fit WrapLabel"
+        );
+        assert!(
+            !pick.contains("title:"),
+            "server_pick_help must be tip-only (no DSL title:)"
         );
     }
 
@@ -76,6 +131,6 @@ mod info_help_layout_tests {
         let start = ui
             .find("mod.widgets.InfoHelp = set_type_default()")
             .expect("InfoHelp type default");
-        &ui[start..start + 2800.min(ui.len() - start)]
+        &ui[start..start + 3200.min(ui.len() - start)]
     }
 }

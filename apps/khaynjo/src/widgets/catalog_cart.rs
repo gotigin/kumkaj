@@ -220,21 +220,37 @@ impl Widget for CartList {
             )
         };
         let count = lines.len();
-        // Full list; outer Order ScrollYView scrolls. Closed-row pitch only —
-        // open details add a one-shot extra so we do not reserve 320px/line.
+        // Full list; outer Order ScrollYView scrolls. Closed-row pitch + KOT
+        // group headers ("Not sent yet" / "KOT n"); open details add extra.
         const GAP: f64 = 8.0;
         const OPEN_EXTRA: f64 = 220.0;
-        // Self-heal a stale 320px pitch left from an older process seed.
+        const KOT_HEAD_H: f64 = 22.0;
+        // Heal only absurd leftover 320 seeds — never squash a learned tall pitch
+        // (the old `> 140 → 96` clamp cropped cart lines into Kitchen).
         let row = {
             let mut g = cart_row_height().lock().unwrap();
-            if *g > 140.0 {
-                *g = 96.0;
+            if *g > 280.0 {
+                *g = 140.0;
             }
             *g
         };
+        let head_n = lines
+            .iter()
+            .enumerate()
+            .filter(|(i, line)| {
+                *i == 0
+                    || lines
+                        .get(i - 1)
+                        .map(|prev| prev.kot_id != line.kot_id)
+                        .unwrap_or(true)
+            })
+            .count();
         let open_extra = if open_line.is_some() { OPEN_EXTRA } else { 0.0 };
         let (first, last) = (0usize, count);
-        let content_h = (list_content_height(count, row, GAP) + open_extra).max(56.0);
+        let content_h = (list_content_height(count, row, GAP)
+            + head_n as f64 * KOT_HEAD_H
+            + open_extra)
+            .max(56.0);
         let walk = Walk {
             height: Size::Fixed(content_h),
             ..walk
@@ -517,7 +533,15 @@ impl Widget for CartList {
                 if drew > 0 {
                     let extent = list.drawn_range_extent();
                     if extent > 1.0 {
-                        measured_row = extent / drew as f64;
+                        // Body pitch only — heads are reserved separately above.
+                        let body = (extent - head_n as f64 * KOT_HEAD_H).max(0.0);
+                        measured_row = body / drew as f64;
+                        // Reserved too short → learn + one settle frame (draw
+                        // cannot grow the walk in-place without flicker).
+                        if extent > content_h + 1.0 && open_line.is_none() {
+                            *cart_row_height().lock().unwrap() = measured_row.max(row);
+                            self.settle = cx.new_next_frame();
+                        }
                     }
                 }
             }
@@ -530,7 +554,9 @@ impl Widget for CartList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let _ = &self.settle;
+        if self.settle.is_event(event).is_some() {
+            self.view.redraw(cx);
+        }
         if page_owns_scroll(event) {
             return;
         }

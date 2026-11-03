@@ -954,6 +954,39 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         self.ui.redraw(cx);
     }
 
+    fn sync_order_sections(&mut self, cx: &mut Cx) {
+        let open = app_state().lock().unwrap().order_sections_open.clone();
+        let is_open = |key: &str| open.iter().any(|k| k == key);
+        let lang = app_state().lock().unwrap().locale.language.clone();
+        let s = |k: &str| locale::t(&lang, k);
+        let open = is_open("table_actions");
+        let mark = if open {
+            ACCORDION_MARK_OPEN
+        } else {
+            ACCORDION_MARK_CLOSED
+        };
+        let caption = s("table_actions").to_uppercase();
+        self.ui
+            .button(cx, ids!(table_actions_hdr))
+            .set_text(cx, &format!("{mark}  {caption}"));
+        self.ui
+            .view(cx, ids!(table_actions_body))
+            .set_visible(cx, open);
+    }
+
+    fn toggle_order_section(&mut self, cx: &mut Cx, key: &str) {
+        {
+            let mut st = app_state().lock().unwrap();
+            if let Some(i) = st.order_sections_open.iter().position(|k| k == key) {
+                st.order_sections_open.remove(i);
+            } else {
+                st.order_sections_open.push(key.to_string());
+            }
+        }
+        self.sync_order_sections(cx);
+        self.ui.redraw(cx);
+    }
+
     fn sync_device_setup_sections(&mut self, cx: &mut Cx) {
         let open = app_state()
             .lock()
@@ -1011,7 +1044,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         let help_ids: &[&[LiveId]] = &[
             ids!(h_other_devices_help),
             ids!(h_other_devices_help_heading),
-            ids!(h_duress_help),
+            // h_duress_help is InfoHelp ℹ — Owner must see it on Team (vision §17).
             ids!(h_optional_login_help),
             ids!(h_feature_access_help),
             ids!(h_rights_help),

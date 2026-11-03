@@ -56,6 +56,7 @@ Same device may hold **several local servers** (different products or businesses
 |---|---|
 | **No local server yet** | Server Mode **creates** a new server (unique id) and continues to Lock / Owner PIN. |
 | **Servers already exist** | Server Mode shows **Create new server** (optional name) or **Open** an existing one from the list, then continues with that server. |
+| **Remove a local server** | **Owner only** (vision §17). Enter that shop’s **Owner PIN**, then **Remove**. Staff / non-owner sessions cannot wipe a server. Incomplete first-run shops (no Owner PIN yet) may be removed without a PIN. |
 
 **Client Mode** uses a separate client cache DB (`client/moklanjo.sqlite3`) and pairs over LAN to a Server — it does not pick from the local server registry.
 
@@ -97,9 +98,8 @@ controls past the right edge, no “designed for one width” grids.
   ~280 px tile fits (`FLOOR_TILE_MIN_W`).
 - Prefer wrap / reflow / scroll over Fixed widths that only fit one
   desktop size. Desk side-by-side only when the content column is wide
-  enough; otherwise stack. Sole `InfoHelp` headings stay **Fit** (pack
-  with ℹ) and wrap via **`Fit{max: parent}`** / WrapLabel — never switch
-  them to Fill to dodge crop (that parks ℹ at the row end).
+  enough; otherwise stack. Sole `InfoHelp` headings: titled = Fit title +
+  tip + Fill trail (ℹ hugs the label); tip-only InfoHelp stays Fit.
 - Phone (< **720**) and tablet/desktop (≥ **720**) chrome differ
   (bottom tabs vs side rail); content inside each mode still reflows.
 - **Page-scroll lists:** expand-to-content `PortalList`s must not use a
@@ -200,9 +200,9 @@ Never promote a hub navigate link to filled primary because it is “the main th
 
 **Labels:** Never `max_lines: 1` + `Ellipsis` on full-width / multi-word / translated CTAs (`NavBtn`, `PayBtn`, `MoreRow`, `HubDestBtn`, `Stack*`, `Row*`, `DangerBtn`). Those faces stay **centered** (hub dest left-aligned) and **wrap** (`height: Fit`, `flow: Right{wrap: true}`). Label walk is **Fit** (Makepad patch `button_label_center` — a Fill label inside wrap freezes the UI; do not remove wrap/center to dodge that). `ChipBtn` ellipsis is allowed **only** for short strip chips (Fit max 160). Always set both `padding` and `label_walk.margin`.
 
-**InfoHelp (screen / section titles):** **Always `width: Fit`** (optionally `Fit{max: parent}`) so **title+ℹ pack as one cluster**. Gap is **only** `tip_btn.margin.left` (6). **Never `width: Fill`** on InfoHelp or its title — that parks ℹ at the far end of the row (lock-screen regression, 2026-11). Title is **`WrapLabel` at `Fit{max: parent}`** so long / translated headings wrap at 375 instead of mid-cropping. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden** (tip-only companions). Sibling external headings beside InfoHelp are **`width: Fit`** too (same pack); parent row `spacing: 0`. Guarded by `info_help_layout_tests` in each app — fix the shared face, not one screen.
+**InfoHelp (screen / section titles):** Titled rows are **`width: Fill`** with **`WrapLabel{width: Fit}` + tip + Fill `trail`** so ℹ sits **next to** the label on every screen (never at the far end — Day book / LANGUAGE, 2026-11). Gap is `tip_btn.margin.left` (6). **Tip-only** rows hide the trail and force **Fit**. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden**. Guarded by `info_help_layout_tests` in each app — **fix the InfoHelp face, not one screen.**
 
-**Generous hit targets (most places):** Accordions, Settings hub rows, sidebar cards, and checkbox / radio / switch rows should respond on the **whole face or label row** — not only a chevron, 18 px box, or pill thumb (DEV bug **7c**). Keep tip ℹ **next to** its title (Fit caption + Fit InfoHelp); extend the tap with a Fill `_ext` sibling when the card is wider than that cluster. **Exceptions are intentional:** a narrower hit is fine when a full-row tap would fight another gesture (sidebar show/hide pill vs drag-reorder; checklist ↑↓ vs check) or make the screen worse — say so in a short comment.
+**Generous hit targets (most places):** Accordions, Settings hub rows, sidebar cards, and checkbox / radio / switch rows should respond on the **whole face or label row** — not only a chevron, 18 px box, or pill thumb (DEV bug **7c**). Keep tip ℹ **next to** its title (Fit caption + Fit InfoHelp); extend the tap with a Fill `_ext` sibling when the card is wider than that cluster — use **`AccordionHdrHitBtn`** (no hover paint) so the row still looks like **one** header, not title / ℹ / empty slab. **Exceptions are intentional:** a narrower hit is fine when a full-row tap would fight another gesture (sidebar show/hide pill vs drag-reorder; checklist ↑↓ vs check) or make the screen worse — say so in a short comment.
 
 **Form rows:** `FormFieldRow` = fields only. Multi-word CTAs (`Add rate`, `New item`, …) live in `ActionStack` below — never `NavBtn{width: Fit}` beside `FieldInput`s in one `Right` row. Never put `width: Fill` CTAs inside a parent `flow: Right{wrap: true}` View (same freeze); stack them with `ActionStack` / `flow: Down`.
 

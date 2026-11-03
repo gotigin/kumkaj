@@ -170,7 +170,7 @@ user needs — In / Later, in Khaynjo's own terms:
 | Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Done 2026-10-27** — Team Floor/Kitchen chips; nav gates `can_access_*` (Books/Buy/DayClose/Reports for money) | Team; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A |
 | Shop-narrowed pick-lists (units first; same pattern for areas, stations, tax rates, …) | **Done 2026-10-27** — units + areas/stations/tax On/Off in Settings; suggest lists filter | Settings; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §B |
 | Mark a table **Occupied** when guests sit, before any dish is punched | **Done 2026-10-27** — `FloorState::Seated` + seat/free without order | Floor; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §C |
-| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — Owner sets optional PIN on Team; unlock with it wipes sales/history, keeps menu/prices/tables/staff, opens as Owner looking normal | Team; `try_duress_unlock` |
+| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — Owner sets optional PIN on Team (ℹ tip); unlock with it wipes books entries only, keeps schema/config/menu/prices/tables/staff, opens as Owner looking normal — does not delete the local server | Team; `try_duress_unlock` |
 | Order desk: Counter payment docked under scrolling cart lines (no Counter/Items chips) | **In (2026-10-27)** | Order desk `pos_ticket` / `counter_dock` |
 
 Sanitized client tracker (must remain covered):
@@ -398,9 +398,9 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
 6. **Phase 5 — Control.** Permissions on discount/void/amend,
    verified restore, owner retention window. **Emergency unlock PIN
    done 2026-10-27** (Owner-only, off by default): Team → set a PIN
-   that is not anyone's unlock PIN; if typed at unlock, sales/history
-   wipe and the till opens as Owner looking normal — menu, prices,
-   tables and staff stay.
+   that is not anyone's unlock PIN; if typed at unlock, **books entries**
+   wipe and the till opens as Owner looking normal — schema, config,
+   menu, prices, tables and staff stay (does not delete the local server).
 7. **Phase 6 — India polish, then country packs.** GST split and
    India completeness first; further packs on identical screens.
 8. **Research Local/LAN catch-up — done 2026-10-27.** Everything from

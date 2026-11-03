@@ -227,16 +227,20 @@ struct ServerList {
 
 impl Widget for ServerList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (servers, open_label) = {
+        let (servers, open_label, remove_label) = {
             let st = app_state().lock().unwrap();
-            (st.local_servers.clone(), st.t("open_server"))
+            (
+                st.local_servers.clone(),
+                st.t("open_server"),
+                st.t("remove"),
+            )
         };
-        // Viewport shows ~3 LocaleRows; pitch is measured (old 72 clipped Open).
+        // Viewport shows ~3 ServerRows; pitch is measured (old 72 clipped Open).
         let row = *locale_row_height().lock().unwrap();
         let n = servers.len().max(1);
         let want = list_content_height(n.min(3).max(1), row, 0.0).max(row + 16.0);
         let walk = Walk {
-            height: Size::Fixed(want.min(280.0)),
+            height: Size::Fixed(want.min(360.0)),
             ..walk
         };
         let mut measured_row = 0.0;
@@ -255,6 +259,7 @@ impl Widget for ServerList {
                         &plain_display_text(&format!("{} · {short}", server.name)),
                     );
                     item.button(cx, ids!(pick)).set_text(cx, &open_label);
+                    item.button(cx, ids!(remove)).set_text(cx, &remove_label);
                     item.draw_all_unscoped(cx);
                     drew += 1;
                 }

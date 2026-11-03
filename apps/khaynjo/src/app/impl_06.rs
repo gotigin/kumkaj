@@ -201,7 +201,6 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 drop(st);
                 self.activate_new_server(cx, "")?;
             } else {
-                new_server_armed().store(false, std::sync::atomic::Ordering::SeqCst);
                 st.picking_server = true;
                 st.status = st.t("choose_server");
             }
@@ -271,6 +270,77 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
             self.finish_as_server(&mut st, previous != DeviceRole::Server);
+        }
+        self.sync_chrome(cx);
+        Ok(())
+    }
+
+    /// Wipe a local server from this device. Owner PIN of **that** shop
+    /// required (vision §17) — not staff, not an unlocked non-owner session.
+    fn delete_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(), String> {
+        self.resolve_data_base(cx);
+        let pin = self.ui.text_input(cx, ids!(server_remove_pin)).text();
+        let base = {
+            let st = app_state().lock().unwrap();
+            st.data_base
+                .clone()
+                .ok_or_else(|| "No data directory".to_string())?
+        };
+        let target = local_servers::server_db_path(&base, server_id);
+        // Prove Owner while the books file is still open / unlockable.
+        {
+            let st = app_state().lock().unwrap();
+            if let Some(actor) = st.session.as_ref() {
+                if !actor.is_owner() {
+                    return Err(st.t("only_owner_remove_server"));
+                }
+            }
+            let open_is_target = st
+                .store
+                .as_ref()
+                .is_some_and(|s| s.db_path() == target.as_path());
+            if open_is_target {
+                let store = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "Storage not ready".to_string())?;
+                if store.owner_setup_complete().unwrap_or(false) {
+                    let pin = pin.trim();
+                    if pin.is_empty() {
+                        return Err(st.t("owner_pin_remove_server"));
+                    }
+                    if store.authenticate_owner_pin(pin)?.is_none() {
+                        return Err(st.t("only_owner_remove_server"));
+                    }
+                }
+            } else {
+                drop(st);
+                local_servers::assert_owner_may_delete(&base, server_id, &pin)?;
+            }
+        }
+        let clearing = {
+            let st = app_state().lock().unwrap();
+            st.store
+                .as_ref()
+                .is_some_and(|s| s.db_path() == target.as_path())
+        };
+        if clearing {
+            net::stop_server();
+            let mut st = app_state().lock().unwrap();
+            st.store = None;
+            st.session = None;
+            st.onboarding_complete = false;
+            st.owner_setup_complete = false;
+        }
+        local_servers::delete_local_server(&base, server_id)?;
+        self.ui
+            .text_input(cx, ids!(server_remove_pin))
+            .set_text(cx, "");
+        {
+            let mut st = app_state().lock().unwrap();
+            let _ = st.refresh_local_servers();
+            st.picking_server = true;
+            st.status = st.t("choose_server");
         }
         self.sync_chrome(cx);
         Ok(())

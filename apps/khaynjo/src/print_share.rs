@@ -171,6 +171,273 @@ impl PrintFormat {
     }
 }
 
+/// Owner-tunable kitchen slip layout. Always a standard KOT (no prices;
+/// KOT No / table / dishes stay). Options are clamped so 58–80 mm heads
+/// do not crop mid-word.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct KotSlipFormat {
+    /// Print the shop / place name under the title.
+    #[serde(default = "default_true")]
+    pub show_shop_name: bool,
+    #[serde(default = "default_true")]
+    pub show_time: bool,
+    #[serde(default = "default_true")]
+    pub show_waiter: bool,
+    #[serde(default = "default_true")]
+    pub show_station: bool,
+    /// Soft-wrap width in characters. Clamped to [`KOT_CHARS_MIN`]..=[`KOT_CHARS_MAX`].
+    #[serde(default = "default_kot_chars")]
+    pub chars_per_line: u32,
+    /// Thermal type size (raster). Clamped to [`KOT_EM_MIN`]..=[`KOT_EM_MAX`].
+    #[serde(default = "default_kot_em")]
+    pub em: u32,
+    /// Optional kitchen note under the items (never prices). Max [`KOT_FOOTER_MAX`] chars.
+    #[serde(default)]
+    pub footer: String,
+}
+
+pub const KOT_CHARS_MIN: u32 = 24;
+pub const KOT_CHARS_MAX: u32 = 42;
+pub const KOT_CHARS_58MM: u32 = 32;
+pub const KOT_CHARS_80MM: u32 = 42;
+pub const KOT_EM_MIN: u32 = 18;
+pub const KOT_EM_MAX: u32 = 28;
+pub const KOT_EM_SMALL: u32 = 20;
+pub const KOT_EM_NORMAL: u32 = 24;
+pub const KOT_EM_LARGE: u32 = 28;
+pub const KOT_FOOTER_MAX: usize = 48;
+
+fn default_kot_chars() -> u32 { KOT_CHARS_58MM }
+fn default_kot_em() -> u32 { KOT_EM_NORMAL }
+
+impl Default for KotSlipFormat {
+    fn default() -> Self {
+        Self {
+            show_shop_name: true,
+            show_time: true,
+            show_waiter: true,
+            show_station: true,
+            chars_per_line: KOT_CHARS_58MM,
+            em: KOT_EM_NORMAL,
+            footer: String::new(),
+        }
+    }
+}
+
+impl KotSlipFormat {
+    pub fn parse(raw: &str) -> Self {
+        let trimmed = raw.trim();
+        if trimmed.is_empty() {
+            return Self::default();
+        }
+        serde_json::from_str::<Self>(trimmed)
+            .unwrap_or_default()
+            .clamped()
+    }
+
+    pub fn clamped(mut self) -> Self {
+        self.chars_per_line = self.chars_per_line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
+        self.em = self.em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        // Strip currency marks — a KOT must never carry prices.
+        self.footer = self
+            .footer
+            .chars()
+            .filter(|c| *c != '₹' && *c != '$' && *c != '€')
+            .collect::<String>()
+            .trim()
+            .chars()
+            .take(KOT_FOOTER_MAX)
+            .collect();
+        self
+    }
+
+    pub fn to_json(&self) -> String {
+        serde_json::to_string(&self.clone().clamped()).unwrap_or_else(|_| "{}".into())
+    }
+
+    /// Apply type size / wrap width onto the built-in KOT print format.
+    pub fn apply_to_print_format(&self, format: &mut PrintFormat) {
+        let c = self.clone().clamped();
+        format.em = c.em as f32;
+        format.line = c.chars_per_line;
+        format.baseline = (c.em as f32) + 2.0;
+        format.side = if c.chars_per_line <= KOT_CHARS_58MM { 4.0 } else { 6.0 };
+        format.document = false;
+    }
+
+    /// Soft-wrap one line to `chars_per_line` (break on spaces when possible).
+    pub fn wrap_line(&self, line: &str) -> Vec<String> {
+        let cols = self.chars_per_line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize;
+        wrap_text_cols(line, cols)
+    }
+
+    /// Sample kitchen slip for Settings preview (never prices).
+    pub fn render_sample(&self, shop_name: &str) -> String {
+        self.render(KotSlipContent {
+            cancel: false,
+            shop_name,
+            kot_no: 12,
+            when: "2026-11-03 19:42",
+            created_by: "Ramesh",
+            table_label: "T1",
+            station_name: "Kitchen",
+            items: &[
+                "2 x Butter Naan",
+                "1 x Paneer Tikka",
+                "  no onion",
+                "1 x Chaas",
+            ],
+        })
+    }
+
+    pub fn render(&self, c: KotSlipContent<'_>) -> String {
+        let fmt = self.clone().clamped();
+        let mut out = String::from(if c.cancel {
+            "*** CANCEL - STOP THIS ITEM ***\n"
+        } else {
+            "KOT - KITCHEN ORDER\n"
+        });
+        let push = |out: &mut String, line: &str| {
+            for part in fmt.wrap_line(line) {
+                out.push_str(&part);
+                out.push('\n');
+            }
+        };
+        if fmt.show_shop_name {
+            let shop = c.shop_name.trim();
+            if !shop.is_empty() {
+                push(&mut out, shop);
+            }
+        }
+        if c.kot_no > 0 {
+            push(&mut out, &format!("KOT No: {}", c.kot_no));
+        }
+        if fmt.show_time && !c.when.is_empty() {
+            push(&mut out, &format!("Time: {}", c.when));
+        }
+        if fmt.show_waiter && !c.created_by.is_empty() {
+            push(&mut out, &format!("By: {}", c.created_by));
+        }
+        if !c.table_label.is_empty() {
+            push(&mut out, &format!("Table: {}", c.table_label));
+        }
+        if fmt.show_station && !c.station_name.is_empty() {
+            push(&mut out, &format!("Station: {}", c.station_name));
+        }
+        out.push_str("--------------------------------\n");
+        for item in c.items {
+            push(&mut out, item);
+        }
+        out.push_str("--------------------------------\n");
+        if !fmt.footer.is_empty() {
+            push(&mut out, &fmt.footer);
+        }
+        out
+    }
+}
+
+/// Fields for one kitchen slip body (real KOT or Settings sample).
+pub struct KotSlipContent<'a> {
+    pub cancel: bool,
+    pub shop_name: &'a str,
+    pub kot_no: i64,
+    pub when: &'a str,
+    pub created_by: &'a str,
+    pub table_label: &'a str,
+    pub station_name: &'a str,
+    pub items: &'a [&'a str],
+}
+
+#[cfg(test)]
+mod kot_slip_format_tests {
+    use super::*;
+
+    #[test]
+    fn clamps_width_and_strips_currency_from_footer() {
+        let fmt = KotSlipFormat {
+            chars_per_line: 99,
+            em: 5,
+            footer: "Rush ₹100".into(),
+            ..KotSlipFormat::default()
+        }
+        .clamped();
+        assert_eq!(fmt.chars_per_line, KOT_CHARS_MAX);
+        assert_eq!(fmt.em, KOT_EM_MIN);
+        assert_eq!(fmt.footer, "Rush 100");
+    }
+
+    #[test]
+    fn sample_preview_never_shows_prices_and_keeps_kot_no() {
+        let text = KotSlipFormat::default().render_sample("Khaynjo");
+        assert!(text.contains("KOT - KITCHEN ORDER"));
+        assert!(text.contains("KOT No: 12"));
+        assert!(text.contains("Table: T1"));
+        assert!(!text.contains('₹'));
+        assert!(!text.to_lowercase().contains("total"));
+    }
+
+    #[test]
+    fn wrap_hard_breaks_overlong_tokens() {
+        let fmt = KotSlipFormat {
+            chars_per_line: 24,
+            ..KotSlipFormat::default()
+        };
+        let rows = fmt.wrap_line(&"x".repeat(30));
+        assert!(rows.iter().all(|r| r.chars().count() <= 24));
+        assert!(rows.len() >= 2);
+    }
+}
+
+fn wrap_text_cols(line: &str, cols: usize) -> Vec<String> {
+    let cols = cols.max(8);
+    if line.chars().count() <= cols {
+        return vec![line.to_string()];
+    }
+    let mut rows = Vec::new();
+    let mut cur = String::new();
+    let mut width = 0usize;
+    let flush = |rows: &mut Vec<String>, cur: &mut String, width: &mut usize| {
+        if !cur.is_empty() {
+            rows.push(std::mem::take(cur));
+            *width = 0;
+        }
+    };
+    let push_chunked = |rows: &mut Vec<String>, word: &str| {
+        let chars: Vec<char> = word.chars().collect();
+        for chunk in chars.chunks(cols) {
+            rows.push(chunk.iter().collect());
+        }
+    };
+    for word in line.split(' ') {
+        let wlen = word.chars().count();
+        if wlen == 0 {
+            continue;
+        }
+        if wlen > cols {
+            flush(&mut rows, &mut cur, &mut width);
+            push_chunked(&mut rows, word);
+            continue;
+        }
+        if cur.is_empty() {
+            cur.push_str(word);
+            width = wlen;
+        } else if width + 1 + wlen <= cols {
+            cur.push(' ');
+            cur.push_str(word);
+            width += 1 + wlen;
+        } else {
+            flush(&mut rows, &mut cur, &mut width);
+            cur.push_str(word);
+            width = wlen;
+        }
+    }
+    flush(&mut rows, &mut cur, &mut width);
+    if rows.is_empty() {
+        rows.push(String::new());
+    }
+    rows
+}
+
 /// Legacy alias — prefer [`PrintFormat`] / format ids.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -1217,7 +1484,8 @@ pub fn escpos_job(text: &str) -> Vec<u8> {
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     let cleaned = text.replace('\r', "");
     if printer_has_letters(&cleaned) {
-        escpos_job_text(&cleaned)
+        let cols = format.line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize;
+        escpos_job_text_cols(&cleaned, cols)
     } else {
         crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
     }
@@ -1233,7 +1501,13 @@ pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
 /// Built-in-font ASCII job. Soft-wraps long lines to 32 cols (safe on 58 mm
 /// and 80 mm Font A) so heads do not mid-word wrap into incomplete lines.
 pub fn escpos_job_text(text: &str) -> Vec<u8> {
-    let wrapped = wrap_escpos_cols(text, 32);
+    escpos_job_text_cols(text, KOT_CHARS_58MM as usize)
+}
+
+/// Like [`escpos_job_text`], with an explicit wrap width (clamped).
+pub fn escpos_job_text_cols(text: &str, cols: usize) -> Vec<u8> {
+    let cols = (cols as u32).clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize;
+    let wrapped = wrap_escpos_cols(text, cols);
     let mut out = Vec::with_capacity(wrapped.len().saturating_add(48));
     out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
     out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0: PC437
