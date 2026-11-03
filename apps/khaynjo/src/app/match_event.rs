@@ -567,7 +567,9 @@ impl MatchEvent for App {
             (ids!(waitlist_hdr), "waitlist"),
             (ids!(resv_hdr), "resv"),
             (ids!(floor_add_hdr), "floor_add"),
+            (ids!(floor_add_hdr_ext), "floor_add"),
             (ids!(stations_hdr), "stations"),
+            (ids!(stations_hdr_ext), "stations"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_floor_section(cx, key);
@@ -575,7 +577,9 @@ impl MatchEvent for App {
         }
         for (hdr, key) in [
             (ids!(setup_lang_hdr), "language"),
+            (ids!(setup_lang_hdr_ext), "language"),
             (ids!(setup_role_hdr), "role"),
+            (ids!(setup_role_hdr_ext), "role"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_device_setup_section(cx, key);

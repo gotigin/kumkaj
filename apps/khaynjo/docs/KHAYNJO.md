@@ -380,6 +380,10 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    format chips + assign chips; **drag** to reorder, **tap** to remove.
    Settings “Not Responding” on place tap = `app_state` deadlock in
    `set_status` (DEV.md bug **7a**), not wrap/Fill.
+   *2026-11-03:* Device setup and Floor accordions keep ℹ **beside** the
+   title; a Fill `_ext` sibling makes the rest of the card toggle too
+   (DEV.md bug **7c**). Same generous-hit idea for checklist rows; sidebar
+   pill switches stay an exception so drag-reorder still works.
    *2026-10-27:* research Local/LAN catch-up **done** — see
    [`RESTAURANT_RESEARCH.md`](RESTAURANT_RESEARCH.md) §8 (Cloud/Net/owner
    items only in “Still left”).

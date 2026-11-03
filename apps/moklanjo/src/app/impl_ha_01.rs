@@ -638,7 +638,9 @@ impl App {
         }
         for (hdr, key) in [
             (ids!(setup_lang_hdr), "language"),
+            (ids!(setup_lang_hdr_ext), "language"),
             (ids!(setup_role_hdr), "role"),
+            (ids!(setup_role_hdr_ext), "role"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_device_setup_section(cx, key);

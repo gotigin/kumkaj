@@ -180,6 +180,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
    - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
    - **Busy chrome:** never `set_text` / toggle `visible` on Fill+wrap Stack\* for Looking/Adding/Cancel. Cancel is `QuietFitBtn`; progress on a WrapLabel.
    - **InfoHelp:** Always **`width: Fit`**; title is **`WrapLabel` Fit{max: parent}** (never `Label{width:Fill, wrap}`).
+7c. **Large face looks tappable but only a thin strip works** — e.g. `AccordionHdrBtn{width: Fit}` alone in a Fill card (Device setup / Floor, 2026-11): Makepad hit-tests **`draw_bg.area()`**, so the rest of the row is dead. **Usual fix:** keep the **control’s face** large enough for the job — accordion / hub / sidebar / checklist rows **Fill** (or Fit caption + Fill `_ext` sibling when an InfoHelp must sit **right after** the title). **Same idea, most places:** checkbox / radio / switch rows should toggle from the **label + control**, not only the 18 px box (Khaynjo `StationCheckRow` already does). **Exceptions are fine** when a full-row hit would steal another gesture or confuse the screen — e.g. sidebar **pill switch** keeps its own `SidebarToggleHit` so the row can still drag-reorder; ↑↓ on checklist rows stay their own buttons. Prefer the generous hit; carve out an exception only with a short comment why.
 7a. **Settings “Not Responding” on printers place pick = `app_state` deadlock (not wrap/Fill)** — gdb on hung Khaynjo (2026-11-03): main thread `futex_do_wait` / `Mutex::lock` on `app_state::STATE` inside `set_status_line_only` ← `set_status` ← Bill/kitchen place tap. Cause: `self.set_status(cx, app_state().lock().unwrap().t(...))` — temporary `MutexGuard` lives for the whole statement, so `set_status` locks again on the same thread and never returns. Low CPU, not turtle spam. **Rule:** never pass `app_state().lock()…` into a function that locks `app_state`. Use `app_t("key")` or `{ let st = app_state().lock().unwrap(); … }` first. Cursor rule: `.cursor/rules/app-state-lock.mdc`. Do not “fix” this hang by swapping button faces.
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
@@ -207,7 +208,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 | **Quiet alt** | Cancel / clear / secondary do | `RowSecondaryBtn` / `StackSecondaryBtn` / outlined `NavBtn` |
 | **Destroy** | Void / refund / delete | `DangerBtn` |
 
-Hard rules: never use a filled primary to mean “this navigate link is more important”; never use `ChipBtn` as a one-shot CTA (NDR / Show PIN / line Cancel → `QuietFitBtn`); exclusive closed sets (tax invoice, amend pay, paid/AP, staff role, …) → `SegBtn`, not Stack primary/secondary twins; short filters (units, catalog facets) → `ChipBtn`; `PayBtn` is ticket take-payment only. **Never** put `Row*` / `Stack*` (Fill + `wrap: true`) at `width: Fit` — wrap measures one glyph wide and stacks letters vertically (`S`/`h`/`o`/`w`…); use `QuietFitBtn` (Fit, no wrap) for inline quiet actions.
+Hard rules: never use a filled primary to mean “this navigate link is more important”; never use `ChipBtn` as a one-shot CTA (NDR / Show PIN / line Cancel → `QuietFitBtn`); exclusive closed sets (tax invoice, amend pay, paid/AP, staff role, …) → `SegBtn`, not Stack primary/secondary twins; short filters (units, catalog facets) → `ChipBtn`; `PayBtn` is ticket take-payment only. **Never** put `Row*` / `Stack*` (Fill + `wrap: true`) at `width: Fit` — wrap measures one glyph wide and stacks letters vertically (`S`/`h`/`o`/`w`…); use `QuietFitBtn` (Fit, no wrap) for inline quiet actions. **Hit targets (most cases, bug 7c):** accordion / hub / sidebar / checkbox·radio·switch rows — tap the **whole face or label row**, not a tiny glyph. When ℹ must sit beside the title, use **Fit caption + Fit InfoHelp + Fill `_ext`**, not “park ℹ at the far end.” **Exceptions OK** when a full-row hit would break drag, steal ↑↓, or otherwise feel wrong — document the reason at the call site.
 
 **Labels (no right truncation)**
 
@@ -877,21 +878,22 @@ Makepad visual traps found this way (do not reintroduce):
     line, PgUp/PgDn a screenful, Home/End the ends (skipped only while a
     text field has focus — a focused button must not swallow them);
     Back/Forward history across screens (mouse back/forward buttons,
-    Alt+←/→, edge swipe, Android back; lock and first-run setup clear it).
+    Alt+←/→, edge swipe, Android back).
     **Visit history:** chrome tabs (bottom nav / side rail) and nested
     screens both push `nav_back` / clear `nav_forward` via `go` /
     `go_peer` / `go_peer_if_allowed` — Floor → Order → mouse Back returns
     to Floor, same as a browser. Nested drill-downs (Settings → Sidebar
     settings, Order → Floor pick-table) use the same stack. Back chrome /
     mouse/Android back **pops** (`navigate_back`), with empty-stack fallbacks
-    (SidebarSettings → Settings, ClientPair → DeviceSetup). Auth screens
-    (Lock / DeviceSetup / Onboard / ClientPair) hide the unlocked header, so
-    **ClientPair** and **Server-pick** show a body `Back` (`client_pair_back` /
-    `server_pick_cancel`) that still calls `navigate_back` — never leave those
-    steps with no visible Back on any supported device. Nested in-screen
-    layers (Settings section → hub, suggest list, picking-server overlay,
-    Khaynjo line-action / move / split / pick-table) dismiss on Back
-    **before** leaving the screen — never skip to Day book;
+    (SidebarSettings → Settings; Lock / ClientPair / Onboard → DeviceSetup).
+    **Do not** let a focused text field swallow mouse Back on desktop — that
+    made Lock (PIN focused) look broken (2026-11). Android may still use the
+    first Back to dismiss the soft keyboard outside auth/setup. Auth screens
+    hide the unlocked header; Lock stays bare but mouse/Android Back still
+    returns to DeviceSetup; ClientPair / Onboard show header ‹ when nested.
+    Nested in-screen layers (Settings section → hub, suggest list,
+    picking-server overlay, Khaynjo line-action / move / split / pick-table)
+    dismiss on Back **before** leaving the screen — never skip to Day book;
     page `ScrollYView` press-drag works with mouse and touch
     (`scroll_bar_y.mouse_capture_overload: true` on both apps). Nested
     PortalLists stay touch-fling only so the page owns mouse drag over

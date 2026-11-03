@@ -35,6 +35,8 @@ fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(
         st.pin_buffer.clear();
         st.nav_back.clear();
         st.nav_forward.clear();
+        // Parent of Lock so mouse/Android Back returns to Server/Client pick.
+        st.nav_back.push(Screen::DeviceSetup);
         if let Some(store) = st.store.as_ref() {
             let _ = store.set_device_role(DeviceRole::Server.as_str());
             if switching_in {

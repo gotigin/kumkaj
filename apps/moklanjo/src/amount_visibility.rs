@@ -385,7 +385,8 @@ fn screen_keeps_history(screen: Screen) -> bool {
 }
 
 /// Setup steps that sit under another step. The header ‹ is the back control
-/// (same as every other nested screen). Lock has no parent.
+/// (same as every other nested screen). Lock stays bare (no header) but mouse
+/// / Android Back still leaves via empty-stack → DeviceSetup.
 fn setup_shows_header_back(st: &AppState) -> bool {
     match st.screen {
         Screen::Onboard => !st.onboarding_complete,

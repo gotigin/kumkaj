@@ -63,6 +63,9 @@ impl WrapLabel {
 /// - Title is **WrapLabel** at `Fit{max: parent}` — wraps at 375 instead of
 ///   mid-cropping; never `Label{width:Fill, wrap}` (turtle NaN, DEV bug 7).
 /// - Empty title stays **hidden** so tip-only companions stay tip-sized.
+/// - Beside an accordion: keep **this** Fit next to a **Fit** caption; add a
+///   Fill `_ext` sibling so the rest of the card still toggles (DEV bug 7c).
+///   Do not park ℹ at the far end of the row.
 #[derive(Script, ScriptHook, Widget)]
 struct InfoHelp {
     #[source]

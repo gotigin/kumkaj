@@ -202,6 +202,8 @@ Never promote a hub navigate link to filled primary because it is “the main th
 
 **InfoHelp (screen / section titles):** **Always `width: Fit`** (optionally `Fit{max: parent}`) so **title+ℹ pack as one cluster**. Gap is **only** `tip_btn.margin.left` (6). **Never `width: Fill`** on InfoHelp or its title — that parks ℹ at the far end of the row (lock-screen regression, 2026-11). Title is **`WrapLabel` at `Fit{max: parent}`** so long / translated headings wrap at 375 instead of mid-cropping. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden** (tip-only companions). Sibling external headings beside InfoHelp are **`width: Fit`** too (same pack); parent row `spacing: 0`. Guarded by `info_help_layout_tests` in each app — fix the shared face, not one screen.
 
+**Generous hit targets (most places):** Accordions, Settings hub rows, sidebar cards, and checkbox / radio / switch rows should respond on the **whole face or label row** — not only a chevron, 18 px box, or pill thumb (DEV bug **7c**). Keep tip ℹ **next to** its title (Fit caption + Fit InfoHelp); extend the tap with a Fill `_ext` sibling when the card is wider than that cluster. **Exceptions are intentional:** a narrower hit is fine when a full-row tap would fight another gesture (sidebar show/hide pill vs drag-reorder; checklist ↑↓ vs check) or make the screen worse — say so in a short comment.
+
 **Form rows:** `FormFieldRow` = fields only. Multi-word CTAs (`Add rate`, `New item`, …) live in `ActionStack` below — never `NavBtn{width: Fit}` beside `FieldInput`s in one `Right` row. Never put `width: Fill` CTAs inside a parent `flow: Right{wrap: true}` View (same freeze); stack them with `ActionStack` / `flow: Down`.
 
 ## Color tokens (live)

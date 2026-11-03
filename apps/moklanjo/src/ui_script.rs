@@ -829,14 +829,15 @@ script_mod! {
         }
         text: "\u{f06e}"
     }
-    // Books accordion section header — FA chevron (›/˅) + title.
+    // Books / setup accordion header — FA chevron (›/˅) + title.
     // Glyph comes from WorldFonts `icons` (fa-solid); Noto has no ▸/▾.
-    // label_walk must be Fit: with width: Fit (title+ℹ rows) a Fill label
-    // collapses to zero and the caption disappears (chevron-only row).
+    // With a tip: Fit caption + Fit InfoHelp + Fill `_ext` sibling (same face)
+    // so ℹ hugs the title and the rest of the card still toggles (DEV 7c).
+    // Alone (Books): default Fill is fine. label_walk Fit (bug 7).
     let AccordionHdrBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        // right: 0 — when Fit beside InfoHelp, tip_btn.margin.left is the only title→ℹ gap.
+        // right: 0 — tip_btn.margin.left is the only title→ℹ gap.
         padding: Inset{left: 6. right: 0. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
         grab_key_focus: false
@@ -1725,7 +1726,9 @@ script_mod! {
             text_style +: {font_size: 13.}
         }
     }
-    // Transparent hit target over the pill toggle track + thumb.
+    // Transparent hit over the pill only — exception to “whole row toggles”
+    // (DEV 7c): the row face still drag-reorders; a full-row switch hit would
+    // fight that.
     let SidebarToggleHit = Button{
         width: Fill height: Fill
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
@@ -3371,12 +3374,12 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Right spacing: 0
                                             align: Align{y: 0.5}
-                                            // Fit (not Fill) so ℹ sits right after the title text,
-                                            // not at the far end of the row.
+                                            // Fit caption + ℹ cluster; Fill ext keeps the card tappable.
                                             setup_lang_hdr := AccordionHdrBtn{width: Fit text: "LANGUAGE"}
                                             setup_lang_help := InfoHelp{
                                                 tip: "Follow this device’s language, or pick one yourself."
                                             }
+                                            setup_lang_hdr_ext := AccordionHdrBtn{text: ""}
                                         }
                                         setup_lang_body := View{
                                             width: Fill height: Fit
@@ -3420,6 +3423,7 @@ script_mod! {
                                             setup_device_help := InfoHelp{
                                                 tip: "Server keeps the books here. Client pairs to a Server."
                                             }
+                                            setup_role_hdr_ext := AccordionHdrBtn{text: ""}
                                         }
                                         setup_role_body := View{
                                             width: Fill height: Fit

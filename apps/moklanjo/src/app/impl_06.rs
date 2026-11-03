@@ -8,19 +8,25 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     }
 
     fn navigate_back(&mut self, cx: &mut Cx) -> bool {
-        // Do NOT treat generic key focus (buttons after tap) as a back step —
-        // that forced a useless double swipe on Android.
-        // Setup screens are the exception: mouse Back is also a key within
-        // 140ms, and returning here drops the real pop. Blur, then pop.
+        // Soft keyboard: on Android, one Back dismisses IME first. On desktop,
+        // mouse Back / Alt+← must still pop — a focused PIN/search field used
+        // to swallow the gesture (looked like Back was broken on Lock).
+        // Auth/setup always blur then continue (mouse Back also arrives as a
+        // key within 140ms; returning early dropped the real pop).
         if self.text_field_has_focus(cx) {
             self.dismiss_soft_keyboard(cx);
-            let setup = matches!(
+            let auth = matches!(
                 app_state().lock().unwrap().screen,
-                Screen::Onboard | Screen::ClientPair | Screen::DeviceSetup
+                Screen::Lock
+                    | Screen::Onboard
+                    | Screen::ClientPair
+                    | Screen::DeviceSetup
             );
-            if !setup {
+            #[cfg(target_os = "android")]
+            if !auth {
                 return true;
             }
+            let _ = auth;
         }
         // In-screen layers before screen history (native / mouse / Android back).
         {
@@ -76,13 +82,18 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 // Empty stack: only nested screens fall back. Top-level peers
                 // are roots (no Back parent).
                 match st.screen {
-                    Screen::ClientPair | Screen::Onboard => {
+                    Screen::Lock | Screen::ClientPair | Screen::Onboard => {
                         st.nav_forward.clear();
                         st.must_confirm_device_role = true;
-                        st.status = if st.screen == Screen::Onboard {
-                            "Pick Server Mode or Client Mode — Back left shop setup".into()
-                        } else {
-                            "Pick Server Mode or Client Mode — Back left Client pairing".into()
+                        st.pin_buffer.clear();
+                        st.status = match st.screen {
+                            Screen::Onboard => {
+                                "Pick Server Mode or Client Mode — Back left shop setup".into()
+                            }
+                            Screen::ClientPair => {
+                                "Pick Server Mode or Client Mode — Back left Client pairing".into()
+                            }
+                            _ => "Pick Server Mode or Client Mode — Back left unlock".into(),
                         };
                         Some(Screen::DeviceSetup)
                     }
