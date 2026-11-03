@@ -560,6 +560,119 @@ fn client_find_cancel() -> &'static std::sync::atomic::AtomicBool {
     &CANCEL
 }
 
+/// DeviceSetup role open (Client / new Server / existing Server) off the UI
+/// thread — first SQLite migrate can take a long time on Android.
+fn role_open_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn role_open_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+enum RoleOpenReady {
+    Client(Store),
+    ServerNew(Store),
+    /// `switching_in` = previous role was not Server (extra-tills reset).
+    ServerExisting { store: Store, switching_in: bool },
+}
+
+fn role_open_once() -> &'static Mutex<Option<Result<RoleOpenReady, String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<RoleOpenReady, String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn role_open_start(status: &str) -> bool {
+    if role_open_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return false;
+    }
+    role_open_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status(status);
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+    true
+}
+
+fn role_open_finish(result: Result<RoleOpenReady, String>) {
+    *role_open_once().lock().unwrap() = Some(result);
+    role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+    clear_books_work_status();
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+}
+
+fn role_cancelled() -> bool {
+    role_open_cancel().load(std::sync::atomic::Ordering::SeqCst)
+}
+
+/// Open the client terminal store on a worker.
+fn client_mode_job(base: PathBuf) {
+    if !role_open_start(&app_t("opening_client")) {
+        return;
+    }
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-client-mode".into())
+        .spawn(move || {
+            net::stop_server();
+            let result = (|| -> Result<RoleOpenReady, String> {
+                let store = local_servers::open_client_store(&base)?;
+                if role_cancelled() {
+                    return Err("Cancelled".into());
+                }
+                store.prepare_as_client_terminal()?;
+                store.set_device_role("client")?;
+                if role_cancelled() {
+                    return Err("Cancelled".into());
+                }
+                Ok(RoleOpenReady::Client(store))
+            })();
+            role_open_finish(result);
+        });
+}
+
+/// Create a new local server books file on a worker.
+fn server_new_job(base: PathBuf, name: String) {
+    if !role_open_start(&app_t("creating_server")) {
+        return;
+    }
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-server-new".into())
+        .spawn(move || {
+            net::stop_server();
+            let result = (|| -> Result<RoleOpenReady, String> {
+                let (_info, store) = local_servers::create_local_server(&base, &name)?;
+                if role_cancelled() {
+                    return Err("Cancelled".into());
+                }
+                Ok(RoleOpenReady::ServerNew(store))
+            })();
+            role_open_finish(result);
+        });
+}
+
+/// Open an existing local server on a worker.
+fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
+    if !role_open_start(&app_t("opening_server")) {
+        return;
+    }
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-server-open".into())
+        .spawn(move || {
+            net::stop_server();
+            let result = (|| -> Result<RoleOpenReady, String> {
+                let store = local_servers::open_server(&base, &server_id)?;
+                if role_cancelled() {
+                    return Err("Cancelled".into());
+                }
+                Ok(RoleOpenReady::ServerExisting {
+                    store,
+                    switching_in,
+                })
+            })();
+            role_open_finish(result);
+        });
+}
+
 fn aggregator_import_busy() -> &'static std::sync::atomic::AtomicBool {
     static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &BUSY

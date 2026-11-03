@@ -61,6 +61,8 @@ impl App {
                 field.set_text(cx, &format!("{}", st.snack_secs.round() as i64));
             }
         }
+        // Hub ↔ section: always refresh ‹ (do not rely on a later full sync_chrome).
+        self.paint_header_back_chrome(cx);
     }
 
     /// Show one section (or the hub with `None`) from its top.
@@ -80,7 +82,10 @@ impl App {
             .view(cx, ids!(settings_screen))
             .set_scroll_pos(cx, dvec2(0.0, 0.0));
         diag::breadcrumb("settings_panel", panel.unwrap_or("hub"));
-        self.sync_chrome(cx);
+        // Prefer panel sync + ‹ paint over full sync_chrome (avoids Settings freezes
+        // on phones). Callers that need the whole shell still call sync_chrome.
+        self.sync_settings_panels(cx);
+        self.ui.redraw(cx);
     }
 
     fn handle_settings_hub_actions(&mut self, cx: &mut Cx, actions: &Actions) {

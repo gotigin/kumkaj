@@ -108,6 +108,29 @@
 +    ok != 0
 +}
 +
++/// Standard bill as a Noto-raster PNG (same glyphs on Linux / Windows / Android).
++pub unsafe fn to_java_print_png(job_name: String, png: &[u8]) -> bool {
++    let env = attach_jni_env();
++    let Ok(job_name) = CString::new(job_name) else {
++        return false;
++    };
++    let job_name = ((**env).NewStringUTF.unwrap())(env, job_name.as_ptr());
++    let arr = ((**env).NewByteArray.unwrap())(env, png.len() as i32);
++    if arr.is_null() {
++        return false;
++    }
++    ((**env).SetByteArrayRegion.unwrap())(env, arr, 0, png.len() as i32, png.as_ptr() as *const i8);
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "printPngDocument",
++        "(Ljava/lang/String;[B)Z",
++        job_name,
++        arr
++    );
++    ok != 0
++}
++
 +/// App-facing wrappers used by Khaynjo/Moklanjo `print_android` (Option form).
 +pub unsafe fn try_list_strings(method: &str, _sig: &str) -> Option<Vec<String>> {
 +    match method {

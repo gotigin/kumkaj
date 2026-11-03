@@ -3583,12 +3583,21 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Down spacing: 8
                                             visible: true
-                                            ActionStack{
+                                            device_role_actions := ActionStack{
                                                 device_role_server := StackSecondaryBtn{text: "Server"}
                                                 device_role_server_on := StackPrimaryBtn{text: "Server" visible: false}
                                                 device_role_client := StackSecondaryBtn{text: "Client"}
                                                 device_role_client_on := StackPrimaryBtn{text: "Client" visible: false}
                                             }
+                                            // Busy: replace Server/Client with status + Cancel
+                                            // (DEV.md 7b — never set_text on wrapping Stack* faces).
+                                            device_role_busy_label := WrapLabel{
+                                                visible: false
+                                                body: "Opening client…"
+                                                font_color: #x0B1220
+                                                font_size: 15.
+                                            }
+                                            device_role_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                             server_pick_section := View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 12

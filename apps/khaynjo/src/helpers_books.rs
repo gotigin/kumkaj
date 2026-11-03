@@ -94,7 +94,9 @@ fn resolve_printer_route_key(
 }
 
 /// Add `printer` with `format_id` onto the focused place. Same printer may
-/// appear twice with different formats. Returns true only when newly added.
+/// appear twice with different formats. Same shown name + same format is
+/// refused (Brother Standard twice — even if Find listed `_` and `-`).
+/// Returns true only when newly added.
 #[allow(dead_code)] // Kept for Clear/tests; UI toggles via `toggle_printer_assign_slot`.
 fn add_printer_format_to_focused_route(
     st: &mut AppState,
@@ -109,11 +111,35 @@ fn add_printer_format_to_focused_route(
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
     let slot = print_share::DevicePrinters::encode_route_slot(pid, fmt);
-    let route = st.printer_draft.route_mut(key);
-    if route.iter().any(|s| s == &slot) {
+    let default_fmt = st.printer_draft.format_id_for(key);
+    let name_fmt = {
+        let p = st.printer_draft.printer_by_id(pid).unwrap();
+        print_share::DevicePrinters::route_name_format_key(
+            &printer_display_name(p, |_| String::new()),
+            fmt,
+        )
+    };
+    let already = st.printer_draft.route_for(key).iter().any(|s| {
+        if s == &slot {
+            return true;
+        }
+        let (opid, ofmt) = print_share::DevicePrinters::decode_route_slot(s);
+        let ofmt = if ofmt.is_empty() {
+            default_fmt.clone()
+        } else {
+            ofmt
+        };
+        st.printer_draft.printer_by_id(&opid).is_some_and(|p| {
+            print_share::DevicePrinters::route_name_format_key(
+                &printer_display_name(p, |_| String::new()),
+                &ofmt,
+            ) == name_fmt
+        })
+    });
+    if already {
         return false;
     }
-    route.push(slot);
+    st.printer_draft.route_mut(key).push(slot);
     if let Some(base) = st.data_base.as_ref() {
         let _ = print_share::save_device_printers(base, &st.printer_draft);
     }
@@ -203,7 +229,8 @@ fn focused_route_printer_rows(
         .collect()
 }
 
-/// Normalize place route: fill missing format, drop duplicate printer+format.
+/// Normalize place route: fill missing format, drop duplicate printer+format
+/// and duplicate shown-name+format (Brother_… Standard + Brother-… Standard).
 fn normalize_focused_route(st: &mut AppState) -> bool {
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
@@ -216,7 +243,8 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
         .map(|p| p.id.clone())
         .collect();
     let mut out = Vec::new();
-    let mut seen = std::collections::HashSet::new();
+    let mut seen_slot = std::collections::HashSet::new();
+    let mut seen_name_fmt = std::collections::HashSet::new();
     for slot in &before {
         let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(slot);
         if pid.is_empty() || !known.contains(&pid) {
@@ -228,9 +256,20 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
             fmt
         };
         let enc = print_share::DevicePrinters::encode_route_slot(&pid, &fmt);
-        if seen.insert(enc.clone()) {
-            out.push(enc);
+        if !seen_slot.insert(enc.clone()) {
+            continue;
         }
+        let Some(p) = st.printer_draft.printer_by_id(&pid) else {
+            continue;
+        };
+        let nf = print_share::DevicePrinters::route_name_format_key(
+            &printer_display_name(p, |_| String::new()),
+            &fmt,
+        );
+        if !seen_name_fmt.insert(nf) {
+            continue;
+        }
+        out.push(enc);
     }
     if out == before {
         return false;
@@ -260,7 +299,8 @@ fn printer_assign_suggest_rows(
     ];
     let assigned_slots: Vec<String> = draft.route_for(key).to_vec();
     let mut rows = Vec::new();
-    let mut used = std::collections::HashSet::new();
+    let mut used_slot = std::collections::HashSet::new();
+    let mut used_name_fmt = std::collections::HashSet::new();
     for slot in &assigned_slots {
         let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(slot);
         let Some(p) = draft.printer_by_id(&pid) else {
@@ -272,10 +312,14 @@ fn printer_assign_suggest_rows(
             fmt
         };
         let enc = print_share::DevicePrinters::encode_route_slot(&pid, &fmt);
-        if !used.insert(enc.clone()) {
+        if !used_slot.insert(enc.clone()) {
             continue;
         }
         let name = printer_display_name(p, &t);
+        let nf = print_share::DevicePrinters::route_name_format_key(&name, &fmt);
+        if !used_name_fmt.insert(nf) {
+            continue;
+        }
         let flabel = draft.format_by_id(&fmt).label;
         rows.push(
             SuggestRow::new(format!("{name} ({flabel})"), enc).with_action(clear_l.clone()),
@@ -285,7 +329,13 @@ fn printer_assign_suggest_rows(
         let name = printer_display_name(p, &t);
         for (fid, flabel) in &formats {
             let enc = print_share::DevicePrinters::encode_route_slot(&p.id, fid);
-            if used.contains(&enc) {
+            if used_slot.contains(&enc) {
+                continue;
+            }
+            let nf = print_share::DevicePrinters::route_name_format_key(&name, fid);
+            // Hide Use when this shown name + format is already assigned
+            // (e.g. Brother_… Standard checked → don't offer Brother-… Standard).
+            if used_name_fmt.contains(&nf) {
                 continue;
             }
             rows.push(
@@ -308,11 +358,36 @@ fn toggle_printer_assign_slot(st: &mut AppState, slot_enc: &str) -> bool {
     }
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
-    let route = st.printer_draft.route_mut(key);
-    if let Some(i) = route.iter().position(|s| s == enc) {
-        route.remove(i);
+    let default_fmt = st.printer_draft.format_id_for(key);
+    if let Some(i) = st.printer_draft.route_for(key).iter().position(|s| s == enc) {
+        st.printer_draft.route_mut(key).remove(i);
     } else {
-        route.push(enc.to_string());
+        // Refuse a second row with the same shown name + format.
+        let name_fmt = match st.printer_draft.printer_by_id(&pid) {
+            Some(p) => print_share::DevicePrinters::route_name_format_key(
+                &printer_display_name(p, |_| String::new()),
+                &fmt,
+            ),
+            None => return false,
+        };
+        let clash = st.printer_draft.route_for(key).iter().any(|s| {
+            let (opid, ofmt) = print_share::DevicePrinters::decode_route_slot(s);
+            let ofmt = if ofmt.is_empty() {
+                default_fmt.clone()
+            } else {
+                ofmt
+            };
+            st.printer_draft.printer_by_id(&opid).is_some_and(|p| {
+                print_share::DevicePrinters::route_name_format_key(
+                    &printer_display_name(p, |_| String::new()),
+                    &ofmt,
+                ) == name_fmt
+            })
+        });
+        if clash {
+            return false;
+        }
+        st.printer_draft.route_mut(key).push(enc.to_string());
     }
     if let Some(base) = st.data_base.as_ref() {
         let _ = print_share::save_device_printers(base, &st.printer_draft);

@@ -879,12 +879,21 @@ Makepad visual traps found this way (do not reintroduce):
     text field has focus — a focused button must not swallow them);
     Back/Forward history across screens (mouse back/forward buttons,
     Alt+←/→, edge swipe, Android back).
-    **Visit history:** chrome tabs (bottom nav / side rail) and nested
-    screens both push `nav_back` / clear `nav_forward` via `go` /
-    `go_peer` / `go_peer_if_allowed` — Floor → Order → mouse Back returns
-    to Floor, same as a browser. Nested drill-downs (Settings → Sidebar
-    settings, Order → Floor pick-table) use the same stack. Back chrome /
-    mouse/Android back **pops** (`navigate_back`), with empty-stack fallbacks
+    **Visit history:** chrome tabs (bottom nav / side rail) are **roots** —
+    `go_peer` / `go_peer_if_allowed` clear `nav_back` / `nav_forward` (no
+    header ‹ between Order ↔ Floor ↔ Kitchen). Nested drill-downs use `go`
+    (push stack): Settings → Sidebar settings, Order → Floor pick-table, etc.
+    Back chrome shows only when nested (in-screen layer or non-empty stack).
+    **Settings section → hub** is an in-screen layer (`settings_panel`):
+    `open_settings_panel` / `sync_settings_panels` must call
+    `paint_header_back_chrome` so ‹ appears even after `go_peer` cleared
+    history (do not rely only on `nav_back`). Same helper for DeviceSetup
+    Language accordion and `sync_chrome` heavy-job early return. Predicate:
+    `header_back_visible` / `in_screen_nested_layer` in each app’s
+    `amount_visibility.rs` — nest flags are **screen-scoped** (Settings
+    section only on Settings; Khaynjo line/move/split only on Order). Peer
+    jumps (`go_peer`) clear those layers with history. Mouse/Android back /
+    Alt+← / edge swipe **pop** (`navigate_back`), with empty-stack fallbacks
     (SidebarSettings → Settings; Lock / ClientPair / Onboard → DeviceSetup).
     **Do not** let a focused text field swallow mouse Back on desktop — that
     made Lock (PIN focused) look broken (2026-11). Android may still use the

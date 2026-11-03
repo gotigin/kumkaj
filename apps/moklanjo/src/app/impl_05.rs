@@ -420,7 +420,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(server_remove_pin))
             .set_empty_text(cx, s("server_remove_pin_ph"));
-        let picking_server = app_state().lock().unwrap().picking_server;
+        let picking_server = app_state().lock().unwrap().picking_server
+            && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, picking_server);
@@ -1194,11 +1195,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.set_status(cx, "Opening logo picker…");
     }
 
-    /// Push history when `record_history` (`go` / `go_peer`). Entering or
-    /// leaving Lock/Onboard clears stacks via `screen_keeps_history` so Back
-    /// cannot return to setup after the main screen is open. During Onboard,
-    /// nested Back still uses the explicit DeviceSetup parent pushed at
-    /// owner-setup time (not this path).
+    /// Push history when `record_history` (`go` drill-down only). Peer chrome
+    /// uses `go_peer` → `record_history: false` (roots). Entering or leaving
+    /// Lock/Onboard clears stacks via `screen_keeps_history` so Back cannot
+    /// return to setup after the main screen is open. During Onboard, nested
+    /// Back still uses the explicit DeviceSetup parent pushed at owner-setup.
     fn set_screen(&mut self, st: &mut AppState, next: Screen, record_history: bool) {
         if st.screen == next {
             return;
@@ -1217,17 +1218,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         st.screen = next;
     }
 
-    /// Drill-down: push current screen onto `nav_back` (browser-style).
+    /// Drill-down: push current screen onto `nav_back`. Header ‹ / mouse /
+    /// Android Back / Alt+← / edge swipe pop this stack.
     fn go(&mut self, cx: &mut Cx, screen: Screen) {
         self.go_with(cx, screen, true);
     }
 
     /// Chrome peer switch (bottom nav / side rail / shortcuts).
-    /// Records visit history like a browser so mouse Back/Forward, Alt+←/→,
-    /// edge swipe, and Android back can move between screens. Lock / first-run
+    /// Top-level peers are **roots**: clear visit history (no header ‹ between
+    /// Day book ↔ Booking ↔ …). Nested drill-downs use [`go`]. Lock / first-run
     /// still clear stacks via `screen_keeps_history`.
     fn go_peer(&mut self, cx: &mut Cx, screen: Screen) {
-        self.go_with(cx, screen, true);
+        self.go_with(cx, screen, false);
     }
 
     fn go_with(&mut self, cx: &mut Cx, screen: Screen, push_history: bool) {
@@ -1268,14 +1270,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 self.set_screen(&mut st, Screen::Onboard, false);
             } else {
                 if !push_history {
+                    // Peer root jump: drop visit history and Settings section
+                    // (‹ must not linger; History Back via set_screen keeps it).
                     st.nav_back.clear();
                     st.nav_forward.clear();
+                    st.settings_panel = None;
                 }
                 self.set_screen(&mut st, screen, push_history);
                 if screen == Screen::Settings {
-                    // Settings opens on its hub (also a tap on its tab while
-                    // a section is open). History Back into Settings keeps
-                    // the section that was open.
+                    // Settings tab / peer opens on its hub. History Back into
+                    // Settings (set_screen, not go_with) keeps the section.
                     st.settings_panel = None;
                 }
                 // A device opens each screen on the office's latest books.

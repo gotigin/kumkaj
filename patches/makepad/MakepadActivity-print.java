@@ -191,6 +191,98 @@
         }
     }
 
+    /** Standard bill: Noto-raster PNG from Rust (same glyphs on every OS). */
+    public boolean printPngDocument(final String jobName, final byte[] pngBytes) {
+        final byte[] body = pngBytes == null ? new byte[0] : pngBytes;
+        final String title = (jobName == null || jobName.length() == 0) ? "Slip" : jobName;
+        try {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        PrintManager pm = (PrintManager) getSystemService(PRINT_SERVICE);
+                        if (pm == null) {
+                            return;
+                        }
+                        final android.graphics.Bitmap bmp =
+                                android.graphics.BitmapFactory.decodeByteArray(body, 0, body.length);
+                        if (bmp == null) {
+                            Log.e(LOG_TAG, "printPngDocument: bad PNG");
+                            return;
+                        }
+                        PrintAttributes attrs = new PrintAttributes.Builder()
+                                .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
+                                .setColorMode(PrintAttributes.COLOR_MODE_MONOCHROME)
+                                .setMinMargins(PrintAttributes.Margins.NO_MARGINS)
+                                .build();
+                        pm.print(title, new PrintDocumentAdapter() {
+                            @Override
+                            public void onLayout(
+                                    PrintAttributes oldAttributes,
+                                    PrintAttributes newAttributes,
+                                    android.os.CancellationSignal cancellationSignal,
+                                    LayoutResultCallback callback,
+                                    android.os.Bundle extras) {
+                                if (cancellationSignal.isCanceled()) {
+                                    callback.onLayoutCancelled();
+                                    return;
+                                }
+                                PrintDocumentInfo info = new PrintDocumentInfo.Builder(title)
+                                        .setContentType(PrintDocumentInfo.CONTENT_TYPE_PHOTO)
+                                        .setPageCount(1)
+                                        .build();
+                                callback.onLayoutFinished(info, true);
+                            }
+
+                            @Override
+                            public void onWrite(
+                                    android.print.PageRange[] pages,
+                                    android.os.ParcelFileDescriptor destination,
+                                    android.os.CancellationSignal cancellationSignal,
+                                    WriteResultCallback callback) {
+                                android.graphics.pdf.PdfDocument pdf =
+                                        new android.graphics.pdf.PdfDocument();
+                                try {
+                                    android.graphics.pdf.PdfDocument.PageInfo pageInfo =
+                                            new android.graphics.pdf.PdfDocument.PageInfo.Builder(
+                                                    595, 842, 1).create();
+                                    android.graphics.pdf.PdfDocument.Page page = pdf.startPage(pageInfo);
+                                    android.graphics.Canvas canvas = page.getCanvas();
+                                    float margin = 36f;
+                                    float maxW = 595f - 2f * margin;
+                                    float maxH = 842f - 2f * margin;
+                                    float scale = Math.min(maxW / bmp.getWidth(), maxH / bmp.getHeight());
+                                    float w = bmp.getWidth() * scale;
+                                    float h = bmp.getHeight() * scale;
+                                    android.graphics.RectF dst = new android.graphics.RectF(
+                                            margin, margin, margin + w, margin + h);
+                                    canvas.drawBitmap(bmp, null, dst, null);
+                                    pdf.finishPage(page);
+                                    java.io.FileOutputStream out =
+                                            new java.io.FileOutputStream(destination.getFileDescriptor());
+                                    pdf.writeTo(out);
+                                    callback.onWriteFinished(
+                                            new android.print.PageRange[]{android.print.PageRange.ALL_PAGES});
+                                } catch (Throwable e) {
+                                    Log.e(LOG_TAG, "printPngDocument write failed", e);
+                                    callback.onWriteFailed(e.getMessage());
+                                } finally {
+                                    pdf.close();
+                                }
+                            }
+                        }, attrs);
+                    } catch (Throwable e) {
+                        Log.e(LOG_TAG, "printPngDocument failed", e);
+                    }
+                }
+            });
+            return true;
+        } catch (Throwable e) {
+            Log.e(LOG_TAG, "printPngDocument schedule failed", e);
+            return false;
+        }
+    }
+
     public boolean printDocument(final String jobName, final String text) {
         final String body = text == null ? "" : text;
         final String title = (jobName == null || jobName.length() == 0) ? "Slip" : jobName;

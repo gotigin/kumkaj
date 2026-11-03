@@ -200,7 +200,9 @@ impl AppMain for App {
             // A printer that did not print says so where people look; newly
             // found printers show in Settings.
             if let Some(problem) = print_share::take_problems().pop() {
-                self.set_status(cx, problem);
+                // Empty KOT route is a setup gap, not success ("not printed"
+                // used to match classify OK "printed" → green face).
+                self.show_warn(cx, problem);
             }
             // Settings → Printers: repaint what Find found only when Find's
             // state moved. Rebuilding it with the pool and route cards on
@@ -222,6 +224,32 @@ impl AppMain for App {
             let found = discovery_result().lock().unwrap().take();
             if let Some(found) = found {
                 self.show_found_servers(cx, found);
+            }
+            if let Some(result) = role_open_once().lock().unwrap().take() {
+                match result {
+                    Ok(RoleOpenReady::Client(store)) => {
+                        self.finish_client_mode_opened(cx, store)
+                    }
+                    Ok(RoleOpenReady::ServerNew(store)) => {
+                        self.finish_server_new_opened(cx, store)
+                    }
+                    Ok(RoleOpenReady::ServerExisting {
+                        store,
+                        switching_in,
+                    }) => self.finish_server_existing_opened(cx, store, switching_in),
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_t("cancelled"));
+                        self.paint_role_open_busy_chrome(cx);
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.set_status(cx, e);
+                        self.paint_role_open_busy_chrome(cx);
+                        self.sync_chrome(cx);
+                    }
+                }
+            } else if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_role_open_busy_chrome(cx);
             }
             let fresh = std::mem::take(&mut firewall_state().lock().unwrap().fresh);
             if fresh {

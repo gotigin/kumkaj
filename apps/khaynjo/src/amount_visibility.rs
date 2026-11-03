@@ -543,3 +543,24 @@ fn setup_shows_header_back(st: &AppState) -> bool {
         _ => false,
     }
 }
+
+/// In-screen layers and drill-downs that need header ‹ (peers are roots —
+/// empty `nav_back` alone is not enough after `go_peer`).
+/// Flags are **screen-scoped** so a peer jump cannot leave a phantom ‹.
+fn in_screen_nested_layer(st: &AppState) -> bool {
+    st.screen == Screen::SidebarSettings
+        || (st.screen == Screen::Settings && st.settings_panel.is_some())
+        || (st.screen == Screen::Pos
+            && (st.line_action.is_some() || st.move_panel_open || st.split_mode))
+        || (st.screen == Screen::Floor && st.picking_table)
+        || !st.nav_back.is_empty()
+}
+
+/// Single source for header ‹ visibility (unlocked nested + setup nested).
+fn header_back_visible(st: &AppState) -> bool {
+    let header_on = !matches!(
+        st.screen,
+        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+    );
+    (header_on && in_screen_nested_layer(st)) || setup_shows_header_back(st)
+}

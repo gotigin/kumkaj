@@ -83,18 +83,18 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(printer_add_cancel))
             .set_visible(cx, false);
 
+        // Find-server progress stays on `client_found_label` — never set_text
+        // on the wrapping Find Stack* face (DEV.md bug 7).
         let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
-        if client_busy {
-            self.ui
-                .button(cx, ids!(client_find_btn))
-                .set_text(cx, &app_state().lock().unwrap().t("finding_server"));
-        }
         self.ui
             .button(cx, ids!(client_find_cancel))
             .set_text(cx, &cancel);
         self.ui
             .button(cx, ids!(client_find_cancel))
             .set_visible(cx, client_busy);
+
+        // DeviceSetup Client open (migrate) — WrapLabel + QuietFitBtn Cancel.
+        self.paint_role_open_busy_chrome(cx);
 
         let backup = backup_busy().load(std::sync::atomic::Ordering::SeqCst);
         if backup {
@@ -207,6 +207,36 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         self.ui.redraw(cx);
     }
 
+    /// Paint header ‹ from nested / setup state. Call after any in-screen
+    /// layer change that does not already run full `sync_chrome` (Settings
+    /// section, DeviceSetup accordion, heavy-job early return).
+    fn paint_header_back_chrome(&mut self, cx: &mut Cx) {
+        let (show_back, show_header) = {
+            let st = app_state().lock().unwrap();
+            let unlocked = !matches!(
+                st.screen,
+                Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+            );
+            let setup_back = setup_shows_header_back(&st);
+            (
+                header_back_visible(&st),
+                unlocked || setup_back,
+            )
+        };
+        self.ui.view(cx, ids!(header)).set_visible(cx, show_header);
+        self.ui
+            .button(cx, ids!(header_back))
+            .set_visible(cx, show_back);
+        for id in [
+            ids!(sidebar_settings_back),
+            ids!(settings_detail_back),
+            ids!(line_action_back),
+            ids!(floor_pick_back),
+        ] {
+            self.ui.button(cx, id).set_visible(cx, false);
+        }
+    }
+
 fn sync_chrome(&mut self, cx: &mut Cx) {
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
@@ -277,6 +307,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             {
                 self.sync_settings_panels(cx);
             }
+            // Still refresh ‹ — nested Settings must not stay without Back.
+            self.paint_header_back_chrome(cx);
             self.lift_footer_above_system_bar(cx);
             self.repair_focused_carets(cx);
             self.ui.redraw(cx);
@@ -2783,52 +2815,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.paint_nav_tabs(cx, screen);
         }
 
-        // Back chrome: one header ‹. It calls navigate_back (mouse / Android /
-        // Alt+← / edge swipe use that same function). Nested setup shows it
-        // too — the header used to stay hidden there, so Back never appeared.
-        {
-            let (show_header_back, show_client_pair_back, show_onboard_back, show_server_pick_cancel) = {
-                let st = app_state().lock().unwrap();
-                let header_on = !matches!(
-                    st.screen,
-                    Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
-                );
-                let nested = st.settings_panel.is_some()
-                    || st.line_action.is_some()
-                    || st.move_panel_open
-                    || st.split_mode
-                    || (st.screen == Screen::Floor && st.picking_table)
-                    || st.screen == Screen::SidebarSettings
-                    || !st.nav_back.is_empty();
-                let setup_back = setup_shows_header_back(&st);
-                (
-                    (header_on && nested) || setup_back,
-                    false,
-                    false,
-                    false,
-                )
-            };
-            self.ui
-                .button(cx, ids!(header_back))
-                .set_visible(cx, show_header_back);
-            self.ui
-                .button(cx, ids!(client_pair_back))
-                .set_visible(cx, show_client_pair_back);
-            self.ui
-                .button(cx, ids!(onboard_back))
-                .set_visible(cx, show_onboard_back);
-            self.ui
-                .button(cx, ids!(server_pick_cancel))
-                .set_visible(cx, show_server_pick_cancel);
-            for id in [
-                ids!(sidebar_settings_back),
-                ids!(settings_detail_back),
-                ids!(line_action_back),
-                ids!(floor_pick_back),
-            ] {
-                self.ui.button(cx, id).set_visible(cx, false);
-            }
-        }
+        // Back chrome: one header ‹. Peers are roots (`go_peer` clears history)
+        // — no ‹ between Order/Floor/Kitchen. Show ‹ for in-screen layers,
+        // drill-down history (`go`), and nested setup. Mouse/Android Back /
+        // Alt+← / edge swipe call the same `navigate_back`.
+        self.paint_header_back_chrome(cx);
+        self.ui
+            .button(cx, ids!(client_pair_back))
+            .set_visible(cx, false);
+        self.ui
+            .button(cx, ids!(onboard_back))
+            .set_visible(cx, false);
+        self.ui
+            .button(cx, ids!(server_pick_cancel))
+            .set_visible(cx, false);
 
         self.lift_footer_above_system_bar(cx);
         self.repair_focused_carets(cx);

@@ -1707,6 +1707,8 @@ impl Store {
             let qty_raw = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
             // Piece qty is "x4" — strip so the line reads "Name  4 x ₹…".
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
+            // Names stay as stored (incl. Gujarati/Hindi). Standard print
+            // rasterizes with bundled Noto — never depends on the printer font.
             out.push_str(&format!("{}  {qty} x {unit}  {total}\n", line.name));
             if !line.note.is_empty() {
                 out.push_str(&format!("  ({})\n", line.note));

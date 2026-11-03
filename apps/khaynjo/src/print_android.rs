@@ -43,12 +43,24 @@ pub fn write_usb(vid: u16, pid: u16, serial: Option<&str>, bytes: &[u8]) -> Resu
 }
 
 /// Standard slip via Android PrintManager (system print UI).
+/// Prefer [`print_png`] — plain text depends on the device font.
 pub fn print_document(job_name: &str, text: &str) -> Result<(), String> {
     unsafe {
         if android_jni::to_java_print_document(job_name.to_owned(), text.to_owned()) {
             Ok(())
         } else {
             Err("Android PrintManager refused the job".into())
+        }
+    }
+}
+
+/// Standard bill as a Noto-raster PNG (same glyphs as Linux/Windows).
+pub fn print_png(job_name: &str, png: &[u8]) -> Result<(), String> {
+    unsafe {
+        if android_jni::to_java_print_png(job_name.to_owned(), png) {
+            Ok(())
+        } else {
+            Err("Android PrintManager refused the image job".into())
         }
     }
 }

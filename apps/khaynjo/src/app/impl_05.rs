@@ -239,19 +239,20 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 self.sync_chrome(cx);
                 return true;
             }
-            if st.line_action.is_some() {
+            // Order-desk layers only while on Pos (same scope as ‹ predicate).
+            if st.screen == Screen::Pos && st.line_action.is_some() {
                 st.line_action = None;
                 drop(st);
                 self.sync_chrome(cx);
                 return true;
             }
-            if st.move_panel_open {
+            if st.screen == Screen::Pos && st.move_panel_open {
                 st.move_panel_open = false;
                 drop(st);
                 self.sync_chrome(cx);
                 return true;
             }
-            if st.split_mode {
+            if st.screen == Screen::Pos && st.split_mode {
                 st.split_mode = false;
                 st.split_pick.clear();
                 drop(st);
@@ -272,9 +273,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             }
             // Settings nested section → hub (never jump straight to Day book).
             if st.screen == Screen::Settings && st.settings_panel.is_some() {
-                st.settings_panel = None;
                 drop(st);
-                self.sync_settings_panels(cx);
+                self.open_settings_panel(cx, None);
                 return true;
             }
         }
@@ -1035,6 +1035,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             }
         }
         self.sync_device_setup_sections(cx);
+        // Language accordion is a nested setup layer — show/hide header ‹.
+        self.paint_header_back_chrome(cx);
         self.ui.redraw(cx);
     }
 

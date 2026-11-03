@@ -709,6 +709,8 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             }
         }
         self.sync_device_setup_sections(cx);
+        // Language accordion is a nested setup layer — show/hide header ‹.
+        self.paint_header_back_chrome(cx);
         self.ui.redraw(cx);
     }
 
@@ -1689,6 +1691,9 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
 
     /// Server Mode: create the first local server, or show create/pick when several exist.
     fn begin_server_mode(&mut self, cx: &mut Cx) {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
         self.resolve_data_base(cx);
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
@@ -1709,6 +1714,9 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     }
 
     fn activate_new_server(&mut self, cx: &mut Cx, name: &str) -> Result<(), String> {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return Ok(());
+        }
         self.resolve_data_base(cx);
         let base = {
             let st = app_state().lock().unwrap();
@@ -1716,20 +1724,19 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 .clone()
                 .ok_or_else(|| "No data directory".to_string())?
         };
-        net::stop_server();
-        let (_info, store) = local_servers::create_local_server(&base, name)?;
+        server_new_job(base, name.to_string());
+        self.paint_role_open_busy_chrome(cx);
+        Ok(())
+    }
+
+    fn finish_server_new_opened(&mut self, cx: &mut Cx, store: Store) {
         {
             let mut st = app_state().lock().unwrap();
             st.store = Some(store);
             st.picking_server = false;
             let _ = st.refresh_local_servers();
-            // Language is app-global: keep the choice showing on DeviceSetup
-            // across the reload (which reads the new shop's own meta).
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
-            // The previous shop's login must not ride into this new shop.
-            // sync_chrome used to see that session on Lock and open the till,
-            // so the new server skipped Owner PIN and onboarding.
             st.session = None;
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
@@ -1738,7 +1745,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             Self::persist_setup_language(&mut st);
             self.finish_as_server(&mut st, true);
         }
+        self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
-        Ok(())
     }
 }

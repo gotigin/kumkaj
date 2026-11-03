@@ -1015,13 +1015,42 @@ impl DevicePrinters {
 
     /// Same destination = same printer. Target is compared case-insensitively
     /// (CUPS / Windows names); blank target falls back to label.
+    ///
+    /// System queue names that differ only by `_` vs `-` (Find often lists
+    /// both) collapse to one pool entry. Network / BT / USB / Android targets
+    /// keep `:` and are not rewritten.
     fn printer_dedupe_key(label: &str, target: &str) -> String {
         let t = target.trim();
-        if !t.is_empty() {
-            t.to_ascii_lowercase()
+        let raw = if !t.is_empty() {
+            t
         } else {
-            label.trim().to_ascii_lowercase()
+            label.trim()
+        };
+        Self::normalize_dest_key(raw)
+    }
+
+    /// Lowercase destination; for bare queue names, treat `_` and `-` alike.
+    pub fn normalize_dest_key(raw: &str) -> String {
+        let s = raw.trim().to_ascii_lowercase();
+        if s.is_empty() {
+            return s;
         }
+        if s.contains(':') {
+            s
+        } else {
+            s.replace('_', "-")
+        }
+    }
+
+    /// Display-name key for route uniqueness: same shown name + format must
+    /// not appear twice on one place (Standard twice for one Brother is out;
+    /// Standard + KOT for the same Brother is fine).
+    pub fn route_name_format_key(display_name: &str, format_id: &str) -> String {
+        format!(
+            "{}@@{}",
+            Self::normalize_dest_key(display_name),
+            format_id.trim().to_ascii_lowercase()
+        )
     }
 
     /// Add a printer, or return the existing id when the same destination is
@@ -1069,6 +1098,8 @@ impl DevicePrinters {
     }
 
     /// Collapse duplicate destinations (same target/name) and remap routes.
+    /// Also drops a second route slot that is the same shown name + format
+    /// (Brother_…@standard and Brother-…@standard → keep the first).
     pub fn dedupe_printers(&mut self) {
         let mut keep_ids: Vec<String> = Vec::new();
         let mut remap: std::collections::HashMap<String, String> =
@@ -1116,6 +1147,58 @@ impl DevicePrinters {
             });
         }
         let _ = keep_ids;
+        self.dedupe_route_name_formats();
+    }
+
+    /// On each place, keep one slot per shown name + format.
+    fn dedupe_route_name_formats(&mut self) {
+        let default_bill = self.format_id_for(RouteKey::Bill);
+        Self::dedupe_slots_by_name_format(&mut self.routes.bill, &self.printers, &default_bill);
+        let stations: Vec<String> = self.routes.kot.keys().cloned().collect();
+        for sid in stations {
+            let default = self.format_id_for(RouteKey::Kot {
+                station_id: sid.as_str(),
+            });
+            if let Some(slots) = self.routes.kot.get_mut(&sid) {
+                Self::dedupe_slots_by_name_format(slots, &self.printers, &default);
+            }
+        }
+    }
+
+    fn dedupe_slots_by_name_format(
+        slots: &mut Vec<String>,
+        printers: &[NamedPrinter],
+        default_fmt: &str,
+    ) {
+        let mut out = Vec::new();
+        let mut seen = std::collections::HashSet::new();
+        for slot in slots.drain(..) {
+            let (pid, fmt) = decode_route_slot(&slot);
+            let fmt = if fmt.is_empty() {
+                default_fmt.to_string()
+            } else {
+                fmt
+            };
+            let Some(p) = printers.iter().find(|p| p.id == pid) else {
+                continue;
+            };
+            let name = {
+                let t = p.target.trim();
+                if !t.is_empty() {
+                    t
+                } else if !p.label.trim().is_empty() {
+                    p.label.trim()
+                } else {
+                    pid.as_str()
+                }
+            };
+            let nf = Self::route_name_format_key(name, &fmt);
+            let enc = encode_route_slot(&pid, &fmt);
+            if seen.insert(nf) {
+                out.push(enc);
+            }
+        }
+        *slots = out;
     }
 
     pub fn remove_printer(&mut self, id: &str) {
@@ -1558,27 +1641,34 @@ fn send_to_printer(
 }
 
 fn print_android_document(text: &str) -> Result<(), String> {
+    // Same Noto PNG as desktop Standard — never rely on the device font.
+    let png = crate::receipt_raster::png_document(text)?;
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_document("Khaynjo", text)
+        crate::print_android::print_png("Khaynjo", &png)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = text;
+        let _ = png;
         Err("Android print service is only on Android".into())
     }
 }
 
+/// Standard (document) jobs: always render with bundled Noto fonts to a PNG,
+/// then hand that image to the OS printer. Plain UTF-8 text depended on each
+/// driver's fonts (Gujarati/Hindi became □ before qty on Brother etc.).
 fn print_system_standard(name: Option<&str>, path: &Path, text: &str) -> Result<(), String> {
+    let png = crate::receipt_raster::png_document(text)?;
+    let png_path = path.with_extension("png");
+    fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path);
-        crate::print_android::print_document("Khaynjo", text)
+        let _ = name;
+        crate::print_android::print_png("Khaynjo", &png)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = text;
-        print_system(name, path)
+        print_system_image(name, &png_path)
     }
 }
 
@@ -1756,12 +1846,9 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
     out
 }
 
-/// Print a UTF-8 text/document file on a system printer (`None` = default).
-/// Used for **bills** on named/default targets (office paper / driver layout).
-/// Android document jobs go through [`print_system_standard`] → `print_android`
-/// instead; this CUPS/PowerShell path is desktop-only.
+/// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
 #[cfg(not(target_os = "android"))]
-fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
+fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
         let mut cmd = Command::new("lp");
@@ -1784,13 +1871,35 @@ fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
         use std::os::windows::process::CommandExt;
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
         let quote = |s: &str| s.replace('\'', "''");
+        let path_q = quote(&path.display().to_string());
+        // Draw the PNG with System.Drawing — Out-Printer on UTF-8 text had no
+        // Indic fonts; the image already has our Noto glyphs.
         let mut script = format!(
-            "Get-Content -LiteralPath '{}' -Raw -Encoding UTF8 | Out-Printer",
-            quote(&path.display().to_string())
+            "Add-Type -AssemblyName System.Drawing; \
+             $img = [System.Drawing.Image]::FromFile('{path_q}'); \
+             $doc = New-Object System.Drawing.Printing.PrintDocument; \
+             $doc.DocumentName = 'Khaynjo'; \
+             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(40,40,40,40);"
         );
         if let Some(name) = name {
-            script.push_str(&format!(" -Name '{}'", quote(name)));
+            script.push_str(&format!(
+                "$doc.PrinterSettings.PrinterName = '{}';",
+                quote(name)
+            ));
         }
+        script.push_str(
+            "$script:img = $img; \
+             $doc.add_PrintPage({ param($s,$e) \
+               $b = $e.MarginBounds; \
+               $scale = [Math]::Min($b.Width / $script:img.Width, $b.Height / $script:img.Height); \
+               $w = [int]($script:img.Width * $scale); \
+               $h = [int]($script:img.Height * $scale); \
+               $e.Graphics.DrawImage($script:img, $b.Left, $b.Top, $w, $h); \
+               $e.HasMorePages = $false }); \
+             $doc.Print(); \
+             $img.Dispose(); \
+             $doc.Dispose();",
+        );
         let out = Command::new("powershell")
             .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
             .creation_flags(CREATE_NO_WINDOW)
@@ -2612,6 +2721,39 @@ mod tests {
         *cfg.route_mut(RouteKey::Bill) = vec![a.clone(), "dup".into()];
         cfg.dedupe_printers();
         assert_eq!(cfg.printers.len(), 1);
-        assert_eq!(cfg.route_for(RouteKey::Bill), &[a][..]);
+        // Bare id is filled with the place's default format on dedupe.
+        assert_eq!(
+            cfg.route_for(RouteKey::Bill),
+            &[encode_route_slot(&a, FORMAT_STANDARD)][..]
+        );
+    }
+
+    #[test]
+    fn cups_queue_underscore_and_hyphen_are_one_printer() {
+        let mut cfg = DevicePrinters::default();
+        let (a, first) = cfg.ensure_printer("Brother_DCP_L2640DW", "Brother_DCP_L2640DW");
+        let (b, second) =
+            cfg.ensure_printer("Brother_DCP-L2640DW", "Brother_DCP-L2640DW");
+        assert!(first);
+        assert!(!second);
+        assert_eq!(a, b);
+        assert_eq!(cfg.printers.len(), 1);
+        // Network / USB keep distinct colons — not rewritten into one.
+        let (n1, _) = cfg.ensure_printer("a", "192.168.1.10:9100");
+        let (n2, added) = cfg.ensure_printer("b", "192.168.1.11:9100");
+        assert!(added);
+        assert_ne!(n1, n2);
+    }
+
+    #[test]
+    fn route_name_format_key_collapses_underscore_hyphen() {
+        assert_eq!(
+            DevicePrinters::route_name_format_key("Brother_DCP_L2640DW", FORMAT_STANDARD),
+            DevicePrinters::route_name_format_key("Brother_DCP-L2640DW", FORMAT_STANDARD)
+        );
+        assert_ne!(
+            DevicePrinters::route_name_format_key("Brother_DCP_L2640DW", FORMAT_STANDARD),
+            DevicePrinters::route_name_format_key("Brother_DCP_L2640DW", FORMAT_KOT)
+        );
     }
 }

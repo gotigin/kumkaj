@@ -104,6 +104,11 @@ pub fn classify(msg: &str) -> SnackKind {
         "waiting",
         "still",
         "partial",
+        // Print route empty — must beat OK "printed" inside "not printed".
+        "not printed",
+        "no printer",
+        "add a kitchen printer",
+        "shop device",
     ];
     for w in WARN {
         if m.contains(w) {
@@ -131,6 +136,10 @@ pub fn classify(msg: &str) -> SnackKind {
         "shop ready",
     ];
     for w in OK {
+        // "KOTs are not printed…" must never look like success.
+        if *w == "printed" && m.contains("not printed") {
+            continue;
+        }
         if m.contains(w) {
             return SnackKind::Success;
         }
@@ -154,6 +163,17 @@ mod tests {
         assert_eq!(classify("Menu order saved"), SnackKind::Success);
         assert_eq!(classify("Sale undone — cart restored"), SnackKind::Success);
         assert_eq!(classify("Read-only on this extra till"), SnackKind::Warn);
+        assert_eq!(
+            classify(
+                "KOTs are not printed on this device — add a kitchen printer in Settings → Printers"
+            ),
+            SnackKind::Warn
+        );
+        assert_eq!(
+            classify("Print selected again on the shop device (kitchen printers are on the counter)"),
+            SnackKind::Warn
+        );
+        assert_eq!(classify("2 KOT(s) → Kitchen · printed"), SnackKind::Success);
     }
 
     #[test]

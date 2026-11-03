@@ -165,6 +165,50 @@ pub fn missing_letters(text: &str) -> Vec<char> {
     text.chars().filter(|&c| !drawable(&faces, c)).collect()
 }
 
+/// Scale factor when turning the 1-bit slip into a PNG for Standard
+/// (office / PrintManager) printers — same Noto glyphs as thermal raster.
+const DOCUMENT_PNG_SCALE: u32 = 3;
+
+/// PNG of `text` drawn with Standard metrics and bundled Noto fonts.
+/// Used for **every** Standard document job (Linux / Windows / Android) so
+/// dish names never depend on the printer driver's fonts.
+pub fn png_document(text: &str) -> Result<Vec<u8>, String> {
+    png_metrics(text, &RasterMetrics::standard())
+}
+
+/// PNG of `text` with explicit metrics (custom formats).
+pub fn png_metrics(text: &str, m: &RasterMetrics) -> Result<Vec<u8>, String> {
+    let (rows, height) = draw_metrics(text, m);
+    let scale = DOCUMENT_PNG_SCALE;
+    let w = (PAPER_DOTS as u32).saturating_mul(scale);
+    let h = (height as u32).saturating_mul(scale).max(scale);
+    let row_bytes = PAPER_DOTS / 8;
+    let mut rgba = vec![255u8; (w as usize) * (h as usize) * 4];
+    for y in 0..height {
+        for x in 0..PAPER_DOTS {
+            let on = rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0;
+            if !on {
+                continue;
+            }
+            for dy in 0..scale {
+                for dx in 0..scale {
+                    let i = (((y as u32 * scale + dy) * w + x as u32 * scale + dx) * 4) as usize;
+                    rgba[i] = 0;
+                    rgba[i + 1] = 0;
+                    rgba[i + 2] = 0;
+                }
+            }
+        }
+    }
+    let img = image::RgbaImage::from_raw(w, h, rgba)
+        .ok_or_else(|| "could not build bill image".to_string())?;
+    let mut buf = std::io::Cursor::new(Vec::new());
+    image::DynamicImage::ImageRgba8(img)
+        .write_to(&mut buf, image::ImageFormat::Png)
+        .map_err(|e| format!("PNG encode failed: {e}"))?;
+    Ok(buf.into_inner())
+}
+
 /// One glyph placed on a line: which font, which glyph, where (dots from
 /// the left margin; `dy` up from the baseline).
 struct Placed {
@@ -456,6 +500,13 @@ mod tests {
         let mut pbm = format!("P4\n{PAPER_DOTS} {height}\n").into_bytes();
         pbm.extend_from_slice(&rows);
         std::fs::write(out, pbm).unwrap();
+    }
+
+    #[test]
+    fn document_png_embeds_indic_not_boxes() {
+        let png = png_document("ખીચડી  1 x Rs.80\nTotal Rs.80\n").unwrap();
+        assert!(png.starts_with(b"\x89PNG"), "must be a PNG");
+        assert!(png.len() > 500, "expected real ink, got {} bytes", png.len());
     }
 
     #[test]

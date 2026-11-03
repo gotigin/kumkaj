@@ -193,6 +193,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
 
     /// Server Mode: create the first local server, or show create/pick when several exist.
     fn begin_server_mode(&mut self, cx: &mut Cx) {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
         self.resolve_data_base(cx);
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
@@ -213,6 +216,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     }
 
     fn activate_new_server(&mut self, cx: &mut Cx, name: &str) -> Result<(), String> {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return Ok(());
+        }
         self.resolve_data_base(cx);
         let base = {
             let st = app_state().lock().unwrap();
@@ -220,20 +226,38 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 .clone()
                 .ok_or_else(|| "No data directory".to_string())?
         };
-        net::stop_server();
-        let (_info, store) = local_servers::create_local_server(&base, name)?;
+        server_new_job(base, name.to_string());
+        self.paint_role_open_busy_chrome(cx);
+        Ok(())
+    }
+
+    fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(), String> {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return Ok(());
+        }
+        self.resolve_data_base(cx);
+        let (base, switching_in) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.data_base
+                    .clone()
+                    .ok_or_else(|| "No data directory".to_string())?,
+                st.device_role != DeviceRole::Server,
+            )
+        };
+        server_existing_job(base, server_id.to_string(), switching_in);
+        self.paint_role_open_busy_chrome(cx);
+        Ok(())
+    }
+
+    fn finish_server_new_opened(&mut self, cx: &mut Cx, store: Store) {
         {
             let mut st = app_state().lock().unwrap();
             st.store = Some(store);
             st.picking_server = false;
             let _ = st.refresh_local_servers();
-            // Language is app-global: keep the choice showing on DeviceSetup
-            // across the reload (which reads the new shop's own meta).
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
-            // The previous shop's login must not ride into this new shop.
-            // sync_chrome used to see that session on Lock and open the till,
-            // so the new server skipped Owner PIN and onboarding.
             st.session = None;
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
@@ -242,37 +266,25 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             Self::persist_setup_language(&mut st);
             self.finish_as_server(&mut st, true);
         }
+        self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
-        Ok(())
     }
 
-    fn activate_existing_server(&mut self, cx: &mut Cx, server_id: &str) -> Result<(), String> {
-        self.resolve_data_base(cx);
-        let base = {
-            let st = app_state().lock().unwrap();
-            st.data_base
-                .clone()
-                .ok_or_else(|| "No data directory".to_string())?
-        };
-        net::stop_server();
-        let store = local_servers::open_server(&base, server_id)?;
+    fn finish_server_existing_opened(&mut self, cx: &mut Cx, store: Store, switching_in: bool) {
         {
             let mut st = app_state().lock().unwrap();
-            let previous = st.device_role;
             st.store = Some(store);
             st.picking_server = false;
             let _ = st.refresh_local_servers();
-            // Language is app-global: keep the choice showing on DeviceSetup
-            // across the reload (which reads this shop's own meta).
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, previous != DeviceRole::Server);
+            self.finish_as_server(&mut st, switching_in);
         }
+        self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
-        Ok(())
     }
 
     /// Wipe a local server from this device. Owner PIN of **that** shop
@@ -380,32 +392,39 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         };
     }
 
+    /// Start Client Mode without blocking the UI (first open migrates the
+    /// client cache — can take a long time on Android). Busy chrome + Cancel
+    /// replace Server/Client until the worker finishes.
     fn begin_client_mode(&mut self, cx: &mut Cx) {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
         self.resolve_data_base(cx);
-        let result = (|| -> Result<(), String> {
-            let base = {
-                let st = app_state().lock().unwrap();
-                st.data_base
-                    .clone()
-                    .ok_or_else(|| "No data directory".to_string())?
-            };
-            net::stop_server();
-            let store = local_servers::open_client_store(&base)?;
+        let base = {
+            let st = app_state().lock().unwrap();
+            match st.data_base.clone() {
+                Some(b) => b,
+                None => {
+                    self.set_status(cx, "No data directory");
+                    return;
+                }
+            }
+        };
+        client_mode_job(base);
+        self.paint_role_open_busy_chrome(cx);
+    }
+
+    /// Apply a Store opened on the client-mode worker (Signal handler).
+    fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
+        {
             let mut st = app_state().lock().unwrap();
             st.store = Some(store);
             st.picking_server = false;
-            // Language is app-global: keep the choice showing on DeviceSetup
-            // across the reload (which reads the client cache's own meta).
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.prepare_as_client_terminal()?;
-            // Saved like Server Mode is: a reload (pairing, sync) reads the
-            // role back from the store and must not find it unset.
-            store.set_device_role(DeviceRole::Client.as_str())?;
             st.device_role = DeviceRole::Client;
             st.must_confirm_device_role = false;
             st.owner_setup_complete = true;
@@ -414,26 +433,48 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
-            let _ = st.reload_all();
             st.client_paired = store_client_paired(st.store.as_ref());
-            // First Client lock → Staff (when staff exist); else remembered chip.
             st.apply_lock_role_selection();
             if st.client_paired {
                 st.screen = Screen::Lock;
                 st.status = locale::t(&st.locale.language, "status_client_unlock");
             } else {
-                // Nested under DeviceSetup so Back (body / mouse / Android)
-                // returns to Server/Client — do not clear this parent away.
                 st.nav_back.push(Screen::DeviceSetup);
                 st.screen = Screen::ClientPair;
                 st.status = "Client Mode — pair to the Server before selling".into();
             }
-            Ok(())
-        })();
-        if let Err(e) = result {
-            self.set_status(cx, e);
         }
+        self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
+    }
+
+    fn paint_role_open_busy_chrome(&mut self, cx: &mut Cx) {
+        let busy = role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let cancel = app_t("cancel");
+        let status = books_work_status()
+            .lock()
+            .unwrap()
+            .clone()
+            .unwrap_or_else(|| app_t("opening_client"));
+        let show_pick = !busy && app_state().lock().unwrap().picking_server;
+        self.ui
+            .view(cx, ids!(device_role_actions))
+            .set_visible(cx, !busy && !show_pick);
+        self.ui
+            .view(cx, ids!(server_pick_section))
+            .set_visible(cx, show_pick);
+        self.ui
+            .widget(cx, ids!(device_role_busy_label))
+            .set_text(cx, &plain_display_text(&status));
+        self.ui
+            .widget(cx, ids!(device_role_busy_label))
+            .set_visible(cx, busy);
+        self.ui
+            .button(cx, ids!(device_role_cancel))
+            .set_text(cx, &cancel);
+        self.ui
+            .button(cx, ids!(device_role_cancel))
+            .set_visible(cx, busy);
     }
 
     fn set_extra_tills(&mut self, cx: &mut Cx, allowed: bool) {

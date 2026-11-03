@@ -749,27 +749,32 @@ fn send_to_printer(
 }
 
 fn print_android_document(text: &str) -> Result<(), String> {
+    let png = crate::receipt_raster::png_document(text)?;
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_document("Moklanjo", text)
+        crate::print_android::print_png("Moklanjo", &png)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = text;
+        let _ = png;
         Err("Android print service is only on Android".into())
     }
 }
 
+/// Standard (document) jobs: always render with bundled Noto fonts to a PNG,
+/// then hand that image to the OS printer — same glyphs on every platform.
 fn print_system_standard(name: Option<&str>, path: &Path, text: &str) -> Result<(), String> {
+    let png = crate::receipt_raster::png_document(text)?;
+    let png_path = path.with_extension("png");
+    fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path);
-        crate::print_android::print_document("Moklanjo", text)
+        let _ = name;
+        crate::print_android::print_png("Moklanjo", &png)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = text;
-        print_system(name, path)
+        print_system_image(name, &png_path)
     }
 }
 
@@ -922,11 +927,9 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
     out
 }
 
-/// Print a file on a system printer (`None` = the default one).
-/// Android document jobs go through [`print_system_standard`] → `print_android`
-/// instead; this CUPS/PowerShell path is desktop-only.
+/// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
 #[cfg(not(target_os = "android"))]
-fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
+fn print_system_image(name: Option<&str>, path: &Path) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
         let mut cmd = Command::new("lp");
@@ -938,7 +941,6 @@ fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
             Ok(out) if out.status.success() => Ok(()),
             Ok(out) => Err(first_line(&out.stderr).unwrap_or_else(|| "the printing system refused the job".into())),
             Err(_) => {
-                // No printing system at all: at least show the slip.
                 let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
                 let _ = Command::new(opener).arg(path).spawn();
                 Err("this computer has no printing system (CUPS) — the slip was opened instead".into())
@@ -950,13 +952,33 @@ fn print_system(name: Option<&str>, path: &Path) -> Result<(), String> {
         use std::os::windows::process::CommandExt;
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
         let quote = |s: &str| s.replace('\'', "''");
+        let path_q = quote(&path.display().to_string());
         let mut script = format!(
-            "Get-Content -LiteralPath '{}' -Raw -Encoding UTF8 | Out-Printer",
-            quote(&path.display().to_string())
+            "Add-Type -AssemblyName System.Drawing; \
+             $img = [System.Drawing.Image]::FromFile('{path_q}'); \
+             $doc = New-Object System.Drawing.Printing.PrintDocument; \
+             $doc.DocumentName = 'Moklanjo'; \
+             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(40,40,40,40);"
         );
         if let Some(name) = name {
-            script.push_str(&format!(" -Name '{}'", quote(name)));
+            script.push_str(&format!(
+                "$doc.PrinterSettings.PrinterName = '{}';",
+                quote(name)
+            ));
         }
+        script.push_str(
+            "$script:img = $img; \
+             $doc.add_PrintPage({ param($s,$e) \
+               $b = $e.MarginBounds; \
+               $scale = [Math]::Min($b.Width / $script:img.Width, $b.Height / $script:img.Height); \
+               $w = [int]($script:img.Width * $scale); \
+               $h = [int]($script:img.Height * $scale); \
+               $e.Graphics.DrawImage($script:img, $b.Left, $b.Top, $w, $h); \
+               $e.HasMorePages = $false }); \
+             $doc.Print(); \
+             $img.Dispose(); \
+             $doc.Dispose();",
+        );
         let out = Command::new("powershell")
             .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
             .creation_flags(CREATE_NO_WINDOW)
