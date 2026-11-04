@@ -184,6 +184,11 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
    - **InfoHelp:** Titled → **`width: Fill`** + **Fit title + tip + Fill trail** (ℹ hugs label on every screen); tip-only → trail hidden, **Fit**. Never `Label{width:Fill, wrap}`.
 7c. **Large face looks tappable but only a thin strip works** — e.g. `AccordionHdrBtn{width: Fit}` alone in a Fill card (Device setup / Floor, 2026-11): Makepad hit-tests **`draw_bg.area()`**, so the rest of the row is dead. **Usual fix:** keep the **control’s face** large enough for the job — accordion / hub / sidebar / checklist rows **Fill**. When an InfoHelp must sit **right after** the title: Fit caption + Fit InfoHelp + Fill `_ext`, all as **`AccordionHdrHitBtn`** (same hit metrics, **no hover/down paint**, **no `wrap: true`** — Fit+wrap expands the caption and parks ℹ at the far end) so the row reads as **one** header on the card — not three cream segments. Alone (Books): painted `AccordionHdrBtn` Fill (wrap OK). Titled InfoHelp already packs ℹ next to the label (Fit title + trail); accordion tip-rows still use **Fit caption + tip-only + `_ext`**. **Same idea, most places:** checkbox / radio / switch rows should toggle from the **label + control**, not only the 18 px box (Khaynjo `StationCheckRow` already does). **Exceptions are fine** when a full-row hit would steal another gesture or confuse the screen — e.g. sidebar **pill switch** keeps its own `SidebarToggleHit` so the row can still drag-reorder; ↑↓ on checklist rows stay their own buttons. Prefer the generous hit; carve out an exception only with a short comment why.
 7a. **Settings “Not Responding” on printers place pick = `app_state` deadlock (not wrap/Fill)** — gdb on hung Khaynjo (2026-11-03): main thread `futex_do_wait` / `Mutex::lock` on `app_state::STATE` inside `set_status_line_only` ← `set_status` ← Bill/kitchen place tap. Cause: `self.set_status(cx, app_state().lock().unwrap().t(...))` — temporary `MutexGuard` lives for the whole statement, so `set_status` locks again on the same thread and never returns. Low CPU, not turtle spam. **Rule:** never pass `app_state().lock()…` into a function that locks `app_state`. Use `app_t("key")` or `{ let st = app_state().lock().unwrap(); … }` first. Cursor rule: `.cursor/rules/app-state-lock.mdc`. Do not “fix” this hang by swapping button faces.
+7d. **Bottom-nav footer: scrollbar flush, chips not cropped (2026-11-04)** — Phone chrome `bottom_nav` is a Fit `SolidView` + `ScrollXView` (`bottom_nav_scroll`) + overlay ‹ ›. Makepad paints the X bar **over** the bottom `bar_size` of the scroll view (it does not grow the Fit height). Contract (both apps; Cursor rule `.cursor/rules/bottom-nav-footer.mdc`):
+   - **`bottom_nav.padding.bottom` = 0** in DSL. `lift_footer_above_system_bar` may set it to **safe-area inset only** (0 on desktop). Any extra bottom pad sits *under* the scrollbar and reads as a dead strip below the bar.
+   - **Strip inside the scroll view** keeps **bottom pad ≥ `bar_size`** (today 8 with `bar_size` 4) so the bar’s lane is empty maroon/navy under the chips — zeroing that pad pins chips/‹ › to the window edge (looks sunk/cropped).
+   - **`lift_footer` must only write `padding.bottom`.** Writing `padding.top` too made the Fit footer taller than its shell slot; the parent clipped the bottom (chips/‹ › sunk, empty chrome above).
+   - Paint the footer X bar **dark on the footer colour** (not stock light handle) so the floor does not read as a cream strip. Keep the bar (do not “fix” by `bar_size: 0` while chevrons exist — the bar is the bottommost chrome).
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return. **Pair finish:** `client_pair` HTTP stays on a worker; applying the sync snapshot (`net::apply_snapshot`) must also stay off the UI thread (`LanOnce::PairApplied`) — a busy shop’s SQLite replace froze Android for seconds after “Pair now”. **Soft keyboard on ClientPair / Lock:** do not run a full `sync_chrome` (locale + Settings SQL) while a text field holds focus — that rebuild hid the IME; digits still go into the field, Pair/Unlock triggers a real sync. **Server pairing digits** in Settings (`pairing_code_value`) are a selectable `WrapLabel` (display/copy only — use **Copy pairing code**); the Client types into `client_code_input` (`FieldInput`, `is_numeric_only`).
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 9. **Nav hid peers but Day book still showed them (Waiter)** — Chrome used `nav_tab_permitted`; unlock always opened `Screen::Books` and hub rows / TODAY money stayed visible (Khaynjo 2026-11-04). **Rule:** unlock → `unlocked_home_from`; Day book hub slots + money accordions use the same caps as nav. Full table: § Staff rights vs chrome below.
@@ -239,7 +244,7 @@ ActionStack{ New item StackSecondaryBtn; Add rate StackPrimaryBtn }
 Implemented in `pointer_nav_drag` / `nav_drop_slot` / `nav_drag_autoscroll` (`main.rs`). Behaviour contract: tap = navigate; press on a tab + move = drag (ghost chip follows, drop target wears the active face, release swaps and persists); press on whitespace = scroll; hold a dragged tab at a bar edge = auto-scroll. Mouse (desktop) and touch (`TouchUpdate` on Android) share the same press/move/release path — phones never get MouseDown. This works today — do not “simplify” the pieces below; each one is load-bearing.
 
 1. **Slots are positions.** `paint_nav_tabs` paints slot N with `nav_order[N]`; the order lives in books meta `ui_nav_order` (`Store::nav_order_csv` / `set_nav_order_csv`). A swap exchanges two slots and re-saves. Never hard-code tab→slot.
-2. **Spatial gesture split only.** The bars keep whitespace lanes around the tabs (padding inside the scroll view: bottom bar 12px top/bottom/ends + 6px gaps; rail 12px sides). The pickup hit test (`nav_slot_at`, pad 0) must stay exact — any padding eats the lane and lane swipes start drags instead (observed: a 5px pad turned an above-chip swipe into a swap). Drop targeting may pad (2×5px). Do not reintroduce direction- or timing-based gesture decisions (“sideways = scroll”, hold-to-pick-up timers): the natural sideways drag then never picks up, which reads as “drag is disabled”, and timing misfires on laggy remote input.
+2. **Spatial gesture split only.** The bars keep whitespace lanes around the tabs (padding **inside** the scroll strip — not under the X scrollbar; see bug **7d**). Bottom bar today: end pad ≥ 46 (chevron clear), top ~6, bottom ~8 (≥ `bar_size`), chip gaps ~16; rail ~12px sides. The pickup hit test (`nav_slot_at`, pad 0) must stay exact — any *extra* padding on the chip itself eats the lane and lane swipes start drags instead (observed: a 5px pad turned an above-chip swipe into a swap). Drop targeting may pad (2×5px). Do not reintroduce direction- or timing-based gesture decisions (“sideways = scroll”, hold-to-pick-up timers): the natural sideways drag then never picks up, which reads as “drag is disabled”, and timing misfires on laggy remote input.
 3. **Once picked up, the drag owns the gesture.** `handle_event` calls `pointer_nav_drag` before `ui.handle_event`; past the 10px pickup threshold it consumes moves/ups so the bar's own scroll view cannot scroll the drop target away mid-drag. The release is consumed too, so no click follows; `nav_suppress_click` is cleared on every MouseDown.
 4. **Frozen content rects for hit tests during a drag.** At pickup, capture every slot's rect + the bar's scroll offset into `NavDrag.rects` (content coordinates). The drop target comes from `nav_drop_slot`: the frozen rect containing `pointer + live scroll`. Never hit-test live `area().rect()` mid-drag — during edge auto-scroll the areas lag the scrolling content (observed: drop target frozen on the pre-scroll tab across 107 frames / 971px of scrolling, and the drop swapped the wrong pair). The ghost origin likewise comes from the pickup-time rect.
 5. **The ghost lives in a Modal** (`nav_drag_modal`, transparent backdrop, overlay content). As a plain sibling it paints under the page scroll views — visible over the rail, clipped/invisible over the page and in bottom-bar mode.
@@ -668,13 +673,41 @@ per app (`lan_ws.rs` / `net.rs` / `phone.rs`).
 | `POST /login` | paired device | staff PIN checked **on the server** → session |
 | `POST /sale` `/settle` `/undo` `/void` `/refund` `/amend` | signed-in device | money writes, done as the signed-in person |
 | `POST /kot` `/running` `/kot_advance` `/table_billing` (Khaynjo) | signed-in device | kitchen and table actions |
+| `POST /staff_pin` `/staff_password` | signed-in device | change own credentials on the Server's books |
+| `POST /books` | signed-in device | person-level shop writes (`BooksOp` — catalogue, staff hire, day close, stock, parties, settings meta, …); Client asks, Server applies |
+
+**Person vs device (do not regress)**
+
+```text
+Person + capabilities  →  what they see and may start
+Server                 →  sole SQLite writer (Client asks over LAN)
+Device exceptions      →  only this machine’s OS/host concerns
+```
+
+Chrome and hubs follow the signed-in **person** (`NavCaps` / rights) — including
+Inventory, Branches, Team hire, Settings shop rows, day close — even when the
+device is Client Mode. Do **not** hide those from an Owner (or other capable
+person) just because `DeviceRole::Client`, and do **not** snack “on the shop
+device” for person-authorized books work.
+
+Person-level books writes go through `AppState::books_op` → on Server,
+`Store::apply_books_op`; on Client, `lan_job("/books", BooksOp, …)`. Sell/floor
+paths stay on their existing routes (`/sale`, `/kot`, `/running`, …). Own PIN /
+password stay on `/staff_pin` / `/staff_password`.
+
+**Host-only exceptions** (`require_server_host` — this *machine* is the Server,
+or this Client’s own pairing link): allow/stop extra tills, pairing code,
+forget devices on this Server, firewall, autostart, choose backup folder path,
+restore a backup from a local file path, local printer discovery. A Client’s
+Find server / Pair / Forget *this* till’s link stays on that Client.
 
 **Rules that keep it safe to run all day**
 
 - **Server is the sole writer.** A device's tables are a sync cache the next
   snapshot overwrites; `Store::assert_server_writer` refuses local writes on a
-  client, so no UI path can bypass it. The `*_from_sync` writers skip the
-  check — that is the server's own data arriving.
+  client, so no UI path can bypass it. Clients send `BooksOp` / sale / KOT
+  writes to the Server instead. The `*_from_sync` writers skip the check —
+  that is the server's own data arriving.
 - **Each write once, and whole.** A device's write runs as **one
   transaction** (`BEGIN IMMEDIATE`, `Store::begin`), the reply record per
   `X-Kumkaj-Request` included: a retry after a lost reply — or after a
@@ -922,6 +955,10 @@ Makepad visual traps found this way (do not reintroduce):
     Chevrons **overlay** the strip (~46px): bottom-nav content end padding must
     be ≥ that width, and chevron clicks **snap to the next tab** (or step ≈½ the
     clear viewport) — a 70% viewport jump skipped tabs on phones (2026-11).
+    **Phone `bottom_nav` floor (bug 7d):** X scrollbar is the bottommost chrome
+    (`bottom_nav.padding.bottom` 0 / safe-area only); strip bottom pad ≥
+    `bar_size` so chips are not under the overlaid bar; `lift_footer` writes
+    bottom only; bar colour matches the footer (not stock cream).
 17. **Count every list a sync carries against months of data.** Khaynjo's
     open kitchen tickets were never closed by a kitchen that cooks from the
     paper KOT, so every tablet's sync grew to 3 MB at 9,000 bills (it is
@@ -997,7 +1034,9 @@ Makepad visual traps found this way (do not reintroduce):
     that way; at the edge the page/desk takes over (DEV §13). Every
     `ScrollYView` keeps **right padding 16** so content never sits flush on
     the vertical scrollbar; desk `ScrollX` keeps **bottom padding** clear of
-    the horizontal bar.
+    the horizontal bar (same idea as phone `bottom_nav` strip bottom ≥
+    `bar_size` — bug **7d**: pad is *inside* the scroll content, never under
+    the bar via the SolidView’s `padding.bottom`).
     **Floor Area whitespace (Khaynjo):** the gap under Columns and the pads
     around tiles must sit **inside** `area_scroll` (`FloorList` Item) with
     `mouse_capture_overload` + `axis_lock` — parent `spacing` between
@@ -1097,7 +1136,7 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
   is no session. `snack::classify` treats `"wrong"` as Error so “Wrong PIN…” /
   “Wrong pairing code…” actually open the bar (they used to classify as Info and
   never show while locked)
-- More → **Team**: Owner hires by **job** (preset) + optional screen/rights tweaks; copy-from-person; **every signed-in person** updates their own PIN (Settings → My PIN / Team peer — not Owner-only). Client tills send PIN changes to the Server (`/staff_pin`).
+- More → **Team**: Owner hires by **job** (preset) + optional screen/rights tweaks; copy-from-person; **every signed-in person** updates their own PIN (Settings → My PIN / Team peer — not Owner-only). Client tills send PIN changes to the Server (`/staff_pin`). Shop admin from a Client (hire, day close, catalogue, …) uses `POST /books` (`BooksOp`) — same person rights, Server writes.
 - Sale **created_by** is set on finalize and never rewritten on amend
 
 ### Staff rights vs chrome (do not regress)
@@ -1119,14 +1158,16 @@ chrome peer — never “nav only.”
 | Day book hub rows (Sell/Buy/Day close/Reports/Parties) | Same rights as those peers — hide the **slot** | `books_*_slot` visibility in paint/chrome sync |
 | TODAY / BILLS / bank accordions + header today bar | Owner or Sales only | `session_may_see_today` → `sync_books_sections` / `today_bar` |
 | Settings chrome | Any signed-in person (`can_open_settings_shell`) — shop rows need `can_access_settings`; Waiter sees **My PIN** only | Settings hub + Team |
-| Team hire/edit | `can_manage_team` — others see only Change my PIN | `team_admin_block` |
-| Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` |
+| Team hire/edit | `can_manage_team` — others see only Change my PIN (works on Client via `/books`) | `team_admin_block` |
+| Inventory / Branches | Person caps only — **not** `!is_client` | `nav_tab_permitted` |
+| Firewall / pairing / extra tills / autostart | Server **host** + Owner | `is_shop && is_owner` chrome |
+| Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` / `books_op` |
 
 **Job-first hire:** pick Waiter / Counter / Kitchen / Manager (or copy a person); optional “what they can open” + money rights. Do not bury self-service (own PIN) behind Owner-only screens.
 
 **Do not:** hard-code `Screen::Books` after unlock; leave hub `HubDestBtn`s
 visible “because Books is the home screen”; show money figures to Settle-denied
-waiters; gate only the rail and assume the page is fine; hide Settings entirely for staff who still need My PIN.
+waiters; gate only the rail and assume the page is fine; hide Settings entirely for staff who still need My PIN; demote capable people on Client Mode for shop books (use `/books` instead).
 
 **Smoke:** unlock as Waiter (Floor + Order + Kitchen, no Sales) → home is
 Floor (or Order), not Day book; Day book must not appear in nav; if somehow

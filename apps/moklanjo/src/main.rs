@@ -11,15 +11,15 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_moklanjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images, local_servers,
-    locale, menu_images, net, notify, phone, precise, print_share, rates, snack, startup, store,
-    suggest, thumbs,
+    books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images,
+    local_servers, locale, menu_images, net, notify, phone, precise, print_share, rates, snack,
+    startup, store, suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
-    booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images, local_servers,
-    locale, menu_images, net, notify, phone, precise, print_share, rates, snack, startup, store,
-    suggest, thumbs, uninstall_wipe,
+    books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images,
+    local_servers, locale, menu_images, net, notify, phone, precise, print_share, rates, snack,
+    startup, store, suggest, thumbs, uninstall_wipe,
 };
 use snack::SnackKind;
 
@@ -27,6 +27,7 @@ use domain::{
     AttachmentEntity, Cart, Customer, Money, MoneyLane, MoneyMoveKind, PayMethod, Product, Sale,
     SaleRevision, StaffFeatures, StaffMember, StaffRole, new_id,
 };
+use books_op::BooksOp;
 use fiscal::{FiscalSettings, TaxPricing};
 use local_servers::LocalServerInfo;
 use locale::{CURRENCIES, LANGUAGES, LanguageSource, LocaleSettings};

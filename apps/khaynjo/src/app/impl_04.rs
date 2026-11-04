@@ -1097,14 +1097,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// Settings → Bill format: stamp or static payment QR image.
     fn pick_print_brand_image(&mut self, cx: &mut Cx, id: LiveId, title: &str) {
-        {
-            let st = app_state().lock().unwrap();
-            if let Err(e) = st.require_server_role("Change the bill format") {
-                drop(st);
-                self.set_status(cx, e);
-                return;
-            }
-        }
         let dialog = FileDialog::new()
             .set_title(title.into())
             .add_filter(
@@ -1257,19 +1249,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     // Settings (set_screen, not go_with) keeps the section.
                     st.settings_panel = None;
                 }
-                if st.device_role == DeviceRole::Client
-                    && matches!(
-                        screen,
-                        Screen::Menu
-                            | Screen::Inventory
-                            | Screen::Branches
-                            | Screen::Team
-                            | Screen::Settings
-                            | Screen::SidebarSettings
-                    )
-                {
-                    st.status = "Read-only on this extra till — change it on the shop device".into();
-                }
+                // Person caps drive these screens on a Client till too —
+                // shop writes go over `/books`. Do not demote capable people.
                 // Order desk: always show the Server ticket for the open table
                 // (Floor nav round-trip must not leave a stale local cart).
                 if screen == Screen::Pos

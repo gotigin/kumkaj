@@ -241,7 +241,7 @@ pub enum OpsFacet {
 }
 
 pub fn advance_awb(
-    store: &mut Store,
+    store: &Store,
     awb: &str,
     status: TrackingStatus,
     note: &str,
@@ -252,7 +252,7 @@ pub fn advance_awb(
 
 /// Advance tracking; optional POD photo → WebP attachment on the sale; id in `pod_ref`.
 pub fn advance_awb_with_pod(
-    store: &mut Store,
+    store: &Store,
     awb: &str,
     status: TrackingStatus,
     note: &str,
@@ -321,7 +321,7 @@ pub fn print_latest_run_sheet(store: &Store) -> Result<String, String> {
 
 /// Failed delivery (NDR). `reason` from note or NDR chip; optional YYYY-MM-DD in note after `|`.
 pub fn record_failed_delivery(
-    store: &mut Store,
+    store: &Store,
     awb: &str,
     reason: &str,
     next_attempt_date: &str,
@@ -333,7 +333,7 @@ pub fn record_failed_delivery(
 }
 
 pub fn reattempt_awb(
-    store: &mut Store,
+    store: &Store,
     awb: &str,
     actor: &StaffMember,
 ) -> Result<String, String> {
@@ -343,7 +343,7 @@ pub fn reattempt_awb(
 }
 
 pub fn settle_rider_cod_line(
-    store: &mut Store,
+    store: &Store,
     rider_name: &str,
     handed_in_text: &str,
     actor: &StaffMember,
@@ -380,7 +380,7 @@ pub fn settle_rider_cod_line(
 
 /// Dispatch all currently booked AWBs (limit) to a rider by name.
 pub fn dispatch_booked_to_rider(
-    store: &mut Store,
+    store: &Store,
     rider_name: &str,
     note: &str,
     actor: &StaffMember,
@@ -419,7 +419,7 @@ pub fn dispatch_booked_to_rider(
 
 /// Hand booked AWBs to a carrier party by name.
 pub fn handover_booked_to_carrier(
-    store: &mut Store,
+    store: &Store,
     carrier_name: &str,
     note: &str,
     actor: &StaffMember,
@@ -471,7 +471,7 @@ pub fn collect_cod_for_awb(store: &Store, awb: &str) -> Result<String, String> {
     ))
 }
 
-pub fn remit_collected_for_party(store: &mut Store, party_name: &str) -> Result<String, String> {
+pub fn remit_collected_for_party(store: &Store, party_name: &str) -> Result<String, String> {
     let party_name = party_name.trim();
     if party_name.is_empty() {
         return Err("Type the consignor party name".into());
@@ -510,7 +510,7 @@ pub fn add_rider_line(
 }
 
 pub fn period_bill_party(
-    store: &mut Store,
+    store: &Store,
     party_name: &str,
     actor: &StaffMember,
 ) -> Result<String, String> {

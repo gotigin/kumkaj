@@ -4,28 +4,16 @@ impl App {
             let code = self.ui.text_input(cx, ids!(country_code_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change the country pack")?;
                 let actor = st.actor()?;
                 if !actor.is_owner() {
                     return Err("Only the Owner can change the country pack".into());
                 }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let settings = store.apply_country_pack(&code)?;
-                store.audit(
-                    &actor,
-                    "fiscal.country",
-                    &format!(
-                        "{} {} {}",
-                        settings.country_code,
-                        settings.profile().tax_system.as_str(),
-                        settings.tax_pricing.as_str()
-                    ),
-                )?;
-                let name = settings.profile().name_en;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::ApplyCountry {
+                    code: code.trim().to_string(),
+                })?;
                 st.country_browse.clear();
-                st.status = format!("{name} pack applied — check rates on Items");
-                Ok(name.to_string())
+                st.status = msg.clone();
+                Ok(msg)
             })();
             match result {
                 Ok(_) => self
@@ -51,15 +39,16 @@ impl App {
             if self.choice_chip_clicked(cx, actions, idle, active) {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change tax pricing")?;
                     let actor = st.actor()?;
                     if !actor.is_owner() {
                         return Err("Only the Owner can change tax pricing".into());
                     }
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.set_tax_pricing(pricing)?;
-                    st.reload_all()?;
-                    st.status = pricing.label_for(st.fiscal.tax_label());
+                    let msg = st.books_op(BooksOp::SetTaxPricing { pricing })?;
+                    st.status = if st.device_role == DeviceRole::Client {
+                        msg
+                    } else {
+                        pricing.label_for(st.fiscal.tax_label())
+                    };
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -73,35 +62,16 @@ impl App {
             let service_text = self.ui.text_input(cx, ids!(service_bps_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set the business id")?;
                 let actor = st.actor()?;
                 if !actor.is_owner() {
                     return Err("Only the Owner can set the business id".into());
                 }
                 let service_bps = locale::parse_percent_bps(&service_text)?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_business_tax_id(&id_text)?;
-                store.set_service_charge_bps(service_bps)?;
-                st.reload_all()?;
-                let id_status = if st.fiscal.business_tax_id.is_empty() {
-                    format!("{} cleared", st.fiscal.business_id_label)
-                } else {
-                    format!(
-                        "{} saved — it prints on every bill",
-                        st.fiscal.business_id_label
-                    )
-                };
-                st.status = if st.fiscal.service_charge_bps > 0 {
-                    format!(
-                        "{id_status} · service {}% added to every bill",
-                        locale::format_percent_bps(
-                            st.fiscal.service_charge_bps,
-                            st.fiscal.decimal_sep()
-                        )
-                    )
-                } else {
-                    id_status
-                };
+                let msg = st.books_op(BooksOp::SetFiscal {
+                    business_tax_id: id_text,
+                    service_bps,
+                })?;
+                st.status = msg;
                 Ok(())
             })();
             if let Err(e) = result {

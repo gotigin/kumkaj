@@ -1305,7 +1305,6 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     fn use_shelf_dish(&mut self, cx: &mut Cx, dish: &menu_images::ShelfDish) {
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Add items")?;
             let actor = st.actor()?;
             if !actor.role.can_manage_menu() {
                 return Err("Not allowed to manage items".into());
@@ -1359,7 +1358,6 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     fn remove_kitchen_station(&mut self, cx: &mut Cx, typed: &str) -> Result<String, String> {
         let _ = cx;
         let mut st = app_state().lock().unwrap();
-        st.require_server_role("Remove kitchen stations")?;
         let needle = typed.trim().to_lowercase();
         if needle.is_empty() {
             return Err(st.t("station_remove_ph"));
@@ -1370,27 +1368,30 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .find(|s| s.name.trim().to_lowercase() == needle || s.id == typed.trim())
             .map(|s| s.id.clone())
             .ok_or_else(|| "Station not found".to_string())?;
-        let name = {
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.remove_station(&id)?
-        };
-        st.stations = st
-            .store
-            .as_ref()
-            .map(|s| s.list_stations().unwrap_or_default())
-            .unwrap_or_default();
-        st.printer_draft.remove_station_route(&id);
-        if let Some(base) = st.printers_base() {
-            let _ = print_share::save_device_printers(&base, &st.printer_draft);
+        let name = st
+            .stations
+            .iter()
+            .find(|s| s.id == id)
+            .map(|s| s.name.clone())
+            .unwrap_or_else(|| id.clone());
+        let msg = st.books_op(BooksOp::RemoveStation { id: id.clone() })?;
+        if st.device_role != DeviceRole::Client {
+            st.printer_draft.remove_station_route(&id);
+            if let Some(base) = st.printers_base() {
+                let _ = print_share::save_device_printers(&base, &st.printer_draft);
+            }
         }
-        Ok(st.t("station_removed").replace("{name}", &name))
+        Ok(if st.device_role == DeviceRole::Client {
+            msg
+        } else {
+            st.t("station_removed").replace("{name}", &name)
+        })
     }
 
     /// Switch this device's active branch (list pick or typed name).
     fn switch_active_branch(&mut self, cx: &mut Cx, wanted: &str) -> Result<String, String> {
         let _ = cx;
         let mut st = app_state().lock().unwrap();
-        st.require_server_role("Switch branch")?;
         let actor = st.actor()?;
         if !actor.can_access_branches() && !actor.is_owner() {
             return Err("Only Owner can switch branch".into());
@@ -1399,23 +1400,31 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         if needle.is_empty() {
             return Err("Type the branch name to switch to".into());
         }
-        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-        let branch = store
-            .list_branches()?
-            .into_iter()
-            .find(|b| {
-                b.name.to_lowercase() == needle
-                    || b.code.to_lowercase() == needle
-                    || b.name.to_lowercase().contains(&needle)
-            })
-            .ok_or_else(|| format!("No branch matches \"{}\"", wanted.trim()))?;
-        store.set_active_branch_id(&branch.id)?;
+        let (id, label) = {
+            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+            let branch = store
+                .list_branches()?
+                .into_iter()
+                .find(|b| {
+                    b.name.to_lowercase() == needle
+                        || b.code.to_lowercase() == needle
+                        || b.name.to_lowercase().contains(&needle)
+                })
+                .ok_or_else(|| format!("No branch matches \"{}\"", wanted.trim()))?;
+            (branch.id.clone(), branch.label())
+        };
+        let msg = st.books_op(BooksOp::SwitchBranch { id })?;
         st.cart.clear();
         st.open_cart_line = None;
         st.selected_table_id = None;
-        st.reload_all()?;
-        st.refresh_branches_text()?;
-        Ok(format!("Now selling for {}", branch.label()))
+        if st.device_role != DeviceRole::Client {
+            st.refresh_branches_text()?;
+        }
+        Ok(if st.device_role == DeviceRole::Client {
+            msg
+        } else {
+            format!("Now selling for {label}")
+        })
     }
 
     /// Order desk: Don't use on "Kitchen (no station)" — hold those lines

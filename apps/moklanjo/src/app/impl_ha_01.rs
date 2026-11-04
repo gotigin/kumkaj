@@ -160,7 +160,7 @@ impl App {
                     FileDialogAction::FolderSelected(dir) => {
                         let result = (|| -> Result<String, String> {
                             let st = app_state().lock().unwrap();
-                            st.require_server_role("Choose where backups go")?;
+                            st.require_server_host("Choose where backups go")?;
                             let store = st.store.as_ref().ok_or("No store")?;
                             store.set_backup_copy_dir(Some(dir))?;
                             Ok(st
@@ -342,35 +342,60 @@ impl App {
                             } else {
                                 "carrier_bill"
                             };
-                            let job = (|| -> Result<(PathBuf, PathBuf, &'static str), String> {
-                                let st = app_state().lock().unwrap();
-                                st.require_server_role("Import from CSV")?;
-                                let db = st
-                                    .store
-                                    .as_ref()
-                                    .ok_or_else(|| "No store".to_string())?
-                                    .db_path()
-                                    .to_path_buf();
-                                Ok((db, path.clone(), kind))
-                            })();
-                            match job {
-                                Ok((db, path, kind)) => {
-                                    self.set_status(
-                                        cx,
-                                        match kind {
-                                            "parties" => "Importing parties…",
-                                            "pincodes" => "Importing pincodes…",
-                                            "carrier_bill" => "Importing carrier bill…",
-                                            _ => "Importing items…",
-                                        },
-                                    );
-                                    csv_import_job(db, path, kind);
-                                    self.paint_submit_busy_chrome(cx);
-                                    // Status only — sync_chrome would hit SQLite while the worker writes.
+                            let is_client =
+                                app_state().lock().unwrap().device_role == DeviceRole::Client;
+                            if is_client {
+                                let sent = (|| -> Result<String, String> {
+                                    let bytes = std::fs::read(path).map_err(|e| {
+                                        format!("Could not read the file: {e}")
+                                    })?;
+                                    let filename = path
+                                        .file_name()
+                                        .and_then(|n| n.to_str())
+                                        .unwrap_or("import.csv")
+                                        .to_string();
+                                    let mut st = app_state().lock().unwrap();
+                                    st.books_op(BooksOp::ImportCsv {
+                                        kind: kind.to_string(),
+                                        filename,
+                                        bytes,
+                                    })
+                                })();
+                                match sent {
+                                    Ok(msg) => self.set_status(cx, msg),
+                                    Err(e) => self.set_status(cx, e),
                                 }
-                                Err(e) => {
-                                    self.set_status(cx, e);
-                                    self.sync_chrome(cx);
+                                self.sync_chrome(cx);
+                            } else {
+                                let job = (|| -> Result<(PathBuf, PathBuf, &'static str), String> {
+                                    let st = app_state().lock().unwrap();
+                                    let db = st
+                                        .store
+                                        .as_ref()
+                                        .ok_or_else(|| "No store".to_string())?
+                                        .db_path()
+                                        .to_path_buf();
+                                    Ok((db, path.clone(), kind))
+                                })();
+                                match job {
+                                    Ok((db, path, kind)) => {
+                                        self.set_status(
+                                            cx,
+                                            match kind {
+                                                "parties" => "Importing parties…",
+                                                "pincodes" => "Importing pincodes…",
+                                                "carrier_bill" => "Importing carrier bill…",
+                                                _ => "Importing items…",
+                                            },
+                                        );
+                                        csv_import_job(db, path, kind);
+                                        self.paint_submit_busy_chrome(cx);
+                                        // Status only — sync_chrome would hit SQLite while the worker writes.
+                                    }
+                                    Err(e) => {
+                                        self.set_status(cx, e);
+                                        self.sync_chrome(cx);
+                                    }
                                 }
                             }
                         }
@@ -760,8 +785,6 @@ impl App {
             let note = self.ui.text_input(cx, ids!(buy_note_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Record purchases")?;
-                let actor = st.actor()?;
                 let on_account = st.buy_on_account;
                 let qty_milli = parse_qty_to_milli(&qty_text)?;
                 let product = st.find_product_by_name(&name)?;
@@ -770,36 +793,26 @@ impl App {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let mut party_id = String::new();
-                if on_account || !supplier.trim().is_empty() {
-                    if on_account {
-                        let kind = if party_kind.trim().is_empty() {
-                            "Supplier"
-                        } else {
-                            party_kind.trim()
-                        };
-                        let party = store.add_customer_kind(supplier.trim(), "", kind)?;
-                        party_id = party.id;
+                let party_kind_send = if on_account {
+                    if party_kind.trim().is_empty() {
+                        "Supplier".into()
+                    } else {
+                        party_kind.trim().to_string()
                     }
-                }
-                let purchase = store.record_purchase_ex(
-                    supplier.trim(),
-                    &party_id,
+                } else {
+                    String::new()
+                };
+                let msg = st.books_op(BooksOp::RecordPurchase {
+                    supplier: supplier.trim().to_string(),
+                    party_kind: party_kind_send,
                     on_account,
-                    &[(product.id.clone(), qty_milli, unit_cost)],
-                    note.trim(),
-                    &actor,
-                )?;
-                st.reload_all()?;
+                    product_id: product.id,
+                    qty_milli,
+                    unit_cost_paise: unit_cost,
+                    note: note.trim().to_string(),
+                })?;
                 let _ = st.refresh_books_overview();
-                let qty_show = domain::format_qty_display(qty_milli, 0, &product.unit_label);
-                Ok(format!(
-                    "Received {qty_show} {} · {}{}",
-                    product.name,
-                    st.money(Money(purchase.total_paise)),
-                    if on_account { " · on account" } else { "" }
-                ))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -819,26 +832,26 @@ impl App {
             let part2_text = self.ui.text_input(cx, ids!(buy_exp_part2)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if st.device_role == DeviceRole::Client {
-                    return Err("Log expenses on the shop device — this is an extra till".into());
-                }
                 let currency = st.locale.currency.clone();
                 let minor = locale::parse_major_input(&amount_text, &currency)?;
-                let parts = Self::expense_parts(
-                    minor,
-                    &part2_text,
-                    &currency,
-                    st.expense_tender,
-                    st.expense_tender2,
-                )?;
-                let expense_id = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_expense_tenders(minor, "misc", &note, &actor, &parts)?
+                let tender = st.expense_tender;
+                let tender2 = st.expense_tender2;
+                let parts = Self::expense_parts(minor, &part2_text, &currency, tender, tender2)?;
+                let msg = st.books_op(BooksOp::LogExpense {
+                    amount_paise: minor,
+                    note,
+                    category: "misc".into(),
+                    parts,
+                })?;
+                let status = match msg.split_once(books_op::EXPENSE_ID_MARK) {
+                    Some((status, id)) => {
+                        st.selected_expense_id = Some(id.to_string());
+                        status.to_string()
+                    }
+                    None => msg,
                 };
-                st.selected_expense_id = Some(expense_id);
                 let _ = st.refresh_books_overview();
-                st.status = "Expense logged".into();
+                st.status = status;
                 Ok(())
             })();
             if let Err(e) = result {
@@ -858,7 +871,6 @@ impl App {
             let counted_text = self.ui.text_input(cx, ids!(day_close_counted_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Record the day close")?;
                 let actor = st.actor()?;
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to close the day".into());
@@ -868,20 +880,17 @@ impl App {
                     "" => None,
                     other => Some(locale::parse_major_input(other, &currency)?),
                 };
-                let at = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .commit_day_close_with_count(&actor, counted)?;
-                st.refresh_day_close_text()?;
-                Ok(at)
+                let msg = st.books_op(BooksOp::CommitDayClose {
+                    counted_cash_paise: counted,
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_day_close_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Err(e) => self.set_status(cx, e),
-                Ok(at) => {
-                    let shown = at[..at.len().min(19)].replace('T', " ");
-                    self.set_status(cx, format!("Day close recorded at {shown}"));
-                }
+                Ok(msg) => self.set_status(cx, msg),
             }
             self.sync_chrome(cx);
         }
@@ -920,10 +929,11 @@ impl App {
         ) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change language")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                st.locale = store.set_platform_language()?;
+                st.books_op(BooksOp::SetPlatformLanguage)?;
                 st.language_follow_platform = true;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.language = locale::detect_platform_language();
+                }
                 st.save_remembered_language();
                 st.status = st.t("lang_follow_platform");
                 Ok(())
@@ -941,12 +951,14 @@ impl App {
         ) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change language")?;
                 let platform = locale::detect_platform_language();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                // Enter user mode with platform language as the starting pick.
-                st.locale = store.set_user_language(&platform)?;
+                st.books_op(BooksOp::SetUserLanguage {
+                    code: platform.clone(),
+                })?;
                 st.language_follow_platform = false;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.language = platform;
+                }
                 st.save_remembered_language();
                 st.status = st.t("lang_pick_user");
                 Ok(())
@@ -1049,7 +1061,7 @@ impl App {
             // Devices already paired keep working; the old code pairs no more.
             let result = (|| -> Result<String, String> {
                 let st = app_state().lock().unwrap();
-                st.require_server_role("Change the pairing code")?;
+                st.require_server_host("Change the pairing code")?;
                 let actor = st.actor()?;
                 let code = st.store.as_ref().ok_or("No store")?.new_pairing_code(&actor)?;
                 Ok(code)
@@ -1075,7 +1087,7 @@ impl App {
             if let Some(index) = forget {
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Forget a device")?;
+                    st.require_server_host("Forget a device")?;
                     let device = st.lan_devices.get(index).cloned().ok_or("Device gone")?;
                     let actor = st.actor()?;
                     let store = st.store.as_ref().ok_or("No store")?;

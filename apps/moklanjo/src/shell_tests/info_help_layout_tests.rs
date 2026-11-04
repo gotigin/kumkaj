@@ -131,6 +131,12 @@ mod info_help_layout_tests {
         let start = ui
             .find("mod.widgets.InfoHelp = set_type_default()")
             .expect("InfoHelp type default");
-        &ui[start..start + 3200.min(ui.len() - start)]
+        // Through the type-default close — fixed byte windows truncate mid
+        // `trail :=` when the tip_btn shader grows (UTF-8 comments).
+        let end = ui[start..]
+            .find("\n    let InfoHelp =")
+            .map(|i| start + i)
+            .unwrap_or(ui.len());
+        &ui[start..end]
     }
 }

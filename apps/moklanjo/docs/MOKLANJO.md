@@ -278,7 +278,11 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   (Windows/Linux), backs up daily and opens its firewall from Settings.
   Any supported device can be the Server or a client — Windows, Linux or
   Android, in any mix (`docs/LAN_QUICK_START.md` §5). Design and rules:
-  `docs/DEV.md` § LAN Client / Server. *2026-10-26:* printer pool + ordered
+  `docs/DEV.md` § LAN Client / Server. **Person-driven Client (2026-11-04):**
+  Inventory/Branches/Team/shop Settings follow the signed-in person’s
+  caps on an extra till; shop admin writes use `POST /books` (`BooksOp`);
+  host-only remain pairing/firewall/extra tills/autostart/local backup
+  path+restore. *2026-10-26:* printer pool + ordered
   routes per device (Receipt and AWB label; fallback, empty = don't print;
   system name or network ESC/POS; test page), device
   clock checked against the Server, Android backup copies through the

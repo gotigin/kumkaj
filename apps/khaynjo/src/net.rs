@@ -1745,6 +1745,12 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             store.set_own_password(&req.password, actor)?;
             Ok(Reply::done())
         }
+        "/books" => {
+            let op: crate::books_op::BooksOp =
+                serde_json::from_str(body).map_err(|e| format!("books json: {e}"))?;
+            let message = store.apply_books_op(op, actor)?;
+            Ok(Reply::json(serde_json::json!({ "ok": true, "message": message })))
+        }
         _ => Ok(Reply::refuse(404, "not found", "")),
     }
 }
@@ -2357,7 +2363,9 @@ pub fn client_wait(link: &Link, rev: &str, secs: u64) -> Result<String, LanError
 /// Send one write. `request_id` makes a retry safe: the Server answers a
 /// repeat from its record instead of doing it again.
 pub fn client_send(link: &Link, path: &str, body: &str, request_id: &str) -> Result<serde_json::Value, LanError> {
-    let resp = agent(Duration::from_secs(15))
+    // Menu template / CSV imports encode photos and can run for minutes.
+    let wait = if path == "/books" { 15 * 60 } else { 15 };
+    let resp = agent(Duration::from_secs(wait))
         .post(&format!("{}{path}", link.base))
         .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
         .set(HEADER_DEVICE, &link.device)

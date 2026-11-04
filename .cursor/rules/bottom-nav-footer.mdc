@@ -1,0 +1,34 @@
+---
+description: Phone bottom_nav — X scrollbar flush to floor, chips not cropped; lift_footer bottom-only
+globs: apps/**/ui_script.rs, apps/**/app/impl_03.rs
+alwaysApply: false
+---
+
+# Bottom-nav footer floor (do not regress)
+
+Canonical: `docs/DEV.md` bug **7d** and § Native input / sideways strips.
+
+Phone chrome `bottom_nav` (both apps): Fit maroon/navy `SolidView` → overlay tabs + `bottom_nav_scroll` (`ScrollXView`) + ‹ ›. Makepad draws the X bar **over** the bottom `bar_size` of the scroll view.
+
+## Required
+
+```text
+bottom_nav.padding.bottom     = 0 in DSL
+lift_footer_above_system_bar  = safe_area.bottom only (0 on desktop); never touch padding.top
+strip inside ScrollX          bottom pad ≥ bar_size (today 8 with bar_size 4)
+footer scroll_bar_x colours   dark on footer bg (not stock light handle)
+```
+
+- Scrollbar is the **bottommost** chrome — nothing (no DSL pad, no FOOTER_BOTTOM constant) under it.
+- Strip bottom pad is the **bar’s lane** so chips / ‹ › stay clear of the overlay.
+- Duplicate the same contract per app — no shared core.
+
+## Forbidden
+
+```text
+❌ bottom_nav.padding.bottom = 12 (or any pad under the bar) → dead strip below scrollbar
+❌ strip bottom pad 0 → chips/‹ › sunk / cropped on the window edge
+❌ lift_footer writing padding.top (+ bottom) → Fit footer taller than shell slot → bottom clipped
+❌ bar_size: 0 “to remove the gap” while keeping chevrons — keep the bar; fix padding instead
+❌ stock light ScrollX handle on maroon/navy → reads as cream floor strip
+```

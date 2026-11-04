@@ -700,7 +700,8 @@ prices, rates, parties, tables layout, staff, settings). It does **not**
 delete the local server, the database schema, or shop setup. The unlock
 must look like a normal successful login so a coercer is not tipped off.
 Off by default; Owner-only; never required. Shown on Team when unlocked
-as Owner on the Server.
+as Owner — including on a paired Client till (the change is written on
+the Server over LAN).
 
 Sensitive actions such as high discounts, refunds, voids or stock
 corrections should be permission-controlled and recorded with a
@@ -721,6 +722,18 @@ the UI, so a paired terminal or a skipped screen cannot bypass them. Any
 right that reduces money or removes work already done (cancel, void,
 complimentary, discount, edit after print/settle) also **requires a
 reason**. Defaults follow the role preset; the owner edits them.
+
+**Person drives the UI; device only how writes run.** What a signed-in
+person sees and may start follows their capabilities — on the shop
+Server **or** on a paired Client till. The Server remains the sole
+SQLite writer; a Client asks over LAN (`POST /books` for shop admin,
+plus the existing sell/floor routes). Do not hide Inventory, Branches,
+Team hire, Settings shop rows, or day close from a capable person just
+because the device is Client Mode. True **device exceptions** stay
+host-local: extra tills / pairing / firewall / autostart, local backup
+folder and restore paths, printer discovery on this machine, and this
+till’s own pair/forget link. See `docs/DEV.md` § LAN Client / Server
+(Person vs device).
 
 **UI must match rights (do not regress):** chrome peers, Day book (or
 Books) hub jumps, unlock home screen, and money strips/accordions all

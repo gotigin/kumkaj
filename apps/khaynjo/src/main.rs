@@ -11,15 +11,15 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_khaynjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    diag, domain, entity_template, fiscal, locale, local_servers, lan_images, menu_images,
-    menu_templates, net, notify, phone, precise, print_share, schemes, snack, startup, store,
-    suggest, thumbs, upi_qr,
+    books_op, diag, domain, entity_template, fiscal, locale, local_servers, lan_images,
+    menu_images, menu_templates, net, notify, phone, precise, print_share, schemes, snack,
+    startup, store, suggest, thumbs, upi_qr,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_khaynjo::{
-    diag, domain, entity_template, fiscal, locale, local_servers, lan_images, menu_images,
-    menu_templates, net, notify, phone, precise, print_share, schemes, snack, startup, store,
-    suggest, thumbs, uninstall_wipe, upi_qr,
+    books_op, diag, domain, entity_template, fiscal, locale, local_servers, lan_images,
+    menu_images, menu_templates, net, notify, phone, precise, print_share, schemes, snack,
+    startup, store, suggest, thumbs, uninstall_wipe, upi_qr,
 };
 use snack::SnackKind;
 
@@ -31,6 +31,7 @@ use domain::{
 use fiscal::{FiscalSettings, TaxPricing};
 use locale::{LanguageSource, LocaleSettings, CURRENCIES, LANGUAGES};
 use local_servers::LocalServerInfo;
+use books_op::BooksOp;
 use store::{default_backup_path, Store};
 use makepad_widgets::makepad_platform::event::finger::TouchState;
 use makepad_widgets::*;

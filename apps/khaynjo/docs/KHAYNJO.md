@@ -167,10 +167,10 @@ user needs — In / Later, in Khaynjo's own terms:
 | Online delivery channels (aggregators) with payout reconciliation | **Partial** — **Have 2026-10-29** Local drop-file UX (`backups/import_aggregator_orders.json` → Settings → Bill format → Import); Net poll stub off by default; live SaaS **Skipped** (Cloud). Never gates counter | `store_ops` connectors |
 | Guests ordering from a QR at the table | **Have** on Server Wi‑Fi (`GET /t/{table}`); guests on mobile data **Skipped** until Cloud | `net.rs` public LAN |
 | The shop's own language, all day, on every screen | **In** — static UI fully translated in all 29 Kumkaj languages incl. Arabic/Urdu RTL alignment (vision §23) | `locale*.rs` |
-| Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Done 2026-10-27** — Team Floor/Kitchen chips; nav gates `can_access_*` (Books/Buy/DayClose/Reports for money). **2026-11-04:** job-first Team hire; Settings shell always for signed-in (**My PIN**); hire/edit only `can_manage_team`; own PIN on Client via LAN `/staff_pin` | Team; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A; `docs/DEV.md` § Staff rights |
+| Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Done 2026-10-27** — Team Floor/Kitchen chips; nav gates `can_access_*` (Books/Buy/DayClose/Reports for money). **2026-11-04:** job-first Team hire; Settings shell always for signed-in (**My PIN**); hire/edit only `can_manage_team`; own PIN on Client via LAN `/staff_pin`. **Person-driven Client:** Inventory/Branches/Team/shop Settings follow person caps on an extra till too; shop writes use `POST /books` (`BooksOp`); host-only remain pairing/firewall/extra tills/autostart/local backup path+restore | Team; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A; `docs/DEV.md` § Staff rights / LAN |
 | Shop-narrowed pick-lists (units first; same pattern for areas, stations, tax rates, …) | **Done 2026-10-27** — units + areas/stations/tax On/Off in Settings; suggest lists filter | Settings; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §B |
 | Mark a table **Occupied** when guests sit, before any dish is punched | **Done 2026-10-27** — `FloorState::Seated` + seat/free without order | Floor; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §C |
-| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — Owner sets optional PIN on Team (ℹ tip); unlock with it wipes books entries only, keeps schema/config/menu/prices/tables/staff, opens as Owner looking normal — does not delete the local server | Team; `try_duress_unlock` |
+| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — Owner sets optional PIN on Team (ℹ tip); unlock with it wipes books entries only, keeps schema/config/menu/prices/tables/staff, opens as Owner looking normal — does not delete the local server. Owner may set/clear it from a Client till (`BooksOp` → Server) | Team; `try_duress_unlock` |
 | Order desk: Counter payment docked under scrolling cart lines (no Counter/Items chips) | **In (2026-10-27)** | Order desk `pos_ticket` / `counter_dock` |
 
 Sanitized client tracker (must remain covered):
@@ -472,9 +472,12 @@ the first build broke and must not break again:
 - **LAN surface (Server, port 7847 + UDP 7848):** `/kot` (send KOT,
   lines join the table's running order), `/running` (cancel / NC /
   move / merge / print bill — rights checked on the Server, refusals
-  return `{"error": …}`), `/hello` (open: app + restaurant name, for
-  the scan), UDP `KHAYNJO_DISCOVER?` broadcast → `{app, venue, port}`.
-  Snapshots carry `running_orders`.
+  return `{"error": …}`), `/books` (person-level shop writes as typed
+  `BooksOp` — catalogue, staff, day close, settings meta, …),
+  `/staff_pin` / `/staff_password`, `/hello` (open: app + restaurant
+  name, for the scan), UDP `KHAYNJO_DISCOVER?` broadcast →
+  `{app, venue, port}`. Snapshots carry `running_orders`. Person caps
+  drive Client chrome; Server stays sole writer (`docs/DEV.md` § LAN).
 - Floor/Kitchen peers show only when the venue runs tables & kitchen
   (`creates_kot()`); unlock lands on the first peer that person may open
   (Owner/Sales → Day book; Waiter with Floor+Order → Floor) — Day book hub
@@ -483,8 +486,9 @@ the first build broke and must not break again:
 - **Floor tiles are a fixed 280×178** (`FLOOR_TILE_W/H`) — columns
   never shrink them. **Areas are tabs** (`floor_area_strip` + ‹ ›); the
   selected tab’s body has that area’s **Columns** (`ui_floor_columns_by_area`
-  JSON on this device; legacy `ui_floor_columns` is the fallback) — *Fit
-  screen* (0) or ≥ 1. Fit uses the Floor list’s turtle width
+  JSON on this device; legacy `ui_floor_columns` is the fallback) — default
+  **4** when unset (Dine In / Parcel / new areas); *Fit screen* (0) or ≥ 1
+  when chosen. Fit uses the Floor list’s turtle width
   (`floor_columns_for`). Only the selected area’s tables draw; sideways
   viewport columns use `floor_col_window` / `floor_first_col`.
   Columns + tables sit in `floor_area_body` (`spacing: 0`); the visual gap

@@ -2860,9 +2860,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(paired_list))
                 .set_visible(cx, is_shop && is_owner && extra_tills);
-            // Emergency unlock PIN — Owner on the Server books only.
+            // Emergency unlock PIN — the Owner, including on an extra till.
             {
-                let duress_on = is_shop && is_owner;
+                let duress_on = is_owner;
                 let configured = duress_on
                     && app_state()
                         .lock()

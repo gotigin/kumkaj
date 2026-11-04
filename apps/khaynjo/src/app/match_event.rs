@@ -108,7 +108,7 @@ impl MatchEvent for App {
                     FileDialogAction::FolderSelected(dir) => {
                         let result = (|| -> Result<String, String> {
                             let st = app_state().lock().unwrap();
-                            st.require_server_role("Choose where backups go")?;
+                            st.require_server_host("Choose where backups go")?;
                             let store = st.store.as_ref().ok_or("No store")?;
                             store.set_backup_copy_dir(Some(dir))?;
                             Ok(st.t("backup_copy_to").replace("{dir}", &dir.display().to_string()))
@@ -215,14 +215,16 @@ impl MatchEvent for App {
                             match self.materialize_picked_file(cx, path) {
                                 Ok(file) => {
                                     let outcome = (|| -> Result<String, String> {
-                                        let st = app_state().lock().unwrap();
-                                        st.require_server_role("Change the bill format")?;
-                                        let store = st
-                                            .store
-                                            .as_ref()
-                                            .ok_or_else(|| "Storage not ready".to_string())?;
-                                        let _ = store.import_print_stamp(&file)?;
-                                        Ok("Stamp saved for bill faces".to_string())
+                                        let bytes = std::fs::read(&file).map_err(|e| {
+                                            format!("Could not read the stamp: {e}")
+                                        })?;
+                                        let filename = file
+                                            .file_name()
+                                            .and_then(|n| n.to_str())
+                                            .unwrap_or("stamp.webp")
+                                            .to_string();
+                                        let mut st = app_state().lock().unwrap();
+                                        st.books_op(BooksOp::ImportPrintStamp { filename, bytes })
                                     })();
                                     match outcome {
                                         Ok(msg) => {
@@ -244,14 +246,16 @@ impl MatchEvent for App {
                             match self.materialize_picked_file(cx, path) {
                                 Ok(file) => {
                                     let outcome = (|| -> Result<String, String> {
-                                        let st = app_state().lock().unwrap();
-                                        st.require_server_role("Change the bill format")?;
-                                        let store = st
-                                            .store
-                                            .as_ref()
-                                            .ok_or_else(|| "Storage not ready".to_string())?;
-                                        let _ = store.import_payment_qr(&file)?;
-                                        Ok("Payment QR saved for bill faces".to_string())
+                                        let bytes = std::fs::read(&file).map_err(|e| {
+                                            format!("Could not read the payment QR: {e}")
+                                        })?;
+                                        let filename = file
+                                            .file_name()
+                                            .and_then(|n| n.to_str())
+                                            .unwrap_or("payment-qr.webp")
+                                            .to_string();
+                                        let mut st = app_state().lock().unwrap();
+                                        st.books_op(BooksOp::ImportPaymentQr { filename, bytes })
                                     })();
                                     match outcome {
                                         Ok(msg) => {
@@ -286,30 +290,54 @@ impl MatchEvent for App {
                     {
                         if let Some(path) = paths.first() {
                             let parties = *id == live_id!(csv_parties_pick);
-                            let job = (|| -> Result<(PathBuf, PathBuf, bool), String> {
-                                let st = app_state().lock().unwrap();
-                                st.require_server_role("Import from CSV")?;
-                                let db = st
-                                    .store
-                                    .as_ref()
-                                    .ok_or_else(|| "No store".to_string())?
-                                    .db_path()
-                                    .to_path_buf();
-                                Ok((db, path.clone(), parties))
-                            })();
-                            match job {
-                                Ok((db, path, parties)) => {
-                                    self.set_status(
-                                        cx,
-                                        if parties {
-                                            "Importing parties…"
-                                        } else {
-                                            "Importing items…"
-                                        },
-                                    );
-                                    csv_import_job(db, path, parties);
+                            let is_client = app_state().lock().unwrap().device_role
+                                == DeviceRole::Client;
+                            if is_client {
+                                let sent = (|| -> Result<String, String> {
+                                    let bytes = std::fs::read(path).map_err(|e| {
+                                        format!("Could not read the file: {e}")
+                                    })?;
+                                    let filename = path
+                                        .file_name()
+                                        .and_then(|n| n.to_str())
+                                        .unwrap_or("import.csv")
+                                        .to_string();
+                                    let mut st = app_state().lock().unwrap();
+                                    st.books_op(BooksOp::ImportCsv {
+                                        parties,
+                                        filename,
+                                        bytes,
+                                    })
+                                })();
+                                match sent {
+                                    Ok(msg) => self.set_status(cx, msg),
+                                    Err(e) => self.set_status(cx, e),
                                 }
-                                Err(e) => self.set_status(cx, e),
+                            } else {
+                                let job = (|| -> Result<(PathBuf, PathBuf, bool), String> {
+                                    let st = app_state().lock().unwrap();
+                                    let db = st
+                                        .store
+                                        .as_ref()
+                                        .ok_or_else(|| "No store".to_string())?
+                                        .db_path()
+                                        .to_path_buf();
+                                    Ok((db, path.clone(), parties))
+                                })();
+                                match job {
+                                    Ok((db, path, parties)) => {
+                                        self.set_status(
+                                            cx,
+                                            if parties {
+                                                "Importing parties…"
+                                            } else {
+                                                "Importing items…"
+                                            },
+                                        );
+                                        csv_import_job(db, path, parties);
+                                    }
+                                    Err(e) => self.set_status(cx, e),
+                                }
                             }
                             self.sync_chrome(cx);
                         }
@@ -663,57 +691,60 @@ impl MatchEvent for App {
             let unit_text = self.ui.text_input(cx, ids!(buy_unit_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Record purchases")?;
                 let actor = st.actor()?;
+                if !actor.can_access_inventory() && !actor.is_owner() {
+                    return Err("Not allowed to record purchases".into());
+                }
                 let on_account = st.buy_on_account;
                 let qty_milli = parse_qty_to_milli(&qty_text)?;
                 // What the kitchen buys: an item it already stocks, or a new
                 // raw material by this name — never one of its own dishes.
-                let product = st.stock_item_or_new(&name, &unit_text)?;
+                let existing = st.find_stock_item(&name)?;
                 let currency = st.locale.currency.clone();
                 let unit_cost = match cost_text.trim() {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let (product_id, new_item_name, new_item_unit) = match existing {
+                    Some(p) => (p.id, String::new(), String::new()),
+                    None => (
+                        String::new(),
+                        name.trim().to_string(),
+                        unit_text.trim().to_string(),
+                    ),
+                };
                 let mut party_id = String::new();
-                if on_account || !supplier.trim().is_empty() {
-                    if on_account {
-                        let kind = if party_kind.trim().is_empty() {
-                            "Supplier"
-                        } else {
-                            party_kind.trim()
-                        };
-                        // The supplier already on the books (picked or typed
-                        // the same) — a new party only for a new name.
-                        let existing = st
-                            .customers
-                            .iter()
-                            .find(|c| c.active && c.name.trim().eq_ignore_ascii_case(supplier.trim()))
-                            .map(|c| c.id.clone());
-                        party_id = match existing {
-                            Some(id) => id,
-                            None => store.add_customer_kind(supplier.trim(), "", kind)?.id,
-                        };
-                    }
+                let mut party_name = String::new();
+                let mut party_kind_send = String::new();
+                if on_account {
+                    party_kind_send = if party_kind.trim().is_empty() {
+                        "Supplier".into()
+                    } else {
+                        party_kind.trim().into()
+                    };
+                    party_name = supplier.trim().to_string();
+                    party_id = st
+                        .customers
+                        .iter()
+                        .find(|c| c.active && c.name.trim().eq_ignore_ascii_case(supplier.trim()))
+                        .map(|c| c.id.clone())
+                        .unwrap_or_default();
                 }
-                let purchase = store.record_purchase_ex(
-                    supplier.trim(),
-                    &party_id,
+                let msg = st.books_op(BooksOp::RecordPurchase {
+                    supplier: supplier.trim().to_string(),
+                    party_id,
+                    party_name,
+                    party_kind: party_kind_send,
                     on_account,
-                    &[(product.id.clone(), qty_milli, unit_cost)],
-                    note.trim(),
-                    &actor,
-                )?;
-                st.reload_all()?;
+                    product_id,
+                    new_item_name,
+                    new_item_unit,
+                    qty_milli,
+                    unit_cost_paise: unit_cost,
+                    note: note.trim().to_string(),
+                })?;
                 let _ = st.refresh_books_overview();
-                let qty_show = domain::format_qty_display(qty_milli, 0, &product.unit_label);
-                Ok(format!(
-                    "Received {qty_show} {} · {}{}",
-                    product.name,
-                    st.money(Money(purchase.total_paise)),
-                    if on_account { " · on account" } else { "" }
-                ))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -794,21 +825,28 @@ impl MatchEvent for App {
             let note = self.ui.text_input(cx, ids!(buy_expense_note)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if st.device_role == DeviceRole::Client {
-                    return Err("Log expenses on the shop device — this is an extra till".into());
-                }
+                let _actor = st.actor()?;
                 let currency = st.locale.currency.clone();
                 let minor = locale::parse_major_input(&amount_text, &currency)?;
                 let parts = settle_pay_parts(minor, &st.pay_parts, &currency)?;
-                let expense_id = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_expense_tenders(minor, "misc", &note, &actor, &parts)?
+                let msg = st.books_op(BooksOp::LogExpense {
+                    amount_paise: minor,
+                    note: note.clone(),
+                    category: "misc".into(),
+                    parts,
+                })?;
+                let status = match msg.split_once(books_op::EXPENSE_ID_MARK) {
+                    Some((status, id)) => {
+                        if st.device_role != DeviceRole::Client {
+                            st.selected_expense_id = Some(id.to_string());
+                            let _ = st.refresh_books_overview();
+                        }
+                        status.to_string()
+                    }
+                    None => msg,
                 };
-                st.selected_expense_id = Some(expense_id);
                 st.pay_parts = vec![PayPart::default()];
-                let _ = st.refresh_books_overview();
-                st.status = "Expense saved".into();
+                st.status = status;
                 Ok(())
             })();
             if let Err(e) = result {
@@ -823,15 +861,10 @@ impl MatchEvent for App {
             let text = self.ui.text_input(cx, ids!(opening_float_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set the opening cash")?;
-                let actor = st.actor()?;
                 let paise = locale::parse_major_input(text.trim(), &st.locale.currency)?;
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_opening_float(paise, &actor)?;
+                let msg = st.books_op(BooksOp::SetOpeningFloat { amount_paise: paise })?;
                 st.refresh_day_close_text()?;
-                Ok(format!("Opening cash {} saved", st.money(Money(paise))))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -843,26 +876,23 @@ impl MatchEvent for App {
             let counted = self.ui.text_input(cx, ids!(shift_counted_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Close the shift")?;
-                let actor = st.actor()?;
                 let paise = locale::parse_major_input(counted.trim(), &st.locale.currency)
                     .map_err(|_| "Count the drawer and type the cash".to_string())?;
-                let (shift, slip) = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .close_shift(&actor, paise)?;
-                let dir = st.store.as_ref().and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
-                let _ = print_share::print_text(print_share::PrintKind::Bill, &slip, dir.as_deref());
-                st.last_receipt = slip;
-                let v = shift.variance_paise();
-                Ok(if v == 0 {
-                    "Shift closed — drawer matches".to_string()
-                } else if v < 0 {
-                    format!("Shift closed — short {}", st.money(Money(-v)))
-                } else {
-                    format!("Shift closed — over {}", st.money(Money(v)))
-                })
+                let msg = st.books_op(BooksOp::CloseShift { counted_paise: paise })?;
+                let (status, slip) = books_op::shift_slip_parts(&msg);
+                if let Some(slip) = slip {
+                    let dir = st
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
+                    let _ = print_share::print_text(
+                        print_share::PrintKind::Bill,
+                        slip,
+                        dir.as_deref(),
+                    );
+                    st.last_receipt = slip.to_string();
+                }
+                Ok(status.to_string())
             })();
             match result {
                 Ok(msg) => {
@@ -877,7 +907,6 @@ impl MatchEvent for App {
             let counted_text = self.ui.text_input(cx, ids!(day_close_counted_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Record the day close")?;
                 let actor = st.actor()?;
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to close the day".into());
@@ -887,20 +916,15 @@ impl MatchEvent for App {
                     "" => None,
                     other => Some(locale::parse_major_input(other, &currency)?),
                 };
-                let at = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .commit_day_close_with_count(&actor, counted)?;
+                let msg = st.books_op(BooksOp::CommitDayClose {
+                    counted_cash_paise: counted,
+                })?;
                 st.refresh_day_close_text()?;
-                Ok(at)
+                Ok(msg)
             })();
             match result {
                 Err(e) => self.set_status(cx, e),
-                Ok(at) => {
-                    let shown = at[..at.len().min(19)].replace('T', " ");
-                    self.set_status(cx, format!("Day close recorded at {shown}"));
-                }
+                Ok(msg) => self.set_status(cx, msg),
             }
             self.sync_chrome(cx);
         }
@@ -939,10 +963,11 @@ impl MatchEvent for App {
         ) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change language")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                st.locale = store.set_platform_language()?;
+                st.books_op(BooksOp::SetPlatformLanguage)?;
                 st.language_follow_platform = true;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.language = locale::detect_platform_language();
+                }
                 st.save_remembered_language();
                 st.status = st.t("lang_follow_platform");
                 Ok(())
@@ -960,12 +985,12 @@ impl MatchEvent for App {
         ) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change language")?;
                 let platform = locale::detect_platform_language();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                // Enter user mode with platform language as the starting pick.
-                st.locale = store.set_user_language(&platform)?;
+                st.books_op(BooksOp::SetUserLanguage { code: platform.clone() })?;
                 st.language_follow_platform = false;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.language = platform;
+                }
                 st.save_remembered_language();
                 st.status = st.t("lang_pick_user");
                 Ok(())
@@ -1127,7 +1152,7 @@ impl MatchEvent for App {
             // Devices already paired keep working; the old code pairs no more.
             let result = (|| -> Result<String, String> {
                 let st = app_state().lock().unwrap();
-                st.require_server_role("Change the pairing code")?;
+                st.require_server_host("Change the pairing code")?;
                 let actor = st.actor()?;
                 let code = st.store.as_ref().ok_or("No store")?.new_pairing_code(&actor)?;
                 Ok(code)
@@ -1153,7 +1178,7 @@ impl MatchEvent for App {
             if let Some(index) = forget {
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Forget a device")?;
+                    st.require_server_host("Forget a device")?;
                     let device = st.lan_devices.get(index).cloned().ok_or("Device gone")?;
                     let actor = st.actor()?;
                     let store = st.store.as_ref().ok_or("No store")?;
@@ -1778,30 +1803,33 @@ impl MatchEvent for App {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 let phone = with_calling_code(&phone_raw, &st.fiscal.country_code);
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 if let Some(id) = st.selected_customer_id.clone() {
-                    st.require_server_role("Edit party")?;
-                    store.update_customer_details(&id, &name, &phone, Some(&birthday))?;
-                    store.set_customer_kind_label(&id, kind.trim())?;
-                    st.reload_all()?;
-                    Ok(format!("Party updated: {}", name.trim()))
+                    st.books_op(BooksOp::UpdateParty {
+                        id,
+                        name: name.trim().to_string(),
+                        phone,
+                        birthday,
+                        kind: kind.trim().to_string(),
+                    })
                 } else {
-                    st.require_server_role("Add customers")?;
-                    let customer = store.add_customer_kind(&name, &phone, kind.trim())?;
-                    if !birthday.trim().is_empty() {
-                        store.update_customer_details(
-                            &customer.id,
-                            &customer.name,
-                            &customer.phone,
-                            Some(&birthday),
-                        )?;
+                    let before: std::collections::HashSet<String> =
+                        st.customers.iter().map(|c| c.id.clone()).collect();
+                    let msg = st.books_op(BooksOp::AddParty {
+                        name: name.trim().to_string(),
+                        phone,
+                        birthday,
+                        kind: kind.trim().to_string(),
+                    })?;
+                    if st.device_role != DeviceRole::Client
+                        && let Some(id) = st
+                            .customers
+                            .iter()
+                            .find(|c| !before.contains(&c.id))
+                            .map(|c| c.id.clone())
+                    {
+                        st.selected_customer_id = Some(id);
                     }
-                    st.selected_customer_id = Some(customer.id);
-                    st.reload_all()?;
-                    Ok(format!(
-                        "Added {} — now editing it; tap New party to add another",
-                        name.trim()
-                    ))
+                    Ok(msg)
                 }
             })();
             match result {
@@ -1830,15 +1858,12 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(party_delete)).clicked(actions) {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Delete party")?;
                 let id = st
                     .selected_customer_id
                     .clone()
                     .ok_or_else(|| "Pick a party first".to_string())?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let msg = store.delete_customer(&id)?;
+                let msg = st.books_op(BooksOp::DeleteParty { id })?;
                 st.selected_customer_id = None;
-                st.reload_all()?;
                 Ok(msg)
             })();
             match result {
@@ -1857,35 +1882,38 @@ impl MatchEvent for App {
             let named = self.ui.text_input(cx, ids!(credit_limit_party)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set credit limit")?;
                 let currency = st.locale.currency.clone();
                 let limit_paise = if limit_text.trim().is_empty() {
                     0
                 } else {
                     locale::parse_major_input(&limit_text, &currency)?
                 };
-                let party_name = if !named.trim().is_empty() {
-                    named
+                let (customer_id, name) = if !named.trim().is_empty() {
+                    let id = st
+                        .customers
+                        .iter()
+                        .find(|c| c.active && c.name.trim().eq_ignore_ascii_case(named.trim()))
+                        .map(|c| c.id.clone())
+                        .unwrap_or_default();
+                    (id, named.trim().to_string())
                 } else {
                     let id = st
                         .selected_customer_id
                         .clone()
                         .ok_or_else(|| "Pick a party or type a name".to_string())?;
-                    st.customers
+                    let name = st
+                        .customers
                         .iter()
                         .find(|c| c.id == id)
                         .map(|c| c.name.clone())
-                        .ok_or_else(|| "Party not found".to_string())?
+                        .unwrap_or_default();
+                    (id, name)
                 };
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let customer = store.find_or_create_customer(party_name.trim())?;
-                store.set_customer_credit_limit(&customer.id, limit_paise)?;
-                st.reload_all()?;
-                Ok(format!(
-                    "Credit limit for {} set to {}",
-                    customer.name,
-                    st.money(Money(limit_paise))
-                ))
+                st.books_op(BooksOp::SetCreditLimit {
+                    customer_id,
+                    name,
+                    limit_paise,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -1903,8 +1931,6 @@ impl MatchEvent for App {
             let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Write off credit")?;
-                let actor = st.actor()?;
                 let customer_id = st
                     .selected_customer_id
                     .clone()
@@ -1914,14 +1940,13 @@ impl MatchEvent for App {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let written = st
-                    .store
-                    .as_mut()
-                    .ok_or_else(|| "No store".to_string())?
-                    .write_off_credit(&customer_id, amount, &reason, &actor)?;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::WriteOffCredit {
+                    customer_id,
+                    amount_paise: amount,
+                    reason,
+                })?;
                 let _ = st.refresh_books_overview();
-                Ok(format!("Wrote off {}", st.money(Money(written))))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -1943,8 +1968,6 @@ impl MatchEvent for App {
                 let bill_text = self.ui.text_input(cx, ids!(payable_bill_input)).text();
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Settle payable")?;
-                    let actor = st.actor()?;
                     let party_id = st
                         .selected_customer_id
                         .clone()
@@ -1968,20 +1991,14 @@ impl MatchEvent for App {
                             )
                         }
                     };
-                    st.store
-                        .as_mut()
-                        .ok_or_else(|| "No store".to_string())?
-                        .settle_payable_against(
-                            &party_id,
-                            amount,
-                            method,
-                            &actor,
-                            "",
-                            against.as_deref(),
-                        )?;
-                    st.reload_all()?;
+                    let msg = st.books_op(BooksOp::SettlePayable {
+                        party_id,
+                        amount_paise: amount,
+                        pay: method,
+                        against_bill_id: against,
+                    })?;
                     let _ = st.refresh_books_overview();
-                    Ok(format!("AP paid {}", st.money(Money(amount))))
+                    Ok(msg)
                 })();
                 match result {
                     Ok(msg) => {
@@ -2003,8 +2020,6 @@ impl MatchEvent for App {
             let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Write off payable")?;
-                let actor = st.actor()?;
                 let party_id = st
                     .selected_customer_id
                     .clone()
@@ -2014,14 +2029,13 @@ impl MatchEvent for App {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let written = st
-                    .store
-                    .as_mut()
-                    .ok_or_else(|| "No store".to_string())?
-                    .write_off_payable(&party_id, amount, &reason, &actor)?;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::WriteOffPayable {
+                    party_id,
+                    amount_paise: amount,
+                    reason,
+                })?;
                 let _ = st.refresh_books_overview();
-                Ok(format!("AP wrote off {}", st.money(Money(written))))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -2083,16 +2097,23 @@ impl MatchEvent for App {
             if self.ui.button(cx, btn).clicked(actions) {
                 let body = self.ui.text_input(cx, ids!(crm_message_input)).text();
                 let result = (|| -> Result<String, String> {
-                    let st = app_state().lock().unwrap();
-                    st.require_server_role("CRM campaign")?;
-                    let actor = st.actor()?;
+                    let mut st = app_state().lock().unwrap();
                     let seg = st.crm_segment;
-                    let n = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .queue_segment_campaign(seg, &body, channel, &actor)?;
-                    Ok(format!("Queued {n} {channel} message(s) for {}", seg.label()))
+                    let (kind, inactive_days, top_n) = match seg {
+                        store::CrmSegment::BirthdayThisWeek => ("birthday_week", 0i64, 0usize),
+                        store::CrmSegment::BirthdayThisMonth => ("birthday_month", 0, 0),
+                        store::CrmSegment::WithPhone => ("phone", 0, 0),
+                        store::CrmSegment::WithLoyalty => ("loyalty", 0, 0),
+                        store::CrmSegment::InactiveDays(days) => ("inactive", days, 0),
+                        store::CrmSegment::TopSpenders(n) => ("top", 0, n),
+                    };
+                    st.books_op(BooksOp::CrmCampaign {
+                        kind: kind.to_string(),
+                        inactive_days,
+                        top_n,
+                        body,
+                        channel: channel.to_string(),
+                    })
                 })();
                 match result {
                     Ok(msg) => self.set_status(cx, msg),
@@ -2213,20 +2234,15 @@ impl MatchEvent for App {
             let amt = self.ui.text_input(cx, ids!(till_wallet_topup_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Wallet top-up")?;
-                let actor = st.actor()?;
                 let cid = st
                     .selected_customer_id
                     .clone()
                     .ok_or_else(|| "Pick a customer first".to_string())?;
                 let paise = locale::parse_major_input(amt.trim(), &st.locale.currency)?;
-                let bal = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .wallet_top_up(&cid, paise, &actor)?;
-                st.reload_all()?;
-                Ok(format!("Wallet now {}", st.money(Money(bal))))
+                st.books_op(BooksOp::WalletTopUp {
+                    customer_id: cid,
+                    amount_paise: paise,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -2243,20 +2259,12 @@ impl MatchEvent for App {
             let code = self.ui.text_input(cx, ids!(till_voucher_issue_code)).text();
             let amt = self.ui.text_input(cx, ids!(till_voucher_issue_amt_input)).text();
             let result = (|| -> Result<String, String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Issue voucher")?;
-                let actor = st.actor()?;
+                let mut st = app_state().lock().unwrap();
                 let paise = locale::parse_major_input(amt.trim(), &st.locale.currency)?;
-                let v = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .issue_voucher(code.trim(), paise, &actor)?;
-                Ok(format!(
-                    "Voucher {} issued for {}",
-                    v.code,
-                    st.money(Money(v.amount_paise))
-                ))
+                st.books_op(BooksOp::IssueVoucher {
+                    code: code.trim().to_string(),
+                    amount_paise: paise,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -2486,22 +2494,31 @@ impl MatchEvent for App {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Progress button — ignore re-taps while the worker runs.
             } else {
-                let job = (|| -> Result<PathBuf, String> {
-                    let st = app_state().lock().unwrap();
-                    st.require_server_role("Import the menu template")?;
+                let job = (|| -> Result<Option<PathBuf>, String> {
+                    let mut st = app_state().lock().unwrap();
                     let actor = st.actor()?;
                     if !actor.role.can_manage_menu() {
                         return Err("Not allowed to manage items".into());
                     }
-                    Ok(st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .db_path()
-                        .to_path_buf())
+                    if st.device_role == DeviceRole::Client {
+                        st.books_op(BooksOp::ImportShelfTemplate)?;
+                        st.template_confirm = false;
+                        return Ok(None);
+                    }
+                    Ok(Some(
+                        st.store
+                            .as_ref()
+                            .ok_or_else(|| "No store".to_string())?
+                            .db_path()
+                            .to_path_buf(),
+                    ))
                 })();
                 match job {
-                    Ok(db) => {
+                    Ok(None) => {
+                        self.set_status(cx, "Importing the menu template on the shop device…");
+                        self.sync_chrome(cx);
+                    }
+                    Ok(Some(db)) => {
                         app_state().lock().unwrap().template_confirm = true;
                         menu_import_job(db, MenuImportKind::Shelf);
                         // Progress only — full sync_chrome would hit SQLite while the worker writes.
@@ -2562,8 +2579,8 @@ impl MatchEvent for App {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Progress button — ignore re-taps while the worker runs.
             } else {
-                let job = (|| -> Result<(PathBuf, String, String), String> {
-                    let st = app_state().lock().unwrap();
+                let job = (|| -> Result<Option<(PathBuf, String, String)>, String> {
+                    let mut st = app_state().lock().unwrap();
                     let id = st
                         .client_template_confirm
                         .clone()
@@ -2571,23 +2588,34 @@ impl MatchEvent for App {
                     if id.is_empty() {
                         return Err("Pick a client menu first".into());
                     }
-                    st.require_server_role("Import a menu template")?;
                     let actor = st.actor()?;
                     if !actor.role.can_manage_menu() {
                         return Err("Not allowed to manage items".into());
                     }
                     let tmpl = menu_templates::find(&id)
                         .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
+                    if st.device_role == DeviceRole::Client {
+                        st.books_op(BooksOp::ImportClientTemplate {
+                            template_id: tmpl.id.clone(),
+                        })?;
+                        st.client_template_confirm = None;
+                        st.template_confirm = false;
+                        return Ok(None);
+                    }
                     let db = st
                         .store
                         .as_ref()
                         .ok_or_else(|| "No store".to_string())?
                         .db_path()
                         .to_path_buf();
-                    Ok((db, tmpl.id.clone(), tmpl.title.clone()))
+                    Ok(Some((db, tmpl.id.clone(), tmpl.title.clone())))
                 })();
                 match job {
-                    Ok((db, id, title)) => {
+                    Ok(None) => {
+                        self.set_status(cx, "Importing a menu template on the shop device…");
+                        self.sync_chrome(cx);
+                    }
+                    Ok(Some((db, id, title))) => {
                         {
                             let mut st = app_state().lock().unwrap();
                             st.client_template_confirm = Some(id.clone());
@@ -2692,21 +2720,29 @@ impl MatchEvent for App {
                     .parse()
                     .map_err(|_| "Items must be a number (1–100)".to_string())?;
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Frequent items settings")?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_frequent_config(days, limit, &actor)?;
-                st.refresh_frequent_cache();
-                st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
-                let count = st.frequent_ids.len();
-                Ok((
+                let msg = st.books_op(BooksOp::SetFrequent { days, limit })?;
+                let text = if st.device_role == DeviceRole::Client {
+                    msg
+                } else {
+                    st.refresh_frequent_cache();
+                    st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
+                    let count = st.frequent_ids.len();
                     st.t("frequent_saved")
                         .replace("{d}", &st.frequent_days.to_string())
                         .replace("{n}", &st.frequent_limit.to_string())
-                        .replace("{c}", &count.to_string()),
-                    st.frequent_days,
-                    st.frequent_limit,
-                ))
+                        .replace("{c}", &count.to_string())
+                };
+                let shown_days = if st.device_role == DeviceRole::Client {
+                    days
+                } else {
+                    st.frequent_days
+                };
+                let shown_limit = if st.device_role == DeviceRole::Client {
+                    limit
+                } else {
+                    st.frequent_limit
+                };
+                Ok((text, shown_days, shown_limit))
             })();
             match result {
                 Ok((msg, days, limit)) => {
@@ -2731,11 +2767,14 @@ impl MatchEvent for App {
                     return Err("Type an area name (e.g. AC)".into());
                 }
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add floor area")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.ensure_floor_area(name)?;
-                let _ = st.reload_all();
-                Ok(st.t("area_added").replace("{name}", name))
+                let msg = st.books_op(BooksOp::EnsureFloorArea {
+                    name: name.to_string(),
+                })?;
+                Ok(if st.device_role == DeviceRole::Client {
+                    msg
+                } else {
+                    st.t("area_added").replace("{name}", name)
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -3462,14 +3501,13 @@ impl MatchEvent for App {
             let area = self.ui.text_input(cx, ids!(table_area_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add tables")?;
                 let (prefix, from, to) = parse_table_range(&range)?;
-                let added = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_tables_range(&prefix, from, to, &area)?
-                };
-                st.reload_all()?;
-                Ok(format!("{added} table(s) added ({prefix}{from}–{prefix}{to})"))
+                st.books_op(BooksOp::AddTablesRange {
+                    prefix,
+                    from,
+                    to,
+                    area,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -3484,22 +3522,12 @@ impl MatchEvent for App {
             let typed = self.ui.text_input(cx, ids!(table_remove_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Remove tables")?;
                 let names: Vec<String> = match parse_table_range(&typed) {
                     Ok((prefix, from, to)) => (from..=to).map(|n| format!("{prefix}{n}")).collect(),
                     Err(_) if !typed.trim().is_empty() && !typed.contains('-') => vec![typed.trim().to_string()],
                     Err(e) => return Err(e),
                 };
-                let (removed, busy) = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.remove_tables_named(&names)?
-                };
-                st.reload_all()?;
-                let mut msg = format!("{removed} table(s) removed");
-                if !busy.is_empty() {
-                    msg.push_str(&format!(" · kept, open order: {}", busy.join(", ")));
-                }
-                Ok(msg)
+                st.books_op(BooksOp::RemoveTables { names })
             })();
             match result {
                 Ok(msg) => {
@@ -3515,17 +3543,7 @@ impl MatchEvent for App {
             let area = self.ui.text_input(cx, ids!(table_area_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add tables")?;
-                let table = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_table_in_area(&name, &area)?
-                };
-                st.tables = st
-                    .store
-                    .as_ref()
-                    .map(|s| s.list_tables().unwrap_or_default())
-                    .unwrap_or_default();
-                Ok(format!("Table {} added", table.name))
+                st.books_op(BooksOp::AddTable { name, area })
             })();
             match result {
                 Ok(msg) => {
@@ -3540,25 +3558,23 @@ impl MatchEvent for App {
             let name = self.ui.text_input(cx, ids!(station_name_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add kitchen stations")?;
-                let station = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_station(&name)?
-                };
-                st.stations = st
-                    .store
-                    .as_ref()
-                    .map(|s| s.list_stations().unwrap_or_default())
-                    .unwrap_or_default();
-                // Own empty KOT route for this station — never inherit another kitchen's printers.
-                st.printer_draft.ensure_station_routes([&station.id]);
-                if let Some(base) = st.printers_base() {
-                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
+                let trimmed = name.trim().to_string();
+                let msg = st.books_op(BooksOp::AddStation {
+                    name: trimmed.clone(),
+                })?;
+                if st.device_role != DeviceRole::Client
+                    && let Some(id) = st
+                        .stations
+                        .iter()
+                        .find(|s| s.name.eq_ignore_ascii_case(&trimmed))
+                        .map(|s| s.id.clone())
+                {
+                    st.printer_draft.ensure_station_routes([&id]);
+                    if let Some(base) = st.printers_base() {
+                        let _ = print_share::save_device_printers(&base, &st.printer_draft);
+                    }
                 }
-                Ok(format!(
-                    "Station {} added — set its printers in Settings → Where things print",
-                    station.name
-                ))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -3593,24 +3609,23 @@ impl MatchEvent for App {
                 .text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add kitchen stations")?;
-                let station = {
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.add_station(&name)?
-                };
-                st.stations = st
-                    .store
-                    .as_ref()
-                    .map(|s| s.list_stations().unwrap_or_default())
-                    .unwrap_or_default();
-                st.printer_draft.ensure_station_routes([&station.id]);
-                if let Some(base) = st.printers_base() {
-                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
+                let trimmed = name.trim().to_string();
+                let msg = st.books_op(BooksOp::AddStation {
+                    name: trimmed.clone(),
+                })?;
+                if st.device_role != DeviceRole::Client
+                    && let Some(id) = st
+                        .stations
+                        .iter()
+                        .find(|s| s.name.eq_ignore_ascii_case(&trimmed))
+                        .map(|s| s.id.clone())
+                {
+                    st.printer_draft.ensure_station_routes([&id]);
+                    if let Some(base) = st.printers_base() {
+                        let _ = print_share::save_device_printers(&base, &st.printer_draft);
+                    }
                 }
-                Ok(format!(
-                    "Station {} added — set its printers in Settings → Kitchen printing",
-                    station.name
-                ))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -4218,20 +4233,17 @@ impl MatchEvent for App {
                 if marked {
                     let result = (|| -> Result<(), String> {
                         let mut st = app_state().lock().unwrap();
-                        st.require_server_role("Mark items sold out")?;
                         let product = st
                             .products
                             .get(item_id)
                             .cloned()
                             .ok_or_else(|| "Missing product".to_string())?;
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.set_product_available(&product.id, !product.available)?;
-                        st.reload_all()?;
-                        st.status = if product.available {
-                            format!("{} marked sold out", product.name)
-                        } else {
-                            format!("{} restocked", product.name)
-                        };
+                        let msg = st.books_op(BooksOp::SetProductAvailable {
+                            id: product.id,
+                            name: product.name.clone(),
+                            available: !product.available,
+                        })?;
+                        st.status = msg;
                         Ok(())
                     })();
                     if let Err(e) = result {
@@ -4829,28 +4841,28 @@ impl MatchEvent for App {
             let password = self.ui.text_input(cx, ids!(staff_password_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add staff")?;
                 if !st.owner_setup_complete {
                     return Err("Finish Owner PIN setup before adding staff".into());
                 }
-                let actor = st.actor()?;
                 let role = st.draft_staff_role;
                 let features = st.draft_features.clone();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.add_staff_with_features(
-                    &store::StaffHire {
-                        name: &name,
-                        role,
-                        role_title: &title,
-                        pin: &pin,
-                        login_id: &login,
-                        password: &password,
-                        features,
-                    },
-                    &actor,
-                )?;
-                st.reload_all()?;
-                st.team_staff_id = st.staff.iter().rev().find(|s| !s.is_owner()).map(|s| s.id.clone());
+                st.books_op(BooksOp::HireStaff {
+                    name: name.clone(),
+                    role,
+                    role_title: title.clone(),
+                    pin: pin.clone(),
+                    login_id: login.clone(),
+                    password: password.clone(),
+                    features,
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.team_staff_id = st
+                        .staff
+                        .iter()
+                        .rev()
+                        .find(|s| !s.is_owner())
+                        .map(|s| s.id.clone());
+                }
                 st.status = format!("Added {}", name.trim());
                 Ok(())
             })();
@@ -4889,15 +4901,16 @@ impl MatchEvent for App {
             let login = self.ui.text_input(cx, ids!(staff_login_input)).text();
             let password = self.ui.text_input(cx, ids!(staff_password_input)).text();
             let result = (|| -> Result<(), String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Change staff logins")?;
-                let actor = st.actor()?;
+                let mut st = app_state().lock().unwrap();
                 let staff_id = st
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| "Add or pick a staff member first".to_string())?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_staff_login(&staff_id, &login, &password, &actor)?;
+                st.books_op(BooksOp::SetStaffLogin {
+                    staff_id,
+                    login_id: login,
+                    password,
+                })?;
                 Ok(())
             })();
             match result {
@@ -4909,8 +4922,6 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(staff_deactivate)).clicked(actions) {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Remove staff")?;
-                let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
@@ -4921,17 +4932,17 @@ impl MatchEvent for App {
                     .find(|s| s.id == staff_id)
                     .map(|s| s.name.clone())
                     .unwrap_or_else(|| staff_id.clone());
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.deactivate_staff(&staff_id, &actor)?;
+                let msg = st.books_op(BooksOp::DeactivateStaff {
+                    staff_id: staff_id.clone(),
+                    name: removed_name.clone(),
+                })?;
                 st.team_staff_id = None;
-                st.reload_all()?;
-                // Still listed ⇒ deactivate did not stick (do not pretend success).
-                if st.staff.iter().any(|s| s.id == staff_id) {
+                if st.device_role != DeviceRole::Client && st.staff.iter().any(|s| s.id == staff_id) {
                     return Err(format!(
                         "Could not remove {removed_name} — they are still on the team"
                     ));
                 }
-                Ok(format!("Removed {removed_name}"))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -5025,10 +5036,7 @@ impl MatchEvent for App {
             let confirm = self.ui.text_input(cx, ids!(duress_pin_confirm)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set emergency unlock PIN")?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_duress_pin(&pin, &confirm, &actor)?;
+                st.books_op(BooksOp::SetDuressPin { pin, confirm })?;
                 st.status = st.t("duress_saved");
                 Ok(())
             })();
@@ -5044,10 +5052,7 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(clear_duress_pin)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Clear emergency unlock PIN")?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.clear_duress_pin(&actor)?;
+                st.books_op(BooksOp::ClearDuressPin)?;
                 st.status = st.t("duress_cleared");
                 Ok(())
             })();
@@ -5092,17 +5097,13 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(feat_save)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change staff permissions")?;
-                let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
                     .or_else(|| st.staff.iter().find(|s| !s.is_owner()).map(|s| s.id.clone()))
                     .ok_or_else(|| "Add staff first".to_string())?;
                 let features = st.draft_features.clone();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_staff_features(&staff_id, &features, &actor)?;
-                st.reload_all()?;
+                st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
                 st.status = "Staff features saved".into();
                 Ok(())
             })();
@@ -5116,28 +5117,16 @@ impl MatchEvent for App {
             let code = self.ui.text_input(cx, ids!(country_code_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change the country pack")?;
                 let actor = st.actor()?;
                 if !actor.is_owner() {
                     return Err("Only the Owner can change the country pack".into());
                 }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let settings = store.apply_country_pack(&code)?;
-                store.audit(
-                    &actor,
-                    "fiscal.country",
-                    &format!(
-                        "{} {} {}",
-                        settings.country_code,
-                        settings.profile().tax_system.as_str(),
-                        settings.tax_pricing.as_str()
-                    ),
-                )?;
-                let name = settings.profile().name_en;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::ApplyCountry {
+                    code: code.trim().to_string(),
+                })?;
                 st.country_browse.clear();
-                st.status = format!("{name} pack applied — check taxes on Menu items");
-                Ok(name.to_string())
+                st.status = msg.clone();
+                Ok(msg)
             })();
             match result {
                 Ok(_) => self
@@ -5155,15 +5144,16 @@ impl MatchEvent for App {
             if self.ui.button(cx, id).clicked(actions) {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change tax pricing")?;
                     let actor = st.actor()?;
                     if !actor.is_owner() {
                         return Err("Only the Owner can change tax pricing".into());
                     }
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.set_tax_pricing(pricing)?;
-                    st.reload_all()?;
-                    st.status = pricing.label_for(st.fiscal.tax_label());
+                    let msg = st.books_op(BooksOp::SetTaxPricing { pricing })?;
+                    st.status = if st.device_role == DeviceRole::Client {
+                        msg
+                    } else {
+                        pricing.label_for(st.fiscal.tax_label())
+                    };
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -5179,10 +5169,7 @@ impl MatchEvent for App {
             if self.ui.button(cx, id).clicked(actions) {
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change zero-value sales")?;
-                    let actor = st.actor()?;
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.set_allow_zero_sales(allow, &actor)?;
+                    st.books_op(BooksOp::SetZeroSales { allow })?;
                     let msg = st.t(if allow {
                         "zero_sales_saved_on"
                     } else {
@@ -5203,16 +5190,19 @@ impl MatchEvent for App {
             let service_text = self.ui.text_input(cx, ids!(service_bps_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set the business id")?;
                 let actor = st.actor()?;
                 if !actor.is_owner() {
                     return Err("Only the Owner can set the business id".into());
                 }
                 let service_bps = locale::parse_percent_bps(&service_text)?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_business_tax_id(&id_text)?;
-                store.set_service_charge_bps(service_bps)?;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::SetFiscal {
+                    business_tax_id: id_text,
+                    service_bps,
+                })?;
+                if st.device_role == DeviceRole::Client {
+                    st.status = msg;
+                    return Ok(());
+                }
                 let id_status = if st.fiscal.business_tax_id.is_empty() {
                     format!("{} cleared", st.fiscal.business_id_label)
                 } else {
@@ -5409,18 +5399,21 @@ impl MatchEvent for App {
             let upi_vpa = self.ui.text_input(cx, ids!(upi_vpa_input)).text();
             let upi_payee = self.ui.text_input(cx, ids!(upi_payee_input)).text();
             let result = (|| -> Result<(), String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Change the bill format")?;
+                let mut st = app_state().lock().unwrap();
                 let lines = header
                     .split('|')
                     .map(str::trim)
                     .filter(|l| !l.is_empty())
                     .collect::<Vec<_>>()
                     .join("\n");
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_bill_format_ex(&lines, &fssai, &footer, Some(&upi_vpa), Some(&upi_payee))
+                st.books_op(BooksOp::SetBillFormat {
+                    header: lines,
+                    fssai,
+                    footer,
+                    upi_vpa,
+                    upi_payee,
+                })?;
+                Ok(())
             })();
             match result {
                 Ok(()) => {
@@ -5540,15 +5533,16 @@ impl MatchEvent for App {
             let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change the KOT format")?;
                 st.kot_slip_draft.title = title;
                 st.kot_slip_draft.footer = footer;
-                let saved = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_kot_slip_format(&st.kot_slip_draft)?;
-                st.kot_slip_draft = saved;
+                let format = st.kot_slip_draft.clone();
+                st.books_op(BooksOp::SetKotFormat { format })?;
+                if st.device_role != DeviceRole::Client
+                    && let Some(store) = st.store.as_ref()
+                    && let Ok(saved) = store.kot_slip_format()
+                {
+                    st.kot_slip_draft = saved;
+                }
                 Ok(st.t("kot_format_saved"))
             })();
             match result {
@@ -5565,12 +5559,9 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(print_stamp_clear)).clicked(actions) {
             let result = (|| -> Result<(), String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Change the bill format")?;
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_print_stamp_key(None)
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::ClearPrintStamp)?;
+                Ok(())
             })();
             match result {
                 Ok(()) => {
@@ -5586,12 +5577,9 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(payment_qr_clear)).clicked(actions) {
             let result = (|| -> Result<(), String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Change the bill format")?;
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_payment_qr_key(None)
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::ClearPaymentQr)?;
+                Ok(())
             })();
             match result {
                 Ok(()) => {
@@ -5610,35 +5598,45 @@ impl MatchEvent for App {
             if aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Progress — ignore re-taps.
             } else {
-                let job = (|| -> Result<PathBuf, String> {
-                    let st = app_state().lock().unwrap();
-                    st.require_server_role("Import aggregator orders")?;
-                    Ok(st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .db_path()
-                        .to_path_buf())
-                })();
-                match job {
-                    Ok(db) => {
-                        aggregator_import_job(db);
-                        self.paint_submit_busy_chrome(cx);
+                let is_client =
+                    app_state().lock().unwrap().device_role == DeviceRole::Client;
+                if is_client {
+                    let sent = (|| -> Result<String, String> {
+                        let mut st = app_state().lock().unwrap();
+                        st.books_op(BooksOp::ImportAggregator)
+                    })();
+                    match sent {
+                        Ok(msg) => self.set_status(cx, msg),
+                        Err(e) => self.set_status(cx, e),
                     }
-                    Err(e) => self.set_status(cx, e),
+                } else {
+                    let job = (|| -> Result<PathBuf, String> {
+                        let st = app_state().lock().unwrap();
+                        Ok(st
+                            .store
+                            .as_ref()
+                            .ok_or_else(|| "No store".to_string())?
+                            .db_path()
+                            .to_path_buf())
+                    })();
+                    match job {
+                        Ok(db) => {
+                            aggregator_import_job(db);
+                            self.paint_submit_busy_chrome(cx);
+                        }
+                        Err(e) => self.set_status(cx, e),
+                    }
                 }
             }
         }
         if self.ui.button(cx, ids!(scheme_add)).clicked(actions) {
             let text = self.ui.text_input(cx, ids!(scheme_bogo_input)).text();
             let result = (|| -> Result<String, String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Change schemes")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let mut st = app_state().lock().unwrap();
                 let (buy_name, buy_qty, get_name, get_qty) =
                     schemes::Scheme::parse_bogo_human(&text)
                         .ok_or_else(|| "Type like: Buy 2 Thali get 1 Chaas".to_string())?;
-                let products = store.list_products(false)?;
+                let products = st.products.clone();
                 let find = |name: &str| {
                     products
                         .iter()
@@ -5656,8 +5654,7 @@ impl MatchEvent for App {
                     &get_id,
                     get_qty,
                 );
-                store.upsert_scheme(&scheme)?;
-                Ok(format!("Added scheme: {}", scheme.name))
+                st.books_op(BooksOp::UpsertScheme { scheme })
             })();
             match result {
                 Ok(msg) => {
@@ -5799,15 +5796,14 @@ impl MatchEvent for App {
             let new_name = self.ui.text_input(cx, ids!(staff_edit_name_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Rename staff")?;
-                let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| st.t("staff_rename_need_selected"))?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.rename_staff(&staff_id, &new_name, &actor)?;
-                st.reload_all()?;
+                st.books_op(BooksOp::RenameStaff {
+                    staff_id,
+                    name: new_name,
+                })?;
                 st.status = st.t("staff_renamed");
                 Ok(())
             })();
@@ -5827,8 +5823,6 @@ impl MatchEvent for App {
             let from_name = self.ui.text_input(cx, ids!(staff_copy_edit_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Copy staff setup")?;
-                let actor = st.actor()?;
                 let target_id = st
                     .team_staff_id
                     .clone()
@@ -5861,15 +5855,23 @@ impl MatchEvent for App {
                     source.role_title.clone()
                 };
                 let features = source.effective_features();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.apply_staff_config(&target_id, role, &title, &features, &actor)?;
-                st.reload_all()?;
+                st.books_op(BooksOp::ApplyStaffConfig {
+                    staff_id: target_id,
+                    role,
+                    role_title: title,
+                    features: features.clone(),
+                    from_name: from_label.clone(),
+                    to_name: target_name.clone(),
+                })?;
                 st.draft_staff_role = role;
                 st.draft_features = features;
-                Ok(st
-                    .t("staff_setup_copied_edit")
-                    .replace("{from}", &from_label)
-                    .replace("{to}", &target_name))
+                Ok(if st.device_role == DeviceRole::Client {
+                    format!("Copied setup from {from_label} onto {target_name}")
+                } else {
+                    st.t("staff_setup_copied_edit")
+                        .replace("{from}", &from_label)
+                        .replace("{to}", &target_name)
+                })
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -6205,23 +6207,24 @@ impl MatchEvent for App {
                 let note = self.ui.text_input(cx, ids!(bank_note_input)).text();
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Post bank / cashbook")?;
-                    let actor = st.actor()?;
                     let currency = st.locale.currency.clone();
                     let minor = locale::parse_major_input(&amount_text, &currency)?;
-                    st.store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .post_money_movement(kind, minor, &note, &actor)?;
-                    st.day_close_text = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .books_report_text("today")?;
+                    let msg = st.books_op(BooksOp::PostMoney {
+                        kind: kind.as_str().to_string(),
+                        amount_paise: minor,
+                        note,
+                    })?;
+                    if st.device_role != DeviceRole::Client {
+                        st.day_close_text = st
+                            .store
+                            .as_ref()
+                            .ok_or_else(|| "No store".to_string())?
+                            .books_report_text("today")?;
+                    }
                     st.nav_back.clear();
                     st.nav_forward.clear();
                     st.screen = Screen::Reports;
-                    st.status = format!("{} posted", kind.label());
+                    st.status = msg;
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -6243,9 +6246,7 @@ impl MatchEvent for App {
             if self.ui.button(cx, btn).clicked(actions) {
                 let num_text = self.ui.text_input(cx, ids!(bank_clear_input)).text();
                 let result = (|| -> Result<String, String> {
-                    let st = app_state().lock().unwrap();
-                    st.require_server_role("Reconcile bank movements")?;
-                    let actor = st.actor()?;
+                    let mut st = app_state().lock().unwrap();
                     let n: usize = num_text
                         .trim()
                         .parse()
@@ -6261,12 +6262,7 @@ impl MatchEvent for App {
                         .get(n.wrapping_sub(1))
                         .cloned()
                         .ok_or_else(|| "No such uncleared movement".to_string())?;
-                    store.set_money_movement_cleared(&id, cleared, &actor)?;
-                    Ok(if cleared {
-                        "Marked cleared — seen on the statement".into()
-                    } else {
-                        "Unmarked".into()
-                    })
+                    st.books_op(BooksOp::SetMovementCleared { id, cleared })
                 })();
                 match result {
                     Ok(msg) => {
@@ -6339,7 +6335,6 @@ impl MatchEvent for App {
             let note = self.ui.text_input(cx, ids!(inv_note_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Adjust stock")?;
                 let actor = st.actor()?;
                 if !actor.can_access_inventory() && !actor.is_owner() {
                     return Err("Not allowed to change stock".into());
@@ -6351,30 +6346,24 @@ impl MatchEvent for App {
                 if qty <= 0 {
                     return Err("Quantity must be more than zero".into());
                 }
-                // A new name on + Stock is a new raw material; − needs an item
-                // the kitchen has. A resold good not counted yet starts at 0.
-                let product = match st.find_stock_item(&name)? {
-                    Some(p) => p,
-                    None if inv_plus => st.stock_item_or_new(&name, "")?,
+                let existing = st.find_stock_item(&name)?;
+                let (product_id, new_item_name, new_item_unit) = match existing {
+                    Some(p) => (p.id, String::new(), String::new()),
+                    None if inv_plus => (String::new(), name.trim().to_string(), String::new()),
                     None => return Err(format!("Nothing called \"{}\" in stock", name.trim())),
                 };
-                if !product.tracks_stock() {
-                    st.store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .set_product_stock_qty(&product.id, 0)?;
-                }
                 let delta = if inv_plus { qty } else { -qty };
-                let note = note.trim().to_string();
-                let reason = if note.is_empty() { "adjust" } else { note.as_str() };
-                let on_hand = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .adjust_stock(&product.id, delta, reason, &note, &actor)?;
-                st.reload_all()?;
-                st.refresh_inventory_text()?;
-                Ok(format!("{} · {on_hand} on hand", product.name))
+                let msg = st.books_op(BooksOp::AdjustStock {
+                    product_id,
+                    new_item_name,
+                    new_item_unit,
+                    delta_qty: delta,
+                    note,
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_inventory_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -6416,10 +6405,17 @@ impl MatchEvent for App {
             let set_amt = self.ui.text_input(cx, ids!(bulk_set_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Bulk price")?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or("No store")?;
-                let pct_i: Option<i64> = pct.trim().parse().ok();
+                let typed = cat.trim();
+                let category_id = st
+                    .store
+                    .as_ref()
+                    .ok_or("No store")?
+                    .list_categories()?
+                    .into_iter()
+                    .find(|c| c.id == typed || c.name.eq_ignore_ascii_case(typed))
+                    .map(|c| c.id)
+                    .unwrap_or_else(|| typed.to_string());
+                let percent: Option<i64> = pct.trim().parse().ok();
                 let set_paise = if set_amt.trim().is_empty() {
                     None
                 } else {
@@ -6430,9 +6426,11 @@ impl MatchEvent for App {
                         .map_err(|_| "Set amount must be a number".to_string())?;
                     Some(domain::Money::from_rupees(major).paise())
                 };
-                let n = store.bulk_price_category(&cat, pct_i, set_paise, &actor)?;
-                st.reload_all()?;
-                Ok(format!("Updated {n} item(s) in {cat}"))
+                st.books_op(BooksOp::BulkPrice {
+                    category_id,
+                    percent,
+                    set_paise,
+                })
             })();
             match result {
                 Ok(m) => self.set_status(cx, m),
@@ -6448,21 +6446,19 @@ impl MatchEvent for App {
             let table = self.ui.text_input(cx, ids!(resv_table_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Book tables")?;
-                let actor = st.actor()?;
                 let phone = with_calling_code(&phone_raw, &st.fiscal.country_code);
                 let guests: i64 = if guests.trim().is_empty() {
                     0
                 } else {
                     guests.trim().parse().map_err(|_| "Guests must be a whole number".to_string())?
                 };
-                let r = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .add_reservation(&name, &phone, guests, &when, &table, &actor)?;
-                st.reload_all()?;
-                Ok(format!("Booked {} · {}", r.name, r.at))
+                st.books_op(BooksOp::AddReservation {
+                    name,
+                    phone,
+                    guests,
+                    at: when,
+                    table_name: table,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -6490,22 +6486,12 @@ impl MatchEvent for App {
             if let Some((index, status)) = acted {
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change bookings")?;
-                    let actor = st.actor()?;
                     let r = st.reservations.get(index).cloned().ok_or("Booking not found")?;
-                    st.store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .set_reservation_status(&r.id, status, &actor)?;
-                    st.reload_all()?;
-                    Ok(if status == "seated" {
-                        if r.table_name.is_empty() {
-                            format!("{} seated — pick their table", r.name)
-                        } else {
-                            format!("{} seated at {} — tap {} to order", r.name, r.table_name, r.table_name)
-                        }
-                    } else {
-                        format!("Booking for {} cancelled", r.name)
+                    st.books_op(BooksOp::SetReservationStatus {
+                        id: r.id,
+                        status: status.to_string(),
+                        guest_name: r.name,
+                        table_name: r.table_name,
                     })
                 })();
                 match result {
@@ -6521,7 +6507,6 @@ impl MatchEvent for App {
             let level_text = self.ui.text_input(cx, ids!(inv_reorder_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change reorder levels")?;
                 let actor = st.actor()?;
                 if !actor.can_access_inventory() && !actor.is_owner() {
                     return Err("Not allowed to change stock".into());
@@ -6533,13 +6518,12 @@ impl MatchEvent for App {
                 let product = st
                     .find_stock_item(&name)?
                     .ok_or_else(|| format!("Nothing called \"{}\" in stock", name.trim()))?;
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_reorder_level(&product.id, level, &actor)?;
-                st.reload_all()?;
-                let unit = product.unit_label.trim();
-                Ok(format!("{} · buy more at {level} {unit}", product.name).trim_end().to_string())
+                st.books_op(BooksOp::SetReorder {
+                    product_id: product.id,
+                    level,
+                    name: product.name,
+                    unit_label: product.unit_label,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -6555,18 +6539,15 @@ impl MatchEvent for App {
             let code = self.ui.text_input(cx, ids!(branch_code_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add branches")?;
                 let actor = st.actor()?;
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can add branches".into());
                 }
-                let branch = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .add_branch(&name, &code)?;
-                st.refresh_branches_text()?;
-                Ok(format!("Added {}", branch.label()))
+                let msg = st.books_op(BooksOp::AddBranch { name, code })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_branches_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -6630,7 +6611,6 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(branch_import)).clicked(actions) {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Import a branch day")?;
                 let actor = st.actor()?;
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can import a branch day".into());
@@ -6642,13 +6622,11 @@ impl MatchEvent for App {
                     return Err("Missing backups/import_branch_snapshot.json".into());
                 }
                 let json = std::fs::read_to_string(&path).map_err(|e| e.to_string())?;
-                let branch = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .import_branch_snapshot(&json)?;
-                st.refresh_branches_text()?;
-                Ok(format!("Imported day for {}", branch.label()))
+                let msg = st.books_op(BooksOp::ImportBranchSnapshot { json })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_branches_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -6740,8 +6718,6 @@ impl MatchEvent for App {
             if let Some(item_id) = tapped {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change unit pickers")?;
-                    let actor = st.actor()?;
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     let rows = units_report_rows(store, |k| st.t(k));
                     let code = match rows.get(item_id) {
@@ -6759,12 +6735,11 @@ impl MatchEvent for App {
                         .find(|u| u.code == code)
                         .map(|u| u.picker_enabled)
                         .unwrap_or(true);
-                    store.set_unit_picker_enabled(&code, !enabled, &actor)?;
-                    st.status = if enabled {
-                        format!("{code} hidden from pickers")
-                    } else {
-                        format!("{code} shown in pickers")
-                    };
+                    let msg = st.books_op(BooksOp::SetUnitPicker {
+                        code: code.clone(),
+                        enabled: !enabled,
+                    })?;
+                    st.status = msg;
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -6789,46 +6764,52 @@ impl MatchEvent for App {
             if let Some(item_id) = tapped {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Change pickers")?;
-                    let actor = st.actor()?;
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     let rows = sibling_pickers_rows(store, |k| st.t(k));
                     let key = match rows.get(item_id) {
                         Some(ReportRow::Kv(k, _)) => k.clone(),
                         _ => return Err("Not a picker row".into()),
                     };
-                    if let Some(name) = key.strip_prefix("area:") {
+                    let msg = if let Some(name) = key.strip_prefix("area:") {
                         let on = store
                             .list_picker_areas()?
                             .into_iter()
                             .find(|(n, _)| n == name)
                             .map(|(_, o)| o)
                             .unwrap_or(true);
-                        store.set_area_picker_enabled(name, !on, &actor)?;
-                        st.status = format!("Area {name} picker {}", if on { "off" } else { "on" });
+                        let name = name.to_string();
+                        st.books_op(BooksOp::SetAreaPicker {
+                            name,
+                            enabled: !on,
+                        })?
                     } else if let Some(rest) = key.strip_prefix("station:") {
-                        let id = rest.split(" · ").next().unwrap_or("").trim();
+                        let id = rest.split(" · ").next().unwrap_or("").trim().to_string();
                         let on = store
                             .list_stations()?
                             .into_iter()
                             .find(|s| s.id == id)
                             .map(|s| s.picker_enabled)
                             .unwrap_or(true);
-                        store.set_station_picker_enabled(id, !on, &actor)?;
-                        st.status = format!("Station picker {}", if on { "off" } else { "on" });
+                        st.books_op(BooksOp::SetStationPicker {
+                            id,
+                            enabled: !on,
+                        })?
                     } else if let Some(rest) = key.strip_prefix("tax:") {
-                        let id = rest.split(" · ").next().unwrap_or("").trim();
+                        let id = rest.split(" · ").next().unwrap_or("").trim().to_string();
                         let on = store
                             .list_tax_rates()?
                             .into_iter()
                             .find(|r| r.id == id)
                             .map(|r| r.picker_enabled)
                             .unwrap_or(true);
-                        store.set_tax_rate_picker_enabled(id, !on, &actor)?;
-                        st.status = format!("Tax picker {}", if on { "off" } else { "on" });
+                        st.books_op(BooksOp::SetTaxPicker {
+                            id,
+                            enabled: !on,
+                        })?
                     } else {
                         return Err("Unknown picker row".into());
-                    }
+                    };
+                    st.status = msg;
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -6842,10 +6823,11 @@ impl MatchEvent for App {
             let name = self.ui.text_input(cx, ids!(unit_name_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add units")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.add_unit(&code, &name)?;
-                st.status = format!("Unit {code} added");
+                let msg = st.books_op(BooksOp::AddUnit {
+                    code: code.clone(),
+                    name,
+                })?;
+                st.status = msg;
                 Ok(())
             })();
             match result {
@@ -6865,21 +6847,12 @@ impl MatchEvent for App {
                 let factor_milli = parse_qty_to_milli(&factor_text)
                     .map_err(|_| "Factor must be a number > 0".to_string())?;
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add unit conversion")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.add_unit_conversion(&from, &to, factor_milli)?;
-                st.status = match store.resolve_unit(&from) {
-                    Some((family, factor)) => {
-                        let anchor = domain::unit_family_anchor(&family).unwrap_or("");
-                        format!(
-                            "Added — now 1 {from} = {} {anchor} ({family})",
-                            precise::format_kg(factor)
-                        )
-                    }
-                    None => format!(
-                        "1 {from} → {to} added — '{from}' is not linked to a standard unit yet"
-                    ),
-                };
+                let msg = st.books_op(BooksOp::AddUnitConversion {
+                    from_code: from,
+                    to_code: to,
+                    factor_milli,
+                })?;
+                st.status = msg;
                 Ok(())
             })();
             match result {

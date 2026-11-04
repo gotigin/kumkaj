@@ -230,7 +230,7 @@ impl App {
         self.ensure_store(cx);
         let err = {
             let mut st = app_state().lock().unwrap();
-            if let Err(e) = st.require_server_role("Change extra tills") {
+            if let Err(e) = st.require_server_host("Change extra tills") {
                 Some(e)
             } else if st.store.is_none() {
                 Some("Storage not ready".into())

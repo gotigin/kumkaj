@@ -530,19 +530,17 @@ script_mod! {
             }
         }
     }
-    // Bottom-nav chips (scroll row). Short chrome labels + wrap, never
-    // ellipsis — long translated titles grow a second line instead of cropping.
+    // One line + scroll (no wrap). Equal vertical pad sandwiches the label so
+    // it lines up with the overlay icon; horizontal pad unchanged.
     // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
-    // Min height 56 matches the overlay icon row so label + icon share one
-    // vertical center (Fit-only chips sat short and left text low under the icon).
     let NavChip = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: Fit{min: FitBound.Abs(56.)}
+        width: Fit{min: FitBound.Abs(96.)} height: Fit
         align: Align{x: 0.0 y: 0.5}
-        flow: Right{wrap: true}
+        flow: Right
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 36. right: 12. top: 10. bottom: 10.}
+        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -573,13 +571,13 @@ script_mod! {
         }
     }
     let NavChipActive = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: Fit{min: FitBound.Abs(56.)}
+        width: Fit{min: FitBound.Abs(96.)} height: Fit
         align: Align{x: 0.0 y: 0.5}
-        flow: Right{wrap: true}
+        flow: Right
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        padding: Inset{left: 36. right: 12. top: 10. bottom: 10.}
+        padding: Inset{left: 36. right: 12. top: 8. bottom: 8.}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -6692,23 +6690,47 @@ script_mod! {
                     // Selected peer = *Active face visible (paint_nav_tabs), not focus.
                     bottom_nav := SolidView{
                         width: Fill height: Fit
-                        padding: Inset{left: 4. right: 4. top: 2. bottom: 6.}
+                        // Bottom pad 0 so the ScrollX scrollbar sits on the
+                        // chrome edge (lift_footer adds safe-area only).
+                        // Top pad keeps air above the chips.
+                        padding: Inset{left: 4. right: 4. top: 6. bottom: 0.}
                         draw_bg.color: #x02030B
                         bottom_nav_tabs := View{
                             width: Fill height: Fit
                             flow: Overlay
                             bottom_nav_scroll := ScrollXView{
                                 width: Fill height: Fit
+                                // Dark bar on navy — stock handle reads as a
+                                // light strip at the footer floor.
+                                scroll_bars: mod.widgets.ScrollBars {
+                                    show_scroll_x: true show_scroll_y: false
+                                    scroll_bar_x: mod.widgets.ScrollBar{
+                                        drag_scrolling: true
+                                        axis_lock: true
+                                        bar_size: 4.
+                                        draw_bg +: {
+                                            size: 3.
+                                            border_radius: 2.
+                                            color: #x0A0C18
+                                            color_hover: #x2A3358
+                                            color_drag: #xfe8357
+                                        }
+                                    }
+                                }
                                 // Whitespace lanes around the chips (top,
                                 // bottom, ends, gaps): a press there belongs
                                 // to the scroll view, a press on a chip is a
                                 // tap or a drag — see pointer_nav_drag.
                                 // End pad ≥ ChevronBtn (46) so first/last tabs
                                 // can scroll clear of overlay ‹ › (2026-11).
+                                // Strip bottom ≥ bar_size: ScrollX paints the
+                                // bar over this pad (chips stay clear). Parent
+                                // bottom_nav.padding.bottom stays 0 — nothing
+                                // under the bar.
                                 View{
                                     width: Fit height: Fit
-                                    padding: Inset{left: 52. right: 52. top: 12. bottom: 12.}
-                                    flow: Right spacing: 6
+                                    padding: Inset{left: 48. right: 48. top: 6. bottom: 8.}
+                                    flow: Right spacing: 16
                                     nav_books_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay

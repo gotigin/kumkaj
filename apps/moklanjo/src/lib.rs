@@ -8,6 +8,7 @@
 pub use makepad_widgets;
 
 pub mod barcode_scan;
+pub mod books_op;
 pub mod booking;
 pub mod cod;
 pub mod consignments;

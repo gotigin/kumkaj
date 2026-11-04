@@ -119,7 +119,6 @@ struct NavCaps {
     inventory: bool,
     branches: bool,
     is_owner: bool,
-    is_client: bool,
     /// Any unlocked session — Settings shell (My PIN) even without shop admin.
     signed_in: bool,
     /// Tables & kitchen peers exist only when this shop runs that mode.
@@ -130,7 +129,6 @@ struct NavCaps {
 impl NavCaps {
     fn from_session(
         session: Option<&StaffMember>,
-        is_client: bool,
         floor_on: bool,
         branch_count: usize,
     ) -> Self {
@@ -146,13 +144,11 @@ impl NavCaps {
                 inventory: s.can_access_inventory() || s.is_owner(),
                 branches: s.can_access_branches() || s.is_owner(),
                 is_owner: s.is_owner(),
-                is_client,
                 signed_in: true,
                 floor_on,
                 branch_count,
             },
             None => Self {
-                is_client,
                 floor_on,
                 branch_count,
                 ..Self::default()
@@ -215,8 +211,8 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         NavTab::Kitchen => caps.kitchen && caps.floor_on,
         NavTab::Sales => caps.sales,
         NavTab::DayClose | NavTab::Reports => caps.sales || caps.is_owner,
-        NavTab::Inventory => caps.inventory && !caps.is_client,
-        NavTab::Branches => caps.branches && !caps.is_client && caps.branch_count > 1,
+        NavTab::Inventory => caps.inventory,
+        NavTab::Branches => caps.branches && caps.branch_count > 1,
         NavTab::Credit => caps.credit,
         // Hire/edit others only — own PIN is under Settings → Team & PINs / My PIN.
         NavTab::Team => caps.team,
@@ -246,7 +242,6 @@ fn nav_caps_from(st: &AppState) -> NavCaps {
         .unwrap_or(1);
     NavCaps::from_session(
         st.session.as_ref(),
-        st.device_role == DeviceRole::Client,
         st.venue_mode.creates_kot(),
         branch_count,
     )

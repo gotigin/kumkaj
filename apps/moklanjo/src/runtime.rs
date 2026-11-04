@@ -498,40 +498,6 @@ fn branch_export_job(db_path: PathBuf) {
         });
 }
 
-fn branch_import_job(db_path: PathBuf) {
-    if branch_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
-        return;
-    }
-    branch_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
-    set_books_work_status("Importing day…");
-    let _ = std::thread::Builder::new()
-        .name("moklanjo-branch-import".into())
-        .spawn(move || {
-            let result = (|| -> Result<String, String> {
-                if branch_cancel().load(std::sync::atomic::Ordering::SeqCst) {
-                    return Err("Cancelled".into());
-                }
-                let path = store::data_dir()?
-                    .join("backups")
-                    .join("import_branch_snapshot.json");
-                if !path.exists() {
-                    return Err("Missing backups/import_branch_snapshot.json".into());
-                }
-                let json = std::fs::read_to_string(&path).map_err(|e| e.to_string())?;
-                if branch_cancel().load(std::sync::atomic::Ordering::SeqCst) {
-                    return Err("Cancelled".into());
-                }
-                let store = Store::open_path(&db_path)?;
-                let branch = store.import_branch_snapshot(&json)?;
-                Ok(format!("Imported day for {}", branch.label()))
-            })();
-            *branch_once().lock().unwrap() = Some(result);
-            branch_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-            clear_books_work_status();
-            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-        });
-}
-
 fn diag_export_busy() -> &'static std::sync::atomic::AtomicBool {
     static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &BUSY

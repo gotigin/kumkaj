@@ -401,18 +401,13 @@ struct NavCaps {
     inventory: bool,
     branches: bool,
     is_owner: bool,
-    is_client: bool,
     /// Unlocked session — Settings / Team shell for My PIN even without shop admin.
     signed_in: bool,
     branch_count: usize,
 }
 
 impl NavCaps {
-    fn from_session(
-        session: Option<&StaffMember>,
-        is_client: bool,
-        branch_count: usize,
-    ) -> Self {
+    fn from_session(session: Option<&StaffMember>, branch_count: usize) -> Self {
         match session {
             Some(s) => Self {
                 sell: s.can_access_sell(),
@@ -424,12 +419,10 @@ impl NavCaps {
                 inventory: s.can_access_inventory() || s.is_owner(),
                 branches: s.can_access_branches() || s.is_owner(),
                 is_owner: s.is_owner(),
-                is_client,
                 signed_in: true,
                 branch_count,
             },
             None => Self {
-                is_client,
                 branch_count,
                 ..Self::default()
             },
@@ -471,8 +464,8 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         NavTab::Ops | NavTab::Cod | NavTab::Riders => caps.ops_ok(),
         NavTab::Sales => caps.sales,
         NavTab::DayClose | NavTab::Reports => caps.sales || caps.is_owner,
-        NavTab::Inventory => caps.inventory && !caps.is_client,
-        NavTab::Branches => caps.branches && !caps.is_client && caps.branch_count > 1,
+        NavTab::Inventory => caps.inventory,
+        NavTab::Branches => caps.branches && caps.branch_count > 1,
         NavTab::Credit => caps.credit,
         NavTab::Team => caps.team,
     }
@@ -499,11 +492,7 @@ fn nav_caps_from(st: &AppState) -> NavCaps {
         .and_then(|s| s.list_branches().ok())
         .map(|b| b.len())
         .unwrap_or(1);
-    NavCaps::from_session(
-        st.session.as_ref(),
-        st.device_role == DeviceRole::Client,
-        branch_count,
-    )
+    NavCaps::from_session(st.session.as_ref(), branch_count)
 }
 
 fn nav_chrome_order_from(st: &AppState) -> Vec<NavTab> {

@@ -379,14 +379,30 @@ impl AppState {
         self.locale.language = platform;
     }
 
-    /// Guard for anything the shop device alone may write. An extra till's catalogue,
-    /// stock, staff and settings tables are a sync cache, so editing them here
-    /// would vanish on the next snapshot.
-    fn require_server_role(&self, what: &str) -> Result<(), String> {
+    /// Device exception: only the shop host may do this (backup folder, extra
+    /// tills, pairing code, forget a device, restore). A Client's copy is not
+    /// the shop.
+    fn require_server_host(&self, what: &str) -> Result<(), String> {
         if self.device_role == DeviceRole::Client {
             return Err(format!("{what} on the shop device — this is an extra till"));
         }
         Ok(())
+    }
+
+    /// Person-level book write. A Client asks the shop over `POST /books`;
+    /// the shop applies it and this device reloads after a local apply.
+    fn books_op(&mut self, op: BooksOp) -> Result<String, String> {
+        if self.device_role == DeviceRole::Client {
+            let label = op.label();
+            let done = op.done_message();
+            self.lan_job("/books", &op, label, done.clone(), phone::Follow::Refresh, false)?;
+            return Ok(done);
+        }
+        let actor = self.actor()?;
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let msg = store.apply_books_op(op, &actor)?;
+        let _ = self.reload_all();
+        Ok(msg)
     }
 
     /// Hand a write to the device's LAN worker (Client only). `queued`

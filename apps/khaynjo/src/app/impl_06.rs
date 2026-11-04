@@ -654,7 +654,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.ensure_store(cx);
         let err = {
             let mut st = app_state().lock().unwrap();
-            if let Err(e) = st.require_server_role("Change extra tills") {
+            if let Err(e) = st.require_server_host("Change extra tills") {
                 Some(e)
             } else if st.store.is_none() {
                 Some("Storage not ready".into())
@@ -856,7 +856,25 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                         }
                     }
                     Ok(reply) => {
-                        said = Some(answer.done.clone());
+                        let raw = reply["message"]
+                            .as_str()
+                            .filter(|s| !s.is_empty())
+                            .map(str::to_string)
+                            .unwrap_or_else(|| answer.done.clone());
+                        let (status, slip) = books_op::shift_slip_parts(&raw);
+                        if let Some(slip) = slip {
+                            let dir = st
+                                .store
+                                .as_ref()
+                                .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
+                            let _ = print_share::print_text(
+                                print_share::PrintKind::Bill,
+                                slip,
+                                dir.as_deref(),
+                            );
+                            st.last_receipt = slip.to_string();
+                        }
+                        said = Some(status.to_string());
                         match answer.follow {
                             phone::Follow::Refresh => {}
                             phone::Follow::BillText => {
@@ -1893,7 +1911,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 .store
                 .as_ref()
                 .map(|s| s.floor_columns_for_area(&area))
-                .unwrap_or(0);
+                .unwrap_or(4);
         }
         self.sync_floor_columns_field(cx, true);
         // Same as category chips: paint idle/active faces from state now —
@@ -1940,7 +1958,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     .store
                     .as_ref()
                     .map(|s| s.floor_columns_for_area(&st.floor_area_tab))
-                    .unwrap_or(0);
+                    .unwrap_or(4);
                 cols_changed = st.floor_columns != cols;
                 st.floor_columns = cols;
             }

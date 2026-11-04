@@ -238,20 +238,17 @@ impl App {
                 if marked {
                     let result = (|| -> Result<(), String> {
                         let mut st = app_state().lock().unwrap();
-                        st.require_server_role("Mark items sold out")?;
                         let product = st
                             .products
                             .get(item_id)
                             .cloned()
                             .ok_or_else(|| "Missing product".to_string())?;
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.set_product_available(&product.id, !product.available)?;
-                        st.reload_all()?;
-                        st.status = if product.available {
-                            format!("{} marked sold out", product.name)
-                        } else {
-                            format!("{} restocked", product.name)
-                        };
+                        let msg = st.books_op(BooksOp::SetProductAvailable {
+                            id: product.id.clone(),
+                            name: product.name.clone(),
+                            available: !product.available,
+                        })?;
+                        st.status = msg;
                         Ok(())
                     })();
                     if let Err(e) = result {
@@ -697,33 +694,28 @@ impl App {
             let password = self.ui.text_input(cx, ids!(staff_password_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add staff")?;
                 if !st.owner_setup_complete {
                     return Err("Finish Owner PIN setup before adding staff".into());
                 }
-                let actor = st.actor()?;
                 let role = st.draft_staff_role;
                 let features = st.draft_features.clone();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.add_staff_with_features(
-                    &store::StaffHire {
-                        name: &name,
-                        role,
-                        role_title: &title,
-                        pin: &pin,
-                        login_id: &login,
-                        password: &password,
-                        features,
-                    },
-                    &actor,
-                )?;
-                st.reload_all()?;
-                st.team_staff_id = st
-                    .staff
-                    .iter()
-                    .rev()
-                    .find(|s| !s.is_owner())
-                    .map(|s| s.id.clone());
+                st.books_op(BooksOp::HireStaff {
+                    name: name.clone(),
+                    role,
+                    role_title: title.clone(),
+                    pin: pin.clone(),
+                    login_id: login.clone(),
+                    password: password.clone(),
+                    features,
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.team_staff_id = st
+                        .staff
+                        .iter()
+                        .rev()
+                        .find(|s| !s.is_owner())
+                        .map(|s| s.id.clone());
+                }
                 st.status = format!("Added {}", name.trim());
                 Ok(())
             })();
@@ -753,15 +745,16 @@ impl App {
             let login = self.ui.text_input(cx, ids!(staff_login_input)).text();
             let password = self.ui.text_input(cx, ids!(staff_password_input)).text();
             let result = (|| -> Result<(), String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Change staff logins")?;
-                let actor = st.actor()?;
+                let mut st = app_state().lock().unwrap();
                 let staff_id = st
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| "Add or pick a staff member first".to_string())?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_staff_login(&staff_id, &login, &password, &actor)?;
+                st.books_op(BooksOp::SetStaffLogin {
+                    staff_id,
+                    login_id: login,
+                    password,
+                })?;
                 Ok(())
             })();
             match result {
@@ -773,8 +766,6 @@ impl App {
         if self.ui.button(cx, ids!(staff_deactivate)).clicked(actions) {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Remove staff")?;
-                let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
@@ -785,16 +776,18 @@ impl App {
                     .find(|s| s.id == staff_id)
                     .map(|s| s.name.clone())
                     .unwrap_or_else(|| staff_id.clone());
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.deactivate_staff(&staff_id, &actor)?;
+                let msg = st.books_op(BooksOp::DeactivateStaff {
+                    staff_id: staff_id.clone(),
+                    name: removed_name.clone(),
+                })?;
                 st.team_staff_id = None;
-                st.reload_all()?;
-                if st.staff.iter().any(|s| s.id == staff_id) {
+                if st.device_role != DeviceRole::Client && st.staff.iter().any(|s| s.id == staff_id)
+                {
                     return Err(format!(
                         "Could not remove {removed_name} — they are still on the team"
                     ));
                 }
-                Ok(format!("Removed {removed_name}"))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -885,10 +878,7 @@ impl App {
             let confirm = self.ui.text_input(cx, ids!(duress_pin_confirm)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set emergency unlock PIN")?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_duress_pin(&pin, &confirm, &actor)?;
+                st.books_op(BooksOp::SetDuressPin { pin, confirm })?;
                 st.status = st.t("duress_saved");
                 Ok(())
             })();
@@ -904,10 +894,7 @@ impl App {
         if self.ui.button(cx, ids!(clear_duress_pin)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Clear emergency unlock PIN")?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.clear_duress_pin(&actor)?;
+                st.books_op(BooksOp::ClearDuressPin)?;
                 st.status = st.t("duress_cleared");
                 Ok(())
             })();
@@ -998,8 +985,6 @@ impl App {
         if self.ui.button(cx, ids!(feat_save)).clicked(actions) {
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change staff permissions")?;
-                let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
@@ -1011,9 +996,7 @@ impl App {
                     })
                     .ok_or_else(|| "Add staff first".to_string())?;
                 let features = st.draft_features.clone();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_staff_features(&staff_id, &features, &actor)?;
-                st.reload_all()?;
+                st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
                 st.status = "Staff features saved".into();
                 Ok(())
             })();

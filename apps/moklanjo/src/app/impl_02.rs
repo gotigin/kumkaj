@@ -1907,7 +1907,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .set_visible(cx, is_client && paired);
             }
             {
-                let duress_on = is_shop && is_owner;
+                // Emergency unlock PIN — the Owner, including on an extra till.
+                let duress_on = is_owner;
                 let configured = duress_on
                     && app_state()
                         .lock()

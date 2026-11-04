@@ -1,6 +1,9 @@
 impl App {
 fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
-        let bottom = 8.0 + cx.display_context.safe_area_insets.bottom;
+        // Bottom pad = home-indicator inset only (0 on desktop). Extra DSL
+        // bottom pad sat *under* the ScrollX scrollbar and read as a dead
+        // strip below the bar — keep the scrollbar flush to the chrome edge.
+        let bottom = cx.display_context.safe_area_insets.bottom;
         let nav = self.ui.view(cx, ids!(bottom_nav));
         let changed = if let Some(mut inner) = nav.borrow_mut() {
             if (inner.layout.padding.bottom - bottom).abs() > 0.5 {

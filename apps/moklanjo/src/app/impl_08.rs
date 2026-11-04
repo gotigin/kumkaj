@@ -193,11 +193,6 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
-            st.require_server_role(if updating {
-                "Change items"
-            } else {
-                "Add items"
-            })?;
             let actor = st.actor()?;
             if !actor.role.can_manage_items() {
                 return Err("Not allowed to manage items".into());
@@ -216,114 +211,47 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
             if price_minor < 0 {
                 return Err("Price cannot be negative".into());
             }
-            let mut image_key = st.draft_image_key.clone();
-            let editing_id = st.editing_product_id.clone();
-            // Auto: leave None so display always re-detects from name.
-            // Built-in / custom: persist chosen key.
-            let product_id = editing_id.clone().unwrap_or_else(new_id);
-            if let Some(key) = image_key.clone()
-                && key.starts_with("pending_custom:")
-            {
-                let src = std::path::PathBuf::from(&key["pending_custom:".len()..]);
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                image_key = Some(store.import_item_image(&product_id, &src)?);
-            }
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            // Sellers type either a rate from their country pack ("Standard",
-            // "GST 18%") or a bare percent, which becomes a named rate.
-            let tax_rate = store.resolve_tax_rate(&tax_text)?;
-            let category_id = match category_text.trim() {
-                "" => String::new(),
-                wanted => match store
-                    .list_categories()?
-                    .into_iter()
-                    .find(|c| c.name.eq_ignore_ascii_case(wanted))
-                {
-                    Some(c) => c.id,
-                    None => store.add_category(wanted)?.id,
-                },
-            };
             let modifiers = domain::ModifierOption::parse_human_list(&modifiers_text, &currency)?;
-            let mut product = if let Some(id) = editing_id {
-                store
-                    .get_product(&id)?
-                    .ok_or_else(|| "That item is no longer in Items".to_string())?
-            } else {
-                Product::new_basic(product_id, name, Money(price_minor))
-            };
-            product.name = name.to_string();
-            product.price = Money(price_minor);
-            product.unit_label = unit_text.trim().to_string();
-            product.image_key = image_key;
-            product.set_aliases(&typed_aliases(&aliases_text));
-            if let Some(rate) = &tax_rate {
-                product.tax_rate_id = rate.id.clone();
-                product.tax_bps = rate.bps;
-            } else {
-                product.tax_rate_id.clear();
-                product.tax_bps = 0;
-            }
-            product.category_id = category_id;
-            product.set_modifiers(&modifiers);
-            product.first_kg = booking::parse_positive(&first_kg_text).unwrap_or(precise::ZERO);
-            product.first_paise =
-                locale::parse_major_input(&first_amt_text, &currency).unwrap_or(0);
-            product.extra_per_kg_paise =
-                locale::parse_major_input(&extra_kg_text, &currency).unwrap_or(0);
-            let zone_name = zone_text.trim();
-            if !zone_name.is_empty() {
-                let zones = store.list_zones()?;
-                let zone = if let Some(z) = zones
-                    .iter()
-                    .find(|z| z.name.eq_ignore_ascii_case(zone_name))
-                {
-                    z.clone()
-                } else {
-                    store.add_zone(zone_name)?
-                };
-                product.zone_id = zone.id;
-            } else {
-                product.zone_id.clear();
-            }
-            let parties = store.list_customers()?;
-            let resolve_party = |typed: &str| -> Result<String, String> {
-                let typed = typed.trim();
-                if typed.is_empty() {
-                    return Ok(String::new());
+            let product_id = st.editing_product_id.clone().unwrap_or_default();
+            let (image_bytes, image_filename, existing_image_key) = match st.draft_image_key.clone()
+            {
+                Some(key) if key.starts_with("pending_custom:") => {
+                    let src = std::path::PathBuf::from(&key["pending_custom:".len()..]);
+                    let bytes = std::fs::read(&src)
+                        .map_err(|e| format!("Could not read the photo: {e}"))?;
+                    let filename = src
+                        .file_name()
+                        .and_then(|n| n.to_str())
+                        .unwrap_or("item.webp")
+                        .to_string();
+                    (bytes, filename, None)
                 }
-                if let Some(p) = parties
-                    .iter()
-                    .find(|p| p.name.eq_ignore_ascii_case(typed) || p.id == typed)
-                {
-                    return Ok(p.id.clone());
-                }
-                Err(format!("No party named “{typed}” — add them on Parties first"))
+                other => (Vec::new(), String::new(), other),
             };
-            product.carrier_party_id = resolve_party(&carrier_text)?;
-            product.party_id = resolve_party(&party_text)?;
-            store.upsert_product(&product)?;
-            let verb = if updating { "menu.update" } else { "menu.add" };
-            // A price change says from what to what: who changed a price is
-            // the question the owner asks of the audit (vision §18).
-            let was = st.products.iter().find(|p| p.id == product.id).map(|p| p.price);
-            let detail = match was {
-                Some(old) if old != product.price => format!(
-                    "{} · {} → {}",
-                    product.name,
-                    old.format_localized(&st.locale.currency, &st.fiscal),
-                    product.price.format_localized(&st.locale.currency, &st.fiscal)
-                ),
-                _ => product.name.clone(),
-            };
-            store.audit(&actor, verb, &detail)?;
+            let msg = st.books_op(BooksOp::SaveItem {
+                updating,
+                product_id,
+                name: name.to_string(),
+                price_paise: price_minor,
+                unit_label: unit_text.trim().to_string(),
+                aliases: typed_aliases(&aliases_text),
+                tax_text: tax_text.trim().to_string(),
+                category_name: category_text.trim().to_string(),
+                modifiers,
+                first_kg: first_kg_text,
+                first_paise: locale::parse_major_input(&first_amt_text, &currency).unwrap_or(0),
+                extra_per_kg_paise: locale::parse_major_input(&extra_kg_text, &currency)
+                    .unwrap_or(0),
+                zone_name: zone_text.trim().to_string(),
+                carrier_name: carrier_text.trim().to_string(),
+                party_name: party_text.trim().to_string(),
+                image_bytes,
+                image_filename,
+                existing_image_key,
+            })?;
             st.draft_image_key = None;
             st.editing_product_id = None;
-            st.reload_all()?;
-            st.status = if updating {
-                format!("Updated {}", product.name)
-            } else {
-                format!("Added {}", product.name)
-            };
+            st.status = msg;
             Ok(())
         })();
         match result {
@@ -342,7 +270,6 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         };
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Remove items")?;
             let actor = st.actor()?;
             if !actor.role.can_manage_items() {
                 return Err("Not allowed to manage items".into());
@@ -352,16 +279,16 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
                 .get(index)
                 .cloned()
                 .ok_or_else(|| "Missing product".to_string())?;
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.archive_product(&product.id)?;
-            store.audit(&actor, "menu.remove", &product.name)?;
+            let msg = st.books_op(BooksOp::ArchiveProduct {
+                id: product.id.clone(),
+                name: product.name.clone(),
+            })?;
             if st.editing_product_id.as_deref() == Some(product.id.as_str()) {
                 st.editing_product_id = None;
                 st.draft_image_key = None;
             }
             st.cart.lines.retain(|l| l.product_id != product.id);
-            st.reload_all()?;
-            st.status = format!("Removed {}", product.name);
+            st.status = msg;
             Ok(())
         })();
         if let Err(e) = result {
@@ -380,8 +307,12 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
             // On DeviceSetup, preview immediately; persist when Server/Client is chosen.
             // After unlock (Settings), persist as the fixed user language.
             if !st.must_confirm_device_role {
-                if let Some(store) = st.store.as_ref() {
-                    st.locale = store.set_user_language(code)?;
+                st.books_op(BooksOp::SetUserLanguage {
+                    code: code.to_string(),
+                })?;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.language = code.into();
+                    st.language_follow_platform = false;
                 }
                 st.save_remembered_language();
             }
@@ -690,10 +621,20 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
     }
 
     fn save_backup_copy(&mut self, cx: &mut Cx) {
+        if app_state().lock().unwrap().device_role == DeviceRole::Client {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::SaveBackupCopy)
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            return;
+        }
         // VACUUM runs on a worker; the save dialog opens when Signal fires.
         let job = (|| -> Result<(PathBuf, PathBuf, String), String> {
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Save a backup copy")?;
             if let Some(old) = st.pending_backup_copy.take() {
                 let _ = std::fs::remove_file(old);
             }
@@ -749,7 +690,7 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         let job = (|| -> Result<(PathBuf, PathBuf, PathBuf), String> {
             store::check_backup_file(&backup)?;
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Restore a backup")?;
+            st.require_server_host("Restore a backup")?;
             let store = st.store.as_ref().ok_or("No store")?;
             let db = store.db_path().to_path_buf();
             let before = store.auto_backup_dir().join(format!(

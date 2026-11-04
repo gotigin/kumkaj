@@ -53,7 +53,7 @@ impl AppState {
             ops_panel_text: String::new(),
             floor_ops_text: String::new(),
             floor_waiter_filter: String::new(),
-            floor_columns: 0,
+            floor_columns: 4,
             floor_area_tab: String::new(),
             floor_area_order: Vec::new(),
             floor_view_layout: false,
@@ -440,14 +440,30 @@ impl AppState {
         self.locale.language = platform;
     }
 
-    /// Guard for anything the shop device alone may write. An extra till's catalogue,
-    /// stock, staff and settings tables are a sync cache, so editing them here
-    /// would vanish on the next snapshot.
-    fn require_server_role(&self, what: &str) -> Result<(), String> {
+    /// Device exception: only the shop host may do this (backup folder, extra
+    /// tills, pairing code, forget a device, restore). A Client's copy is not
+    /// the shop.
+    fn require_server_host(&self, what: &str) -> Result<(), String> {
         if self.device_role == DeviceRole::Client {
             return Err(format!("{what} on the shop device — this is an extra till"));
         }
         Ok(())
+    }
+
+    /// Person-level book write. A Client asks the shop over `POST /books`;
+    /// the shop applies it and this device reloads after a local apply.
+    fn books_op(&mut self, op: BooksOp) -> Result<String, String> {
+        if self.device_role == DeviceRole::Client {
+            let label = op.label();
+            let done = op.done_message();
+            self.lan_job("/books", &op, label, done.clone(), phone::Follow::Refresh, false)?;
+            return Ok(done);
+        }
+        let actor = self.actor()?;
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let msg = store.apply_books_op(op, &actor)?;
+        let _ = self.reload_all();
+        Ok(msg)
     }
 
     /// LAN details a Client needs to ask the Server to do the writing.
@@ -1049,13 +1065,18 @@ impl AppState {
     }
 
     /// Write Kitchen dropdown priority / multi-check / default into books meta.
-    fn persist_kot_station_prefs(&self) {
-        let Some(store) = self.store.as_ref() else {
+    fn persist_kot_station_prefs(&mut self) {
+        if self.store.is_none() {
             return;
+        }
+        let op = BooksOp::SetKotStationPrefs {
+            priority_csv: self.kot_station_priority.join(","),
+            selected_csv: self.kot_stations_selected.join(","),
+            default_id: self.kot_station_default.clone(),
         };
-        let _ = store.set_kot_station_priority_csv(&self.kot_station_priority.join(","));
-        let _ = store.set_kot_stations_selected_csv(&self.kot_stations_selected.join(","));
-        let _ = store.set_kot_station_default(&self.kot_station_default);
+        if let Err(e) = self.books_op(op) {
+            self.status = e;
+        }
     }
 
     /// Check a station (multi-select): remember selection + default.
@@ -1305,18 +1326,6 @@ impl AppState {
             _ => {}
         }
         Ok(None)
-    }
-
-    /// The stock item for `name`, created as a raw material (with `unit`)
-    /// when the restaurant has never bought it before.
-    fn stock_item_or_new(&mut self, name: &str, unit: &str) -> Result<Product, String> {
-        if let Some(p) = self.find_stock_item(name)? {
-            return Ok(p);
-        }
-        let p = Product::new_raw_material(name, unit);
-        self.store.as_ref().ok_or("No store")?.upsert_product(&p)?;
-        self.reload_all()?;
-        Ok(p)
     }
 
     fn refresh_inventory_text(&mut self) -> Result<(), String> {

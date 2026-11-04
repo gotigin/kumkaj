@@ -147,7 +147,6 @@ impl App {
             let note = self.ui.text_input(cx, ids!(inv_note_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Adjust stock")?;
                 let actor = st.actor()?;
                 if !actor.can_access_inventory() && !actor.is_owner() {
                     return Err("Not allowed to change stock".into());
@@ -167,20 +166,15 @@ impl App {
                     ));
                 }
                 let delta = if inv_plus { qty } else { -qty };
-                let note = note.trim().to_string();
-                let reason = if note.is_empty() {
-                    "adjust"
-                } else {
-                    note.as_str()
-                };
-                let on_hand = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .adjust_stock(&product.id, delta, reason, &note, &actor)?;
-                st.reload_all()?;
-                st.refresh_inventory_text()?;
-                Ok(format!("{} · {on_hand} on hand", product.name))
+                let msg = st.books_op(BooksOp::AdjustStock {
+                    product_id: product.id,
+                    delta_qty: delta,
+                    note: note.trim().to_string(),
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_inventory_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -196,7 +190,6 @@ impl App {
             let qty_text = self.ui.text_input(cx, ids!(inv_qty_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Start stock tracking")?;
                 let actor = st.actor()?;
                 if !actor.can_access_inventory() && !actor.is_owner() {
                     return Err("Not allowed to change stock".into());
@@ -213,14 +206,14 @@ impl App {
                 if opening < 0 {
                     return Err("Quantity cannot be negative".into());
                 }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_product_stock_qty(&product.id, 0)?;
-                if opening > 0 {
-                    store.adjust_stock(&product.id, opening, "count", "opening count", &actor)?;
+                let msg = st.books_op(BooksOp::StartStockTracking {
+                    product_id: product.id,
+                    opening,
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_inventory_text()?;
                 }
-                st.reload_all()?;
-                st.refresh_inventory_text()?;
-                Ok(format!("{} now tracked · {opening} on hand", product.name))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -239,8 +232,6 @@ impl App {
             let note = self.ui.text_input(cx, ids!(inv_note_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Record purchases")?;
-                let actor = st.actor()?;
                 let qty_milli = parse_qty_to_milli(&qty_text)?;
                 let product = st.find_product_by_name(&name)?;
                 let currency = st.locale.currency.clone();
@@ -248,24 +239,19 @@ impl App {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let purchase = st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .record_purchase(
-                        supplier.trim(),
-                        &[(product.id.clone(), qty_milli, unit_cost)],
-                        note.trim(),
-                        &actor,
-                    )?;
-                st.reload_all()?;
-                st.refresh_inventory_text()?;
-                let qty_show = domain::format_qty_display(qty_milli, 0, &product.unit_label);
-                Ok(format!(
-                    "Received {qty_show} {} · {}",
-                    product.name,
-                    st.money(Money(purchase.total_paise))
-                ))
+                let msg = st.books_op(BooksOp::RecordPurchase {
+                    supplier: supplier.trim().to_string(),
+                    party_kind: String::new(),
+                    on_account: false,
+                    product_id: product.id,
+                    qty_milli,
+                    unit_cost_paise: unit_cost,
+                    note: note.trim().to_string(),
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_inventory_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -283,17 +269,15 @@ impl App {
             let name = self.ui.text_input(cx, ids!(org_name_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Rename the business")?;
                 let actor = st.actor()?;
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can rename the business".into());
                 }
-                st.store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .set_org_name(&name)?;
-                st.refresh_branches_text()?;
-                Ok("Business name saved".to_string())
+                let msg = st.books_op(BooksOp::RenameBusiness { name })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_branches_text()?;
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -321,28 +305,30 @@ impl App {
             }
         }
         if self.ui.button(cx, ids!(branch_import)).clicked(actions) {
-            let job = (|| -> Result<PathBuf, String> {
-                let st = app_state().lock().unwrap();
-                st.require_server_role("Import a branch day")?;
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can import a branch day".into());
                 }
-                Ok(st
-                    .store
-                    .as_ref()
-                    .ok_or_else(|| "No store".to_string())?
-                    .db_path()
-                    .to_path_buf())
-            })();
-            match job {
-                Ok(db) => {
-                    self.set_status(cx, "Importing day…");
-                    self.paint_submit_busy_chrome(cx);
-                    branch_import_job(db);
+                let path = store::data_dir()?
+                    .join("backups")
+                    .join("import_branch_snapshot.json");
+                if !path.exists() {
+                    return Err("Missing backups/import_branch_snapshot.json".into());
                 }
+                let json = std::fs::read_to_string(&path).map_err(|e| e.to_string())?;
+                let msg = st.books_op(BooksOp::ImportBranchSnapshot { json })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_branches_text()?;
+                }
+                Ok(msg)
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
                 Err(e) => self.set_status(cx, e),
             }
+            self.sync_chrome(cx);
         }
         for cancel_id in [
             ids!(branch_export_cancel),
@@ -428,10 +414,11 @@ impl App {
             let name = self.ui.text_input(cx, ids!(unit_name_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add units")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.add_unit(&code, &name)?;
-                st.status = format!("Unit {code} added");
+                let msg = st.books_op(BooksOp::AddUnit {
+                    code: code.clone(),
+                    name,
+                })?;
+                st.status = msg;
                 Ok(())
             })();
             match result {
@@ -455,21 +442,12 @@ impl App {
                 let factor_milli = parse_qty_to_milli(&factor_text)
                     .map_err(|_| "Factor must be a number > 0".to_string())?;
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add unit conversion")?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.add_unit_conversion(&from, &to, factor_milli)?;
-                st.status = match store.resolve_unit(&from) {
-                    Some((family, factor)) => {
-                        let anchor = domain::unit_family_anchor(&family).unwrap_or("");
-                        format!(
-                            "Added — now 1 {from} = {} {anchor} ({family})",
-                            precise::format_kg(factor)
-                        )
-                    }
-                    None => format!(
-                        "1 {from} → {to} added — '{from}' is not linked to a standard unit yet"
-                    ),
-                };
+                let msg = st.books_op(BooksOp::AddUnitConversion {
+                    from_code: from,
+                    to_code: to,
+                    factor_milli,
+                })?;
+                st.status = msg;
                 Ok(())
             })();
             match result {
@@ -798,15 +776,6 @@ impl App {
             let label = self.ui.text_input(cx, ids!(awb_pool_label_input)).text();
             let outcome = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Add AWB pool")?;
-                let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                let party = store
-                    .list_customers()?
-                    .into_iter()
-                    .find(|c| {
-                        c.name.eq_ignore_ascii_case(carrier.trim()) || c.id == carrier.trim()
-                    })
-                    .ok_or_else(|| "Carrier party not found — add them on Parties first".to_string())?;
                 let start_n: i64 = start_t
                     .trim()
                     .parse()
@@ -815,11 +784,13 @@ impl App {
                     .trim()
                     .parse()
                     .map_err(|_| "End no. must be a number".to_string())?;
-                let pool = store.add_awb_pool(&party.id, &prefix, start_n, end_n, &label)?;
-                Ok(format!(
-                    "AWB pool {}{}–{} for {}",
-                    pool.prefix, pool.start_n, pool.end_n, party.name
-                ))
+                st.books_op(BooksOp::AddAwbPool {
+                    carrier,
+                    prefix,
+                    start_n,
+                    end_n,
+                    label,
+                })
             })();
             match outcome {
                 Ok(m) => self.set_status(cx, m),

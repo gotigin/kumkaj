@@ -1672,6 +1672,7 @@ impl Store {
 
     /// Offline aggregator file drop (Zomato/Swiggy-style JSON). Never blocks counter.
     pub fn import_aggregator_orders_file(&self, json: &str) -> Result<usize, String> {
+        self.assert_server_writer("Import aggregator orders")?;
         let val: serde_json::Value =
             serde_json::from_str(json).map_err(|e| format!("Bad aggregator file: {e}"))?;
         let orders = val
@@ -2646,7 +2647,9 @@ mod tests {
         shop.store.set_floor_view("grid").unwrap();
         assert_eq!(shop.store.floor_view().unwrap(), "grid");
         // Columns are per area on this device (legacy whole-floor is fallback).
-        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 0);
+        // Unset → 4 for every area (Dine In, Parcel, …).
+        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 4);
+        assert_eq!(shop.store.floor_columns_for_area("Parcel"), 4);
         shop.store.set_floor_columns(3).unwrap();
         assert_eq!(shop.store.floor_columns_for_area("Dine In"), 3);
         shop.store.set_floor_columns_for_area("Parcel", 5).unwrap();

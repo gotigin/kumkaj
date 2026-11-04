@@ -7,6 +7,7 @@
 #[cfg(target_os = "android")]
 pub use makepad_widgets;
 
+pub mod books_op;
 pub mod diag;
 pub mod domain;
 pub mod entity_template;

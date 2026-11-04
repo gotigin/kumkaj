@@ -99,57 +99,47 @@ impl App {
                     country_code_from_label(&country)
                 };
                 let phone = with_calling_code(&phone_raw, &dial_country);
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let pending = st.draft_party_image_key.clone();
+                let (image_bytes, image_filename, image_key) = party_image_parts(&pending)?;
                 if let Some(id) = st.selected_customer_id.clone() {
-                    st.require_server_role("Edit party")?;
-                    store.update_customer(&id, &name, &phone, &address)?;
-                    store.set_customer_kind_label(&id, kind.trim())?;
-                    // Optional logo picked while editing.
-                    let pending = st.draft_party_image_key.clone();
-                    if let Some(key) = pending.as_deref() {
-                        if key.starts_with("pending_custom:") {
-                            let src = PathBuf::from(&key["pending_custom:".len()..]);
-                            let imported = store.import_party_image(&id, &src)?;
-                            store.set_customer_image_key(&id, Some(&imported))?;
-                        } else if key.is_empty() {
-                            store.set_customer_image_key(&id, None)?;
-                        } else {
-                            store.set_customer_image_key(&id, Some(key))?;
-                        }
-                        st.draft_party_image_key = None;
-                    }
-                    st.reload_all()?;
-                    Ok((format!("Party updated: {}", name.trim()), false))
+                    let msg = st.books_op(BooksOp::UpdateParty {
+                        id,
+                        name: name.clone(),
+                        phone,
+                        address: address.clone(),
+                        kind: kind.clone(),
+                        image_bytes,
+                        image_filename,
+                        image_key,
+                    })?;
+                    st.draft_party_image_key = None;
+                    Ok((msg, false))
                 } else {
-                    st.require_server_role("Add customers")?;
-                    let customer = store.add_customer_kind(&name, &phone, kind.trim())?;
-                    if !address.trim().is_empty() {
-                        store.update_customer(&customer.id, &name, &phone, &address)?;
-                    }
-                    let pending = st.draft_party_image_key.clone();
-                    if let Some(key) = pending.as_deref() {
-                        if key.starts_with("pending_custom:") {
-                            let src = PathBuf::from(&key["pending_custom:".len()..]);
-                            let imported = store.import_party_image(&customer.id, &src)?;
-                            store.set_customer_image_key(&customer.id, Some(&imported))?;
-                        }
-                        st.draft_party_image_key = None;
-                    }
+                    let msg = st.books_op(BooksOp::AddParty {
+                        name: name.clone(),
+                        phone,
+                        address: address.clone(),
+                        kind: kind.clone(),
+                        image_bytes,
+                        image_filename,
+                        image_key,
+                    })?;
                     // Stay ready for the next party — do NOT leave this one
                     // selected. Otherwise the next "Add party" becomes
                     // "Save changes" and overwrites the same row (owner
                     // thought they added 12 and only saw one name).
                     st.selected_customer_id = None;
-                    st.reload_all()?;
-                    let n = st.customers.len();
-                    Ok((
+                    st.draft_party_image_key = None;
+                    let status = if st.device_role == DeviceRole::Client {
+                        msg
+                    } else {
                         format!(
                             "Added {} — {} saved. Form cleared for the next party.",
                             name.trim(),
-                            n
-                        ),
-                        true,
-                    ))
+                            st.customers.len()
+                        )
+                    };
+                    Ok((status, true))
                 }
             })();
             match result {
@@ -256,15 +246,12 @@ impl App {
         if self.ui.button(cx, ids!(party_delete)).clicked(actions) {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Delete party")?;
                 let id = st
                     .selected_customer_id
                     .clone()
                     .ok_or_else(|| "Pick a party first".to_string())?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let msg = store.delete_customer(&id)?;
+                let msg = st.books_op(BooksOp::DeleteParty { id })?;
                 st.selected_customer_id = None;
-                st.reload_all()?;
                 Ok(msg)
             })();
             match result {
@@ -300,15 +287,15 @@ impl App {
             let value = self.ui.text_input(cx, ids!(party_custom_value)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Edit party")?;
                 let id = st
                     .selected_customer_id
                     .clone()
                     .ok_or_else(|| "Pick a party first".to_string())?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_customer_custom_field(&id, &key, &value)?;
-                st.reload_all()?;
-                Ok(format!("Saved field {}", key.trim()))
+                st.books_op(BooksOp::SetPartyField {
+                    id,
+                    key: key.clone(),
+                    value,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -328,15 +315,11 @@ impl App {
             let key = self.ui.text_input(cx, ids!(party_custom_key)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Edit party")?;
                 let id = st
                     .selected_customer_id
                     .clone()
                     .ok_or_else(|| "Pick a party first".to_string())?;
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.remove_customer_custom_field(&id, &key)?;
-                st.reload_all()?;
-                Ok(format!("Removed field {}", key.trim()))
+                st.books_op(BooksOp::RemovePartyField { id, key })
             })();
             match result {
                 Ok(msg) => {
@@ -357,7 +340,6 @@ impl App {
             let named = self.ui.text_input(cx, ids!(credit_limit_party)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Set credit limit")?;
                 let currency = st.locale.currency.clone();
                 let limit_paise = if limit_text.trim().is_empty() {
                     0
@@ -377,10 +359,10 @@ impl App {
                         .map(|c| c.name.clone())
                         .ok_or_else(|| "Party not found".to_string())?
                 };
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let msg = courier_ops_view::set_credit_limit(store, &party_name, limit_paise)?;
-                st.reload_all()?;
-                Ok(msg)
+                st.books_op(BooksOp::SetCreditLimit {
+                    party_name,
+                    limit_paise,
+                })
             })();
             match result {
                 Ok(msg) => {
@@ -401,8 +383,6 @@ impl App {
             let named = self.ui.text_input(cx, ids!(credit_limit_party)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Period bill")?;
-                let actor = st.actor()?;
                 let party_name = if !named.trim().is_empty() {
                     named
                 } else {
@@ -416,10 +396,7 @@ impl App {
                         .map(|c| c.name.clone())
                         .ok_or_else(|| "Party not found".to_string())?
                 };
-                let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
-                let msg = courier_ops_view::period_bill_party(store, &party_name, &actor)?;
-                st.reload_all()?;
-                Ok(msg)
+                st.books_op(BooksOp::PeriodBill { party_name })
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -432,8 +409,6 @@ impl App {
             let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Write off credit")?;
-                let actor = st.actor()?;
                 let customer_id = st
                     .selected_customer_id
                     .clone()
@@ -443,14 +418,13 @@ impl App {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let written = st
-                    .store
-                    .as_mut()
-                    .ok_or_else(|| "No store".to_string())?
-                    .write_off_credit(&customer_id, amount, &reason, &actor)?;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::WriteOffCredit {
+                    customer_id,
+                    amount_paise: amount,
+                    reason,
+                })?;
                 let _ = st.refresh_books_overview();
-                Ok(format!("Wrote off {}", st.money(Money(written))))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => {
@@ -476,45 +450,28 @@ impl App {
                 let bill_text = self.ui.text_input(cx, ids!(payable_bill_input)).text();
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    st.require_server_role("Settle payable")?;
-                    let actor = st.actor()?;
                     let party_id = st
                         .selected_customer_id
                         .clone()
                         .ok_or_else(|| "Pick a party first".to_string())?;
                     let currency = st.locale.currency.clone();
                     let amount = locale::parse_major_input(&amount_text, &currency)?;
-                    // Optional bill-wise allocation (bill # from the list).
-                    let against = match bill_text.trim() {
+                    let bill_number = match bill_text.trim() {
                         "" => None,
-                        other => {
-                            let n: usize = other
+                        other => Some(
+                            other
                                 .parse()
-                                .map_err(|_| "Bill # must be a number from the list".to_string())?;
-                            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                            let bills = store.open_payable_bills(&party_id)?;
-                            Some(
-                                bills
-                                    .get(n.wrapping_sub(1))
-                                    .map(|b| b.bill_id.clone())
-                                    .ok_or_else(|| "No such open bill".to_string())?,
-                            )
-                        }
+                                .map_err(|_| "Bill # must be a number from the list".to_string())?,
+                        ),
                     };
-                    st.store
-                        .as_mut()
-                        .ok_or_else(|| "No store".to_string())?
-                        .settle_payable_against(
-                            &party_id,
-                            amount,
-                            method,
-                            &actor,
-                            "",
-                            against.as_deref(),
-                        )?;
-                    st.reload_all()?;
+                    let msg = st.books_op(BooksOp::SettlePayable {
+                        party_id,
+                        amount_paise: amount,
+                        pay: method,
+                        bill_number,
+                    })?;
                     let _ = st.refresh_books_overview();
-                    Ok(format!("AP paid {}", st.money(Money(amount))))
+                    Ok(msg)
                 })();
                 match result {
                     Ok(msg) => {
@@ -536,8 +493,6 @@ impl App {
             let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Write off payable")?;
-                let actor = st.actor()?;
                 let party_id = st
                     .selected_customer_id
                     .clone()
@@ -547,14 +502,13 @@ impl App {
                     "" => 0,
                     other => locale::parse_major_input(other, &currency)?,
                 };
-                let written = st
-                    .store
-                    .as_mut()
-                    .ok_or_else(|| "No store".to_string())?
-                    .write_off_payable(&party_id, amount, &reason, &actor)?;
-                st.reload_all()?;
+                let msg = st.books_op(BooksOp::WriteOffPayable {
+                    party_id,
+                    amount_paise: amount,
+                    reason,
+                })?;
                 let _ = st.refresh_books_overview();
-                Ok(format!("AP wrote off {}", st.money(Money(written))))
+                Ok(msg)
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -768,5 +722,25 @@ impl App {
             }
         }
 
+    }
+}
+
+/// Logo picked on this device: file bytes travel with the party write.
+/// `None` leaves the stored logo. `Some("")` clears it.
+fn party_image_parts(
+    pending: &Option<String>,
+) -> Result<(Vec<u8>, String, Option<String>), String> {
+    match pending.as_deref() {
+        Some(key) if key.starts_with("pending_custom:") => {
+            let src = PathBuf::from(&key["pending_custom:".len()..]);
+            let bytes = std::fs::read(&src).map_err(|e| format!("Could not read the logo: {e}"))?;
+            let filename = src
+                .file_name()
+                .and_then(|n| n.to_str())
+                .unwrap_or("logo.webp")
+                .to_string();
+            Ok((bytes, filename, None))
+        }
+        other => Ok((Vec::new(), String::new(), other.map(|s| s.to_string()))),
     }
 }

@@ -16,7 +16,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
-            st.require_server_role(if updating { "Change items" } else { "Add items" })?;
             let actor = st.actor()?;
             if !actor.role.can_manage_menu() {
                 return Err("Not allowed to manage items".into());
@@ -26,9 +25,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
                 return Err("Name required".into());
             }
             let currency = st.locale.currency.clone();
-            // Blank reads as ₹0, which is a real price (complimentary items,
-            // dishes priced at the counter by their @). Only negative is
-            // refused; the till bills whatever the form saves.
             let price_text = price_text.trim();
             let price_minor = if price_text.is_empty() {
                 0
@@ -38,163 +34,77 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
             if let Some(msg) = domain::menu_price_error(Money(price_minor)) {
                 return Err(msg);
             }
-            let mut image_key = st.draft_image_key.clone();
-            let editing_id = st.editing_product_id.clone();
-            // Auto: leave None so display always re-detects from name.
-            // Built-in / custom: persist chosen key.
-            let product_id = editing_id.clone().unwrap_or_else(new_id);
-            // Sizes typed on a new item make only the size items, not the
-            // base — so its photo is copied to each of them, not imported here.
-            let sizes_only = !variations_text.trim().is_empty() && !updating;
-            let photo_source: Option<PathBuf> = match image_key.as_deref() {
-                Some(k) if k.starts_with("pending_custom:") => {
-                    Some(PathBuf::from(&k["pending_custom:".len()..]))
-                }
-                Some(k) if k.starts_with("custom:") => st
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.item_images_dir().ok())
-                    .map(|d| d.join(&k["custom:".len()..])),
-                _ => None,
-            };
-            if let Some(key) = image_key.clone()
-                && key.starts_with("pending_custom:")
-                && !sizes_only {
-                    let src = std::path::PathBuf::from(&key["pending_custom:".len()..]);
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    image_key = Some(store.import_item_image(&product_id, &src)?);
-                }
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            // Sellers type either a rate from their country pack ("Standard",
-            // "GST 18%") or a bare percent, which becomes a named rate.
-            let tax_rate = store.resolve_tax_rate(&tax_text)?;
-            // A category picked from the Categories list travels by
-            // UUID; the typed text only has to still match what was
-            // picked. Retyping the field hands control back to name
-            // resolution (find-or-create by name — a typing
-            // convenience, never the identity).
-            let typed = category_text.trim();
-            let picked_id = match (&st.form_category_id, &st.form_category_label) {
-                (Some(id), label) if typed.eq_ignore_ascii_case(label) => store
-                    .list_categories()?
-                    .into_iter()
-                    .find(|c| &c.id == id)
-                    .map(|c| c.id),
-                _ => None,
-            };
-            let category_id = match picked_id {
-                Some(id) => id,
-                None => match typed {
-                    "" => String::new(),
-                    wanted => match store
-                        .list_categories()?
-                        .into_iter()
-                        .find(|c| c.name.eq_ignore_ascii_case(wanted))
-                    {
-                        Some(c) => c.id,
-                        None => store.add_category(wanted)?.id,
-                    },
-                },
-            };
-            // A shelf folder picked as the category brings its photo, the way
-            // a shelf dish brings the item's — only onto a category that has
-            // no photo yet, and only if the field still names that folder.
-            if let Some((label, photo)) = st.form_category_photo.clone()
-                && !category_id.is_empty()
-                && typed.eq_ignore_ascii_case(label.trim())
+            let product_id = st.editing_product_id.clone().unwrap_or_default();
+            let (image_bytes, image_filename, existing_image_key) = match st.draft_image_key.as_deref()
             {
-                store.set_category_photo_if_missing(&category_id, &photo)?;
-            }
-            // Kitchen station by name (created if new), same pattern as category.
-            let station_id = match station_text.trim() {
-                "" => String::new(),
-                wanted => match store
-                    .list_stations()?
-                    .into_iter()
-                    .find(|s| s.name.eq_ignore_ascii_case(wanted))
-                {
-                    Some(s) => s.id,
-                    None => store.add_station(wanted)?.id,
-                },
+                Some(k) if k.starts_with("pending_custom:") => {
+                    let src = PathBuf::from(&k["pending_custom:".len()..]);
+                    let bytes = std::fs::read(&src)
+                        .map_err(|e| format!("Could not read the photo: {e}"))?;
+                    let filename = src
+                        .file_name()
+                        .and_then(|n| n.to_str())
+                        .unwrap_or("photo.webp")
+                        .to_string();
+                    (bytes, filename, None)
+                }
+                other => (Vec::new(), String::new(), other.map(|s| s.to_string())),
             };
-            // Groups: `Size*: Small=199, Large=399 | Toppings+: Cheese=40`
-            // or a flat add-on list `Extra cheese=40`. Separate-item sizes
-            // still use the Sizes field below.
+            let typed = category_text.trim();
+            let category_id = match (&st.form_category_id, &st.form_category_label) {
+                (Some(id), label) if typed.eq_ignore_ascii_case(label) => id.clone(),
+                _ => String::new(),
+            };
+            let (category_photo_bytes, category_photo_filename) = match &st.form_category_photo {
+                Some((label, photo))
+                    if !typed.is_empty() && typed.eq_ignore_ascii_case(label.trim()) =>
+                {
+                    let bytes = std::fs::read(photo)
+                        .map_err(|e| format!("Could not read the category photo: {e}"))?;
+                    let filename = photo
+                        .file_name()
+                        .and_then(|n| n.to_str())
+                        .unwrap_or("category.webp")
+                        .to_string();
+                    (bytes, filename)
+                }
+                _ => (Vec::new(), String::new()),
+            };
             let modifier_groups =
                 domain::ModifierGroup::parse_human_list(&modifiers_text, &currency)?;
             let variations = domain::ModifierOption::parse_human_list(&variations_text, &currency)
                 .map_err(|e| e.replace("Modifier", "Size"))?;
             let area_prices = domain::ModifierOption::parse_human_list(&area_prices_text, &currency)
                 .map_err(|e| e.replace("Modifier", "Area"))?;
-            let mut product = if let Some(id) = editing_id {
-                store.get_product(&id)?.ok_or_else(|| {
-                    "That item is no longer in Items".to_string()
-                })?
-            } else {
-                Product::new_basic(product_id, name, Money(price_minor))
-            };
-            product.name = name.to_string();
-            product.price = Money(price_minor);
-            product.unit_label = unit_text.trim().to_string();
-            product.kind = if st.form_resale { domain::ITEM_KIND_RESALE } else { domain::ITEM_KIND_DISH }.into();
-            // A resold good is counted from the start.
-            if st.form_resale && !product.tracks_stock() {
-                product.stock_qty = 0;
-            }
-            product.image_key = image_key;
-            product.set_aliases(&typed_aliases(&aliases_text));
-            if let Some(rate) = &tax_rate {
-                product.tax_rate_id = rate.id.clone();
-                product.tax_bps = rate.bps;
-            } else {
-                product.tax_rate_id.clear();
-                product.tax_bps = 0;
-            }
-            product.category_id = category_id;
-            product.station_id = station_id;
-            product.set_modifier_groups(&modifier_groups);
-            product.set_area_prices(&area_prices);
             let schedule = domain::ScheduleWindow::parse_human_list(&schedule_text, &currency)?;
-            product.set_schedule(&schedule);
-            product.group_name = group_text.trim().to_string();
-            if !sizes_only {
-                store.upsert_product(&product)?;
-                let verb = if updating { "menu.update" } else { "menu.add" };
-                // A price change says from what to what: who changed a price is
-                // the question the owner asks of the audit (vision §18).
-                let was = st.products.iter().find(|p| p.id == product.id).map(|p| p.price);
-                let detail = match was {
-                    Some(old) if old != product.price => format!(
-                        "{} · {} → {}",
-                        product.name,
-                        old.format_localized(&st.locale.currency, &st.fiscal),
-                        product.price.format_localized(&st.locale.currency, &st.fiscal)
-                    ),
-                    _ => product.name.clone(),
-                };
-                store.audit(&actor, verb, &detail)?;
-                // Only touch the recipe when there is one, or one to clear.
-                if !recipe_text.trim().is_empty() || !store.recipe(&product.id)?.is_empty() {
-                    store.set_recipe_from_text(&product.id, &recipe_text, &actor)?;
-                }
-            }
-            // Each size is an item of its own (own UUID, price, stock,
-            // station), grouped under this dish's name.
-            let sizes = if variations.is_empty() {
-                Vec::new()
-            } else {
-                store.add_variant_items(&product, &variations, photo_source.as_deref(), &actor)?
-            };
+            let resale = st.form_resale;
+            let msg = st.books_op(BooksOp::SaveMenuItem {
+                updating,
+                product_id,
+                name: name.to_string(),
+                price_paise: price_minor,
+                unit_label: unit_text.trim().to_string(),
+                resale,
+                aliases: typed_aliases(&aliases_text),
+                tax_text: tax_text.trim().to_string(),
+                category_id,
+                category_name: typed.to_string(),
+                category_photo_bytes,
+                category_photo_filename,
+                station_name: station_text.trim().to_string(),
+                modifier_groups,
+                variations,
+                area_prices,
+                schedule,
+                group_name: group_text.trim().to_string(),
+                recipe_text,
+                image_bytes,
+                image_filename,
+                existing_image_key,
+            })?;
             st.draft_image_key = None;
             st.editing_product_id = None;
-            st.reload_all()?;
-            let size_names = sizes.iter().map(|p| p.name.as_str()).collect::<Vec<_>>().join(", ");
-            st.status = match (updating, sizes.is_empty()) {
-                (true, true) => format!("Updated {}", product.name),
-                (false, true) => format!("Added {}", product.name),
-                (true, false) => format!("Updated {} · added {size_names}", product.name),
-                (false, false) => format!("Added {size_names}"),
-            };
+            st.status = msg;
             Ok(())
         })();
         match result {
@@ -213,7 +123,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         };
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Remove items")?;
             let actor = st.actor()?;
             if !actor.role.can_manage_menu() {
                 return Err("Not allowed to manage items".into());
@@ -223,16 +132,16 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
                 .get(index)
                 .cloned()
                 .ok_or_else(|| "Missing product".to_string())?;
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.archive_product(&product.id)?;
-            store.audit(&actor, "menu.remove", &product.name)?;
+            let msg = st.books_op(BooksOp::ArchiveProduct {
+                id: product.id.clone(),
+                name: product.name.clone(),
+            })?;
             if st.editing_product_id.as_deref() == Some(product.id.as_str()) {
                 st.editing_product_id = None;
                 st.draft_image_key = None;
             }
             st.cart.lines.retain(|l| l.product_id != product.id);
-            st.reload_all()?;
-            st.status = format!("Removed {}", product.name);
+            st.status = msg;
             Ok(())
         })();
         if let Err(e) = result {
@@ -249,7 +158,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
     fn restore_menu_item(&mut self, cx: &mut Cx, index: usize) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Restore items")?;
             let actor = st.actor()?;
             if !actor.role.can_manage_menu() {
                 return Err("Not allowed to manage items".into());
@@ -259,11 +167,11 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
                 .get(index)
                 .cloned()
                 .ok_or_else(|| "Missing item".to_string())?;
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.restore_product(&product.id)?;
-            store.audit(&actor, "menu.restore", &product.name)?;
-            st.reload_all()?;
-            st.status = format!("{} back on the menu", product.name);
+            let msg = st.books_op(BooksOp::RestoreProduct {
+                id: product.id,
+                name: product.name,
+            })?;
+            st.status = msg;
             Ok(())
         })();
         if let Err(e) = result {
@@ -280,8 +188,12 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
             // On DeviceSetup, preview immediately; persist when Server/Client is chosen.
             // After unlock (Settings), persist as the fixed user language.
             if !st.must_confirm_device_role {
-                if let Some(store) = st.store.as_ref() {
-                    st.locale = store.set_user_language(code)?;
+                st.books_op(BooksOp::SetUserLanguage {
+                    code: code.to_string(),
+                })?;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.language = code.into();
+                    st.language_follow_platform = false;
                 }
                 st.save_remembered_language();
             }
@@ -298,10 +210,17 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             st.locale.currency = code.into();
-            if let Some(store) = st.store.as_ref() {
-                store.set_locale_settings(&st.locale)?;
+            if st.store.is_some() {
+                let msg = st.books_op(BooksOp::SetCurrency {
+                    code: code.to_string(),
+                })?;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.currency = code.into();
+                }
+                st.status = msg;
+            } else {
+                st.status = format!("Currency: {code}");
             }
-            st.status = format!("Currency: {code}");
             Ok(())
         })();
         if let Err(e) = result {
@@ -569,9 +488,19 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
     /// stick, an SD card, Downloads — anywhere off the books' own storage).
     /// VACUUM runs on a worker; the save dialog opens when Signal fires.
     fn save_backup_copy(&mut self, cx: &mut Cx) {
+        if app_state().lock().unwrap().device_role == DeviceRole::Client {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::SaveBackupCopy)
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            return;
+        }
         let job = (|| -> Result<(PathBuf, PathBuf, String), String> {
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Save a backup copy")?;
             if let Some(old) = st.pending_backup_copy.take() {
                 let _ = std::fs::remove_file(old);
             }
@@ -626,7 +555,7 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let job = (|| -> Result<(PathBuf, PathBuf, PathBuf), String> {
             store::check_backup_file(&backup)?;
             let mut st = app_state().lock().unwrap();
-            st.require_server_role("Restore a backup")?;
+            st.require_server_host("Restore a backup")?;
             let store = st.store.as_ref().ok_or("No store")?;
             let db = store.db_path().to_path_buf();
             let before = store.auto_backup_dir().join(format!(
@@ -675,20 +604,29 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         };
         let outcome = (|| -> Result<String, String> {
             let file = self.materialize_picked_file(cx, &path)?;
-            let mut st = app_state().lock().unwrap();
-            let store = st
-                .store
-                .as_ref()
-                .ok_or_else(|| "Storage not ready".to_string())?;
-            let key = store.import_category_image(&category_id, &file)?;
+            let bytes = std::fs::read(&file)
+                .map_err(|e| format!("Could not read the category photo: {e}"))?;
+            let filename = file
+                .file_name()
+                .and_then(|n| n.to_str())
+                .unwrap_or("category.webp")
+                .to_string();
             invalidate_image_loads_for_path(&file);
-            // Stable on-disk name may be overwritten — force a fresh decode.
-            if let Ok(dir) = store.item_images_dir() {
-                invalidate_image_loads_for_path(&dir.join(format!("cat-{category_id}.webp")));
+            let mut st = app_state().lock().unwrap();
+            let msg = st.books_op(BooksOp::ImportCategoryImage {
+                category_id: category_id.clone(),
+                filename,
+                bytes,
+            })?;
+            if let Some(store) = st.store.as_ref() {
+                if let Ok(dir) = store.item_images_dir() {
+                    invalidate_image_loads_for_path(&dir.join(format!("cat-{category_id}.webp")));
+                }
+                if st.device_role != DeviceRole::Client {
+                    st.categories = store.list_categories().unwrap_or_default();
+                }
             }
-            store.set_category_image(&category_id, &key)?;
-            st.categories = store.list_categories().unwrap_or_default();
-            Ok("Category photo saved".to_string())
+            Ok(msg)
         })();
         match outcome {
             Ok(msg) => self.set_status(cx, msg),

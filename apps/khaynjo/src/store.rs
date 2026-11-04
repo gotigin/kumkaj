@@ -2701,13 +2701,14 @@ impl Store {
     /// most kitchens still run).
     /// Legacy whole-floor columns (this device only). Prefer
     /// [`floor_columns_for_area`] — kept as the default when an area has
-    /// no entry yet. 0 = fit the screen.
+    /// no entry yet. Unset → **4** (Dine In / Parcel and any new area).
+    /// Explicit `0` still means fit the screen.
     pub fn floor_columns(&self) -> usize {
         self.meta_get("ui_floor_columns")
             .ok()
             .flatten()
             .and_then(|v| v.trim().parse().ok())
-            .unwrap_or(0)
+            .unwrap_or(4)
     }
 
     pub fn set_floor_columns(&self, cols: usize) -> Result<(), String> {
@@ -3494,6 +3495,7 @@ impl Store {
         &self,
         text: &str,
     ) -> Result<(usize, usize, Vec<String>), String> {
+        self.assert_server_writer("Import from CSV")?;
         let rows = parse_csv(text);
         let mut added = 0usize;
         let mut skipped = 0usize;
@@ -3564,6 +3566,7 @@ impl Store {
     /// Columns: name, price (major units, e.g. 250.50), unit. Items
     /// whose name already exists are skipped, never overwritten.
     pub fn import_items_csv(&self, text: &str) -> Result<(usize, usize, Vec<String>), String> {
+        self.assert_server_writer("Import from CSV")?;
         let rows = parse_csv(text);
         let mut added = 0usize;
         let mut skipped = 0usize;
@@ -4895,6 +4898,7 @@ impl Store {
     }
 
     pub fn set_kot_station_priority_csv(&self, csv: &str) -> Result<(), String> {
+        self.assert_server_writer("Change the KOT format")?;
         self.meta_set("ui_kot_station_priority", csv)
     }
 
@@ -4904,6 +4908,7 @@ impl Store {
     }
 
     pub fn set_kot_station_default(&self, station_id: &str) -> Result<(), String> {
+        self.assert_server_writer("Change the KOT format")?;
         self.meta_set("ui_kot_station_default", station_id.trim())
     }
 
@@ -4913,6 +4918,7 @@ impl Store {
     }
 
     pub fn set_kot_stations_selected_csv(&self, csv: &str) -> Result<(), String> {
+        self.assert_server_writer("Change the KOT format")?;
         self.meta_set("ui_kot_stations_selected", csv)
     }
 
@@ -5256,6 +5262,7 @@ impl Store {
     }
 
     pub fn set_active_branch_id(&self, branch_id: &str) -> Result<(), String> {
+        self.assert_server_writer("Switch branch")?;
         let branch_id = branch_id.trim();
         let found: i64 = self
             .conn
@@ -9797,6 +9804,7 @@ impl Store {
         phone: &str,
         kind_label: &str,
     ) -> Result<Customer, String> {
+        self.assert_server_writer("Add customers")?;
         let name = name.trim();
         if name.is_empty() {
             return Err("Customer name required".into());

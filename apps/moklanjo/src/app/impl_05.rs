@@ -1323,20 +1323,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 }
                 // A device opens each screen on the office's latest books.
                 st.pull_from_server();
-                if st.device_role == DeviceRole::Client
-                    && matches!(
-                        screen,
-                        Screen::Menu
-                            | Screen::Inventory
-                            | Screen::Branches
-                            | Screen::Team
-                            | Screen::Settings
-                            | Screen::SidebarSettings
-                    )
-                {
-                    st.status =
-                        "Read-only on this extra till — change it on the shop device".into();
-                }
+                // Person caps drive these screens on a Client till too —
+                // shop writes go over `/books`. Do not demote capable people.
             }
         }
         // Do not auto-scan printers on Settings open — Find is explicit.
