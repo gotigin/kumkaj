@@ -25,7 +25,7 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 
 | Tab | Purpose (Moklanjo) |
 |---|---|
-| **Day book** | Home after unlock — today’s money in/out, AR/AP, cash vs bank; shortcuts to day close, bank/P&L, parties |
+| **Day book** | Owner / Sales home after unlock — today’s money in/out, AR/AP, cash vs bank; hub shortcuts only for screens that person may open. Waiters and other limited roles unlock onto their first permitted peer (e.g. Floor / Order), not Day book |
 | **Booking** | Money in — book parcels (rates × kg), three-total ledger, tender / party credit; Account vs Cash booking |
 | **Pay out** | Money out — carrier bills / purchases and expense vouchers |
 | **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
@@ -81,7 +81,7 @@ Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.s
 | **Settings** | Country pack, venue, **Units** + conversions, backup |
 | **Pay out** | Bottom tab — carrier bill / purchase + expense voucher |
 
-Owner order after unlock: **Day book** → **Booking** or **Pay out** as peers.
+Owner / Sales order after unlock: **Day book** → trade peers (Booking / Order, Pay out / Buy, Floor…). Limited roles skip Day book when they lack Books rights — first permitted chrome peer is home.
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
 
@@ -172,9 +172,13 @@ coloured floor, Moklanjo's rates/cart split).
 - **Capability-aware chrome** (vision §30): peers for a capability
   show only when the business runs that capability; a business that
   never uses it never sees its screens.
-- **Role-aware home**: unlock lands on Day book (the owner's four
-  questions, [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)); the trade's
-  work surfaces are one tap away.
+- **Role-aware home**: unlock lands on the **first chrome peer that
+  person may open** (`unlocked_home_from` / `nav_tab_permitted`). For
+  Owner / Sales that is usually Day book (the owner's four questions,
+  [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)); for a Waiter with Floor +
+  Order only, Floor (or Order) — never a Day book full of money hubs
+  they cannot use. Hub rows and money sections use the **same** rights
+  as nav (do not regress — [`DEV.md`](DEV.md) § Staff rights vs chrome).
 
 Technical counterparts (state-guard deadlock, PortalList mechanics,
 agent verification): [`DEV.md`](DEV.md) § Makepad 2 UI faces

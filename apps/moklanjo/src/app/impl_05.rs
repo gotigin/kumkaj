@@ -96,6 +96,26 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(books_credit))
             .set_text(cx, &s("credit_customers"));
+        // Same rights as chrome peers — hide hub jumps the person cannot open.
+        {
+            let caps = nav_caps_from(&app_state().lock().unwrap());
+            let sales_ops = caps.sales || caps.is_owner;
+            self.ui
+                .view(cx, ids!(books_to_sell_slot))
+                .set_visible(cx, caps.sell);
+            self.ui
+                .view(cx, ids!(books_to_buy_slot))
+                .set_visible(cx, caps.buy_ok());
+            self.ui
+                .view(cx, ids!(books_day_close_slot))
+                .set_visible(cx, sales_ops);
+            self.ui
+                .view(cx, ids!(books_reports_slot))
+                .set_visible(cx, sales_ops);
+            self.ui
+                .view(cx, ids!(books_credit_slot))
+                .set_visible(cx, caps.credit);
+        }
         self.ui
             .button(cx, ids!(buy_purchase))
             .set_text(cx, &s("record_purchase"));

@@ -722,6 +722,14 @@ right that reduces money or removes work already done (cancel, void,
 complimentary, discount, edit after print/settle) also **requires a
 reason**. Defaults follow the role preset; the owner edits them.
 
+**UI must match rights (do not regress):** chrome peers, Day book (or
+Books) hub jumps, unlock home screen, and money strips/accordions all
+use the same per-person capability gates. Never leave a Waiter (or any
+limited role) on Day book with Expense / Day close / Bank & P&L /
+Parties / TODAY money visible when those peers are hidden from nav.
+Hiding the nav tab alone is not enough — see `docs/DEV.md` § Staff
+rights vs chrome.
+
 ------------------------------------------------------------------------
 
 ## 18. Auditability and Business Trust

@@ -746,11 +746,6 @@ enum Screen {
     Branches,
 }
 
-/// Post-unlock home from cross-category commons ([`docs/DESIGN.md`]).
-fn unlocked_home() -> Screen {
-    Screen::Books
-}
-
 /// Which chrome peer is selected. Former More hub items are first-class peers.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum NavTab {

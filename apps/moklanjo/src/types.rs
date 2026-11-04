@@ -23,11 +23,6 @@ enum Screen {
     Branches,
 }
 
-/// Post-unlock home from cross-category commons ([`docs/DESIGN.md`]).
-fn unlocked_home() -> Screen {
-    Screen::Books
-}
-
 /// Which chrome peer is selected. Former More hub items are first-class peers.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum NavTab {
@@ -492,16 +487,70 @@ fn nav_chrome_order(order: &[NavTab], hidden: &[NavTab], caps: NavCaps) -> Vec<N
 /// Live chrome order for paint / click mapping (preference + rights).
 fn current_nav_chrome_order() -> Vec<NavTab> {
     let st = app_state().lock().unwrap();
+    nav_chrome_order_from(&st)
+}
+
+fn nav_caps_from(st: &AppState) -> NavCaps {
     let branch_count = st
         .store
         .as_ref()
         .and_then(|s| s.list_branches().ok())
         .map(|b| b.len())
         .unwrap_or(1);
-    let caps = NavCaps::from_session(
+    NavCaps::from_session(
         st.session.as_ref(),
         st.device_role == DeviceRole::Client,
         branch_count,
-    );
-    nav_chrome_order(&st.nav_order, &st.nav_hidden, caps)
+    )
+}
+
+fn nav_chrome_order_from(st: &AppState) -> Vec<NavTab> {
+    nav_chrome_order(&st.nav_order, &st.nav_hidden, nav_caps_from(st))
+}
+
+fn screen_for_nav_tab(tab: NavTab) -> Screen {
+    match tab {
+        NavTab::Books => Screen::Books,
+        NavTab::Sell => Screen::Pos,
+        NavTab::Buy => Screen::Buy,
+        NavTab::Rates => Screen::Menu,
+        NavTab::Ops => Screen::Reports, // painted with ReportsNav::Ops
+        NavTab::Cod => Screen::Reports,
+        NavTab::Riders => Screen::Reports,
+        NavTab::Sales => Screen::Sales,
+        NavTab::DayClose => Screen::DayClose,
+        NavTab::Reports => Screen::Reports,
+        NavTab::Inventory => Screen::Inventory,
+        NavTab::Branches => Screen::Branches,
+        NavTab::Credit => Screen::Credit,
+        NavTab::Team | NavTab::Settings => Screen::Settings,
+        NavTab::Lock => Screen::Lock,
+    }
+}
+
+/// Post-unlock home: first chrome peer this person may open (never Lock).
+fn unlocked_home_from(st: &mut AppState) -> Screen {
+    for tab in nav_chrome_order_from(st) {
+        match tab {
+            NavTab::Lock => continue,
+            NavTab::Ops => {
+                st.reports_nav = ReportsNav::Ops;
+                return Screen::Reports;
+            }
+            NavTab::Cod => {
+                st.reports_nav = ReportsNav::Cod;
+                return Screen::Reports;
+            }
+            NavTab::Riders => {
+                st.reports_nav = ReportsNav::Riders;
+                return Screen::Reports;
+            }
+            NavTab::Reports => {
+                st.reports_nav = ReportsNav::Bank;
+                return Screen::Reports;
+            }
+            other => return screen_for_nav_tab(other),
+        }
+    }
+    Screen::Lock
 }

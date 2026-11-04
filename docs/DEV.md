@@ -176,7 +176,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
-6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
+6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **Snackbar labels** (`app_snackbar` / `undo_snackbar`) must stay `selectable: false` — a selectable WrapLabel on an error snack steals the swipe and can leave scroll dead until the next clean touch (observed 2026-11). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 7. **Settings / CTAs freeze the UI (wrap + Fill)** — Separate from bug **7a**. Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Signature: high CPU / draw path / turtle warning. Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws. Still avoid the bad layout:
    - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit**. Patch `button_label_center`. **Do not** “fix” by removing wrap or left-aligning labels (bug 3).
    - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
@@ -186,6 +186,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 7a. **Settings “Not Responding” on printers place pick = `app_state` deadlock (not wrap/Fill)** — gdb on hung Khaynjo (2026-11-03): main thread `futex_do_wait` / `Mutex::lock` on `app_state::STATE` inside `set_status_line_only` ← `set_status` ← Bill/kitchen place tap. Cause: `self.set_status(cx, app_state().lock().unwrap().t(...))` — temporary `MutexGuard` lives for the whole statement, so `set_status` locks again on the same thread and never returns. Low CPU, not turtle spam. **Rule:** never pass `app_state().lock()…` into a function that locks `app_state`. Use `app_t("key")` or `{ let st = app_state().lock().unwrap(); … }` first. Cursor rule: `.cursor/rules/app-state-lock.mdc`. Do not “fix” this hang by swapping button faces.
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return. **Pair finish:** `client_pair` HTTP stays on a worker; applying the sync snapshot (`net::apply_snapshot`) must also stay off the UI thread (`LanOnce::PairApplied`) — a busy shop’s SQLite replace froze Android for seconds after “Pair now”. **Soft keyboard on ClientPair / Lock:** do not run a full `sync_chrome` (locale + Settings SQL) while a text field holds focus — that rebuild hid the IME; digits still go into the field, Pair/Unlock triggers a real sync. **Server pairing digits** in Settings (`pairing_code_value`) are a selectable `WrapLabel` (display/copy only — use **Copy pairing code**); the Client types into `client_code_input` (`FieldInput`, `is_numeric_only`).
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
+9. **Nav hid peers but Day book still showed them (Waiter)** — Chrome used `nav_tab_permitted`; unlock always opened `Screen::Books` and hub rows / TODAY money stayed visible (Khaynjo 2026-11-04). **Rule:** unlock → `unlocked_home_from`; Day book hub slots + money accordions use the same caps as nav. Full table: § Staff rights vs chrome below.
 
 ### Required approach (shipping)
 
@@ -1099,6 +1100,35 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 - More → **Team**: Owner creates staff (role title + permission preset + PIN + features); anyone can update their own PIN
 - Sale **created_by** is set on finalize and never rewritten on amend
 
+### Staff rights vs chrome (do not regress)
+
+Observed 2026-11-04: Waiter chrome correctly hid Books / Buy / Day close /
+Reports / Parties, but unlock still opened **Day book** with every hub row
+and TODAY/BILLS money visible — rights looked broken even though taps said
+“Not allowed”.
+
+**One capability story everywhere.** `NavCaps` / `nav_tab_permitted` (and
+`session_may_see_today` for money) are the source of truth. When you add a
+screen, hub jump, or money strip, gate it the same way as the matching
+chrome peer — never “nav only.”
+
+| Surface | Rule | Code (per app) |
+|---|---|---|
+| Bottom nav / side rail | Only peers `nav_tab_permitted` allows | `paint_nav_tabs` ← `current_nav_chrome_order` |
+| Unlock home | First permitted peer (**not** hard-coded Day book) | `unlocked_home_from` |
+| Day book hub rows (Sell/Buy/Day close/Reports/Parties) | Same rights as those peers — hide the **slot** | `books_*_slot` visibility in paint/chrome sync |
+| TODAY / BILLS / bank accordions + header today bar | Owner or Sales only | `session_may_see_today` → `sync_books_sections` / `today_bar` |
+| Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` |
+
+**Do not:** hard-code `Screen::Books` after unlock; leave hub `HubDestBtn`s
+visible “because Books is the home screen”; show money figures to Settle-denied
+waiters; gate only the rail and assume the page is fine.
+
+**Smoke:** unlock as Waiter (Floor + Order + Kitchen, no Sales) → home is
+Floor (or Order), not Day book; Day book must not appear in nav; if somehow
+opened, hub must not show Expense / Day close / Bank & P&L / Parties or
+TODAY money. Unlock as Owner → Day book with those hubs.
+
 ## Publish checklist (Play / web / desktop)
 
 1. `cargo test -p kumkaj-moklanjo`
@@ -1116,7 +1146,8 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 1. First Server run: choose the Owner PIN; later runs unlock with it
 2. Finish onboarding — Moklanjo is locked; Fresh or Book, then Done
 3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
-4. Day book shows today; Pay out records carrier bills & expenses; More → Parties settle; Day close; Reports
+4. Owner: Day book shows today; Pay out records carrier bills & expenses; Parties settle; Day close; Reports
+4b. Waiter (no Sales): unlock → Floor/Order (not Day book); nav has no Books/Buy/Reports; Day book hub must not show Expense / Day close / Bank / Parties or TODAY money
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
 5b. Settings → Country & tax: apply `GB` (VAT inclusive, £), then `US` (sales tax exclusive, $); save a business id and check it prints
 6. Ops / COD / Riders when fleet features are used
@@ -1266,6 +1297,11 @@ API (per app `main.rs`): `show_snack` / `show_error` / `show_warn` / `show_ok`,
 `clear_snack`. `set_status` classifies the message (`snack::classify`) and shows
 a snack when unlocked (errors/warnings also on lock). Higher priority replaces a
 lower one; dismiss ✕ or timeout clears. Module: `apps/*/src/snack.rs`.
+
+**Do not regress (Android scroll):** snack / undo snack labels must keep
+`selectable: false`. Default `WrapLabel` select-drag steals page swipe and can
+leave scroll blocked until a later clean touch (bug **6e** / `text_flow_touch_scroll`).
+Error snacks are the usual trigger (long text + bar appearing under a finger).
 
 ### Diagnostics (privacy-first local logs)
 

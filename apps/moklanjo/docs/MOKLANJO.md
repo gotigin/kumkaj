@@ -172,10 +172,14 @@ Prioritize in this order for Moklanjo:
 
 | Tab | Moklanjo meaning |
 |-----|-----------------|
-| Day book | Today’s position |
+| Day book | Today’s position (Owner/Sales home; limited roles unlock onto their first permitted peer) |
 | Booking | Money in — book parcels |
 | Pay out | Money out — carrier bills & expenses |
-| Rates · Ops · COD · Riders · Bookings · Day close · Reports · Parties · Team · Settings · Lock | Bottom/rail peers (scrollable) |
+| Rates · Ops · COD · Riders · Bookings · Day close · Reports · Parties · Team · Settings · Lock | Bottom/rail peers (scrollable, role-gated) |
+
+**Rights match chrome.** Day book hub jumps and money sections use the same
+gates as nav — never show Expense / Day close / Bank / Parties / TODAY money
+to someone whose rail hid those peers (`docs/DEV.md` § Staff rights vs chrome).
 
 **Rearrangeable tabs.** The tab order is the shop's, not ours: press a tab and drag it onto another to swap them (bottom bar and rail alike). The arrangement is saved in the books (`ui_nav_order`), so it survives reinstall and follows the shop, not the device. Scrolling stays one gesture away: the bars keep whitespace lanes around the tabs — swipe the lane to scroll, grab a tab to drag. Holding a dragged tab against the left/right edge of the bar (top/bottom of the rail) auto-scrolls it, so tabs that start off-screen can still be reached and swapped with. Implementation rules that keep this working are in `docs/DEV.md` (“Nav drag-to-swap”).
 

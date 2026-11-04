@@ -6562,6 +6562,8 @@ script_mod! {
                     }
 
                     // Standard snackbar: Overlay faces by kind (info/ok/warn/error).
+                    // Labels stay selectable:false — default WrapLabel select-drag steals
+                    // Android page swipe and can leave scroll blocked (DEV.md 6e).
                     app_snackbar := View{
                         visible: false
                         width: Fill height: Fit
@@ -6575,7 +6577,7 @@ script_mod! {
                             align: Align{y: 0.5}
                             draw_bg.color: #x072058
                             draw_bg.border_radius: 12.
-                            snack_label_info := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_info := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13. selectable: false}
                             snack_dismiss_info := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff  color: #x0A3A8C color_hover: #x0D4A9E color_down: #x02030B color_focus: #x0A3A8C color_2: #x0A3A8C color_2_hover: #x0D4A9E color_2_down: #x02030B color_2_focus: #x0A3A8C border_radius: 10. border_size: 0. }
                             }
@@ -6589,7 +6591,7 @@ script_mod! {
                             align: Align{y: 0.5}
                             draw_bg.color: #x2F5D3A
                             draw_bg.border_radius: 12.
-                            snack_label_ok := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_ok := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13. selectable: false}
                             snack_dismiss_ok := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff  color: #x1E3D28 color_hover: #x1E3D28 color_down: #x152A1C color_focus: #x1E3D28 color_2: #x1E3D28 color_2_hover: #x1E3D28 color_2_down: #x152A1C color_2_focus: #x1E3D28 border_radius: 10. border_size: 0. }
                             }
@@ -6603,7 +6605,7 @@ script_mod! {
                             align: Align{y: 0.5}
                             draw_bg.color: #xC44E10
                             draw_bg.border_radius: 12.
-                            snack_label_warn := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_warn := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13. selectable: false}
                             snack_dismiss_warn := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff  color: #x072058 color_hover: #x0A3A8C color_down: #x02030B color_focus: #x072058 color_2: #x072058 color_2_hover: #x0A3A8C color_2_down: #x02030B color_2_focus: #x072058 border_radius: 10. border_size: 0. }
                             }
@@ -6617,7 +6619,7 @@ script_mod! {
                             align: Align{y: 0.5}
                             draw_bg.color: #x9A0E10
                             draw_bg.border_radius: 12.
-                            snack_label_err := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_err := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13. selectable: false}
                             snack_dismiss_err := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff  color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
                             }
@@ -6639,6 +6641,7 @@ script_mod! {
                             body: "Sale recorded"
                             font_color: #xffffff
                             font_size: 13.
+                            selectable: false
                         }
                         undo_snack_btn := Button{
                             text: "Undo"

@@ -47,7 +47,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 } else if st.device_role.is_host() && !st.onboarding_complete {
                     st.screen = Screen::Onboard;
                 } else {
-                    st.screen = unlocked_home();
+                    st.screen = unlocked_home_from(&mut st);
                 }
             }
             // Follow-OS mode: keep UI language in sync with the device.

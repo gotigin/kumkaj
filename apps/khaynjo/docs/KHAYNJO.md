@@ -476,7 +476,10 @@ the first build broke and must not break again:
   the scan), UDP `KHAYNJO_DISCOVER?` broadcast → `{app, venue, port}`.
   Snapshots carry `running_orders`.
 - Floor/Kitchen peers show only when the venue runs tables & kitchen
-  (`creates_kot()`); unlock lands on Day book, Order/Floor one tap away.
+  (`creates_kot()`); unlock lands on the first peer that person may open
+  (Owner/Sales → Day book; Waiter with Floor+Order → Floor) — Day book hub
+  rows and money sections use the same rights as nav (DEV.md § Staff rights
+  vs chrome).
 - **Floor tiles are a fixed 280×178** (`FLOOR_TILE_W/H`) — columns
   never shrink them. **Areas are tabs** (`floor_area_strip` + ‹ ›); the
   selected tab’s body has that area’s **Columns** (`ui_floor_columns_by_area`

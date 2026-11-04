@@ -342,17 +342,28 @@ impl MatchEvent for App {
         let nav_click = self.nav_tab_clicked(cx, actions);
         match nav_click {
             Some(NavTab::Books) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    st.refresh_books_overview()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
+                let allowed = {
+                    let st = app_state().lock().unwrap();
+                    match st.session.as_ref() {
+                        Some(s) => s.is_owner() || s.can_access_sales() || s.can_access_items(),
+                        None => false,
+                    }
+                };
+                if !allowed {
+                    self.set_status(cx, "Not allowed");
                 } else {
-                    // Drop leftover focus so the old Sell face cannot look selected.
-                    cx.set_key_focus(Area::Empty);
-                    self.go_peer(cx, Screen::Books);
+                    let result = (|| -> Result<(), String> {
+                        let mut st = app_state().lock().unwrap();
+                        st.refresh_books_overview()?;
+                        Ok(())
+                    })();
+                    if let Err(e) = result {
+                        self.set_status(cx, e);
+                    } else {
+                        // Drop leftover focus so the old Sell face cannot look selected.
+                        cx.set_key_focus(Area::Empty);
+                        self.go_peer(cx, Screen::Books);
+                    }
                 }
             }
             Some(NavTab::Sell) => {
@@ -5316,7 +5327,7 @@ impl MatchEvent for App {
                 // Main screen is a root — drop DeviceSetup/Onboard from Back.
                 st.nav_back.clear();
                 st.nav_forward.clear();
-                st.screen = unlocked_home();
+                st.screen = unlocked_home_from(&st);
                 st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();
                 let _ = st.refresh_books_overview();

@@ -456,10 +456,17 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
 
     /// Books home accordion bodies + header chevrons from `books_sections_open`.
     /// Skips visibility/height while a section is mid-animation.
+    /// No-Sales sessions never see money sections (same as today bar).
     fn sync_books_sections(&mut self, cx: &mut Cx) {
-        let open = app_state().lock().unwrap().books_sections_open.clone();
+        let (open, lang, may_see) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.books_sections_open.clone(),
+                st.locale.language.clone(),
+                session_may_see_today(st.session.as_ref()),
+            )
+        };
         let is_open = |key: &str| open.iter().any(|k| k == key);
-        let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |k: &str| locale::t(&lang, k);
         let animating = accordion_anims().lock().unwrap();
         let sections: &[(&str, &[LiveId], &[LiveId], &str)] = &[
@@ -495,6 +502,11 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             ),
         ];
         for (key, hdr, body, caption_key) in sections {
+            self.ui.button(cx, hdr).set_visible(cx, may_see);
+            if !may_see {
+                self.ui.view(cx, body).set_visible(cx, false);
+                continue;
+            }
             let open = is_open(key);
             let mark = if open {
                 ACCORDION_MARK_OPEN

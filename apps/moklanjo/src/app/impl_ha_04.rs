@@ -249,7 +249,7 @@ impl App {
                 // Main screen is a root — drop DeviceSetup/Onboard from Back.
                 st.nav_back.clear();
                 st.nav_forward.clear();
-                st.screen = unlocked_home();
+                st.screen = unlocked_home_from(&mut st);
                 st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();
                 let _ = st.refresh_books_overview();

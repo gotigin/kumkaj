@@ -9011,6 +9011,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                     }
 
                     // Standard snackbar: Overlay faces by kind (info/ok/warn/error).
+                    // Labels stay selectable:false — default WrapLabel select-drag steals
+                    // Android page swipe and can leave scroll blocked (DEV.md 6e). Errors
+                    // are the usual trigger: long text + snack appearing under a finger.
                     app_snackbar := View{
                         visible: false
                         width: Fill height: Fit
@@ -9024,7 +9027,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             align: Align{y: 0.5}
                             draw_bg.color: #x69090C
                             draw_bg.border_radius: 12.
-                            snack_label_info := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_info := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13. selectable: false}
                             snack_dismiss_info := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
                             }
@@ -9038,7 +9041,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             align: Align{y: 0.5}
                             draw_bg.color: #x2F5D3A
                             draw_bg.border_radius: 12.
-                            snack_label_ok := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_ok := WrapLabel{width: Fill body: "" font_color: #ffffff font_size: 13. selectable: false}
                             snack_dismiss_ok := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff color: #x1E3D28 color_hover: #x1E3D28 color_down: #x152A1C color_focus: #x1E3D28 color_2: #x1E3D28 color_2_hover: #x1E3D28 color_2_down: #x152A1C color_2_focus: #x1E3D28 border_radius: 10. border_size: 0. }
                             }
@@ -9052,7 +9055,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             align: Align{y: 0.5}
                             draw_bg.color: #xB43A12
                             draw_bg.border_radius: 12.
-                            snack_label_warn := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_warn := WrapLabel{width: Fill body: "" font_color: #ffffff font_size: 13. selectable: false}
                             snack_dismiss_warn := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff color: #x69090C color_hover: #x69090C color_down: #x260B08 color_focus: #x69090C color_2: #x69090C color_2_hover: #x69090C color_2_down: #x260B08 color_2_focus: #x69090C border_radius: 10. border_size: 0. }
                             }
@@ -9066,7 +9069,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             align: Align{y: 0.5}
                             draw_bg.color: #x9A0E10
                             draw_bg.border_radius: 12.
-                            snack_label_err := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13.}
+                            snack_label_err := WrapLabel{width: Fill body: "" font_color: #ffffff font_size: 13. selectable: false}
                             snack_dismiss_err := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff color: #xB43A12 color_hover: #xB43A12 color_down: #x69090C color_focus: #xB43A12 color_2: #xB43A12 color_2_hover: #xB43A12 color_2_down: #x69090C color_2_focus: #xB43A12 border_radius: 10. border_size: 0. }
                             }
@@ -9086,8 +9089,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                         undo_snack_label := WrapLabel{
                             width: Fill
                             body: "Sale recorded"
-                            font_color: #xffffff
+                            font_color: #ffffff
                             font_size: 13.
+                            selectable: false
                         }
                         undo_snack_btn := Button{
                             text: "Undo"

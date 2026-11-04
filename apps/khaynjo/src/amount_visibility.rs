@@ -232,19 +232,56 @@ fn nav_chrome_order(order: &[NavTab], hidden: &[NavTab], caps: NavCaps) -> Vec<N
 /// Live chrome order for paint / click mapping (preference + rights).
 fn current_nav_chrome_order() -> Vec<NavTab> {
     let st = app_state().lock().unwrap();
+    nav_chrome_order_from(&st)
+}
+
+fn nav_caps_from(st: &AppState) -> NavCaps {
     let branch_count = st
         .store
         .as_ref()
         .and_then(|s| s.list_branches().ok())
         .map(|b| b.len())
         .unwrap_or(1);
-    let caps = NavCaps::from_session(
+    NavCaps::from_session(
         st.session.as_ref(),
         st.device_role == DeviceRole::Client,
         st.venue_mode.creates_kot(),
         branch_count,
-    );
-    nav_chrome_order(&st.nav_order, &st.nav_hidden, caps)
+    )
+}
+
+fn nav_chrome_order_from(st: &AppState) -> Vec<NavTab> {
+    nav_chrome_order(&st.nav_order, &st.nav_hidden, nav_caps_from(st))
+}
+
+fn screen_for_nav_tab(tab: NavTab) -> Screen {
+    match tab {
+        NavTab::Books => Screen::Books,
+        NavTab::Sell => Screen::Pos,
+        NavTab::Buy => Screen::Buy,
+        NavTab::Menu => Screen::Menu,
+        NavTab::Floor => Screen::Floor,
+        NavTab::Kitchen => Screen::Kitchen,
+        NavTab::Sales => Screen::Sales,
+        NavTab::DayClose => Screen::DayClose,
+        NavTab::Reports => Screen::Reports,
+        NavTab::Inventory => Screen::Inventory,
+        NavTab::Branches => Screen::Branches,
+        NavTab::Credit => Screen::Credit,
+        NavTab::Team | NavTab::Settings => Screen::Settings,
+        NavTab::Lock => Screen::Lock,
+    }
+}
+
+/// Post-unlock home: first chrome peer this person may open (never Lock).
+/// Waiters without Books rights must not land on Day book with every hub row.
+fn unlocked_home_from(st: &AppState) -> Screen {
+    for tab in nav_chrome_order_from(st) {
+        if tab != NavTab::Lock {
+            return screen_for_nav_tab(tab);
+        }
+    }
+    Screen::Lock
 }
 
 /// Password-style mask: every non-space character becomes a bullet so the

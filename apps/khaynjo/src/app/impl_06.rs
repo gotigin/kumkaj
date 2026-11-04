@@ -1010,7 +1010,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 st.pin_visible = false;
                 st.lock_as_owner = true;
                 st.failed_unlocks = 0;
-                st.screen = unlocked_home();
+                st.screen = unlocked_home_from(&st);
                 st.status = format!("New Owner PIN set — welcome back, {}", member.lock_label());
                 let _ = st.refresh_books_overview();
                 let _ = st.reload_all();
@@ -1223,7 +1223,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                         // Main till is a visit root — no Back into setup.
                         st.nav_back.clear();
                         st.nav_forward.clear();
-                        st.screen = unlocked_home();
+                        st.screen = unlocked_home_from(&st);
                         st.status = match &note {
                             Some(note) => format!("Welcome, {} · {note}", member.lock_label()),
                             None => format!("Welcome, {}", member.lock_label()),
@@ -1318,7 +1318,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.screen = if st.device_role.is_host() && !st.onboarding_complete {
                 Screen::Onboard
             } else {
-                unlocked_home()
+                unlocked_home_from(&st)
             };
             st.status = format!("Welcome, {}", member.lock_label());
             let _ = st.reload_all();
