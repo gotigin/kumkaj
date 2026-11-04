@@ -1764,8 +1764,10 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     }
 
     fn finish_server_new_opened(&mut self, cx: &mut Cx, store: Store) {
-        {
+        self.paint_role_open_busy_chrome(cx);
+        let old = {
             let mut st = app_state().lock().unwrap();
+            let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let _ = st.refresh_local_servers();
@@ -1778,8 +1780,11 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
             self.finish_as_server(&mut st, true);
-        }
-        self.paint_role_open_busy_chrome(cx);
+            old
+        };
+        drop_store_off_ui(old);
         self.sync_chrome(cx);
+        end_role_open_busy();
+        self.paint_role_open_busy_chrome(cx);
     }
 }

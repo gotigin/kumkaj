@@ -176,7 +176,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
-6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **Snackbar labels** (`app_snackbar` / `undo_snackbar`) must stay `selectable: false` — a selectable WrapLabel on an error snack steals the swipe and can leave scroll dead until the next clean touch (observed 2026-11). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
+6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` default is `selectable: false`** (both apps) — select-drag calls `block_scrolling_except_within(Empty)` and on Android leaves swipe dead / “freeze on touch move” (Kitchen KotCard, 2026-11 adb). Opt in `selectable: true` only for intentional copy (pairing digits). **Snackbar labels** stay `selectable: false`. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 7. **Settings / CTAs freeze the UI (wrap + Fill)** — Separate from bug **7a**. Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Signature: high CPU / draw path / turtle warning. Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws. Still avoid the bad layout:
    - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit**. Patch `button_label_center`. **Do not** “fix” by removing wrap or left-aligning labels (bug 3).
    - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
@@ -334,7 +334,7 @@ Dev and prod can sit side-by-side on one machine because paths differ by id. No 
 | Backups | `…/<APP_ID>/backups/` | same |
 | Override | `KUMKAJ_DATA_DIR` | same |
 
-**DeviceSetup (every launch):** language (platform default, immediate apply) + Server/Client. **Offline LAN:** Server Mode creates the **one** local server if none exist, otherwise opens it — no create/open/remove list (multi-server on one install is cloud-only later). **Owner wipe:** Settings → Backup → Delete local data (business records / shop setup / screen preferences + Owner PIN), same categories as Windows uninstall / `delete-books-data.ps1`. **Emergency unlock PIN (offline LAN only — do not regress):** Team → optional duress PIN; unlock path calls `try_duress_unlock` → `wipe_trading_data_keep_structure` — books entries gone, catalogue/schema/staff/settings kept, opens as Owner looking normal (vision §17). Scope is cloudless Server/Client shops, not cloud multi-shop. Never conflate with Backup “shop setup” wipe. **Khaynjo:** after a successful first-server create (and before Owner PIN), a one-shot **Rajdhani App Template** card may appear (Apply = menu import with status + Cancel; Skip → Lock). See [`DESIGN.md`](DESIGN.md) § Launch / auth.
+**DeviceSetup (every launch):** language (platform default, immediate apply) + Server/Client. **Offline LAN:** Server Mode creates the **one** local server if none exist, otherwise opens it — no create/open/remove list (multi-server on one install is cloud-only later). **Client/Server role open (do not regress):** open books on a worker (`client_mode_job` / `server_*_job`); DeviceSetup shows **Opening… / Preparing desk…** + Cancel the whole time — including after the worker returns, while the UI drops the previous SQLite (off-thread) and runs `reload_all` / `sync_chrome`. Never clear `role_open_busy` in `role_open_finish` on success (that left a silent multi-minute freeze). Gate `sync_chrome` with `role_open_busy` like other heavy jobs. **Owner wipe:** Settings → Backup → Delete local data (business records / shop setup / screen preferences + Owner PIN), same categories as Windows uninstall / `delete-books-data.ps1`. **Emergency unlock PIN (offline LAN only — do not regress):** Team → optional duress PIN; unlock path calls `try_duress_unlock` → `wipe_trading_data_keep_structure` — books entries gone, catalogue/schema/staff/settings kept, opens as Owner looking normal (vision §17). Scope is cloudless Server/Client shops, not cloud multi-shop. Never conflate with Backup “shop setup” wipe. **Person rights ≠ DeviceRole (do not regress):** what chrome a person sees is `NavCaps` / Team rights — never strip Owner/Waiter (etc.) features because the till is Client Mode. Client/Server only changes *how* the action runs (LAN write / Server kitchen printers vs local). Khaynjo KOT “Print selected again” → Client `POST /kot_reprint`; Server prints. After staff sync/`reload_all`, refresh `session` features/rights from the roster. **Khaynjo:** after a successful first-server create (and before Owner PIN), a one-shot **Rajdhani App Template** card may appear (Apply = menu import with status + Cancel; Skip → Lock). See [`DESIGN.md`](DESIGN.md) § Launch / auth.
 
 ### Product / template default (onboarding)
 
@@ -679,21 +679,35 @@ per app (`lan_ws.rs` / `net.rs` / `phone.rs`).
 **Person vs device (do not regress)**
 
 ```text
-Person + capabilities  →  what they see and may start
-Server                 →  sole SQLite writer (Client asks over LAN)
-Device exceptions      →  only this machine’s OS/host concerns
+Person (job + rights + stations)  →  what is visible / usable
+DeviceRole Server / Client        →  how this machine joins the shop LAN
+Host-only OS concerns             →  firewall, pairing, local printers, …
 ```
 
-Chrome and hubs follow the signed-in **person** (`NavCaps` / rights) — including
-Inventory, Branches, Team hire, Settings shop rows, day close — even when the
-device is Client Mode. Do **not** hide those from an Owner (or other capable
-person) just because `DeviceRole::Client`, and do **not** snack “on the shop
-device” for person-authorized books work.
+**Client/Server is not a permission system.** From the owner’s point of view the
+difference is almost only nature of the device:
+
+| | Server | Client |
+|---|---|---|
+| Books | Listens; sole SQLite writer | Connects; sync cache |
+| Printing | Direct / local printers | Uses the Server’s printers over LAN |
+| Pairing / extra tills / firewall | Host controls | Join / forget *this* till |
+
+Do **not** hide Inventory, Branches, Team hire, Settings shop rows, day close,
+KOT reprint, or other person-authorized work just because `DeviceRole::Client`.
+Do **not** snack “only on the shop device” for work the signed-in person’s
+rights already allow — send it with `books_op` / the matching LAN route instead.
+
+**Person rights are the real gate.** Job presets, screen chips, money/floor
+rights (`StaffRights` / `check_right`), and (Khaynjo) kitchen station access
+(`StaffFeatures.kot_stations`) decide visible vs hidden and allowed vs denied.
+Chrome and hubs follow the signed-in **person** (`NavCaps` / rights) on Server
+and Client alike.
 
 Person-level books writes go through `AppState::books_op` → on Server,
 `Store::apply_books_op`; on Client, `lan_job("/books", BooksOp, …)`. Sell/floor
-paths stay on their existing routes (`/sale`, `/kot`, `/running`, …). Own PIN /
-password stay on `/staff_pin` / `/staff_password`.
+paths stay on their existing routes (`/sale`, `/kot`, `/running`, `/kot_reprint`, …).
+Own PIN / password stay on `/staff_pin` / `/staff_password`.
 
 **Host-only exceptions** (`require_server_host` — this *machine* is the Server,
 or this Client’s own pairing link): allow/stop extra tills, pairing code,
@@ -1164,12 +1178,25 @@ chrome peer — never “nav only.”
 | Inventory / Branches | Person caps only — **not** `!is_client` | `nav_tab_permitted` |
 | Firewall / pairing / extra tills / autostart | Server **host** + Owner | `is_shop && is_owner` chrome |
 | Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` / `books_op` |
+| Kitchen station on Order / Send KOT | Person’s `kot_stations` (None = all) | Team checklist + `allows_kot_station` |
+| Print bill again | `Right::Reprint` — **bills**, not kitchen stations | Team rights row |
 
-**Job-first hire:** pick Waiter / Counter / Kitchen / Manager (or copy a person); optional “what they can open” + money rights. Do not bury self-service (own PIN) behind Owner-only screens.
+**Team edit UX (do not regress — Khaynjo):** Hire (job + optional copy + Add) is
+one card. Screens, money rights, kitchen-station checkboxes, rename, copy-onto,
+remove, and Save live only inside `team_selected_setup`, visible after the
+owner picks who to edit (`team_staff_id`). Buttons name that person
+(“Save setup for Asif”, “Remove Asif”). Never show those controls with no
+selection, never fall back Save to “first non-owner”, never leave hire copy and
+edit draft sharing an ambiguous target. `Right::Reprint` = bill reprint;
+station access is the checklist (`StaffFeatures.kot_stations`), not that right.
+
+**Job-first hire:** pick Waiter / Counter / Kitchen / Manager (or copy a person
+into the Add form). Tweaking screens / rights / stations is edit-after-pick, not
+a floating form. Do not bury self-service (own PIN) behind Owner-only screens.
 
 **Do not:** hard-code `Screen::Books` after unlock; leave hub `HubDestBtn`s
 visible “because Books is the home screen”; show money figures to Settle-denied
-waiters; gate only the rail and assume the page is fine; hide Settings entirely for staff who still need My PIN; demote capable people on Client Mode for shop books (use `/books` instead).
+waiters; gate only the rail and assume the page is fine; hide Settings entirely for staff who still need My PIN; demote capable people on Client Mode for shop books (use `/books` instead); conflate Client/Server with job rights; show Team rights/stations without a selected person.
 
 **Smoke:** unlock as Waiter (Floor + Order + Kitchen, no Sales) → home is
 Floor (or Order), not Day book; Day book must not appear in nav; if somehow

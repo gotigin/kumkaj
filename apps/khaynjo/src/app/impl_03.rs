@@ -1073,6 +1073,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(h_schemes), "schemes"),
             (ids!(upi_qr_help), "upi_qr_help"),
             (ids!(h_rights_help), "rights_help"),
+            (ids!(h_team_stations_help), "team_stations_help"),
+            (ids!(team_pick_hint), "team_pick_hint"),
             (ids!(h_opening_float), "opening_float"),
             (ids!(h_shift_close), "shift_handover"),
             (ids!(h_split_payment), "split"),

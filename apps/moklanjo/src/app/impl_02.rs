@@ -67,9 +67,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             || branch_busy().load(std::sync::atomic::Ordering::SeqCst)
             || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
             || printer_add
-            || finding;
+            || finding
+            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
         self.paint_submit_busy_chrome(cx);
         if heavy_job {
+            self.paint_role_open_busy_chrome(cx);
             if let Some(msg) = books_work_status().lock().unwrap().clone() {
                 self.set_status(cx, msg);
             }

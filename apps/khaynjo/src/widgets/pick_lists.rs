@@ -165,6 +165,7 @@ impl Widget for StationCheckList {
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     let printer_assign = self.field == "printer_assign";
+                    let team_stations = self.field == "team_kot_stations";
                     // PrinterAssign keeps slot encode in subtitle — never show it.
                     item.label(cx, ids!(subtitle)).set_text(
                         cx,
@@ -179,7 +180,8 @@ impl Widget for StationCheckList {
                     // Drawn box / filled+✓ — ☐ was missing from Noto (tofu).
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
                     item.view(cx, ids!(check_on)).set_visible(cx, checked);
-                    if is_unassigned || (printer_assign && !checked) {
+                    // Team person access: checkboxes only — no print-order ↑↓.
+                    if team_stations || is_unassigned || (printer_assign && !checked) {
                         item.label(cx, ids!(prio)).set_visible(cx, false);
                         item.button(cx, ids!(prio_up)).set_visible(cx, false);
                         item.button(cx, ids!(prio_down)).set_visible(cx, false);

@@ -284,6 +284,33 @@ pub struct RemoteKotRequest {
     pub table_id: Option<String>,
 }
 
+/// Recovery print: selected sent lines again (paper only — not a new Send).
+/// Client asks; Server prints on its kitchen printers. Gated by person Reprint.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteKotReprintLine {
+    pub kot_id: String,
+    pub name: String,
+    pub qty: i64,
+    pub qty_milli: i64,
+    #[serde(default)]
+    pub unit_label: String,
+    #[serde(default)]
+    pub note: String,
+    #[serde(default)]
+    pub applied_modifiers: Vec<crate::domain::ModifierOption>,
+    #[serde(default)]
+    pub station_id: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteKotReprintRequest {
+    #[serde(default)]
+    pub table_name: Option<String>,
+    #[serde(default)]
+    pub table_id: Option<String>,
+    pub lines: Vec<RemoteKotReprintLine>,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct PairOk {
     pub ok: bool,
@@ -347,8 +374,9 @@ pub const HEADER_PROTOCOL: &str = "X-Kumkaj-Protocol";
 /// two sides then say "update the app" instead of failing quietly (an old
 /// device read a newer snapshot as "no reply" and looked offline for ever).
 /// Bumped to 2 for WebSocket `/ws` + revisioned deltas (`lan_ws.rs`).
+/// Bumped to 3 for Client recovery KOT print (`POST /kot_reprint`).
 /// Older Clients keep working via `/wait` + `/sync`; mismatched peers get 426.
-pub const LAN_PROTOCOL: u32 = 2;
+pub const LAN_PROTOCOL: u32 = 3;
 
 /// Longest a device's `/wait` is held open before the Server answers anyway.
 pub const WAIT_MAX_SECS: u64 = 30;
@@ -1059,6 +1087,170 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
     })
 }
 
+/// Recovery print: selected sent lines again on this Server's kitchen printers.
+/// Shared by the Order desk (Server) and `POST /kot_reprint` (Client). Person
+/// Reprint right is checked here — DeviceRole is never a gate.
+pub fn reprint_selected_kots(
+    store: &Store,
+    actor: &StaffMember,
+    req: &RemoteKotReprintRequest,
+) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
+    store.check_right(actor, crate::domain::Right::Reprint, None)?;
+    if req.lines.is_empty() {
+        return Err("Every sent dish is skipped — tap In print on the ones to reprint".into());
+    }
+    let stations = store.list_stations().unwrap_or_default();
+    let priority: Vec<String> = store
+        .kot_station_priority_csv()
+        .ok()
+        .flatten()
+        .unwrap_or_default()
+        .split(',')
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+        .map(str::to_string)
+        .collect();
+    let table_label = req
+        .table_name
+        .clone()
+        .filter(|s| !s.trim().is_empty())
+        .or_else(|| {
+            req.table_id.as_ref().and_then(|tid| {
+                store
+                    .list_tables()
+                    .ok()
+                    .and_then(|tables| tables.into_iter().find(|t| &t.id == tid).map(|t| t.name))
+            })
+        })
+        .unwrap_or_default();
+    let by = actor.name.clone();
+    let unassigned = "Kitchen";
+    // station_id → (display name, lines)
+    let mut groups: Vec<(String, String, Vec<&RemoteKotReprintLine>)> = Vec::new();
+    for line in &req.lines {
+        let mut sid = line.station_id.trim().to_string();
+        if sid.is_empty() {
+            if let Ok(from_ticket) = store.station_id_for_kot(&line.kot_id) {
+                sid = from_ticket;
+            }
+        }
+        let name = if sid.is_empty() {
+            unassigned.to_string()
+        } else {
+            stations
+                .iter()
+                .find(|s| s.id == sid)
+                .map(|s| s.name.clone())
+                .unwrap_or_else(|| unassigned.to_string())
+        };
+        match groups.iter_mut().find(|(id, _, _)| id == &sid) {
+            Some((_, _, lines)) => lines.push(line),
+            None => groups.push((sid, name, vec![line])),
+        }
+    }
+    if !priority.is_empty() {
+        let mut ordered = Vec::with_capacity(groups.len());
+        for id in &priority {
+            if let Some(i) = groups.iter().position(|(sid, _, _)| sid == id) {
+                ordered.push(groups.remove(i));
+            }
+        }
+        ordered.append(&mut groups);
+        groups = ordered;
+    }
+    let now = chrono::Local::now().format("%Y-%m-%d %H:%M").to_string();
+    let shop = store.venue_title().unwrap_or_default();
+    let fmt = store.kot_slip_format().unwrap_or_default();
+    let copies = fmt.copies.max(1);
+    let mut ok = 0usize;
+    let mut errors: Vec<String> = Vec::new();
+    let mut kitchen_names: Vec<String> = Vec::new();
+    for (station_id, station_name, lines) in &groups {
+        let mut kot_nos: Vec<i64> = Vec::new();
+        for line in lines {
+            if let Ok(no) = store.kot_no_for(&line.kot_id) {
+                if no > 0 && !kot_nos.contains(&no) {
+                    kot_nos.push(no);
+                }
+            }
+        }
+        let kot_nos_joined = if kot_nos.len() > 1 {
+            Some(format!(
+                "Was KOT No: {}",
+                kot_nos
+                    .iter()
+                    .map(|n| n.to_string())
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            ))
+        } else {
+            None
+        };
+        let item_lines: Vec<String> = lines
+            .iter()
+            .map(|line| {
+                let qty =
+                    crate::domain::format_qty_display(line.qty_milli, line.qty, &line.unit_label);
+                let mut row = format!("{qty} x {}", line.name);
+                for m in &line.applied_modifiers {
+                    row.push_str(&format!(" + {}", m.name));
+                }
+                if !line.note.trim().is_empty() {
+                    row.push_str(&format!(" ({})", line.note.trim()));
+                }
+                row
+            })
+            .collect();
+        let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
+        let text = fmt.render(crate::print_share::KotSlipContent {
+            cancel: false,
+            reprint: true,
+            shop_name: &shop,
+            kot_no: kot_nos.first().copied().unwrap_or(0),
+            kot_nos_label: kot_nos_joined.as_deref(),
+            when: &now,
+            created_by: &by,
+            table_label: &table_label,
+            station_name: station_name.as_str(),
+            items: &item_refs,
+        });
+        let mut printed = false;
+        let mut last_err: Option<String> = None;
+        for _ in 0..copies {
+            match crate::print_share::print_route(
+                crate::print_share::PrintKind::Kot,
+                crate::print_share::RouteKey::Kot {
+                    station_id: station_id.as_str(),
+                },
+                &text,
+                store.db_path().parent(),
+            ) {
+                Ok(share) if share.opened => printed = true,
+                Ok(_) => {
+                    last_err = Some(format!(
+                        "{station_name}: no printer — Settings → Printers"
+                    ));
+                }
+                Err(e) => last_err = Some(format!("{station_name}: {e}")),
+            }
+        }
+        if printed {
+            ok += 1;
+            kitchen_names.push(station_name.clone());
+        } else if let Some(e) = last_err {
+            errors.push(e);
+        }
+    }
+    if ok == 0 {
+        return Err(if errors.is_empty() {
+            "Send a KOT first — then include dishes and print selected again".into()
+        } else {
+            errors.join("; ")
+        });
+    }
+    Ok((req.lines.len(), ok, kitchen_names, errors))
+}
+
 /// Print just-sent KOTs at this (Server) device when the shop prints KOTs
 /// automatically. Counter and waiter KOTs both come through here. Returns
 /// a problem summary if any ticket failed (the KOTs are sent either way).
@@ -1725,6 +1917,20 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let kot_ids = store.send_kot(&req.draft, table_id.as_deref(), actor)?;
             after.kots = kot_ids.clone();
             Ok(Reply::json(serde_json::json!({ "ok": true, "kot_ids": kot_ids })))
+        }
+        "/kot_reprint" => {
+            // Paper only — Client asks; Server prints on kitchen printers.
+            // Person Reprint right (not DeviceRole) gates this.
+            let req: RemoteKotReprintRequest =
+                serde_json::from_str(body).map_err(|e| format!("kot reprint json: {e}"))?;
+            let (dishes, slips, kitchens, errors) = reprint_selected_kots(store, actor, &req)?;
+            Ok(Reply::json(serde_json::json!({
+                "ok": true,
+                "dishes": dishes,
+                "slips": slips,
+                "kitchens": kitchens,
+                "errors": errors,
+            })))
         }
         "/running" => {
             let req: RemoteRunningRequest = serde_json::from_str(body).map_err(|e| format!("running json: {e}"))?;

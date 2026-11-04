@@ -356,6 +356,11 @@ pub struct StaffFeatures {
     /// Owner-edited rights; `None` = the role's preset ([`StaffRights::for_role`]).
     #[serde(default)]
     pub rights: Option<StaffRights>,
+    /// Kitchen stations this person may send / print KOTs to.
+    /// `None` = every station (role default). `Some(ids)` = only those ids
+    /// (empty = none). Bill reprint stays [`Right::Reprint`] — separate.
+    #[serde(default)]
+    pub kot_stations: Option<Vec<String>>,
 }
 
 impl Default for StaffFeatures {
@@ -378,6 +383,7 @@ impl StaffFeatures {
             inventory: true,
             branches: true,
             rights: None,
+            kot_stations: None,
         }
     }
 
@@ -396,6 +402,7 @@ impl StaffFeatures {
                 inventory: true,
                 branches: true,
                 rights: None,
+                kot_stations: None,
             },
             StaffRole::Cashier => Self {
                 sell: true,
@@ -411,6 +418,7 @@ impl StaffFeatures {
                 inventory: false,
                 branches: false,
                 rights: None,
+                kot_stations: None,
             },
             // Waiter: takes orders / floor / KOT — never books, Parties,
             // Counter settle, or day's business (Sales + Settle Denied).
@@ -428,6 +436,7 @@ impl StaffFeatures {
                 inventory: false,
                 branches: false,
                 rights: None,
+                kot_stations: None,
             },
             StaffRole::Kitchen => Self {
                 sell: false,
@@ -441,8 +450,49 @@ impl StaffFeatures {
                 inventory: false,
                 branches: false,
                 rights: None,
+                kot_stations: None,
             },
         }
+    }
+
+    /// May this person send / print a KOT for `station_id`?
+    pub fn allows_kot_station(&self, station_id: &str) -> bool {
+        let sid = station_id.trim();
+        if sid.is_empty() {
+            return true;
+        }
+        match &self.kot_stations {
+            None => true,
+            Some(ids) => ids.iter().any(|id| id == sid),
+        }
+    }
+
+    /// Toggle one station in the draft list. `all_ids` is every kitchen id
+    /// in the shop (so “all checked” collapses back to `None`).
+    pub fn toggle_kot_station(&mut self, station_id: &str, all_ids: &[String]) {
+        let sid = station_id.trim();
+        if sid.is_empty() {
+            return;
+        }
+        let mut allowed: Vec<String> = match &self.kot_stations {
+            None => all_ids.to_vec(),
+            Some(ids) => ids.clone(),
+        };
+        if let Some(i) = allowed.iter().position(|id| id == sid) {
+            allowed.remove(i);
+        } else {
+            allowed.push(sid.to_string());
+        }
+        // Same set as the shop → unrestricted (None).
+        let mut sorted_allowed = allowed.clone();
+        sorted_allowed.sort();
+        let mut sorted_all = all_ids.to_vec();
+        sorted_all.sort();
+        self.kot_stations = if sorted_allowed == sorted_all {
+            None
+        } else {
+            Some(allowed)
+        };
     }
 
     pub fn to_json(&self) -> String {

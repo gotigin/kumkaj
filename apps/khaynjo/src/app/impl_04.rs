@@ -1520,13 +1520,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if self.ui.button(cx, ids!(diag_support_start)).clicked(actions) {
             diag::start_support_session(None);
             self.sync_diag_panel(cx);
-            self.show_ok(cx, app_state().lock().unwrap().t("diag_support_started"));
+            self.show_ok(cx, app_t("diag_support_started"));
             return;
         }
         if self.ui.button(cx, ids!(diag_support_stop)).clicked(actions) {
             diag::end_support_session();
             self.sync_diag_panel(cx);
-            self.show_ok(cx, app_state().lock().unwrap().t("diag_support_ended"));
+            self.show_ok(cx, app_t("diag_support_ended"));
             return;
         }
         if self.ui.button(cx, ids!(diag_export_local_cancel)).clicked(actions) {
@@ -1551,7 +1551,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if self.ui.button(cx, ids!(diag_approve_send)).clicked(actions) {
             diag::approve_send();
             self.sync_diag_panel(cx);
-            self.show_warn(cx, app_state().lock().unwrap().t("diag_send_approved"));
+            self.show_warn(cx, app_t("diag_send_approved"));
             return;
         }
         if self.ui.button(cx, ids!(diag_export_send)).clicked(actions) {
@@ -1566,7 +1566,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             match diag::clear_logs() {
                 Ok(()) => {
                     self.sync_diag_panel(cx);
-                    self.show_ok(cx, app_state().lock().unwrap().t("diag_cleared"));
+                    self.show_ok(cx, app_t("diag_cleared"));
                 }
                 Err(e) => self.show_error(cx, e),
             }

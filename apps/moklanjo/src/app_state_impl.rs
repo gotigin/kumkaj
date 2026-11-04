@@ -234,7 +234,30 @@ impl AppState {
         self.entity_template_id = store
             .entity_template_id()
             .unwrap_or_else(|_| "custom".into());
+        // Person rights live in the staff roster (synced over LAN). Refresh the
+        // signed-in session copy so Team changes on the Server show on chrome
+        // without forcing unlock again.
+        self.refresh_session_from_staff_roster();
         Ok(())
+    }
+
+    /// Overlay live `staff` features/rights onto `session` (same person id).
+    fn refresh_session_from_staff_roster(&mut self) {
+        let Some(session) = self.session.as_ref() else {
+            return;
+        };
+        let id = session.id.clone();
+        let Some(fresh) = self.staff.iter().find(|s| s.id == id).cloned() else {
+            return;
+        };
+        if let Some(session) = self.session.as_mut() {
+            session.name = fresh.name;
+            session.role = fresh.role;
+            session.role_title = fresh.role_title;
+            session.features = fresh.features;
+            session.active = fresh.active;
+            session.login_id = fresh.login_id;
+        }
     }
 
     /// Booking desk catalogue: sell cards only; party overrides for the

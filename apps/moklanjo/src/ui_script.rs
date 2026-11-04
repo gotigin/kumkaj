@@ -1703,12 +1703,14 @@ script_mod! {
     // support — stock Markdown/TextFlow ignore set_visible. Use `body:`.
     // Default: display text is selectable. Only tap targets (buttons,
     // tappable rows) keep Label / selectable: false.
+    // Default NOT selectable — TextFlow select-drag blocks Android page swipe
+    // (freeze / dead scroll). Opt in with selectable: true for copy-only faces.
     mod.widgets.WrapLabelBase = #(WrapLabel::register_widget(vm))
     mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
         height: Fit
         padding: 0.
-        selectable: true
+        selectable: false
         paragraph_spacing: 0.
         pre_code_spacing: 0.
         font_size: 14.

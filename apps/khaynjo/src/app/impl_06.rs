@@ -272,8 +272,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     }
 
     fn finish_server_new_opened(&mut self, cx: &mut Cx, store: Store) {
-        {
+        self.paint_role_open_busy_chrome(cx);
+        let old = {
             let mut st = app_state().lock().unwrap();
+            let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let _ = st.refresh_local_servers();
@@ -291,14 +293,19 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             } else {
                 self.finish_as_server(&mut st, true);
             }
-        }
-        self.paint_role_open_busy_chrome(cx);
+            old
+        };
+        drop_store_off_ui(old);
         self.sync_chrome(cx);
+        end_role_open_busy();
+        self.paint_role_open_busy_chrome(cx);
     }
 
     fn finish_server_existing_opened(&mut self, cx: &mut Cx, store: Store, switching_in: bool) {
-        {
+        self.paint_role_open_busy_chrome(cx);
+        let old = {
             let mut st = app_state().lock().unwrap();
+            let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let _ = st.refresh_local_servers();
@@ -313,9 +320,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             } else {
                 self.finish_as_server(&mut st, switching_in);
             }
-        }
-        self.paint_role_open_busy_chrome(cx);
+            old
+        };
+        drop_store_off_ui(old);
         self.sync_chrome(cx);
+        end_role_open_busy();
+        self.paint_role_open_busy_chrome(cx);
     }
 
     /// Brand-new Server before Owner PIN, and the Rajdhani menu template ships.
@@ -568,13 +578,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.resolve_data_base(cx);
         let base = {
             let st = app_state().lock().unwrap();
-            match st.data_base.clone() {
-                Some(b) => b,
-                None => {
-                    self.set_status(cx, "No data directory");
-                    return;
-                }
-            }
+            st.data_base.clone()
+        };
+        let Some(base) = base else {
+            // Never call set_status while holding app_state (deadlock).
+            self.set_status(cx, "No data directory");
+            return;
         };
         client_mode_job(base);
         self.paint_role_open_busy_chrome(cx);
@@ -582,8 +591,11 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
 
     /// Apply a Store opened on the client-mode worker (Signal handler).
     fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
-        {
+        // Busy chrome still on ("Preparing desk…") from role_open_finish.
+        self.paint_role_open_busy_chrome(cx);
+        let old = {
             let mut st = app_state().lock().unwrap();
+            let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let chosen = (st.language_follow_platform, st.locale.language.clone());
@@ -610,9 +622,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             } else {
                 "Client Mode — find the Server, tap the shop you want, then Pair".into()
             };
-        }
-        self.paint_role_open_busy_chrome(cx);
+            old
+        };
+        drop_store_off_ui(old);
         self.sync_chrome(cx);
+        end_role_open_busy();
+        self.paint_role_open_busy_chrome(cx);
     }
 
     fn paint_role_open_busy_chrome(&mut self, cx: &mut Cx) {

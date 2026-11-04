@@ -720,6 +720,7 @@ fn en(key: &str) -> String {
         "cancelled" => "Cancelled",
         "cancel" => "Cancel",
         "opening_client" => "Opening client…",
+        "preparing_desk" => "Preparing desk…",
         "opening_server" => "Opening server…",
         "creating_server" => "Creating server…",
         "diag_privacy_help" => "Logs stay on this device. Secrets (PIN, passwords) are never stored. Sharing a package off the device needs your explicit approval each time — never sold or given to third parties.",

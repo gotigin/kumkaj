@@ -224,6 +224,8 @@ enum SuggestField {
     TeamCopyHire,
     /// Team → Edit: copy role/title/features onto the selected person.
     TeamCopyEdit,
+    /// Team → selected person: which kitchen stations they may use (checklist).
+    TeamKotStations,
     ConvFrom,
     ConvTo,
     BranchSwitch,
@@ -252,7 +254,7 @@ enum SuggestField {
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 31] = [
+    const ALL: [SuggestField; 32] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -268,6 +270,7 @@ impl SuggestField {
         SuggestField::TeamPick,
         SuggestField::TeamCopyHire,
         SuggestField::TeamCopyEdit,
+        SuggestField::TeamKotStations,
         SuggestField::ConvFrom,
         SuggestField::ConvTo,
         SuggestField::BranchSwitch,
@@ -304,6 +307,7 @@ impl SuggestField {
             SuggestField::TeamPick => "team_pick",
             SuggestField::TeamCopyHire => "team_copy_hire",
             SuggestField::TeamCopyEdit => "team_copy_edit",
+            SuggestField::TeamKotStations => "team_kot_stations",
             SuggestField::ConvFrom => "conv_from",
             SuggestField::ConvTo => "conv_to",
             SuggestField::BranchSwitch => "branch_switch",
@@ -340,6 +344,7 @@ impl SuggestField {
             SuggestField::TeamPick => ids!(team_pick_input),
             SuggestField::TeamCopyHire => ids!(staff_copy_hire_input),
             SuggestField::TeamCopyEdit => ids!(staff_copy_edit_input),
+            SuggestField::TeamKotStations => ids!(team_stations_anchor),
             SuggestField::ConvFrom => ids!(conv_from_input),
             SuggestField::ConvTo => ids!(conv_to_input),
             SuggestField::BranchSwitch => ids!(branch_switch_input),
@@ -376,6 +381,7 @@ impl SuggestField {
             SuggestField::TeamPick => ids!(team_pick_suggest),
             SuggestField::TeamCopyHire => ids!(staff_copy_hire_suggest),
             SuggestField::TeamCopyEdit => ids!(staff_copy_edit_suggest),
+            SuggestField::TeamKotStations => ids!(team_stations_list),
             SuggestField::ConvFrom => ids!(conv_from_suggest),
             SuggestField::ConvTo => ids!(conv_to_suggest),
             SuggestField::BranchSwitch => ids!(branch_switch_suggest),

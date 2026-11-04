@@ -580,6 +580,14 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<Vec<String>, String> {
         let table_id = table_id.filter(|t| !t.is_empty());
+        // Person rights: refuse kitchens outside this user's allowed stations.
+        let feats = actor.effective_features();
+        for line in draft.lines.iter().filter(|l| !l.kot_sent) {
+            let sid = line.station_id.trim();
+            if !sid.is_empty() && !feats.allows_kot_station(sid) {
+                return Err(format!("Not allowed to use kitchen station {sid}"));
+            }
+        }
         self.in_transaction(|| {
             if let Some(tid) = table_id {
                 self.seat_draft_unsent(tid, draft, actor)?;

@@ -336,7 +336,33 @@ impl AppState {
             .entity_template_id()
             .unwrap_or_else(|_| "custom".into());
         self.refresh_frequent_cache();
+        // Person rights live in the staff roster (synced over LAN). Refresh the
+        // signed-in session copy so Team changes on the Server show on chrome
+        // without forcing unlock again — never freeze rights at login forever.
+        self.refresh_session_from_staff_roster();
         Ok(())
+    }
+
+    /// Overlay live `staff` features/rights onto `session` (same person id).
+    fn refresh_session_from_staff_roster(&mut self) {
+        let Some(session) = self.session.as_ref() else {
+            return;
+        };
+        let id = session.id.clone();
+        let Some(fresh) = self.staff.iter().find(|s| s.id == id).cloned() else {
+            return;
+        };
+        if let Some(session) = self.session.as_mut() {
+            // Keep identity; take live job/features/rights from the roster.
+            session.name = fresh.name;
+            session.role = fresh.role;
+            session.role_title = fresh.role_title;
+            session.features = fresh.features;
+            session.active = fresh.active;
+            session.login_id = fresh.login_id;
+            // Never pull PIN/password hashes onto a Client session from sync.
+            // (roster sync already strips them; still leave session hashes alone.)
+        }
     }
 
     fn uses_lan(&self) -> bool {
@@ -862,6 +888,11 @@ impl AppState {
                     .as_ref()
                     .and_then(|s| s.list_picker_stations().ok())
                     .unwrap_or_else(|| self.stations.clone());
+                // Person rights: only kitchens this signed-in user may use.
+                if let Some(session) = self.session.as_ref() {
+                    let feats = session.effective_features();
+                    stations.retain(|s| feats.allows_kot_station(&s.id));
+                }
                 // ↑↓ print priority: listed ids first, then any new stations.
                 if !self.kot_station_priority.is_empty() {
                     let mut ordered = Vec::with_capacity(stations.len());
@@ -906,6 +937,24 @@ impl AppState {
                     }
                 }));
                 rows
+            }
+            // Team → selected person: every kitchen, checked = they may use it.
+            SuggestField::TeamKotStations => {
+                let use_l = self.t("use");
+                let clear_l = self.t("dont_use");
+                let feats = &self.draft_features;
+                self.stations
+                    .iter()
+                    .map(|st| {
+                        if feats.allows_kot_station(&st.id) {
+                            SuggestRow::new(st.name.clone(), String::new())
+                                .with_action(clear_l.clone())
+                        } else {
+                            SuggestRow::new(st.name.clone(), String::new())
+                                .with_action(use_l.clone())
+                        }
+                    })
+                    .collect()
             }
             SuggestField::MenuUnit | SuggestField::ConvFrom | SuggestField::ConvTo | SuggestField::BuyUnit => units(),
             SuggestField::MenuTax => self

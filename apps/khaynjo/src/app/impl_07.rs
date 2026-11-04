@@ -69,30 +69,14 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     }
 
     /// Recovery print: kitchen slips for **included** sent lines only
-    /// (owner include/exclude on the ticket). Not a new Send — paper only.
-    /// Grouped by station like a normal KOT; marked REPRINT on the slip.
+    /// (include/exclude on the ticket). Not a new Send — paper only.
+    /// Person Reprint right gates visibility/action; Client/Server only
+    /// changes *where* the printers run (LAN → Server kitchen printers).
     fn reprint_open_kots(&mut self, cx: &mut Cx) -> Result<String, String> {
         let _ = cx;
-        let mut st = app_state().lock().unwrap();
+        let st = app_state().lock().unwrap();
         if !session_may_reprint(st.session.as_ref()) {
             return Err("Not allowed to print KOTs again — ask the owner".into());
-        }
-        // Path is ground truth (…/client/ vs …/servers/<id>/). Never show the
-        // Client-only snack on Server books — a stuck AppState Client flag or
-        // empty printer route must surface the real print error instead.
-        let client_cache = st
-            .store
-            .as_ref()
-            .map(|s| s.is_client_cache_path())
-            .ok_or_else(|| "No store".to_string())?;
-        if client_cache {
-            return Err(st.t("reprint_kot_client"));
-        }
-        if st.device_role == DeviceRole::Client {
-            st.device_role = DeviceRole::Server;
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_device_role(DeviceRole::Server.as_str());
-            }
         }
         let has_sent = st.cart.lines.iter().any(|l| {
             l.is_sent() && !l.kot_id.is_empty() && l.kot_id != QUEUED_KOT
@@ -114,162 +98,62 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         if selected.is_empty() {
             return Err(st.t("reprint_kot_none_selected"));
         }
-        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-        let unassigned = st.t("kot_unassigned");
-        let table_label = st
-            .selected_table_id
-            .as_ref()
-            .and_then(|id| st.tables.iter().find(|t| &t.id == id).map(|t| t.name.clone()))
-            .unwrap_or_default();
-        let by = st
-            .session
-            .as_ref()
-            .map(|s| s.name.clone())
-            .unwrap_or_default();
-        // Prefetch ticket stations — cart lines lose station_id on table reload
-        // (running_lines has no column); the KOT ticket still has the kitchen.
-        let mut ticket_station: std::collections::HashMap<String, String> =
-            std::collections::HashMap::new();
-        for line in &selected {
-            if ticket_station.contains_key(&line.kot_id) {
-                continue;
-            }
-            if let Ok(sid) = store.station_id_for_kot(&line.kot_id) {
-                if !sid.trim().is_empty() {
-                    ticket_station.insert(line.kot_id.clone(), sid);
-                }
-            }
-        }
-        // station_id → (station display name, lines)
-        let mut groups: Vec<(String, String, Vec<&domain::CartLine>)> = Vec::new();
-        for line in &selected {
-            let sid = {
-                let from_line = line.kitchen_station_id(&st.products).to_string();
-                if !from_line.is_empty() {
-                    from_line
-                } else {
-                    ticket_station
-                        .get(&line.kot_id)
-                        .cloned()
-                        .unwrap_or_default()
-                }
-            };
-            let name = if sid.is_empty() {
-                unassigned.clone()
-            } else {
-                st.stations
-                    .iter()
-                    .find(|s| s.id == sid)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_else(|| unassigned.clone())
-            };
-            match groups.iter_mut().find(|(id, _, _)| id == &sid) {
-                Some((_, _, lines)) => lines.push(*line),
-                None => groups.push((sid, name, vec![*line])),
-            }
-        }
-        // Prefer kitchen print priority when set.
-        if !st.kot_station_priority.is_empty() {
-            let mut ordered = Vec::with_capacity(groups.len());
-            for id in &st.kot_station_priority {
-                if let Some(i) = groups.iter().position(|(sid, _, _)| sid == id) {
-                    ordered.push(groups.remove(i));
-                }
-            }
-            ordered.append(&mut groups);
-            groups = ordered;
-        }
-        let mut ok = 0usize;
-        let mut errors: Vec<String> = Vec::new();
-        let mut kitchen_names: Vec<String> = Vec::new();
-        let dish_n = selected.len();
-        let now = chrono::Local::now().format("%Y-%m-%d %H:%M").to_string();
-        let shop = store.venue_title().unwrap_or_default();
-        let fmt = store.kot_slip_format().unwrap_or_default();
-        let copies = fmt.copies.max(1);
-        for (station_id, station_name, lines) in &groups {
-            let mut kot_nos: Vec<i64> = Vec::new();
-            for line in lines {
-                if let Ok(no) = store.kot_no_for(&line.kot_id) {
-                    if no > 0 && !kot_nos.contains(&no) {
-                        kot_nos.push(no);
-                    }
-                }
-            }
-            let kot_nos_joined = if kot_nos.len() > 1 {
-                Some(format!(
-                    "Was KOT No: {}",
-                    kot_nos
-                        .iter()
-                        .map(|n| n.to_string())
-                        .collect::<Vec<_>>()
-                        .join(", ")
-                ))
-            } else {
-                None
-            };
-            let item_lines: Vec<String> = lines
+        let table_id = st.selected_table_id.clone();
+        let table_name = table_id.as_ref().and_then(|id| {
+            st.tables
                 .iter()
-                .map(|line| {
-                    let qty =
-                        domain::format_qty_display(line.qty_milli, line.qty, &line.unit_label);
-                    let mut row = format!("{qty} x {}", line.name);
-                    for m in &line.applied_modifiers {
-                        row.push_str(&format!(" + {}", m.name));
-                    }
-                    if !line.note.trim().is_empty() {
-                        row.push_str(&format!(" ({})", line.note.trim()));
-                    }
-                    row
-                })
-                .collect();
-            let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
-            let text = fmt.render(print_share::KotSlipContent {
-                cancel: false,
-                reprint: true,
-                shop_name: &shop,
-                kot_no: kot_nos.first().copied().unwrap_or(0),
-                kot_nos_label: kot_nos_joined.as_deref(),
-                when: &now,
-                created_by: &by,
-                table_label: &table_label,
-                station_name: station_name.as_str(),
-                items: &item_refs,
-            });
-            let mut printed = false;
-            let mut last_err: Option<String> = None;
-            for _ in 0..copies {
-                match print_share::print_route(
-                    print_share::PrintKind::Kot,
-                    print_share::RouteKey::Kot {
-                        station_id: station_id.as_str(),
-                    },
-                    &text,
-                    store.db_path().parent(),
-                ) {
-                    Ok(share) if share.opened => printed = true,
-                    Ok(_) => {
-                        last_err = Some(format!(
-                            "{station_name}: no printer — Settings → Printers"
-                        ));
-                    }
-                    Err(e) => last_err = Some(format!("{station_name}: {e}")),
-                }
-            }
-            if printed {
-                ok += 1;
-                kitchen_names.push(station_name.clone());
-            } else if let Some(e) = last_err {
-                errors.push(e);
-            }
+                .find(|t| &t.id == id)
+                .map(|t| t.name.clone())
+        });
+        let lines: Vec<net::RemoteKotReprintLine> = selected
+            .iter()
+            .map(|l| net::RemoteKotReprintLine {
+                kot_id: l.kot_id.clone(),
+                name: l.name.clone(),
+                qty: l.qty,
+                qty_milli: l.qty_milli,
+                unit_label: l.unit_label.clone(),
+                note: l.note.clone(),
+                applied_modifiers: l.applied_modifiers.clone(),
+                station_id: l.kitchen_station_id(&st.products).to_string(),
+            })
+            .collect();
+        let req = net::RemoteKotReprintRequest {
+            table_name: table_name.clone(),
+            table_id: table_id.clone(),
+            lines,
+        };
+        // Client cache / Client role: same person rights; printers are on the
+        // Server — ask over LAN. Never refuse capable people, never flip role.
+        let on_client = st.device_role == DeviceRole::Client
+            || st
+                .store
+                .as_ref()
+                .map(|s| s.is_client_cache_path())
+                .unwrap_or(false);
+        if on_client {
+            let place = table_name
+                .clone()
+                .unwrap_or_else(|| "counter".into());
+            let dish_n = req.lines.len();
+            let _job = st.lan_job(
+                "/kot_reprint",
+                &req,
+                format!("Print again for {place}"),
+                st.t("reprint_kot_client")
+                    .replace("{n}", &dish_n.to_string())
+                    .replace("{place}", &place),
+                phone::Follow::Refresh,
+                true,
+            )?;
+            return Ok(st
+                .t("reprint_kot_client")
+                .replace("{n}", &dish_n.to_string())
+                .replace("{place}", &place));
         }
-        if ok == 0 {
-            return Err(if errors.is_empty() {
-                st.t("reprint_kot_needed")
-            } else {
-                errors.join("; ")
-            });
-        }
+        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let actor = st.actor()?;
+        let (dish_n, ok, kitchen_names, errors) = net::reprint_selected_kots(store, &actor, &req)?;
         let kitchens = if kitchen_names.is_empty() {
             st.t("kitchen")
         } else {
@@ -1592,6 +1476,13 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 (s.id, s.name)
             }
         };
+        if let Some(session) = st.session.as_ref() {
+            if !session.effective_features().allows_kot_station(&station_id) {
+                return Err(st
+                    .t("kot_station_not_allowed")
+                    .replace("{station}", &station_name));
+            }
+        }
         // Multi-check: only assign dishes that still have no kitchen. Never
         // overwrite another station (that felt like exclusive radios).
         let products = st.products.clone();

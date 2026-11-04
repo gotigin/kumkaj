@@ -174,10 +174,8 @@ mod tests {
             SnackKind::Warn
         );
         assert_eq!(
-            classify(
-                "Client Mode — print selected again on the Server (kitchen printers are on that device)"
-            ),
-            SnackKind::Warn
+            classify("Print again (2) for T1 sent — kitchen prints at the Server"),
+            SnackKind::Success
         );
         assert_eq!(classify("2 KOT(s) → Kitchen · printed"), SnackKind::Success);
     }

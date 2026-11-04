@@ -323,9 +323,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
             || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
             || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || print_share::is_finding_printers();
+            || print_share::is_finding_printers()
+            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
         if heavy_job {
             self.paint_import_progress_chrome(cx);
+            self.paint_role_open_busy_chrome(cx);
             let screen = app_state().lock().unwrap().screen;
             self.show_screen(cx, screen);
             // Printer add/find: never rebuild Settings lists mid-job (looks like a freeze).
@@ -1374,7 +1376,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(menu_unpriced_btn)).set_text(cx, &btn);
             let low = {
                 let st = app_state().lock().unwrap();
-                if st.low_stock_line.is_empty() || st.device_role == DeviceRole::Client {
+                // Synced stock is the same on Client — do not hide for DeviceRole.
+                if st.low_stock_line.is_empty() {
                     String::new()
                 } else {
                     st.t("low_stock_alert").replace("{items}", &st.low_stock_line)
@@ -1576,13 +1579,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             } else {
                 (st.t("send_kot"), String::new(), false)
             };
+            // Person rights only — Client vs Server is how print runs (LAN vs
+            // local), never whether a capable person sees the control.
             let may_reprint = session_may_reprint(st.session.as_ref());
-            // Extra tills never drive kitchen printers — hide the button so a
-            // stuck Client flag can't leave a dead control that only snacks.
-            let client_till = st
-                .store
-                .as_ref()
-                .is_some_and(|s| s.is_client_cache_path());
             let reprint_n = st
                 .cart
                 .lines
@@ -1601,7 +1600,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
-                .set_visible(cx, has_sent && may_reprint && !client_till);
+                .set_visible(cx, has_sent && may_reprint);
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
                 .set_text(cx, &reprint_label);
@@ -2293,7 +2292,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             let rows = {
                 let st = app_state().lock().unwrap();
                 match (st.screen, st.store.as_ref(), st.session.as_ref()) {
-                    (Screen::DayClose, Some(store), Some(actor)) if st.device_role.is_host() => {
+                    // Synced shift figures on Client — person day-close access
+                    // already gates the screen; do not require Server host.
+                    (Screen::DayClose, Some(store), Some(actor)) => {
                         store
                             .shift_so_far(actor)
                             .map(|s| {
@@ -2375,23 +2376,29 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         }
         // Team: who is being edited, and their rights (draft until Save).
         // Hire/edit block only for can_manage_team; My PIN card always stays.
+        // Screens / rights / stations / copy-onto / remove / save only when a
+        // person is selected — never floating with no target.
         {
-            let (selected, rights, lang, manage_team, self_tip) = {
+            let (selected, selected_name, has_selected, rights, lang, manage_team, self_tip) = {
                 let st = app_state().lock().unwrap();
                 let manage_team = st
                     .session
                     .as_ref()
                     .map(|m| m.can_manage_team())
                     .unwrap_or(false);
-                let selected = st
+                let member = st
                     .team_staff_id
                     .as_ref()
-                    .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                    .and_then(|id| st.staff.iter().find(|s| &s.id == id));
+                let selected_name = member.map(|s| s.name.clone()).unwrap_or_default();
+                let selected = member
                     .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
                     .unwrap_or_else(|| " ".to_string());
                 let self_tip = !manage_team;
                 (
                     selected,
+                    selected_name,
+                    member.is_some(),
                     st.team_draft_rights(),
                     st.locale.language.clone(),
                     manage_team,
@@ -2401,6 +2408,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(team_admin_block))
                 .set_visible(cx, manage_team);
+            self.ui
+                .view(cx, ids!(team_selected_setup))
+                .set_visible(cx, manage_team && has_selected);
+            self.ui
+                .widget(cx, ids!(team_pick_hint))
+                .set_visible(cx, manage_team && !has_selected);
             {
                 let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
                 let title = locale::t(&lang, if self_tip { "my_pin_settings" } else { "team" });
@@ -2416,41 +2429,81 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 help.set_nav_icon(cx, NavTab::Team);
                 help.set_tip(&plain_display_text(&tip));
             }
-            let on = app_state().lock().unwrap().draft_features.clone();
-            for (idle, active, set) in [
-                (ids!(feat_sell), ids!(feat_sell_on), on.sell),
-                (ids!(feat_items), ids!(feat_items_on), on.items),
-                (ids!(feat_sales), ids!(feat_sales_on), on.sales),
-                (ids!(feat_credit), ids!(feat_credit_on), on.credit),
-                (ids!(feat_floor), ids!(feat_floor_on), on.floor),
-                (ids!(feat_kitchen), ids!(feat_kitchen_on), on.kitchen),
-                (ids!(feat_team), ids!(feat_team_on), on.team),
-                (ids!(feat_backup), ids!(feat_backup_on), on.backup),
-                (ids!(feat_inventory), ids!(feat_inventory_on), on.inventory),
-                (ids!(feat_branches), ids!(feat_branches_on), on.branches),
-            ] {
-                self.paint_choice_pair(cx, idle, active, set);
-            }
-            self.ui
-                .widget(cx, ids!(team_selected_label))
-                .set_text(cx, &plain_display_text(&selected));
-            for (button, right) in [
-                (ids!(right_settle_btn), domain::Right::Settle),
-                (ids!(right_cancel_btn), domain::Right::CancelSentItem),
-                (ids!(right_nc_btn), domain::Right::Complimentary),
-                (ids!(right_move_btn), domain::Right::MoveTable),
-                (ids!(right_reprint_btn), domain::Right::Reprint),
-                (ids!(right_discount_btn), domain::Right::Discount),
-            ] {
-                let level = match rights.level(right) {
-                    domain::RightLevel::Allowed => "right_allowed",
-                    domain::RightLevel::WithApproval => "right_with_approval",
-                    domain::RightLevel::Denied => "right_denied",
+            if manage_team && has_selected {
+                let on = app_state().lock().unwrap().draft_features.clone();
+                for (idle, active, set) in [
+                    (ids!(feat_sell), ids!(feat_sell_on), on.sell),
+                    (ids!(feat_items), ids!(feat_items_on), on.items),
+                    (ids!(feat_sales), ids!(feat_sales_on), on.sales),
+                    (ids!(feat_credit), ids!(feat_credit_on), on.credit),
+                    (ids!(feat_floor), ids!(feat_floor_on), on.floor),
+                    (ids!(feat_kitchen), ids!(feat_kitchen_on), on.kitchen),
+                    (ids!(feat_team), ids!(feat_team_on), on.team),
+                    (ids!(feat_backup), ids!(feat_backup_on), on.backup),
+                    (ids!(feat_inventory), ids!(feat_inventory_on), on.inventory),
+                    (ids!(feat_branches), ids!(feat_branches_on), on.branches),
+                ] {
+                    self.paint_choice_pair(cx, idle, active, set);
+                }
+                self.ui
+                    .widget(cx, ids!(team_selected_label))
+                    .set_text(cx, &plain_display_text(&selected));
+                for (button, right) in [
+                    (ids!(right_settle_btn), domain::Right::Settle),
+                    (ids!(right_cancel_btn), domain::Right::CancelSentItem),
+                    (ids!(right_nc_btn), domain::Right::Complimentary),
+                    (ids!(right_move_btn), domain::Right::MoveTable),
+                    (ids!(right_reprint_btn), domain::Right::Reprint),
+                    (ids!(right_discount_btn), domain::Right::Discount),
+                ] {
+                    let level = match rights.level(right) {
+                        domain::RightLevel::Allowed => "right_allowed",
+                        domain::RightLevel::WithApproval => "right_with_approval",
+                        domain::RightLevel::Denied => "right_denied",
+                    };
+                    self.ui.button(cx, button).set_text(
+                        cx,
+                        &format!(
+                            "{}: {}",
+                            locale::t(&lang, right.label_key()),
+                            locale::t(&lang, level)
+                        ),
+                    );
+                }
+                let who = selected_name.trim();
+                let copy_lbl = if who.is_empty() {
+                    locale::t(&lang, "staff_copy_edit")
+                } else {
+                    locale::t(&lang, "staff_copy_edit_onto").replace("{name}", who)
                 };
-                self.ui.button(cx, button).set_text(
-                    cx,
-                    &format!("{}: {}", locale::t(&lang, right.label_key()), locale::t(&lang, level)),
-                );
+                let remove_lbl = if who.is_empty() {
+                    locale::t(&lang, "staff_deactivate")
+                } else {
+                    locale::t(&lang, "staff_deactivate_named").replace("{name}", who)
+                };
+                let save_lbl = if who.is_empty() {
+                    locale::t(&lang, "save_features")
+                } else {
+                    locale::t(&lang, "save_features_named").replace("{name}", who)
+                };
+                self.ui
+                    .button(cx, ids!(staff_copy_edit_btn))
+                    .set_text(cx, &copy_lbl);
+                self.ui
+                    .button(cx, ids!(staff_deactivate))
+                    .set_text(cx, &remove_lbl);
+                self.ui.button(cx, ids!(feat_save)).set_text(cx, &save_lbl);
+                // Keep the station checklist open while this person is selected.
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .open_suggest(SuggestField::TeamKotStations, "");
+            } else if manage_team {
+                // Leaving the person clears the always-open station list.
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                    st.suggest_open = None;
+                }
             }
         }
 

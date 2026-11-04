@@ -61,6 +61,11 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         let Some(field) = app_state().lock().unwrap().suggest_open else {
             return;
         };
+        // Team station checklist stays open while a person is selected
+        // (sync_chrome re-opens it; outside tap must not clear it).
+        if field == SuggestField::TeamKotStations {
+            return;
+        }
         let inside = if field == SuggestField::FloorColumns {
             let r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
             r.size.x > 0.0 && r.size.y > 0.0 && r.contains(abs)

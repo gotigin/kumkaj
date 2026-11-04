@@ -3123,6 +3123,29 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
                 st.require_cart_modifiers()?;
+                // Person rights: refuse send if any pending line's kitchen
+                // is outside this user's allowed stations.
+                {
+                    let feats = actor.effective_features();
+                    let products = st.products.clone();
+                    for line in st.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
+                        let sid = line.kitchen_station_id(&products);
+                        if sid.is_empty() {
+                            continue;
+                        }
+                        if !feats.allows_kot_station(sid) {
+                            let name = st
+                                .stations
+                                .iter()
+                                .find(|s| s.id == sid)
+                                .map(|s| s.name.clone())
+                                .unwrap_or_else(|| sid.to_string());
+                            return Err(st
+                                .t("kot_station_not_allowed")
+                                .replace("{station}", &name));
+                        }
+                    }
+                }
                 let draft = st.cart.to_kot_draft()?;
                 let table_id = st.selected_table_id.clone();
                 let unassigned = st.t("kot_unassigned");
@@ -3698,10 +3721,12 @@ impl MatchEvent for App {
             let mut changed = false;
             let mut picked: Option<(SuggestField, String)> = None;
             for field in SuggestField::ALL {
-                // Kitchen / place / printer-assign open via dd buttons — not type-in.
+                // Kitchen / place / printer-assign / team stations open via
+                // chrome (dd or always-open), not type-in.
                 if field != SuggestField::KotStation
                     && field != SuggestField::PrinterPlace
                     && field != SuggestField::PrinterAssign
+                    && field != SuggestField::TeamKotStations
                 {
                     let input = self.ui.text_input(cx, field.input());
                     let uid = input.widget_uid();
@@ -3900,8 +3925,11 @@ impl MatchEvent for App {
                     }
                 }
                 let mut st = app_state().lock().unwrap();
-                // Kitchen / printer-assign checkbox menus stay open for more toggles.
-                if field != SuggestField::KotStation && field != SuggestField::PrinterAssign {
+                // Kitchen / printer-assign / team-stations checklists stay open.
+                if field != SuggestField::KotStation
+                    && field != SuggestField::PrinterAssign
+                    && field != SuggestField::TeamKotStations
+                {
                     st.suggest_open = None;
                 }
                 // A picked country is shown with what it sets, ready to apply.
@@ -3960,6 +3988,26 @@ impl MatchEvent for App {
                             .lock()
                             .unwrap()
                             .open_suggest(SuggestField::KotStation, "");
+                    }
+                    SuggestField::TeamKotStations => {
+                        let mut st = app_state().lock().unwrap();
+                        if st.team_staff_id.is_none() {
+                            drop(st);
+                            self.set_status(cx, app_t("staff_copy_need_selected"));
+                        } else {
+                            let all_ids: Vec<String> =
+                                st.stations.iter().map(|s| s.id.clone()).collect();
+                            let station_id = st
+                                .stations
+                                .iter()
+                                .find(|s| s.name.eq_ignore_ascii_case(value.trim()))
+                                .map(|s| s.id.clone());
+                            if let Some(sid) = station_id {
+                                st.draft_features.toggle_kot_station(&sid, &all_ids);
+                                st.status = st.t("team_stations_changed");
+                                st.open_suggest(SuggestField::TeamKotStations, "");
+                            }
+                        }
                     }
                     SuggestField::StationRemove | SuggestField::SettingsStationRemove => {
                         let input = field.input();
@@ -4822,9 +4870,16 @@ impl MatchEvent for App {
                 let label = {
                     let mut st = app_state().lock().unwrap();
                     st.draft_staff_role = role;
+                    // Hire preset only — do not stomp the selected person's
+                    // edit draft. Clear selection so hire vs edit stay distinct.
+                    st.team_staff_id = None;
                     st.draft_features = StaffFeatures::for_role(role);
                     st.t(key)
                 };
+                self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
+                self.ui
+                    .text_input(cx, ids!(staff_edit_name_input))
+                    .set_text(cx, "");
                 // Role title follows the preset (edit afterward for Captain, etc.).
                 self.ui
                     .text_input(cx, ids!(staff_title_input))
@@ -5075,22 +5130,28 @@ impl MatchEvent for App {
             (ids!(feat_branches), ids!(feat_branches_on), "branches"),
         ] {
             if self.choice_chip_clicked(cx, actions, id, on) {
-                let mut st = app_state().lock().unwrap();
-                match toggle {
-                    "sell" => st.draft_features.sell = !st.draft_features.sell,
-                    "items" => st.draft_features.items = !st.draft_features.items,
-                    "sales" => st.draft_features.sales = !st.draft_features.sales,
-                    "credit" => st.draft_features.credit = !st.draft_features.credit,
-                    "floor" => st.draft_features.floor = !st.draft_features.floor,
-                    "kitchen" => st.draft_features.kitchen = !st.draft_features.kitchen,
-                    "team" => st.draft_features.team = !st.draft_features.team,
-                    "backup" => st.draft_features.backup = !st.draft_features.backup,
-                    "inventory" => st.draft_features.inventory = !st.draft_features.inventory,
-                    "branches" => st.draft_features.branches = !st.draft_features.branches,
-                    _ => {}
-                }
-                st.status = "Access changed — Save features for selected staff".into();
-                drop(st);
+                let msg = {
+                    let mut st = app_state().lock().unwrap();
+                    if st.team_staff_id.is_none() {
+                        st.t("staff_copy_need_selected")
+                    } else {
+                        match toggle {
+                            "sell" => st.draft_features.sell = !st.draft_features.sell,
+                            "items" => st.draft_features.items = !st.draft_features.items,
+                            "sales" => st.draft_features.sales = !st.draft_features.sales,
+                            "credit" => st.draft_features.credit = !st.draft_features.credit,
+                            "floor" => st.draft_features.floor = !st.draft_features.floor,
+                            "kitchen" => st.draft_features.kitchen = !st.draft_features.kitchen,
+                            "team" => st.draft_features.team = !st.draft_features.team,
+                            "backup" => st.draft_features.backup = !st.draft_features.backup,
+                            "inventory" => st.draft_features.inventory = !st.draft_features.inventory,
+                            "branches" => st.draft_features.branches = !st.draft_features.branches,
+                            _ => {}
+                        }
+                        st.t("team_features_changed")
+                    }
+                };
+                self.set_status(cx, msg);
                 self.sync_chrome(cx);
             }
         }
@@ -5100,11 +5161,16 @@ impl MatchEvent for App {
                 let staff_id = st
                     .team_staff_id
                     .clone()
-                    .or_else(|| st.staff.iter().find(|s| !s.is_owner()).map(|s| s.id.clone()))
-                    .ok_or_else(|| "Add staff first".to_string())?;
+                    .ok_or_else(|| st.t("staff_copy_need_selected"))?;
+                let name = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == staff_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_else(|| staff_id.clone());
                 let features = st.draft_features.clone();
                 st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
-                st.status = "Staff features saved".into();
+                st.status = st.t("save_features_ok").replace("{name}", &name);
                 Ok(())
             })();
             if let Err(e) = result {
@@ -5772,6 +5838,9 @@ impl MatchEvent for App {
                 } else {
                     source.role_title.clone()
                 };
+                // Hire copy fills the Add form — clear any edit selection so
+                // screens/rights below do not look like they belong to someone.
+                st.team_staff_id = None;
                 st.draft_staff_role = role;
                 st.draft_features = source.effective_features();
                 Ok((
@@ -5782,6 +5851,10 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok((msg, title)) => {
+                    self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_name_input))
+                        .set_text(cx, "");
                     self.ui
                         .text_input(cx, ids!(staff_title_input))
                         .set_text(cx, &title);
@@ -5888,13 +5961,18 @@ impl MatchEvent for App {
             (ids!(right_discount_btn), domain::Right::Discount),
         ] {
             if self.ui.button(cx, button).clicked(actions) {
-                {
+                let msg = {
                     let mut st = app_state().lock().unwrap();
-                    let mut rights = st.team_draft_rights();
-                    rights.set_level(right, rights.level(right).cycle());
-                    st.draft_features.rights = Some(rights);
-                    st.status = "Rights changed — Save features for selected staff".into();
-                }
+                    if st.team_staff_id.is_none() {
+                        st.t("staff_copy_need_selected")
+                    } else {
+                        let mut rights = st.team_draft_rights();
+                        rights.set_level(right, rights.level(right).cycle());
+                        st.draft_features.rights = Some(rights);
+                        st.t("team_rights_changed")
+                    }
+                };
+                self.set_status(cx, msg);
                 self.sync_chrome(cx);
             }
         }

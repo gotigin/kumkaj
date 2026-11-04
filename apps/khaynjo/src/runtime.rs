@@ -603,10 +603,34 @@ fn role_open_start(status: &str) -> bool {
 }
 
 fn role_open_finish(result: Result<RoleOpenReady, String>) {
+    let ok = result.is_ok();
     *role_open_once().lock().unwrap() = Some(result);
+    if ok {
+        // Keep busy chrome until finish_* drops the old books + reload_all +
+        // sync_chrome (that can take a long time on a phone — clearing busy
+        // here left a silent freeze with Server/Client still on screen).
+        set_books_work_status(&app_t("preparing_desk"));
+    } else {
+        role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+        clear_books_work_status();
+    }
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+}
+
+/// Drop a previous books file off the UI thread — SQLite/WAL close of a large
+/// shop DB can stall the main thread for a long time on Android.
+fn drop_store_off_ui(old: Option<Store>) {
+    let Some(store) = old else {
+        return;
+    };
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-drop-store".into())
+        .spawn(move || drop(store));
+}
+
+fn end_role_open_busy() {
     role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
     clear_books_work_status();
-    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
 }
 
 fn role_cancelled() -> bool {

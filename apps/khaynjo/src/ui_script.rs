@@ -1723,16 +1723,19 @@ script_mod! {
         }
     }
 
-    // Full-width selectable copy (Markdown TextFlow) with real `visible`
-    // support — stock Markdown/TextFlow ignore set_visible. Use `body:`.
-    // Default: display text is selectable. Only tap targets (cart lines,
-    // floor tiles, buttons) keep Label / selectable: false.
+    // Full-width Markdown TextFlow with real `visible` support — stock
+    // Markdown/TextFlow ignore set_visible. Use `body:`.
+    // Default: NOT selectable. Select-drag calls block_scrolling_except_within
+    // (Empty); on Android that freezes page swipe until FingerUp (often lost)
+    // — Kitchen / Settings / help looked like "no scroll / freeze on move".
+    // Opt in with `selectable: true` only where copy is intentional (pairing
+    // code). Cart / snack / KotCard stay false.
     mod.widgets.WrapLabelBase = #(WrapLabel::register_widget(vm))
     mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
         height: Fit
         padding: 0.
-        selectable: true
+        selectable: false
         paragraph_spacing: 0.
         pre_code_spacing: 0.
         font_size: 14.
@@ -2432,17 +2435,21 @@ script_mod! {
             width: Fill height: Fit
             padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
             flow: Down spacing: 6
+            // selectable:false — default WrapLabel select-drag steals Kitchen
+            // page swipe on Android (adb: swipe over cards = no scroll).
             title := WrapLabel{
                 width: Fill
                 body: "Kitchen"
                 font_color: #x69090C
                 font_size: 14.
+                selectable: false
             }
             summary := WrapLabel{
                 width: Fill
                 body: ""
                 font_color: #x260B08
                 font_size: 15.
+                selectable: false
             }
             View{
                 width: Fill height: Fit
@@ -3496,8 +3503,14 @@ script_mod! {
     }
 
     mod.widgets.KitchenListBase = #(KitchenList::register_widget(vm))
+    // Page owns scroll; only on-screen KOT cards draw (bug 6c — full-height
+    // PortalList froze Android on every touch-move redraw).
     mod.widgets.KitchenList = set_type_default() do mod.widgets.KitchenListBase{
         width: Fill height: Fit
+        flow: Down
+        top_gap := View{width: Fill height: 0}
+        list_box := View{
+        width: Fill height: 0
         list := PortalList{
             width: Fill height: Fill
             spacing: 10
@@ -3512,6 +3525,7 @@ script_mod! {
                 texture_caching: false
                 kotcard := KotCard{}
             }
+        }
         }
     }
 
@@ -7755,6 +7769,36 @@ script_mod! {
                                 staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 }
                                 FormCard{
+                                // Edit / remove the selected person (not hire).
+                                // Pick first — Rename, Copy-onto, Features, Rights,
+                                // kitchen stations, Remove all use that selection.
+                                // Names may repeat; the label shows name + role.
+                                team_pick_input := FieldInput{empty_text: "Staff name to edit"}
+                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
+                                team_pick_hint := WrapLabel{
+                                    body: "Pick who to edit — screens, money rights, and kitchen stations appear for that person only."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                // Hidden until a person is selected — avoids editing
+                                // rights with no target (or confusing hire vs copy vs remove).
+                                team_selected_setup := View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
+                                visible: false
+                                team_selected_label := WrapLabel{
+                                    body: " "
+                                    font_color: #x69090C
+                                    font_size: 13.
+                                }
+                                staff_edit_name_input := FieldInput{empty_text: "Display name"}
+                                staff_rename_btn := RowSecondaryBtn{text: "Save name"}
+                                staff_copy_edit_input := FieldInput{
+                                    empty_text: "Copy setup from another person"
+                                }
+                                staff_copy_edit_suggest := mod.widgets.SuggestList{field: "team_copy_edit"}
+                                staff_copy_edit_btn := RowSecondaryBtn{text: "Copy their setup onto selected"}
+                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_feature_access_help := WrapLabel{
                                     body: "What they can open (optional)"
                                     font_color: #x260B08
@@ -7820,30 +7864,10 @@ script_mod! {
                                         chev_r := ChevronBtn{visible: false}
                                     }
                                 }
-                                // Edit / remove the selected person (not hire).
-                                // Pick first — Rename, Copy-onto, Features, Remove
-                                // all use that selection. Names may repeat; the
-                                // label shows name + role so you confirm who.
-                                team_pick_input := FieldInput{empty_text: "Staff name to edit"}
-                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
-                                team_selected_label := WrapLabel{
-                                    body: " "
-                                    font_color: #x69090C
-                                    font_size: 13.
-                                }
-                                staff_edit_name_input := FieldInput{empty_text: "Display name"}
-                                staff_rename_btn := RowSecondaryBtn{text: "Save name"}
-                                staff_copy_edit_input := FieldInput{
-                                    empty_text: "Copy setup from another person"
-                                }
-                                staff_copy_edit_suggest := mod.widgets.SuggestList{field: "team_copy_edit"}
-                                staff_copy_edit_btn := RowSecondaryBtn{text: "Copy their setup onto selected"}
-                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_rights_help := WrapLabel{
                                     body: ""
                                     font_color: #x260B08
                                     font_size: 13.
-                                    visible: false
                                 }
                                 right_settle_btn := NavBtn{text: "Take payment"}
                                 right_cancel_btn := NavBtn{text: "Cancel a sent item"}
@@ -7851,7 +7875,26 @@ script_mod! {
                                 right_move_btn := NavBtn{text: "Move / merge tables"}
                                 right_reprint_btn := NavBtn{text: "Print bill again"}
                                 right_discount_btn := NavBtn{text: "Give a discount"}
+                                // Kitchen stations this person may send / print KOTs to.
+                                // Bill reprint above is bills only — not kitchen.
+                                h_team_stations_help := WrapLabel{
+                                    body: "Kitchen stations they may use"
+                                    font_color: #x260B08
+                                    font_size: 13.
+                                }
+                                // Always-open checklist while this person is selected
+                                // (see SuggestField::TeamKotStations + sync_chrome).
+                                // Hidden type-in anchor — FieldInput has no `visible`.
+                                View{
+                                    width: Fill height: 0.
+                                    clip_y: true
+                                    team_stations_anchor := FieldInput{
+                                        height: 0.
+                                    }
+                                }
+                                team_stations_list := mod.widgets.StationCheckList{field: "team_kot_stations"}
                                 feat_save := StackPrimaryBtn{text: "Save job setup"}
+                                } // team_selected_setup
                                 }
                                 } // team_admin_block
                                 FormCard{

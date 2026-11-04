@@ -79,16 +79,32 @@ impl Widget for KitchenList {
         };
         let now = chrono::Local::now();
         let count = kots.len();
+        // Fixed pitch + page window: drawing every KotCard (Overlay + 3 faces)
+        // each frame froze Android touch-move when the list was expand-to-content
+        // (DEV.md bug 6c). Page ScrollYView still owns the gesture. Do not
+        // remeasure from the visible slice — that under-sizes total height.
+        const GAP: f64 = 10.0;
         let row = *kot_row_height().lock().unwrap();
+        let (first, last) = page_window(cx.turtle().pos().y, count, row, GAP);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, row, 0.0)),
+            height: Size::Fixed(list_content_height(count, row, GAP)),
             ..walk
         };
-        let mut measured_row = 0.0;
+        if let Some(mut gap) = self.view.view(cx, ids!(top_gap)).borrow_mut() {
+            gap.walk.height = Size::Fixed(first as f64 * (row + GAP));
+        }
+        if let Some(mut boxv) = self.view.view(cx, ids!(list_box)).borrow_mut() {
+            boxv.walk.height =
+                Size::Fixed(list_content_height(last.saturating_sub(first), row, GAP));
+        }
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, count);
+                list.set_item_range(cx, first, last);
+                list.set_first_id_and_scroll(first, 0.0);
                 while let Some(item_id) = list.next_visible_item(cx) {
+                    if item_id < first || item_id >= last {
+                        continue;
+                    }
                     let Some(kot) = kots.get(item_id) else {
                         continue;
                     };
@@ -166,19 +182,16 @@ impl Widget for KitchenList {
                     item.button(cx, ids!(kotcard.advance)).set_text(cx, &next);
                     item.draw_all_unscoped(cx);
                 }
-                if count > 0 {
-                    let extent = list.drawn_range_extent();
-                    if extent > 1.0 {
-                        measured_row = extent / count as f64;
-                    }
-                }
             }
         }
-        remember_content_row(cx, &mut self.view, kot_row_height(), row, measured_row);
         DrawStep::done()
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        // Virtualized rows: redraw only when the page actually scrolls.
+        if matches!(event, Event::Scroll(_)) {
+            self.view.redraw(cx);
+        }
         if page_owns_scroll(event) {
             return;
         }
