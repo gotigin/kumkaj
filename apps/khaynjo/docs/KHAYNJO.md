@@ -140,7 +140,7 @@ user needs — In / Later, in Khaynjo's own terms:
 |---|---|---|
 | 3-tap billing: tap item → qty → pay | **In (P1)** — the minimal sell path of vision §3 | Order desk |
 | Order types Counter / Dine-in / Takeaway / Delivery | **In (P1)** | Desk segmented grid; `OrderType` |
-| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of colour tiles, always 280×178** (2026-11-02). **Area tabs** (horizontal ChipStrip + ‹ ›) — one selected area at a time; **drag a tab to swap** (same as nav; saved as `ui_floor_area_order`); that tab’s body has its own **Columns** dropdown (per device, per area: *Fit screen* or ≥ 1) and its tables; rows wider than the screen **scroll sideways** (mouse/touch press-drag over tiles, gaps, and pads — short press stays a tap). Print / view / seat-or-free icons on each card; active table = stronger border. Drawn Grid↔Layout map **removed from Floor chrome** | Floor screen; `floor_area_strip`, `pointer_floor_area_drag`, `floor_columns_for_area`, `FloorTile`, `floor_scroll` |
+| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of colour tiles, always 280×178** (2026-11-02). **Area tabs** (horizontal ChipStrip + ‹ ›) — one selected area at a time; **drag a tab to swap** (same as nav; saved as `ui_floor_area_order`); that tab’s body has its own **Columns** dropdown (per device, per area: *Fit screen* or ≥ 1) and its tables; rows wider than the screen **scroll sideways** (mouse/touch press-drag over tiles, gaps, and pads — short press stays a tap). **Columns↔tables whitespace** lives inside `area_scroll` top pad (`floor_area_body` spacing 0) so that strip pans with the Area — not a dead parent gap. Print / view / seat-or-free icons on each card; active table = stronger border. Drawn Grid↔Layout map **removed from Floor chrome** | Floor screen; `floor_area_strip`, `floor_area_body`, `pointer_floor_area_drag`, `floor_columns_for_area`, `FloorTile`, `floor_scroll` |
 | Frequent dishes as a menu group (like Bakery Cafe) | **Have 2026-10-27** — Frequent chip next to All items; config on that view (days + count; default 1 day / 24); empty state when no completed sales in the window | Menu window; `frequent_product_ids` |
 | ₹0 menu prices and ₹0 bills (complimentary / owner wish) | **Have 2026-10-27** — allowed by default; Settings → Zero-value sales can require a price above ₹0 | `allow_zero_sales` meta; finalize / Take payment |
 | Table cards that show elapsed time and running amount at a glance | **Have** — name, amount, status · minutes; long status wraps ≤2 lines then ellipsis; tall cards with clear bottom padding | `FloorTile`, Floor |
@@ -484,6 +484,9 @@ the first build broke and must not break again:
   screen* (0) or ≥ 1. Fit uses the Floor list’s turtle width
   (`floor_columns_for`). Only the selected area’s tables draw; sideways
   viewport columns use `floor_col_window` / `floor_first_col`.
+  Columns + tables sit in `floor_area_body` (`spacing: 0`); the visual gap
+  under Columns is `area_scroll` top pad so Area press-drag works there
+  (`docs/DEV.md` bug **6e** / native input Floor note).
 - **Display text is selectable** (`WrapLabel` / `ReportText`); only
   tap targets keep `selectable: false` / plain `Label` (DESIGN § Text
   selection).

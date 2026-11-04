@@ -3408,9 +3408,12 @@ script_mod! {
                     // Capture overload must be on: rows/PortalList cover the
                     // body, so "whitespace only" overload-off never saw the
                     // pads or the gaps between tables.
+                    // Top pad = lane above tiles (18) + Columns↔tables gap (10)
+                    // that must live *inside* this ScrollX (not parent spacing)
+                    // so that whitespace pans with the Area like the tiles.
                     area_scroll := ScrollXView{
                         width: Fill height: Fit
-                        padding: Inset{top: 18. bottom: 22.}
+                        padding: Inset{top: 28. bottom: 22.}
                         scroll_bars: mod.widgets.ScrollBars {
                             show_scroll_x: true show_scroll_y: false
                             scroll_bar_x: mod.widgets.ScrollBar{
@@ -6732,37 +6735,46 @@ script_mod! {
                                         chev_r := ChevronBtn{visible: false}
                                     }
                                 }
-                                // Columns for the selected area only (this device).
-                                // Pick 1, 2, 3 … or type; leave empty to fit the screen.
-                                floor_cols_box := View{
-                                    width: Fixed(168.) height: Fit
-                                    flow: Down
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Overlay
-                                        align: Align{x: 1.0 y: 0.5}
-                                        floor_cols_input := FieldInput{
-                                            margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
-                                            padding: Inset{left: 12. right: 36. top: 11. bottom: 11.}
-                                            empty_text: "Columns"
-                                            is_numeric_only: true
-                                        }
-                                        Label{
-                                            width: Fit
-                                            margin: Inset{right: 14.}
-                                            text: "\u{f078}"
-                                            draw_text.color: #x6B4A3F
-                                            draw_text.text_style.font_size: 11.
-                                        }
-                                    }
-                                    floor_cols_suggest := mod.widgets.SuggestList{field: "floor_cols"}
-                                }
-                                // Tables for the selected area; sideways ScrollXView
-                                // inside FloorList when columns exceed the viewport.
-                                floor_scroll := View{
+                                // Columns + tables for the selected area. spacing: 0
+                                // so the Columns↔tables whitespace is *inside*
+                                // area_scroll's top pad (not a dead parent gap) —
+                                // press-drag there pans with the Area. Keep the
+                                // visual gap; see FloorList area_scroll padding.
+                                floor_area_body := View{
                                     width: Fill height: Fit
-                                    padding: Inset{bottom: 8.}
-                                    floor_list := mod.widgets.FloorList{}
+                                    flow: Down spacing: 0
+                                    // Columns for the selected area only (this device).
+                                    // Pick 1, 2, 3 … or type; leave empty to fit the screen.
+                                    floor_cols_box := View{
+                                        width: Fixed(168.) height: Fit
+                                        flow: Down
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Overlay
+                                            align: Align{x: 1.0 y: 0.5}
+                                            floor_cols_input := FieldInput{
+                                                margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
+                                                padding: Inset{left: 12. right: 36. top: 11. bottom: 11.}
+                                                empty_text: "Columns"
+                                                is_numeric_only: true
+                                            }
+                                            Label{
+                                                width: Fit
+                                                margin: Inset{right: 14.}
+                                                text: "\u{f078}"
+                                                draw_text.color: #x6B4A3F
+                                                draw_text.text_style.font_size: 11.
+                                            }
+                                        }
+                                        floor_cols_suggest := mod.widgets.SuggestList{field: "floor_cols"}
+                                    }
+                                    // Tables for the selected area; sideways ScrollXView
+                                    // inside FloorList when columns exceed the viewport.
+                                    floor_scroll := View{
+                                        width: Fill height: Fit
+                                        padding: Inset{bottom: 8.}
+                                        floor_list := mod.widgets.FloorList{}
+                                    }
                                 }
                                 // Drawn-layout editor removed from Floor chrome —
                                 // widgets kept off-screen so old ids still resolve.

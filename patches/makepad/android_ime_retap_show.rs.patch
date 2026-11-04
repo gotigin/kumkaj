@@ -63,11 +63,14 @@
                      // VirtualKeyboardEvent::DidHide).
                      if !self.keyboard.has_physical_keyboard() {
 -                        self.text_ime_was_dismissed();
-+                        // System hide (▾ under the IME) must drop key focus
-+                        // *before* latching dismissed. Empty must not clear
-+                        // the dismiss latch (see `CxKeyboard::set_key_focus`)
-+                        // or a stale ShowTextIME reopens the IME (bug 6d).
-+                        self.set_key_focus(crate::area::Area::Empty);
++                        // Latch dismissed only — same as iOS DidHide. Do **not**
++                        // `set_key_focus(Empty)` here: KeyFocusLost → hide_text_ime
++                        // clears the latch, and mid-gesture focus loss breaks
++                        // Android touch-scroll (axis_lock / capture_overload /
++                        // ScrollX+ScrollY). Bounce is stopped by the latch +
++                        // skipping queued ShowTextIME while dismissed (bug 6d).
++                        // App Back / outside tap still clears focus via
++                        // dismiss_soft_keyboard.
 +                        self.text_ime_was_dismissed();
                      }
                      self.call_event_handler(&Event::VirtualKeyboard(

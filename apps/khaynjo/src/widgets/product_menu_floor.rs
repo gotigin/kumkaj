@@ -444,9 +444,10 @@ fn floor_area_groups(tables: &[DiningTable]) -> Vec<(String, Vec<usize>)> {
 fn floor_area_block_height(n_tables: usize, cols: usize) -> f64 {
     let cols = cols.max(1);
     let n_rows = n_tables.div_ceil(cols).max(1);
-    // area_scroll pad (18+22) + body pad (10+14) + tile rows + row gaps.
+    // area_scroll pad (28+22 = Columns↔tables gap 10 + lane 18 + bottom 22)
+    // + body pad (10+14) + tile rows + row gaps.
     // (Area name lives on the tab strip — no label height.)
-    const SCROLL_PAD_Y: f64 = 18.0 + 22.0;
+    const SCROLL_PAD_Y: f64 = 28.0 + 22.0;
     const BODY_PAD_Y: f64 = 10.0 + 14.0;
     SCROLL_PAD_Y
         + BODY_PAD_Y
