@@ -533,8 +533,10 @@ script_mod! {
     // Bottom-nav chips (scroll row). Short chrome labels + wrap, never
     // ellipsis — long translated titles grow a second line instead of cropping.
     // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
+    // Min height 56 matches the overlay icon row so label + icon share one
+    // vertical center (Fit-only chips sat short and left text low under the icon).
     let NavChip = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: Fit
+        width: Fit{min: FitBound.Abs(96.)} height: Fit{min: FitBound.Abs(56.)}
         align: Align{x: 0.0 y: 0.5}
         flow: Right{wrap: true}
         grab_key_focus: false
@@ -571,7 +573,7 @@ script_mod! {
         }
     }
     let NavChipActive = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: Fit
+        width: Fit{min: FitBound.Abs(96.)} height: Fit{min: FitBound.Abs(56.)}
         align: Align{x: 0.0 y: 0.5}
         flow: Right{wrap: true}
         grab_key_focus: false
@@ -1921,6 +1923,8 @@ script_mod! {
             body: ""
             // Hidden until set_title — empty title must not take layout.
             visible: false
+            // Display title — selectable WrapLabel steals Android page swipe.
+            selectable: false
             font_size: 20.
             font_color: #x0B1220
             margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
@@ -2485,6 +2489,7 @@ script_mod! {
             body: "locale"
             font_color: #x0B1220
             font_size: 14.
+            selectable: false
         }
         pick := Button{
             text: "Use"
@@ -2842,6 +2847,67 @@ script_mod! {
                 padding: Inset{top: 2. bottom: 8.}
                 texture_caching: false
                 ServerRow{}
+            }
+        }
+    }
+
+    // ClientPair: discovered LAN servers — Use fills the host field.
+    // ClientPair: one full-width tap target per found shop (nested Button+label
+    // rows miss taps inside PortalList on Android — same rule as DishRow).
+    let FoundServerRow = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
+        align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 2. right: 2.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xEEF2F8
+            color_down: #xD6E0EC
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xEEF2F8
+            color_2_down: #xD6E0EC
+            color_2_focus: #xffffff
+            border_color: #x4A5568
+            border_radius: 14.
+            border_size: 2.
+        }
+        draw_text +: {
+            color: #x0B1220
+            color_hover: #x0B1220
+            color_down: #x0B1220
+            color_focus: #x0B1220
+            ink_centered: false
+            text_style +: {font_size: 14.}
+        }
+    }
+
+    mod.widgets.FoundServerListBase = #(FoundServerList::register_widget(vm))
+    mod.widgets.FoundServerList = set_type_default() do mod.widgets.FoundServerListBase{
+        width: Fill height: Fit
+        margin: Inset{top: 4. bottom: 4.}
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 10
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                padding: Inset{bottom: 8.}
+                texture_caching: false
+                pick := FoundServerRow{text: "shop"}
             }
         }
     }
@@ -3663,6 +3729,7 @@ script_mod! {
                                             body: "OFFLINE"
                                             font_color: #xffffff
                                             font_size: 10.
+                                            selectable: false
                                         }
                                     }
                                     h_local_badge_2 := Label{
@@ -3710,6 +3777,7 @@ script_mod! {
                                                         body: "Your shop"
                                                         font_color: #x02030B
                                                         font_size: 18.
+                                                        selectable: false
                                                     }
                                                     lock_brand_server_id := WrapLabel{
                                                         width: Fit
@@ -3724,6 +3792,7 @@ script_mod! {
                                                     body: "Counter 01 · Locked"
                                                     font_color: #x3A4554
                                                     font_size: 12.
+                                                    selectable: false
                                                 }
                                             }
                                             h_shop := Label{
@@ -3786,12 +3855,14 @@ script_mod! {
                                             body: "Who is unlocking?"
                                             font_color: #x0B1220
                                             font_size: 11.
+                                            selectable: false
                                         }
                                         lock_staff_label := WrapLabel{
                                             width: Fit
                                             body: "No staff yet — unlock as Owner, then Team"
                                             font_color: #x0B1220
                                             font_size: 14.
+                                            selectable: false
                                         }
                                         ActionStack{
                                             lock_staff_prev := NavBtn{text: "Previous staff"}
@@ -3827,6 +3898,7 @@ script_mod! {
                                             body: " "
                                             font_color: #xC44E10
                                             font_size: 12.
+                                            selectable: false
                                         }
                                     }
 
@@ -3839,6 +3911,7 @@ script_mod! {
                                             body: "Or unlock with login"
                                             font_color: #x0B1220
                                             font_size: 14.
+                                            selectable: false
                                         }
                                         lock_login_help := InfoHelp{
                                             tip: "Optional: unlock with login id and password instead of PIN."
@@ -3850,6 +3923,10 @@ script_mod! {
                                         is_password: true
                                     }
                                     lock_login_ok := RowPrimaryBtn{text: "Unlock with login"}
+                                    lock_client_connection := NavBtn{
+                                        text: "Connection to the shop"
+                                        visible: false
+                                    }
                                 }
                             }
                         }
@@ -4029,8 +4106,9 @@ script_mod! {
                                     body: " "
                                     font_color: #x3A4554
                                     font_size: 13.
+                                    selectable: false
                                 }
-                                client_found_list := mod.widgets.ReportText{}
+                                client_found_list := mod.widgets.FoundServerList{}
                                 client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
                                 client_code_input := FieldInput{empty_text: "Pairing code"}
                                 // How the office's server lists this device (Forget picks it by this).
@@ -5365,7 +5443,6 @@ script_mod! {
                                     }
                                 }
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
-                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 }
                                 FormCard{
                                 h_optional_login_help := InfoHelp{
@@ -5445,6 +5522,7 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
+                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_rights_help := InfoHelp{
                                     tip: "Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed."
                                 }
@@ -6630,7 +6708,7 @@ script_mod! {
                                         nav_books := NavChip{text: "Books"}
                                         nav_books_on := NavChipActive{text: "Books" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_books_icon := Image{
@@ -6646,7 +6724,7 @@ script_mod! {
                                         nav_sell := NavChip{text: "Booking"}
                                         nav_sell_on := NavChipActive{text: "Booking" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_sell_icon := Image{
@@ -6662,7 +6740,7 @@ script_mod! {
                                         nav_buy := NavChip{text: "Pay out"}
                                         nav_buy_on := NavChipActive{text: "Pay out" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_buy_icon := Image{
@@ -6678,7 +6756,7 @@ script_mod! {
                                         nav_rates := NavChip{text: "Rates"}
                                         nav_rates_on := NavChipActive{text: "Rates" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_rates_icon := Image{
@@ -6694,7 +6772,7 @@ script_mod! {
                                         nav_ops := NavChip{text: "Ops"}
                                         nav_ops_on := NavChipActive{text: "Ops" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_ops_icon := Image{
@@ -6710,7 +6788,7 @@ script_mod! {
                                         nav_cod := NavChip{text: "COD"}
                                         nav_cod_on := NavChipActive{text: "COD" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_cod_icon := Image{
@@ -6726,7 +6804,7 @@ script_mod! {
                                         nav_riders := NavChip{text: "Riders"}
                                         nav_riders_on := NavChipActive{text: "Riders" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_riders_icon := Image{
@@ -6742,7 +6820,7 @@ script_mod! {
                                         nav_sales := NavChip{text: "Sales"}
                                         nav_sales_on := NavChipActive{text: "Sales" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_sales_icon := Image{
@@ -6758,7 +6836,7 @@ script_mod! {
                                         nav_day_close := NavChip{text: "Close"}
                                         nav_day_close_on := NavChipActive{text: "Close" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_day_close_icon := Image{
@@ -6774,7 +6852,7 @@ script_mod! {
                                         nav_reports := NavChip{text: "Reports"}
                                         nav_reports_on := NavChipActive{text: "Reports" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_reports_icon := Image{
@@ -6790,7 +6868,7 @@ script_mod! {
                                         nav_inventory := NavChip{text: "Stock"}
                                         nav_inventory_on := NavChipActive{text: "Stock" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_inventory_icon := Image{
@@ -6806,7 +6884,7 @@ script_mod! {
                                         nav_branches := NavChip{text: "Branches"}
                                         nav_branches_on := NavChipActive{text: "Branches" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_branches_icon := Image{
@@ -6822,7 +6900,7 @@ script_mod! {
                                         nav_credit := NavChip{text: "Parties"}
                                         nav_credit_on := NavChipActive{text: "Parties" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_credit_icon := Image{
@@ -6838,7 +6916,7 @@ script_mod! {
                                         nav_team := NavChip{text: "Team"}
                                         nav_team_on := NavChipActive{text: "Team" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_team_icon := Image{
@@ -6854,7 +6932,7 @@ script_mod! {
                                         nav_settings := NavChip{text: "Settings"}
                                         nav_settings_on := NavChipActive{text: "Settings" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_settings_icon := Image{
@@ -6870,7 +6948,7 @@ script_mod! {
                                         nav_lock := NavChip{text: "Lock"}
                                         nav_lock_on := NavChipActive{text: "Lock" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_lock_icon := Image{

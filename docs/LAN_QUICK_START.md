@@ -23,9 +23,13 @@ the same network as) the kitchen printer.
 1. Install the app and open it. At **How will this device be used?** tap
    **Server Mode**, then create (or **Open**) the shop's server. The first
    start asks you to choose the Owner PIN — there is no default PIN.
-2. **Settings → Extra tills → Allow extra tills.** The screen shows a
-   6‑digit **pairing code** and this device's Wi‑Fi address
-   (e.g. `192.168.1.10`).
+2. **Settings → Extra tills → Allow extra tills.** The app opens the
+   shop TCP port **before** it answers Find-server on Wi‑Fi. The screen
+   shows a 6‑digit **pairing code** (leading zeros count — copy or type
+   all six) and this device's Wi‑Fi address (e.g. `192.168.1.10`). If the
+   port is still held by another copy of the app, Allow fails with a clear
+   busy-port message — close that other app, then Allow again. Do not
+   treat “Extra tills on” as success unless the pairing code is shown.
 3. If **Allow other devices to connect** appears, tap it once and accept
    the admin prompt: this device's firewall is blocking the others. It
    opens only the app's two ports. The button does not appear where nothing
@@ -47,13 +51,21 @@ devices already paired keep working after a new code.
 ## 2. Each extra device
 
 1. Install the app. At launch tap **Client Mode**.
-2. Tap **Find the shop's server** — servers on this Wi‑Fi are listed by
-   restaurant (or business) name and the first one's address is filled in.
-   Nothing found? Type the Server's address from step 1.2 into
-   **Server IP (e.g. 192.168.1.10)**.
-3. Type the **Pairing code** and tap **Pair now**.
-4. Unlock with your own PIN. Waiters see Take payment refused if their
-   rights say so — the Server checks every PIN and right.
+2. Tap **Find the shop's server** — every Server on this Wi‑Fi is listed by
+   restaurant (or business) name. **Tap Use on the shop you want** (several
+   shops → you must pick; one shop is filled in and still listed). That
+   pick stores the shop's **server id**. Nothing found? Type the Server's
+   address from step 1.2 into **Server IP (e.g. 192.168.1.10)**.
+3. Type the **Pairing code** (all six digits) and tap **Pair now**. Before
+   the code is checked, the device asks that address `/hello` and — when
+   you picked from Find — refuses if the answering shop is not the one
+   you tapped (so a busy port held by another process cannot accept the
+   right code for the wrong books).
+4. Unlock: tap **Staff**, use **Previous / Next** until the Who line is you
+   (name · role · login id, or `#` + short id when no login id was set — two
+   people with the same name must not look identical), then your PIN. The
+   Server checks every PIN. Wrong PIN names who was selected. Waiters see
+   Take payment refused if their rights say so.
 5. Check the device's date and time. If it is more than 5 minutes off the
    Server, the header says so — set the right time on the device.
 
@@ -136,7 +148,9 @@ never raw materials, and at most 50 at a time.
 | **Find the shop's server** finds nothing | Same Wi‑Fi on both? Guest networks and "AP isolation" block devices from each other. Type the address instead. |
 | Devices time out on a computer Server | **Settings → Allow other devices to connect** on the Server (one admin prompt). Another security program may also need the app's ports opened. |
 | Devices time out on an Android Server | Is the app still open on the Server's screen? Is it on the same Wi‑Fi (not mobile data)? |
-| "Wrong pairing code" | Read the code on the Server again. After 5 wrong tries that device's address must wait 5 minutes. |
+| "Wrong pairing code" | Read **all six digits** on the Server again (leading zeros count). Prefer **Copy pairing code** on the Server. After 5 wrong tries that device's address must wait 5 minutes. |
+| Port busy / Allow extra tills fails | Another copy of the app (or an old process) still holds the shop TCP port. Quit it, then **Allow extra tills** again so this shop binds before it answers Find. |
+| "That address answered as a different shop…" | Find listed one shop; something else answered on that IP. Find again, tap **Use** on the right row, then Pair with the code from **that** Server. |
 | **Pair this device again** | The device was forgotten, or the Server's books were replaced by a backup older than the pairing. Pair with the current code. |
 | KOTs do not print | On the Server: **Settings → Printers on this device → Print a test page**. A network printer must be on the same Wi‑Fi and switched on. |
 | "This device's clock is … off" | Set the date and time on that device (automatic time is best). |

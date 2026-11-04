@@ -771,23 +771,37 @@ impl App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(staff_deactivate)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
+            let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Remove staff")?;
                 let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
-                    .ok_or_else(|| "Select a staff member first".to_string())?;
+                    .ok_or_else(|| "Pick who to edit first — then Remove selected".to_string())?;
+                let removed_name = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == staff_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_else(|| staff_id.clone());
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.deactivate_staff(&staff_id, &actor)?;
                 st.team_staff_id = None;
                 st.reload_all()?;
-                st.status = "Staff removed".into();
-                Ok(())
+                if st.staff.iter().any(|s| s.id == staff_id) {
+                    return Err(format!(
+                        "Could not remove {removed_name} — they are still on the team"
+                    ));
+                }
+                Ok(format!("Removed {removed_name}"))
             })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }

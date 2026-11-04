@@ -23,6 +23,15 @@ machines** (§3), which only the owner can do.
 
 ## 1. Fixed / completed in this pass
 
+**2026-11-04 — Pairing: right code looked wrong.** UDP Find could advertise
+this shop while TCP was still held by another process; Clients typed the
+code from Settings and got “Wrong pairing code” from the wrong books.
+`ensure_server` now binds TCP first (busy port = clear error), then
+discovery; `client_pair` checks `/hello` against the Find row’s
+`server_id`; codes normalize to six digits. Owner guide:
+[`LAN_QUICK_START.md`](LAN_QUICK_START.md). Engineer notes: [`DEV.md`](DEV.md)
+§ LAN Client / Server.
+
 **2026-10-31 (v5) — LAN hardening.** Found by reading the LAN path end to
 end and by the suites (which were red); every fix has a test.
 

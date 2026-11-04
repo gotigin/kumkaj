@@ -32,6 +32,9 @@ const DISCOVERY_APP: &str = "khaynjo";
 
 static SERVER_RUNNING: AtomicBool = AtomicBool::new(false);
 static LAN_ENABLED: AtomicBool = AtomicBool::new(false);
+/// Books file the live listener / discovery are bound to. `ensure_server`
+/// must not keep advertising one shop while answering on another's books.
+static SERVER_DB_PATH: Mutex<Option<PathBuf>> = Mutex::new(None);
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct SyncSnapshot {
@@ -529,38 +532,80 @@ fn base64_utf16le(text: &str) -> String {
 }
 
 /// Spawn (or resume) the shop LAN listener. Extra tills stay off until this is called.
+///
+/// Binds TCP **before** discovery answers. A previous bug advertised the shop
+/// on UDP while port 7847 was still held by another process — Clients found
+/// the real venue name, typed the right pairing code, and got "Wrong pairing
+/// code" from the wrong books on that port.
 pub fn ensure_server(db_path: PathBuf) -> Result<(), String> {
     LAN_ENABLED.store(true, Ordering::SeqCst);
     if SERVER_RUNNING.load(Ordering::SeqCst) {
-        return Ok(());
+        let same = SERVER_DB_PATH.lock().unwrap().as_ref() == Some(&db_path);
+        if same {
+            return Ok(());
+        }
+        // Different shop books — free the port and bind this one.
+        stop_server();
+        for _ in 0..100 {
+            if !SERVER_RUNNING.load(Ordering::SeqCst) {
+                break;
+            }
+            thread::sleep(Duration::from_millis(20));
+        }
+        if SERVER_RUNNING.load(Ordering::SeqCst) {
+            return Err(format!(
+                "Could not free port {DEFAULT_PORT} for this shop — restart the app"
+            ));
+        }
+        *SERVER_DB_PATH.lock().unwrap() = None;
     }
     if SERVER_RUNNING.swap(true, Ordering::SeqCst) {
-        return Ok(());
+        let same = SERVER_DB_PATH.lock().unwrap().as_ref() == Some(&db_path);
+        if same {
+            return Ok(());
+        }
+        SERVER_RUNNING.store(false, Ordering::SeqCst);
+        return Err("Shop LAN is starting — tap Allow extra tills again".into());
     }
-    let path = db_path;
     // Made now, so the first device to find this Server learns its id.
-    if let Ok(store) = Store::open_path(&path) {
+    if let Ok(store) = Store::open_path(&db_path) {
         let _ = store.lan_server_id();
     }
-    let venue_path = path.clone();
+    let addr = SocketAddr::from(([0, 0, 0, 0], DEFAULT_PORT));
+    let listener = match TcpListener::bind(addr) {
+        Ok(listener) => listener,
+        Err(e) => {
+            SERVER_RUNNING.store(false, Ordering::SeqCst);
+            return Err(format!(
+                "Port {DEFAULT_PORT} is busy — close the other shop app on this computer, then Allow extra tills again ({e})"
+            ));
+        }
+    };
+    *SERVER_DB_PATH.lock().unwrap() = Some(db_path.clone());
+    let venue_path = db_path.clone();
     let _ = thread::Builder::new()
         .name("khaynjo-discovery".into())
         .spawn(move || run_discovery_responder(&venue_path));
-    let watch_path = path.clone();
+    let watch_path = db_path.clone();
     let _ = thread::Builder::new()
         .name("khaynjo-books-watch".into())
         .spawn(move || watch_books(&watch_path, &|| LAN_ENABLED.load(Ordering::SeqCst)));
     let _handle: JoinHandle<()> = thread::Builder::new()
         .name("kumkaj-lan".into())
         .spawn(move || {
-            if let Err(e) = run_server_loop(path) {
+            let _awake = KeepAwake::hold();
+            if let Err(e) = serve(listener, db_path, &|| LAN_ENABLED.load(Ordering::SeqCst)) {
                 eprintln!("Kumkaj LAN server stopped: {e}");
                 diag::error(Cat::Lan, "lan_server_stopped", &e);
             }
             SERVER_RUNNING.store(false, Ordering::SeqCst);
+            *SERVER_DB_PATH.lock().unwrap() = None;
         })
-        .map_err(|e| e.to_string())?;
-    thread::sleep(Duration::from_millis(50));
+        .map_err(|e| {
+            SERVER_RUNNING.store(false, Ordering::SeqCst);
+            *SERVER_DB_PATH.lock().unwrap() = None;
+            e.to_string()
+        })?;
     Ok(())
 }
 
@@ -568,14 +613,6 @@ pub fn ensure_server(db_path: PathBuf) -> Result<(), String> {
 /// future cloud drain will sync). The listen thread exits on the next accept poll.
 pub fn stop_server() {
     LAN_ENABLED.store(false, Ordering::SeqCst);
-}
-
-fn run_server_loop(db_path: PathBuf) -> Result<(), String> {
-    // Phones depend on this PC: it must not sleep while they can join.
-    let _awake = KeepAwake::hold();
-    let addr = SocketAddr::from(([0, 0, 0, 0], DEFAULT_PORT));
-    let listener = TcpListener::bind(addr).map_err(|e| format!("bind {DEFAULT_PORT}: {e}"))?;
-    serve(listener, db_path, &|| LAN_ENABLED.load(Ordering::SeqCst))
 }
 
 /// Answer devices on `listener` while `keep_going` says so, one thread per
@@ -1500,6 +1537,16 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
     Ok(reply)
 }
 
+/// Pairing codes are six digits (leading zeros count). Strip junk and pad so
+/// "012345" on the shop and "12345" typed on a phone still match.
+pub fn normalize_pair_code(raw: &str) -> String {
+    let digits: String = raw.chars().filter(|c| c.is_ascii_digit()).take(6).collect();
+    if digits.is_empty() {
+        return digits;
+    }
+    format!("{digits:0>6}")
+}
+
 fn pair(store: &Store, req: &Request, peer: &str, guard: &Guard) -> Result<Reply, String> {
     let key = format!("pair:{peer}");
     if let Some(left) = guard.blocked(&key).or_else(|| guard.blocked("pair:*")) {
@@ -1510,7 +1557,9 @@ fn pair(store: &Store, req: &Request, peer: &str, guard: &Guard) -> Result<Reply
         ));
     }
     let asked: PairRequest = serde_json::from_str(&req.body).map_err(|e| format!("pair json: {e}"))?;
-    if asked.code.trim().is_empty() || asked.code.trim() != store.pairing_code()? {
+    let asked_code = normalize_pair_code(&asked.code);
+    let have_code = normalize_pair_code(&store.pairing_code()?);
+    if asked_code.is_empty() || asked_code != have_code {
         guard.failed(&key, GUARD_TRIES);
         guard.failed("pair:*", GUARD_TRIES_ALL);
         return Ok(Reply::refuse(403, "Wrong pairing code — check it on the shop device", ""));
@@ -2095,18 +2144,85 @@ fn reply_json<T: serde::de::DeserializeOwned>(resp: ureq::Response) -> Result<T,
     resp.into_json().map_err(|e| LanError::Offline(format!("reply: {e}")))
 }
 
+#[derive(Clone, Debug, Deserialize)]
+struct HelloOk {
+    #[serde(default)]
+    app: String,
+    #[serde(default)]
+    venue: String,
+    #[serde(default)]
+    server_id: String,
+}
+
+fn client_hello(base: &str) -> Result<HelloOk, LanError> {
+    let resp = agent(Duration::from_secs(5))
+        .get(&format!("{base}/hello"))
+        .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
+        .call()
+        .map_err(lan_error)?;
+    reply_json(resp)
+}
+
 /// Pair with the code shown on the shop device. Returns the Server's
 /// address, this phone's own token, and the first snapshot.
-pub fn client_pair(host: &str, code: &str, device_name: &str) -> Result<(Link, SyncSnapshot), LanError> {
+///
+/// `expect_server_id` is the id from Find-server when the person tapped a
+/// row — `/hello` must match it so a busy port belonging to another process
+/// cannot accept the right code for the wrong shop.
+pub fn client_pair(
+    host: &str,
+    code: &str,
+    device_name: &str,
+    expect_server_id: Option<&str>,
+) -> Result<(Link, SyncSnapshot), LanError> {
     let base = base_url(host);
+    let hello = client_hello(&base)?;
+    if !hello.app.is_empty() && hello.app != DISCOVERY_APP {
+        return Err(LanError::Refused {
+            message: "That address is not a Khaynjo shop server".into(),
+            code: "wrong_shop".into(),
+        });
+    }
+    if let Some(expect) = expect_server_id.map(str::trim).filter(|s| !s.is_empty()) {
+        if hello.server_id != expect {
+            let venue = hello.venue.trim();
+            let message = if venue.is_empty() {
+                "That address answered as a different shop than the one you picked — Find again and tap Use on the right row".to_string()
+            } else {
+                format!(
+                    "That address answered as \"{venue}\", not the shop you picked — Find again and tap Use on the right row"
+                )
+            };
+            return Err(LanError::Refused {
+                message,
+                code: "wrong_shop".into(),
+            });
+        }
+    }
+    let code = normalize_pair_code(code);
+    if code.is_empty() {
+        return Err(LanError::Refused {
+            message: "Type the pairing code shown on the shop device".into(),
+            code: String::new(),
+        });
+    }
     let resp = agent(Duration::from_secs(8))
         .post(&format!("{base}/pair"))
         .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
-        .send_json(PairRequest { code: code.trim().to_string(), device_name: device_name.to_string() })
+        .send_json(PairRequest {
+            code,
+            device_name: device_name.to_string(),
+        })
         .map_err(lan_error)?;
     let pair: PairOk = reply_json(resp)?;
-    let link = Link { base, device: pair.device_token, session: String::new(), server_id: pair.server_id };
-    let snap = client_sync(&link, "")?.ok_or_else(|| LanError::Offline("no books in the reply".into()))?;
+    let link = Link {
+        base,
+        device: pair.device_token,
+        session: String::new(),
+        server_id: pair.server_id,
+    };
+    let snap = client_sync(&link, "")?
+        .ok_or_else(|| LanError::Offline("no books in the reply".into()))?;
     Ok((link, snap))
 }
 
@@ -2226,9 +2342,8 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
         store.replace_sales_cache_from_sync(&snap.recent_sales)?;
         store.replace_kots_from_sync(&snap.open_kots)?;
         store.replace_running_from_sync(&snap.running_orders)?;
-        for s in &snap.staff {
-            store.upsert_staff_cache(s)?;
-        }
+        // Full replace — never leave another shop's people on Lock.
+        store.replace_staff_cache_from_sync(&snap.staff)?;
         if !snap.venue_title.trim().is_empty() {
             store.set_venue_title(&snap.venue_title)?;
         }
@@ -3174,7 +3289,8 @@ mod tests {
                 .map(|d| {
                     let (base, code, mona) = (base.clone(), code.clone(), mona.clone());
                     s.spawn(move || {
-                        let (mut link, snap) = client_pair(&base, &code, &format!("Tablet {d}")).unwrap();
+                        let (mut link, snap) =
+                            client_pair(&base, &code, &format!("Tablet {d}"), None).unwrap();
                         assert!(!snap.rev.is_empty() && !link.server_id.is_empty());
                         link.session = client_login(&link, Some(&mona), "9999").unwrap().session;
                         let thali = snap.products.iter().find(|p| p.name == "Thali").unwrap().clone();

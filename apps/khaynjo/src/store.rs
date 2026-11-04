@@ -2317,6 +2317,88 @@ impl Store {
         Ok(())
     }
 
+    /// One-shot for Clients that already paired under upsert-only staff sync:
+    /// drop leftover shop people and force a full `/sync` so Lock only shows
+    /// this Server's roster. Returns true when the revision must be forgotten.
+    pub fn ensure_staff_cache_replaced(&self) -> Result<bool, String> {
+        if !self.client_paired()? {
+            return Ok(false);
+        }
+        if self
+            .meta_get("staff_cache_replace_v1")?
+            .filter(|v| v.trim() == "1")
+            .is_some()
+        {
+            return Ok(false);
+        }
+        self.conn
+            .execute("DELETE FROM staff WHERE role != 'owner'", [])
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "DELETE FROM meta WHERE key LIKE 'lan_pin:%' OR key LIKE 'lan_session:%'",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        self.meta_set("staff_cache_replace_v1", "1")?;
+        Ok(true)
+    }
+
+    /// Replace the Client's cached shop people with this Server's roster.
+    /// Keeps this device's Owner row. Upsert-only left staff from a previous
+    /// shop on Lock (same names, wrong ids → "Wrong PIN" for the right code).
+    pub fn replace_staff_cache_from_sync(&self, staff: &[StaffMember]) -> Result<(), String> {
+        self.meta_set("staff_cache_replace_v1", "1")?;
+        self.conn
+            .execute("DELETE FROM staff WHERE role != 'owner'", [])
+            .map_err(|e| e.to_string())?;
+        for member in staff {
+            self.upsert_staff_cache(member)?;
+        }
+        self.prune_stale_lan_sign_ins()?;
+        Ok(())
+    }
+
+    /// Drop offline PIN/session meta for people no longer on this Client's
+    /// staff list (after a re-pair or roster replace).
+    fn prune_stale_lan_sign_ins(&self) -> Result<(), String> {
+        let keep: std::collections::HashSet<String> = self
+            .list_staff()?
+            .into_iter()
+            .map(|s| {
+                if s.is_owner() {
+                    "owner".to_string()
+                } else {
+                    s.id
+                }
+            })
+            .collect();
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT key FROM meta WHERE key LIKE 'lan_pin:%' OR key LIKE 'lan_session:%'",
+            )
+            .map_err(|e| e.to_string())?;
+        let keys: Vec<String> = stmt
+            .query_map([], |row| row.get(0))
+            .map_err(|e| e.to_string())?
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())?;
+        drop(stmt);
+        for key in keys {
+            let id = key
+                .strip_prefix("lan_pin:")
+                .or_else(|| key.strip_prefix("lan_session:"))
+                .unwrap_or("");
+            if !id.is_empty() && !keep.contains(id) {
+                self.conn
+                    .execute("DELETE FROM meta WHERE key = ?1", params![key])
+                    .map_err(|e| e.to_string())?;
+            }
+        }
+        Ok(())
+    }
+
     /// Copy Server Owner PIN hash onto the local Owner so unlock matches the shop.
     pub fn list_all_credit_ledger(&self, limit: i64) -> Result<Vec<CreditLedgerEntry>, String> {
         let mut stmt = self

@@ -67,6 +67,9 @@ pub fn classify(msg: &str) -> SnackKind {
         "not ready",
         "gone",
         "invalid",
+        // Lock / ClientPair: "Wrong PIN…", "Wrong pairing code…" (must Error —
+        // Info snacks are suppressed while locked, so the bar never appeared).
+        "wrong",
         "unable",
         "could not",
         "couldn't",
@@ -148,6 +151,14 @@ mod tests {
         assert_eq!(classify("Not allowed for your role"), SnackKind::Error);
         assert_eq!(classify("Storage error: disk full"), SnackKind::Error);
         assert_eq!(classify("Share blocked: approve first"), SnackKind::Error);
+        assert_eq!(
+            classify("Wrong pairing code — check it on the shop device"),
+            SnackKind::Error
+        );
+        assert_eq!(
+            classify("Wrong PIN for Ahmed · Cashier · #abc12345 — 4 tries left"),
+            SnackKind::Error
+        );
     }
 
     #[test]

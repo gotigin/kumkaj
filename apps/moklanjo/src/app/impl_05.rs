@@ -916,13 +916,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     fn sync_venue_brand(&mut self, cx: &mut Cx) {
         let (title, header_title, server_id_short, icon_path, icon_hint, onboard_icon_hint, saved_title) = {
             let st = app_state().lock().unwrap();
-            // A shop that has not set its name yet still shows the app name
-            // next to the logo — never a blank header.
-            let title = if st.venue_title.trim().is_empty() {
-                "Moklanjo".to_string()
-            } else {
-                st.display_venue_title()
-            };
+            // listing_name: shop, else business/org, else product name.
+            let title = st
+                .store
+                .as_ref()
+                .and_then(|s| s.listing_name().ok())
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty())
+                .unwrap_or_else(|| {
+                    if st.venue_title.trim().is_empty() {
+                        "Moklanjo".to_string()
+                    } else {
+                        st.display_venue_title()
+                    }
+                });
             // Short server id beside the shop name (smaller sibling label).
             let server_id_short = st
                 .data_base

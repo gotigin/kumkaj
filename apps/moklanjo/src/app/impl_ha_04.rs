@@ -267,7 +267,8 @@ impl App {
                 .widget(cx, ids!(client_found_label))
                 .set_text(cx, &plain_display_text(&looking));
             self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, true);
-            self.set_report_rows(cx, ids!(client_found_list), Vec::new());
+            app_state().lock().unwrap().found_servers.clear();
+            self.ui.widget(cx, ids!(client_found_list)).redraw(cx);
             self.paint_submit_busy_chrome(cx);
             client_find_job();
             self.paint_submit_busy_chrome(cx);
@@ -293,6 +294,15 @@ impl App {
             let name = Some(self.ui.text_input(cx, ids!(client_name_input)).text())
                 .filter(|n| !n.trim().is_empty())
                 .unwrap_or_else(device_name);
+            let expect_server_id = {
+                let st = app_state().lock().unwrap();
+                let host_trim = host.trim().to_string();
+                st.found_servers
+                    .iter()
+                    .find(|f| f.host == host_trim)
+                    .map(|f| f.server_id.clone())
+                    .filter(|id| !id.trim().is_empty())
+            };
             if host.trim().is_empty() || code.trim().is_empty() {
                 self.set_status(cx, "Type the office device's address and its pairing code");
             } else {
@@ -301,7 +311,12 @@ impl App {
                 let _ = std::thread::Builder::new()
                     .name("courier-pair".into())
                     .spawn(move || {
-                        let reply = net::client_pair(&host, &code, name.trim());
+                        let reply = net::client_pair(
+                            &host,
+                            &code,
+                            name.trim(),
+                            expect_server_id.as_deref(),
+                        );
                         *lan_once().lock().unwrap() = Some(LanOnce::Paired(reply));
                         makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
                     });
@@ -313,8 +328,36 @@ impl App {
             self.set_status(cx, "Refreshing from the office…");
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(client_connection_btn)).clicked(actions) {
+        if self.ui.button(cx, ids!(client_connection_btn)).clicked(actions)
+            || self.ui.button(cx, ids!(lock_client_connection)).clicked(actions)
+        {
             self.go(cx, Screen::ClientPair);
+        }
+        {
+            let widget = self.ui.widget(cx, ids!(client_found_list));
+            let list = widget.portal_list(cx, ids!(list));
+            for (item_id, item) in list.items_with_actions(actions) {
+                if !item.button(cx, ids!(pick)).clicked(actions) {
+                    continue;
+                }
+                let host = app_state()
+                    .lock()
+                    .unwrap()
+                    .found_servers
+                    .get(item_id)
+                    .map(|f| f.host.clone());
+                if let Some(host) = host {
+                    self.ui
+                        .text_input(cx, ids!(client_host_input))
+                        .set_text(cx, &host);
+                    let msg = {
+                        let st = app_state().lock().unwrap();
+                        st.t("server_host_selected").replace("{host}", &host)
+                    };
+                    self.set_status(cx, msg);
+                    self.ui.redraw(cx);
+                }
+            }
         }
         if self.ui.button(cx, ids!(client_clear_refused)).clicked(actions) {
             let result = {

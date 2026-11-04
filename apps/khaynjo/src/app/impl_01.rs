@@ -7,8 +7,10 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
         let kind = snack::classify(&msg);
         self.set_status_line_only(cx, &msg);
         if !msg.trim().is_empty() {
+            // Locked / pairing: still show Error, Warn, and Success (Wrong PIN,
+            // Wrong pairing code, Paired…). Only suppress idle Info noise.
             let unlocked = app_state().lock().unwrap().session.is_some();
-            if unlocked || matches!(kind, SnackKind::Error | SnackKind::Warn) {
+            if unlocked || !matches!(kind, SnackKind::Info) {
                 self.show_snack(cx, kind, msg);
             }
         }

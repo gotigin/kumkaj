@@ -219,6 +219,68 @@ impl Widget for LanguageList {
     }
 }
 
+/// LAN discover results on ClientPair — tap Use to fill the host field.
+/// Full content height so the page `ScrollYView` owns the wheel (SaleList rule).
+#[derive(Script, ScriptHook, Widget)]
+struct FoundServerList {
+    #[deref]
+    view: View,
+}
+
+impl Widget for FoundServerList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (found, use_label) = {
+            let st = app_state().lock().unwrap();
+            (st.found_servers.clone(), st.t("use"))
+        };
+        let row = *locale_row_height().lock().unwrap();
+        let n = found.len();
+        let walk = Walk {
+            height: Size::Fixed(list_content_height(n, row, 0.0)),
+            ..walk
+        };
+        let mut measured_row = 0.0;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                list.set_item_range(cx, 0, n);
+                let mut drew = 0usize;
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(server) = found.get(item_id) else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    // Discovery already sent listing_name (venue, else org). Empty
+                    // → address only — never invent the product name.
+                    let line = if server.venue.trim().is_empty() {
+                        format!("{} · {}", use_label, server.host)
+                    } else {
+                        format!("{} · {} · {}", server.venue.trim(), server.host, use_label)
+                    };
+                    item.button(cx, ids!(pick))
+                        .set_text(cx, &plain_display_text(&line));
+                    item.draw_all_unscoped(cx);
+                    drew += 1;
+                }
+                if drew > 0 {
+                    let extent = list.drawn_range_extent();
+                    if extent > 1.0 {
+                        measured_row = extent / drew as f64;
+                    }
+                }
+            }
+        }
+        remember_content_row(cx, &mut self.view, locale_row_height(), row, measured_row);
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if page_owns_scroll(event) {
+            return;
+        }
+        self.view.handle_event(cx, event, scope);
+    }
+}
+
 #[derive(Script, ScriptHook, Widget)]
 struct ServerList {
     #[deref]

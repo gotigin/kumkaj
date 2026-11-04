@@ -4848,6 +4848,25 @@ impl MatchEvent for App {
                 self.ui.text_input(cx, ids!(staff_pin_input)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(staff_login_input)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(staff_password_input)).set_text(cx, "");
+                self.ui
+                    .text_input(cx, ids!(staff_copy_hire_input))
+                    .set_text(cx, "");
+                // Hire and edit are separate: show who Add just selected for
+                // features — do not leave hire fields looking like a second copy.
+                let (pick_name, edit_name) = {
+                    let st = app_state().lock().unwrap();
+                    st.team_staff_id
+                        .as_ref()
+                        .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                        .map(|s| (s.name.clone(), s.name.clone()))
+                        .unwrap_or_default()
+                };
+                self.ui
+                    .text_input(cx, ids!(team_pick_input))
+                    .set_text(cx, &pick_name);
+                self.ui
+                    .text_input(cx, ids!(staff_edit_name_input))
+                    .set_text(cx, &edit_name);
             }
             self.sync_chrome(cx);
         }
@@ -4874,23 +4893,44 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(staff_deactivate)).clicked(actions) {
-            let result = (|| -> Result<(), String> {
+            let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 st.require_server_role("Remove staff")?;
                 let actor = st.actor()?;
                 let staff_id = st
                     .team_staff_id
                     .clone()
-                    .ok_or_else(|| "Select a staff member first".to_string())?;
+                    .ok_or_else(|| "Pick who to edit first — then Remove selected".to_string())?;
+                let removed_name = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == staff_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_else(|| staff_id.clone());
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.deactivate_staff(&staff_id, &actor)?;
                 st.team_staff_id = None;
                 st.reload_all()?;
-                st.status = "Staff removed".into();
-                Ok(())
+                // Still listed ⇒ deactivate did not stick (do not pretend success).
+                if st.staff.iter().any(|s| s.id == staff_id) {
+                    return Err(format!(
+                        "Could not remove {removed_name} — they are still on the team"
+                    ));
+                }
+                Ok(format!("Removed {removed_name}"))
             })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_name_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_copy_edit_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
         }
@@ -5302,7 +5342,8 @@ impl MatchEvent for App {
                     .widget(cx, ids!(client_found_label))
                     .set_text(cx, &plain_display_text(&looking));
                 self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, true);
-                self.set_report_rows(cx, ids!(client_found_list), Vec::new());
+                app_state().lock().unwrap().found_servers.clear();
+                self.ui.widget(cx, ids!(client_found_list)).redraw(cx);
                 self.paint_submit_busy_chrome(cx);
                 let _ = std::thread::Builder::new()
                     .name("khaynjo-find-server".into())
@@ -5811,7 +5852,8 @@ impl MatchEvent for App {
         // Digits only — never rewrite the field while focused beyond a filter
         // (same idea as Lock PIN; avoids IME thrash on Android).
         if let Some(text) = self.ui.text_input(cx, ids!(client_code_input)).changed(actions) {
-            let digits: String = text.chars().filter(|c| c.is_ascii_digit()).take(8).collect();
+            // Shop codes are six digits (leading zeros count).
+            let digits: String = text.chars().filter(|c| c.is_ascii_digit()).take(6).collect();
             if digits != text {
                 self.ui.text_input(cx, ids!(client_code_input)).set_text(cx, &digits);
             }
@@ -5833,6 +5875,15 @@ impl MatchEvent for App {
             let name = Some(self.ui.text_input(cx, ids!(client_name_input)).text())
                 .filter(|n| !n.trim().is_empty())
                 .unwrap_or_else(device_name);
+            let expect_server_id = {
+                let st = app_state().lock().unwrap();
+                let host_trim = host.trim().to_string();
+                st.found_servers
+                    .iter()
+                    .find(|f| f.host == host_trim)
+                    .map(|f| f.server_id.clone())
+                    .filter(|id| !id.trim().is_empty())
+            };
             if host.trim().is_empty() || code.trim().is_empty() {
                 self.set_status(cx, "Type the shop device's address and its pairing code");
             } else {
@@ -5841,7 +5892,12 @@ impl MatchEvent for App {
                 let _ = std::thread::Builder::new()
                     .name("khaynjo-pair".into())
                     .spawn(move || {
-                        let reply = net::client_pair(&host, &code, name.trim());
+                        let reply = net::client_pair(
+                            &host,
+                            &code,
+                            name.trim(),
+                            expect_server_id.as_deref(),
+                        );
                         *lan_once().lock().unwrap() = Some(LanOnce::Paired(reply));
                         makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
                     });
@@ -5853,8 +5909,36 @@ impl MatchEvent for App {
             self.set_status(cx, "Refreshing from the shop…");
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(client_connection_btn)).clicked(actions) {
+        if self.ui.button(cx, ids!(client_connection_btn)).clicked(actions)
+            || self.ui.button(cx, ids!(lock_client_connection)).clicked(actions)
+        {
             self.go(cx, Screen::ClientPair);
+        }
+        {
+            let widget = self.ui.widget(cx, ids!(client_found_list));
+            let list = widget.portal_list(cx, ids!(list));
+            for (item_id, item) in list.items_with_actions(actions) {
+                if !item.button(cx, ids!(pick)).clicked(actions) {
+                    continue;
+                }
+                let host = app_state()
+                    .lock()
+                    .unwrap()
+                    .found_servers
+                    .get(item_id)
+                    .map(|f| f.host.clone());
+                if let Some(host) = host {
+                    self.ui
+                        .text_input(cx, ids!(client_host_input))
+                        .set_text(cx, &host);
+                    let msg = {
+                        let st = app_state().lock().unwrap();
+                        st.t("server_host_selected").replace("{host}", &host)
+                    };
+                    self.set_status(cx, msg);
+                    self.ui.redraw(cx);
+                }
+            }
         }
         if self.ui.button(cx, ids!(client_clear_refused)).clicked(actions) {
             let result = {

@@ -183,14 +183,15 @@ impl App {
             st.nav_forward.clear();
             st.client_paired = store_client_paired(st.store.as_ref());
             st.apply_lock_role_selection();
-            if st.client_paired {
-                st.screen = Screen::Lock;
-                st.status = locale::t(&st.locale.language, "status_client_unlock");
+            // Always ClientPair — Find / tap a shop / Pair. Never skip to Lock
+            // and trap the till on a previous pairing (multi-server Wi‑Fi).
+            st.nav_back.push(Screen::DeviceSetup);
+            st.screen = Screen::ClientPair;
+            st.status = if st.client_paired {
+                locale::t(&st.locale.language, "status_client_unlock")
             } else {
-                st.nav_back.push(Screen::DeviceSetup);
-                st.screen = Screen::ClientPair;
-                st.status = "Client Mode — pair to the Server before selling".into();
-            }
+                "Client Mode — find the Server, tap the shop you want, then Pair".into()
+            };
         }
         self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
@@ -305,8 +306,11 @@ impl App {
                     st.client_paired = true;
                     st.reload_all()?;
                     // The person signs in with their office PIN: this device's
-                    // own sign-in is not one the Server knows.
+                    // own sign-in is not one the Server knows. Drop any Who
+                    // pick left from a previous shop's roster.
                     st.session = None;
+                    st.lock_staff_id = None;
+                    st.lock_as_owner = false;
                     st.screen = Screen::Lock;
                     // The office's name as it saved it; unnamed, "the office".
                     let name = [snap.venue_title.trim(), snap.org_name.trim()]
@@ -416,40 +420,31 @@ impl App {
     }
 
     fn show_found_servers(&mut self, cx: &mut Cx, found: Vec<net::FoundServer>) {
-        let (text, rows) = {
+        let (text, show_label, fill_host, clear_host) = {
             let mut st = app_state().lock().unwrap();
-            let text = if found.is_empty() { st.t("no_server_found") } else { String::new() };
-            // One row per office found: its name, and the address.
-            let rows = found
-                .iter()
-                .map(|f| {
-                    let venue = if f.venue.trim().is_empty() {
-                        "Moklanjo"
-                    } else {
-                        f.venue.trim()
-                    };
-                    ReportRow::Kv(venue.to_string(), f.host.clone())
-                })
-                .collect::<Vec<_>>();
+            let (text, show_label, fill_host, clear_host) = if found.is_empty() {
+                (st.t("no_server_found"), true, None, false)
+            } else if found.len() == 1 {
+                (st.t("servers_found_pick"), true, Some(found[0].host.clone()), false)
+            } else {
+                (st.t("servers_found_pick"), true, None, true)
+            };
             st.found_servers = found;
-            (text, rows)
+            (text, show_label, fill_host, clear_host)
         };
-        let first = app_state()
-            .lock()
-            .unwrap()
-            .found_servers
-            .first()
-            .map(|f| f.host.clone());
-        if let Some(host) = first {
-            self.ui
-                .text_input(cx, ids!(client_host_input))
-                .set_text(cx, &host);
+        let field = self.ui.text_input(cx, ids!(client_host_input));
+        if clear_host {
+            field.set_text(cx, "");
+        } else if let Some(host) = fill_host {
+            field.set_text(cx, &host);
         }
         self.ui
             .widget(cx, ids!(client_found_label))
             .set_text(cx, &plain_display_text(&text));
-        self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, !text.is_empty());
-        self.set_report_rows(cx, ids!(client_found_list), rows);
+        self.ui
+            .widget(cx, ids!(client_found_label))
+            .set_visible(cx, show_label);
+        self.ui.widget(cx, ids!(client_found_list)).redraw(cx);
         self.sync_chrome(cx);
     }
 
@@ -567,9 +562,11 @@ impl App {
         }
 
         // A paired device signs in on the Server (PINs are checked there,
-        // never on the device), off the UI thread.
-        let lan = {
+        // never on the device). Sync strips PIN hashes — never fall through
+        // to local authenticate_staff_pin on a Client.
+        let (is_client_paired, lan_link, staff_id_for_lan) = {
             let st = app_state().lock().unwrap();
+            let is_client_paired = st.device_role == DeviceRole::Client && st.client_paired;
             let staff_id = if lock_as_owner {
                 None
             } else {
@@ -580,7 +577,7 @@ impl App {
                         .map(|s| s.id.clone())
                 })
             };
-            let link = (st.device_role == DeviceRole::Client && st.client_paired)
+            let link = is_client_paired
                 .then(|| {
                     st.store.as_ref().and_then(|s| {
                         Some(net::Link {
@@ -591,30 +588,59 @@ impl App {
                     })
                 })
                 .flatten();
-            link.map(|link| (link, staff_id))
+            (is_client_paired, link, staff_id)
         };
-        if let Some((link, staff_id)) = lan {
-            {
-                let mut st = app_state().lock().unwrap();
-                if st.lan_sign_in_busy {
-                    return;
+        if is_client_paired {
+            if let Some(link) = lan_link {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if st.lan_sign_in_busy {
+                        return;
+                    }
+                    st.lan_sign_in_busy = true;
+                    st.status = "Checking your PIN with the shop…".into();
                 }
-                st.lan_sign_in_busy = true;
-                st.status = "Checking your PIN with the shop…".into();
-            }
-            let pin = pin.clone();
-            let _ = std::thread::Builder::new()
-                .name("moklanjo-sign-in".into())
-                .spawn(move || {
-                    let reply = net::client_login(&link, staff_id.as_deref(), &pin);
-                    *lan_once().lock().unwrap() = Some(LanOnce::SignIn {
-                        staff_id,
-                        pin,
-                        reply,
+                let pin = pin.clone();
+                let staff_id = staff_id_for_lan.clone();
+                let _ = std::thread::Builder::new()
+                    .name("moklanjo-sign-in".into())
+                    .spawn(move || {
+                        let reply = net::client_login(&link, staff_id.as_deref(), &pin);
+                        *lan_once().lock().unwrap() = Some(LanOnce::SignIn {
+                            staff_id,
+                            pin,
+                            reply,
+                        });
+                        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
                     });
-                    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-                });
-            self.sync_chrome(cx);
+                self.sync_chrome(cx);
+                return;
+            }
+            let (auth, note) = {
+                let st = app_state().lock().unwrap();
+                match st.store.as_ref() {
+                    Some(store) => match store.offline_lan_sign_in(staff_id_for_lan.as_deref(), &pin)
+                    {
+                        Ok(Some((staff, _))) => (
+                            Ok(Some(staff)),
+                            Some(
+                                "Offline — orders wait on this device until the Wi‑Fi is back"
+                                    .to_string(),
+                            ),
+                        ),
+                        Ok(None) => (
+                            Err(
+                                "Can't reach the shop's server — check the Wi‑Fi (or unlock once while online so this device remembers your PIN)"
+                                    .into(),
+                            ),
+                            None,
+                        ),
+                        Err(e) => (Err(e), None),
+                    },
+                    None => (Err("No store".into()), None),
+                }
+            };
+            self.finish_unlock(cx, auth, lock_as_owner, note);
             return;
         }
 
@@ -629,14 +655,8 @@ impl App {
                     } else if lock_as_owner {
                         store.authenticate_owner_pin(&pin)
                     } else {
-                        let staff_id = lock_staff_id.clone().or_else(|| {
-                            st.staff
-                                .iter()
-                                .find(|s| !s.is_owner())
-                                .map(|s| s.id.clone())
-                        });
-                        match staff_id {
-                            Some(id) => store.authenticate_staff_pin(&id, &pin),
+                        match &lock_staff_id {
+                            Some(id) => store.authenticate_staff_pin(id, &pin),
                             None => Ok(None),
                         }
                     }
@@ -792,7 +812,13 @@ impl App {
                         } else if st.lock_staff_id.is_none() {
                             "Add staff in Team first, or unlock as Owner".into()
                         } else {
-                            format!("Wrong Staff PIN — {left} tries left")
+                            let who = st
+                                .lock_staff_id
+                                .as_ref()
+                                .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                                .map(|s| s.lock_label())
+                                .unwrap_or_else(|| "selected staff".into());
+                            format!("Wrong PIN for {who} — {left} tries left")
                         })
                     }
                 }

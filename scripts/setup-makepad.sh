@@ -71,6 +71,7 @@ PATCHES=(
   text_input_label_align_pub        # RTL input alignment
   text_flow_selection               # selectable text: opaque band, owns the drag
   text_flow_touch_scroll            # Android/touch: swipe scrolls; long-press selects (WrapLabel)
+  text_input_touch_scroll           # Android/touch: swipe over fields scrolls page; long-press selects (PIN / pair)
   text_input_caret_and_placeholder  # caret blinks and is visible; wrapped placeholder not clipped
   button_label_center               # fixed-width buttons centre their label; wrap CTAs keep Fit label (Fill+wrap freezes UI)
   turtle_wrap_fill_no_spam          # wrap+Fill: log once, never error!-spam every frame (that freezes Settings → Add printer)

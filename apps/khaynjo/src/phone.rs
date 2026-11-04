@@ -177,6 +177,11 @@ pub fn set_notify(hook: fn()) {
 
 /// Start the worker for this phone's books (once; later calls only wake it).
 pub fn start(db_path: PathBuf) {
+    if let Ok(store) = Store::open_path(&db_path) {
+        if store.ensure_staff_cache_replaced().unwrap_or(false) {
+            forget_revision();
+        }
+    }
     let (lock, cvar) = shared();
     let mut sh = lock.lock().unwrap();
     sh.db_path = Some(db_path);

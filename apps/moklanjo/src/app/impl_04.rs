@@ -551,6 +551,9 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(client_clear_refused)).set_text(cx, &s("clear_not_accepted"));
         self.ui.button(cx, ids!(client_connection_btn)).set_text(cx, &s("connection_to_shop"));
         self.ui
+            .button(cx, ids!(lock_client_connection))
+            .set_text(cx, &s("connection_to_shop"));
+        self.ui
             .button(cx, ids!(conv_add))
             .set_text(cx, &s("add_conversion"));
         self.ui

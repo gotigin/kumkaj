@@ -1,0 +1,98 @@
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -654,6 +654,16 @@
+     /// Skip finger move after long press to prevent selection changes
+     #[rust]
+     ignore_next_move: bool,
++    /// Touch: after long-press, FingerMove may extend the selection. Without
++    /// this, every swipe over a focused field (Lock PIN, ClientPair host)
++    /// would steal the page ScrollYView.
++    #[rust]
++    touch_select_armed: bool,
++    /// Touch: focus + IME wait for FingerUp was_tap. FingerDown focus/IME
++    /// opened the keyboard mid-swipe and killed page ScrollY on every
++    /// screen with a FieldInput (Lock, ClientPair, Settings, …).
++    #[rust]
++    touch_focus_pending: bool,
+     /// Touch that started outside this input while focused and may blur on release.
+     #[rust]
+     pending_outside_focus_loss_touch: Option<u64>,
+@@ -2551,15 +2561,20 @@
+                 device,
+                 ..
+             }) if device.is_primary_hit() && !scrollbar_captured => {
+-                // A tap on a field that already has focus does not emit
+-                // KeyFocus. Force-show the soft keyboard here — that tap is
+-                // what brings it back after a dismiss.
+-                cx.request_ime_show();
+-                self.reset_blink_timer(cx);
+-                self.set_key_focus(cx);
+-                // Always redraw so ShowTextIME runs this frame even when the
+-                // caret did not move (retap same spot after dismiss).
+-                self.draw_bg.redraw(cx);
++                // Touch: defer focus + IME until FingerUp was_tap so a page
++                // swipe that began on the field can scroll (capture_overload
++                // ScrollY). Mouse keeps immediate focus. Retap-after-dismiss
++                // still requests IME on the tap's FingerUp.
++                if device.is_touch() {
++                    self.touch_focus_pending = true;
++                    self.reset_blink_timer(cx);
++                    self.draw_bg.redraw(cx);
++                } else {
++                    cx.request_ime_show();
++                    self.reset_blink_timer(cx);
++                    self.set_key_focus(cx);
++                    self.draw_bg.redraw(cx);
++                }
+                 let rel = abs - self.text_area.rect(cx).pos;
+                 let Ok(cursor) =
+                     self.point_in_lpxs_to_cursor(Point::new(rel.x as f32, rel.y as f32))
+@@ -2617,6 +2632,18 @@
+             }
+             Hit::FingerUp(fe) => {
+                 self.ignore_next_move = false;
++                self.touch_select_armed = false;
++                if self.touch_focus_pending {
++                    self.touch_focus_pending = false;
++                    if fe.was_tap() && fe.is_over {
++                        // Tap (not scroll): take focus and show IME. Same path
++                        // for first focus and retap-after-dismiss.
++                        cx.request_ime_show();
++                        self.reset_blink_timer(cx);
++                        self.set_key_focus(cx);
++                        self.draw_bg.redraw(cx);
++                    }
++                }
+ 
+                 if fe.was_tap() {
+                     if let Some(cursor) = self.preserved_selection_cursor.take() {
+@@ -2663,9 +2690,11 @@
+ 
+                 // Skip next move to prevent selection change when finger lifts
+                 self.ignore_next_move = true;
++                self.touch_select_armed = true;
+             }
+             Hit::FingerMove(FingerMoveEvent {
+                 abs,
++                abs_start,
+                 tap_count,
+                 device,
+                 ..
+@@ -2675,6 +2704,17 @@
+                     self.ignore_next_move = false;
+                     return;
+                 }
++                // Touch swipe scrolls the page (capture_overload ScrollY). Long-
++                // press arms select-drag. Mouse keeps drag-select immediately.
++                if device.is_touch() && !self.touch_select_armed {
++                    let d = abs - abs_start;
++                    if d.x.abs().max(d.y.abs()) > 6.0 {
++                        return;
++                    }
++                    // Inside slop: keep caret placement from FingerDown; do not
++                    // start a selection band that fights page scroll.
++                    return;
++                }
+ 
+                 // Clear preserved cursor - user is dragging to select
+                 self.preserved_selection_cursor = None;

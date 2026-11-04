@@ -545,9 +545,11 @@ true multi-outlet Cloud or a third-party marketplace.
   Return to customer shown → Take payment split cash/UPI → table
   frees (cannot free while money is still due) — without the owner ever seeing a courier word.
 - Extra-device acceptance (any client: Android, Windows or Linux) →
-  Client Mode → Find the shop's server → pair → as Waiter, open a
-  table, Send KOT → it prints at the Server; Take payment is refused
-  for the waiter.
+  Client Mode → Find the shop's server → tap Use → Pair now with the
+  six-digit code from that Server (Allow extra tills must have bound
+  the port first) → as Waiter, open a table, Send KOT → it prints at
+  the Server; Take payment is refused for the waiter. See
+  [`LAN_QUICK_START.md`](../../../docs/LAN_QUICK_START.md).
 - Manual UI smoke on real hardware from Phase 3 onward, with the Server
   and clients on whichever supported devices the shop uses; before a
   release, at least one Server of each kind (Windows, Linux, Android)

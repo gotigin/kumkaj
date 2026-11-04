@@ -176,7 +176,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
-6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow select-drag on touch FingerMove (that steals vertical swipe). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
+6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 7. **Settings / CTAs freeze the UI (wrap + Fill)** — Separate from bug **7a**. Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Signature: high CPU / draw path / turtle warning. Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws. Still avoid the bad layout:
    - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit**. Patch `button_label_center`. **Do not** “fix” by removing wrap or left-aligning labels (bug 3).
    - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
@@ -657,11 +657,11 @@ per app (`lan_ws.rs` / `net.rs` / `phone.rs`).
 
 | Path | Who | Purpose |
 |---|---|---|
-| `GET /health`, `GET /hello` | anyone | liveness; app + venue name for discovery |
+| `GET /health`, `GET /hello` | anyone | liveness; app + venue + `server_id` (Client pair checks `/hello` against the Find row before posting the code) |
 | `GET /track/{awb}` (Moklanjo) | anyone | public parcel status — no pairing |
 | `GET/POST /book` (Moklanjo) | anyone on the office Wi‑Fi | corporate self-booking: priced by the chosen rate's slab and **billed to the named company's account** (never cash), audited `lan.self_book` |
 | `GET /display` `/tokens` `/expo` `/kiosk` `/t/{table}` `/feedback` (Khaynjo) | anyone on the shop Wi‑Fi | guest / second-screen pages; table QR and kiosk add only dishes the guest menu offers, at most 50 per request, as pending lines staff see before Send KOT |
-| `POST /pair` | anyone (rate-limited) | pairing code → device token |
+| `POST /pair` | anyone (rate-limited) | 6-digit pairing code (normalized, leading zeros) → device token |
 | `GET /sync` | paired device | snapshot of the books — **no PIN or password hashes, no pairing code** |
 | `GET /photo?kind=item\|party&file=<id>.webp` (Moklanjo) · `GET /item-image?key=…` (Khaynjo) | paired device | one photo the snapshot names only by key (`lan_images` fetches and caches it on the device) — Moklanjo takes a **bare file name only**, never a path |
 | `POST /login` | paired device | staff PIN checked **on the server** → session |
@@ -708,6 +708,16 @@ per app (`lan_ws.rs` / `net.rs` / `phone.rs`).
 - **Brute force waits.** 5 wrong pairing codes or PINs from one address make
   it wait 5 minutes (`Guard`); the owner can issue a **New pairing code** and
   **Forget** a device (Settings → paired devices) — it is refused at once.
+- **Bind before advertise.** `ensure_server` binds the TCP port **first**,
+  then starts UDP discovery / books watch. A busy port returns an error
+  (close the other shop app, Allow again) — never “Extra tills on” while
+  another process still owns the port. Switching the open shop’s books
+  path stops the old listener and rebinds this one (`SERVER_DB_PATH`).
+- **Pair the shop you picked.** `client_pair` GETs `/hello` first; when
+  Find filled the host, the row’s `server_id` must match or pair refuses
+  with `wrong_shop` (right code must not succeed against the wrong books
+  on a stolen port). Codes go through `normalize_pair_code` (digits,
+  zero-pad to 6) on both ends.
 - **No "database is locked".** Each store sets a busy timeout and IMMEDIATE
   transactions; the server opens a connection per request beside the
   counter's own. Tests: `two_tablets_and_the_counter_writing_at_once_lose_and_double_nothing`
@@ -799,8 +809,12 @@ rename over an open file fails on Windows, and on Linux those connections
 kept serving the old books. Test `restore_reaches_connections_already_open`.
 
 **Discovery.** "Find the shop's server" broadcasts on the UDP port and falls
-back to scanning the /24; replies list the venue name so staff pick the right
-shop. Same Wi‑Fi trust model as before: no TLS.
+back to scanning the /24; replies list venue + `server_id` + host so staff
+pick the right shop. Tapping Use fills the host; **Pair now** re-checks
+`/hello` against that `server_id`. Same Wi‑Fi trust model as before: no TLS.
+Do not start discovery until TCP bind succeeded — otherwise Clients find the
+real venue name, type the correct pairing code, and get “Wrong pairing code”
+from whatever still holds the TCP port.
 
 ## Branches = separate local servers (vision §5)
 
@@ -961,8 +975,12 @@ Makepad visual traps found this way (do not reintroduce):
     Selectable `WrapLabel` / TextFlow yields sideways drags to an ancestor
     ScrollX (commits text-select only when the drag is mostly vertical —
     `text_flow_selection`). On **touch**, vertical swipe always scrolls the
-    page; text select-drag starts on long-press only (`text_flow_touch_scroll`)
-    — otherwise WrapLabels covering DeviceSetup / help stole every swipe.
+    page; text select-drag starts on long-press only (`text_flow_touch_scroll`,
+    `text_input_touch_scroll`) — otherwise WrapLabels and focused fields
+    (Lock PIN, ClientPair) stole every swipe. Auth/display WrapLabels and
+    InfoHelp titles stay `selectable: false`. ClientPair lists found Servers
+    with **Use** (`FoundServerList`); auto-fill host only when exactly one
+    answers.
     Stuck Empty scroll-blocks clear on wheel (`scroll_bar_orphan_unblock`) and
     on touch when nothing is captured (`scroll_touch_orphan_unblock`).
     **Nested scroll views of different axes** (a sideways region in a
@@ -1058,8 +1076,24 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 ## Unlock model
 
 - **Owner** — hosts this local business; unlock with the Owner PIN chosen at first start
-- **Staff** — pick a non-owner person, then their PIN
+- **Staff** — pick a non-owner person (Previous / Next), then their PIN. Who /
+  Team / suggests use one shape for everyone: `Name (role) · login id` or
+  `Name (role) · #` + short staff id (`StaffMember::lock_label`) — Owner is not
+  a special parenthesis-only format
 - Optional login id + password (Team can set once; only the user can change password later)
+- **Client:** PIN is checked on the Server (`POST /login`). Sync never carries PIN /
+  password hashes — a paired Client must not fall through to local hash check
+  (that always looked like a wrong staff PIN). Offline unlock uses the PIN
+  remembered after a successful online sign-in on that device
+- **Client staff roster is replaced, not merged.** `replace_staff_cache_from_sync`
+  deletes every non-Owner staff row then upserts the Server's list (full
+  snapshot and staff deltas). Upsert-only left people from a previous shop on
+  Lock — same display name, wrong id → right PIN rejected. Stale `lan_pin:` /
+  `lan_session:` meta for removed ids is pruned; re-pair clears `lock_staff_id`
+- **Snackbar on Lock / ClientPair:** `set_status` only skips **Info** while there
+  is no session. `snack::classify` treats `"wrong"` as Error so “Wrong PIN…” /
+  “Wrong pairing code…” actually open the bar (they used to classify as Info and
+  never show while locked)
 - More → **Team**: Owner creates staff (role title + permission preset + PIN + features); anyone can update their own PIN
 - Sale **created_by** is set on finalize and never rewritten on amend
 

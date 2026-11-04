@@ -539,8 +539,10 @@ script_mod! {
     // Bottom-nav chips (scroll row). Short chrome labels + wrap, never
     // ellipsis — long translated titles grow a second line instead of "Menu & it…".
     // Fit min/max must be FitBound objects — bare numbers only work on Fill{min:}.
+    // Min height 56 matches the overlay icon row so label + icon share one
+    // vertical center (Fit-only chips sat short and left text low under the icon).
     let NavChip = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: Fit
+        width: Fit{min: FitBound.Abs(96.)} height: Fit{min: FitBound.Abs(56.)}
         align: Align{x: 0.0 y: 0.5}
         flow: Right{wrap: true}
         grab_key_focus: false
@@ -577,7 +579,7 @@ script_mod! {
         }
     }
     let NavChipActive = Button{
-        width: Fit{min: FitBound.Abs(96.)} height: Fit
+        width: Fit{min: FitBound.Abs(96.)} height: Fit{min: FitBound.Abs(56.)}
         align: Align{x: 0.0 y: 0.5}
         flow: Right{wrap: true}
         grab_key_focus: false
@@ -1778,6 +1780,8 @@ script_mod! {
             body: ""
             // Hidden until set_title — empty title must not take layout.
             visible: false
+            // Display title — selectable WrapLabel steals Android page swipe.
+            selectable: false
             font_size: 20.
             font_color: #x260B08
             margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
@@ -3100,6 +3104,7 @@ script_mod! {
             body: "locale"
             font_color: #x260B08
             font_size: 14.
+            selectable: false
         }
         pick := Button{
             text: "Use"
@@ -3735,6 +3740,66 @@ script_mod! {
                 padding: Inset{top: 2. bottom: 8.}
                 texture_caching: false
                 ServerRow{}
+            }
+        }
+    }
+
+    // ClientPair: one full-width tap target per found shop (nested Button+label
+    // rows miss taps inside PortalList on Android — same rule as DishRow).
+    let FoundServerRow = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
+        align: Align{x: 0.0 y: 0.5}
+        flow: Right{wrap: true}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 2. right: 2.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xFBEDE4
+            color_down: #xEFD2BC
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xFBEDE4
+            color_2_down: #xEFD2BC
+            color_2_focus: #xffffff
+            border_color: #x5A4238
+            border_radius: 14.
+            border_size: 2.
+        }
+        draw_text +: {
+            color: #x260B08
+            color_hover: #x260B08
+            color_down: #x260B08
+            color_focus: #x260B08
+            ink_centered: false
+            text_style +: {font_size: 14.}
+        }
+    }
+
+    mod.widgets.FoundServerListBase = #(FoundServerList::register_widget(vm))
+    mod.widgets.FoundServerList = set_type_default() do mod.widgets.FoundServerListBase{
+        width: Fill height: Fit
+        margin: Inset{top: 4. bottom: 4.}
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 10
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                padding: Inset{bottom: 8.}
+                texture_caching: false
+                pick := FoundServerRow{text: "shop"}
             }
         }
     }
@@ -5044,6 +5109,7 @@ script_mod! {
                                             body: "OFFLINE"
                                             font_color: #xffffff
                                             font_size: 10.
+                                            selectable: false
                                         }
                                     }
                                     h_local_badge_2 := Label{
@@ -5091,6 +5157,7 @@ script_mod! {
                                                         body: "Your shop"
                                                         font_color: #x69090C
                                                         font_size: 18.
+                                                        selectable: false
                                                     }
                                                     lock_brand_server_id := WrapLabel{
                                                         width: Fit
@@ -5105,6 +5172,7 @@ script_mod! {
                                                     body: "Counter 01 · Locked"
                                                     font_color: #x6B4A3F
                                                     font_size: 12.
+                                                    selectable: false
                                                 }
                                             }
                                             h_shop := Label{
@@ -5167,12 +5235,14 @@ script_mod! {
                                             body: "Who is unlocking?"
                                             font_color: #x260B08
                                             font_size: 11.
+                                            selectable: false
                                         }
                                         lock_staff_label := WrapLabel{
                                             width: Fit
                                             body: "No staff yet — unlock as Owner, then Team"
                                             font_color: #x260B08
                                             font_size: 14.
+                                            selectable: false
                                         }
                                         ActionStack{
                                             lock_staff_prev := NavBtn{text: "Previous staff"}
@@ -5208,6 +5278,7 @@ script_mod! {
                                             body: " "
                                             font_color: #xB43A12
                                             font_size: 12.
+                                            selectable: false
                                         }
                                     }
 
@@ -5220,6 +5291,7 @@ script_mod! {
                                             body: "Or unlock with login"
                                             font_color: #x260B08
                                             font_size: 14.
+                                            selectable: false
                                         }
                                         lock_login_help := InfoHelp{
                                             tip: "Optional: unlock with login id and password instead of PIN."
@@ -5231,6 +5303,11 @@ script_mod! {
                                         is_password: true
                                     }
                                     lock_login_ok := StackPrimaryBtn{text: "Unlock with login"}
+                                    // Client: reach Find / pick among Servers without unlocking.
+                                    lock_client_connection := NavBtn{
+                                        text: "Connection to the shop"
+                                        visible: false
+                                    }
                                 }
                             }
                         }
@@ -5414,8 +5491,9 @@ script_mod! {
                                     body: " "
                                     font_color: #x6B4A3F
                                     font_size: 13.
+                                    selectable: false
                                 }
-                                client_found_list := mod.widgets.ReportText{}
+                                client_found_list := mod.widgets.FoundServerList{}
                                 client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
                                 // 6-digit shop code — numeric pad on Android (same idea as Lock PIN).
                                 client_code_input := FieldInput{
@@ -7652,15 +7730,15 @@ script_mod! {
                                         staff_role_manager_on := SegBtnOn{text: "Manager" visible: false}
                                     }
                                 }
-                                // Optional: copy role / title / rights from someone
-                                // already on the team (new hire still gets a fresh id).
+                                // Hire only: optional copy of role/title/rights into
+                                // this form — then Add creates a new id. Remove is
+                                // not here (it belongs with the selected person below).
                                 staff_copy_hire_input := FieldInput{
                                     empty_text: "Copy setup from (optional)"
                                 }
                                 staff_copy_hire_suggest := mod.widgets.SuggestList{field: "team_copy_hire"}
                                 staff_copy_hire_btn := RowSecondaryBtn{text: "Use this person's setup"}
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
-                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 }
                                 FormCard{
                                 h_optional_login_help := WrapLabel{
@@ -7739,8 +7817,10 @@ script_mod! {
                                         chev_r := ChevronBtn{visible: false}
                                     }
                                 }
-                                // Pick who to edit (by name — names may repeat, so the
-                                // first match is shown with their role to confirm).
+                                // Edit / remove the selected person (not hire).
+                                // Pick first — Rename, Copy-onto, Features, Remove
+                                // all use that selection. Names may repeat; the
+                                // label shows name + role so you confirm who.
                                 team_pick_input := FieldInput{empty_text: "Staff name to edit"}
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_selected_label := WrapLabel{
@@ -7755,6 +7835,7 @@ script_mod! {
                                 }
                                 staff_copy_edit_suggest := mod.widgets.SuggestList{field: "team_copy_edit"}
                                 staff_copy_edit_btn := RowSecondaryBtn{text: "Copy their setup onto selected"}
+                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_rights_help := WrapLabel{
                                     body: ""
                                     font_color: #x260B08
@@ -9076,7 +9157,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_books := NavChip{text: "Books"}
                                         nav_books_on := NavChipActive{text: "Books" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_books_icon := Image{
@@ -9092,7 +9173,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_sell := NavChip{text: "Order"}
                                         nav_sell_on := NavChipActive{text: "Order" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_sell_icon := Image{
@@ -9108,7 +9189,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_buy := NavChip{text: "Buy"}
                                         nav_buy_on := NavChipActive{text: "Buy" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_buy_icon := Image{
@@ -9124,7 +9205,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_menu := NavChip{text: "Menu"}
                                         nav_menu_on := NavChipActive{text: "Menu" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_menu_icon := Image{
@@ -9140,7 +9221,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_floor := NavChip{text: "Floor"}
                                         nav_floor_on := NavChipActive{text: "Floor" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_floor_icon := Image{
@@ -9156,7 +9237,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_kitchen := NavChip{text: "Kitchen"}
                                         nav_kitchen_on := NavChipActive{text: "Kitchen" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_kitchen_icon := Image{
@@ -9172,7 +9253,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_sales := NavChip{text: "Sales"}
                                         nav_sales_on := NavChipActive{text: "Sales" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_sales_icon := Image{
@@ -9188,7 +9269,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_day_close := NavChip{text: "Close"}
                                         nav_day_close_on := NavChipActive{text: "Close" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_day_close_icon := Image{
@@ -9204,7 +9285,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_reports := NavChip{text: "Reports"}
                                         nav_reports_on := NavChipActive{text: "Reports" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_reports_icon := Image{
@@ -9220,7 +9301,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_inventory := NavChip{text: "Stock"}
                                         nav_inventory_on := NavChipActive{text: "Stock" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_inventory_icon := Image{
@@ -9236,7 +9317,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_branches := NavChip{text: "Branches"}
                                         nav_branches_on := NavChipActive{text: "Branches" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_branches_icon := Image{
@@ -9252,7 +9333,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_credit := NavChip{text: "Parties"}
                                         nav_credit_on := NavChipActive{text: "Parties" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_credit_icon := Image{
@@ -9270,7 +9351,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_team := NavChip{text: "Team"}
                                         nav_team_on := NavChipActive{text: "Team" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_team_icon := Image{
@@ -9286,7 +9367,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_settings := NavChip{text: "Settings"}
                                         nav_settings_on := NavChipActive{text: "Settings" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_settings_icon := Image{
@@ -9302,7 +9383,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         nav_lock := NavChip{text: "Lock"}
                                         nav_lock_on := NavChipActive{text: "Lock" visible: false}
                                         View{
-                                            width: Fit height: 56
+                                            width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_lock_icon := Image{

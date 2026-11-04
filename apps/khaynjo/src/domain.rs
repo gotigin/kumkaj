@@ -838,12 +838,25 @@ impl StaffMember {
         }
     }
 
+    /// Lock / Team / suggest line: same shape for every person —
+    /// `Name (role) · login-or-#id` — so Owner is not a special format.
     pub fn lock_label(&self) -> String {
-        if self.is_owner() {
-            format!("{} (Owner)", self.name)
+        let role = if self.is_owner() {
+            "Owner".to_string()
         } else {
-            format!("{} · {}", self.name, self.display_role())
+            self.display_role()
+        };
+        let who = format!("{} ({})", self.name.trim(), role);
+        let login = self.login_id.trim();
+        if !login.is_empty() {
+            return format!("{who} · {login}");
         }
+        let id = self.id.trim();
+        if id.is_empty() {
+            return who;
+        }
+        let short = if id.len() > 8 { &id[id.len() - 8..] } else { id };
+        format!("{who} · #{short}")
     }
 
     pub fn effective_features(&self) -> StaffFeatures {

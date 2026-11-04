@@ -199,9 +199,7 @@ pub fn apply_patch(store: &Store, patch: &SyncPatch) -> Result<(), String> {
             store.replace_sales_cache_from_sync(sales)?;
         }
         if let Some(staff) = &patch.staff {
-            for s in staff {
-                store.upsert_staff_cache(s)?;
-            }
+            store.replace_staff_cache_from_sync(staff)?;
         }
         if let Some(title) = &patch.venue_title
             && !title.trim().is_empty()

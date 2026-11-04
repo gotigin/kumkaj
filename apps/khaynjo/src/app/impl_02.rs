@@ -598,7 +598,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             } else {
                 locale::t(&st.locale.language, "unlock_to_continue")
             };
-            let lock_staff_label = if st.lock_as_owner {
+            // Client first-time → Staff; Server → Owner; then remember last chip.
+            // Until setup/staff/PIN-reset allow Staff, only Owner unlock.
+            // Apply before the Who label so Prev/Next and chips agree.
+            st.apply_lock_role_selection();
+            let lock_as_owner = st.lock_as_owner;
+            let lock_staff_label = if lock_as_owner {
                 String::new()
             } else {
                 st.staff
@@ -616,10 +621,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         locale::t(&st.locale.language, "no_staff_yet")
                     })
             };
-            // Client first-time → Staff; Server → Owner; then remember last chip.
-            // Until setup/staff/PIN-reset allow Staff, only Owner unlock.
-            st.apply_lock_role_selection();
-            let lock_as_owner = st.lock_as_owner;
             let show_staff_role = owner_setup_complete && has_staff && !pin_reset_required;
             let undo_visible = st.undo_sale_id.is_some()
                 && !st.undo_snack_text.trim().is_empty()
@@ -2374,7 +2375,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .team_staff_id
                     .as_ref()
                     .and_then(|id| st.staff.iter().find(|s| &s.id == id))
-                    .map(|s| format!("{}: {} ({})", st.t("editing_staff"), s.name, s.role_title))
+                    .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
                     .unwrap_or_else(|| " ".to_string());
                 (selected, st.team_draft_rights(), st.locale.language.clone())
             };
@@ -2856,8 +2857,15 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .set_text(cx, &plain_display_text(&status));
             }
             {
-                let paired = app_state().lock().unwrap().client_paired;
+                let (paired, on_lock) = {
+                    let st = app_state().lock().unwrap();
+                    (st.client_paired, st.screen == Screen::Lock)
+                };
                 self.ui.button(cx, ids!(client_connection_btn)).set_visible(cx, is_client && paired);
+                // Client Lock: Find / pick among Servers without unlocking first.
+                self.ui
+                    .button(cx, ids!(lock_client_connection))
+                    .set_visible(cx, is_client && on_lock);
                 // Only after Pair now — opens the PIN screen (not a second unlock action).
                 self.ui
                     .button(cx, ids!(client_skip_lock))
