@@ -3538,8 +3538,8 @@ impl MatchEvent for App {
                     .unwrap_or_default();
                 // Own empty KOT route for this station — never inherit another kitchen's printers.
                 st.printer_draft.ensure_station_routes([&station.id]);
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                if let Some(base) = st.printers_base() {
+                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
                 }
                 Ok(format!(
                     "Station {} added — set its printers in Settings → Where things print",
@@ -3590,8 +3590,8 @@ impl MatchEvent for App {
                     .map(|s| s.list_stations().unwrap_or_default())
                     .unwrap_or_default();
                 st.printer_draft.ensure_station_routes([&station.id]);
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                if let Some(base) = st.printers_base() {
+                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
                 }
                 Ok(format!(
                     "Station {} added — set its printers in Settings → Kitchen printing",
@@ -6898,8 +6898,8 @@ impl MatchEvent for App {
                     if !newly {
                         Ok(st.t("printer_already_saved").replace("{name}", target.trim()))
                     } else {
-                        match st.data_base.as_ref() {
-                            Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                        match st.printers_base() {
+                            Some(base) => print_share::save_device_printers(&base, &st.printer_draft)
                                 .map(|()| st.t("printers_saved")),
                             None => Err("No store path to save printers".into()),
                         }
@@ -6926,8 +6926,8 @@ impl MatchEvent for App {
                     st.printer_draft.remove_printer(&id);
                 }
                 st.printer_selected_id = None;
-                match st.data_base.as_ref() {
-                    Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                match st.printers_base() {
+                    Some(base) => print_share::save_device_printers(&base, &st.printer_draft)
                         .map(|()| st.t("printers_saved")),
                     None => Err("No store path to save printers".into()),
                 }
@@ -6991,8 +6991,8 @@ impl MatchEvent for App {
                 let key = parse_printer_route_key(&key_str);
                 st.printer_draft.route_mut(key).clear();
                 st.printer_route_sel = None;
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                if let Some(base) = st.printers_base() {
+                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
                 }
                 st.t("route_cleared").replace("{name}", &place)
             };
@@ -7002,28 +7002,64 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(print_test_btn)).clicked(actions) {
             // Queue only — the print worker talks to CUPS / the network printer.
             // Never wait for `lp` / PowerShell / TCP on the UI thread.
-            let (dir, msg, own, target_desc) = {
+            // Flush draft → live config, then print the **focused place** only
+            // (no pool fallback — empty place is an honest failure).
+            let result = {
                 let st = app_state().lock().unwrap();
-                let targets = st.printer_draft.targets_for(print_share::RouteKey::Bill);
+                let key_str = st.printer_route_key.clone();
+                let place = printer_route_display_name(
+                    &key_str,
+                    &st.stations,
+                    |k| st.t(k),
+                );
+                let key = parse_printer_route_key(&key_str);
+                if let Some(base) = st.printers_base() {
+                    if let Err(e) =
+                        print_share::save_device_printers(&base, &st.printer_draft)
+                    {
+                        drop(st);
+                        self.set_status(cx, e);
+                        return;
+                    }
+                } else {
+                    print_share::configure(st.printer_draft.clone());
+                }
+                let targets = st.printer_draft.targets_for(key);
                 let desc = targets
                     .first()
                     .map(print_share::describe)
-                    .or_else(|| {
-                        st.printer_draft
-                            .printers
-                            .first()
-                            .map(|p| print_share::describe(&print_share::parse_target(&p.target)))
-                    })
-                    .unwrap_or_else(|| "No printer".into());
-                (st.data_base.clone(), st.t("test_page_sent"), test_page_own_words(&st), desc)
+                    .unwrap_or_else(|| st.t("no_printer_assigned"));
+                let own = test_page_own_words(&st);
+                let ok_msg = st.t("test_page_sent");
+                let empty_msg = st
+                    .t("test_page_no_printer")
+                    .replace("{place}", &place);
+                let dir = st.printers_base().or_else(|| st.data_base.clone());
+                let when = chrono::Local::now().format("%d %b %Y %H:%M").to_string();
+                let page = format!(
+                    "{app} - test page\n{own}{place}\n{desc}\n{when}\n\nIf you can read this, printing works here.\n",
+                    app = store::APP_LABEL,
+                );
+                let kind = match key {
+                    print_share::RouteKey::Bill => print_share::PrintKind::Bill,
+                    print_share::RouteKey::Kot { .. } => print_share::PrintKind::Kot,
+                };
+                drop(st);
+                if targets.is_empty() {
+                    Err(empty_msg)
+                } else {
+                    match print_share::print_route(kind, key, &page, dir.as_deref()) {
+                        Ok(share) if share.opened => Ok(ok_msg),
+                        Ok(_) => {
+                            let notes = print_share::take_problems();
+                            Err(notes.into_iter().next().unwrap_or(empty_msg))
+                        }
+                        Err(e) => Err(e),
+                    }
+                }
             };
-            let when = chrono::Local::now().format("%d %b %Y %H:%M").to_string();
-            let page = format!(
-                "{app} - test page\n{own}{target_desc}\n{when}\n\nIf you can read this, printing works here.\n",
-                app = store::APP_LABEL
-            );
-            match print_share::print_text(print_share::PrintKind::Bill, &page, dir.as_deref()) {
-                Ok(_) => self.set_status(cx, msg),
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
                 Err(e) => self.set_status(cx, e),
             }
         }

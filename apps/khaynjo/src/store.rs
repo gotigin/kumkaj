@@ -1488,6 +1488,39 @@ impl Store {
         self.meta_set("paired_server_id", id.trim())
     }
 
+    /// Drop the previous shop's logo (and LAN dish-photo cache) when this
+    /// Client re-pairs to a different Server. Same Server → no-op.
+    pub fn prepare_client_for_server(&self, new_server_id: &str) -> Result<(), String> {
+        let new_id = new_server_id.trim();
+        if new_id.is_empty() {
+            return Ok(());
+        }
+        let old = self.paired_server_id()?.unwrap_or_default();
+        if old.is_empty() || old == new_id {
+            return Ok(());
+        }
+        self.clear_venue_brand_cache()?;
+        if let Ok(dir) = self.item_images_dir() {
+            let lan = dir.join("lan");
+            if lan.is_dir() {
+                let _ = fs::remove_dir_all(&lan);
+            }
+        }
+        Ok(())
+    }
+
+    /// Clear the saved shop mark key and delete `brand_images/venue_icon.webp`.
+    pub fn clear_venue_brand_cache(&self) -> Result<(), String> {
+        self.set_venue_icon_key(None)?;
+        if let Ok(dir) = self.brand_images_dir() {
+            let icon = dir.join("venue_icon.webp");
+            if icon.is_file() {
+                let _ = fs::remove_file(&icon);
+            }
+        }
+        Ok(())
+    }
+
     /// The paired server answered from another address: the pairing stays,
     /// only where to reach it changes.
     pub fn set_server_url(&self, server_url: &str) -> Result<(), String> {
@@ -1544,6 +1577,16 @@ impl Store {
     /// True when this device is a paired-terminal Client rather than the till.
     pub fn is_client_device(&self) -> Result<bool, String> {
         Ok(self.device_role()?.as_deref() == Some("client"))
+    }
+
+    /// True when these books are the Client Mode cache (`…/client/khaynjo.sqlite3`),
+    /// not shop books under `…/servers/<id>/`. Prefer this over [`Self::is_client_device`]
+    /// when deciding Client-only UX — meta can lag after a Server/Client switch.
+    pub fn is_client_cache_path(&self) -> bool {
+        self.path
+            .parent()
+            .and_then(|p| p.file_name())
+            .is_some_and(|n| n == "client")
     }
 
     /// The Server owns every book: catalogue, stock, staff, branches and fiscal
@@ -2811,14 +2854,7 @@ impl Store {
     /// waiter's paired device — when auto-print is on.
     pub fn print_kot(&self, kot_id: &str) -> Result<std::path::PathBuf, String> {
         let text = self.format_kot_text(kot_id)?;
-        let station_id: String = self
-            .conn
-            .query_row(
-                "SELECT COALESCE(station_id, '') FROM kot_tickets WHERE id = ?1",
-                rusqlite::params![kot_id],
-                |r| r.get(0),
-            )
-            .unwrap_or_default();
+        let station_id = self.station_id_for_kot(kot_id).unwrap_or_default();
         let copies = self.kot_slip_format()?.copies.max(1);
         let mut last_path = None;
         let mut opened = false;
@@ -2836,7 +2872,7 @@ impl Store {
         }
         if !opened {
             return Err(
-                "No printer available for this KOT — add a printer in Settings → Printers (Bill or a kitchen station), then Save"
+                "No printer for that kitchen place — assign one in Settings → Printers → Places"
                     .into(),
             );
         }
@@ -5206,6 +5242,11 @@ impl Store {
             return Err("Business name required".into());
         }
         self.meta_set("org_name", name)
+    }
+
+    /// Sync / re-pair may clear the business name when the Server has none.
+    pub fn set_org_name_from_sync(&self, name: &str) -> Result<(), String> {
+        self.meta_set("org_name", name.trim())
     }
 
     /// Branch this device is selling for. Every row written from here is tagged

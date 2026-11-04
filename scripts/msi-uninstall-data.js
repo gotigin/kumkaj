@@ -8,6 +8,20 @@ function PromptDeleteBooksData() {
     try {
         var shell = new ActiveXObject("WScript.Shell");
         var fso = new ActiveXObject("Scripting.FileSystemObject");
+        // Drop Desktop / taskbar-pin copies if a prior Setup.bat or pin fallback left them
+        // (WiX also removes its own Desktop shortcut with the product).
+        try {
+            var desk = shell.SpecialFolders("Desktop") + "\\__APP_LABEL__.lnk";
+            if (fso.FileExists(desk)) {
+                fso.DeleteFile(desk, true);
+            }
+            var pin =
+                shell.ExpandEnvironmentStrings("%APPDATA%") +
+                "\\Microsoft\\Internet Explorer\\Quick Launch\\User Pinned\\TaskBar\\__APP_LABEL__.lnk";
+            if (fso.FileExists(pin)) {
+                fso.DeleteFile(pin, true);
+            }
+        } catch (ePin) {}
         var dir = shell.ExpandEnvironmentStrings("%APPDATA%") + "\\__APP_ID__";
         if (!fso.FolderExists(dir)) {
             return;

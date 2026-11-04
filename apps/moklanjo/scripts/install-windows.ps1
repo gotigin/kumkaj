@@ -109,14 +109,48 @@ Makepad needs kumkaj_moklanjo\resources (underscores). Re-run the package script
     $slug = if ($IsDebug) { "kumkaj-moklanjo-debug" } else { "kumkaj-moklanjo" }
     Copy-Item (Join-Path $InstallDir "install-manifest.env") (Join-Path $BookmarkDir "$slug.env") -Force
 
-    $Wsh = New-Object -ComObject WScript.Shell
-    $AppLnk = $Wsh.CreateShortcut((Join-Path $StartMenu "$Label.lnk"))
-    $AppLnk.TargetPath = Join-Path $InstallDir "kumkaj-moklanjo.exe"
-    $AppLnk.WorkingDirectory = $InstallDir
-    $AppLnk.Description = $Label
+    $ExePath = Join-Path $InstallDir "kumkaj-moklanjo.exe"
     $IconIco = Join-Path $InstallDir "$ResDirName\resources\icon.ico"
-    if (Test-Path $IconIco) { $AppLnk.IconLocation = $IconIco }
-    $AppLnk.Save()
+    $Wsh = New-Object -ComObject WScript.Shell
+
+    function New-AppShortcut([string]$LnkPath, [string]$Target, [string]$WorkDir, [string]$Desc) {
+        $lnk = $Wsh.CreateShortcut($LnkPath)
+        $lnk.TargetPath = $Target
+        $lnk.WorkingDirectory = $WorkDir
+        $lnk.Description = $Desc
+        if (Test-Path $IconIco) { $lnk.IconLocation = $IconIco }
+        $lnk.Save()
+        return $LnkPath
+    }
+
+    function Pin-ToTaskbar([string]$LnkPath) {
+        try {
+            $shellApp = New-Object -ComObject Shell.Application
+            $dir = Split-Path -Parent $LnkPath
+            $name = Split-Path -Leaf $LnkPath
+            $folder = $shellApp.Namespace($dir)
+            if (-not $folder) { return }
+            $item = $folder.ParseName($name)
+            if (-not $item) { return }
+            foreach ($verb in $item.Verbs()) {
+                $v = ($verb.Name -replace '&', '').ToLowerInvariant()
+                if ($v -match 'pin to taskbar' -or ($v -match 'taskbar' -and $v -match 'pin') -or ($v -match 'taskleiste' -and $v -match 'anheft')) {
+                    $verb.DoIt()
+                    return
+                }
+            }
+        } catch {}
+        try {
+            $pinDir = Join-Path $env:APPDATA 'Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar'
+            New-Item -ItemType Directory -Force -Path $pinDir | Out-Null
+            Copy-Item $LnkPath (Join-Path $pinDir (Split-Path -Leaf $LnkPath)) -Force
+        } catch {}
+    }
+
+    $StartLnk = New-AppShortcut (Join-Path $StartMenu "$Label.lnk") $ExePath $InstallDir $Label
+    $Desktop = [Environment]::GetFolderPath('Desktop')
+    New-AppShortcut (Join-Path $Desktop "$Label.lnk") $ExePath $InstallDir $Label | Out-Null
+    Pin-ToTaskbar $StartLnk
 
     $UninstallPs1 = Join-Path $InstallDir "uninstall.ps1"
     $UnLnk = $Wsh.CreateShortcut((Join-Path $StartMenu "Uninstall $Label.lnk"))
@@ -145,9 +179,16 @@ Makepad needs kumkaj_moklanjo\resources (underscores). Re-run the package script
 
     Write-Host ""
     Write-Host "Installed $Label."
-    Write-Host "  Start:  Start Menu -> $Label"
+    Write-Host "  Start:  Start Menu / Desktop / taskbar -> $Label"
     Write-Host "  Remove: Start Menu -> Uninstall $Label  (or Settings -> Apps)"
     Write-Host "  Data:   $DataDir  (created on first run; uninstall asks keep vs delete)"
+
+    try {
+        Start-Process -FilePath $ExePath -WorkingDirectory $InstallDir
+    } catch {
+        Write-Host "Could not start $Label automatically: $($_.Exception.Message)"
+    }
+
     Pause-IfInteractive
     exit 0
 }

@@ -86,6 +86,8 @@ if (Test-Path (Join-Path $ScriptDir "kumkaj-khaynjo.exe")) {
 
 $DataDir = Join-Path $env:APPDATA $AppId
 $StartMenu = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs\$ProgramsName"
+$DesktopLnk = Join-Path ([Environment]::GetFolderPath('Desktop')) "$Label.lnk"
+$TaskbarPinLnk = Join-Path $env:APPDATA "Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\$Label.lnk"
 $UninstallKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\$AppId"
 $Bookmark = Join-Path $env:LOCALAPPDATA "Kumkaj\$slug.env"
 
@@ -145,9 +147,15 @@ if (Test-Path $DataDir) {
 if ($appPresent) {
     Write-Host ""
     Write-Host "Removing app files..."
-    # Remove Start Menu + ARP first.
+    # Remove Start Menu / Desktop / taskbar pin copy + ARP first.
     if (Test-Path $StartMenu) {
         Remove-Item -Recurse -Force $StartMenu
+    }
+    if (Test-Path $DesktopLnk) {
+        Remove-Item -Force $DesktopLnk
+    }
+    if (Test-Path $TaskbarPinLnk) {
+        Remove-Item -Force $TaskbarPinLnk
     }
     if (Test-Path $UninstallKey) {
         Remove-Item -Recurse -Force $UninstallKey
@@ -164,6 +172,8 @@ if ($appPresent) {
     Write-Host ""
     Write-Host "App files already gone (or never installed here)."
     if (Test-Path $StartMenu) { Remove-Item -Recurse -Force $StartMenu }
+    if (Test-Path $DesktopLnk) { Remove-Item -Force $DesktopLnk }
+    if (Test-Path $TaskbarPinLnk) { Remove-Item -Force $TaskbarPinLnk }
     if (Test-Path $UninstallKey) { Remove-Item -Recurse -Force $UninstallKey }
     $cleanup = $null
 }

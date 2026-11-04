@@ -361,7 +361,18 @@ fn watcher(transport: &dyn Transport) {
                     want_sync();
                     return Ok(());
                 }
+                let icon_changed = patch.venue_icon_key.is_some() || patch.full;
                 crate::lan_ws::apply_patch(&store, &patch)?;
+                if icon_changed {
+                    if let Some(link) = link_of(&store, "") {
+                        let key = store
+                            .venue_icon_key()
+                            .ok()
+                            .flatten()
+                            .unwrap_or_default();
+                        let _ = net::client_pull_venue_icon(&store, &link, &key);
+                    }
+                }
                 let now = chrono::Local::now();
                 let _ = store.note_lan_synced(&now);
                 let mut sh = shared().0.lock().unwrap();
@@ -638,9 +649,14 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                         if !snap.server_id.is_empty() && matches!(store.paired_server_id(), Ok(None)) {
                             let _ = store.set_paired_server_id(&snap.server_id);
                         }
-                        // Menu photos are keys only in the snapshot — pull bytes.
+                        // Menu photos + shop mark are keys only — pull bytes.
                         if let Some(link) = link_of(store, "") {
                             crate::lan_images::request_missing_from_store(store, &link);
+                            let _ = net::client_pull_venue_icon(
+                                store,
+                                &link,
+                                &snap.venue_icon_key,
+                            );
                         }
                         let mut sh = shared().0.lock().unwrap();
                         sh.applied_rev = snap.rev;

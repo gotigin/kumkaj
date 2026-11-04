@@ -862,12 +862,19 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     }
                 });
             // Short server id beside the restaurant name (smaller sibling label).
-            let server_id_short = st
-                .data_base
-                .as_ref()
-                .and_then(|base| local_servers::active_server_id(base).ok().flatten())
-                .map(|id| id.chars().take(8).collect::<String>())
-                .filter(|id| !id.is_empty());
+            // Client: the paired shop. Server: the open local books id.
+            let server_id_short = match st.device_role {
+                DeviceRole::Client => st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.paired_server_id().ok().flatten()),
+                _ => st
+                    .data_base
+                    .as_ref()
+                    .and_then(|base| local_servers::active_server_id(base).ok().flatten()),
+            }
+            .map(|id| id.chars().take(8).collect::<String>())
+            .filter(|id| !id.is_empty());
             // The header shows the restaurant's name as the owner saved it
             // (the app's name until they do); the business and who is signed
             // in sit under it (sync_chrome).

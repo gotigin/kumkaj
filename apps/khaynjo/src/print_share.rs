@@ -27,7 +27,7 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 #[cfg(not(target_os = "android"))]
 use std::process::Command;
-use std::sync::{Mutex, OnceLock, mpsc};
+use std::sync::{Mutex, mpsc};
 use std::time::Duration;
 
 use serde::{Deserialize, Serialize};
@@ -1458,7 +1458,44 @@ fn printers_path(base: &Path) -> PathBuf {
     base.join("printers.json")
 }
 
-/// This install's saved printers (none saved = the defaults).
+/// Directory that owns `printers.json` for these books (`…/servers/<id>/` or
+/// `…/client/`). Never the install root — each shop's printers stay separate.
+pub fn printers_dir_for_books(db_path: &Path) -> PathBuf {
+    db_path
+        .parent()
+        .unwrap_or_else(|| Path::new("."))
+        .to_path_buf()
+}
+
+/// If this shop has no usable printers yet but the install still has the old
+/// shared file, copy it so an upgrade does not wipe routes. An empty
+/// `printers.json` created by an earlier load/save still counts as "missing"
+/// when the legacy file actually has a pool — otherwise every shop looked
+/// printer-less after the per-books split. Later shops that already have
+/// their own pool are left alone (no cross-server bleed).
+pub fn migrate_legacy_printers(install_base: &Path, books_dir: &Path) {
+    let dest = printers_path(books_dir);
+    let legacy = printers_path(install_base);
+    if !legacy.is_file() || legacy == dest {
+        return;
+    }
+    let legacy_cfg = load_device_printers(install_base);
+    if legacy_cfg.printers.is_empty() {
+        return;
+    }
+    let shop_cfg = if dest.is_file() {
+        load_device_printers(books_dir)
+    } else {
+        DevicePrinters::default()
+    };
+    if !shop_cfg.printers.is_empty() {
+        return;
+    }
+    let _ = fs::create_dir_all(books_dir);
+    let _ = fs::copy(&legacy, &dest);
+}
+
+/// Printers saved beside these books (none saved = the defaults).
 pub fn load_device_printers(base: &Path) -> DevicePrinters {
     let mut printers: DevicePrinters = fs::read_to_string(printers_path(base))
         .ok()
@@ -1469,7 +1506,7 @@ pub fn load_device_printers(base: &Path) -> DevicePrinters {
     printers
 }
 
-/// Keep `printers` for this install and use them from now on.
+/// Keep `printers` beside these books and use them from now on.
 pub fn save_device_printers(base: &Path, printers: &DevicePrinters) -> Result<(), String> {
     let mut printers = printers.clone();
     printers.dedupe_printers();
@@ -1481,9 +1518,20 @@ pub fn save_device_printers(base: &Path, printers: &DevicePrinters) -> Result<()
     Ok(())
 }
 
-/// Load and use the printers saved for the install whose data lives in `base`.
+/// Load and use printers for `base` (a books folder, or install root before
+/// any shop is open).
 pub fn use_device_dir(base: &Path) {
     configure(load_device_printers(base));
+}
+
+/// Open the printers that belong to `db_path`'s shop. Migrates the legacy
+/// install-level file into this shop once when missing.
+pub fn use_books_printers(db_path: &Path, install_base: Option<&Path>) {
+    let books_dir = printers_dir_for_books(db_path);
+    if let Some(install) = install_base {
+        migrate_legacy_printers(install, &books_dir);
+    }
+    use_device_dir(&books_dir);
 }
 
 static SINK: std::sync::Mutex<Option<PrintSink>> = std::sync::Mutex::new(None);
@@ -1562,6 +1610,10 @@ pub fn print_text(kind: PrintKind, text: &str, app_files: Option<&Path>) -> Resu
 /// Empty route: file is written, nothing is queued; KOTs get a one-line note.
 ///
 /// How each printer is driven is that printer's mode (Settings), not Bill vs KOT.
+///
+/// `opened` means the job was handed to the print worker (or captured in tests).
+/// The worker talks to CUPS / the device off the UI thread; a later failure
+/// surfaces via [`take_problems`]. Never treat a dead worker as success.
 pub fn print_route(
     kind: PrintKind,
     route: RouteKey<'_>,
@@ -1579,25 +1631,29 @@ pub fn print_route(
             if dests.is_empty() {
                 if kind == PrintKind::Kot {
                     note_problem(
-                        "KOTs are not printed on this device — add a kitchen printer in Settings → Printers"
+                        "No printer for that kitchen place — assign one in Settings → Printers → Places"
                             .into(),
                     );
                 }
                 false
             } else {
-                queue(Job {
+                match queue(Job {
                     kind,
                     dests,
                     path: path.clone(),
                     text: text.to_string(),
-                });
-                true
+                }) {
+                    Ok(()) => true,
+                    Err(e) => {
+                        note_problem(e);
+                        false
+                    }
+                }
             }
         }
         PrintSink::Capture => {
-            // Capture still records one job (the slip that would have printed).
             // Prefer the resolved route (station → "" → Bill), not only the
-            // exact key — same as Os path via targets_for. A captured job
+            // exact key — same as Os path via destinations_for. A captured job
             // counts as handed to a printer, so callers take the same path
             // they would on a device with that printer.
             if !printers().route_for(route).is_empty() {
@@ -1612,7 +1668,7 @@ pub fn print_route(
             } else {
                 if kind == PrintKind::Kot {
                     note_problem(
-                        "KOTs are not printed on this device — add a kitchen printer in Settings → Printers"
+                        "No printer for that kitchen place — assign one in Settings → Printers → Places"
                             .into(),
                     );
                 }
@@ -1662,30 +1718,56 @@ pub fn take_problems() -> Vec<String> {
 }
 
 /// One thread prints, in the order the jobs came.
-fn queue(job: Job) {
-    static TX: OnceLock<Mutex<mpsc::Sender<Job>>> = OnceLock::new();
-    let tx = TX.get_or_init(|| {
+/// Returns Err when the worker cannot be started or has stopped — callers
+/// must not show "printed" / "test page sent" in that case.
+fn queue(job: Job) -> Result<(), String> {
+    static TX: Mutex<Option<mpsc::Sender<Job>>> = Mutex::new(None);
+
+    fn ensure_worker(slot: &mut Option<mpsc::Sender<Job>>) -> Result<(), String> {
+        if slot.is_some() {
+            return Ok(());
+        }
         let (tx, rx) = mpsc::channel::<Job>();
-        let _ = std::thread::Builder::new().name("print".into()).spawn(move || {
-            for job in rx {
-                let mut last_err: Option<(String, String)> = None;
-                for dest in &job.dests {
-                    match send_to_printer(&dest.format, &dest.target, &job.path, &job.text) {
-                        Ok(()) => {
-                            last_err = None;
-                            break;
+        std::thread::Builder::new()
+            .name("print".into())
+            .spawn(move || {
+                for job in rx {
+                    let mut last_err: Option<(String, String)> = None;
+                    for dest in &job.dests {
+                        match send_to_printer(&dest.format, &dest.target, &job.path, &job.text) {
+                            Ok(()) => {
+                                last_err = None;
+                                break;
+                            }
+                            Err(e) => last_err = Some((describe(&dest.target), e)),
                         }
-                        Err(e) => last_err = Some((describe(&dest.target), e)),
+                    }
+                    if let Some((who, e)) = last_err {
+                        note_problem(format!("{who} did not print: {e}"));
                     }
                 }
-                if let Some((who, e)) = last_err {
-                    note_problem(format!("{who} did not print: {e}"));
-                }
-            }
-        });
-        Mutex::new(tx)
-    });
-    let _ = tx.lock().unwrap().send(job);
+            })
+            .map_err(|e| format!("print worker failed to start ({e})"))?;
+        *slot = Some(tx);
+        Ok(())
+    }
+
+    let mut slot = TX.lock().unwrap();
+    ensure_worker(&mut slot)?;
+    match slot.as_ref().unwrap().send(job) {
+        Ok(()) => Ok(()),
+        Err(mpsc::SendError(job)) => {
+            // Worker died (panic / exit). Start a fresh one and retry once.
+            *slot = None;
+            ensure_worker(&mut slot)?;
+            slot.as_ref()
+                .unwrap()
+                .send(job)
+                .map_err(|_| {
+                    "print worker stopped — restart the app, then try again".into()
+                })
+        }
+    }
 }
 
 /// How a person names the printer.
@@ -1978,7 +2060,7 @@ fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Resul
         ]);
         cmd.arg("--").arg(path);
         match cmd.output() {
-            Ok(out) if out.status.success() => Ok(()),
+            Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
             Ok(out) => Err(first_line(&out.stderr).unwrap_or_else(|| "the printing system refused the job".into())),
             Err(_) => {
                 let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
@@ -2041,6 +2123,75 @@ fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Resul
     }
 }
 
+/// `lp` stdout looks like `request id is QueueName-123 (1 file(s))`.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn parse_lp_request_id(stdout: &str) -> Option<String> {
+    let rest = stdout.split("request id is ").nth(1)?;
+    let id = rest.split_whitespace().next()?.trim();
+    if id.is_empty() {
+        None
+    } else {
+        Some(id.to_string())
+    }
+}
+
+/// CUPS often accepts a job (`lp` exit 0) while the backend cannot reach the
+/// device — classic message: "Waiting for printer to become available".
+/// That must not look like a successful print in the app.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_printer_unreachable(name: &str) -> Option<String> {
+    let out = Command::new("lpstat").args(["-p", name]).output().ok()?;
+    let text = String::from_utf8_lossy(&out.stdout);
+    let lower = text.to_ascii_lowercase();
+    if !(lower.contains("waiting for printer to become available")
+        || lower.contains("printer not connected")
+        || lower.contains("unable to locate printer"))
+    {
+        return None;
+    }
+    let detail = text
+        .lines()
+        .map(str::trim)
+        .find(|l| {
+            let l = l.to_ascii_lowercase();
+            l.contains("waiting") || l.contains("unable") || l.contains("not connected")
+        })
+        .unwrap_or("printer not reachable");
+    Some(format!(
+        "Printer \"{name}\" did not take the job ({detail}) — check cable/power, or use a Network/USB address in Settings → Printers"
+    ))
+}
+
+/// After `lp` accepts the job: log it, and fail if CUPS already says the
+/// printer is unreachable (otherwise the UI shows success with no paper).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_confirm_after_lp(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), String> {
+    let stdout = String::from_utf8_lossy(lp_stdout);
+    let job = parse_lp_request_id(&stdout);
+    let who = name.unwrap_or("(default)");
+    let job_s = job.as_deref().unwrap_or("?");
+    eprintln!("[print] lp queued printer={who} job={job_s}");
+    crate::diag::info(
+        crate::diag::Cat::Print,
+        "lp_queued",
+        format!("printer={who} job={job_s}"),
+    );
+    let Some(printer) = name else {
+        return Ok(());
+    };
+    // Backend updates printer-state-message shortly after accept.
+    std::thread::sleep(Duration::from_millis(500));
+    if let Some(blocked) = cups_printer_unreachable(printer) {
+        if let Some(job) = &job {
+            let _ = Command::new("cancel").arg(job).output();
+        }
+        eprintln!("[print] CUPS unreachable: {blocked}");
+        crate::diag::warn(crate::diag::Cat::Print, "cups_unreachable", &blocked);
+        return Err(blocked);
+    }
+    Ok(())
+}
+
 /// Send ESC/POS bytes to a system printer as a **raw** job (KOT on desktop queues).
 fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
     if bytes.len() > ESC_POS_JOB_MAX {
@@ -2069,7 +2220,7 @@ fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> 
         }
         cmd.arg("--").arg(path);
         match cmd.output() {
-            Ok(out) if out.status.success() => Ok(()),
+            Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
             Ok(out) => {
                 let detail = first_line(&out.stderr).unwrap_or_else(|| "raw print refused".into());
                 Err(format!(
@@ -2707,10 +2858,9 @@ mod tests {
         assert!(print_network(&closed, "x").unwrap_err().contains("cannot reach"));
     }
 
-    /// Printers belong to the install: saved beside the language choice and
-    /// read back on the next start.
+    /// Printers belong to each shop's books folder and reload from there.
     #[test]
-    fn device_printers_are_kept_per_install() {
+    fn device_printers_are_kept_per_books_dir() {
         let base = std::env::temp_dir().join(format!("khaynjo-printers-{}", uuid::Uuid::new_v4().simple()));
         assert_eq!(load_device_printers(&base), DevicePrinters::default());
         let mut chosen = DevicePrinters::default();
@@ -2732,6 +2882,43 @@ mod tests {
             );
         });
         let _ = fs::remove_dir_all(base);
+    }
+
+    #[test]
+    fn legacy_install_printers_copy_once_into_empty_shop() {
+        let install = std::env::temp_dir().join(format!(
+            "khaynjo-pr-legacy-{}",
+            uuid::Uuid::new_v4().simple()
+        ));
+        let shop_a = install.join("servers/a");
+        let shop_b = install.join("servers/b");
+        fs::create_dir_all(&shop_a).unwrap();
+        fs::create_dir_all(&shop_b).unwrap();
+        let mut shared = DevicePrinters::default();
+        let p = shared.add_printer("Shared", "192.168.1.9");
+        shared.routes.bill = vec![p];
+        save_device_printers(&install, &shared).unwrap();
+        // Empty shop file (created by a premature save) still gets the legacy pool.
+        save_device_printers(&shop_a, &DevicePrinters::default()).unwrap();
+        migrate_legacy_printers(&install, &shop_a);
+        migrate_legacy_printers(&install, &shop_b);
+        assert_eq!(load_device_printers(&shop_a).routes.bill.len(), 1);
+        assert_eq!(load_device_printers(&shop_b).routes.bill.len(), 1);
+        // Later edits stay per-shop.
+        let mut only_a = DevicePrinters::default();
+        let q = only_a.add_printer("A-only", "10.0.0.1");
+        only_a.routes.bill = vec![q];
+        save_device_printers(&shop_a, &only_a).unwrap();
+        assert_eq!(load_device_printers(&shop_a).printers.len(), 1);
+        assert_eq!(
+            load_device_printers(&shop_a).printers[0].label,
+            "A-only"
+        );
+        assert_ne!(
+            load_device_printers(&shop_b).printers[0].label,
+            "A-only"
+        );
+        let _ = fs::remove_dir_all(install);
     }
 
     #[test]

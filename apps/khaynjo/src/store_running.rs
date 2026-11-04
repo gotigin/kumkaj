@@ -463,22 +463,45 @@ impl Store {
         Ok(id)
     }
 
-    /// KOT number and send time for each of these tickets — the order
-    /// ticket's group headers ("KOT 3 · 20:40").
-    pub fn kot_heads(&self, kot_ids: &[String]) -> Result<Vec<(String, i64, String)>, String> {
+    /// KOT number, send time, and kitchen station for each ticket — order
+    /// headers ("KOT 3 · 20:40") and reprint routing after the cart reloads
+    /// (running lines do not store station_id; the ticket does).
+    pub fn kot_heads(
+        &self,
+        kot_ids: &[String],
+    ) -> Result<Vec<(String, i64, String, String)>, String> {
         let mut out = Vec::new();
         let mut stmt = self
             .conn
-            .prepare("SELECT id, COALESCE(kot_no, 0), created_at FROM kot_tickets WHERE id = ?1")
+            .prepare(
+                "SELECT id, COALESCE(kot_no, 0), created_at, COALESCE(station_id, '')
+                 FROM kot_tickets WHERE id = ?1",
+            )
             .map_err(|e| e.to_string())?;
         for id in kot_ids {
             if let Ok(row) = stmt.query_row(params![id], |r| {
-                Ok((r.get::<_, String>(0)?, r.get::<_, i64>(1)?, r.get::<_, String>(2)?))
+                Ok((
+                    r.get::<_, String>(0)?,
+                    r.get::<_, i64>(1)?,
+                    r.get::<_, String>(2)?,
+                    r.get::<_, String>(3)?,
+                ))
             }) {
                 out.push(row);
             }
         }
         Ok(out)
+    }
+
+    /// Kitchen station this KOT was sent to (empty = unassigned / default).
+    pub fn station_id_for_kot(&self, kot_id: &str) -> Result<String, String> {
+        self.conn
+            .query_row(
+                "SELECT COALESCE(station_id, '') FROM kot_tickets WHERE id = ?1",
+                params![kot_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())
     }
 
     /// Next KOT number for today (kitchens call tickets by number).

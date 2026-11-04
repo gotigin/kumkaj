@@ -73,12 +73,26 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     /// Grouped by station like a normal KOT; marked REPRINT on the slip.
     fn reprint_open_kots(&mut self, cx: &mut Cx) -> Result<String, String> {
         let _ = cx;
-        let st = app_state().lock().unwrap();
+        let mut st = app_state().lock().unwrap();
         if !session_may_reprint(st.session.as_ref()) {
             return Err("Not allowed to print KOTs again — ask the owner".into());
         }
-        if st.device_role == DeviceRole::Client {
+        // Path is ground truth (…/client/ vs …/servers/<id>/). Never show the
+        // Client-only snack on Server books — a stuck AppState Client flag or
+        // empty printer route must surface the real print error instead.
+        let client_cache = st
+            .store
+            .as_ref()
+            .map(|s| s.is_client_cache_path())
+            .ok_or_else(|| "No store".to_string())?;
+        if client_cache {
             return Err(st.t("reprint_kot_client"));
+        }
+        if st.device_role == DeviceRole::Client {
+            st.device_role = DeviceRole::Server;
+            if let Some(store) = st.store.as_ref() {
+                let _ = store.set_device_role(DeviceRole::Server.as_str());
+            }
         }
         let has_sent = st.cart.lines.iter().any(|l| {
             l.is_sent() && !l.kot_id.is_empty() && l.kot_id != QUEUED_KOT
@@ -112,10 +126,34 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .as_ref()
             .map(|s| s.name.clone())
             .unwrap_or_default();
+        // Prefetch ticket stations — cart lines lose station_id on table reload
+        // (running_lines has no column); the KOT ticket still has the kitchen.
+        let mut ticket_station: std::collections::HashMap<String, String> =
+            std::collections::HashMap::new();
+        for line in &selected {
+            if ticket_station.contains_key(&line.kot_id) {
+                continue;
+            }
+            if let Ok(sid) = store.station_id_for_kot(&line.kot_id) {
+                if !sid.trim().is_empty() {
+                    ticket_station.insert(line.kot_id.clone(), sid);
+                }
+            }
+        }
         // station_id → (station display name, lines)
         let mut groups: Vec<(String, String, Vec<&domain::CartLine>)> = Vec::new();
         for line in &selected {
-            let sid = line.kitchen_station_id(&st.products).to_string();
+            let sid = {
+                let from_line = line.kitchen_station_id(&st.products).to_string();
+                if !from_line.is_empty() {
+                    from_line
+                } else {
+                    ticket_station
+                        .get(&line.kot_id)
+                        .cloned()
+                        .unwrap_or_default()
+                }
+            };
             let name = if sid.is_empty() {
                 unassigned.clone()
             } else {
@@ -1342,8 +1380,8 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .map(|s| s.list_stations().unwrap_or_default())
             .unwrap_or_default();
         st.printer_draft.remove_station_route(&id);
-        if let Some(base) = st.data_base.as_ref() {
-            let _ = print_share::save_device_printers(base, &st.printer_draft);
+        if let Some(base) = st.printers_base() {
+            let _ = print_share::save_device_printers(&base, &st.printer_draft);
         }
         Ok(st.t("station_removed").replace("{name}", &name))
     }

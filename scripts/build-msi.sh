@@ -12,8 +12,9 @@
 # The licence page is the app's own scripts/License.rtf.
 # The Windows package is always rebuilt first, so the MSI is never stale.
 #
-# The MSI installs to %LOCALAPPDATA%\Programs\<Label>\ (no admin), adds a
-# Start Menu shortcut, and appears in Settings -> Apps for uninstall.
+# The MSI installs to %LOCALAPPDATA%\Programs\<Label>\ (no admin), adds
+# Start Menu + Desktop shortcuts, best-effort taskbar pin, launches the app
+# when the UI install finishes, and appears in Settings -> Apps for uninstall.
 # A full uninstall asks which local data to delete (business records, shop
 # setup / schema, screen preferences under %APPDATA%\<app id>\); upgrades
 # never ask and always keep it. A Start Menu "Delete books data" shortcut
@@ -75,6 +76,9 @@ sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__
 # Uninstall prompt script (same substitution; JScript is all wixl supports).
 sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
   "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
+# Post-install: taskbar pin + launch the app (Desktop/Start Menu are WiX shortcuts).
+sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
+  "$ROOT/scripts/msi-post-install.js" >"$PKG/msi-post-install.js"
 VER="$(sed -n '/^\[package\]/,/^\[/p' "$APP_DIR/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
 [[ -n "$VER" ]] || VER="0.1.0"
 
@@ -109,6 +113,8 @@ emit_file() {
     fi
     if [[ "$shortcut" == "1" ]]; then
       printf '%s  <Shortcut Id="AppShortcut" Directory="AppMenuFolder" Name="%s" Target="[INSTALLFOLDER]%s" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" Description="%s"/>\n' \
+        "$indent" "$(printf '%s' "$LABEL" | xml_escape)" "$name" "$(printf '%s' "$LABEL" | xml_escape)"
+      printf '%s  <Shortcut Id="DesktopShortcut" Directory="DesktopFolder" Name="%s" Target="[INSTALLFOLDER]%s" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" Description="%s"/>\n' \
         "$indent" "$(printf '%s' "$LABEL" | xml_escape)" "$name" "$(printf '%s' "$LABEL" | xml_escape)"
       printf '%s  <Shortcut Id="UninstallShortcut" Directory="AppMenuFolder" Name="Uninstall %s" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="Uninstall %s"/>\n' \
         "$indent" "$(printf '%s' "$LABEL" | xml_escape)" "$(printf '%s' "$LABEL" | xml_escape)"
@@ -154,8 +160,13 @@ emit_tree() {
   # attempt placed a prompt in the install path; that is what broke installs.)
   printf '    <Binary Id="UninstallDataJs" SourceFile="%s"/>\n' "$PKG/msi-uninstall-data.js"
   printf '    <CustomAction Id="PromptDeleteBooksData" BinaryKey="UninstallDataJs" JScriptCall="PromptDeleteBooksData" Execute="immediate" Return="ignore"/>\n'
+  printf '    <Binary Id="PostInstallJs" SourceFile="%s"/>\n' "$PKG/msi-post-install.js"
+  printf '    <CustomAction Id="PostInstallLaunch" BinaryKey="PostInstallJs" JScriptCall="PostInstall" Execute="immediate" Return="ignore"/>\n'
   printf '    <InstallExecuteSequence>\n'
   printf '      <Custom Action="PromptDeleteBooksData" Before="RemoveFiles">REMOVE="ALL" AND NOT UPGRADINGPRODUCTCODE</Custom>\n'
+  # After files + Start/Desktop shortcuts exist: pin taskbar + start the app.
+  # UILevel&gt;4 skips silent /qn installs. Return=ignore so pin/launch never fails setup.
+  printf '      <Custom Action="PostInstallLaunch" After="InstallFinalize">NOT REMOVE AND UILevel &gt; 4</Custom>\n'
   printf '    </InstallExecuteSequence>\n'
   if [[ -f "$PKG/$RES_DIR/resources/icon.ico" ]]; then
     printf '    <Icon Id="AppIcon.ico" SourceFile="%s"/>\n' "$PKG/$RES_DIR/resources/icon.ico"
@@ -200,6 +211,8 @@ fi
   printf '          </Component>\n'
   printf '        </Directory>\n'
   printf '      </Directory>\n'
+  # Predefined DesktopFolder so the app exe component can drop a Desktop .lnk.
+  printf '      <Directory Id="DesktopFolder" Name="Desktop"/>\n'
   printf '    </Directory>\n'
   printf '    <Feature Id="Main" Title="%s" Level="1">\n' "$(printf '%s' "$LABEL" | xml_escape)"
   printf '      <ComponentRef Id="AppMenuFolderComp"/>\n'

@@ -9,7 +9,7 @@ alwaysApply: true
 
 **Order of work:**
 
-1. **Now:** Per-user **MSI** per app (`apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-*.msi`, `apps/khaynjo/scripts/msi.sh` → `dist/Khaynjo-*.msi`; both call the shared `scripts/build-msi.sh`) — single file, Start Menu, Settings → Apps uninstall, no admin, MajorUpgrade replaces old versions, books data kept. Never change an app's upgrade codes. Package folder (`<bin>.exe` + `<crate>/resources/` underscores + the app's own `Setup.bat`) is the fallback. Do not tell people to open `.ps1` in Explorer (Notepad).
+1. **Now:** Per-user **MSI** per app (`apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-*.msi`, `apps/khaynjo/scripts/msi.sh` → `dist/Khaynjo-*.msi`; both call the shared `scripts/build-msi.sh`) — single file, Start Menu + Desktop shortcuts, best-effort taskbar pin, launches the app after UI install, Settings → Apps uninstall, no admin, MajorUpgrade replaces old versions, books data kept. Never change an app's upgrade codes. Package folder (`<bin>.exe` + `<crate>/resources/` underscores + the app's own `Setup.bat`) is the fallback (same shortcuts + launch). Do not tell people to open `.ps1` in Explorer (Notepad).
 2. **Later:** Package as **MSIX** and publish through the Microsoft Store.
 
 **Fonts / icons (do not regress):** Desktop packages ship **only** `<crate>/resources/` (no `makepad_widgets/resources/` tree). `WorldFonts` must load FA / CJK / emoji from `self:resources/fonts/…`. **`fa-solid-900.ttf` is required** — without it Floor/header glyph buttons show empty boxes on Windows while WebP sidebar icons still look fine. Staging via `makepad_copy_desktop_resources`; fetch with `./scripts/fetch-ui-fonts.sh apps/<app>`. Details: `docs/DEV.md` § WorldFonts / packaged icon fonts.

@@ -207,14 +207,31 @@ impl AppState {
             .or_else(|| store::data_dir().ok())
             .ok_or_else(|| "No data directory".to_string())?;
         self.data_base = Some(base.clone());
-        print_share::use_device_dir(&base);
+        // Prefer the open shop's printers; install-root only before any books.
+        if let Some(store) = self.store.as_ref() {
+            print_share::use_books_printers(store.db_path(), Some(&base));
+        } else {
+            print_share::use_device_dir(&base);
+        }
         self.printer_draft = print_share::printers();
         self.local_servers = local_servers::list_local_servers(&base)?;
         Ok(())
     }
 
+    /// Folder that owns this shop's `printers.json` (beside the open books).
+    fn printers_base(&self) -> Option<PathBuf> {
+        if let Some(store) = self.store.as_ref() {
+            return Some(print_share::printers_dir_for_books(store.db_path()));
+        }
+        self.data_base.clone()
+    }
+
     fn reload_all(&mut self) -> Result<(), String> {
         let store = self.store.as_ref().ok_or("No store")?;
+        // Each local Server / Client cache has its own printers — never the
+        // shared install-root file (that mixed shops' routes).
+        print_share::use_books_printers(store.db_path(), self.data_base.as_deref());
+        self.printer_draft = print_share::printers();
         // Columns belong to the selected area tab (legacy global is fallback).
         self.floor_columns = store.floor_columns_for_area(&self.floor_area_tab);
         if self.device_role.is_host() {
@@ -560,10 +577,23 @@ impl AppState {
             }
         }
         if let Some(store) = self.store.as_ref() {
-            for (id, no, at) in store.kot_heads(&ids).unwrap_or_default() {
+            let mut station_by_kot = std::collections::HashMap::<String, String>::new();
+            for (id, no, at, station_id) in store.kot_heads(&ids).unwrap_or_default() {
                 // "2026-10-23T20:40:12+05:30" → "20:40"
                 let time = at.get(11..16).unwrap_or("").to_string();
+                if !station_id.trim().is_empty() {
+                    station_by_kot.insert(id.clone(), station_id);
+                }
                 self.kot_heads.insert(id, (no, time));
+            }
+            // running_lines never stored station_id — restore from the ticket
+            // so Print selected again hits the same printer as Send KOT.
+            for line in &mut self.cart.lines {
+                if line.station_id.trim().is_empty() {
+                    if let Some(sid) = station_by_kot.get(&line.kot_id) {
+                        line.station_id = sid.clone();
+                    }
+                }
             }
         }
         self.apply_remembered_kot_to_unassigned();

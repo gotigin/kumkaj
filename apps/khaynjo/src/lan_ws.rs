@@ -34,6 +34,8 @@ pub struct SyncPatch {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub venue_title: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub venue_icon_key: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub products: Option<Vec<crate::domain::Product>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub customers: Option<Vec<crate::domain::Customer>>,
@@ -79,6 +81,7 @@ impl SyncPatch {
             rev: snap.rev.clone(),
             full: true,
             venue_title: Some(snap.venue_title.clone()),
+            venue_icon_key: Some(snap.venue_icon_key.clone()),
             products: Some(snap.products.clone()),
             customers: Some(snap.customers.clone()),
             staff: Some(snap.staff.clone()),
@@ -113,6 +116,9 @@ impl SyncPatch {
         };
         if moved(&before.venue_title, &after.venue_title) {
             p.venue_title = Some(after.venue_title.clone());
+        }
+        if moved(&before.venue_icon_key, &after.venue_icon_key) {
+            p.venue_icon_key = Some(after.venue_icon_key.clone());
         }
         if moved(&before.products, &after.products) {
             p.products = Some(after.products.clone());
@@ -177,6 +183,7 @@ impl SyncPatch {
         }
         Some(SyncSnapshot {
             venue_title: self.venue_title.unwrap_or_default(),
+            venue_icon_key: self.venue_icon_key.unwrap_or_default(),
             products: self.products.unwrap_or_default(),
             customers: self.customers.unwrap_or_default(),
             staff: self.staff.unwrap_or_default(),
@@ -241,15 +248,15 @@ pub fn apply_patch(store: &Store, patch: &SyncPatch) -> Result<(), String> {
             // Deltas carry the full roster when staff is included.
             store.replace_staff_cache_from_sync(staff)?;
         }
-        if let Some(title) = &patch.venue_title
-            && !title.trim().is_empty()
-        {
+        if let Some(title) = &patch.venue_title {
             store.set_venue_title(title)?;
         }
-        if let Some(org) = &patch.org_name
-            && !org.trim().is_empty()
-        {
-            store.set_org_name(org)?;
+        if let Some(org) = &patch.org_name {
+            store.set_org_name_from_sync(org)?;
+        }
+        if let Some(icon) = &patch.venue_icon_key {
+            let t = icon.trim();
+            store.set_venue_icon_key(if t.is_empty() { None } else { Some(t) })?;
         }
         if let (Some(fiscal), rates) = (&patch.fiscal, &patch.tax_rates)
             && !fiscal.country_code.trim().is_empty()

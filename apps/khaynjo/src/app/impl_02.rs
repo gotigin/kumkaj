@@ -1577,6 +1577,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 (st.t("send_kot"), String::new(), false)
             };
             let may_reprint = session_may_reprint(st.session.as_ref());
+            // Extra tills never drive kitchen printers — hide the button so a
+            // stuck Client flag can't leave a dead control that only snacks.
+            let client_till = st
+                .store
+                .as_ref()
+                .is_some_and(|s| s.is_client_cache_path());
             let reprint_n = st
                 .cart
                 .lines
@@ -1595,7 +1601,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
-                .set_visible(cx, has_sent && may_reprint);
+                .set_visible(cx, has_sent && may_reprint && !client_till);
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
                 .set_text(cx, &reprint_label);

@@ -409,7 +409,7 @@ Dev and prod stay separate (debug suffix on id + install folder).
 | Windows install dir | `%LOCALAPPDATA%\Programs\Moklanjo Dev\` | `%LOCALAPPDATA%\Programs\Moklanjo\` |
 | Data dir | `…/com.moklanjo.debug/` | `…/com.moklanjo/` |
 
-**Install:** run `install.sh` (Linux) or double-click **`Setup.bat`** (Windows) from the package folder. Adds Start Menu / app menu entries, including **Uninstall …**. On Windows, do not open `install.ps1` in Explorer (that often opens Notepad) — use `Setup.bat`.
+**Install:** run `install.sh` (Linux) or double-click **`Setup.bat`** (Windows) from the package folder. On Windows, creates **Start Menu**, **Desktop**, and best-effort **taskbar** shortcuts, then **starts the app**; Start Menu also includes **Uninstall …**. Do not open `install.ps1` in Explorer (that often opens Notepad) — use `Setup.bat`.
 
 **Uninstall:** from the menu, Settings → Apps (Windows), double-click `Uninstall.bat`, or re-run `uninstall.sh` / `uninstall.ps1`. Always prompts:
 
@@ -434,7 +434,7 @@ Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, 
 ## Windows (cross from Arch / native on Windows)
 
 **Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
-**Now:** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo: `./apps/khaynjo/scripts/msi.sh`) — single file, double-click install, Start Menu shortcut, uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Moklanjo\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default (`%APPDATA%\com.moklanjo\`) and asks separately whether to delete **business records**, **shop setup** (schema/databases), and **screen preferences**; Start Menu **Delete books data** offers the same categories. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.  
+**Now:** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo: `./apps/khaynjo/scripts/msi.sh`) — single file, double-click install, **Start Menu + Desktop** shortcuts, best-effort **taskbar** pin, **launches the app** when setup finishes (skipped for silent `/qn`), uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Moklanjo\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default (`%APPDATA%\com.moklanjo\`) and asks separately whether to delete **business records**, **shop setup** (schema/databases), and **screen preferences**; Start Menu **Delete books data** offers the same categories. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.  
 **Later:** wrap as **MSIX** for Store publish.
 
 One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.moklanjo.debug` vs `com.moklanjo`).
@@ -766,11 +766,13 @@ off the shop's server". Bills are stamped on the Server, but device-side
 times (waiting writes, "last update") would mislead. Test
 `replies_carry_the_server_clock`.
 
-**Printing (`print_share.rs`, per device).** Printers belong to the
-device, not the books: `printers.json` holds a **pool** of named printers
-(`id` / `label` / `target` / `mode`) and **routes** (ordered printer ids).
-Settings → **Printers** edits both. A route tries the first printer, then
-the next on failure; an empty route means that feature does not print.
+**Printing (`print_share.rs`, per shop on this device).** Each local Server
+(and the Client cache) keeps its own `printers.json` beside its books
+(`servers/<id>/printers.json`, `client/printers.json`) — never a shared
+install-root file that mixes shops. Legacy install-root `printers.json` is
+copied once into a shop that has none. Settings → **Printers** edits the
+open shop's pool + routes. A route tries the first printer, then the next
+on failure; an empty route means that feature does not print.
 Khaynjo routes: **Bill**, plus **KOT per kitchen station**. KOT lookup:
 station’s own route (empty = do not print that station — never fall through
 to Bill). Moklanjo routes: **Receipt** and **AWB label**. Legacy files

@@ -746,9 +746,17 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                                     let store = Store::open_path(&db)?;
                                     store.set_client_device_pairing(&link.base, &link.device)?;
                                     // Kept to find the Server again if its address changes.
-                                    store.set_paired_server_id(&link.server_id)?;
+                                    // apply_snapshot clears branding when this id differs from
+                                    // the previous shop — set after prepare inside apply.
                                     phone::forget_revision();
                                     net::apply_snapshot(&store, &snap)?;
+                                    store.set_paired_server_id(&link.server_id)?;
+                                    let _ = net::client_pull_venue_icon(
+                                        &store,
+                                        &link,
+                                        &snap.venue_icon_key,
+                                    );
+                                    crate::lan_images::request_missing_from_store(&store, &link);
                                     // The shop's name as it saved it; an unnamed shop is "the shop".
                                     let name = [snap.venue_title.trim(), snap.org_name.trim()]
                                         .into_iter()

@@ -67,6 +67,10 @@ pub struct SyncSnapshot {
     pub branch_name: String,
     #[serde(default)]
     pub org_name: String,
+    /// Shop mark key (`custom:venue_icon.webp`) — bytes pulled via `/item-image`.
+    /// Empty = use the default brand mark on the Client.
+    #[serde(default)]
+    pub venue_icon_key: String,
     /// Country pack in force on the Server, so a terminal prints the same tax
     /// wording, pay-rail name and business id as the till.
     #[serde(default)]
@@ -830,7 +834,18 @@ fn item_image_reply(store: &Store, key_raw: &str) -> Result<Reply, String> {
     }
     let dir = store.item_images_dir()?;
     let path = match key.as_str() {
-        k if k.starts_with("custom:") => dir.join(&k["custom:".len()..]),
+        k if k.starts_with("custom:") => {
+            let name = &k["custom:".len()..];
+            let item = dir.join(name);
+            // Venue logo lives under brand_images/; dish photos under item_images/.
+            if item.is_file() {
+                item
+            } else if let Ok(brand) = store.brand_images_dir() {
+                brand.join(name)
+            } else {
+                item
+            }
+        }
         k if k.starts_with("shelf:") => crate::menu_images::resolve_image_path(Some(k), "", &dir),
         _ => {
             return Ok(Reply::refuse(404, "unknown image key", ""));
@@ -1020,6 +1035,9 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         stations: store.list_stations()?,
         branch_name: store.active_branch().map(|b| b.name).unwrap_or_default(),
         org_name: store.saved_org_name().unwrap_or_default(),
+        venue_icon_key: store
+            .venue_icon_key()?
+            .unwrap_or_default(),
         fiscal: store.fiscal_settings()?,
         tax_rates: store.list_tax_rates()?,
         running_orders: store.list_running_orders()?,
@@ -2333,6 +2351,9 @@ pub fn client_send(link: &Link, path: &str, body: &str, request_id: &str) -> Res
 /// mix of old and new, and every row was its own disk sync (seconds on a
 /// phone for a busy shop).
 pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> {
+    // Switching shops: drop the previous Server's mark and LAN photo cache so
+    // Lock/header never keep another restaurant's branding.
+    store.prepare_client_for_server(&snap.server_id)?;
     store.in_transaction(|| {
         store.replace_catalog_from_sync(&snap.products)?;
         store.replace_menu_meta_from_sync(&snap.categories, &snap.stations)?;
@@ -2344,18 +2365,44 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
         store.replace_running_from_sync(&snap.running_orders)?;
         // Full replace — never leave another shop's people on Lock.
         store.replace_staff_cache_from_sync(&snap.staff)?;
-        if !snap.venue_title.trim().is_empty() {
-            store.set_venue_title(&snap.venue_title)?;
-        }
-        if !snap.org_name.trim().is_empty() {
-            store.set_org_name(&snap.org_name)?;
-        }
+        // Always write — empty title/org/logo means this shop has none (do not
+        // keep the previous Server's identity on a re-pair).
+        store.set_venue_title(&snap.venue_title)?;
+        store.set_org_name_from_sync(&snap.org_name)?;
+        let icon = snap.venue_icon_key.trim();
+        store.set_venue_icon_key(if icon.is_empty() { None } else { Some(icon) })?;
         if !snap.fiscal.country_code.trim().is_empty() {
             store.replace_fiscal_from_sync(&snap.fiscal, &snap.tax_rates)?;
         }
         store.cache_server_day_totals(&snap.today, snap.outstanding_credit_paise)?;
         Ok(())
-    })
+    })?;
+    Ok(())
+}
+
+/// Pull the Server's shop mark into this Client's `brand_images/`. Call after
+/// [`apply_snapshot`] while the pairing link is known.
+pub fn client_pull_venue_icon(store: &Store, link: &Link, key: &str) -> Result<(), String> {
+    let dir = store.brand_images_dir()?;
+    let dest = dir.join("venue_icon.webp");
+    let key = key.trim();
+    if key.is_empty() {
+        let _ = std::fs::remove_file(&dest);
+        return Ok(());
+    }
+    match client_fetch_item_image(link, key) {
+        Ok(bytes) if !bytes.is_empty() => {
+            std::fs::write(&dest, bytes).map_err(|e| e.to_string())?;
+            Ok(())
+        }
+        Ok(_) => Ok(()),
+        Err(e) if e.is_offline() => Err(e.to_string()),
+        Err(_) => {
+            // Missing logo on the Server is fine — Client keeps the default mark.
+            let _ = std::fs::remove_file(&dest);
+            Ok(())
+        }
+    }
 }
 
 // ---- Finding the shop's server on the Wi‑Fi --------------------------------
@@ -3236,6 +3283,57 @@ mod tests {
         assert_eq!(snapshot_json(&store).unwrap().1, rev);
         assert_eq!(sync_reply(&store, Some(&rev)).unwrap().status, 304);
         let _ = std::fs::remove_file(path);
+    }
+
+    /// Client sync carries the shop mark key; a second Server clears the
+    /// previous shop's branding on re-pair.
+    #[test]
+    fn snapshot_carries_venue_icon_and_repair_clears_other_shop() {
+        let (path, store, _) = lan_shop();
+        store.set_venue_icon_key(Some("custom:venue_icon.webp")).unwrap();
+        let brand = store.brand_images_dir().unwrap();
+        std::fs::write(brand.join("venue_icon.webp"), b"webp-a").unwrap();
+        let snap = build_snapshot(&store).unwrap();
+        assert_eq!(snap.venue_icon_key, "custom:venue_icon.webp");
+
+        let device_path =
+            std::env::temp_dir().join(format!("khaynjo-device-logo-{}.sqlite3", new_id()));
+        let device = Store::open_path(&device_path).unwrap();
+        // Seed a leftover logo from a prior shop, then pair to this Server.
+        device.set_paired_server_id("server-old").unwrap();
+        let client_brand = device.brand_images_dir().unwrap().join("venue_icon.webp");
+        std::fs::write(&client_brand, b"old-shop").unwrap();
+        device.set_venue_icon_key(Some("custom:venue_icon.webp")).unwrap();
+
+        let mut for_a = snap.clone();
+        for_a.server_id = "server-a".into();
+        apply_snapshot(&device, &for_a).unwrap();
+        device.set_paired_server_id("server-a").unwrap();
+        assert_eq!(
+            device.venue_icon_key().unwrap().as_deref(),
+            Some("custom:venue_icon.webp")
+        );
+        assert!(
+            !client_brand.is_file(),
+            "prepare must drop the previous shop's logo file"
+        );
+
+        let mut other = for_a.clone();
+        other.server_id = "server-b".into();
+        other.venue_title = "Other shop".into();
+        other.venue_icon_key.clear();
+        std::fs::write(&client_brand, b"should-go").unwrap();
+        apply_snapshot(&device, &other).unwrap();
+        assert!(device.venue_icon_key().unwrap().is_none());
+        assert_eq!(device.venue_title().unwrap(), "Other shop");
+        assert!(
+            !client_brand.is_file(),
+            "previous shop logo must not linger"
+        );
+        let _ = std::fs::remove_file(path);
+        let _ = std::fs::remove_file(device_path);
+        let _ = std::fs::remove_dir_all(brand);
+        let _ = std::fs::remove_dir_all(device.brand_images_dir().unwrap());
     }
 
     /// A snapshot lands whole or not at all: one that fails partway (here a

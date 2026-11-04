@@ -484,8 +484,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             let before = st.printer_draft.printers.len();
             st.printer_draft.dedupe_printers();
             if st.printer_draft.printers.len() != before {
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                if let Some(base) = st.printers_base() {
+                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
                 }
             }
             let _ = normalize_focused_route(&mut st);
