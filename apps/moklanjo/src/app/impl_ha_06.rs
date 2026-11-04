@@ -919,6 +919,37 @@ impl App {
             }
             cx.open_select_file_dialog(dialog);
         }
+
+        if self.ui.button(cx, ids!(wipe_trading)).clicked(actions)
+            || self.ui.button(cx, ids!(wipe_trading_on)).clicked(actions)
+        {
+            let mut st = app_state().lock().unwrap();
+            st.wipe_sel_trading = !st.wipe_sel_trading;
+            drop(st);
+            self.paint_wipe_data_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(wipe_schema)).clicked(actions)
+            || self.ui.button(cx, ids!(wipe_schema_on)).clicked(actions)
+        {
+            let mut st = app_state().lock().unwrap();
+            st.wipe_sel_schema = !st.wipe_sel_schema;
+            drop(st);
+            self.paint_wipe_data_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(wipe_ui)).clicked(actions)
+            || self.ui.button(cx, ids!(wipe_ui_on)).clicked(actions)
+        {
+            let mut st = app_state().lock().unwrap();
+            st.wipe_sel_ui = !st.wipe_sel_ui;
+            drop(st);
+            self.paint_wipe_data_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(wipe_data_btn)).clicked(actions) {
+            match self.apply_owner_local_wipe(cx) {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+        }
     }
 
     /// Assign a pool printer to the focused Receipt/Label route (replaces).

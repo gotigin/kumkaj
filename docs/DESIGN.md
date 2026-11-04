@@ -38,7 +38,7 @@ Booking is not the whole product; Day book and Pay out are peers.
 
 | Screen | When |
 |---|---|
-| **DeviceSetup** | **Every app start** (multi-user / multi-business on one device). One screen: **language** + **Server Mode / Client Mode**. |
+| **DeviceSetup** | **Every app start**. One screen: **language** + **Server Mode / Client Mode**. |
 | **Lock** | Owner/Staff PIN. First time: **Server → Owner**, **Client → Staff** (when team exists); after that the last chip is remembered per books file (`lock_prefer_owner`). |
 
 #### DeviceSetup — language (every launch)
@@ -48,17 +48,20 @@ Booking is not the whole product; Day book and Pay out are peers.
 - Changing language **updates this screen immediately** (Server/Client labels and help text included).
 - Choice is persisted when the user continues into Server or Client Mode. Settings can change it later.
 
-#### DeviceSetup — Server Mode (local multi-server)
+#### DeviceSetup — Server Mode (offline cloudless LAN = **one** local server)
 
-Same device may hold **several local servers** (different products or businesses). Each server is a separate books database with a **unique id** (`servers/{id}/moklanjo.sqlite3`, registry in `servers.json`).
+Offline / LAN Server–Client: **one shop server per install**. Server Mode creates it if missing, otherwise opens that one books file (`servers/{id}/…sqlite3` + `servers.json`). There is **no** create-another / open-list / remove-server picker on DeviceSetup.
 
 | Situation | Behaviour |
 |---|---|
-| **No local server yet** | Server Mode **creates** a new server (unique id) and continues to Lock / Owner PIN. |
-| **Servers already exist** | Server Mode shows **Create new server** (optional name) or **Open** an existing one from the list, then continues with that server. |
-| **Remove a local server** | **Owner only** (vision §17). Enter that shop’s **Owner PIN**, then **Remove**. Staff / non-owner sessions cannot wipe a server. Incomplete first-run shops (no Owner PIN yet) may be removed without a PIN. |
+| **No local server yet** | Server Mode **creates** the server and continues to Lock / Owner PIN. |
+| **Server already exists** | Server Mode **opens** it (no list). |
+| **Wipe local data** | **Owner** in Settings → Backup: same categories as Windows uninstall (**business records** / **shop setup** / **screen preferences**) + Owner PIN. Shop setup wipe returns to DeviceSetup. |
+| **Emergency unlock PIN (duress)** | **Offline cloudless LAN only** (not a cloud-account feature). Separate from Backup wipe. Owner sets an optional second PIN on Team. Typing it at unlock wipes **books entries only** (sales/ledgers/history/open floor work) and opens as Owner looking normal — **menu/prices/tables/staff/settings/schema stay**. Does not delete the shop server. Vision §17. |
 
-**Client Mode** uses a separate client cache DB (`client/moklanjo.sqlite3`) and pairs over LAN to a Server — it does not pick from the local server registry.
+**Another outlet offline** = another device (or OS user profile) with its own install — not a second server inside this app. **Multi-server on one install** is reserved for a **future cloud** plan, not offline LAN.
+
+**Client Mode** uses a separate client cache DB (`client/…sqlite3`) and pairs over LAN to a Server.
 
 Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.sqlite3`, etc.) — there is no migration from those layouts.
 | **Onboard** | Moklanjo: courier defaults baked in (Account/Cash booking, kg). Fresh vs Book for opening rates/parties. Other brand products bake their own defaults. |
@@ -278,7 +281,7 @@ source colour, darkened to `#B43A12` for shipping faces.
 
 - Empty rates: CTA to More → Rates & services (no sample rates pre-loaded).
 - Extra tills: pairing code on Lock / Settings when allowed.
-- Multi-branch: one local server per branch (vision §5); the header shows that restaurant's own name, and Server Mode lists the branches on this device.
+- Multi-branch offline: one Server install (or OS user) per outlet (vision §5); the header shows that shop's own name. Multi-server on one DeviceSetup is cloud-only later.
 - Day book empty/first-day copy teaches money in, money out, parties — not “open Booking to begin.”
 - Day books follow **user / business time** (`user_at`); device write / cloud accept times are separate ([`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) § Triple timestamps).
 - Walk-in desk, AWB/barcode, tracking: product roadmap in [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).

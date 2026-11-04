@@ -40,12 +40,16 @@ struct AppState {
     must_confirm_device_role: bool,
     /// DeviceSetup / Settings: follow OS language vs a fixed catalogue pick.
     language_follow_platform: bool,
-    /// True while Server Mode is waiting for create / pick among local servers.
+    /// Legacy flag; offline LAN never shows multi-server pick (kept false).
     picking_server: bool,
     /// True while a brand-new server offers Rajdhani App Template (before Owner PIN).
     awaiting_app_template: bool,
-    /// Local servers registered on this device (multi-business).
+    /// Registry rows (offline: at most one active shop server).
     local_servers: Vec<LocalServerInfo>,
+    /// Settings → Backup wipe checkboxes (Owner; same categories as Windows uninstall).
+    wipe_sel_trading: bool,
+    wipe_sel_schema: bool,
+    wipe_sel_ui: bool,
     /// Devices paired to this Server (Settings → Extra tills).
     lan_devices: Vec<store::LanDevice>,
     /// App data root (desktop `data_dir` or Android files dir).

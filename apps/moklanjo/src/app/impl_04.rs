@@ -214,6 +214,25 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_restore_help))
             .set_text(cx, &plain_display_text(&s("restore_help")));
+        self.ui
+            .widget(cx, ids!(h_wipe_data))
+            .set_text(cx, &plain_display_text(&s("wipe_data_heading")));
+        self.ui
+            .widget(cx, ids!(wipe_data_help))
+            .set_text(cx, &plain_display_text(&s("wipe_data_help")));
+        self.ui.button(cx, ids!(wipe_trading)).set_text(cx, &s("wipe_trading"));
+        self.ui.button(cx, ids!(wipe_trading_on)).set_text(cx, &s("wipe_trading"));
+        self.ui.button(cx, ids!(wipe_schema)).set_text(cx, &s("wipe_schema"));
+        self.ui.button(cx, ids!(wipe_schema_on)).set_text(cx, &s("wipe_schema"));
+        self.ui.button(cx, ids!(wipe_ui)).set_text(cx, &s("wipe_ui"));
+        self.ui.button(cx, ids!(wipe_ui_on)).set_text(cx, &s("wipe_ui"));
+        self.ui
+            .text_input(cx, ids!(wipe_owner_pin))
+            .set_empty_text(cx, s("wipe_owner_pin_ph"));
+        self.ui
+            .button(cx, ids!(wipe_data_btn))
+            .set_text(cx, &s("wipe_delete_selected"));
+        self.paint_wipe_data_chrome(cx);
         {
             let help = self.ui.widget(cx, ids!(day_close_help)).as_info_help();
             help.set_title(cx, &s("day_close"));

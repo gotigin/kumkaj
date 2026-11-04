@@ -1719,21 +1719,25 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// Server Mode: create the first local server, or show create/pick when several exist.
+    /// Server Mode (offline LAN): create the one local server if missing, else open it.
+    /// No create/open/remove list — multi-server on one install is cloud-only.
     fn begin_server_mode(&mut self, cx: &mut Cx) {
         if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
             return;
         }
         self.resolve_data_base(cx);
         let result = (|| -> Result<(), String> {
-            let mut st = app_state().lock().unwrap();
-            st.refresh_local_servers()?;
-            if st.local_servers.is_empty() {
-                drop(st);
-                self.activate_new_server(cx, "")?;
-            } else {
-                st.picking_server = true;
-                st.status = st.t("choose_server");
+            let base = {
+                let mut st = app_state().lock().unwrap();
+                st.picking_server = false;
+                st.refresh_local_servers()?;
+                st.data_base
+                    .clone()
+                    .ok_or_else(|| "No data directory".to_string())?
+            };
+            match local_servers::offline_server_id(&base)? {
+                None => self.activate_new_server(cx, "")?,
+                Some(id) => self.activate_existing_server(cx, &id)?,
             }
             Ok(())
         })();

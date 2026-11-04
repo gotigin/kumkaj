@@ -5016,12 +5016,12 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             device_role_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                            // Offline LAN: multi-server pick unused (cloud-only later).
+                                            // Ids kept so live reload / old bindings do not break.
                                             server_pick_section := View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 12
                                                 visible: false
-                                                // Fit label + tip-only ℹ — never titled Fill InfoHelp
-                                                // (that parks ℹ at the far end for short titles).
                                                 View{
                                                     width: Fill height: Fit
                                                     flow: Right spacing: 0
@@ -5033,7 +5033,7 @@ script_mod! {
                                                         font_size: 14.
                                                     }
                                                     server_pick_help := InfoHelp{
-                                                        tip: "Open an existing server, or create one for another business."
+                                                        tip: "Offline: one shop server per install. Multi-server is cloud-only later."
                                                     }
                                                 }
                                                 server_name_input := FieldInput{empty_text: "New server name (optional)"}
@@ -8722,6 +8722,39 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     restore_btn := NavBtn{text: "Restore backup"}
                                     restore_cancel := StackLightBtn{text: "Cancel" visible: false}
                                 }
+                                h_wipe_data := WrapLabel{
+                                    width: Fill
+                                    body: "Delete local data"
+                                    font_color: #x260B08
+                                    font_size: 17.
+                                }
+                                wipe_data_help := WrapLabel{
+                                    width: Fill
+                                    body: "Owner only — same choices as Windows uninstall. Business records keeps menu/setup (like emergency unlock PIN). Shop setup removes the books. Confirm with Owner PIN. Team emergency PIN is separate."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        wipe_trading := SegBtn{text: "Business records"}
+                                        wipe_trading_on := SegBtnOn{text: "Business records" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        wipe_schema := SegBtn{text: "Shop setup"}
+                                        wipe_schema_on := SegBtnOn{text: "Shop setup" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        wipe_ui := SegBtn{text: "Screen preferences"}
+                                        wipe_ui_on := SegBtnOn{text: "Screen preferences" visible: false}
+                                    }
+                                }
+                                wipe_owner_pin := FieldInput{
+                                    empty_text: "Owner PIN to delete"
+                                    is_password: true
+                                }
+                                wipe_data_btn := DangerBtn{text: "Delete selected"}
                                 }
                                 settings_panel_diag := View{
                                     width: Fill height: Fit

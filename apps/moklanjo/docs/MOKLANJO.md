@@ -247,11 +247,13 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
 
 ## Doctrine follow-ups (Moklanjo code not yet aligned)
 
-- **Branches (vision §5) — aligned 2026-10-23:** a branch is its own
-  business — one local server per branch (Server Mode → create/open
-  another). In-book *Add branch* / *Switch this device* are hidden and
-  their handlers removed; snapshot export/import/roll-up compare
-  branches. Legacy `branch_id` columns and the store's branch API stay
+- **Branches (vision §5) — offline single-server 2026-11-04:** a branch is
+  its own business — offline that means one Server **install** (or OS user)
+  per outlet, not Create/Open another server on DeviceSetup. Multi-server
+  on one install is cloud-only later. In-book *Add branch* / *Switch this
+  device* stay hidden; snapshot export/import/roll-up compare branches.
+  Owner wipe of local data: Settings → Backup (same categories as Windows
+  uninstall). Legacy `branch_id` columns and the store's branch API stay
   for existing data.
 - **Known failing test — resolved 2026-10-24:**
   `store::tests::bank_posting_aging_period_and_rich_receipt` asserted a
@@ -315,13 +317,17 @@ redraw (its fix for a cart whose rows open and close; Moklanjo's lists have no
 such rows) and `page_window` (fixed-pitch heavy grids only; Moklanjo's lists
 are variable-height cards — DEV § Look at the screen 13).
 
-## Emergency unlock PIN (suite-wide, 2026-10-27)
+## Emergency unlock PIN (offline cloudless LAN only, 2026-10-27)
 
-Owner-only, off by default (Team). A PIN that is **not** anyone's unlock
-PIN: if typed at unlock, booking/sales history is wiped and the desk
-opens as Owner looking normal — rates, parties, zones, riders and staff
-stay. Same behaviour in Khaynjo (menu/prices/tables kept). Use only under
-coercion; never advertise the wipe to the person forcing the unlock.
+Owner-only, off by default (Team). For **local Server/Client shops**, not
+cloud accounts. A PIN that is **not** anyone's unlock PIN: if typed at
+unlock, `try_duress_unlock` → `wipe_trading_data_keep_structure` clears
+booking/sales history and the desk opens as Owner looking normal — rates,
+parties, zones, riders and staff stay. Same behaviour in Khaynjo
+(menu/prices/tables kept). Does **not** remove shop setup or the server
+books file. Distinct from Settings → Backup → Delete local data (Owner can
+also wipe shop setup there). Use only under coercion; never advertise the
+wipe to the person forcing the unlock.
 
 ## Out of scope (for now)
 

@@ -326,19 +326,15 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(server_remove_pin))
             .set_empty_text(cx, s("server_remove_pin_ph"));
-        let (picking_server, awaiting_app_template) = {
+        let awaiting_app_template = {
             let st = app_state().lock().unwrap();
-            (
-                st.picking_server
-                    && !st.awaiting_app_template
-                    && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst),
-                st.awaiting_app_template
-                    && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst),
-            )
+            st.awaiting_app_template
+                && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst)
         };
+        // Offline LAN: multi-server pick hidden (cloud-only later).
         self.ui
             .view(cx, ids!(server_pick_section))
-            .set_visible(cx, picking_server);
+            .set_visible(cx, false);
         self.paint_app_template_chrome(cx, awaiting_app_template);
         // Device-role chip visibility (idle/active pair) is owned by paint_choice_state.
         self.ui

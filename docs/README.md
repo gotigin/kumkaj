@@ -50,12 +50,12 @@ Offline use is free forever on the device. Extra tills are optional LAN joins. C
 **Scale**
 
 - Every launch: language (platform default) + Server/Client on one screen ([`DESIGN.md`](DESIGN.md))
-- One device can hold **multiple local servers** (separate businesses/products); Server Mode creates the first or lets you create/open another
+- **Offline cloudless LAN:** **one** local Server books file per install (create once / open that one). Multi-server on one install is **cloud-only** (later). Separate OS users already get separate data dirs.
 - Shop device by default (extra tills off). Allow extra tills in Settings when another phone should sell.
 - Tables & kitchen (tables, KOT) belong to Khaynjo (restaurant OS) — not shipped in Moklanjo
 - Categories, named tax rates, modifiers on rates/items; Inventory & purchases when needed
 - Parties: identity is UUID (names are aliases and may repeat) — [`IDENTITY_AND_NAMES.md`](IDENTITY_AND_NAMES.md); roles (Consignor / Carrier / …) may combine on one id; AR and AP stay separate with a net “who owes whom” view — [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)
-- Each branch is its own business: one local server (books) per branch, compared through exported snapshots (vision §5)
+- Offline multi-outlet: one Server install (or OS user) per outlet; compare via exported day snapshots / roll-up (vision §5). Owner wipe of local data: Settings → Backup (records / shop setup / screen prefs), same categories as Windows uninstall.
 - A write-only sync outbox records each sale for a future Kumkaj Cloud drain; nothing reads that queue yet. Cloud syncs the shop books — extra tills are not a different cloud product.
 - Books rows keep three clocks: user/business time, device write time, and cloud accept time (empty until synced) — see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 

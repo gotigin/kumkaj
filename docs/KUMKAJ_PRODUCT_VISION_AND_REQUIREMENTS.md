@@ -238,10 +238,13 @@ invoice series and day close. Prices, products and people really do
 differ from branch to branch (a highway outlet is not the city outlet),
 so nothing about one branch is shared with or inherited by another.
 
--   **One branch = one local server (books).** A device can already hold
-    several local servers; an owner with three restaurants runs three.
-    Each one stands alone, works with no internet, and can be backed up,
-    restored, sold or closed without touching the others.
+-   **One branch = one local server (books).** Offline, that means a
+    separate install (or OS user) per outlet — not several servers inside
+    one DeviceSetup. An owner with three restaurants runs three Servers
+    (three devices or profiles). Each stands alone, works with no
+    internet, and can be backed up, restored, sold or closed without
+    touching the others. Holding many shops under one install is a
+    **cloud** concern later, not the cloudless LAN model.
 -   **No in-book branch switching.** One set of books never contains two
     branches, so data from one branch cannot leak into another (§27
     rule 9) and one branch's settings can never change another's.
@@ -691,17 +694,18 @@ Initial role concepts discussed include:
 
 Staff PINs are useful for fast local POS access.
 
-**Emergency unlock PIN (duress), suite-wide:** the Owner may optionally
-set a second PIN that is not anyone's unlock PIN. If that PIN is typed
-at unlock, the app wipes **books entries only** (sales / bookings /
-ledgers / audit / open floor work) and opens as Owner with empty books,
-while **schema, config, and catalogue structure** remain (items and
-prices, rates, parties, tables layout, staff, settings). It does **not**
-delete the local server, the database schema, or shop setup. The unlock
-must look like a normal successful login so a coercer is not tipped off.
-Off by default; Owner-only; never required. Shown on Team when unlocked
-as Owner — including on a paired Client till (the change is written on
-the Server over LAN).
+**Emergency unlock PIN (duress) — offline cloudless LAN only:** the Owner
+may optionally set a second PIN that is not anyone's unlock PIN. If that
+PIN is typed at unlock, the app wipes **books entries only** (sales /
+bookings / ledgers / audit / open floor work) and opens as Owner with
+empty books, while **schema, config, and catalogue structure** remain
+(items and prices, rates, parties, tables layout, staff, settings). It
+does **not** delete the local server, the database schema, or shop setup.
+The unlock must look like a normal successful login so a coercer is not
+tipped off. Off by default; Owner-only; never required. Shown on Team when
+unlocked as Owner — including on a paired Client till (the change is
+written on the Server over LAN). This feature is for **local / offline
+Server–Client shops**, not a cloud-account product behaviour.
 
 Sensitive actions such as high discounts, refunds, voids or stock
 corrections should be permission-controlled and recorded with a

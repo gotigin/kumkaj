@@ -1,8 +1,13 @@
-//! Local multi-server registry: one SQLite books file per server on this device.
+//! Offline (cloudless) LAN: **one** local Server books file per install.
 //!
-//! Same phone can hold several businesses / products. Server Mode either creates
-//! a new server (unique id) or opens one from this registry. Client Mode uses a
-//! separate client cache DB and does not appear here.
+//! Server Mode creates that server if none exists, otherwise opens it. Create /
+//! open / remove of *additional* local servers is not part of offline usage —
+//! multi-shop on one install belongs to a future cloud plan. Client Mode uses a
+//! separate `client/` cache and does not appear here.
+//!
+//! On-disk layout still uses `servers/{id}/` + `servers.json` (one active entry)
+//! so backups and wipe paths stay stable. Legacy installs that somehow have
+//! several registry rows keep only the active (or first) for Server Mode.
 
 use crate::domain::new_id;
 use crate::store::{self, Store};
@@ -111,8 +116,15 @@ pub fn set_active_server_id(base: &Path, id: &str) -> Result<(), String> {
     save_registry(base, &reg)
 }
 
-/// Create a new local server directory + empty DB, register it, set active.
+/// Create the offline local server (refuses if one already exists).
 pub fn create_local_server(base: &Path, name: &str) -> Result<(LocalServerInfo, Store), String> {
+    let existing = load_registry(base)?;
+    if !existing.servers.is_empty() {
+        return Err(
+            "This install already has a shop server — offline LAN allows only one. Wipe shop setup in Settings → Backup if you mean to start over."
+                .into(),
+        );
+    }
     let id = new_id();
     let db = server_db_path(base, &id);
     if let Some(parent) = db.parent() {
@@ -211,14 +223,24 @@ pub fn open_client_store(base: &Path) -> Result<Store, String> {
     Store::open_path(&path)
 }
 
-/// Open the active server DB if one exists; otherwise `Err` so the shell can
-/// wait for Server Mode create/pick (or Client Mode).
-pub fn open_active_server(base: &Path) -> Result<Store, String> {
+/// Id of the single offline server to open (active, else first registry row).
+pub fn offline_server_id(base: &Path) -> Result<Option<String>, String> {
     let reg = load_registry(base)?;
-    let Some(id) = reg.active_id.as_deref() else {
+    if let Some(id) = reg.active_id.clone() {
+        if reg.servers.iter().any(|s| s.id == id) {
+            return Ok(Some(id));
+        }
+    }
+    Ok(reg.servers.first().map(|s| s.id.clone()))
+}
+
+/// Open the active server DB if one exists; otherwise `Err` so the shell can
+/// wait for Server Mode create (or Client Mode).
+pub fn open_active_server(base: &Path) -> Result<Store, String> {
+    let Some(id) = offline_server_id(base)? else {
         return Err("No local server yet — choose Server Mode".into());
     };
-    open_server(base, id)
+    open_server(base, &id)
 }
 
 /// Resolve data dir then open active server (desktop boot).
@@ -245,19 +267,21 @@ mod tests {
     }
 
     #[test]
-    fn create_second_server_lists_both() {
+    fn offline_create_refuses_a_second_server() {
         let base = temp_base();
         assert!(list_local_servers(&base).unwrap().is_empty());
         let (a, _) = create_local_server(&base, "Tea stall").unwrap();
-        let (b, _) = create_local_server(&base, "Restaurant desk").unwrap();
+        let err = match create_local_server(&base, "Restaurant desk") {
+            Err(e) => e,
+            Ok(_) => panic!("second create should fail"),
+        };
+        assert!(err.contains("only one"), "{err}");
         let list = list_local_servers(&base).unwrap();
-        assert_eq!(list.len(), 2);
-        assert!(list.iter().any(|s| s.id == a.id && s.name == "Tea stall"));
-        assert!(list.iter().any(|s| s.id == b.id && s.name == "Restaurant desk"));
-        assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(b.id.as_str()));
-        let opened = open_server(&base, &a.id).unwrap();
+        assert_eq!(list.len(), 1);
+        assert_eq!(list[0].id, a.id);
+        assert_eq!(offline_server_id(&base).unwrap().as_deref(), Some(a.id.as_str()));
+        let opened = open_active_server(&base).unwrap();
         assert!(opened.db_path().ends_with(DB_FILENAME));
-        assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(a.id.as_str()));
         let _ = fs::remove_dir_all(base);
     }
 
@@ -265,17 +289,14 @@ mod tests {
     fn delete_server_drops_registry_and_files() {
         let base = temp_base();
         let (a, store_a) = create_local_server(&base, "Tea stall").unwrap();
-        let (b, _) = create_local_server(&base, "Restaurant desk").unwrap();
         drop(store_a);
-        assert_eq!(list_local_servers(&base).unwrap().len(), 2);
+        assert_eq!(list_local_servers(&base).unwrap().len(), 1);
         // First-run incomplete: Owner PIN not required yet.
         assert_owner_may_delete(&base, &a.id, "").unwrap();
         delete_local_server(&base, &a.id).unwrap();
-        let list = list_local_servers(&base).unwrap();
-        assert_eq!(list.len(), 1);
-        assert_eq!(list[0].id, b.id);
+        assert!(list_local_servers(&base).unwrap().is_empty());
         assert!(!server_db_path(&base, &a.id).exists());
-        assert_eq!(active_server_id(&base).unwrap().as_deref(), Some(b.id.as_str()));
+        assert!(offline_server_id(&base).unwrap().is_none());
         let _ = fs::remove_dir_all(base);
     }
 
@@ -310,6 +331,8 @@ mod tests {
         assert_eq!(store.listing_name().unwrap(), "Rajdhani Foods");
         store.set_venue_title(&unnamed.name).unwrap();
         assert_eq!(store.venue_title().unwrap(), "");
+        drop(store);
+        delete_local_server(&base, &unnamed.id).unwrap();
         let (_, named) = create_local_server(&base, "Rajdhani").unwrap();
         assert_eq!(named.venue_title().unwrap(), "Rajdhani");
         assert_eq!(named.listing_name().unwrap(), "Rajdhani");

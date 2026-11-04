@@ -334,7 +334,7 @@ Dev and prod can sit side-by-side on one machine because paths differ by id. No 
 | Backups | `…/<APP_ID>/backups/` | same |
 | Override | `KUMKAJ_DATA_DIR` | same |
 
-**DeviceSetup (every launch):** language (platform default, immediate apply) + Server/Client. Server Mode creates a unique local server if none exist, otherwise create-new or open-existing. **Khaynjo:** after a successful new-server create (and before Owner PIN), a one-shot **Rajdhani App Template** card may appear (Apply = menu import with status + Cancel; Skip → Lock). See [`DESIGN.md`](DESIGN.md) § Launch / auth.
+**DeviceSetup (every launch):** language (platform default, immediate apply) + Server/Client. **Offline LAN:** Server Mode creates the **one** local server if none exist, otherwise opens it — no create/open/remove list (multi-server on one install is cloud-only later). **Owner wipe:** Settings → Backup → Delete local data (business records / shop setup / screen preferences + Owner PIN), same categories as Windows uninstall / `delete-books-data.ps1`. **Emergency unlock PIN (offline LAN only — do not regress):** Team → optional duress PIN; unlock path calls `try_duress_unlock` → `wipe_trading_data_keep_structure` — books entries gone, catalogue/schema/staff/settings kept, opens as Owner looking normal (vision §17). Scope is cloudless Server/Client shops, not cloud multi-shop. Never conflate with Backup “shop setup” wipe. **Khaynjo:** after a successful first-server create (and before Owner PIN), a one-shot **Rajdhani App Template** card may appear (Apply = menu import with status + Cancel; Skip → Lock). See [`DESIGN.md`](DESIGN.md) § Launch / auth.
 
 ### Product / template default (onboarding)
 
@@ -852,13 +852,15 @@ Do not start discovery until TCP bind succeeded — otherwise Clients find the
 real venue name, type the correct pairing code, and get “Wrong pairing code”
 from whatever still holds the TCP port.
 
-## Branches = separate local servers (vision §5)
+## Branches offline = separate installs (vision §5); not multi-server on one device
 
-A branch is its own business, so it is its own **local server** (books):
-Server Mode → create/open another. One set of books never holds two
-branches. Apps may still carry a `branch_id` column and a single
+A branch is its own business. **Offline cloudless LAN:** each outlet runs its
+own app install (or OS user profile) with **one** local Server books file —
+DeviceSetup never offers a second local server. One set of books never holds
+two branches. Apps may still carry a `branch_id` column and a single
 built-in branch row (legacy shape; the books' own code/name used on
 invoice numbers) — new code must not add in-book branch switching.
+**Multi-server registry UI on one install is cloud-only (later), not offline.**
 
 - Meta: `org_name` (the business name), `active_branch_id` (the books' single branch row)
 - **Export:** day/period snapshot → `backups/branch_snapshot_{CODE}_{YYYY-MM-DD}.json` (+ clipboard)
@@ -1196,7 +1198,7 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
 5b. Settings → Country & tax: apply `GB` (VAT inclusive, £), then `US` (sales tax exclusive, $); save a business id and check it prints
 6. Ops / COD / Riders when fleet features are used
-7. Branches: create a second local server in Server Mode; export a day snapshot from each, import it on the owner's device, open the roll-up
+7. Branches (offline): two installs (or OS users) as Server; export a day snapshot from each, import on the owner's device, open the roll-up — do **not** expect Create new server on one DeviceSetup
 8. Extra till: pair IP + code after the shop allows extra tills → book against the shop
 
 ### Amount visibility (screen eye vs per-figure)

@@ -1,0 +1,33 @@
+---
+description: Offline cloudless LAN — one local Server per install; multi-server is cloud-only
+globs: apps/**/{local_servers,ui_script,app_state}*, apps/**/app/impl_0{4,5,6,7}*.rs, docs/**/*.md
+alwaysApply: false
+---
+
+# Offline LAN = one local server (do not regress)
+
+Canonical: `docs/DESIGN.md` § DeviceSetup Server Mode · `docs/DEV.md` § Branches offline · vision §5.
+
+## Offline (cloudless Server/Client)
+
+- **One** shop books file per install. Server Mode: create if none, else open that one.
+- **No** DeviceSetup create-new / open-list / remove-server picker.
+- **No** `create_local_server` when a registry row already exists.
+- Multi-outlet offline = separate device or OS user (separate data dir), not a second registry entry.
+- Owner wipe: Settings → Backup → Delete local data (trading / schema / ui + Owner PIN) — same categories as Windows uninstall (`uninstall_wipe`, `delete-books-data.ps1`).
+- **Emergency unlock PIN (duress)** is **offline cloudless LAN only** (not a cloud-account feature) and must keep working: `try_duress_unlock` → `wipe_trading_data_keep_structure` — wipe sales/ledgers/history only; **keep** menu, prices, tables, staff, settings, schema; open as Owner looking normal. Do not remove Team UI, unlock check order, or that wipe helper when changing Backup wipe.
+
+## Cloud (later)
+
+Multi-server / multi-shop on one account may return with cloud — **not** in the offline LAN path.
+
+```text
+❌ picking_server = true / show server_pick_section offline
+❌ Create new server when one already exists
+❌ Remove server from a DeviceSetup list
+❌ Document “several local servers on one device” for offline LAN
+
+✅ begin_server_mode → offline_server_id / create once
+✅ Wipe shop setup returns to DeviceSetup
+✅ Duplicate the same contract in Khaynjo and Moklanjo (no shared core)
+```

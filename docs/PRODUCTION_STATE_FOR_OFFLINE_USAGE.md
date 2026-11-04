@@ -190,7 +190,7 @@ Same build on Server + every Client. Wire shape: [`DEV.md`](DEV.md) § LAN
 
 | Item | Why / how |
 |---|---|
-| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7 (C Trunk Local gaps closed **2026-10-29**: AWB pools, bulk status, TDS/cheque settle, bill chase, stamp/QR, GST month CSV, cargo pieces, mix report; Khaynjo stamp/QR + aggregator drop-file). **Emergency unlock PIN** shipped 2026-10-27. Mouse cursor state patch ships with Makepad setup. Remaining product work is Cloud/Net connectors (optional stubs only), polish (coupons / variation matrix), or owner actions below. |
+| *(none in Local/LAN product code)* | Research catch-up for both apps is **Have** for everything that does not need Kumkaj Cloud — see [`RESTAURANT_RESEARCH.md`](../apps/khaynjo/docs/RESTAURANT_RESEARCH.md) §8 and [`COURIER_RESEARCH.md`](../apps/moklanjo/docs/COURIER_RESEARCH.md) §7 (C Trunk Local gaps closed **2026-10-29**: AWB pools, bulk status, TDS/cheque settle, bill chase, stamp/QR, GST month CSV, cargo pieces, mix report; Khaynjo stamp/QR + aggregator drop-file). **Emergency unlock PIN** (offline LAN only) shipped 2026-10-27. Mouse cursor state patch ships with Makepad setup. Remaining product work is Cloud/Net connectors (optional stubs only), polish (coupons / variation matrix), or owner actions below. |
 
 **Still needs the owner (not code)**
 

@@ -208,21 +208,25 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// Server Mode: create the first local server, or show create/pick when several exist.
+    /// Server Mode (offline LAN): create the one local server if missing, else open it.
+    /// No create/open/remove list — multi-server on one install is cloud-only.
     fn begin_server_mode(&mut self, cx: &mut Cx) {
         if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
             return;
         }
         self.resolve_data_base(cx);
         let result = (|| -> Result<(), String> {
-            let mut st = app_state().lock().unwrap();
-            st.refresh_local_servers()?;
-            if st.local_servers.is_empty() {
-                drop(st);
-                self.activate_new_server(cx, "")?;
-            } else {
-                st.picking_server = true;
-                st.status = st.t("choose_server");
+            let base = {
+                let mut st = app_state().lock().unwrap();
+                st.picking_server = false;
+                st.refresh_local_servers()?;
+                st.data_base
+                    .clone()
+                    .ok_or_else(|| "No data directory".to_string())?
+            };
+            match local_servers::offline_server_id(&base)? {
+                None => self.activate_new_server(cx, "")?,
+                Some(id) => self.activate_existing_server(cx, &id)?,
             }
             Ok(())
         })();
@@ -513,8 +517,8 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
             let _ = st.refresh_local_servers();
-            st.picking_server = true;
-            st.status = st.t("choose_server");
+            st.picking_server = false;
+            st.status = st.t("choose_device_use");
         }
         self.sync_chrome(cx);
         Ok(())
@@ -619,13 +623,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             .unwrap()
             .clone()
             .unwrap_or_else(|| app_t("opening_client"));
-        let (show_pick, awaiting_tmpl) = {
-            let st = app_state().lock().unwrap();
-            (
-                !busy && st.picking_server && !st.awaiting_app_template,
-                st.awaiting_app_template,
-            )
-        };
+        let awaiting_tmpl = app_state().lock().unwrap().awaiting_app_template;
+        // Offline LAN: no multi-server pick UI (cloud-only later).
+        let show_pick = false;
         // Hide Server/Client while creating/opening or while App Template is offered.
         self.ui
             .view(cx, ids!(device_role_actions))
@@ -2203,5 +2203,92 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             self.ui.text_input(cx, id).set_text(cx, "");
         }
         self.sync_chrome(cx);
+    }
+
+    fn paint_wipe_data_chrome(&mut self, cx: &mut Cx) {
+        let (trading, schema, ui_prefs) = {
+            let st = app_state().lock().unwrap();
+            (st.wipe_sel_trading, st.wipe_sel_schema, st.wipe_sel_ui)
+        };
+        self.paint_choice_pair(cx, ids!(wipe_trading), ids!(wipe_trading_on), trading);
+        self.paint_choice_pair(cx, ids!(wipe_schema), ids!(wipe_schema_on), schema);
+        self.paint_choice_pair(cx, ids!(wipe_ui), ids!(wipe_ui_on), ui_prefs);
+    }
+
+    /// Owner-only local wipe — same categories as Windows uninstall / Delete books data.
+    fn apply_owner_local_wipe(&mut self, cx: &mut Cx) -> Result<String, String> {
+        let pin = self.ui.text_input(cx, ids!(wipe_owner_pin)).text();
+        let (trading, schema, ui_prefs, msg_none, msg_owner, msg_pin) = {
+            let st = app_state().lock().unwrap();
+            if !st.session.as_ref().is_some_and(|a| a.is_owner()) {
+                return Err(st.t("wipe_owner_only"));
+            }
+            (
+                st.wipe_sel_trading,
+                st.wipe_sel_schema,
+                st.wipe_sel_ui,
+                st.t("wipe_nothing_selected"),
+                st.t("wipe_owner_only"),
+                st.t("wipe_owner_pin_needed"),
+            )
+        };
+        if !trading && !schema && !ui_prefs {
+            return Err(msg_none);
+        }
+        {
+            let st = app_state().lock().unwrap();
+            let store = st
+                .store
+                .as_ref()
+                .ok_or_else(|| "Storage not ready".to_string())?;
+            let pin = pin.trim();
+            if pin.is_empty() {
+                return Err(msg_pin);
+            }
+            if store.authenticate_owner_pin(pin)?.is_none() {
+                return Err(msg_owner);
+            }
+        }
+        net::stop_server();
+        if schema {
+            let mut st = app_state().lock().unwrap();
+            st.store = None;
+            st.session = None;
+            st.onboarding_complete = false;
+            st.owner_setup_complete = false;
+            st.extra_tills_allowed = false;
+            st.local_servers.clear();
+            st.wipe_sel_trading = false;
+            st.wipe_sel_schema = false;
+            st.wipe_sel_ui = false;
+        }
+        crate::uninstall_wipe::run(trading, schema, ui_prefs)?;
+        self.ui.text_input(cx, ids!(wipe_owner_pin)).set_text(cx, "");
+        if schema {
+            let mut st = app_state().lock().unwrap();
+            st.picking_server = false;
+            st.device_role = DeviceRole::Server;
+            st.must_confirm_device_role = true;
+            st.nav_back.clear();
+            st.nav_forward.clear();
+            st.screen = Screen::DeviceSetup;
+            st.status = st.t("wipe_schema_done");
+            let done = st.t("wipe_schema_done");
+            drop(st);
+            self.paint_wipe_data_chrome(cx);
+            self.sync_chrome(cx);
+            Ok(done)
+        } else {
+            {
+                let mut st = app_state().lock().unwrap();
+                let _ = st.reload_all();
+                st.wipe_sel_trading = false;
+                st.wipe_sel_schema = false;
+                st.wipe_sel_ui = false;
+            }
+            self.paint_wipe_data_chrome(cx);
+            self.sync_chrome(cx);
+            Ok(app_t("wipe_done"))
+        }
     }
 }

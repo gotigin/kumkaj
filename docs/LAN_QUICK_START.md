@@ -21,7 +21,7 @@ the same network as) the kitchen printer.
 ## 1. The Server
 
 1. Install the app and open it. At **How will this device be used?** tap
-   **Server Mode**, then create (or **Open**) the shop's server. The first
+   **Server Mode** (creates the shop's server once, or opens that one). The first
    start asks you to choose the Owner PIN — there is no default PIN.
 2. **Settings → Extra tills → Allow extra tills.** The app opens the
    shop TCP port **before** it answers Find-server on Wi‑Fi. The screen
