@@ -15,7 +15,7 @@
      /// This rewrites the stored `WindowGeom` from the previous effective DPI to
 --- a/platform/src/event/keyboard.rs
 +++ b/platform/src/event/keyboard.rs
-@@ -33,7 +33,12 @@
+@@ -33,7 +33,15 @@
      }
  
      pub fn set_key_focus(&mut self, focus_area: Area) {

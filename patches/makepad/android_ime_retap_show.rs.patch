@@ -1,22 +1,38 @@
 --- a/platform/src/event/keyboard.rs
 +++ b/platform/src/event/keyboard.rs
-@@ -16,6 +16,10 @@
-     pub(crate) key_focus: Area,
+@@ -16,6 +16,12 @@
      #[allow(dead_code)]
      pub(crate) keys_down: Vec<KeyEvent>,
      pub(crate) text_ime_dismissed: bool,
 +    /// User just focused / retapped a field — next `ShowTextIME` must call
 +    /// into Java even when `last_ime_config` still matches (OEM dismiss can
 +    /// leave that cache set while the soft keyboard is already down).
++    /// Android-only: desktop / web / iOS `ShowTextIME` paths do not read it.
++    #[cfg(target_os = "android")]
 +    pub(crate) ime_show_requested: bool,
      pub(crate) has_physical_keyboard: bool,
  }
  
-@@ -55,11 +59,28 @@
+@@ -36,9 +42,8 @@
+         // Same-area calls (caret repair, a focus restore) must not re-arm
+         // the soft keyboard after the user dismissed it. A real move to a
+         // different *field* still clears the latch. Clearing to Empty must
+-        // not — system ▾ hide / Escape clear focus after setting dismissed,
+-        // and re-arming here would let a stale ShowTextIME reopen the IME
+-        // (bug 6d).
++        // not — system ▾ hide clears focus after setting dismissed, and
++        // re-arming here would let a stale ShowTextIME reopen the IME.
+         if self.next_key_focus != focus_area && !focus_area.is_empty() {
+             self.text_ime_dismissed = false;
+         }
+@@ -59,12 +64,33 @@
  
      pub fn set_text_ime_dismissed(&mut self) {
          self.text_ime_dismissed = true;
-+        self.ime_show_requested = false;
++        #[cfg(target_os = "android")]
++        {
++            self.ime_show_requested = false;
++        }
      }
  
      pub fn reset_text_ime_dismissed(&mut self) {
@@ -24,12 +40,16 @@
      }
  
 +    /// Mark that the user wants the soft keyboard (focus / retap). Cleared
-+    /// when `ShowTextIME` actually calls `showKeyboard`.
++    /// when Android `ShowTextIME` actually calls `showKeyboard`.
 +    pub fn request_ime_show(&mut self) {
 +        self.text_ime_dismissed = false;
-+        self.ime_show_requested = true;
++        #[cfg(target_os = "android")]
++        {
++            self.ime_show_requested = true;
++        }
 +    }
 +
++    #[cfg(target_os = "android")]
 +    pub(crate) fn take_ime_show_requested(&mut self) -> bool {
 +        let v = self.ime_show_requested;
 +        self.ime_show_requested = false;
@@ -41,8 +61,7 @@
              self.key_focus = new_area
 --- a/platform/src/cx_api.rs
 +++ b/platform/src/cx_api.rs
-@@ -1077,6 +1077,14 @@
-     pub fn reset_text_ime_dismissed(&mut self) {
+@@ -1080,6 +1080,13 @@
          self.keyboard.reset_text_ime_dismissed();
      }
  
@@ -58,11 +77,10 @@
      /// This rewrites the stored `WindowGeom` from the previous effective DPI to
 --- a/platform/src/os/linux/android/android.rs
 +++ b/platform/src/os/linux/android/android.rs
-@@ -964,7 +964,16 @@
+@@ -957,6 +957,14 @@
                      // IME position. Mirror the iOS guard (see ios.rs handling of
                      // VirtualKeyboardEvent::DidHide).
                      if !self.keyboard.has_physical_keyboard() {
--                        self.text_ime_was_dismissed();
 +                        // Latch dismissed only — same as iOS DidHide. Do **not**
 +                        // `set_key_focus(Empty)` here: KeyFocusLost → hide_text_ime
 +                        // clears the latch, and mid-gesture focus loss breaks
@@ -71,14 +89,10 @@
 +                        // skipping queued ShowTextIME while dismissed (bug 6d).
 +                        // App Back / outside tap still clears focus via
 +                        // dismiss_soft_keyboard.
-+                        self.text_ime_was_dismissed();
+                         self.text_ime_was_dismissed();
                      }
                      self.call_event_handler(&Event::VirtualKeyboard(
-                         VirtualKeyboardEvent::DidHide { time },
-                     ))
---- a/platform/src/os/linux/android/android.rs
-+++ b/platform/src/os/linux/android/android.rs
-@@ -2504,20 +2513,29 @@
+@@ -2486,20 +2494,28 @@
                  }
                  CxOsOp::ShowTextIME(_area, _pos, config) => unsafe {
                      // A focused `TextInput` re-issues `ShowTextIME` on every
@@ -93,13 +107,15 @@
 -                    // keyboard goes down (here or via `ResizeTextIME`).
 -                    if self.os.last_ime_config != Some(config) {
 +                    // draw. Calling `configure_keyboard` each time thrashes the
-+                    // IME. Dedup *configure* on config equality — call
-+                    // `showKeyboard` when config changed or the user just
-+                    // focused/retapped (`ime_show_requested`). Never treat
-+                    // `!last_ime_visible` alone as show-again (system ▾ hide
-+                    // left a stale ShowTextIME in the op queue that reopened
-+                    // the keyboard forever — bug 6d). Drop the op entirely
-+                    // while `text_ime_dismissed` (queue order after DidHide).
++                    // IME (`restartInput` → inset change → `redraw_all` →
++                    // ShowTextIME loop that flickers the soft keyboard).
++                    // Dedup *configure* on config equality — but still call
++                    // `showKeyboard` when the user just focused/retapped
++                    // (`ime_show_requested`) or the config changed.
++                    // Never treat `!last_ime_visible` alone as "show again":
++                    // after system ▾ hide the dismiss latch is set, but a
++                    // ShowTextIME already in the op queue would otherwise
++                    // reopen the keyboard forever (bug 6d).
 +                    if self.keyboard.text_ime_dismissed {
 +                        continue;
 +                    }
@@ -118,7 +134,7 @@
                      // Unconditional on purpose: unlike `ShowTextIME` this is not
 --- a/widgets/src/text_input.rs
 +++ b/widgets/src/text_input.rs
-@@ -2506,10 +2506,10 @@
+@@ -2461,10 +2461,10 @@
                  self.animator_play(cx, ids!(hover.off));
              }
              Hit::KeyFocus(_) => {
@@ -130,11 +146,10 @@
 +                // and force the next ShowTextIME to call Android showKeyboard
 +                // (config-cache dedup alone left retaps silent on API 26).
 +                cx.request_ime_show();
-                 cx.set_cursor(MouseCursor::Text);
                  self.animator_play(cx, ids!(focus.on));
                  self.reset_blink_timer(cx);
-@@ -2551,12 +2551,15 @@
-                 device,
+                 // Sync text state to platform IME before keyboard shows
+@@ -2506,11 +2506,14 @@
                  ..
              }) if device.is_primary_hit() && !scrollbar_captured => {
                  // A tap on a field that already has focus does not emit

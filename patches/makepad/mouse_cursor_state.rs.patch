@@ -91,9 +91,9 @@
                  cx.set_cursor(MouseCursor::Default);
                  self.animator_play(cx, ids!(hover.off));
 @@ -2506,6 +2510,7 @@
-                 // latch so Android will show the soft keyboard again (otherwise
-                 // a prior system dismiss blocks ShowTextIME until focus is lost).
-                 cx.reset_text_ime_dismissed();
+                 // and force the next ShowTextIME to call Android showKeyboard
+                 // (config-cache dedup alone left retaps silent on API 26).
+                 cx.request_ime_show();
 +                cx.set_cursor(MouseCursor::Text);
                  self.animator_play(cx, ids!(focus.on));
                  self.reset_blink_timer(cx);

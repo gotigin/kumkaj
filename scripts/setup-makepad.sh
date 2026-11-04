@@ -87,6 +87,9 @@ PATCHES=(
   scroll_bar_orphan_unblock         # wheel: clear stuck TextFlow Empty scroll-block (thumb drag still worked)
   scroll_touch_orphan_unblock       # Android: same Empty orphan clear on touch drag (no wheel)
   scroll_axis_lock                  # opt-in: drag direction lock for nested X/Y scroll views; Shift+wheel sideways
+  no_warn_shared_bytes              # wasm: drop unused Read/map_file stub (no allow)
+  no_warn_blocking_http_wasm        # wasm: gate native HTTP helpers; keep builder API live
+  no_warn_gpu_texture_wasm          # wasm: TextureAlloc imports only where adopt paths compile
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

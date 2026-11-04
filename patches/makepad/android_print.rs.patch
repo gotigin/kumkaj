@@ -1,6 +1,6 @@
 --- a/platform/src/os/linux/android/android_jni.rs
 +++ b/platform/src/os/linux/android/android_jni.rs
-@@ -1574,6 +1574,143 @@
+@@ -1574,6 +1574,169 @@
      ok != 0
  }
  

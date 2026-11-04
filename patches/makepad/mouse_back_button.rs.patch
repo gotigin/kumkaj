@@ -21,23 +21,58 @@
  }
 --- a/platform/src/os/linux/wayland/xkb_sys.rs
 +++ b/platform/src/os/linux/wayland/xkb_sys.rs
-@@ -579,6 +579,8 @@
+@@ -579,6 +579,9 @@
          XKB_KEY_Up | XKB_KEY_KP_Up => KeyCode::ArrowUp,
          XKB_KEY_Insert | XKB_KEY_KP_Insert => KeyCode::Insert,
          XKB_KEY_apostrophe => KeyCode::Quote,
 +        // XF86Back — the keysym many desktops emit for the mouse back button.
 +        0x1008FF26 => KeyCode::Back,
++        0x1008FF27 => KeyCode::Forward,
  
          _ => KeyCode::Unknown,
      }
 --- a/platform/src/os/linux/x11/xlib_app.rs
 +++ b/platform/src/os/linux/x11/xlib_app.rs
-@@ -1657,6 +1657,8 @@
+@@ -1657,6 +1657,9 @@
              x11_sys::XK_Down | x11_sys::XK_KP_Down => KeyCode::ArrowDown,
              x11_sys::XK_Up | x11_sys::XK_KP_Up => KeyCode::ArrowUp,
              x11_sys::XK_Insert | x11_sys::XK_KP_Insert => KeyCode::Insert,
 +            // XF86Back — mouse back button when the desktop sends it as a key.
 +            0x1008FF26 => KeyCode::Back,
++            0x1008FF27 => KeyCode::Forward,
              _ => KeyCode::Unknown,
          }
      }
+--- a/platform/studio/src/keyboard.rs
++++ b/platform/studio/src/keyboard.rs
+@@ -191,6 +191,7 @@
+     Escape,
+ 
+     Back,
++    Forward,
+ 
+     Backtick,
+     Key0,
+@@ -662,10 +663,11 @@
+     }
+ }
+ 
+-// Const array for efficient index-to-variant conversion (all 102 variants in order)
+-const KEYCODE_VARIANTS: [KeyCode; 102] = [
++// Const array for efficient index-to-variant conversion (all 103 variants in order)
++const KEYCODE_VARIANTS: [KeyCode; 103] = [
+     KeyCode::Escape,
+     KeyCode::Back,
++    KeyCode::Forward,
+     KeyCode::Backtick,
+     KeyCode::Key0,
+     KeyCode::Key1,
+@@ -775,7 +777,7 @@
+         let idx = KEYCODE_VARIANTS
+             .iter()
+             .position(|k| k == self)
+-            .unwrap_or(101);
++            .unwrap_or(102);
+         s.out.push_str(&idx.to_string());
+     }
+ }

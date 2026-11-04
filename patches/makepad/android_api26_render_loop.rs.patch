@@ -1,6 +1,6 @@
 --- a/platform/src/os/linux/android/android_jni.rs
 +++ b/platform/src/os/linux/android/android_jni.rs
-@@ -582,9 +582,20 @@
+@@ -582,10 +582,19 @@
  /// Fallback render loop used when the Android Choreographer isn't available
  /// (API < 29, and `no_android_choreographer` builds such as OHOS). A dedicated
  /// thread paces frames manually, since there is no system vsync callback.

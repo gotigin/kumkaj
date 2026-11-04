@@ -1,6 +1,6 @@
 --- a/platform/src/os/linux/android/android.rs
 +++ b/platform/src/os/linux/android/android.rs
-@@ -374,8 +374,16 @@
+@@ -374,8 +374,15 @@
                          // Force a full redraw on the first frame after the surface
                          // becomes (or becomes again) drawable.
                          if self.os.needs_first_draw {
@@ -16,7 +16,7 @@
                          }
                          self.handle_drawing();
                      } else {
-@@ -3382,6 +3390,7 @@
+@@ -3382,7 +3390,8 @@
              location_updates_wanted: false,
              start_time: Instant::now(),
              first_after_resize: true,

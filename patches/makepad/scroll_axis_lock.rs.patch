@@ -70,16 +70,16 @@
                          ScrollAxis::Vertical => e.scroll.y,
                      };
                      let mark_handled = |e: &crate::event::ScrollEvent, axis: ScrollAxis| match axis
-@@ -931,8 +969,49 @@
+@@ -961,10 +999,51 @@
                  self.scroll_state = ScrollState::Drag {
                      samples: vec![ScrollSample { abs, time: fe.time }],
                  };
 +                self.drag_origin = fe.abs;
 +                self.drag_lock = DragLock::Pending;
              }
-             Hit::FingerMove(e) => {
-+                if !nested_owns
-+                    && self.axis_lock
+-            Hit::FingerMove(e) => match &mut self.scroll_state {
++            Hit::FingerMove(e) => {
++                if self.axis_lock
 +                    && self.drag_lock == DragLock::Pending
 +                    && matches!(self.scroll_state, ScrollState::Drag { .. })
 +                {
@@ -117,6 +117,19 @@
 +                    }
 +                    return;
 +                }
-                 if nested_owns {
-                     // Nested list owns the gesture — park page samples so we do
-                     // not promote_capture over the list. Re-arm when nested clears.
++                match &mut self.scroll_state {
+                 ScrollState::Drag { samples } => {
+                     let new_abs = match self.axis {
+                         ScrollAxis::Horizontal => e.abs.x,
+                         ScrollAxis::Vertical => e.abs.y,
+                     };
+@@ -1022,7 +1104,8 @@
+                     }
+                 }
+                 _ => (),
+-            },
++            }
++            },
+             Hit::FingerUp(fe) if fe.is_primary_hit() => match &mut self.scroll_state {
+                 ScrollState::Drag { samples } => {
+                     // The press's release settles the fate of any fling it caught:

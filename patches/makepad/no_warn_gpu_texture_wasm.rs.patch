@@ -1,0 +1,19 @@
+--- a/platform/src/gpu_texture.rs
++++ b/platform/src/gpu_texture.rs
+@@ -35,10 +35,15 @@
+ };
+ 
+ use crate::{
+-    texture::{Texture, TextureAlloc, TextureCategory, TextureFormat, TexturePixel},
++    texture::{Texture, TextureFormat},
+     Cx,
+ };
+ 
++// Adopt paths that fill `TextureAlloc` are native-only; keep the import off
++// wasm so unused-import warnings stay gone there.
++#[cfg(not(target_arch = "wasm32"))]
++use crate::texture::{TextureAlloc, TextureCategory, TexturePixel};
++
+ #[cfg(any(
+     target_os = "windows",
+     all(target_os = "linux", not(any(target_env = "ohos", linux_direct))),

@@ -1,0 +1,193 @@
+--- a/platform/network/src/blocking_http.rs
++++ b/platform/network/src/blocking_http.rs
+@@ -8,21 +8,22 @@
+ //! This slice is non-streaming (no SSE). Secrets must never appear in
+ //! `Error` text; [`Request`] deliberately does not implement `Debug`.
+ 
+-#[cfg(not(target_os = "windows"))]
++#[cfg(all(not(target_os = "windows"), not(target_arch = "wasm32")))]
+ use std::io::{Read, Write};
+ use std::sync::atomic::{AtomicBool, Ordering};
+ use std::sync::Arc;
+ #[cfg(all(not(target_os = "windows"), not(target_arch = "wasm32")))]
+ use std::sync::{Condvar, Mutex};
+-use std::time::{Duration, Instant};
++use std::time::Duration;
++#[cfg(not(target_arch = "wasm32"))]
++use std::time::Instant;
+ 
+-#[cfg(not(target_os = "windows"))]
++#[cfg(all(not(target_os = "windows"), not(target_arch = "wasm32")))]
+ use std::net::TcpStream;
+ 
+-
+-
++#[cfg(not(target_arch = "wasm32"))]
+ const USER_AGENT: &str = "makepad-network/1.0";
+-#[cfg(not(target_os = "windows"))]
++#[cfg(all(not(target_os = "windows"), not(target_arch = "wasm32")))]
+ const IO_SLICE: Duration = Duration::from_millis(200);
+ 
+ // ----------------------------------------------------------------- public
+@@ -234,7 +235,15 @@
+ pub fn request_no_redirect(req: Request) -> Result<Response, Error> {
+     #[cfg(target_arch = "wasm32")]
+     {
+-        let _ = req;
++        // Keep the public builder API live on wasm without a native stack.
++        let _ = (
++            req.method.as_str(),
++            req.url.as_str(),
++            req.headers.len(),
++            req.body.len(),
++            req.limits.max_body_bytes,
++            req.cancel.is_cancelled(),
++        );
+         return Err(Error::Unsupported);
+     }
+     #[cfg(not(target_arch = "wasm32"))]
+@@ -262,6 +271,7 @@
+ 
+ // ------------------------------------------------------------------- url
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ struct ParsedUrl {
+     https: bool,
+     host: String,
+@@ -269,6 +279,7 @@
+     target: String,
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn parse_url(url: &str) -> Result<ParsedUrl, Error> {
+     if url.is_empty() || url.len() > 4096 || url.bytes().any(is_forbidden_url_byte) {
+         return Err(Error::InvalidUrl);
+@@ -307,10 +318,12 @@
+     Ok(ParsedUrl { https, host, port, target })
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn is_forbidden_url_byte(b: u8) -> bool {
+     b < 0x20 || b == 0x7f
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn split_authority(authority: &str, default_port: u16) -> Result<(String, u16), Error> {
+     if let Some(rest) = authority.strip_prefix('[') {
+         let end = rest.find(']').ok_or(Error::InvalidUrl)?;
+@@ -347,10 +360,12 @@
+     }
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn host_key(host: &str) -> &str {
+     host.trim_matches(|c| c == '[' || c == ']')
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn is_literal_loopback_host(host: &str) -> bool {
+     host_key(host)
+         .parse::<std::net::IpAddr>()
+@@ -358,13 +373,17 @@
+         .unwrap_or(false)
+ }
+ 
+-#[allow(dead_code)]
++#[cfg(all(
++    not(target_arch = "wasm32"),
++    any(not(target_os = "windows"), test)
++))]
+ fn is_localhost_name(host: &str) -> bool {
+     host_key(host).eq_ignore_ascii_case("localhost")
+ }
+ 
+ /// Windows: literal loopback IP only (no unwatched DNS). Other OS: also
+ /// permit the name `localhost`, which is checked after resolve.
++#[cfg(not(target_arch = "wasm32"))]
+ fn cleartext_host_permitted(host: &str) -> bool {
+     if is_literal_loopback_host(host) {
+         return true;
+@@ -380,12 +399,18 @@
+     }
+ }
+ 
+-#[allow(dead_code)]
++#[cfg(any(
++    all(not(target_os = "windows"), not(target_arch = "wasm32")),
++    test
++))]
+ fn cleartext_addrs_are_loopback(addrs: &[std::net::SocketAddr]) -> bool {
+     !addrs.is_empty() && addrs.iter().all(|a| a.ip().is_loopback())
+ }
+ 
+-#[allow(dead_code)]
++#[cfg(any(
++    all(target_os = "windows", not(target_arch = "wasm32")),
++    test
++))]
+ fn classify_watchdog_failure(kind: u8, cancelled: bool, timed_out: bool) -> Error {
+     match kind {
+         1 => Error::Cancelled,
+@@ -459,6 +484,7 @@
+     ) || n.starts_with("proxy-")
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn validate_trailer_line(line: &str) -> Result<(), Error> {
+     let (name, value) = split_header_line(line).ok_or(Error::InvalidResponse)?;
+     if is_reserved_header(name) {
+@@ -470,6 +496,7 @@
+     Ok(())
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn split_header_line(line: &str) -> Option<(&str, &str)> {
+     let pos = line.find(':')?;
+     let name = &line[..pos];
+@@ -482,6 +509,7 @@
+     Some((name, line[pos + 1..].trim()))
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn parse_content_length(value: &str) -> Result<u64, Error> {
+     let v = value.trim();
+     if v.is_empty() || !v.bytes().all(|b| b.is_ascii_digit()) {
+@@ -490,12 +518,14 @@
+     v.parse::<u64>().map_err(|_| Error::InvalidResponse)
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ struct ValidatedHeaders {
+     headers: Vec<(String, String)>,
+     content_length: Option<u64>,
+     chunked: bool,
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn validate_response_headers(
+     headers: Vec<(String, String)>,
+     limits: &Limits,
+@@ -1494,6 +1524,7 @@
+     buf.windows(4).position(|w| w == b"\r\n\r\n").map(|p| p + 4)
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn parse_header_block(head: &str, limits: &Limits) -> Result<Vec<(String, String)>, Error> {
+     let mut lines = head.split("\r\n");
+     let _status = lines.next().ok_or(Error::InvalidResponse)?;
+@@ -1704,6 +1735,7 @@
+ 
+ // ----------------------------------------------------------- watch / i/o
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn check_watch(cancel: &CancelToken, deadline: Instant) -> Result<(), Error> {
+     if cancel.is_cancelled() {
+         return Err(Error::Cancelled);
+@@ -1714,6 +1746,7 @@
+     Ok(())
+ }
+ 
++#[cfg(not(target_arch = "wasm32"))]
+ fn remaining(deadline: Instant) -> Result<Duration, Error> {
+     deadline.checked_duration_since(Instant::now()).ok_or(Error::Timeout)
+ }

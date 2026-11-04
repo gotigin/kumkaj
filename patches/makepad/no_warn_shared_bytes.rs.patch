@@ -1,0 +1,40 @@
+--- a/libs/shared_bytes/src/lib.rs
++++ b/libs/shared_bytes/src/lib.rs
+@@ -1,12 +1,15 @@
+ use std::{
+     fmt,
+-    io::{self, Read},
++    io,
+     path::Path,
+     rc::Rc,
+     sync::atomic::{AtomicU64, Ordering},
+ };
+ 
+ #[cfg(not(target_arch = "wasm32"))]
++use std::io::Read;
++
++#[cfg(not(target_arch = "wasm32"))]
+ use std::fs::File;
+ 
+ #[derive(Clone)]
+@@ -343,18 +346,11 @@
+ 
+ #[cfg(not(any(all(unix, not(target_arch = "wasm32")), windows)))]
+ mod os {
+-    use std::{fs::File, io};
+-
++    /// Stub for targets without mmap (e.g. wasm32). Construction goes through
++    /// `SharedBytes::from_file*` error paths — no `map_file` entry point.
+     pub struct MappedBytesInner;
+ 
+     impl MappedBytesInner {
+-        pub fn map_file(_file: &File, _len: usize) -> io::Result<Self> {
+-            Err(io::Error::new(
+-                io::ErrorKind::Unsupported,
+-                "mmap is unsupported on this target",
+-            ))
+-        }
+-
+         pub fn as_slice(&self) -> &[u8] {
+             &[]
+         }

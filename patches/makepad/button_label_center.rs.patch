@@ -14,7 +14,7 @@
          cx.add_nav_stop(self.draw_bg.area(), NavRole::TextInput, Inset::default());
          DrawStep::done()
      }
-@@ -723,14 +720,66 @@
+@@ -723,14 +720,61 @@
  }
  
  impl Button {
