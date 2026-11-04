@@ -29,6 +29,7 @@ impl AppState {
             must_confirm_device_role: true,
             language_follow_platform: true,
             picking_server: false,
+            awaiting_app_template: false,
             local_servers: Vec::new(),
             lan_devices: Vec::new(),
             data_base: None,
@@ -119,6 +120,8 @@ impl AppState {
             kot_stations_selected: Vec::new(),
             kot_station_default: String::new(),
             team_select_pending: false,
+            team_copy_hire_pending: false,
+            team_copy_edit_pending: false,
             pay_choice: PayChoice::Cash,
             template_confirm: false,
             client_template_confirm: None,
@@ -894,9 +897,12 @@ impl AppState {
                 .collect(),
             SuggestField::BuySupplier => parties(true),
             SuggestField::CreditParty => parties(false),
-            SuggestField::TeamPick => self
+            SuggestField::TeamPick
+            | SuggestField::TeamCopyHire
+            | SuggestField::TeamCopyEdit => self
                 .staff
                 .iter()
+                .filter(|m| m.active)
                 .map(|m| SuggestRow::new(m.name.clone(), m.lock_label()))
                 .collect(),
             // System printers found on this device (network address is typed).

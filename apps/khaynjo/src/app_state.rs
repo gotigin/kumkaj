@@ -42,6 +42,8 @@ struct AppState {
     language_follow_platform: bool,
     /// True while Server Mode is waiting for create / pick among local servers.
     picking_server: bool,
+    /// True while a brand-new server offers Rajdhani App Template (before Owner PIN).
+    awaiting_app_template: bool,
     /// Local servers registered on this device (multi-business).
     local_servers: Vec<LocalServerInfo>,
     /// Devices paired to this Server (Settings → Extra tills).
@@ -223,6 +225,10 @@ struct AppState {
     kot_station_default: String,
     /// A staff name was picked from the list: select them on this pass.
     team_select_pending: bool,
+    /// Hire form: copy setup from the named person on this pass.
+    team_copy_hire_pending: bool,
+    /// Edit form: copy setup from the named person onto the selected staff.
+    team_copy_edit_pending: bool,
     pay_choice: PayChoice,
     /// Menu: "Import complete template" (full shelf) was tapped; asking to confirm.
     template_confirm: bool,

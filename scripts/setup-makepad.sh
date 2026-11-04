@@ -58,6 +58,7 @@ PATCHES=(
   animator_skip_dead_tracks         # Android: drop freed animator tracks, no panic
   android_image_force_sync          # Android: decode images synchronously
   android_ime_dismiss               # Android: one keyboard, stays hidden once dismissed
+  android_ime_retap_show            # Android: retap field must re-show IME (do not dedupe showKeyboard on last_ime_config alone)
   android_api26_render_loop         # Android API 26–28: guard bad refresh rates in simple frame pump
   android_post_layout_redraw        # Android: extra redraws after first drawable so layout paints
   android_asset_load_prefix         # Android: assets under the package root; as_mut_ptr read

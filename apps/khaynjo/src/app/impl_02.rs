@@ -55,6 +55,32 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
                         .replace("{title}", &title),
                 );
             }
+            Some(MenuImportKind::AppTemplate { title, .. }) => {
+                // Submit replaced by status + Cancel on DeviceSetup.
+                self.ui
+                    .button(cx, ids!(app_template_apply))
+                    .set_visible(cx, false);
+                self.ui
+                    .view(cx, ids!(app_template_busy))
+                    .set_visible(cx, true);
+                self.ui
+                    .button(cx, ids!(app_template_status))
+                    .set_text(cx, &progress);
+                self.ui
+                    .button(cx, ids!(app_template_cancel))
+                    .set_text(cx, &cancel_label);
+                self.ui.widget(cx, ids!(app_template_blurb)).set_text(
+                    cx,
+                    &app_state()
+                        .lock()
+                        .unwrap()
+                        .t("app_template_importing")
+                        .replace("{title}", &title),
+                );
+                self.ui
+                    .button(cx, ids!(app_template_skip))
+                    .set_visible(cx, false);
+            }
             None => {
                 // Restore / CSV / backup / shelf-mat — status + cancel chrome below.
             }
@@ -270,7 +296,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 // Hot-reload must not stick on Lock while a session is live.
                 // A new server still has to set the Owner PIN and finish
                 // setup — do not dump that shop straight into the till.
-                if st.device_role.is_host() && !st.owner_setup_complete {
+                if st.awaiting_app_template {
+                    st.screen = Screen::DeviceSetup;
+                } else if st.device_role.is_host() && !st.owner_setup_complete {
                     // Stay on Lock.
                 } else if st.device_role.is_host() && !st.onboarding_complete {
                     st.screen = Screen::Onboard;
@@ -313,6 +341,22 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.repair_focused_carets(cx);
             self.ui.redraw(cx);
             return;
+        }
+        // Soft keyboard open on setup/auth: a full chrome rebuild (locale +
+        // Settings SQL) freezes Android for seconds and can hide the IME.
+        // Digits still land in the field; Pair / Unlock triggers a real sync.
+        if self.text_field_has_focus(cx) {
+            let screen = app_state().lock().unwrap().screen;
+            if matches!(
+                screen,
+                Screen::ClientPair | Screen::Lock | Screen::Onboard | Screen::DeviceSetup
+            ) {
+                self.show_screen(cx, screen);
+                self.paint_header_back_chrome(cx);
+                self.lift_footer_above_system_bar(cx);
+                self.ui.redraw(cx);
+                return;
+            }
         }
         // Facet bodies stay live via navigate + BOOKS_CHANGED (`FACET_DIRTY`).
         // Re-running period_books / inventory SQL on every Signal froze phones.
@@ -2461,6 +2505,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 .set_text(cx, &plain_display_text(&pair_code));
             self.ui
                 .widget(cx, ids!(pairing_code_value))
+                .set_visible(cx, show_pair_code);
+            // Same gate as the big digits — Copy is how phones get the code
+            // (WrapLabel has no soft keyboard).
+            self.ui
+                .button(cx, ids!(copy_pair_code))
                 .set_visible(cx, show_pair_code);
             self.ui
                 .widget(cx, ids!(settings_tmpl_label))

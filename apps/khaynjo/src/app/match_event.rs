@@ -996,6 +996,54 @@ impl MatchEvent for App {
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
         }
+        // Rajdhani App Template — Submit → status + Cancel; Skip → Owner PIN.
+        if self.ui.button(cx, ids!(app_template_apply)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Ignore while busy.
+            } else {
+                let job = (|| -> Result<(PathBuf, String, String), String> {
+                    let st = app_state().lock().unwrap();
+                    if !st.awaiting_app_template {
+                        return Err("App template is not offered now".into());
+                    }
+                    let tmpl = menu_templates::find("rajdhani")
+                        .ok_or_else(|| "Rajdhani menu template missing".to_string())?;
+                    let db = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .db_path()
+                        .to_path_buf();
+                    Ok((db, tmpl.id.clone(), tmpl.title.clone()))
+                })();
+                match job {
+                    Ok((db, id, title)) => {
+                        menu_import_job(
+                            db,
+                            MenuImportKind::AppTemplate { id, title },
+                        );
+                        self.paint_import_progress_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(app_template_cancel)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                request_books_job_cancel();
+                self.paint_import_progress_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(app_template_status)).clicked(actions) {
+            // Progress face — ignore re-taps while importing.
+        }
+        if self.ui.button(cx, ids!(app_template_skip)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Skip hidden while busy.
+            } else if app_state().lock().unwrap().awaiting_app_template {
+                self.finish_app_template_to_lock(cx);
+            }
+        }
         {
             let widget = self.ui.widget(cx, ids!(setup_server_list));
             let list = widget.portal_list(cx, ids!(list));
@@ -1044,6 +1092,21 @@ impl MatchEvent for App {
             } else {
                 let title = app_state().lock().unwrap().t("backup_copy_btn");
                 cx.open_select_folder_dialog(FileDialog::new().set_title(title));
+            }
+        }
+        if self.ui.button(cx, ids!(copy_pair_code)).clicked(actions) {
+            // Digits are a WrapLabel (no soft keyboard) — Copy puts them on the clipboard.
+            let code = {
+                let st = app_state().lock().unwrap();
+                st.store
+                    .as_ref()
+                    .and_then(|s| s.pairing_code().ok())
+                    .unwrap_or_default()
+            };
+            if code.trim().is_empty() || code == "------" {
+                self.set_status(cx, app_t("lan_tills_off"));
+            } else {
+                self.copy_text_to_clipboard(cx, &code);
             }
         }
         if self.ui.button(cx, ids!(new_pair_code)).clicked(actions) {
@@ -3820,6 +3883,12 @@ impl MatchEvent for App {
                 if field == SuggestField::TeamPick {
                     st.team_select_pending = true;
                 }
+                if field == SuggestField::TeamCopyHire {
+                    st.team_copy_hire_pending = true;
+                }
+                if field == SuggestField::TeamCopyEdit {
+                    st.team_copy_edit_pending = true;
+                }
                 if field == SuggestField::CustomerName {
                     let found = st
                         .customers
@@ -5565,27 +5634,154 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        let team_pick_now =
-            std::mem::take(&mut app_state().lock().unwrap().team_select_pending);
-        if team_pick_now || self.ui.text_input(cx, ids!(team_pick_input)).returned(actions).is_some() {
+        let (team_pick_now, team_copy_hire_now, team_copy_edit_now) = {
+            let mut st = app_state().lock().unwrap();
+            (
+                std::mem::take(&mut st.team_select_pending),
+                std::mem::take(&mut st.team_copy_hire_pending),
+                std::mem::take(&mut st.team_copy_edit_pending),
+            )
+        };
+        if team_pick_now || self.ui.text_input(cx, ids!(team_pick_input)).returned(actions).is_some()
+        {
             let name = self.ui.text_input(cx, ids!(team_pick_input)).text();
-            let result = (|| -> Result<String, String> {
+            let result = (|| -> Result<(String, String), String> {
                 let mut st = app_state().lock().unwrap();
-                let needle = name.trim().to_lowercase();
-                let member = st
-                    .staff
-                    .iter()
-                    .find(|s| !s.is_owner() && s.active && s.name.trim().to_lowercase() == needle)
-                    .or_else(|| {
-                        st.staff.iter().find(|s| {
-                            !s.is_owner() && s.active && s.name.to_lowercase().contains(&needle)
-                        })
-                    })
-                    .cloned()
+                let member = Self::find_active_staff_by_name(&st, name.trim())
                     .ok_or_else(|| format!("No staff named \"{}\"", name.trim()))?;
                 st.team_staff_id = Some(member.id.clone());
-                st.draft_features = member.features.clone();
-                Ok(format!("Editing {} ({})", member.name, member.role_title))
+                st.draft_staff_role = store::Store::hire_role_from(&member);
+                st.draft_features = member.effective_features();
+                let msg = format!("Editing {} ({})", member.name, member.role_title);
+                Ok((msg, member.name.clone()))
+            })();
+            match result {
+                Ok((msg, display_name)) => {
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_name_input))
+                        .set_text(cx, &display_name);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        let hire_copy_click = self.ui.button(cx, ids!(staff_copy_hire_btn)).clicked(actions)
+            || team_copy_hire_now
+            || self
+                .ui
+                .text_input(cx, ids!(staff_copy_hire_input))
+                .returned(actions)
+                .is_some();
+        if hire_copy_click {
+            let name = self.ui.text_input(cx, ids!(staff_copy_hire_input)).text();
+            let result = (|| -> Result<(String, String), String> {
+                let mut st = app_state().lock().unwrap();
+                let source = Self::find_active_staff_by_name(&st, name.trim())
+                    .ok_or_else(|| st.t("staff_copy_need_source"))?;
+                let role = store::Store::hire_role_from(&source);
+                let title = if source.is_owner() {
+                    role.default_title().to_string()
+                } else if source.role_title.trim().is_empty() {
+                    role.default_title().to_string()
+                } else {
+                    source.role_title.clone()
+                };
+                st.draft_staff_role = role;
+                st.draft_features = source.effective_features();
+                Ok((
+                    st.t("staff_setup_copied_hire")
+                        .replace("{name}", &source.name),
+                    title,
+                ))
+            })();
+            match result {
+                Ok((msg, title)) => {
+                    self.ui
+                        .text_input(cx, ids!(staff_title_input))
+                        .set_text(cx, &title);
+                    // Keep name + PIN blank — this is a new person.
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(staff_rename_btn)).clicked(actions) {
+            let new_name = self.ui.text_input(cx, ids!(staff_edit_name_input)).text();
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Rename staff")?;
+                let actor = st.actor()?;
+                let staff_id = st
+                    .team_staff_id
+                    .clone()
+                    .ok_or_else(|| st.t("staff_rename_need_selected"))?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.rename_staff(&staff_id, &new_name, &actor)?;
+                st.reload_all()?;
+                st.status = st.t("staff_renamed");
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        let edit_copy_click = self.ui.button(cx, ids!(staff_copy_edit_btn)).clicked(actions)
+            || team_copy_edit_now
+            || self
+                .ui
+                .text_input(cx, ids!(staff_copy_edit_input))
+                .returned(actions)
+                .is_some();
+        if edit_copy_click {
+            let from_name = self.ui.text_input(cx, ids!(staff_copy_edit_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.require_server_role("Copy staff setup")?;
+                let actor = st.actor()?;
+                let target_id = st
+                    .team_staff_id
+                    .clone()
+                    .ok_or_else(|| st.t("staff_copy_need_selected"))?;
+                let source = Self::find_active_staff_by_name(&st, from_name.trim())
+                    .ok_or_else(|| st.t("staff_copy_need_source"))?;
+                if source.id == target_id {
+                    return Err(st.t("staff_copy_same"));
+                }
+                let target_name = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == target_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_else(|| target_id.clone());
+                if st
+                    .staff
+                    .iter()
+                    .any(|s| s.id == target_id && s.is_owner())
+                {
+                    return Err("Cannot change Owner setup this way".into());
+                }
+                let from_label = source.name.clone();
+                let role = store::Store::hire_role_from(&source);
+                let title = if source.is_owner() {
+                    role.default_title().to_string()
+                } else if source.role_title.trim().is_empty() {
+                    role.default_title().to_string()
+                } else {
+                    source.role_title.clone()
+                };
+                let features = source.effective_features();
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.apply_staff_config(&target_id, role, &title, &features, &actor)?;
+                st.reload_all()?;
+                st.draft_staff_role = role;
+                st.draft_features = features;
+                Ok(st
+                    .t("staff_setup_copied_edit")
+                    .replace("{from}", &from_label)
+                    .replace("{to}", &target_name))
             })();
             match result {
                 Ok(msg) => self.set_status(cx, msg),
@@ -5610,6 +5806,14 @@ impl MatchEvent for App {
                     st.status = "Rights changed — Save features for selected staff".into();
                 }
                 self.sync_chrome(cx);
+            }
+        }
+        // Digits only — never rewrite the field while focused beyond a filter
+        // (same idea as Lock PIN; avoids IME thrash on Android).
+        if let Some(text) = self.ui.text_input(cx, ids!(client_code_input)).changed(actions) {
+            let digits: String = text.chars().filter(|c| c.is_ascii_digit()).take(8).collect();
+            if digits != text {
+                self.ui.text_input(cx, ids!(client_code_input)).set_text(cx, &digits);
             }
         }
         let pair_enter = self

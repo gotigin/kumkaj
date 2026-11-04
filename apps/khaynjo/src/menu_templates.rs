@@ -140,7 +140,7 @@ mod tests {
     #[test]
     fn rajdhani_template_loads_with_priced_dishes() {
         let tmpl = find("rajdhani").expect("rajdhani template ships with the app");
-        assert_eq!(tmpl.title, "Rajdhani");
+        assert_eq!(tmpl.title, "Rajdhani Menu Template");
         assert!(tmpl.category_count() >= 8, "{}", tmpl.category_count());
         assert!(tmpl.item_count() >= 100, "{}", tmpl.item_count());
         let first = &tmpl.categories[0].items[0];

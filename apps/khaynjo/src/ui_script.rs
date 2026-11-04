@@ -4980,6 +4980,32 @@ script_mod! {
                                                 setup_server_list := mod.widgets.ServerList{}
                                                 server_pick_cancel := BackBtn{text: "Back"}
                                             }
+                                            // One-shot after new server create — before Owner PIN.
+                                            // Apply: Submit → status + Cancel (same shape as Menu import).
+                                            app_template_section := View{
+                                                width: Fill height: Fit
+                                                flow: Down spacing: 12
+                                                visible: false
+                                                app_template_heading := WrapLabel{
+                                                    body: "Rajdhani App Template"
+                                                    font_color: #x260B08
+                                                    font_size: 17.
+                                                }
+                                                app_template_blurb := WrapLabel{
+                                                    body: "Loads the Rajdhani menu, names the Owner Asif, and turns tax/GST off."
+                                                    font_color: #x6B4A3F
+                                                    font_size: 13.
+                                                }
+                                                app_template_apply := NavBtn{text: "Rajdhani App Template"}
+                                                app_template_busy := View{
+                                                    width: Fill height: Fit
+                                                    visible: false
+                                                    flow: Right spacing: 8
+                                                    app_template_status := StackPrimaryBtn{text: "Importing…"}
+                                                    app_template_cancel := StackLightBtn{text: "Cancel"}
+                                                }
+                                                app_template_skip := QuietFitBtn{text: "Skip for now"}
+                                            }
                                             device_setup_status := WrapLabel{
                                                 body: " "
                                                 font_color: #xB43A12
@@ -5297,9 +5323,10 @@ script_mod! {
                                     onboard_fresh := RowSecondaryBtn{text: "Start fresh"}
                                     onboard_fresh_on := RowPrimaryBtn{text: "Start fresh" visible: false}
                                 }
-                                // Full-setup templates (staff, defaults, …) land
-                                // here later — not a menu-item dump. Menu imports
-                                // stay on the Menu screen.
+                                // Whole-shop App Template (Rajdhani) is offered
+                                // once on DeviceSetup right after create server —
+                                // before Owner PIN. Menu-only imports stay here
+                                // on Menu (Client menu / shelf).
                                 View{
                                     width: Fill height: 52
                                     flow: Overlay
@@ -5387,7 +5414,11 @@ script_mod! {
                                 }
                                 client_found_list := mod.widgets.ReportText{}
                                 client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
-                                client_code_input := FieldInput{empty_text: "Pairing code"}
+                                // 6-digit shop code — numeric pad on Android (same idea as Lock PIN).
+                                client_code_input := FieldInput{
+                                    empty_text: "Pairing code"
+                                    is_numeric_only: true
+                                }
                                 // How the shop's server lists this device (Forget picks it by this).
                                 client_name_input := FieldInput{empty_text: "This device's name"}
                                 client_pair_btn := PinOkKey{text: "Pair now"}
@@ -7572,7 +7603,7 @@ script_mod! {
                                 }
                                 staff_label := mod.widgets.ReportText{}
                                 FormCard{
-                                staff_name_input := FieldInput{empty_text: "Staff name / id"}
+                                staff_name_input := FieldInput{empty_text: "Staff name"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Captain, Head cook)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
                                 h_permission_preset := WrapLabel{
@@ -7609,6 +7640,13 @@ script_mod! {
                                         staff_role_manager_on := SegBtnOn{text: "Manager" visible: false}
                                     }
                                 }
+                                // Optional: copy role / title / rights from someone
+                                // already on the team (new hire still gets a fresh id).
+                                staff_copy_hire_input := FieldInput{
+                                    empty_text: "Copy setup from (optional)"
+                                }
+                                staff_copy_hire_suggest := mod.widgets.SuggestList{field: "team_copy_hire"}
+                                staff_copy_hire_btn := RowSecondaryBtn{text: "Use this person's setup"}
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 staff_deactivate := DangerBtn{text: "Remove selected"}
                                 }
@@ -7698,6 +7736,13 @@ script_mod! {
                                     font_color: #x69090C
                                     font_size: 13.
                                 }
+                                staff_edit_name_input := FieldInput{empty_text: "Display name"}
+                                staff_rename_btn := RowSecondaryBtn{text: "Save name"}
+                                staff_copy_edit_input := FieldInput{
+                                    empty_text: "Copy setup from another person"
+                                }
+                                staff_copy_edit_suggest := mod.widgets.SuggestList{field: "team_copy_edit"}
+                                staff_copy_edit_btn := RowSecondaryBtn{text: "Copy their setup onto selected"}
                                 h_rights_help := WrapLabel{
                                     body: ""
                                     font_color: #x260B08
@@ -7912,6 +7957,7 @@ View{
                                     visible: false
                                 }
                                 // Big digits stay visible even when firewall/listen notes fill the status line.
+                                // Display/copy only — not a TextInput (no soft keyboard). Tap Copy for clipboard.
                                 pairing_code_value := WrapLabel{
                                     width: Fit
                                     body: " "
@@ -7933,6 +7979,7 @@ View{
                                     allow_firewall := RowPrimaryBtn{text: "Allow other devices to connect" visible: false}
                                 }
                                 autostart_btn := RowSecondaryBtn{text: "Start with this computer" visible: false}
+                                copy_pair_code := RowSecondaryBtn{text: "Copy pairing code" visible: false}
                                 new_pair_code := RowSecondaryBtn{text: "New pairing code" visible: false}
                                 paired_list := mod.widgets.PairedList{}
                                 // A paired device: its link, what waits, what was not accepted.

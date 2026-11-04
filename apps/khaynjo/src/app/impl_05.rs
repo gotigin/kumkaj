@@ -32,7 +32,9 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
     /// Drop soft-keyboard + key focus (Android: tap dish/chip/outside, Back).
     fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         cx.set_key_focus(Area::Empty);
-        cx.hide_text_ime();
+        // Latch dismissed — `hide_text_ime` clears that latch and let the next
+        // focused draw re-open the IME without a tap (felt stuck / random).
+        cx.text_ime_was_dismissed();
         if let Ok(mut flag) = ime_suppress_refocus().lock() {
             *flag = true;
         }
@@ -117,6 +119,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(lock_pin_input),
             ids!(lock_login_id),
             ids!(lock_login_password),
+            // ClientPair — must count so Android Back dismisses IME first.
+            ids!(client_host_input),
+            ids!(client_code_input),
+            ids!(client_name_input),
+            ids!(server_name_input),
+            ids!(server_remove_pin),
             ids!(venue_title_input),
             ids!(menu_tax_input),
             ids!(menu_category_input),
@@ -185,25 +193,30 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             self.close_menu_window(cx);
             return true;
         }
-        // Soft keyboard: on Android, one Back dismisses IME first. On desktop,
-        // mouse Back / Alt+← must still pop — a focused PIN/search field used
-        // to swallow the gesture (looked like Back was broken on Lock).
-        // Auth/setup always blur then continue (mouse Back also arrives as a
-        // key within 140ms; returning early dropped the real pop).
+        // Soft keyboard: on Android, one Back always dismisses IME first and
+        // stops — never leave ClientPair / Lock just because a field was
+        // focused (that felt like "keyboard won't come back / app jumped").
+        // Desktop: non-auth fields dismiss only; auth/setup blur then continue
+        // so mouse Back / Alt+← is not swallowed by a focused PIN field.
         if self.text_field_has_focus(cx) {
             self.dismiss_soft_keyboard(cx);
-            let auth = matches!(
-                app_state().lock().unwrap().screen,
-                Screen::Lock
-                    | Screen::Onboard
-                    | Screen::ClientPair
-                    | Screen::DeviceSetup
-            );
             #[cfg(target_os = "android")]
-            if !auth {
+            {
                 return true;
             }
-            let _ = auth;
+            #[cfg(not(target_os = "android"))]
+            {
+                let auth = matches!(
+                    app_state().lock().unwrap().screen,
+                    Screen::Lock
+                        | Screen::Onboard
+                        | Screen::ClientPair
+                        | Screen::DeviceSetup
+                );
+                if !auth {
+                    return true;
+                }
+            }
         }
         // In-screen layers before screen history (native / mouse / Android back).
         {

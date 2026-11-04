@@ -45,6 +45,16 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(staff_title_input),
             ids!(staff_pin_input),
             ids!(my_pin_input),
+            ids!(lock_pin_input),
+            ids!(lock_login_id),
+            ids!(lock_login_password),
+            // ClientPair / DeviceSetup — caret repair must cover the same
+            // fields as text_field_has_focus so Android IME stays attached.
+            ids!(client_host_input),
+            ids!(client_code_input),
+            ids!(client_name_input),
+            ids!(server_name_input),
+            ids!(server_remove_pin),
             ids!(menu_tax_input),
             ids!(menu_category_input),
             ids!(menu_modifiers_input),
@@ -217,6 +227,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             books_report_kind,
             device_role,
             picking_server,
+            awaiting_app_template,
         ) = {
             let st = app_state().lock().unwrap();
             (
@@ -228,6 +239,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
                 st.books_report_kind,
                 st.device_role,
                 st.picking_server,
+                st.awaiting_app_template,
             )
         };
         self.paint_choice_pair(
@@ -254,7 +266,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(reports_balance_sheet_on),
             books_report_kind == BooksReportKind::BalanceSheet,
         );
-        if picking_server {
+        if picking_server || awaiting_app_template {
             for path in [
                 ids!(device_role_server),
                 ids!(device_role_server_on),
@@ -829,6 +841,10 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(fssai_input),
             ids!(bill_footer_input),
             ids!(team_pick_input),
+            ids!(staff_copy_hire_input),
+            ids!(staff_edit_name_input),
+            ids!(staff_copy_edit_input),
+            ids!(staff_name_input),
             ids!(menu_variations_input),
             ids!(menu_group_input),
             ids!(menu_area_prices_input),
@@ -1012,6 +1028,10 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(recall_kot_input), "recall_kot_ph"),
             (ids!(bill_footer_input), "bill_footer_ph"),
             (ids!(team_pick_input), "team_pick_ph"),
+            (ids!(staff_copy_hire_input), "staff_copy_hire_ph"),
+            (ids!(staff_edit_name_input), "staff_edit_name_ph"),
+            (ids!(staff_copy_edit_input), "staff_copy_edit_ph"),
+            (ids!(staff_name_input), "staff_name_ph"),
             (ids!(menu_variations_input), "sizes_as_items_ph"),
             (ids!(menu_group_input), "dish_group_ph"),
             (ids!(menu_area_prices_input), "area_prices_ph"),
@@ -1503,6 +1523,9 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         // send_kot_btn text is set in sync_chrome (names the kitchens).
         self.ui.button(cx, ids!(staff_add_cashier)).set_text(cx, &s("add_staff"));
         self.ui.button(cx, ids!(staff_deactivate)).set_text(cx, &s("remove_selected"));
+        self.ui.button(cx, ids!(staff_copy_hire_btn)).set_text(cx, &s("staff_copy_hire"));
+        self.ui.button(cx, ids!(staff_rename_btn)).set_text(cx, &s("staff_rename"));
+        self.ui.button(cx, ids!(staff_copy_edit_btn)).set_text(cx, &s("staff_copy_edit"));
         self.ui.button(cx, ids!(staff_role_cashier)).set_text(cx, &s("role_cashier"));
         self.ui.button(cx, ids!(staff_role_cashier_on)).set_text(cx, &s("role_cashier"));
         self.ui.button(cx, ids!(staff_role_manager)).set_text(cx, &s("role_manager"));
@@ -1511,6 +1534,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(station_add)).set_text(cx, &s("add_station"));
         self.ui.button(cx, ids!(stop_extra_tills)).set_text(cx, &s("stop_extra_tills"));
         self.ui.button(cx, ids!(allow_firewall)).set_text(cx, &s("allow_firewall"));
+        self.ui.button(cx, ids!(copy_pair_code)).set_text(cx, &s("copy_pair_code"));
         self.ui.button(cx, ids!(new_pair_code)).set_text(cx, &s("new_pair_code"));
         // Android has no folder to copy into each day: the owner saves a
         // copy where they choose (USB stick, SD card, Downloads).

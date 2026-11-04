@@ -1,7 +1,9 @@
 impl App {
 fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         cx.set_key_focus(Area::Empty);
-        cx.hide_text_ime();
+        // Latch dismissed — `hide_text_ime` clears that latch and let the next
+        // focused draw re-open the IME without a tap (felt stuck / random).
+        cx.text_ime_was_dismissed();
         if let Ok(mut flag) = ime_suppress_refocus().lock() {
             *flag = true;
         }

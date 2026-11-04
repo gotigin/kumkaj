@@ -1,4 +1,21 @@
 impl App {
+/// Active staff by exact name, else first substring match (Team pick / copy).
+fn find_active_staff_by_name(st: &AppState, needle: &str) -> Option<StaffMember> {
+        let n = needle.trim().to_lowercase();
+        if n.is_empty() {
+            return None;
+        }
+        st.staff
+            .iter()
+            .find(|s| s.active && s.name.trim().to_lowercase() == n)
+            .or_else(|| {
+                st.staff
+                    .iter()
+                    .find(|s| s.active && s.name.to_lowercase().contains(&n))
+            })
+            .cloned()
+    }
+
 fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let (rail, last) = {
             let guard = nav_drag().lock().unwrap();
@@ -264,7 +281,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, true);
+            // New server always reaches Owner PIN via App Template offer when shipped.
+            if Self::should_offer_app_template(&st) {
+                self.enter_app_template_offer(&mut st, true);
+            } else {
+                self.finish_as_server(&mut st, true);
+            }
         }
         self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
@@ -281,10 +303,150 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, switching_in);
+            // Unfinished new shop (killed before PIN) re-offers until applied/skipped.
+            if Self::should_offer_app_template(&st) {
+                self.enter_app_template_offer(&mut st, switching_in);
+            } else {
+                self.finish_as_server(&mut st, switching_in);
+            }
         }
         self.paint_role_open_busy_chrome(cx);
         self.sync_chrome(cx);
+    }
+
+    /// Brand-new Server before Owner PIN, and the Rajdhani menu template ships.
+    fn should_offer_app_template(st: &AppState) -> bool {
+        !st.owner_setup_complete
+            && menu_templates::find("rajdhani").is_some()
+            && !st
+                .store
+                .as_ref()
+                .and_then(|s| s.rajdhani_app_template_done().ok())
+                .unwrap_or(false)
+    }
+
+    /// DeviceSetup card before Lock — same Server attach as `finish_as_server`, no PIN yet.
+    fn enter_app_template_offer(&mut self, st: &mut AppState, switching_in: bool) {
+        st.device_role = DeviceRole::Server;
+        st.must_confirm_device_role = false;
+        st.picking_server = false;
+        st.awaiting_app_template = true;
+        st.pin_buffer.clear();
+        st.nav_back.clear();
+        st.nav_forward.clear();
+        if let Some(store) = st.store.as_ref() {
+            let _ = store.set_device_role(DeviceRole::Server.as_str());
+            if switching_in {
+                let _ = store.set_extra_tills_allowed(false);
+                st.extra_tills_allowed = false;
+                net::stop_server();
+            } else if st.extra_tills_allowed {
+                let path = store.db_path().to_path_buf();
+                if net::ensure_server(path).is_ok() {
+                    firewall_job(|| Ok(net::firewall_allows_phones()));
+                }
+            }
+        }
+        st.screen = Screen::DeviceSetup;
+        st.status = locale::t(&st.locale.language, "app_template_status");
+    }
+
+    /// Mark the one-shot offer done and continue to Owner PIN.
+    fn finish_app_template_to_lock(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.awaiting_app_template = false;
+            let (staff, fiscal) = if let Some(store) = st.store.as_ref() {
+                let _ = store.set_rajdhani_app_template_done();
+                // After Apply: Owner may be "Asif" and tax rates retired — refresh.
+                (store.list_staff().ok(), store.fiscal_settings().ok())
+            } else {
+                (None, None)
+            };
+            if let Some(staff) = staff {
+                st.staff = staff;
+            }
+            if let Some(fiscal) = fiscal {
+                st.fiscal = fiscal;
+            }
+            self.finish_as_server(&mut st, false);
+        }
+        self.paint_role_open_busy_chrome(cx);
+        self.sync_chrome(cx);
+    }
+
+    /// Idle: Submit + Skip. Busy: Submit replaced by status + Cancel.
+    fn paint_app_template_chrome(&mut self, cx: &mut Cx, visible: bool) {
+        self.ui
+            .view(cx, ids!(app_template_section))
+            .set_visible(cx, visible);
+        if !visible {
+            return;
+        }
+        let app_busy = matches!(
+            menu_import_running().lock().unwrap().as_ref(),
+            Some(MenuImportKind::AppTemplate { .. })
+        );
+        let (heading, blurb, apply, skip, cancel, progress) = {
+            let st = app_state().lock().unwrap();
+            let title = menu_templates::find("rajdhani")
+                .map(|t| t.title.clone())
+                .unwrap_or_else(|| "Rajdhani Menu Template".into());
+            let progress = if app_busy {
+                let (done, total) = *menu_import_progress().lock().unwrap();
+                if total > 0 {
+                    st.t("template_import_progress")
+                        .replace("{d}", &done.to_string())
+                        .replace("{t}", &total.to_string())
+                } else {
+                    st.t("app_template_importing").replace("{title}", &title)
+                }
+            } else {
+                String::new()
+            };
+            let blurb = if app_busy {
+                st.t("app_template_importing").replace("{title}", &title)
+            } else {
+                st.t("app_template_blurb")
+            };
+            (
+                st.t("app_template_heading"),
+                blurb,
+                st.t("app_template_apply"),
+                st.t("app_template_skip"),
+                st.t("cancel"),
+                progress,
+            )
+        };
+        self.ui
+            .widget(cx, ids!(app_template_heading))
+            .set_text(cx, &plain_display_text(&heading));
+        self.ui
+            .widget(cx, ids!(app_template_blurb))
+            .set_text(cx, &plain_display_text(&blurb));
+        self.ui
+            .button(cx, ids!(app_template_apply))
+            .set_text(cx, &apply);
+        self.ui
+            .button(cx, ids!(app_template_apply))
+            .set_visible(cx, !app_busy);
+        self.ui
+            .view(cx, ids!(app_template_busy))
+            .set_visible(cx, app_busy);
+        if app_busy {
+            self.ui
+                .button(cx, ids!(app_template_status))
+                .set_text(cx, &progress);
+            self.ui
+                .button(cx, ids!(app_template_cancel))
+                .set_text(cx, &cancel);
+        }
+        self.ui
+            .button(cx, ids!(app_template_skip))
+            .set_text(cx, &skip);
+        self.ui
+            .button(cx, ids!(app_template_skip))
+            .set_visible(cx, !app_busy);
     }
 
     /// Wipe a local server from this device. Owner PIN of **that** shop
@@ -456,13 +618,23 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             .unwrap()
             .clone()
             .unwrap_or_else(|| app_t("opening_client"));
-        let show_pick = !busy && app_state().lock().unwrap().picking_server;
+        let (show_pick, awaiting_tmpl) = {
+            let st = app_state().lock().unwrap();
+            (
+                !busy && st.picking_server && !st.awaiting_app_template,
+                st.awaiting_app_template,
+            )
+        };
+        // Hide Server/Client while creating/opening or while App Template is offered.
         self.ui
             .view(cx, ids!(device_role_actions))
-            .set_visible(cx, !busy && !show_pick);
+            .set_visible(cx, !busy && !show_pick && !awaiting_tmpl);
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, show_pick);
+        self.ui
+            .view(cx, ids!(app_template_section))
+            .set_visible(cx, awaiting_tmpl && !busy);
         self.ui
             .widget(cx, ids!(device_role_busy_label))
             .set_text(cx, &plain_display_text(&status));
@@ -544,16 +716,62 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let once = lan_once().lock().unwrap().take();
         match once {
             Some(LanOnce::SignIn { staff_id, pin, reply }) => self.finish_lan_sign_in(cx, staff_id, pin, reply),
-            Some(LanOnce::Paired(reply)) => {
-                let result = (|| -> Result<String, String> {
-                    let (link, snap) = reply?;
+            Some(LanOnce::Paired(reply)) => match reply {
+                Err(e) => {
+                    let msg = e.to_string();
+                    app_state().lock().unwrap().pair_note = msg.clone();
+                    self.set_status(cx, msg);
+                    self.sync_chrome(cx);
+                }
+                Ok((link, snap)) => {
+                    // apply_snapshot is SQLite on a busy shop — never on the UI
+                    // thread (Android freezes for seconds; DEV.md bug 7b).
+                    let db = {
+                        let st = app_state().lock().unwrap();
+                        st.store.as_ref().map(|s| s.db_path().to_path_buf())
+                    };
+                    if let Some(db) = db {
+                        let finishing = app_t("pair_finishing");
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            st.pair_note = finishing.clone();
+                        }
+                        self.set_status(cx, finishing);
+                        self.sync_chrome(cx);
+                        let _ = std::thread::Builder::new()
+                            .name("khaynjo-pair-apply".into())
+                            .spawn(move || {
+                                let result = (|| -> Result<String, String> {
+                                    let store = Store::open_path(&db)?;
+                                    store.set_client_device_pairing(&link.base, &link.device)?;
+                                    // Kept to find the Server again if its address changes.
+                                    store.set_paired_server_id(&link.server_id)?;
+                                    phone::forget_revision();
+                                    net::apply_snapshot(&store, &snap)?;
+                                    // The shop's name as it saved it; an unnamed shop is "the shop".
+                                    let name = [snap.venue_title.trim(), snap.org_name.trim()]
+                                        .into_iter()
+                                        .find(|n| !n.is_empty())
+                                        .unwrap_or("the shop")
+                                        .to_string();
+                                    Ok(name)
+                                })();
+                                *lan_once().lock().unwrap() = Some(LanOnce::PairApplied(result));
+                                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+                            });
+                    } else {
+                        let msg = "No store".to_string();
+                        app_state().lock().unwrap().pair_note = msg.clone();
+                        self.set_status(cx, msg);
+                        self.sync_chrome(cx);
+                    }
+                }
+            },
+            Some(LanOnce::PairApplied(result)) => {
+                let outcome = (|| -> Result<String, String> {
+                    let name = result?;
                     let mut st = app_state().lock().unwrap();
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.set_client_device_pairing(&link.base, &link.device)?;
-                    // Kept to find the Server again if its address changes.
-                    store.set_paired_server_id(&link.server_id)?;
-                    phone::forget_revision();
-                    net::apply_snapshot(store, &snap)?;
                     phone::start(store.db_path().to_path_buf());
                     st.client_paired = true;
                     st.reload_all()?;
@@ -561,24 +779,16 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     // own sign-in is not one the Server knows.
                     st.session = None;
                     st.screen = Screen::Lock;
-                    {
-                        // The shop's name as it saved it; an unnamed shop is "the shop".
-                        let name = [snap.venue_title.trim(), snap.org_name.trim()]
-                            .into_iter()
-                            .find(|n| !n.is_empty())
-                            .unwrap_or("the shop")
-                            .to_string();
-                        Ok(format!("Paired with {name} — sign in with your shop PIN"))
-                    }
+                    Ok(format!("Paired with {name} — sign in with your shop PIN"))
                 })();
-                match result {
+                match outcome {
                     Ok(msg) => {
                         app_state().lock().unwrap().pair_note.clear();
-                        self.set_status(cx, msg)
+                        self.set_status(cx, msg);
                     }
                     Err(e) => {
                         app_state().lock().unwrap().pair_note = e.clone();
-                        self.set_status(cx, e)
+                        self.set_status(cx, e);
                     }
                 }
                 self.sync_chrome(cx);
@@ -1344,14 +1554,27 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         };
         let first = app_state().lock().unwrap().found_servers.first().map(|f| f.host.clone());
         if let Some(host) = first {
-            self.ui.text_input(cx, ids!(client_host_input)).set_text(cx, &host);
+            let field = self.ui.text_input(cx, ids!(client_host_input));
+            // Never overwrite while the person is typing the host / code / name
+            // (set_text + full sync used to dismiss the Android keyboard).
+            let typing = self.text_field_has_focus(cx);
+            if !typing || field.text().trim().is_empty() {
+                if !cx.has_key_focus(field.area()) {
+                    field.set_text(cx, &host);
+                }
+            }
         }
         self.ui
             .widget(cx, ids!(client_found_label))
             .set_text(cx, &plain_display_text(&text));
         self.ui.widget(cx, ids!(client_found_label)).set_visible(cx, !text.is_empty());
         self.set_report_rows(cx, ids!(client_found_list), rows);
-        self.sync_chrome(cx);
+        if self.text_field_has_focus(cx) {
+            self.paint_submit_busy_chrome(cx);
+            self.ui.redraw(cx);
+        } else {
+            self.sync_chrome(cx);
+        }
     }
 
     /// Select a table for the drawn-layout editor and fill X/Y/W/H fields.

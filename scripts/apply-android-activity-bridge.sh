@@ -96,6 +96,49 @@ else
   echo "Inserted printDocument / Bluetooth / USB into $JAVA"
 fi
 
+# Soft keyboard retap (API 26 / OEM): SHOW_IMPLICIT (flag 0) is ignored after
+# the user dismissed the IME — first tap works, later taps do not. Prefer
+# WindowInsetsController.show(ime) on API 30+; SHOW_FORCED below that.
+# Docs: DEV.md bug 6d. Idempotent.
+if grep -qF 'SHOW_FORCED' "$JAVA" && grep -qF 'WindowInsets.Type.ime()' "$JAVA"; then
+  echo "Android IME retap showSoftInput (SHOW_FORCED / InsetsController) already present."
+elif grep -qF 'imm.showSoftInput(view, 0);' "$JAVA"; then
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+old = """                    view.requestFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(view, 0);"""
+new = """                    view.requestFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    // API 26–29: SHOW_IMPLICIT (0) is ignored after the user
+                    // dismissed the IME — retaps never brought the keyboard
+                    // back on tablets (Huawei AGS2 / API 26). SHOW_FORCED
+                    // re-opens it. API 30+ prefers WindowInsetsController.
+                    // Docs: DEV.md bug 6d.
+                    if (Build.VERSION.SDK_INT >= 30) {
+                        android.view.WindowInsetsController controller = getWindow().getInsetsController();
+                        if (controller != null) {
+                            controller.show(WindowInsets.Type.ime());
+                        } else if (imm != null) {
+                            imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
+                        }
+                    } else if (imm != null) {
+                        imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
+                    }"""
+if old not in text:
+    if "SHOW_FORCED" in text:
+        raise SystemExit(0)
+    raise SystemExit(f"showSoftInput(view, 0) pattern not found in {path}")
+path.write_text(text.replace(old, new, 1))
+print(f"Patched IME retap showSoftInput into {path}")
+PY
+else
+  echo "MakepadActivity showKeyboard: no showSoftInput(view, 0) to replace (check manually)."
+fi
+
 # API 26 (Android 8.0) crash: InputDevice.isEnabled() is API 27+.
 if grep -qF 'Our shops still run API 26' "$JAVA"; then
   echo "Android API-26 InputDevice.isEnabled guard already present."

@@ -207,6 +207,8 @@ impl AppMain for App {
             }
             // Menu import completion (progress is painted above while busy).
             if let Some(outcome) = menu_import_once().lock().unwrap().take() {
+                let was_app_template =
+                    matches!(&outcome.kind, MenuImportKind::AppTemplate { .. });
                 let msg = match outcome.result {
                     Ok(done) => {
                         let reload = app_state().lock().unwrap().reload_all();
@@ -219,7 +221,8 @@ impl AppMain for App {
                                     .t("template_imported")
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string()),
-                                MenuImportKind::Client { title, .. } => st
+                                MenuImportKind::Client { title, .. }
+                                | MenuImportKind::AppTemplate { title, .. } => st
                                     .t("client_template_imported")
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string())
@@ -235,13 +238,25 @@ impl AppMain for App {
                     st.client_template_confirm = None;
                 }
                 match msg {
-                    Ok(m) => self.set_status(cx, m),
-                    Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_t("cancelled"))
+                    Ok(m) => {
+                        self.set_status(cx, m);
+                        if was_app_template {
+                            // Cash memo by default — tax invoice is opt-in with tax off.
+                            app_state().lock().unwrap().money_lane = MoneyLane::Owner;
+                            self.finish_app_template_to_lock(cx);
+                        } else {
+                            self.sync_chrome(cx);
+                        }
                     }
-                    Err(e) => self.set_status(cx, e),
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_t("cancelled"));
+                        self.sync_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.set_status(cx, e);
+                        self.sync_chrome(cx);
+                    }
                 }
-                self.sync_chrome(cx);
             }
             if BACKUP_MADE.swap(false, std::sync::atomic::Ordering::SeqCst) {
                 self.sync_chrome(cx);

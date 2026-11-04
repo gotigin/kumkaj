@@ -305,11 +305,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(server_remove_pin))
             .set_empty_text(cx, s("server_remove_pin_ph"));
-        let picking_server = app_state().lock().unwrap().picking_server
-            && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let (picking_server, awaiting_app_template) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.picking_server
+                    && !st.awaiting_app_template
+                    && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst),
+                st.awaiting_app_template
+                    && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst),
+            )
+        };
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, picking_server);
+        self.paint_app_template_chrome(cx, awaiting_app_template);
         // Device-role chip visibility (idle/active pair) is owned by paint_choice_state.
         self.ui
             .button(cx, ids!(lang_setup_platform))
@@ -1163,6 +1172,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             st.suggest_open = None;
             if st.must_confirm_device_role && screen != Screen::DeviceSetup {
                 st.status = st.t("device_use_q");
+                self.set_screen(&mut st, Screen::DeviceSetup, false);
+            } else if st.awaiting_app_template && screen != Screen::DeviceSetup {
                 self.set_screen(&mut st, Screen::DeviceSetup, false);
             } else if st.device_role == DeviceRole::Client
                 && !st.client_paired

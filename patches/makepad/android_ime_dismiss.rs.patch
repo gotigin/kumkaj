@@ -22,8 +22,11 @@
 -        self.text_ime_dismissed = false;
 +        // Same-area calls (caret repair, a focus restore) must not re-arm
 +        // the soft keyboard after the user dismissed it. A real move to a
-+        // different field still clears the latch.
-+        if self.next_key_focus != focus_area {
++        // different *field* still clears the latch. Clearing to Empty must
++        // not — system ▾ hide / Escape clear focus after setting dismissed,
++        // and re-arming here would let a stale ShowTextIME reopen the IME
++        // (bug 6d).
++        if self.next_key_focus != focus_area && !focus_area.is_empty() {
 +            self.text_ime_dismissed = false;
 +        }
          self.next_key_focus = focus_area;

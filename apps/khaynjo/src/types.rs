@@ -220,6 +220,10 @@ enum SuggestField {
     InvItem,
     CreditParty,
     TeamPick,
+    /// Team → Add: copy role/title/features from an existing person.
+    TeamCopyHire,
+    /// Team → Edit: copy role/title/features onto the selected person.
+    TeamCopyEdit,
     ConvFrom,
     ConvTo,
     BranchSwitch,
@@ -248,7 +252,7 @@ enum SuggestField {
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 29] = [
+    const ALL: [SuggestField; 31] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -262,6 +266,8 @@ impl SuggestField {
         SuggestField::InvItem,
         SuggestField::CreditParty,
         SuggestField::TeamPick,
+        SuggestField::TeamCopyHire,
+        SuggestField::TeamCopyEdit,
         SuggestField::ConvFrom,
         SuggestField::ConvTo,
         SuggestField::BranchSwitch,
@@ -296,6 +302,8 @@ impl SuggestField {
             SuggestField::InvItem => "inv_item",
             SuggestField::CreditParty => "credit_party",
             SuggestField::TeamPick => "team_pick",
+            SuggestField::TeamCopyHire => "team_copy_hire",
+            SuggestField::TeamCopyEdit => "team_copy_edit",
             SuggestField::ConvFrom => "conv_from",
             SuggestField::ConvTo => "conv_to",
             SuggestField::BranchSwitch => "branch_switch",
@@ -330,6 +338,8 @@ impl SuggestField {
             SuggestField::InvItem => ids!(inv_item_input),
             SuggestField::CreditParty => ids!(credit_limit_party),
             SuggestField::TeamPick => ids!(team_pick_input),
+            SuggestField::TeamCopyHire => ids!(staff_copy_hire_input),
+            SuggestField::TeamCopyEdit => ids!(staff_copy_edit_input),
             SuggestField::ConvFrom => ids!(conv_from_input),
             SuggestField::ConvTo => ids!(conv_to_input),
             SuggestField::BranchSwitch => ids!(branch_switch_input),
@@ -364,6 +374,8 @@ impl SuggestField {
             SuggestField::InvItem => ids!(inv_item_suggest),
             SuggestField::CreditParty => ids!(credit_party_suggest),
             SuggestField::TeamPick => ids!(team_pick_suggest),
+            SuggestField::TeamCopyHire => ids!(staff_copy_hire_suggest),
+            SuggestField::TeamCopyEdit => ids!(staff_copy_edit_suggest),
             SuggestField::ConvFrom => ids!(conv_from_suggest),
             SuggestField::ConvTo => ids!(conv_to_suggest),
             SuggestField::BranchSwitch => ids!(branch_switch_suggest),

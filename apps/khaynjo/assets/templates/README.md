@@ -2,11 +2,17 @@
 
 Each folder under `assets/templates/<id>/` is a **named menu template** a
 restaurant can import in one tap (categories, dishes, prices, aliases,
-photos). Today: `rajdhani/`. Tomorrow: add another folder the same way —
-the app discovers every `template.json` automatically.
+photos). Today: `rajdhani/` — display title **Rajdhani Menu Template**.
+Tomorrow: add another folder the same way — the app discovers every
+`template.json` automatically.
 
-This is separate from the big photo shelf (`assets/items/`) and from
-“Import complete template” (that path imports the whole shelf at ₹0).
+This is separate from:
+
+- the big photo shelf (`assets/items/`) / “Import complete template”
+  (whole shelf at ₹0 on Menu), and
+- **Rajdhani App Template** — whole-shop offer once on DeviceSetup right
+  after Create new server (before Owner PIN); applies this menu, names the
+  Owner **Asif**, and turns tax/GST off by default.
 
 ## How to add a new client template
 
@@ -72,7 +78,7 @@ desktop Server).
 ```json
 {
   "id": "rajdhani",
-  "title": "Rajdhani",
+  "title": "Rajdhani Menu Template",
   "blurb": "Short owner-facing line.",
   "categories": [
     {

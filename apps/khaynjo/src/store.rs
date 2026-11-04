@@ -1168,6 +1168,60 @@ impl Store {
             .unwrap_or(true))
     }
 
+    /// One-shot post-create offer (Rajdhani App Template) before Owner PIN.
+    pub fn rajdhani_app_template_done(&self) -> Result<bool, String> {
+        Ok(self
+            .meta_get("rajdhani_app_template_done")?
+            .map(|v| v.trim() == "1")
+            .unwrap_or(false))
+    }
+
+    pub fn set_rajdhani_app_template_done(&self) -> Result<(), String> {
+        self.meta_set("rajdhani_app_template_done", "1")
+    }
+
+    /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner named Asif.
+    /// Safe to call after the menu import on a fresh server (no session yet).
+    pub fn apply_rajdhani_shop_defaults(&self) -> Result<(), String> {
+        self.assert_server_writer("Rajdhani shop defaults")?;
+        // Rates stay in the books but inactive and out of the picker; items
+        // carry no tax. Service charge off.
+        self.conn
+            .execute(
+                "UPDATE tax_rates SET active = 0, picker_enabled = 0",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        self.conn
+            .execute(
+                "UPDATE products SET tax_rate_id = '', tax_bps = 0",
+                [],
+            )
+            .map_err(|e| e.to_string())?;
+        self.set_service_charge_bps(0)?;
+        let n = self
+            .conn
+            .execute(
+                "UPDATE staff SET name = ?1 WHERE role = 'owner' AND active = 1",
+                params!["Asif"],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Owner account missing".into());
+        }
+        Ok(())
+    }
+
+    /// Full Rajdhani App Template: menu import + shop defaults.
+    pub fn apply_rajdhani_app_template(&self) -> Result<CatalogueImport, String> {
+        self.assert_server_writer("Apply Rajdhani App Template")?;
+        let tmpl = crate::menu_templates::find("rajdhani")
+            .ok_or_else(|| "Rajdhani menu template missing".to_string())?;
+        let summary = self.import_menu_template(tmpl)?;
+        self.apply_rajdhani_shop_defaults()?;
+        Ok(summary)
+    }
+
     /// First-run on Server: Owner chooses their PIN. Marks setup complete and
     /// returns the Owner so the session can start. Does **not** mark onboarding
     /// complete — that happens after Fresh/Book wizard.
@@ -8848,6 +8902,88 @@ impl Store {
         Ok(())
     }
 
+    /// Change display name only — staff `id` never moves.
+    pub fn rename_staff(
+        &self,
+        staff_id: &str,
+        name: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Rename staff")?;
+        if !actor.role.can_admin() {
+            return Err("Only Owner can rename staff".into());
+        }
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("Staff name required".into());
+        }
+        let n = self
+            .conn
+            .execute(
+                "UPDATE staff SET name = ?1 WHERE id = ?2 AND active = 1",
+                params![name, staff_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Staff not found".into());
+        }
+        self.audit(actor, "staff.rename", &format!("{staff_id} → {name}"))?;
+        Ok(())
+    }
+
+    /// Copy role + title + feature rights onto an existing non-Owner staff
+    /// member. Name, PIN, login, and `id` stay put.
+    pub fn apply_staff_config(
+        &self,
+        staff_id: &str,
+        role: StaffRole,
+        role_title: &str,
+        features: &StaffFeatures,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Copy staff setup")?;
+        if !actor.role.can_admin() {
+            return Err("Only Owner can change staff setup".into());
+        }
+        if role.is_owner() {
+            return Err("Cannot turn staff into Owner".into());
+        }
+        let title = {
+            let t = role_title.trim();
+            if t.is_empty() {
+                role.default_title().to_string()
+            } else {
+                t.to_string()
+            }
+        };
+        let n = self
+            .conn
+            .execute(
+                "UPDATE staff SET role = ?1, role_title = ?2, features_json = ?3
+                 WHERE id = ?4 AND role != 'owner' AND active = 1",
+                params![role.as_str(), title, features.to_json(), staff_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Staff not found or is Owner".into());
+        }
+        self.audit(
+            actor,
+            "staff.config",
+            &format!("{staff_id} → {title} ({})", role.as_str()),
+        )?;
+        Ok(())
+    }
+
+    /// Role to use when hiring/copying from someone (Owner → Manager).
+    pub fn hire_role_from(source: &StaffMember) -> StaffRole {
+        if source.is_owner() {
+            StaffRole::Manager
+        } else {
+            source.role
+        }
+    }
+
     /// Owner may set initial login id + password once; afterward only the user
     /// can change their own password via [`Store::set_own_password`].
     pub fn set_staff_login(
@@ -12496,6 +12632,47 @@ mod tests {
     }
 
     #[test]
+    fn rajdhani_app_template_disables_tax_and_names_owner_asif() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        // Fresh India pack seeds active GST rates.
+        assert!(
+            store
+                .list_tax_rates()
+                .unwrap()
+                .iter()
+                .any(|r| r.active && r.bps > 0),
+            "expected seeded tax rates before App Template"
+        );
+        let summary = store.apply_rajdhani_app_template().unwrap();
+        assert!(summary.items_added > 0);
+        assert!(
+            store.list_tax_rates().unwrap().is_empty(),
+            "active tax rates must be off after App Template"
+        );
+        assert!(
+            store.list_picker_tax_rates().unwrap().is_empty(),
+            "tax picker must be empty after App Template"
+        );
+        assert_eq!(store.fiscal_settings().unwrap().service_charge_bps, 0);
+        let owner = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.is_owner())
+            .expect("owner");
+        assert_eq!(owner.name, "Asif");
+        assert!(
+            store
+                .list_products(false)
+                .unwrap()
+                .iter()
+                .all(|p| p.tax_bps == 0 && p.tax_rate_id.is_empty())
+        );
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
     fn importing_a_named_client_template_sets_prices_and_aliases() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
@@ -12721,6 +12898,86 @@ mod tests {
         assert_eq!(ranked[1], chai.id);
         assert_eq!(ranked[2], aloo.id);
         assert_eq!(store.frequent_product_ids(1, 2).unwrap().len(), 2);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn staff_rename_keeps_id_and_copy_applies_config() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("1357").unwrap();
+        store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Ravi",
+                    role: StaffRole::Waiter,
+                    role_title: "Captain",
+                    pin: "1111",
+                    login_id: "",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Waiter),
+                },
+                &owner,
+            )
+            .unwrap();
+        store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Neha",
+                    role: StaffRole::Cashier,
+                    role_title: "Till",
+                    pin: "2222",
+                    login_id: "",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Cashier),
+                },
+                &owner,
+            )
+            .unwrap();
+        let staff = store.list_staff().unwrap();
+        let ravi = staff.iter().find(|s| s.name == "Ravi").unwrap().clone();
+        let neha = staff.iter().find(|s| s.name == "Neha").unwrap().clone();
+        let ravi_id = ravi.id.clone();
+        store.rename_staff(&ravi_id, "Ravi Bhai", &owner).unwrap();
+        let renamed = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == ravi_id)
+            .unwrap();
+        assert_eq!(renamed.name, "Ravi Bhai");
+        assert_eq!(renamed.id, ravi_id);
+        store
+            .apply_staff_config(
+                &neha.id,
+                Store::hire_role_from(&renamed),
+                &renamed.role_title,
+                &renamed.features,
+                &owner,
+            )
+            .unwrap();
+        let neha2 = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == neha.id)
+            .unwrap();
+        assert_eq!(neha2.name, "Neha");
+        assert_eq!(neha2.role, StaffRole::Waiter);
+        assert_eq!(neha2.role_title, "Captain");
+        assert_eq!(neha2.features.floor, renamed.features.floor);
+        assert_eq!(neha2.features.sales, renamed.features.sales);
+        // Owner display name can change; id stays.
+        let owner_id = owner.id.clone();
+        store.rename_staff(&owner_id, "Asif", &owner).unwrap();
+        let owner2 = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == owner_id)
+            .unwrap();
+        assert_eq!(owner2.name, "Asif");
+        assert!(owner2.is_owner());
         let _ = std::fs::remove_file(path);
     }
 

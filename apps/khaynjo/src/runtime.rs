@@ -99,7 +99,10 @@ fn firewall_job(job: fn() -> Result<bool, String>) {
 /// A device's one-off talk with the Server (pairing, signing in) runs on a
 /// thread; its answer waits here until the UI wakes.
 enum LanOnce {
+    /// HTTP pair reply — books apply continues on a worker (`PairApplied`).
     Paired(Result<(net::Link, net::SyncSnapshot), net::LanError>),
+    /// Snapshot written off the UI thread (venue label for the status line).
+    PairApplied(Result<String, String>),
     SignIn {
         staff_id: Option<String>,
         pin: String,
@@ -400,6 +403,8 @@ fn shelf_materialize_job(db_path: PathBuf) {
 enum MenuImportKind {
     Shelf,
     Client { id: String, title: String },
+    /// Post-create DeviceSetup offer — same menu import as Client, different chrome.
+    AppTemplate { id: String, title: String },
 }
 
 struct MenuImportOutcome {
@@ -457,15 +462,17 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
     // on the same click frame (not after the first encode).
     let known_total = match &kind {
         MenuImportKind::Shelf => menu_images::shelf().len().max(1),
-        MenuImportKind::Client { id, .. } => menu_templates::find(id)
-            .map(|t| {
-                t.categories
-                    .iter()
-                    .map(|c| c.items.len().saturating_add(1))
-                    .sum::<usize>()
-                    .max(1)
-            })
-            .unwrap_or(1),
+        MenuImportKind::Client { id, .. } | MenuImportKind::AppTemplate { id, .. } => {
+            menu_templates::find(id)
+                .map(|t| {
+                    t.categories
+                        .iter()
+                        .map(|c| c.items.len().saturating_add(1))
+                        .sum::<usize>()
+                        .max(1)
+                })
+                .unwrap_or(1)
+        }
     };
     *menu_import_progress().lock().unwrap() = (0, known_total);
     *menu_import_once().lock().unwrap() = None;
@@ -485,6 +492,7 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                             .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
                         store.import_menu_template(tmpl)
                     }
+                    MenuImportKind::AppTemplate { .. } => store.apply_rajdhani_app_template(),
                 }
             })();
             store::set_import_progress_notify(None);
