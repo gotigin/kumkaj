@@ -8935,7 +8935,7 @@ impl Store {
         role_title: &str,
         pin: &str,
         actor: &StaffMember,
-    ) -> Result<(), String> {
+    ) -> Result<String, String> {
         self.add_staff_with_features(
             &StaffHire {
                 name,
@@ -8954,7 +8954,7 @@ impl Store {
         &self,
         hire: &StaffHire<'_>,
         actor: &StaffMember,
-    ) -> Result<(), String> {
+    ) -> Result<String, String> {
         self.assert_server_writer("Add staff")?;
         if !actor.role.can_admin() {
             return Err("Only owner can add staff".into());
@@ -8984,12 +8984,13 @@ impl Store {
             hash_pin(hire.password.trim())?
         };
         let login_id = hire.login_id.trim().to_string();
+        let id = new_id();
         self.conn
             .execute(
                 "INSERT INTO staff(id, name, role, pin_hash, active, role_title, features_json, login_id, password_hash)
                  VALUES(?1, ?2, ?3, ?4, 1, ?5, ?6, ?7, ?8)",
                 params![
-                    new_id(),
+                    id,
                     name,
                     hire.role.as_str(),
                     hash,
@@ -9005,7 +9006,7 @@ impl Store {
             "staff.add",
             &format!("{name} as {title} ({})", hire.role.as_str()),
         )?;
-        Ok(())
+        Ok(id)
     }
 
     pub fn set_staff_features(

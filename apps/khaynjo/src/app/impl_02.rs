@@ -1579,9 +1579,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             } else {
                 (st.t("send_kot"), String::new(), false)
             };
-            // Person rights only — Client vs Server is how print runs (LAN vs
-            // local), never whether a capable person sees the control.
-            let may_reprint = session_may_reprint(st.session.as_ref());
+            // KOT reprint: kot_stations (not bill Right::Reprint). Client vs
+            // Server only changes where printers run.
+            let may_kot_reprint = st.session.as_ref().map(|s| {
+                let feats = s.effective_features();
+                st.cart.lines.iter().any(|l| {
+                    l.is_sent()
+                        && !l.reprint_skip
+                        && l.kot_id != QUEUED_KOT
+                        && {
+                            let sid = l.kitchen_station_id(&st.products);
+                            sid.is_empty() || feats.allows_kot_station(sid)
+                        }
+                })
+            }).unwrap_or(false);
             let reprint_n = st
                 .cart
                 .lines
@@ -1600,7 +1611,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
-                .set_visible(cx, has_sent && may_reprint);
+                .set_visible(cx, has_sent && may_kot_reprint);
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
                 .set_text(cx, &reprint_label);

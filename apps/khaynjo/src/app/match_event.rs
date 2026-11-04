@@ -1618,6 +1618,10 @@ impl MatchEvent for App {
                             .collect(),
                         tendered_paise: tendered,
                         tip_paise: tip,
+                        redeem_loyalty_points: pending_pts,
+                        redeem_wallet_paise: pending_wallet,
+                        redeem_voucher_code: pending_v_code,
+                        redeem_voucher_paise: pending_v_paise,
                     };
                     // Saved on this device first, then sent: a Wi‑Fi drop
                     // delays the bill, it never loses it.
@@ -2886,15 +2890,18 @@ impl MatchEvent for App {
                     .selected_table_id
                     .clone()
                     .ok_or_else(|| "Open a table first".to_string())?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or("No store")?;
-                let ids = store.fire_course(&tid, 1, &actor)?;
-                st.reload_all()?;
-                Ok(if ids.is_empty() {
-                    "Nothing to fire for course 1".into()
-                } else {
-                    format!("Fired course 1 · {} KOT(s)", ids.len())
-                })
+                match st.table_action(
+                    net::RunningAction::FireCourse {
+                        table_id: tid,
+                        course_no: 1,
+                    },
+                    "",
+                    "Fired course 1",
+                    phone::Follow::Refresh,
+                )? {
+                    Acted::Sent => Ok("Firing course 1…".into()),
+                    Acted::Here(_) => Ok("Fired course 1".into()),
+                }
             })();
             match result {
                 Ok(m) => self.set_status(cx, m),
@@ -2915,11 +2922,20 @@ impl MatchEvent for App {
                     .map(|l| l.running_line_id.clone())
                     .filter(|id| !id.is_empty())
                     .ok_or_else(|| "That line is not on the table order yet — Send KOT first or seat the table".to_string())?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or("No store")?;
-                store.set_line_held(&line_id, true, &actor)?;
-                st.reload_all()?;
-                Ok("Line held — Send KOT skips it until Fire course".into())
+                match st.table_action(
+                    net::RunningAction::HoldLine {
+                        line_id,
+                        held: true,
+                    },
+                    "",
+                    "Line held",
+                    phone::Follow::Refresh,
+                )? {
+                    Acted::Sent => Ok("Holding line…".into()),
+                    Acted::Here(_) => {
+                        Ok("Line held — Send KOT skips it until Fire course".into())
+                    }
+                }
             })();
             match result {
                 Ok(m) => self.set_status(cx, m),
@@ -2934,11 +2950,18 @@ impl MatchEvent for App {
                     .selected_table_id
                     .clone()
                     .ok_or_else(|| "Open a table first".to_string())?;
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or("No store")?;
-                store.queue_waiter_call(&tid, "service", &actor)?;
-                let _ = st.refresh_inventory_text();
-                Ok("Waiter call queued — clear from Floor ops".into())
+                match st.table_action(
+                    net::RunningAction::WaiterCall {
+                        table_id: tid,
+                        kind: "service".into(),
+                    },
+                    "",
+                    "Waiter call queued",
+                    phone::Follow::Refresh,
+                )? {
+                    Acted::Sent => Ok("Calling waiter…".into()),
+                    Acted::Here(_) => Ok("Waiter call queued — clear from Floor ops".into()),
+                }
             })();
             match result {
                 Ok(m) => self.set_status(cx, m),
@@ -4901,7 +4924,7 @@ impl MatchEvent for App {
                 }
                 let role = st.draft_staff_role;
                 let features = st.draft_features.clone();
-                st.books_op(BooksOp::HireStaff {
+                let msg = st.books_op(BooksOp::HireStaff {
                     name: name.clone(),
                     role,
                     role_title: title.clone(),
@@ -4910,15 +4933,22 @@ impl MatchEvent for App {
                     password: password.clone(),
                     features,
                 })?;
-                if st.device_role != DeviceRole::Client {
-                    st.team_staff_id = st
-                        .staff
-                        .iter()
-                        .rev()
-                        .find(|s| !s.is_owner())
-                        .map(|s| s.id.clone());
+                let (status, hired_id) = books_op::hired_staff_parts(&msg);
+                // Always select the person just hired — never "last non-owner".
+                if let Some(id) = hired_id.filter(|s| !s.is_empty()) {
+                    let draft = st.staff.iter().find(|s| s.id == id).map(|m| {
+                        (
+                            store::Store::hire_role_from(m),
+                            m.effective_features(),
+                        )
+                    });
+                    st.team_staff_id = Some(id.to_string());
+                    if let Some((role, features)) = draft {
+                        st.draft_staff_role = role;
+                        st.draft_features = features;
+                    }
                 }
-                st.status = format!("Added {}", name.trim());
+                st.status = status.to_string();
                 Ok(())
             })();
             if let Err(e) = result {

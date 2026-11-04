@@ -581,11 +581,27 @@ impl Store {
     ) -> Result<Vec<String>, String> {
         let table_id = table_id.filter(|t| !t.is_empty());
         // Person rights: refuse kitchens outside this user's allowed stations.
+        // Resolve empty line.station_id from the menu product — that is the
+        // kitchen the ticket will actually use.
         let feats = actor.effective_features();
         for line in draft.lines.iter().filter(|l| !l.kot_sent) {
-            let sid = line.station_id.trim();
-            if !sid.is_empty() && !feats.allows_kot_station(sid) {
-                return Err(format!("Not allowed to use kitchen station {sid}"));
+            let sid = {
+                let own = line.station_id.trim();
+                if !own.is_empty() {
+                    own.to_string()
+                } else {
+                    self.get_product(&line.product_id)?
+                        .map(|p| p.station_id)
+                        .unwrap_or_default()
+                }
+            };
+            if !sid.is_empty() && !feats.allows_kot_station(&sid) {
+                let name = self
+                    .list_stations()
+                    .ok()
+                    .and_then(|ss| ss.into_iter().find(|s| s.id == sid).map(|s| s.name))
+                    .unwrap_or_else(|| sid.clone());
+                return Err(format!("Not allowed to use kitchen: {name}"));
             }
         }
         self.in_transaction(|| {
@@ -680,6 +696,7 @@ impl Store {
         if lines.is_empty() {
             return Err("Nothing new to send — tap items first".into());
         }
+        let feats = actor.effective_features();
         let mut by_station: Vec<(String, Vec<&crate::domain::SaleLine>)> = Vec::new();
         for line in &lines {
             let station_id = {
@@ -692,6 +709,14 @@ impl Store {
                         .unwrap_or_default()
                 }
             };
+            if !station_id.is_empty() && !feats.allows_kot_station(&station_id) {
+                let name = stations
+                    .iter()
+                    .find(|s| s.id == station_id)
+                    .map(|s| s.name.as_str())
+                    .unwrap_or(station_id.as_str());
+                return Err(format!("Not allowed to use kitchen: {name}"));
+            }
             match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
                 Some((_, items)) => items.push(line),
                 None => by_station.push((station_id, vec![line])),
@@ -879,6 +904,16 @@ impl Store {
                         .map(|p| p.station_id)
                 })
                 .unwrap_or_default();
+            if !station_id.is_empty()
+                && !actor.effective_features().allows_kot_station(&station_id)
+            {
+                let name = stations
+                    .iter()
+                    .find(|s| s.id == station_id)
+                    .map(|s| s.name.as_str())
+                    .unwrap_or(station_id.as_str());
+                return Err(format!("Not allowed to use kitchen: {name}"));
+            }
             match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
                 Some((_, items)) => items.push(line),
                 None => by_station.push((station_id, vec![line])),

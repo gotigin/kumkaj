@@ -18,6 +18,16 @@ use std::path::{Path, PathBuf};
 /// Splits an expense reply into the status line and the new expense id.
 pub const EXPENSE_ID_MARK: &str = "\n---expense---\n";
 
+/// Splits a hire reply into the status line and the new staff id.
+pub const HIRED_STAFF_MARK: &str = "\n---hired---\n";
+
+pub fn hired_staff_parts(message: &str) -> (&str, Option<&str>) {
+    match message.split_once(HIRED_STAFF_MARK) {
+        Some((status, id)) => (status, Some(id.trim())),
+        None => (message, None),
+    }
+}
+
 /// One person-level change to the shop's books.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "op")]
@@ -869,7 +879,7 @@ impl Store {
                 password,
                 features,
             } => {
-                self.add_staff_with_features(
+                let id = self.add_staff_with_features(
                     &StaffHire {
                         name: &name,
                         role,
@@ -881,7 +891,7 @@ impl Store {
                     },
                     actor,
                 )?;
-                Ok(format!("Added {}", name.trim()))
+                Ok(format!("Added {}{HIRED_STAFF_MARK}{id}", name.trim()))
             }
             BooksOp::SetStaffLogin {
                 staff_id,

@@ -1178,17 +1178,18 @@ chrome peer — never “nav only.”
 | Inventory / Branches | Person caps only — **not** `!is_client` | `nav_tab_permitted` |
 | Firewall / pairing / extra tills / autostart | Server **host** + Owner | `is_shop && is_owner` chrome |
 | Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` / `books_op` |
-| Kitchen station on Order / Send KOT | Person’s `kot_stations` (None = all) | Team checklist + `allows_kot_station` |
-| Print bill again | `Right::Reprint` — **bills**, not kitchen stations | Team rights row |
+| Kitchen station on Order / Send KOT | Person’s `kot_stations` (None = all); store resolves menu kitchen when the line has none | Team checklist + `allows_kot_station` in `send_kot` / `send_kot_filtered` |
+| KOT print again | Person’s `kot_stations` for each line’s kitchen — **not** `Right::Reprint` | `reprint_selected_kots` |
+| Print bill again | `Right::Reprint` — **bills** only | Team rights row |
 
-**Team edit UX (do not regress — Khaynjo):** Hire (job + optional copy + Add) is
-one card. Screens, money rights, kitchen-station checkboxes, rename, copy-onto,
-remove, and Save live only inside `team_selected_setup`, visible after the
-owner picks who to edit (`team_staff_id`). Buttons name that person
-(“Save setup for Asif”, “Remove Asif”). Never show those controls with no
-selection, never fall back Save to “first non-owner”, never leave hire copy and
-edit draft sharing an ambiguous target. `Right::Reprint` = bill reprint;
-station access is the checklist (`StaffFeatures.kot_stations`), not that right.
+**Team edit UX (do not regress — Khaynjo and Moklanjo):** Hire (job + optional
+copy + Add) is one card. Screens, money rights, (Khaynjo) kitchen-station
+checkboxes, rename, copy-onto, remove, and Save live only inside
+`team_selected_setup`, visible after the owner picks who to edit
+(`team_staff_id`). After Add, select the **hired** person’s id (never “last
+non-owner”). Never show those controls with no selection, never fall back Save
+to “first non-owner”. `Right::Reprint` = bill reprint; station access is the
+checklist (`StaffFeatures.kot_stations`), not that right.
 
 **Job-first hire:** pick Waiter / Counter / Kitchen / Manager (or copy a person
 into the Add form). Tweaking screens / rights / stations is edit-after-pick, not

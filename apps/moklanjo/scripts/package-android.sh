@@ -17,7 +17,13 @@ export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env production
 
 OUT="$ROOT/dist/android"
-mkdir -p "$OUT"
+# Stage then swap on success — like MSI overwriting dist/Moklanjo-*.msi
+# (failed builds keep the previous good package).
+STAGE="$ROOT/dist/.android-staging.$$"
+rm -rf "$STAGE"
+mkdir -p "$STAGE"
+cleanup_stage() { rm -rf "$STAGE"; }
+trap cleanup_stage EXIT
 
 resolve_makepad_root
 export ANDROID_HOME="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
@@ -26,7 +32,7 @@ export ANDROID_SDK_ROOT="$ANDROID_HOME"
 android_pkg_opts "$ANDROID_HOME"
 android_release_opts
 
-cat > "$OUT/README.txt" <<EOF
+cat > "$STAGE/README.txt" <<EOF
 Kumkaj Android packaging
 ========================
 Application id: ${KUMKAJ_APP_ID}
@@ -61,6 +67,10 @@ echo "ANDROID_HOME: $ANDROID_HOME"
 
 if [[ ! -d "$ANDROID_HOME" ]]; then
   echo "Android SDK not found at ANDROID_HOME — scaffold only."
+  # Still publish the notes so the folder exists.
+  rm -rf "$OUT"
+  mv "$STAGE" "$OUT"
+  trap - EXIT
   echo "Android notes: $OUT/README.txt"
   exit 0
 fi
@@ -71,7 +81,7 @@ fix_makepad_android_deprecations
 
 CARGO_MP=(cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release --)
 
-LOG="$OUT/build.log"
+LOG="$STAGE/build.log"
 set +e
 "${CARGO_MP[@]}" android "${ANDROID_PKG_OPTS[@]}" build -p kumkaj-moklanjo --release 2>&1 | tee "$LOG"
 STATUS=${PIPESTATUS[0]}
@@ -82,12 +92,16 @@ source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cd "$ROOT" && cargo_target_dir)"
 # This build's APK: named after the production label (not the dev one, not
 # another app's or ABI's leftover).
-APK="$TARGET_DIR/android/makepad-android-apk/kumkaj_moklanjo/apk/$(echo "$KUMKAJ_APP_LABEL" | tr -d ' ' | tr '[:upper:]' '[:lower:]').apk"
-rm -f "$OUT/kumkaj-moklanjo.apk" "$OUT/kumkaj-moklanjo.aab"
-if [[ $STATUS -eq 0 && -f "$APK" ]]; then
-  cp -f "$APK" "$OUT/kumkaj-moklanjo.apk"
+APK_DIR="$TARGET_DIR/android/makepad-android-apk/kumkaj_moklanjo/apk"
+APK_LABEL="$(echo "$KUMKAJ_APP_LABEL" | tr -d ' ' | tr '[:upper:]' '[:lower:]').apk"
+APK="$APK_DIR/$APK_LABEL"
+if [[ ! -f "$APK" ]]; then
+  APK="$(find "$APK_DIR" -maxdepth 1 -name '*.apk' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2- || true)"
+fi
+if [[ $STATUS -eq 0 && -n "${APK:-}" && -f "$APK" ]]; then
+  cp -f "$APK" "$STAGE/kumkaj-moklanjo.apk"
   echo "APK → $OUT/kumkaj-moklanjo.apk"
-  android_release_sign "$OUT/kumkaj-moklanjo.apk" "$ANDROID_HOME"
+  android_release_sign "$STAGE/kumkaj-moklanjo.apk" "$ANDROID_HOME"
   if android_release_keystore_set; then
     android_aab_sign_opts
     set +e
@@ -96,21 +110,24 @@ if [[ $STATUS -eq 0 && -f "$APK" ]]; then
     set -e
     AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_moklanjo" -maxdepth 1 -name '*.aab' 2>/dev/null | head -1 || true)"
     if [[ $STATUS -eq 0 && -n "$AAB" ]]; then
-      cp -f "$AAB" "$OUT/kumkaj-moklanjo.aab"
+      cp -f "$AAB" "$STAGE/kumkaj-moklanjo.aab"
       echo "Play bundle → $OUT/kumkaj-moklanjo.aab"
     fi
   fi
 elif [[ $STATUS -eq 0 ]]; then
-  echo "Built, but $APK is missing" >&2
+  echo "Built, but no APK under $APK_DIR" >&2
   STATUS=1
 fi
-cp -f "$ROOT/docs/LAN_QUICK_START.md" "$OUT/Quick start.txt"
-cp -f "$ROOT/web/play-store-listing.txt" "$OUT/PLAY_STORE_LISTING.txt" 2>/dev/null || true
+cp -f "$ROOT/docs/LAN_QUICK_START.md" "$STAGE/Quick start.txt"
+cp -f "$ROOT/web/play-store-listing.txt" "$STAGE/PLAY_STORE_LISTING.txt" 2>/dev/null || true
 
 if [[ $STATUS -eq 0 ]]; then
-  echo "Android build succeeded — see $OUT/ and $LOG"
+  rm -rf "$OUT"
+  mv "$STAGE" "$OUT"
+  trap - EXIT
+  echo "Android build succeeded — see $OUT/ and $OUT/build.log"
 else
-  echo "Android build did not complete (exit $STATUS). See $LOG and README.txt"
+  echo "Android build did not complete (exit $STATUS). See $LOG — previous $OUT kept if present."
 fi
-echo "Android package notes: $OUT/README.txt"
+echo "Android package notes: ${OUT}/README.txt (after a successful build)"
 exit "$STATUS"

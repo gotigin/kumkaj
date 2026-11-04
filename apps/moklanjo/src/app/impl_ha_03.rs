@@ -667,8 +667,10 @@ impl App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.draft_staff_role = StaffRole::Cashier;
+                st.team_staff_id = None;
                 st.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
             }
+            self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
             self.set_status(cx, "Preset: Cashier");
             self.sync_chrome(cx);
         }
@@ -681,8 +683,10 @@ impl App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.draft_staff_role = StaffRole::Manager;
+                st.team_staff_id = None;
                 st.draft_features = StaffFeatures::for_role(StaffRole::Manager);
             }
+            self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
             self.set_status(cx, "Preset: Manager");
             self.sync_chrome(cx);
         }
@@ -699,7 +703,7 @@ impl App {
                 }
                 let role = st.draft_staff_role;
                 let features = st.draft_features.clone();
-                st.books_op(BooksOp::HireStaff {
+                let msg = st.books_op(BooksOp::HireStaff {
                     name: name.clone(),
                     role,
                     role_title: title.clone(),
@@ -708,15 +712,20 @@ impl App {
                     password: password.clone(),
                     features,
                 })?;
-                if st.device_role != DeviceRole::Client {
-                    st.team_staff_id = st
+                let (status, hired_id) = books_op::hired_staff_parts(&msg);
+                if let Some(id) = hired_id.filter(|s| !s.is_empty()) {
+                    let draft = st
                         .staff
                         .iter()
-                        .rev()
-                        .find(|s| !s.is_owner())
-                        .map(|s| s.id.clone());
+                        .find(|s| s.id == id)
+                        .map(|m| (m.role, m.features.clone()));
+                    st.team_staff_id = Some(id.to_string());
+                    if let Some((role, features)) = draft {
+                        st.draft_staff_role = role;
+                        st.draft_features = features;
+                    }
                 }
-                st.status = format!("Added {}", name.trim());
+                st.status = status.to_string();
                 Ok(())
             })();
             if let Err(e) = result {
@@ -737,6 +746,17 @@ impl App {
                 self.ui
                     .text_input(cx, ids!(staff_password_input))
                     .set_text(cx, "");
+                let pick_name = {
+                    let st = app_state().lock().unwrap();
+                    st.team_staff_id
+                        .as_ref()
+                        .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                        .map(|s| s.name.clone())
+                        .unwrap_or_default()
+                };
+                self.ui
+                    .text_input(cx, ids!(team_pick_input))
+                    .set_text(cx, &pick_name);
             }
             self.sync_chrome(cx);
         }
@@ -915,20 +935,26 @@ impl App {
             (ids!(feat_branches), ids!(feat_branches_on), "branches"),
         ] {
             if self.choice_chip_clicked(cx, actions, id, on) {
-                let mut st = app_state().lock().unwrap();
-                match toggle {
-                    "sell" => st.draft_features.sell = !st.draft_features.sell,
-                    "items" => st.draft_features.items = !st.draft_features.items,
-                    "sales" => st.draft_features.sales = !st.draft_features.sales,
-                    "credit" => st.draft_features.credit = !st.draft_features.credit,
-                    "team" => st.draft_features.team = !st.draft_features.team,
-                    "backup" => st.draft_features.backup = !st.draft_features.backup,
-                    "inventory" => st.draft_features.inventory = !st.draft_features.inventory,
-                    "branches" => st.draft_features.branches = !st.draft_features.branches,
-                    _ => {}
-                }
-                st.status = "Access changed — Save features for selected staff".into();
-                drop(st);
+                let msg = {
+                    let mut st = app_state().lock().unwrap();
+                    if st.team_staff_id.is_none() {
+                        "Select who to edit first".to_string()
+                    } else {
+                        match toggle {
+                            "sell" => st.draft_features.sell = !st.draft_features.sell,
+                            "items" => st.draft_features.items = !st.draft_features.items,
+                            "sales" => st.draft_features.sales = !st.draft_features.sales,
+                            "credit" => st.draft_features.credit = !st.draft_features.credit,
+                            "team" => st.draft_features.team = !st.draft_features.team,
+                            "backup" => st.draft_features.backup = !st.draft_features.backup,
+                            "inventory" => st.draft_features.inventory = !st.draft_features.inventory,
+                            "branches" => st.draft_features.branches = !st.draft_features.branches,
+                            _ => {}
+                        }
+                        "Screens changed — Save setup for this person".into()
+                    }
+                };
+                self.set_status(cx, msg);
                 self.sync_chrome(cx);
             }
         }
@@ -972,13 +998,18 @@ impl App {
             (ids!(right_amend_btn), domain::Right::AmendSale),
         ] {
             if self.ui.button(cx, button).clicked(actions) {
-                {
+                let msg = {
                     let mut st = app_state().lock().unwrap();
-                    let mut rights = st.team_draft_rights();
-                    rights.set_level(right, rights.level(right).cycle());
-                    st.draft_features.rights = Some(rights);
-                    st.status = "Rights changed — Save features for selected staff".into();
-                }
+                    if st.team_staff_id.is_none() {
+                        "Select who to edit first".to_string()
+                    } else {
+                        let mut rights = st.team_draft_rights();
+                        rights.set_level(right, rights.level(right).cycle());
+                        st.draft_features.rights = Some(rights);
+                        "Rights changed — Save setup for this person".into()
+                    }
+                };
+                self.set_status(cx, msg);
                 self.sync_chrome(cx);
             }
         }
@@ -988,13 +1019,7 @@ impl App {
                 let staff_id = st
                     .team_staff_id
                     .clone()
-                    .or_else(|| {
-                        st.staff
-                            .iter()
-                            .find(|s| !s.is_owner())
-                            .map(|s| s.id.clone())
-                    })
-                    .ok_or_else(|| "Add staff first".to_string())?;
+                    .ok_or_else(|| "Select who to edit first".to_string())?;
                 let features = st.draft_features.clone();
                 st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
                 st.status = "Staff features saved".into();

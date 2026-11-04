@@ -1369,7 +1369,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
 
         // Team: who is being edited, and their rights (draft until Save).
         {
-            let (selected, rights, on, manage_team, lang) = {
+            let (selected, rights, on, manage_team, has_selected, lang) = {
                 let st = app_state().lock().unwrap();
                 let selected = st
                     .team_staff_id
@@ -1385,12 +1385,19 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         .as_ref()
                         .map(|m| m.can_manage_team())
                         .unwrap_or(false),
+                    st.team_staff_id.is_some(),
                     st.locale.language.clone(),
                 )
             };
             self.ui
                 .view(cx, ids!(team_admin_block))
                 .set_visible(cx, manage_team);
+            self.ui
+                .view(cx, ids!(team_selected_setup))
+                .set_visible(cx, manage_team && has_selected);
+            self.ui
+                .widget(cx, ids!(team_pick_hint))
+                .set_visible(cx, manage_team && !has_selected);
             {
                 let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
                 let title = locale::t(&lang, if manage_team { "team" } else { "my_pin_settings" });
@@ -1406,34 +1413,40 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 help.set_nav_icon(cx, NavTab::Team);
                 help.set_tip(&plain_display_text(&tip));
             }
-            for (idle, active, set) in [
-                (ids!(feat_sell), ids!(feat_sell_on), on.sell),
-                (ids!(feat_items), ids!(feat_items_on), on.items),
-                (ids!(feat_sales), ids!(feat_sales_on), on.sales),
-                (ids!(feat_credit), ids!(feat_credit_on), on.credit),
-                (ids!(feat_team), ids!(feat_team_on), on.team),
-                (ids!(feat_backup), ids!(feat_backup_on), on.backup),
-                (ids!(feat_inventory), ids!(feat_inventory_on), on.inventory),
-                (ids!(feat_branches), ids!(feat_branches_on), on.branches),
-            ] {
-                self.paint_choice_pair(cx, idle, active, set);
-            }
-            self.ui
-                .widget(cx, ids!(team_selected_label))
-                .set_text(cx, &plain_display_text(&selected));
-            for (button, right) in [
-                (ids!(right_void_btn), domain::Right::VoidRefund),
-                (ids!(right_amend_btn), domain::Right::AmendSale),
-            ] {
-                let level = match rights.level(right) {
-                    domain::RightLevel::Allowed => "right_allowed",
-                    domain::RightLevel::WithApproval => "right_with_approval",
-                    domain::RightLevel::Denied => "right_denied",
-                };
-                self.ui.button(cx, button).set_text(
-                    cx,
-                    &format!("{}: {}", locale::t(&lang, right.label_key()), locale::t(&lang, level)),
-                );
+            if manage_team && has_selected {
+                for (idle, active, set) in [
+                    (ids!(feat_sell), ids!(feat_sell_on), on.sell),
+                    (ids!(feat_items), ids!(feat_items_on), on.items),
+                    (ids!(feat_sales), ids!(feat_sales_on), on.sales),
+                    (ids!(feat_credit), ids!(feat_credit_on), on.credit),
+                    (ids!(feat_team), ids!(feat_team_on), on.team),
+                    (ids!(feat_backup), ids!(feat_backup_on), on.backup),
+                    (ids!(feat_inventory), ids!(feat_inventory_on), on.inventory),
+                    (ids!(feat_branches), ids!(feat_branches_on), on.branches),
+                ] {
+                    self.paint_choice_pair(cx, idle, active, set);
+                }
+                self.ui
+                    .widget(cx, ids!(team_selected_label))
+                    .set_text(cx, &plain_display_text(&selected));
+                for (button, right) in [
+                    (ids!(right_void_btn), domain::Right::VoidRefund),
+                    (ids!(right_amend_btn), domain::Right::AmendSale),
+                ] {
+                    let level = match rights.level(right) {
+                        domain::RightLevel::Allowed => "right_allowed",
+                        domain::RightLevel::WithApproval => "right_with_approval",
+                        domain::RightLevel::Denied => "right_denied",
+                    };
+                    self.ui.button(cx, button).set_text(
+                        cx,
+                        &format!(
+                            "{}: {}",
+                            locale::t(&lang, right.label_key()),
+                            locale::t(&lang, level)
+                        ),
+                    );
+                }
             }
         }
 

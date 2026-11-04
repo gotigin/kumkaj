@@ -171,6 +171,21 @@ pub enum RunningAction {
         from_table_id: String,
         to_table_id: String,
     },
+    /// Unhold + send pending lines for one course (Client → Server).
+    FireCourse {
+        table_id: String,
+        course_no: i64,
+    },
+    /// Hold a pending running line off Send KOT until Fire course.
+    HoldLine {
+        line_id: String,
+        held: bool,
+    },
+    /// Queue a waiter call for a table (Floor / Order).
+    WaiterCall {
+        table_id: String,
+        kind: String,
+    },
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -220,6 +235,17 @@ pub struct RemoteSaleRequest {
     pub tendered_paise: i64,
     #[serde(default)]
     pub tip_paise: i64,
+    /// Loyalty points to debit on the Server (Client already discounted the cart).
+    #[serde(default)]
+    pub redeem_loyalty_points: i64,
+    /// Wallet paise to debit on the Server.
+    #[serde(default)]
+    pub redeem_wallet_paise: i64,
+    /// Voucher code + paise to debit on the Server.
+    #[serde(default)]
+    pub redeem_voucher_code: String,
+    #[serde(default)]
+    pub redeem_voucher_paise: i64,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -375,8 +401,10 @@ pub const HEADER_PROTOCOL: &str = "X-Kumkaj-Protocol";
 /// device read a newer snapshot as "no reply" and looked offline for ever).
 /// Bumped to 2 for WebSocket `/ws` + revisioned deltas (`lan_ws.rs`).
 /// Bumped to 3 for Client recovery KOT print (`POST /kot_reprint`).
+/// Bumped to 4 for Client Fire course / Hold line / Waiter call + sale
+/// loyalty/wallet/voucher redeem fields on `/sale`.
 /// Older Clients keep working via `/wait` + `/sync`; mismatched peers get 426.
-pub const LAN_PROTOCOL: u32 = 3;
+pub const LAN_PROTOCOL: u32 = 4;
 
 /// Longest a device's `/wait` is held open before the Server answers anyway.
 pub const WAIT_MAX_SECS: u64 = 30;
@@ -1088,17 +1116,18 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
 }
 
 /// Recovery print: selected sent lines again on this Server's kitchen printers.
-/// Shared by the Order desk (Server) and `POST /kot_reprint` (Client). Person
-/// Reprint right is checked here — DeviceRole is never a gate.
+/// Shared by the Order desk (Server) and `POST /kot_reprint` (Client).
+/// Kitchen access is `kot_stations` (not `Right::Reprint` — that is bills only).
+/// DeviceRole is never a gate.
 pub fn reprint_selected_kots(
     store: &Store,
     actor: &StaffMember,
     req: &RemoteKotReprintRequest,
 ) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
-    store.check_right(actor, crate::domain::Right::Reprint, None)?;
     if req.lines.is_empty() {
         return Err("Every sent dish is skipped — tap In print on the ones to reprint".into());
     }
+    let feats = actor.effective_features();
     let stations = store.list_stations().unwrap_or_default();
     let priority: Vec<String> = store
         .kot_station_priority_csv()
@@ -1143,6 +1172,9 @@ pub fn reprint_selected_kots(
                 .map(|s| s.name.clone())
                 .unwrap_or_else(|| unassigned.to_string())
         };
+        if !sid.is_empty() && !feats.allows_kot_station(&sid) {
+            return Err(format!("Not allowed to reprint kitchen: {name}"));
+        }
         match groups.iter_mut().find(|(id, _, _)| id == &sid) {
             Some((_, _, lines)) => lines.push(line),
             None => groups.push((sid, name, vec![line])),
@@ -1357,6 +1389,22 @@ pub fn apply_running_action(
             to_table_id,
         } => {
             store.reseat_pending(from_table_id, to_table_id, actor)?;
+            Ok(None)
+        }
+        RunningAction::FireCourse {
+            table_id,
+            course_no,
+        } => {
+            let ids = store.fire_course(table_id, *course_no, actor)?;
+            let _ = print_sent_kots(store, &ids);
+            Ok(None)
+        }
+        RunningAction::HoldLine { line_id, held } => {
+            store.set_line_held(line_id, *held, actor)?;
+            Ok(None)
+        }
+        RunningAction::WaiterCall { table_id, kind } => {
+            store.queue_waiter_call(table_id, kind, actor)?;
             Ok(None)
         }
     }
@@ -1976,6 +2024,30 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
             None => Err(format!("{what} needs a customer")),
         }
     };
+    let needs_redeem = req.redeem_loyalty_points > 0
+        || req.redeem_wallet_paise > 0
+        || req.redeem_voucher_paise > 0;
+    let redeem_customer = customer_for(store, needs_redeem, "Loyalty / wallet / voucher")?;
+    if needs_redeem {
+        let cid = redeem_customer
+            .as_deref()
+            .ok_or_else(|| "Loyalty / wallet / voucher needs a customer".to_string())?;
+        if req.redeem_voucher_paise > 0 && !req.redeem_voucher_code.trim().is_empty() {
+            let bal = store.voucher_balance(&req.redeem_voucher_code)?;
+            if bal < req.redeem_voucher_paise {
+                return Err("Voucher balance changed — clear redeem and try again".into());
+            }
+        }
+        if req.redeem_loyalty_points > 0 {
+            store.redeem_loyalty(cid, req.redeem_loyalty_points, actor)?;
+        }
+        if req.redeem_wallet_paise > 0 {
+            store.wallet_spend(cid, req.redeem_wallet_paise, actor)?;
+        }
+        if req.redeem_voucher_paise > 0 && !req.redeem_voucher_code.trim().is_empty() {
+            store.redeem_voucher(&req.redeem_voucher_code, req.redeem_voucher_paise, actor)?;
+        }
+    }
     let sale = if req.payments.is_empty() {
         let customer_id = customer_for(store, pay.is_credit(), "Credit sale")?;
         store.finalize_sale(&req.draft, pay, table_id.as_deref(), customer_id.as_deref(), actor)?
@@ -3123,6 +3195,10 @@ mod tests {
             payments: Vec::new(),
             tendered_paise: 0,
             tip_paise: 0,
+            redeem_loyalty_points: 0,
+            redeem_wallet_paise: 0,
+            redeem_voucher_code: String::new(),
+            redeem_voucher_paise: 0,
         })
         .unwrap();
         let draft = cart.to_sale_draft().unwrap();
@@ -3651,6 +3727,10 @@ mod tests {
                                     payments: Vec::new(),
                                     tendered_paise: 0,
                                     tip_paise: 0,
+                                    redeem_loyalty_points: 0,
+                                    redeem_wallet_paise: 0,
+                                    redeem_voucher_code: String::new(),
+                                    redeem_voucher_paise: 0,
                                 };
                                 ("/sale", serde_json::to_string(&sale).unwrap())
                             };

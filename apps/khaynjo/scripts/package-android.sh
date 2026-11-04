@@ -32,8 +32,15 @@ android_pkg_opts "$ANDROID_HOME"
 android_release_opts
 
 OUT="$ROOT/dist/khaynjo-android"
-mkdir -p "$OUT"
-LOG="$OUT/build.log"
+# Stage into a fresh folder, then swap over `$OUT` only on success — same
+# idea as MSI overwriting dist/Khaynjo-*.msi (no stale leftovers; a failed
+# build leaves the previous good package).
+STAGE="$ROOT/dist/.khaynjo-android-staging.$$"
+rm -rf "$STAGE"
+mkdir -p "$STAGE"
+LOG="$STAGE/build.log"
+cleanup_stage() { rm -rf "$STAGE"; }
+trap cleanup_stage EXIT
 echo "Makepad: $MAKEPAD_ROOT"
 echo "ANDROID_HOME: $ANDROID_HOME"
 echo "Building ${KUMKAJ_APP_ID} (${KUMKAJ_APP_LABEL}) release APK…"
@@ -48,15 +55,20 @@ source "$ROOT/scripts/cargo-target-dir.sh"
 TARGET_DIR="$(cargo_target_dir)"
 # This build's APK: named after the production label (not the dev one,
 # not another ABI's leftover).
-APK="$TARGET_DIR/android/makepad-android-apk/kumkaj_khaynjo/apk/$(echo "$KUMKAJ_APP_LABEL" | tr -d ' ' | tr '[:upper:]' '[:lower:]').apk"
-if [[ $STATUS -ne 0 || ! -f "$APK" ]]; then
+APK_DIR="$TARGET_DIR/android/makepad-android-apk/kumkaj_khaynjo/apk"
+APK_LABEL="$(echo "$KUMKAJ_APP_LABEL" | tr -d ' ' | tr '[:upper:]' '[:lower:]').apk"
+APK="$APK_DIR/$APK_LABEL"
+if [[ ! -f "$APK" ]]; then
+  APK="$(find "$APK_DIR" -maxdepth 1 -name '*.apk' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2- || true)"
+fi
+if [[ $STATUS -ne 0 || -z "${APK:-}" || ! -f "$APK" ]]; then
   echo "Android build did not complete (exit $STATUS). See $LOG" >&2
+  # Keep previous $OUT; drop staging via trap.
   exit 1
 fi
-cp -f "$APK" "$OUT/kumkaj-khaynjo.apk"
-android_release_sign "$OUT/kumkaj-khaynjo.apk" "$ANDROID_HOME"
+cp -f "$APK" "$STAGE/kumkaj-khaynjo.apk"
+android_release_sign "$STAGE/kumkaj-khaynjo.apk" "$ANDROID_HOME"
 SIGNED="Makepad's debug key — for trying out only; a shop's devices need the release key"
-rm -f "$OUT/khaynjo.aab"
 if android_release_keystore_set; then
   SIGNED="the Khaynjo release key"
   android_aab_sign_opts
@@ -67,10 +79,10 @@ if android_release_keystore_set; then
     echo "Play bundle build did not complete. See $LOG" >&2
     exit 1
   fi
-  cp -f "$AAB" "$OUT/khaynjo.aab"
+  cp -f "$AAB" "$STAGE/khaynjo.aab"
   echo "Play bundle → $OUT/khaynjo.aab"
 fi
-cat > "$OUT/README.txt" <<EOF
+cat > "$STAGE/README.txt" <<EOF
 Khaynjo for Android phones and tablets
 ======================================
 App id: ${KUMKAJ_APP_ID}
@@ -89,5 +101,9 @@ At launch pick what this device is:
 The Server can be any device running Khaynjo: Windows, Linux or Android.
 First start in Server Mode asks for the Owner PIN — there is no default PIN.
 EOF
-cp -f "$ROOT/docs/LAN_QUICK_START.md" "$OUT/Quick start.txt"
+cp -f "$ROOT/docs/LAN_QUICK_START.md" "$STAGE/Quick start.txt"
+# Atomic replace of the published folder (like MSI overwriting the .msi).
+rm -rf "$OUT"
+mv "$STAGE" "$OUT"
+trap - EXIT
 echo "APK → $OUT/kumkaj-khaynjo.apk"

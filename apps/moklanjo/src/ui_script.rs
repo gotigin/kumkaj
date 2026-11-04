@@ -5456,6 +5456,25 @@ script_mod! {
                                 staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 }
                                 FormCard{
+                                team_pick_input := FieldInput{empty_text: "Tap a staff name in the list to edit"}
+                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
+                                team_pick_btn := NavBtn{text: "Select this staff" visible: false}
+                                team_pick_hint := WrapLabel{
+                                    body: "Pick who to edit — screens and rights appear for that person only."
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                }
+                                team_selected_setup := View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
+                                visible: false
+                                team_selected_label := WrapLabel{
+                                    width: Fit
+                                    body: " "
+                                    font_color: #x0B1220
+                                    font_size: 13.
+                                }
+                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_feature_access_help := WrapLabel{
                                     body: "What they can open (optional)"
                                     font_color: #x0B1220
@@ -5513,25 +5532,13 @@ script_mod! {
                                         chev_r := ChevronBtn{visible: false}
                                     }
                                 }
-                                // Pick who to edit by name; their rights below are a
-                                // draft until Save.
-                                team_pick_input := FieldInput{empty_text: "Tap a staff name in the list to edit"}
-                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
-                                // Pick selects immediately; keep for typed + Enter only (hidden).
-                                team_pick_btn := NavBtn{text: "Select this staff" visible: false}
-                                team_selected_label := WrapLabel{
-                                    width: Fit
-                                    body: " "
-                                    font_color: #x0B1220
-                                    font_size: 13.
-                                }
-                                staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_rights_help := InfoHelp{
                                     tip: "Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed."
                                 }
                                 right_void_btn := NavBtn{text: "Void or refund a booking"}
                                 right_amend_btn := NavBtn{text: "Amend a recorded booking"}
                                 feat_save := StackPrimaryBtn{text: "Save job setup"}
+                                } // team_selected_setup
                                 }
                                 } // team_admin_block
                                 FormCard{

@@ -19,9 +19,19 @@ pub const SHIFT_SLIP_MARK: &str = "\n---slip---\n";
 /// Splits an expense reply into the status line and the new expense id.
 pub const EXPENSE_ID_MARK: &str = "\n---expense---\n";
 
+/// Splits a hire reply into the status line and the new staff id.
+pub const HIRED_STAFF_MARK: &str = "\n---hired---\n";
+
 pub fn shift_slip_parts(message: &str) -> (&str, Option<&str>) {
     match message.split_once(SHIFT_SLIP_MARK) {
         Some((status, slip)) => (status, Some(slip)),
+        None => (message, None),
+    }
+}
+
+pub fn hired_staff_parts(message: &str) -> (&str, Option<&str>) {
+    match message.split_once(HIRED_STAFF_MARK) {
+        Some((status, id)) => (status, Some(id.trim())),
         None => (message, None),
     }
 }
@@ -643,17 +653,26 @@ impl Store {
                 Ok(format!("Language: {code}"))
             }
             BooksOp::SetCurrency { code } => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change currency".into());
+                }
                 let mut settings = self.locale_settings()?;
                 settings.currency = code.clone();
                 self.set_locale_settings(&settings)?;
                 Ok(format!("Currency: {code}"))
             }
             BooksOp::UpdateParty { id, name, phone, birthday, kind } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to edit parties".into());
+                }
                 self.update_customer_details(&id, &name, &phone, Some(&birthday))?;
                 self.set_customer_kind_label(&id, kind.trim())?;
                 Ok(format!("Party updated: {}", name.trim()))
             }
             BooksOp::AddParty { name, phone, birthday, kind } => {
+                if !actor.is_owner() && !actor.can_access_credit() && !actor.can_access_sell() {
+                    return Err("Not allowed to add parties".into());
+                }
                 let customer = self.add_customer_kind(&name, &phone, kind.trim())?;
                 if !birthday.trim().is_empty() {
                     self.update_customer_details(
@@ -668,8 +687,16 @@ impl Store {
                     name.trim()
                 ))
             }
-            BooksOp::DeleteParty { id } => self.delete_customer(&id),
+            BooksOp::DeleteParty { id } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to delete parties".into());
+                }
+                self.delete_customer(&id)
+            }
             BooksOp::SetCreditLimit { customer_id, name, limit_paise } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to set credit limits".into());
+                }
                 let customer = if !customer_id.is_empty() {
                     self.get_customer(&customer_id)?
                         .ok_or_else(|| "Party not found".to_string())?
@@ -830,6 +857,9 @@ impl Store {
                 Ok(format!("{name} back on the menu"))
             }
             BooksOp::SetProductAvailable { id, name, available } => {
+                if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                    return Err("Not allowed to manage items".into());
+                }
                 self.set_product_available(&id, available)?;
                 Ok(if available {
                     format!("{name} restocked")
@@ -913,7 +943,7 @@ impl Store {
                 Ok(format!("{name} · buy more at {level} {unit}").trim_end().to_string())
             }
             BooksOp::HireStaff { name, role, role_title, pin, login_id, password, features } => {
-                self.add_staff_with_features(
+                let id = self.add_staff_with_features(
                     &StaffHire {
                         name: &name,
                         role,
@@ -925,7 +955,7 @@ impl Store {
                     },
                     actor,
                 )?;
-                Ok(format!("Added {}", name.trim()))
+                Ok(format!("Added {}{HIRED_STAFF_MARK}{id}", name.trim()))
             }
             BooksOp::SetStaffLogin { staff_id, login_id, password } => {
                 self.set_staff_login(&staff_id, &login_id, &password, actor)?;
@@ -998,28 +1028,46 @@ impl Store {
                 Ok("Business id saved".into())
             }
             BooksOp::SetBillFormat { header, fssai, footer, upi_vpa, upi_payee } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
                 self.set_bill_format_ex(&header, &fssai, &footer, Some(&upi_vpa), Some(&upi_payee))?;
                 Ok("Bill format saved".into())
             }
             BooksOp::ImportPrintStamp { filename, bytes } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
                 let file = write_upload(&filename, &bytes)?;
                 let _ = self.import_print_stamp(file.path())?;
                 Ok("Stamp saved for bill faces".into())
             }
             BooksOp::ImportPaymentQr { filename, bytes } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
                 let file = write_upload(&filename, &bytes)?;
                 let _ = self.import_payment_qr(file.path())?;
                 Ok("Payment QR saved for bill faces".into())
             }
             BooksOp::ClearPrintStamp => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
                 self.set_print_stamp_key(None)?;
                 Ok("Stamp cleared".into())
             }
             BooksOp::ClearPaymentQr => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
                 self.set_payment_qr_key(None)?;
                 Ok("Payment QR cleared".into())
             }
             BooksOp::SetKotFormat { format } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change KOT format".into());
+                }
                 let _ = self.set_kot_slip_format(&format)?;
                 Ok("KOT format saved".into())
             }
@@ -1039,14 +1087,23 @@ impl Store {
                 Ok(format!("Area {name} added"))
             }
             BooksOp::AddTablesRange { prefix, from, to, area } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage tables".into());
+                }
                 let added = self.add_tables_range(&prefix, from, to, &area)?;
                 Ok(format!("{added} table(s) added ({prefix}{from}–{prefix}{to})"))
             }
             BooksOp::AddTable { name, area } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage tables".into());
+                }
                 let table = self.add_table_in_area(&name, &area)?;
                 Ok(format!("Table {} added", table.name))
             }
             BooksOp::RemoveTables { names } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage tables".into());
+                }
                 let (removed, busy) = self.remove_tables_named(&names)?;
                 let mut msg = format!("{removed} table(s) removed");
                 if !busy.is_empty() {
@@ -1055,6 +1112,9 @@ impl Store {
                 Ok(msg)
             }
             BooksOp::AddStation { name } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage kitchen stations".into());
+                }
                 let station = self.add_station(&name)?;
                 Ok(format!(
                     "Station {} added — set its printers in Settings → Where things print",
@@ -1174,6 +1234,9 @@ impl Store {
                 Ok(format!("Expense logged{EXPENSE_ID_MARK}{id}"))
             }
             BooksOp::SaveBackupCopy => {
+                if !actor.is_owner() && !actor.can_access_backup() {
+                    return Err("Not allowed to save a backup copy".into());
+                }
                 let stamp = chrono::Local::now().format("%Y%m%d-%H%M");
                 let file = self.auto_backup_dir().join(format!("copy-{stamp}.sqlite3"));
                 self.backup_to(&file)?;

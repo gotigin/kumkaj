@@ -70,14 +70,16 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
 
     /// Recovery print: kitchen slips for **included** sent lines only
     /// (include/exclude on the ticket). Not a new Send — paper only.
-    /// Person Reprint right gates visibility/action; Client/Server only
-    /// changes *where* the printers run (LAN → Server kitchen printers).
+    /// Person `kot_stations` gates which kitchens may reprint; Client/Server
+    /// only changes *where* the printers run (LAN → Server kitchen printers).
+    /// `Right::Reprint` is bills only — not used here.
     fn reprint_open_kots(&mut self, cx: &mut Cx) -> Result<String, String> {
         let _ = cx;
         let st = app_state().lock().unwrap();
-        if !session_may_reprint(st.session.as_ref()) {
-            return Err("Not allowed to print KOTs again — ask the owner".into());
-        }
+        let Some(session) = st.session.as_ref() else {
+            return Err("Unlock first".into());
+        };
+        let feats = session.effective_features();
         let has_sent = st.cart.lines.iter().any(|l| {
             l.is_sent() && !l.kot_id.is_empty() && l.kot_id != QUEUED_KOT
         });
@@ -97,6 +99,20 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .collect();
         if selected.is_empty() {
             return Err(st.t("reprint_kot_none_selected"));
+        }
+        for line in &selected {
+            let sid = line.kitchen_station_id(&st.products);
+            if !sid.is_empty() && !feats.allows_kot_station(sid) {
+                let name = st
+                    .stations
+                    .iter()
+                    .find(|s| s.id == sid)
+                    .map(|s| s.name.as_str())
+                    .unwrap_or(sid);
+                return Err(st
+                    .t("kot_station_not_allowed")
+                    .replace("{station}", name));
+            }
         }
         let table_id = st.selected_table_id.clone();
         let table_name = table_id.as_ref().and_then(|id| {
@@ -687,6 +703,10 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                         payments: Vec::new(),
                         tendered_paise: 0,
                         tip_paise: 0,
+                        redeem_loyalty_points: 0,
+                        redeem_wallet_paise: 0,
+                        redeem_voucher_code: String::new(),
+                        redeem_voucher_paise: 0,
                     };
                     let place = table_name.unwrap_or_else(|| "counter".into());
                     st.lan_job(
