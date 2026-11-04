@@ -72,6 +72,13 @@ pub struct SyncSnapshot {
     /// sending them all again. Not part of what is hashed.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub rev: String,
+    /// Monotonic tip from the live channel (`LAN_PROTOCOL` ≥ 2).
+    #[serde(default, skip_serializing_if = "is_zero_u64")]
+    pub seq: u64,
+}
+
+fn is_zero_u64(v: &u64) -> bool {
+    *v == 0
 }
 
 /// An office server found on this Wi‑Fi.
@@ -198,7 +205,8 @@ pub const HEADER_PROTOCOL: &str = "X-Kumkaj-Protocol";
 /// snapshot). Bump it with any change an older build would misread; the
 /// two sides then say "update the app" instead of failing quietly (an old
 /// device read a newer snapshot as "no reply" and looked offline for ever).
-pub const LAN_PROTOCOL: u32 = 1;
+/// Bumped to 2 for WebSocket `/ws` + revisioned deltas (`lan_ws.rs`).
+pub const LAN_PROTOCOL: u32 = 2;
 
 /// Longest a device's `/wait` is held open before the Server answers anyway.
 pub const WAIT_MAX_SECS: u64 = 30;
@@ -574,9 +582,17 @@ fn note_rev(db_path: &Path, rev: &str) {
 /// device's own screens). Call after any commit that changes what paired
 /// devices see — do not leave them for the watcher's next poll.
 pub fn publish_books(store: &Store) {
-    if let Ok((_, rev)) = snapshot_json(store) {
+    if let Ok((json, rev)) = snapshot_json(store) {
         note_rev(store.db_path(), &rev);
+        if let Ok(mut snap) = serde_json::from_str::<SyncSnapshot>(&json) {
+            snap.rev = rev.clone();
+            crate::lan_ws::on_books_changed(store.db_path(), &rev, &snap);
+        }
     }
+}
+
+pub fn snapshot_json_public(store: &Store) -> Result<(String, String), String> {
+    snapshot_json(store)
 }
 
 /// The current books as a snapshot's JSON (without the revision) and the
@@ -613,8 +629,12 @@ pub(crate) fn watch_books(db_path: &Path, keep_going: &dyn Fn() -> bool) {
         if nudged || version != seen || built.elapsed() >= REBUILD_EVERY {
             seen = version;
             built = Instant::now();
-            if let Ok((_, rev)) = snapshot_json(&store) {
+            if let Ok((json, rev)) = snapshot_json(&store) {
                 note_rev(db_path, &rev);
+                if let Ok(mut snap) = serde_json::from_str::<SyncSnapshot>(&json) {
+                    snap.rev = rev.clone();
+                    crate::lan_ws::on_books_changed(db_path, &rev, &snap);
+                }
             }
         }
         let watch = books_watch();
@@ -648,6 +668,10 @@ fn wait_for_change(db_path: &Path, rev: &str, secs: u64) -> Result<Reply, String
 fn sync_reply(store: &Store, have: Option<&str>) -> Result<Reply, String> {
     let (json, rev) = snapshot_json(store)?;
     note_rev(store.db_path(), &rev);
+    if let Ok(mut snap) = serde_json::from_str::<SyncSnapshot>(&json) {
+        snap.rev = rev.clone();
+        crate::lan_ws::on_books_changed(store.db_path(), &rev, &snap);
+    }
     if have.map(|h| h.trim().trim_matches('"')) == Some(rev.as_str()) {
         return Ok(Reply {
             status: 304,
@@ -655,8 +679,12 @@ fn sync_reply(store: &Store, have: Option<&str>) -> Result<Reply, String> {
             content_type: String::new(),
         });
     }
-    // The revision goes in front; it was not part of what was hashed.
-    let body = format!("{{\"rev\":\"{rev}\",{}", &json[1..]);
+    let seq = crate::lan_ws::tip_seq(store.db_path()).unwrap_or(0);
+    let body = if seq > 0 {
+        format!("{{\"rev\":\"{rev}\",\"seq\":{seq},{}", &json[1..])
+    } else {
+        format!("{{\"rev\":\"{rev}\",{}", &json[1..])
+    };
     Ok(Reply {
         status: 200,
         body,
@@ -771,6 +799,7 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         tax_rates: store.list_tax_rates()?,
         server_id: store.lan_server_id()?,
         rev: String::new(),
+        seq: 0,
     })
 }
 
@@ -830,7 +859,7 @@ impl Request {
         }
     }
 
-    fn header(&self, name: &str) -> Option<&str> {
+    pub fn header(&self, name: &str) -> Option<&str> {
         self.headers
             .iter()
             .find(|(k, _)| k.eq_ignore_ascii_case(name))
@@ -839,8 +868,18 @@ impl Request {
     }
 
     /// The path without its query string.
-    fn route(&self) -> &str {
+    pub fn route(&self) -> &str {
         self.path.split('?').next().unwrap_or("/")
+    }
+
+    pub fn query(&self, key: &str) -> Option<&str> {
+        self.path
+            .split_once('?')?
+            .1
+            .split('&')
+            .filter_map(|pair| pair.split_once('='))
+            .find(|(k, _)| *k == key)
+            .map(|(_, v)| v)
     }
 
     /// The device reads gzip (ureq's `gzip` feature says so on its own).
@@ -939,7 +978,7 @@ impl Reply {
 
     /// A refusal the person must read, in the Server's words. `code` tells
     /// the phone what to do about it ("pair_again", "sign_in_again", "wait").
-    fn refuse(status: u16, message: &str, code: &str) -> Self {
+    pub fn refuse(status: u16, message: &str, code: &str) -> Self {
         Self {
             status,
             body: serde_json::json!({ "ok": false, "error": message, "code": code }).to_string(),
@@ -956,17 +995,40 @@ fn handle_client(
 ) -> Result<(), String> {
     let _ = stream.set_read_timeout(Some(Duration::from_secs(15)));
     let _ = stream.set_write_timeout(Some(Duration::from_secs(15)));
-    let (reply, gzip) = match read_request(&mut stream) {
-        Ok(req) => (answer(db_path, &req, peer, guard), req.accepts_gzip()),
-        Err(e) => (Reply::refuse(400, &e, ""), false),
+    let req = match read_request(&mut stream) {
+        Ok(req) => req,
+        Err(e) => {
+            let reply = Reply::refuse(400, &e, "");
+            return write_http(&mut stream, reply.status, &reply.body, false, &reply.content_type);
+        }
     };
-    write_http(
-        &mut stream,
-        reply.status,
-        &reply.body,
-        gzip,
-        &reply.content_type,
-    )
+    if crate::lan_ws::is_ws_upgrade(&req) {
+        let _ = stream.set_read_timeout(None);
+        return crate::lan_ws::handle_upgrade(stream, &req, db_path, peer, guard);
+    }
+    let gzip = req.accepts_gzip();
+    let reply = answer(db_path, &req, peer, guard);
+    write_http(&mut stream, reply.status, &reply.body, gzip, &reply.content_type)
+}
+
+pub fn answer_ws_write(
+    db_path: &Path,
+    device_token: &str,
+    session: &str,
+    path: &str,
+    body: &str,
+    request_id: &str,
+) -> Reply {
+    let mut headers = vec![
+        (HEADER_DEVICE.to_string(), device_token.to_string()),
+        (HEADER_SESSION.to_string(), session.to_string()),
+        (HEADER_PROTOCOL.to_string(), LAN_PROTOCOL.to_string()),
+    ];
+    if !request_id.is_empty() {
+        headers.push((HEADER_REQUEST.to_string(), request_id.to_string()));
+    }
+    let req = Request::new("POST", path, headers, body);
+    answer(db_path, &req, "ws", &Guard::default())
 }
 
 /// Answer one request. Every outcome is a JSON reply — a failure is never a
@@ -1009,6 +1071,10 @@ fn is_transient(e: &str) -> bool {
 
 /// The device's protocol, from its request (none = this build's: devices
 /// from before the header spoke protocol 1).
+pub fn protocol_refusal_public(req: &Request) -> Option<Reply> {
+    protocol_refusal(req)
+}
+
 fn protocol_refusal(req: &Request) -> Option<Reply> {
     let theirs = req.header(HEADER_PROTOCOL).map_or(Some(LAN_PROTOCOL), |v| v.trim().parse::<u32>().ok())?;
     if theirs == LAN_PROTOCOL {
@@ -1507,8 +1573,31 @@ fn default_reason() -> String {
     String::new()
 }
 
+pub fn write_http_public(
+    stream: &mut impl Write,
+    status: u16,
+    content_type: &str,
+    body: &str,
+    gzip: bool,
+) -> Result<(), String> {
+    let mut tmp = Vec::new();
+    write_http_to(&mut tmp, status, body, gzip, content_type)?;
+    stream.write_all(&tmp).map_err(|e| e.to_string())?;
+    Ok(())
+}
+
 fn write_http(
     stream: &mut TcpStream,
+    status: u16,
+    body: &str,
+    gzip: bool,
+    content_type: &str,
+) -> Result<(), String> {
+    write_http_to(stream, status, body, gzip, content_type)
+}
+
+fn write_http_to(
+    stream: &mut impl Write,
     status: u16,
     body: &str,
     gzip: bool,

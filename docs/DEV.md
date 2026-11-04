@@ -615,6 +615,36 @@ connection. Headers: `X-Kumkaj-Device` (the device token from pairing),
 `X-Kumkaj-Session` (from `/login`), `X-Kumkaj-Request` (one id per write),
 `X-Kumkaj-Protocol` (both directions, see below).
 
+**Realtime channel (`LAN_PROTOCOL` ≥ 2).** Beside HTTP, paired Clients open
+a **WebSocket** on the same TCP port: `GET /ws` with the usual Device /
+Protocol headers (Session optional until outbox). The Server pushes books
+updates the moment `publish_books` would wake `/wait`. HTTP stays for
+`/pair`, `/login`, `/hello`, `/health`, bootstrap `/sync`, photos, guest
+pages, and fallback when WS cannot upgrade.
+
+| WS frame `t` | Direction | Meaning |
+|---|---|---|
+| `welcome` | S→C | `{seq, rev}` — Server tip after subscribe |
+| `delta` | S→C | `{seq, prev_seq, rev, full, …domains}` — apply in order |
+| `need_sync` | S→C | gap or unknown Client tip — Client must `GET /sync` then resume |
+| `ping` / `pong` | either | heartbeat (~15s); missed pong → reconnect |
+| `outbox` | C→S | `{id, path, body, request_id}` — durable queue item over WS |
+| `outbox_reply` | S→C | `{id, ok, body\|error, code?}` — same semantics as HTTP write |
+
+**Rev + seq.** `rev` remains the snapshot content hash (304 / If-None-Match).
+`seq` is a monotonic per-Server counter bumped on every published change.
+Client applies a `delta` only when `prev_seq == local_seq`; otherwise
+`need_sync` / HTTP `/sync`, then set `local_seq` from welcome/delta tip.
+`full: true` replaces all domains; `full: false` replaces only present
+domain fields (tables, KOTs, running orders, catalog, …).
+
+**Fallback.** `/wait` + periodic `/sync` still work (older peers or failed
+upgrade). Do not remove them when changing the live path.
+
+**Do not regress.** Sole writer, idempotent `X-Kumkaj-Request`, durable
+`lan_outbox`, apply off the UI thread, no shared Kumkaj sync crate — copy
+per app (`lan_ws.rs` / `net.rs` / `phone.rs`).
+
 | Status / `code` | Meaning | What the device does |
 |---|---|---|
 | 200 | done | queue item leaves the queue |
@@ -691,8 +721,13 @@ the screen never waits on the Wi‑Fi.
   The header shows "Offline · N waiting".
 - *Now* writes (undo, void, refund, amend) act on what the server holds this
   moment, so they are never kept for later: offline they say so.
-- The worker pulls the server's books every 20 s (Khaynjo's Floor / Kitchen /
-  Order also ask every 8 s), so what another device did shows up by itself.
+- Live path: WebSocket `/ws` pushes deltas (`LAN_PROTOCOL` ≥ 2). Safety net:
+  `/wait` long-poll + a periodic `/sync` (default meta `sync_interval_secs`
+  20s) if the socket drops. Khaynjo Floor / Kitchen / Order also refresh from
+  the local cache on a short UI timer — they must not re-pull the whole book
+  on the UI thread. Real-AP multi-tablet soak:
+  [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](PRODUCTION_STATE_FOR_OFFLINE_USAGE.md)
+  §3 *LAN realtime pilot checklist*.
 
 **Keeping the server up.** While serving, the app holds the device awake
 (`SetThreadExecutionState` on Windows, `systemd-inhibit` on Linux, the

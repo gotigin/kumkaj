@@ -17,6 +17,7 @@ pub mod lan_images;
 pub mod media;
 pub mod menu_images;
 pub mod menu_templates;
+pub mod lan_ws;
 pub mod net;
 pub mod notify;
 pub mod phone;

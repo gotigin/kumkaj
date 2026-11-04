@@ -100,9 +100,9 @@ verified done.
 | Each write once (`X-Kumkaj-Request` reply store) | `net.rs` |
 | Offline queue on the device (`lan_outbox`), survives restarts, sent in order | `phone.rs` |
 | A write the Server refuses for good leaves the queue → "not accepted" list with the Server's words (no poison message blocking the queue) | `phone.rs`, `lan_outbox_refused` |
-| Live updates: `/wait` long-poll + revision (304 when unchanged) + gzip | `phone.rs`, `net.rs` |
+| Live updates: WebSocket `/ws` + revisioned deltas (`LAN_PROTOCOL` ≥ 2); `/wait` + `/sync` fallback; gzip HTTP | `lan_ws.rs`, `phone.rs`, `net.rs` |
 | Server found again by **server id** after an address change (every 60 s while silent); manual IP entry | `phone.rs` `refind_server` |
-| Header: "Offline · N waiting", "Pair this device again", how old the screen is | `main.rs` |
+| Header: Connecting / Live / Offline · N waiting / Sending / Pair again / Update the app | UI `impl_02`, `phone::LinkState` |
 | Connection panel: waiting writes (now with tries + last answer), not-accepted list | `main.rs` |
 | Paired devices list with last seen / connected now, **Forget**, **New pairing code** | `main.rs` |
 | Daily automatic backup (14 kept) + copy to a second folder; failures and low disk shown to the owner | `store.rs` `auto_backup_if_due`, `backup_health` |
@@ -124,20 +124,54 @@ verified done.
    for: discovery on the real router (guest networks / AP isolation block
    it — manual IP is the fallback), the firewall prompt on Win 10/11,
    **Start with this computer** after a real power cut, sleep with the lid
-   closed, the KOT printer through Windows.
+   closed, the KOT printer through Windows. Also run the **LAN realtime
+   checklist** below on the same AP.
 2. **Install the built packages on clean machines.** Windows rebuilt on
    **2026-10-31** with the v5 fixes: `dist/Khaynjo-0.1.0.msi`,
    `dist/Moklanjo-0.1.0.msi`, folder packages under `dist/khaynjo-windows/`
-   / `dist/moklanjo-windows/`. The **Android APKs in `dist/` are from
-   2026-10-26 and predate v5** — rebuild them before the pilot
+   / `dist/moklanjo-windows/`. Rebuild Android APKs before the pilot
    (`apps/khaynjo/scripts/package-android.sh`, Moklanjo's likewise; they
    patch the vendored Makepad, so run them on a settled tree). **Every device
-   in the shop must run the same build** — v5 adds the LAN protocol check,
-   and an older tablet would be told to update. Not yet installed on a
+   in the shop must run the same build** — `LAN_PROTOCOL` is **2** (WS +
+   deltas); an older tablet is told to update. Not yet installed on a
    clean machine of any supported platform.
 3. **Android release signing + Play listing** (Moklanjo and Khaynjo), web
    deploy (kumkaj.com / khaynjo.com). iOS/macOS stay scaffold-only until a
    Mac exists.
+
+### LAN realtime pilot checklist (real shop AP)
+
+Same build on Server + every Client. Wire shape: [`DEV.md`](DEV.md) § LAN
+(`LAN_PROTOCOL` ≥ 2). Ports: Khaynjo **7847**, Moklanjo **7857**.
+
+**Setup**
+
+- [ ] Counter (Windows or Linux) **Serve** on; Settings → Allow firewall if asked
+- [ ] Two+ tablets on the **same SSID** as the counter (not guest / client-isolation VLAN)
+- [ ] Pair each tablet; sign in; header reaches **Live** (not stuck on Connecting)
+- [ ] If discovery fails: enter Server IP manually; still expect **Live** after pair
+
+**Instant books (Khaynjo)**
+
+- [ ] Tablet A on Floor, tablet B on Kitchen: Send KOT on A → B shows it without a full pull wait
+- [ ] Advance / ready on Kitchen → Floor / Order refresh; no multi-second blank
+- [ ] Third tablet (if any) stays Live and matches the same order state
+- [ ] Kill Wi‑Fi on one tablet → Offline · N waiting (if queued) / last update time; restore → Live + catch-up, no money double
+
+**Instant books (Moklanjo)**
+
+- [ ] Book / settle / status change on counter → second device shows the same day book without waiting for the 20s safety pull
+- [ ] Offline queue then reconnect: ordered outbox, header Sending → Live
+
+**AP / sleep / mixed path**
+
+- [ ] Flip AP “client isolation” on briefly: Clients go Offline; off again → Live (or manual IP still works)
+- [ ] Phone sleep / screen off 2–5 min → wake → Live within a few seconds (ping/pong, not only next `/sync`)
+- [ ] Force WS failure (block upgrade if you can, or use a build that falls back): `/wait` + `/sync` still move books; header may omit Live
+- [ ] Mixed protocol: one old APK vs new Server → **Update the app**, queue kept
+- [ ] Lunch-length soak: no header flap Live↔Offline on a quiet floor; no UI freeze on sync
+
+**Pass** = Live under load, gap recovery via one `/sync`, sole-writer money safe, no silent dupes.
 
 ---
 

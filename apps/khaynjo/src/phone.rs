@@ -12,9 +12,10 @@
 //!   Server holds this moment, so they are never kept for later: without
 //!   the Server they come back "can't reach the shop's server".
 //! - The Server's books are pulled here too, and the screen is told when
-//!   they landed. A second thread waits on the Server (`/wait`), so what
-//!   another device did shows here at once; a pull the Server answers with
-//!   "nothing changed" (304) sends and rewrites nothing.
+//!   they landed. A second thread prefers the live WebSocket (`/ws`) and
+//!   falls back to `/wait` so what another device did shows here at once;
+//!   a pull the Server answers with "nothing changed" (304) sends and
+//!   rewrites nothing.
 //! - When the Server goes quiet, the worker looks for it on the Wi‑Fi by its
 //!   id: a Server that came back on a new address (after a power cut, or the
 //!   books moved to a new computer) is found again without pairing.
@@ -72,6 +73,8 @@ pub struct Done {
 pub struct LinkState {
     /// None until the first try.
     pub online: Option<bool>,
+    /// Live WebSocket is up (realtime deltas).
+    pub live: bool,
     /// Writes still waiting on this phone.
     pub waiting: usize,
     /// Waiting writes the Server would not accept (see the Connect screen).
@@ -135,12 +138,16 @@ struct Shared {
     notify: Option<fn()>,
     /// Revision of the books this phone holds (empty: fetch them whole).
     applied_rev: String,
+    /// Monotonic Server tip applied via WS deltas (0 = need HTTP sync).
+    applied_seq: u64,
     /// Where the waiting thread asks; set by the worker after each round.
     watch_link: Option<Link>,
     /// The Server has not answered since then.
     offline_since: Option<Instant>,
     /// When the worker last looked for the Server on the Wi‑Fi.
     last_find: Option<Instant>,
+    /// Outbox frames for the live socket (worker → watcher).
+    outbox_tx: Option<std::sync::mpsc::SyncSender<String>>,
 }
 
 fn shared() -> &'static (Mutex<Shared>, Condvar) {
@@ -315,29 +322,94 @@ fn round_due(asked: bool, online: Option<bool>) -> bool {
     asked || online != Some(false)
 }
 
-/// The second thread: hold a `/wait` open on the Server and ask the worker
-/// for the books the moment they change. Quiet while there is no Server to
-/// ask; an older Server without `/wait` leaves the worker's own pull to it.
-///
-/// Always waits against the revision this phone has *applied* (not a
-/// previously observed server rev). That way a brief drop that saw a new
-/// rev before `/sync` landed still catches up the moment the link is back
-/// — `/wait` returns at once while applied lags the shop.
+/// The second thread: prefer the live WebSocket; fall back to `/wait`.
+/// Quiet while there is no Server to ask.
 fn watcher(transport: &dyn Transport) {
-    // Server rev we already asked the worker to pull; avoids flooding
-    // `want_sync` while a pull is in flight for the same books.
     let mut notified = String::new();
     loop {
-        let (link, applied) = {
+        let (link, applied, seq) = {
             let sh = shared().0.lock().unwrap();
-            (sh.watch_link.clone(), sh.applied_rev.clone())
+            (sh.watch_link.clone(), sh.applied_rev.clone(), sh.applied_seq)
         };
         let Some(link) = link else {
             notified.clear();
+            set_live(false);
             std::thread::sleep(Duration::from_secs(2));
             continue;
         };
-        // Applied caught up (or books were forgotten): allow a fresh notify.
+        // Try realtime duplex first (LAN_PROTOCOL ≥ 2).
+        let (out_tx, out_rx) = std::sync::mpsc::sync_channel::<String>(32);
+        {
+            let mut sh = shared().0.lock().unwrap();
+            sh.outbox_tx = Some(out_tx);
+        }
+        let ws_result = crate::lan_ws::client_watch_loop(
+            &link,
+            seq,
+            &applied,
+            |patch| {
+                let Some(path) = shared().0.lock().unwrap().db_path.clone() else {
+                    return Ok(());
+                };
+                let store = Store::open_path(&path).map_err(|e| e.to_string())?;
+                if patch.prev_seq != shared().0.lock().unwrap().applied_seq && !patch.full {
+                    want_sync();
+                    return Ok(());
+                }
+                crate::lan_ws::apply_patch(&store, &patch)?;
+                let now = chrono::Local::now();
+                let _ = store.note_lan_synced(&now);
+                let mut sh = shared().0.lock().unwrap();
+                sh.applied_rev = patch.rev.clone();
+                sh.applied_seq = patch.seq;
+                sh.synced = true;
+                sh.state.updated_at = when_text(&now);
+                sh.state.live = true;
+                sh.state.online = Some(true);
+                if let Some(hook) = sh.notify {
+                    drop(sh);
+                    hook();
+                }
+                Ok(())
+            },
+            |_seq, _rev| {
+                want_sync();
+            },
+            |id, ok, body| {
+                let Some(path) = shared().0.lock().unwrap().db_path.clone() else {
+                    return;
+                };
+                let Ok(store) = Store::open_path(&path) else {
+                    return;
+                };
+                if ok {
+                    let _ = store.lan_outbox_done(id);
+                } else {
+                    let err = body
+                        .get("error")
+                        .and_then(|e| e.as_str())
+                        .unwrap_or("not accepted");
+                    let code = body.get("code").and_then(|c| c.as_str()).unwrap_or("");
+                    if code == "retry" || err.contains("busy") {
+                        let _ = store.lan_outbox_retry_later(id, err);
+                    } else {
+                        let _ = store.lan_outbox_refused(id, err);
+                    }
+                }
+                want_sync();
+            },
+            &out_rx,
+        );
+        {
+            let mut sh = shared().0.lock().unwrap();
+            sh.outbox_tx = None;
+            sh.state.live = false;
+        }
+        if ws_result.is_ok() {
+            continue;
+        }
+        // Fallback: HTTP long-poll.
+        set_live(false);
         if !applied.is_empty() && applied == notified {
             notified.clear();
         }
@@ -350,14 +422,22 @@ fn watcher(transport: &dyn Transport) {
                 }
             }
             Err(e) if e.is_offline() => {
-                // Link dropped: forget what we thought we notified so the
-                // next online wait re-asks, and poke the worker to pull the
-                // moment the Server answers again.
                 notified.clear();
                 want_sync();
                 std::thread::sleep(IDLE);
             }
             Err(_) => std::thread::sleep(Duration::from_secs(60)),
+        }
+    }
+}
+
+fn set_live(live: bool) {
+    let mut sh = shared().0.lock().unwrap();
+    if sh.state.live != live {
+        sh.state.live = live;
+        if let Some(hook) = sh.notify {
+            drop(sh);
+            hook();
         }
     }
 }
@@ -432,6 +512,29 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
         let Some(link) = link_of(store, &item.staff_id) else {
             break;
         };
+        // Prefer the live socket when it is up (same order, durable SQLite first).
+        if state.live {
+            let frame = crate::lan_ws::outbox_frame(
+                &item.id,
+                &item.path,
+                &item.body,
+                &item.id,
+                &link.session,
+            );
+            let sent = shared()
+                .0
+                .lock()
+                .unwrap()
+                .outbox_tx
+                .as_ref()
+                .and_then(|tx| tx.try_send(frame).ok());
+            if sent.is_some() {
+                // Reply arrives on the watcher as `outbox_reply`.
+                wrote = true;
+                reached = true;
+                continue;
+            }
+        }
         let reply = transport.send(&link, &item.path, &item.body, &item.id);
         match &reply {
             Err(LanError::Offline(e)) => {
@@ -536,6 +639,9 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                         }
                         let mut sh = shared().0.lock().unwrap();
                         sh.applied_rev = snap.rev;
+                        if snap.seq > 0 {
+                            sh.applied_seq = snap.seq;
+                        }
                         sh.synced = true;
                         changed = true;
                     }

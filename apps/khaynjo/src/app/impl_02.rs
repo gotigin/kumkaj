@@ -458,6 +458,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         st.t("lan_connecting")
                     } else if link.waiting > 0 {
                         st.t("lan_sending").replace("{n}", &n)
+                    } else if link.live {
+                        st.t("lan_live")
                     } else {
                         String::new()
                     };

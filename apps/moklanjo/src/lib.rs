@@ -23,6 +23,7 @@ pub mod local_servers;
 pub mod manifest;
 pub mod media;
 pub mod menu_images;
+pub mod lan_ws;
 pub mod net;
 pub mod notify;
 pub mod ops_local;
