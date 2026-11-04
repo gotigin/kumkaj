@@ -489,12 +489,12 @@ impl App {
             Some(NavTab::Team) => {
                 cx.set_key_focus(Area::Empty);
                 self.go_peer_if_allowed(cx, Screen::Team, |s| {
-                    s.can_access_team() || s.is_owner()
+                    s.can_manage_team() || s.can_change_own_credentials()
                 });
             }
             Some(NavTab::Settings) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
             }
             Some(NavTab::DayClose) => {
                 let result = (|| -> Result<(), String> {

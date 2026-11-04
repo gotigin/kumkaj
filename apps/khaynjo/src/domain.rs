@@ -899,10 +899,27 @@ impl StaffMember {
         self.effective_features().backup
     }
 
-    /// Settings (printers, LAN, shop setup). Owner, anyone with Backup, or
-    /// Sales (managers). Waiters / kitchen never see a dead Settings tab.
+    /// Shop Settings sections (language, printers, backup, bill format, …).
+    /// Waiters / kitchen do not open these — they still reach **My PIN** via
+    /// [`Self::can_open_settings_shell`].
     pub fn can_access_settings(&self) -> bool {
         self.is_owner() || self.can_access_backup() || self.can_access_sales()
+    }
+
+    /// Hire / edit other people and their screens + rights (Owner or Team chip).
+    pub fn can_manage_team(&self) -> bool {
+        self.is_owner() || self.can_access_team()
+    }
+
+    /// Every signed-in person may change their own PIN / optional password.
+    /// Not gated by Team or Settings admin — those screens only *host* the form.
+    pub fn can_change_own_credentials(&self) -> bool {
+        true
+    }
+
+    /// Settings chrome peer: shop setup and/or own credentials (My PIN).
+    pub fn can_open_settings_shell(&self) -> bool {
+        self.can_access_settings() || self.can_change_own_credentials()
     }
 
     pub fn can_access_inventory(&self) -> bool {
@@ -4748,7 +4765,7 @@ mod tests {
     }
 
     #[test]
-    fn settings_access_matches_who_may_open_the_tab() {
+    fn settings_access_matches_shop_admin_not_my_pin_shell() {
         let member = |role: StaffRole| StaffMember {
             id: "1".into(),
             name: "X".into(),
@@ -4765,6 +4782,11 @@ mod tests {
         assert!(!member(StaffRole::Waiter).can_access_settings());
         assert!(!member(StaffRole::Kitchen).can_access_settings());
         assert!(!member(StaffRole::Cashier).can_access_settings());
+        // Waiter still reaches Settings shell for My PIN only.
+        assert!(member(StaffRole::Waiter).can_open_settings_shell());
+        assert!(member(StaffRole::Waiter).can_change_own_credentials());
+        assert!(!member(StaffRole::Waiter).can_manage_team());
+        assert!(member(StaffRole::Owner).can_manage_team());
     }
 }
 

@@ -1324,54 +1324,54 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         {
             let st = app_state().lock().unwrap();
             let s = |k: &str| st.t(k);
+            let shop = st
+                .session
+                .as_ref()
+                .map(|m| m.can_access_settings())
+                .unwrap_or(false);
+            let my_pin_only = st.session.is_some() && !shop;
             {
                 let help = self.ui.widget(cx, ids!(settings_hub_help)).as_info_help();
                 help.set_title(cx, &s("nav_settings"));
                 help.set_nav_icon(cx, NavTab::Settings);
-                help.set_tip(&plain_display_text(&s("settings_hub_help")));
+                help.set_tip(&plain_display_text(&s(if my_pin_only {
+                    "settings_hub_help_my_pin"
+                } else {
+                    "settings_hub_help"
+                })));
             }
             self.ui
                 .button(cx, ids!(settings_detail_back))
                 .set_text(cx, &s("back"));
-            self.ui
-                .button(cx, ids!(settings_hub_language))
-                .set_text(cx, &s("settings_sec_language"));
-            self.ui
-                .button(cx, ids!(settings_hub_country))
-                .set_text(cx, &s("settings_sec_country"));
-            self.ui
-                .button(cx, ids!(settings_hub_tills))
-                .set_text(cx, &s("settings_sec_tills"));
-            self.ui
-                .button(cx, ids!(settings_hub_brand))
-                .set_text(cx, &s("settings_sec_brand"));
-            self.ui
-                .button(cx, ids!(settings_hub_units))
-                .set_text(cx, &s("settings_sec_units"));
-            self.ui
-                .button(cx, ids!(settings_hub_pickers))
-                .set_text(cx, &s("settings_sec_pickers"));
-            self.ui
-                .button(cx, ids!(settings_hub_printers))
-                .set_text(cx, &s("settings_sec_printers"));
-            self.ui
-                .button(cx, ids!(settings_hub_bill))
-                .set_text(cx, &s("settings_sec_bill"));
+            // Shop-admin hub rows — hide for Waiter/Kitchen/Cashier (My PIN only).
+            for (id, key) in [
+                (ids!(settings_hub_language), "settings_sec_language"),
+                (ids!(settings_hub_country), "settings_sec_country"),
+                (ids!(settings_hub_tills), "settings_sec_tills"),
+                (ids!(settings_hub_brand), "settings_sec_brand"),
+                (ids!(settings_hub_units), "settings_sec_units"),
+                (ids!(settings_hub_pickers), "settings_sec_pickers"),
+                (ids!(settings_hub_printers), "settings_sec_printers"),
+                (ids!(settings_hub_bill), "settings_sec_bill"),
+                (ids!(settings_hub_alerts), "settings_sec_alerts"),
+                (ids!(settings_hub_backup), "settings_sec_backup"),
+                (ids!(settings_hub_diag), "settings_sec_diag"),
+                (ids!(settings_hub_sidebar), "sidebar_settings"),
+            ] {
+                self.ui.button(cx, id).set_text(cx, &s(key));
+                self.ui.button(cx, id).set_visible(cx, shop);
+            }
+            self.ui.button(cx, ids!(settings_hub_team)).set_text(
+                cx,
+                &s(if my_pin_only {
+                    "my_pin_settings"
+                } else {
+                    "team_pins"
+                }),
+            );
             self.ui
                 .button(cx, ids!(settings_hub_team))
-                .set_text(cx, &s("team_pins"));
-            self.ui
-                .button(cx, ids!(settings_hub_alerts))
-                .set_text(cx, &s("settings_sec_alerts"));
-            self.ui
-                .button(cx, ids!(settings_hub_backup))
-                .set_text(cx, &s("settings_sec_backup"));
-            self.ui
-                .button(cx, ids!(settings_hub_diag))
-                .set_text(cx, &s("settings_sec_diag"));
-            self.ui
-                .button(cx, ids!(settings_hub_sidebar))
-                .set_text(cx, &s("sidebar_settings"));
+                .set_visible(cx, st.session.is_some());
             self.ui
                 .button(cx, ids!(station_remove))
                 .set_text(cx, &s("station_remove"));

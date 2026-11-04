@@ -1097,7 +1097,7 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
   is no session. `snack::classify` treats `"wrong"` as Error so “Wrong PIN…” /
   “Wrong pairing code…” actually open the bar (they used to classify as Info and
   never show while locked)
-- More → **Team**: Owner creates staff (role title + permission preset + PIN + features); anyone can update their own PIN
+- More → **Team**: Owner hires by **job** (preset) + optional screen/rights tweaks; copy-from-person; **every signed-in person** updates their own PIN (Settings → My PIN / Team peer — not Owner-only). Client tills send PIN changes to the Server (`/staff_pin`).
 - Sale **created_by** is set on finalize and never rewritten on amend
 
 ### Staff rights vs chrome (do not regress)
@@ -1118,16 +1118,20 @@ chrome peer — never “nav only.”
 | Unlock home | First permitted peer (**not** hard-coded Day book) | `unlocked_home_from` |
 | Day book hub rows (Sell/Buy/Day close/Reports/Parties) | Same rights as those peers — hide the **slot** | `books_*_slot` visibility in paint/chrome sync |
 | TODAY / BILLS / bank accordions + header today bar | Owner or Sales only | `session_may_see_today` → `sync_books_sections` / `today_bar` |
+| Settings chrome | Any signed-in person (`can_open_settings_shell`) — shop rows need `can_access_settings`; Waiter sees **My PIN** only | Settings hub + Team |
+| Team hire/edit | `can_manage_team` — others see only Change my PIN | `team_admin_block` |
 | Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` |
+
+**Job-first hire:** pick Waiter / Counter / Kitchen / Manager (or copy a person); optional “what they can open” + money rights. Do not bury self-service (own PIN) behind Owner-only screens.
 
 **Do not:** hard-code `Screen::Books` after unlock; leave hub `HubDestBtn`s
 visible “because Books is the home screen”; show money figures to Settle-denied
-waiters; gate only the rail and assume the page is fine.
+waiters; gate only the rail and assume the page is fine; hide Settings entirely for staff who still need My PIN.
 
 **Smoke:** unlock as Waiter (Floor + Order + Kitchen, no Sales) → home is
 Floor (or Order), not Day book; Day book must not appear in nav; if somehow
 opened, hub must not show Expense / Day close / Bank & P&L / Parties or
-TODAY money. Unlock as Owner → Day book with those hubs.
+TODAY money; Settings → **My PIN** works (Server or Client). Unlock as Owner → Day book with those hubs + full Team hire.
 
 ## Publish checklist (Play / web / desktop)
 

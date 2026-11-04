@@ -34,12 +34,22 @@ impl App {
         }
         let st = app_state().lock().unwrap();
         let s = |k: &str| st.t(k);
+        let shop = st
+            .session
+            .as_ref()
+            .map(|m| m.can_access_settings())
+            .unwrap_or(false);
         for (_, hub, _, label) in SETTINGS_SECTIONS {
             self.ui.button(cx, hub).set_text(cx, &s(label));
+            // Limited roles use Team peer for My PIN; hide shop-admin hub rows.
+            self.ui.button(cx, hub).set_visible(cx, shop);
         }
         self.ui
             .button(cx, ids!(sidebar_settings_open))
             .set_text(cx, &s("sidebar_settings"));
+        self.ui
+            .button(cx, ids!(sidebar_settings_open))
+            .set_visible(cx, shop);
         self.ui
             .widget(cx, ids!(h_settings_language))
             .set_text(cx, &plain_display_text(&s("language_currency")));

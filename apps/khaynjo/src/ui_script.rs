@@ -7689,15 +7689,20 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 team_help := InfoHelp{
-                                    tip: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
+                                    tip: "Pick a job (Waiter / Counter / Kitchen / Manager), optional copy from someone who already works, then Add. Open screens and money actions only if this person differs. Everyone changes their own PIN below — Owner cannot change anyone else's."
                                 }
+                                // Hire / edit others — hidden when the signed-in
+                                // person only has My PIN (Waiter, Kitchen, …).
+                                team_admin_block := View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
                                 staff_label := mod.widgets.ReportText{}
                                 FormCard{
                                 staff_name_input := FieldInput{empty_text: "Staff name"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Captain, Head cook)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
                                 h_permission_preset := WrapLabel{
-                                    body: "Permission preset"
+                                    body: "Job"
                                     font_color: #x260B08
                                     font_size: 13.
                                 }
@@ -7753,7 +7758,7 @@ script_mod! {
                                 }
                                 FormCard{
                                 h_feature_access_help := WrapLabel{
-                                    body: "Feature access for selected staff"
+                                    body: "What they can open (optional)"
                                     font_color: #x260B08
                                     font_size: 13.
                                 }
@@ -7848,8 +7853,9 @@ script_mod! {
                                 right_move_btn := NavBtn{text: "Move / merge tables"}
                                 right_reprint_btn := NavBtn{text: "Print bill again"}
                                 right_discount_btn := NavBtn{text: "Give a discount"}
-                                feat_save := StackPrimaryBtn{text: "Save features"}
+                                feat_save := StackPrimaryBtn{text: "Save job setup"}
                                 }
+                                } // team_admin_block
                                 FormCard{
                                 h_change_my_pin_heading := WrapLabel{
                                     body: "Change my PIN (only yours)"

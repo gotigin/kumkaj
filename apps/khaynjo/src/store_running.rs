@@ -2442,7 +2442,10 @@ mod tests {
             shop.store.running_order(&d1.id).unwrap().unwrap().status,
             RunningOrderStatus::Printed
         );
-        assert!(shop.store.print_running_bill(&d1.id, &shop.waiter, None).is_err());
+        // Waiter preset: Reprint Allowed (guest bill / KOT again; settle stays Denied).
+        shop.store
+            .print_running_bill(&d1.id, &shop.waiter, None)
+            .unwrap();
         shop.store.print_running_bill(&d1.id, &shop.cashier, None).unwrap();
         // More food after the print: back to running, bill must print again.
         shop.kot("D1", &[(&shop.chaas, 1)]);

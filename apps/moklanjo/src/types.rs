@@ -398,11 +398,12 @@ struct NavCaps {
     sales: bool,
     credit: bool,
     team: bool,
-    backup: bool,
     inventory: bool,
     branches: bool,
     is_owner: bool,
     is_client: bool,
+    /// Unlocked session — Settings / Team shell for My PIN even without shop admin.
+    signed_in: bool,
     branch_count: usize,
 }
 
@@ -418,12 +419,13 @@ impl NavCaps {
                 items: s.can_access_items(),
                 sales: s.can_access_sales(),
                 credit: s.can_access_credit(),
-                team: s.can_access_team() || s.is_owner(),
-                backup: s.can_access_backup() || s.is_owner(),
+                // Team peer: hire/edit OR own PIN (admin block hidden for the latter).
+                team: s.can_manage_team() || s.can_change_own_credentials(),
                 inventory: s.can_access_inventory() || s.is_owner(),
                 branches: s.can_access_branches() || s.is_owner(),
                 is_owner: s.is_owner(),
                 is_client,
+                signed_in: true,
                 branch_count,
             },
             None => Self {
@@ -460,8 +462,8 @@ fn session_may_see_today(session: Option<&StaffMember>) -> bool {
 fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
     match tab {
         NavTab::Lock => true,
-        // Match who can open Settings — no dead tab for waiters / riders.
-        NavTab::Settings => caps.backup || caps.is_owner || caps.sales,
+        // Shop-admin rows stay gated inside Settings; chrome opens for My PIN too.
+        NavTab::Settings => caps.signed_in,
         NavTab::Sell => caps.sell,
         NavTab::Books => caps.books_ok(),
         NavTab::Buy => caps.buy_ok(),

@@ -1367,7 +1367,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
 
         // Team: who is being edited, and their rights (draft until Save).
         {
-            let (selected, rights, lang) = {
+            let (selected, rights, on, manage_team, lang) = {
                 let st = app_state().lock().unwrap();
                 let selected = st
                     .team_staff_id
@@ -1375,9 +1375,35 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .and_then(|id| st.staff.iter().find(|s| &s.id == id))
                     .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
                     .unwrap_or_else(|| " ".to_string());
-                (selected, st.team_draft_rights(), st.locale.language.clone())
+                (
+                    selected,
+                    st.team_draft_rights(),
+                    st.draft_features.clone(),
+                    st.session
+                        .as_ref()
+                        .map(|m| m.can_manage_team())
+                        .unwrap_or(false),
+                    st.locale.language.clone(),
+                )
             };
-            let on = app_state().lock().unwrap().draft_features.clone();
+            self.ui
+                .view(cx, ids!(team_admin_block))
+                .set_visible(cx, manage_team);
+            {
+                let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
+                let title = locale::t(&lang, if manage_team { "team" } else { "my_pin_settings" });
+                let tip = locale::t(
+                    &lang,
+                    if manage_team {
+                        "team_owner_help"
+                    } else {
+                        "team_self_help"
+                    },
+                );
+                help.set_title(cx, &title);
+                help.set_nav_icon(cx, NavTab::Team);
+                help.set_tip(&plain_display_text(&tip));
+            }
             for (idle, active, set) in [
                 (ids!(feat_sell), ids!(feat_sell_on), on.sell),
                 (ids!(feat_items), ids!(feat_items_on), on.items),

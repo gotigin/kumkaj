@@ -810,8 +810,22 @@ impl App {
             let pin = self.ui.text_input(cx, ids!(my_pin_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change your PIN")?;
                 let actor = st.actor()?;
+                if !actor.can_change_own_credentials() {
+                    return Err("Not allowed".into());
+                }
+                if st.device_role == DeviceRole::Client {
+                    st.lan_job(
+                        "/staff_pin",
+                        &net::RemoteOwnPinRequest { pin: pin.clone() },
+                        "PIN".into(),
+                        "PIN updated on the shop's books".into(),
+                        phone::Follow::Refresh,
+                        false,
+                    )?;
+                    st.status = "Updating PIN…".into();
+                    return Ok(());
+                }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.set_staff_pin(&actor.id, &pin, &actor)?;
                 st.status = "PIN updated".into();
@@ -833,8 +847,24 @@ impl App {
             let password = self.ui.text_input(cx, ids!(my_password_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change your password")?;
                 let actor = st.actor()?;
+                if !actor.can_change_own_credentials() {
+                    return Err("Not allowed".into());
+                }
+                if st.device_role == DeviceRole::Client {
+                    st.lan_job(
+                        "/staff_password",
+                        &net::RemoteOwnPasswordRequest {
+                            password: password.clone(),
+                        },
+                        "Password".into(),
+                        "Password updated on the shop's books".into(),
+                        phone::Follow::Refresh,
+                        false,
+                    )?;
+                    st.status = "Updating password…".into();
+                    return Ok(());
+                }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.set_own_password(&password, &actor)?;
                 st.status = "Password updated".into();

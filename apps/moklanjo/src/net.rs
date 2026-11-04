@@ -187,6 +187,16 @@ pub struct LoginRequest {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteOwnPinRequest {
+    pub pin: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteOwnPasswordRequest {
+    pub password: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct LoginOk {
     pub session: String,
     pub staff: StaffMember,
@@ -1499,6 +1509,18 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember) -> Result<
             let event: crate::rider_mode::RiderPodEvent =
                 serde_json::from_str(body).map_err(|e| format!("rider_pod json: {e}"))?;
             store.apply_rider_pod(&event, actor)?;
+            Ok(Reply::done())
+        }
+        "/staff_pin" => {
+            let req: RemoteOwnPinRequest =
+                serde_json::from_str(body).map_err(|e| format!("staff_pin json: {e}"))?;
+            store.set_staff_pin(&actor.id, &req.pin, actor)?;
+            Ok(Reply::done())
+        }
+        "/staff_password" => {
+            let req: RemoteOwnPasswordRequest =
+                serde_json::from_str(body).map_err(|e| format!("staff_password json: {e}"))?;
+            store.set_own_password(&req.password, actor)?;
             Ok(Reply::done())
         }
         _ => Ok(Reply::refuse(404, "not found", "")),

@@ -886,10 +886,24 @@ impl StaffMember {
         self.effective_features().backup
     }
 
-    /// Settings (printers, LAN, shop setup). Owner, Backup, or Sales (managers).
-    /// Never show a dead Settings tab to staff who cannot open it.
+    /// Shop Settings sections (language, printers, backup, …).
     pub fn can_access_settings(&self) -> bool {
         self.is_owner() || self.can_access_backup() || self.can_access_sales()
+    }
+
+    /// Hire / edit other people (Owner or Team chip).
+    pub fn can_manage_team(&self) -> bool {
+        self.is_owner() || self.can_access_team()
+    }
+
+    /// Every signed-in person may change their own PIN / optional password.
+    pub fn can_change_own_credentials(&self) -> bool {
+        true
+    }
+
+    /// Settings chrome: shop setup and/or path to own credentials.
+    pub fn can_open_settings_shell(&self) -> bool {
+        self.can_access_settings() || self.can_change_own_credentials()
     }
 
     pub fn can_access_inventory(&self) -> bool {

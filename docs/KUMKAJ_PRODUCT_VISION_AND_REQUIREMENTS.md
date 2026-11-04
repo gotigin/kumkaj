@@ -728,7 +728,9 @@ use the same per-person capability gates. Never leave a Waiter (or any
 limited role) on Day book with Expense / Day close / Bank & P&L /
 Parties / TODAY money visible when those peers are hidden from nav.
 Hiding the nav tab alone is not enough — see `docs/DEV.md` § Staff
-rights vs chrome.
+rights vs chrome. **Self-service** (change own PIN / password) must stay
+reachable for every signed-in person even when shop Settings / Team hire
+are hidden — do not bury it behind Owner-only chrome.
 
 ------------------------------------------------------------------------
 

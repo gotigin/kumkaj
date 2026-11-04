@@ -403,11 +403,11 @@ impl MatchEvent for App {
             Some(NavTab::Team) => {
                 // Team is no longer a chrome peer — open via Settings → Team.
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
             }
             Some(NavTab::Settings) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
             }
             Some(NavTab::DayClose) => {
                 let result = (|| -> Result<(), String> {
@@ -498,7 +498,10 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(settings_hub_team)).clicked(actions) {
             // Nested under Settings (history Back returns to the hub).
-            self.go_if_allowed(cx, Screen::Team, |s| s.can_access_team() || s.is_owner());
+            // Manage team OR own credentials (My PIN) — admin block is hidden for the latter.
+            self.go_if_allowed(cx, Screen::Team, |s| {
+                s.can_manage_team() || s.can_change_own_credentials()
+            });
         }
         if self.ui.button(cx, ids!(snack_secs_save)).clicked(actions) {
             let typed = self.ui.text_input(cx, ids!(snack_secs_input)).text();
@@ -4950,8 +4953,25 @@ impl MatchEvent for App {
             let pin = self.ui.text_input(cx, ids!(my_pin_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change your PIN")?;
                 let actor = st.actor()?;
+                if !actor.can_change_own_credentials() {
+                    return Err("Not allowed".into());
+                }
+                // Client: Server holds the hash — send the new PIN over LAN.
+                if st.device_role == DeviceRole::Client {
+                    st.lan_job(
+                        "/staff_pin",
+                        &net::RemoteOwnPinRequest {
+                            pin: pin.clone(),
+                        },
+                        "PIN".into(),
+                        "PIN updated on the shop's books".into(),
+                        phone::Follow::Refresh,
+                        false,
+                    )?;
+                    st.status = "Updating PIN…".into();
+                    return Ok(());
+                }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.set_staff_pin(&actor.id, &pin, &actor)?;
                 st.status = "PIN updated".into();
@@ -4969,8 +4989,24 @@ impl MatchEvent for App {
             let password = self.ui.text_input(cx, ids!(my_password_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                st.require_server_role("Change your password")?;
                 let actor = st.actor()?;
+                if !actor.can_change_own_credentials() {
+                    return Err("Not allowed".into());
+                }
+                if st.device_role == DeviceRole::Client {
+                    st.lan_job(
+                        "/staff_password",
+                        &net::RemoteOwnPasswordRequest {
+                            password: password.clone(),
+                        },
+                        "Password".into(),
+                        "Password updated on the shop's books".into(),
+                        phone::Follow::Refresh,
+                        false,
+                    )?;
+                    st.status = "Updating password…".into();
+                    return Ok(());
+                }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 store.set_own_password(&password, &actor)?;
                 st.status = "Password updated".into();

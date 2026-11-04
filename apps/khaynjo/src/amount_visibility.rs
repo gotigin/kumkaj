@@ -116,11 +116,12 @@ struct NavCaps {
     floor: bool,
     kitchen: bool,
     team: bool,
-    backup: bool,
     inventory: bool,
     branches: bool,
     is_owner: bool,
     is_client: bool,
+    /// Any unlocked session — Settings shell (My PIN) even without shop admin.
+    signed_in: bool,
     /// Tables & kitchen peers exist only when this shop runs that mode.
     floor_on: bool,
     branch_count: usize,
@@ -141,12 +142,12 @@ impl NavCaps {
                 credit: s.can_access_credit(),
                 floor: s.can_access_floor() || s.is_owner(),
                 kitchen: s.can_access_kitchen() || s.is_owner(),
-                team: s.can_access_team() || s.is_owner(),
-                backup: s.can_access_backup() || s.is_owner(),
+                team: s.can_manage_team(),
                 inventory: s.can_access_inventory() || s.is_owner(),
                 branches: s.can_access_branches() || s.is_owner(),
                 is_owner: s.is_owner(),
                 is_client,
+                signed_in: true,
                 floor_on,
                 branch_count,
             },
@@ -203,9 +204,9 @@ fn session_may_reprint(session: Option<&StaffMember>) -> bool {
 fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
     match tab {
         NavTab::Lock => true,
-        // Only people who can open Settings — never a dead tab (waiters on
-        // an extra till used to see it and get "Not allowed").
-        NavTab::Settings => caps.backup || caps.is_owner || caps.sales,
+        // Signed-in → Settings shell (My PIN at minimum). Shop-admin hub rows
+        // stay gated by can_access_settings inside the screen.
+        NavTab::Settings => caps.signed_in,
         NavTab::Sell => caps.sell,
         NavTab::Books => caps.books_ok(),
         NavTab::Buy => caps.buy_ok(),
@@ -217,6 +218,7 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         NavTab::Inventory => caps.inventory && !caps.is_client,
         NavTab::Branches => caps.branches && !caps.is_client && caps.branch_count > 1,
         NavTab::Credit => caps.credit,
+        // Hire/edit others only — own PIN is under Settings → Team & PINs / My PIN.
         NavTab::Team => caps.team,
     }
 }

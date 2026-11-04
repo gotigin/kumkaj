@@ -319,6 +319,18 @@ pub struct LoginOk {
     pub staff: StaffMember,
 }
 
+/// Client → Server: signed-in person changes their own unlock PIN.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteOwnPinRequest {
+    pub pin: String,
+}
+
+/// Client → Server: signed-in person changes their optional login password.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteOwnPasswordRequest {
+    pub password: String,
+}
+
 /// Headers a phone sends: its pairing, who is signed in, and the request's
 /// own id (a retry with the same id is answered, not done again).
 pub const HEADER_DEVICE: &str = "X-Kumkaj-Device";
@@ -1720,6 +1732,18 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let text = apply_running_action(store, actor, pin, &req.request)?;
             after.bill = text.clone();
             Ok(Reply::json(serde_json::json!({ "ok": true, "text": text })))
+        }
+        "/staff_pin" => {
+            let req: RemoteOwnPinRequest =
+                serde_json::from_str(body).map_err(|e| format!("staff_pin json: {e}"))?;
+            store.set_staff_pin(&actor.id, &req.pin, actor)?;
+            Ok(Reply::done())
+        }
+        "/staff_password" => {
+            let req: RemoteOwnPasswordRequest =
+                serde_json::from_str(body).map_err(|e| format!("staff_password json: {e}"))?;
+            store.set_own_password(&req.password, actor)?;
+            Ok(Reply::done())
         }
         _ => Ok(Reply::refuse(404, "not found", "")),
     }

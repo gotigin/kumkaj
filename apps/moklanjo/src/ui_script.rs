@@ -5411,15 +5411,18 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 team_help := InfoHelp{
-                                    tip: "Owner creates each person with a name, role title, permission preset, and starting PIN. Owner cannot change anyone's PIN later — only that person can update their own PIN."
+                                    tip: "Pick a job (Cashier / Manager), name + starting PIN, then Add. Open screens and rights only if this person differs. Everyone changes their own PIN below — Owner cannot change anyone else's."
                                 }
+                                team_admin_block := View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
                                 staff_label := mod.widgets.ReportText{}
                                 FormCard{
                                 staff_name_input := FieldInput{empty_text: "Staff name / id"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Barista)"}
                                 staff_pin_input := FieldInput{empty_text: "Starting PIN (4–12 digits)"}
                                 h_permission_preset := WrapLabel{
-                                    body: "Permission preset"
+                                    body: "Job"
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
@@ -5454,7 +5457,7 @@ script_mod! {
                                 }
                                 FormCard{
                                 h_feature_access_help := WrapLabel{
-                                    body: "Feature access for selected staff"
+                                    body: "What they can open (optional)"
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
@@ -5528,8 +5531,9 @@ script_mod! {
                                 }
                                 right_void_btn := NavBtn{text: "Void or refund a booking"}
                                 right_amend_btn := NavBtn{text: "Amend a recorded booking"}
-                                feat_save := StackPrimaryBtn{text: "Save features"}
+                                feat_save := StackPrimaryBtn{text: "Save job setup"}
                                 }
+                                } // team_admin_block
                                 FormCard{
                                 h_change_my_pin_heading := WrapLabel{
                                     body: "Change my PIN (only yours)"

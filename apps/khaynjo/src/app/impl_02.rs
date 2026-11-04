@@ -2374,17 +2374,48 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.view(cx, ids!(floor_layout_editor)).set_visible(cx, false);
         }
         // Team: who is being edited, and their rights (draft until Save).
+        // Hire/edit block only for can_manage_team; My PIN card always stays.
         {
-            let (selected, rights, lang) = {
+            let (selected, rights, lang, manage_team, self_tip) = {
                 let st = app_state().lock().unwrap();
+                let manage_team = st
+                    .session
+                    .as_ref()
+                    .map(|m| m.can_manage_team())
+                    .unwrap_or(false);
                 let selected = st
                     .team_staff_id
                     .as_ref()
                     .and_then(|id| st.staff.iter().find(|s| &s.id == id))
                     .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
                     .unwrap_or_else(|| " ".to_string());
-                (selected, st.team_draft_rights(), st.locale.language.clone())
+                let self_tip = !manage_team;
+                (
+                    selected,
+                    st.team_draft_rights(),
+                    st.locale.language.clone(),
+                    manage_team,
+                    self_tip,
+                )
             };
+            self.ui
+                .view(cx, ids!(team_admin_block))
+                .set_visible(cx, manage_team);
+            {
+                let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
+                let title = locale::t(&lang, if self_tip { "my_pin_settings" } else { "team" });
+                let tip = locale::t(
+                    &lang,
+                    if self_tip {
+                        "team_self_help"
+                    } else {
+                        "team_owner_help"
+                    },
+                );
+                help.set_title(cx, &title);
+                help.set_nav_icon(cx, NavTab::Team);
+                help.set_tip(&plain_display_text(&tip));
+            }
             let on = app_state().lock().unwrap().draft_features.clone();
             for (idle, active, set) in [
                 (ids!(feat_sell), ids!(feat_sell_on), on.sell),
