@@ -416,7 +416,7 @@ impl AppMain for App {
                 .map(|frame| e.set.contains(&frame))
                 .unwrap_or(false);
             if accordion_ours {
-                self.tick_books_accordion(cx);
+                self.tick_ui_state_anims(cx);
             }
         }
         if self.pointer_sidebar_settings_drag(cx, event) {

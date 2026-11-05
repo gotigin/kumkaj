@@ -460,7 +460,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let view = item.view(cx, ids!(area_scroll));
             let pos = view.get_scroll_pos();
             let max_x = (view.get_scroll_view_total().x - view.get_scroll_view_visible().x).max(0.0);
-            let step = FLOOR_TILE_W + FLOOR_TILE_GAP;
+            let (zoom, zoom_auto, cols) = {
+                let st = app_state().lock().unwrap();
+                (st.floor_zoom, st.floor_zoom_auto, floor_columns())
+            };
+            let (_vp_left, vp_w) = *floor_hviewport().lock().unwrap();
+            let scale = floor_effective_scale(zoom_auto, zoom, cols, vp_w.max(1.0));
+            let (tw, _) = floor_tile_wh(scale);
+            let step = tw + FLOOR_TILE_GAP;
             let new_x = if e.key_code == KeyCode::ArrowLeft {
                 (pos.x - step).max(0.0)
             } else {
@@ -573,38 +580,74 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         };
         let shell_wide = window_w >= store::TABLET_SHELL_BREAKPOINT_CSS;
         let rail_collapsed = app_state().lock().unwrap().rail_collapsed;
+        let max_rail = (window_w - MAIN_CONTENT_MIN - DIVIDER_W).max(RAIL_WIDTH_MIN);
+        let preferred = {
+            let mut st = app_state().lock().unwrap();
+            let clamped = st.rail_width.clamp(RAIL_WIDTH_MIN, max_rail);
+            st.rail_width = clamped;
+            clamped
+        };
+        // Mid-tween width from collapse/expand; None when idle.
+        let (anim_w, expanding) = {
+            let slot = rail_width_anim().lock().unwrap();
+            match slot.as_ref() {
+                Some(anim) => {
+                    let t = std::time::Instant::now()
+                        .duration_since(anim.started)
+                        .as_secs_f64()
+                        * 1000.0
+                        / ACCORDION_ANIM_MS;
+                    let p = accordion_ease(t);
+                    let w = (anim.from + (anim.to - anim.from) * p).max(0.0);
+                    (Some(w), anim.to > 0.0)
+                }
+                None => (None, false),
+            }
+        };
+        let rail_animating = anim_w.is_some();
         // Sidebar mode only: user can hide the whole rail (zero width).
-        // Phone bottom tabs are never affected.
-        let show_rail = unlocked && shell_wide && !rail_collapsed;
+        // Phone bottom tabs are never affected. During expand keep the rail
+        // visible from the first frame; during collapse until width ≈ 0.
+        let show_rail = unlocked
+            && shell_wide
+            && match anim_w {
+                Some(w) => expanding || w > 0.5,
+                None => !rail_collapsed,
+            };
         let show_bottom = unlocked && !shell_wide;
         self.ui.view(cx, ids!(nav_rail)).set_visible(cx, show_rail);
         self.ui.view(cx, ids!(rail_divider)).set_visible(cx, show_rail);
         self.ui.view(cx, ids!(bottom_nav)).set_visible(cx, show_bottom);
-        self.ui
-            .button(cx, ids!(rail_expand_btn))
-            .set_visible(cx, unlocked && shell_wide && rail_collapsed);
+        self.ui.button(cx, ids!(rail_expand_btn)).set_visible(
+            cx,
+            unlocked && shell_wide && rail_collapsed && !rail_animating,
+        );
         self.ui
             .button(cx, ids!(rail_collapse_btn))
-            .set_visible(cx, show_rail);
+            .set_visible(cx, show_rail && !rail_collapsed && !rail_animating);
 
-        let rail_w = if show_rail {
-            let preferred = app_state().lock().unwrap().rail_width;
-            let max_rail = (window_w - MAIN_CONTENT_MIN - DIVIDER_W).max(RAIL_WIDTH_MIN);
-            let clamped = preferred.clamp(RAIL_WIDTH_MIN, max_rail);
-            {
-                let mut st = app_state().lock().unwrap();
-                st.rail_width = clamped;
-            }
+        let rail_w = if let Some(w) = anim_w {
             set_view_walk(
                 cx,
                 &self.ui.view(cx, ids!(nav_rail)),
                 Walk {
-                    width: Size::Fixed(clamped),
+                    width: Size::Fixed(w),
                     height: Size::fill(),
                     ..Default::default()
                 },
             );
-            clamped
+            w
+        } else if show_rail {
+            set_view_walk(
+                cx,
+                &self.ui.view(cx, ids!(nav_rail)),
+                Walk {
+                    width: Size::Fixed(preferred),
+                    height: Size::fill(),
+                    ..Default::default()
+                },
+            );
+            preferred
         } else {
             0.0
         };

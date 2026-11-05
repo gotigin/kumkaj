@@ -449,13 +449,17 @@ impl App {
                 }
             }
         }
-        // Whole-rail hide / restore (sidebar mode only).
+        // Whole-rail hide / restore (sidebar mode only) — width tween.
         if self.ui.button(cx, ids!(rail_collapse_btn)).clicked(actions) {
+            let from = app_state().lock().unwrap().rail_width;
             app_state().lock().unwrap().rail_collapsed = true;
+            self.start_rail_width_anim(cx, from, 0.0);
             self.apply_shell_layout(cx, true);
         }
         if self.ui.button(cx, ids!(rail_expand_btn)).clicked(actions) {
+            let to = app_state().lock().unwrap().rail_width.max(RAIL_WIDTH_MIN);
             app_state().lock().unwrap().rail_collapsed = false;
+            self.start_rail_width_anim(cx, 0.0, to);
             self.apply_shell_layout(cx, true);
         }
         // Nav clicks honour the user's slot arrangement; the legacy More

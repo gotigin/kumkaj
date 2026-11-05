@@ -58,13 +58,21 @@ mod floor_tests {
         assert_eq!(floor_columns_for(569.0), 1);
         assert_eq!(floor_columns_for(570.0), 2, "2 × 280 + one 10px gap");
         assert_eq!(floor_columns_for(2900.0), 10, "no cap of 8 any more");
-        assert_eq!(floor_grid_width(1), 280.0);
+        assert_eq!(floor_grid_width(1, 1.0), 280.0);
         // Columns=3 is always 3×280 + 2×10 — never the ~2-tile viewport width.
-        assert_eq!(floor_grid_width(3), 860.0);
+        assert_eq!(floor_grid_width(3, 1.0), 860.0);
         assert!(
-            floor_grid_width(3) > 570.0,
+            floor_grid_width(3, 1.0) > 570.0,
             "3-col body must be wider than a phone viewport so ScrollX can show the third tile"
         );
+        // Auto grows tiles into spare width; clamps at max.
+        let auto = floor_auto_scale_for(5, 2000.0);
+        assert!(auto > 1.0, "wide board should grow tiles, got {auto}");
+        assert!(auto <= FLOOR_ZOOM_MAX);
+        assert_eq!(floor_zoom_clamp(0.1), FLOOR_ZOOM_MIN);
+        assert_eq!(floor_zoom_clamp(9.0), FLOOR_ZOOM_MAX);
+        let (w, h) = floor_tile_wh(2.0);
+        assert!((w / h - FLOOR_TILE_W / FLOOR_TILE_H).abs() < 0.001);
         let table = |i: usize| DiningTable {
             id: i.to_string(),
             name: format!("T{i}"),
@@ -93,18 +101,18 @@ mod floor_tests {
     #[test]
     fn column_window_follows_the_sideways_scroll() {
         // Not laid out yet: the first columns, at most one row of slots.
-        assert_eq!(floor_col_window(0.0, 0.0, 0.0, 100), (0, FLOOR_ROW_SLOTS));
-        assert_eq!(floor_col_window(0.0, 0.0, 0.0, 3), (0, 3));
+        assert_eq!(floor_col_window(0.0, 0.0, 0.0, 100, 1.0), (0, FLOOR_ROW_SLOTS));
+        assert_eq!(floor_col_window(0.0, 0.0, 0.0, 3, 1.0), (0, 3));
         // Unscrolled 1000px viewport: columns 0..4 (the 4th partly).
-        assert_eq!(floor_col_window(16.0, 16.0, 1000.0, 100), (0, 4));
+        assert_eq!(floor_col_window(16.0, 16.0, 1000.0, 100, 1.0), (0, 4));
         // Scrolled 2900px (10 columns) to the left.
-        let (first, last) = floor_col_window(16.0 - 2900.0, 16.0, 1000.0, 100);
+        let (first, last) = floor_col_window(16.0 - 2900.0, 16.0, 1000.0, 100, 1.0);
         assert_eq!((first, last), (10, 14));
         // Near the end: never past the last column.
-        let (first, last) = floor_col_window(16.0 - 2900.0, 16.0, 1000.0, 12);
+        let (first, last) = floor_col_window(16.0 - 2900.0, 16.0, 1000.0, 12, 1.0);
         assert_eq!((first, last), (10, 12));
         // A huge monitor still fits in one row of slots.
-        let (first, last) = floor_col_window(0.0, 0.0, 20_000.0, 500);
+        let (first, last) = floor_col_window(0.0, 0.0, 20_000.0, 500, 1.0);
         assert_eq!(last - first, FLOOR_ROW_SLOTS);
     }
 

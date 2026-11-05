@@ -969,13 +969,129 @@ fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
 const ACCORDION_MARK_CLOSED: &str = "\u{f054}";
 const ACCORDION_MARK_OPEN: &str = "\u{f078}";
 
-/// Books accordion open/close height animation (~220ms ease-out).
+/// Section / list open-close height animation (~220ms ease-out).
+/// `from`/`to` are visual progress 0 = collapsed, 1 = expanded.
+#[derive(Clone)]
 struct AccordionAnim {
-    /// Visual progress 0 = collapsed, 1 = expanded.
     from: f64,
     to: f64,
     content_h: f64,
     started: std::time::Instant,
+}
+
+/// Height tweens for SuggestList / StationCheckList / pick lists (keyed by field or widget id).
+fn list_height_anims() -> &'static Mutex<std::collections::HashMap<String, AccordionAnim>> {
+    static ANIMS: OnceLock<Mutex<std::collections::HashMap<String, AccordionAnim>>> = OnceLock::new();
+    ANIMS.get_or_init(|| Mutex::new(std::collections::HashMap::new()))
+}
+
+/// Keys that were visually open last frame (so close can tween from full height).
+fn list_height_drawn() -> &'static Mutex<std::collections::HashSet<String>> {
+    static DRAWN: OnceLock<Mutex<std::collections::HashSet<String>>> = OnceLock::new();
+    DRAWN.get_or_init(|| Mutex::new(std::collections::HashSet::new()))
+}
+
+/// Drive open/close height for a dropdown list. Returns `(height, should_draw)`.
+fn list_height_tween(key: &str, logic_open: bool, full_h: f64) -> (f64, bool) {
+    let now = std::time::Instant::now();
+    let mut anims = list_height_anims().lock().unwrap();
+    let mut drawn = list_height_drawn().lock().unwrap();
+    let was_drawn = drawn.contains(key);
+    let current_p = anims
+        .get(key)
+        .map(|a| accordion_anim_progress(a, now).0);
+    let want_to = if logic_open { 1.0 } else { 0.0 };
+
+    if logic_open && !was_drawn {
+        let from = current_p.unwrap_or(0.0);
+        anims.insert(
+            key.to_string(),
+            AccordionAnim {
+                from,
+                to: 1.0,
+                content_h: full_h.max(1.0),
+                started: now,
+            },
+        );
+        drawn.insert(key.to_string());
+    } else if !logic_open && was_drawn {
+        let from = current_p.unwrap_or(1.0);
+        let content_h = anims
+            .get(key)
+            .map(|a| a.content_h)
+            .unwrap_or(full_h)
+            .max(1.0);
+        anims.insert(
+            key.to_string(),
+            AccordionAnim {
+                from,
+                to: 0.0,
+                content_h,
+                started: now,
+            },
+        );
+        // Drop drawn so we do not re-start close every frame; anim keeps drawing.
+        drawn.remove(key);
+    } else if logic_open {
+        drawn.insert(key.to_string());
+        if let Some(a) = anims.get_mut(key) {
+            if full_h > 1.0 {
+                a.content_h = full_h;
+            }
+            // Reverse a mid-close if the list opened again.
+            if a.to <= 0.0 {
+                let from = current_p.unwrap_or(0.0);
+                a.from = from;
+                a.to = 1.0;
+                a.started = now;
+            }
+        }
+    } else if anims.get(key).map(|a| a.to > 0.5).unwrap_or(false) {
+        // Logic flipped closed while opening — reverse from current progress.
+        let from = current_p.unwrap_or(0.0);
+        let content_h = anims
+            .get(key)
+            .map(|a| a.content_h)
+            .unwrap_or(full_h.max(1.0));
+        anims.insert(
+            key.to_string(),
+            AccordionAnim {
+                from,
+                to: 0.0,
+                content_h,
+                started: now,
+            },
+        );
+    }
+
+    if let Some(a) = anims.get(key).cloned() {
+        let (p, done) = accordion_anim_progress(&a, now);
+        let h = a.content_h * p;
+        if done {
+            anims.remove(key);
+            if want_to <= 0.0 {
+                drawn.remove(key);
+                return (0.0, false);
+            }
+            return (a.content_h, true);
+        }
+        return (h, true);
+    }
+    if logic_open {
+        (full_h.max(0.0), full_h > 0.5)
+    } else {
+        drawn.remove(key);
+        (0.0, false)
+    }
+}
+
+/// True when any dropdown height tween is still running (keeps NextFrame alive).
+fn list_height_anims_live() -> bool {
+    let now = std::time::Instant::now();
+    let anims = list_height_anims().lock().unwrap();
+    anims
+        .values()
+        .any(|a| !accordion_anim_progress(a, now).1)
 }
 
 fn accordion_anims() -> &'static Mutex<std::collections::HashMap<String, AccordionAnim>> {
@@ -988,11 +1104,34 @@ fn accordion_frame() -> &'static Mutex<Option<NextFrame>> {
     FRAME.get_or_init(|| Mutex::new(None))
 }
 
+/// Side rail collapse/expand width tween (same duration as accordion).
+struct RailWidthAnim {
+    from: f64,
+    to: f64,
+    started: std::time::Instant,
+}
+
+fn rail_width_anim() -> &'static Mutex<Option<RailWidthAnim>> {
+    static ANIM: OnceLock<Mutex<Option<RailWidthAnim>>> = OnceLock::new();
+    ANIM.get_or_init(|| Mutex::new(None))
+}
+
 const ACCORDION_ANIM_MS: f64 = 220.0;
 
 fn accordion_ease(t: f64) -> f64 {
     let t = t.clamp(0.0, 1.0);
     1.0 - (1.0 - t).powi(3)
+}
+
+fn accordion_anim_progress(anim: &AccordionAnim, now: std::time::Instant) -> (f64, bool) {
+    let t = now.duration_since(anim.started).as_secs_f64() * 1000.0 / ACCORDION_ANIM_MS;
+    let p = accordion_ease(t);
+    let progress = anim.from + (anim.to - anim.from) * p;
+    (progress, t >= 1.0)
+}
+
+fn schedule_ui_tween_frame(cx: &mut Cx) {
+    *accordion_frame().lock().unwrap() = Some(cx.new_next_frame());
 }
 
 fn accordion_estimate_h(key: &str) -> f64 {
@@ -1002,6 +1141,12 @@ fn accordion_estimate_h(key: &str) -> f64 {
         "payments" => 108.0,
         "outstanding" => 72.0,
         "bank" => 108.0,
+        "floor_ops" => 220.0,
+        "waitlist" | "resv" => 180.0,
+        "floor_add" | "stations" => 140.0,
+        "table_actions" => 120.0,
+        "language" => 220.0,
+        "role" => 160.0,
         _ => 100.0,
     }
 }

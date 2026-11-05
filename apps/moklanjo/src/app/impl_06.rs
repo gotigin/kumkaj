@@ -386,10 +386,11 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
             );
             let wide = self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
-            unlocked && wide && !st.rail_collapsed
+            unlocked && wide && !st.rail_collapsed && rail_width_anim().lock().unwrap().is_none()
         };
         match event {
             Event::MouseDown(e) if e.button.is_primary() && unlocked_rail => {
+                *rail_width_anim().lock().unwrap() = None;
                 let rail_w = app_state().lock().unwrap().rail_width;
                 let x = e.abs.x;
                 if x >= rail_w - 2.0 && x <= rail_w + DIVIDER_W + 8.0 {
@@ -607,18 +608,21 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         }
     }
 
-    fn books_section_body_id(key: &str) -> Option<&'static [LiveId]> {
+    /// LiveId path for any animated accordion body (books / setup).
+    fn section_body_id(key: &str) -> Option<&'static [LiveId]> {
         match key {
             "today" => Some(ids!(books_sec_today_body)),
             "bookings" => Some(ids!(books_sec_bookings_body)),
             "payments" => Some(ids!(books_sec_payments_body)),
             "outstanding" => Some(ids!(books_sec_outstanding_body)),
             "bank" => Some(ids!(books_sec_bank_body)),
+            "language" => Some(ids!(setup_lang_body)),
+            "role" => Some(ids!(setup_role_body)),
             _ => None,
         }
     }
 
-    fn set_books_section_body_height(&mut self, cx: &mut Cx, body: &[LiveId], height: Option<f64>) {
+    fn set_section_body_height(&mut self, cx: &mut Cx, body: &[LiveId], height: Option<f64>) {
         if let Some(mut v) = self.ui.view(cx, body).borrow_mut() {
             v.walk.height = match height {
                 Some(h) => Size::Fixed(h.max(0.0)),
@@ -628,25 +632,54 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         self.ui.view(cx, body).redraw(cx);
     }
 
-    /// Drive accordion height animations; call from `Event::NextFrame`.
-    fn tick_books_accordion(&mut self, cx: &mut Cx) {
+    /// Start a height tween for one accordion body (`will_open` after state flip).
+    fn start_section_height_anim(&mut self, cx: &mut Cx, key: &str, will_open: bool) {
+        let Some(body) = Self::section_body_id(key) else {
+            return;
+        };
+        let measured = self.ui.view(cx, body).area().rect(cx).size.y;
+        let content_h = if measured > 1.0 {
+            measured
+        } else {
+            accordion_estimate_h(key)
+        };
+        let (from, to) = if will_open { (0.0, 1.0) } else { (1.0, 0.0) };
+        if will_open {
+            self.ui.view(cx, body).set_visible(cx, true);
+            self.set_section_body_height(cx, body, Some(0.0));
+        } else {
+            self.set_section_body_height(cx, body, Some(content_h));
+        }
+        accordion_anims().lock().unwrap().insert(
+            key.to_string(),
+            AccordionAnim {
+                from,
+                to,
+                content_h,
+                started: std::time::Instant::now(),
+            },
+        );
+        schedule_ui_tween_frame(cx);
+        self.tick_ui_state_anims(cx);
+    }
+
+    /// Drive accordion height + rail width tweens; call from `Event::NextFrame`.
+    fn tick_ui_state_anims(&mut self, cx: &mut Cx) {
         let now = std::time::Instant::now();
         let mut done_keys = Vec::new();
         let mut any_live = false;
         {
             let mut anims = accordion_anims().lock().unwrap();
             for (key, anim) in anims.iter_mut() {
-                let Some(body) = Self::books_section_body_id(key) else {
+                let Some(body) = Self::section_body_id(key) else {
                     done_keys.push(key.clone());
                     continue;
                 };
-                let t = now.duration_since(anim.started).as_secs_f64() * 1000.0 / ACCORDION_ANIM_MS;
-                let p = accordion_ease(t);
-                let progress = anim.from + (anim.to - anim.from) * p;
+                let (progress, done) = accordion_anim_progress(anim, now);
                 let h = anim.content_h * progress;
                 self.ui.view(cx, body).set_visible(cx, true);
-                self.set_books_section_body_height(cx, body, Some(h));
-                if t >= 1.0 {
+                self.set_section_body_height(cx, body, Some(h));
+                if done {
                     done_keys.push(key.clone());
                 } else {
                     any_live = true;
@@ -656,25 +689,68 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 let Some(anim) = anims.remove(key) else {
                     continue;
                 };
-                let Some(body) = Self::books_section_body_id(key) else {
+                let Some(body) = Self::section_body_id(key) else {
                     continue;
                 };
                 if anim.to <= 0.0 {
                     self.ui.view(cx, body).set_visible(cx, false);
-                    self.set_books_section_body_height(cx, body, None);
+                    self.set_section_body_height(cx, body, None);
                 } else {
                     self.ui.view(cx, body).set_visible(cx, true);
-                    self.set_books_section_body_height(cx, body, None);
+                    self.set_section_body_height(cx, body, None);
                 }
             }
             any_live = any_live || !anims.is_empty();
         }
+        if self.tick_rail_width_anim(cx, now) {
+            any_live = true;
+        }
+        if list_height_anims_live() {
+            any_live = true;
+        }
         if any_live {
-            *accordion_frame().lock().unwrap() = Some(cx.new_next_frame());
+            schedule_ui_tween_frame(cx);
         } else {
             *accordion_frame().lock().unwrap() = None;
         }
         self.ui.redraw(cx);
+    }
+
+    /// Returns true while a rail width tween is still running.
+    fn tick_rail_width_anim(&mut self, cx: &mut Cx, now: std::time::Instant) -> bool {
+        let (done, to) = {
+            let slot = rail_width_anim().lock().unwrap();
+            let Some(anim) = slot.as_ref() else {
+                return false;
+            };
+            let t = now.duration_since(anim.started).as_secs_f64() * 1000.0 / ACCORDION_ANIM_MS;
+            (t >= 1.0, anim.to)
+        };
+        if done {
+            *rail_width_anim().lock().unwrap() = None;
+            if to > 0.0 {
+                app_state().lock().unwrap().rail_width = to;
+            }
+        }
+        let unlocked = {
+            let st = app_state().lock().unwrap();
+            !matches!(
+                st.screen,
+                Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+            )
+        };
+        self.apply_shell_layout(cx, unlocked);
+        !done
+    }
+
+    fn start_rail_width_anim(&mut self, cx: &mut Cx, from: f64, to: f64) {
+        *rail_width_anim().lock().unwrap() = Some(RailWidthAnim {
+            from,
+            to,
+            started: std::time::Instant::now(),
+        });
+        schedule_ui_tween_frame(cx);
+        self.tick_ui_state_anims(cx);
     }
 
     /// Top (screen) eye — persisted per signed-in user; applies on every screen.
@@ -726,9 +802,9 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     }
 
     fn toggle_books_section(&mut self, cx: &mut Cx, key: &str) {
-        let Some(body) = Self::books_section_body_id(key) else {
+        if Self::section_body_id(key).is_none() {
             return;
-        };
+        }
         let will_open = {
             let mut st = app_state().lock().unwrap();
             let open = if let Some(i) = st.books_sections_open.iter().position(|k| k == key) {
@@ -743,33 +819,8 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             }
             open
         };
-        // Measure current height before we collapse (or use estimate when opening).
-        let measured = self.ui.view(cx, body).area().rect(cx).size.y;
-        let content_h = if measured > 1.0 {
-            measured
-        } else {
-            accordion_estimate_h(key)
-        };
-        let (from, to) = if will_open { (0.0, 1.0) } else { (1.0, 0.0) };
-        if will_open {
-            self.ui.view(cx, body).set_visible(cx, true);
-            self.set_books_section_body_height(cx, body, Some(0.0));
-        } else {
-            self.set_books_section_body_height(cx, body, Some(content_h));
-        }
-        accordion_anims().lock().unwrap().insert(
-            key.to_string(),
-            AccordionAnim {
-                from,
-                to,
-                content_h,
-                started: std::time::Instant::now(),
-            },
-        );
-        *accordion_frame().lock().unwrap() = Some(cx.new_next_frame());
-        // Header chevron flips immediately; body height eases on NextFrame.
+        self.start_section_height_anim(cx, key, will_open);
         self.sync_books_sections(cx);
-        self.tick_books_accordion(cx);
     }
 
     fn sync_device_setup_sections(&mut self, cx: &mut Cx) {
@@ -781,6 +832,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         let is_open = |key: &str| open.iter().any(|k| k == key);
         let lang = app_state().lock().unwrap().locale.language.clone();
         let s = |k: &str| locale::t(&lang, k);
+        let animating = accordion_anims().lock().unwrap();
         let sections: &[(&str, &[LiveId], &[LiveId], &str)] = &[
             (
                 "language",
@@ -806,23 +858,31 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             self.ui
                 .button(cx, hdr)
                 .set_text(cx, &format!("{mark}  {caption}"));
+            if animating.contains_key(*key) {
+                continue;
+            }
             self.ui.view(cx, body).set_visible(cx, open);
+            if let Some(mut v) = self.ui.view(cx, body).borrow_mut() {
+                v.walk.height = Size::fit();
+            }
         }
     }
 
     fn toggle_device_setup_section(&mut self, cx: &mut Cx, key: &str) {
-        {
+        let will_open = {
             let mut st = app_state().lock().unwrap();
             if let Some(i) = st.device_setup_sections_open.iter().position(|k| k == key) {
                 st.device_setup_sections_open.remove(i);
+                false
             } else {
                 st.device_setup_sections_open.push(key.to_string());
+                true
             }
-        }
+        };
+        self.start_section_height_anim(cx, key, will_open);
         self.sync_device_setup_sections(cx);
         // Language accordion is a nested setup layer — show/hide header ‹.
         self.paint_header_back_chrome(cx);
-        self.ui.redraw(cx);
     }
 
     /// Docs / debug / LOCAL badges stay out of the day-to-day work surface.

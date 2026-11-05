@@ -2019,6 +2019,75 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         if input.text() != want {
             input.set_text(cx, &want);
         }
+        self.paint_floor_zoom_chrome(cx);
+    }
+
+    /// Auto on/off face next to Columns; −/+ stay as SegBtn.
+    fn paint_floor_zoom_chrome(&mut self, cx: &mut Cx) {
+        let auto = app_state().lock().unwrap().floor_zoom_auto;
+        self.paint_choice_pair(cx, ids!(floor_zoom_auto), ids!(floor_zoom_auto_on), auto);
+        let label = app_t("floor_zoom_auto");
+        self.ui.button(cx, ids!(floor_zoom_auto)).set_text(cx, &label);
+        self.ui.button(cx, ids!(floor_zoom_auto_on)).set_text(cx, &label);
+    }
+
+    /// Zoom − / +: nudge scale, turn Auto off, redraw the board.
+    fn nudge_floor_zoom(&mut self, cx: &mut Cx, delta: f64) {
+        let result = {
+            let mut st = app_state().lock().unwrap();
+            let next = floor_zoom_clamp(st.floor_zoom + delta);
+            let saved = st.store.as_ref().map(|s| {
+                s.set_floor_zoom(next)?;
+                s.set_floor_zoom_auto(false)
+            });
+            if let Some(Err(e)) = saved {
+                Err(e)
+            } else {
+                st.floor_zoom = next;
+                st.floor_zoom_auto = false;
+                Ok(())
+            }
+        };
+        match result {
+            Ok(()) => {
+                self.paint_floor_zoom_chrome(cx);
+                self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+                self.ui.view(cx, ids!(floor_scroll)).redraw(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
+    fn set_floor_zoom_auto(&mut self, cx: &mut Cx, on: bool) {
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            // Turning Auto off keeps the size the board already shows.
+            if !on && st.floor_zoom_auto {
+                let cols = st.floor_columns.max(1);
+                let (_l, vp_w) = *floor_hviewport().lock().unwrap();
+                let shown = floor_effective_scale(true, st.floor_zoom, cols, vp_w.max(1.0));
+                if let Some(store) = st.store.as_ref() {
+                    store.set_floor_zoom(shown)?;
+                    store.set_floor_zoom_auto(false)?;
+                }
+                st.floor_zoom = shown;
+                st.floor_zoom_auto = false;
+                return Ok(());
+            }
+            if let Some(store) = st.store.as_ref() {
+                store.set_floor_zoom_auto(on)?;
+            }
+            st.floor_zoom_auto = on;
+            Ok(())
+        })();
+        match result {
+            Ok(()) => {
+                self.paint_floor_zoom_chrome(cx);
+                self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+                self.ui.view(cx, ids!(floor_scroll)).redraw(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
     }
 
     /// Select a floor area tab: load that area's Columns, paint the active

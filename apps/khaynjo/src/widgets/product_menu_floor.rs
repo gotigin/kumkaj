@@ -441,9 +441,10 @@ fn floor_area_groups(tables: &[DiningTable]) -> Vec<(String, Vec<usize>)> {
     out
 }
 
-fn floor_area_block_height(n_tables: usize, cols: usize) -> f64 {
+fn floor_area_block_height(n_tables: usize, cols: usize, scale: f64) -> f64 {
     let cols = cols.max(1);
     let n_rows = n_tables.div_ceil(cols).max(1);
+    let (_, th) = floor_tile_wh(scale);
     // area_scroll pad (28+22 = Columns↔tables gap 10 + lane 18 + bottom 22)
     // + body pad (10+14) + tile rows + row gaps.
     // (Area name lives on the tab strip — no label height.)
@@ -451,7 +452,7 @@ fn floor_area_block_height(n_tables: usize, cols: usize) -> f64 {
     const BODY_PAD_Y: f64 = 10.0 + 14.0;
     SCROLL_PAD_Y
         + BODY_PAD_Y
-        + n_rows as f64 * (FLOOR_TILE_H + FLOOR_TILE_GAP)
+        + n_rows as f64 * (th + FLOOR_TILE_GAP)
         + 10.0 * n_rows.saturating_sub(1) as f64
 }
 
@@ -460,12 +461,14 @@ impl Widget for FloorList {
         use domain::FloorState as F;
         type Tile = (String, String, String, Option<&'static str>, F, bool);
         // One selected area tab at a time — that tab's Columns + tables.
-        let (tables, tiles, focused, chosen, area_tab): (
+        let (tables, tiles, focused, chosen, area_tab, zoom, zoom_auto): (
             Vec<DiningTable>,
             Vec<Tile>,
             Vec<bool>,
             usize,
             String,
+            f64,
+            bool,
         ) = {
             let st = app_state().lock().unwrap();
             let tables = floor_filtered_tables(&st);
@@ -484,6 +487,8 @@ impl Widget for FloorList {
                 focused,
                 st.floor_columns,
                 st.floor_area_tab.clone(),
+                st.floor_zoom,
+                st.floor_zoom_auto,
             )
         };
         let (_vp_left, vp_w) = *floor_hviewport().lock().unwrap();
@@ -505,10 +510,19 @@ impl Widget for FloorList {
             .unwrap_or_default();
         // Single area body (tab already names it) — no stacked area headings.
         let n = if idxs.is_empty() { 0 } else { 1 };
+        // Viewport for Auto: prefer live ScrollX width once known.
+        let scale_vp = if vp_w > 1.0 {
+            vp_w
+        } else {
+            cx.turtle()
+                .next_walk_width(walk.width, walk.margin)
+                .max(1.0)
+        };
+        let scale = floor_effective_scale(zoom_auto, zoom, cols, scale_vp);
         let height = if n == 0 {
             0.0
         } else {
-            floor_area_block_height(idxs.len(), cols)
+            floor_area_block_height(idxs.len(), cols, scale)
         };
         let walk = Walk {
             width: Size::fill(),
@@ -540,37 +554,41 @@ impl Widget for FloorList {
                     // rows used to collapse to ~2 tiles on a phone so
                     // Columns=3 looked like 2 with the third clipped.
                     let cols_in_row = idxs.len().min(cols).max(1);
-                    let grid_w = floor_grid_width(cols_in_row);
-                    let n_rows = idxs.chunks(cols.max(1)).count().max(1);
-                    // Body pad (top 10 + bottom 14) matches DSL — scroll lanes
-                    // above/below the tiles inside the sideways strip.
-                    const BODY_PAD_Y: f64 = 10.0 + 14.0;
-                    let body_h = n_rows as f64 * (FLOOR_TILE_H + FLOOR_TILE_GAP)
-                        + 10.0 * n_rows.saturating_sub(1) as f64
-                        + BODY_PAD_Y;
-                    if let Some(mut b) = body.borrow_mut() {
-                        b.walk.width = Size::Fixed(grid_w);
-                        b.walk.height = Size::Fixed(body_h.max(FLOOR_TILE_H + BODY_PAD_Y));
-                    }
-                    let scroll_x = scroll.get_scroll_pos().x;
+                    // Prefer the live ScrollX width for Auto so whitespace
+                    // on wide boards grows tiles (same aspect).
                     let area_vp_w = {
                         let r = scroll.area().rect(cx);
                         if r.size.x > 1.0 {
                             r.size.x
                         } else {
-                            vp_w.max(1.0)
+                            scale_vp.max(1.0)
                         }
                     };
+                    let scale = floor_effective_scale(zoom_auto, zoom, cols, area_vp_w);
+                    let (tile_w, tile_h) = floor_tile_wh(scale);
+                    let grid_w = floor_grid_width(cols_in_row, scale);
+                    let n_rows = idxs.chunks(cols.max(1)).count().max(1);
+                    // Body pad (top 10 + bottom 14) matches DSL — scroll lanes
+                    // above/below the tiles inside the sideways strip.
+                    const BODY_PAD_Y: f64 = 10.0 + 14.0;
+                    let body_h = n_rows as f64 * (tile_h + FLOOR_TILE_GAP)
+                        + 10.0 * n_rows.saturating_sub(1) as f64
+                        + BODY_PAD_Y;
+                    if let Some(mut b) = body.borrow_mut() {
+                        b.walk.width = Size::Fixed(grid_w);
+                        b.walk.height = Size::Fixed(body_h.max(tile_h + BODY_PAD_Y));
+                    }
+                    let scroll_x = scroll.get_scroll_pos().x;
                     // When Columns fits in one slot row, paint every column so
                     // the Fit/Fixed row is truly N tiles wide (ScrollX pans).
                     // Only window when N exceeds FLOOR_ROW_SLOTS.
                     let (first_col, last_col) = if cols_in_row <= FLOOR_ROW_SLOTS {
                         (0, cols_in_row)
                     } else {
-                        floor_col_window(0.0, scroll_x, area_vp_w, cols_in_row)
+                        floor_col_window(0.0, scroll_x, area_vp_w, cols_in_row, scale)
                     };
                     *floor_first_col().lock().unwrap() = first_col;
-                    let skipped = first_col as f64 * (FLOOR_TILE_W + FLOOR_TILE_GAP);
+                    let skipped = first_col as f64 * (tile_w + FLOOR_TILE_GAP);
                     while let Some(step) = item.draw_walk(cx, scope, Walk::default()).step() {
                         if let Some(mut rows_list) = step.as_portal_list().borrow_mut() {
                             rows_list.set_item_range(cx, 0, n_rows);
@@ -602,6 +620,10 @@ impl Widget for FloorList {
                                     match shown {
                                         Some((ti, t)) => {
                                             tile.set_visible(cx, true);
+                                            if let Some(mut v) = tile.borrow_mut() {
+                                                v.walk.width = Size::Fixed(tile_w);
+                                                v.walk.height = Size::Fixed(tile_h);
+                                            }
                                             paint_floor_tile(
                                                 cx,
                                                 &tile,

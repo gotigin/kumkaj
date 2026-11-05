@@ -6859,30 +6859,49 @@ script_mod! {
                                 floor_area_body := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 0
-                                    // Columns for the selected area only (this device).
-                                    // Pick 1, 2, 3 … or type; leave empty to fit the screen.
-                                    floor_cols_box := View{
-                                        width: Fixed(168.) height: Fit
-                                        flow: Down
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            align: Align{x: 1.0 y: 0.5}
-                                            floor_cols_input := FieldInput{
-                                                margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
-                                                padding: Inset{left: 12. right: 36. top: 11. bottom: 11.}
-                                                empty_text: "Columns"
-                                                is_numeric_only: true
+                                    // Columns + zoom (− / + / Auto) for this area (this device).
+                                    floor_cols_row := View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        align: Align{x: 1.0 y: 0.5}
+                                        padding: Inset{top: 2. bottom: 2.}
+                                        floor_cols_box := View{
+                                            width: Fixed(140.) height: Fit
+                                            flow: Down
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Overlay
+                                                align: Align{x: 1.0 y: 0.5}
+                                                floor_cols_input := FieldInput{
+                                                    margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
+                                                    padding: Inset{left: 12. right: 36. top: 11. bottom: 11.}
+                                                    empty_text: "Columns"
+                                                    is_numeric_only: true
+                                                }
+                                                Label{
+                                                    width: Fit
+                                                    margin: Inset{right: 14.}
+                                                    text: "\u{f078}"
+                                                    draw_text.color: #x6B4A3F
+                                                    draw_text.text_style.font_size: 11.
+                                                }
                                             }
-                                            Label{
-                                                width: Fit
-                                                margin: Inset{right: 14.}
-                                                text: "\u{f078}"
-                                                draw_text.color: #x6B4A3F
-                                                draw_text.text_style.font_size: 11.
-                                            }
+                                            floor_cols_suggest := mod.widgets.SuggestList{field: "floor_cols"}
                                         }
-                                        floor_cols_suggest := mod.widgets.SuggestList{field: "floor_cols"}
+                                        View{
+                                            width: Fixed(44.) height: Fit
+                                            floor_zoom_out := SegBtn{text: "\u{f068}"}
+                                        }
+                                        View{
+                                            width: Fixed(44.) height: Fit
+                                            floor_zoom_in := SegBtn{text: "\u{f067}"}
+                                        }
+                                        View{
+                                            width: Fixed(72.) height: Fit
+                                            flow: Overlay
+                                            floor_zoom_auto := SegBtn{text: "Auto"}
+                                            floor_zoom_auto_on := SegBtnOn{text: "Auto" visible: false}
+                                        }
                                     }
                                     // Tables for the selected area; sideways ScrollXView
                                     // inside FloorList when columns exceed the viewport.

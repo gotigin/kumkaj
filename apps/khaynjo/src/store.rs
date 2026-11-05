@@ -3035,6 +3035,42 @@ impl Store {
         self.meta_set("ui_floor_columns_by_area", &json)
     }
 
+    /// Floor tile zoom on this device (1.0 = default). Clamped.
+    pub fn floor_zoom(&self) -> f64 {
+        self.meta_get("ui_floor_zoom")
+            .ok()
+            .flatten()
+            .and_then(|s| s.parse::<f64>().ok())
+            .filter(|v| v.is_finite())
+            .map(|v| v.clamp(0.55, 1.75))
+            .unwrap_or(1.0)
+    }
+
+    pub fn set_floor_zoom(&self, scale: f64) -> Result<(), String> {
+        let scale = if scale.is_finite() {
+            scale.clamp(0.55, 1.75)
+        } else {
+            1.0
+        };
+        self.meta_set("ui_floor_zoom", &format!("{scale:.3}"))
+    }
+
+    /// Grow tiles to fill the visible Floor width (this device). Default on.
+    pub fn floor_zoom_auto(&self) -> bool {
+        self.meta_get("ui_floor_zoom_auto")
+            .ok()
+            .flatten()
+            .map(|s| {
+                let t = s.trim();
+                t == "1" || t.eq_ignore_ascii_case("true") || t.eq_ignore_ascii_case("yes")
+            })
+            .unwrap_or(true)
+    }
+
+    pub fn set_floor_zoom_auto(&self, on: bool) -> Result<(), String> {
+        self.meta_set("ui_floor_zoom_auto", if on { "1" } else { "0" })
+    }
+
     pub fn kot_auto_print(&self) -> bool {
         self.meta_get("kot_auto_print")
             .ok()

@@ -59,6 +59,8 @@ impl AppState {
             floor_ops_text: String::new(),
             floor_waiter_filter: String::new(),
             floor_columns: 4,
+            floor_zoom: 1.0,
+            floor_zoom_auto: true,
             floor_area_tab: String::new(),
             floor_area_order: Vec::new(),
             floor_view_layout: false,
@@ -246,6 +248,8 @@ impl AppState {
         }
         // Columns belong to the selected area tab (legacy global is fallback).
         self.floor_columns = store.floor_columns_for_area(&self.floor_area_tab);
+        self.floor_zoom = store.floor_zoom();
+        self.floor_zoom_auto = store.floor_zoom_auto();
         if self.device_role.is_host() {
             self.lan_devices = store.list_lan_devices().unwrap_or_default();
             // A split bill's companion table goes once its bill is paid.

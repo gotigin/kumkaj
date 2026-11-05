@@ -9,11 +9,18 @@ struct SuggestList {
     field: String,
     #[rust]
     drawn_rev: u64,
+    /// Rows kept while the close height tween finishes.
+    #[rust]
+    hold_rows: Vec<suggest::SuggestRow>,
 }
 
 impl SuggestList {
     fn is_open(&self) -> bool {
         app_state().lock().unwrap().suggest_open.map(|f| f.key()) == Some(self.field.as_str())
+    }
+
+    fn anim_key(&self) -> String {
+        format!("suggest:{}", self.field)
     }
 }
 
@@ -30,17 +37,42 @@ impl Widget for SuggestList {
                 st.floor_columns,
             )
         };
-        if !open || rows.is_empty() {
+        if open && !rows.is_empty() {
+            self.hold_rows = rows.clone();
+        }
+        let draw_rows = if open && !rows.is_empty() {
+            &rows
+        } else {
+            &self.hold_rows
+        };
+        let logic_open = open && !draw_rows.is_empty();
+        let row_h = *suggest_row_height().lock().unwrap();
+        let n = draw_rows.len();
+        let full_h = if n == 0 {
+            0.0
+        } else {
+            list_content_height(n, row_h, 6.0).min(SUGGEST_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key())
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_rows.is_empty() {
+            if !should_draw {
+                self.hold_rows.clear();
+            }
             return DrawStep::done();
         }
-        let row_h = *suggest_row_height().lock().unwrap();
-        let n = rows.len();
         let walk = Walk {
-            height: Size::Fixed(list_content_height(n, row_h, 6.0).min(SUGGEST_MAX_HEIGHT)),
+            height: Size::Fixed(height),
             ..walk
         };
         let use_text = locale::t(&lang, "use");
-        let new_rev = self.drawn_rev != rev;
+        let new_rev = self.drawn_rev != rev && open;
         let mut measured_row = 0.0;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
@@ -51,7 +83,7 @@ impl Widget for SuggestList {
                 list.set_item_range(cx, 0, n);
                 let mut drew = 0usize;
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(row) = rows.get(item_id) else {
+                    let Some(row) = draw_rows.get(item_id) else {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
@@ -92,12 +124,19 @@ impl Widget for SuggestList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if !self.is_open() {
-            return;
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key());
+        if self.is_open() || live {
+            // Keep NextFrame pumping while this list is tweening.
+            if live {
+                schedule_ui_tween_frame(cx);
+            }
+            claim_list_nested_scroll(cx, &self.view, event);
+            self.view.handle_event(cx, event, scope);
+            claim_list_nested_scroll(cx, &self.view, event);
         }
-        claim_list_nested_scroll(cx, &self.view, event);
-        self.view.handle_event(cx, event, scope);
-        claim_list_nested_scroll(cx, &self.view, event);
     }
 }
 
@@ -117,11 +156,17 @@ struct StationCheckList {
     /// on open, never on checkbox refresh (that felt like a jump).
     #[rust]
     was_open: bool,
+    #[rust]
+    hold_rows: Vec<suggest::SuggestRow>,
 }
 
 impl StationCheckList {
     fn is_open(&self) -> bool {
         app_state().lock().unwrap().suggest_open.map(|f| f.key()) == Some(self.field.as_str())
+    }
+
+    fn anim_key(&self) -> String {
+        format!("station:{}", self.field)
     }
 }
 
@@ -135,16 +180,41 @@ impl Widget for StationCheckList {
                 st.locale.language.clone(),
             )
         };
-        if !open || rows.is_empty() {
-            self.was_open = false;
+        if open && !rows.is_empty() {
+            self.hold_rows = rows.clone();
+        }
+        let draw_rows = if open && !rows.is_empty() {
+            &rows
+        } else {
+            &self.hold_rows
+        };
+        let logic_open = open && !draw_rows.is_empty();
+        let row_h = *suggest_row_height().lock().unwrap();
+        let n = draw_rows.len();
+        let full_h = if n == 0 {
+            0.0
+        } else {
+            list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key())
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_rows.is_empty() {
+            if !should_draw {
+                self.was_open = false;
+                self.hold_rows.clear();
+            }
             return DrawStep::done();
         }
-        let just_opened = !self.was_open;
+        let just_opened = !self.was_open && open;
         self.was_open = true;
-        let row_h = *suggest_row_height().lock().unwrap();
-        let n = rows.len();
         let walk = Walk {
-            height: Size::Fixed(list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)),
+            height: Size::Fixed(height),
             ..walk
         };
         let use_l = locale::t(&lang, "use");
@@ -158,7 +228,7 @@ impl Widget for StationCheckList {
                 list.set_item_range(cx, 0, n);
                 let mut drew = 0usize;
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(row) = rows.get(item_id) else {
+                    let Some(row) = draw_rows.get(item_id) else {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
@@ -188,7 +258,7 @@ impl Widget for StationCheckList {
                     } else {
                         let mut ord = 0usize;
                         let mut station_ids: Vec<usize> = Vec::new();
-                        for (i, r) in rows.iter().enumerate() {
+                        for (i, r) in draw_rows.iter().enumerate() {
                             if r.value.eq_ignore_ascii_case(&unassigned) {
                                 continue;
                             }
@@ -207,12 +277,12 @@ impl Widget for StationCheckList {
                         let can_up = station_ids.len() > 1 && station_ids.first() != Some(&item_id);
                         let can_down = {
                             let last = if printer_assign {
-                                rows.iter().rposition(|r| {
+                                draw_rows.iter().rposition(|r| {
                                     let a = r.action.trim();
                                     !a.is_empty() && a != use_l
                                 })
                             } else {
-                                rows.iter().rposition(|r| {
+                                draw_rows.iter().rposition(|r| {
                                     !r.value.eq_ignore_ascii_case(&unassigned)
                                 })
                             };
@@ -239,8 +309,15 @@ impl Widget for StationCheckList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if !self.is_open() {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key());
+        if !self.is_open() && !live {
             return;
+        }
+        if live {
+            schedule_ui_tween_frame(cx);
         }
         claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
@@ -258,6 +335,8 @@ struct CategoryPickList {
     view: View,
     #[rust]
     drawn_rev: u64,
+    #[rust]
+    hold_picks: Vec<CategoryPick>,
 }
 
 impl Widget for CategoryPickList {
@@ -272,14 +351,37 @@ impl Widget for CategoryPickList {
                 st.locale.language.clone(),
             )
         };
-        if !open || picks.is_empty() {
+        if open && !picks.is_empty() {
+            self.hold_picks = picks.clone();
+        }
+        let draw_picks = if open && !picks.is_empty() {
+            &picks
+        } else {
+            &self.hold_picks
+        };
+        let logic_open = open && !draw_picks.is_empty();
+        let full_h = if draw_picks.is_empty() {
+            0.0
+        } else {
+            list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween("category_pick", logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("category_pick")
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_picks.is_empty() {
+            if !should_draw {
+                self.hold_picks.clear();
+            }
             return DrawStep::done();
         }
         // Same DishRow card as the dish picker.
         let walk = Walk {
-            height: Size::Fixed(
-                list_content_height(picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT),
-            ),
+            height: Size::Fixed(height),
             ..walk
         };
         let dir = item_images_dir();
@@ -287,15 +389,15 @@ impl Widget for CategoryPickList {
         let new_text = locale::t(&lang, "new_category_row");
         let mine_text = locale::t(&lang, "your_category");
         let shelf_text = locale::t(&lang, "suggested_category");
-        let new_rev = self.drawn_rev != rev;
+        let new_rev = self.drawn_rev != rev && open;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 if new_rev {
                     list.set_first_id_and_scroll(0, 0.0);
                 }
-                list.set_item_range(cx, 0, picks.len());
+                list.set_item_range(cx, 0, draw_picks.len());
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(pick) = picks.get(item_id) else {
+                    let Some(pick) = draw_picks.get(item_id) else {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
@@ -349,8 +451,15 @@ impl Widget for CategoryPickList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if !app_state().lock().unwrap().category_picker_open {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("category_pick");
+        if !app_state().lock().unwrap().category_picker_open && !live {
             return;
+        }
+        if live {
+            schedule_ui_tween_frame(cx);
         }
         claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
@@ -368,6 +477,8 @@ struct DishPickList {
     /// `dish_picks_rev` this list last drew; a new one scrolls back to the top.
     #[rust]
     drawn_rev: u64,
+    #[rust]
+    hold_picks: Vec<DishPick>,
 }
 
 /// Tallest the picker grows before it scrolls inside itself (css px).
@@ -390,15 +501,38 @@ impl Widget for DishPickList {
                 st.locale.language.clone(),
             )
         };
-        if !open || picks.is_empty() {
+        if open && !picks.is_empty() {
+            self.hold_picks = picks.clone();
+        }
+        let draw_picks = if open && !picks.is_empty() {
+            &picks
+        } else {
+            &self.hold_picks
+        };
+        let logic_open = open && !draw_picks.is_empty();
+        let full_h = if draw_picks.is_empty() {
+            0.0
+        } else {
+            list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween("dish_pick", logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("dish_pick")
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_picks.is_empty() {
+            if !should_draw {
+                self.hold_picks.clear();
+            }
             return DrawStep::done();
         }
         // DishRow is a fixed landscape photo card; PortalList spacing matches
         // DISH_ROW_GAP. Small results shrink the box; long ones scroll inside.
         let walk = Walk {
-            height: Size::Fixed(
-                list_content_height(picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT),
-            ),
+            height: Size::Fixed(height),
             ..walk
         };
         let shelf = menu_images::shelf();
@@ -407,15 +541,15 @@ impl Widget for DishPickList {
         let edit_text = locale::t(&lang, "edit");
         let own_text = locale::t(&lang, "own_item_name");
         let on_menu_text = locale::t(&lang, "on_your_menu");
-        let new_rev = self.drawn_rev != rev;
+        let new_rev = self.drawn_rev != rev && open;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 if new_rev {
                     list.set_first_id_and_scroll(0, 0.0);
                 }
-                list.set_item_range(cx, 0, picks.len());
+                list.set_item_range(cx, 0, draw_picks.len());
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(pick) = picks.get(item_id) else {
+                    let Some(pick) = draw_picks.get(item_id) else {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
@@ -475,8 +609,15 @@ impl Widget for DishPickList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        if !app_state().lock().unwrap().dish_picker_open {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("dish_pick");
+        if !app_state().lock().unwrap().dish_picker_open && !live {
             return;
+        }
+        if live {
+            schedule_ui_tween_frame(cx);
         }
         // Pointer over the picker = it owns the wheel; the page must not move.
         claim_list_nested_scroll(cx, &self.view, event);

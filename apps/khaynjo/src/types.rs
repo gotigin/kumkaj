@@ -35,12 +35,17 @@ enum FloorRow {
     Tiles(Vec<usize>),
 }
 
-/// Every floor table tile is this size (css px), whatever the column count:
-/// more columns than fit make the tables scroll sideways, never shrink.
+/// Every floor table tile is this size (css px) at zoom 1.0. Zoom −/+ and
+/// Auto scale width and height together (same aspect). More columns than
+/// fit still scroll sideways.
 const FLOOR_TILE_W: f64 = 280.0;
 const FLOOR_TILE_H: f64 = 178.0;
 /// Gap between tiles across, and between rows (the row's bottom padding).
 const FLOOR_TILE_GAP: f64 = 10.0;
+/// Manual / Auto floor zoom clamps (1.0 = [`FLOOR_TILE_W`] × [`FLOOR_TILE_H`]).
+const FLOOR_ZOOM_MIN: f64 = 0.55;
+const FLOOR_ZOOM_MAX: f64 = 1.75;
+const FLOOR_ZOOM_STEP: f64 = 0.1;
 /// Tile slots in one row template. Only the columns on screen are drawn into
 /// them (the rest of a wide row is a spacer), so this bounds the columns
 /// *visible at once* (24 × 290 ≈ 7000px), not the columns a row may have.
@@ -552,20 +557,59 @@ fn floor_row_pitch(row: &FloorRow) -> f64 {
     }
 }
 
-/// Width of a floor row of `cols` tiles.
-fn floor_grid_width(cols: usize) -> f64 {
+fn floor_zoom_clamp(scale: f64) -> f64 {
+    if !scale.is_finite() {
+        return 1.0;
+    }
+    scale.clamp(FLOOR_ZOOM_MIN, FLOOR_ZOOM_MAX)
+}
+
+/// Tile width × height at `scale` (aspect of [`FLOOR_TILE_W`] / [`FLOOR_TILE_H`]).
+fn floor_tile_wh(scale: f64) -> (f64, f64) {
+    let s = floor_zoom_clamp(scale);
+    (FLOOR_TILE_W * s, FLOOR_TILE_H * s)
+}
+
+/// Width of a floor row of `cols` tiles at `scale`.
+fn floor_grid_width(cols: usize, scale: f64) -> f64 {
     let cols = cols.max(1) as f64;
-    cols * FLOOR_TILE_W + (cols - 1.0) * FLOOR_TILE_GAP
+    let (tw, _) = floor_tile_wh(scale);
+    cols * tw + (cols - 1.0) * FLOOR_TILE_GAP
+}
+
+/// Scale that fills `viewport_w` with `cols` tiles (same aspect), clamped.
+fn floor_auto_scale_for(cols: usize, viewport_w: f64) -> f64 {
+    let cols = cols.max(1) as f64;
+    if !(viewport_w.is_finite() && viewport_w > 1.0) {
+        return 1.0;
+    }
+    let usable = (viewport_w - (cols - 1.0) * FLOOR_TILE_GAP).max(1.0);
+    floor_zoom_clamp(usable / FLOOR_TILE_W)
+}
+
+fn floor_effective_scale(auto: bool, zoom: f64, cols: usize, viewport_w: f64) -> f64 {
+    if auto {
+        floor_auto_scale_for(cols, viewport_w)
+    } else {
+        floor_zoom_clamp(zoom)
+    }
 }
 
 /// Columns `first..last` of a floor row that show in the sideways viewport
 /// (`vp_left`, `vp_w`) when the row starts at `row_left` — at most
 /// [`FLOOR_ROW_SLOTS`]. Before the viewport is known, the first columns.
-fn floor_col_window(row_left: f64, vp_left: f64, vp_w: f64, cols: usize) -> (usize, usize) {
+fn floor_col_window(
+    row_left: f64,
+    vp_left: f64,
+    vp_w: f64,
+    cols: usize,
+    scale: f64,
+) -> (usize, usize) {
     if vp_w <= 1.0 {
         return (0, cols.min(FLOOR_ROW_SLOTS));
     }
-    let pitch = FLOOR_TILE_W + FLOOR_TILE_GAP;
+    let (tw, _) = floor_tile_wh(scale);
+    let pitch = tw + FLOOR_TILE_GAP;
     let first = ((vp_left - row_left) / pitch).floor().max(0.0) as usize;
     let first = first.min(cols);
     let last = ((vp_left + vp_w - row_left) / pitch).ceil().max(0.0) as usize;
@@ -639,8 +683,8 @@ fn product_grid_cols() -> &'static Mutex<usize> {
     C.get_or_init(|| Mutex::new(2))
 }
 
-/// How many whole tiles fit across `width` (or the content width) — the
-/// "Fit screen" column count. At least 1 (the 375 css px app floor shows one).
+/// How many whole tiles fit across `width` (or the content width) at
+/// zoom 1.0 — the "Fit screen" column count. At least 1.
 fn floor_columns_for(width: f64) -> usize {
     let w = if width.is_finite() && width > 0.0 {
         width

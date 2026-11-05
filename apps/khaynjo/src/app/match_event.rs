@@ -367,13 +367,17 @@ impl MatchEvent for App {
                 }
             }
         }
-        // Whole-rail hide / restore (sidebar mode only).
+        // Whole-rail hide / restore (sidebar mode only) — width tween.
         if self.ui.button(cx, ids!(rail_collapse_btn)).clicked(actions) {
+            let from = app_state().lock().unwrap().rail_width;
             app_state().lock().unwrap().rail_collapsed = true;
+            self.start_rail_width_anim(cx, from, 0.0);
             self.apply_shell_layout(cx, true);
         }
         if self.ui.button(cx, ids!(rail_expand_btn)).clicked(actions) {
+            let to = app_state().lock().unwrap().rail_width.max(RAIL_WIDTH_MIN);
             app_state().lock().unwrap().rail_collapsed = false;
+            self.start_rail_width_anim(cx, 0.0, to);
             self.apply_shell_layout(cx, true);
         }
         // Nav clicks honour the user's slot arrangement.
@@ -3422,10 +3426,15 @@ impl MatchEvent for App {
                         vp_w.max(1.0)
                     }
                 };
+                let (zoom, zoom_auto) = {
+                    let st = app_state().lock().unwrap();
+                    (st.floor_zoom, st.floor_zoom_auto)
+                };
+                let scale = floor_effective_scale(zoom_auto, zoom, cols, area_vp_w);
                 let first_col = if cols <= FLOOR_ROW_SLOTS {
                     0
                 } else {
-                    floor_col_window(0.0, scroll_x, area_vp_w, cols).0
+                    floor_col_window(0.0, scroll_x, area_vp_w, cols, scale).0
                 };
                 let rows_list = item.portal_list(cx, ids!(area_rows));
                 let n_rows = idxs.chunks(cols.max(1)).count().max(1);
@@ -3509,6 +3518,18 @@ impl MatchEvent for App {
                 let text = input.text();
                 self.apply_floor_columns(cx, &text);
             }
+        }
+        // Floor zoom − / + (turns Auto off) and Auto fill-width.
+        if self.ui.button(cx, ids!(floor_zoom_out)).clicked(actions) {
+            self.nudge_floor_zoom(cx, -FLOOR_ZOOM_STEP);
+        }
+        if self.ui.button(cx, ids!(floor_zoom_in)).clicked(actions) {
+            self.nudge_floor_zoom(cx, FLOOR_ZOOM_STEP);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(floor_zoom_auto), ids!(floor_zoom_auto_on))
+        {
+            let on = !app_state().lock().unwrap().floor_zoom_auto;
+            self.set_floor_zoom_auto(cx, on);
         }
         // Floor toolbar: Print / View / Open for the focused table.
         if self.ui.button(cx, ids!(floor_tb_print)).clicked(actions) {

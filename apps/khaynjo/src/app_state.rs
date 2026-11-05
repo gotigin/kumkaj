@@ -100,6 +100,10 @@ struct AppState {
     floor_area_order: Vec<String>,
     /// Floor: tables per row on this device. 0 = as many as fit the screen.
     floor_columns: usize,
+    /// Floor tile zoom (1.0 = default size). Used when Auto is off.
+    floor_zoom: f64,
+    /// When true, tiles grow/shrink to fill the visible Floor width (clamped).
+    floor_zoom_auto: bool,
     /// Floor map: grid of tiles, or drawn positions (`layout_x/y/w/h`).
     floor_view_layout: bool,
     /// Table selected for the drawn-layout editor (id).
