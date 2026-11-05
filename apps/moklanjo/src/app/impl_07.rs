@@ -1008,6 +1008,7 @@ impl App {
             st.store.as_ref().map(|s| s.booking_measure_settings())
         };
         let Some(mut settings) = current else {
+            self.set_status(cx, "Storage not ready");
             return;
         };
         if let Some(dim) = dim {

@@ -1122,13 +1122,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             let inclusive = st.fiscal.tax_pricing == TaxPricing::InsidePrice;
             self.paint_choice_pair(cx, ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), inclusive);
             self.paint_choice_pair(cx, ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), !inclusive);
-            let allow_zero = st
-                .store
-                .as_ref()
-                .and_then(|s| s.allow_zero_sales().ok())
-                .unwrap_or(true);
-            self.paint_choice_pair(cx, ids!(zero_sales_on_btn), ids!(zero_sales_on_btn_on), allow_zero);
-            self.paint_choice_pair(cx, ids!(zero_sales_off_btn), ids!(zero_sales_off_btn_on), !allow_zero);
+            // No store → neither face lit (don't invent On like Diagnostics Info).
+            let allow_zero = st.store.as_ref().and_then(|s| s.allow_zero_sales().ok());
+            self.paint_choice_pair(
+                cx,
+                ids!(zero_sales_on_btn),
+                ids!(zero_sales_on_btn_on),
+                allow_zero == Some(true),
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(zero_sales_off_btn),
+                ids!(zero_sales_off_btn_on),
+                allow_zero == Some(false),
+            );
             let has_lines = !st.cart.is_empty();
             self.ui.view(cx, ids!(cart_ticket_card)).set_visible(cx, has_lines);
             self.ui.view(cx, ids!(send_stack)).set_visible(cx, has_lines);

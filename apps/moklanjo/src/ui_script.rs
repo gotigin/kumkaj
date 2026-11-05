@@ -6287,9 +6287,13 @@ script_mod! {
                                             diag_level_debug_on := SegBtnOn{text: "Debug" visible: false}
                                         }
                                     }
-                                    ActionStack{
+                                    View{width: Fill height: Fit flow: Overlay
                                         diag_support_start := RowSecondaryBtn{text: "Start 30-min support session"}
+                                        diag_support_start_on := RowPrimaryBtn{text: "Start 30-min support session" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
                                         diag_support_stop := RowSecondaryBtn{text: "End support session"}
+                                        diag_support_stop_on := RowPrimaryBtn{text: "End support session" visible: false}
                                     }
                                     ActionStack{
                                         diag_export_local := RowSecondaryBtn{text: "Export local copy"}
@@ -6298,7 +6302,10 @@ script_mod! {
                                     diag_send_help := InfoHelp{
                                         tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                     }
-                                    diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        diag_approve_send := RowPrimaryBtn{text: "Approve share off this device"}
+                                        diag_approve_send_on := RowSecondaryBtn{text: "Share approved" visible: false}
+                                    }
                                     ActionStack{
                                         diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
                                         diag_export_send_cancel := RowSecondaryBtn{text: "Cancel" visible: false}

@@ -477,11 +477,12 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
     fn paint_printers_panel(&mut self, cx: &mut Cx) {
         let (on, pool_rows, assigned_rows, place_label, assign_label) = {
             let mut st = app_state().lock().unwrap();
+            // No store → Off face only (don't invent product-default On).
             let on = st
                 .store
                 .as_ref()
                 .map(|s| s.kot_auto_print())
-                .unwrap_or(true);
+                .unwrap_or(false);
             let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
             st.printer_draft.ensure_station_routes(station_ids);
             let before = st.printer_draft.printers.len();

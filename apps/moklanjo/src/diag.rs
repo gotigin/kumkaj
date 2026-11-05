@@ -327,6 +327,25 @@ fn cat_enabled(cfg: &DiagConfig, cat: Cat) -> bool {
     cfg.categories.is_empty() || cfg.categories.contains(&cat)
 }
 
+/// True once [`init`] / [`ensure_ready`] has installed the process-local state.
+pub fn is_ready() -> bool {
+    global()
+        .lock()
+        .map(|g| g.is_some())
+        .unwrap_or(false)
+}
+
+/// Initialise under `{data_dir}/diag` if not already running. Safe to call repeatedly.
+///
+/// Boot often opens books without calling [`init`]; Settings then painted the
+/// Info chip via `unwrap_or(Info)` while clicks toasted a level that never stuck.
+pub fn ensure_ready(data_dir: &Path, app_id: &str, app_version: &str) {
+    if is_ready() {
+        return;
+    }
+    init(data_dir, app_id, app_version);
+}
+
 /// Initialise diagnostics under `{data_dir}/diag`. Safe to call more than once.
 pub fn init(data_dir: &Path, app_id: &str, app_version: &str) {
     let dir = data_dir.join("diag");
@@ -936,6 +955,27 @@ mod tests {
         assert!(readme.contains("OWNER-APPROVED"));
         assert!(share.bundle.is_file());
         assert!(export_for_send().is_err());
+        teardown(base);
+    }
+
+    #[test]
+    fn set_min_level_noop_until_ready_then_sticks() {
+        let _g = test_lock();
+        if let Ok(mut g) = global().lock() {
+            *g = None;
+        }
+        assert!(!is_ready());
+        assert!(status().is_none());
+        set_min_level(Level::Warn);
+        assert!(status().is_none(), "uninited set must not invent status");
+        let base = temp_dir();
+        ensure_ready(&base, "test.app", "0.0.0");
+        assert!(is_ready());
+        set_min_level(Level::Warn);
+        let st = status().expect("ready after ensure");
+        assert_eq!(st.min_level, Level::Warn);
+        ensure_ready(&base, "test.app", "0.0.0");
+        assert_eq!(status().unwrap().min_level, Level::Warn);
         teardown(base);
     }
 

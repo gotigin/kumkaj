@@ -501,13 +501,18 @@ impl App {
                 if is_client {
                     self.set_status(cx, app_t("printers_host_only"));
                 } else {
-                    let mut st = app_state().lock().unwrap();
-                    let key = parse_courier_route_key(&st.printer_route_key);
-                    st.printer_draft.set_route_format(key, format_id);
-                    if let Some(base) = st.data_base.as_ref() {
-                        let _ = print_share::save_device_printers(base, &st.printer_draft);
+                    let result = (|| -> Result<(), String> {
+                        let mut st = app_state().lock().unwrap();
+                        let key = parse_courier_route_key(&st.printer_route_key);
+                        st.printer_draft.set_route_format(key, format_id);
+                        if let Some(base) = st.data_base.clone() {
+                            print_share::save_device_printers(&base, &st.printer_draft)?;
+                        }
+                        Ok(())
+                    })();
+                    if let Err(e) = result {
+                        self.set_status(cx, e);
                     }
-                    drop(st);
                     self.sync_chrome(cx);
                 }
             }
@@ -517,18 +522,22 @@ impl App {
             if is_client {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
-                let mut st = app_state().lock().unwrap();
-                let key = parse_courier_route_key(&st.printer_route_key);
-                let from = st.printer_draft.format_id_for(key);
-                let label = st.t("printer_format_custom_label");
-                let id = st.printer_draft.add_format_from(&from, &label);
-                st.printer_draft.set_route_format(key, &id);
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let key = parse_courier_route_key(&st.printer_route_key);
+                    let from = st.printer_draft.format_id_for(key);
+                    let label = st.t("printer_format_custom_label");
+                    let id = st.printer_draft.add_format_from(&from, &label);
+                    st.printer_draft.set_route_format(key, &id);
+                    if let Some(base) = st.data_base.clone() {
+                        print_share::save_device_printers(&base, &st.printer_draft)?;
+                    }
+                    Ok(st.t("printer_format_custom_added"))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
                 }
-                let msg = st.t("printer_format_custom_added");
-                drop(st);
-                self.set_status(cx, msg);
                 self.sync_chrome(cx);
             }
         }
@@ -627,7 +636,7 @@ impl App {
                 let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
                 let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
                 let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
-                {
+                let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let key_str = st.printer_route_key.clone();
                     let key = parse_courier_route_key(&key_str);
@@ -642,9 +651,13 @@ impl App {
                     } else if down && route.len() >= 2 {
                         route.swap(0, 1);
                     }
-                    if let Some(base) = st.data_base.as_ref() {
-                        let _ = print_share::save_device_printers(base, &st.printer_draft);
+                    if let Some(base) = st.data_base.clone() {
+                        print_share::save_device_printers(&base, &st.printer_draft)?;
                     }
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
                 }
                 self.sync_chrome(cx);
             }

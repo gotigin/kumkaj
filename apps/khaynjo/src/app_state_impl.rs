@@ -172,6 +172,7 @@ impl AppState {
         if let Ok(dir) = store::data_dir() {
             state.data_base = Some(dir.clone());
             print_share::use_device_dir(&dir);
+            diag::ensure_ready(&dir, store::APP_ID, env!("CARGO_PKG_VERSION"));
             state.printer_draft = print_share::printers();
             let _ = state.refresh_local_servers();
         }

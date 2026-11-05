@@ -5459,6 +5459,11 @@ impl Store {
         Ok(())
     }
 
+    /// Client cache after the shop accepted `SetZeroSales` (or a snapshot).
+    pub fn set_allow_zero_sales_from_sync(&self, allow: bool) -> Result<(), String> {
+        self.meta_set("allow_zero_sales", if allow { "1" } else { "0" })
+    }
+
     /// Frequent-items strip: how many calendar days of completed sales to
     /// rank, and how many dishes to show. Defaults: 1 day, 24 items.
     pub fn frequent_config(&self) -> Result<(u32, u32), String> {

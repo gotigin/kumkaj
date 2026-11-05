@@ -1204,11 +1204,14 @@ impl App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.lock_as_owner = true;
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.set_lock_role_prefer_owner(true);
-                }
                 st.pin_buffer.clear();
-                st.status = "Unlock as Owner".into();
+                st.status = match st.store.as_ref() {
+                    Some(store) => match store.set_lock_role_prefer_owner(true) {
+                        Ok(()) => "Unlock as Owner".into(),
+                        Err(e) => e,
+                    },
+                    None => "Unlock as Owner".into(),
+                };
             }
             self.sync_chrome(cx);
         }
@@ -1221,10 +1224,6 @@ impl App {
                     st.status = "Set up Owner first, then add staff in Team".into();
                 } else {
                     st.lock_as_owner = false;
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_lock_role_prefer_owner(false);
-                    }
-                    st.pin_buffer.clear();
                     if st.lock_staff_id.is_none() {
                         st.lock_staff_id = st
                             .staff
@@ -1232,7 +1231,14 @@ impl App {
                             .find(|s| !s.is_owner())
                             .map(|s| s.id.clone());
                     }
-                    st.status = "Unlock as Staff".into();
+                    st.pin_buffer.clear();
+                    st.status = match st.store.as_ref() {
+                        Some(store) => match store.set_lock_role_prefer_owner(false) {
+                            Ok(()) => "Unlock as Staff".into(),
+                            Err(e) => e,
+                        },
+                        None => "Unlock as Staff".into(),
+                    };
                 }
             }
             self.sync_chrome(cx);

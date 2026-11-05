@@ -1044,12 +1044,17 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             help.set_title(cx, &s("diag_send_heading"));
             help.set_tip(&plain_display_text(&s("diag_send_help")));
         }
-        self.ui
-            .button(cx, ids!(diag_support_start))
-            .set_text(cx, &s("diag_support_start"));
-        self.ui
-            .button(cx, ids!(diag_support_stop))
-            .set_text(cx, &s("diag_support_stop"));
+        let start_lbl = s("diag_support_start");
+        let stop_lbl = s("diag_support_stop");
+        for id in [
+            ids!(diag_support_start),
+            ids!(diag_support_start_on),
+        ] {
+            self.ui.button(cx, id).set_text(cx, &start_lbl);
+        }
+        for id in [ids!(diag_support_stop), ids!(diag_support_stop_on)] {
+            self.ui.button(cx, id).set_text(cx, &stop_lbl);
+        }
         if !diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
             self.ui
                 .button(cx, ids!(diag_export_local))

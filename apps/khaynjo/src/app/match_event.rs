@@ -1264,11 +1264,14 @@ impl MatchEvent for App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.lock_as_owner = true;
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.set_lock_role_prefer_owner(true);
-                }
                 st.pin_buffer.clear();
-                st.status = "Unlock as Owner".into();
+                st.status = match st.store.as_ref() {
+                    Some(store) => match store.set_lock_role_prefer_owner(true) {
+                        Ok(()) => "Unlock as Owner".into(),
+                        Err(e) => e,
+                    },
+                    None => "Unlock as Owner".into(),
+                };
             }
             self.sync_chrome(cx);
         }
@@ -1281,10 +1284,6 @@ impl MatchEvent for App {
                     st.status = "Set up Owner first, then add staff in Team".into();
                 } else {
                     st.lock_as_owner = false;
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_lock_role_prefer_owner(false);
-                    }
-                    st.pin_buffer.clear();
                     if st.lock_staff_id.is_none() {
                         st.lock_staff_id = st
                             .staff
@@ -1292,7 +1291,14 @@ impl MatchEvent for App {
                             .find(|s| !s.is_owner())
                             .map(|s| s.id.clone());
                     }
-                    st.status = "Unlock as Staff".into();
+                    st.pin_buffer.clear();
+                    st.status = match st.store.as_ref() {
+                        Some(store) => match store.set_lock_role_prefer_owner(false) {
+                            Ok(()) => "Unlock as Staff".into(),
+                            Err(e) => e,
+                        },
+                        None => "Unlock as Staff".into(),
+                    };
                 }
             }
             self.sync_chrome(cx);
@@ -5301,12 +5307,13 @@ impl MatchEvent for App {
                     if !actor.is_owner() {
                         return Err("Only the Owner can change tax pricing".into());
                     }
-                    let msg = st.books_op(BooksOp::SetTaxPricing { pricing })?;
-                    st.status = if st.device_role == DeviceRole::Client {
-                        msg
-                    } else {
-                        pricing.label_for(st.fiscal.tax_label())
-                    };
+                    let _msg = st.books_op(BooksOp::SetTaxPricing { pricing })?;
+                    // Client LAN queues only — keep fiscal (and the chips) in
+                    // step until the next snapshot, same as measure units.
+                    if st.device_role == DeviceRole::Client {
+                        st.fiscal.tax_pricing = pricing;
+                    }
+                    st.status = st.fiscal.tax_pricing.label_for(st.fiscal.tax_label());
                     Ok(())
                 })();
                 if let Err(e) = result {
@@ -5323,7 +5330,17 @@ impl MatchEvent for App {
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
                     st.books_op(BooksOp::SetZeroSales { allow })?;
-                    let msg = st.t(if allow {
+                    if st.device_role == DeviceRole::Client {
+                        if let Some(store) = st.store.as_ref() {
+                            store.set_allow_zero_sales_from_sync(allow)?;
+                        }
+                    }
+                    let allow_now = st
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.allow_zero_sales().ok())
+                        .unwrap_or(allow);
+                    let msg = st.t(if allow_now {
                         "zero_sales_saved_on"
                     } else {
                         "zero_sales_saved_off"
@@ -7340,7 +7357,7 @@ impl MatchEvent for App {
             if is_client {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
-                let msg = {
+                let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
                     let key_str = st.printer_route_key.clone();
                     let place = printer_route_display_name(
@@ -7351,10 +7368,13 @@ impl MatchEvent for App {
                     let key = parse_printer_route_key(&key_str);
                     st.printer_draft.route_mut(key).clear();
                     st.printer_route_sel = None;
-                    let _ = st.save_printer_draft();
-                    st.t("route_cleared").replace("{name}", &place)
-                };
-                self.set_status(cx, msg);
+                    st.save_printer_draft()?;
+                    Ok(st.t("route_cleared").replace("{name}", &place))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
                 self.paint_printers_panel(cx);
             }
         }
@@ -7368,18 +7388,23 @@ impl MatchEvent for App {
             if is_client {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
-                let mut st = app_state().lock().unwrap();
-                let key_owned = st.printer_route_key.clone();
-                let key = parse_printer_route_key(&key_owned);
-                st.printer_draft
-                    .set_print_mode(key, print_share::RoutePrintMode::First);
-                if st.printers_base().is_some() {
-                    let _ = st.save_printer_draft();
-                } else {
-                    st.reapply_kot_slip_format_onto_printer_draft();
-                    print_share::configure(st.printer_draft.clone());
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let key_owned = st.printer_route_key.clone();
+                    let key = parse_printer_route_key(&key_owned);
+                    st.printer_draft
+                        .set_print_mode(key, print_share::RoutePrintMode::First);
+                    if st.printers_base().is_some() {
+                        st.save_printer_draft()?;
+                    } else {
+                        st.reapply_kot_slip_format_onto_printer_draft();
+                        print_share::configure(st.printer_draft.clone());
+                    }
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
                 }
-                drop(st);
                 self.paint_printers_panel(cx);
             }
         }
@@ -7389,18 +7414,23 @@ impl MatchEvent for App {
             if is_client {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
-                let mut st = app_state().lock().unwrap();
-                let key_owned = st.printer_route_key.clone();
-                let key = parse_printer_route_key(&key_owned);
-                st.printer_draft
-                    .set_print_mode(key, print_share::RoutePrintMode::All);
-                if st.printers_base().is_some() {
-                    let _ = st.save_printer_draft();
-                } else {
-                    st.reapply_kot_slip_format_onto_printer_draft();
-                    print_share::configure(st.printer_draft.clone());
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let key_owned = st.printer_route_key.clone();
+                    let key = parse_printer_route_key(&key_owned);
+                    st.printer_draft
+                        .set_print_mode(key, print_share::RoutePrintMode::All);
+                    if st.printers_base().is_some() {
+                        st.save_printer_draft()?;
+                    } else {
+                        st.reapply_kot_slip_format_onto_printer_draft();
+                        print_share::configure(st.printer_draft.clone());
+                    }
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
                 }
-                drop(st);
                 self.paint_printers_panel(cx);
             }
         }

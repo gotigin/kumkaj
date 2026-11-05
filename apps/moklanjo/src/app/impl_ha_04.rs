@@ -43,12 +43,13 @@ impl App {
                     if !actor.is_owner() {
                         return Err("Only the Owner can change tax pricing".into());
                     }
-                    let msg = st.books_op(BooksOp::SetTaxPricing { pricing })?;
-                    st.status = if st.device_role == DeviceRole::Client {
-                        msg
-                    } else {
-                        pricing.label_for(st.fiscal.tax_label())
-                    };
+                    let _msg = st.books_op(BooksOp::SetTaxPricing { pricing })?;
+                    // Client LAN queues only — keep fiscal (and the chips) in
+                    // step until the next snapshot, same as measure units.
+                    if st.device_role == DeviceRole::Client {
+                        st.fiscal.tax_pricing = pricing;
+                    }
+                    st.status = st.fiscal.tax_pricing.label_for(st.fiscal.tax_label());
                     Ok(())
                 })();
                 if let Err(e) = result {

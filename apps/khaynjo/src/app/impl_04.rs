@@ -1433,7 +1433,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     /// Settings → Diagnostics: status, level chips, support/share actions.
+    fn ensure_diag_ready(&self) {
+        let base = app_state().lock().unwrap().data_base.clone();
+        if let Some(base) = base {
+            diag::ensure_ready(&base, store::APP_ID, env!("CARGO_PKG_VERSION"));
+        } else if let Ok(dir) = store::data_dir() {
+            diag::ensure_ready(&dir, store::APP_ID, env!("CARGO_PKG_VERSION"));
+        }
+    }
+
     fn sync_diag_panel(&mut self, cx: &mut Cx) {
+        self.ensure_diag_ready();
         let st = app_state().lock().unwrap();
         let s = |k: &str| st.t(k);
         self.ui
@@ -1451,12 +1461,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_title(cx, &s("diag_send_heading"));
             help.set_tip(&plain_display_text(&s("diag_send_help")));
         }
-        self.ui
-            .button(cx, ids!(diag_support_start))
-            .set_text(cx, &s("diag_support_start"));
-        self.ui
-            .button(cx, ids!(diag_support_stop))
-            .set_text(cx, &s("diag_support_stop"));
+        let start_lbl = s("diag_support_start");
+        let stop_lbl = s("diag_support_stop");
+        for id in [
+            ids!(diag_support_start),
+            ids!(diag_support_start_on),
+        ] {
+            self.ui.button(cx, id).set_text(cx, &start_lbl);
+        }
+        for id in [ids!(diag_support_stop), ids!(diag_support_stop_on)] {
+            self.ui.button(cx, id).set_text(cx, &stop_lbl);
+        }
         let diag_busy = diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
         let diag_send = diag_busy && diag_export_for_send().load(std::sync::atomic::Ordering::SeqCst);
         if !(diag_busy && !diag_send) {
@@ -1497,22 +1512,49 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(diag_status_label))
             .set_text(cx, &plain_display_text(&diag::status_text()));
-        let level = diag::status()
-            .map(|s| s.min_level)
-            .unwrap_or(diag::Level::Info);
-        // While support session forces Debug display, paint the configured chip
-        // from status.min_level (already effective).
-        let pairs = [
+        let status = diag::status();
+        // Never invent Info when diag is still down — that lied next to a warn toast.
+        let level = status.as_ref().map(|s| s.min_level);
+        let support = status.as_ref().is_some_and(|s| s.support_active);
+        let approved = status.as_ref().is_some_and(|s| s.send_approval_ready);
+        let approved_secs = status
+            .as_ref()
+            .map(|s| s.send_approval_remaining_secs)
+            .unwrap_or(0);
+        // paint_choice_pair clears hover/focus animators so a deselected
+        // SegBtn cannot stay cream-lit next to the real selection.
+        for (off, on, lv) in [
             (ids!(diag_level_error), ids!(diag_level_error_on), diag::Level::Error),
             (ids!(diag_level_warn), ids!(diag_level_warn_on), diag::Level::Warn),
             (ids!(diag_level_info), ids!(diag_level_info_on), diag::Level::Info),
             (ids!(diag_level_debug), ids!(diag_level_debug_on), diag::Level::Debug),
-        ];
-        for (off, on, lv) in pairs {
-            let active = level == lv;
-            self.ui.button(cx, off).set_visible(cx, !active);
-            self.ui.button(cx, on).set_visible(cx, active);
+        ] {
+            self.paint_choice_pair(cx, off, on, level == Some(lv));
         }
+        // Session off → Start is the filled CTA; session on → End is filled.
+        self.paint_choice_pair(
+            cx,
+            ids!(diag_support_start),
+            ids!(diag_support_start_on),
+            !support,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(diag_support_stop),
+            ids!(diag_support_stop_on),
+            support,
+        );
+        // Short face — the snack still uses the longer `diag_send_approved`.
+        let approved_lbl = format!("Approved · {approved_secs}s");
+        self.ui
+            .button(cx, ids!(diag_approve_send_on))
+            .set_text(cx, &approved_lbl);
+        self.paint_choice_pair(
+            cx,
+            ids!(diag_approve_send),
+            ids!(diag_approve_send_on),
+            approved,
+        );
     }
 
     fn handle_diag_actions(&mut self, cx: &mut Cx, actions: &Actions) {
@@ -1531,23 +1573,47 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(diag_level_debug_on), diag::Level::Debug),
         ] {
             if self.ui.button(cx, id).clicked(actions) {
+                self.ensure_diag_ready();
                 diag::end_support_session();
                 diag::set_min_level(level);
                 self.sync_diag_panel(cx);
-                self.show_ok(cx, format!("Diagnostics level: {}", level.as_str()));
+                let shown = diag::status()
+                    .map(|s| s.min_level)
+                    .unwrap_or(level);
+                self.show_ok(cx, format!("Diagnostics level: {}", shown.as_str()));
                 return;
             }
         }
-        if self.ui.button(cx, ids!(diag_support_start)).clicked(actions) {
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(diag_support_start),
+            ids!(diag_support_start_on),
+        ) {
+            self.ensure_diag_ready();
             diag::start_support_session(None);
             self.sync_diag_panel(cx);
-            self.show_ok(cx, app_t("diag_support_started"));
+            if diag::status().is_some_and(|s| s.support_active) {
+                self.show_ok(cx, app_t("diag_support_started"));
+            } else {
+                self.show_error(cx, "Diagnostics not ready");
+            }
             return;
         }
-        if self.ui.button(cx, ids!(diag_support_stop)).clicked(actions) {
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(diag_support_stop),
+            ids!(diag_support_stop_on),
+        ) {
+            self.ensure_diag_ready();
             diag::end_support_session();
             self.sync_diag_panel(cx);
-            self.show_ok(cx, app_t("diag_support_ended"));
+            if diag::status().is_some_and(|s| !s.support_active) {
+                self.show_ok(cx, app_t("diag_support_ended"));
+            } else {
+                self.show_error(cx, "Diagnostics not ready");
+            }
             return;
         }
         if self.ui.button(cx, ids!(diag_export_local_cancel)).clicked(actions) {
@@ -1569,10 +1635,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.paint_submit_busy_chrome(cx);
             return;
         }
-        if self.ui.button(cx, ids!(diag_approve_send)).clicked(actions) {
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(diag_approve_send),
+            ids!(diag_approve_send_on),
+        ) {
+            self.ensure_diag_ready();
             diag::approve_send();
             self.sync_diag_panel(cx);
-            self.show_warn(cx, app_t("diag_send_approved"));
+            if diag::status().is_some_and(|s| s.send_approval_ready) {
+                self.show_warn(cx, app_t("diag_send_approved"));
+            } else {
+                self.show_error(cx, "Diagnostics not ready");
+            }
             return;
         }
         if self.ui.button(cx, ids!(diag_export_send)).clicked(actions) {

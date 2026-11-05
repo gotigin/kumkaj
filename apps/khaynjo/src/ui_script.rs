@@ -8963,9 +8963,15 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                             diag_level_debug_on := SegBtnOn{text: "Debug" visible: false}
                                         }
                                     }
-                                    ActionStack{
+                                    // Start/End: idle = quiet, on = filled primary for the
+                                    // live session state (select-in-place faces, not two CTAs).
+                                    View{width: Fill height: Fit flow: Overlay
                                         diag_support_start := StackSecondaryBtn{text: "Start 30-min support session"}
+                                        diag_support_start_on := StackPrimaryBtn{text: "Start 30-min support session" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
                                         diag_support_stop := StackSecondaryBtn{text: "End support session"}
+                                        diag_support_stop_on := StackPrimaryBtn{text: "End support session" visible: false}
                                     }
                                     ActionStack{
                                         diag_export_local := StackSecondaryBtn{text: "Export local copy"}
@@ -8974,7 +8980,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     diag_send_help := InfoHelp{
                                         tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
                                     }
-                                    diag_approve_send := StackPrimaryBtn{text: "Approve share off this device"}
+                                    View{width: Fill height: Fit flow: Overlay
+                                        diag_approve_send := StackPrimaryBtn{text: "Approve share off this device"}
+                                        diag_approve_send_on := StackSecondaryBtn{text: "Share approved" visible: false}
+                                    }
                                     ActionStack{
                                         diag_export_send := StackSecondaryBtn{text: "Create share package (needs approval)"}
                                         diag_export_send_cancel := StackLightBtn{text: "Cancel" visible: false}

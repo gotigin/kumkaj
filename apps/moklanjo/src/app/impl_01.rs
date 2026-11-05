@@ -125,6 +125,12 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
         {
             let st = app_state().lock().unwrap();
             if st.store.is_some() {
+                // Boot may have opened books without diagnostics; don't leave
+                // Settings painting a fake Info chip forever.
+                if let Some(base) = st.data_base.clone() {
+                    drop(st);
+                    diag::ensure_ready(&base, store::APP_ID, env!("CARGO_PKG_VERSION"));
+                }
                 return;
             }
         }
@@ -133,11 +139,11 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             let base = PathBuf::from(dir);
             app_state().lock().unwrap().data_base = Some(base.clone());
             print_share::use_device_dir(&base);
-            diag::init(&base, store::APP_ID, env!("CARGO_PKG_VERSION"));
+            diag::ensure_ready(&base, store::APP_ID, env!("CARGO_PKG_VERSION"));
             local_servers::open_active_server(&base)
         } else {
             if let Ok(dir) = store::data_dir() {
-                diag::init(&dir, store::APP_ID, env!("CARGO_PKG_VERSION"));
+                diag::ensure_ready(&dir, store::APP_ID, env!("CARGO_PKG_VERSION"));
             }
             Store::open_default()
         };
