@@ -1115,8 +1115,10 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
     })
 }
 
-/// Recovery print: selected sent lines again on this Server's kitchen printers.
+/// Recovery print: selected sent KOTs again on this Server's kitchen printers.
 /// Shared by the Order desk (Server) and `POST /kot_reprint` (Client).
+/// Dishes + kitchen come from the **stored** KOT by `kot_id` — client-supplied
+/// names / qty / kitchen are not authoritative. Unknown ids are refused.
 /// Kitchen access is `kot_stations` (not `Right::Reprint` — that is bills only).
 /// DeviceRole is never a gate.
 pub fn reprint_selected_kots(
@@ -1154,14 +1156,24 @@ pub fn reprint_selected_kots(
         .unwrap_or_default();
     let by = actor.name.clone();
     let unassigned = "Kitchen";
-    // station_id → (display name, lines)
-    let mut groups: Vec<(String, String, Vec<&RemoteKotReprintLine>)> = Vec::new();
+    // Unique kot_ids from the request (selection); content from the books.
+    let mut kot_ids: Vec<String> = Vec::new();
     for line in &req.lines {
-        let mut sid = line.station_id.trim().to_string();
-        if sid.is_empty() {
-            if let Ok(from_ticket) = store.station_id_for_kot(&line.kot_id) {
-                sid = from_ticket;
-            }
+        let id = line.kot_id.trim();
+        if id.is_empty() {
+            return Err("Missing KOT id — send a KOT first, then print again".into());
+        }
+        if !kot_ids.iter().any(|k| k == id) {
+            kot_ids.push(id.to_string());
+        }
+    }
+    // station_id → (display name, kot_nos, item lines "name|qty")
+    let mut groups: Vec<(String, String, Vec<i64>, Vec<String>)> = Vec::new();
+    let mut dish_n = 0usize;
+    for kot_id in &kot_ids {
+        let (sid, kot_no, items) = store.kot_reprint_payload(kot_id)?;
+        if items.is_empty() {
+            return Err(format!("KOT has no dishes to print: {kot_id}"));
         }
         let name = if sid.is_empty() {
             unassigned.to_string()
@@ -1175,15 +1187,24 @@ pub fn reprint_selected_kots(
         if !sid.is_empty() && !feats.allows_kot_station(&sid) {
             return Err(format!("Not allowed to reprint kitchen: {name}"));
         }
-        match groups.iter_mut().find(|(id, _, _)| id == &sid) {
-            Some((_, _, lines)) => lines.push(line),
-            None => groups.push((sid, name, vec![line])),
+        dish_n = dish_n.saturating_add(items.len());
+        match groups.iter_mut().find(|(id, _, _, _)| id == &sid) {
+            Some((_, _, nos, lines)) => {
+                if kot_no > 0 && !nos.contains(&kot_no) {
+                    nos.push(kot_no);
+                }
+                lines.extend(items);
+            }
+            None => {
+                let nos = if kot_no > 0 { vec![kot_no] } else { Vec::new() };
+                groups.push((sid, name, nos, items));
+            }
         }
     }
     if !priority.is_empty() {
         let mut ordered = Vec::with_capacity(groups.len());
         for id in &priority {
-            if let Some(i) = groups.iter().position(|(sid, _, _)| sid == id) {
+            if let Some(i) = groups.iter().position(|(sid, _, _, _)| sid == id) {
                 ordered.push(groups.remove(i));
             }
         }
@@ -1197,15 +1218,7 @@ pub fn reprint_selected_kots(
     let mut ok = 0usize;
     let mut errors: Vec<String> = Vec::new();
     let mut kitchen_names: Vec<String> = Vec::new();
-    for (station_id, station_name, lines) in &groups {
-        let mut kot_nos: Vec<i64> = Vec::new();
-        for line in lines {
-            if let Ok(no) = store.kot_no_for(&line.kot_id) {
-                if no > 0 && !kot_nos.contains(&no) {
-                    kot_nos.push(no);
-                }
-            }
-        }
+    for (station_id, station_name, kot_nos, item_lines) in &groups {
         let kot_nos_joined = if kot_nos.len() > 1 {
             Some(format!(
                 "Was KOT No: {}",
@@ -1218,22 +1231,8 @@ pub fn reprint_selected_kots(
         } else {
             None
         };
-        let item_lines: Vec<String> = lines
-            .iter()
-            .map(|line| {
-                let qty =
-                    crate::domain::format_qty_display(line.qty_milli, line.qty, &line.unit_label);
-                let mut row = format!("{qty} x {}", line.name);
-                for m in &line.applied_modifiers {
-                    row.push_str(&format!(" + {}", m.name));
-                }
-                if !line.note.trim().is_empty() {
-                    row.push_str(&format!(" ({})", line.note.trim()));
-                }
-                row
-            })
-            .collect();
         let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
+        let area_label = String::new();
         let text = fmt.render(crate::print_share::KotSlipContent {
             cancel: false,
             reprint: true,
@@ -1244,6 +1243,7 @@ pub fn reprint_selected_kots(
             created_by: &by,
             table_label: &table_label,
             station_name: station_name.as_str(),
+            area_label: &area_label,
             items: &item_refs,
         });
         let mut printed = false;
@@ -1280,7 +1280,7 @@ pub fn reprint_selected_kots(
             errors.join("; ")
         });
     }
-    Ok((req.lines.len(), ok, kitchen_names, errors))
+    Ok((dish_n, ok, kitchen_names, errors))
 }
 
 /// Print just-sent KOTs at this (Server) device when the shop prints KOTs

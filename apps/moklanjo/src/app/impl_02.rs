@@ -1369,23 +1369,26 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
 
         // Team: who is being edited, and their rights (draft until Save).
         {
-            let (selected, rights, on, manage_team, has_selected, lang) = {
+            let (selected, selected_name, rights, on, manage_team, has_selected, lang) = {
                 let st = app_state().lock().unwrap();
-                let selected = st
+                let member = st
                     .team_staff_id
                     .as_ref()
-                    .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                    .and_then(|id| st.staff.iter().find(|s| &s.id == id));
+                let selected_name = member.map(|s| s.name.clone()).unwrap_or_default();
+                let selected = member
                     .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
                     .unwrap_or_else(|| " ".to_string());
                 (
                     selected,
+                    selected_name,
                     st.team_draft_rights(),
                     st.draft_features.clone(),
                     st.session
                         .as_ref()
                         .map(|m| m.can_manage_team())
                         .unwrap_or(false),
-                    st.team_staff_id.is_some(),
+                    member.is_some(),
                     st.locale.language.clone(),
                 )
             };
@@ -1447,6 +1450,18 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         ),
                     );
                 }
+                let who = selected_name.trim();
+                let login_lbl = if who.is_empty() {
+                    locale::t(&lang, "set_login_selected")
+                } else {
+                    locale::t(&lang, "set_login_named").replace("{name}", who)
+                };
+                self.ui
+                    .button(cx, ids!(staff_set_login))
+                    .set_text(cx, &login_lbl);
+                self.ui
+                    .button(cx, ids!(staff_set_login))
+                    .set_visible(cx, !who.is_empty());
             }
         }
 

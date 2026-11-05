@@ -22,6 +22,8 @@ impl AppState {
             session: None,
             lock_as_owner: true,
             lock_staff_id: None,
+            hire_staff_role: StaffRole::Cashier,
+            hire_features: StaffFeatures::for_role(StaffRole::Cashier),
             draft_staff_role: StaffRole::Cashier,
             draft_features: StaffFeatures::for_role(StaffRole::Cashier),
             team_staff_id: None,
@@ -92,6 +94,7 @@ impl AppState {
             floor_sections_open: Vec::new(),
             order_sections_open: Vec::new(),
             kot_slip_draft: print_share::KotSlipFormat::default(),
+            kot_field_edit_idx: 0,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,
@@ -235,6 +238,9 @@ impl AppState {
         // shared install-root file (that mixed shops' routes).
         print_share::use_books_printers(store.db_path(), self.data_base.as_deref());
         self.printer_draft = print_share::printers();
+        if self.device_role.is_host() {
+            let _ = store.maybe_run_history_retention();
+        }
         // Columns belong to the selected area tab (legacy global is fallback).
         self.floor_columns = store.floor_columns_for_area(&self.floor_area_tab);
         if self.device_role.is_host() {
@@ -344,12 +350,21 @@ impl AppState {
     }
 
     /// Overlay live `staff` features/rights onto `session` (same person id).
+    /// Missing or inactive → clear session and lock (do not keep stale rights).
     fn refresh_session_from_staff_roster(&mut self) {
         let Some(session) = self.session.as_ref() else {
             return;
         };
         let id = session.id.clone();
-        let Some(fresh) = self.staff.iter().find(|s| s.id == id).cloned() else {
+        let fresh = self
+            .staff
+            .iter()
+            .find(|s| s.id == id && s.active)
+            .cloned();
+        let Some(fresh) = fresh else {
+            self.session = None;
+            self.pin_buffer.clear();
+            self.screen = Screen::Lock;
             return;
         };
         if let Some(session) = self.session.as_mut() {
@@ -1001,7 +1016,17 @@ impl AppState {
                 .staff
                 .iter()
                 .filter(|m| m.active)
-                .map(|m| SuggestRow::new(m.name.clone(), m.lock_label()))
+                .map(|m| {
+                    // Value must be unique — bare display names can collide and
+                    // rank() would drop duplicates, then pick the wrong person.
+                    let login = m.login_id.trim();
+                    let sub = if login.is_empty() {
+                        m.name.clone()
+                    } else {
+                        format!("{} · {login}", m.name)
+                    };
+                    SuggestRow::new(m.lock_label(), sub)
+                })
                 .collect(),
             // System printers found on this device (network address is typed).
             SuggestField::PrinterTarget => {

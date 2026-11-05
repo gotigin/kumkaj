@@ -620,6 +620,9 @@ impl Store {
                 image_filename,
                 image_key,
             } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to edit parties".into());
+                }
                 self.update_customer(&id, &name, &phone, &address)?;
                 self.set_customer_kind_label(&id, kind.trim())?;
                 self.apply_party_logo(&id, &image_bytes, &image_filename, &image_key)?;
@@ -634,6 +637,9 @@ impl Store {
                 image_filename,
                 image_key,
             } => {
+                if !actor.is_owner() && !actor.can_access_credit() && !actor.can_access_sell() {
+                    return Err("Not allowed to add parties".into());
+                }
                 let customer = self.add_customer_kind(&name, &phone, kind.trim())?;
                 if !address.trim().is_empty() {
                     self.update_customer(&customer.id, &name, &phone, &address)?;
@@ -641,19 +647,35 @@ impl Store {
                 self.apply_party_logo(&customer.id, &image_bytes, &image_filename, &image_key)?;
                 Ok(format!("Added {}", name.trim()))
             }
-            BooksOp::DeleteParty { id } => self.delete_customer(&id),
+            BooksOp::DeleteParty { id } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to delete parties".into());
+                }
+                self.delete_customer(&id)
+            }
             BooksOp::SetPartyField { id, key, value } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to edit parties".into());
+                }
                 self.set_customer_custom_field(&id, &key, &value)?;
                 Ok(format!("Saved field {}", key.trim()))
             }
             BooksOp::RemovePartyField { id, key } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to edit parties".into());
+                }
                 self.remove_customer_custom_field(&id, &key)?;
                 Ok(format!("Removed field {}", key.trim()))
             }
             BooksOp::SetCreditLimit {
                 party_name,
                 limit_paise,
-            } => courier_ops_view::set_credit_limit(self, &party_name, limit_paise),
+            } => {
+                if !actor.is_owner() && !actor.can_access_credit() {
+                    return Err("Not allowed to set credit limits".into());
+                }
+                courier_ops_view::set_credit_limit(self, &party_name, limit_paise)
+            }
             BooksOp::WriteOffCredit {
                 customer_id,
                 amount_paise,
@@ -787,6 +809,9 @@ impl Store {
                 Ok(format!("Removed {name}"))
             }
             BooksOp::SetProductAvailable { id, name, available } => {
+                if !actor.role.can_manage_items() && !actor.can_access_items() {
+                    return Err("Not allowed to manage items".into());
+                }
                 self.set_product_available(&id, available)?;
                 Ok(if available {
                     format!("{name} restocked")
@@ -795,6 +820,24 @@ impl Store {
                 })
             }
             BooksOp::ImportCsv { kind, bytes, .. } => {
+                match kind.as_str() {
+                    "parties" => {
+                        if !actor.is_owner() && !actor.can_access_credit() {
+                            return Err("Not allowed to import parties".into());
+                        }
+                    }
+                    "items" | "" => {
+                        if !actor.role.can_manage_items() && !actor.can_access_items() {
+                            return Err("Not allowed to import menu CSV".into());
+                        }
+                    }
+                    "pincodes" | "carrier_bill" => {
+                        if !actor.is_owner() && !actor.can_access_sales() {
+                            return Err("Not allowed to import CSV".into());
+                        }
+                    }
+                    _ => {}
+                }
                 let text = String::from_utf8(bytes)
                     .map_err(|_| "CSV must be UTF-8 text".to_string())?;
                 match kind.as_str() {
@@ -1038,9 +1081,22 @@ impl Store {
             BooksOp::CarrierHandover { carrier, note } => {
                 courier_ops_view::handover_booked_to_carrier(self, &carrier, &note, actor)
             }
-            BooksOp::CollectCod { awb } => courier_ops_view::collect_cod_for_awb(self, &awb),
-            BooksOp::RemitCod { party } => courier_ops_view::remit_collected_for_party(self, &party),
+            BooksOp::CollectCod { awb } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to collect COD".into());
+                }
+                courier_ops_view::collect_cod_for_awb(self, &awb)
+            }
+            BooksOp::RemitCod { party } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to remit COD".into());
+                }
+                courier_ops_view::remit_collected_for_party(self, &party)
+            }
             BooksOp::AddRider { name, phone, vehicle } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to add riders".into());
+                }
                 courier_ops_view::add_rider_line(self, &name, &phone, &vehicle)
             }
             BooksOp::PostMoney {
@@ -1086,6 +1142,9 @@ impl Store {
                 Ok(format!("Imported day for {}", branch.label()))
             }
             BooksOp::AddUnit { code, name } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to add units".into());
+                }
                 self.add_unit(&code, &name)?;
                 Ok(format!("Unit {code} added"))
             }
@@ -1115,6 +1174,9 @@ impl Store {
                 end_n,
                 label,
             } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to add AWB pools".into());
+                }
                 let party = self
                     .list_customers()?
                     .into_iter()
@@ -1136,6 +1198,9 @@ impl Store {
                 Ok(format!("Expense logged{EXPENSE_ID_MARK}{id}"))
             }
             BooksOp::SaveBackupCopy => {
+                if !actor.is_owner() && !actor.can_access_backup() {
+                    return Err("Not allowed to save a backup copy".into());
+                }
                 let stamp = chrono::Local::now().format("%Y%m%d-%H%M");
                 let file = self.auto_backup_dir().join(format!("copy-{stamp}.sqlite3"));
                 self.backup_to(&file)?;

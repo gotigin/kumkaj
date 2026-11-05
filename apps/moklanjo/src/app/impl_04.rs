@@ -1056,6 +1056,7 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(staff_role_manager_on))
             .set_text(cx, &s("role_manager"));
+        // Named in sync_chrome when a person is selected (`set_login_named`).
         self.ui
             .button(cx, ids!(staff_set_login))
             .set_text(cx, &s("set_login_selected"));
@@ -1364,6 +1365,9 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .text_input(cx, ids!(staff_login_input))
             .set_empty_text(cx, s("login_id_opt_ph"));
         self.ui
+            .text_input(cx, ids!(staff_edit_login_input))
+            .set_empty_text(cx, s("login_id_opt_ph"));
+        self.ui
             .text_input(cx, ids!(team_pick_input))
             .set_empty_text(cx, s("team_pick_ph"));
         self.ui
@@ -1371,6 +1375,9 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .set_text(cx, &s("select_staff"));
         self.ui
             .text_input(cx, ids!(staff_password_input))
+            .set_empty_text(cx, s("starting_password_ph"));
+        self.ui
+            .text_input(cx, ids!(staff_edit_password_input))
             .set_empty_text(cx, s("starting_password_ph"));
         self.ui
             .text_input(cx, ids!(my_pin_input))

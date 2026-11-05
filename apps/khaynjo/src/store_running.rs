@@ -504,6 +504,87 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
+    /// Recovery print payload from the **stored** KOT — kitchen + dish lines.
+    /// Refuses unknown ids. Dish text comes from `running_lines` when present,
+    /// otherwise from the ticket summary (counter KOTs). Never trust the client.
+    pub fn kot_reprint_payload(
+        &self,
+        kot_id: &str,
+    ) -> Result<(String, i64, Vec<String>), String> {
+        let id = kot_id.trim();
+        if id.is_empty() {
+            return Err("Missing KOT id".into());
+        }
+        let (station_id, summary, kot_no, table_id): (String, String, i64, String) = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(station_id, ''), COALESCE(summary, ''),
+                        COALESCE(kot_no, 0), COALESCE(table_id, '')
+                   FROM kot_tickets WHERE id = ?1",
+                params![id],
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?
+            .ok_or_else(|| format!("Unknown KOT: {id}"))?;
+        let mut items: Vec<String> = Vec::new();
+        {
+            let mut stmt = self
+                .conn
+                .prepare(
+                    "SELECT name, qty_milli, unit_label, note
+                       FROM running_lines
+                      WHERE kot_id = ?1 AND cancelled = 0
+                      ORDER BY seq, created_at",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![id], |r| {
+                    Ok((
+                        r.get::<_, String>(0)?,
+                        r.get::<_, i64>(1)?,
+                        r.get::<_, String>(2)?,
+                        r.get::<_, String>(3)?,
+                    ))
+                })
+                .map_err(|e| e.to_string())?;
+            for row in rows {
+                let (name, qty_milli, unit_label, note) = row.map_err(|e| e.to_string())?;
+                let qty = crate::domain::format_qty_display(
+                    qty_milli,
+                    crate::domain::milli_to_whole_qty(qty_milli),
+                    &unit_label,
+                );
+                let mut label = name;
+                if !note.trim().is_empty() {
+                    label.push_str(&format!(" ({})", note.trim()));
+                }
+                items.push(format!("{label}|{qty}"));
+            }
+        }
+        if items.is_empty() {
+            let station_name = self
+                .list_stations()
+                .ok()
+                .and_then(|ss| {
+                    ss.into_iter()
+                        .find(|s| s.id == station_id)
+                        .map(|s| s.name)
+                })
+                .unwrap_or_default();
+            let table_label = if table_id.is_empty() {
+                String::new()
+            } else {
+                self.table_label(&table_id).unwrap_or_default()
+            };
+            items = super::kot_print_item_lines(&summary, &table_label, &station_name)
+                .into_iter()
+                .map(|l| super::kot_line_to_name_qty(&l))
+                .collect();
+        }
+        Ok((station_id, kot_no, items))
+    }
+
     /// Next KOT number for today (kitchens call tickets by number).
     fn next_kot_no(&self) -> Result<i64, String> {
         let key = format!("kot_seq_{}", Local::now().format("%Y-%m-%d"));

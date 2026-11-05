@@ -267,6 +267,9 @@ script_mod! {
                 // Press-drag over lists / buttons / filled panes (not only
                 // whitespace). Nested PortalList still claims via nested_touch.
                 mouse_capture_overload: true
+                // Nested X/Y (booking desk): direction decides who scrolls —
+                // never a 2px jitter (patch scroll_axis_lock; same as Khaynjo).
+                axis_lock: true
                 bounce_at_start: false
                 bounce_at_end: false
                 bar_size: 10.
@@ -293,6 +296,7 @@ script_mod! {
         scroll_bars: mod.widgets.ScrollBars {
             show_scroll_x: true show_scroll_y: false
             scroll_bar_x.drag_scrolling: true
+            scroll_bar_x.axis_lock: true
             scroll_bar_x.bar_size: 4.
         }
     }
@@ -2759,10 +2763,14 @@ script_mod! {
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
+        // Capped viewport (not expand-to-content): mouse press-drag scrolls
+        // the list when there is no wheel (page still owns full-height lists).
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 texture_caching: false
@@ -2802,9 +2810,11 @@ script_mod! {
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
+            drag_scrolling: true
+            mouse_drag_scrolling: true
             bounce_at_start: false
             bounce_at_end: false
-            scroll_bar: ScrollBar{bar_size: 0.}
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 10.}
@@ -2821,10 +2831,13 @@ script_mod! {
     mod.widgets.PairedList = set_type_default() do mod.widgets.PairedListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
+        // Capped (~300px) — mouse press-drag when there is no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 10
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{top: 2. bottom: 8.}
@@ -2838,10 +2851,13 @@ script_mod! {
     mod.widgets.ServerList = set_type_default() do mod.widgets.ServerListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
+        // Capped (~3 rows / 360px) — mouse press-drag when there is no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 10
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{top: 2. bottom: 8.}
@@ -2915,10 +2931,13 @@ script_mod! {
     mod.widgets.CurrencyListBase = #(CurrencyList::register_widget(vm))
     mod.widgets.CurrencyList = set_type_default() do mod.widgets.CurrencyListBase{
         width: Fill height: Fit
+        // Fixed 280px viewport — mouse press-drag when there is no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 10.}
@@ -3917,7 +3936,7 @@ script_mod! {
                                             tip: "Optional: unlock with login id and password instead of PIN."
                                         }
                                     }
-                                    lock_login_id := FieldInput{empty_text: "Login id"}
+                                    lock_login_id := FieldInput{empty_text: "Username"}
                                     lock_login_password := FieldInput{
                                         empty_text: "Password"
                                         is_password: true
@@ -4453,6 +4472,7 @@ script_mod! {
                                     show_scroll_x: true show_scroll_y: false
                                     scroll_bar_x.drag_scrolling: true
                                     scroll_bar_x.mouse_capture_overload: true
+                                    scroll_bar_x.axis_lock: true
                                     scroll_bar_x.bar_size: 8.
                                 }
                                 booking_desk_row := View{
@@ -5445,18 +5465,16 @@ script_mod! {
                                         staff_role_manager_on := SegBtnOn{text: "Manager" visible: false}
                                     }
                                 }
-                                staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
-                                }
-                                FormCard{
+                                // Hire-only optional login — used by Add staff, not Apply.
                                 h_optional_login_help := InfoHelp{
                                     tip: "Optional login (id + password). Owner sets once; only the user can change password later."
                                 }
-                                staff_login_input := FieldInput{empty_text: "Login id (optional)"}
+                                staff_login_input := FieldInput{empty_text: "Username (unique, optional)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
-                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
+                                staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 }
                                 FormCard{
-                                team_pick_input := FieldInput{empty_text: "Tap a staff name in the list to edit"}
+                                team_pick_input := FieldInput{empty_text: "Staff to edit — name, username, or pick"}
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_pick_btn := NavBtn{text: "Select this staff" visible: false}
                                 team_pick_hint := WrapLabel{
@@ -5474,6 +5492,9 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
+                                staff_edit_login_input := FieldInput{empty_text: "Username (unique, optional)"}
+                                staff_edit_password_input := FieldInput{empty_text: "Starting password (optional)"}
+                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 staff_deactivate := DangerBtn{text: "Remove selected"}
                                 h_feature_access_help := WrapLabel{
                                     body: "What they can open (optional)"

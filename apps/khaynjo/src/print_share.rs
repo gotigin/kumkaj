@@ -148,6 +148,13 @@ fn default_line() -> u32 { 32 }
 fn default_baseline() -> f32 { 24.0 }
 fn default_side() -> f32 { 8.0 }
 
+/// Bill / Standard document type-size presets (Settings chips).
+/// Applied to every Standard Portrait/Landscape format so orientation
+/// routes keep the same em. Rajdhani template seeds Small (18).
+pub const STD_EM_SMALL: f32 = 18.0;
+pub const STD_EM_NORMAL: f32 = 22.0;
+pub const STD_EM_LARGE: f32 = 26.0;
+
 impl PrintFormat {
     /// Alias for [`standard_portrait`] (legacy API name).
     pub fn standard() -> Self {
@@ -237,10 +244,12 @@ impl PrintFormat {
 }
 
 /// Owner-tunable kitchen slip layout. Always a standard KOT (no prices;
-/// dishes always print). Optional lines and paper metrics are clamped so
-/// 58–80 mm heads do not crop mid-word.
+/// dishes always print). Metrics are clamped wide so most heads fit.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KotSlipFormat {
+    /// Print the big title line (`title` or default). Off for compact slips.
+    #[serde(default = "default_true")]
+    pub show_title: bool,
     /// Print the shop / place name under the title.
     #[serde(default = "default_true")]
     pub show_shop_name: bool,
@@ -250,18 +259,27 @@ pub struct KotSlipFormat {
     pub show_waiter: bool,
     #[serde(default = "default_true")]
     pub show_station: bool,
-    /// Print `Table:` when the ticket has a table.
+    /// Print table line when the ticket has a table.
     #[serde(default = "default_true")]
     pub show_table: bool,
-    /// Print `KOT No:` when the ticket is numbered.
+    /// Print KOT number when numbered.
     #[serde(default = "default_true")]
     pub show_kot_no: bool,
+    /// Floor area / service type (e.g. Dine In).
+    #[serde(default)]
+    pub show_area: bool,
+    /// `Item` / `Qty.` column headers above the dish list.
+    #[serde(default)]
+    pub show_item_qty_header: bool,
     /// Soft-wrap width in characters. Clamped to [`KOT_CHARS_MIN`]..=[`KOT_CHARS_MAX`].
     #[serde(default = "default_kot_chars")]
     pub chars_per_line: u32,
     /// Thermal type size (raster). Clamped to [`KOT_EM_MIN`]..=[`KOT_EM_MAX`].
     #[serde(default = "default_kot_em")]
     pub em: u32,
+    /// Side margin for raster (px). Wider = more inset on the paper.
+    #[serde(default = "default_kot_side")]
+    pub side: f32,
     /// How many identical slips to send per KOT. Clamped to [`KOT_COPIES_MIN`]..=[`KOT_COPIES_MAX`].
     #[serde(default = "default_kot_copies")]
     pub copies: u32,
@@ -272,26 +290,33 @@ pub struct KotSlipFormat {
     /// Optional kitchen note under the items (never prices). Max [`KOT_FOOTER_MAX`] chars.
     #[serde(default)]
     pub footer: String,
+    /// Field order for header lines (ids: time, kot_no, area, table, shop, waiter, station).
+    /// Empty → built-in order.
+    #[serde(default)]
+    pub field_order: Vec<String>,
 }
 
-pub const KOT_CHARS_MIN: u32 = 24;
-pub const KOT_CHARS_MAX: u32 = 42;
+pub const KOT_CHARS_MIN: u32 = 16;
+pub const KOT_CHARS_MAX: u32 = 80;
 pub const KOT_CHARS_58MM: u32 = 32;
 pub const KOT_CHARS_80MM: u32 = 42;
-pub const KOT_EM_MIN: u32 = 18;
-pub const KOT_EM_MAX: u32 = 28;
+pub const KOT_EM_MIN: u32 = 12;
+pub const KOT_EM_MAX: u32 = 48;
 pub const KOT_EM_SMALL: u32 = 20;
 pub const KOT_EM_NORMAL: u32 = 24;
 pub const KOT_EM_LARGE: u32 = 28;
-pub const KOT_FOOTER_MAX: usize = 48;
-pub const KOT_TITLE_MAX: usize = 32;
+pub const KOT_FOOTER_MAX: usize = 80;
+pub const KOT_TITLE_MAX: usize = 48;
 pub const KOT_COPIES_MIN: u32 = 1;
-pub const KOT_COPIES_MAX: u32 = 3;
+pub const KOT_COPIES_MAX: u32 = 5;
 pub const KOT_DEFAULT_TITLE: &str = "KOT - KITCHEN ORDER";
+pub const KOT_SIDE_MIN: f32 = 0.0;
+pub const KOT_SIDE_MAX: f32 = 48.0;
 
 fn default_kot_chars() -> u32 { KOT_CHARS_58MM }
 fn default_kot_em() -> u32 { KOT_EM_NORMAL }
 fn default_kot_copies() -> u32 { KOT_COPIES_MIN }
+fn default_kot_side() -> f32 { 4.0 }
 
 fn scrub_kot_text(raw: &str, max: usize) -> String {
     raw.chars()
@@ -306,22 +331,55 @@ fn scrub_kot_text(raw: &str, max: usize) -> String {
 impl Default for KotSlipFormat {
     fn default() -> Self {
         Self {
+            show_title: true,
             show_shop_name: true,
             show_time: true,
             show_waiter: true,
             show_station: true,
             show_table: true,
             show_kot_no: true,
+            show_area: false,
+            show_item_qty_header: false,
             chars_per_line: KOT_CHARS_58MM,
             em: KOT_EM_NORMAL,
+            side: 4.0,
             copies: KOT_COPIES_MIN,
             title: String::new(),
             footer: String::new(),
+            field_order: Vec::new(),
         }
     }
 }
 
 impl KotSlipFormat {
+    /// Compact layout matching the Rajdhani client's preferred other-app slip.
+    pub fn rajdhani_default() -> Self {
+        Self {
+            show_title: false,
+            show_shop_name: false,
+            show_time: true,
+            show_waiter: false,
+            show_station: false,
+            show_table: true,
+            show_kot_no: true,
+            show_area: true,
+            show_item_qty_header: true,
+            chars_per_line: KOT_CHARS_58MM,
+            em: KOT_EM_SMALL,
+            side: 4.0,
+            copies: 1,
+            title: String::new(),
+            footer: String::new(),
+            field_order: vec![
+                "time".into(),
+                "kot_no".into(),
+                "area".into(),
+                "table".into(),
+            ],
+        }
+        .clamped()
+    }
+
     pub fn parse(raw: &str) -> Self {
         let trimmed = raw.trim();
         if trimmed.is_empty() {
@@ -336,6 +394,7 @@ impl KotSlipFormat {
         self.chars_per_line = self.chars_per_line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
         self.em = self.em.clamp(KOT_EM_MIN, KOT_EM_MAX);
         self.copies = self.copies.clamp(KOT_COPIES_MIN, KOT_COPIES_MAX);
+        self.side = self.side.clamp(KOT_SIDE_MIN, KOT_SIDE_MAX);
         // Strip currency marks — a KOT must never carry prices.
         self.title = scrub_kot_text(&self.title, KOT_TITLE_MAX);
         self.footer = scrub_kot_text(&self.footer, KOT_FOOTER_MAX);
@@ -361,7 +420,7 @@ impl KotSlipFormat {
         format.em = c.em as f32;
         format.line = c.chars_per_line;
         format.baseline = (c.em as f32) + 2.0;
-        format.side = if c.chars_per_line <= KOT_CHARS_58MM { 4.0 } else { 6.0 };
+        format.side = c.side;
         format.document = false;
     }
 
@@ -399,17 +458,16 @@ impl KotSlipFormat {
             shop_name,
             kot_no: 12,
             kot_nos_label: None,
-            when: "2026-11-03 19:42",
+            when: "04/11/26 22:47",
             created_by: "Ramesh",
-            table_label: "T1",
+            table_label: "D1",
             station_name: "Kitchen",
+            area_label: "Dine In",
             items: &[
-                "2 x Butter Naan",
-                // Long enough to wrap on 58 mm (32 cols) but stay one line on 80 mm (42).
-                "1 x Hyderabadi chicken biryani full",
-                "  no onion, extra raita on side",
-                "1 x Paneer Tikka",
-                "1 x Chaas",
+                "Butter Roti|3",
+                "Roasted Papad|2",
+                "Plain Roti|2",
+                "Butter Pav|2",
             ],
         })
     }
@@ -424,7 +482,7 @@ impl KotSlipFormat {
         }
         if c.cancel {
             out.push_str("*** CANCEL - STOP THIS ITEM ***\n");
-        } else {
+        } else if fmt.show_title {
             out.push_str(fmt.title_line());
             out.push('\n');
         }
@@ -434,36 +492,87 @@ impl KotSlipFormat {
                 out.push('\n');
             }
         };
-        if fmt.show_shop_name {
-            let shop = c.shop_name.trim();
-            if !shop.is_empty() {
-                push(&mut out, shop);
+        let emit_field = |out: &mut String, id: &str| {
+            match id {
+                "shop" if fmt.show_shop_name => {
+                    let shop = c.shop_name.trim();
+                    if !shop.is_empty() {
+                        push(out, shop);
+                    }
+                }
+                "kot_no" if fmt.show_kot_no => {
+                    if let Some(label) = c.kot_nos_label.filter(|s| !s.trim().is_empty()) {
+                        push(out, label);
+                    } else if c.kot_no > 0 {
+                        if c.reprint {
+                            push(out, &format!("Was KOT No: {}", c.kot_no));
+                        } else if !fmt.show_title {
+                            // Compact other-app style: "KOT - 178"
+                            push(out, &format!("KOT - {}", c.kot_no));
+                        } else {
+                            push(out, &format!("KOT No: {}", c.kot_no));
+                        }
+                    }
+                }
+                "time" if fmt.show_time && !c.when.is_empty() => {
+                    if fmt.show_title {
+                        push(out, &format!("Time: {}", c.when));
+                    } else {
+                        push(out, c.when);
+                    }
+                }
+                "waiter" if fmt.show_waiter && !c.created_by.is_empty() => {
+                    push(out, &format!("By: {}", c.created_by));
+                }
+                "table" if fmt.show_table && !c.table_label.is_empty() => {
+                    if fmt.show_title {
+                        push(out, &format!("Table: {}", c.table_label));
+                    } else {
+                        push(out, &format!("Table No: {}", c.table_label));
+                    }
+                }
+                "station" if fmt.show_station && !c.station_name.is_empty() => {
+                    push(out, &format!("Station: {}", c.station_name));
+                }
+                "area" if fmt.show_area && !c.area_label.trim().is_empty() => {
+                    push(out, c.area_label.trim());
+                }
+                _ => {}
             }
+        };
+        let order: Vec<&str> = if fmt.field_order.is_empty() {
+            vec![
+                "shop", "kot_no", "time", "waiter", "area", "table", "station",
+            ]
+        } else {
+            fmt.field_order.iter().map(String::as_str).collect()
+        };
+        for id in &order {
+            emit_field(&mut out, id);
         }
-        if fmt.show_kot_no {
-            if let Some(label) = c.kot_nos_label.filter(|s| !s.trim().is_empty()) {
-                push(&mut out, label);
-            } else if c.kot_no > 0 {
-                let label = if c.reprint { "Was KOT No" } else { "KOT No" };
-                push(&mut out, &format!("{label}: {}", c.kot_no));
+        // Emit any enabled fields not listed in field_order.
+        for id in ["shop", "kot_no", "time", "waiter", "area", "table", "station"] {
+            if !order.iter().any(|x| *x == id) {
+                emit_field(&mut out, id);
             }
-        }
-        if fmt.show_time && !c.when.is_empty() {
-            push(&mut out, &format!("Time: {}", c.when));
-        }
-        if fmt.show_waiter && !c.created_by.is_empty() {
-            push(&mut out, &format!("By: {}", c.created_by));
-        }
-        if fmt.show_table && !c.table_label.is_empty() {
-            push(&mut out, &format!("Table: {}", c.table_label));
-        }
-        if fmt.show_station && !c.station_name.is_empty() {
-            push(&mut out, &format!("Station: {}", c.station_name));
         }
         out.push_str(&rule);
         out.push('\n');
+        if fmt.show_item_qty_header {
+            let left = "Item";
+            let right = "Qty.";
+            let pad = cols.saturating_sub(left.len() + right.len());
+            push(&mut out, &format!("{left}{}{right}", " ".repeat(pad)));
+        }
         for item in c.items {
-            push(&mut out, item);
+            if let Some((name, qty)) = item.rsplit_once('|') {
+                let name = name.trim();
+                let qty = qty.trim();
+                let pad = cols.saturating_sub(name.chars().count() + qty.chars().count());
+                push(&mut out, &format!("{name}{}{qty}", " ".repeat(pad)));
+            } else {
+                push(&mut out, item);
+            }
         }
         out.push_str(&rule);
         out.push('\n');
@@ -487,6 +596,9 @@ pub struct KotSlipContent<'a> {
     pub created_by: &'a str,
     pub table_label: &'a str,
     pub station_name: &'a str,
+    /// Floor area / service type (Dine In, Parcel, …).
+    pub area_label: &'a str,
+    /// Dish lines. Prefer `Name|Qty` for column layout; plain text still works.
     pub items: &'a [&'a str],
 }
 
@@ -513,7 +625,8 @@ mod kot_slip_format_tests {
         let text = KotSlipFormat::default().render_sample("Khaynjo");
         assert!(text.contains("KOT - KITCHEN ORDER"));
         assert!(text.contains("KOT No: 12"));
-        assert!(text.contains("Table: T1"));
+        assert!(text.contains("Table: D1"));
+        assert!(text.contains("Butter Roti"));
         assert!(!text.contains('₹'));
         assert!(!text.to_lowercase().contains("total"));
     }
@@ -546,11 +659,9 @@ mod kot_slip_format_tests {
         assert!(narrow.contains(&rule_n));
         assert!(!narrow.contains(&rule_w));
         assert!(wide.contains(&rule_w));
-        // Long sample wraps on 58 mm; stays one line on 80 mm.
-        let long = "1 x Hyderabadi chicken biryani full";
-        assert!(wide.lines().any(|l| l == long));
-        assert!(!narrow.lines().any(|l| l == long));
-        assert!(narrow.contains("Hyderabadi"));
+        assert!(narrow.contains("Butter Roti"));
+        assert!(wide.contains("Butter Roti"));
+        assert!(rule_w.len() > rule_n.len());
     }
 
     #[test]
@@ -598,7 +709,8 @@ mod kot_slip_format_tests {
             created_by: "A",
             table_label: "T9",
             station_name: "Grill",
-            items: &["1 x Tea"],
+            area_label: "",
+            items: &["Tea|1"],
         });
         assert!(reprint.contains("*** REPRINT - SAME ORDER ***"));
         // Hidden flags still suppress even on reprint.
@@ -697,6 +809,33 @@ pub struct NamedPrinter {
     pub _legacy_mode: Option<String>,
 }
 
+/// How a place's ordered printer list is tried.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum RoutePrintMode {
+    /// Try in order; stop after the first success (default).
+    #[default]
+    First,
+    /// Send to every listed printer; collect per-printer failures.
+    All,
+}
+
+impl RoutePrintMode {
+    pub fn parse(raw: &str) -> Self {
+        match raw.trim().to_ascii_lowercase().as_str() {
+            "all" | "every" | "fanout" => Self::All,
+            _ => Self::First,
+        }
+    }
+
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::First => "first",
+            Self::All => "all",
+        }
+    }
+}
+
 /// Ordered printer ids for each print feature, plus which format each uses.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PrintRoutes {
@@ -711,6 +850,12 @@ pub struct PrintRoutes {
     /// Station id → format id for that kitchen (missing → [`FORMAT_KOT`]).
     #[serde(default)]
     pub kot_format: BTreeMap<String, String>,
+    /// Bill place: first success vs all printers.
+    #[serde(default)]
+    pub bill_print_mode: RoutePrintMode,
+    /// Station id → print mode (missing → [`RoutePrintMode::First`]).
+    #[serde(default)]
+    pub kot_print_mode: BTreeMap<String, RoutePrintMode>,
 }
 
 fn default_format_standard() -> String { FORMAT_STANDARD_PORTRAIT.into() }
@@ -722,6 +867,8 @@ impl Default for PrintRoutes {
             kot: BTreeMap::from([("".into(), Vec::new())]),
             bill_format: FORMAT_STANDARD_PORTRAIT.into(),
             kot_format: BTreeMap::new(),
+            bill_print_mode: RoutePrintMode::First,
+            kot_print_mode: BTreeMap::new(),
         }
     }
 }
@@ -881,6 +1028,8 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
             kot: BTreeMap::from([("".into(), kot_ids)]),
             bill_format: FORMAT_STANDARD_PORTRAIT.into(),
             kot_format: BTreeMap::new(),
+            bill_print_mode: RoutePrintMode::First,
+            kot_print_mode: BTreeMap::new(),
         },
     }
 }
@@ -894,6 +1043,30 @@ impl DevicePrinters {
     ///
     /// Only when the station key is **missing** (legacy / never configured)
     /// do we fall back: default kitchen `""`, then Bill.
+    pub fn print_mode_for(&self, key: RouteKey<'_>) -> RoutePrintMode {
+        match key {
+            RouteKey::Bill => self.routes.bill_print_mode,
+            RouteKey::Kot { station_id } => self
+                .routes
+                .kot_print_mode
+                .get(station_id)
+                .copied()
+                .or_else(|| self.routes.kot_print_mode.get("").copied())
+                .unwrap_or(RoutePrintMode::First),
+        }
+    }
+
+    pub fn set_print_mode(&mut self, key: RouteKey<'_>, mode: RoutePrintMode) {
+        match key {
+            RouteKey::Bill => self.routes.bill_print_mode = mode,
+            RouteKey::Kot { station_id } => {
+                self.routes
+                    .kot_print_mode
+                    .insert(station_id.to_string(), mode);
+            }
+        }
+    }
+
     pub fn route_for(&self, key: RouteKey<'_>) -> &[String] {
         match key {
             RouteKey::Bill => &self.routes.bill,
@@ -1077,6 +1250,35 @@ impl DevicePrinters {
     pub fn update_format(&mut self, format: PrintFormat) {
         if let Some(slot) = self.formats.iter_mut().find(|f| f.id == format.id) {
             *slot = format;
+        }
+    }
+
+    /// Current Standard type size (portrait preferred; landscape fallback).
+    pub fn standard_em(&self) -> f32 {
+        self.formats
+            .iter()
+            .find(|f| f.id == FORMAT_STANDARD_PORTRAIT)
+            .or_else(|| self.formats.iter().find(|f| is_standard_document(&f.id)))
+            .map(|f| f.em)
+            .unwrap_or(STD_EM_NORMAL)
+    }
+
+    /// Set type size on all Standard document formats (portrait + landscape).
+    /// Baseline tracks em + 2 so line spacing stays readable.
+    pub fn set_standard_em(&mut self, em: f32) {
+        let em = if em <= (STD_EM_SMALL + STD_EM_NORMAL) / 2.0 {
+            STD_EM_SMALL
+        } else if em >= (STD_EM_NORMAL + STD_EM_LARGE) / 2.0 {
+            STD_EM_LARGE
+        } else {
+            STD_EM_NORMAL
+        };
+        let baseline = em + 2.0;
+        for f in self.formats.iter_mut() {
+            if is_standard_document(&f.id) {
+                f.em = em;
+                f.baseline = baseline;
+            }
         }
     }
 
@@ -1637,9 +1839,11 @@ pub fn print_route(
                 }
                 false
             } else {
+                let mode = printers().print_mode_for(route);
                 match queue(Job {
                     kind,
                     dests,
+                    mode,
                     path: path.clone(),
                     text: text.to_string(),
                 }) {
@@ -1684,8 +1888,10 @@ struct Job {
     /// Kept for problem notes / future per-kind wording.
     #[allow(dead_code)]
     kind: PrintKind,
-    /// Try in order; stop after the first success.
+    /// Ordered destinations for this place.
     dests: Vec<PrintDest>,
+    /// First success vs send to every destination.
+    mode: RoutePrintMode,
     path: PathBuf,
     text: String,
 }
@@ -1732,18 +1938,56 @@ fn queue(job: Job) -> Result<(), String> {
             .name("print".into())
             .spawn(move || {
                 for job in rx {
-                    let mut last_err: Option<(String, String)> = None;
-                    for dest in &job.dests {
-                        match send_to_printer(&dest.format, &dest.target, &job.path, &job.text) {
-                            Ok(()) => {
-                                last_err = None;
-                                break;
+                    match job.mode {
+                        RoutePrintMode::First => {
+                            let mut last_err: Option<(String, String)> = None;
+                            for dest in &job.dests {
+                                match send_to_printer(
+                                    &dest.format,
+                                    &dest.target,
+                                    &job.path,
+                                    &job.text,
+                                ) {
+                                    Ok(()) => {
+                                        last_err = None;
+                                        break;
+                                    }
+                                    Err(e) => last_err = Some((describe(&dest.target), e)),
+                                }
                             }
-                            Err(e) => last_err = Some((describe(&dest.target), e)),
+                            if let Some((who, e)) = last_err {
+                                note_problem(format!("{who} did not print: {e}"));
+                            }
                         }
-                    }
-                    if let Some((who, e)) = last_err {
-                        note_problem(format!("{who} did not print: {e}"));
+                        RoutePrintMode::All => {
+                            let mut any_ok = false;
+                            let mut errors: Vec<String> = Vec::new();
+                            for dest in &job.dests {
+                                match send_to_printer(
+                                    &dest.format,
+                                    &dest.target,
+                                    &job.path,
+                                    &job.text,
+                                ) {
+                                    Ok(()) => any_ok = true,
+                                    Err(e) => {
+                                        errors.push(format!(
+                                            "{} did not print: {e}",
+                                            describe(&dest.target)
+                                        ));
+                                    }
+                                }
+                            }
+                            if !any_ok {
+                                for e in errors {
+                                    note_problem(e);
+                                }
+                            } else {
+                                for e in errors {
+                                    note_problem(e);
+                                }
+                            }
+                        }
                     }
                 }
             })

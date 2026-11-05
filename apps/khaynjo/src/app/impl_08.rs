@@ -303,33 +303,51 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         match self.materialize_picked_file(cx, &path) {
             Ok(file) => match target {
                 AttachPickTarget::Image(entity) => {
-                    let result = (|| -> Result<(), String> {
+                    let result = (|| -> Result<String, String> {
                         let entity_id = self.entity_id_for_attach(entity)?;
+                        let bytes = std::fs::read(&file)
+                            .map_err(|e| format!("Could not read the photo: {e}"))?;
+                        let filename = file
+                            .file_name()
+                            .and_then(|n| n.to_str())
+                            .unwrap_or("photo.webp")
+                            .to_string();
                         let mut st = app_state().lock().unwrap();
-                        let actor = st.actor()?;
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.add_attachment_image(entity, &entity_id, &file, "", &actor)?;
-                        st.status = "Photo attached (stored as WebP)".into();
-                        Ok(())
+                        st.books_op(BooksOp::AddAttachmentImage {
+                            entity,
+                            entity_id,
+                            label: String::new(),
+                            filename,
+                            bytes,
+                        })
                     })();
                     match result {
-                        Ok(()) => self.set_status(cx, "Photo attached (stored as WebP)"),
+                        Ok(msg) => self.set_status(cx, msg),
                         Err(e) => self.set_status(cx, e),
                     }
                     self.sync_chrome(cx);
                 }
                 AttachPickTarget::File(entity) => {
-                    let result = (|| -> Result<(), String> {
+                    let result = (|| -> Result<String, String> {
                         let entity_id = self.entity_id_for_attach(entity)?;
+                        let bytes = std::fs::read(&file)
+                            .map_err(|e| format!("Could not read the file: {e}"))?;
+                        let filename = file
+                            .file_name()
+                            .and_then(|n| n.to_str())
+                            .unwrap_or("file.pdf")
+                            .to_string();
                         let mut st = app_state().lock().unwrap();
-                        let actor = st.actor()?;
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.add_attachment_file(entity, &entity_id, &file, "", &actor)?;
-                        st.status = "File attached".into();
-                        Ok(())
+                        st.books_op(BooksOp::AddAttachmentFile {
+                            entity,
+                            entity_id,
+                            label: String::new(),
+                            filename,
+                            bytes,
+                        })
                     })();
                     match result {
-                        Ok(()) => self.set_status(cx, "File attached"),
+                        Ok(msg) => self.set_status(cx, msg),
                         Err(e) => self.set_status(cx, e),
                     }
                     self.sync_chrome(cx);
@@ -346,19 +364,20 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         note_id: &[LiveId],
     ) {
         let body = self.ui.text_input(cx, note_id).text();
-        let result = (|| -> Result<(), String> {
+        let result = (|| -> Result<String, String> {
             let entity_id = self.entity_id_for_attach(entity)?;
             let mut st = app_state().lock().unwrap();
-            let actor = st.actor()?;
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.add_attachment_note(entity, &entity_id, "", &body, &actor)?;
-            st.status = "Note added".into();
-            Ok(())
+            st.books_op(BooksOp::AddAttachmentNote {
+                entity,
+                entity_id,
+                label: String::new(),
+                body,
+            })
         })();
         match result {
-            Ok(()) => {
+            Ok(msg) => {
                 self.ui.text_input(cx, note_id).set_text(cx, "");
-                self.set_status(cx, "Note added");
+                self.set_status(cx, msg);
             }
             Err(e) => self.set_status(cx, e),
         }

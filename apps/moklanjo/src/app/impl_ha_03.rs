@@ -666,9 +666,10 @@ impl App {
         ) {
             {
                 let mut st = app_state().lock().unwrap();
-                st.draft_staff_role = StaffRole::Cashier;
+                // Hire Job chips write hire draft only — never edit draft.
+                st.hire_staff_role = StaffRole::Cashier;
+                st.hire_features = StaffFeatures::for_role(StaffRole::Cashier);
                 st.team_staff_id = None;
-                st.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
             }
             self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
             self.set_status(cx, "Preset: Cashier");
@@ -682,9 +683,9 @@ impl App {
         ) {
             {
                 let mut st = app_state().lock().unwrap();
-                st.draft_staff_role = StaffRole::Manager;
+                st.hire_staff_role = StaffRole::Manager;
+                st.hire_features = StaffFeatures::for_role(StaffRole::Manager);
                 st.team_staff_id = None;
-                st.draft_features = StaffFeatures::for_role(StaffRole::Manager);
             }
             self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
             self.set_status(cx, "Preset: Manager");
@@ -701,8 +702,8 @@ impl App {
                 if !st.owner_setup_complete {
                     return Err("Finish Owner PIN setup before adding staff".into());
                 }
-                let role = st.draft_staff_role;
-                let features = st.draft_features.clone();
+                let role = st.hire_staff_role;
+                let features = st.hire_features.clone();
                 let msg = st.books_op(BooksOp::HireStaff {
                     name: name.clone(),
                     role,
@@ -713,6 +714,7 @@ impl App {
                     features,
                 })?;
                 let (status, hired_id) = books_op::hired_staff_parts(&msg);
+                // Load edit draft only; hire Job chips keep hire_* untouched.
                 if let Some(id) = hired_id.filter(|s| !s.is_empty()) {
                     let draft = st
                         .staff
@@ -746,39 +748,62 @@ impl App {
                 self.ui
                     .text_input(cx, ids!(staff_password_input))
                     .set_text(cx, "");
-                let pick_name = {
+                let pick_label = {
                     let st = app_state().lock().unwrap();
                     st.team_staff_id
                         .as_ref()
                         .and_then(|id| st.staff.iter().find(|s| &s.id == id))
-                        .map(|s| s.name.clone())
+                        .map(|s| s.lock_label())
                         .unwrap_or_default()
                 };
                 self.ui
                     .text_input(cx, ids!(team_pick_input))
-                    .set_text(cx, &pick_name);
+                    .set_text(cx, &pick_label);
+                self.ui
+                    .text_input(cx, ids!(staff_edit_login_input))
+                    .set_text(cx, "");
+                self.ui
+                    .text_input(cx, ids!(staff_edit_password_input))
+                    .set_text(cx, "");
             }
             self.sync_chrome(cx);
         }
 
         if self.ui.button(cx, ids!(staff_set_login)).clicked(actions) {
-            let login = self.ui.text_input(cx, ids!(staff_login_input)).text();
-            let password = self.ui.text_input(cx, ids!(staff_password_input)).text();
-            let result = (|| -> Result<(), String> {
+            let login = self.ui.text_input(cx, ids!(staff_edit_login_input)).text();
+            let password = self
+                .ui
+                .text_input(cx, ids!(staff_edit_password_input))
+                .text();
+            let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 let staff_id = st
                     .team_staff_id
                     .clone()
-                    .ok_or_else(|| "Add or pick a staff member first".to_string())?;
+                    .ok_or_else(|| "Select who to edit first".to_string())?;
+                let who = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == staff_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_else(|| staff_id.clone());
                 st.books_op(BooksOp::SetStaffLogin {
                     staff_id,
                     login_id: login,
                     password,
                 })?;
-                Ok(())
+                Ok(who)
             })();
             match result {
-                Ok(()) => self.set_status(cx, "Login saved"),
+                Ok(who) => {
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_login_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_password_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, format!("Login saved for {who}"));
+                }
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
@@ -965,30 +990,34 @@ impl App {
             || self.ui.text_input(cx, ids!(team_pick_input)).returned(actions).is_some()
         {
             let name = self.ui.text_input(cx, ids!(team_pick_input)).text();
-            let result = (|| -> Result<String, String> {
+            let result = (|| -> Result<(String, String), String> {
                 let mut st = app_state().lock().unwrap();
-                let needle = name.trim().to_lowercase();
-                if needle.is_empty() {
-                    return Err("Type the staff member's name".into());
+                let member = Self::find_active_staff(&st, name.trim())?;
+                if member.is_owner() {
+                    return Err("Pick a staff person to edit — Owner is not edited here".into());
                 }
-                let member = st
-                    .staff
-                    .iter()
-                    .find(|s| !s.is_owner() && s.active && s.name.trim().to_lowercase() == needle)
-                    .or_else(|| {
-                        st.staff.iter().find(|s| {
-                            !s.is_owner() && s.active && s.name.to_lowercase().contains(&needle)
-                        })
-                    })
-                    .cloned()
-                    .ok_or_else(|| format!("No staff named \"{}\"", name.trim()))?;
                 st.team_staff_id = Some(member.id.clone());
+                // Edit draft only — hire Job chips keep hire_* untouched.
                 st.draft_staff_role = member.role;
                 st.draft_features = member.features.clone();
-                Ok(format!("Editing {} ({})", member.name, member.display_role()))
+                Ok((
+                    format!("Editing {}", member.lock_label()),
+                    member.lock_label(),
+                ))
             })();
             match result {
-                Ok(msg) => self.set_status(cx, msg),
+                Ok((msg, pick_label)) => {
+                    self.ui
+                        .text_input(cx, ids!(team_pick_input))
+                        .set_text(cx, &pick_label);
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_login_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_password_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);

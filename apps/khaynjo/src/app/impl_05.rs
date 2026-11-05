@@ -198,30 +198,26 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             self.close_menu_window(cx);
             return true;
         }
-        // Soft keyboard: on Android, one Back always dismisses IME first and
-        // stops — never leave ClientPair / Lock just because a field was
-        // focused (that felt like "keyboard won't come back / app jumped").
-        // Desktop: non-auth fields dismiss only; auth/setup blur then continue
-        // so mouse Back / Alt+← is not swallowed by a focused PIN field.
+        // Soft keyboard: on Android outside auth/setup, one Back dismisses
+        // IME first and stops. On desktop (every screen), blur then continue
+        // — a focused search/PIN/rate field must not swallow mouse Back,
+        // Alt+←, or header ‹ (looked broken on Lock and everywhere else).
+        // Auth/setup on Android also blur then continue so Back still leaves
+        // Lock / ClientPair / DeviceSetup.
         if self.text_field_has_focus(cx) {
             self.dismiss_soft_keyboard(cx);
+            let auth = matches!(
+                app_state().lock().unwrap().screen,
+                Screen::Lock
+                    | Screen::Onboard
+                    | Screen::ClientPair
+                    | Screen::DeviceSetup
+            );
             #[cfg(target_os = "android")]
-            {
+            if !auth {
                 return true;
             }
-            #[cfg(not(target_os = "android"))]
-            {
-                let auth = matches!(
-                    app_state().lock().unwrap().screen,
-                    Screen::Lock
-                        | Screen::Onboard
-                        | Screen::ClientPair
-                        | Screen::DeviceSetup
-                );
-                if !auth {
-                    return true;
-                }
-            }
+            let _ = auth;
         }
         // In-screen layers before screen history (native / mouse / Android back).
         {
@@ -356,6 +352,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                     st.picking_from_table_id = None;
                     if let Some(from) = restore {
                         let _ = st.load_table_cart(&from);
+                    }
+                }
+                if st.screen == Screen::Team && prev != Screen::Team {
+                    st.team_staff_id = None;
+                    if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                        st.suggest_open = None;
                     }
                 }
                 self.set_screen(&mut st, prev, false);

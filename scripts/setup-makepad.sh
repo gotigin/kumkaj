@@ -80,7 +80,8 @@ PATCHES=(
   mouse_back_button                 # mouse thumb button maps to Back
   d3d11_device_fallback             # Windows: create D3D11 without VIDEO_SUPPORT if refused
   text_input_float_caption          # filled fields keep a small label (their placeholder's short form)
-  drag_scroll_touch_only            # page mouse/touch press-drag + mouse_capture_overload; lists stay touch-fling
+  drag_scroll_touch_only            # page mouse press-drag; lists touch-fling; capped Suggest/StationCheck opt in mouse_drag_scrolling
+  portal_list_mouse_drag_promote    # capped list mouse press-drag: promote capture so page ScrollYView cannot steal it
   android_keep_screen_on            # Android: Cx::keep_screen_on while serving (MakepadActivity-keep-awake.java)
   android_write_content_uri         # Android: Cx::write_content_uri for "Save a backup copy" (MakepadActivity-write.java)
   android_print                     # Android: PrintManager + Bluetooth SPP + USB host (MakepadActivity-print.java)

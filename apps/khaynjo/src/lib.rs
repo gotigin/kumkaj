@@ -8,6 +8,7 @@
 pub use makepad_widgets;
 
 pub mod books_op;
+pub mod business_day;
 pub mod diag;
 pub mod domain;
 pub mod entity_template;

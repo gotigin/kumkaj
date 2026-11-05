@@ -451,6 +451,20 @@ fn printer_place_choices(
 /// Kitchen destinations for unsent cart lines: `(station display name, line count)`.
 /// Order follows `priority` station ids when provided; else first-seen.
 /// Empty station → `unassigned` label (caller supplies it).
+fn ensure_kot_field_order(fmt: &mut print_share::KotSlipFormat) {
+    if fmt.field_order.is_empty() {
+        fmt.field_order = vec![
+            "time".into(),
+            "kot_no".into(),
+            "area".into(),
+            "table".into(),
+            "shop".into(),
+            "waiter".into(),
+            "station".into(),
+        ];
+    }
+}
+
 fn pending_kot_destinations(
     products: &[domain::Product],
     stations: &[domain::KitchenStation],

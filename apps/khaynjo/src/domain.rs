@@ -864,7 +864,8 @@ pub struct StaffMember {
     pub role: StaffRole,
     pub pin_hash: String,
     pub active: bool,
-    /// Optional login id (Slice 4). Empty = PIN-only.
+    /// Unique username when set (case-insensitive). Empty = PIN-only.
+    /// Display `name` may repeat; books identity stays UUID `id`.
     #[serde(default)]
     pub login_id: String,
     /// Optional password hash. Empty = PIN-only.

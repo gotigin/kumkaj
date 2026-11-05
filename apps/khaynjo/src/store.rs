@@ -1180,7 +1180,8 @@ impl Store {
         self.meta_set("rajdhani_app_template_done", "1")
     }
 
-    /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner named Asif.
+    /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner named Asif,
+    /// business day until close, history on day close, Today strip off, KOT profile.
     /// Safe to call after the menu import on a fresh server (no session yet).
     pub fn apply_rajdhani_shop_defaults(&self) -> Result<(), String> {
         self.assert_server_writer("Rajdhani shop defaults")?;
@@ -1208,6 +1209,29 @@ impl Store {
             .map_err(|e| e.to_string())?;
         if n == 0 {
             return Err("Owner account missing".into());
+        }
+        self.meta_set(
+            "business_day_mode",
+            &crate::business_day::BusinessDayMode::UntilDayClose.as_str(),
+        )?;
+        self.meta_set("history_retention", "on_day_close")?;
+        self.meta_set("history_retention_hours", "12")?;
+        self.meta_set("show_today_bar", "0")?;
+        let kot = crate::print_share::KotSlipFormat::rajdhani_default();
+        self.set_kot_slip_format(&kot)?;
+        // Standard document metrics: tighter side margin for non-A4 trays.
+        if let Some(base) = self.path.parent() {
+            let mut cfg = crate::print_share::load_device_printers(base);
+            for f in cfg.formats.iter_mut() {
+                if crate::print_share::is_standard_document(&f.id) {
+                    f.side = 12.0;
+                    f.em = 18.0;
+                    f.line = 42;
+                    f.baseline = 20.0;
+                }
+            }
+            let _ = crate::print_share::save_device_printers(base, &cfg);
+            crate::print_share::configure(cfg);
         }
         Ok(())
     }
@@ -1999,44 +2023,47 @@ impl Store {
             venue.trim()
         };
         let tmpl = self.entity_template()?;
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let bank_net = self.money_movements_net_for_prefix(&format!("{today}%"))?;
+        let win = self.current_business_day_window()?;
+        let bank_net = self.money_movements_net_between(&win.start, &win.end)?;
+        let day_label = win.label_date.clone();
         Ok(format!(
-            "{venue} — day close\n\
-             Sales: {}\n\
-             Lines: {}\n\
-             Cash: {}\n\
-             {}: {}\n\
-             Card: {}\n\
-             {} sales today: {}\n\
-             {} still owed: {}\n\
-             {}: {}\n\
-             {}: {}\n\
-             {}: {}\n\
-             Bank net today: {}\n\
-             Bank balance: {}\n\
-             Cash in hand (till, all recorded): {}\n\
-             Rounding: {}\n",
-            t.sale_count,
-            t.lines_total().format_localized(&currency, &fiscal_settings),
-            Money(t.cash_paise).format_localized(&currency, &fiscal_settings),
-            fiscal_settings.digital_pay_label(),
-            Money(t.upi_paise).format_localized(&currency, &fiscal_settings),
-            Money(t.card_paise).format_localized(&currency, &fiscal_settings),
-            fiscal_settings.credit_label(),
-            Money(t.credit_paise).format_localized(&currency, &fiscal_settings),
-            fiscal_settings.credit_label(),
-            Money(outstanding).format_localized(&currency, &fiscal_settings),
-            tmpl.lane_declared_label,
-            Money(t.declared_paise).format_localized(&currency, &fiscal_settings),
-            tmpl.lane_owner_label,
-            Money(t.owner_lane_paise).format_localized(&currency, &fiscal_settings),
-            self.tax_total_caption(&fiscal_settings),
-            t.tax().format_localized(&currency, &fiscal_settings),
-            Money(bank_net).format_localized(&currency, &fiscal_settings),
-            Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal_settings),
-            Money(self.till_balance_paise()?).format_localized(&currency, &fiscal_settings),
-            Money(t.rounding_paise).format_localized(&currency, &fiscal_settings),
+            "{venue} — day close ({day_label})\n\
+             Sales: {sales}\n\
+             Lines: {lines}\n\
+             Cash: {cash}\n\
+             {digital}: {upi}\n\
+             Card: {card}\n\
+             {credit_lbl} sales today: {credit}\n\
+             {credit_lbl2} still owed: {owed}\n\
+             {lane_d}: {declared}\n\
+             {lane_o}: {owner}\n\
+             {tax_cap}: {tax}\n\
+             Bank net today: {bank_net}\n\
+             Bank balance: {bank_bal}\n\
+             Cash in hand (till, all recorded): {till}\n\
+             Rounding: {round}\n",
+            venue = venue,
+            day_label = day_label,
+            sales = t.sale_count,
+            lines = t.lines_total().format_localized(&currency, &fiscal_settings),
+            cash = Money(t.cash_paise).format_localized(&currency, &fiscal_settings),
+            digital = fiscal_settings.digital_pay_label(),
+            upi = Money(t.upi_paise).format_localized(&currency, &fiscal_settings),
+            card = Money(t.card_paise).format_localized(&currency, &fiscal_settings),
+            credit_lbl = fiscal_settings.credit_label(),
+            credit = Money(t.credit_paise).format_localized(&currency, &fiscal_settings),
+            credit_lbl2 = fiscal_settings.credit_label(),
+            owed = Money(outstanding).format_localized(&currency, &fiscal_settings),
+            lane_d = tmpl.lane_declared_label,
+            declared = Money(t.declared_paise).format_localized(&currency, &fiscal_settings),
+            lane_o = tmpl.lane_owner_label,
+            owner = Money(t.owner_lane_paise).format_localized(&currency, &fiscal_settings),
+            tax_cap = self.tax_total_caption(&fiscal_settings),
+            tax = t.tax().format_localized(&currency, &fiscal_settings),
+            bank_net = Money(bank_net).format_localized(&currency, &fiscal_settings),
+            bank_bal = Money(self.bank_balance_paise()?).format_localized(&currency, &fiscal_settings),
+            till = Money(self.till_balance_paise()?).format_localized(&currency, &fiscal_settings),
+            round = Money(t.rounding_paise).format_localized(&currency, &fiscal_settings),
         ))
         .map(|summary| {
             // Restaurant day close also names what was not a sale: tips
@@ -2084,13 +2111,13 @@ impl Store {
         let mut summary = self.day_close_summary()?;
         // Expected drawer movement today: cash tenders in, minus cash
         // that left (cash expenses, cash payable settlements, till→bank).
-        let today = Local::now().format("%Y-%m-%d").to_string();
         // The opening float stays in the drawer and cash tips sit there too
         // (they are the staff's) — both belong in what the drawer should hold.
+        let win = self.current_business_day_window()?;
         let expected_cash = self.opening_float_paise()?
             + self.today_totals()?.cash_paise
             + self.today_cash_tips_paise()?
-            - self.cash_out_paise(Some(&today))?;
+            - self.cash_out_between(&win.start, &win.end)?;
         if let Some(counted) = counted_cash_paise {
             let variance = counted - expected_cash;
             let currency = self.locale_settings()?.currency;
@@ -2113,6 +2140,13 @@ impl Store {
             .collect::<Vec<_>>()
             .join(" · ");
         self.audit(actor, "day.close", &detail)?;
+        // Retention: wipe trading history after the close is recorded.
+        if matches!(
+            self.history_retention()?,
+            crate::business_day::HistoryRetention::OnDayClose
+        ) {
+            let _ = self.purge_trading_history_keep_setup();
+        }
         Ok(now)
     }
 
@@ -2121,6 +2155,173 @@ impl Store {
         Ok(self
             .meta_get("last_day_close_at")?
             .filter(|s| !s.trim().is_empty()))
+    }
+
+    pub fn business_day_mode(&self) -> Result<crate::business_day::BusinessDayMode, String> {
+        Ok(crate::business_day::BusinessDayMode::parse(
+            &self
+                .meta_get("business_day_mode")?
+                .unwrap_or_default(),
+        ))
+    }
+
+    pub fn set_business_day_mode(
+        &self,
+        mode: crate::business_day::BusinessDayMode,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Change business day")?;
+        self.meta_set("business_day_mode", &mode.as_str())
+    }
+
+    pub fn history_retention(&self) -> Result<crate::business_day::HistoryRetention, String> {
+        let mode = self
+            .meta_get("history_retention")?
+            .unwrap_or_else(|| "off".into());
+        let hours = self
+            .meta_get("history_retention_hours")?
+            .and_then(|s| s.parse().ok())
+            .unwrap_or(12);
+        Ok(crate::business_day::HistoryRetention::parse(&mode, hours))
+    }
+
+    pub fn set_history_retention(
+        &self,
+        retention: crate::business_day::HistoryRetention,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Change history retention")?;
+        self.meta_set("history_retention", retention.mode_str())?;
+        self.meta_set(
+            "history_retention_hours",
+            &retention.hours().to_string(),
+        )
+    }
+
+    /// Global chrome "Today: …" strip. Default off (Rajdhani / quiet counter).
+    pub fn show_today_bar(&self) -> Result<bool, String> {
+        Ok(self
+            .meta_get("show_today_bar")?
+            .map(|v| v.trim() == "1")
+            .unwrap_or(false))
+    }
+
+    pub fn set_show_today_bar(&self, on: bool) -> Result<(), String> {
+        self.assert_server_writer("Change today strip")?;
+        self.meta_set("show_today_bar", if on { "1" } else { "0" })
+    }
+
+    pub fn current_business_day_window(
+        &self,
+    ) -> Result<crate::business_day::BusinessDayWindow, String> {
+        let mode = self.business_day_mode()?;
+        let last = self.last_day_close_at()?;
+        Ok(crate::business_day::business_day_window(
+            mode,
+            last.as_deref(),
+            Local::now(),
+        ))
+    }
+
+    /// Purge sales / KOTs / ledgers for retention — keep catalogue, staff,
+    /// printers, settings, and `last_day_close_at` so the next business day
+    /// starts cleanly.
+    pub fn purge_trading_history_keep_setup(&self) -> Result<(), String> {
+        self.assert_server_writer("Clear history")?;
+        let last_close = self.last_day_close_at()?;
+        let tx = self.begin()?;
+        for sql in [
+            "DELETE FROM sale_payments",
+            "DELETE FROM sale_lines",
+            "DELETE FROM sale_revisions",
+            "DELETE FROM sale_delivery",
+            "DELETE FROM sales",
+            "DELETE FROM expense_payments",
+            "DELETE FROM expenses",
+            "DELETE FROM credit_ledger",
+            "DELETE FROM payable_ledger",
+            "DELETE FROM money_movements",
+            "DELETE FROM stock_movements",
+            "DELETE FROM purchase_lines",
+            "DELETE FROM purchases",
+            "DELETE FROM running_lines",
+            "DELETE FROM running_orders",
+            "DELETE FROM kot_tickets",
+            "DELETE FROM split_tables",
+            "DELETE FROM reservations",
+            "DELETE FROM waitlist",
+            "DELETE FROM waiter_calls",
+            "DELETE FROM shift_closes",
+            "DELETE FROM gift_vouchers",
+            "DELETE FROM feedback",
+            "DELETE FROM audit_events",
+            "DELETE FROM notify_outbox",
+            "DELETE FROM connector_outbox",
+            "DELETE FROM entry_attachments",
+            "DELETE FROM sync_outbox",
+            "DELETE FROM lan_outbox",
+            "DELETE FROM lan_refused",
+            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
+            "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
+            "DELETE FROM meta WHERE key IN (
+                'opening_float_paise', 'shift_opened_at',
+                'shift_opened_by', 'opening_cash_paise',
+                'last_day_close_counted_cash', 'last_day_close_cash_variance'
+             )",
+            "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        ] {
+            match tx.execute(sql, []) {
+                Ok(_) => {}
+                Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) => return Err(e.to_string()),
+            }
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        if let Some(at) = last_close {
+            self.meta_set("last_day_close_at", &at)?;
+        }
+        Ok(())
+    }
+
+    /// Drop rows older than retention hours (Server tick / unlock).
+    pub fn purge_trading_older_than_hours(&self, hours: u32) -> Result<(), String> {
+        self.assert_server_writer("Clear old history")?;
+        let cutoff = (Local::now() - chrono::Duration::hours(hours as i64)).to_rfc3339();
+        let tx = self.begin()?;
+        for (sql, params_n) in [
+            (
+                "DELETE FROM sale_payments WHERE sale_id IN (SELECT id FROM sales WHERE created_at < ?1)",
+                true,
+            ),
+            (
+                "DELETE FROM sale_lines WHERE sale_id IN (SELECT id FROM sales WHERE created_at < ?1)",
+                true,
+            ),
+            ("DELETE FROM sales WHERE created_at < ?1", true),
+            ("DELETE FROM kot_tickets WHERE created_at < ?1", true),
+            ("DELETE FROM expenses WHERE created_at < ?1", true),
+            ("DELETE FROM money_movements WHERE created_at < ?1", true),
+            ("DELETE FROM credit_ledger WHERE created_at < ?1", true),
+            ("DELETE FROM payable_ledger WHERE created_at < ?1", true),
+            ("DELETE FROM audit_events WHERE created_at < ?1", true),
+        ] {
+            let _ = params_n;
+            match tx.execute(sql, params![cutoff]) {
+                Ok(_) => {}
+                Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) => return Err(e.to_string()),
+            }
+        }
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(())
+    }
+
+    pub fn maybe_run_history_retention(&self) -> Result<(), String> {
+        match self.history_retention()? {
+            crate::business_day::HistoryRetention::AfterHours(h) => {
+                self.purge_trading_older_than_hours(h)
+            }
+            _ => Ok(()),
+        }
     }
 
     /// Day-report tax line: inclusive → “GST inclusive in sales”; exclusive
@@ -2826,13 +3027,23 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         let when = created_at.get(..16).unwrap_or(&created_at).replace('T', " ");
-        let table_label = if table_id.is_empty() {
-            String::new()
+        let (table_label, area_label) = if table_id.is_empty() {
+            (String::new(), String::new())
         } else {
-            self.table_label(&table_id).unwrap_or_default()
+            let label = self.table_label(&table_id).unwrap_or_default();
+            let area = self
+                .conn
+                .query_row(
+                    "SELECT COALESCE(area, '') FROM tables_dining WHERE id = ?1",
+                    params![table_id],
+                    |r| r.get::<_, String>(0),
+                )
+                .unwrap_or_default();
+            (label, area)
         };
         let shop = self.venue_title().unwrap_or_default();
         let items = kot_print_item_lines(&summary, &table_label, &station_name);
+        let items: Vec<String> = items.into_iter().map(|l| kot_line_to_name_qty(&l)).collect();
         let item_refs: Vec<&str> = items.iter().map(String::as_str).collect();
         let fmt = self.kot_slip_format()?;
         Ok(fmt.render(crate::print_share::KotSlipContent {
@@ -2845,6 +3056,7 @@ impl Store {
             created_by: &created_by,
             table_label: &table_label,
             station_name: &station_name,
+            area_label: &area_label,
             items: &item_refs,
         }))
     }
@@ -3653,6 +3865,71 @@ impl Store {
             }
         }
         Ok(net)
+    }
+
+    fn money_movements_net_between(&self, start: &str, end: &str) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT kind, amount_paise FROM money_movements
+                 WHERE created_at >= ?1 AND created_at < ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![start, end, branch], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut net = 0i64;
+        for row in rows {
+            let (kind, amount) = row.map_err(|e| e.to_string())?;
+            match MoneyMoveKind::parse(&kind) {
+                Some(MoneyMoveKind::TillToBank) | Some(MoneyMoveKind::BankIn) => net += amount,
+                Some(MoneyMoveKind::BankToTill) | Some(MoneyMoveKind::BankOut) => net -= amount,
+                None => {}
+            }
+        }
+        Ok(net)
+    }
+
+    fn cash_out_between(&self, start: &str, end: &str) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let expenses: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(p.amount_paise), 0) FROM expense_payments p
+                 JOIN expenses e ON e.id = p.expense_id
+                 WHERE p.pay_method = 'cash'
+                   AND e.created_at >= ?1 AND e.created_at < ?2
+                   AND (e.branch_id = ?3 OR e.branch_id = '')",
+                params![start, end, branch],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let payable: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM payable_ledger
+                 WHERE kind = 'settle' AND pay_method = 'cash' AND amount_paise < 0
+                   AND created_at >= ?1 AND created_at < ?2",
+                params![start, end],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let to_bank: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
+                 WHERE kind = 'till_to_bank'
+                   AND created_at >= ?1 AND created_at < ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+                params![start, end, branch],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(expenses + payable + to_bank)
     }
 
     /// Party-wise outstanding with aging buckets (0–7 / 8–30 / 31+ days).
@@ -7043,6 +7320,30 @@ impl Store {
 
         let branch_id = self.active_branch_id()?;
         let stations = self.list_stations()?;
+        // Person rights: refuse kitchens outside this user's allowed stations
+        // before anything is written. Resolve empty line.station_id from the
+        // menu product — same rule as send_kot (chosen kitchen else menu).
+        let feats = actor.effective_features();
+        for line in draft.lines.iter().filter(|l| !l.kot_sent) {
+            let sid = {
+                let own = line.station_id.trim();
+                if !own.is_empty() {
+                    own.to_string()
+                } else {
+                    self.get_product(&line.product_id)?
+                        .map(|p| p.station_id)
+                        .unwrap_or_default()
+                }
+            };
+            if !sid.is_empty() && !feats.allows_kot_station(&sid) {
+                let name = stations
+                    .iter()
+                    .find(|s| s.id == sid)
+                    .map(|s| s.name.as_str())
+                    .unwrap_or(sid.as_str());
+                return Err(format!("Not allowed to use kitchen: {name}"));
+            }
+        }
         // The country pack decides whether tax is *extracted* from what the
         // seller quoted or *added* on top of it. Stock and kitchen routing come
         // from the same pass over the catalogue.
@@ -7053,7 +7354,7 @@ impl Store {
         let mut stock_hits: Vec<(String, i64)> = Vec::new();
         for line in &draft.lines {
             let product = self.get_product(&line.product_id)?;
-            let (tax_bps, station_id, tracked) = product
+            let (tax_bps, menu_station, tracked) = product
                 .as_ref()
                 .map(|p| (p.tax_bps, p.station_id.clone(), p.tracks_stock()))
                 .unwrap_or((0, String::new(), false));
@@ -7061,7 +7362,16 @@ impl Store {
                 .saturating_add(fiscal::tax_on_amount(line.line_total_paise, tax_bps, pricing));
             // Lines the kitchen already has (sent on the table's running
             // order, or a counter KOT before payment) are not fired again.
+            // Kitchen: chosen on the line, else the menu item's station.
             if !line.kot_sent {
+                let station_id = {
+                    let own = line.station_id.trim();
+                    if !own.is_empty() {
+                        own.to_string()
+                    } else {
+                        menu_station
+                    }
+                };
                 let label = kot_line_label(line);
                 match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
                     Some((_, items)) => items.push(label),
@@ -8000,8 +8310,9 @@ impl Store {
     }
 
     pub fn today_totals(&self) -> Result<DayTotals, String> {
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let prefix = format!("{today}%");
+        let win = self.current_business_day_window()?;
+        let start = win.start.as_str();
+        let end = win.end.as_str();
         let branch = self.active_branch_id()?;
         let mut totals = DayTotals::default();
         let mut stmt = self
@@ -8013,12 +8324,13 @@ impl Store {
                         COALESCE(tax_paise, 0),
                         COALESCE(money_lane, 'declared')
                  FROM sales
-                 WHERE status = 'completed' AND created_at LIKE ?1
-                   AND (branch_id = ?2 OR branch_id = '')",
+                 WHERE status = 'completed'
+                   AND created_at >= ?1 AND created_at < ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
-            .query_map(params![prefix, branch], |row| {
+            .query_map(params![start, end, branch], |row| {
                 Ok((
                     row.get::<_, String>(0)?,
                     row.get::<_, i64>(1)?,
@@ -8060,13 +8372,14 @@ impl Store {
                     "SELECT p.pay_method, p.amount_paise
                      FROM sale_payments p
                      JOIN sales s ON s.id = p.sale_id
-                     WHERE s.status = 'completed' AND s.created_at LIKE ?1
-                       AND (s.branch_id = ?2 OR s.branch_id = '')
+                     WHERE s.status = 'completed'
+                       AND s.created_at >= ?1 AND s.created_at < ?2
+                       AND (s.branch_id = ?3 OR s.branch_id = '')
                        AND s.pay_method = 'split'",
                 )
                 .map_err(|e| e.to_string())?;
             let rows = stmt
-                .query_map(params![prefix, branch], |row| {
+                .query_map(params![start, end, branch], |row| {
                     Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
                 })
                 .map_err(|e| e.to_string())?;
@@ -8089,13 +8402,13 @@ impl Store {
                     "SELECT pay_method, ABS(amount_paise)
                      FROM credit_ledger
                      WHERE kind IN ('settle', 'advance')
-                       AND created_at LIKE ?1
+                       AND created_at >= ?1 AND created_at < ?2
                        AND amount_paise < 0
                        AND pay_method IS NOT NULL",
                 )
                 .map_err(|e| e.to_string())?;
             let rows = stmt
-                .query_map(params![prefix], |row| {
+                .query_map(params![start, end], |row| {
                     Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
                 })
                 .map_err(|e| e.to_string())?;
@@ -8956,8 +9269,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<String, String> {
         self.assert_server_writer("Add staff")?;
-        if !actor.role.can_admin() {
-            return Err("Only owner can add staff".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         if hire.role.is_owner() {
             return Err("Cannot create another Owner account".into());
@@ -8984,6 +9297,7 @@ impl Store {
             hash_pin(hire.password.trim())?
         };
         let login_id = hire.login_id.trim().to_string();
+        self.assert_login_id_free(&login_id, None)?;
         let id = new_id();
         self.conn
             .execute(
@@ -9009,6 +9323,33 @@ impl Store {
         Ok(id)
     }
 
+    /// Username (`login_id`) is the unique human handle. Display `name` may
+    /// repeat. Empty username is allowed (PIN-only). Case-insensitive.
+    pub fn assert_login_id_free(
+        &self,
+        login_id: &str,
+        except_staff_id: Option<&str>,
+    ) -> Result<(), String> {
+        let login_id = login_id.trim();
+        if login_id.is_empty() {
+            return Ok(());
+        }
+        for member in self.list_staff()? {
+            if !member.active {
+                continue;
+            }
+            if except_staff_id.is_some_and(|id| id == member.id) {
+                continue;
+            }
+            if !member.login_id.is_empty() && member.login_id.eq_ignore_ascii_case(login_id) {
+                return Err(format!(
+                    "Username \"{login_id}\" is already used — pick another"
+                ));
+            }
+        }
+        Ok(())
+    }
+
     pub fn set_staff_features(
         &self,
         staff_id: &str,
@@ -9016,8 +9357,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Change staff permissions")?;
-        if !actor.role.can_admin() {
-            return Err("Only Owner can change staff features".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         let n = self
             .conn
@@ -9041,8 +9382,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Rename staff")?;
-        if !actor.role.can_admin() {
-            return Err("Only Owner can rename staff".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         let name = name.trim();
         if name.is_empty() {
@@ -9073,8 +9414,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Copy staff setup")?;
-        if !actor.role.can_admin() {
-            return Err("Only Owner can change staff setup".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         if role.is_owner() {
             return Err("Cannot turn staff into Owner".into());
@@ -9130,11 +9471,12 @@ impl Store {
         }
         let login_id = login_id.trim();
         if login_id.is_empty() {
-            return Err("Login id required".into());
+            return Err("Username required".into());
         }
         if password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
         }
+        self.assert_login_id_free(login_id, Some(staff_id))?;
         // If actor is not the staff member, only allow when password_hash is empty (initial set).
         if actor.id != staff_id {
             let existing: String = self
@@ -9194,7 +9536,7 @@ impl Store {
             return Ok(None);
         }
         for member in self.list_staff()? {
-            if member.login_id == login_id
+            if member.login_id.eq_ignore_ascii_case(login_id)
                 && !member.password_hash.is_empty()
                 && verify_pin(password, &member.password_hash)?
             {
@@ -9240,8 +9582,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Remove staff")?;
-        if !actor.role.can_admin() {
-            return Err("Only Owner can deactivate staff".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         if staff_id == actor.id {
             return Err("Cannot deactivate yourself".into());
@@ -11383,6 +11725,24 @@ fn kot_print_item_lines(summary: &str, table_label: &str, station_name: &str) ->
         .filter(|s| !s.is_empty())
         .map(str::to_string)
         .collect()
+}
+
+/// Turn `2× Butter Naan` / `2 x Tea` into `Butter Naan|2` for column slips.
+fn kot_line_to_name_qty(line: &str) -> String {
+    let line = line.trim();
+    if line.contains('|') {
+        return line.to_string();
+    }
+    for sep in ["×", "x", "X"] {
+        if let Some((qty, name)) = line.split_once(sep) {
+            let qty = qty.trim();
+            let name = name.trim();
+            if !qty.is_empty() && !name.is_empty() && qty.chars().all(|c| c.is_ascii_digit()) {
+                return format!("{name}|{qty}");
+            }
+        }
+    }
+    line.to_string()
 }
 
 #[cfg(test)]

@@ -537,8 +537,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(amounts_eye))
             .set_visible(cx, unlocked);
+        // Today strip: opt-in via shop meta (default off — quiet counter).
         let show_today = unlocked
-            && session_may_see_today(app_state().lock().unwrap().session.as_ref());
+            && session_may_see_today(app_state().lock().unwrap().session.as_ref())
+            && app_state()
+                .lock()
+                .unwrap()
+                .store
+                .as_ref()
+                .and_then(|s| s.show_today_bar().ok())
+                .unwrap_or(false);
         self.ui.view(cx, ids!(today_bar)).set_visible(cx, show_today);
         self.apply_shell_layout(cx, unlocked);
         self.paint_nav_tabs(cx, screen);
@@ -1239,6 +1247,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     st.split_mode = false;
                     st.split_pick.clear();
                 }
+                // Team edit target must not leak onto other screens (station
+                // checklist would steal every suggest via open_suggest).
+                if st.screen == Screen::Team && screen != Screen::Team {
+                    st.team_staff_id = None;
+                    if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                        st.suggest_open = None;
+                    }
+                }
                 self.set_screen(&mut st, screen, true);
                 if screen == Screen::Settings {
                     // Settings tab / peer opens on its hub. History Back into
@@ -1634,7 +1650,57 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(payment_qr_status))
             .set_text(cx, &plain_display_text(&pay_qr_hint));
         self.set_report_rows(cx, ids!(schemes_label), scheme_rows);
+        self.sync_std_print_ui(cx);
         self.fill_kot_format_fields(cx);
+    }
+
+    /// Settings → Bill & KOT: Standard document type size (portrait + landscape).
+    fn sync_std_print_ui(&mut self, cx: &mut Cx) {
+        let (em, lang) = {
+            let st = app_state().lock().unwrap();
+            (st.printer_draft.standard_em(), st.locale.language.clone())
+        };
+        let s = |k: &str| locale::t(&lang, k);
+        self.ui
+            .widget(cx, ids!(h_std_print))
+            .set_text(cx, &plain_display_text(&s("std_print")));
+        self.ui
+            .widget(cx, ids!(std_print_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("std_print_help")));
+        self.ui
+            .widget(cx, ids!(h_std_size))
+            .set_text(cx, &plain_display_text(&s("std_size")));
+        self.ui
+            .button(cx, ids!(std_print_save))
+            .set_text(cx, &s("save_std_print"));
+        for (idle, active, label) in [
+            (ids!(std_size_s), ids!(std_size_s_on), "std_size_s"),
+            (ids!(std_size_m), ids!(std_size_m_on), "std_size_m"),
+            (ids!(std_size_l), ids!(std_size_l_on), "std_size_l"),
+        ] {
+            let t = s(label);
+            self.ui.button(cx, idle).set_text(cx, &t);
+            self.ui.button(cx, active).set_text(cx, &t);
+        }
+        self.paint_choice_pair(
+            cx,
+            ids!(std_size_s),
+            ids!(std_size_s_on),
+            em <= print_share::STD_EM_SMALL + 0.5,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(std_size_m),
+            ids!(std_size_m_on),
+            em > print_share::STD_EM_SMALL + 0.5 && em < print_share::STD_EM_LARGE - 0.5,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(std_size_l),
+            ids!(std_size_l_on),
+            em >= print_share::STD_EM_LARGE - 0.5,
+        );
     }
 
     /// Settings → Bill & KOT: load kitchen-slip draft + preview.
@@ -1729,6 +1795,22 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         self.paint_choice_pair(cx, ids!(kot_shop_on), ids!(kot_shop_on_on), draft.show_shop_name);
         self.paint_choice_pair(cx, ids!(kot_shop_off), ids!(kot_shop_off_on), !draft.show_shop_name);
+        self.paint_choice_pair(cx, ids!(kot_title_on), ids!(kot_title_on_on), draft.show_title);
+        self.paint_choice_pair(cx, ids!(kot_title_off), ids!(kot_title_off_on), !draft.show_title);
+        self.paint_choice_pair(cx, ids!(kot_area_on), ids!(kot_area_on_on), draft.show_area);
+        self.paint_choice_pair(cx, ids!(kot_area_off), ids!(kot_area_off_on), !draft.show_area);
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_item_hdr_on),
+            ids!(kot_item_hdr_on_on),
+            draft.show_item_qty_header,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_item_hdr_off),
+            ids!(kot_item_hdr_off_on),
+            !draft.show_item_qty_header,
+        );
         self.paint_choice_pair(cx, ids!(kot_time_on), ids!(kot_time_on_on), draft.show_time);
         self.paint_choice_pair(cx, ids!(kot_time_off), ids!(kot_time_off_on), !draft.show_time);
         self.paint_choice_pair(cx, ids!(kot_waiter_on), ids!(kot_waiter_on_on), draft.show_waiter);
@@ -1778,6 +1860,42 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.paint_choice_pair(cx, ids!(kot_copies_1), ids!(kot_copies_1_on), copies == 1);
         self.paint_choice_pair(cx, ids!(kot_copies_2), ids!(kot_copies_2_on), copies == 2);
         self.paint_choice_pair(cx, ids!(kot_copies_3), ids!(kot_copies_3_on), copies == 3);
+        {
+            let mut order = draft.field_order.clone();
+            if order.is_empty() {
+                order = vec![
+                    "time".into(),
+                    "kot_no".into(),
+                    "area".into(),
+                    "table".into(),
+                    "shop".into(),
+                    "waiter".into(),
+                    "station".into(),
+                ];
+            }
+            let edit = {
+                let st = app_state().lock().unwrap();
+                st.kot_field_edit_idx.min(order.len().saturating_sub(1))
+            };
+            let lines: Vec<ReportRow> = order
+                .iter()
+                .enumerate()
+                .map(|(i, id)| {
+                    ReportRow::Line(if i == edit {
+                        format!("› {id}")
+                    } else {
+                        format!("  {id}")
+                    })
+                })
+                .collect();
+            self.set_report_rows(cx, ids!(kot_field_order_label), lines);
+            self.ui
+                .widget(cx, ids!(h_kot_field_order))
+                .set_text(cx, &plain_display_text(&s("kot_field_order")));
+            self.ui.button(cx, ids!(kot_field_up)).set_text(cx, &s("kot_field_up"));
+            self.ui.button(cx, ids!(kot_field_down)).set_text(cx, &s("kot_field_down"));
+            self.ui.button(cx, ids!(kot_field_cycle)).set_text(cx, &s("kot_field_cycle"));
+        }
         let preview = draft.render_sample(&shop);
         let paper_w = draft.preview_paper_width_px();
         if let Some(mut card) = self.ui.view(cx, ids!(kot_format_preview_card)).borrow_mut() {

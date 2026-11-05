@@ -509,6 +509,10 @@ impl MatchEvent for App {
                         let _ = store.set_active_session_staff_id(None);
                     }
                     st.session = None;
+                    st.team_staff_id = None;
+                    if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                        st.suggest_open = None;
+                    }
                     st.pin_buffer.clear();
                     st.status = "Locked".into();
                     if st.must_confirm_device_role {
@@ -1730,27 +1734,39 @@ impl MatchEvent for App {
             let name = self.ui.text_input(cx, ids!(customer_name_input)).text();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                // The Server owns the customer book; a Client picks from what
-                // sync brought down so both ends agree on the id.
-                if st.device_role == DeviceRole::Client {
-                    let needle = name.trim().to_lowercase();
-                    let customer = st
-                        .customers
-                        .iter()
-                        .find(|c| c.name.to_lowercase() == needle)
-                        .cloned()
-                        .ok_or_else(|| {
-                            "No such customer here — add them on the Server, then Sync".to_string()
-                        })?;
+                let needle = name.trim();
+                if needle.is_empty() {
+                    return Err("Customer name required".into());
+                }
+                if let Some(customer) = st
+                    .customers
+                    .iter()
+                    .find(|c| c.name.eq_ignore_ascii_case(needle))
+                    .cloned()
+                {
                     st.selected_customer_id = Some(customer.id);
                     st.status = format!("Credit customer: {}", customer.name);
                     return Ok(());
                 }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let customer = store.find_or_create_customer(&name)?;
-                st.selected_customer_id = Some(customer.id.clone());
-                st.status = format!("Credit customer: {}", customer.name);
-                st.reload_all()?;
+                // Create via books (Server local apply or Client LAN).
+                st.books_op(BooksOp::AddParty {
+                    name: needle.to_string(),
+                    phone: String::new(),
+                    birthday: String::new(),
+                    kind: String::new(),
+                })?;
+                if let Some(customer) = st
+                    .customers
+                    .iter()
+                    .find(|c| c.name.eq_ignore_ascii_case(needle))
+                    .cloned()
+                {
+                    st.selected_customer_id = Some(customer.id);
+                    st.status = format!("Credit customer: {}", customer.name);
+                } else {
+                    // Client: create is on the shop; list refreshes after Sync.
+                    st.status = format!("Added {needle}");
+                }
                 Ok(())
             })();
             if let Err(e) = result {
@@ -3120,14 +3136,6 @@ impl MatchEvent for App {
             self.ui.redraw(cx);
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(printer_assign_done)).clicked(actions) {
-            app_state().lock().unwrap().suggest_open = None;
-            self.ui
-                .widget(cx, ids!(printer_assign_suggest))
-                .redraw(cx);
-            self.paint_printers_panel(cx);
-            self.ui.redraw(cx);
-        }
         if self.ui.button(cx, ids!(reprint_kot_btn)).clicked(actions) {
             match self.reprint_open_kots(cx) {
                 Ok(msg) => self.set_status(cx, msg),
@@ -3184,6 +3192,19 @@ impl MatchEvent for App {
                 } else {
                     dest_line.clone()
                 };
+                // Stations this Send will hit — persist before lines flip to sent.
+                let used_stations: Vec<String> = {
+                    let products = st.products.clone();
+                    st.cart
+                        .lines
+                        .iter()
+                        .filter(|l| !l.is_sent() && !l.hold_send)
+                        .map(|l| l.kitchen_station_id(&products).to_string())
+                        .filter(|sid| !sid.is_empty())
+                        .collect::<std::collections::BTreeSet<_>>()
+                        .into_iter()
+                        .collect()
+                };
                 let msg = if st.device_role == DeviceRole::Client {
                     let table_name = table_id.as_ref().and_then(|tid| {
                         st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
@@ -3208,6 +3229,9 @@ impl MatchEvent for App {
                     } else {
                         st.cart.mark_new_lines_sent("counter");
                     }
+                    for sid in &used_stations {
+                        st.select_kot_station(sid);
+                    }
                     return Ok(format!(
                         "KOT for {place} → {kitchens} saved — kitchen prints at the shop device"
                     ));
@@ -3224,6 +3248,9 @@ impl MatchEvent for App {
                         (false, _) => format!("{n} KOT(s) → {kitchens}"),
                     }
                 };
+                for sid in &used_stations {
+                    st.select_kot_station(sid);
+                }
                 match table_id {
                     // The table's order now holds them: show them as sent.
                     Some(tid) => {
@@ -4892,11 +4919,11 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, chip, chip_on) {
                 let label = {
                     let mut st = app_state().lock().unwrap();
-                    st.draft_staff_role = role;
-                    // Hire preset only — do not stomp the selected person's
-                    // edit draft. Clear selection so hire vs edit stay distinct.
+                    // Hire Job chips write hire draft only — never edit draft.
+                    st.hire_staff_role = role;
+                    st.hire_features = StaffFeatures::for_role(role);
+                    // Clear selection so hire vs edit stay distinct.
                     st.team_staff_id = None;
-                    st.draft_features = StaffFeatures::for_role(role);
                     st.t(key)
                 };
                 self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
@@ -4922,8 +4949,8 @@ impl MatchEvent for App {
                 if !st.owner_setup_complete {
                     return Err("Finish Owner PIN setup before adding staff".into());
                 }
-                let role = st.draft_staff_role;
-                let features = st.draft_features.clone();
+                let role = st.hire_staff_role;
+                let features = st.hire_features.clone();
                 let msg = st.books_op(BooksOp::HireStaff {
                     name: name.clone(),
                     role,
@@ -4935,6 +4962,7 @@ impl MatchEvent for App {
                 })?;
                 let (status, hired_id) = books_op::hired_staff_parts(&msg);
                 // Always select the person just hired — never "last non-owner".
+                // Load edit draft only; hire Job chips keep hire_* untouched.
                 if let Some(id) = hired_id.filter(|s| !s.is_empty()) {
                     let draft = st.staff.iter().find(|s| s.id == id).map(|m| {
                         (
@@ -4964,42 +4992,65 @@ impl MatchEvent for App {
                     .set_text(cx, "");
                 // Hire and edit are separate: show who Add just selected for
                 // features — do not leave hire fields looking like a second copy.
-                let (pick_name, edit_name) = {
+                let (pick_label, edit_name) = {
                     let st = app_state().lock().unwrap();
                     st.team_staff_id
                         .as_ref()
                         .and_then(|id| st.staff.iter().find(|s| &s.id == id))
-                        .map(|s| (s.name.clone(), s.name.clone()))
+                        .map(|s| (s.lock_label(), s.name.clone()))
                         .unwrap_or_default()
                 };
                 self.ui
                     .text_input(cx, ids!(team_pick_input))
-                    .set_text(cx, &pick_name);
+                    .set_text(cx, &pick_label);
                 self.ui
                     .text_input(cx, ids!(staff_edit_name_input))
                     .set_text(cx, &edit_name);
+                self.ui
+                    .text_input(cx, ids!(staff_edit_login_input))
+                    .set_text(cx, "");
+                self.ui
+                    .text_input(cx, ids!(staff_edit_password_input))
+                    .set_text(cx, "");
             }
             self.sync_chrome(cx);
         }
 
         if self.ui.button(cx, ids!(staff_set_login)).clicked(actions) {
-            let login = self.ui.text_input(cx, ids!(staff_login_input)).text();
-            let password = self.ui.text_input(cx, ids!(staff_password_input)).text();
-            let result = (|| -> Result<(), String> {
+            let login = self.ui.text_input(cx, ids!(staff_edit_login_input)).text();
+            let password = self
+                .ui
+                .text_input(cx, ids!(staff_edit_password_input))
+                .text();
+            let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 let staff_id = st
                     .team_staff_id
                     .clone()
-                    .ok_or_else(|| "Add or pick a staff member first".to_string())?;
+                    .ok_or_else(|| st.t("staff_copy_need_selected"))?;
+                let who = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == staff_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_else(|| staff_id.clone());
                 st.books_op(BooksOp::SetStaffLogin {
                     staff_id,
                     login_id: login,
                     password,
                 })?;
-                Ok(())
+                Ok(who)
             })();
             match result {
-                Ok(()) => self.set_status(cx, "Login saved"),
+                Ok(who) => {
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_login_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_password_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, format!("Login saved for {who}"));
+                }
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
@@ -5573,6 +5624,59 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().kot_slip_draft.show_kot_no = false;
                 changed = true;
             }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_area_on), ids!(kot_area_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_area = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_area_off), ids!(kot_area_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_area = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_item_hdr_on), ids!(kot_item_hdr_on_on))
+            {
+                app_state().lock().unwrap().kot_slip_draft.show_item_qty_header = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_item_hdr_off), ids!(kot_item_hdr_off_on))
+            {
+                app_state().lock().unwrap().kot_slip_draft.show_item_qty_header = false;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_title_on), ids!(kot_title_on_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_title = true;
+                changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_title_off), ids!(kot_title_off_on)) {
+                app_state().lock().unwrap().kot_slip_draft.show_title = false;
+                changed = true;
+            }
+            if self.ui.button(cx, ids!(kot_field_cycle)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                ensure_kot_field_order(&mut st.kot_slip_draft);
+                let n = st.kot_slip_draft.field_order.len().max(1);
+                st.kot_field_edit_idx = (st.kot_field_edit_idx + 1) % n;
+                changed = true;
+            }
+            if self.ui.button(cx, ids!(kot_field_up)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                ensure_kot_field_order(&mut st.kot_slip_draft);
+                let i = st.kot_field_edit_idx;
+                if i > 0 {
+                    st.kot_slip_draft.field_order.swap(i, i - 1);
+                    st.kot_field_edit_idx = i - 1;
+                    changed = true;
+                }
+            }
+            if self.ui.button(cx, ids!(kot_field_down)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                ensure_kot_field_order(&mut st.kot_slip_draft);
+                let i = st.kot_field_edit_idx;
+                if i + 1 < st.kot_slip_draft.field_order.len() {
+                    st.kot_slip_draft.field_order.swap(i, i + 1);
+                    st.kot_field_edit_idx = i + 1;
+                    changed = true;
+                }
+            }
             if self.choice_chip_clicked(cx, actions, ids!(kot_width_58), ids!(kot_width_58_on)) {
                 app_state().lock().unwrap().kot_slip_draft.chars_per_line =
                     print_share::KOT_CHARS_58MM;
@@ -5644,6 +5748,54 @@ impl MatchEvent for App {
             match result {
                 Ok(msg) => {
                     self.sync_kot_format_ui(cx);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        {
+            let mut std_changed = false;
+            if self.choice_chip_clicked(cx, actions, ids!(std_size_s), ids!(std_size_s_on)) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .printer_draft
+                    .set_standard_em(print_share::STD_EM_SMALL);
+                std_changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(std_size_m), ids!(std_size_m_on)) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .printer_draft
+                    .set_standard_em(print_share::STD_EM_NORMAL);
+                std_changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(std_size_l), ids!(std_size_l_on)) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .printer_draft
+                    .set_standard_em(print_share::STD_EM_LARGE);
+                std_changed = true;
+            }
+            if std_changed {
+                self.sync_std_print_ui(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(std_print_save)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
+                if let Some(base) = st.printers_base() {
+                    print_share::save_device_printers(&base, &st.printer_draft)?;
+                }
+                print_share::configure(st.printer_draft.clone());
+                Ok(st.t("std_print_saved"))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.sync_std_print_ui(cx);
                     self.set_status(cx, msg);
                 }
                 Err(e) => self.set_status(cx, e),
@@ -5826,21 +5978,30 @@ impl MatchEvent for App {
         if team_pick_now || self.ui.text_input(cx, ids!(team_pick_input)).returned(actions).is_some()
         {
             let name = self.ui.text_input(cx, ids!(team_pick_input)).text();
-            let result = (|| -> Result<(String, String), String> {
+            let result = (|| -> Result<(String, String, String), String> {
                 let mut st = app_state().lock().unwrap();
-                let member = Self::find_active_staff_by_name(&st, name.trim())
-                    .ok_or_else(|| format!("No staff named \"{}\"", name.trim()))?;
+                let member = Self::find_active_staff(&st, name.trim())?;
                 st.team_staff_id = Some(member.id.clone());
+                // Edit draft only — hire Job chips keep hire_* untouched.
                 st.draft_staff_role = store::Store::hire_role_from(&member);
                 st.draft_features = member.effective_features();
-                let msg = format!("Editing {} ({})", member.name, member.role_title);
-                Ok((msg, member.name.clone()))
+                let msg = format!("Editing {}", member.lock_label());
+                Ok((msg, member.name.clone(), member.lock_label()))
             })();
             match result {
-                Ok((msg, display_name)) => {
+                Ok((msg, display_name, pick_label)) => {
+                    self.ui
+                        .text_input(cx, ids!(team_pick_input))
+                        .set_text(cx, &pick_label);
                     self.ui
                         .text_input(cx, ids!(staff_edit_name_input))
                         .set_text(cx, &display_name);
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_login_input))
+                        .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_password_input))
+                        .set_text(cx, "");
                     self.set_status(cx, msg);
                 }
                 Err(e) => self.set_status(cx, e),
@@ -5856,10 +6017,9 @@ impl MatchEvent for App {
                 .is_some();
         if hire_copy_click {
             let name = self.ui.text_input(cx, ids!(staff_copy_hire_input)).text();
-            let result = (|| -> Result<(String, String), String> {
+            let result = (|| -> Result<(String, String, String), String> {
                 let mut st = app_state().lock().unwrap();
-                let source = Self::find_active_staff_by_name(&st, name.trim())
-                    .ok_or_else(|| st.t("staff_copy_need_source"))?;
+                let source = Self::find_active_staff(&st, name.trim())?;
                 let role = store::Store::hire_role_from(&source);
                 let title = if source.is_owner() {
                     role.default_title().to_string()
@@ -5868,23 +6028,28 @@ impl MatchEvent for App {
                 } else {
                     source.role_title.clone()
                 };
-                // Hire copy fills the Add form — clear any edit selection so
-                // screens/rights below do not look like they belong to someone.
+                // Hire copy fills the Add form (hire draft only) — clear any
+                // edit selection so screens/rights below do not look like they
+                // belong to someone.
                 st.team_staff_id = None;
-                st.draft_staff_role = role;
-                st.draft_features = source.effective_features();
+                st.hire_staff_role = role;
+                st.hire_features = source.effective_features();
                 Ok((
                     st.t("staff_setup_copied_hire")
-                        .replace("{name}", &source.name),
+                        .replace("{name}", &source.lock_label()),
                     title,
+                    source.lock_label(),
                 ))
             })();
             match result {
-                Ok((msg, title)) => {
+                Ok((msg, title, source_label)) => {
                     self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
                     self.ui
                         .text_input(cx, ids!(staff_edit_name_input))
                         .set_text(cx, "");
+                    self.ui
+                        .text_input(cx, ids!(staff_copy_hire_input))
+                        .set_text(cx, &source_label);
                     self.ui
                         .text_input(cx, ids!(staff_title_input))
                         .set_text(cx, &title);
@@ -5930,25 +6095,21 @@ impl MatchEvent for App {
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| st.t("staff_copy_need_selected"))?;
-                let source = Self::find_active_staff_by_name(&st, from_name.trim())
-                    .ok_or_else(|| st.t("staff_copy_need_source"))?;
+                let source = Self::find_active_staff(&st, from_name.trim())?;
                 if source.id == target_id {
                     return Err(st.t("staff_copy_same"));
                 }
-                let target_name = st
+                let target = st
                     .staff
                     .iter()
                     .find(|s| s.id == target_id)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_else(|| target_id.clone());
-                if st
-                    .staff
-                    .iter()
-                    .any(|s| s.id == target_id && s.is_owner())
-                {
+                    .cloned()
+                    .ok_or_else(|| target_id.clone())?;
+                if target.is_owner() {
                     return Err("Cannot change Owner setup this way".into());
                 }
-                let from_label = source.name.clone();
+                let from_label = source.lock_label();
+                let to_label = target.lock_label();
                 let role = store::Store::hire_role_from(&source);
                 let title = if source.is_owner() {
                     role.default_title().to_string()
@@ -5964,16 +6125,16 @@ impl MatchEvent for App {
                     role_title: title,
                     features: features.clone(),
                     from_name: from_label.clone(),
-                    to_name: target_name.clone(),
+                    to_name: to_label.clone(),
                 })?;
                 st.draft_staff_role = role;
                 st.draft_features = features;
                 Ok(if st.device_role == DeviceRole::Client {
-                    format!("Copied setup from {from_label} onto {target_name}")
+                    format!("Copied setup from {from_label} onto {to_label}")
                 } else {
                     st.t("staff_setup_copied_edit")
                         .replace("{from}", &from_label)
-                        .replace("{to}", &target_name)
+                        .replace("{to}", &to_label)
                 })
             })();
             match result {
@@ -6488,13 +6649,17 @@ impl MatchEvent for App {
             let mins = self.ui.text_input(cx, ids!(wait_mins_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                let store = st.store.as_ref().ok_or("No store")?;
                 let party_n: i64 = party.trim().parse().unwrap_or(2);
                 let wait_n: i64 = mins.trim().parse().unwrap_or(15);
-                store.add_waitlist(&name, party_n, wait_n, &actor)?;
-                let _ = st.refresh_inventory_text();
-                Ok(format!("Waitlist: {name}"))
+                let msg = st.books_op(BooksOp::AddWaitlist {
+                    name: name.trim().to_string(),
+                    party_size: party_n,
+                    quoted_mins: wait_n,
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    let _ = st.refresh_inventory_text();
+                }
+                Ok(msg)
             })();
             match result {
                 Ok(m) => {
@@ -7125,6 +7290,40 @@ impl MatchEvent for App {
                 st.t("route_cleared").replace("{name}", &place)
             };
             self.set_status(cx, msg);
+            self.paint_printers_panel(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(printer_mode_first),
+            ids!(printer_mode_first_on),
+        ) {
+            let mut st = app_state().lock().unwrap();
+            let key_owned = st.printer_route_key.clone();
+            let key = parse_printer_route_key(&key_owned);
+            st.printer_draft
+                .set_print_mode(key, print_share::RoutePrintMode::First);
+            if let Some(base) = st.printers_base() {
+                let _ = print_share::save_device_printers(&base, &st.printer_draft);
+            } else {
+                print_share::configure(st.printer_draft.clone());
+            }
+            drop(st);
+            self.paint_printers_panel(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(printer_mode_all), ids!(printer_mode_all_on))
+        {
+            let mut st = app_state().lock().unwrap();
+            let key_owned = st.printer_route_key.clone();
+            let key = parse_printer_route_key(&key_owned);
+            st.printer_draft
+                .set_print_mode(key, print_share::RoutePrintMode::All);
+            if let Some(base) = st.printers_base() {
+                let _ = print_share::save_device_printers(&base, &st.printer_draft);
+            } else {
+                print_share::configure(st.printer_draft.clone());
+            }
+            drop(st);
             self.paint_printers_panel(cx);
         }
         if self.ui.button(cx, ids!(print_test_btn)).clicked(actions) {

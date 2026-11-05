@@ -15,28 +15,44 @@ impl App {
             let name = self.ui.text_input(cx, ids!(customer_name_input)).text();
             let result = (|| -> Result<Option<domain::Customer>, String> {
                 let mut st = app_state().lock().unwrap();
-                // The Server owns the customer book; a Client picks from what
-                // sync brought down so both ends agree on the id.
-                if st.device_role == DeviceRole::Client {
-                    let needle = name.trim().to_lowercase();
-                    let customer = st
-                        .customers
-                        .iter()
-                        .find(|c| c.name.to_lowercase() == needle)
-                        .cloned()
-                        .ok_or_else(|| {
-                            "No such customer here — add them on the Server, then Sync".to_string()
-                        })?;
+                let needle = name.trim();
+                if needle.is_empty() {
+                    return Err("Customer name required".into());
+                }
+                if let Some(customer) = st
+                    .customers
+                    .iter()
+                    .find(|c| c.name.eq_ignore_ascii_case(needle))
+                    .cloned()
+                {
                     st.selected_customer_id = Some(customer.id.clone());
                     st.status = format!("Consignor: {}", customer.name);
                     return Ok(Some(customer));
                 }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let customer = store.find_or_create_customer(&name)?;
-                st.selected_customer_id = Some(customer.id.clone());
-                st.status = format!("Consignor: {}", customer.name);
-                st.reload_all()?;
-                Ok(Some(customer))
+                // Create via books (Server local apply or Client LAN).
+                st.books_op(BooksOp::AddParty {
+                    name: needle.to_string(),
+                    phone: String::new(),
+                    address: String::new(),
+                    kind: String::new(),
+                    image_bytes: Vec::new(),
+                    image_filename: String::new(),
+                    image_key: None,
+                })?;
+                if let Some(customer) = st
+                    .customers
+                    .iter()
+                    .find(|c| c.name.eq_ignore_ascii_case(needle))
+                    .cloned()
+                {
+                    st.selected_customer_id = Some(customer.id.clone());
+                    st.status = format!("Consignor: {}", customer.name);
+                    Ok(Some(customer))
+                } else {
+                    // Client: create is on the shop; list refreshes after Sync.
+                    st.status = format!("Added {needle}");
+                    Ok(None)
+                }
             })();
             match result {
                 Ok(Some(customer)) => self.fill_booking_consignor_from_party(cx, &customer),

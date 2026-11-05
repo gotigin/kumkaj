@@ -235,7 +235,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             let st = app_state().lock().unwrap();
             (
                 st.money_lane,
-                st.draft_staff_role,
+                st.hire_staff_role,
                 st.buy_on_account,
                 st.language_follow_platform,
                 st.onboard_step,
@@ -526,22 +526,59 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(route_assigned_list))
             .set_visible(cx, !assigned_empty);
-        self.ui
-            .button(cx, ids!(printer_place_dd))
-            .set_text(cx, &place_label);
-        self.ui
-            .button(cx, ids!(printer_assign_dd))
-            .set_text(cx, &assign_label);
-        let assign_open = {
+        let (place_open, assign_open) = {
             let st = app_state().lock().unwrap();
-            st.suggest_open == Some(SuggestField::PrinterAssign)
+            (
+                st.suggest_open == Some(SuggestField::PrinterPlace),
+                st.suggest_open == Some(SuggestField::PrinterAssign),
+            )
+        };
+        let place_face = if place_open {
+            app_t("pick_done_dd").replace("{label}", &place_label)
+        } else {
+            place_label
+        };
+        let assign_face = if assign_open {
+            app_t("pick_done_dd").replace("{label}", &assign_label)
+        } else {
+            assign_label
         };
         self.ui
-            .button(cx, ids!(printer_assign_done))
-            .set_visible(cx, assign_open);
+            .button(cx, ids!(printer_place_dd))
+            .set_text(cx, &place_face);
         self.ui
-            .button(cx, ids!(printer_assign_done))
-            .set_text(cx, &app_t("pick_done"));
+            .button(cx, ids!(printer_assign_dd))
+            .set_text(cx, &assign_face);
+        let mode_all = {
+            let st = app_state().lock().unwrap();
+            let key = parse_printer_route_key(&st.printer_route_key);
+            matches!(
+                st.printer_draft.print_mode_for(key),
+                print_share::RoutePrintMode::All
+            )
+        };
+        self.ui
+            .widget(cx, ids!(h_printer_route_mode))
+            .set_text(cx, &plain_display_text(&app_t("printer_route_mode")));
+        self.ui
+            .button(cx, ids!(printer_mode_first))
+            .set_text(cx, &app_t("printer_mode_first"));
+        self.ui
+            .button(cx, ids!(printer_mode_first_on))
+            .set_text(cx, &app_t("printer_mode_first"));
+        self.ui
+            .button(cx, ids!(printer_mode_all))
+            .set_text(cx, &app_t("printer_mode_all"));
+        self.ui
+            .button(cx, ids!(printer_mode_all_on))
+            .set_text(cx, &app_t("printer_mode_all"));
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_mode_first),
+            ids!(printer_mode_first_on),
+            !mode_all,
+        );
+        self.paint_choice_pair(cx, ids!(printer_mode_all), ids!(printer_mode_all_on), mode_all);
         // Legacy +chips stay hidden — assign is the checkbox dropdown.
         self.ui.view(cx, ids!(route_add_printers)).set_visible(cx, false);
         for id in ROUTE_ADD_PRINTER_BTNS.iter() {
@@ -940,6 +977,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(staff_pin_input), rtl);
         self.align_input(cx, ids!(staff_login_input), rtl);
         self.align_input(cx, ids!(staff_password_input), rtl);
+        self.align_input(cx, ids!(staff_edit_login_input), rtl);
+        self.align_input(cx, ids!(staff_edit_password_input), rtl);
         self.align_input(cx, ids!(my_pin_input), rtl);
         self.align_input(cx, ids!(my_password_input), rtl);
         self.align_input(cx, ids!(duress_pin_input), rtl);
@@ -1549,6 +1588,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(staff_role_cashier_on)).set_text(cx, &s("role_cashier"));
         self.ui.button(cx, ids!(staff_role_manager)).set_text(cx, &s("role_manager"));
         self.ui.button(cx, ids!(staff_role_manager_on)).set_text(cx, &s("role_manager"));
+        // Named in sync_chrome when a person is selected (`set_login_named`).
         self.ui.button(cx, ids!(staff_set_login)).set_text(cx, &s("set_login_selected"));
         self.ui.button(cx, ids!(station_add)).set_text(cx, &s("add_station"));
         self.ui.button(cx, ids!(stop_extra_tills)).set_text(cx, &s("stop_extra_tills"));
@@ -1611,7 +1651,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(menu_category_input)).set_empty_text(cx, s("category_search_ph"));
         self.ui.text_input(cx, ids!(menu_station_input)).set_empty_text(cx, s("station_new_ph"));
         self.ui.text_input(cx, ids!(kot_station_input)).set_empty_text(cx, s("kot_station_ph"));
-        self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &s("kot_station_dd"));
+        // kot_station_dd face (Kitchen / Done · …) is painted in Pos chrome —
+        // do not reset it here or open-dropdown Done · is wiped every sync.
         self.ui.button(cx, ids!(kot_set_station)).set_text(cx, &s("kot_set_station"));
         self.ui.text_input(cx, ids!(menu_modifiers_input)).set_empty_text(cx, s("options_khaynjo_ph"));
         self.ui.text_input(cx, ids!(buy_qty_input)).set_empty_text(cx, s("qty_example_ph"));
@@ -1635,6 +1676,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(staff_pin_input)).set_empty_text(cx, s("starting_pin_ph"));
         self.ui.text_input(cx, ids!(staff_login_input)).set_empty_text(cx, s("login_id_opt_ph"));
         self.ui.text_input(cx, ids!(staff_password_input)).set_empty_text(cx, s("starting_password_ph"));
+        self.ui.text_input(cx, ids!(staff_edit_login_input)).set_empty_text(cx, s("login_id_opt_ph"));
+        self.ui.text_input(cx, ids!(staff_edit_password_input)).set_empty_text(cx, s("starting_password_ph"));
         self.ui.text_input(cx, ids!(my_pin_input)).set_empty_text(cx, s("new_pin_ph"));
         self.ui.text_input(cx, ids!(my_password_input)).set_empty_text(cx, s("new_password_ph"));
         self.ui.text_input(cx, ids!(duress_pin_input)).set_empty_text(cx, s("duress_pin_ph"));

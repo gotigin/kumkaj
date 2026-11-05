@@ -33,13 +33,28 @@
                      ScrollAxis::Vertical => fe.abs.y,
 --- a/widgets/src/portal_list.rs
 +++ b/widgets/src/portal_list.rs
-@@ -3121,6 +3121,9 @@
+@@ -495,6 +495,12 @@
+     align_top_when_empty: bool,
+     #[live(false)]
+     grab_key_focus: bool,
+     #[live(true)]
+     drag_scrolling: bool,
++    /// When true, mouse press-drag also flings this list (capped SuggestList /
++    /// StationCheckList). Default false: page ScrollYView owns mouse press-drag
++    /// over expand-to-content lists (`drag_scroll_touch_only`).
++    #[live(false)]
++    mouse_drag_scrolling: bool,
+     /// The minimum distance (in pixels) a finger/mouse must move before a drag is
+     /// "committed" and treated as a scroll gesture rather than a tap/click.
+     /// This prevents accidental micro-scrolling when tapping interactive items.
+@@ -3121,6 +3127,10 @@
                              self.update_item_selections(cx);
                          }
                      } else if self.drag_scrolling && fe.is_primary_hit()
-+                        // Touch gesture only: a mouse drag never flings a list
-+                        // (page ScrollYView owns mouse press-drag instead).
-+                        && !fe.device.is_mouse()
++                        // Touch always. Mouse only when opted in (capped
++                        // SuggestList / StationCheckList) — expand-to-content
++                        // lists leave mouse press-drag to page ScrollYView.
++                        && (self.mouse_drag_scrolling || !fe.device.is_mouse())
                          && cx.is_scrolling_allowed_within(&self.area)
                      {
                          // Always enter drag state to enable drag-to-scroll even over

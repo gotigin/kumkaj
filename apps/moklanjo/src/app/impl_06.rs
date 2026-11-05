@@ -1,4 +1,85 @@
 impl App {
+    /// Resolve Team type-or-pick text to one active person.
+    /// Prefer id → unique username → lock_label → unique display name.
+    /// Never guess among duplicate names (that mistargeted rights/PIN).
+    fn find_active_staff(st: &AppState, needle: &str) -> Result<StaffMember, String> {
+        let raw = needle.trim();
+        if raw.is_empty() {
+            return Err("Type a staff name or username, or pick from the list".into());
+        }
+        if let Some(m) = st.staff.iter().find(|s| s.active && s.id == raw) {
+            return Ok(m.clone());
+        }
+        let by_login: Vec<_> = st
+            .staff
+            .iter()
+            .filter(|s| {
+                s.active
+                    && !s.login_id.is_empty()
+                    && s.login_id.eq_ignore_ascii_case(raw)
+            })
+            .cloned()
+            .collect();
+        if by_login.len() == 1 {
+            return Ok(by_login.into_iter().next().expect("len 1"));
+        }
+        if by_login.len() > 1 {
+            return Err("Several people share that username — fix Team logins".into());
+        }
+        if let Some(m) = st
+            .staff
+            .iter()
+            .find(|s| s.active && s.lock_label() == raw)
+        {
+            return Ok(m.clone());
+        }
+        let by_label: Vec<_> = st
+            .staff
+            .iter()
+            .filter(|s| s.active && s.lock_label().eq_ignore_ascii_case(raw))
+            .cloned()
+            .collect();
+        if by_label.len() == 1 {
+            return Ok(by_label.into_iter().next().expect("len 1"));
+        }
+        let by_name: Vec<_> = st
+            .staff
+            .iter()
+            .filter(|s| s.active && s.name.trim().eq_ignore_ascii_case(raw))
+            .cloned()
+            .collect();
+        if by_name.len() == 1 {
+            return Ok(by_name.into_iter().next().expect("len 1"));
+        }
+        if by_name.len() > 1 {
+            return Err(format!(
+                "Several people named \"{raw}\" — pick from the list or use their username"
+            ));
+        }
+        let lower = raw.to_lowercase();
+        let by_sub: Vec<_> = st
+            .staff
+            .iter()
+            .filter(|s| {
+                s.active
+                    && (s.lock_label().to_lowercase().contains(&lower)
+                        || s.name.to_lowercase().contains(&lower)
+                        || (!s.login_id.is_empty()
+                            && s.login_id.to_lowercase().contains(&lower)))
+            })
+            .cloned()
+            .collect();
+        if by_sub.len() == 1 {
+            return Ok(by_sub.into_iter().next().expect("len 1"));
+        }
+        if by_sub.len() > 1 {
+            return Err(format!(
+                "Several matches for \"{raw}\" — pick from the list or type their username"
+            ));
+        }
+        Err(format!("No staff matching \"{raw}\""))
+    }
+
 fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         cx.set_key_focus(Area::Empty);
         // Latch dismissed — `hide_text_ime` clears that latch and let the next
@@ -1609,15 +1690,26 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         if self.pointer_rail_resize(cx, event) {
             return true;
         }
-        let navigated = match event {
+        // Side buttons always consume the event (browser-style). Debounce
+        // first so Linux XF86Back/Forward twins do not step twice.
+        match event {
             Event::MouseDown(e) if e.button.is_back() => {
                 *mouse_swipe_origin().lock().unwrap() = None;
-                self.navigate_back(cx)
+                if nav_gesture_ok() {
+                    let _ = self.navigate_back(cx);
+                }
+                return true;
             }
             Event::MouseDown(e) if e.button.is_forward() => {
                 *mouse_swipe_origin().lock().unwrap() = None;
-                self.navigate_forward(cx)
+                if nav_gesture_ok() {
+                    let _ = self.navigate_forward(cx);
+                }
+                return true;
             }
+            _ => {}
+        }
+        let navigated = match event {
             Event::MouseDown(e) if e.button.is_primary() => {
                 // While the rail is showing, left edge is the rail — don't
                 // arm swipe-back there. Right-edge forward still works.

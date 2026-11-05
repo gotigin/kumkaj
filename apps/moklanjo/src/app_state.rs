@@ -15,7 +15,10 @@ struct AppState {
     lock_as_owner: bool,
     /// Selected non-owner staff id when unlocking as Staff.
     lock_staff_id: Option<String>,
-    /// Permission preset when owner adds staff (Team screen).
+    /// Hire card only: Job chips / Add staff (never edit selection).
+    hire_staff_role: StaffRole,
+    hire_features: StaffFeatures,
+    /// Edit draft for the selected person (`team_staff_id`) — screens/rights/Save.
     draft_staff_role: StaffRole,
     draft_features: StaffFeatures,
     /// Staff id selected on Team for feature edits.

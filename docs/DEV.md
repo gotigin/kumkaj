@@ -1008,9 +1008,13 @@ Makepad visual traps found this way (do not reintroduce):
       into the main till clears the visit stack (same as finishing onboard)
       so the books are a root. Onboard is only entered by the unlock /
       first-PIN path when setup is still incomplete — not by browsing back.
-    **Do not** let a focused text field swallow mouse Back on desktop — that
-    made Lock (PIN focused) look broken (2026-11). Android may still use the
-    first Back to dismiss the soft keyboard outside auth/setup. System ▾ hide
+    **Do not** let a focused text field swallow mouse Back / Forward on
+    desktop — blur then continue the visit step (Lock PIN was the first
+    report; Settings / Order / Day book fields had the same swallow). Side
+    mouse buttons always consume the event and share the XF86Back debounce
+    so Linux does not step twice. Web also `preventDefault`s auxclick on
+    buttons 3/4 so the browser does not leave the app. Android may still use
+    the first Back to dismiss the soft keyboard outside auth/setup. System ▾ hide
     latches IME dismissed without clearing key focus (bug **6d**) — never
     unfocus inside DidHide on Android (that broke touch-scroll); retap after
     dismiss must still call `request_ime_show`. See bug **6e** before any
@@ -1022,9 +1026,21 @@ Makepad visual traps found this way (do not reintroduce):
     picking-server overlay, Khaynjo line-action / move / split / pick-table)
     dismiss on Back **before** leaving the screen — never skip to Day book;
     page `ScrollYView` press-drag works with mouse and touch
-    (`scroll_bar_y.mouse_capture_overload: true` on both apps). Nested
+    (`scroll_bar_y.mouse_capture_overload: true` on both apps).     Nested expand-to-content
     PortalLists stay touch-fling only so the page owns mouse drag over
-    expand-to-content carts. Horizontal tab strips (`ScrollXView`) mouse
+    carts. **Capped** SuggestList / StationCheckList / LanguageList /
+    CurrencyList / ServerList / PairedList / DishPickList /
+    CategoryPickList (Khaynjo) set `mouse_drag_scrolling: true` so laptop
+    press-drag still scrolls when there is no wheel (Makepad
+    `drag_scroll_touch_only` + opt-in). Khaynjo **ProductList** (menu modal
+    Fill grid — no page ScrollY behind it) also opts in. On commit the list
+    `promote_finger_capture_over` so the page `ScrollYView`
+    (`mouse_capture_overload`) cannot steal the gesture
+    (`portal_list_mouse_drag_promote`) — without that, Settings printer
+    assign and similar capped checklists only moved the page. Both apps’
+    page `ScrollYView` / `ScrollXView` (and Moklanjo `booking_desk_hscroll`)
+    set `axis_lock: true`. Open dropdown faces use
+    `Done · {label}` (`pick_done_dd`) — no second Done under the list. Horizontal tab strips (`ScrollXView`) mouse
     press-drag on whitespace around chips (nav drag-to-swap on a chip is
     not stolen); desk panes set `scroll_bar_x.mouse_capture_overload: true`
     (Makepad patch `drag_scroll_touch_only`).
@@ -1135,10 +1151,13 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 
 - **Owner** — hosts this local business; unlock with the Owner PIN chosen at first start
 - **Staff** — pick a non-owner person (Previous / Next), then their PIN. Who /
-  Team / suggests use one shape for everyone: `Name (role) · login id` or
+  Team / suggests use one shape for everyone: `Name (role) · username` or
   `Name (role) · #` + short staff id (`StaffMember::lock_label`) — Owner is not
-  a special parenthesis-only format
-- Optional login id + password (Team can set once; only the user can change password later)
+  a special parenthesis-only format. Display **name** may repeat; **username**
+  (`login_id`) is unique among active staff when set. Team type-or-pick writes
+  `lock_label` (never bare name alone) and resolves by id → username → label →
+  unique name — never first-substring among duplicates.
+- Optional username + password (Team can set once; only the user can change password later)
 - **Client:** PIN is checked on the Server (`POST /login`). Sync never carries PIN /
   password hashes — a paired Client must not fall through to local hash check
   (that always looked like a wrong staff PIN). Offline unlock uses the PIN
@@ -1178,13 +1197,18 @@ chrome peer — never “nav only.”
 | Inventory / Branches | Person caps only — **not** `!is_client` | `nav_tab_permitted` |
 | Firewall / pairing / extra tills / autostart | Server **host** + Owner | `is_shop && is_owner` chrome |
 | Click handlers | Still refuse in the books layer; UI hide is not enough | `go_peer_if_allowed` / `check_right` / `books_op` |
-| Kitchen station on Order / Send KOT | Person’s `kot_stations` (None = all); store resolves menu kitchen when the line has none | Team checklist + `allows_kot_station` in `send_kot` / `send_kot_filtered` |
-| KOT print again | Person’s `kot_stations` for each line’s kitchen — **not** `Right::Reprint` | `reprint_selected_kots` |
-| Print bill again | `Right::Reprint` — **bills** only | Team rights row |
+| Kitchen station on Order / Send KOT / counter pay | Person’s `kot_stations` (None = all); store resolves menu kitchen when the line has none | Team checklist + `allows_kot_station` in `send_kot` / `send_kot_filtered` / `write_sale_unit` |
+| Kitchen screen view / advance | Anyone with the Kitchen screen — **not** filtered by `kot_stations` (stations gate send/fire/reprint/pay only) | `KitchenList` / `advance_kot` |
+| KOT print again | Person’s `kot_stations` for each line’s kitchen — **not** `Right::Reprint`; Server loads dishes from stored `kot_id` | `reprint_selected_kots` / `kot_reprint_payload` |
+| Print bill (first) | Signed-in person may print once | Order / Floor print when not yet printed |
+| Print bill again | `Right::Reprint` — **bills** only, when already printed | Team rights row |
+| Team hire/edit store | Same as chrome: `can_manage_team` (Owner or Team chip) — not Owner-only | `add_staff_with_features` / `set_staff_features` / … |
 
 **Team edit UX (do not regress — Khaynjo and Moklanjo):** Hire (job + optional
-copy + Add) is one card. Screens, money rights, (Khaynjo) kitchen-station
-checkboxes, rename, copy-onto, remove, and Save live only inside
+copy + Add + hire-only optional login) is one card; hire Job chips use
+`hire_staff_role` / `hire_features` (not the edit draft). Screens, money
+rights, (Khaynjo) kitchen-station checkboxes, rename, selected-person login
+(“Apply login to {name}”), copy-onto, remove, and Save live only inside
 `team_selected_setup`, visible after the owner picks who to edit
 (`team_staff_id`). After Add, select the **hired** person’s id (never “last
 non-owner”). Never show those controls with no selection, never fall back Save

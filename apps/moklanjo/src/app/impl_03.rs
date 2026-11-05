@@ -259,7 +259,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             let st = app_state().lock().unwrap();
             (
                 st.money_lane,
-                st.draft_staff_role,
+                st.hire_staff_role,
                 st.buy_on_account,
                 st.language_follow_platform,
                 st.onboard_step,
@@ -941,6 +941,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(staff_pin_input), rtl);
         self.align_input(cx, ids!(staff_login_input), rtl);
         self.align_input(cx, ids!(staff_password_input), rtl);
+        self.align_input(cx, ids!(staff_edit_login_input), rtl);
+        self.align_input(cx, ids!(staff_edit_password_input), rtl);
         self.align_input(cx, ids!(my_pin_input), rtl);
         self.align_input(cx, ids!(my_password_input), rtl);
         self.align_input(cx, ids!(duress_pin_input), rtl);

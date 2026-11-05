@@ -29,7 +29,10 @@ struct AppState {
     lock_as_owner: bool,
     /// Selected non-owner staff id when unlocking as Staff.
     lock_staff_id: Option<String>,
-    /// Permission preset when owner adds staff (Team screen).
+    /// Hire card only: Job chips / Add staff / hire-copy (never edit selection).
+    hire_staff_role: StaffRole,
+    hire_features: StaffFeatures,
+    /// Edit draft for the selected person (`team_staff_id`) — screens/rights/Save.
     draft_staff_role: StaffRole,
     draft_features: StaffFeatures,
     /// Staff id selected on Team for feature edits.
@@ -158,6 +161,8 @@ struct AppState {
     order_sections_open: Vec<String>,
     /// Settings → Bill & KOT: draft kitchen-slip options (preview before Save).
     kot_slip_draft: print_share::KotSlipFormat,
+    /// Index into `kot_slip_draft.field_order` for the Phase-2 order designer.
+    kot_field_edit_idx: usize,
     /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

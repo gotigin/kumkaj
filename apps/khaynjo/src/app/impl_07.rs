@@ -1463,8 +1463,8 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
 
     /// Order desk: put `station_text` on every unsent cart dish for this
     /// ticket (cart-local — works on an extra till). Does not rewrite the
-    /// menu. Unknown station names: create on the shop device only; on a
-    /// client, pick an existing kitchen. Held lines are left alone.
+    /// menu. Unknown station names are created via books (Server or Client
+    /// LAN). Held lines are left alone.
     fn apply_kot_station_to_unassigned(
         &mut self,
         cx: &mut Cx,
@@ -1484,16 +1484,21 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 .map(|s| (s.id.clone(), s.name.clone()));
             if let Some(pair) = existing {
                 pair
-            } else if st.device_role == DeviceRole::Client {
-                return Err(
-                    "Unknown kitchen — pick one that exists, or add stations on the shop device"
-                        .into(),
-                );
             } else {
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                let s = store.add_station(wanted)?;
-                st.stations = store.list_stations().unwrap_or_default();
-                (s.id, s.name)
+                let name = wanted.to_string();
+                let msg = st.books_op(BooksOp::AddStation {
+                    name: name.clone(),
+                })?;
+                match st
+                    .stations
+                    .iter()
+                    .find(|s| s.name.eq_ignore_ascii_case(&name))
+                    .map(|s| (s.id.clone(), s.name.clone()))
+                {
+                    Some(pair) => pair,
+                    // Client: create is on the shop; list refreshes after Sync.
+                    None => return Ok(msg),
+                }
             }
         };
         if let Some(session) = st.session.as_ref() {

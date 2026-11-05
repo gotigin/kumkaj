@@ -106,7 +106,8 @@ fn nav_display_order(order: &[NavTab], hidden: &[NavTab]) -> Vec<NavTab> {
         .collect()
 }
 
-/// What the signed-in person (and this device role) may open in the chrome.
+/// What the signed-in **person** may open in the chrome (job/screens/rights —
+/// not DeviceRole). Client vs Server only changes how writes reach the books.
 #[derive(Clone, Copy, Debug, Default)]
 struct NavCaps {
     sell: bool,
@@ -185,7 +186,8 @@ fn session_may_settle(session: Option<&StaffMember>) -> bool {
     }
 }
 
-/// Print bill / reprint — Reprint right not Denied.
+/// Print the bill **again** — Reprint right not Denied.
+/// First print does not use this; see [`session_may_print_bill`].
 fn session_may_reprint(session: Option<&StaffMember>) -> bool {
     match session {
         Some(s) => !matches!(
@@ -193,6 +195,17 @@ fn session_may_reprint(session: Option<&StaffMember>) -> bool {
             domain::RightLevel::Denied
         ),
         None => false,
+    }
+}
+
+/// Print bill on Order / Floor: first print allowed without Reprint;
+/// printing again requires Reprint not Denied. Store still checks PIN when
+/// WithApproval on a reprint (`print_running_bill`).
+fn session_may_print_bill(session: Option<&StaffMember>, already_printed: bool) -> bool {
+    if already_printed {
+        session_may_reprint(session)
+    } else {
+        session.is_some()
     }
 }
 

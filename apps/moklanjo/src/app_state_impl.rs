@@ -14,6 +14,8 @@ impl AppState {
             session: None,
             lock_as_owner: true,
             lock_staff_id: None,
+            hire_staff_role: StaffRole::Cashier,
+            hire_features: StaffFeatures::for_role(StaffRole::Cashier),
             draft_staff_role: StaffRole::Cashier,
             draft_features: StaffFeatures::for_role(StaffRole::Cashier),
             team_staff_id: None,
@@ -242,12 +244,21 @@ impl AppState {
     }
 
     /// Overlay live `staff` features/rights onto `session` (same person id).
+    /// Missing or inactive → clear session and lock (do not keep stale rights).
     fn refresh_session_from_staff_roster(&mut self) {
         let Some(session) = self.session.as_ref() else {
             return;
         };
         let id = session.id.clone();
-        let Some(fresh) = self.staff.iter().find(|s| s.id == id).cloned() else {
+        let fresh = self
+            .staff
+            .iter()
+            .find(|s| s.id == id && s.active)
+            .cloned();
+        let Some(fresh) = fresh else {
+            self.session = None;
+            self.pin_buffer.clear();
+            self.screen = Screen::Lock;
             return;
         };
         if let Some(session) = self.session.as_mut() {
@@ -1118,7 +1129,18 @@ impl AppState {
             SuggestField::TeamPick => self
                 .staff
                 .iter()
-                .map(|m| SuggestRow::new(m.name.clone(), m.lock_label()))
+                .filter(|m| m.active)
+                .map(|m| {
+                    // Value must be unique — bare display names can collide and
+                    // rank() would drop duplicates, then pick the wrong person.
+                    let login = m.login_id.trim();
+                    let sub = if login.is_empty() {
+                        m.name.clone()
+                    } else {
+                        format!("{} · {login}", m.name)
+                    };
+                    SuggestRow::new(m.lock_label(), sub)
+                })
                 .collect(),
             SuggestField::Country => fiscal::COUNTRY_PROFILES
                 .iter()

@@ -3,8 +3,8 @@
 //! extra tills, pairing code, forget device, restore) are not in this enum.
 
 use crate::domain::{
-    self, ModifierGroup, ModifierOption, Money, MoneyMoveKind, PayMethod, Product, ScheduleWindow,
-    StaffFeatures, StaffMember, StaffRole,
+    self, AttachmentEntity, ModifierGroup, ModifierOption, Money, MoneyMoveKind, PayMethod,
+    Product, ScheduleWindow, StaffFeatures, StaffMember, StaffRole,
 };
 use crate::fiscal::TaxPricing;
 use crate::print_share::KotSlipFormat;
@@ -306,6 +306,31 @@ pub enum BooksOp {
         guest_name: String,
         table_name: String,
     },
+    AddWaitlist {
+        name: String,
+        party_size: i64,
+        quoted_mins: i64,
+    },
+    AddAttachmentNote {
+        entity: AttachmentEntity,
+        entity_id: String,
+        label: String,
+        body: String,
+    },
+    AddAttachmentImage {
+        entity: AttachmentEntity,
+        entity_id: String,
+        label: String,
+        filename: String,
+        bytes: Vec<u8>,
+    },
+    AddAttachmentFile {
+        entity: AttachmentEntity,
+        entity_id: String,
+        label: String,
+        filename: String,
+        bytes: Vec<u8>,
+    },
     PostMoney {
         kind: String,
         amount_paise: i64,
@@ -422,6 +447,10 @@ impl BooksOp {
             Self::RemoveStation { .. } => "Remove kitchen stations",
             Self::AddReservation { .. } => "Book tables",
             Self::SetReservationStatus { .. } => "Change bookings",
+            Self::AddWaitlist { .. } => "Waitlist",
+            Self::AddAttachmentNote { .. } => "Add note",
+            Self::AddAttachmentImage { .. } => "Attach photo",
+            Self::AddAttachmentFile { .. } => "Attach file",
             Self::PostMoney { .. } => "Post bank / cashbook",
             Self::SetMovementCleared { .. } => "Reconcile bank movements",
             Self::AddBranch { .. } => "Add branches",
@@ -513,6 +542,10 @@ impl BooksOp {
             Self::RemoveStation { .. } => "Kitchen station removed".into(),
             Self::AddReservation { .. } => "Table booked".into(),
             Self::SetReservationStatus { status, .. } => format!("Booking {status}"),
+            Self::AddWaitlist { name, .. } => format!("Waitlist: {}", name.trim()),
+            Self::AddAttachmentNote { .. } => "Note added".into(),
+            Self::AddAttachmentImage { .. } => "Photo attached (stored as WebP)".into(),
+            Self::AddAttachmentFile { .. } => "File attached".into(),
             Self::PostMoney { .. } => "Bank movement posted".into(),
             Self::SetMovementCleared { cleared: true, .. } => "Marked cleared".into(),
             Self::SetMovementCleared { .. } => "Unmarked".into(),
@@ -890,6 +923,13 @@ impl Store {
                 ))
             }
             BooksOp::ImportCsv { parties, bytes, .. } => {
+                if parties {
+                    if !actor.is_owner() && !actor.can_access_credit() {
+                        return Err("Not allowed to import parties".into());
+                    }
+                } else if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                    return Err("Not allowed to import menu CSV".into());
+                }
                 let text = String::from_utf8(bytes)
                     .map_err(|_| "CSV must be UTF-8 text".to_string())?;
                 let (added, skipped, problems) = if parties {
@@ -900,16 +940,25 @@ impl Store {
                 Ok(csv_summary(added, skipped, &problems))
             }
             BooksOp::ImportAggregator => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to import aggregator orders".into());
+                }
                 let n = self.import_aggregator_orders_drop_file()?;
                 Ok(format!("Imported {n} aggregator order(s) into the inbox"))
             }
             BooksOp::ImportCategoryImage { category_id, filename, bytes } => {
+                if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                    return Err("Not allowed to manage items".into());
+                }
                 let file = write_upload(&filename, &bytes)?;
                 let key = self.import_category_image(&category_id, file.path())?;
                 self.set_category_image(&category_id, &key)?;
                 Ok("Category photo saved".into())
             }
             BooksOp::BulkPrice { category_id, percent, set_paise } => {
+                if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                    return Err("Not allowed to manage items".into());
+                }
                 let n = self.bulk_price_category(&category_id, percent, set_paise, actor)?;
                 Ok(format!("Updated {n} item(s)"))
             }
@@ -1078,11 +1127,17 @@ impl Store {
                 Ok("Kitchen order saved".into())
             }
             BooksOp::UpsertScheme { scheme } => {
+                if !actor.is_owner() && !actor.can_access_settings() && !actor.can_access_sales() {
+                    return Err("Not allowed to manage schemes".into());
+                }
                 let name = scheme.name.clone();
                 self.upsert_scheme(&scheme)?;
                 Ok(format!("Added scheme: {name}"))
             }
             BooksOp::EnsureFloorArea { name } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage tables".into());
+                }
                 self.ensure_floor_area(&name)?;
                 Ok(format!("Area {name} added"))
             }
@@ -1122,6 +1177,9 @@ impl Store {
                 ))
             }
             BooksOp::RemoveStation { id } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage kitchen stations".into());
+                }
                 let name = self.remove_station(&id)?;
                 Ok(format!("Station {name} removed"))
             }
@@ -1140,6 +1198,48 @@ impl Store {
                 } else {
                     format!("Booking for {guest_name} cancelled")
                 })
+            }
+            BooksOp::AddWaitlist {
+                name,
+                party_size,
+                quoted_mins,
+            } => {
+                if !actor.is_owner() && !actor.can_access_floor() {
+                    return Err("Not allowed to manage the waitlist".into());
+                }
+                let entry = self.add_waitlist(&name, party_size, quoted_mins, actor)?;
+                Ok(format!("Waitlist: {}", entry.name))
+            }
+            BooksOp::AddAttachmentNote {
+                entity,
+                entity_id,
+                label,
+                body,
+            } => {
+                self.add_attachment_note(entity, &entity_id, &label, &body, actor)?;
+                Ok("Note added".into())
+            }
+            BooksOp::AddAttachmentImage {
+                entity,
+                entity_id,
+                label,
+                filename,
+                bytes,
+            } => {
+                let file = write_upload(&filename, &bytes)?;
+                self.add_attachment_image(entity, &entity_id, file.path(), &label, actor)?;
+                Ok("Photo attached (stored as WebP)".into())
+            }
+            BooksOp::AddAttachmentFile {
+                entity,
+                entity_id,
+                label,
+                filename,
+                bytes,
+            } => {
+                let file = write_upload(&filename, &bytes)?;
+                self.add_attachment_file(entity, &entity_id, file.path(), &label, actor)?;
+                Ok("File attached".into())
             }
             BooksOp::PostMoney { kind, amount_paise, note } => {
                 let kind = MoneyMoveKind::parse(&kind).ok_or_else(|| "Unknown bank movement".to_string())?;
@@ -1201,10 +1301,16 @@ impl Store {
                 Ok(format!("Tax picker {}", if enabled { "on" } else { "off" }))
             }
             BooksOp::AddUnit { code, name } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage units".into());
+                }
                 self.add_unit(&code, &name)?;
                 Ok(format!("Unit {code} added"))
             }
             BooksOp::AddUnitConversion { from_code, to_code, factor_milli } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage units".into());
+                }
                 self.add_unit_conversion(&from_code, &to_code, factor_milli)?;
                 Ok(match self.resolve_unit(&from_code) {
                     Some((family, factor)) => {

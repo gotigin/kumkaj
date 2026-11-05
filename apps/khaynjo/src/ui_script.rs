@@ -3313,12 +3313,15 @@ script_mod! {
     mod.widgets.ProductListBase = #(ProductList::register_widget(vm))
     // The menu window's dish grid: fills the window under the search and
     // category tabs and scrolls inside it; only rows on screen draw.
+    // Self-scrolling Fill viewport (no page ScrollY behind it): opt into
+    // mouse press-drag so laptops without a wheel can still scroll dishes.
     mod.widgets.ProductList = set_type_default() do mod.widgets.ProductListBase{
         width: Fill height: Fit
         list := PortalList{
             width: Fill height: Fill
             spacing: 12
             drag_scrolling: true
+            mouse_drag_scrolling: true
             bounce_at_start: false
             bounce_at_end: false
             capture_overload: true
@@ -3668,9 +3671,11 @@ script_mod! {
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
+            drag_scrolling: true
+            mouse_drag_scrolling: true
             bounce_at_start: false
             bounce_at_end: false
-            scroll_bar: ScrollBar{bar_size: 0.}
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 10.}
@@ -3687,10 +3692,13 @@ script_mod! {
     mod.widgets.PairedList = set_type_default() do mod.widgets.PairedListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
+        // Capped (~300px) — mouse press-drag when there is no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 10
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{top: 2. bottom: 8.}
@@ -3743,10 +3751,13 @@ script_mod! {
     mod.widgets.ServerList = set_type_default() do mod.widgets.ServerListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
+        // Capped (~3 rows / 360px) — mouse press-drag when there is no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 10
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{top: 2. bottom: 8.}
@@ -3819,10 +3830,13 @@ script_mod! {
     mod.widgets.CurrencyListBase = #(CurrencyList::register_widget(vm))
     mod.widgets.CurrencyList = set_type_default() do mod.widgets.CurrencyListBase{
         width: Fill height: Fit
+        // Fixed 280px viewport — mouse press-drag when there is no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{bottom: 10.}
@@ -3988,10 +4002,14 @@ script_mod! {
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
+        // Capped viewport (not expand-to-content): mouse press-drag scrolls
+        // the list when there is no wheel (page still owns full-height lists).
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 texture_caching: false
@@ -4096,11 +4114,13 @@ script_mod! {
     mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
     mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
         width: Fill height: Fit
-        // Same PortalList pattern as SuggestList — stable; no ReorderList.
+        // Capped checklist (printers / Kitchen / Team stations): touch fling +
+        // mouse press-drag (wheel still chains to page at the edges).
         list := PortalList{
             width: Fill height: Fill
             spacing: 6
-            drag_scrolling: false
+            drag_scrolling: true
+            mouse_drag_scrolling: true
             bounce_at_start: false
             bounce_at_end: false
             capture_overload: true
@@ -4360,10 +4380,13 @@ script_mod! {
     mod.widgets.CategoryPickList = set_type_default() do mod.widgets.CategoryPickListBase{
         width: Fill height: Fit
         margin: Inset{top: 8. bottom: 4.}
+        // Capped viewport (DISH_PICK_MAX_HEIGHT) — mouse press-drag when no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 12
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 texture_caching: false
@@ -4376,10 +4399,13 @@ script_mod! {
     mod.widgets.DishPickList = set_type_default() do mod.widgets.DishPickListBase{
         width: Fill height: Fit
         margin: Inset{top: 8. bottom: 4.}
+        // Capped viewport (DISH_PICK_MAX_HEIGHT) — mouse press-drag when no wheel.
         list := PortalList{
             width: Fill height: Fill
             spacing: 12
-            scroll_bar: ScrollBar{}
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
                 texture_caching: false
@@ -5309,7 +5335,7 @@ script_mod! {
                                             tip: "Optional: unlock with login id and password instead of PIN."
                                         }
                                     }
-                                    lock_login_id := FieldInput{empty_text: "Login id"}
+                                    lock_login_id := FieldInput{empty_text: "Username"}
                                     lock_login_password := FieldInput{
                                         empty_text: "Password"
                                         is_password: true
@@ -7755,25 +7781,23 @@ script_mod! {
                                 }
                                 staff_copy_hire_suggest := mod.widgets.SuggestList{field: "team_copy_hire"}
                                 staff_copy_hire_btn := RowSecondaryBtn{text: "Use this person's setup"}
-                                staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
-                                }
-                                FormCard{
+                                // Hire-only optional login — used by Add staff, not Apply.
                                 h_optional_login_help := WrapLabel{
                                     body: ""
                                     font_color: #x6B4A3F
                                     font_size: 12.
                                     visible: false
                                 }
-                                staff_login_input := FieldInput{empty_text: "Login id (optional)"}
+                                staff_login_input := FieldInput{empty_text: "Username (unique, optional)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
-                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
+                                staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 }
                                 FormCard{
                                 // Edit / remove the selected person (not hire).
                                 // Pick first — Rename, Copy-onto, Features, Rights,
                                 // kitchen stations, Remove all use that selection.
                                 // Names may repeat; the label shows name + role.
-                                team_pick_input := FieldInput{empty_text: "Staff name to edit"}
+                                team_pick_input := FieldInput{empty_text: "Staff to edit — name, username, or pick"}
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_pick_hint := WrapLabel{
                                     body: "Pick who to edit — screens, money rights, and kitchen stations appear for that person only."
@@ -7793,6 +7817,9 @@ script_mod! {
                                 }
                                 staff_edit_name_input := FieldInput{empty_text: "Display name"}
                                 staff_rename_btn := RowSecondaryBtn{text: "Save name"}
+                                staff_edit_login_input := FieldInput{empty_text: "Username (unique, optional)"}
+                                staff_edit_password_input := FieldInput{empty_text: "Starting password (optional)"}
+                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 staff_copy_edit_input := FieldInput{
                                     empty_text: "Copy setup from another person"
                                 }
@@ -8323,11 +8350,22 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         empty_text: ""
                                     }
                                     printer_assign_suggest := mod.widgets.StationCheckList{field: "printer_assign"}
-                                    // Checklist stays open for multi-check — Done closes it.
-                                    printer_assign_done := StackSecondaryBtn{
-                                        text: "Done"
-                                        flow: Down
-                                        visible: false
+                                    h_printer_route_mode := WrapLabel{
+                                        body: "If several printers on this place"
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_mode_first := SegBtn{text: "First that works"}
+                                            printer_mode_first_on := SegBtnOn{text: "First that works" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            printer_mode_all := SegBtn{text: "All listed"}
+                                            printer_mode_all_on := SegBtnOn{text: "All listed" visible: false}
+                                        }
                                     }
                                     route_place_btns := View{width: Fill height: Fit visible: false
                                         route_place_slot_0 := View{width: Fit height: Fit flow: Overlay
@@ -8503,6 +8541,41 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     width: Fill height: Fit
                                     flow: Right spacing: 0
                                     align: Align{x: 0.0 y: 0.5}
+                                    h_std_print := WrapLabel{
+                                                    width: Fit
+                                                    body: "Bill print size" font_color: #x260B08 font_size: 20.}
+                                    std_print_help := InfoHelp{
+                                        tip: "Type size for Standard Portrait and Landscape bill jobs on OS / document printers (thermal KOT size is below). Same size on both orientations."
+                                    }
+                                }
+                                h_std_size := WrapLabel{
+                                    body: "Type size"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        std_size_s := SegBtn{text: "Small"}
+                                        std_size_s_on := SegBtnOn{text: "Small" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        std_size_m := SegBtn{text: "Normal"}
+                                        std_size_m_on := SegBtnOn{text: "Normal" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        std_size_l := SegBtn{text: "Large"}
+                                        std_size_l_on := SegBtnOn{text: "Large" visible: false}
+                                    }
+                                }
+                                std_print_save := StackPrimaryBtn{text: "Save bill print size"}
+                                }
+                                FormCard{
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 0
+                                    align: Align{x: 0.0 y: 0.5}
                                     h_kot_format := WrapLabel{
                                                     width: Fit
                                                     body: "KOT format" font_color: #x260B08 font_size: 20.}
@@ -8586,6 +8659,55 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                         kot_no_off := SegBtn{text: "Hide KOT No"}
                                         kot_no_off_on := SegBtnOn{text: "Hide KOT No" visible: false}
                                     }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_area_on := SegBtn{text: "Area"}
+                                        kot_area_on_on := SegBtnOn{text: "Area" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_area_off := SegBtn{text: "Hide area"}
+                                        kot_area_off_on := SegBtnOn{text: "Hide area" visible: false}
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_item_hdr_on := SegBtn{text: "Item · Qty"}
+                                        kot_item_hdr_on_on := SegBtnOn{text: "Item · Qty" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_item_hdr_off := SegBtn{text: "Hide columns"}
+                                        kot_item_hdr_off_on := SegBtnOn{text: "Hide columns" visible: false}
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_title_on := SegBtn{text: "Title line"}
+                                        kot_title_on_on := SegBtnOn{text: "Title line" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_title_off := SegBtn{text: "Hide title"}
+                                        kot_title_off_on := SegBtnOn{text: "Hide title" visible: false}
+                                    }
+                                }
+                                h_kot_field_order := WrapLabel{
+                                    body: "Field order (designer)"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                kot_field_order_label := mod.widgets.ReportText{}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    kot_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
+                                    kot_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
+                                    kot_field_cycle := StackLightBtn{text: "Next field" flow: Down}
                                 }
                                 h_kot_width := WrapLabel{
                                     body: "Paper width"

@@ -1642,14 +1642,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                         }
                     }
                 }
+                let open = st.suggest_open == Some(SuggestField::KotStation);
                 let label = if names.is_empty() {
                     st.t("kot_station_dd")
                 } else {
                     st.t("kot_station_dd_n")
                         .replace("{stations}", &names.join(", "))
                 };
+                let face = if open {
+                    st.t("pick_done_dd").replace("{label}", &label)
+                } else {
+                    label
+                };
                 drop(st);
-                self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &label);
+                self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &face);
             }
             // Station applies on checkbox tap. No second "Use this station" button.
             self.ui
@@ -2214,12 +2220,18 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.sync_order_sections(cx);
             {
                 let st = app_state().lock().unwrap();
-                let may_reprint = session_may_reprint(st.session.as_ref());
+                let bill_printed = st
+                    .selected_table_id
+                    .as_ref()
+                    .and_then(|tid| st.tables.iter().find(|t| &t.id == tid))
+                    .is_some_and(|t| t.floor_state == domain::FloorState::BillPrinted);
+                let may_print_bill =
+                    session_may_print_bill(st.session.as_ref(), bill_printed);
                 let may_settle = session_may_settle(st.session.as_ref());
                 let splitting = table_open && st.split_mode && may_settle;
                 self.ui
                     .button(cx, ids!(print_bill_btn))
-                    .set_visible(cx, table_open && may_reprint);
+                    .set_visible(cx, table_open && may_print_bill);
                 // Split / bill actions are counter work — hide when Settle Denied.
                 self.ui
                     .button(cx, ids!(table_split_btn))
@@ -2497,6 +2509,11 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 } else {
                     locale::t(&lang, "save_features_named").replace("{name}", who)
                 };
+                let login_lbl = if who.is_empty() {
+                    locale::t(&lang, "set_login_selected")
+                } else {
+                    locale::t(&lang, "set_login_named").replace("{name}", who)
+                };
                 self.ui
                     .button(cx, ids!(staff_copy_edit_btn))
                     .set_text(cx, &copy_lbl);
@@ -2504,13 +2521,30 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     .button(cx, ids!(staff_deactivate))
                     .set_text(cx, &remove_lbl);
                 self.ui.button(cx, ids!(feat_save)).set_text(cx, &save_lbl);
-                // Keep the station checklist open while this person is selected.
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .open_suggest(SuggestField::TeamKotStations, "");
+                // Named Apply; hidden with team_selected_setup when no selection.
+                self.ui
+                    .button(cx, ids!(staff_set_login))
+                    .set_text(cx, &login_lbl);
+                self.ui
+                    .button(cx, ids!(staff_set_login))
+                    .set_visible(cx, !who.is_empty());
+                // Station checklist only on Team — open_suggest closes every
+                // other dropdown (Menu dish/category, Order kitchen, …).
+                if screen == Screen::Team {
+                    app_state()
+                        .lock()
+                        .unwrap()
+                        .open_suggest(SuggestField::TeamKotStations, "");
+                }
             } else if manage_team {
-                // Leaving the person clears the always-open station list.
+                // No selection (or left Team): drop the always-open station list.
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                    st.suggest_open = None;
+                }
+            }
+            // Leaving Team must not leave TeamKotStations owning suggest_open.
+            if screen != Screen::Team {
                 let mut st = app_state().lock().unwrap();
                 if st.suggest_open == Some(SuggestField::TeamKotStations) {
                     st.suggest_open = None;

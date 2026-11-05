@@ -1,0 +1,28 @@
+--- a/widgets/src/portal_list.rs
++++ b/widgets/src/portal_list.rs
+@@ -3149,6 +3149,14 @@
+                             // there's no ambiguity.
+                             committed: !on_interactive,
+                         };
++                        // Parent ScrollYView also co-captures (mouse_capture_overload).
++                        // Own the gesture as soon as we commit so the page cannot
++                        // steal press-drag from capped lists (StationCheckList, …).
++                        // Parent may still co-capture later on this same FingerDown;
++                        // FingerMove promote below drops it before axis_lock (8px).
++                        if !on_interactive {
++                            let _ = cx.promote_finger_capture_over(self.area);
++                        }
+                     }
+                 }
+                 Hit::FingerMove(e) => {
+@@ -3186,6 +3194,10 @@
+                                 if (new_abs - *initial_abs).abs() >= self.drag_scroll_threshold {
+                                     *committed = true;
+                                     self.suppress_child_events = true;
++                                    // Threshold (5px) is before page axis_lock (8px):
++                                    // drop the page's co-capture so Settings/Order
++                                    // ScrollYView does not steal laptop press-drag.
++                                    let _ = cx.promote_finger_capture_over(self.area);
+                                 } else {
+                                     // Still under threshold — track samples but don't scroll.
+                                     push_sample(samples, new_abs, e.time);

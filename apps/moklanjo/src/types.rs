@@ -390,7 +390,8 @@ fn nav_display_order(order: &[NavTab], hidden: &[NavTab]) -> Vec<NavTab> {
         .collect()
 }
 
-/// What the signed-in person (and this device role) may open in the chrome.
+/// What the signed-in **person** may open in the chrome (job/screens/rights —
+/// not DeviceRole). Client vs Server only changes how writes reach the books.
 #[derive(Clone, Copy, Debug, Default)]
 struct NavCaps {
     sell: bool,

@@ -8179,8 +8179,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<String, String> {
         self.assert_server_writer("Add staff")?;
-        if !actor.role.can_admin() {
-            return Err("Only owner can add staff".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         if hire.role.is_owner() {
             return Err("Cannot create another Owner account".into());
@@ -8207,6 +8207,7 @@ impl Store {
             hash_pin(hire.password.trim())?
         };
         let login_id = hire.login_id.trim().to_string();
+        self.assert_login_id_free(&login_id, None)?;
         let id = new_id();
         self.conn
             .execute(
@@ -8232,6 +8233,33 @@ impl Store {
         Ok(id)
     }
 
+    /// Username (`login_id`) is the unique human handle. Display `name` may
+    /// repeat. Empty username is allowed (PIN-only). Case-insensitive.
+    pub fn assert_login_id_free(
+        &self,
+        login_id: &str,
+        except_staff_id: Option<&str>,
+    ) -> Result<(), String> {
+        let login_id = login_id.trim();
+        if login_id.is_empty() {
+            return Ok(());
+        }
+        for member in self.list_staff()? {
+            if !member.active {
+                continue;
+            }
+            if except_staff_id.is_some_and(|id| id == member.id) {
+                continue;
+            }
+            if !member.login_id.is_empty() && member.login_id.eq_ignore_ascii_case(login_id) {
+                return Err(format!(
+                    "Username \"{login_id}\" is already used — pick another"
+                ));
+            }
+        }
+        Ok(())
+    }
+
     pub fn set_staff_features(
         &self,
         staff_id: &str,
@@ -8239,8 +8267,8 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Change staff permissions")?;
-        if !actor.role.can_admin() {
-            return Err("Only Owner can change staff features".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         let n = self
             .conn
@@ -8271,11 +8299,12 @@ impl Store {
         }
         let login_id = login_id.trim();
         if login_id.is_empty() {
-            return Err("Login id required".into());
+            return Err("Username required".into());
         }
         if password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
         }
+        self.assert_login_id_free(login_id, Some(staff_id))?;
         // If actor is not the staff member, only allow when password_hash is empty (initial set).
         if actor.id != staff_id {
             let existing: String = self
@@ -8331,7 +8360,7 @@ impl Store {
             return Ok(None);
         }
         for member in self.list_staff()? {
-            if member.login_id == login_id
+            if member.login_id.eq_ignore_ascii_case(login_id)
                 && !member.password_hash.is_empty()
                 && verify_pin(password, &member.password_hash)?
             {
@@ -8373,8 +8402,8 @@ impl Store {
 
     pub fn deactivate_staff(&self, staff_id: &str, actor: &StaffMember) -> Result<(), String> {
         self.assert_server_writer("Remove staff")?;
-        if !actor.role.can_admin() {
-            return Err("Only Owner can deactivate staff".into());
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
         }
         if staff_id == actor.id {
             return Err("Cannot deactivate yourself".into());
