@@ -1691,10 +1691,11 @@ impl Store {
             out.push_str(&format!("{line}\n"));
         }
         out.push_str(&format!("Table: {}\n", self.table_label(&order.table_id)?));
-        out.push_str(&format!(
-            "Date: {}\n",
-            Local::now().format("%Y-%m-%d %H:%M")
-        ));
+        let when = self
+            .fiscal_settings()
+            .map(|f| f.format_now())
+            .unwrap_or_else(|_| Local::now().format("%d/%m/%Y %H:%M").to_string());
+        out.push_str(&format!("Date: {when}\n"));
         // Blank line after the rule so the first dish never shares a line
         // with the header on narrow thermal printers.
         out.push_str("--------------------------------\n\n");

@@ -379,7 +379,7 @@ fn watcher(transport: &dyn Transport) {
                 sh.applied_rev = patch.rev.clone();
                 sh.applied_seq = patch.seq;
                 sh.synced = true;
-                sh.state.updated_at = when_text(&now);
+                sh.state.updated_at = when_text(&store, &now);
                 sh.state.live = true;
                 sh.state.online = Some(true);
                 if let Some(hook) = sh.notify {
@@ -495,13 +495,25 @@ fn refind_server(store: &Store, transport: &dyn Transport) -> bool {
     }
 }
 
-/// "14:05" today, "24 Oct 14:05" before.
-fn when_text(at: &chrono::DateTime<chrono::Local>) -> String {
-    if at.date_naive() == chrono::Local::now().date_naive() {
-        at.format("%H:%M").to_string()
-    } else {
-        at.format("%d %b %H:%M").to_string()
-    }
+/// Owner-facing clock for LAN chrome (uses shop date/time appearance).
+fn when_text(store: &Store, at: &chrono::DateTime<chrono::Local>) -> String {
+    let stamp = at.to_rfc3339();
+    store
+        .fiscal_settings()
+        .map(|f| {
+            if at.date_naive() == chrono::Local::now().date_naive() {
+                f.format_time(&stamp)
+            } else {
+                f.format_datetime(&stamp)
+            }
+        })
+        .unwrap_or_else(|_| {
+            if at.date_naive() == chrono::Local::now().date_naive() {
+                at.format("%H:%M").to_string()
+            } else {
+                at.format("%d/%m/%Y %H:%M").to_string()
+            }
+        })
 }
 
 /// One round: waiting writes in order, then "now" writes, then the books.
@@ -519,7 +531,7 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
         && let Ok(at) = chrono::DateTime::parse_from_rfc3339(&at)
     {
         // A restart while offline: say how old the books on this device are.
-        state.updated_at = when_text(&at.with_timezone(&chrono::Local));
+        state.updated_at = when_text(store, &at.with_timezone(&chrono::Local));
     }
 
     // 1. Waiting writes, oldest first. One that cannot go stops the rest:
@@ -641,7 +653,7 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                     let now = chrono::Local::now();
                     let _ = store.note_lan_synced(&now);
                     let _ = store.set_device_last_seen(&now.to_rfc3339());
-                    state.updated_at = when_text(&now);
+                    state.updated_at = when_text(store, &now);
                     if let Some(snap) = fresh
                         && net::apply_snapshot(store, &snap).is_ok()
                     {

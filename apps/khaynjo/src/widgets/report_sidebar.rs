@@ -115,12 +115,15 @@ fn report_head(text: &str) -> ReportRow {
     ReportRow::Head(text.trim_end().trim_end_matches([':', '：']).trim_end().to_string())
 }
 
-/// "2026-10-26T12:21:47+05:30" → "26 Oct 12:21" (as Backup shows times);
-/// anything else as written, minus seconds.
+/// RFC3339 → owner-facing date/time via fiscal helpers; fallback strips seconds.
+#[allow(dead_code)]
 fn short_when(at: &str) -> String {
-    chrono::DateTime::parse_from_rfc3339(at)
-        .map(|t| t.format("%d %b %H:%M").to_string())
-        .unwrap_or_else(|_| at.get(..16).unwrap_or(at).replace('T', " "))
+    let shown = crate::fiscal::format_datetime(at, "dmy", "24h");
+    if shown.is_empty() {
+        at.get(..16).unwrap_or(at).replace('T', " ")
+    } else {
+        shown
+    }
 }
 
 /// A report row's text, right-aligned in right-to-left languages.

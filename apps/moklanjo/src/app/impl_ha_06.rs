@@ -716,10 +716,13 @@ impl App {
                         .unwrap_or_else(|| "No printer".into());
                     (st.data_base.clone(), st.t("test_page_sent"), own, desc)
                 };
+                let when = {
+                    let st = app_state().lock().unwrap();
+                    st.fiscal.format_now()
+                };
                 let page = format!(
                     "{app} - test page\n{own}{target_desc}\n{when}\n\nIf you can read this, printing works here.\n",
                     app = store::APP_LABEL,
-                    when = chrono::Local::now().format("%d %b %Y %H:%M"),
                 );
                 match print_share::print_text(print_share::PrintKind::Receipt, &page, dir.as_deref()) {
                     Ok(_) => self.set_status(cx, msg),

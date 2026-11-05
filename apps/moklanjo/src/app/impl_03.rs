@@ -282,6 +282,48 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(tax_exclusive_btn_on),
             !tax_inclusive,
         );
+        let (date_order, time_format, example) = {
+            let st = app_state().lock().unwrap();
+            (
+                fiscal::normalize_date_order(&st.fiscal.date_order),
+                fiscal::normalize_time_format(&st.fiscal.time_format),
+                st.t("datetime_example")
+                    .replace("{ex}", &st.fiscal.format_now()),
+            )
+        };
+        self.paint_choice_pair(
+            cx,
+            ids!(date_order_dmy),
+            ids!(date_order_dmy_on),
+            date_order == "dmy",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(date_order_mdy),
+            ids!(date_order_mdy_on),
+            date_order == "mdy",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(date_order_ymd),
+            ids!(date_order_ymd_on),
+            date_order == "ymd",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(time_format_24h),
+            ids!(time_format_24h_on),
+            time_format == "24h",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(time_format_12h),
+            ids!(time_format_12h_on),
+            time_format == "12h",
+        );
+        self.ui
+            .widget(cx, ids!(datetime_example_label))
+            .set_text(cx, &plain_display_text(&example));
         self.paint_choice_pair(
             cx,
             ids!(reports_today),

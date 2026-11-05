@@ -58,6 +58,41 @@ impl App {
                 self.sync_chrome(cx);
             }
         }
+        for ((chip, chip_on), date_order, time_format) in [
+            ((ids!(date_order_dmy), ids!(date_order_dmy_on)), "dmy", None),
+            ((ids!(date_order_mdy), ids!(date_order_mdy_on)), "mdy", None),
+            ((ids!(date_order_ymd), ids!(date_order_ymd_on)), "ymd", None),
+            ((ids!(time_format_24h), ids!(time_format_24h_on)), "", Some("24h")),
+            ((ids!(time_format_12h), ids!(time_format_12h_on)), "", Some("12h")),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let date = if date_order.is_empty() {
+                        st.fiscal.date_order.clone()
+                    } else {
+                        date_order.to_string()
+                    };
+                    let time = time_format
+                        .map(str::to_string)
+                        .unwrap_or_else(|| st.fiscal.time_format.clone());
+                    let msg = st.books_op(BooksOp::SetDateTimeAppearance {
+                        date_order: date.clone(),
+                        time_format: time.clone(),
+                    })?;
+                    if st.device_role == DeviceRole::Client {
+                        st.fiscal.date_order = fiscal::normalize_date_order(&date).to_string();
+                        st.fiscal.time_format = fiscal::normalize_time_format(&time).to_string();
+                    }
+                    Ok(msg)
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
         if self.ui.button(cx, ids!(fiscal_save)).clicked(actions) {
             let id_text = self.ui.text_input(cx, ids!(business_tax_id_input)).text();
             let service_text = self.ui.text_input(cx, ids!(service_bps_input)).text();

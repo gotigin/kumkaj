@@ -243,6 +243,11 @@ pub enum BooksOp {
         business_tax_id: String,
         service_bps: i64,
     },
+    /// Date order (`dmy`/`mdy`/`ymd`) + clock (`24h`/`12h`) — appearance only.
+    SetDateTimeAppearance {
+        date_order: String,
+        time_format: String,
+    },
     SetBillFormat {
         header: String,
         fssai: String,
@@ -463,6 +468,7 @@ impl BooksOp {
             Self::SetTaxPricing { .. } => "Change tax pricing",
             Self::SetZeroSales { .. } => "Change zero-value sales",
             Self::SetFiscal { .. } => "Set the business id",
+            Self::SetDateTimeAppearance { .. } => "Change date and time appearance",
             Self::SetBillFormat { .. }
             | Self::ImportPrintStamp { .. }
             | Self::ImportPaymentQr { .. }
@@ -563,6 +569,7 @@ impl BooksOp {
             Self::SetZeroSales { allow: true } => "Zero-value sales on".into(),
             Self::SetZeroSales { .. } => "Zero-value sales off".into(),
             Self::SetFiscal { .. } => "Business id saved".into(),
+            Self::SetDateTimeAppearance { .. } => "Date and time appearance saved".into(),
             Self::SetBillFormat { .. } => "Bill format saved".into(),
             Self::ImportPrintStamp { .. } => "Stamp saved for bill faces".into(),
             Self::ImportPaymentQr { .. } => "Payment QR saved for bill faces".into(),
@@ -1143,6 +1150,19 @@ impl Store {
                 self.set_business_tax_id(&business_tax_id)?;
                 self.set_service_charge_bps(service_bps)?;
                 Ok("Business id saved".into())
+            }
+            BooksOp::SetDateTimeAppearance {
+                date_order,
+                time_format,
+            } => {
+                if !actor.is_owner() && !actor.can_access_settings() && !actor.role.is_admin() {
+                    return Err("Not allowed to change date and time appearance".into());
+                }
+                let settings = self.set_datetime_appearance(&date_order, &time_format)?;
+                Ok(format!(
+                    "Date and time appearance saved — example {ex}",
+                    ex = settings.format_now()
+                ))
             }
             BooksOp::SetBillFormat { header, fssai, footer, upi_vpa, upi_payee } => {
                 // Header / FSSAI / footer: Settings. UPI VPA / payee: Owner-only.

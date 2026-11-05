@@ -5862,6 +5862,56 @@ script_mod! {
                                     }
                                     fiscal_save := StackPrimaryBtn{text: "Save business id"}
                                     }
+                                    FormCard{
+                                    h_datetime_appearance := WrapLabel{
+                                        width: Fill
+                                        body: "Date & time appearance"
+                                        font_color: #x0B1220
+                                        font_size: 15.
+                                    }
+                                    datetime_appearance_help := WrapLabel{
+                                        width: Fill
+                                        body: "Books keep year-first RFC3339 inside. These only change how dates and clocks look on receipts, labels, reports, and the screen."
+                                        font_color: #x3A4554
+                                        font_size: 12.
+                                    }
+                                    datetime_example_label := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 13.
+                                    }
+                                    h_date_order := WrapLabel{body: "Date order" font_color: #x0B1220 font_size: 13.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            date_order_dmy := SegBtn{text: "D/M/Y"}
+                                            date_order_dmy_on := SegBtnOn{text: "D/M/Y" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            date_order_mdy := SegBtn{text: "M/D/Y"}
+                                            date_order_mdy_on := SegBtnOn{text: "M/D/Y" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            date_order_ymd := SegBtn{text: "Y-M-D"}
+                                            date_order_ymd_on := SegBtnOn{text: "Y-M-D" visible: false}
+                                        }
+                                    }
+                                    h_time_format := WrapLabel{body: "Clock" font_color: #x0B1220 font_size: 13.}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            time_format_24h := SegBtn{text: "24-hour"}
+                                            time_format_24h_on := SegBtnOn{text: "24-hour" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            time_format_12h := SegBtn{text: "12-hour"}
+                                            time_format_12h_on := SegBtnOn{text: "12-hour" visible: false}
+                                        }
+                                    }
+                                    }
                                 }
                                 settings_panel_brand := View{
                                     width: Fill height: Fit

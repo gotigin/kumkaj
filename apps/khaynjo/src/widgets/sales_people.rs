@@ -354,9 +354,15 @@ struct PairedList {
 
 impl Widget for PairedList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (devices, forget, seen, now_on) = {
+        let (devices, forget, seen, now_on, fiscal) = {
             let st = app_state().lock().unwrap();
-            (st.lan_devices.clone(), st.t("forget_device"), st.t("last_seen"), st.t("connected_now"))
+            (
+                st.lan_devices.clone(),
+                st.t("forget_device"),
+                st.t("last_seen"),
+                st.t("connected_now"),
+                st.fiscal.clone(),
+            )
         };
         let row = *locale_row_height().lock().unwrap();
         let n = devices.len();
@@ -381,7 +387,11 @@ impl Widget for PairedList {
                         chrono::Local::now().signed_duration_since(t)
                             < chrono::Duration::seconds(3 * store::LAN_SEEN_EVERY_SECS)
                     });
-                    let when = seen_at.map(|t| t.format("%d %b %H:%M").to_string()).unwrap_or_default();
+                    let when = if seen_at.is_some() {
+                        fiscal.format_datetime(&device.last_seen_at)
+                    } else {
+                        String::new()
+                    };
                     let line = if recent {
                         format!("{} · {now_on}", device.name)
                     } else {

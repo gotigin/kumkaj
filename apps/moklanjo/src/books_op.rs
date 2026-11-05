@@ -187,6 +187,11 @@ pub enum BooksOp {
         business_tax_id: String,
         service_bps: i64,
     },
+    /// Date order (`dmy`/`mdy`/`ymd`) + clock (`24h`/`12h`) — appearance only.
+    SetDateTimeAppearance {
+        date_order: String,
+        time_format: String,
+    },
     ImportReceiptStamp {
         filename: String,
         bytes: Vec<u8>,
@@ -343,6 +348,7 @@ impl BooksOp {
             Self::ApplyCountry { .. } => "Change the country pack",
             Self::SetTaxPricing { .. } => "Change tax pricing",
             Self::SetFiscal { .. } => "Set the business id",
+            Self::SetDateTimeAppearance { .. } => "Change date and time appearance",
             Self::ImportReceiptStamp { .. } | Self::ClearReceiptStamp => "Change the receipt stamp",
             Self::ImportPaymentQr { .. } | Self::ClearPaymentQr => "Change the payment QR",
             Self::AdvanceTracking { status, .. } if status == "delivered" => "Mark delivered",
@@ -423,6 +429,7 @@ impl BooksOp {
             Self::ApplyCountry { .. } => "Country pack applied".into(),
             Self::SetTaxPricing { .. } => "Tax pricing saved".into(),
             Self::SetFiscal { .. } => "Business id saved".into(),
+            Self::SetDateTimeAppearance { .. } => "Date and time appearance saved".into(),
             Self::ImportReceiptStamp { .. } => "Receipt stamp saved".into(),
             Self::ImportPaymentQr { .. } => "Payment QR saved".into(),
             Self::ClearReceiptStamp => "Stamp cleared".into(),
@@ -1105,6 +1112,19 @@ impl Store {
                 } else {
                     id_status
                 })
+            }
+            BooksOp::SetDateTimeAppearance {
+                date_order,
+                time_format,
+            } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change date and time appearance".into());
+                }
+                let settings = self.set_datetime_appearance(&date_order, &time_format)?;
+                Ok(format!(
+                    "Date and time appearance saved — example {ex}",
+                    ex = settings.format_now()
+                ))
             }
             BooksOp::ImportReceiptStamp { filename, bytes } => {
                 // Stamp: Settings. Payment QR is Owner-only (below).

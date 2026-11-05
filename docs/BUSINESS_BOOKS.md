@@ -136,6 +136,19 @@ Every money / stock books entry keeps **three** clocks — not one overloaded `c
 
 `created_at` remains on the row and mirrors `user_at` so existing day filters keep working. Applies to sales, credit/payable ledgers, purchases, expenses, money movements, and stock movements.
 
+**Internal vs appearance.** Every stored stamp is **year-first RFC3339**
+(e.g. `2026-11-05T22:47:00+05:30`) so day filters, retention, and sync stay
+stable. What people *see* on bills, KOT/receipts, reports, and chrome is
+configured separately in Settings → Country & tax:
+
+| Setting | Choices | Notes |
+|---------|---------|-------|
+| **Date order** | D/M/Y · M/D/Y · Y-M-D | Country pack seeds the default; owner may change |
+| **Clock** | 24-hour · 12-hour AM/PM | Shop preference; survives a country-pack change |
+
+Helpers: `FiscalSettings::format_date` / `format_time` / `format_datetime` /
+`format_now`. Never rewrite stored timestamps to match appearance.
+
 ### Bill-type wording (not “white/black books”)
 
 One sales table + a tag:

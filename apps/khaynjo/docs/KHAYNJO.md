@@ -47,7 +47,9 @@ the root docs and are **not restated here** (edit them there, once):
 - One Server (sole writer) with paired LAN Clients — vision §20;
   books concepts in [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md).
 - The service day is the owner's; `user_at` drives the day book —
-  `BUSINESS_BOOKS.md` § Triple timestamps.
+  `BUSINESS_BOOKS.md` § Triple timestamps. Stamps stay year-first
+  RFC3339 inside; Settings → Country & tax sets date order + 12h/24h
+  appearance for bills, KOT, and chrome.
 - Money as it actually moved (Actual / Applied / Rounded, split
   tenders, party credit as a core book) — vision §18,
   `BUSINESS_BOOKS.md` § Ground-truth settlement.

@@ -1357,6 +1357,26 @@ reversed charge would strand stock that strict enforcement then made unsellable.
 
 `COUNTRY_PROFILES` holds one `CountryProfile` per country: tax system and name, pricing mode (**`{tax} inclusive`** / **`{tax} exclusive`** — e.g. GST inclusive when the total already includes GST — `TaxPricing::InsidePrice` / `AddedAtTill`; meta still stores `inclusive` / `exclusive`), seed rates, optional receipt split (India CGST/SGST), instant-pay label, business-id label, credit wording, date order, and the number style (`decimal_sep`, `thousands_sep`). `XX` is the neutral custom pack and is the only one that leaves currency/language alone. Always pair inclusive/exclusive with the tax name (GST / VAT / …).
 
+### Date / time appearance (not storage)
+
+Books **store** every stamp as year-first **RFC3339**
+(`2026-11-05T22:47:00+05:30`) — day filters, retention, LAN sync, and
+triple timestamps (`user_at` / `device_at` / `server_at`) never depend on
+how the shop likes clocks to look. See [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)
+§ Triple timestamps.
+
+**Appearance** is owner-facing only, on Settings → Country & tax:
+
+| Meta key | Values | Notes |
+|----------|--------|-------|
+| `date_order` | `dmy` · `mdy` · `ymd` | Country pack seeds it; owner may change |
+| `time_format` | `24h` · `12h` | Shop preference; **survives** `apply_country_pack` |
+
+`FiscalSettings::{format_date, format_time, format_datetime, format_now}`
+are the only formatters for bills, KOT/receipts, reports, backup labels,
+LAN “last seen”, and print test pages. `BooksOp::SetDateTimeAppearance`
+persists both keys. Never rewrite stored timestamps to match appearance.
+
 ### Number style
 
 `decimal_sep` and `thousands_sep` ride on the profile and are persisted as the `meta` keys of the same name. `thousands_sep` is read verbatim rather than trimmed, because a space (France, Sweden, South Africa) and an empty string (no grouping) are both real choices; `decimal_sep` falls back to `.` when blank.

@@ -1840,11 +1840,7 @@ impl Store {
         out.push_str("Bill: ");
         out.push_str(&sale.bill_no());
         out.push('\n');
-        out.push_str(&fiscal_settings.format_date(&sale.created_at));
-        if let Some(clock) = sale.created_at.get(11..19) {
-            out.push(' ');
-            out.push_str(clock);
-        }
+        out.push_str(&fiscal_settings.format_datetime(&sale.created_at));
         out.push('\n');
         if let Some(cid) = sale.customer_id.as_deref().filter(|s| !s.is_empty()) {
             if let Some(party) = self.get_customer(cid)? {
@@ -3156,7 +3152,10 @@ impl Store {
             crate::print_share::RouteKey::Kot { .. } => crate::print_share::PrintKind::Kot,
         };
         let shop = self.venue_title().unwrap_or_default();
-        let when = chrono::Local::now().format("%d %b %Y %H:%M").to_string();
+        let when = self
+            .fiscal_settings()
+            .map(|f| f.format_now())
+            .unwrap_or_else(|_| chrono::Local::now().format("%d/%m/%Y %H:%M").to_string());
         let cfg = crate::print_share::printers();
         let targets = cfg.targets_for(key);
         if targets.is_empty() {
@@ -3230,7 +3229,10 @@ impl Store {
                 },
             )
             .map_err(|e| e.to_string())?;
-        let when = created_at.get(..16).unwrap_or(&created_at).replace('T', " ");
+        let when = self
+            .fiscal_settings()
+            .map(|f| f.format_datetime(&created_at))
+            .unwrap_or_else(|_| created_at.get(..16).unwrap_or(&created_at).replace('T', " "));
         let (table_label, area_label) = if table_id.is_empty() {
             (String::new(), String::new())
         } else {
@@ -4964,7 +4966,17 @@ impl Store {
             business_id_label: or_pack("business_id_label", profile.business_id_label)?,
             digital_pay_label: or_pack("digital_pay_label", profile.digital_pay_label)?,
             credit_label: or_pack("credit_label", profile.credit_label)?,
-            date_order: or_pack("date_order", profile.date_order)?,
+            date_order: fiscal::normalize_date_order(&or_pack(
+                "date_order",
+                profile.date_order,
+            )?)
+            .to_string(),
+            time_format: fiscal::normalize_time_format(
+                &self
+                    .meta_get("time_format")?
+                    .unwrap_or_else(|| "24h".into()),
+            )
+            .to_string(),
             decimal_sep: or_pack("decimal_sep", profile.decimal_sep)?,
             // A space and an empty string are both real grouping choices, so
             // this one is read verbatim and only falls back when unset.
@@ -4992,7 +5004,14 @@ impl Store {
         self.meta_set("business_id_label", settings.business_id_label.trim())?;
         self.meta_set("digital_pay_label", settings.digital_pay_label.trim())?;
         self.meta_set("credit_label", settings.credit_label.trim())?;
-        self.meta_set("date_order", settings.date_order.trim())?;
+        self.meta_set(
+            "date_order",
+            fiscal::normalize_date_order(settings.date_order.trim()),
+        )?;
+        self.meta_set(
+            "time_format",
+            fiscal::normalize_time_format(settings.time_format.trim()),
+        )?;
         self.meta_set("decimal_sep", settings.decimal_sep())?;
         self.meta_set("thousands_sep", settings.thousands_sep())?;
         self.meta_set(
@@ -5000,6 +5019,20 @@ impl Store {
             &settings.service_charge_bps.clamp(0, 10_000).to_string(),
         )?;
         Ok(())
+    }
+
+    /// Owner-facing date/time appearance (Settings). Internal stamps stay RFC3339.
+    pub fn set_datetime_appearance(
+        &self,
+        date_order: &str,
+        time_format: &str,
+    ) -> Result<FiscalSettings, String> {
+        self.assert_server_writer("Change date and time appearance")?;
+        let mut settings = self.fiscal_settings()?;
+        settings.date_order = fiscal::normalize_date_order(date_order).to_string();
+        settings.time_format = fiscal::normalize_time_format(time_format).to_string();
+        self.set_fiscal_settings(&settings)?;
+        Ok(settings)
     }
 
     /// Switch this shop to another country pack.
@@ -5017,10 +5050,13 @@ impl Store {
         let profile = fiscal::country_by_code(code)
             .ok_or_else(|| format!("Unknown country code \"{}\"", code.trim()))?;
         let business_tax_id = self.meta_get("business_tax_id")?.unwrap_or_default();
+        let previous = self.fiscal_settings()?;
         let mut settings = FiscalSettings::from_profile(profile, business_tax_id);
         // A service charge is the house's own rule, so it survives a country
-        // switch the way the business id does.
-        settings.service_charge_bps = self.fiscal_settings()?.service_charge_bps;
+        // switch the way the business id does. Clock appearance (12h/24h) is
+        // also a shop preference — date order follows the new country pack.
+        settings.service_charge_bps = previous.service_charge_bps;
+        settings.time_format = previous.time_format;
         self.set_fiscal_settings(&settings)?;
         if !profile.default_currency.is_empty() {
             let mut locale = self.locale_settings()?;

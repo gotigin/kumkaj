@@ -1242,7 +1242,10 @@ pub fn reprint_selected_kots(
         ordered.append(&mut groups);
         groups = ordered;
     }
-    let now = chrono::Local::now().format("%Y-%m-%d %H:%M").to_string();
+    let now = store
+        .fiscal_settings()
+        .map(|f| f.format_now())
+        .unwrap_or_else(|_| chrono::Local::now().format("%d/%m/%Y %H:%M").to_string());
     let shop = store.venue_title().unwrap_or_default();
     let fmt = store.kot_slip_format().unwrap_or_default();
     let copies = fmt.copies.max(1);

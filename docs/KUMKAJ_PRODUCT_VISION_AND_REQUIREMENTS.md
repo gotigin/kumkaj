@@ -1064,8 +1064,10 @@ BTW, SST, consumption tax — or a custom label), the pricing mode
 GST exclusive), the usual rates, any receipt split such
 as India's CGST/SGST, the instant-pay rail label (UPI, Pix, PayNow, FPS,
 Interac), the business-id label (GSTIN, VAT number, ABN, EIN, TRN) and the
-date order. India remains the default pack, so seeding the product for its
-first market costs an existing shop nothing.
+date-order default. Clock appearance (24-hour vs 12-hour) is a separate
+shop preference that survives a country change. India remains the default
+pack, so seeding the product for its first market costs an existing shop
+nothing.
 
 Under **inclusive**, the charged total does not grow: tax is
 *extracted* for the receipt (taxable value + tax = same total). Under
@@ -1277,7 +1279,9 @@ should clearly distinguish concepts such as:
 -   synchronization/outbox event;
 -   **triple timestamps** on books entries — user/business time
     (`user_at`), device write time (`device_at`), and cloud accept time
-    (`server_at`, empty until synced).
+    (`server_at`, empty until synced). Stored as year-first RFC3339;
+    bills/receipts/chrome use the shop’s date-order and 12h/24h
+    appearance settings without rewriting storage.
 
 Even the smallest deployment can use a subset of this model. Designing
 branch and organization boundaries properly early prevents multi-branch

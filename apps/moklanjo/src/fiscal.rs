@@ -21,6 +21,7 @@
 //! Tax *name* (GST / VAT / sales tax / custom) is the country pack `tax_label`
 //! and does not change which of the two arithmetic modes applies.
 
+use chrono::Local;
 use serde::{Deserialize, Serialize};
 
 /// How quoted prices relate to tax — not the tax’s legal name.
@@ -1521,8 +1522,27 @@ pub fn split_tax(tax_paise: i64, split: &[(&'static str, i64)]) -> Vec<(&'static
     out
 }
 
-/// Reorder the `YYYY-MM-DD` head of a timestamp for the seller's country.
-/// Anything that is not an ISO date comes back untouched.
+/// Normalize stored date-order meta (`dmy` / `mdy` / `ymd`).
+pub fn normalize_date_order(raw: &str) -> &'static str {
+    match raw.trim().to_ascii_lowercase().as_str() {
+        "mdy" => "mdy",
+        "ymd" => "ymd",
+        _ => "dmy",
+    }
+}
+
+/// Normalize stored time-appearance meta (`24h` / `12h`).
+pub fn normalize_time_format(raw: &str) -> &'static str {
+    match raw.trim().to_ascii_lowercase().as_str() {
+        "12h" | "12" | "ampm" | "am_pm" => "12h",
+        _ => "24h",
+    }
+}
+
+/// Reorder the `YYYY-MM-DD` head of an internal RFC3339 (or `YYYY-MM-DD…`)
+/// timestamp for on-screen / print appearance. Internal storage stays
+/// year-first; this only changes what people see. Non-ISO input is returned
+/// untouched.
 pub fn format_date(timestamp: &str, date_order: &str) -> String {
     let head: String = timestamp.chars().take(10).collect();
     let parts: Vec<&str> = head.split('-').collect();
@@ -1530,12 +1550,73 @@ pub fn format_date(timestamp: &str, date_order: &str) -> String {
         return head;
     }
     let (y, m, d) = (parts[0], parts[1], parts[2]);
-    match date_order {
+    match normalize_date_order(date_order) {
         "mdy" => format!("{m}/{d}/{y}"),
         "ymd" => format!("{y}-{m}-{d}"),
         _ => format!("{d}/{m}/{y}"),
     }
 }
+
+/// Clock appearance from an internal RFC3339 (or `…THH:MM[:SS]…`) timestamp.
+/// Default is 24-hour `HH:MM` (no seconds); `12h` uses `h:MM AM/PM`.
+pub fn format_time(timestamp: &str, time_format: &str) -> String {
+    let Some(clock) = timestamp_clock_hm(timestamp) else {
+        return String::new();
+    };
+    let (h, m) = clock;
+    match normalize_time_format(time_format) {
+        "12h" => {
+            let am = h < 12;
+            let h12 = match h {
+                0 => 12,
+                1..=12 => h,
+                _ => h - 12,
+            };
+            format!(
+                "{h12}:{m:02} {ampm}",
+                ampm = if am { "AM" } else { "PM" }
+            )
+        }
+        _ => format!("{h:02}:{m:02}"),
+    }
+}
+
+/// Date + time appearance for bills, KOT, reports, chrome.
+pub fn format_datetime(timestamp: &str, date_order: &str, time_format: &str) -> String {
+    let date = format_date(timestamp, date_order);
+    let time = format_time(timestamp, time_format);
+    if time.is_empty() {
+        date
+    } else if date.is_empty() {
+        time
+    } else {
+        format!("{date} {time}")
+    }
+}
+
+fn timestamp_clock_hm(timestamp: &str) -> Option<(u32, u32)> {
+    // RFC3339: `2026-11-05T22:47:00+05:30` or space-separated variants.
+    let bytes = timestamp.as_bytes();
+    let start = if bytes.len() >= 16 && (bytes[10] == b'T' || bytes[10] == b' ') {
+        11
+    } else if let Some(i) = timestamp.find('T').or_else(|| timestamp.find(' ')) {
+        i + 1
+    } else {
+        return None;
+    };
+    let slice = timestamp.get(start..)?;
+    let hh = slice.get(0..2)?.parse::<u32>().ok()?;
+    if slice.as_bytes().get(2) != Some(&b':') {
+        return None;
+    }
+    let mm = slice.get(3..5)?.parse::<u32>().ok()?;
+    if hh > 23 || mm > 59 {
+        return None;
+    }
+    Some((hh, mm))
+}
+
+
 
 // ———————————————————————————— Persisted settings ————————————————————————————
 
@@ -1552,6 +1633,9 @@ pub struct FiscalSettings {
     pub digital_pay_label: String,
     pub credit_label: String,
     pub date_order: String,
+    /// Appearance only: `24h` or `12h`. Internal stamps stay RFC3339.
+    #[serde(default = "default_time_format")]
+    pub time_format: String,
     /// Older peers sync without these two; they fall back to the plain
     /// `1,234.50` style rather than failing the whole snapshot.
     #[serde(default = "default_decimal_sep")]
@@ -1563,6 +1647,10 @@ pub struct FiscalSettings {
     /// a tax, so it stays 0 until the seller asks for it.
     #[serde(default)]
     pub service_charge_bps: i64,
+}
+
+fn default_time_format() -> String {
+    "24h".to_string()
 }
 
 fn default_decimal_sep() -> String {
@@ -1590,6 +1678,7 @@ impl FiscalSettings {
             digital_pay_label: profile.digital_pay_label.to_string(),
             credit_label: profile.credit_label.to_string(),
             date_order: profile.date_order.to_string(),
+            time_format: default_time_format(),
             decimal_sep: profile.decimal_sep.to_string(),
             thousands_sep: profile.thousands_sep.to_string(),
             service_charge_bps: 0,
@@ -1608,6 +1697,20 @@ impl FiscalSettings {
 
     pub fn format_date(&self, timestamp: &str) -> String {
         format_date(timestamp, &self.date_order)
+    }
+
+    pub fn format_time(&self, timestamp: &str) -> String {
+        format_time(timestamp, &self.time_format)
+    }
+
+    /// Owner-facing date + time from an internal RFC3339 stamp.
+    pub fn format_datetime(&self, timestamp: &str) -> String {
+        format_datetime(timestamp, &self.date_order, &self.time_format)
+    }
+
+    /// Appearance for "now" using this shop's date/time settings.
+    pub fn format_now(&self) -> String {
+        self.format_datetime(&Local::now().to_rfc3339())
     }
 
     /// Never empty — falls back to a neutral "Tax".
@@ -1869,5 +1972,23 @@ mod tests {
         assert_eq!(format_date("2026-09-25T10:00:00+05:30", "mdy"), "09/25/2026");
         assert_eq!(format_date("2026-09-25T10:00:00+05:30", "ymd"), "2026-09-25");
         assert_eq!(format_date("not a date", "dmy"), "not a date");
+    }
+
+    #[test]
+    fn time_and_datetime_appearance() {
+        let ts = "2026-11-05T22:47:00+05:30";
+        assert_eq!(format_time(ts, "24h"), "22:47");
+        assert_eq!(format_time(ts, "12h"), "10:47 PM");
+        assert_eq!(format_time("2026-11-05T00:05:00+05:30", "12h"), "12:05 AM");
+        assert_eq!(format_time("2026-11-05T12:00:00+05:30", "12h"), "12:00 PM");
+        assert_eq!(
+            format_datetime(ts, "dmy", "24h"),
+            "05/11/2026 22:47"
+        );
+        assert_eq!(
+            format_datetime(ts, "dmy", "12h"),
+            "05/11/2026 10:47 PM"
+        );
+        assert!(ts.starts_with("2026-11-05T"));
     }
 }

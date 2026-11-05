@@ -504,9 +504,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 let dir = store.auto_backup_dir().display().to_string();
                 let mut text = match store.last_backup_at().ok().flatten() {
                     Some(at) => {
-                        let when = chrono::DateTime::parse_from_rfc3339(&at)
-                            .map(|t| t.format("%d %b %H:%M").to_string())
-                            .unwrap_or(at);
+                        let when = st.fiscal.format_datetime(&at);
                         st.t("backup_auto")
                             .replace("{when}", &when)
                             .replace("{dir}", &dir)

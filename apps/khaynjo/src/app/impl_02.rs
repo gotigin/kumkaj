@@ -811,9 +811,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 let dir = store.auto_backup_dir().display().to_string();
                 let mut text = match store.last_backup_at().ok().flatten() {
                     Some(at) => {
-                        let when = chrono::DateTime::parse_from_rfc3339(&at)
-                            .map(|t| t.format("%d %b %H:%M").to_string())
-                            .unwrap_or(at);
+                        let when = st.fiscal.format_datetime(&at);
                         st.t("backup_auto").replace("{when}", &when).replace("{dir}", &dir)
                     }
                     None => st.t("backup_auto_none"),
@@ -1122,6 +1120,44 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             let inclusive = st.fiscal.tax_pricing == TaxPricing::InsidePrice;
             self.paint_choice_pair(cx, ids!(tax_inclusive_btn), ids!(tax_inclusive_btn_on), inclusive);
             self.paint_choice_pair(cx, ids!(tax_exclusive_btn), ids!(tax_exclusive_btn_on), !inclusive);
+            let date_order = fiscal::normalize_date_order(&st.fiscal.date_order);
+            let time_format = fiscal::normalize_time_format(&st.fiscal.time_format);
+            self.paint_choice_pair(
+                cx,
+                ids!(date_order_dmy),
+                ids!(date_order_dmy_on),
+                date_order == "dmy",
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(date_order_mdy),
+                ids!(date_order_mdy_on),
+                date_order == "mdy",
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(date_order_ymd),
+                ids!(date_order_ymd_on),
+                date_order == "ymd",
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(time_format_24h),
+                ids!(time_format_24h_on),
+                time_format == "24h",
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(time_format_12h),
+                ids!(time_format_12h_on),
+                time_format == "12h",
+            );
+            let example = st
+                .t("datetime_example")
+                .replace("{ex}", &st.fiscal.format_now());
+            self.ui
+                .widget(cx, ids!(datetime_example_label))
+                .set_text(cx, &plain_display_text(&example));
             // No store → neither face lit (don't invent On like Diagnostics Info).
             let allow_zero = st.store.as_ref().and_then(|s| s.allow_zero_sales().ok());
             self.paint_choice_pair(

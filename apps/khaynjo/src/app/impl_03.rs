@@ -1289,6 +1289,28 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(save_duress_pin)).set_text(cx, &s("save_duress_pin"));
         self.ui.button(cx, ids!(clear_duress_pin)).set_text(cx, &s("clear_duress_pin"));
         self.ui.widget(cx, ids!(h_country_pack_help)).set_text(cx, &plain_display_text(&s("country_pack_help")));
+        self.ui
+            .widget(cx, ids!(h_datetime_appearance))
+            .set_text(cx, &plain_display_text(&s("datetime_appearance")));
+        self.ui
+            .widget(cx, ids!(datetime_appearance_help))
+            .set_text(cx, &plain_display_text(&s("datetime_appearance_help")));
+        self.ui
+            .widget(cx, ids!(h_date_order))
+            .set_text(cx, &plain_display_text(&s("date_order")));
+        self.ui
+            .widget(cx, ids!(h_time_format))
+            .set_text(cx, &plain_display_text(&s("time_format")));
+        self.ui.button(cx, ids!(date_order_dmy)).set_text(cx, &s("date_order_dmy"));
+        self.ui.button(cx, ids!(date_order_dmy_on)).set_text(cx, &s("date_order_dmy"));
+        self.ui.button(cx, ids!(date_order_mdy)).set_text(cx, &s("date_order_mdy"));
+        self.ui.button(cx, ids!(date_order_mdy_on)).set_text(cx, &s("date_order_mdy"));
+        self.ui.button(cx, ids!(date_order_ymd)).set_text(cx, &s("date_order_ymd"));
+        self.ui.button(cx, ids!(date_order_ymd_on)).set_text(cx, &s("date_order_ymd"));
+        self.ui.button(cx, ids!(time_format_24h)).set_text(cx, &s("time_format_24h"));
+        self.ui.button(cx, ids!(time_format_24h_on)).set_text(cx, &s("time_format_24h"));
+        self.ui.button(cx, ids!(time_format_12h)).set_text(cx, &s("time_format_12h"));
+        self.ui.button(cx, ids!(time_format_12h_on)).set_text(cx, &s("time_format_12h"));
         self.ui.widget(cx, ids!(h_language_setup_hint)).set_text(cx, &plain_display_text(&s("language_setup_hint")));
         self.ui.widget(cx, ids!(h_currency_use_help)).set_text(cx, &plain_display_text(&s("currency_use_help")));
         self.ui.widget(cx, ids!(h_product_only_khaynjo)).set_text(cx, &plain_display_text(&s("product_only_khaynjo")));
