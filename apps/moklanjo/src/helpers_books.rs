@@ -141,6 +141,15 @@ fn step_country(from: &str, step: i64, applied: &str) -> &'static fiscal::Countr
     &list[(((at + step) % n + n) % n) as usize]
 }
 
+/// A tap on a card (Ops parcels, menu cards) — not Makepad `was_tap()`.
+/// `was_tap` needs <0.5 s and <5 px, but the page's `axis_lock` waits 8 px
+/// before a scroll starts, so a steady press or a 6 px jitter on a touch
+/// counter opened nothing while looking like a tap (Khaynjo's floor and
+/// menu cards learned this first, 2026-11).
+fn finger_up_is_tap(e: FingerUpEvent) -> bool {
+    e.is_over && !e.has_long_press_occurred && (e.abs_start - e.abs).length() < 24.0
+}
+
 /// Expand-to-content lists: let the page ScrollYView own wheel/trackpad.
 /// Forwarding Scroll into PortalList makes it eat the gesture at the bottom edge
 /// so Tea / pay / anything below never comes into view.

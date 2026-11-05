@@ -1310,6 +1310,57 @@ script_mod! {
             text_style +: {font_size: 12.}
         }
     }
+    // Ops board lane / desk pick button: a roomy Fit pill (touch counters),
+    // outline when idle, navy when it is the lane on screen.
+    let LaneBtn = Button{
+        width: Fit height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        align: Center
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xEEF3F8
+            color_down: #xE0E8F0
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xEEF3F8
+            color_2_down: #xE0E8F0
+            color_2_focus: #xffffff
+            border_color: #x072058
+            border_radius: 20.
+            border_size: 1.5
+        }
+        draw_text +: {
+            color: #x072058
+            color_hover: #x072058
+            color_down: #x072058
+            color_focus: #x072058
+            ink_centered: true
+            max_lines: 1
+            text_style +: {font_size: 14.}
+        }
+    }
+    let LaneBtnOn = LaneBtn{
+        draw_bg +: {
+            color: #x072058
+            color_hover: #x0A3A8C
+            color_down: #x02030B
+            color_focus: #x072058
+            color_2: #x072058
+            color_2_hover: #x0A3A8C
+            color_2_down: #x02030B
+            color_2_focus: #x072058
+            border_color: #x072058
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+        }
+    }
     // Inner row for ChipStrip — Fit-wide so the strip can scroll horizontally.
     let ChipStripRow = View{
         width: Fit height: Fill
@@ -2384,6 +2435,161 @@ script_mod! {
         pick := CardActionBtn{text: "Select" height: 40}
     }
 
+    // A status pill on an Ops card. Colour carries the lane (never emoji):
+    // one pre-coloured pill per status kind, the right one shown.
+    let OpsPill = RoundedView{
+        width: Fit height: Fit
+        visible: false
+        padding: Inset{left: 10. right: 10. top: 3. bottom: 3.}
+        draw_bg.border_radius: 10.
+        draw_bg.border_size: 0.
+    }
+    let OpsPillText = Label{
+        width: Fit
+        text: ""
+        draw_text.text_style.font_size: 12.
+    }
+    // One parcel on the Ops board. The whole card is the tap target
+    // (pick / unpick); plain Labels so the tap is never taken for a text
+    // selection. Picked = filled navy mark + navy edge.
+    let OpsCard = View{
+        width: Fill height: Fit
+        flow: Overlay
+        card := RoundedView{
+            cursor: MouseCursor.Hand
+            width: Fill height: Fit
+            padding: Inset{left: 12. right: 14. top: 12. bottom: 12.}
+            flow: Right spacing: 12
+            align: Align{y: 0.0}
+            draw_bg.color: #xffffff
+            draw_bg.border_radius: 14.
+            draw_bg.border_size: 2.
+            draw_bg.border_color: #xA8B4C4
+            View{
+                width: 28 height: 28
+                flow: Overlay
+                align: Align{x: 0.5 y: 0.5}
+                mark_off := RoundedView{
+                    width: 26 height: 26
+                    draw_bg.color: #xffffff
+                    draw_bg.border_radius: 13.
+                    draw_bg.border_size: 2.
+                    draw_bg.border_color: #x6B7F9A
+                }
+                mark_on := RoundedView{
+                    visible: false
+                    width: 26 height: 26
+                    align: Align{x: 0.5 y: 0.5}
+                    draw_bg.color: #x072058
+                    draw_bg.border_radius: 13.
+                    draw_bg.border_size: 0.
+                    Label{
+                        text: "✓"
+                        draw_text.color: #xffffff
+                        draw_text.text_style.font_size: 14.
+                    }
+                }
+            }
+            View{
+                width: Fill height: Fit
+                flow: Down spacing: 4
+                // AWB and amount on top (both short, never squeezed); the
+                // status pill opens the next line so a phone never clips it.
+                View{
+                    width: Fill height: Fit
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
+                    awb := Label{
+                        width: Fill
+                        text: ""
+                        draw_text.color: #x0B1220
+                        draw_text.text_style.font_size: 15.
+                    }
+                    amount := Label{
+                        width: Fit
+                        text: ""
+                        draw_text.color: #x072058
+                        draw_text.text_style.font_size: 15.
+                    }
+                }
+                View{
+                    width: Fill height: Fit
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
+                    View{
+                        width: Fit height: Fit
+                        flow: Overlay
+                        pill_0 := OpsPill{draw_bg.color: #xDCE6F7 t0 := OpsPillText{draw_text.color: #x0A3A8C}}
+                        pill_1 := OpsPill{draw_bg.color: #xE9E1F7 t1 := OpsPillText{draw_text.color: #x4B2E8F}}
+                        pill_2 := OpsPill{draw_bg.color: #xFCE8C8 t2 := OpsPillText{draw_text.color: #x7A4300}}
+                        pill_3 := OpsPill{draw_bg.color: #xF9D9D6 t3 := OpsPillText{draw_text.color: #x8F1B12}}
+                        pill_4 := OpsPill{draw_bg.color: #xD8EEDD t4 := OpsPillText{draw_text.color: #x1E5A2F}}
+                        pill_5 := OpsPill{draw_bg.color: #xE3E6EA t5 := OpsPillText{draw_text.color: #x3A4554}}
+                    }
+                    line1 := Label{
+                        width: Fill
+                        text: ""
+                        flow: Right{wrap: true}
+                        draw_text.color: #x0B1220
+                        draw_text.text_style.font_size: 14.
+                    }
+                }
+                line2 := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: true}
+                    draw_text.color: #x3A4554
+                    draw_text.text_style.font_size: 12.
+                }
+                line3 := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: true}
+                    draw_text.color: #x3A4554
+                    draw_text.text_style.font_size: 12.
+                }
+            }
+        }
+        edge := RoundedView{
+            visible: false
+            width: Fill height: Fill
+            draw_bg.color: #x00000000
+            draw_bg.border_radius: 14.
+            draw_bg.border_size: 3.
+            draw_bg.border_color: #x072058
+        }
+    }
+    // One carrier bag / rider run, newest first, with Print beside it.
+    let RunRow = RoundedView{
+        width: Fill height: Fit
+        padding: Inset{left: 12. right: 8. top: 8. bottom: 8.}
+        flow: Right spacing: 10
+        align: Align{y: 0.5}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 12.
+        draw_bg.border_size: 1.
+        draw_bg.border_color: #xA8B4C4
+        View{
+            width: Fill height: Fit
+            flow: Down spacing: 2
+            run_main := Label{
+                width: Fill
+                text: ""
+                flow: Right{wrap: true}
+                draw_text.color: #x0B1220
+                draw_text.text_style.font_size: 14.
+            }
+            run_sub := Label{
+                width: Fill
+                text: ""
+                flow: Right{wrap: true}
+                draw_text.color: #x3A4554
+                draw_text.text_style.font_size: 12.
+            }
+        }
+        print := QuietFitBtn{text: "Print"}
+    }
+
     // Khaynjo practise: WrapLabel + widget().set_text(plain_display_text).
     // Optional ThumbAvatar for party logo (initials when none).
     let CustomerRow = RoundedView{
@@ -2723,6 +2929,46 @@ script_mod! {
                 padding: Inset{bottom: 8.}
                 texture_caching: false
                 SaleRow{}
+            }
+        }
+    }
+
+    mod.widgets.OpsBoardListBase = #(OpsBoardList::register_widget(vm))
+    mod.widgets.OpsBoardList = set_type_default() do mod.widgets.OpsBoardListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 8
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                padding: Inset{bottom: 8.}
+                texture_caching: false
+                OpsCard{}
+            }
+        }
+    }
+
+    mod.widgets.RunListBase = #(RunList::register_widget(vm))
+    mod.widgets.RunList = set_type_default() do mod.widgets.RunListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 6
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                padding: Inset{bottom: 6.}
+                texture_caching: false
+                RunRow{}
             }
         }
     }
@@ -6427,187 +6673,294 @@ script_mod! {
                                     reports_balance_sheet := RowSecondaryBtn{text: "Balance sheet"}
                                     reports_balance_sheet_on := RowPrimaryBtn{text: "Balance sheet" visible: false}
                                 }
-                                reports_label := mod.widgets.ReportText{}
-                                // Moklanjo ops desk (Ops / COD / Riders peers). Hidden on bank Reports.
-                                ops_desk := View{
+                                // Ops: the consignment board — lanes in the order the
+                                // day's work happens, parcels as cards, pick (tap or
+                                // scan) then act. Only the moves that fit the lane.
+                                ops_board := View{
                                     width: Fill height: Fit
-                                    flow: Down spacing: 8
+                                    flow: Down spacing: 12
                                     visible: false
-                                    ops_desk_help := InfoHelp{
-                                        tip: "Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128."
-                                    }
-                                    ops_awb_input := FieldInput{empty_text: "AWB / scan barcode"}
-                                    ops_bulk_awb_input := FieldInput{
-                                        empty_text: "Bulk AWBs — paste many (newline or comma) for one status advance"
-                                    }
-                                    ActionStack{
-                                        ops_find_awb := RowPrimaryBtn{text: "Find / Scan AWB"}
-                                        ops_label := RowSecondaryBtn{text: "Print AWB label"}
-                                    }
-                                    ops_awb_card := mod.widgets.ReportText{}
-                                    ops_note_input := FieldInput{empty_text: "Note / POD (optional)"}
-                                    ops_pod_pick := RowSecondaryBtn{text: "Pick POD photo"}
-                                    ops_pod_status := WrapLabel{
-                                        body: "No POD photo selected"
-                                        font_color: #x3A4554
-                                        font_size: 12.
-                                    }
-                                    FormFieldRow{
-                                        ops_rider_input := FieldInput{empty_text: "Rider name"}
-                                        ops_carrier_input := FieldInput{empty_text: "Carrier party"}
-                                    }
-                                    ops_rider_suggest := mod.widgets.SuggestList{field: "ops_rider"}
-                                    ops_carrier_suggest := mod.widgets.SuggestList{field: "ops_carrier"}
-                                    ops_party_input := FieldInput{empty_text: "Consignor / party name"}
-                                    ops_party_suggest := mod.widgets.SuggestList{field: "ops_party"}
-                                    ActionStack{
-                                        ops_advance_ofd := RowPrimaryBtn{text: "Out for delivery"}
-                                        ops_advance_delivered := RowSecondaryBtn{text: "Mark delivered"}
-                                    }
-                                    ActionStack{
-                                        ops_ndr := RowPrimaryBtn{text: "Failed delivery"}
-                                        ops_reattempt := RowSecondaryBtn{text: "Reattempt"}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        align: Align{y: 0.5}
+                                        ops_awb_input := FieldInput{empty_text: "Scan or type AWBs"}
+                                        ops_find_awb := LaneBtnOn{text: "Pick"}
                                     }
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right{wrap: true} spacing: 6
-                                        ops_ndr_door := QuietFitBtn{text: "Door locked"}
-                                        ops_ndr_refused := QuietFitBtn{text: "Refused"}
-                                        ops_ndr_address := QuietFitBtn{text: "Address wrong"}
-                                        ops_ndr_unavailable := QuietFitBtn{text: "Unavailable"}
-                                        ops_ndr_other := QuietFitBtn{text: "Other"}
+                                        flow: Right{wrap: true} spacing: 8
+                                        View{width: Fit height: Fit flow: Overlay
+                                            lane_0 := LaneBtn{text: "To dispatch"}
+                                            lane_0_on := LaneBtnOn{text: "To dispatch" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            lane_1 := LaneBtn{text: "With carrier"}
+                                            lane_1_on := LaneBtnOn{text: "With carrier" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            lane_2 := LaneBtn{text: "Out for delivery"}
+                                            lane_2_on := LaneBtnOn{text: "Out for delivery" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            lane_3 := LaneBtn{text: "Failed"}
+                                            lane_3_on := LaneBtnOn{text: "Failed" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            lane_4 := LaneBtn{text: "Done today"}
+                                            lane_4_on := LaneBtnOn{text: "Done today" visible: false}
+                                        }
                                     }
-                                    ActionStack{
-                                        ops_dispatch_fleet := RowPrimaryBtn{text: "Dispatch booked → rider"}
-                                        ops_handover_carrier := RowSecondaryBtn{text: "Hand booked → carrier"}
+                                    // What to do with the picked parcels: always on
+                                    // screen for the lane (a fixed height, so picking
+                                    // never moves the cards under the finger), only
+                                    // this lane's moves; with nothing picked a tap says
+                                    // to pick first.
+                                    ops_act := FormCard{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 8
+                                            align: Align{y: 0.5}
+                                            ops_picked_label := Label{
+                                                width: Fill
+                                                text: ""
+                                                draw_text.color: #x0B1220
+                                                draw_text.text_style.font_size: 15.
+                                            }
+                                            ops_pick_all := QuietFitBtn{text: "Pick all"}
+                                            ops_pick_clear := QuietFitBtn{text: "Clear"}
+                                        }
+                                        ops_act_dispatch := View{
+                                            width: Fill height: Fit
+                                            flow: Down spacing: 10
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Right spacing: 8
+                                                align: Align{y: 0.5}
+                                                ops_carrier_input := FieldInput{empty_text: "Carrier"}
+                                                ops_handover_carrier := LaneBtnOn{text: "Hand to carrier"}
+                                            }
+                                            ops_carrier_suggest := mod.widgets.SuggestList{field: "ops_carrier"}
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Right spacing: 8
+                                                align: Align{y: 0.5}
+                                                ops_rider_input := FieldInput{empty_text: "Rider"}
+                                                ops_dispatch_fleet := LaneBtnOn{text: "Send with rider"}
+                                            }
+                                            ops_rider_suggest := mod.widgets.SuggestList{field: "ops_rider"}
+                                        }
+                                        ops_act_deliver := View{
+                                            width: Fill height: Fit
+                                            flow: Right{wrap: true} spacing: 8
+                                            align: Align{y: 0.5}
+                                            ops_advance_delivered := LaneBtnOn{text: "Mark delivered"}
+                                            ops_act_carrier := View{
+                                                width: Fit height: Fit
+                                                ops_advance_ofd := LaneBtn{text: "Out for delivery"}
+                                            }
+                                            ops_pod_pick := LaneBtn{text: "Pick POD photo"}
+                                            ops_pod_status := Label{
+                                                width: Fit
+                                                text: ""
+                                                draw_text.color: #x3A4554
+                                                draw_text.text_style.font_size: 12.
+                                            }
+                                        }
+                                        ops_act_failed := View{
+                                            width: Fill height: Fit
+                                            flow: Right{wrap: true} spacing: 8
+                                            ops_reattempt := LaneBtnOn{text: "Out again"}
+                                            ops_return := LaneBtn{text: "Return to sender"}
+                                        }
+                                        ops_act_reasons := View{
+                                            width: Fill height: Fit
+                                            flow: Down spacing: 8
+                                            ops_note_input := FieldInput{empty_text: "Note or reason"}
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Right{wrap: true} spacing: 6
+                                                align: Align{y: 0.5}
+                                                ops_ndr_door := QuietFitBtn{text: "Door locked"}
+                                                ops_ndr_refused := QuietFitBtn{text: "Refused"}
+                                                ops_ndr_address := QuietFitBtn{text: "Address wrong"}
+                                                ops_ndr_unavailable := QuietFitBtn{text: "Unavailable"}
+                                                ops_ndr_other := QuietFitBtn{text: "Other"}
+                                                ops_act_fail := View{
+                                                    width: Fit height: Fit
+                                                    ops_ndr := LaneBtn{text: "Failed delivery"}
+                                                }
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right{wrap: true} spacing: 6
+                                            ops_label := QuietFitBtn{text: "Print AWB label"}
+                                            ops_cod_collect := QuietFitBtn{text: "Collect COD"}
+                                        }
                                     }
-                                    ActionStack{
-                                        ops_print_run_sheet := RowPrimaryBtn{text: "Print run sheet"}
-                                        ops_print_drs := RowSecondaryBtn{text: "Print DRS"}
+                                    ops_lane_empty := WrapLabel{
+                                        body: ""
+                                        font_color: #x3A4554
+                                        font_size: 14.
                                     }
-                                    ActionStack{
-                                        ops_cod_collect := RowPrimaryBtn{text: "Collect COD (AWB)"}
-                                        ops_cod_remit := RowSecondaryBtn{text: "Remit COD (party)"}
+                                    ops_list := mod.widgets.OpsBoardList{}
+                                    ops_history := mod.widgets.ReportText{}
+                                    h_ops_runs := WrapLabel{
+                                        body: "Recent runs & bags"
+                                        font_color: #x0B1220
+                                        font_size: 15.
                                     }
+                                    ops_runs := mod.widgets.RunList{}
+                                }
+                                reports_label := mod.widgets.ReportText{}
+                                // COD: what riders and carriers still owe us, what we
+                                // owe consignors — collect one, pay a consignor out.
+                                cod_desk := FormCard{
+                                    visible: false
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        align: Align{y: 0.5}
+                                        cod_awb_input := FieldInput{empty_text: "Scan or type AWBs"}
+                                        cod_collect := LaneBtnOn{text: "Collect COD"}
+                                    }
+                                    ops_party_input := FieldInput{empty_text: "Consignor"}
+                                    ops_party_suggest := mod.widgets.SuggestList{field: "ops_party"}
                                     ActionStack{
-                                        ops_add_rider := RowPrimaryBtn{text: "Add rider"}
+                                        ops_cod_remit := RowPrimaryBtn{text: "Pay out COD to consignor"}
                                         ops_period_bill := RowSecondaryBtn{text: "Period bill (party)"}
                                     }
-                                    FormFieldRow{
-                                        ops_rider_phone := FieldInput{empty_text: "Rider phone"}
-                                        ops_rider_vehicle := FieldInput{empty_text: "Vehicle"}
-                                    }
-                                    FormFieldRow{
+                                }
+                                // Riders: settle what each rider hands in; add a rider.
+                                riders_desk := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                        settle_rider_input := FieldInput{empty_text: "Rider"}
+                                        settle_rider_suggest := mod.widgets.SuggestList{field: "settle_rider"}
                                         ops_rider_cod_input := FieldInput{empty_text: "COD handed in"}
-                                    }
-                                    ActionStack{
                                         ops_settle_rider_cod := RowPrimaryBtn{text: "Settle rider COD"}
                                     }
+                                    FormCard{
+                                        new_rider_input := FieldInput{empty_text: "New rider's name"}
+                                        FormFieldRow{
+                                            ops_rider_phone := FieldInput{empty_text: "Rider phone"}
+                                            ops_rider_vehicle := FieldInput{empty_text: "Vehicle"}
+                                        }
+                                        ops_add_rider := RowSecondaryBtn{text: "Add rider"}
+                                    }
                                 }
-                                reports_expense_heading := WrapLabel{body: "Log expense" font_color: #x0B1220 font_size: 15.}
-                                expense_amount_input := FieldInput{empty_text: "Amount"}
-                                expense_note_input := FieldInput{empty_text: "Note (fuel, office, …)"}
-                                h_paid_by_2 := Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                exp_t1_row := View{
+                                // Bank / books facet only (one switch, not a list of ids).
+                                reports_books_body := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t1_cash := SegBtn{text: "Cash"}
-                                        exp_t1_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                    flow: Down spacing: 10
+                                    reports_expense_heading := WrapLabel{body: "Log expense" font_color: #x0B1220 font_size: 15.}
+                                    expense_amount_input := FieldInput{empty_text: "Amount"}
+                                    expense_note_input := FieldInput{empty_text: "Note (fuel, office, …)"}
+                                    h_paid_by_2 := Label{text: "Paid by" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    exp_t1_row := View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t1_cash := SegBtn{text: "Cash"}
+                                            exp_t1_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t1_bank := SegBtn{text: "Bank"}
+                                            exp_t1_bank_on := SegBtnOn{text: "Bank" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t1_upi := SegBtn{text: "UPI"}
+                                            exp_t1_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t1_card := SegBtn{text: "Card"}
+                                            exp_t1_card_on := SegBtnOn{text: "Card" visible: false}
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t1_bank := SegBtn{text: "Bank"}
-                                        exp_t1_bank_on := SegBtnOn{text: "Bank" visible: false}
+                                    exp_part2 := FieldInput{empty_text: "Part by a second way (optional)"}
+                                    h_second_way_2 := Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
+                                    exp_t2_row := View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t2_cash := SegBtn{text: "Cash"}
+                                            exp_t2_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t2_bank := SegBtn{text: "Bank"}
+                                            exp_t2_bank_on := SegBtnOn{text: "Bank" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t2_upi := SegBtn{text: "UPI"}
+                                            exp_t2_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            exp_t2_card := SegBtn{text: "Card"}
+                                            exp_t2_card_on := SegBtnOn{text: "Card" visible: false}
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t1_upi := SegBtn{text: "UPI"}
-                                        exp_t1_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                    expense_add := RowPrimaryBtn{text: "Add expense"}
+                                    h_attachments_last_expense := WrapLabel{body: "Attachments (last expense)" font_color: #x0B1220 font_size: 15.}
+                                    expense_attach_note := FieldInput{empty_text: "Extra note on last expense"}
+                                    ActionStack{
+                                        expense_attach_add_note := RowPrimaryBtn{text: "Add note"}
+                                        expense_attach_photo := RowSecondaryBtn{text: "Attach bill photo"}
+                                        expense_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t1_card := SegBtn{text: "Card"}
-                                        exp_t1_card_on := SegBtnOn{text: "Card" visible: false}
+                                    expense_attach_hint := WrapLabel{
+                                        body: "(log an expense first)"
+                                        font_color: #x3A4554
+                                        font_size: 12.
                                     }
-                                }
-                                exp_part2 := FieldInput{empty_text: "Part by a second way (optional)"}
-                                h_second_way_2 := Label{text: "Second way" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                exp_t2_row := View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t2_cash := SegBtn{text: "Cash"}
-                                        exp_t2_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                    expense_attach_list := mod.widgets.ReportText{}
+                                    reports_bank_heading := WrapLabel{body: "Bank / cashbook" font_color: #x0B1220 font_size: 15.}
+                                    bank_amount_input := FieldInput{empty_text: "Amount"}
+                                    bank_note_input := FieldInput{empty_text: "Note (deposit, withdrawal, …)"}
+                                    ActionStack{
+                                        bank_till_to_bank := RowPrimaryBtn{text: "Till → bank"}
+                                        bank_bank_to_till := RowSecondaryBtn{text: "Bank → till"}
+                                        bank_in := RowSecondaryBtn{text: "Bank in"}
+                                        bank_out := RowSecondaryBtn{text: "Bank out"}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t2_bank := SegBtn{text: "Bank"}
-                                        exp_t2_bank_on := SegBtnOn{text: "Bank" visible: false}
+                                    reports_copy := NavBtn{text: "Copy report"}
+                                    h_bank_reconciliation := WrapLabel{body: "Bank reconciliation (tick off against your bank statement)" font_color: #x0B1220 font_size: 15.}
+                                    bank_recon_label := mod.widgets.ReportText{}
+                                    bank_clear_input := FieldInput{empty_text: "Uncleared # above"}
+                                    ActionStack{
+                                        bank_mark_cleared := RowPrimaryBtn{text: "Mark cleared"}
+                                        bank_mark_uncleared := RowSecondaryBtn{text: "Unmark"}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t2_upi := SegBtn{text: "UPI"}
-                                        exp_t2_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                    h_spreadsheet_csv := WrapLabel{body: "Spreadsheet (CSV)" font_color: #x0B1220 font_size: 15.}
+                                    ActionStack{
+                                        csv_copy_day := RowPrimaryBtn{text: "Copy day book CSV"}
+                                        csv_copy_outstanding := RowSecondaryBtn{text: "Copy outstanding CSV"}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        exp_t2_card := SegBtn{text: "Card"}
-                                        exp_t2_card_on := SegBtnOn{text: "Card" visible: false}
+                                    ActionStack{
+                                        reports_bill_chase := RowPrimaryBtn{text: "Bill reminder chase list"}
+                                        reports_month_mix := RowSecondaryBtn{text: "Month mix report"}
                                     }
+                                    csv_copy_gst_month := NavBtn{text: "Copy month GST CSV"}
+                                    ActionStack{
+                                        csv_copy_parties := RowPrimaryBtn{text: "Copy parties CSV"}
+                                        csv_copy_items := RowSecondaryBtn{text: "Copy items CSV"}
+                                    }
+                                    ActionStack{
+                                        csv_copy_ledger := RowPrimaryBtn{text: "Copy party ledger CSV"}
+                                        csv_import_parties := RowSecondaryBtn{text: "Import parties CSV…"}
+                                    }
+                                    ActionStack{
+                                        csv_import_items := NavBtn{text: "Import items / rates CSV…"}
+                                        csv_import_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    }
+                                    ActionStack{
+                                        csv_import_pincodes := RowPrimaryBtn{text: "Import pincodes CSV…"}
+                                        csv_import_carrier_bill := RowSecondaryBtn{text: "Import carrier bill CSV…"}
+                                    }
+                                    csv_copy_carrier_bill := NavBtn{text: "Copy last carrier bill report"}
                                 }
-                                expense_add := RowPrimaryBtn{text: "Add expense"}
-                                h_attachments_last_expense := WrapLabel{body: "Attachments (last expense)" font_color: #x0B1220 font_size: 15.}
-                                expense_attach_note := FieldInput{empty_text: "Extra note on last expense"}
-                                ActionStack{
-                                    expense_attach_add_note := RowPrimaryBtn{text: "Add note"}
-                                    expense_attach_photo := RowSecondaryBtn{text: "Attach bill photo"}
-                                    expense_attach_pdf := RowSecondaryBtn{text: "Attach PDF"}
-                                }
-                                expense_attach_hint := WrapLabel{
-                                    body: "(log an expense first)"
-                                    font_color: #x3A4554
-                                    font_size: 12.
-                                }
-                                expense_attach_list := mod.widgets.ReportText{}
-                                reports_bank_heading := WrapLabel{body: "Bank / cashbook" font_color: #x0B1220 font_size: 15.}
-                                bank_amount_input := FieldInput{empty_text: "Amount"}
-                                bank_note_input := FieldInput{empty_text: "Note (deposit, withdrawal, …)"}
-                                ActionStack{
-                                    bank_till_to_bank := RowPrimaryBtn{text: "Till → bank"}
-                                    bank_bank_to_till := RowSecondaryBtn{text: "Bank → till"}
-                                    bank_in := RowSecondaryBtn{text: "Bank in"}
-                                    bank_out := RowSecondaryBtn{text: "Bank out"}
-                                }
-                                reports_copy := NavBtn{text: "Copy report"}
-                                h_bank_reconciliation := WrapLabel{body: "Bank reconciliation (tick off against your bank statement)" font_color: #x0B1220 font_size: 15.}
-                                bank_recon_label := mod.widgets.ReportText{}
-                                bank_clear_input := FieldInput{empty_text: "Uncleared # above"}
-                                ActionStack{
-                                    bank_mark_cleared := RowPrimaryBtn{text: "Mark cleared"}
-                                    bank_mark_uncleared := RowSecondaryBtn{text: "Unmark"}
-                                }
-                                h_spreadsheet_csv := WrapLabel{body: "Spreadsheet (CSV)" font_color: #x0B1220 font_size: 15.}
-                                ActionStack{
-                                    csv_copy_day := RowPrimaryBtn{text: "Copy day book CSV"}
-                                    csv_copy_outstanding := RowSecondaryBtn{text: "Copy outstanding CSV"}
-                                }
-                                ActionStack{
-                                    reports_bill_chase := RowPrimaryBtn{text: "Bill reminder chase list"}
-                                    reports_month_mix := RowSecondaryBtn{text: "Month mix report"}
-                                }
-                                csv_copy_gst_month := NavBtn{text: "Copy month GST CSV"}
-                                ActionStack{
-                                    csv_copy_parties := RowPrimaryBtn{text: "Copy parties CSV"}
-                                    csv_copy_items := RowSecondaryBtn{text: "Copy items CSV"}
-                                }
-                                ActionStack{
-                                    csv_copy_ledger := RowPrimaryBtn{text: "Copy party ledger CSV"}
-                                    csv_import_parties := RowSecondaryBtn{text: "Import parties CSV…"}
-                                }
-                                ActionStack{
-                                    csv_import_items := NavBtn{text: "Import items / rates CSV…"}
-                                    csv_import_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
-                                }
-                                ActionStack{
-                                    csv_import_pincodes := RowPrimaryBtn{text: "Import pincodes CSV…"}
-                                    csv_import_carrier_bill := RowSecondaryBtn{text: "Import carrier bill CSV…"}
-                                }
-                                csv_copy_carrier_bill := NavBtn{text: "Copy last carrier bill report"}
                             }
                         }
 

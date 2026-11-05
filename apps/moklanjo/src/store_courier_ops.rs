@@ -169,6 +169,32 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
+    /// One rider's day: parcels out with them now, and parcels they
+    /// delivered on `day` (`YYYY-MM-DD`).
+    pub fn rider_day_counts(&self, rider_id: &str, day: &str) -> Result<(i64, i64), String> {
+        let out_now: i64 = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*) FROM sales WHERE rider_id = ?1 AND status = 'completed'
+                   AND tracking_status = 'out_for_delivery'",
+                params![rider_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let delivered: i64 = self
+            .conn
+            .query_row(
+                "SELECT COUNT(DISTINCT s.id) FROM sales s
+                 JOIN tracking_events e ON e.sale_id = s.id
+                 WHERE s.rider_id = ?1 AND s.status = 'completed'
+                   AND e.status = 'delivered' AND e.created_at LIKE ?2",
+                params![rider_id, format!("{day}%")],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        Ok((out_now, delivered))
+    }
+
     /// How many parcels each lane holds, in [`crate::manifest::OpsLane::ALL`] order.
     pub fn ops_lane_counts(&self) -> Result<[usize; 5], String> {
         use crate::manifest::OpsLane;
@@ -182,10 +208,9 @@ impl Store {
                 .query_row(
                     &format!(
                         "SELECT COUNT(*) FROM sales s
-                         WHERE s.status = 'completed' AND s.awb_no != '' AND {filter}
-                           AND ?2 = ?2"
+                         WHERE s.status = 'completed' AND s.awb_no != '' AND {filter}"
                     ),
-                    params![since, 0],
+                    params![since],
                     |r| r.get(0),
                 )
                 .map_err(|e| e.to_string())?;
@@ -392,7 +417,15 @@ impl Store {
         }
         self.assert_server_writer("Rider POD")?;
         let status = TrackingStatus::parse(&event.status);
-        if status == TrackingStatus::Ndr {
+        let current = self
+            .get_sale(&event.sale_id)?
+            .map(|s| TrackingStatus::parse(&s.tracking_status))
+            .ok_or_else(|| "Sale not found".to_string())?;
+        if current == status && status != TrackingStatus::Ndr {
+            // The desk recorded the same outcome first (or this is a resend
+            // after a Wi‑Fi drop): nothing moves; the rider's feedback still
+            // counts. Any other late move is refused by the store's rules.
+        } else if status == TrackingStatus::Ndr {
             let _ = self.record_ndr(
                 &event.sale_id,
                 if event.ndr_reason.is_empty() {
@@ -1123,34 +1156,166 @@ impl Store {
         self.meta_set("rto_fee_pct", &pct.max(0).to_string())
     }
 
-    /// Append RTO fee extra when status becomes RTO (auto or manual).
-    pub fn apply_rto_fee_if_needed(&self, sale_id: &str) -> Result<i64, String> {
+    /// The RTO fee still due for a returned parcel (Settings: fixed amount,
+    /// else a share of the freight). 0 when not returning, the fee is off,
+    /// already posted to the consignor's account, or marked on the booking
+    /// extras (marker only — never changes `total_paise`).
+    ///
+    /// It used to add the fee to the original booking's total — a cash
+    /// booking from last week then showed money in today's till that nobody
+    /// received (vision §18). Charging is separate: consignor AR when a
+    /// party is linked, else note-only until the counter collects.
+    pub fn rto_fee_due(&self, sale_id: &str) -> Result<i64, String> {
         let sale = self
             .get_sale(sale_id)?
             .ok_or_else(|| "Sale not found".to_string())?;
         if sale.tracking_status != "rto" {
             return Ok(0);
         }
-        let mut extras: Vec<crate::rates::BookingExtra> =
+        let extras: Vec<crate::rates::BookingExtra> =
             serde_json::from_str(&sale.extras_json).unwrap_or_default();
         if extras.iter().any(|e| e.kind == "rto_fee") {
             return Ok(0);
         }
+        let posted: i64 = self
+            .conn
+            .query_row(
+                "SELECT COUNT(*) FROM credit_ledger
+                  WHERE sale_id = ?1 AND kind = 'rto_fee'",
+                params![sale_id],
+                |r| r.get(0),
+            )
+            .unwrap_or(0);
+        if posted > 0 {
+            return Ok(0);
+        }
         let (fixed, pct) = self.rto_fee_settings();
-        let fee = ops_local::rto_fee_paise(sale.total_paise, fixed, pct);
+        Ok(ops_local::rto_fee_paise(sale.total_paise, fixed, pct).max(0))
+    }
+
+    /// Walk-in RTO fees still to collect at the counter (no consignor party
+    /// was linked, so nothing was posted to AR). AWB · who · amount.
+    pub fn list_rto_fees_to_collect(&self) -> Result<Vec<(String, String, i64)>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT id, awb_no, COALESCE(consignee_name, '') FROM sales
+                  WHERE status = 'completed' AND tracking_status = 'rto'
+                  ORDER BY created_at DESC LIMIT 200",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    r.get::<_, String>(1)?,
+                    r.get::<_, String>(2)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut out = Vec::new();
+        for row in rows {
+            let (id, awb, consignee) = row.map_err(|e| e.to_string())?;
+            let fee = self.rto_fee_due(&id)?;
+            if fee <= 0 {
+                continue;
+            }
+            let who = if consignee.trim().is_empty() {
+                "—".into()
+            } else {
+                consignee.trim().to_string()
+            };
+            out.push((awb, who, fee));
+        }
+        Ok(out)
+    }
+
+    /// Note the fee on the return event. When the booking has a consignor
+    /// party, also post it to their AR (`credit_ledger` kind `rto_fee`) and
+    /// mark extras so it is not charged twice — without changing the
+    /// original booking total. Walk-in (no party): note only.
+    pub(crate) fn note_rto_fee_due(
+        &self,
+        sale_id: &str,
+        actor: &StaffMember,
+    ) -> Result<i64, String> {
+        let fee = self.rto_fee_due(sale_id)?;
         if fee <= 0 {
             return Ok(0);
         }
-        extras.push(crate::rates::BookingExtra::from_kind(
-            crate::rates::ExtraChargeKind::RtoFee,
-            fee,
-        ));
-        let json = serde_json::to_string(&extras).map_err(|e| e.to_string())?;
-        let new_total = sale.total_paise.saturating_add(fee);
+        let sale = self
+            .get_sale(sale_id)?
+            .ok_or_else(|| "Sale not found".to_string())?;
+        let consignor = sale
+            .customer_id
+            .as_deref()
+            .map(str::trim)
+            .filter(|s| !s.is_empty());
+        let line = if let Some(cid) = consignor {
+            let times = EventTimes::capture(None);
+            let detail = format!(
+                "RTO fee on AWB {}",
+                if sale.awb_no.trim().is_empty() {
+                    sale_id
+                } else {
+                    sale.awb_no.trim()
+                }
+            );
+            self.conn
+                .execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail,
+                        user_at, device_at, server_at
+                     ) VALUES(?1, ?2, ?3, 'rto_fee', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
+                    params![
+                        new_id(),
+                        cid,
+                        times.user_at,
+                        fee,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        detail,
+                        times.user_at,
+                        times.device_at,
+                        times.server_at
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            // Marker on extras only — never bump total_paise / day cash.
+            let mut extras: Vec<crate::rates::BookingExtra> =
+                serde_json::from_str(&sale.extras_json).unwrap_or_default();
+            if !extras.iter().any(|e| e.kind == "rto_fee") {
+                extras.push(crate::rates::BookingExtra::from_kind(
+                    crate::rates::ExtraChargeKind::RtoFee,
+                    fee,
+                ));
+                let json = serde_json::to_string(&extras).unwrap_or_else(|_| "[]".into());
+                self.conn
+                    .execute(
+                        "UPDATE sales SET extras_json = ?1 WHERE id = ?2",
+                        params![json, sale_id],
+                    )
+                    .map_err(|e| e.to_string())?;
+            }
+            let _ = self.audit(actor, "rto.fee", &format!("{sale_id} {fee} → {cid}"));
+            format!(
+                " · RTO fee {} posted to consignor account",
+                self.money_display(fee)
+            )
+        } else {
+            format!(
+                " · RTO fee to charge the sender: {}",
+                self.money_display(fee)
+            )
+        };
         self.conn
             .execute(
-                "UPDATE sales SET extras_json = ?1, total_paise = ?2 WHERE id = ?3",
-                params![json, new_total, sale_id],
+                "UPDATE tracking_events SET note = note || ?1
+                 WHERE id = (SELECT id FROM tracking_events WHERE sale_id = ?2
+                             ORDER BY created_at DESC, rowid DESC LIMIT 1)",
+                params![line, sale_id],
             )
             .map_err(|e| e.to_string())?;
         Ok(fee)
@@ -1491,12 +1656,79 @@ mod courier_ops_tests {
         store.set_ndr_max_attempts(1).unwrap();
         store.set_rto_fee_settings(0, 50).unwrap();
         let s3 = book_one(&mut store, "Fail", "South", 0);
+        // Only a parcel that went out can fail a delivery.
+        assert!(store.record_ndr(&s3.id, "refused", "", &owner).is_err());
+        store
+            .create_manifest(
+                crate::manifest::HandoverKind::OwnFleet,
+                "",
+                &r1.id,
+                &[s3.id.clone()],
+                "",
+                &owner,
+            )
+            .unwrap();
         let st = store.record_ndr(&s3.id, "refused", "", &owner).unwrap();
         assert_eq!(st, TrackingStatus::Rto);
-        let fee = store.apply_rto_fee_if_needed(&s3.id).unwrap();
-        // May already have been applied in record_ndr.
+        // Walk-in: fee noted, still due at the counter; booking total untouched.
+        let fee = store.rto_fee_due(&s3.id).unwrap();
+        assert_eq!(fee, s3.total_paise / 2);
         let s3b = store.get_sale(&s3.id).unwrap().unwrap();
-        assert!(s3b.extras_json.contains("rto_fee") || fee > 0 || s3b.total_paise > 0);
+        assert_eq!(s3b.total_paise, s3.total_paise);
+        assert!(!s3b.extras_json.contains("rto_fee"));
+        let last = store.list_tracking_events(&s3.id).unwrap().pop().unwrap();
+        assert!(last.note.contains("RTO fee to charge the sender"), "{}", last.note);
+        let due_list = store.list_rto_fees_to_collect().unwrap();
+        assert!(due_list.iter().any(|(awb, _, p)| awb == &s3b.awb_no && *p == fee));
+
+        // Consignor on account: fee posts to AR, not the booking total.
+        let party = store.add_customer("Acme Exports", "9000000001").unwrap();
+        let rate = Product::new_basic(new_id(), "Surface AR", Money::from_rupees(40));
+        store.upsert_product(&rate).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = "North".into();
+        draft.consignee_name = "Recv".into();
+        draft.chargeable_weight_kg = "2".parse().unwrap();
+        let s4 = store
+            .finalize_sale(&draft, PayMethod::Credit, Some(&party.id), &owner)
+            .unwrap();
+        let ar_before = store.customer_balance(&party.id).unwrap();
+        store
+            .create_manifest(
+                crate::manifest::HandoverKind::OwnFleet,
+                "",
+                &r1.id,
+                &[s4.id.clone()],
+                "",
+                &owner,
+            )
+            .unwrap();
+        store.record_ndr(&s4.id, "refused", "", &owner).unwrap();
+        let s4b = store.get_sale(&s4.id).unwrap().unwrap();
+        assert_eq!(s4b.total_paise, s4.total_paise);
+        assert!(s4b.extras_json.contains("rto_fee"));
+        assert_eq!(store.rto_fee_due(&s4.id).unwrap(), 0);
+        let expected_fee = s4.total_paise / 2;
+        assert_eq!(
+            store.customer_balance(&party.id).unwrap(),
+            ar_before + expected_fee
+        );
+        let last4 = store.list_tracking_events(&s4.id).unwrap().pop().unwrap();
+        assert!(
+            last4.note.contains("posted to consignor account"),
+            "{}",
+            last4.note
+        );
+        assert!(
+            !store
+                .list_rto_fees_to_collect()
+                .unwrap()
+                .iter()
+                .any(|(awb, _, _)| awb == &s4b.awb_no),
+            "posted AR fees are not counter-collect"
+        );
 
         let docket = store
             .format_docket_for_sale(&s1.id, crate::labels::DocketSize::A5)

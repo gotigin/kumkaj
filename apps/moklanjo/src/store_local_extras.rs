@@ -364,6 +364,8 @@ impl Store {
                 Ok(Some(sale_id)) => {
                     match self.advance_tracking(&sale_id, status, note, "", actor) {
                         Ok(_) => ok += 1,
+                        // The store's refusal already names the AWB.
+                        Err(e) if e.contains(awb) => errs.push(e),
                         Err(e) => errs.push(format!("{awb}: {e}")),
                     }
                 }

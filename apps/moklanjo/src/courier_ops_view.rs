@@ -132,6 +132,11 @@ pub fn awb_desk_card(store: &Store, raw_awb: &str) -> Result<String, String> {
 
 /// Build the body shown on the Reports screen for a courier ops facet.
 pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
+    match facet {
+        OpsFacet::Cod => return cod_facet_text(store),
+        OpsFacet::Riders => return riders_facet_text(store),
+        _ => {}
+    }
     let mut text = store.courier_ops_summary()?;
     text.push('\n');
     match facet {
@@ -169,45 +174,113 @@ pub fn facet_text(store: &Store, facet: OpsFacet) -> Result<String, String> {
             }
         }
         OpsFacet::Cod => {
-            text.push_str("\n— COD register —\n");
-            text.push_str("Collect pending, then Remit for a party (name = consignor).\n\n");
-            for e in store.list_cod_entries("any")? {
-                text.push_str(&format!(
-                    "{} · {} · {} · {}{}\n",
-                    e.awb_no,
-                    e.status,
-                    store.money_display(e.cod_paise),
-                    e.party_name,
-                    if e.note.is_empty() {
-                        String::new()
-                    } else {
-                        format!(" · {}", e.note)
-                    }
-                ));
+            // Rebuilt below without the generic ops summary.
+        }
+        OpsFacet::Riders => {}
+    }
+    Ok(text)
+}
+
+/// COD the way the desk asks about it: who still owes us (delivered, not
+/// yet collected), what is still on the road, and what we owe each
+/// consignor (collected, not yet paid out). Words in the shop's language.
+fn cod_facet_text(store: &Store) -> Result<String, String> {
+    let lang = store.locale_settings()?.language;
+    let t = |k: &str| crate::locale::t(&lang, k);
+    let mut to_collect: Vec<(String, i64)> = Vec::new();
+    let mut on_road: Vec<(String, i64)> = Vec::new();
+    for e in store.list_cod_entries("pending")? {
+        let Some(sale) = store.get_sale(&e.sale_id)? else {
+            continue;
+        };
+        if sale.status != "completed" {
+            continue;
+        }
+        let status = TrackingStatus::parse(&sale.tracking_status);
+        let who = if sale.consignee_name.trim().is_empty() {
+            e.party_name.clone()
+        } else {
+            sale.consignee_name.trim().to_string()
+        };
+        if status == TrackingStatus::Delivered {
+            to_collect.push((format!("{} · {who}", e.awb_no), e.cod_paise));
+        } else if !status.is_final() {
+            on_road.push((format!("{} · {}", e.awb_no, t(status.label_key())), e.cod_paise));
+        }
+    }
+    let mut owed: Vec<(String, usize, i64)> = Vec::new();
+    for e in store.list_cod_entries("collected")? {
+        let name = if e.party_name.trim().is_empty() {
+            "—".to_string()
+        } else {
+            e.party_name.trim().to_string()
+        };
+        match owed.iter_mut().find(|(n, _, _)| *n == name) {
+            Some(row) => {
+                row.1 += 1;
+                row.2 += e.cod_paise;
+            }
+            None => owed.push((name, 1, e.cod_paise)),
+        }
+    }
+    let mut text = String::new();
+    let mut section = |head: String, rows: Vec<(String, i64)>| {
+        text.push_str(&format!("=== {head} ===\n"));
+        if rows.is_empty() {
+            text.push_str(&format!("{}\n", t("lane_empty")));
+        }
+        let total: i64 = rows.iter().map(|(_, p)| *p).sum();
+        for (label, paise) in &rows {
+            text.push_str(&format!("{label}: {}\n", store.money_display(*paise)));
+        }
+        if rows.len() > 1 {
+            text.push_str(&format!("{}: {}\n", t("total"), store.money_display(total)));
+        }
+        text.push('\n');
+    };
+    let rto_due: Vec<(String, i64)> = store
+        .list_rto_fees_to_collect()?
+        .into_iter()
+        .map(|(awb, who, paise)| (format!("{awb} · {who}"), paise))
+        .collect();
+    section(t("cod_to_collect"), to_collect);
+    section(t("cod_on_road"), on_road);
+    section(
+        t("cod_owed_consignors"),
+        owed.into_iter()
+            .map(|(name, n, paise)| {
+                (format!("{name} · {}", crate::locale::parcels(&lang, n as i64)), paise)
+            })
+            .collect(),
+    );
+    section(t("cod_rto_fees"), rto_due);
+    Ok(text)
+}
+
+/// Each rider today: what they have out, what they delivered, and the COD
+/// they should hand in.
+fn riders_facet_text(store: &Store) -> Result<String, String> {
+    let lang = store.locale_settings()?.language;
+    let t = |k: &str| crate::locale::t(&lang, k);
+    let riders = store.list_riders()?;
+    if riders.is_empty() {
+        return Ok(format!("{}\n", t("lane_empty")));
+    }
+    let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+    let mut text = String::new();
+    for r in riders {
+        let (out_now, delivered) = store.rider_day_counts(&r.id, &today)?;
+        let expected = store.rider_cod_expected(&r.id, &today).unwrap_or(0);
+        let mut head = r.name.clone();
+        for part in [r.vehicle_label.trim(), r.phone.trim()] {
+            if !part.is_empty() {
+                head.push_str(&format!(" · {part}"));
             }
         }
-        OpsFacet::Riders => {
-            text.push_str("\n— Own-fleet riders —\n");
-            text.push_str(
-                "Add a rider, then Dispatch booked AWBs from Ops.\n\
-                 Settle: type rider name + COD handed in → Settle rider COD.\n\n",
-            );
-            let riders = store.list_riders()?;
-            if riders.is_empty() {
-                text.push_str("(none yet)\n");
-            }
-            let today = chrono::Local::now().format("%Y-%m-%d").to_string();
-            for r in riders {
-                let expected = store.rider_cod_expected(&r.id, &today).unwrap_or(0);
-                text.push_str(&format!(
-                    "{} · {} · {} · COD today {}\n",
-                    r.name,
-                    r.phone,
-                    r.vehicle_label,
-                    store.money_display(expected)
-                ));
-            }
-        }
+        text.push_str(&format!("=== {head} ===\n"));
+        text.push_str(&format!("{}: {out_now}\n", t("out_for_delivery")));
+        text.push_str(&format!("{}: {delivered}\n", t("trk_delivered")));
+        text.push_str(&format!("{}: {}\n\n", t("cod_to_hand_in"), store.money_display(expected)));
     }
     Ok(text)
 }
@@ -293,6 +366,23 @@ pub fn print_label(store: &Store, awb: &str) -> Result<String, String> {
     }
 }
 
+/// Print the run sheet / DRS of the bag or run the person picked.
+pub fn print_manifest_named(store: &Store, m: &manifest::Manifest) -> Result<String, String> {
+    let _ = store.print_manifest(&m.id)?;
+    let who = if m.kind == "own_fleet" {
+        m.rider_name.as_str()
+    } else {
+        m.carrier_name.as_str()
+    };
+    if crate::print_share::prints_route(crate::print_share::RouteKey::Receipt) {
+        Ok(format!("Run sheet printed · {who} · {} parcels", m.line_count))
+    } else {
+        Ok(format!(
+            "Run sheet ready · {who} — set a receipt printer in Settings → Printers to print on paper"
+        ))
+    }
+}
+
 /// Print the latest carrier bag / rider DRS via the receipt route.
 pub fn print_latest_run_sheet(store: &Store) -> Result<String, String> {
     let list = store.list_manifests(1)?;
@@ -357,17 +447,14 @@ pub fn settle_rider_cod_line(
         .into_iter()
         .find(|r| r.name.eq_ignore_ascii_case(rider_name))
         .ok_or_else(|| format!("No rider named {rider_name}"))?;
-    let handed = handed_in_text
-        .trim()
-        .replace(',', "")
-        .parse::<f64>()
-        .ok()
-        .map(|v| (v * 100.0).round() as i64)
-        .or_else(|| {
-            // Already paise digits
-            handed_in_text.trim().parse::<i64>().ok()
-        })
-        .unwrap_or(0);
+    // Same money parsing as every other amount field (the shop currency's
+    // minor units and separators); a blank means nothing was handed in.
+    let handed = if handed_in_text.trim().is_empty() {
+        0
+    } else {
+        let currency = store.locale_settings()?.currency;
+        crate::locale::parse_major_input(handed_in_text, &currency)?
+    };
     let (expected, handed, _slip) = store.settle_rider_cod(&rider.id, handed, actor)?;
     Ok(format!(
         "Settled {} · expected {} · handed {} · variance {}",
@@ -378,82 +465,118 @@ pub fn settle_rider_cod_line(
     ))
 }
 
-/// Dispatch all currently booked AWBs (limit) to a rider by name.
-pub fn dispatch_booked_to_rider(
+/// Picked AWBs (typed, scanned or tapped on the Ops board) → their sale ids,
+/// in the order picked. Refuses an empty pick: a run or bag carries exactly
+/// what the person picked, never "everything booked".
+fn picked_sale_ids(store: &Store, awbs: &[String]) -> Result<Vec<String>, String> {
+    let mut ids = Vec::new();
+    for raw in awbs {
+        let awb = normalize_awb_input(raw);
+        if awb.is_empty() {
+            continue;
+        }
+        ids.push(find_sale_for_scan(store, &awb)?.id);
+    }
+    if ids.is_empty() {
+        return Err("Pick the parcels first — scan them or tap them on Ops".into());
+    }
+    Ok(ids)
+}
+
+/// One own-fleet run: the picked parcels go out with the named rider.
+pub fn dispatch_to_rider(
     store: &Store,
     rider_name: &str,
+    awbs: &[String],
     note: &str,
     actor: &StaffMember,
 ) -> Result<String, String> {
     let rider_name = rider_name.trim();
     if rider_name.is_empty() {
-        return Err("Type a rider name".into());
+        return Err("Pick the rider".into());
     }
     let rider = store
         .list_riders()?
         .into_iter()
         .find(|r| r.name.eq_ignore_ascii_case(rider_name))
-        .ok_or_else(|| format!("No rider named {rider_name} — add them first"))?;
-    let filter = ConsignmentFilter {
-        tracking_status: "booked".into(),
-        ..Default::default()
-    };
-    let sales = store.search_consignments(&filter, 80)?;
-    let ids: Vec<String> = sales.into_iter().map(|s| s.id).collect();
-    if ids.is_empty() {
-        return Err("No booked AWBs to dispatch".into());
-    }
-    let m = store.create_manifest(
-        HandoverKind::OwnFleet,
-        "",
-        &rider.id,
-        &ids,
-        note,
-        actor,
-    )?;
+        .ok_or_else(|| format!("No rider named {rider_name} — add them on Riders first"))?;
+    let ids = picked_sale_ids(store, awbs)?;
+    let m = store.create_manifest(HandoverKind::OwnFleet, "", &rider.id, &ids, note, actor)?;
     Ok(format!(
-        "Own-fleet run · {} · {} AWBs → {}",
-        m.rider_name, m.line_count, rider.name
+        "{} {} out with {}",
+        m.line_count,
+        if m.line_count == 1 { "parcel" } else { "parcels" },
+        rider.name
     ))
 }
 
-/// Hand booked AWBs to a carrier party by name.
-pub fn handover_booked_to_carrier(
+/// One carrier bag: the picked parcels are handed to the named carrier.
+pub fn handover_to_carrier(
     store: &Store,
     carrier_name: &str,
+    awbs: &[String],
     note: &str,
     actor: &StaffMember,
 ) -> Result<String, String> {
     let carrier_name = carrier_name.trim();
     if carrier_name.is_empty() {
-        return Err("Type a carrier party name".into());
+        return Err("Pick the carrier".into());
     }
     let party = store
         .list_customers()?
         .into_iter()
         .find(|c| c.name.eq_ignore_ascii_case(carrier_name))
         .ok_or_else(|| format!("No party named {carrier_name}"))?;
-    let filter = ConsignmentFilter {
-        tracking_status: "booked".into(),
-        ..Default::default()
-    };
-    let sales = store.search_consignments(&filter, 80)?;
-    let ids: Vec<String> = sales.into_iter().map(|s| s.id).collect();
-    if ids.is_empty() {
-        return Err("No booked AWBs to hand over".into());
-    }
-    let m = store.create_manifest(
-        HandoverKind::Carrier,
-        &party.id,
-        "",
-        &ids,
-        note,
-        actor,
-    )?;
+    let ids = picked_sale_ids(store, awbs)?;
+    let m = store.create_manifest(HandoverKind::Carrier, &party.id, "", &ids, note, actor)?;
     Ok(format!(
-        "Carrier bag · {} · {} AWBs → {}",
-        m.carrier_name, m.line_count, party.name
+        "{} {} handed to {}",
+        m.line_count,
+        if m.line_count == 1 { "parcel" } else { "parcels" },
+        party.name
     ))
+}
+
+/// Run one tracking step on each picked AWB. Each parcel is its own unit:
+/// one refused (already delivered, voided, …) never stops the others, and
+/// the message names what was refused and why.
+pub fn each_awb(
+    store: &Store,
+    awbs: &[String],
+    done_label: &str,
+    mut step: impl FnMut(&Sale) -> Result<(), String>,
+) -> Result<String, String> {
+    let mut ok = 0usize;
+    let mut refused: Vec<String> = Vec::new();
+    let mut picked = 0usize;
+    for raw in awbs {
+        let awb = normalize_awb_input(raw);
+        if awb.is_empty() {
+            continue;
+        }
+        picked += 1;
+        let result = find_sale_for_scan(store, &awb)
+            .and_then(|sale| store.in_transaction(|| step(&sale)));
+        match result {
+            Ok(()) => ok += 1,
+            Err(e) => refused.push(e),
+        }
+    }
+    if picked == 0 {
+        return Err("Pick the parcels first — scan them or tap them on Ops".into());
+    }
+    if ok == 0 {
+        return Err(refused.join("\n"));
+    }
+    let mut msg = format!("{done_label} · {ok}");
+    if !refused.is_empty() {
+        msg.push_str(&format!(" · {} refused", refused.len()));
+        for e in refused.iter().take(3) {
+            msg.push('\n');
+            msg.push_str(e);
+        }
+    }
+    Ok(msg)
 }
 
 pub fn collect_cod_for_awb(store: &Store, awb: &str) -> Result<String, String> {

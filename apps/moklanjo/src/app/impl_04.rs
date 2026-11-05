@@ -919,12 +919,28 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(ops_advance_ofd))
             .set_text(cx, &s("out_for_delivery"));
+        self.ui.button(cx, ids!(ops_return)).set_text(cx, &s("return_to_sender"));
+        self.ui.button(cx, ids!(ops_pick_all)).set_text(cx, &s("pick_all"));
+        self.ui.button(cx, ids!(ops_pick_clear)).set_text(cx, &s("clear"));
+        self.ui.button(cx, ids!(cod_collect)).set_text(cx, &s("collect_cod"));
+        self.ui
+            .text_input(cx, ids!(cod_awb_input))
+            .set_empty_text(cx, s("awb_scan_ph"));
+        self.ui
+            .text_input(cx, ids!(settle_rider_input))
+            .set_empty_text(cx, s("rider_name_ph"));
+        self.ui
+            .text_input(cx, ids!(new_rider_input))
+            .set_empty_text(cx, s("rider_name_ph"));
+        self.ui
+            .widget(cx, ids!(h_ops_runs))
+            .set_text(cx, &plain_display_text(&s("runs_bags_heading")));
         self.ui
             .button(cx, ids!(ops_ndr))
             .set_text(cx, &s("failed_delivery"));
         self.ui
             .button(cx, ids!(ops_reattempt))
-            .set_text(cx, &s("reattempt"));
+            .set_text(cx, &s("out_again"));
         self.ui
             .button(cx, ids!(ops_ndr_door))
             .set_text(cx, &s("ndr_door_locked"));
@@ -951,25 +967,19 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .set_text(cx, &s("remit_cod"));
         self.ui
             .button(cx, ids!(ops_dispatch_fleet))
-            .set_text(cx, &s("dispatch_to_rider"));
+            .set_text(cx, &s("send_with_rider"));
         self.ui
             .button(cx, ids!(ops_find_awb))
-            .set_text(cx, &s("find_scan_awb"));
+            .set_text(cx, &s("pick"));
         self.ui
             .button(cx, ids!(ops_handover_carrier))
-            .set_text(cx, &s("handover_carrier"));
+            .set_text(cx, &s("bag_for_carrier"));
         self.ui
             .button(cx, ids!(ops_label))
             .set_text(cx, &s("print_awb_label"));
         self.ui
-            .button(cx, ids!(ops_print_run_sheet))
-            .set_text(cx, &s("print_run_sheet"));
-        self.ui
-            .button(cx, ids!(ops_print_drs))
-            .set_text(cx, &s("print_drs"));
-        self.ui
             .text_input(cx, ids!(ops_note_input))
-            .set_empty_text(cx, s("note_pod_ph"));
+            .set_empty_text(cx, s("note_reason_ph"));
         self.ui
             .text_input(cx, ids!(ops_party_input))
             .set_empty_text(cx, s("consignor_party_ph"));
@@ -1227,9 +1237,6 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(booking_pieces_input))
             .set_empty_text(cx, s("pieces_ph"));
-        self.ui
-            .text_input(cx, ids!(ops_bulk_awb_input))
-            .set_empty_text(cx, s("bulk_awbs_ph"));
         self.ui
             .text_input(cx, ids!(settle_tds_input))
             .set_empty_text(cx, s("tds_cut_ph"));
@@ -1548,12 +1555,6 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             help.set_title(cx, &s("sell"));
             help.set_nav_icon(cx, NavTab::Sell);
             help.set_tip(&plain_display_text(&s("booking_help")));
-        }
-        {
-            let help = self.ui.widget(cx, ids!(ops_desk_help)).as_info_help();
-            help.set_title(cx, &s("facet_ops_title"));
-            help.set_nav_icon(cx, NavTab::Ops);
-            help.set_tip(&plain_display_text(&s("ops_desk_help")));
         }
     }
 }

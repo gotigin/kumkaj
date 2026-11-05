@@ -128,6 +128,13 @@ impl AppState {
             rail_width: RAIL_WIDTH_DEFAULT,
             rail_collapsed: false,
             reports_nav: ReportsNav::Bank,
+            ops_lane: manifest::OpsLane::ToDispatch,
+            ops_rows: Vec::new(),
+            ops_counts: [0; 5],
+            ops_picked: Vec::new(),
+            ops_runs: Vec::new(),
+            ops_history: Vec::new(),
+            ops_reason: None,
             books_report_kind: BooksReportKind::Today,
             suggest_open: None,
             suggest_rows: Vec::new(),
@@ -673,6 +680,7 @@ impl AppState {
     fn refresh_reports_facet(&mut self) -> Result<(), String> {
         match self.reports_nav {
             ReportsNav::Bank => self.load_books_report(),
+            ReportsNav::Ops => self.refresh_ops_board(),
             other => {
                 let store = self.store.as_ref().ok_or("No store")?;
                 let facet = match other {
@@ -685,6 +693,50 @@ impl AppState {
                 Ok(())
             }
         }
+    }
+
+    /// Re-read the Ops board from the books: lane counts, the lane's
+    /// parcels, recent runs, and the picked parcel's history. Picks that
+    /// left the lane (moved on another till, or by this action) drop off.
+    fn refresh_ops_board(&mut self) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or("No store")?;
+        self.ops_counts = store.ops_lane_counts()?;
+        self.ops_rows = store.ops_board_rows(self.ops_lane, OPS_BOARD_LIMIT)?;
+        let in_lane: std::collections::HashSet<&str> =
+            self.ops_rows.iter().map(|r| r.sale_id.as_str()).collect();
+        self.ops_picked.retain(|id| in_lane.contains(id.as_str()));
+        self.ops_runs = store.list_manifests(8)?;
+        self.ops_history = match self.ops_picked.as_slice() {
+            [one] => {
+                let events = store.list_tracking_events(one)?;
+                let awb = self
+                    .ops_rows
+                    .iter()
+                    .find(|r| r.sale_id == *one)
+                    .map(|r| r.awb_no.clone())
+                    .unwrap_or_default();
+                let mut rows = vec![ReportRow::Head(format!("{} · {awb}", self.t("parcel_history")))];
+                for e in events.iter().rev() {
+                    let label = self.t(manifest::TrackingStatus::parse(&e.status).label_key());
+                    let when = self.fiscal.format_datetime(&e.created_at);
+                    rows.push(ReportRow::Kv(format!("{when} · {label}"), e.actor_name.clone()));
+                    if !e.note.trim().is_empty() {
+                        rows.push(ReportRow::Sub(e.note.trim().to_string()));
+                    }
+                }
+                rows
+            }
+            _ => Vec::new(),
+        };
+        // Plain text of the lane for Copy report (and a non-empty marker so
+        // the screen does not re-read the books on every repaint).
+        let lane = self.t(self.ops_lane.label_key());
+        let mut text = format!("{lane} · {}\n", self.ops_rows.len());
+        for r in &self.ops_rows {
+            text.push_str(&format!("{} · {} · {}\n", r.awb_no, r.destination, r.consignee_name));
+        }
+        self.day_close_text = text;
+        Ok(())
     }
 
     fn refresh_branches_text(&mut self) -> Result<(), String> {
@@ -1182,7 +1234,7 @@ impl AppState {
                 .iter()
                 .map(|p| SuggestRow::new(p.label.clone(), p.target.clone()))
                 .collect(),
-            SuggestField::OpsRider => self
+            SuggestField::OpsRider | SuggestField::SettleRider => self
                 .store
                 .as_ref()
                 .and_then(|s| s.list_riders().ok())

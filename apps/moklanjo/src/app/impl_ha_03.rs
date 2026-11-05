@@ -262,7 +262,7 @@ impl App {
                     && item
                         .view(cx, ids!(card))
                         .finger_up(actions)
-                        .is_some_and(|e| e.was_tap() && e.is_over)
+                        .is_some_and(finger_up_is_tap)
                 {
                     self.open_menu_item(cx, item_id);
                 }

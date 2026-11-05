@@ -54,7 +54,7 @@ Voice messages in the source chat were **ignored**; only typed requirements are 
 | Ask | Meaning | Status |
 |-----|---------|--------|
 | Barcode on dockets / labels | Print scannable AWB | **Done** — Code 128 on SVG AWB label + `*AWB*` on receipt |
-| Scan at the desk | USB/Bluetooth wedge into Ops AWB field | **Done** — Find / Scan AWB (Enter after scan) → desk card |
+| Scan at the desk | USB/Bluetooth wedge into Ops AWB field | **Done** — scan (Enter after scan) picks the parcel on the Ops board; act on all picked (2026-11-05) |
 | Scan to act | Advance / label / COD without retyping | **Done** — Out for delivery, Delivered, Print label, Collect COD use the scanned AWB |
 
 Same product also covers booking desk, rates × kg, tracking / POD, COD, carriers vs own riders — see [`MOKLANJO.md`](MOKLANJO.md).
@@ -112,7 +112,7 @@ public track outside LAN).
 | Bank reconcile | Reports → Bank book → Bank reconciliation → tick Uncleared # |
 | Cash in hand | Day book (BANK card) · Balance sheet |
 | Spreadsheet in / out | Reports → Spreadsheet (CSV) |
-| Barcode print / scan | Ops → AWB / scan · Find / Scan AWB · Print AWB label |
+| Barcode print / scan | Ops → scan to pick · Print AWB label |
 
 ------------------------------------------------------------------------
 

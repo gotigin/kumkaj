@@ -11045,10 +11045,15 @@ impl Store {
             } else {
                 TrackingStatus::Ndr
             };
+            // A reason chip's code reads as its words in the history.
+            let shown = match crate::manifest::NdrReason::parse(reason) {
+                r if r.as_str() == reason => r.label().to_string(),
+                _ => reason.to_string(),
+            };
             let note = if status == TrackingStatus::Rto {
-                format!("NDR attempt {attempts}/{max} → RTO · {reason}")
+                format!("Failed attempt {attempts}/{max} → returning to sender · {shown}")
             } else {
-                format!("NDR attempt {attempts}/{max} · {reason}")
+                format!("Failed attempt {attempts}/{max} · {shown}")
             };
             let times = EventTimes::capture(None);
             self.conn
@@ -11092,7 +11097,7 @@ impl Store {
                 &format!("{} · {} · attempt {attempts}", sale.awb_no, status.as_str()),
             );
             if status == TrackingStatus::Rto {
-                let _ = self.apply_rto_fee_if_needed(sale_id)?;
+                let _ = self.note_rto_fee_due(sale_id, actor)?;
             }
             Ok(status)
         })
@@ -11117,10 +11122,14 @@ impl Store {
             let sale = self
                 .get_sale(sale_id)?
                 .ok_or_else(|| "Sale not found".to_string())?;
-            let note = format!("Return to sender · {reason}");
+            let shown = match crate::manifest::NdrReason::parse(reason) {
+                r if r.as_str() == reason => r.label().to_string(),
+                _ => reason.to_string(),
+            };
+            let note = format!("Return to sender · {shown}");
             let _ = self.advance_tracking(sale_id, TrackingStatus::Rto, &note, "", actor)?;
             let _ = self.audit(actor, "rto", &format!("{} · {reason}", sale.awb_no));
-            let _ = self.apply_rto_fee_if_needed(sale_id)?;
+            let _ = self.note_rto_fee_due(sale_id, actor)?;
             Ok(())
         })
     }
@@ -14274,6 +14283,217 @@ mod tests {
         assert_eq!(s3.attempt_count, 2);
         assert_eq!(s3.tracking_status, "rto");
 
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Book one parcel at the desk (cash, walk-in), optionally with a carrier.
+    fn book_parcel(store: &Store, owner: &StaffMember, to: &str, carrier: &str) -> Sale {
+        let rate = Product::new_basic(new_id(), "Surface", Money::from_rupees(50));
+        store.upsert_product(&rate).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = to.into();
+        draft.consignee_name = "Receiver".into();
+        draft.chargeable_weight_kg = "1".parse().unwrap();
+        draft.carrier_party_id = carrier.into();
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, owner)
+            .unwrap()
+    }
+
+    #[test]
+    fn tracking_moves_only_the_way_parcels_really_go() {
+        use crate::manifest::{HandoverKind, OpsLane, TrackingStatus as T};
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let rider = store.add_rider("Ravi", "999", "Bike").unwrap();
+
+        // Booked → delivered at the counter is fine; delivered is final.
+        let a = book_parcel(&store, &owner, "Pune", "");
+        store
+            .advance_tracking(&a.id, T::Delivered, "collected at counter", "", &owner)
+            .unwrap();
+        let events_before = store.list_tracking_events(&a.id).unwrap().len();
+        let again = store
+            .advance_tracking(&a.id, T::Delivered, "", "", &owner)
+            .unwrap_err();
+        assert!(again.contains("already delivered"), "{again}");
+        let back_out = store
+            .advance_tracking(&a.id, T::OutForDelivery, "", "", &owner)
+            .unwrap_err();
+        assert!(back_out.contains("cannot be marked"), "{back_out}");
+        let events = store.list_tracking_events(&a.id).unwrap();
+        assert_eq!(events.len(), events_before, "a refused move writes no event");
+
+        // A parcel that never left cannot fail a delivery.
+        let b = book_parcel(&store, &owner, "Surat", "");
+        let ndr = store.record_ndr(&b.id, "door_locked", "", &owner).unwrap_err();
+        assert!(ndr.contains("does not come next"), "{ndr}");
+        assert_eq!(store.get_sale(&b.id).unwrap().unwrap().attempt_count, 0);
+
+        // A voided booking has nothing left to deliver.
+        store.void_sale(&b.id, "typed twice", &owner).unwrap();
+        let voided = store
+            .advance_tracking(&b.id, T::OutForDelivery, "", "", &owner)
+            .unwrap_err();
+        assert!(voided.contains("voided"), "{voided}");
+
+        // A run takes every picked parcel or none: one already delivered
+        // in the pick refuses the whole run and moves nothing.
+        let c = book_parcel(&store, &owner, "Rajkot", "");
+        let refused = store
+            .create_manifest(
+                HandoverKind::OwnFleet,
+                "",
+                &rider.id,
+                &[c.id.clone(), a.id.clone()],
+                "",
+                &owner,
+            )
+            .unwrap_err();
+        assert!(refused.contains(&a.awb_no), "{refused}");
+        assert_eq!(store.get_sale(&c.id).unwrap().unwrap().tracking_status, "booked");
+        assert!(store.list_manifests(10).unwrap().is_empty());
+
+        // Failed → sent back now (refused at the door) without waiting.
+        store
+            .create_manifest(HandoverKind::OwnFleet, "", &rider.id, &[c.id.clone()], "", &owner)
+            .unwrap();
+        store.record_ndr(&c.id, "refused", "", &owner).unwrap();
+        let no_reason = store.return_to_origin(&c.id, " ", &owner).unwrap_err();
+        assert!(no_reason.contains("why"), "{no_reason}");
+        store.return_to_origin(&c.id, "Refused", &owner).unwrap();
+        let back = store.get_sale(&c.id).unwrap().unwrap();
+        assert_eq!(back.tracking_status, "rto");
+        // Going back never changes what the booking charged (or the day's
+        // cash): walk-in RTO fee is noted to collect, not added to the bill.
+        assert_eq!(back.total_paise, c.total_paise);
+        assert!(store.reattempt_delivery(&c.id, &owner).is_err());
+
+        // Lanes: nothing left to dispatch; two finished today.
+        let counts = store.ops_lane_counts().unwrap();
+        assert_eq!(counts[OpsLane::ToDispatch.index()], 0);
+        assert_eq!(counts[OpsLane::Done.index()], 2, "{counts:?}");
+        let done = store.ops_board_rows(OpsLane::Done, 50).unwrap();
+        assert!(done.iter().all(|r| r.sale_id != b.id), "voided never shows");
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// The Ops board's batch actions as a paired till sends them (`/books`
+    /// JSON): a run carries exactly the picked AWBs, an old till that sends
+    /// no pick is refused (never "everything booked"), and a batch reports
+    /// each refused parcel without stopping the others.
+    #[test]
+    fn ops_board_batches_through_books_carry_only_the_pick() {
+        use crate::books_op::BooksOp;
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store.add_rider("Ravi", "999", "Bike").unwrap();
+        let a = book_parcel(&store, &owner, "Pune", "");
+        let b = book_parcel(&store, &owner, "Surat", "");
+        let c = book_parcel(&store, &owner, "Agra", "");
+
+        // A till from before the board sends no `awbs`.
+        let old: BooksOp =
+            serde_json::from_str(r#"{"op":"DispatchFleet","rider":"Ravi","note":""}"#).unwrap();
+        let refused = store.apply_books_op(old, &owner).unwrap_err();
+        assert!(refused.contains("Pick the parcels"), "{refused}");
+        assert_eq!(store.get_sale(&a.id).unwrap().unwrap().tracking_status, "booked");
+
+        let run = BooksOp::DispatchFleet {
+            rider: "ravi".into(),
+            note: String::new(),
+            awbs: vec![a.awb_no.clone(), format!("*{}*", b.awb_no)],
+        };
+        let wire = serde_json::to_string(&run).unwrap();
+        let msg = store
+            .apply_books_op(serde_json::from_str(&wire).unwrap(), &owner)
+            .unwrap();
+        assert!(msg.starts_with("2 parcels out with Ravi"), "{msg}");
+        assert_eq!(store.get_sale(&c.id).unwrap().unwrap().tracking_status, "booked");
+
+        // One delivered, then a failed attempt on both: the delivered one
+        // is refused and named, the other is recorded.
+        let delivered = BooksOp::AdvanceTracking {
+            awbs: vec![a.awb_no.clone()],
+            bulk: true,
+            status: "delivered".into(),
+            note: String::new(),
+            pod_filename: String::new(),
+            pod_bytes: Vec::new(),
+        };
+        store.apply_books_op(delivered, &owner).unwrap();
+        let failed = BooksOp::FailedDelivery {
+            awb: String::new(),
+            note: "door_locked".into(),
+            awbs: vec![a.awb_no.clone(), b.awb_no.clone()],
+        };
+        let msg = store.apply_books_op(failed, &owner).unwrap();
+        assert!(msg.contains("· 1 refused"), "{msg}");
+        assert!(msg.contains(&a.awb_no), "the refusal names the parcel: {msg}");
+        assert_eq!(store.get_sale(&b.id).unwrap().unwrap().tracking_status, "ndr");
+
+        // Back to the sender needs a reason.
+        let no_reason = BooksOp::ReturnToSender { awbs: vec![b.awb_no.clone()], reason: " ".into() };
+        assert!(store.apply_books_op(no_reason, &owner).is_err());
+        let back = BooksOp::ReturnToSender { awbs: vec![b.awb_no.clone()], reason: "refused".into() };
+        store.apply_books_op(back, &owner).unwrap();
+        let ev = store.list_tracking_events(&b.id).unwrap().pop().unwrap();
+        assert!(ev.note.contains("Refused"), "a reason code reads as words: {}", ev.note);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn a_carrier_bag_takes_only_the_picked_parcels_booked_with_it() {
+        use crate::manifest::{HandoverKind, OpsLane};
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let blue = store.add_customer_kind("BlueLine", "", "Carrier").unwrap();
+        let dtdc = store.add_customer_kind("DTDC", "", "Carrier").unwrap();
+        let p1 = book_parcel(&store, &owner, "Delhi", &blue.id);
+        let p2 = book_parcel(&store, &owner, "Agra", &dtdc.id);
+        let p3 = book_parcel(&store, &owner, "Noida", "");
+
+        let lane = store.ops_board_rows(OpsLane::ToDispatch, 50).unwrap();
+        assert_eq!(lane.len(), 3);
+        assert_eq!(lane[0].sale_id, p1.id, "oldest first");
+        assert_eq!(lane[0].holder, "BlueLine", "the carrier it was booked with");
+
+        // DTDC's parcel cannot go in BlueLine's bag.
+        let wrong = store
+            .create_manifest(
+                HandoverKind::Carrier,
+                &blue.id,
+                "",
+                &[p1.id.clone(), p2.id.clone()],
+                "",
+                &owner,
+            )
+            .unwrap_err();
+        assert!(wrong.contains("booked with DTDC"), "{wrong}");
+
+        // The picked two go; the third stays in the office.
+        let bag = store
+            .create_manifest(
+                HandoverKind::Carrier,
+                &blue.id,
+                "",
+                &[p1.id.clone(), p3.id.clone(), p1.id.clone()],
+                "",
+                &owner,
+            )
+            .unwrap();
+        assert_eq!(bag.line_count, 2, "a parcel picked twice goes once");
+        let counts = store.ops_lane_counts().unwrap();
+        assert_eq!(counts[OpsLane::ToDispatch.index()], 1);
+        assert_eq!(counts[OpsLane::WithCarrier.index()], 2);
+        let with = store.ops_board_rows(OpsLane::WithCarrier, 50).unwrap();
+        assert!(with.iter().all(|r| r.holder == "BlueLine"));
+        assert_eq!(store.get_sale(&p2.id).unwrap().unwrap().tracking_status, "booked");
         let _ = std::fs::remove_file(path);
     }
 

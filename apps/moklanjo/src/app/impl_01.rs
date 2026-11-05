@@ -15,6 +15,23 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
         }
     }
 
+    /// Status with a known outcome: the face follows what happened, not
+    /// words in the message ("Failed delivery · 2" recorded is a success).
+    fn set_status_as(&mut self, cx: &mut Cx, result: Result<String, String>) {
+        let (kind, msg) = match result {
+            // "· 2 refused" — some went, some did not.
+            Ok(msg) if msg.lines().next().is_some_and(|l| l.contains(" refused")) => {
+                (SnackKind::Warn, msg)
+            }
+            Ok(msg) => (SnackKind::Success, msg),
+            Err(e) => (SnackKind::Error, e),
+        };
+        self.set_status_line_only(cx, &msg);
+        if !msg.trim().is_empty() {
+            self.show_snack(cx, kind, msg);
+        }
+    }
+
     fn set_status_line_only(&mut self, cx: &mut Cx, msg: &str) {
         {
             let mut st = app_state().lock().unwrap();

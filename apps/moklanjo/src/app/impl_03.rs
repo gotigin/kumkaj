@@ -107,7 +107,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
                     ),
                     ReportsNav::Ops => (
                         locale::t(&lang, "facet_ops_title"),
-                        locale::t(&lang, "facet_ops_help"),
+                        locale::t(&lang, "ops_board_help"),
                     ),
                     ReportsNav::Cod => (
                         locale::t(&lang, "facet_cod_title"),
@@ -930,6 +930,9 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(ops_rider_phone), rtl);
         self.align_input(cx, ids!(ops_rider_vehicle), rtl);
         self.align_input(cx, ids!(ops_rider_cod_input), rtl);
+        self.align_input(cx, ids!(settle_rider_input), rtl);
+        self.align_input(cx, ids!(new_rider_input), rtl);
+        self.align_input(cx, ids!(cod_awb_input), rtl);
         self.align_input(cx, ids!(party_attach_note), rtl);
         self.align_input(cx, ids!(reason_input), rtl);
         self.align_input(cx, ids!(sale_attach_note), rtl);

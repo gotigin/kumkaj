@@ -963,10 +963,12 @@ pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     }
 }
 
-/// Normal (≈22 / ≈24) → GS ! 0; Large (≈26 / ≈28) → GS ! 0x11.
-/// Small / custom → `None` (rasterise — Font A cannot go below 1×).
+/// Normal (≈20 / ≈22 / ≈24) → GS ! 0; Large (≈26 / ≈28) → GS ! 0x11.
+/// Other / custom → `None` (rasterise). Thermal default em 20 stays plain
+/// ESC/POS for ASCII — Font A cannot go below 1×, so rasterising "Small"
+/// English only bloated the job.
 fn escpos_gs_bang_for_em(em: f32) -> Option<(u8, usize)> {
-    if (em - 22.0).abs() < 1.5 || (em - 24.0).abs() < 1.5 {
+    if (em - 20.0).abs() < 1.5 || (em - 22.0).abs() < 1.5 || (em - 24.0).abs() < 1.5 {
         Some((0x00, 1))
     } else if (em - 26.0).abs() < 1.5 || (em - 28.0).abs() < 1.5 {
         Some((0x11, 2))

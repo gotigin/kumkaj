@@ -96,6 +96,8 @@ enum SuggestField {
     OpsRider,
     OpsCarrier,
     OpsParty,
+    /// Riders desk: whose COD is being settled.
+    SettleRider,
     /// Parties form: country / state / pincode for the address block.
     PartyCountry,
     PartyState,
@@ -103,7 +105,7 @@ enum SuggestField {
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 31] = [
+    const ALL: [SuggestField; 32] = [
         SuggestField::BookingDestination,
         SuggestField::BookingZone,
         SuggestField::BookingCarrier,
@@ -132,6 +134,7 @@ impl SuggestField {
         SuggestField::OpsRider,
         SuggestField::OpsCarrier,
         SuggestField::OpsParty,
+        SuggestField::SettleRider,
         SuggestField::PartyCountry,
         SuggestField::PartyState,
         SuggestField::PartyPincode,
@@ -167,6 +170,7 @@ impl SuggestField {
             SuggestField::OpsRider => "ops_rider",
             SuggestField::OpsCarrier => "ops_carrier",
             SuggestField::OpsParty => "ops_party",
+            SuggestField::SettleRider => "settle_rider",
             SuggestField::PartyCountry => "party_country",
             SuggestField::PartyState => "party_state",
             SuggestField::PartyPincode => "party_pincode",
@@ -203,6 +207,7 @@ impl SuggestField {
             SuggestField::OpsRider => ids!(ops_rider_input),
             SuggestField::OpsCarrier => ids!(ops_carrier_input),
             SuggestField::OpsParty => ids!(ops_party_input),
+            SuggestField::SettleRider => ids!(settle_rider_input),
             SuggestField::PartyCountry => ids!(party_country_input),
             SuggestField::PartyState => ids!(party_state_input),
             SuggestField::PartyPincode => ids!(party_pincode_input),
@@ -239,6 +244,7 @@ impl SuggestField {
             SuggestField::OpsRider => ids!(ops_rider_suggest),
             SuggestField::OpsCarrier => ids!(ops_carrier_suggest),
             SuggestField::OpsParty => ids!(ops_party_suggest),
+            SuggestField::SettleRider => ids!(settle_rider_suggest),
             SuggestField::PartyCountry => ids!(party_country_suggest),
             SuggestField::PartyState => ids!(party_state_suggest),
             SuggestField::PartyPincode => ids!(party_pincode_suggest),
@@ -581,3 +587,4 @@ fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
 fn first_allowed_work_screen(st: &mut AppState) -> Screen {
     unlocked_home_from(st)
 }
+const OPS_BOARD_LIMIT: usize = 300;

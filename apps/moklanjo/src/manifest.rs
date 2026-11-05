@@ -306,13 +306,13 @@ impl TrackingStatus {
         match self {
             Self::Booked => "trk_booked",
             Self::PickedUp => "trk_picked_up",
-            Self::HandedOver => "trk_handed_over",
+            Self::HandedOver => "lane_with_carrier",
             Self::InTransit => "trk_in_transit",
             Self::OutForDelivery => "out_for_delivery",
             Self::Delivered => "trk_delivered",
-            Self::Ndr => "trk_failed",
+            Self::Ndr => "lane_failed",
             Self::Rto => "trk_rto",
-            Self::Cancelled => "trk_cancelled",
+            Self::Cancelled => "cancelled",
         }
     }
 
@@ -432,16 +432,6 @@ impl OpsLane {
             Self::Done => "lane_done_today",
         }
     }
-
-    pub fn hint_key(self) -> &'static str {
-        match self {
-            Self::ToDispatch => "lane_to_dispatch_hint",
-            Self::WithCarrier => "lane_with_carrier_hint",
-            Self::OutForDelivery => "lane_out_hint",
-            Self::Failed => "lane_failed_hint",
-            Self::Done => "lane_done_hint",
-        }
-    }
 }
 
 /// One parcel on the Ops board: the booking plus where it is now and since
@@ -492,4 +482,44 @@ pub struct TrackingEvent {
     pub lat: f64,
     #[serde(default)]
     pub lon: f64,
+}
+
+#[cfg(test)]
+mod tracking_rules_tests {
+    use super::*;
+
+    /// Every status shows in exactly one lane, and that lane lists it.
+    #[test]
+    fn every_status_has_one_lane_that_lists_it() {
+        for st in TrackingStatus::all() {
+            let lane = st.lane();
+            assert!(lane.statuses().contains(st), "{st:?} in {lane:?}");
+            let others = OpsLane::ALL.iter().filter(|l| l.statuses().contains(st)).count();
+            assert_eq!(others, 1, "{st:?} must sit in one lane");
+        }
+    }
+
+    /// Finished parcels never move; nothing moves to itself; the office
+    /// only dispatches what is still there; only a parcel that went out can
+    /// fail.
+    #[test]
+    fn moves_follow_the_parcel() {
+        use TrackingStatus::*;
+        for st in TrackingStatus::all() {
+            assert!(!st.can_move_to(*st), "{st:?} → itself");
+            if st.is_final() {
+                assert!(
+                    TrackingStatus::all().iter().all(|n| !st.can_move_to(*n)),
+                    "{st:?} is final"
+                );
+            }
+        }
+        assert!(Booked.is_dispatchable() && PickedUp.is_dispatchable());
+        assert!(!OutForDelivery.is_dispatchable() && !Delivered.is_dispatchable());
+        assert!(!Booked.can_move_to(Ndr), "never went out — cannot fail");
+        assert!(OutForDelivery.can_move_to(Ndr) && HandedOver.can_move_to(Ndr));
+        assert!(Ndr.can_move_to(OutForDelivery) && Ndr.can_move_to(Rto));
+        assert!(Booked.can_move_to(Delivered), "collected at the counter");
+        assert!(!Delivered.can_move_to(OutForDelivery));
+    }
 }

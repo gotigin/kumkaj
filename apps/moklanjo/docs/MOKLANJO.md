@@ -110,13 +110,13 @@ Supplier.
 
 | Feature | Target |
 |---------|--------|
-| Tracking statuses on AWB | **Ship** — timeline events + status advance |
+| Tracking statuses on AWB | **Ship** — timeline events + status advance; **the store refuses moves that do not fit the parcel** (2026-11-05): delivered / returned / cancelled are final, a voided booking has nothing to track, only a parcel that went out can fail (`TrackingStatus::can_move_to`, `Store::assert_tracking_move`) |
 | Bulk status update | Multi-select AWBs → one status | **Ship** (2026-10-29) — Ops bulk paste |
-| Barcode scan-to-find / act | **Ship** — Ops AWB field + Find (scanner Enter); card + OFD / Delivered / label / COD |
+| Barcode scan-to-find / act | **Ship** — Ops board scan field (scanner Enter): each scanned / typed / pasted AWB is **picked** in its lane, then one action runs on all picked |
 | POD note / photo | **Ship** — note + WebP POD on sale (`pod_ref` = attachment id); ops desk picker |
-| Manifest / handover list | **Ship** — carrier bag **or** own-fleet rider run |
-| Printable DRS / run sheet | **Ship** — receipt-route print with COD total + sign-off |
-| NDR / failed delivery / RTO | **Ship** — reasons, attempts, reattempt, auto-RTO after N |
+| Manifest / handover list | **Ship** — carrier bag **or** own-fleet rider run with **exactly the picked parcels**, all or none (2026-11-05; it used to take every booked AWB); a parcel booked with another carrier cannot go in this carrier's bag |
+| Printable DRS / run sheet | **Ship** — receipt-route print with COD total + sign-off; Print on **each** recent run / bag (it used to print only the latest) |
+| NDR / failed delivery / RTO | **Ship** — reasons, attempts, out again, auto-RTO after N, and **Return to sender now** (refused / wrong address) with a reason |
 | Docket compliance fields | **Ship** — declared value, insurance, contents, e-way (print only) |
 | Rider COD + pay settlement | **Ship** — expected vs handed-in + per-delivery/kg commission slip |
 | Riders / vans | **Ship** — riders master + assign on manifest |
@@ -129,7 +129,7 @@ Supplier.
 | A4/A5 docket template | **Ship** — consignor/consignee blocks (`format_docket_text`) |
 | Franchise commission statement | **Ship** — period % of margin/revenue per carrier |
 | Tally voucher export | **Ship** — beside existing CSV |
-| RTO charges | **Ship** — fee line on auto-RTO |
+| RTO charges | **Rule** (2026-11-05) — fee due (Settings fixed / % of freight) is noted on the return event and **never added to the original booking** (that invented cash on a past day). With a consignor party: posted as AR (`credit_ledger` kind `rto_fee`) on that account. Walk-in (no party): note only; COD facet lists fees still to collect at the counter |
 | LAN corporate self-booking | **Ship** — `GET/POST /book` HTML on office Wi‑Fi: the company names itself, picks a service; priced by weight with that rate's slab (as at the desk) and **billed to its account** — never cash the drawer does not have (fixed 2026-10-31; it booked as Owner, cash, at the first rate) |
 | Phone-camera barcode | **Ship** — pick image decode; wedge primary |
 | Pickup / dispatch lists | **Ship** — same manifest + status filters |
@@ -228,7 +228,12 @@ layout itself is not mirrored.
 | `lan_images.rs` | Paired devices pull rate photos / party logos from the Server (`GET /photo`, bare file names only) into `…/lan/` copies; refreshed every 6 h, failed fetches retried after 5 min |
 | `app/settings_hub.rs` | Settings hub: one section open at a time, Back closes it to the hub; Alerts (per-user snackbar time) |
 
-**Desk UI:** Ops · COD · Riders are first-class bottom/rail peers that open the Reports screen with the matching facet. **Barcode loop:** scan/type AWB → Find → desk card → Out for delivery / Delivered / Failed delivery (NDR reasons) / Reattempt / Print label / Collect COD. Carrier/own-fleet dispatch, Print run sheet / DRS, COD remit, rider add, Settle rider COD, and period bill run from the same desk; credit limit + period bill also sit on Parties.
+**Desk UI (2026-11-05):** Ops · COD · Riders are first-class bottom/rail peers on the Reports screen, each with **its own body** (one switch per facet — the old shared control wall showed the expense form on COD).
+
+- **Ops is the consignment board.** Lanes in the order the day's work happens — *To dispatch · With carrier · Out for delivery · Failed · Done today* — each with its count. Parcels are cards (AWB, amount; status pill + destination · consignee; pieces · kg · COD · sender; since when · who has it · attempt / reason / next date). **Tap a card (or scan / type / paste AWBs) to pick it**, then act on all picked at once. The action card is **always on screen with only the lane's moves** and a fixed height, so picking never moves the cards under the finger: To dispatch → *Hand to carrier* / *Send with rider*; With carrier → *Out for delivery* / *Mark delivered* / *Failed delivery* + reasons; Out for delivery → *Mark delivered* (+ POD photo for one) / *Failed delivery*; Failed → *Out again* / *Return to sender*; Done → *Collect COD*. One picked parcel shows its history. *Recent runs & bags* lists each with **Print**. A refused parcel in a batch is named, the rest go (`each_awb`); outcome colours come from what happened, not from words in the message (`set_status_as`).
+- **COD** answers the desk's questions: *Delivered — COD to collect*, *COD still on the road*, *Collected — to pay consignors* (per consignor), then Collect (scan) / Remit / Period bill.
+- **Riders** shows each rider's day (out now, delivered today, COD to hand in), then Settle and Add rider.
+Credit limit + period bill also sit on Parties.
 
 **Reports on screen (2026-10-26):** day close, books, the Ops / COD / Riders panels, the scanned-AWB card and every settings summary or list (language, country pack, units by family, booking measures, printers, audit, team, inventory, branches) render as a white card — headings, label/value rows with the value at the right, plain lines — like the Day book's cards, never one run-on paragraph (`ReportText` in `main.rs`: `set_text` → `parse_report` for printable text, `set_rows` for lists built in code). A booking's history, open bills, bank reconciliation, notes & attachments and a party's recent ledger are cards too; booking rows read "AWB · destination", then when / how paid / by whom, with the amount at the right. Right-to-left languages mirror the card (label right, value left).
 
@@ -314,6 +319,29 @@ office — not Khaynjo's screens or features (no Kumkaj core; copy-then-diverge)
 | Tests for UI rules / generated server labels | **Adopted** | `shell_tests/settings_hub_tests.rs`, `local_servers` |
 | Input labels visible once a field is filled (floating caption) | **Adopted**: the caption had no font (`text_style +:` on an unstyled `draw_caption`), so every filled field showed a blank band; now `theme.font_regular`. Cart / totals fields beside their own label: no caption; the line note keeps one; Rates price placeholder "Price", not "0" | `FieldInput` / `CartField` in `ui_script.rs` |
 | Static UI translated in all 29 languages | **Restored**: 13 keys fell back to English (`shipped_languages_translate_chrome` was red); new keys land translated | `locale_chrome.rs` |
+
+### Round 2 (2026-11-05): the work surface
+
+Khaynjo's Floor and Kitchen matured into **work boards**: things in coloured
+states, tap one, only the moves that fit, and the Server refuses the rest.
+Moklanjo's Ops / COD / Riders were still a text report over every control in
+the app (the "generic till with courier labels" the account manager met).
+Adopted as approaches, in a courier shape — a pipeline of parcels, not a
+spatial grid:
+
+| Lesson (Khaynjo) | In Moklanjo | Where |
+|---|---|---|
+| A live board of things in states beats a report (Floor tiles, KDS tickets) | **Adopted, courier-shaped**: lanes by where the parcel is in the day; cards, not tiles; counts on the lanes | `ops_board` in `ui_script.rs`, `widgets/ops_board.rs`, `Store::ops_board_rows` / `ops_lane_counts` |
+| Pick the object, then see only what fits it (ticket row → Cancel / NC / Move) | **Adopted, improved for batches**: pick many (tap / scan / paste), one action runs on all; the action card never changes height while picking | `app/ops_board.rs` |
+| The store refuses, hiding a button is not enough (`free_table` refuses while money is due) | **Adopted**: tracking state machine checked on every write — desk, pasted list, paired till, rider sync | `manifest::TrackingStatus::can_move_to`, `Store::assert_tracking_move`, `create_manifest`, `record_ndr` |
+| What the person picks is what runs | **Fixed**: a run / bag carried every booked AWB; now exactly the pick, all or none; an empty pick from an old till is refused | `courier_ops_view::{dispatch_to_rider, handover_to_carrier}`, `BooksOp` `awbs` |
+| One unit of work per step | **Adopted**: tracking, NDR, reattempt, return each one transaction | `Store::in_transaction` |
+| Tolerant taps under `axis_lock` (a steady press or 6 px jitter opened nothing) | **Adopted** for Ops cards and the menu cards | `finger_up_is_tap` in `helpers_books.rs` |
+| Human words, shop's date order / clock, all languages | **Adopted**: status pills / lanes / history localised (29 languages); no raw `handed_over`, `own_fleet` or ISO stamps on screen | `TrackingStatus::label_key`, `ops_when`, `locale_chrome.rs` |
+
+Not adopted: Khaynjo's fixed-size tile grid (parcels are read as lines of
+text — destination, consignee, COD — so variable-height cards in one column
+read better at every width, phones included).
 
 Considered and **not** adopted: Khaynjo's `remember_content_row` without a
 redraw (its fix for a cart whose rows open and close; Moklanjo's lists have no

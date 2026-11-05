@@ -213,21 +213,37 @@ pub enum BooksOp {
     FailedDelivery {
         awb: String,
         note: String,
+        /// Several picked on the Ops board (each its own unit; `awb` when empty).
+        #[serde(default)]
+        awbs: Vec<String>,
     },
     Reattempt {
         awb: String,
+        #[serde(default)]
+        awbs: Vec<String>,
+    },
+    /// Send parcels back to the consignor now (Ops board → Failed).
+    ReturnToSender {
+        awbs: Vec<String>,
+        reason: String,
     },
     SettleRiderCod {
         rider: String,
         handed: String,
     },
+    /// One rider run with exactly the parcels picked on the Ops board.
     DispatchFleet {
         rider: String,
         note: String,
+        #[serde(default)]
+        awbs: Vec<String>,
     },
+    /// One carrier bag with exactly the parcels picked on the Ops board.
     CarrierHandover {
         carrier: String,
         note: String,
+        #[serde(default)]
+        awbs: Vec<String>,
     },
     CollectCod {
         awb: String,
@@ -355,6 +371,7 @@ impl BooksOp {
             Self::AdvanceTracking { .. } => "Advance tracking",
             Self::FailedDelivery { .. } => "Failed delivery",
             Self::Reattempt { .. } => "Reattempt",
+            Self::ReturnToSender { .. } => "Return to sender",
             Self::SettleRiderCod { .. } => "Settle rider COD",
             Self::DispatchFleet { .. } => "Dispatch own fleet",
             Self::CarrierHandover { .. } => "Carrier handover",
@@ -438,6 +455,7 @@ impl BooksOp {
             Self::AdvanceTracking { .. } => "Tracking advanced".into(),
             Self::FailedDelivery { .. } => "Failed delivery recorded".into(),
             Self::Reattempt { .. } => "Reattempt recorded".into(),
+            Self::ReturnToSender { .. } => "Returning to sender".into(),
             Self::SettleRiderCod { .. } => "Rider COD settled".into(),
             Self::DispatchFleet { .. } => "Dispatched to rider".into(),
             Self::CarrierHandover { .. } => "Handed to carrier".into(),
@@ -503,6 +521,7 @@ fn csv_summary(added: usize, skipped: usize, problems: &[String]) -> String {
 
 fn tracking_status(raw: &str) -> Result<TrackingStatus, String> {
     match raw {
+        "in_transit" => Ok(TrackingStatus::InTransit),
         "out_for_delivery" => Ok(TrackingStatus::OutForDelivery),
         "delivered" => Ok(TrackingStatus::Delivered),
         other => Err(format!("Unknown tracking status '{other}'")),
@@ -1172,12 +1191,13 @@ impl Store {
                 let status = tracking_status(&status)?;
                 if bulk {
                     let (ok, errs) = self.bulk_advance_tracking(&awbs, status, &note, actor)?;
-                    let prefix = if status == TrackingStatus::Delivered {
-                        "Bulk delivered"
-                    } else {
-                        "Bulk OFD"
-                    };
-                    let mut m = format!("{prefix} · ok {ok}");
+                    if ok == 0 {
+                        return Err(errs.join("\n"));
+                    }
+                    let mut m = format!("{} · {ok}", status.label());
+                    if !errs.is_empty() {
+                        m.push_str(&format!(" · {} refused", errs.len()));
+                    }
                     for e in errs.iter().take(5) {
                         m.push('\n');
                         m.push_str(e);
@@ -1200,7 +1220,7 @@ impl Store {
                     )
                 }
             }
-            BooksOp::FailedDelivery { awb, note } => {
+            BooksOp::FailedDelivery { awb, note, awbs } => {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to record failed delivery".into());
                 }
@@ -1217,13 +1237,36 @@ impl Store {
                 } else {
                     reason
                 };
-                courier_ops_view::record_failed_delivery(self, &awb, &reason, &next, actor)
+                if awbs.is_empty() {
+                    courier_ops_view::record_failed_delivery(self, &awb, &reason, &next, actor)
+                } else {
+                    courier_ops_view::each_awb(self, &awbs, "Failed delivery", |sale| {
+                        self.record_ndr(&sale.id, &reason, &next, actor).map(|_| ())
+                    })
+                }
             }
-            BooksOp::Reattempt { awb } => {
+            BooksOp::Reattempt { awb, awbs } => {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to reattempt delivery".into());
                 }
-                courier_ops_view::reattempt_awb(self, &awb, actor)
+                if awbs.is_empty() {
+                    courier_ops_view::reattempt_awb(self, &awb, actor)
+                } else {
+                    courier_ops_view::each_awb(self, &awbs, "Out again", |sale| {
+                        self.reattempt_delivery(&sale.id, actor)
+                    })
+                }
+            }
+            BooksOp::ReturnToSender { awbs, reason } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to send parcels back".into());
+                }
+                if reason.trim().is_empty() {
+                    return Err("Say why it goes back (refused, wrong address, …)".into());
+                }
+                courier_ops_view::each_awb(self, &awbs, "Returning to sender", |sale| {
+                    self.return_to_origin(&sale.id, &reason, actor)
+                })
             }
             BooksOp::SettleRiderCod { rider, handed } => {
                 if !actor.is_owner() && !actor.can_access_sales() {
@@ -1231,17 +1274,17 @@ impl Store {
                 }
                 courier_ops_view::settle_rider_cod_line(self, &rider, &handed, actor)
             }
-            BooksOp::DispatchFleet { rider, note } => {
+            BooksOp::DispatchFleet { rider, note, awbs } => {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to dispatch fleet".into());
                 }
-                courier_ops_view::dispatch_booked_to_rider(self, &rider, &note, actor)
+                courier_ops_view::dispatch_to_rider(self, &rider, &awbs, &note, actor)
             }
-            BooksOp::CarrierHandover { carrier, note } => {
+            BooksOp::CarrierHandover { carrier, note, awbs } => {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to hand over to carrier".into());
                 }
-                courier_ops_view::handover_booked_to_carrier(self, &carrier, &note, actor)
+                courier_ops_view::handover_to_carrier(self, &carrier, &awbs, &note, actor)
             }
             BooksOp::CollectCod { awb } => {
                 if !actor.is_owner() && !actor.can_access_sales() {

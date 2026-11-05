@@ -1223,6 +1223,39 @@ fn en(key: &str) -> String {
         "onboard_template_tmpl" => "Name the place if you want, then pick how to start.",
         "tmpl_blurb" => "Courier books and booking desk: consignors, carriers, day book, AWB.",
         "tmpl_how" => "Book parcels at the desk; Day book for today; tabs for rates, parties, reports.",
+        "trk_booked" => "Booked",
+        "trk_picked_up" => "Picked up",
+        "trk_in_transit" => "In transit",
+        "trk_delivered" => "Delivered",
+        "trk_rto" => "Returning to sender",
+        "lane_to_dispatch" => "To dispatch",
+        "lane_with_carrier" => "With carrier",
+        "lane_failed" => "Failed",
+        "lane_done_today" => "Done today",
+        "ops_board_help" => "Parcels by where they are in today's work. Tap parcels (or scan them) to pick them, then act on all picked at once — each lane offers only the moves that fit it.",
+        "lane_empty" => "Nothing here right now.",
+        "picked_fmt" => "{n} picked",
+        "pick_all" => "Pick all",
+        "bag_for_carrier" => "Hand to carrier",
+        "send_with_rider" => "Send with rider",
+        "out_again" => "Out again",
+        "return_to_sender" => "Return to sender",
+        "runs_bags_heading" => "Recent runs & bags",
+        "print_word" => "Print",
+        "bag_word" => "Carrier bag",
+        "run_word" => "Rider run",
+        "parcels_fmt" => "{n} parcels",
+        "parcel_history" => "History",
+        "attempt_fmt" => "Attempt {n}",
+        "pieces_short_fmt" => "{n} pcs",
+        "note_reason_ph" => "Note or reason",
+        "ops_pick_first" => "Pick parcels first — tap them or scan them",
+        "cod_to_collect" => "Delivered — COD to collect",
+        "cod_on_road" => "COD still on the road",
+        "cod_owed_consignors" => "Collected — to pay consignors",
+        "cod_rto_fees" => "RTO fees to collect",
+        "cod_to_hand_in" => "COD to hand in",
+        "parcel_one_fmt" => "{n} parcel",
         "facet_bank_title" => "Reports",
         "facet_bank_help" => "Day books, party aging, bank posts, and period P&L.",
         "facet_ops_title" => "Consignments & dispatch",
@@ -1321,6 +1354,12 @@ pub fn t_overlay(lang: &str, key: &str, overlays: &[(&str, &str)]) -> String {
         return (*value).into();
     }
     t(lang, key)
+}
+
+/// "1 parcel" / "3 parcels" in `lang`.
+pub fn parcels(lang: &str, n: i64) -> String {
+    let key = if n == 1 { "parcel_one_fmt" } else { "parcels_fmt" };
+    t(lang, key).replace("{n}", &n.to_string())
 }
 
 /// Minimal UI string table — expand per language over time.
@@ -1979,6 +2018,9 @@ mod tests {
             "weight_unit_code_ph", "who_unlocking", "write_off_ap",
             "write_off_heading", "write_off_nil", "your_brand", "your_favorites",
             "your_items", "zone_name_ph", "zone_ph", "contents_ph",
+            "parcel_one_fmt",
+            "cod_to_collect", "cod_on_road", "cod_owed_consignors", "cod_to_hand_in",
+            "trk_booked", "trk_picked_up", "trk_in_transit", "trk_delivered", "trk_rto", "lane_to_dispatch", "lane_with_carrier", "lane_failed", "lane_done_today", "ops_board_help", "lane_empty", "picked_fmt", "pick_all", "bag_for_carrier", "send_with_rider", "out_again", "return_to_sender", "runs_bags_heading", "print_word", "bag_word", "run_word", "parcels_fmt", "parcel_history", "attempt_fmt", "pieces_short_fmt", "note_reason_ph", "ops_pick_first",
         ];
         // Every gap at once, so one run says everything still to translate.
         let mut gaps = Vec::new();

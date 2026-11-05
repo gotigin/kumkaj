@@ -216,6 +216,20 @@ struct AppState {
     rail_collapsed: bool,
     /// Which Reports facet is showing (bank / consignments / COD / riders).
     reports_nav: ReportsNav,
+    /// Ops board: the lane on screen and its parcels (one store read per
+    /// refresh, never per row), parcels per lane, and what the person picked
+    /// (sale ids, in pick order — the batch every action runs on).
+    ops_lane: manifest::OpsLane,
+    ops_rows: Vec<manifest::OpsRow>,
+    ops_counts: [usize; 5],
+    ops_picked: Vec<String>,
+    /// Recent carrier bags / rider runs (Print picks one).
+    ops_runs: Vec<manifest::Manifest>,
+    /// Tracking history of the one picked parcel (empty unless exactly one).
+    ops_history: Vec<ReportRow>,
+    /// Reason chip tapped for a failed delivery / return (its label fills the
+    /// note; an edited note is sent as typed instead).
+    ops_reason: Option<manifest::NdrReason>,
     /// Which bank-books report chip is selected (must match `day_close_text` body).
     books_report_kind: BooksReportKind,
     /// The field whose "type or pick" list is open, and its rows.

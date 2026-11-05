@@ -1,226 +1,8 @@
 impl App {
     fn handle_actions_ops(&mut self, cx: &mut Cx, actions: &Actions) {
-        // Moklanjo ops desk actions (Ops / COD / Riders facets on Reports).
-        {
-            let awb_raw = self.ui.text_input(cx, ids!(ops_awb_input)).text();
-            let awb = courier_ops_view::normalize_awb_input(&awb_raw);
-            // Wedge scanners usually send Enter after the code.
-            let awb_enter = self
-                .ui
-                .text_input(cx, ids!(ops_awb_input))
-                .returned(actions)
-                .is_some();
-            let find_clicked = self.ui.button(cx, ids!(ops_find_awb)).clicked(actions);
-            if (find_clicked || awb_enter) && !awb.is_empty() {
-                if awb != awb_raw.trim() {
-                    self.ui
-                        .text_input(cx, ids!(ops_awb_input))
-                        .set_text(cx, &awb);
-                }
-                match self.resolve_ops_awb_card(cx, &awb) {
-                    Ok(card) => {
-                        self.set_status(cx, format!("Found {awb}"));
-                        let _ = card;
-                    }
-                    Err(e) => self.set_status(cx, e),
-                }
-                self.sync_chrome(cx);
-            }
-
-            let note = self.ui.text_input(cx, ids!(ops_note_input)).text();
-            let rider = self.ui.text_input(cx, ids!(ops_rider_input)).text();
-            let carrier = self.ui.text_input(cx, ids!(ops_carrier_input)).text();
-            let party = self.ui.text_input(cx, ids!(ops_party_input)).text();
-            let rider_phone = self.ui.text_input(cx, ids!(ops_rider_phone)).text();
-            let rider_vehicle = self.ui.text_input(cx, ids!(ops_rider_vehicle)).text();
-
-            let mut ops_msg: Option<Result<String, String>> = None;
-            if self.ui.button(cx, ids!(ops_pod_pick)).clicked(actions) {
-                self.attach_pick_ops_pod(cx);
-            }
-            // NDR reason chips fill the note field for Failed delivery.
-            let ndr_chip = if self.ui.button(cx, ids!(ops_ndr_door)).clicked(actions) {
-                Some("door_locked")
-            } else if self.ui.button(cx, ids!(ops_ndr_refused)).clicked(actions) {
-                Some("refused")
-            } else if self.ui.button(cx, ids!(ops_ndr_address)).clicked(actions) {
-                Some("address_wrong")
-            } else if self.ui.button(cx, ids!(ops_ndr_unavailable)).clicked(actions) {
-                Some("customer_unavailable")
-            } else if self.ui.button(cx, ids!(ops_ndr_other)).clicked(actions) {
-                Some("other")
-            } else {
-                None
-            };
-            if let Some(reason) = ndr_chip {
-                self.ui
-                    .text_input(cx, ids!(ops_note_input))
-                    .set_text(cx, reason);
-                self.set_status(cx, format!("NDR reason: {reason}"));
-            }
-            let bulk_raw = self.ui.text_input(cx, ids!(ops_bulk_awb_input)).text();
-            let bulk_awbs = store::Store::parse_awb_list(&bulk_raw);
-            if self.ui.button(cx, ids!(ops_advance_ofd)).clicked(actions) {
-                ops_msg = Some(self.books_advance_tracking(
-                    &awb,
-                    &bulk_awbs,
-                    &note,
-                    "out_for_delivery",
-                ));
-            } else if self
-                .ui
-                .button(cx, ids!(ops_advance_delivered))
-                .clicked(actions)
-            {
-                ops_msg = Some(self.books_advance_tracking(
-                    &awb,
-                    &bulk_awbs,
-                    &note,
-                    "delivered",
-                ));
-            } else if self.ui.button(cx, ids!(ops_label)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let st = app_state().lock().unwrap();
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    courier_ops_view::print_label(store, &awb)
-                })());
-            } else if self.ui.button(cx, ids!(ops_ndr)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::FailedDelivery {
-                        awb: awb.clone(),
-                        note: note.clone(),
-                    })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self.ui.button(cx, ids!(ops_reattempt)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::Reattempt { awb: awb.clone() })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self.ui.button(cx, ids!(ops_print_run_sheet)).clicked(actions)
-                || self.ui.button(cx, ids!(ops_print_drs)).clicked(actions)
-            {
-                ops_msg = Some((|| {
-                    let st = app_state().lock().unwrap();
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    courier_ops_view::print_latest_run_sheet(store)
-                })());
-            } else if self
-                .ui
-                .button(cx, ids!(ops_settle_rider_cod))
-                .clicked(actions)
-            {
-                let handed = self.ui.text_input(cx, ids!(ops_rider_cod_input)).text();
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::SettleRiderCod {
-                        rider: rider.clone(),
-                        handed,
-                    })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self
-                .ui
-                .button(cx, ids!(ops_dispatch_fleet))
-                .clicked(actions)
-            {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::DispatchFleet {
-                        rider: rider.clone(),
-                        note: note.clone(),
-                    })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self
-                .ui
-                .button(cx, ids!(ops_handover_carrier))
-                .clicked(actions)
-            {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::CarrierHandover {
-                        carrier: carrier.clone(),
-                        note: note.clone(),
-                    })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self.ui.button(cx, ids!(ops_cod_collect)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::CollectCod { awb: awb.clone() })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self.ui.button(cx, ids!(ops_cod_remit)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::RemitCod {
-                        party: party.clone(),
-                    })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self.ui.button(cx, ids!(ops_add_rider)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::AddRider {
-                        name: rider.clone(),
-                        phone: rider_phone.clone(),
-                        vehicle: rider_vehicle.clone(),
-                    })?;
-                    st.reports_nav = ReportsNav::Riders;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            } else if self.ui.button(cx, ids!(ops_period_bill)).clicked(actions) {
-                ops_msg = Some((|| {
-                    let mut st = app_state().lock().unwrap();
-                    let msg = st.books_op(BooksOp::PeriodBill {
-                        party_name: party.clone(),
-                    })?;
-                    if st.device_role != DeviceRole::Client {
-                        st.refresh_reports_facet()?;
-                    }
-                    Ok(msg)
-                })());
-            }
-            if let Some(result) = ops_msg {
-                match result {
-                    Ok(msg) => {
-                        self.set_status(cx, msg);
-                        if !awb.is_empty() {
-                            let _ = self.resolve_ops_awb_card(cx, &awb);
-                        }
-                    }
-                    Err(e) => self.set_status(cx, e),
-                }
-                self.sync_chrome(cx);
-            }
-        }
+        // Ops board (its own module), then the COD and Riders desks.
+        self.handle_ops_board_actions(cx, actions);
+        self.handle_cod_riders_desks(cx, actions);
         if self.ui.button(cx, ids!(reports_copy)).clicked(actions) {
             let text = app_state().lock().unwrap().day_close_text.clone();
             if text.trim().is_empty() {
@@ -406,50 +188,75 @@ impl App {
 
     }
 
-    /// Out for delivery / delivered, one AWB or a pasted list. POD bytes go
-    /// with a single AWB; the shop attaches them.
-    fn books_advance_tracking(
-        &mut self,
-        awb: &str,
-        bulk_awbs: &[String],
-        note: &str,
-        status: &str,
-    ) -> Result<String, String> {
-        let mut st = app_state().lock().unwrap();
-        let use_bulk = bulk_awbs.len() > 1 || (bulk_awbs.len() == 1 && awb.is_empty());
-        let (pod_bytes, pod_filename) = if use_bulk {
-            (Vec::new(), String::new())
-        } else {
-            match st.pending_ops_pod.take() {
-                Some(path) => {
-                    let bytes = std::fs::read(&path)
-                        .map_err(|e| format!("Could not read the POD photo: {e}"))?;
-                    let filename = path
-                        .file_name()
-                        .and_then(|n| n.to_str())
-                        .unwrap_or("pod.webp")
-                        .to_string();
-                    (bytes, filename)
-                }
-                None => (Vec::new(), String::new()),
-            }
-        };
-        let awbs = if use_bulk {
-            bulk_awbs.to_vec()
-        } else {
-            vec![awb.to_string()]
-        };
-        let msg = st.books_op(BooksOp::AdvanceTracking {
-            awbs,
-            bulk: use_bulk,
-            status: status.to_string(),
-            note: note.to_string(),
-            pod_filename,
-            pod_bytes,
-        })?;
-        if st.device_role != DeviceRole::Client {
-            st.refresh_reports_facet()?;
+    /// COD desk (collect a parcel's COD, pay a consignor out, period bill)
+    /// and Riders desk (settle what a rider hands in, add a rider).
+    fn handle_cod_riders_desks(&mut self, cx: &mut Cx, actions: &Actions) {
+        let collect = self.ui.button(cx, ids!(cod_collect)).clicked(actions)
+            || self.ui.text_input(cx, ids!(cod_awb_input)).returned(actions).is_some();
+        let remit = self.ui.button(cx, ids!(ops_cod_remit)).clicked(actions);
+        let bill = self.ui.button(cx, ids!(ops_period_bill)).clicked(actions);
+        let settle = self.ui.button(cx, ids!(ops_settle_rider_cod)).clicked(actions);
+        let add = self.ui.button(cx, ids!(ops_add_rider)).clicked(actions);
+        if !(collect || remit || bill || settle || add) {
+            return;
         }
-        Ok(msg)
+        let text = |s: &mut Self, cx: &mut Cx, id: &[LiveId]| s.ui.text_input(cx, id).text();
+        let cod_awbs = store::Store::parse_awb_list(&text(self, cx, ids!(cod_awb_input)));
+        let party = text(self, cx, ids!(ops_party_input));
+        let settle_rider = text(self, cx, ids!(settle_rider_input));
+        let handed = text(self, cx, ids!(ops_rider_cod_input));
+        let new_rider = text(self, cx, ids!(new_rider_input));
+        let phone = text(self, cx, ids!(ops_rider_phone));
+        let vehicle = text(self, cx, ids!(ops_rider_vehicle));
+        let result = (|| -> Result<String, String> {
+            let mut st = app_state().lock().unwrap();
+            let msg = if collect {
+                if cod_awbs.is_empty() {
+                    return Err(st.t("awb_scan_ph"));
+                }
+                let mut done = Vec::new();
+                for awb in cod_awbs {
+                    done.push(st.books_op(BooksOp::CollectCod { awb })?);
+                }
+                done.join("\n")
+            } else if remit {
+                st.books_op(BooksOp::RemitCod { party })?
+            } else if bill {
+                st.books_op(BooksOp::PeriodBill { party_name: party })?
+            } else if settle {
+                st.books_op(BooksOp::SettleRiderCod {
+                    rider: settle_rider,
+                    handed,
+                })?
+            } else {
+                st.books_op(BooksOp::AddRider {
+                    name: new_rider,
+                    phone,
+                    vehicle,
+                })?
+            };
+            if st.device_role != DeviceRole::Client {
+                st.refresh_reports_facet()?;
+            }
+            Ok(msg)
+        })();
+        if result.is_ok() {
+            {
+                let clear: &[&[LiveId]] = if collect {
+                    &[ids!(cod_awb_input)]
+                } else if settle {
+                    &[ids!(ops_rider_cod_input)]
+                } else if add {
+                    &[ids!(new_rider_input), ids!(ops_rider_phone), ids!(ops_rider_vehicle)]
+                } else {
+                    &[]
+                };
+                for id in clear {
+                    self.ui.text_input(cx, id).set_text(cx, "");
+                }
+            }
+        }
+        self.set_status_as(cx, result);
+        self.sync_chrome(cx);
     }
 }

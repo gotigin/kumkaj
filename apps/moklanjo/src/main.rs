@@ -12,14 +12,14 @@ pub use makepad_widgets;
 #[cfg(target_os = "android")]
 use crate::{
     books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images,
-    local_servers, locale, menu_images, net, notify, phone, precise, print_share, rates, snack,
-    startup, store, suggest, thumbs,
+    local_servers, locale, manifest, menu_images, net, notify, phone, precise, print_share, rates,
+    snack, startup, store, suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
     books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, lan_images,
-    local_servers, locale, menu_images, net, notify, phone, precise, print_share, rates, snack,
-    startup, store, suggest, thumbs, uninstall_wipe,
+    local_servers, locale, manifest, menu_images, net, notify, phone, precise, print_share, rates,
+    snack, startup, store, suggest, thumbs, uninstall_wipe,
 };
 use snack::SnackKind;
 
@@ -71,6 +71,7 @@ include!("widgets/product_menu_floor.rs");
 include!("widgets/sales_people.rs");
 include!("widgets/pick_lists.rs");
 include!("widgets/misc_lists.rs");
+include!("widgets/ops_board.rs");
 include!("widgets/report_sidebar.rs");
 include!("info_help.rs");
 include!("app/defs.rs");
@@ -90,6 +91,7 @@ include!("app/impl_ha_02.rs");
 include!("app/impl_ha_03.rs");
 include!("app/impl_ha_04.rs");
 include!("app/impl_ha_05.rs");
+include!("app/ops_board.rs");
 include!("app/impl_ha_06.rs");
 include!("app/match_misc.rs");
 include!("app/main_impl.rs");
@@ -98,3 +100,4 @@ include!("shell_tests/report_text_tests.rs");
 include!("shell_tests/settings_hub_tests.rs");
 include!("shell_tests/booking_desk_tests.rs");
 include!("shell_tests/info_help_layout_tests.rs");
+include!("shell_tests/ops_board_tests.rs");

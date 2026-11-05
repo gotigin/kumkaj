@@ -390,20 +390,6 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         self.set_status(cx, "Opening file picker…");
     }
 
-    /// Resolve typed/scanned AWB into the ops desk card (+ reports pane for copy).
-    fn resolve_ops_awb_card(&mut self, cx: &mut Cx, awb: &str) -> Result<String, String> {
-        let card = {
-            let st = app_state().lock().unwrap();
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            courier_ops_view::awb_desk_card(store, awb)?
-        };
-        self.ui
-            .widget(cx, ids!(ops_awb_card))
-            .set_text(cx, &plain_display_text(&card));
-        app_state().lock().unwrap().day_close_text = card.clone();
-        Ok(card)
-    }
-
     fn attach_pick_ops_pod(&mut self, cx: &mut Cx) {
         app_state().lock().unwrap().attach_pick = Some(AttachPickTarget::OpsPod);
         let dialog = FileDialog::new()

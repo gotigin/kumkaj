@@ -1281,18 +1281,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 "(no attachments yet — log an expense)",
             );
         }
-        {
-            let pod = app_state()
-                .lock()
-                .unwrap()
-                .pending_ops_pod
-                .as_ref()
-                .map(|p| format!("POD ready: {}", p.display()))
-                .unwrap_or_else(|| "No POD photo selected".into());
-            self.ui
-                .widget(cx, ids!(ops_pod_status))
-                .set_text(cx, &plain_display_text(&pod));
-        }
         self.set_report_rows(cx, ids!(sale_history_label), sale_history);
         self.ui
             .widget(cx, ids!(amend_natural_label))
@@ -1745,66 +1733,23 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 // Raw rows — ReportText paints per-Kv eyes + masks at draw time.
                 self.set_report_rows(cx, ids!(reports_label), parse_report(&day_close));
             }
-            let ops_facet = !matches!(reports_nav, ReportsNav::Bank);
-            self.ui.view(cx, ids!(ops_desk)).set_visible(cx, ops_facet);
+            // One switch per facet: the Ops board, the COD desk, the Riders
+            // desk, or the books (a list of ids drifted — COD once showed the
+            // expense form's "Paid by" and attachments).
+            let bank = reports_nav == ReportsNav::Bank;
+            let ops = reports_nav == ReportsNav::Ops;
+            self.ui.view(cx, ids!(reports_books_btns)).set_visible(cx, bank);
+            self.ui.view(cx, ids!(reports_books_body)).set_visible(cx, bank);
+            self.ui.view(cx, ids!(ops_board)).set_visible(cx, ops);
+            self.ui.widget(cx, ids!(reports_label)).set_visible(cx, !ops);
             self.ui
-                .view(cx, ids!(reports_books_btns))
-                .set_visible(cx, !ops_facet);
+                .view(cx, ids!(cod_desk))
+                .set_visible(cx, reports_nav == ReportsNav::Cod);
             self.ui
-                .widget(cx, ids!(reports_expense_heading))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .text_input(cx, ids!(expense_amount_input))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .text_input(cx, ids!(expense_note_input))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .button(cx, ids!(expense_add))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .widget(cx, ids!(reports_bank_heading))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .text_input(cx, ids!(bank_amount_input))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .text_input(cx, ids!(bank_note_input))
-                .set_visible(cx, !ops_facet);
-            for id in [
-                ids!(bank_till_to_bank),
-                ids!(bank_bank_to_till),
-                ids!(bank_in),
-                ids!(bank_out),
-            ] {
-                self.ui.button(cx, id).set_visible(cx, !ops_facet);
-            }
-            // Reconciliation + CSV widgets live in the same facet.
-            self.ui.widget(cx, ids!(bank_recon_label)).set_visible(cx, !ops_facet);
-            for id in [ids!(exp_t1_row), ids!(exp_t2_row)] {
-                self.ui.view(cx, id).set_visible(cx, !ops_facet);
-            }
-            self.ui
-                .text_input(cx, ids!(exp_part2))
-                .set_visible(cx, !ops_facet);
-            self.ui
-                .text_input(cx, ids!(bank_clear_input))
-                .set_visible(cx, !ops_facet);
-            for id in [
-                ids!(bank_mark_cleared),
-                ids!(bank_mark_uncleared),
-                ids!(csv_copy_day),
-                ids!(csv_copy_outstanding),
-                ids!(csv_copy_parties),
-                ids!(csv_copy_items),
-                ids!(csv_copy_ledger),
-                ids!(csv_import_parties),
-                ids!(csv_import_items),
-                ids!(csv_import_pincodes),
-                ids!(csv_import_carrier_bill),
-                ids!(csv_copy_carrier_bill),
-            ] {
-                self.ui.button(cx, id).set_visible(cx, !ops_facet);
+                .view(cx, ids!(riders_desk))
+                .set_visible(cx, reports_nav == ReportsNav::Riders);
+            if ops && screen == Screen::Reports {
+                self.paint_ops_board(cx);
             }
             self.ui
                 .widget(cx, ids!(inventory_label))

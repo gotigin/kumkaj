@@ -66,7 +66,7 @@ Server before pairing extra tills on office Wi‑Fi.
 | **Parties** | Consignors and carriers |
 | **Bookings** | History, amend, void, refund |
 | **Reports** | Opens as **Bank book & P&L** — day / month / outstanding / bank |
-| **Ops** | Find / Scan AWB, label, status, dispatch |
+| **Ops** | Board in lanes: scan or tap to pick, bag / send / deliver / fail / return, print runs |
 | **Lock** | Lock the desk |
 
 Also on the bar when you need them: **COD**, **Riders**, **Day close**,
@@ -349,14 +349,22 @@ connectors; the counter runs offline without them.
 
 ## Part 7 — Ops after the rush
 
-**Ops** → `AWB / scan barcode` → **Find / Scan AWB**.
+**Ops** is a board of today's parcels in lanes: **To dispatch · With carrier ·
+Out for delivery · Failed · Done today**.
 
-From the desk card (as needed): **Print AWB label**, status (out for delivery /
-delivered / failed / reattempt), NDR, dispatch / handover, run sheet / DRS,
-Collect / Remit COD, period bill, rider settle.
+1. Scan each parcel into `AWB / scan barcode` (the scanner's Enter picks it), or
+   tap its card. The board jumps to that parcel's lane.
+2. Act on everything picked at once — only the lane's moves are offered:
+   evening bag → type the carrier → **Hand to carrier**; own fleet → type the
+   rider → **Send with rider**; when riders return → **Mark delivered** or pick a
+   reason → **Failed delivery**; failed parcels → **Out again** or **Return to
+   sender**.
+3. **Recent runs & bags** → **Print** the run sheet / DRS of the one you need.
 
-Start Ops only after Booking has produced AWBs. Own fleet also has **Riders**;
-COD remittance also on **COD**.
+A parcel booked with one carrier cannot go in another carrier's bag, and a
+delivered parcel cannot be sent out again — the books refuse it and say why.
+**COD** shows what riders and carriers still owe and what you owe each
+consignor; **Riders** shows each rider's day and settles what they hand in.
 
 ------------------------------------------------------------------------
 
@@ -401,7 +409,7 @@ Practice names. Aim for “this is my counter” plus clear hisab.
 | 10–12 | Reports: Outstanding · Profit & loss (month) · Balance sheet | Party-wise and monthly picture |
 | 12–13 | Account invoice / amend if asked | Invoice vs receipt; corrections with reason |
 | 13–14 | Pay out → **Expense voucher** | So net today is honest |
-| 14–15 | Ops → **Find / Scan AWB**; optional second till | After the rush; same books on Wi‑Fi |
+| 14–15 | Ops → scan parcels → **Hand to carrier** / **Send with rider**; optional second till | After the rush; same books on Wi‑Fi |
 
 If he gives a real shop or carrier name, add it live under Parties.
 
@@ -435,7 +443,7 @@ If he gives a real shop or carrier name, add it live under Parties.
 
 **Ops and demo**
 
-- [ ] Ops **Find / Scan AWB** on a booked AWB  
+- [ ] Ops: scan a booked AWB → it is picked in **To dispatch** → **Send with rider**  
 - [ ] Explain cash vs account and they-owe-us vs we-owe-them  
 - [ ] Run Part 9 twice in ≤15 minutes  
 
@@ -454,7 +462,7 @@ If he gives a real shop or carrier name, add it live under Parties.
 | Booking | Walk-in / account parcels |
 | Pay out | Goods received · Expense voucher · stock adjust |
 | Rates & services | Rate cards, slabs, zones |
-| Ops | Find / Scan AWB, status, labels, dispatch |
+| Ops | Lanes, scan / tap to pick, dispatch, delivered / failed / return, labels, runs |
 | COD | COD register / remit |
 | Riders | Own-fleet riders / runs |
 | Bookings | History · amend / void / refund |
