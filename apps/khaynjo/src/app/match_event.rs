@@ -4920,8 +4920,14 @@ impl MatchEvent for App {
                 let label = {
                     let mut st = app_state().lock().unwrap();
                     // Hire Job chips write hire draft only — never edit draft.
+                    // X12: defaults capped to actor ceiling (Owner = uncapped;
+                    // non-Owner for_role stations/screens are clipped).
                     st.hire_staff_role = role;
-                    st.hire_features = StaffFeatures::for_role(role);
+                    st.hire_features = st
+                        .session
+                        .as_ref()
+                        .map(|a| store::Store::features_for_hire(role, a))
+                        .unwrap_or_else(|| StaffFeatures::for_role(role));
                     // Clear selection so hire vs edit stay distinct.
                     st.team_staff_id = None;
                     st.t(key)
@@ -6073,10 +6079,16 @@ impl MatchEvent for App {
                 };
                 // Hire copy fills the Add form (hire draft only) — clear any
                 // edit selection so screens/rights below do not look like they
-                // belong to someone.
+                // belong to someone. Cap to actor ceiling so Add is hireable
+                // (store still refuses crafted over-ceiling requests).
+                let actor = st.actor()?.clone();
                 st.team_staff_id = None;
                 st.hire_staff_role = role;
-                st.hire_features = source.effective_features();
+                st.hire_features = store::Store::cap_team_features(
+                    &source.effective_features(),
+                    role,
+                    &actor,
+                );
                 Ok((
                     st.t("staff_setup_copied_hire")
                         .replace("{name}", &source.lock_label()),

@@ -8934,6 +8934,9 @@ impl Store {
     /// Forget a phone (lost, stolen, staff left): its token and sign-ins
     /// stop working at once; it must pair again with the current code.
     pub fn forget_lan_device(&self, device_id: &str, actor: &StaffMember) -> Result<(), String> {
+        if !actor.is_owner() {
+            return Err("Only the Owner can forget a paired device".into());
+        }
         let name: String = self
             .conn
             .query_row("SELECT name FROM lan_devices WHERE id = ?1", params![device_id], |r| r.get(0))
@@ -9650,8 +9653,10 @@ impl Store {
     }
 
     /// Non-Owner actors may only touch targets whose *current* job ranks at
-    /// most as high as their own. Owner target is never editable here.
-    /// Owner actor is unlimited (aside from the Owner-target refusal).
+    /// most as high as their own, and whose current screens/rights/stations
+    /// sit inside what the actor holds (same gate as [`Self::set_staff_login`]).
+    /// Owner target is never editable here. Owner actor is unlimited (aside
+    /// from the Owner-target refusal).
     pub fn assert_team_target_rank_ok(
         actor: &StaffMember,
         target: &StaffMember,
@@ -9665,7 +9670,44 @@ impl Store {
         if !target.role.is_at_most(actor.role) {
             return Err("Only the Owner can change someone above your job".into());
         }
+        // X11: current screens/rights/stations must sit inside the actor.
+        let feats = target.effective_features();
+        let rights = target.rights();
+        Self::assert_team_edit_allowed(
+            actor,
+            Some(target.id.as_str()),
+            &feats,
+            &rights,
+            Some(target.role),
+        )?;
         Ok(())
+    }
+
+    /// Cap hire/copy *UI defaults* to the actor's ceiling. Owner = uncapped.
+    /// Store hire/edit still refuses over-ceiling — never use this to
+    /// silent-succeed a crafted request.
+    pub fn cap_team_features(
+        features: &StaffFeatures,
+        role: StaffRole,
+        actor: &StaffMember,
+    ) -> StaffFeatures {
+        if actor.is_owner() {
+            return features.clone();
+        }
+        let ceiling = actor.effective_features();
+        let mut out = features.cap_screens_to(&ceiling);
+        let want = out
+            .rights
+            .clone()
+            .unwrap_or_else(|| StaffRights::for_role(role));
+        out.rights = Some(want.clamp_to(&actor.rights()));
+        out
+    }
+
+    /// Hire-form preset: [`StaffFeatures::for_role`] capped to the actor
+    /// (Owner = uncapped role defaults).
+    pub fn features_for_hire(role: StaffRole, actor: &StaffMember) -> StaffFeatures {
+        Self::cap_team_features(&StaffFeatures::for_role(role), role, actor)
     }
 
     pub fn set_staff_features(
@@ -14012,8 +14054,9 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// X1/X2: non-Owner with Team cannot take over / edit a stronger current job;
-    /// set_staff_login also refuses when the target holds screens the actor lacks.
+    /// X1/X2/X11: non-Owner with Team cannot take over / edit a stronger current
+    /// job; rename/deactivate/features/login all refuse when the target holds
+    /// screens the actor lacks (not login-only).
     #[test]
     fn team_edits_refuse_stronger_current_target() {
         let path = temp_db();
@@ -14125,13 +14168,50 @@ mod tests {
             .unwrap();
         store.rename_staff(&waiter_id, "Ravi Bhai", &manager).unwrap();
 
-        // X1: peer Manager with Backup — Meera lacks Backup, so login takeover refused.
+        // X1/X11: peer Manager with Backup — Meera lacks Backup, so login /
+        // rename / deactivate / features / apply all refuse.
         assert!(store
             .set_staff_login(&peer_mgr_id, "peer", "pass1234", &manager)
             .is_err());
-        // Same-rank rename/deactivate still OK (X2 is rank, not screens).
-        store.rename_staff(&peer_mgr_id, "Peer Lead", &manager).unwrap();
-        store.deactivate_staff(&peer_mgr_id, &manager).unwrap();
+        assert!(store.rename_staff(&peer_mgr_id, "Peer Lead", &manager).is_err());
+        assert!(store.deactivate_staff(&peer_mgr_id, &manager).is_err());
+        assert!(store
+            .set_staff_features(
+                &peer_mgr_id,
+                &StaffFeatures::for_role(StaffRole::Cashier),
+                &manager,
+            )
+            .is_err());
+        assert!(store
+            .apply_staff_config(
+                &peer_mgr_id,
+                StaffRole::Cashier,
+                "Till",
+                &StaffFeatures::for_role(StaffRole::Cashier),
+                &manager,
+            )
+            .is_err());
+
+        // Same-rank peer within Meera's screens is still editable.
+        let mut peer_ok_feats = StaffFeatures::for_role(StaffRole::Manager);
+        peer_ok_feats.team = true;
+        peer_ok_feats.backup = false;
+        let peer_ok_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "PeerOk",
+                    role: StaffRole::Manager,
+                    role_title: "Peer ok",
+                    pin: "3535",
+                    login_id: "",
+                    password: "",
+                    features: peer_ok_feats,
+                },
+                &owner,
+            )
+            .unwrap();
+        store.rename_staff(&peer_ok_id, "Peer Ok", &manager).unwrap();
+        store.deactivate_staff(&peer_ok_id, &manager).unwrap();
 
         // Self-edit of own login stays allowed.
         store

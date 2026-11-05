@@ -274,6 +274,10 @@ impl Store {
         event: &RiderPodEvent,
         actor: &StaffMember,
     ) -> Result<(), String> {
+        // Same gate as CollectCod / delivery-ops (Owner or Sales).
+        if !actor.is_owner() && !actor.can_access_sales() {
+            return Err("Not allowed to mark delivered or failed".into());
+        }
         self.assert_server_writer("Rider POD")?;
         let status = TrackingStatus::parse(&event.status);
         if status == TrackingStatus::Ndr {

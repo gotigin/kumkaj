@@ -249,7 +249,12 @@ impl AppState {
         self.team_staff_id = None;
         self.team_select_pending = false;
         self.hire_staff_role = StaffRole::Cashier;
-        self.hire_features = StaffFeatures::for_role(StaffRole::Cashier);
+        // X12: hire defaults at actor ceiling when signed in.
+        self.hire_features = self
+            .session
+            .as_ref()
+            .map(|a| Store::features_for_hire(StaffRole::Cashier, a))
+            .unwrap_or_else(|| StaffFeatures::for_role(StaffRole::Cashier));
         self.draft_staff_role = StaffRole::Cashier;
         self.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
     }

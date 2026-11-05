@@ -356,7 +356,12 @@ impl AppState {
     fn clear_team_edit_selection(&mut self) {
         self.team_staff_id = None;
         self.hire_staff_role = StaffRole::Cashier;
-        self.hire_features = StaffFeatures::for_role(StaffRole::Cashier);
+        // X12: hire defaults at actor ceiling when signed in.
+        self.hire_features = self
+            .session
+            .as_ref()
+            .map(|a| Store::features_for_hire(StaffRole::Cashier, a))
+            .unwrap_or_else(|| StaffFeatures::for_role(StaffRole::Cashier));
         self.draft_staff_role = StaffRole::Cashier;
         self.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
     }
@@ -603,14 +608,19 @@ impl AppState {
     /// Reload `printers.json` into the draft, then overlay the shop Standard
     /// bill size and KOT slip metrics from books meta. On the Server host,
     /// push the same into the live printer config so bills/KOTs match Settings.
+    /// While on Settings, leave drafts alone (remote sync / reload must not
+    /// wipe in-progress form overlays); live config still updates.
     fn sync_printer_draft_from_books(&mut self) {
         let Some(store) = self.store.as_ref() else {
             return;
         };
         print_share::use_books_printers(store.db_path(), self.data_base.as_deref());
-        self.printer_draft = print_share::printers();
-        self.apply_standard_print_em_to_draft_and_live(true);
-        self.apply_kot_slip_format_to_draft_and_live(true);
+        let update_drafts = self.screen != Screen::Settings;
+        if update_drafts {
+            self.printer_draft = print_share::printers();
+        }
+        self.apply_standard_print_em_to_draft_and_live(update_drafts);
+        self.apply_kot_slip_format_to_draft_and_live(update_drafts);
     }
 
     /// Overlay shop Standard bill size onto live config (and optionally the
@@ -689,11 +699,25 @@ impl AppState {
         }
     }
 
+    /// Re-apply books-meta Standard bill size onto `printer_draft` only (no
+    /// live configure). Call before writing printers.json so a stale Server
+    /// draft cannot overwrite a Client-saved Standard size.
+    fn reapply_standard_print_em_onto_printer_draft(&mut self) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        let Ok(em) = store.standard_print_em() else {
+            return;
+        };
+        self.printer_draft.set_standard_em(em);
+    }
+
     /// Flush `printer_draft` to this shop's printers.json. Re-applies
-    /// books-meta KOT size first so a stale Settings draft cannot clobber a
-    /// Client-saved size.
+    /// books-meta KOT and Standard sizes first so a stale Settings draft
+    /// cannot clobber a Client-saved size.
     fn save_printer_draft(&mut self) -> Result<(), String> {
         self.reapply_kot_slip_format_onto_printer_draft();
+        self.reapply_standard_print_em_onto_printer_draft();
         let base = self
             .printers_base()
             .ok_or_else(|| "No store path to save printers".to_string())?;

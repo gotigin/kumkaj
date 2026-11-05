@@ -667,8 +667,13 @@ impl App {
             {
                 let mut st = app_state().lock().unwrap();
                 // Hire Job chips write hire draft only — never edit draft.
+                // X12: defaults capped to actor ceiling (Owner = uncapped).
                 st.hire_staff_role = StaffRole::Cashier;
-                st.hire_features = StaffFeatures::for_role(StaffRole::Cashier);
+                st.hire_features = st
+                    .session
+                    .as_ref()
+                    .map(|a| store::Store::features_for_hire(StaffRole::Cashier, a))
+                    .unwrap_or_else(|| StaffFeatures::for_role(StaffRole::Cashier));
                 st.team_staff_id = None;
             }
             self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");
@@ -684,7 +689,11 @@ impl App {
             {
                 let mut st = app_state().lock().unwrap();
                 st.hire_staff_role = StaffRole::Manager;
-                st.hire_features = StaffFeatures::for_role(StaffRole::Manager);
+                st.hire_features = st
+                    .session
+                    .as_ref()
+                    .map(|a| store::Store::features_for_hire(StaffRole::Manager, a))
+                    .unwrap_or_else(|| StaffFeatures::for_role(StaffRole::Manager));
                 st.team_staff_id = None;
             }
             self.ui.text_input(cx, ids!(team_pick_input)).set_text(cx, "");

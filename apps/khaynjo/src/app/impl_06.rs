@@ -1010,7 +1010,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         }
         // Reload outside the answer loop so a long SQL pass does not nest
         // under other UI work holding `app_state` (felt like a Client freeze).
-        let mut refill_bill = false;
+        // Do not refill bill format fields while on Settings — same wipe as
+        // Server BOOKS_CHANGED. Draft reset is gated in sync_printer_draft_from_books
+        // (update_drafts=false on Settings); live config overlay still applies.
         if synced {
             let tid = {
                 let mut st = app_state().lock().unwrap();
@@ -1019,7 +1021,6 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 }
                 let _ = st.reload_all();
                 FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
-                refill_bill = st.screen == Screen::Settings;
                 st.selected_table_id.clone()
             };
             if let Some(tid) = tid {
@@ -1049,10 +1050,6 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             self.show_undo_snackbar(cx, sale_id, text);
         }
         self.sync_chrome(cx);
-        // Snapshot now carries bill face / print size — refresh open Settings.
-        if refill_bill {
-            self.fill_bill_format_fields(cx);
-        }
     }
 
     fn try_unlock(&mut self, cx: &mut Cx) {
