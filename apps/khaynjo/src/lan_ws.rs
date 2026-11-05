@@ -71,6 +71,18 @@ pub struct SyncPatch {
     pub running_orders: Option<Vec<crate::domain::RunningOrder>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub server_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub standard_print_em: Option<f32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub bill_header: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fssai_no: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub bill_footer: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub upi_vpa: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub upi_payee: Option<String>,
 }
 
 impl SyncPatch {
@@ -100,6 +112,12 @@ impl SyncPatch {
             tax_rates: Some(snap.tax_rates.clone()),
             running_orders: Some(snap.running_orders.clone()),
             server_id: Some(snap.server_id.clone()),
+            standard_print_em: snap.standard_print_em,
+            bill_header: Some(snap.bill_header.clone()),
+            fssai_no: Some(snap.fssai_no.clone()),
+            bill_footer: Some(snap.bill_footer.clone()),
+            upi_vpa: Some(snap.upi_vpa.clone()),
+            upi_payee: Some(snap.upi_payee.clone()),
         }
     }
 
@@ -174,6 +192,24 @@ impl SyncPatch {
         if moved(&before.server_id, &after.server_id) {
             p.server_id = Some(after.server_id.clone());
         }
+        if before.standard_print_em != after.standard_print_em {
+            p.standard_print_em = after.standard_print_em;
+        }
+        if moved(&before.bill_header, &after.bill_header) {
+            p.bill_header = Some(after.bill_header.clone());
+        }
+        if moved(&before.fssai_no, &after.fssai_no) {
+            p.fssai_no = Some(after.fssai_no.clone());
+        }
+        if moved(&before.bill_footer, &after.bill_footer) {
+            p.bill_footer = Some(after.bill_footer.clone());
+        }
+        if moved(&before.upi_vpa, &after.upi_vpa) {
+            p.upi_vpa = Some(after.upi_vpa.clone());
+        }
+        if moved(&before.upi_payee, &after.upi_payee) {
+            p.upi_payee = Some(after.upi_payee.clone());
+        }
         p
     }
 
@@ -204,6 +240,12 @@ impl SyncPatch {
             server_id: self.server_id.unwrap_or_default(),
             rev: self.rev,
             seq: self.seq,
+            standard_print_em: self.standard_print_em,
+            bill_header: self.bill_header.unwrap_or_default(),
+            fssai_no: self.fssai_no.unwrap_or_default(),
+            bill_footer: self.bill_footer.unwrap_or_default(),
+            upi_vpa: self.upi_vpa.unwrap_or_default(),
+            upi_payee: self.upi_payee.unwrap_or_default(),
         })
     }
 }
@@ -267,6 +309,37 @@ pub fn apply_patch(store: &Store, patch: &SyncPatch) -> Result<(), String> {
         if let Some(today) = &patch.today {
             let out = patch.outstanding_credit_paise.unwrap_or(0);
             store.cache_server_day_totals(today, out)?;
+        }
+        if let Some(em) = patch.standard_print_em {
+            store.set_standard_print_em_from_sync(em)?;
+        }
+        if patch.bill_header.is_some()
+            || patch.fssai_no.is_some()
+            || patch.bill_footer.is_some()
+            || patch.upi_vpa.is_some()
+            || patch.upi_payee.is_some()
+        {
+            let header = patch
+                .bill_header
+                .clone()
+                .unwrap_or_else(|| store.bill_header().unwrap_or_default());
+            let fssai = patch
+                .fssai_no
+                .clone()
+                .unwrap_or_else(|| store.fssai_no().unwrap_or_default());
+            let footer = patch
+                .bill_footer
+                .clone()
+                .unwrap_or_else(|| store.bill_footer().unwrap_or_default());
+            let upi_vpa = patch
+                .upi_vpa
+                .clone()
+                .unwrap_or_else(|| store.upi_vpa().unwrap_or_default());
+            let upi_payee = patch
+                .upi_payee
+                .clone()
+                .unwrap_or_else(|| store.upi_payee().unwrap_or_default());
+            store.set_bill_format_from_sync(&header, &fssai, &footer, &upi_vpa, &upi_payee)?;
         }
         Ok(())
     })

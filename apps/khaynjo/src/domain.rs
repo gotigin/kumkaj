@@ -334,6 +334,22 @@ impl StaffRole {
     pub fn can_admin(self) -> bool {
         matches!(self, Self::Owner)
     }
+
+    /// Relative job power for Team hire/edit caps (Owner highest).
+    pub fn power_rank(self) -> u8 {
+        match self {
+            Self::Kitchen => 1,
+            Self::Waiter => 2,
+            Self::Cashier => 3,
+            Self::Manager => 4,
+            Self::Owner => 5,
+        }
+    }
+
+    /// True when `self` is not a higher job than `ceiling`.
+    pub fn is_at_most(self, ceiling: Self) -> bool {
+        self.power_rank() <= ceiling.power_rank()
+    }
 }
 
 /// Per-staff feature flags (Owner always has all).
@@ -501,6 +517,55 @@ impl StaffFeatures {
 
     pub fn from_json(s: &str) -> Self {
         serde_json::from_str(s).unwrap_or_default()
+    }
+
+    /// Screen chips only (not rights / stations) — each `true` requires ceiling `true`.
+    pub fn screens_within(&self, ceiling: &Self) -> bool {
+        (!self.sell || ceiling.sell)
+            && (!self.items || ceiling.items)
+            && (!self.sales || ceiling.sales)
+            && (!self.credit || ceiling.credit)
+            && (!self.floor || ceiling.floor)
+            && (!self.kitchen || ceiling.kitchen)
+            && (!self.team || ceiling.team)
+            && (!self.backup || ceiling.backup)
+            && (!self.inventory || ceiling.inventory)
+            && (!self.branches || ceiling.branches)
+    }
+
+    /// Kitchen stations ⊆ ceiling (`None` = every station).
+    pub fn stations_within(&self, ceiling: &Self) -> bool {
+        match (&self.kot_stations, &ceiling.kot_stations) {
+            (_, None) => true,
+            (None, Some(_)) => false,
+            (Some(want), Some(have)) => want.iter().all(|id| have.iter().any(|h| h == id)),
+        }
+    }
+
+    /// Drop screens / stations the actor does not hold (hire/copy caps).
+    pub fn cap_screens_to(&self, ceiling: &Self) -> Self {
+        let mut out = self.clone();
+        out.sell &= ceiling.sell;
+        out.items &= ceiling.items;
+        out.sales &= ceiling.sales;
+        out.credit &= ceiling.credit;
+        out.floor &= ceiling.floor;
+        out.kitchen &= ceiling.kitchen;
+        out.team &= ceiling.team;
+        out.backup &= ceiling.backup;
+        out.inventory &= ceiling.inventory;
+        out.branches &= ceiling.branches;
+        out.kot_stations = match (&self.kot_stations, &ceiling.kot_stations) {
+            (want, None) => want.clone(),
+            (None, Some(have)) => Some(have.clone()),
+            (Some(want), Some(have)) => Some(
+                want.iter()
+                    .filter(|id| have.iter().any(|h| h == *id))
+                    .cloned()
+                    .collect(),
+            ),
+        };
+        out
     }
 }
 
@@ -1032,6 +1097,20 @@ impl RightLevel {
             Self::Denied => Self::Allowed,
         }
     }
+
+    /// Privilege rank: Allowed > With approval > Denied.
+    pub fn privilege_rank(self) -> u8 {
+        match self {
+            Self::Denied => 0,
+            Self::WithApproval => 1,
+            Self::Allowed => 2,
+        }
+    }
+
+    /// True when `self` is not more privileged than `ceiling`.
+    pub fn is_at_most(self, ceiling: Self) -> bool {
+        self.privilege_rank() <= ceiling.privilege_rank()
+    }
 }
 
 /// The sensitive restaurant actions the owner grants per person — the
@@ -1159,6 +1238,26 @@ impl StaffRights {
             Right::Reprint => self.reprint = level,
             Right::Discount => self.discount = level,
         }
+    }
+
+    /// Every right is at most as privileged as `ceiling`.
+    pub fn is_within(&self, ceiling: &Self) -> bool {
+        Right::ALL
+            .iter()
+            .all(|&r| self.level(r).is_at_most(ceiling.level(r)))
+    }
+
+    /// Clamp each right down to what `ceiling` holds.
+    pub fn clamp_to(&self, ceiling: &Self) -> Self {
+        let mut out = self.clone();
+        for &r in &Right::ALL {
+            let want = self.level(r);
+            let max = ceiling.level(r);
+            if !want.is_at_most(max) {
+                out.set_level(r, max);
+            }
+        }
+        out
     }
 }
 

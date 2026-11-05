@@ -546,3 +546,38 @@ fn unlocked_home_from(st: &mut AppState) -> Screen {
     }
     Screen::Lock
 }
+
+/// After roster sync updates session features: may they remain on `screen`?
+/// Lock / DeviceSetup / Onboard / ClientPair are never bounced.
+fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
+    if matches!(
+        screen,
+        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
+    ) {
+        return true;
+    }
+    let Some(session) = st.session.as_ref() else {
+        return false;
+    };
+    let caps = nav_caps_from(st);
+    match screen {
+        Screen::Pos => caps.sell,
+        Screen::Menu | Screen::More => caps.items,
+        Screen::Books => caps.books_ok(),
+        Screen::Buy => caps.buy_ok(),
+        Screen::Sales => caps.sales,
+        Screen::DayClose | Screen::Reports => caps.sales || caps.is_owner,
+        Screen::Inventory => caps.inventory,
+        Screen::Branches => caps.branches && caps.branch_count > 1,
+        Screen::Credit => caps.credit,
+        Screen::Team => session.can_manage_team() || session.can_change_own_credentials(),
+        Screen::Settings => session.can_open_settings_shell(),
+        Screen::SidebarSettings => session.can_access_settings(),
+        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair => true,
+    }
+}
+
+/// First main work peer this session may open (Sell/Rates/…), or Lock if none.
+fn first_allowed_work_screen(st: &mut AppState) -> Screen {
+    unlocked_home_from(st)
+}

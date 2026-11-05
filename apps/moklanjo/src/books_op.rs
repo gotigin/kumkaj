@@ -5,8 +5,8 @@
 use crate::booking;
 use crate::courier_ops_view;
 use crate::domain::{
-    self, ModifierOption, Money, MoneyMoveKind, PayMethod, Product, StaffFeatures, StaffMember,
-    StaffRole,
+    self, AttachmentEntity, BookingMeasureSettings, ModifierOption, Money, MoneyMoveKind, PayMethod,
+    Product, StaffFeatures, StaffMember, StaffRole,
 };
 use crate::fiscal::TaxPricing;
 use crate::manifest::TrackingStatus;
@@ -34,6 +34,9 @@ pub fn hired_staff_parts(message: &str) -> (&str, Option<&str>) {
 pub enum BooksOp {
     SetPlatformLanguage,
     SetUserLanguage {
+        code: String,
+    },
+    SetCurrency {
         code: String,
     },
     CommitDayClose {
@@ -184,6 +187,16 @@ pub enum BooksOp {
         business_tax_id: String,
         service_bps: i64,
     },
+    ImportReceiptStamp {
+        filename: String,
+        bytes: Vec<u8>,
+    },
+    ImportPaymentQr {
+        filename: String,
+        bytes: Vec<u8>,
+    },
+    ClearReceiptStamp,
+    ClearPaymentQr,
     AdvanceTracking {
         awbs: Vec<String>,
         bulk: bool,
@@ -234,6 +247,36 @@ pub enum BooksOp {
     RenameBusiness {
         name: String,
     },
+    SetVenueBrand {
+        title: String,
+        /// Empty bytes = leave the icon alone.
+        icon_filename: String,
+        icon_bytes: Vec<u8>,
+    },
+    ClearVenueIcon,
+    AddAttachmentNote {
+        entity: AttachmentEntity,
+        entity_id: String,
+        label: String,
+        body: String,
+    },
+    AddAttachmentImage {
+        entity: AttachmentEntity,
+        entity_id: String,
+        label: String,
+        filename: String,
+        bytes: Vec<u8>,
+    },
+    AddAttachmentFile {
+        entity: AttachmentEntity,
+        entity_id: String,
+        label: String,
+        filename: String,
+        bytes: Vec<u8>,
+    },
+    SetBookingMeasures {
+        settings: BookingMeasureSettings,
+    },
     ImportBranchSnapshot {
         json: String,
     },
@@ -259,13 +302,19 @@ pub enum BooksOp {
         category: String,
         parts: Vec<(PayMethod, i64)>,
     },
+    /// Print a test page on the Server's printers (`receipt` / `label`).
+    PrintTestPage {
+        route_key: String,
+    },
     SaveBackupCopy,
 }
 
 impl BooksOp {
     pub fn label(&self) -> String {
         match self {
-            Self::SetPlatformLanguage | Self::SetUserLanguage { .. } => "Change language",
+            Self::SetPlatformLanguage | Self::SetUserLanguage { .. } | Self::SetCurrency { .. } => {
+                "Change language"
+            }
             Self::CommitDayClose { .. } => "Record the day close",
             Self::UpdateParty { .. }
             | Self::SetPartyField { .. }
@@ -294,6 +343,8 @@ impl BooksOp {
             Self::ApplyCountry { .. } => "Change the country pack",
             Self::SetTaxPricing { .. } => "Change tax pricing",
             Self::SetFiscal { .. } => "Set the business id",
+            Self::ImportReceiptStamp { .. } | Self::ClearReceiptStamp => "Change the receipt stamp",
+            Self::ImportPaymentQr { .. } | Self::ClearPaymentQr => "Change the payment QR",
             Self::AdvanceTracking { status, .. } if status == "delivered" => "Mark delivered",
             Self::AdvanceTracking { .. } => "Advance tracking",
             Self::FailedDelivery { .. } => "Failed delivery",
@@ -307,11 +358,17 @@ impl BooksOp {
             Self::PostMoney { .. } => "Post bank / cashbook",
             Self::SetMovementCleared { .. } => "Reconcile bank movements",
             Self::RenameBusiness { .. } => "Rename the business",
+            Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
+            Self::AddAttachmentNote { .. } => "Add note",
+            Self::AddAttachmentImage { .. } => "Attach photo",
+            Self::AddAttachmentFile { .. } => "Attach file",
+            Self::SetBookingMeasures { .. } => "Save booking measures",
             Self::ImportBranchSnapshot { .. } => "Import a branch day",
             Self::AddUnit { .. } => "Add units",
             Self::AddUnitConversion { .. } => "Add unit conversion",
             Self::AddAwbPool { .. } => "Add AWB pool",
             Self::LogExpense { .. } => "Log expenses",
+            Self::PrintTestPage { .. } => "Print a test page",
             Self::SaveBackupCopy => "Save a backup copy",
         }
         .to_string()
@@ -321,6 +378,7 @@ impl BooksOp {
         match self {
             Self::SetPlatformLanguage => "Language follows this device".into(),
             Self::SetUserLanguage { code } => format!("Language: {code}"),
+            Self::SetCurrency { code } => format!("Currency: {code}"),
             Self::CommitDayClose { .. } => "Day close recorded".into(),
             Self::UpdateParty { name, .. } => format!("Party updated: {}", name.trim()),
             Self::AddParty { name, .. } => format!("Added {}", name.trim()),
@@ -365,6 +423,10 @@ impl BooksOp {
             Self::ApplyCountry { .. } => "Country pack applied".into(),
             Self::SetTaxPricing { .. } => "Tax pricing saved".into(),
             Self::SetFiscal { .. } => "Business id saved".into(),
+            Self::ImportReceiptStamp { .. } => "Receipt stamp saved".into(),
+            Self::ImportPaymentQr { .. } => "Payment QR saved".into(),
+            Self::ClearReceiptStamp => "Stamp cleared".into(),
+            Self::ClearPaymentQr => "Payment QR cleared".into(),
             Self::AdvanceTracking { status, .. } if status == "delivered" => "Marked delivered".into(),
             Self::AdvanceTracking { .. } => "Tracking advanced".into(),
             Self::FailedDelivery { .. } => "Failed delivery recorded".into(),
@@ -379,11 +441,18 @@ impl BooksOp {
             Self::SetMovementCleared { cleared: true, .. } => "Marked cleared".into(),
             Self::SetMovementCleared { .. } => "Unmarked".into(),
             Self::RenameBusiness { .. } => "Business name saved".into(),
+            Self::SetVenueBrand { .. } => "Brand saved".into(),
+            Self::ClearVenueIcon => "Icon cleared".into(),
+            Self::AddAttachmentNote { .. } => "Note added".into(),
+            Self::AddAttachmentImage { .. } => "Photo attached (stored as WebP)".into(),
+            Self::AddAttachmentFile { .. } => "File attached".into(),
+            Self::SetBookingMeasures { .. } => "Booking measures saved".into(),
             Self::ImportBranchSnapshot { .. } => "Branch day imported".into(),
             Self::AddUnit { code, .. } => format!("Unit {code} added"),
             Self::AddUnitConversion { .. } => "Unit conversion added".into(),
             Self::AddAwbPool { .. } => "AWB pool added".into(),
             Self::LogExpense { .. } => "Expense logged".into(),
+            Self::PrintTestPage { .. } => "Test page sent".into(),
             Self::SaveBackupCopy => "Backup saved on the shop device".into(),
         }
     }
@@ -485,7 +554,7 @@ impl Store {
         image_filename: &str,
         existing_image_key: Option<&str>,
     ) -> Result<String, String> {
-        if !actor.role.can_manage_items() {
+        if !actor.is_owner() && !actor.can_access_items() {
             return Err("Not allowed to manage items".into());
         }
         let name = name.trim();
@@ -602,6 +671,15 @@ impl Store {
                 self.set_user_language(&code)?;
                 Ok(format!("Language: {code}"))
             }
+            BooksOp::SetCurrency { code } => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change currency".into());
+                }
+                let mut settings = self.locale_settings()?;
+                settings.currency = code.clone();
+                self.set_locale_settings(&settings)?;
+                Ok(format!("Currency: {code}"))
+            }
             BooksOp::CommitDayClose { counted_cash_paise } => {
                 if !actor.is_owner() && !actor.can_access_sales() {
                     return Err("Not allowed to close the day".into());
@@ -690,6 +768,12 @@ impl Store {
                 pay,
                 bill_number,
             } => {
+                if !actor.is_owner()
+                    && !actor.can_access_credit()
+                    && !actor.can_access_inventory()
+                {
+                    return Err("Not allowed to settle payables".into());
+                }
                 let against = match bill_number {
                     None => None,
                     Some(n) => {
@@ -721,6 +805,12 @@ impl Store {
                 Ok(format!("AP wrote off {}", self.show_money(written)))
             }
             BooksOp::PeriodBill { party_name } => {
+                if !actor.is_owner()
+                    && !actor.can_access_credit()
+                    && !actor.can_access_sales()
+                {
+                    return Err("Not allowed to create period bills".into());
+                }
                 courier_ops_view::period_bill_party(self, &party_name, actor)
             }
             BooksOp::RecordPurchase {
@@ -801,7 +891,7 @@ impl Store {
                 existing_image_key.as_deref(),
             ),
             BooksOp::ArchiveProduct { id, name } => {
-                if !actor.role.can_manage_items() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 self.archive_product(&id)?;
@@ -809,7 +899,7 @@ impl Store {
                 Ok(format!("Removed {name}"))
             }
             BooksOp::SetProductAvailable { id, name, available } => {
-                if !actor.role.can_manage_items() && !actor.can_access_items() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 self.set_product_available(&id, available)?;
@@ -827,7 +917,7 @@ impl Store {
                         }
                     }
                     "items" | "" => {
-                        if !actor.role.can_manage_items() && !actor.can_access_items() {
+                        if !actor.is_owner() && !actor.can_access_items() {
                             return Err("Not allowed to import menu CSV".into());
                         }
                     }
@@ -1016,6 +1106,37 @@ impl Store {
                     id_status
                 })
             }
+            BooksOp::ImportReceiptStamp { filename, bytes } => {
+                // Stamp: Settings. Payment QR is Owner-only (below).
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the receipt stamp".into());
+                }
+                let file = write_upload(&filename, &bytes)?;
+                let _ = self.import_receipt_stamp(file.path())?;
+                Ok("Receipt stamp saved".into())
+            }
+            BooksOp::ImportPaymentQr { filename, bytes } => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change the payment QR".into());
+                }
+                let file = write_upload(&filename, &bytes)?;
+                let _ = self.import_payment_qr(file.path())?;
+                Ok("Payment QR saved".into())
+            }
+            BooksOp::ClearReceiptStamp => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the receipt stamp".into());
+                }
+                self.set_receipt_stamp_key(None)?;
+                Ok("Stamp cleared".into())
+            }
+            BooksOp::ClearPaymentQr => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change the payment QR".into());
+                }
+                self.set_payment_qr_key(None)?;
+                Ok("Payment QR cleared".into())
+            }
             BooksOp::AdvanceTracking {
                 awbs,
                 bulk,
@@ -1024,6 +1145,10 @@ impl Store {
                 pod_filename,
                 pod_bytes,
             } => {
+                // Same gate as Ops / Cod / Riders chrome (CollectCod pattern).
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to advance tracking".into());
+                }
                 let status = tracking_status(&status)?;
                 if bulk {
                     let (ok, errs) = self.bulk_advance_tracking(&awbs, status, &note, actor)?;
@@ -1056,6 +1181,9 @@ impl Store {
                 }
             }
             BooksOp::FailedDelivery { awb, note } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to record failed delivery".into());
+                }
                 let (reason, next) = {
                     let raw = note.trim();
                     if let Some((r, d)) = raw.split_once('|') {
@@ -1071,14 +1199,28 @@ impl Store {
                 };
                 courier_ops_view::record_failed_delivery(self, &awb, &reason, &next, actor)
             }
-            BooksOp::Reattempt { awb } => courier_ops_view::reattempt_awb(self, &awb, actor),
+            BooksOp::Reattempt { awb } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to reattempt delivery".into());
+                }
+                courier_ops_view::reattempt_awb(self, &awb, actor)
+            }
             BooksOp::SettleRiderCod { rider, handed } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to settle rider COD".into());
+                }
                 courier_ops_view::settle_rider_cod_line(self, &rider, &handed, actor)
             }
             BooksOp::DispatchFleet { rider, note } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to dispatch fleet".into());
+                }
                 courier_ops_view::dispatch_booked_to_rider(self, &rider, &note, actor)
             }
             BooksOp::CarrierHandover { carrier, note } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to hand over to carrier".into());
+                }
                 courier_ops_view::handover_booked_to_carrier(self, &carrier, &note, actor)
             }
             BooksOp::CollectCod { awb } => {
@@ -1110,6 +1252,9 @@ impl Store {
                 Ok(format!("{} posted", kind.label()))
             }
             BooksOp::SetMovementCleared { number, cleared } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to reconcile bank movements".into());
+                }
                 let uncleared: Vec<String> = self
                     .list_money_movements(50)?
                     .into_iter()
@@ -1134,6 +1279,66 @@ impl Store {
                 self.set_org_name(&name)?;
                 Ok("Business name saved".into())
             }
+            BooksOp::SetVenueBrand {
+                title,
+                icon_filename,
+                icon_bytes,
+            } => {
+                if !actor.is_owner() {
+                    return Err("Only Owner can change in-app brand".into());
+                }
+                self.set_venue_title(&title)?;
+                if !icon_bytes.is_empty() {
+                    let file = write_upload(&icon_filename, &icon_bytes)?;
+                    let _ = self.import_venue_icon(file.path())?;
+                }
+                Ok("Brand saved".into())
+            }
+            BooksOp::ClearVenueIcon => {
+                if !actor.is_owner() {
+                    return Err("Only Owner can change in-app brand".into());
+                }
+                self.set_venue_icon_key(None)?;
+                Ok("Icon cleared".into())
+            }
+            BooksOp::AddAttachmentNote {
+                entity,
+                entity_id,
+                label,
+                body,
+            } => {
+                self.add_attachment_note(entity, &entity_id, &label, &body, actor)?;
+                Ok("Note added".into())
+            }
+            BooksOp::AddAttachmentImage {
+                entity,
+                entity_id,
+                label,
+                filename,
+                bytes,
+            } => {
+                let file = write_upload(&filename, &bytes)?;
+                self.add_attachment_image(entity, &entity_id, file.path(), &label, actor)?;
+                Ok("Photo attached (stored as WebP)".into())
+            }
+            BooksOp::AddAttachmentFile {
+                entity,
+                entity_id,
+                label,
+                filename,
+                bytes,
+            } => {
+                let file = write_upload(&filename, &bytes)?;
+                self.add_attachment_file(entity, &entity_id, file.path(), &label, actor)?;
+                Ok("File attached".into())
+            }
+            BooksOp::SetBookingMeasures { settings } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change booking measures".into());
+                }
+                self.set_booking_measure_settings(&settings)?;
+                Ok("Booking measures saved".into())
+            }
             BooksOp::ImportBranchSnapshot { json } => {
                 if !actor.can_access_branches() && !actor.is_owner() {
                     return Err("Only Owner can import a branch day".into());
@@ -1153,7 +1358,10 @@ impl Store {
                 to_code,
                 factor_milli,
             } => {
-                self.add_unit_conversion(&from_code, &to_code, factor_milli)?;
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to manage units".into());
+                }
+                self.add_unit_conversion(&from_code, &to_code, factor_milli, actor)?;
                 Ok(match self.resolve_unit(&from_code) {
                     Some((family, factor)) => {
                         let anchor = domain::unit_family_anchor(&family).unwrap_or("");
@@ -1196,6 +1404,12 @@ impl Store {
             } => {
                 let id = self.add_expense_tenders(amount_paise, &category, &note, actor, &parts)?;
                 Ok(format!("Expense logged{EXPENSE_ID_MARK}{id}"))
+            }
+            BooksOp::PrintTestPage { route_key } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to print a test page".into());
+                }
+                self.print_test_page_for_route(&route_key)
             }
             BooksOp::SaveBackupCopy => {
                 if !actor.is_owner() && !actor.can_access_backup() {

@@ -17,7 +17,7 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
             let actor = st.actor()?;
-            if !actor.role.can_manage_menu() {
+            if !actor.is_owner() && !actor.can_access_items() {
                 return Err("Not allowed to manage items".into());
             }
             let name = name.trim();
@@ -124,7 +124,7 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let actor = st.actor()?;
-            if !actor.role.can_manage_menu() {
+            if !actor.is_owner() && !actor.can_access_items() {
                 return Err("Not allowed to manage items".into());
             }
             let product = st
@@ -159,7 +159,7 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let actor = st.actor()?;
-            if !actor.role.can_manage_menu() {
+            if !actor.is_owner() && !actor.can_access_items() {
                 return Err("Not allowed to manage items".into());
             }
             let product = st
@@ -575,6 +575,10 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
             store::check_backup_file(&backup)?;
             let mut st = app_state().lock().unwrap();
             st.require_server_host("Restore a backup")?;
+            // Backup Settings access is not enough — restore replaces the books.
+            if !st.session.as_ref().is_some_and(|a| a.is_owner()) {
+                return Err(st.t("restore_owner_only"));
+            }
             let store = st.store.as_ref().ok_or("No store")?;
             let db = store.db_path().to_path_buf();
             let before = store.auto_backup_dir().join(format!(

@@ -996,6 +996,16 @@ impl App {
                 if member.is_owner() {
                     return Err("Pick a staff person to edit — Owner is not edited here".into());
                 }
+                // Non-Owner cannot open self for screens/rights/job edit.
+                if st
+                    .session
+                    .as_ref()
+                    .is_some_and(|s| !s.is_owner() && s.id == member.id)
+                {
+                    return Err(
+                        "You cannot change your own screens or rights — ask the Owner".into(),
+                    );
+                }
                 st.team_staff_id = Some(member.id.clone());
                 // Edit draft only — hire Job chips keep hire_* untouched.
                 st.draft_staff_role = member.role;

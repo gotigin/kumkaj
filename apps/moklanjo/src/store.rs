@@ -5,9 +5,9 @@ use crate::domain::{
     BranchSnapshot, Category, CreditLedgerEntry, Customer, DayTotals, EntryAttachment, EventTimes,
     Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrgConsolidatedReport,
     PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
-    Right, RightLevel, STOCK_UNTRACKED, Sale, SaleDraft, SaleLine, SaleRevision, StaffFeatures,
-    StaffMember, StaffRole, StockMovement, TaxRate, UnitConversion, UnitDef, format_qty_display,
-    milli_to_whole_qty, new_id, normalize_party_roles,
+    Right, RightLevel, Rights, STOCK_UNTRACKED, Sale, SaleDraft, SaleLine, SaleRevision,
+    StaffFeatures, StaffMember, StaffRole, StockMovement, TaxRate, UnitConversion, UnitDef,
+    format_qty_display, milli_to_whole_qty, new_id, normalize_party_roles,
 };
 use crate::entity_template::{self, EntityTemplate};
 use crate::fiscal::{self, CountryProfile, FiscalSettings, TaxPricing};
@@ -1463,12 +1463,19 @@ impl Store {
     }
 
     /// Seed opening credit balance as an explicit ledger entry.
+    /// Owner-only, and only while first-run onboarding is still open.
     pub fn seed_opening_credit(
         &self,
         customer_id: &str,
         amount_paise: i64,
         actor: &StaffMember,
     ) -> Result<(), String> {
+        if self.onboarding_complete()? {
+            return Err("Opening credit is only during setup".into());
+        }
+        if !actor.is_owner() {
+            return Err("Only the Owner can seed opening credit".into());
+        }
         if amount_paise <= 0 {
             return Err("Opening balance must be > 0".into());
         }
@@ -2695,6 +2702,9 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Reconcile bank movements")?;
+        if !actor.is_owner() && !actor.can_access_sales() {
+            return Err("Not allowed to reconcile bank movements".into());
+        }
         let stamp = if cleared {
             Local::now().to_rfc3339()
         } else {
@@ -4646,8 +4656,15 @@ impl Store {
             == Some("1"))
     }
 
-    pub fn set_extra_tills_allowed(&self, allowed: bool) -> Result<(), String> {
+    pub fn set_extra_tills_allowed(
+        &self,
+        allowed: bool,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
         self.assert_server_writer("Change extra tills")?;
+        if !actor.is_owner() {
+            return Err("Only the Owner can change extra tills".into());
+        }
         self.meta_set("extra_tills_allowed", if allowed { "1" } else { "0" })
     }
 
@@ -4658,6 +4675,50 @@ impl Store {
         // shop's name: books that took it as one read as unnamed.
         let title = self.meta_get("venue_title")?.unwrap_or_default();
         Ok(if is_generated_server_label(&title) { String::new() } else { title })
+    }
+
+    /// Print a test page on this Server for `route_key` (`receipt` / `label`).
+    pub fn print_test_page_for_route(&self, route_key: &str) -> Result<String, String> {
+        self.assert_server_writer("Print a test page")?;
+        let key = match route_key.trim() {
+            "label" => crate::print_share::RouteKey::Label,
+            _ => crate::print_share::RouteKey::Receipt,
+        };
+        let kind = match key {
+            crate::print_share::RouteKey::Receipt => crate::print_share::PrintKind::Receipt,
+            crate::print_share::RouteKey::Label => crate::print_share::PrintKind::Label,
+        };
+        let shop = self.venue_title().unwrap_or_default();
+        let when = chrono::Local::now().format("%d %b %Y %H:%M").to_string();
+        let cfg = crate::print_share::printers();
+        let mut targets = cfg.targets_for(key);
+        if targets.is_empty() {
+            // Same fallback as the Settings test button on host.
+            if let Some(p) = cfg.printers.first() {
+                targets.push(crate::print_share::parse_target(&p.target));
+            }
+        }
+        if targets.is_empty() {
+            return Err("No printer assigned — set printers on the shop device".into());
+        }
+        let desc = targets
+            .first()
+            .map(crate::print_share::describe)
+            .unwrap_or_else(|| "printer".into());
+        let place = match key {
+            crate::print_share::RouteKey::Receipt => "Receipt",
+            crate::print_share::RouteKey::Label => "AWB label",
+        };
+        let page = format!(
+            "{app} - test page\n{shop}\n{place}\n{desc}\n{when}\n\nIf you can read this, printing works here.\n",
+            app = APP_LABEL,
+            shop = shop.trim(),
+        );
+        let dir = self.path.parent();
+        match crate::print_share::print_text(kind, &page, dir) {
+            Ok(_) => Ok("Test page sent".into()),
+            Err(e) => Err(e),
+        }
     }
 
     /// Name other devices list this shop by: venue, else saved business name
@@ -7087,7 +7148,11 @@ impl Store {
     /// Post-charge snackbar undo: void a just-recorded sale for the seller
     /// who charged it (or Owner/Manager). Uses the Rights matrix when the
     /// original seller cannot undo — checks whether `actor` may void this sale.
+    /// Age is measured from Server `device_at` (fail closed on parse/empty) —
+    /// not Client `created_at`/`user_at`. Window matches snackbar max (~60s).
     pub fn quick_undo_sale(&self, sale_id: &str, actor: &StaffMember) -> Result<Sale, String> {
+        // Matches `SnackKind::clamp_secs` upper bound (UI snackbar window).
+        const QUICK_UNDO_SECS: i64 = 60;
         if !actor.can_access_sell() {
             return Err("Not allowed to undo".into());
         }
@@ -7096,6 +7161,19 @@ impl Store {
             .ok_or_else(|| "Sale not found".to_string())?;
         if sale.status != "completed" {
             return Err("Sale already voided".into());
+        }
+        let device_at = sale.device_at.trim();
+        if device_at.is_empty() {
+            return Err("Too late to undo — void the sale from Day book instead".into());
+        }
+        let created = chrono::DateTime::parse_from_rfc3339(device_at).map_err(|_| {
+            "Too late to undo — void the sale from Day book instead".to_string()
+        })?;
+        let age = Local::now().signed_duration_since(created.with_timezone(&Local));
+        if age > chrono::Duration::seconds(QUICK_UNDO_SECS) {
+            return Err(
+                "Too late to undo — void the sale from Day book instead".into(),
+            );
         }
         // The original seller may undo directly.
         let actor_can_quick = sale.created_by_id == actor.id;
@@ -7598,6 +7676,9 @@ impl Store {
 
     /// A new pairing code; phones already paired keep working.
     pub fn new_pairing_code(&self, actor: &StaffMember) -> Result<String, String> {
+        if !actor.is_owner() {
+            return Err("Only the Owner can change the pairing code".into());
+        }
         self.meta_set("pairing_code", "")?;
         let code = self.ensure_server_pairing_code()?;
         self.audit(actor, "lan.new_code", "")?;
@@ -8179,12 +8260,6 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<String, String> {
         self.assert_server_writer("Add staff")?;
-        if !actor.can_manage_team() {
-            return Err("Not allowed to manage team".into());
-        }
-        if hire.role.is_owner() {
-            return Err("Cannot create another Owner account".into());
-        }
         if !(4..=12).contains(&hire.pin.len()) || !hire.pin.chars().all(|c| c.is_ascii_digit()) {
             return Err("PIN must be 4–12 digits".into());
         }
@@ -8192,6 +8267,14 @@ impl Store {
         if name.is_empty() {
             return Err("Staff name required".into());
         }
+        // Refuse screens/rights above the actor (same as set_staff_features) —
+        // never silently cap then succeed.
+        let features = hire.features.clone();
+        let rights = features
+            .rights
+            .clone()
+            .unwrap_or_else(|| Rights::for_role(hire.role));
+        Self::assert_team_edit_allowed(actor, None, &features, &rights, Some(hire.role))?;
         let title = {
             let t = hire.role_title.trim();
             if t.is_empty() {
@@ -8219,7 +8302,7 @@ impl Store {
                     hire.role.as_str(),
                     hash,
                     title,
-                    hire.features.to_json(),
+                    features.to_json(),
                     login_id,
                     password_hash
                 ],
@@ -8260,6 +8343,68 @@ impl Store {
         Ok(())
     }
 
+    /// Team hire/edit gate: refuse self-edit (non-Owner), refuse raising job
+    /// above the actor, refuse screens/rights the actor does not hold.
+    /// Owner is unlimited. Prefer this over scattered UI checks.
+    pub fn assert_team_edit_allowed(
+        actor: &StaffMember,
+        target_id: Option<&str>,
+        new_features: &StaffFeatures,
+        new_rights: &Rights,
+        new_role: Option<StaffRole>,
+    ) -> Result<(), String> {
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
+        }
+        if let Some(tid) = target_id {
+            if tid == actor.id && !actor.is_owner() {
+                return Err(
+                    "You cannot change your own screens or rights — ask the Owner".into(),
+                );
+            }
+        }
+        if let Some(role) = new_role {
+            if role.is_owner() {
+                return Err("Cannot create or assign Owner this way".into());
+            }
+        }
+        if actor.is_owner() {
+            return Ok(());
+        }
+        if let Some(role) = new_role {
+            if !role.is_at_most(actor.role) {
+                return Err("Cannot give a job above your own".into());
+            }
+        }
+        let ceiling = actor.effective_features();
+        if !new_features.screens_within(&ceiling) {
+            return Err("Cannot grant screens you do not have".into());
+        }
+        if !new_rights.is_within(&actor.effective_rights()) {
+            return Err("Cannot grant rights you do not have".into());
+        }
+        Ok(())
+    }
+
+    /// Non-Owner actors may only touch targets whose *current* job ranks at
+    /// most as high as their own. Owner target is never editable here.
+    /// Owner actor is unlimited (aside from the Owner-target refusal).
+    pub fn assert_team_target_rank_ok(
+        actor: &StaffMember,
+        target: &StaffMember,
+    ) -> Result<(), String> {
+        if target.is_owner() {
+            return Err("Cannot change Owner this way".into());
+        }
+        if actor.is_owner() {
+            return Ok(());
+        }
+        if !target.role.is_at_most(actor.role) {
+            return Err("Only the Owner can change someone above your job".into());
+        }
+        Ok(())
+    }
+
     pub fn set_staff_features(
         &self,
         staff_id: &str,
@@ -8267,9 +8412,20 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Change staff permissions")?;
-        if !actor.can_manage_team() {
-            return Err("Not allowed to manage team".into());
+        let target = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.id == staff_id && s.active)
+            .ok_or_else(|| "Staff not found".to_string())?;
+        if target.is_owner() {
+            return Err("Cannot change Owner permissions this way".into());
         }
+        Self::assert_team_target_rank_ok(actor, &target)?;
+        let rights = features
+            .rights
+            .clone()
+            .unwrap_or_else(|| Rights::for_role(target.role));
+        Self::assert_team_edit_allowed(actor, Some(staff_id), features, &rights, None)?;
         let n = self
             .conn
             .execute(
@@ -8284,8 +8440,110 @@ impl Store {
         Ok(())
     }
 
-    /// Owner may set initial login id + password once; afterward only the user
-    /// can change their own password via [`Store::set_own_password`].
+    /// Change display name only — staff `id` never moves. Owner cannot be renamed here.
+    pub fn rename_staff(
+        &self,
+        staff_id: &str,
+        name: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Rename staff")?;
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
+        }
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("Staff name required".into());
+        }
+        let target = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.id == staff_id && s.active)
+            .ok_or_else(|| "Staff not found".to_string())?;
+        Self::assert_team_target_rank_ok(actor, &target)?;
+        let n = self
+            .conn
+            .execute(
+                "UPDATE staff SET name = ?1 WHERE id = ?2 AND role != 'owner' AND active = 1",
+                params![name, staff_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Staff not found or is Owner".into());
+        }
+        self.audit(actor, "staff.rename", &format!("{staff_id} → {name}"))?;
+        Ok(())
+    }
+
+    /// Copy role + title + feature rights onto an existing non-Owner staff
+    /// member. Name, PIN, login, and `id` stay put.
+    pub fn apply_staff_config(
+        &self,
+        staff_id: &str,
+        role: StaffRole,
+        role_title: &str,
+        features: &StaffFeatures,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Copy staff setup")?;
+        let target = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.id == staff_id && s.active)
+            .ok_or_else(|| "Staff not found".to_string())?;
+        Self::assert_team_target_rank_ok(actor, &target)?;
+        // Refuse screens/rights above the actor — never silently cap then succeed.
+        let rights = features
+            .rights
+            .clone()
+            .unwrap_or_else(|| Rights::for_role(role));
+        Self::assert_team_edit_allowed(actor, Some(staff_id), features, &rights, Some(role))?;
+        let title = {
+            let t = role_title.trim();
+            if t.is_empty() {
+                role.default_title().to_string()
+            } else {
+                t.to_string()
+            }
+        };
+        let n = self
+            .conn
+            .execute(
+                "UPDATE staff SET role = ?1, role_title = ?2, features_json = ?3
+                 WHERE id = ?4 AND role != 'owner' AND active = 1",
+                params![role.as_str(), title, features.to_json(), staff_id],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Staff not found or is Owner".into());
+        }
+        self.audit(
+            actor,
+            "staff.config",
+            &format!("{staff_id} → {title} ({})", role.as_str()),
+        )?;
+        Ok(())
+    }
+
+    /// Role to use when hiring/copying from someone (Owner → Manager).
+    pub fn hire_role_from(source: &StaffMember) -> StaffRole {
+        if source.is_owner() {
+            StaffRole::Manager
+        } else {
+            source.role
+        }
+    }
+
+    /// Hire-copy sources: every active person except Owner.
+    pub fn hire_copy_sources(staff: &[StaffMember]) -> Vec<&StaffMember> {
+        staff.iter().filter(|s| s.active && !s.is_owner()).collect()
+    }
+
+    /// Team managers may set initial login id + password once for others;
+    /// afterward only the user can change their own password via
+    /// [`Store::set_own_password`]. Self-edit of own login stays allowed.
+    /// Non-Owner actors may only set login on peers/juniors whose current
+    /// job and screens/rights sit within what the actor holds.
     pub fn set_staff_login(
         &self,
         staff_id: &str,
@@ -8294,8 +8552,29 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Change staff logins")?;
-        if !actor.role.can_admin() && actor.id != staff_id {
-            return Err("Not allowed".into());
+        if actor.id != staff_id {
+            if !actor.can_manage_team() {
+                return Err("Not allowed to manage team".into());
+            }
+            let target = self
+                .list_staff()?
+                .into_iter()
+                .find(|s| s.id == staff_id && s.active)
+                .ok_or_else(|| "Staff not found".to_string())?;
+            if target.is_owner() {
+                return Err("Cannot change Owner login this way".into());
+            }
+            Self::assert_team_target_rank_ok(actor, &target)?;
+            // X1: current screens/rights must sit inside the actor.
+            let feats = target.effective_features();
+            let rights = target.effective_rights();
+            Self::assert_team_edit_allowed(
+                actor,
+                Some(staff_id),
+                &feats,
+                &rights,
+                Some(target.role),
+            )?;
         }
         let login_id = login_id.trim();
         if login_id.is_empty() {
@@ -8408,6 +8687,12 @@ impl Store {
         if staff_id == actor.id {
             return Err("Cannot deactivate yourself".into());
         }
+        let target = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.id == staff_id && s.active)
+            .ok_or_else(|| "Staff not found".to_string())?;
+        Self::assert_team_target_rank_ok(actor, &target)?;
         let n = self
             .conn
             .execute(
@@ -8640,10 +8925,11 @@ impl Store {
         Ok(())
     }
 
-    pub fn find_or_create_customer(&self, name: &str) -> Result<Customer, String> {
+    /// Active party by name (case-insensitive, this branch). Does not create.
+    pub fn find_customer_by_name(&self, name: &str) -> Result<Option<Customer>, String> {
         let name = name.trim();
         if name.is_empty() {
-            return Err("Customer name required".into());
+            return Ok(None);
         }
         let existing: Option<String> = self
             .conn
@@ -8657,12 +8943,19 @@ impl Store {
             )
             .optional()
             .map_err(|e| e.to_string())?;
-        if let Some(id) = existing {
-            return self
-                .list_customers()?
-                .into_iter()
-                .find(|c| c.id == id)
-                .ok_or_else(|| "Customer missing".to_string());
+        match existing {
+            Some(id) => self.get_customer(&id),
+            None => Ok(None),
+        }
+    }
+
+    pub fn find_or_create_customer(&self, name: &str) -> Result<Customer, String> {
+        let name = name.trim();
+        if name.is_empty() {
+            return Err("Customer name required".into());
+        }
+        if let Some(c) = self.find_customer_by_name(name)? {
+            return Ok(c);
         }
         self.add_customer(name, "")
     }
@@ -8851,8 +9144,8 @@ impl Store {
         against_sale_id: Option<&str>,
     ) -> Result<(), String> {
         self.assert_server_writer("Record credit settle / advance")?;
-        if !actor.role.can_sell() {
-            return Err("Not allowed".into());
+        if !actor.is_owner() && !actor.can_access_credit() {
+            return Err("Not allowed to collect credit".into());
         }
         if amount_paise <= 0 {
             return Err("Amount must be > 0".into());
@@ -9131,6 +9424,12 @@ impl Store {
         against_purchase_id: Option<&str>,
     ) -> Result<(), String> {
         self.assert_server_writer("Settle payable")?;
+        if !actor.is_owner()
+            && !actor.can_access_credit()
+            && !actor.can_access_inventory()
+        {
+            return Err("Not allowed to settle payables".into());
+        }
         if amount_paise <= 0 {
             return Err("Amount must be > 0".into());
         }
@@ -9372,8 +9671,12 @@ impl Store {
         from_code: &str,
         to_code: &str,
         factor_milli: i64,
+        actor: &StaffMember,
     ) -> Result<UnitConversion, String> {
         self.assert_server_writer("Add unit conversion")?;
+        if !actor.is_owner() && !actor.can_access_settings() {
+            return Err("Not allowed to manage units".into());
+        }
         let from_code = from_code.trim().to_ascii_lowercase();
         let to_code = to_code.trim().to_ascii_lowercase();
         if from_code.is_empty() || to_code.is_empty() || from_code == to_code {
@@ -10701,6 +11004,9 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(i64, i64, String), String> {
         self.assert_server_writer("Rider COD settle")?;
+        if !actor.is_owner() && !actor.can_access_sales() {
+            return Err("Not allowed to settle rider COD".into());
+        }
         let today = chrono::Local::now().format("%Y-%m-%d").to_string();
         let expected = self.rider_cod_expected(rider_id, &today)?;
         let handed = handed_in_paise.max(0);
@@ -10789,6 +11095,12 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<crate::consignments::PeriodBill, String> {
         self.assert_server_writer("Period bill")?;
+        if !actor.is_owner()
+            && !actor.can_access_credit()
+            && !actor.can_access_sales()
+        {
+            return Err("Not allowed to create period bills".into());
+        }
         let party = self
             .get_customer(party_id)?
             .ok_or_else(|| "Party not found".to_string())?;
@@ -12797,6 +13109,276 @@ mod tests {
     /// default (With approval) needs that PIN. Undoing your own sale stays
     /// free.
     #[test]
+    fn team_edit_refuses_self_and_caps_hire_above_actor() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("1357").unwrap();
+        let mut mgr_features = StaffFeatures::for_role(StaffRole::Manager);
+        mgr_features.team = true;
+        mgr_features.backup = false;
+        let mgr_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Meera",
+                    role: StaffRole::Manager,
+                    role_title: "Lead",
+                    pin: "3333",
+                    login_id: "",
+                    password: "",
+                    features: mgr_features.clone(),
+                },
+                &owner,
+            )
+            .unwrap();
+        let cash_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Ravi",
+                    role: StaffRole::Cashier,
+                    role_title: "Cashier",
+                    pin: "4444",
+                    login_id: "",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Cashier),
+                },
+                &owner,
+            )
+            .unwrap();
+        let manager = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == mgr_id)
+            .unwrap();
+
+        assert!(store
+            .set_staff_features(&mgr_id, &mgr_features, &manager)
+            .is_err());
+        assert!(store
+            .apply_staff_config(
+                &mgr_id,
+                StaffRole::Cashier,
+                "Cashier",
+                &StaffFeatures::for_role(StaffRole::Cashier),
+                &manager,
+            )
+            .is_err());
+
+        let mut over = StaffFeatures::for_role(StaffRole::Cashier);
+        over.backup = true;
+        assert!(store
+            .set_staff_features(&cash_id, &over, &manager)
+            .is_err());
+
+        // Hire copying Owner screens must refuse — no silent cap-then-succeed.
+        assert!(store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Copy",
+                    role: Store::hire_role_from(&owner),
+                    role_title: "Manager",
+                    pin: "5555",
+                    login_id: "",
+                    password: "",
+                    features: owner.effective_features(),
+                },
+                &manager,
+            )
+            .is_err());
+        // Same-ceiling hire still works.
+        let hired = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Copy",
+                    role: StaffRole::Manager,
+                    role_title: "Manager",
+                    pin: "5555",
+                    login_id: "",
+                    password: "",
+                    features: mgr_features.clone(),
+                },
+                &manager,
+            )
+            .unwrap();
+        let copy = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == hired)
+            .unwrap();
+        assert!(!copy.features.backup);
+        assert!(copy.features.team);
+        assert_eq!(copy.role, StaffRole::Manager);
+
+        let mut cash_feats = StaffFeatures::for_role(StaffRole::Cashier);
+        cash_feats.team = true;
+        let till_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Till",
+                    role: StaffRole::Cashier,
+                    role_title: "Till",
+                    pin: "6666",
+                    login_id: "",
+                    password: "",
+                    features: cash_feats,
+                },
+                &owner,
+            )
+            .unwrap();
+        let cashier = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == till_id)
+            .unwrap();
+        assert!(store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Bossy",
+                    role: StaffRole::Manager,
+                    role_title: "Manager",
+                    pin: "7777",
+                    login_id: "",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Manager),
+                },
+                &cashier,
+            )
+            .is_err());
+        assert!(store.rename_staff(&owner.id, "Asif", &owner).is_err());
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// X1/X2: non-Owner with Team cannot take over / edit a stronger current job;
+    /// set_staff_login also refuses when the target holds screens the actor lacks.
+    #[test]
+    fn team_edits_refuse_stronger_current_target() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("1357").unwrap();
+        let mut mgr_features = StaffFeatures::for_role(StaffRole::Manager);
+        mgr_features.team = true;
+        mgr_features.backup = false;
+        let mgr_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Meera",
+                    role: StaffRole::Manager,
+                    role_title: "Lead",
+                    pin: "3333",
+                    login_id: "",
+                    password: "",
+                    features: mgr_features.clone(),
+                },
+                &owner,
+            )
+            .unwrap();
+        let mut peer_feats = StaffFeatures::for_role(StaffRole::Manager);
+        peer_feats.team = true;
+        peer_feats.backup = true;
+        let peer_mgr_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Peer",
+                    role: StaffRole::Manager,
+                    role_title: "Peer lead",
+                    pin: "3434",
+                    login_id: "",
+                    password: "",
+                    features: peer_feats,
+                },
+                &owner,
+            )
+            .unwrap();
+        let cash_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Ravi",
+                    role: StaffRole::Cashier,
+                    role_title: "Cashier",
+                    pin: "4444",
+                    login_id: "",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Cashier),
+                },
+                &owner,
+            )
+            .unwrap();
+        let mut till_feats = StaffFeatures::for_role(StaffRole::Cashier);
+        till_feats.team = true;
+        let till_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Till",
+                    role: StaffRole::Cashier,
+                    role_title: "Till",
+                    pin: "6666",
+                    login_id: "",
+                    password: "",
+                    features: till_feats,
+                },
+                &owner,
+            )
+            .unwrap();
+        let manager = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == mgr_id)
+            .unwrap();
+        let till = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == till_id)
+            .unwrap();
+
+        // X2: Cashier+team cannot touch a Manager (stronger current job).
+        assert!(store
+            .set_staff_features(
+                &mgr_id,
+                &StaffFeatures::for_role(StaffRole::Cashier),
+                &till,
+            )
+            .is_err());
+        assert!(store
+            .apply_staff_config(
+                &mgr_id,
+                StaffRole::Cashier,
+                "Till",
+                &StaffFeatures::for_role(StaffRole::Cashier),
+                &till,
+            )
+            .is_err());
+        assert!(store.rename_staff(&mgr_id, "Boss", &till).is_err());
+        assert!(store.deactivate_staff(&mgr_id, &till).is_err());
+        assert!(store
+            .set_staff_login(&mgr_id, "boss", "pass1234", &till)
+            .is_err());
+
+        // Manager may set login / rename a junior (X1 allowed path).
+        store
+            .set_staff_login(&cash_id, "ravi", "pass1234", &manager)
+            .unwrap();
+        store.rename_staff(&cash_id, "Ravi Bhai", &manager).unwrap();
+
+        // X1: peer Manager with Backup — Meera lacks Backup, so login takeover refused.
+        assert!(store
+            .set_staff_login(&peer_mgr_id, "peer", "pass1234", &manager)
+            .is_err());
+        // Same-rank rename/deactivate still OK (X2 is rank, not screens).
+        store.rename_staff(&peer_mgr_id, "Peer Lead", &manager).unwrap();
+        store.deactivate_staff(&peer_mgr_id, &manager).unwrap();
+
+        // Self-edit of own login stays allowed.
+        store
+            .set_staff_login(&mgr_id, "meera", "pass1234", &manager)
+            .unwrap();
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
     fn per_person_rights_gate_void_and_keep_own_undo_free() {
         let path = temp_db();
         let mut store = Store::open_path(&path).unwrap();
@@ -13679,11 +14261,12 @@ mod tests {
     fn extra_tills_are_a_shop_switch_not_a_role() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.set_device_role("server").unwrap();
         assert!(!store.extra_tills_allowed().unwrap());
-        store.set_extra_tills_allowed(true).unwrap();
+        store.set_extra_tills_allowed(true, &owner).unwrap();
         assert!(store.extra_tills_allowed().unwrap());
-        store.set_extra_tills_allowed(false).unwrap();
+        store.set_extra_tills_allowed(false, &owner).unwrap();
         assert!(!store.extra_tills_allowed().unwrap());
         let _ = std::fs::remove_file(path);
     }
@@ -14872,7 +15455,7 @@ mod tests {
         use rust_decimal::Decimal;
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
-        store.complete_owner_setup("0000").unwrap();
+        let owner = store.complete_owner_setup("0000").unwrap();
 
         // A custom unit based on another custom unit resolves through
         // the chain to the standard anchor: 1 crate = 2 box, 1 box = 20 cm.
@@ -14880,9 +15463,9 @@ mod tests {
         store.add_unit("crate", "Crate").unwrap();
         // Dangling until linked: unusable, but the link may come later.
         assert_eq!(store.resolve_unit("crate"), None);
-        store.add_unit_conversion("crate", "box", 2_000).unwrap();
+        store.add_unit_conversion("crate", "box", 2_000, &owner).unwrap();
         assert_eq!(store.resolve_unit("crate"), None);
-        store.add_unit_conversion("box", "cm", 20_000).unwrap();
+        store.add_unit_conversion("box", "cm", 20_000, &owner).unwrap();
         assert_eq!(
             store.resolve_unit("crate"),
             Some(("length".to_string(), Decimal::from(40)))
@@ -14898,13 +15481,13 @@ mod tests {
 
         // Loops are refused: box already leads (through crate's chain
         // in reverse reachability) — closing box → crate would cycle.
-        assert!(store.add_unit_conversion("box", "crate", 500).is_err());
+        assert!(store.add_unit_conversion("box", "crate", 500, &owner).is_err());
 
         // Cross-family links are refused once both sides are anchored:
         // bag is weight, cm is length.
         store.add_unit("bag", "Bag").unwrap();
-        store.add_unit_conversion("bag", "kg", 25_000).unwrap();
-        assert!(store.add_unit_conversion("bag", "cm", 10_000).is_err());
+        store.add_unit_conversion("bag", "kg", 25_000, &owner).unwrap();
+        assert!(store.add_unit_conversion("bag", "cm", 10_000, &owner).is_err());
         assert!(store.convert_qty_milli(1_000, "bag", "cm").is_err());
         // A weight unit cannot pose as a dimension unit at the desk.
         assert_eq!(store.factor_to_cm("bag"), None);
@@ -14912,10 +15495,10 @@ mod tests {
 
         // Standard units are fixed: nobody redefines them, and no
         // conversion may be authored *from* one.
-        assert!(store.add_unit_conversion("kg", "bag", 40).is_err());
+        assert!(store.add_unit_conversion("kg", "bag", 40, &owner).is_err());
 
         // Unknown codes must be added as units first.
-        assert!(store.add_unit_conversion("sack", "kg", 10_000).is_err());
+        assert!(store.add_unit_conversion("sack", "kg", 10_000, &owner).is_err());
 
         // Currencies are never units.
         assert!(store.add_unit("usd", "Dollar").is_err());
@@ -14933,7 +15516,7 @@ mod tests {
         let units = store.list_units().unwrap();
         assert!(units.iter().any(|u| u.code == "kg"));
         store.add_unit("bag", "Bag").unwrap();
-        store.add_unit_conversion("bag", "kg", 25_000).unwrap(); // 1 bag = 25 kg
+        store.add_unit_conversion("bag", "kg", 25_000, &owner).unwrap(); // 1 bag = 25 kg
         let kg = store.convert_qty_milli(1_000, "bag", "kg").unwrap();
         assert_eq!(kg, 25_000);
 
@@ -14967,7 +15550,7 @@ mod tests {
         let mut custom = saved.clone();
         custom.dim_unit = "crate".into();
         assert!(store.set_booking_measure_settings(&custom).is_err());
-        store.add_unit_conversion("crate", "cm", 40_000).unwrap();
+        store.add_unit_conversion("crate", "cm", 40_000, &owner).unwrap();
         store.set_booking_measure_settings(&custom).unwrap();
         assert_eq!(
             store.factor_to_cm("crate"),

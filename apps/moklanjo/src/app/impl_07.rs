@@ -94,6 +94,7 @@ impl App {
             let mut st = app_state().lock().unwrap();
             st.store = None;
             st.session = None;
+            st.clear_team_edit_selection();
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
         }
@@ -123,7 +124,12 @@ impl App {
         if let Some(store) = st.store.as_ref() {
             let _ = store.set_device_role(DeviceRole::Server.as_str());
             if switching_in {
-                let _ = store.set_extra_tills_allowed(false);
+                if let Ok(Some(owner)) = store
+                    .list_staff()
+                    .map(|s| s.into_iter().find(|m| m.is_owner()))
+                {
+                    let _ = store.set_extra_tills_allowed(false, &owner);
+                }
                 st.extra_tills_allowed = false;
                 net::stop_server();
             } else if st.extra_tills_allowed {
@@ -245,25 +251,39 @@ impl App {
                 Some(e)
             } else if st.store.is_none() {
                 Some("Storage not ready".into())
-            } else if let Err(e) = st.store.as_ref().unwrap().set_extra_tills_allowed(allowed) {
-                Some(e)
             } else {
-                st.extra_tills_allowed = allowed;
-                if allowed {
-                    let store = st.store.as_ref().unwrap();
-                    let code = store.ensure_server_pairing_code().unwrap_or_default();
-                    let path = store.db_path().to_path_buf();
-                    if let Err(e) = net::ensure_server(path) {
-                        st.status = format!("Extra tills on, LAN listen failed: {e}");
-                    } else {
-                        st.status = format!("Extra tills on · pairing code {code}");
-                        firewall_job(|| Ok(net::firewall_allows_phones()));
+                match st.actor() {
+                    Err(e) => Some(e),
+                    Ok(actor) => {
+                        if let Err(e) = st
+                            .store
+                            .as_ref()
+                            .unwrap()
+                            .set_extra_tills_allowed(allowed, &actor)
+                        {
+                            Some(e)
+                        } else {
+                            st.extra_tills_allowed = allowed;
+                            if allowed {
+                                let store = st.store.as_ref().unwrap();
+                                let code = store.ensure_server_pairing_code().unwrap_or_default();
+                                let path = store.db_path().to_path_buf();
+                                if let Err(e) = net::ensure_server(path) {
+                                    st.status = format!("Extra tills on, LAN listen failed: {e}");
+                                } else {
+                                    st.status = format!("Extra tills on · pairing code {code}");
+                                    firewall_job(|| Ok(net::firewall_allows_phones()));
+                                }
+                            } else {
+                                net::stop_server();
+                                st.status =
+                                    "Extra tills off — this device still holds the shop books"
+                                        .into();
+                            }
+                            None
+                        }
                     }
-                } else {
-                    net::stop_server();
-                    st.status = "Extra tills off — this device still holds the shop books".into();
                 }
-                None
             }
         };
         if let Some(e) = err {
@@ -320,6 +340,7 @@ impl App {
                     // own sign-in is not one the Server knows. Drop any Who
                     // pick left from a previous shop's roster.
                     st.session = None;
+                    st.clear_team_edit_selection();
                     st.lock_staff_id = None;
                     st.lock_as_owner = false;
                     st.screen = Screen::Lock;
@@ -358,6 +379,7 @@ impl App {
                     let _ = store.clear_client_pairing();
                 }
                 st.session = None;
+                st.clear_team_edit_selection();
                 st.pair_note = st.t("device_forgotten");
                 st.screen = Screen::ClientPair;
                 true
@@ -950,24 +972,27 @@ impl App {
     fn apply_measure_settings(&mut self, cx: &mut Cx, settings: domain::BookingMeasureSettings) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.set_booking_measure_settings(&settings)?;
-            let refreshed = {
-                let measure = store.booking_measure_settings();
-                (
-                    store.factor_to_cm(&measure.dim_unit),
-                    store.factor_to_kg(&measure.weight_unit),
-                    measure,
-                )
-            };
-            let (dim_factor, weight_factor, measure) = refreshed;
-            st.measure_dim_factor = dim_factor.unwrap_or(rust_decimal::Decimal::ONE);
-            st.measure_weight_factor = weight_factor.unwrap_or(rust_decimal::Decimal::ONE);
-            st.measure_dim_unit = measure.dim_unit;
-            st.measure_weight_unit = measure.weight_unit;
-            st.measure_divisor = measure.volumetric_divisor;
-            st.measure_slab_kg = measure.slab_kg;
-            st.status = "Booking measures saved".into();
+            let msg = st.books_op(BooksOp::SetBookingMeasures {
+                settings: settings.clone(),
+            })?;
+            // Server reload_all already refreshed these; a Client needs the
+            // optimistic local copy until the next snapshot lands.
+            if st.device_role == DeviceRole::Client {
+                let (dim_factor, weight_factor) = {
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    (
+                        store.factor_to_cm(&settings.dim_unit),
+                        store.factor_to_kg(&settings.weight_unit),
+                    )
+                };
+                st.measure_dim_factor = dim_factor.unwrap_or(rust_decimal::Decimal::ONE);
+                st.measure_weight_factor = weight_factor.unwrap_or(rust_decimal::Decimal::ONE);
+                st.measure_dim_unit = settings.dim_unit;
+                st.measure_weight_unit = settings.weight_unit;
+                st.measure_divisor = settings.volumetric_divisor;
+                st.measure_slab_kg = settings.slab_kg;
+            }
+            st.status = msg;
             Ok(())
         })();
         if let Err(e) = result {
@@ -1684,6 +1709,7 @@ impl App {
             let mut st = app_state().lock().unwrap();
             st.store = None;
             st.session = None;
+            st.clear_team_edit_selection();
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
             st.extra_tills_allowed = false;

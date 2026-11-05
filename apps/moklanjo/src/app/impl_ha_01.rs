@@ -244,13 +244,16 @@ impl App {
                             match self.materialize_picked_file(cx, path) {
                                 Ok(file) => {
                                     let outcome = (|| -> Result<String, String> {
-                                        let st = app_state().lock().unwrap();
-                                        let store = st
-                                            .store
-                                            .as_ref()
-                                            .ok_or_else(|| "Storage not ready".to_string())?;
-                                        store.import_receipt_stamp(&file)?;
-                                        Ok("Receipt stamp saved".into())
+                                        let bytes = std::fs::read(&file).map_err(|e| {
+                                            format!("Could not read the stamp: {e}")
+                                        })?;
+                                        let filename = file
+                                            .file_name()
+                                            .and_then(|n| n.to_str())
+                                            .unwrap_or("receipt-stamp.webp")
+                                            .to_string();
+                                        let mut st = app_state().lock().unwrap();
+                                        st.books_op(BooksOp::ImportReceiptStamp { filename, bytes })
                                     })();
                                     match outcome {
                                         Ok(m) => self.set_status(cx, m),
@@ -269,13 +272,16 @@ impl App {
                             match self.materialize_picked_file(cx, path) {
                                 Ok(file) => {
                                     let outcome = (|| -> Result<String, String> {
-                                        let st = app_state().lock().unwrap();
-                                        let store = st
-                                            .store
-                                            .as_ref()
-                                            .ok_or_else(|| "Storage not ready".to_string())?;
-                                        store.import_payment_qr(&file)?;
-                                        Ok("Payment QR saved".into())
+                                        let bytes = std::fs::read(&file).map_err(|e| {
+                                            format!("Could not read the payment QR: {e}")
+                                        })?;
+                                        let filename = file
+                                            .file_name()
+                                            .and_then(|n| n.to_str())
+                                            .unwrap_or("payment-qr.webp")
+                                            .to_string();
+                                        let mut st = app_state().lock().unwrap();
+                                        st.books_op(BooksOp::ImportPaymentQr { filename, bytes })
                                     })();
                                     match outcome {
                                         Ok(m) => self.set_status(cx, m),
@@ -369,6 +375,31 @@ impl App {
                             } else {
                                 let job = (|| -> Result<(PathBuf, PathBuf, &'static str), String> {
                                     let st = app_state().lock().unwrap();
+                                    let actor = st.actor()?;
+                                    // Same person rules as BooksOp::ImportCsv.
+                                    match kind {
+                                        "parties" => {
+                                            if !actor.is_owner() && !actor.can_access_credit() {
+                                                return Err(
+                                                    "Not allowed to import parties".into(),
+                                                );
+                                            }
+                                        }
+                                        "items" | "" => {
+                                            if !actor.is_owner() && !actor.can_access_items()
+                                            {
+                                                return Err(
+                                                    "Not allowed to import menu CSV".into(),
+                                                );
+                                            }
+                                        }
+                                        "pincodes" | "carrier_bill" => {
+                                            if !actor.is_owner() && !actor.can_access_sales() {
+                                                return Err("Not allowed to import CSV".into());
+                                            }
+                                        }
+                                        _ => {}
+                                    }
                                     let db = st
                                         .store
                                         .as_ref()
@@ -599,6 +630,7 @@ impl App {
                         let _ = store.set_active_session_staff_id(None);
                     }
                     st.session = None;
+                    st.clear_team_edit_selection();
                     st.pin_buffer.clear();
                     st.status = "Locked".into();
                     if st.must_confirm_device_role {

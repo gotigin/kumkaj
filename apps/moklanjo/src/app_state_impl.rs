@@ -243,6 +243,17 @@ impl AppState {
         Ok(())
     }
 
+    /// Drop Team edit target + hire/edit drafts so the next sign-in does not
+    /// inherit another person's selection or unsaved Save payload.
+    fn clear_team_edit_selection(&mut self) {
+        self.team_staff_id = None;
+        self.team_select_pending = false;
+        self.hire_staff_role = StaffRole::Cashier;
+        self.hire_features = StaffFeatures::for_role(StaffRole::Cashier);
+        self.draft_staff_role = StaffRole::Cashier;
+        self.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
+    }
+
     /// Overlay live `staff` features/rights onto `session` (same person id).
     /// Missing or inactive → clear session and lock (do not keep stale rights).
     fn refresh_session_from_staff_roster(&mut self) {
@@ -257,6 +268,7 @@ impl AppState {
             .cloned();
         let Some(fresh) = fresh else {
             self.session = None;
+            self.clear_team_edit_selection();
             self.pin_buffer.clear();
             self.screen = Screen::Lock;
             return;
@@ -268,6 +280,11 @@ impl AppState {
             session.features = fresh.features;
             session.active = fresh.active;
             session.login_id = fresh.login_id;
+        }
+        // If Team stripped Credit/Items/… while they were on that screen,
+        // leave it for the first peer they may still open (or Lock).
+        if !session_may_stay_on(self.screen, self) {
+            self.screen = first_allowed_work_screen(self);
         }
     }
 

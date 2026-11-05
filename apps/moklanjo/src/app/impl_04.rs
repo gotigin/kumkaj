@@ -345,9 +345,22 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_printers))
             .set_text(cx, &plain_display_text(&s("printers_heading")));
+        let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
         self.ui
             .widget(cx, ids!(h_printers_help))
-            .set_text(cx, &plain_display_text(&s("printers_help")));
+            .set_text(
+                cx,
+                &plain_display_text(&s(if is_client {
+                    "printers_host_only"
+                } else {
+                    "printers_help"
+                })),
+            );
+        // Client: show the host-only note. Host: keep the long help in the tip path
+        // (label stays hidden on Server as designed).
+        self.ui
+            .widget(cx, ids!(h_printers_help))
+            .set_visible(cx, is_client);
         self.ui.widget(cx, ids!(h_printers_pool)).set_text(cx, &plain_display_text(&s("printers_pool_heading")));
         self.ui.widget(cx, ids!(h_printers_routes)).set_text(cx, &plain_display_text(&s("printers_routes_heading")));
         if !print_share::is_finding_printers() {
@@ -373,6 +386,46 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(route_add_printer_input))
             .set_empty_text(cx, s("route_add_printer_ph"));
+        // Host-only Find / add / assign — Client keeps Test page (routed to Server).
+        // Only hide on Client here; do not force-show choice-pair faces on host
+        // (paint_choice_pair owns idle/active visibility).
+        if is_client {
+            for id in [
+                ids!(find_printers_btn),
+                ids!(printers_found_label),
+                ids!(printers_found_list),
+                ids!(h_printers_pool),
+                ids!(printers_pool_label),
+                ids!(printer_label_input),
+                ids!(printer_target_input),
+                ids!(h_printer_mode),
+                ids!(printer_mode_thermal),
+                ids!(printer_mode_thermal_on),
+                ids!(printer_mode_standard),
+                ids!(printer_mode_standard_on),
+                ids!(printer_mode_landscape),
+                ids!(printer_mode_landscape_on),
+                ids!(printer_format_custom),
+                ids!(printer_add),
+                ids!(printer_remove),
+                ids!(h_printers_routes),
+                ids!(printer_routes_label),
+                ids!(h_route_pick),
+                ids!(route_pick_receipt),
+                ids!(route_pick_receipt_on),
+                ids!(route_pick_label),
+                ids!(route_pick_label_on),
+                ids!(route_add_printer_input),
+                ids!(route_add),
+                ids!(route_up),
+                ids!(route_down),
+                ids!(route_remove),
+                ids!(route_clear),
+                ids!(printers_save),
+            ] {
+                self.ui.widget(cx, id).set_visible(cx, false);
+            }
+        }
         self.ui
             .widget(cx, ids!(h_drawer_count))
             .set_text(cx, &plain_display_text(&s("drawer_count")));

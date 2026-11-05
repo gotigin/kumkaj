@@ -1449,6 +1449,37 @@ fn approve_on_server(
     }
 }
 
+/// Credit collect on LAN: existing party only — never create from a name.
+fn resolve_existing_settle_customer(
+    store: &Store,
+    req: &RemoteSettleRequest,
+) -> Result<String, String> {
+    if let Some(id) = req
+        .customer_id
+        .as_deref()
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+    {
+        return store
+            .get_customer(id)?
+            .filter(|c| c.active)
+            .map(|c| c.id)
+            .ok_or_else(|| "Customer not found — pick an existing party".to_string());
+    }
+    if let Some(name) = req
+        .customer_name
+        .as_deref()
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+    {
+        return store
+            .find_customer_by_name(name)?
+            .map(|c| c.id)
+            .ok_or_else(|| "Customer not found — pick an existing party".to_string());
+    }
+    Err("Customer required".into())
+}
+
 /// A signed-in phone's write, done as `actor`.
 fn write(store: &Store, route: &str, body: &str, actor: &StaffMember) -> Result<Reply, String> {
     match route {
@@ -1461,18 +1492,7 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember) -> Result<
             let req: RemoteSettleRequest =
                 serde_json::from_str(body).map_err(|e| format!("settle json: {e}"))?;
             let pay = PayMethod::parse(&req.pay).ok_or_else(|| "bad pay method".to_string())?;
-            let customer_id = if let Some(id) = req.customer_id.clone() {
-                id
-            } else if let Some(name) = req
-                .customer_name
-                .as_deref()
-                .map(str::trim)
-                .filter(|s| !s.is_empty())
-            {
-                store.find_or_create_customer(name)?.id
-            } else {
-                return Err("Customer required".into());
-            };
+            let customer_id = resolve_existing_settle_customer(store, &req)?;
             store.settle_credit(&customer_id, req.amount_paise, pay, actor, &req.detail)?;
             Ok(Reply::done())
         }

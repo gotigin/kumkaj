@@ -247,8 +247,11 @@ pub enum BooksOp {
         header: String,
         fssai: String,
         footer: String,
-        upi_vpa: String,
-        upi_payee: String,
+        /// `None` = leave Server UPI unchanged (footer-only / Sales edits).
+        #[serde(default)]
+        upi_vpa: Option<String>,
+        #[serde(default)]
+        upi_payee: Option<String>,
     },
     ImportPrintStamp {
         filename: String,
@@ -379,6 +382,26 @@ pub enum BooksOp {
         days: u32,
         limit: u32,
     },
+    SetVenueBrand {
+        title: String,
+        /// Empty leaves the business name alone.
+        org: String,
+        /// Empty bytes leave the icon alone.
+        icon_filename: String,
+        icon_bytes: Vec<u8>,
+    },
+    ClearVenueIcon,
+    SetKotAutoPrint {
+        on: bool,
+    },
+    /// Bill print size (Standard Portrait/Landscape em) — shop printers.json on Server.
+    SetStandardEm {
+        em: f32,
+    },
+    /// Print a test page on the Server's printers for `route_key` (`bill` / `kot:`…).
+    PrintTestPage {
+        route_key: String,
+    },
     LogExpense {
         amount_paise: i64,
         note: String,
@@ -463,6 +486,10 @@ impl BooksOp {
             Self::AddUnit { .. } => "Add units",
             Self::AddUnitConversion { .. } => "Add unit conversion",
             Self::SetFrequent { .. } => "Frequent items settings",
+            Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
+            Self::SetKotAutoPrint { .. } => "Change KOT auto-print",
+            Self::SetStandardEm { .. } => "Change the bill print size",
+            Self::PrintTestPage { .. } => "Print a test page",
             Self::LogExpense { .. } => "Log expenses",
             Self::SaveBackupCopy => "Save a backup copy",
         }
@@ -559,6 +586,18 @@ impl BooksOp {
             Self::AddUnit { code, .. } => format!("Unit {code} added"),
             Self::AddUnitConversion { .. } => "Unit conversion added".into(),
             Self::SetFrequent { .. } => "Frequent items saved".into(),
+            Self::SetVenueBrand { org, .. } => {
+                if org.trim().is_empty() {
+                    "Brand saved".into()
+                } else {
+                    "Brand and business name saved".into()
+                }
+            }
+            Self::ClearVenueIcon => "Icon cleared".into(),
+            Self::SetKotAutoPrint { on: true } => "KOT auto-print on".into(),
+            Self::SetKotAutoPrint { on: false } => "KOT auto-print off".into(),
+            Self::SetStandardEm { .. } => "Bill print size saved".into(),
+            Self::PrintTestPage { .. } => "Test page sent".into(),
             Self::LogExpense { .. } => "Expense logged".into(),
             Self::SaveBackupCopy => "Backup saved on the shop device".into(),
         }
@@ -654,6 +693,9 @@ impl Store {
     pub fn apply_books_op(&self, op: BooksOp, actor: &StaffMember) -> Result<String, String> {
         match op {
             BooksOp::SetOpeningFloat { amount_paise } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to set opening cash".into());
+                }
                 self.set_opening_float(amount_paise, actor)?;
                 Ok(format!("Opening cash {} saved", self.show_money(amount_paise)))
             }
@@ -748,6 +790,12 @@ impl Store {
                 Ok(format!("Wrote off {}", self.show_money(written)))
             }
             BooksOp::SettlePayable { party_id, amount_paise, pay, against_bill_id } => {
+                if !actor.is_owner()
+                    && !actor.can_access_credit()
+                    && !actor.can_access_inventory()
+                {
+                    return Err("Not allowed to settle payables".into());
+                }
                 self.settle_payable_against(
                     &party_id,
                     amount_paise,
@@ -763,15 +811,24 @@ impl Store {
                 Ok(format!("AP wrote off {}", self.show_money(written)))
             }
             BooksOp::CrmCampaign { kind, inactive_days, top_n, body, channel } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to run CRM campaigns".into());
+                }
                 let seg = crm_segment(&kind, inactive_days, top_n)?;
                 let n = self.queue_segment_campaign(seg, &body, &channel, actor)?;
                 Ok(format!("Queued {n} {channel} message(s) for {}", seg.label()))
             }
             BooksOp::WalletTopUp { customer_id, amount_paise } => {
+                if !actor.is_owner() {
+                    return Err("Not allowed to top up wallets".into());
+                }
                 let bal = self.wallet_top_up(&customer_id, amount_paise, actor)?;
                 Ok(format!("Wallet now {}", self.show_money(bal)))
             }
             BooksOp::IssueVoucher { code, amount_paise } => {
+                if !actor.is_owner() {
+                    return Err("Not allowed to issue vouchers".into());
+                }
                 let v = self.issue_voucher(&code, amount_paise, actor)?;
                 Ok(format!(
                     "Voucher {} issued for {}",
@@ -874,7 +931,7 @@ impl Store {
                 existing_image_key.as_deref(),
             ),
             BooksOp::ArchiveProduct { id, name } => {
-                if !actor.role.can_manage_menu() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 self.archive_product(&id)?;
@@ -882,7 +939,7 @@ impl Store {
                 Ok(format!("Removed {name}"))
             }
             BooksOp::RestoreProduct { id, name } => {
-                if !actor.role.can_manage_menu() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 self.restore_product(&id)?;
@@ -890,7 +947,7 @@ impl Store {
                 Ok(format!("{name} back on the menu"))
             }
             BooksOp::SetProductAvailable { id, name, available } => {
-                if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 self.set_product_available(&id, available)?;
@@ -901,7 +958,7 @@ impl Store {
                 })
             }
             BooksOp::ImportShelfTemplate => {
-                if !actor.role.can_manage_menu() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 let done = self.import_catalogue(crate::menu_images::shelf())?;
@@ -911,7 +968,7 @@ impl Store {
                 ))
             }
             BooksOp::ImportClientTemplate { template_id } => {
-                if !actor.role.can_manage_menu() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 let tmpl = crate::menu_templates::find(&template_id)
@@ -927,7 +984,7 @@ impl Store {
                     if !actor.is_owner() && !actor.can_access_credit() {
                         return Err("Not allowed to import parties".into());
                     }
-                } else if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                } else if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to import menu CSV".into());
                 }
                 let text = String::from_utf8(bytes)
@@ -947,7 +1004,7 @@ impl Store {
                 Ok(format!("Imported {n} aggregator order(s) into the inbox"))
             }
             BooksOp::ImportCategoryImage { category_id, filename, bytes } => {
-                if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 let file = write_upload(&filename, &bytes)?;
@@ -956,7 +1013,7 @@ impl Store {
                 Ok("Category photo saved".into())
             }
             BooksOp::BulkPrice { category_id, percent, set_paise } => {
-                if !actor.role.can_manage_menu() && !actor.can_access_items() {
+                if !actor.is_owner() && !actor.can_access_items() {
                     return Err("Not allowed to manage items".into());
                 }
                 let n = self.bulk_price_category(&category_id, percent, set_paise, actor)?;
@@ -1077,10 +1134,29 @@ impl Store {
                 Ok("Business id saved".into())
             }
             BooksOp::SetBillFormat { header, fssai, footer, upi_vpa, upi_payee } => {
+                // Header / FSSAI / footer: Settings. UPI VPA / payee: Owner-only.
+                // `None` UPI fields leave Server values alone (Client footer-only).
                 if !actor.is_owner() && !actor.can_access_settings() {
                     return Err("Not allowed to change bill format".into());
                 }
-                self.set_bill_format_ex(&header, &fssai, &footer, Some(&upi_vpa), Some(&upi_payee))?;
+                let current_vpa = self.upi_vpa()?;
+                let current_payee = self.upi_payee()?;
+                let upi_changed = upi_vpa
+                    .as_ref()
+                    .is_some_and(|v| v.trim() != current_vpa.trim())
+                    || upi_payee
+                        .as_ref()
+                        .is_some_and(|p| p.trim() != current_payee.trim());
+                if upi_changed && !actor.is_owner() {
+                    return Err("Only the Owner can change UPI details".into());
+                }
+                self.set_bill_format_ex(
+                    &header,
+                    &fssai,
+                    &footer,
+                    upi_vpa.as_deref(),
+                    upi_payee.as_deref(),
+                )?;
                 Ok("Bill format saved".into())
             }
             BooksOp::ImportPrintStamp { filename, bytes } => {
@@ -1092,8 +1168,8 @@ impl Store {
                 Ok("Stamp saved for bill faces".into())
             }
             BooksOp::ImportPaymentQr { filename, bytes } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to change bill format".into());
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change the payment QR".into());
                 }
                 let file = write_upload(&filename, &bytes)?;
                 let _ = self.import_payment_qr(file.path())?;
@@ -1107,8 +1183,8 @@ impl Store {
                 Ok("Stamp cleared".into())
             }
             BooksOp::ClearPaymentQr => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to change bill format".into());
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change the payment QR".into());
                 }
                 self.set_payment_qr_key(None)?;
                 Ok("Payment QR cleared".into())
@@ -1247,6 +1323,9 @@ impl Store {
                 Ok(format!("{} posted", kind.label()))
             }
             BooksOp::SetMovementCleared { id, cleared } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to reconcile bank movements".into());
+                }
                 self.set_money_movement_cleared(&id, cleared, actor)?;
                 Ok(if cleared {
                     "Marked cleared — seen on the statement".into()
@@ -1330,6 +1409,61 @@ impl Store {
                 let count = self.frequent_product_ids(days, limit)?.len();
                 Ok(format!("Frequent items: {days} days, {limit} shown, {count} on the list"))
             }
+            BooksOp::SetVenueBrand {
+                title,
+                org,
+                icon_filename,
+                icon_bytes,
+            } => {
+                if !actor.is_owner() {
+                    return Err("Only Owner can change in-app brand".into());
+                }
+                self.set_venue_title(&title)?;
+                let org = org.trim();
+                if !org.is_empty() {
+                    self.set_org_name(org)?;
+                }
+                if !icon_bytes.is_empty() {
+                    let file = write_upload(&icon_filename, &icon_bytes)?;
+                    let _ = self.import_venue_icon(file.path())?;
+                }
+                Ok(if org.is_empty() {
+                    "Brand saved".into()
+                } else {
+                    "Brand and business name saved".into()
+                })
+            }
+            BooksOp::ClearVenueIcon => {
+                if !actor.is_owner() {
+                    return Err("Only Owner can change in-app brand".into());
+                }
+                self.set_venue_icon_key(None)?;
+                Ok("Icon cleared".into())
+            }
+            BooksOp::SetKotAutoPrint { on } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change KOT auto-print".into());
+                }
+                self.set_kot_auto_print(on)?;
+                Ok(if on {
+                    "KOT auto-print on".into()
+                } else {
+                    "KOT auto-print off".into()
+                })
+            }
+            BooksOp::SetStandardEm { em } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill print size".into());
+                }
+                let _ = self.set_standard_print_em(em)?;
+                Ok("Bill print size saved".into())
+            }
+            BooksOp::PrintTestPage { route_key } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to print a test page".into());
+                }
+                self.print_test_page_for_route(&route_key)
+            }
             BooksOp::LogExpense {
                 amount_paise,
                 note,
@@ -1378,7 +1512,7 @@ impl Store {
         image_filename: &str,
         existing_image_key: Option<&str>,
     ) -> Result<String, String> {
-        if !actor.role.can_manage_menu() {
+        if !actor.is_owner() && !actor.can_access_items() {
             return Err("Not allowed to manage items".into());
         }
         let name = name.trim();

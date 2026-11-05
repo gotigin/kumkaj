@@ -281,6 +281,20 @@ impl StaffRole {
     pub fn can_admin(self) -> bool {
         matches!(self, Self::Owner)
     }
+
+    /// Relative job power for Team hire/edit caps (Owner highest).
+    pub fn power_rank(self) -> u8 {
+        match self {
+            Self::Cashier => 1,
+            Self::Manager => 2,
+            Self::Owner => 3,
+        }
+    }
+
+    /// True when `self` is not a higher job than `ceiling`.
+    pub fn is_at_most(self, ceiling: Self) -> bool {
+        self.power_rank() <= ceiling.power_rank()
+    }
 }
 
 /// Per-staff feature flags (Owner always has all).
@@ -360,6 +374,32 @@ impl StaffFeatures {
     pub fn from_json(s: &str) -> Self {
         serde_json::from_str(s).unwrap_or_default()
     }
+
+    /// Screen chips only (not rights) — each `true` requires ceiling `true`.
+    pub fn screens_within(&self, ceiling: &Self) -> bool {
+        (!self.sell || ceiling.sell)
+            && (!self.items || ceiling.items)
+            && (!self.sales || ceiling.sales)
+            && (!self.credit || ceiling.credit)
+            && (!self.team || ceiling.team)
+            && (!self.backup || ceiling.backup)
+            && (!self.inventory || ceiling.inventory)
+            && (!self.branches || ceiling.branches)
+    }
+
+    /// Drop screens the actor does not hold (hire/copy caps).
+    pub fn cap_screens_to(&self, ceiling: &Self) -> Self {
+        let mut out = self.clone();
+        out.sell &= ceiling.sell;
+        out.items &= ceiling.items;
+        out.sales &= ceiling.sales;
+        out.credit &= ceiling.credit;
+        out.team &= ceiling.team;
+        out.backup &= ceiling.backup;
+        out.inventory &= ceiling.inventory;
+        out.branches &= ceiling.branches;
+        out
+    }
 }
 
 /// Owner-controlled right level for a sensitive action. Per staff, enforced on the Server.
@@ -382,6 +422,20 @@ impl RightLevel {
             Self::WithApproval => Self::Denied,
             Self::Denied => Self::Allowed,
         }
+    }
+
+    /// Privilege rank: Allowed > With approval > Denied.
+    pub fn privilege_rank(self) -> u8 {
+        match self {
+            Self::Denied => 0,
+            Self::WithApproval => 1,
+            Self::Allowed => 2,
+        }
+    }
+
+    /// True when `self` is not more privileged than `ceiling`.
+    pub fn is_at_most(self, ceiling: Self) -> bool {
+        self.privilege_rank() <= ceiling.privilege_rank()
     }
 }
 
@@ -436,6 +490,26 @@ impl Rights {
             Right::AmendSale => self.amend_sale = level,
         }
     }
+
+    /// Every right is at most as privileged as `ceiling`.
+    pub fn is_within(&self, ceiling: &Self) -> bool {
+        Right::ALL
+            .iter()
+            .all(|&r| self.level(r).is_at_most(ceiling.level(r)))
+    }
+
+    /// Clamp each right down to what `ceiling` holds.
+    pub fn clamp_to(&self, ceiling: &Self) -> Self {
+        let mut out = self.clone();
+        for &r in &Right::ALL {
+            let want = self.level(r);
+            let max = ceiling.level(r);
+            if !want.is_at_most(max) {
+                out.set_level(r, max);
+            }
+        }
+        out
+    }
 }
 
 /// Sensitive action requiring a rights check.
@@ -448,6 +522,8 @@ pub enum Right {
 }
 
 impl Right {
+    pub const ALL: [Right; 2] = [Right::VoidRefund, Right::AmendSale];
+
     /// Locale key for the right's name on the Team screen.
     pub fn label_key(self) -> &'static str {
         match self {
@@ -698,7 +774,7 @@ pub struct UnitConversion {
 /// cm (canonical); these settings only choose what the user *types and
 /// sees*. Defaults are the Indian domestic convention — a starting point
 /// any shop can change, never a restriction.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct BookingMeasureSettings {
     /// Length unit code for L×B×H entry (any unit resolvable to cm).
     pub dim_unit: String,

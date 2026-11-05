@@ -125,6 +125,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .iter()
             .map(|l| net::RemoteKotReprintLine {
                 kot_id: l.kot_id.clone(),
+                line_id: l.running_line_id.clone(),
                 name: l.name.clone(),
                 qty: l.qty,
                 qty_milli: l.qty_milli,
@@ -1210,7 +1211,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
             let actor = st.actor()?;
-            if !actor.role.can_manage_menu() {
+            if !actor.is_owner() && !actor.can_access_items() {
                 return Err("Not allowed to manage items".into());
             }
             // A fresh item. The form's own choices (category, station, unit,
@@ -1281,9 +1282,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         let msg = st.books_op(BooksOp::RemoveStation { id: id.clone() })?;
         if st.device_role != DeviceRole::Client {
             st.printer_draft.remove_station_route(&id);
-            if let Some(base) = st.printers_base() {
-                let _ = print_share::save_device_printers(&base, &st.printer_draft);
-            }
+            let _ = st.save_printer_draft();
         }
         Ok(if st.device_role == DeviceRole::Client {
             msg

@@ -94,6 +94,22 @@ pub struct SyncSnapshot {
     /// older Servers / when unknown.
     #[serde(default, skip_serializing_if = "is_zero_u64")]
     pub seq: u64,
+    /// Shop-wide Standard bill type size (portrait + landscape). Absent on
+    /// older Servers — Client keeps its local cache.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub standard_print_em: Option<f32>,
+    /// Bill face printed under the shop name (address / phone lines).
+    #[serde(default)]
+    pub bill_header: String,
+    #[serde(default)]
+    pub fssai_no: String,
+    #[serde(default)]
+    pub bill_footer: String,
+    /// Customer-facing UPI for the payment QR (Owner-set on the Server).
+    #[serde(default)]
+    pub upi_vpa: String,
+    #[serde(default)]
+    pub upi_payee: String,
 }
 
 fn is_zero_u64(v: &u64) -> bool {
@@ -315,6 +331,9 @@ pub struct RemoteKotRequest {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteKotReprintLine {
     pub kot_id: String,
+    /// Stored `running_lines.id` — Server filters the slip to these dishes.
+    #[serde(default)]
+    pub line_id: String,
     pub name: String,
     pub qty: i64,
     pub qty_milli: i64,
@@ -1112,13 +1131,20 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         server_id: store.lan_server_id()?,
         rev: String::new(),
         seq: 0,
+        standard_print_em: store.standard_print_em().ok(),
+        bill_header: store.bill_header()?,
+        fssai_no: store.fssai_no()?,
+        bill_footer: store.bill_footer()?,
+        upi_vpa: store.upi_vpa()?,
+        upi_payee: store.upi_payee()?,
     })
 }
 
 /// Recovery print: selected sent KOTs again on this Server's kitchen printers.
 /// Shared by the Order desk (Server) and `POST /kot_reprint` (Client).
-/// Dishes + kitchen come from the **stored** KOT by `kot_id` — client-supplied
-/// names / qty / kitchen are not authoritative. Unknown ids are refused.
+/// Dishes + kitchen + table come from the **stored** KOT by `kot_id` — client
+/// names / qty / kitchen / table are not authoritative. When the request
+/// carries `line_id`s, only those stored dishes reprint. Unknown ids refused.
 /// Kitchen access is `kot_stations` (not `Right::Reprint` — that is bills only).
 /// DeviceRole is never a gate.
 pub fn reprint_selected_kots(
@@ -1141,39 +1167,44 @@ pub fn reprint_selected_kots(
         .filter(|s| !s.is_empty())
         .map(str::to_string)
         .collect();
-    let table_label = req
-        .table_name
-        .clone()
-        .filter(|s| !s.trim().is_empty())
-        .or_else(|| {
-            req.table_id.as_ref().and_then(|tid| {
-                store
-                    .list_tables()
-                    .ok()
-                    .and_then(|tables| tables.into_iter().find(|t| &t.id == tid).map(|t| t.name))
-            })
-        })
-        .unwrap_or_default();
     let by = actor.name.clone();
     let unassigned = "Kitchen";
-    // Unique kot_ids from the request (selection); content from the books.
-    let mut kot_ids: Vec<String> = Vec::new();
+    // kot_id → selected running_line ids (empty = whole ticket, legacy).
+    let mut by_kot: Vec<(String, Vec<String>)> = Vec::new();
     for line in &req.lines {
         let id = line.kot_id.trim();
         if id.is_empty() {
             return Err("Missing KOT id — send a KOT first, then print again".into());
         }
-        if !kot_ids.iter().any(|k| k == id) {
-            kot_ids.push(id.to_string());
+        let line_id = line.line_id.trim().to_string();
+        match by_kot.iter_mut().find(|(k, _)| k == id) {
+            Some((_, ids)) => {
+                if !line_id.is_empty() && !ids.iter().any(|x| x == &line_id) {
+                    ids.push(line_id);
+                }
+            }
+            None => {
+                let ids = if line_id.is_empty() {
+                    Vec::new()
+                } else {
+                    vec![line_id]
+                };
+                by_kot.push((id.to_string(), ids));
+            }
         }
     }
     // station_id → (display name, kot_nos, item lines "name|qty")
     let mut groups: Vec<(String, String, Vec<i64>, Vec<String>)> = Vec::new();
     let mut dish_n = 0usize;
-    for kot_id in &kot_ids {
-        let (sid, kot_no, items) = store.kot_reprint_payload(kot_id)?;
+    let mut table_label = String::new();
+    for (kot_id, line_ids) in &by_kot {
+        let (sid, kot_no, stored_table, items) =
+            store.kot_reprint_payload(kot_id, line_ids)?;
         if items.is_empty() {
             return Err(format!("KOT has no dishes to print: {kot_id}"));
+        }
+        if table_label.is_empty() && !stored_table.trim().is_empty() {
+            table_label = stored_table;
         }
         let name = if sid.is_empty() {
             unassigned.to_string()
@@ -1365,7 +1396,7 @@ pub fn apply_running_action(
             Ok(None)
         }
         RunningAction::UndoBill { table_id } => {
-            store.undo_bill_print(table_id, actor)?;
+            store.undo_bill_print(table_id, actor, approval_pin)?;
             Ok(None)
         }
         RunningAction::BumpPending {
@@ -1881,6 +1912,37 @@ fn approve_on_server(
     Ok((approver, note))
 }
 
+/// Credit collect on LAN: existing party only — never create from a name.
+fn resolve_existing_settle_customer(
+    store: &Store,
+    req: &RemoteSettleRequest,
+) -> Result<String, String> {
+    if let Some(id) = req
+        .customer_id
+        .as_deref()
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+    {
+        return store
+            .get_customer(id)?
+            .filter(|c| c.active)
+            .map(|c| c.id)
+            .ok_or_else(|| "Customer not found — pick an existing party".to_string());
+    }
+    if let Some(name) = req
+        .customer_name
+        .as_deref()
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+    {
+        return store
+            .find_customer_by_name(name)?
+            .map(|c| c.id)
+            .ok_or_else(|| "Customer not found — pick an existing party".to_string());
+    }
+    Err("Customer required".into())
+}
+
 /// A signed-in phone's write, done as `actor`. Paper to print once it has
 /// landed goes in `after`.
 fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mut AfterWrite) -> Result<Reply, String> {
@@ -1892,13 +1954,7 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
         "/settle" => {
             let req: RemoteSettleRequest = serde_json::from_str(body).map_err(|e| format!("settle json: {e}"))?;
             let pay = PayMethod::parse(&req.pay).ok_or_else(|| "bad pay method".to_string())?;
-            let customer_id = if let Some(id) = req.customer_id.clone() {
-                id
-            } else if let Some(name) = req.customer_name.as_deref().map(str::trim).filter(|s| !s.is_empty()) {
-                store.find_or_create_customer(name)?.id
-            } else {
-                return Err("Customer required".into());
-            };
+            let customer_id = resolve_existing_settle_customer(store, &req)?;
             store.settle_credit(&customer_id, req.amount_paise, pay, actor, &req.detail)?;
             Ok(Reply::done())
         }
@@ -2024,33 +2080,31 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
             None => Err(format!("{what} needs a customer")),
         }
     };
-    let needs_redeem = req.redeem_loyalty_points > 0
-        || req.redeem_wallet_paise > 0
-        || req.redeem_voucher_paise > 0;
-    let redeem_customer = customer_for(store, needs_redeem, "Loyalty / wallet / voucher")?;
-    if needs_redeem {
-        let cid = redeem_customer
-            .as_deref()
-            .ok_or_else(|| "Loyalty / wallet / voucher needs a customer".to_string())?;
-        if req.redeem_voucher_paise > 0 && !req.redeem_voucher_code.trim().is_empty() {
-            let bal = store.voucher_balance(&req.redeem_voucher_code)?;
-            if bal < req.redeem_voucher_paise {
-                return Err("Voucher balance changed — clear redeem and try again".into());
-            }
-        }
-        if req.redeem_loyalty_points > 0 {
-            store.redeem_loyalty(cid, req.redeem_loyalty_points, actor)?;
-        }
-        if req.redeem_wallet_paise > 0 {
-            store.wallet_spend(cid, req.redeem_wallet_paise, actor)?;
-        }
-        if req.redeem_voucher_paise > 0 && !req.redeem_voucher_code.trim().is_empty() {
-            store.redeem_voucher(&req.redeem_voucher_code, req.redeem_voucher_paise, actor)?;
-        }
-    }
+    let redeem = crate::store::SaleRedeem {
+        loyalty_points: req.redeem_loyalty_points,
+        wallet_paise: req.redeem_wallet_paise,
+        voucher_code: req.redeem_voucher_code.clone(),
+        voucher_paise: req.redeem_voucher_paise,
+    };
+    let needs_redeem = !redeem.is_empty();
     let sale = if req.payments.is_empty() {
-        let customer_id = customer_for(store, pay.is_credit(), "Credit sale")?;
-        store.finalize_sale(&req.draft, pay, table_id.as_deref(), customer_id.as_deref(), actor)?
+        let customer_id = customer_for(
+            store,
+            pay.is_credit() || needs_redeem,
+            if needs_redeem {
+                "Loyalty / wallet / voucher"
+            } else {
+                "Credit sale"
+            },
+        )?;
+        store.finalize_sale_redeem(
+            &req.draft,
+            pay,
+            table_id.as_deref(),
+            customer_id.as_deref(),
+            actor,
+            &redeem,
+        )?
     } else {
         // Mixed Cash/UPI/Card/Credit (and legacy split) — amounts in `payments`.
         if !pay.is_split() && req.payments.len() > 1 {
@@ -2062,8 +2116,23 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
             parts.push((method, tender.amount_paise));
         }
         let needs_credit = parts.iter().any(|(m, _)| m.is_credit());
-        let customer_id = customer_for(store, needs_credit, "Credit part")?;
-        store.finalize_sale_tenders(&req.draft, &parts, table_id.as_deref(), customer_id.as_deref(), actor)?
+        let customer_id = customer_for(
+            store,
+            needs_credit || needs_redeem,
+            if needs_redeem && !needs_credit {
+                "Loyalty / wallet / voucher"
+            } else {
+                "Credit part"
+            },
+        )?;
+        store.finalize_sale_tenders_redeem(
+            &req.draft,
+            &parts,
+            table_id.as_deref(),
+            customer_id.as_deref(),
+            actor,
+            &redeem,
+        )?
     };
     if req.tendered_paise > 0 || req.tip_paise > 0 {
         let cash: i64 = if req.payments.is_empty() {
@@ -2685,6 +2754,17 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
             store.replace_fiscal_from_sync(&snap.fiscal, &snap.tax_rates)?;
         }
         store.cache_server_day_totals(&snap.today, snap.outstanding_credit_paise)?;
+        if let Some(em) = snap.standard_print_em {
+            store.set_standard_print_em_from_sync(em)?;
+        }
+        // Always write — empty header/footer/UPI means this shop has none.
+        store.set_bill_format_from_sync(
+            &snap.bill_header,
+            &snap.fssai_no,
+            &snap.bill_footer,
+            &snap.upi_vpa,
+            &snap.upi_payee,
+        )?;
         Ok(())
     })?;
     Ok(())

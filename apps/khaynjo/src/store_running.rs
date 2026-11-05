@@ -504,13 +504,17 @@ impl Store {
             .map_err(|e| e.to_string())
     }
 
-    /// Recovery print payload from the **stored** KOT — kitchen + dish lines.
-    /// Refuses unknown ids. Dish text comes from `running_lines` when present,
-    /// otherwise from the ticket summary (counter KOTs). Never trust the client.
+    /// Recovery print payload from the **stored** KOT — kitchen + dish lines +
+    /// table label. Refuses unknown ids. Dish text comes from `running_lines`
+    /// when present, otherwise from the ticket summary (counter KOTs). When
+    /// `line_ids` is non-empty, only those running-line rows are printed (no
+    /// summary fallback — the person picked specific dishes). Never trust the
+    /// client for dish text or table name.
     pub fn kot_reprint_payload(
         &self,
         kot_id: &str,
-    ) -> Result<(String, i64, Vec<String>), String> {
+        line_ids: &[String],
+    ) -> Result<(String, i64, String, Vec<String>), String> {
         let id = kot_id.trim();
         if id.is_empty() {
             return Err("Missing KOT id".into());
@@ -527,12 +531,22 @@ impl Store {
             .optional()
             .map_err(|e| e.to_string())?
             .ok_or_else(|| format!("Unknown KOT: {id}"))?;
+        let table_label = if table_id.is_empty() {
+            String::new()
+        } else {
+            self.table_label(&table_id).unwrap_or_default()
+        };
+        let filter: Vec<&str> = line_ids
+            .iter()
+            .map(|s| s.trim())
+            .filter(|s| !s.is_empty())
+            .collect();
         let mut items: Vec<String> = Vec::new();
         {
             let mut stmt = self
                 .conn
                 .prepare(
-                    "SELECT name, qty_milli, unit_label, note
+                    "SELECT id, name, qty_milli, unit_label, note
                        FROM running_lines
                       WHERE kot_id = ?1 AND cancelled = 0
                       ORDER BY seq, created_at",
@@ -542,14 +556,19 @@ impl Store {
                 .query_map(params![id], |r| {
                     Ok((
                         r.get::<_, String>(0)?,
-                        r.get::<_, i64>(1)?,
-                        r.get::<_, String>(2)?,
+                        r.get::<_, String>(1)?,
+                        r.get::<_, i64>(2)?,
                         r.get::<_, String>(3)?,
+                        r.get::<_, String>(4)?,
                     ))
                 })
                 .map_err(|e| e.to_string())?;
             for row in rows {
-                let (name, qty_milli, unit_label, note) = row.map_err(|e| e.to_string())?;
+                let (line_id, name, qty_milli, unit_label, note) =
+                    row.map_err(|e| e.to_string())?;
+                if !filter.is_empty() && !filter.iter().any(|want| *want == line_id) {
+                    continue;
+                }
                 let qty = crate::domain::format_qty_display(
                     qty_milli,
                     crate::domain::milli_to_whole_qty(qty_milli),
@@ -562,7 +581,9 @@ impl Store {
                 items.push(format!("{label}|{qty}"));
             }
         }
-        if items.is_empty() {
+        // Summary fallback only when the person did not pick specific dishes
+        // (legacy / counter KOTs with no running_lines).
+        if items.is_empty() && filter.is_empty() {
             let station_name = self
                 .list_stations()
                 .ok()
@@ -572,17 +593,12 @@ impl Store {
                         .map(|s| s.name)
                 })
                 .unwrap_or_default();
-            let table_label = if table_id.is_empty() {
-                String::new()
-            } else {
-                self.table_label(&table_id).unwrap_or_default()
-            };
             items = super::kot_print_item_lines(&summary, &table_label, &station_name)
                 .into_iter()
                 .map(|l| super::kot_line_to_name_qty(&l))
                 .collect();
         }
-        Ok((station_id, kot_no, items))
+        Ok((station_id, kot_no, table_label, items))
     }
 
     /// Next KOT number for today (kitchens call tickets by number).
@@ -1574,12 +1590,16 @@ impl Store {
 
     /// Accidental Print bill: put the table back to open (Occupied) so staff
     /// can keep ordering or free it — not stuck on "Bill printed".
+    /// Same [`Right::Reprint`] gate as printing a bill again (PIN when
+    /// WithApproval) so undoing a printed bill cannot bypass reprint rights.
     pub fn undo_bill_print(
         &self,
         table_id: &str,
         actor: &StaffMember,
+        approval_pin: Option<&str>,
     ) -> Result<(), String> {
         self.assert_server_writer("Undo bill print")?;
+        self.check_right(actor, Right::Reprint, approval_pin)?;
         let Some(order) = self.running_order(table_id)? else {
             // Ghost "Bill printed" with no order — just free the tile.
             self.conn
@@ -1748,12 +1768,16 @@ impl Store {
         Ok(out)
     }
 
+    /// Raw bill header text (address / phone lines), without the FSSAI line.
+    pub fn bill_header(&self) -> Result<String, String> {
+        Ok(self.meta_get("bill_header")?.unwrap_or_default())
+    }
+
     /// Lines printed under the restaurant's name on every bill: address,
     /// tax id, food licence — whatever the owner typed (one per line).
     pub fn bill_header_lines(&self) -> Result<Vec<String>, String> {
         let mut lines: Vec<String> = self
-            .meta_get("bill_header")?
-            .unwrap_or_default()
+            .bill_header()?
             .lines()
             .map(str::trim)
             .filter(|l| !l.is_empty())
@@ -1799,6 +1823,23 @@ impl Store {
         if let Some(p) = upi_payee {
             self.meta_set("upi_payee", p.trim())?;
         }
+        Ok(())
+    }
+
+    /// Client cache after a sync snapshot carries the Server's bill face.
+    pub fn set_bill_format_from_sync(
+        &self,
+        header: &str,
+        fssai_no: &str,
+        footer: &str,
+        upi_vpa: &str,
+        upi_payee: &str,
+    ) -> Result<(), String> {
+        self.meta_set("bill_header", header.trim())?;
+        self.meta_set("fssai_no", fssai_no.trim())?;
+        self.meta_set("bill_footer", footer.trim())?;
+        self.meta_set("upi_vpa", upi_vpa.trim())?;
+        self.meta_set("upi_payee", upi_payee.trim())?;
         Ok(())
     }
 
@@ -2372,7 +2413,7 @@ mod tests {
             .print_running_bill(&d3.id, &owner, None)
             .unwrap();
         assert_eq!(shop.table("D3").floor_state, FloorState::BillPrinted);
-        shop.store.undo_bill_print(&d3.id, &owner).unwrap();
+        shop.store.undo_bill_print(&d3.id, &owner, None).unwrap();
         // KOT still open in the kitchen — back to In kitchen, not stuck Bill printed.
         assert_eq!(shop.table("D3").floor_state, FloorState::InKitchen);
         shop.store

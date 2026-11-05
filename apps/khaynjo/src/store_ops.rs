@@ -1045,6 +1045,9 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<i64, String> {
         self.assert_server_writer("Wallet top-up")?;
+        if !actor.is_owner() {
+            return Err("Not allowed to top up wallets".into());
+        }
         if paise <= 0 {
             return Err("Top-up must be positive".into());
         }
@@ -1054,7 +1057,7 @@ impl Store {
                 params![customer_id, paise],
             )
             .map_err(|e| e.to_string())?;
-        self.audit(actor, "wallet.topup", customer_id)?;
+        self.audit(actor, "wallet.topup", &format!("{customer_id} {paise}"))?;
         self.wallet_paise(customer_id)
     }
 
@@ -1097,6 +1100,9 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<GiftVoucher, String> {
         self.assert_server_writer("Issue voucher")?;
+        if !actor.is_owner() {
+            return Err("Not allowed to issue vouchers".into());
+        }
         let code = code.trim().to_uppercase();
         if code.is_empty() {
             return Err("Voucher code required".into());
@@ -1124,7 +1130,7 @@ impl Store {
                     e.to_string()
                 }
             })?;
-        self.audit(actor, "voucher.issue", &code)?;
+        self.audit(actor, "voucher.issue", &format!("{code} {amount_paise}"))?;
         Ok(v)
     }
 
@@ -2173,6 +2179,9 @@ document.getElementById('add').onclick = async () => {{
         actor: &StaffMember,
     ) -> Result<usize, String> {
         self.assert_server_writer("CRM campaign")?;
+        if !actor.is_owner() && !actor.can_access_sales() {
+            return Err("Not allowed to run CRM campaigns".into());
+        }
         let body = body.trim();
         if body.is_empty() {
             return Err("Type a message first".into());

@@ -171,6 +171,7 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                     let _ = store.set_active_session_staff_id(None);
                 }
                 st.session = None;
+                st.clear_team_edit_selection();
                 st.pin_buffer.clear();
                 st.route_after_stored_role();
                 let path = st

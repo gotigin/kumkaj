@@ -140,9 +140,7 @@ fn add_printer_format_to_focused_route(
         return false;
     }
     st.printer_draft.route_mut(key).push(slot);
-    if let Some(base) = st.printers_base() {
-        let _ = print_share::save_device_printers(&base, &st.printer_draft);
-    }
+    let _ = st.save_printer_draft();
     true
 }
 
@@ -179,9 +177,7 @@ fn remove_focused_route_slot_at(st: &mut AppState, index: usize) -> Option<(Stri
     } else {
         st.printer_draft.format_by_id(&fmt).label
     };
-    if let Some(base) = st.printers_base() {
-        let _ = print_share::save_device_printers(&base, &st.printer_draft);
-    }
+    let _ = st.save_printer_draft();
     Some((shown, flabel))
 }
 
@@ -197,9 +193,7 @@ fn swap_focused_route_printer(st: &mut AppState, from: usize, to: usize) -> bool
         return false;
     }
     route.swap(from, to);
-    if let Some(base) = st.printers_base() {
-        let _ = print_share::save_device_printers(&base, &st.printer_draft);
-    }
+    let _ = st.save_printer_draft();
     true
 }
 
@@ -275,9 +269,7 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
         return false;
     }
     *st.printer_draft.route_mut(key) = out;
-    if let Some(base) = st.printers_base() {
-        let _ = print_share::save_device_printers(&base, &st.printer_draft);
-    }
+    let _ = st.save_printer_draft();
     true
 }
 
@@ -396,9 +388,7 @@ fn toggle_printer_assign_slot(st: &mut AppState, slot_enc: &str) -> bool {
         }
         st.printer_draft.route_mut(key).push(enc.to_string());
     }
-    if let Some(base) = st.printers_base() {
-        let _ = print_share::save_device_printers(&base, &st.printer_draft);
-    }
+    let _ = st.save_printer_draft();
     true
 }
 
@@ -425,9 +415,7 @@ fn reorder_printer_assign_priority(st: &mut AppState, from_row: usize, to_row: u
         return false;
     };
     route.swap(from_i, to_i);
-    if let Some(base) = st.printers_base() {
-        let _ = print_share::save_device_printers(&base, &st.printer_draft);
-    }
+    let _ = st.save_printer_draft();
     true
 }
 
@@ -567,10 +555,7 @@ fn sync_found_printers_into_pool(st: &mut AppState) -> Result<(usize, usize), St
         }
     }
     st.printer_draft.dedupe_printers();
-    let base = st
-        .printers_base()
-        .ok_or_else(|| "No store path to save printers".to_string())?;
-    print_share::save_device_printers(&base, &st.printer_draft)?;
+    st.save_printer_draft()?;
     Ok((newly, total))
 }
 

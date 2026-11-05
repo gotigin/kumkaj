@@ -1004,31 +1004,40 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             if !actor.is_owner() {
                 return Err("Only Owner can change in-app brand".to_string());
             }
-            let store = st
-                .store
-                .as_ref()
-                .ok_or_else(|| "Storage not ready".to_string())?;
-            store.set_venue_title(&title)?;
-            let org = org.trim();
-            if !org.is_empty() {
-                store.set_org_name(org)?;
-            }
-            if let Some(path) = st.draft_venue_icon_path.clone() {
-                let key = store.import_venue_icon(&path)?;
-                if let Ok(dir) = store.brand_images_dir() {
-                    invalidate_image_loads_for_path(&dir.join("venue_icon.webp"));
+            let (icon_filename, icon_bytes, draft_path) =
+                if let Some(path) = st.draft_venue_icon_path.clone() {
+                    let bytes = std::fs::read(&path)
+                        .map_err(|e| format!("Could not read the icon: {e}"))?;
+                    let filename = path
+                        .file_name()
+                        .and_then(|n| n.to_str())
+                        .unwrap_or("venue_icon.webp")
+                        .to_string();
+                    (filename, bytes, Some(path))
+                } else {
+                    (String::new(), Vec::new(), None)
+                };
+            let msg = st.books_op(BooksOp::SetVenueBrand {
+                title: title.clone(),
+                org: org.clone(),
+                icon_filename,
+                icon_bytes,
+            })?;
+            if let Some(path) = draft_path {
+                if let Some(store) = st.store.as_ref() {
+                    if let Ok(dir) = store.brand_images_dir() {
+                        invalidate_image_loads_for_path(&dir.join("venue_icon.webp"));
+                    }
                 }
                 invalidate_image_loads_for_path(&path);
-                st.venue_icon_key = Some(key);
+                st.venue_icon_key = Some("custom:venue_icon.webp".into());
                 st.draft_venue_icon_path = None;
             }
             st.venue_title = title.trim().to_string();
-            let _ = st.refresh_branches_text();
-            Ok(if org.is_empty() {
-                "Brand saved".to_string()
-            } else {
-                "Brand and business name saved".to_string()
-            })
+            if st.device_role != DeviceRole::Client {
+                let _ = st.refresh_branches_text();
+            }
+            Ok(msg)
         })();
         match outcome {
             Ok(msg) => self.set_status(cx, msg),
@@ -1048,14 +1057,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             if !actor.is_owner() {
                 return Err("Only Owner can change in-app brand".to_string());
             }
-            let store = st
-                .store
-                .as_ref()
-                .ok_or_else(|| "Storage not ready".to_string())?;
-            store.set_venue_icon_key(None)?;
+            let msg = st.books_op(BooksOp::ClearVenueIcon)?;
             st.venue_icon_key = None;
             st.draft_venue_icon_path = None;
-            Ok("Icon cleared".to_string())
+            Ok(msg)
         })();
         match outcome {
             Ok(msg) => self.set_status(cx, msg),

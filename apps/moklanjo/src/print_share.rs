@@ -838,31 +838,38 @@ fn send_to_printer(
                     format.label
                 ));
             }
-            print_android_document(text, format.landscape)
+            print_android_document(text, format, format.landscape)
         }
         PrinterTarget::Default => {
-            if format.document { print_system_standard(None, path, text, format.landscape) }
-            else if cfg!(target_os = "android") {
+            if format.document {
+                print_system_standard(None, path, text, format, format.landscape)
+            } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB",
                     format.label
                 ))
-            } else { print_system_raw(None, &bytes) }
+            } else {
+                print_system_raw(None, &bytes)
+            }
         }
         PrinterTarget::Named(name) => {
-            if format.document { print_system_standard(Some(name), path, text, format.landscape) }
-            else if cfg!(target_os = "android") {
+            if format.document {
+                print_system_standard(Some(name), path, text, format, format.landscape)
+            } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB",
                     format.label
                 ))
-            } else { print_system_raw(Some(name), &bytes) }
+            } else {
+                print_system_raw(Some(name), &bytes)
+            }
         }
     }
 }
 
-fn print_android_document(text: &str, landscape: bool) -> Result<(), String> {
-    let png = crate::receipt_raster::png_document(text)?;
+fn print_android_document(text: &str, format: &PrintFormat, landscape: bool) -> Result<(), String> {
+    // Honour format em / line / baseline / side (not fixed RasterMetrics::standard).
+    let png = crate::receipt_raster::png_metrics(text, &format.raster_metrics())?;
     #[cfg(target_os = "android")]
     {
         crate::print_android::print_png("Moklanjo", &png, landscape)
@@ -880,9 +887,10 @@ fn print_system_standard(
     name: Option<&str>,
     path: &Path,
     text: &str,
+    format: &PrintFormat,
     landscape: bool,
 ) -> Result<(), String> {
-    let png = crate::receipt_raster::png_document(text)?;
+    let png = crate::receipt_raster::png_metrics(text, &format.raster_metrics())?;
     let png_path = path.with_extension("png");
     fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
@@ -937,9 +945,27 @@ pub fn escpos_job(text: &str) -> Vec<u8> {
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     let cleaned = text.replace('\r', "");
     if printer_has_letters(&cleaned) {
-        escpos_job_text(&cleaned)
+        // English text mode: map em → GS !; Small / custom → rasterise.
+        if let Some((gs, col_div)) = escpos_gs_bang_for_em(format.em) {
+            let cols = (format.line.max(8) as usize / col_div).max(8);
+            escpos_job_text_cols_sized(&cleaned, cols, gs)
+        } else {
+            crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
+        }
     } else {
         crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
+    }
+}
+
+/// Normal (≈22 / ≈24) → GS ! 0; Large (≈26 / ≈28) → GS ! 0x11.
+/// Small / custom → `None` (rasterise — Font A cannot go below 1×).
+fn escpos_gs_bang_for_em(em: f32) -> Option<(u8, usize)> {
+    if (em - 22.0).abs() < 1.5 || (em - 24.0).abs() < 1.5 {
+        Some((0x00, 1))
+    } else if (em - 26.0).abs() < 1.5 || (em - 28.0).abs() < 1.5 {
+        Some((0x11, 2))
+    } else {
+        None
     }
 }
 
@@ -953,12 +979,18 @@ pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
 /// Built-in-font ASCII job. Soft-wraps long lines to 32 cols (safe on 58 mm
 /// and 80 mm Font A).
 pub fn escpos_job_text(text: &str) -> Vec<u8> {
-    let wrapped = wrap_escpos_cols(text, 32);
+    escpos_job_text_cols_sized(text, 32, 0x00)
+}
+
+/// ASCII ESC/POS job with explicit `GS !` character size.
+pub fn escpos_job_text_cols_sized(text: &str, cols: usize, gs_bang: u8) -> Vec<u8> {
+    let cols = cols.max(8);
+    let wrapped = wrap_escpos_cols(text, cols);
     let mut out = Vec::with_capacity(wrapped.len().saturating_add(48));
     out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
     out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0 — PC437
     out.extend_from_slice(&[0x1B, 0x4D, 0x00]); // ESC M 0: Font A
-    out.extend_from_slice(&[0x1D, 0x21, 0x00]); // GS ! 0: normal size
+    out.extend_from_slice(&[0x1D, 0x21, gs_bang]); // GS ! n: character size
     out.extend_from_slice(&[0x1B, 0x61, 0x00]); // ESC a 0: left align
     out.extend_from_slice(&[0x1B, 0x32]); // ESC 2: default line spacing
     out.extend(escpos_text(&wrapped));

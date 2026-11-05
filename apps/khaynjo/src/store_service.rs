@@ -79,6 +79,9 @@ impl Store {
 
     pub fn set_opening_float(&self, paise: i64, actor: &StaffMember) -> Result<(), String> {
         self.assert_server_writer("Set the opening cash")?;
+        if !actor.is_owner() && !actor.can_access_sales() {
+            return Err("Not allowed to set opening cash".into());
+        }
         if paise < 0 {
             return Err("Opening cash cannot be negative".into());
         }

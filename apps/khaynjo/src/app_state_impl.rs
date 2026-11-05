@@ -233,11 +233,13 @@ impl AppState {
     }
 
     fn reload_all(&mut self) -> Result<(), String> {
-        let store = self.store.as_ref().ok_or("No store")?;
+        if self.store.is_none() {
+            return Err("No store".into());
+        }
         // Each local Server / Client cache has its own printers — never the
         // shared install-root file (that mixed shops' routes).
-        print_share::use_books_printers(store.db_path(), self.data_base.as_deref());
-        self.printer_draft = print_share::printers();
+        self.sync_printer_draft_from_books();
+        let store = self.store.as_ref().unwrap();
         if self.device_role.is_host() {
             let _ = store.maybe_run_history_retention();
         }
@@ -349,6 +351,16 @@ impl AppState {
         Ok(())
     }
 
+    /// Drop Team edit target + hire/edit drafts so the next sign-in does not
+    /// inherit another person's selection or unsaved Save payload.
+    fn clear_team_edit_selection(&mut self) {
+        self.team_staff_id = None;
+        self.hire_staff_role = StaffRole::Cashier;
+        self.hire_features = StaffFeatures::for_role(StaffRole::Cashier);
+        self.draft_staff_role = StaffRole::Cashier;
+        self.draft_features = StaffFeatures::for_role(StaffRole::Cashier);
+    }
+
     /// Overlay live `staff` features/rights onto `session` (same person id).
     /// Missing or inactive → clear session and lock (do not keep stale rights).
     fn refresh_session_from_staff_roster(&mut self) {
@@ -363,6 +375,7 @@ impl AppState {
             .cloned();
         let Some(fresh) = fresh else {
             self.session = None;
+            self.clear_team_edit_selection();
             self.pin_buffer.clear();
             self.screen = Screen::Lock;
             return;
@@ -377,6 +390,11 @@ impl AppState {
             session.login_id = fresh.login_id;
             // Never pull PIN/password hashes onto a Client session from sync.
             // (roster sync already strips them; still leave session hashes alone.)
+        }
+        // If Team stripped Credit/Items/… while they were on that screen,
+        // leave it for the first peer they may still open (or Lock).
+        if !session_may_stay_on(self.screen, self) {
+            self.screen = first_allowed_work_screen(self);
         }
     }
 
@@ -573,6 +591,113 @@ impl AppState {
         self.tables = tables;
         self.open_kots = kots;
         self.kitchen_counts_line = counts;
+        // Client SetStandardEm / SetKotFormat updates Server printers.json +
+        // meta. Always push that onto live printers so jobs match. While the
+        // Owner is on Settings, leave kot_slip_draft / printer_draft alone —
+        // remote BOOKS_CHANGED must not wipe in-progress form overlays.
+        let update_drafts = self.screen != Screen::Settings;
+        self.apply_standard_print_em_to_draft_and_live(update_drafts);
+        self.apply_kot_slip_format_to_draft_and_live(update_drafts);
+    }
+
+    /// Reload `printers.json` into the draft, then overlay the shop Standard
+    /// bill size and KOT slip metrics from books meta. On the Server host,
+    /// push the same into the live printer config so bills/KOTs match Settings.
+    fn sync_printer_draft_from_books(&mut self) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        print_share::use_books_printers(store.db_path(), self.data_base.as_deref());
+        self.printer_draft = print_share::printers();
+        self.apply_standard_print_em_to_draft_and_live(true);
+        self.apply_kot_slip_format_to_draft_and_live(true);
+    }
+
+    /// Overlay shop Standard bill size onto live config (and optionally the
+    /// draft). Leaves printer routes / pool edits alone when updating drafts.
+    fn apply_standard_print_em_to_draft_and_live(&mut self, update_drafts: bool) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        // Shop-wide Standard bill size lives in books meta (synced to Clients).
+        // Apply it onto the draft so a Client UI shows the Server's size without
+        // writing this till's printers.json — skip when Owner is mid-edit.
+        let Ok(em) = store.standard_print_em() else {
+            return;
+        };
+        if update_drafts {
+            self.printer_draft.set_standard_em(em);
+        }
+        if self.device_role.is_host() {
+            let mut live = print_share::printers();
+            live.set_standard_em(em);
+            print_share::configure(live);
+        }
+    }
+
+    /// Overlay shop KOT slip metrics onto live config (and optionally drafts).
+    /// When `update_drafts`, refreshes `kot_slip_draft` / printer_draft KOT
+    /// format from books meta so a Client-saved size is not left stale.
+    fn apply_kot_slip_format_to_draft_and_live(&mut self, update_drafts: bool) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        let Ok(fmt) = store.kot_slip_format() else {
+            return;
+        };
+        if update_drafts {
+            self.kot_slip_draft = fmt.clone();
+            if let Some(f) = self
+                .printer_draft
+                .formats
+                .iter_mut()
+                .find(|f| f.id == print_share::FORMAT_KOT)
+            {
+                fmt.apply_to_print_format(f);
+            }
+        }
+        if self.device_role.is_host() {
+            let mut live = print_share::printers();
+            if let Some(f) = live
+                .formats
+                .iter_mut()
+                .find(|f| f.id == print_share::FORMAT_KOT)
+            {
+                fmt.apply_to_print_format(f);
+            }
+            print_share::configure(live);
+        }
+    }
+
+    /// Re-apply books-meta KOT size onto `printer_draft` only (no live
+    /// configure). Call before writing printers.json so a stale draft cannot
+    /// clobber a Client-saved size.
+    fn reapply_kot_slip_format_onto_printer_draft(&mut self) {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        let Ok(fmt) = store.kot_slip_format() else {
+            return;
+        };
+        if let Some(f) = self
+            .printer_draft
+            .formats
+            .iter_mut()
+            .find(|f| f.id == print_share::FORMAT_KOT)
+        {
+            fmt.apply_to_print_format(f);
+        }
+    }
+
+    /// Flush `printer_draft` to this shop's printers.json. Re-applies
+    /// books-meta KOT size first so a stale Settings draft cannot clobber a
+    /// Client-saved size.
+    fn save_printer_draft(&mut self) -> Result<(), String> {
+        self.reapply_kot_slip_format_onto_printer_draft();
+        let base = self
+            .printers_base()
+            .ok_or_else(|| "No store path to save printers".to_string())?;
+        print_share::save_device_printers(&base, &self.printer_draft)
     }
 
     /// A paired device asks for the Server's books (tables, running orders,

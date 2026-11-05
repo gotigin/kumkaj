@@ -194,7 +194,7 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
             let actor = st.actor()?;
-            if !actor.role.can_manage_items() {
+            if !actor.is_owner() && !actor.can_access_items() {
                 return Err("Not allowed to manage items".into());
             }
             let name = name.trim();
@@ -271,7 +271,7 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let actor = st.actor()?;
-            if !actor.role.can_manage_items() {
+            if !actor.is_owner() && !actor.can_access_items() {
                 return Err("Not allowed to manage items".into());
             }
             let product = st
@@ -329,10 +329,17 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             st.locale.currency = code.into();
-            if let Some(store) = st.store.as_ref() {
-                store.set_locale_settings(&st.locale)?;
+            if st.store.is_some() {
+                let msg = st.books_op(BooksOp::SetCurrency {
+                    code: code.to_string(),
+                })?;
+                if st.device_role == DeviceRole::Client {
+                    st.locale.currency = code.into();
+                }
+                st.status = msg;
+            } else {
+                st.status = format!("Currency: {code}");
             }
-            st.status = format!("Currency: {code}");
             Ok(())
         })();
         if let Err(e) = result {
@@ -436,33 +443,51 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
                     self.sync_chrome(cx);
                 }
                 AttachPickTarget::Image(entity) => {
-                    let result = (|| -> Result<(), String> {
+                    let result = (|| -> Result<String, String> {
                         let entity_id = self.entity_id_for_attach(entity)?;
+                        let bytes = std::fs::read(&file)
+                            .map_err(|e| format!("Could not read the photo: {e}"))?;
+                        let filename = file
+                            .file_name()
+                            .and_then(|n| n.to_str())
+                            .unwrap_or("photo.webp")
+                            .to_string();
                         let mut st = app_state().lock().unwrap();
-                        let actor = st.actor()?;
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.add_attachment_image(entity, &entity_id, &file, "", &actor)?;
-                        st.status = "Photo attached (stored as WebP)".into();
-                        Ok(())
+                        st.books_op(BooksOp::AddAttachmentImage {
+                            entity,
+                            entity_id,
+                            label: String::new(),
+                            filename,
+                            bytes,
+                        })
                     })();
                     match result {
-                        Ok(()) => self.set_status(cx, "Photo attached (stored as WebP)"),
+                        Ok(msg) => self.set_status(cx, msg),
                         Err(e) => self.set_status(cx, e),
                     }
                     self.sync_chrome(cx);
                 }
                 AttachPickTarget::File(entity) => {
-                    let result = (|| -> Result<(), String> {
+                    let result = (|| -> Result<String, String> {
                         let entity_id = self.entity_id_for_attach(entity)?;
+                        let bytes = std::fs::read(&file)
+                            .map_err(|e| format!("Could not read the file: {e}"))?;
+                        let filename = file
+                            .file_name()
+                            .and_then(|n| n.to_str())
+                            .unwrap_or("file.pdf")
+                            .to_string();
                         let mut st = app_state().lock().unwrap();
-                        let actor = st.actor()?;
-                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                        store.add_attachment_file(entity, &entity_id, &file, "", &actor)?;
-                        st.status = "File attached".into();
-                        Ok(())
+                        st.books_op(BooksOp::AddAttachmentFile {
+                            entity,
+                            entity_id,
+                            label: String::new(),
+                            filename,
+                            bytes,
+                        })
                     })();
                     match result {
-                        Ok(()) => self.set_status(cx, "File attached"),
+                        Ok(msg) => self.set_status(cx, msg),
                         Err(e) => self.set_status(cx, e),
                     }
                     self.sync_chrome(cx);
@@ -474,19 +499,20 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
 
     fn add_entry_note(&mut self, cx: &mut Cx, entity: AttachmentEntity, note_id: &[LiveId]) {
         let body = self.ui.text_input(cx, note_id).text();
-        let result = (|| -> Result<(), String> {
+        let result = (|| -> Result<String, String> {
             let entity_id = self.entity_id_for_attach(entity)?;
             let mut st = app_state().lock().unwrap();
-            let actor = st.actor()?;
-            let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-            store.add_attachment_note(entity, &entity_id, "", &body, &actor)?;
-            st.status = "Note added".into();
-            Ok(())
+            st.books_op(BooksOp::AddAttachmentNote {
+                entity,
+                entity_id,
+                label: String::new(),
+                body,
+            })
         })();
         match result {
-            Ok(()) => {
+            Ok(msg) => {
                 self.ui.text_input(cx, note_id).set_text(cx, "");
-                self.set_status(cx, "Note added");
+                self.set_status(cx, msg);
             }
             Err(e) => self.set_status(cx, e),
         }
@@ -691,6 +717,10 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
             store::check_backup_file(&backup)?;
             let mut st = app_state().lock().unwrap();
             st.require_server_host("Restore a backup")?;
+            // Backup Settings access is not enough — restore replaces the books.
+            if !st.session.as_ref().is_some_and(|a| a.is_owner()) {
+                return Err(st.t("restore_owner_only"));
+            }
             let store = st.store.as_ref().ok_or("No store")?;
             let db = store.db_path().to_path_buf();
             let before = store.auto_backup_dir().join(format!(

@@ -465,10 +465,15 @@ impl App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(find_printers_btn)).clicked(actions) {
-            print_share::find_printers_in_background();
-            self.paint_submit_busy_chrome(cx);
-            self.show_found_printers(cx);
-            self.set_status(cx, app_t("printers_looking"));
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                print_share::find_printers_in_background();
+                self.paint_submit_busy_chrome(cx);
+                self.show_found_printers(cx);
+                self.set_status(cx, app_t("printers_looking"));
+            }
         }
         if self.ui.button(cx, ids!(find_printers_cancel)).clicked(actions) {
             print_share::cancel_find_printers();
@@ -492,30 +497,40 @@ impl App {
             ),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, active) {
-                let mut st = app_state().lock().unwrap();
-                let key = parse_courier_route_key(&st.printer_route_key);
-                st.printer_draft.set_route_format(key, format_id);
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+                if is_client {
+                    self.set_status(cx, app_t("printers_host_only"));
+                } else {
+                    let mut st = app_state().lock().unwrap();
+                    let key = parse_courier_route_key(&st.printer_route_key);
+                    st.printer_draft.set_route_format(key, format_id);
+                    if let Some(base) = st.data_base.as_ref() {
+                        let _ = print_share::save_device_printers(base, &st.printer_draft);
+                    }
+                    drop(st);
+                    self.sync_chrome(cx);
                 }
-                drop(st);
-                self.sync_chrome(cx);
             }
         }
         if self.ui.button(cx, ids!(printer_format_custom)).clicked(actions) {
-            let mut st = app_state().lock().unwrap();
-            let key = parse_courier_route_key(&st.printer_route_key);
-            let from = st.printer_draft.format_id_for(key);
-            let label = st.t("printer_format_custom_label");
-            let id = st.printer_draft.add_format_from(&from, &label);
-            st.printer_draft.set_route_format(key, &id);
-            if let Some(base) = st.data_base.as_ref() {
-                let _ = print_share::save_device_printers(base, &st.printer_draft);
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let mut st = app_state().lock().unwrap();
+                let key = parse_courier_route_key(&st.printer_route_key);
+                let from = st.printer_draft.format_id_for(key);
+                let label = st.t("printer_format_custom_label");
+                let id = st.printer_draft.add_format_from(&from, &label);
+                st.printer_draft.set_route_format(key, &id);
+                if let Some(base) = st.data_base.as_ref() {
+                    let _ = print_share::save_device_printers(base, &st.printer_draft);
+                }
+                let msg = st.t("printer_format_custom_added");
+                drop(st);
+                self.set_status(cx, msg);
+                self.sync_chrome(cx);
             }
-            let msg = st.t("printer_format_custom_added");
-            drop(st);
-            self.set_status(cx, msg);
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_add_cancel)).clicked(actions) {
             // Legacy Cancel (async add removed) — clear any stuck busy flag.
@@ -526,48 +541,59 @@ impl App {
         }
         // Add/Remove save printers.json on this thread — same as Save printers.
         // Background + busy set_text froze Settings ("Adding printer…" forever).
+        // Host-only: a Client must not write shop-wide printers.json.
         if self.ui.button(cx, ids!(printer_add)).clicked(actions) {
-            let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
-            let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
-            let result = {
-                let mut st = app_state().lock().unwrap();
-                st.printer_draft.add_printer(&label, &target);
-                match st.data_base.as_ref() {
-                    Some(base) => print_share::save_device_printers(base, &st.printer_draft)
-                        .map(|()| st.t("printers_saved")),
-                    None => Err("No store path to save printers".into()),
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let label = self.ui.text_input(cx, ids!(printer_label_input)).text();
+                let target = self.ui.text_input(cx, ids!(printer_target_input)).text();
+                let result = {
+                    let mut st = app_state().lock().unwrap();
+                    st.printer_draft.add_printer(&label, &target);
+                    match st.data_base.as_ref() {
+                        Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                            .map(|()| st.t("printers_saved")),
+                        None => Err("No store path to save printers".into()),
+                    }
+                };
+                self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
+                self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
+                printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                clear_books_work_status();
+                match result {
+                    Ok(msg) | Err(msg) => self.set_status(cx, msg),
                 }
-            };
-            self.ui.text_input(cx, ids!(printer_label_input)).set_text(cx, "");
-            self.ui.text_input(cx, ids!(printer_target_input)).set_text(cx, "");
-            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-            clear_books_work_status();
-            match result {
-                Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                self.paint_submit_busy_chrome(cx);
+                self.sync_chrome(cx);
             }
-            self.paint_submit_busy_chrome(cx);
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_remove)).clicked(actions) {
-            let result = {
-                let mut st = app_state().lock().unwrap();
-                let id = st.printer_draft.printers.last().map(|p| p.id.clone());
-                if let Some(id) = id {
-                    st.printer_draft.remove_printer(&id);
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let result = {
+                    let mut st = app_state().lock().unwrap();
+                    let id = st.printer_draft.printers.last().map(|p| p.id.clone());
+                    if let Some(id) = id {
+                        st.printer_draft.remove_printer(&id);
+                    }
+                    match st.data_base.as_ref() {
+                        Some(base) => print_share::save_device_printers(base, &st.printer_draft)
+                            .map(|()| st.t("printers_saved")),
+                        None => Err("No store path to save printers".into()),
+                    }
+                };
+                printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                clear_books_work_status();
+                match result {
+                    Ok(msg) | Err(msg) => self.set_status(cx, msg),
                 }
-                match st.data_base.as_ref() {
-                    Some(base) => print_share::save_device_printers(base, &st.printer_draft)
-                        .map(|()| st.t("printers_saved")),
-                    None => Err("No store path to save printers".into()),
-                }
-            };
-            printer_add_busy().store(false, std::sync::atomic::Ordering::SeqCst);
-            clear_books_work_status();
-            match result {
-                Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                self.paint_submit_busy_chrome(cx);
+                self.sync_chrome(cx);
             }
-            self.paint_submit_busy_chrome(cx);
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(route_add)).clicked(actions)
             || self
@@ -576,88 +602,116 @@ impl App {
                 .returned(actions)
                 .is_some()
         {
-            let pick = self.ui.text_input(cx, ids!(route_add_printer_input)).text();
-            match self.assign_printer_to_focused_route(cx, &pick) {
-                Ok(msg) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let pick = self.ui.text_input(cx, ids!(route_add_printer_input)).text();
+                match self.assign_printer_to_focused_route(cx, &pick) {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(route_up)).clicked(actions)
             || self.ui.button(cx, ids!(route_down)).clicked(actions)
             || self.ui.button(cx, ids!(route_remove)).clicked(actions)
             || self.ui.button(cx, ids!(route_clear)).clicked(actions)
         {
-            let up = self.ui.button(cx, ids!(route_up)).clicked(actions);
-            let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
-            let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
-            let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
-            {
-                let mut st = app_state().lock().unwrap();
-                let key_str = st.printer_route_key.clone();
-                let key = parse_courier_route_key(&key_str);
-                let route = st.printer_draft.route_mut(key);
-                if clear {
-                    route.clear();
-                } else if remove {
-                    route.pop();
-                } else if up && route.len() >= 2 {
-                    let i = route.len() - 1;
-                    route.swap(i - 1, i);
-                } else if down && route.len() >= 2 {
-                    route.swap(0, 1);
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let up = self.ui.button(cx, ids!(route_up)).clicked(actions);
+                let down = self.ui.button(cx, ids!(route_down)).clicked(actions);
+                let remove = self.ui.button(cx, ids!(route_remove)).clicked(actions);
+                let clear = self.ui.button(cx, ids!(route_clear)).clicked(actions);
+                {
+                    let mut st = app_state().lock().unwrap();
+                    let key_str = st.printer_route_key.clone();
+                    let key = parse_courier_route_key(&key_str);
+                    let route = st.printer_draft.route_mut(key);
+                    if clear {
+                        route.clear();
+                    } else if remove {
+                        route.pop();
+                    } else if up && route.len() >= 2 {
+                        let i = route.len() - 1;
+                        route.swap(i - 1, i);
+                    } else if down && route.len() >= 2 {
+                        route.swap(0, 1);
+                    }
+                    if let Some(base) = st.data_base.as_ref() {
+                        let _ = print_share::save_device_printers(base, &st.printer_draft);
+                    }
                 }
-                if let Some(base) = st.data_base.as_ref() {
-                    let _ = print_share::save_device_printers(base, &st.printer_draft);
-                }
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printers_save)).clicked(actions) {
-            let result = {
-                let st = app_state().lock().unwrap();
-                let printers = st.printer_draft.clone();
-                match st.data_base.as_ref() {
-                    Some(base) => print_share::save_device_printers(base, &printers)
-                        .map(|()| st.t("printers_saved")),
-                    None => Err("Storage not ready".to_string()),
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let result = {
+                    let st = app_state().lock().unwrap();
+                    let printers = st.printer_draft.clone();
+                    match st.data_base.as_ref() {
+                        Some(base) => print_share::save_device_printers(base, &printers)
+                            .map(|()| st.t("printers_saved")),
+                        None => Err("Storage not ready".to_string()),
+                    }
+                };
+                match result {
+                    Ok(msg) | Err(msg) => self.set_status(cx, msg),
                 }
-            };
-            match result {
-                Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(print_test_btn)).clicked(actions) {
-            let (dir, msg, own, target_desc) = {
-                let st = app_state().lock().unwrap();
-                let mut own: String = st.venue_title.trim().to_string();
-                let phrase = st.t("print_test_page");
-                if phrase != "Print a test page" {
-                    own = format!("{own}\n{phrase}");
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let route_key = st.printer_route_key.clone();
+                    st.books_op(BooksOp::PrintTestPage { route_key })
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
                 }
-                let own = own.trim().lines().map(|l| format!("{l}\n")).collect::<String>();
-                let targets = st.printer_draft.targets_for(print_share::RouteKey::Receipt);
-                let desc = targets
-                    .first()
-                    .map(print_share::describe)
-                    .or_else(|| {
-                        st.printer_draft
-                            .printers
-                            .first()
-                            .map(|p| print_share::describe(&print_share::parse_target(&p.target)))
-                    })
-                    .unwrap_or_else(|| "No printer".into());
-                (st.data_base.clone(), st.t("test_page_sent"), own, desc)
-            };
-            let page = format!(
-                "{app} - test page\n{own}{target_desc}\n{when}\n\nIf you can read this, printing works here.\n",
-                app = store::APP_LABEL,
-                when = chrono::Local::now().format("%d %b %Y %H:%M"),
-            );
-            match print_share::print_text(print_share::PrintKind::Receipt, &page, dir.as_deref()) {
-                Ok(_) => self.set_status(cx, msg),
-                Err(e) => self.set_status(cx, e),
+            } else {
+                let (dir, msg, own, target_desc) = {
+                    let st = app_state().lock().unwrap();
+                    let mut own: String = st.venue_title.trim().to_string();
+                    let phrase = st.t("print_test_page");
+                    if phrase != "Print a test page" {
+                        own = format!("{own}\n{phrase}");
+                    }
+                    let own = own.trim().lines().map(|l| format!("{l}\n")).collect::<String>();
+                    let targets = st.printer_draft.targets_for(print_share::RouteKey::Receipt);
+                    let desc = targets
+                        .first()
+                        .map(print_share::describe)
+                        .or_else(|| {
+                            st.printer_draft
+                                .printers
+                                .first()
+                                .map(|p| print_share::describe(&print_share::parse_target(&p.target)))
+                        })
+                        .unwrap_or_else(|| "No printer".into());
+                    (st.data_base.clone(), st.t("test_page_sent"), own, desc)
+                };
+                let page = format!(
+                    "{app} - test page\n{own}{target_desc}\n{when}\n\nIf you can read this, printing works here.\n",
+                    app = store::APP_LABEL,
+                    when = chrono::Local::now().format("%d %b %Y %H:%M"),
+                );
+                match print_share::print_text(print_share::PrintKind::Receipt, &page, dir.as_deref()) {
+                    Ok(_) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
             }
         }
         if self.ui.button(cx, ids!(measure_save)).clicked(actions) {
@@ -728,10 +782,8 @@ impl App {
         }
         if self.ui.button(cx, ids!(print_stamp_clear)).clicked(actions) {
             let outcome = (|| -> Result<String, String> {
-                let st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_receipt_stamp_key(None)?;
-                Ok("Stamp cleared".into())
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::ClearReceiptStamp)
             })();
             match outcome {
                 Ok(m) => self.set_status(cx, m),
@@ -757,10 +809,8 @@ impl App {
         }
         if self.ui.button(cx, ids!(print_qr_clear)).clicked(actions) {
             let outcome = (|| -> Result<String, String> {
-                let st = app_state().lock().unwrap();
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_payment_qr_key(None)?;
-                Ok("Payment QR cleared".into())
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::ClearPaymentQr)
             })();
             match outcome {
                 Ok(m) => self.set_status(cx, m),
@@ -874,8 +924,16 @@ impl App {
         self.handle_diag_actions(cx, actions);
         if self.ui.button(cx, ids!(backup_btn)).clicked(actions) {
             // VACUUM INTO can take seconds on a busy shop — never block the UI.
+            // Owner or Backup screen only (Sales Settings alone is not enough).
             let job = (|| -> Result<(PathBuf, PathBuf), String> {
                 let st = app_state().lock().unwrap();
+                let actor = st
+                    .session
+                    .as_ref()
+                    .ok_or_else(|| "Sign in required".to_string())?;
+                if !actor.is_owner() && !actor.can_access_backup() {
+                    return Err("Not allowed to create a backup".into());
+                }
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 let dest = default_backup_path()?;
                 Ok((store.db_path().to_path_buf(), dest))
@@ -902,22 +960,33 @@ impl App {
         }
 
         if self.ui.button(cx, ids!(restore_btn)).clicked(actions) {
-            // Pick the backup; the automatic ones are where it opens.
-            let start = app_state()
-                .lock()
-                .unwrap()
-                .store
-                .as_ref()
-                .map(|s| s.auto_backup_dir());
-            let title = app_state().lock().unwrap().t("restore_backup");
-            let mut dialog = FileDialog::new()
-                .set_title(title)
-                .add_filter("Backups".into(), vec!["sqlite3".into()])
-                .set_id(live_id!(restore_pick));
-            if let Some(dir) = start {
-                dialog = dialog.set_location(dir);
+            // Owner only (plus server host) — Backup Settings alone is not enough.
+            let gate = {
+                let st = app_state().lock().unwrap();
+                if let Err(e) = st.require_server_host("Restore a backup") {
+                    Err(e)
+                } else if !st.session.as_ref().is_some_and(|a| a.is_owner()) {
+                    Err(st.t("restore_owner_only"))
+                } else {
+                    Ok((
+                        st.store.as_ref().map(|s| s.auto_backup_dir()),
+                        st.t("restore_backup"),
+                    ))
+                }
+            };
+            match gate {
+                Err(e) => self.set_status(cx, e),
+                Ok((start, title)) => {
+                    let mut dialog = FileDialog::new()
+                        .set_title(title)
+                        .add_filter("Backups".into(), vec!["sqlite3".into()])
+                        .set_id(live_id!(restore_pick));
+                    if let Some(dir) = start {
+                        dialog = dialog.set_location(dir);
+                    }
+                    cx.open_select_file_dialog(dialog);
+                }
             }
-            cx.open_select_file_dialog(dialog);
         }
 
         if self.ui.button(cx, ids!(wipe_trading)).clicked(actions)

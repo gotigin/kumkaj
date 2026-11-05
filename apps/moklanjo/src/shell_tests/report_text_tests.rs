@@ -58,8 +58,9 @@ mod report_text_tests {
         let home = std::env::temp_dir().join(format!("courier-units-{}", new_id()));
         std::fs::create_dir_all(&home).unwrap();
         let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.add_unit("bag", "Bag").unwrap();
-        store.add_unit_conversion("bag", "kg", 25_000).unwrap();
+        store.add_unit_conversion("bag", "kg", 25_000, &owner).unwrap();
         store.add_unit("crate", "Crate").unwrap();
         let rows = units_report_rows(&store);
         let heads: Vec<&str> = rows

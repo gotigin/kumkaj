@@ -266,6 +266,9 @@ impl AppMain for App {
                     let mut st = app_state().lock().unwrap();
                     let host = st.device_role.is_host() && st.session.is_some();
                     if host {
+                        // refresh_live_lists updates Floor/Kitchen lists and
+                        // live print config; while on Settings it leaves
+                        // bill/KOT/printer drafts alone (do not refill form).
                         st.refresh_live_lists();
                     }
                     host

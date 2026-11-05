@@ -357,6 +357,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
             st.session = None;
+            st.clear_team_edit_selection();
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
             st.language_follow_platform = chosen.0;
@@ -426,7 +427,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         if let Some(store) = st.store.as_ref() {
             let _ = store.set_device_role(DeviceRole::Server.as_str());
             if switching_in {
-                let _ = store.set_extra_tills_allowed(false);
+                if let Ok(Some(owner)) = store
+                    .list_staff()
+                    .map(|s| s.into_iter().find(|m| m.is_owner()))
+                {
+                    let _ = store.set_extra_tills_allowed(false, &owner);
+                }
                 st.extra_tills_allowed = false;
                 net::stop_server();
             } else if st.extra_tills_allowed {
@@ -592,6 +598,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             let mut st = app_state().lock().unwrap();
             st.store = None;
             st.session = None;
+            st.clear_team_edit_selection();
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
         }
@@ -621,7 +628,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         if let Some(store) = st.store.as_ref() {
             let _ = store.set_device_role(DeviceRole::Server.as_str());
             if switching_in {
-                let _ = store.set_extra_tills_allowed(false);
+                if let Ok(Some(owner)) = store
+                    .list_staff()
+                    .map(|s| s.into_iter().find(|m| m.is_owner()))
+                {
+                    let _ = store.set_extra_tills_allowed(false, &owner);
+                }
                 st.extra_tills_allowed = false;
                 net::stop_server();
             } else if st.extra_tills_allowed {
@@ -748,30 +760,39 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 Some(e)
             } else if st.store.is_none() {
                 Some("Storage not ready".into())
-            } else if let Err(e) = st
-                .store
-                .as_ref()
-                .unwrap()
-                .set_extra_tills_allowed(allowed)
-            {
-                Some(e)
             } else {
-                st.extra_tills_allowed = allowed;
-                if allowed {
-                    let store = st.store.as_ref().unwrap();
-                    let code = store.ensure_server_pairing_code().unwrap_or_default();
-                    let path = store.db_path().to_path_buf();
-                    if let Err(e) = net::ensure_server(path) {
-                        st.status = format!("Extra tills on, LAN listen failed: {e}");
-                    } else {
-                        st.status = format!("Extra tills on · pairing code {code}");
-                        firewall_job(|| Ok(net::firewall_allows_phones()));
+                match st.actor() {
+                    Err(e) => Some(e),
+                    Ok(actor) => {
+                        if let Err(e) = st
+                            .store
+                            .as_ref()
+                            .unwrap()
+                            .set_extra_tills_allowed(allowed, &actor)
+                        {
+                            Some(e)
+                        } else {
+                            st.extra_tills_allowed = allowed;
+                            if allowed {
+                                let store = st.store.as_ref().unwrap();
+                                let code = store.ensure_server_pairing_code().unwrap_or_default();
+                                let path = store.db_path().to_path_buf();
+                                if let Err(e) = net::ensure_server(path) {
+                                    st.status = format!("Extra tills on, LAN listen failed: {e}");
+                                } else {
+                                    st.status = format!("Extra tills on · pairing code {code}");
+                                    firewall_job(|| Ok(net::firewall_allows_phones()));
+                                }
+                            } else {
+                                net::stop_server();
+                                st.status =
+                                    "Extra tills off — this device still holds the shop books"
+                                        .into();
+                            }
+                            None
+                        }
                     }
-                } else {
-                    net::stop_server();
-                    st.status = "Extra tills off — this device still holds the shop books".into();
                 }
-                None
             }
         };
         if let Some(e) = err {
@@ -878,6 +899,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     // own sign-in is not one the Server knows. Drop any Who
                     // pick left from a previous shop's roster.
                     st.session = None;
+                    st.clear_team_edit_selection();
                     st.lock_staff_id = None;
                     st.lock_as_owner = false;
                     st.screen = Screen::Lock;
@@ -907,6 +929,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     let _ = store.clear_client_pairing();
                 }
                 st.session = None;
+                st.clear_team_edit_selection();
                 st.pair_note = st.t("device_forgotten");
                 st.screen = Screen::ClientPair;
                 true
@@ -987,6 +1010,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         }
         // Reload outside the answer loop so a long SQL pass does not nest
         // under other UI work holding `app_state` (felt like a Client freeze).
+        let mut refill_bill = false;
         if synced {
             let tid = {
                 let mut st = app_state().lock().unwrap();
@@ -995,6 +1019,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 }
                 let _ = st.reload_all();
                 FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
+                refill_bill = st.screen == Screen::Settings;
                 st.selected_table_id.clone()
             };
             if let Some(tid) = tid {
@@ -1024,6 +1049,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             self.show_undo_snackbar(cx, sale_id, text);
         }
         self.sync_chrome(cx);
+        // Snapshot now carries bill face / print size — refresh open Settings.
+        if refill_bill {
+            self.fill_bill_format_fields(cx);
+        }
     }
 
     fn try_unlock(&mut self, cx: &mut Cx) {
@@ -2243,7 +2272,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     }
 
     /// Undo accidental Print bill — table goes back to open (or frees if empty).
+    /// Uses the same Reprint right + manager PIN as printing the bill again.
     fn undo_table_bill(&mut self, cx: &mut Cx, item_id: usize) {
+        let pin = self.ui.text_input(cx, ids!(move_pin_input)).text();
         let table = app_state()
             .lock()
             .unwrap()
@@ -2253,16 +2284,24 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let Some((table_id, name)) = table else {
             return;
         };
-        let done = format!("{name} — bill undone, table open again");
-        let result = app_state().lock().unwrap().table_action(
-            net::RunningAction::UndoBill { table_id },
-            "",
-            &done,
-            phone::Follow::Refresh,
-        );
+        let result = (|| -> Result<String, String> {
+            let mut st = app_state().lock().unwrap();
+            if !session_may_reprint(st.session.as_ref()) {
+                return Err("Not allowed to undo a printed bill — ask the owner".into());
+            }
+            let done = format!("{name} — bill undone, table open again");
+            match st.table_action(
+                net::RunningAction::UndoBill { table_id },
+                &pin,
+                &done,
+                phone::Follow::Refresh,
+            )? {
+                Acted::Here(_) => Ok(done),
+                Acted::Sent => Ok(format!("{name} — sending…")),
+            }
+        })();
         match result {
-            Ok(Acted::Here(_)) => self.set_status(cx, done),
-            Ok(Acted::Sent) => self.set_status(cx, format!("{name} — sending…")),
+            Ok(msg) => self.set_status(cx, msg),
             Err(e) => self.set_status(cx, e),
         }
         self.sync_chrome(cx);
@@ -2349,6 +2388,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             let mut st = app_state().lock().unwrap();
             st.store = None;
             st.session = None;
+            st.clear_team_edit_selection();
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
             st.extra_tills_allowed = false;

@@ -1866,6 +1866,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             let chosen = (st.language_follow_platform, st.locale.language.clone());
             let _ = st.reload_all();
             st.session = None;
+            st.clear_team_edit_selection();
             st.onboarding_complete = false;
             st.owner_setup_complete = false;
             st.language_follow_platform = chosen.0;

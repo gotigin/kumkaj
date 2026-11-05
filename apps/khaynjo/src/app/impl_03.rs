@@ -487,9 +487,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             let before = st.printer_draft.printers.len();
             st.printer_draft.dedupe_printers();
             if st.printer_draft.printers.len() != before {
-                if let Some(base) = st.printers_base() {
-                    let _ = print_share::save_device_printers(&base, &st.printer_draft);
-                }
+                let _ = st.save_printer_draft();
             }
             let _ = normalize_focused_route(&mut st);
             let selected = st.printer_selected_id.clone();
@@ -583,6 +581,27 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.view(cx, ids!(route_add_printers)).set_visible(cx, false);
         for id in ROUTE_ADD_PRINTER_BTNS.iter() {
             self.ui.button(cx, id).set_visible(cx, false);
+        }
+        // Host-only discovery / assign: Clients print on the Server's printers.
+        // Test page stays visible — Client routes it through books_op.
+        let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+        let host = !is_client;
+        self.ui.button(cx, ids!(find_printers_btn)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(printers_find_help)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, host);
+        self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, host);
+        self.ui.button(cx, ids!(printer_assign_dd)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(h_printer_route_mode)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(route_assigned_empty)).set_visible(cx, host && assigned_empty);
+        self.ui.widget(cx, ids!(route_assigned_list)).set_visible(cx, host && !assigned_empty);
+        self.ui.button(cx, ids!(route_clear)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, host);
+        if is_client {
+            self.ui.button(cx, ids!(printer_mode_first)).set_visible(cx, false);
+            self.ui.button(cx, ids!(printer_mode_first_on)).set_visible(cx, false);
+            self.ui.button(cx, ids!(printer_mode_all)).set_visible(cx, false);
+            self.ui.button(cx, ids!(printer_mode_all_on)).set_visible(cx, false);
         }
     }
 
@@ -1244,9 +1263,14 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_printers)).set_text(cx, &plain_display_text(&s("printers_heading")));
         self.ui.widget(cx, ids!(h_printers_help)).set_text(cx, &plain_display_text(&s("printers_help")));
         {
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
             let help = self.ui.widget(cx, ids!(printers_panel_help)).as_info_help();
             help.set_title(cx, &s("printers_heading"));
-            help.set_tip(&plain_display_text(&s("printers_help")));
+            help.set_tip(&plain_display_text(&s(if is_client {
+                "printers_host_only"
+            } else {
+                "printers_help"
+            })));
         }
         {
             let help = self.ui.widget(cx, ids!(printers_find_help)).as_info_help();
