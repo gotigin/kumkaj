@@ -1,66 +1,64 @@
-# SMS messaging — Local gateway and Cloud service
+# SMS messaging — delivery approaches (planned)
 
 Kumkaj apps (Khaynjo, Moklanjo, future products) already **queue** SMS
 intents locally (`notify_outbox` / CRM campaigns / bill share). Delivery
-is planned in two complementary ways. Neither path gates the counter or
-books: the shop keeps working with messages waiting in the outbox.
+is planned across several complementary approaches below. None of them
+gates the counter or books: the shop keeps working with messages waiting
+in the outbox.
 
-**Status (2026-10-28):** queue + CRM segments + one-tap WhatsApp
-(`wa.me`) / Copy SMS are **Have** in the apps. The Android Local SMS
-Gateway sibling and the paid Cloud SMS Service are **Planned** — not
-shipped yet.
+**Status (2026-11-05):** queue + CRM segments + one-tap WhatsApp
+(`wa.me`) / Copy SMS are **Have** in the apps. Every send path below is
+**Planned** — not shipped yet.
+
+Group by whether the shop needs the **public internet / a hosted SMS
+API** to actually place the message on the mobile network.
 
 ------------------------------------------------------------------------
 
-## 1. Local SMS Gateway (cloudless) — Planned
+## Offline / local (shop SIM or attached radio — no internet to send)
 
-A **sibling Android app** that turns the business’s own phone and SIM
-into a small SMS gateway for the shop (and, later, for other Kumkaj
-products and willing third-party tools).
+These paths use a **physical SIM (or multi-SIM radio)** the business
+controls. The shop pays its **mobile operator**. The Kumkaj Server (or
+paired desktop) can hand the outbox over **LAN / USB / Bluetooth** —
+internet to Kumkaj Cloud is **not** required to drain SMS.
 
-| | |
-|---|---|
-| **Idea** | Use the business’s Android phone and SIM. |
-| **Link to desktop / Server** | Connects over **LAN** or **Bluetooth** — no Kumkaj Cloud subscription. |
-| **Who pays for SMS** | The business pays its **mobile operator** (prepaid/postpaid SIM usage). |
-| **Sending** | Automatic drain of the shop’s outbox and manual send, subject to **Android permissions and platform restrictions** (background limits, SMS rate limits, user consent). |
-| **Scope** | Useful to Khaynjo (bills, birthday/loyalty CRM), Moklanjo (booked / OFD / delivered), future Kumkaj apps, and potentially third parties that speak the same local outbox / gateway protocol. |
+| Approach | Idea | Notes |
+|----------|------|-------|
+| **Android phone with a SIM** | A **sibling Android app** turns the business’s own handset into a small Local SMS Gateway for the shop (and later other Kumkaj products / willing third-party tools). | Connect over **LAN or Bluetooth**. Subject to Android SMS permissions, background limits, and rate / consent rules. Reuses hardware many shops already keep on the counter. |
+| **USB GSM/LTE modem with a SIM** | A USB stick / dongle modem on the shop PC or Server, with one SIM, drains the same outbox. | Useful when no dedicated Android phone should stay plugged in. Needs a supported modem, drivers, and OS permission to send SMS. Still operator-billed on that SIM. |
+| **Supported multi-SIM modem or SMS device** | A dedicated multi-SIM GSM/LTE modem, SMS appliance, or similar supported device attached locally. | Higher volume / failover across SIMs without a handset UI. Same local-first rule: outbox stays on the shop; the device only forwards what was already queued. Only **supported** models — not every USB gadget. |
 
-### Why this shape
+### Why local paths first
 
 - Matches local-first doctrine (vision §20–21): messaging must not force
   Cloud.
-- Reuses hardware the shop already has (an Android handset on the
-  counter or in the office).
-- Keeps data and send decisions on the owner’s devices; the gateway only
-  forwards what the shop already queued.
+- Keeps data and send decisions on the owner’s devices.
+- Works in shops that already pay for prepaid/postpaid SIMs and may have
+  weak or no broadband at send time.
 
-### Non-goals for the local gateway
+### Non-goals for local paths
 
-- Not a hosted blast/marketing SaaS.
+- Not a hosted blast / marketing SaaS.
 - Not a substitute for WhatsApp Business API automation.
-- Does not require internet to the Kumkaj Cloud; LAN/Bluetooth to the
+- Do not require internet to Kumkaj Cloud; LAN / USB / Bluetooth to the
   shop Server (or paired desktop) is enough for drain.
 
 ------------------------------------------------------------------------
 
-## 2. Cloud SMS Service (paid) — Planned
+## Online / internet (hosted gateway)
 
-An optional **Kumkaj Cloud** messaging path for shops that do not want
-to leave a phone plugged in, or that need reachability without a local
-gateway.
+These paths need **network reach to a provider API** (and usually
+Kumkaj Cloud for billing / routing). No shop SIM needs to stay connected
+for send.
 
-| | |
-|---|---|
-| **Idea** | Send through Kumkaj’s cloud service and an SMS provider. |
-| **Device** | **No Android phone** needs to stay connected. |
-| **Clients** | Desktop installations and other supported clients that can reach Kumkaj Cloud. |
-| **Commercial** | Charge **per SMS**, offer **prepaid credits**, or **bundle** usage into a paid plan — same usage-based spirit as other Cloud metering (vision §21). |
-| **Requirements** | Internet access and compliance with applicable messaging regulations (opt-in, TRAI/DND where relevant, content rules). |
+| Approach | Idea | Notes |
+|----------|------|-------|
+| **Third-party SMS gateway provider** | Optional **Kumkaj Cloud SMS Service**: send through Kumkaj Cloud and a contracted SMS provider (or a shop-chosen supported gateway where that product shape exists). | **No Android phone / modem** needs to stay connected. Desktop and other clients that can reach Cloud can send. Commercial shape: **per SMS**, **prepaid credits**, or **plan bundle** — same usage-based spirit as other Cloud metering (vision §21). Requires internet and compliance with messaging regulations (opt-in, TRAI/DND where relevant, content rules). |
 
 Cloud SMS enhances delivery; it must never hold local books or the
 outbox hostage if Cloud billing stops (vision §22). Unsent intents can
-still sit locally or switch to the Local SMS Gateway when one is paired.
+still sit locally or switch to a local SIM / modem path when one is
+paired.
 
 ------------------------------------------------------------------------
 
@@ -70,8 +68,8 @@ still sit locally or switch to the Local SMS Gateway when one is paired.
 |---|---|---|
 | Compose / queue | **Have** — bill SMS, CRM segment campaigns, order alerts → `notify_outbox` | Same |
 | One-tap WhatsApp | **Have** — `wa.me` on the device (Net optional on that phone) | Same |
-| Local SIM drain | Stub / Copy SMS; **Planned** Local SMS Gateway app | Pair gateway → automatic + manual send |
-| Hosted send | Not built | **Planned** Cloud SMS Service |
+| Local SIM / modem drain | Stub / Copy SMS | **Planned** — Android phone gateway, USB GSM/LTE modem, or supported multi-SIM / SMS device |
+| Hosted send | Not built | **Planned** — third-party SMS gateway via Cloud SMS Service |
 
 App-specific UI:
 
@@ -82,7 +80,8 @@ App-specific UI:
 
 ## Product principle
 
-Prefer the **Local SMS Gateway** for cloudless shops. Offer **Cloud SMS**
-as a paid convenience. Always keep queue-first behaviour so a missing
-gateway, a denied permission, or an unpaid Cloud account never stops
-selling, cooking, or booking.
+Prefer a **local SIM / modem** path for cloudless shops. Offer **Cloud /
+third-party gateway SMS** as a paid convenience. Always keep queue-first
+behaviour so a missing gateway, a denied permission, an unsupported
+modem, or an unpaid Cloud account never stops selling, cooking, or
+booking.

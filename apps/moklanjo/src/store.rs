@@ -10567,40 +10567,86 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<String, String> {
         self.assert_server_writer("Tracking")?;
-        let sale = self
-            .get_sale(sale_id)?
-            .ok_or_else(|| "Sale not found".to_string())?;
-        let times = EventTimes::capture(None);
-        self.conn
-            .execute(
-                "UPDATE sales SET tracking_status = ?1, pod_note = CASE
-                     WHEN ?2 = '' THEN pod_note ELSE ?2 END
-                 WHERE id = ?3",
-                params![status.as_str(), note.trim(), sale_id],
-            )
-            .map_err(|e| e.to_string())?;
-        let event_id = new_id();
-        self.conn
-            .execute(
-                "INSERT INTO tracking_events(
-                    id, sale_id, awb_no, created_at, user_at, device_at,
-                    status, note, pod_ref, actor_name
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
-                params![
-                    event_id,
-                    sale_id,
-                    sale.awb_no,
-                    times.user_at,
-                    times.user_at,
-                    times.device_at,
-                    status.as_str(),
-                    note.trim(),
-                    pod_ref.trim(),
-                    actor.lock_label()
-                ],
-            )
-            .map_err(|e| e.to_string())?;
-        Ok(event_id)
+        self.in_transaction(|| {
+            let sale = self
+                .get_sale(sale_id)?
+                .ok_or_else(|| "Sale not found".to_string())?;
+            Self::assert_tracking_move(&sale, status)?;
+            let times = EventTimes::capture(None);
+            self.conn
+                .execute(
+                    "UPDATE sales SET tracking_status = ?1, pod_note = CASE
+                         WHEN ?2 = '' THEN pod_note ELSE ?2 END
+                     WHERE id = ?3",
+                    params![status.as_str(), note.trim(), sale_id],
+                )
+                .map_err(|e| e.to_string())?;
+            let event_id = new_id();
+            self.conn
+                .execute(
+                    "INSERT INTO tracking_events(
+                        id, sale_id, awb_no, created_at, user_at, device_at,
+                        status, note, pod_ref, actor_name
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
+                    params![
+                        event_id,
+                        sale_id,
+                        sale.awb_no,
+                        times.user_at,
+                        times.user_at,
+                        times.device_at,
+                        status.as_str(),
+                        note.trim(),
+                        pod_ref.trim(),
+                        actor.lock_label()
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            Ok(event_id)
+        })
+    }
+
+    /// The one rule every tracking write passes: the booking still stands
+    /// (a voided or refunded booking has nothing left to deliver), it has
+    /// an AWB, and its current status may move to `next`
+    /// ([`crate::manifest::TrackingStatus::can_move_to`]). Hiding a button
+    /// is not enough — a pasted AWB list, a second till or a late rider
+    /// sync reach the store too.
+    pub(crate) fn assert_tracking_move(
+        sale: &Sale,
+        next: crate::manifest::TrackingStatus,
+    ) -> Result<(), String> {
+        let awb = if sale.awb_no.trim().is_empty() {
+            "This booking".to_string()
+        } else {
+            sale.awb_no.trim().to_string()
+        };
+        if sale.status != "completed" {
+            return Err(format!("{awb} was {} — nothing to deliver", sale.status));
+        }
+        if sale.awb_no.trim().is_empty() {
+            return Err("This booking has no AWB to track".into());
+        }
+        let current = crate::manifest::TrackingStatus::parse(&sale.tracking_status);
+        if current == next {
+            return Err(format!("{awb} is already {}", current.label().to_lowercase()));
+        }
+        if !current.can_move_to(next) {
+            return Err(if current.is_final() {
+                format!(
+                    "{awb} is {} — it cannot be marked {} now",
+                    current.label().to_lowercase(),
+                    next.label().to_lowercase()
+                )
+            } else {
+                format!(
+                    "{awb} is {} — {} does not come next",
+                    current.label().to_lowercase(),
+                    next.label().to_lowercase()
+                )
+            });
+        }
+        Ok(())
     }
 
     pub fn list_tracking_events(
@@ -10706,18 +10752,45 @@ impl Store {
             }
         };
         let mut line_count = 0i64;
+        let mut seen = std::collections::HashSet::new();
         for sid in sale_ids {
-            let sale: Option<(String, String, String)> = tx
-                .query_row(
-                    "SELECT awb_no, destination, consignee_name FROM sales WHERE id = ?1",
-                    params![sid],
-                    |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
-                )
-                .optional()
-                .map_err(|e| e.to_string())?;
-            let Some((awb, dest, consignee)) = sale else {
+            if !seen.insert(sid.as_str()) {
                 continue;
-            };
+            }
+            // Every parcel the desk picked goes, or none does: a bag never
+            // leaves with a parcel that is already out, delivered or voided,
+            // and never silently without one that was picked.
+            let sale = self
+                .get_sale(sid)?
+                .ok_or_else(|| "A picked booking is no longer in the books".to_string())?;
+            let current = crate::manifest::TrackingStatus::parse(&sale.tracking_status);
+            if sale.status != "completed" {
+                return Err(format!("{} was {} — take it off this run", sale.awb_no, sale.status));
+            }
+            if sale.awb_no.trim().is_empty() {
+                return Err("A picked booking has no AWB".into());
+            }
+            if !current.is_dispatchable() {
+                return Err(format!(
+                    "{} is {} — only parcels still in the office can go",
+                    sale.awb_no,
+                    current.label().to_lowercase()
+                ));
+            }
+            if kind == crate::manifest::HandoverKind::Carrier {
+                let booked_with = sale.carrier_party_id.trim();
+                if !booked_with.is_empty() && booked_with != carrier_party_id {
+                    let other = self
+                        .get_customer(booked_with)?
+                        .map(|c| c.name)
+                        .unwrap_or_else(|| "another carrier".into());
+                    return Err(format!(
+                        "{} was booked with {other} — bag it with {other}, or take it off",
+                        sale.awb_no
+                    ));
+                }
+            }
+            let (awb, dest, consignee) = (sale.awb_no, sale.destination, sale.consignee_name);
             tx.execute(
                 "INSERT INTO manifest_lines(
                     id, manifest_id, sale_id, awb_no, destination, consignee_name
@@ -10727,7 +10800,8 @@ impl Store {
             .map_err(|e| e.to_string())?;
             tx.execute(
                 "UPDATE sales SET tracking_status = ?1, handover_kind = ?2,
-                     carrier_party_id = ?3, rider_id = ?4
+                     carrier_party_id = CASE WHEN ?3 = '' THEN carrier_party_id ELSE ?3 END,
+                     rider_id = ?4
                  WHERE id = ?5",
                 params![
                     next_status.as_str(),
@@ -10938,6 +11012,11 @@ impl Store {
     }
 
     /// Record a failed delivery (NDR). Bumps attempt_count; auto-RTO at max attempts.
+    ///
+    /// Only a parcel that was out (with a rider or a carrier) can fail; a
+    /// parcel that already failed may fail again (a carrier's next attempt
+    /// is reported without us sending it out). One unit of work: the status,
+    /// the event, the audit line and an RTO fee land together.
     pub fn record_ndr(
         &self,
         sale_id: &str,
@@ -10945,69 +11024,105 @@ impl Store {
         next_attempt_date: &str,
         actor: &StaffMember,
     ) -> Result<crate::manifest::TrackingStatus, String> {
+        use crate::manifest::TrackingStatus;
         self.assert_server_writer("NDR")?;
-        let sale = self
-            .get_sale(sale_id)?
-            .ok_or_else(|| "Sale not found".to_string())?;
+        self.in_transaction(|| {
+            let sale = self
+                .get_sale(sale_id)?
+                .ok_or_else(|| "Sale not found".to_string())?;
+            let current = TrackingStatus::parse(&sale.tracking_status);
+            if current != TrackingStatus::Ndr {
+                Self::assert_tracking_move(&sale, TrackingStatus::Ndr)?;
+            } else if sale.status != "completed" {
+                return Err(format!("{} was {} — nothing to deliver", sale.awb_no, sale.status));
+            }
+            let reason = reason.trim();
+            let next = next_attempt_date.trim();
+            let attempts = sale.attempt_count.saturating_add(1);
+            let max = self.ndr_max_attempts();
+            let status = if attempts >= max {
+                TrackingStatus::Rto
+            } else {
+                TrackingStatus::Ndr
+            };
+            let note = if status == TrackingStatus::Rto {
+                format!("NDR attempt {attempts}/{max} → RTO · {reason}")
+            } else {
+                format!("NDR attempt {attempts}/{max} · {reason}")
+            };
+            let times = EventTimes::capture(None);
+            self.conn
+                .execute(
+                    "UPDATE sales SET tracking_status = ?1, attempt_count = ?2,
+                         ndr_reason = ?3, next_attempt_at = ?4, pod_note = CASE
+                           WHEN ?5 = '' THEN pod_note ELSE ?5 END
+                     WHERE id = ?6",
+                    params![
+                        status.as_str(),
+                        attempts,
+                        reason,
+                        next,
+                        note.as_str(),
+                        sale_id
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            self.conn
+                .execute(
+                    "INSERT INTO tracking_events(
+                        id, sale_id, awb_no, created_at, user_at, device_at,
+                        status, note, pod_ref, actor_name
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, '', ?9)",
+                    params![
+                        new_id(),
+                        sale_id,
+                        sale.awb_no,
+                        times.user_at,
+                        times.user_at,
+                        times.device_at,
+                        status.as_str(),
+                        note,
+                        actor.lock_label()
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            let _ = self.audit(
+                actor,
+                "ndr",
+                &format!("{} · {} · attempt {attempts}", sale.awb_no, status.as_str()),
+            );
+            if status == TrackingStatus::Rto {
+                let _ = self.apply_rto_fee_if_needed(sale_id)?;
+            }
+            Ok(status)
+        })
+    }
+
+    /// Send a parcel back to the consignor now (refused, wrong address, the
+    /// consignor asked) without waiting for the last automatic attempt.
+    /// Same rules and RTO fee as the automatic return after max attempts.
+    pub fn return_to_origin(
+        &self,
+        sale_id: &str,
+        reason: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        use crate::manifest::TrackingStatus;
+        self.assert_server_writer("Return to sender")?;
         let reason = reason.trim();
-        let next = next_attempt_date.trim();
-        let attempts = sale.attempt_count.saturating_add(1);
-        let max = self.ndr_max_attempts();
-        let status = if attempts >= max {
-            crate::manifest::TrackingStatus::Rto
-        } else {
-            crate::manifest::TrackingStatus::Ndr
-        };
-        let note = if status == crate::manifest::TrackingStatus::Rto {
-            format!("NDR attempt {attempts}/{max} → RTO · {reason}")
-        } else {
-            format!("NDR attempt {attempts}/{max} · {reason}")
-        };
-        let times = EventTimes::capture(None);
-        self.conn
-            .execute(
-                "UPDATE sales SET tracking_status = ?1, attempt_count = ?2,
-                     ndr_reason = ?3, next_attempt_at = ?4, pod_note = CASE
-                       WHEN ?5 = '' THEN pod_note ELSE ?5 END
-                 WHERE id = ?6",
-                params![
-                    status.as_str(),
-                    attempts,
-                    reason,
-                    next,
-                    note.as_str(),
-                    sale_id
-                ],
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT INTO tracking_events(
-                    id, sale_id, awb_no, created_at, user_at, device_at,
-                    status, note, pod_ref, actor_name
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, '', ?9)",
-                params![
-                    new_id(),
-                    sale_id,
-                    sale.awb_no,
-                    times.user_at,
-                    times.user_at,
-                    times.device_at,
-                    status.as_str(),
-                    note,
-                    actor.lock_label()
-                ],
-            )
-            .map_err(|e| e.to_string())?;
-        let _ = self.audit(
-            actor,
-            "ndr",
-            &format!("{} · {} · attempt {attempts}", sale.awb_no, status.as_str()),
-        );
-        if status == crate::manifest::TrackingStatus::Rto {
-            let _ = self.apply_rto_fee_if_needed(sale_id);
+        if reason.is_empty() {
+            return Err("Say why it goes back (refused, wrong address, …)".into());
         }
-        Ok(status)
+        self.in_transaction(|| {
+            let sale = self
+                .get_sale(sale_id)?
+                .ok_or_else(|| "Sale not found".to_string())?;
+            let note = format!("Return to sender · {reason}");
+            let _ = self.advance_tracking(sale_id, TrackingStatus::Rto, &note, "", actor)?;
+            let _ = self.audit(actor, "rto", &format!("{} · {reason}", sale.awb_no));
+            let _ = self.apply_rto_fee_if_needed(sale_id)?;
+            Ok(())
+        })
     }
 
     /// From NDR back to out for delivery for another attempt.
@@ -11017,27 +11132,33 @@ impl Store {
         actor: &StaffMember,
     ) -> Result<(), String> {
         self.assert_server_writer("Reattempt")?;
-        let sale = self
-            .get_sale(sale_id)?
-            .ok_or_else(|| "Sale not found".to_string())?;
-        let cur = crate::manifest::TrackingStatus::parse(&sale.tracking_status);
-        if cur != crate::manifest::TrackingStatus::Ndr {
-            return Err("Reattempt only from NDR status".into());
-        }
-        self.conn
-            .execute(
-                "UPDATE sales SET next_attempt_at = '' WHERE id = ?1",
-                params![sale_id],
-            )
-            .map_err(|e| e.to_string())?;
-        let _ = self.advance_tracking(
-            sale_id,
-            crate::manifest::TrackingStatus::OutForDelivery,
-            "Reattempt",
-            "",
-            actor,
-        )?;
-        Ok(())
+        self.in_transaction(|| {
+            let sale = self
+                .get_sale(sale_id)?
+                .ok_or_else(|| "Sale not found".to_string())?;
+            let cur = crate::manifest::TrackingStatus::parse(&sale.tracking_status);
+            if cur != crate::manifest::TrackingStatus::Ndr {
+                return Err(format!(
+                    "{} is {} — only a failed delivery is tried again",
+                    sale.awb_no,
+                    cur.label().to_lowercase()
+                ));
+            }
+            self.conn
+                .execute(
+                    "UPDATE sales SET next_attempt_at = '' WHERE id = ?1",
+                    params![sale_id],
+                )
+                .map_err(|e| e.to_string())?;
+            let _ = self.advance_tracking(
+                sale_id,
+                crate::manifest::TrackingStatus::OutForDelivery,
+                "Reattempt",
+                "",
+                actor,
+            )?;
+            Ok(())
+        })
     }
 
     /// Sum COD on dockets assigned to this rider delivered (or collected) on `date` (YYYY-MM-DD).

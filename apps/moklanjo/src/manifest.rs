@@ -281,8 +281,8 @@ impl TrackingStatus {
             Self::InTransit => "In transit",
             Self::OutForDelivery => "Out for delivery",
             Self::Delivered => "Delivered",
-            Self::Ndr => "NDR",
-            Self::Rto => "RTO",
+            Self::Ndr => "Failed delivery",
+            Self::Rto => "Returned to sender",
             Self::Cancelled => "Cancelled",
         }
     }
@@ -301,6 +301,71 @@ impl TrackingStatus {
         ]
     }
 
+    /// Locale key of the status as staff read it (never the stored code).
+    pub fn label_key(self) -> &'static str {
+        match self {
+            Self::Booked => "trk_booked",
+            Self::PickedUp => "trk_picked_up",
+            Self::HandedOver => "trk_handed_over",
+            Self::InTransit => "trk_in_transit",
+            Self::OutForDelivery => "out_for_delivery",
+            Self::Delivered => "trk_delivered",
+            Self::Ndr => "trk_failed",
+            Self::Rto => "trk_rto",
+            Self::Cancelled => "trk_cancelled",
+        }
+    }
+
+    /// Delivered, returned and cancelled parcels are finished: no desk
+    /// action moves them again.
+    pub fn is_final(self) -> bool {
+        matches!(self, Self::Delivered | Self::Rto | Self::Cancelled)
+    }
+
+    /// Still in the office — the only parcels a carrier bag or a rider run
+    /// may take.
+    pub fn is_dispatchable(self) -> bool {
+        matches!(self, Self::Booked | Self::PickedUp)
+    }
+
+    /// Moves the desk may make from this status. The store refuses every
+    /// other one, so a stray tap, a pasted list or a late rider sync can
+    /// never send a delivered parcel out again (vision §18: the books say
+    /// what really happened).
+    pub fn can_move_to(self, next: TrackingStatus) -> bool {
+        use TrackingStatus::*;
+        if self == next {
+            return false;
+        }
+        match self {
+            // In the office: picked up, bagged for a carrier, out with a
+            // rider, collected at the counter, or cancelled.
+            Booked | PickedUp => matches!(
+                next,
+                PickedUp | HandedOver | InTransit | OutForDelivery | Delivered | Cancelled
+            ),
+            // The carrier has it: we only hear what happened next.
+            HandedOver | InTransit => {
+                matches!(next, InTransit | OutForDelivery | Delivered | Ndr | Rto)
+            }
+            OutForDelivery => matches!(next, Delivered | Ndr | Rto),
+            // Failed attempt: out again, delivered after all, or sent back.
+            Ndr => matches!(next, OutForDelivery | Delivered | Rto),
+            Delivered | Rto | Cancelled => false,
+        }
+    }
+
+    /// Which Ops board lane shows a parcel in this status.
+    pub fn lane(self) -> OpsLane {
+        match self {
+            Self::Booked | Self::PickedUp => OpsLane::ToDispatch,
+            Self::HandedOver | Self::InTransit => OpsLane::WithCarrier,
+            Self::OutForDelivery => OpsLane::OutForDelivery,
+            Self::Ndr => OpsLane::Failed,
+            Self::Delivered | Self::Rto | Self::Cancelled => OpsLane::Done,
+        }
+    }
+
     pub fn parse(raw: &str) -> Self {
         match raw.trim().to_lowercase().as_str() {
             "picked_up" => Self::PickedUp,
@@ -313,6 +378,98 @@ impl TrackingStatus {
             "cancelled" => Self::Cancelled,
             _ => Self::Booked,
         }
+    }
+}
+
+/// The Ops board's lanes: where a parcel is in the office's day, in the
+/// order the work happens. Each lane offers only the moves that fit it.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
+pub enum OpsLane {
+    /// Booked or picked up — still in the office, waiting for a bag or a run.
+    #[default]
+    ToDispatch,
+    /// Handed to a carrier (or in transit) — we wait for their word.
+    WithCarrier,
+    /// Out with one of our riders.
+    OutForDelivery,
+    /// A delivery failed — try again or send it back.
+    Failed,
+    /// Delivered, returned or cancelled today.
+    Done,
+}
+
+impl OpsLane {
+    pub const ALL: [OpsLane; 5] = [
+        OpsLane::ToDispatch,
+        OpsLane::WithCarrier,
+        OpsLane::OutForDelivery,
+        OpsLane::Failed,
+        OpsLane::Done,
+    ];
+
+    pub fn index(self) -> usize {
+        Self::ALL.iter().position(|l| *l == self).unwrap_or(0)
+    }
+
+    /// Stored statuses this lane shows.
+    pub fn statuses(self) -> &'static [TrackingStatus] {
+        use TrackingStatus::*;
+        match self {
+            Self::ToDispatch => &[Booked, PickedUp],
+            Self::WithCarrier => &[HandedOver, InTransit],
+            Self::OutForDelivery => &[OutForDelivery],
+            Self::Failed => &[Ndr],
+            Self::Done => &[Delivered, Rto, Cancelled],
+        }
+    }
+
+    pub fn label_key(self) -> &'static str {
+        match self {
+            Self::ToDispatch => "lane_to_dispatch",
+            Self::WithCarrier => "lane_with_carrier",
+            Self::OutForDelivery => "out_for_delivery",
+            Self::Failed => "lane_failed",
+            Self::Done => "lane_done_today",
+        }
+    }
+
+    pub fn hint_key(self) -> &'static str {
+        match self {
+            Self::ToDispatch => "lane_to_dispatch_hint",
+            Self::WithCarrier => "lane_with_carrier_hint",
+            Self::OutForDelivery => "lane_out_hint",
+            Self::Failed => "lane_failed_hint",
+            Self::Done => "lane_done_hint",
+        }
+    }
+}
+
+/// One parcel on the Ops board: the booking plus where it is now and since
+/// when — read in one query so the board never asks per row.
+#[derive(Clone, Debug, Default)]
+pub struct OpsRow {
+    pub sale_id: String,
+    pub awb_no: String,
+    pub destination: String,
+    pub consignee_name: String,
+    pub origin_name: String,
+    pub status: String,
+    pub piece_count: i64,
+    pub chargeable_weight_kg: rust_decimal::Decimal,
+    pub total_paise: i64,
+    pub cod_paise: i64,
+    /// Carrier party name (bag or booked-with) or rider name — who has it.
+    pub holder: String,
+    /// When the parcel last moved (booking time if it never did).
+    pub moved_at: String,
+    pub attempt_count: i64,
+    pub ndr_reason: String,
+    pub next_attempt_at: String,
+}
+
+impl OpsRow {
+    pub fn tracking(&self) -> TrackingStatus {
+        TrackingStatus::parse(&self.status)
     }
 }
 

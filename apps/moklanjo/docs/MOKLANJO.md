@@ -143,7 +143,7 @@ Supplier.
 | Month GST summary CSV | CA handoff (not GSTR filing) | **Ship** (2026-10-29) — Reports CSV |
 | Month mix report (courier / service / top clients) | Reports facet; Day book stays home | **Ship** (2026-10-29) — Reports action |
 | Consignment search/filters | **Ship** — AWB / party / date / billed / status |
-| WhatsApp / SMS notify drain | **Ship** — outbox + Open WhatsApp / Copy SMS / mark sent. SMS **delivery** Planned: Local SMS Gateway (Android sibling) + paid Cloud SMS — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
+| WhatsApp / SMS notify drain | **Ship** — outbox + Open WhatsApp / Copy SMS / mark sent. SMS **delivery** Planned (local SIM/modem + Cloud gateway) — [`SMS_MESSAGING.md`](../../../docs/SMS_MESSAGING.md) |
 | One-tap WhatsApp receipt | **Ship** — `wa.me` with receipt text |
 | Optional GPS on POD | **Ship** — lat/lon on tracking event when OS provides; no map tiles |
 | Delivery feedback (local) | **Ship** — score on delivered AWB; no public Net survey |

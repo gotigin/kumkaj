@@ -94,6 +94,7 @@ impl Store {
                 );
                 CREATE INDEX IF NOT EXISTS idx_incoming_lines ON incoming_manifest_lines(manifest_id);
                 CREATE INDEX IF NOT EXISTS idx_pickup_run ON pickup_requests(run_id);
+                CREATE INDEX IF NOT EXISTS idx_sales_tracking ON sales(tracking_status);
                 "#,
             )
             .map_err(|e| e.to_string())?;
@@ -110,6 +111,117 @@ impl Store {
             let _ = self.conn.execute(stmt, []);
         }
         Ok(())
+    }
+
+    // ----- Ops board --------------------------------------------------------
+
+    /// Parcels in one Ops board lane, oldest work first (the newest first
+    /// for Done), at most `limit`. Only bookings that still stand and carry
+    /// an AWB; Done shows what finished since today's midnight.
+    pub fn ops_board_rows(
+        &self,
+        lane: crate::manifest::OpsLane,
+        limit: usize,
+    ) -> Result<Vec<crate::manifest::OpsRow>, String> {
+        use crate::manifest::OpsLane;
+        let (filter, order) = Self::ops_lane_sql(lane);
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let sql = format!(
+            "SELECT s.id, s.awb_no, s.destination, s.consignee_name, s.origin_name,
+                    s.tracking_status, s.piece_count, s.chargeable_weight_kg,
+                    s.total_paise, s.cod_paise,
+                    CASE WHEN s.handover_kind = 'own_fleet' AND s.rider_id != ''
+                         THEN COALESCE(r.name, '') ELSE COALESCE(c.name, '') END,
+                    COALESCE((SELECT MAX(e.created_at) FROM tracking_events e
+                              WHERE e.sale_id = s.id), s.created_at) AS moved_at,
+                    s.attempt_count, s.ndr_reason, s.next_attempt_at
+             FROM sales s
+             LEFT JOIN customers c ON c.id = s.carrier_party_id AND s.carrier_party_id != ''
+             LEFT JOIN riders r ON r.id = s.rider_id AND s.rider_id != ''
+             WHERE s.status = 'completed' AND s.awb_no != '' AND {filter}
+             ORDER BY {order}
+             LIMIT ?2"
+        );
+        let mut stmt = self.conn.prepare(&sql).map_err(|e| e.to_string())?;
+        let since = if lane == OpsLane::Done { today } else { String::new() };
+        let rows = stmt
+            .query_map(params![since, limit.max(1) as i64], |r| {
+                Ok(crate::manifest::OpsRow {
+                    sale_id: r.get(0)?,
+                    awb_no: r.get(1)?,
+                    destination: r.get(2)?,
+                    consignee_name: r.get(3)?,
+                    origin_name: r.get(4)?,
+                    status: r.get(5)?,
+                    piece_count: r.get(6)?,
+                    chargeable_weight_kg: crate::precise::dec_from_sql(r, 7)?,
+                    total_paise: r.get(8)?,
+                    cod_paise: r.get(9)?,
+                    holder: r.get(10)?,
+                    moved_at: r.get(11)?,
+                    attempt_count: r.get(12)?,
+                    ndr_reason: r.get(13)?,
+                    next_attempt_at: r.get(14)?,
+                })
+            })
+            .map_err(|e| e.to_string())?;
+        rows.collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())
+    }
+
+    /// How many parcels each lane holds, in [`crate::manifest::OpsLane::ALL`] order.
+    pub fn ops_lane_counts(&self) -> Result<[usize; 5], String> {
+        use crate::manifest::OpsLane;
+        let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+        let mut out = [0usize; 5];
+        for lane in OpsLane::ALL {
+            let (filter, _) = Self::ops_lane_sql(lane);
+            let since = if lane == OpsLane::Done { today.clone() } else { String::new() };
+            let n: i64 = self
+                .conn
+                .query_row(
+                    &format!(
+                        "SELECT COUNT(*) FROM sales s
+                         WHERE s.status = 'completed' AND s.awb_no != '' AND {filter}
+                           AND ?2 = ?2"
+                    ),
+                    params![since, 0],
+                    |r| r.get(0),
+                )
+                .map_err(|e| e.to_string())?;
+            out[lane.index()] = n.max(0) as usize;
+        }
+        Ok(out)
+    }
+
+    /// WHERE fragment (`?1` = start of today for Done) and ORDER BY for a lane.
+    fn ops_lane_sql(lane: crate::manifest::OpsLane) -> (String, &'static str) {
+        use crate::manifest::OpsLane;
+        let codes = lane
+            .statuses()
+            .iter()
+            .map(|st| format!("'{}'", st.as_str()))
+            .collect::<Vec<_>>()
+            .join(", ");
+        // Rows written before tracking existed carry '' — they are booked.
+        let empty = if lane == OpsLane::ToDispatch { ", ''" } else { "" };
+        let mut filter = format!("s.tracking_status IN ({codes}{empty})");
+        if lane == OpsLane::Done {
+            filter.push_str(
+                " AND (s.created_at >= ?1 OR EXISTS (SELECT 1 FROM tracking_events e
+                       WHERE e.sale_id = s.id AND e.created_at >= ?1))",
+            );
+        } else {
+            filter.push_str(" AND ?1 = ?1");
+        }
+        let order = match lane {
+            OpsLane::ToDispatch => "s.created_at ASC",
+            OpsLane::WithCarrier => "moved_at ASC",
+            OpsLane::OutForDelivery => "s.rider_id, moved_at ASC",
+            OpsLane::Failed => "CASE WHEN s.next_attempt_at = '' THEN 1 ELSE 0 END, s.next_attempt_at, moved_at ASC",
+            OpsLane::Done => "moved_at DESC",
+        };
+        (filter, order)
     }
 
     // ----- App mode / rider cache -----------------------------------------
