@@ -1196,8 +1196,9 @@ impl Store {
         self.meta_set("rajdhani_app_template_done", "1")
     }
 
-    /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner named Asif,
-    /// business day until close, history on day close, Today strip off, KOT profile.
+    /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner **Zahir**,
+    /// Admin **Asif**, Waiter **Nawaz**, FOH-first sidebar, history after a few
+    /// hours, Today strip off, compact KOT + Standard margins for narrow trays.
     /// Safe to call after the menu import on a fresh server (no session yet).
     pub fn apply_rajdhani_shop_defaults(&self) -> Result<(), String> {
         self.assert_server_writer("Rajdhani shop defaults")?;
@@ -1216,39 +1217,110 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         self.set_service_charge_bps(0)?;
+        let owner = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.is_owner())
+            .ok_or_else(|| "Owner account missing".to_string())?;
+        // Display names stay title-case; usernames are lowercase of the name.
+        self.assert_login_id_free("zahir", Some(&owner.id))?;
         let n = self
             .conn
             .execute(
-                "UPDATE staff SET name = ?1 WHERE role = 'owner' AND active = 1",
-                params!["Asif"],
+                "UPDATE staff SET name = ?1, login_id = ?2 WHERE id = ?3 AND role = 'owner' AND active = 1",
+                params!["Zahir", "zahir", owner.id],
             )
             .map_err(|e| e.to_string())?;
         if n == 0 {
             return Err("Owner account missing".into());
         }
+        let owner = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.is_owner())
+            .ok_or_else(|| "Owner account missing".to_string())?;
+        // Seed Admin + Waiter once (idempotent on re-apply).
+        let existing = self.list_staff()?;
+        if !existing
+            .iter()
+            .any(|s| s.active && s.role == StaffRole::Admin)
+        {
+            self.add_staff_with_features(
+                &StaffHire {
+                    name: "Asif",
+                    role: StaffRole::Admin,
+                    role_title: "Admin",
+                    pin: "1111",
+                    login_id: "asif",
+                    password: "",
+                    features: StaffFeatures::all(),
+                },
+                &owner,
+            )?;
+        } else if let Some(admin) = existing
+            .iter()
+            .find(|s| s.active && s.role == StaffRole::Admin)
+        {
+            self.ensure_template_login(&admin.id, "asif")?;
+        }
+        if !existing
+            .iter()
+            .any(|s| s.active && s.name.eq_ignore_ascii_case("Nawaz"))
+        {
+            self.add_staff_with_features(
+                &StaffHire {
+                    name: "Nawaz",
+                    role: StaffRole::Waiter,
+                    role_title: "Waiter",
+                    pin: "2222",
+                    login_id: "nawaz",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Waiter),
+                },
+                &owner,
+            )?;
+        } else if let Some(waiter) = existing
+            .iter()
+            .find(|s| s.active && s.name.eq_ignore_ascii_case("Nawaz"))
+        {
+            self.ensure_template_login(&waiter.id, "nawaz")?;
+        }
         self.meta_set(
             "business_day_mode",
             &crate::business_day::BusinessDayMode::UntilDayClose.as_str(),
         )?;
-        self.meta_set("history_retention", "on_day_close")?;
-        self.meta_set("history_retention_hours", "12")?;
+        // Auto-clear trading rows older than a few hours; Owner can also clear
+        // everything manually from Settings → Backup.
+        self.meta_set("history_retention", "after_hours")?;
+        self.meta_set("history_retention_hours", "4")?;
         self.meta_set("show_today_bar", "0")?;
+        // FOH-first chrome: Floor / Kitchen / Sell / Sales / Day close stay.
+        // Back-office peers stay in the app — unhide in Settings → Sidebar.
+        self.set_nav_hidden_csv("books,buy,menu,inventory,branches,credit,reports")?;
         let kot = crate::print_share::KotSlipFormat::rajdhani_default();
         self.set_kot_slip_format(&kot)?;
-        // Standard document metrics: tighter side margin for non-A4 trays.
-        // Keep books meta in step with printers.json so Settings / sync agree.
+        // Standard document metrics: side inset + smaller type so narrow
+        // trays (Canon G3010-class) do not clip edges (bill.jpeg).
         self.meta_set(
             "standard_print_em",
             &format!("{}", crate::print_share::STD_EM_SMALL),
         )?;
         if let Some(base) = self.path.parent() {
             let mut cfg = crate::print_share::load_device_printers(base);
+            crate::print_share::PrintFormat::ensure_builtins(&mut cfg.formats);
             for f in cfg.formats.iter_mut() {
                 if crate::print_share::is_standard_document(&f.id) {
                     f.side = 12.0;
                     f.em = crate::print_share::STD_EM_SMALL;
-                    f.line = 42;
+                    f.line = 40;
                     f.baseline = crate::print_share::STD_EM_SMALL + 2.0;
+                } else if f.id == crate::print_share::FORMAT_KOT {
+                    // Match product KOT built-in (thermal slip metrics).
+                    let kot_fmt = crate::print_share::PrintFormat::kot();
+                    f.em = kot_fmt.em;
+                    f.line = kot_fmt.line;
+                    f.baseline = kot_fmt.baseline;
+                    f.side = kot_fmt.side;
                 }
             }
             let _ = crate::print_share::save_device_printers(base, &cfg);
@@ -9493,14 +9565,14 @@ impl Store {
     pub fn verify_approval_pin(&self, pin: &str) -> Result<StaffMember, String> {
         let pin = pin.trim();
         if pin.is_empty() {
-            return Err("Owner or Manager PIN required to approve this".into());
+            return Err("Owner, Admin, or Manager PIN required to approve this".into());
         }
         for member in self.list_staff()? {
             if member.role.can_void_refund() && verify_pin(pin, &member.pin_hash)? {
                 return Ok(member);
             }
         }
-        Err("That PIN is not an Owner or Manager PIN".into())
+        Err("That PIN is not an Owner, Admin, or Manager PIN".into())
     }
 
     pub fn add_staff(
@@ -9560,7 +9632,8 @@ impl Store {
         } else {
             hash_pin(hire.password.trim())?
         };
-        let login_id = hire.login_id.trim().to_string();
+        // Usernames are stored lowercase; uniqueness is case-insensitive.
+        let login_id = hire.login_id.trim().to_ascii_lowercase();
         self.assert_login_id_free(&login_id, None)?;
         let id = new_id();
         self.conn
@@ -9585,6 +9658,33 @@ impl Store {
             &format!("{name} as {title} ({})", hire.role.as_str()),
         )?;
         Ok(id)
+    }
+
+    /// Template / bootstrap: set username when missing (no password required).
+    fn ensure_template_login(&self, staff_id: &str, login_id: &str) -> Result<(), String> {
+        let login_id = login_id.trim().to_ascii_lowercase();
+        if login_id.is_empty() {
+            return Ok(());
+        }
+        let current: String = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(login_id, '') FROM staff WHERE id = ?1 AND active = 1",
+                params![staff_id],
+                |r| r.get(0),
+            )
+            .map_err(|e| e.to_string())?;
+        if !current.trim().is_empty() {
+            return Ok(());
+        }
+        self.assert_login_id_free(&login_id, Some(staff_id))?;
+        self.conn
+            .execute(
+                "UPDATE staff SET login_id = ?1 WHERE id = ?2 AND active = 1",
+                params![login_id, staff_id],
+            )
+            .map_err(|e| e.to_string())?;
+        Ok(())
     }
 
     /// Username (`login_id`) is the unique human handle. Display `name` may
@@ -9889,14 +9989,14 @@ impl Store {
                 Some(target.role),
             )?;
         }
-        let login_id = login_id.trim();
+        let login_id = login_id.trim().to_ascii_lowercase();
         if login_id.is_empty() {
             return Err("Username required".into());
         }
         if password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
         }
-        self.assert_login_id_free(login_id, Some(staff_id))?;
+        self.assert_login_id_free(&login_id, Some(staff_id))?;
         // If actor is not the staff member, only allow when password_hash is empty (initial set).
         if actor.id != staff_id {
             let existing: String = self
@@ -13566,7 +13666,7 @@ mod tests {
     }
 
     #[test]
-    fn rajdhani_app_template_disables_tax_and_names_owner_asif() {
+    fn rajdhani_app_template_disables_tax_and_seeds_team() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         // Fresh India pack seeds active GST rates.
@@ -13589,13 +13689,38 @@ mod tests {
             "tax picker must be empty after App Template"
         );
         assert_eq!(store.fiscal_settings().unwrap().service_charge_bps, 0);
-        let owner = store
-            .list_staff()
-            .unwrap()
-            .into_iter()
-            .find(|s| s.is_owner())
-            .expect("owner");
-        assert_eq!(owner.name, "Asif");
+        let staff = store.list_staff().unwrap();
+        let owner = staff.iter().find(|s| s.is_owner()).expect("owner");
+        assert_eq!(owner.name, "Zahir");
+        assert_eq!(owner.login_id, "zahir");
+        assert_eq!(owner.lock_label(), "Zahir (Owner) · zahir");
+        let admin = staff
+            .iter()
+            .find(|s| s.role == StaffRole::Admin)
+            .expect("admin Asif");
+        assert_eq!(admin.name, "Asif");
+        assert_eq!(admin.login_id, "asif");
+        assert_eq!(admin.lock_label(), "Asif (Admin) · asif");
+        let waiter = staff
+            .iter()
+            .find(|s| s.name.eq_ignore_ascii_case("Nawaz"))
+            .expect("waiter Nawaz");
+        assert_eq!(waiter.role, StaffRole::Waiter);
+        assert_eq!(waiter.login_id, "nawaz");
+        assert_eq!(waiter.lock_label(), "Nawaz (Waiter) · nawaz");
+        assert!(
+            matches!(
+                store.history_retention().unwrap(),
+                crate::business_day::HistoryRetention::AfterHours(4)
+            )
+        );
+        let hidden = store.nav_hidden_csv().unwrap().unwrap_or_default();
+        for key in ["books", "buy", "menu", "inventory", "branches", "credit", "reports"] {
+            assert!(
+                hidden.split(',').any(|p| p.trim() == key),
+                "expected {key} hidden, got {hidden}"
+            );
+        }
         assert!(
             store
                 .list_products(false)
@@ -13603,6 +13728,8 @@ mod tests {
                 .iter()
                 .all(|p| p.tax_bps == 0 && p.tax_rate_id.is_empty())
         );
+        // Admin cannot rename Owner.
+        assert!(store.rename_staff(&owner.id, "Nope", admin).is_err());
         let _ = std::fs::remove_file(path);
     }
 

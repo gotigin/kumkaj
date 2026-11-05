@@ -899,6 +899,8 @@ impl StaffMember {
 
     /// Lock / Team / suggest line: same shape for every person —
     /// `Name (role) · login-or-#id` — so Owner is not a special format.
+    /// Lock / Team / suggest line: `Name (role) · username` when set.
+    /// Uniqueness among people is the username (`login_id`), not a short UUID.
     pub fn lock_label(&self) -> String {
         let role = if self.is_owner() {
             "Owner".to_string()
@@ -907,15 +909,11 @@ impl StaffMember {
         };
         let who = format!("{} ({})", self.name.trim(), role);
         let login = self.login_id.trim();
-        if !login.is_empty() {
-            return format!("{who} · {login}");
+        if login.is_empty() {
+            who
+        } else {
+            format!("{who} · {login}")
         }
-        let id = self.id.trim();
-        if id.is_empty() {
-            return who;
-        }
-        let short = if id.len() > 8 { &id[id.len() - 8..] } else { id };
-        format!("{who} · #{short}")
     }
 
     pub fn effective_features(&self) -> StaffFeatures {

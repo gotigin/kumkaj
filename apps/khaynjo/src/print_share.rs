@@ -156,16 +156,17 @@ pub struct PrintFormat {
 }
 
 fn default_true() -> bool { true }
-fn default_em() -> f32 { 22.0 }
-fn default_line() -> u32 { 32 }
-fn default_baseline() -> f32 { 24.0 }
-fn default_side() -> f32 { 8.0 }
+fn default_em() -> f32 { STD_EM_NORMAL }
+fn default_line() -> u32 { 40 }
+fn default_baseline() -> f32 { STD_EM_NORMAL + 2.0 }
+fn default_side() -> f32 { 12.0 }
 
 /// Bill / Standard document type-size presets (Settings chips).
 /// Applied to every Standard Portrait/Landscape format so orientation
-/// routes keep the same em. Rajdhani template seeds Small (18).
+/// routes keep the same em. Defaults favour common OS printers (narrow
+/// trays / Canon-class inkjets) — wider side inset, ~40-char wrap.
 pub const STD_EM_SMALL: f32 = 18.0;
-pub const STD_EM_NORMAL: f32 = 22.0;
+pub const STD_EM_NORMAL: f32 = 20.0;
 pub const STD_EM_LARGE: f32 = 26.0;
 
 impl PrintFormat {
@@ -174,41 +175,44 @@ impl PrintFormat {
         Self::standard_portrait()
     }
 
+    /// Non-deletable built-in. Portrait OS document — works on most queues.
     pub fn standard_portrait() -> Self {
         Self {
             id: FORMAT_STANDARD_PORTRAIT.into(),
             label: "Standard Portrait".into(),
             document: true,
             landscape: false,
-            em: 22.0,
-            line: 32,
-            baseline: 24.0,
-            side: 8.0,
+            em: STD_EM_NORMAL,
+            line: 40,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: 12.0,
         }
     }
 
+    /// Non-deletable built-in. Landscape OS document.
     pub fn standard_landscape() -> Self {
         Self {
             id: FORMAT_STANDARD_LANDSCAPE.into(),
             label: "Standard Landscape".into(),
             document: true,
             landscape: true,
-            em: 22.0,
-            line: 32,
-            baseline: 24.0,
-            side: 8.0,
+            em: STD_EM_NORMAL,
+            line: 40,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: 12.0,
         }
     }
 
+    /// Non-deletable built-in. Thermal kitchen slip metrics.
     pub fn kot() -> Self {
         Self {
             id: FORMAT_KOT.into(),
             label: "KOT".into(),
             document: false,
             landscape: false,
-            em: 24.0,
-            line: 36,
-            baseline: 26.0,
+            em: 20.0,
+            line: 32,
+            baseline: 22.0,
             side: 4.0,
         }
     }
@@ -342,31 +346,9 @@ fn scrub_kot_text(raw: &str, max: usize) -> String {
 }
 
 impl Default for KotSlipFormat {
+    /// Product-wide compact kitchen slip (time, KOT no, area, table, Item/Qty).
+    /// Matches common Indian FOH KOTs; shops can turn fields back on in Settings.
     fn default() -> Self {
-        Self {
-            show_title: true,
-            show_shop_name: true,
-            show_time: true,
-            show_waiter: true,
-            show_station: true,
-            show_table: true,
-            show_kot_no: true,
-            show_area: false,
-            show_item_qty_header: false,
-            chars_per_line: KOT_CHARS_58MM,
-            em: KOT_EM_NORMAL,
-            side: 4.0,
-            copies: KOT_COPIES_MIN,
-            title: String::new(),
-            footer: String::new(),
-            field_order: Vec::new(),
-        }
-    }
-}
-
-impl KotSlipFormat {
-    /// Compact layout matching the Rajdhani client's preferred other-app slip.
-    pub fn rajdhani_default() -> Self {
         Self {
             show_title: false,
             show_shop_name: false,
@@ -380,7 +362,7 @@ impl KotSlipFormat {
             chars_per_line: KOT_CHARS_58MM,
             em: KOT_EM_SMALL,
             side: 4.0,
-            copies: 1,
+            copies: KOT_COPIES_MIN,
             title: String::new(),
             footer: String::new(),
             field_order: vec![
@@ -390,7 +372,13 @@ impl KotSlipFormat {
                 "table".into(),
             ],
         }
-        .clamped()
+    }
+}
+
+impl KotSlipFormat {
+    /// Alias for [`Default`] (kept for call sites / templates).
+    pub fn rajdhani_default() -> Self {
+        Self::default().clamped()
     }
 
     pub fn parse(raw: &str) -> Self {
@@ -636,9 +624,12 @@ mod kot_slip_format_tests {
     #[test]
     fn sample_preview_never_shows_prices_and_keeps_kot_no() {
         let text = KotSlipFormat::default().render_sample("Khaynjo");
-        assert!(text.contains("KOT - KITCHEN ORDER"));
-        assert!(text.contains("KOT No: 12"));
-        assert!(text.contains("Table: D1"));
+        // Product default is the compact slip (kot.jpeg): no title banner.
+        assert!(!text.contains("KOT - KITCHEN ORDER"));
+        assert!(text.contains("KOT - 12"));
+        assert!(text.contains("Table No: D1"));
+        assert!(text.contains("Dine In"));
+        assert!(text.contains("Item"));
         assert!(text.contains("Butter Roti"));
         assert!(!text.contains('₹'));
         assert!(!text.to_lowercase().contains("total"));
@@ -699,6 +690,7 @@ mod kot_slip_format_tests {
     #[test]
     fn optional_table_kot_no_title_and_copies() {
         let hidden = KotSlipFormat {
+            show_title: true,
             show_table: false,
             show_kot_no: false,
             title: "KITCHEN FIRE".into(),

@@ -402,6 +402,13 @@ pub enum BooksOp {
     PrintTestPage {
         route_key: String,
     },
+    /// Keep / on day close / after N hours — trading rows only.
+    SetHistoryRetention {
+        mode: String,
+        hours: u32,
+    },
+    /// Wipe sales / KOTs / ledgers; keep catalogue, staff, printers, settings.
+    ClearTradingHistory,
     LogExpense {
         amount_paise: i64,
         note: String,
@@ -490,6 +497,8 @@ impl BooksOp {
             Self::SetKotAutoPrint { .. } => "Change KOT auto-print",
             Self::SetStandardEm { .. } => "Change the bill print size",
             Self::PrintTestPage { .. } => "Print a test page",
+            Self::SetHistoryRetention { .. } => "Change history clearing",
+            Self::ClearTradingHistory => "Clear trading history",
             Self::LogExpense { .. } => "Log expenses",
             Self::SaveBackupCopy => "Save a backup copy",
         }
@@ -598,6 +607,8 @@ impl BooksOp {
             Self::SetKotAutoPrint { on: false } => "KOT auto-print off".into(),
             Self::SetStandardEm { .. } => "Bill print size saved".into(),
             Self::PrintTestPage { .. } => "Test page sent".into(),
+            Self::SetHistoryRetention { .. } => "History clearing saved".into(),
+            Self::ClearTradingHistory => "Trading history cleared — setup kept".into(),
             Self::LogExpense { .. } => "Expense logged".into(),
             Self::SaveBackupCopy => "Backup saved on the shop device".into(),
         }
@@ -1463,6 +1474,22 @@ impl Store {
                     return Err("Not allowed to print a test page".into());
                 }
                 self.print_test_page_for_route(&route_key)
+            }
+            BooksOp::SetHistoryRetention { mode, hours } => {
+                if !actor.is_owner() && !actor.role.is_admin() && !actor.can_access_backup() {
+                    return Err("Not allowed to change history clearing".into());
+                }
+                let retention = crate::business_day::HistoryRetention::parse(&mode, hours);
+                self.set_history_retention(retention)?;
+                Ok("History clearing saved".into())
+            }
+            BooksOp::ClearTradingHistory => {
+                if !actor.is_owner() && !actor.role.is_admin() {
+                    return Err("Only Owner or Admin can clear history".into());
+                }
+                self.purge_trading_history_keep_setup()?;
+                self.audit(actor, "history.clear", "Trading history cleared; setup kept")?;
+                Ok("Trading history cleared — setup kept".into())
             }
             BooksOp::LogExpense {
                 amount_paise,

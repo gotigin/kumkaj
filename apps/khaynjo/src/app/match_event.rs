@@ -1094,7 +1094,8 @@ impl MatchEvent for App {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Skip hidden while busy.
             } else if app_state().lock().unwrap().awaiting_app_template {
-                self.finish_app_template_to_lock(cx);
+                // Skip does not mark the template done — unfinished shops re-offer.
+                self.finish_app_template_to_lock(cx, false);
             }
         }
         {
@@ -4921,6 +4922,7 @@ impl MatchEvent for App {
             ((ids!(staff_role_kitchen), ids!(staff_role_kitchen_on)), StaffRole::Kitchen, "role_kitchen"),
             ((ids!(staff_role_cashier), ids!(staff_role_cashier_on)), StaffRole::Cashier, "role_cashier"),
             ((ids!(staff_role_manager), ids!(staff_role_manager_on)), StaffRole::Manager, "role_manager"),
+            ((ids!(staff_role_admin), ids!(staff_role_admin_on)), StaffRole::Admin, "role_admin"),
         ] {
             if self.choice_chip_clicked(cx, actions, chip, chip_on) {
                 let label = {
@@ -7699,6 +7701,65 @@ impl MatchEvent for App {
                     }
                     cx.open_select_file_dialog(dialog);
                 }
+            }
+        }
+
+        // History retention (Settings → Backup).
+        for (chip, chip_on, mode) in [
+            (ids!(history_off), ids!(history_off_on), "off"),
+            (ids!(history_day_close), ids!(history_day_close_on), "on_day_close"),
+            (ids!(history_after_hours), ids!(history_after_hours_on), "after_hours"),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                let hours_text = self.ui.text_input(cx, ids!(history_hours_input)).text();
+                let hours = hours_text.trim().parse::<u32>().unwrap_or(4).max(1).min(168);
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.books_op(BooksOp::SetHistoryRetention {
+                        mode: mode.into(),
+                        hours,
+                    })
+                })();
+                match result {
+                    Ok(msg) => {
+                        self.set_status(cx, msg);
+                        self.paint_history_retention_chrome(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(history_hours_save)).clicked(actions) {
+            let hours_text = self.ui.text_input(cx, ids!(history_hours_input)).text();
+            let hours = hours_text.trim().parse::<u32>().unwrap_or(4).max(1).min(168);
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::SetHistoryRetention {
+                    mode: "after_hours".into(),
+                    hours,
+                })
+            })();
+            match result {
+                Ok(_) => {
+                    let msg = app_t("history_hours_saved");
+                    self.set_status(cx, msg);
+                    self.paint_history_retention_chrome(cx);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(history_clear_now)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::ClearTradingHistory)
+            })();
+            match result {
+                Ok(msg) => {
+                    let _ = app_state().lock().unwrap().reload_all();
+                    self.set_status(cx, msg);
+                    self.sync_chrome(cx);
+                }
+                Err(e) => self.set_status(cx, e),
             }
         }
 

@@ -259,6 +259,8 @@ impl OrderType {
 pub enum StaffRole {
     /// Host of this local business (server). Only one semantic owner account.
     Owner,
+    /// Full shop powers except changing / removing the Owner account.
+    Admin,
     /// Non-owner staff — permission preset; display name is [`StaffMember::role_title`].
     Manager,
     Cashier,
@@ -271,6 +273,7 @@ impl StaffRole {
     pub fn as_str(self) -> &'static str {
         match self {
             Self::Owner => "owner",
+            Self::Admin => "admin",
             Self::Manager => "manager",
             Self::Cashier => "cashier",
             Self::Waiter => "waiter",
@@ -281,6 +284,7 @@ impl StaffRole {
     pub fn parse(s: &str) -> Option<Self> {
         match s {
             "owner" => Some(Self::Owner),
+            "admin" => Some(Self::Admin),
             "manager" => Some(Self::Manager),
             "cashier" => Some(Self::Cashier),
             "waiter" => Some(Self::Waiter),
@@ -293,10 +297,16 @@ impl StaffRole {
         matches!(self, Self::Owner)
     }
 
+    /// Owner-like shop powers (Admin included). Still not the Owner account.
+    pub fn is_admin(self) -> bool {
+        matches!(self, Self::Admin)
+    }
+
     /// Default label when `role_title` is empty.
     pub fn default_title(self) -> &'static str {
         match self {
             Self::Owner => "Owner",
+            Self::Admin => "Admin",
             Self::Manager => "Manager",
             Self::Cashier => "Cashier",
             Self::Waiter => "Waiter",
@@ -305,21 +315,24 @@ impl StaffRole {
     }
 
     pub fn can_sell(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager | Self::Cashier | Self::Waiter)
+        matches!(
+            self,
+            Self::Owner | Self::Admin | Self::Manager | Self::Cashier | Self::Waiter
+        )
     }
 
     pub fn can_manage_menu(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager)
+        matches!(self, Self::Owner | Self::Admin | Self::Manager)
     }
 
     pub fn can_void_refund(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager)
+        matches!(self, Self::Owner | Self::Admin | Self::Manager)
     }
 
     /// Amend a recorded order (live state changes; history is appended).
     /// Original sale authorship is never rewritten.
     pub fn can_amend_sale(self) -> bool {
-        matches!(self, Self::Owner | Self::Manager)
+        matches!(self, Self::Owner | Self::Admin | Self::Manager)
     }
 
     pub fn can_kitchen(self) -> bool {
@@ -327,12 +340,17 @@ impl StaffRole {
         // captains often clear "In kitchen" without a Kitchen login.
         matches!(
             self,
-            Self::Owner | Self::Manager | Self::Kitchen | Self::Cashier | Self::Waiter
+            Self::Owner
+                | Self::Admin
+                | Self::Manager
+                | Self::Kitchen
+                | Self::Cashier
+                | Self::Waiter
         )
     }
 
     pub fn can_admin(self) -> bool {
-        matches!(self, Self::Owner)
+        matches!(self, Self::Owner | Self::Admin)
     }
 
     /// Relative job power for Team hire/edit caps (Owner highest).
@@ -342,7 +360,8 @@ impl StaffRole {
             Self::Waiter => 2,
             Self::Cashier => 3,
             Self::Manager => 4,
-            Self::Owner => 5,
+            Self::Admin => 5,
+            Self::Owner => 6,
         }
     }
 
@@ -405,7 +424,7 @@ impl StaffFeatures {
 
     pub fn for_role(role: StaffRole) -> Self {
         match role {
-            StaffRole::Owner => Self::all(),
+            StaffRole::Owner | StaffRole::Admin => Self::all(),
             StaffRole::Manager => Self {
                 sell: true,
                 items: true,
@@ -955,7 +974,8 @@ impl StaffMember {
     }
 
     /// Lock / Team / suggest line: same shape for every person —
-    /// `Name (role) · login-or-#id` — so Owner is not a special format.
+    /// `Name (role) · username` when a username is set. Uniqueness among
+    /// people is the username (`login_id`), not a short UUID.
     pub fn lock_label(&self) -> String {
         let role = if self.is_owner() {
             "Owner".to_string()
@@ -964,19 +984,17 @@ impl StaffMember {
         };
         let who = format!("{} ({})", self.name.trim(), role);
         let login = self.login_id.trim();
-        if !login.is_empty() {
-            return format!("{who} · {login}");
+        if login.is_empty() {
+            who
+        } else {
+            format!("{who} · {login}")
         }
-        let id = self.id.trim();
-        if id.is_empty() {
-            return who;
-        }
-        let short = if id.len() > 8 { &id[id.len() - 8..] } else { id };
-        format!("{who} · #{short}")
     }
 
     pub fn effective_features(&self) -> StaffFeatures {
-        if self.is_owner() {
+        // Owner and Admin always hold every screen; Admin still cannot
+        // change the Owner account (team target gates).
+        if self.is_owner() || self.role.is_admin() {
             StaffFeatures::all()
         } else {
             self.features.clone()
@@ -1046,10 +1064,10 @@ impl StaffMember {
         self.effective_features().branches
     }
 
-    /// What this person may do with money and sent work. The Owner can do
-    /// everything; others get what the owner set, else their role preset.
+    /// What this person may do with money and sent work. Owner and Admin
+    /// may do everything; others get what was set, else their role preset.
     pub fn rights(&self) -> StaffRights {
-        if self.is_owner() {
+        if self.is_owner() || self.role.is_admin() {
             return StaffRights::all_allowed();
         }
         self.features
@@ -1188,7 +1206,7 @@ impl StaffRights {
     pub fn for_role(role: StaffRole) -> Self {
         use RightLevel::*;
         match role {
-            StaffRole::Owner | StaffRole::Manager => Self::all_allowed(),
+            StaffRole::Owner | StaffRole::Admin | StaffRole::Manager => Self::all_allowed(),
             StaffRole::Cashier => Self {
                 settle: Allowed,
                 cancel_sent_item: WithApproval,

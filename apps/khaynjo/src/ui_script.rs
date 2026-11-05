@@ -7772,6 +7772,10 @@ script_mod! {
                                         staff_role_manager := SegBtn{text: "Manager"}
                                         staff_role_manager_on := SegBtnOn{text: "Manager" visible: false}
                                     }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        staff_role_admin := SegBtn{text: "Admin"}
+                                        staff_role_admin_on := SegBtnOn{text: "Admin" visible: false}
+                                    }
                                 }
                                 // Hire only: optional copy of role/title/rights into
                                 // this form — then Add creates a new id. Remove is
@@ -8912,6 +8916,37 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     restore_btn := NavBtn{text: "Restore backup"}
                                     restore_cancel := StackLightBtn{text: "Cancel" visible: false}
                                 }
+                                h_history_retention := WrapLabel{
+                                    width: Fill
+                                    body: "Trading history"
+                                    font_color: #x260B08
+                                    font_size: 17.
+                                }
+                                history_retention_help := WrapLabel{
+                                    width: Fill
+                                    body: "Auto-clear old sales and KOTs. Menu, staff, and settings stay. Clear now wipes all trading rows and keeps setup."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        history_off := SegBtn{text: "Keep"}
+                                        history_off_on := SegBtnOn{text: "Keep" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        history_day_close := SegBtn{text: "On day close"}
+                                        history_day_close_on := SegBtnOn{text: "On day close" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        history_after_hours := SegBtn{text: "After hours"}
+                                        history_after_hours_on := SegBtnOn{text: "After hours" visible: false}
+                                    }
+                                }
+                                history_hours_input := FieldInput{empty_text: "Hours (1–168, default 4)"}
+                                history_hours_save := StackPrimaryBtn{text: "Save hours"}
+                                history_clear_now := DangerBtn{text: "Clear history now"}
                                 h_wipe_data := WrapLabel{
                                     width: Fill
                                     body: "Delete local data"

@@ -446,14 +446,18 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         st.status = locale::t(&st.locale.language, "app_template_status");
     }
 
-    /// Mark the one-shot offer done and continue to Owner PIN.
-    fn finish_app_template_to_lock(&mut self, cx: &mut Cx) {
+    /// Continue to Owner PIN. `mark_done` is true after Apply (so the offer
+    /// stays away). Skip leaves the flag clear so a shop that never finished
+    /// Owner PIN still re-offers on the next Server open.
+    fn finish_app_template_to_lock(&mut self, cx: &mut Cx, mark_done: bool) {
         {
             let mut st = app_state().lock().unwrap();
             st.awaiting_app_template = false;
             let (staff, fiscal) = if let Some(store) = st.store.as_ref() {
-                let _ = store.set_rajdhani_app_template_done();
-                // After Apply: Owner may be "Asif" and tax rates retired — refresh.
+                if mark_done {
+                    let _ = store.set_rajdhani_app_template_done();
+                }
+                // After Apply: Owner Zahir / Admin Asif / Waiter Nawaz, tax off.
                 (store.list_staff().ok(), store.fiscal_settings().ok())
             } else {
                 (None, None)
@@ -2334,6 +2338,52 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             self.ui.text_input(cx, id).set_text(cx, "");
         }
         self.sync_chrome(cx);
+    }
+
+    fn paint_history_retention_chrome(&mut self, cx: &mut Cx) {
+        let (mode, hours) = {
+            let st = app_state().lock().unwrap();
+            let retention = st
+                .store
+                .as_ref()
+                .and_then(|s| s.history_retention().ok())
+                .unwrap_or(business_day::HistoryRetention::Off);
+            (retention, retention.hours())
+        };
+        use business_day::HistoryRetention;
+        self.paint_choice_pair(
+            cx,
+            ids!(history_off),
+            ids!(history_off_on),
+            matches!(mode, HistoryRetention::Off),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(history_day_close),
+            ids!(history_day_close_on),
+            matches!(mode, HistoryRetention::OnDayClose),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(history_after_hours),
+            ids!(history_after_hours_on),
+            matches!(mode, HistoryRetention::AfterHours(_)),
+        );
+        let hours_visible = matches!(mode, HistoryRetention::AfterHours(_));
+        self.ui
+            .widget(cx, ids!(history_hours_input))
+            .set_visible(cx, hours_visible);
+        self.ui
+            .button(cx, ids!(history_hours_save))
+            .set_visible(cx, hours_visible);
+        if hours_visible {
+            let cur = self.ui.text_input(cx, ids!(history_hours_input)).text();
+            if cur.trim().is_empty() {
+                self.ui
+                    .text_input(cx, ids!(history_hours_input))
+                    .set_text(cx, &hours.to_string());
+            }
+        }
     }
 
     fn paint_wipe_data_chrome(&mut self, cx: &mut Cx) {

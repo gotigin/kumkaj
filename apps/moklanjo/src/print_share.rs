@@ -99,48 +99,57 @@ pub struct PrintFormat {
 }
 
 fn default_true() -> bool { true }
-fn default_em() -> f32 { 22.0 }
-fn default_line() -> u32 { 32 }
-fn default_baseline() -> f32 { 24.0 }
-fn default_side() -> f32 { 8.0 }
+fn default_em() -> f32 { STD_EM_NORMAL }
+fn default_line() -> u32 { 40 }
+fn default_baseline() -> f32 { STD_EM_NORMAL + 2.0 }
+fn default_side() -> f32 { 12.0 }
+
+/// Document type-size presets. Defaults favour common OS printers (narrow
+/// trays) — wider side inset, ~40-char wrap.
+pub const STD_EM_SMALL: f32 = 18.0;
+pub const STD_EM_NORMAL: f32 = 20.0;
+pub const STD_EM_LARGE: f32 = 26.0;
 
 impl PrintFormat {
     pub fn standard() -> Self {
         Self::standard_portrait()
     }
+    /// Non-deletable built-in. Portrait OS document — works on most queues.
     pub fn standard_portrait() -> Self {
         Self {
             id: FORMAT_STANDARD_PORTRAIT.into(),
             label: "Standard Portrait".into(),
             document: true,
             landscape: false,
-            em: 22.0,
-            line: 32,
-            baseline: 24.0,
-            side: 8.0,
+            em: STD_EM_NORMAL,
+            line: 40,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: 12.0,
         }
     }
+    /// Non-deletable built-in. Landscape OS document.
     pub fn standard_landscape() -> Self {
         Self {
             id: FORMAT_STANDARD_LANDSCAPE.into(),
             label: "Standard Landscape".into(),
             document: true,
             landscape: true,
-            em: 22.0,
-            line: 32,
-            baseline: 24.0,
-            side: 8.0,
+            em: STD_EM_NORMAL,
+            line: 40,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: 12.0,
         }
     }
+    /// Non-deletable built-in. Thermal / label slip metrics.
     pub fn kot() -> Self {
         Self {
             id: FORMAT_KOT.into(),
             label: "Thermal".into(),
             document: false,
             landscape: false,
-            em: 24.0,
-            line: 36,
-            baseline: 26.0,
+            em: 20.0,
+            line: 32,
+            baseline: 22.0,
             side: 4.0,
         }
     }

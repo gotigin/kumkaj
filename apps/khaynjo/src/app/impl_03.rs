@@ -378,6 +378,12 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             ids!(staff_role_manager_on),
             draft_role == StaffRole::Manager,
         );
+        self.paint_choice_pair(
+            cx,
+            ids!(staff_role_admin),
+            ids!(staff_role_admin_on),
+            draft_role == StaffRole::Admin,
+        );
         // Party-form kind chips: highlight whatever the kind field currently
         // holds (a picked party's saved kind, or the chip last tapped).
         let kind_norm = domain::normalize_party_roles(
@@ -1293,6 +1299,36 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             .set_text(cx, &plain_display_text(&s("units_picker_help")));
         self.ui.widget(cx, ids!(h_kot_print_help_khaynjo)).set_text(cx, &plain_display_text(&s("kot_print_help_khaynjo")));
         self.ui.widget(cx, ids!(h_restore_help)).set_text(cx, &plain_display_text(&s("restore_help")));
+        self.ui
+            .widget(cx, ids!(h_history_retention))
+            .set_text(cx, &plain_display_text(&s("history_retention")));
+        self.ui
+            .widget(cx, ids!(history_retention_help))
+            .set_text(cx, &plain_display_text(&s("history_retention_help")));
+        self.ui.button(cx, ids!(history_off)).set_text(cx, &s("history_off"));
+        self.ui.button(cx, ids!(history_off_on)).set_text(cx, &s("history_off"));
+        self.ui
+            .button(cx, ids!(history_day_close))
+            .set_text(cx, &s("history_day_close"));
+        self.ui
+            .button(cx, ids!(history_day_close_on))
+            .set_text(cx, &s("history_day_close"));
+        self.ui
+            .button(cx, ids!(history_after_hours))
+            .set_text(cx, &s("history_after_hours"));
+        self.ui
+            .button(cx, ids!(history_after_hours_on))
+            .set_text(cx, &s("history_after_hours"));
+        self.ui
+            .text_input(cx, ids!(history_hours_input))
+            .set_empty_text(cx, s("history_hours_ph"));
+        self.ui
+            .button(cx, ids!(history_hours_save))
+            .set_text(cx, &s("history_hours_save"));
+        self.ui
+            .button(cx, ids!(history_clear_now))
+            .set_text(cx, &s("history_clear_now"));
+        self.paint_history_retention_chrome(cx);
         self.ui.widget(cx, ids!(h_wipe_data)).set_text(cx, &plain_display_text(&s("wipe_data_heading")));
         self.ui.widget(cx, ids!(wipe_data_help)).set_text(cx, &plain_display_text(&s("wipe_data_help")));
         self.ui.button(cx, ids!(wipe_trading)).set_text(cx, &s("wipe_trading"));
@@ -1686,6 +1722,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(staff_role_cashier_on)).set_text(cx, &s("role_cashier"));
         self.ui.button(cx, ids!(staff_role_manager)).set_text(cx, &s("role_manager"));
         self.ui.button(cx, ids!(staff_role_manager_on)).set_text(cx, &s("role_manager"));
+        self.ui.button(cx, ids!(staff_role_admin)).set_text(cx, &s("role_admin"));
+        self.ui.button(cx, ids!(staff_role_admin_on)).set_text(cx, &s("role_admin"));
         // Named in sync_chrome when a person is selected (`set_login_named`).
         self.ui.button(cx, ids!(staff_set_login)).set_text(cx, &s("set_login_selected"));
         self.ui.button(cx, ids!(station_add)).set_text(cx, &s("add_station"));

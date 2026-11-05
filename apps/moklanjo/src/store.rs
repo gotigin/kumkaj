@@ -8292,7 +8292,8 @@ impl Store {
         } else {
             hash_pin(hire.password.trim())?
         };
-        let login_id = hire.login_id.trim().to_string();
+        // Usernames are stored lowercase; uniqueness is case-insensitive.
+        let login_id = hire.login_id.trim().to_ascii_lowercase();
         self.assert_login_id_free(&login_id, None)?;
         let id = new_id();
         self.conn
@@ -8618,14 +8619,14 @@ impl Store {
                 Some(target.role),
             )?;
         }
-        let login_id = login_id.trim();
+        let login_id = login_id.trim().to_ascii_lowercase();
         if login_id.is_empty() {
             return Err("Username required".into());
         }
         if password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
         }
-        self.assert_login_id_free(login_id, Some(staff_id))?;
+        self.assert_login_id_free(&login_id, Some(staff_id))?;
         // If actor is not the staff member, only allow when password_hash is empty (initial set).
         if actor.id != staff_id {
             let existing: String = self

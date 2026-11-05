@@ -243,7 +243,7 @@ impl AppMain for App {
                         if was_app_template {
                             // Cash memo by default — tax invoice is opt-in with tax off.
                             app_state().lock().unwrap().money_lane = MoneyLane::Owner;
-                            self.finish_app_template_to_lock(cx);
+                            self.finish_app_template_to_lock(cx, true);
                         } else {
                             self.sync_chrome(cx);
                         }

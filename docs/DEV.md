@@ -1159,12 +1159,13 @@ Desktop install/uninstall: see **Desktop install / uninstall** above.
 
 - **Owner** — hosts this local business; unlock with the Owner PIN chosen at first start
 - **Staff** — pick a non-owner person (Previous / Next), then their PIN. Who /
-  Team / suggests use one shape for everyone: `Name (role) · username` or
-  `Name (role) · #` + short staff id (`StaffMember::lock_label`) — Owner is not
+  Team / suggests use one shape for everyone: `Name (role) · username` when a
+  username is set, else `Name (role)` (`StaffMember::lock_label`) — Owner is not
   a special parenthesis-only format. Display **name** may repeat; **username**
-  (`login_id`) is unique among active staff when set. Team type-or-pick writes
-  `lock_label` (never bare name alone) and resolves by id → username → label →
-  unique name — never first-substring among duplicates.
+  (`login_id`, stored lowercase) is the unique human handle among active staff
+  when set — not a short UUID. Team type-or-pick writes `lock_label` (never bare
+  name alone) and resolves by id → username → label → unique name — never
+  first-substring among duplicates.
 - Optional username + password (Team can set once; only the user can change password later)
 - **Client:** PIN is checked on the Server (`POST /login`). Sync never carries PIN /
   password hashes — a paired Client must not fall through to local hash check

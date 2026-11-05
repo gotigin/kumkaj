@@ -23,7 +23,7 @@ only a display label — an alias a human uses to refer to the entity.**
 | **Name / display label** | Human text on the entity (party name, item name, branch name, …) | No — may repeat, may be renamed | No. It is an alias. |
 | **Aliases** | Extra names a seller adds (e.g. item `aliases_json`: spelling variants, short names) | No | No. Search handles only. |
 | **Human reference numbers** | Numbers people quote: AWB, invoice/bill no, receipt no | Scoped — e.g. invoice no unique per series/FY, AWB unique in the books | No. References *attached to* the UUID record; lookups resolve them to the `id`. |
-| **Staff username (`login_id`)** | Optional human login handle on a staff row | Yes among **active** staff (case-insensitive) when set | No. Books still key off staff UUID. Username is for unlock / Team pick uniqueness; display `name` may repeat. |
+| **Staff username (`login_id`)** | Optional human login handle on a staff row (stored lowercase) | Yes among **active** staff (case-insensitive) when set | No. Books still key off staff UUID. Username is the unique *human* handle for Lock / Team / connection labels (`Name (role) · username`); display `name` may repeat. Labels do not append a short UUID. |
 
 ## Rules
 
