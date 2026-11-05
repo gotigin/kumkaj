@@ -1034,7 +1034,8 @@ impl App {
         }
     }
 
-    /// Assign a pool printer to the focused Receipt/Label route (replaces).
+    /// Assign a pool printer to the focused Receipt/Label place (append Output;
+    /// one printer once — first that works order).
     fn assign_printer_to_focused_route(
         &mut self,
         cx: &mut Cx,
@@ -1056,9 +1057,12 @@ impl App {
         else {
             return Err("No printer with that name — pick one from the list".into());
         };
-        *st.printer_draft.route_mut(key) = vec![pid];
-        if let Some(base) = st.data_base.as_ref() {
-            let _ = print_share::save_device_printers(base, &st.printer_draft);
+        let route = st.printer_draft.route_mut(key);
+        if !route.iter().any(|id| id == &pid) {
+            route.push(pid);
+        }
+        if let Some(base) = st.data_base.clone() {
+            print_share::save_device_printers(&base, &st.printer_draft)?;
         }
         Ok(st.t("printers_saved"))
     }

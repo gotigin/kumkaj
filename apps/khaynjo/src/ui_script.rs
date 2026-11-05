@@ -8295,7 +8295,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     visible: false
                                     FormCard{
                                     printers_panel_help := InfoHelp{
-                                        tip: "Find refreshes the printers on this device. Pick a place, set KOT or Standard, assign printers, drag to reorder."
+                                        tip: "Find printers on this device. Pick a place, choose a Profile, assign printers (one row per device). Two or more: First that works or Print on all."
                                     }
                                     View{width: Fit height: Fit flow: Overlay
                                         kot_print_off := ChipBtn{text: "Kitchen printing: Off"}
@@ -8328,7 +8328,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         printer_add_cancel := QuietFitBtn{text: "Cancel"}
                                     }
                                     printers_routes_help := InfoHelp{
-                                        tip: "Pick a place, then Select printer. Check Name (KOT) or Name (Standard). ↑↓ set print order (first = highest). Uncheck to remove."
+                                        tip: "Pick a place, choose a Profile, then Select printer — one row per device. Two or more: First that works or Print on all."
                                     }
                                     ActionStack{
                                         printer_place_dd := StackSecondaryBtn{text: "Bill" flow: Down}
@@ -8340,6 +8340,28 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         empty_text: ""
                                     }
                                     printer_place_suggest := mod.widgets.SuggestList{field: "printer_place"}
+                                    h_printer_profile := WrapLabel{
+                                        body: "Profile for this place"
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                    }
+                                    printer_profile_row := View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true}
+                                        spacing: 6
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_escpos := ChipBtn{text: "KOT"}
+                                            printer_wire_escpos_on := ChipBtnActive{text: "KOT" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_os := ChipBtn{text: "Standard Portrait"}
+                                            printer_wire_os_on := ChipBtnActive{text: "Standard Portrait" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_os_landscape := ChipBtn{text: "Standard Landscape"}
+                                            printer_wire_os_landscape_on := ChipBtnActive{text: "Standard Landscape" visible: false}
+                                        }
+                                    }
                                     ActionStack{
                                         printer_assign_dd := StackSecondaryBtn{text: "Select printer for Bill" flow: Down}
                                     }
@@ -8355,7 +8377,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_color: #x260B08
                                         font_size: 14.
                                     }
-                                    View{
+                                    printer_mode_row := View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
@@ -8363,9 +8385,21 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                             printer_mode_first_on := SegBtnOn{text: "First that works" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_mode_all := SegBtn{text: "All listed"}
-                                            printer_mode_all_on := SegBtnOn{text: "All listed" visible: false}
+                                            printer_mode_all := SegBtn{text: "Print on all"}
+                                            printer_mode_all_on := SegBtnOn{text: "Print on all" visible: false}
                                         }
+                                    }
+                                    h_station_group := WrapLabel{
+                                        body: "Station group"
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                    }
+                                    station_group_name_input := FieldInput{
+                                        empty_text: "Group name"
+                                    }
+                                    ActionStack{
+                                        station_group_save_btn := StackSecondaryBtn{text: "Save group" flow: Down}
+                                        station_group_apply_btn := StackSecondaryBtn{text: "Apply outputs to group" flow: Down}
                                     }
                                     route_place_btns := View{width: Fill height: Fit visible: false
                                         route_place_slot_0 := View{width: Fit height: Fit flow: Overlay
@@ -8403,17 +8437,8 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     }
                                     printer_routes_label := mod.widgets.ReportText{visible: false}
                                     route_editing_label := WrapLabel{body: "" visible: false}
-                                    // Legacy place-format chips — format is on each assignment now.
-                                    printer_wire_legacy := View{width: Fit height: Fit visible: false
-                                        View{width: Fit height: Fit flow: Overlay
-                                            printer_wire_escpos := ChipBtn{text: "KOT"}
-                                            printer_wire_escpos_on := ChipBtnActive{text: "KOT" visible: false}
-                                        }
-                                        View{width: Fit height: Fit flow: Overlay
-                                            printer_wire_os := ChipBtn{text: "Standard"}
-                                            printer_wire_os_on := ChipBtnActive{text: "Standard" visible: false}
-                                        }
-                                    }
+                                    // Legacy id kept for hot-reload; profile chips live in printer_profile_row.
+                                    printer_wire_legacy := View{width: Fit height: Fit visible: false}
                                     route_assigned_empty := WrapLabel{
                                         width: Fill
                                         body: ""

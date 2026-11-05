@@ -384,6 +384,11 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    format chips + assign chips; **drag** to reorder, **tap** to remove.
    Settings “Not Responding” on place tap = `app_state` deadlock in
    `set_status` (DEV.md bug **7a**), not wrap/Fill.
+   *2026-11-05:* Print model nouns — **Printer** (OS device), **Profile**
+   (slip look + preview), **Output** (printer+profile under a place). Assign
+   checklist is one row per printer (`Name · Profile`), not three format
+   faces. First/All only when a place has two+ Outputs. Station groups =
+   apply Outputs to member stations (setup only).
    *2026-11-03:* Device setup and Floor accordions keep ℹ **beside** the
    title; a Fill `_ext` sibling makes the rest of the card toggle too
    (DEV.md bug **7c**). Same generous-hit idea for checklist rows; sidebar

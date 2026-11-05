@@ -1,25 +1,21 @@
 //! Printing (local free POS — no cloud), the same on every device that can
 //! hold the books or take orders.
 //!
-//! Each device keeps a **pool** of named printers and **routes** (ordered
-//! printer ids per feature) in `printers.json` beside the language choice.
-//! A route tries the first printer, then the next on failure; an empty
-//! route means that feature does not print. KOT routes are per kitchen
-//! station (`""` = items with no station assigned — not a shared printer for
-//! every kitchen). Each station's route is independent.
+//! Owner nouns (Settings):
+//! - **Printer** — one OS device in the pool (destination only).
+//! - **Profile** — slip look ([`PrintFormat`] + KOT layout); previewable.
+//! - **Output** — under a place: printer + profile (`printer_id@profile_id`).
 //!
-//! A printer `target` is a system printer name, or a network address
-//! (`192.168.1.50` / `host:port`, ESC/POS). Blank target means this computer's
-//! usual OS printer — never invent a pool entry named "Default". Jobs go
-//! through one worker thread; failures surface via [`take_problems`].
+//! Each device keeps `printers.json` beside the books. A place with one Output
+//! prints that pair; two or more use [`RoutePrintMode`] (First / All). Empty
+//! route = that feature does not print. KOT routes are per kitchen station
+//! (`""` = unassigned items only). Station groups only copy Outputs onto
+//! member stations (setup shortcut).
 //!
-//! How a job is sent:
-//! - **Format** (Standard, KOT, or a custom format) = slip shape. Chosen per
-//!   route (Bill → Standard, kitchens → KOT by default); owner can change or
-//!   add custom formats.
-//! - **Printer target** = transport only: system name / blank, `host:9100`,
-//!   `bt:MAC`, `usb:VID:PID`, or `android-print:` (document formats on Android).
-//! Routes choose which printers Bill / each kitchen use.
+//! A printer `target` is a system name, `host:9100`, `bt:MAC`, `usb:VID:PID`,
+//! or `android-print:`. Blank = this computer's usual OS printer — never
+//! invent a pool entry named "Default". Jobs go through one worker thread;
+//! failures surface via [`take_problems`].
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -96,7 +92,24 @@ pub fn normalize_format_id(id: &str) -> &str {
     }
 }
 
-/// Route slot: `printer_id` or `printer_id@format_id`.
+/// One Output under a place: which printer + which profile (code name only;
+/// Settings shows the two fields, not this word).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct PrintOutput {
+    pub printer_id: String,
+    pub profile_id: String,
+}
+
+/// Named list of kitchen stations for bulk Output apply (setup only).
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+pub struct StationGroup {
+    pub id: String,
+    pub name: String,
+    #[serde(default)]
+    pub station_ids: Vec<String>,
+}
+
+/// Route slot / Output encode: `printer_id` or `printer_id@profile_id`.
 fn encode_route_slot(printer_id: &str, format_id: &str) -> String {
     let p = printer_id.trim();
     let f = format_id.trim();
@@ -873,13 +886,17 @@ impl Default for PrintRoutes {
     }
 }
 
-/// This device's printer pool, formats, and routes (Settings → Printers).
+/// This device's printer pool, profiles (formats), routes, and station groups.
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct DevicePrinters {
     pub printers: Vec<NamedPrinter>,
+    /// Profiles (slip look). Built-ins: portrait, landscape, KOT.
     #[serde(default)]
     pub formats: Vec<PrintFormat>,
     pub routes: PrintRoutes,
+    /// Setup shortcut: Apply copies Outputs onto member stations.
+    #[serde(default)]
+    pub station_groups: Vec<StationGroup>,
 }
 
 impl Default for DevicePrinters {
@@ -892,6 +909,7 @@ impl Default for DevicePrinters {
                 PrintFormat::kot(),
             ],
             routes: PrintRoutes::default(),
+            station_groups: Vec::new(),
         }
     }
 }
@@ -921,11 +939,14 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             formats: Vec<PrintFormat>,
             #[serde(default)]
             routes: PrintRoutes,
+            #[serde(default)]
+            station_groups: Vec<StationGroup>,
         }
         let parsed: New = serde_json::from_value(value).unwrap_or_else(|_| New {
             printers: Vec::new(),
             formats: Vec::new(),
             routes: PrintRoutes::default(),
+            station_groups: Vec::new(),
         });
         let mut formats = parsed.formats;
         PrintFormat::ensure_builtins(&mut formats);
@@ -942,12 +963,14 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
                 .collect(),
             formats,
             routes: parsed.routes,
+            station_groups: parsed.station_groups,
         };
         scrub_fake_default_printers(&mut out);
         if out.routes.bill_format.trim().is_empty() {
             out.routes.bill_format = FORMAT_STANDARD_PORTRAIT.into();
         }
         out.migrate_legacy_standard_ids();
+        out.collapse_one_output_per_printer();
         if !out.routes.kot.contains_key("") {
             out.routes.kot.insert(String::new(), Vec::new());
         }
@@ -1031,6 +1054,7 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
             bill_print_mode: RoutePrintMode::First,
             kot_print_mode: BTreeMap::new(),
         },
+        station_groups: Vec::new(),
     }
 }
 
@@ -1187,6 +1211,95 @@ impl DevicePrinters {
                 self.routes.kot_format.insert(station_id.to_string(), id.to_string());
             }
         }
+    }
+
+    /// Set the place Profile and rewrite every Output on that place to it.
+    pub fn set_place_profile(&mut self, key: RouteKey<'_>, profile_id: &str) {
+        let id = profile_id.trim();
+        if id.is_empty() {
+            return;
+        }
+        self.set_route_format(key, id);
+        let rewrite = |slots: &mut Vec<String>| {
+            for slot in slots.iter_mut() {
+                let (pid, _) = decode_route_slot(slot);
+                if !pid.is_empty() {
+                    *slot = encode_route_slot(&pid, id);
+                }
+            }
+        };
+        match key {
+            RouteKey::Bill => rewrite(&mut self.routes.bill),
+            RouteKey::Kot { station_id } => {
+                if let Some(slots) = self.routes.kot.get_mut(station_id) {
+                    rewrite(slots);
+                }
+            }
+        }
+    }
+
+    /// One Output per printer on each place (first profile kept). Migrates the
+    /// old three-face assign list (same device as KOT + Portrait + Landscape).
+    pub fn collapse_one_output_per_printer(&mut self) {
+        let collapse = |slots: &mut Vec<String>| {
+            let mut seen = std::collections::HashSet::new();
+            let mut out = Vec::new();
+            for slot in slots.iter() {
+                let (pid, fmt) = decode_route_slot(slot);
+                if pid.is_empty() || !seen.insert(pid.clone()) {
+                    continue;
+                }
+                out.push(if fmt.is_empty() {
+                    pid
+                } else {
+                    encode_route_slot(&pid, &fmt)
+                });
+            }
+            *slots = out;
+        };
+        collapse(&mut self.routes.bill);
+        for slots in self.routes.kot.values_mut() {
+            collapse(slots);
+        }
+    }
+
+    /// Copy Outputs (+ profile + print mode) from `from` onto each kitchen
+    /// station id (Bill is never a group target).
+    pub fn apply_outputs_to_stations(&mut self, from: RouteKey<'_>, station_ids: &[String]) {
+        let slots: Vec<String> = self.route_for(from).to_vec();
+        let profile = self.format_id_for(from);
+        let mode = self.print_mode_for(from);
+        for sid in station_ids {
+            let sid = sid.trim();
+            if sid.is_empty() {
+                continue;
+            }
+            self.routes.kot.insert(sid.to_string(), slots.clone());
+            self.routes.kot_format.insert(sid.to_string(), profile.clone());
+            self.routes.kot_print_mode.insert(sid.to_string(), mode);
+        }
+    }
+
+    pub fn upsert_station_group(&mut self, name: &str, station_ids: Vec<String>) -> String {
+        let name = {
+            let t = name.trim();
+            if t.is_empty() {
+                "Station group".to_string()
+            } else {
+                t.to_string()
+            }
+        };
+        if let Some(g) = self.station_groups.iter_mut().find(|g| g.name == name) {
+            g.station_ids = station_ids;
+            return g.id.clone();
+        }
+        let id = uuid::Uuid::new_v4().to_string();
+        self.station_groups.push(StationGroup {
+            id: id.clone(),
+            name,
+            station_ids,
+        });
+        id
     }
 
     /// Resolve route slots to target + that slot's format.
@@ -3089,6 +3202,40 @@ mod tests {
         let custom = cfg.add_format_from(FORMAT_STANDARD_PORTRAIT, "Wide bill");
         cfg.set_route_format(RouteKey::Bill, &custom);
         assert_eq!(cfg.format_id_for(RouteKey::Bill), custom);
+    }
+
+    #[test]
+    fn collapse_and_place_profile_keep_one_output_per_printer() {
+        let mut cfg = DevicePrinters::default();
+        let a = cfg.add_printer("Brother", "Brother_QL");
+        cfg.routes.bill = vec![
+            encode_route_slot(&a, FORMAT_KOT),
+            encode_route_slot(&a, FORMAT_STANDARD_PORTRAIT),
+            encode_route_slot(&a, FORMAT_STANDARD_LANDSCAPE),
+        ];
+        cfg.collapse_one_output_per_printer();
+        assert_eq!(cfg.routes.bill.len(), 1);
+        assert_eq!(
+            cfg.routes.bill[0],
+            encode_route_slot(&a, FORMAT_KOT),
+            "keeps first profile"
+        );
+        cfg.set_place_profile(RouteKey::Bill, FORMAT_STANDARD_PORTRAIT);
+        assert_eq!(cfg.format_id_for(RouteKey::Bill), FORMAT_STANDARD_PORTRAIT);
+        assert_eq!(
+            cfg.routes.bill[0],
+            encode_route_slot(&a, FORMAT_STANDARD_PORTRAIT)
+        );
+        cfg.upsert_station_group("Grill", vec!["hot".into(), "cold".into()]);
+        cfg.apply_outputs_to_stations(RouteKey::Bill, &["hot".into(), "cold".into()]);
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot { station_id: "hot" }),
+            cfg.routes.bill.as_slice()
+        );
+        assert_eq!(
+            cfg.format_id_for(RouteKey::Kot { station_id: "cold" }),
+            FORMAT_STANDARD_PORTRAIT
+        );
     }
 
     #[test]

@@ -819,22 +819,30 @@ times (waiting writes, "last update") would mislead. Test
 (`servers/<id>/printers.json`, `client/printers.json`) — never a shared
 install-root file that mixes shops. Legacy install-root `printers.json` is
 copied once into a shop that has none. Settings → **Printers** edits the
-open shop's pool + routes. A route tries the first printer, then the next
-on failure; an empty route means that feature does not print.
-Khaynjo routes: **Bill**, plus **KOT per kitchen station**. KOT lookup:
+open shop's pool + routes. Empty route = that feature does not print.
+Khaynjo places: **Bill**, plus **KOT per kitchen station**. KOT lookup:
 station’s own route (empty = do not print that station — never fall through
-to Bill). Moklanjo routes: **Receipt** and **AWB label**. Legacy files
+to Bill). Moklanjo places: **Receipt** and **AWB label**. Legacy files
 migrate on load; blank fields stay empty (no invented “Default” printer).
 
-**Khaynjo Settings → Places (printers UX):** InfoHelp titles (no essay
-body). Find refreshes one printer list. Assign chips are
-`+ Name (KOT)` / `+ Name (Standard)` — same printer once per format;
-rows show `Name (KOT)`. Drag reorder; tap remove. No place-level
-KOT/Standard tabs. Place-tap “Not Responding” = bug **7a**.
+**Three nouns (do not regress):**
+- **Printer** — one OS device in the pool (Find). Destination only; never
+  encode KOT/Portrait/Landscape in the printer name.
+- **Profile** — how the slip looks (built-in + custom formats / KOT slip
+  layout). Previewable and editable. Metrics drive `receipt_raster`.
+- **Output** — one line under a place: **Printer + Profile** (persisted as
+  route slot `printer_id@profile_id`). Checklist shows one row per printer
+  (`Name · Profile` when assigned), not three format faces per device.
 
-**Formats** (Standard, KOT/Thermal) are per **assignment**, not a place
-toggle. Format metrics drive `receipt_raster`; thermal-style formats need
-Network/BT/USB (or desktop raw spool).
+**First vs All (progressive):** one Output → print that pair (no mode UI).
+Two or more Outputs → chips **First that works** (failover) or **Print on
+all** (fan-out). Place-tap “Not Responding” = bug **7a**.
+
+**Station groups (Khaynjo):** setup shortcut only — a group lists member
+stations; Apply copies the focused place’s Outputs (+ profile + mode) onto
+each member. Runtime Send still prints one ticket per dish station. Extra
+copies (e.g. Expo) = second Output on that station with Print on all — not
+a group fan-out.
 
 **Find printers** publishes after system queues (`lpstat`), then again
 after Wi‑Fi `:9100` / BT / USB — UI merges into the pool on each Signal

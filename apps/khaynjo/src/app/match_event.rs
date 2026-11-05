@@ -7378,6 +7378,101 @@ impl MatchEvent for App {
                 self.paint_printers_panel(cx);
             }
         }
+        for (idle, on, profile) in [
+            (
+                ids!(printer_wire_escpos),
+                ids!(printer_wire_escpos_on),
+                print_share::FORMAT_KOT,
+            ),
+            (
+                ids!(printer_wire_os),
+                ids!(printer_wire_os_on),
+                print_share::FORMAT_STANDARD_PORTRAIT,
+            ),
+            (
+                ids!(printer_wire_os_landscape),
+                ids!(printer_wire_os_landscape_on),
+                print_share::FORMAT_STANDARD_LANDSCAPE,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+                if is_client {
+                    self.set_status(cx, app_t("printers_host_only"));
+                } else {
+                    let result = (|| -> Result<(), String> {
+                        let mut st = app_state().lock().unwrap();
+                        let key_owned = st.printer_route_key.clone();
+                        let key = parse_printer_route_key(&key_owned);
+                        st.printer_draft.set_place_profile(key, profile);
+                        st.save_printer_draft()?;
+                        Ok(())
+                    })();
+                    if let Err(e) = result {
+                        self.set_status(cx, e);
+                    }
+                    self.paint_printers_panel(cx);
+                }
+                break;
+            }
+        }
+        if self.ui.button(cx, ids!(station_group_save_btn)).clicked(actions) {
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let name = self.ui.text_input(cx, ids!(station_group_name_input)).text();
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
+                    if ids.is_empty() {
+                        return Err(st.t("station_group_empty"));
+                    }
+                    st.printer_draft.upsert_station_group(&name, ids);
+                    st.save_printer_draft()?;
+                    Ok(st.t("station_group_saved"))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.paint_printers_panel(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(station_group_apply_btn)).clicked(actions) {
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let name = self.ui.text_input(cx, ids!(station_group_name_input)).text();
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let key_owned = st.printer_route_key.clone();
+                    let from = parse_printer_route_key(&key_owned);
+                    let members = {
+                        let n = name.trim();
+                        st.printer_draft
+                            .station_groups
+                            .iter()
+                            .find(|g| n.is_empty() || g.name.eq_ignore_ascii_case(n))
+                            .map(|g| g.station_ids.clone())
+                            .unwrap_or_else(|| st.stations.iter().map(|s| s.id.clone()).collect())
+                    };
+                    if members.is_empty() {
+                        return Err(st.t("station_group_empty"));
+                    }
+                    let n = members.len();
+                    st.printer_draft.apply_outputs_to_stations(from, &members);
+                    st.save_printer_draft()?;
+                    Ok(st.t("station_group_applied").replace("{n}", &n.to_string()))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.paint_printers_panel(cx);
+            }
+        }
         if self.choice_chip_clicked(
             cx,
             actions,

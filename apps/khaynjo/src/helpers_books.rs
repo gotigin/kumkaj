@@ -197,7 +197,7 @@ fn swap_focused_route_printer(st: &mut AppState, from: usize, to: usize) -> bool
     true
 }
 
-/// Printers on the focused place as `Name (KOT)` rows. Drag swaps; tap removes.
+/// Outputs on the focused place as `Name · Profile` rows.
 fn focused_route_printer_rows(
     draft: &print_share::DevicePrinters,
     focus: &str,
@@ -218,13 +218,12 @@ fn focused_route_printer_rows(
             } else {
                 draft.format_by_id(&fmt_id).label
             };
-            Some(ReportRow::Line(format!("{name} ({flabel})")))
+            Some(ReportRow::Line(format!("{name} · {flabel}")))
         })
         .collect()
 }
 
-/// Normalize place route: fill missing format, drop duplicate printer+format
-/// and duplicate shown-name+format (Brother_… Standard + Brother-… Standard).
+/// Normalize place Outputs: fill missing profile, one printer once.
 fn normalize_focused_route(st: &mut AppState) -> bool {
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
@@ -237,11 +236,10 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
         .map(|p| p.id.clone())
         .collect();
     let mut out = Vec::new();
-    let mut seen_slot = std::collections::HashSet::new();
-    let mut seen_name_fmt = std::collections::HashSet::new();
+    let mut seen_pid = std::collections::HashSet::new();
     for slot in &before {
         let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(slot);
-        if pid.is_empty() || !known.contains(&pid) {
+        if pid.is_empty() || !known.contains(&pid) || !seen_pid.insert(pid.clone()) {
             continue;
         }
         let fmt = if fmt.is_empty() {
@@ -249,21 +247,7 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
         } else {
             fmt
         };
-        let enc = print_share::DevicePrinters::encode_route_slot(&pid, &fmt);
-        if !seen_slot.insert(enc.clone()) {
-            continue;
-        }
-        let Some(p) = st.printer_draft.printer_by_id(&pid) else {
-            continue;
-        };
-        let nf = print_share::DevicePrinters::route_name_format_key(
-            &printer_display_name(p, |_| String::new()),
-            &fmt,
-        );
-        if !seen_name_fmt.insert(nf) {
-            continue;
-        }
-        out.push(enc);
+        out.push(print_share::DevicePrinters::encode_route_slot(&pid, &fmt));
     }
     if out == before {
         return false;
@@ -273,9 +257,8 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
     true
 }
 
-/// Checklist rows for PrinterAssign: assigned first (priority order), then
-/// the rest. `value` = display `Name (KOT)`; `subtitle` = slot encode;
-/// checked action = dont_use, unchecked = use.
+/// Checklist: one row per OS printer. Assigned show `Name · Profile`.
+/// `subtitle` = Output encode (`printer_id@profile_id`).
 fn printer_assign_suggest_rows(
     draft: &print_share::DevicePrinters,
     focus: &str,
@@ -285,108 +268,80 @@ fn printer_assign_suggest_rows(
     let key = parse_printer_route_key(focus);
     let use_l = t("use");
     let clear_l = t("dont_use");
-    let formats = [
-        (print_share::FORMAT_KOT, t("printer_wire_escpos")),
-        (
-            print_share::FORMAT_STANDARD_PORTRAIT,
-            t("printer_wire_os_portrait"),
-        ),
-        (
-            print_share::FORMAT_STANDARD_LANDSCAPE,
-            t("printer_wire_os_landscape"),
-        ),
-    ];
+    let place_fmt = draft.format_id_for(key);
     let assigned_slots: Vec<String> = draft.route_for(key).to_vec();
-    let mut rows = Vec::new();
-    let mut used_slot = std::collections::HashSet::new();
-    let mut used_name_fmt = std::collections::HashSet::new();
+    let mut assigned_by_pid: std::collections::HashMap<String, String> =
+        std::collections::HashMap::new();
     for slot in &assigned_slots {
         let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(slot);
-        let Some(p) = draft.printer_by_id(&pid) else {
+        if pid.is_empty() || assigned_by_pid.contains_key(&pid) {
             continue;
-        };
+        }
         let fmt = if fmt.is_empty() {
-            draft.format_id_for(key)
+            place_fmt.clone()
         } else {
             fmt
         };
-        let enc = print_share::DevicePrinters::encode_route_slot(&pid, &fmt);
-        if !used_slot.insert(enc.clone()) {
+        assigned_by_pid.insert(
+            pid.clone(),
+            print_share::DevicePrinters::encode_route_slot(&pid, &fmt),
+        );
+    }
+    let mut rows = Vec::new();
+    // Assigned first (route order).
+    let mut listed = std::collections::HashSet::new();
+    for slot in &assigned_slots {
+        let (pid, _) = print_share::DevicePrinters::decode_route_slot(slot);
+        let Some(enc) = assigned_by_pid.get(&pid) else {
+            continue;
+        };
+        if !listed.insert(pid.clone()) {
             continue;
         }
+        let Some(p) = draft.printer_by_id(&pid) else {
+            continue;
+        };
+        let (_, fmt) = print_share::DevicePrinters::decode_route_slot(enc);
         let name = printer_display_name(p, &t);
-        let nf = print_share::DevicePrinters::route_name_format_key(&name, &fmt);
-        if !used_name_fmt.insert(nf) {
-            continue;
-        }
         let flabel = draft.format_by_id(&fmt).label;
         rows.push(
-            SuggestRow::new(format!("{name} ({flabel})"), enc).with_action(clear_l.clone()),
+            SuggestRow::new(format!("{name} · {flabel}"), enc.clone()).with_action(clear_l.clone()),
         );
     }
     for p in &draft.printers {
-        let name = printer_display_name(p, &t);
-        for (fid, flabel) in &formats {
-            let enc = print_share::DevicePrinters::encode_route_slot(&p.id, fid);
-            if used_slot.contains(&enc) {
-                continue;
-            }
-            let nf = print_share::DevicePrinters::route_name_format_key(&name, fid);
-            // Hide Use when this shown name + format is already assigned
-            // (e.g. Brother_… Standard checked → don't offer Brother-… Standard).
-            if used_name_fmt.contains(&nf) {
-                continue;
-            }
-            rows.push(
-                SuggestRow::new(format!("{name} ({flabel})"), enc).with_action(use_l.clone()),
-            );
+        if assigned_by_pid.contains_key(&p.id) {
+            continue;
         }
+        let name = printer_display_name(p, &t);
+        let enc = print_share::DevicePrinters::encode_route_slot(&p.id, &place_fmt);
+        rows.push(SuggestRow::new(name, enc).with_action(use_l.clone()));
     }
     rows
 }
 
-/// Toggle checklist row on/off for the focused place. Returns true if changed.
+/// Toggle Output on/off. One printer once per place; profile = place Profile.
 fn toggle_printer_assign_slot(st: &mut AppState, slot_enc: &str) -> bool {
     let enc = slot_enc.trim();
     if enc.is_empty() {
         return false;
     }
-    let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(enc);
-    if pid.is_empty() || fmt.is_empty() {
+    let (pid, _) = print_share::DevicePrinters::decode_route_slot(enc);
+    if pid.is_empty() || st.printer_draft.printer_by_id(&pid).is_none() {
         return false;
     }
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
-    let default_fmt = st.printer_draft.format_id_for(key);
-    if let Some(i) = st.printer_draft.route_for(key).iter().position(|s| s == enc) {
-        st.printer_draft.route_mut(key).remove(i);
+    let place_fmt = st.printer_draft.format_id_for(key);
+    let route = st.printer_draft.route_mut(key);
+    if let Some(i) = route.iter().position(|s| {
+        let (opid, _) = print_share::DevicePrinters::decode_route_slot(s);
+        opid == pid
+    }) {
+        route.remove(i);
     } else {
-        // Refuse a second row with the same shown name + format.
-        let name_fmt = match st.printer_draft.printer_by_id(&pid) {
-            Some(p) => print_share::DevicePrinters::route_name_format_key(
-                &printer_display_name(p, |_| String::new()),
-                &fmt,
-            ),
-            None => return false,
-        };
-        let clash = st.printer_draft.route_for(key).iter().any(|s| {
-            let (opid, ofmt) = print_share::DevicePrinters::decode_route_slot(s);
-            let ofmt = if ofmt.is_empty() {
-                default_fmt.clone()
-            } else {
-                ofmt
-            };
-            st.printer_draft.printer_by_id(&opid).is_some_and(|p| {
-                print_share::DevicePrinters::route_name_format_key(
-                    &printer_display_name(p, |_| String::new()),
-                    &ofmt,
-                ) == name_fmt
-            })
-        });
-        if clash {
-            return false;
-        }
-        st.printer_draft.route_mut(key).push(enc.to_string());
+        route.push(print_share::DevicePrinters::encode_route_slot(
+            &pid, &place_fmt,
+        ));
     }
     let _ = st.save_printer_draft();
     true

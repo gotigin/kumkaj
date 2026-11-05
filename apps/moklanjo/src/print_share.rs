@@ -1,18 +1,15 @@
 //! Printing (local free POS — no cloud), the same on every device that can
 //! hold the books or take orders.
 //!
-//! Each device keeps a **pool** of named printers and **routes** (ordered
-//! printer ids per feature) in `printers.json` beside the language choice.
-//! A route tries the first printer, then the next on failure; an empty
-//! route means that feature does not print. Moklanjo routes: **Receipt** and
-//! **AWB label**.
+//! Owner nouns (Settings):
+//! - **Printer** — one OS device in the pool (destination only).
+//! - **Profile** — slip look ([`PrintFormat`]: Thermal / Portrait / Landscape).
+//! - **Output** — under Receipt or AWB label: ordered printers + that place's
+//!   Profile. Tries the first that works. Empty = don't print.
 //!
-//! A printer `target` is a system printer name, or a network address
-//! (`192.168.1.50` / `host:port`). System names print through the OS driver
-//! (same idea as Geany). Network `host:9100` speaks ESC/POS over TCP. Blank
-//! target means this computer's usual OS printer. Jobs go through one queue
-//! thread; failures surface via [`take_problems`]. Tests never reach a
-//! printer ([`PrintSink`]; mirrors Khaynjo).
+//! No kitchen station groups. `printers.json` beside the books. Jobs go
+//! through one worker; failures via [`take_problems`]. Tests never reach a
+//! printer ([`PrintSink`]).
 
 use std::fs;
 use std::io::Write;

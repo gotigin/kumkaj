@@ -548,14 +548,59 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(printer_assign_dd))
             .set_text(cx, &assign_face);
-        let mode_all = {
+        let (mode_all, output_n, profile_id) = {
             let st = app_state().lock().unwrap();
             let key = parse_printer_route_key(&st.printer_route_key);
-            matches!(
-                st.printer_draft.print_mode_for(key),
-                print_share::RoutePrintMode::All
+            (
+                matches!(
+                    st.printer_draft.print_mode_for(key),
+                    print_share::RoutePrintMode::All
+                ),
+                st.printer_draft.route_for(key).len(),
+                st.printer_draft.format_id_for(key),
             )
         };
+        let show_mode = output_n > 1;
+        self.ui
+            .widget(cx, ids!(h_printer_profile))
+            .set_text(cx, &plain_display_text(&app_t("printer_profile_heading")));
+        self.ui
+            .button(cx, ids!(printer_wire_escpos))
+            .set_text(cx, &app_t("printer_wire_escpos"));
+        self.ui
+            .button(cx, ids!(printer_wire_escpos_on))
+            .set_text(cx, &app_t("printer_wire_escpos"));
+        self.ui
+            .button(cx, ids!(printer_wire_os))
+            .set_text(cx, &app_t("printer_wire_os_portrait"));
+        self.ui
+            .button(cx, ids!(printer_wire_os_on))
+            .set_text(cx, &app_t("printer_wire_os_portrait"));
+        self.ui
+            .button(cx, ids!(printer_wire_os_landscape))
+            .set_text(cx, &app_t("printer_wire_os_landscape"));
+        self.ui
+            .button(cx, ids!(printer_wire_os_landscape_on))
+            .set_text(cx, &app_t("printer_wire_os_landscape"));
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_wire_escpos),
+            ids!(printer_wire_escpos_on),
+            profile_id == print_share::FORMAT_KOT,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_wire_os),
+            ids!(printer_wire_os_on),
+            profile_id == print_share::FORMAT_STANDARD_PORTRAIT
+                || profile_id == print_share::FORMAT_STANDARD,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_wire_os_landscape),
+            ids!(printer_wire_os_landscape_on),
+            profile_id == print_share::FORMAT_STANDARD_LANDSCAPE,
+        );
         self.ui
             .widget(cx, ids!(h_printer_route_mode))
             .set_text(cx, &plain_display_text(&app_t("printer_route_mode")));
@@ -578,6 +623,18 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             !mode_all,
         );
         self.paint_choice_pair(cx, ids!(printer_mode_all), ids!(printer_mode_all_on), mode_all);
+        self.ui
+            .widget(cx, ids!(h_station_group))
+            .set_text(cx, &plain_display_text(&app_t("station_group_heading")));
+        self.ui
+            .text_input(cx, ids!(station_group_name_input))
+            .set_empty_text(cx, app_t("station_group_name_ph"));
+        self.ui
+            .button(cx, ids!(station_group_save_btn))
+            .set_text(cx, &app_t("station_group_save"));
+        self.ui
+            .button(cx, ids!(station_group_apply_btn))
+            .set_text(cx, &app_t("station_group_apply"));
         // Legacy +chips stay hidden — assign is the checkbox dropdown.
         self.ui.view(cx, ids!(route_add_printers)).set_visible(cx, false);
         for id in ROUTE_ADD_PRINTER_BTNS.iter() {
@@ -593,16 +650,32 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, host);
         self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, host);
         self.ui.button(cx, ids!(printer_assign_dd)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(h_printer_route_mode)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(h_printer_profile)).set_visible(cx, host);
+        self.ui.view(cx, ids!(printer_profile_row)).set_visible(cx, host);
+        self.ui.widget(cx, ids!(h_printer_route_mode)).set_visible(cx, host && show_mode);
+        self.ui.view(cx, ids!(printer_mode_row)).set_visible(cx, host && show_mode);
         self.ui.widget(cx, ids!(route_assigned_empty)).set_visible(cx, host && assigned_empty);
         self.ui.widget(cx, ids!(route_assigned_list)).set_visible(cx, host && !assigned_empty);
         self.ui.button(cx, ids!(route_clear)).set_visible(cx, host);
         self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, host);
-        if is_client {
-            self.ui.button(cx, ids!(printer_mode_first)).set_visible(cx, false);
-            self.ui.button(cx, ids!(printer_mode_first_on)).set_visible(cx, false);
-            self.ui.button(cx, ids!(printer_mode_all)).set_visible(cx, false);
-            self.ui.button(cx, ids!(printer_mode_all_on)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(h_station_group)).set_visible(cx, host);
+        self.ui
+            .text_input(cx, ids!(station_group_name_input))
+            .set_visible(cx, host);
+        self.ui.button(cx, ids!(station_group_save_btn)).set_visible(cx, host);
+        self.ui.button(cx, ids!(station_group_apply_btn)).set_visible(cx, host);
+        self.ui.button(cx, ids!(printer_mode_first)).set_visible(cx, host && show_mode);
+        self.ui.button(cx, ids!(printer_mode_first_on)).set_visible(cx, host && show_mode);
+        self.ui.button(cx, ids!(printer_mode_all)).set_visible(cx, host && show_mode);
+        self.ui.button(cx, ids!(printer_mode_all_on)).set_visible(cx, host && show_mode);
+        if !host || !show_mode {
+            // paint_choice_pair may have shown a face; keep both off when hidden.
+            if !show_mode {
+                self.ui.button(cx, ids!(printer_mode_first)).set_visible(cx, false);
+                self.ui.button(cx, ids!(printer_mode_first_on)).set_visible(cx, false);
+                self.ui.button(cx, ids!(printer_mode_all)).set_visible(cx, false);
+                self.ui.button(cx, ids!(printer_mode_all_on)).set_visible(cx, false);
+            }
         }
     }
 
