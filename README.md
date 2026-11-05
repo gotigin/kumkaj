@@ -17,3 +17,4 @@ Project documentation: **global** doctrine lives in [`docs/`](docs/); each app k
 - [`docs/IDENTITY_AND_NAMES.md`](docs/IDENTITY_AND_NAMES.md) — identity doctrine for all apps (uniqueness by UUID; names are aliases)
 - [`apps/moklanjo/docs/MOKLANJO.md`](apps/moklanjo/docs/MOKLANJO.md) — Moklanjo product brief
 - [`apps/khaynjo/docs/KHAYNJO.md`](apps/khaynjo/docs/KHAYNJO.md) — Khaynjo product brief
+- [`docs/WEBSITES.md`](docs/WEBSITES.md) — website plan for kumkaj.com, moklanjo.com and khaynjo.com (each product's site plan lives in its app's `docs/`)
