@@ -53,14 +53,24 @@ impl Widget for SuggestList {
         } else {
             list_content_height(n, row_h, 6.0).min(SUGGEST_MAX_HEIGHT)
         };
-        let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
-        if list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key())
-        {
-            schedule_ui_tween_frame(cx);
-        }
+        // Floor Columns lives in a Modal panel — show full height immediately.
+        let (height, should_draw) = if self.field == "floor_cols" {
+            if logic_open {
+                (full_h, true)
+            } else {
+                (0.0, false)
+            }
+        } else {
+            let tweened = list_height_tween(&self.anim_key(), logic_open, full_h);
+            if list_height_anims()
+                .lock()
+                .unwrap()
+                .contains_key(&self.anim_key())
+            {
+                schedule_ui_tween_frame(cx);
+            }
+            tweened
+        };
         if !should_draw || height < 0.5 || draw_rows.is_empty() {
             if !should_draw {
                 self.hold_rows.clear();
@@ -98,7 +108,12 @@ impl Widget for SuggestList {
                             cx,
                             if selected { "\u{2713}" } else { "" },
                         );
+                        // Selected wash under clear Labels; hit Button hover on top.
+                        item.view(cx, ids!(row_wash)).set_visible(cx, !selected);
+                        item.view(cx, ids!(sel_wash)).set_visible(cx, selected);
                     } else {
+                        item.view(cx, ids!(row_wash)).set_visible(cx, true);
+                        item.view(cx, ids!(sel_wash)).set_visible(cx, false);
                         let action = if row.action.trim().is_empty() {
                             use_text.as_str()
                         } else {

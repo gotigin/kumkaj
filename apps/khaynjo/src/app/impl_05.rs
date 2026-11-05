@@ -67,8 +67,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             return;
         }
         let inside = if field == SuggestField::FloorColumns {
-            let r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
-            r.size.x > 0.0 && r.size.y > 0.0 && r.contains(abs)
+            // Field + modal panel (list is not inside floor_cols_box).
+            let box_r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
+            let panel_r = self.ui.view(cx, ids!(floor_cols_dd_panel)).area().rect(cx);
+            let in_box = box_r.size.x > 0.0 && box_r.size.y > 0.0 && box_r.contains(abs);
+            let in_panel = panel_r.size.x > 0.0 && panel_r.size.y > 0.0 && panel_r.contains(abs);
+            in_box || in_panel
         } else {
             let input = self.ui.text_input(cx, field.input()).area().rect(cx);
             let list = self.ui.widget(cx, field.list()).area().rect(cx);
@@ -886,6 +890,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
         if list_height_anims_live() {
             any_live = true;
+            // Keep Columns suggest pinned under the field while it tweens.
+            self.place_floor_cols_suggest(cx);
         }
         if any_live {
             schedule_ui_tween_frame(cx);

@@ -2973,18 +2973,18 @@ script_mod! {
         }
     }
 
-    // One "type or pick" row: value, a small distinguishing line, and Use.
-    // Plain Labels — selectable text would steal the row tap.
+    // One "type or pick" row: Labels on a clear RoundedView (Button does not
+    // draw child widgets). Resting face is row_wash under the labels; hover
+    // from a clear hit Button on top.
     let SuggestRowView = RoundedView{
         cursor: MouseCursor.Hand
         width: Fill height: Fit
         padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
         flow: Right spacing: 10
         align: Align{y: 0.5}
-        draw_bg.color: #xffffff
+        draw_bg.color: #xffffff00
         draw_bg.border_radius: 10.
-        draw_bg.border_size: 1.
-        draw_bg.border_color: #x4A5568
+        draw_bg.border_size: 0.
         title := Label{
             width: Fill
             text: ""
@@ -3006,6 +3006,28 @@ script_mod! {
             draw_text.text_style.font_size: 13.
         }
     }
+    let SuggestRowHit = Button{
+        width: Fill height: Fill
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff00
+            color_hover: #xE8EEF5CC
+            color_down: #xD5DEE8CC
+            color_focus: #xffffff00
+            color_2: #xffffff00
+            color_2_hover: #xE8EEF5CC
+            color_2_down: #xD5DEE8CC
+            color_2_focus: #xffffff00
+            border_radius: 10.
+            border_size: 0.
+        }
+    }
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
@@ -3019,8 +3041,17 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
+                flow: Overlay
                 texture_caching: false
+                row_wash := RoundedView{
+                    width: Fill height: Fill
+                    draw_bg.color: #xffffff
+                    draw_bg.border_radius: 10.
+                    draw_bg.border_size: 1.
+                    draw_bg.border_color: #x4A5568
+                }
                 row := SuggestRowView{}
+                hit := SuggestRowHit{}
             }
         }
     }

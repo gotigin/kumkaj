@@ -1094,6 +1094,7 @@ fn list_height_anims_live() -> bool {
         .any(|a| !accordion_anim_progress(a, now).1)
 }
 
+
 fn accordion_anims() -> &'static Mutex<std::collections::HashMap<String, AccordionAnim>> {
     static ANIMS: OnceLock<Mutex<std::collections::HashMap<String, AccordionAnim>>> = OnceLock::new();
     ANIMS.get_or_init(|| Mutex::new(std::collections::HashMap::new()))

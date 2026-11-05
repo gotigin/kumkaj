@@ -3965,19 +3965,18 @@ script_mod! {
     // decoded a whole folder of photos in one frame and froze the app.
     // The item form's category picker: same rows and viewport as the
     // item picker.
-    // One "type or pick" row: the value, a small line that tells similar
-    // rows apart, and "Use". Plain Labels — a selectable text would take
-    // the tap from the row.
+    // One "type or pick" row: Labels on a clear RoundedView (Button does not
+    // draw child widgets — empty pills). Resting/selected face is row_wash /
+    // sel_wash under the labels; hover/down from a clear hit Button on top.
     let SuggestRowView = RoundedView{
         cursor: MouseCursor.Hand
         width: Fill height: Fit
         padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
         flow: Right spacing: 10
         align: Align{y: 0.5}
-        draw_bg.color: #xffffff
+        draw_bg.color: #xffffff00
         draw_bg.border_radius: 10.
-        draw_bg.border_size: 1.
-        draw_bg.border_color: #xE3D3C8
+        draw_bg.border_size: 0.
         title := Label{
             width: Fill
             text: ""
@@ -3999,6 +3998,29 @@ script_mod! {
             draw_text.text_style.font_size: 13.
         }
     }
+    // Transparent hit face over SuggestRowView — hover / down wash only.
+    let SuggestRowHit = Button{
+        width: Fill height: Fill
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        text: ""
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff00
+            color_hover: #xFBEDE4CC
+            color_down: #xEFD2BCCC
+            color_focus: #xffffff00
+            color_2: #xffffff00
+            color_2_hover: #xFBEDE4CC
+            color_2_down: #xEFD2BCCC
+            color_2_focus: #xffffff00
+            border_radius: 10.
+            border_size: 0.
+        }
+    }
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
@@ -4012,8 +4034,26 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
+                flow: Overlay
                 texture_caching: false
+                // Resting / selected fills under the clear label row.
+                row_wash := RoundedView{
+                    width: Fill height: Fill
+                    draw_bg.color: #xffffff
+                    draw_bg.border_radius: 10.
+                    draw_bg.border_size: 1.
+                    draw_bg.border_color: #xE3D3C8
+                }
+                sel_wash := RoundedView{
+                    width: Fill height: Fill
+                    visible: false
+                    draw_bg.color: #xF6E3D3
+                    draw_bg.border_radius: 10.
+                    draw_bg.border_size: 1.
+                    draw_bg.border_color: #xE3D3C8
+                }
                 row := SuggestRowView{}
+                hit := SuggestRowHit{}
             }
         }
     }
@@ -6860,25 +6900,35 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 0
                                     // Columns + zoom (− / + / Auto) for this area (this device).
+                                    // The pick list lives in floor_cols_dd_modal (not here)
+                                    // so opening it cannot stretch this row or shove the grid.
+                                    // Start side of the body (physical left). Window
+                                    // chrome is not mirrored for RTL (DEV.md); only
+                                    // the field's text + chevron trailing edge flip
+                                    // in paint_floor_cols_field_dir.
                                     floor_cols_row := View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 8
-                                        align: Align{x: 1.0 y: 0.5}
+                                        align: Align{x: 0.0 y: 0.5}
                                         padding: Inset{top: 2. bottom: 2.}
                                         floor_cols_box := View{
-                                            width: Fixed(140.) height: Fit
-                                            flow: Down
-                                            View{
+                                            width: Fixed(176.) height: Fit
+                                            flow: Overlay
+                                            align: Align{x: 0.0 y: 0.5}
+                                            floor_cols_input := FieldInput{
+                                                margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
+                                                // Symmetric side pad so the chevron
+                                                // (trailing edge: right LTR / left RTL)
+                                                // never sits on the placeholder.
+                                                padding: Inset{left: 36. right: 36. top: 11. bottom: 11.}
+                                                empty_text: "Columns"
+                                                is_numeric_only: true
+                                            }
+                                            floor_cols_chev_row := View{
                                                 width: Fill height: Fit
-                                                flow: Overlay
+                                                flow: Right
                                                 align: Align{x: 1.0 y: 0.5}
-                                                floor_cols_input := FieldInput{
-                                                    margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
-                                                    padding: Inset{left: 12. right: 36. top: 11. bottom: 11.}
-                                                    empty_text: "Columns"
-                                                    is_numeric_only: true
-                                                }
-                                                Label{
+                                                floor_cols_chev := Label{
                                                     width: Fit
                                                     margin: Inset{right: 14.}
                                                     text: "\u{f078}"
@@ -6886,7 +6936,6 @@ script_mod! {
                                                     draw_text.text_style.font_size: 11.
                                                 }
                                             }
-                                            floor_cols_suggest := mod.widgets.SuggestList{field: "floor_cols"}
                                         }
                                         View{
                                             width: Fixed(44.) height: Fit
@@ -9792,6 +9841,34 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                     // backdrop is overridden transparent and its content
                     // fills the window, so the ghost's abs_pos is in window
                     // coordinates and nothing else is visible.
+                    // Floor Columns pick list — Modal overlay draw list so the
+                    // open menu cannot stretch floor_cols_row / shove tables.
+                    // Transparent dim; panel is positioned under the field in Rust.
+                    floor_cols_dd_modal := Modal{
+                        can_dismiss: true
+                        bg_view +: {
+                            draw_bg +: {color: #x00000000}
+                        }
+                        content +: {
+                            width: Fill height: Fill
+                            flow: Overlay
+                            floor_cols_dd_panel := RoundedView{
+                                visible: false
+                                width: Fixed(176.) height: Fit
+                                padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
+                                flow: Down
+                                draw_bg.color: #xFFF8F3
+                                draw_bg.border_radius: 12.
+                                draw_bg.border_size: 1.
+                                draw_bg.border_color: #xE3D3C8
+                                floor_cols_suggest := mod.widgets.SuggestList{
+                                    field: "floor_cols"
+                                    width: Fill
+                                    height: Fit
+                                }
+                            }
+                        }
+                    }
                     nav_drag_modal := Modal{
                         can_dismiss: false
                         bg_view +: {

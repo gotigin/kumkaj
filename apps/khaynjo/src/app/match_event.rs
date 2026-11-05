@@ -3513,11 +3513,21 @@ impl MatchEvent for App {
             let input = self.ui.text_input(cx, ids!(floor_cols_input));
             if let Some((text, _)) = input.returned(actions) {
                 app_state().lock().unwrap().suggest_open = None;
+                self.place_floor_cols_suggest(cx);
                 self.apply_floor_columns(cx, &text);
             } else if input.key_focus_lost(actions) {
                 let text = input.text();
                 self.apply_floor_columns(cx, &text);
             }
+        }
+        // Tap outside the Columns modal panel dismisses the pick list.
+        if self
+            .ui
+            .modal(cx, ids!(floor_cols_dd_modal))
+            .dismissed(actions)
+        {
+            app_state().lock().unwrap().suggest_open = None;
+            self.place_floor_cols_suggest(cx);
         }
         // Floor zoom − / + (turns Auto off) and Auto fill-width.
         if self.ui.button(cx, ids!(floor_zoom_out)).clicked(actions) {
@@ -3939,11 +3949,13 @@ impl MatchEvent for App {
                                 continue;
                             }
                         }
-                        if item
-                            .view(cx, ids!(row))
-                            .finger_up(actions)
-                            .is_some_and(|e| e.was_tap() && e.is_over)
-                        {
+                        // hit Button (hover wash) preferred; row finger_up fallback.
+                        let row_tap = item.button(cx, ids!(hit)).clicked(actions)
+                            || item
+                                .view(cx, ids!(row))
+                                .finger_up(actions)
+                                .is_some_and(|e| e.was_tap() && e.is_over);
+                        if row_tap {
                             let value = app_state()
                                 .lock()
                                 .unwrap()
@@ -4180,6 +4192,7 @@ impl MatchEvent for App {
             }
             if changed {
                 self.sync_chrome(cx);
+                self.place_floor_cols_suggest(cx);
                 for field in SuggestField::ALL {
                     self.ui.widget(cx, field.list()).redraw(cx);
                 }

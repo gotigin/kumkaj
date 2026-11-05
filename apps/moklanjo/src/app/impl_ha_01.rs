@@ -48,11 +48,12 @@ impl App {
                     let widget = self.ui.widget(cx, field.list());
                     let list = widget.portal_list(cx, ids!(list));
                     for (item_id, item) in list.items_with_actions(actions) {
-                        if item
-                            .view(cx, ids!(row))
-                            .finger_up(actions)
-                            .is_some_and(|e| e.was_tap() && e.is_over)
-                        {
+                        let row_tap = item.button(cx, ids!(hit)).clicked(actions)
+                            || item
+                                .view(cx, ids!(row))
+                                .finger_up(actions)
+                                .is_some_and(|e| e.was_tap() && e.is_over);
+                        if row_tap {
                             let value = app_state()
                                 .lock()
                                 .unwrap()
