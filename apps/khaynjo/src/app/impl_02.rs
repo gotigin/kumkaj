@@ -2650,26 +2650,103 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .widget(cx, ids!(team_selected_label))
                     .set_text(cx, &plain_display_text(&selected));
-                for (button, right) in [
-                    (ids!(right_settle_btn), domain::Right::Settle),
-                    (ids!(right_cancel_btn), domain::Right::CancelSentItem),
-                    (ids!(right_nc_btn), domain::Right::Complimentary),
-                    (ids!(right_move_btn), domain::Right::MoveTable),
-                    (ids!(right_reprint_btn), domain::Right::Reprint),
-                    (ids!(right_discount_btn), domain::Right::Discount),
+                let allowed_lbl = locale::t(&lang, "right_allowed");
+                let ask_lbl = locale::t(&lang, "right_with_approval");
+                let deny_lbl = locale::t(&lang, "right_denied");
+                for (lbl, allowed, allowed_on, ask, ask_on, deny, deny_on, right) in [
+                    (
+                        ids!(right_settle_lbl),
+                        ids!(right_settle_allowed),
+                        ids!(right_settle_allowed_on),
+                        ids!(right_settle_ask),
+                        ids!(right_settle_ask_on),
+                        ids!(right_settle_deny),
+                        ids!(right_settle_deny_on),
+                        domain::Right::Settle,
+                    ),
+                    (
+                        ids!(right_cancel_lbl),
+                        ids!(right_cancel_allowed),
+                        ids!(right_cancel_allowed_on),
+                        ids!(right_cancel_ask),
+                        ids!(right_cancel_ask_on),
+                        ids!(right_cancel_deny),
+                        ids!(right_cancel_deny_on),
+                        domain::Right::CancelSentItem,
+                    ),
+                    (
+                        ids!(right_nc_lbl),
+                        ids!(right_nc_allowed),
+                        ids!(right_nc_allowed_on),
+                        ids!(right_nc_ask),
+                        ids!(right_nc_ask_on),
+                        ids!(right_nc_deny),
+                        ids!(right_nc_deny_on),
+                        domain::Right::Complimentary,
+                    ),
+                    (
+                        ids!(right_move_lbl),
+                        ids!(right_move_allowed),
+                        ids!(right_move_allowed_on),
+                        ids!(right_move_ask),
+                        ids!(right_move_ask_on),
+                        ids!(right_move_deny),
+                        ids!(right_move_deny_on),
+                        domain::Right::MoveTable,
+                    ),
+                    (
+                        ids!(right_reprint_lbl),
+                        ids!(right_reprint_allowed),
+                        ids!(right_reprint_allowed_on),
+                        ids!(right_reprint_ask),
+                        ids!(right_reprint_ask_on),
+                        ids!(right_reprint_deny),
+                        ids!(right_reprint_deny_on),
+                        domain::Right::Reprint,
+                    ),
+                    (
+                        ids!(right_discount_lbl),
+                        ids!(right_discount_allowed),
+                        ids!(right_discount_allowed_on),
+                        ids!(right_discount_ask),
+                        ids!(right_discount_ask_on),
+                        ids!(right_discount_deny),
+                        ids!(right_discount_deny_on),
+                        domain::Right::Discount,
+                    ),
                 ] {
-                    let level = match rights.level(right) {
-                        domain::RightLevel::Allowed => "right_allowed",
-                        domain::RightLevel::WithApproval => "right_with_approval",
-                        domain::RightLevel::Denied => "right_denied",
-                    };
-                    self.ui.button(cx, button).set_text(
+                    self.ui
+                        .widget(cx, lbl)
+                        .set_text(cx, &plain_display_text(&locale::t(&lang, right.label_key())));
+                    for (idle, on) in [(allowed, allowed_on), (ask, ask_on), (deny, deny_on)] {
+                        let text = if idle == allowed {
+                            &allowed_lbl
+                        } else if idle == ask {
+                            &ask_lbl
+                        } else {
+                            &deny_lbl
+                        };
+                        self.ui.button(cx, idle).set_text(cx, text);
+                        self.ui.button(cx, on).set_text(cx, text);
+                    }
+                    let level = rights.level(right);
+                    self.paint_choice_pair(
                         cx,
-                        &format!(
-                            "{}: {}",
-                            locale::t(&lang, right.label_key()),
-                            locale::t(&lang, level)
-                        ),
+                        allowed,
+                        allowed_on,
+                        level == domain::RightLevel::Allowed,
+                    );
+                    self.paint_choice_pair(
+                        cx,
+                        ask,
+                        ask_on,
+                        level == domain::RightLevel::WithApproval,
+                    );
+                    self.paint_choice_pair(
+                        cx,
+                        deny,
+                        deny_on,
+                        level == domain::RightLevel::Denied,
                     );
                 }
                 let who = selected_name.trim();

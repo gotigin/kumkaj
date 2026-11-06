@@ -1371,7 +1371,7 @@ fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Resul
         ]);
         cmd.arg("--").arg(path);
         match cmd.output() {
-            Ok(out) if out.status.success() => Ok(()),
+            Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
             Ok(out) => Err(first_line(&out.stderr).unwrap_or_else(|| "the printing system refused the job".into())),
             Err(_) => {
                 let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
@@ -1456,6 +1456,104 @@ fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
     result
 }
 
+/// `lp` stdout looks like `request id is QueueName-123 (1 file(s))`.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn parse_lp_request_id(stdout: &str) -> Option<String> {
+    let rest = stdout.split("request id is ").nth(1)?;
+    let id = rest.split_whitespace().next()?.trim();
+    if id.is_empty() {
+        None
+    } else {
+        Some(id.to_string())
+    }
+}
+
+/// CUPS often accepts a job (`lp` exit 0) while the backend cannot reach the
+/// device — classic message: "Waiting for printer to become available".
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_printer_unreachable(name: &str) -> Option<String> {
+    let out = Command::new("lpstat").args(["-p", name]).output().ok()?;
+    let text = String::from_utf8_lossy(&out.stdout);
+    let lower = text.to_ascii_lowercase();
+    if !(lower.contains("waiting for printer to become available")
+        || lower.contains("printer not connected")
+        || lower.contains("unable to locate printer"))
+    {
+        return None;
+    }
+    let detail = text
+        .lines()
+        .map(str::trim)
+        .find(|l| {
+            let l = l.to_ascii_lowercase();
+            l.contains("waiting") || l.contains("unable") || l.contains("not connected")
+        })
+        .unwrap_or("printer not reachable");
+    Some(format!(
+        "Printer \"{name}\" did not take the job ({detail}) — check cable/power, or use a Network/USB address in Settings → Printers"
+    ))
+}
+
+/// After `lp` accepts the job: log it, and fail if CUPS already says the
+/// printer is unreachable (otherwise the UI shows success with no paper).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_confirm_after_lp(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), String> {
+    let stdout = String::from_utf8_lossy(lp_stdout);
+    let job = parse_lp_request_id(&stdout);
+    let who = name.unwrap_or("(default)");
+    let job_s = job.as_deref().unwrap_or("?");
+    eprintln!("[print] lp queued printer={who} job={job_s}");
+    crate::diag::info(
+        crate::diag::Cat::Print,
+        "lp_queued",
+        format!("printer={who} job={job_s}"),
+    );
+    let printer = match name {
+        Some(n) => n.to_string(),
+        None => match cups_default_printer() {
+            Some(n) => n,
+            None => return Ok(()),
+        },
+    };
+    let deadline = std::time::Instant::now() + Duration::from_secs(3);
+    loop {
+        if let Some(blocked) = cups_printer_unreachable(&printer) {
+            if let Some(job) = &job {
+                let _ = Command::new("cancel").arg(job).output();
+            }
+            eprintln!("[print] CUPS unreachable: {blocked}");
+            crate::diag::warn(crate::diag::Cat::Print, "cups_unreachable", &blocked);
+            return Err(blocked);
+        }
+        let pending = job.as_deref().is_some_and(cups_job_pending);
+        if !pending || std::time::Instant::now() >= deadline {
+            return Ok(());
+        }
+        std::thread::sleep(Duration::from_millis(300));
+    }
+}
+
+/// The queue `lp` uses when no printer is named (`lpstat -d`).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_default_printer() -> Option<String> {
+    let out = Command::new("lpstat").arg("-d").output().ok()?;
+    let text = String::from_utf8_lossy(&out.stdout);
+    let name = text.rsplit(':').next()?.trim();
+    (!name.is_empty() && !text.to_ascii_lowercase().contains("no system default"))
+        .then(|| name.to_string())
+}
+
+/// Whether CUPS still lists `job` as queued or printing (`lpstat -o`).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_job_pending(job: &str) -> bool {
+    let Ok(out) = Command::new("lpstat").arg("-o").output() else {
+        return false;
+    };
+    String::from_utf8_lossy(&out.stdout)
+        .lines()
+        .any(|l| l.split_whitespace().next() == Some(job))
+}
+
 /// `host:port` of a CUPS queue whose device is a raw socket.
 #[cfg(any(target_os = "linux", target_os = "macos"))]
 fn cups_socket_address(name: &str) -> Option<String> {
@@ -1534,7 +1632,7 @@ fn print_system_raw_path(name: Option<&str>, path: &Path, pieces: &[usize]) -> R
         }
         cmd.arg("--").arg(path);
         match cmd.output() {
-            Ok(out) if out.status.success() => Ok(()),
+            Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
             Ok(out) => {
                 let detail = String::from_utf8_lossy(&out.stderr);
                 let line = detail.lines().map(str::trim).find(|l| !l.is_empty()).unwrap_or("raw print refused");

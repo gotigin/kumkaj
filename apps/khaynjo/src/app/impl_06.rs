@@ -1537,6 +1537,50 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
+    /// Fill Lock → Choose staff modal slots from non-owner people (max 12).
+    fn paint_lock_staff_sheet(&mut self, cx: &mut Cx) {
+        let (staff, selected) = {
+            let st = app_state().lock().unwrap();
+            let staff: Vec<(String, String)> = st
+                .staff
+                .iter()
+                .filter(|s| !s.is_owner())
+                .map(|s| (s.id.clone(), s.lock_label()))
+                .collect();
+            (staff, st.lock_staff_id.clone())
+        };
+        for (slot, path) in [
+            (0usize, ids!(lock_s0)),
+            (1, ids!(lock_s1)),
+            (2, ids!(lock_s2)),
+            (3, ids!(lock_s3)),
+            (4, ids!(lock_s4)),
+            (5, ids!(lock_s5)),
+            (6, ids!(lock_s6)),
+            (7, ids!(lock_s7)),
+            (8, ids!(lock_s8)),
+            (9, ids!(lock_s9)),
+            (10, ids!(lock_s10)),
+            (11, ids!(lock_s11)),
+        ] {
+            match staff.get(slot) {
+                Some((id, label)) => {
+                    let mark = if selected.as_ref() == Some(id) {
+                        format!("› {label}")
+                    } else {
+                        label.clone()
+                    };
+                    self.ui.button(cx, path).set_visible(cx, true);
+                    self.ui.button(cx, path).set_text(cx, &mark);
+                }
+                None => {
+                    self.ui.button(cx, path).set_visible(cx, false);
+                    self.ui.button(cx, path).set_text(cx, "");
+                }
+            }
+        }
+    }
+
     /// Open the menu window over the order desk: every dish, "All items"
     /// picked, nothing typed. On a desktop the search box takes the keys at
     /// once; on a tablet the keyboard waits for a tap on it (it would hide

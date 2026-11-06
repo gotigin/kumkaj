@@ -152,8 +152,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         for path in [ids!(role_staff), ids!(role_staff_on)] {
             self.ui.button(cx, path).set_text(cx, &s("staff"));
         }
-        self.ui.button(cx, ids!(lock_staff_prev)).set_text(cx, &s("prev"));
-        self.ui.button(cx, ids!(lock_staff_next)).set_text(cx, &s("next"));
+        self.ui.button(cx, ids!(lock_staff_pick)).set_text(cx, &s("select_staff"));
+        self.ui
+            .widget(cx, ids!(lock_staff_sheet_title))
+            .set_text(cx, &plain_display_text(&s("who_unlocking")));
+        self.ui
+            .button(cx, ids!(lock_staff_sheet_done))
+            .set_text(cx, &s("pick_done"));
         self.ui.button(cx, ids!(pin_ok)).set_text(cx, &s("ok"));
         for path in [ids!(device_role_server), ids!(device_role_server_on)] {
             self.ui.button(cx, path).set_text(cx, &s("this_shop"));

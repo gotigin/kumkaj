@@ -1766,12 +1766,57 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             .set_text(cx, &plain_display_text(&s("crm_help")));
         self.ui.button(cx, ids!(crm_queue_sms)).set_text(cx, &s("crm_queue_sms"));
         self.ui.button(cx, ids!(crm_queue_wa)).set_text(cx, &s("crm_queue_wa"));
-        self.ui.button(cx, ids!(crm_seg_bday_week)).set_text(cx, &s("crm_seg_bday_week"));
-        self.ui.button(cx, ids!(crm_seg_bday_month)).set_text(cx, &s("crm_seg_bday_month"));
-        self.ui.button(cx, ids!(crm_seg_phone)).set_text(cx, &s("crm_seg_phone"));
-        self.ui.button(cx, ids!(crm_seg_loyalty)).set_text(cx, &s("crm_seg_loyalty"));
-        self.ui.button(cx, ids!(crm_seg_inactive)).set_text(cx, &s("crm_seg_inactive"));
-        self.ui.button(cx, ids!(crm_seg_top)).set_text(cx, &s("crm_seg_top"));
+        for (idle, on, key) in [
+            (ids!(crm_seg_bday_week), ids!(crm_seg_bday_week_on), "crm_seg_bday_week"),
+            (ids!(crm_seg_bday_month), ids!(crm_seg_bday_month_on), "crm_seg_bday_month"),
+            (ids!(crm_seg_phone), ids!(crm_seg_phone_on), "crm_seg_phone"),
+            (ids!(crm_seg_loyalty), ids!(crm_seg_loyalty_on), "crm_seg_loyalty"),
+            (ids!(crm_seg_inactive), ids!(crm_seg_inactive_on), "crm_seg_inactive"),
+            (ids!(crm_seg_top), ids!(crm_seg_top_on), "crm_seg_top"),
+        ] {
+            let label = s(key);
+            self.ui.button(cx, idle).set_text(cx, &label);
+            self.ui.button(cx, on).set_text(cx, &label);
+        }
+        {
+            let seg = app_state().lock().unwrap().crm_segment;
+            self.paint_choice_pair(
+                cx,
+                ids!(crm_seg_bday_week),
+                ids!(crm_seg_bday_week_on),
+                matches!(seg, store::CrmSegment::BirthdayThisWeek),
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(crm_seg_bday_month),
+                ids!(crm_seg_bday_month_on),
+                matches!(seg, store::CrmSegment::BirthdayThisMonth),
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(crm_seg_phone),
+                ids!(crm_seg_phone_on),
+                matches!(seg, store::CrmSegment::WithPhone),
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(crm_seg_loyalty),
+                ids!(crm_seg_loyalty_on),
+                matches!(seg, store::CrmSegment::WithLoyalty),
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(crm_seg_inactive),
+                ids!(crm_seg_inactive_on),
+                matches!(seg, store::CrmSegment::InactiveDays(_)),
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(crm_seg_top),
+                ids!(crm_seg_top_on),
+                matches!(seg, store::CrmSegment::TopSpenders(_)),
+            );
+        }
         self.ui
             .text_input(cx, ids!(credit_add_birthday))
             .set_empty_text(cx, s("birthday_ph"));

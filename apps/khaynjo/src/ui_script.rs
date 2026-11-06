@@ -5471,15 +5471,12 @@ script_mod! {
                                             font_color: #x260B08
                                             font_size: 11.
                                         }
+                                        lock_staff_pick := StackPrimaryBtn{text: "Choose staff"}
                                         lock_staff_label := WrapLabel{
-                                            width: Fit
+                                            width: Fill
                                             body: "No staff yet — unlock as Owner, then Team"
                                             font_color: #x260B08
                                             font_size: 14.
-                                        }
-                                        ActionStack{
-                                            lock_staff_prev := NavBtn{text: "Previous staff"}
-                                            lock_staff_next := NavBtn{text: "Next staff"}
                                         }
                                     }
 
@@ -7895,13 +7892,32 @@ script_mod! {
                                         visible: false
                                     }
                                     // SegBtn is width:Fill — cannot sit in wrap:true (freezes UI).
+                                    // Overlay idle/on pairs so the selected segment stays lit.
                                     ActionStack{
-                                        crm_seg_bday_week := SegBtn{text: "Birthday week"}
-                                        crm_seg_bday_month := SegBtn{text: "Birthday month"}
-                                        crm_seg_phone := SegBtn{text: "With phone"}
-                                        crm_seg_loyalty := SegBtn{text: "Loyalty"}
-                                        crm_seg_inactive := SegBtn{text: "Inactive"}
-                                        crm_seg_top := SegBtn{text: "Top spenders"}
+                                        View{width: Fill height: Fit flow: Overlay
+                                            crm_seg_bday_week := SegBtn{text: "Birthday week"}
+                                            crm_seg_bday_week_on := SegBtnOn{text: "Birthday week" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            crm_seg_bday_month := SegBtn{text: "Birthday month"}
+                                            crm_seg_bday_month_on := SegBtnOn{text: "Birthday month" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            crm_seg_phone := SegBtn{text: "With phone"}
+                                            crm_seg_phone_on := SegBtnOn{text: "With phone" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            crm_seg_loyalty := SegBtn{text: "Loyalty"}
+                                            crm_seg_loyalty_on := SegBtnOn{text: "Loyalty" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            crm_seg_inactive := SegBtn{text: "Inactive"}
+                                            crm_seg_inactive_on := SegBtnOn{text: "Inactive" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            crm_seg_top := SegBtn{text: "Top spenders"}
+                                            crm_seg_top_on := SegBtnOn{text: "Top spenders" visible: false}
+                                        }
                                     }
                                     crm_preview := mod.widgets.ReportText{}
                                     crm_message_input := FieldInput{empty_text: "Happy birthday {name}! You have {points} points."}
@@ -8166,12 +8182,97 @@ script_mod! {
                                     font_color: #x260B08
                                     font_size: 13.
                                 }
-                                right_settle_btn := NavBtn{text: "Take payment"}
-                                right_cancel_btn := NavBtn{text: "Cancel a sent item"}
-                                right_nc_btn := NavBtn{text: "Complimentary (NC)"}
-                                right_move_btn := NavBtn{text: "Move / merge tables"}
-                                right_reprint_btn := NavBtn{text: "Print bill again"}
-                                right_discount_btn := NavBtn{text: "Give a discount"}
+                                // Each right: label + three SegBtn levels (tap sets, no cycle).
+                                right_settle_lbl := WrapLabel{body: "Take payment" font_color: #x260B08 font_size: 13.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_settle_allowed := SegBtn{text: "Allowed"}
+                                        right_settle_allowed_on := SegBtnOn{text: "Allowed" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_settle_ask := SegBtn{text: "Ask"}
+                                        right_settle_ask_on := SegBtnOn{text: "Ask" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_settle_deny := SegBtn{text: "No"}
+                                        right_settle_deny_on := SegBtnOn{text: "No" visible: false}
+                                    }
+                                }
+                                right_cancel_lbl := WrapLabel{body: "Cancel a sent item" font_color: #x260B08 font_size: 13.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_cancel_allowed := SegBtn{text: "Allowed"}
+                                        right_cancel_allowed_on := SegBtnOn{text: "Allowed" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_cancel_ask := SegBtn{text: "Ask"}
+                                        right_cancel_ask_on := SegBtnOn{text: "Ask" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_cancel_deny := SegBtn{text: "No"}
+                                        right_cancel_deny_on := SegBtnOn{text: "No" visible: false}
+                                    }
+                                }
+                                right_nc_lbl := WrapLabel{body: "Complimentary (NC)" font_color: #x260B08 font_size: 13.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_nc_allowed := SegBtn{text: "Allowed"}
+                                        right_nc_allowed_on := SegBtnOn{text: "Allowed" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_nc_ask := SegBtn{text: "Ask"}
+                                        right_nc_ask_on := SegBtnOn{text: "Ask" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_nc_deny := SegBtn{text: "No"}
+                                        right_nc_deny_on := SegBtnOn{text: "No" visible: false}
+                                    }
+                                }
+                                right_move_lbl := WrapLabel{body: "Move / merge tables" font_color: #x260B08 font_size: 13.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_move_allowed := SegBtn{text: "Allowed"}
+                                        right_move_allowed_on := SegBtnOn{text: "Allowed" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_move_ask := SegBtn{text: "Ask"}
+                                        right_move_ask_on := SegBtnOn{text: "Ask" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_move_deny := SegBtn{text: "No"}
+                                        right_move_deny_on := SegBtnOn{text: "No" visible: false}
+                                    }
+                                }
+                                right_reprint_lbl := WrapLabel{body: "Print bill again" font_color: #x260B08 font_size: 13.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_reprint_allowed := SegBtn{text: "Allowed"}
+                                        right_reprint_allowed_on := SegBtnOn{text: "Allowed" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_reprint_ask := SegBtn{text: "Ask"}
+                                        right_reprint_ask_on := SegBtnOn{text: "Ask" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_reprint_deny := SegBtn{text: "No"}
+                                        right_reprint_deny_on := SegBtnOn{text: "No" visible: false}
+                                    }
+                                }
+                                right_discount_lbl := WrapLabel{body: "Give a discount" font_color: #x260B08 font_size: 13.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_discount_allowed := SegBtn{text: "Allowed"}
+                                        right_discount_allowed_on := SegBtnOn{text: "Allowed" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_discount_ask := SegBtn{text: "Ask"}
+                                        right_discount_ask_on := SegBtnOn{text: "Ask" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        right_discount_deny := SegBtn{text: "No"}
+                                        right_discount_deny_on := SegBtnOn{text: "No" visible: false}
+                                    }
+                                }
                                 // Kitchen stations this person may send / print KOTs to.
                                 // Bill reprint above is bills only — not kitchen.
                                 h_team_stations_help := WrapLabel{
@@ -10556,6 +10657,45 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     width: Fill
                                     height: Fit
                                 }
+                            }
+                        }
+                    }
+                    // Lock → pick who is unlocking (replaces Prev/Next). Fit
+                    // panel so outside press dismisses (DEV bug 7e).
+                    lock_staff_modal := Modal{
+                        can_dismiss: true
+                        content +: {
+                            width: Fill height: Fill
+                            align: Align{x: 0.5 y: 0.5}
+                            padding: Inset{left: 24. right: 24. top: 24. bottom: 24.}
+                            lock_staff_sheet := RoundedView{
+                                width: Fixed(320.) height: Fit
+                                padding: Inset{left: 16. right: 16. top: 16. bottom: 16.}
+                                flow: Down spacing: 8
+                                draw_bg.color: #xFFF8F3
+                                draw_bg.border_radius: 14.
+                                draw_bg.border_size: 1.
+                                draw_bg.border_color: #xE3D3C8
+                                lock_staff_sheet_title := WrapLabel{
+                                    body: "Who is unlocking?"
+                                    font_color: #x260B08
+                                    font_size: 15.
+                                }
+                                ActionStack{
+                                    lock_s0 := NavBtn{text: "" visible: false}
+                                    lock_s1 := NavBtn{text: "" visible: false}
+                                    lock_s2 := NavBtn{text: "" visible: false}
+                                    lock_s3 := NavBtn{text: "" visible: false}
+                                    lock_s4 := NavBtn{text: "" visible: false}
+                                    lock_s5 := NavBtn{text: "" visible: false}
+                                    lock_s6 := NavBtn{text: "" visible: false}
+                                    lock_s7 := NavBtn{text: "" visible: false}
+                                    lock_s8 := NavBtn{text: "" visible: false}
+                                    lock_s9 := NavBtn{text: "" visible: false}
+                                    lock_s10 := NavBtn{text: "" visible: false}
+                                    lock_s11 := NavBtn{text: "" visible: false}
+                                }
+                                lock_staff_sheet_done := StackSecondaryBtn{text: "Done"}
                             }
                         }
                     }

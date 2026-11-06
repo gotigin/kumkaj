@@ -242,6 +242,10 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
             return true;
         }
+        if self.ui.modal(cx, ids!(lock_staff_modal)).is_open() {
+            self.ui.modal(cx, ids!(lock_staff_modal)).close(cx);
+            return true;
+        }
         // Soft keyboard: on Android outside auth/setup, one Back dismisses
         // IME first and stops. On desktop (every screen), blur then continue
         // — a focused search/PIN/rate field must not swallow mouse Back,

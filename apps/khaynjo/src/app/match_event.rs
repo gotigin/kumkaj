@@ -1308,34 +1308,46 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(lock_staff_prev)).clicked(actions)
-            || self.ui.button(cx, ids!(lock_staff_next)).clicked(actions)
+        if self.ui.button(cx, ids!(lock_staff_pick)).clicked(actions) {
+            self.paint_lock_staff_sheet(cx);
+            self.ui.modal(cx, ids!(lock_staff_modal)).open(cx);
+        }
+        if self.ui.button(cx, ids!(lock_staff_sheet_done)).clicked(actions)
+            || self.ui.modal(cx, ids!(lock_staff_modal)).dismissed(actions)
         {
-            let forward = self.ui.button(cx, ids!(lock_staff_next)).clicked(actions);
-            {
-                let mut st = app_state().lock().unwrap();
-                let ids: Vec<String> = st
-                    .staff
-                    .iter()
-                    .filter(|s| !s.is_owner())
-                    .map(|s| s.id.clone())
-                    .collect();
-                if !ids.is_empty() {
-                    let cur = st
-                        .lock_staff_id
-                        .as_ref()
-                        .and_then(|id| ids.iter().position(|x| x == id))
-                        .unwrap_or(0);
-                    let next = if forward {
-                        (cur + 1) % ids.len()
-                    } else {
-                        (cur + ids.len() - 1) % ids.len()
-                    };
-                    st.lock_staff_id = Some(ids[next].clone());
-                    st.pin_buffer.clear();
+            self.ui.modal(cx, ids!(lock_staff_modal)).close(cx);
+        }
+        for (slot, path) in [
+            (0usize, ids!(lock_s0)),
+            (1, ids!(lock_s1)),
+            (2, ids!(lock_s2)),
+            (3, ids!(lock_s3)),
+            (4, ids!(lock_s4)),
+            (5, ids!(lock_s5)),
+            (6, ids!(lock_s6)),
+            (7, ids!(lock_s7)),
+            (8, ids!(lock_s8)),
+            (9, ids!(lock_s9)),
+            (10, ids!(lock_s10)),
+            (11, ids!(lock_s11)),
+        ] {
+            if self.ui.button(cx, path).clicked(actions) {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    let staff: Vec<(String, String)> = st
+                        .staff
+                        .iter()
+                        .filter(|s| !s.is_owner())
+                        .map(|s| (s.id.clone(), s.lock_label()))
+                        .collect();
+                    if let Some((id, _)) = staff.get(slot) {
+                        st.lock_staff_id = Some(id.clone());
+                        st.pin_buffer.clear();
+                    }
                 }
+                self.ui.modal(cx, ids!(lock_staff_modal)).close(cx);
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
 
         if self.choice_chip_clicked(cx, actions, ids!(lane_declared), ids!(lane_declared_on)) {
@@ -2104,15 +2116,39 @@ impl MatchEvent for App {
             }
         }
 
-        for (btn, seg) in [
-            (ids!(crm_seg_bday_week), store::CrmSegment::BirthdayThisWeek),
-            (ids!(crm_seg_bday_month), store::CrmSegment::BirthdayThisMonth),
-            (ids!(crm_seg_phone), store::CrmSegment::WithPhone),
-            (ids!(crm_seg_loyalty), store::CrmSegment::WithLoyalty),
-            (ids!(crm_seg_inactive), store::CrmSegment::InactiveDays(30)),
-            (ids!(crm_seg_top), store::CrmSegment::TopSpenders(20)),
+        for (idle, on, seg) in [
+            (
+                ids!(crm_seg_bday_week),
+                ids!(crm_seg_bday_week_on),
+                store::CrmSegment::BirthdayThisWeek,
+            ),
+            (
+                ids!(crm_seg_bday_month),
+                ids!(crm_seg_bday_month_on),
+                store::CrmSegment::BirthdayThisMonth,
+            ),
+            (
+                ids!(crm_seg_phone),
+                ids!(crm_seg_phone_on),
+                store::CrmSegment::WithPhone,
+            ),
+            (
+                ids!(crm_seg_loyalty),
+                ids!(crm_seg_loyalty_on),
+                store::CrmSegment::WithLoyalty,
+            ),
+            (
+                ids!(crm_seg_inactive),
+                ids!(crm_seg_inactive_on),
+                store::CrmSegment::InactiveDays(30),
+            ),
+            (
+                ids!(crm_seg_top),
+                ids!(crm_seg_top_on),
+                store::CrmSegment::TopSpenders(20),
+            ),
         ] {
-            if self.ui.button(cx, btn).clicked(actions) {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
                 app_state().lock().unwrap().crm_segment = seg;
                 self.sync_chrome(cx);
             }
@@ -6850,22 +6886,124 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        for (button, right) in [
-            (ids!(right_settle_btn), domain::Right::Settle),
-            (ids!(right_cancel_btn), domain::Right::CancelSentItem),
-            (ids!(right_nc_btn), domain::Right::Complimentary),
-            (ids!(right_move_btn), domain::Right::MoveTable),
-            (ids!(right_reprint_btn), domain::Right::Reprint),
-            (ids!(right_discount_btn), domain::Right::Discount),
+        for (idle, on, right, level) in [
+            (
+                ids!(right_settle_allowed),
+                ids!(right_settle_allowed_on),
+                domain::Right::Settle,
+                domain::RightLevel::Allowed,
+            ),
+            (
+                ids!(right_settle_ask),
+                ids!(right_settle_ask_on),
+                domain::Right::Settle,
+                domain::RightLevel::WithApproval,
+            ),
+            (
+                ids!(right_settle_deny),
+                ids!(right_settle_deny_on),
+                domain::Right::Settle,
+                domain::RightLevel::Denied,
+            ),
+            (
+                ids!(right_cancel_allowed),
+                ids!(right_cancel_allowed_on),
+                domain::Right::CancelSentItem,
+                domain::RightLevel::Allowed,
+            ),
+            (
+                ids!(right_cancel_ask),
+                ids!(right_cancel_ask_on),
+                domain::Right::CancelSentItem,
+                domain::RightLevel::WithApproval,
+            ),
+            (
+                ids!(right_cancel_deny),
+                ids!(right_cancel_deny_on),
+                domain::Right::CancelSentItem,
+                domain::RightLevel::Denied,
+            ),
+            (
+                ids!(right_nc_allowed),
+                ids!(right_nc_allowed_on),
+                domain::Right::Complimentary,
+                domain::RightLevel::Allowed,
+            ),
+            (
+                ids!(right_nc_ask),
+                ids!(right_nc_ask_on),
+                domain::Right::Complimentary,
+                domain::RightLevel::WithApproval,
+            ),
+            (
+                ids!(right_nc_deny),
+                ids!(right_nc_deny_on),
+                domain::Right::Complimentary,
+                domain::RightLevel::Denied,
+            ),
+            (
+                ids!(right_move_allowed),
+                ids!(right_move_allowed_on),
+                domain::Right::MoveTable,
+                domain::RightLevel::Allowed,
+            ),
+            (
+                ids!(right_move_ask),
+                ids!(right_move_ask_on),
+                domain::Right::MoveTable,
+                domain::RightLevel::WithApproval,
+            ),
+            (
+                ids!(right_move_deny),
+                ids!(right_move_deny_on),
+                domain::Right::MoveTable,
+                domain::RightLevel::Denied,
+            ),
+            (
+                ids!(right_reprint_allowed),
+                ids!(right_reprint_allowed_on),
+                domain::Right::Reprint,
+                domain::RightLevel::Allowed,
+            ),
+            (
+                ids!(right_reprint_ask),
+                ids!(right_reprint_ask_on),
+                domain::Right::Reprint,
+                domain::RightLevel::WithApproval,
+            ),
+            (
+                ids!(right_reprint_deny),
+                ids!(right_reprint_deny_on),
+                domain::Right::Reprint,
+                domain::RightLevel::Denied,
+            ),
+            (
+                ids!(right_discount_allowed),
+                ids!(right_discount_allowed_on),
+                domain::Right::Discount,
+                domain::RightLevel::Allowed,
+            ),
+            (
+                ids!(right_discount_ask),
+                ids!(right_discount_ask_on),
+                domain::Right::Discount,
+                domain::RightLevel::WithApproval,
+            ),
+            (
+                ids!(right_discount_deny),
+                ids!(right_discount_deny_on),
+                domain::Right::Discount,
+                domain::RightLevel::Denied,
+            ),
         ] {
-            if self.ui.button(cx, button).clicked(actions) {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
                 let msg = {
                     let mut st = app_state().lock().unwrap();
                     if st.team_staff_id.is_none() {
                         st.t("staff_copy_need_selected")
                     } else {
                         let mut rights = st.team_draft_rights();
-                        rights.set_level(right, rights.level(right).cycle());
+                        rights.set_level(right, level);
                         st.draft_features.rights = Some(rights);
                         st.t("team_rights_changed")
                     }

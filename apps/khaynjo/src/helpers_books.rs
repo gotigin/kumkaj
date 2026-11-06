@@ -479,12 +479,13 @@ fn printers_pool_rows(
 }
 
 /// Settings → areas / stations / tax rates On/Off (same pattern as units).
+/// Value column uses short On/Off pills (tap the row to flip).
 fn sibling_pickers_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<ReportRow> {
     let on_off = |on: bool| {
         if on {
-            t("unit_picker_on")
+            format!("● {}", t("unit_picker_on"))
         } else {
-            t("unit_picker_off")
+            format!("○ {}", t("unit_picker_off"))
         }
     };
     let mut rows = Vec::new();
@@ -518,9 +519,9 @@ fn units_report_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<ReportRow
     let convs = store.list_unit_conversions().unwrap_or_default();
     let on_off = |u: &domain::UnitDef| {
         if u.picker_enabled {
-            t("unit_picker_on")
+            format!("● {}", t("unit_picker_on"))
         } else {
-            t("unit_picker_off")
+            format!("○ {}", t("unit_picker_off"))
         }
     };
     let name = |u: &domain::UnitDef| {
