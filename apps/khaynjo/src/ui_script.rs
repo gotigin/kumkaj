@@ -2973,10 +2973,14 @@ script_mod! {
             // A line the kitchen already has changes only by Cancel
             // (reasoned), NC or Move. QuietFitBtn — never Row* at width:Fit
             // (Fill+wrap collapses to vertical letters).
+            // Right, no wrap. Wrap on this row gave Cancel / NC / Move a
+            // one-pixel label under the note (the faces stayed, the words
+            // did not). Three short Fit buttons fit the ticket.
             sent_row := View{
                 width: Fill height: Fit
-                flow: Right{wrap: true}
+                flow: Right
                 spacing: 8
+                align: Align{y: 0.5}
                 visible: false
                 line_cancel := QuietFitBtn{text: "Cancel"}
                 line_nc := QuietFitBtn{text: "NC"}
@@ -6056,7 +6060,7 @@ script_mod! {
                                     pos_page := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
-                                        padding: Inset{top: 4. bottom: 16.}
+                                        padding: Inset{top: 4. bottom: 32.}
 
                                     // Scrolls with the ticket — not sticky.
                                     sell_help := InfoHelp{
@@ -7963,6 +7967,16 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
                                 staff_label := mod.widgets.ReportText{}
+                                team_pick_input := FieldInput{empty_text: "Pick a person to edit — leave empty to add someone"}
+                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
+                                team_pick_hint := WrapLabel{
+                                    body: "Leave this empty to add someone. Pick a person to edit that one form."
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                team_hire_card := View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
                                 FormCard{
                                 staff_name_input := FieldInput{empty_text: "Staff name"}
                                 staff_title_input := FieldInput{empty_text: "Role title (e.g. Captain, Head cook)"}
@@ -8024,20 +8038,11 @@ script_mod! {
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 }
+                                } // team_hire_card
                                 FormCard{
-                                // Edit / remove the selected person (not hire).
-                                // Pick first — Rename, Copy-onto, Features, Rights,
-                                // kitchen stations, Remove all use that selection.
-                                // Names may repeat; the label shows name + role.
-                                team_pick_input := FieldInput{empty_text: "Staff to edit — name, username, or pick"}
-                                team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
-                                team_pick_hint := WrapLabel{
-                                    body: "Pick who to edit — screens, money rights, and kitchen stations appear for that person only."
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
-                                }
-                                // Hidden until a person is selected — avoids editing
-                                // rights with no target (or confusing hire vs copy vs remove).
+                                // One form for the person you picked. Name, username,
+                                // and password save with the job — not as extra forms.
+                                // Hidden until a person is selected.
                                 team_selected_setup := View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 10
@@ -8048,10 +8053,13 @@ script_mod! {
                                     font_size: 13.
                                 }
                                 staff_edit_name_input := FieldInput{empty_text: "Display name"}
-                                staff_rename_btn := RowSecondaryBtn{text: "Save name"}
-                                staff_edit_login_input := FieldInput{empty_text: "Username (required, unique)"}
-                                staff_edit_password_input := FieldInput{empty_text: "Starting password (optional)"}
-                                staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
+                                staff_edit_login_input := FieldInput{empty_text: "Username"}
+                                staff_edit_password_input := FieldInput{empty_text: "New password — leave blank to keep"}
+                                // Ids kept so an older session still finds them. Save does this work.
+                                View{width: Fill height: Fit visible: false
+                                    staff_rename_btn := RowSecondaryBtn{text: "Save name"}
+                                    staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
+                                }
                                 staff_copy_edit_input := FieldInput{
                                     empty_text: "Copy setup from another person"
                                 }
@@ -8158,14 +8166,16 @@ script_mod! {
                                 } // team_admin_block
                                 FormCard{
                                 h_change_my_pin_heading := WrapLabel{
-                                    body: "Change my PIN (only yours)"
+                                    body: "My sign-in"
                                     font_color: #x260B08
                                     font_size: 15.
                                 }
-                                my_pin_input := FieldInput{empty_text: "New PIN (4–12 digits)"}
-                                change_my_pin := StackPrimaryBtn{text: "Update my PIN"}
-                                my_password_input := FieldInput{empty_text: "New password (optional)"}
-                                change_my_password := RowSecondaryBtn{text: "Update my password"}
+                                my_pin_input := FieldInput{empty_text: "New PIN (4–12 digits) — leave blank to keep"}
+                                my_password_input := FieldInput{empty_text: "New password — leave blank to keep"}
+                                change_my_pin := StackPrimaryBtn{text: "Update my sign-in"}
+                                View{width: Fill height: Fit visible: false
+                                    change_my_password := RowSecondaryBtn{text: "Update my password"}
+                                }
                                 }
                                 // Owner-only. Emergency unlock PIN: looks like a
                                 // normal login but wipes books entries first
@@ -8613,13 +8623,17 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     View{width: Fill height: Fit visible: false
                                         printer_place_dd := StackSecondaryBtn{text: "Bill" flow: Down}
                                     }
-                                    printer_place_input := FieldInput{
-                                        height: 0. visible: false
-                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-                                        empty_text: ""
+                                    // FieldInput has no `visible`. A hidden wrapper keeps the
+                                    // legacy id without a script error on every launch.
+                                    View{width: Fill height: Fit visible: false
+                                        printer_place_input := FieldInput{
+                                            height: 0.
+                                            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                            empty_text: ""
+                                        }
+                                        printer_place_suggest := mod.widgets.SuggestList{field: "printer_place"}
                                     }
-                                    printer_place_suggest := mod.widgets.SuggestList{field: "printer_place" visible: false}
                                     // Legacy ids kept for hot-reload — no named Config catalog.
                                     View{width: Fill height: Fit visible: false
                                         h_profiles := WrapLabel{
@@ -8864,7 +8878,6 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         route_clear := StackSecondaryBtn{text: "Clear" flow: Down}
                                     }
                                     ActionStack{
-                                        visible: false
                                         print_test_btn := StackSecondaryBtn{text: "Print a test page" flow: Down}
                                     }
                                     // Legacy ids kept for RTL / paint paths.
@@ -8986,16 +8999,113 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
 h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 20.}
                                 h_bill_format_help := WrapLabel{
                                     width: Fill
-                                    body: ""
+                                    body: "Pick a line. Show, size, weight, and alignment apply to that line on the bill and on Test bill."
                                     font_color: #x6B4A3F
                                     font_size: 12.
-                                    visible: false
                                 }
-                                bill_header_input := FieldInput{empty_text: "Address | phone"}
-                                fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
-                                upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
-                                upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
-                                bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
+                                // One list. The selected row is the line you are editing.
+                                View{width: Fill height: Fit flow: Down spacing: 4
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_shop := KotRowBtn{text: "Shop"}
+                                        bill_pick_shop_on := KotRowBtnOn{text: "Shop" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_header := KotRowBtn{text: "Address"}
+                                        bill_pick_header_on := KotRowBtnOn{text: "Address" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_fssai := KotRowBtn{text: "FSSAI"}
+                                        bill_pick_fssai_on := KotRowBtnOn{text: "FSSAI" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_title := KotRowBtn{text: "Title"}
+                                        bill_pick_title_on := KotRowBtnOn{text: "Title" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_billno := KotRowBtn{text: "Bill no"}
+                                        bill_pick_billno_on := KotRowBtnOn{text: "Bill no" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_time := KotRowBtn{text: "Time"}
+                                        bill_pick_time_on := KotRowBtnOn{text: "Time" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_table := KotRowBtn{text: "Table"}
+                                        bill_pick_table_on := KotRowBtnOn{text: "Table" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_items := KotRowBtn{text: "Items"}
+                                        bill_pick_items_on := KotRowBtnOn{text: "Items" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_total := KotRowBtn{text: "Total"}
+                                        bill_pick_total_on := KotRowBtnOn{text: "Total" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_footer := KotRowBtn{text: "Footer"}
+                                        bill_pick_footer_on := KotRowBtnOn{text: "Footer" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_upi := KotRowBtn{text: "UPI"}
+                                        bill_pick_upi_on := KotRowBtnOn{text: "UPI" visible: false}
+                                    }
+                                }
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_field_show := SegBtn{text: "Show"}
+                                        bill_field_show_on := SegBtnOn{text: "Show" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_field_hide := SegBtn{text: "Hide"}
+                                        bill_field_hide_on := SegBtnOn{text: "Hide" visible: false}
+                                    }
+                                }
+                                h_bill_field_size := WrapLabel{body: "Font size" font_color: #x260B08 font_size: 14.}
+                                bill_field_size_input := FieldInput{empty_text: "e.g. 16, 20, 24, 28, 32…"}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_w_light := SegBtn{text: "Light"}
+                                        bill_w_light_on := SegBtnOn{text: "Light" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_w_reg := SegBtn{text: "Regular"}
+                                        bill_w_reg_on := SegBtnOn{text: "Regular" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_w_bold := SegBtn{text: "Bold"}
+                                        bill_w_bold_on := SegBtnOn{text: "Bold" visible: false}
+                                    }
+                                }
+                                h_bill_field_align := WrapLabel{body: "Align" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_a_start := SegBtn{text: "Start"}
+                                        bill_a_start_on := SegBtnOn{text: "Start" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_a_center := SegBtn{text: "Center"}
+                                        bill_a_center_on := SegBtnOn{text: "Center" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_a_end := SegBtn{text: "End"}
+                                        bill_a_end_on := SegBtnOn{text: "End" visible: false}
+                                    }
+                                }
+                                // One box. Its hint is the selected line (address, FSSAI, title, footer, UPI).
+                                bill_field_value := FieldInput{empty_text: "Address | phone"}
+                                // Kept so older saves and hot reload still find the ids.
+                                View{width: Fill height: Fit visible: false
+                                    bill_header_input := FieldInput{empty_text: "Address | phone"}
+                                    fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
+                                    upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
+                                    upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
+                                    bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
+                                }
+                                h_bill_preview := WrapLabel{body: "Preview" font_color: #x260B08 font_size: 14.}
+                                bill_format_preview_card := View{
+                                    width: Fit height: Fit
+                                    bill_format_preview := mod.widgets.KotSlipPreview{}
+                                }
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 0
@@ -9051,6 +9161,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 bill_format_test := StackSecondaryBtn{text: "Test bill"}
                                 }
                                 FormCard{
+                                visible: false
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 0

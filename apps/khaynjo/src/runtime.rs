@@ -103,6 +103,8 @@ enum LanOnce {
     Paired(Result<(net::Link, net::SyncSnapshot), net::LanError>),
     /// Snapshot written off the UI thread (venue label for the status line).
     PairApplied(Result<String, String>),
+    /// Books reloaded off the UI thread; the screen may paint Lock.
+    PairBooksReady,
     SignIn {
         staff_id: Option<String>,
         pin: String,

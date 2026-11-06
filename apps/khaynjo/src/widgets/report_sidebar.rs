@@ -127,6 +127,12 @@ fn short_when(at: &str) -> String {
 }
 
 /// A report row's text, right-aligned in right-to-left languages.
+fn set_preview_em(cx: &mut Cx, item: &WidgetRef, id: &[LiveId], em: f32) {
+    if let Some(mut label) = item.widget(cx, id).borrow_mut::<WrapLabel>() {
+        label.markdown.text_flow.font_size = em;
+    }
+}
+
 fn set_report_label(cx: &mut Cx, item: &WidgetRef, id: &[LiveId], text: &str, align_x: f64) {
     let w = item.widget(cx, id);
     w.set_text(cx, text);
@@ -598,9 +604,9 @@ impl Widget for PartsList {
 /// One preview line. A tab in the slip text is a name / Qty. column.
 #[derive(Clone, Debug, PartialEq)]
 enum SlipPreviewRow {
-    /// Text and its horizontal align (0 start, 0.5 center, 1 end) in this language.
-    Line(String, f64),
-    Qty(String, String, f64),
+    /// Text, horizontal align, and point size.
+    Line(String, f64, f32),
+    Qty(String, String, f64, f32),
     Gap,
 }
 
@@ -632,8 +638,9 @@ fn slip_preview_rows(text: &str, rtl: bool) -> Vec<SlipPreviewRow> {
     let mut rows = Vec::new();
     for line in text.lines() {
         let line = line.trim_end();
-        let (align, body) = print_share::kot_preview_line(line);
+        let (align, em, body) = print_share::kot_preview_metrics(line);
         let x = preview_align_x(align, rtl);
+        let em = em.clamp(12, 48) as f32;
         if body.trim().is_empty() {
             if !matches!(rows.last(), None | Some(SlipPreviewRow::Gap)) {
                 rows.push(SlipPreviewRow::Gap);
@@ -645,9 +652,10 @@ fn slip_preview_rows(text: &str, rtl: bool) -> Vec<SlipPreviewRow> {
                 left.trim().to_string(),
                 print_share::kot_qty_column(right),
                 x,
+                em,
             ));
         } else {
-            rows.push(SlipPreviewRow::Line(body.trim().to_string(), x));
+            rows.push(SlipPreviewRow::Line(body.trim().to_string(), x, em));
         }
     }
     while matches!(rows.last(), Some(SlipPreviewRow::Gap)) {
@@ -681,12 +689,13 @@ impl Widget for KotSlipPreview {
                         continue;
                     };
                     let item = match row {
-                        SlipPreviewRow::Line(t, x) => {
+                        SlipPreviewRow::Line(t, x, em) => {
                             let item = list.item(cx, item_id, id!(Line));
                             set_report_label(cx, &item, ids!(line), t, *x);
+                            set_preview_em(cx, &item, ids!(line), *em);
                             item
                         }
-                        SlipPreviewRow::Qty(name, qty, x) => {
+                        SlipPreviewRow::Qty(name, qty, x, em) => {
                             let item = list.item(
                                 cx,
                                 item_id,
@@ -694,6 +703,8 @@ impl Widget for KotSlipPreview {
                             );
                             set_report_label(cx, &item, ids!(k), name, *x);
                             set_report_label(cx, &item, ids!(v), qty, qty_align);
+                            set_preview_em(cx, &item, ids!(k), *em);
+                            set_preview_em(cx, &item, ids!(v), *em);
                             item
                         }
                         SlipPreviewRow::Gap => list.item(cx, item_id, id!(Gap)),

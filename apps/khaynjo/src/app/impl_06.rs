@@ -891,33 +891,54 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 }
             },
             Some(LanOnce::PairApplied(result)) => {
-                let outcome = (|| -> Result<String, String> {
-                    let name = result?;
-                    let mut st = app_state().lock().unwrap();
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    phone::start(store.db_path().to_path_buf());
-                    st.client_paired = true;
-                    st.reload_all()?;
-                    // The person signs in with their shop PIN: this device's
-                    // own sign-in is not one the Server knows. Drop any Who
-                    // pick left from a previous shop's roster.
-                    st.session = None;
-                    st.clear_team_edit_selection();
-                    st.lock_staff_id = None;
-                    st.lock_as_owner = false;
-                    st.screen = Screen::Lock;
-                    Ok(format!("Paired with {name} — sign in with your shop PIN"))
-                })();
-                match outcome {
-                    Ok(msg) => {
-                        app_state().lock().unwrap().pair_note.clear();
-                        self.set_status(cx, msg);
+                // A focused pairing field makes sync_chrome return before it
+                // paints, and reload_all on this thread freezes the till for
+                // the whole shop download. Show Lock now; load books after.
+                self.dismiss_soft_keyboard(cx);
+                match result {
+                    Ok(name) => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            if let Some(store) = st.store.as_ref() {
+                                phone::start(store.db_path().to_path_buf());
+                            }
+                            st.client_paired = true;
+                            st.session = None;
+                            st.clear_team_edit_selection();
+                            st.lock_staff_id = None;
+                            st.lock_as_owner = false;
+                            st.screen = Screen::Lock;
+                            st.pair_note.clear();
+                        }
+                        self.set_status(
+                            cx,
+                            format!("Paired with {name} — opening the till…"),
+                        );
+                        self.show_screen(cx, Screen::Lock);
+                        self.ui.redraw(cx);
+                        let _ = std::thread::Builder::new()
+                            .name("khaynjo-pair-books".into())
+                            .spawn(|| {
+                                {
+                                    let mut st = app_state().lock().unwrap();
+                                    let _ = st.reload_all();
+                                }
+                                *lan_once().lock().unwrap() = Some(LanOnce::PairBooksReady);
+                                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+                            });
                     }
                     Err(e) => {
                         app_state().lock().unwrap().pair_note = e.clone();
+                        self.ui
+                            .widget(cx, ids!(client_pair_status))
+                            .set_text(cx, &e);
                         self.set_status(cx, e);
+                        self.ui.redraw(cx);
                     }
                 }
+            }
+            Some(LanOnce::PairBooksReady) => {
+                self.set_status(cx, "Paired — sign in with your shop PIN");
                 self.sync_chrome(cx);
             }
             None => {}
@@ -1519,9 +1540,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let search = self.ui.text_input(cx, ids!(menu_search_input));
         search.set_text(cx, "");
         self.ui.modal(cx, ids!(menu_modal)).open(cx);
-        if !cfg!(target_os = "android") {
-            search.set_key_focus(cx);
-        }
+        // Do not grab the search field. A touch screen on any OS uses the
+        // first contact as a tap; focusing here steals it and the Done
+        // button misses. Tap the field to type.
+        let _ = search;
         self.sync_chrome(cx);
     }
 

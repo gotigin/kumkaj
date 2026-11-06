@@ -314,6 +314,10 @@ impl App {
             } else {
                 app_state().lock().unwrap().pair_note = "Pairing…".into();
                 self.set_status(cx, "Pairing…");
+                self.ui
+                    .widget(cx, ids!(client_pair_status))
+                    .set_text(cx, "Pairing…");
+                self.ui.redraw(cx);
                 let _ = std::thread::Builder::new()
                     .name("courier-pair".into())
                     .spawn(move || {
@@ -327,7 +331,6 @@ impl App {
                         makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
                     });
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(client_sync_btn)).clicked(actions) {
             phone::want_sync();

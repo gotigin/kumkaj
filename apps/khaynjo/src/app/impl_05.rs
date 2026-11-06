@@ -93,6 +93,9 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             } else if field == SuggestField::StationVps {
                 let r = self.ui.button(cx, ids!(station_vps_dd)).area().rect(cx);
                 r.size.x > 0.0 && r.contains(abs)
+            } else if field == SuggestField::BillPrinters {
+                let r = self.ui.button(cx, ids!(bill_printers_dd)).area().rect(cx);
+                r.size.x > 0.0 && r.contains(abs)
             } else {
                 false
             };
@@ -609,6 +612,43 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 } else {
                     false
                 }
+            }
+            // A finger is wider than the 6px divider, and a touch screen
+            // never sends MouseDown for it.
+            Event::TouchUpdate(e) => {
+                let mut handled = false;
+                for t in &e.touches {
+                    match t.state {
+                        TouchState::Start if unlocked_rail => {
+                            *rail_width_anim().lock().unwrap() = None;
+                            let rail_w = app_state().lock().unwrap().rail_width;
+                            let x = t.abs.x;
+                            if x >= rail_w - 12.0 && x <= rail_w + DIVIDER_W + 22.0 {
+                                *rail_resize_drag().lock().unwrap() = Some(x - rail_w);
+                                *mouse_swipe_origin().lock().unwrap() = None;
+                                handled = true;
+                            }
+                        }
+                        TouchState::Move if rail_resize_drag().lock().unwrap().is_some() => {
+                            let grab = rail_resize_drag().lock().unwrap().unwrap_or(0.0);
+                            let window_w = self.window_inner_width(cx);
+                            let max_rail =
+                                (window_w - MAIN_CONTENT_MIN - DIVIDER_W).max(RAIL_WIDTH_MIN);
+                            let new_w = (t.abs.x - grab).clamp(RAIL_WIDTH_MIN, max_rail);
+                            app_state().lock().unwrap().rail_width = new_w;
+                            self.apply_shell_layout(cx, true);
+                            handled = true;
+                        }
+                        TouchState::Stop => {
+                            if rail_resize_drag().lock().unwrap().take().is_some() {
+                                self.apply_shell_layout(cx, true);
+                                handled = true;
+                            }
+                        }
+                        _ => {}
+                    }
+                }
+                handled
             }
             _ => false,
         }

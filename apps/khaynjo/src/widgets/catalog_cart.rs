@@ -236,7 +236,6 @@ impl Widget for CartList {
         // Full list; outer Order ScrollYView scrolls. Closed-row pitch + KOT
         // group headers ("Not sent yet" / "KOT n"); open details add extra.
         const GAP: f64 = 8.0;
-        const OPEN_EXTRA: f64 = 220.0;
         const KOT_HEAD_H: f64 = 22.0;
         // Heal only absurd leftover 320 seeds — never squash a learned tall pitch
         // (the old `> 140 → 96` clamp cropped cart lines into Kitchen).
@@ -258,7 +257,11 @@ impl Widget for CartList {
                         .unwrap_or(true)
             })
             .count();
-        let open_extra = if open_line.is_some() { OPEN_EXTRA } else { 0.0 };
+        let open_extra = if open_line.is_some() {
+            *cart_open_extra().lock().unwrap()
+        } else {
+            0.0
+        };
         let (first, last) = (0usize, count);
         let content_h = (list_content_height(count, row, GAP)
             + head_n as f64 * KOT_HEAD_H
@@ -551,7 +554,31 @@ impl Widget for CartList {
                         measured_row = body / drew as f64;
                         // Reserved too short → learn + one settle frame (draw
                         // cannot grow the walk in-place without flicker).
-                        if extent > content_h + 1.0 && open_line.is_none() {
+                        // Closed rows learn their pitch. An open line learns
+                        // only its own extra, so one tall details block does
+                        // not stretch every other dish — and does not clip
+                        // Cancel / NC / Move into Kitchen station.
+                        if open_line.is_some() {
+                            // Match the drawn line. Too short clips Cancel /
+                            // NC / Move. Too tall is the empty band under them.
+                            // Only trust extent when it is clearly inside or
+                            // clearly past the box — a clip that reports the
+                            // box height must not walk the extra forever.
+                            let next = if extent > content_h + 1.0 {
+                                Some((open_extra + extent - content_h + 8.0).min(640.0))
+                            } else if content_h > extent + 24.0 {
+                                let closed = (content_h - open_extra).max(0.0);
+                                Some((extent - closed + 8.0).clamp(0.0, 640.0))
+                            } else {
+                                None
+                            };
+                            if let Some(next) = next {
+                                if (next - open_extra).abs() > 8.0 {
+                                    *cart_open_extra().lock().unwrap() = next;
+                                    self.settle = cx.new_next_frame();
+                                }
+                            }
+                        } else if extent > content_h + 1.0 {
                             *cart_row_height().lock().unwrap() = measured_row.max(row);
                             self.settle = cx.new_next_frame();
                         }

@@ -2608,6 +2608,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 .view(cx, ids!(team_admin_block))
                 .set_visible(cx, manage_team);
             self.ui
+                .view(cx, ids!(team_hire_card))
+                .set_visible(cx, manage_team && !has_selected);
+            self.ui
                 .view(cx, ids!(team_selected_setup))
                 .set_visible(cx, manage_team && has_selected);
             self.ui

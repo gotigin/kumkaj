@@ -1401,6 +1401,380 @@ fn kot_style_prefix(style: &KotFieldStyle, rtl: bool) -> String {
     )
 }
 
+/// A line on the bill. Same ink controls as a kitchen field: show, size, weight, align.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum BillStyleField {
+    Shop,
+    Header,
+    Fssai,
+    Title,
+    BillNo,
+    Time,
+    Table,
+    Items,
+    Total,
+    Footer,
+    Upi,
+}
+
+impl BillStyleField {
+    pub const ALL: [BillStyleField; 11] = [
+        BillStyleField::Shop,
+        BillStyleField::Header,
+        BillStyleField::Fssai,
+        BillStyleField::Title,
+        BillStyleField::BillNo,
+        BillStyleField::Time,
+        BillStyleField::Table,
+        BillStyleField::Items,
+        BillStyleField::Total,
+        BillStyleField::Footer,
+        BillStyleField::Upi,
+    ];
+
+    pub fn label(self) -> &'static str {
+        match self {
+            BillStyleField::Shop => "Shop",
+            BillStyleField::Header => "Address",
+            BillStyleField::Fssai => "FSSAI",
+            BillStyleField::Title => "Title",
+            BillStyleField::BillNo => "Bill no",
+            BillStyleField::Time => "Time",
+            BillStyleField::Table => "Table",
+            BillStyleField::Items => "Items",
+            BillStyleField::Total => "Total",
+            BillStyleField::Footer => "Footer",
+            BillStyleField::Upi => "UPI",
+        }
+    }
+
+    /// The owner types this field. The others are filled from the sale.
+    pub fn has_text(self) -> bool {
+        matches!(
+            self,
+            BillStyleField::Header
+                | BillStyleField::Fssai
+                | BillStyleField::Title
+                | BillStyleField::Footer
+                | BillStyleField::Upi
+        )
+    }
+
+    pub fn value_hint(self) -> &'static str {
+        match self {
+            BillStyleField::Header => "Address | phone",
+            BillStyleField::Fssai => "FSSAI licence no.",
+            BillStyleField::Title => "Title (blank = CASH MEMO)",
+            BillStyleField::Footer => "Footer (e.g. Thank you, visit again)",
+            BillStyleField::Upi => "UPI ID | payee name",
+            _ => "",
+        }
+    }
+}
+
+/// Show, size, weight, and alignment for one bill line.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct BillFieldStyle {
+    #[serde(default = "default_true")]
+    pub show: bool,
+    #[serde(default = "default_bill_em")]
+    pub size_em: u32,
+    #[serde(default)]
+    pub weight: KotFontWeight,
+    #[serde(default)]
+    pub align: KotAlign,
+}
+
+fn default_bill_em() -> u32 {
+    16
+}
+
+impl BillFieldStyle {
+    fn face(size_em: u32, weight: KotFontWeight, align: KotAlign) -> Self {
+        Self {
+            show: true,
+            size_em,
+            weight,
+            align,
+        }
+    }
+}
+
+impl Default for BillFieldStyle {
+    fn default() -> Self {
+        Self::face(16, KotFontWeight::Regular, KotAlign::Start)
+    }
+}
+
+/// What the bill prints, and how each line looks. One editor, same as the KOT.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct BillSlipFormat {
+    #[serde(default)]
+    pub header: String,
+    #[serde(default)]
+    pub fssai: String,
+    #[serde(default)]
+    pub footer: String,
+    #[serde(default)]
+    pub upi_vpa: String,
+    #[serde(default)]
+    pub upi_payee: String,
+    /// Blank prints CASH MEMO (or TAX INVOICE on a declared bill).
+    #[serde(default)]
+    pub title: String,
+    #[serde(default)]
+    pub shop: BillFieldStyle,
+    #[serde(default)]
+    pub header_style: BillFieldStyle,
+    #[serde(default)]
+    pub fssai_style: BillFieldStyle,
+    #[serde(default)]
+    pub title_style: BillFieldStyle,
+    #[serde(default)]
+    pub bill_no: BillFieldStyle,
+    #[serde(default)]
+    pub time: BillFieldStyle,
+    #[serde(default)]
+    pub table: BillFieldStyle,
+    #[serde(default)]
+    pub items: BillFieldStyle,
+    #[serde(default)]
+    pub total: BillFieldStyle,
+    #[serde(default)]
+    pub footer_style: BillFieldStyle,
+    #[serde(default)]
+    pub upi: BillFieldStyle,
+}
+
+impl Default for BillSlipFormat {
+    fn default() -> Self {
+        Self {
+            header: String::new(),
+            fssai: String::new(),
+            footer: String::new(),
+            upi_vpa: String::new(),
+            upi_payee: String::new(),
+            title: String::new(),
+            shop: BillFieldStyle::face(22, KotFontWeight::Bold, KotAlign::Center),
+            header_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
+            fssai_style: BillFieldStyle::face(12, KotFontWeight::Regular, KotAlign::Center),
+            title_style: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Center),
+            bill_no: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
+            time: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
+            table: BillFieldStyle::face(16, KotFontWeight::Bold, KotAlign::Start),
+            items: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
+            total: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Start),
+            footer_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
+            upi: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
+        }
+    }
+}
+
+impl BillSlipFormat {
+    pub fn parse(raw: &str) -> Self {
+        let trimmed = raw.trim();
+        if trimmed.is_empty() {
+            return Self::default();
+        }
+        serde_json::from_str::<Self>(trimmed)
+            .unwrap_or_default()
+            .clamped()
+    }
+
+    pub fn to_json(&self) -> String {
+        serde_json::to_string(&self.clone().clamped()).unwrap_or_else(|_| "{}".into())
+    }
+
+    pub fn clamped(mut self) -> Self {
+        for field in BillStyleField::ALL {
+            let s = self.style_mut(field);
+            s.size_em = s.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        }
+        self
+    }
+
+    pub fn style(&self, field: BillStyleField) -> &BillFieldStyle {
+        match field {
+            BillStyleField::Shop => &self.shop,
+            BillStyleField::Header => &self.header_style,
+            BillStyleField::Fssai => &self.fssai_style,
+            BillStyleField::Title => &self.title_style,
+            BillStyleField::BillNo => &self.bill_no,
+            BillStyleField::Time => &self.time,
+            BillStyleField::Table => &self.table,
+            BillStyleField::Items => &self.items,
+            BillStyleField::Total => &self.total,
+            BillStyleField::Footer => &self.footer_style,
+            BillStyleField::Upi => &self.upi,
+        }
+    }
+
+    pub fn style_mut(&mut self, field: BillStyleField) -> &mut BillFieldStyle {
+        match field {
+            BillStyleField::Shop => &mut self.shop,
+            BillStyleField::Header => &mut self.header_style,
+            BillStyleField::Fssai => &mut self.fssai_style,
+            BillStyleField::Title => &mut self.title_style,
+            BillStyleField::BillNo => &mut self.bill_no,
+            BillStyleField::Time => &mut self.time,
+            BillStyleField::Table => &mut self.table,
+            BillStyleField::Items => &mut self.items,
+            BillStyleField::Total => &mut self.total,
+            BillStyleField::Footer => &mut self.footer_style,
+            BillStyleField::Upi => &mut self.upi,
+        }
+    }
+
+    pub fn text(&self, field: BillStyleField) -> String {
+        match field {
+            BillStyleField::Header => self.header.clone(),
+            BillStyleField::Fssai => self.fssai.clone(),
+            BillStyleField::Title => self.title.clone(),
+            BillStyleField::Footer => self.footer.clone(),
+            BillStyleField::Upi => {
+                if self.upi_payee.trim().is_empty() {
+                    self.upi_vpa.clone()
+                } else if self.upi_vpa.trim().is_empty() {
+                    self.upi_payee.clone()
+                } else {
+                    format!("{} | {}", self.upi_vpa.trim(), self.upi_payee.trim())
+                }
+            }
+            _ => String::new(),
+        }
+    }
+
+    pub fn set_text(&mut self, field: BillStyleField, raw: &str) {
+        match field {
+            BillStyleField::Header => self.header = raw.trim().to_string(),
+            BillStyleField::Fssai => self.fssai = raw.trim().to_string(),
+            BillStyleField::Title => self.title = raw.trim().to_string(),
+            BillStyleField::Footer => self.footer = raw.trim().to_string(),
+            BillStyleField::Upi => {
+                let mut parts = raw.split('|');
+                self.upi_vpa = parts.next().unwrap_or("").trim().to_string();
+                self.upi_payee = parts.next().unwrap_or("").trim().to_string();
+            }
+            _ => {}
+        }
+    }
+
+    /// Header stored as one line per address part (the books' column).
+    pub fn header_lines(&self) -> String {
+        self.header
+            .split('|')
+            .map(str::trim)
+            .filter(|l| !l.is_empty())
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    /// The bill the Preview and Test bill both print.
+    pub fn render_sample(&self, shop: &str, when: &str) -> String {
+        let mut out = String::new();
+        append_bill_field(&mut out, self, BillStyleField::Shop, shop, false);
+        append_bill_field(&mut out, self, BillStyleField::Header, &self.header, false);
+        if !self.fssai.trim().is_empty() {
+            append_bill_field(
+                &mut out,
+                self,
+                BillStyleField::Fssai,
+                &format!("FSSAI Lic. No: {}", self.fssai.trim()),
+                false,
+            );
+        }
+        let title = if self.title.trim().is_empty() {
+            "CASH MEMO"
+        } else {
+            self.title.trim()
+        };
+        append_bill_field(&mut out, self, BillStyleField::Title, title, false);
+        append_bill_field(&mut out, self, BillStyleField::BillNo, "Bill: SAMPLE", false);
+        append_bill_field(&mut out, self, BillStyleField::Time, when, false);
+        append_bill_field(&mut out, self, BillStyleField::Table, "Table: D1", false);
+        append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
+        append_bill_field(
+            &mut out,
+            self,
+            BillStyleField::Items,
+            "Tea  2 x 40.00  80.00",
+            false,
+        );
+        append_bill_field(
+            &mut out,
+            self,
+            BillStyleField::Items,
+            "Coffee  1 x 20.00  20.00",
+            false,
+        );
+        append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
+        append_bill_field(&mut out, self, BillStyleField::Total, "Total 100.00", false);
+        append_bill_field(&mut out, self, BillStyleField::Footer, &self.footer, false);
+        if !self.upi_vpa.trim().is_empty() {
+            append_bill_field(
+                &mut out,
+                self,
+                BillStyleField::Upi,
+                &format!("UPI: {}", self.upi_vpa.trim()),
+                false,
+            );
+        }
+        if !self.upi_payee.trim().is_empty() {
+            append_bill_field(&mut out, self, BillStyleField::Upi, &self.upi_payee, false);
+        }
+        out
+    }
+}
+
+fn bill_mark(style: &BillFieldStyle, rtl: bool) -> String {
+    let face = KotFieldStyle {
+        size_em: style.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX),
+        weight: style.weight,
+        align: style.align,
+    };
+    kot_style_prefix(&face, rtl)
+}
+
+fn append_marked(out: &mut String, style: &BillFieldStyle, text: &str, rtl: bool) {
+    let mark = bill_mark(style, rtl);
+    for part in text.split(['\n', '|']) {
+        let part = part.trim();
+        if part.is_empty() {
+            continue;
+        }
+        out.push_str(&mark);
+        out.push_str(part);
+        out.push('\n');
+    }
+}
+
+/// One bill field, if it is shown. Empty text prints nothing.
+pub fn append_bill_field(
+    out: &mut String,
+    fmt: &BillSlipFormat,
+    field: BillStyleField,
+    text: &str,
+    rtl: bool,
+) {
+    let style = fmt.style(field);
+    if !style.show {
+        return;
+    }
+    append_marked(out, style, text, rtl);
+}
+
+/// Same ink as `field`, even when that field is hidden. Rules and tax
+/// lines stay on the bill; they still use the field's size, weight, and align.
+pub fn append_bill_like(
+    out: &mut String,
+    fmt: &BillSlipFormat,
+    field: BillStyleField,
+    text: &str,
+    rtl: bool,
+) {
+    append_marked(out, fmt.style(field), text, rtl);
+}
+
 /// One line's type size, weight, and alignment, taken off the private-use prefix.
 struct KotLineStyle {
     size_em: u32,
@@ -1408,10 +1782,19 @@ struct KotLineStyle {
     align: KotAlign,
 }
 
-/// Body text and its alignment, for the on-screen slip preview.
+/// Body text, alignment, and point size, for the on-screen slip preview.
 pub fn kot_preview_line(line: &str) -> (KotAlign, &str) {
+    let (align, _, body) = kot_preview_metrics(line);
+    (align, body)
+}
+
+/// Alignment, point size, and body. Unmarked lines are 14 pt, start-aligned.
+pub fn kot_preview_metrics(line: &str) -> (KotAlign, u32, &str) {
     let (style, body) = take_kot_line_style(line);
-    (style.map(|s| s.align).unwrap_or_default(), body)
+    match style {
+        Some(style) => (style.align, style.size_em, body),
+        None => (KotAlign::Start, 14, body),
+    }
 }
 
 /// `Some` when `line` starts with a style mark. Body is the rest of the line.

@@ -323,43 +323,77 @@ impl App {
                 pin,
                 reply,
             }) => self.finish_lan_sign_in(cx, staff_id, pin, reply),
-            Some(LanOnce::Paired(reply)) => {
-                let result = (|| -> Result<String, String> {
-                    let (link, snap) = reply?;
-                    let mut st = app_state().lock().unwrap();
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    store.set_client_device_pairing(&link.base, &link.device)?;
-                    // Kept to find the Server again if its address changes.
-                    store.set_paired_server_id(&link.server_id)?;
-                    phone::forget_revision();
-                    net::apply_snapshot(store, &snap)?;
-                    phone::start(store.db_path().to_path_buf());
-                    st.client_paired = true;
-                    st.reload_all()?;
-                    // The person signs in with their office PIN: this device's
-                    // own sign-in is not one the Server knows. Drop any Who
-                    // pick left from a previous shop's roster.
-                    st.session = None;
-                    st.clear_team_edit_selection();
-                    st.lock_staff_id = None;
-                    st.lock_as_owner = false;
-                    st.screen = Screen::Lock;
-                    // The office's name as it saved it; unnamed, "the office".
-                    let name = [snap.venue_title.trim(), snap.org_name.trim()]
-                        .into_iter()
-                        .find(|n| !n.is_empty())
-                        .unwrap_or("the office")
-                        .to_string();
-                    Ok(format!("Paired with {name} — sign in with your office PIN"))
-                })();
+            Some(LanOnce::Paired(reply)) => match reply {
+                Err(e) => {
+                    let msg = e.to_string();
+                    app_state().lock().unwrap().pair_note = msg.clone();
+                    self.ui
+                        .widget(cx, ids!(client_pair_status))
+                        .set_text(cx, &msg);
+                    self.set_status(cx, msg);
+                    self.ui.redraw(cx);
+                }
+                Ok((link, snap)) => {
+                    self.dismiss_soft_keyboard(cx);
+                    self.set_status(cx, "Pairing… opening the office books");
+                    self.ui
+                        .widget(cx, ids!(client_pair_status))
+                        .set_text(cx, "Pairing… opening the office books");
+                    self.ui.redraw(cx);
+                    let db = {
+                        let st = app_state().lock().unwrap();
+                        st.store.as_ref().map(|s| s.db_path().to_path_buf())
+                    };
+                    if let Some(db) = db {
+                        let _ = std::thread::Builder::new()
+                            .name("courier-pair-apply".into())
+                            .spawn(move || {
+                                let result = (|| -> Result<String, String> {
+                                    let store = Store::open_path(&db)?;
+                                    store.set_client_device_pairing(&link.base, &link.device)?;
+                                    store.set_paired_server_id(&link.server_id)?;
+                                    phone::forget_revision();
+                                    net::apply_snapshot(&store, &snap)?;
+                                    let name = [snap.venue_title.trim(), snap.org_name.trim()]
+                                        .into_iter()
+                                        .find(|n| !n.is_empty())
+                                        .unwrap_or("the office")
+                                        .to_string();
+                                    {
+                                        let mut st = app_state().lock().unwrap();
+                                        phone::start(db);
+                                        st.client_paired = true;
+                                        let _ = st.reload_all();
+                                        st.session = None;
+                                        st.clear_team_edit_selection();
+                                        st.lock_staff_id = None;
+                                        st.lock_as_owner = false;
+                                        st.screen = Screen::Lock;
+                                        st.pair_note.clear();
+                                    }
+                                    Ok(name)
+                                })();
+                                *lan_once().lock().unwrap() = Some(LanOnce::PairBooksReady(result));
+                                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+                            });
+                    } else {
+                        self.set_status(cx, "No store");
+                    }
+                }
+            },
+            Some(LanOnce::PairBooksReady(result)) => {
+                self.dismiss_soft_keyboard(cx);
                 match result {
-                    Ok(msg) => {
-                        app_state().lock().unwrap().pair_note.clear();
-                        self.set_status(cx, msg)
+                    Ok(name) => {
+                        self.show_screen(cx, Screen::Lock);
+                        self.set_status(
+                            cx,
+                            format!("Paired with {name} — sign in with your office PIN"),
+                        );
                     }
                     Err(e) => {
                         app_state().lock().unwrap().pair_note = e.clone();
-                        self.set_status(cx, e)
+                        self.set_status(cx, e);
                     }
                 }
                 self.sync_chrome(cx);

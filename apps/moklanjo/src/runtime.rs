@@ -91,6 +91,8 @@ fn firewall_job(job: fn() -> Result<bool, String>) {
 /// thread; its answer waits here until the UI wakes.
 enum LanOnce {
     Paired(Result<(net::Link, net::SyncSnapshot), net::LanError>),
+    /// Snapshot and shop lists written off the UI thread.
+    PairBooksReady(Result<String, String>),
     SignIn {
         staff_id: Option<String>,
         pin: String,

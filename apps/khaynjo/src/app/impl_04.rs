@@ -1788,11 +1788,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 scheme_rows,
             )
         };
-        self.ui.text_input(cx, ids!(bill_header_input)).set_text(cx, &header);
-        self.ui.text_input(cx, ids!(fssai_input)).set_text(cx, &fssai);
-        self.ui.text_input(cx, ids!(upi_vpa_input)).set_text(cx, &upi_vpa);
-        self.ui.text_input(cx, ids!(upi_payee_input)).set_text(cx, &upi_payee);
-        self.ui.text_input(cx, ids!(bill_footer_input)).set_text(cx, &footer);
+        {
+            let mut st = app_state().lock().unwrap();
+            st.bill_slip_draft = st
+                .store
+                .as_ref()
+                .and_then(|s| s.bill_slip_format().ok())
+                .unwrap_or_else(|| {
+                    let mut fmt = print_share::BillSlipFormat::default();
+                    fmt.header = header.clone();
+                    fmt.fssai = fssai.clone();
+                    fmt.footer = footer.clone();
+                    fmt.upi_vpa = upi_vpa.clone();
+                    fmt.upi_payee = upi_payee.clone();
+                    fmt
+                });
+        }
+        self.sync_bill_format_ui(cx);
         self.ui
             .widget(cx, ids!(print_stamp_status))
             .set_text(cx, &plain_display_text(&stamp_hint));
@@ -2095,15 +2107,133 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// Print a sample bill using the header, size, width, layout, and delivery
-    /// currently on the Bill tab.
+    /// Paint the one bill-line editor and the preview from the draft.
+    fn sync_bill_format_ui(&mut self, cx: &mut Cx) {
+        let (draft, field, shop, when) = {
+            let st = app_state().lock().unwrap();
+            let shop = st
+                .store
+                .as_ref()
+                .and_then(|s| s.venue_title().ok())
+                .unwrap_or_else(|| st.display_venue_title());
+            let when = st
+                .store
+                .as_ref()
+                .and_then(|s| s.fiscal_settings().ok())
+                .map(|f| f.format_now())
+                .unwrap_or_default();
+            (
+                st.bill_slip_draft.clone(),
+                st.bill_style_field,
+                shop,
+                when,
+            )
+        };
+        let style = draft.style(field).clone();
+        let picks = [
+            (ids!(bill_pick_shop), ids!(bill_pick_shop_on), print_share::BillStyleField::Shop),
+            (ids!(bill_pick_header), ids!(bill_pick_header_on), print_share::BillStyleField::Header),
+            (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on), print_share::BillStyleField::Fssai),
+            (ids!(bill_pick_title), ids!(bill_pick_title_on), print_share::BillStyleField::Title),
+            (ids!(bill_pick_billno), ids!(bill_pick_billno_on), print_share::BillStyleField::BillNo),
+            (ids!(bill_pick_time), ids!(bill_pick_time_on), print_share::BillStyleField::Time),
+            (ids!(bill_pick_table), ids!(bill_pick_table_on), print_share::BillStyleField::Table),
+            (ids!(bill_pick_items), ids!(bill_pick_items_on), print_share::BillStyleField::Items),
+            (ids!(bill_pick_total), ids!(bill_pick_total_on), print_share::BillStyleField::Total),
+            (ids!(bill_pick_footer), ids!(bill_pick_footer_on), print_share::BillStyleField::Footer),
+            (ids!(bill_pick_upi), ids!(bill_pick_upi_on), print_share::BillStyleField::Upi),
+        ];
+        for (idle, on, kind) in picks {
+            let label = kind.label();
+            self.ui.button(cx, idle).set_text(cx, label);
+            self.ui.button(cx, on).set_text(cx, label);
+            self.paint_choice_pair(cx, idle, on, kind == field);
+        }
+        self.paint_choice_pair(cx, ids!(bill_field_show), ids!(bill_field_show_on), style.show);
+        self.paint_choice_pair(cx, ids!(bill_field_hide), ids!(bill_field_hide_on), !style.show);
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_w_light),
+            ids!(bill_w_light_on),
+            style.weight == print_share::KotFontWeight::Light,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_w_reg),
+            ids!(bill_w_reg_on),
+            style.weight == print_share::KotFontWeight::Regular,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_w_bold),
+            ids!(bill_w_bold_on),
+            style.weight == print_share::KotFontWeight::Bold,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_a_start),
+            ids!(bill_a_start_on),
+            style.align == print_share::KotAlign::Start,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_a_center),
+            ids!(bill_a_center_on),
+            style.align == print_share::KotAlign::Center,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_a_end),
+            ids!(bill_a_end_on),
+            style.align == print_share::KotAlign::End,
+        );
+        let size = self.ui.text_input(cx, ids!(bill_field_size_input));
+        if !cx.has_key_focus(size.area()) {
+            size.set_text(cx, &style.size_em.to_string());
+        }
+        let value = self.ui.text_input(cx, ids!(bill_field_value));
+        value.set_visible(cx, field.has_text());
+        value.set_empty_text(cx, field.value_hint().to_string());
+        if field.has_text() && !cx.has_key_focus(value.area()) {
+            value.set_text(cx, &draft.text(field));
+        }
+        let preview = draft.render_sample(&shop, &when);
+        let mm = app_state()
+            .lock()
+            .unwrap()
+            .kot_slip_draft
+            .shown_content_width_mm();
+        let paper = (mm as f64 * 3.2 + 28.0).clamp(168.0, 460.0);
+        if let Some(mut card) = self.ui.view(cx, ids!(bill_format_preview_card)).borrow_mut() {
+            card.walk.width = Size::Fixed(paper);
+        }
+        if let Some(mut slip) = self
+            .ui
+            .widget(cx, ids!(bill_format_preview))
+            .borrow_mut::<KotSlipPreview>()
+        {
+            slip.set_slip(cx, &preview);
+        }
+        self.ui.view(cx, ids!(bill_format_preview_card)).redraw(cx);
+    }
+
+    /// Write the value box into the draft for the line that is open.
+    fn commit_bill_field_value(&mut self, cx: &mut Cx) {
+        let field = app_state().lock().unwrap().bill_style_field;
+        if !field.has_text() {
+            return;
+        }
+        let text = self.ui.text_input(cx, ids!(bill_field_value)).text();
+        app_state()
+            .lock()
+            .unwrap()
+            .bill_slip_draft
+            .set_text(field, &text);
+    }
+
+    /// Print the on-screen bill preview. Each line keeps its size, weight, and align.
     fn print_bill_format_preview(&mut self, cx: &mut Cx) {
-        let header = self.ui.text_input(cx, ids!(bill_header_input)).text();
-        let fssai = self.ui.text_input(cx, ids!(fssai_input)).text();
-        let footer = self.ui.text_input(cx, ids!(bill_footer_input)).text();
-        let upi = self.ui.text_input(cx, ids!(upi_vpa_input)).text();
-        let payee = self.ui.text_input(cx, ids!(upi_payee_input)).text();
-        let size_text = self.ui.text_input(cx, ids!(std_size_input)).text();
+        self.commit_bill_field_value(cx);
         let result = (|| -> Result<String, String> {
             let st = app_state().lock().unwrap();
             if st.device_role == DeviceRole::Client {
@@ -2120,60 +2250,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 .and_then(|s| s.fiscal_settings().ok())
                 .map(|f| f.format_now())
                 .unwrap_or_default();
-            let (stamp, qr) = st
-                .store
-                .as_ref()
-                .map(|s| {
-                    (
-                        s.print_stamp_path().ok().flatten().is_some(),
-                        s.payment_qr_path().ok().flatten().is_some(),
-                    )
-                })
-                .unwrap_or((false, false));
-            let mut out = String::new();
-            if !shop.trim().is_empty() {
-                out.push_str(shop.trim());
-                out.push('\n');
-            }
-            for part in header.split(['\n', '|']) {
-                let part = part.trim();
-                if !part.is_empty() {
-                    out.push_str(part);
-                    out.push('\n');
-                }
-            }
-            if !fssai.trim().is_empty() {
-                out.push_str(&format!("FSSAI Lic. No: {}\n", fssai.trim()));
-            }
-            out.push_str("CASH MEMO\nBill: SAMPLE\n");
-            if !when.is_empty() {
-                out.push_str(&when);
-                out.push('\n');
-            }
-            out.push_str("Tea  2 x 40.00  80.00\nCoffee  1 x 20.00  20.00\n");
-            out.push_str("--------------------\nTotal 100.00\n");
-            if !footer.trim().is_empty() {
-                out.push_str(footer.trim());
-                out.push('\n');
-            }
-            if !upi.trim().is_empty() {
-                out.push_str(&format!("UPI: {}\n", upi.trim()));
-            }
-            if !payee.trim().is_empty() {
-                out.push_str(payee.trim());
-                out.push('\n');
-            }
-            if stamp {
-                out.push_str("[Stamp]\n");
-            }
-            if qr {
-                out.push_str("[Payment QR]\n");
-            }
-            let em = size_text
-                .trim()
-                .parse::<f32>()
-                .unwrap_or_else(|_| st.printer_draft.standard_em())
-                .clamp(12.0, 48.0);
+            let out = st.bill_slip_draft.render_sample(&shop, &when);
+            let em = st.bill_slip_draft.style(print_share::BillStyleField::Items).size_em as f32;
             let cols = print_share::wrap_cols_for_paper_mm(
                 st.kot_slip_draft.shown_content_width_mm(),
             );

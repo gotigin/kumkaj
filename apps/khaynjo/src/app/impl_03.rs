@@ -789,7 +789,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, false);
         self.ui.button(cx, ids!(route_clear)).set_visible(cx, false);
-        self.ui.button(cx, ids!(print_test_btn)).set_visible(cx, false);
+        self.ui.button(cx, ids!(print_test_btn)).set_visible(cx, host);
         self.ui.button(cx, ids!(printer_wire_escpos)).set_visible(cx, false);
         self.ui.button(cx, ids!(printer_wire_escpos_on)).set_visible(cx, false);
         self.ui.widget(cx, ids!(h_profiles)).set_visible(cx, false);

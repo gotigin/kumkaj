@@ -183,6 +183,10 @@ struct AppState {
     kot_style_field: print_share::KotStyleField,
     /// Settings → Bill & KOT format: Bill tab vs KOT tab (under the section header).
     bill_kot_tab_kot: bool,
+    /// Draft bill lines (preview and Test bill) before Save.
+    bill_slip_draft: print_share::BillSlipFormat,
+    /// Which bill line's show / size / weight / align is open.
+    bill_style_field: print_share::BillStyleField,
     /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

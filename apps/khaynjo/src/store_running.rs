@@ -1682,23 +1682,54 @@ impl Store {
         let fiscal = self.fiscal_settings()?;
         let currency = self.locale_settings()?.currency;
         let money = |p: i64| Money(p).format_localized(&currency, &fiscal);
+        let fmt = self.bill_slip_format().unwrap_or_default();
+        let rtl = self.bill_rtl();
         let mut out = String::new();
         let venue = self.venue_title()?;
-        if !venue.trim().is_empty() {
-            out.push_str(&format!("{}\n", venue.trim()));
+        crate::print_share::append_bill_field(&mut out, &fmt, crate::print_share::BillStyleField::Shop, venue.trim(), rtl);
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Header,
+            &self.bill_header()?,
+            rtl,
+        );
+        if !fmt.fssai.trim().is_empty() {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Fssai,
+                &format!("FSSAI Lic. No: {}", fmt.fssai.trim()),
+                rtl,
+            );
         }
-        for line in self.bill_header_lines()? {
-            out.push_str(&format!("{line}\n"));
-        }
-        out.push_str(&format!("Table: {}\n", self.table_label(&order.table_id)?));
+        let title = if fmt.title.trim().is_empty() { "CASH MEMO" } else { fmt.title.trim() };
+        crate::print_share::append_bill_field(&mut out, &fmt, crate::print_share::BillStyleField::Title, title, rtl);
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Table,
+            &format!("Table: {}", self.table_label(&order.table_id)?),
+            rtl,
+        );
         let when = self
             .fiscal_settings()
             .map(|f| f.format_now())
             .unwrap_or_else(|_| Local::now().format("%d/%m/%Y %H:%M").to_string());
-        out.push_str(&format!("Date: {when}\n"));
-        // Blank line after the rule so the first dish never shares a line
-        // with the header on narrow thermal printers.
-        out.push_str("--------------------------------\n\n");
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Time,
+            &format!("Date: {when}"),
+            rtl,
+        );
+        crate::print_share::append_bill_like(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Items,
+            "--------------------------------",
+            rtl,
+        );
         for line in order.bill_print_lines() {
             // Piece qty from format_qty_display is "x4"; strip the leading
             // x so the rate line reads "4 x ₹80.00", not "x4 x ₹80.00".
@@ -1712,59 +1743,132 @@ impl Store {
             // Name and qty × rate = total on one line (KOT splits already
             // collapsed by bill_print_lines). The blank line after the rule
             // above is what starts the first dish on a fresh line.
-            if line.complimentary {
-                out.push_str(&format!(
-                    "{}  {qty} x {unit}  NC ({}) {}\n",
+            let row = if line.complimentary {
+                format!(
+                    "{}  {qty} x {unit}  NC ({}) {}",
                     line.name,
                     money(line.value_paise()),
                     money(0)
-                ));
+                )
             } else {
-                out.push_str(&format!(
-                    "{}  {qty} x {unit}  {}\n",
-                    line.name,
-                    money(line.billed_paise())
-                ));
-            }
+                format!("{}  {qty} x {unit}  {}", line.name, money(line.billed_paise()))
+            };
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Items,
+                &row,
+                rtl,
+            );
             if !line.note.trim().is_empty() {
-                out.push_str(&format!("  ({})\n", line.note.trim()));
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Items,
+                    &format!("({})", line.note.trim()),
+                    rtl,
+                );
             }
         }
-        out.push_str("\n--------------------------------\n");
+        crate::print_share::append_bill_like(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Items,
+            "--------------------------------",
+            rtl,
+        );
         let subtotal = order.total_paise();
-        out.push_str(&format!("Sub total: {}\n", money(subtotal)));
+        crate::print_share::append_bill_like(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Total,
+            &format!("Sub total: {}", money(subtotal)),
+            rtl,
+        );
         let (draft, scheme_notes) = self.order_bill_draft_schemed(order);
         for name in &scheme_notes {
-            out.push_str(&format!("Scheme: {name}\n"));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Scheme: {name}"),
+                rtl,
+            );
         }
         if let Some(draft) = draft {
             let total = self.preview_sale_total(&draft)?;
             if total != subtotal {
-                out.push_str(&format!(
-                    "{}: {}\n",
-                    if fiscal.tax_pricing.is_inside_price() {
-                        format!("{} inclusive in this total", fiscal.tax_label())
-                    } else {
-                        format!("{} exclusive + charges", fiscal.tax_label())
-                    },
-                    money(total - subtotal)
-                ));
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Total,
+                    &format!(
+                        "{}: {}",
+                        if fiscal.tax_pricing.is_inside_price() {
+                            format!("{} inclusive in this total", fiscal.tax_label())
+                        } else {
+                            format!("{} exclusive + charges", fiscal.tax_label())
+                        },
+                        money(total - subtotal)
+                    ),
+                    rtl,
+                );
             }
-            out.push_str(&format!("TOTAL: {}\n", money(total)));
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("TOTAL: {}", money(total)),
+                rtl,
+            );
         } else {
-            out.push_str(&format!("TOTAL: {}\n", money(0)));
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("TOTAL: {}", money(0)),
+                rtl,
+            );
         }
-        let footer = self.bill_footer()?;
-        if !footer.trim().is_empty() {
-            out.push_str(&format!("{}\n", footer.trim()));
-        }
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Footer,
+            &fmt.footer,
+            rtl,
+        );
         if self.print_stamp_path()?.is_some() {
-            out.push_str("[Stamp]\n");
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Footer,
+                "[Stamp]",
+                rtl,
+            );
         }
         if self.payment_qr_path()?.is_some() {
-            out.push_str("[Payment QR]\n");
-        } else if !self.upi_vpa()?.trim().is_empty() {
-            out.push_str(&format!("UPI: {}\n", self.upi_vpa()?.trim()));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Upi,
+                "[Payment QR]",
+                rtl,
+            );
+        } else if !fmt.upi_vpa.trim().is_empty() {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Upi,
+                &format!("UPI: {}", fmt.upi_vpa.trim()),
+                rtl,
+            );
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Upi,
+                &fmt.upi_payee,
+                rtl,
+            );
         }
         Ok(out)
     }
@@ -1825,6 +1929,48 @@ impl Store {
             self.meta_set("upi_payee", p.trim())?;
         }
         Ok(())
+    }
+
+    /// Field show / size / weight / align, plus the typed title. Address,
+    /// FSSAI, footer, and UPI stay in their own columns and are copied in.
+    pub fn bill_slip_format(&self) -> Result<crate::print_share::BillSlipFormat, String> {
+        let raw = self.meta_get("bill_slip_format")?.unwrap_or_default();
+        let mut fmt = crate::print_share::BillSlipFormat::parse(&raw);
+        let header = self
+            .bill_header()?
+            .lines()
+            .map(str::trim)
+            .filter(|l| !l.is_empty())
+            .collect::<Vec<_>>()
+            .join(" | ");
+        fmt.header = header;
+        fmt.fssai = self.fssai_no()?;
+        fmt.footer = self.bill_footer()?;
+        fmt.upi_vpa = self.upi_vpa()?;
+        fmt.upi_payee = self.upi_payee()?;
+        Ok(fmt.clamped())
+    }
+
+    pub fn set_bill_slip_format(
+        &self,
+        fmt: &crate::print_share::BillSlipFormat,
+    ) -> Result<(), String> {
+        let fmt = fmt.clone().clamped();
+        self.set_bill_format_ex(
+            &fmt.header_lines(),
+            &fmt.fssai,
+            &fmt.footer,
+            Some(&fmt.upi_vpa),
+            Some(&fmt.upi_payee),
+        )?;
+        self.meta_set("bill_slip_format", &fmt.to_json())?;
+        Ok(())
+    }
+
+    pub(crate) fn bill_rtl(&self) -> bool {
+        self.locale_settings()
+            .map(|l| crate::locale::is_rtl(&l.language))
+            .unwrap_or(false)
     }
 
     /// Client cache after a sync snapshot carries the Server's bill face.

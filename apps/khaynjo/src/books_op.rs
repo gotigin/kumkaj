@@ -257,6 +257,9 @@ pub enum BooksOp {
         upi_vpa: Option<String>,
         #[serde(default)]
         upi_payee: Option<String>,
+        /// Field show / size / weight / align. Empty leaves the saved styles.
+        #[serde(default)]
+        styles: String,
     },
     ImportPrintStamp {
         filename: String,
@@ -1170,7 +1173,7 @@ impl Store {
                     ex = settings.format_now()
                 ))
             }
-            BooksOp::SetBillFormat { header, fssai, footer, upi_vpa, upi_payee } => {
+            BooksOp::SetBillFormat { header, fssai, footer, upi_vpa, upi_payee, styles } => {
                 // Header / FSSAI / footer: Settings. UPI VPA / payee: Owner-only.
                 // `None` UPI fields leave Server values alone (Client footer-only).
                 if !actor.is_owner() && !actor.can_access_settings() {
@@ -1194,6 +1197,24 @@ impl Store {
                     upi_vpa.as_deref(),
                     upi_payee.as_deref(),
                 )?;
+                if !styles.trim().is_empty() {
+                    let parsed = crate::print_share::BillSlipFormat::parse(styles.trim());
+                    // Columns were just written. Keep the style record beside them.
+                    let mut kept = self.bill_slip_format().unwrap_or(parsed.clone());
+                    kept.shop = parsed.shop;
+                    kept.header_style = parsed.header_style;
+                    kept.fssai_style = parsed.fssai_style;
+                    kept.title_style = parsed.title_style;
+                    kept.bill_no = parsed.bill_no;
+                    kept.time = parsed.time;
+                    kept.table = parsed.table;
+                    kept.items = parsed.items;
+                    kept.total = parsed.total;
+                    kept.footer_style = parsed.footer_style;
+                    kept.upi = parsed.upi;
+                    kept.title = parsed.title;
+                    self.set_bill_slip_format(&kept)?;
+                }
                 Ok("Bill format saved".into())
             }
             BooksOp::ImportPrintStamp { filename, bytes } => {

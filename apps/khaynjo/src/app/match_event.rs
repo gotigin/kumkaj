@@ -5270,75 +5270,81 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
 
-        if self.ui.button(cx, ids!(change_my_pin)).clicked(actions) {
+        if self.ui.button(cx, ids!(change_my_pin)).clicked(actions)
+            || self.ui.button(cx, ids!(change_my_password)).clicked(actions)
+        {
             let pin = self.ui.text_input(cx, ids!(my_pin_input)).text();
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let actor = st.actor()?;
-                if !actor.can_change_own_credentials() {
-                    return Err("Not allowed".into());
-                }
-                // Client: Server holds the hash — send the new PIN over LAN.
-                if st.device_role == DeviceRole::Client {
-                    st.lan_job(
-                        "/staff_pin",
-                        &net::RemoteOwnPinRequest {
-                            pin: pin.clone(),
-                        },
-                        "PIN".into(),
-                        "PIN updated on the shop's books".into(),
-                        phone::Follow::Refresh,
-                        false,
-                    )?;
-                    st.status = "Updating PIN…".into();
-                    return Ok(());
-                }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_staff_pin(&actor.id, &pin, &actor)?;
-                st.status = "PIN updated".into();
-                Ok(())
-            })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            } else {
-                self.ui.text_input(cx, ids!(my_pin_input)).set_text(cx, "");
-            }
-            self.sync_chrome(cx);
-        }
-
-        if self.ui.button(cx, ids!(change_my_password)).clicked(actions) {
             let password = self.ui.text_input(cx, ids!(my_password_input)).text();
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
+            let pin_set = !pin.trim().is_empty();
+            let password_set = !password.trim().is_empty();
+            if !pin_set && !password_set {
+                self.set_status(cx, "Type a new PIN, a new password, or both");
+                self.sync_chrome(cx);
+            } else {
+            let result = (|| -> Result<String, String> {
+                let st = app_state().lock().unwrap();
                 let actor = st.actor()?;
                 if !actor.can_change_own_credentials() {
                     return Err("Not allowed".into());
                 }
-                if st.device_role == DeviceRole::Client {
-                    st.lan_job(
-                        "/staff_password",
-                        &net::RemoteOwnPasswordRequest {
-                            password: password.clone(),
-                        },
-                        "Password".into(),
-                        "Password updated on the shop's books".into(),
-                        phone::Follow::Refresh,
-                        false,
-                    )?;
-                    st.status = "Updating password…".into();
-                    return Ok(());
+                let client = st.device_role == DeviceRole::Client;
+                if pin_set {
+                    if client {
+                        st.lan_job(
+                            "/staff_pin",
+                            &net::RemoteOwnPinRequest { pin: pin.clone() },
+                            "PIN".into(),
+                            "PIN updated on the shop's books".into(),
+                            phone::Follow::Refresh,
+                            false,
+                        )?;
+                    } else {
+                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                        store.set_staff_pin(&actor.id, &pin, &actor)?;
+                    }
                 }
-                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                store.set_own_password(&password, &actor)?;
-                st.status = "Password updated".into();
-                Ok(())
+                if password_set {
+                    if client {
+                        st.lan_job(
+                            "/staff_password",
+                            &net::RemoteOwnPasswordRequest {
+                                password: password.clone(),
+                            },
+                            "Password".into(),
+                            "Password updated on the shop's books".into(),
+                            phone::Follow::Refresh,
+                            false,
+                        )?;
+                    } else {
+                        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                        store.set_own_password(&password, &actor)?;
+                    }
+                }
+                let msg = match (pin_set, password_set, client) {
+                    (true, true, true) => "Updating PIN and password…".to_string(),
+                    (true, false, true) => "Updating PIN…".to_string(),
+                    (false, true, true) => "Updating password…".to_string(),
+                    (true, true, false) => "PIN and password updated".to_string(),
+                    (true, false, false) => "PIN updated".to_string(),
+                    (false, true, false) => "Password updated".to_string(),
+                    (false, false, _) => "Type a new PIN, a new password, or both".to_string(),
+                };
+                Ok(msg)
             })();
-            if let Err(e) = result {
-                self.set_status(cx, e);
-            } else {
-                self.ui.text_input(cx, ids!(my_password_input)).set_text(cx, "");
+            match result {
+                Ok(msg) => {
+                    if pin_set {
+                        self.ui.text_input(cx, ids!(my_pin_input)).set_text(cx, "");
+                    }
+                    if password_set {
+                        self.ui.text_input(cx, ids!(my_password_input)).set_text(cx, "");
+                    }
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
+            }
         }
 
         if self.ui.button(cx, ids!(save_duress_pin)).clicked(actions) {
@@ -5411,18 +5417,44 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(feat_save)).clicked(actions) {
+            let new_name = self.ui.text_input(cx, ids!(staff_edit_name_input)).text();
+            let login = self.ui.text_input(cx, ids!(staff_edit_login_input)).text();
+            let password = self
+                .ui
+                .text_input(cx, ids!(staff_edit_password_input))
+                .text();
+            let password_set = !password.trim().is_empty();
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let staff_id = st
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| st.t("staff_copy_need_selected"))?;
-                let name = st
+                let current_name = st
                     .staff
                     .iter()
                     .find(|s| s.id == staff_id)
                     .map(|s| s.name.clone())
                     .unwrap_or_else(|| staff_id.clone());
+                if !new_name.trim().is_empty() && new_name.trim() != current_name.trim() {
+                    st.books_op(BooksOp::RenameStaff {
+                        staff_id: staff_id.clone(),
+                        name: new_name.trim().to_string(),
+                    })?;
+                }
+                if password_set {
+                    st.books_op(BooksOp::SetStaffLogin {
+                        staff_id: staff_id.clone(),
+                        login_id: login,
+                        password,
+                    })?;
+                }
+                let name = st
+                    .staff
+                    .iter()
+                    .find(|s| s.id == staff_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or(current_name);
                 let features = st.draft_features.clone();
                 st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
                 st.status = st.t("save_features_ok").replace("{name}", &name);
@@ -5430,6 +5462,10 @@ impl MatchEvent for App {
             })();
             if let Err(e) = result {
                 self.set_status(cx, e);
+            } else if password_set {
+                self.ui
+                    .text_input(cx, ids!(staff_edit_password_input))
+                    .set_text(cx, "");
             }
             self.sync_chrome(cx);
         }
@@ -5760,21 +5796,10 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(bill_format_save)).clicked(actions) {
-            let header = self.ui.text_input(cx, ids!(bill_header_input)).text();
-            let fssai = self.ui.text_input(cx, ids!(fssai_input)).text();
-            let footer = self.ui.text_input(cx, ids!(bill_footer_input)).text();
-            let upi_vpa = self.ui.text_input(cx, ids!(upi_vpa_input)).text();
-            let upi_payee = self.ui.text_input(cx, ids!(upi_payee_input)).text();
+            self.commit_bill_field_value(cx);
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
-                let lines = header
-                    .split('|')
-                    .map(str::trim)
-                    .filter(|l| !l.is_empty())
-                    .collect::<Vec<_>>()
-                    .join("\n");
-                // Only send UPI when it actually changed — footer-only edits
-                // (and Sales users) must not clear or refuse on Server UPI.
+                let fmt = st.bill_slip_draft.clone().clamped();
                 let (cur_vpa, cur_payee) = match st.store.as_ref() {
                     Some(store) => (
                         store.upi_vpa().unwrap_or_default(),
@@ -5782,23 +5807,27 @@ impl MatchEvent for App {
                     ),
                     None => (String::new(), String::new()),
                 };
-                let upi_vpa = if upi_vpa.trim() == cur_vpa.trim() {
+                let upi_vpa = if fmt.upi_vpa.trim() == cur_vpa.trim() {
                     None
                 } else {
-                    Some(upi_vpa)
+                    Some(fmt.upi_vpa.clone())
                 };
-                let upi_payee = if upi_payee.trim() == cur_payee.trim() {
+                let upi_payee = if fmt.upi_payee.trim() == cur_payee.trim() {
                     None
                 } else {
-                    Some(upi_payee)
+                    Some(fmt.upi_payee.clone())
                 };
+                let em = fmt.style(print_share::BillStyleField::Items).size_em as f32;
+                st.printer_draft.set_standard_em(em);
                 st.books_op(BooksOp::SetBillFormat {
-                    header: lines,
-                    fssai,
-                    footer,
+                    header: fmt.header_lines(),
+                    fssai: fmt.fssai.clone(),
+                    footer: fmt.footer.clone(),
                     upi_vpa,
                     upi_payee,
+                    styles: fmt.to_json(),
                 })?;
+                st.books_op(BooksOp::SetStandardEm { em })?;
                 Ok(())
             })();
             match result {
@@ -6092,6 +6121,102 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(bill_format_test)).clicked(actions) {
             self.print_bill_format_preview(cx);
+        }
+        {
+            let mut bill_changed = false;
+            if let Some(text) = self
+                .ui
+                .text_input(cx, ids!(bill_field_value))
+                .changed(actions)
+            {
+                let mut st = app_state().lock().unwrap();
+                let field = st.bill_style_field;
+                if field.has_text() {
+                    st.bill_slip_draft.set_text(field, &text);
+                    bill_changed = true;
+                }
+            }
+            if let Some(size_now) = self
+                .ui
+                .text_input(cx, ids!(bill_field_size_input))
+                .changed(actions)
+            {
+                if let Ok(raw) = size_now.trim().parse::<u32>() {
+                    let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
+                    let mut st = app_state().lock().unwrap();
+                    let field = st.bill_style_field;
+                    if st.bill_slip_draft.style(field).size_em != em {
+                        st.bill_slip_draft.style_mut(field).size_em = em;
+                        bill_changed = true;
+                    }
+                }
+            }
+            for (idle, on, field) in [
+                (ids!(bill_pick_shop), ids!(bill_pick_shop_on), print_share::BillStyleField::Shop),
+                (ids!(bill_pick_header), ids!(bill_pick_header_on), print_share::BillStyleField::Header),
+                (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on), print_share::BillStyleField::Fssai),
+                (ids!(bill_pick_title), ids!(bill_pick_title_on), print_share::BillStyleField::Title),
+                (ids!(bill_pick_billno), ids!(bill_pick_billno_on), print_share::BillStyleField::BillNo),
+                (ids!(bill_pick_time), ids!(bill_pick_time_on), print_share::BillStyleField::Time),
+                (ids!(bill_pick_table), ids!(bill_pick_table_on), print_share::BillStyleField::Table),
+                (ids!(bill_pick_items), ids!(bill_pick_items_on), print_share::BillStyleField::Items),
+                (ids!(bill_pick_total), ids!(bill_pick_total_on), print_share::BillStyleField::Total),
+                (ids!(bill_pick_footer), ids!(bill_pick_footer_on), print_share::BillStyleField::Footer),
+                (ids!(bill_pick_upi), ids!(bill_pick_upi_on), print_share::BillStyleField::Upi),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    self.commit_bill_field_value(cx);
+                    let mut st = app_state().lock().unwrap();
+                    if st.bill_style_field != field {
+                        st.bill_style_field = field;
+                        bill_changed = true;
+                    }
+                    break;
+                }
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(bill_field_show), ids!(bill_field_show_on))
+            {
+                let mut st = app_state().lock().unwrap();
+                let field = st.bill_style_field;
+                st.bill_slip_draft.style_mut(field).show = true;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(bill_field_hide), ids!(bill_field_hide_on))
+            {
+                let mut st = app_state().lock().unwrap();
+                let field = st.bill_style_field;
+                st.bill_slip_draft.style_mut(field).show = false;
+                bill_changed = true;
+            }
+            for (idle, on, weight) in [
+                (ids!(bill_w_light), ids!(bill_w_light_on), print_share::KotFontWeight::Light),
+                (ids!(bill_w_reg), ids!(bill_w_reg_on), print_share::KotFontWeight::Regular),
+                (ids!(bill_w_bold), ids!(bill_w_bold_on), print_share::KotFontWeight::Bold),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    let field = st.bill_style_field;
+                    st.bill_slip_draft.style_mut(field).weight = weight;
+                    bill_changed = true;
+                    break;
+                }
+            }
+            for (idle, on, align) in [
+                (ids!(bill_a_start), ids!(bill_a_start_on), print_share::KotAlign::Start),
+                (ids!(bill_a_center), ids!(bill_a_center_on), print_share::KotAlign::Center),
+                (ids!(bill_a_end), ids!(bill_a_end_on), print_share::KotAlign::End),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    let field = st.bill_style_field;
+                    st.bill_slip_draft.style_mut(field).align = align;
+                    bill_changed = true;
+                    break;
+                }
+            }
+            if bill_changed {
+                self.sync_bill_format_ui(cx);
+            }
         }
         {
             let size_now = self.ui.text_input(cx, ids!(std_size_input)).text();
@@ -6390,7 +6515,7 @@ impl MatchEvent for App {
         if team_pick_now || self.ui.text_input(cx, ids!(team_pick_input)).returned(actions).is_some()
         {
             let name = self.ui.text_input(cx, ids!(team_pick_input)).text();
-            let result = (|| -> Result<(String, String, String), String> {
+            let result = (|| -> Result<(String, String, String, String), String> {
                 let mut st = app_state().lock().unwrap();
                 let member = Self::find_active_staff(&st, name.trim())?;
                 // Non-Owner cannot open self for screens/rights/job edit.
@@ -6408,10 +6533,15 @@ impl MatchEvent for App {
                 st.draft_staff_role = store::Store::hire_role_from(&member);
                 st.draft_features = member.effective_features();
                 let msg = format!("Editing {}", member.lock_label());
-                Ok((msg, member.name.clone(), member.lock_label()))
+                Ok((
+                    msg,
+                    member.name.clone(),
+                    member.lock_label(),
+                    member.login_id.clone(),
+                ))
             })();
             match result {
-                Ok((msg, display_name, pick_label)) => {
+                Ok((msg, display_name, pick_label, login_id)) => {
                     self.ui
                         .text_input(cx, ids!(team_pick_input))
                         .set_text(cx, &pick_label);
@@ -6420,7 +6550,7 @@ impl MatchEvent for App {
                         .set_text(cx, &display_name);
                     self.ui
                         .text_input(cx, ids!(staff_edit_login_input))
-                        .set_text(cx, "");
+                        .set_text(cx, &login_id);
                     self.ui
                         .text_input(cx, ids!(staff_edit_password_input))
                         .set_text(cx, "");
@@ -6640,6 +6770,10 @@ impl MatchEvent for App {
             } else {
                 app_state().lock().unwrap().pair_note = "Pairing…".into();
                 self.set_status(cx, "Pairing…");
+                self.ui
+                    .widget(cx, ids!(client_pair_status))
+                    .set_text(cx, "Pairing…");
+                self.ui.redraw(cx);
                 let _ = std::thread::Builder::new()
                     .name("khaynjo-pair".into())
                     .spawn(move || {
@@ -6653,7 +6787,6 @@ impl MatchEvent for App {
                         makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
                     });
             }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(client_sync_btn)).clicked(actions) {
             phone::want_sync();

@@ -359,6 +359,15 @@ fn cart_row_height() -> &'static Mutex<f64> {
     HEIGHT.get_or_init(|| Mutex::new(140.0))
 }
 
+/// Extra height for one open ticket line (unit, applied, modifiers, note,
+/// Cancel / NC / Move). Starts near the real block. CartList then sets it
+/// to the measured details — a short value clips the buttons into Kitchen
+/// station, a tall one leaves an empty band under them.
+fn cart_open_extra() -> &'static Mutex<f64> {
+    static EXTRA: OnceLock<Mutex<f64>> = OnceLock::new();
+    EXTRA.get_or_init(|| Mutex::new(320.0))
+}
+
 fn stock_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
     // Seed clears name + kind + qty (+ Low). Must start *above* the real

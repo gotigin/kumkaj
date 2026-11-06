@@ -1770,50 +1770,100 @@ impl Store {
         let tmpl = self.entity_template()?;
         let lane = MoneyLane::parse(&sale.money_lane);
         let is_invoice = matches!(lane, MoneyLane::Declared);
+        let fmt = self.bill_slip_format().unwrap_or_default();
+        let rtl = self.bill_rtl();
         let mut out = String::new();
-        out.push_str(venue);
-        out.push('\n');
-        // Owner's bill format: address/phone lines and the FSSAI licence no.
-        for line in self.bill_header_lines()? {
-            out.push_str(&line);
-            out.push('\n');
-        }
-        if is_invoice {
-            out.push_str("TAX INVOICE\n");
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Shop,
+            venue,
+            rtl,
+        );
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Header,
+            &self.bill_header()?,
+            rtl,
+        );
+        let title = if !fmt.title.trim().is_empty() {
+            fmt.title.trim().to_string()
+        } else if is_invoice {
+            "TAX INVOICE".into()
         } else {
-            out.push_str("CASH MEMO\n");
+            "CASH MEMO".into()
+        };
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Title,
+            &title,
+            rtl,
+        );
+        if !fmt.fssai.trim().is_empty() {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Fssai,
+                &format!("FSSAI Lic. No: {}", fmt.fssai.trim()),
+                rtl,
+            );
         }
         let business_id = fiscal_settings.business_tax_id.trim();
         if !business_id.is_empty() {
-            out.push_str(&format!(
-                "{} {business_id}\n",
-                fiscal_settings.business_id_label
-            ));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Fssai,
+                &format!("{} {business_id}", fiscal_settings.business_id_label),
+                rtl,
+            );
         }
         if !sale.invoice_no.trim().is_empty() {
-            out.push_str("Invoice no: ");
-            out.push_str(sale.invoice_no.trim());
-            out.push('\n');
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::BillNo,
+                &format!("Invoice no: {}", sale.invoice_no.trim()),
+                rtl,
+            );
         }
-        out.push_str("Bill: ");
-        out.push_str(&sale.bill_no());
-        out.push('\n');
-        out.push_str(&fiscal_settings.format_datetime(&sale.created_at));
-        out.push('\n');
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::BillNo,
+            &format!("Bill: {}", sale.bill_no()),
+            rtl,
+        );
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Time,
+            &fiscal_settings.format_datetime(&sale.created_at),
+            rtl,
+        );
         if let Some(cid) = sale.customer_id.as_deref().filter(|s| !s.is_empty()) {
             if let Some(party) = self.get_customer(cid)? {
-                out.push_str("Bill to: ");
-                out.push_str(&party.name);
+                let mut who = format!("Bill to: {}", party.name);
                 if !party.kind_label.trim().is_empty() {
-                    out.push_str(" (");
-                    out.push_str(party.kind_label.trim());
-                    out.push(')');
+                    who.push_str(&format!(" ({})", party.kind_label.trim()));
                 }
-                out.push('\n');
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Header,
+                    &who,
+                    rtl,
+                );
                 if !party.phone.trim().is_empty() {
-                    out.push_str("Phone: ");
-                    out.push_str(party.phone.trim());
-                    out.push('\n');
+                    crate::print_share::append_bill_like(
+                        &mut out,
+                        &fmt,
+                        crate::print_share::BillStyleField::Header,
+                        &format!("Phone: {}", party.phone.trim()),
+                        rtl,
+                    );
                 }
             }
         }
@@ -1821,14 +1871,22 @@ impl Store {
             MoneyLane::Declared => tmpl.lane_declared_label,
             MoneyLane::Owner => tmpl.lane_owner_label,
         };
-        out.push_str("Bill type: ");
-        out.push_str(lane_label);
-        out.push('\n');
+        crate::print_share::append_bill_like(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Title,
+            &format!("Bill type: {lane_label}"),
+            rtl,
+        );
         {
             let order_kind = crate::domain::OrderType::parse(&sale.order_type);
-            out.push_str("Order: ");
-            out.push_str(order_kind.label());
-            out.push('\n');
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Table,
+                &format!("Order: {}", order_kind.label()),
+                rtl,
+            );
             if let Some(tid) = sale.table_id.as_deref().filter(|s| !s.is_empty()) {
                 let table_name: Option<String> = self
                     .conn
@@ -1841,14 +1899,23 @@ impl Store {
                     .ok()
                     .flatten();
                 if let Some(name) = table_name.filter(|s| !s.trim().is_empty()) {
-                    out.push_str("Table: ");
-                    out.push_str(name.trim());
-                    out.push('\n');
+                    crate::print_share::append_bill_field(
+                        &mut out,
+                        &fmt,
+                        crate::print_share::BillStyleField::Table,
+                        &format!("Table: {}", name.trim()),
+                        rtl,
+                    );
                 }
             }
         }
-        // Blank line after the rule so the first dish is never stuck on it.
-        out.push_str("--------------------\n\n");
+        crate::print_share::append_bill_like(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Items,
+            "--------------------",
+            rtl,
+        );
         // One row per dish+rate (KOT splits collapsed) — guest bill, not kitchen.
         let mut printed: Vec<SaleLine> = Vec::new();
         for line in &lines {
@@ -1884,18 +1951,51 @@ impl Store {
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
             // Names stay as stored (incl. Gujarati/Hindi). Standard print
             // rasterizes with bundled Noto — never depends on the printer font.
-            out.push_str(&format!("{}  {qty} x {unit}  {total}\n", line.name));
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Items,
+                &format!("{}  {qty} x {unit}  {total}", line.name),
+                rtl,
+            );
             if !line.note.is_empty() {
-                out.push_str(&format!("  ({})\n", line.note));
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Items,
+                    &format!("({})", line.note),
+                    rtl,
+                );
             }
         }
-        out.push_str("\n--------------------\n");
+        crate::print_share::append_bill_like(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Items,
+            "--------------------",
+            rtl,
+        );
         if sale.rounding_paise != 0 {
-            out.push_str(&format!(
-                "Applied {}\nRound {}\n",
-                Money(sale.lines_total_paise).format_localized(&currency, &fiscal_settings),
-                Money(sale.rounding_paise).format_localized(&currency, &fiscal_settings)
-            ));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!(
+                    "Applied {}",
+                    Money(sale.lines_total_paise).format_localized(&currency, &fiscal_settings)
+                ),
+                rtl,
+            );
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!(
+                    "Round {}",
+                    Money(sale.rounding_paise).format_localized(&currency, &fiscal_settings)
+                ),
+                rtl,
+            );
         }
         // Inclusive: Net → tax → Total (same charged total). Exclusive:
         // Subtotal + tax → Total. Components always add to Total.
@@ -1906,66 +2006,130 @@ impl Store {
             } else {
                 "Subtotal"
             };
-            out.push_str(&format!(
-                "{base_caption} {}\n",
-                sale.net().format_localized(&currency, &fiscal_settings)
-            ));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!(
+                    "{base_caption} {}",
+                    sale.net().format_localized(&currency, &fiscal_settings)
+                ),
+                rtl,
+            );
             let components = fiscal_settings.tax_components(sale.tax_paise);
             if components.is_empty() {
-                out.push_str(&format!(
-                    "{tax_label} {}\n",
-                    sale.tax().format_localized(&currency, &fiscal_settings)
-                ));
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Total,
+                    &format!(
+                        "{tax_label} {}",
+                        sale.tax().format_localized(&currency, &fiscal_settings)
+                    ),
+                    rtl,
+                );
             } else {
-                // Countries that bill one tax as named halves (India's
-                // CGST/SGST) show each part, then the combined figure.
                 for (name, amount) in &components {
-                    out.push_str(&format!("{name} {}\n", Money(*amount).format_localized(&currency, &fiscal_settings)));
+                    crate::print_share::append_bill_like(
+                        &mut out,
+                        &fmt,
+                        crate::print_share::BillStyleField::Total,
+                        &format!(
+                            "{name} {}",
+                            Money(*amount).format_localized(&currency, &fiscal_settings)
+                        ),
+                        rtl,
+                    );
                 }
-                out.push_str(&format!(
-                    "{tax_label} {}\n",
-                    sale.tax().format_localized(&currency, &fiscal_settings)
-                ));
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Total,
+                    &format!(
+                        "{tax_label} {}",
+                        sale.tax().format_localized(&currency, &fiscal_settings)
+                    ),
+                    rtl,
+                );
             }
         }
         if sale.service_paise > 0 {
-            out.push_str(&format!(
-                "Service {}\n",
-                Money(sale.service_paise).format_localized(&currency, &fiscal_settings)
-            ));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!(
+                    "Service {}",
+                    Money(sale.service_paise).format_localized(&currency, &fiscal_settings)
+                ),
+                rtl,
+            );
         }
-        out.push_str(&format!(
-            "Total {}\n",
-            Money(sale.total_paise).format_localized(&currency, &fiscal_settings)
-        ));
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Total,
+            &format!(
+                "Total {}",
+                Money(sale.total_paise).format_localized(&currency, &fiscal_settings)
+            ),
+            rtl,
+        );
         let tenders = self.sale_tenders(sale_id)?;
         if tenders.len() > 1 {
             for (method, amount) in tenders {
                 let label = PayMethod::parse(&method)
                     .map(|p| p.label_for(&fiscal_settings))
                     .unwrap_or(method);
-                out.push_str(&format!(
-                    "{label} {}\n",
-                    Money(amount).format_localized(&currency, &fiscal_settings)
-                ));
+                crate::print_share::append_bill_like(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Total,
+                    &format!(
+                        "{label} {}",
+                        Money(amount).format_localized(&currency, &fiscal_settings)
+                    ),
+                    rtl,
+                );
             }
         } else {
-            out.push_str(&format!(
-                "{}\n",
-                match pay {
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &match pay {
                     Some(p) => p.label_for(&fiscal_settings),
                     None => sale.pay_method.to_uppercase(),
-                }
-            ));
+                },
+                rtl,
+            );
         }
         if sale.tax_paise > 0 && sale.tax_pricing().is_inside_price() {
-            out.push_str(&format!("({tax_label} inclusive)\n"));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("({tax_label} inclusive)"),
+                rtl,
+            );
         }
         if sale.order_type() != OrderType::Counter {
-            out.push_str(&format!("{}\n", sale.order_type().label()));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Table,
+                sale.order_type().label(),
+                rtl,
+            );
         }
         if !sale.created_by_name.is_empty() {
-            out.push_str(&format!("By {}\n", sale.created_by_name));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Time,
+                &format!("By {}", sale.created_by_name),
+                rtl,
+            );
         }
         // Settle & Save: cash handed over, change returned, tip.
         let (tendered, change, tip): (i64, i64, i64) = self
@@ -1988,32 +2152,80 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         if discount > 0 {
-            out.push_str(&format!("Discount −{} ({discount_reason})\n", m(discount)));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Discount −{} ({discount_reason})", m(discount)),
+                rtl,
+            );
         }
         if tendered > 0 {
-            out.push_str(&format!("Paid {} · Change {}\n", m(tendered), m(change)));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Paid {} · Change {}", m(tendered), m(change)),
+                rtl,
+            );
         }
         if tip > 0 {
-            out.push_str(&format!("Tip {} (thank you)\n", m(tip)));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Tip {} (thank you)", m(tip)),
+                rtl,
+            );
         }
-        let footer = self.bill_footer()?;
-        if !footer.trim().is_empty() {
-            out.push_str(footer.trim());
-            out.push('\n');
-        }
-        // Print brand kit: stamp + static payment QR live as images on the
-        // LAN guest display / HTML faces; text slips name them so the paper
-        // still matches Settings → Bill format.
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Footer,
+            &fmt.footer,
+            rtl,
+        );
         if self.print_stamp_path()?.is_some() {
-            out.push_str("[Stamp]\n");
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Footer,
+                "[Stamp]",
+                rtl,
+            );
         }
         if self.payment_qr_path()?.is_some() {
-            out.push_str("[Payment QR]\n");
-        } else if !self.upi_vpa()?.trim().is_empty() {
-            out.push_str(&format!("UPI: {}\n", self.upi_vpa()?.trim()));
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Upi,
+                "[Payment QR]",
+                rtl,
+            );
+        } else if !fmt.upi_vpa.trim().is_empty() {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Upi,
+                &format!("UPI: {}", fmt.upi_vpa.trim()),
+                rtl,
+            );
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Upi,
+                &fmt.upi_payee,
+                rtl,
+            );
         }
         if is_invoice {
-            out.push_str("— End of invoice —\n");
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Footer,
+                "— End of invoice —",
+                rtl,
+            );
         }
         let attach = self.attachments_summary_text(AttachmentEntity::Sale, sale_id)?;
         if !attach.is_empty() {
