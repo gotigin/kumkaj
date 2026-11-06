@@ -2153,6 +2153,66 @@ mod kot_slip_format_tests {
     }
 
     #[test]
+    fn bill_and_kitchen_use_the_same_escpos_width() {
+        let text = "\u{E000}30BSCASH MEMO\n\u{E000}30BS--------------------\n\u{E000}30BSTea\n";
+        let cols = wrap_cols_for_paper_mm(210);
+        let bill = PrintFormat {
+            line: cols,
+            em: 30.0,
+            document: false,
+            delivery: DELIVERY_ESCPOS.into(),
+            ..PrintFormat::standard_portrait()
+        };
+        let kot = PrintFormat {
+            line: cols,
+            em: 30.0,
+            document: false,
+            ..PrintFormat::kot()
+        };
+        let width = |job: &[u8]| {
+            let gs = job
+                .windows(8)
+                .find(|w| w[..4] == [0x1D, 0x76, 0x30, 0x00])
+                .expect("raster header");
+            (gs[4] as usize + ((gs[5] as usize) << 8)) * 8
+        };
+        let dots = paper_width_dots(210);
+        assert_eq!(width(&escpos_job_format(&bill, text)), dots);
+        assert_eq!(width(&escpos_job_format(&kot, text)), dots);
+    }
+
+    #[test]
+    fn preview_fits_a_big_page_and_refuses_an_unreadable_fit() {
+        // A short wide page fits in the column and in the window. Type stays
+        // large, so the fit scale is used and the card is not the full column
+        // if the height limit is tighter.
+        let (w, h) = preview_frame(3000.0, 600.0, 480.0, 500.0, 160.0);
+        assert!(w <= 480.0 + 0.5, "wider than the column: {w}");
+        assert!(h <= 500.0 + 0.5, "taller than the window slot: {h}");
+        let scale = w / 3000.0;
+        assert!((h / 600.0 - scale).abs() < 0.01, "width and height must share one scale");
+        assert!(160.0 * scale >= 15.0, "fitted type went unreadably small");
+
+        // Fitting this long slip into the window would make the type tiny.
+        // Hold a readable size, stay inside the column, and let the page scroll.
+        let (w, h) = preview_frame(1000.0, 8000.0, 400.0, 500.0, 40.0);
+        let scale = w / 1000.0;
+        assert!(40.0 * scale >= 14.5, "type {scale} is still unreadably small");
+        assert!(w <= 400.0 + 0.5);
+        assert!(h > 500.0, "the readable slip should extend past the window and scroll");
+        assert!((h / 8000.0 - scale).abs() < 0.01);
+    }
+
+    #[test]
+    fn page_png_names_its_density_and_still_decodes() {
+        let png = crate::receipt_raster::png_document("CASH MEMO\n--------------------\nTotal 100\n")
+            .unwrap();
+        let stamped = png_with_density(png, 4724);
+        assert!(stamped.windows(4).any(|w| w == *b"pHYs"));
+        image::load_from_memory(&stamped).expect("density chunk broke the PNG");
+    }
+
+    #[test]
     fn field_size_and_weight_change_the_printed_slip() {
         let slip = |style: KotFieldStyle| {
             let mut fmt = KotSlipFormat::default();
@@ -4455,14 +4515,16 @@ fn send_to_printer(
     copies: u32,
 ) -> Result<(), String> {
     let copies = copies.max(1);
-    let one = escpos_job_format(format, text);
-    let bytes = replicate_escpos_copies(&one, copies);
+    // Delivery is the format's own flag. Bill text and kitchen text use the
+    // same sender; neither one is tied to a page printer or a thermal head.
+    let as_page = format.document;
+    let thermal = || replicate_escpos_copies(&escpos_job_format(format, text), copies);
     match target {
-        PrinterTarget::Network(addr) => print_network_bytes(addr, &bytes),
-        PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &bytes),
-        PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, &bytes),
+        PrinterTarget::Network(addr) => print_network_bytes(addr, &thermal()),
+        PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &thermal()),
+        PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, &thermal()),
         PrinterTarget::AndroidPrint => {
-            if !format.document {
+            if !as_page {
                 return Err(format!(
                     "format \"{}\" needs Network, Bluetooth, or USB — Android print is for document formats",
                     format.label
@@ -4475,7 +4537,7 @@ fn send_to_printer(
             Ok(())
         }
         PrinterTarget::Default => {
-            if format.document {
+            if as_page {
                 print_system_standard(None, path, text, format, format.landscape, copies)
             } else if cfg!(target_os = "android") {
                 Err(format!(
@@ -4483,11 +4545,11 @@ fn send_to_printer(
                     format.label
                 ))
             } else {
-                print_system_raw(None, &bytes)
+                print_system_raw(None, &thermal())
             }
         }
         PrinterTarget::Named(name) => {
-            if format.document {
+            if as_page {
                 print_system_standard(Some(name), path, text, format, format.landscape, copies)
             } else if cfg!(target_os = "android") {
                 Err(format!(
@@ -4495,7 +4557,7 @@ fn send_to_printer(
                     format.label
                 ))
             } else {
-                print_system_raw(Some(name), &bytes)
+                print_system_raw(Some(name), &thermal())
             }
         }
     }
@@ -4555,6 +4617,10 @@ fn print_system_standard(
     } else {
         crate::receipt_raster::png_metrics(text, &metrics)?
     };
+    let mm = content_mm_for_dots(metrics.page_dots());
+    let px = png_pixel_size(&png).unwrap_or((1, 1)).0.max(1);
+    let ppm = ((px as f64) * 1000.0 / mm.max(1) as f64).round() as u32;
+    let png = png_with_density(png, ppm);
     let png_path = path.with_extension("png");
     fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
@@ -4600,12 +4666,12 @@ fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
     let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
         .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
     let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-    // Chunk writes — some heads drop mid-job when the whole raster lands at once.
-    const CHUNK: usize = 4096;
-    for piece in bytes.chunks(CHUNK) {
+    // One raster picture at a time. A single burst prints the first band
+    // (about three lines) and the head drops the rest of the ticket.
+    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
         stream.write_all(piece).map_err(|e| e.to_string())?;
-    }
-    stream.flush().map_err(|e| e.to_string())
+        stream.flush().map_err(|e| e.to_string())
+    })
 }
 
 /// Cap for one ESC/POS payload (text or raster bands).
@@ -4628,11 +4694,13 @@ pub fn escpos_job(text: &str) -> Vec<u8> {
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     let cleaned = text.replace('\r', "");
     let plain = strip_kot_style_marks(&cleaned);
-    // A KOT from Settings carries a size and a weight on every line. Draw
-    // those with Noto so 16 and 32, and Light and Bold, are different ink.
-    // Unmarked text stays on the built-in font when the head has the letters.
+    let metrics = format.raster_metrics();
+    // A slip carries a size and a weight on every line. Draw those with Noto
+    // so 16 and 32, and Light and Bold, are different ink. Unmarked text
+    // stays on the built-in font when the head has the letters. The same
+    // encoder is used for a bill and for a kitchen ticket.
     if cleaned.contains(KOT_STYLE_MARK) {
-        return escpos_picture_styled(&cleaned, &format.raster_metrics());
+        return escpos_picture_styled(&cleaned, &metrics);
     }
     if printer_has_letters(&plain) {
         if let Some((gs, col_div)) = escpos_gs_bang_for_em(format.em) {
@@ -4640,10 +4708,10 @@ pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
             let expanded = expand_kot_column_tabs(&cleaned, cols);
             escpos_job_text_cols_sized(&expanded, cols, gs)
         } else {
-            crate::receipt_raster::escpos_picture_metrics(&plain, &format.raster_metrics())
+            crate::receipt_raster::escpos_picture_metrics(&plain, &metrics)
         }
     } else {
-        crate::receipt_raster::escpos_picture_metrics(&plain, &format.raster_metrics())
+        crate::receipt_raster::escpos_picture_metrics(&plain, &metrics)
     }
 }
 
@@ -4689,6 +4757,87 @@ fn png_pixel_size(png: &[u8]) -> Option<(u32, u32)> {
     ))
 }
 
+fn png_crc(data: &[u8]) -> u32 {
+    let mut c = 0xFFFF_FFFFu32;
+    for &b in data {
+        c ^= u32::from(b);
+        for _ in 0..8 {
+            if c & 1 != 0 {
+                c = (c >> 1) ^ 0xEDB8_8320;
+            } else {
+                c >>= 1;
+            }
+        }
+    }
+    !c
+}
+
+/// Store pixels-per-metre so the printer lays the slip out at `content_mm`
+/// instead of assuming 72 dpi and clipping the page down to two rules.
+fn png_with_density(png: Vec<u8>, ppm: u32) -> Vec<u8> {
+    if ppm == 0 || png.windows(4).any(|w| w == *b"pHYs") {
+        return png;
+    }
+    let Some(at) = png.windows(4).position(|w| w == *b"IHDR") else {
+        return png;
+    };
+    if at < 4 || at + 4 > png.len() {
+        return png;
+    }
+    let len = u32::from_be_bytes(png[at - 4..at].try_into().unwrap_or([0; 4])) as usize;
+    let after = at + 4 + len + 4;
+    if after > png.len() {
+        return png;
+    }
+    let mut body = Vec::with_capacity(13);
+    body.extend_from_slice(b"pHYs");
+    body.extend(ppm.to_be_bytes());
+    body.extend(ppm.to_be_bytes());
+    body.push(1);
+    let mut chunk = Vec::with_capacity(21);
+    chunk.extend((9u32).to_be_bytes());
+    chunk.extend_from_slice(&body);
+    chunk.extend(png_crc(&body).to_be_bytes());
+    let mut out = Vec::with_capacity(png.len() + chunk.len());
+    out.extend_from_slice(&png[..after]);
+    out.extend_from_slice(&chunk);
+    out.extend_from_slice(&png[after..]);
+    out
+}
+
+/// One scale for the whole print picture on screen.
+///
+/// `column` is the settings width. `viewport` is how tall the picture may be
+/// before the page scrolls. `type_px` is the body type inside the picture.
+/// The same scale is applied to width, height, type, and margins.
+///
+/// A print that fits at a readable size is fitted. A print that would become
+/// unreadable if fitted to the viewport is held at a readable size instead,
+/// still no wider than the column, and the page scrolls for the rest.
+/// Body-type height in the print picture, in pixels.
+pub fn preview_type_px(em: f32, width_dots: usize) -> f64 {
+    crate::receipt_raster::drawn_type_px(em, width_dots)
+}
+
+pub fn preview_frame(png_w: f64, png_h: f64, column: f64, viewport: f64, type_px: f64) -> (f64, f64) {
+    const READABLE: f64 = 15.0;
+    let png_w = png_w.max(1.0);
+    let png_h = png_h.max(1.0);
+    let column = column.max(40.0);
+    let viewport = viewport.max(160.0);
+    let fit_w = column / png_w;
+    let fit = fit_w.min(viewport / png_h);
+    let type_px = type_px.max(1.0);
+    let scale = if type_px * fit >= READABLE {
+        fit
+    } else {
+        (READABLE / type_px).min(fit_w)
+    };
+    let w = (png_w * scale).clamp(40.0, column);
+    let h = png_h * (w / png_w);
+    (w, h.max(1.0))
+}
+
 /// `base` supplies side margin and type size. Width is the content millimetres.
 pub fn metrics_at_content_mm(
     base: &PrintFormat,
@@ -4698,7 +4847,10 @@ pub fn metrics_at_content_mm(
     // Same dot width the printer uses for this millimetre setting, so the
     // preview is a scale of the printed slip rather than a second layout.
     m.width_dots = paper_width_dots(mm);
-    m.line = wrap_cols_for_paper_mm(mm) as usize;
+    // `PrintFormat.line` is wrap columns. Using it as the raster pitch made
+    // every row as tall as the column count, so a page was empty bands.
+    m.line = ((m.em * 1.45).round() as usize).clamp(16, 96);
+    m.baseline = m.em * 0.92;
     m
 }
 
@@ -4902,13 +5054,19 @@ fn print_system_image(
         if copies > 1 {
             cmd.args(["-n", &copies.to_string()]);
         }
-        // Print the slip at its content width. fit-to-page stretched every
-        // width onto the sheet, so 58 mm and 210 mm came out the same size.
+        // A slip stays its own width. A page (about A4) is fitted onto the
+        // sheet so the whole bill is on the paper, not a clipped corner of
+        // two rules. The PNG carries the same density in pHYs.
         let px = png_pixel_size(&std::fs::read(path).unwrap_or_default()).unwrap_or((1, 1)).0;
         let ppi = ((px as f64) * 25.4 / content_mm as f64)
             .round()
             .clamp(72.0, 1200.0) as u32;
-        cmd.args(["-o", "print-scaling=none"]);
+        let scaling = if content_mm >= 180 {
+            "print-scaling=fit"
+        } else {
+            "print-scaling=none"
+        };
+        cmd.args(["-o", scaling]);
         cmd.args(["-o", &format!("ppi={ppi}")]);
         // 3 = portrait, 4 = landscape (IPP orientation-requested).
         cmd.args([

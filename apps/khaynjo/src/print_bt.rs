@@ -177,8 +177,10 @@ fn write_linux_rfcomm(mac: &str, channel: u8, bytes: &[u8]) -> Result<(), String
         ));
     }
     let mut file = unsafe { std::fs::File::from_raw_fd(fd) };
-    file.write_all(bytes).map_err(|e| e.to_string())?;
-    file.flush().map_err(|e| e.to_string())
+    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
+        file.write_all(piece).map_err(|e| e.to_string())?;
+        file.flush().map_err(|e| e.to_string())
+    })
 }
 
 #[cfg(target_os = "windows")]

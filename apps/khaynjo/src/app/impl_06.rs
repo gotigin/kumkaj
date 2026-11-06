@@ -160,6 +160,13 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         if self.pointer_rail_resize(cx, event) {
             return true;
         }
+        // Add dishes covers the window. A tap on Done sits in the right-edge
+        // swipe zone; arming that swipe ate the tap and the window stayed open.
+        if app_state().lock().unwrap().menu_pick_open {
+            *mouse_swipe_origin().lock().unwrap() = None;
+            *swipe_origin().lock().unwrap() = None;
+            return false;
+        }
         // Side buttons always consume the event (browser-style). Debounce
         // first so Linux XF86Back/Forward twins do not step twice.
         match event {
@@ -1547,63 +1554,83 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
-    /// Add dishes → Done. The button's own click action does not arrive:
-    /// the search field has key focus, and this face's hit is missed, so
-    /// `clicked` / `pressed` never run. Close from the pointer position.
+    /// Where the dish window sits. The overlay's own area is often empty, so
+    /// fall back to the modal padding against the window.
+    fn menu_sheet_rect(&self, cx: &Cx) -> Rect {
+        let panel = self.ui.view(cx, ids!(menu_panel)).area().rect(cx);
+        if panel.size.x > 80.0 && panel.size.y > 80.0 {
+            return panel;
+        }
+        let size = self.window_inner_size(cx);
+        let w = (size.x - 32.0).clamp(160.0, 980.0);
+        let h = (size.y - 40.0).max(160.0);
+        Rect {
+            pos: dvec2((size.x - w) * 0.5, (size.y - h) * 0.5),
+            size: dvec2(w, h),
+        }
+    }
+
+    /// Add dishes → Done, and a tap on the dimmed area around the window.
+    /// The button action does not arrive while the search field is focused,
+    /// and the modal treats the full-screen content view as "inside", so an
+    /// outside tap never dismisses it.
     fn close_add_dishes_if_done_hit(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        let abs = match event {
-            Event::MouseDown(e) if e.button.is_primary() => e.abs,
-            Event::MouseUp(e) if e.button.is_primary() => e.abs,
-            Event::TouchUpdate(e) => match e
-                .touches
-                .iter()
-                .find(|t| matches!(t.state, TouchState::Start))
-            {
-                Some(t) => t.abs,
-                None => return false,
-            },
+        let (abs, up) = match event {
+            Event::MouseDown(e) if e.button.is_primary() => (e.abs, false),
+            Event::MouseUp(e) if e.button.is_primary() => (e.abs, true),
+            Event::TouchUpdate(e) => {
+                let mut found = None;
+                for t in &e.touches {
+                    match t.state {
+                        TouchState::Start => found = Some((t.abs, false)),
+                        TouchState::Stop => found = Some((t.abs, true)),
+                        _ => {}
+                    }
+                }
+                match found {
+                    Some(hit) => hit,
+                    None => return false,
+                }
+            }
             _ => return false,
         };
         if !app_state().lock().unwrap().menu_pick_open {
+            *menu_press_outside().lock().unwrap() = false;
             return false;
         }
-        let btn = self
-            .ui
-            .button(cx, ids!(menu_pick_done))
-            .area()
-            .clipped_rect_union_attached(cx);
-        let on_btn = btn.size.x > 8.0 && btn.size.y > 8.0 && {
-            Rect {
-                pos: DVec2 {
-                    x: btn.pos.x - 12.0,
-                    y: btn.pos.y - 12.0,
-                },
-                size: DVec2 {
-                    x: btn.size.x + 24.0,
-                    y: btn.size.y + 24.0,
-                },
-            }
-            .contains(abs)
+        let panel = self.menu_sheet_rect(cx);
+        let done = Rect {
+            pos: dvec2(panel.pos.x + panel.size.x - 176.0, panel.pos.y),
+            size: dvec2(176.0, 84.0),
         };
-        // The pill sits in the top-right of the dish window. If its hit box
-        // is empty or shifted, that corner is still the Done control.
-        let panel = self
-            .ui
-            .view(cx, ids!(menu_panel))
-            .area()
-            .clipped_rect_union_attached(cx);
-        let on_corner = panel.size.x > 40.0
-            && panel.size.y > 40.0
-            && abs.x >= panel.pos.x + panel.size.x - 148.0
-            && abs.x <= panel.pos.x + panel.size.x
-            && abs.y >= panel.pos.y
-            && abs.y <= panel.pos.y + 68.0;
-        if on_btn || on_corner {
+        let btn = self.ui.button(cx, ids!(menu_pick_done)).area().rect(cx);
+        let on_btn = btn.size.x > 8.0
+            && btn.size.y > 8.0
+            && Rect {
+                pos: dvec2(btn.pos.x - 16.0, btn.pos.y - 16.0),
+                size: dvec2(btn.size.x + 32.0, btn.size.y + 32.0),
+            }
+            .contains(abs);
+        if on_btn || done.contains(abs) {
+            *menu_press_outside().lock().unwrap() = false;
             self.close_menu_window(cx);
-            true
-        } else {
-            false
+            return true;
         }
+        let outside = !panel.contains(abs);
+        if !up {
+            *menu_press_outside().lock().unwrap() = outside;
+            if outside {
+                self.close_menu_window(cx);
+                return true;
+            }
+            return false;
+        }
+        let started_outside = std::mem::replace(&mut *menu_press_outside().lock().unwrap(), false);
+        if started_outside && outside {
+            self.close_menu_window(cx);
+            return true;
+        }
+        false
     }
 
     /// Close the menu window; the next opening starts from the whole menu.
@@ -2691,4 +2718,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             Ok(app_t("wipe_done"))
         }
     }
+}
+
+/// Press on the dimmed area around Add dishes, cleared when the gesture ends.
+fn menu_press_outside() -> &'static Mutex<bool> {
+    static CELL: Mutex<bool> = Mutex::new(false);
+    &CELL
 }

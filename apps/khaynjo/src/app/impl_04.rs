@@ -2252,56 +2252,33 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 s(row.align.locale_key())
             )
         };
-        let picks = [
-            (ids!(bill_pick_shop), ids!(bill_pick_shop_on), print_share::BillStyleField::Shop),
-            (ids!(bill_pick_header), ids!(bill_pick_header_on), print_share::BillStyleField::Header),
-            (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on), print_share::BillStyleField::Fssai),
-            (ids!(bill_pick_title), ids!(bill_pick_title_on), print_share::BillStyleField::Title),
-            (ids!(bill_pick_billno), ids!(bill_pick_billno_on), print_share::BillStyleField::BillNo),
-            (ids!(bill_pick_time), ids!(bill_pick_time_on), print_share::BillStyleField::Time),
-            (ids!(bill_pick_table), ids!(bill_pick_table_on), print_share::BillStyleField::Table),
-            (ids!(bill_pick_items), ids!(bill_pick_items_on), print_share::BillStyleField::Items),
-            (ids!(bill_pick_total), ids!(bill_pick_total_on), print_share::BillStyleField::Total),
-            (ids!(bill_pick_footer), ids!(bill_pick_footer_on), print_share::BillStyleField::Footer),
-            (ids!(bill_pick_upi), ids!(bill_pick_upi_on), print_share::BillStyleField::Upi),
-        ];
-        for (idle, on, kind) in picks {
-            let label = row_label(kind);
-            self.ui.button(cx, idle).set_text(cx, &label);
-            self.ui.button(cx, on).set_text(cx, &label);
-            self.paint_choice_pair(cx, idle, on, kind == field);
-        }
         let order = draft.ordered();
         let order_idx = {
             let st = app_state().lock().unwrap();
             st.bill_field_edit_idx
         };
-        let order_slots = [
-            (ids!(bill_ord_0), ids!(bill_ord_0_on)),
-            (ids!(bill_ord_1), ids!(bill_ord_1_on)),
-            (ids!(bill_ord_2), ids!(bill_ord_2_on)),
-            (ids!(bill_ord_3), ids!(bill_ord_3_on)),
-            (ids!(bill_ord_4), ids!(bill_ord_4_on)),
-            (ids!(bill_ord_5), ids!(bill_ord_5_on)),
-            (ids!(bill_ord_6), ids!(bill_ord_6_on)),
-            (ids!(bill_ord_7), ids!(bill_ord_7_on)),
-            (ids!(bill_ord_8), ids!(bill_ord_8_on)),
-            (ids!(bill_ord_9), ids!(bill_ord_9_on)),
-            (ids!(bill_ord_10), ids!(bill_ord_10_on)),
+        // The field list is the print order. Move up / down reorders these rows.
+        let slots = [
+            (ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
+            (ids!(bill_pick_header), ids!(bill_pick_header_on)),
+            (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
+            (ids!(bill_pick_title), ids!(bill_pick_title_on)),
+            (ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
+            (ids!(bill_pick_time), ids!(bill_pick_time_on)),
+            (ids!(bill_pick_table), ids!(bill_pick_table_on)),
+            (ids!(bill_pick_items), ids!(bill_pick_items_on)),
+            (ids!(bill_pick_total), ids!(bill_pick_total_on)),
+            (ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
+            (ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
         ];
-        for (i, (idle, on)) in order_slots.into_iter().enumerate() {
+        for (i, (idle, on)) in slots.into_iter().enumerate() {
             if let Some(kind) = order.get(i) {
                 let label = row_label(*kind);
-                self.ui.button(cx, idle).set_visible(cx, true);
-                self.ui.button(cx, on).set_visible(cx, true);
                 self.ui.button(cx, idle).set_text(cx, &label);
                 self.ui.button(cx, on).set_text(cx, &label);
                 self.paint_choice_pair(cx, idle, on, i == order_idx);
             }
         }
-        self.ui
-            .widget(cx, ids!(h_bill_field_order))
-            .set_text(cx, &plain_display_text(&s("kot_field_order")));
         self.ui.button(cx, ids!(bill_field_up)).set_text(cx, &s("kot_field_up"));
         self.ui.button(cx, ids!(bill_field_down)).set_text(cx, &s("kot_field_down"));
         self.ui
@@ -2376,12 +2353,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         };
         let metrics = print_share::metrics_at_content_mm(&base, mm);
         if let Ok((png, pw, ph)) = print_share::slip_page_png(&preview, &metrics, landscape) {
+            let type_px = print_share::preview_type_px(style.size_em as f32, metrics.page_dots());
             if let Some(mut slip) = self
                 .ui
                 .widget(cx, ids!(bill_format_preview))
                 .borrow_mut::<KotSlipPreview>()
             {
-                slip.set_page(cx, &png, pw, ph);
+                slip.set_page(cx, &png, pw, ph, type_px);
             }
         }
         self.ui.view(cx, ids!(bill_format_preview_card)).redraw(cx);
@@ -2464,22 +2442,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 st.kot_slip_draft.shown_content_width_mm(),
             );
             let mut live = st.printer_draft.clone();
-            // Bill printers keep the bill format. A route still labelled as the
-            // kitchen format would rasterise this preview like a kitchen ticket.
-            let bill_id = live.format_id_for(print_share::RouteKey::Bill);
-            if bill_id == print_share::FORMAT_KOT || !print_share::is_standard_document(&bill_id) {
-                let landscape = live
-                    .formats
-                    .iter()
-                    .find(|f| f.id == print_share::FORMAT_STANDARD_PORTRAIT)
-                    .is_some_and(|f| f.landscape);
-                let id = if landscape {
-                    print_share::FORMAT_STANDARD_LANDSCAPE
-                } else {
-                    print_share::FORMAT_STANDARD_PORTRAIT
-                };
-                live.set_route_format(print_share::RouteKey::Bill, id);
-            }
+            // The bill route already names the delivery. Test bill uses that
+            // same format; it does not switch the slip onto a page printer.
             live.set_standard_em(em);
             live.set_content_line(cols);
             let saved = st.printer_draft.clone();
@@ -2750,12 +2714,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         };
         let metrics = print_share::metrics_at_content_mm(&base, mm);
         if let Ok((png, pw, ph)) = print_share::slip_page_png(&preview, &metrics, landscape) {
+            let type_px =
+                print_share::preview_type_px(field_style.size_em as f32, metrics.page_dots());
             if let Some(mut slip) = self
                 .ui
                 .widget(cx, ids!(kot_format_preview))
                 .borrow_mut::<KotSlipPreview>()
             {
-                slip.set_page(cx, &png, pw, ph);
+                slip.set_page(cx, &png, pw, ph, type_px);
             }
         }
         self.ui

@@ -2144,10 +2144,12 @@ script_mod! {
     // blank cards). −/qty/+ centered on photo. Name/alias ≤2 lines + Ellipsis,
     // natural LTR align, smaller type.
     let ProductCard = View{
-        width: Fill height: Fit
+        // Fixed height. Fit + Overlay children collapse while the grid
+        // scrolls, and each row draws as a thick horizontal bar.
+        width: Fill height: 176
         tile := View{
             cursor: MouseCursor.Hand
-            width: Fill height: Fit
+            width: Fill height: 176
             flow: Overlay
             RoundedView{
                 width: Fill height: Fill
@@ -9062,7 +9064,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                 }
                                 h_bill_format_help := WrapLabel{
                                     width: Fill
-                                    body: "Pick a line. Show, size, weight, and alignment apply to that line on the bill and on Test bill."
+                                    body: "Pick a line. Move up or down sets the print order. Show, size, weight, and alignment apply to that line."
                                     font_color: #x6B4A3F
                                     font_size: 12.
                                 }
@@ -9112,6 +9114,10 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         bill_pick_upi := KotRowBtn{text: "UPI"}
                                         bill_pick_upi_on := KotRowBtnOn{text: "UPI" visible: false}
                                     }
+                                }
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    bill_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
+                                    bill_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
                                 }
                                 View{width: Fill height: Fit flow: Right spacing: 6
                                     View{width: Fill height: Fit flow: Overlay
@@ -9164,6 +9170,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
                                     bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
                                 }
+                                View{width: Fill height: Fit visible: false
                                 h_bill_field_order := WrapLabel{body: "Print order" font_color: #x260B08 font_size: 14.}
                                 View{width: Fill height: Fit flow: Down spacing: 4
                                     View{width: Fill height: Fit flow: Overlay
@@ -9211,9 +9218,6 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         bill_ord_10_on := KotRowBtnOn{text: "" visible: false}
                                     }
                                 }
-                                View{width: Fill height: Fit flow: Right spacing: 6
-                                    bill_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
-                                    bill_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
                                 }
                                 h_bill_copies := WrapLabel{body: "Copies" font_color: #x260B08 font_size: 14.}
                                 View{width: Fill height: Fit flow: Right spacing: 6

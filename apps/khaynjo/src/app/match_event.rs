@@ -6196,29 +6196,29 @@ impl MatchEvent for App {
                     }
                 }
             }
-            for (idle, on, field) in [
-                (ids!(bill_pick_shop), ids!(bill_pick_shop_on), print_share::BillStyleField::Shop),
-                (ids!(bill_pick_header), ids!(bill_pick_header_on), print_share::BillStyleField::Header),
-                (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on), print_share::BillStyleField::Fssai),
-                (ids!(bill_pick_title), ids!(bill_pick_title_on), print_share::BillStyleField::Title),
-                (ids!(bill_pick_billno), ids!(bill_pick_billno_on), print_share::BillStyleField::BillNo),
-                (ids!(bill_pick_time), ids!(bill_pick_time_on), print_share::BillStyleField::Time),
-                (ids!(bill_pick_table), ids!(bill_pick_table_on), print_share::BillStyleField::Table),
-                (ids!(bill_pick_items), ids!(bill_pick_items_on), print_share::BillStyleField::Items),
-                (ids!(bill_pick_total), ids!(bill_pick_total_on), print_share::BillStyleField::Total),
-                (ids!(bill_pick_footer), ids!(bill_pick_footer_on), print_share::BillStyleField::Footer),
-                (ids!(bill_pick_upi), ids!(bill_pick_upi_on), print_share::BillStyleField::Upi),
+            for (i, idle, on) in [
+                (0, ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
+                (1, ids!(bill_pick_header), ids!(bill_pick_header_on)),
+                (2, ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
+                (3, ids!(bill_pick_title), ids!(bill_pick_title_on)),
+                (4, ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
+                (5, ids!(bill_pick_time), ids!(bill_pick_time_on)),
+                (6, ids!(bill_pick_table), ids!(bill_pick_table_on)),
+                (7, ids!(bill_pick_items), ids!(bill_pick_items_on)),
+                (8, ids!(bill_pick_total), ids!(bill_pick_total_on)),
+                (9, ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
+                (10, ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     self.commit_bill_field_value(cx);
                     let mut st = app_state().lock().unwrap();
-                    if st.bill_style_field != field {
-                        st.bill_style_field = field;
-                        bill_changed = true;
-                    }
                     let order = st.bill_slip_draft.ordered();
-                    if let Some(i) = order.iter().position(|f| *f == field) {
+                    if let Some(field) = order.get(i).copied() {
                         st.bill_field_edit_idx = i;
+                        if st.bill_style_field != field {
+                            st.bill_style_field = field;
+                        }
+                        bill_changed = true;
                     }
                     break;
                 }

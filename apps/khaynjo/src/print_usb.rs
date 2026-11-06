@@ -226,8 +226,10 @@ fn write_linux(id: &UsbId, bytes: &[u8]) -> Result<(), String> {
                     path.display()
                 )
             })?;
-        f.write_all(bytes).map_err(|e| e.to_string())?;
-        return f.flush().map_err(|e| e.to_string());
+        return crate::receipt_raster::write_escpos_paced(bytes, |piece| {
+            f.write_all(piece).map_err(|e| e.to_string())?;
+            f.flush().map_err(|e| e.to_string())
+        });
     }
     // Fallback: any /dev/usb/lp*
     if let Ok(rd) = std::fs::read_dir("/dev/usb") {
@@ -246,8 +248,10 @@ fn write_linux(id: &UsbId, bytes: &[u8]) -> Result<(), String> {
                 .write(true)
                 .open(&path)
                 .map_err(|e| format!("cannot open {}: {e}", path.display()))?;
-            f.write_all(bytes).map_err(|e| e.to_string())?;
-            return f.flush().map_err(|e| e.to_string());
+            return crate::receipt_raster::write_escpos_paced(bytes, |piece| {
+                f.write_all(piece).map_err(|e| e.to_string())?;
+                f.flush().map_err(|e| e.to_string())
+            });
         }
     }
     Err(format!(

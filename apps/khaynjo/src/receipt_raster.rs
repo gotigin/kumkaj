@@ -12,8 +12,14 @@ use unicode_bidi::BidiInfo;
 
 /// Dots across 58 mm paper (8 dots/mm); an 80 mm printer prints it too.
 pub const PAPER_DOTS: usize = 384;
-/// Rows per `GS v 0` command — small enough for any printer's buffer.
-const BAND: usize = 128;
+/// Rows per `GS v 0` command. A head that is still printing drops the next
+/// picture; one 128-dot band is about three lines, which is all that came
+/// out when the rest of the ticket arrived in the same burst. Each band
+/// stays under 3 KB so it fits a small receive buffer.
+fn band_rows(row_bytes: usize) -> usize {
+    let rows = 3072 / row_bytes.max(1);
+    rows.clamp(8, 64)
+}
 /// Coverage from which a dot is black (a little under half: thermal heads
 /// print thin strokes faint).
 const INK: f32 = 0.45;
@@ -163,9 +169,10 @@ pub fn escpos_picture_lines(lines: &[StyledLine], m: &RasterMetrics) -> Vec<u8> 
 fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
     let (rows, height) = drawn;
     let row_bytes = (width_dots.max(8) & !7) / 8;
+    let band = band_rows(row_bytes);
     let mut out = vec![0x1B, 0x40]; // ESC @: reset
-    for top in (0..height).step_by(BAND) {
-        let h = BAND.min(height - top);
+    for top in (0..height).step_by(band) {
+        let h = band.min(height - top);
         // GS v 0, normal size, width in bytes, height in dots (little-endian).
         out.extend_from_slice(&[0x1D, 0x76, 0x30, 0x00, row_bytes as u8, 0, (h & 0xFF) as u8, (h >> 8) as u8]);
         out.extend_from_slice(&rows[top * row_bytes..(top + h) * row_bytes]);
@@ -174,6 +181,55 @@ fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
     out.extend_from_slice(b"\n\n\n\n\n");
     out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
     out
+}
+
+/// One `GS v 0` picture at a time, then the cut. A thermal head prints the
+/// first picture and drops the rest when they arrive in one burst.
+pub fn write_escpos_paced(
+    bytes: &[u8],
+    mut write_flush: impl FnMut(&[u8]) -> Result<(), String>,
+) -> Result<(), String> {
+    let pieces = escpos_raster_pieces(bytes);
+    for (i, piece) in pieces.iter().enumerate() {
+        if i > 0 {
+            std::thread::sleep(std::time::Duration::from_millis(40));
+        }
+        write_flush(piece)?;
+    }
+    Ok(())
+}
+
+fn escpos_raster_pieces(bytes: &[u8]) -> Vec<&[u8]> {
+    let mut spans = Vec::new();
+    let mut i = 0usize;
+    while i + 8 <= bytes.len() {
+        if bytes[i..i + 4] == [0x1D, 0x76, 0x30, 0x00] {
+            let width = bytes[i + 4] as usize + ((bytes[i + 5] as usize) << 8);
+            let height = bytes[i + 6] as usize + ((bytes[i + 7] as usize) << 8);
+            let end = (i + 8 + width.saturating_mul(height)).min(bytes.len());
+            spans.push((i, end));
+            i = end;
+            continue;
+        }
+        i += 1;
+    }
+    if spans.is_empty() {
+        return vec![bytes];
+    }
+    let mut pieces = Vec::new();
+    let mut from = 0usize;
+    for (n, &(start, end)) in spans.iter().enumerate() {
+        if n == 0 {
+            pieces.push(&bytes[from..end]);
+        } else {
+            pieces.push(&bytes[start..end]);
+        }
+        from = end;
+    }
+    if from < bytes.len() {
+        pieces.push(&bytes[from..]);
+    }
+    pieces
 }
 
 /// `text` drawn with kitchen metrics.
@@ -186,29 +242,107 @@ pub fn draw_style(text: &str, style: SlipStyle) -> (Vec<u8>, usize) {
     draw_metrics(text, &metrics(style))
 }
 
-/// `text` drawn `PAPER_DOTS` wide: packed rows (leftmost dot in the high
-/// bit, 1 = black) and the height in dots.
-pub fn draw_metrics(text: &str, m: &RasterMetrics) -> (Vec<u8>, usize) {
-    let faces = faces();
-    let width = m.page_dots();
-    let room = width as f32 - 2.0 * m.side;
-    let lines: Vec<Vec<Placed>> = text
-        .lines()
-        .flat_map(|l| wrap(&faces, l, room, m))
-        .collect();
-    let height = lines.len().max(1) * m.line;
-    let mut dots = vec![false; width * height];
-    for (i, line) in lines.iter().enumerate() {
-        let baseline = (i * m.line) as f32 + m.baseline;
-        for g in line {
-            stamp(&faces[g.face], g, baseline, m, &mut dots, INK, 0.0);
+/// 576 dots is an 80 mm head. A wider page grows the type with the page,
+/// so size 30 is not a few millimetres of type sitting in a field of rules.
+fn page_em_scale(width: usize) -> f32 {
+    if width <= 576 {
+        1.0
+    } else {
+        width as f32 / 576.0
+    }
+}
+
+fn rule_thickness(em: f32, weight: RasterWeight) -> usize {
+    let f = match weight {
+        RasterWeight::Light => 0.045,
+        RasterWeight::Regular => 0.07,
+        RasterWeight::Bold => 0.11,
+    };
+    ((em * f).round() as usize).clamp(2, 8)
+}
+
+fn paint_rule(dots: &mut [bool], width: usize, y: usize, side: f32, thick: usize) {
+    if width == 0 || thick == 0 {
+        return;
+    }
+    let height = dots.len() / width;
+    let x0 = side.ceil().max(0.0) as usize;
+    let x1 = ((width as f32) - side).floor().max(0.0) as usize;
+    let x1 = x1.min(width);
+    if x0 >= x1 {
+        return;
+    }
+    for dy in 0..thick {
+        let yy = y + dy;
+        if yy >= height {
+            break;
+        }
+        for x in x0..x1 {
+            dots[yy * width + x] = true;
         }
     }
-    let mut rows = vec![0u8; width / 8 * height];
+}
+
+/// `text` drawn `PAPER_DOTS` wide: packed rows (leftmost dot in the high
+/// bit, 1 = black) and the height in dots.
+pub fn draw_metrics(text: &str, src: &RasterMetrics) -> (Vec<u8>, usize) {
+    let faces = faces();
+    let width = src.page_dots();
+    let scale = page_em_scale(width);
+    let m = RasterMetrics {
+        em: src.em * scale,
+        line: ((src.line as f32) * scale).round().max(1.0) as usize,
+        baseline: src.baseline * scale,
+        side: src.side * scale,
+        width_dots: width,
+    };
+    let room = width as f32 - 2.0 * m.side;
+    enum Built {
+        Text(Vec<Placed>),
+        Rule,
+    }
+    let mut built: Vec<Built> = Vec::new();
+    for line in text.lines() {
+        if is_rule_line(line) {
+            built.push(Built::Rule);
+        } else {
+            built.extend(wrap(&faces, line, room, &m).into_iter().map(Built::Text));
+        }
+    }
+    let rule_px = rule_thickness(m.em, RasterWeight::Regular);
+    let height = if built.is_empty() {
+        m.line
+    } else {
+        built
+            .iter()
+            .map(|row| match row {
+                Built::Rule => rule_px + 4,
+                Built::Text(_) => m.line,
+            })
+            .sum()
+    };
+    let mut dots = vec![false; width * height.max(1)];
+    let mut y = 0usize;
+    for row in &built {
+        match row {
+            Built::Rule => paint_rule(&mut dots, width, y, m.side, rule_px),
+            Built::Text(glyphs) => {
+                let baseline = y as f32 + m.baseline;
+                for g in glyphs {
+                    stamp(&faces[g.face], g, baseline, &m, &mut dots, INK, 0.0);
+                }
+            }
+        }
+        y += match row {
+            Built::Rule => rule_px + 4,
+            Built::Text(_) => m.line,
+        };
+    }
+    let mut rows = vec![0u8; width / 8 * height.max(1)];
     for (i, _) in dots.iter().enumerate().filter(|(_, on)| **on) {
         rows[i / 8] |= 0x80 >> (i % 8);
     }
-    (rows, height)
+    (rows, height.max(1))
 }
 
 /// Each line at its own size and weight. Bold is a second stamp one dot
@@ -216,8 +350,9 @@ pub fn draw_metrics(text: &str, m: &RasterMetrics) -> (Vec<u8>, usize) {
 /// of the stroke so it is thinner than Regular.
 pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize) {
     let faces = faces();
-    let side = page.side.max(0.0);
     let width = page.page_dots();
+    let scale = page_em_scale(width);
+    let side = page.side.max(0.0) * scale;
     let room = width as f32 - 2.0 * side;
     struct Row {
         glyphs: Vec<Placed>,
@@ -225,6 +360,8 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         weight: RasterWeight,
         pitch: usize,
         baseline: f32,
+        /// 0 for text. A separator is one solid line, not a row of hyphen glyphs.
+        rule_px: usize,
     }
     let mut rows: Vec<Row> = Vec::new();
     for line in lines {
@@ -232,8 +369,21 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         if line.text.trim().is_empty() {
             continue;
         }
-        let em = line.em.clamp(8.0, 64.0);
-        let pitch = ((em * 1.45).round() as usize).clamp(16, 96);
+        let em = (line.em * scale).clamp(8.0, 160.0);
+        if is_rule_line(&line.text) {
+            let rule_px = rule_thickness(em, line.weight);
+            let gap = ((em * 0.35).round() as usize).clamp(4, 18);
+            rows.push(Row {
+                glyphs: Vec::new(),
+                em,
+                weight: line.weight,
+                pitch: rule_px + gap,
+                baseline: rule_px as f32,
+                rule_px,
+            });
+            continue;
+        }
+        let pitch = ((em * 1.45).round() as usize).clamp(16, 240);
         let baseline = em * 0.92;
         let m = RasterMetrics {
             em,
@@ -250,6 +400,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
                 weight: line.weight,
                 pitch,
                 baseline,
+                rule_px: 0,
             });
         }
     }
@@ -262,6 +413,11 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
     let mut dots = vec![false; width * height];
     let mut y = 0usize;
     for row in &rows {
+        if row.rule_px > 0 {
+            paint_rule(&mut dots, width, y, side, row.rule_px);
+            y += row.pitch;
+            continue;
+        }
         let baseline = y as f32 + row.baseline;
         let m = RasterMetrics {
             em: row.em,
@@ -320,8 +476,25 @@ pub fn png_lines(lines: &[StyledLine], m: &RasterMetrics) -> Result<Vec<u8>, Str
     png_from_dots(&rows, height, m.page_dots())
 }
 
+/// Body-type height in the PNG, in pixels. The on-screen preview uses this
+/// so a uniform scale can stay readable.
+pub fn drawn_type_px(em: f32, width_dots: usize) -> f64 {
+    let drawn = (em * page_em_scale(width_dots)).clamp(8.0, 160.0);
+    drawn as f64 * png_pixel_scale(width_dots.max(1)) as f64
+}
+
+fn png_pixel_scale(page: usize) -> u32 {
+    let mut scale = DOCUMENT_PNG_SCALE;
+    // A 210 mm raster at 3× is wider than a 4096 texture, so the preview
+    // keeps a slice and the rest of the page never appears.
+    while scale > 1 && page.saturating_mul(scale as usize) > 4096 {
+        scale -= 1;
+    }
+    scale.max(1)
+}
+
 fn png_from_dots(rows: &[u8], height: usize, page: usize) -> Result<Vec<u8>, String> {
-    let scale = DOCUMENT_PNG_SCALE;
+    let scale = png_pixel_scale(page);
     let w = (page as u32).saturating_mul(scale);
     let h = (height as u32).saturating_mul(scale).max(scale);
     let row_bytes = page / 8;
@@ -865,9 +1038,85 @@ mod tests {
         let job = escpos_picture(&ticket);
         assert_eq!(&job[..2], &[0x1B, 0x40]);
         let headers = job.windows(4).filter(|w| *w == [0x1D, 0x76, 0x30, 0x00]).count();
-        assert_eq!(headers, height.div_ceil(BAND));
+        assert_eq!(headers, height.div_ceil(band_rows(PAPER_DOTS / 8)));
         assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
         let row_bytes = PAPER_DOTS / 8;
         assert_eq!(job.len(), 2 + headers * 8 + height * row_bytes + 4 + 4);
+    }
+
+    fn ink_rows(rows: &[u8], width: usize, height: usize) -> usize {
+        let row_bytes = width / 8;
+        (0..height)
+            .filter(|y| rows[y * row_bytes..(y + 1) * row_bytes].iter().any(|b| *b != 0))
+            .count()
+    }
+
+    #[test]
+    fn a_page_grows_the_type_with_the_page() {
+        let draw = |dots: usize| {
+            let page = RasterMetrics {
+                em: 30.0,
+                line: 44,
+                baseline: 28.0,
+                side: 8.0,
+                width_dots: dots,
+            };
+            let lines = [StyledLine {
+                text: "M".into(),
+                em: 30.0,
+                weight: RasterWeight::Bold,
+                align: LineAlign::Start,
+            }];
+            let (rows, height) = draw_lines(&lines, &page);
+            ink_rows(&rows, page.page_dots(), height)
+        };
+        let slip = draw(576);
+        let page = draw(1512);
+        assert!(slip > 8, "80 mm type left no ink ({slip})");
+        assert!(
+            page > slip * 2,
+            "210 mm type must grow with the page ({page} vs {slip})"
+        );
+    }
+
+    #[test]
+    fn a_rule_is_one_solid_line_not_a_dashed_underscore() {
+        let page = RasterMetrics {
+            em: 30.0,
+            line: 44,
+            baseline: 28.0,
+            side: 8.0,
+            width_dots: 1512,
+        };
+        let lines = [StyledLine {
+            text: "--------------------".into(),
+            em: 30.0,
+            weight: RasterWeight::Regular,
+            align: LineAlign::Start,
+        }];
+        let (rows, height) = draw_lines(&lines, &page);
+        let width = page.page_dots();
+        let row_bytes = width / 8;
+        let y = (0..height)
+            .find(|y| rows[y * row_bytes..(y + 1) * row_bytes].iter().any(|b| *b != 0))
+            .expect("rule left no ink");
+        let mut gap = 0usize;
+        let mut worst = 0usize;
+        let start = width / 10;
+        let end = width - start;
+        for x in start..end {
+            let on = rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0;
+            if on {
+                worst = worst.max(gap);
+                gap = 0;
+            } else {
+                gap += 1;
+            }
+        }
+        worst = worst.max(gap);
+        assert!(
+            worst <= 1,
+            "210 mm rule has a {worst}-dot gap — it is a dashed underscore"
+        );
     }
 }

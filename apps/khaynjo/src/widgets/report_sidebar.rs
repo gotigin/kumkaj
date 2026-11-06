@@ -625,12 +625,30 @@ struct KotSlipPreview {
     /// The preview is the print picture, not a second layout.
     #[rust]
     page: bool,
-    /// Oriented picture width / height. The card scales this into the column.
+    /// Print picture size in pixels, and the body-type height inside it.
     #[rust]
-    page_aspect: f64,
+    page_px: (f64, f64),
+    #[rust]
+    type_px: f64,
     /// Last column width that laid out. Used when this frame's width is not ready yet.
     #[rust]
     page_width: f64,
+}
+
+fn preview_viewport(cx: &Cx) -> f64 {
+    let mut best = 0.0f64;
+    for id in cx.windows.id_iter() {
+        let h = cx.windows[id].get_inner_size().y;
+        if h.is_finite() && h > best {
+            best = h;
+        }
+    }
+    if best < 200.0 {
+        640.0
+    } else {
+        // Room for the settings header above the picture.
+        (best * 0.62).clamp(220.0, 900.0)
+    }
 }
 
 fn preview_align_x(align: print_share::KotAlign, rtl: bool) -> f64 {
@@ -690,12 +708,13 @@ impl Widget for KotSlipPreview {
             } else {
                 self.page_width = avail;
             }
-            let aspect = self.page_aspect.max(0.05);
+            let (png_w, png_h) = self.page_px;
             let mut draw_walk = walk;
-            if avail > 40.0 {
-                let height = avail / aspect;
-                draw_walk.width = Size::Fixed(avail);
-                draw_walk.height = Size::Fixed(height.max(1.0));
+            if avail > 40.0 && png_w > 1.0 && png_h > 1.0 {
+                let viewport = preview_viewport(cx.cx);
+                let (w, h) = print_share::preview_frame(png_w, png_h, avail, viewport, self.type_px);
+                draw_walk.width = Size::Fixed(w);
+                draw_walk.height = Size::Fixed(h);
             }
             while self.view.draw_walk(cx, scope, draw_walk).step().is_some() {}
             return DrawStep::done();
@@ -785,9 +804,10 @@ impl KotSlipPreview {
         }
     }
 
-    /// Show the print picture. It is scaled into the column width on draw,
-    /// so point size, margin, and alignment stay in the print's ratio.
-    pub fn set_page(&mut self, cx: &mut Cx, png: &[u8], png_w: u32, png_h: u32) {
+    /// Show the print picture. One scale, chosen on draw, keeps the print's
+    /// ratio: big enough to read, and fitted to the screen when that still is.
+    /// `type_px` is the body-type height in the picture.
+    pub fn set_page(&mut self, cx: &mut Cx, png: &[u8], png_w: u32, png_h: u32, type_px: f64) {
         let img = self.view.image(cx, ids!(slip));
         if img.load_png_from_data(cx, png).is_err() {
             return;
@@ -798,7 +818,8 @@ impl KotSlipPreview {
             inner.redraw(cx);
         }
         self.page = true;
-        self.page_aspect = png_w.max(1) as f64 / png_h.max(1) as f64;
+        self.page_px = (png_w.max(1) as f64, png_h.max(1) as f64);
+        self.type_px = type_px.max(1.0);
         self.rows.clear();
         self.walk.width = Size::fill();
         self.walk.height = Size::fit();
