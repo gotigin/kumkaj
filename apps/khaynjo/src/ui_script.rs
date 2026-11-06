@@ -2455,8 +2455,12 @@ script_mod! {
 
     // Kitchen tab: one card per open KOT — items + state, never prices.
     // Age colour via stacked backgrounds (same idea as FloorTile).
+    // Fixed height (KOT_CARD_H). In a Fit Overlay a Fill layer drawn before
+    // the content gets the height used so far — zero — so the ageing colour
+    // never showed and rows collapsed while the list moved. The KitchenList
+    // pitch (KOT_ROW) is this height plus the item's bottom pad.
     let KotCard = View{
-        width: Fill height: Fit
+        width: Fill height: 200
         flow: Overlay
         bg_ok := RoundedView{
             width: Fill height: Fill
@@ -2483,23 +2487,32 @@ script_mod! {
             draw_bg.border_color: #xB43A12
         }
         View{
-            width: Fill height: Fit
+            width: Fill height: Fill
             padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
             flow: Down spacing: 6
-            // Card is a kitchen tap target — do not steal press for select.
-            title := WrapLabel{
+            // Card is a kitchen tap target — plain Labels never take the press.
+            // Capped lines keep every card the same height; the full ticket
+            // prints, and the kitchen reads the dishes from the summary.
+            title := Label{
                 width: Fill
-                body: "Kitchen"
-                font_color: #x69090C
-                font_size: 14.
-                selectable: false
+                text: "Kitchen"
+                flow: Right{wrap: true}
+                max_lines: 2
+                text_overflow: Ellipsis
+                draw_text.color: #x69090C
+                draw_text.text_style.font_size: 14.
             }
-            summary := WrapLabel{
-                width: Fill
-                body: ""
-                font_color: #x260B08
-                font_size: 15.
-                selectable: false
+            View{
+                width: Fill height: Fill
+                summary := Label{
+                    width: Fill
+                    text: ""
+                    flow: Right{wrap: true}
+                    max_lines: 3
+                    text_overflow: Ellipsis
+                    draw_text.color: #x260B08
+                    draw_text.text_style.font_size: 15.
+                }
             }
             View{
                 width: Fill height: Fit
@@ -3397,7 +3410,9 @@ script_mod! {
                 width: Fill height: Fit
                 flow: Right spacing: 20
                 // Row gap under each card row (across gap is `spacing` above).
-                padding: Inset{bottom: 24.}
+                // Right: the scroll bar's own lane, so the bar never lies over
+                // the last card's photo or price (PRODUCT_LIST_BAR_LANE).
+                padding: Inset{right: 14. bottom: 24.}
                 texture_caching: false
                 c0 := ProductCard{}
                 c1 := ProductCard{}
@@ -4031,8 +4046,9 @@ script_mod! {
     // The item form's category picker: same rows and viewport as the
     // item picker.
     // One "type or pick" row: Labels on a clear RoundedView (Button does not
-    // draw child widgets — empty pills). Resting/selected face is row_wash /
-    // sel_wash under the labels; hover/down from a clear hit Button on top.
+    // draw child widgets — empty pills). The list Item / ItemSel background is
+    // the resting / selected face under the labels; hover/down from a clear
+    // hit Button on top.
     let SuggestRowView = RoundedView{
         cursor: MouseCursor.Hand
         width: Fill height: Fit
@@ -4097,26 +4113,32 @@ script_mod! {
             drag_scrolling: true
             mouse_drag_scrolling: true
             scroll_bar: ScrollBar{bar_size: 6.}
-            Item := View{
+            // The row's own background is its wash. Fill washes drawn before
+            // the row in a Fit Overlay got the height used so far (zero), so
+            // rows showed no card and could collapse while the list moved.
+            // A selected row uses ItemSel. Right margin: the bar's lane.
+            Item := RoundedView{
                 width: Fill height: Fit
+                margin: Inset{right: 8.}
                 flow: Overlay
                 texture_caching: false
-                // Resting / selected fills under the clear label row.
-                row_wash := RoundedView{
-                    width: Fill height: Fill
-                    draw_bg.color: #xffffff
-                    draw_bg.border_radius: 10.
-                    draw_bg.border_size: 1.
-                    draw_bg.border_color: #xE3D3C8
-                }
-                sel_wash := RoundedView{
-                    width: Fill height: Fill
-                    visible: false
-                    draw_bg.color: #xF6E3D3
-                    draw_bg.border_radius: 10.
-                    draw_bg.border_size: 1.
-                    draw_bg.border_color: #xE3D3C8
-                }
+                draw_bg.color: #xffffff
+                draw_bg.border_radius: 10.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #xE3D3C8
+                row := SuggestRowView{}
+                // After the row: a Fill layer takes the row's height.
+                hit := SuggestRowHit{}
+            }
+            ItemSel := RoundedView{
+                width: Fill height: Fit
+                margin: Inset{right: 8.}
+                flow: Overlay
+                texture_caching: false
+                draw_bg.color: #xF6E3D3
+                draw_bg.border_radius: 10.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #xE3D3C8
                 row := SuggestRowView{}
                 hit := SuggestRowHit{}
             }
@@ -10578,7 +10600,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             width: Fill height: Fill
                             align: Align{x: 0.5 y: 0.5}
                             padding: Inset{left: 16. right: 16. top: 20. bottom: 20.}
-                            RoundedView{
+                            // The visible sheet: a press outside it closes the
+                            // modal (content fills the window, so Makepad's own
+                            // outside test never fires — see `sheet_press`).
+                            upi_qr_sheet := RoundedView{
                                 width: Fill{max: 420.} height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 20. right: 20. top: 18. bottom: 18.}

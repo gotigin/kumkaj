@@ -972,17 +972,7 @@ fn send_to_printer(
 ) -> Result<(), String> {
     let bytes = job_bytes(format, text);
     match target {
-        PrinterTarget::Network(addr) => {
-            if bytes.len() > ESC_POS_JOB_MAX {
-                return Err(format!("print job too large ({} bytes)", bytes.len()));
-            }
-            let sock: std::net::SocketAddr = addr.parse().map_err(|_| format!("{addr} is not a printer address"))?;
-            let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
-                .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
-            let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-            stream.write_all(&bytes).map_err(|e| e.to_string())?;
-            stream.flush().map_err(|e| e.to_string())
-        }
+        PrinterTarget::Network(addr) => print_network_bytes(addr, &bytes),
         PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &bytes),
         PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, &bytes),
         PrinterTarget::AndroidPrint => {
@@ -1063,7 +1053,12 @@ pub fn print_network(addr: &str, text: &str) -> Result<(), String> {
 }
 
 pub fn print_network_mode(addr: &str, mode: PrinterMode, text: &str) -> Result<(), String> {
-    let bytes = escpos_job_mode(mode, text);
+    print_network_bytes(addr, &escpos_job_mode(mode, text))
+}
+
+/// Network `:9100`: connect (waiting while the printer finishes the last
+/// slip), send one raster picture at a time, then confirm it took the job.
+fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
     if bytes.len() > ESC_POS_JOB_MAX {
         return Err(format!(
             "print job too large ({} bytes) — refused so the printer is not flooded",
@@ -1073,15 +1068,101 @@ pub fn print_network_mode(addr: &str, mode: PrinterMode, text: &str) -> Result<(
     let sock: std::net::SocketAddr = addr
         .parse()
         .map_err(|_| format!("{addr} is not a printer address"))?;
-    let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
-        .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
-    let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
-    // Chunk writes — some heads drop mid-job when the whole payload lands at once.
-    const CHUNK: usize = 4096;
-    for piece in bytes.chunks(CHUNK) {
+    let mut stream = connect_printer(&sock)?;
+    // A head busy with a long slip reads slowly; TCP holds our writes until
+    // it does. That is waiting, not a failure.
+    let _ = stream.set_write_timeout(Some(Duration::from_secs(30)));
+    // One picture at a time: a single burst printed the first band (about
+    // three lines) and the head dropped the rest.
+    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
         stream.write_all(piece).map_err(|e| e.to_string())?;
+        stream.flush().map_err(|e| e.to_string())
+    })?;
+    finish_printer_stream(addr, stream, bytes.len())
+}
+
+/// Open the printer's raw port. A printer still printing the previous slip
+/// often refuses (or resets) a second connection until it is done: keep
+/// trying for a while. A printer that never answers fails after two tries.
+fn connect_printer(sock: &std::net::SocketAddr) -> Result<std::net::TcpStream, String> {
+    use std::io::ErrorKind;
+    let busy_until = std::time::Instant::now() + Duration::from_secs(15);
+    let mut silent_tries = 0;
+    loop {
+        match std::net::TcpStream::connect_timeout(sock, Duration::from_secs(4)) {
+            Ok(stream) => return Ok(stream),
+            Err(e) => {
+                let busy = matches!(
+                    e.kind(),
+                    ErrorKind::ConnectionRefused | ErrorKind::ConnectionReset | ErrorKind::ConnectionAborted
+                );
+                if !busy {
+                    silent_tries += 1;
+                }
+                if (busy && std::time::Instant::now() < busy_until) || (!busy && silent_tries < 2) {
+                    std::thread::sleep(Duration::from_millis(400));
+                    continue;
+                }
+                return Err(format!("cannot reach it ({e}) — is it on and on this network?"));
+            }
+        }
     }
-    stream.flush().map_err(|e| e.to_string())
+}
+
+/// ESC/POS real-time status (DLE EOT 1) after the last byte: the answer
+/// comes once the printer has read everything before it; "offline" (cover
+/// open, out of paper, error) is a failure the desk must hear about. A
+/// printer that does not answer is remembered, and later jobs half-close
+/// and give it a moment to read before the next slip connects.
+fn finish_printer_stream(addr: &str, mut stream: std::net::TcpStream, sent: usize) -> Result<(), String> {
+    use std::io::Read;
+    static ANSWERS: Mutex<Option<std::collections::HashMap<String, bool>>> = Mutex::new(None);
+    let known = ANSWERS
+        .lock()
+        .unwrap()
+        .get_or_insert_with(Default::default)
+        .get(addr)
+        .copied();
+    if known != Some(false) {
+        let wait = Duration::from_millis((1500 + sent as u64 / 4).min(12_000));
+        let _ = stream.set_read_timeout(Some(wait));
+        if stream.write_all(&[0x10, 0x04, 0x01]).and_then(|_| stream.flush()).is_ok() {
+            let mut reply = [0u8; 1];
+            let answered = matches!(stream.read(&mut reply), Ok(1));
+            ANSWERS
+                .lock()
+                .unwrap()
+                .get_or_insert_with(Default::default)
+                .insert(addr.to_string(), answered);
+            if answered {
+                if let Some(problem) = escpos_status_problem(reply[0]) {
+                    return Err(problem.into());
+                }
+                return Ok(());
+            }
+        }
+    }
+    let _ = stream.shutdown(std::net::Shutdown::Write);
+    let _ = stream.set_read_timeout(Some(Duration::from_millis(600)));
+    let mut sink = [0u8; 64];
+    while let Ok(n) = stream.read(&mut sink) {
+        if n == 0 {
+            break;
+        }
+    }
+    Ok(())
+}
+
+/// A DLE EOT 1 reply that says the printer cannot print. The fixed bits
+/// must match, so a stray byte is never read as a fault.
+fn escpos_status_problem(reply: u8) -> Option<&'static str> {
+    if reply & 0x93 != 0x12 {
+        return None;
+    }
+    if reply & 0x08 != 0 {
+        return Some("the printer says it is offline — check paper, the cover, and its light");
+    }
+    None
 }
 
 /// Cap for one ESC/POS payload (text or raster bands).
@@ -1358,18 +1439,94 @@ fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
             bytes.len()
         ));
     }
+    // A CUPS queue that is a raw TCP socket: talk to that printer directly,
+    // paced and confirmed like a network address (`lp` hands the socket
+    // backend the whole slip in one burst).
+    #[cfg(any(target_os = "linux", target_os = "macos"))]
+    if let Some(addr) = name.and_then(cups_socket_address) {
+        return print_network_bytes(&addr, bytes);
+    }
     let dir = std::env::temp_dir().join("kumkaj-thermal-raw");
     fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
     fs::write(&path, bytes).map_err(|e| e.to_string())?;
-    let result = print_system_raw_path(name, &path);
+    let pieces = crate::receipt_raster::escpos_piece_lengths(bytes);
+    let result = print_system_raw_path(name, &path, &pieces);
     let _ = fs::remove_file(&path);
     result
 }
 
-fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> {
+/// `host:port` of a CUPS queue whose device is a raw socket.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_socket_address(name: &str) -> Option<String> {
+    use std::net::ToSocketAddrs;
+    let out = Command::new("lpstat").args(["-v", name]).output().ok()?;
+    let host_port = parse_cups_socket_uri(&String::from_utf8_lossy(&out.stdout))?;
+    let addr = host_port.to_socket_addrs().ok()?.next()?;
+    Some(addr.to_string())
+}
+
+/// The `host:port` in an `lpstat -v` line for a `socket://` device (port
+/// 9100 when none is named). Any other backend: `None`.
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+fn parse_cups_socket_uri(lpstat: &str) -> Option<String> {
+    let rest = lpstat.split("socket://").nth(1)?;
+    let hostport: &str = rest
+        .split(|c: char| c.is_whitespace() || c == '/' || c == '?')
+        .next()?;
+    if hostport.is_empty() {
+        return None;
+    }
+    let has_port = if hostport.starts_with('[') {
+        hostport.contains("]:")
+    } else {
+        hostport.contains(':')
+    };
+    Some(if has_port {
+        hostport.to_string()
+    } else {
+        format!("{hostport}:{RAW_PRINT_PORT}")
+    })
+}
+
+/// Windows script: write the bytes in `$pieces` order, one paced piece at a
+/// time, each looped until WritePrinter took all of it.
+#[cfg(any(target_os = "windows", test))]
+pub(crate) fn powershell_paced_write_loop(class: &str, pieces: &[usize]) -> String {
+    let list = if pieces.is_empty() {
+        "0".to_string()
+    } else {
+        pieces.iter().map(|n| n.to_string()).collect::<Vec<_>>().join(",")
+    };
+    let pause = crate::receipt_raster::PIECE_PAUSE_MS;
+    format!(
+        r#"$pieces = @({list})
+        $offset = 0
+        $first = $true
+        foreach ($len in $pieces) {{
+          if ($len -le 0) {{ continue }}
+          if (-not $first) {{ Start-Sleep -Milliseconds {pause} }}
+          $first = $false
+          $end = $offset + $len
+          while ($offset -lt $end) {{
+            $written = 0
+            $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
+            $chunk = $end - $offset
+            if (-not [{class}]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
+            if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
+            $offset += $written
+          }}
+        }}
+        if ($offset -ne $bytes.Length) {{ throw "WritePrinter sent $offset of $($bytes.Length) bytes" }}"#
+    )
+}
+
+fn print_system_raw_path(name: Option<&str>, path: &Path, pieces: &[usize]) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
+        // Other backends (USB, serial, IPP) hold the host back while the
+        // head is busy; socket queues never get here.
+        let _ = pieces;
         let mut cmd = Command::new("lp");
         cmd.args(["-o", "raw"]);
         if let Some(name) = name {
@@ -1441,15 +1598,8 @@ try {{
     try {{
       $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
       try {{
-        $offset = 0
-        while ($offset -lt $bytes.Length) {{
-          $written = 0
-          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
-          $chunk = $bytes.Length - $offset
-          if (-not [KumkajRawPrint]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
-          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
-          $offset += $written
-        }}
+        # One picture at a time with a pause (a head drops a burst).
+        {write_loop}
       }} finally {{ $pinned.Free() }}
     }} finally {{ [void][KumkajRawPrint]::EndPagePrinter($h) }}
   }} finally {{ [void][KumkajRawPrint]::EndDocPrinter($h) }}
@@ -1457,6 +1607,7 @@ try {{
 "#,
             path_s = path_s,
             name_s = name_s,
+            write_loop = powershell_paced_write_loop("KumkajRawPrint", pieces),
         );
         let out = Command::new("powershell")
             .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
@@ -1473,12 +1624,12 @@ try {{
     }
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path);
+        let _ = (name, path, pieces);
         Err("Android thermal needs Network, Bluetooth, or USB".into())
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows", target_os = "android")))]
     {
-        let _ = (name, path);
+        let _ = (name, path, pieces);
         Err("printing is not supported on this system".into())
     }
 }
@@ -1717,6 +1868,76 @@ pub fn copy_text(text: &str) -> bool {
 }
 
 #[cfg(test)]
+mod pacing_tests {
+    use super::*;
+
+    #[test]
+    fn a_cups_socket_queue_names_its_printer() {
+        assert_eq!(
+            parse_cups_socket_uri("device for Label: socket://192.168.1.60:9100").as_deref(),
+            Some("192.168.1.60:9100")
+        );
+        assert_eq!(
+            parse_cups_socket_uri("device for L: socket://label.local").as_deref(),
+            Some("label.local:9100")
+        );
+        assert_eq!(parse_cups_socket_uri("device for L: usb://Zebra/ZD220"), None);
+    }
+
+    #[test]
+    fn printer_status_offline_is_a_failure() {
+        assert_eq!(escpos_status_problem(0x12), None);
+        assert!(escpos_status_problem(0x1A).is_some());
+        assert_eq!(escpos_status_problem(0xFF), None);
+    }
+
+    #[test]
+    fn windows_raw_writer_sends_each_piece() {
+        let script = powershell_paced_write_loop("KumkajRawPrint", &[2058, 3016, 8]);
+        assert!(script.contains("$pieces = @(2058,3016,8)"));
+        assert!(script.contains("Start-Sleep -Milliseconds 40"));
+        assert!(script.contains("$offset -ne $bytes.Length"));
+    }
+
+    /// The whole slip, then only the status request; an "offline" answer
+    /// is a failure.
+    #[test]
+    fn network_printer_gets_the_job_then_the_status_request() {
+        let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let addr = listener.local_addr().unwrap().to_string();
+        let got = std::thread::spawn(move || {
+            let (mut conn, _) = listener.accept().unwrap();
+            let mut buf = Vec::new();
+            std::io::Read::read_to_end(&mut conn, &mut buf).unwrap();
+            buf
+        });
+        print_network(&addr, "AWB 123\nDelhi").unwrap();
+        let mut want = escpos_job_mode(PrinterMode::Kot, "AWB 123\nDelhi");
+        want.extend_from_slice(&[0x10, 0x04, 0x01]);
+        assert_eq!(got.join().unwrap(), want);
+
+        let offline = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let addr = offline.local_addr().unwrap().to_string();
+        std::thread::spawn(move || {
+            let (mut conn, _) = offline.accept().unwrap();
+            let mut got = Vec::new();
+            let mut buf = [0u8; 4096];
+            while let Ok(n) = std::io::Read::read(&mut conn, &mut buf) {
+                if n == 0 {
+                    break;
+                }
+                got.extend_from_slice(&buf[..n]);
+                if got.ends_with(&[0x10, 0x04, 0x01]) {
+                    let _ = conn.write_all(&[0x1A]);
+                    break;
+                }
+            }
+        });
+        assert!(print_network(&addr, "AWB 124").unwrap_err().contains("offline"));
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
@@ -1810,7 +2031,10 @@ mod tests {
             buf
         });
         print_network(&addr, "Receipt INV-MAIN-000012\n1 kg parcel").unwrap();
-        assert_eq!(got.join().unwrap(), escpos_job("Receipt INV-MAIN-000012\n1 kg parcel"));
+        // The whole job, then only the status request (DLE EOT 1).
+        let mut want = escpos_job("Receipt INV-MAIN-000012\n1 kg parcel");
+        want.extend_from_slice(&[0x10, 0x04, 0x01]);
+        assert_eq!(got.join().unwrap(), want);
         // Nobody listening: said in words, not a hang.
         let closed = std::net::TcpListener::bind("127.0.0.1:0").unwrap().local_addr().unwrap().to_string();
         assert!(print_network(&closed, "x").unwrap_err().contains("cannot reach"));

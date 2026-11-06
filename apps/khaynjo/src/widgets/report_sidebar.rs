@@ -9,11 +9,24 @@ enum ReportRow {
     Gap,
 }
 
+/// RFC3339 → owner-facing date/time via fiscal helpers; fallback strips seconds.
+fn short_when(at: &str) -> String {
+    let shown = crate::fiscal::format_datetime(at, "dmy", "24h");
+    if shown.is_empty() {
+        at.get(..16).unwrap_or(at).replace('T', " ")
+    } else {
+        shown
+    }
+}
+
 /// Lay out a printable report: "=== X ===", "Title:", a title followed by
 /// indented lines, the first line of a section with more under it, and a
 /// word or two over figures ("Assets") become headings; figures become
 /// label/value rows ([`report_values`]); "----" and blank lines become a gap.
 fn parse_report(text: &str) -> Vec<ReportRow> {
+    // A bill or KOT shown on screen (Floor → View bill) carries each line's
+    // print marks; the screen shows the words.
+    let text = print_share::strip_kot_style_marks(text);
     // Undo plain_display_text's Markdown escapes.
     let text = text.replace("\\*", "*").replace("\\_", "_").replace("\\`", "`").replace("\\#", "#");
     let lines: Vec<&str> = text.lines().collect();
@@ -113,17 +126,6 @@ fn report_values(l: &str) -> Option<Vec<ReportRow>> {
 /// card shows it as a heading, so the colon goes.
 fn report_head(text: &str) -> ReportRow {
     ReportRow::Head(text.trim_end().trim_end_matches([':', '：']).trim_end().to_string())
-}
-
-/// RFC3339 → owner-facing date/time via fiscal helpers; fallback strips seconds.
-#[allow(dead_code)]
-fn short_when(at: &str) -> String {
-    let shown = crate::fiscal::format_datetime(at, "dmy", "24h");
-    if shown.is_empty() {
-        at.get(..16).unwrap_or(at).replace('T', " ")
-    } else {
-        shown
-    }
 }
 
 /// A report row's text, right-aligned in right-to-left languages.

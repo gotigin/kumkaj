@@ -322,6 +322,10 @@ impl AppMain for App {
             }
         }
         self.ui.handle_event(cx, event, &mut Scope::empty());
+        // A control in the 48 px edge strip (a button, a card, the booking
+        // desk's sideways panes) took this press: the control wins, the edge
+        // swipe disarms.
+        self.disarm_edge_swipe_if_claimed(cx, event);
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.
         if matches!(
             event,

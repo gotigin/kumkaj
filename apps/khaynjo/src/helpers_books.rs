@@ -45,54 +45,6 @@ fn printer_route_display_name(
     key.to_string()
 }
 
-/// Stored key `bill` / `kot:` / `kot:<id>` → [`print_share::RouteKey`].
-#[allow(dead_code)]
-fn printer_route_key_as_route(key: &str) -> print_share::RouteKey<'_> {
-    let key = key.trim();
-    if key == "bill" || key.is_empty() {
-        print_share::RouteKey::Bill
-    } else if let Some(rest) = key.strip_prefix("kot:") {
-        print_share::RouteKey::Kot { station_id: rest }
-    } else {
-        print_share::RouteKey::Bill
-    }
-}
-
-/// Turn a typed/picked label (or a stored key) into `bill` / `kot:` / `kot:<id>`.
-#[allow(dead_code)]
-fn resolve_printer_route_key(
-    typed: &str,
-    stations: &[domain::KitchenStation],
-    t: impl Fn(&str) -> String,
-) -> String {
-    let typed = typed.trim();
-    if typed.is_empty() {
-        return "bill".into();
-    }
-    if typed == "bill" || typed == "kot:" || typed.starts_with("kot:") {
-        return typed.to_string();
-    }
-    let bill = t("route_bill");
-    let unassigned = t("route_default_kitchen");
-    if typed.eq_ignore_ascii_case(&bill) {
-        return "bill".into();
-    }
-    if typed.eq_ignore_ascii_case(&unassigned)
-        || typed.eq_ignore_ascii_case("unassigned")
-        || typed.eq_ignore_ascii_case("unassigned items (no station)")
-    {
-        return "kot:".into();
-    }
-    if let Some(s) = stations
-        .iter()
-        .find(|s| s.name.eq_ignore_ascii_case(typed))
-    {
-        return format!("kot:{}", s.id);
-    }
-    // Unknown label — keep editing Bill rather than inventing a key.
-    "bill".into()
-}
-
 /// Normalize place Outputs: fill missing profile, one printer once.
 /// Virtual-printer attach slots (bare VP ids) pass through unchanged —
 /// rewriting them as printer_id@format deletes station attaches.
@@ -675,4 +627,39 @@ fn milli_as_count(milli: i64) -> String {
     } else {
         format!("{:.2}", milli as f64 / 1000.0).trim_end_matches('0').to_string()
     }
+}
+
+
+/// Turn a typed/picked label (or a stored key) into `bill` / `kot:` / `kot:<id>`.
+fn resolve_printer_route_key(
+    typed: &str,
+    stations: &[domain::KitchenStation],
+    t: impl Fn(&str) -> String,
+) -> String {
+    let typed = typed.trim();
+    if typed.is_empty() {
+        return "bill".into();
+    }
+    if typed == "bill" || typed == "kot:" || typed.starts_with("kot:") {
+        return typed.to_string();
+    }
+    let bill = t("route_bill");
+    let unassigned = t("route_default_kitchen");
+    if typed.eq_ignore_ascii_case(&bill) {
+        return "bill".into();
+    }
+    if typed.eq_ignore_ascii_case(&unassigned)
+        || typed.eq_ignore_ascii_case("unassigned")
+        || typed.eq_ignore_ascii_case("unassigned items (no station)")
+    {
+        return "kot:".into();
+    }
+    if let Some(s) = stations
+        .iter()
+        .find(|s| s.name.eq_ignore_ascii_case(typed))
+    {
+        return format!("kot:{}", s.id);
+    }
+    // Unknown label — keep editing Bill rather than inventing a key.
+    "bill".into()
 }

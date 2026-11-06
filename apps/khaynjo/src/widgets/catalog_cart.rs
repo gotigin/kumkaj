@@ -84,7 +84,10 @@ impl Widget for KitchenList {
         // (DEV.md bug 6c). Page ScrollYView still owns the gesture. Do not
         // remeasure from the visible slice — that under-sizes total height.
         const GAP: f64 = 10.0;
-        let row = *kot_row_height().lock().unwrap();
+        // KotCard is 200 high (DSL) plus the Item's 8 bottom pad. A Fit card
+        // on a guessed 150 pitch cut the lower tickets off (DEV.md bug 8).
+        const KOT_ROW: f64 = 208.0;
+        let row = KOT_ROW;
         let (first, last) = page_window(cx.turtle().pos().y, count, row, GAP);
         let walk = Walk {
             height: Size::Fixed(list_content_height(count, row, GAP)),
@@ -138,11 +141,9 @@ impl Widget for KitchenList {
                     let number = if kot.kot_no > 0 { format!("#{} · ", kot.kot_no) } else { String::new() };
                     let cancel = if kot.is_cancel() { "✕ CANCEL · " } else { "" };
                     let by = if kot.created_by.is_empty() { String::new() } else { format!(" · {}", kot.created_by) };
-                    item.widget(cx, ids!(kotcard.title)).set_text(
+                    item.label(cx, ids!(kotcard.title)).set_text(
                         cx,
-                        &plain_display_text(&format!(
-                            "{cancel}{number}{station} · {mins} min{by}"
-                        )),
+                        &format!("{cancel}{number}{station} · {mins} min{by}"),
                     );
                     // Summary is capped at draw: PortalList rows share one
                     // measured height, so an unbounded multi-line summary
@@ -154,8 +155,7 @@ impl Widget for KitchenList {
                     } else {
                         summary
                     };
-                    item.widget(cx, ids!(kotcard.summary))
-                        .set_text(cx, &plain_display_text(&summary));
+                    item.label(cx, ids!(kotcard.summary)).set_text(cx, &summary);
                     let (state, next) = match kot.status {
                         KotStatus::New => (
                             locale::t(&lang, "kot_new_waiting"),

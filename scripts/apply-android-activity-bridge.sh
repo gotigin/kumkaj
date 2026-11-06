@@ -75,9 +75,26 @@ else
   echo "Inserted writeContentUri into $JAVA"
 fi
 
-if grep -q 'public boolean printDocument' "$JAVA"; then
+PRINT_MARK='    // Kumkaj: PrintManager + Bluetooth SPP + USB host ESC/POS.'
+if grep -q 'kumkajEscposPieceEnds' "$JAVA"; then
   echo "Android print/Bluetooth/USB bridge already present."
+elif grep -q 'public boolean printDocument' "$JAVA" && ! grep -qF "$PRINT_MARK" "$JAVA"; then
+  # printDocument without our marker: not ours to rewrite. Leave it.
+  echo "Android print bridge present without the Kumkaj marker — not replaced; check $JAVA" >&2
 else
+  if grep -qF "$PRINT_MARK" "$JAVA"; then
+    # An older snippet wrote each ticket in one burst (the head kept the
+    # first few lines). It was inserted last, right before the needle: drop
+    # it, then insert the current one below.
+    tmp="$(mktemp)"
+    awk -v mark="$PRINT_MARK" -v needle="$NEEDLE" '
+      $0 == mark { skip = 1 }
+      skip && index($0, needle) == 1 { skip = 0 }
+      !skip { print }
+    ' "$JAVA" > "$tmp"
+    mv -f "$tmp" "$JAVA"
+    echo "Removed the older print/Bluetooth/USB bridge from $JAVA"
+  fi
   ensure_import 'import android.bluetooth.BluetoothAdapter;'
   ensure_import 'import android.bluetooth.BluetoothDevice;'
   ensure_import 'import android.bluetooth.BluetoothSocket;'

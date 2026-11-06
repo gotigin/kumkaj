@@ -156,19 +156,15 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     /// Peer chrome and drill-downs both push visit history, so Back/Forward
     /// move between screens (empty stack is still a no-op, after dismissing
     /// soft keyboard / in-screen layers).
-    fn pointer_navigates(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        if self.pointer_rail_resize(cx, event) {
+    fn pointer_navigates(&mut self, cx: &mut Cx, event: &Event, sheet_open: bool) -> bool {
+        // An open sheet covers the rail divider: dragging dishes across that
+        // line must not resize the rail behind them.
+        if !sheet_open && self.pointer_rail_resize(cx, event) {
             return true;
         }
-        // Add dishes covers the window. A tap on Done sits in the right-edge
-        // swipe zone; arming that swipe ate the tap and the window stayed open.
-        if app_state().lock().unwrap().menu_pick_open {
-            *mouse_swipe_origin().lock().unwrap() = None;
-            *swipe_origin().lock().unwrap() = None;
-            return false;
-        }
         // Side buttons always consume the event (browser-style). Debounce
-        // first so Linux XF86Back/Forward twins do not step twice.
+        // first so Linux XF86Back/Forward twins do not step twice. They stay
+        // live over a sheet: `navigate_back` closes the sheet first.
         match event {
             Event::MouseDown(e) if e.button.is_back() => {
                 *mouse_swipe_origin().lock().unwrap() = None;
@@ -185,6 +181,13 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 return true;
             }
             _ => {}
+        }
+        // Add dishes covers the window and Done sits in the right-edge strip:
+        // no edge swipe starts under a sheet.
+        if sheet_open {
+            *mouse_swipe_origin().lock().unwrap() = None;
+            *swipe_origin().lock().unwrap() = None;
+            return false;
         }
         let navigated = match event {
             Event::MouseDown(e) if e.button.is_primary() => {
@@ -258,6 +261,42 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             true
         } else {
             false
+        }
+    }
+
+    /// Runs after the UI handled a press. An edge swipe armed on that press
+    /// stays armed only when nothing claimed it or the page's own scroll
+    /// view did. A button, field, card, list, or sideways strip in the 48 px
+    /// edge strip claimed it: the control wins, so dragging a strip that
+    /// reaches the edge scrolls it and never also goes Back / Forward.
+    fn disarm_edge_swipe_if_claimed(&mut self, cx: &mut Cx, event: &Event) {
+        let is_press = match event {
+            Event::MouseDown(e) => e.button.is_primary(),
+            Event::TouchUpdate(e) => e.touches.iter().any(|t| t.state == TouchState::Start),
+            _ => false,
+        };
+        if !is_press {
+            return;
+        }
+        let claimed = event.pointer_claimed_area();
+        if claimed.is_empty() {
+            return;
+        }
+        let screen = app_state().lock().unwrap().screen;
+        if claimed == self.ui.view(cx, Self::screen_scroll_view(screen)).area() {
+            return;
+        }
+        match event {
+            Event::MouseDown(_) => *mouse_swipe_origin().lock().unwrap() = None,
+            Event::TouchUpdate(e) => {
+                let mut origin = swipe_origin().lock().unwrap();
+                if let Some((uid, _, _)) = *origin
+                    && e.touches.iter().any(|t| t.state == TouchState::Start && t.uid == uid)
+                {
+                    *origin = None;
+                }
+            }
+            _ => {}
         }
     }
 
@@ -1554,28 +1593,61 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
-    /// Where the dish window sits. The overlay's own area is often empty, so
-    /// fall back to the modal padding against the window.
-    fn menu_sheet_rect(&self, cx: &Cx) -> Rect {
-        let panel = self.ui.view(cx, ids!(menu_panel)).area().rect(cx);
-        if panel.size.x > 80.0 && panel.size.y > 80.0 {
-            return panel;
-        }
-        let size = self.window_inner_size(cx);
-        let w = (size.x - 32.0).clamp(160.0, 980.0);
-        let h = (size.y - 40.0).max(160.0);
-        Rect {
-            pos: dvec2((size.x - w) * 0.5, (size.y - h) * 0.5),
-            size: dvec2(w, h),
-        }
+    /// A sheet covers the window (Add dishes or the UPI QR). While one is
+    /// open, nothing behind it may start a gesture: nav tabs, the rail
+    /// divider, Floor area tabs, the sidebar list, printer rows, edge swipes.
+    fn window_sheet_open(&self, cx: &Cx) -> bool {
+        app_state().lock().unwrap().menu_pick_open
+            || self.ui.modal(cx, ids!(upi_qr_modal)).is_open()
     }
 
-    /// Add dishes → Done, and a tap on the dimmed area around the window.
-    /// The button action does not arrive while the search field is focused,
-    /// and the modal treats the full-screen content view as "inside", so an
-    /// outside tap never dismisses it.
-    fn close_add_dishes_if_done_hit(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        let (abs, up) = match event {
+    /// The open sheet's visible rect and its close targets. The overlay's
+    /// own area can be empty before it draws; Add dishes then falls back to
+    /// its padding against the window.
+    fn open_sheet_geometry(&self, cx: &Cx) -> Option<(Rect, Vec<Rect>)> {
+        if app_state().lock().unwrap().menu_pick_open {
+            let panel = self.ui.view(cx, ids!(menu_panel)).area().rect(cx);
+            let sheet = if panel.size.x > 80.0 && panel.size.y > 80.0 {
+                panel
+            } else {
+                menu_sheet_fallback(self.window_inner_size(cx))
+            };
+            let btn = self.ui.button(cx, ids!(menu_pick_done)).area().rect(cx);
+            let padded = Rect {
+                pos: dvec2(btn.pos.x - 16.0, btn.pos.y - 16.0),
+                size: dvec2(btn.size.x + 32.0, btn.size.y + 32.0),
+            };
+            let done = if btn.size.x > 8.0 && btn.size.y > 8.0 {
+                vec![padded, menu_done_corner(sheet)]
+            } else {
+                vec![menu_done_corner(sheet)]
+            };
+            return Some((sheet, done));
+        }
+        if self.ui.modal(cx, ids!(upi_qr_modal)).is_open() {
+            let sheet = self.ui.view(cx, ids!(upi_qr_sheet)).area().rect(cx);
+            // Not drawn yet: treat every press as inside rather than guess.
+            if sheet.size.x < 1.0 || sheet.size.y < 1.0 {
+                return None;
+            }
+            return Some((sheet, Vec::new()));
+        }
+        None
+    }
+
+    fn close_open_sheet(&mut self, cx: &mut Cx) {
+        if app_state().lock().unwrap().menu_pick_open {
+            self.close_menu_window(cx);
+        }
+        self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
+    }
+
+    /// Done and the dimmed area around a window-covering sheet, for a mouse
+    /// (MouseDown / MouseUp) and a finger (TouchState::Start / Stop).
+    /// Button actions do not arrive while Add dishes' search holds focus,
+    /// and Makepad's own outside test sees the whole window as inside.
+    fn sheet_press(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        let (abs, is_release) = match event {
             Event::MouseDown(e) if e.button.is_primary() => (e.abs, false),
             Event::MouseUp(e) if e.button.is_primary() => (e.abs, true),
             Event::TouchUpdate(e) => {
@@ -1594,40 +1666,20 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             }
             _ => return false,
         };
-        if !app_state().lock().unwrap().menu_pick_open {
-            *menu_press_outside().lock().unwrap() = false;
+        let Some((sheet, done)) = self.open_sheet_geometry(cx) else {
+            *sheet_pressed_at().lock().unwrap() = None;
             return false;
-        }
-        let panel = self.menu_sheet_rect(cx);
-        let done = Rect {
-            pos: dvec2(panel.pos.x + panel.size.x - 176.0, panel.pos.y),
-            size: dvec2(176.0, 84.0),
         };
-        let btn = self.ui.button(cx, ids!(menu_pick_done)).area().rect(cx);
-        let on_btn = btn.size.x > 8.0
-            && btn.size.y > 8.0
-            && Rect {
-                pos: dvec2(btn.pos.x - 16.0, btn.pos.y - 16.0),
-                size: dvec2(btn.size.x + 32.0, btn.size.y + 32.0),
-            }
-            .contains(abs);
-        if on_btn || done.contains(abs) {
-            *menu_press_outside().lock().unwrap() = false;
-            self.close_menu_window(cx);
-            return true;
-        }
-        let outside = !panel.contains(abs);
-        if !up {
-            *menu_press_outside().lock().unwrap() = outside;
-            if outside {
-                self.close_menu_window(cx);
-                return true;
-            }
-            return false;
-        }
-        let started_outside = std::mem::replace(&mut *menu_press_outside().lock().unwrap(), false);
-        if started_outside && outside {
-            self.close_menu_window(cx);
+        let target = sheet_press_target(sheet, &done, abs);
+        let pressed = if is_release {
+            sheet_pressed_at().lock().unwrap().take()
+        } else {
+            *sheet_pressed_at().lock().unwrap() = Some(target);
+            None
+        };
+        if sheet_press_closes(pressed, is_release, target) {
+            *sheet_pressed_at().lock().unwrap() = None;
+            self.close_open_sheet(cx);
             return true;
         }
         false
@@ -2720,8 +2772,8 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     }
 }
 
-/// Press on the dimmed area around Add dishes, cleared when the gesture ends.
-fn menu_press_outside() -> &'static Mutex<bool> {
-    static CELL: Mutex<bool> = Mutex::new(false);
+/// Where the current press on an open sheet began, cleared on release.
+fn sheet_pressed_at() -> &'static Mutex<Option<SheetPress>> {
+    static CELL: Mutex<Option<SheetPress>> = Mutex::new(None);
     &CELL
 }

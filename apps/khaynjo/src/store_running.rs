@@ -546,10 +546,12 @@ impl Store {
             let mut stmt = self
                 .conn
                 .prepare(
-                    "SELECT id, name, qty_milli, unit_label, note
-                       FROM running_lines
-                      WHERE kot_id = ?1 AND cancelled = 0
-                      ORDER BY seq, created_at",
+                    "SELECT l.id, l.name, l.qty_milli, l.unit_label, l.note,
+                            COALESCE(p.allergens, '')
+                       FROM running_lines l
+                       LEFT JOIN products p ON p.id = l.product_id
+                      WHERE l.kot_id = ?1 AND l.cancelled = 0
+                      ORDER BY l.seq, l.created_at",
                 )
                 .map_err(|e| e.to_string())?;
             let rows = stmt
@@ -560,11 +562,12 @@ impl Store {
                         r.get::<_, i64>(2)?,
                         r.get::<_, String>(3)?,
                         r.get::<_, String>(4)?,
+                        r.get::<_, String>(5)?,
                     ))
                 })
                 .map_err(|e| e.to_string())?;
             for row in rows {
-                let (line_id, name, qty_milli, unit_label, note) =
+                let (line_id, name, qty_milli, unit_label, note, allergens) =
                     row.map_err(|e| e.to_string())?;
                 if !filter.is_empty() && !filter.iter().any(|want| *want == line_id) {
                     continue;
@@ -577,6 +580,11 @@ impl Store {
                 let mut label = name;
                 if !note.trim().is_empty() {
                     label.push_str(&format!(" ({})", note.trim()));
+                }
+                // The cook must see a dish's allergens on the ticket itself
+                // (the old summary line carried them; the item rows did not).
+                if !allergens.trim().is_empty() {
+                    label.push_str(&format!(" [allergen: {}]", allergens.trim()));
                 }
                 items.push(format!("{label}|{qty}"));
             }
@@ -2333,8 +2341,16 @@ mod tests {
                 .qty_milli,
             5000
         );
-        let text = shop.store.format_running_bill_text(&order).unwrap();
-        let after_rule = text.split("--------------------------------\n\n").nth(1).unwrap_or("");
+        // Each bill line carries its print style mark; read the words. A
+        // blank line takes no room on the slip, so the dish follows the rule.
+        let text = crate::print_share::strip_kot_style_marks(
+            &shop.store.format_running_bill_text(&order).unwrap(),
+        );
+        let after_rule = text
+            .lines()
+            .skip_while(|l| !l.starts_with("--------------------------------"))
+            .nth(1)
+            .unwrap_or("");
         assert!(
             after_rule.starts_with("Thali  "),
             "first dish must start on a fresh line after the rule, got:\n{text}"

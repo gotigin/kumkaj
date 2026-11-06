@@ -393,15 +393,8 @@ try {{
     try {{
       $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
       try {{
-        $offset = 0
-        while ($offset -lt $bytes.Length) {{
-          $written = 0
-          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
-          $chunk = $bytes.Length - $offset
-          if (-not [KumkajUsbRaw]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
-          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
-          $offset += $written
-        }}
+        # One picture at a time with a pause (a head drops a burst).
+        {write_loop}
       }} finally {{ $pinned.Free() }}
     }} finally {{ [void][KumkajUsbRaw]::EndPagePrinter($h) }}
   }} finally {{ [void][KumkajUsbRaw]::EndDocPrinter($h) }}
@@ -410,6 +403,10 @@ try {{
         vid = vid,
         pid = pid,
         path_s = path_s,
+        write_loop = crate::print_share::powershell_paced_write_loop(
+            "KumkajUsbRaw",
+            &crate::receipt_raster::escpos_piece_lengths(bytes),
+        ),
     );
     let out = Command::new("powershell")
         .args([

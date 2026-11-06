@@ -12,8 +12,18 @@ use unicode_bidi::BidiInfo;
 
 /// Dots across 58 mm paper (8 dots/mm); an 80 mm printer prints it too.
 pub const PAPER_DOTS: usize = 384;
-/// Rows per `GS v 0` command — small enough for any printer's buffer.
-const BAND: usize = 128;
+/// Most bytes of picture data in one `GS v 0` band: strictly under 3 KB.
+pub const BAND_PAYLOAD_MAX: usize = 3 * 1024 - 1;
+/// Pause between two pictures, and before the cut, on a paced writer.
+pub const PIECE_PAUSE_MS: u64 = 40;
+
+/// Rows per `GS v 0` command. A head that is still printing drops the next
+/// picture: a 128-dot band is about three lines, and that was all that
+/// printed when the rest of the slip arrived in the same burst. Each band's
+/// payload stays under 3 KB so it fits a small receive buffer, at any width.
+pub fn band_rows(row_bytes: usize) -> usize {
+    (BAND_PAYLOAD_MAX / row_bytes.max(1)).max(1)
+}
 /// Coverage from which a dot is black (a little under half: thermal heads
 /// print thin strokes faint).
 const INK: f32 = 0.45;
@@ -137,9 +147,10 @@ pub fn escpos_label(text: &str, awb: &str, m: &RasterMetrics) -> Vec<u8> {
 fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
     let (rows, height) = drawn;
     let row_bytes = (width_dots.max(8) & !7) / 8;
+    let band = band_rows(row_bytes);
     let mut out = vec![0x1B, 0x40]; // ESC @: reset
-    for top in (0..height).step_by(BAND) {
-        let h = BAND.min(height - top);
+    for top in (0..height).step_by(band) {
+        let h = band.min(height - top);
         // GS v 0, normal size, width in bytes, height in dots (little-endian).
         out.extend_from_slice(&[
             0x1D,
@@ -157,6 +168,68 @@ fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
     out.extend_from_slice(b"\n\n\n\n\n");
     out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
     out
+}
+
+/// One `GS v 0` picture at a time, then the cut. A thermal head prints the
+/// first picture and drops the rest when they arrive in one burst.
+pub fn write_escpos_paced(
+    bytes: &[u8],
+    mut write_flush: impl FnMut(&[u8]) -> Result<(), String>,
+) -> Result<(), String> {
+    for (i, piece) in escpos_raster_pieces(bytes).iter().enumerate() {
+        if i > 0 {
+            std::thread::sleep(std::time::Duration::from_millis(PIECE_PAUSE_MS));
+        }
+        write_flush(piece)?;
+    }
+    Ok(())
+}
+
+/// Byte length of each paced piece, in order (they add up to the job).
+/// Writers outside Rust (Windows PowerShell) send these one at a time with
+/// [`PIECE_PAUSE_MS`] between them.
+pub fn escpos_piece_lengths(bytes: &[u8]) -> Vec<usize> {
+    escpos_raster_pieces(bytes).iter().map(|p| p.len()).collect()
+}
+
+/// The job split for pacing, every byte in order: the reset with the first
+/// picture, then each further picture, and anything between two pictures
+/// or after the last one (feed and cut) as its own piece. Plain text is one
+/// piece.
+fn escpos_raster_pieces(bytes: &[u8]) -> Vec<&[u8]> {
+    let mut spans = Vec::new();
+    let mut i = 0usize;
+    while i + 8 <= bytes.len() {
+        if bytes[i..i + 4] == [0x1D, 0x76, 0x30, 0x00] {
+            let width = bytes[i + 4] as usize + ((bytes[i + 5] as usize) << 8);
+            let height = bytes[i + 6] as usize + ((bytes[i + 7] as usize) << 8);
+            let end = (i + 8 + width.saturating_mul(height)).min(bytes.len());
+            spans.push((i, end));
+            i = end;
+            continue;
+        }
+        i += 1;
+    }
+    if spans.is_empty() {
+        return vec![bytes];
+    }
+    let mut pieces = Vec::new();
+    let mut from = 0usize;
+    for (n, &(start, end)) in spans.iter().enumerate() {
+        if n == 0 {
+            pieces.push(&bytes[from..end]);
+        } else {
+            if start > from {
+                pieces.push(&bytes[from..start]);
+            }
+            pieces.push(&bytes[start..end]);
+        }
+        from = end;
+    }
+    if from < bytes.len() {
+        pieces.push(&bytes[from..]);
+    }
+    pieces
 }
 
 /// `text` drawn with kitchen metrics.
@@ -641,9 +714,37 @@ mod tests {
         let job = escpos_picture(&ticket);
         assert_eq!(&job[..2], &[0x1B, 0x40]);
         let headers = job.windows(4).filter(|w| *w == [0x1D, 0x76, 0x30, 0x00]).count();
-        assert_eq!(headers, height.div_ceil(BAND));
+        assert_eq!(headers, height.div_ceil(band_rows(PAPER_DOTS / 8)));
         assert!(job.ends_with(&[0x1D, 0x56, 0x00]));
         let row_bytes = PAPER_DOTS / 8;
         assert_eq!(job.len(), 2 + headers * 8 + height * row_bytes + 4 + 4);
+    }
+
+    /// Every band's picture data stays under 3 KB, and the paced split
+    /// sends every byte with the feed and cut as the last piece.
+    #[test]
+    fn bands_stay_small_and_pacing_keeps_every_byte() {
+        let job = escpos_picture(&"ખીચડી\n".repeat(12));
+        let mut i = 0;
+        while i + 8 <= job.len() {
+            if job[i..i + 4] == [0x1D, 0x76, 0x30, 0x00] {
+                let w = job[i + 4] as usize + ((job[i + 5] as usize) << 8);
+                let h = job[i + 6] as usize + ((job[i + 7] as usize) << 8);
+                assert!(w * h < 3 * 1024, "band of {} bytes", w * h);
+                i += 8 + w * h;
+                continue;
+            }
+            i += 1;
+        }
+        let pieces = escpos_raster_pieces(&job);
+        assert_eq!(pieces.concat(), job);
+        assert!(pieces.last().unwrap().ends_with(&[0x1D, 0x56, 0x00]));
+        let two = [job.clone(), job.clone()].concat();
+        let cuts = escpos_raster_pieces(&two)
+            .iter()
+            .filter(|p| p.windows(3).any(|w| w == [0x1D, 0x56, 0x00]))
+            .count();
+        assert_eq!(cuts, 2, "each copy keeps its cut");
+        assert_eq!(escpos_piece_lengths(&two).iter().sum::<usize>(), two.len());
     }
 }

@@ -3297,7 +3297,9 @@ impl Store {
                     {
                         fmt.apply_to_print_format(f);
                     }
-                    let _ = crate::print_share::save_device_printers(base, &printers);
+                    // File only: this getter runs inside a print. Each job
+                    // applies the slip format to its own copy of the setup.
+                    let _ = crate::print_share::write_device_printers(base, &printers);
                 }
             }
             let _ = self.meta_set("kot_slip_compact_v1", "1");
@@ -3570,24 +3572,23 @@ impl Store {
             "duplicate" | "dup" => crate::print_share::KotSlipKind::Duplicate,
             _ => crate::print_share::KotSlipKind::Original,
         };
-        // Bill & KOT format owns type size and content width. Keep the live
-        // KOT format in sync before destinations_for reads it. The virtual
-        // printer supplies layout and delivery (docs/PRINTER.md).
+        // Bill & KOT format owns type size and content width for this slip
+        // kind. Applied to this job's copy of the setup only: the virtual
+        // printer still supplies layout and delivery (docs/PRINTER.md), and
+        // the shared setup is never rewritten from the LAN thread.
+        let mut live = crate::print_share::printers();
+        if let Some(f) = live
+            .formats
+            .iter_mut()
+            .find(|f| f.id == crate::print_share::FORMAT_KOT)
         {
-            let mut live = crate::print_share::printers();
-            if let Some(f) = live
-                .formats
-                .iter_mut()
-                .find(|f| f.id == crate::print_share::FORMAT_KOT)
-            {
-                slip.apply_to_print_format_for_kind(f, slip_kind);
-            }
-            crate::print_share::configure(live);
+            slip.apply_to_print_format_for_kind(f, slip_kind);
         }
         let copies = slip.copies.max(1);
         // One receipt file + one queued job; worker packs N slips into one
         // ESC/POS payload (no N× TCP/`lp` round-trips between copies).
-        let share = crate::print_share::print_route_copies(
+        let share = crate::print_share::print_route_using(
+            &live,
             crate::print_share::PrintKind::Kot,
             crate::print_share::RouteKey::Kot {
                 station_id: &station_id,
@@ -15870,7 +15871,8 @@ mod tests {
         let branch = store.active_branch().unwrap();
         assert_eq!(branch.name, "Main");
         assert!(branch.is_this_device);
-        assert_eq!(store.list_stations().unwrap().len(), 2);
+        // Kitchen stations stay empty until the owner adds them (KHAYNJO.md §4).
+        assert!(store.list_stations().unwrap().is_empty());
         let tables = store.list_tables().unwrap();
         assert_eq!(tables.len(), 48, "T1..T24 + Parcel P1..P24");
         assert_eq!(

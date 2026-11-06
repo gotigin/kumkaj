@@ -96,24 +96,23 @@ impl Widget for SuggestList {
                     let Some(row) = draw_rows.get(item_id) else {
                         continue;
                     };
-                    let item = list.item(cx, item_id, id!(Item));
+                    let selected = cols_menu
+                        && selected_cols >= 1
+                        && row.value.parse::<usize>().ok() == Some(selected_cols);
+                    // The selected row is its own template (its background is
+                    // the selected wash); hit Button hover sits on top.
+                    let template = if selected { id!(ItemSel) } else { id!(Item) };
+                    let item = list.item(cx, item_id, template);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
                     if cols_menu {
-                        let selected = selected_cols >= 1
-                            && row.value.parse::<usize>().ok() == Some(selected_cols);
                         item.label(cx, ids!(action)).set_visible(cx, selected);
                         item.label(cx, ids!(action)).set_text(
                             cx,
                             if selected { "\u{2713}" } else { "" },
                         );
-                        // Selected wash under clear Labels; hit Button hover on top.
-                        item.view(cx, ids!(row_wash)).set_visible(cx, !selected);
-                        item.view(cx, ids!(sel_wash)).set_visible(cx, selected);
                     } else {
-                        item.view(cx, ids!(row_wash)).set_visible(cx, true);
-                        item.view(cx, ids!(sel_wash)).set_visible(cx, false);
                         let action = if row.action.trim().is_empty() {
                             use_text.as_str()
                         } else {

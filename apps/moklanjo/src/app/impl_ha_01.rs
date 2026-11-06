@@ -52,7 +52,7 @@ impl App {
                             || item
                                 .view(cx, ids!(row))
                                 .finger_up(actions)
-                                .is_some_and(|e| e.was_tap() && e.is_over);
+                                .is_some_and(finger_up_is_tap);
                         if row_tap {
                             let value = app_state()
                                 .lock()

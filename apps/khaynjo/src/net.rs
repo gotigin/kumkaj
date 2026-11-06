@@ -3647,8 +3647,21 @@ mod tests {
             assert_eq!(print_sent_kots(&store, &ids), None);
             let jobs = crate::print_share::take_captured();
             assert_eq!(jobs.len(), 2);
-            assert!(jobs.iter().any(|j| j.text.contains("Station: Tandoor") && j.text.contains("Butter Naan")));
-            assert!(jobs.iter().all(|j| j.text.contains("KOT No:") && j.text.contains("D1")));
+            // The compact ticket (owner-styled per line) names the KOT and the
+            // table; each station's paper carries only that station's dishes.
+            let papers: Vec<String> = jobs
+                .iter()
+                .map(|j| crate::print_share::strip_kot_style_marks(&j.text))
+                .collect();
+            assert!(
+                papers.iter().any(|t| t.contains("Butter Naan") && !t.contains("Chaas")),
+                "Tandoor paper: {papers:?}"
+            );
+            assert!(
+                papers.iter().any(|t| t.contains("Chaas") && !t.contains("Butter Naan")),
+                "unassigned-kitchen paper: {papers:?}"
+            );
+            assert!(papers.iter().all(|t| t.contains("KOT") && t.contains("D1")), "{papers:?}");
             // No money on a kitchen ticket. (Not bare digits: the ticket's
             // time, e.g. 16:30, may contain them.)
             assert!(

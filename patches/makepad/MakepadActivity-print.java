@@ -4,6 +4,48 @@
     private static final UUID KUMKAJ_SPP_UUID =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
+    /** Pause between two ESC/POS pictures, and before the cut. */
+    private static final long KUMKAJ_PIECE_PAUSE_MS = 40;
+
+    /**
+     * Where each paced piece ends: the reset with the first GS v 0 picture,
+     * each further picture, anything between two pictures (a copy's cut and
+     * the next reset), and the tail (feed + cut). A thermal head prints the
+     * first picture and drops the rest when a whole ticket arrives at once.
+     * Same split as the apps' receipt_raster::escpos_raster_pieces.
+     */
+    private static int[] kumkajEscposPieceEnds(byte[] data) {
+        java.util.ArrayList<Integer> ends = new java.util.ArrayList<>();
+        int i = 0;
+        int from = 0;
+        boolean first = true;
+        while (i + 8 <= data.length) {
+            if ((data[i] & 0xff) == 0x1D && (data[i + 1] & 0xff) == 0x76
+                    && (data[i + 2] & 0xff) == 0x30 && data[i + 3] == 0) {
+                int w = (data[i + 4] & 0xff) | ((data[i + 5] & 0xff) << 8);
+                int h = (data[i + 6] & 0xff) | ((data[i + 7] & 0xff) << 8);
+                int end = (int) Math.min((long) i + 8 + (long) w * (long) h, (long) data.length);
+                if (!first && i > from) {
+                    ends.add(i);
+                }
+                ends.add(end);
+                first = false;
+                from = end;
+                i = end;
+                continue;
+            }
+            i++;
+        }
+        if (from < data.length) {
+            ends.add(data.length);
+        }
+        int[] out = new int[ends.size()];
+        for (int k = 0; k < out.length; k++) {
+            out[k] = ends.get(k);
+        }
+        return out;
+    }
+
     public String[] listBluetoothPrinters() {
         try {
             BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
@@ -47,8 +89,20 @@
             adapter.cancelDiscovery();
             socket.connect();
             java.io.OutputStream out = socket.getOutputStream();
-            out.write(data);
-            out.flush();
+            int start = 0;
+            int[] ends = kumkajEscposPieceEnds(data);
+            for (int k = 0; k < ends.length; k++) {
+                if (k > 0) {
+                    Thread.sleep(KUMKAJ_PIECE_PAUSE_MS);
+                }
+                out.write(data, start, ends[k] - start);
+                out.flush();
+                start = ends[k];
+            }
+            // write() returns once the stack has the bytes, and close() drops
+            // what it has not sent yet: the ticket stopped after a few lines.
+            // Give the link time to carry it (SPP is ~8 KB/s on a busy head).
+            Thread.sleep(Math.min(8000L, 400L + data.length / 8));
             return true;
         } catch (Throwable e) {
             Log.e(LOG_TAG, "writeBluetoothSpp failed", e);
@@ -169,14 +223,21 @@
                     return false;
                 }
                 try {
+                    // One picture at a time with a pause, each sent whole.
                     int offset = 0;
-                    while (offset < data.length) {
-                        int chunk = Math.min(epOut.getMaxPacketSize(), data.length - offset);
-                        int written = conn.bulkTransfer(epOut, data, offset, chunk, 15000);
-                        if (written <= 0) {
-                            return false;
+                    int[] ends = kumkajEscposPieceEnds(data);
+                    for (int k = 0; k < ends.length; k++) {
+                        if (k > 0) {
+                            Thread.sleep(KUMKAJ_PIECE_PAUSE_MS);
                         }
-                        offset += written;
+                        while (offset < ends[k]) {
+                            int chunk = Math.min(epOut.getMaxPacketSize(), ends[k] - offset);
+                            int written = conn.bulkTransfer(epOut, data, offset, chunk, 15000);
+                            if (written <= 0) {
+                                return false;
+                            }
+                            offset += written;
+                        }
                     }
                     return true;
                 } finally {

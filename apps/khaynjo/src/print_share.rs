@@ -493,10 +493,15 @@ impl PrintFormat {
         }
     }
 
+    /// The print picture's metrics. `line` on a format is wrap columns (it
+    /// sets the width); the row pitch comes from the type size, the same as
+    /// the preview ([`metrics_at_content_mm`]). Using the column count as the
+    /// pitch spread a plain 80 mm slip to 1.5× line spacing, and a page to
+    /// bands of white, so paper and preview disagreed.
     pub fn raster_metrics(&self) -> crate::receipt_raster::RasterMetrics {
         crate::receipt_raster::RasterMetrics {
             em: self.em,
-            line: self.line as usize,
+            line: raster_pitch_for_em(self.em),
             baseline: self.baseline,
             side: self.side,
             width_dots: paper_dots_for_wrap_cols(self.line),
@@ -3137,19 +3142,6 @@ impl DevicePrinters {
         }
     }
 
-    /// VP: layout + delivery. Place: type size, side, and content width
-    /// (wrap columns) from Bill & KOT format — the same width for the bill
-    /// and the kitchen ticket.
-    #[allow(dead_code)]
-    fn format_for_virtual_on_place(&self, vp: &VirtualPrinter, place: &PrintFormat) -> PrintFormat {
-        let mut format = self.format_from_virtual(vp);
-        format.em = place.em;
-        format.line = place.line;
-        format.side = place.side;
-        format.baseline = place.em + 2.0;
-        format
-    }
-
     /// Format id for this route (Bill → bill_format; kitchen → kot_format / KOT).
     pub fn format_id_for(&self, key: RouteKey<'_>) -> String {
         match key {
@@ -3928,12 +3920,12 @@ impl DevicePrinters {
                 }
                 continue;
             }
-            let (pid, fmt) = decode_route_slot(&slot);
-            let fmt = if fmt.is_empty() {
-                default_fmt.to_string()
-            } else {
-                fmt
-            };
+            // The place owns the format (`destinations_for` ignores any
+            // `@format` on a slot), and load keeps bare printer ids. Save the
+            // same canonical form so a draft and its reload are equal; the
+            // same printer twice on one place is one slot.
+            let (pid, _) = decode_route_slot(&slot);
+            let fmt = default_fmt.to_string();
             let Some(p) = printers.iter().find(|p| p.id == pid) else {
                 continue;
             };
@@ -3948,9 +3940,8 @@ impl DevicePrinters {
                 }
             };
             let nf = Self::route_name_format_key(name, &fmt);
-            let enc = encode_route_slot(&pid, &fmt);
             if seen.insert(nf) {
-                out.push(enc);
+                out.push(pid);
             }
         }
         *slots = out;
@@ -4169,14 +4160,22 @@ pub fn load_device_printers(base: &Path) -> DevicePrinters {
 
 /// Keep `printers` beside these books and use them from now on.
 pub fn save_device_printers(base: &Path, printers: &DevicePrinters) -> Result<(), String> {
+    configure(write_device_printers(base, printers)?);
+    Ok(())
+}
+
+/// Write `printers.json` for `base` without changing the setup in force.
+/// For a one-off file migration read on a print path (possibly the LAN
+/// thread): replacing the live setup there swapped in the file's copy in
+/// the middle of a print and could undo a Settings change.
+pub fn write_device_printers(base: &Path, printers: &DevicePrinters) -> Result<DevicePrinters, String> {
     let mut printers = printers.clone();
     printers.dedupe_printers();
     PrintFormat::ensure_builtins(&mut printers.formats);
     fs::create_dir_all(base).map_err(|e| e.to_string())?;
     let raw = serde_json::to_string_pretty(&printers).map_err(|e| e.to_string())?;
     fs::write(printers_path(base), raw).map_err(|e| e.to_string())?;
-    configure(printers);
-    Ok(())
+    Ok(printers)
 }
 
 /// Load and use printers for `base` (a books folder, or install root before
@@ -4258,7 +4257,9 @@ pub fn write_receipt(text: &str, app_files: Option<&Path>) -> Result<PathBuf, St
         chrono::Local::now().format("%Y%m%d-%H%M%S"),
         &uuid::Uuid::new_v4().simple().to_string()[..8]
     ));
-    fs::write(&path, text).map_err(|e| e.to_string())?;
+    // The file is for people (opened, shared, kept). Print jobs carry the
+    // marked text themselves.
+    fs::write(&path, strip_kot_style_marks(text)).map_err(|e| e.to_string())?;
     Ok(path)
 }
 
@@ -4294,11 +4295,26 @@ pub fn print_route_copies(
     app_files: Option<&Path>,
     copies: u32,
 ) -> Result<ReceiptShare, String> {
+    print_route_using(&printers(), kind, route, text, app_files, copies)
+}
+
+/// [`print_route_copies`] against a given printer setup. Test prints and
+/// kitchen tickets adjust a copy of the shop's setup for one job. Writing
+/// that copy into the shared setup and back raced the LAN thread and a
+/// Settings save: either one could put back an older setup.
+pub fn print_route_using(
+    cfg: &DevicePrinters,
+    kind: PrintKind,
+    route: RouteKey<'_>,
+    text: &str,
+    app_files: Option<&Path>,
+    copies: u32,
+) -> Result<ReceiptShare, String> {
     let path = write_receipt(text, app_files)?;
     let copies = copies.max(1);
     let opened = match sink() {
         PrintSink::Os => {
-            let dests: Vec<PrintDest> = printers()
+            let dests: Vec<PrintDest> = cfg
                 .destinations_for(route)
                 .into_iter()
                 .filter(|d| can_print_format(&d.target, &d.format))
@@ -4312,9 +4328,8 @@ pub fn print_route_copies(
                 }
                 false
             } else {
-                let mode = printers().print_mode_for(route);
+                let mode = cfg.print_mode_for(route);
                 match queue(Job {
-                    kind,
                     dests,
                     mode,
                     path: path.clone(),
@@ -4334,7 +4349,7 @@ pub fn print_route_copies(
             // exact key — same as Os path via destinations_for. A captured job
             // counts as handed to a printer, so callers take the same path
             // they would on a device with that printer.
-            if !printers().route_for(route).is_empty() {
+            if !cfg.route_for(route).is_empty() {
                 CAPTURED.with(|c| {
                     c.borrow_mut().push(PrintJob {
                         kind,
@@ -4359,9 +4374,6 @@ pub fn print_route_copies(
 }
 
 struct Job {
-    /// Kept for problem notes / future per-kind wording.
-    #[allow(dead_code)]
-    kind: PrintKind,
     /// Ordered destinations for this place.
     dests: Vec<PrintDest>,
     /// First success vs send to every destination.
@@ -4440,32 +4452,20 @@ fn queue(job: Job) -> Result<(), String> {
                             }
                         }
                         RoutePrintMode::All => {
-                            let mut any_ok = false;
-                            let mut errors: Vec<String> = Vec::new();
+                            // Every printer on the place gets the slip; each
+                            // one that did not take it is named.
                             for dest in &job.dests {
-                                match send_to_printer(
+                                if let Err(e) = send_to_printer(
                                     &dest.format,
                                     &dest.target,
                                     &job.path,
                                     &job.text,
                                     copies,
                                 ) {
-                                    Ok(()) => any_ok = true,
-                                    Err(e) => {
-                                        errors.push(format!(
-                                            "{} did not print: {e}",
-                                            describe(&dest.target)
-                                        ));
-                                    }
-                                }
-                            }
-                            if !any_ok {
-                                for e in errors {
-                                    note_problem(e);
-                                }
-                            } else {
-                                for e in errors {
-                                    note_problem(e);
+                                    note_problem(format!(
+                                        "{} did not print: {e}",
+                                        describe(&dest.target)
+                                    ));
                                 }
                             }
                         }
@@ -4663,15 +4663,114 @@ fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
         ));
     }
     let sock: std::net::SocketAddr = addr.parse().map_err(|_| format!("{addr} is not a printer address"))?;
-    let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(4))
-        .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
-    let _ = stream.set_write_timeout(Some(Duration::from_secs(10)));
+    let mut stream = connect_printer(&sock)?;
+    // A head busy with a long ticket reads slowly; TCP holds our writes until
+    // it does. That is waiting, not a failure.
+    let _ = stream.set_write_timeout(Some(Duration::from_secs(30)));
     // One raster picture at a time. A single burst prints the first band
     // (about three lines) and the head drops the rest of the ticket.
     crate::receipt_raster::write_escpos_paced(bytes, |piece| {
         stream.write_all(piece).map_err(|e| e.to_string())?;
         stream.flush().map_err(|e| e.to_string())
-    })
+    })?;
+    finish_printer_stream(addr, stream, bytes.len())
+}
+
+/// Open the printer's raw port. A printer still printing the previous ticket
+/// often refuses (or resets) a second connection until it is done: keep
+/// trying for a while instead of failing a ticket that would print a moment
+/// later. A printer that never answers fails after two tries.
+fn connect_printer(sock: &std::net::SocketAddr) -> Result<std::net::TcpStream, String> {
+    use std::io::ErrorKind;
+    let busy_until = std::time::Instant::now() + Duration::from_secs(15);
+    let mut silent_tries = 0;
+    loop {
+        match std::net::TcpStream::connect_timeout(sock, Duration::from_secs(4)) {
+            Ok(stream) => return Ok(stream),
+            Err(e) => {
+                let busy = matches!(
+                    e.kind(),
+                    ErrorKind::ConnectionRefused | ErrorKind::ConnectionReset | ErrorKind::ConnectionAborted
+                );
+                if !busy {
+                    silent_tries += 1;
+                }
+                if (busy && std::time::Instant::now() < busy_until) || (!busy && silent_tries < 2) {
+                    std::thread::sleep(Duration::from_millis(400));
+                    continue;
+                }
+                return Err(format!("cannot reach it ({e}) — is it on and on this network?"));
+            }
+        }
+    }
+}
+
+/// ESC/POS real-time status (DLE EOT 1) after the last byte. The printer
+/// answers only once it has read everything before it, so the answer means
+/// the ticket reached the head; an "offline" answer (cover open, out of
+/// paper, error) is a failure the counter must hear about. A printer that
+/// does not answer is remembered, and later jobs only half-close and give it
+/// a moment to read, so the next ticket never lands on top of this one.
+fn finish_printer_stream(addr: &str, mut stream: std::net::TcpStream, sent: usize) -> Result<(), String> {
+    use std::io::Read;
+    static ANSWERS: Mutex<Option<std::collections::HashMap<String, bool>>> = Mutex::new(None);
+    let known = ANSWERS
+        .lock()
+        .unwrap()
+        .get_or_insert_with(Default::default)
+        .get(addr)
+        .copied();
+    if known != Some(false) {
+        // Long jobs take longer to read: wait for the answer accordingly.
+        let wait = Duration::from_millis((1500 + sent as u64 / 4).min(12_000));
+        let _ = stream.set_read_timeout(Some(wait));
+        if stream.write_all(&[0x10, 0x04, 0x01]).and_then(|_| stream.flush()).is_ok() {
+            let mut reply = [0u8; 1];
+            match stream.read(&mut reply) {
+                Ok(1) => {
+                    ANSWERS
+                        .lock()
+                        .unwrap()
+                        .get_or_insert_with(Default::default)
+                        .insert(addr.to_string(), true);
+                    if let Some(problem) = escpos_status_problem(reply[0]) {
+                        return Err(problem.into());
+                    }
+                    return Ok(());
+                }
+                _ => {
+                    ANSWERS
+                        .lock()
+                        .unwrap()
+                        .get_or_insert_with(Default::default)
+                        .insert(addr.to_string(), false);
+                }
+            }
+        }
+    }
+    // No status: stop sending, let the printer finish reading, then close.
+    let _ = stream.shutdown(std::net::Shutdown::Write);
+    let _ = stream.set_read_timeout(Some(Duration::from_millis(600)));
+    let mut sink = [0u8; 64];
+    while let Ok(n) = stream.read(&mut sink) {
+        if n == 0 {
+            break;
+        }
+    }
+    Ok(())
+}
+
+/// A DLE EOT 1 reply that says the printer cannot print. The fixed bits
+/// (bit 1 and 4 set, bit 0 and 7 clear) must match, so another device's
+/// stray byte is never read as a fault.
+fn escpos_status_problem(reply: u8) -> Option<&'static str> {
+    if reply & 0x93 != 0x12 {
+        return None;
+    }
+    if reply & 0x08 != 0 {
+        return Some("the printer says it is offline — check paper, the cover, and its light");
+    }
+    None
 }
 
 /// Cap for one ESC/POS payload (text or raster bands).
@@ -4847,11 +4946,13 @@ pub fn metrics_at_content_mm(
     // Same dot width the printer uses for this millimetre setting, so the
     // preview is a scale of the printed slip rather than a second layout.
     m.width_dots = paper_width_dots(mm);
-    // `PrintFormat.line` is wrap columns. Using it as the raster pitch made
-    // every row as tall as the column count, so a page was empty bands.
-    m.line = ((m.em * 1.45).round() as usize).clamp(16, 96);
     m.baseline = m.em * 0.92;
     m
+}
+
+/// Row pitch (dots) for a type size: the preview's and the printer's.
+pub fn raster_pitch_for_em(em: f32) -> usize {
+    ((em * 1.45).round() as usize).clamp(16, 96)
 }
 
 /// One slip line's size, weight, and alignment. Start/Center/End are shifts
@@ -5197,21 +5298,55 @@ fn cups_confirm_after_lp(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), Str
         "lp_queued",
         format!("printer={who} job={job_s}"),
     );
-    let Some(printer) = name else {
-        return Ok(());
+    let printer = match name {
+        Some(n) => n.to_string(),
+        None => match cups_default_printer() {
+            Some(n) => n,
+            None => return Ok(()),
+        },
     };
-    // Check immediately — do not sleep 500ms per job. Multi-copy KOTs used to
-    // queue the first slip at once and then stall ~0.5s between each follow-up
-    // copy because this wait ran on every `lp` accept.
-    if let Some(blocked) = cups_printer_unreachable(printer) {
-        if let Some(job) = &job {
-            let _ = Command::new("cancel").arg(job).output();
+    // `lp` returns when CUPS has the job, before the backend has tried the
+    // device. Watch the job briefly (this runs on the print worker, never the
+    // UI): done → printed; the queue says the printer cannot be reached →
+    // cancel and fail. Copies are one job, so this runs once per ticket.
+    let deadline = std::time::Instant::now() + Duration::from_secs(3);
+    loop {
+        if let Some(blocked) = cups_printer_unreachable(&printer) {
+            if let Some(job) = &job {
+                let _ = Command::new("cancel").arg(job).output();
+            }
+            eprintln!("[print] CUPS unreachable: {blocked}");
+            crate::diag::warn(crate::diag::Cat::Print, "cups_unreachable", &blocked);
+            return Err(blocked);
         }
-        eprintln!("[print] CUPS unreachable: {blocked}");
-        crate::diag::warn(crate::diag::Cat::Print, "cups_unreachable", &blocked);
-        return Err(blocked);
+        let pending = job.as_deref().is_some_and(cups_job_pending);
+        if !pending || std::time::Instant::now() >= deadline {
+            // Done, or still printing a long page: the device has it.
+            return Ok(());
+        }
+        std::thread::sleep(Duration::from_millis(300));
     }
-    Ok(())
+}
+
+/// The queue `lp` uses when no printer is named (`lpstat -d`).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_default_printer() -> Option<String> {
+    let out = Command::new("lpstat").arg("-d").output().ok()?;
+    let text = String::from_utf8_lossy(&out.stdout);
+    let name = text.rsplit(':').next()?.trim();
+    (!name.is_empty() && !text.to_ascii_lowercase().contains("no system default"))
+        .then(|| name.to_string())
+}
+
+/// Whether CUPS still lists `job` as queued or printing (`lpstat -o`).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_job_pending(job: &str) -> bool {
+    let Ok(out) = Command::new("lpstat").arg("-o").output() else {
+        return false;
+    };
+    String::from_utf8_lossy(&out.stdout)
+        .lines()
+        .any(|l| l.split_whitespace().next() == Some(job))
 }
 
 /// Send ESC/POS bytes to a system printer as a **raw** job (KOT on desktop queues).
@@ -5222,19 +5357,63 @@ fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
             bytes.len()
         ));
     }
+    // A CUPS queue that is a raw TCP socket: talk to that printer directly,
+    // paced and confirmed like a network address. `lp` hands the whole job
+    // to the socket backend in one burst, and reports success once queued.
+    #[cfg(any(target_os = "linux", target_os = "macos"))]
+    if let Some(addr) = name.and_then(cups_socket_address) {
+        return print_network_bytes(&addr, bytes);
+    }
     let dir = std::env::temp_dir().join("kumkaj-kot-raw");
     fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
     fs::write(&path, bytes).map_err(|e| e.to_string())?;
-    let result = print_system_raw_path(name, &path);
+    let pieces = crate::receipt_raster::escpos_piece_lengths(bytes);
+    let result = print_system_raw_path(name, &path, &pieces);
     let _ = fs::remove_file(&path);
     result
 }
 
-fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> {
+/// Windows script: write the bytes in `$pieces` order, one paced piece at a
+/// time ([`crate::receipt_raster::PIECE_PAUSE_MS`] between them). Each piece
+/// loops until WritePrinter took all of it.
+#[cfg(any(target_os = "windows", test))]
+pub(crate) fn powershell_paced_write_loop(class: &str, pieces: &[usize]) -> String {
+    let list = if pieces.is_empty() {
+        "0".to_string()
+    } else {
+        pieces.iter().map(|n| n.to_string()).collect::<Vec<_>>().join(",")
+    };
+    let pause = crate::receipt_raster::PIECE_PAUSE_MS;
+    format!(
+        r#"$pieces = @({list})
+        $offset = 0
+        $first = $true
+        foreach ($len in $pieces) {{
+          if ($len -le 0) {{ continue }}
+          if (-not $first) {{ Start-Sleep -Milliseconds {pause} }}
+          $first = $false
+          $end = $offset + $len
+          while ($offset -lt $end) {{
+            $written = 0
+            $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
+            $chunk = $end - $offset
+            if (-not [{class}]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
+            if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
+            $offset += $written
+          }}
+        }}
+        if ($offset -ne $bytes.Length) {{ throw "WritePrinter sent $offset of $($bytes.Length) bytes" }}"#
+    )
+}
+
+fn print_system_raw_path(name: Option<&str>, path: &Path, pieces: &[usize]) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
-        // Raw spool: bytes go to the device as-is (same idea as host:9100).
+        // Raw spool for other backends (USB, serial, IPP): bytes go to the
+        // device as-is. USB and serial hold the host back while the head is
+        // busy; socket queues never get here (see `print_system_raw`).
+        let _ = pieces;
         let mut cmd = Command::new("lp");
         cmd.args(["-o", "raw"]);
         if let Some(name) = name {
@@ -5305,17 +5484,9 @@ try {{
     try {{
       $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
       try {{
-        # WritePrinter often returns success after only part of the buffer —
-        # loop until every byte is accepted or the ticket prints truncated.
-        $offset = 0
-        while ($offset -lt $bytes.Length) {{
-          $written = 0
-          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
-          $chunk = $bytes.Length - $offset
-          if (-not [KumkajRawPrint]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
-          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
-          $offset += $written
-        }}
+        # One picture at a time with a pause (a head drops a burst), and each
+        # piece looped until WritePrinter took every byte of it.
+        {write_loop}
       }} finally {{ $pinned.Free() }}
     }} finally {{ [void][KumkajRawPrint]::EndPagePrinter($h) }}
   }} finally {{ [void][KumkajRawPrint]::EndDocPrinter($h) }}
@@ -5323,6 +5494,7 @@ try {{
 "#,
                 path_s = path_s,
                 name = quote(name),
+                write_loop = powershell_paced_write_loop("KumkajRawPrint", pieces),
             )
         } else {
             // No name → default printer via Out-Printer still page-layouts; refuse
@@ -5348,7 +5520,7 @@ try {{
     }
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path);
+        let _ = (name, path, pieces);
         Err(
             "Android has no system printer drivers for kitchen tickets — use a network address (host:9100) in Settings → Printers"
                 .into(),
@@ -5356,9 +5528,46 @@ try {{
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows", target_os = "android")))]
     {
-        let _ = (name, path);
+        let _ = (name, path, pieces);
         Err("printing is not supported on this system".into())
     }
+}
+
+/// `host:port` of a CUPS queue whose device is a raw socket
+/// (`lpstat -v NAME` → `device for NAME: socket://192.168.1.50:9100`).
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn cups_socket_address(name: &str) -> Option<String> {
+    use std::net::ToSocketAddrs;
+    let out = Command::new("lpstat").args(["-v", name]).output().ok()?;
+    let host_port = parse_cups_socket_uri(&String::from_utf8_lossy(&out.stdout))?;
+    let addr = host_port.to_socket_addrs().ok()?.next()?;
+    Some(addr.to_string())
+}
+
+/// The `host:port` in an `lpstat -v` line for a `socket://` device (port
+/// 9100 when the URI names none). Any other backend: `None`.
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+fn parse_cups_socket_uri(lpstat: &str) -> Option<String> {
+    let rest = lpstat.split("socket://").nth(1)?;
+    let hostport: &str = rest
+        .split(|c: char| c.is_whitespace() || c == '/' || c == '?')
+        .next()?;
+    if hostport.is_empty() {
+        return None;
+    }
+    // `[v6]:port`, `[v6]`, `host:port`, `host`.
+    if hostport.starts_with('[') {
+        return Some(if hostport.contains("]:") {
+            hostport.to_string()
+        } else {
+            format!("{hostport}:{RAW_PRINT_PORT}")
+        });
+    }
+    Some(if hostport.contains(':') {
+        hostport.to_string()
+    } else {
+        format!("{hostport}:{RAW_PRINT_PORT}")
+    })
 }
 
 #[cfg(not(target_os = "android"))]
@@ -5657,7 +5866,7 @@ pub fn copy_text(text: &str) -> bool {
     #[cfg(any(target_os = "linux", target_os = "windows", target_os = "macos"))]
     {
         if let Ok(mut clip) = arboard::Clipboard::new() {
-            return clip.set_text(text.to_string()).is_ok();
+            return clip.set_text(strip_kot_style_marks(text)).is_ok();
         }
     }
     let _ = text;
@@ -5916,10 +6125,43 @@ mod tests {
             buf
         });
         print_network(&addr, "KOT 12 · D3\n2 x Thali").unwrap();
-        assert_eq!(got.join().unwrap(), escpos_job("KOT 12 · D3\n2 x Thali"));
+        // The whole job, then only the status request (DLE EOT 1) that asks
+        // the printer to confirm it read everything.
+        let mut want = escpos_job("KOT 12 · D3\n2 x Thali");
+        want.extend_from_slice(&[0x10, 0x04, 0x01]);
+        assert_eq!(got.join().unwrap(), want);
         // Nobody listening: said in words, not a hang.
         let closed = std::net::TcpListener::bind("127.0.0.1:0").unwrap().local_addr().unwrap().to_string();
         assert!(print_network(&closed, "x").unwrap_err().contains("cannot reach"));
+    }
+
+    /// A printer that answers the status request: "online" is success, and
+    /// "offline" (out of paper, cover open) is a failure, never "printed".
+    #[test]
+    fn network_printer_status_reply_decides_the_outcome() {
+        fn fake_printer(reply: u8) -> String {
+            let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+            let addr = listener.local_addr().unwrap().to_string();
+            std::thread::spawn(move || {
+                let (mut conn, _) = listener.accept().unwrap();
+                let mut got = Vec::new();
+                let mut buf = [0u8; 4096];
+                while let Ok(n) = std::io::Read::read(&mut conn, &mut buf) {
+                    if n == 0 {
+                        break;
+                    }
+                    got.extend_from_slice(&buf[..n]);
+                    if got.ends_with(&[0x10, 0x04, 0x01]) {
+                        let _ = conn.write_all(&[reply]);
+                        break;
+                    }
+                }
+            });
+            addr
+        }
+        assert!(print_network(&fake_printer(0x12), "KOT 1\n1 x Chaas").is_ok());
+        let err = print_network(&fake_printer(0x1A), "KOT 2\n1 x Chaas").unwrap_err();
+        assert!(err.contains("offline"), "{err}");
     }
 
     #[test]
@@ -5950,6 +6192,91 @@ mod tests {
         assert_eq!(kept[0].em, STD_EM_LARGE);
     }
 
+    fn picture_widths(job: &[u8]) -> Vec<usize> {
+        let mut out = Vec::new();
+        let mut i = 0;
+        while i + 8 <= job.len() {
+            if job[i..i + 4] == [0x1D, 0x76, 0x30, 0x00] {
+                let w = job[i + 4] as usize + ((job[i + 5] as usize) << 8);
+                let h = job[i + 6] as usize + ((job[i + 7] as usize) << 8);
+                out.push(w);
+                i += 8 + w * h;
+                continue;
+            }
+            i += 1;
+        }
+        out
+    }
+
+    /// A bill and a kitchen ticket are the same kind of slip: at a 210 mm
+    /// content width both go out through the same encoder at the same width,
+    /// whichever built-in format the route names.
+    #[test]
+    fn bill_and_kitchen_escpos_are_the_same_width_at_210mm() {
+        let mut cfg = DevicePrinters::default();
+        cfg.set_content_line(wrap_cols_for_paper_mm(210));
+        let as_escpos = |f: PrintFormat| PrintFormat {
+            document: false,
+            delivery: DELIVERY_ESCPOS.into(),
+            ..f
+        };
+        let bill_fmt = as_escpos(cfg.format_by_id(FORMAT_STANDARD_PORTRAIT));
+        let kot_fmt = as_escpos(cfg.format_by_id(FORMAT_KOT));
+        let bill = BillSlipFormat::default().render_sample("Rajdhani", "07/11/2026 12:30");
+        let kot = KotSlipFormat::default().render_sample_kind("Rajdhani", KotSlipKind::Original);
+        let want = paper_width_dots(210) / 8;
+        for (what, job) in [
+            ("bill", escpos_job_format(&bill_fmt, &bill)),
+            ("kitchen", escpos_job_format(&kot_fmt, &kot)),
+        ] {
+            let widths = picture_widths(&job);
+            assert!(!widths.is_empty(), "{what} slip drew no picture");
+            assert!(widths.iter().all(|w| *w == want), "{what}: {widths:?} != {want}");
+        }
+    }
+
+    #[test]
+    fn a_cups_socket_queue_names_its_printer() {
+        assert_eq!(
+            parse_cups_socket_uri("device for Kitchen: socket://192.168.1.50:9100\n").as_deref(),
+            Some("192.168.1.50:9100")
+        );
+        assert_eq!(
+            parse_cups_socket_uri("device for K: socket://kitchen.local/?contimeout=30").as_deref(),
+            Some("kitchen.local:9100")
+        );
+        assert_eq!(
+            parse_cups_socket_uri("device for K: socket://[fe80::1]:9100").as_deref(),
+            Some("[fe80::1]:9100")
+        );
+        assert_eq!(parse_cups_socket_uri("device for Canon: usb://Canon/G3010?serial=1"), None);
+        assert_eq!(parse_cups_socket_uri("device for Brother: ipp://10.0.0.3/ipp/print"), None);
+    }
+
+    /// DLE EOT 1: only a reply with the fixed bits is read, and only the
+    /// offline bit is a failure.
+    #[test]
+    fn printer_status_offline_is_a_failure() {
+        assert_eq!(escpos_status_problem(0x12), None);
+        assert!(escpos_status_problem(0x1A).is_some());
+        // Not a status byte (fixed bits wrong): never a false alarm.
+        assert_eq!(escpos_status_problem(0x08), None);
+        assert_eq!(escpos_status_problem(0xFF), None);
+    }
+
+    /// The Windows raw writer sends the same pieces, in order, with a pause.
+    #[test]
+    fn windows_raw_writer_sends_each_piece() {
+        let job = crate::receipt_raster::escpos_picture(&"ખીચડી\n".repeat(12));
+        let pieces = crate::receipt_raster::escpos_piece_lengths(&job);
+        let script = powershell_paced_write_loop("KumkajRawPrint", &pieces);
+        let list = pieces.iter().map(|n| n.to_string()).collect::<Vec<_>>().join(",");
+        assert!(script.contains(&format!("$pieces = @({list})")));
+        assert!(script.contains("Start-Sleep -Milliseconds 40"));
+        assert!(script.contains("[KumkajRawPrint]::WritePrinter"));
+        assert!(script.contains("$offset -ne $bytes.Length"));
+    }
+
     /// Printers belong to each shop's books folder and reload from there.
     #[test]
     fn device_printers_are_kept_per_books_dir() {
@@ -5960,7 +6287,7 @@ mod tests {
         let counter = chosen.add_printer("Counter", "Canon_G3010");
         chosen.routes.bill = vec![counter.clone()];
         *chosen.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen.clone()];
-        // save/load fill bare ids with place default format (`id@format`).
+        // Routes hold bare printer ids; the place owns the format.
         chosen.dedupe_printers();
         PrintFormat::ensure_builtins(&mut chosen.formats);
         // save_device_printers also configure()s — hold the test lock for the
@@ -6236,11 +6563,9 @@ mod tests {
         *cfg.route_mut(RouteKey::Bill) = vec![a.clone(), "dup".into()];
         cfg.dedupe_printers();
         assert_eq!(cfg.printers.len(), 1);
-        // Bare id is filled with the place's default format on dedupe.
-        assert_eq!(
-            cfg.route_for(RouteKey::Bill),
-            &[encode_route_slot(&a, FORMAT_STANDARD_PORTRAIT)][..]
-        );
+        // One slot for the one printer. The place owns the format, so the
+        // slot is the bare printer id — the same form a reload gives.
+        assert_eq!(cfg.route_for(RouteKey::Bill), &[a.clone()][..]);
     }
 
     #[test]

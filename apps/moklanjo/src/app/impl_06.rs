@@ -1874,6 +1874,43 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         }
     }
 
+    /// Runs after the UI handled a press. An edge swipe armed on that press
+    /// stays armed only when nothing claimed it or the page's own scroll
+    /// view did. A button, field, card, list, or sideways strip in the 48 px
+    /// edge strip claimed it: the control wins. On a phone the booking desk
+    /// pans sideways between Parcel and Counter, and a pan from the edge
+    /// used to also go Back or Forward.
+    fn disarm_edge_swipe_if_claimed(&mut self, cx: &mut Cx, event: &Event) {
+        let is_press = match event {
+            Event::MouseDown(e) => e.button.is_primary(),
+            Event::TouchUpdate(e) => e.touches.iter().any(|t| t.state == TouchState::Start),
+            _ => false,
+        };
+        if !is_press {
+            return;
+        }
+        let claimed = event.pointer_claimed_area();
+        if claimed.is_empty() {
+            return;
+        }
+        let screen = app_state().lock().unwrap().screen;
+        if claimed == self.ui.view(cx, Self::screen_scroll_view(screen)).area() {
+            return;
+        }
+        match event {
+            Event::MouseDown(_) => *mouse_swipe_origin().lock().unwrap() = None,
+            Event::TouchUpdate(e) => {
+                let mut origin = swipe_origin().lock().unwrap();
+                if let Some((uid, _, _)) = *origin
+                    && e.touches.iter().any(|t| t.state == TouchState::Start && t.uid == uid)
+                {
+                    *origin = None;
+                }
+            }
+            _ => {}
+        }
+    }
+
     fn resolve_data_base(&mut self, cx: &mut Cx) {
         let mut st = app_state().lock().unwrap();
         if st.data_base.is_none() {

@@ -2152,35 +2152,35 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             {
                 draft.apply_to_print_format_for_kind(f, kind);
             }
-            let saved = st.printer_draft.clone();
             let stations: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
             let dir = st
                 .store
                 .as_ref()
                 .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
             drop(st);
-            print_share::configure(live);
-            let cfg = print_share::printers();
+            // The same route a real kitchen ticket takes: the first station
+            // with a printer, else the default kitchen.
             let sid = stations
                 .iter()
                 .find(|id| {
-                    !cfg.destinations_for(print_share::RouteKey::Kot { station_id: id })
+                    !live
+                        .destinations_for(print_share::RouteKey::Kot { station_id: id })
                         .is_empty()
                 })
                 .cloned()
                 .unwrap_or_default();
             let key = print_share::RouteKey::Kot { station_id: &sid };
-            if cfg.destinations_for(key).is_empty() {
-                print_share::configure(saved);
+            if live.destinations_for(key).is_empty() {
                 return Err(app_t("test_print_no_printer"));
             }
-            let share = print_share::print_route(
+            let share = print_share::print_route_using(
+                &live,
                 print_share::PrintKind::Kot,
                 key,
                 &text,
                 dir.as_deref(),
+                1,
             );
-            print_share::configure(saved);
             match share {
                 Ok(s) if s.opened => Ok(app_t("test_kot_sent")),
                 Ok(_) => Err(print_share::take_problems()
@@ -2446,29 +2446,22 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             // same format; it does not switch the slip onto a page printer.
             live.set_standard_em(em);
             live.set_content_line(cols);
-            let saved = st.printer_draft.clone();
             let dir = st
                 .store
                 .as_ref()
                 .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
             drop(st);
-            print_share::configure(live);
-            let cfg = print_share::printers();
-            if cfg
-                .destinations_for(print_share::RouteKey::Bill)
-                .is_empty()
-            {
-                print_share::configure(saved);
+            if live.destinations_for(print_share::RouteKey::Bill).is_empty() {
                 return Err(app_t("test_print_no_printer"));
             }
-            let share = print_share::print_route_copies(
+            let share = print_share::print_route_using(
+                &live,
                 print_share::PrintKind::Bill,
                 print_share::RouteKey::Bill,
                 &out,
                 dir.as_deref(),
                 copies,
             );
-            print_share::configure(saved);
             match share {
                 Ok(s) if s.opened => Ok(app_t("test_bill_sent")),
                 Ok(_) => Err(print_share::take_problems()
@@ -2852,14 +2845,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     fn copy_text_to_clipboard(&mut self, cx: &mut Cx, text: &str) {
+        // A bill's per-line print marks are for the printer, not a paste.
+        let text = print_share::strip_kot_style_marks(text);
         // Makepad's clipboard op reaches Android's ClipboardManager, which
         // `arboard` cannot; the desktop call is the immediate-feedback path.
-        cx.copy_to_clipboard(text);
-        let desktop_ok = print_share::copy_text(text);
+        cx.copy_to_clipboard(&text);
+        let desktop_ok = print_share::copy_text(&text);
         println!("Kumkaj share:\n{text}");
         {
             let mut st = app_state().lock().unwrap();
-            st.last_receipt = text.to_string();
+            st.last_receipt = text;
             st.status = if desktop_ok || cfg!(target_os = "android") {
                 "Copied to clipboard".into()
             } else {

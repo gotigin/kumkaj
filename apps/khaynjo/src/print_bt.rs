@@ -252,10 +252,32 @@ $bytes = [IO.File]::ReadAllBytes('{path_s}')
 $p = New-Object System.IO.Ports.SerialPort $portName, 9600, None, 8, One
 $p.WriteTimeout = 15000
 $p.Open()
-try {{ $p.Write($bytes, 0, $bytes.Length) }} finally {{ $p.Close() }}
+try {{
+  # One picture at a time with a pause: a head drops a burst.
+  $pieces = @({pieces})
+  $offset = 0
+  $first = $true
+  foreach ($len in $pieces) {{
+    if ($len -le 0) {{ continue }}
+    if (-not $first) {{ Start-Sleep -Milliseconds {pause} }}
+    $first = $false
+    $p.Write($bytes, $offset, $len)
+    $offset += $len
+  }}
+  # Close discards what the driver has not sent yet: wait for it to drain.
+  $deadline = (Get-Date).AddSeconds(20)
+  while ($p.BytesToWrite -gt 0 -and (Get-Date) -lt $deadline) {{ Start-Sleep -Milliseconds 50 }}
+  if ($p.BytesToWrite -gt 0) {{ throw "the Bluetooth printer did not take the whole ticket" }}
+}} finally {{ $p.Close() }}
 "#,
         mac_s = mac_s,
         path_s = path_s,
+        pieces = crate::receipt_raster::escpos_piece_lengths(bytes)
+            .iter()
+            .map(|n| n.to_string())
+            .collect::<Vec<_>>()
+            .join(","),
+        pause = crate::receipt_raster::PIECE_PAUSE_MS,
     );
     let out = Command::new("powershell")
         .args([
@@ -357,6 +379,9 @@ fn write_macos(mac: &str, bytes: &[u8]) -> Result<(), String> {
         .write(true)
         .open(&path)
         .map_err(|e| format!("cannot open {}: {e}", path.display()))?;
-    f.write_all(bytes).map_err(|e| e.to_string())?;
-    f.flush().map_err(|e| e.to_string())
+    // One picture at a time: a head drops the rest of a burst.
+    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
+        f.write_all(piece).map_err(|e| e.to_string())?;
+        f.flush().map_err(|e| e.to_string())
+    })
 }

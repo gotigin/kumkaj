@@ -469,18 +469,6 @@ const ROUTE_PLACE_BTNS: [(&[LiveId], &[LiveId]); 8] = [
     (ids!(route_place_7), ids!(route_place_7_on)),
 ];
 
-#[allow(dead_code)] // Legacy chip strip slots; place UI is printer_place_dd now.
-const ROUTE_PLACE_SLOTS: [&[LiveId]; 8] = [
-    ids!(route_place_slot_0),
-    ids!(route_place_slot_1),
-    ids!(route_place_slot_2),
-    ids!(route_place_slot_3),
-    ids!(route_place_slot_4),
-    ids!(route_place_slot_5),
-    ids!(route_place_slot_6),
-    ids!(route_place_slot_7),
-];
-
 /// Sentinel for the Frequent chip (not a real category id).
 const MENU_FREQUENT: &str = "__frequent__";
 /// Sentinel for the Added Item(s) chip — dishes currently on this order.
@@ -688,9 +676,14 @@ const PRODUCT_MAX_COLUMNS: usize = 6;
 
 /// Horizontal gap between cards in a ProductList row (keep in sync with DSL).
 const PRODUCT_TILE_GAP: f64 = 20.0;
+/// Right pad on each ProductList row: the vertical scroll bar's lane
+/// (`bar_size` 10 + 4), so the bar never covers the last card.
+const PRODUCT_LIST_BAR_LANE: f64 = 14.0;
 
+/// Cards across a list `width` wide (the row keeps the bar lane free).
 fn product_columns(width: f64) -> usize {
-    (((width + PRODUCT_TILE_GAP) / (PRODUCT_TILE_MIN_W + PRODUCT_TILE_GAP)).floor() as usize)
+    let room = (width - PRODUCT_LIST_BAR_LANE).max(0.0);
+    (((room + PRODUCT_TILE_GAP) / (PRODUCT_TILE_MIN_W + PRODUCT_TILE_GAP)).floor() as usize)
         .clamp(1, PRODUCT_MAX_COLUMNS)
 }
 

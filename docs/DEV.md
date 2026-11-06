@@ -244,6 +244,11 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
    - **`lift_footer` must only write `padding.bottom`.** Writing `padding.top` too made the Fit footer taller than its shell slot; the parent clipped the bottom (chips/‹ › sunk, empty chrome above).
    - Paint the footer X bar **dark on the footer colour** (not stock light handle) so the floor does not read as a cream strip. Keep the bar (do not “fix” by `bar_size: 0` while chevrons exist — the bar is the bottommost chrome).
 7b. **UI must never wait on I/O** — Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return. **Pair finish:** `client_pair` HTTP stays on a worker; applying the sync snapshot (`net::apply_snapshot`) must also stay off the UI thread (`LanOnce::PairApplied`) — a busy shop’s SQLite replace froze Android for seconds after “Pair now”. **Soft keyboard on ClientPair / Lock:** do not run a full `sync_chrome` (locale + Settings SQL) while a text field holds focus — that rebuild hid the IME; digits still go into the field, Pair/Unlock triggers a real sync. **Server pairing digits** in Settings (`pairing_code_value`) are a selectable `WrapLabel` (display/copy only — use **Copy pairing code**); the Client types into `client_code_input` (`FieldInput`, `is_numeric_only`).
+7e. **A sheet that fills the window never dismissed (Khaynjo, 2026-11-07)** — Makepad's `Modal` closes on a release outside `content`; Add dishes and the UPI QR set `content` to Fill, so nothing was outside and the dimmed area did nothing. The app decides from the visible sheet (`sheet_press_target` / `sheet_press_closes`): a press on the dim or on Done closes at once; a press on the dishes owns the whole gesture (a scroll ending outside or over Done never closes). While a sheet is open, nav-tab drag, the rail divider, Floor area drag, sidebar drag, printer-row taps and edge swipes do not start under it; mouse Back/Forward still run and `navigate_back` closes the sheet first. A clear-backdrop dropdown modal (Floor Columns) closes on the same outside press, or it swallowed every Floor tap until the next repaint.
+7f. **Fit Overlay + Fill layer = zero-height or collapsed row** — In a `flow: Overlay` view with `height: Fit`, a `height: Fill` child gets the height used *so far*. A background layer drawn before the content gets zero (no card, no ageing colour on Kitchen tickets) or a wrong height while a list scrolls (Add dishes rows drew as thick bars). Give the card a fixed height that matches its list pitch (`ProductCard` 176, `KotCard` 200 / `KOT_ROW` 208), or make the background the list item's own (`RoundedView` root; one template per state, e.g. SuggestList `Item` / `ItemSel`). A Fill layer *after* the height-giving child (a hit button) is fine.
+7g. **Edge swipe vs a control in the edge strip** — The 48 px back/forward swipe arms on press, but after the UI handled the press `disarm_edge_swipe_if_claimed` drops it unless nothing, or the page's own scroll view, claimed it (`Event::pointer_claimed_area`). A button, field, card, list, or sideways strip at the edge wins: panning Moklanjo's booking desk or a tab strip from the edge used to also go Back/Forward.
+7h. **Row and card taps use `finger_up_is_tap`, not `was_tap()`** — `was_tap` gives up after 0.5 s or 5 px (mouse), while the page waits 8 px before scrolling: a slow press or a 6 px drift was neither a tap nor a scroll. A tap read from raw pointer events (printer rows) needs press and release on the same row within tap travel — a release alone is the end of a scroll.
+7i. **Never pre-mark a scroll handled before dispatch** — Makepad hands a wheel / trackpad delta to the innermost scroll view that can move and marks the axis handled only when it moved. Setting `handled_x` before `ui.handle_event` (`claim_hstrip_nested_scroll`, removed from Moklanjo 2026-11-02 and Khaynjo 2026-11-07) made each sideways strip move one step and then stop.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. The same clip hid Khaynjo’s open ticket line: a fixed 220px extra cut off Cancel / NC / Move under the note and pulled Kitchen station up over them. `cart_open_extra` is the measured details — not a constant, and not a padded blank band under the buttons. Do not auto-scroll the order page to the station control when a line opens. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); an opened or taller row reserves its **measured** height and redraws once (`CartList` settle) — never a fixed “extra” that is shorter than the details. Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 9. **Nav hid peers but Day book still showed them (Waiter)** — Chrome used `nav_tab_permitted`; unlock always opened `Screen::Books` and hub rows / TODAY money stayed visible (Khaynjo 2026-11-04). **Rule:** unlock → `unlocked_home_from`; Day book hub slots + money accordions use the same caps as nav. Full table: § Staff rights vs chrome below.
 
@@ -917,6 +922,43 @@ after Wi‑Fi `:9100` / BT / USB — UI merges into the pool on each Signal
 | Network / BT / USB | ESC/POS raster | ESC/POS raster |
 | Desktop system name / blank | OS document (`lp` / Out-Printer) | Raw ESC/POS spool |
 | Android blank / `android-print:` | PrintManager PDF UI | refused — use Network/BT/USB |
+
+**Sending a slip (both apps, 2026-11-07).** A bill and a kitchen ticket are
+the same kind of slip; the route's format picks delivery (`document`: page
+image; else ESC/POS) and the same encoder and width serve both. Rules the
+senders keep:
+- **Bands under 3 KB, one picture at a time.** `GS v 0` bands carry under
+  3 KB of picture (`band_rows`), and every writer — TCP, Linux/macOS USB and
+  Bluetooth files, Windows `WritePrinter` (named queue and USB), Windows
+  Bluetooth serial, Android SPP and USB host — sends one picture per write
+  with `PIECE_PAUSE_MS` between, and a pause before the cut. A whole ticket
+  in one burst printed about three lines (the first 128-dot band). Do not
+  "fix" a wide slip by clamping to 80 mm or switching it to a page image.
+- **The split keeps every byte.** Bytes between two pictures (a copy's feed
+  and cut, the next copy's reset) are their own piece. Dropping them ran
+  copies together uncut.
+- **Network: wait, then confirm.** Connect retries for ~15 s while the
+  printer refuses or resets (busy with the last ticket). After the job,
+  DLE EOT 1: the printer answers once it has read everything; an
+  "offline" answer (paper, cover, error) is a failure. A printer that never
+  answers is remembered and later jobs half-close and drain instead.
+- **CUPS.** A queue whose device is `socket://host:port` is sent directly
+  (paced and confirmed). Other `lp` jobs are watched for ~3 s: done → printed;
+  "waiting for printer" / not connected → cancelled and reported.
+- **Android Bluetooth** waits for the stack to send before `close()`, which
+  otherwise drops what is still queued. The bridge lives in
+  `patches/makepad/MakepadActivity-print.java`;
+  `scripts/apply-android-activity-bridge.sh` swaps an older copy for it.
+- **One job never rewrites the shared setup.** Test bill, Test KOT and
+  `Store::print_kot` adjust a copy and call `print_route_using`; a getter
+  (`kot_slip_format`) that migrates the file writes the file only
+  (`write_device_printers`). Swapping the global in and out raced the LAN
+  thread and Settings saves, and the first ticket after the migration printed
+  nowhere.
+- **Marks are for the printer.** Bill / KOT text carries a per-line style mark
+  (U+E000 + size/weight/align). Clipboard, share sheet, WhatsApp, the saved
+  `.txt`, the ticket status line and `ReportText` strip it
+  (`strip_kot_style_marks`); only print jobs keep it.
 
 Android-as-Server is first-class: Network, BT, USB, and document PrintManager.
 Failures via `take_problems`. Client devices print at the Server.

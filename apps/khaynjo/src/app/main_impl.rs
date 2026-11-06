@@ -434,50 +434,47 @@ impl AppMain for App {
                 self.tick_ui_state_anims(cx);
             }
         }
-        if self.pointer_sidebar_settings_drag(cx, event) {
-            return;
-        }
-        if self.pointer_route_printer_drag(cx, event) {
-            return;
-        }
-        if self.pointer_nav_drag(cx, event) {
-            return;
-        }
-        if self.pointer_floor_area_drag(cx, event) {
-            return;
-        }
-        if self.pointer_navigates(cx, event) {
-            return;
-        }
-        // Horizontal strips: claim sideways only while they can move; never
-        // steal vertical page scroll when the pointer sits on chips/ticket.
-        if matches!(event, Event::Scroll(_)) {
-            for (_, scroller) in TAB_STRIPS {
-                let tabs = self.ui.view(cx, scroller);
-                claim_hstrip_nested_scroll(cx, &tabs, event);
+        // A sheet over the window (Add dishes, UPI QR) owns every press: the
+        // nav tabs, Floor area tabs, sidebar list, and printer rows behind it
+        // must not start a drag under the dishes the finger is scrolling.
+        let sheet_open = self.window_sheet_open(cx);
+        if !sheet_open {
+            if self.pointer_sidebar_settings_drag(cx, event) {
+                return;
             }
-            for path in [
-                ids!(bottom_nav_scroll),
-                ids!(rail_scroll),
-                ids!(app_hscroll),
-                ids!(pos_ticket),
-                ids!(floor_legend),
-            ] {
-                let strip = self.ui.view(cx, path);
-                claim_hstrip_nested_scroll(cx, &strip, event);
+            if self.pointer_route_printer_drag(cx, event) {
+                return;
+            }
+            if self.pointer_nav_drag(cx, event) {
+                return;
+            }
+            if self.pointer_floor_area_drag(cx, event) {
+                return;
             }
         }
+        if self.pointer_navigates(cx, event, sheet_open) {
+            return;
+        }
+        // Sideways strips (tab strips, the order ticket, nav bars) take the
+        // wheel and trackpad from Makepad itself: the innermost view that can
+        // move gets the delta and marks it handled. A pre-claim here
+        // (claim_hstrip_nested_scroll) marked the axis handled before
+        // dispatch, so each strip moved one step and then never again.
         // Tap outside a type-or-pick list closes it (before the press is
         // delivered so Floor tiles / other chrome still receive the click).
         self.dismiss_suggest_on_outside_press(cx, event);
-        // Add dishes Done: close before the rest of the UI sees the press.
-        // The button action itself does not fire (see close_add_dishes_if_done_hit).
-        if self.close_add_dishes_if_done_hit(cx, event) {
+        // Done and the dimmed area of an open sheet close it before the rest
+        // of the UI sees the press (see `sheet_press`).
+        if self.sheet_press(cx, event) {
             return;
         }
         // Empty header (not Back or the amount eye) is a window drag, the same
         // as the caption bar: press and move, and the desktop moves the window.
-        if let Event::WindowDragQuery(dq) = event {
+        // Not under an open sheet: there the header is dimmed area, and a
+        // press on it closes the sheet instead of moving the window.
+        if let Event::WindowDragQuery(dq) = event
+            && !sheet_open
+        {
             let header = self.ui.view(cx, ids!(header)).area().rect(cx);
             if header.size.x > 1.0 && header.contains(dq.abs) {
                 let on_control = [ids!(header_back), ids!(amounts_eye)].into_iter().any(|id| {
@@ -491,6 +488,9 @@ impl AppMain for App {
             }
         }
         self.ui.handle_event(cx, event, &mut Scope::empty());
+        // A control in the 48 px edge strip (Done, pay, send, a sideways tab
+        // strip) took this press: the control wins, the edge swipe disarms.
+        self.disarm_edge_swipe_if_claimed(cx, event);
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.
         if matches!(event, Event::LiveEdit | Event::ScriptReapply | Event::Startup) {
             self.sync_chrome(cx);

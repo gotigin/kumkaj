@@ -2979,8 +2979,8 @@ script_mod! {
     }
 
     // One "type or pick" row: Labels on a clear RoundedView (Button does not
-    // draw child widgets). Resting face is row_wash under the labels; hover
-    // from a clear hit Button on top.
+    // draw child widgets). The list Item's own background is the resting
+    // face under the labels; hover from a clear hit Button on top.
     let SuggestRowView = RoundedView{
         cursor: MouseCursor.Hand
         width: Fill height: Fit
@@ -3044,18 +3044,21 @@ script_mod! {
             drag_scrolling: true
             mouse_drag_scrolling: true
             scroll_bar: ScrollBar{bar_size: 6.}
-            Item := View{
+            // The row's own background is its wash. A Fill wash drawn before
+            // the row in a Fit Overlay got the height used so far (zero): the
+            // card never showed and rows could collapse while the list moved.
+            // Right margin: the scroll bar's lane, so it never covers a row.
+            Item := RoundedView{
                 width: Fill height: Fit
+                margin: Inset{right: 8.}
                 flow: Overlay
                 texture_caching: false
-                row_wash := RoundedView{
-                    width: Fill height: Fill
-                    draw_bg.color: #xffffff
-                    draw_bg.border_radius: 10.
-                    draw_bg.border_size: 1.
-                    draw_bg.border_color: #x4A5568
-                }
+                draw_bg.color: #xffffff
+                draw_bg.border_radius: 10.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #x4A5568
                 row := SuggestRowView{}
+                // After the row: a Fill layer takes the row's height.
                 hit := SuggestRowHit{}
             }
         }

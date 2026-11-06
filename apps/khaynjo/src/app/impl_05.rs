@@ -1,11 +1,14 @@
 impl App {
 fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
-        cx.copy_to_clipboard(text);
-        let _ = print_share::copy_text(text);
+        // The printer gets each line's size, weight, and alignment marks.
+        // A person (clipboard, share sheet, screen) gets the words only.
+        let plain = print_share::strip_kot_style_marks(text);
+        cx.copy_to_clipboard(&plain);
+        let _ = print_share::copy_text(&plain);
         // Android: ACTION_SEND chooser, unless a network printer takes the
         // bill. Other platforms ignore this and open the file below.
         if !print_share::prints_here(print_share::PrintKind::Bill) {
-            cx.share_text(text);
+            cx.share_text(&plain);
         }
         let app_files = cx.get_data_dir().map(PathBuf::from);
         let copies = app_state()
@@ -25,7 +28,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         ) {
             Ok(share) => {
                 let mut st = app_state().lock().unwrap();
-                st.last_receipt = text.to_string();
+                st.last_receipt = plain;
                 st.status = if share.opened {
                     format!("Receipt ready · {}", share.path.display())
                 } else if cfg!(target_os = "android") {
@@ -36,7 +39,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             }
             Err(e) => {
                 let mut st = app_state().lock().unwrap();
-                st.last_receipt = text.to_string();
+                st.last_receipt = plain;
                 st.status = format!("Receipt copied · file not saved ({e})");
             }
         }
@@ -119,6 +122,13 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             return;
         }
         app_state().lock().unwrap().suggest_open = None;
+        if field == SuggestField::FloorColumns {
+            // The Columns list lives in a full-window Modal with a clear
+            // backdrop. Clearing the state alone left that modal open and
+            // swallowing every press on the Floor until the next repaint;
+            // close it now so this same press reaches the tile under it.
+            self.place_floor_cols_suggest(cx);
+        }
         self.ui.widget(cx, field.list()).redraw(cx);
         self.ui.redraw(cx);
     }
@@ -223,6 +233,13 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 return true;
             }
             self.close_menu_window(cx);
+            return true;
+        }
+        // The UPI QR sheet covers the order: Back closes it, and only it.
+        // Android Back also reaches the modal itself, which closes on the
+        // same event; leaving the screen under an open sheet stranded it.
+        if self.ui.modal(cx, ids!(upi_qr_modal)).is_open() {
+            self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
             return true;
         }
         // Soft keyboard: on Android outside auth/setup, one Back dismisses
@@ -2385,33 +2402,45 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         None
     }
 
-    /// Settings → Printers: tap a virtual-printer row to edit it.
+    /// Settings → Printers: tap a virtual-printer row to edit it. The rows
+    /// are display text, so the tap is read from the pointer: a press and a
+    /// release on the same row, less than a tap's travel apart (mouse or
+    /// finger). A scroll that ends over a row is not a tap.
     fn pointer_route_printer_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        let abs = match event {
-            Event::MouseUp(e) if e.button.is_primary() => e.abs,
+        let (abs, is_release) = match event {
+            Event::MouseDown(e) if e.button.is_primary() => (e.abs, false),
+            Event::MouseUp(e) if e.button.is_primary() => (e.abs, true),
             Event::TouchUpdate(e) => {
                 let mut hit = None;
                 for t in &e.touches {
-                    if matches!(t.state, TouchState::Stop) {
-                        hit = Some(t.abs);
-                        break;
+                    match t.state {
+                        TouchState::Start => hit = Some((t.abs, false)),
+                        TouchState::Stop => hit = Some((t.abs, true)),
+                        _ => {}
                     }
                 }
                 match hit {
-                    Some(a) => a,
+                    Some(h) => h,
                     None => return false,
                 }
             }
             _ => return false,
         };
-        if app_state().lock().unwrap().screen != Screen::Settings {
+        let on_panel = app_state().lock().unwrap().screen == Screen::Settings
+            && self.ui.view(cx, ids!(settings_panel_printers)).visible();
+        if !on_panel {
+            *vp_row_press().lock().unwrap() = None;
             return false;
         }
-        if !self.ui.view(cx, ids!(settings_panel_printers)).visible() {
+        let at = self.virtual_printer_slot_at(cx, abs);
+        if !is_release {
+            *vp_row_press().lock().unwrap() = at.map(|slot| (abs, slot));
             return false;
         }
-        let Some(slot) = self.virtual_printer_slot_at(cx, abs) else {
-            return false;
+        let pressed = vp_row_press().lock().unwrap().take();
+        let slot = match (pressed, at) {
+            (Some((from, s0)), Some(s1)) if s0 == s1 && (abs - from).length() < 24.0 => s1,
+            _ => return false,
         };
         let msg = {
             let mut st = app_state().lock().unwrap();
@@ -2436,4 +2465,11 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         true
     }
 
+}
+
+/// Where a press on a virtual-printer row began (position, row), cleared on
+/// release.
+fn vp_row_press() -> &'static Mutex<Option<(DVec2, usize)>> {
+    static CELL: Mutex<Option<(DVec2, usize)>> = Mutex::new(None);
+    &CELL
 }

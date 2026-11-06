@@ -2283,6 +2283,8 @@ pub fn base64_encode(data: &[u8]) -> String {
 
 /// WhatsApp share URL for a bill (opens device browser / app; Net optional).
 pub fn whatsapp_bill_url(bill_text: &str) -> String {
+    // Print marks (size, weight, align per line) are not part of the message.
+    let bill_text = crate::print_share::strip_kot_style_marks(bill_text);
     let mut enc = String::new();
     for b in bill_text.bytes() {
         match b {

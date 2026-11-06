@@ -780,7 +780,7 @@ impl MatchEvent for App {
             let list = widget.portal_list(cx, ids!(list));
             let mut picked = None;
             for (item_id, item) in list.items_with_actions(actions) {
-                if item.view(cx, ids!(row)).finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over) {
+                if item.view(cx, ids!(row)).finger_up(actions).is_some_and(finger_up_is_tap) {
                     picked = app_state().lock().unwrap().stock_items().get(item_id).map(|p| p.name.clone());
                 }
             }
@@ -3604,7 +3604,7 @@ impl MatchEvent for App {
                     || item
                         .view(cx, ids!(kotcard))
                         .finger_up(actions)
-                        .is_some_and(|e| e.was_tap() && e.is_over);
+                        .is_some_and(finger_up_is_tap);
                 if tapped {
                     let result = (|| -> Result<(), String> {
                         let mut st = app_state().lock().unwrap();
@@ -4054,7 +4054,7 @@ impl MatchEvent for App {
                             || item
                                 .view(cx, ids!(row))
                                 .finger_up(actions)
-                                .is_some_and(|e| e.was_tap() && e.is_over);
+                                .is_some_and(finger_up_is_tap);
                         if row_tap {
                             let value = app_state()
                                 .lock()
@@ -4369,7 +4369,7 @@ impl MatchEvent for App {
                 let tapped = item
                     .view(cx, ids!(dishrow))
                     .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over);
+                    .is_some_and(finger_up_is_tap);
                 if tapped {
                     picked = app_state().lock().unwrap().category_picks.get(item_id).cloned();
                 }
@@ -4702,7 +4702,7 @@ impl MatchEvent for App {
                 && item
                     .view(cx, ids!(summary))
                     .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
+                    .is_some_and(finger_up_is_tap)
             {
                 self.toggle_cart_line(cx, item_id);
             }
@@ -4744,7 +4744,7 @@ impl MatchEvent for App {
         let sale_list = sale_widget.portal_list(cx, ids!(list));
         for (item_id, item) in sale_list.items_with_actions(actions) {
             // The whole row picks the sale.
-            if item.view(cx, ids!(row)).finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over) {
+            if item.view(cx, ids!(row)).finger_up(actions).is_some_and(finger_up_is_tap) {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let sale_id = st
@@ -4796,7 +4796,7 @@ impl MatchEvent for App {
                 && item
                     .view(cx, ids!(summary))
                     .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
+                    .is_some_and(finger_up_is_tap)
             {
                 self.toggle_cart_line(cx, item_id);
             }
@@ -7693,7 +7693,7 @@ impl MatchEvent for App {
                 if item
                     .view(cx, ids!(row))
                     .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
+                    .is_some_and(finger_up_is_tap)
                 {
                     tapped = Some(item_id);
                 }
@@ -7739,7 +7739,7 @@ impl MatchEvent for App {
                 if item
                     .view(cx, ids!(row))
                     .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over)
+                    .is_some_and(finger_up_is_tap)
                 {
                     tapped = Some(item_id);
                 }

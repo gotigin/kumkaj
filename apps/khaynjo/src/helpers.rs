@@ -158,6 +158,7 @@ fn set_view_flow(cx: &mut Cx, view: &ViewRef, flow: Flow) {
 
 /// First line of a status / receipt message, kept short for the ticket.
 fn ticket_status_line(msg: &str) -> String {
+    let msg = print_share::strip_kot_style_marks(msg);
     let first = msg.lines().map(str::trim).find(|l| !l.is_empty()).unwrap_or("");
     let mut out: String = first.chars().take(90).collect();
     if first.chars().count() > 90 {
@@ -340,11 +341,6 @@ fn remember_content_row(cx: &mut Cx, view: &mut View, slot: &Mutex<f64>, used: f
     }
 }
 
-fn kot_row_height() -> &'static Mutex<f64> {
-    static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    HEIGHT.get_or_init(|| Mutex::new(150.0))
-}
-
 fn customer_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
     // Seed: party row + item pad; draw replaces with measured extent.
@@ -452,35 +448,6 @@ fn claim_list_nested_scroll(cx: &mut Cx, host: &View, event: &Event) {
     }
 }
 
-/// Horizontal `ScrollXView` (chip strip / order ticket / app shell): claim X
-/// only while the strip can still move that way; never claim Y.
-fn claim_hstrip_nested_scroll(cx: &mut Cx, strip: &ViewRef, event: &Event) {
-    let Event::Scroll(e) = event else {
-        return;
-    };
-    let area = strip.area();
-    if !area.is_valid(cx) || !area.clipped_rect(cx).contains(e.abs) {
-        return;
-    }
-    let dx = e.scroll.x;
-    if dx == 0.0 {
-        return;
-    }
-    let pos = strip.get_scroll_pos().x;
-    let total = strip.get_scroll_view_total().x;
-    let seen = strip.get_scroll_view_visible().x;
-    let max_x = (total - seen).max(0.0);
-    let toward_left = dx > 0.0;
-    let can_move = if toward_left {
-        pos > 1.0
-    } else {
-        pos < max_x - 1.0
-    };
-    if can_move {
-        e.handled_x.set(true);
-    }
-}
-
 /// Wheel / trackpad into a nested `ScrollXView` that lives inside an
 /// expand-to-content list (`page_owns_scroll` blocks forwarding Scroll into
 /// the PortalList). Applies X (and Shift+vertical, same as `axis_lock` bars)
@@ -510,6 +477,75 @@ fn apply_hstrip_wheel(cx: &mut Cx, strip: &ViewRef, event: &Event) {
     strip.set_scroll_pos(cx, dvec2(new_x, pos.y));
     strip.redraw(cx);
     e.handled_x.set(true);
+}
+
+/// Where a press lands on a sheet that covers the window (Add dishes, UPI).
+///
+/// Makepad closes a modal only when a release lands outside its `content`
+/// view. These sheets give `content` the whole window, so nothing is ever
+/// outside and the dimmed area never dismissed them. The visible sheet is
+/// the real inside.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum SheetPress {
+    /// On the dimmed area around the sheet.
+    Outside,
+    /// On the sheet's own close control.
+    Done,
+    /// Anywhere else on the sheet: dishes, search, tabs.
+    Inside,
+}
+
+fn sheet_press_target(sheet: Rect, done: &[Rect], abs: DVec2) -> SheetPress {
+    let hit = |r: &Rect| r.size.x > 0.0 && r.size.y > 0.0 && r.contains(abs);
+    if done.iter().any(hit) {
+        SheetPress::Done
+    } else if hit(&sheet) {
+        SheetPress::Inside
+    } else {
+        SheetPress::Outside
+    }
+}
+
+/// What the sheet does with one pointer phase.
+///
+/// The press decides the gesture. A press on the dimmed area or on Done
+/// closes the sheet at once. A press on the dishes belongs to the dishes for
+/// the whole gesture: a scroll that ends outside the sheet, or over Done,
+/// never closes it. A release over Done closes only when its press was not
+/// seen (another handler took the down).
+fn sheet_press_closes(
+    pressed: Option<SheetPress>,
+    is_release: bool,
+    target: SheetPress,
+) -> bool {
+    if !is_release {
+        return matches!(target, SheetPress::Outside | SheetPress::Done);
+    }
+    match pressed {
+        Some(_) => false,
+        None => target == SheetPress::Done,
+    }
+}
+
+/// The Add dishes sheet as laid out against the window: the modal pads it
+/// 16 px at the sides and 20 px at top and bottom, at most 980 wide. Used
+/// when the overlay has not reported its own rect yet.
+fn menu_sheet_fallback(window: DVec2) -> Rect {
+    let w = (window.x - 32.0).clamp(160.0, 980.0);
+    let h = (window.y - 40.0).max(160.0);
+    Rect {
+        pos: dvec2((window.x - w) * 0.5, (window.y - h) * 0.5),
+        size: dvec2(w, h),
+    }
+}
+
+/// Done on Add dishes: the top-right corner of the sheet, about 176 × 84.
+/// Its own hit box is unreliable while the search field holds focus.
+fn menu_done_corner(sheet: Rect) -> Rect {
+    Rect {
+        pos: dvec2(sheet.pos.x + sheet.size.x - 176.0, sheet.pos.y),
+        size: dvec2(176.0_f64.min(sheet.size.x), 84.0_f64.min(sheet.size.y)),
+    }
 }
 
 /// Tap on a Floor tile / menu card — not Makepad `was_tap()`.

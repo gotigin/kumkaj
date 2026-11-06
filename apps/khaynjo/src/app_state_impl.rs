@@ -1883,61 +1883,6 @@ impl AppState {
             .sum()
     }
 
-    /// Today's ops report, worded for the shop's country pack.
-    #[allow(dead_code)] // Kept for a short till snapshot; Reports Today uses full books_report_text.
-    fn ops_report_text(&self, report: &domain::OpsReport) -> String {
-        let tax_caption = if self.fiscal.tax_pricing.is_inclusive() {
-            format!("{} inclusive in today's sales", self.fiscal.tax_label())
-        } else {
-            format!("{} exclusive collected today", self.fiscal.tax_label())
-        };
-        let mut lines = vec![
-            format!("Sales today: {}", report.day.sale_count),
-            format!("Cash {}", self.money(Money(report.day.cash_paise))),
-            format!(
-                "{} {}",
-                self.fiscal.digital_pay_label(),
-                self.money(Money(report.day.upi_paise))
-            ),
-            format!("Card {}", self.money(Money(report.day.card_paise))),
-            format!(
-                "{} sales {}",
-                self.fiscal.credit_label(),
-                self.money(Money(report.day.credit_paise))
-            ),
-            format!(
-                "{} {}",
-                self.lane_declared_label(),
-                self.money(Money(report.day.declared_paise))
-            ),
-            format!(
-                "{} {}",
-                self.lane_owner_label(),
-                self.money(Money(report.day.owner_lane_paise))
-            ),
-            format!(
-                "Still owed {}",
-                self.money(Money(report.outstanding_credit_paise))
-            ),
-            format!(
-                "Expenses {} ({})",
-                self.money(Money(report.expenses_paise)),
-                report.expense_count
-            ),
-            format!(
-                "Bank net today {}",
-                self.money(Money(report.bank_net_paise))
-            ),
-            format!("{tax_caption} {}", self.money(Money(report.day.tax_paise))),
-            "Top items:".into(),
-        ];
-        for (name, qty, rev) in &report.top_items {
-            lines.push(format!("  {name} ×{qty} · {}", self.money(Money(*rev))));
-        }
-        lines.push("Use Month / Aging / Bank below for full books".into());
-        lines.join("\n")
-    }
-
     /// One line under the totals strip: tax added at till changes pay; tax
     /// inside price shows the GST already inside the total (and warns when
     /// dishes have no tax rate so "inclusive GST" looks missing).
