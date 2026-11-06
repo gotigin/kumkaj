@@ -1213,6 +1213,8 @@ impl Store {
                     kept.footer_style = parsed.footer_style;
                     kept.upi = parsed.upi;
                     kept.title = parsed.title;
+                    kept.field_order = parsed.field_order;
+                    kept.copies = parsed.copies;
                     self.set_bill_slip_format(&kept)?;
                 }
                 Ok("Bill format saved".into())

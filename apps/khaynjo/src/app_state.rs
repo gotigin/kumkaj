@@ -187,6 +187,8 @@ struct AppState {
     bill_slip_draft: print_share::BillSlipFormat,
     /// Which bill line's show / size / weight / align is open.
     bill_style_field: print_share::BillStyleField,
+    /// Which row of the bill print order is selected.
+    bill_field_edit_idx: usize,
     /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

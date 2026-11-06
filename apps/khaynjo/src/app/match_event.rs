@@ -3881,6 +3881,7 @@ impl MatchEvent for App {
                 (ids!(settings_hub_pickers), "pickers"),
                 (ids!(settings_hub_printers), "printers"),
                 (ids!(settings_hub_bill), "bill"),
+                (ids!(settings_hub_selling), "selling"),
                 (ids!(settings_hub_alerts), "alerts"),
                 (ids!(settings_hub_backup), "backup"),
                 (ids!(settings_hub_diag), "diag"),
@@ -5796,7 +5797,10 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(bill_format_save)).clicked(actions) {
-            self.commit_bill_field_value(cx);
+            // Read the open line now. Save is handled before the field
+            // editors, so a size or address typed in this same press would
+            // otherwise be saved as the previous value.
+            self.read_bill_editor_into_draft(cx);
             let result = (|| -> Result<(), String> {
                 let mut st = app_state().lock().unwrap();
                 let fmt = st.bill_slip_draft.clone().clamped();
@@ -5832,6 +5836,7 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(()) => {
+                    self.publish_print_formats();
                     self.fill_bill_format_fields(cx);
                     self.set_status(cx, "Bill format saved");
                 }
@@ -5869,7 +5874,6 @@ impl MatchEvent for App {
         {
             let mut slip_changed = false;
             let mut style_changed = false;
-            let mut field_picked = false;
             // A typed size lands on the field still selected. Size does not
             // change the preview text, so it must not rebuild the slip.
             if let Some(size_now) = self
@@ -5938,7 +5942,6 @@ impl MatchEvent for App {
                     let mut st = app_state().lock().unwrap();
                     if st.kot_style_field != field {
                         st.kot_style_field = field;
-                        field_picked = true;
                         style_changed = true;
                     }
                     break;
@@ -6084,19 +6087,55 @@ impl MatchEvent for App {
                     slip_changed = true;
                 }
             }
-            if slip_changed {
+            if self.ui.button(cx, ids!(kot_apply_all)).clicked(actions) {
+                // The open field's show, size, weight, and align land on
+                // every other field of this KOT kind.
+                let mut st = app_state().lock().unwrap();
+                let kind = st.kot_edit_kind;
+                let src = st.kot_style_field;
+                let style = st.kot_slip_draft.field_style(kind, src);
+                let shown = st.kot_slip_draft.field_shown(src);
+                for field in print_share::KotStyleField::ALL {
+                    if field == src {
+                        continue;
+                    }
+                    *st.kot_slip_draft.kind_styles.get_mut(kind).get_mut(field) = style.clone();
+                    st.kot_slip_draft.set_field_shown(field, shown);
+                }
+                st.kot_slip_draft.em = st
+                    .kot_slip_draft
+                    .kind_styles
+                    .get(kind)
+                    .item_qty
+                    .size_em;
+                slip_changed = true;
+            }
+            if slip_changed || style_changed {
+                // Size, weight, align, and show change the printed picture.
                 self.sync_kot_format_ui(cx);
-            } else if style_changed {
-                self.sync_kot_field_pick(cx, field_picked);
             }
         }
         if self.ui.button(cx, ids!(kot_format_save)).clicked(actions) {
             let title = self.ui.text_input(cx, ids!(kot_title_input)).text();
             let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
+            let size_now = self.ui.text_input(cx, ids!(kot_field_size_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 st.kot_slip_draft.title = title;
                 st.kot_slip_draft.footer = footer;
+                if let Ok(raw) = size_now.trim().parse::<u32>() {
+                    let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
+                    let kind = st.kot_edit_kind;
+                    let field = st.kot_style_field;
+                    st.kot_slip_draft
+                        .kind_styles
+                        .get_mut(kind)
+                        .get_mut(field)
+                        .size_em = em;
+                    if field == print_share::KotStyleField::ItemQty {
+                        st.kot_slip_draft.em = em;
+                    }
+                }
                 let format = st.kot_slip_draft.clone();
                 st.books_op(BooksOp::SetKotFormat { format })?;
                 if st.device_role != DeviceRole::Client
@@ -6109,6 +6148,7 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(msg) => {
+                    self.publish_print_formats();
                     self.sync_kot_format_ui(cx);
                     self.set_status(cx, msg);
                 }
@@ -6116,11 +6156,16 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(kot_format_test)).clicked(actions) {
-            self.print_kot_format_preview(cx);
-        }
-        if self.ui.button(cx, ids!(bill_format_test)).clicked(actions) {
-            self.print_bill_format_preview(cx);
+        {
+            // The other tab stays in the tree. Only the tab on screen may print,
+            // so Test bill cannot send the kitchen-ticket preview.
+            let on_kot = app_state().lock().unwrap().bill_kot_tab_kot;
+            if on_kot && self.ui.button(cx, ids!(kot_format_test)).clicked(actions) {
+                self.print_kot_format_preview(cx);
+            }
+            if !on_kot && self.ui.button(cx, ids!(bill_format_test)).clicked(actions) {
+                self.print_bill_format_preview(cx);
+            }
         }
         {
             let mut bill_changed = false;
@@ -6171,8 +6216,93 @@ impl MatchEvent for App {
                         st.bill_style_field = field;
                         bill_changed = true;
                     }
+                    let order = st.bill_slip_draft.ordered();
+                    if let Some(i) = order.iter().position(|f| *f == field) {
+                        st.bill_field_edit_idx = i;
+                    }
                     break;
                 }
+            }
+            for (i, idle, on) in [
+                (0, ids!(bill_ord_0), ids!(bill_ord_0_on)),
+                (1, ids!(bill_ord_1), ids!(bill_ord_1_on)),
+                (2, ids!(bill_ord_2), ids!(bill_ord_2_on)),
+                (3, ids!(bill_ord_3), ids!(bill_ord_3_on)),
+                (4, ids!(bill_ord_4), ids!(bill_ord_4_on)),
+                (5, ids!(bill_ord_5), ids!(bill_ord_5_on)),
+                (6, ids!(bill_ord_6), ids!(bill_ord_6_on)),
+                (7, ids!(bill_ord_7), ids!(bill_ord_7_on)),
+                (8, ids!(bill_ord_8), ids!(bill_ord_8_on)),
+                (9, ids!(bill_ord_9), ids!(bill_ord_9_on)),
+                (10, ids!(bill_ord_10), ids!(bill_ord_10_on)),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    self.commit_bill_field_value(cx);
+                    let mut st = app_state().lock().unwrap();
+                    let order = st.bill_slip_draft.ordered();
+                    if let Some(field) = order.get(i).copied() {
+                        st.bill_field_edit_idx = i;
+                        st.bill_style_field = field;
+                        bill_changed = true;
+                    }
+                    break;
+                }
+            }
+            if self.ui.button(cx, ids!(bill_field_up)).clicked(actions) {
+                self.commit_bill_field_value(cx);
+                let mut st = app_state().lock().unwrap();
+                let n = st.bill_slip_draft.ordered().len();
+                let i = st.bill_field_edit_idx.min(n.saturating_sub(1));
+                if i > 0 {
+                    st.bill_slip_draft.field_order = st
+                        .bill_slip_draft
+                        .ordered()
+                        .iter()
+                        .map(|f| f.id().to_string())
+                        .collect();
+                    st.bill_slip_draft.field_order.swap(i, i - 1);
+                    st.bill_field_edit_idx = i - 1;
+                    st.bill_style_field = print_share::BillStyleField::from_id(
+                        &st.bill_slip_draft.field_order[i - 1],
+                    )
+                    .unwrap_or(st.bill_style_field);
+                    bill_changed = true;
+                }
+            }
+            if self.ui.button(cx, ids!(bill_field_down)).clicked(actions) {
+                self.commit_bill_field_value(cx);
+                let mut st = app_state().lock().unwrap();
+                let n = st.bill_slip_draft.ordered().len();
+                if n > 0 {
+                    let i = st.bill_field_edit_idx.min(n - 1);
+                    if i + 1 < n {
+                        st.bill_slip_draft.field_order = st
+                            .bill_slip_draft
+                            .ordered()
+                            .iter()
+                            .map(|f| f.id().to_string())
+                            .collect();
+                        st.bill_slip_draft.field_order.swap(i, i + 1);
+                        st.bill_field_edit_idx = i + 1;
+                        st.bill_style_field = print_share::BillStyleField::from_id(
+                            &st.bill_slip_draft.field_order[i + 1],
+                        )
+                        .unwrap_or(st.bill_style_field);
+                        bill_changed = true;
+                    }
+                }
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(bill_copies_1), ids!(bill_copies_1_on)) {
+                app_state().lock().unwrap().bill_slip_draft.copies = 1;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(bill_copies_2), ids!(bill_copies_2_on)) {
+                app_state().lock().unwrap().bill_slip_draft.copies = 2;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(bill_copies_3), ids!(bill_copies_3_on)) {
+                app_state().lock().unwrap().bill_slip_draft.copies = 3;
+                bill_changed = true;
             }
             if self.choice_chip_clicked(cx, actions, ids!(bill_field_show), ids!(bill_field_show_on))
             {
@@ -6213,6 +6343,20 @@ impl MatchEvent for App {
                     bill_changed = true;
                     break;
                 }
+            }
+            if self.ui.button(cx, ids!(bill_apply_all)).clicked(actions) {
+                // The open line's show, size, weight, and align land on
+                // every other bill line. Typed text stays on its own line.
+                let mut st = app_state().lock().unwrap();
+                let src = st.bill_style_field;
+                let style = st.bill_slip_draft.style(src).clone();
+                for field in print_share::BillStyleField::ALL {
+                    if field == src {
+                        continue;
+                    }
+                    *st.bill_slip_draft.style_mut(field) = style.clone();
+                }
+                bill_changed = true;
             }
             if bill_changed {
                 self.sync_bill_format_ui(cx);
@@ -6443,7 +6587,7 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(msg) => {
-                    self.fill_bill_format_fields(cx);
+                    self.sync_selling_panel(cx);
                     self.set_status(cx, msg);
                 }
                 Err(e) => self.set_status(cx, e),

@@ -3755,13 +3755,13 @@ script_mod! {
     mod.widgets.PairedList = set_type_default() do mod.widgets.PairedListBase{
         width: Fill height: Fit
         margin: Inset{top: 4. bottom: 4.}
-        // Capped (~300px) — mouse press-drag when there is no wheel.
+        // As tall as the devices. The settings page scrolls.
         list := PortalList{
             width: Fill height: Fill
             spacing: 10
-            drag_scrolling: true
-            mouse_drag_scrolling: true
-            scroll_bar: ScrollBar{bar_size: 6.}
+            drag_scrolling: false
+            mouse_drag_scrolling: false
+            scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
                 padding: Inset{top: 2. bottom: 8.}
@@ -4356,13 +4356,19 @@ script_mod! {
         width: Fill height: Fit
         card := RoundedView{
             width: Fill height: Fit
-            padding: Inset{left: 16. right: 16. top: 6. bottom: 12.}
-            draw_bg.color: #xffffff
+            padding: 0.
+            draw_bg.color: #ffffff
             draw_bg.border_radius: 16.
             draw_bg.border_size: 1.
             draw_bg.border_color: #xE3D3C8
+            slip := Image{
+                width: Fill
+                height: Fit
+                fit: Stretch
+            }
             list := PortalList{
-                width: Fill height: Fill
+                visible: false
+                width: Fill height: 0.
                 spacing: 0
                 drag_scrolling: false
                 bounce_at_start: false
@@ -8237,6 +8243,7 @@ script_mod! {
                                     settings_hub_pickers := StackSecondaryBtn{text: "Areas · stations · tax rates"}
                                     settings_hub_printers := StackSecondaryBtn{text: "Printers"}
                                     settings_hub_bill := StackSecondaryBtn{text: "Bill & KOT format"}
+                                    settings_hub_selling := StackSecondaryBtn{text: "Schemes & sales"}
                                     settings_hub_team := StackSecondaryBtn{text: "Team & PINs"}
                                     settings_hub_alerts := StackSecondaryBtn{text: "Alerts"}
                                     settings_hub_backup := StackSecondaryBtn{text: "Backup & restore"}
@@ -8495,6 +8502,59 @@ h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := StackPrimaryBtn{text: "Save brand"}
+                                }
+                                FormCard{
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 0
+                                    align: Align{y: 0.5}
+                                    h_print_brand := WrapLabel{
+                                                    width: Fit
+                                                    body: "Print brand kit" font_color: #x260B08 font_size: 18.}
+                                    print_brand_help := InfoHelp{
+                                        tip: "Optional stamp and payment QR images on bill faces and the LAN guest display. Dynamic UPI QR from the VPA on the bill still works when no payment QR image is set."
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 0
+                                    align: Align{y: 0.5}
+                                    h_stamp := WrapLabel{
+                                                    width: Fit
+                                                    body: "Stamp" font_color: #x260B08 font_size: 15.}
+                                    print_stamp_help := InfoHelp{
+                                        tip: "Optional stamp image on printed bills and the guest display."
+                                    }
+                                }
+                                print_stamp_status := WrapLabel{
+                                    body: " "
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                ActionStack{
+                                    print_stamp_pick := StackSecondaryBtn{text: "Choose stamp"}
+                                    print_stamp_clear := StackSecondaryBtn{text: "Clear stamp"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 0
+                                    align: Align{y: 0.5}
+                                    h_payment_qr := WrapLabel{
+                                                    width: Fit
+                                                    body: "Payment QR" font_color: #x260B08 font_size: 15.}
+                                    payment_qr_image_help := InfoHelp{
+                                        tip: "Static QR on bills and guest display; otherwise paying uses a dynamic UPI QR from the VPA on the bill."
+                                    }
+                                }
+                                payment_qr_status := WrapLabel{
+                                    body: " "
+                                    font_color: #x6B4A3F
+                                    font_size: 12.
+                                }
+                                ActionStack{
+                                    payment_qr_pick := StackSecondaryBtn{text: "Choose payment QR"}
+                                    payment_qr_clear := StackSecondaryBtn{text: "Clear payment QR"}
+                                }
                                 }
                                                                 }
                                 settings_panel_units := View{
@@ -8996,7 +9056,10 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 bill_printers_suggest := mod.widgets.StationCheckList{field: "bill_printers"}
                                 }
                                 FormCard{
-h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 20.}
+View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                    h_bill_format := WrapLabel{width: Fit body: "Bill format" font_color: #x260B08 font_size: 20.}
+                                    bill_apply_all := QuietFitBtn{text: "Apply to all"}
+                                }
                                 h_bill_format_help := WrapLabel{
                                     width: Fill
                                     body: "Pick a line. Show, size, weight, and alignment apply to that line on the bill and on Test bill."
@@ -9101,61 +9164,76 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
                                     bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
                                 }
+                                h_bill_field_order := WrapLabel{body: "Print order" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Down spacing: 4
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_0 := KotRowBtn{text: ""}
+                                        bill_ord_0_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_1 := KotRowBtn{text: ""}
+                                        bill_ord_1_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_2 := KotRowBtn{text: ""}
+                                        bill_ord_2_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_3 := KotRowBtn{text: ""}
+                                        bill_ord_3_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_4 := KotRowBtn{text: ""}
+                                        bill_ord_4_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_5 := KotRowBtn{text: ""}
+                                        bill_ord_5_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_6 := KotRowBtn{text: ""}
+                                        bill_ord_6_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_7 := KotRowBtn{text: ""}
+                                        bill_ord_7_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_8 := KotRowBtn{text: ""}
+                                        bill_ord_8_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_9 := KotRowBtn{text: ""}
+                                        bill_ord_9_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_10 := KotRowBtn{text: ""}
+                                        bill_ord_10_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                }
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    bill_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
+                                    bill_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
+                                }
+                                h_bill_copies := WrapLabel{body: "Copies" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_copies_1 := SegBtn{text: "1"}
+                                        bill_copies_1_on := SegBtnOn{text: "1" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_copies_2 := SegBtn{text: "2"}
+                                        bill_copies_2_on := SegBtnOn{text: "2" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_copies_3 := SegBtn{text: "3"}
+                                        bill_copies_3_on := SegBtnOn{text: "3" visible: false}
+                                    }
+                                }
                                 h_bill_preview := WrapLabel{body: "Preview" font_color: #x260B08 font_size: 14.}
                                 bill_format_preview_card := View{
-                                    width: Fit height: Fit
+                                    width: Fill height: Fit
                                     bill_format_preview := mod.widgets.KotSlipPreview{}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_print_brand := WrapLabel{
-                                                    width: Fit
-                                                    body: "Print brand kit" font_color: #x260B08 font_size: 18.}
-                                    print_brand_help := InfoHelp{
-                                        tip: "Optional stamp and payment QR images on bill faces and the LAN guest display. Dynamic UPI QR from the VPA above still works when no payment QR image is set."
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_stamp := WrapLabel{
-                                                    width: Fit
-                                                    body: "Stamp" font_color: #x260B08 font_size: 15.}
-                                    print_stamp_help := InfoHelp{
-                                        tip: "Optional stamp image on printed bills and the guest display."
-                                    }
-                                }
-                                print_stamp_status := WrapLabel{
-                                    body: " "
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    print_stamp_pick := StackSecondaryBtn{text: "Choose stamp"}
-                                    print_stamp_clear := StackSecondaryBtn{text: "Clear stamp"}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{y: 0.5}
-                                    h_payment_qr := WrapLabel{
-                                                    width: Fit
-                                                    body: "Payment QR" font_color: #x260B08 font_size: 15.}
-                                    payment_qr_image_help := InfoHelp{
-                                        tip: "Static QR on bills and guest display; otherwise paying uses a dynamic UPI QR from the VPA above."
-                                    }
-                                }
-                                payment_qr_status := WrapLabel{
-                                    body: " "
-                                    font_color: #x6B4A3F
-                                    font_size: 12.
-                                }
-                                ActionStack{
-                                    payment_qr_pick := StackSecondaryBtn{text: "Choose payment QR"}
-                                    payment_qr_clear := StackSecondaryBtn{text: "Clear payment QR"}
                                 }
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
                                 bill_format_test := StackSecondaryBtn{text: "Test bill"}
@@ -9189,62 +9267,6 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     std_size_l_on := SegBtnOn{text: "" visible: false}
                                 }
                                 std_print_save := StackPrimaryBtn{text: "Save bill print size"}
-                                }
-                                FormCard{
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{x: 0.0 y: 0.5}
-                                    h_aggregator_import := WrapLabel{
-                                                    width: Fit
-                                                    body: "Aggregator orders (file)" font_color: #x260B08 font_size: 18.}
-                                    settings_aggregator_help := InfoHelp{
-                                        tip: "Optional: put import_aggregator_orders.json in the backups folder, then tap Import. Never blocks the counter; live delivery apps are Cloud."
-                                    }
-                                }
-                                ActionStack{
-                                    aggregator_import_btn := StackSecondaryBtn{text: "Import aggregator file"}
-                                    aggregator_import_cancel := StackLightBtn{text: "Cancel" visible: false}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{x: 0.0 y: 0.5}
-                                    h_zero_sales := WrapLabel{
-                                                    width: Fit
-                                                    body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
-                                    settings_zero_sales_help := InfoHelp{
-                                        tip: "Allow dishes priced at zero and bills settled at zero (complimentary). On by default so free covers still appear in Frequent and day books."
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        zero_sales_on_btn := SegBtn{text: "Allow ₹0"}
-                                        zero_sales_on_btn_on := SegBtnOn{text: "Allow ₹0" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        zero_sales_off_btn := SegBtn{text: "Require price"}
-                                        zero_sales_off_btn_on := SegBtnOn{text: "Require price" visible: false}
-                                    }
-                                }
-                                }
-                                FormCard{
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{x: 0.0 y: 0.5}
-                                    h_schemes := WrapLabel{
-                                                    width: Fit
-                                                    body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
-                                    settings_schemes_help := InfoHelp{
-                                        tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas."
-                                    }
-                                }
-                                schemes_label := mod.widgets.ReportText{}
-                                scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
-                                scheme_add := StackPrimaryBtn{text: "Add BOGO"}
                                 }
                                 } // bill_format_body
                                 kot_format_body := View{
@@ -9314,10 +9336,14 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     }
                                 }
                                 // One place per field: pick field → show + font size + weight.
-                                h_kot_format_fields := WrapLabel{
-                                    body: "Fields"
-                                    font_color: #x260B08
-                                    font_size: 14.
+                                View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                    h_kot_format_fields := WrapLabel{
+                                        width: Fit
+                                        body: "Fields"
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                    }
+                                    kot_apply_all := QuietFitBtn{text: "Apply to all"}
                                 }
                                 kot_format_help := InfoHelp{
                                     tip: "Pick a field. Set show/hide, font size (points), and weight for the KOT kind above. Content width is above the Bill and KOT tabs."
@@ -9556,7 +9582,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 // Paper strip width updates with the printer.
                                 // KotSlipPreview: Item and Qty. share one right column.
                                 kot_format_preview_card := View{
-                                    width: Fit height: Fit
+                                    width: Fill height: Fit
                                     kot_format_preview := mod.widgets.KotSlipPreview{}
                                 }
                                 kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
@@ -9564,6 +9590,69 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 }
                                 } // kot_format_body
                                                                 }
+                                settings_panel_selling := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_schemes := WrapLabel{
+                                                width: Fit
+                                                body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
+                                            settings_schemes_help := InfoHelp{
+                                                tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas."
+                                            }
+                                        }
+                                        schemes_label := mod.widgets.ReportText{}
+                                        scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
+                                        scheme_add := StackPrimaryBtn{text: "Add BOGO"}
+                                    }
+                                    FormCard{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_zero_sales := WrapLabel{
+                                                width: Fit
+                                                body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
+                                            settings_zero_sales_help := InfoHelp{
+                                                tip: "Allow dishes priced at zero and bills settled at zero (complimentary). On by default so free covers still appear in Frequent and day books."
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                zero_sales_on_btn := SegBtn{text: "Allow ₹0"}
+                                                zero_sales_on_btn_on := SegBtnOn{text: "Allow ₹0" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                zero_sales_off_btn := SegBtn{text: "Require price"}
+                                                zero_sales_off_btn_on := SegBtnOn{text: "Require price" visible: false}
+                                            }
+                                        }
+                                    }
+                                    FormCard{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_aggregator_import := WrapLabel{
+                                                width: Fit
+                                                body: "Aggregator orders (file)" font_color: #x260B08 font_size: 18.}
+                                            settings_aggregator_help := InfoHelp{
+                                                tip: "Optional: put import_aggregator_orders.json in the backups folder, then tap Import. Never blocks the counter; live delivery apps are Cloud."
+                                            }
+                                        }
+                                        ActionStack{
+                                            aggregator_import_btn := StackSecondaryBtn{text: "Import aggregator file"}
+                                            aggregator_import_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                        }
+                                    }
+                                }
                                 settings_panel_alerts := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 12

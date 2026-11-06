@@ -622,6 +622,15 @@ struct KotSlipPreview {
     measured: f64,
     #[rust]
     settle: NextFrame,
+    /// The preview is the print picture, not a second layout.
+    #[rust]
+    page: bool,
+    /// Oriented picture width / height. The card scales this into the column.
+    #[rust]
+    page_aspect: f64,
+    /// Last column width that laid out. Used when this frame's width is not ready yet.
+    #[rust]
+    page_width: f64,
 }
 
 fn preview_align_x(align: print_share::KotAlign, rtl: bool) -> f64 {
@@ -666,6 +675,31 @@ fn slip_preview_rows(text: &str, rtl: bool) -> Vec<SlipPreviewRow> {
 
 impl Widget for KotSlipPreview {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        if self.page {
+            // The column width is whatever this screen laid out. The picture
+            // keeps its own proportions inside that width — no fixed pixel size.
+            let rect = cx.peek_walk_turtle(walk);
+            let mut avail = rect.size.x;
+            if !avail.is_finite() || avail < 40.0 {
+                avail = self.page_width;
+            }
+            if avail < 40.0 {
+                // The column has not been laid out yet. Try again next frame
+                // instead of keeping the previous picture at the wrong size.
+                self.settle = cx.new_next_frame();
+            } else {
+                self.page_width = avail;
+            }
+            let aspect = self.page_aspect.max(0.05);
+            let mut draw_walk = walk;
+            if avail > 40.0 {
+                let height = avail / aspect;
+                draw_walk.width = Size::Fixed(avail);
+                draw_walk.height = Size::Fixed(height.max(1.0));
+            }
+            while self.view.draw_walk(cx, scope, draw_walk).step().is_some() {}
+            return DrawStep::done();
+        }
         if self.rows.is_empty() {
             return DrawStep::done();
         }
@@ -725,7 +759,9 @@ impl Widget for KotSlipPreview {
         if self.settle.is_event(event).is_some() {
             self.view.redraw(cx);
         }
-        if page_owns_scroll(event) {
+        // The picture does not scroll on its own. Wheel, trackpad, and a
+        // finger drag belong to the settings page, including over the preview.
+        if self.page || page_owns_scroll(event) {
             return;
         }
         self.view.handle_event(cx, event, scope);
@@ -744,7 +780,32 @@ impl KotSlipPreview {
         if self.rows != rows {
             self.rows = rows;
             self.measured = 0.0;
+            self.page = false;
             self.view.redraw(cx);
         }
+    }
+
+    /// Show the print picture. It is scaled into the column width on draw,
+    /// so point size, margin, and alignment stay in the print's ratio.
+    pub fn set_page(&mut self, cx: &mut Cx, png: &[u8], png_w: u32, png_h: u32) {
+        let img = self.view.image(cx, ids!(slip));
+        if img.load_png_from_data(cx, png).is_err() {
+            return;
+        }
+        if let Some(mut inner) = img.borrow_mut() {
+            inner.walk.width = Size::fill();
+            inner.walk.height = Size::fill();
+            inner.redraw(cx);
+        }
+        self.page = true;
+        self.page_aspect = png_w.max(1) as f64 / png_h.max(1) as f64;
+        self.rows.clear();
+        self.walk.width = Size::fill();
+        self.walk.height = Size::fit();
+        if let Some(mut card) = self.view.view(cx, ids!(card)).borrow_mut() {
+            card.walk.width = Size::fill();
+            card.walk.height = Size::fill();
+        }
+        self.view.redraw(cx);
     }
 }

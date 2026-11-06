@@ -216,11 +216,18 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             // Books already say Printed. Paper is best-effort: a printer error
             // must never fail this action or clear the cart / table.
             st.last_receipt = text.clone();
-            match print_share::print_route(
+            let copies = st
+                .store
+                .as_ref()
+                .and_then(|s| s.bill_slip_format().ok())
+                .map(|f| f.copies.clamp(1, 3))
+                .unwrap_or(1);
+            match print_share::print_route_copies(
                 print_share::PrintKind::Bill,
                 print_share::RouteKey::Bill,
                 &text,
                 dir.as_deref(),
+                copies,
             ) {
                 Ok(share) if share.opened => Ok(done.to_string()),
                 Ok(_) => Ok(format!(

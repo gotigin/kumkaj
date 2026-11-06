@@ -638,6 +638,7 @@ fn en(key: &str) -> String {
         "settings_sec_pickers" => "Areas · stations · tax rates",
         "settings_sec_printers" => "Printers",
         "settings_sec_bill" => "Bill & KOT format",
+        "settings_sec_selling" => "Schemes & sales",
         "bill_kot_tab_bill" => "Bill",
         "bill_kot_tab_kot" => "KOT",
         "settings_sec_alerts" => "Alerts",

@@ -15,6 +15,7 @@
 //! invent a pool entry named "Default". Jobs go through one worker thread;
 //! failures surface via [`take_problems`].
 
+use std::cell::RefCell;
 use std::collections::BTreeMap;
 use std::fs;
 use std::io::Write;
@@ -1197,6 +1198,9 @@ impl KotSlipFormat {
             // preview). Space-padding a short date left a wide gap.
             let mark = kot_style_prefix(style, rtl);
             for part in fmt.wrap_line(line) {
+                if part.trim().is_empty() {
+                    continue;
+                }
                 out.push_str(&mark);
                 out.push_str(&part);
                 out.push('\n');
@@ -1460,6 +1464,26 @@ impl BillStyleField {
         )
     }
 
+    pub fn id(self) -> &'static str {
+        match self {
+            BillStyleField::Shop => "shop",
+            BillStyleField::Header => "header",
+            BillStyleField::Fssai => "fssai",
+            BillStyleField::Title => "title",
+            BillStyleField::BillNo => "bill_no",
+            BillStyleField::Time => "time",
+            BillStyleField::Table => "table",
+            BillStyleField::Items => "items",
+            BillStyleField::Total => "total",
+            BillStyleField::Footer => "footer",
+            BillStyleField::Upi => "upi",
+        }
+    }
+
+    pub fn from_id(id: &str) -> Option<Self> {
+        Self::ALL.into_iter().find(|field| field.id() == id)
+    }
+
     pub fn value_hint(self) -> &'static str {
         match self {
             BillStyleField::Header => "Address | phone",
@@ -1544,6 +1568,16 @@ pub struct BillSlipFormat {
     pub footer_style: BillFieldStyle,
     #[serde(default)]
     pub upi: BillFieldStyle,
+    /// Print order of the lines. Empty means [`BillStyleField::ALL`].
+    #[serde(default)]
+    pub field_order: Vec<String>,
+    /// Identical copies of each bill. Clamped to 1..=3.
+    #[serde(default = "default_bill_copies")]
+    pub copies: u32,
+}
+
+fn default_bill_copies() -> u32 {
+    1
 }
 
 impl Default for BillSlipFormat {
@@ -1566,6 +1600,8 @@ impl Default for BillSlipFormat {
             total: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Start),
             footer_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
             upi: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
+            field_order: Vec::new(),
+            copies: 1,
         }
     }
 }
@@ -1590,7 +1626,32 @@ impl BillSlipFormat {
             let s = self.style_mut(field);
             s.size_em = s.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
         }
+        self.copies = self.copies.clamp(1, 3);
+        let mut order = Vec::new();
+        for id in &self.field_order {
+            if let Some(field) = BillStyleField::from_id(id) {
+                if !order.iter().any(|have| have == id) {
+                    order.push(field.id().to_string());
+                }
+            }
+        }
+        for field in BillStyleField::ALL {
+            let id = field.id();
+            if !order.iter().any(|have| have == id) {
+                order.push(id.to_string());
+            }
+        }
+        self.field_order = order;
         self
+    }
+
+    pub fn ordered(&self) -> Vec<BillStyleField> {
+        self.clone()
+            .clamped()
+            .field_order
+            .iter()
+            .filter_map(|id| BillStyleField::from_id(id))
+            .collect()
     }
 
     pub fn style(&self, field: BillStyleField) -> &BillFieldStyle {
@@ -1671,6 +1732,7 @@ impl BillSlipFormat {
 
     /// The bill the Preview and Test bill both print.
     pub fn render_sample(&self, shop: &str, when: &str) -> String {
+        let _stage = BillStage::begin();
         let mut out = String::new();
         append_bill_field(&mut out, self, BillStyleField::Shop, shop, false);
         append_bill_field(&mut out, self, BillStyleField::Header, &self.header, false);
@@ -1722,7 +1784,7 @@ impl BillSlipFormat {
         if !self.upi_payee.trim().is_empty() {
             append_bill_field(&mut out, self, BillStyleField::Upi, &self.upi_payee, false);
         }
-        out
+        bill_stage_finish(self, false)
     }
 }
 
@@ -1748,6 +1810,57 @@ fn append_marked(out: &mut String, style: &BillFieldStyle, text: &str, rtl: bool
     }
 }
 
+thread_local! {
+    static BILL_STAGE: RefCell<Option<Vec<(BillStyleField, String, bool)>>> = const { RefCell::new(None) };
+}
+
+/// While this is alive, bill lines are held and written in [`BillSlipFormat::ordered`].
+pub struct BillStage;
+
+impl BillStage {
+    pub fn begin() -> Self {
+        BILL_STAGE.with(|slot| *slot.borrow_mut() = Some(Vec::new()));
+        BillStage
+    }
+}
+
+impl Drop for BillStage {
+    fn drop(&mut self) {
+        BILL_STAGE.with(|slot| *slot.borrow_mut() = None);
+    }
+}
+
+pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
+    let rows = BILL_STAGE.with(|slot| slot.borrow_mut().take()).unwrap_or_default();
+    let mut out = String::new();
+    for field in fmt.ordered() {
+        for (got, text, respect_show) in &rows {
+            if *got != field {
+                continue;
+            }
+            if *respect_show && !fmt.style(field).show {
+                continue;
+            }
+            append_marked(&mut out, fmt.style(field), text, rtl);
+        }
+    }
+    out
+}
+
+fn stage_bill_line(field: BillStyleField, text: &str, respect_show: bool) -> bool {
+    BILL_STAGE.with(|slot| {
+        let mut stage = slot.borrow_mut();
+        if let Some(rows) = stage.as_mut() {
+            if !text.trim().is_empty() {
+                rows.push((field, text.to_string(), respect_show));
+            }
+            true
+        } else {
+            false
+        }
+    })
+}
+
 /// One bill field, if it is shown. Empty text prints nothing.
 pub fn append_bill_field(
     out: &mut String,
@@ -1756,6 +1869,9 @@ pub fn append_bill_field(
     text: &str,
     rtl: bool,
 ) {
+    if stage_bill_line(field, text, true) {
+        return;
+    }
     let style = fmt.style(field);
     if !style.show {
         return;
@@ -1763,8 +1879,8 @@ pub fn append_bill_field(
     append_marked(out, style, text, rtl);
 }
 
-/// Same ink as `field`, even when that field is hidden. Rules and tax
-/// lines stay on the bill; they still use the field's size, weight, and align.
+/// A rule or tax line that uses `field`'s size, weight, and alignment.
+/// It follows that field's show/hide, the same as the field's own text.
 pub fn append_bill_like(
     out: &mut String,
     fmt: &BillSlipFormat,
@@ -1772,7 +1888,7 @@ pub fn append_bill_like(
     text: &str,
     rtl: bool,
 ) {
-    append_marked(out, fmt.style(field), text, rtl);
+    append_bill_field(out, fmt, field, text, rtl);
 }
 
 /// One line's type size, weight, and alignment, taken off the private-use prefix.
@@ -4451,7 +4567,8 @@ fn print_system_standard(
     }
     #[cfg(not(target_os = "android"))]
     {
-        print_system_image(name, &png_path, landscape, copies.max(1))
+        let mm = content_mm_for_dots(format.raster_metrics().page_dots());
+        print_system_image(name, &png_path, landscape, copies.max(1), mm)
     }
 }
 
@@ -4530,6 +4647,61 @@ pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     }
 }
 
+/// Millimetres across the raster. Dots at or under a 58 mm head are 58 mm.
+pub fn content_mm_for_dots(dots: usize) -> u32 {
+    if dots <= 384 {
+        58
+    } else {
+        ((dots as u32) * 80 / 576).clamp(40, 210)
+    }
+}
+
+/// The slip picture the preview and the document printer both use.
+/// Landscape turns that picture so the content width is the vertical side.
+pub fn slip_page_png(
+    text: &str,
+    metrics: &crate::receipt_raster::RasterMetrics,
+    landscape: bool,
+) -> Result<(Vec<u8>, u32, u32), String> {
+    let png = crate::receipt_raster::png_lines(&styled_slip_lines(text, metrics), metrics)?;
+    let (mut w, mut h) = png_pixel_size(&png).unwrap_or((1, 1));
+    if !landscape {
+        return Ok((png, w, h));
+    }
+    let img = image::load_from_memory(&png).map_err(|e| e.to_string())?;
+    let turned = img.rotate90();
+    w = turned.width();
+    h = turned.height();
+    let mut buf = std::io::Cursor::new(Vec::new());
+    turned
+        .write_to(&mut buf, image::ImageFormat::Png)
+        .map_err(|e| e.to_string())?;
+    Ok((buf.into_inner(), w, h))
+}
+
+fn png_pixel_size(png: &[u8]) -> Option<(u32, u32)> {
+    if png.len() < 24 {
+        return None;
+    }
+    Some((
+        u32::from_be_bytes([png[16], png[17], png[18], png[19]]),
+        u32::from_be_bytes([png[20], png[21], png[22], png[23]]),
+    ))
+}
+
+/// `base` supplies side margin and type size. Width is the content millimetres.
+pub fn metrics_at_content_mm(
+    base: &PrintFormat,
+    mm: u32,
+) -> crate::receipt_raster::RasterMetrics {
+    let mut m = base.raster_metrics();
+    // Same dot width the printer uses for this millimetre setting, so the
+    // preview is a scale of the printed slip rather than a second layout.
+    m.width_dots = paper_width_dots(mm);
+    m.line = wrap_cols_for_paper_mm(mm) as usize;
+    m
+}
+
 /// One slip line's size, weight, and alignment. Start/Center/End are shifts
 /// across `default.width_dots`, which is the selected content width.
 pub fn styled_slip_lines(
@@ -4537,6 +4709,10 @@ pub fn styled_slip_lines(
     default: &crate::receipt_raster::RasterMetrics,
 ) -> Vec<crate::receipt_raster::StyledLine> {
     text.lines()
+        .filter(|line| {
+            let (_, body) = take_kot_line_style(line);
+            !body.trim().is_empty()
+        })
         .map(|line| {
             let (style, body) = take_kot_line_style(line);
             let (em, weight, align) = match style {
@@ -4713,8 +4889,10 @@ fn print_system_image(
     path: &Path,
     landscape: bool,
     copies: u32,
+    content_mm: u32,
 ) -> Result<(), String> {
     let copies = copies.max(1);
+    let content_mm = content_mm.clamp(40, 210);
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
         let mut cmd = Command::new("lp");
@@ -4724,10 +4902,14 @@ fn print_system_image(
         if copies > 1 {
             cmd.args(["-n", &copies.to_string()]);
         }
-        // Without fit, CUPS often treats the PNG as 72 DPI (1152px ≈ 16″)
-        // and clips both sides on A4/Letter / Canon G3010 trays (bill.jpeg).
-        cmd.args(["-o", "fit-to-page"]);
-        cmd.args(["-o", "print-scaling=fit"]);
+        // Print the slip at its content width. fit-to-page stretched every
+        // width onto the sheet, so 58 mm and 210 mm came out the same size.
+        let px = png_pixel_size(&std::fs::read(path).unwrap_or_default()).unwrap_or((1, 1)).0;
+        let ppi = ((px as f64) * 25.4 / content_mm as f64)
+            .round()
+            .clamp(72.0, 1200.0) as u32;
+        cmd.args(["-o", "print-scaling=none"]);
+        cmd.args(["-o", &format!("ppi={ppi}")]);
         // 3 = portrait, 4 = landscape (IPP orientation-requested).
         cmd.args([
             "-o",
@@ -4764,7 +4946,7 @@ fn print_system_image(
              $doc.DocumentName = 'Khaynjo'; \
              $doc.DefaultPageSettings.Landscape = {land}; \
              $doc.PrinterSettings.Copies = [int16]{copies}; \
-             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(75,75,75,75);"
+             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(20,20,20,20);"
         );
         if let Some(name) = name {
             script.push_str(&format!(
@@ -4772,19 +4954,20 @@ fn print_system_image(
                 quote(name)
             ));
         }
-        script.push_str(
+        script.push_str(&format!(
             "$script:img = $img; \
-             $doc.add_PrintPage({ param($s,$e) \
+             $doc.add_PrintPage({{ param($s,$e) \
                $b = $e.MarginBounds; \
-               $scale = [Math]::Min($b.Width / $script:img.Width, $b.Height / $script:img.Height); \
-               $w = [int]($script:img.Width * $scale); \
-               $h = [int]($script:img.Height * $scale); \
+               $want = [int]({content_mm} / 25.4 * 100); \
+               $w = [Math]::Min($want, $b.Width); \
+               $h = [int]($w * $script:img.Height / $script:img.Width); \
+               if ($h -gt $b.Height) {{ $h = $b.Height; $w = [int]($h * $script:img.Width / $script:img.Height) }}; \
                $e.Graphics.DrawImage($script:img, $b.Left, $b.Top, $w, $h); \
-               $e.HasMorePages = $false }); \
+               $e.HasMorePages = $false }}); \
              $doc.Print(); \
              $img.Dispose(); \
-             $doc.Dispose();",
-        );
+             $doc.Dispose();"
+        ));
         let out = Command::new("powershell")
             .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
             .creation_flags(CREATE_NO_WINDOW)

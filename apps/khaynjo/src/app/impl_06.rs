@@ -2382,11 +2382,18 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 .as_ref()
                 .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
             st.last_receipt = text.clone();
-            match print_share::print_route(
+            let copies = st
+                .store
+                .as_ref()
+                .and_then(|s| s.bill_slip_format().ok())
+                .map(|f| f.copies.clamp(1, 3))
+                .unwrap_or(1);
+            match print_share::print_route_copies(
                 print_share::PrintKind::Bill,
                 print_share::RouteKey::Bill,
                 &text,
                 dir.as_deref(),
+                copies,
             ) {
                 Ok(share) if share.opened => Ok(done.to_string()),
                 Ok(_) => Ok(format!(

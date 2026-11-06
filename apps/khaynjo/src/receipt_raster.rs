@@ -228,6 +228,10 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
     }
     let mut rows: Vec<Row> = Vec::new();
     for line in lines {
+        // A hidden field must not leave a blank band. Empty text is absence.
+        if line.text.trim().is_empty() {
+            continue;
+        }
         let em = line.em.clamp(8.0, 64.0);
         let pitch = ((em * 1.45).round() as usize).clamp(16, 96);
         let baseline = em * 0.92;
@@ -238,11 +242,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             side,
             width_dots: width,
         };
-        let wrapped = if line.text.is_empty() {
-            vec![Vec::new()]
-        } else {
-            wrap_aligned(&faces, &line.text, room, &m, line.align)
-        };
+        let wrapped = wrap_aligned(&faces, &line.text, room, &m, line.align);
         for glyphs in wrapped {
             rows.push(Row {
                 glyphs,
@@ -254,13 +254,9 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         }
     }
     if rows.is_empty() {
-        rows.push(Row {
-            glyphs: Vec::new(),
-            em: 24.0,
-            weight: RasterWeight::Regular,
-            pitch: 36,
-            baseline: 26.0,
-        });
+        // Nothing to print. One dot, not a stack of blank line-heights.
+        let row_bytes = width / 8;
+        return (vec![0u8; row_bytes], 1);
     }
     let height: usize = rows.iter().map(|r| r.pitch).sum();
     let mut dots = vec![false; width * height];

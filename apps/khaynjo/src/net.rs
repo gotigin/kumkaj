@@ -1738,7 +1738,17 @@ impl AfterWrite {
         if let Some(text) = &self.bill {
             // A bill printed for a waiter prints at the counter, where the
             // printer is; the text also goes back to the device.
-            let _ = crate::print_share::print_text(crate::print_share::PrintKind::Bill, text, store.db_path().parent());
+            let copies = store
+                .bill_slip_format()
+                .map(|f| f.copies.clamp(1, 3))
+                .unwrap_or(1);
+            let _ = crate::print_share::print_route_copies(
+                crate::print_share::PrintKind::Bill,
+                crate::print_share::RouteKey::Bill,
+                text,
+                store.db_path().parent(),
+                copies,
+            );
         }
     }
 }

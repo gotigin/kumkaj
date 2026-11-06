@@ -366,8 +366,10 @@ impl Widget for PairedList {
         };
         let row = *locale_row_height().lock().unwrap();
         let n = devices.len();
+        // Full list. The settings page scrolls. A 300px cap clipped the last
+        // till while the page under the list was empty.
         let walk = Walk {
-            height: Size::Fixed(list_content_height(n, row, 0.0).min(300.0)),
+            height: Size::Fixed(list_content_height(n, row, 10.0)),
             ..walk
         };
         let mut measured_row = 0.0;

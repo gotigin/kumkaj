@@ -1772,6 +1772,7 @@ impl Store {
         let is_invoice = matches!(lane, MoneyLane::Declared);
         let fmt = self.bill_slip_format().unwrap_or_default();
         let rtl = self.bill_rtl();
+        let _bill_stage = crate::print_share::BillStage::begin();
         let mut out = String::new();
         crate::print_share::append_bill_field(
             &mut out,
@@ -2227,6 +2228,7 @@ impl Store {
                 rtl,
             );
         }
+        out.push_str(&crate::print_share::bill_stage_finish(&fmt, rtl));
         let attach = self.attachments_summary_text(AttachmentEntity::Sale, sale_id)?;
         if !attach.is_empty() {
             out.push_str(&attach);

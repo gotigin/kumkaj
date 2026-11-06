@@ -1684,6 +1684,7 @@ impl Store {
         let money = |p: i64| Money(p).format_localized(&currency, &fiscal);
         let fmt = self.bill_slip_format().unwrap_or_default();
         let rtl = self.bill_rtl();
+        let _bill_stage = crate::print_share::BillStage::begin();
         let mut out = String::new();
         let venue = self.venue_title()?;
         crate::print_share::append_bill_field(&mut out, &fmt, crate::print_share::BillStyleField::Shop, venue.trim(), rtl);
@@ -1870,6 +1871,7 @@ impl Store {
                 rtl,
             );
         }
+        out.push_str(&crate::print_share::bill_stage_finish(&fmt, rtl));
         Ok(out)
     }
 

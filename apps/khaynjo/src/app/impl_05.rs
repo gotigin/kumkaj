@@ -8,7 +8,21 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             cx.share_text(text);
         }
         let app_files = cx.get_data_dir().map(PathBuf::from);
-        match print_share::print_text(print_share::PrintKind::Bill, text, app_files.as_deref()) {
+        let copies = app_state()
+            .lock()
+            .unwrap()
+            .store
+            .as_ref()
+            .and_then(|s| s.bill_slip_format().ok())
+            .map(|f| f.copies.clamp(1, 3))
+            .unwrap_or(1);
+        match print_share::print_route_copies(
+            print_share::PrintKind::Bill,
+            print_share::RouteKey::Bill,
+            text,
+            app_files.as_deref(),
+            copies,
+        ) {
             Ok(share) => {
                 let mut st = app_state().lock().unwrap();
                 st.last_receipt = text.to_string();
