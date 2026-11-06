@@ -250,15 +250,20 @@ impl Widget for StationCheckList {
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     let printer_assign = self.field == "printer_assign";
+                    let station_vps = self.field == "station_vps" || self.field == "bill_printers";
                     let team_stations = self.field == "team_kot_stations";
-                    // PrinterAssign keeps slot encode in subtitle — never show it.
+                    // PrinterAssign / station VPs keep id in subtitle — never show it.
                     item.label(cx, ids!(subtitle)).set_text(
                         cx,
-                        if printer_assign { "" } else { &row.subtitle },
+                        if printer_assign || station_vps {
+                            ""
+                        } else {
+                            &row.subtitle
+                        },
                     );
                     item.label(cx, ids!(subtitle)).set_visible(
                         cx,
-                        !printer_assign && !row.subtitle.is_empty(),
+                        !printer_assign && !station_vps && !row.subtitle.is_empty(),
                     );
                     let action = row.action.trim();
                     let checked = !action.is_empty() && action != use_l;
@@ -266,7 +271,10 @@ impl Widget for StationCheckList {
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
                     item.view(cx, ids!(check_on)).set_visible(cx, checked);
                     // Team person access: checkboxes only — no print-order ↑↓.
-                    if team_stations || is_unassigned || (printer_assign && !checked) {
+                    if team_stations
+                        || is_unassigned
+                        || ((printer_assign || station_vps) && !checked)
+                    {
                         item.label(cx, ids!(prio)).set_visible(cx, false);
                         item.button(cx, ids!(prio_up)).set_visible(cx, false);
                         item.button(cx, ids!(prio_down)).set_visible(cx, false);
@@ -277,7 +285,7 @@ impl Widget for StationCheckList {
                             if r.value.eq_ignore_ascii_case(&unassigned) {
                                 continue;
                             }
-                            if printer_assign {
+                            if printer_assign || station_vps {
                                 let a = r.action.trim();
                                 if a.is_empty() || a == use_l {
                                     continue;
@@ -291,7 +299,7 @@ impl Widget for StationCheckList {
                         }
                         let can_up = station_ids.len() > 1 && station_ids.first() != Some(&item_id);
                         let can_down = {
-                            let last = if printer_assign {
+                            let last = if printer_assign || station_vps {
                                 draw_rows.iter().rposition(|r| {
                                     let a = r.action.trim();
                                     !a.is_empty() && a != use_l

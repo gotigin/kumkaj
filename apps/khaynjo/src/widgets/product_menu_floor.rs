@@ -571,12 +571,20 @@ impl Widget for FloorList {
                     // Body pad (top 10 + bottom 14) matches DSL — scroll lanes
                     // above/below the tiles inside the sideways strip.
                     const BODY_PAD_Y: f64 = 10.0 + 14.0;
+                    // Must match area_scroll padding in ui_script (Columns gap
+                    // + bottom bar lane). Without a Fixed scroll height the X
+                    // bar sat in the Columns↔tables gap.
+                    const SCROLL_PAD_Y: f64 = 28.0 + 22.0;
                     let body_h = n_rows as f64 * (tile_h + FLOOR_TILE_GAP)
                         + 10.0 * n_rows.saturating_sub(1) as f64
                         + BODY_PAD_Y;
+                    let body_h = body_h.max(tile_h + BODY_PAD_Y);
                     if let Some(mut b) = body.borrow_mut() {
                         b.walk.width = Size::Fixed(grid_w);
-                        b.walk.height = Size::Fixed(body_h.max(tile_h + BODY_PAD_Y));
+                        b.walk.height = Size::Fixed(body_h);
+                    }
+                    if let Some(mut s) = scroll.borrow_mut() {
+                        s.walk.height = Size::Fixed(body_h + SCROLL_PAD_Y);
                     }
                     let scroll_x = scroll.get_scroll_pos().x;
                     // When Columns fits in one slot row, paint every column so

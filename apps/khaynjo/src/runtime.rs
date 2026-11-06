@@ -924,39 +924,6 @@ fn settings_nav_drag() -> &'static Mutex<Option<SettingsNavDrag>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
-/// Settings → printers: drag-to-swap printers on the focused place.
-#[derive(Clone)]
-struct RoutePrinterDrag {
-    slot: usize,
-    start: DVec2,
-    last: DVec2,
-    origin: DVec2,
-    rects: Vec<Rect>,
-    active: bool,
-    hover: Option<usize>,
-    finger: Option<u64>,
-    label: String,
-}
-
-fn route_printer_drag() -> &'static Mutex<Option<RoutePrinterDrag>> {
-    static DRAG: OnceLock<Mutex<Option<RoutePrinterDrag>>> = OnceLock::new();
-    DRAG.get_or_init(|| Mutex::new(None))
-}
-
-/// After a drag-swap, suppress the following tap-to-remove on that list.
-fn route_printer_tap_suppress() -> &'static Mutex<bool> {
-    static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
-    FLAG.get_or_init(|| Mutex::new(false))
-}
-
-#[allow(dead_code)] // Assigned list is read-only; remove via checklist.
-fn route_printer_tap_suppressed() -> bool {
-    let mut g = route_printer_tap_suppress().lock().unwrap();
-    let v = *g;
-    *g = false;
-    v
-}
-
 /// Pending frame callback that keeps edge auto-scroll alive while a
 /// nav drag is held against the bar's edge (see `nav_drag_autoscroll`).
 fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {

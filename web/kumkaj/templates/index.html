@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}{{ config.title }} — the counter keeps working{% endblock %}
+{% block og_title %}{{ config.title }} — the counter keeps working{% endblock %}
+
+{% block content %}
+<section class="hero chapter" id="hero" data-chapter="1">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Kumkaj by Gotigin</p>
+      <h1>The internet went down. The counter didn’t.</h1>
+      <p class="lede">Concrete business operating systems for your trade — free forever on your own devices. Extra tills join over your shop Wi‑Fi.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ config.extra.moklanjo_url }}">Moklanjo — courier desk</a>
+        <a class="btn btn-secondary" href="{{ config.extra.khaynjo_url }}">Khaynjo — restaurant</a>
+      </div>
+      <div class="toy" data-toy="cut-internet">
+        <button type="button" class="btn btn-ghost" id="cut-internet" aria-pressed="false">Cut the internet</button>
+        <p class="toy-status" id="cut-internet-status" role="status">Signal online — both counters still print.</p>
+      </div>
+    </div>
+    <figure class="stage-still" aria-hidden="true">
+      <svg class="still-svg" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img">
+        <rect width="480" height="320" fill="#041534"/>
+        <rect class="signal-cloud" x="140" y="24" width="200" height="48" rx="24" fill="#64748b" opacity="0.85"/>
+        <rect x="48" y="120" width="160" height="140" rx="8" fill="#1b2a4a"/>
+        <rect x="272" y="120" width="160" height="140" rx="8" fill="#1b2a4a"/>
+        <rect class="device-glow" x="88" y="180" width="80" height="48" rx="4" fill="#A23E18"/>
+        <rect class="device-glow" x="312" y="180" width="80" height="48" rx="4" fill="#A23E18"/>
+        <text x="128" y="280" fill="#F9F9FC" font-size="14" text-anchor="middle" font-family="Georgia, serif">Courier</text>
+        <text x="352" y="280" fill="#F9F9FC" font-size="14" text-anchor="middle" font-family="Georgia, serif">Restaurant</text>
+      </svg>
+      <figcaption class="sr-only">Two storefronts at dusk; devices still glowing when the signal cloud breaks up.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter band" id="trade" data-chapter="2">
+  <div class="wrap split">
+    <div>
+      <h2>Built for your trade</h2>
+      <p>A courier desk for couriers. A restaurant system for restaurants. Not one app that makes you translate.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ config.extra.moklanjo_url }}">Choose Moklanjo</a>
+        <a class="btn btn-secondary" href="{{ config.extra.khaynjo_url }}">Choose Khaynjo</a>
+      </div>
+    </div>
+    <ul class="card-list">
+      <li><strong>Moklanjo</strong> — book, label, hand over, track, settle.</li>
+      <li><strong>Khaynjo</strong> — floor, kitchen, bill — internet or not.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter" id="books" data-chapter="3">
+  <div class="wrap">
+    <h2>Your books live in your shop</h2>
+    <p>Your data stays on your devices. Extra tills join over your own Wi‑Fi. Kumkaj Cloud is <em>planned</em> — pay only for what you use, same rates for everyone; it never holds your data hostage.</p>
+    <p><a href="{{ get_url(path='security/') }}">How devices join →</a> · <a href="{{ get_url(path='cloud/') }}">Cloud (planned) →</a></p>
+  </div>
+</section>
+
+<section class="chapter band" id="free" data-chapter="4">
+  <div class="wrap">
+    <h2>Free forever on your devices</h2>
+    <p>Run it free, forever. No price per seat, menu item, table, or local device. If you choose our cloud later, pay only for what you use — same rates for everyone.</p>
+    <p><a href="{{ get_url(path='principles/') }}">Read the principles →</a></p>
+  </div>
+</section>
+
+<section class="chapter" id="languages" data-chapter="5">
+  <div class="wrap">
+    <h2>Speaks your language</h2>
+    <p>The apps ship in 29 languages. Tickets print in the shop’s own script — including Arabic and Urdu, right‑to‑left.</p>
+    <p><a href="{{ get_url(path='languages/') }}">See the language list →</a></p>
+  </div>
+</section>
+
+<section class="chapter band close" id="gotigin" data-chapter="6">
+  <div class="wrap">
+    <h2>Made by Gotigin</h2>
+    <p>Two concrete products today. Choose your trade.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ config.extra.moklanjo_url }}">Moklanjo</a>
+      <a class="btn btn-secondary" href="{{ config.extra.khaynjo_url }}">Khaynjo</a>
+      <a class="btn btn-ghost" href="{{ get_url(path='about/') }}">About Gotigin</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  var btn = document.getElementById("cut-internet");
+  var status = document.getElementById("cut-internet-status");
+  var svg = document.querySelector(".still-svg");
+  if (!btn || !status) return;
+  btn.addEventListener("click", function () {
+    var on = btn.getAttribute("aria-pressed") === "true";
+    var next = !on;
+    btn.setAttribute("aria-pressed", next ? "true" : "false");
+    btn.textContent = next ? "Restore the internet" : "Cut the internet";
+    status.textContent = next
+      ? "Signal gone — label and kitchen ticket still print."
+      : "Signal online — both counters still print.";
+    if (svg) svg.classList.toggle("is-cut", next);
+  });
+})();
+</script>
+{% endblock %}

@@ -1227,6 +1227,57 @@ script_mod! {
             text_style +: {font_size: 13.}
         }
     }
+    // Full-width settings row. A real button, so a tap selects that row.
+    let KotRowBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+        align: Align{x: 0.0 y: 0.5}
+        flow: Right
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xFFF6EE
+            color_down: #xFBE3D3
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xFFF6EE
+            color_2_down: #xFBE3D3
+            color_2_focus: #xffffff
+            border_color: #xE3D3C8
+            border_radius: 10.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x260B08
+            color_hover: #x260B08
+            color_down: #x260B08
+            color_focus: #x260B08
+            ink_centered: false
+            text_style +: {font_size: 14.}
+        }
+    }
+    let KotRowBtnOn = KotRowBtn{
+        draw_bg +: {
+            color: #x9A0E10
+            color_hover: #xB43A12
+            color_down: #x69090C
+            color_focus: #x9A0E10
+            color_2: #x9A0E10
+            color_2_hover: #xB43A12
+            color_2_down: #x69090C
+            color_2_focus: #x9A0E10
+            border_color: #x9A0E10
+        }
+        draw_text +: {
+            color: #xffffff
+            color_hover: #xffffff
+            color_down: #xffffff
+            color_focus: #xffffff
+        }
+    }
+
     let SegBtnOn = SegBtn{
         draw_bg +: {
             color: #x9A0E10
@@ -1725,17 +1776,15 @@ script_mod! {
 
     // Full-width Markdown TextFlow with real `visible` support — stock
     // Markdown/TextFlow ignore set_visible. Use `body:`.
-    // Default: NOT selectable. Select-drag calls block_scrolling_except_within
-    // (Empty); on Android that freezes page swipe until FingerUp (often lost)
-    // — Kitchen / Settings / help looked like "no scroll / freeze on move".
-    // Opt in with `selectable: true` only where copy is intentional (pairing
-    // code). Cart / snack / KotCard stay false.
+    // Default: selectable (DESIGN.md § Text selection & copy). Set
+    // `selectable: false` only inside tap targets (cards, nav, snack,
+    // button faces) — select-drag there steals the press / page swipe.
     mod.widgets.WrapLabelBase = #(WrapLabel::register_widget(vm))
     mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
         height: Fit
         padding: 0.
-        selectable: false
+        selectable: true
         paragraph_spacing: 0.
         pre_code_spacing: 0.
         font_size: 14.
@@ -2435,8 +2484,7 @@ script_mod! {
             width: Fill height: Fit
             padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
             flow: Down spacing: 6
-            // selectable:false — default WrapLabel select-drag steals Kitchen
-            // page swipe on Android (adb: swipe over cards = no scroll).
+            // Card is a kitchen tap target — do not steal press for select.
             title := WrapLabel{
                 width: Fill
                 body: "Kitchen"
@@ -3016,15 +3064,18 @@ script_mod! {
         View{
             width: Fill height: Fit
             flow: Down spacing: 2
+            // Pick-row face — do not steal press for select.
             label := WrapLabel{
                 body: "customer"
                 font_color: #x260B08
                 font_size: 14.
+                selectable: false
             }
             sublabel := WrapLabel{
                 body: "id"
                 font_color: #x6B4A3F
                 font_size: 11.
+                selectable: false
             }
         }
         pick := Button{
@@ -3104,6 +3155,7 @@ script_mod! {
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x5A4238
+        // Row pick face — Use button + row tap; keep select off the label.
         label := WrapLabel{
             width: Fill
             body: "locale"
@@ -3424,8 +3476,13 @@ script_mod! {
                     // Top pad = lane above tiles (18) + Columns↔tables gap (10)
                     // that must live *inside* this ScrollX (not parent spacing)
                     // so that whitespace pans with the Area like the tiles.
+                    // Height is set in FloorList draw (body + pads). Fit+Fill
+                    // PortalList used to leave this ~padding-tall so the X bar
+                    // painted in the Columns↔tables gap and stole taps there.
                     area_scroll := ScrollXView{
                         width: Fill height: Fit
+                        // Top: Columns↔tables gap + lane. Bottom: ≥ bar_size so
+                        // the X handle sits under the tiles, never under Columns.
                         padding: Inset{top: 28. bottom: 22.}
                         scroll_bars: mod.widgets.ScrollBars {
                             show_scroll_x: true show_scroll_y: false
@@ -3454,6 +3511,8 @@ script_mod! {
                             // Comfort pads above/below rows (same width as the
                             // grid) — press-drag here pans too.
                             padding: Inset{top: 10. bottom: 14.}
+                            // Fill is fine once area_scroll + area_body get Fixed
+                            // heights in FloorList draw (see product_menu_floor).
                             area_rows := PortalList{
                                 width: Fill height: Fill
                                 spacing: 10
@@ -4285,6 +4344,79 @@ script_mod! {
         }
     }
 
+    // Kitchen-slip preview. A tab is a real column: the header "Qty." and
+    // the counts share one fixed right-hand box. This is not a report, so
+    // a table code is never an amount and "Qty." is never a heading.
+    mod.widgets.KotSlipPreviewBase = #(KotSlipPreview::register_widget(vm))
+    mod.widgets.KotSlipPreview = set_type_default() do mod.widgets.KotSlipPreviewBase{
+        width: Fill height: Fit
+        card := RoundedView{
+            width: Fill height: Fit
+            padding: Inset{left: 16. right: 16. top: 6. bottom: 12.}
+            draw_bg.color: #xffffff
+            draw_bg.border_radius: 16.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xE3D3C8
+            list := PortalList{
+                width: Fill height: Fill
+                spacing: 0
+                drag_scrolling: false
+                bounce_at_start: false
+                bounce_at_end: false
+                capture_overload: false
+                scroll_bar: ScrollBar{bar_size: 0.}
+                Line := View{
+                    width: Fill height: Fit
+                    line := WrapLabel{
+                        body: ""
+                        margin: Inset{right: 8.}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                }
+                Qty := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 2. bottom: 2.}
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
+                    k := WrapLabel{
+                        width: Fill
+                        body: ""
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    v := WrapLabel{
+                        width: 80
+                        body: ""
+                        font_color: #x260B08
+                        font_size: 15.
+                    }
+                }
+                QtyRtl := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 2. bottom: 2.}
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
+                    v := WrapLabel{
+                        width: 80
+                        body: ""
+                        font_color: #x260B08
+                        font_size: 15.
+                    }
+                    k := WrapLabel{
+                        width: Fill
+                        body: ""
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                }
+                Gap := View{
+                    width: Fill height: 8
+                }
+            }
+        }
+    }
+
     // One stock item: name and kind, what is on hand, and a Low mark.
     let StockRowView = RoundedView{
         cursor: MouseCursor.Hand
@@ -4876,7 +5008,6 @@ script_mod! {
                                         font_color: #xE8C4B0
                                         font_size: 11.
                                         visible: false
-                                        selectable: false
                                     }
                                 }
                                 session_label := WrapLabel{
@@ -4994,7 +5125,6 @@ script_mod! {
                                                         body: "Your shop"
                                                         font_color: #x69090C
                                                         font_size: 18.
-                                                        selectable: false
                                                     }
                                                     setup_brand_server_id := WrapLabel{
                                                         width: Fit
@@ -5002,7 +5132,6 @@ script_mod! {
                                                         font_color: #x6B4A3F
                                                         font_size: 11.
                                                         visible: false
-                                                        selectable: false
                                                     }
                                                 }
                                                 device_use_question := WrapLabel{
@@ -5010,7 +5139,6 @@ script_mod! {
                                                     font_color: #x6B4A3F
                                                     font_size: 12.
                                                     visible: false
-                                                    selectable: false
                                                 }
                                             }
                                         }
@@ -5156,7 +5284,6 @@ script_mod! {
                                                 body: " "
                                                 font_color: #xB43A12
                                                 font_size: 12.
-                                                selectable: false
                                             }
                                         }
                                     }
@@ -5187,7 +5314,6 @@ script_mod! {
                                             body: "OFFLINE"
                                             font_color: #xffffff
                                             font_size: 10.
-                                            selectable: false
                                         }
                                     }
                                     h_local_badge_2 := Label{
@@ -5235,7 +5361,6 @@ script_mod! {
                                                         body: "Your shop"
                                                         font_color: #x69090C
                                                         font_size: 18.
-                                                        selectable: false
                                                     }
                                                     lock_brand_server_id := WrapLabel{
                                                         width: Fit
@@ -5243,14 +5368,12 @@ script_mod! {
                                                         font_color: #x6B4A3F
                                                         font_size: 11.
                                                         visible: false
-                                                        selectable: false
                                                     }
                                                 }
                                                 h_counter_locked := WrapLabel{
                                                     body: "Counter 01 · Locked"
                                                     font_color: #x6B4A3F
                                                     font_size: 12.
-                                                    selectable: false
                                                 }
                                             }
                                             h_shop := Label{
@@ -5313,14 +5436,12 @@ script_mod! {
                                             body: "Who is unlocking?"
                                             font_color: #x260B08
                                             font_size: 11.
-                                            selectable: false
                                         }
                                         lock_staff_label := WrapLabel{
                                             width: Fit
                                             body: "No staff yet — unlock as Owner, then Team"
                                             font_color: #x260B08
                                             font_size: 14.
-                                            selectable: false
                                         }
                                         ActionStack{
                                             lock_staff_prev := NavBtn{text: "Previous staff"}
@@ -5356,7 +5477,6 @@ script_mod! {
                                             body: " "
                                             font_color: #xB43A12
                                             font_size: 12.
-                                            selectable: false
                                         }
                                     }
 
@@ -5369,7 +5489,6 @@ script_mod! {
                                             body: "Or unlock with login"
                                             font_color: #x260B08
                                             font_size: 14.
-                                            selectable: false
                                         }
                                         lock_login_help := InfoHelp{
                                             tip: "Optional: unlock with login id and password instead of PIN."
@@ -5448,11 +5567,12 @@ script_mod! {
                                     }
                                 }
                                 onboard_icon_pick := NavBtn{text: "Choose logo"}
+                                // Legacy id (hot-reload): was a redundant "Khaynjo" under Choose logo.
                                 h_product_locked_khaynjo := WrapLabel{
-                                    body: "Khaynjo"
+                                    body: ""
+                                    visible: false
                                     font_color: #x260B08
                                     font_size: 15.
-                                    selectable: false
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -5463,7 +5583,6 @@ script_mod! {
                                         body: "What you get"
                                         font_color: #x260B08
                                         font_size: 15.
-                                        selectable: false
                                     }
                                     onboard_tmpl_help := InfoHelp{
                                         tip: " "
@@ -5473,7 +5592,6 @@ script_mod! {
                                     body: "How do you want to start?"
                                     font_color: #x260B08
                                     font_size: 15.
-                                    selectable: false
                                 }
                                 View{
                                     width: Fill height: 52
@@ -5558,7 +5676,6 @@ script_mod! {
                                     body: " "
                                     font_color: #x6B4A3F
                                     font_size: 13.
-                                    selectable: false
                                 }
                                 // No typing IPs: the shop's server answers on this Wi‑Fi.
                                 ActionStack{
@@ -5569,7 +5686,6 @@ script_mod! {
                                     body: " "
                                     font_color: #x6B4A3F
                                     font_size: 13.
-                                    selectable: false
                                 }
                                 client_found_list := mod.widgets.FoundServerList{}
                                 client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
@@ -7146,7 +7262,7 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         stations_hdr := AccordionHdrHitBtn{width: Fit text: "KITCHEN STATIONS"}
                                         stations_help := InfoHelp{
-                                            tip: "Each station prints on its own printers (Settings → Kitchen printing). Add Tandoor, Fryer, Cold…"
+                                            tip: "Add kitchen stations for dishes and KOT. On each station, attach virtual printers (from Settings → Printers), set priority order, and choose First that works or Print on all."
                                         }
                                         stations_hdr_ext := AccordionHdrHitBtn{text: ""}
                                     }
@@ -7170,6 +7286,50 @@ script_mod! {
                                         station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
                                         // Pick removes immediately; button kept for typed + tap.
                                         station_remove := StackSecondaryBtn{text: "Remove station"}
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{y: 0.5}
+                                            h_station_print := WrapLabel{
+                                                width: Fit
+                                                body: "Printers for this station"
+                                                font_color: #x260B08
+                                                font_size: 15.
+                                            }
+                                            station_print_help := InfoHelp{
+                                                tip: "Pick a station, then attach one or more virtual printers. ↑↓ sets try order. First that works stops after the first success; Print on all sends to every attached printer."
+                                            }
+                                        }
+                                        station_print_input := FieldInput{empty_text: "Station to set printers"}
+                                        station_print_suggest := mod.widgets.SuggestList{field: "station_print"}
+                                        station_print_mode_row := View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                station_print_first := SegBtn{text: "First that works"}
+                                                station_print_first_on := SegBtnOn{text: "First that works" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                station_print_all := SegBtn{text: "Print on all"}
+                                                station_print_all_on := SegBtnOn{text: "Print on all" visible: false}
+                                            }
+                                        }
+                                        ActionStack{
+                                            station_vps_dd := StackSecondaryBtn{text: "Printers for this station" flow: Down}
+                                        }
+                                        station_vps_input := FieldInput{
+                                            height: 0.
+                                            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                            empty_text: ""
+                                        }
+                                        station_vps_suggest := mod.widgets.StationCheckList{field: "station_vps"}
+                                        station_print_summary := WrapLabel{
+                                            width: Fill
+                                            body: ""
+                                            font_color: #x6B4A3F
+                                            font_size: 12.
+                                        }
                                     }
                                 }
                             }
@@ -7860,7 +8020,7 @@ script_mod! {
                                     font_size: 12.
                                     visible: false
                                 }
-                                staff_login_input := FieldInput{empty_text: "Username (unique, optional)"}
+                                staff_login_input := FieldInput{empty_text: "Username (required, unique)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 }
@@ -7889,7 +8049,7 @@ script_mod! {
                                 }
                                 staff_edit_name_input := FieldInput{empty_text: "Display name"}
                                 staff_rename_btn := RowSecondaryBtn{text: "Save name"}
-                                staff_edit_login_input := FieldInput{empty_text: "Username (unique, optional)"}
+                                staff_edit_login_input := FieldInput{empty_text: "Username (required, unique)"}
                                 staff_edit_password_input := FieldInput{empty_text: "Starting password (optional)"}
                                 staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 staff_copy_edit_input := FieldInput{
@@ -8065,7 +8225,7 @@ script_mod! {
                                     settings_hub_brand := StackSecondaryBtn{text: "Your brand"}
                                     settings_hub_units := StackSecondaryBtn{text: "Units & conversions"}
                                     settings_hub_pickers := StackSecondaryBtn{text: "Areas · stations · tax rates"}
-                                    settings_hub_printers := StackSecondaryBtn{text: "Kitchen printing & printers"}
+                                    settings_hub_printers := StackSecondaryBtn{text: "Printers"}
                                     settings_hub_bill := StackSecondaryBtn{text: "Bill & KOT format"}
                                     settings_hub_team := StackSecondaryBtn{text: "Team & PINs"}
                                     settings_hub_alerts := StackSecondaryBtn{text: "Alerts"}
@@ -8260,7 +8420,6 @@ View{
                                     body: " "
                                     font_color: #x6B4A3F
                                     font_size: 13.
-                                    selectable: false
                                 }
                                 ActionStack{
                                     allow_extra_tills := RowPrimaryBtn{text: "Allow extra tills"}
@@ -8417,15 +8576,16 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     visible: false
                                     FormCard{
                                     printers_panel_help := InfoHelp{
-                                        tip: "Find printers on this device. Pick a place, choose a Profile, assign printers (one row per device). Two or more: First that works or Print on all."
+                                        tip: "Find real printers. Create virtual printers here (real printer, layout, delivery). Attach them to kitchen stations under Kitchen → Kitchen stations — not on this screen."
                                     }
-                                    View{width: Fit height: Fit flow: Overlay
-                                        kot_print_off := ChipBtn{text: "Kitchen printing: Off"}
-                                        kot_print_on := ChipBtnActive{text: "Kitchen printing: On" visible: false}
+                                    View{width: Fit height: Fit flow: Overlay visible: false
+                                        kot_print_off := ChipBtn{text: "Auto-print kitchen tickets: Off"}
+                                        kot_print_on := ChipBtnActive{text: "Auto-print kitchen tickets: On" visible: false}
                                     }
-                                    // One block: Find refreshes this list (no second “On this device”).
+                                    // Legacy id — must stay hidden (no second “Printers” title).
                                     printers_find_help := InfoHelp{
-                                        tip: "Find scans this device and keeps this list up to date."
+                                        tip: ""
+                                        visible: false
                                     }
                                     ActionStack{
                                         find_printers_btn := StackSecondaryBtn{text: "Find printers" flow: Down}
@@ -8449,43 +8609,59 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         printer_remove := StackSecondaryBtn{text: "Remove" flow: Down}
                                         printer_add_cancel := QuietFitBtn{text: "Cancel"}
                                     }
-                                    printers_routes_help := InfoHelp{
-                                        tip: "Pick a place, choose a Profile, then Select printer — one row per device. Two or more: First that works or Print on all."
-                                    }
-                                    ActionStack{
+                                    printers_routes_help := InfoHelp{tip: " " visible: false}
+                                    View{width: Fill height: Fit visible: false
                                         printer_place_dd := StackSecondaryBtn{text: "Bill" flow: Down}
                                     }
                                     printer_place_input := FieldInput{
-                                        height: 0.
+                                        height: 0. visible: false
                                         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                         padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                         empty_text: ""
                                     }
-                                    printer_place_suggest := mod.widgets.SuggestList{field: "printer_place"}
-                                    h_printer_profile := WrapLabel{
-                                        body: "Profile for this place"
+                                    printer_place_suggest := mod.widgets.SuggestList{field: "printer_place" visible: false}
+                                    // Legacy ids kept for hot-reload — no named Config catalog.
+                                    View{width: Fill height: Fit visible: false
+                                        h_profiles := WrapLabel{
+                                            body: ""
+                                            font_color: #x260B08
+                                            font_size: 14.
+                                        }
+                                        profiles_list := mod.widgets.ReportText{}
+                                        profile_name_input := FieldInput{
+                                            empty_text: ""
+                                            height: 0.
+                                            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                            padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        }
+                                        ActionStack{
+                                            profile_new_btn := StackSecondaryBtn{text: "" flow: Down}
+                                            profile_delete_btn := StackLightBtn{text: "" flow: Down}
+                                        }
+                                    }
+                                    // Leftover virtual-printer form. A text field ignores set_visible,
+                                    // so the whole block stays inside a hidden view.
+                                    virtual_printer_legacy := View{
+                                        width: Fill height: Fit
+                                        visible: false
+                                    h_station_group := WrapLabel{
+                                        body: "Virtual printers"
                                         font_color: #x260B08
                                         font_size: 14.
                                     }
-                                    printer_profile_row := View{
-                                        width: Fill height: Fit
-                                        flow: Right{wrap: true}
-                                        spacing: 6
-                                        View{width: Fit height: Fit flow: Overlay
-                                            printer_wire_escpos := ChipBtn{text: "KOT"}
-                                            printer_wire_escpos_on := ChipBtnActive{text: "KOT" visible: false}
-                                        }
-                                        View{width: Fit height: Fit flow: Overlay
-                                            printer_wire_os := ChipBtn{text: "Standard Portrait"}
-                                            printer_wire_os_on := ChipBtnActive{text: "Standard Portrait" visible: false}
-                                        }
-                                        View{width: Fit height: Fit flow: Overlay
-                                            printer_wire_os_landscape := ChipBtn{text: "Standard Landscape"}
-                                            printer_wire_os_landscape_on := ChipBtnActive{text: "Standard Landscape" visible: false}
-                                        }
+                                    route_assigned_empty := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                        margin: Inset{left: 0. right: 0. top: 6. bottom: 4.}
+                                    }
+                                    route_assigned_list := mod.widgets.ReportText{}
+                                    station_group_name_input := FieldInput{
+                                        empty_text: "Virtual printer name (optional)"
                                     }
                                     ActionStack{
-                                        printer_assign_dd := StackSecondaryBtn{text: "Select printer for Bill" flow: Down}
+                                        printer_assign_dd := StackSecondaryBtn{text: "Select real printer" flow: Down}
                                     }
                                     printer_assign_input := FieldInput{
                                         height: 0.
@@ -8494,34 +8670,133 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         empty_text: ""
                                     }
                                     printer_assign_suggest := mod.widgets.StationCheckList{field: "printer_assign"}
-                                    h_printer_route_mode := WrapLabel{
-                                        body: "If several printers on this place"
+                                    h_printer_profile := WrapLabel{
+                                        body: "Layout"
                                         font_color: #x260B08
                                         font_size: 14.
                                     }
+                                    printer_profile_row := View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true}
+                                        spacing: 6
+                                        View{width: Fit height: Fit flow: Overlay visible: false
+                                            printer_wire_escpos := ChipBtn{text: ""}
+                                            printer_wire_escpos_on := ChipBtnActive{text: "" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_os := ChipBtn{text: "Portrait"}
+                                            printer_wire_os_on := ChipBtnActive{text: "Portrait" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            printer_wire_os_landscape := ChipBtn{text: "Landscape"}
+                                            printer_wire_os_landscape_on := ChipBtnActive{text: "Landscape" visible: false}
+                                        }
+                                    }
+                                    // Legacy hot-reload ids — content decides size/wrap/margins, not VP form.
+                                    View{width: Fill height: Fit visible: false
+                                        h_vp_type_size := WrapLabel{body: ""}
+                                        vp_type_size_row := View{width: Fit height: Fit
+                                            vp_size_s := SegBtn{text: ""}
+                                            vp_size_s_on := SegBtnOn{text: "" visible: false}
+                                            vp_size_m := SegBtn{text: ""}
+                                            vp_size_m_on := SegBtnOn{text: "" visible: false}
+                                            vp_size_l := SegBtn{text: ""}
+                                            vp_size_l_on := SegBtnOn{text: "" visible: false}
+                                        }
+                                        h_vp_wrap := WrapLabel{body: ""}
+                                        vp_wrap_row := View{width: Fit height: Fit
+                                            vp_wrap_32 := SegBtn{text: ""}
+                                            vp_wrap_32_on := SegBtnOn{text: "" visible: false}
+                                            vp_wrap_40 := SegBtn{text: ""}
+                                            vp_wrap_40_on := SegBtnOn{text: "" visible: false}
+                                            vp_wrap_48 := SegBtn{text: ""}
+                                            vp_wrap_48_on := SegBtnOn{text: "" visible: false}
+                                        }
+                                        h_vp_margin := WrapLabel{body: ""}
+                                        vp_margin_row := View{width: Fit height: Fit
+                                            vp_margin_tight := SegBtn{text: ""}
+                                            vp_margin_tight_on := SegBtnOn{text: "" visible: false}
+                                            vp_margin_normal := SegBtn{text: ""}
+                                            vp_margin_normal_on := SegBtnOn{text: "" visible: false}
+                                            vp_margin_narrow := SegBtn{text: ""}
+                                            vp_margin_narrow_on := SegBtnOn{text: "" visible: false}
+                                        }
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_vp_paper_width := WrapLabel{
+                                            width: Fit
+                                            body: "Content width (mm)"
+                                            font_color: #x260B08
+                                            font_size: 14.
+                                        }
+                                        vp_paper_width_help := InfoHelp{
+                                            tip: "How wide the printed content is on this virtual printer. Kitchen tickets and standard bills from this printer both use it."
+                                        }
+                                    }
+                                    vp_paper_width_choices := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            vp_paper_58 := SegBtn{text: "58 mm — narrow slip"}
+                                            vp_paper_58_on := SegBtnOn{text: "58 mm — narrow slip" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            vp_paper_80 := SegBtn{text: "80 mm — wide slip"}
+                                            vp_paper_80_on := SegBtnOn{text: "80 mm — wide slip" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            vp_paper_112 := SegBtn{text: "112 mm — 4 inch slip"}
+                                            vp_paper_112_on := SegBtnOn{text: "112 mm — 4 inch slip" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            vp_paper_210 := SegBtn{text: "210 mm — page"}
+                                            vp_paper_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                        }
+                                    }
+                                    vp_paper_width_input := TextInput{
+                                        width: Fill height: Fit
+                                        empty_text: "Or type a content width, 40–210 mm"
+                                    }
+                                    // Tip hugs the section label — never a lone ℹ on its own Down row.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_vp_delivery := WrapLabel{
+                                            width: Fit
+                                            body: "Delivery"
+                                            font_color: #x260B08
+                                            font_size: 14.
+                                        }
+                                        vp_delivery_help := InfoHelp{
+                                            tip: "How this virtual printer sends jobs — OS document, raw bytes, or ESC/POS. Slip field type size and weight live under Bill & KOT format."
+                                        }
+                                    }
+                                    // Down + Fill SegBtns — never Right{wrap} (empty slab / crop).
                                     printer_mode_row := View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 6
+                                        flow: Down spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_mode_first := SegBtn{text: "First that works"}
-                                            printer_mode_first_on := SegBtnOn{text: "First that works" visible: false}
+                                            printer_mode_first := SegBtn{text: "OS document (system spooler)"}
+                                            printer_mode_first_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_mode_all := SegBtn{text: "Print on all"}
-                                            printer_mode_all_on := SegBtnOn{text: "Print on all" visible: false}
+                                            printer_mode_all := SegBtn{text: "Raw bytes to device"}
+                                            printer_mode_all_on := SegBtnOn{text: "Raw bytes to device" visible: false}
                                         }
-                                    }
-                                    h_station_group := WrapLabel{
-                                        body: "Station group"
-                                        font_color: #x260B08
-                                        font_size: 14.
-                                    }
-                                    station_group_name_input := FieldInput{
-                                        empty_text: "Group name"
+                                        View{width: Fill height: Fit flow: Overlay
+                                            vp_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
+                                            vp_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
+                                        }
                                     }
                                     ActionStack{
-                                        station_group_save_btn := StackSecondaryBtn{text: "Save group" flow: Down}
-                                        station_group_apply_btn := StackSecondaryBtn{text: "Apply outputs to group" flow: Down}
+                                        virtual_printer_new_btn := StackLightBtn{text: "New virtual printer" flow: Down}
+                                        station_group_save_btn := StackSecondaryBtn{text: "Save virtual printer" flow: Down}
+                                        station_group_apply_btn := StackSecondaryBtn{text: "Delete virtual printer" flow: Down}
+                                    }
                                     }
                                     route_place_btns := View{width: Fill height: Fit visible: false
                                         route_place_slot_0 := View{width: Fit height: Fit flow: Overlay
@@ -8559,15 +8834,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     }
                                     printer_routes_label := mod.widgets.ReportText{visible: false}
                                     route_editing_label := WrapLabel{body: "" visible: false}
-                                    // Legacy id kept for hot-reload; profile chips live in printer_profile_row.
                                     printer_wire_legacy := View{width: Fit height: Fit visible: false}
-                                    route_assigned_empty := WrapLabel{
-                                        width: Fill
-                                        body: ""
-                                        font_color: #x6B4A3F
-                                        font_size: 12.
-                                    }
-                                    route_assigned_list := mod.widgets.ReportText{}
                                     // Legacy +chips — assign is printer_assign_dd checklist now.
                                     route_add_printers := View{
                                         width: Fill height: Fit
@@ -8591,10 +8858,13 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         route_add_prn_14 := QuietFitBtn{text: "" visible: false}
                                         route_add_prn_15 := QuietFitBtn{text: "" visible: false}
                                     }
+                                    // Legacy place-route actions — not on Printers (PRINTER.md).
                                     ActionStack{
+                                        visible: false
                                         route_clear := StackSecondaryBtn{text: "Clear" flow: Down}
                                     }
                                     ActionStack{
+                                        visible: false
                                         print_test_btn := StackSecondaryBtn{text: "Print a test page" flow: Down}
                                     }
                                     // Legacy ids kept for RTL / paint paths.
@@ -8616,6 +8886,102 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
+                                    // Screen title + ℹ — same pattern as books_help (not buried in a card).
+                                    bill_kot_panel_help := InfoHelp{
+                                        tip: "Bill content and kitchen slip typography. Content width above is how wide both the bill and the kitchen ticket are."
+                                    }
+                                    // Bill | KOT tabs under the section title.
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_kot_tab_bill := SegBtn{text: "Bill"}
+                                            bill_kot_tab_bill_on := SegBtnOn{text: "Bill" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_kot_tab_kot := SegBtn{text: "KOT"}
+                                            bill_kot_tab_kot_on := SegBtnOn{text: "KOT" visible: false}
+                                        }
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_content_width := WrapLabel{
+                                            width: Fit
+                                            body: "Content width (mm)"
+                                            font_color: #x260B08
+                                            font_size: 14.
+                                        }
+                                        content_width_help := InfoHelp{
+                                            tip: "How wide the printed bill and the kitchen ticket are. Both use this width."
+                                        }
+                                    }
+                                    content_width_choices := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            content_width_58 := SegBtn{text: "58 mm — narrow slip"}
+                                            content_width_58_on := SegBtnOn{text: "58 mm — narrow slip" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            content_width_80 := SegBtn{text: "80 mm — wide slip"}
+                                            content_width_80_on := SegBtnOn{text: "80 mm — wide slip" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            content_width_112 := SegBtn{text: "112 mm — 4 inch slip"}
+                                            content_width_112_on := SegBtnOn{text: "112 mm — 4 inch slip" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            content_width_210 := SegBtn{text: "210 mm — page"}
+                                            content_width_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                        }
+                                    }
+                                    content_width_input := FieldInput{
+                                        empty_text: "Or type a content width, 40–210 mm"
+                                    }
+                                bill_format_body := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                FormCard{
+                                h_bill_layout := WrapLabel{body: "Layout" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_layout_portrait := SegBtn{text: "Portrait"}
+                                        bill_layout_portrait_on := SegBtnOn{text: "Portrait" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_layout_landscape := SegBtn{text: "Landscape"}
+                                        bill_layout_landscape_on := SegBtnOn{text: "Landscape" visible: false}
+                                    }
+                                }
+                                View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                    h_bill_delivery := WrapLabel{width: Fit body: "How the job is sent" font_color: #x260B08 font_size: 14.}
+                                    bill_delivery_help := InfoHelp{tip: "OS document, raw bytes, or ESC/POS for the bill. The kitchen ticket has its own. Either can go to any printer Find has saved."}
+                                }
+                                View{width: Fill height: Fit flow: Down spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_deliv_os := SegBtn{text: "OS document (system spooler)"}
+                                        bill_deliv_os_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_deliv_raw := SegBtn{text: "Raw bytes to device"}
+                                        bill_deliv_raw_on := SegBtnOn{text: "Raw bytes to device" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
+                                        bill_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
+                                    }
+                                }
+                                bill_printers_dd := StackSecondaryBtn{text: "Printers for the bill" flow: Down}
+                                bill_printers_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                bill_printers_suggest := mod.widgets.StationCheckList{field: "bill_printers"}
+                                }
                                 FormCard{
 h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 20.}
                                 h_bill_format_help := WrapLabel{
@@ -8682,6 +9048,7 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                     payment_qr_clear := StackSecondaryBtn{text: "Clear payment QR"}
                                 }
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
+                                bill_format_test := StackSecondaryBtn{text: "Test bill"}
                                 }
                                 FormCard{
                                 View{
@@ -8692,243 +9059,25 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                                     width: Fit
                                                     body: "Bill print size" font_color: #x260B08 font_size: 20.}
                                     std_print_help := InfoHelp{
-                                        tip: "Type size for Standard Portrait and Landscape bill jobs on OS / document printers (thermal KOT size is below). Same size on both orientations."
+                                        tip: "Font size for Standard Portrait and Landscape bill jobs on OS / document printers (enter points). Same size on both orientations. Kitchen slip sizes are on the KOT tab."
                                     }
                                 }
                                 h_std_size := WrapLabel{
-                                    body: "Type size"
+                                    body: "Font size"
                                     font_color: #x260B08
                                     font_size: 14.
                                 }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        std_size_s := SegBtn{text: "Small"}
-                                        std_size_s_on := SegBtnOn{text: "Small" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        std_size_m := SegBtn{text: "Normal"}
-                                        std_size_m_on := SegBtnOn{text: "Normal" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        std_size_l := SegBtn{text: "Large"}
-                                        std_size_l_on := SegBtnOn{text: "Large" visible: false}
-                                    }
+                                std_size_input := FieldInput{empty_text: "e.g. 18, 20, 26…"}
+                                // Legacy hot-reload ids — hidden; numeric size replaces Small/Normal/Large.
+                                View{width: Fill height: Fit visible: false
+                                    std_size_s := SegBtn{text: ""}
+                                    std_size_s_on := SegBtnOn{text: "" visible: false}
+                                    std_size_m := SegBtn{text: ""}
+                                    std_size_m_on := SegBtnOn{text: "" visible: false}
+                                    std_size_l := SegBtn{text: ""}
+                                    std_size_l_on := SegBtnOn{text: "" visible: false}
                                 }
                                 std_print_save := StackPrimaryBtn{text: "Save bill print size"}
-                                }
-                                FormCard{
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 0
-                                    align: Align{x: 0.0 y: 0.5}
-                                    h_kot_format := WrapLabel{
-                                                    width: Fit
-                                                    body: "KOT format" font_color: #x260B08 font_size: 20.}
-                                    kot_format_help := InfoHelp{
-                                        tip: "Kitchen slips stay a standard KOT — no prices; dishes always print. Optional lines, title, copies, paper width and type size are clamped so text does not crop."
-                                    }
-                                }
-                                h_kot_format_fields := WrapLabel{
-                                    body: "Optional lines"
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_shop_on := SegBtn{text: "Shop name"}
-                                        kot_shop_on_on := SegBtnOn{text: "Shop name" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_shop_off := SegBtn{text: "Hide shop"}
-                                        kot_shop_off_on := SegBtnOn{text: "Hide shop" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_time_on := SegBtn{text: "Time"}
-                                        kot_time_on_on := SegBtnOn{text: "Time" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_time_off := SegBtn{text: "Hide time"}
-                                        kot_time_off_on := SegBtnOn{text: "Hide time" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_waiter_on := SegBtn{text: "Waiter"}
-                                        kot_waiter_on_on := SegBtnOn{text: "Waiter" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_waiter_off := SegBtn{text: "Hide waiter"}
-                                        kot_waiter_off_on := SegBtnOn{text: "Hide waiter" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_station_on := SegBtn{text: "Station"}
-                                        kot_station_on_on := SegBtnOn{text: "Station" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_station_off := SegBtn{text: "Hide station"}
-                                        kot_station_off_on := SegBtnOn{text: "Hide station" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_table_on := SegBtn{text: "Table"}
-                                        kot_table_on_on := SegBtnOn{text: "Table" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_table_off := SegBtn{text: "Hide table"}
-                                        kot_table_off_on := SegBtnOn{text: "Hide table" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_no_on := SegBtn{text: "KOT No"}
-                                        kot_no_on_on := SegBtnOn{text: "KOT No" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_no_off := SegBtn{text: "Hide KOT No"}
-                                        kot_no_off_on := SegBtnOn{text: "Hide KOT No" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_area_on := SegBtn{text: "Area"}
-                                        kot_area_on_on := SegBtnOn{text: "Area" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_area_off := SegBtn{text: "Hide area"}
-                                        kot_area_off_on := SegBtnOn{text: "Hide area" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_item_hdr_on := SegBtn{text: "Item · Qty"}
-                                        kot_item_hdr_on_on := SegBtnOn{text: "Item · Qty" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_item_hdr_off := SegBtn{text: "Hide columns"}
-                                        kot_item_hdr_off_on := SegBtnOn{text: "Hide columns" visible: false}
-                                    }
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_title_on := SegBtn{text: "Title line"}
-                                        kot_title_on_on := SegBtnOn{text: "Title line" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_title_off := SegBtn{text: "Hide title"}
-                                        kot_title_off_on := SegBtnOn{text: "Hide title" visible: false}
-                                    }
-                                }
-                                h_kot_field_order := WrapLabel{
-                                    body: "Field order (designer)"
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                kot_field_order_label := mod.widgets.ReportText{}
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    kot_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
-                                    kot_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
-                                    kot_field_cycle := StackLightBtn{text: "Next field" flow: Down}
-                                }
-                                h_kot_width := WrapLabel{
-                                    body: "Paper width"
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_width_58 := SegBtn{text: "58 mm"}
-                                        kot_width_58_on := SegBtnOn{text: "58 mm" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_width_80 := SegBtn{text: "80 mm"}
-                                        kot_width_80_on := SegBtnOn{text: "80 mm" visible: false}
-                                    }
-                                }
-                                h_kot_size := WrapLabel{
-                                    body: "Type size"
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_size_s := SegBtn{text: "Small"}
-                                        kot_size_s_on := SegBtnOn{text: "Small" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_size_m := SegBtn{text: "Normal"}
-                                        kot_size_m_on := SegBtnOn{text: "Normal" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_size_l := SegBtn{text: "Large"}
-                                        kot_size_l_on := SegBtnOn{text: "Large" visible: false}
-                                    }
-                                }
-                                h_kot_copies := WrapLabel{
-                                    body: "Copies"
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_copies_1 := SegBtn{text: "1"}
-                                        kot_copies_1_on := SegBtnOn{text: "1" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_copies_2 := SegBtn{text: "2"}
-                                        kot_copies_2_on := SegBtnOn{text: "2" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        kot_copies_3 := SegBtn{text: "3"}
-                                        kot_copies_3_on := SegBtnOn{text: "3" visible: false}
-                                    }
-                                }
-                                kot_title_input := FieldInput{empty_text: "Title (blank = KOT - KITCHEN ORDER)"}
-                                kot_footer_input := FieldInput{empty_text: "Kitchen note (optional, no prices)"}
-                                h_kot_preview := WrapLabel{
-                                    body: "Preview"
-                                    font_color: #x260B08
-                                    font_size: 14.
-                                }
-                                // Paper strip width updates with the chips.
-                                // ReportText keeps slip newlines (plain Label left Preview blank).
-                                kot_format_preview_card := View{
-                                    width: Fit height: Fit
-                                    kot_format_preview := mod.widgets.ReportText{}
-                                }
-                                kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
                                 }
                                 FormCard{
                                 View{
@@ -8986,6 +9135,323 @@ h_bill_format := WrapLabel{body: "Bill format" font_color: #x260B08 font_size: 2
                                 scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
                                 scheme_add := StackPrimaryBtn{text: "Add BOGO"}
                                 }
+                                } // bill_format_body
+                                kot_format_body := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                FormCard{
+                                h_kot_layout := WrapLabel{body: "Layout" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_layout_portrait := SegBtn{text: "Portrait"}
+                                        kot_layout_portrait_on := SegBtnOn{text: "Portrait" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_layout_landscape := SegBtn{text: "Landscape"}
+                                        kot_layout_landscape_on := SegBtnOn{text: "Landscape" visible: false}
+                                    }
+                                }
+                                View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                    h_kot_delivery := WrapLabel{width: Fit body: "How the job is sent" font_color: #x260B08 font_size: 14.}
+                                    kot_delivery_help := InfoHelp{tip: "OS document, raw bytes, or ESC/POS for the kitchen ticket. The bill has its own. Either can go to any printer Find has saved."}
+                                }
+                                View{width: Fill height: Fit flow: Down spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_deliv_os := SegBtn{text: "OS document (system spooler)"}
+                                        kot_deliv_os_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_deliv_raw := SegBtn{text: "Raw bytes to device"}
+                                        kot_deliv_raw_on := SegBtnOn{text: "Raw bytes to device" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
+                                        kot_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
+                                    }
+                                }
+                                }
+                                FormCard{
+                                // Kind first — styles below apply to the selected kind.
+                                h_kot_kind := WrapLabel{
+                                    body: "KOT kind"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_kind_original := SegBtn{text: "Original"}
+                                        kot_kind_original_on := SegBtnOn{text: "Original" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_kind_duplicate := SegBtn{text: "Duplicate"}
+                                        kot_kind_duplicate_on := SegBtnOn{text: "Duplicate" visible: false}
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_kind_modified := SegBtn{text: "Modified"}
+                                        kot_kind_modified_on := SegBtnOn{text: "Modified" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_kind_cancelled := SegBtn{text: "Cancelled"}
+                                        kot_kind_cancelled_on := SegBtnOn{text: "Cancelled" visible: false}
+                                    }
+                                }
+                                // One place per field: pick field → show + font size + weight.
+                                h_kot_format_fields := WrapLabel{
+                                    body: "Fields"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                kot_format_help := InfoHelp{
+                                    tip: "Pick a field. Set show/hide, font size (points), and weight for the KOT kind above. Content width is above the Bill and KOT tabs."
+                                    visible: false
+                                }
+                                kot_fields_summary := mod.widgets.ReportText{visible: false}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 4
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_title := KotRowBtn{text: "Title"}
+                                        kot_pick_title_on := KotRowBtnOn{text: "Title" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_shop := KotRowBtn{text: "Shop"}
+                                        kot_pick_shop_on := KotRowBtnOn{text: "Shop" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_time := KotRowBtn{text: "Time"}
+                                        kot_pick_time_on := KotRowBtnOn{text: "Time" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_waiter := KotRowBtn{text: "Waiter"}
+                                        kot_pick_waiter_on := KotRowBtnOn{text: "Waiter" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_station := KotRowBtn{text: "Station"}
+                                        kot_pick_station_on := KotRowBtnOn{text: "Station" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_table := KotRowBtn{text: "Table"}
+                                        kot_pick_table_on := KotRowBtnOn{text: "Table" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_no := KotRowBtn{text: "KOT no"}
+                                        kot_pick_no_on := KotRowBtnOn{text: "KOT no" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_area := KotRowBtn{text: "Area"}
+                                        kot_pick_area_on := KotRowBtnOn{text: "Area" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_qty := KotRowBtn{text: "Item / Qty"}
+                                        kot_pick_qty_on := KotRowBtnOn{text: "Item / Qty" visible: false}
+                                    }
+                                }
+                                // Legacy hot-reload ids — tap a field row instead of cycling Next.
+                                View{width: Fill height: Fit visible: false
+                                    kot_style_field_cycle := StackLightBtn{text: "" flow: Down}
+                                }
+                                kot_style_field_label := mod.widgets.ReportText{visible: false}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_field_show := SegBtn{text: "Show"}
+                                        kot_field_show_on := SegBtnOn{text: "Show" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_field_hide := SegBtn{text: "Hide"}
+                                        kot_field_hide_on := SegBtnOn{text: "Hide" visible: false}
+                                    }
+                                }
+                                h_kot_field_size := WrapLabel{
+                                    body: "Font size"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                kot_field_size_input := FieldInput{empty_text: "e.g. 16, 20, 24, 28, 32…"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_field_weight_light := SegBtn{text: "Light"}
+                                        kot_field_weight_light_on := SegBtnOn{text: "Light" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_field_weight_reg := SegBtn{text: "Regular"}
+                                        kot_field_weight_reg_on := SegBtnOn{text: "Regular" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_field_weight_bold := SegBtn{text: "Bold"}
+                                        kot_field_weight_bold_on := SegBtnOn{text: "Bold" visible: false}
+                                    }
+                                }
+                                h_kot_field_align := WrapLabel{
+                                    body: "Align"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_align_start := SegBtn{text: "Start"}
+                                        kot_align_start_on := SegBtnOn{text: "Start" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_align_center := SegBtn{text: "Center"}
+                                        kot_align_center_on := SegBtnOn{text: "Center" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_align_end := SegBtn{text: "End"}
+                                        kot_align_end_on := SegBtnOn{text: "End" visible: false}
+                                    }
+                                }
+                                // Legacy hot-reload ids — kept hidden so Live reload does not break.
+                                View{width: Fill height: Fit visible: false
+                                    h_kot_format := WrapLabel{body: ""}
+                                    kot_shop_on := SegBtn{text: ""}
+                                    kot_shop_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_shop_off := SegBtn{text: ""}
+                                    kot_shop_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_time_on := SegBtn{text: ""}
+                                    kot_time_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_time_off := SegBtn{text: ""}
+                                    kot_time_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_waiter_on := SegBtn{text: ""}
+                                    kot_waiter_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_waiter_off := SegBtn{text: ""}
+                                    kot_waiter_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_station_on := SegBtn{text: ""}
+                                    kot_station_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_station_off := SegBtn{text: ""}
+                                    kot_station_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_table_on := SegBtn{text: ""}
+                                    kot_table_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_table_off := SegBtn{text: ""}
+                                    kot_table_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_no_on := SegBtn{text: ""}
+                                    kot_no_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_no_off := SegBtn{text: ""}
+                                    kot_no_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_area_on := SegBtn{text: ""}
+                                    kot_area_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_area_off := SegBtn{text: ""}
+                                    kot_area_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_item_hdr_on := SegBtn{text: ""}
+                                    kot_item_hdr_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_item_hdr_off := SegBtn{text: ""}
+                                    kot_item_hdr_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_title_on := SegBtn{text: ""}
+                                    kot_title_on_on := SegBtnOn{text: "" visible: false}
+                                    kot_title_off := SegBtn{text: ""}
+                                    kot_title_off_on := SegBtnOn{text: "" visible: false}
+                                    kot_field_size_s := SegBtn{text: ""}
+                                    kot_field_size_s_on := SegBtnOn{text: "" visible: false}
+                                    kot_field_size_m := SegBtn{text: ""}
+                                    kot_field_size_m_on := SegBtnOn{text: "" visible: false}
+                                    kot_field_size_l := SegBtn{text: ""}
+                                    kot_field_size_l_on := SegBtnOn{text: "" visible: false}
+                                    h_kot_width := WrapLabel{body: ""}
+                                    kot_width_58 := SegBtn{text: ""}
+                                    kot_width_58_on := SegBtnOn{text: "" visible: false}
+                                    kot_width_80 := SegBtn{text: ""}
+                                    kot_width_80_on := SegBtnOn{text: "" visible: false}
+                                    h_kot_style := WrapLabel{body: ""}
+                                }
+                                // Print order for header lines — same selected field as above (no second picker).
+                                h_kot_field_order := WrapLabel{
+                                    body: "Print order"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                kot_field_order_label := mod.widgets.ReportText{visible: false}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 4
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_0 := KotRowBtn{text: ""}
+                                        kot_ord_0_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_1 := KotRowBtn{text: ""}
+                                        kot_ord_1_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_2 := KotRowBtn{text: ""}
+                                        kot_ord_2_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_3 := KotRowBtn{text: ""}
+                                        kot_ord_3_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_4 := KotRowBtn{text: ""}
+                                        kot_ord_4_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_5 := KotRowBtn{text: ""}
+                                        kot_ord_5_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_ord_6 := KotRowBtn{text: ""}
+                                        kot_ord_6_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    kot_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
+                                    kot_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
+                                }
+                                // Legacy hot-reload id — style field cycle is the only picker.
+                                View{width: Fill height: Fit visible: false
+                                    kot_field_cycle := StackLightBtn{text: "" flow: Down}
+                                }
+                                h_kot_copies := WrapLabel{
+                                    body: "Copies"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_copies_1 := SegBtn{text: "1"}
+                                        kot_copies_1_on := SegBtnOn{text: "1" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_copies_2 := SegBtn{text: "2"}
+                                        kot_copies_2_on := SegBtnOn{text: "2" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_copies_3 := SegBtn{text: "3"}
+                                        kot_copies_3_on := SegBtnOn{text: "3" visible: false}
+                                    }
+                                }
+                                kot_title_input := FieldInput{empty_text: "Title (blank = KOT - KITCHEN ORDER)"}
+                                kot_footer_input := FieldInput{empty_text: "Kitchen note (optional, no prices)"}
+                                h_kot_preview := WrapLabel{
+                                    body: "Preview"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                // Paper strip width updates with the printer.
+                                // KotSlipPreview: Item and Qty. share one right column.
+                                kot_format_preview_card := View{
+                                    width: Fit height: Fit
+                                    kot_format_preview := mod.widgets.KotSlipPreview{}
+                                }
+                                kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
+                                kot_format_test := StackSecondaryBtn{text: "Test KOT"}
+                                }
+                                } // kot_format_body
                                                                 }
                                 settings_panel_alerts := View{
                                     width: Fill height: Fit
@@ -9400,9 +9866,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                     }
 
                     // Standard snackbar: Overlay faces by kind (info/ok/warn/error).
-                    // Labels stay selectable:false — default WrapLabel select-drag steals
-                    // Android page swipe and can leave scroll blocked (DEV.md 6e). Errors
-                    // are the usual trigger: long text + snack appearing under a finger.
+                    // Snack is a tap/dismiss surface — keep selectable:false (DESIGN exception).
                     app_snackbar := View{
                         visible: false
                         width: Fill height: Fit
@@ -9949,9 +10413,13 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                             width: Fill height: Fill
                             align: Align{x: 0.5 y: 0.5}
                             padding: Inset{left: 16. right: 16. top: 20. bottom: 20.}
-                            menu_panel := RoundedView{
+                                menu_panel := RoundedView{
                                 width: Fill{max: 980.} height: Fill
                                 flow: Down spacing: 10
+                                // Header (Done) is tested before the search and the
+                                // dish grid. The default last-first order let those
+                                // take the press, so Done never closed the window.
+                                event_order: Down
                                 padding: Inset{left: 16. right: 16. top: 14. bottom: 16.}
                                 draw_bg.color: #xF9F4F0
                                 draw_bg.border_radius: 18.
@@ -9976,7 +10444,33 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                             draw_text.text_style.font_size: 13.
                                         }
                                     }
-                                    menu_pick_done := RowSecondaryBtn{text: "Done" width: 120}
+                                    // Not RowSecondaryBtn: that face wraps, and its hit box was not
+                                    // the pill on screen, so Done never received the press.
+                                    menu_pick_done := Button{
+                                        text: "Done"
+                                        width: 140
+                                        height: 44
+                                        grab_key_focus: false
+                                        align: Align{x: 0.5 y: 0.5}
+                                        padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+                                        draw_bg +: {
+                                            color: #xffffff
+                                            color_hover: #xFBEDE4
+                                            color_down: #xEFD2BC
+                                            color_focus: #xffffff
+                                            border_color: #xD8BBA6
+                                            border_radius: 8.
+                                            border_size: 1.
+                                        }
+                                        draw_text +: {
+                                            color: #x69090C
+                                            color_hover: #x69090C
+                                            color_down: #x69090C
+                                            color_focus: #x69090C
+                                            ink_centered: true
+                                            text_style +: {font_size: 14.}
+                                        }
+                                    }
                                 }
                                 // Name, alias or short code (aliases double as short codes,
                                 // e.g. "101"); typing looks through every category.

@@ -1144,6 +1144,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 .set_text(cx, &st.t("printer_format_custom"));
         }
         self.show_found_printers(cx);
+        self.sync_job_format_ui(cx);
         let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
         self.ui
             .widget(cx, ids!(printers_found_label))
@@ -1181,10 +1182,206 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(route_remove),
                 ids!(route_clear),
                 ids!(printers_save),
+                ids!(h_job_width),
+                ids!(job_width_58),
+                ids!(job_width_58_on),
+                ids!(job_width_80),
+                ids!(job_width_80_on),
+                ids!(job_width_100),
+                ids!(job_width_100_on),
+                ids!(job_width_210),
+                ids!(job_width_210_on),
+                ids!(job_width_input),
+                ids!(h_job_layout),
+                ids!(job_layout_portrait),
+                ids!(job_layout_portrait_on),
+                ids!(job_layout_landscape),
+                ids!(job_layout_landscape_on),
+                ids!(h_job_delivery),
+                ids!(job_deliv_os),
+                ids!(job_deliv_os_on),
+                ids!(job_deliv_raw),
+                ids!(job_deliv_raw_on),
+                ids!(job_deliv_escpos),
+                ids!(job_deliv_escpos_on),
+                ids!(h_job_size),
+                ids!(job_size_input),
+                ids!(job_format_save),
             ] {
                 self.ui.widget(cx, id).set_visible(cx, false);
             }
         }
+    }
+
+    /// Receipt and label each keep their own width, layout, delivery, and type size.
+    fn sync_job_format_ui(&mut self, cx: &mut Cx) {
+        let (fmt, save, test) = {
+            let st = app_state().lock().unwrap();
+            let label_job = st.printer_route_key == "label";
+            let key = parse_courier_route_key(&st.printer_route_key);
+            (
+                st.printer_draft.format_for(key),
+                st.t(if label_job {
+                    "save_label_format"
+                } else {
+                    "save_receipt_format"
+                }),
+                st.t(if label_job {
+                    "test_label_format"
+                } else {
+                    "test_receipt_format"
+                }),
+            )
+        };
+        self.ui.button(cx, ids!(job_format_save)).set_text(cx, &save);
+        self.ui.button(cx, ids!(job_format_test)).set_text(cx, &test);
+        let mm = fmt.shown_content_width_mm();
+        let width = self.ui.text_input(cx, ids!(job_width_input));
+        if !cx.has_key_focus(width.area()) {
+            width.set_text(cx, &mm.to_string());
+        }
+        let size = self.ui.text_input(cx, ids!(job_size_input));
+        if !cx.has_key_focus(size.area()) {
+            let shown = if (fmt.em - fmt.em.round()).abs() < 0.05 {
+                format!("{}", fmt.em.round() as i32)
+            } else {
+                format!("{:.1}", fmt.em)
+            };
+            size.set_text(cx, &shown);
+        }
+        for (idle, on, choice) in [
+            (ids!(job_width_58), ids!(job_width_58_on), 58u32),
+            (ids!(job_width_80), ids!(job_width_80_on), 80),
+            (ids!(job_width_100), ids!(job_width_100_on), 100),
+            (ids!(job_width_210), ids!(job_width_210_on), 210),
+        ] {
+            self.paint_choice_pair(cx, idle, on, mm == choice);
+        }
+        self.paint_choice_pair(
+            cx,
+            ids!(job_layout_portrait),
+            ids!(job_layout_portrait_on),
+            !fmt.landscape,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(job_layout_landscape),
+            ids!(job_layout_landscape_on),
+            fmt.landscape,
+        );
+        let del = fmt.delivery_id();
+        self.paint_choice_pair(
+            cx,
+            ids!(job_deliv_os),
+            ids!(job_deliv_os_on),
+            del == print_share::DELIVERY_SYSTEM_SPOOLER || del.is_empty(),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(job_deliv_raw),
+            ids!(job_deliv_raw_on),
+            del == print_share::DELIVERY_RAW_DEVICE,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(job_deliv_escpos),
+            ids!(job_deliv_escpos_on),
+            del == print_share::DELIVERY_ESCPOS,
+        );
+    }
+
+    fn apply_focused_job(
+        &mut self,
+        landscape: Option<bool>,
+        delivery: Option<&str>,
+        mm: Option<u32>,
+        em: Option<f32>,
+    ) -> Result<(), String> {
+        let mut st = app_state().lock().unwrap();
+        if st.device_role == DeviceRole::Client {
+            return Err(st.t("printers_host_only"));
+        }
+        let label = st.printer_route_key == "label";
+        let key = parse_courier_route_key(&st.printer_route_key);
+        let cur = st.printer_draft.format_for(key);
+        let land = landscape.unwrap_or(cur.landscape);
+        let del = delivery.unwrap_or(cur.delivery_id()).to_string();
+        st.printer_draft.set_job_drive(label, land, &del);
+        if let Some(mm) = mm {
+            st.printer_draft.set_content_width(label, mm);
+        }
+        if let Some(em) = em {
+            st.printer_draft.set_type_size(label, em);
+        }
+        if let Some(base) = st.data_base.clone() {
+            print_share::save_device_printers(&base, &st.printer_draft)?;
+        }
+        print_share::configure(st.printer_draft.clone());
+        Ok(())
+    }
+
+    fn print_focused_job_sample(&mut self, cx: &mut Cx) {
+        let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+        if is_client {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let route_key = st.printer_route_key.clone();
+                st.books_op(BooksOp::PrintTestPage { route_key })
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            return;
+        }
+        let width_text = self.ui.text_input(cx, ids!(job_width_input)).text();
+        let size_text = self.ui.text_input(cx, ids!(job_size_input)).text();
+        let mm = width_text.trim().parse::<u32>().ok().filter(|n| (40..=210).contains(n));
+        let em = size_text.trim().parse::<f32>().ok();
+        if let Err(e) = self.apply_focused_job(None, None, mm, em) {
+            self.set_status(cx, e);
+            return;
+        }
+        let (label, shop, when, dir, key) = {
+            let st = app_state().lock().unwrap();
+            let label = st.printer_route_key == "label";
+            let key = parse_courier_route_key(&st.printer_route_key);
+            (
+                label,
+                st.venue_title.clone(),
+                st.fiscal.format_now(),
+                st.data_base.clone(),
+                key,
+            )
+        };
+        if print_share::printers().destinations_for(key).is_empty() {
+            self.set_status(cx, app_t("test_print_no_printer"));
+            self.sync_chrome(cx);
+            return;
+        }
+        let text = if label {
+            labels::AwbLabel::sample(&shop).to_plain_text()
+        } else {
+            sample_receipt_text(&shop, &when)
+        };
+        let kind = if label {
+            print_share::PrintKind::Label
+        } else {
+            print_share::PrintKind::Receipt
+        };
+        match print_share::print_route(kind, key, &text, dir.as_deref()) {
+            Ok(share) if share.opened => self.set_status(
+                cx,
+                app_t(if label {
+                    "test_label_sent"
+                } else {
+                    "test_receipt_sent"
+                }),
+            ),
+            Ok(_) => self.set_status(cx, app_t("test_print_no_printer")),
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
     }
 
     fn save_venue_brand(&mut self, cx: &mut Cx) {

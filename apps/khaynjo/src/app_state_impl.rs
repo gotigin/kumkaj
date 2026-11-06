@@ -42,6 +42,13 @@ impl AppState {
             printer_route_key: "bill".into(),
             settings_panel: None,
             printer_selected_id: None,
+            printer_vp_landscape: false,
+            printer_vp_em: print_share::STD_EM_NORMAL,
+            printer_vp_line: 40,
+            printer_vp_side: print_share::STD_SIDE,
+            printer_vp_delivery: print_share::DELIVERY_SYSTEM_SPOOLER.into(),
+            printer_vp_paper_width_mm: 80,
+            virtual_printer_sel: None,
             printer_route_sel: None,
             owner_setup_complete: false,
             onboarding_complete: false,
@@ -97,6 +104,9 @@ impl AppState {
             order_sections_open: Vec::new(),
             kot_slip_draft: print_share::KotSlipFormat::default(),
             kot_field_edit_idx: 0,
+            kot_edit_kind: print_share::KotSlipKind::Original,
+            kot_style_field: print_share::KotStyleField::Area,
+            bill_kot_tab_kot: false,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,
@@ -1209,9 +1219,21 @@ impl AppState {
             .collect(),
             SuggestField::PrinterAssign => printer_assign_suggest_rows(
                 &self.printer_draft,
-                &self.printer_route_key,
+                self.printer_selected_id.as_deref(),
                 |k| self.t(k),
             ),
+            SuggestField::StationPrint => self
+                .stations
+                .iter()
+                .map(|s| SuggestRow::new(s.name.clone(), s.name.clone()))
+                .collect(),
+            SuggestField::StationVps | SuggestField::BillPrinters => {
+                station_virtual_printer_suggest_rows(
+                    &self.printer_draft,
+                    &self.printer_route_key,
+                    |k| self.t(k),
+                )
+            }
             // Who took deliveries before, then the active staff.
             SuggestField::DeliveryBy => {
                 let mut rows: Vec<SuggestRow> = self

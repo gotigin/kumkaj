@@ -18,34 +18,48 @@ const BAND: usize = 128;
 /// print thin strokes faint).
 const INK: f32 = 0.45;
 
-/// Letter size, line pitch, baseline and side margin (dots).
+/// Letter size, line pitch, baseline, side margin, and content width (dots).
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct RasterMetrics {
     pub em: f32,
     pub line: usize,
     pub baseline: f32,
     pub side: f32,
+    /// Dots across the content. [`PAPER_DOTS`] is a 58 mm content width.
+    pub width_dots: usize,
 }
 
 impl RasterMetrics {
-    /// Built-in Standard (bill) metrics.
+    /// Built-in Standard (bill / OS document) metrics — generic product default.
     pub const fn standard() -> Self {
         Self {
-            em: 22.0,
+            em: 20.0,
             line: 32,
-            baseline: 24.0,
-            side: 8.0,
+            baseline: 22.0,
+            side: 16.0,
+            width_dots: PAPER_DOTS,
         }
     }
 
-    /// Built-in KOT (kitchen) metrics.
+    /// Built-in narrow-slip metrics (legacy thermal default).
     pub const fn kot() -> Self {
         Self {
             em: 24.0,
             line: 36,
             baseline: 26.0,
             side: 4.0,
+            width_dots: PAPER_DOTS,
         }
+    }
+
+    /// Page width in dots, a multiple of 8 so each raster row is whole bytes.
+    pub fn page_dots(self) -> usize {
+        let dots = if self.width_dots == 0 {
+            PAPER_DOTS
+        } else {
+            self.width_dots
+        };
+        dots.max(8) & !7
     }
 }
 
@@ -111,12 +125,32 @@ pub fn escpos_picture_style(text: &str, style: SlipStyle) -> Vec<u8> {
 /// ESC/POS raster using explicit metrics (custom formats).
 pub fn escpos_picture_metrics(text: &str, m: &RasterMetrics) -> Vec<u8> {
     let (rows, height) = draw_metrics(text, m);
-    let row_bytes = PAPER_DOTS / 8;
+    pack_escpos_picture((rows, height), m.page_dots())
+}
+
+/// Label picture: the slip text, then Code 128 bars for `awb`.
+pub fn escpos_label(text: &str, awb: &str, m: &RasterMetrics) -> Vec<u8> {
+    let drawn = draw_label(text, awb, m);
+    pack_escpos_picture(drawn, m.page_dots())
+}
+
+fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
+    let (rows, height) = drawn;
+    let row_bytes = (width_dots.max(8) & !7) / 8;
     let mut out = vec![0x1B, 0x40]; // ESC @: reset
     for top in (0..height).step_by(BAND) {
         let h = BAND.min(height - top);
         // GS v 0, normal size, width in bytes, height in dots (little-endian).
-        out.extend_from_slice(&[0x1D, 0x76, 0x30, 0x00, row_bytes as u8, 0, (h & 0xFF) as u8, (h >> 8) as u8]);
+        out.extend_from_slice(&[
+            0x1D,
+            0x76,
+            0x30,
+            0x00,
+            (row_bytes & 0xFF) as u8,
+            (row_bytes >> 8) as u8,
+            (h & 0xFF) as u8,
+            (h >> 8) as u8,
+        ]);
         out.extend_from_slice(&rows[top * row_bytes..(top + h) * row_bytes]);
     }
     // LF only (never CR — overstrike). Then the most common full-cut form.
@@ -137,22 +171,100 @@ pub fn draw_style(text: &str, style: SlipStyle) -> (Vec<u8>, usize) {
 
 /// `text` drawn `PAPER_DOTS` wide: packed rows (leftmost dot in the high
 /// bit, 1 = black) and the height in dots.
+enum Drawn {
+    Glyphs(Vec<Placed>),
+    Rule,
+}
+
+fn is_rule_line(line: &str) -> bool {
+    let t = line.trim();
+    t.chars().count() >= 4 && t.chars().all(|c| matches!(c, '-' | '_' | '─'))
+}
+
 pub fn draw_metrics(text: &str, m: &RasterMetrics) -> (Vec<u8>, usize) {
+    let width = m.page_dots();
     let faces = faces();
-    let room = PAPER_DOTS as f32 - 2.0 * m.side;
-    let lines: Vec<Vec<Placed>> = text
+    let room = width as f32 - 2.0 * m.side;
+    let lines: Vec<Drawn> = text
         .lines()
-        .flat_map(|l| wrap(&faces, l, room, m))
+        .flat_map(|l| {
+            if is_rule_line(l) {
+                vec![Drawn::Rule]
+            } else {
+                wrap(&faces, l, room, m)
+                    .into_iter()
+                    .map(Drawn::Glyphs)
+                    .collect()
+            }
+        })
         .collect();
     let height = lines.len().max(1) * m.line;
-    let mut dots = vec![false; PAPER_DOTS * height];
+    let mut dots = vec![false; width * height];
     for (i, line) in lines.iter().enumerate() {
         let baseline = (i * m.line) as f32 + m.baseline;
-        for g in line {
-            stamp(&faces[g.face], g, baseline, m, &mut dots);
+        match line {
+            Drawn::Glyphs(glyphs) => {
+                for g in glyphs {
+                    stamp(&faces[g.face], g, baseline, m, width, &mut dots);
+                }
+            }
+            Drawn::Rule => {
+                let y0 = (baseline as usize)
+                    .saturating_sub(2)
+                    .min(height.saturating_sub(1));
+                let x0 = (m.side as usize).min(width);
+                let x1 = width.saturating_sub(m.side as usize).max(x0);
+                for y in y0..y0.saturating_add(2).min(height) {
+                    for x in x0..x1 {
+                        dots[y * width + x] = true;
+                    }
+                }
+            }
         }
     }
-    let mut rows = vec![0u8; PAPER_DOTS / 8 * height];
+    pack_rows(&dots, width, height)
+}
+
+/// Slip text plus a Code 128 band. Empty `awb` leaves the slip unchanged.
+pub fn draw_label(text: &str, awb: &str, m: &RasterMetrics) -> (Vec<u8>, usize) {
+    let (mut rows, height) = draw_metrics(text, m);
+    let awb = awb.trim();
+    if awb.is_empty() {
+        return (rows, height);
+    }
+    let width = m.page_dots();
+    let row_bytes = width / 8;
+    let bits: Vec<bool> = crate::labels::code128_modules(awb)
+        .chars()
+        .map(|c| c == '1')
+        .collect();
+    if bits.is_empty() {
+        return (rows, height);
+    }
+    let room = width.saturating_sub((m.side as usize).saturating_mul(2)).max(8);
+    let mod_w = (room / bits.len()).clamp(1, 4);
+    let ink_w = mod_w.saturating_mul(bits.len()).min(room);
+    let x0 = (m.side as usize) + room.saturating_sub(ink_w) / 2;
+    let bar_h = 72usize;
+    let mut extra = vec![0u8; row_bytes * bar_h];
+    for (i, on) in bits.iter().enumerate() {
+        if !on {
+            continue;
+        }
+        let start = x0 + i * mod_w;
+        for x in start..(start + mod_w).min(width) {
+            for y in 0..bar_h {
+                extra[y * row_bytes + x / 8] |= 0x80 >> (x % 8);
+            }
+        }
+    }
+    rows.extend_from_slice(&extra);
+    (rows, height + bar_h)
+}
+
+fn pack_rows(dots: &[bool], width: usize, height: usize) -> (Vec<u8>, usize) {
+    let row_bytes = width / 8;
+    let mut rows = vec![0u8; row_bytes * height];
     for (i, _) in dots.iter().enumerate().filter(|(_, on)| **on) {
         rows[i / 8] |= 0x80 >> (i % 8);
     }
@@ -178,14 +290,24 @@ pub fn png_document(text: &str) -> Result<Vec<u8>, String> {
 
 /// PNG of `text` with explicit metrics (custom formats).
 pub fn png_metrics(text: &str, m: &RasterMetrics) -> Result<Vec<u8>, String> {
-    let (rows, height) = draw_metrics(text, m);
+    png_from_dots(draw_metrics(text, m), m.page_dots())
+}
+
+/// PNG of a label: slip text and Code 128 bars, at the label content width.
+pub fn png_label(text: &str, awb: &str, m: &RasterMetrics) -> Result<Vec<u8>, String> {
+    png_from_dots(draw_label(text, awb, m), m.page_dots())
+}
+
+fn png_from_dots(drawn: (Vec<u8>, usize), width_dots: usize) -> Result<Vec<u8>, String> {
+    let (rows, height) = drawn;
+    let width = width_dots.max(8) & !7;
     let scale = DOCUMENT_PNG_SCALE;
-    let w = (PAPER_DOTS as u32).saturating_mul(scale);
+    let w = (width as u32).saturating_mul(scale);
     let h = (height as u32).saturating_mul(scale).max(scale);
-    let row_bytes = PAPER_DOTS / 8;
+    let row_bytes = width / 8;
     let mut rgba = vec![255u8; (w as usize) * (h as usize) * 4];
     for y in 0..height {
-        for x in 0..PAPER_DOTS {
+        for x in 0..width {
             let on = rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0;
             if !on {
                 continue;
@@ -382,7 +504,7 @@ impl OutlineBuilder for Outline {
 }
 
 /// Ink one glyph onto `dots` (`PAPER_DOTS` wide), clipped to the page.
-fn stamp(face: &Face, g: &Placed, baseline: f32, m: &RasterMetrics, dots: &mut [bool]) {
+fn stamp(face: &Face, g: &Placed, baseline: f32, m: &RasterMetrics, width: usize, dots: &mut [bool]) {
     let mut outline = Outline {
         scale: m.em / face.units_per_em() as f32,
         x: m.side + g.x,
@@ -417,11 +539,14 @@ fn stamp(face: &Face, g: &Placed, baseline: f32, m: &RasterMetrics, dots: &mut [
             Seg::Cubic(a, b, c, d) => raster.draw_cubic(shift(a), shift(b), shift(c), shift(d)),
         }
     }
-    let height = dots.len() / PAPER_DOTS;
+    if width == 0 || dots.is_empty() {
+        return;
+    }
+    let height = dots.len() / width;
     raster.for_each_pixel_2d(|x, y, coverage| {
         let (px, py) = (left as i64 + x as i64, top as i64 + y as i64);
-        if coverage >= INK && (0..PAPER_DOTS as i64).contains(&px) && (0..height as i64).contains(&py) {
-            dots[py as usize * PAPER_DOTS + px as usize] = true;
+        if coverage >= INK && (0..width as i64).contains(&px) && (0..height as i64).contains(&py) {
+            dots[py as usize * width + px as usize] = true;
         }
     });
 }

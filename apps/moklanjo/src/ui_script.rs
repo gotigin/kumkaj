@@ -1754,18 +1754,17 @@ script_mod! {
         }
     }
 
-    // Full-width selectable copy (Markdown TextFlow) with real `visible`
-    // support — stock Markdown/TextFlow ignore set_visible. Use `body:`.
-    // Default: display text is selectable. Only tap targets (buttons,
-    // tappable rows) keep Label / selectable: false.
-    // Default NOT selectable — TextFlow select-drag blocks Android page swipe
-    // (freeze / dead scroll). Opt in with selectable: true for copy-only faces.
+    // Full-width Markdown TextFlow with real `visible` support — stock
+    // Markdown/TextFlow ignore set_visible. Use `body:`.
+    // Default: selectable (DESIGN.md § Text selection & copy). Set
+    // `selectable: false` only inside tap targets (cards, nav, snack,
+    // button faces) — select-drag there steals the press / page swipe.
     mod.widgets.WrapLabelBase = #(WrapLabel::register_widget(vm))
     mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
         height: Fit
         padding: 0.
-        selectable: false
+        selectable: true
         paragraph_spacing: 0.
         pre_code_spacing: 0.
         font_size: 14.
@@ -2250,10 +2249,12 @@ script_mod! {
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x4A5568
+        // Cart line is interactive — do not steal press for select.
         label := WrapLabel{
             body: "Item"
             font_color: #x02030B
             font_size: 16.
+            selectable: false
         }
         // Stitch qty dial: Volume − [N] +  (screen 03 / layout spec qty_stepper)
         RoundedView{
@@ -2608,15 +2609,18 @@ script_mod! {
         View{
             width: Fill height: Fit
             flow: Down spacing: 2
+            // Pick-row face — do not steal press for select.
             label := WrapLabel{
                 body: "customer"
                 font_color: #x0B1220
                 font_size: 14.
+                selectable: false
             }
             sublabel := WrapLabel{
                 body: "id"
                 font_color: #x3A4554
                 font_size: 11.
+                selectable: false
             }
         }
         pick := Button{
@@ -2694,6 +2698,7 @@ script_mod! {
         draw_bg.border_radius: 14.
         draw_bg.border_size: 2.
         draw_bg.border_color: #x4A5568
+        // Row pick face — Use button + row tap; keep select off the label.
         label := WrapLabel{
             width: Fill
             body: "locale"
@@ -3740,7 +3745,6 @@ script_mod! {
                                         font_color: #x8392b7
                                         font_size: 11.
                                         visible: false
-                                        selectable: false
                                     }
                                 }
                                 session_label := WrapLabel{
@@ -3858,7 +3862,6 @@ script_mod! {
                                                         body: "Your shop"
                                                         font_color: #x02030B
                                                         font_size: 18.
-                                                        selectable: false
                                                     }
                                                     setup_brand_server_id := WrapLabel{
                                                         width: Fit
@@ -3866,7 +3869,6 @@ script_mod! {
                                                         font_color: #x3A4554
                                                         font_size: 11.
                                                         visible: false
-                                                        selectable: false
                                                     }
                                                 }
                                                 device_use_question := WrapLabel{
@@ -3874,7 +3876,6 @@ script_mod! {
                                                     font_color: #x3A4554
                                                     font_size: 12.
                                                     visible: false
-                                                    selectable: false
                                                 }
                                             }
                                         }
@@ -3994,7 +3995,6 @@ script_mod! {
                                                 body: " "
                                                 font_color: #xC44E10
                                                 font_size: 12.
-                                                selectable: false
                                             }
                                         }
                                     }
@@ -4025,7 +4025,6 @@ script_mod! {
                                             body: "OFFLINE"
                                             font_color: #xffffff
                                             font_size: 10.
-                                            selectable: false
                                         }
                                     }
                                     h_local_badge_2 := Label{
@@ -4073,7 +4072,6 @@ script_mod! {
                                                         body: "Your shop"
                                                         font_color: #x02030B
                                                         font_size: 18.
-                                                        selectable: false
                                                     }
                                                     lock_brand_server_id := WrapLabel{
                                                         width: Fit
@@ -4081,14 +4079,12 @@ script_mod! {
                                                         font_color: #x3A4554
                                                         font_size: 11.
                                                         visible: false
-                                                        selectable: false
                                                     }
                                                 }
                                                 h_counter_locked := WrapLabel{
                                                     body: "Counter 01 · Locked"
                                                     font_color: #x3A4554
                                                     font_size: 12.
-                                                    selectable: false
                                                 }
                                             }
                                             h_shop := Label{
@@ -4151,14 +4147,12 @@ script_mod! {
                                             body: "Who is unlocking?"
                                             font_color: #x0B1220
                                             font_size: 11.
-                                            selectable: false
                                         }
                                         lock_staff_label := WrapLabel{
                                             width: Fit
                                             body: "No staff yet — unlock as Owner, then Team"
                                             font_color: #x0B1220
                                             font_size: 14.
-                                            selectable: false
                                         }
                                         ActionStack{
                                             lock_staff_prev := NavBtn{text: "Previous staff"}
@@ -4194,7 +4188,6 @@ script_mod! {
                                             body: " "
                                             font_color: #xC44E10
                                             font_size: 12.
-                                            selectable: false
                                         }
                                     }
 
@@ -4207,7 +4200,6 @@ script_mod! {
                                             body: "Or unlock with login"
                                             font_color: #x0B1220
                                             font_size: 14.
-                                            selectable: false
                                         }
                                         lock_login_help := InfoHelp{
                                             tip: "Optional: unlock with login id and password instead of PIN."
@@ -4289,7 +4281,6 @@ script_mod! {
                                     body: "Moklanjo"
                                     font_color: #x0B1220
                                     font_size: 15.
-                                    selectable: false
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -4300,7 +4291,6 @@ script_mod! {
                                         body: "What you get"
                                         font_color: #x0B1220
                                         font_size: 15.
-                                        selectable: false
                                     }
                                     onboard_tmpl_help := InfoHelp{
                                         tip: " "
@@ -4310,7 +4300,6 @@ script_mod! {
                                     body: "How do you want to start?"
                                     font_color: #x0B1220
                                     font_size: 15.
-                                    selectable: false
                                 }
                                 View{
                                     width: Fill height: 52
@@ -4391,7 +4380,6 @@ script_mod! {
                                     body: " "
                                     font_color: #x3A4554
                                     font_size: 13.
-                                    selectable: false
                                 }
                                 // No typing IPs: the office's server answers on this Wi‑Fi.
                                 ActionStack{
@@ -4402,7 +4390,6 @@ script_mod! {
                                     body: " "
                                     font_color: #x3A4554
                                     font_size: 13.
-                                    selectable: false
                                 }
                                 client_found_list := mod.widgets.FoundServerList{}
                                 client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
@@ -4783,7 +4770,6 @@ script_mod! {
                                 booking_origin_phone_input := FieldInput{empty_text: "Sender phone"}
                                 booking_origin_address_input := FieldInput{empty_text: "Pickup / origin address"}
                                 booking_consignor_hint := WrapLabel{
-                                    selectable: false
                                     body: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
                                     font_color: #x3A4554
                                     font_size: 11.
@@ -4836,7 +4822,6 @@ script_mod! {
                                     }
                                 }
                                 booking_scope_hint := WrapLabel{
-                                    selectable: false
                                     body: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
                                     font_color: #x3A4554
                                     font_size: 11.
@@ -5746,7 +5731,7 @@ script_mod! {
                                 h_optional_login_help := InfoHelp{
                                     tip: "Optional login (id + password). Owner sets once; only the user can change password later."
                                 }
-                                staff_login_input := FieldInput{empty_text: "Username (unique, optional)"}
+                                staff_login_input := FieldInput{empty_text: "Username (required, unique)"}
                                 staff_password_input := FieldInput{empty_text: "Starting password (optional)"}
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 }
@@ -5769,7 +5754,7 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
-                                staff_edit_login_input := FieldInput{empty_text: "Username (unique, optional)"}
+                                staff_edit_login_input := FieldInput{empty_text: "Username (required, unique)"}
                                 staff_edit_password_input := FieldInput{empty_text: "Starting password (optional)"}
                                 staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 staff_deactivate := DangerBtn{text: "Remove selected"}
@@ -6293,6 +6278,12 @@ script_mod! {
                                     find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
                                     printers_pool_label := mod.widgets.ReportText{}
+                                    // Manual name, target, and Thermal/Portrait/Landscape
+                                    // profiles. Find supplies real printers. Receipt and
+                                    // label each have their own width, layout, and delivery.
+                                    printer_legacy := View{
+                                        width: Fill height: Fit
+                                        visible: false
                                     printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
                                     printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
                                     printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
@@ -6319,15 +6310,12 @@ script_mod! {
                                         }
                                     }
                                     printer_format_custom := RowSecondaryBtn{text: "New custom format"}
-                                    // One ActionStack only. Busy = change Add's label (and show a
-                                    // Fit Cancel). Never swap sibling ActionStacks / Overlay faces
-                                    // and never toggle a Fill wrap CTA visible — those redraws hit
-                                    // Makepad wrap+Fill logging and froze Settings on every OS.
                                     ActionStack{
                                         printer_add := RowPrimaryBtn{text: "Add printer"}
                                         printer_remove := RowSecondaryBtn{text: "Remove last"}
                                     }
                                     printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                    }
                                     h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
                                     printer_routes_label := mod.widgets.ReportText{}
                                     h_route_pick := Label{
@@ -6347,6 +6335,56 @@ script_mod! {
                                             route_pick_label_on := SegBtnOn{text: "Label" visible: false}
                                         }
                                     }
+                                    h_job_width := WrapLabel{body: "Content width (mm)" font_color: #x0B1220 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Down spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_width_58 := SegBtn{text: "58 mm"}
+                                            job_width_58_on := SegBtnOn{text: "58 mm" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_width_80 := SegBtn{text: "80 mm"}
+                                            job_width_80_on := SegBtnOn{text: "80 mm" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_width_100 := SegBtn{text: "100 mm — label"}
+                                            job_width_100_on := SegBtnOn{text: "100 mm — label" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_width_210 := SegBtn{text: "210 mm — page"}
+                                            job_width_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                        }
+                                    }
+                                    job_width_input := FieldInput{empty_text: "Or type a width, 40–210 mm"}
+                                    h_job_layout := WrapLabel{body: "Layout" font_color: #x0B1220 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_layout_portrait := SegBtn{text: "Portrait"}
+                                            job_layout_portrait_on := SegBtnOn{text: "Portrait" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_layout_landscape := SegBtn{text: "Landscape"}
+                                            job_layout_landscape_on := SegBtnOn{text: "Landscape" visible: false}
+                                        }
+                                    }
+                                    h_job_delivery := WrapLabel{body: "How the job is sent" font_color: #x0B1220 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Down spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_deliv_os := SegBtn{text: "OS document (system spooler)"}
+                                            job_deliv_os_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_deliv_raw := SegBtn{text: "Raw bytes to device"}
+                                            job_deliv_raw_on := SegBtnOn{text: "Raw bytes to device" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            job_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
+                                            job_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
+                                        }
+                                    }
+                                    h_job_size := WrapLabel{body: "Font size" font_color: #x0B1220 font_size: 14.}
+                                    job_size_input := FieldInput{empty_text: "e.g. 18, 20, 26…"}
+                                    job_format_save := StackPrimaryBtn{text: "Save format"}
+                                    job_format_test := StackSecondaryBtn{text: "Test print"}
                                     route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
                                     route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
                                     ActionStack{
@@ -6358,7 +6396,7 @@ script_mod! {
                                     }
                                     ActionStack{
                                         printers_save := StackPrimaryBtn{text: "Save printers"}
-                                        print_test_btn := RowSecondaryBtn{text: "Print a test page"}
+                                        print_test_btn := RowSecondaryBtn{text: "Print a test page" visible: false}
                                     }
                                     }
                                 }
@@ -6477,7 +6515,6 @@ script_mod! {
                                         body: " "
                                         font_color: #x3A4554
                                         font_size: 13.
-                                        selectable: false
                                     }
                                     ActionStack{
                                         allow_extra_tills := RowPrimaryBtn{text: "Allow extra tills"}
@@ -7068,8 +7105,7 @@ script_mod! {
                     }
 
                     // Standard snackbar: Overlay faces by kind (info/ok/warn/error).
-                    // Labels stay selectable:false — default WrapLabel select-drag steals
-                    // Android page swipe and can leave scroll blocked (DEV.md 6e).
+                    // Snack is a tap/dismiss surface — keep selectable:false (DESIGN exception).
                     app_snackbar := View{
                         visible: false
                         width: Fill height: Fit

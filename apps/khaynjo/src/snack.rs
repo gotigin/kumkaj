@@ -169,7 +169,7 @@ mod tests {
         assert_eq!(classify("Read-only on this extra till"), SnackKind::Warn);
         assert_eq!(
             classify(
-                "No printer for that kitchen place — assign one in Settings → Printers → Places"
+                "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
             ),
             SnackKind::Warn
         );

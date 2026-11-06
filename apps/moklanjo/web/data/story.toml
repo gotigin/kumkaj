@@ -1,0 +1,10 @@
+# Seed — full parcel journey chapters land in Phase 2.
+[[chapter]]
+id = "walkin"
+headline = "Book a parcel before the next customer reaches the counter."
+progress = 0.0
+
+[[chapter]]
+id = "offline"
+headline = "No internet needed. Extra counters join over your own Wi‑Fi."
+progress = 0.9

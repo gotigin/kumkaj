@@ -1,0 +1,10 @@
+# Seed — full service chapters land in Phase 3.
+[[chapter]]
+id = "lunch-rush"
+headline = "Every table, its time and its bill — at a glance."
+progress = 0.0
+
+[[chapter]]
+id = "offline"
+headline = "No internet needed. Your tablets and kitchen screens work on your own Wi‑Fi."
+progress = 0.9

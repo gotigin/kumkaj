@@ -399,6 +399,10 @@ fn looks_like_money_value(v: &str) -> bool {
     {
         return false;
     }
+    // One Latin letter is a table code (`D1`), not a currency (`₹`, `CHF`, `Rs.`).
+    if prefix.chars().count() == 1 && prefix.chars().all(|c| c.is_ascii_alphabetic()) {
+        return false;
+    }
     number
         .chars()
         .all(|c| c.is_ascii_digit() || c == ',' || c == '.' || c == '\'' || c == ' ')

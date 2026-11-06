@@ -4724,32 +4724,25 @@ impl Store {
             .map(|f| f.format_now())
             .unwrap_or_else(|_| chrono::Local::now().format("%d/%m/%Y %H:%M").to_string());
         let cfg = crate::print_share::printers();
-        let mut targets = cfg.targets_for(key);
-        if targets.is_empty() {
-            // Same fallback as the Settings test button on host.
-            if let Some(p) = cfg.printers.first() {
-                targets.push(crate::print_share::parse_target(&p.target));
-            }
-        }
-        if targets.is_empty() {
+        if cfg.destinations_for(key).is_empty() {
             return Err("No printer assigned — set printers on the shop device".into());
         }
-        let desc = targets
-            .first()
-            .map(crate::print_share::describe)
-            .unwrap_or_else(|| "printer".into());
-        let place = match key {
-            crate::print_share::RouteKey::Receipt => "Receipt",
-            crate::print_share::RouteKey::Label => "AWB label",
+        let page = match key {
+            crate::print_share::RouteKey::Label => {
+                crate::labels::AwbLabel::sample(&shop).to_plain_text()
+            }
+            crate::print_share::RouteKey::Receipt => format!(
+                "{shop}\nBOOKING RECEIPT\nAWB: SAMPLE-1001\nFrom: Walk-in\nTo: Sample consignee\nPune\n1.5 kg · 1 pc · Surface\n--------------------------------\nFreight 120.00\nTotal 120.00\n{when}\n",
+                shop = if shop.trim().is_empty() { "Moklanjo" } else { shop.trim() },
+            ),
         };
-        let page = format!(
-            "{app} - test page\n{shop}\n{place}\n{desc}\n{when}\n\nIf you can read this, printing works here.\n",
-            app = APP_LABEL,
-            shop = shop.trim(),
-        );
         let dir = self.path.parent();
-        match crate::print_share::print_text(kind, &page, dir) {
-            Ok(_) => Ok("Test page sent".into()),
+        match crate::print_share::print_route(kind, key, &page, dir) {
+            Ok(share) if share.opened => Ok(match key {
+                crate::print_share::RouteKey::Label => "Sample label sent".into(),
+                crate::print_share::RouteKey::Receipt => "Sample receipt sent".into(),
+            }),
+            Ok(_) => Err("No printer assigned — set printers on the shop device".into()),
             Err(e) => Err(e),
         }
     }
@@ -8276,18 +8269,43 @@ impl Store {
         pin: &str,
         actor: &StaffMember,
     ) -> Result<String, String> {
+        let login = self.unique_login_from_name(name)?;
         self.add_staff_with_features(
             &StaffHire {
                 name,
                 role,
                 role_title,
                 pin,
-                login_id: "",
+                login_id: &login,
                 password: "",
                 features: StaffFeatures::for_role(role),
             },
             actor,
         )
+    }
+
+    fn unique_login_from_name(&self, name: &str) -> Result<String, String> {
+        let base: String = name
+            .trim()
+            .chars()
+            .filter(|c| c.is_ascii_alphanumeric())
+            .flat_map(|c| c.to_lowercase())
+            .collect();
+        let base = if base.is_empty() {
+            "staff".to_string()
+        } else {
+            base
+        };
+        if self.assert_login_id_free(&base, None).is_ok() {
+            return Ok(base);
+        }
+        for n in 2..10_000 {
+            let cand = format!("{base}{n}");
+            if self.assert_login_id_free(&cand, None).is_ok() {
+                return Ok(cand);
+            }
+        }
+        Err("Could not allocate a free username".into())
     }
 
     pub fn add_staff_with_features(
@@ -8325,8 +8343,17 @@ impl Store {
         } else {
             hash_pin(hire.password.trim())?
         };
-        // Usernames are stored lowercase; uniqueness is case-insensitive.
+        // Username required + unique (case-insensitive). Display name may repeat.
         let login_id = hire.login_id.trim().to_ascii_lowercase();
+        if login_id.is_empty() {
+            return Err("Username required".into());
+        }
+        if !login_id
+            .chars()
+            .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_' || c == '.' || c == '-')
+        {
+            return Err("Username: letters, digits, . _ - only".into());
+        }
         self.assert_login_id_free(&login_id, None)?;
         let id = new_id();
         self.conn
@@ -8354,7 +8381,8 @@ impl Store {
     }
 
     /// Username (`login_id`) is the unique human handle. Display `name` may
-    /// repeat. Empty username is allowed (PIN-only). Case-insensitive.
+    /// repeat. Empty skips the check (callers that require a username must
+    /// reject empty first). Case-insensitive.
     pub fn assert_login_id_free(
         &self,
         login_id: &str,
@@ -13333,7 +13361,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Lead",
                     pin: "3333",
-                    login_id: "",
+                    login_id: "meera",
                     password: "",
                     features: mgr_features.clone(),
                 },
@@ -13347,7 +13375,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Cashier",
                     pin: "4444",
-                    login_id: "",
+                    login_id: "ravi",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Cashier),
                 },
@@ -13388,7 +13416,7 @@ mod tests {
                     role: Store::hire_role_from(&owner),
                     role_title: "Manager",
                     pin: "5555",
-                    login_id: "",
+                    login_id: "copy",
                     password: "",
                     features: owner.effective_features(),
                 },
@@ -13403,7 +13431,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Manager",
                     pin: "5555",
-                    login_id: "",
+                    login_id: "copy",
                     password: "",
                     features: mgr_features.clone(),
                 },
@@ -13429,7 +13457,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Till",
                     pin: "6666",
-                    login_id: "",
+                    login_id: "till",
                     password: "",
                     features: cash_feats,
                 },
@@ -13449,7 +13477,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Manager",
                     pin: "7777",
-                    login_id: "",
+                    login_id: "bossy",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Manager),
                 },
@@ -13478,7 +13506,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Lead",
                     pin: "3333",
-                    login_id: "",
+                    login_id: "meera",
                     password: "",
                     features: mgr_features.clone(),
                 },
@@ -13495,7 +13523,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Peer lead",
                     pin: "3434",
-                    login_id: "",
+                    login_id: "peer",
                     password: "",
                     features: peer_feats,
                 },
@@ -13509,7 +13537,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Cashier",
                     pin: "4444",
-                    login_id: "",
+                    login_id: "ravi",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Cashier),
                 },
@@ -13525,7 +13553,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Till",
                     pin: "6666",
-                    login_id: "",
+                    login_id: "till",
                     password: "",
                     features: till_feats,
                 },
@@ -13609,7 +13637,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Peer ok",
                     pin: "3535",
-                    login_id: "",
+                    login_id: "peerok",
                     password: "",
                     features: peer_ok_feats,
                 },

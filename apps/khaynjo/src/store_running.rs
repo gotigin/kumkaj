@@ -569,7 +569,7 @@ impl Store {
                 if !filter.is_empty() && !filter.iter().any(|want| *want == line_id) {
                     continue;
                 }
-                let qty = crate::domain::format_qty_display(
+                let qty = crate::domain::format_kot_qty(
                     qty_milli,
                     crate::domain::milli_to_whole_qty(qty_milli),
                     &unit_label,
@@ -1026,7 +1026,7 @@ impl Store {
             let summary = items
                 .iter()
                 .map(|l| {
-                    let qty = crate::domain::format_qty_display(l.qty_milli, 0, &l.unit_label);
+                    let qty = crate::domain::format_kot_qty(l.qty_milli, 0, &l.unit_label);
                     let allergens = self
                         .product_allergens(&l.product_id)
                         .unwrap_or_default();

@@ -1,16 +1,14 @@
 //! Printing (local free POS — no cloud), the same on every device that can
 //! hold the books or take orders.
 //!
-//! Owner nouns (Settings):
-//! - **Printer** — one OS device in the pool (destination only).
-//! - **Profile** — slip look ([`PrintFormat`] + KOT layout); previewable.
-//! - **Output** — under a place: printer + profile (`printer_id@profile_id`).
+//! Owner nouns (Settings → **Printers**):
+//! - **Real printer** — one OS device from Find (destination only).
+//! - **Config** — layout (portrait/landscape, metrics) + send path (OS
+//!   document, ESC/POS, …). Not kitchen KOT content. Never bound to a device.
+//! - **Virtual printer** — real printer + config.
 //!
-//! Each device keeps `printers.json` beside the books. A place with one Output
-//! prints that pair; two or more use [`RoutePrintMode`] (First / All). Empty
-//! route = that feature does not print. KOT routes are per kitchen station
-//! (`""` = unassigned items only). Station groups only copy Outputs onto
-//! member stations (setup shortcut).
+//! See `docs/PRINTER.md`. Place attach is separate. Legacy route slots still
+//! drive runtime until attach UI lands.
 //!
 //! A printer `target` is a system name, `host:9100`, `bt:MAC`, `usb:VID:PID`,
 //! or `android-print:`. Blank = this computer's usual OS printer — never
@@ -76,6 +74,13 @@ pub const FORMAT_STANDARD_LANDSCAPE: &str = "standard_landscape";
 pub const FORMAT_KOT: &str = "kot";
 
 /// Document (office) Standard formats — not thermal KOT.
+pub fn is_builtin_format(id: &str) -> bool {
+    matches!(
+        id,
+        FORMAT_KOT | FORMAT_STANDARD | FORMAT_STANDARD_PORTRAIT | FORMAT_STANDARD_LANDSCAPE
+    )
+}
+
 pub fn is_standard_document(id: &str) -> bool {
     matches!(
         id,
@@ -109,6 +114,162 @@ pub struct StationGroup {
     pub station_ids: Vec<String>,
 }
 
+/// Known delivery method ids (open set — add more without a named Config catalog).
+pub const DELIVERY_SYSTEM_SPOOLER: &str = "system_spooler";
+pub const DELIVERY_RAW_DEVICE: &str = "raw_device";
+pub const DELIVERY_ESCPOS: &str = "escpos";
+
+/// Inline values on a virtual printer (layout + delivery + content width).
+/// Not a separate Config — see `docs/PRINTER.md`.
+#[derive(Clone, Debug, PartialEq)]
+pub struct VirtualPrinterValues {
+    pub landscape: bool,
+    pub em: f32,
+    pub line: u32,
+    pub side: f32,
+    /// Delivery method id — see `DELIVERY_*` (extensible string, not a closed enum).
+    pub delivery: String,
+    /// Content width in millimetres (stored as `paper_width_mm`).
+    /// How wide the printed slip or bill is. Kitchen tickets and standard
+    /// bills through this virtual printer both use it.
+    pub paper_width_mm: u32,
+}
+
+impl Default for VirtualPrinterValues {
+    fn default() -> Self {
+        Self {
+            landscape: false,
+            em: STD_EM_NORMAL,
+            line: 40,
+            side: STD_SIDE,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
+            paper_width_mm: 80,
+        }
+    }
+}
+
+impl VirtualPrinterValues {
+    pub fn document_flag(&self) -> bool {
+        self.delivery.trim().is_empty() || self.delivery == DELIVERY_SYSTEM_SPOOLER
+    }
+
+    pub fn normalize(mut self) -> Self {
+        let d = self.delivery.trim();
+        self.delivery = if d.is_empty() {
+            DELIVERY_SYSTEM_SPOOLER.into()
+        } else {
+            d.to_string()
+        };
+        // Free sizes — clamp only. Do not snap to Small/Normal/Large buckets.
+        self.em = self.em.clamp(12.0, 48.0);
+        self.paper_width_mm = self.paper_width_mm.clamp(40, 210);
+        self.line = wrap_cols_for_paper_mm(self.paper_width_mm);
+        self.side = self.side.clamp(0.0, 48.0);
+        self
+    }
+}
+
+/// Character columns for a content width in millimetres (owner mm on the VP).
+pub fn wrap_cols_for_paper_mm(mm: u32) -> u32 {
+    let mm = mm.clamp(40, 210);
+    // ~0.55 cols/mm at Font A–ish density; 58→32, 80→44-ish.
+    let cols = ((mm as f32) * 0.55).round() as u32;
+    cols.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX)
+}
+
+/// Dots across the content for a millimetre content width.
+/// 58 mm is 384 dots; 80 mm is 576. Wider content scales from 80 mm.
+pub fn paper_width_dots(mm: u32) -> usize {
+    let mm = mm.clamp(40, 210);
+    let dots = if mm <= 58 {
+        384
+    } else {
+        (mm as usize * 576) / 80
+    };
+    dots.max(8) & !7
+}
+
+/// Page dots for a wrap-column count produced by [`wrap_cols_for_paper_mm`].
+pub fn paper_dots_for_wrap_cols(cols: u32) -> usize {
+    let cols = cols.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
+    let mm = ((cols as f32) / 0.55).round() as u32;
+    paper_width_dots(mm.clamp(40, 210))
+}
+
+/// Wrap columns for the first printer on this route, or 80 mm when none is set.
+pub fn route_wrap_cols(key: RouteKey<'_>) -> u32 {
+    printers()
+        .destinations_for(key)
+        .first()
+        .map(|d| d.format.line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX))
+        .unwrap_or_else(|| wrap_cols_for_paper_mm(80))
+}
+
+/// Widest kitchen-route paper, so the KOT preview is not stuck at 58 mm.
+pub fn kot_preview_wrap_cols() -> u32 {
+    let cfg = printers();
+    let mut best = 0u32;
+    let mut consider = |sid: &str| {
+        if let Some(d) = cfg
+            .destinations_for(RouteKey::Kot { station_id: sid })
+            .first()
+        {
+            best = best.max(d.format.line);
+        }
+    };
+    consider("");
+    let ids: Vec<String> = cfg.routes.kot.keys().cloned().collect();
+    for id in ids {
+        consider(&id);
+    }
+    if best == 0 {
+        wrap_cols_for_paper_mm(80)
+    } else {
+        best.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX)
+    }
+}
+
+/// Virtual printer: real printer + **inline** configuration values.
+/// There is no separate named Config object — see `docs/PRINTER.md`.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct VirtualPrinter {
+    pub id: String,
+    /// Owner-facing name (defaults from the real printer label).
+    pub name: String,
+    /// [`NamedPrinter::id`].
+    pub printer_id: String,
+    /// Layout: landscape when true, else portrait.
+    #[serde(default)]
+    pub landscape: bool,
+    #[serde(default = "default_em")]
+    pub em: f32,
+    #[serde(default = "default_line")]
+    pub line: u32,
+    #[serde(default = "default_side")]
+    pub side: f32,
+    /// Delivery method id (`DELIVERY_*` or future ids).
+    #[serde(default = "default_delivery")]
+    pub delivery: String,
+    /// Content width in mm (owner-set on this VP). Stored key stays
+    /// `paper_width_mm` so existing printer files keep loading.
+    #[serde(default = "default_paper_width_mm")]
+    pub paper_width_mm: u32,
+    /// Derived for the current worker from [`Self::delivery`].
+    #[serde(default = "default_true")]
+    pub document: bool,
+    /// Legacy only (old files that pointed at a format id). Prefer inline fields.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub config_id: String,
+}
+
+fn default_paper_width_mm() -> u32 {
+    80
+}
+
+fn default_delivery() -> String {
+    DELIVERY_SYSTEM_SPOOLER.into()
+}
+
 /// Route slot / Output encode: `printer_id` or `printer_id@profile_id`.
 fn encode_route_slot(printer_id: &str, format_id: &str) -> String {
     let p = printer_id.trim();
@@ -133,18 +294,104 @@ fn decode_route_slot(slot: &str) -> (String, String) {
     (s.to_string(), String::new())
 }
 
-/// One slip format: how the ticket is drawn / sent.
+/// Provisional worker delivery flags used by today’s print path.
+/// **Not** the product model — Settings must not present these as the only
+/// choices. See `docs/PRINTER.md`: delivery knobs on a virtual printer are an
+/// open set as we add capabilities.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum PrintSendPath {
+    /// System spooler page path (`lp` / Out-Printer / PrintManager).
+    #[default]
+    OsDocument,
+    /// Raw ESC/POS when the current worker uses that path.
+    EscPos,
+}
+
+impl PrintSendPath {
+    pub fn from_document_flag(document: bool) -> Self {
+        if document {
+            Self::OsDocument
+        } else {
+            Self::EscPos
+        }
+    }
+
+    pub fn is_document(self) -> bool {
+        matches!(self, Self::OsDocument)
+    }
+
+    pub fn label_key(self) -> &'static str {
+        match self {
+            Self::OsDocument => "config_send_os",
+            Self::EscPos => "config_send_escpos",
+        }
+    }
+}
+
+impl VirtualPrinter {
+    pub fn values(&self) -> VirtualPrinterValues {
+        let paper = if self.paper_width_mm == 0 {
+            // Legacy rows: infer mm from stored wrap columns.
+            if self.line <= 34 {
+                58
+            } else {
+                80
+            }
+        } else {
+            self.paper_width_mm
+        };
+        VirtualPrinterValues {
+            landscape: self.landscape,
+            em: self.em,
+            line: self.line,
+            side: self.side,
+            delivery: if self.delivery.trim().is_empty() {
+                if self.document {
+                    DELIVERY_SYSTEM_SPOOLER.into()
+                } else {
+                    DELIVERY_ESCPOS.into()
+                }
+            } else {
+                self.delivery.clone()
+            },
+            paper_width_mm: paper,
+        }
+        .normalize()
+    }
+
+    pub fn apply_values(&mut self, values: VirtualPrinterValues) {
+        let v = values.normalize();
+        self.landscape = v.landscape;
+        self.em = v.em;
+        self.line = v.line;
+        self.side = v.side;
+        self.delivery = v.delivery.clone();
+        self.paper_width_mm = v.paper_width_mm;
+        self.document = v.document_flag();
+    }
+
+    pub fn send_path(&self) -> PrintSendPath {
+        PrintSendPath::from_document_flag(self.values().document_flag())
+    }
+}
+
+/// One print config: layout + send path (not kitchen KOT content).
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PrintFormat {
     pub id: String,
     pub label: String,
-    /// When true, system / Android PrintManager use a document path; thermal
-    /// targets still get ESC/POS raster with these metrics.
+    /// When true → [`PrintSendPath::OsDocument`]; false → ESC/POS raw.
+    /// Kept for serde; prefer [`PrintFormat::send_path`].
     #[serde(default = "default_true")]
     pub document: bool,
-    /// Office document orientation (ignored for thermal KOT).
+    /// Page / slip orientation (layout — independent of send path).
     #[serde(default)]
     pub landscape: bool,
+    /// How this job is sent: `system_spooler`, `raw_device`, or `escpos`.
+    /// Empty follows [`Self::document`] (older files).
+    #[serde(default)]
+    pub delivery: String,
     #[serde(default = "default_em")]
     pub em: f32,
     #[serde(default = "default_line")]
@@ -159,15 +406,20 @@ fn default_true() -> bool { true }
 fn default_em() -> f32 { STD_EM_NORMAL }
 fn default_line() -> u32 { 40 }
 fn default_baseline() -> f32 { STD_EM_NORMAL + 2.0 }
-fn default_side() -> f32 { 12.0 }
+fn default_side() -> f32 { STD_SIDE }
 
 /// Bill / Standard document type-size presets (Settings chips).
-/// Applied to every Standard Portrait/Landscape format so orientation
-/// routes keep the same em. Defaults favour common OS printers (narrow
-/// trays / Canon-class inkjets) — wider side inset, ~40-char wrap.
+/// Product built-ins are **generic** (any OS queue). Narrow-tray shops
+/// (e.g. some inkjets) tune side/em on a Profile or via App Template —
+/// never assume one owner's Canon in product defaults. OS jobs still
+/// fit-to-page so PNGs are not printed ~16″ wide at 72 DPI.
 pub const STD_EM_SMALL: f32 = 18.0;
 pub const STD_EM_NORMAL: f32 = 20.0;
 pub const STD_EM_LARGE: f32 = 26.0;
+/// Generic side inset (dots on the 384-wide raster) for Standard formats.
+pub const STD_SIDE: f32 = 16.0;
+/// Wider inset used only by optional templates (e.g. Rajdhani) for tight trays.
+pub const STD_SIDE_NARROW_TRAY: f32 = 40.0;
 
 impl PrintFormat {
     /// Alias for [`standard_portrait`] (legacy API name).
@@ -175,41 +427,64 @@ impl PrintFormat {
         Self::standard_portrait()
     }
 
-    /// Non-deletable built-in. Portrait OS document — works on most queues.
+    pub fn send_path(&self) -> PrintSendPath {
+        PrintSendPath::from_document_flag(self.document)
+    }
+
+    pub fn set_send_path(&mut self, path: PrintSendPath) {
+        self.document = path.is_document();
+    }
+
+    /// Delivery id for this job. Bill and KOT each keep their own.
+    pub fn delivery_id(&self) -> &str {
+        if !self.delivery.trim().is_empty() {
+            return self.delivery.trim();
+        }
+        if self.document {
+            DELIVERY_SYSTEM_SPOOLER
+        } else {
+            DELIVERY_ESCPOS
+        }
+    }
+
+    /// Built-in: portrait layout + OS document send (works on most queues).
     pub fn standard_portrait() -> Self {
         Self {
             id: FORMAT_STANDARD_PORTRAIT.into(),
-            label: "Standard Portrait".into(),
+            label: "Portrait · OS document".into(),
             document: true,
             landscape: false,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
             em: STD_EM_NORMAL,
             line: 40,
             baseline: STD_EM_NORMAL + 2.0,
-            side: 12.0,
+            side: STD_SIDE,
         }
     }
 
-    /// Non-deletable built-in. Landscape OS document.
+    /// Built-in: landscape layout + OS document send.
     pub fn standard_landscape() -> Self {
         Self {
             id: FORMAT_STANDARD_LANDSCAPE.into(),
-            label: "Standard Landscape".into(),
+            label: "Landscape · OS document".into(),
             document: true,
             landscape: true,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
             em: STD_EM_NORMAL,
             line: 40,
             baseline: STD_EM_NORMAL + 2.0,
-            side: 12.0,
+            side: STD_SIDE,
         }
     }
 
-    /// Non-deletable built-in. Thermal kitchen slip metrics.
+    /// Built-in: portrait layout + ESC/POS send (id kept as `kot` for serde).
     pub fn kot() -> Self {
         Self {
             id: FORMAT_KOT.into(),
-            label: "KOT".into(),
+            label: "Portrait · ESC/POS".into(),
             document: false,
             landscape: false,
+            delivery: DELIVERY_ESCPOS.into(),
             em: 20.0,
             line: 32,
             baseline: 22.0,
@@ -223,19 +498,35 @@ impl PrintFormat {
             line: self.line as usize,
             baseline: self.baseline,
             side: self.side,
+            width_dots: paper_dots_for_wrap_cols(self.line),
         }
     }
 
-    /// Built-ins: Portrait, Landscape, KOT. Legacy `"standard"` → Portrait.
+    /// Built-ins: portrait/landscape OS document + ESC/POS. Legacy `"standard"` → portrait.
     pub fn ensure_builtins(list: &mut Vec<PrintFormat>) {
         for f in list.iter_mut() {
             if f.id == FORMAT_STANDARD {
                 f.id = FORMAT_STANDARD_PORTRAIT.into();
-                if f.label.trim().eq_ignore_ascii_case("standard") {
-                    f.label = "Standard Portrait".into();
-                }
                 f.document = true;
                 f.landscape = false;
+            }
+            // Refresh stock labels (old "KOT" / "Standard Portrait" names).
+            if is_builtin_format(&f.id) {
+                let stock = match f.id.as_str() {
+                    FORMAT_STANDARD_PORTRAIT | FORMAT_STANDARD => PrintFormat::standard_portrait(),
+                    FORMAT_STANDARD_LANDSCAPE => PrintFormat::standard_landscape(),
+                    FORMAT_KOT => PrintFormat::kot(),
+                    _ => continue,
+                };
+                let old = f.label.trim();
+                if old.eq_ignore_ascii_case("kot")
+                    || old.eq_ignore_ascii_case("standard")
+                    || old.eq_ignore_ascii_case("standard portrait")
+                    || old.eq_ignore_ascii_case("standard landscape")
+                    || old.is_empty()
+                {
+                    f.label = stock.label;
+                }
             }
         }
         if !list.iter().any(|f| f.id == FORMAT_STANDARD_PORTRAIT) {
@@ -257,6 +548,319 @@ impl PrintFormat {
                 .unwrap_or(list.len());
             list.insert(idx, PrintFormat::kot());
         }
+        for f in list.iter_mut() {
+            if is_standard_document(&f.id) && f.side <= 12.0 {
+                f.side = STD_SIDE;
+            }
+        }
+    }
+}
+
+/// Font weight for one KOT slip field (Bill & KOT format).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum KotFontWeight {
+    Light,
+    #[default]
+    Regular,
+    Bold,
+}
+
+impl KotFontWeight {
+    pub const ALL: [KotFontWeight; 3] = [
+        KotFontWeight::Light,
+        KotFontWeight::Regular,
+        KotFontWeight::Bold,
+    ];
+
+    pub fn locale_key(self) -> &'static str {
+        match self {
+            KotFontWeight::Light => "kot_weight_light",
+            KotFontWeight::Regular => "kot_weight_regular",
+            KotFontWeight::Bold => "kot_weight_bold",
+        }
+    }
+}
+
+/// Where a field sits on the line. Start and end follow the writing
+/// direction (left/right in English, the other way in Arabic or Urdu).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum KotAlign {
+    #[default]
+    Start,
+    Center,
+    End,
+}
+
+impl KotAlign {
+    pub const ALL: [KotAlign; 3] = [KotAlign::Start, KotAlign::Center, KotAlign::End];
+
+    pub fn locale_key(self) -> &'static str {
+        match self {
+            KotAlign::Start => "kot_align_start",
+            KotAlign::Center => "kot_align_center",
+            KotAlign::End => "kot_align_end",
+        }
+    }
+
+    /// Letter stored on the print line. `rtl` swaps start and end so the
+    /// raster, which places dots from the left, still honours the direction.
+    fn mark(self, rtl: bool) -> char {
+        match self {
+            KotAlign::Center => 'C',
+            KotAlign::Start if rtl => 'E',
+            KotAlign::End if rtl => 'S',
+            KotAlign::Start => 'S',
+            KotAlign::End => 'E',
+        }
+    }
+
+    fn from_mark(c: char) -> Self {
+        match c {
+            'C' => KotAlign::Center,
+            'E' => KotAlign::End,
+            _ => KotAlign::Start,
+        }
+    }
+}
+
+/// Type size, weight, and alignment for one field on one KOT kind.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct KotFieldStyle {
+    /// Thermal / raster em (free within [`KOT_EM_MIN`]..=[`KOT_EM_MAX`]).
+    #[serde(default = "default_kot_em")]
+    pub size_em: u32,
+    #[serde(default)]
+    pub weight: KotFontWeight,
+    #[serde(default)]
+    pub align: KotAlign,
+}
+
+impl Default for KotFieldStyle {
+    fn default() -> Self {
+        Self {
+            size_em: KOT_EM_NORMAL,
+            weight: KotFontWeight::Regular,
+            align: KotAlign::Start,
+        }
+    }
+}
+
+impl KotFieldStyle {
+    pub fn light(size_em: u32) -> Self {
+        Self {
+            size_em,
+            weight: KotFontWeight::Light,
+            align: KotAlign::Start,
+        }
+    }
+    pub fn regular(size_em: u32) -> Self {
+        Self {
+            size_em,
+            weight: KotFontWeight::Regular,
+            align: KotAlign::Start,
+        }
+    }
+    pub fn bold(size_em: u32) -> Self {
+        Self {
+            size_em,
+            weight: KotFontWeight::Bold,
+            align: KotAlign::Start,
+        }
+    }
+}
+
+/// Which slip family is being printed / edited.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum KotSlipKind {
+    #[default]
+    Original,
+    Duplicate,
+    Modified,
+    Cancelled,
+}
+
+impl KotSlipKind {
+    pub const ALL: [KotSlipKind; 4] = [
+        KotSlipKind::Original,
+        KotSlipKind::Duplicate,
+        KotSlipKind::Modified,
+        KotSlipKind::Cancelled,
+    ];
+
+    pub fn locale_key(self) -> &'static str {
+        match self {
+            KotSlipKind::Original => "kot_kind_original",
+            KotSlipKind::Duplicate => "kot_kind_duplicate",
+            KotSlipKind::Modified => "kot_kind_modified",
+            KotSlipKind::Cancelled => "kot_kind_cancelled",
+        }
+    }
+}
+
+/// Field id for typography editing (matches show toggles / order).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum KotStyleField {
+    Title,
+    Shop,
+    Time,
+    Waiter,
+    Station,
+    Table,
+    KotNo,
+    Area,
+    ItemQty,
+}
+
+impl KotStyleField {
+    pub const ALL: [KotStyleField; 9] = [
+        KotStyleField::Title,
+        KotStyleField::Shop,
+        KotStyleField::Time,
+        KotStyleField::Waiter,
+        KotStyleField::Station,
+        KotStyleField::Table,
+        KotStyleField::KotNo,
+        KotStyleField::Area,
+        KotStyleField::ItemQty,
+    ];
+
+    pub fn locale_key(self) -> &'static str {
+        match self {
+            KotStyleField::Title => "kot_style_title",
+            KotStyleField::Shop => "kot_show_shop",
+            KotStyleField::Time => "kot_show_time",
+            KotStyleField::Waiter => "kot_show_waiter",
+            KotStyleField::Station => "kot_show_station",
+            KotStyleField::Table => "kot_show_table",
+            KotStyleField::KotNo => "kot_show_kot_no",
+            KotStyleField::Area => "kot_show_area",
+            KotStyleField::ItemQty => "kot_style_item_qty",
+        }
+    }
+}
+
+/// Per-field typography for one KOT kind (original / duplicate / modified / cancelled).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct KotKindStyles {
+    #[serde(default)]
+    pub title: KotFieldStyle,
+    #[serde(default)]
+    pub shop: KotFieldStyle,
+    #[serde(default)]
+    pub time: KotFieldStyle,
+    #[serde(default)]
+    pub waiter: KotFieldStyle,
+    #[serde(default)]
+    pub station: KotFieldStyle,
+    #[serde(default)]
+    pub table: KotFieldStyle,
+    #[serde(default)]
+    pub kot_no: KotFieldStyle,
+    #[serde(default)]
+    pub area: KotFieldStyle,
+    #[serde(default)]
+    pub item_qty: KotFieldStyle,
+}
+
+impl Default for KotKindStyles {
+    /// Matches common kitchen slips: area + table heavier; body regular.
+    fn default() -> Self {
+        Self {
+            title: KotFieldStyle::bold(KOT_EM_NORMAL),
+            shop: KotFieldStyle::regular(KOT_EM_NORMAL),
+            time: KotFieldStyle::regular(KOT_EM_SMALL),
+            waiter: KotFieldStyle::regular(KOT_EM_SMALL),
+            station: KotFieldStyle::regular(KOT_EM_SMALL),
+            table: KotFieldStyle::bold(KOT_EM_LARGE),
+            kot_no: KotFieldStyle::regular(KOT_EM_NORMAL),
+            area: KotFieldStyle::bold(KOT_EM_NORMAL),
+            item_qty: KotFieldStyle::regular(KOT_EM_NORMAL),
+        }
+    }
+}
+
+impl KotKindStyles {
+    pub fn get(&self, field: KotStyleField) -> &KotFieldStyle {
+        match field {
+            KotStyleField::Title => &self.title,
+            KotStyleField::Shop => &self.shop,
+            KotStyleField::Time => &self.time,
+            KotStyleField::Waiter => &self.waiter,
+            KotStyleField::Station => &self.station,
+            KotStyleField::Table => &self.table,
+            KotStyleField::KotNo => &self.kot_no,
+            KotStyleField::Area => &self.area,
+            KotStyleField::ItemQty => &self.item_qty,
+        }
+    }
+
+    pub fn get_mut(&mut self, field: KotStyleField) -> &mut KotFieldStyle {
+        match field {
+            KotStyleField::Title => &mut self.title,
+            KotStyleField::Shop => &mut self.shop,
+            KotStyleField::Time => &mut self.time,
+            KotStyleField::Waiter => &mut self.waiter,
+            KotStyleField::Station => &mut self.station,
+            KotStyleField::Table => &mut self.table,
+            KotStyleField::KotNo => &mut self.kot_no,
+            KotStyleField::Area => &mut self.area,
+            KotStyleField::ItemQty => &mut self.item_qty,
+        }
+    }
+}
+
+/// Styles for every KOT kind.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct KotKindStyleSet {
+    #[serde(default)]
+    pub original: KotKindStyles,
+    #[serde(default)]
+    pub duplicate: KotKindStyles,
+    #[serde(default)]
+    pub modified: KotKindStyles,
+    #[serde(default)]
+    pub cancelled: KotKindStyles,
+}
+
+impl Default for KotKindStyleSet {
+    fn default() -> Self {
+        let mut duplicate = KotKindStyles::default();
+        duplicate.title = KotFieldStyle::bold(KOT_EM_LARGE);
+        let mut modified = KotKindStyles::default();
+        modified.title = KotFieldStyle::bold(KOT_EM_LARGE);
+        modified.item_qty = KotFieldStyle::bold(KOT_EM_LARGE);
+        let mut cancelled = KotKindStyles::default();
+        cancelled.title = KotFieldStyle::bold(KOT_EM_LARGE);
+        cancelled.item_qty = KotFieldStyle::light(KOT_EM_NORMAL);
+        Self {
+            original: KotKindStyles::default(),
+            duplicate,
+            modified,
+            cancelled,
+        }
+    }
+}
+
+impl KotKindStyleSet {
+    pub fn get(&self, kind: KotSlipKind) -> &KotKindStyles {
+        match kind {
+            KotSlipKind::Original => &self.original,
+            KotSlipKind::Duplicate => &self.duplicate,
+            KotSlipKind::Modified => &self.modified,
+            KotSlipKind::Cancelled => &self.cancelled,
+        }
+    }
+
+    pub fn get_mut(&mut self, kind: KotSlipKind) -> &mut KotKindStyles {
+        match kind {
+            KotSlipKind::Original => &mut self.original,
+            KotSlipKind::Duplicate => &mut self.duplicate,
+            KotSlipKind::Modified => &mut self.modified,
+            KotSlipKind::Cancelled => &mut self.cancelled,
+        }
     }
 }
 
@@ -265,16 +869,17 @@ impl PrintFormat {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KotSlipFormat {
     /// Print the big title line (`title` or default). Off for compact slips.
-    #[serde(default = "default_true")]
+    #[serde(default)]
     pub show_title: bool,
     /// Print the shop / place name under the title.
-    #[serde(default = "default_true")]
+    #[serde(default)]
     pub show_shop_name: bool,
     #[serde(default = "default_true")]
     pub show_time: bool,
-    #[serde(default = "default_true")]
+    /// Off in the compact default (kot.jpeg / Rajdhani sample).
+    #[serde(default)]
     pub show_waiter: bool,
-    #[serde(default = "default_true")]
+    #[serde(default)]
     pub show_station: bool,
     /// Print table line when the ticket has a table.
     #[serde(default = "default_true")]
@@ -283,14 +888,19 @@ pub struct KotSlipFormat {
     #[serde(default = "default_true")]
     pub show_kot_no: bool,
     /// Floor area / service type (e.g. Dine In).
-    #[serde(default)]
+    #[serde(default = "default_true")]
     pub show_area: bool,
     /// `Item` / `Qty.` column headers above the dish list.
-    #[serde(default)]
+    #[serde(default = "default_true")]
     pub show_item_qty_header: bool,
     /// Soft-wrap width in characters. Clamped to [`KOT_CHARS_MIN`]..=[`KOT_CHARS_MAX`].
+    /// Follows [`Self::content_width_mm`] when that is set.
     #[serde(default = "default_kot_chars")]
     pub chars_per_line: u32,
+    /// Content width in millimetres for the bill and the kitchen ticket.
+    /// `0` means an older slip that only stored [`Self::chars_per_line`].
+    #[serde(default)]
+    pub content_width_mm: u32,
     /// Thermal type size (raster). Clamped to [`KOT_EM_MIN`]..=[`KOT_EM_MAX`].
     #[serde(default = "default_kot_em")]
     pub em: u32,
@@ -311,10 +921,14 @@ pub struct KotSlipFormat {
     /// Empty → built-in order.
     #[serde(default)]
     pub field_order: Vec<String>,
+    /// Per KOT kind (original / duplicate / modified / cancelled) field typography.
+    #[serde(default)]
+    pub kind_styles: KotKindStyleSet,
 }
 
 pub const KOT_CHARS_MIN: u32 = 16;
-pub const KOT_CHARS_MAX: u32 = 80;
+/// Wide enough for a 210 mm page (~0.55 cols/mm). 58 mm is 32, 80 mm is 44.
+pub const KOT_CHARS_MAX: u32 = 128;
 pub const KOT_CHARS_58MM: u32 = 32;
 pub const KOT_CHARS_80MM: u32 = 42;
 pub const KOT_EM_MIN: u32 = 12;
@@ -360,6 +974,7 @@ impl Default for KotSlipFormat {
             show_area: true,
             show_item_qty_header: true,
             chars_per_line: KOT_CHARS_58MM,
+            content_width_mm: 0,
             em: KOT_EM_SMALL,
             side: 4.0,
             copies: KOT_COPIES_MIN,
@@ -371,6 +986,7 @@ impl Default for KotSlipFormat {
                 "area".into(),
                 "table".into(),
             ],
+            kind_styles: KotKindStyleSet::default(),
         }
     }
 }
@@ -391,7 +1007,23 @@ impl KotSlipFormat {
             .clamped()
     }
 
+    /// Millimetres to show for this slip. Older slips with no stored width
+    /// read as 58 mm when the column count is the narrow default, otherwise 80 mm.
+    pub fn shown_content_width_mm(&self) -> u32 {
+        if self.content_width_mm > 0 {
+            self.content_width_mm.clamp(40, 210)
+        } else if self.chars_per_line <= 34 {
+            58
+        } else {
+            80
+        }
+    }
+
     pub fn clamped(mut self) -> Self {
+        if self.content_width_mm > 0 {
+            self.content_width_mm = self.content_width_mm.clamp(40, 210);
+            self.chars_per_line = wrap_cols_for_paper_mm(self.content_width_mm);
+        }
         self.chars_per_line = self.chars_per_line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
         self.em = self.em.clamp(KOT_EM_MIN, KOT_EM_MAX);
         self.copies = self.copies.clamp(KOT_COPIES_MIN, KOT_COPIES_MAX);
@@ -399,6 +1031,23 @@ impl KotSlipFormat {
         // Strip currency marks — a KOT must never carry prices.
         self.title = scrub_kot_text(&self.title, KOT_TITLE_MAX);
         self.footer = scrub_kot_text(&self.footer, KOT_FOOTER_MAX);
+        for kind in KotSlipKind::ALL {
+            let styles = self.kind_styles.get_mut(kind);
+            for field in KotStyleField::ALL {
+                let s = styles.get_mut(field);
+                s.size_em = s.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+            }
+        }
+        // Older saves stored the same stock styles on every kind, so Duplicate /
+        // Modified / Cancelled looked like dead tabs. Only lift that untouched copy.
+        let stock = KotKindStyles::default();
+        if self.kind_styles.original == stock
+            && self.kind_styles.duplicate == stock
+            && self.kind_styles.modified == stock
+            && self.kind_styles.cancelled == stock
+        {
+            self.kind_styles = KotKindStyleSet::default();
+        }
         self
     }
 
@@ -417,12 +1066,59 @@ impl KotSlipFormat {
 
     /// Apply type size / wrap width onto the built-in KOT print format.
     pub fn apply_to_print_format(&self, format: &mut PrintFormat) {
+        self.apply_to_print_format_for_kind(format, KotSlipKind::Original);
+    }
+
+    /// Like [`Self::apply_to_print_format`], using the body (item/qty) size for `kind`.
+    pub fn apply_to_print_format_for_kind(&self, format: &mut PrintFormat, kind: KotSlipKind) {
         let c = self.clone().clamped();
-        format.em = c.em as f32;
+        let body_em = c
+            .kind_styles
+            .get(kind)
+            .item_qty
+            .size_em
+            .clamp(KOT_EM_MIN, KOT_EM_MAX);
+        // Keep legacy `em` in sync for older readers; prefer kind body size.
+        format.em = body_em as f32;
         format.line = c.chars_per_line;
-        format.baseline = (c.em as f32) + 2.0;
+        format.baseline = (body_em as f32) + 2.0;
         format.side = c.side;
-        format.document = false;
+    }
+
+    /// Style for one field on one kind (clamped size).
+    pub fn field_style(&self, kind: KotSlipKind, field: KotStyleField) -> KotFieldStyle {
+        let mut s = self.kind_styles.get(kind).get(field).clone();
+        s.size_em = s.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        s
+    }
+
+    /// Whether this field prints on the slip (show/hide).
+    pub fn field_shown(&self, field: KotStyleField) -> bool {
+        match field {
+            KotStyleField::Title => self.show_title,
+            KotStyleField::Shop => self.show_shop_name,
+            KotStyleField::Time => self.show_time,
+            KotStyleField::Waiter => self.show_waiter,
+            KotStyleField::Station => self.show_station,
+            KotStyleField::Table => self.show_table,
+            KotStyleField::KotNo => self.show_kot_no,
+            KotStyleField::Area => self.show_area,
+            KotStyleField::ItemQty => self.show_item_qty_header,
+        }
+    }
+
+    pub fn set_field_shown(&mut self, field: KotStyleField, shown: bool) {
+        match field {
+            KotStyleField::Title => self.show_title = shown,
+            KotStyleField::Shop => self.show_shop_name = shown,
+            KotStyleField::Time => self.show_time = shown,
+            KotStyleField::Waiter => self.show_waiter = shown,
+            KotStyleField::Station => self.show_station = shown,
+            KotStyleField::Table => self.show_table = shown,
+            KotStyleField::KotNo => self.show_kot_no = shown,
+            KotStyleField::Area => self.show_area = shown,
+            KotStyleField::ItemQty => self.show_item_qty_header = shown,
+        }
     }
 
     /// Soft-wrap one line to `chars_per_line` (break on spaces when possible).
@@ -453,9 +1149,15 @@ impl KotSlipFormat {
 
     /// Sample kitchen slip for Settings preview (never prices).
     pub fn render_sample(&self, shop_name: &str) -> String {
+        self.render_sample_kind(shop_name, KotSlipKind::Original)
+    }
+
+    /// Preview for a chosen KOT kind (Settings kind chips).
+    pub fn render_sample_kind(&self, shop_name: &str, kind: KotSlipKind) -> String {
         self.render(KotSlipContent {
-            cancel: false,
-            reprint: false,
+            kind,
+            cancel: kind == KotSlipKind::Cancelled,
+            reprint: kind == KotSlipKind::Duplicate,
             shop_name,
             kot_no: 12,
             kot_nos_label: None,
@@ -474,118 +1176,194 @@ impl KotSlipFormat {
     }
 
     pub fn render(&self, c: KotSlipContent<'_>) -> String {
+        self.render_dir(c, false)
+    }
+
+    /// `rtl` swaps start and end on the printed dots.
+    pub fn render_dir(&self, c: KotSlipContent<'_>, rtl: bool) -> String {
         let fmt = self.clone().clamped();
+        let kind = if c.cancel {
+            KotSlipKind::Cancelled
+        } else {
+            c.kind
+        };
+        let styles = fmt.kind_styles.get(kind);
         let cols = fmt.chars_per_line as usize;
         let rule = "-".repeat(cols);
+        let compact = !fmt.show_title;
         let mut out = String::new();
-        if c.reprint {
-            out.push_str("*** REPRINT - SAME ORDER ***\n");
-        }
-        if c.cancel {
-            out.push_str("*** CANCEL - STOP THIS ITEM ***\n");
-        } else if fmt.show_title {
-            out.push_str(fmt.title_line());
-            out.push('\n');
-        }
-        let push = |out: &mut String, line: &str| {
+        let push_styled = |out: &mut String, style: &KotFieldStyle, line: &str, _center: bool| {
+            // Alignment is in the style mark and applied in dots (and in the
+            // preview). Space-padding a short date left a wide gap.
+            let mark = kot_style_prefix(style, rtl);
             for part in fmt.wrap_line(line) {
+                out.push_str(&mark);
                 out.push_str(&part);
                 out.push('\n');
             }
         };
+        if c.reprint {
+            push_styled(
+                &mut out,
+                &styles.title,
+                "*** REPRINT - SAME ORDER ***",
+                false,
+            );
+        } else if kind == KotSlipKind::Duplicate {
+            push_styled(
+                &mut out,
+                &styles.title,
+                "*** DUPLICATE - SAME ORDER ***",
+                false,
+            );
+        }
+        match kind {
+            KotSlipKind::Cancelled => {
+                push_styled(
+                    &mut out,
+                    &styles.title,
+                    "*** CANCEL - STOP THIS ITEM ***",
+                    false,
+                );
+            }
+            KotSlipKind::Modified => {
+                push_styled(
+                    &mut out,
+                    &styles.title,
+                    "*** MODIFIED - CHECK ORDER ***",
+                    false,
+                );
+            }
+            KotSlipKind::Original | KotSlipKind::Duplicate => {}
+        }
+        // Shop title prints on every kind, under the kind banner. Cancelled used
+        // to skip it, so a custom title never appeared in that preview.
+        if fmt.show_title {
+            push_styled(&mut out, &styles.title, fmt.title_line(), false);
+        }
         let emit_field = |out: &mut String, id: &str| {
+            let style_field = match id {
+                "shop" => KotStyleField::Shop,
+                "kot_no" => KotStyleField::KotNo,
+                "time" => KotStyleField::Time,
+                "waiter" => KotStyleField::Waiter,
+                "table" => KotStyleField::Table,
+                "station" => KotStyleField::Station,
+                "area" => KotStyleField::Area,
+                _ => return,
+            };
+            let style = styles.get(style_field);
             match id {
                 "shop" if fmt.show_shop_name => {
                     let shop = c.shop_name.trim();
                     if !shop.is_empty() {
-                        push(out, shop);
+                        push_styled(out, style, shop, true);
                     }
                 }
                 "kot_no" if fmt.show_kot_no => {
                     if let Some(label) = c.kot_nos_label.filter(|s| !s.trim().is_empty()) {
-                        push(out, label);
+                        push_styled(out, style, label, true);
                     } else if c.kot_no > 0 {
                         if c.reprint {
-                            push(out, &format!("Was KOT No: {}", c.kot_no));
-                        } else if !fmt.show_title {
-                            // Compact other-app style: "KOT - 178"
-                            push(out, &format!("KOT - {}", c.kot_no));
+                            push_styled(out, style, &format!("Was KOT No: {}", c.kot_no), true);
+                        } else if compact {
+                            push_styled(out, style, &format!("KOT - {}", c.kot_no), true);
                         } else {
-                            push(out, &format!("KOT No: {}", c.kot_no));
+                            push_styled(out, style, &format!("KOT No: {}", c.kot_no), false);
                         }
                     }
                 }
                 "time" if fmt.show_time && !c.when.is_empty() => {
-                    if fmt.show_title {
-                        push(out, &format!("Time: {}", c.when));
+                    // Left edge. Centering this short line with spaces left a
+                    // wide gap before the date once the glyphs were drawn.
+                    if compact {
+                        push_styled(out, style, c.when, false);
                     } else {
-                        push(out, c.when);
+                        push_styled(out, style, &format!("Time: {}", c.when), false);
                     }
                 }
                 "waiter" if fmt.show_waiter && !c.created_by.is_empty() => {
-                    push(out, &format!("By: {}", c.created_by));
+                    push_styled(out, style, &format!("Staff: {}", c.created_by), false);
                 }
                 "table" if fmt.show_table && !c.table_label.is_empty() => {
-                    if fmt.show_title {
-                        push(out, &format!("Table: {}", c.table_label));
+                    if compact {
+                        push_styled(out, style, &format!("Table No: {}", c.table_label), true);
                     } else {
-                        push(out, &format!("Table No: {}", c.table_label));
+                        push_styled(out, style, &format!("Table: {}", c.table_label), false);
                     }
                 }
                 "station" if fmt.show_station && !c.station_name.is_empty() => {
-                    push(out, &format!("Station: {}", c.station_name));
+                    push_styled(out, style, &format!("Station: {}", c.station_name), false);
                 }
                 "area" if fmt.show_area && !c.area_label.trim().is_empty() => {
-                    push(out, c.area_label.trim());
+                    push_styled(out, style, c.area_label.trim(), true);
                 }
                 _ => {}
             }
         };
+        // Compact default order matches the client sample; never shop-first.
         let order: Vec<&str> = if fmt.field_order.is_empty() {
-            vec![
-                "shop", "kot_no", "time", "waiter", "area", "table", "station",
-            ]
+            vec!["time", "kot_no", "area", "table", "shop", "waiter", "station"]
         } else {
             fmt.field_order.iter().map(String::as_str).collect()
         };
         for id in &order {
             emit_field(&mut out, id);
         }
-        // Emit any enabled fields not listed in field_order.
-        for id in ["shop", "kot_no", "time", "waiter", "area", "table", "station"] {
+        for id in ["time", "kot_no", "area", "table", "shop", "waiter", "station"] {
             if !order.iter().any(|x| *x == id) {
                 emit_field(&mut out, id);
             }
         }
         out.push_str(&rule);
         out.push('\n');
+        let item_style = &styles.item_qty;
+        let item_mark = kot_style_prefix(item_style, rtl);
+        // Item / Qty. as two columns. `\t` marks the split: proportional
+        // Noto raster right-aligns the qty in dots; ESC/POS text + preview
+        // expand the tab to a fixed monospace qty field (see
+        // expand_kot_column_tabs). Never pad with char-count spaces alone —
+        // Gujarati names made "Qty." and the digits drift (kot.jpeg).
         if fmt.show_item_qty_header {
-            let left = "Item";
-            let right = "Qty.";
-            let pad = cols.saturating_sub(left.len() + right.len());
-            push(&mut out, &format!("{left}{}{right}", " ".repeat(pad)));
+            out.push_str(&item_mark);
+            out.push_str("Item\tQty.\n");
         }
         for item in c.items {
-            if let Some((name, qty)) = item.rsplit_once('|') {
-                let name = name.trim();
-                let qty = qty.trim();
-                let pad = cols.saturating_sub(name.chars().count() + qty.chars().count());
-                push(&mut out, &format!("{name}{}{qty}", " ".repeat(pad)));
+            let (name, qty) = kot_item_parts(item);
+            if qty.is_empty() {
+                push_styled(&mut out, item_style, &name, false);
             } else {
-                push(&mut out, item);
+                out.push_str(&item_mark);
+                out.push_str(&name);
+                out.push('\t');
+                out.push_str(&qty);
+                out.push('\n');
             }
         }
-        out.push_str(&rule);
-        out.push('\n');
         if !fmt.footer.is_empty() {
-            push(&mut out, &fmt.footer);
+            out.push_str(&rule);
+            out.push('\n');
+            push_styled(&mut out, item_style, &fmt.footer, false);
         }
         out
+    }
+
+    /// Old product default: title / shop / waiter / station all on.
+    /// Used once to migrate shops onto the compact client sample.
+    pub fn looks_like_legacy_verbose(&self) -> bool {
+        self.show_title
+            || (self.show_shop_name && self.show_waiter && self.show_station)
+            || (self.field_order.is_empty()
+                && self.show_waiter
+                && self.show_station
+                && !self.show_area)
     }
 }
 
 /// Fields for one kitchen slip body (real KOT or Settings sample).
 pub struct KotSlipContent<'a> {
+    /// Which typography / banner family to use.
+    pub kind: KotSlipKind,
     pub cancel: bool,
     /// Recovery slip after selective reprint (banner + "Was KOT No").
     pub reprint: bool,
@@ -603,6 +1381,108 @@ pub struct KotSlipContent<'a> {
     pub items: &'a [&'a str],
 }
 
+/// Private-use prefix on each rendered KOT line: size + weight for ESC/POS.
+/// Preview / raster strip these via [`strip_kot_style_marks`].
+const KOT_STYLE_MARK: char = '\u{E000}';
+
+fn kot_style_prefix(style: &KotFieldStyle, rtl: bool) -> String {
+    let size = style.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+    // Weight letters must not collide with a digit (T = thin/light).
+    let weight = match style.weight {
+        KotFontWeight::Bold => 'B',
+        KotFontWeight::Light => 'T',
+        KotFontWeight::Regular => 'R',
+    };
+    // Two digits so 16 and 24 stay different sizes on the print, not one bucket.
+    // Align is S / C / E after the weight. `rtl` swaps start and end.
+    format!(
+        "{KOT_STYLE_MARK}{size:02}{weight}{}",
+        style.align.mark(rtl)
+    )
+}
+
+/// One line's type size, weight, and alignment, taken off the private-use prefix.
+struct KotLineStyle {
+    size_em: u32,
+    weight: KotFontWeight,
+    align: KotAlign,
+}
+
+/// Body text and its alignment, for the on-screen slip preview.
+pub fn kot_preview_line(line: &str) -> (KotAlign, &str) {
+    let (style, body) = take_kot_line_style(line);
+    (style.map(|s| s.align).unwrap_or_default(), body)
+}
+
+/// `Some` when `line` starts with a style mark. Body is the rest of the line.
+fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
+    let mut chars = line.chars();
+    if chars.next() != Some(KOT_STYLE_MARK) {
+        return (None, line);
+    }
+    let rest = chars.as_str();
+    let b = rest.as_bytes();
+    // Current: two digits + weight (`24B`). Older jobs: S/N/L + weight.
+    if b.len() >= 3 && b[0].is_ascii_digit() && b[1].is_ascii_digit() {
+        let size = (b[0] - b'0') as u32 * 10 + (b[1] - b'0') as u32;
+        let weight = match b[2] as char {
+            'B' => KotFontWeight::Bold,
+            'T' => KotFontWeight::Light,
+            _ => KotFontWeight::Regular,
+        };
+        let (align, skip) = if b.len() >= 4 && matches!(b[3] as char, 'S' | 'C' | 'E') {
+            (KotAlign::from_mark(b[3] as char), 4)
+        } else {
+            (KotAlign::Start, 3)
+        };
+        return (
+            Some(KotLineStyle {
+                size_em: size.clamp(KOT_EM_MIN, KOT_EM_MAX),
+                weight,
+                align,
+            }),
+            &rest[skip..],
+        );
+    }
+    if b.len() >= 2 && matches!(b[0] as char, 'S' | 'N' | 'L') {
+        let size = match b[0] as char {
+            'S' => KOT_EM_SMALL,
+            'L' => KOT_EM_LARGE,
+            _ => KOT_EM_NORMAL,
+        };
+        let weight = match b[1] as char {
+            'B' => KotFontWeight::Bold,
+            'T' => KotFontWeight::Light,
+            _ => KotFontWeight::Regular,
+        };
+        return (
+            Some(KotLineStyle {
+                size_em: size,
+                weight,
+                align: KotAlign::Start,
+            }),
+            &rest[2..],
+        );
+    }
+    (None, line)
+}
+
+/// Remove per-field style marks (Settings preview, plain expand).
+pub fn strip_kot_style_marks(text: &str) -> String {
+    let mut out = String::with_capacity(text.len());
+    for line in text.split_inclusive('\n') {
+        if let Some(body) = line.strip_suffix('\n') {
+            let (_, bare) = take_kot_line_style(body);
+            out.push_str(bare);
+            out.push('\n');
+        } else {
+            let (_, bare) = take_kot_line_style(line);
+            out.push_str(bare);
+        }
+    }
+    out
+}
+
 #[cfg(test)]
 mod kot_slip_format_tests {
     use super::*;
@@ -610,7 +1490,7 @@ mod kot_slip_format_tests {
     #[test]
     fn clamps_width_and_strips_currency_from_footer() {
         let fmt = KotSlipFormat {
-            chars_per_line: 99,
+            chars_per_line: 400,
             em: 5,
             footer: "Rush ₹100".into(),
             ..KotSlipFormat::default()
@@ -623,16 +1503,306 @@ mod kot_slip_format_tests {
 
     #[test]
     fn sample_preview_never_shows_prices_and_keeps_kot_no() {
-        let text = KotSlipFormat::default().render_sample("Khaynjo");
+        let raw = KotSlipFormat::default().render_sample("Khaynjo");
+        let cols = KotSlipFormat::default().chars_per_line as usize;
+        let text = strip_kot_style_marks(&expand_kot_column_tabs(&raw, cols));
         // Product default is the compact slip (kot.jpeg): no title banner.
         assert!(!text.contains("KOT - KITCHEN ORDER"));
         assert!(text.contains("KOT - 12"));
         assert!(text.contains("Table No: D1"));
         assert!(text.contains("Dine In"));
         assert!(text.contains("Item"));
+        assert!(text.contains("Qty."));
         assert!(text.contains("Butter Roti"));
+        assert!(!text.contains("By:"));
+        assert!(!text.contains("Station:"));
+        // One rule under the header — not a second rule under the items.
+        let rules = text
+            .lines()
+            .filter(|l| !l.is_empty() && l.chars().all(|c| c == '-'))
+            .count();
+        assert_eq!(rules, 1, "unexpected trailing rule:\n{text}");
+        let date = text
+            .lines()
+            .find(|l| l.contains("04/11/26"))
+            .unwrap_or("");
+        assert!(
+            !date.starts_with(' '),
+            "the date starts at the left edge:\n{text}"
+        );
         assert!(!text.contains('₹'));
         assert!(!text.to_lowercase().contains("total"));
+        // Qty. header and every qty share the same right edge (monospace expand).
+        let item_lines: Vec<&str> = text
+            .lines()
+            .filter(|l| l.contains("Qty.") || l.contains("Butter") || l.contains("Papad") || l.contains("Roti") || l.contains("Pav"))
+            .filter(|l| !l.contains("Table") && !l.contains("KOT -"))
+            .collect();
+        assert!(item_lines.len() >= 2, "expected header + items:\n{text}");
+        let ends: Vec<usize> = item_lines.iter().map(|l| l.chars().count()).collect();
+        assert!(
+            ends.windows(2).all(|w| w[0] == w[1]),
+            "Item/Qty lines must share one right edge, got {ends:?}:\n{text}"
+        );
+        assert!(raw.contains('\t'), "render keeps tab for raster columns");
+    }
+
+    #[test]
+    fn qty_column_is_a_count_not_an_x_prefix() {
+        assert_eq!(kot_qty_column("x3"), "3");
+        assert_eq!(kot_qty_column("×2"), "2");
+        assert_eq!(kot_qty_column("X12"), "12");
+        assert_eq!(kot_qty_column("3"), "3");
+        assert_eq!(kot_qty_column("2 kg"), "2 kg");
+        let text = KotSlipFormat::default().render(KotSlipContent {
+            kind: KotSlipKind::Original,
+            cancel: false,
+            reprint: false,
+            shop_name: "Shop",
+            kot_no: 1,
+            kot_nos_label: None,
+            when: "now",
+            created_by: "",
+            table_label: "D1",
+            station_name: "",
+            area_label: "",
+            items: &["Butter Roti|x3"],
+        });
+        assert!(text.contains("Butter Roti\t3"), "qty column must be the bare count:\n{text}");
+        assert!(!text.contains("Butter Roti\tx"), "x prefix must not reach the qty column:\n{text}");
+        assert_eq!(kot_item_parts("x1× ઈસી B.B.Q."), ("ઈસી B.B.Q.".into(), "1".into()));
+        assert_eq!(kot_item_parts("ઈસી B.B.Q. x1"), ("ઈસી B.B.Q.".into(), "1".into()));
+        assert_eq!(kot_item_parts("Butter Roti|x1×"), ("Butter Roti".into(), "1".into()));
+        assert_eq!(kot_qty_column("x1×"), "1");
+        let glued = KotSlipFormat::default().render(KotSlipContent {
+            kind: KotSlipKind::Original,
+            cancel: false,
+            reprint: false,
+            shop_name: "Shop",
+            kot_no: 1,
+            kot_nos_label: None,
+            when: "now",
+            created_by: "",
+            table_label: "D1",
+            station_name: "",
+            area_label: "",
+            items: &["x1× ઈસી B.B.Q.", "ઈસી B.B.Q. x1"],
+        });
+        let bare = strip_kot_style_marks(&glued);
+        assert!(bare.contains("ઈસી B.B.Q.\t1"), "count stays in the qty column:\n{bare}");
+        assert!(!bare.contains("x1"), "x1 must not sit on the dish name:\n{bare}");
+    }
+
+    #[test]
+    fn start_center_end_shift_across_the_content_width() {
+        fn first_ink(align: crate::receipt_raster::LineAlign, dots: usize) -> usize {
+            let page = crate::receipt_raster::RasterMetrics {
+                em: 24.0,
+                line: 36,
+                baseline: 26.0,
+                side: 4.0,
+                width_dots: dots,
+            };
+            let lines = [crate::receipt_raster::StyledLine {
+                text: "T2".into(),
+                em: 24.0,
+                weight: crate::receipt_raster::RasterWeight::Regular,
+                align,
+            }];
+            let (rows, height) = crate::receipt_raster::draw_lines(&lines, &page);
+            let width = page.page_dots();
+            let row_bytes = width / 8;
+            for y in 0..height {
+                for x in 0..width {
+                    if rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0 {
+                        return x;
+                    }
+                }
+            }
+            0
+        }
+        use crate::receipt_raster::LineAlign;
+        let start = first_ink(LineAlign::Start, 576);
+        let center = first_ink(LineAlign::Center, 576);
+        let end = first_ink(LineAlign::End, 576);
+        let center_narrow = first_ink(LineAlign::Center, 384);
+        assert!(center > start + 40, "center {center} vs start {start}");
+        assert!(end > center + 40, "end {end} vs center {center}");
+        assert!(
+            center > center_narrow + 40,
+            "a wider content width moves center right ({center} vs {center_narrow})"
+        );
+        let mut fmt = KotSlipFormat::default();
+        fmt.content_width_mm = 80;
+        fmt.chars_per_line = wrap_cols_for_paper_mm(80);
+        let styles = fmt.kind_styles.get_mut(KotSlipKind::Original);
+        styles.time.align = KotAlign::Center;
+        let text = fmt.render_sample_kind("Shop", KotSlipKind::Original);
+        let metrics = PrintFormat {
+            line: fmt.chars_per_line,
+            ..PrintFormat::kot()
+        }
+        .raster_metrics();
+        let lines = styled_slip_lines(&text, &metrics);
+        assert!(
+            lines.iter().any(|l| {
+                l.text.contains("04/11/26") && l.align == crate::receipt_raster::LineAlign::Center
+            }),
+            "center is what the printer draws, at the content width"
+        );
+        assert_eq!(metrics.page_dots(), paper_width_dots(80));
+    }
+
+    #[test]
+    fn field_size_and_weight_change_the_printed_slip() {
+        let slip = |style: KotFieldStyle| {
+            let mut fmt = KotSlipFormat::default();
+            let styles = fmt.kind_styles.get_mut(KotSlipKind::Original);
+            for field in KotStyleField::ALL {
+                *styles.get_mut(field) = style.clone();
+            }
+            fmt.render(KotSlipContent {
+                kind: KotSlipKind::Original,
+                cancel: false,
+                reprint: false,
+                shop_name: "Shop",
+                kot_no: 4,
+                kot_nos_label: None,
+                when: "now",
+                created_by: "A",
+                table_label: "D1",
+                station_name: "Kitchen",
+                area_label: "Dine In",
+                items: &["Tea|2"],
+            })
+        };
+        let raster_dots_high = |job: &[u8]| -> usize {
+            let mut h = 0usize;
+            let mut i = 0usize;
+            while i + 8 <= job.len() {
+                if job[i..i + 4] == [0x1D, 0x76, 0x30, 0x00] {
+                    h += job[i + 6] as usize + ((job[i + 7] as usize) << 8);
+                    i += 8;
+                } else {
+                    i += 1;
+                }
+            }
+            h
+        };
+        let small = escpos_job_format(&PrintFormat::kot(), &slip(KotFieldStyle::light(16)));
+        let large = escpos_job_format(&PrintFormat::kot(), &slip(KotFieldStyle::bold(40)));
+        let mid_bold = escpos_job_format(&PrintFormat::kot(), &slip(KotFieldStyle::bold(24)));
+        let mid_light = escpos_job_format(&PrintFormat::kot(), &slip(KotFieldStyle::light(24)));
+        assert!(
+            raster_dots_high(&large) > raster_dots_high(&small),
+            "40pt must print taller than 16pt ({} vs {})",
+            raster_dots_high(&large),
+            raster_dots_high(&small)
+        );
+        assert_ne!(
+            mid_bold, mid_light,
+            "Bold and Light at the same size must not be the same print job"
+        );
+    }
+
+    #[test]
+    fn wider_paper_is_more_dots_and_keeps_the_cancel_banner_on_one_line() {
+        assert_eq!(paper_width_dots(58), 384);
+        assert_eq!(paper_width_dots(80), 576);
+        assert!(paper_width_dots(112) > paper_width_dots(80));
+        assert!(paper_width_dots(210) > paper_width_dots(112));
+        assert_eq!(
+            paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(58)),
+            384
+        );
+        assert_eq!(
+            paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(80)),
+            576
+        );
+        let mut fmt = KotSlipFormat::default();
+        fmt.chars_per_line = wrap_cols_for_paper_mm(80);
+        let text = strip_kot_style_marks(&fmt.render(KotSlipContent {
+            kind: KotSlipKind::Cancelled,
+            cancel: true,
+            reprint: false,
+            shop_name: "Shop",
+            kot_no: 1,
+            kot_nos_label: None,
+            when: "now",
+            created_by: "A",
+            table_label: "D1",
+            station_name: "Kitchen",
+            area_label: "Dine In",
+            items: &["Tea|1"],
+        }));
+        assert!(
+            text.lines().any(|l| l.trim() == "*** CANCEL - STOP THIS ITEM ***"),
+            "banner must stay one line on 80 mm:\n{text}"
+        );
+        // The ticket is drawn, not counted in characters. At the default
+        // bold title size the last *** falls off a 58 mm head and fits an 80 mm one.
+        let banner = "*** CANCEL - STOP THIS ITEM ***";
+        let draw = |dots: usize| {
+            let page = crate::receipt_raster::RasterMetrics {
+                em: KOT_EM_NORMAL as f32,
+                line: 36,
+                baseline: 22.0,
+                side: 4.0,
+                width_dots: dots,
+            };
+            let lines = [crate::receipt_raster::StyledLine {
+                text: banner.into(),
+                em: KOT_EM_NORMAL as f32,
+                weight: crate::receipt_raster::RasterWeight::Bold,
+                align: crate::receipt_raster::LineAlign::Start,
+            }];
+            crate::receipt_raster::draw_lines(&lines, &page).1
+        };
+        let pitch = ((KOT_EM_NORMAL as f32 * 1.45).round() as usize).clamp(16, 96);
+        assert!(draw(384) > pitch, "58 mm wraps the trailing asterisks");
+        assert_eq!(draw(576), pitch, "80 mm keeps the banner on one line");
+    }
+
+    #[test]
+    fn sample_slip_qty_header_shares_the_tab_with_counts() {
+        let raw = KotSlipFormat::default().render_sample_kind("Shop", KotSlipKind::Original);
+        let text = strip_kot_style_marks(&raw);
+        let header = text
+            .lines()
+            .find(|l| l.split_once('\t').is_some_and(|(l, _)| l.trim() == "Item"))
+            .unwrap_or_else(|| panic!("Item header must be a tab column:\n{text}"));
+        let dish = text
+            .lines()
+            .find(|l| l.starts_with("Butter Roti\t"))
+            .unwrap_or_else(|| panic!("dish count must be a tab column:\n{text}"));
+        assert_eq!(header.split_once('\t').unwrap().1.trim(), "Qty.");
+        assert_eq!(kot_qty_column(dish.split_once('\t').unwrap().1), "3");
+        assert!(!text.contains("Table: D1\t"), "table code stays on its own line");
+    }
+
+    #[test]
+    fn expand_qty_column_right_aligns_digits_under_header() {
+        let line = expand_kot_column_tabs("Item\tQty.\nTea\t3\nLonger dish name\t12", 24);
+        let lines: Vec<&str> = line.lines().collect();
+        assert_eq!(lines[0].chars().count(), 24);
+        assert_eq!(lines[1].chars().count(), 24);
+        assert_eq!(lines[2].chars().count(), 24);
+        assert!(lines[0].ends_with("Qty."));
+        assert!(lines[1].ends_with("   3"));
+        assert!(lines[2].ends_with("  12"));
+    }
+
+    #[test]
+    fn partial_json_does_not_revive_legacy_verbose_defaults() {
+        // Old serde defaults used to fill missing keys as show_title/waiter=true.
+        let fmt = KotSlipFormat::parse(r#"{"chars_per_line":32}"#);
+        assert!(!fmt.show_title);
+        assert!(!fmt.show_shop_name);
+        assert!(!fmt.show_waiter);
+        assert!(!fmt.show_station);
+        assert!(fmt.show_area);
+        assert!(fmt.show_item_qty_header);
+        assert!(!fmt.looks_like_legacy_verbose());
     }
 
     #[test]
@@ -704,7 +1874,14 @@ mod kot_slip_format_tests {
         assert!(!text.contains("KOT No:"));
         assert!(!text.contains("Table:"));
         assert!(text.contains("KITCHEN FIRE"));
+        let cancelled = hidden.render_sample_kind("Shop", KotSlipKind::Cancelled);
+        assert!(
+            cancelled.contains("KITCHEN FIRE"),
+            "custom title must show on a cancelled slip:\n{cancelled}"
+        );
+        assert!(cancelled.contains("*** CANCEL - STOP THIS ITEM ***"));
         let reprint = hidden.render(KotSlipContent {
+            kind: KotSlipKind::Original,
             cancel: false,
             reprint: true,
             shop_name: "Shop",
@@ -722,6 +1899,231 @@ mod kot_slip_format_tests {
         assert!(!reprint.contains("Was KOT No"));
         assert!(!reprint.contains("Table:"));
     }
+}
+
+/// Qty column text. `x3`, `×3`, and `x1×` become `3` / `1`. `2 kg` stays.
+/// The `x` is a piece-count marker, never part of the dish name.
+pub fn kot_qty_column(qty: &str) -> String {
+    let q = qty.trim();
+    let rest = q.trim_start_matches(['×', '✕', 'x', 'X', ' ']);
+    let mut end = 0usize;
+    let mut seen_digit = false;
+    let mut seen_dot = false;
+    for (i, ch) in rest.char_indices() {
+        if ch.is_ascii_digit() {
+            seen_digit = true;
+            end = i + ch.len_utf8();
+        } else if (ch == '.' || ch == ',') && seen_digit && !seen_dot {
+            seen_dot = true;
+            end = i + ch.len_utf8();
+        } else {
+            break;
+        }
+    }
+    if !seen_digit {
+        return q.to_string();
+    }
+    let number = rest[..end].trim_end_matches(['.', ',']);
+    let after = rest[end..]
+        .trim()
+        .trim_start_matches(['×', '✕', 'x', 'X'])
+        .trim();
+    if after.is_empty() {
+        number.to_string()
+    } else {
+        format!("{number} {after}")
+    }
+}
+
+/// Dish name and qty column. Strips a count glued on either side of the name
+/// (`x1× Dish`, `Dish x1`, `Dish|x1`) so the name prints alone.
+pub fn kot_item_parts(item: &str) -> (String, String) {
+    let item = item.trim();
+    let (raw_name, raw_qty) = item.rsplit_once('|').unwrap_or((item, ""));
+    let raw_name = raw_name.trim();
+    let (name, peeled) = peel_leading_kot_qty(raw_name)
+        .or_else(|| peel_trailing_x_qty(raw_name))
+        .unwrap_or_else(|| (raw_name.to_string(), String::new()));
+    let qty = if raw_qty.trim().is_empty() {
+        peeled
+    } else {
+        kot_qty_column(raw_qty)
+    };
+    (name, qty)
+}
+
+/// `x1× Name`, `1× Name`, `1.25 kg× Rice` → (name, qty).
+fn peel_leading_kot_qty(s: &str) -> Option<(String, String)> {
+    let s = s.trim();
+    let mut rest = s;
+    for mark in ['x', 'X', '×', '✕'] {
+        if let Some(stripped) = rest.strip_prefix(mark) {
+            if stripped.starts_with(|c: char| c.is_ascii_digit()) {
+                rest = stripped;
+            }
+            break;
+        }
+    }
+    if !rest.starts_with(|c: char| c.is_ascii_digit()) {
+        return None;
+    }
+    let mut end = 0usize;
+    let mut seen_digit = false;
+    let mut seen_dot = false;
+    for (i, ch) in rest.char_indices() {
+        if ch.is_ascii_digit() {
+            seen_digit = true;
+            end = i + ch.len_utf8();
+        } else if (ch == '.' || ch == ',') && seen_digit && !seen_dot {
+            seen_dot = true;
+            end = i + ch.len_utf8();
+        } else {
+            break;
+        }
+    }
+    if !seen_digit {
+        return None;
+    }
+    let number = rest[..end].trim_end_matches(['.', ',']);
+    let after = rest[end..].trim_start();
+    let (unit, name) = if let Some(name) = after
+        .strip_prefix('×')
+        .or_else(|| after.strip_prefix('✕'))
+        .or_else(|| after.strip_prefix('x'))
+        .or_else(|| after.strip_prefix('X'))
+    {
+        (String::new(), name.trim().to_string())
+    } else {
+        let (token, tail) = after.split_once(char::is_whitespace)?;
+        let tail = tail.trim_start();
+        if let Some(idx) = token.find(['×', '✕', 'x', 'X']) {
+            if idx == 0 {
+                return None;
+            }
+            let unit = token[..idx].to_string();
+            let glued = &token[idx + token[idx..].chars().next()?.len_utf8()..];
+            let name = if glued.is_empty() {
+                tail.to_string()
+            } else if tail.is_empty() {
+                glued.to_string()
+            } else {
+                format!("{glued} {tail}")
+            };
+            (unit, name)
+        } else if let Some(name) = tail
+            .strip_prefix('×')
+            .or_else(|| tail.strip_prefix('✕'))
+            .or_else(|| tail.strip_prefix('x'))
+            .or_else(|| tail.strip_prefix('X'))
+        {
+            (token.to_string(), name.trim().to_string())
+        } else {
+            return None;
+        }
+    };
+    if name.is_empty() || number.is_empty() {
+        return None;
+    }
+    let qty = if unit.is_empty() {
+        number.to_string()
+    } else {
+        format!("{number} {unit}")
+    };
+    Some((name, qty))
+}
+
+/// `Dish x1` / `Dish × 1` → (dish, count). A bare trailing number stays on the name.
+fn peel_trailing_x_qty(s: &str) -> Option<(String, String)> {
+    let s = s.trim();
+    let chars: Vec<(usize, char)> = s.char_indices().collect();
+    if chars.is_empty() {
+        return None;
+    }
+    let mut i = chars.len();
+    while i > 0 && chars[i - 1].1.is_ascii_digit() {
+        i -= 1;
+    }
+    if i == chars.len() || i == 0 {
+        return None;
+    }
+    let number = s[chars[i].0..].to_string();
+    let mut j = i;
+    while j > 0 && chars[j - 1].1.is_whitespace() {
+        j -= 1;
+    }
+    if j == 0 || !matches!(chars[j - 1].1, 'x' | 'X' | '×' | '✕') {
+        return None;
+    }
+    let name = s[..chars[j - 1].0].trim();
+    if name.is_empty() {
+        return None;
+    }
+    Some((name.to_string(), number))
+}
+
+/// Monospace qty field width — fits the `Qty.` header.
+pub const KOT_QTY_COLS: usize = 4;
+
+/// Expand `name\tqty` lines to a fixed right qty column for ESC/POS text
+/// printers and on-screen preview (monospace cells). Raster keeps the tab
+/// and aligns in dots instead.
+pub fn expand_kot_column_tabs(text: &str, cols: usize) -> String {
+    let cols = cols.max(8);
+    let mut out = String::with_capacity(text.len().saturating_add(16));
+    for (i, line) in text.lines().enumerate() {
+        if i > 0 {
+            out.push('\n');
+        }
+        out.push_str(&expand_kot_column_tab_line(line, cols));
+    }
+    if text.ends_with('\n') {
+        out.push('\n');
+    }
+    out
+}
+
+fn split_kot_style_prefix(line: &str) -> (String, &str) {
+    let (style, body) = take_kot_line_style(line);
+    match style {
+        Some(style) => {
+            let weight = match style.weight {
+                KotFontWeight::Bold => 'B',
+                KotFontWeight::Light => 'T',
+                KotFontWeight::Regular => 'R',
+            };
+            (
+                format!(
+                    "{KOT_STYLE_MARK}{:02}{weight}{}",
+                    style.size_em,
+                    style.align.mark(false)
+                ),
+                body,
+            )
+        }
+        None => (String::new(), line),
+    }
+}
+
+fn expand_kot_column_tab_line(line: &str, cols: usize) -> String {
+    let (mark, body) = split_kot_style_prefix(line);
+    let Some((left, right)) = body.split_once('\t') else {
+        return format!("{mark}{body}");
+    };
+    let right = right.trim();
+    let left = left.trim_end();
+    let qty_w = KOT_QTY_COLS.max(right.chars().count());
+    let name_w = cols.saturating_sub(qty_w);
+    let left = {
+        let n = left.chars().count();
+        if n <= name_w {
+            left.to_string()
+        } else {
+            left.chars().take(name_w.saturating_sub(1)).collect::<String>() + "…"
+        }
+    };
+    let right_field = format!("{:>width$}", right, width = qty_w);
+    let mid = name_w.saturating_sub(left.chars().count());
+    format!("{mark}{left}{}{right_field}", " ".repeat(mid))
 }
 
 fn wrap_text_cols(line: &str, cols: usize) -> Vec<String> {
@@ -878,16 +2280,21 @@ impl Default for PrintRoutes {
     }
 }
 
-/// This device's printer pool, profiles (formats), routes, and station groups.
+/// This device's real printers, configs (formats), virtual printers, and
+/// legacy place routes (runtime until place-attach UI exists).
 #[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct DevicePrinters {
+    /// Real printers (OS / network destinations).
     pub printers: Vec<NamedPrinter>,
-    /// Profiles (slip look). Built-ins: portrait, landscape, KOT.
+    /// Configs (slip look + send path). Built-ins: portrait, landscape, KOT.
     #[serde(default)]
     pub formats: Vec<PrintFormat>,
-    pub routes: PrintRoutes,
-    /// Setup shortcut: Apply copies Outputs onto member stations.
+    /// Virtual printers: real printer + config.
     #[serde(default)]
+    pub virtual_printers: Vec<VirtualPrinter>,
+    pub routes: PrintRoutes,
+    /// Legacy; discarded on load (station grouping removed).
+    #[serde(default, skip_serializing)]
     pub station_groups: Vec<StationGroup>,
 }
 
@@ -900,6 +2307,7 @@ impl Default for DevicePrinters {
                 PrintFormat::standard_landscape(),
                 PrintFormat::kot(),
             ],
+            virtual_printers: Vec::new(),
             routes: PrintRoutes::default(),
             station_groups: Vec::new(),
         }
@@ -930,6 +2338,8 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             #[serde(default)]
             formats: Vec<PrintFormat>,
             #[serde(default)]
+            virtual_printers: Vec<VirtualPrinter>,
+            #[serde(default)]
             routes: PrintRoutes,
             #[serde(default)]
             station_groups: Vec<StationGroup>,
@@ -937,6 +2347,7 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
         let parsed: New = serde_json::from_value(value).unwrap_or_else(|_| New {
             printers: Vec::new(),
             formats: Vec::new(),
+            virtual_printers: Vec::new(),
             routes: PrintRoutes::default(),
             station_groups: Vec::new(),
         });
@@ -954,15 +2365,18 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
                 })
                 .collect(),
             formats,
+            virtual_printers: parsed.virtual_printers,
             routes: parsed.routes,
-            station_groups: parsed.station_groups,
+            station_groups: Vec::new(), // discarded
         };
+        let _ = parsed.station_groups;
         scrub_fake_default_printers(&mut out);
         if out.routes.bill_format.trim().is_empty() {
             out.routes.bill_format = FORMAT_STANDARD_PORTRAIT.into();
         }
         out.migrate_legacy_standard_ids();
         out.collapse_one_output_per_printer();
+        out.flatten_routes_to_real_printers();
         if !out.routes.kot.contains_key("") {
             out.routes.kot.insert(String::new(), Vec::new());
         }
@@ -1046,6 +2460,7 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
             bill_print_mode: RoutePrintMode::First,
             kot_print_mode: BTreeMap::new(),
         },
+        virtual_printers: Vec::new(),
         station_groups: Vec::new(),
     }
 }
@@ -1087,21 +2502,21 @@ impl DevicePrinters {
         match key {
             RouteKey::Bill => &self.routes.bill,
             RouteKey::Kot { station_id } => {
-                if let Some(own) = self.routes.kot.get(station_id) {
-                    // Named kitchen: empty list = don't print there (owner's choice).
-                    if !station_id.is_empty() {
-                        return own.as_slice();
-                    }
-                    // Default kitchen `""`: use it when non-empty; else Bill.
+                // Named kitchen: ONLY that place's Outputs. Empty / missing =
+                // don't print — never silently use Bill / another kitchen's
+                // printer (that ignored the owner's Select printer choice).
+                if !station_id.is_empty() {
+                    return self
+                        .routes
+                        .kot
+                        .get(station_id)
+                        .map(|v| v.as_slice())
+                        .unwrap_or(&[]);
+                }
+                // Default kitchen `""`: its Outputs when set; else Bill.
+                if let Some(own) = self.routes.kot.get("") {
                     if !own.is_empty() {
                         return own.as_slice();
-                    }
-                } else if !station_id.is_empty() {
-                    // Station never configured — try default kitchen, then Bill.
-                    if let Some(kitchen) = self.routes.kot.get("") {
-                        if !kitchen.is_empty() {
-                            return kitchen.as_slice();
-                        }
                     }
                 }
                 self.routes.bill.as_slice()
@@ -1130,6 +2545,8 @@ impl DevicePrinters {
             return;
         }
         self.routes.kot.remove(id);
+        self.routes.kot_format.remove(id);
+        self.routes.kot_print_mode.remove(id);
     }
 
     /// Resolve route ids to print targets (skips unknown ids).
@@ -1138,6 +2555,40 @@ impl DevicePrinters {
             .into_iter()
             .map(|d| d.target)
             .collect()
+    }
+
+    /// Build a transient format from a virtual printer's inline values.
+    ///
+    /// Layout (portrait/landscape) + delivery come from the VP. Type size /
+    /// wrap / margins are **not** VP knobs (`docs/PRINTER.md`) — callers that
+    /// print a place must overlay those from [`Self::format_for`] via
+    /// [`Self::destinations_for`].
+    pub fn format_from_virtual(&self, vp: &VirtualPrinter) -> PrintFormat {
+        let v = vp.values();
+        PrintFormat {
+            id: format!("vp:{}", vp.id),
+            label: vp.name.clone(),
+            document: v.document_flag(),
+            landscape: v.landscape,
+            delivery: v.delivery.clone(),
+            em: v.em,
+            line: v.line,
+            baseline: v.em + 2.0,
+            side: v.side,
+        }
+    }
+
+    /// VP: layout + delivery. Place: type size, side, and content width
+    /// (wrap columns) from Bill & KOT format — the same width for the bill
+    /// and the kitchen ticket.
+    #[allow(dead_code)]
+    fn format_for_virtual_on_place(&self, vp: &VirtualPrinter, place: &PrintFormat) -> PrintFormat {
+        let mut format = self.format_from_virtual(vp);
+        format.em = place.em;
+        format.line = place.line;
+        format.side = place.side;
+        format.baseline = place.em + 2.0;
+        format
     }
 
     /// Format id for this route (Bill → bill_format; kitchen → kot_format / KOT).
@@ -1212,8 +2663,14 @@ impl DevicePrinters {
             return;
         }
         self.set_route_format(key, id);
+        let vp_ids: std::collections::HashSet<String> =
+            self.virtual_printers.iter().map(|v| v.id.clone()).collect();
         let rewrite = |slots: &mut Vec<String>| {
             for slot in slots.iter_mut() {
+                let raw = slot.trim();
+                if vp_ids.contains(raw) {
+                    continue;
+                }
                 let (pid, _) = decode_route_slot(slot);
                 if !pid.is_empty() {
                     *slot = encode_route_slot(&pid, id);
@@ -1232,11 +2689,21 @@ impl DevicePrinters {
 
     /// One Output per printer on each place (first profile kept). Migrates the
     /// old three-face assign list (same device as KOT + Portrait + Landscape).
+    /// Virtual-printer attach slots stay one-per-VP id.
     pub fn collapse_one_output_per_printer(&mut self) {
+        let vp_ids: std::collections::HashSet<String> =
+            self.virtual_printers.iter().map(|v| v.id.clone()).collect();
         let collapse = |slots: &mut Vec<String>| {
             let mut seen = std::collections::HashSet::new();
             let mut out = Vec::new();
             for slot in slots.iter() {
+                let raw = slot.trim();
+                if vp_ids.contains(raw) {
+                    if seen.insert(raw.to_string()) {
+                        out.push(raw.to_string());
+                    }
+                    continue;
+                }
                 let (pid, fmt) = decode_route_slot(slot);
                 if pid.is_empty() || !seen.insert(pid.clone()) {
                     continue;
@@ -1272,46 +2739,283 @@ impl DevicePrinters {
         }
     }
 
-    pub fn upsert_station_group(&mut self, name: &str, station_ids: Vec<String>) -> String {
+    /// Seed virtual printers once from legacy route slots (unique pairs).
+    pub fn ensure_virtual_printers_from_routes(&mut self) {
+        if !self.virtual_printers.is_empty() {
+            return;
+        }
+        let known: std::collections::HashSet<String> =
+            self.printers.iter().map(|p| p.id.clone()).collect();
+        let mut seen = std::collections::HashSet::new();
+        let mut pairs: Vec<(String, String)> = Vec::new();
+        let mut consider = |slot: &str, default_cfg: &str| {
+            let (pid, fmt) = decode_route_slot(slot);
+            if pid.is_empty() || !known.contains(&pid) {
+                return;
+            }
+            let cfg = if fmt.is_empty() {
+                default_cfg.to_string()
+            } else {
+                fmt
+            };
+            if seen.insert((pid.clone(), cfg.clone())) {
+                pairs.push((pid, cfg));
+            }
+        };
+        let bill_fmt = self.routes.bill_format.clone();
+        for slot in self.routes.bill.clone() {
+            consider(&slot, &bill_fmt);
+        }
+        let kot_lists: Vec<(String, Vec<String>)> = self
+            .routes
+            .kot
+            .iter()
+            .map(|(k, v)| (k.clone(), v.clone()))
+            .collect();
+        for (station_id, list) in kot_lists {
+            let default = self
+                .routes
+                .kot_format
+                .get(&station_id)
+                .cloned()
+                .unwrap_or_else(|| FORMAT_KOT.to_string());
+            for slot in list {
+                consider(&slot, &default);
+            }
+        }
+        for (pid, cfg_id) in pairs {
+            let fmt = self.format_by_id(&cfg_id);
+            let values = VirtualPrinterValues {
+                landscape: fmt.landscape,
+                em: fmt.em,
+                line: fmt.line,
+                side: fmt.side,
+                delivery: if fmt.document {
+                    DELIVERY_SYSTEM_SPOOLER.into()
+                } else {
+                    DELIVERY_ESCPOS.into()
+                },
+                paper_width_mm: if fmt.line <= 34 { 58 } else { 80 },
+            };
+            let _ = self.add_virtual_printer("", &pid, values);
+        }
+    }
+
+    /// Create a virtual printer: real printer + inline configuration values.
+    pub fn add_virtual_printer(
+        &mut self,
+        name: &str,
+        printer_id: &str,
+        values: VirtualPrinterValues,
+    ) -> Result<String, String> {
+        let pid = printer_id.trim();
+        if pid.is_empty() || self.printer_by_id(pid).is_none() {
+            return Err("pick a real printer".into());
+        }
+        let real_label = self
+            .printer_by_id(pid)
+            .map(|p| {
+                let l = p.label.trim();
+                if l.is_empty() {
+                    p.target.clone()
+                } else {
+                    l.to_string()
+                }
+            })
+            .unwrap_or_else(|| pid.to_string());
         let name = {
             let t = name.trim();
             if t.is_empty() {
-                "Station group".to_string()
+                real_label
             } else {
                 t.to_string()
             }
         };
-        if let Some(g) = self.station_groups.iter_mut().find(|g| g.name == name) {
-            g.station_ids = station_ids;
-            return g.id.clone();
-        }
         let id = uuid::Uuid::new_v4().to_string();
-        self.station_groups.push(StationGroup {
+        let mut vp = VirtualPrinter {
             id: id.clone(),
             name,
-            station_ids,
-        });
-        id
+            printer_id: pid.to_string(),
+            landscape: false,
+            em: STD_EM_NORMAL,
+            line: 40,
+            side: STD_SIDE,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
+            paper_width_mm: 80,
+            document: true,
+            config_id: String::new(),
+        };
+        vp.apply_values(values);
+        self.virtual_printers.push(vp);
+        Ok(id)
     }
 
-    /// Resolve route slots to target + that slot's format.
-    /// Slot strings are `printer_id` (legacy → place default format) or
-    /// `printer_id@format_id` (per-assignment format).
+    pub fn update_virtual_printer_values(
+        &mut self,
+        id: &str,
+        values: VirtualPrinterValues,
+    ) -> bool {
+        if let Some(v) = self.virtual_printers.iter_mut().find(|v| v.id == id) {
+            v.apply_values(values);
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn remove_virtual_printer(&mut self, id: &str) {
+        let id = id.trim();
+        self.virtual_printers.retain(|v| v.id != id);
+        self.routes.bill.retain(|s| s.trim() != id);
+        for slots in self.routes.kot.values_mut() {
+            slots.retain(|s| s.trim() != id);
+        }
+    }
+
+    /// Portrait/landscape and delivery for the bill (`standard`) or the kitchen ticket.
+    pub fn set_job_drive(&mut self, standard: bool, landscape: bool, delivery: &str) {
+        let delivery = if delivery.trim().is_empty() {
+            DELIVERY_SYSTEM_SPOOLER
+        } else {
+            delivery.trim()
+        };
+        let document = delivery == DELIVERY_SYSTEM_SPOOLER;
+        for f in self.formats.iter_mut() {
+            let hit = if standard {
+                is_standard_document(&f.id)
+            } else {
+                f.id == FORMAT_KOT
+            };
+            if hit {
+                f.landscape = landscape;
+                f.delivery = delivery.to_string();
+                f.document = document;
+            }
+        }
+    }
+
+    /// Toggle a real printer on a bill or kitchen route. Returns whether it is attached after.
+    pub fn toggle_printer_on_route(&mut self, key: RouteKey<'_>, printer_id: &str) -> Option<bool> {
+        let pid = printer_id.trim();
+        if pid.is_empty() || self.printer_by_id(pid).is_none() {
+            return None;
+        }
+        let slots: Vec<String> = self.route_for(key).to_vec();
+        let found = slots.iter().position(|s| {
+            let raw = s.trim();
+            raw == pid
+                || decode_route_slot(raw).0 == pid
+                || self
+                    .virtual_printer_by_id(raw)
+                    .is_some_and(|v| v.printer_id == pid)
+        });
+        let route = self.route_mut(key);
+        if let Some(i) = found {
+            route.remove(i);
+            Some(false)
+        } else {
+            route.push(pid.to_string());
+            Some(true)
+        }
+    }
+
+    /// Rewrite virtual-printer route slots to the real printer they point at.
+    /// Returns whether the file changed.
+    pub fn flatten_routes_to_real_printers(&mut self) -> bool {
+        let vp_to_printer: std::collections::HashMap<String, String> = self
+            .virtual_printers
+            .iter()
+            .map(|v| (v.id.clone(), v.printer_id.clone()))
+            .collect();
+        let known: std::collections::HashSet<String> =
+            self.printers.iter().map(|p| p.id.clone()).collect();
+        let mut changed = !self.virtual_printers.is_empty();
+        let rewrite = |slots: &mut Vec<String>, changed: &mut bool| {
+            let mut out = Vec::new();
+            for slot in slots.iter() {
+                let raw = slot.trim();
+                let pid = if let Some(p) = vp_to_printer.get(raw) {
+                    p.clone()
+                } else {
+                    decode_route_slot(raw).0
+                };
+                if pid.is_empty() || !known.contains(&pid) {
+                    *changed = true;
+                    continue;
+                }
+                if raw != pid {
+                    *changed = true;
+                }
+                if out.iter().any(|s: &String| s == &pid) {
+                    *changed = true;
+                    continue;
+                }
+                out.push(pid);
+            }
+            *slots = out;
+        };
+        rewrite(&mut self.routes.bill, &mut changed);
+        for slots in self.routes.kot.values_mut() {
+            rewrite(slots, &mut changed);
+        }
+        self.virtual_printers.clear();
+        changed
+    }
+
+    /// Toggle a virtual printer on a place route (append or remove). Returns whether attached after.
+    pub fn toggle_virtual_on_route(&mut self, key: RouteKey<'_>, vp_id: &str) -> Option<bool> {
+        let vid = vp_id.trim();
+        if vid.is_empty() || self.virtual_printer_by_id(vid).is_none() {
+            return None;
+        }
+        let route = self.route_mut(key);
+        if let Some(i) = route.iter().position(|s| s.trim() == vid) {
+            route.remove(i);
+            Some(false)
+        } else {
+            route.push(vid.to_string());
+            Some(true)
+        }
+    }
+
+    /// Reorder two virtual-printer slots on a place (by index in the route).
+    pub fn swap_route_slots(&mut self, key: RouteKey<'_>, from: usize, to: usize) -> bool {
+        if from == to {
+            return false;
+        }
+        let route = self.route_mut(key);
+        if from >= route.len() || to >= route.len() {
+            return false;
+        }
+        route.swap(from, to);
+        true
+    }
+
+    pub fn virtual_printer_by_id(&self, id: &str) -> Option<&VirtualPrinter> {
+        self.virtual_printers.iter().find(|v| v.id == id)
+    }
+
+    /// Resolve route slots to a real printer plus the Bill or KOT format.
+    /// Layout, delivery, type size, and content width come from that format.
+    /// A leftover virtual-printer id still finds its real printer.
     pub fn destinations_for(&self, key: RouteKey<'_>) -> Vec<PrintDest> {
         let place_default = self.format_for(key);
         self.route_for(key)
             .iter()
             .filter_map(|slot| {
-                let (pid, fmt_id) = decode_route_slot(slot);
-                let p = self.printers.iter().find(|p| p.id == pid)?;
-                let format = if fmt_id.is_empty() {
-                    place_default.clone()
+                let raw = slot.trim();
+                if raw.is_empty() {
+                    return None;
+                }
+                let pid = if let Some(vp) = self.virtual_printer_by_id(raw) {
+                    vp.printer_id.clone()
                 } else {
-                    self.format_by_id(&fmt_id)
+                    decode_route_slot(raw).0
                 };
+                let p = self.printers.iter().find(|p| p.id == pid)?;
                 Some(PrintDest {
                     target: parse_target(&p.target),
-                    format,
+                    format: place_default.clone(),
                 })
             })
             .collect()
@@ -1344,12 +3048,51 @@ impl DevicePrinters {
             label,
             document: base.document,
             landscape: base.landscape,
+            delivery: base.delivery.clone(),
             em: base.em,
             line: base.line,
             baseline: base.baseline,
             side: base.side,
         });
         id
+    }
+
+    /// Owner-created config (Printers screen). Defaults: portrait + OS document.
+    /// Not a stock “KOT / Portrait / Landscape” type — owner supplies the name.
+    pub fn add_owner_config(&mut self, label: &str) -> String {
+        PrintFormat::ensure_builtins(&mut self.formats);
+        let n = self
+            .formats
+            .iter()
+            .filter(|f| !is_builtin_format(&f.id))
+            .count()
+            + 1;
+        let label = {
+            let t = label.trim();
+            if t.is_empty() {
+                format!("Config {n}")
+            } else {
+                t.to_string()
+            }
+        };
+        let id = format!("custom-{}", &uuid::Uuid::new_v4().simple().to_string()[..8]);
+        self.formats.push(PrintFormat {
+            id: id.clone(),
+            label,
+            document: true,
+            landscape: false,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
+            em: STD_EM_NORMAL,
+            line: 40,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: STD_SIDE,
+        });
+        id
+    }
+
+    /// Owner configs only (hide legacy built-in ids from the Printers list).
+    pub fn owner_configs(&self) -> impl Iterator<Item = &PrintFormat> {
+        self.formats.iter().filter(|f| !is_builtin_format(&f.id))
     }
 
     pub fn update_format(&mut self, format: PrintFormat) {
@@ -1368,16 +3111,21 @@ impl DevicePrinters {
             .unwrap_or(STD_EM_NORMAL)
     }
 
+    /// Same content width, in character columns, on the bill and the KOT format.
+    pub fn set_content_line(&mut self, cols: u32) {
+        let cols = cols.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
+        for f in self.formats.iter_mut() {
+            if is_standard_document(&f.id) || f.id == FORMAT_KOT {
+                f.line = cols;
+            }
+        }
+    }
+
     /// Set type size on all Standard document formats (portrait + landscape).
     /// Baseline tracks em + 2 so line spacing stays readable.
     pub fn set_standard_em(&mut self, em: f32) {
-        let em = if em <= (STD_EM_SMALL + STD_EM_NORMAL) / 2.0 {
-            STD_EM_SMALL
-        } else if em >= (STD_EM_NORMAL + STD_EM_LARGE) / 2.0 {
-            STD_EM_LARGE
-        } else {
-            STD_EM_NORMAL
-        };
+        // Free font size — clamp only; do not snap to Small/Normal/Large buckets.
+        let em = em.clamp(12.0, 48.0);
         let baseline = em + 2.0;
         for f in self.formats.iter_mut() {
             if is_standard_document(&f.id) {
@@ -1396,6 +3144,7 @@ impl DevicePrinters {
             return;
         }
         self.formats.retain(|f| f.id != id);
+        self.virtual_printers.retain(|v| v.config_id != id);
         if self.routes.bill_format == id {
             self.routes.bill_format = FORMAT_STANDARD_PORTRAIT.into();
         }
@@ -1513,6 +3262,9 @@ impl DevicePrinters {
     /// Collapse duplicate destinations (same target/name) and remap routes.
     /// Also drops a second route slot that is the same shown name + format
     /// (Brother_…@standard and Brother-…@standard → keep the first).
+    ///
+    /// Virtual-printer place-attach slots (bare VP ids) must be kept as-is —
+    /// treating them as printer ids drops every Kitchen-station attach on save.
     pub fn dedupe_printers(&mut self) {
         let mut keep_ids: Vec<String> = Vec::new();
         let mut remap: std::collections::HashMap<String, String> =
@@ -1535,7 +3287,13 @@ impl DevicePrinters {
             }
         }
         self.printers = kept;
+        let vp_ids: std::collections::HashSet<String> =
+            self.virtual_printers.iter().map(|v| v.id.clone()).collect();
         let map_slot = |slot: &mut String| {
+            let raw = slot.trim();
+            if vp_ids.contains(raw) {
+                return;
+            }
             let (pid, fmt) = decode_route_slot(slot);
             if let Some(n) = remap.get(&pid) {
                 *slot = encode_route_slot(n, &fmt);
@@ -1546,6 +3304,10 @@ impl DevicePrinters {
         }
         self.routes.bill.dedup();
         self.routes.bill.retain(|slot| {
+            let raw = slot.trim();
+            if vp_ids.contains(raw) {
+                return true;
+            }
             let (pid, _) = decode_route_slot(slot);
             keep_ids.iter().any(|k| k == &pid)
         });
@@ -1555,6 +3317,10 @@ impl DevicePrinters {
             }
             ids.dedup();
             ids.retain(|slot| {
+                let raw = slot.trim();
+                if vp_ids.contains(raw) {
+                    return true;
+                }
                 let (pid, _) = decode_route_slot(slot);
                 keep_ids.iter().any(|k| k == &pid)
             });
@@ -1565,15 +3331,22 @@ impl DevicePrinters {
 
     /// On each place, keep one slot per shown name + format.
     fn dedupe_route_name_formats(&mut self) {
+        let vp_ids: std::collections::HashSet<String> =
+            self.virtual_printers.iter().map(|v| v.id.clone()).collect();
         let default_bill = self.format_id_for(RouteKey::Bill);
-        Self::dedupe_slots_by_name_format(&mut self.routes.bill, &self.printers, &default_bill);
+        Self::dedupe_slots_by_name_format(
+            &mut self.routes.bill,
+            &self.printers,
+            &vp_ids,
+            &default_bill,
+        );
         let stations: Vec<String> = self.routes.kot.keys().cloned().collect();
         for sid in stations {
             let default = self.format_id_for(RouteKey::Kot {
                 station_id: sid.as_str(),
             });
             if let Some(slots) = self.routes.kot.get_mut(&sid) {
-                Self::dedupe_slots_by_name_format(slots, &self.printers, &default);
+                Self::dedupe_slots_by_name_format(slots, &self.printers, &vp_ids, &default);
             }
         }
     }
@@ -1581,11 +3354,21 @@ impl DevicePrinters {
     fn dedupe_slots_by_name_format(
         slots: &mut Vec<String>,
         printers: &[NamedPrinter],
+        vp_ids: &std::collections::HashSet<String>,
         default_fmt: &str,
     ) {
         let mut out = Vec::new();
         let mut seen = std::collections::HashSet::new();
         for slot in slots.drain(..) {
+            let raw = slot.trim();
+            // Place-attach virtual printers: one slot per VP id, never decode
+            // as printer_id@format (that drops every station attach on save).
+            if vp_ids.contains(raw) {
+                if seen.insert(format!("vp:{raw}")) {
+                    out.push(raw.to_string());
+                }
+                continue;
+            }
             let (pid, fmt) = decode_route_slot(&slot);
             let fmt = if fmt.is_empty() {
                 default_fmt.to_string()
@@ -1616,9 +3399,20 @@ impl DevicePrinters {
 
     pub fn remove_printer(&mut self, id: &str) {
         self.printers.retain(|p| p.id != id);
-        self.routes.bill.retain(|slot| decode_route_slot(slot).0 != id);
+        let removed_vp: std::collections::HashSet<String> = self
+            .virtual_printers
+            .iter()
+            .filter(|v| v.printer_id == id)
+            .map(|v| v.id.clone())
+            .collect();
+        self.virtual_printers.retain(|v| v.printer_id != id);
+        let drop_slot = |slot: &String| {
+            let raw = slot.trim();
+            removed_vp.contains(raw) || decode_route_slot(slot).0 == id
+        };
+        self.routes.bill.retain(|s| !drop_slot(s));
         for ids in self.routes.kot.values_mut() {
-            ids.retain(|slot| decode_route_slot(slot).0 != id);
+            ids.retain(|s| !drop_slot(s));
         }
     }
 
@@ -1810,6 +3604,7 @@ pub fn load_device_printers(base: &Path) -> DevicePrinters {
         .unwrap_or_default();
     printers.migrate_legacy_standard_ids();
     printers.dedupe_printers();
+    printers.flatten_routes_to_real_printers();
     printers
 }
 
@@ -1927,7 +3722,21 @@ pub fn print_route(
     text: &str,
     app_files: Option<&Path>,
 ) -> Result<ReceiptShare, String> {
+    print_route_copies(kind, route, text, app_files, 1)
+}
+
+/// Like [`print_route`], but the worker sends `copies` identical slips
+/// back-to-back (KOT multi-copy) without re-writing the receipt file or
+/// inserting artificial delays between copies.
+pub fn print_route_copies(
+    kind: PrintKind,
+    route: RouteKey<'_>,
+    text: &str,
+    app_files: Option<&Path>,
+    copies: u32,
+) -> Result<ReceiptShare, String> {
     let path = write_receipt(text, app_files)?;
+    let copies = copies.max(1);
     let opened = match sink() {
         PrintSink::Os => {
             let dests: Vec<PrintDest> = printers()
@@ -1938,7 +3747,7 @@ pub fn print_route(
             if dests.is_empty() {
                 if kind == PrintKind::Kot {
                     note_problem(
-                        "No printer for that kitchen place — assign one in Settings → Printers → Places"
+                        "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
                             .into(),
                     );
                 }
@@ -1951,6 +3760,7 @@ pub fn print_route(
                     mode,
                     path: path.clone(),
                     text: text.to_string(),
+                    copies,
                 }) {
                     Ok(()) => true,
                     Err(e) => {
@@ -1977,7 +3787,7 @@ pub fn print_route(
             } else {
                 if kind == PrintKind::Kot {
                     note_problem(
-                        "No printer for that kitchen place — assign one in Settings → Printers → Places"
+                        "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
                             .into(),
                     );
                 }
@@ -1999,6 +3809,8 @@ struct Job {
     mode: RoutePrintMode,
     path: PathBuf,
     text: String,
+    /// Identical slips to send (KOT copies). Worker sends back-to-back.
+    copies: u32,
 }
 
 static PROBLEMS: Mutex<Vec<String>> = Mutex::new(Vec::new());
@@ -2043,6 +3855,9 @@ fn queue(job: Job) -> Result<(), String> {
             .name("print".into())
             .spawn(move || {
                 for job in rx {
+                    // One send with N identical slips in one payload — do not
+                    // open N TCP/`lp` sessions (that made copy 2/3 feel delayed).
+                    let copies = job.copies.max(1);
                     match job.mode {
                         RoutePrintMode::First => {
                             let mut last_err: Option<(String, String)> = None;
@@ -2052,6 +3867,7 @@ fn queue(job: Job) -> Result<(), String> {
                                     &dest.target,
                                     &job.path,
                                     &job.text,
+                                    copies,
                                 ) {
                                     Ok(()) => {
                                         last_err = None;
@@ -2073,6 +3889,7 @@ fn queue(job: Job) -> Result<(), String> {
                                     &dest.target,
                                     &job.path,
                                     &job.text,
+                                    copies,
                                 ) {
                                     Ok(()) => any_ok = true,
                                     Err(e) => {
@@ -2136,8 +3953,11 @@ fn send_to_printer(
     target: &PrinterTarget,
     path: &Path,
     text: &str,
+    copies: u32,
 ) -> Result<(), String> {
-    let bytes = escpos_job_format(format, text);
+    let copies = copies.max(1);
+    let one = escpos_job_format(format, text);
+    let bytes = replicate_escpos_copies(&one, copies);
     match target {
         PrinterTarget::Network(addr) => print_network_bytes(addr, &bytes),
         PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &bytes),
@@ -2149,11 +3969,15 @@ fn send_to_printer(
                     format.label
                 ));
             }
-            print_android_document(text, format, format.landscape)
+            // Document path: OS copies count when available; else repeat.
+            for _ in 0..copies {
+                print_android_document(text, format, format.landscape)?;
+            }
+            Ok(())
         }
         PrinterTarget::Default => {
             if format.document {
-                print_system_standard(None, path, text, format, format.landscape)
+                print_system_standard(None, path, text, format, format.landscape, copies)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB — not the system print service",
@@ -2165,7 +3989,7 @@ fn send_to_printer(
         }
         PrinterTarget::Named(name) => {
             if format.document {
-                print_system_standard(Some(name), path, text, format, format.landscape)
+                print_system_standard(Some(name), path, text, format, format.landscape, copies)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB — not a system printer name",
@@ -2178,10 +4002,28 @@ fn send_to_printer(
     }
 }
 
+/// N identical ESC/POS slips back-to-back (each already ends with cut).
+fn replicate_escpos_copies(one: &[u8], copies: u32) -> Vec<u8> {
+    let n = copies.max(1) as usize;
+    if n == 1 {
+        return one.to_vec();
+    }
+    let mut out = Vec::with_capacity(one.len().saturating_mul(n));
+    for _ in 0..n {
+        out.extend_from_slice(one);
+    }
+    out
+}
+
 fn print_android_document(text: &str, format: &PrintFormat, landscape: bool) -> Result<(), String> {
-    // Same Noto PNG as desktop Standard — never rely on the device font.
-    // Honour format em / line / baseline / side (Small / Normal / Large).
-    let png = crate::receipt_raster::png_metrics(text, &format.raster_metrics())?;
+    // Same Noto PNG as desktop. Kitchen marks keep size, weight, and alignment
+    // across the content width. A bill uses the format's type size and width.
+    let metrics = format.raster_metrics();
+    let png = if text.contains(KOT_STYLE_MARK) {
+        crate::receipt_raster::png_lines(&styled_slip_lines(text, &metrics), &metrics)?
+    } else {
+        crate::receipt_raster::png_metrics(text, &metrics)?
+    };
     #[cfg(target_os = "android")]
     {
         crate::print_android::print_png("Khaynjo", &png, landscape)
@@ -2202,18 +4044,31 @@ fn print_system_standard(
     text: &str,
     format: &PrintFormat,
     landscape: bool,
+    copies: u32,
 ) -> Result<(), String> {
-    let png = crate::receipt_raster::png_metrics(text, &format.raster_metrics())?;
+    let metrics = format.raster_metrics();
+    // A kitchen ticket carries a size, a weight, and Start/Center/End on each
+    // line. Drawing the stripped text left-aligned threw those away, so the
+    // chips did nothing on an OS-document printer. Bills have no marks and
+    // still use this format's type size and content width.
+    let png = if text.contains(KOT_STYLE_MARK) {
+        crate::receipt_raster::png_lines(&styled_slip_lines(text, &metrics), &metrics)?
+    } else {
+        crate::receipt_raster::png_metrics(text, &metrics)?
+    };
     let png_path = path.with_extension("png");
     fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
         let _ = name;
-        crate::print_android::print_png("Khaynjo", &png, landscape)
+        for _ in 0..copies.max(1) {
+            crate::print_android::print_png("Khaynjo", &png, landscape)?;
+        }
+        Ok(())
     }
     #[cfg(not(target_os = "android"))]
     {
-        print_system_image(name, &png_path, landscape)
+        print_system_image(name, &png_path, landscape, copies.max(1))
     }
 }
 
@@ -2272,18 +4127,68 @@ pub fn escpos_job(text: &str) -> Vec<u8> {
 
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     let cleaned = text.replace('\r', "");
-    if printer_has_letters(&cleaned) {
-        // English text mode: map em → GS ! character size. Custom / far-from-
-        // bucket em values rasterise so Small / Large / type size are honoured.
+    let plain = strip_kot_style_marks(&cleaned);
+    // A KOT from Settings carries a size and a weight on every line. Draw
+    // those with Noto so 16 and 32, and Light and Bold, are different ink.
+    // Unmarked text stays on the built-in font when the head has the letters.
+    if cleaned.contains(KOT_STYLE_MARK) {
+        return escpos_picture_styled(&cleaned, &format.raster_metrics());
+    }
+    if printer_has_letters(&plain) {
         if let Some((gs, col_div)) = escpos_gs_bang_for_em(format.em) {
             let cols = (format.line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize / col_div).max(8);
-            escpos_job_text_cols_sized(&cleaned, cols, gs)
+            let expanded = expand_kot_column_tabs(&cleaned, cols);
+            escpos_job_text_cols_sized(&expanded, cols, gs)
         } else {
-            crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
+            crate::receipt_raster::escpos_picture_metrics(&plain, &format.raster_metrics())
         }
     } else {
-        crate::receipt_raster::escpos_picture_metrics(&cleaned, &format.raster_metrics())
+        crate::receipt_raster::escpos_picture_metrics(&plain, &format.raster_metrics())
     }
+}
+
+/// One slip line's size, weight, and alignment. Start/Center/End are shifts
+/// across `default.width_dots`, which is the selected content width.
+pub fn styled_slip_lines(
+    text: &str,
+    default: &crate::receipt_raster::RasterMetrics,
+) -> Vec<crate::receipt_raster::StyledLine> {
+    text.lines()
+        .map(|line| {
+            let (style, body) = take_kot_line_style(line);
+            let (em, weight, align) = match style {
+                Some(style) => (
+                    style.size_em as f32,
+                    match style.weight {
+                        KotFontWeight::Light => crate::receipt_raster::RasterWeight::Light,
+                        KotFontWeight::Bold => crate::receipt_raster::RasterWeight::Bold,
+                        KotFontWeight::Regular => crate::receipt_raster::RasterWeight::Regular,
+                    },
+                    match style.align {
+                        KotAlign::Center => crate::receipt_raster::LineAlign::Center,
+                        KotAlign::End => crate::receipt_raster::LineAlign::End,
+                        KotAlign::Start => crate::receipt_raster::LineAlign::Start,
+                    },
+                ),
+                None => (
+                    default.em,
+                    crate::receipt_raster::RasterWeight::Regular,
+                    crate::receipt_raster::LineAlign::Start,
+                ),
+            };
+            crate::receipt_raster::StyledLine {
+                text: body.to_string(),
+                em,
+                weight,
+                align,
+            }
+        })
+        .collect()
+}
+
+/// Raster job that keeps each line's point size, weight, and alignment.
+fn escpos_picture_styled(text: &str, default: &crate::receipt_raster::RasterMetrics) -> Vec<u8> {
+    crate::receipt_raster::escpos_picture_lines(&styled_slip_lines(text, default), default)
 }
 
 /// Map format `em` to ESC/POS `GS !` n and a wrap-column divisor.
@@ -2322,7 +4227,8 @@ pub fn escpos_job_text_cols(text: &str, cols: usize) -> Vec<u8> {
 /// width−1, low nibble = height−1; `0x00` = 1×1, `0x11` = 2×2).
 pub fn escpos_job_text_cols_sized(text: &str, cols: usize, gs_bang: u8) -> Vec<u8> {
     let cols = (cols as u32).clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize;
-    let wrapped = wrap_escpos_cols(text, cols);
+    let plain = strip_kot_style_marks(text);
+    let wrapped = wrap_escpos_cols(&plain, cols);
     let mut out = Vec::with_capacity(wrapped.len().saturating_add(48));
     out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
     out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0: PC437
@@ -2419,13 +4325,26 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
 
 /// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
 #[cfg(not(target_os = "android"))]
-fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Result<(), String> {
+fn print_system_image(
+    name: Option<&str>,
+    path: &Path,
+    landscape: bool,
+    copies: u32,
+) -> Result<(), String> {
+    let copies = copies.max(1);
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
         let mut cmd = Command::new("lp");
         if let Some(name) = name {
             cmd.args(["-d", name]);
         }
+        if copies > 1 {
+            cmd.args(["-n", &copies.to_string()]);
+        }
+        // Without fit, CUPS often treats the PNG as 72 DPI (1152px ≈ 16″)
+        // and clips both sides on A4/Letter / Canon G3010 trays (bill.jpeg).
+        cmd.args(["-o", "fit-to-page"]);
+        cmd.args(["-o", "print-scaling=fit"]);
         // 3 = portrait, 4 = landscape (IPP orientation-requested).
         cmd.args([
             "-o",
@@ -2461,7 +4380,8 @@ fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Resul
              $doc = New-Object System.Drawing.Printing.PrintDocument; \
              $doc.DocumentName = 'Khaynjo'; \
              $doc.DefaultPageSettings.Landscape = {land}; \
-             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(40,40,40,40);"
+             $doc.PrinterSettings.Copies = [int16]{copies}; \
+             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(75,75,75,75);"
         );
         if let Some(name) = name {
             script.push_str(&format!(
@@ -2556,8 +4476,9 @@ fn cups_confirm_after_lp(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), Str
     let Some(printer) = name else {
         return Ok(());
     };
-    // Backend updates printer-state-message shortly after accept.
-    std::thread::sleep(Duration::from_millis(500));
+    // Check immediately — do not sleep 500ms per job. Multi-copy KOTs used to
+    // queue the first slip at once and then stall ~0.5s between each follow-up
+    // copy because this wait ran on every `lp` accept.
     if let Some(blocked) = cups_printer_unreachable(printer) {
         if let Some(job) = &job {
             let _ = Command::new("cancel").arg(job).output();
@@ -3089,22 +5010,22 @@ mod tests {
     }
 
     #[test]
-    fn missing_station_falls_back_to_bill_printer() {
+    fn named_kitchen_never_steals_bill_printer() {
         let mut cfg = DevicePrinters::default();
         let p = cfg.add_printer("Counter", "192.168.1.50");
         cfg.routes.bill = vec![p.clone()];
-        // No KOT map entries at all — legacy fallthrough to Bill.
+        // Default kitchen `""` with no Outputs still uses Bill.
         assert_eq!(
             cfg.route_for(RouteKey::Kot { station_id: "" }),
             &[p.clone()]
         );
-        assert_eq!(
-            cfg.route_for(RouteKey::Kot {
+        // Named kitchen with no route entry: don't print — never Bill.
+        assert!(cfg
+            .route_for(RouteKey::Kot {
                 station_id: "station-a"
-            }),
-            &[p.clone()]
-        );
-        // An explicit empty station entry means don't print there — not Bill.
+            })
+            .is_empty());
+        // Explicit empty station entry: still don't print.
         cfg.ensure_station_routes(["station-a"]);
         assert!(cfg
             .route_for(RouteKey::Kot {
@@ -3218,16 +5139,24 @@ mod tests {
             cfg.routes.bill[0],
             encode_route_slot(&a, FORMAT_STANDARD_PORTRAIT)
         );
-        cfg.upsert_station_group("Grill", vec!["hot".into(), "cold".into()]);
-        cfg.apply_outputs_to_stations(RouteKey::Bill, &["hot".into(), "cold".into()]);
-        assert_eq!(
-            cfg.route_for(RouteKey::Kot { station_id: "hot" }),
-            cfg.routes.bill.as_slice()
-        );
-        assert_eq!(
-            cfg.format_id_for(RouteKey::Kot { station_id: "cold" }),
-            FORMAT_STANDARD_PORTRAIT
-        );
+        let vp = cfg
+            .add_virtual_printer(
+                "Counter",
+                &a,
+                VirtualPrinterValues {
+                    landscape: false,
+                    delivery: DELIVERY_ESCPOS.into(),
+                    paper_width_mm: 80,
+                    ..VirtualPrinterValues::default()
+                },
+            )
+            .expect("virtual");
+        assert_eq!(cfg.virtual_printers.len(), 1);
+        let v = cfg.virtual_printer_by_id(&vp).unwrap();
+        assert!(!v.landscape);
+        assert!(!v.document);
+        cfg.ensure_virtual_printers_from_routes();
+        assert_eq!(cfg.virtual_printers.len(), 1, "does not reseed when non-empty");
     }
 
     #[test]
@@ -3267,6 +5196,34 @@ mod tests {
         // Nobody listening: said in words, not a hang.
         let closed = std::net::TcpListener::bind("127.0.0.1:0").unwrap().local_addr().unwrap().to_string();
         assert!(print_network(&closed, "x").unwrap_err().contains("cannot reach"));
+    }
+
+    #[test]
+    fn weak_standard_side_margins_upgrade_to_product_default() {
+        let mut list = vec![PrintFormat {
+            id: FORMAT_STANDARD_PORTRAIT.into(),
+            label: "Standard Portrait".into(),
+            document: true,
+            landscape: false,
+            delivery: String::new(),
+            em: STD_EM_NORMAL,
+            line: 40,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: 12.0,
+        }];
+        PrintFormat::ensure_builtins(&mut list);
+        let p = list.iter().find(|f| f.id == FORMAT_STANDARD_PORTRAIT).unwrap();
+        assert_eq!(p.side, STD_SIDE);
+        assert_eq!(p.em, STD_EM_NORMAL); // em untouched — only broken side migrates
+        let mut kept = vec![PrintFormat {
+            side: 28.0,
+            em: STD_EM_LARGE,
+            baseline: STD_EM_LARGE + 2.0,
+            ..PrintFormat::standard_portrait()
+        }];
+        PrintFormat::ensure_builtins(&mut kept);
+        assert_eq!(kept[0].side, 28.0);
+        assert_eq!(kept[0].em, STD_EM_LARGE);
     }
 
     /// Printers belong to each shop's books folder and reload from there.
@@ -3390,14 +5347,18 @@ mod tests {
             }),
             vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
-        // Unknown station (no map entry) still falls back to default kitchen.
-        assert_eq!(
-            cfg.route_for(RouteKey::Kot {
+        // Named kitchen with no route entry: don't steal default kitchen / Bill.
+        assert!(cfg
+            .route_for(RouteKey::Kot {
                 station_id: "unknown"
-            }),
+            })
+            .is_empty());
+        // Default kitchen `""` still has its own Outputs.
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot { station_id: "" }),
             &[main.clone()][..]
         );
-        // Explicit empty list = this station prints nowhere (not a shared pool).
+        // Explicit empty list = this station prints nowhere.
         *cfg.route_mut(RouteKey::Kot {
             station_id: "st-bar",
         }) = Vec::new();
@@ -3424,6 +5385,112 @@ mod tests {
             cfg.targets_for(key),
             vec![PrinterTarget::Network("192.168.1.11:9100".into())]
         );
+    }
+
+    #[test]
+    fn dedupe_keeps_virtual_printer_station_attach() {
+        let mut cfg = DevicePrinters::default();
+        let real = cfg.add_printer("80Series2", "80Series2");
+        let vp = cfg
+            .add_virtual_printer(
+                "KOTPrinter",
+                &real,
+                VirtualPrinterValues {
+                    landscape: false,
+                    em: STD_EM_NORMAL,
+                    line: 40,
+                    side: STD_SIDE,
+                    delivery: DELIVERY_ESCPOS.into(),
+                    paper_width_mm: 80,
+                },
+            )
+            .unwrap();
+        let key = RouteKey::Kot {
+            station_id: "kitchen-kot",
+        };
+        assert_eq!(cfg.toggle_virtual_on_route(key, &vp), Some(true));
+        assert_eq!(cfg.route_for(key), &[vp.clone()][..]);
+        assert!(!cfg.destinations_for(key).is_empty());
+        // save_device_printers always dedupes — must not wipe place→VP attach.
+        cfg.dedupe_printers();
+        assert_eq!(cfg.route_for(key), &[vp.clone()][..]);
+        assert!(!cfg.destinations_for(key).is_empty());
+    }
+
+    #[test]
+    fn vp_destination_uses_place_slip_metrics_not_vp_leftovers() {
+        let mut cfg = DevicePrinters::default();
+        let real = cfg.add_printer("80Series2", "80Series2");
+        // Stale VP metrics (UI no longer edits these — Bill & KOT format owns them).
+        let _vp = cfg
+            .add_virtual_printer(
+                "KOTPrinter",
+                &real,
+                VirtualPrinterValues {
+                    landscape: true,
+                    em: 20.0,
+                    line: 40,
+                    side: 16.0,
+                    delivery: DELIVERY_SYSTEM_SPOOLER.into(),
+                    paper_width_mm: 80,
+                },
+            )
+            .unwrap();
+        let key = RouteKey::Kot {
+            station_id: "hot",
+        };
+        assert_eq!(cfg.toggle_printer_on_route(key, &real), Some(true));
+        // Bill & KOT format owns layout, delivery, type size, and content width.
+        if let Some(f) = cfg.formats.iter_mut().find(|f| f.id == FORMAT_KOT) {
+            f.landscape = true;
+            f.document = true;
+            f.delivery = DELIVERY_SYSTEM_SPOOLER.into();
+            f.em = 28.0;
+            f.line = 32;
+            f.side = 4.0;
+            f.baseline = 30.0;
+        }
+        let dest = &cfg.destinations_for(key)[0];
+        assert!(dest.format.landscape, "layout comes from the KOT format");
+        assert!(dest.format.document, "delivery comes from the KOT format");
+        assert_eq!(dest.format.em, 28.0);
+        assert_eq!(dest.format.line, 32);
+        assert_eq!(dest.format.side, 4.0);
+    }
+
+    #[test]
+    fn save_load_keeps_virtual_printer_station_attach() {
+        let dir = std::env::temp_dir().join(format!(
+            "khaynjo-vp-route-{}",
+            uuid::Uuid::new_v4()
+        ));
+        let _ = fs::create_dir_all(&dir);
+        let mut cfg = DevicePrinters::default();
+        let real = cfg.add_printer("80Series2", "80Series2");
+        let vp = cfg
+            .add_virtual_printer(
+                "KOTPrinter",
+                &real,
+                VirtualPrinterValues {
+                    landscape: false,
+                    em: STD_EM_NORMAL,
+                    line: 40,
+                    side: STD_SIDE,
+                    delivery: DELIVERY_ESCPOS.into(),
+                    paper_width_mm: 80,
+                },
+            )
+            .unwrap();
+        let key = RouteKey::Kot {
+            station_id: "4d746da7-52b3-49e1-a5ad-5160af639127",
+        };
+        assert_eq!(cfg.toggle_virtual_on_route(key, &vp), Some(true));
+        save_device_printers(&dir, &cfg).unwrap();
+        let loaded = load_device_printers(&dir);
+        assert_eq!(loaded.route_for(key), &[real][..]);
+        assert!(loaded.virtual_printers.is_empty());
+        assert!(!loaded.destinations_for(key).is_empty());
+        let _ = fs::remove_dir_all(&dir);
     }
 
     #[test]

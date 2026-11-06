@@ -662,6 +662,114 @@ impl App {
                 self.sync_chrome(cx);
             }
         }
+        for (mm, idle, on) in [
+            (58u32, ids!(job_width_58), ids!(job_width_58_on)),
+            (80, ids!(job_width_80), ids!(job_width_80_on)),
+            (100, ids!(job_width_100), ids!(job_width_100_on)),
+            (210, ids!(job_width_210), ids!(job_width_210_on)),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                self.ui
+                    .text_input(cx, ids!(job_width_input))
+                    .set_text(cx, &mm.to_string());
+                if let Err(e) = self.apply_focused_job(None, None, Some(mm), None) {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        if let Some(text) = self
+            .ui
+            .text_input(cx, ids!(job_width_input))
+            .changed(actions)
+        {
+            if let Ok(mm) = text.trim().parse::<u32>() {
+                if (40..=210).contains(&mm) {
+                    let current = {
+                        let st = app_state().lock().unwrap();
+                        let key = parse_courier_route_key(&st.printer_route_key);
+                        st.printer_draft.format_for(key).shown_content_width_mm()
+                    };
+                    if mm != current {
+                        if let Err(e) = self.apply_focused_job(None, None, Some(mm), None) {
+                            self.set_status(cx, e);
+                        }
+                        self.sync_chrome(cx);
+                    }
+                }
+            }
+        }
+        if self
+            .choice_chip_clicked(cx, actions, ids!(job_layout_portrait), ids!(job_layout_portrait_on))
+        {
+            if let Err(e) = self.apply_focused_job(Some(false), None, None, None) {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(job_layout_landscape),
+            ids!(job_layout_landscape_on),
+        ) {
+            if let Err(e) = self.apply_focused_job(Some(true), None, None, None) {
+                self.set_status(cx, e);
+            }
+            self.sync_chrome(cx);
+        }
+        for (delivery, idle, on) in [
+            (
+                print_share::DELIVERY_SYSTEM_SPOOLER,
+                ids!(job_deliv_os),
+                ids!(job_deliv_os_on),
+            ),
+            (
+                print_share::DELIVERY_RAW_DEVICE,
+                ids!(job_deliv_raw),
+                ids!(job_deliv_raw_on),
+            ),
+            (
+                print_share::DELIVERY_ESCPOS,
+                ids!(job_deliv_escpos),
+                ids!(job_deliv_escpos_on),
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                if let Err(e) = self.apply_focused_job(None, Some(delivery), None, None) {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(job_format_save)).clicked(actions) {
+            let width_text = self.ui.text_input(cx, ids!(job_width_input)).text();
+            let size_text = self.ui.text_input(cx, ids!(job_size_input)).text();
+            let mm = width_text
+                .trim()
+                .parse::<u32>()
+                .ok()
+                .filter(|n| (40..=210).contains(n));
+            let em = size_text.trim().parse::<f32>().ok();
+            match self.apply_focused_job(None, None, mm, em) {
+                Ok(()) => {
+                    let label = app_state().lock().unwrap().printer_route_key == "label";
+                    self.set_status(
+                        cx,
+                        app_t(if label {
+                            "save_label_format"
+                        } else {
+                            "save_receipt_format"
+                        }),
+                    );
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(job_format_test)).clicked(actions) {
+            self.print_focused_job_sample(cx);
+        }
         if self.ui.button(cx, ids!(printers_save)).clicked(actions) {
             let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
             if is_client {

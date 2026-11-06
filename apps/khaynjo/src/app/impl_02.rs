@@ -344,6 +344,45 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui.redraw(cx);
             return;
         }
+        // Any Settings screen (hub or an open section). A full sync_chrome
+        // walks every other screen — reports, audit SQL, stock, RTL on
+        // hundreds of labels — and the page sat blank until that finished.
+        // Section bodies are filled by `open_settings_panel`, not here.
+        {
+            let on_settings = app_state().lock().unwrap().screen == Screen::Settings;
+            if on_settings {
+                let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
+                self.show_screen(cx, Screen::Settings);
+                self.sync_settings_panels(cx);
+                self.sync_venue_brand(cx);
+                if self.ui.view(cx, ids!(settings_panel_units)).visible() {
+                    let units_rows = {
+                        let st = app_state().lock().unwrap();
+                        st.store
+                            .as_ref()
+                            .map(|s| units_report_rows(s, |k| st.t(k)))
+                            .unwrap_or_default()
+                    };
+                    self.set_report_rows(cx, ids!(units_label), units_rows);
+                }
+                if self.ui.view(cx, ids!(settings_panel_pickers)).visible() {
+                    let sibling_rows = {
+                        let st = app_state().lock().unwrap();
+                        st.store
+                            .as_ref()
+                            .map(|s| sibling_pickers_rows(s, |k| st.t(k)))
+                            .unwrap_or_default()
+                    };
+                    self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
+                }
+                self.align_label(cx, ids!(settings_hub_help), rtl);
+                self.paint_header_back_chrome(cx);
+                self.lift_footer_above_system_bar(cx);
+                self.repair_focused_carets(cx);
+                self.ui.redraw(cx);
+                return;
+            }
+        }
         // Soft keyboard open on setup/auth: a full chrome rebuild (locale +
         // Settings SQL) freezes Android for seconds and can hide the IME.
         // Digits still land in the field; Pair / Unlock triggers a real sync.
@@ -1449,6 +1488,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 };
                 drop(st);
                 self.set_report_rows(cx, ids!(stations_label), station_rows);
+                self.paint_station_print_attach(cx);
             }
             {
                 let (heading, rows, has) = {
@@ -2698,28 +2738,29 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             // Printers / units / sibling pickers — Settings only (was rebuilt on
             // every sync_chrome and froze Floor / Lock on phones).
             if screen == Screen::Settings {
-            // Only paint the printers panel while it is open — Add/assign
-            // refresh via paint_printers_panel, not a full Settings rebuild.
-            if self.ui.view(cx, ids!(settings_panel_printers)).visible() {
-                self.paint_printers_panel(cx);
+            // Do not paint Printers / Bill & KOT on every sync_chrome.
+            // Units + sibling pickers only while that section is visible.
+            if self.ui.view(cx, ids!(settings_panel_units)).visible() {
+                let units_rows = {
+                    let st = app_state().lock().unwrap();
+                    st.store
+                        .as_ref()
+                        .map(|s| units_report_rows(s, |k| st.t(k)))
+                        .unwrap_or_default()
+                };
+                self.set_report_rows(cx, ids!(units_label), units_rows);
             }
-            let units_rows = {
-                let st = app_state().lock().unwrap();
-                st.store
-                    .as_ref()
-                    .map(|s| units_report_rows(s, |k| st.t(k)))
-                    .unwrap_or_default()
-            };
-            self.set_report_rows(cx, ids!(units_label), units_rows);
-            let sibling_rows = {
-                let st = app_state().lock().unwrap();
-                st.store
-                    .as_ref()
-                    .map(|s| sibling_pickers_rows(s, |k| st.t(k)))
-                    .unwrap_or_default()
-            };
-            self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
-            } // Settings printers / units / siblings
+            if self.ui.view(cx, ids!(settings_panel_pickers)).visible() {
+                let sibling_rows = {
+                    let st = app_state().lock().unwrap();
+                    st.store
+                        .as_ref()
+                        .map(|s| sibling_pickers_rows(s, |k| st.t(k)))
+                        .unwrap_or_default()
+                };
+                self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
+            }
+            } // Settings units / siblings when those panels are open
             if screen == Screen::Floor {
                 let filter = self.ui.text_input(cx, ids!(floor_waiter_filter)).text();
                 let ops = {

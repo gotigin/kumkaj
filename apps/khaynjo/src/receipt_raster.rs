@@ -18,23 +18,26 @@ const BAND: usize = 128;
 /// print thin strokes faint).
 const INK: f32 = 0.45;
 
-/// Letter size, line pitch, baseline and side margin (dots).
+/// Letter size, line pitch, baseline, side margin, and content width (dots).
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct RasterMetrics {
     pub em: f32,
     pub line: usize,
     pub baseline: f32,
     pub side: f32,
+    /// Dots across the content. [`PAPER_DOTS`] is a 58 mm content width.
+    pub width_dots: usize,
 }
 
 impl RasterMetrics {
-    /// Built-in Standard (bill) metrics.
+    /// Built-in Standard (bill / OS document) metrics — generic product default.
     pub const fn standard() -> Self {
         Self {
-            em: 22.0,
+            em: 20.0,
             line: 32,
-            baseline: 24.0,
-            side: 8.0,
+            baseline: 22.0,
+            side: 16.0,
+            width_dots: PAPER_DOTS,
         }
     }
 
@@ -45,8 +48,45 @@ impl RasterMetrics {
             line: 36,
             baseline: 26.0,
             side: 4.0,
+            width_dots: PAPER_DOTS,
         }
     }
+
+    /// Page width in dots, a multiple of 8 so each raster row is whole bytes.
+    pub fn page_dots(self) -> usize {
+        let dots = if self.width_dots == 0 {
+            PAPER_DOTS
+        } else {
+            self.width_dots
+        };
+        dots.max(8) & !7
+    }
+}
+
+/// Stroke weight for one styled line.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum RasterWeight {
+    Light,
+    Regular,
+    Bold,
+}
+
+/// Where the line sits in the content width. Start is the left edge of the
+/// paper; End is the right. The slip text already swapped these for RTL.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
+pub enum LineAlign {
+    #[default]
+    Start,
+    Center,
+    End,
+}
+
+/// One slip line drawn at its own point size, weight, and alignment.
+pub struct StyledLine {
+    pub text: String,
+    pub em: f32,
+    pub weight: RasterWeight,
+    pub align: LineAlign,
 }
 
 /// How the slip is drawn: Standard (bills) vs KOT (kitchen tickets).
@@ -110,8 +150,19 @@ pub fn escpos_picture_style(text: &str, style: SlipStyle) -> Vec<u8> {
 
 /// ESC/POS raster using explicit metrics (custom formats).
 pub fn escpos_picture_metrics(text: &str, m: &RasterMetrics) -> Vec<u8> {
-    let (rows, height) = draw_metrics(text, m);
-    let row_bytes = PAPER_DOTS / 8;
+    let width = m.page_dots();
+    pack_escpos_picture(draw_metrics(text, m), width)
+}
+
+/// ESC/POS raster where each line keeps its own point size and weight.
+pub fn escpos_picture_lines(lines: &[StyledLine], m: &RasterMetrics) -> Vec<u8> {
+    let width = m.page_dots();
+    pack_escpos_picture(draw_lines(lines, m), width)
+}
+
+fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
+    let (rows, height) = drawn;
+    let row_bytes = (width_dots.max(8) & !7) / 8;
     let mut out = vec![0x1B, 0x40]; // ESC @: reset
     for top in (0..height).step_by(BAND) {
         let h = BAND.min(height - top);
@@ -139,24 +190,108 @@ pub fn draw_style(text: &str, style: SlipStyle) -> (Vec<u8>, usize) {
 /// bit, 1 = black) and the height in dots.
 pub fn draw_metrics(text: &str, m: &RasterMetrics) -> (Vec<u8>, usize) {
     let faces = faces();
-    let room = PAPER_DOTS as f32 - 2.0 * m.side;
+    let width = m.page_dots();
+    let room = width as f32 - 2.0 * m.side;
     let lines: Vec<Vec<Placed>> = text
         .lines()
         .flat_map(|l| wrap(&faces, l, room, m))
         .collect();
     let height = lines.len().max(1) * m.line;
-    let mut dots = vec![false; PAPER_DOTS * height];
+    let mut dots = vec![false; width * height];
     for (i, line) in lines.iter().enumerate() {
         let baseline = (i * m.line) as f32 + m.baseline;
         for g in line {
-            stamp(&faces[g.face], g, baseline, m, &mut dots);
+            stamp(&faces[g.face], g, baseline, m, &mut dots, INK, 0.0);
         }
     }
-    let mut rows = vec![0u8; PAPER_DOTS / 8 * height];
+    let mut rows = vec![0u8; width / 8 * height];
     for (i, _) in dots.iter().enumerate().filter(|(_, on)| **on) {
         rows[i / 8] |= 0x80 >> (i % 8);
     }
     (rows, height)
+}
+
+/// Each line at its own size and weight. Bold is a second stamp one dot
+/// to the right (no bold cut of every script). Light keeps only the core
+/// of the stroke so it is thinner than Regular.
+pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize) {
+    let faces = faces();
+    let side = page.side.max(0.0);
+    let width = page.page_dots();
+    let room = width as f32 - 2.0 * side;
+    struct Row {
+        glyphs: Vec<Placed>,
+        em: f32,
+        weight: RasterWeight,
+        pitch: usize,
+        baseline: f32,
+    }
+    let mut rows: Vec<Row> = Vec::new();
+    for line in lines {
+        let em = line.em.clamp(8.0, 64.0);
+        let pitch = ((em * 1.45).round() as usize).clamp(16, 96);
+        let baseline = em * 0.92;
+        let m = RasterMetrics {
+            em,
+            line: pitch,
+            baseline,
+            side,
+            width_dots: width,
+        };
+        let wrapped = if line.text.is_empty() {
+            vec![Vec::new()]
+        } else {
+            wrap_aligned(&faces, &line.text, room, &m, line.align)
+        };
+        for glyphs in wrapped {
+            rows.push(Row {
+                glyphs,
+                em,
+                weight: line.weight,
+                pitch,
+                baseline,
+            });
+        }
+    }
+    if rows.is_empty() {
+        rows.push(Row {
+            glyphs: Vec::new(),
+            em: 24.0,
+            weight: RasterWeight::Regular,
+            pitch: 36,
+            baseline: 26.0,
+        });
+    }
+    let height: usize = rows.iter().map(|r| r.pitch).sum();
+    let mut dots = vec![false; width * height];
+    let mut y = 0usize;
+    for row in &rows {
+        let baseline = y as f32 + row.baseline;
+        let m = RasterMetrics {
+            em: row.em,
+            line: row.pitch,
+            baseline: row.baseline,
+            side,
+            width_dots: width,
+        };
+        let ink = match row.weight {
+            RasterWeight::Light => 0.72,
+            RasterWeight::Regular => INK,
+            RasterWeight::Bold => 0.38,
+        };
+        for g in &row.glyphs {
+            stamp(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.0);
+            if row.weight == RasterWeight::Bold {
+                stamp(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.85);
+            }
+        }
+        y += row.pitch;
+    }
+    let mut packed = vec![0u8; width / 8 * height];
+    for (i, _) in dots.iter().enumerate().filter(|(_, on)| **on) {
+        packed[i / 8] |= 0x80 >> (i % 8);
+    }
+    (packed, height)
 }
 
 /// Letters of `text` no bundled font has (they print as "?").
@@ -179,13 +314,24 @@ pub fn png_document(text: &str) -> Result<Vec<u8>, String> {
 /// PNG of `text` with explicit metrics (custom formats).
 pub fn png_metrics(text: &str, m: &RasterMetrics) -> Result<Vec<u8>, String> {
     let (rows, height) = draw_metrics(text, m);
+    png_from_dots(&rows, height, m.page_dots())
+}
+
+/// PNG where each line keeps its own size, weight, and alignment.
+/// Alignment is a shift across `m.width_dots` (the selected content width).
+pub fn png_lines(lines: &[StyledLine], m: &RasterMetrics) -> Result<Vec<u8>, String> {
+    let (rows, height) = draw_lines(lines, m);
+    png_from_dots(&rows, height, m.page_dots())
+}
+
+fn png_from_dots(rows: &[u8], height: usize, page: usize) -> Result<Vec<u8>, String> {
     let scale = DOCUMENT_PNG_SCALE;
-    let w = (PAPER_DOTS as u32).saturating_mul(scale);
+    let w = (page as u32).saturating_mul(scale);
     let h = (height as u32).saturating_mul(scale).max(scale);
-    let row_bytes = PAPER_DOTS / 8;
+    let row_bytes = page / 8;
     let mut rgba = vec![255u8; (w as usize) * (h as usize) * 4];
     for y in 0..height {
-        for x in 0..PAPER_DOTS {
+        for x in 0..page {
             let on = rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0;
             if !on {
                 continue;
@@ -219,14 +365,65 @@ struct Placed {
     dy: f32,
 }
 
+fn is_rule_line(line: &str) -> bool {
+    let t = line.trim();
+    t.chars().count() >= 4 && t.chars().all(|c| c == '-' || c == '_' || c == '─')
+}
+
+/// Repeat one dash until it meets the right content edge.
+fn rule_across(faces: &[Face], room: f32, m: &RasterMetrics) -> Vec<Placed> {
+    let (one, w) = layout(faces, "-", m);
+    if w < 1.0 || one.is_empty() || room < 1.0 {
+        return one;
+    }
+    let mut row = Vec::new();
+    let mut x = 0.0;
+    while x + w <= room + 0.5 {
+        for g in &one {
+            row.push(Placed {
+                face: g.face,
+                glyph: g.glyph,
+                x: x + g.x,
+                dy: g.dy,
+            });
+        }
+        x += w;
+        if row.len() > 4000 {
+            break;
+        }
+    }
+    row
+}
+
 fn drawable(faces: &[Face], c: char) -> bool {
     c.is_whitespace() || matches!(c, '\u{200c}' | '\u{200d}') || faces.iter().any(|f| f.glyph_index(c).is_some())
 }
 
 /// `line` laid out, broken at spaces into as many lines as `room` needs.
+/// A single `\t` marks Item / Qty columns: name on the left, qty flush to
+/// the right margin in dots (proportional fonts cannot use space-padding).
 fn wrap(faces: &[Face], line: &str, room: f32, m: &RasterMetrics) -> Vec<Vec<Placed>> {
-    let (placed, width) = layout(faces, line, m);
+    wrap_aligned(faces, line, room, m, LineAlign::Start)
+}
+
+fn wrap_aligned(
+    faces: &[Face],
+    line: &str,
+    room: f32,
+    m: &RasterMetrics,
+    align: LineAlign,
+) -> Vec<Vec<Placed>> {
+    if let Some((left, right)) = line.split_once('\t') {
+        return wrap_item_qty(faces, left, right, room, m, align);
+    }
+    // A run of dashes is the header rule. Tile it to the content edge so a
+    // wider page grows the line instead of leaving a short underscore.
+    if is_rule_line(line) {
+        return vec![rule_across(faces, room, m)];
+    }
+    let (mut placed, width) = layout(faces, line, m);
     if width <= room {
+        shift_glyphs(&mut placed, width, room, align);
         return vec![placed];
     }
     let mut out = Vec::new();
@@ -238,23 +435,95 @@ fn wrap(faces: &[Face], line: &str, room: f32, m: &RasterMetrics) -> Vec<Vec<Pla
             format!("{current} {word}")
         };
         if !current.is_empty() && layout(faces, &candidate, m).1 > room {
-            out.push(layout(faces, &current, m).0);
+            let (mut row, w) = layout(faces, &current, m);
+            shift_glyphs(&mut row, w, room, align);
+            out.push(row);
             current = word.to_string();
         } else {
             current = candidate;
         }
     }
-    out.push(layout(faces, &current, m).0);
+    let (mut row, w) = layout(faces, &current, m);
+    shift_glyphs(&mut row, w, room, align);
+    out.push(row);
+    out
+}
+
+fn shift_glyphs(glyphs: &mut [Placed], width: f32, room: f32, align: LineAlign) {
+    let gap = (room - width).max(0.0);
+    let dx = match align {
+        LineAlign::Start => 0.0,
+        LineAlign::Center => gap * 0.5,
+        LineAlign::End => gap,
+    };
+    if dx > 0.25 {
+        for g in glyphs {
+            g.x += dx;
+        }
+    }
+}
+
+/// Name left, qty right-aligned to `room`. Long names wrap under the name
+/// column only — qty stays on the first line with the header column.
+fn wrap_item_qty(
+    faces: &[Face],
+    left: &str,
+    right: &str,
+    room: f32,
+    m: &RasterMetrics,
+    align: LineAlign,
+) -> Vec<Vec<Placed>> {
+    let left = left.trim_end();
+    let right = right.trim();
+    let (right_glyphs, right_w) = layout(faces, right, m);
+    // Leave a small gap so name never kisses the qty digits.
+    let gap = (m.em * 0.35).max(4.0);
+    let name_room = (room - right_w - gap).max(m.em * 2.0);
+    let mut name_rows = wrap(faces, left, name_room, m);
+    if name_rows.len() == 1 {
+        let name_w = layout(faces, left, m).1;
+        shift_glyphs(&mut name_rows[0], name_w, name_room, align);
+    }
+    let mut out = Vec::with_capacity(name_rows.len().max(1));
+    for (i, mut row) in name_rows.into_iter().enumerate() {
+        if i == 0 {
+            let shift = (room - right_w).max(0.0);
+            for g in &right_glyphs {
+                row.push(Placed {
+                    face: g.face,
+                    glyph: g.glyph,
+                    x: shift + g.x,
+                    dy: g.dy,
+                });
+            }
+        }
+        out.push(row);
+    }
+    if out.is_empty() {
+        let shift = (room - right_w).max(0.0);
+        out.push(
+            right_glyphs
+                .into_iter()
+                .map(|g| Placed {
+                    face: g.face,
+                    glyph: g.glyph,
+                    x: shift + g.x,
+                    dy: g.dy,
+                })
+                .collect(),
+        );
+    }
     out
 }
 
 /// One line shaped left to right as it will be seen: bidi runs in visual
 /// order, each split by font and shaped; returns the glyphs and the width.
 fn layout(faces: &[Face], line: &str, m: &RasterMetrics) -> (Vec<Placed>, f32) {
+    // Tabs are handled in `wrap` / `wrap_item_qty` — never as a space here.
     let line: String = line
         .chars()
         .map(|c| match c {
-            '\t' => ' ',
+            '\t' => ' ', // defensive; column lines should not reach layout
             c if drawable(faces, c) => c,
             _ => '?',
         })
@@ -383,10 +652,18 @@ impl OutlineBuilder for Outline {
 }
 
 /// Ink one glyph onto `dots` (`PAPER_DOTS` wide), clipped to the page.
-fn stamp(face: &Face, g: &Placed, baseline: f32, m: &RasterMetrics, dots: &mut [bool]) {
+fn stamp(
+    face: &Face,
+    g: &Placed,
+    baseline: f32,
+    m: &RasterMetrics,
+    dots: &mut [bool],
+    ink: f32,
+    x_shift: f32,
+) {
     let mut outline = Outline {
         scale: m.em / face.units_per_em() as f32,
-        x: m.side + g.x,
+        x: m.side + g.x + x_shift,
         y: baseline - g.dy,
         start: point(0.0, 0.0),
         last: point(0.0, 0.0),
@@ -418,11 +695,12 @@ fn stamp(face: &Face, g: &Placed, baseline: f32, m: &RasterMetrics, dots: &mut [
             Seg::Cubic(a, b, c, d) => raster.draw_cubic(shift(a), shift(b), shift(c), shift(d)),
         }
     }
-    let height = dots.len() / PAPER_DOTS;
+    let width = m.page_dots();
+    let height = dots.len() / width;
     raster.for_each_pixel_2d(|x, y, coverage| {
         let (px, py) = (left as i64 + x as i64, top as i64 + y as i64);
-        if coverage >= INK && (0..PAPER_DOTS as i64).contains(&px) && (0..height as i64).contains(&py) {
-            dots[py as usize * PAPER_DOTS + px as usize] = true;
+        if coverage >= ink && (0..width as i64).contains(&px) && (0..height as i64).contains(&py) {
+            dots[py as usize * width + px as usize] = true;
         }
     });
 }
@@ -467,6 +745,46 @@ mod tests {
     }
 
     #[test]
+    fn a_dash_rule_reaches_the_content_edge() {
+        let line = [StyledLine {
+            text: "--------".into(),
+            em: 20.0,
+            weight: RasterWeight::Regular,
+            align: LineAlign::Start,
+        }];
+        let metrics = |dots: usize| RasterMetrics {
+            em: 20.0,
+            line: 32,
+            baseline: 18.0,
+            side: 4.0,
+            width_dots: dots,
+        };
+        let rightmost = |rows: &[u8], width: usize| -> usize {
+            let row_bytes = width / 8;
+            let mut best = 0usize;
+            for (i, b) in rows.iter().enumerate() {
+                if *b == 0 {
+                    continue;
+                }
+                let x0 = (i % row_bytes) * 8;
+                for bit in 0..8 {
+                    if b & (0x80 >> bit) != 0 {
+                        best = best.max(x0 + bit);
+                    }
+                }
+            }
+            best
+        };
+        let (narrow, _) = draw_lines(&line, &metrics(384));
+        let (wide, _) = draw_lines(&line, &metrics(576));
+        let n = rightmost(&narrow, 384);
+        let w = rightmost(&wide, 576);
+        assert!(n > 300, "58 mm rule stops at dot {n}");
+        assert!(w > 500, "80 mm rule stops at dot {w}");
+        assert!(w > n + 100, "wider paper must lengthen the rule ({n} vs {w})");
+    }
+
+    #[test]
     fn a_long_line_wraps_inside_the_paper() {
         let line = "2 x ખીચડી કઢી with extra ghee and papad on the side, no onion";
         let (rows, height) = draw(line);
@@ -508,6 +826,40 @@ mod tests {
         let png = png_document("ખીચડી  1 x Rs.80\nTotal Rs.80\n").unwrap();
         assert!(png.starts_with(b"\x89PNG"), "must be a PNG");
         assert!(png.len() > 500, "expected real ink, got {} bytes", png.len());
+    }
+
+    #[test]
+    fn item_qty_tab_right_aligns_digits_in_one_column() {
+        let m = RasterMetrics::kot();
+        let room = PAPER_DOTS as f32 - 2.0 * m.side;
+        let faces = faces();
+        let header = wrap(&faces, "Item\tQty.", room, &m);
+        let row_a = wrap(&faces, "બટર રોટી\t3", room, &m);
+        let row_b = wrap(&faces, "રોસ્ટેડ પાપડ\t2", room, &m);
+        assert_eq!(header.len(), 1);
+        assert_eq!(row_a.len(), 1);
+        assert_eq!(row_b.len(), 1);
+        let right_edge = |row: &[Placed]| {
+            row.iter()
+                .map(|g| {
+                    let face = &faces[g.face];
+                    let scale = m.em / face.units_per_em() as f32;
+                    let adv = face
+                        .glyph_hor_advance(GlyphId(g.glyph))
+                        .map(|a| a as f32 * scale)
+                        .unwrap_or(0.0);
+                    g.x + adv
+                })
+                .fold(0.0f32, f32::max)
+        };
+        let e_h = right_edge(&header[0]);
+        let e_a = right_edge(&row_a[0]);
+        let e_b = right_edge(&row_b[0]);
+        // All qty / Qty. trails share the right margin (±1 dot).
+        assert!(
+            (e_h - room).abs() < 1.5 && (e_a - room).abs() < 1.5 && (e_b - room).abs() < 1.5,
+            "edges h={e_h} a={e_a} b={e_b} room={room}"
+        );
     }
 
     #[test]

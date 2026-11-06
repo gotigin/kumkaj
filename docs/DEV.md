@@ -70,16 +70,48 @@ Loads [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env
   - Nested Settings lists claim wheel events so the page does not scroll with the list
   - Page `ScrollYView` keyboard: ↑/↓ step, PgUp → top, PgDn → bottom (`App::handle_scroll_key`). Skipped while a TextInput has key focus.
 - Multi-script UI fonts live **per app**: `apps/moklanjo/resources/fonts/` and `apps/khaynjo/resources/fonts/` (Noto scripts, FA icons, LXGW CJK, Noto Color Emoji — each app carries its own copy, like its code). Re-fetch with `./scripts/fetch-ui-fonts.sh apps/<app>` (no argument: every app) if fonts are missing. **Desktop icon fonts — do not regress (2026-11-02):** see § WorldFonts / packaged icon fonts below.
-- **Desktop window size & maximize** — see § below.
+- **OS-native interaction** — the host OS must be able to treat our app like
+  other apps on that OS (shortcuts, window/shell behaviour, platform
+  conventions). See § OS-native interaction below.
+- **Desktop window size & maximize** — see § below (detail under OS-native).
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
 - **Min layout width 375 css px** — `app_shell` uses `Fill{min: 375.}` inside a horizontal scroll. The UI never lays out narrower than 375; if the device/window is below 375, content scrolls horizontally (no crop). Desktop resize is also floored at 375.
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
 - **Button label inset** — every face within an app sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
 - **Reusable layout widgets** — see § Makepad 2 UI faces (agent guide) below (selection + truncation). Product summary: [`DESIGN.md`](DESIGN.md) § Makepad 2 faces.
 
+## OS-native interaction (required)
+
+**Rule:** On every supported OS, the system must be able to interact with our
+app the **same way it normally interacts with other apps** on that OS —
+window management, shell/task switching, global and WM shortcuts where those
+apply, IME / Back / multi-window on Android, and the rest of that platform’s
+ordinary conventions.
+
+This is **cross-platform**, not desktop-only and not tied to one distro or DE:
+
+| Platform | Expect |
+|---|---|
+| Desktop Linux | Behave as a normal windowed app for that compositor/DE (Wayland or X11; GNOME, KDE, others — **not** “Arch + GNOME only”) |
+| Windows | Snap, Win+ shortcuts, multi-monitor move, taskbar — like other Win32-class apps |
+| macOS | Spaces / Mission Control / standard window shortcuts as other Mac apps |
+| Android | System Back, IME, task switcher / multi-window, PrintManager where relevant |
+
+Makepad draws **client-side window chrome** and does not always expose full OS
+window / shell integration by default. **If the stack does not provide that
+naturally, we must implement or patch until the OS can treat the app as a
+normal peer.** That work is product-required, not optional polish. Do not
+“fix” one developer’s desktop by hard-coding that DE’s quirks as the only
+truth — fix the portable integration, then keep DE-specific notes only as
+regression history.
+
+Apps (Moklanjo, Khaynjo, …) share the vendored Makepad tree; window/shell
+fixes usually land in `vendor/makepad` (+ patches) and apply to every app.
+
 ## Desktop window size & maximize
 
-Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Moklanjo client-side chrome:
+Expected floating-window behaviour on **desktop** Linux, Windows, and macOS
+(client-side chrome):
 
 | Action | Expected result |
 |---|---|
@@ -89,12 +121,17 @@ Expected behaviour on **Linux (Wayland/GNOME), Windows, and macOS** for Moklanjo
 | Caption bar double-click | **Same** toggle as the max button (not a second code path) |
 | Restore with no saved float size | **1024×768** (never a monitor-fill size) |
 | Resize floor | **375 css px** width and height |
+| OS / WM shortcuts | Same as § OS-native interaction — snap, move across displays, etc. must work like other apps on that OS |
 
-`window_geom.json` must **never** store maximized/fullscreen geometry. Persisting ~monitor size (e.g. `2560×1048` on an ultrawide) made the next launch look maximized while floating; the next `set_maximized` then fought Mutter on multi-monitor layouts.
+`window_geom.json` must **never** store maximized/fullscreen geometry. Persisting ~monitor size (e.g. `2560×1048` on an ultrawide) made the next launch look maximized while floating; the next `set_maximized` then fought the compositor on multi-monitor layouts.
 
-### Wayland / Mutter (do not regress)
+### Linux compositor notes (do not regress; not “Linux = GNOME”)
 
-Vendor patches live under `vendor/makepad` (path-dep). Toggle logic is owned by `Window::toggle_chrome_maximize` in `vendor/makepad/widgets/src/window.rs`. Platform ops: `MaximizeWindow` / `RestoreWindow` in `linux_wayland.rs`.
+Historical bugs were hit on **GNOME Mutter / Wayland**; the same maximize /
+float rules must hold on other Linux DEs. Vendor patches live under
+`vendor/makepad` (path-dep). Toggle logic is owned by
+`Window::toggle_chrome_maximize` in `vendor/makepad/widgets/src/window.rs`.
+Platform ops: `MaximizeWindow` / `RestoreWindow` in `linux_wayland.rs`.
 
 RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_x` in `vendor/makepad/widgets/src/text_flow.rs` (resting paragraph alignment; open table cells still override it) and `pub TextInput::label_align` in `vendor/makepad/widgets/src/text_input.rs` (patch files `patches/makepad/text_flow_paragraph_align.rs.patch` and `patches/makepad/text_input_label_align_pub.rs.patch`, applied by `scripts/setup-makepad.sh`). Each app sets them from `apply_text_alignment` while `locale::is_rtl` is active; glyph shaping and bidi ordering are Makepad’s own (rustybuzz + unicode-bidi in `draw/src/text/shaper.rs`). The window layout is not mirrored.
 
@@ -105,9 +142,9 @@ RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_
 1. **`display_context.screen_size` is the window size** — never use it as “fills the screen ⇒ maximized”; that made every max click take the restore path.
 2. **Stale maximized configure after restore** — re-latched `chrome_maximized` so later clicks only restored. Suppress compositor “adopt maximized” briefly after a chrome restore/maximize.
 3. **Second `set_maximized` while Mutter still has maximized** — on a 2×2 ultrawide layout this jumped toward another output and then left maximize dead. Track `compositor_maximized` from configure `states` only; skip `set_maximized` when it is already true.
-4. **Mutter post-restore float configure** — after restore agrees at `1024×768`, Mutter often sends another **floating** configure at the old max extent (`2560×1048`, `maximized=false`). Without a float guard the window balloons again (works / not / works). Keep `float_guard_size` ~2s and ignore monitor-fill floating configures.
+4. **Stale floating configure after restore** — the compositor often echoes the old maximized rectangle with maximized unset. Ignore a floating configure that is that exact imposed rectangle. Do not reject sizes with a pixel cutoff; that blocked snap on other displays.
 5. **Caption double-click must not call `xdg_toplevel.move` on the first press** — that ate double-click and used a divergent compositor-only toggle. Defer move until pointer travels &gt;5px; on double-click emit `Event::WindowChromeMaximizeToggle` so the **same** widget toggle runs as the max button.
-6. **Do not remember near-monitor sizes as restore targets** — treat `width ≥ 1920` and `height ≥ 900` as monitor-fill; fall back to `1024×768`.
+6. **Snap, maximize, and restore are the platform’s size.** On Wayland, bind `xdg_wm_base` new enough to receive tiled-edge states, and use the configured size whenever the state is maximized, fullscreen, or tiled. Do not code one desktop’s Super or Win+arrow chords into the app. Windows keeps a normal overlapped window so the shell can snap it.
 
 **Code map**
 
@@ -116,23 +153,37 @@ RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_
 | `Window::toggle_chrome_maximize` | Single-click max + caption double-click |
 | `Event::WindowChromeMaximizeToggle` | Wayland caption → widget toggle |
 | `WaylandWindow::compositor_maximized` | Last configure maximized/fullscreen bit |
-| `pending_restore_size` / `float_guard_*` | Force float size; reject Mutter re-expand |
-| `apps/moklanjo` `persist_window_geom` | Skip fullscreen / monitor-fill sizes |
+| `pending_restore_size` / `imposed_extent` | Floating size; ignore an echo of the old imposed rectangle |
+| `persist_window_geom` (each app) | Skip maximized/fullscreen. Keep a large floating size. |
 | Dev logs | `MaximizeWindow` / `RestoreWindow` / `xdg_toplevel configure` / `caption double-click` |
 
 ```text
 ❌ Persist maximized size into window_geom.json
 ❌ set_maximized again while compositor_maximized
-❌ Accept floating 2560×1048 right after restore to 1024×768
+❌ Treat a large configure as “the monitor” and replace it
+❌ Implement one desktop’s snap keys inside the app
 ❌ Caption double-click toggles in wayland_state instead of the widget
 ❌ Start xdg_toplevel.move on the first caption press of a double-click
 
 ✅ One toggle path (widget) for max button and caption
-✅ Restore → 1024×768 (or last real float size) + float guard
+✅ Obey maximized, fullscreen, and tiled configures
+✅ A floating echo of the last imposed rectangle does not replace the restored size
 ✅ Skip set_maximized when already maximized per configure states
 ```
 
-Manual check (GNOME Wayland, multi-monitor OK): max → restore → max → restore several times; caption double-click the same; window stays on the current output; terminal may show `ignoring post-restore monitor-fill`.
+Manual check (any desktop Linux DE + Windows + macOS as available): max →
+restore several times; caption double-click the same; **OS shortcuts** for
+snap / move to another display work like peer apps; Android: Back / IME /
+task switcher behave normally. A snap shortcut must change the window
+the same way it does for any other window on that system.
+
+**Add dishes → Done (do not regress).** `button.clicked` / `pressed` does not
+arrive for that control while the search field is focused, so a click check
+alone leaves the window open. `close_add_dishes_if_done_hit` closes on
+pointer-down when the point is on the button rect or in the top-right of
+`menu_panel`, and it returns before `ui.handle_event`. The face is a plain
+`Button` at 140×44, not `RowSecondaryBtn`. Do not replace this with only
+`clicked`.
 
 ## Makepad 2 UI faces (agent guide)
 
@@ -176,12 +227,13 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
-6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` default is `selectable: false`** (both apps) — select-drag calls `block_scrolling_except_within(Empty)` and on Android leaves swipe dead / “freeze on touch move” (Kitchen KotCard, 2026-11 adb). Opt in `selectable: true` only for intentional copy (pairing digits). **Snackbar labels** stay `selectable: false`. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
+6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` default is `selectable: true`** (both apps — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_flow_touch_scroll`); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 7. **Settings / CTAs freeze the UI (wrap + Fill)** — Separate from bug **7a**. Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Signature: high CPU / draw path / turtle warning. Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws. Still avoid the bad layout:
    - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit**. Patch `button_label_center`. **Do not** “fix” by removing wrap or left-aligning labels (bug 3).
    - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
    - **Busy chrome:** never `set_text` / toggle `visible` on Fill+wrap Stack\* for Looking/Adding/Cancel. Cancel is `QuietFitBtn`; progress on a WrapLabel.
-   - **InfoHelp:** Titled → **`width: Fill`** + **Fit title + tip + Fill trail** (ℹ hugs label on every screen); tip-only → trail hidden, **Fit**. Never `Label{width:Fill, wrap}`.
+   - **InfoHelp:** Titled → **`width: Fill`** + **Fit title + tip + Fill trail** (ℹ hugs label on every screen); tip-only → trail hidden, **Fit**. Never `Label{width:Fill, wrap}`. One screen/section title — never two titled InfoHelps that both say the same heading (Printers regression 2026-11).
+   - **CalloutTooltip (every tip):** Long tip text must **wrap** inside the bubble — never crop mid-word on the right. Shared fix in `vendor/makepad/widgets/src/callout_tooltip.rs` (readable width cap, triangle inset in label width, `flow: Right{wrap: true}` on the tip label). Do not “fix” one tip string; fix the widget.
 7c. **Large face looks tappable but only a thin strip works** — e.g. `AccordionHdrBtn{width: Fit}` alone in a Fill card (Device setup / Floor, 2026-11): Makepad hit-tests **`draw_bg.area()`**, so the rest of the row is dead. **Usual fix:** keep the **control’s face** large enough for the job — accordion / hub / sidebar / checklist rows **Fill**. When an InfoHelp must sit **right after** the title: Fit caption + Fit InfoHelp + Fill `_ext`, all as **`AccordionHdrHitBtn`** (same hit metrics, **no hover/down paint**, **no `wrap: true`** — Fit+wrap expands the caption and parks ℹ at the far end) so the row reads as **one** header on the card — not three cream segments. Alone (Books): painted `AccordionHdrBtn` Fill (wrap OK). Titled InfoHelp already packs ℹ next to the label (Fit title + trail); accordion tip-rows still use **Fit caption + tip-only + `_ext`**. **Same idea, most places:** checkbox / radio / switch rows should toggle from the **label + control**, not only the 18 px box (Khaynjo `StationCheckRow` already does). **Exceptions are fine** when a full-row hit would steal another gesture or confuse the screen — e.g. sidebar **pill switch** keeps its own `SidebarToggleHit` so the row can still drag-reorder; ↑↓ on checklist rows stay their own buttons. Prefer the generous hit; carve out an exception only with a short comment why.
 7a. **Settings “Not Responding” on printers place pick = `app_state` deadlock (not wrap/Fill)** — gdb on hung Khaynjo (2026-11-03): main thread `futex_do_wait` / `Mutex::lock` on `app_state::STATE` inside `set_status_line_only` ← `set_status` ← Bill/kitchen place tap. Cause: `self.set_status(cx, app_state().lock().unwrap().t(...))` — temporary `MutexGuard` lives for the whole statement, so `set_status` locks again on the same thread and never returns. Low CPU, not turtle spam. **Rule:** never pass `app_state().lock()…` into a function that locks `app_state`. Use `app_t("key")` or `{ let st = app_state().lock().unwrap(); … }` first. Cursor rule: `.cursor/rules/app-state-lock.mdc`. Do not “fix” this hang by swapping button faces.
 7d. **Bottom-nav footer: scrollbar flush, chips not cropped (2026-11-04)** — Phone chrome `bottom_nav` is a Fit `SolidView` + `ScrollXView` (`bottom_nav_scroll`) + overlay ‹ ›. Makepad paints the X bar **over** the bottom `bar_size` of the scroll view (it does not grow the Fit height). Contract (both apps; Cursor rule `.cursor/rules/bottom-nav-footer.mdc`):
@@ -316,8 +368,8 @@ Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surface
 | **Windows** (Win10 + Win11 x86_64) | `cargo moklanjo-windows-dev` → `dist/moklanjo-windows-dev/` (exe + resources) | `./apps/moklanjo/scripts/package-windows.sh` → `dist/moklanjo-windows/` |
 | **macOS** binary (when built on Mac) | `cargo moklanjo-dev` | package script / packager |
 | **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.moklanjo"`, `product_name = "Moklanjo"` |
-| **Web** | local `cargo moklanjo-dev` / wasm as configured | site **https://kumkaj.com** (`web/`, `./apps/moklanjo/scripts/package-web.sh`) — not an OS package id |
-| **Play Store** listing | side-load / internal only | application id `com.moklanjo` (`web/play-store-listing.txt`) |
+| **Web** | local `cargo moklanjo-dev` / wasm as configured | **moklanjo.com** (`apps/moklanjo/web/`, `./apps/moklanjo/scripts/package-web.sh` → `dist/web/moklanjo/`); brand **kumkaj.com** (`web/kumkaj/`); **khaynjo.com** (`apps/khaynjo/web/`) — build any site with `KUMKAJ_SITE_DIR=… ./scripts/build-site.sh` |
+| **Play Store** listing | side-load / internal only | application id `com.moklanjo` (`apps/moklanjo/web/static/play-store-listing.txt`); privacy **https://moklanjo.com/privacy** |
 
 ### Data directories (keyed by `KUMKAJ_APP_ID`)
 
@@ -825,24 +877,32 @@ station’s own route (empty = do not print that station — never fall through
 to Bill). Moklanjo places: **Receipt** and **AWB label**. Legacy files
 migrate on load; blank fields stay empty (no invented “Default” printer).
 
-**Three nouns (do not regress):**
-- **Printer** — one OS device in the pool (Find). Destination only; never
-  encode KOT/Portrait/Landscape in the printer name.
-- **Profile** — how the slip looks (built-in + custom formats / KOT slip
-  layout). Previewable and editable. Metrics drive `receipt_raster`.
-- **Output** — one line under a place: **Printer + Profile** (persisted as
-  route slot `printer_id@profile_id`). Checklist shows one row per printer
-  (`Name · Profile` when assigned), not three format faces per device.
-
-**First vs All (progressive):** one Output → print that pair (no mode UI).
-Two or more Outputs → chips **First that works** (failover) or **Print on
-all** (fan-out). Place-tap “Not Responding” = bug **7a**.
-
-**Station groups (Khaynjo):** setup shortcut only — a group lists member
-stations; Apply copies the focused place’s Outputs (+ profile + mode) onto
-each member. Runtime Send still prints one ticket per dish station. Extra
-copies (e.g. Expo) = second Output on that station with Print on all — not
-a group fan-out.
+**Printing nouns (see [`docs/PRINTER.md`](PRINTER.md)):**
+- **Real printer** — OS device from Find (destination only).
+- **Printer** — an OS device from Find. Find writes the list to the shop's
+  `printers.json` and the running app. The OS name is the name. There is no
+  virtual printer and no manual rename.
+- **Bill & KOT format** — content width (shared), plus portrait/landscape and
+  delivery (OS document, raw bytes, ESC/POS) separately for the bill and the
+  kitchen ticket. Either job can be sent to any found printer.
+- **Content width** — above the Bill and KOT tabs. One millimetre width lays
+  out both. It is **not** locked to only 58/80.
+- **Bill & KOT format** — slip content: field show/order/copies; **per field**
+  font weight, size, and **Start / Center / End** (shop, time, staff, station,
+  table, kot no, area, item/qty, title); **per KOT kind** original / duplicate /
+  modified / cancelled (each kind has its own field styles + banners).
+- **Start / Center / End** are drawn across the selected content width, on
+  OS document and ESC/POS. Do not strip the style marks and then left-align
+  the plain text — that made the chips do nothing on the printed copy.
+- **Qty** is the count in the right column (`1`, `1.25 kg`). Do not prefix or
+  suffix the dish with `x1` / `x1×`. `format_qty_display` uses `x2` for bills;
+  a kitchen ticket must strip that before the name is printed.
+- Settings → **Printers**: Find, then the OS names. No virtual printer form.
+- Place attach + First/All: Kitchen stations / Bill. Station groups: discarded.
+- Multi-copy KOT: one queued job; worker packs N identical ESC/POS slips into
+  **one** payload (or CUPS `-n` / Windows Copies for document). Do **not** open
+  N TCP/`lp` sessions and do **not** sleep between accepts — that made copy
+  2/3 feel delayed after the first.
 
 **Find printers** publishes after system queues (`lpstat`), then again
 after Wi‑Fi `:9100` / BT / USB — UI merges into the pool on each Signal
@@ -1057,8 +1117,9 @@ Makepad visual traps found this way (do not reintroduce):
     `text_flow_selection`). On **touch**, vertical swipe always scrolls the
     page; text select-drag starts on long-press only (`text_flow_touch_scroll`,
     `text_input_touch_scroll`) — otherwise WrapLabels and focused fields
-    (Lock PIN, ClientPair) stole every swipe. Auth/display WrapLabels and
-    InfoHelp titles stay `selectable: false`. ClientPair lists found Servers
+    (Lock PIN, ClientPair) stole every swipe. InfoHelp titles and text
+    inside tap targets stay `selectable: false`; other display WrapLabels
+    stay selectable. ClientPair lists found Servers
     with **Use** (`FoundServerList`); auto-fill host only when exactly one
     answers.
     Stuck Empty scroll-blocks clear on wheel (`scroll_bar_orphan_unblock`) and
@@ -1144,7 +1205,9 @@ Floor/header icon boxes on Windows mean that file never reached the package
 ./apps/moklanjo/scripts/msi.sh [prod|dev]      # MSI → dist/Moklanjo[Dev]-<ver>.msi
 cargo moklanjo-windows-dev              # debug → dist/moklanjo-windows-dev/
 ./apps/moklanjo/scripts/package-android.sh
-./apps/moklanjo/scripts/package-web.sh         # kumkaj.com site → dist/web/
+./apps/moklanjo/scripts/package-web.sh         # moklanjo.com → dist/web/moklanjo/
+KUMKAJ_SITE_DIR=web/kumkaj ./scripts/build-site.sh              # kumkaj.com → dist/web/kumkaj/
+KUMKAJ_SITE_DIR=apps/khaynjo/web ./scripts/build-site.sh        # khaynjo.com → dist/web/khaynjo/
 ./apps/khaynjo/scripts/windows-prod.sh # Khaynjo prod → dist/khaynjo-windows/
 ./apps/khaynjo/scripts/package-linux.sh       # Khaynjo prod → dist/khaynjo-linux/ (+ install.sh / uninstall.sh)
 ./apps/khaynjo/scripts/package-linux-dev.sh   # Khaynjo debug → dist/khaynjo-linux-dev/
@@ -1244,10 +1307,10 @@ TODAY money; Settings → **My PIN** works (Server or Client). Unlock as Owner �
 3. `./apps/moklanjo/scripts/package-windows.sh` (or `msi.sh`) → `dist/moklanjo-windows/` (+ `Setup.bat`); optional `cargo moklanjo-windows-dev` for Dev
 4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./apps/moklanjo/scripts/package-android.sh`
 5. Set `KUMKAJ_ANDROID_KEYSTORE` (+ `_PASS`) for step 4 — signed APK + AAB (Android § Release signing); create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
-6. `./apps/moklanjo/scripts/package-web.sh` → deploy `dist/web/` to **https://kumkaj.com**
+6. Sites (Zola; needs `zola` on PATH, e.g. `~/.local/bin`): `./apps/moklanjo/scripts/package-web.sh` → deploy `dist/web/moklanjo/` to **https://moklanjo.com**; `KUMKAJ_SITE_DIR=web/kumkaj ./scripts/build-site.sh` → **https://kumkaj.com**; `KUMKAJ_SITE_DIR=apps/khaynjo/web ./scripts/build-site.sh` → **https://khaynjo.com**. Play listing privacy URL: **https://moklanjo.com/privacy**.
 7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh apps/moklanjo`
 
-Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debug`, domain kumkaj.com).
+Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debug`). Product site: moklanjo.com; brand: kumkaj.com.
 
 ## Manual UI smoke (shipping)
 
@@ -1427,9 +1490,9 @@ a snack when unlocked (errors/warnings also on lock). Higher priority replaces a
 lower one; dismiss ✕ or timeout clears. Module: `apps/*/src/snack.rs`.
 
 **Do not regress (Android scroll):** snack / undo snack labels must keep
-`selectable: false`. Default `WrapLabel` select-drag steals page swipe and can
-leave scroll blocked until a later clean touch (bug **6e** / `text_flow_touch_scroll`).
+`selectable: false` (tap-target exception — bug **6e** / `text_flow_touch_scroll`).
 Error snacks are the usual trigger (long text + bar appearing under a finger).
+Display text elsewhere stays selectable per [`DESIGN.md`](DESIGN.md).
 
 ### Diagnostics (privacy-first local logs)
 

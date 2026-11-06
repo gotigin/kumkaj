@@ -403,6 +403,10 @@ pub enum BooksOp {
     SetStandardEm {
         em: f32,
     },
+    /// Content width in millimetres for the bill and the kitchen ticket.
+    SetContentWidth {
+        mm: u32,
+    },
     /// Print a test page on the Server's printers for `route_key` (`bill` / `kot:`…).
     PrintTestPage {
         route_key: String,
@@ -502,6 +506,7 @@ impl BooksOp {
             Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
             Self::SetKotAutoPrint { .. } => "Change KOT auto-print",
             Self::SetStandardEm { .. } => "Change the bill print size",
+            Self::SetContentWidth { .. } => "Change the content width",
             Self::PrintTestPage { .. } => "Print a test page",
             Self::SetHistoryRetention { .. } => "Change history clearing",
             Self::ClearTradingHistory => "Clear trading history",
@@ -613,6 +618,7 @@ impl BooksOp {
             Self::SetKotAutoPrint { on: true } => "KOT auto-print on".into(),
             Self::SetKotAutoPrint { on: false } => "KOT auto-print off".into(),
             Self::SetStandardEm { .. } => "Bill print size saved".into(),
+            Self::SetContentWidth { mm } => format!("Content width {mm} mm"),
             Self::PrintTestPage { .. } => "Test page sent".into(),
             Self::SetHistoryRetention { .. } => "History clearing saved".into(),
             Self::ClearTradingHistory => "Trading history cleared — setup kept".into(),
@@ -1488,6 +1494,13 @@ impl Store {
                 }
                 let _ = self.set_standard_print_em(em)?;
                 Ok("Bill print size saved".into())
+            }
+            BooksOp::SetContentWidth { mm } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the content width".into());
+                }
+                let saved = self.set_content_width_mm(mm)?;
+                Ok(format!("Content width {saved} mm"))
             }
             BooksOp::PrintTestPage { route_key } => {
                 if !actor.is_owner() && !actor.can_access_settings() {

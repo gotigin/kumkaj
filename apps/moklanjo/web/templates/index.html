@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Moklanjo — a courier desk, not a cash register{% endblock %}
+{% block og_title %}Moklanjo — a courier desk, not a cash register{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Courier agency BOS</p>
+      <h1>Book. Label. Hand over. Track. Settle.</h1>
+      <p class="lede">One desk for walk‑ins, carriers and your own riders — internet or not. Free forever on your devices.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ get_url(path='download/') }}">Download free</a>
+        <a class="btn btn-secondary" href="{{ config.extra.whatsapp_url }}">WhatsApp for a demo</a>
+      </div>
+    </div>
+    <figure class="stage-still" aria-hidden="true">
+      <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" class="still-svg">
+        <rect width="480" height="300" fill="#072058"/>
+        <rect x="40" y="160" width="400" height="80" rx="6" fill="#0A3A8C"/>
+        <rect x="200" y="100" width="90" height="70" rx="6" fill="#DF5E16"/>
+        <rect x="70" y="120" width="70" height="40" rx="4" fill="#F7B043"/>
+        <text x="240" y="270" fill="#D6E0EC" font-size="14" text-anchor="middle" font-family="system-ui,sans-serif">Counter · scale · label</text>
+      </svg>
+      <figcaption class="sr-only">Stylised courier counter with an orange parcel on the desk.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter band">
+  <div class="wrap">
+    <h2>What owners already fear — answered</h2>
+    <ul class="card-list">
+      <li><strong>Too many taps at the counter</strong> — next walk‑in in one beat after you book.</li>
+      <li><strong>Office stops when the internet stops</strong> — booking, labels, scanning, COD and books keep running on the office Wi‑Fi.</li>
+      <li><strong>Price per rider / user / order</strong> — free forever on your devices; nothing counted per rider, user or parcel.</li>
+      <li><strong>Phone app lacks desktop features</strong> — one app on Android, Windows and Linux; riders use the same app in rider mode.</li>
+      <li><strong>Opaque COD</strong> — expected vs handed‑in per rider; collected vs owed to each consignor.</li>
+      <li><strong>Rigid flows</strong> — rates, units, divisors and rounding are yours to change.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap">
+    <h2>Free forever on your devices</h2>
+    <p>Download when packages pass clean‑machine install. Kumkaj Cloud is planned and usage‑based — see <a href="{{ config.extra.kumkaj_url }}/principles/">Kumkaj principles</a>.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ get_url(path='download/') }}">Download</a>
+      <a class="btn btn-ghost" href="{{ get_url(path='pricing/') }}">Pricing</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

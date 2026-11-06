@@ -326,18 +326,13 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             return;
         }
         let win = self.ui.window(cx, ids!(main_window));
-        // Never persist maximized/fullscreen geometry — that was rewriting
-        // window_geom.json to ~2560×1048 (one ultrawide), so the next launch
-        // opened already monitor-sized and the next maximize fought Mutter
-        // across the 2×2 layout.
+        // Never persist maximized/fullscreen geometry. A large floating
+        // window is a real size and must be kept.
         if win.is_fullscreen(cx) {
             return;
         }
         let size = win.get_inner_size(cx);
         let pos = win.get_position(cx);
-        if size.x >= 1920.0 && size.y >= 900.0 {
-            return;
-        }
         let min = store::MIN_DESKTOP_WINDOW_CSS;
         store::save_window_geom(store::WindowGeomPrefs {
             width: size.x.max(min),

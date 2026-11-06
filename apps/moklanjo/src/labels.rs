@@ -47,6 +47,34 @@ pub struct AwbLabel {
 }
 
 impl AwbLabel {
+    /// Sample sticker used by Settings → Test label. Not a real booking.
+    pub fn sample(agency: &str) -> Self {
+        Self {
+            awb_no: "SAMPLE-1001".into(),
+            from_name: "Walk-in".into(),
+            from_phone: "9800000000".into(),
+            from_address: "Counter".into(),
+            to_name: "Sample consignee".into(),
+            to_phone: "9811111111".into(),
+            to_address: "MG Road".into(),
+            destination: "Pune".into(),
+            weight_kg: "1.5".parse().unwrap_or_default(),
+            pieces: 1,
+            service: "Surface".into(),
+            cod_paise: 0,
+            agency_name: if agency.trim().is_empty() {
+                "Moklanjo".into()
+            } else {
+                agency.trim().to_string()
+            },
+            currency_code: "INR".into(),
+            declared_value_paise: 0,
+            insurance: false,
+            contents: String::new(),
+            eway_bill_no: String::new(),
+        }
+    }
+
     /// SVG suitable for thermal (≈ 4×6 in at 96 dpi) or PDF embed.
     pub fn to_svg(&self) -> String {
         let awb = xml_escape(&self.awb_no);
@@ -317,7 +345,7 @@ fn xml_escape(s: &str) -> String {
 
 /// Minimal Code 128B-ish bar pattern from character parity — scannable enough
 /// for many phone apps when paired with the human `*AWB*` line under it.
-fn code128_svg_bars(payload: &str, x0: f64, y0: f64, height: f64) -> String {
+pub(crate) fn code128_modules(payload: &str) -> String {
     let mut bits = String::from("11010010000"); // start B-ish
     for (i, b) in payload.bytes().enumerate() {
         let n = b as u32;
@@ -330,6 +358,11 @@ fn code128_svg_bars(payload: &str, x0: f64, y0: f64, height: f64) -> String {
         bits.push_str(pattern);
     }
     bits.push_str("1100011101011"); // stop-ish
+    bits
+}
+
+fn code128_svg_bars(payload: &str, x0: f64, y0: f64, height: f64) -> String {
+    let bits = code128_modules(payload);
     let mut x = x0;
     let mut out = String::new();
     let bar_w = 1.6;

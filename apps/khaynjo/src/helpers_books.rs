@@ -93,137 +93,9 @@ fn resolve_printer_route_key(
     "bill".into()
 }
 
-/// Add `printer` with `format_id` onto the focused place. Same printer may
-/// appear twice with different formats. Same shown name + same format is
-/// refused (Brother Standard twice — even if Find listed `_` and `-`).
-/// Returns true only when newly added.
-#[allow(dead_code)] // Kept for Clear/tests; UI toggles via `toggle_printer_assign_slot`.
-fn add_printer_format_to_focused_route(
-    st: &mut AppState,
-    printer_id: &str,
-    format_id: &str,
-) -> bool {
-    let pid = printer_id.trim();
-    let fmt = format_id.trim();
-    if pid.is_empty() || fmt.is_empty() || st.printer_draft.printer_by_id(pid).is_none() {
-        return false;
-    }
-    let key_str = st.printer_route_key.clone();
-    let key = parse_printer_route_key(&key_str);
-    let slot = print_share::DevicePrinters::encode_route_slot(pid, fmt);
-    let default_fmt = st.printer_draft.format_id_for(key);
-    let name_fmt = {
-        let p = st.printer_draft.printer_by_id(pid).unwrap();
-        print_share::DevicePrinters::route_name_format_key(
-            &printer_display_name(p, |_| String::new()),
-            fmt,
-        )
-    };
-    let already = st.printer_draft.route_for(key).iter().any(|s| {
-        if s == &slot {
-            return true;
-        }
-        let (opid, ofmt) = print_share::DevicePrinters::decode_route_slot(s);
-        let ofmt = if ofmt.is_empty() {
-            default_fmt.clone()
-        } else {
-            ofmt
-        };
-        st.printer_draft.printer_by_id(&opid).is_some_and(|p| {
-            print_share::DevicePrinters::route_name_format_key(
-                &printer_display_name(p, |_| String::new()),
-                &ofmt,
-            ) == name_fmt
-        })
-    });
-    if already {
-        return false;
-    }
-    st.printer_draft.route_mut(key).push(slot);
-    let _ = st.save_printer_draft();
-    true
-}
-
-/// Remove the route slot at `index` on the focused place. Saves.
-#[allow(dead_code)] // Checklist uncheck is the UI path now.
-fn remove_focused_route_slot_at(st: &mut AppState, index: usize) -> Option<(String, String)> {
-    let key_str = st.printer_route_key.clone();
-    let key = parse_printer_route_key(&key_str);
-    let place_fmt_label = st.printer_draft.format_for(key).label;
-    let slot = {
-        let route = st.printer_draft.route_mut(key);
-        if index >= route.len() {
-            return None;
-        }
-        route.remove(index)
-    };
-    let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(&slot);
-    let shown = st
-        .printer_draft
-        .printer_by_id(&pid)
-        .map(|p| {
-            let t = p.target.trim();
-            if !t.is_empty() {
-                t.to_string()
-            } else if !p.label.trim().is_empty() {
-                p.label.clone()
-            } else {
-                pid.clone()
-            }
-        })
-        .unwrap_or_else(|| pid.clone());
-    let flabel = if fmt.is_empty() {
-        place_fmt_label
-    } else {
-        st.printer_draft.format_by_id(&fmt).label
-    };
-    let _ = st.save_printer_draft();
-    Some((shown, flabel))
-}
-
-/// Swap two printers on the focused place (Up/Down). Saves.
-fn swap_focused_route_printer(st: &mut AppState, from: usize, to: usize) -> bool {
-    if from == to {
-        return false;
-    }
-    let key_str = st.printer_route_key.clone();
-    let key = parse_printer_route_key(&key_str);
-    let route = st.printer_draft.route_mut(key);
-    if from >= route.len() || to >= route.len() {
-        return false;
-    }
-    route.swap(from, to);
-    let _ = st.save_printer_draft();
-    true
-}
-
-/// Outputs on the focused place as `Name · Profile` rows.
-fn focused_route_printer_rows(
-    draft: &print_share::DevicePrinters,
-    focus: &str,
-    _selected: Option<&str>,
-    t: impl Fn(&str) -> String,
-) -> Vec<ReportRow> {
-    let key = parse_printer_route_key(focus);
-    let place_fmt = draft.format_for(key);
-    draft
-        .route_for(key)
-        .iter()
-        .filter_map(|slot| {
-            let (pid, fmt_id) = print_share::DevicePrinters::decode_route_slot(slot);
-            let p = draft.printer_by_id(&pid)?;
-            let name = printer_display_name(p, &t);
-            let flabel = if fmt_id.is_empty() {
-                place_fmt.label.clone()
-            } else {
-                draft.format_by_id(&fmt_id).label
-            };
-            Some(ReportRow::Line(format!("{name} · {flabel}")))
-        })
-        .collect()
-}
-
 /// Normalize place Outputs: fill missing profile, one printer once.
+/// Virtual-printer attach slots (bare VP ids) pass through unchanged —
+/// rewriting them as printer_id@format deletes station attaches.
 fn normalize_focused_route(st: &mut AppState) -> bool {
     let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
@@ -236,10 +108,20 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
         .map(|p| p.id.clone())
         .collect();
     let mut out = Vec::new();
-    let mut seen_pid = std::collections::HashSet::new();
+    let mut seen = std::collections::HashSet::new();
     for slot in &before {
+        let raw = slot.trim();
+        if raw.is_empty() {
+            continue;
+        }
+        if st.printer_draft.virtual_printer_by_id(raw).is_some() {
+            if seen.insert(raw.to_string()) {
+                out.push(raw.to_string());
+            }
+            continue;
+        }
         let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(slot);
-        if pid.is_empty() || !known.contains(&pid) || !seen_pid.insert(pid.clone()) {
+        if pid.is_empty() || !known.contains(&pid) || !seen.insert(pid.clone()) {
             continue;
         }
         let fmt = if fmt.is_empty() {
@@ -257,119 +139,193 @@ fn normalize_focused_route(st: &mut AppState) -> bool {
     true
 }
 
-/// Checklist: one row per OS printer. Assigned show `Name · Profile`.
-/// `subtitle` = Output encode (`printer_id@profile_id`).
+/// Checklist: pick one real printer for a new virtual printer.
+/// `subtitle` = printer id. Selected row uses "selected" action.
 fn printer_assign_suggest_rows(
     draft: &print_share::DevicePrinters,
-    focus: &str,
+    selected_id: Option<&str>,
     t: impl Fn(&str) -> String,
 ) -> Vec<suggest::SuggestRow> {
     use suggest::SuggestRow;
-    let key = parse_printer_route_key(focus);
     let use_l = t("use");
-    let clear_l = t("dont_use");
-    let place_fmt = draft.format_id_for(key);
-    let assigned_slots: Vec<String> = draft.route_for(key).to_vec();
-    let mut assigned_by_pid: std::collections::HashMap<String, String> =
-        std::collections::HashMap::new();
-    for slot in &assigned_slots {
-        let (pid, fmt) = print_share::DevicePrinters::decode_route_slot(slot);
-        if pid.is_empty() || assigned_by_pid.contains_key(&pid) {
-            continue;
-        }
-        let fmt = if fmt.is_empty() {
-            place_fmt.clone()
-        } else {
-            fmt
-        };
-        assigned_by_pid.insert(
-            pid.clone(),
-            print_share::DevicePrinters::encode_route_slot(&pid, &fmt),
-        );
-    }
+    let sel_l = t("route_tap_selected");
     let mut rows = Vec::new();
-    // Assigned first (route order).
-    let mut listed = std::collections::HashSet::new();
-    for slot in &assigned_slots {
-        let (pid, _) = print_share::DevicePrinters::decode_route_slot(slot);
-        let Some(enc) = assigned_by_pid.get(&pid) else {
-            continue;
-        };
-        if !listed.insert(pid.clone()) {
-            continue;
-        }
-        let Some(p) = draft.printer_by_id(&pid) else {
-            continue;
-        };
-        let (_, fmt) = print_share::DevicePrinters::decode_route_slot(enc);
-        let name = printer_display_name(p, &t);
-        let flabel = draft.format_by_id(&fmt).label;
-        rows.push(
-            SuggestRow::new(format!("{name} · {flabel}"), enc.clone()).with_action(clear_l.clone()),
-        );
-    }
     for p in &draft.printers {
-        if assigned_by_pid.contains_key(&p.id) {
-            continue;
-        }
         let name = printer_display_name(p, &t);
-        let enc = print_share::DevicePrinters::encode_route_slot(&p.id, &place_fmt);
-        rows.push(SuggestRow::new(name, enc).with_action(use_l.clone()));
+        let action = if selected_id == Some(p.id.as_str()) {
+            sel_l.clone()
+        } else {
+            use_l.clone()
+        };
+        rows.push(SuggestRow::new(name, p.id.clone()).with_action(action));
+    }
+    if rows.is_empty() {
+        rows.push(SuggestRow::new(t("printers_pool_empty"), String::new()));
     }
     rows
 }
 
-/// Toggle Output on/off. One printer once per place; profile = place Profile.
-fn toggle_printer_assign_slot(st: &mut AppState, slot_enc: &str) -> bool {
-    let enc = slot_enc.trim();
-    if enc.is_empty() {
+/// Select the real printer used when creating/editing a virtual printer.
+fn select_real_printer_for_virtual(st: &mut AppState, printer_id: &str) -> bool {
+    let pid = printer_id.trim();
+    if pid.is_empty() || st.printer_draft.printer_by_id(pid).is_none() {
         return false;
     }
-    let (pid, _) = print_share::DevicePrinters::decode_route_slot(enc);
-    if pid.is_empty() || st.printer_draft.printer_by_id(&pid).is_none() {
-        return false;
+    st.printer_selected_id = Some(pid.to_string());
+    if let Some(id) = st.virtual_printer_sel.clone() {
+        if let Some(v) = st.printer_draft.virtual_printers.iter_mut().find(|v| v.id == id) {
+            v.printer_id = pid.to_string();
+            let _ = st.save_printer_draft();
+        }
     }
-    let key_str = st.printer_route_key.clone();
-    let key = parse_printer_route_key(&key_str);
-    let place_fmt = st.printer_draft.format_id_for(key);
-    let route = st.printer_draft.route_mut(key);
-    if let Some(i) = route.iter().position(|s| {
-        let (opid, _) = print_share::DevicePrinters::decode_route_slot(s);
-        opid == pid
-    }) {
-        route.remove(i);
-    } else {
-        route.push(print_share::DevicePrinters::encode_route_slot(
-            &pid, &place_fmt,
-        ));
-    }
-    let _ = st.save_printer_draft();
     true
 }
 
-/// Reorder two assigned slots (checklist indices into suggest_rows that are checked).
-fn reorder_printer_assign_priority(st: &mut AppState, from_row: usize, to_row: usize) -> bool {
-    if from_row == to_row {
+fn virtual_printers_list_rows(
+    draft: &print_share::DevicePrinters,
+    selected: Option<&str>,
+    t: impl Fn(&str) -> String,
+) -> Vec<ReportRow> {
+    let mut rows = Vec::new();
+    for v in &draft.virtual_printers {
+        let mark = if selected == Some(v.id.as_str()) {
+            "› "
+        } else {
+            ""
+        };
+        let real = draft
+            .printer_by_id(&v.printer_id)
+            .map(|p| printer_display_name(p, &t))
+            .unwrap_or_else(|| v.printer_id.clone());
+        let vals = v.values();
+        let layout = if vals.landscape {
+            t("config_layout_landscape")
+        } else {
+            t("config_layout_portrait")
+        };
+        let delivery = match vals.delivery.as_str() {
+            print_share::DELIVERY_RAW_DEVICE => t("vp_delivery_raw"),
+            print_share::DELIVERY_ESCPOS => t("vp_delivery_escpos"),
+            _ => t("vp_delivery_spooler"),
+        };
+        rows.push(ReportRow::Line(format!(
+            "{mark}{} — {real} · {layout} · {delivery}",
+            v.name,
+        )));
+    }
+    if rows.is_empty() {
+        rows.push(ReportRow::Line(t("virtual_printers_empty")));
+    }
+    rows
+}
+
+/// Checklist rows: every virtual printer; checked = attached to focused station/place.
+/// `subtitle` = virtual printer id. Checked action = `dont_use` (tap clears); else `use`.
+fn station_virtual_printer_suggest_rows(
+    draft: &print_share::DevicePrinters,
+    route_key: &str,
+    t: impl Fn(&str) -> String,
+) -> Vec<suggest::SuggestRow> {
+    use suggest::SuggestRow;
+    let key = parse_printer_route_key(route_key);
+    let attached: Vec<String> = draft
+        .route_for(key)
+        .iter()
+        .map(|s| s.trim().to_string())
+        .filter(|s| !s.is_empty())
+        .collect();
+    let use_l = t("use");
+    let clear_l = t("dont_use");
+    let attached_ids: Vec<String> = attached
+        .iter()
+        .map(|slot| {
+            draft
+                .virtual_printer_by_id(slot)
+                .map(|v| v.printer_id.clone())
+                .unwrap_or_else(|| print_share::DevicePrinters::decode_route_slot(slot).0)
+        })
+        .filter(|id| !id.is_empty())
+        .collect();
+    let mut rows = Vec::new();
+    for pid in &attached_ids {
+        if let Some(p) = draft.printer_by_id(pid) {
+            rows.push(
+                SuggestRow::new(printer_display_name(p, &t), p.id.clone()).with_action(clear_l.clone()),
+            );
+        }
+    }
+    for p in &draft.printers {
+        if attached_ids.iter().any(|id| id == &p.id) {
+            continue;
+        }
+        rows.push(
+            SuggestRow::new(printer_display_name(p, &t), p.id.clone()).with_action(use_l.clone()),
+        );
+    }
+    if rows.is_empty() {
+        rows.push(SuggestRow::new(t("station_vps_empty"), String::new()));
+    }
+    rows
+}
+
+/// Toggle VP on the focused station route (`printer_route_key`).
+fn toggle_station_virtual_printer(st: &mut AppState, vp_id: &str) -> Result<String, String> {
+    if st.device_role == DeviceRole::Client {
+        return Err(st.t("printers_host_only"));
+    }
+    let key_str = st.printer_route_key.clone();
+    let key_trim = key_str.trim();
+    if key_trim != "bill" && !key_trim.starts_with("kot:") {
+        return Err(st.t("station_print_pick_first"));
+    }
+    let key = parse_printer_route_key(&key_str);
+    match st.printer_draft.toggle_printer_on_route(key, vp_id) {
+        Some(true) => {
+            st.save_printer_draft()?;
+            Ok(st.t("station_vp_attached"))
+        }
+        Some(false) => {
+            st.save_printer_draft()?;
+            Ok(st.t("station_vp_detached"))
+        }
+        None => Err(st.t("station_vps_empty")),
+    }
+}
+
+/// Reorder attached VPs on the focused station from checklist row indices.
+fn reorder_station_virtual_priority(st: &mut AppState, from_row: usize, to_row: usize) -> bool {
+    if st.device_role == DeviceRole::Client {
+        return false;
+    }
+    let key_str = st.printer_route_key.clone();
+    let key_trim = key_str.trim();
+    if key_trim != "bill" && !key_trim.starts_with("kot:") {
         return false;
     }
     let clear_l = st.t("dont_use");
-    let rows = st.suggest_rows.clone();
-    let Some(from_slot) = rows.get(from_row).filter(|r| r.action == clear_l).map(|r| r.subtitle.clone()) else {
+    let from_id = st
+        .suggest_rows
+        .get(from_row)
+        .filter(|r| r.action == clear_l)
+        .map(|r| r.subtitle.clone());
+    let to_id = st
+        .suggest_rows
+        .get(to_row)
+        .filter(|r| r.action == clear_l)
+        .map(|r| r.subtitle.clone());
+    let (Some(from_id), Some(to_id)) = (from_id, to_id) else {
         return false;
     };
-    let Some(to_slot) = rows.get(to_row).filter(|r| r.action == clear_l).map(|r| r.subtitle.clone()) else {
-        return false;
-    };
-    let key_str = st.printer_route_key.clone();
     let key = parse_printer_route_key(&key_str);
     let route = st.printer_draft.route_mut(key);
-    let Some(from_i) = route.iter().position(|s| s == &from_slot) else {
+    let from = route.iter().position(|s| s.trim() == from_id);
+    let to = route.iter().position(|s| s.trim() == to_id);
+    let (Some(from), Some(to)) = (from, to) else {
         return false;
     };
-    let Some(to_i) = route.iter().position(|s| s == &to_slot) else {
+    if !st.printer_draft.swap_route_slots(key, from, to) {
         return false;
-    };
-    route.swap(from_i, to_i);
+    }
     let _ = st.save_printer_draft();
     true
 }
@@ -394,9 +350,9 @@ fn printer_place_choices(
 /// Kitchen destinations for unsent cart lines: `(station display name, line count)`.
 /// Order follows `priority` station ids when provided; else first-seen.
 /// Empty station → `unassigned` label (caller supplies it).
-fn ensure_kot_field_order(fmt: &mut print_share::KotSlipFormat) {
+fn kot_order_ids(fmt: &print_share::KotSlipFormat) -> Vec<String> {
     if fmt.field_order.is_empty() {
-        fmt.field_order = vec![
+        vec![
             "time".into(),
             "kot_no".into(),
             "area".into(),
@@ -404,7 +360,29 @@ fn ensure_kot_field_order(fmt: &mut print_share::KotSlipFormat) {
             "shop".into(),
             "waiter".into(),
             "station".into(),
-        ];
+        ]
+    } else {
+        fmt.field_order.clone()
+    }
+}
+
+fn ensure_kot_field_order(fmt: &mut print_share::KotSlipFormat) {
+    if fmt.field_order.is_empty() {
+        fmt.field_order = kot_order_ids(fmt);
+    }
+}
+
+/// Human label for a KOT field-order id (Settings list — not raw `kot_no`).
+fn kot_field_order_label(id: &str, t: &impl Fn(&str) -> String) -> String {
+    match id {
+        "time" => t("kot_field_time"),
+        "kot_no" => t("kot_field_kot_no"),
+        "area" => t("kot_field_area"),
+        "table" => t("kot_field_table"),
+        "shop" => t("kot_field_shop"),
+        "waiter" => t("kot_field_waiter"),
+        "station" => t("kot_field_station"),
+        other => other.to_string(),
     }
 }
 
@@ -486,10 +464,8 @@ fn printers_found_line(t: impl Fn(&str) -> String) -> String {
             t("printers_none_found")
         }
     } else {
-        // Always name every discovery — Find already merged them into the pool.
-        t("printers_found")
-            .replace("{n}", &found.len().to_string())
-            .replace("{list}", &found.join(" · "))
+        // Names are the vertical pool below. This line must not repeat them.
+        String::new()
     }
 }
 

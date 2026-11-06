@@ -1,0 +1,24 @@
+# kumkaj.com — brand site (Gotigin / Kumkaj)
+base_url = "https://kumkaj.com"
+title = "Kumkaj"
+description = "Concrete business operating systems for your trade. Free forever on your own devices. The counter keeps working when the internet stops."
+default_language = "en"
+compile_sass = false
+minify_html = true
+build_search_index = false
+
+[markdown]
+highlight_code = false
+
+[extra]
+brand = "Kumkaj"
+product_line = "brand"
+gotigin_line = "Kumkaj products are built by Gotigin."
+# Owner fills these before public legal/contact go live with real details.
+contact_email = "TODO_OWNER@gotigin.example"
+whatsapp_url = "https://wa.me/TODO_OWNER"
+grievance_contact = "TODO_OWNER — grievance officer details pending"
+registered_address = "TODO_OWNER — Gotigin registered address pending"
+moklanjo_url = "https://moklanjo.com"
+khaynjo_url = "https://khaynjo.com"
+cloudflare_analytics_token = ""

@@ -1,0 +1,22 @@
+# moklanjo.com — courier desk product site
+base_url = "https://moklanjo.com"
+title = "Moklanjo"
+description = "Book. Label. Hand over. Track. Settle. A courier desk, not a cash register — free forever on your own devices."
+default_language = "en"
+compile_sass = false
+minify_html = true
+build_search_index = false
+
+[markdown]
+highlight_code = false
+
+[extra]
+brand = "Moklanjo"
+product_line = "moklanjo"
+gotigin_line = "Moklanjo is a Kumkaj product by Gotigin."
+contact_email = "TODO_OWNER@gotigin.example"
+whatsapp_url = "https://wa.me/TODO_OWNER?text=Moklanjo%20demo%20%E2%80%94%20city%2C%20parcels%20a%20day"
+grievance_contact = "TODO_OWNER — grievance officer details pending"
+registered_address = "TODO_OWNER — Gotigin registered address pending"
+kumkaj_url = "https://kumkaj.com"
+khaynjo_url = "https://khaynjo.com"

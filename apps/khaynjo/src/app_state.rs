@@ -63,9 +63,19 @@ struct AppState {
     printer_route_key: String,
     /// Settings hub: `None` = section list; `Some(id)` = that panel (printers, brand, …).
     settings_panel: Option<&'static str>,
-    /// Settings → Printers: pool row tapped for Remove / edit (None = last).
+    /// Settings → Printers: real printer selected (for new / edit virtual).
     printer_selected_id: Option<String>,
-    /// Settings → Printers: printer id selected on the focused place (Up/Down/Remove).
+    /// Draft values for virtual printer create/edit (inline on the VP).
+    printer_vp_landscape: bool,
+    printer_vp_em: f32,
+    printer_vp_line: u32,
+    printer_vp_side: f32,
+    printer_vp_delivery: String,
+    /// Content width (mm) on the virtual printer being edited.
+    printer_vp_paper_width_mm: u32,
+    /// Settings → Printers: selected virtual printer id (edit/delete).
+    virtual_printer_sel: Option<String>,
+    /// Legacy place focus key (runtime routes); not shown on Printers screen.
     printer_route_sel: Option<String>,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
@@ -167,6 +177,12 @@ struct AppState {
     kot_slip_draft: print_share::KotSlipFormat,
     /// Index into `kot_slip_draft.field_order` for the Phase-2 order designer.
     kot_field_edit_idx: usize,
+    /// Which KOT kind's field typography is being edited (Bill & KOT format).
+    kot_edit_kind: print_share::KotSlipKind,
+    /// Which field's size/weight is focused for the selected kind.
+    kot_style_field: print_share::KotStyleField,
+    /// Settings → Bill & KOT format: Bill tab vs KOT tab (under the section header).
+    bill_kot_tab_kot: bool,
     /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

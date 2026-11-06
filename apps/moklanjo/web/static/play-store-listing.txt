@@ -3,6 +3,7 @@ Moklanjo — Play Console listing draft
 Application id (production): com.moklanjo
 Development / side-load id: com.moklanjo.debug (not for Play)
 Website: https://moklanjo.com
+Privacy policy: https://moklanjo.com/privacy
 Default language: English (add Hindi / regional as needed)
 
 Short description (≤80 chars)
@@ -20,12 +21,15 @@ AWB/barcode, and tracking.
 • Works offline — your data stays on the device
 
 Website: https://moklanjo.com
-Default Owner PIN on first launch: 0000 (change under More → Team).
+Privacy: https://moklanjo.com/privacy
+
+Set the Owner PIN on first run (install guide / in-app Team). Do not publish
+default PINs on the public listing.
 
 Category: Business / Productivity
 Content rating: Everyone
 Privacy: no accounts required for local use; data stored on device SQLite.
 
-Build artifacts: ./apps/moklanjo/scripts/package-android.sh → dist/android/kumkaj-moklanjo.apk
+Build artifacts: see repo packaging scripts → dist/android/
 Play AAB: cargo-makepad android … build-aab -p kumkaj-moklanjo --release (with upload keystore)
 iOS / macOS: deferred until Mac signing host.

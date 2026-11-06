@@ -1526,6 +1526,65 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
+    /// Add dishes → Done. The button's own click action does not arrive:
+    /// the search field has key focus, and this face's hit is missed, so
+    /// `clicked` / `pressed` never run. Close from the pointer position.
+    fn close_add_dishes_if_done_hit(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        let abs = match event {
+            Event::MouseDown(e) if e.button.is_primary() => e.abs,
+            Event::MouseUp(e) if e.button.is_primary() => e.abs,
+            Event::TouchUpdate(e) => match e
+                .touches
+                .iter()
+                .find(|t| matches!(t.state, TouchState::Start))
+            {
+                Some(t) => t.abs,
+                None => return false,
+            },
+            _ => return false,
+        };
+        if !app_state().lock().unwrap().menu_pick_open {
+            return false;
+        }
+        let btn = self
+            .ui
+            .button(cx, ids!(menu_pick_done))
+            .area()
+            .clipped_rect_union_attached(cx);
+        let on_btn = btn.size.x > 8.0 && btn.size.y > 8.0 && {
+            Rect {
+                pos: DVec2 {
+                    x: btn.pos.x - 12.0,
+                    y: btn.pos.y - 12.0,
+                },
+                size: DVec2 {
+                    x: btn.size.x + 24.0,
+                    y: btn.size.y + 24.0,
+                },
+            }
+            .contains(abs)
+        };
+        // The pill sits in the top-right of the dish window. If its hit box
+        // is empty or shifted, that corner is still the Done control.
+        let panel = self
+            .ui
+            .view(cx, ids!(menu_panel))
+            .area()
+            .clipped_rect_union_attached(cx);
+        let on_corner = panel.size.x > 40.0
+            && panel.size.y > 40.0
+            && abs.x >= panel.pos.x + panel.size.x - 148.0
+            && abs.x <= panel.pos.x + panel.size.x
+            && abs.y >= panel.pos.y
+            && abs.y <= panel.pos.y + 68.0;
+        if on_btn || on_corner {
+            self.close_menu_window(cx);
+            true
+        } else {
+            false
+        }
+    }
+
     /// Close the menu window; the next opening starts from the whole menu.
     fn close_menu_window(&mut self, cx: &mut Cx) {
         {

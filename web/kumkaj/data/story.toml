@@ -1,0 +1,31 @@
+# Seed story for kumkaj.com home — HTML chapters render from templates;
+# Makepad stage will embed the same ids later (Phase 0/4).
+[[chapter]]
+id = "hero"
+headline = "The internet went down. The counter didn’t."
+progress = 0.0
+
+[[chapter]]
+id = "trade"
+headline = "Built for your trade"
+progress = 0.2
+
+[[chapter]]
+id = "books"
+headline = "Your books live in your shop"
+progress = 0.4
+
+[[chapter]]
+id = "free"
+headline = "Free forever on your devices"
+progress = 0.6
+
+[[chapter]]
+id = "languages"
+headline = "Speaks your language"
+progress = 0.8
+
+[[chapter]]
+id = "gotigin"
+headline = "Made by Gotigin"
+progress = 1.0

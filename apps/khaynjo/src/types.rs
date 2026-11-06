@@ -256,10 +256,16 @@ enum SuggestField {
     PrinterPlace,
     /// Settings → Places: check printers (× format) for the focused place.
     PrinterAssign,
+    /// Kitchen stations: pick which station gets virtual printers + First/All.
+    StationPrint,
+    /// Kitchen stations: multi-check virtual printers for the focused station.
+    StationVps,
+    /// Bill & KOT → Bill: real printers that may print the bill.
+    BillPrinters,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 32] = [
+    const ALL: [SuggestField; 35] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -292,6 +298,9 @@ impl SuggestField {
         SuggestField::FloorColumns,
         SuggestField::PrinterPlace,
         SuggestField::PrinterAssign,
+        SuggestField::StationPrint,
+        SuggestField::StationVps,
+        SuggestField::BillPrinters,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -329,6 +338,9 @@ impl SuggestField {
             SuggestField::FloorColumns => "floor_cols",
             SuggestField::PrinterPlace => "printer_place",
             SuggestField::PrinterAssign => "printer_assign",
+            SuggestField::StationPrint => "station_print",
+            SuggestField::StationVps => "station_vps",
+            SuggestField::BillPrinters => "bill_printers",
         }
     }
 
@@ -366,6 +378,9 @@ impl SuggestField {
             SuggestField::FloorColumns => ids!(floor_cols_input),
             SuggestField::PrinterPlace => ids!(printer_place_input),
             SuggestField::PrinterAssign => ids!(printer_assign_input),
+            SuggestField::StationPrint => ids!(station_print_input),
+            SuggestField::StationVps => ids!(station_vps_input),
+            SuggestField::BillPrinters => ids!(bill_printers_input),
         }
     }
 
@@ -403,6 +418,9 @@ impl SuggestField {
             SuggestField::FloorColumns => ids!(floor_cols_suggest),
             SuggestField::PrinterPlace => ids!(printer_place_suggest),
             SuggestField::PrinterAssign => ids!(printer_assign_suggest),
+            SuggestField::StationPrint => ids!(station_print_suggest),
+            SuggestField::StationVps => ids!(station_vps_suggest),
+            SuggestField::BillPrinters => ids!(bill_printers_suggest),
         }
     }
 }
@@ -915,10 +933,12 @@ fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) -> bool {
 }
 
 fn info_help_tooltip_options(widget_rect: Rect) -> CalloutTooltipOptions {
+    // Prefer Bottom so long tips get the full readable wrap width. Only open
+    // sideways when the icon is hard against an edge.
     let icon_right = widget_rect.pos.x + widget_rect.size.x;
-    let position = if widget_rect.pos.x < 120.0 {
+    let position = if widget_rect.pos.x < 48.0 {
         TooltipPosition::Right
-    } else if icon_right > 640.0 {
+    } else if icon_right > 720.0 {
         TooltipPosition::Left
     } else {
         TooltipPosition::Bottom

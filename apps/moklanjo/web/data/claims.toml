@@ -1,0 +1,18 @@
+# Seed from apps/moklanjo/docs/MOKLANJO_WEBSITE.md §5 — gated claims stay off live copy.
+[[claim]]
+id = "walkin-loop"
+sentence = "Next customer in one tap."
+source = "apps/moklanjo/docs/MOKLANJO.md B Walk-in flood"
+gate = ""
+
+[[claim]]
+id = "free-local"
+sentence = "Free forever on your devices."
+source = "docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §21"
+gate = ""
+
+[[claim]]
+id = "offline-lan"
+sentence = "Works with no internet; extra counters on the office Wi‑Fi."
+source = "apps/moklanjo/docs/MOKLANJO.md Offline office + devices"
+gate = "lan-pilot"

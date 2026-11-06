@@ -477,71 +477,164 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
     /// assign / Remove (that rebuilt all of Settings and froze the UI).
     ///
     /// Hard rule (DEV.md bug 7): this paint path must **never** `set_text` a
+    /// Kitchen → Kitchen stations: First/All + attached virtual printers summary.
+    fn paint_station_print_attach(&mut self, cx: &mut Cx) {
+        let (host, name, mode_first, n, summary) = {
+            let st = app_state().lock().unwrap();
+            let host = st.device_role != DeviceRole::Client;
+            let key = st.printer_route_key.clone();
+            let station_id = key.strip_prefix("kot:").unwrap_or("").to_string();
+            let name = if station_id.is_empty() {
+                String::new()
+            } else {
+                st.stations
+                    .iter()
+                    .find(|s| s.id == station_id)
+                    .map(|s| s.name.clone())
+                    .unwrap_or_default()
+            };
+            let route_key = parse_printer_route_key(&key);
+            let mode = st.printer_draft.print_mode_for(route_key);
+            let n = if station_id.is_empty() {
+                0
+            } else {
+                st.printer_draft.route_for(route_key).len()
+            };
+            let summary = if station_id.is_empty() {
+                st.t("station_print_pick_first")
+            } else if n == 0 {
+                st.t("station_print_summary_none")
+            } else {
+                let mode_l = st.t(match mode {
+                    print_share::RoutePrintMode::All => "printer_mode_all",
+                    print_share::RoutePrintMode::First => "printer_mode_first",
+                });
+                st.t("station_print_summary")
+                    .replace("{mode}", &mode_l)
+                    .replace("{n}", &n.to_string())
+            };
+            (
+                host,
+                name,
+                mode == print_share::RoutePrintMode::First,
+                n,
+                summary,
+            )
+        };
+        let has_station = !name.is_empty();
+        if has_station {
+            self.ui
+                .text_input(cx, ids!(station_print_input))
+                .set_text(cx, &name);
+        }
+        self.paint_choice_pair(
+            cx,
+            ids!(station_print_first),
+            ids!(station_print_first_on),
+            host && has_station && mode_first,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(station_print_all),
+            ids!(station_print_all_on),
+            host && has_station && !mode_first,
+        );
+        let dd = if !host {
+            app_t("printers_host_only")
+        } else if !has_station {
+            app_t("station_vps_dd")
+        } else {
+            app_t("station_vps_dd_n").replace("{n}", &n.to_string())
+        };
+        let open = {
+            let st = app_state().lock().unwrap();
+            st.suggest_open == Some(SuggestField::StationVps)
+        };
+        let face = if open {
+            app_t("pick_done_dd").replace("{label}", &dd)
+        } else {
+            dd
+        };
+        self.ui.button(cx, ids!(station_vps_dd)).set_text(cx, &face);
+        self.ui
+            .widget(cx, ids!(station_print_summary))
+            .set_text(cx, &plain_display_text(&summary));
+        self.ui
+            .view(cx, ids!(station_print_mode_row))
+            .set_visible(cx, host);
+        self.ui.button(cx, ids!(station_vps_dd)).set_visible(cx, host);
+        self.ui
+            .widget(cx, ids!(station_print_summary))
+            .set_visible(cx, host);
+    }
+
     /// Fill+wrap face (Stack*/SegBtn). Place chips and add-printer buttons are
     /// Fit (ChipBtn / QuietFitBtn). Kitchen on/off and KOT/Standard are
     /// visibility swaps of fixed-label overlays.
     fn paint_printers_panel(&mut self, cx: &mut Cx) {
-        let (on, pool_rows, assigned_rows, place_label, assign_label) = {
+        let (pool_rows, virtual_rows, assign_label, landscape, delivery, paper_mm, _vp_empty, editing) = {
             let mut st = app_state().lock().unwrap();
-            // No store → Off face only (don't invent product-default On).
-            let on = st
-                .store
-                .as_ref()
-                .map(|s| s.kot_auto_print())
-                .unwrap_or(false);
-            let station_ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
-            st.printer_draft.ensure_station_routes(station_ids);
-            let before = st.printer_draft.printers.len();
-            st.printer_draft.dedupe_printers();
-            if st.printer_draft.printers.len() != before {
-                let _ = st.save_printer_draft();
+            print_share::PrintFormat::ensure_builtins(&mut st.printer_draft.formats);
+            // Do not rewrite printers.json from paint. Flattening here looked
+            // "changed" every time (routes are stored as id@format), so every
+            // Settings refresh saved the file, and the save put the @format
+            // back. The page sat there until that loop finished. Load already
+            // flattens once.
+            if let Some(id) = st.virtual_printer_sel.clone() {
+                let loaded = st.printer_draft.virtual_printer_by_id(&id).map(|v| {
+                    (v.values(), v.printer_id.clone())
+                });
+                if let Some((vals, pid)) = loaded {
+                    st.printer_vp_landscape = vals.landscape;
+                    st.printer_vp_em = vals.em;
+                    st.printer_vp_line = vals.line;
+                    st.printer_vp_side = vals.side;
+                    st.printer_vp_delivery = vals.delivery;
+                    st.printer_vp_paper_width_mm = vals.paper_width_mm;
+                    if st.printer_selected_id.is_none() {
+                        st.printer_selected_id = Some(pid);
+                    }
+                }
             }
-            let _ = normalize_focused_route(&mut st);
+            let landscape = st.printer_vp_landscape;
+            let delivery = st.printer_vp_delivery.clone();
+            let paper_mm = st.printer_vp_paper_width_mm;
+            let editing = st.virtual_printer_sel.is_some();
             let selected = st.printer_selected_id.clone();
             let pool_rows =
                 printers_pool_rows(&st.printer_draft, selected.as_deref(), |k| st.t(k));
-            let sel = st.printer_route_sel.clone();
-            let assigned_rows = focused_route_printer_rows(
+            let virtual_rows = virtual_printers_list_rows(
                 &st.printer_draft,
-                &st.printer_route_key,
-                sel.as_deref(),
+                st.virtual_printer_sel.as_deref(),
                 |k| st.t(k),
             );
-            let place_choices =
-                printer_place_choices(&st.stations, &st.printer_route_key, |k| st.t(k));
-            let place_label = place_choices
-                .iter()
-                .find(|(_, _, selected)| *selected)
-                .map(|(_, label, _)| label.clone())
-                .or_else(|| place_choices.first().map(|(_, label, _)| label.clone()))
-                .unwrap_or_else(|| st.t("route_bill"));
-            let assign_label = st
-                .t("printer_assign_dd")
-                .replace("{place}", &place_label);
-            (on, pool_rows, assigned_rows, place_label, assign_label)
-        };
-        self.paint_choice_pair(cx, ids!(kot_print_off), ids!(kot_print_on), on);
-        self.show_found_printers(cx);
-        self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
-        let assigned_empty = assigned_rows.is_empty();
-        self.set_report_rows(cx, ids!(route_assigned_list), assigned_rows);
-        self.ui
-            .widget(cx, ids!(route_assigned_empty))
-            .set_visible(cx, assigned_empty);
-        self.ui
-            .widget(cx, ids!(route_assigned_list))
-            .set_visible(cx, !assigned_empty);
-        let (place_open, assign_open) = {
-            let st = app_state().lock().unwrap();
+            let vp_empty = st.printer_draft.virtual_printers.is_empty();
+            let real_name = selected
+                .as_ref()
+                .and_then(|id| st.printer_draft.printer_by_id(id))
+                .map(|p| printer_display_name(p, |k| st.t(k)))
+                .unwrap_or_else(|| st.t("printer_assign_pick"));
+            let assign_label = st.t("printer_assign_dd").replace("{place}", &real_name);
             (
-                st.suggest_open == Some(SuggestField::PrinterPlace),
-                st.suggest_open == Some(SuggestField::PrinterAssign),
+                pool_rows,
+                virtual_rows,
+                assign_label,
+                landscape,
+                delivery,
+                paper_mm,
+                vp_empty,
+                editing,
             )
         };
-        let place_face = if place_open {
-            app_t("pick_done_dd").replace("{label}", &place_label)
-        } else {
-            place_label
+        self.show_found_printers(cx);
+        self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        self.set_report_rows(cx, ids!(route_assigned_list), virtual_rows);
+        self.ui
+            .widget(cx, ids!(route_assigned_empty))
+            .set_text(cx, &plain_display_text(&app_t("virtual_printers_empty")));
+        let assign_open = {
+            let st = app_state().lock().unwrap();
+            st.suggest_open == Some(SuggestField::PrinterAssign)
         };
         let assign_face = if assign_open {
             app_t("pick_done_dd").replace("{label}", &assign_label)
@@ -549,140 +642,196 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             assign_label
         };
         self.ui
-            .button(cx, ids!(printer_place_dd))
-            .set_text(cx, &place_face);
-        self.ui
             .button(cx, ids!(printer_assign_dd))
             .set_text(cx, &assign_face);
-        let (mode_all, output_n, profile_id) = {
-            let st = app_state().lock().unwrap();
-            let key = parse_printer_route_key(&st.printer_route_key);
-            (
-                matches!(
-                    st.printer_draft.print_mode_for(key),
-                    print_share::RoutePrintMode::All
-                ),
-                st.printer_draft.route_for(key).len(),
-                st.printer_draft.format_id_for(key),
-            )
-        };
-        let show_mode = output_n > 1;
+        self.ui
+            .widget(cx, ids!(h_station_group))
+            .set_text(cx, &plain_display_text(&app_t("virtual_printers_heading")));
+        self.ui
+            .text_input(cx, ids!(station_group_name_input))
+            .set_empty_text(cx, app_t("virtual_printer_name_ph"));
+        self.ui
+            .button(cx, ids!(station_group_save_btn))
+            .set_text(
+                cx,
+                &app_t(if editing {
+                    "virtual_printer_save"
+                } else {
+                    "virtual_printer_create"
+                }),
+            );
+        self.ui
+            .button(cx, ids!(station_group_apply_btn))
+            .set_text(cx, &app_t("virtual_printer_delete"));
+
         self.ui
             .widget(cx, ids!(h_printer_profile))
             .set_text(cx, &plain_display_text(&app_t("printer_profile_heading")));
         self.ui
-            .button(cx, ids!(printer_wire_escpos))
-            .set_text(cx, &app_t("printer_wire_escpos"));
-        self.ui
-            .button(cx, ids!(printer_wire_escpos_on))
-            .set_text(cx, &app_t("printer_wire_escpos"));
-        self.ui
             .button(cx, ids!(printer_wire_os))
-            .set_text(cx, &app_t("printer_wire_os_portrait"));
+            .set_text(cx, &app_t("config_layout_portrait"));
         self.ui
             .button(cx, ids!(printer_wire_os_on))
-            .set_text(cx, &app_t("printer_wire_os_portrait"));
+            .set_text(cx, &app_t("config_layout_portrait"));
         self.ui
             .button(cx, ids!(printer_wire_os_landscape))
-            .set_text(cx, &app_t("printer_wire_os_landscape"));
+            .set_text(cx, &app_t("config_layout_landscape"));
         self.ui
             .button(cx, ids!(printer_wire_os_landscape_on))
-            .set_text(cx, &app_t("printer_wire_os_landscape"));
-        self.paint_choice_pair(
-            cx,
-            ids!(printer_wire_escpos),
-            ids!(printer_wire_escpos_on),
-            profile_id == print_share::FORMAT_KOT,
-        );
-        self.paint_choice_pair(
-            cx,
-            ids!(printer_wire_os),
-            ids!(printer_wire_os_on),
-            profile_id == print_share::FORMAT_STANDARD_PORTRAIT
-                || profile_id == print_share::FORMAT_STANDARD,
-        );
+            .set_text(cx, &app_t("config_layout_landscape"));
+        self.paint_choice_pair(cx, ids!(printer_wire_os), ids!(printer_wire_os_on), !landscape);
         self.paint_choice_pair(
             cx,
             ids!(printer_wire_os_landscape),
             ids!(printer_wire_os_landscape_on),
-            profile_id == print_share::FORMAT_STANDARD_LANDSCAPE,
+            landscape,
         );
+
         self.ui
-            .widget(cx, ids!(h_printer_route_mode))
-            .set_text(cx, &plain_display_text(&app_t("printer_route_mode")));
+            .widget(cx, ids!(h_vp_paper_width))
+            .set_text(cx, &plain_display_text(&app_t("vp_paper_width")));
+        self.ui
+            .widget(cx, ids!(vp_paper_width_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&app_t("vp_paper_width_help")));
+        {
+            let field = self.ui.text_input(cx, ids!(vp_paper_width_input));
+            field.set_empty_text(cx, app_t("vp_paper_width_ph"));
+            if !cx.has_key_focus(field.area()) {
+                field.set_text(cx, &paper_mm.to_string());
+            }
+        }
+        for (idle, on, mm, label) in [
+            (ids!(vp_paper_58), ids!(vp_paper_58_on), 58u32, "58 mm — narrow slip"),
+            (ids!(vp_paper_80), ids!(vp_paper_80_on), 80, "80 mm — wide slip"),
+            (ids!(vp_paper_112), ids!(vp_paper_112_on), 112, "112 mm — 4 inch slip"),
+            (ids!(vp_paper_210), ids!(vp_paper_210_on), 210, "210 mm — page"),
+        ] {
+            self.ui.button(cx, idle).set_text(cx, label);
+            self.ui.button(cx, on).set_text(cx, label);
+            self.paint_choice_pair(cx, idle, on, paper_mm == mm);
+        }
+        self.ui
+            .widget(cx, ids!(h_vp_delivery))
+            .set_text(cx, &plain_display_text(&app_t("vp_delivery_heading")));
+        self.ui
+            .widget(cx, ids!(vp_delivery_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&app_t("vp_delivery_help")));
         self.ui
             .button(cx, ids!(printer_mode_first))
-            .set_text(cx, &app_t("printer_mode_first"));
+            .set_text(cx, &app_t("vp_delivery_spooler"));
         self.ui
             .button(cx, ids!(printer_mode_first_on))
-            .set_text(cx, &app_t("printer_mode_first"));
+            .set_text(cx, &app_t("vp_delivery_spooler"));
         self.ui
             .button(cx, ids!(printer_mode_all))
-            .set_text(cx, &app_t("printer_mode_all"));
+            .set_text(cx, &app_t("vp_delivery_raw"));
         self.ui
             .button(cx, ids!(printer_mode_all_on))
-            .set_text(cx, &app_t("printer_mode_all"));
+            .set_text(cx, &app_t("vp_delivery_raw"));
+        self.ui
+            .button(cx, ids!(vp_deliv_escpos))
+            .set_text(cx, &app_t("vp_delivery_escpos"));
+        self.ui
+            .button(cx, ids!(vp_deliv_escpos_on))
+            .set_text(cx, &app_t("vp_delivery_escpos"));
+        let d = delivery.as_str();
         self.paint_choice_pair(
             cx,
             ids!(printer_mode_first),
             ids!(printer_mode_first_on),
-            !mode_all,
+            d == print_share::DELIVERY_SYSTEM_SPOOLER || d.is_empty(),
         );
-        self.paint_choice_pair(cx, ids!(printer_mode_all), ids!(printer_mode_all_on), mode_all);
+        self.paint_choice_pair(
+            cx,
+            ids!(printer_mode_all),
+            ids!(printer_mode_all_on),
+            d == print_share::DELIVERY_RAW_DEVICE,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(vp_deliv_escpos),
+            ids!(vp_deliv_escpos_on),
+            d == print_share::DELIVERY_ESCPOS,
+        );
         self.ui
-            .widget(cx, ids!(h_station_group))
-            .set_text(cx, &plain_display_text(&app_t("station_group_heading")));
-        self.ui
-            .text_input(cx, ids!(station_group_name_input))
-            .set_empty_text(cx, app_t("station_group_name_ph"));
-        self.ui
-            .button(cx, ids!(station_group_save_btn))
-            .set_text(cx, &app_t("station_group_save"));
-        self.ui
-            .button(cx, ids!(station_group_apply_btn))
-            .set_text(cx, &app_t("station_group_apply"));
-        // Legacy +chips stay hidden — assign is the checkbox dropdown.
+            .button(cx, ids!(virtual_printer_new_btn))
+            .set_text(cx, &app_t("virtual_printer_new"));
+        if editing {
+            let name = {
+                let st = app_state().lock().unwrap();
+                st.virtual_printer_sel
+                    .as_ref()
+                    .and_then(|id| st.printer_draft.virtual_printer_by_id(id))
+                    .map(|v| v.name.clone())
+                    .unwrap_or_default()
+            };
+            if !name.is_empty() {
+                self.ui
+                    .text_input(cx, ids!(station_group_name_input))
+                    .set_text(cx, &name);
+            }
+        }
+
         self.ui.view(cx, ids!(route_add_printers)).set_visible(cx, false);
         for id in ROUTE_ADD_PRINTER_BTNS.iter() {
             self.ui.button(cx, id).set_visible(cx, false);
         }
-        // Host-only discovery / assign: Clients print on the Server's printers.
-        // Test page stays visible — Client routes it through books_op.
         let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
         let host = !is_client;
         self.ui.button(cx, ids!(find_printers_btn)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(printers_find_help)).set_visible(cx, host);
+        self.ui.view(cx, ids!(virtual_printer_legacy)).set_visible(cx, false);
+        // One panel title only (`printers_panel_help`) — never a second "Printers".
+        self.ui.widget(cx, ids!(printers_find_help)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, host);
         self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, host);
-        self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, host);
-        self.ui.button(cx, ids!(printer_assign_dd)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(h_printer_profile)).set_visible(cx, host);
-        self.ui.view(cx, ids!(printer_profile_row)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(h_printer_route_mode)).set_visible(cx, host && show_mode);
-        self.ui.view(cx, ids!(printer_mode_row)).set_visible(cx, host && show_mode);
-        self.ui.widget(cx, ids!(route_assigned_empty)).set_visible(cx, host && assigned_empty);
-        self.ui.widget(cx, ids!(route_assigned_list)).set_visible(cx, host && !assigned_empty);
-        self.ui.button(cx, ids!(route_clear)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(h_station_group)).set_visible(cx, host);
+        self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, false);
+        self.ui.button(cx, ids!(route_clear)).set_visible(cx, false);
+        self.ui.button(cx, ids!(print_test_btn)).set_visible(cx, false);
+        self.ui.button(cx, ids!(printer_wire_escpos)).set_visible(cx, false);
+        self.ui.button(cx, ids!(printer_wire_escpos_on)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(h_profiles)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(profiles_list)).set_visible(cx, false);
+        self.ui.text_input(cx, ids!(profile_name_input)).set_visible(cx, false);
+        self.ui
+            .text_input(cx, ids!(profile_name_input))
+            .set_empty_text(cx, String::new());
+        self.ui.button(cx, ids!(profile_new_btn)).set_visible(cx, false);
+        self.ui.button(cx, ids!(profile_delete_btn)).set_visible(cx, false);
+
+        self.ui.widget(cx, ids!(h_station_group)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(route_assigned_empty)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(route_assigned_list)).set_visible(cx, false);
         self.ui
             .text_input(cx, ids!(station_group_name_input))
-            .set_visible(cx, host);
-        self.ui.button(cx, ids!(station_group_save_btn)).set_visible(cx, host);
-        self.ui.button(cx, ids!(station_group_apply_btn)).set_visible(cx, host);
-        self.ui.button(cx, ids!(printer_mode_first)).set_visible(cx, host && show_mode);
-        self.ui.button(cx, ids!(printer_mode_first_on)).set_visible(cx, host && show_mode);
-        self.ui.button(cx, ids!(printer_mode_all)).set_visible(cx, host && show_mode);
-        self.ui.button(cx, ids!(printer_mode_all_on)).set_visible(cx, host && show_mode);
-        if !host || !show_mode {
-            // paint_choice_pair may have shown a face; keep both off when hidden.
-            if !show_mode {
-                self.ui.button(cx, ids!(printer_mode_first)).set_visible(cx, false);
-                self.ui.button(cx, ids!(printer_mode_first_on)).set_visible(cx, false);
-                self.ui.button(cx, ids!(printer_mode_all)).set_visible(cx, false);
-                self.ui.button(cx, ids!(printer_mode_all_on)).set_visible(cx, false);
-            }
-        }
+            .set_visible(cx, false);
+        self.ui.button(cx, ids!(printer_assign_dd)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(h_printer_profile)).set_visible(cx, false);
+        self.ui.view(cx, ids!(printer_profile_row)).set_visible(cx, false);
+        // Type size / wrap / margins stay hidden — content decides those.
+        self.ui.widget(cx, ids!(h_vp_type_size)).set_visible(cx, false);
+        self.ui.view(cx, ids!(vp_type_size_row)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(h_vp_wrap)).set_visible(cx, false);
+        self.ui.view(cx, ids!(vp_wrap_row)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(h_vp_margin)).set_visible(cx, false);
+        self.ui.view(cx, ids!(vp_margin_row)).set_visible(cx, false);
+        // Content width lives on Bill & KOT format, for the bill and the ticket.
+        self.ui.widget(cx, ids!(h_vp_paper_width)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(vp_paper_width_help)).set_visible(cx, false);
+        self.ui
+            .text_input(cx, ids!(vp_paper_width_input))
+            .set_visible(cx, false);
+        self.ui
+            .view(cx, ids!(vp_paper_width_choices))
+            .set_visible(cx, false);
+        self.ui.widget(cx, ids!(h_vp_delivery)).set_visible(cx, false);
+        self.ui.widget(cx, ids!(vp_delivery_help)).set_visible(cx, false);
+        self.ui.view(cx, ids!(printer_mode_row)).set_visible(cx, false);
+        self.ui.button(cx, ids!(virtual_printer_new_btn)).set_visible(cx, false);
+        self.ui.button(cx, ids!(station_group_save_btn)).set_visible(cx, false);
+        self.ui.button(cx, ids!(station_group_apply_btn)).set_visible(cx, false);
     }
 
     fn align_label(&mut self, cx: &mut Cx, id: &[LiveId], rtl: bool) {
@@ -1122,6 +1271,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(table_range_add), "add_these_tables"),
             (ids!(table_remove_btn), "remove_these_tables"),
             (ids!(bill_format_save), "save_bill_format"),
+            (ids!(bill_format_test), "test_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
             (ids!(print_stamp_clear), "clear_stamp"),
             (ids!(payment_qr_pick), "choose_payment_qr"),
@@ -1243,7 +1393,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_who_unlocking)).set_text(cx, &plain_display_text(&s("who_unlocking")));
         self.ui.widget(cx, ids!(h_setup_app_khaynjo)).set_text(cx, &plain_display_text(&s("setup_app_khaynjo")));
         self.ui.widget(cx, ids!(h_shop_logo_optional)).set_text(cx, &plain_display_text(&s("shop_logo_optional")));
-        self.ui.widget(cx, ids!(h_product_locked_khaynjo)).set_text(cx, &plain_display_text(&s("product_locked_khaynjo")));
+        self.ui.widget(cx, ids!(h_product_locked_khaynjo)).set_visible(cx, false);
         self.ui.widget(cx, ids!(h_how_start)).set_text(cx, &plain_display_text(&s("how_start")));
         self.ui.widget(cx, ids!(h_fresh_book_khaynjo)).set_text(cx, &plain_display_text(&s("fresh_book_khaynjo")));
         self.ui.widget(cx, ids!(h_fresh_selected)).set_text(cx, &plain_display_text(&s("fresh_selected")));
@@ -1398,6 +1548,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
             let help = self.ui.widget(cx, ids!(printers_panel_help)).as_info_help();
             help.set_title(cx, &s("printers_heading"));
+            // Single screen title + tip (includes Find). No second "Printers" row.
             help.set_tip(&plain_display_text(&s(if is_client {
                 "printers_host_only"
             } else {
@@ -1405,18 +1556,19 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             })));
         }
         {
+            // Legacy id kept for hot-reload — title cleared so it cannot duplicate.
             let help = self.ui.widget(cx, ids!(printers_find_help)).as_info_help();
-            help.set_title(cx, &s("printers_find_heading"));
-            help.set_tip(&plain_display_text(&s("printers_find_tip")));
+            help.set_title(cx, "");
+            help.set_tip("");
         }
         {
             let help = self.ui.widget(cx, ids!(printers_routes_help)).as_info_help();
-            help.set_title(cx, &s("printers_routes_heading"));
-            help.set_tip(&plain_display_text(&s("printers_routes_help")));
+            help.set_title(cx, "");
+            help.set_tip("");
         }
         self.ui
             .widget(cx, ids!(route_assigned_empty))
-            .set_text(cx, &plain_display_text(&s("route_assigned_empty")));
+            .set_text(cx, &plain_display_text(&s("virtual_printers_empty")));
         self.ui.widget(cx, ids!(station_manage_heading)).set_text(cx, &plain_display_text(&s("station_manage_heading")));
         self.ui.button(cx, ids!(settings_station_add)).set_text(cx, &s("add_station"));
         self.ui.button(cx, ids!(settings_station_remove)).set_text(cx, &s("station_remove"));
@@ -1876,6 +2028,28 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             .as_info_help()
             .set_tip(&plain_display_text(&s("stations_help")));
         self.ui.widget(cx, ids!(station_add_heading)).set_text(cx, &plain_display_text(&s("add_station_heading")));
+        self.ui
+            .widget(cx, ids!(h_station_print))
+            .set_text(cx, &plain_display_text(&s("station_print_heading")));
+        self.ui
+            .widget(cx, ids!(station_print_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("station_print_help")));
+        self.ui
+            .text_input(cx, ids!(station_print_input))
+            .set_empty_text(cx, s("station_print_pick_ph"));
+        self.ui
+            .button(cx, ids!(station_print_first))
+            .set_text(cx, &s("printer_mode_first"));
+        self.ui
+            .button(cx, ids!(station_print_first_on))
+            .set_text(cx, &s("printer_mode_first"));
+        self.ui
+            .button(cx, ids!(station_print_all))
+            .set_text(cx, &s("printer_mode_all"));
+        self.ui
+            .button(cx, ids!(station_print_all_on))
+            .set_text(cx, &s("printer_mode_all"));
         self.ui.widget(cx, ids!(categories_help)).set_text(cx, &plain_display_text(&s("categories_help")));
         self.ui.widget(cx, ids!(h_removed_items)).set_text(cx, &plain_display_text(&s("removed_items")));
         self.ui.widget(cx, ids!(removed_help)).set_text(cx, &plain_display_text(&s("removed_help")));

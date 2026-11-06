@@ -1,6 +1,7 @@
 # khaynjo.com — website plan
 
-> **Status:** plan, 2026-11-05. Nothing built yet.
+> **Status:** Phase 1 thin site in `apps/khaynjo/web/` (2026-11-06) —
+> landing + legal + download/pricing stubs. Full story / stage = Phase 3.
 > **Scope:** Khaynjo's instantiation of the Kumkaj-wide website plan
 > [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) — architecture
 > (HTML first + Makepad stage), agent pipeline, budgets, hosting and

@@ -1,7 +1,10 @@
 # Kumkaj websites — kumkaj.com, moklanjo.com, khaynjo.com
 
-> **Status:** plan, 2026-11-05. Only today's one-page `web/index.html`
-> exists; everything else below is to build.
+> **Status:** Phase 1 foundations in tree (2026-11-06) — three Zola
+> sites (`web/kumkaj/`, `apps/moklanjo/web/`, `apps/khaynjo/web/`),
+> `/privacy` + `/terms` on all three, kumkaj.com multi-page v1 with
+> static stills; Makepad stages and full product stories still to build
+> (Phase 0 / 2 / 3).
 > **Scope:** Kumkaj-wide (docs/README.md rule 1) — the approach all
 > three sites share, plus kumkaj.com itself (§13). Each product site's
 > own story, pages and 3D chapters live with its app:

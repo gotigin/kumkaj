@@ -338,6 +338,7 @@ impl ReportText {
             self.view.redraw(cx);
         }
     }
+
 }
 
 /// Settings → Sidebar: one row per chrome peer (order + show/hide).
@@ -591,5 +592,148 @@ impl Widget for PartsList {
             return;
         }
         self.view.handle_event(cx, event, scope);
+    }
+}
+
+/// One preview line. A tab in the slip text is a name / Qty. column.
+#[derive(Clone, Debug, PartialEq)]
+enum SlipPreviewRow {
+    /// Text and its horizontal align (0 start, 0.5 center, 1 end) in this language.
+    Line(String, f64),
+    Qty(String, String, f64),
+    Gap,
+}
+
+/// Kitchen-slip preview. Not a report: no headings, no money eye.
+/// `Item` and `Qty.` use the same row as each dish and its count.
+#[derive(Script, ScriptHook, Widget)]
+struct KotSlipPreview {
+    #[deref]
+    view: View,
+    #[rust]
+    rows: Vec<SlipPreviewRow>,
+    #[rust]
+    measured: f64,
+    #[rust]
+    settle: NextFrame,
+}
+
+fn preview_align_x(align: print_share::KotAlign, rtl: bool) -> f64 {
+    match align {
+        print_share::KotAlign::Center => 0.5,
+        print_share::KotAlign::Start if rtl => 1.0,
+        print_share::KotAlign::End if rtl => 0.0,
+        print_share::KotAlign::Start => 0.0,
+        print_share::KotAlign::End => 1.0,
+    }
+}
+
+fn slip_preview_rows(text: &str, rtl: bool) -> Vec<SlipPreviewRow> {
+    let mut rows = Vec::new();
+    for line in text.lines() {
+        let line = line.trim_end();
+        let (align, body) = print_share::kot_preview_line(line);
+        let x = preview_align_x(align, rtl);
+        if body.trim().is_empty() {
+            if !matches!(rows.last(), None | Some(SlipPreviewRow::Gap)) {
+                rows.push(SlipPreviewRow::Gap);
+            }
+            continue;
+        }
+        if let Some((left, right)) = body.split_once('\t') {
+            rows.push(SlipPreviewRow::Qty(
+                left.trim().to_string(),
+                print_share::kot_qty_column(right),
+                x,
+            ));
+        } else {
+            rows.push(SlipPreviewRow::Line(body.trim().to_string(), x));
+        }
+    }
+    while matches!(rows.last(), Some(SlipPreviewRow::Gap)) {
+        rows.pop();
+    }
+    rows
+}
+
+impl Widget for KotSlipPreview {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        if self.rows.is_empty() {
+            return DrawStep::done();
+        }
+        let estimate = if self.measured > 1.0 {
+            self.measured
+        } else {
+            self.rows.len() as f64 * 28.0
+        };
+        let mut extent = 0.0;
+        if let Some(mut card) = self.view.view(cx, ids!(card)).borrow_mut() {
+            card.walk.height = Size::Fixed(estimate + 18.0);
+        }
+        let rows = self.rows.clone();
+        let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
+        let qty_align = if rtl { 0.0 } else { 1.0 };
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                list.set_item_range(cx, 0, rows.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(row) = rows.get(item_id) else {
+                        continue;
+                    };
+                    let item = match row {
+                        SlipPreviewRow::Line(t, x) => {
+                            let item = list.item(cx, item_id, id!(Line));
+                            set_report_label(cx, &item, ids!(line), t, *x);
+                            item
+                        }
+                        SlipPreviewRow::Qty(name, qty, x) => {
+                            let item = list.item(
+                                cx,
+                                item_id,
+                                if rtl { id!(QtyRtl) } else { id!(Qty) },
+                            );
+                            set_report_label(cx, &item, ids!(k), name, *x);
+                            set_report_label(cx, &item, ids!(v), qty, qty_align);
+                            item
+                        }
+                        SlipPreviewRow::Gap => list.item(cx, item_id, id!(Gap)),
+                    };
+                    item.draw_all_unscoped(cx);
+                }
+                extent = list.drawn_range_extent();
+            }
+        }
+        if extent > 1.0 && (extent - self.measured).abs() > 1.0 {
+            self.measured = extent;
+            self.settle = cx.new_next_frame();
+        }
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if self.settle.is_event(event).is_some() {
+            self.view.redraw(cx);
+        }
+        if page_owns_scroll(event) {
+            return;
+        }
+        self.view.handle_event(cx, event, scope);
+    }
+
+    fn set_text(&mut self, cx: &mut Cx, v: &str) {
+        self.set_slip(cx, v);
+    }
+}
+
+impl KotSlipPreview {
+    /// Slip text after style marks are stripped. A tab is the Qty. column.
+    pub fn set_slip(&mut self, cx: &mut Cx, text: &str) {
+        let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
+        let rows = slip_preview_rows(text, rtl);
+        if self.rows != rows {
+            self.rows = rows;
+            self.measured = 0.0;
+            self.view.redraw(cx);
+        }
     }
 }

@@ -1268,6 +1268,7 @@ pub fn reprint_selected_kots(
         let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
         let area_label = String::new();
         let text = fmt.render(crate::print_share::KotSlipContent {
+            kind: crate::print_share::KotSlipKind::Duplicate,
             cancel: false,
             reprint: true,
             shop_name: &shop,
@@ -1282,14 +1283,15 @@ pub fn reprint_selected_kots(
         });
         let mut printed = false;
         let mut last_err: Option<String> = None;
-        for _ in 0..copies {
-            match crate::print_share::print_route(
+        {
+            match crate::print_share::print_route_copies(
                 crate::print_share::PrintKind::Kot,
                 crate::print_share::RouteKey::Kot {
                     station_id: station_id.as_str(),
                 },
                 &text,
                 store.db_path().parent(),
+                copies.max(1),
             ) {
                 Ok(share) if share.opened => printed = true,
                 Ok(_) => {

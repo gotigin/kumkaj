@@ -214,14 +214,12 @@ fn load_nav_icon_once(cx: &mut Cx, img: &ImageRef, tab: NavTab) -> bool {
 }
 
 fn info_help_tooltip_options(widget_rect: Rect) -> CalloutTooltipOptions {
-    // Prefer below (toolbar-like). If the icon sits near the right edge,
-    // open to the left so a wide tip stays on-screen; near the left edge,
-    // open to the right. CalloutTooltip still flips/clamps within that side.
+    // Prefer Bottom so long tips get the full readable wrap width. Only open
+    // sideways when the icon is hard against an edge.
     let icon_right = widget_rect.pos.x + widget_rect.size.x;
-    let position = if widget_rect.pos.x < 120.0 {
+    let position = if widget_rect.pos.x < 48.0 {
         TooltipPosition::Right
-    } else if icon_right > 640.0 {
-        // Typical phone/tablet width; CalloutTooltip also clamps to the pass.
+    } else if icon_right > 720.0 {
         TooltipPosition::Left
     } else {
         TooltipPosition::Bottom

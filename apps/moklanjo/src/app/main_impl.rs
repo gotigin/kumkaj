@@ -306,6 +306,21 @@ impl AppMain for App {
         // and its parent takes over at the edge. Pre-marking X handled here
         // (claim_hstrip_nested_scroll, removed 2026-11-02) stopped the strip
         // itself — a trackpad moved the booking desk one step, then nothing.
+        // Empty header (not Back or the amount eye) is a window drag, the same
+        // as the caption bar: press and move, and the desktop moves the window.
+        if let Event::WindowDragQuery(dq) = event {
+            let header = self.ui.view(cx, ids!(header)).area().rect(cx);
+            if header.size.x > 1.0 && header.contains(dq.abs) {
+                let on_control = [ids!(header_back), ids!(amounts_eye)].into_iter().any(|id| {
+                    let r = self.ui.button(cx, id).area().rect(cx);
+                    r.size.x > 1.0 && r.contains(dq.abs)
+                });
+                if !on_control {
+                    dq.response
+                        .set(makepad_widgets::WindowDragQueryResponse::Caption);
+                }
+            }
+        }
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.
         if matches!(

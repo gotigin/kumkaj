@@ -1,6 +1,7 @@
 # moklanjo.com — website plan
 
-> **Status:** plan, 2026-11-05. Nothing built yet.
+> **Status:** Phase 1 thin site in `apps/moklanjo/web/` (2026-11-06) —
+> landing + legal + download/pricing stubs. Full story / stage = Phase 2.
 > **Scope:** Moklanjo's instantiation of the Kumkaj-wide website plan
 > [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) — architecture
 > (HTML first + Makepad stage), agent pipeline, budgets, hosting and

@@ -1,0 +1,18 @@
+# Brand-level claims (vision §21). Product claim tables live on product sites.
+[[claim]]
+id = "free-local"
+sentence = "Free forever on your devices."
+source = "docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §21"
+gate = ""
+
+[[claim]]
+id = "local-first"
+sentence = "The counter keeps working when the internet stops."
+source = "docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §6"
+gate = ""
+
+[[claim]]
+id = "cloud-planned"
+sentence = "Kumkaj Cloud is planned; pay only for what you use."
+source = "docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §21–22"
+gate = ""

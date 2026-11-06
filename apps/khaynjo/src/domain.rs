@@ -683,6 +683,13 @@ pub fn format_qty_display(qty_milli: i64, qty_whole: i64, unit_label: &str) -> S
     }
 }
 
+/// Kitchen-ticket qty: the count (`2`) or a measured amount (`1.25 kg`).
+/// Piece display from [`format_qty_display`] is `x2`; the `x` is not a quantity.
+pub fn format_kot_qty(qty_milli: i64, qty_whole: i64, unit_label: &str) -> String {
+    let raw = format_qty_display(qty_milli, qty_whole, unit_label);
+    raw.strip_prefix('x').unwrap_or(&raw).to_string()
+}
+
 /// One open bill for bill-wise (open-item) allocation: a credit sale
 /// (AR) or an on-account purchase (AP) and how much of it is still
 /// open after settlements linked to it plus the FIFO share of
@@ -1339,7 +1346,7 @@ impl Category {
     }
 }
 
-/// Kitchen station a line is routed to (Hot / Cold / Tandoor …).
+/// Kitchen station a line is routed to (owner-named — e.g. Tandoor, Fryer).
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct KitchenStation {
     pub id: String,
@@ -3078,11 +3085,19 @@ impl Cart {
     }
 
     /// Mark the cart's new lines as sent with no running order behind them
-    /// (a counter KOT before payment): the kitchen has them, so finalize must
-    /// not fire them again.
+    /// (a counter KOT before payment). `is_sent` is `kot_id`, so the marker
+    /// has to land there — otherwise Send stays on the first step and the
+    /// print action stays hidden after the kitchen ticket already exists.
+    /// Held lines are still waiting and are left alone.
     pub fn mark_new_lines_sent(&mut self, marker: &str) {
-        for line in self.lines.iter_mut().filter(|l| !l.is_sent()) {
+        let marker = if marker.is_empty() { "counter" } else { marker };
+        for line in self
+            .lines
+            .iter_mut()
+            .filter(|l| !l.is_sent() && !l.hold_send)
+        {
             line.running_line_id = marker.to_string();
+            line.kot_id = marker.to_string();
         }
     }
 
@@ -4451,6 +4466,19 @@ mod tests {
         let refused = cart.remove_one_of("tea").unwrap_err();
         assert!(refused.contains("kitchen"), "{refused}");
         assert_eq!(cart.qty_of("tea"), 2);
+    }
+
+    #[test]
+    fn counter_send_marks_the_line_sent_so_the_next_step_can_show() {
+        let mut cart = Cart::default();
+        cart.add_or_bump_in_stock(&tea()).unwrap();
+        cart.lines[0].hold_send = true;
+        let coffee = Product::new_basic("coffee", "Coffee", Money::from_rupees(20));
+        cart.add_or_bump_in_stock(&coffee).unwrap();
+        cart.mark_new_lines_sent("kot-1");
+        assert!(cart.lines[0].hold_send && !cart.lines[0].is_sent());
+        assert!(cart.lines[1].is_sent());
+        assert_eq!(cart.lines[1].kot_id, "kot-1");
     }
 
     /// ₹0 is a real menu price (complimentary items, price-at-counter dishes);

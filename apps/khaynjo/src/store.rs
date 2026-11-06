@@ -873,25 +873,7 @@ impl Store {
                 .map_err(|e| e.to_string())?;
         }
 
-        let station_count: i64 = self
-            .conn
-            .query_row(
-                "SELECT COUNT(*) FROM kitchen_stations WHERE branch_id = ?1",
-                params![branch_id],
-                |r| r.get(0),
-            )
-            .map_err(|e| e.to_string())?;
-        if station_count == 0 {
-            for (i, name) in ["Hot", "Cold"].iter().enumerate() {
-                self.conn
-                    .execute(
-                        "INSERT INTO kitchen_stations(id, branch_id, name, sort_order)
-                         VALUES(?1, ?2, ?3, ?4)",
-                        params![new_id(), branch_id, name, i as i64],
-                    )
-                    .map_err(|e| e.to_string())?;
-            }
-        }
+        // Kitchen stations stay empty until the owner adds them — no Hot/Cold seed.
 
         let country = match self.meta_get("country_code")?.filter(|c| !c.trim().is_empty()) {
             Some(c) => c,
@@ -1198,7 +1180,8 @@ impl Store {
 
     /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner **Zahir**,
     /// Admin **Asif**, Waiter **Nawaz**, FOH-first sidebar, history after a few
-    /// hours, Today strip off, compact KOT + Standard margins for narrow trays.
+    /// hours, Today strip off. Does not seed Hot/Cold stations or stock named
+    /// print formats (KOT / Portrait / Landscape).
     /// Safe to call after the menu import on a fresh server (no session yet).
     pub fn apply_rajdhani_shop_defaults(&self) -> Result<(), String> {
         self.assert_server_writer("Rajdhani shop defaults")?;
@@ -1272,7 +1255,7 @@ impl Store {
                     name: "Nawaz",
                     role: StaffRole::Waiter,
                     role_title: "Waiter",
-                    pin: "2222",
+                    pin: "0000",
                     login_id: "nawaz",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Waiter),
@@ -1299,33 +1282,8 @@ impl Store {
         self.set_nav_hidden_csv("books,buy,menu,inventory,branches,credit,reports")?;
         let kot = crate::print_share::KotSlipFormat::rajdhani_default();
         self.set_kot_slip_format(&kot)?;
-        // Standard document metrics: side inset + smaller type so narrow
-        // trays (Canon G3010-class) do not clip edges (bill.jpeg).
-        self.meta_set(
-            "standard_print_em",
-            &format!("{}", crate::print_share::STD_EM_SMALL),
-        )?;
-        if let Some(base) = self.path.parent() {
-            let mut cfg = crate::print_share::load_device_printers(base);
-            crate::print_share::PrintFormat::ensure_builtins(&mut cfg.formats);
-            for f in cfg.formats.iter_mut() {
-                if crate::print_share::is_standard_document(&f.id) {
-                    f.side = 12.0;
-                    f.em = crate::print_share::STD_EM_SMALL;
-                    f.line = 40;
-                    f.baseline = crate::print_share::STD_EM_SMALL + 2.0;
-                } else if f.id == crate::print_share::FORMAT_KOT {
-                    // Match product KOT built-in (thermal slip metrics).
-                    let kot_fmt = crate::print_share::PrintFormat::kot();
-                    f.em = kot_fmt.em;
-                    f.line = kot_fmt.line;
-                    f.baseline = kot_fmt.baseline;
-                    f.side = kot_fmt.side;
-                }
-            }
-            let _ = crate::print_share::save_device_printers(base, &cfg);
-            crate::print_share::configure(cfg);
-        }
+        // Do not seed stock named print formats (KOT / Portrait / Landscape) or
+        // Hot/Cold stations — owner creates virtual printers and stations.
         Ok(())
     }
 
@@ -3101,10 +3059,36 @@ impl Store {
     }
 
     /// Owner's kitchen-slip options (clamped). Always a standard KOT shape.
+    /// One-shot: replace the old verbose default (title / shop / waiter /
+    /// station) with the compact client sample (time, KOT -, Dine In,
+    /// Table No, Item/Qty) so shops are not stuck on the pre-sample layout.
     pub fn kot_slip_format(&self) -> Result<crate::print_share::KotSlipFormat, String> {
-        Ok(crate::print_share::KotSlipFormat::parse(
-            &self.meta_get("kot_slip_format")?.unwrap_or_default(),
-        ))
+        let raw = self.meta_get("kot_slip_format")?.unwrap_or_default();
+        let mut fmt = crate::print_share::KotSlipFormat::parse(&raw);
+        let migrated = self
+            .meta_get("kot_slip_compact_v1")?
+            .map(|v| v.trim() == "1")
+            .unwrap_or(false);
+        if !migrated {
+            if raw.trim().is_empty() || fmt.looks_like_legacy_verbose() {
+                fmt = crate::print_share::KotSlipFormat::default();
+                // Best-effort persist; readers still get the compact shape.
+                let _ = self.meta_set("kot_slip_format", &fmt.to_json());
+                if let Some(base) = self.path.parent() {
+                    let mut printers = crate::print_share::load_device_printers(base);
+                    if let Some(f) = printers
+                        .formats
+                        .iter_mut()
+                        .find(|f| f.id == crate::print_share::FORMAT_KOT)
+                    {
+                        fmt.apply_to_print_format(f);
+                    }
+                    let _ = crate::print_share::save_device_printers(base, &printers);
+                }
+            }
+            let _ = self.meta_set("kot_slip_compact_v1", "1");
+        }
+        Ok(fmt.clamped())
     }
 
     /// Save kitchen-slip options and sync the built-in KOT print metrics
@@ -3125,9 +3109,27 @@ impl Store {
             {
                 clamped.apply_to_print_format(f);
             }
+            // One content width for the bill and the kitchen ticket.
+            let cols = clamped.chars_per_line;
+            for f in printers.formats.iter_mut() {
+                if crate::print_share::is_standard_document(&f.id) {
+                    f.line = cols;
+                }
+            }
             crate::print_share::save_device_printers(base, &printers)?;
         }
         Ok(clamped)
+    }
+
+    /// Content width for the bill and the kitchen ticket, in millimetres.
+    pub fn set_content_width_mm(&self, mm: u32) -> Result<u32, String> {
+        self.assert_server_writer("Change the content width")?;
+        let mm = mm.clamp(40, 210);
+        let mut fmt = self.kot_slip_format()?;
+        fmt.content_width_mm = mm;
+        fmt.chars_per_line = crate::print_share::wrap_cols_for_paper_mm(mm);
+        let saved = self.set_kot_slip_format(&fmt)?;
+        Ok(saved.content_width_mm)
     }
 
     /// Saved Standard bill type size (portrait + landscape).
@@ -3234,6 +3236,13 @@ impl Store {
     /// Printable KOT text: table, time, station, items — never prices.
     /// Layout follows Settings → Bill & KOT format (clamped options).
     pub fn format_kot_text(&self, kot_id: &str) -> Result<String, String> {
+        self.format_kot_text_cols(kot_id, None)
+    }
+
+    /// `cols` is the virtual printer's content width in characters. `None`
+    /// keeps the saved slip width (preview and tests). Print passes the
+    /// virtual printer.
+    fn format_kot_text_cols(&self, kot_id: &str, cols: Option<u32>) -> Result<String, String> {
         let (created_at, summary, station_name, kot_no, kind, created_by, table_id): (
             String,
             String,
@@ -3284,11 +3293,32 @@ impl Store {
             (label, area)
         };
         let shop = self.venue_title().unwrap_or_default();
-        let items = kot_print_item_lines(&summary, &table_label, &station_name);
-        let items: Vec<String> = items.into_iter().map(|l| kot_line_to_name_qty(&l)).collect();
+        // Running lines already are `name|qty`. The summary is only a fallback
+        // (`x1× Name` on tickets sent before the count was stored on its own).
+        let items = match self.kot_reprint_payload(kot_id, &[]) {
+            Ok((_, _, _, lines)) if !lines.is_empty() => lines,
+            _ => kot_print_item_lines(&summary, &table_label, &station_name)
+                .into_iter()
+                .map(|l| kot_line_to_name_qty(&l))
+                .collect(),
+        };
         let item_refs: Vec<&str> = items.iter().map(String::as_str).collect();
-        let fmt = self.kot_slip_format()?;
-        Ok(fmt.render(crate::print_share::KotSlipContent {
+        let mut fmt = self.kot_slip_format()?;
+        if let Some(cols) = cols {
+            fmt.chars_per_line = cols;
+        }
+        let slip_kind = match kind.as_str() {
+            "cancel" => crate::print_share::KotSlipKind::Cancelled,
+            "modify" | "modified" => crate::print_share::KotSlipKind::Modified,
+            "duplicate" | "dup" => crate::print_share::KotSlipKind::Duplicate,
+            _ => crate::print_share::KotSlipKind::Original,
+        };
+        let rtl = self
+            .locale_settings()
+            .map(|l| crate::locale::is_rtl(&l.language))
+            .unwrap_or(false);
+        Ok(fmt.render_dir(crate::print_share::KotSlipContent {
+            kind: slip_kind,
             cancel: kind == "cancel",
             reprint: false,
             shop_name: &shop,
@@ -3300,7 +3330,7 @@ impl Store {
             station_name: &station_name,
             area_label: &area_label,
             items: &item_refs,
-        }))
+        }, rtl))
     }
 
     /// Print a KOT on this device (writes the print file and sends it along
@@ -3308,30 +3338,57 @@ impl Store {
     /// by the server the moment a KOT is sent — from the counter or from a
     /// waiter's paired device — when auto-print is on.
     pub fn print_kot(&self, kot_id: &str) -> Result<std::path::PathBuf, String> {
-        let text = self.format_kot_text(kot_id)?;
         let station_id = self.station_id_for_kot(kot_id).unwrap_or_default();
-        let copies = self.kot_slip_format()?.copies.max(1);
-        let mut last_path = None;
-        let mut opened = false;
-        for _ in 0..copies {
-            let share = crate::print_share::print_route(
-                crate::print_share::PrintKind::Kot,
-                crate::print_share::RouteKey::Kot {
-                    station_id: &station_id,
-                },
-                &text,
-                self.path.parent(),
-            )?;
-            opened |= share.opened;
-            last_path = Some(share.path);
+        let slip = self.kot_slip_format()?;
+        // Content width is the Bill & KOT setting, shared with the standard bill.
+        let text = self.format_kot_text_cols(kot_id, Some(slip.chars_per_line))?;
+        let slip_kind = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(kind, 'kot') FROM kot_tickets WHERE id = ?1",
+                params![kot_id],
+                |r| r.get::<_, String>(0),
+            )
+            .unwrap_or_else(|_| "kot".into());
+        let slip_kind = match slip_kind.as_str() {
+            "cancel" => crate::print_share::KotSlipKind::Cancelled,
+            "modify" | "modified" => crate::print_share::KotSlipKind::Modified,
+            "duplicate" | "dup" => crate::print_share::KotSlipKind::Duplicate,
+            _ => crate::print_share::KotSlipKind::Original,
+        };
+        // Bill & KOT format owns type size and content width. Keep the live
+        // KOT format in sync before destinations_for reads it. The virtual
+        // printer supplies layout and delivery (docs/PRINTER.md).
+        {
+            let mut live = crate::print_share::printers();
+            if let Some(f) = live
+                .formats
+                .iter_mut()
+                .find(|f| f.id == crate::print_share::FORMAT_KOT)
+            {
+                slip.apply_to_print_format_for_kind(f, slip_kind);
+            }
+            crate::print_share::configure(live);
         }
-        if !opened {
+        let copies = slip.copies.max(1);
+        // One receipt file + one queued job; worker packs N slips into one
+        // ESC/POS payload (no N× TCP/`lp` round-trips between copies).
+        let share = crate::print_share::print_route_copies(
+            crate::print_share::PrintKind::Kot,
+            crate::print_share::RouteKey::Kot {
+                station_id: &station_id,
+            },
+            &text,
+            self.path.parent(),
+            copies,
+        )?;
+        if !share.opened {
             return Err(
-                "No printer for that kitchen place — assign one in Settings → Printers → Places"
+                "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
                     .into(),
             );
         }
-        last_path.ok_or_else(|| "Print failed".to_string())
+        Ok(share.path)
     }
 
     /// Charge a bill with any mix of Cash / UPI(rail) / Card / Credit.
@@ -9655,18 +9712,46 @@ impl Store {
         pin: &str,
         actor: &StaffMember,
     ) -> Result<String, String> {
+        // Tests / helpers: derive a free username from the display name.
+        let login = self.unique_login_from_name(name)?;
         self.add_staff_with_features(
             &StaffHire {
                 name,
                 role,
                 role_title,
                 pin,
-                login_id: "",
+                login_id: &login,
                 password: "",
                 features: StaffFeatures::for_role(role),
             },
             actor,
         )
+    }
+
+    /// Lowercase alphanumeric slug from a display name, with a numeric suffix
+    /// when that handle is already taken.
+    fn unique_login_from_name(&self, name: &str) -> Result<String, String> {
+        let base: String = name
+            .trim()
+            .chars()
+            .filter(|c| c.is_ascii_alphanumeric())
+            .flat_map(|c| c.to_lowercase())
+            .collect();
+        let base = if base.is_empty() {
+            "staff".to_string()
+        } else {
+            base
+        };
+        if self.assert_login_id_free(&base, None).is_ok() {
+            return Ok(base);
+        }
+        for n in 2..10_000 {
+            let cand = format!("{base}{n}");
+            if self.assert_login_id_free(&cand, None).is_ok() {
+                return Ok(cand);
+            }
+        }
+        Err("Could not allocate a free username".into())
     }
 
     pub fn add_staff_with_features(
@@ -9704,8 +9789,17 @@ impl Store {
         } else {
             hash_pin(hire.password.trim())?
         };
-        // Usernames are stored lowercase; uniqueness is case-insensitive.
+        // Username required + unique (case-insensitive). Display name may repeat.
         let login_id = hire.login_id.trim().to_ascii_lowercase();
+        if login_id.is_empty() {
+            return Err("Username required".into());
+        }
+        if !login_id
+            .chars()
+            .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_' || c == '.' || c == '-')
+        {
+            return Err("Username: letters, digits, . _ - only".into());
+        }
         self.assert_login_id_free(&login_id, None)?;
         let id = new_id();
         self.conn
@@ -9760,7 +9854,8 @@ impl Store {
     }
 
     /// Username (`login_id`) is the unique human handle. Display `name` may
-    /// repeat. Empty username is allowed (PIN-only). Case-insensitive.
+    /// repeat. Empty skips the check (callers that require a username must
+    /// reject empty first). Case-insensitive.
     pub fn assert_login_id_free(
         &self,
         login_id: &str,
@@ -12341,27 +12436,136 @@ fn kot_print_item_lines(summary: &str, table_label: &str, station_name: &str) ->
         .collect()
 }
 
-/// Turn `2× Butter Naan` / `2 x Tea` into `Butter Naan|2` for column slips.
+/// Turn `x1× Dish`, `2× Butter Naan`, `1.25 kg× Rice` into `name|qty`.
+/// The `x` on a piece count is not part of the dish and not the Qty column.
 fn kot_line_to_name_qty(line: &str) -> String {
     let line = line.trim();
-    if line.contains('|') {
+    if let Some((name, qty)) = line.rsplit_once('|') {
+        let name = name.trim();
+        let qty = crate::print_share::kot_qty_column(qty);
+        if !name.is_empty() && !qty.is_empty() {
+            return format!("{name}|{qty}");
+        }
         return line.to_string();
     }
-    for sep in ["×", "x", "X"] {
-        if let Some((qty, name)) = line.split_once(sep) {
-            let qty = qty.trim();
-            let name = name.trim();
-            if !qty.is_empty() && !name.is_empty() && qty.chars().all(|c| c.is_ascii_digit()) {
-                return format!("{name}|{qty}");
-            }
-        }
+    if let Some((name, qty)) = split_leading_kot_qty(line) {
+        return format!("{name}|{qty}");
     }
     line.to_string()
 }
 
+/// A qty glued to the front of a summary line: `x1× Name`, `2× Name`, `1.5 kg× Rice`.
+fn split_leading_kot_qty(line: &str) -> Option<(String, String)> {
+    let s = line.trim();
+    let mut rest = s;
+    for mark in ['x', 'X', '×', '✕'] {
+        if let Some(stripped) = rest.strip_prefix(mark) {
+            if stripped.starts_with(|c: char| c.is_ascii_digit()) {
+                rest = stripped;
+            }
+            break;
+        }
+    }
+    if !rest.starts_with(|c: char| c.is_ascii_digit()) {
+        return None;
+    }
+    let mut end = 0usize;
+    let mut seen_digit = false;
+    let mut seen_sep = false;
+    for (i, ch) in rest.char_indices() {
+        if ch.is_ascii_digit() {
+            seen_digit = true;
+            end = i + ch.len_utf8();
+        } else if (ch == '.' || ch == ',') && seen_digit && !seen_sep {
+            seen_sep = true;
+            end = i + ch.len_utf8();
+        } else {
+            break;
+        }
+    }
+    if !seen_digit {
+        return None;
+    }
+    let number = rest[..end].trim_end_matches(['.', ',']);
+    if number.is_empty() {
+        return None;
+    }
+    let after = rest[end..].trim_start();
+    let (unit, name) = take_kot_times(after)?;
+    let name = name.trim();
+    if name.is_empty() {
+        return None;
+    }
+    let qty = if unit.is_empty() {
+        number.to_string()
+    } else {
+        format!("{number} {unit}")
+    };
+    Some((name.to_string(), qty))
+}
+
+/// After the number: `× Name`, `x Name`, `kg× Name`, or `kg × Name`.
+fn take_kot_times(after: &str) -> Option<(String, String)> {
+    let after = after.trim_start();
+    if after.is_empty() {
+        return None;
+    }
+    if let Some(name) = strip_times_mark(after) {
+        let name = name.trim();
+        if name.is_empty() {
+            return None;
+        }
+        return Some((String::new(), name.to_string()));
+    }
+    let (token, tail) = match after.split_once(char::is_whitespace) {
+        Some((token, tail)) => (token, tail.trim_start()),
+        None => (after, ""),
+    };
+    if let Some((unit, glued)) = split_token_times(token) {
+        let name = if glued.is_empty() {
+            tail.to_string()
+        } else if tail.is_empty() {
+            glued
+        } else {
+            format!("{glued} {tail}")
+        };
+        if unit.is_empty() || name.trim().is_empty() {
+            return None;
+        }
+        return Some((unit, name));
+    }
+    if let Some(name) = strip_times_mark(tail) {
+        let name = name.trim();
+        if token.is_empty() || name.is_empty() {
+            return None;
+        }
+        return Some((token.to_string(), name.to_string()));
+    }
+    None
+}
+
+fn strip_times_mark(s: &str) -> Option<&str> {
+    for mark in ['×', '✕', 'x', 'X'] {
+        if let Some(rest) = s.strip_prefix(mark) {
+            return Some(rest);
+        }
+    }
+    None
+}
+
+fn split_token_times(token: &str) -> Option<(String, String)> {
+    let idx = token.find(['×', '✕', 'x', 'X'])?;
+    if idx == 0 {
+        return None;
+    }
+    let unit = token[..idx].to_string();
+    let glued = token[idx + token[idx..].chars().next()?.len_utf8()..].to_string();
+    Some((unit, glued))
+}
+
 #[cfg(test)]
 mod kot_print_item_lines_tests {
-    use super::kot_print_item_lines;
+    use super::{kot_line_to_name_qty, kot_print_item_lines};
 
     #[test]
     fn first_dish_is_not_glued_to_table_or_station() {
@@ -12371,6 +12575,15 @@ mod kot_print_item_lines_tests {
             "Tandoor",
         );
         assert_eq!(lines, vec!["2× Butter Naan".to_string(), "1× Chaas".to_string()]);
+    }
+
+    #[test]
+    fn x_prefix_is_the_count_not_part_of_the_dish() {
+        assert_eq!(kot_line_to_name_qty("x1× ઈસી B.B.Q."), "ઈસી B.B.Q.|1");
+        assert_eq!(kot_line_to_name_qty("2× Butter Naan"), "Butter Naan|2");
+        assert_eq!(kot_line_to_name_qty("2 x Tea"), "Tea|2");
+        assert_eq!(kot_line_to_name_qty("1.25 kg× Rice"), "Rice|1.25 kg");
+        assert_eq!(kot_line_to_name_qty("Butter Roti|x3"), "Butter Roti|3");
     }
 }
 
@@ -13781,6 +13994,20 @@ mod tests {
         assert_eq!(waiter.login_id, "nawaz");
         assert_eq!(waiter.lock_label(), "Nawaz (Waiter) · nawaz");
         assert!(
+            store
+                .authenticate_staff_pin(&waiter.id, "0000")
+                .unwrap()
+                .is_some(),
+            "Nawaz default PIN is 0000"
+        );
+        assert!(
+            store
+                .authenticate_staff_pin(&admin.id, "1111")
+                .unwrap()
+                .is_some(),
+            "Asif default PIN is 1111"
+        );
+        assert!(
             matches!(
                 store.history_retention().unwrap(),
                 crate::business_day::HistoryRetention::AfterHours(4)
@@ -14035,6 +14262,58 @@ mod tests {
     }
 
     #[test]
+    fn hire_requires_unique_username() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("1357").unwrap();
+        let err = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Ravi",
+                    role: StaffRole::Waiter,
+                    role_title: "Captain",
+                    pin: "1111",
+                    login_id: "",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Waiter),
+                },
+                &owner,
+            )
+            .unwrap_err();
+        assert!(err.to_lowercase().contains("username"), "{err}");
+        store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Ravi",
+                    role: StaffRole::Waiter,
+                    role_title: "Captain",
+                    pin: "1111",
+                    login_id: "ravi",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Waiter),
+                },
+                &owner,
+            )
+            .unwrap();
+        let dup = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Ravi Two",
+                    role: StaffRole::Waiter,
+                    role_title: "Captain",
+                    pin: "2222",
+                    login_id: "RAVI",
+                    password: "",
+                    features: StaffFeatures::for_role(StaffRole::Waiter),
+                },
+                &owner,
+            )
+            .unwrap_err();
+        assert!(dup.contains("already used"), "{dup}");
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
     fn staff_rename_keeps_id_and_copy_applies_config() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
@@ -14046,7 +14325,7 @@ mod tests {
                     role: StaffRole::Waiter,
                     role_title: "Captain",
                     pin: "1111",
-                    login_id: "",
+                    login_id: "ravi",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Waiter),
                 },
@@ -14060,7 +14339,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Till",
                     pin: "2222",
-                    login_id: "",
+                    login_id: "neha",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Cashier),
                 },
@@ -14129,7 +14408,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Floor lead",
                     pin: "3333",
-                    login_id: "",
+                    login_id: "meera",
                     password: "",
                     features: mgr_features.clone(),
                 },
@@ -14143,7 +14422,7 @@ mod tests {
                     role: StaffRole::Waiter,
                     role_title: "Waiter",
                     pin: "4444",
-                    login_id: "",
+                    login_id: "ravi",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Waiter),
                 },
@@ -14186,7 +14465,7 @@ mod tests {
                     role: Store::hire_role_from(&owner),
                     role_title: "Manager",
                     pin: "5555",
-                    login_id: "",
+                    login_id: "copy",
                     password: "",
                     features: owner.effective_features(),
                 },
@@ -14201,7 +14480,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Manager",
                     pin: "5555",
-                    login_id: "",
+                    login_id: "copy",
                     password: "",
                     features: mgr_features.clone(),
                 },
@@ -14228,7 +14507,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Till",
                     pin: "6666",
-                    login_id: "",
+                    login_id: "till",
                     password: "",
                     features: cash_feats,
                 },
@@ -14248,7 +14527,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Manager",
                     pin: "7777",
-                    login_id: "",
+                    login_id: "bossy",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Manager),
                 },
@@ -14276,7 +14555,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Floor lead",
                     pin: "3333",
-                    login_id: "",
+                    login_id: "meera",
                     password: "",
                     features: mgr_features.clone(),
                 },
@@ -14293,7 +14572,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Peer lead",
                     pin: "3434",
-                    login_id: "",
+                    login_id: "peer",
                     password: "",
                     features: peer_feats,
                 },
@@ -14307,7 +14586,7 @@ mod tests {
                     role: StaffRole::Waiter,
                     role_title: "Waiter",
                     pin: "4444",
-                    login_id: "",
+                    login_id: "ravi",
                     password: "",
                     features: StaffFeatures::for_role(StaffRole::Waiter),
                 },
@@ -14323,7 +14602,7 @@ mod tests {
                     role: StaffRole::Cashier,
                     role_title: "Till",
                     pin: "6666",
-                    login_id: "",
+                    login_id: "till",
                     password: "",
                     features: cash_feats,
                 },
@@ -14407,7 +14686,7 @@ mod tests {
                     role: StaffRole::Manager,
                     role_title: "Peer ok",
                     pin: "3535",
-                    login_id: "",
+                    login_id: "peerok",
                     password: "",
                     features: peer_ok_feats,
                 },
@@ -15420,11 +15699,7 @@ mod tests {
         let store = Store::open_path(&path).unwrap();
         // No categories are seeded: a general shop names its own.
         assert!(store.list_categories().unwrap().is_empty());
-        let stations = store.list_stations().unwrap();
-        assert_eq!(
-            stations.iter().map(|s| s.name.as_str()).collect::<Vec<_>>(),
-            vec!["Hot", "Cold"]
-        );
+        assert!(store.list_stations().unwrap().is_empty());
         let starters = store.add_category("Starters").unwrap();
         assert_eq!(starters.sort_order, 0);
         let tandoor = store.add_station("Tandoor").unwrap();
@@ -16032,9 +16307,8 @@ mod tests {
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.set_venue_mode(VenueMode::Restaurant).unwrap();
-        let stations = store.list_stations().unwrap();
-        let hot = stations.iter().find(|s| s.name == "Hot").unwrap().clone();
-        let cold = stations.iter().find(|s| s.name == "Cold").unwrap().clone();
+        let hot = store.add_station("Hot").unwrap();
+        let cold = store.add_station("Cold").unwrap();
 
         let mut biryani = test_product("Biryani", 180);
         biryani.station_id = hot.id.clone();

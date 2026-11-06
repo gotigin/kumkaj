@@ -35,6 +35,17 @@ fn printers_found_line(t: impl Fn(&str) -> String) -> String {
     }
 }
 
+fn sample_receipt_text(shop: &str, when: &str) -> String {
+    let shop = if shop.trim().is_empty() {
+        "Moklanjo"
+    } else {
+        shop.trim()
+    };
+    format!(
+        "{shop}\nBOOKING RECEIPT\nAWB: SAMPLE-1001\nFrom: Walk-in\nTo: Sample consignee\nPune\n1.5 kg · 1 pc · Surface\n--------------------------------\nFreight 120.00\nTotal 120.00\n{when}\n"
+    )
+}
+
 fn parse_courier_route_key(key: &str) -> print_share::RouteKey {
     match key.trim().to_ascii_lowercase().as_str() {
         "label" | "awb" | "awb label" => print_share::RouteKey::Label,

@@ -59,7 +59,22 @@ impl AppMain for App {
             }
         }
         if matches!(event, Event::Signal) && (thumbs::take_ready() || lan_images::take_ready()) {
-            self.ui.redraw(cx);
+            // Targeted redraw only. Full-tree `ui.redraw` while a FingerDown is
+            // in flight drops the first ProductList / MenuList / dish-picker
+            // tap after photos start landing (open menu → tap → nothing).
+            for path in [
+                ids!(product_list),
+                ids!(product_list_menu),
+                ids!(removed_list),
+                ids!(dish_pick_list),
+                ids!(category_pick_list),
+                ids!(cart_list),
+                ids!(amend_cart_list),
+                ids!(category_list),
+                ids!(draft_preview),
+            ] {
+                self.ui.widget(cx, path).redraw(cx);
+            }
         }
         if matches!(event, Event::Signal) {
             if let Some(result) = backup_once().lock().unwrap().take() {
@@ -455,6 +470,26 @@ impl AppMain for App {
         // Tap outside a type-or-pick list closes it (before the press is
         // delivered so Floor tiles / other chrome still receive the click).
         self.dismiss_suggest_on_outside_press(cx, event);
+        // Add dishes Done: close before the rest of the UI sees the press.
+        // The button action itself does not fire (see close_add_dishes_if_done_hit).
+        if self.close_add_dishes_if_done_hit(cx, event) {
+            return;
+        }
+        // Empty header (not Back or the amount eye) is a window drag, the same
+        // as the caption bar: press and move, and the desktop moves the window.
+        if let Event::WindowDragQuery(dq) = event {
+            let header = self.ui.view(cx, ids!(header)).area().rect(cx);
+            if header.size.x > 1.0 && header.contains(dq.abs) {
+                let on_control = [ids!(header_back), ids!(amounts_eye)].into_iter().any(|id| {
+                    let r = self.ui.button(cx, id).area().rect(cx);
+                    r.size.x > 1.0 && r.contains(dq.abs)
+                });
+                if !on_control {
+                    dq.response
+                        .set(makepad_widgets::WindowDragQueryResponse::Caption);
+                }
+            }
+        }
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // Hot reload re-applies DSL (visibility resets). Restore from AppState.
         if matches!(event, Event::LiveEdit | Event::ScriptReapply | Event::Startup) {

@@ -2,10 +2,13 @@
 //! hold the books or take orders.
 //!
 //! Owner nouns (Settings):
-//! - **Printer** — one OS device in the pool (destination only).
-//! - **Profile** — slip look ([`PrintFormat`]: Thermal / Portrait / Landscape).
-//! - **Output** — under Receipt or AWB label: ordered printers + that place's
-//!   Profile. Tries the first that works. Empty = don't print.
+//! - **Printer** — one OS device Find already knows (destination only).
+//! - **Receipt format** and **label format** — how wide the job is drawn,
+//!   portrait or landscape, and how the bytes are sent (OS document, raw,
+//!   or ESC/POS). A receipt and an AWB label do not share a width: a
+//!   receipt is a docket, a label is a sticker with a barcode.
+//! - **Output** — under Receipt or AWB label: ordered printers. Tries the
+//!   first that works. Empty = don't print.
 //!
 //! No kitchen station groups. `printers.json` beside the books. Jobs go
 //! through one worker; failures via [`take_problems`]. Tests never reach a
@@ -65,6 +68,29 @@ pub const FORMAT_STANDARD_PORTRAIT: &str = "standard_portrait";
 pub const FORMAT_STANDARD_LANDSCAPE: &str = "standard_landscape";
 pub const FORMAT_KOT: &str = "kot";
 
+/// How a job is handed to the device. Three ways cover a receipt and a label.
+pub const DELIVERY_SYSTEM_SPOOLER: &str = "system_spooler";
+pub const DELIVERY_RAW_DEVICE: &str = "raw_device";
+pub const DELIVERY_ESCPOS: &str = "escpos";
+
+/// Character columns for a content width in millimetres.
+pub fn wrap_cols_for_paper_mm(mm: u32) -> u32 {
+    let mm = mm.clamp(40, 210);
+    let cols = ((mm as f32) * 0.55).round() as u32;
+    cols.clamp(16, 120)
+}
+
+/// Dots across the content. 58 mm is 384 dots; 80 mm is 576. Wider scales from 80 mm.
+pub fn paper_width_dots(mm: u32) -> usize {
+    let mm = mm.clamp(40, 210);
+    let dots = if mm <= 58 {
+        384
+    } else {
+        (mm as usize * 576) / 80
+    };
+    dots.max(8) & !7
+}
+
 pub fn is_standard_document(id: &str) -> bool {
     matches!(
         id,
@@ -96,19 +122,30 @@ pub struct PrintFormat {
     pub baseline: f32,
     #[serde(default = "default_side")]
     pub side: f32,
+    /// 0 = legacy (receipt 80 mm, label 100 mm).
+    #[serde(default)]
+    pub content_width_mm: u32,
+    /// Empty = OS document when `document` is set, otherwise ESC/POS.
+    #[serde(default)]
+    pub delivery: String,
 }
 
 fn default_true() -> bool { true }
 fn default_em() -> f32 { STD_EM_NORMAL }
 fn default_line() -> u32 { 40 }
 fn default_baseline() -> f32 { STD_EM_NORMAL + 2.0 }
-fn default_side() -> f32 { 12.0 }
+fn default_side() -> f32 { STD_SIDE }
 
-/// Document type-size presets. Defaults favour common OS printers (narrow
-/// trays) — wider side inset, ~40-char wrap.
+/// Document type-size presets. Product built-ins are generic (any OS queue).
+/// Narrow-tray tuning is owner/template choice — not assumed for every shop.
+/// OS jobs still fit-to-page so PNGs are not printed ~16″ wide at 72 DPI.
 pub const STD_EM_SMALL: f32 = 18.0;
 pub const STD_EM_NORMAL: f32 = 20.0;
 pub const STD_EM_LARGE: f32 = 26.0;
+/// Generic side inset (dots on the 384-wide raster) for Standard formats.
+pub const STD_SIDE: f32 = 16.0;
+/// Wider inset for optional tight-tray templates only.
+pub const STD_SIDE_NARROW_TRAY: f32 = 40.0;
 
 impl PrintFormat {
     pub fn standard() -> Self {
@@ -122,9 +159,11 @@ impl PrintFormat {
             document: true,
             landscape: false,
             em: STD_EM_NORMAL,
-            line: 40,
+            line: wrap_cols_for_paper_mm(80),
             baseline: STD_EM_NORMAL + 2.0,
-            side: 12.0,
+            side: STD_SIDE,
+            content_width_mm: 80,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
         }
     }
     /// Non-deletable built-in. Landscape OS document.
@@ -135,26 +174,62 @@ impl PrintFormat {
             document: true,
             landscape: true,
             em: STD_EM_NORMAL,
-            line: 40,
+            line: wrap_cols_for_paper_mm(80),
             baseline: STD_EM_NORMAL + 2.0,
-            side: 12.0,
+            side: STD_SIDE,
+            content_width_mm: 80,
+            delivery: DELIVERY_SYSTEM_SPOOLER.into(),
         }
     }
-    /// Non-deletable built-in. Thermal / label slip metrics.
+    /// Non-deletable built-in. AWB label (id stays `kot` so old files load).
     pub fn kot() -> Self {
         Self {
             id: FORMAT_KOT.into(),
-            label: "Thermal".into(),
+            label: "AWB label".into(),
             document: false,
             landscape: false,
             em: 20.0,
-            line: 32,
+            line: wrap_cols_for_paper_mm(100),
             baseline: 22.0,
             side: 4.0,
+            content_width_mm: 100,
+            delivery: DELIVERY_ESCPOS.into(),
+        }
+    }
+    pub fn delivery_id(&self) -> &str {
+        let d = self.delivery.trim();
+        if d.is_empty() {
+            if self.document {
+                DELIVERY_SYSTEM_SPOOLER
+            } else {
+                DELIVERY_ESCPOS
+            }
+        } else {
+            d
+        }
+    }
+    pub fn shown_content_width_mm(&self) -> u32 {
+        if self.content_width_mm > 0 {
+            self.content_width_mm.clamp(40, 210)
+        } else if self.id == FORMAT_KOT {
+            100
+        } else if self.line <= 34 {
+            58
+        } else {
+            80
         }
     }
     pub fn raster_metrics(&self) -> crate::receipt_raster::RasterMetrics {
-        crate::receipt_raster::RasterMetrics { em: self.em, line: self.line as usize, baseline: self.baseline, side: self.side }
+        crate::receipt_raster::RasterMetrics {
+            em: self.em,
+            line: self.line as usize,
+            baseline: self.baseline,
+            side: self.side,
+            width_dots: paper_width_dots(self.shown_content_width_mm()),
+        }
+    }
+    pub fn is_label_format(&self) -> bool {
+        self.id == FORMAT_KOT
     }
     pub fn ensure_builtins(list: &mut Vec<PrintFormat>) {
         for f in list.iter_mut() {
@@ -185,6 +260,11 @@ impl PrintFormat {
                 .map(|i| i + 1)
                 .unwrap_or(list.len());
             list.insert(idx, PrintFormat::kot());
+        }
+        for f in list.iter_mut() {
+            if is_standard_document(&f.id) && f.side <= 12.0 {
+                f.side = STD_SIDE;
+            }
         }
     }
 }
@@ -439,6 +519,72 @@ impl DevicePrinters {
         self.format_by_id(&self.format_id_for(key))
     }
 
+    /// Portrait/landscape and delivery for the receipt, or for the AWB label.
+    /// A receipt stays on the standard format. A label stays on the label format.
+    pub fn set_job_drive(&mut self, label: bool, landscape: bool, delivery: &str) {
+        let delivery = if delivery.trim().is_empty() {
+            DELIVERY_SYSTEM_SPOOLER
+        } else {
+            delivery.trim()
+        };
+        let document = delivery == DELIVERY_SYSTEM_SPOOLER;
+        for f in self.formats.iter_mut() {
+            let hit = if label {
+                f.id == FORMAT_KOT
+            } else {
+                is_standard_document(&f.id)
+            };
+            if hit {
+                f.landscape = landscape;
+                f.delivery = delivery.to_string();
+                f.document = document;
+            }
+        }
+        if label {
+            self.routes.label_format = FORMAT_KOT.into();
+        } else {
+            self.routes.receipt_format = FORMAT_STANDARD_PORTRAIT.into();
+        }
+    }
+
+    /// Content width for the receipt (both orientations) or the label. Not shared.
+    pub fn set_content_width(&mut self, label: bool, mm: u32) {
+        let mm = mm.clamp(40, 210);
+        let cols = wrap_cols_for_paper_mm(mm);
+        for f in self.formats.iter_mut() {
+            let hit = if label {
+                f.id == FORMAT_KOT
+            } else {
+                is_standard_document(&f.id)
+            };
+            if hit {
+                f.content_width_mm = mm;
+                f.line = cols;
+            }
+        }
+        if label {
+            self.routes.label_format = FORMAT_KOT.into();
+        } else {
+            self.routes.receipt_format = FORMAT_STANDARD_PORTRAIT.into();
+        }
+    }
+
+    pub fn set_type_size(&mut self, label: bool, em: f32) {
+        let em = em.clamp(12.0, 48.0);
+        let baseline = em + 2.0;
+        for f in self.formats.iter_mut() {
+            let hit = if label {
+                f.id == FORMAT_KOT
+            } else {
+                is_standard_document(&f.id)
+            };
+            if hit {
+                f.em = em;
+                f.baseline = baseline;
+            }
+        }
+    }
+
     pub fn set_route_format(&mut self, key: RouteKey, format_id: &str) {
         let id = format_id.trim();
         if id.is_empty() { return; }
@@ -462,6 +608,8 @@ impl DevicePrinters {
             line: base.line,
             baseline: base.baseline,
             side: base.side,
+            content_width_mm: base.content_width_mm,
+            delivery: base.delivery.clone(),
         });
         id
     }
@@ -822,7 +970,7 @@ fn send_to_printer(
     path: &Path,
     text: &str,
 ) -> Result<(), String> {
-    let bytes = escpos_job_format(format, text);
+    let bytes = job_bytes(format, text);
     match target {
         PrinterTarget::Network(addr) => {
             if bytes.len() > ESC_POS_JOB_MAX {
@@ -875,7 +1023,7 @@ fn send_to_printer(
 
 fn print_android_document(text: &str, format: &PrintFormat, landscape: bool) -> Result<(), String> {
     // Honour format em / line / baseline / side (not fixed RasterMetrics::standard).
-    let png = crate::receipt_raster::png_metrics(text, &format.raster_metrics())?;
+    let png = slip_png(format, text)?;
     #[cfg(target_os = "android")]
     {
         crate::print_android::print_png("Moklanjo", &png, landscape)
@@ -896,7 +1044,7 @@ fn print_system_standard(
     format: &PrintFormat,
     landscape: bool,
 ) -> Result<(), String> {
-    let png = crate::receipt_raster::png_metrics(text, &format.raster_metrics())?;
+    let png = slip_png(format, text)?;
     let png_path = path.with_extension("png");
     fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
@@ -946,6 +1094,40 @@ const ESC_POS_JOB_MAX: usize = 512_000;
 /// (`_____` / `-----` / cut-off lines) on heads that mishandle always-raster.
 pub fn escpos_job(text: &str) -> Vec<u8> {
     escpos_job_format(&PrintFormat::kot(), text)
+}
+
+/// AWB sitting under an `AWB LABEL` heading, else empty.
+pub fn awb_from_slip(text: &str) -> String {
+    let mut prev = false;
+    for line in text.lines() {
+        let t = line.trim();
+        if prev && !t.is_empty() && !t.starts_with('-') {
+            return t.to_string();
+        }
+        prev = t.eq_ignore_ascii_case("AWB LABEL");
+    }
+    String::new()
+}
+
+fn slip_png(format: &PrintFormat, text: &str) -> Result<Vec<u8>, String> {
+    let metrics = format.raster_metrics();
+    if format.is_label_format() {
+        crate::receipt_raster::png_label(text, &awb_from_slip(text), &metrics)
+    } else {
+        crate::receipt_raster::png_metrics(text, &metrics)
+    }
+}
+
+fn job_bytes(format: &PrintFormat, text: &str) -> Vec<u8> {
+    if format.is_label_format() {
+        let cleaned = text.replace('\r', "");
+        return crate::receipt_raster::escpos_label(
+            &cleaned,
+            &awb_from_slip(&cleaned),
+            &format.raster_metrics(),
+        );
+    }
+    escpos_job_format(format, text)
 }
 
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
@@ -1094,6 +1276,10 @@ fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Resul
         if let Some(name) = name {
             cmd.args(["-d", name]);
         }
+        // Without fit, CUPS often treats the PNG as 72 DPI (≈16″) and clips
+        // both sides on A4/Letter / Canon-class trays.
+        cmd.args(["-o", "fit-to-page"]);
+        cmd.args(["-o", "print-scaling=fit"]);
         cmd.args([
             "-o",
             if landscape {
@@ -1126,7 +1312,7 @@ fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Resul
              $doc = New-Object System.Drawing.Printing.PrintDocument; \
              $doc.DocumentName = 'Moklanjo'; \
              $doc.DefaultPageSettings.Landscape = {land}; \
-             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(40,40,40,40);"
+             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(75,75,75,75);"
         );
         if let Some(name) = name {
             script.push_str(&format!(
@@ -1536,6 +1722,22 @@ mod tests {
 
     /// `configure` / Capture are process-global — serialise tests that touch them.
     static CFG_LOCK: Mutex<()> = Mutex::new(());
+
+    #[test]
+    fn a_label_is_a_picture_and_receipt_width_changes_the_page() {
+        let label = PrintFormat::kot();
+        let bytes = job_bytes(&label, "Shop\nAWB LABEL\nSAMPLE-1001\nTO\n");
+        assert!(
+            bytes.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
+            "label bytes are a raster, so the bars survive"
+        );
+        assert!(paper_width_dots(100) > paper_width_dots(58));
+        let mut receipt = PrintFormat::standard_portrait();
+        receipt.content_width_mm = 80;
+        let wide = receipt.raster_metrics().page_dots();
+        receipt.content_width_mm = 58;
+        assert!(wide > receipt.raster_metrics().page_dots());
+    }
 
     #[test]
     fn unit_tests_never_reach_the_os_printer() {

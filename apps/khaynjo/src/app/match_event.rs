@@ -3057,7 +3057,17 @@ impl MatchEvent for App {
         }
         {
             let search = self.ui.text_input(cx, ids!(menu_search_input));
-            let done = self.ui.button(cx, ids!(menu_pick_done)).clicked(actions);
+            let done_uid = self.ui.widget(cx, ids!(menu_pick_done)).widget_uid();
+            // Any press, click, or release on Done closes the dish window.
+            // The first action on that widget is not always the press.
+            let done = actions.filter_widget_actions(done_uid).any(|action| {
+                matches!(
+                    action.cast::<ButtonAction>(),
+                    ButtonAction::Pressed(_)
+                        | ButtonAction::Clicked(_)
+                        | ButtonAction::Released(_)
+                )
+            });
             let dismissed = self.ui.modal(cx, ids!(menu_modal)).dismissed(actions);
             if done || dismissed || search.escaped(actions) {
                 self.close_menu_window(cx);
@@ -3159,6 +3169,24 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(send_kot_btn)).clicked(actions) {
+            // After a KOT is sent, the face reads "Add dishes for next KOT".
+            // That must open the menu — never re-run Send with nothing new
+            // (which only showed "Nothing new to send").
+            let open_menu_instead = {
+                let st = app_state().lock().unwrap();
+                let has_unsent = st
+                    .cart
+                    .lines
+                    .iter()
+                    .any(|l| !l.is_sent() && !l.hold_send && l.qty_milli > 0);
+                !has_unsent
+            };
+            if open_menu_instead {
+                self.open_menu_window(cx);
+                // Same status path as + Add dishes so the waiter sees why.
+                self.set_status(cx, app_t("add_dishes"));
+                self.sync_chrome(cx);
+            } else {
             // Station already applied via checkbox dropdown taps — no type-in
             // field to re-apply on Send.
             // Only the new lines go; what the kitchen already has stays on
@@ -3242,7 +3270,9 @@ impl MatchEvent for App {
                             line.kot_id = QUEUED_KOT.into();
                         }
                     } else {
-                        st.cart.mark_new_lines_sent("counter");
+                        // Queued until the shop device answers. `is_sent` is
+                        // true so Send moves on; reprint waits for a real id.
+                        st.cart.mark_new_lines_sent(QUEUED_KOT);
                     }
                     for sid in &used_stations {
                         st.select_kot_station(sid);
@@ -3257,30 +3287,34 @@ impl MatchEvent for App {
                     };
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     let n = kot_ids.len();
-                    match (store.kot_auto_print(), net::print_sent_kots(store, &kot_ids)) {
+                    let msg = match (store.kot_auto_print(), net::print_sent_kots(store, &kot_ids)) {
                         (true, None) => format!("{n} KOT(s) → {kitchens} · printed"),
                         (true, Some(e)) => format!("KOT → {kitchens} · print failed: {e}"),
                         (false, _) => format!("{n} KOT(s) → {kitchens}"),
+                    };
+                    for sid in &used_stations {
+                        st.select_kot_station(sid);
                     }
+                    match &table_id {
+                        // The table's order now holds them: show them as sent.
+                        Some(tid) => {
+                            st.reload_all()?;
+                            st.load_table_cart(tid)?;
+                        }
+                        // Counter order paid after: keep the ticket to charge,
+                        // but the kitchen must not be told twice at payment.
+                        None => {
+                            let marker = kot_ids.first().map(String::as_str).unwrap_or("counter");
+                            st.cart.mark_new_lines_sent(marker);
+                        }
+                    }
+                    st.open_kots = st
+                        .store
+                        .as_ref()
+                        .map(|s| s.list_open_kots().unwrap_or_default())
+                        .unwrap_or_default();
+                    msg
                 };
-                for sid in &used_stations {
-                    st.select_kot_station(sid);
-                }
-                match table_id {
-                    // The table's order now holds them: show them as sent.
-                    Some(tid) => {
-                        st.reload_all()?;
-                        st.load_table_cart(&tid)?;
-                    }
-                    // Counter order paid after: keep the ticket to charge,
-                    // but the kitchen must not be told twice at payment.
-                    None => st.cart.mark_new_lines_sent("counter"),
-                }
-                st.open_kots = st
-                    .store
-                    .as_ref()
-                    .map(|s| s.list_open_kots().unwrap_or_default())
-                    .unwrap_or_default();
                 Ok(msg)
             })();
             match result {
@@ -3288,6 +3322,7 @@ impl MatchEvent for App {
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
+            } // else: had unsent lines → Send KOT
         }
         // Drawn layout (hidden): select a table for the editor; act button same as grid.
         {
@@ -3715,6 +3750,70 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(station_vps_dd)).clicked(actions) {
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                let key_ok = {
+                    let st = app_state().lock().unwrap();
+                    st.printer_route_key.trim().starts_with("kot:")
+                        && st.printer_route_key.trim() != "kot:"
+                };
+                if !key_ok {
+                    self.set_status(cx, app_t("station_print_pick_first"));
+                } else {
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        if st.suggest_open == Some(SuggestField::StationVps) {
+                            st.suggest_open = None;
+                        } else {
+                            st.open_suggest(SuggestField::StationVps, "");
+                        }
+                    }
+                    self.ui.widget(cx, ids!(station_vps_suggest)).redraw(cx);
+                    self.paint_station_print_attach(cx);
+                }
+            }
+        }
+        for (idle, on, mode) in [
+            (
+                ids!(station_print_first),
+                ids!(station_print_first_on),
+                print_share::RoutePrintMode::First,
+            ),
+            (
+                ids!(station_print_all),
+                ids!(station_print_all_on),
+                print_share::RoutePrintMode::All,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    if st.device_role == DeviceRole::Client {
+                        return Err(st.t("printers_host_only"));
+                    }
+                    let key_str = st.printer_route_key.clone();
+                    if !key_str.trim().starts_with("kot:") || key_str.trim() == "kot:" {
+                        return Err(st.t("station_print_pick_first"));
+                    }
+                    let key = parse_printer_route_key(&key_str);
+                    st.printer_draft.set_print_mode(key, mode);
+                    st.save_printer_draft()?;
+                    Ok(st.t(match mode {
+                        print_share::RoutePrintMode::All => "printer_mode_all",
+                        print_share::RoutePrintMode::First => "printer_mode_first",
+                    }))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.paint_station_print_attach(cx);
+                break;
+            }
+        }
         if self.ui.button(cx, ids!(settings_station_add)).clicked(actions) {
             let name = self
                 .ui
@@ -3814,6 +3913,8 @@ impl MatchEvent for App {
                 if field != SuggestField::KotStation
                     && field != SuggestField::PrinterPlace
                     && field != SuggestField::PrinterAssign
+                    && field != SuggestField::StationVps
+                    && field != SuggestField::BillPrinters
                     && field != SuggestField::TeamKotStations
                 {
                     let input = self.ui.text_input(cx, field.input());
@@ -3891,7 +3992,7 @@ impl MatchEvent for App {
                                 continue;
                             }
                         }
-                        if field == SuggestField::PrinterAssign {
+                        if field == SuggestField::StationVps || field == SuggestField::BillPrinters {
                             let up = item.button(cx, ids!(prio_up));
                             let down = item.button(cx, ids!(prio_down));
                             if up.clicked(actions) {
@@ -3906,13 +4007,12 @@ impl MatchEvent for App {
                                 };
                                 if let Some(to) = to {
                                     let mut st = app_state().lock().unwrap();
-                                    if reorder_printer_assign_priority(&mut st, item_id, to) {
-                                        st.open_suggest(SuggestField::PrinterAssign, "");
+                                    if reorder_station_virtual_priority(&mut st, item_id, to) {
+                                        st.open_suggest(field, "");
                                         drop(st);
-                                        self.paint_printers_panel(cx);
-                                        self.ui
-                                            .widget(cx, ids!(printer_assign_suggest))
-                                            .redraw(cx);
+                                        self.paint_station_print_attach(cx);
+                                        self.sync_job_drive_ui(cx);
+                                        self.ui.widget(cx, field.list()).redraw(cx);
                                     }
                                 }
                                 continue;
@@ -3930,13 +4030,12 @@ impl MatchEvent for App {
                                 };
                                 if let Some(to) = to {
                                     let mut st = app_state().lock().unwrap();
-                                    if reorder_printer_assign_priority(&mut st, item_id, to) {
-                                        st.open_suggest(SuggestField::PrinterAssign, "");
+                                    if reorder_station_virtual_priority(&mut st, item_id, to) {
+                                        st.open_suggest(field, "");
                                         drop(st);
-                                        self.paint_printers_panel(cx);
-                                        self.ui
-                                            .widget(cx, ids!(printer_assign_suggest))
-                                            .redraw(cx);
+                                        self.paint_station_print_attach(cx);
+                                        self.sync_job_drive_ui(cx);
+                                        self.ui.widget(cx, field.list()).redraw(cx);
                                     }
                                 }
                                 continue;
@@ -3962,7 +4061,10 @@ impl MatchEvent for App {
                                 .suggest_rows
                                 .get(item_id)
                                 .map(|r| {
-                                    if field == SuggestField::PrinterAssign {
+                                    if field == SuggestField::PrinterAssign
+                                        || field == SuggestField::StationVps
+                                        || field == SuggestField::BillPrinters
+                                    {
                                         r.subtitle.clone()
                                     } else {
                                         r.value.clone()
@@ -3993,6 +4095,8 @@ impl MatchEvent for App {
                 if field != SuggestField::KotStation
                     && field != SuggestField::PrinterPlace
                     && field != SuggestField::PrinterAssign
+                    && field != SuggestField::StationVps
+                    && field != SuggestField::BillPrinters
                 {
                     self.ui.text_input(cx, field.input()).set_text(cx, &value);
                 }
@@ -4015,9 +4119,11 @@ impl MatchEvent for App {
                     }
                 }
                 let mut st = app_state().lock().unwrap();
-                // Kitchen / printer-assign / team-stations checklists stay open.
+                // Kitchen / printer-assign / station-vps / team-stations checklists stay open.
                 if field != SuggestField::KotStation
                     && field != SuggestField::PrinterAssign
+                    && field != SuggestField::StationVps
+                    && field != SuggestField::BillPrinters
                     && field != SuggestField::TeamKotStations
                 {
                     st.suggest_open = None;
@@ -4142,33 +4248,14 @@ impl MatchEvent for App {
                     SuggestField::PrinterAssign => {
                         let msg = {
                             let mut st = app_state().lock().unwrap();
-                            let place = printer_route_display_name(
-                                &st.printer_route_key,
-                                &st.stations,
-                                |k| st.t(k),
-                            );
-                            let clear_l = st.t("dont_use");
-                            let was_on = st
-                                .suggest_rows
-                                .iter()
-                                .find(|r| r.subtitle == value)
-                                .is_some_and(|r| r.action == clear_l);
                             let shown = st
                                 .suggest_rows
                                 .iter()
                                 .find(|r| r.subtitle == value)
                                 .map(|r| r.value.clone())
                                 .unwrap_or_else(|| value.clone());
-                            if toggle_printer_assign_slot(&mut st, &value) {
-                                if was_on {
-                                    st.t("route_removed")
-                                        .replace("{place}", &place)
-                                        .replace("{printer}", &shown)
-                                } else {
-                                    st.t("route_assigned")
-                                        .replace("{place}", &place)
-                                        .replace("{printer}", &shown)
-                                }
+                            if select_real_printer_for_virtual(&mut st, &value) {
+                                st.t("real_printer_selected").replace("{name}", &shown)
                             } else {
                                 String::new()
                             }
@@ -4184,7 +4271,48 @@ impl MatchEvent for App {
                         self.ui
                             .widget(cx, ids!(printer_assign_suggest))
                             .redraw(cx);
-                        // Panel paint only — full sync_chrome freezes Settings.
+                        changed = false;
+                    }
+                    SuggestField::StationPrint => {
+                        let msg = {
+                            let mut st = app_state().lock().unwrap();
+                            let key = resolve_printer_route_key(&value, &st.stations, |k| st.t(k));
+                            if !key.starts_with("kot:") || key == "kot:" {
+                                st.t("station_print_pick_first")
+                            } else {
+                                st.printer_route_key = key.clone();
+                                st.printer_draft.ensure_station_routes([key
+                                    .strip_prefix("kot:")
+                                    .unwrap_or("")]);
+                                let _ = st.save_printer_draft();
+                                let name = printer_route_display_name(&key, &st.stations, |k| st.t(k));
+                                st.t("station_print_editing").replace("{name}", &name)
+                            }
+                        };
+                        self.set_status(cx, msg);
+                        self.paint_station_print_attach(cx);
+                    }
+                    SuggestField::StationVps | SuggestField::BillPrinters => {
+                        let msg = {
+                            let mut st = app_state().lock().unwrap();
+                            let vp_id = st
+                                .suggest_rows
+                                .iter()
+                                .find(|r| r.value == value || r.subtitle == value)
+                                .map(|r| r.subtitle.clone())
+                                .unwrap_or_else(|| value.clone());
+                            match toggle_station_virtual_printer(&mut st, &vp_id) {
+                                Ok(m) => {
+                                    st.open_suggest(field, "");
+                                    m
+                                }
+                                Err(e) => e,
+                            }
+                        };
+                        self.set_status(cx, msg);
+                        self.paint_station_print_attach(cx);
+                        self.sync_job_drive_ui(cx);
+                        self.ui.widget(cx, field.list()).redraw(cx);
                         changed = false;
                     }
                     _ => {}
@@ -4333,8 +4461,11 @@ impl MatchEvent for App {
                     if tile.button(cx, ids!(minus)).clicked(actions) {
                         tapped = Some(CardTap::Minus(index));
                     } else if tile.button(cx, ids!(plus)).clicked(actions)
-                        || tile.finger_up(actions).is_some_and(|e| e.was_tap() && e.is_over)
+                        || tile.finger_up(actions).is_some_and(finger_up_is_tap)
                     {
+                        // Same tap rule as Floor tiles — was_tap() dies under
+                        // ProductList capture_overload + axis_lock (8px wait vs
+                        // was_tap's 5px), so the first dish tap after open looked dead.
                         tapped = Some(CardTap::Add(index));
                     }
                 }
@@ -4393,15 +4524,10 @@ impl MatchEvent for App {
                 if removed {
                     self.remove_menu_item(cx, item_id);
                 } else if !marked
-                    && item.view(cx, ids!(card)).finger_up(actions).is_some_and(|e| {
-                        // was_tap() also demands <0.5s press time, which
-                        // remote-desktop and accessibility clicks often
-                        // exceed — the card then looked dead. A release
-                        // over the card that did not travel is a tap.
-                        e.is_over
-                            && !e.has_long_press_occurred
-                            && (e.abs_start - e.abs).length() < 24.0
-                    })
+                    && item
+                        .view(cx, ids!(card))
+                        .finger_up(actions)
+                        .is_some_and(finger_up_is_tap)
                 {
                     self.open_menu_item(cx, item_id);
                 }
@@ -4451,7 +4577,7 @@ impl MatchEvent for App {
                 let tapped = item
                     .view(cx, ids!(dishrow))
                     .finger_up(actions)
-                    .is_some_and(|e| e.was_tap() && e.is_over);
+                    .is_some_and(finger_up_is_tap);
                 if tapped {
                     picked = app_state().lock().unwrap().dish_picks.get(item_id).cloned();
                 }
@@ -5684,161 +5810,255 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        // KOT format: optional lines / width / type size — preview updates live.
+        // Bill & KOT format — Bill | KOT tabs under the section header.
         {
-            let mut changed = false;
-            if self.choice_chip_clicked(cx, actions, ids!(kot_shop_on), ids!(kot_shop_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_shop_name = true;
-                changed = true;
+            let mut tab_changed = false;
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_kot_tab_bill),
+                ids!(bill_kot_tab_bill_on),
+            ) {
+                app_state().lock().unwrap().bill_kot_tab_kot = false;
+                tab_changed = true;
             }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_shop_off), ids!(kot_shop_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_shop_name = false;
-                changed = true;
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_kot_tab_kot),
+                ids!(bill_kot_tab_kot_on),
+            ) {
+                app_state().lock().unwrap().bill_kot_tab_kot = true;
+                tab_changed = true;
             }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_time_on), ids!(kot_time_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_time = true;
-                changed = true;
+            if tab_changed {
+                self.sync_bill_kot_tabs(cx);
+                self.ui.redraw(cx);
             }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_time_off), ids!(kot_time_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_time = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_waiter_on), ids!(kot_waiter_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_waiter = true;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_waiter_off), ids!(kot_waiter_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_waiter = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_station_on), ids!(kot_station_on_on))
+        }
+        // KOT format: kind → tap a field row → show + size + weight → order/copies.
+        {
+            let mut slip_changed = false;
+            let mut style_changed = false;
+            let mut field_picked = false;
+            // A typed size lands on the field still selected. Size does not
+            // change the preview text, so it must not rebuild the slip.
+            if let Some(size_now) = self
+                .ui
+                .text_input(cx, ids!(kot_field_size_input))
+                .changed(actions)
             {
-                app_state().lock().unwrap().kot_slip_draft.show_station = true;
-                changed = true;
+                if let Ok(raw) = size_now.trim().parse::<u32>() {
+                    let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
+                    let mut st = app_state().lock().unwrap();
+                    let kind = st.kot_edit_kind;
+                    let field = st.kot_style_field;
+                    if st.kot_slip_draft.kind_styles.get(kind).get(field).size_em != em {
+                        st.kot_slip_draft
+                            .kind_styles
+                            .get_mut(kind)
+                            .get_mut(field)
+                            .size_em = em;
+                        if field == print_share::KotStyleField::ItemQty {
+                            st.kot_slip_draft.em = em;
+                        }
+                        style_changed = true;
+                    }
+                }
             }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_station_off), ids!(kot_station_off_on))
+            for (idle, on, kind) in [
+                (
+                    ids!(kot_kind_original),
+                    ids!(kot_kind_original_on),
+                    print_share::KotSlipKind::Original,
+                ),
+                (
+                    ids!(kot_kind_duplicate),
+                    ids!(kot_kind_duplicate_on),
+                    print_share::KotSlipKind::Duplicate,
+                ),
+                (
+                    ids!(kot_kind_modified),
+                    ids!(kot_kind_modified_on),
+                    print_share::KotSlipKind::Modified,
+                ),
+                (
+                    ids!(kot_kind_cancelled),
+                    ids!(kot_kind_cancelled_on),
+                    print_share::KotSlipKind::Cancelled,
+                ),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    app_state().lock().unwrap().kot_edit_kind = kind;
+                    slip_changed = true;
+                    break;
+                }
+            }
+            for (idle, on, field) in [
+                (ids!(kot_pick_title), ids!(kot_pick_title_on), print_share::KotStyleField::Title),
+                (ids!(kot_pick_shop), ids!(kot_pick_shop_on), print_share::KotStyleField::Shop),
+                (ids!(kot_pick_time), ids!(kot_pick_time_on), print_share::KotStyleField::Time),
+                (ids!(kot_pick_waiter), ids!(kot_pick_waiter_on), print_share::KotStyleField::Waiter),
+                (ids!(kot_pick_station), ids!(kot_pick_station_on), print_share::KotStyleField::Station),
+                (ids!(kot_pick_table), ids!(kot_pick_table_on), print_share::KotStyleField::Table),
+                (ids!(kot_pick_no), ids!(kot_pick_no_on), print_share::KotStyleField::KotNo),
+                (ids!(kot_pick_area), ids!(kot_pick_area_on), print_share::KotStyleField::Area),
+                (ids!(kot_pick_qty), ids!(kot_pick_qty_on), print_share::KotStyleField::ItemQty),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    if st.kot_style_field != field {
+                        st.kot_style_field = field;
+                        field_picked = true;
+                        style_changed = true;
+                    }
+                    break;
+                }
+            }
+            for (i, idle, on) in [
+                (0, ids!(kot_ord_0), ids!(kot_ord_0_on)),
+                (1, ids!(kot_ord_1), ids!(kot_ord_1_on)),
+                (2, ids!(kot_ord_2), ids!(kot_ord_2_on)),
+                (3, ids!(kot_ord_3), ids!(kot_ord_3_on)),
+                (4, ids!(kot_ord_4), ids!(kot_ord_4_on)),
+                (5, ids!(kot_ord_5), ids!(kot_ord_5_on)),
+                (6, ids!(kot_ord_6), ids!(kot_ord_6_on)),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    ensure_kot_field_order(&mut st.kot_slip_draft);
+                    if i < st.kot_slip_draft.field_order.len() && st.kot_field_edit_idx != i {
+                        st.kot_field_edit_idx = i;
+                        style_changed = true;
+                    }
+                    break;
+                }
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_field_show), ids!(kot_field_show_on))
             {
-                app_state().lock().unwrap().kot_slip_draft.show_station = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_table_on), ids!(kot_table_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_table = true;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_table_off), ids!(kot_table_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_table = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_no_on), ids!(kot_no_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_kot_no = true;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_no_off), ids!(kot_no_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_kot_no = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_area_on), ids!(kot_area_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_area = true;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_area_off), ids!(kot_area_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_area = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_item_hdr_on), ids!(kot_item_hdr_on_on))
-            {
-                app_state().lock().unwrap().kot_slip_draft.show_item_qty_header = true;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_item_hdr_off), ids!(kot_item_hdr_off_on))
-            {
-                app_state().lock().unwrap().kot_slip_draft.show_item_qty_header = false;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_title_on), ids!(kot_title_on_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_title = true;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_title_off), ids!(kot_title_off_on)) {
-                app_state().lock().unwrap().kot_slip_draft.show_title = false;
-                changed = true;
-            }
-            if self.ui.button(cx, ids!(kot_field_cycle)).clicked(actions) {
                 let mut st = app_state().lock().unwrap();
-                ensure_kot_field_order(&mut st.kot_slip_draft);
-                let n = st.kot_slip_draft.field_order.len().max(1);
-                st.kot_field_edit_idx = (st.kot_field_edit_idx + 1) % n;
-                changed = true;
+                let field = st.kot_style_field;
+                st.kot_slip_draft.set_field_shown(field, true);
+                slip_changed = true;
             }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_field_hide), ids!(kot_field_hide_on))
+            {
+                let mut st = app_state().lock().unwrap();
+                let field = st.kot_style_field;
+                st.kot_slip_draft.set_field_shown(field, false);
+                slip_changed = true;
+            }
+            for (idle, on, weight) in [
+                (
+                    ids!(kot_field_weight_light),
+                    ids!(kot_field_weight_light_on),
+                    print_share::KotFontWeight::Light,
+                ),
+                (
+                    ids!(kot_field_weight_reg),
+                    ids!(kot_field_weight_reg_on),
+                    print_share::KotFontWeight::Regular,
+                ),
+                (
+                    ids!(kot_field_weight_bold),
+                    ids!(kot_field_weight_bold_on),
+                    print_share::KotFontWeight::Bold,
+                ),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    let kind = st.kot_edit_kind;
+                    let field = st.kot_style_field;
+                    st.kot_slip_draft
+                        .kind_styles
+                        .get_mut(kind)
+                        .get_mut(field)
+                        .weight = weight;
+                    style_changed = true;
+                    break;
+                }
+            }
+            for (idle, on, align) in [
+                (ids!(kot_align_start), ids!(kot_align_start_on), print_share::KotAlign::Start),
+                (ids!(kot_align_center), ids!(kot_align_center_on), print_share::KotAlign::Center),
+                (ids!(kot_align_end), ids!(kot_align_end_on), print_share::KotAlign::End),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    let kind = st.kot_edit_kind;
+                    let field = st.kot_style_field;
+                    st.kot_slip_draft
+                        .kind_styles
+                        .get_mut(kind)
+                        .get_mut(field)
+                        .align = align;
+                    slip_changed = true;
+                    break;
+                }
+            }
+            // Move up/down reorder the print-order row that is selected.
             if self.ui.button(cx, ids!(kot_field_up)).clicked(actions) {
                 let mut st = app_state().lock().unwrap();
                 ensure_kot_field_order(&mut st.kot_slip_draft);
-                let i = st.kot_field_edit_idx;
-                if i > 0 {
-                    st.kot_slip_draft.field_order.swap(i, i - 1);
-                    st.kot_field_edit_idx = i - 1;
-                    changed = true;
+                let n = st.kot_slip_draft.field_order.len();
+                if n > 0 {
+                    let i = st.kot_field_edit_idx.min(n - 1);
+                    if i > 0 {
+                        st.kot_slip_draft.field_order.swap(i, i - 1);
+                        st.kot_field_edit_idx = i - 1;
+                        slip_changed = true;
+                    }
                 }
             }
             if self.ui.button(cx, ids!(kot_field_down)).clicked(actions) {
                 let mut st = app_state().lock().unwrap();
                 ensure_kot_field_order(&mut st.kot_slip_draft);
-                let i = st.kot_field_edit_idx;
-                if i + 1 < st.kot_slip_draft.field_order.len() {
-                    st.kot_slip_draft.field_order.swap(i, i + 1);
-                    st.kot_field_edit_idx = i + 1;
-                    changed = true;
+                let n = st.kot_slip_draft.field_order.len();
+                if n > 0 {
+                    let i = st.kot_field_edit_idx.min(n - 1);
+                    if i + 1 < n {
+                        st.kot_slip_draft.field_order.swap(i, i + 1);
+                        st.kot_field_edit_idx = i + 1;
+                        slip_changed = true;
+                    }
                 }
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_width_58), ids!(kot_width_58_on)) {
-                app_state().lock().unwrap().kot_slip_draft.chars_per_line =
-                    print_share::KOT_CHARS_58MM;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_width_80), ids!(kot_width_80_on)) {
-                app_state().lock().unwrap().kot_slip_draft.chars_per_line =
-                    print_share::KOT_CHARS_80MM;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_size_s), ids!(kot_size_s_on)) {
-                app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_SMALL;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_size_m), ids!(kot_size_m_on)) {
-                app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_NORMAL;
-                changed = true;
-            }
-            if self.choice_chip_clicked(cx, actions, ids!(kot_size_l), ids!(kot_size_l_on)) {
-                app_state().lock().unwrap().kot_slip_draft.em = print_share::KOT_EM_LARGE;
-                changed = true;
             }
             if self.choice_chip_clicked(cx, actions, ids!(kot_copies_1), ids!(kot_copies_1_on)) {
                 app_state().lock().unwrap().kot_slip_draft.copies = 1;
-                changed = true;
+                slip_changed = true;
             }
             if self.choice_chip_clicked(cx, actions, ids!(kot_copies_2), ids!(kot_copies_2_on)) {
                 app_state().lock().unwrap().kot_slip_draft.copies = 2;
-                changed = true;
+                slip_changed = true;
             }
             if self.choice_chip_clicked(cx, actions, ids!(kot_copies_3), ids!(kot_copies_3_on)) {
                 app_state().lock().unwrap().kot_slip_draft.copies = 3;
-                changed = true;
+                slip_changed = true;
             }
-            let title_now = self.ui.text_input(cx, ids!(kot_title_input)).text();
-            let footer_now = self.ui.text_input(cx, ids!(kot_footer_input)).text();
+            if let Some(title_now) = self.ui.text_input(cx, ids!(kot_title_input)).changed(actions)
             {
                 let mut st = app_state().lock().unwrap();
                 if st.kot_slip_draft.title != title_now {
-                    st.kot_slip_draft.title = title_now;
-                    changed = true;
-                }
-                if st.kot_slip_draft.footer != footer_now {
-                    st.kot_slip_draft.footer = footer_now;
-                    changed = true;
+                    st.kot_slip_draft.title = title_now.clone();
+                    // A typed title is meant to print. Hide stays available if they turn it off.
+                    if !title_now.trim().is_empty() && !st.kot_slip_draft.show_title {
+                        st.kot_slip_draft.show_title = true;
+                    }
+                    slip_changed = true;
                 }
             }
-            if changed {
+            if let Some(footer_now) = self.ui.text_input(cx, ids!(kot_footer_input)).changed(actions)
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.kot_slip_draft.footer != footer_now {
+                    st.kot_slip_draft.footer = footer_now;
+                    slip_changed = true;
+                }
+            }
+            if slip_changed {
                 self.sync_kot_format_ui(cx);
+            } else if style_changed {
+                self.sync_kot_field_pick(cx, field_picked);
             }
         }
         if self.ui.button(cx, ids!(kot_format_save)).clicked(actions) {
@@ -5867,41 +6087,111 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(kot_format_test)).clicked(actions) {
+            self.print_kot_format_preview(cx);
+        }
+        if self.ui.button(cx, ids!(bill_format_test)).clicked(actions) {
+            self.print_bill_format_preview(cx);
+        }
         {
-            let mut std_changed = false;
-            if self.choice_chip_clicked(cx, actions, ids!(std_size_s), ids!(std_size_s_on)) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .printer_draft
-                    .set_standard_em(print_share::STD_EM_SMALL);
-                std_changed = true;
+            let size_now = self.ui.text_input(cx, ids!(std_size_input)).text();
+            if let Ok(raw) = size_now.trim().parse::<f32>() {
+                let em = raw.clamp(12.0, 48.0);
+                let mut st = app_state().lock().unwrap();
+                if (st.printer_draft.standard_em() - em).abs() > 0.05 {
+                    st.printer_draft.set_standard_em(em);
+                    self.sync_std_print_ui(cx);
+                }
             }
-            if self.choice_chip_clicked(cx, actions, ids!(std_size_m), ids!(std_size_m_on)) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .printer_draft
-                    .set_standard_em(print_share::STD_EM_NORMAL);
-                std_changed = true;
+        }
+        {
+            let picked = if self.ui.button(cx, ids!(content_width_58)).clicked(actions)
+                || self.ui.button(cx, ids!(content_width_58_on)).clicked(actions)
+            {
+                Some(58u32)
+            } else if self.ui.button(cx, ids!(content_width_80)).clicked(actions)
+                || self.ui.button(cx, ids!(content_width_80_on)).clicked(actions)
+            {
+                Some(80)
+            } else if self.ui.button(cx, ids!(content_width_112)).clicked(actions)
+                || self.ui.button(cx, ids!(content_width_112_on)).clicked(actions)
+            {
+                Some(112)
+            } else if self.ui.button(cx, ids!(content_width_210)).clicked(actions)
+                || self.ui.button(cx, ids!(content_width_210_on)).clicked(actions)
+            {
+                Some(210)
+            } else {
+                None
+            };
+            if let Some(mm) = picked {
+                self.ui
+                    .text_input(cx, ids!(content_width_input))
+                    .set_text(cx, &mm.to_string());
+                self.apply_content_width(cx, mm);
             }
-            if self.choice_chip_clicked(cx, actions, ids!(std_size_l), ids!(std_size_l_on)) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .printer_draft
-                    .set_standard_em(print_share::STD_EM_LARGE);
-                std_changed = true;
+        }
+        if let Some(text) = self
+            .ui
+            .text_input(cx, ids!(content_width_input))
+            .changed(actions)
+        {
+            if let Ok(mm) = text.trim().parse::<u32>() {
+                if (40..=210).contains(&mm) {
+                    let current = app_state()
+                        .lock()
+                        .unwrap()
+                        .kot_slip_draft
+                        .shown_content_width_mm();
+                    if mm != current {
+                        self.apply_content_width(cx, mm);
+                    }
+                }
             }
-            if std_changed {
-                self.sync_std_print_ui(cx);
+        }
+        if self.ui.button(cx, ids!(bill_printers_dd)).clicked(actions) {
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.printer_route_key = "bill".into();
+                    if st.suggest_open == Some(SuggestField::BillPrinters) {
+                        st.suggest_open = None;
+                    } else {
+                        st.open_suggest(SuggestField::BillPrinters, "");
+                    }
+                }
+                self.sync_job_drive_ui(cx);
+                self.ui.widget(cx, ids!(bill_printers_suggest)).redraw(cx);
+            }
+        }
+        for (standard, idle, on, landscape, delivery) in [
+            (true, ids!(bill_layout_portrait), ids!(bill_layout_portrait_on), Some(false), None),
+            (true, ids!(bill_layout_landscape), ids!(bill_layout_landscape_on), Some(true), None),
+            (false, ids!(kot_layout_portrait), ids!(kot_layout_portrait_on), Some(false), None),
+            (false, ids!(kot_layout_landscape), ids!(kot_layout_landscape_on), Some(true), None),
+            (true, ids!(bill_deliv_os), ids!(bill_deliv_os_on), None, Some(print_share::DELIVERY_SYSTEM_SPOOLER)),
+            (true, ids!(bill_deliv_raw), ids!(bill_deliv_raw_on), None, Some(print_share::DELIVERY_RAW_DEVICE)),
+            (true, ids!(bill_deliv_escpos), ids!(bill_deliv_escpos_on), None, Some(print_share::DELIVERY_ESCPOS)),
+            (false, ids!(kot_deliv_os), ids!(kot_deliv_os_on), None, Some(print_share::DELIVERY_SYSTEM_SPOOLER)),
+            (false, ids!(kot_deliv_raw), ids!(kot_deliv_raw_on), None, Some(print_share::DELIVERY_RAW_DEVICE)),
+            (false, ids!(kot_deliv_escpos), ids!(kot_deliv_escpos_on), None, Some(print_share::DELIVERY_ESCPOS)),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                self.apply_job_drive(cx, standard, landscape, delivery);
             }
         }
         if self.ui.button(cx, ids!(std_print_save)).clicked(actions) {
             // Always via books_op so a Client updates the Server's printers.json
             // (and meta), never this till's local shop-wide printers file.
+            let size_now = self.ui.text_input(cx, ids!(std_size_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
+                if let Ok(raw) = size_now.trim().parse::<f32>() {
+                    st.printer_draft.set_standard_em(raw.clamp(12.0, 48.0));
+                }
                 let em = st.printer_draft.standard_em();
                 st.books_op(BooksOp::SetStandardEm { em })?;
                 if st.device_role != DeviceRole::Client {
@@ -7449,42 +7739,174 @@ impl MatchEvent for App {
                 self.paint_printers_panel(cx);
             }
         }
-        for (idle, on, profile) in [
-            (
-                ids!(printer_wire_escpos),
-                ids!(printer_wire_escpos_on),
-                print_share::FORMAT_KOT,
-            ),
-            (
-                ids!(printer_wire_os),
-                ids!(printer_wire_os_on),
-                print_share::FORMAT_STANDARD_PORTRAIT,
-            ),
+        // Virtual-printer draft: layout + delivery only (size/wrap/margins = content).
+        let mut vp_values_changed = false;
+        for (idle, on, landscape) in [
+            (ids!(printer_wire_os), ids!(printer_wire_os_on), false),
             (
                 ids!(printer_wire_os_landscape),
                 ids!(printer_wire_os_landscape_on),
-                print_share::FORMAT_STANDARD_LANDSCAPE,
+                true,
             ),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, on) {
+                let mut st = app_state().lock().unwrap();
+                if st.device_role == DeviceRole::Client {
+                    drop(st);
+                    self.set_status(cx, app_t("printers_host_only"));
+                } else {
+                    st.printer_vp_landscape = landscape;
+                    vp_values_changed = true;
+                }
+                break;
+            }
+        }
+        for (idle, on, delivery) in [
+            (
+                ids!(printer_mode_first),
+                ids!(printer_mode_first_on),
+                print_share::DELIVERY_SYSTEM_SPOOLER,
+            ),
+            (
+                ids!(printer_mode_all),
+                ids!(printer_mode_all_on),
+                print_share::DELIVERY_RAW_DEVICE,
+            ),
+            (
+                ids!(vp_deliv_escpos),
+                ids!(vp_deliv_escpos_on),
+                print_share::DELIVERY_ESCPOS,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                let mut st = app_state().lock().unwrap();
+                if st.device_role == DeviceRole::Client {
+                    drop(st);
+                    self.set_status(cx, app_t("printers_host_only"));
+                } else {
+                    st.printer_vp_delivery = delivery.into();
+                    vp_values_changed = true;
+                }
+                break;
+            }
+        }
+        if vp_values_changed {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let values = print_share::VirtualPrinterValues {
+                    landscape: st.printer_vp_landscape,
+                    em: st.printer_vp_em,
+                    line: st.printer_vp_line,
+                    side: st.printer_vp_side,
+                    delivery: st.printer_vp_delivery.clone(),
+                    paper_width_mm: st.printer_vp_paper_width_mm,
+                };
+                if let Some(id) = st.virtual_printer_sel.clone() {
+                    st.printer_draft.update_virtual_printer_values(&id, values);
+                    st.save_printer_draft()?;
+                    Ok(st.t("virtual_printer_updated"))
+                } else {
+                    Ok(st.t("virtual_draft_layout"))
+                }
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.paint_printers_panel(cx);
+        }
+        {
+            let picked = if self.ui.button(cx, ids!(vp_paper_58)).clicked(actions)
+                || self.ui.button(cx, ids!(vp_paper_58_on)).clicked(actions)
+            {
+                Some(58u32)
+            } else if self.ui.button(cx, ids!(vp_paper_80)).clicked(actions)
+                || self.ui.button(cx, ids!(vp_paper_80_on)).clicked(actions)
+            {
+                Some(80)
+            } else if self.ui.button(cx, ids!(vp_paper_112)).clicked(actions)
+                || self.ui.button(cx, ids!(vp_paper_112_on)).clicked(actions)
+            {
+                Some(112)
+            } else if self.ui.button(cx, ids!(vp_paper_210)).clicked(actions)
+                || self.ui.button(cx, ids!(vp_paper_210_on)).clicked(actions)
+            {
+                Some(210)
+            } else {
+                None
+            };
+            if let Some(mm) = picked {
                 let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
                 if is_client {
                     self.set_status(cx, app_t("printers_host_only"));
                 } else {
-                    let result = (|| -> Result<(), String> {
+                    {
                         let mut st = app_state().lock().unwrap();
-                        let key_owned = st.printer_route_key.clone();
-                        let key = parse_printer_route_key(&key_owned);
-                        st.printer_draft.set_place_profile(key, profile);
-                        st.save_printer_draft()?;
-                        Ok(())
-                    })();
-                    if let Err(e) = result {
-                        self.set_status(cx, e);
+                        st.printer_vp_paper_width_mm = mm;
+                        if let Some(id) = st.virtual_printer_sel.clone() {
+                            let values = print_share::VirtualPrinterValues {
+                                landscape: st.printer_vp_landscape,
+                                em: st.printer_vp_em,
+                                line: st.printer_vp_line,
+                                side: st.printer_vp_side,
+                                delivery: st.printer_vp_delivery.clone(),
+                                paper_width_mm: mm,
+                            };
+                            st.printer_draft
+                                .update_virtual_printer_values(&id, values);
+                            let _ = st.save_printer_draft();
+                        }
                     }
+                    self.ui
+                        .text_input(cx, ids!(vp_paper_width_input))
+                        .set_text(cx, &mm.to_string());
                     self.paint_printers_panel(cx);
                 }
-                break;
+            }
+        }
+        {
+            let mm_now = self.ui.text_input(cx, ids!(vp_paper_width_input)).text();
+            if let Ok(mm) = mm_now.trim().parse::<u32>() {
+                let mut st = app_state().lock().unwrap();
+                if st.printer_vp_paper_width_mm != mm && (40..=210).contains(&mm) {
+                    st.printer_vp_paper_width_mm = mm;
+                    if st.device_role != DeviceRole::Client {
+                        if let Some(id) = st.virtual_printer_sel.clone() {
+                            let values = print_share::VirtualPrinterValues {
+                                landscape: st.printer_vp_landscape,
+                                em: st.printer_vp_em,
+                                line: st.printer_vp_line,
+                                side: st.printer_vp_side,
+                                delivery: st.printer_vp_delivery.clone(),
+                                paper_width_mm: mm,
+                            };
+                            st.printer_draft.update_virtual_printer_values(&id, values);
+                            let _ = st.save_printer_draft();
+                        }
+                    }
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(virtual_printer_new_btn)).clicked(actions) {
+            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
+            if is_client {
+                self.set_status(cx, app_t("printers_host_only"));
+            } else {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.virtual_printer_sel = None;
+                    st.printer_vp_landscape = false;
+                    st.printer_vp_em = print_share::STD_EM_NORMAL;
+                    st.printer_vp_line = 40;
+                    st.printer_vp_side = print_share::STD_SIDE;
+                    st.printer_vp_delivery = print_share::DELIVERY_SYSTEM_SPOOLER.into();
+                    st.printer_vp_paper_width_mm = 80;
+                }
+                self.ui
+                    .text_input(cx, ids!(station_group_name_input))
+                    .set_text(cx, "");
+                self.set_status(cx, app_t("virtual_printer_new"));
+                self.paint_printers_panel(cx);
             }
         }
         if self.ui.button(cx, ids!(station_group_save_btn)).clicked(actions) {
@@ -7495,16 +7917,86 @@ impl MatchEvent for App {
                 let name = self.ui.text_input(cx, ids!(station_group_name_input)).text();
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    let ids: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
-                    if ids.is_empty() {
-                        return Err(st.t("station_group_empty"));
+                    let Some(pid) = st.printer_selected_id.clone() else {
+                        return Err(st.t("virtual_need_real"));
+                    };
+                    let values = print_share::VirtualPrinterValues {
+                        landscape: st.printer_vp_landscape,
+                        em: st.printer_vp_em,
+                        line: st.printer_vp_line,
+                        side: st.printer_vp_side,
+                        delivery: st.printer_vp_delivery.clone(),
+                        paper_width_mm: st.printer_vp_paper_width_mm,
+                    };
+                    if let Some(sel) = st.virtual_printer_sel.clone() {
+                        if let Some(vp) = st
+                            .printer_draft
+                            .virtual_printers
+                            .iter_mut()
+                            .find(|v| v.id == sel)
+                        {
+                            if !name.trim().is_empty() {
+                                vp.name = name.trim().to_string();
+                            }
+                            vp.printer_id = pid;
+                            vp.apply_values(values);
+                        }
+                        st.save_printer_draft()?;
+                        let label = st
+                            .printer_draft
+                            .virtual_printer_by_id(&sel)
+                            .map(|v| v.name.clone())
+                            .unwrap_or_default();
+                        return Ok(st.t("virtual_printer_updated_named").replace("{name}", &label));
                     }
-                    st.printer_draft.upsert_station_group(&name, ids);
+                    let t = name.trim();
+                    if !t.is_empty() {
+                        if let Some(existing) = st
+                            .printer_draft
+                            .virtual_printers
+                            .iter()
+                            .find(|v| v.name.eq_ignore_ascii_case(t) || v.id == t)
+                            .map(|v| v.id.clone())
+                        {
+                            if let Some(vp) = st
+                                .printer_draft
+                                .virtual_printers
+                                .iter_mut()
+                                .find(|v| v.id == existing)
+                            {
+                                vp.printer_id = pid;
+                                vp.apply_values(values);
+                            }
+                            st.virtual_printer_sel = Some(existing.clone());
+                            st.save_printer_draft()?;
+                            let label = st
+                                .printer_draft
+                                .virtual_printer_by_id(&existing)
+                                .map(|v| v.name.clone())
+                                .unwrap_or_default();
+                            return Ok(
+                                st.t("virtual_printer_updated_named").replace("{name}", &label)
+                            );
+                        }
+                    }
+                    let id = st.printer_draft.add_virtual_printer(&name, &pid, values)?;
+                    st.virtual_printer_sel = Some(id);
                     st.save_printer_draft()?;
-                    Ok(st.t("station_group_saved"))
+                    let label = st
+                        .virtual_printer_sel
+                        .as_ref()
+                        .and_then(|id| st.printer_draft.virtual_printer_by_id(id))
+                        .map(|v| v.name.clone())
+                        .unwrap_or_default();
+                    Ok(st.t("virtual_printer_created").replace("{name}", &label))
                 })();
                 match result {
-                    Ok(msg) => self.set_status(cx, msg),
+                    Ok(msg) => {
+                        self.ui
+                            .text_input(cx, ids!(station_group_name_input))
+                            .set_text(cx, "");
+                        self.set_status(cx, msg);
+                    }
                     Err(e) => self.set_status(cx, e),
                 }
                 self.paint_printers_panel(cx);
@@ -7518,84 +8010,39 @@ impl MatchEvent for App {
                 let name = self.ui.text_input(cx, ids!(station_group_name_input)).text();
                 let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    let key_owned = st.printer_route_key.clone();
-                    let from = parse_printer_route_key(&key_owned);
-                    let members = {
-                        let n = name.trim();
-                        st.printer_draft
-                            .station_groups
-                            .iter()
-                            .find(|g| n.is_empty() || g.name.eq_ignore_ascii_case(n))
-                            .map(|g| g.station_ids.clone())
-                            .unwrap_or_else(|| st.stations.iter().map(|s| s.id.clone()).collect())
+                    let id = {
+                        let t = name.trim();
+                        if let Some(sel) = st.virtual_printer_sel.clone() {
+                            sel
+                        } else if !t.is_empty() {
+                            st.printer_draft
+                                .virtual_printers
+                                .iter()
+                                .find(|v| v.name.eq_ignore_ascii_case(t) || v.id == t)
+                                .map(|v| v.id.clone())
+                                .ok_or_else(|| st.t("virtual_need_select"))?
+                        } else {
+                            return Err(st.t("virtual_need_select"));
+                        }
                     };
-                    if members.is_empty() {
-                        return Err(st.t("station_group_empty"));
-                    }
-                    let n = members.len();
-                    st.printer_draft.apply_outputs_to_stations(from, &members);
+                    let label = st
+                        .printer_draft
+                        .virtual_printer_by_id(&id)
+                        .map(|v| v.name.clone())
+                        .unwrap_or_default();
+                    st.printer_draft.remove_virtual_printer(&id);
+                    st.virtual_printer_sel = None;
                     st.save_printer_draft()?;
-                    Ok(st.t("station_group_applied").replace("{n}", &n.to_string()))
+                    Ok(st.t("virtual_printer_deleted").replace("{name}", &label))
                 })();
                 match result {
-                    Ok(msg) => self.set_status(cx, msg),
+                    Ok(msg) => {
+                        self.ui
+                            .text_input(cx, ids!(station_group_name_input))
+                            .set_text(cx, "");
+                        self.set_status(cx, msg);
+                    }
                     Err(e) => self.set_status(cx, e),
-                }
-                self.paint_printers_panel(cx);
-            }
-        }
-        if self.choice_chip_clicked(
-            cx,
-            actions,
-            ids!(printer_mode_first),
-            ids!(printer_mode_first_on),
-        ) {
-            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
-            if is_client {
-                self.set_status(cx, app_t("printers_host_only"));
-            } else {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let key_owned = st.printer_route_key.clone();
-                    let key = parse_printer_route_key(&key_owned);
-                    st.printer_draft
-                        .set_print_mode(key, print_share::RoutePrintMode::First);
-                    if st.printers_base().is_some() {
-                        st.save_printer_draft()?;
-                    } else {
-                        st.reapply_kot_slip_format_onto_printer_draft();
-                        print_share::configure(st.printer_draft.clone());
-                    }
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                }
-                self.paint_printers_panel(cx);
-            }
-        }
-        if self.choice_chip_clicked(cx, actions, ids!(printer_mode_all), ids!(printer_mode_all_on))
-        {
-            let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
-            if is_client {
-                self.set_status(cx, app_t("printers_host_only"));
-            } else {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let key_owned = st.printer_route_key.clone();
-                    let key = parse_printer_route_key(&key_owned);
-                    st.printer_draft
-                        .set_print_mode(key, print_share::RoutePrintMode::All);
-                    if st.printers_base().is_some() {
-                        st.save_printer_draft()?;
-                    } else {
-                        st.reapply_kot_slip_format_onto_printer_draft();
-                        print_share::configure(st.printer_draft.clone());
-                    }
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
                 }
                 self.paint_printers_panel(cx);
             }

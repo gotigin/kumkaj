@@ -1,0 +1,18 @@
+# Seed from apps/khaynjo/docs/KHAYNJO_WEBSITE.md §5 — gated claims stay off live copy.
+[[claim]]
+id = "floor-states"
+sentence = "Visit colours every device agrees on."
+source = "apps/khaynjo/docs/KHAYNJO.md §4b table states"
+gate = ""
+
+[[claim]]
+id = "free-local"
+sentence = "Free forever on your devices."
+source = "docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md §21"
+gate = ""
+
+[[claim]]
+id = "offline-lan"
+sentence = "Works with no internet; devices work together on the shop Wi‑Fi."
+source = "apps/khaynjo/docs/KHAYNJO.md §4b"
+gate = "lan-pilot"
