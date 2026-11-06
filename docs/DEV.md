@@ -480,12 +480,14 @@ If app files are already gone but data remains, re-running uninstall still offer
 
 | | Development | Production |
 |---|---|---|
-| Linux | `./apps/moklanjo/scripts/uninstall-linux-dev.sh` | `./apps/moklanjo/scripts/uninstall-linux-prod.sh` |
+| Linux install | `./apps/moklanjo/scripts/install-linux-dev.sh` | `./apps/moklanjo/scripts/install-linux.sh` |
+| Linux install (Khaynjo) | `./apps/khaynjo/scripts/install-linux-dev.sh` | `./apps/khaynjo/scripts/install-linux.sh` |
+| Linux uninstall | `./apps/moklanjo/scripts/uninstall-linux-dev.sh` | `./apps/moklanjo/scripts/uninstall-linux-prod.sh` |
 | Windows | `apps\courier\scripts\uninstall-windows-dev.ps1` | `apps\courier\scripts\uninstall-windows-prod.ps1` |
 | Android | `./apps/moklanjo/scripts/uninstall-android-dev.sh` | `./apps/moklanjo/scripts/uninstall-android-prod.sh` |
 | Android (Khaynjo) | `./apps/khaynjo/scripts/uninstall-android-dev.sh` | `./apps/khaynjo/scripts/uninstall-android-prod.sh` |
 
-(Linux/Windows wrappers call the shared uninstaller with `--dev` / `-Dev` or `--prod` / `-Prod`. Android uses `adb uninstall` of that package id.)
+(Linux install wrappers call `install-linux.sh --dev`. That rebuilds the dev package on every run, then installs it, so a leftover `dist/` folder cannot leave an old binary in place. Linux/Windows uninstall wrappers call the shared uninstaller with `--dev` / `-Dev` or `--prod` / `-Prod`. Android uses `adb uninstall` of that package id.)
 
 Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, `uninstall-*`, `Setup.bat`, `Uninstall.bat`, `desktop-ids.sh`, `License.rtf`) — they name that app's exe, folders and labels. `scripts/stage-desktop-package.sh` copies the calling app's set into a package. (Khaynjo's Windows folder package used to stage Moklanjo's, which looked for `kumkaj-moklanjo.exe`; its MSI licence page said "Moklanjo" — fixed 2026-10-26.)
 

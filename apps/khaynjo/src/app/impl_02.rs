@@ -263,6 +263,98 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
+    /// Extra tills live on Settings. `sync_chrome` returns before the rest of
+    /// the screen paint while Settings is open, so this has to run on that
+    /// path or Allow extra tills looks like it did nothing.
+    fn paint_extra_tills_chrome(&mut self, cx: &mut Cx) {
+        let (is_owner, is_shop, extra_tills, pair_label, pair_code, show_pair_code) = {
+            let st = app_state().lock().unwrap();
+            let is_owner = st.session.as_ref().is_some_and(|s| s.is_owner());
+            let is_shop = st.device_role == DeviceRole::Server;
+            let extra_tills = st.extra_tills_allowed;
+            let (pair_label, pair_code, show_pair_code) = if is_shop && extra_tills {
+                let code = st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.pairing_code().ok())
+                    .unwrap_or_else(|| "------".into());
+                let mut text = match net::local_ipv4() {
+                    Some(ip) => st
+                        .t("lan_pair_status")
+                        .replace("{code}", &code)
+                        .replace("{addr}", &ip.to_string()),
+                    None => st.t("lan_join_help_no_addr").replace("{code}", &code),
+                };
+                if !net::server_is_running() {
+                    text.push_str(" · ");
+                    text.push_str(
+                        &st.t("lan_not_listening")
+                            .replace("{port}", &net::DEFAULT_PORT.to_string()),
+                    );
+                } else {
+                    let fw = firewall_state().lock().unwrap();
+                    if fw.busy && fw.open == Some(false) {
+                        text.push_str(" · ");
+                        text.push_str(&st.t("firewall_waiting"));
+                    } else if fw.open == Some(false) {
+                        text.push_str(" · ");
+                        text.push_str(&st.t("firewall_blocked"));
+                    }
+                }
+                (text, code, true)
+            } else if is_shop {
+                (st.t("lan_tills_off"), String::new(), false)
+            } else {
+                (String::new(), String::new(), false)
+            };
+            (
+                is_owner,
+                is_shop,
+                extra_tills,
+                pair_label,
+                pair_code,
+                show_pair_code,
+            )
+        };
+        let owner_shop = is_shop && is_owner;
+        self.ui
+            .button(cx, ids!(allow_extra_tills))
+            .set_visible(cx, owner_shop && !extra_tills);
+        self.ui
+            .button(cx, ids!(stop_extra_tills))
+            .set_visible(cx, owner_shop && extra_tills);
+        let blocked = {
+            let fw = firewall_state().lock().unwrap();
+            fw.open == Some(false) && !fw.busy
+        };
+        self.ui
+            .button(cx, ids!(allow_firewall))
+            .set_visible(cx, owner_shop && extra_tills && blocked);
+        self.ui
+            .button(cx, ids!(new_pair_code))
+            .set_visible(cx, owner_shop && extra_tills);
+        self.ui
+            .button(cx, ids!(autostart_btn))
+            .set_visible(cx, owner_shop && extra_tills && startup::supported());
+        self.ui
+            .widget(cx, ids!(paired_list))
+            .set_visible(cx, owner_shop && extra_tills);
+        if !pair_label.is_empty() {
+            self.ui
+                .widget(cx, ids!(server_pair_label))
+                .set_text(cx, &plain_display_text(&pair_label));
+        }
+        self.ui
+            .widget(cx, ids!(pairing_code_value))
+            .set_text(cx, &plain_display_text(&pair_code));
+        self.ui
+            .widget(cx, ids!(pairing_code_value))
+            .set_visible(cx, show_pair_code);
+        self.ui
+            .button(cx, ids!(copy_pair_code))
+            .set_visible(cx, show_pair_code);
+    }
+
 fn sync_chrome(&mut self, cx: &mut Cx) {
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
@@ -376,6 +468,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
                 }
                 self.align_label(cx, ids!(settings_hub_help), rtl);
+                self.paint_extra_tills_chrome(cx);
                 self.paint_header_back_chrome(cx);
                 self.lift_footer_above_system_bar(cx);
                 self.repair_focused_carets(cx);

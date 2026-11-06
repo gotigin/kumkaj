@@ -761,12 +761,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let err = {
             let mut st = app_state().lock().unwrap();
             if let Err(e) = st.require_server_host("Change extra tills") {
-                Some(e)
+                Err(e)
             } else if st.store.is_none() {
-                Some("Storage not ready".into())
+                Err("Storage not ready".into())
             } else {
                 match st.actor() {
-                    Err(e) => Some(e),
+                    Err(e) => Err(e),
                     Ok(actor) => {
                         if let Err(e) = st
                             .store
@@ -774,33 +774,32 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                             .unwrap()
                             .set_extra_tills_allowed(allowed, &actor)
                         {
-                            Some(e)
+                            Err(e)
                         } else {
                             st.extra_tills_allowed = allowed;
-                            if allowed {
+                            let msg = if allowed {
                                 let store = st.store.as_ref().unwrap();
                                 let code = store.ensure_server_pairing_code().unwrap_or_default();
                                 let path = store.db_path().to_path_buf();
                                 if let Err(e) = net::ensure_server(path) {
-                                    st.status = format!("Extra tills on, LAN listen failed: {e}");
+                                    format!("Extra tills on, LAN listen failed: {e}")
                                 } else {
-                                    st.status = format!("Extra tills on · pairing code {code}");
                                     firewall_job(|| Ok(net::firewall_allows_phones()));
+                                    format!("Extra tills on · pairing code {code}")
                                 }
                             } else {
                                 net::stop_server();
-                                st.status =
-                                    "Extra tills off — this device still holds the shop books"
-                                        .into();
-                            }
-                            None
+                                "Extra tills off — this device still holds the shop books".into()
+                            };
+                            Ok(msg)
                         }
                     }
                 }
             }
         };
-        if let Some(e) = err {
-            self.set_status(cx, e);
+        match err {
+            Ok(msg) => self.set_status(cx, msg),
+            Err(e) => self.set_status(cx, e),
         }
         self.sync_chrome(cx);
     }

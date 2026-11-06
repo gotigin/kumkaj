@@ -10,12 +10,40 @@
 # Usage:
 #   ./install.sh
 #   ./apps/moklanjo/scripts/install-linux.sh /path/to/package
+#   ./apps/moklanjo/scripts/install-linux.sh --dev
+#     (from the repo: rebuilds dist/linux-dev/, then installs it)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PKG="${1:-}"
+MODE=""
+PKG=""
+for arg in "$@"; do
+  case "$arg" in
+    --dev|--debug|--development) MODE=development ;;
+    --prod|--production) MODE=production ;;
+    *)
+      if [[ -n "$PKG" ]]; then
+        echo "Unexpected argument: $arg" >&2
+        exit 1
+      fi
+      PKG="$arg"
+      ;;
+  esac
+done
+if [[ -z "$PKG" && "$MODE" == "development" && -f "$SCRIPT_DIR/package-linux-dev.sh" ]]; then
+  # Always rebuild. A package left in dist/ would install yesterday's binary.
+  echo "Building the development package, then installing it."
+  "$SCRIPT_DIR/package-linux-dev.sh"
+  DEV_PKG="$SCRIPT_DIR/../../../dist/linux-dev"
+  if [[ ! -f "$DEV_PKG/install-manifest.env" ]]; then
+    echo "No development package at dist/linux-dev/" >&2
+    exit 1
+  fi
+  PKG="$(cd "$DEV_PKG" && pwd)"
+fi
 if [[ -z "$PKG" ]]; then
   if [[ -f "$SCRIPT_DIR/install-manifest.env" ]]; then
+    # Staged copy inside a package folder. That folder is the package.
     PKG="$SCRIPT_DIR"
   elif [[ -f "$SCRIPT_DIR/../../../dist/linux/install-manifest.env" ]]; then
     PKG="$(cd "$SCRIPT_DIR/../../../dist/linux" && pwd)"
