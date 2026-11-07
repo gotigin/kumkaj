@@ -289,6 +289,11 @@ struct AppState {
     low_stock_line: String,
     /// Kitchen: "5 × Thali · 3 × Chaas" still to cook over open tickets.
     kitchen_counts_line: String,
+    /// Today's totals + credit outstanding for the header line, read at most
+    /// every few seconds instead of on every repaint (the outstanding sum
+    /// loads every customer). Cleared whenever the books are reloaded, so a
+    /// sale or a waiter's payment shows at once.
+    today_cache: std::cell::RefCell<Option<(std::time::Instant, domain::DayTotals, i64)>>,
     /// Table bookings still to come (Floor screen).
     reservations: Vec<store::Reservation>,
     /// Order desk category chip (category id); `None` = all items;

@@ -1542,6 +1542,15 @@ mod courier_ops_tests {
         assert!(label.contains("waiting") || label.contains("1"));
         assert_eq!(store.lan_outbox().unwrap().len(), 1);
 
+        // Person gate (M16b): someone without Sales cannot mark it delivered,
+        // whichever device sends it — nothing moves.
+        let mut no_sales = owner.clone();
+        no_sales.id = "no-sales".into();
+        no_sales.role = crate::domain::StaffRole::Cashier;
+        no_sales.features.sales = false;
+        assert!(store.apply_rider_pod(&event, &no_sales).is_err());
+        assert_ne!(store.get_sale(&sale.id).unwrap().unwrap().tracking_status, "delivered");
+
         store.apply_rider_pod(&event, &owner).unwrap();
         store.lan_outbox_done(&event.id).unwrap();
         let updated = store.get_sale(&sale.id).unwrap().unwrap();

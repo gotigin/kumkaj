@@ -2460,6 +2460,11 @@ script_mod! {
     // never showed and rows collapsed while the list moved. The KitchenList
     // pitch (KOT_ROW) is this height plus the item's bottom pad.
     let KotCard = View{
+        // The whole card is the kitchen's tap target, like its Start / Ready
+        // / Done button (a View only hears the finger with a cursor). The
+        // tap moves the ticket only from the state the card showed
+        // (`advance_kot_from`), so a double tap never skips Preparing.
+        cursor: MouseCursor.Hand
         width: Fill height: 200
         flow: Overlay
         bg_ok := RoundedView{
@@ -7297,7 +7302,7 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         stations_hdr := AccordionHdrHitBtn{width: Fit text: "KITCHEN STATIONS"}
                                         stations_help := InfoHelp{
-                                            tip: "Add kitchen stations for dishes and KOT. On each station, attach virtual printers (from Settings → Printers), set priority order, and choose First that works or Print on all."
+                                            tip: "Add kitchen stations for dishes and KOT. On each station, attach its printers (found under Settings → Printers), set priority, and choose First that works or Print on all."
                                         }
                                         stations_hdr_ext := AccordionHdrHitBtn{text: ""}
                                     }
@@ -7332,7 +7337,7 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             station_print_help := InfoHelp{
-                                                tip: "Pick a station, then attach one or more virtual printers. ↑↓ sets try order. First that works stops after the first success; Print on all sends to every attached printer."
+                                                tip: "Pick a station, then attach one or more printers. ↑↓ sets try order. First that works stops after the first success; Print on all sends to every attached printer."
                                             }
                                         }
                                         station_print_input := FieldInput{empty_text: "Station to set printers"}
@@ -8775,7 +8780,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     visible: false
                                     FormCard{
                                     printers_panel_help := InfoHelp{
-                                        tip: "Find real printers. Create virtual printers here (real printer, layout, delivery). Attach them to kitchen stations under Kitchen → Kitchen stations — not on this screen."
+                                        tip: "Find printers. The operating system names them, and Find keeps that list. Portrait, landscape, and how the job is sent are under Bill & KOT format. Choose a printer for each kitchen station, and for the bill, from that list."
                                     }
                                     View{width: Fit height: Fit flow: Overlay visible: false
                                         kot_print_off := ChipBtn{text: "Auto-print kitchen tickets: Off"}

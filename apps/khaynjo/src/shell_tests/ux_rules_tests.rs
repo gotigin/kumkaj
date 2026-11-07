@@ -132,4 +132,30 @@ mod ux_rules_tests {
             ]
         );
     }
+
+    /// Kitchen: the whole ticket card advances like its button. Without a
+    /// cursor the View never hears the finger, so match_event's card tap
+    /// was dead code and only the small button worked.
+    #[test]
+    fn kitchen_card_is_one_tap_target() {
+        let ui = include_str!("../ui_script.rs");
+        let card = ui
+            .split("let KotCard = View{")
+            .nth(1)
+            .and_then(|s| s.split("bg_ok :=").next())
+            .unwrap_or("");
+        assert!(card.contains("cursor: MouseCursor.Hand"), "KotCard needs a cursor to take the tap");
+        let handler = include_str!("../app/match_event.rs");
+        let tap = handler
+            .split("Kitchen: advance a ticket")
+            .nth(1)
+            .and_then(|s| s.split("table_range_add").next())
+            .unwrap_or("");
+        assert!(
+            tap.contains("ids!(kotcard))") && tap.contains(".finger_up(actions)"),
+            "card tap is read"
+        );
+        assert!(tap.contains("finger_up_is_tap"), "a scroll drag is not a tap");
+        assert!(tap.contains("advance_kot_from"), "the tap only leaves the state it showed");
+    }
 }

@@ -155,6 +155,7 @@ impl AppState {
             reorder_levels: std::collections::HashMap::new(),
             low_stock_line: String::new(),
             kitchen_counts_line: String::new(),
+            today_cache: std::cell::RefCell::new(None),
             reservations: Vec::new(),
             menu_category: None,
             frequent_ids: Vec::new(),
@@ -252,6 +253,7 @@ impl AppState {
         if self.store.is_none() {
             return Err("No store".into());
         }
+        self.today_cache.replace(None);
         // Each local Server / Client cache has its own printers — never the
         // shared install-root file (that mixed shops' routes).
         self.sync_printer_draft_from_books();
@@ -605,6 +607,7 @@ impl AppState {
     /// (a waiter's KOT, a payment from a tablet just landed). Today's
     /// figures follow in `sync_chrome`, which reads them itself.
     fn refresh_live_lists(&mut self) {
+        self.today_cache.replace(None);
         let Some(store) = self.store.as_ref() else {
             return;
         };
@@ -1976,13 +1979,25 @@ impl AppState {
     /// One-line “today” strip. Word prefixes and counts stay readable; only
     /// money slots go through [`display_money`].
     fn today_label(&self, amounts_visible: bool) -> String {
-        match self.store.as_ref().and_then(|s| s.today_totals().ok()) {
-            Some(t) => {
-                let outstanding = self
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.outstanding_credit_total().ok())
-                    .unwrap_or(0);
+        // Fresh enough for a header line; a reload (any write here, a LAN
+        // change, a Client sync) empties the cache first.
+        const TODAY_FRESH: std::time::Duration = std::time::Duration::from_secs(5);
+        let cached = self
+            .today_cache
+            .borrow()
+            .as_ref()
+            .filter(|(at, _, _)| at.elapsed() < TODAY_FRESH)
+            .map(|(_, t, owed)| (t.clone(), *owed));
+        let read = cached.or_else(|| {
+            let store = self.store.as_ref()?;
+            let t = store.today_totals().ok()?;
+            let owed = store.outstanding_credit_total().unwrap_or(0);
+            self.today_cache
+                .replace(Some((std::time::Instant::now(), t.clone(), owed)));
+            Some((t, owed))
+        });
+        match read {
+            Some((t, outstanding)) => {
                 let money = |m: Money| display_money(&self.money(m), amounts_visible);
                 // One line on every screen: what came in today, and only the
                 // ways it came in that are not zero. The bill-type split

@@ -355,7 +355,72 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .set_visible(cx, show_pair_code);
     }
 
-fn sync_chrome(&mut self, cx: &mut Cx) {
+    /// Settings → Backup (last backup, second copy, warning, audit) and the
+    /// Books screen's backup warning. Called only where those show.
+    fn paint_backup_status(&mut self, cx: &mut Cx) {
+        {
+            // Automatic backups: when the last one ran, where they are, and
+            // whether the second copy works.
+            let st = app_state().lock().unwrap();
+            let text = st.store.as_ref().map(|store| {
+                let dir = store.auto_backup_dir().display().to_string();
+                let mut text = match store.last_backup_at().ok().flatten() {
+                    Some(at) => {
+                        let when = st.fiscal.format_datetime(&at);
+                        st.t("backup_auto").replace("{when}", &when).replace("{dir}", &dir)
+                    }
+                    None => st.t("backup_auto_none"),
+                };
+                if let Ok(Some(extra)) = store.backup_copy_dir() {
+                    text.push_str(&format!(" {}", st.t("backup_copy_to").replace("{dir}", &extra.display().to_string())));
+                }
+                if let Ok(e) = store.backup_copy_error()
+                    && !e.is_empty()
+                {
+                    text.push_str(&format!(" {e}"));
+                }
+                text
+            });
+            let warning = backup_warning(&st);
+            let host = st.device_role.is_host();
+            drop(st);
+            let text = match text {
+                Some(text) if !warning.is_empty() => format!("{warning}\n\n{text}"),
+                text => text.unwrap_or_default(),
+            };
+            self.ui
+                .widget(cx, ids!(backup_auto_label))
+                .set_text(cx, &plain_display_text(&text));
+            self.ui
+                .widget(cx, ids!(books_backup_warning))
+                .set_text(cx, &plain_display_text(&warning));
+            self.ui
+                .widget(cx, ids!(books_backup_warning))
+                .set_visible(cx, !warning.is_empty());
+            self.ui
+                .button(cx, ids!(backup_copy_btn))
+                .set_visible(cx, host);
+        }
+        // Latest audit entries, one row each: who did what, and when.
+        let audit = {
+            let st = app_state().lock().unwrap();
+            let mut rows = vec![ReportRow::Head("Audit".into())];
+            match st.store.as_ref().and_then(|s| s.list_audit(5).ok()) {
+                Some(events) if !events.is_empty() => rows.extend(events.iter().map(|e| {
+                    ReportRow::Kv(
+                        format!("{} · {} {}", e.actor_name, e.action, e.detail.trim()),
+                        short_when(&e.created_at),
+                    )
+                })),
+                Some(_) => rows.push(ReportRow::Line("(empty)".into())),
+                None => rows.push(ReportRow::Line("—".into())),
+            }
+            rows
+        };
+        self.set_report_rows(cx, ids!(audit_label), audit);
+    }
+
+    fn sync_chrome(&mut self, cx: &mut Cx) {
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
         // system awake in `net::KeepAwake`).
@@ -457,6 +522,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     };
                     self.set_report_rows(cx, ids!(units_label), units_rows);
                 }
+                if self.ui.view(cx, ids!(settings_panel_backup)).visible() {
+                    self.paint_backup_status(cx);
+                }
                 if self.ui.view(cx, ids!(settings_panel_pickers)).visible() {
                     let sibling_rows = {
                         let st = app_state().lock().unwrap();
@@ -535,7 +603,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             screen,
             table_chip,
             staff_rows,
-            audit,
             locale_line,
             empty_msg,
             product_count,
@@ -630,21 +697,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 .iter()
                 .map(|s| ReportRow::Line(s.lock_label()))
                 .collect::<Vec<_>>();
-            // Latest audit entries, one row each: who did what, and when.
-            let audit = {
-                let mut rows = vec![ReportRow::Head("Audit".into())];
-                match st.store.as_ref().and_then(|s| s.list_audit(5).ok()) {
-                    Some(events) if !events.is_empty() => rows.extend(events.iter().map(|e| {
-                        ReportRow::Kv(
-                            format!("{} · {} {}", e.actor_name, e.action, e.detail.trim()),
-                            short_when(&e.created_at),
-                        )
-                    })),
-                    Some(_) => rows.push(ReportRow::Line("(empty)".into())),
-                    None => rows.push(ReportRow::Line("—".into())),
-                }
-                rows
-            };
             let lang = locale::language_by_code(&st.locale.language)
                 .map(|l| format!("{} ({})", l.native_name, l.name_en))
                 .unwrap_or_else(|| st.locale.language.clone());
@@ -801,7 +853,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 st.screen,
                 table_chip,
                 staff_rows,
-                audit,
                 locale_line,
                 empty_msg,
                 st.products.len(),
@@ -935,50 +986,13 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         // Debug path stays out of the owner-facing UI (docs / support only).
         let _ = db;
         self.ui.widget(cx, ids!(db_path_label)).set_visible(cx, false);
-        {
-            // Automatic backups: when the last one ran, where they are, and
-            // whether the second copy works.
-            let st = app_state().lock().unwrap();
-            let text = st.store.as_ref().map(|store| {
-                let dir = store.auto_backup_dir().display().to_string();
-                let mut text = match store.last_backup_at().ok().flatten() {
-                    Some(at) => {
-                        let when = st.fiscal.format_datetime(&at);
-                        st.t("backup_auto").replace("{when}", &when).replace("{dir}", &dir)
-                    }
-                    None => st.t("backup_auto_none"),
-                };
-                if let Ok(Some(extra)) = store.backup_copy_dir() {
-                    text.push_str(&format!(" {}", st.t("backup_copy_to").replace("{dir}", &extra.display().to_string())));
-                }
-                if let Ok(e) = store.backup_copy_error()
-                    && !e.is_empty()
-                {
-                    text.push_str(&format!(" {e}"));
-                }
-                text
-            });
-            let warning = backup_warning(&st);
-            let host = st.device_role.is_host();
-            drop(st);
-            let text = match text {
-                Some(text) if !warning.is_empty() => format!("{warning}\n\n{text}"),
-                text => text.unwrap_or_default(),
-            };
-            self.ui
-                .widget(cx, ids!(backup_auto_label))
-                .set_text(cx, &plain_display_text(&text));
-            self.ui
-                .widget(cx, ids!(books_backup_warning))
-                .set_text(cx, &plain_display_text(&warning));
-            self.ui
-                .widget(cx, ids!(books_backup_warning))
-                .set_visible(cx, !warning.is_empty());
-            self.ui
-                .button(cx, ids!(backup_copy_btn))
-                .set_visible(cx, host);
+        // Backup status + audit rows only where they show: the Books
+        // warning here; Settings → Backup paints itself on open and while it
+        // is the open section. Each repaint of every screen used to stat the
+        // disk, read backup meta and query the audit log.
+        if screen == Screen::Books {
+            self.paint_backup_status(cx);
         }
-        self.set_report_rows(cx, ids!(audit_label), audit);
         self.ui
             .widget(cx, ids!(table_chip)).set_text(cx, &plain_display_text(&table_chip));
         self.ui

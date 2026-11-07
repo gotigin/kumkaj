@@ -1522,6 +1522,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if panel == Some("printers") {
             self.paint_printers_panel(cx);
         }
+        if panel == Some("backup") {
+            self.paint_backup_status(cx);
+        }
         if panel == Some("units") {
             let units_rows = {
                 let st = app_state().lock().unwrap();
