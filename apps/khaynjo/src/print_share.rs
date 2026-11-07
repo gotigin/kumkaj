@@ -704,7 +704,41 @@ impl KotSlipKind {
             KotSlipKind::Cancelled => "kot_kind_cancelled",
         }
     }
+
+    /// Product default banner for this kind (empty = none).
+    pub fn default_banner(self) -> &'static str {
+        match self {
+            KotSlipKind::Original => "",
+            KotSlipKind::Duplicate => KOT_BANNER_DUPLICATE,
+            KotSlipKind::Modified => KOT_BANNER_MODIFIED,
+            KotSlipKind::Cancelled => KOT_BANNER_CANCELLED,
+        }
+    }
+
+    /// Product default item-name prefix for this kind (empty = none).
+    pub fn default_item_prefix(self) -> &'static str {
+        match self {
+            KotSlipKind::Original | KotSlipKind::Duplicate => "",
+            KotSlipKind::Modified => KOT_PREFIX_MODIFIED,
+            KotSlipKind::Cancelled => KOT_PREFIX_CANCELLED,
+        }
+    }
+
+    /// Product default: strike dish names (Cancelled only).
+    pub fn default_strike_items(self) -> bool {
+        matches!(self, KotSlipKind::Cancelled)
+    }
 }
+
+/// Recovery / "print selected again" banner (not a stored kind field).
+pub const KOT_BANNER_REPRINT: &str = "*** REPRINT - SAME ORDER ***";
+pub const KOT_BANNER_DUPLICATE: &str = "*** DUPLICATE - SAME ORDER ***";
+pub const KOT_BANNER_MODIFIED: &str = "MODIFIED/UPDATED KOT";
+pub const KOT_BANNER_CANCELLED: &str = "PARTIALLY SHIFTED/CANCELLED";
+pub const KOT_PREFIX_MODIFIED: &str = "[NEW] ";
+pub const KOT_PREFIX_CANCELLED: &str = "[CANCELLED] ";
+pub const KOT_BANNER_MAX: usize = 72;
+pub const KOT_PREFIX_MAX: usize = 24;
 
 /// Field id for typography editing (matches show toggles / order).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -769,6 +803,17 @@ pub struct KotKindStyles {
     pub area: KotFieldStyle,
     #[serde(default)]
     pub item_qty: KotFieldStyle,
+    /// Kind banner above the body (editable). Empty → no banner for Original;
+    /// other kinds use [`KotSlipKind::default_banner`] until the owner clears it
+    /// after [`KotSlipFormat::kind_chrome_v`] ≥ 1.
+    #[serde(default)]
+    pub banner: String,
+    /// Prepended to each dish name (`[CANCELLED] `, `[NEW] `, …). Qty stays plain.
+    #[serde(default)]
+    pub item_prefix: String,
+    /// Strike through dish names (not the qty column). Default on for Cancelled.
+    #[serde(default)]
+    pub strike_items: bool,
 }
 
 impl Default for KotKindStyles {
@@ -784,6 +829,9 @@ impl Default for KotKindStyles {
             kot_no: KotFieldStyle::regular(KOT_EM_NORMAL),
             area: KotFieldStyle::bold(KOT_EM_NORMAL),
             item_qty: KotFieldStyle::regular(KOT_EM_NORMAL),
+            banner: String::new(),
+            item_prefix: String::new(),
+            strike_items: false,
         }
     }
 }
@@ -835,12 +883,18 @@ impl Default for KotKindStyleSet {
     fn default() -> Self {
         let mut duplicate = KotKindStyles::default();
         duplicate.title = KotFieldStyle::bold(KOT_EM_LARGE);
+        duplicate.banner = KOT_BANNER_DUPLICATE.into();
         let mut modified = KotKindStyles::default();
         modified.title = KotFieldStyle::bold(KOT_EM_LARGE);
         modified.item_qty = KotFieldStyle::bold(KOT_EM_LARGE);
+        modified.banner = KOT_BANNER_MODIFIED.into();
+        modified.item_prefix = KOT_PREFIX_MODIFIED.into();
         let mut cancelled = KotKindStyles::default();
         cancelled.title = KotFieldStyle::bold(KOT_EM_LARGE);
         cancelled.item_qty = KotFieldStyle::light(KOT_EM_NORMAL);
+        cancelled.banner = KOT_BANNER_CANCELLED.into();
+        cancelled.item_prefix = KOT_PREFIX_CANCELLED.into();
+        cancelled.strike_items = true;
         Self {
             original: KotKindStyles::default(),
             duplicate,
@@ -868,6 +922,20 @@ impl KotKindStyleSet {
             KotSlipKind::Cancelled => &mut self.cancelled,
         }
     }
+
+    /// One-shot upgrade: fill empty banner/prefix and set product strike defaults.
+    fn apply_product_chrome_defaults(&mut self) {
+        for kind in KotSlipKind::ALL {
+            let styles = self.get_mut(kind);
+            if styles.banner.trim().is_empty() {
+                styles.banner = kind.default_banner().into();
+            }
+            if styles.item_prefix.trim().is_empty() {
+                styles.item_prefix = kind.default_item_prefix().into();
+            }
+            styles.strike_items = kind.default_strike_items();
+        }
+    }
 }
 
 /// Owner-tunable kitchen slip layout. Always a standard KOT (no prices;
@@ -882,7 +950,7 @@ pub struct KotSlipFormat {
     pub show_shop_name: bool,
     #[serde(default = "default_true")]
     pub show_time: bool,
-    /// Off in the compact default (kot.jpeg / Rajdhani sample).
+    /// Off in the compact product default (time / KOT no / area / table).
     #[serde(default)]
     pub show_waiter: bool,
     #[serde(default)]
@@ -930,6 +998,10 @@ pub struct KotSlipFormat {
     /// Per KOT kind (original / duplicate / modified / cancelled) field typography.
     #[serde(default)]
     pub kind_styles: KotKindStyleSet,
+    /// `0` = older save without kind banner/prefix/strike chrome → apply product
+    /// defaults once in [`Self::clamped`]. `1` = chrome already owned by the shop.
+    #[serde(default)]
+    pub kind_chrome_v: u32,
 }
 
 pub const KOT_CHARS_MIN: u32 = 16;
@@ -993,6 +1065,7 @@ impl Default for KotSlipFormat {
                 "table".into(),
             ],
             kind_styles: KotKindStyleSet::default(),
+            kind_chrome_v: 1,
         }
     }
 }
@@ -1039,6 +1112,8 @@ impl KotSlipFormat {
         self.footer = scrub_kot_text(&self.footer, KOT_FOOTER_MAX);
         for kind in KotSlipKind::ALL {
             let styles = self.kind_styles.get_mut(kind);
+            styles.banner = scrub_kot_text(&styles.banner, KOT_BANNER_MAX);
+            styles.item_prefix = scrub_kot_text(&styles.item_prefix, KOT_PREFIX_MAX);
             for field in KotStyleField::ALL {
                 let s = styles.get_mut(field);
                 s.size_em = s.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
@@ -1053,6 +1128,12 @@ impl KotSlipFormat {
             && self.kind_styles.cancelled == stock
         {
             self.kind_styles = KotKindStyleSet::default();
+            self.kind_chrome_v = 1;
+        }
+        // Older slips had hardcoded banners and no item prefix / strike. Lift once.
+        if self.kind_chrome_v < 1 {
+            self.kind_styles.apply_product_chrome_defaults();
+            self.kind_chrome_v = 1;
         }
         self
     }
@@ -1212,38 +1293,12 @@ impl KotSlipFormat {
             }
         };
         if c.reprint {
-            push_styled(
-                &mut out,
-                &styles.title,
-                "*** REPRINT - SAME ORDER ***",
-                false,
-            );
-        } else if kind == KotSlipKind::Duplicate {
-            push_styled(
-                &mut out,
-                &styles.title,
-                "*** DUPLICATE - SAME ORDER ***",
-                false,
-            );
-        }
-        match kind {
-            KotSlipKind::Cancelled => {
-                push_styled(
-                    &mut out,
-                    &styles.title,
-                    "*** CANCEL - STOP THIS ITEM ***",
-                    false,
-                );
+            push_styled(&mut out, &styles.title, KOT_BANNER_REPRINT, false);
+        } else {
+            let banner = styles.banner.trim();
+            if !banner.is_empty() {
+                push_styled(&mut out, &styles.title, banner, false);
             }
-            KotSlipKind::Modified => {
-                push_styled(
-                    &mut out,
-                    &styles.title,
-                    "*** MODIFIED - CHECK ORDER ***",
-                    false,
-                );
-            }
-            KotSlipKind::Original | KotSlipKind::Duplicate => {}
         }
         // Shop title prints on every kind, under the kind banner. Cancelled used
         // to skip it, so a custom title never appeared in that preview.
@@ -1328,22 +1383,39 @@ impl KotSlipFormat {
         out.push('\n');
         let item_style = &styles.item_qty;
         let item_mark = kot_style_prefix(item_style, rtl);
+        let item_mark_strike = kot_style_prefix_strike(item_style, rtl, styles.strike_items);
+        let prefix = styles.item_prefix.as_str();
         // Item / Qty. as two columns. `\t` marks the split: proportional
         // Noto raster right-aligns the qty in dots; ESC/POS text + preview
         // expand the tab to a fixed monospace qty field (see
         // expand_kot_column_tabs). Never pad with char-count spaces alone —
         // Gujarati names made "Qty." and the digits drift (kot.jpeg).
         if fmt.show_item_qty_header {
+            // Header never takes the kind prefix or strike.
             out.push_str(&item_mark);
             out.push_str("Item\tQty.\n");
         }
         for item in c.items {
             let (name, qty) = kot_item_parts(item);
-            if qty.is_empty() {
-                push_styled(&mut out, item_style, &name, false);
+            let labeled = if prefix.is_empty() {
+                name
+            } else if name.is_empty() {
+                prefix.trim_end().to_string()
             } else {
-                out.push_str(&item_mark);
-                out.push_str(&name);
+                format!("{prefix}{name}")
+            };
+            let mark = if styles.strike_items {
+                &item_mark_strike
+            } else {
+                &item_mark
+            };
+            if qty.is_empty() {
+                out.push_str(mark);
+                out.push_str(&labeled);
+                out.push('\n');
+            } else {
+                out.push_str(mark);
+                out.push_str(&labeled);
                 out.push('\t');
                 out.push_str(&qty);
                 out.push('\n');
@@ -1395,6 +1467,10 @@ pub struct KotSlipContent<'a> {
 const KOT_STYLE_MARK: char = '\u{E000}';
 
 fn kot_style_prefix(style: &KotFieldStyle, rtl: bool) -> String {
+    kot_style_prefix_strike(style, rtl, false)
+}
+
+fn kot_style_prefix_strike(style: &KotFieldStyle, rtl: bool, strike: bool) -> String {
     let size = style.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
     // Weight letters must not collide with a digit (T = thin/light).
     let weight = match style.weight {
@@ -1403,10 +1479,13 @@ fn kot_style_prefix(style: &KotFieldStyle, rtl: bool) -> String {
         KotFontWeight::Regular => 'R',
     };
     // Two digits so 16 and 24 stay different sizes on the print, not one bucket.
-    // Align is S / C / E after the weight. `rtl` swaps start and end.
+    // Align is S / C / E after the weight. Strike is always a trailing `0`/`1`
+    // so a body that starts with `K` (`KOT - 12`) is never eaten as a flag.
+    // `rtl` swaps start and end.
     format!(
-        "{KOT_STYLE_MARK}{size:02}{weight}{}",
-        style.align.mark(rtl)
+        "{KOT_STYLE_MARK}{size:02}{weight}{}{}",
+        style.align.mark(rtl),
+        if strike { '1' } else { '0' }
     )
 }
 
@@ -1896,11 +1975,12 @@ pub fn append_bill_like(
     append_bill_field(out, fmt, field, text, rtl);
 }
 
-/// One line's type size, weight, and alignment, taken off the private-use prefix.
+/// One line's type size, weight, alignment, and optional strike, from the mark.
 struct KotLineStyle {
     size_em: u32,
     weight: KotFontWeight,
     align: KotAlign,
+    strike: bool,
 }
 
 /// Body text, alignment, and point size, for the on-screen slip preview.
@@ -1934,16 +2014,26 @@ fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
             'T' => KotFontWeight::Light,
             _ => KotFontWeight::Regular,
         };
-        let (align, skip) = if b.len() >= 4 && matches!(b[3] as char, 'S' | 'C' | 'E') {
+        let (align, mut skip) = if b.len() >= 4 && matches!(b[3] as char, 'S' | 'C' | 'E') {
             (KotAlign::from_mark(b[3] as char), 4)
         } else {
             (KotAlign::Start, 3)
+        };
+        // Trailing `0`/`1` = strike flag (current). Bare marks without a digit
+        // keep strike off and leave the body intact (`KOT - 12`).
+        let strike = if b.len() > skip && matches!(b[skip] as char, '0' | '1') {
+            let s = b[skip] as char == '1';
+            skip += 1;
+            s
+        } else {
+            false
         };
         return (
             Some(KotLineStyle {
                 size_em: size.clamp(KOT_EM_MIN, KOT_EM_MAX),
                 weight,
                 align,
+                strike,
             }),
             &rest[skip..],
         );
@@ -1964,6 +2054,7 @@ fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
                 size_em: size,
                 weight,
                 align: KotAlign::Start,
+                strike: false,
             }),
             &rest[2..],
         );
@@ -1972,17 +2063,44 @@ fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
 }
 
 /// Remove per-field style marks (Settings preview, plain expand).
+/// When a line was marked strike, approximate it with combining long-stroke
+/// overlays on the name (left of `\t`) so the on-screen preview shows the cue.
 pub fn strip_kot_style_marks(text: &str) -> String {
     let mut out = String::with_capacity(text.len());
     for line in text.split_inclusive('\n') {
-        if let Some(body) = line.strip_suffix('\n') {
-            let (_, bare) = take_kot_line_style(body);
-            out.push_str(bare);
-            out.push('\n');
+        let (chunk, nl) = match line.strip_suffix('\n') {
+            Some(body) => (body, true),
+            None => (line, false),
+        };
+        let (style, bare) = take_kot_line_style(chunk);
+        if style.map(|s| s.strike).unwrap_or(false) {
+            out.push_str(&strike_approx_text(bare));
         } else {
-            let (_, bare) = take_kot_line_style(line);
             out.push_str(bare);
         }
+        if nl {
+            out.push('\n');
+        }
+    }
+    out
+}
+
+/// Combining long stroke (U+0336) after each name character; qty after `\t` stays clear.
+fn strike_approx_text(line: &str) -> String {
+    let (name, qty) = match line.split_once('\t') {
+        Some((n, q)) => (n, Some(q)),
+        None => (line, None),
+    };
+    let mut out = String::with_capacity(name.len().saturating_mul(2));
+    for ch in name.chars() {
+        out.push(ch);
+        if !ch.is_whitespace() {
+            out.push('\u{0336}');
+        }
+    }
+    if let Some(q) = qty {
+        out.push('\t');
+        out.push_str(q);
     }
     out
 }
@@ -2003,6 +2121,36 @@ mod kot_slip_format_tests {
         assert_eq!(fmt.chars_per_line, KOT_CHARS_MAX);
         assert_eq!(fmt.em, KOT_EM_MIN);
         assert_eq!(fmt.footer, "Rush 100");
+    }
+
+    #[test]
+    fn cancelled_kind_defaults_prefix_banner_and_strike_mark() {
+        let raw = KotSlipFormat::default().render_sample_kind("Shop", KotSlipKind::Cancelled);
+        let text = strip_kot_style_marks(&raw);
+        assert!(
+            text.contains(KOT_BANNER_CANCELLED),
+            "cancelled banner:\n{text}"
+        );
+        // Prefix is on the raw body before combining-strike preview overlays.
+        assert!(
+            raw.contains("[CANCELLED]Butter Roti\t") || raw.contains("[CANCELLED] Butter Roti\t"),
+            "cancelled item prefix on raw slip:\n{raw}"
+        );
+        assert!(
+            raw.lines().any(|l| {
+                let (style, body) = take_kot_line_style(l);
+                style.map(|s| s.strike).unwrap_or(false) && body.contains('\t')
+            }),
+            "item lines carry strike:\n{raw}"
+        );
+        let modified_raw =
+            KotSlipFormat::default().render_sample_kind("Shop", KotSlipKind::Modified);
+        let modified = strip_kot_style_marks(&modified_raw);
+        assert!(modified.contains(KOT_BANNER_MODIFIED), "{modified}");
+        assert!(
+            modified_raw.contains("[NEW]Butter Roti\t") || modified_raw.contains("[NEW] Butter Roti\t"),
+            "{modified_raw}"
+        );
     }
 
     #[test]
@@ -2112,6 +2260,7 @@ mod kot_slip_format_tests {
                 em: 24.0,
                 weight: crate::receipt_raster::RasterWeight::Regular,
                 align,
+                strike: false,
             }];
             let (rows, height) = crate::receipt_raster::draw_lines(&lines, &page);
             let width = page.page_dots();
@@ -2300,12 +2449,12 @@ mod kot_slip_format_tests {
             items: &["Tea|1"],
         }));
         assert!(
-            text.lines().any(|l| l.trim() == "*** CANCEL - STOP THIS ITEM ***"),
+            text.lines().any(|l| l.trim() == KOT_BANNER_CANCELLED),
             "banner must stay one line on 80 mm:\n{text}"
         );
         // The ticket is drawn, not counted in characters. At the default
-        // bold title size the last *** falls off a 58 mm head and fits an 80 mm one.
-        let banner = "*** CANCEL - STOP THIS ITEM ***";
+        // bold title size a long cancel banner may clip on 58 mm and fit 80 mm.
+        let banner = KOT_BANNER_CANCELLED;
         let draw = |dots: usize| {
             let page = crate::receipt_raster::RasterMetrics {
                 em: KOT_EM_NORMAL as f32,
@@ -2319,12 +2468,20 @@ mod kot_slip_format_tests {
                 em: KOT_EM_NORMAL as f32,
                 weight: crate::receipt_raster::RasterWeight::Bold,
                 align: crate::receipt_raster::LineAlign::Start,
+                strike: false,
             }];
             crate::receipt_raster::draw_lines(&lines, &page).1
         };
         let pitch = ((KOT_EM_NORMAL as f32 * 1.45).round() as usize).clamp(16, 96);
-        assert!(draw(384) > pitch, "58 mm wraps the trailing asterisks");
-        assert_eq!(draw(576), pitch, "80 mm keeps the banner on one line");
+        let h58 = draw(384);
+        let h80 = draw(576);
+        // Long cancelled banner may wrap on a narrow head; 80 mm must not be taller.
+        assert!(h58 >= pitch, "58 mm draws the cancel banner:\n{banner}");
+        assert!(
+            h80 <= h58,
+            "80 mm must not need more rows than 58 mm ({h80} vs {h58})"
+        );
+        assert_eq!(h80, pitch, "80 mm keeps the cancel banner on one line");
     }
 
     #[test]
@@ -2443,7 +2600,15 @@ mod kot_slip_format_tests {
             cancelled.contains("KITCHEN FIRE"),
             "custom title must show on a cancelled slip:\n{cancelled}"
         );
-        assert!(cancelled.contains("*** CANCEL - STOP THIS ITEM ***"));
+        assert!(
+            cancelled.contains(KOT_BANNER_CANCELLED),
+            "cancelled kind banner:\n{cancelled}"
+        );
+        assert!(
+            cancelled.contains(KOT_PREFIX_CANCELLED.trim_end())
+                || cancelled.contains("[CANCELLED]"),
+            "cancelled item prefix:\n{cancelled}"
+        );
         let reprint = hidden.render(KotSlipContent {
             kind: KotSlipKind::Original,
             cancel: false,
@@ -2649,21 +2814,18 @@ pub fn expand_kot_column_tabs(text: &str, cols: usize) -> String {
 fn split_kot_style_prefix(line: &str) -> (String, &str) {
     let (style, body) = take_kot_line_style(line);
     match style {
-        Some(style) => {
-            let weight = match style.weight {
-                KotFontWeight::Bold => 'B',
-                KotFontWeight::Light => 'T',
-                KotFontWeight::Regular => 'R',
-            };
-            (
-                format!(
-                    "{KOT_STYLE_MARK}{:02}{weight}{}",
-                    style.size_em,
-                    style.align.mark(false)
-                ),
-                body,
-            )
-        }
+        Some(style) => (
+            kot_style_prefix_strike(
+                &KotFieldStyle {
+                    size_em: style.size_em,
+                    weight: style.weight,
+                    align: style.align,
+                },
+                false,
+                style.strike,
+            ),
+            body,
+        ),
         None => (String::new(), line),
     }
 }
@@ -4968,7 +5130,7 @@ pub fn styled_slip_lines(
         })
         .map(|line| {
             let (style, body) = take_kot_line_style(line);
-            let (em, weight, align) = match style {
+            let (em, weight, align, strike) = match style {
                 Some(style) => (
                     style.size_em as f32,
                     match style.weight {
@@ -4981,11 +5143,13 @@ pub fn styled_slip_lines(
                         KotAlign::End => crate::receipt_raster::LineAlign::End,
                         KotAlign::Start => crate::receipt_raster::LineAlign::Start,
                     },
+                    style.strike,
                 ),
                 None => (
                     default.em,
                     crate::receipt_raster::RasterWeight::Regular,
                     crate::receipt_raster::LineAlign::Start,
+                    false,
                 ),
             };
             crate::receipt_raster::StyledLine {
@@ -4993,6 +5157,7 @@ pub fn styled_slip_lines(
                 em,
                 weight,
                 align,
+                strike,
             }
         })
         .collect()

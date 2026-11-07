@@ -98,6 +98,8 @@ pub struct StyledLine {
     pub em: f32,
     pub weight: RasterWeight,
     pub align: LineAlign,
+    /// Strike through the name (left of `\t`); qty column stays clear.
+    pub strike: bool,
 }
 
 /// How the slip is drawn: Standard (bills) vs KOT (kitchen tickets).
@@ -392,6 +394,9 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         baseline: f32,
         /// 0 for text. A separator is one solid line, not a row of hyphen glyphs.
         rule_px: usize,
+        /// Strike through names only; `None` = no strike. Value is content-x
+        /// end (dots from left of page content) before the qty column.
+        strike_end: Option<f32>,
     }
     let mut rows: Vec<Row> = Vec::new();
     for line in lines {
@@ -410,6 +415,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
                 pitch: rule_px + gap,
                 baseline: rule_px as f32,
                 rule_px,
+                strike_end: None,
             });
             continue;
         }
@@ -422,8 +428,13 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             side,
             width_dots: width,
         };
+        let strike_end = if line.strike {
+            Some(strike_name_end_x(&faces, &line.text, room, &m, side))
+        } else {
+            None
+        };
         let wrapped = wrap_aligned(&faces, &line.text, room, &m, line.align);
-        for glyphs in wrapped {
+        for (i, glyphs) in wrapped.into_iter().enumerate() {
             rows.push(Row {
                 glyphs,
                 em,
@@ -431,6 +442,8 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
                 pitch,
                 baseline,
                 rule_px: 0,
+                // Strike every wrapped name row; qty lives only on row 0.
+                strike_end: if i == 0 { strike_end } else { strike_end },
             });
         }
     }
@@ -466,6 +479,10 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             if row.weight == RasterWeight::Bold {
                 stamp(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.85);
             }
+        }
+        if let Some(end_x) = row.strike_end {
+            let mid_y = (baseline - row.em * 0.28).round().max(0.0) as usize;
+            paint_strike_line(&mut dots, width, mid_y, side, end_x, row.em);
         }
         y += row.pitch;
     }
@@ -658,6 +675,53 @@ fn shift_glyphs(glyphs: &mut [Placed], width: f32, room: f32, align: LineAlign) 
     if dx > 0.25 {
         for g in glyphs {
             g.x += dx;
+        }
+    }
+}
+
+/// Content-x where a name strike should end: before the qty column when `\t`
+/// is present, otherwise the drawn name width.
+fn strike_name_end_x(
+    faces: &[Face],
+    line: &str,
+    room: f32,
+    m: &RasterMetrics,
+    side: f32,
+) -> f32 {
+    if let Some((left, right)) = line.split_once('\t') {
+        let right_w = layout(faces, right.trim(), m).1;
+        let gap = (m.em * 0.35).max(4.0);
+        let name_room = (room - right_w - gap).max(m.em * 2.0);
+        let name_w = layout(faces, left.trim_end(), m).1.min(name_room);
+        return side + name_w;
+    }
+    let name_w = layout(faces, line, m).1.min(room);
+    side + name_w
+}
+
+/// Horizontal strike through dish names (qty stays clear).
+fn paint_strike_line(
+    dots: &mut [bool],
+    width: usize,
+    y: usize,
+    side: f32,
+    end_x: f32,
+    em: f32,
+) {
+    let thickness = ((em * 0.08).round() as usize).clamp(1, 3);
+    let x0 = side.round().max(0.0) as usize;
+    let x1 = end_x.round().clamp(0.0, width as f32) as usize;
+    if x1 <= x0 || y >= dots.len() / width.max(1) {
+        return;
+    }
+    for dy in 0..thickness {
+        let row = y + dy;
+        if row >= dots.len() / width.max(1) {
+            break;
+        }
+        let base = row * width;
+        for x in x0..x1.min(width) {
+            dots[base + x] = true;
         }
     }
 }
@@ -950,6 +1014,7 @@ mod tests {
             em: 20.0,
             weight: RasterWeight::Regular,
             align: LineAlign::Start,
+            strike: false,
         }];
         let metrics = |dots: usize| RasterMetrics {
             em: 20.0,
@@ -1176,6 +1241,7 @@ mod tests {
                 em: 30.0,
                 weight: RasterWeight::Bold,
                 align: LineAlign::Start,
+                strike: false,
             }];
             let (rows, height) = draw_lines(&lines, &page);
             ink_rows(&rows, page.page_dots(), height)
@@ -1203,6 +1269,7 @@ mod tests {
             em: 30.0,
             weight: RasterWeight::Regular,
             align: LineAlign::Start,
+            strike: false,
         }];
         let (rows, height) = draw_lines(&lines, &page);
         let width = page.page_dots();

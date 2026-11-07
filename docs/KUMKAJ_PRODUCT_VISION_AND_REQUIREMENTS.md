@@ -450,7 +450,11 @@ orders can move from counter/waiter to preparation without relying
 entirely on paper.
 
 Kitchen users should see the information needed to prepare the order
-rather than unnecessary financial information.
+rather than unnecessary financial information. Printed KOTs are part of
+**controlled printing** (§12): original / duplicate / modified /
+cancelled kinds, owner-editable banners and item cues (prefix, strike),
+per-item cancel slips, and batch print of cancelled dishes when the floor
+needs a single kitchen list.
 
 Typical states may include concepts such as:
 
@@ -519,22 +523,31 @@ adjustments (settlements, write-offs) must be equally explicit.
 
 ## 12. Receipts and Printing
 
-Receipts are part of the real-world POS workflow.
+Receipts and kitchen tickets are part of the real-world POS workflow.
+**Controlled printing** is a required brand capability across Kumkaj
+products — not an afterthought driver dialog.
 
-The initial strategy discussed is:
+Each concrete app owns its print paths, but the bar is the same:
 
--   support a known/tested thermal printer path;
--   provide normal system printing/PDF fallback;
--   use a controlled branded receipt/invoice layout;
--   expand hardware-specific integrations progressively.
+-   owner-controlled layout for money documents and (where the trade uses
+    them) kitchen slips — field show/order, type size, weight, alignment,
+    content width, copies, and how the job is sent;
+-   known thermal path (ESC/POS / raster with bundled fonts) plus OS
+    document / system spooler fallback;
+-   branded, durable slips: bills without silent corruption; kitchen KOTs
+    without prices; cancel / modify / duplicate / reprint kinds with
+    editable banners, optional item-name prefixes, and optional
+    strike-through on cancelled dish names;
+-   per-item cancel print and batch “print all cancelled” where the floor
+    needs both;
+-   expand hardware-specific integrations progressively without blocking
+    the first usable product.
 
 Hardware already considered for the local POS environment includes an
 **80 mm thermal receipt printer** (Rugtek RP-82 Compact UE, USB +
-Ethernet) and 80 mm thermal paper.
-
-Native raw ESC/POS support, cash-drawer integration and broader hardware
-support can be added after the core workflow is stable rather than
-blocking the first usable product.
+Ethernet) and 80 mm thermal paper. Native raw ESC/POS, cash-drawer
+integration, and broader device support continue after the controlled
+layout and routes are solid.
 
 ------------------------------------------------------------------------
 

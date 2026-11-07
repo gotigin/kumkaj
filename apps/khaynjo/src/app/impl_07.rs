@@ -68,6 +68,90 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
+    /// One cancel-kind slip per kitchen listing **every** cancelled dish on
+    /// the open order. Keeps per-item cancel print; this is the batch path.
+    fn print_all_cancelled_kots(&mut self, cx: &mut Cx) -> Result<String, String> {
+        let _ = cx;
+        let st = app_state().lock().unwrap();
+        let Some(session) = st.session.as_ref() else {
+            return Err("Unlock first".into());
+        };
+        let table_id = st
+            .selected_table_id
+            .clone()
+            .ok_or_else(|| st.t("print_cancelled_kot_needed"))?;
+        let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let order = store
+            .running_order(&table_id)?
+            .ok_or_else(|| st.t("print_cancelled_kot_needed"))?;
+        let cancelled = store.cancelled_kot_lines(&order.id)?;
+        if cancelled.is_empty() {
+            return Err(st.t("print_cancelled_kot_none"));
+        }
+        let feats = session.effective_features();
+        for (sid, _, _, _) in &cancelled {
+            if !sid.is_empty() && !feats.allows_kot_station(sid) {
+                let name = st
+                    .stations
+                    .iter()
+                    .find(|s| s.id == *sid)
+                    .map(|s| s.name.as_str())
+                    .unwrap_or(sid.as_str());
+                return Err(st
+                    .t("kot_station_not_allowed")
+                    .replace("{station}", name));
+            }
+        }
+        let order_id = order.id.clone();
+        let place = st
+            .tables
+            .iter()
+            .find(|t| t.id == table_id)
+            .map(|t| t.name.clone())
+            .unwrap_or_else(|| "table".into());
+        let dish_n = cancelled.len();
+        let on_client = st.device_role == DeviceRole::Client
+            || st
+                .store
+                .as_ref()
+                .map(|s| s.is_client_cache_path())
+                .unwrap_or(false);
+        if on_client {
+            let _job = st.lan_job(
+                "/kot_cancelled_print",
+                &serde_json::json!({ "order_id": order_id }),
+                format!("Print cancelled for {place}"),
+                st.t("print_cancelled_kot_client")
+                    .replace("{n}", &dish_n.to_string())
+                    .replace("{place}", &place),
+                phone::Follow::Refresh,
+                true,
+            )?;
+            return Ok(st
+                .t("print_cancelled_kot_client")
+                .replace("{n}", &dish_n.to_string())
+                .replace("{place}", &place));
+        }
+        let actor = st.actor()?;
+        let (dish_n, ok, kitchen_names, errors) =
+            net::print_cancelled_kots(store, &actor, &order_id)?;
+        let kitchens = if kitchen_names.is_empty() {
+            st.t("kitchen")
+        } else {
+            kitchen_names.join(" · ")
+        };
+        let mut msg = st
+            .t("print_cancelled_kot_ok")
+            .replace("{n}", &dish_n.to_string())
+            .replace("{slips}", &ok.to_string())
+            .replace("{kitchens}", &kitchens);
+        if !errors.is_empty() {
+            msg.push_str(" · ");
+            msg.push_str(&errors.join("; "));
+        }
+        Ok(msg)
+    }
+
     /// Recovery print: kitchen slips for **included** sent lines only
     /// (include/exclude on the ticket). Not a new Send — paper only.
     /// Person `kot_stations` gates which kitchens may reprint; Client/Server

@@ -1214,6 +1214,65 @@ impl Store {
         Ok(kot_id)
     }
 
+    /// Cancelled dishes still on this open order (kept for audit; not on the bill).
+    /// Each row: `(station_id, name|qty line, table_id, area_label)`.
+    pub fn cancelled_kot_lines(
+        &self,
+        order_id: &str,
+    ) -> Result<Vec<(String, String, String, String)>, String> {
+        let oid = order_id.trim();
+        if oid.is_empty() {
+            return Ok(Vec::new());
+        }
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT l.name, l.qty_milli, l.unit_label, l.note,
+                        COALESCE(k.station_id, ''), COALESCE(o.table_id, ''),
+                        COALESCE(t.area, '')
+                   FROM running_lines l
+                   JOIN running_orders o ON o.id = l.order_id
+                   LEFT JOIN kot_tickets k ON k.id = l.kot_id
+                   LEFT JOIN tables_dining t ON t.id = o.table_id
+                  WHERE l.order_id = ?1 AND l.cancelled = 1
+                  ORDER BY l.seq, l.created_at",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![oid], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    r.get::<_, i64>(1)?,
+                    r.get::<_, String>(2)?,
+                    r.get::<_, String>(3)?,
+                    r.get::<_, String>(4)?,
+                    r.get::<_, String>(5)?,
+                    r.get::<_, String>(6)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut out = Vec::new();
+        for row in rows {
+            let (name, qty_milli, unit_label, note, station_id, table_id, area) =
+                row.map_err(|e| e.to_string())?;
+            let qty = crate::domain::format_kot_qty(
+                qty_milli,
+                crate::domain::milli_to_whole_qty(qty_milli),
+                &unit_label,
+            );
+            let labeled = if note.is_empty()
+                || note.starts_with("combo:")
+                || note.starts_with("Scheme:")
+            {
+                format!("{name}|{qty}")
+            } else {
+                format!("{name} ({note})|{qty}")
+            };
+            out.push((station_id, labeled, table_id, area));
+        }
+        Ok(out)
+    }
+
     /// Give a sent line free (NC) or charge it again. Kept at its real item,
     /// quantity and value so reports show what was given away.
     pub fn set_running_line_complimentary(

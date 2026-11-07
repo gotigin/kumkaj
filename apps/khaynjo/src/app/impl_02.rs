@@ -1783,6 +1783,32 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                     base
                 }
             };
+            let (show_cancelled_print, cancelled_label) = {
+                let mut show = false;
+                let mut n = 0usize;
+                if let (Some(tid), Some(store)) = (st.selected_table_id.as_ref(), st.store.as_ref())
+                {
+                    if let Ok(Some(order)) = store.running_order(tid) {
+                        if let Ok(lines) = store.cancelled_kot_lines(&order.id) {
+                            n = lines.len();
+                            show = n > 0
+                                && st.session.as_ref().map(|s| {
+                                    let feats = s.effective_features();
+                                    lines.iter().any(|(sid, _, _, _)| {
+                                        sid.is_empty() || feats.allows_kot_station(sid)
+                                    })
+                                }).unwrap_or(false);
+                        }
+                    }
+                }
+                let base = st.t("print_cancelled_kot");
+                let label = if n > 0 {
+                    format!("{base} ({n})")
+                } else {
+                    base
+                };
+                (show, label)
+            };
             drop(st);
             self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
             self.ui
@@ -1791,6 +1817,12 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
                 .set_text(cx, &reprint_label);
+            self.ui
+                .button(cx, ids!(print_cancelled_kot_btn))
+                .set_visible(cx, show_cancelled_print);
+            self.ui
+                .button(cx, ids!(print_cancelled_kot_btn))
+                .set_text(cx, &cancelled_label);
             {
                 let help = self.ui.widget(cx, ids!(kot_dest_help)).as_info_help();
                 let st = app_state().lock().unwrap();

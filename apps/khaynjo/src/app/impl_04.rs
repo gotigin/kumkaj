@@ -2661,6 +2661,50 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(kot_kind_cancelled_on),
             edit_kind == print_share::KotSlipKind::Cancelled,
         );
+        let kind_chrome = draft.kind_styles.get(edit_kind);
+        self.ui
+            .widget(cx, ids!(h_kot_banner))
+            .set_text(cx, &plain_display_text(&s("kot_banner")));
+        self.ui
+            .widget(cx, ids!(h_kot_item_prefix))
+            .set_text(cx, &plain_display_text(&s("kot_item_prefix")));
+        self.ui
+            .widget(cx, ids!(h_kot_strike))
+            .set_text(cx, &plain_display_text(&s("kot_strike")));
+        self.ui
+            .text_input(cx, ids!(kot_banner_input))
+            .set_empty_text(cx, s("kot_banner_ph"));
+        self.ui
+            .text_input(cx, ids!(kot_item_prefix_input))
+            .set_empty_text(cx, s("kot_item_prefix_ph"));
+        let banner_field = self.ui.text_input(cx, ids!(kot_banner_input));
+        if !cx.has_key_focus(banner_field.area()) {
+            banner_field.set_text(cx, &kind_chrome.banner);
+        }
+        let prefix_field = self.ui.text_input(cx, ids!(kot_item_prefix_input));
+        if !cx.has_key_focus(prefix_field.area()) {
+            prefix_field.set_text(cx, &kind_chrome.item_prefix);
+        }
+        for (idle, active, label) in [
+            (ids!(kot_strike_on), ids!(kot_strike_on_on), "kot_strike_on"),
+            (ids!(kot_strike_off), ids!(kot_strike_off_on), "kot_strike_off"),
+        ] {
+            let t = s(label);
+            self.ui.button(cx, idle).set_text(cx, &t);
+            self.ui.button(cx, active).set_text(cx, &t);
+        }
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_strike_on),
+            ids!(kot_strike_on_on),
+            kind_chrome.strike_items,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_strike_off),
+            ids!(kot_strike_off_on),
+            !kind_chrome.strike_items,
+        );
         self.paint_choice_pair(cx, ids!(kot_field_show), ids!(kot_field_show_on), shown);
         self.paint_choice_pair(cx, ids!(kot_field_hide), ids!(kot_field_hide_on), !shown);
         self.paint_choice_pair(

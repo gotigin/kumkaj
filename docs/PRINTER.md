@@ -76,8 +76,18 @@ width, layout, and delivery are the Bill format used when the job is sent.
   Regular / Bold), and alignment (Start / Center / End, following the
   writing direction). Fields: shop, time, staff, station, table, KOT number,
   area, item and qty, title.
-- A kind for each ticket, with its own field styles and banner: **Original**,
-  **Duplicate**, **Modified**, **Cancelled**.
+- A kind for each ticket, with its own field styles and chrome: **Original**,
+  **Duplicate**, **Modified**, **Cancelled**. Per kind the owner sets:
+  - **Kind banner** (editable; product defaults include
+    `PARTIALLY SHIFTED/CANCELLED` and `MODIFIED/UPDATED KOT`).
+  - **Item prefix** on dish names (defaults `[CANCELLED] ` / `[NEW] `; blank =
+    plain name). Qty stays unprefixed.
+  - **Strike item names** (on by default for Cancelled; qty column stays clear).
+    Raster / OS-document jobs draw a real strike; plain preview approximates it.
+- Per-item cancel still prints one cancel slip when a sent line is cancelled.
+  **Print all cancelled** on the Order ticket prints one cancel-kind slip per
+  kitchen listing every cancelled dish still on that open order (additive —
+  does not replace per-item cancel).
 - Title and footer text. A custom title shows in the preview and on the
   slip, including a cancelled ticket. The preview is a kitchen slip, not a
   money report.
@@ -85,7 +95,7 @@ width, layout, and delivery are the Bill format used when the job is sent.
   The slip does not say Waiter.
 - Item and Qty share one row. The qty column is the count (`1`, or
   `1.25 kg` when the dish has a unit). Do not prefix or suffix the dish
-  name with `x1` or `x1×`.
+  name with `x1` or `x1×` for quantity — kind item prefixes are separate.
 - Start, Center, and End are shifts across the content width in dots, not
   spaces padded in front of the line. A rule of dashes is drawn out to that
   same content edge. A wider content width lengthens the rule and moves

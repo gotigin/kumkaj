@@ -1319,6 +1319,117 @@ pub fn reprint_selected_kots(
     Ok((dish_n, ok, kitchen_names, errors))
 }
 
+/// One cancel-kind slip per kitchen with **every** cancelled dish still on
+/// this open order. Keeps per-item cancel print; this is the batch recovery
+/// / “all cancelled at once” path. Gated by `kot_stations` like reprint.
+pub fn print_cancelled_kots(
+    store: &Store,
+    actor: &StaffMember,
+    order_id: &str,
+) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
+    let lines = store.cancelled_kot_lines(order_id)?;
+    if lines.is_empty() {
+        return Err("No cancelled dishes on this order".into());
+    }
+    let feats = actor.effective_features();
+    let stations = store.list_stations().unwrap_or_default();
+    let by = actor.name.clone();
+    let unassigned = "Kitchen";
+    let mut table_id = String::new();
+    let mut area_label = String::new();
+    let mut groups: Vec<(String, String, Vec<String>)> = Vec::new();
+    for (station_id, item, tid, area) in &lines {
+        if table_id.is_empty() && !tid.is_empty() {
+            table_id = tid.clone();
+        }
+        if area_label.is_empty() && !area.is_empty() {
+            area_label = area.clone();
+        }
+        let name = if station_id.is_empty() {
+            unassigned.to_string()
+        } else {
+            stations
+                .iter()
+                .find(|s| s.id == *station_id)
+                .map(|s| s.name.clone())
+                .unwrap_or_else(|| unassigned.to_string())
+        };
+        if !station_id.is_empty() && !feats.allows_kot_station(station_id) {
+            return Err(format!("Not allowed to print kitchen: {name}"));
+        }
+        match groups.iter_mut().find(|(id, _, _)| id == station_id) {
+            Some((_, _, items)) => items.push(item.clone()),
+            None => groups.push((station_id.clone(), name, vec![item.clone()])),
+        }
+    }
+    let table_label = if table_id.is_empty() {
+        String::new()
+    } else {
+        store.table_label(&table_id).unwrap_or_default()
+    };
+    let now = store
+        .fiscal_settings()
+        .map(|f| f.format_now())
+        .unwrap_or_else(|_| chrono::Local::now().format("%d/%m/%Y %H:%M").to_string());
+    let shop = store.venue_title().unwrap_or_default();
+    let fmt = store.kot_slip_format().unwrap_or_default();
+    let copies = fmt.copies.max(1);
+    let mut ok = 0usize;
+    let mut errors: Vec<String> = Vec::new();
+    let mut kitchen_names: Vec<String> = Vec::new();
+    let dish_n = lines.len();
+    for (station_id, station_name, item_lines) in &groups {
+        let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
+        let text = fmt.render(crate::print_share::KotSlipContent {
+            kind: crate::print_share::KotSlipKind::Cancelled,
+            cancel: true,
+            reprint: false,
+            shop_name: &shop,
+            kot_no: 0,
+            kot_nos_label: None,
+            when: &now,
+            created_by: &by,
+            table_label: &table_label,
+            station_name: station_name.as_str(),
+            area_label: &area_label,
+            items: &item_refs,
+        });
+        let mut printed = false;
+        let mut last_err: Option<String> = None;
+        match crate::print_share::print_route_copies(
+            crate::print_share::PrintKind::Kot,
+            crate::print_share::RouteKey::Kot {
+                station_id: station_id.as_str(),
+            },
+            &text,
+            store.db_path().parent(),
+            copies.max(1),
+        ) {
+            Ok(share) if share.opened => printed = true,
+            Ok(_) => {
+                last_err = Some(format!(
+                    "{station_name}: no printer — Settings → Printers"
+                ));
+            }
+            Err(e) => last_err = Some(format!("{station_name}: {e}")),
+        }
+        if printed {
+            ok += 1;
+            kitchen_names.push(station_name.clone());
+        } else if let Some(e) = last_err {
+            errors.push(e);
+        }
+    }
+    if ok == 0 {
+        return Err(if errors.is_empty() {
+            "No cancelled dishes on this order".into()
+        } else {
+            errors.join("; ")
+        });
+    }
+    Ok((dish_n, ok, kitchen_names, errors))
+}
+
 /// Print just-sent KOTs at this (Server) device when the shop prints KOTs
 /// automatically. Counter and waiter KOTs both come through here. Returns
 /// a problem summary if any ticket failed (the KOTs are sent either way).
@@ -2043,6 +2154,23 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let req: RemoteKotReprintRequest =
                 serde_json::from_str(body).map_err(|e| format!("kot reprint json: {e}"))?;
             let (dishes, slips, kitchens, errors) = reprint_selected_kots(store, actor, &req)?;
+            Ok(Reply::json(serde_json::json!({
+                "ok": true,
+                "dishes": dishes,
+                "slips": slips,
+                "kitchens": kitchens,
+                "errors": errors,
+            })))
+        }
+        "/kot_cancelled_print" => {
+            #[derive(serde::Deserialize)]
+            struct Req {
+                order_id: String,
+            }
+            let req: Req =
+                serde_json::from_str(body).map_err(|e| format!("kot cancelled json: {e}"))?;
+            let (dishes, slips, kitchens, errors) =
+                print_cancelled_kots(store, actor, &req.order_id)?;
             Ok(Reply::json(serde_json::json!({
                 "ok": true,
                 "dishes": dishes,

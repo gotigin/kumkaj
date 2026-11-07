@@ -3204,6 +3204,17 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self
+            .ui
+            .button(cx, ids!(print_cancelled_kot_btn))
+            .clicked(actions)
+        {
+            match self.print_all_cancelled_kots(cx) {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(send_kot_btn)).clicked(actions) {
             // After a KOT is sent, the face reads "Add dishes for next KOT".
             // That must open the menu — never re-run Send with nothing new
@@ -6123,6 +6134,44 @@ impl MatchEvent for App {
                     slip_changed = true;
                 }
             }
+            if let Some(banner_now) =
+                self.ui.text_input(cx, ids!(kot_banner_input)).changed(actions)
+            {
+                let mut st = app_state().lock().unwrap();
+                let kind = st.kot_edit_kind;
+                let styles = st.kot_slip_draft.kind_styles.get_mut(kind);
+                if styles.banner != banner_now {
+                    styles.banner = banner_now;
+                    slip_changed = true;
+                }
+            }
+            if let Some(prefix_now) = self
+                .ui
+                .text_input(cx, ids!(kot_item_prefix_input))
+                .changed(actions)
+            {
+                let mut st = app_state().lock().unwrap();
+                let kind = st.kot_edit_kind;
+                let styles = st.kot_slip_draft.kind_styles.get_mut(kind);
+                if styles.item_prefix != prefix_now {
+                    styles.item_prefix = prefix_now;
+                    slip_changed = true;
+                }
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_strike_on), ids!(kot_strike_on_on))
+            {
+                let mut st = app_state().lock().unwrap();
+                let kind = st.kot_edit_kind;
+                st.kot_slip_draft.kind_styles.get_mut(kind).strike_items = true;
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(cx, actions, ids!(kot_strike_off), ids!(kot_strike_off_on))
+            {
+                let mut st = app_state().lock().unwrap();
+                let kind = st.kot_edit_kind;
+                st.kot_slip_draft.kind_styles.get_mut(kind).strike_items = false;
+                slip_changed = true;
+            }
             if self.ui.button(cx, ids!(kot_apply_all)).clicked(actions) {
                 // The open field's show, size, weight, and align land on
                 // every other field of this KOT kind.
@@ -6154,11 +6203,19 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(kot_format_save)).clicked(actions) {
             let title = self.ui.text_input(cx, ids!(kot_title_input)).text();
             let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
+            let banner = self.ui.text_input(cx, ids!(kot_banner_input)).text();
+            let item_prefix = self.ui.text_input(cx, ids!(kot_item_prefix_input)).text();
             let size_now = self.ui.text_input(cx, ids!(kot_field_size_input)).text();
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 st.kot_slip_draft.title = title;
                 st.kot_slip_draft.footer = footer;
+                {
+                    let kind = st.kot_edit_kind;
+                    let styles = st.kot_slip_draft.kind_styles.get_mut(kind);
+                    styles.banner = banner;
+                    styles.item_prefix = item_prefix;
+                }
                 if let Ok(raw) = size_now.trim().parse::<u32>() {
                     let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
                     let kind = st.kot_edit_kind;

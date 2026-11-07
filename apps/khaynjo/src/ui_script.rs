@@ -6228,6 +6228,7 @@ script_mod! {
                                                 kot_set_station := StackLightBtn{text: "Use this station" visible: false}
                                                 send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
                                                 reprint_kot_btn := StackLightBtn{text: "Print selected again" visible: false}
+                                                print_cancelled_kot_btn := StackLightBtn{text: "Print all cancelled" visible: false}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
                                             }
                                         }
@@ -9460,6 +9461,35 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     View{width: Fill height: Fit flow: Overlay
                                         kot_kind_cancelled := SegBtn{text: "Cancelled"}
                                         kot_kind_cancelled_on := SegBtnOn{text: "Cancelled" visible: false}
+                                    }
+                                }
+                                h_kot_banner := WrapLabel{
+                                    body: "Kind banner"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                kot_banner_input := FieldInput{empty_text: "Banner (blank = none)"}
+                                h_kot_item_prefix := WrapLabel{
+                                    body: "Item prefix"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                kot_item_prefix_input := FieldInput{empty_text: "e.g. [CANCELLED] "}
+                                h_kot_strike := WrapLabel{
+                                    body: "Strike item names"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_strike_on := SegBtn{text: "On"}
+                                        kot_strike_on_on := SegBtnOn{text: "On" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_strike_off := SegBtn{text: "Off"}
+                                        kot_strike_off_on := SegBtnOn{text: "Off" visible: false}
                                     }
                                 }
                                 // One place per field: pick field → show + font size + weight.
