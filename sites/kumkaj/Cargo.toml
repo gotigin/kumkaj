@@ -1,0 +1,9 @@
+[package]
+name = "kumkaj-site"
+version = "0.1.0"
+edition = "2024"
+description = "kumkaj.com — Makepad 2 brand website (fullpage wasm / native)"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+makepad-widgets = { path = "../../vendor/makepad/widgets" }

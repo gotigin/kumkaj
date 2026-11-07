@@ -1894,7 +1894,10 @@ impl Store {
         if order.status == RunningOrderStatus::Printed {
             self.check_right(actor, Right::Reprint, approval_pin)?;
         }
-        let text = self.format_running_bill_text(&order)?;
+        // Cashier on the slip = who is issuing this bill document (the
+        // unlocked staff pressing Print). Not every line's punch author —
+        // the full story stays in the books; one name on paper.
+        let text = self.format_running_bill_text(&order, actor.name.trim())?;
         self.conn
             .execute(
                 "UPDATE running_orders SET status = 'printed', printed_at = ?2 WHERE id = ?1",
@@ -1918,7 +1921,14 @@ impl Store {
     /// The guest's bill for an open order: live lines, NC shown at ₹0 with
     /// its value, totals with the shop's tax wording. Cancelled lines are
     /// not on the guest's bill (they are on the order and in reports).
-    pub fn format_running_bill_text(&self, order: &RunningOrder) -> Result<String, String> {
+    ///
+    /// `cashier_name` is the single staff name on the slip (Cashier: …) —
+    /// the person issuing this bill, not the full punch history.
+    pub fn format_running_bill_text(
+        &self,
+        order: &RunningOrder,
+        cashier_name: &str,
+    ) -> Result<String, String> {
         let fiscal = self.fiscal_settings()?;
         let currency = self.locale_settings()?.currency;
         let money = |p: i64| Money(p).format_localized(&currency, &fiscal);
@@ -1980,18 +1990,17 @@ impl Store {
             &place,
             rtl,
         );
-        let cashier = order
-            .live_lines()
-            .find(|l| !l.created_by.trim().is_empty())
-            .map(|l| l.created_by.as_str())
-            .unwrap_or("");
         crate::print_share::append_bill_field(
             &mut out,
             &fmt,
             crate::print_share::BillStyleField::Cashier,
             &format!(
                 "Cashier: {}",
-                if cashier.is_empty() { "—" } else { cashier }
+                if cashier_name.is_empty() {
+                    "—"
+                } else {
+                    cashier_name
+                }
             ),
             rtl,
         );
@@ -2247,7 +2256,11 @@ impl Store {
             .join(" | ");
         fmt.header = header;
         fmt.fssai = self.fssai_no()?;
-        fmt.footer = self.bill_footer()?;
+        // Keep product default footer ("Thanks") when the shop has not set one.
+        let meta_footer = self.bill_footer()?;
+        if !meta_footer.trim().is_empty() {
+            fmt.footer = meta_footer;
+        }
         fmt.upi_vpa = self.upi_vpa()?;
         fmt.upi_payee = self.upi_payee()?;
         Ok(fmt.clamped())
@@ -2266,6 +2279,19 @@ impl Store {
             Some(&fmt.upi_payee),
         )?;
         self.meta_set("bill_slip_format", &fmt.to_json())?;
+        // Sync bill wrap onto Standard formats only — KOT keeps its own width.
+        if let Some(base) = self.path.parent() {
+            let mut printers = crate::print_share::load_device_printers(base);
+            printers.set_bill_content_line(crate::print_share::wrap_cols_for_paper_mm(
+                fmt.shown_content_width_mm(),
+            ));
+            for f in printers.formats.iter_mut() {
+                if crate::print_share::is_standard_document(&f.id) {
+                    fmt.apply_to_print_format(f);
+                }
+            }
+            crate::print_share::save_device_printers(base, &printers)?;
+        }
         Ok(())
     }
 
@@ -2634,7 +2660,10 @@ mod tests {
             5000
         );
         let text = crate::print_share::strip_kot_style_marks(
-            &shop.store.format_running_bill_text(&order).unwrap(),
+            &shop
+                .store
+                .format_running_bill_text(&order, &shop.cashier.name)
+                .unwrap(),
         );
         assert!(
             text.contains("Item\tQty.\tPrice\tAmount"),

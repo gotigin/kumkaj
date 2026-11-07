@@ -1,0 +1,35 @@
+--- a/platform/src/os/web/web.rs	2026-11-07 20:30:58.762474671 +0530
++++ b/platform/src/os/web/web.rs	2026-11-07 20:30:58.763320214 +0530
+@@ -122,19 +122,23 @@
+                     );
+                     self.os_type = tw.browser_info.into();
+                     self.xr_capabilities = tw.xr_capabilities.into();
+-                    let id_zero = CxWindowPool::id_zero();
++                    // Window 0 is created by Event::Startup (app Root Window).
++                    // Apply geom after Startup — indexing the empty pool first
++                    // panics (IdPool bounds check) and leaves the canvas on Loading.
+                     let mut new_geom: WindowGeom = tw.window_info.into();
+-                    {
+-                        let window = &mut self.windows[id_zero];
+-                        window.os_dpi_factor = Some(new_geom.dpi_factor);
+-                        new_geom = window.native_window_geom_to_layout(new_geom);
+-                    }
+                     self.os.window_geom = new_geom.clone();
+-                    self.windows[id_zero].window_geom = new_geom;
+-                    //self.default_inner_window_size = self.os.window_geom.inner_size;
+-
+                     self.set_physical_keyboard_state(true);
+                     self.call_event_handler(&Event::Startup);
++                    if self.windows.len() > 0 {
++                        let id_zero = CxWindowPool::id_zero();
++                        {
++                            let window = &mut self.windows[id_zero];
++                            window.os_dpi_factor = Some(new_geom.dpi_factor);
++                            new_geom = window.native_window_geom_to_layout(new_geom);
++                            window.window_geom = new_geom.clone();
++                        }
++                        self.os.window_geom = new_geom;
++                    }
+                     self.redraw_all();
+                     //self.platform.from_wasm(FromWasmCreateThread{thread_id:1});
+                 }

@@ -1,0 +1,239 @@
+--- a/widgets/src/slides_view.rs	2026-11-07 20:30:58.752936509 +0530
++++ b/widgets/src/slides_view.rs	2026-11-07 20:30:58.753781451 +0530
+@@ -1,4 +1,7 @@
+-use crate::{makepad_derive_widget::*, makepad_draw::*, widget::*, widget_tree::CxWidgetExt};
++use crate::{
++    event::ScrollPhase, makepad_derive_widget::*, makepad_draw::*, scroll_bar::ScrollAxis,
++    widget::*, widget_tree::CxWidgetExt,
++};
+ 
+ script_mod! {
+     use mod.prelude.widgets_internal.*
+@@ -8,6 +11,8 @@
+ 
+     mod.widgets.SlidesView = set_type_default() do mod.widgets.SlidesViewBase{
+         anim_speed: 0.9
++        // Horizontal = deck / presenter. Vertical = story pages (swipe up).
++        axis: Horizontal
+     }
+ 
+     mod.widgets.Slide = mod.widgets.RoundedView{
+@@ -91,6 +96,12 @@
+     goal_slide: f64,
+     #[live]
+     anim_speed: f64,
++    /// `Horizontal` slides left/right; `Vertical` slides bottom→up (story pages).
++    #[live(ScrollAxis::Horizontal)]
++    axis: ScrollAxis,
++    /// Accumulates wheel / trackpad deltas until a chapter flip threshold.
++    #[rust]
++    wheel_accum: f64,
+     #[rust]
+     draw_state: DrawStateWrap<DrawState>,
+     #[rust]
+@@ -211,6 +222,13 @@
+                     self.current_slide = self.current_slide.round();
+                 }
+             }
++            // Claim the wheel so the browser / ancestors don't also scroll.
++            Event::Scroll(e) if self.area.clipped_rect(cx).contains(e.abs) => {
++                match self.axis {
++                    ScrollAxis::Horizontal => e.handled_x.set(true),
++                    ScrollAxis::Vertical => e.handled_y.set(true),
++                }
++            }
+             _ => (),
+         }
+ 
+@@ -229,8 +247,11 @@
+             }
+         }
+         match event.hits(cx, self.area) {
++            // Presentation clickers send PageDown / PageUp; Space is "next"
++            // in every slide tool, so it is here too.
+             Hit::KeyDown(KeyEvent {
+-                key_code: KeyCode::ArrowRight,
++                key_code:
++                    KeyCode::ArrowRight | KeyCode::ArrowDown | KeyCode::PageDown | KeyCode::Space,
+                 ..
+             }) => {
+                 self.next_slide(cx);
+@@ -238,16 +259,106 @@
+                 cx.widget_action(uid, SlidesViewAction::Flipped(self.goal_slide as usize));
+             }
+             Hit::KeyDown(KeyEvent {
+-                key_code: KeyCode::ArrowLeft,
++                key_code: KeyCode::ArrowLeft | KeyCode::ArrowUp | KeyCode::PageUp,
+                 ..
+             }) => {
+                 self.prev_slide(cx);
+                 let uid = self.widget_uid();
+                 cx.widget_action(uid, SlidesViewAction::Flipped(self.goal_slide as usize));
+             }
++            Hit::KeyDown(KeyEvent {
++                key_code: key @ (KeyCode::Home | KeyCode::End),
++                ..
++            }) => {
++                let last = (self.draw_order.len().max(1) - 1) as f64;
++                self.goal_slide = if key == KeyCode::Home { 0.0 } else { last };
++                self.next_frame(cx);
++                let uid = self.widget_uid();
++                cx.widget_action(uid, SlidesViewAction::Flipped(self.goal_slide as usize));
++            }
+             Hit::FingerDown(_fe) => {
+                 cx.set_key_focus(self.area);
+             }
++            Hit::FingerUp(fe) => {
++                cx.set_key_focus(self.area);
++                if !fe.is_over {
++                    return;
++                }
++                let dx = fe.abs.x - fe.abs_start.x;
++                let dy = fe.abs.y - fe.abs_start.y;
++                // Tap / click → next. Swipe along `axis` → next/prev.
++                if fe.was_tap() {
++                    self.next_slide(cx);
++                    let uid = self.widget_uid();
++                    cx.widget_action(uid, SlidesViewAction::Flipped(self.goal_slide as usize));
++                } else {
++                    let go_next = match self.axis {
++                        ScrollAxis::Horizontal if dx.abs() > dy.abs() && dx.abs() > 48.0 => {
++                            Some(dx < 0.0)
++                        }
++                        // Swipe up (finger moves up, dy < 0) → next chapter from below.
++                        ScrollAxis::Vertical if dy.abs() > dx.abs() && dy.abs() > 48.0 => {
++                            Some(dy < 0.0)
++                        }
++                        _ => None,
++                    };
++                    if let Some(next) = go_next {
++                        if next {
++                            self.next_slide(cx);
++                        } else {
++                            self.prev_slide(cx);
++                        }
++                        let uid = self.widget_uid();
++                        cx.widget_action(uid, SlidesViewAction::Flipped(self.goal_slide as usize));
++                    }
++                }
++            }
++            Hit::FingerScroll(e) => {
++                // One intentional scroll gesture → one chapter. Ignore OS momentum
++                // coast so a flick does not race through the deck.
++                match e.phase {
++                    ScrollPhase::Momentum | ScrollPhase::Touched | ScrollPhase::Ended => {
++                        if matches!(e.phase, ScrollPhase::Ended | ScrollPhase::Touched) {
++                            self.wheel_accum = 0.0;
++                        }
++                    }
++                    ScrollPhase::None | ScrollPhase::Began | ScrollPhase::Changed => {
++                        let delta = match self.axis {
++                            ScrollAxis::Vertical => e.scroll.y,
++                            ScrollAxis::Horizontal => {
++                                if e.scroll.x.abs() > e.scroll.y.abs() {
++                                    e.scroll.x
++                                } else {
++                                    e.scroll.y
++                                }
++                            }
++                        };
++                        if delta.abs() < 0.5 {
++                            return;
++                        }
++                        self.wheel_accum += delta;
++                        // Discrete mouse notches and a short trackpad stroke both clear this.
++                        const THRESH: f64 = 28.0;
++                        if self.wheel_accum.abs() < THRESH {
++                            return;
++                        }
++                        // Wait out the chapter animation before accepting another flip.
++                        if (self.current_slide - self.goal_slide).abs() > 0.05 {
++                            return;
++                        }
++                        let go_next = self.wheel_accum > 0.0;
++                        self.wheel_accum = 0.0;
++                        if go_next {
++                            self.next_slide(cx);
++                        } else {
++                            self.prev_slide(cx);
++                        }
++                        let uid = self.widget_uid();
++                        cx.widget_action(uid, SlidesViewAction::Flipped(self.goal_slide as usize));
++                    }
++                    _ => {}
++                }
++            }
+             _ => (),
+         }
+     }
+@@ -256,6 +367,10 @@
+         if self.draw_state.begin(cx, DrawState::DrawFirst) {
+             cx.begin_turtle(walk, Layout::flow_overlay());
+             let rect = cx.turtle().rect();
++            let scroll = match self.axis {
++                ScrollAxis::Horizontal => dvec2(rect.size.x * self.current_slide.fract(), 0.0),
++                ScrollAxis::Vertical => dvec2(0.0, rect.size.y * self.current_slide.fract()),
++            };
+             cx.begin_turtle(
+                 Walk {
+                     abs_pos: None,
+@@ -264,8 +379,7 @@
+                     height: Size::fill(),
+                     metrics: Metrics::default(),
+                 },
+-                Layout::flow_down()
+-                    .with_scroll(dvec2(rect.size.x * self.current_slide.fract(), 0.0)),
++                Layout::flow_down().with_scroll(scroll),
+             );
+         }
+         if let Some(DrawState::DrawFirst) = self.draw_state.get() {
+@@ -278,6 +392,14 @@
+             }
+             cx.end_turtle();
+             let rect = cx.turtle().rect();
++            let scroll = match self.axis {
++                ScrollAxis::Horizontal => {
++                    dvec2(-rect.size.x * (1.0 - self.current_slide.fract()), 0.0)
++                }
++                ScrollAxis::Vertical => {
++                    dvec2(0.0, -rect.size.y * (1.0 - self.current_slide.fract()))
++                }
++            };
+             cx.begin_turtle(
+                 Walk {
+                     abs_pos: None,
+@@ -286,10 +408,7 @@
+                     height: Size::fill(),
+                     metrics: Metrics::default(),
+                 },
+-                Layout::flow_down().with_scroll(dvec2(
+-                    -rect.size.x * (1.0 - self.current_slide.fract()),
+-                    0.0,
+-                )),
++                Layout::flow_down().with_scroll(scroll),
+             );
+             self.draw_state.set(DrawState::DrawSecond);
+         }
+@@ -367,6 +486,22 @@
+         }
+         0
+     }
++
++    /// The chapter the deck is moving to (equals `get_slide` once settled).
++    pub fn goal_slide(&self) -> usize {
++        if let Some(inner) = self.borrow() {
++            return inner.goal_slide.max(0.0) as usize;
++        }
++        0
++    }
++
++    /// Number of slides (chapters) in the deck.
++    pub fn slide_count(&self) -> usize {
++        if let Some(inner) = self.borrow() {
++            return inner.draw_order.len();
++        }
++        0
++    }
+ 
+     pub fn next_slide(&self, cx: &mut Cx) {
+         if let Some(mut inner) = self.borrow_mut() {

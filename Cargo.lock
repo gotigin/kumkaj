@@ -1140,6 +1140,13 @@ name = "khaynjo-dev"
 version = "0.1.0"
 
 [[package]]
+name = "khaynjo-site"
+version = "0.1.0"
+dependencies = [
+ "makepad-widgets",
+]
+
+[[package]]
 name = "khaynjo-windows-dev"
 version = "0.1.0"
 
@@ -1198,6 +1205,13 @@ dependencies = [
  "unicode-bidi",
  "ureq",
  "uuid",
+]
+
+[[package]]
+name = "kumkaj-site"
+version = "0.1.0"
+dependencies = [
+ "makepad-widgets",
 ]
 
 [[package]]
@@ -1690,6 +1704,13 @@ version = "0.1.0"
 [[package]]
 name = "moklanjo-dev"
 version = "0.1.0"
+
+[[package]]
+name = "moklanjo-site"
+version = "0.1.0"
+dependencies = [
+ "makepad-widgets",
+]
 
 [[package]]
 name = "moklanjo-windows-dev"

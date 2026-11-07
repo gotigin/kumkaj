@@ -406,9 +406,11 @@ pub enum BooksOp {
     SetStandardEm {
         em: f32,
     },
-    /// Content width in millimetres for the bill and the kitchen ticket.
+    /// Content width in millimetres for the active slip (bill or KOT).
     SetContentWidth {
         mm: u32,
+        /// `true` = kitchen ticket; `false` = bill.
+        kot: bool,
     },
     /// Print a test page on the Server's printers for `route_key` (`bill` / `kot:`…).
     PrintTestPage {
@@ -621,7 +623,8 @@ impl BooksOp {
             Self::SetKotAutoPrint { on: true } => "KOT auto-print on".into(),
             Self::SetKotAutoPrint { on: false } => "KOT auto-print off".into(),
             Self::SetStandardEm { .. } => "Bill print size saved".into(),
-            Self::SetContentWidth { mm } => format!("Content width {mm} mm"),
+            Self::SetContentWidth { mm, kot: true } => format!("KOT content width {mm} mm"),
+            Self::SetContentWidth { mm, kot: false } => format!("Bill content width {mm} mm"),
             Self::PrintTestPage { .. } => "Test page sent".into(),
             Self::SetHistoryRetention { .. } => "History clearing saved".into(),
             Self::ClearTradingHistory => "Trading history cleared — setup kept".into(),
@@ -1199,22 +1202,15 @@ impl Store {
                 )?;
                 if !styles.trim().is_empty() {
                     let parsed = crate::print_share::BillSlipFormat::parse(styles.trim());
-                    // Columns were just written. Keep the style record beside them.
-                    let mut kept = self.bill_slip_format().unwrap_or(parsed.clone());
-                    kept.shop = parsed.shop;
-                    kept.header_style = parsed.header_style;
-                    kept.fssai_style = parsed.fssai_style;
-                    kept.title_style = parsed.title_style;
-                    kept.bill_no = parsed.bill_no;
-                    kept.time = parsed.time;
-                    kept.table = parsed.table;
-                    kept.items = parsed.items;
-                    kept.total = parsed.total;
-                    kept.footer_style = parsed.footer_style;
-                    kept.upi = parsed.upi;
-                    kept.title = parsed.title;
-                    kept.field_order = parsed.field_order;
-                    kept.copies = parsed.copies;
+                    // Full draft styles (layout, piece toggles, width, Cashier…).
+                    // Address / UPI columns were just written — keep those.
+                    let columns = self.bill_slip_format().unwrap_or(parsed.clone());
+                    let mut kept = parsed;
+                    kept.header = columns.header;
+                    kept.fssai = columns.fssai;
+                    kept.footer = columns.footer;
+                    kept.upi_vpa = columns.upi_vpa;
+                    kept.upi_payee = columns.upi_payee;
                     self.set_bill_slip_format(&kept)?;
                 }
                 Ok("Bill format saved".into())
@@ -1518,12 +1514,17 @@ impl Store {
                 let _ = self.set_standard_print_em(em)?;
                 Ok("Bill print size saved".into())
             }
-            BooksOp::SetContentWidth { mm } => {
+            BooksOp::SetContentWidth { mm, kot } => {
                 if !actor.is_owner() && !actor.can_access_settings() {
                     return Err("Not allowed to change the content width".into());
                 }
-                let saved = self.set_content_width_mm(mm)?;
-                Ok(format!("Content width {saved} mm"))
+                if kot {
+                    let saved = self.set_kot_content_width_mm(mm)?;
+                    Ok(format!("KOT content width {saved} mm"))
+                } else {
+                    let saved = self.set_bill_content_width_mm(mm)?;
+                    Ok(format!("Bill content width {saved} mm"))
+                }
             }
             BooksOp::PrintTestPage { route_key } => {
                 if !actor.is_owner() && !actor.can_access_settings() {

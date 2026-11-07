@@ -131,8 +131,7 @@ pub struct VirtualPrinterValues {
     /// Delivery method id — see `DELIVERY_*` (extensible string, not a closed enum).
     pub delivery: String,
     /// Content width in millimetres (stored as `paper_width_mm`).
-    /// How wide the printed slip or bill is. Kitchen tickets and standard
-    /// bills through this virtual printer both use it.
+    /// Legacy VP field — product bill/KOT widths live on the slip formats.
     pub paper_width_mm: u32,
 }
 
@@ -449,6 +448,7 @@ impl PrintFormat {
     }
 
     /// Built-in: portrait layout + OS document send (works on most queues).
+    /// Default wrap matches a 210 mm page bill.
     pub fn standard_portrait() -> Self {
         Self {
             id: FORMAT_STANDARD_PORTRAIT.into(),
@@ -457,13 +457,14 @@ impl PrintFormat {
             landscape: false,
             delivery: DELIVERY_SYSTEM_SPOOLER.into(),
             em: STD_EM_NORMAL,
-            line: 40,
+            line: wrap_cols_for_paper_mm(210),
             baseline: STD_EM_NORMAL + 2.0,
             side: STD_SIDE,
         }
     }
 
     /// Built-in: landscape layout + OS document send.
+    /// Default wrap matches a 210 mm page bill.
     pub fn standard_landscape() -> Self {
         Self {
             id: FORMAT_STANDARD_LANDSCAPE.into(),
@@ -472,13 +473,14 @@ impl PrintFormat {
             landscape: true,
             delivery: DELIVERY_SYSTEM_SPOOLER.into(),
             em: STD_EM_NORMAL,
-            line: 40,
+            line: wrap_cols_for_paper_mm(210),
             baseline: STD_EM_NORMAL + 2.0,
             side: STD_SIDE,
         }
     }
 
     /// Built-in: portrait layout + ESC/POS send (id kept as `kot` for serde).
+    /// Default wrap matches an 80 mm kitchen slip.
     pub fn kot() -> Self {
         Self {
             id: FORMAT_KOT.into(),
@@ -487,7 +489,7 @@ impl PrintFormat {
             landscape: false,
             delivery: DELIVERY_ESCPOS.into(),
             em: 20.0,
-            line: 32,
+            line: wrap_cols_for_paper_mm(80),
             baseline: 22.0,
             side: 4.0,
         }
@@ -732,7 +734,7 @@ impl KotSlipKind {
 
 /// Recovery / "print selected again" banner (not a stored kind field).
 pub const KOT_BANNER_REPRINT: &str = "*** REPRINT - SAME ORDER ***";
-pub const KOT_BANNER_DUPLICATE: &str = "*** DUPLICATE - SAME ORDER ***";
+pub const KOT_BANNER_DUPLICATE: &str = "Duplicate";
 pub const KOT_BANNER_MODIFIED: &str = "MODIFIED/UPDATED KOT";
 pub const KOT_BANNER_CANCELLED: &str = "PARTIALLY SHIFTED/CANCELLED";
 pub const KOT_PREFIX_MODIFIED: &str = "[NEW] ";
@@ -1002,8 +1004,9 @@ pub struct KotSlipFormat {
     /// Follows [`Self::content_width_mm`] when that is set.
     #[serde(default = "default_kot_chars")]
     pub chars_per_line: u32,
-    /// Content width in millimetres for the bill and the kitchen ticket.
+    /// Content width in millimetres for the kitchen ticket only (bill has its own).
     /// `0` means an older slip that only stored [`Self::chars_per_line`].
+    /// New shops use [`Default`] (`80`).
     #[serde(default)]
     pub content_width_mm: u32,
     /// Thermal type size (raster). Clamped to [`KOT_EM_MIN`]..=[`KOT_EM_MAX`].
@@ -1053,7 +1056,7 @@ pub const KOT_DEFAULT_TITLE: &str = "KOT - KITCHEN ORDER";
 pub const KOT_SIDE_MIN: f32 = 0.0;
 pub const KOT_SIDE_MAX: f32 = 48.0;
 
-fn default_kot_chars() -> u32 { KOT_CHARS_58MM }
+fn default_kot_chars() -> u32 { wrap_cols_for_paper_mm(80) }
 fn default_kot_em() -> u32 { KOT_EM_NORMAL }
 fn default_kot_copies() -> u32 { KOT_COPIES_MIN }
 fn default_kot_side() -> f32 { 4.0 }
@@ -1082,8 +1085,8 @@ impl Default for KotSlipFormat {
             show_kot_no: true,
             show_area: true,
             show_item_qty_header: true,
-            chars_per_line: KOT_CHARS_58MM,
-            content_width_mm: 0,
+            chars_per_line: wrap_cols_for_paper_mm(80),
+            content_width_mm: 80,
             em: KOT_EM_SMALL,
             side: 4.0,
             copies: KOT_COPIES_MIN,
@@ -1388,7 +1391,8 @@ impl KotSlipFormat {
                     }
                 }
                 "waiter" if fmt.show_waiter && !c.created_by.is_empty() => {
-                    push_styled(out, style, &format!("Staff: {}", c.created_by), false);
+                    // Who sent *this* KOT — not every line author, not the re-printer.
+                    push_styled(out, style, &format!("Waiter: {}", c.created_by), false);
                 }
                 "table" if fmt.show_table && !c.table_label.is_empty() => {
                     if compact {
@@ -1784,6 +1788,10 @@ pub struct BillSlipFormat {
     /// Identical copies of each bill. Clamped to 1..=3.
     #[serde(default = "default_bill_copies")]
     pub copies: u32,
+    /// Content width in millimetres for the bill only (KOT has its own).
+    /// Default 210 mm (page-width guest bill).
+    #[serde(default = "default_bill_content_width_mm")]
+    pub content_width_mm: u32,
 }
 
 fn default_bill_meta_pairs() -> Vec<[String; 2]> {
@@ -1797,19 +1805,30 @@ fn default_bill_copies() -> u32 {
     1
 }
 
+fn default_bill_content_width_mm() -> u32 {
+    210
+}
+
 impl Default for BillSlipFormat {
     fn default() -> Self {
         Self {
             header: String::new(),
             fssai: String::new(),
-            footer: String::new(),
+            footer: "Thanks".into(),
             upi_vpa: String::new(),
             upi_payee: String::new(),
             title: String::new(),
             shop: BillFieldStyle::face(22, KotFontWeight::Bold, KotAlign::Center),
             header_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
             fssai_style: BillFieldStyle::face(12, KotFontWeight::Regular, KotAlign::Center),
-            title_style: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Center),
+            // Off by default — common FOH bills go address → Name → meta
+            // without a CASH MEMO banner. Turn Title on when you want one.
+            title_style: BillFieldStyle {
+                show: false,
+                size_em: 18,
+                weight: KotFontWeight::Bold,
+                align: KotAlign::Center,
+            },
             customer: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             bill_no: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             time: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
@@ -1832,6 +1851,7 @@ impl Default for BillSlipFormat {
             meta_pairs: default_bill_meta_pairs(),
             field_order: Vec::new(),
             copies: 1,
+            content_width_mm: 210,
         }
     }
 }
@@ -1974,12 +1994,28 @@ impl BillSlipFormat {
         serde_json::to_string(&self.clone().clamped()).unwrap_or_else(|_| "{}".into())
     }
 
+    /// Millimetres used for bill preview / print wrap.
+    pub fn shown_content_width_mm(&self) -> u32 {
+        let mm = if self.content_width_mm > 0 {
+            self.content_width_mm
+        } else {
+            210
+        };
+        mm.clamp(40, 210)
+    }
+
+    /// Apply wrap width onto a Standard (bill) print format.
+    pub fn apply_to_print_format(&self, format: &mut PrintFormat) {
+        format.line = wrap_cols_for_paper_mm(self.shown_content_width_mm());
+    }
+
     pub fn clamped(mut self) -> Self {
         for field in BillStyleField::ALL {
             let s = self.style_mut(field);
             s.size_em = s.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
         }
         self.copies = self.copies.clamp(1, 3);
+        self.content_width_mm = self.shown_content_width_mm();
         let mut order = Vec::new();
         for id in &self.field_order {
             if let Some(field) = BillStyleField::from_id(id) {
@@ -2372,6 +2408,24 @@ pub fn append_bill_like(
     append_bill_field(out, fmt, field, text, rtl);
 }
 
+/// Same type size / weight / align as `field`, but always prints — used for
+/// fiscal lines (e.g. TAX INVOICE) that must appear even when Title is off.
+pub fn append_bill_styled(
+    out: &mut String,
+    fmt: &BillSlipFormat,
+    field: BillStyleField,
+    text: &str,
+    rtl: bool,
+) {
+    if text.trim().is_empty() {
+        return;
+    }
+    if stage_bill_line(field, text, false) {
+        return;
+    }
+    append_marked(out, fmt.style(field), text, rtl);
+}
+
 /// One line's type size, weight, alignment, and optional strike, from the mark.
 struct KotLineStyle {
     size_em: u32,
@@ -2509,6 +2563,8 @@ mod kot_slip_format_tests {
     #[test]
     fn clamps_width_and_strips_currency_from_footer() {
         let fmt = KotSlipFormat {
+            // Legacy path: mm unset so chars_per_line is clamped on its own.
+            content_width_mm: 0,
             chars_per_line: 400,
             em: 5,
             footer: "Rush ₹100".into(),
@@ -2653,6 +2709,15 @@ mod kot_slip_format_tests {
             },
         );
         assert_eq!(stacked, "Thali\n5 x ₹200.00\n₹1,000.00");
+    }
+
+    #[test]
+    fn product_defaults_use_page_bill_and_80mm_kot() {
+        assert_eq!(BillSlipFormat::default().shown_content_width_mm(), 210);
+        assert_eq!(KotSlipFormat::default().shown_content_width_mm(), 80);
+        assert!(!BillSlipFormat::default().title_style.show);
+        assert_eq!(BillSlipFormat::default().footer, "Thanks");
+        assert_eq!(KOT_BANNER_DUPLICATE, "Duplicate");
     }
 
     #[test]
@@ -3063,17 +3128,19 @@ mod kot_slip_format_tests {
     #[test]
     fn preview_rule_tracks_paper_width() {
         let narrow = KotSlipFormat {
+            content_width_mm: 58,
             chars_per_line: KOT_CHARS_58MM,
             ..KotSlipFormat::default()
         }
         .render_sample("Shop");
         let wide = KotSlipFormat {
-            chars_per_line: KOT_CHARS_80MM,
+            content_width_mm: 80,
+            chars_per_line: wrap_cols_for_paper_mm(80),
             ..KotSlipFormat::default()
         }
         .render_sample("Shop");
-        let rule_n = "-".repeat(KOT_CHARS_58MM as usize);
-        let rule_w = "-".repeat(KOT_CHARS_80MM as usize);
+        let rule_n = "-".repeat(wrap_cols_for_paper_mm(58) as usize);
+        let rule_w = "-".repeat(wrap_cols_for_paper_mm(80) as usize);
         assert!(narrow.contains(&rule_n));
         assert!(!narrow.contains(&rule_w));
         assert!(wide.contains(&rule_w));
@@ -4402,14 +4469,31 @@ impl DevicePrinters {
             .unwrap_or(STD_EM_NORMAL)
     }
 
-    /// Same content width, in character columns, on the bill and the KOT format.
-    pub fn set_content_line(&mut self, cols: u32) {
+    /// Wrap columns on Standard (bill) formats only.
+    pub fn set_bill_content_line(&mut self, cols: u32) {
         let cols = cols.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
         for f in self.formats.iter_mut() {
-            if is_standard_document(&f.id) || f.id == FORMAT_KOT {
+            if is_standard_document(&f.id) {
                 f.line = cols;
             }
         }
+    }
+
+    /// Wrap columns on the built-in kitchen format only.
+    pub fn set_kot_content_line(&mut self, cols: u32) {
+        let cols = cols.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
+        for f in self.formats.iter_mut() {
+            if f.id == FORMAT_KOT {
+                f.line = cols;
+            }
+        }
+    }
+
+    /// Same wrap on bill and KOT (tests / forced parity). Prefer the
+    /// bill-only / KOT-only setters in product paths.
+    pub fn set_content_line(&mut self, cols: u32) {
+        self.set_bill_content_line(cols);
+        self.set_kot_content_line(cols);
     }
 
     /// Set type size on all Standard document formats (portrait + landscape).

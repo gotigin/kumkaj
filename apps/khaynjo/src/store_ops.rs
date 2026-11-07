@@ -2734,8 +2734,13 @@ mod tests {
             shop.store.upsert_product(p).unwrap();
         }
         assert!(!shop.store.menu_public_json().unwrap().contains("Gas"));
-        shop.store
+        // All-or-nothing: any non-menu id refuses the whole request.
+        assert!(shop
+            .store
             .public_add_to_table(&t.id, &[gas.id.clone(), off.id.clone(), tea.id.clone()])
+            .is_err());
+        shop.store
+            .public_add_to_table(&t.id, &[tea.id.clone()])
             .unwrap();
         let order = shop.store.running_order(&t.id).unwrap().unwrap();
         let names: Vec<_> = order.live_lines().map(|l| l.name.clone()).collect();

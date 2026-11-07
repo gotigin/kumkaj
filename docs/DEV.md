@@ -1419,7 +1419,7 @@ TODAY money; Settings → **My PIN** works (Server or Client). Unlock as Owner �
 3. `./apps/moklanjo/scripts/package-windows.sh` (or `msi.sh`) → `dist/moklanjo-windows/` (+ `Setup.bat`); optional `cargo moklanjo-windows-dev` for Dev
 4. Clone full Makepad `main`, set `MAKEPAD_ROOT`, run `./apps/moklanjo/scripts/package-android.sh`
 5. Set `KUMKAJ_ANDROID_KEYSTORE` (+ `_PASS`) for step 4 — signed APK + AAB (Android § Release signing); create Play Console listing (title, screenshots from Stitch, privacy: local-only data)
-6. Sites (Zola; needs `zola` on PATH, e.g. `~/.local/bin`): `./apps/moklanjo/scripts/package-web.sh` → deploy `dist/web/moklanjo/` to **https://moklanjo.com**; `KUMKAJ_SITE_DIR=web/kumkaj ./scripts/build-site.sh` → **https://kumkaj.com**; `KUMKAJ_SITE_DIR=apps/khaynjo/web ./scripts/build-site.sh` → **https://khaynjo.com**. Play listing privacy URL: **https://moklanjo.com/privacy**.
+6. Sites: kumkaj.com, moklanjo.com and khaynjo.com are Makepad 2 apps under `sites/` ([`WEBSITES.md`](WEBSITES.md); wasm via each `sites/<site>/scripts/run-web.sh`). Until the Phase 3 crawl shell serves `/privacy` and `/terms`, the legal pages still come from the legacy static stubs (needs `zola` on PATH): `./apps/moklanjo/scripts/package-web.sh` → `dist/web/moklanjo/`; `KUMKAJ_SITE_DIR=web/kumkaj ./scripts/build-site.sh`; `KUMKAJ_SITE_DIR=apps/khaynjo/web ./scripts/build-site.sh`. Play listing privacy URL: **https://moklanjo.com/privacy**.
 7. iOS / macOS: scaffold only until Mac signing — `./scripts/package-apple-scaffold.sh apps/moklanjo`
 
 Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debug`). Product site: moklanjo.com; brand: kumkaj.com.

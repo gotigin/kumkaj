@@ -1,0 +1,11 @@
+[package]
+name = "moklanjo-site"
+version = "0.1.0"
+edition = "2024"
+description = "moklanjo.com — Moklanjo's Makepad 2 website (fullpage wasm / native)"
+license = "MIT OR Apache-2.0"
+
+# A site depends on vendor/makepad only — never on an app crate
+# (docs/WEBSITES.md §3). Copied from sites/kumkaj, then diverged.
+[dependencies]
+makepad-widgets = { path = "../../vendor/makepad/widgets" }

@@ -9113,7 +9113,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     visible: false
                                     // Screen title + ℹ — same pattern as books_help (not buried in a card).
                                     bill_kot_panel_help := InfoHelp{
-                                        tip: "Bill content and kitchen slip typography. Content width above is how wide both the bill and the kitchen ticket are."
+                                        tip: "Bill and kitchen slip layout, each with its own content width. Bill Cashier is who issued or settled the bill; KOT Waiter is who sent that kitchen ticket."
                                     }
                                     // Bill | KOT tabs under the section title.
                                     View{
@@ -9139,7 +9139,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                             font_size: 14.
                                         }
                                         content_width_help := InfoHelp{
-                                            tip: "How wide the printed bill and the kitchen ticket are. Both use this width."
+                                            tip: "How wide this slip prints. Bill and KOT each keep their own width."
                                         }
                                     }
                                     content_width_choices := View{

@@ -2652,7 +2652,12 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             let order = store
                 .running_order(&table.id)?
                 .ok_or_else(|| format!("{} — no open bill yet", table.name))?;
-            store.format_running_bill_text(&order)
+            let cashier = st
+                .session
+                .as_ref()
+                .map(|s| s.name.trim().to_string())
+                .unwrap_or_default();
+            store.format_running_bill_text(&order, &cashier)
         })();
         match result {
             Ok(text) => {

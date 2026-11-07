@@ -3274,7 +3274,7 @@ impl MatchEvent for App {
             // the table's running order. A waiter's tablet sends to the
             // Server (it used to write the ticket into its own cache, which
             // the next sync erased — the kitchen never saw it).
-            let result = (|| -> Result<String, String> {
+            let result = (|| -> Result<(SnackKind, String), String> {
                 let mut st = app_state().lock().unwrap();
                 let actor = st.actor()?;
                 st.require_cart_modifiers()?;
@@ -3333,14 +3333,21 @@ impl MatchEvent for App {
                     let table_name = table_id.as_ref().and_then(|tid| {
                         st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
                     });
-                    let place = table_name.clone().unwrap_or_else(|| "counter".into());
+                    let place = table_name.clone().unwrap_or_else(|| st.t("counter"));
+                    let say = |key: &str| {
+                        st.t(key)
+                            .replace("{place}", &place)
+                            .replace("{kitchens}", &kitchens)
+                    };
+                    let (job_label, job_done, queued_msg) =
+                        (say("kot_job_label"), say("kot_job_reached"), say("kot_queued_shop"));
                     // Kitchen paper prints on the Server (its Settings → Printers),
                     // not from this till's local printer list.
                     let job = st.lan_job(
                         "/kot",
                         &net::RemoteKotRequest { draft, table_name, table_id: table_id.clone() },
-                        format!("KOT for {place} → {kitchens}"),
-                        format!("KOT for {place} reached {kitchens}"),
+                        job_label,
+                        job_done,
                         phone::Follow::Refresh,
                         true,
                     )?;
@@ -3358,21 +3365,22 @@ impl MatchEvent for App {
                     for sid in &used_stations {
                         st.select_kot_station(sid);
                     }
-                    return Ok(format!(
-                        "KOT for {place} → {kitchens} saved — kitchen prints at the shop device"
-                    ));
+                    // Queued until the shop device answers — a pending state, so
+                    // amber, as before (it used to be read off "shop device").
+                    return Ok((SnackKind::Warn, queued_msg));
                 } else {
                     let kot_ids = {
                         let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                         store.send_kot(&draft, table_id.as_deref(), &actor)?
                     };
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    let n = kot_ids.len();
-                    let msg = match (store.kot_auto_print(), net::print_sent_kots(store, &kot_ids)) {
-                        (true, None) => format!("{n} KOT(s) → {kitchens} · sent to the printer"),
-                        (true, Some(e)) => format!("KOT → {kitchens} · print failed: {e}"),
-                        (false, _) => format!("{n} KOT(s) → {kitchens}"),
-                    };
+                    let paper = net::print_sent_kots(store, &kot_ids);
+                    let msg = kot_sent_status(
+                        &|key: &str| st.t(key),
+                        &kitchens,
+                        store.kot_auto_print(),
+                        paper.as_deref(),
+                    );
                     for sid in &used_stations {
                         st.select_kot_station(sid);
                     }
@@ -3399,7 +3407,9 @@ impl MatchEvent for App {
                 Ok(msg)
             })();
             match result {
-                Ok(msg) => self.set_status(cx, msg),
+                Ok((SnackKind::Error, msg)) => self.show_error(cx, msg),
+                Ok((SnackKind::Warn, msg)) => self.show_warn(cx, msg),
+                Ok((_, msg)) => self.show_ok(cx, msg),
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
@@ -6812,11 +6822,14 @@ impl MatchEvent for App {
         {
             if let Ok(mm) = text.trim().parse::<u32>() {
                 if (40..=210).contains(&mm) {
-                    let current = app_state()
-                        .lock()
-                        .unwrap()
-                        .kot_slip_draft
-                        .shown_content_width_mm();
+                    let current = {
+                        let st = app_state().lock().unwrap();
+                        if st.bill_kot_tab_kot {
+                            st.kot_slip_draft.shown_content_width_mm()
+                        } else {
+                            st.bill_slip_draft.shown_content_width_mm()
+                        }
+                    };
                     if mm != current {
                         self.apply_content_width(cx, mm);
                     }

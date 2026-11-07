@@ -667,25 +667,34 @@ impl AppState {
         }
     }
 
-    /// Overlay shop KOT slip metrics onto live config (and optionally drafts).
-    /// When `update_drafts`, refreshes `kot_slip_draft` / printer_draft KOT
-    /// format from books meta so a Client-saved size is not left stale.
+    /// Overlay shop KOT / bill slip metrics onto live config (and optionally drafts).
+    /// When `update_drafts`, refreshes slip drafts / printer_draft formats
+    /// from books meta so a Client-saved size is not left stale.
     fn apply_kot_slip_format_to_draft_and_live(&mut self, update_drafts: bool) {
         let Some(store) = self.store.as_ref() else {
             return;
         };
-        let Ok(fmt) = store.kot_slip_format() else {
+        let Ok(kot) = store.kot_slip_format() else {
             return;
         };
+        let bill = store.bill_slip_format().ok();
         if update_drafts {
-            self.kot_slip_draft = fmt.clone();
+            self.kot_slip_draft = kot.clone();
+            if let Some(ref bill) = bill {
+                self.bill_slip_draft = bill.clone();
+            }
             if let Some(f) = self
                 .printer_draft
                 .formats
                 .iter_mut()
                 .find(|f| f.id == print_share::FORMAT_KOT)
             {
-                fmt.apply_to_print_format(f);
+                kot.apply_to_print_format(f);
+            }
+            if let Some(ref bill) = bill {
+                self.printer_draft.set_bill_content_line(
+                    print_share::wrap_cols_for_paper_mm(bill.shown_content_width_mm()),
+                );
             }
         }
         if self.device_role.is_host() {
@@ -695,7 +704,12 @@ impl AppState {
                 .iter_mut()
                 .find(|f| f.id == print_share::FORMAT_KOT)
             {
-                fmt.apply_to_print_format(f);
+                kot.apply_to_print_format(f);
+            }
+            if let Some(ref bill) = bill {
+                live.set_bill_content_line(print_share::wrap_cols_for_paper_mm(
+                    bill.shown_content_width_mm(),
+                ));
             }
             print_share::configure(live);
         }
@@ -718,6 +732,11 @@ impl AppState {
             .find(|f| f.id == print_share::FORMAT_KOT)
         {
             fmt.apply_to_print_format(f);
+        }
+        if let Ok(bill) = store.bill_slip_format() {
+            self.printer_draft.set_bill_content_line(print_share::wrap_cols_for_paper_mm(
+                bill.shown_content_width_mm(),
+            ));
         }
     }
 

@@ -1,15 +1,18 @@
 # moklanjo.com — website plan
 
-> **Status:** Phase 1 thin site in `apps/moklanjo/web/` (2026-11-06) —
-> landing + legal + download/pricing stubs. Full story / stage = Phase 2.
-> **Scope:** Moklanjo's instantiation of the Kumkaj-wide website plan
-> [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) — architecture
-> (HTML first + Makepad stage), agent pipeline, budgets, hosting and
-> roadmap live there and are not restated here. This file holds only
-> what is Moklanjo's: audience, pages, the 3D story, tools and the
-> claim sources.
-> **Code:** `apps/moklanjo/web/` (Zola) and `apps/moklanjo/web/stage/`
-> (Makepad stage crate). No code shared with any other site or app.
+> **Status:** Phase 1 live in-tree as a local demo (2026-11-07) —
+> `sites/moklanjo` (package `moklanjo-site`), copied from `sites/kumkaj`
+> and diverged: the §3 parcel story as 9 Makepad chapters, the tracking
+> line as chapter nav, a working chargeable-weight toy (§4), and
+> Download / WhatsApp CTAs behind owner switches (WhatsApp number:
+> **TODO owner**). Run `./sites/moklanjo/scripts/run-web.sh` →
+> http://127.0.0.1:8011 (native: `run-desktop.sh`). Not deployed; 3D
+> props and real app captures are Phase 2 ([`docs/WEBSITES.md`](../../../docs/WEBSITES.md) §7).
+> **Scope:** Moklanjo's instantiation of
+> [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) (Makepad 2 fullpage).
+> This file holds audience, story chapters, tools and claim sources.
+> **Code:** `sites/moklanjo/` — Makepad crate only; no shared site
+> engine with kumkaj.com or khaynjo.com.
 
 ------------------------------------------------------------------------
 
@@ -47,15 +50,15 @@ answer on the home page:
 
 | Path | Content | Notes |
 |---|---|---|
-| `/` | The parcel story (§3) | Stage: live / clip / still |
+| `/` | The parcel story (§3) | **Live** (local) in `sites/moklanjo`; 3D props Phase 2 |
 | `/features` | One page, anchored sections: Booking desk · Labels & scanning · Handover & own fleet · Tracking & proof of delivery · COD · Books & billing · Team & devices · Languages | Split into sub-pages only when a section outgrows the page |
 | `/for/franchise-counter` | The agency counter: walk-ins, carrier number pools, bags, carrier bill reconcile, franchise commission | Mode 1 of the product shape ([`MOKLANJO.md`](MOKLANJO.md) "Product shape") |
 | `/for/own-fleet` | Own riders and vans: pickups, rider runs, run sheet, rider mode, POD, COD settlement | Mode 2 |
-| `/tools/volumetric-weight-calculator` | §4 | Search magnet; works with no JS |
+| `/tools/volumetric-weight-calculator` | §4 | Search magnet (Phase 5); the toy already runs in chapter 2 |
 | `/download` | Android (Play when listed, APK), Windows MSI, Linux; SHA-256; system needs; first-run steps (Owner PIN set-up lives here, not on the home page) | Reads `releases.toml` |
 | `/guide` | Getting started, from [`MOKLANJO_APP_TUTORIAL.md`](MOKLANJO_APP_TUTORIAL.md) (rush-desk demo) and `docs/LAN_QUICK_START.md` | Screenshots from the real app |
 | `/pricing` | Free forever on your devices; Kumkaj Cloud planned, usage-based | Links kumkaj.com/principles |
-| `/present` | Presenter mode, works offline after one visit | `WEBSITES.md` §6 step 8 |
+| `/present` | Presenter mode, works offline after one visit | The native build is the presenter today (`run-desktop.sh`, PgDn / clicker); offline web presenter Phase 4 |
 | `/privacy`, `/terms`, `/contact` | Legal + WhatsApp / email | Privacy first — Play needs it |
 
 ------------------------------------------------------------------------
@@ -83,7 +86,7 @@ Booking desk → AWB → (carrier bag | rider run) → track / POD → bill / CO
 | 8 | **Internet down? Keep booking.** | The office router's light turns red. The desk keeps booking; a second counter and a rider phone stay joined over the office Wi-Fi | "No internet needed. Extra counters join over your own Wi-Fi." | `offline-lan` |
 | 9 | **Close** | Counter at rest, label printer quiet | "Free forever on your devices." → Download · WhatsApp | `free-local` |
 
-**Props built in code** (`WEBSITES.md` §6 step 2): counter, scale with
+**Props built in code** (`WEBSITES.md` §5 step 6): counter, scale with
 digit display, parcel (taped box like the icon), wireframe dimension
 box, rate cards, thermal printer + label strip, handheld scanner,
 carrier bag (plain colours — no carrier marks), van body, rider phone,
@@ -91,31 +94,41 @@ timeline beads, cash bundle, ledger page, router with status light.
 glTF only for the rider and walk-in figures (simple, faceless,
 stylised).
 
+**Phase 1 build (2026-11-07, 2D):** every chapter above ships as text
+plus a 2D prop: the walk-in loop card; the **weight toy** (L / B / H and
+scale steppers, Domestic / International chips switching ÷5000 /
+÷6000, live working line); an example rate card; an AWB label with drawn bars (not a
+scannable code); carrier bag vs rider run cards; a tracking line with the
+Failed branch; an example rider cash table; the router / desk status;
+the Start CTAs. Props are marked **Example**; chapter 8 keeps the
+extra-counters sentence behind `LAN_PILOT_PASSED`. Words differ from the
+drafts only where a draft over-claimed (no "prints" until the pilot).
+
 ------------------------------------------------------------------------
 
 ## 4. Volumetric weight calculator (`/tools/volumetric-weight-calculator`)
 
-- **HTML form first:** length, breadth, height (cm or inches), actual
-  weight (kg or lb), divisor (5000 domestic default · 6000 air · any
-  number the visitor types — carriers differ), round-up step (0.5 kg
-  default, editable). Output: volumetric weight, chargeable weight,
-  and one line of working ("30 × 20 × 15 ÷ 5000 = 1.8 kg → 2.0 kg").
-- **Stage toy on top** when live: the same box as chapter 2, resized by
-  the form.
-- Runs entirely in the browser; nothing is sent anywhere.
+- **Live today as the chapter 2 toy** in `sites/moklanjo`: length,
+  breadth, height (5 cm steps), weight on the scale (0.1 kg steps),
+  Domestic ÷5000 / International ÷6000. Output: chargeable weight, which
+  side wins, and one line of working ("30 × 20 × 15 ÷ 5000 = 1.8 kg").
 - Same rules as the app's booking desk ([`MOKLANJO.md`](MOKLANJO.md)
   "Chargeable weight"; `docs/UNITS_AND_CONVERSIONS.md`), re-implemented
-  in a few lines of JS for the page (copy, not import), with tests
+  in Rust in `sites/moklanjo/src/weight.rs` (copy, not import) with tests
   that pin the same worked examples as `booking.rs`.
-- Page copy explains volumetric weight plainly; ends with "Moklanjo
-  does this on every booking" → Download.
+- The tool page (Phase 5) adds cm / inches, kg / lb, any divisor and
+  round-up step, explains volumetric weight plainly and ends with
+  "Moklanjo does this on every booking" → Download. Its crawlable text
+  comes with the Phase 3 shell. Runs entirely on the visitor's device;
+  nothing is sent anywhere.
 
 ------------------------------------------------------------------------
 
 ## 5. Claim sources (seed for `content/claims.toml`)
 
 Every source below is a **Ship** row in [`MOKLANJO.md`](MOKLANJO.md)
-unless noted. The claims check (`WEBSITES.md` §6 step 5) re-reads them.
+unless noted. The claims check (`WEBSITES.md` §1 rule 3, §5 step 7) re-reads them;
+claim ids sit in comments above each chapter in `sites/moklanjo/src/ui.rs`.
 
 | Claim id | Sentence on the site | Source row |
 |---|---|---|
@@ -140,7 +153,7 @@ unless noted. The claims check (`WEBSITES.md` §6 step 5) re-reads them.
 | `tally` | Tally voucher export | C "Tally voucher export" |
 | `track-link` | Customers can check an AWB on the office Wi-Fi | C "Public track-by-AWB" — **LAN only; say so** |
 | `whatsapp-receipt` | One-tap WhatsApp receipt | C "One-tap WhatsApp receipt" |
-| `offline-lan` | Works with no internet; extra counters on the office Wi-Fi | "Doctrine follow-ups → Offline office + devices"; vision §6, §20 — the extra-counters half is gated `lan-pilot` (`WEBSITES.md` §6 step 5, §11); see §6 below |
+| `offline-lan` | Works with no internet; extra counters on the office Wi-Fi | "Doctrine follow-ups → Offline office + devices"; vision §6, §20 — the extra-counters half is gated `lan-pilot` (`WEBSITES.md` §7 launch gates, §8 item 6 — `LAN_PILOT_PASSED`); see §6 below |
 | `languages` | 29 languages, Arabic/Urdu right-to-left | "Languages & RTL" |
 | `free-local` | Free forever on your devices | vision §21 |
 
@@ -164,4 +177,4 @@ unless noted. The claims check (`WEBSITES.md` §6 step 5) re-reads them.
   (docket e-way fields are print-only).
 - **iOS / macOS** — deferred.
 - **Carrier or competitor names and logos** — none, in copy or on 3D
-  props (`WEBSITES.md` §12 item 6).
+  props (`WEBSITES.md` §1 rule 6).

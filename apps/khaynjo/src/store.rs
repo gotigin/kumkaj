@@ -1789,20 +1789,35 @@ impl Store {
             &self.bill_header()?,
             rtl,
         );
-        let title = if !fmt.title.trim().is_empty() {
-            fmt.title.trim().to_string()
-        } else if is_invoice {
-            "TAX INVOICE".into()
+        // Declared (tax) bills always show TAX INVOICE — even when the optional
+        // Title field is off (product default hides the CASH MEMO banner).
+        if is_invoice {
+            let title = if !fmt.title.trim().is_empty() {
+                fmt.title.trim().to_string()
+            } else {
+                "TAX INVOICE".into()
+            };
+            crate::print_share::append_bill_styled(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Title,
+                &title,
+                rtl,
+            );
         } else {
-            "CASH MEMO".into()
-        };
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::Title,
-            &title,
-            rtl,
-        );
+            let title = if !fmt.title.trim().is_empty() {
+                fmt.title.trim().to_string()
+            } else {
+                "CASH MEMO".into()
+            };
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Title,
+                &title,
+                rtl,
+            );
+        }
         if !fmt.fssai.trim().is_empty() {
             crate::print_share::append_bill_field(
                 &mut out,
@@ -2154,12 +2169,14 @@ impl Store {
                 rtl,
             );
         }
+        // Settler of this sale — one name on the receipt (not reprint actor,
+        // not every waiter who punched a line). Label matches running bills.
         if !sale.created_by_name.is_empty() {
-            crate::print_share::append_bill_like(
+            crate::print_share::append_bill_field(
                 &mut out,
                 &fmt,
-                crate::print_share::BillStyleField::Time,
-                &format!("By {}", sale.created_by_name),
+                crate::print_share::BillStyleField::Cashier,
+                &format!("Cashier: {}", sale.created_by_name.trim()),
                 rtl,
             );
         }
@@ -3351,7 +3368,7 @@ impl Store {
     }
 
     /// Save kitchen-slip options and sync the built-in KOT print metrics
-    /// (type size / wrap width) on this device.
+    /// (type size / wrap width) on this device. Does not change bill width.
     pub fn set_kot_slip_format(
         &self,
         fmt: &crate::print_share::KotSlipFormat,
@@ -3368,27 +3385,30 @@ impl Store {
             {
                 clamped.apply_to_print_format(f);
             }
-            // One content width for the bill and the kitchen ticket.
-            let cols = clamped.chars_per_line;
-            for f in printers.formats.iter_mut() {
-                if crate::print_share::is_standard_document(&f.id) {
-                    f.line = cols;
-                }
-            }
             crate::print_share::save_device_printers(base, &printers)?;
         }
         Ok(clamped)
     }
 
-    /// Content width for the bill and the kitchen ticket, in millimetres.
-    pub fn set_content_width_mm(&self, mm: u32) -> Result<u32, String> {
-        self.assert_server_writer("Change the content width")?;
+    /// Content width for the kitchen ticket only, in millimetres.
+    pub fn set_kot_content_width_mm(&self, mm: u32) -> Result<u32, String> {
+        self.assert_server_writer("Change the KOT content width")?;
         let mm = mm.clamp(40, 210);
         let mut fmt = self.kot_slip_format()?;
         fmt.content_width_mm = mm;
         fmt.chars_per_line = crate::print_share::wrap_cols_for_paper_mm(mm);
         let saved = self.set_kot_slip_format(&fmt)?;
-        Ok(saved.content_width_mm)
+        Ok(saved.shown_content_width_mm())
+    }
+
+    /// Content width for the bill only, in millimetres.
+    pub fn set_bill_content_width_mm(&self, mm: u32) -> Result<u32, String> {
+        self.assert_server_writer("Change the bill content width")?;
+        let mm = mm.clamp(40, 210);
+        let mut fmt = self.bill_slip_format()?;
+        fmt.content_width_mm = mm;
+        self.set_bill_slip_format(&fmt)?;
+        Ok(fmt.shown_content_width_mm())
     }
 
     /// Saved Standard bill type size (portrait + landscape).
@@ -3599,7 +3619,7 @@ impl Store {
     pub fn print_kot(&self, kot_id: &str) -> Result<std::path::PathBuf, String> {
         let station_id = self.station_id_for_kot(kot_id).unwrap_or_default();
         let slip = self.kot_slip_format()?;
-        // Content width is the Bill & KOT setting, shared with the standard bill.
+        // Kitchen ticket width is independent of the bill (default 80 mm).
         let text = self.format_kot_text_cols(kot_id, Some(slip.chars_per_line))?;
         let slip_kind = self
             .conn

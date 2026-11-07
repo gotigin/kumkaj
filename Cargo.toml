@@ -10,12 +10,19 @@
 members = [
     "apps/moklanjo",
     "apps/khaynjo",
+    "sites/kumkaj",
+    "sites/moklanjo",
+    "sites/khaynjo",
     "tools/khaynjo-dev",
     "tools/khaynjo-android-dev",
     "tools/khaynjo-windows-dev",
     "tools/moklanjo-dev",
     "tools/moklanjo-android-dev",
     "tools/moklanjo-windows-dev",
+]
+default-members = [
+    "apps/moklanjo",
+    "apps/khaynjo",
 ]
 exclude = [
     "vendor/makepad",

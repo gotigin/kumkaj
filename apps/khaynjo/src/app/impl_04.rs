@@ -2062,23 +2062,37 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// Content width sits above the Bill and KOT tabs. One value lays out both.
+    /// Content width sits above the Bill | KOT body. Each tab has its own
+    /// millimetre width (bill default 210, KOT default 80).
     fn sync_content_width_ui(&mut self, cx: &mut Cx) {
-        let (mm, lang) = {
+        let (mm, on_kot, lang) = {
             let st = app_state().lock().unwrap();
-            (
-                st.kot_slip_draft.shown_content_width_mm(),
-                st.locale.language.clone(),
-            )
+            let on_kot = st.bill_kot_tab_kot;
+            let mm = if on_kot {
+                st.kot_slip_draft.shown_content_width_mm()
+            } else {
+                st.bill_slip_draft.shown_content_width_mm()
+            };
+            (mm, on_kot, st.locale.language.clone())
         };
         let s = |k: &str| locale::t(&lang, k);
+        let heading = if on_kot {
+            s("content_width_kot")
+        } else {
+            s("content_width_bill")
+        };
+        let tip = if on_kot {
+            s("content_width_kot_help")
+        } else {
+            s("content_width_bill_help")
+        };
         self.ui
             .widget(cx, ids!(h_content_width))
-            .set_text(cx, &plain_display_text(&s("content_width")));
+            .set_text(cx, &plain_display_text(&heading));
         self.ui
             .widget(cx, ids!(content_width_help))
             .as_info_help()
-            .set_tip(&plain_display_text(&s("content_width_help")));
+            .set_tip(&plain_display_text(&tip));
         let field = self.ui.text_input(cx, ids!(content_width_input));
         field.set_empty_text(cx, s("content_width_ph"));
         if !cx.has_key_focus(field.area()) {
@@ -2098,15 +2112,27 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     fn apply_content_width(&mut self, cx: &mut Cx, mm: u32) {
         let mm = mm.clamp(40, 210);
+        let on_kot = app_state().lock().unwrap().bill_kot_tab_kot;
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
-            let msg = st.books_op(BooksOp::SetContentWidth { mm })?;
-            st.kot_slip_draft.content_width_mm = mm;
+            let msg = st.books_op(BooksOp::SetContentWidth {
+                mm,
+                kot: on_kot,
+            })?;
             let cols = print_share::wrap_cols_for_paper_mm(mm);
-            st.kot_slip_draft.chars_per_line = cols;
-            if st.device_role != DeviceRole::Client {
-                st.printer_draft.set_content_line(cols);
-                print_share::configure(st.printer_draft.clone());
+            if on_kot {
+                st.kot_slip_draft.content_width_mm = mm;
+                st.kot_slip_draft.chars_per_line = cols;
+                if st.device_role != DeviceRole::Client {
+                    st.printer_draft.set_kot_content_line(cols);
+                    print_share::configure(st.printer_draft.clone());
+                }
+            } else {
+                st.bill_slip_draft.content_width_mm = mm;
+                if st.device_role != DeviceRole::Client {
+                    st.printer_draft.set_bill_content_line(cols);
+                    print_share::configure(st.printer_draft.clone());
+                }
             }
             Ok(msg)
         })();
@@ -2115,8 +2141,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Err(e) => self.set_status(cx, e),
         }
         self.sync_content_width_ui(cx);
-        self.sync_kot_format_ui(cx);
-        self.sync_bill_format_ui(cx);
+        if on_kot {
+            self.sync_kot_format_ui(cx);
+        } else {
+            self.sync_bill_format_ui(cx);
+        }
     }
 
     /// Print the kitchen-slip preview on the checked test printers, using the
@@ -2154,7 +2183,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 .unwrap_or_else(|| st.display_venue_title());
             let text = draft.render_sample_kind(&shop, kind);
             let mut live = st.printer_draft.clone();
-            live.set_content_line(print_share::wrap_cols_for_paper_mm(
+            live.set_kot_content_line(print_share::wrap_cols_for_paper_mm(
                 draft.shown_content_width_mm(),
             ));
             if let Some(f) = live
@@ -2443,7 +2472,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let preview = draft.render_sample(&shop, &when);
         let (mm, landscape, base) = {
             let st = app_state().lock().unwrap();
-            let mm = st.kot_slip_draft.shown_content_width_mm();
+            let mm = st.bill_slip_draft.shown_content_width_mm();
             let base = st
                 .printer_draft
                 .format_for(print_share::RouteKey::Bill);
@@ -2496,20 +2525,27 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if !st.device_role.is_host() {
             return;
         }
-        let mm = st.kot_slip_draft.shown_content_width_mm();
-        let cols = print_share::wrap_cols_for_paper_mm(mm);
+        let bill_mm = st.bill_slip_draft.shown_content_width_mm();
+        let kot_mm = st.kot_slip_draft.shown_content_width_mm();
         let em = st.bill_slip_draft.style(print_share::BillStyleField::Items).size_em as f32;
         let kot = st.kot_slip_draft.clone();
+        let bill = st.bill_slip_draft.clone();
         drop(st);
         let mut live = print_share::printers();
         live.set_standard_em(em);
-        live.set_content_line(cols);
+        live.set_bill_content_line(print_share::wrap_cols_for_paper_mm(bill_mm));
+        live.set_kot_content_line(print_share::wrap_cols_for_paper_mm(kot_mm));
         if let Some(f) = live
             .formats
             .iter_mut()
             .find(|f| f.id == print_share::FORMAT_KOT)
         {
             kot.apply_to_print_format(f);
+        }
+        for f in live.formats.iter_mut() {
+            if print_share::is_standard_document(&f.id) {
+                bill.apply_to_print_format(f);
+            }
         }
         print_share::configure(live);
     }
@@ -2537,13 +2573,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let copies = st.bill_slip_draft.copies.clamp(1, 3);
             let em = st.bill_slip_draft.style(print_share::BillStyleField::Items).size_em as f32;
             let cols = print_share::wrap_cols_for_paper_mm(
-                st.kot_slip_draft.shown_content_width_mm(),
+                st.bill_slip_draft.shown_content_width_mm(),
             );
             let mut live = st.printer_draft.clone();
             // The bill route already names the delivery. Test bill uses that
             // same format; it does not switch the slip onto a page printer.
             live.set_standard_em(em);
-            live.set_content_line(cols);
+            live.set_bill_content_line(cols);
             let dir = st
                 .store
                 .as_ref()

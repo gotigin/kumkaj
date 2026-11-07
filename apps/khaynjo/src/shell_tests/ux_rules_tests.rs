@@ -158,4 +158,45 @@ mod ux_rules_tests {
         assert!(tap.contains("finger_up_is_tap"), "a scroll drag is not a tap");
         assert!(tap.contains("advance_kot_from"), "the tap only leaves the state it showed");
     }
+
+    /// Send KOT on the shop device: the line names the kitchens (no
+    /// programmer "KOT(s)"), and a paper failure stays red in every language —
+    /// the kind is set in code, not guessed from English words.
+    #[test]
+    fn kot_send_outcome_names_kitchens_and_keeps_paper_failures_red() {
+        let en = |k: &str| locale::t("en", k);
+        let (kind, msg) = kot_sent_status(&en, "Hot kitchen, Bar", true, None);
+        assert_eq!(kind, SnackKind::Success);
+        assert_eq!(msg, "KOT sent to Hot kitchen, Bar — printing");
+        let (kind, msg) = kot_sent_status(&en, "Hot kitchen", true, Some("printer offline"));
+        assert_eq!(kind, SnackKind::Error);
+        assert!(msg.contains("printer offline") && msg.contains("Tell the kitchen"), "{msg}");
+        let (kind, msg) = kot_sent_status(&en, "Hot kitchen", false, None);
+        assert_eq!((kind, msg.as_str()), (SnackKind::Success, "KOT sent to Hot kitchen"));
+        assert!(!msg.contains("KOT(s)"));
+
+        let gu = |k: &str| locale::t("gu", k);
+        let (kind, msg) = kot_sent_status(&gu, "Hot", true, Some("offline"));
+        assert_eq!(kind, SnackKind::Error, "{msg}");
+        assert!(!msg.contains("NOT printed") && msg.contains("Hot") && msg.contains("offline"), "{msg}");
+        let (kind, msg) = kot_sent_status(&gu, "Hot", true, None);
+        assert_eq!(kind, SnackKind::Success);
+        assert_ne!(
+            snack::classify(&msg),
+            SnackKind::Success,
+            "guessing from English words would not colour a Gujarati line: {msg}"
+        );
+    }
+
+    /// Empty states name screens the way the rail does (Order, Menu) — no
+    /// "Ordering screen" or "Menu & items" a waiter cannot find.
+    #[test]
+    fn empty_states_name_the_rail_screens() {
+        let kitchen = locale::t("en", "kitchen_empty");
+        assert!(kitchen.contains("Order") && !kitchen.contains("Ordering"), "{kitchen}");
+        let menu = locale::t("en", "empty_catalog");
+        assert!(menu.contains("Open Menu,") && !menu.contains("Menu & items"), "{menu}");
+        assert_eq!(locale::t("en", "nav_items"), "Menu");
+        assert_eq!(locale::t("en", "sell"), "Order");
+    }
 }

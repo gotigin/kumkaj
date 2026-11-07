@@ -1,15 +1,19 @@
 # khaynjo.com — website plan
 
-> **Status:** Phase 1 thin site in `apps/khaynjo/web/` (2026-11-06) —
-> landing + legal + download/pricing stubs. Full story / stage = Phase 3.
-> **Scope:** Khaynjo's instantiation of the Kumkaj-wide website plan
-> [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) — architecture
-> (HTML first + Makepad stage), agent pipeline, budgets, hosting and
-> roadmap live there and are not restated here. This file holds only
-> what is Khaynjo's: audience, pages, the 3D story, tools and the
-> claim sources.
-> **Code:** `apps/khaynjo/web/` (Zola) and `apps/khaynjo/web/stage/`
-> (Makepad stage crate). No code shared with any other site or app.
+> **Status:** Phase 1 live in-tree as a local demo (2026-11-07) —
+> `sites/khaynjo` (package `khaynjo-site`), copied from `sites/kumkaj`
+> and diverged: the §3 service story as 10 Makepad chapters, table tiles
+> in the visit colours as chapter nav, a working floor toy (tap a table
+> through its visit), and Download / WhatsApp CTAs behind owner switches
+> (WhatsApp number: **TODO owner**). Run
+> `./sites/khaynjo/scripts/run-web.sh` → http://127.0.0.1:8012 (native:
+> `run-desktop.sh`). Not deployed; the 3D room and real app captures are
+> Phase 2 ([`docs/WEBSITES.md`](../../../docs/WEBSITES.md) §7).
+> **Scope:** Khaynjo's instantiation of
+> [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) (Makepad 2 fullpage).
+> This file holds audience, story chapters, tools and claim sources.
+> **Code:** `sites/khaynjo/` — Makepad crate only; no shared site engine
+> with kumkaj.com or moklanjo.com.
 
 ------------------------------------------------------------------------
 
@@ -43,16 +47,16 @@ The home story answers them in that order.
 
 | Path | Content | Notes |
 |---|---|---|
-| `/` | The service story (§3) | Stage: live / clip / still |
+| `/` | The service story (§3) | **Live** (local) in `sites/khaynjo`; 3D room Phase 2 |
 | `/features` | One page, anchored: Order desk · Floor & tables · Kitchen & KOT · Menu · Billing & settle · Day end & shift · Stock & purchases · Team & rights · Reports · Devices & printers · Languages | Split when a section outgrows the page |
 | `/for/dine-in` | Areas, running tables, captains on tablets, coursing, split by seat, reservations & waitlist | |
 | `/for/quick-service` | Counter, takeaway, token display, kiosk on the shop Wi-Fi, combos, happy-hour prices — QSR, café, bakery | |
 | `/switch` | "Moving from a cloud POS": the mechanics that stay the same (running tables, KOT per station, settle with change and tip, rights "with password"), what changes (no internet needed, no subscription), how the menu comes over | Names no other product |
-| `/tools/gst-bill-calculator` | §4 | Search magnet; works with no JS |
+| `/tools/gst-bill-calculator` | §4 | Search magnet (Phase 5) |
 | `/download` | Android (Play when listed, APK), Windows MSI, Linux; SHA-256; system needs; first-run steps | Reads `releases.toml` |
 | `/guide` | Getting started: first menu, tables, a waiter tablet, first service, day close | Screenshots from the real app |
 | `/pricing` | Free forever on your devices; Kumkaj Cloud planned, usage-based | Links kumkaj.com/principles |
-| `/present` | Presenter mode, works offline after one visit | `WEBSITES.md` §6 step 8 |
+| `/present` | Presenter mode, works offline after one visit | The native build is the presenter today (`run-desktop.sh`, PgDn / clicker); offline web presenter Phase 4 |
 | `/privacy`, `/terms`, `/contact` | Legal + WhatsApp / email | |
 
 No `/for/cloud-kitchen` page until aggregator orders are more than a
@@ -67,7 +71,7 @@ walls, deep-red accents, gold light — one dining area, a parcel shelf,
 a counter and the kitchen pass. The cloche from the app icon is the
 recurring object. The room is illustration; **every device screen in
 the scene shows a real capture of Khaynjo**, never mock UI
-(`WEBSITES.md` §6 step 2).
+(`WEBSITES.md` §5 step 6).
 
 The chapters walk a table through the app's real visit colours
 (Free → Seated → In kitchen → Food ready → Served → Bill printed →
@@ -87,30 +91,47 @@ it.
 | 9 | **Internet down? Service goes on.** | The router turns red; the counter, captains' tablets and kitchen screen keep working together on the shop Wi-Fi | "No internet needed. Your tablets and kitchen screens work on your own Wi-Fi." | `offline-lan` |
 | 10 | **Close** | The room at rest, cloche on the pass | "Free forever on your devices." → Download · WhatsApp | `free-local` |
 
-**Props built in code** (`WEBSITES.md` §6 step 2): tables and chairs,
+**Props built in code** (`WEBSITES.md` §5 step 6): tables and chairs,
 plates and cloche, kitchen pass, thermal ticket printer + paper
 ticket, bill printer, tablets, kitchen screen, cash drawer, UPI QR
 stand, router with status light, menu cards. glTF only for diners,
 captains and cooks (simple, faceless, stylised).
 
+**Phase 1 build (2026-11-07, 2D):** the ten chapters ship as text plus 2D
+props, not device screens: the **floor toy** (six tables in Khaynjo's
+own tile colours and words; tap → next visit step; Bill printed → Paid →
+Free, as `free_table` allows); an order card with a size, an add-on and
+notes; a KOT in a monospace face with no prices; New / Preparing / Ready
+kitchen columns with ageing colours; move / merge / cancel / comp cards;
+a settle card (paid, return, tip apart); a drawer count; Gujarati and
+Hindi menu names with short codes, an AC-room price and a happy-hour
+price. Props are marked **Example** — no client names, menus, staff or
+dish photos. Chapter 3's headline is the ungated "One ticket per kitchen
+station. Never a price on it."; "prints itself" (`kot-autoprint`) and the
+tablets + kitchen screen line (`offline-lan`) sit behind
+`LAN_PILOT_PASSED`. Device screens with real captures replace the props in
+Phase 2.
+
 ------------------------------------------------------------------------
 
 ## 4. GST bill calculator (`/tools/gst-bill-calculator`)
 
-Mirrors the app's two tax modes (`docs/README.md` "Sell cart totals";
-vision §23):
+Phase 5 (not built yet). Mirrors the app's two tax modes
+(`docs/README.md` "Sell cart totals"; vision §23):
 
-- **HTML form first:** amount, tax rate (presets 5 / 12 / 18 % and a
-  free field — the page says which rate applies is for the owner's
-  accountant, it does not advise), mode **Tax inside price** or **Tax
-  added at till**, intra-state (CGST + SGST halves) or inter-state
-  (IGST).
-- Output: taxable value, each tax line, total, rounding — with one
-  line of working.
-- Runs entirely in the browser; nothing is sent.
-- Rounding and split rules re-implemented in a few lines of JS for the
-  page (copy, not import) with tests that pin the app's own worked
-  examples from `src/fiscal.rs`.
+- **In-site tool, Makepad like the rest of the site:** amount, tax rate
+  (presets 5 / 12 / 18 % and a free field — the page says which rate
+  applies is for the owner's accountant, it does not advise), mode **Tax
+  inside price** or **Tax added at till**, intra-state (CGST + SGST
+  halves) or inter-state (IGST).
+- Output: taxable value, each tax line, total, rounding — with one line
+  of working.
+- Runs entirely on the visitor's device; nothing is sent.
+- Rounding and split rules re-implemented in Rust inside the site crate
+  (copy, not import) with tests that pin the app's own worked examples
+  from `src/fiscal.rs` — the same pattern as Moklanjo's weight toy
+  (`sites/moklanjo/src/weight.rs`). Crawlable text comes with the
+  Phase 3 shell.
 - Ends with "Khaynjo does this on every bill" → Download.
 
 ------------------------------------------------------------------------
@@ -184,5 +205,5 @@ enforces it.
 - **Hardware specifics** (printer models, "tested with …") — after the
   real-hardware pilot, and then only what was tested.
 - **iOS / macOS** — deferred.
-- **Competitor names** — none (`WEBSITES.md` §12 item 6); `/switch`
+- **Competitor names** — none (`WEBSITES.md` §1 rule 6); `/switch`
   describes mechanics, not brands.

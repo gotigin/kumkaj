@@ -92,6 +92,9 @@ PATCHES=(
   no_warn_shared_bytes              # wasm: drop unused Read/map_file stub (no allow)
   no_warn_blocking_http_wasm        # wasm: gate native HTTP helpers; keep builder API live
   no_warn_gpu_texture_wasm          # wasm: TextureAlloc imports only where adopt paths compile
+  slides_view_story_axis            # sites: SlidesView axis Vertical, tap/swipe/wheel flips, presenter keys (PgDn/PgUp/Space/Home/End), goal_slide/slide_count
+  web_init_window_order             # sites (wasm): Startup creates window 0 before the init geom is applied (else IdPool panic, stuck on Loading)
+  web_aux_buttons_stay              # wasm: mouse side buttons do not navigate the browser away from the app
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

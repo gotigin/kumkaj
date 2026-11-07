@@ -6,6 +6,34 @@ fn typed_aliases(text: &str) -> Vec<String> {
         .collect()
 }
 
+/// What the counter says after Send KOT on the shop device: in the staff's
+/// language, with the snack kind decided here rather than guessed from
+/// English words — a Gujarati "not printed" must still show red, because
+/// the kitchen has no paper.
+fn kot_sent_status(
+    tr: &dyn Fn(&str) -> String,
+    kitchens: &str,
+    auto_print: bool,
+    paper_problem: Option<&str>,
+) -> (SnackKind, String) {
+    match (auto_print, paper_problem) {
+        (true, Some(why)) => (
+            SnackKind::Error,
+            tr("kot_sent_not_printed")
+                .replace("{kitchens}", kitchens)
+                .replace("{why}", why),
+        ),
+        (true, None) => (
+            SnackKind::Success,
+            tr("kot_sent_printing").replace("{kitchens}", kitchens),
+        ),
+        (false, _) => (
+            SnackKind::Success,
+            tr("kot_sent_screen").replace("{kitchens}", kitchens),
+        ),
+    }
+}
+
 /// Order → Floor table pick: seat the desk's unsent punches only on **first**
 /// Choose a table (`from` is None). Change table (`from` is Some) must open
 /// the picked ticket alone — never drag the previous table's lines over.

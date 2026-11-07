@@ -1,0 +1,19 @@
+--- a/platform/src/os/web/web.js	2026-11-07 20:30:58.771661257 +0530
++++ b/platform/src/os/web/web.js	2026-11-07 20:30:58.772453250 +0530
+@@ -1497,6 +1497,16 @@
+         window.addEventListener('mousemove', e => this.handlers.on_mouse_move(e));
+         window.addEventListener('mouseout', e => this.handlers.on_mouse_out(e));
+ 
++        // Side buttons (3/4) otherwise drive browser history and leave the app.
++        // mousedown preventDefault is not enough in every browser — auxclick too.
++        this.handlers.on_auxclick = e => {
++            if (e.button === 3 || e.button === 4) {
++                e.preventDefault();
++                return false;
++            }
++        }
++        canvas.addEventListener('auxclick', e => this.handlers.on_auxclick(e))
++
+         this.handlers.on_contextmenu = e => {
+             e.preventDefault()
+             return false
