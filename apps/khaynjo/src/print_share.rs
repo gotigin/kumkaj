@@ -4484,8 +4484,7 @@ pub fn print_route_using(
             if dests.is_empty() {
                 if kind == PrintKind::Kot {
                     note_problem(
-                        "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
-                            .into(),
+                        NO_KOT_PRINTER.into(),
                     );
                 }
                 false
@@ -4497,6 +4496,7 @@ pub fn print_route_using(
                     path: path.clone(),
                     text: text.to_string(),
                     copies,
+                    done: confirm_channel(),
                 }) {
                     Ok(()) => true,
                     Err(e) => {
@@ -4523,8 +4523,7 @@ pub fn print_route_using(
             } else {
                 if kind == PrintKind::Kot {
                     note_problem(
-                        "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
-                            .into(),
+                        NO_KOT_PRINTER.into(),
                     );
                 }
                 false
@@ -4544,6 +4543,79 @@ struct Job {
     text: String,
     /// Identical slips to send (KOT copies). Worker sends back-to-back.
     copies: u32,
+    /// Someone is waiting for this job's paper (see [`ConfirmPaper`]): the
+    /// worker answers with every printer that did not take it.
+    done: Option<mpsc::Sender<Vec<String>>>,
+}
+
+thread_local! {
+    /// Jobs queued on this thread while a [`ConfirmPaper`] is open.
+    static CONFIRMING: RefCell<Option<Vec<mpsc::Receiver<Vec<String>>>>> = const { RefCell::new(None) };
+}
+
+/// Wait for the paper of every job queued on this thread, so a Server can
+/// tell the device that asked whether the kitchen or the bill printer really
+/// took it. Only the LAN thread opens one — after the books committed, never
+/// on the UI thread (a dead printer would freeze the till for seconds).
+///
+/// Jobs still print exactly as before; the Server's own screen still hears a
+/// failure through [`take_problems`].
+pub struct ConfirmPaper(());
+
+impl ConfirmPaper {
+    pub fn start() -> Self {
+        CONFIRMING.with(|c| *c.borrow_mut() = Some(Vec::new()));
+        Self(())
+    }
+
+    /// Every printer that did not take a job, plus a "still printing" note
+    /// for jobs the printer has not finished within `wait`. Empty = all
+    /// paper confirmed (or nothing was printed).
+    pub fn finish(self, wait: Duration) -> Vec<String> {
+        let pending = CONFIRMING.with(|c| c.borrow_mut().take()).unwrap_or_default();
+        let deadline = std::time::Instant::now() + wait;
+        let mut problems: Vec<String> = Vec::new();
+        let mut slow = 0usize;
+        for rx in pending {
+            let left = deadline.saturating_duration_since(std::time::Instant::now());
+            match rx.recv_timeout(left) {
+                Ok(errs) => {
+                    for e in errs {
+                        if !problems.contains(&e) {
+                            problems.push(e);
+                        }
+                    }
+                }
+                Err(mpsc::RecvTimeoutError::Timeout) => slow += 1,
+                Err(mpsc::RecvTimeoutError::Disconnected) => {
+                    problems.push("print worker stopped — restart the shop device, then print again".into());
+                }
+            }
+        }
+        if slow > 0 {
+            problems.push(format!(
+                "{slow} slip(s) still printing — the shop device says if a printer fails"
+            ));
+        }
+        problems
+    }
+}
+
+impl Drop for ConfirmPaper {
+    fn drop(&mut self) {
+        CONFIRMING.with(|c| *c.borrow_mut() = None);
+    }
+}
+
+/// A done channel for this job when the thread is confirming paper.
+fn confirm_channel() -> Option<mpsc::Sender<Vec<String>>> {
+    CONFIRMING.with(|c| {
+        let mut slot = c.borrow_mut();
+        let waiting = slot.as_mut()?;
+        let (tx, rx) = mpsc::channel();
+        waiting.push(rx);
+        Some(tx)
+    })
 }
 
 static PROBLEMS: Mutex<Vec<String>> = Mutex::new(Vec::new());
@@ -4566,6 +4638,17 @@ fn note_problem(problem: String) {
     if let Some(hook) = *NOTIFY.lock().unwrap() {
         hook();
     }
+}
+
+/// A kitchen station with no printer attached: where to fix it (the Kitchen
+/// screen's station list, not Settings → Printers, which only finds devices).
+pub const NO_KOT_PRINTER: &str =
+    "No printer for that kitchen station — Kitchen → Kitchen stations → Printers for this station";
+
+/// Say a printing problem on this device's screen (the same channel the
+/// print worker uses), e.g. a waiter's bill with no bill printer here.
+pub fn report_problem(problem: String) {
+    note_problem(problem);
 }
 
 /// Printing problems since the last call (oldest first).
@@ -4591,6 +4674,7 @@ fn queue(job: Job) -> Result<(), String> {
                     // One send with N identical slips in one payload — do not
                     // open N TCP/`lp` sessions (that made copy 2/3 feel delayed).
                     let copies = job.copies.max(1);
+                    let mut failed: Vec<String> = Vec::new();
                     match job.mode {
                         RoutePrintMode::First => {
                             let mut last_err: Option<(String, String)> = None;
@@ -4610,7 +4694,7 @@ fn queue(job: Job) -> Result<(), String> {
                                 }
                             }
                             if let Some((who, e)) = last_err {
-                                note_problem(format!("{who} did not print: {e}"));
+                                failed.push(format!("{who} did not print: {e}"));
                             }
                         }
                         RoutePrintMode::All => {
@@ -4624,13 +4708,20 @@ fn queue(job: Job) -> Result<(), String> {
                                     &job.text,
                                     copies,
                                 ) {
-                                    note_problem(format!(
+                                    failed.push(format!(
                                         "{} did not print: {e}",
                                         describe(&dest.target)
                                     ));
                                 }
                             }
                         }
+                    }
+                    for problem in &failed {
+                        note_problem(problem.clone());
+                    }
+                    if let Some(done) = job.done {
+                        // Nobody waiting any more (timed out) is fine.
+                        let _ = done.send(failed);
                     }
                 }
             })
@@ -6327,6 +6418,65 @@ mod tests {
         assert!(print_network(&fake_printer(0x12), "KOT 1\n1 x Chaas").is_ok());
         let err = print_network(&fake_printer(0x1A), "KOT 2\n1 x Chaas").unwrap_err();
         assert!(err.contains("offline"), "{err}");
+    }
+
+    /// A Server answering a waiter waits for the paper: a printer that took
+    /// the job says nothing, one that is offline is named — and outside a
+    /// confirm (the till's own UI thread) nothing ever waits.
+    #[test]
+    fn confirm_paper_reports_what_the_printer_did() {
+        fn fake_printer(reply: u8) -> String {
+            let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+            let addr = listener.local_addr().unwrap().to_string();
+            std::thread::spawn(move || {
+                let (mut conn, _) = listener.accept().unwrap();
+                let mut got = Vec::new();
+                let mut buf = [0u8; 4096];
+                while let Ok(n) = std::io::Read::read(&mut conn, &mut buf) {
+                    if n == 0 {
+                        break;
+                    }
+                    got.extend_from_slice(&buf[..n]);
+                    if got.ends_with(&[0x10, 0x04, 0x01]) {
+                        let _ = conn.write_all(&[reply]);
+                        break;
+                    }
+                }
+            });
+            addr
+        }
+        let kot = PrintFormat {
+            id: FORMAT_KOT.into(),
+            label: "KOT".into(),
+            document: false,
+            landscape: false,
+            delivery: String::new(),
+            em: STD_EM_NORMAL,
+            line: 32,
+            baseline: STD_EM_NORMAL + 2.0,
+            side: 4.0,
+        };
+        let job = |addr: String| Job {
+            dests: vec![PrintDest { target: PrinterTarget::Network(addr), format: kot.clone() }],
+            mode: RoutePrintMode::First,
+            path: PathBuf::new(),
+            text: "KOT 1\n1 x Chaas".into(),
+            copies: 1,
+            done: confirm_channel(),
+        };
+        assert!(confirm_channel().is_none(), "no confirm open: nobody waits");
+        let paper = ConfirmPaper::start();
+        queue(job(fake_printer(0x12))).unwrap();
+        assert_eq!(paper.finish(Duration::from_secs(10)), Vec::<String>::new());
+        let paper = ConfirmPaper::start();
+        queue(job(fake_printer(0x1A))).unwrap();
+        let said = paper.finish(Duration::from_secs(10));
+        assert!(
+            said.iter().any(|p| p.contains("did not print") && p.contains("offline")),
+            "{said:?}"
+        );
+        assert!(confirm_channel().is_none(), "finish closes the confirm");
+        let _ = take_problems();
     }
 
     #[test]

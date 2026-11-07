@@ -1718,6 +1718,15 @@ impl Store {
         if order.live_lines().next().is_none() {
             return Err("Nothing on this table's bill".into());
         }
+        // Same rule as the Order desk, enforced where the books are: a
+        // Floor print icon or a tablet must not bill dishes the kitchen was
+        // never told about (punched or held, no KOT yet).
+        let unsent = order.live_lines().filter(|l| l.kot_id.is_empty()).count();
+        if unsent > 0 {
+            return Err(format!(
+                "{unsent} dish(es) on this table are not with the kitchen yet — Send KOT (or Fire course, or remove them), then Print bill"
+            ));
+        }
         if order.status == RunningOrderStatus::Printed {
             self.check_right(actor, Right::Reprint, approval_pin)?;
         }
@@ -2455,6 +2464,16 @@ mod tests {
         assert_eq!(pending.len(), 2);
         assert!(pending.iter().all(|l| l.kot_id.is_empty()));
 
+        // No bill for dishes the kitchen was never told about — from the
+        // Floor's print icon or a tablet, not only the Order desk.
+        let refused = shop.store.print_running_bill(&d1.id, &shop.owner, None).unwrap_err();
+        assert!(refused.contains("not with the kitchen yet"), "{refused}");
+        assert_eq!(
+            shop.store.running_order(&d1.id).unwrap().unwrap().status,
+            RunningOrderStatus::Running,
+            "a refused print leaves the table open"
+        );
+
         // Send KOT promotes pending → kot_id set; no duplicate unsent rows.
         let mut cart = Cart::default();
         cart.lines = order.to_cart_lines();
@@ -2463,6 +2482,7 @@ mod tests {
         let order = shop.store.running_order(&d1.id).unwrap().unwrap();
         assert!(order.live_lines().all(|l| !l.kot_id.is_empty()));
         assert_eq!(order.live_lines().count(), 2);
+        shop.store.print_running_bill(&d1.id, &shop.owner, None).unwrap();
 
         // Fresh pending then remove it — table frees when nothing live remains
         // only after settle; dropping the last *pending-only* order frees via

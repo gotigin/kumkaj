@@ -6227,6 +6227,9 @@ script_mod! {
                                             send_stack := ActionStack{
                                                 kot_set_station := StackLightBtn{text: "Use this station" visible: false}
                                                 send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
+                                                // Next step once the kitchen has everything:
+                                                // the bill, without opening Table actions.
+                                                print_bill_quick := StackSecondaryBtn{text: "Print bill" visible: false}
                                                 reprint_kot_btn := StackLightBtn{text: "Print selected again" visible: false}
                                                 print_cancelled_kot_btn := StackLightBtn{text: "Print all cancelled" visible: false}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}

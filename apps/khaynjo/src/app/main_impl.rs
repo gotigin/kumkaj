@@ -295,10 +295,14 @@ impl AppMain for App {
             self.take_lan_answers(cx);
             // A printer that did not print says so where people look; newly
             // found printers show in Settings.
-            if let Some(problem) = print_share::take_problems().pop() {
+            let mut problems = print_share::take_problems();
+            if !problems.is_empty() {
                 // Empty KOT route is a setup gap, not success ("not printed"
-                // used to match classify OK "printed" → green face).
-                self.show_warn(cx, problem);
+                // used to match classify OK "printed" → green face). Two
+                // kitchens failing are both named (the last three, once each).
+                problems.dedup();
+                let start = problems.len().saturating_sub(3);
+                self.show_warn(cx, problems[start..].join("; "));
             }
             if app_state().lock().unwrap().screen == Screen::Settings {
                 // Only rebuild the found list when Find is running or just

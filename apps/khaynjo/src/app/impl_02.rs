@@ -1786,8 +1786,14 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             let (show_cancelled_print, cancelled_label) = {
                 let mut show = false;
                 let mut n = 0usize;
-                if let (Some(tid), Some(store)) = (st.selected_table_id.as_ref(), st.store.as_ref())
-                {
+                // Two queries: only while the Order desk is on screen (the
+                // button lives there; going to Pos repaints), not on every
+                // Floor / Kitchen / LAN repaint with a table still selected.
+                if let (Some(tid), Some(store), true) = (
+                    st.selected_table_id.as_ref(),
+                    st.store.as_ref(),
+                    st.screen == Screen::Pos,
+                ) {
                     if let Ok(Some(order)) = store.running_order(tid) {
                         if let Ok(lines) = store.cancelled_kot_lines(&order.id) {
                             n = lines.len();
@@ -2440,6 +2446,20 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .button(cx, ids!(print_bill_btn))
                     .set_visible(cx, table_open && may_print_bill);
+                // Punch → Send KOT → Print bill: once every dish reached the
+                // kitchen (not still queued on this tablet) and the bill is
+                // not out yet, the bill sits under Send KOT. A reprint stays
+                // in Table actions (it needs the Reprint right).
+                let all_reached = !st.cart.lines.is_empty()
+                    && st
+                        .cart
+                        .lines
+                        .iter()
+                        .all(|l| l.is_sent() && l.kot_id != QUEUED_KOT);
+                self.ui.button(cx, ids!(print_bill_quick)).set_visible(
+                    cx,
+                    table_open && !bill_printed && may_print_bill && all_reached && !splitting,
+                );
                 // Split / bill actions are counter work — hide when Settle Denied.
                 self.ui
                     .button(cx, ids!(table_split_btn))

@@ -367,22 +367,18 @@ fn floor_filtered_tables(st: &AppState) -> Vec<DiningTable> {
     if filter.is_empty() {
         return st.tables.clone();
     }
+    // Runs from the Floor's draw: the waiter is already on each loaded
+    // table and the team is in memory — no SQL per table per frame (two
+    // queries × every table, every frame, while a filter was typed).
+    let matching: Vec<&str> = st
+        .staff
+        .iter()
+        .filter(|s| s.name.to_lowercase().contains(&filter))
+        .map(|s| s.id.as_str())
+        .collect();
     st.tables
         .iter()
-        .filter(|t| {
-            let Some(store) = st.store.as_ref() else {
-                return true;
-            };
-            let wid = store.table_waiter_id(&t.id).unwrap_or_default();
-            if wid.is_empty() {
-                return false;
-            }
-            store
-                .list_staff()
-                .unwrap_or_default()
-                .into_iter()
-                .any(|s| s.id == wid && s.name.to_lowercase().contains(&filter))
-        })
+        .filter(|t| !t.waiter_staff_id.is_empty() && matching.contains(&t.waiter_staff_id.as_str()))
         .cloned()
         .collect()
 }

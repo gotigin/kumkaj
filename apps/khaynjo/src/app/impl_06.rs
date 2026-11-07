@@ -1023,6 +1023,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         let mut said = None;
         let mut receipt = None;
         let mut open_table: Option<String> = None;
+        // What the shop device could not print for these answers (KOT, cancel
+        // slip, bill, reprint): said with the answer, never "reached" alone.
+        let mut paper: Vec<String> = Vec::new();
         {
             let mut st = app_state().lock().unwrap();
             for answer in answers {
@@ -1039,25 +1042,49 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                         }
                     }
                     Ok(reply) => {
+                        let errors = reply["errors"].as_array().cloned().unwrap_or_default();
+                        let mine: Vec<String> = errors
+                            .iter()
+                            .filter_map(|e| e.as_str())
+                            .chain(reply["print_problem"].as_str())
+                            .map(str::trim)
+                            .filter(|p| !p.is_empty())
+                            .map(str::to_string)
+                            .collect();
+                        // "Bill printed" would be a lie: the books moved the
+                        // table to Bill, the paper did not come out.
+                        if !mine.is_empty() && answer.follow == phone::Follow::BillText {
+                            receipt = reply["text"].as_str().map(str::to_string);
+                            said = Some(format!("{} · {BILL_ON_TABLE_NO_PAPER}", mine.join("; ")));
+                            continue;
+                        }
+                        for problem in mine {
+                            if !paper.contains(&problem) {
+                                paper.push(problem);
+                            }
+                        }
                         let raw = reply["message"]
                             .as_str()
                             .filter(|s| !s.is_empty())
                             .map(str::to_string)
                             .unwrap_or_else(|| answer.done.clone());
                         let (status, slip) = books_op::shift_slip_parts(&raw);
+                        let mut status = status.to_string();
                         if let Some(slip) = slip {
                             let dir = st
                                 .store
                                 .as_ref()
                                 .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
-                            let _ = print_share::print_text(
+                            if let Some(note) = shift_slip_paper_note(print_share::print_text(
                                 print_share::PrintKind::Bill,
                                 slip,
                                 dir.as_deref(),
-                            );
+                            )) {
+                                status = format!("{status} · {note}");
+                            }
                             st.last_receipt = slip.to_string();
                         }
-                        said = Some(status.to_string());
+                        said = Some(status);
                         match answer.follow {
                             phone::Follow::Refresh => {}
                             phone::Follow::BillText => {
@@ -1077,6 +1104,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 }
             }
             st.lan_shown = phone::link_state();
+        }
+        if !paper.is_empty() {
+            let base = said.take().unwrap_or_default();
+            said = Some(format!("{base} · paper: {}", paper.join("; ")));
         }
         // Reload outside the answer loop so a long SQL pass does not nest
         // under other UI work holding `app_state` (felt like a Client freeze).
@@ -2519,10 +2550,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 copies,
             ) {
                 Ok(share) if share.opened => Ok(done.to_string()),
-                Ok(_) => Ok(format!(
-                    "{done} · add a bill printer in Settings → Where things print"
-                )),
-                Err(e) => Ok(format!("{done} · paper not sent ({e})")),
+                // The table is on Bill either way; say the paper truth, and
+                // that printing again counts as a reprint.
+                Ok(_) => Ok(format!("{} · {}", net::NO_BILL_PRINTER, BILL_ON_TABLE_NO_PAPER)),
+                Err(e) => Ok(format!("Bill not printed ({e}) · {BILL_ON_TABLE_NO_PAPER}")),
             }
         })();
         match result {

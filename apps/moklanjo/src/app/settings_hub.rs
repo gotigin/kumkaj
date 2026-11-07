@@ -71,6 +71,9 @@ impl App {
                 field.set_text(cx, &format!("{}", st.snack_secs.round() as i64));
             }
         }
+        // paint_header_back_chrome locks app_state itself: let go first, or
+        // every Settings section open hangs on this thread (DEV.md bug 7a).
+        drop(st);
         // Hub ↔ section: always refresh ‹ (do not rely on a later full sync_chrome).
         self.paint_header_back_chrome(cx);
     }

@@ -230,6 +230,51 @@ pub fn want_sync() {
     cvar.notify_all();
 }
 
+/// A write the live socket carried got its answer (`outbox_reply`). The
+/// person hears it exactly as over HTTP — the Server's words or its
+/// refusal — once. The socket used to only file the row away, so a desk on
+/// a live link never heard "recorded" or "not accepted".
+fn answer_from_socket(store: &Store, id: &str, ok: bool, body: &serde_json::Value) {
+    let label = store
+        .lan_outbox()
+        .ok()
+        .and_then(|items| items.into_iter().find(|i| i.id == id))
+        .map(|i| i.label);
+    let answer: Option<Result<serde_json::Value, LanError>> = if ok {
+        let _ = store.lan_outbox_done(id);
+        Some(Ok(body.clone()))
+    } else {
+        let err = body
+            .get("error")
+            .and_then(|e| e.as_str())
+            .unwrap_or("not accepted");
+        let code = body.get("code").and_then(|c| c.as_str()).unwrap_or("");
+        if code == "retry" || err.contains("busy") {
+            let _ = store.lan_outbox_retry_later(id, err);
+            None
+        } else {
+            let _ = store.lan_outbox_refused(id, err);
+            Some(Err(LanError::Refused { message: err.to_string(), code: code.to_string() }))
+        }
+    };
+    // Only once per job: a reply for a row already answered (a resend) has
+    // no label left and says nothing.
+    if let (Some(label), Some(reply)) = (label, answer) {
+        let notify = {
+            let mut sh = shared().0.lock().unwrap();
+            let (done, follow) = sh
+                .follow
+                .remove(id)
+                .unwrap_or_else(|| (format!("{label} — reached the shop"), Follow::Refresh));
+            sh.done.push(Done { label, done, follow, reply });
+            sh.notify
+        };
+        if let Some(hook) = notify {
+            hook();
+        }
+    }
+}
+
 /// Answers that came back since the last call.
 pub fn take_done() -> Vec<Done> {
     std::mem::take(&mut shared().0.lock().unwrap().done)
@@ -382,20 +427,7 @@ fn watcher(transport: &dyn Transport) {
                 let Ok(store) = Store::open_path(&path) else {
                     return;
                 };
-                if ok {
-                    let _ = store.lan_outbox_done(id);
-                } else {
-                    let err = body
-                        .get("error")
-                        .and_then(|e| e.as_str())
-                        .unwrap_or("not accepted");
-                    let code = body.get("code").and_then(|c| c.as_str()).unwrap_or("");
-                    if code == "retry" || err.contains("busy") {
-                        let _ = store.lan_outbox_retry_later(id, err);
-                    } else {
-                        let _ = store.lan_outbox_refused(id, err);
-                    }
-                }
+                answer_from_socket(&store, id, ok, body);
                 want_sync();
             },
             &out_rx,
@@ -875,6 +907,35 @@ mod tests {
             queued: true,
             ..Job::default()
         }
+    }
+
+    /// A write the live socket carried: its answer reaches the screen like
+    /// one over HTTP — refusals included — once.
+    #[test]
+    fn a_socket_answer_is_said_on_the_screen_once() {
+        let _turn = one_at_a_time();
+        let (bench, phone, asha) = office_and_device();
+        bench.up.store(false, Ordering::SeqCst);
+        let job = sale_job(&bench.server, &asha);
+        let id = job.id.clone();
+        send(&phone, job).unwrap();
+        assert!(take_done().is_empty());
+        answer_from_socket(&phone, &id, true, &serde_json::json!({ "ok": true }));
+        let said = take_done();
+        assert_eq!(said.len(), 1);
+        assert_eq!(said[0].done, "₹100 · Cash recorded");
+        assert!(phone.lan_outbox().unwrap().is_empty(), "filed as done");
+        answer_from_socket(&phone, &id, true, &serde_json::json!({ "ok": true }));
+        assert!(take_done().is_empty(), "a resend's reply says nothing new");
+
+        let job = sale_job(&bench.server, &asha);
+        let id = job.id.clone();
+        send(&phone, job).unwrap();
+        let refused = serde_json::json!({ "ok": false, "error": "Not allowed to take payment", "code": "" });
+        answer_from_socket(&phone, &id, false, &refused);
+        let said = take_done();
+        assert_eq!(said.len(), 1);
+        assert_eq!(said[0].reply.as_ref().unwrap_err().to_string(), "Not allowed to take payment");
     }
 
     fn sales(server: &Path) -> usize {

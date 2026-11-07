@@ -294,6 +294,10 @@ pub struct RemoteSaleAction {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteKotAdvance {
     pub kot_id: String,
+    /// Status the tablet saw when tapped (`KotStatus::as_str`). Empty from
+    /// older devices: advance whatever it is now.
+    #[serde(default)]
+    pub from: String,
 }
 
 /// Correct a bill the Server owns. The Client never edits its own sales cache.
@@ -919,6 +923,11 @@ fn item_image_reply(store: &Store, key_raw: &str) -> Result<Reply, String> {
     if key.is_empty() {
         return Ok(Reply::refuse(400, "image key required", ""));
     }
+    // Only a photo file may leave this way — never `custom:../khaynjo.sqlite3`
+    // (the books, PIN hashes included, sit one folder up).
+    if !image_key_is_safe(&key) {
+        return Ok(Reply::refuse(404, "unknown image key", ""));
+    }
     let dir = store.item_images_dir()?;
     let path = match key.as_str() {
         k if k.starts_with("custom:") => {
@@ -949,6 +958,35 @@ fn item_image_reply(store: &Store, key_raw: &str) -> Result<Reply, String> {
         "ok": true,
         "hex": hex::encode(bytes),
     })))
+}
+
+/// `/item-image` keys the shop itself writes: `custom:<bare>.webp` (dish,
+/// category, venue mark — one file name, no folder; older shops may still
+/// hold a .png/.jpg) or `shelf:<folder>/<file>.webp` inside the bundled
+/// catalogue. Anything that could climb out of those folders is refused.
+fn image_key_is_safe(key: &str) -> bool {
+    let plain = |part: &str| {
+        !part.is_empty()
+            && part.len() <= 128
+            && !part.starts_with('.')
+            && part
+                .chars()
+                .all(|c| c.is_ascii_alphanumeric() || matches!(c, '-' | '_' | '.'))
+    };
+    let photo = |name: &str| {
+        name.rsplit_once('.')
+            .is_some_and(|(_, ext)| crate::media::is_image_ext(ext))
+    };
+    if let Some(file) = key.strip_prefix("custom:") {
+        return plain(file) && photo(file);
+    }
+    if let Some(rel) = key.strip_prefix(crate::menu_images::SHELF_KEY_PREFIX) {
+        let parts: Vec<&str> = rel.split('/').collect();
+        return (1..=3).contains(&parts.len())
+            && parts.iter().all(|p| plain(p))
+            && photo(rel);
+    }
+    false
 }
 
 /// Decode `%XX` and `+` in a query value (`shelf:a/b.webp` stays readable).
@@ -1284,7 +1322,11 @@ pub fn reprint_selected_kots(
         let mut printed = false;
         let mut last_err: Option<String> = None;
         {
-            match crate::print_share::print_route_copies(
+            match crate::print_share::print_route_using(
+                &crate::store::kot_printers_for_kind(
+                    &fmt,
+                    crate::print_share::KotSlipKind::Duplicate,
+                ),
                 crate::print_share::PrintKind::Kot,
                 crate::print_share::RouteKey::Kot {
                     station_id: station_id.as_str(),
@@ -1296,7 +1338,7 @@ pub fn reprint_selected_kots(
                 Ok(share) if share.opened => printed = true,
                 Ok(_) => {
                     last_err = Some(format!(
-                        "{station_name}: no printer — Settings → Printers"
+                        "{station_name}: no printer — Kitchen → Kitchen stations → Printers for this station"
                     ));
                 }
                 Err(e) => last_err = Some(format!("{station_name}: {e}")),
@@ -1396,7 +1438,8 @@ pub fn print_cancelled_kots(
         });
         let mut printed = false;
         let mut last_err: Option<String> = None;
-        match crate::print_share::print_route_copies(
+        match crate::print_share::print_route_using(
+            &crate::store::kot_printers_for_kind(&fmt, crate::print_share::KotSlipKind::Cancelled),
             crate::print_share::PrintKind::Kot,
             crate::print_share::RouteKey::Kot {
                 station_id: station_id.as_str(),
@@ -1408,7 +1451,7 @@ pub fn print_cancelled_kots(
             Ok(share) if share.opened => printed = true,
             Ok(_) => {
                 last_err = Some(format!(
-                    "{station_name}: no printer — Settings → Printers"
+                    "{station_name}: no printer — Kitchen → Kitchen stations → Printers for this station"
                 ));
             }
             Err(e) => last_err = Some(format!("{station_name}: {e}")),
@@ -1457,15 +1500,32 @@ pub fn print_sent_kots(store: &Store, kot_ids: &[String]) -> Option<String> {
     }
 }
 
+/// What a table action leaves to do once it is in the books.
+#[derive(Debug, Default)]
+pub struct RunningDone {
+    /// Bill text, when the action printed the bill.
+    pub text: Option<String>,
+    /// Kitchen tickets it made (a cancel slip, a fired course). The caller
+    /// prints them once the books have them — never inside the write, or a
+    /// write that rolls back still leaves the kitchen holding its paper.
+    pub kots: Vec<String>,
+}
+
+impl RunningDone {
+    fn none() -> Self {
+        Self::default()
+    }
+}
+
 /// Do a table action on the Server's books. Shared by the LAN endpoint and
-/// the counter itself, so both obey the same rights. Returns ticket/bill
-/// text to print when the action produced one.
+/// the counter itself, so both obey the same rights. Returns the bill text
+/// and kitchen tickets the action produced, for the caller to print.
 pub fn apply_running_action(
     store: &Store,
     actor: &StaffMember,
     approval_pin: Option<&str>,
     action: &RunningAction,
-) -> Result<Option<String>, String> {
+) -> Result<RunningDone, String> {
     match action {
         RunningAction::Cancel { line_id, qty_milli, reason, prepared } => {
             let kot_id = store.cancel_running_line(
@@ -1476,44 +1536,46 @@ pub fn apply_running_action(
                 actor,
                 approval_pin,
             )?;
-            let _ = print_sent_kots(store, std::slice::from_ref(&kot_id));
-            Ok(None)
+            Ok(RunningDone { text: None, kots: vec![kot_id] })
         }
         RunningAction::Complimentary { line_id, on, reason } => {
             store.set_running_line_complimentary(line_id, *on, reason, actor, approval_pin)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::MoveLines { line_ids, to_table_id } => {
             store.move_running_lines(line_ids, to_table_id, actor, approval_pin)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::Split { line_ids } => {
             store.split_running_lines(line_ids, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::MoveTable { from_table_id, to_table_id } => {
             store.move_table(from_table_id, to_table_id, actor, approval_pin)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::Merge { from_table_id, into_table_id } => {
             store.merge_tables(from_table_id, into_table_id, actor, approval_pin)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::PrintBill { table_id } => {
-            Ok(Some(store.print_running_bill(table_id, actor, approval_pin)?))
+            Ok(RunningDone {
+                text: Some(store.print_running_bill(table_id, actor, approval_pin)?),
+                kots: Vec::new(),
+            })
         }
         RunningAction::TableReady { table_id } => {
             store.free_table(table_id)?;
             store.audit(actor, "table.ready", table_id)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::SeatTable { table_id } => {
             store.seat_table(table_id, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::UndoBill { table_id } => {
             store.undo_bill_print(table_id, actor, approval_pin)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::BumpPending {
             table_id,
@@ -1525,34 +1587,33 @@ pub fn apply_running_action(
                 .get_product(product_id)?
                 .ok_or_else(|| "Missing item".to_string())?;
             store.bump_pending_product(table_id, &product, *delta_milli, area, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::SeatPending { table_id, lines } => {
             store.seat_unsent_lines(table_id, lines, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::ReseatPending {
             from_table_id,
             to_table_id,
         } => {
             store.reseat_pending(from_table_id, to_table_id, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::FireCourse {
             table_id,
             course_no,
         } => {
-            let ids = store.fire_course(table_id, *course_no, actor)?;
-            let _ = print_sent_kots(store, &ids);
-            Ok(None)
+            let kots = store.fire_course(table_id, *course_no, actor)?;
+            Ok(RunningDone { text: None, kots })
         }
         RunningAction::HoldLine { line_id, held } => {
             store.set_line_held(line_id, *held, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
         RunningAction::WaiterCall { table_id, kind } => {
             store.queue_waiter_call(table_id, kind, actor)?;
-            Ok(None)
+            Ok(RunningDone::none())
         }
     }
 }
@@ -1840,11 +1901,16 @@ struct AfterWrite {
 }
 
 impl AfterWrite {
-    fn print(self, store: &Store) {
+    /// Print, and say what did not print — the device that asked is told
+    /// (`print_problem` on its reply), not only this screen.
+    fn print(self, store: &Store) -> Vec<String> {
+        let mut problems = Vec::new();
         if !self.kots.is_empty() {
             // The counter prints the kitchen's paper the moment a waiter's
             // order lands — nobody carries anything to the kitchen.
-            let _ = print_sent_kots(store, &self.kots);
+            if let Some(problem) = print_sent_kots(store, &self.kots) {
+                problems.push(problem);
+            }
         }
         if let Some(text) = &self.bill {
             // A bill printed for a waiter prints at the counter, where the
@@ -1853,15 +1919,49 @@ impl AfterWrite {
                 .bill_slip_format()
                 .map(|f| f.copies.clamp(1, 3))
                 .unwrap_or(1);
-            let _ = crate::print_share::print_route_copies(
+            match crate::print_share::print_route_copies(
                 crate::print_share::PrintKind::Bill,
                 crate::print_share::RouteKey::Bill,
                 text,
                 store.db_path().parent(),
                 copies,
-            );
+            ) {
+                Ok(share) if share.opened => {}
+                Ok(_) => {
+                    let problem = NO_BILL_PRINTER.to_string();
+                    // The counter hears it too: nobody else was told.
+                    crate::print_share::report_problem(problem.clone());
+                    problems.push(problem);
+                }
+                Err(e) => problems.push(format!("Bill paper not sent ({e})")),
+            }
         }
+        problems
     }
+}
+
+/// Where a bill finds its printer (docs/PRINTER.md → Bill tab).
+pub const NO_BILL_PRINTER: &str =
+    "Bill not printed — no bill printer. Settings → Bill & KOT format → Bill → Printers for the bill";
+
+/// How long a device's write waits, after the books committed, for the
+/// printer to confirm the paper. A working printer answers in well under a
+/// second; a dead one takes ~8 s to give up, so past this the device hears
+/// "still printing" (a warning) instead of holding the waiter's next KOT
+/// behind it. The device's own wait is 15 s.
+const PAPER_WAIT: Duration = Duration::from_secs(5);
+
+/// Add what did not print to a device's reply, so the waiter's screen says
+/// "not printed" instead of "reached the kitchen".
+fn with_print_problem(reply: Reply, problems: &[String]) -> Reply {
+    if problems.is_empty() || !(200..300).contains(&reply.status) {
+        return reply;
+    }
+    let Ok(serde_json::Value::Object(mut body)) = serde_json::from_str::<serde_json::Value>(&reply.body) else {
+        return reply;
+    };
+    body.insert("print_problem".into(), serde_json::Value::String(problems.join("; ")));
+    Reply { body: serde_json::Value::Object(body).to_string(), ..reply }
 }
 
 fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Result<Reply, String> {
@@ -1915,6 +2015,9 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         return Ok(Reply::refuse(404, "not found", ""));
     }
     let request_id = req.header(HEADER_REQUEST);
+    // Paper queued while answering — reprints inside the write, KOTs and
+    // bills after it — is waited for once the books have committed.
+    let paper = crate::print_share::ConfirmPaper::start();
     let mut after = AfterWrite::default();
     let reply = {
         // One device write is one unit of work, its reply record included:
@@ -1955,11 +2058,27 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         request.commit().map_err(|e| e.to_string())?;
         reply
     };
-    after.print(&store);
+    let mut problems = after.print(&store);
     // Wake `/wait`ers now — paired tablets must see the new cart / KOT /
-    // bill without waiting for the books watcher's next poll.
+    // bill without waiting for the books watcher's next poll. The books are
+    // in; only the paper is still on its way.
     if (200..300).contains(&reply.status) {
         publish_books(&store);
+    }
+    // The request's SQLite write lock is long gone: waiting here holds up
+    // no other device.
+    for problem in paper.finish(PAPER_WAIT) {
+        if !problems.contains(&problem) {
+            problems.push(problem);
+        }
+    }
+    let reply = with_print_problem(reply, &problems);
+    if !problems.is_empty()
+        && let Some(id) = request_id
+        && (200..300).contains(&reply.status)
+    {
+        // A retry after a lost reply hears about the paper too.
+        let _ = store.save_lan_reply(id, &device.id, reply.status, &reply.body);
     }
     Ok(reply)
 }
@@ -2101,8 +2220,19 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
         }
         "/kot_advance" => {
             let req: RemoteKotAdvance = serde_json::from_str(body).map_err(|e| format!("kot json: {e}"))?;
-            store.advance_kot(&req.kot_id, actor)?;
-            Ok(Reply::done())
+            let from = Some(req.from.trim())
+                .filter(|f| !f.is_empty())
+                .map(crate::domain::KotStatus::parse);
+            if store.advance_kot_from(&req.kot_id, from, actor)? {
+                Ok(Reply::done())
+            } else {
+                // A second tap while the first was on the Wi‑Fi: say so,
+                // never move the ticket twice.
+                Ok(Reply::json(serde_json::json!({
+                    "ok": true,
+                    "message": "Ticket had already moved on — the kitchen list is up to date",
+                })))
+            }
         }
         "/kot_recall" => {
             let req: RemoteKotAdvance = serde_json::from_str(body).map_err(|e| format!("kot recall json: {e}"))?;
@@ -2182,9 +2312,11 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
         "/running" => {
             let req: RemoteRunningRequest = serde_json::from_str(body).map_err(|e| format!("running json: {e}"))?;
             let pin = Some(req.approval_pin.as_str()).filter(|p| !p.trim().is_empty());
-            let text = apply_running_action(store, actor, pin, &req.request)?;
-            after.bill = text.clone();
-            Ok(Reply::json(serde_json::json!({ "ok": true, "text": text })))
+            let done = apply_running_action(store, actor, pin, &req.request)?;
+            // Paper after the books commit (AfterWrite), like a waiter's KOT.
+            after.bill = done.text.clone();
+            after.kots = done.kots;
+            Ok(Reply::json(serde_json::json!({ "ok": true, "text": done.text })))
         }
         "/staff_pin" => {
             let req: RemoteOwnPinRequest =
@@ -3100,6 +3232,33 @@ mod tests {
     use super::*;
 
     #[test]
+    fn item_image_keys_cannot_leave_the_photo_folders() {
+        for ok in [
+            "custom:venue_icon.webp",
+            "custom:cat-6f1c2b9e-1a2b-4c3d-9e8f-0a1b2c3d4e5f.webp",
+            "custom:old-photo.png",
+            "shelf:south-indian/masala-dosa.webp",
+        ] {
+            assert!(image_key_is_safe(ok), "{ok}");
+        }
+        for bad in [
+            "custom:../khaynjo.sqlite3",
+            "custom:..\\khaynjo.sqlite3",
+            "custom:sub/venue_icon.webp",
+            "custom:/etc/passwd",
+            "custom:.hidden.webp",
+            "custom:khaynjo.sqlite3",
+            "custom:",
+            "shelf:../../khaynjo.sqlite3",
+            "shelf:south-indian/../../x.webp",
+            "shelf:/abs/x.webp",
+            "other:x.webp",
+        ] {
+            assert!(!image_key_is_safe(bad), "{bad}");
+        }
+    }
+
+    #[test]
     fn powershell_encoded_command_is_base64_of_utf16le() {
         assert_eq!(base64_utf16le("hi"), "aABpAA==");
         assert_eq!(base64_utf16le("a"), "YQA=");
@@ -3239,6 +3398,90 @@ mod tests {
         assert_eq!(sends[0].actor_name, "Wasim", "sent as the signed-in waiter");
         let _ = crate::print_share::take_captured();
         let _ = std::fs::remove_file(path);
+    }
+
+    /// A waiter's KOT for a kitchen with no printer: the books take it, and
+    /// the waiter's own screen hears that no paper came out — not only the
+    /// counter. A retry after a lost reply hears the same.
+    #[test]
+    fn a_waiters_kot_with_no_kitchen_printer_tells_the_waiter() {
+        crate::print_share::with_test_printers(crate::print_share::DevicePrinters::default(), || {
+            let (path, store, guard) = lan_shop();
+            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
+            let thali = store.list_products(false).unwrap().remove(0);
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            let kot = serde_json::to_string(&RemoteKotRequest {
+                draft: cart.to_kot_draft().unwrap(),
+                table_name: Some("D1".into()),
+                table_id: None,
+            })
+            .unwrap();
+            let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, "paper-1")];
+            let send = || answer(&path, &http("POST", "/kot", &headers, &kot), "10.0.0.5", &guard);
+            let first = send();
+            assert_eq!(first.status, 200, "{}", first.body);
+            let problem = body(&first)["print_problem"].as_str().unwrap_or_default().to_string();
+            assert!(problem.contains(crate::print_share::NO_KOT_PRINTER), "{}", first.body);
+            assert_eq!(send().body, first.body, "a retry hears about the paper too");
+            let _ = crate::print_share::take_problems();
+            let _ = crate::print_share::take_captured();
+            let _ = std::fs::remove_file(path);
+        });
+    }
+
+    /// A tablet's cancel: refused → no slip; accepted → one cancel slip,
+    /// printed after the books committed it, and no paper complaint.
+    #[test]
+    fn a_tablets_cancel_prints_its_slip_once_the_books_have_it() {
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) = vec![kitchen];
+        crate::print_share::with_test_printers(printers, || {
+            let (path, store, guard) = lan_shop();
+            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
+            let thali = store.list_products(false).unwrap().remove(0);
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            let kot = serde_json::to_string(&RemoteKotRequest {
+                draft: cart.to_kot_draft().unwrap(),
+                table_name: Some("D1".into()),
+                table_id: None,
+            })
+            .unwrap();
+            let post = |route: &str, req: &str, body_text: &str| {
+                let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, req)];
+                answer(&path, &http("POST", route, &headers, body_text), "10.0.0.5", &guard)
+            };
+            let sent = post("/kot", "k-1", &kot);
+            assert_eq!(sent.status, 200, "{}", sent.body);
+            assert!(body(&sent).get("print_problem").is_none(), "{}", sent.body);
+            assert_eq!(crate::print_share::take_captured().len(), 1, "the KOT printed");
+            let d1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
+            let line = store.running_order(&d1.id).unwrap().unwrap().lines[0].id.clone();
+            let cancel = |pin: &str| {
+                serde_json::to_string(&RemoteRunningRequest {
+                    approval_pin: pin.into(),
+                    request: RunningAction::Cancel {
+                        line_id: line.clone(),
+                        qty_milli: None,
+                        reason: "Wrong punch".into(),
+                        prepared: false,
+                    },
+                })
+                .unwrap()
+            };
+            let refused = post("/running", "c-1", &cancel(""));
+            assert_eq!(refused.status, 400, "{}", refused.body);
+            assert!(crate::print_share::take_captured().is_empty(), "a refused cancel prints nothing");
+            let done = post("/running", "c-2", &cancel("9999"));
+            assert_eq!(done.status, 200, "{}", done.body);
+            assert!(body(&done).get("print_problem").is_none(), "{}", done.body);
+            let jobs = crate::print_share::take_captured();
+            assert_eq!(jobs.len(), 1, "one cancel slip");
+            assert!(jobs[0].text.contains("CANCEL") && jobs[0].text.contains("Thali"), "{}", jobs[0].text);
+            let _ = std::fs::remove_file(path);
+        });
     }
 
     /// Books busy past the wait (a long write elsewhere) is "not now": a
@@ -3720,7 +3963,12 @@ mod tests {
             };
             assert!(apply_running_action(&store, &waiter, None, &cancel).is_err());
             assert!(crate::print_share::take_captured().is_empty(), "a refused cancel prints nothing");
-            apply_running_action(&store, &waiter, Some("9999"), &cancel).unwrap();
+            let done = apply_running_action(&store, &waiter, Some("9999"), &cancel).unwrap();
+            // The action itself prints nothing: its caller prints the slip once
+            // the books have the cancel (never inside the write).
+            assert!(crate::print_share::take_captured().is_empty());
+            assert_eq!(done.kots.len(), 1);
+            assert_eq!(print_sent_kots(&store, &done.kots), None);
             // The kitchen's cancel slip printed once (captured, never the OS).
             let jobs = crate::print_share::take_captured();
             assert_eq!(jobs.len(), 1);

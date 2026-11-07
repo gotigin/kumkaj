@@ -1185,6 +1185,23 @@ const QUEUED_LINE: &str = "queued:";
 
 /// A table action done on this device (with bill text when one printed),
 /// or sent to the Server — its answer shows when it comes back.
+/// Print bill with no paper: the books already moved the table to Bill.
+const BILL_ON_TABLE_NO_PAPER: &str =
+    "the table is on Bill now; printing it again counts as a reprint";
+
+/// The shift slip goes to the bill printer; say when it did not (the
+/// drawer count is saved either way, and the slip stays on the ticket).
+fn shift_slip_paper_note(sent: Result<print_share::ReceiptShare, String>) -> Option<String> {
+    match sent {
+        Ok(share) if share.opened => None,
+        Ok(_) => Some(
+            "shift slip not printed — no bill printer on this device (shop device: Settings → Bill & KOT format → Bill); the slip stays on the ticket"
+                .into(),
+        ),
+        Err(e) => Some(format!("shift slip not printed ({e}); the slip stays on the ticket")),
+    }
+}
+
 enum Acted {
     Here(Option<String>),
     Sent,

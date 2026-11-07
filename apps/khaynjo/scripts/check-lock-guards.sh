@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Flag any self.sync_chrome/set_status/go call made while an app_state()
-# guard (`st`) is still in scope. sync_chrome & friends lock app_state()
+# Flag any self.sync_*/paint_*/show_*/set_status/go call made while an
+# app_state() guard (`st`) is still in scope. Those helpers lock app_state()
 # themselves; std Mutex is non-reentrant, so calling them under a live
 # guard deadlocks the UI thread (order-type chip freeze, 2026-10-22).
 # Heuristic: brace-depth tracking over rustfmt-formatted UI code — every
@@ -16,7 +16,10 @@ FNR == 1 { depth=0; guard=0; guarddepth=0; guardline=0 }
   line=$0
   opens=count("{", line); closes=count("}", line)
   if (guard && line ~ /drop\(st\)/) guard=0
-  if (guard && line ~ /self\.(sync_chrome|set_status|go)\(cx/ && depth >= guarddepth) {
+  # sync_* / paint_* / show_* repaint helpers lock app_state() too (Settings
+  # Standard size and Moklanjo Settings hub hung this way, 2026-11-07).
+  # paint_choice_pair only flips two faces and never locks.
+  if (guard && line ~ /self\.(sync_[a-z_]+|paint_[a-z_]+|set_status|show_(warn|ok|snack)|go|go_peer)\(cx/ && line !~ /self\.paint_choice_pair\(/ && depth >= guarddepth) {
     printf "FLAG %s:%d (guard from %d): %s\n", FILENAME, FNR, guardline, line; flags++
   }
   if (line ~ /let (mut )?st = app_state\(\)\.lock\(\)/) {

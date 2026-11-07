@@ -3572,18 +3572,7 @@ impl Store {
             "duplicate" | "dup" => crate::print_share::KotSlipKind::Duplicate,
             _ => crate::print_share::KotSlipKind::Original,
         };
-        // Bill & KOT format owns type size and content width for this slip
-        // kind. Applied to this job's copy of the setup only: the virtual
-        // printer still supplies layout and delivery (docs/PRINTER.md), and
-        // the shared setup is never rewritten from the LAN thread.
-        let mut live = crate::print_share::printers();
-        if let Some(f) = live
-            .formats
-            .iter_mut()
-            .find(|f| f.id == crate::print_share::FORMAT_KOT)
-        {
-            slip.apply_to_print_format_for_kind(f, slip_kind);
-        }
+        let live = kot_printers_for_kind(&slip, slip_kind);
         let copies = slip.copies.max(1);
         // One receipt file + one queued job; worker packs N slips into one
         // ESC/POS payload (no N× TCP/`lp` round-trips between copies).
@@ -3598,10 +3587,7 @@ impl Store {
             copies,
         )?;
         if !share.opened {
-            return Err(
-                "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
-                    .into(),
-            );
+            return Err(crate::print_share::NO_KOT_PRINTER.into());
         }
         Ok(share.path)
     }
@@ -8750,6 +8736,7 @@ impl Store {
         reason: &str,
         actor: &StaffMember,
     ) -> Result<(), String> {
+        self.assert_server_writer("Void a sale")?;
         if !actor.role.can_void_refund() {
             return Err("Not allowed to void".into());
         }
@@ -10700,6 +10687,7 @@ impl Store {
     /// Tap the occupied tile later to punch dishes. Free again if they leave
     /// without ordering.
     pub fn seat_table(&self, table_id: &str, actor: &StaffMember) -> Result<(), String> {
+        self.assert_server_writer("Seat the table")?;
         let table = self
             .list_tables()?
             .into_iter()
@@ -10723,6 +10711,7 @@ impl Store {
     /// held — it is released only when payment is recorded (finalize)
     /// or the open bill is otherwise settled.
     pub fn request_billing(&self, table_id: &str, actor: &StaffMember) -> Result<(), String> {
+        self.assert_server_writer("Ask for the bill")?;
         let table = self
             .list_tables()?
             .into_iter()
@@ -10746,6 +10735,7 @@ impl Store {
     }
 
     pub fn free_table(&self, table_id: &str) -> Result<(), String> {
+        self.assert_server_writer("Free the table")?;
         // Release is gated on the bill: a table with money sent to the
         // kitchen cannot be freed until payment is recorded (finalize
         // frees it) — guests leaving is not the same as guests paying.
@@ -10864,6 +10854,20 @@ impl Store {
     }
 
     pub fn advance_kot(&self, kot_id: &str, actor: &StaffMember) -> Result<(), String> {
+        self.advance_kot_from(kot_id, None, actor).map(|_| ())
+    }
+
+    /// Move a ticket on one step — but only from `from` (the status the
+    /// tapping device last saw) when given. A kitchen tablet's second tap
+    /// while the first is still on the Wi‑Fi then does nothing, instead of
+    /// skipping Preparing (New → Ready). `Ok(false)` = it had already moved.
+    pub fn advance_kot_from(
+        &self,
+        kot_id: &str,
+        from: Option<KotStatus>,
+        actor: &StaffMember,
+    ) -> Result<bool, String> {
+        self.assert_server_writer("Move a kitchen ticket")?;
         if !actor.role.can_kitchen() {
             return Err("Not allowed for kitchen".into());
         }
@@ -10876,6 +10880,9 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         let status = KotStatus::parse(&status_s);
+        if from.is_some_and(|seen| seen != status) {
+            return Ok(false);
+        }
         let Some(next) = status.next() else {
             return Err("Ticket already finished".into());
         };
@@ -10890,12 +10897,13 @@ impl Store {
             "kot.advance",
             &format!("{kot_id} -> {}", next.as_str()),
         )?;
-        Ok(())
+        Ok(true)
     }
 
     /// Bring a ticket tapped Done by mistake back to Ready (within
     /// [`KOT_OPEN_HOURS`]). Cancelled tickets stay cancelled.
     pub fn recall_kot(&self, kot_id: &str, actor: &StaffMember) -> Result<(), String> {
+        self.assert_server_writer("Recall a kitchen ticket")?;
         if !actor.role.can_kitchen() {
             return Err("Not allowed for kitchen".into());
         }
@@ -12630,6 +12638,28 @@ impl Store {
 /// Dish lines for a printed KOT. The Kitchen card keeps
 /// `"D1 · [Station] 2× Dish, …"` in `summary`; print already has Table /
 /// Station headers, so strip those prefixes and split items onto their own lines.
+/// The shop's printer setup for one kitchen slip of `kind`: Bill & KOT
+/// format owns type size and content width per kind (an Original, a
+/// reprint's Duplicate, a cancel slip). Applied to this job's copy of the
+/// setup only: the printer still supplies layout and delivery
+/// (docs/PRINTER.md), and the shared setup is never rewritten from the LAN
+/// thread. Every kitchen slip — sent, reprinted, cancelled — goes through
+/// here, so the same kind prints the same size whichever button sent it.
+pub fn kot_printers_for_kind(
+    slip: &crate::print_share::KotSlipFormat,
+    kind: crate::print_share::KotSlipKind,
+) -> crate::print_share::DevicePrinters {
+    let mut live = crate::print_share::printers();
+    if let Some(f) = live
+        .formats
+        .iter_mut()
+        .find(|f| f.id == crate::print_share::FORMAT_KOT)
+    {
+        slip.apply_to_print_format_for_kind(f, kind);
+    }
+    live
+}
+
 fn kot_print_item_lines(summary: &str, table_label: &str, station_name: &str) -> Vec<String> {
     let mut body = summary.trim();
     if !table_label.is_empty() {
@@ -15298,6 +15328,13 @@ mod tests {
             store.list_open_kots().unwrap()[0].status,
             crate::domain::KotStatus::Preparing
         );
+        // A second tap that still saw New (on the Wi‑Fi behind the first)
+        // does nothing — Preparing is never skipped.
+        use crate::domain::KotStatus;
+        assert!(!store.advance_kot_from(&kot_id, Some(KotStatus::New), &owner).unwrap());
+        assert_eq!(store.list_open_kots().unwrap()[0].status, KotStatus::Preparing);
+        assert!(store.advance_kot_from(&kot_id, Some(KotStatus::Preparing), &owner).unwrap());
+        assert_eq!(store.list_open_kots().unwrap()[0].status, KotStatus::Ready);
         let _ = std::fs::remove_file(path);
     }
 

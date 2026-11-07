@@ -1263,6 +1263,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         // Restaurant loop (running table, settle, floor, rights, LAN find).
         for (id, key) in [
             (ids!(print_bill_btn), "print_bill"),
+            (ids!(print_bill_quick), "print_bill"),
             (ids!(table_move_btn), "move_merge_table"),
             (ids!(move_table_go), "move_here"),
             (ids!(merge_table_go), "merge_into"),

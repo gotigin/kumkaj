@@ -898,19 +898,22 @@ impl MatchEvent for App {
                     .map_err(|_| "Count the drawer and type the cash".to_string())?;
                 let msg = st.books_op(BooksOp::CloseShift { counted_paise: paise })?;
                 let (status, slip) = books_op::shift_slip_parts(&msg);
+                let mut status = status.to_string();
                 if let Some(slip) = slip {
                     let dir = st
                         .store
                         .as_ref()
                         .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
-                    let _ = print_share::print_text(
+                    if let Some(note) = shift_slip_paper_note(print_share::print_text(
                         print_share::PrintKind::Bill,
                         slip,
                         dir.as_deref(),
-                    );
+                    )) {
+                        status = format!("{status} · {note}");
+                    }
                     st.last_receipt = slip.to_string();
                 }
-                Ok(status.to_string())
+                Ok(status)
             })();
             match result {
                 Ok(msg) => {
@@ -2914,7 +2917,9 @@ impl MatchEvent for App {
             self.sync_chrome(cx);
         }
         // Table actions on the ticket (Print bill · Move / merge · line panel).
-        if self.ui.button(cx, ids!(print_bill_btn)).clicked(actions) {
+        if self.ui.button(cx, ids!(print_bill_btn)).clicked(actions)
+            || self.ui.button(cx, ids!(print_bill_quick)).clicked(actions)
+        {
             self.print_table_bill(cx);
         }
         if self.ui.button(cx, ids!(table_split_btn)).clicked(actions) {
@@ -3335,7 +3340,7 @@ impl MatchEvent for App {
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     let n = kot_ids.len();
                     let msg = match (store.kot_auto_print(), net::print_sent_kots(store, &kot_ids)) {
-                        (true, None) => format!("{n} KOT(s) → {kitchens} · printed"),
+                        (true, None) => format!("{n} KOT(s) → {kitchens} · sent to the printer"),
                         (true, Some(e)) => format!("KOT → {kitchens} · print failed: {e}"),
                         (false, _) => format!("{n} KOT(s) → {kitchens}"),
                     };
@@ -3656,17 +3661,18 @@ impl MatchEvent for App {
                     let result = (|| -> Result<(), String> {
                         let mut st = app_state().lock().unwrap();
                         let actor = st.actor()?;
-                        let kot_id = st
+                        let (kot_id, from) = st
                             .open_kots
                             .get(item_id)
-                            .map(|k| k.id.clone())
+                            .map(|k| (k.id.clone(), k.status.as_str().to_string()))
                             .ok_or_else(|| "Ticket gone".to_string())?;
                         // A kitchen tablet moves the Server's ticket (writing
-                        // its own cache was undone by the next sync).
+                        // its own cache was undone by the next sync). `from`
+                        // keeps a double tap on slow Wi‑Fi to one step.
                         if st.device_role == DeviceRole::Client {
                             st.lan_job(
                                 "/kot_advance",
-                                &net::RemoteKotAdvance { kot_id },
+                                &net::RemoteKotAdvance { kot_id, from },
                                 "Kitchen ticket".into(),
                                 "Ticket moved on".into(),
                                 phone::Follow::Refresh,
@@ -3674,7 +3680,13 @@ impl MatchEvent for App {
                             )?;
                         } else {
                             let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                            store.advance_kot(&kot_id, &actor)?;
+                            // A waiter's KOT can re-sort the list under the
+                            // finger: only move the ticket from what it showed.
+                            store.advance_kot_from(
+                                &kot_id,
+                                Some(crate::domain::KotStatus::parse(&from)),
+                                &actor,
+                            )?;
                         }
                         // The ticket moving changes the table's colour.
                         let (kots, tables) = st
@@ -6459,9 +6471,17 @@ impl MatchEvent for App {
             let size_now = self.ui.text_input(cx, ids!(std_size_input)).text();
             if let Ok(raw) = size_now.trim().parse::<f32>() {
                 let em = raw.clamp(12.0, 48.0);
-                let mut st = app_state().lock().unwrap();
-                if (st.printer_draft.standard_em() - em).abs() > 0.05 {
-                    st.printer_draft.set_standard_em(em);
+                // Release the guard before repainting: sync_std_print_ui locks
+                // app_state itself (DEV.md bug 7a — typing a size hung Settings).
+                let changed = {
+                    let mut st = app_state().lock().unwrap();
+                    let changed = (st.printer_draft.standard_em() - em).abs() > 0.05;
+                    if changed {
+                        st.printer_draft.set_standard_em(em);
+                    }
+                    changed
+                };
+                if changed {
                     self.sync_std_print_ui(cx);
                 }
             }
@@ -6723,7 +6743,7 @@ impl MatchEvent for App {
                 if st.device_role == DeviceRole::Client {
                     st.lan_job(
                         "/kot_recall",
-                        &net::RemoteKotAdvance { kot_id },
+                        &net::RemoteKotAdvance { kot_id, from: String::new() },
                         "Recall ticket".into(),
                         "Ticket recalled".into(),
                         phone::Follow::Refresh,

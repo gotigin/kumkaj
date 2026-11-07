@@ -926,7 +926,14 @@ impl AppState {
         }
         let store = self.store.as_ref().ok_or("No store")?;
         let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
-        let text = net::apply_running_action(store, &actor, pin, &action)?;
+        let done = net::apply_running_action(store, &actor, pin, &action)?;
+        // Cancel slip / fired course: paper once the books have it. A
+        // printer that did not take it is said on this screen
+        // (print_share::take_problems), after the action's own status.
+        if let Some(problem) = net::print_sent_kots(store, &done.kots) {
+            crate::print_share::report_problem(problem);
+        }
+        let text = done.text;
         // Other devices on `/wait` see the bump / seat / cancel at once.
         net::publish_books(store);
         self.reload_all()?;

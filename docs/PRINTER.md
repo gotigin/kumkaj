@@ -101,11 +101,44 @@ width, layout, and delivery are the Bill format used when the job is sent.
   same content edge. A wider content width lengthens the rule and moves
   Center and End.
 
+A **reprint** (Duplicate) and **Print all cancelled** (Cancelled) use their
+kind's type size and content width, the same as a ticket sent with Send
+KOT — every kitchen slip goes through one setup per kind
+(`kot_printers_for_kind`), whichever button printed it.
+
 Save KOT format writes that slip. The printed ticket reads the saved slip,
 not an unsaved edit still sitting in the form. **Test KOT**, under that
 save button, prints the preview on a kitchen printer. **Test bill**, under
 Save bill format, prints a sample bill with the header, footer, size,
 content width, layout, and delivery currently on the Bill tab.
+
+## Paper for a waiter's device (LAN)
+
+The printers are on the shop's Server. A paired Client (waiter tablet,
+kitchen tablet) never prints a KOT, cancel slip, fired course or bill
+itself; the Server prints it.
+
+- The Server prints **after** the books commit the write. A cancel that is
+  refused, or a write that rolls back, leaves no paper in the kitchen.
+- The Server then waits up to 5 s for the printers to answer, and puts what
+  did not print in the device's reply (`print_problem`; a reprint or Print
+  all cancelled also lists per-kitchen `errors`). The waiter's status line
+  reads e.g. `KOT for D3 reached Tandoor · paper: Network printer
+  192.168.1.50 did not print: cannot reach it …`, never "reached" alone. A
+  slip still printing after the wait says so; the Server's own screen
+  still warns when it fails. A retry after a lost reply hears the same.
+- A bill with no paper says `Bill not printed — no bill printer …` and that
+  the table is on Bill now (printing it again counts as a reprint). It
+  never says "Bill printed".
+- The Server's own screen never waits: its jobs are queued and a failure
+  shows as a warning when the printer gives up.
+
+Where each "no printer" message sends people:
+
+| Paper | Fix it at |
+|---|---|
+| KOT / cancel slip | Kitchen → Kitchen stations → Printers for this station |
+| Bill, shift slip | Settings → Bill & KOT format → Bill → Printers for the bill |
 
 ## Moklanjo
 

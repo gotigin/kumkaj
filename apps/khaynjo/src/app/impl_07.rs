@@ -49,6 +49,16 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 }
             };
             let done = match action {
+                // Only promise paper when the shop prints KOTs on its own
+                // (a Client's cache does not carry the switch: default on).
+                LineAction::Cancel
+                    if !st.store.as_ref().map(|s| s.kot_auto_print()).unwrap_or(true) =>
+                {
+                    format!(
+                        "{} cancelled — on the Kitchen screen; KOT auto-print is off, so no cancel slip",
+                        line.name
+                    )
+                }
                 LineAction::Cancel => format!("{} cancelled — the kitchen gets a cancel slip", line.name),
                 LineAction::Complimentary if line.complimentary => format!("{} charged again", line.name),
                 LineAction::Complimentary => format!("{} is complimentary (NC)", line.name),
@@ -314,10 +324,10 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 copies,
             ) {
                 Ok(share) if share.opened => Ok(done.to_string()),
-                Ok(_) => Ok(format!(
-                    "{done} · add a bill printer in Settings → Where things print (station printers are for KOTs only)"
-                )),
-                Err(e) => Ok(format!("{done} · paper not sent ({e})")),
+                // The table is on Bill either way; say the paper truth, and
+                // that printing again counts as a reprint.
+                Ok(_) => Ok(format!("{} · {}", net::NO_BILL_PRINTER, BILL_ON_TABLE_NO_PAPER)),
+                Err(e) => Ok(format!("Bill not printed ({e}) · {BILL_ON_TABLE_NO_PAPER}")),
             }
         })();
         match result {

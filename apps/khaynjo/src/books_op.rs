@@ -1308,7 +1308,7 @@ impl Store {
                 }
                 let station = self.add_station(&name)?;
                 Ok(format!(
-                    "Station {} added — set its printers in Settings → Where things print",
+                    "Station {} added — attach its printers: Kitchen → Kitchen stations → Printers for this station",
                     station.name
                 ))
             }

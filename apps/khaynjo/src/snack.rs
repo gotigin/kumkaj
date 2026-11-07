@@ -168,9 +168,7 @@ mod tests {
         assert_eq!(classify("Sale undone — cart restored"), SnackKind::Success);
         assert_eq!(classify("Read-only on this extra till"), SnackKind::Warn);
         assert_eq!(
-            classify(
-                "No printer for that kitchen station — attach a virtual printer under Kitchen → Kitchen stations"
-            ),
+            classify(crate::print_share::NO_KOT_PRINTER),
             SnackKind::Warn
         );
         assert_eq!(

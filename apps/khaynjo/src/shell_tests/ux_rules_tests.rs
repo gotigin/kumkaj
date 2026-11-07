@@ -87,20 +87,21 @@ mod ux_rules_tests {
                 "Conversions (1 from = factor to)",
             ]
         );
+        // Picker state carries its dot (● On / ○ Off) since c98d4c2.
         let weight: Vec<&ReportRow> = rows.iter().skip(1).take_while(|r| !matches!(r, ReportRow::Head(_))).collect();
         assert_eq!(
             weight.first(),
-            Some(&&ReportRow::Kv("g — Gram · 1 g = 0.001 kg".into(), "On".into()))
+            Some(&&ReportRow::Kv("g — Gram · 1 g = 0.001 kg".into(), "● On".into()))
         );
         let kg = weight
             .iter()
-            .position(|r| **r == ReportRow::Kv("kg — Kilogram · base unit".into(), "On".into()))
+            .position(|r| **r == ReportRow::Kv("kg — Kilogram · base unit".into(), "● On".into()))
             .unwrap();
         assert_eq!(
             *weight[kg + 1],
-            ReportRow::Kv("bag — Bag (custom) · 1 bag = 25 kg".into(), "On".into())
+            ReportRow::Kv("bag — Bag (custom) · 1 bag = 25 kg".into(), "● On".into())
         );
-        assert!(rows.contains(&ReportRow::Kv("tray — Tray (custom)".into(), "On".into())));
+        assert!(rows.contains(&ReportRow::Kv("tray — Tray (custom)".into(), "● On".into())));
         assert!(rows.contains(&ReportRow::Line("1 bag = 25 kg".into())));
         let _ = std::fs::remove_dir_all(home);
     }
